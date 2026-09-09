@@ -1,1 +1,3 @@
-{\n  \"installCommand\": \"npm ci --ignore-platform\"\n}\n
+{
+  "installCommand": "npm install --ignore-platform"
+}
