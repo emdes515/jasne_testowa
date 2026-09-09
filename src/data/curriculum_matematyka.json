@@ -1,0 +1,1907 @@
+{
+    "topics": [
+        {
+            "id": "dzial-1",
+            "title": "Dział 1: Liczby Rzeczywiste",
+            "description": "Zbiory, potęgi, pierwiastki, logarytmy i procenty - potężny fundament, 15 mikro-lekcji.",
+            "lessons": [
+                {
+                    "id": "lesson-1-1",
+                    "title": "Zbiory liczbowe i osie",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Zbiory liczbowe i osie",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-1750aa45",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Zbiory liczbowe i osie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-57af192f",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Zbiory liczbowe i osie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-9af12879",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Zbiory liczbowe i osie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-c30c58c3",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Zbiory liczbowe i osie. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-1750aa45",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Zbiory liczbowe i osie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-57af192f",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Zbiory liczbowe i osie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-9af12879",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Zbiory liczbowe i osie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-c30c58c3",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Zbiory liczbowe i osie. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-2",
+                    "title": "Ułamki 1: Dodawanie i Odejmowanie",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Ułamki 1: Dodawanie i Odejmowanie",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-deb8ac8f",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Ułamki 1: Dodawanie i Odejmowanie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-759f1034",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Ułamki 1: Dodawanie i Odejmowanie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-de71e6a9",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Ułamki 1: Dodawanie i Odejmowanie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-b3c0655d",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Ułamki 1: Dodawanie i Odejmowanie. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-deb8ac8f",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Ułamki 1: Dodawanie i Odejmowanie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-759f1034",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Ułamki 1: Dodawanie i Odejmowanie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-de71e6a9",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Ułamki 1: Dodawanie i Odejmowanie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-b3c0655d",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Ułamki 1: Dodawanie i Odejmowanie. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-3",
+                    "title": "Ułamki 2: Mnożenie i Dzielenie",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Ułamki 2: Mnożenie i Dzielenie",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-e1472f1e",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Ułamki 2: Mnożenie i Dzielenie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-dc564023",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Ułamki 2: Mnożenie i Dzielenie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-52c7efcc",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Ułamki 2: Mnożenie i Dzielenie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-e617e518",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Ułamki 2: Mnożenie i Dzielenie. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-e1472f1e",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Ułamki 2: Mnożenie i Dzielenie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-dc564023",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Ułamki 2: Mnożenie i Dzielenie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-52c7efcc",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Ułamki 2: Mnożenie i Dzielenie",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-e617e518",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Ułamki 2: Mnożenie i Dzielenie. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-4",
+                    "title": "Potęgi 1: Wykładnik Całkowity",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Potęgi 1: Wykładnik Całkowity",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-272256e6",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Potęgi 1: Wykładnik Całkowity",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-39f5be48",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Potęgi 1: Wykładnik Całkowity",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-8b1dcd8a",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Potęgi 1: Wykładnik Całkowity",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-49334244",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Potęgi 1: Wykładnik Całkowity. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-272256e6",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Potęgi 1: Wykładnik Całkowity",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-39f5be48",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Potęgi 1: Wykładnik Całkowity",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-8b1dcd8a",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Potęgi 1: Wykładnik Całkowity",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-49334244",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Potęgi 1: Wykładnik Całkowity. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-5",
+                    "title": "Potęgi 2: Wykładnik Ujemny",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Potęgi 2: Wykładnik Ujemny",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-f94047cf",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Potęgi 2: Wykładnik Ujemny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-41f2ddb6",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Potęgi 2: Wykładnik Ujemny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-41cf8275",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Potęgi 2: Wykładnik Ujemny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-37a352c9",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Potęgi 2: Wykładnik Ujemny. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-f94047cf",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Potęgi 2: Wykładnik Ujemny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-41f2ddb6",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Potęgi 2: Wykładnik Ujemny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-41cf8275",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Potęgi 2: Wykładnik Ujemny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-37a352c9",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Potęgi 2: Wykładnik Ujemny. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-6",
+                    "title": "Potęgi 3: Wykładnik Wymierny",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Potęgi 3: Wykładnik Wymierny",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-eb90a456",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Potęgi 3: Wykładnik Wymierny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-e50b3ef4",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Potęgi 3: Wykładnik Wymierny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-a7aba27f",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Potęgi 3: Wykładnik Wymierny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-d5b3c691",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Potęgi 3: Wykładnik Wymierny. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-eb90a456",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Potęgi 3: Wykładnik Wymierny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-e50b3ef4",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Potęgi 3: Wykładnik Wymierny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-a7aba27f",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Potęgi 3: Wykładnik Wymierny",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-d5b3c691",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Potęgi 3: Wykładnik Wymierny. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-7",
+                    "title": "Pierwiastki 1: Podstawowe Własności",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Pierwiastki 1: Podstawowe Własności",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-bb5921d0",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Pierwiastki 1: Podstawowe Własności",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-71334966",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Pierwiastki 1: Podstawowe Własności",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-77255247",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Pierwiastki 1: Podstawowe Własności",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7dbf98ae",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Pierwiastki 1: Podstawowe Własności. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-bb5921d0",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Pierwiastki 1: Podstawowe Własności",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-71334966",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Pierwiastki 1: Podstawowe Własności",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-77255247",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Pierwiastki 1: Podstawowe Własności",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7dbf98ae",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Pierwiastki 1: Podstawowe Własności. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-8",
+                    "title": "Pierwiastki 2: Działania na pierwiastkach",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Pierwiastki 2: Działania na pierwiastkach",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-6169c446",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Pierwiastki 2: Działania na pierwiastkach",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-07babb83",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Pierwiastki 2: Działania na pierwiastkach",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-f79d7e35",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Pierwiastki 2: Działania na pierwiastkach",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-b1294e00",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Pierwiastki 2: Działania na pierwiastkach. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-6169c446",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Pierwiastki 2: Działania na pierwiastkach",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-07babb83",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Pierwiastki 2: Działania na pierwiastkach",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-f79d7e35",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Pierwiastki 2: Działania na pierwiastkach",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-b1294e00",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Pierwiastki 2: Działania na pierwiastkach. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-9",
+                    "title": "Pierwiastki 3: Niewymierność w mianowniku",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Pierwiastki 3: Niewymierność w mianowniku",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-be974146",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Pierwiastki 3: Niewymierność w mianowniku",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-9413e757",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Pierwiastki 3: Niewymierność w mianowniku",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-b4d38b98",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Pierwiastki 3: Niewymierność w mianowniku",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-0466fa5b",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Pierwiastki 3: Niewymierność w mianowniku. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-be974146",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Pierwiastki 3: Niewymierność w mianowniku",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-9413e757",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Pierwiastki 3: Niewymierność w mianowniku",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-b4d38b98",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Pierwiastki 3: Niewymierność w mianowniku",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-0466fa5b",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Pierwiastki 3: Niewymierność w mianowniku. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-10",
+                    "title": "Logarytmy 1: Definicja",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Logarytmy 1: Definicja",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-0b029c94",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Logarytmy 1: Definicja",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-09759692",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Logarytmy 1: Definicja",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7cd948cd",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Logarytmy 1: Definicja",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-f1b2d10f",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Logarytmy 1: Definicja. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-0b029c94",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Logarytmy 1: Definicja",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-09759692",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Logarytmy 1: Definicja",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7cd948cd",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Logarytmy 1: Definicja",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-f1b2d10f",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Logarytmy 1: Definicja. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-11",
+                    "title": "Logarytmy 2: Szacowanie wartości",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Logarytmy 2: Szacowanie wartości",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-3baa87e5",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Logarytmy 2: Szacowanie wartości",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-99110c20",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Logarytmy 2: Szacowanie wartości",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-36e804c2",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Logarytmy 2: Szacowanie wartości",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-733ac917",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Logarytmy 2: Szacowanie wartości. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-3baa87e5",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Logarytmy 2: Szacowanie wartości",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-99110c20",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Logarytmy 2: Szacowanie wartości",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-36e804c2",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Logarytmy 2: Szacowanie wartości",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-733ac917",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Logarytmy 2: Szacowanie wartości. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-12",
+                    "title": "Logarytmy 3: Wzory na sumę i różnicę",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Logarytmy 3: Wzory na sumę i różnicę",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-436fbcb9",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Logarytmy 3: Wzory na sumę i różnicę",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7a986116",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Logarytmy 3: Wzory na sumę i różnicę",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-99f0c420",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Logarytmy 3: Wzory na sumę i różnicę",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-33afc690",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Logarytmy 3: Wzory na sumę i różnicę. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-436fbcb9",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Logarytmy 3: Wzory na sumę i różnicę",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7a986116",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Logarytmy 3: Wzory na sumę i różnicę",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-99f0c420",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Logarytmy 3: Wzory na sumę i różnicę",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-33afc690",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Logarytmy 3: Wzory na sumę i różnicę. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-13",
+                    "title": "Procenty 1: Obliczenia podstawowe",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Procenty 1: Obliczenia podstawowe",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-c6ad79fa",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Procenty 1: Obliczenia podstawowe",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-367d7683",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Procenty 1: Obliczenia podstawowe",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-72f6e84c",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Procenty 1: Obliczenia podstawowe",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-ae4dbf2f",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Procenty 1: Obliczenia podstawowe. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-c6ad79fa",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Procenty 1: Obliczenia podstawowe",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-367d7683",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Procenty 1: Obliczenia podstawowe",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-72f6e84c",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Procenty 1: Obliczenia podstawowe",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-ae4dbf2f",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Procenty 1: Obliczenia podstawowe. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-14",
+                    "title": "Procenty 2: Obniżki i podwyżki",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Procenty 2: Obniżki i podwyżki",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-e9064518",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Procenty 2: Obniżki i podwyżki",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-89542730",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Procenty 2: Obniżki i podwyżki",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-834fdc1a",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Procenty 2: Obniżki i podwyżki",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-9ca53d04",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Procenty 2: Obniżki i podwyżki. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-e9064518",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Procenty 2: Obniżki i podwyżki",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-89542730",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Procenty 2: Obniżki i podwyżki",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-834fdc1a",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Procenty 2: Obniżki i podwyżki",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-9ca53d04",
+                            "type": "OPEN_GENERAL",
+                            "content": "Zadanie otwarte dla: Procenty 2: Obniżki i podwyżki. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                },
+                {
+                    "id": "lesson-1-15",
+                    "title": "Wartość bezwzględna",
+                    "estimated_time_minutes": 5,
+                    "estimated_time_formatted": "~5 min",
+                    "required_correct_tasks": 3,
+                    "theory_pill": {
+                        "concept_essence": "Esencja tematu: Wartość bezwzględna",
+                        "matura_context": "Jak to wygląda na maturze.",
+                        "core_formulas": [
+                            "a^2 + b^2 = c^2"
+                        ],
+                        "worked_example": "Rozwiązany przykład krok po kroku.",
+                        "exam_trap": "Najczęstszy błąd maturzystów."
+                    },
+                    "tasks": [
+                        {
+                            "id": "task-991a36a5",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Wartość bezwzględna",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-758d47db",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Wartość bezwzględna",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7da80b72",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Wartość bezwzględna",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-1d20c78a",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Wartość bezwzględna. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        },
+                        {
+                            "id": "task-991a36a5",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 1 dla: Wartość bezwzględna",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-758d47db",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 2 dla: Wartość bezwzględna",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-7da80b72",
+                            "type": "SINGLE_CHOICE",
+                            "content": "Przykładowe zadanie 3 dla: Wartość bezwzględna",
+                            "options": [
+                                "Opcja A",
+                                "Opcja B",
+                                "Opcja C",
+                                "Opcja D"
+                            ],
+                            "correct_answer": "Opcja A",
+                            "explanation": "Wyjaśnienie pułapki maturalnej.",
+                            "hint": "Skup się na podstawowych wzorach z tej lekcji.",
+                            "hint_cost": 10
+                        },
+                        {
+                            "id": "task-1d20c78a",
+                            "type": "OPEN_PROOF",
+                            "content": "Zadanie otwarte dla: Wartość bezwzględna. Zapisz pełne rozumowanie na tablicy.",
+                            "scoring_key": "1 pkt za dobry wzór, 1 pkt za poprawny wynik.",
+                            "explanation": "Egzaminator CKE zwraca tu uwagę na zapis.",
+                            "ai_hint_enabled": true,
+                            "hint_cost": 20
+                        }
+                    ]
+                }
+            ],
+            "final_test": {
+                "title": "Sprawdzian Działu: Starcie z Bossem",
+                "description": "Test wylosuje 10 zadań z 15 lekcji. Brak dostępu do zwykłych wskazówek.",
+                "tasks_to_draw": 10,
+                "boss_message": "Pokaż, na co Cię stać. CKE patrzy."
+            }
+        }
+    ]
+}

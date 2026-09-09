@@ -1,0 +1,1140 @@
+export const zadania_matura = [
+  {
+    "id": "30",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ punkt $A = (-1, -4)$ jest wierzchołkiem równoległoboku $ABCD$. Punkt $S = (2, 2)$ jest środkiem symetrii tego równoległoboku. Długość przekątnej $AC$ równoległoboku $ABCD$ jest równa",
+    "options": [
+      "$\\sqrt{5}$",
+      "$2\\sqrt{5}$",
+      "$3\\sqrt{5}$",
+      "$6\\sqrt{5}$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź D (1 pkt)"
+  },
+  {
+    "id": "31",
+    "section": "Stereometria",
+    "content": "Każda krawędź graniastosłupa prawidłowego sześciokątnego ma długość równą $6$.\nPole powierzchni całkowitej tego graniastosłupa jest równe",
+    "options": [
+      "$216 + 18\\sqrt{3}$",
+      "$216 + 54\\sqrt{3}$",
+      "$216 + 216\\sqrt{3}$",
+      "$216 + 108\\sqrt{3}$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź D (1 pkt)"
+  },
+  {
+    "id": "65",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ odcinek o końcach $A = (-4, 7)$ oraz $B = (6, -1)$ jest średnicą okręgu $O$.\nOkrąg $O$ jest określony równaniem",
+    "options": [
+      "$(x - 1)^2 + (y - 3)^2 = 41$",
+      "$(x - 5)^2 + (y + 4)^2 = 41$",
+      "$(x - 1)^2 + (y + 3)^2 = 41$",
+      "$(x - 5)^2 + (y - 4)^2 = 41$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "66",
+    "section": "Stereometria",
+    "content": "Liczba wszystkich ścian ostrosłupa prawidłowego jest równa $12$.\nLiczba wszystkich wierzchołków tego ostrosłupa jest równa",
+    "options": [
+      "$10$",
+      "$11$",
+      "$12$",
+      "$13$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "67",
+    "section": "Stereometria",
+    "content": "Długości trzech wychodzących z jednego wierzchołka krawędzi prostopadłościanu są trzema kolejnymi liczbami naturalnymi parzystymi. Najdłuższa krawędź tego prostopadłościanu ma długość $10$.\nPole powierzchni całkowitej tego prostopadłościanu jest równe",
+    "options": [
+      "$376$",
+      "$466$",
+      "$480$",
+      "$720$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "87",
+    "section": "Dział 9 – Stereometria",
+    "content": "Prosta przechodząca przez punkty $A = (1, 2)$ i $B = (3, 6)$ ma równanie:",
+    "options": [
+      "$\\quad y = 2x$",
+      "$\\quad y = 2x + 1$",
+      "$\\quad y = 3x - 1$",
+      "$\\quad y = x + 1$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź A (1 pkt)"
+  },
+  {
+    "id": "88",
+    "section": "Dział 9 – Stereometria",
+    "content": "Objętość prostopadłościanu o wymiarach $3$, $4$, $5$ jest równa:",
+    "options": [
+      "$\\quad 60$",
+      "$\\quad 47$",
+      "$\\quad 30$",
+      "$\\quad 120$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź A (1 pkt)"
+  },
+  {
+    "id": "103",
+    "section": "Dział 9 – Stereometria",
+    "content": "Dane są punkty $A = (1, -2)$ i $B = (5, 4)$.\n\n**(a)** Wyznacz równanie prostej $AB$.\n\n**(b)** Wyznacz równanie okręgu, który ma środek w punkcie będącym środkiem odcinka $AB$ i przechodzi przez punkt $A$.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- **1 pkt** – za wyznaczenie współczynnika kierunkowego prostej $AB$: $m = \\dfrac{4 - (-2)}{5 - 1} = \\dfrac{6}{4} = \\dfrac{3}{2}$.\n- **2 pkt** – za podanie równania prostej: $y = \\dfrac{3}{2}x - \\dfrac{7}{2}$, tzn. $3x - 2y - 7 = 0$.\n- **3 pkt** – za wyznaczenie środka odcinka: $S = (3,\\; 1)$ i promienia $r = \\sqrt{(3-1)^2 + (1+2)^2} = \\sqrt{13}$.\n- **4 pkt** – za podanie równania okręgu: $(x - 3)^2 + (y - 1)^2 = 13$."
+  },
+  {
+    "id": "133",
+    "section": "Stereometria",
+    "content": "Dany jest okrąg $\\mathcal{O}$ o środku w punkcie $S$. Średnica $AB$ tego okręgu przecina cięciwę $CD$ w punkcie $P$ (zobacz rysunek). Ponadto: $|PB| = 4$, $|PC| = 8$ oraz $|PD| = 5$.\n\nOblicz promień okręgu $\\mathcal{O}$. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 2 pkt: za poprawną metodę i obliczenie promienia okręgu $\\mathcal{O}\\colon r=7$.\n- 1 pkt: za wykazanie, że trójkąty $APC$ oraz $BPD$ (lub $APD$ i $BPC$) są podobne i na tej podstawie zapisanie równości proporcji lub użycie twierdzenia o siecznych: $|PA| \\cdot |PB| = |PC| \\cdot |PD|$."
+  },
+  {
+    "id": "134",
+    "section": "Stereometria",
+    "content": "Dany jest sześcian $ABCDEFGH$ o krawędzi długości $5$. Wewnątrz sześcianu znajduje się punkt $P$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nSuma odległości punktu $P$ od wszystkich ścian sześcianu $ABCDEFGH$ jest równa",
+    "options": [
+      "$15$",
+      "$20$",
+      "$25$",
+      "$30$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "167",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dane są cztery okręgi: $o_1$, $o_2$, $o_3$, $o_4$, o równaniach:\n$o_1$: $(x - 1)^2 + (y - 2)^2 = 1$\n$o_2$: $(x + 1)^2 + (y + 2)^2 = 9$\n$o_3$: $(x - 3)^2 + (y - 4)^2 = 4$\n$o_4$: $(x + 3)^2 + (y + 4)^2 = 16$\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkręgiem, który nie ma żadnego punktu wspólnego z osiami układu współrzędnych $(x, y)$, jest",
+    "options": [
+      "$o_1$",
+      "$o_2$",
+      "$o_3$",
+      "$o_4$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "168",
+    "section": "Stereometria",
+    "content": "Podstawą ostrosłupa prawidłowego czworokątnego jest kwadrat o boku długości $4$. Ściana boczna tego ostrosłupa jest nachylona do płaszczyzny podstawy pod takim kątem $\\alpha$, że $\\tg \\alpha = 3$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWysokość tego ostrosłupa jest równa",
+    "options": [
+      "$3$",
+      "$6$",
+      "$6\\sqrt{2}$",
+      "$12$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "169",
+    "section": "Stereometria",
+    "content": "Długości trzech krawędzi wychodzących z jednego wierzchołka prostopadłościanu są trzema kolejnymi parzystymi liczbami naturalnymi. Najdłuższa krawędź tego prostopadłościanu ma długość $p$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nObjętość tego prostopadłościanu jest równa",
+    "options": [
+      "$p^3 - 3p^2 + 2p$",
+      "$p^3 + 3p^2 + 2p$",
+      "$p^3 - 6p^2 - 8p$",
+      "$p^3 - 6p^2 + 8p$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "198",
+    "section": "Stereometria",
+    "content": "Dany jest sześciokąt o boku $a$. Z tego sześciokąta wycięto sześciokąt, którego wierzchołki leżą w środkach boków pierwszego sześciokąta (zobacz rysunek).\nOblicz pole otrzymanej figury.\nWybierz właściwą odpowiedź.",
+    "options": [
+      "Pole figury wynosi: $\\frac{1}{16}\\sqrt{3}a^2$",
+      "Pole figury wynosi: $\\frac{3}{4}\\sqrt{3}a$",
+      "Pole figury wynosi: $\\frac{3}{8}\\sqrt{3}a^2$",
+      "Pole figury wynosi: $\\frac{3}{4}\\sqrt{3}a^2$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź C (1 pkt)"
+  },
+  {
+    "id": "199",
+    "section": "Stereometria",
+    "content": "Pewna bryła powstała z obrotu trójkąta prostokątnego o przyprostokątnych $4$ cm i $3$ cm wokół jednego z jego boków. Objętość tej bryły nie może wynosić:",
+    "options": [
+      "$16\\pi$",
+      "$\\frac{80}{3}\\pi$",
+      "$\\frac{48}{5}\\pi$",
+      "$12\\pi$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź B (1 pkt)"
+  },
+  {
+    "id": "229",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ punkty $A = (-3, 0)$ oraz $C = (5, 6)$ są końcami przekątnej kwadratu $ABCD$.\nKwadrat $A'B'C'D'$ jest obrazem kwadratu $ABCD$ w symetrii osiowej względem osi $Oy$.\nWyznacz równanie okręgu opisanego na kwadracie $A'B'C'D'$. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- 4 pkt: za zastosowanie poprawnej metody i poprawny wynik: $(x + 1)^2 + (y - 3)^2 = 25$.\n- 3 pkt: za obliczenie długości promienia oraz współrzędnych środka okręgu opisanego na kwadracie $A'B'C'D'$ ALBO wyznaczenie równania okręgu opisanego na kwadracie $ABCD$.\n- 2 pkt: za obliczenie współrzędnych punktów $A'$ oraz $C'$ oraz długości promienia okręgu opisanego na kwadracie $A'B'C'D'$ ALBO obliczenie współrzędnych środka okręgu opisanego na $A'B'C'D'$ ALBO obliczenie promienia i środka okręgu opisanego na kwadracie $ABCD$.\n- 1 pkt: za obliczenie współrzędnych punktów $A'$ oraz $C'$ ALBO długości promienia okręgu opisanego na kwadracie $ABCD$ ALBO współrzędnych środka okręgu opisanego na kwadracie $ABCD$."
+  },
+  {
+    "id": "230",
+    "section": "Stereometria",
+    "content": "Dany jest sześcian $ABCDEFGH$. Pole trójkąta $ACH$ jest równe $4\\sqrt{3}$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość krawędzi tego sześcianu jest równa",
+    "options": [
+      "$2$",
+      "$2\\sqrt{2}$",
+      "$4$",
+      "$4\\sqrt{2}$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "231",
+    "section": "Stereometria",
+    "content": "Dany jest ostrosłup prawidłowy czworokątny, w którym krawędź podstawy ma długość $12$.\nŚciana boczna tego ostrosłupa tworzy z płaszczyzną podstawy kąt o mierze $30^\\circ$.\nOblicz objętość tego ostrosłupa. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 2 pkt: za zastosowanie poprawnej metody i poprawny wynik: $V = 96\\sqrt{3}$.\n- 1 pkt: za obliczenie/zapisanie wysokości ostrosłupa: $H = 2\\sqrt{3}$."
+  },
+  {
+    "id": "265",
+    "section": "Stereometria",
+    "content": "Punkty $A$ oraz $B$ leżą na okręgu o środku $O$. Proste $k$ i $l$ są styczne do tego okręgu w punktach – odpowiednio – $A$ i $B$. Te proste przecinają się w punkcie $S$ i tworzą kąt o mierze $76^\\circ$.\nMiara kąta $OBA$ jest równa",
+    "options": [
+      "$52^\\circ$",
+      "$26^\\circ$",
+      "$14^\\circ$",
+      "$38^\\circ$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "266",
+    "section": "Stereometria",
+    "content": "Powierzchnię boczną graniastosłupa prawidłowego czworokątnego rozcięto wzdłuż krawędzi bocznej graniastosłupa i rozłożono na płaszczyźnie. Otrzymano w ten sposób prostokąt $ABCD$, w którym bok $BC$ odpowiada krawędzi rozcięcia (wysokości graniastosłupa). Przekątna $AC$ tego prostokąta ma długość $16$ i tworzy z bokiem $BC$ kąt o mierze $30^\\circ$.\nDługość krawędzi podstawy tego graniastosłupa jest równa",
+    "options": [
+      "$8$",
+      "$8\\sqrt{3}$",
+      "$2\\sqrt{3}$",
+      "$2$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "267",
+    "section": "Stereometria",
+    "content": "Dany jest ostrosłup prawidłowy trójkątny $ABCS$ o podstawie $ABC$. Punkty $D$, $E$ i $F$ są środkami – odpowiednio – krawędzi bocznych $AS$, $BS$ i $CS$.\nStosunek objętości ostrosłupa $DEFS$ do objętości ostrosłupa $ABCS$ jest równy",
+    "options": [
+      "$3:4$",
+      "$1:4$",
+      "$1:8$",
+      "$3:8$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "284",
+    "section": "Dział 10 – Stereometria",
+    "content": "Prosta $k$ przechodzi przez punkty $A = (0, 3)$ i $B = (2, 7)$. Równanie prostej $k$ to",
+    "options": [
+      "$y = 3x + 2$",
+      "$y = 2x + 3$",
+      "$y = \\dfrac{1}{2}x + 3$",
+      "$y = -2x + 3$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "297",
+    "section": "Dział 10 – Stereometria",
+    "content": "W układzie współrzędnych dane są punkty $A = (-2,\\, 1)$, $B = (4,\\, 1)$ i $C = (1,\\, 5)$.\n\na) Wyznacz współrzędne środka odcinka $AB$.\n\nb) Oblicz długość odcinka $AB$.\n\nc) Wyznacz równanie prostej $AB$.\n\nd) Sprawdź, czy trójkąt $ABC$ jest prostokątny.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- **1 pkt** – za wyznaczenie środka: $M = \\left(\\dfrac{-2+4}{2},\\, \\dfrac{1+1}{2}\\right) = (1,\\, 1)$.\n- **1 pkt** – za obliczenie długości: $|AB| = \\sqrt{(4-(-2))^2 + (1-1)^2} = \\sqrt{36} = 6$.\n- **1 pkt** – za równanie prostej $AB$: prosta $AB$ jest pozioma (obie rzędne równe $1$), więc $y = 1$.\n- **1 pkt** – za sprawdzenie prostokątności: $|BC| = \\sqrt{(1-4)^2+(5-1)^2} = 5$, $|AC| = \\sqrt{(1-(-2))^2+(5-1)^2} = 5$; sprawdzenie $|BC|^2 + |AC|^2 = 50 \\neq 36 = |AB|^2$; wniosek: trójkąt $ABC$ nie jest prostokątny (jest równoramienny)."
+  },
+  {
+    "id": "316",
+    "section": "Dział 9 — Stereometria",
+    "content": "Trójkąt $ABC$ jest wpisany w okrąg. Kąt środkowy oparty na łuku $AB$ ma miarę $80°$. Miara kąta wpisanego opartego na tym samym łuku $AB$ jest równa",
+    "options": [
+      "$20°$",
+      "$40°$",
+      "$80°$",
+      "$160°$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "330",
+    "section": "Dział 9 — Stereometria",
+    "content": "Trapez $ABCD$ ma podstawy $|AB| = 10$ cm i $|CD| = 4$ cm. Ramię $|AD| = 5$ cm i $\\angle DAB = 60°$.\n\na) Oblicz wysokość trapezu.\n\nb) Oblicz pole trapezu.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za narysowanie pomocniczej wysokości i wyznaczenie: $h = |AD| \\cdot \\sin 60° = 5 \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{5\\sqrt{3}}{2}$ cm.\n- 2 pkt: za potwierdzenie obliczenia wysokości (poprawna metoda i wynik).\n- 3 pkt: za zastosowanie wzoru na pole trapezu: $P = \\dfrac{(|AB| + |CD|) \\cdot h}{2}$.\n- 4 pkt: za obliczenie: $P = \\dfrac{(10 + 4) \\cdot \\tfrac{5\\sqrt{3}}{2}}{2} = \\dfrac{14 \\cdot \\tfrac{5\\sqrt{3}}{2}}{2} = \\dfrac{35\\sqrt{3}}{2}$ cm²."
+  },
+  {
+    "id": "362",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dany jest równoległobok $ABCD$, w którym $A = (-2, 6)$ oraz $B = (10, 2)$. Przekątne $AC$ oraz $BD$ tego równoległoboku przecinają się w punkcie $P = (6, 7)$.\nOblicz długość boku $BC$ tego równoległoboku. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za wyznaczenie współrzędnych punktu C: $C = (14, 8)$ lub za wyznaczenie poprawnego wektora dla boku.\n- 2 pkt: za poprawne obliczenie długości boku $BC$: $|BC| = 2\\sqrt{13} = \\sqrt{52}$."
+  },
+  {
+    "id": "365",
+    "section": "Stereometria",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nKąt nachylenia najdłuższej przekątnej graniastosłupa prawidłowego sześciokątnego do płaszczyzny podstawy jest zaznaczony na rysunku",
+    "options": [
+      "B.",
+      "D. (kąt pomiędzy najdłuższą przekątną graniastosłupa a dłuższą przekątną podstawy)"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "- 25.1: Odpowiedź: C (1 pkt)\n- 25.2: Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "399",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dane są punkty $A = (2, 8)$ oraz $B = (10, 2)$. Symetralna odcinka $AB$ przecina oś $Ox$ układu współrzędnych w punkcie $P$.\nOblicz współrzędne punktu $P$ oraz długość odcinka $AP$. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za wyznaczenie współrzędnych środka odcinka $AB$: $M = (6, 5)$.\n- 2 pkt: za wyznaczenie równania symetralnej odcinka $AB$: $y = \\frac{4}{3}x - 3$.\n- 3 pkt: za obliczenie współrzędnych punktu $P$: $P = \\left(\\frac{9}{4}, 0\\right)$.\n- 4 pkt: za poprawną metodę obliczenia współrzędnych punktu $P$ oraz długości odcinka $AP$ i podanie poprawnego wyniku: $|AP| = \\frac{5\\sqrt{41}}{4}$."
+  },
+  {
+    "id": "400",
+    "section": "Stereometria",
+    "content": "Ostrosłup prawidłowy ma $2024$ ściany boczne.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich krawędzi tego ostrosłupa jest równa",
+    "options": [
+      "$2025$",
+      "$2026$",
+      "$4048$",
+      "$4052$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "401",
+    "section": "Stereometria",
+    "content": "Przekątna ściany sześcianu ma długość $2\\sqrt{2}$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nObjętość tego sześcianu jest równa",
+    "options": [
+      "$8$",
+      "$24$",
+      "$\\frac{16\\sqrt{6}}{9}$",
+      "$16\\sqrt{2}$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "435",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ punkt $P = (0, 0)$ leży na okręgu $O$ o środku w punkcie $S = (2, 4)$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg $O$ jest określony równaniem",
+    "options": [
+      "$(x - 2)^2 + (y - 4)^2 = 2\\sqrt{5}$",
+      "$(x - 2)^2 + (y - 4)^2 = 20$",
+      "$(x + 2)^2 + (y + 4)^2 = 2\\sqrt{5}$",
+      "$(x + 2)^2 + (y + 4)^2 = 20$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "436",
+    "section": "Stereometria",
+    "content": "Tworząca stożka ma długość $8$. Kąt rozwarcia tego stożka ma miarę $120^\\circ$. \nOblicz objętość tego stożka. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za zapisanie promienia podstawy stożka $r=4\\sqrt{3}$ ALBO wysokości $H=4$ ALBO kwadratu promienia podstawy $r^2=48$ ALBO zapisanie odpowiedniego układu równań pozwalającego obliczyć $r$ oraz $H$.\n- 2 pkt: za wyznaczenie obu wartości $r$ i $H$ ALBO jednej z nich i zapisanie prawidłowego wzoru na objętość.\n- 3 pkt: za poprawną metodę i wynik: $V = 64\\pi$."
+  },
+  {
+    "id": "469",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dany jest okrąg $O$ o równaniu\n$$O\\colon (x + 1)^2 + (y - 2)^2 = 9$$\nOkrąg $K$ jest obrazem okręgu $O$ w symetrii osiowej względem osi $Oy$ układu współrzędnych.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg $K$ jest określony równaniem",
+    "options": [
+      "$(x + 1)^2 + (y + 2)^2 = 9$",
+      "$(x + 1)^2 + (y - 2)^2 = 9$",
+      "$(x - 1)^2 + (y + 2)^2 = 9$",
+      "$(x - 1)^2 + (y - 2)^2 = 9$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "470",
+    "section": "Stereometria",
+    "content": "Pole powierzchni całkowitej prostopadłościanu jest równe $94,5$. \nDługości trzech krawędzi wychodzących z tego samego wierzchołka prostopadłościanu tworzą ciąg geometryczny o ilorazie równym $4$.\nOblicz objętość tego prostopadłościanu. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za zapisanie długości krawędzi przy użyciu jednej zmiennej, np. $a, 4a, 16a$.\n- 2 pkt: za ułożenie równania pola całkowitego: $2(a \\cdot 4a + a \\cdot 16a + 4a \\cdot 16a) = 94,5$.\n- 3 pkt: za obliczenie długości jednej z krawędzi (np. $a = \\frac{3}{4}$).\n- 4 pkt: za obliczenie poprawnej objętości $V = 27$."
+  },
+  {
+    "id": "471",
+    "section": "Stereometria",
+    "content": "Pole powierzchni całkowitej ostrosłupa prawidłowego czworokątnego jest równe $20$. Pole powierzchni bocznej tego ostrosłupa jest cztery razy większe od pola jego podstawy.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość krawędzi podstawy tego ostrosłupa jest równa",
+    "options": [
+      "$2$",
+      "$\\sqrt{5}$",
+      "$\\sqrt{10}$",
+      "$4$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "505",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dana jest prosta $k$ o równaniu $y = -\\frac{1}{3}x + 2$. Prosta $l$ jest równoległa do prostej $k$ i przechodzi przez punkt $(2, -2)$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nProsta $l$ przecina oś $Oy$ w punkcie",
+    "options": [
+      "$(0, -3)$",
+      "$\\left(0, -\\frac{1}{2}\\right)$",
+      "$(0, -1)$",
+      "$\\left(0, -\\frac{4}{3}\\right)$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "506",
+    "section": "Stereometria",
+    "content": "Dany jest ostrosłup prawidłowy czworokątny, w którym przekątna podstawy ma długość $8\\sqrt{3}$. Krawędź boczna tego ostrosłupa jest nachylona do płaszczyzny podstawy pod kątem $30^\\circ$.\n\nOblicz objętość tego ostrosłupa. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za zastosowanie definicji funkcji trygonometrycznej lub związków miarowych w trójkącie o kątach $30^\\circ, 60^\\circ, 90^\\circ$ i zapisanie równania z jedną niewiadomą (wysokością ostrosłupa), np. $\\frac{H}{4\\sqrt{3}} = \\text{tg } 30^\\circ$, LUB obliczenie długości krawędzi podstawy ostrosłupa $a = 4\\sqrt{6}$.\n- 2 pkt: za zastosowanie poprawnej metody i poprawny wynik: $V = 128$."
+  },
+  {
+    "id": "540",
+    "section": "Stereometria",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ odcinek o końcach $A = (1, 1)$ oraz $B = (3, -1)$ jest średnicą okręgu $O$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg $O$ jest określony równaniem",
+    "options": [
+      "$(x - 1)^2 + (y - 1)^2 = 8$",
+      "$x^2 + (y - 2)^2 = 2$",
+      "$(x - 2)^2 + y^2 = 2$",
+      "$(x - 2)^2 + y^2 = 8$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "541",
+    "section": "Stereometria",
+    "content": "Każda z krawędzi ostrosłupa prawidłowego czworokątnego ma długość $12$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWysokość tego ostrosłupa jest równa",
+    "options": [
+      "$2\\sqrt{3}$",
+      "$3\\sqrt{2}$",
+      "$2\\sqrt{6}$",
+      "$6\\sqrt{2}$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "542",
+    "section": "Stereometria",
+    "content": "Tworząca stożka o promieniu podstawy $3$ ma długość $6$.\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.\n1. Pole powierzchni bocznej tego stożka jest dwukrotnie większe od pola jego podstawy.\n2. Kąt rozwarcia tego stożka ma miarę $60^{\\circ}$.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "Odpowiedź: P, P (1 pkt)"
+  },
+  {
+    "id": "32",
+    "section": "Kombinatoryka",
+    "content": "Oblicz cosinus kąta nachylenia dłuższej przekątnej tego graniastosłupa do płaszczyzny podstawy graniastosłupa. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za poprawne rozwiązanie zadania: $\\frac{2}{\\sqrt{5}}$ lub $\\frac{2\\sqrt{5}}{5}$."
+  },
+  {
+    "id": "33",
+    "section": "Rachunek prawdopodobieństwa",
+    "content": "Wszystkich liczb naturalnych czterocyfrowych, w których zapisie dziesiętnym cyfry się nie powtarzają, jest",
+    "options": [
+      "$9 \\cdot 10 \\cdot 10 \\cdot 10$",
+      "$9 \\cdot 9 \\cdot 9 \\cdot 9$",
+      "$10 \\cdot 9 \\cdot 8 \\cdot 7$",
+      "$9 \\cdot 9 \\cdot 8 \\cdot 7$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź D (1 pkt)"
+  },
+  {
+    "id": "68",
+    "section": "Kombinatoryka",
+    "content": "Dany jest prostopadłościan $ABCDEFGH$, w którym podstawy $ABCD$ i $EFGH$ są kwadratami o boku długości $6$. Przekątna $BH$ tego prostopadłościanu tworzy z przekątną $AH$ ściany bocznej $ADHE$ kąt o mierze $30^\\circ$ (zobacz rysunek).\nPrzekątna $BH$ tego prostopadłościanu ma długość równą",
+    "options": [
+      "$4\\sqrt{3}$",
+      "$6\\sqrt{3}$",
+      "$12$",
+      "$12\\sqrt{2}$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "69",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Wszystkich liczb naturalnych dwucyfrowych, w których zapisie dziesiętnym cyfra dziesiątek jest o $3$ większa od cyfry jedności, jest",
+    "options": [
+      "$3$",
+      "$6$",
+      "$7$",
+      "$13$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "70",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "W tabeli zestawiono liczbę punktów uzyskanych przez $32$ uczniów pewnej klasy za rozwiązanie jednego z zadań testu z matematyki.\n\n| Liczba punktów | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ |\n| --- | --- | --- | --- | --- | --- | --- |\n| Liczba uczniów | $2$ | $2$ | $5$ | $6$ | $11$ | $6$ |\n\nŚrednia arytmetyczna liczby punktów uzyskanych za rozwiązanie tego zadania przez uczniów tej klasy jest równa",
+    "options": [
+      "$2,5$",
+      "$3,25$",
+      "$3,31$",
+      "$4$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "89",
+    "section": "Dział 10 – Kombinatoryka i rachunek prawdopodobieństwa",
+    "content": "Pole powierzchni całkowitej sześcianu o krawędzi $4$ jest równe:",
+    "options": [
+      "$\\quad 96$",
+      "$\\quad 64$",
+      "$\\quad 48$",
+      "$\\quad 24$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź A (1 pkt)"
+  },
+  {
+    "id": "90",
+    "section": "Dział 10 – Kombinatoryka i rachunek prawdopodobieństwa",
+    "content": "Z worka zawierającego $4$ kule białe i $6$ kul czarnych losujemy jedną kulę. Prawdopodobieństwo wylosowania kuli białej jest równe:",
+    "options": [
+      "$\\quad \\dfrac{2}{5}$",
+      "$\\quad \\dfrac{3}{5}$",
+      "$\\quad \\dfrac{1}{4}$",
+      "$\\quad \\dfrac{1}{6}$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź A (1 pkt)"
+  },
+  {
+    "id": "104",
+    "section": "Dział 10 – Kombinatoryka i rachunek prawdopodobieństwa",
+    "content": "Ostrosłup prawidłowy czworokątny ma podstawę o boku $a = 6$ i wysokość $H = 4$.\n\n**(a)** Oblicz objętość ostrosłupa.\n\n**(b)** Oblicz pole powierzchni bocznej ostrosłupa.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "- **1 pkt** – za poprawne zastosowanie wzoru na objętość: $V = \\dfrac{1}{3} \\cdot P_\\text{podstawy} \\cdot H = \\dfrac{1}{3} \\cdot 36 \\cdot 4 = 48$.\n- **2 pkt** – za wyznaczenie apotemy ściany bocznej: $l = \\sqrt{H^2 + \\left(\\dfrac{a}{2}\\right)^2} = \\sqrt{16 + 9} = 5$.\n- **3 pkt** – za obliczenie pola powierzchni bocznej: $P_\\text{boczna} = \\dfrac{1}{2} \\cdot 4a \\cdot l = \\dfrac{1}{2} \\cdot 24 \\cdot 5 = 60$."
+  },
+  {
+    "id": "135",
+    "section": "Kombinatoryka",
+    "content": "Objętość ostrosłupa prawidłowego czworokątnego jest równa $384$. Wysokość ściany bocznej tego ostrosłupa tworzy z płaszczyzną podstawy kąt o mierze $\\alpha$ taki, że $\\operatorname{tg} \\alpha = \\frac{4}{3}$ (zobacz rysunek).\n\nOblicz wysokość ściany bocznej tego ostrosłupa. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "- 3 pkt: za poprawną metodę i obliczenie wysokości ściany bocznej $h_b = 10$.\n- 2 pkt: za obliczenie współczynnika proporcjonalności ($x=2$) lub krawędzi podstawy ($a=12$) lub wysokości ostrosłupa ($H=8$).\n- 1 pkt: za oznaczenie połowy krawędzi jako $3x$, wysokości jako $4x$ i ściany bocznej jako $5x$ oraz ułożenie poprawnego równania z objętości."
+  },
+  {
+    "id": "136",
+    "section": "Rachunek prawdopodobieństwa",
+    "content": "E-dowód ma zapisany na pierwszej stronie specjalny sześciocyfrowy numer CAN, który zabezpiecza go przed odczytaniem danych przez osoby nieuprawnione.\n\nOblicz, ile jest wszystkich sześciocyfrowych numerów CAN o różnych cyfrach, spełniających warunek: trzy pierwsze cyfry są kolejnymi wyrazami ciągu arytmetycznego o różnicy $(-3)$. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 2 pkt: za poprawną metodę i obliczenie wyniku: $840$.\n- 1 pkt: za wypisanie $4$ dopuszczalnych ciągów dla pierwszych trzech cyfr: $(9,6,3), (8,5,2), (7,4,1), (6,3,0)$ lub obliczenie liczby możliwości wyboru dla pozostałych cyfr: $7 \\cdot 6 \\cdot 5$."
+  },
+  {
+    "id": "170",
+    "section": "Kombinatoryka",
+    "content": "Objętość stożka o wysokości $2$ jest równa $8\\pi$.\nOblicz miarę kąta rozwarcia tego stożka. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za obliczenie kwadratu promienia podstawy stożka: $r^2 = 12$.\n- 2 pkt: za zastosowanie poprawnej metody i poprawny wynik: $120^\\circ$."
+  },
+  {
+    "id": "171",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych pięciocyfrowych nieparzystych, w których zapisie dziesiętnym występują wyłącznie cyfry $0$, $1$, $2$, $3$ (np. $12303$, $11111$), jest",
+    "options": [
+      "$32$",
+      "$384$",
+      "$512$",
+      "$576$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "172",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Dane są dwa zbiory: $C = \\{1, 2, 3, 4, 5, 6\\}$ oraz $D = \\{7, 8, 9, 10\\}$.\nLosujemy jedną liczbę ze zbioru $C$, a następnie losujemy jedną liczbę ze zbioru $D$.\nOblicz prawdopodobieństwo zdarzenia $A$ polegającego na tym, że wylosujemy liczby, których iloczyn będzie podzielny przez $4$. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za wypisanie wszystkich zdarzeń elementarnych LUB obliczenie liczby wszystkich zdarzeń: $|\\Omega| = 24$, LUB podanie liczby zdarzeń sprzyjających: $|A| = 11$.\n- 2 pkt: za zastosowanie poprawnej metody i poprawny wynik: $P(A) = \\frac{11}{24}$."
+  },
+  {
+    "id": "196",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "W kartezjańskim układzie współrzędnych $(x,y)$ dany jest okrąg $O$ o równaniu $(x-4)^2 + (y+8)^2 = 10$.\nOkrąg $O_1$ jest obrazem okręgu $O$ w symetrii osiowej względem osi $Oy$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nOkrąg $O_1$ jest określony równaniem:",
+    "options": [
+      "$(x-4)^2 + (y-8)^2 = 10$",
+      "$(x+4)^2 + (y-8)^2 = 10$",
+      "$(x-4)^2 + (y+8)^2 = 10$",
+      "$(x+4)^2 + (y+8)^2 = 10$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź D (1 pkt)"
+  },
+  {
+    "id": "200",
+    "section": "Kombinatoryka",
+    "content": "Dany jest ostrosłup prawidłowy sześciokątny. Wysokość ściany bocznej tego ostrosłupa jest nachylona do płaszczyzny podstawy pod kątem $60^\\circ$ i ma długość równą $2\\sqrt{3}$ (zobacz rysunek). Oblicz objętość i pole powierzchni całkowitej tego ostrosłupa.\n\nDokończ poniższe zdanie. Wybierz jedną z odpowiedzi: A, B, C oraz jedną z odpowiedzi D, E, F.",
+    "options": [
+      "$P = 18\\sqrt{3}$",
+      "$P = 12\\sqrt{3}$",
+      "$P = 6\\sqrt{3}$",
+      "$V = 18\\sqrt{3}$"
+    ],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": true,
+    "explanation": "- 1 pkt: za poprawne obliczenie pola powierzchni całkowitej (A).\n- 1 pkt: za poprawne obliczenie objętości (F)."
+  },
+  {
+    "id": "201",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych sześciocyfrowych, w których zapisie dziesiętnym występują tylko cyfry parzyste mniejsze od $5$, jest:",
+    "options": [
+      "$3 \\cdot 4^5$",
+      "$4 \\cdot 5^5$",
+      "$2 \\cdot 3^5$",
+      "$3^6$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź C (1 pkt)"
+  },
+  {
+    "id": "202",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Doświadczenie losowe polega na dwukrotnym rzucie symetryczną sześcienną kostką do gry, która na każdej ściance ma inną liczbę oczek – od jednego oczka do sześciu oczek.\nDokończ zdanie. Wybierz prawidłową odpowiedź spośród podanych.\nPrawdopodobieństwo zdarzenia A polegającego na tym, że w pierwszym rzucie wypadnie nieparzysta liczba oczek a w drugim rzucie parzysta większa od pierwszej (nieparzystej) liczby oczek wynosi:",
+    "options": [
+      "$\\frac{1}{2}$",
+      "$\\frac{1}{6}$",
+      "$\\frac{2}{6}$",
+      "$\\frac{1}{36}$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź B (1 pkt)"
+  },
+  {
+    "id": "232",
+    "section": "Kombinatoryka",
+    "content": "Pole powierzchni całkowitej walca $C_1$ jest równe $12\\pi$, a objętość tego walca jest równa $4\\pi$.\nWalec $C_2$ jest podobny do walca $C_1$ w skali $k = 2$.\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.\n1. Pole powierzchni całkowitej walca $C_2$ jest równe $48\\pi$.\n2. Objętość walca $C_2$ jest równa $32\\pi$.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "Odpowiedź: PP (1 pkt)"
+  },
+  {
+    "id": "233",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Rysunek drwala składa się z sześciu obszarów ponumerowanych liczbami od $1$ do $6$. Każdy z tych obszarów należy pokolorować jednym z siedmiu kolorów w taki sposób, aby każde dwa obszary graniczące ze sobą miały różny kolor. (Z rysunku wynika, że każda kolejna część od 1 do 6 graniczy z poprzednią - drwal ma kapelusz, głowę, tułów, nogi i siekierę).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich takich sposobów pokolorowania drwala jest",
+    "options": [
+      "$7 \\cdot 6^5$",
+      "$7^3 \\cdot 6^3$",
+      "$7 \\cdot 6$",
+      "$7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "234",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Ze zbioru wszystkich liczb naturalnych dwucyfrowych losujemy jedną liczbę.\nZdarzenie $A$ polega na tym, że wylosujemy liczbę, która jest wielokrotnością liczby $34$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPrawdopodobieństwo zdarzenia $A$ jest równe",
+    "options": [
+      "$\\frac{1}{89}$",
+      "$\\frac{2}{89}$",
+      "$\\frac{1}{90}$",
+      "$\\frac{2}{90}$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "235",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Wykładowca akademicki, aby ustalić oceny semestralne, oblicza średnie ważone ocen otrzymanych przez studentów. Ocenom przypisano następujące wagi:\n- ocena z kartkówki – waga $2$\n- ocena z projektu – waga $3$\n- ocena za aktywność – waga $4$.\nKarolina w trakcie semestru otrzymała następujące oceny: z kartkówek $4, 4, 3$, z projektów $2, 5$, za aktywność $5, 4$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia ważona ocen uzyskanych przez Karolinę jest równa",
+    "options": [
+      "$3{,}85$",
+      "$3{,}9$",
+      "$3{,}95$",
+      "$4$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "240",
+    "section": "Kombinatoryka",
+    "content": "Wartość wyrażenia $\\log_7 98 - \\log_7 2$ jest równa",
+    "options": [
+      "$7$",
+      "$2$",
+      "$1$",
+      "$-1$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "268",
+    "section": "Rachunek prawdopodobieństwa",
+    "content": "Dany jest graniastosłup prawidłowy trójkątny $ABCDEF$. \nNa którym z rysunków prawidłowo narysowano, oznaczono i podpisano kąt $\\alpha$ pomiędzy ścianą boczną $ACFD$ i przekątną $AE$ ściany bocznej $ABED$ tego graniastosłupa?",
+    "options": [
+      "$\\alpha = \\angle EAG$ (gdzie $G$ leży na krawędzi $FD$)",
+      "$\\alpha = \\angle EAD$",
+      "$\\alpha = \\angle EAF$",
+      "$\\alpha = \\angle EAC$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "281",
+    "section": "Dział 9 – Statystyka i rachunek prawdopodobieństwa",
+    "content": "Bok kwadratu ma długość $4\\sqrt{2}$. Długość przekątnej tego kwadratu jest równa",
+    "options": [
+      "$4$",
+      "$8$",
+      "$4\\sqrt{3}$",
+      "$8\\sqrt{2}$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "286",
+    "section": "Dział 9 – Statystyka i rachunek prawdopodobieństwa",
+    "content": "Funkcja kwadratowa $f$ określona jest wzorem $f(x) = x^2 - 6x + 5$. Zbiór rozwiązań nierówności $f(x) \\leq 0$ to",
+    "options": [
+      "$\\langle 1, 5 \\rangle$",
+      "$(-\\infty, 1\\rangle \\cup \\langle 5, +\\infty)$",
+      "$\\langle -5, -1 \\rangle$",
+      "$(-\\infty, 1) \\cup (5, +\\infty)$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "299",
+    "section": "Dział 9 – Statystyka i rachunek prawdopodobieństwa",
+    "content": "Dany jest ciąg arytmetyczny $(a_n)$, w którym $a_1 = 5$ i $a_6 = 20$.\n\na) Wyznacz różnicę ciągu.\n\nb) Wyznacz wzór ogólny $n$-tego wyrazu ciągu.\n\nc) Oblicz sumę pierwszych 10 wyrazów ciągu.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "- **1 pkt** – za wyznaczenie różnicy: $a_6 = a_1 + 5r$, więc $20 = 5 + 5r$, skąd $r = 3$.\n- **1 pkt** – za podanie wzoru ogólnego: $a_n = 5 + (n-1) \\cdot 3 = 3n + 2$.\n- **1 pkt** – za obliczenie sumy: $S_{10} = \\dfrac{10(a_1 + a_{10})}{2} = \\dfrac{10 \\cdot (5 + 32)}{2} = 185$."
+  },
+  {
+    "id": "317",
+    "section": "Dział 10 — Rachunek prawdopodobieństwa i statystyka",
+    "content": "Walec ma promień podstawy $r = 3$ cm i wysokość $h = 4$ cm. Objętość tego walca jest równa",
+    "options": [
+      "$12\\pi$ cm³",
+      "$24\\pi$ cm³",
+      "$36\\pi$ cm³",
+      "$48\\pi$ cm³"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "318",
+    "section": "Dział 10 — Rachunek prawdopodobieństwa i statystyka",
+    "content": "W doświadczeniu losujemy jedną kartę z talii 52 kart. Prawdopodobieństwo zdarzenia polegającego na wylosowaniu asa jest równe",
+    "options": [
+      "$\\dfrac{1}{52}$",
+      "$\\dfrac{1}{13}$",
+      "$\\dfrac{4}{52}$",
+      "$\\dfrac{1}{4}$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "332",
+    "section": "Dział 10 — Rachunek prawdopodobieństwa i statystyka",
+    "content": "Dany jest trójkąt o wierzchołkach $A = (0, 0)$, $B = (6, 0)$ i $C = (2, 4)$.\n\na) Oblicz długości boków $AB$, $AC$ i $BC$.\n\nb) Wyznacz równanie prostej $AC$.\n\nc) Sprawdź, czy trójkąt $ABC$ jest prostokątny.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za obliczenie $|AB| = 6$, $|AC| = \\sqrt{4 + 16} = \\sqrt{20} = 2\\sqrt{5}$, $|BC| = \\sqrt{16 + 16} = \\sqrt{32} = 4\\sqrt{2}$.\n- 2 pkt: za wyznaczenie równania prostej $AC$: współczynnik kierunkowy $m = \\dfrac{4-0}{2-0} = 2$, stąd $y = 2x$.\n- 3 pkt: za sprawdzenie warunku prostokątności (np. twierdzenie Pitagorasa):\n  $|AB|^2 = 36$, $|AC|^2 = 20$, $|BC|^2 = 32$; $20 + 32 = 52 \\neq 36$; $36 + 20 = 56 \\neq 32$; $36 + 32 = 68 \\neq 20$.\n- 4 pkt: za wniosek: trójkąt $ABC$ nie jest prostokątny (żadna z powyższych sum nie jest spełniona)."
+  },
+  {
+    "id": "366",
+    "section": "Kombinatoryka",
+    "content": "Ostrosłup $F_1$ jest podobny do ostrosłupa $F_2$.\nObjętość ostrosłupa $F_1$ jest równa $64$.\nObjętość ostrosłupa $F_2$ jest równa $512$.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak, aby zdanie było prawdziwe.\n\nStosunek pola powierzchni całkowitej ostrosłupa $F_2$ do pola powierzchni całkowitej ostrosłupa $F_1$ jest równy .......... .",
+    "options": [],
+    "correctAnswer": "",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "Odpowiedź: 4 (1 pkt)"
+  },
+  {
+    "id": "367",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Rozważamy wszystkie kody czterocyfrowe utworzone tylko z cyfr $1, 3, 6, 8$, przy czym w każdym kodzie każda z tych cyfr występuje dokładnie jeden raz.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba wszystkich takich kodów jest równa",
+    "options": [
+      "$4$",
+      "$10$",
+      "$24$",
+      "$16$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "368",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Średnia arytmetyczna trzech liczb: $a, b, c$, jest równa $9$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nŚrednia arytmetyczna sześciu liczb: $a, a, b, b, c, c$, jest równa",
+    "options": [
+      "$9$",
+      "$6$",
+      "$4{,}5$",
+      "$18$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "369",
+    "section": "Rachunek prawdopodobieństwa i statystyka",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej. Na osi poziomej podano oceny (od 1 do 6), które uzyskali uczniowie tej klasy, a na osi pionowej podano liczbę uczniów, którzy otrzymali daną ocenę (ocena 1: 2, ocena 2: 7, ocena 3: 4, ocena 4: 3, ocena 5: 6, ocena 6: 4).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMediana ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest równa",
+    "options": [
+      "$4{,}5$",
+      "$4$",
+      "$3{,}5$",
+      "$3$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "403",
+    "section": "Kombinatoryka",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej. Na osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano liczbę uczniów, którzy otrzymali daną ocenę.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest równa",
+    "options": [
+      "$3$",
+      "$3{,}12$",
+      "$3{,}5$",
+      "$4{,}1(6)$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "404",
+    "section": "Rachunek prawdopodobieństwa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych czterocyfrowych parzystych, w których zapisie dziesiętnym występują tylko cyfry $2, 4, 7$ (np.: $7272, 2222, 7244$), jest",
+    "options": [
+      "$16$",
+      "$27$",
+      "$54$",
+      "$81$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "405",
+    "section": "Rachunek prawdopodobieństwa",
+    "content": "W pudełku znajdują się wyłącznie kule białe i czarne. Kul czarnych jest $18$. Z tego pudełka w sposób losowy wyciągamy jedną kulę. Prawdopodobieństwo zdarzenia polegającego na tym, że wyciągniemy kulę czarną, jest równe $\\frac{3}{5}$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba kul białych w pudełku, przed wyciągnięciem jednej kuli, była równa",
+    "options": [
+      "$9$",
+      "$12$",
+      "$15$",
+      "$30$"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: B (1 pkt)"
+  },
+  {
+    "id": "437",
+    "section": "Kombinatoryka i prawdopodobieństwo",
+    "content": "Objętość sześcianu jest równa $729$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość przekątnej tego sześcianu jest równa",
+    "options": [
+      "$9\\sqrt{3}$",
+      "$9\\sqrt{2}$",
+      "$3\\sqrt{3}$",
+      "$3\\sqrt{2}$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "438",
+    "section": "Kombinatoryka i prawdopodobieństwo",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych trzycyfrowych nieparzystych, w których zapisie dziesiętnym występuje dokładnie jeden raz cyfra $0$, jest",
+    "options": [
+      "$45$",
+      "$50$",
+      "$54$",
+      "$81$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "472",
+    "section": "Rachunek prawdopodobieństwa",
+    "content": "Tworząca stożka ma długość $6$. Kąt rozwarcia tego stożka ma miarę $60^\\circ$. \nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWysokość tego stożka jest równa",
+    "options": [
+      "$3$",
+      "$2\\sqrt{3}$",
+      "$3\\sqrt{3}$",
+      "$3\\sqrt{5}$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  },
+  {
+    "id": "473",
+    "section": "Kombinatoryka",
+    "content": "Dane są dwa zbiory: $X = \\{-3, -2, -1, 0, 1, 2\\}$ oraz $Y = \\{-2, -1, 0, 1\\}$.\nLosujemy jedną liczbę ze zbioru $X$, a następnie losujemy jedną liczbę ze zbioru $Y$ i tworzymy uporządkowaną parę liczb $(x, y)$, gdzie $x$ jest liczbą wylosowaną ze zbioru $X$ oraz $y$ jest liczbą wylosowaną ze zbioru $Y$.\nOblicz prawdopodobieństwo zdarzenia $A$ polegającego na tym, że wylosujemy parę liczb $(x, y)$, która będzie spełniać warunek $x \\cdot y \\ge 0$. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za wyznaczenie mocy zbioru $\\Omega$ ($\\Omega = 24$) LUB wypisanie poprawnych wszystkich zdarzeń elementarnych sprzyjających, LUB za poprawne podanie liczby zdarzeń sprzyjających $|A|=17$.\n- 2 pkt: za obliczenie poprawnego prawdopodobieństwa $P(A) = \\frac{17}{24}$."
+  },
+  {
+    "id": "507",
+    "section": "Kombinatoryka",
+    "content": "Stożek i walec mają równe wysokości. Promień podstawy stożka jest dwa razy większy od promienia podstawy walca.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nStosunek objętości stożka do objętości walca jest równy",
+    "options": [
+      "$\\frac{1}{12}$",
+      "$\\frac{1}{6}$",
+      "$\\frac{2}{3}$",
+      "$\\frac{4}{3}$"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: D (1 pkt)"
+  },
+  {
+    "id": "508",
+    "section": "Rachunek prawdopodobieństwa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWszystkich liczb naturalnych trzycyfrowych nieparzystych, w których zapisie dziesiętnym występują tylko cyfry $0, 1, 2, 3, 4, 5, 6$ (np.: $321, 555$), jest",
+    "options": [
+      "$6 \\cdot 7 \\cdot 3$",
+      "$6 \\cdot 7 \\cdot 7$",
+      "$7 \\cdot 7 \\cdot 3$",
+      "$7 \\cdot 7 \\cdot 7$"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: A (1 pkt)"
+  },
+  {
+    "id": "543",
+    "section": "Kombinatoryka",
+    "content": "Odcinek $AD$ jest wysokością walca, a odcinek $AB$ jest średnicą podstawy walca.\nOdcinek $BD$ ma długość $4\\sqrt{3}$. Miara kąta $ABD$ jest równa $30^{\\circ}$.\nOblicz objętość i pole powierzchni całkowitej tego walca. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "- 1 pkt: za zapisanie promienia podstawy walca $r = 3$ (lub średnicy $2r = 6$) LUB zapisanie wysokości walca $H = 2\\sqrt{3}$, LUB ułożenie układu równań pozwalającego obliczyć $r$ oraz $H$.\n- 2 pkt: za zapisanie promienia podstawy walca i jego wysokości.\n- 3 pkt: za obliczenie objętości walca: $V = 18\\pi\\sqrt{3}$ ALBO obliczenie pola powierzchni całkowitej walca: $P_c = 18\\pi + 12\\pi\\sqrt{3}$.\n- 4 pkt: za poprawne wyniki: $V = 18\\pi\\sqrt{3}$ oraz $P_c = 18\\pi + 12\\pi\\sqrt{3}$."
+  },
+  {
+    "id": "546",
+    "section": "Prawdopodobieństwo",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej.\nNa osi poziomej podano oceny, które uzyskali uczniowie tej klasy (oceny od 1 do 6), a na osi pionowej podano liczbę uczniów, którzy otrzymali daną ocenę. (Dla ocen 1-6 liczby uczniów to odpowiednio: 2, 1, 6, 5, 7, 5).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMediana ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest równa",
+    "options": [
+      "$3$",
+      "$3,5$",
+      "$4$",
+      "$5$"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "Odpowiedź: C (1 pkt)"
+  }
+];
