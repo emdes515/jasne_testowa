@@ -114,7 +114,7 @@ export function PerksVaultSection({
       <div>
         <div className="flex items-center justify-between mb-3 px-0.5">
           <h3 className="text-sm font-display font-black text-white flex items-center gap-2">
-            <Sparkles size={16} className="text-[#00E5FF]" /> Sloty Ekwipunku & Wzmocnienia
+            <Sparkles size={16} className="text-[#FFB800]" /> Sloty Ekwipunku & Wzmocnienia
           </h3>
           <span className="text-[10px] uppercase tracking-wider font-bold text-[#8B8D98]">3 Gniazda RPG</span>
         </div>

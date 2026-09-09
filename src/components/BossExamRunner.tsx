@@ -325,7 +325,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                 <button
                   id="boss-exam-claim-success-button"
                   onClick={handleFinalClaim}
-                  className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:brightness-110 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 active:scale-98 transition-all cursor-pointer"
+                  className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-[#FFB800] hover:brightness-110 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 active:scale-98 transition-all cursor-pointer"
                 >
                   <Award size={18} />
                   <span>ODBIERZ ZŁOTĄ ODZNAKĘ I ODBLOKUJ DZIAŁ 2</span>
@@ -335,7 +335,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                   <button
                     id="boss-exam-retry-button"
                     onClick={handleRestartExam}
-                    className="flex-1 py-3.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-98 cursor-pointer shadow-md shadow-cyan-500/25"
+                    className="flex-1 py-3.5 px-4 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-98 cursor-pointer shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                   >
                     <RefreshCw size={15} />
                     <span>POWTÓRZ SPRAWDZIAN (NOWY ZESTAW)</span>
@@ -410,9 +410,9 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
         <div className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border font-mono font-bold text-sm ${
           isTimeCritical 
             ? 'bg-rose-500/20 border-rose-500/50 text-rose-300 animate-pulse' 
-            : 'bg-slate-900 border-white/10 text-cyan-300'
+            : 'bg-slate-900 border-white/10 text-[#FFB800]'
         }`}>
-          <Clock size={16} className={isTimeCritical ? 'text-rose-400' : 'text-cyan-400'} />
+          <Clock size={16} className={isTimeCritical ? 'text-rose-400' : 'text-[#FFB800]'} />
           <span>{formatTime(timeLeftSeconds)}</span>
         </div>
       </header>
@@ -429,7 +429,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
               onClick={() => setCurrentIndex(idx)}
               className={`h-7 px-2.5 sm:px-3 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                 isCurrent 
-                  ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/30 scale-105' 
+                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-md shadow-[rgba(255,184,0,0.35)] scale-105' 
                   : isAnswered 
                     ? 'bg-emerald-950/60 border border-emerald-500/40 text-emerald-300' 
                     : 'bg-slate-900 border border-white/5 text-slate-400 hover:bg-slate-800'
@@ -461,8 +461,8 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
           {isTwoPart && (
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-2 text-left">
-                <div className="text-xs font-bold text-cyan-400 flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-cyan-400/20 text-cyan-400 text-xs flex items-center justify-center font-bold">1</span>
+                <div className="text-xs font-bold text-[#FFB800] flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">1</span>
                   <span>{(currentTask as any).part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -481,12 +481,12 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                         }}
                         className={`p-3 rounded-lg border text-left flex items-center gap-2.5 transition text-xs cursor-pointer ${
                           isSel 
-                            ? 'bg-cyan-950/40 border-cyan-400 text-white shadow-[0_0_12px_rgba(6,182,212,0.25)]' 
+                            ? 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_12px_rgba(255,184,0,0.25)]' 
                             : 'bg-slate-950/60 border-white/10 text-slate-300 hover:border-white/20'
                         }`}
                       >
                         <span className={`w-5 h-5 rounded font-bold text-xs flex items-center justify-center shrink-0 border ${
-                          isSel ? 'bg-cyan-500 text-slate-950 border-cyan-400' : 'bg-slate-800 border-white/10 text-slate-400'
+                          isSel ? 'bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]' : 'bg-slate-800 border-white/10 text-slate-400'
                         }`}>{opt.id}</span>
                         <div className="flex-1">
                           <MathRenderer content={opt.text || opt.content_latex || ''} />
@@ -498,8 +498,8 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
               </div>
 
               <div className="p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-2 text-left">
-                <div className="text-xs font-bold text-cyan-400 flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-cyan-400/20 text-cyan-400 text-xs flex items-center justify-center font-bold">2</span>
+                <div className="text-xs font-bold text-[#FFB800] flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">2</span>
                   <span>{(currentTask as any).part_2?.prompt || 'Wybierz uzasadnienie:'}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -518,12 +518,12 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                         }}
                         className={`p-3 rounded-lg border text-left flex items-center gap-2.5 transition text-xs cursor-pointer ${
                           isSel 
-                            ? 'bg-cyan-950/40 border-cyan-400 text-white shadow-[0_0_12px_rgba(6,182,212,0.25)]' 
+                            ? 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_12px_rgba(255,184,0,0.25)]' 
                             : 'bg-slate-950/60 border-white/10 text-slate-300 hover:border-white/20'
                         }`}
                       >
                         <span className={`w-5 h-5 rounded font-bold text-xs flex items-center justify-center shrink-0 border ${
-                          isSel ? 'bg-cyan-500 text-slate-950 border-cyan-400' : 'bg-slate-800 border-white/10 text-slate-400'
+                          isSel ? 'bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]' : 'bg-slate-800 border-white/10 text-slate-400'
                         }`}>{opt.id}</span>
                         <div className="flex-1">
                           <MathRenderer content={opt.text || opt.content_latex || ''} />
@@ -548,7 +548,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                   return (
                     <div key={stmt.id || idx} className="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                       <div className="flex items-start gap-2.5 flex-1">
-                        <span className="w-5 h-5 rounded bg-slate-800 text-cyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="w-5 h-5 rounded bg-slate-800 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                           {idx + 1}
                         </span>
                         <div className="text-slate-200 font-medium leading-relaxed">
@@ -569,7 +569,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                             }}
                             className={`w-10 h-8 rounded-lg text-xs font-bold border transition cursor-pointer ${
                               sel === v 
-                                ? 'bg-cyan-500 border-cyan-400 text-slate-950 font-black shadow-md shadow-cyan-500/20' 
+                                ? 'bg-[#FFB800] border-[#FFB800] text-[#080B11] font-bold shadow-md shadow-[rgba(255,184,0,0.3)]' 
                                 : 'bg-slate-950 border-white/10 text-slate-400 hover:text-white'
                             }`}
                           >
@@ -596,7 +596,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                 value={openAnswers[currentIndex] || ''}
                 onChange={(e) => handleOpenAnswerChange(e.target.value)}
                 placeholder="Wpisz liczbę lub ułamek (np. 12 lub 3/4)..."
-                className="w-full rounded-xl bg-slate-900/80 border border-white/10 p-4 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition text-base font-mono"
+                className="w-full rounded-xl bg-slate-900/80 border border-white/10 p-4 text-white placeholder-slate-500 focus:outline-none focus:border-[#FFB800] transition text-base font-mono"
               />
             </div>
           )}
@@ -612,7 +612,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                 onChange={(e) => handleOpenAnswerChange(e.target.value)}
                 placeholder="Zapisz przekształcenia (np. wyłączenie przed nawias, rozkład na czynniki) oraz uzasadnienie podzielności..."
                 rows={5}
-                className="w-full rounded-2xl bg-slate-900/80 border border-white/10 p-4 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition text-sm leading-relaxed"
+                className="w-full rounded-2xl bg-slate-900/80 border border-white/10 p-4 text-white placeholder-slate-500 focus:outline-none focus:border-[#FFB800] transition text-sm leading-relaxed"
               />
             </div>
           )}
@@ -629,13 +629,13 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                     onClick={() => handleSelectOption(opt.id)}
                     className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-cyan-950/40 border-cyan-400 text-white shadow-[0_0_15px_rgba(6,182,212,0.25)]'
+                        ? 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.25)]'
                         : 'bg-slate-900/60 border-white/10 hover:border-white/20 text-slate-300 hover:bg-slate-800/60'
                     }`}
                   >
                     <span className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
                       isSelected 
-                        ? 'bg-cyan-500 text-slate-950 border-cyan-400 font-extrabold' 
+                        ? 'bg-[#FFB800] text-[#080B11] border-[#FFB800] font-extrabold' 
                         : 'bg-slate-800 border-white/10 text-slate-400'
                     }`}>
                       {opt.id}
@@ -668,7 +668,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
           {currentIndex < examData.totalQuestions - 1 ? (
             <button
               onClick={() => setCurrentIndex(prev => Math.min(examData.totalQuestions - 1, prev + 1))}
-              className="py-3 px-5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md shadow-cyan-500/20"
+              className="py-3 px-5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md shadow-[rgba(255,184,0,0.35)]"
             >
               <span>Następne pytanie</span>
               <ChevronRight size={16} />

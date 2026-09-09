@@ -32,7 +32,7 @@ export function CkeScratchpad({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [tool, setTool] = useState<'pen' | 'eraser'>('pen');
-  const [penColor] = useState<string>('#00C2FF');
+  const [penColor] = useState<string>('#FFB800');
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
 
   // History stack for Undo
@@ -230,7 +230,7 @@ export function CkeScratchpad({
           <button
             type="button"
             onClick={handleClose}
-            className="bg-[#00C2FF] hover:bg-[#00B4E6] border-b-2 border-[#0099CC] text-[#0B131E] font-black text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_18px_rgba(0,194,255,0.4)] active:scale-95 transition-all shrink-0 cursor-pointer"
+            className="bg-[#FFB800] hover:bg-[#FFC72C] border-b-2 border-[#D97706] text-[#080B11] font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all shrink-0 cursor-pointer"
           >
             <ArrowLeft size={17} className="stroke-[3]" />
             <span>← Wróć do zadania</span>
@@ -246,7 +246,7 @@ export function CkeScratchpad({
               }}
               className={`py-1.5 px-2.5 sm:px-3 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
                 tool === 'pen'
-                  ? 'bg-[#00C2FF] text-[#0B131E] font-black shadow-sm'
+                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-sm'
                   : 'text-white/60 hover:text-white'
               }`}
             >

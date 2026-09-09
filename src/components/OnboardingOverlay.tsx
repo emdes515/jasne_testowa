@@ -45,7 +45,7 @@ interface GoalOption {
   subtitle: string;
   icon: typeof Target;
   badgeText: string;
-  badgeVariant: 'cyan' | 'amber';
+  badgeVariant: 'jasne' | 'amber';
 }
 
 export function OnboardingOverlay({
@@ -94,7 +94,7 @@ export function OnboardingOverlay({
       subtitle: 'Studia dzienne • Opanowanie 14 działów maturalnych',
       icon: GraduationCap,
       badgeText: 'NAJPOPULARNIEJSZY',
-      badgeVariant: 'cyan'
+      badgeVariant: 'jasne'
     },
     {
       id: 'matura_30',
@@ -114,7 +114,7 @@ export function OnboardingOverlay({
       subtitle: 'Kierunki techniczne, medyczne, biznes • Maksimum punktów',
       icon: Trophy,
       badgeText: 'TOP WYNIK',
-      badgeVariant: 'cyan'
+      badgeVariant: 'jasne'
     },
     {
       id: 'poprawka',
@@ -195,13 +195,13 @@ export function OnboardingOverlay({
       className="fixed inset-0 z-[100] flex flex-col bg-[#070A0F] text-white overflow-hidden font-sans select-none touch-pan-y"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[550px] h-[280px] bg-gradient-to-b from-[#00E5FF]/10 to-transparent blur-[90px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[550px] h-[280px] bg-gradient-to-b from-[#FFB800]/10 to-transparent blur-[90px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[250px] bg-gradient-to-t from-amber-500/10 to-transparent blur-[80px] pointer-events-none" />
 
       {/* Progress bar at the top */}
       <div className="w-full bg-white/5 h-1.5 relative overflow-hidden shrink-0 z-30">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#00E5FF] via-cyan-400 to-amber-400 shadow-[0_0_12px_rgba(0,229,255,0.7)]"
+          className="h-full bg-gradient-to-r from-[#D97706] via-[#FFB800] to-[#FFC72C] shadow-[0_0_12px_rgba(255,184,0,0.7)]"
           initial={false}
           animate={{ width: `${(currentStep / 4) * 100}%` }}
           transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
@@ -226,7 +226,7 @@ export function OnboardingOverlay({
             </button>
           ) : (
             <div className="flex items-center gap-2">
-              <Badge variant="cyan" icon={<Sparkles size={13} />}>
+              <Badge variant="jasne" icon={<Sparkles size={13} />}>
                 NOWA FORMUŁA 2023
               </Badge>
             </div>
@@ -268,7 +268,7 @@ export function OnboardingOverlay({
             >
               <div>
                 <div className="mb-1.5">
-                  <Badge variant="cyan" icon={<Target size={12} />}>
+                  <Badge variant="jasne" icon={<Target size={12} />}>
                     TWÓJ CEL MATURALNY
                   </Badge>
                 </div>
@@ -293,14 +293,14 @@ export function OnboardingOverlay({
                       onClick={() => handleSelectGoal(opt)}
                       className={`w-full text-left p-3.5 rounded-2xl border transition-all duration-150 relative flex items-center gap-3.5 cursor-pointer active:scale-[0.99] ${
                         isSelected
-                          ? 'border-[#00E5FF] bg-[#00E5FF]/10 shadow-[0_0_20px_rgba(0,229,255,0.2)]'
+                          ? 'border-[#FFB800] bg-[#FFB800]/10 shadow-[0_0_20px_rgba(255,184,0,0.2)]'
                           : 'bg-[#0E1522]/90 border-white/10 hover:border-white/20 hover:bg-[#131D2E]'
                       }`}
                     >
                       <div
                         className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border transition-all ${
                           isSelected
-                            ? 'bg-[#00E5FF]/20 border-[#00E5FF]/40 text-[#00E5FF]'
+                            ? 'bg-[#FFB800]/20 border-[#FFB800]/40 text-[#FFB800]'
                             : 'bg-white/5 border-white/10 text-slate-400'
                         }`}
                       >
@@ -324,7 +324,7 @@ export function OnboardingOverlay({
                       <div
                         className={`w-6 h-6 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
                           isSelected
-                            ? 'bg-[#00E5FF] border-[#00E5FF] text-slate-950'
+                            ? 'bg-[#FFB800] border-[#FFB800] text-[#080B11]'
                             : 'border-white/20 text-transparent'
                         }`}
                       >
@@ -340,7 +340,7 @@ export function OnboardingOverlay({
                 <button
                   id="onboarding-step1-continue"
                   onClick={() => setCurrentStep(2)}
-                  className="w-full py-3.5 px-6 rounded-2xl font-bold text-slate-950 bg-[#00E5FF] hover:bg-cyan-300 active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm sm:text-base shadow-[0_0_25px_rgba(0,229,255,0.35)]"
+                  className="w-full py-3.5 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm sm:text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>DALEJ</span>
                   <ArrowRight size={17} />
@@ -367,7 +367,7 @@ export function OnboardingOverlay({
             >
               <div>
                 <div className="mb-1.5 flex items-center gap-2">
-                  <Badge variant="cyan" icon={<Zap size={12} />}>
+                  <Badge variant="jasne" icon={<Zap size={12} />}>
                     MICRO-CHALLENGE • 30 SEKUND
                   </Badge>
                 </div>
@@ -380,19 +380,19 @@ export function OnboardingOverlay({
               </div>
 
               {/* KaTeX Theory Pill with rule */}
-              <div className="bg-[#0E1522]/90 border border-cyan-500/30 rounded-2xl p-4 shadow-[0_4px_20px_rgba(0,229,255,0.08)]">
+              <div className="bg-[#0E1522]/90 border border-amber-500/30 rounded-2xl p-4 shadow-[0_4px_20px_rgba(255,184,0,0.08)]">
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#00E5FF]/10 border border-[#00E5FF]/30 flex items-center justify-center text-[#00E5FF] shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] shrink-0 mt-0.5">
                     <Lightbulb size={18} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#00E5FF] block mb-0.5">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#FFB800] block mb-0.5">
                       Złota reguła mnożenia potęg
                     </span>
                     <p className="text-xs text-slate-300 leading-relaxed">
                       Gdy mnożysz potęgi o tej samej podstawie, podstawę przepisujesz, a <strong className="text-white">wykładniki dodajesz</strong>:
                     </p>
-                    <div className="bg-[#070A0F] border border-white/10 rounded-xl py-2 px-3 my-2 text-center text-[#00E5FF] font-bold text-base overflow-x-auto">
+                    <div className="bg-[#070A0F] border border-white/10 rounded-xl py-2 px-3 my-2 text-center text-[#FFB800] font-bold text-base overflow-x-auto">
                       <BlockMath math="a^m \cdot a^n = a^{m+n}" />
                     </div>
                   </div>
@@ -502,8 +502,8 @@ export function OnboardingOverlay({
             >
               <div>
                 <div className="mb-1.5">
-                  <Badge variant="cyan" icon={<BookOpen size={12} />}>
-                    JAK DZIAŁA MATURA QUEST
+                  <Badge variant="jasne" icon={<BookOpen size={12} />}>
+                    JAK DZIAŁA JASNE.
                   </Badge>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
@@ -517,9 +517,9 @@ export function OnboardingOverlay({
               {/* 3 App Pillars */}
               <div className="flex flex-col gap-3 my-auto">
                 {/* Karta A: Pewniaki Maturalne */}
-                <div className="bg-[#0E1522]/90 border border-cyan-500/30 rounded-2xl p-4 shadow-[0_4px_15px_rgba(0,229,255,0.06)]">
+                <div className="bg-[#0E1522]/90 border border-amber-500/30 rounded-2xl p-4 shadow-[0_4px_15px_rgba(255,184,0,0.06)]">
                   <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-[#FFB800] shrink-0">
                       <Target size={20} />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -527,7 +527,7 @@ export function OnboardingOverlay({
                         <h4 className="text-sm font-bold text-white">
                           Pewniaki Maturalne
                         </h4>
-                        <Badge variant="cyan">
+                        <Badge variant="jasne">
                           FORMUŁA 2023
                         </Badge>
                       </div>
@@ -591,7 +591,7 @@ export function OnboardingOverlay({
                     triggerHaptic('medium');
                     setCurrentStep(4);
                   }}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-slate-950 bg-[#00E5FF] hover:bg-cyan-300 active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_25px_rgba(0,229,255,0.35)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>DALEJ (ODBIERZ SWÓJ PLAN)</span>
                   <ArrowRight size={18} />
@@ -648,7 +648,7 @@ export function OnboardingOverlay({
               <div className="w-full bg-[#0E1522]/90 border border-white/10 rounded-2xl p-4 text-left shadow-lg">
                 <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-white/5">
                   <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <ShieldCheck size={15} className="text-[#00E5FF]" />
+                    <ShieldCheck size={15} className="text-[#FFB800]" />
                     Twój spersonalizowany start:
                   </span>
                   <Badge variant="emerald">
@@ -659,7 +659,7 @@ export function OnboardingOverlay({
                 <div className="grid grid-cols-3 gap-2 text-center text-xs mb-3">
                   <div className="bg-white/5 rounded-xl p-2 border border-white/5">
                     <span className="text-[10px] text-slate-400 block">Cel maturalny</span>
-                    <strong className="text-[#00E5FF] text-xs block mt-0.5">
+                    <strong className="text-[#FFB800] text-xs block mt-0.5">
                       {targetScore}%
                     </strong>
                   </div>
@@ -691,7 +691,7 @@ export function OnboardingOverlay({
                 <button
                   id="onboarding-save-progress-button"
                   onClick={() => handleFinishOnboarding(true)}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-slate-950 bg-gradient-to-r from-[#00E5FF] via-cyan-300 to-amber-300 hover:brightness-110 active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_30px_rgba(0,229,255,0.4)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <LogIn size={18} className="stroke-[2.5]" />
                   <span>ZAPISZ SWÓJ PROGRES (LOGOWANIE)</span>

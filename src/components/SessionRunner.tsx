@@ -29,6 +29,7 @@ import { UserState, LessonTheoryPill } from '../types';
 import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTaskPool } from '../data/dzial1TaskPool';
 import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace } from './OpenTaskWorkspace';
+import { MathPlot } from './MathPlot';
 
 /**
  * Helper to render micro-article text containing markdown bold (**bold**) and LaTeX ($...$)
@@ -1218,8 +1219,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               className="w-full grid grid-cols-2 gap-3 sm:gap-4 mb-5"
             >
               <div className="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center min-h-[90px] shadow-sm">
-                <div className="w-7 h-7 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center mb-1 text-cyan-400">
-                  <Zap className="w-3.5 h-3.5 fill-cyan-400 text-cyan-400" />
+                <div className="w-7 h-7 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center mb-1 text-[#FFB800]">
+                  <Zap className="w-3.5 h-3.5 fill-[#FFB800] text-[#FFB800]" />
                 </div>
                 <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">+{calculatedXp}</span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">XP</span>
@@ -1333,7 +1334,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     >
       <div 
         id="session-runner-container"
-        className="w-full h-full h-[100dvh] md:h-[92vh] md:max-h-[920px] md:max-w-2xl bg-[#0B0F19] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(0,229,255,0.06)] flex flex-col justify-between overflow-hidden relative text-white transition-all duration-200"
+        className="w-full h-full h-[100dvh] md:h-[92vh] md:max-h-[920px] md:max-w-2xl bg-[#0B0F19] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between overflow-hidden relative text-white transition-all duration-200"
       >
       {/* ================= DEDICATED FOCUS SESSION BAR ================= */}
       <header 
@@ -1355,7 +1356,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
             {isTheoryStep ? (
               <div className="flex-1 flex items-center gap-2 min-w-0">
-                <span className="text-xs font-bold text-cyan-400 whitespace-nowrap">Krok 1: Pigułka wiedzy</span>
+                <span className="text-xs font-bold text-[#FFB800] whitespace-nowrap">Krok 1: Pigułka wiedzy</span>
                 <span className="text-xs text-slate-400 truncate">• Wprowadzenie i Wzory</span>
               </div>
             ) : (
@@ -1371,7 +1372,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         isDone
                           ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.7)]'
                           : isNext
-                            ? 'bg-cyan-500/40 border border-cyan-400/60'
+                            ? 'bg-[#FFB800]/40 border border-[#FFB800]/60'
                             : 'bg-slate-800'
                       }`}
                     />
@@ -1404,10 +1405,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <button
                 id="session-formulas-button"
                 onClick={() => setShowFormulaSheet(true)}
-                className="px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700 hover:border-cyan-500/50 hover:bg-slate-800/80 text-cyan-300 text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer"
+                className="px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700 hover:border-[#FFB800]/50 hover:bg-slate-800/80 text-[#FFB800] text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer"
                 title="Otwórz Kartę Wzorów CKE"
               >
-                <BookOpen className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <BookOpen className="w-3.5 h-3.5 text-[#FFB800] shrink-0" />
                 <span>Wzory</span>
               </button>
             </div>
@@ -1454,13 +1455,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   >
                     <div className={`h-1.5 rounded-full transition-all duration-200 ${
                       isActive 
-                        ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.5)]' 
+                        ? 'bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.5)]' 
                         : isDone 
                           ? 'bg-slate-500' 
                           : 'bg-slate-800'
                     }`} />
                     <span className={`text-[11px] sm:text-xs text-center font-medium transition-colors ${
-                      isActive ? 'text-cyan-300 font-bold' : 'text-slate-400 group-hover:text-slate-300'
+                      isActive ? 'text-[#FFB800] font-bold' : 'text-slate-400 group-hover:text-slate-300'
                     }`}>
                       {step.title}
                     </span>
@@ -1481,8 +1482,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   <section className="flex flex-col gap-2.5">
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#FFB800]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
                       <span>Istota pojęcia</span>
                     </div>
                     <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight">
@@ -1497,8 +1498,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                   {(theoryPill?.matura_context || theoryPill?.keyTakeaway) && (
                     <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/40 border border-slate-800 flex flex-col gap-2.5">
-                      <div className="flex items-center gap-2 text-cyan-400 text-xs font-semibold uppercase tracking-wider">
-                        <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
+                      <div className="flex items-center gap-2 text-[#FFB800] text-xs font-semibold uppercase tracking-wider">
+                        <Sparkles className="w-4 h-4 text-[#FFB800] shrink-0" />
                         <span>Strategia maturalna</span>
                       </div>
                       <div className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
@@ -1524,7 +1525,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     return (
                       <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-3.5">
                         <div className="flex items-center gap-2 text-slate-300 text-xs font-semibold uppercase tracking-wider">
-                          <BookOpen className="w-4 h-4 text-cyan-400" />
+                          <BookOpen className="w-4 h-4 text-[#FFB800]" />
                           <span>Kluczowe wzory i zależności</span>
                         </div>
 
@@ -1547,7 +1548,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {theoryPill?.formula_notes && (
                           <div className="mt-1 text-xs sm:text-sm text-slate-300 border-t border-slate-800/80 pt-3 leading-relaxed">
-                            <span className="text-[11px] font-semibold text-cyan-400 uppercase tracking-wider block mb-1">
+                            <span className="text-[11px] font-semibold text-[#FFB800] uppercase tracking-wider block mb-1">
                               Wskazówka do wzorów
                             </span>
                             {renderMicroContent(theoryPill.formula_notes)}
@@ -1582,12 +1583,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     return (
                       <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-4">
                         <div className="flex items-center gap-2 text-slate-300 text-xs font-semibold uppercase tracking-wider">
-                          <FileText className="w-4 h-4 text-cyan-400" />
+                          <FileText className="w-4 h-4 text-[#FFB800]" />
                           <span>Przykład z arkusza krok po kroku</span>
                         </div>
 
                         {/* Treść zadania */}
-                        <div className="border-l-2 border-cyan-500/50 pl-3.5 py-1 bg-slate-950/30 rounded-r-xl">
+                        <div className="border-l-2 border-[#FFB800]/50 pl-3.5 py-1 bg-slate-950/30 rounded-r-xl">
                           <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
                             Treść zadania
                           </span>
@@ -1601,12 +1602,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           <div className="space-y-3 pt-1 border-t border-slate-800/80">
                             {normExample.steps.map((st, sIdx) => (
                               <div key={sIdx} className="flex items-start gap-3 text-sm sm:text-base text-slate-200">
-                                <span className="shrink-0 w-6 h-6 rounded-full bg-slate-800 border border-slate-700 text-cyan-300 font-bold text-xs flex items-center justify-center mt-0.5">
+                                <span className="shrink-0 w-6 h-6 rounded-full bg-slate-800 border border-slate-700 text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
                                   {st.num}
                                 </span>
                                 <div className="flex-1 leading-relaxed">
                                   {st.label && (
-                                    <span className="text-xs font-semibold text-cyan-400 block mb-0.5">
+                                    <span className="text-xs font-semibold text-[#FFB800] block mb-0.5">
                                       {st.label}
                                     </span>
                                   )}
@@ -1671,8 +1672,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               
               {/* Autentyczna, elegancka etykieta źródła zadania (Source Tag) */}
               <div className="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-cyan-300 font-medium text-[11px] sm:text-xs shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-sky-300 font-medium text-[11px] sm:text-xs shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0" />
                   <span>{formatSourceTag(currentTask?.source || currentTask?.cke_source, currentTask?.points, isOpenTask)}</span>
                 </span>
                 {isOpenTask ? (
@@ -1696,6 +1697,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="text-base sm:text-lg font-medium text-slate-100 leading-relaxed break-words">
                 <MathRenderer content={currentTask?.question || currentTask?.math_statement || currentTask?.content || ''} />
               </div>
+              {currentTask?.plot && (
+                <div className="mt-3 flex justify-center">
+                  <MathPlot plot={currentTask.plot} />
+                </div>
+              )}
             </div>
 
         {/* OPEN TASK WORKSPACE (DWA TRYBY: KLAWIATURA VS TABLICA) */}
@@ -1714,21 +1720,21 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               inputPlaceholder="Zapisz swoje rozwiązanie lub użyj klawiatury..."
             />
 
-            {/* AI Tutor Scanning State (pulsujący gradient błękitno-indygo) */}
+            {/* AI Tutor Scanning State (pulsujący gradient bursztynowy) */}
             {isTutorScanning && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#071927] via-[#0b1626] to-[#121633] border border-cyan-500/50 shadow-[0_0_35px_rgba(6,182,212,0.25)] flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
+                className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-[#FFB800]/50 shadow-[0_0_35px_rgba(255,184,0,0.22)] flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
               >
-                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-indigo-600/40 border border-cyan-400/60 flex items-center justify-center mb-3 shadow-[0_0_25px_rgba(6,182,212,0.5)]">
-                  <Sparkles className="w-7 h-7 text-cyan-300 animate-spin-slow shrink-0" />
-                  <div className="absolute inset-0 rounded-2xl border border-cyan-400/40 animate-ping opacity-25" />
+                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB800]/30 to-amber-600/40 border border-[#FFB800]/60 flex items-center justify-center mb-3 shadow-[0_0_25px_rgba(255,184,0,0.5)]">
+                  <Sparkles className="w-7 h-7 text-[#FFB800] animate-spin-slow shrink-0" />
+                  <div className="absolute inset-0 rounded-2xl border border-[#FFB800]/40 animate-ping opacity-25" />
                 </div>
                 <h4 className="font-bold text-white text-base sm:text-lg mb-1">
                   Egzaminator AI analizuje Twoje rozwiązanie...
                 </h4>
-                <p className="text-xs sm:text-sm text-cyan-300/85 max-w-md">
+                <p className="text-xs sm:text-sm text-amber-200/90 max-w-md">
                   Weryfikuję obliczenia, przekształcenia algebraiczne oraz zgodność ze schematem oceniania CKE.
                 </p>
               </motion.div>
@@ -1744,7 +1750,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {/* Header + Score Badge */}
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                    <div className="w-8 h-8 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800]">
                       <Sparkles size={18} />
                     </div>
                     <div>
@@ -1812,27 +1818,27 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </div>
 
                 {/* Model Solution Dropdown */}
-                <div className="rounded-xl border border-cyan-500/25 bg-cyan-950/20 overflow-hidden">
+                <div className="rounded-xl border border-[#FFB800]/25 bg-[#FFB800]/5 overflow-hidden">
                   <button
                     type="button"
                     onClick={() => setShowModelSolution(prev => !prev)}
-                    className="w-full p-3 flex items-center justify-between text-left text-xs sm:text-sm font-bold text-cyan-300 hover:bg-cyan-500/10 transition-colors cursor-pointer"
+                    className="w-full p-3 flex items-center justify-between text-left text-xs sm:text-sm font-bold text-[#FFB800] hover:bg-[#FFB800]/10 transition-colors cursor-pointer"
                   >
                     <span className="flex items-center gap-1.5">
                       <BookOpen size={16} />
                       <span>Wzorcowy dowód maturalny (Krok po kroku)</span>
                     </span>
-                    <span className="text-xs font-normal text-cyan-400/80">
+                    <span className="text-xs font-normal text-[#FFB800]/80">
                       {showModelSolution ? 'Zwiń ▲' : 'Rozwiń ▼'}
                     </span>
                   </button>
                   {showModelSolution && (
-                    <div className="p-3.5 pt-0 border-t border-cyan-500/20 text-xs sm:text-sm text-slate-200 space-y-2.5 max-h-56 overflow-y-auto">
+                    <div className="p-3.5 pt-0 border-t border-[#FFB800]/20 text-xs sm:text-sm text-slate-200 space-y-2.5 max-h-56 overflow-y-auto">
                       {currentTask?.modelSolutionSteps && currentTask.modelSolutionSteps.length > 0 ? (
                         <div className="space-y-2">
                           {currentTask.modelSolutionSteps.map((step: any, sIdx: number) => (
                             <div key={sIdx} className="p-2.5 rounded-lg bg-black/40 border border-white/5">
-                              <span className="text-[11px] font-bold text-cyan-400 block mb-0.5">
+                              <span className="text-[11px] font-bold text-[#FFB800] block mb-0.5">
                                 Krok {step.step_num}: {step.description}
                               </span>
                               {step.latex && <MathRenderer content={`$${step.latex}$`} />}
@@ -1880,7 +1886,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       ? isCorrect
                         ? 'bg-emerald-950/30 border-emerald-500 text-emerald-300'
                         : 'bg-rose-950/30 border-rose-500 text-rose-300'
-                      : 'bg-slate-950 border-slate-700 text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20'
+                      : 'bg-slate-950 border-slate-700 text-white focus:border-[#FFB800] focus:ring-2 focus:ring-[#FFB800]/20'
                   }`}
                 />
                 {isEvaluated && (
@@ -1934,7 +1940,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     let cardClass = 'group relative flex flex-col p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left select-none ';
                     if (!isEvaluated) {
                       if (isOptSelected) {
-                        cardClass += 'bg-cyan-950/40 border-cyan-400 shadow-[0_0_24px_rgba(34,211,238,0.25)] ring-2 ring-cyan-400/20';
+                        cardClass += 'bg-[#FFB800]/10 border-[#FFB800] shadow-[0_0_24px_rgba(255,184,0,0.25)] ring-2 ring-[#FFB800]/20';
                       } else {
                         cardClass += 'bg-slate-900/60 hover:bg-slate-900/90 border-slate-800 hover:border-slate-700 text-slate-200';
                       }
@@ -1966,7 +1972,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             <span className={`w-8 h-8 rounded-xl font-black text-sm flex items-center justify-center transition-all ${
                               !isEvaluated
                                 ? isOptSelected
-                                  ? 'bg-cyan-400 text-slate-950 shadow-md'
+                                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-md'
                                   : 'bg-slate-800 border border-slate-700 text-slate-300 group-hover:border-slate-600'
                                 : isThisTheCorrectAnswer
                                   ? 'bg-emerald-500 text-slate-950 font-black shadow-md'
@@ -2033,7 +2039,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         } flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
                       >
                         <div className="flex items-start gap-2.5 flex-1 min-w-0">
-                          <span className="shrink-0 w-6 h-6 rounded-lg bg-slate-800 border border-slate-700 text-cyan-300 font-bold text-xs flex items-center justify-center mt-0.5">
+                          <span className="shrink-0 w-6 h-6 rounded-lg bg-slate-800 border border-slate-700 text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
                             {idx + 1}
                           </span>
                           <div className="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed break-words flex-1">
@@ -2049,7 +2055,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             let btnClass = 'w-11 h-10 rounded-xl font-bold text-sm flex items-center justify-center transition-all cursor-pointer ';
                             if (!isEvaluated) {
                               if (isOptSelected) {
-                                btnClass += 'bg-cyan-400 text-slate-950 border border-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.4)]';
+                                btnClass += 'bg-[#FFB800] text-[#080B11] border border-[#D97706] shadow-[0_0_12px_rgba(255,184,0,0.35)]';
                               } else {
                                 btnClass += 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700';
                               }
@@ -2104,8 +2110,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           >
             {/* Część 1 */}
             <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2.5">
-              <div className="text-xs sm:text-sm font-semibold text-cyan-300 flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center font-bold">1</span>
+              <div className="text-xs sm:text-sm font-semibold text-[#FFB800] flex items-center gap-1.5">
+                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">1</span>
                 <span>{currentTask?.part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -2118,7 +2124,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-cyan-950/30 border-cyan-400 text-cyan-200 shadow-[0_0_12px_rgba(34,211,238,0.2)]'
+                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                       : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-200';
                   } else {
                     if (isOptionCorrect) {
@@ -2158,8 +2164,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
             {/* Część 2 */}
             <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2.5">
-              <div className="text-xs sm:text-sm font-semibold text-cyan-300 flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center font-bold">2</span>
+              <div className="text-xs sm:text-sm font-semibold text-[#FFB800] flex items-center gap-1.5">
+                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">2</span>
                 <span>{currentTask?.part_2?.prompt || 'Wybierz drugą część zdania / uzasadnienie:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -2172,7 +2178,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-cyan-950/30 border-cyan-400 text-cyan-200 shadow-[0_0_12px_rgba(34,211,238,0.2)]'
+                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                       : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-200';
                   } else {
                     if (isOptionCorrect) {
@@ -2245,7 +2251,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               // Clean high-contrast styles: answers remain 100% visible on screen
               let borderStyle = 'border-slate-800 hover:border-slate-700 bg-slate-900/50';
               if (isSelected && !isEvaluated) {
-                borderStyle = 'border-cyan-400 bg-cyan-950/30 shadow-[0_0_15px_rgba(34,211,238,0.2)]';
+                borderStyle = 'border-[#FFB800] bg-[#FFB800]/15 shadow-[0_0_15px_rgba(255,184,0,0.2)]';
               } else if (isEvaluated) {
                 if (isOptionCorrect) {
                   borderStyle = 'border-emerald-500 bg-emerald-950/35 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.25)]';
@@ -2268,7 +2274,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <span 
                       className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 border transition-colors ${
                         isSelected && !isEvaluated
-                          ? 'bg-cyan-500 border-cyan-400 text-slate-950'
+                          ? 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold'
                           : isEvaluated && isOptionCorrect
                             ? 'bg-emerald-500 border-emerald-400 text-slate-950 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
@@ -2292,8 +2298,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                   {/* Selection / Status Icon */}
                   {isSelected && !isEvaluated && (
-                    <div className="w-5 h-5 rounded-full bg-cyan-400/20 flex items-center justify-center shrink-0">
-                      <div className="w-2.5 h-2.5 rounded-full bg-cyan-400" />
+                    <div className="w-5 h-5 rounded-full bg-[#FFB800]/20 flex items-center justify-center shrink-0">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />
                     </div>
                   )}
                   {isEvaluated && isOptionCorrect && (
@@ -2340,7 +2346,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   triggerHaptic('light');
                   setTheorySubStep(prev => Math.min(3, prev + 1));
                 }}
-                className="flex-1 h-[48px] px-4 rounded-xl font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide"
+                className="flex-1 h-[48px] px-4 rounded-xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)]"
               >
                 <span>Dalej</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -2354,7 +2360,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   playSuccessSound();
                   setCurrentStep(1);
                 }}
-                className="flex-1 h-[48px] px-4 rounded-xl font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide"
+                className="flex-1 h-[48px] px-4 rounded-xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)]"
               >
                 <span>Rozpocznij zadania</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -2436,7 +2442,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       disabled={(!openAnswerText.trim() && openCanvasDataUrl.length <= 50) || isTutorScanning}
                       className={`flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 ${
                         (openAnswerText.trim() || openCanvasDataUrl.length > 50) && !isTutorScanning
-                          ? 'bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 shadow-[0_0_25px_rgba(34,211,238,0.4)] active:scale-[0.99] cursor-pointer'
+                          ? 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-[0_0_25px_rgba(255,184,0,0.35)] active:scale-[0.99] cursor-pointer'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
@@ -2450,7 +2456,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       disabled={!isReadyToCheck}
                       className={`flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer ${
                         isReadyToCheck
-                          ? 'bg-cyan-400 hover:bg-cyan-300 text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-[0.99]'
+                          ? 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-[0.99]'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
@@ -2519,7 +2525,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <button
                       type="button"
                       onClick={() => setShowExplanation(prev => !prev)}
-                      className="mt-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 cursor-pointer transition underline underline-offset-2 whitespace-nowrap"
+                      className="mt-1 text-xs font-semibold text-[#FFB800] hover:text-[#FFC72C] flex items-center gap-1 cursor-pointer transition underline underline-offset-2 whitespace-nowrap"
                     >
                       <BookOpen size={13} />
                       <span>Zobacz wyjaśnienie {showExplanation ? '▴' : '▾'}</span>
@@ -2570,7 +2576,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Modal Header */}
               <div className="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/60 shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                  <div className="w-8 h-8 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-[#FFB800]">
                     <BookOpen size={18} />
                   </div>
                   <div>
@@ -2610,7 +2616,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {/* Metodyczne wyjaśnienie zadania */}
                 {currentTask?.explanation && (
                   <div className="p-4 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2">
-                    <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider block">
+                    <span className="text-xs font-bold text-[#FFB800] uppercase tracking-wider block">
                       Krok po kroku:
                     </span>
                     <div className="text-xs sm:text-sm text-slate-200 leading-relaxed overflow-x-auto max-w-full">
@@ -2664,7 +2670,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <div className="flex items-center gap-2.5">
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${
                     isAiHintTask 
-                      ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-400' 
+                      ? 'bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800]' 
                       : 'bg-amber-500/10 border border-amber-500/30 text-amber-400'
                   }`}>
                     {isAiHintTask ? <Sparkles size={18} /> : <Lightbulb size={18} />}
@@ -2692,14 +2698,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Sheet Content */}
               <div className="p-4 sm:p-5 overflow-y-auto space-y-4">
                 {isAiHintLoading ? (
-                  <div className="p-6 rounded-2xl bg-slate-900/80 border border-cyan-500/30 flex flex-col items-center justify-center gap-3 text-center">
-                    <Loader2 className="w-7 h-7 text-cyan-400 animate-spin" />
-                    <p className="text-sm text-cyan-300 font-medium">AI Tutor analizuje Twój tok myślenia...</p>
+                  <div className="p-6 rounded-2xl bg-slate-900/80 border border-[#FFB800]/30 flex flex-col items-center justify-center gap-3 text-center">
+                    <Loader2 className="w-7 h-7 text-[#FFB800] animate-spin" />
+                    <p className="text-sm text-amber-200/90 font-medium">AI Tutor analizuje Twój tok myślenia...</p>
                   </div>
                 ) : isAiHintTask ? (
-                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-950/40 via-slate-900/90 to-cyan-950/30 border border-cyan-500/30 shadow-lg space-y-3">
-                    <div className="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
-                      <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-amber-950/20 border border-[#FFB800]/30 shadow-lg space-y-3">
+                    <div className="flex items-center gap-2 text-[#FFB800] text-xs font-bold uppercase tracking-wider">
+                      <Sparkles className="w-4 h-4 text-[#FFB800] shrink-0" />
                       <span>Tok myślenia & Wskazówka</span>
                     </div>
                     <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
@@ -2761,7 +2767,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-modal-stay-button"
                   onClick={() => setShowExitModal(false)}
-                  className="w-full py-3.5 px-4 rounded-xl font-bold bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition"
+                  className="w-full py-3.5 px-4 rounded-xl font-bold bg-[#FFB800] text-[#080B11] hover:bg-[#FFC72C] transition shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   WRÓĆ DO SESJI
                 </button>
@@ -2800,7 +2806,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Drawer Header */}
               <div className="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
                 <div className="flex items-center gap-2.5">
-                  <BookOpen className="w-5 h-5 text-cyan-400" />
+                  <BookOpen className="w-5 h-5 text-[#FFB800]" />
                   <div>
                     <h3 className="font-bold text-white text-base">Karta Wzorów Maturalnych</h3>
                     <p className="text-xs text-slate-400">{formulaSheet?.title || lessonTitle}</p>
@@ -2819,8 +2825,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="p-5 overflow-y-auto space-y-4">
                 {/* Core Formula from Theory Pill */}
                 {theoryPill?.coreFormulaLatex && (
-                  <div className="bg-cyan-950/25 border border-cyan-500/40 rounded-xl p-4 text-center">
-                    <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider block mb-2">
+                  <div className="bg-[#FFB800]/10 border border-[#FFB800]/40 rounded-xl p-4 text-center">
+                    <span className="text-xs font-bold text-[#FFB800] uppercase tracking-wider block mb-2">
                       Główny Wzór Lekcji (Pigułka Wiedzy)
                     </span>
                     <div className="w-full max-w-full overflow-x-auto py-1 px-2 text-center">

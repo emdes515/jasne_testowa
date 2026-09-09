@@ -28,6 +28,7 @@ import { triggerHaptic, calculateStreakOnTaskCompletion, getTodayDateString, fil
 import { buildFirestoreUserPayload } from './schema_firestore';
 import { checkSystemMetaVersion } from './lib/curriculumSync';
 import { handleFirestoreError, OperationType } from './lib/firestoreErrors';
+import { migrateGuestProgressToUser, hasGuestProgress } from './lib/guestMigration';
 
 import { LoadingScreen } from './components/Loading';
 
@@ -133,7 +134,25 @@ export default function App() {
 
   useEffect(() => {
     let unsubscribe = () => {};
+    let isMounted = true;
+
     if (user) {
+      // 1. Sprawdź, czy w stanie lokalnym istnieją jakiekolwiek postępy gościa i wykonaj automatyczną migrację
+      if (hasGuestProgress()) {
+        migrateGuestProgressToUser(user).then((mergedResult) => {
+          if (mergedResult && isMounted) {
+            setUserState(prev => ({
+              ...prev,
+              ...mergedResult.userState
+            }));
+            setCompletedTasks(mergedResult.completedTasks);
+            setTaskStars(mergedResult.taskStars);
+          }
+        }).catch(err => {
+          console.error("Migration error in auth listener:", err);
+        });
+      }
+
       const userRef = doc(db, 'users', user.uid);
       unsubscribe = onSnapshot(userRef, async (snap) => {
         if (snap.exists()) {
@@ -157,6 +176,12 @@ export default function App() {
             localStorage.setItem("matura_quest_task_stars", JSON.stringify(loadedStars));
           } catch {}
 
+          // Populate completed_lessons list
+          const rawCompletedLessons = data.completed_lessons || progress.completedLessons || [];
+          const loadedCompletedLessons: string[] = Array.isArray(rawCompletedLessons)
+            ? rawCompletedLessons
+            : Object.keys(data.completedLessons || progress.completedLessons || {});
+
           setUserState(prev => ({
             ...prev,
             ...data,
@@ -174,6 +199,8 @@ export default function App() {
             timeSpentTotalSeconds: stats.timeSpentTotalSeconds ?? data.timeSpentTotalSeconds ?? prev.timeSpentTotalSeconds ?? 0,
             weeklyTimeSpentMinutes: stats.weeklyTimeSpentMinutes ?? data.weeklyTimeSpentMinutes ?? prev.weeklyTimeSpentMinutes ?? 0,
             lastWeekKey: stats.lastWeekKey ?? data.lastWeekKey ?? prev.lastWeekKey ?? getCurrentIsoWeekKey(),
+            completed_lessons: loadedCompletedLessons,
+            completedLessons: data.completedLessons || progress.completedLessons || prev.completedLessons || {},
             perks: {
               xpBoostPercent: 0,
               coinBoostPercent: 0,
@@ -190,68 +217,17 @@ export default function App() {
             setIsNewUser(true);
           }
         } else {
-          // New User Setup - initialize in Single-Document format
-          let guestData: Partial<UserState> = {};
-          try {
-            const savedGuest = localStorage.getItem('matura_quest_guest_user');
-            if (savedGuest) guestData = JSON.parse(savedGuest);
-          } catch (e) {}
-
-          let localCompleted: string[] = [];
-          let localStars: Record<string, number> = {};
-          try {
-            const storedC = localStorage.getItem('matura_quest_completed_tasks');
-            const storedS = localStorage.getItem('matura_quest_task_stars');
-            if (storedC) localCompleted = JSON.parse(storedC);
-            if (storedS) localStars = JSON.parse(storedS);
-          } catch {}
-
-          const newState: UserState = {
-            xp: guestData.xp || 0,
-            coins: Math.max(100, guestData.coins || 100),
-            gems: Math.max(5, guestData.gems || 5),
-            level: guestData.level || 1,
-            campusRust: 0,
-            lastActive: Date.now(),
-            arenaRating: guestData.arenaRating || 1000,
-            arenaWins: guestData.arenaWins || 0,
-            masteryTokens: guestData.masteryTokens || 0,
-            streakDays: guestData.streakDays || 0,
-            lastStreakDate: guestData.lastStreakDate || undefined,
-            streakActiveDates: guestData.streakActiveDates || [],
-            dailyTaskCounts: guestData.dailyTaskCounts || {},
-            claimedAchievements: guestData.claimedAchievements || {},
-            lastWeekKey: guestData.lastWeekKey || getCurrentIsoWeekKey(),
-            timeSpentTotalSeconds: guestData.timeSpentTotalSeconds || 0,
-            weeklyTimeSpentMinutes: guestData.weeklyTimeSpentMinutes || 0,
-            hasCompletedOnboarding: guestData.hasCompletedOnboarding ?? true,
-            onboardingPreferences: guestData.onboardingPreferences,
-            perks: {
-              xpBoostPercent: 0,
-              coinBoostPercent: 0,
-              streakFreezes: 0,
-              arenaShields: 0,
-              arenaTokenBonusPercent: 0,
-              temporaryXpBoostCharges: 0,
-              ...(guestData.perks || {})
-            },
-            maturaAttempts: guestData.maturaAttempts || 0,
-            maturaBestScore: guestData.maturaBestScore || 0
-          };
-
-          const singleDocPayload = buildFirestoreUserPayload(
-            newState,
-            localCompleted,
-            localStars,
-            {},
-            user
-          );
-
-          await setDoc(userRef, singleDocPayload, { merge: true });
-          setUserState(newState);
-          setCompletedTasks(localCompleted);
-          setTaskStars(localStars);
-          setIsNewUser(true);
+          // New User Setup - initialize and migrate any guest data
+          const mergedResult = await migrateGuestProgressToUser(user);
+          if (mergedResult && isMounted) {
+            setUserState(prev => ({
+              ...prev,
+              ...mergedResult.userState
+            }));
+            setCompletedTasks(mergedResult.completedTasks);
+            setTaskStars(mergedResult.taskStars);
+            setIsNewUser(true);
+          }
         }
       }, (error) => {
         handleFirestoreError(error, OperationType.GET, `users/${user.uid}`);
@@ -268,6 +244,8 @@ export default function App() {
             streakDays: typeof parsed.streakDays === 'number' ? parsed.streakDays : (prev.streakDays || 0),
             streakActiveDates: Array.isArray(parsed.streakActiveDates) ? parsed.streakActiveDates : (prev.streakActiveDates || []),
             lastStreakDate: parsed.lastStreakDate || prev.lastStreakDate,
+            completed_lessons: Array.isArray(parsed.completed_lessons) ? parsed.completed_lessons : (prev.completed_lessons || []),
+            completedLessons: parsed.completedLessons || prev.completedLessons || {},
             perks: {
               xpBoostPercent: 0,
               coinBoostPercent: 0,
@@ -296,6 +274,8 @@ export default function App() {
           streakDays: 0,
           streakActiveDates: [],
           claimedAchievements: {},
+          completed_lessons: [],
+          completedLessons: {},
           perks: {
             xpBoostPercent: 0,
             coinBoostPercent: 0,
@@ -306,6 +286,14 @@ export default function App() {
           },
           maturaAttempts: 0
         });
+        setCompletedTasks([]);
+        setTaskStars({});
+        setLessonMistakes({});
+        try {
+          localStorage.removeItem('matura_quest_completed_tasks');
+          localStorage.removeItem('matura_quest_task_stars');
+          localStorage.removeItem('matura_quest_lesson_mistakes');
+        } catch {}
       }
 
       // Check if user has already completed onboarding
@@ -314,7 +302,10 @@ export default function App() {
         setTimeout(() => setShowGuestPrompt(true), 600);
       }
     }
-    return () => unsubscribe();
+    return () => {
+      isMounted = false;
+      unsubscribe();
+    };
   }, [user, loading]);
 
   const handleOnboardingComplete = async (prefs: OnboardingPreferences, shouldOpenAuth: boolean = false) => {
@@ -814,7 +805,12 @@ export default function App() {
   };
 
   const isGuest = !user;
-  const guestHasProgress = isGuest && userState.xp > 0;
+  const guestHasProgress = isGuest && (
+    (userState.xp || 0) > 0 || 
+    ((userState.completed_lessons || []).length > 0) || 
+    (userState.coins || 0) > 50 || 
+    completedTasks.length > 0
+  );
 
   return (
     <div className="h-full h-[100dvh] w-full bg-[#0B0E14] text-slate-100 font-sans flex flex-col md:flex-row overflow-hidden selection:bg-blue-500/30">
@@ -826,7 +822,19 @@ export default function App() {
       {/* 2. GŁÓWNY OBSZAR APLIKACJI (PRZESTRONNY DLA PC/DESKTOPU) */}
       <div className="flex-1 flex flex-col h-full overflow-hidden relative w-full min-w-0">
         {!activeTask && (
-          <Header state={userState} onProfileClick={() => setCurrentTab('profile')} currentTab={currentTab} />
+          <Header 
+            state={userState} 
+            onProfileClick={() => setCurrentTab('profile')} 
+            onLogoClick={() => {
+              triggerHaptic('medium');
+              setCurrentTab('dashboard');
+              if (typeof document !== 'undefined') {
+                const container = document.getElementById('main-scroll-container');
+                if (container) container.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+            currentTab={currentTab} 
+          />
         )}
         
         {isGuest && !activeTask && !showGuestPrompt && (

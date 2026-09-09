@@ -102,7 +102,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                   Nie masz żadnych zadań oczekujących na poprawę. Wszystkie Twoje dotychczasowe odpowiedzi w sesjach były bezbłędne.
                 </p>
                 <div className="mt-5 p-3.5 rounded-2xl bg-white/5 border border-white/10 text-left max-w-sm w-full">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-cyan-300 mb-1">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#FFB800] mb-1">
                     <Sparkles size={14} />
                     <span>Jak działa Bank Błędów?</span>
                   </div>
@@ -115,7 +115,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                     onClose();
                     onNavigateToLessons();
                   }}
-                  className="mt-6 w-full py-3.5 px-6 rounded-2xl font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 active:scale-[0.98] transition shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center justify-center gap-2 text-sm cursor-pointer"
+                  className="mt-6 w-full py-3.5 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.98] transition shadow-[0_0_20px_rgba(255,184,0,0.35)] flex items-center justify-center gap-2 text-sm cursor-pointer"
                 >
                   <span>Przejdź do Mapy Lekcji</span>
                   <ArrowRight size={16} />

@@ -1,5 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { app, auth, db } from '../firebase';
+import { migrateGuestProgressToUser } from './guestMigration';
 
 export { app, auth, db };
 export const googleProvider = new GoogleAuthProvider();
@@ -7,6 +8,9 @@ export const googleProvider = new GoogleAuthProvider();
 export const loginWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
+    if (result.user) {
+      await migrateGuestProgressToUser(result.user);
+    }
     return result.user;
   } catch (error: any) {
     if (

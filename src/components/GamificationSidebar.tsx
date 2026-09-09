@@ -108,7 +108,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         particleCount: 60,
         spread: 70,
         origin: { y: 0.5 },
-        colors: ['#F59E0B', '#00C2FF', '#10B981', '#FFD700']
+        colors: ['#F59E0B', '#FFB800', '#10B981', '#FFD700']
       });
     } catch {}
 
@@ -160,7 +160,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
   const rating = userState?.arenaRating || 1000;
   let leagueName = 'Brązowa';
   let leagueColor = 'text-amber-500';
-  if (rating >= 1800) { leagueName = 'Diamentowa'; leagueColor = 'text-cyan-400'; }
+  if (rating >= 1800) { leagueName = 'Diamentowa'; leagueColor = 'text-sky-400'; }
   else if (rating >= 1500) { leagueName = 'Platynowa'; leagueColor = 'text-teal-300'; }
   else if (rating >= 1300) { leagueName = 'Złota'; leagueColor = 'text-yellow-400'; }
   else if (rating >= 1100) { leagueName = 'Srebrna'; leagueColor = 'text-gray-300'; }
@@ -226,7 +226,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
       </div>
 
       {/* 2. WYZWANIE DNIA (Daily Missions) Z ZEGAREM */}
-      <div className="bg-gradient-to-br from-[#121824] via-[#0E131C] to-[#0A0E15] border border-[#00C2FF]/30 rounded-3xl p-5 relative overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+      <div className="bg-gradient-to-br from-[#121824] via-[#0E131C] to-[#0A0E15] border border-[#FFB800]/30 rounded-3xl p-5 relative overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
         <AnimatePresence>
           {floatingReward && (
             <motion.div
@@ -243,7 +243,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
 
         <div className="flex items-center justify-between mb-3 relative z-10">
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] font-black uppercase tracking-wider text-[#00E5FF] bg-[#00E5FF]/10 border border-[#00E5FF]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-[0_0_10px_rgba(0,229,255,0.15)]">
+            <span className="text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-[0_0_10px_rgba(255,184,0,0.15)]">
               <Sparkles size={10} />
               <span>WYZWANIE DNIA</span>
             </span>
@@ -257,7 +257,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         {/* Progress header */}
         <div className="flex items-baseline justify-between mb-2">
           <span className="text-xs font-bold text-white">
-            Postęp zadań: <span className="text-[#00E5FF] font-black">{currentProgress}</span> / 5
+            Postęp zadań: <span className="text-[#FFB800] font-black">{currentProgress}</span> / 5
           </span>
           <span className="text-[11px] text-[#8B8D98]">
             {isAllTiersCompleted ? 'Wszystko odebrane' : `Do celu: ${tasksToNextTier}`}
@@ -268,7 +268,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         <div className="relative w-full my-3 px-2">
           <div className="w-full bg-[#182232] h-2 rounded-full overflow-hidden border border-white/5">
             <div 
-              className="h-full bg-gradient-to-r from-[#00C2FF] via-[#38BDF8] to-amber-400 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(0,194,255,0.4)]"
+              className="h-full bg-gradient-to-r from-[#D97706] via-[#FFB800] to-amber-400 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
               style={{ width: `${Math.min(100, Math.round((currentProgress / 5) * 100))}%` }}
             />
           </div>
@@ -294,7 +294,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
                       : isClaimable
                         ? 'bg-gradient-to-br from-amber-400 to-yellow-500 border-white text-black shadow-[0_0_12px_rgba(245,158,11,0.8)] scale-110 animate-bounce cursor-pointer'
                         : isUnlocked
-                          ? 'bg-[#00C2FF] border-white text-black'
+                          ? 'bg-[#FFB800] border-white text-black'
                           : 'bg-[#151D2A] border-white/20 text-[#6B7280]'
                   }`}
                   title={`${tier.title}: ${tier.shortReward}`}
@@ -328,7 +328,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
           ) : (
             <button
               onClick={() => onNavigate?.('nauka')}
-              className="px-3 py-1.5 rounded-xl bg-[#00C2FF] hover:bg-[#38BDF8] text-[#080C12] font-black text-xs flex items-center gap-1 shadow-[0_0_10px_rgba(0,194,255,0.3)] active:scale-95 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs flex items-center gap-1 shadow-[0_0_12px_rgba(255,184,0,0.35)] active:scale-95 transition-all cursor-pointer"
             >
               <span>TRENUJ</span>
               <ArrowRight size={12} strokeWidth={3} />
@@ -340,13 +340,13 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
       {/* 3. SKRÓT DO POWTÓREK & STATYSTYK */}
       <div className="bg-[#141A23] border border-white/10 rounded-3xl p-5 flex flex-col gap-3.5 shadow-lg">
         <span className="text-[10px] font-black uppercase text-[#8B8D98] tracking-widest flex items-center gap-1.5">
-          <Zap size={13} className="text-[#00E5FF]" />
+          <Zap size={13} className="text-[#FFB800]" />
           <span>Szybkie Moduły</span>
         </span>
 
         <button
           onClick={() => onNavigate?.('simulator')}
-          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-[#00E5FF]/30 transition-all text-left group cursor-pointer"
+          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-[#FFB800]/30 transition-all text-left group cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center border border-purple-500/30 group-hover:scale-105 transition-transform">

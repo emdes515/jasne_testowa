@@ -73,13 +73,13 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
           {/* Header */}
           <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#121824] shrink-0">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+              <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,184,0,0.2)]">
                 <BookOpen size={20} />
               </div>
               <div>
                 <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
                   Wzory
-                  <span className="text-[10px] font-medium tracking-tight px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                  <span className="text-[10px] font-medium tracking-tight px-2 py-0.5 rounded-full bg-[#FFB800]/10 text-[#FFB800] border border-[#FFB800]/20">
                     Nowa Formuła 2023
                   </span>
                 </h2>
@@ -110,7 +110,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Szukaj wzoru (np. potęgi, logarytm, delta, procenty)..."
-                className="w-full bg-[#141B26] border border-white/10 focus:border-cyan-400/60 rounded-xl pl-10 pr-9 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition shadow-inner"
+                className="w-full bg-[#141B26] border border-white/10 focus:border-[#FFB800]/60 rounded-xl pl-10 pr-9 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition shadow-inner"
               />
               {searchQuery && (
                 <button
@@ -133,7 +133,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                     onClick={() => setSelectedTopic(topic.id)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
                       isSelected
-                        ? 'bg-cyan-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(6,182,212,0.4)]'
+                        ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.4)]'
                         : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
                     }`}
                   >
@@ -171,20 +171,20 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
               filteredFormulas.map(item => (
                 <div
                   key={item.id}
-                  className="bg-[#121824] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-3 shadow-sm hover:border-cyan-500/30 transition-all"
+                  className="bg-[#121824] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-3 shadow-sm hover:border-[#FFB800]/30 transition-all"
                 >
                   {/* Top Bar: Title & Topic Badge */}
                   <div className="flex items-start justify-between gap-2">
                     <h3 className="font-bold text-white text-sm sm:text-base leading-snug">
                       {item.title}
                     </h3>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded-full shrink-0">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-2 py-0.5 rounded-full shrink-0">
                       {item.topicName}
                     </span>
                   </div>
 
                   {/* Formula High-Contrast Display */}
-                  <div className="bg-[#090D14] border border-cyan-500/20 rounded-xl p-3.5 sm:p-4 text-center font-mono text-cyan-300 font-bold text-sm sm:text-base leading-relaxed tracking-wide shadow-inner overflow-x-auto">
+                  <div className="bg-[#090D14] border border-[#FFB800]/20 rounded-xl p-3.5 sm:p-4 text-center font-mono text-amber-200 font-bold text-sm sm:text-base leading-relaxed tracking-wide shadow-inner overflow-x-auto">
                     <MathRenderer content={item.formula} displayMode />
                   </div>
 

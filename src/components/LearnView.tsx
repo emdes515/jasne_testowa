@@ -48,10 +48,10 @@ function getTopicIcon(subjectKey: string, topicIndex: number, DefaultIcon: any) 
  */
 export function ActiveBadge({ label = 'W TOKU' }: { label?: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-[#00C2FF] bg-[#00C2FF]/10 border border-[#00C2FF]/30 px-2.5 py-0.5 rounded-full shadow-[0_0_10px_rgba(0,194,255,0.15)] select-none">
+    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 px-2.5 py-0.5 rounded-full shadow-[0_0_10px_rgba(255,184,0,0.15)] select-none">
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00C2FF] opacity-75 [animation-duration:2.5s]" />
-        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00C2FF]" />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFB800] opacity-75 [animation-duration:2.5s]" />
+        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFB800]" />
       </span>
       <span>{label}</span>
     </span>
@@ -287,7 +287,7 @@ const polishTopics = [
     importance: 'Fundament wypracowania maturalnego',
     description: 'Najważniejsze dzieła polskiego kanonu: problematyka narodowa, egzystencjalna i obyczajowa.',
     progress: '0%',
-    locked: true,
+    locked: false,
     lessons_metadata: [
       { id: '2.1', title: 'Adam Mickiewicz: Dziady cz. III i Kordian', required_points: 3, estimated_time_formatted: '~5 min' },
       { id: '2.2', title: 'Adam Mickiewicz: Pan Tadeusz', required_points: 3, estimated_time_formatted: '~5 min' },
@@ -504,18 +504,14 @@ export function LearnView({
       setVisibleTopicsCount(0);
       return;
     }
-    // Wyznacz indeks bieżącego aktywnego / odblokowanego działu
-    const activeTopicIdx = currentSubject.topics.findIndex((t: any, i: number) => {
-      if (i === 0) {
-        const tasks = t.tasks || [];
-        return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+    // Wyznacz indeks bieżącego aktywnego działu (pierwszy nieukończony dział)
+    const activeTopicIdx = currentSubject.topics.findIndex((t: any) => {
+      const lessons = getLessonsForTopic(t);
+      if (lessons.length > 0) {
+        return !lessons.every((l: any) => isLessonCompleted(l, completedTasks, userState));
       }
-      const prev = currentSubject.topics[i - 1];
-      const prevTasks = prev?.tasks || [];
-      const prevDone = prevTasks.length > 0 && prevTasks.every((tsk: any) => completedTasks.includes(tsk.id));
-      if (!prevDone) return false;
       const tasks = t.tasks || [];
-      return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+      return tasks.length === 0 || !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
     });
     const beaconIdx = activeTopicIdx !== -1 ? activeTopicIdx : 0;
     const targetIdx = Math.max(beaconIdx, selectedTopicIndex ?? 0);
@@ -712,23 +708,23 @@ export function LearnView({
            ========================================================================= */}
         {(viewState === 'topics' || viewState === 'subjects') && currentSubject && (() => {
           const completedTopicsCount = currentSubject.topics.filter((t: any) => {
+            const lessons = getLessonsForTopic(t);
+            if (lessons.length > 0) {
+              return lessons.every((l: any) => isLessonCompleted(l, completedTasks, userState));
+            }
             const tasks = t.tasks || [];
             return tasks.length > 0 && tasks.every((tsk: any) => completedTasks.includes(tsk.id));
           }).length;
           const totalTopicsCount = currentSubject.topics.length;
 
-          // Find active topic index
-          const activeTopicIdx = currentSubject.topics.findIndex((t: any, i: number) => {
-            if (i === 0) {
-              const tasks = t.tasks || [];
-              return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+          // Find active topic index: pierwszy nieukończony dział
+          const activeTopicIdx = currentSubject.topics.findIndex((t: any) => {
+            const lessons = getLessonsForTopic(t);
+            if (lessons.length > 0) {
+              return !lessons.every((l: any) => isLessonCompleted(l, completedTasks, userState));
             }
-            const prev = currentSubject.topics[i - 1];
-            const prevTasks = prev?.tasks || [];
-            const prevDone = prevTasks.length > 0 && prevTasks.every((tsk: any) => completedTasks.includes(tsk.id));
-            if (!prevDone) return false;
             const tasks = t.tasks || [];
-            return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+            return tasks.length === 0 || !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
           });
           const currentActiveIdx = activeTopicIdx !== -1 ? activeTopicIdx : 0;
           const visibleTopics = currentSubject.topics.slice(0, visibleTopicsCount);
@@ -743,46 +739,28 @@ export function LearnView({
               transition={{ duration: 0.2 }}
               className="flex-1 flex flex-col w-full"
             >
-              {/* Top Header: Przycisk wstecz < oraz klikalny tytuł otwierają Bottom Sheet wyboru przedmiotu */}
-              <header className="px-4 py-2.5 sm:py-3 sticky top-0 bg-[#0B0E14]/95 backdrop-blur-md z-20 border-b border-white/5 shadow-sm shrink-0">
-                <div className="max-w-3xl mx-auto w-full flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <button 
-                      id="learn-back-subject-button"
-                      onClick={handleBack}
-                      className="w-9 h-9 rounded-xl bg-[#141A23] border border-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors shadow-sm shrink-0 cursor-pointer active:scale-95"
-                      aria-label="Wybierz przedmiot"
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-                    
-                    {/* Klikalny tytuł przedmiotu otwierający Subject Switcher oraz schludna etykieta */}
-                    <div className="flex items-center gap-2.5 flex-wrap min-w-0">
-                      <button
-                        id="learn-subject-switcher-trigger"
-                        onClick={() => {
-                          triggerHaptic('light');
-                          openSubjectSheet(true);
-                        }}
-                        className="flex items-center gap-2 text-left cursor-pointer group rounded-xl px-1.5 py-1 -ml-1.5 hover:bg-white/5 transition-colors"
-                      >
-                        <h1 className="font-display font-black text-white text-lg sm:text-xl tracking-tight leading-none group-hover:text-[#00C2FF] transition-colors">
-                          {currentSubject.name}
-                        </h1>
-                        <div className="w-5 h-5 rounded-md bg-[#141A23] border border-white/10 flex items-center justify-center text-[#8B8D98] group-hover:text-[#00C2FF] transition-colors shrink-0">
-                          <ChevronDown size={14} />
-                        </div>
-                      </button>
+              {/* Sub-header wyboru przedmiotu i postępu działów */}
+              <header className="px-3 sm:px-6 py-2.5 sticky top-0 bg-[#0B0E14]/90 backdrop-blur-xl z-20 border-b border-white/5 shadow-sm shrink-0">
+                <div className="max-w-3xl mx-auto w-full flex items-center justify-between gap-2.5">
+                  <button
+                    id="learn-subject-switcher-trigger"
+                    onClick={() => {
+                      triggerHaptic('light');
+                      openSubjectSheet(true);
+                    }}
+                    className="flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 rounded-xl bg-[#101726] hover:bg-[#141C2D] border border-white/10 hover:border-[#FFB800]/40 transition-all cursor-pointer group active:scale-[0.98] shadow-sm min-w-0"
+                    title="Kliknij, aby zmienić przedmiot"
+                  >
+                    <h1 className="font-display font-black text-white text-sm sm:text-base tracking-tight leading-none group-hover:text-[#FFB800] transition-colors truncate">
+                      {currentSubject.name}
+                    </h1>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#FFB800]/10 text-[#FFB800] border border-[#FFB800]/25 shrink-0">
+                      {currentSubject.key === 'math' ? 'Formuła 2023' : (currentSubject.level || 'Formuła 2023')}
+                    </span>
+                    <ChevronDown size={13} className="text-slate-400 group-hover:text-[#FFB800] transition-colors shrink-0" />
+                  </button>
 
-                      {/* Schludna, elegancka etykieta formuły (Linear / Apple Dark style) */}
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-[11px] font-medium tracking-tight select-none shadow-[0_0_10px_rgba(6,182,212,0.1)]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                        <span>{currentSubject.key === 'math' ? 'Nowa Formuła 2023' : (currentSubject.level || 'Nowa Formuła 2023')}</span>
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141A23] border border-white/5 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap">
+                  <div className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#101726] border border-white/10 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap shadow-sm">
                     <span className="text-emerald-400 font-black">{completedTopicsCount}/{totalTopicsCount}</span>
                     <span>działów</span>
                   </div>
@@ -793,21 +771,20 @@ export function LearnView({
               <div className="flex-1 px-4 sm:px-6 pt-3 pb-36 sm:pb-40 relative max-w-3xl mx-auto w-full">
                 <div className="space-y-3.5 relative z-10">
                   {visibleTopics.map((topic: any, idx: number) => {
-                    // Kaskadowe odblokowywanie działów: Dział 0 zawsze odblokowany; kolejny po ukończeniu poprzednika
-                    const prevTopic = idx > 0 ? currentSubject.topics[idx - 1] : null;
-                    const prevTopicTasks = prevTopic?.tasks || [];
-                    const prevTopicCompleted = idx === 0 || (prevTopicTasks.length > 0 && prevTopicTasks.every((t: any) => completedTasks.includes(t.id)));
-                    const isUnlocked = idx === 0 || prevTopicCompleted;
-                    const isLocked = !isUnlocked;
+                    // Wszystkie działy są od razu odblokowane (brak blokad między działami)
+                    const isUnlocked = true;
+                    const isLocked = false;
 
                     const allTopicTasks = topic.tasks || [];
                     const completedTopicTasks = allTopicTasks.filter((t: any) => completedTasks.includes(t.id));
-                    const isFullyCompleted = allTopicTasks.length > 0 && completedTopicTasks.length === allTopicTasks.length;
-                    const isBeaconTopic = (idx === currentActiveIdx) && !isFullyCompleted && isUnlocked;
-                    
                     const topicLessons = getLessonsForTopic(topic);
                     const topicLessonsCount = topicLessons.length;
                     const completedTopicLessonsCount = topicLessons.filter(l => isLessonCompleted(l, completedTasks, userState)).length;
+
+                    const isFullyCompleted = topicLessonsCount > 0
+                      ? (completedTopicLessonsCount === topicLessonsCount)
+                      : (allTopicTasks.length > 0 && completedTopicTasks.length === allTopicTasks.length);
+                    const isBeaconTopic = (idx === currentActiveIdx) && !isFullyCompleted;
 
                     const progressPercent = topicLessonsCount > 0 
                       ? Math.round((completedTopicLessonsCount / topicLessonsCount) * 100)
@@ -829,12 +806,12 @@ export function LearnView({
                         }}
                         className={`w-full p-4 sm:p-5 rounded-2xl border text-left transition-all duration-200 group flex flex-col gap-2.5 relative overflow-hidden cursor-pointer active:scale-[0.99] ${
                           isBeaconTopic
-                            ? 'bg-gradient-to-r from-[#121F30] via-[#0F1826] to-[#0D1420] border-[#00C2FF]/60 hover:border-[#00C2FF] ring-1 ring-[#00C2FF]/20 shadow-[0_4px_24px_rgba(0,194,255,0.12)]'
+                            ? 'bg-gradient-to-r from-[#151D2C] to-[#0E1420] border-[#FFB800] ring-1 ring-[#FFB800]/30 shadow-[0_4px_24px_rgba(255,184,0,0.15)]'
                             : isFullyCompleted
-                              ? 'bg-gradient-to-r from-[#0C1717] to-[#111A24] border-emerald-500/35 shadow-[0_0_15px_rgba(16,185,129,0.08)]'
+                              ? 'bg-[#0E1524] border-emerald-500/30 hover:border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.08)]'
                               : isLocked
-                                ? 'bg-[#0E131C]/60 border-white/5 opacity-60 hover:opacity-75'
-                                : 'bg-[#141A23] border-white/10 hover:border-white/20 shadow-sm'
+                                ? 'bg-[#0B0F17]/60 border-white/5 opacity-60 hover:opacity-75'
+                                : 'bg-[#101726] border-white/10 hover:border-white/20 shadow-sm'
                         }`}
                       >
                         {/* Wiersz 1 (Góra): Numer działu (np. "01") + Pastylka stanu po lewej, Liczba lekcji po prawej */}
@@ -856,7 +833,7 @@ export function LearnView({
                             ) : isBeaconTopic ? (
                               <ActiveBadge label="W TOKU" />
                             ) : (
-                              <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase text-slate-300 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+                              <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase text-slate-300 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
                                 DOSTĘPNY
                               </span>
                             )}
@@ -870,7 +847,7 @@ export function LearnView({
                         {/* Wiersz 2 (Środek): Duży, czytelny tytuł działu + wskaźnik wejścia */}
                         <div className="flex items-center justify-between gap-3 w-full">
                           <h2 className={`font-display font-black text-base sm:text-lg leading-snug break-words transition-colors ${
-                            isLocked ? 'text-slate-400' : 'text-white group-hover:text-[#00C2FF]'
+                            isLocked ? 'text-slate-400' : 'text-white group-hover:text-[#FFB800]'
                           }`}>
                             {cleanName}
                           </h2>
@@ -878,7 +855,7 @@ export function LearnView({
                           {!isLocked && (
                             <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
                               isBeaconTopic
-                                ? 'bg-[#00C2FF]/15 text-[#00C2FF] group-hover:bg-[#00C2FF] group-hover:text-slate-950 shadow-[0_0_12px_rgba(0,194,255,0.2)]'
+                                ? 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950'
                                   : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
@@ -899,7 +876,7 @@ export function LearnView({
                                   : `Postęp zadań: ${completedTopicTasks.length}/${allTopicTasks.length}`}
                             </span>
                             {!isLocked && (
-                              <span className={isFullyCompleted ? "text-emerald-400 font-bold" : isBeaconTopic ? "text-[#00C2FF] font-bold" : "text-slate-300 font-bold"}>
+                              <span className={isFullyCompleted ? "text-emerald-400 font-bold" : isBeaconTopic ? "text-[#FFB800] font-bold" : "text-slate-300 font-bold"}>
                                 {progressPercent}%
                               </span>
                             )}
@@ -912,7 +889,7 @@ export function LearnView({
                                   : isFullyCompleted
                                     ? 'bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.5)]'
                                     : isBeaconTopic 
-                                      ? 'bg-[#00C2FF] shadow-[0_0_10px_rgba(0,194,255,0.6)]' 
+                                      ? 'bg-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.6)]' 
                                       : 'bg-white/30'
                               }`} 
                               style={{ width: `${isLocked ? 0 : progressPercent}%` }} 
@@ -931,7 +908,7 @@ export function LearnView({
                     className="pt-6 pb-2 flex flex-col items-center justify-center relative z-10 gap-2.5"
                   >
                     <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141A23]/90 border border-white/10 text-xs text-[#8B8D98] backdrop-blur-md shadow-lg">
-                      <Loader2 size={13} className="animate-spin text-[#00C2FF]" />
+                      <Loader2 size={13} className="animate-spin text-[#FFB800]" />
                       <span>Doczytywanie kolejnych działów ({visibleTopics.length} z {totalTopicsCount})...</span>
                     </div>
                     <button
@@ -940,7 +917,7 @@ export function LearnView({
                         triggerHaptic('light');
                         setVisibleTopicsCount(totalTopicsCount);
                       }}
-                      className="text-[11px] font-semibold text-[#00C2FF] hover:text-cyan-300 underline underline-offset-2 cursor-pointer py-1 px-3 transition-colors active:scale-95"
+                      className="text-[11px] font-semibold text-[#FFB800] hover:text-[#FFC72C] underline underline-offset-2 cursor-pointer py-1 px-3 transition-colors active:scale-95"
                     >
                       Pokaż wszystkie działy ({totalTopicsCount})
                     </button>
@@ -967,9 +944,8 @@ export function LearnView({
             Z kaskadowym odblokowywaniem i trybem powtórkowym.
            ========================================================================= */}
         {viewState === 'lessons' && currentTopic && (() => {
-          const allTopicTasks = lessonsForCurrentTopic.flatMap(g => g.tasks);
-          const completedInCurrentTopic = allTopicTasks.filter(t => isTaskCompletedInLesson(t, completedTasks, allTopicTasks)).length;
-          const totalInCurrentTopic = allTopicTasks.length;
+          const completedLessonsCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, userState)).length;
+          const totalLessonsCount = lessonsForCurrentTopic.length;
 
           return (
             <motion.div 
@@ -998,14 +974,14 @@ export function LearnView({
                       </h2>
                     </div>
 
-                    <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141A23] border border-white/5 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap">
-                      {totalInCurrentTopic > 0 ? (
+                    <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#101726] border border-white/10 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap">
+                      {totalLessonsCount > 0 ? (
                         <>
-                          <span className="text-emerald-400 font-black">{completedInCurrentTopic}/{totalInCurrentTopic}</span>
-                          <span>zadań</span>
+                          <span className="text-emerald-400 font-black">{completedLessonsCount}/{totalLessonsCount}</span>
+                          <span>lekcji</span>
                         </>
                       ) : (
-                        <span className="text-cyan-400 font-semibold">W opracowaniu</span>
+                        <span className="text-[#FFB800] font-semibold">W opracowaniu</span>
                       )}
                     </div>
                   </div>
@@ -1017,14 +993,14 @@ export function LearnView({
                         triggerHaptic('light');
                         openSubjectSheet(true);
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#141A23] border border-white/10 hover:border-[#00C2FF]/40 text-[10px] sm:text-[11px] font-medium text-[#9CA3AF] transition-colors cursor-pointer group"
+                      className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#141A23] border border-white/10 hover:border-[#FFB800]/40 text-[10px] sm:text-[11px] font-medium text-[#9CA3AF] transition-colors cursor-pointer group"
                       title="Zmień przedmiot"
                     >
                       <span className="text-slate-400 font-normal">Dział {(selectedTopicIndex ?? 0) + 1}</span>
                       <span className="text-white/20">•</span>
-                      <span className="text-white group-hover:text-[#00C2FF] font-medium transition-colors">{currentSubject.name}</span>
+                      <span className="text-white group-hover:text-[#FFB800] font-medium transition-colors">{currentSubject.name}</span>
                       <span className="text-white/20">•</span>
-                      <span className="text-[#00C2FF] font-medium">{currentSubject.key === 'math' ? 'Nowa Formuła 2023' : (currentSubject.level || 'Nowa Formuła 2023')}</span>
+                      <span className="text-[#FFB800] font-medium">{currentSubject.key === 'math' ? 'Nowa Formuła 2023' : (currentSubject.level || 'Nowa Formuła 2023')}</span>
                     </button>
                   </div>
                 </div>
@@ -1042,7 +1018,7 @@ export function LearnView({
                     <div className="bg-[#101724] border border-white/10 rounded-2xl p-4 shadow-sm flex flex-col gap-2.5 mb-1">
                       <div className="flex items-center justify-between text-xs sm:text-sm">
                         <span className="text-slate-300 font-semibold flex items-center gap-2">
-                          <GraduationCap className="w-4 h-4 text-cyan-400" />
+                          <GraduationCap className="w-4 h-4 text-[#FFB800]" />
                           <span>Postęp Działu {(selectedTopicIndex ?? 0) + 1}:</span>
                         </span>
                         <span className="font-bold text-white">
@@ -1050,9 +1026,9 @@ export function LearnView({
                         </span>
                       </div>
                       {/* Minimalistyczny 6-milimetrowy (h-2) pasek postępu */}
-                      <div className="w-full h-2 rounded-full bg-slate-900 overflow-hidden border border-white/5">
+                      <div className="w-full h-2 rounded-full bg-slate-950 overflow-hidden border border-white/10">
                         <div 
-                          className="h-full bg-gradient-to-r from-teal-500 via-emerald-400 to-cyan-400 transition-all duration-500 rounded-full shadow-[0_0_12px_rgba(52,211,153,0.5)]"
+                          className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] transition-all duration-500 rounded-full shadow-[0_0_12px_rgba(255,184,0,0.5)]"
                           style={{ width: `${progressPct}%` }}
                         />
                       </div>
@@ -1062,10 +1038,10 @@ export function LearnView({
 
                 {lessonsForCurrentTopic.length === 0 ? (
                   <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-[#141A23]/70 border border-white/10 rounded-3xl mt-4 sm:mt-6 max-w-md mx-auto shadow-xl">
-                    <div className="w-16 h-16 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 shadow-[0_0_20px_rgba(0,194,255,0.2)]">
+                    <div className="w-16 h-16 rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] mb-4 shadow-[0_0_20px_rgba(255,184,0,0.2)]">
                       <Sparkles size={28} />
                     </div>
-                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/25 px-3 py-1 rounded-full mb-3">
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/25 px-3 py-1 rounded-full mb-3">
                       W opracowaniu • Dostępne wkrótce
                     </span>
                     <h3 className="text-lg sm:text-xl font-display font-black text-white mb-2">
@@ -1077,7 +1053,7 @@ export function LearnView({
                     <div className="w-full bg-[#0B0E14] border border-white/5 rounded-xl p-3 mb-5 text-left text-xs text-slate-300 space-y-1.5">
                       <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium">
                         <span>Waga w arkuszu maturalnym:</span>
-                        <span className="text-cyan-400 font-bold">{currentTopic.matura_points_range || '3–6 pkt'}</span>
+                        <span className="text-[#FFB800] font-bold">{currentTopic.matura_points_range || '3–6 pkt'}</span>
                       </div>
                       <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium">
                         <span>Status:</span>
@@ -1091,7 +1067,7 @@ export function LearnView({
                           setSelectedTopicIndex(0);
                           setViewState('lessons');
                         }}
-                        className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-[#00C2FF] to-[#0099CC] hover:from-[#38BDF8] hover:to-[#00B4E6] text-[#080C12] font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,194,255,0.35)] active:scale-98 transition-all cursor-pointer"
+                        className="w-full py-3.5 px-5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-98 transition-all cursor-pointer"
                       >
                         <span>Przejdź do Działu 1 (Liczby Rzeczywiste)</span>
                         <ArrowRight size={16} strokeWidth={3} />
@@ -1151,12 +1127,12 @@ export function LearnView({
                           id={`lesson-card-${group.id}`}
                           className={`rounded-2xl border transition-all duration-200 p-4 sm:p-5 flex flex-col gap-3.5 ${
                             isCompleted
-                              ? 'border-emerald-500/40 bg-[#0B1516] shadow-[0_4px_20px_rgba(16,185,129,0.06)]'
+                              ? 'border-emerald-500/30 bg-[#0E1524] shadow-[0_4px_20px_rgba(16,185,129,0.06)]'
                               : isCurrentActiveLesson
-                                ? 'border-2 border-cyan-400 bg-gradient-to-b from-[#132335] via-[#0F1A28] to-[#0D1520] shadow-[0_0_20px_rgba(6,182,212,0.15)] ring-1 ring-cyan-400/30'
+                                ? 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-[0_0_25px_rgba(255,184,0,0.22)] ring-1 ring-[#FFB800]/40'
                                 : !isUnlocked
-                                  ? 'border-white/5 bg-[#0B0F15]/60 opacity-60'
-                                  : 'border-white/10 bg-[#121822]'
+                                  ? 'border-white/5 bg-[#0A0E17]/60 opacity-60'
+                                  : 'border-white/10 bg-[#101726]'
                           }`}
                         >
                           {/* Górna część karty */}
@@ -1167,7 +1143,7 @@ export function LearnView({
                                 isCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.25)]'
                                   : isCurrentActiveLesson
-                                    ? 'bg-cyan-500/20 border border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)]'
+                                    ? 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.3)]'
                                     : !isUnlocked
                                       ? 'bg-white/5 border-white/10 text-slate-500'
                                       : 'bg-white/5 border-white/10 text-slate-300'
@@ -1230,9 +1206,9 @@ export function LearnView({
                                               <span>Bezbłędnie (0 błędów) • {reqTasks}/{reqTasks} zadań</span>
                                             </span>
                                           ) : (
-                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
-                                              <RefreshCw size={11} className="text-amber-400 shrink-0" />
-                                              <span>Zaliczono z pętlą • {mistakesLabel}</span>
+                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/25 text-slate-300 text-xs font-semibold">
+                                              <RefreshCw size={11} className="text-[#38BDF8] shrink-0" />
+                                              <span>Zaliczono z pętlą • <span className="text-[#38BDF8] font-bold">{mistakesLabel}</span></span>
                                             </span>
                                           )}
                                           <span>•</span>
@@ -1247,7 +1223,7 @@ export function LearnView({
                                     if (isCurrentActiveLesson) {
                                       return (
                                         <>
-                                          <span className="flex items-center gap-1 text-cyan-300 font-medium">
+                                          <span className="flex items-center gap-1 text-[#FFB800] font-medium">
                                             <Clock size={13} />
                                             <span>{formatLessonDuration(group)}</span>
                                           </span>
@@ -1297,18 +1273,18 @@ export function LearnView({
                               <button
                                 id={`repeat-lesson-btn-${group.id}`}
                                 onClick={() => handleStartLessonSession(group, nextLessonPayload)}
-                                className="w-full py-2.5 px-4 rounded-xl bg-transparent hover:bg-emerald-500/10 border border-emerald-500/35 hover:border-emerald-500/60 text-emerald-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-[0.99] cursor-pointer"
+                                className="w-full py-2.5 px-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-slate-200 hover:text-emerald-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-[0.99] cursor-pointer"
                               >
-                                <RefreshCw size={14} className="stroke-[2.5]" />
+                                <RefreshCw size={14} className="stroke-[2.5] text-emerald-400" />
                                 <span>POWTÓRZ LEKCJĘ</span>
                               </button>
                             ) : (
                               <button
                                 id={`start-lesson-btn-${group.id}`}
                                 onClick={() => handleStartLessonSession(group, nextLessonPayload)}
-                                className="w-full py-3.5 px-6 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(6,182,212,0.4)] active:scale-[0.98] transition cursor-pointer"
+                                className="w-full py-3.5 px-6 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-[0.98] transition cursor-pointer"
                               >
-                                <Play size={16} fill="#020617" strokeWidth={0} />
+                                <Play size={16} fill="#080B11" strokeWidth={0} />
                                 <span>ROZPOCZNIJ LEKCJĘ</span>
                                 <ArrowRight size={16} strokeWidth={3} />
                               </button>
@@ -1376,7 +1352,7 @@ export function LearnView({
                             </div>
                             <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
                               <span className="text-[10px] text-slate-400 font-semibold block uppercase">Limit Czasu</span>
-                              <span className="text-sm font-extrabold text-cyan-400">15 minut</span>
+                              <span className="text-sm font-extrabold text-[#FFB800]">15 minut</span>
                             </div>
                             <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
                               <span className="text-[10px] text-slate-400 font-semibold block uppercase">Nagroda</span>
@@ -1482,12 +1458,12 @@ export function LearnView({
                     }}
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'math'
-                        ? 'border-[#00C2FF] bg-gradient-to-br from-[#16253B] to-[#101A28] ring-1 ring-[#00C2FF]/30 shadow-[0_0_24px_rgba(0,194,255,0.22)]'
-                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                        ? 'border-[#FFB800] bg-gradient-to-br from-[#151D2C] via-[#111724] to-[#0E1420] ring-1 ring-[#FFB800]/40 shadow-[0_0_24px_rgba(255,184,0,0.22)]'
+                        : 'border-white/10 bg-[#101726] hover:border-white/20 hover:bg-[#141C2C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(59,130,246,0.25)]">
+                      <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.25)]">
                         <Calculator size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -1495,8 +1471,8 @@ export function LearnView({
                           <span className="font-display font-black text-white text-base">
                             Matematyka
                           </span>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-                            <span className="w-1 h-1 rounded-full bg-cyan-400" />
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-[#FFB800] border border-[#FFB800]/20">
+                            <span className="w-1 h-1 rounded-full bg-[#FFB800]" />
                             Nowa Formuła 2023
                           </span>
                         </div>
@@ -1507,13 +1483,13 @@ export function LearnView({
                           <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
-                                mathProgressPercent > 0 ? 'bg-[#00C2FF]' : 'bg-transparent'
+                                mathProgressPercent > 0 ? 'bg-[#FFB800]' : 'bg-transparent'
                               }`}
                               style={{ width: `${mathProgressPercent}%` }}
                             />
                           </div>
                           <span className={`text-[11px] font-bold shrink-0 ${
-                            mathProgressPercent > 0 ? 'text-[#00C2FF]' : 'text-slate-500'
+                            mathProgressPercent > 0 ? 'text-[#FFB800]' : 'text-slate-500'
                           }`}>
                             {mathProgressPercent}%
                           </span>
@@ -1525,7 +1501,7 @@ export function LearnView({
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-                        className="w-6 h-6 rounded-full bg-[#00C2FF] text-[#080C12] flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(0,194,255,0.4)]"
+                        className="w-6 h-6 rounded-full bg-[#FFB800] text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
                       >
                         <Check size={14} strokeWidth={3} />
                       </motion.div>

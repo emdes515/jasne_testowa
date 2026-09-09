@@ -6,267 +6,267 @@
         "lessons": [
             {
                 "id": "lesson-3-1",
-                "title": "Równania liniowe 1: Przenoszenie na drugą stronę i redukcja",
+                "title": "Równania liniowe: Przenoszenie wyrazów i redukcja",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Zasada wagi: x-y wędrują na lewą szalę, czyste liczby na prawą. Przekraczasz znak równości? Płacisz cło – zmieniasz znak na przeciwny. Na koniec dzielisz obie strony przez to, co stoi przy x.",
-                    "matura_context": "Absolutny fundament, na którym stoi 100% arkusza maturalnego.",
+                    "concept_essence": "Rozwiązanie równania liniowego polega na wyizolowaniu niewiadomej x po jednej stronie równości, a wyrazów wolnych po drugiej. Przy przenoszeniu składnika na drugą stronę zmieniamy jego znak na przeciwny. Na koniec dzielimy obie strony przez współczynnik stojący przy x.",
+                    "matura_context": "Elementarna umiejętność sprawdzana w zadaniach zamkniętych matury podstawowej.",
                     "core_formulas": [
                         "ax + b = 0 \\implies ax = -b \\implies x = -\\frac{b}{a} \\quad (a \\neq 0)"
                     ],
-                    "worked_example": "$3x - 5 = x + 7 \\implies 3x - x = 7 + 5 \\implies 2x = 12 \\implies x = 6$.",
-                    "exam_trap": "Zmiana znaku przy dzieleniu: $2x = 6 \\implies x = 3$, a NIE $-3$! Dzielenie nie zmienia znaku."
+                    "worked_example": "$4x - 7 = x + 8 \\implies 4x - x = 8 + 7 \\implies 3x = 15 \\implies x = 5$.",
+                    "exam_trap": "Dzielenie przez współczynnik przy x nie zmienia jego znaku! $3x = 12 \\implies x = 4$, a nie $-4$."
                 },
                 "tasks": [
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $4x - 7 = 2x + 5$. Wpisz wartość $x$:",
-                        "correct_answer": "6",
-                        "explanation": "4x - 2x = 5 + 7 -> 2x = 12 -> x = 6.",
-                        "hint": "Przenieś 2x na lewo, a -7 na prawo.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $5x - 8 = 2x + 7$. Wpisz wartość $x$:",
+                        "correct_answer": "5",
+                        "explanation": "5x - 2x = 7 + 8 -> 3x = 15 -> x = 5.",
+                        "hint": "Przenieś 2x na lewą stronę, a -8 na prawą stronę ze zmianą znaków.",
                         "hint_cost": 10,
-                        "id": "task-41cfd664"
-                    },
-                    {
-                        "type": "SINGLE_CHOICE",
-                        "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Rozwiązaniem równania $2(x - 3) = 4 - x$ jest liczba:",
-                        "options": [
-                            "$\\frac{10}{3}$",
-                            "$2$",
-                            "$\\frac{2}{3}$",
-                            "$-2$"
-                        ],
-                        "correct_answer": "$\\frac{10}{3}$",
-                        "explanation": "2x - 6 = 4 - x -> 3x = 10 -> x = 10/3.",
-                        "hint": "Wymnóż nawias: 2x - 6.",
-                        "hint_cost": 10,
-                        "id": "task-50f9b388"
-                    },
-                    {
-                        "type": "SINGLE_CHOICE",
-                        "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Równanie $3x + 2 = 3x - 5$:",
-                        "options": [
-                            "nie ma rozwiązań (sprzeczne)",
-                            "ma nieskończenie wiele rozwiązań",
-                            "ma jedno rozwiązanie x = 0",
-                            "ma jedno rozwiązanie x = -5/2"
-                        ],
-                        "correct_answer": "nie ma rozwiązań (sprzeczne)",
-                        "explanation": "3x - 3x = -5 - 2 -> 0 = -7 (sprzeczność). Równanie nie ma rozwiązań.",
-                        "hint": "Odejmij 3x od obu stron i zobacz, co zostanie.",
-                        "hint_cost": 10,
-                        "id": "task-ea3db785"
-                    },
-                    {
-                        "type": "TRUE_FALSE",
-                        "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Równanie $2(x + 1) = 2x + 2$ jest równaniem tożsamościowym (spełnia je każda liczba rzeczywista).",
-                        "correct_answer": "P",
-                        "explanation": "2x + 2 = 2x + 2 -> 0 = 0. Prawda, tożsamość.",
-                        "hint": "Wymnóż lewą stronę – czy jest identyczna jak prawa?",
-                        "hint_cost": 10,
-                        "id": "task-de206609"
-                    },
-                    {
-                        "type": "NUMERIC_INPUT",
-                        "points": 1,
-                        "source": "Matura czerwiec 2024",
-                        "content": "Rozwiąż równanie: $5 - (2x + 3) = 10$. Wpisz wartość $x$:",
-                        "correct_answer": "-4",
-                        "explanation": "5 - 2x - 3 = 10 -> 2 - 2x = 10 -> -2x = 8 -> x = -4.",
-                        "hint": "Pamiętaj o zmianie znaków po opuszczeniu nawiasu z minusem.",
-                        "hint_cost": 10,
-                        "id": "task-79778821"
+                        "id": "task-28465df3"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Matura maj 2023",
-                        "content": "Liczba $-2$ jest rozwiązaniem równania:",
+                        "content": "Rozwiązaniem równania $3(x - 2) = 5 - x$ jest liczba:",
                         "options": [
-                            "$3x + 7 = 1$",
-                            "$2x - 4 = 0$",
-                            "$x + 2 = 4$",
-                            "$5x - 2 = 8$"
+                            "$\\frac{11}{4}$",
+                            "$3$",
+                            "$\\frac{7}{4}$",
+                            "$-3$"
                         ],
-                        "correct_answer": "$3x + 7 = 1$",
-                        "explanation": "3*(-2) + 7 = -6 + 7 = 1. Zgadza się!",
-                        "hint": "Podstaw -2 pod x w każdej odpowiedzi.",
+                        "correct_answer": "$\\frac{11}{4}$",
+                        "explanation": "3x - 6 = 5 - x -> 4x = 11 -> x = 11/4.",
+                        "hint": "Wymnóż nawias: 3x - 6.",
                         "hint_cost": 10,
-                        "id": "task-9d4c75f6"
+                        "id": "task-e5779835"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Równanie $4x + 1 = 4x - 3$:",
+                        "options": [
+                            "nie ma rozwiązań (jest sprzeczne)",
+                            "ma nieskończenie wiele rozwiązań",
+                            "ma jedno rozwiązanie x = 0",
+                            "ma rozwiązanie x = -1"
+                        ],
+                        "correct_answer": "nie ma rozwiązań (jest sprzeczne)",
+                        "explanation": "4x - 4x = -3 - 1 -> 0 = -4 (sprzeczność). Brak rozwiązań.",
+                        "hint": "Odejmij 4x od obu stron równania.",
+                        "hint_cost": 10,
+                        "id": "task-ead9f7ac"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Równanie $3(x + 2) = 3x + 6$ jest tożsamościowe (spełnia je każda liczba rzeczywista).",
+                        "correct_answer": "P",
+                        "explanation": "3x + 6 = 3x + 6 -> 0 = 0. Tożsamość. Prawda.",
+                        "hint": "Wymnóż lewą stronę równania.",
+                        "hint_cost": 10,
+                        "id": "task-6ef76bc6"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Rozwiąż równanie: $7 - (3x + 2) = 11$. Wpisz wartość $x$:",
+                        "correct_answer": "-2",
+                        "explanation": "7 - 3x - 2 = 11 -> 5 - 3x = 11 -> -3x = 6 -> x = -2.",
+                        "hint": "Zmień znaki po opuszczeniu nawiasu z minusem.",
+                        "hint_cost": 10,
+                        "id": "task-69c98be7"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Liczba $-3$ jest rozwiązaniem równania:",
+                        "options": [
+                            "$2x + 8 = 2$",
+                            "$3x - 6 = 0$",
+                            "$x + 3 = 6$",
+                            "$4x - 1 = 11$"
+                        ],
+                        "correct_answer": "$2x + 8 = 2$",
+                        "explanation": "2*(-3) + 8 = -6 + 8 = 2. Równanie jest spełnione.",
+                        "hint": "Podstaw -3 za x w pierwszym równaniu.",
+                        "hint_cost": 10,
+                        "id": "task-6df5a7c0"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Rozwiązaniem równania $-x = 5$ jest liczba $x = -5$.",
+                        "content": "Rozwiązaniem równania $-2x = 8$ jest liczba $x = -4$.",
                         "correct_answer": "P",
-                        "explanation": "Mnożymy lub dzielimy przez -1: x = -5. Prawda.",
-                        "hint": "Zmień znak po obu stronach równania.",
+                        "explanation": "Dzielimy przez -2: x = 8 / (-2) = -4. Prawda.",
+                        "hint": "Podziel 8 przez -2.",
                         "hint_cost": 10,
-                        "id": "task-874dc8e8"
+                        "id": "task-4e04e5cb"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $3(2x - 4) - 2(x + 5) = 4 - x$. Zapisz kolejne etapy przekształceń.",
-                        "scoring_key": "1 pkt za poprawne wymnożenie nawiasów i redukcję lewej strony: 4x - 22 = 4 - x. 1 pkt za wyznaczenie x = 26/5 = 5,2.",
-                        "explanation": "6x - 12 - 2x - 10 = 4 - x -> 4x - 22 = 4 - x -> 5x = 26 -> x = 26/5.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $4(x - 2) - 3(2x + 1) = 5 - x$. Zapisz kolejne etapy przekształceń.",
+                        "scoring_key": "1 pkt za poprawne wymnożenie nawiasów i redukcję lewej strony: -2x - 11 = 5 - x. 1 pkt za wyznaczenie x = -16.",
+                        "explanation": "4x - 8 - 6x - 3 = 5 - x -> -2x - 11 = 5 - x -> -x = 16 -> x = -16.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-3a751bd3"
+                        "id": "task-875c727f"
                     }
                 ]
             },
             {
                 "id": "lesson-3-2",
-                "title": "Równania liniowe 2: Ułamki i mnożenie obustronne",
+                "title": "Równania liniowe: Ułamki i mnożenie obustronne",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Widzisz ułamki w równaniu? Kasuj mianowniki jednym ruchem! Znajdujesz wspólny mianownik dla wszystkich liczb na dole i mnożysz przez niego CAŁE równanie obustronnie.",
-                    "matura_context": "Zadania z ułamkami pojawiają się regularnie, aby sprawdzić precyzję rachunkową.",
+                    "concept_essence": "Równania zawierające ułamki najprościej rozwiązać poprzez obustronne pomnożenie przez wspólny mianownik wszystkich ułamków występujących w równaniu. Pamiętaj, że mnożymy KAŻDY składnik równania, w tym samotne liczby całkowite.",
+                    "matura_context": "Zadania z ułamkami pojawiają się w arkuszach matury podstawowej jako test precyzji rachunkowej.",
                     "core_formulas": [
                         "\\frac{x}{a} + \\frac{x}{b} = c \\quad \\Big| \\cdot ab \\implies bx + ax = abc"
                     ],
-                    "worked_example": "$\\frac{x-1}{2} = \\frac{x+3}{3}$. Mnożymy przez 6: $3(x-1) = 2(x+3) \\implies 3x - 3 = 2x + 6 \\implies x = 9$.",
-                    "exam_trap": "Zapominanie o pomnożeniu samotnych liczb! Jeśli w równaniu masz $+1$, to mnożąc przez 6, musisz pomnożyć też jedynkę: $1 \\cdot 6 = 6$!"
+                    "worked_example": "$\\frac{x-2}{3} = \\frac{x+1}{4}$. Mnożymy przez 12: $4(x-2) = 3(x+1) \\implies 4x - 8 = 3x + 3 \\implies x = 11$.",
+                    "exam_trap": "Pominięcie mnożenia wyrazu wolnego! W równaniu $\\frac{x}{2} + 1 = 3$ mnożąc przez 2, musisz pomnożyć jedynkę: $x + 2 = 6$."
                 },
                 "tasks": [
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $\\frac{x}{2} + \\frac{x}{3} = 5$. Wpisz wartość $x$:",
-                        "correct_answer": "6",
-                        "explanation": "Mnożymy przez 6: 3x + 2x = 30 -> 5x = 30 -> x = 6.",
-                        "hint": "Pomnóż obie strony równania przez wspólny mianownik 6.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $\\frac{x}{3} + \\frac{x}{4} = 7$. Wpisz wartość $x$:",
+                        "correct_answer": "12",
+                        "explanation": "Mnożymy przez 12: 4x + 3x = 84 -> 7x = 84 -> x = 12.",
+                        "hint": "Pomnóż obie strony przez wspólny mianownik 12.",
                         "hint_cost": 10,
-                        "id": "task-520c7ad2"
-                    },
-                    {
-                        "type": "SINGLE_CHOICE",
-                        "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Równanie $\\frac{x - 1}{4} = \\frac{2}{3}$ ma rozwiązanie:",
-                        "options": [
-                            "$\\frac{11}{3}$",
-                            "$\\frac{8}{3}$",
-                            "$\\frac{5}{3}$",
-                            "$3$"
-                        ],
-                        "correct_answer": "$\\frac{11}{3}$",
-                        "explanation": "Mnożenie na krzyż: 3(x - 1) = 8 -> 3x - 3 = 8 -> 3x = 11 -> x = 11/3.",
-                        "hint": "Pomnóż po przekątnych (na krzyż).",
-                        "hint_cost": 10,
-                        "id": "task-1efb56aa"
-                    },
-                    {
-                        "type": "NUMERIC_INPUT",
-                        "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Rozwiąż równanie: $\\frac{2x + 1}{3} = x - 1$. Wpisz wartość $x$:",
-                        "correct_answer": "4",
-                        "explanation": "Mnożymy przez 3: 2x + 1 = 3(x - 1) -> 2x + 1 = 3x - 3 -> x = 4.",
-                        "hint": "Pamiętaj, by całą prawą stronę pomnożyć przez 3: 3*(x - 1).",
-                        "hint_cost": 10,
-                        "id": "task-e18797a3"
-                    },
-                    {
-                        "type": "TRUE_FALSE",
-                        "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "W równaniu $\\frac{x}{4} + 1 = 2$ po pomnożeniu przez 4 otrzymujemy $x + 1 = 8$.",
-                        "correct_answer": "F",
-                        "explanation": "Błąd! Liczbę 1 też trzeba pomnożyć przez 4: x + 4 = 8.",
-                        "hint": "Każdy składnik sumy musi być pomnożony przez 4.",
-                        "hint_cost": 10,
-                        "id": "task-1fdf9faf"
-                    },
-                    {
-                        "type": "NUMERIC_INPUT",
-                        "points": 1,
-                        "source": "Matura czerwiec 2024",
-                        "content": "Rozwiąż równanie: $\\frac{3x - 2}{5} = 2$. Wpisz wartość $x$:",
-                        "correct_answer": "4",
-                        "explanation": "3x - 2 = 10 -> 3x = 12 -> x = 4.",
-                        "hint": "Pomnóż obie strony przez 5.",
-                        "hint_cost": 10,
-                        "id": "task-a42ea734"
+                        "id": "task-c5ab0ff7"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Matura maj 2023",
-                        "content": "Rozwiązaniem równania $\\frac{x}{3} - \\frac{x}{4} = 1$ jest:",
+                        "content": "Równanie $\\frac{x - 2}{5} = \\frac{3}{4}$ ma rozwiązanie:",
                         "options": [
-                            "12",
-                            "7",
-                            "1",
-                            "24"
+                            "$\\frac{23}{4}$",
+                            "$\\frac{17}{4}$",
+                            "$\\frac{11}{4}$",
+                            "$5$"
                         ],
-                        "correct_answer": "12",
-                        "explanation": "Mnożymy przez 12: 4x - 3x = 12 -> x = 12.",
-                        "hint": "Wspólny mianownik dla 3 i 4 to 12.",
+                        "correct_answer": "$\\frac{23}{4}$",
+                        "explanation": "Mnożymy na krzyż: 4(x - 2) = 15 -> 4x - 8 = 15 -> 4x = 23 -> x = 23/4.",
+                        "hint": "Pomnóż na krzyż: 4*(x - 2) = 3*5.",
                         "hint_cost": 10,
-                        "id": "task-13e5a07e"
+                        "id": "task-45675315"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Rozwiąż równanie: $\\frac{3x + 1}{2} = x + 3$. Wpisz wartość $x$:",
+                        "correct_answer": "5",
+                        "explanation": "3x + 1 = 2(x + 3) -> 3x + 1 = 2x + 6 -> x = 5.",
+                        "hint": "Pomnóż prawą stronę przez 2: 2*(x + 3).",
+                        "hint_cost": 10,
+                        "id": "task-b00f8fd9"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "W równaniu $\\frac{x}{3} + 2 = 5$ po pomnożeniu przez 3 otrzymujemy $x + 2 = 15$.",
+                        "correct_answer": "F",
+                        "explanation": "Błąd, liczbę 2 też należy pomnożyć przez 3: x + 6 = 15. Fałsz.",
+                        "hint": "Każdy składnik sumy musi zostać pomnożony przez 3.",
+                        "hint_cost": 10,
+                        "id": "task-66cfcc10"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Rozwiąż równanie: $\\frac{2x - 4}{3} = 4$. Wpisz wartość $x$:",
+                        "correct_answer": "8",
+                        "explanation": "2x - 4 = 12 -> 2x = 16 -> x = 8.",
+                        "hint": "Pomnóż obie strony przez 3.",
+                        "hint_cost": 10,
+                        "id": "task-a6ec0d68"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Rozwiązaniem równania $\\frac{x}{2} - \\frac{x}{5} = 3$ jest:",
+                        "options": [
+                            "10",
+                            "15",
+                            "5",
+                            "20"
+                        ],
+                        "correct_answer": "10",
+                        "explanation": "Mnożymy przez 10: 5x - 2x = 30 -> 3x = 30 -> x = 10.",
+                        "hint": "Wspólny mianownik to 10.",
+                        "hint_cost": 10,
+                        "id": "task-d8071f6b"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Równanie $\\frac{x-2}{3} = 0$ ma rozwiązanie $x = 2$.",
+                        "content": "Równanie $\\frac{x - 5}{4} = 0$ ma rozwiązanie $x = 5$.",
                         "correct_answer": "P",
-                        "explanation": "Ułamek jest zerem, gdy licznik jest zerem: x - 2 = 0 -> x = 2.",
+                        "explanation": "Ułamek jest równy 0, gdy licznik jest równy 0: x - 5 = 0 -> x = 5. Prawda.",
                         "hint": "Przyrównaj licznik do zera.",
                         "hint_cost": 10,
-                        "id": "task-8b083d7b"
+                        "id": "task-803df4e2"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $\\frac{2x - 1}{3} - \\frac{x + 2}{2} = 1$.",
-                        "scoring_key": "1 pkt za poprawne pomnożenie przez 6 z uwzględnieniem nawiasów: 2(2x - 1) - 3(x + 2) = 6. 1 pkt za wyznaczenie x = 14.",
-                        "explanation": "2(2x - 1) - 3(x + 2) = 6 -> 4x - 2 - 3x - 6 = 6 -> x - 8 = 6 -> x = 14.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $\\frac{3x - 1}{4} - \\frac{x + 3}{3} = 1$. Zapisz kolejne etapy obliczeń.",
+                        "scoring_key": "1 pkt za poprawne pomnożenie przez 12 z nawiasami: 3(3x - 1) - 4(x + 3) = 12. 1 pkt za wyznaczenie x = 27/5 = 5,4.",
+                        "explanation": "3(3x - 1) - 4(x + 3) = 12 -> 9x - 3 - 4x - 12 = 12 -> 5x - 15 = 12 -> 5x = 27 -> x = 27/5.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-8ce9cf46"
+                        "id": "task-80e08dbb"
                     }
                 ]
             },
             {
                 "id": "lesson-3-3",
-                "title": "Nierówności liniowe 1: Zmiana zwrotu przy dzieleniu przez minus",
+                "title": "Nierówności liniowe: Zmiana zwrotu przy dzieleniu przez liczbę ujemną",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Złota reguła nierówności: gdy mnożysz lub dzielisz obie strony przez liczbę UJEMNĄ, dzióbek nierówności obraca się w drugą stronę jak chorągiewka na wietrze! Przy dodawaniu i odejmowaniu znak się NIE zmienia.",
-                    "matura_context": "Typowa pułapka maturalna w zadaniu za 1 punkt.",
+                    "concept_essence": "Podstawowa reguła nierówności: mnożenie lub dzielenie obu stron nierówności przez liczbę ujemną wymaga odwrócenia zwrotu nierówności na przeciwny (< zamienia się na >, a <= na >=). Dodawanie i odejmowanie liczb nie zmienia zwrotu nierówności.",
+                    "matura_context": "Typowa pułapka w zadaniach zamkniętych za 1 punkt na maturze majowej.",
                     "core_formulas": [
                         "-ax < b \\quad \\Big| :(-a) \\implies x > -\\frac{b}{a} \\quad (a > 0)"
                     ],
-                    "worked_example": "$-3x \\le 12 \\implies x \\ge \\frac{12}{-3} \\implies x \\ge -4$. Przedział: $\\langle -4, +\\infty)$.",
-                    "exam_trap": "Zapomnienie o obróceniu znaku: zapis $-2x < 6 \\implies x < -3$ to utrata 100% punktów za to zadanie!"
+                    "worked_example": "$-4x \\le 12 \\implies x \\ge \\frac{12}{-4} \\implies x \\ge -3$. Przedział: $\\langle -3, +\\infty)$.",
+                    "exam_trap": "Pozostawienie starego znaku nierówności po podzieleniu przez liczbę ujemną."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Zbiorem rozwiązań nierówności $-2x \\le 8$ jest przedział:",
+                        "source": "Matura maj 2024",
+                        "content": "Zbiorem rozwiązań nierówności $-3x \\le 12$ jest przedział:",
                         "options": [
                             "$\\langle -4, +\\infty)$",
                             "$(-\\infty, -4\\rangle$",
@@ -274,635 +274,635 @@
                             "$(-\\infty, 4\\rangle$"
                         ],
                         "correct_answer": "$\\langle -4, +\\infty)$",
-                        "explanation": "Dzielimy przez -2 i obracamy znak: x >= -4. Przedział to <-4, +\\infty).",
-                        "hint": "Podziel przez -2 i pamiętaj o zmianie zwrotu nierówności.",
+                        "explanation": "Dzielimy przez -3: x >= -4. Przedział <-4, +\\infty).",
+                        "hint": "Podziel przez -3 i zmień zwrot nierówności na przeciwny.",
                         "hint_cost": 10,
-                        "id": "task-17216de2"
+                        "id": "task-4de44d9f"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Jaka jest NAJWIĘKSZA liczba całkowita spełniająca nierówność $-3x > -12$?",
-                        "correct_answer": "3",
-                        "explanation": "Dzielimy przez -3: x < 4. Największa liczba całkowita mniejsza od 4 to 3.",
-                        "hint": "Nierówność jest ostra: x < 4, więc 4 odpada.",
+                        "source": "Matura maj 2023",
+                        "content": "Jaka jest NAJWIĘKSZA liczba całkowita spełniająca nierówność $-2x > -10$?",
+                        "correct_answer": "4",
+                        "explanation": "Dzielimy przez -2: x < 5. Największa liczba całkowita mniejsza od 5 to 4.",
+                        "hint": "x < 5, więc 5 odpada.",
                         "hint_cost": 10,
-                        "id": "task-4782e3f3"
+                        "id": "task-692e1185"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Nierówność $5 - x > 2$ jest równoważna nierówności:",
+                        "source": "Informator maturalny",
+                        "content": "Nierówność $6 - x > 2$ jest równoważna nierówności:",
                         "options": [
-                            "$x < 3$",
-                            "$x > 3$",
-                            "$x < -3$",
-                            "$x > -3$"
+                            "$x < 4$",
+                            "$x > 4$",
+                            "$x < -4$",
+                            "$x > -4$"
                         ],
-                        "correct_answer": "$x < 3$",
-                        "explanation": "-x > 2 - 5 -> -x > -3 -> x < 3.",
-                        "hint": "Przenieś 5 na prawo i pomnóż przez -1.",
+                        "correct_answer": "$x < 4$",
+                        "explanation": "-x > 2 - 6 -> -x > -4 -> x < 4.",
+                        "hint": "Przenieś 6 na prawo i pomnóż przez -1 ze zmianą zwrotu.",
                         "hint_cost": 10,
-                        "id": "task-dc2e29e6"
+                        "id": "task-e884537c"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Dzieląc nierówność przez liczbę dodatnią, zmieniamy jej zwrot.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Dzieląc obie strony nierówności przez liczbę dodatnią, zmieniamy jej zwrot.",
                         "correct_answer": "F",
-                        "explanation": "Zwrot zmieniamy TYLKO przy mnożeniu lub dzieleniu przez liczbę ujemną!",
+                        "explanation": "Zwrot nierówności zmieniamy TYLKO przy mnożeniu lub dzieleniu przez liczbę ujemną. Fałsz.",
                         "hint": "Liczba dodatnia nie odwraca znaku nierówności.",
                         "hint_cost": 10,
-                        "id": "task-6db7d02c"
+                        "id": "task-92fce09d"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Najmniejsza liczba całkowita spełniająca nierówność $2x \\ge -6$ to:",
+                        "content": "Najmniejsza liczba całkowita spełniająca nierówność $3x \\ge -9$ to:",
                         "correct_answer": "-3",
-                        "explanation": "Dzielimy przez 2 (dodatnią!): x >= -3. Najmniejsza to -3.",
-                        "hint": "Dzielisz przez dodatnią 2, więc znak się nie zmienia.",
+                        "explanation": "Dzielimy przez 3 (liczbę dodatnią): x >= -3. Najmniejsza to -3.",
+                        "hint": "Dzielisz przez dodatnią 3, znak pozostaje bez zmian.",
                         "hint_cost": 10,
-                        "id": "task-bd012bb6"
+                        "id": "task-a14034f1"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Rozwiązaniem nierówności $-x + 4 \\ge 0$ jest:",
+                        "source": "Matura maj 2025",
+                        "content": "Rozwiązaniem nierówności $-x + 6 \\ge 0$ jest zbiór:",
                         "options": [
-                            "$(-\\infty, 4\\rangle$",
-                            "$\\langle 4, +\\infty)$",
-                            "$(-\\infty, -4\\rangle$",
-                            "$\\langle -4, +\\infty)$"
+                            "$(-\\infty, 6\\rangle$",
+                            "$\\langle 6, +\\infty)$",
+                            "$(-\\infty, -6\\rangle$",
+                            "$\\langle -6, +\\infty)$"
                         ],
-                        "correct_answer": "$(-\\infty, 4\\rangle$",
-                        "explanation": "-x >= -4 -> x <= 4, czyli (-inf, 4>.",
-                        "hint": "Przenieś 4 na prawo i pomnóż przez -1.",
+                        "correct_answer": "$(-\\infty, 6\\rangle$",
+                        "explanation": "-x >= -6 -> x <= 6, czyli (-inf, 6>.",
+                        "hint": "Przenieś 6 na prawą stronę i pomnóż przez -1.",
                         "hint_cost": 10,
-                        "id": "task-e298da1b"
+                        "id": "task-b60ce4f5"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Liczba 0 spełnia nierówność $-4x \\le 0$.",
+                        "content": "Liczba 0 spełnia nierówność $-5x \\le 0$.",
                         "correct_answer": "P",
-                        "explanation": "-4 * 0 = 0, a 0 <= 0 jest prawdą.",
-                        "hint": "Podstaw 0 pod x.",
+                        "explanation": "-5 * 0 = 0, a 0 <= 0 jest prawdą. Prawda.",
+                        "hint": "Podstaw 0 za x.",
                         "hint_cost": 10,
-                        "id": "task-f541c9bd"
+                        "id": "task-3f8dce72"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż nierówność: $2(3 - x) - 4 \\ge 3(x + 4)$. Wynik podaj w postaci przedziału liczbowego.",
-                        "scoring_key": "1 pkt za wymnożenie i redukcję: -5x \\ge 10. 1 pkt za dzielenie przez -5, obrót znaku i zapis x \\in (-\\infty, -2\\rangle.",
-                        "explanation": "6 - 2x - 4 >= 3x + 12 -> 2 - 2x >= 3x + 12 -> -5x >= 10 -> x <= -2. Przedział: (-inf, -2>.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż nierówność: $3(2 - x) - 5 \\ge 2(x + 3)$. Wynik podaj w postaci przedziału liczbowego.",
+                        "scoring_key": "1 pkt za wymnożenie i redukcję do postaci -5x \\ge 5. 1 pkt za podzielenie przez -5 z odwróceniem zwrotu i zapis x \\in (-\\infty, -1\\rangle.",
+                        "explanation": "6 - 3x - 5 >= 2x + 6 -> 1 - 3x >= 2x + 6 -> -5x >= 5 -> x <= -1. Przedział: (-inf, -1>.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-9da9195a"
+                        "id": "task-8d55308c"
                     }
                 ]
             },
             {
                 "id": "lesson-3-4",
-                "title": "Nierówności liniowe 2: Przedziały i nierówności podwójne",
+                "title": "Nierówności liniowe: Zapis przedziałowy i nierówności podwójne",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Nierówność podwójna (np. $-2 \\le 3x + 1 < 10$) to tak naprawdę dwa warunki w jednym. Każdą operację (odejmowanie 1, dzielenie przez 3) robisz jednocześnie na WSZYSTKICH TRZECH częściach.",
-                    "matura_context": "Częsty motyw w zadaniach sprawdzających zbieżność z osią liczbową.",
+                    "concept_essence": "Nierówność podwójna a <= f(x) < b oznacza jednoczesne spełnienie dwóch warunków. Każdą operację przekształcającą wykonujemy jednocześnie na wszystkich trzech członach nierówności. Wynik zapisujemy w postaci odpowiedniego przedziału liczbowego.",
+                    "matura_context": "Zadania testowe sprawdzające umiejętność poprawnego zapisu przedziałów liczbowych.",
                     "core_formulas": [
-                        "a \\le x \\le b \\iff x \\in \\langle a, b \\rangle"
+                        "a \\le x < b \\iff x \\in \\langle a, b)"
                     ],
-                    "worked_example": "$-1 < 2x + 3 \\le 7 \\implies -4 < 2x \\le 4 \\implies -2 < x \\le 2 \\implies x \\in (-2, 2\\rangle$.",
-                    "exam_trap": "Różne nawiasy: ostry nierówność $<$ daje nawias okrągły $($, a słaba $\\le$ daje nawias ostry $\\langle$. Nie myl ich na końcach przedziału!"
+                    "worked_example": "$-2 < 3x + 1 \\le 10 \\implies -3 < 3x \\le 9 \\implies -1 < x \\le 3 \\implies x \\in (-1, 3\\rangle$.",
+                    "exam_trap": "Mylenie nawiasów: ostra nierówność (<) to nawias okrągły, słaba nierówność (<=) to nawias ostry."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Zbiorem rozwiązań nierówności podwójnej $-1 < x - 2 \\le 4$ jest przedział:",
+                        "source": "Matura maj 2024",
+                        "content": "Zbiorem rozwiązań nierówności podwójnej $-2 < x - 3 \\le 5$ jest:",
                         "options": [
-                            "$(1, 6\\rangle$",
-                            "$\\langle 1, 6)$",
-                            "$(-3, 2\\rangle$",
-                            "$(1, 6)$"
+                            "$(1, 8\\rangle$",
+                            "$\\langle 1, 8)$",
+                            "$(-5, 2\\rangle$",
+                            "$(1, 8)$"
                         ],
-                        "correct_answer": "$(1, 6\\rangle$",
-                        "explanation": "Dodajemy 2 do wszystkich stron: -1 + 2 < x <= 4 + 2 -> 1 < x <= 6, czyli (1, 6>.",
-                        "hint": "Dodaj 2 do lewej, środkowej i prawej strony.",
+                        "correct_answer": "$(1, 8\\rangle$",
+                        "explanation": "Dodajemy 3 do wszystkich stron: -2 + 3 < x <= 5 + 3 -> 1 < x <= 8, czyli (1, 8>.",
+                        "hint": "Dodaj 3 do każdej z trzech części nierówności.",
                         "hint_cost": 10,
-                        "id": "task-7097d77e"
+                        "id": "task-baab5d0a"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Ile liczb całkowitych spełnia nierówność $-2 \\le x < 3$?",
+                        "source": "Matura maj 2023",
+                        "content": "Ile liczb całkowitych spełnia nierówność $-3 \\le x < 2$?",
                         "correct_answer": "5",
-                        "explanation": "Należą: -2, -1, 0, 1, 2 (łącznie 5 liczb). Trójka odpada, bo nierówność jest ostra.",
-                        "hint": "Wypisz liczby od -2 do 2.",
+                        "explanation": "Są to: -3, -2, -1, 0, 1 (dokładnie 5 liczb). Liczba 2 nie należy do przedziału.",
+                        "hint": "Wypisz liczby całkowite od -3 do 1.",
                         "hint_cost": 10,
-                        "id": "task-3a6830e8"
+                        "id": "task-c25cc2c3"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Nierówność podwójna $0 \\le 2x \\le 10$ po podzieleniu przez 2 ma postać:",
+                        "source": "Informator maturalny",
+                        "content": "Nierówność podwójna $2 \\le 2x \\le 8$ po uproszczeniu ma postać:",
                         "options": [
-                            "$0 \\le x \\le 5$",
-                            "$2 \\le x \\le 5$",
-                            "$0 < x < 5$",
-                            "$x \\le 5$"
+                            "$1 \\le x \\le 4$",
+                            "$2 \\le x \\le 4$",
+                            "$1 < x < 4$",
+                            "$x \\le 4$"
                         ],
-                        "correct_answer": "$0 \\le x \\le 5$",
-                        "explanation": "0/2 = 0, 2x/2 = x, 10/2 = 5. Zatem 0 <= x <= 5.",
-                        "hint": "Podziel 0 i 10 przez 2.",
+                        "correct_answer": "$1 \\le x \\le 4$",
+                        "explanation": "Dzielimy wszystkie części przez 2: 1 <= x <= 4.",
+                        "hint": "Podziel 2 i 8 przez 2.",
                         "hint_cost": 10,
-                        "id": "task-ee868156"
+                        "id": "task-a8844f1b"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Przedział $(-1, 3\\rangle$ odpowiada nierówności $-1 \\le x < 3$.",
-                        "correct_answer": "F",
-                        "explanation": "Fałsz, powinno być -1 < x <= 3 (nawias okrągły przy -1, ostry przy 3).",
-                        "hint": "Nawias okrągły oznacza ostrą nierówność bez kreski na dole.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Przedział $\\langle -2, 4)$ odpowiada warunkowi $-2 \\le x < 4$.",
+                        "correct_answer": "P",
+                        "explanation": "Nawias domknięty przy -2 to <=, a otwarty przy 4 to <. Prawda.",
+                        "hint": "Nawias ostry oznacza nierówność słabą.",
                         "hint_cost": 10,
-                        "id": "task-181d57a6"
+                        "id": "task-ab562351"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Dla nierówności $1 \\le 3x - 2 \\le 10$, jaka jest największa liczba całkowita będąca rozwiązaniem?",
+                        "content": "Dla nierówności $2 \\le 4x - 2 \\le 14$, podaj największą liczbę całkowitą będącą rozwiązaniem:",
                         "correct_answer": "4",
-                        "explanation": "3 <= 3x <= 12 -> 1 <= x <= 4. Największa liczba to 4.",
-                        "hint": "Dodaj 2 (3 <= 3x <= 12) i podziel przez 3 (1 <= x <= 4).",
+                        "explanation": "4 <= 4x <= 16 -> 1 <= x <= 4. Największa liczba to 4.",
+                        "hint": "Dodaj 2 i podziel przez 4.",
                         "hint_cost": 10,
-                        "id": "task-7d4b6da3"
+                        "id": "task-7007101c"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Wskaż zbiór rozwiązań nierówności $-3 \\le x < 5$:",
+                        "source": "Matura maj 2025",
+                        "content": "Zbiór rozwiązań warunku $-4 \\le x < 3$ to:",
                         "options": [
-                            "$\\langle -3, 5)$",
-                            "$(-3, 5\\rangle$",
-                            "$\\langle -3, 5\\rangle$",
-                            "$(-3, 5)$"
+                            "$\\langle -4, 3)$",
+                            "$(-4, 3\\rangle$",
+                            "$\\langle -4, 3\\rangle$",
+                            "$(-4, 3)$"
                         ],
-                        "correct_answer": "$\\langle -3, 5)$",
-                        "explanation": "Przy -3 nawias ostry, przy 5 okrągły: <-3, 5).",
-                        "hint": "Sprawdź, który nawias odpowiada znakowi mniejsze-równe.",
+                        "correct_answer": "$\\langle -4, 3)$",
+                        "explanation": "Nawias ostry przy -4, okrągły przy 3.",
+                        "hint": "Sprawdź rodzaj nierówności przy obu liczbach.",
                         "hint_cost": 10,
-                        "id": "task-96287af5"
+                        "id": "task-b93015d6"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Liczba 5 należy do przedziału $(-\\infty, 5)$.",
-                        "correct_answer": "F",
-                        "explanation": "Nawias jest okrągły (otwarty), więc 5 nie należy do tego zbioru.",
-                        "hint": "Okrągły nawias wyklucza liczbę krańcową.",
+                        "content": "Liczba 4 należy do przedziału $(-\\infty, 4\\rangle$.",
+                        "correct_answer": "P",
+                        "explanation": "Nawias jest domknięty, więc 4 należy do tego zbioru. Prawda.",
+                        "hint": "Nawias ostry włącza liczbę do przedziału.",
                         "hint_cost": 10,
-                        "id": "task-6290152d"
+                        "id": "task-7c1211cf"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż podwójną nierówność: $-5 < 2x + 1 \\le 9$. Podaj rozwiązanie w postaci przedziału i wypisz wszystkie należące do niego liczby pierwsze.",
-                        "scoring_key": "1 pkt za poprawne rozwiązanie nierówności: x \\in (-3, 4\\rangle. 1 pkt za wypisanie liczb pierwszych z tego przedziału: 2, 3.",
-                        "explanation": "-6 < 2x <= 8 -> -3 < x <= 4. Przedział (-3, 4>. Liczby pierwsze w tym przedziale to 2 oraz 3.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż nierówność podwójną: $-7 < 3x - 1 \\le 8$. Zapisz rozwiązanie w postaci przedziału i wypisz należące do niego liczby naturalne.",
+                        "scoring_key": "1 pkt za poprawne rozwiązanie nierówności: x \\in (-2, 3\\rangle. 1 pkt za wypisanie liczb naturalnych: 0, 1, 2, 3 (lub 1, 2, 3 w zależności od definicji).",
+                        "explanation": "-6 < 3x <= 9 -> -2 < x <= 3. Przedział (-2, 3>. Liczby naturalne: 0, 1, 2, 3.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-d9cc987f"
+                        "id": "task-1c71bddd"
                     }
                 ]
             },
             {
                 "id": "lesson-3-5",
-                "title": "Układy równań liniowych 1: Metoda podstawiania",
+                "title": "Układy równań liniowych: Metoda podstawiania",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Metoda podstawiania to technika 'szpiegowska': z najprostszego równania wyznaczasz jedną zmienną (np. $y = 2x - 3$) i 'podstawiasz' ją do drugiego równania w miejsce y (koniecznie w nawiasie!). Dostajesz równanie z jedną niewiadomą.",
-                    "matura_context": "Zadanie zamknięte na układ równań występuje w każdym arkuszu.",
+                    "concept_essence": "Metoda podstawiania polega na wyznaczeniu jednej zmiennej z prostszego równania i wstawieniu otrzymanego wyrażenia (w nawiasie!) do drugiego równania. W ten sposób redukujemy problem do jednego równania z jedną niewiadomą.",
+                    "matura_context": "Klasyczny typ zadania za 1 punkt na maturze podstawowej.",
                     "core_formulas": [
                         "\\begin{cases} y = ax + b \\\\ cx + dy = e \\end{cases} \\implies cx + d(ax + b) = e"
                     ],
-                    "worked_example": "$\\begin{cases} x = y + 2 \\\\ 2x + y = 7 \\end{cases} \\implies 2(y+2) + y = 7 \\implies 3y + 4 = 7 \\implies y = 1 \\implies x = 3$.",
-                    "exam_trap": "Brak nawiasu przy wklejaniu wyrażenia! Jeśli $y = 2x - 1$, to $3y = 3(2x - 1) = 6x - 3$, a nie $6x - 1$."
+                    "worked_example": "$\\begin{cases} y = 3x - 1 \\\\ 2x + y = 9 \\end{cases} \\implies 2x + (3x - 1) = 9 \\implies 5x = 10 \\implies x = 2 \\implies y = 5$.",
+                    "exam_trap": "Pominięcie nawiasu przy podstawianiu: jeśli $y = 3x - 2$, to $2y = 2(3x - 2) = 6x - 4$, a nie $6x - 2$."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiązaniem układu równań $\\begin{cases} y = 2x - 1 \\\\ x + y = 5 \\end{cases}$ jest para liczb:",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiązaniem układu równań $\\begin{cases} y = 3x - 2 \\\\ x + y = 6 \\end{cases}$ jest para:",
                         "options": [
-                            "$x = 2, y = 3$",
-                            "$x = 3, y = 2$",
-                            "$x = 1, y = 1$",
-                            "$x = 4, y = 1$"
+                            "$x = 2, y = 4$",
+                            "$x = 3, y = 3$",
+                            "$x = 1, y = 5$",
+                            "$x = 4, y = 2$"
                         ],
-                        "correct_answer": "$x = 2, y = 3$",
-                        "explanation": "x + (2x - 1) = 5 -> 3x = 6 -> x = 2. Wtedy y = 2*2 - 1 = 3.",
-                        "hint": "Wstaw (2x - 1) za y do drugiego równania.",
+                        "correct_answer": "$x = 2, y = 4$",
+                        "explanation": "x + (3x - 2) = 6 -> 4x = 8 -> x = 2. Wtedy y = 3*2 - 2 = 4.",
+                        "hint": "Wstaw (3x - 2) za y w drugim równaniu.",
                         "hint_cost": 10,
-                        "id": "task-174f9a3d"
+                        "id": "task-eafaf192"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Dla układu $\\begin{cases} x + 2y = 8 \\\\ x = y + 2 \\end{cases}$, ile wynosi wartość $y$?",
+                        "source": "Matura maj 2023",
+                        "content": "Dla układu $\\begin{cases} x + 3y = 11 \\\\ x = y + 3 \\end{cases}$, ile wynosi wartość $y$?",
                         "correct_answer": "2",
-                        "explanation": "(y + 2) + 2y = 8 -> 3y = 6 -> y = 2.",
-                        "hint": "Wstaw y + 2 w miejsce x w pierwszym równaniu.",
+                        "explanation": "(y + 3) + 3y = 11 -> 4y = 8 -> y = 2.",
+                        "hint": "Podstaw y + 3 pod x w pierwszym równaniu.",
                         "hint_cost": 10,
-                        "id": "task-b5e92784"
+                        "id": "task-1b3f7e94"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Para liczb $x = 1, y = -1$ spełnia układ równań:",
+                        "source": "Informator maturalny",
+                        "content": "Para liczb $x = 2, y = -1$ spełnia układ równań:",
                         "options": [
-                            "$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$",
-                            "$\\begin{cases} x - y = 0 \\\\ x + y = 2 \\end{cases}$",
-                            "$\\begin{cases} 2x + y = 3 \\\\ x - y = 1 \\end{cases}$",
-                            "$\\begin{cases} x + 2y = 1 \\\\ x - y = 0 \\end{cases}$"
+                            "$\\begin{cases} x + y = 1 \\\\ 2x - y = 5 \\end{cases}$",
+                            "$\\begin{cases} x - y = 1 \\\\ x + y = 3 \\end{cases}$",
+                            "$\\begin{cases} 3x + y = 4 \\\\ x - y = 2 \\end{cases}$",
+                            "$\\begin{cases} x + 2y = 2 \\\\ x - y = 1 \\end{cases}$"
                         ],
-                        "correct_answer": "$\\begin{cases} x + y = 0 \\\\ 2x - y = 3 \\end{cases}$",
-                        "explanation": "1 + (-1) = 0 oraz 2*1 - (-1) = 2 + 1 = 3. Oba równania są spełnione!",
-                        "hint": "Podstaw x = 1 i y = -1 do opcji A.",
+                        "correct_answer": "$\\begin{cases} x + y = 1 \\\\ 2x - y = 5 \\end{cases}$",
+                        "explanation": "2 + (-1) = 1 oraz 2*2 - (-1) = 4 + 1 = 5. Obie równości są prawdziwe.",
+                        "hint": "Podstaw x = 2 i y = -1 do pierwszej pary równań.",
                         "hint_cost": 10,
-                        "id": "task-38d47e96"
+                        "id": "task-e6bcd837"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Układ równań $\\begin{cases} x + y = 2 \\\\ x + y = 5 \\end{cases}$ nie ma rozwiązań.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Układ równań $\\begin{cases} 2x + y = 4 \\\\ 2x + y = 7 \\end{cases}$ nie posiada rozwiązań (jest sprzeczny).",
                         "correct_answer": "P",
-                        "explanation": "Suma tych samych liczb nie może wynosić jednocześnie 2 i 5. Układ sprzeczny. Prawda.",
-                        "hint": "Czy ta sama suma może dawać dwa różne wyniki?",
+                        "explanation": "Suma tych samych wyrazów nie może dawać jednocześnie 4 i 7. Prawda.",
+                        "hint": "Te same lewe strony mają różne prawe strony.",
                         "hint_cost": 10,
-                        "id": "task-cfdba86e"
+                        "id": "task-fdf2edb8"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Rozwiąż układ $\\begin{cases} y = 3x \\\\ 2x + y = 10 \\end{cases}$. Ile wynosi $x$?",
-                        "correct_answer": "2",
-                        "explanation": "2x + 3x = 10 -> 5x = 10 -> x = 2.",
-                        "hint": "Podstaw 3x za y: 2x + 3x = 10.",
+                        "content": "Rozwiąż układ $\\begin{cases} y = 2x \\\\ 3x + y = 15 \\end{cases}$. Ile wynosi $x$?",
+                        "correct_answer": "3",
+                        "explanation": "3x + 2x = 15 -> 5x = 15 -> x = 3.",
+                        "hint": "Wstaw 2x w miejsce y.",
                         "hint_cost": 10,
-                        "id": "task-0201652b"
+                        "id": "task-cb80b034"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Wyznaczając $x$ z równania $2x - 4y = 6$, otrzymujemy:",
+                        "source": "Matura maj 2025",
+                        "content": "Wyznaczając $y$ z równania $3x - y = 4$, otrzymujemy:",
                         "options": [
-                            "$x = 2y + 3$",
-                            "$x = 4y + 6$",
-                            "$x = 2y + 6$",
-                            "$x = -2y + 3$"
+                            "$y = 3x - 4$",
+                            "$y = 3x + 4$",
+                            "$y = -3x + 4$",
+                            "$y = 4 - 3x$"
                         ],
-                        "correct_answer": "$x = 2y + 3$",
-                        "explanation": "2x = 4y + 6 -> x = 2y + 3.",
-                        "hint": "Przenieś -4y na prawo i podziel przez 2.",
+                        "correct_answer": "$y = 3x - 4$",
+                        "explanation": "-y = -3x + 4 -> y = 3x - 4.",
+                        "hint": "Przenieś 3x na prawo i pomnóż przez -1.",
                         "hint_cost": 10,
-                        "id": "task-49b2705c"
+                        "id": "task-e1a84bdd"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Układ oznaczony ma dokładnie jedno rozwiązanie (parę liczb).",
+                        "content": "Układ oznaczony ma dokładnie jedno rozwiązanie będące parą liczb $(x, y)$.",
                         "correct_answer": "P",
-                        "explanation": "Tak, układ oznaczony to dokładnie jedna para liczb (x, y).",
+                        "explanation": "Z definicji układ oznaczony posiada dokładnie jedno rozwiązanie. Prawda.",
                         "hint": "Układ oznaczony to jednoznaczne rozwiązanie.",
                         "hint_cost": 10,
-                        "id": "task-40e66f23"
+                        "id": "task-34fcc01b"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż metodą podstawiania układ równań: $\\begin{cases} 3x - y = 5 \\\\ 2x + 3y = 7 \\end{cases}$.",
-                        "scoring_key": "1 pkt za wyznaczenie y = 3x - 5 i poprawne podstawienie: 2x + 3(3x - 5) = 7. 1 pkt za wyznaczenie pary x = 2 oraz y = 1.",
-                        "explanation": "y = 3x - 5. Wstawiamy: 2x + 3(3x - 5) = 7 -> 2x + 9x - 15 = 7 -> 11x = 22 -> x = 2. Wtedy y = 3(2) - 5 = 1.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż metodą podstawiania układ równań: $\\begin{cases} 2x - y = 3 \\\\ 3x + 2y = 8 \\end{cases}$.",
+                        "scoring_key": "1 pkt za wyznaczenie y = 2x - 3 i podstawienie: 3x + 2(2x - 3) = 8. 1 pkt za wyznaczenie x = 2 oraz y = 1.",
+                        "explanation": "y = 2x - 3. 3x + 2(2x - 3) = 8 -> 3x + 4x - 6 = 8 -> 7x = 14 -> x = 2. y = 2(2) - 3 = 1.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-7e312483"
+                        "id": "task-5bd4fadb"
                     }
                 ]
             },
             {
                 "id": "lesson-3-6",
-                "title": "Układy równań liniowych 2: Metoda przeciwnych współczynników",
+                "title": "Układy równań liniowych: Metoda przeciwnych współczynników",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Metoda czołgowa: mnożysz jedno lub oba równania przez takie liczby, aby przy tej samej literze stały liczby przeciwne (np. $3y$ oraz $-3y$). Potem dodajesz równania pionowo stronami – jedna zmienna znika z powierzchni ziemi!",
-                    "matura_context": "Najszybsza metoda rozwiązywania układów równań na maturze.",
+                    "concept_essence": "Metoda przeciwnych współczynników polega na takim przemnożeniu jednego lub obu równań, aby przy jednej ze zmiennych współczynniki były liczbami przeciwnymi (np. 3 i -3). Następnie dodajemy równania stronami, eliminując tę zmienną.",
+                    "matura_context": "Najbardziej uniwersalna i najszybsza metoda rozwiązywania układów równań na egzaminie.",
                     "core_formulas": [
                         "\\begin{cases} ax + by = c \\\\ dx - by = e \\end{cases} \\implies (a+d)x = c + e"
                     ],
-                    "worked_example": "$\\begin{cases} 2x + 3y = 8 \\\\ 3x - 3y = 7 \\end{cases} \\implies 5x = 15 \\implies x = 3$. Wtedy $2(3) + 3y = 8 \\implies 3y = 2 \\implies y = \\frac{2}{3}$.",
-                    "exam_trap": "Dodawanie stronami, gdy współczynniki są identyczne zamiast przeciwnych! Jeśli masz $2y$ i $2y$, po dodaniu masz $4y$ (nic nie zniknęło). Trzeba pomnożyć przez $-1$!"
+                    "worked_example": "$\\begin{cases} 3x + 2y = 11 \\\\ 2x - 2y = 4 \\end{cases} \\implies 5x = 15 \\implies x = 3 \\implies y = 1$.",
+                    "exam_trap": "Dodawanie równań, gdy współczynniki są identyczne, a nie przeciwne (np. 2y i 2y). Wtedy należy jedno równanie pomnożyć przez -1."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Dodając stronami równania $\\begin{cases} 3x - 2y = 7 \\\\ 2x + 2y = 8 \\end{cases}$ otrzymujemy:",
+                        "source": "Matura maj 2024",
+                        "content": "Dodając stronami równania $\\begin{cases} 4x - 3y = 5 \\\\ 2x + 3y = 7 \\end{cases}$ otrzymujemy:",
                         "options": [
-                            "$5x = 15$",
-                            "$5x + 4y = 15$",
-                            "$x = 15$",
-                            "$5x = 1$"
+                            "$6x = 12$",
+                            "$6x - 6y = 12$",
+                            "$2x = 12$",
+                            "$6x = 2$"
                         ],
-                        "correct_answer": "$5x = 15$",
-                        "explanation": "3x + 2x = 5x, -2y + 2y = 0, 7 + 8 = 15. Zatem 5x = 15.",
-                        "hint": "Wyrazy z y się redukują do zera.",
+                        "correct_answer": "$6x = 12$",
+                        "explanation": "4x + 2x = 6x, -3y + 3y = 0, 5 + 7 = 12. Zatem 6x = 12.",
+                        "hint": "Wyrazy z y redukują się do zera.",
                         "hint_cost": 10,
-                        "id": "task-f965ced7"
+                        "id": "task-ed7b8b44"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Rozwiąż układ $\\begin{cases} x + y = 12 \\\\ x - y = 6 \\end{cases}$. Ile wynosi $x$?",
+                        "correct_answer": "9",
+                        "explanation": "Dodając stronami: 2x = 18 -> x = 9.",
+                        "hint": "Dodaj oba równania stronami.",
+                        "hint_cost": 10,
+                        "id": "task-0aa3e159"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Informator maturalny",
-                        "content": "Rozwiąż układ $\\begin{cases} x + y = 10 \\\\ x - y = 4 \\end{cases}$. Ile wynosi $x$?",
-                        "correct_answer": "7",
-                        "explanation": "Dodajemy stronami: 2x = 14 -> x = 7.",
-                        "hint": "Dodaj równania stronami.",
+                        "content": "W układzie $\\begin{cases} 3x + y = 11 \\\\ x - y = 1 \\end{cases}$, jaka jest wartość $y$?",
+                        "correct_answer": "2",
+                        "explanation": "Dodajemy: 4x = 12 -> x = 3. Wtedy 3 - y = 1 -> y = 2.",
+                        "hint": "Wyznacz x, a potem oblicz y z drugiego równania.",
                         "hint_cost": 10,
-                        "id": "task-0a7b3ba7"
-                    },
-                    {
-                        "type": "NUMERIC_INPUT",
-                        "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "W układzie $\\begin{cases} 2x + y = 9 \\\\ x - y = 3 \\end{cases}$, jaka jest wartość $y$?",
-                        "correct_answer": "1",
-                        "explanation": "Dodając: 3x = 12 -> x = 4. Wtedy 4 - y = 3 -> y = 1.",
-                        "hint": "Najpierw wyznacz x, a potem podstaw do drugiego równania.",
-                        "hint_cost": 10,
-                        "id": "task-12ec4a78"
+                        "id": "task-cc47470a"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Aby pozbyć się $x$ w układzie z $2x$ i $4x$, wystarczy pierwsze równanie pomnożyć przez $-2$.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Aby wyeliminować zmienną $x$ z układu zawierającego $3x$ oraz $6x$, wystarczy pierwsze równanie pomnożyć przez $-2$.",
                         "correct_answer": "P",
-                        "explanation": "2x * (-2) = -4x, co zredukuje się z 4x. Prawda.",
-                        "hint": "-4x + 4x = 0.",
+                        "explanation": "3x * (-2) = -6x, co zredukuje się z 6x. Prawda.",
+                        "hint": "-6x + 6x = 0.",
                         "hint_cost": 10,
-                        "id": "task-0c2f601c"
+                        "id": "task-1e0af23b"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Rozwiązaniem układu $\\begin{cases} 3x + 2y = 12 \\\\ x - 2y = -4 \\end{cases}$ jest:",
+                        "content": "Rozwiązaniem układu $\\begin{cases} 2x + 3y = 8 \\\\ x - 3y = 1 \\end{cases}$ jest:",
                         "options": [
-                            "$x = 2, y = 3$",
-                            "$x = 3, y = 2$",
+                            "$x = 3, y = \\frac{2}{3}$",
+                            "$x = 2, y = 1$",
                             "$x = 4, y = 0$",
-                            "$x = 1, y = 4$"
+                            "$x = 1, y = 2$"
                         ],
-                        "correct_answer": "$x = 2, y = 3$",
-                        "explanation": "Dodajemy: 4x = 8 -> x = 2. Wtedy 2 - 2y = -4 -> -2y = -6 -> y = 3.",
-                        "hint": "Dodaj oba równania stronami, by skasować y.",
+                        "correct_answer": "$x = 3, y = \\frac{2}{3}$",
+                        "explanation": "Dodajemy: 3x = 9 -> x = 3. 3 - 3y = 1 -> 3y = 2 -> y = 2/3.",
+                        "hint": "Dodaj równania stronami, by zredukować y.",
                         "hint_cost": 10,
-                        "id": "task-cb99d7ce"
+                        "id": "task-a99de9a3"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "W układzie $\\begin{cases} x + 3y = 7 \\\\ 2x + 6y = 14 \\end{cases}$ mamy nieskończenie wiele rozwiązań.",
+                        "source": "Matura maj 2025",
+                        "content": "Układ $\\begin{cases} 2x - y = 4 \\\\ 4x - 2y = 8 \\end{cases}$ posiada nieskończenie wiele rozwiązań.",
                         "correct_answer": "P",
-                        "explanation": "Drugie równanie to pierwsze pomnożone przez 2. Równania są tożsame (układ nieoznaczony). Prawda.",
+                        "explanation": "Drugie równanie jest pierwszym pomnożonym przez 2. Układ nieoznaczony. Prawda.",
                         "hint": "Podziel drugie równanie przez 2.",
                         "hint_cost": 10,
-                        "id": "task-5997fc4f"
+                        "id": "task-91763774"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Rozwiąż układ $\\begin{cases} 4x - 3y = 10 \\\\ 2x + 3y = 14 \\end{cases}$. Podaj wartość iloczynu $x \\cdot y$:",
+                        "content": "Rozwiąż układ $\\begin{cases} 3x - 2y = 8 \\\\ x + 2y = 8 \\end{cases}$. Podaj wartość iloczynu $x \\cdot y$:",
                         "correct_answer": "8",
-                        "explanation": "Dodając: 6x = 24 -> x = 4. Wtedy 2(4) + 3y = 14 -> 3y = 6 -> y = 2. Iloczyn: 4 * 2 = 8.",
+                        "explanation": "Dodajemy: 4x = 16 -> x = 4. 4 + 2y = 8 -> 2y = 4 -> y = 2. Iloczyn: 4 * 2 = 8.",
                         "hint": "Oblicz x i y, a następnie je pomnóż.",
-                        "hint_cost": 15,
-                        "id": "task-83ab574a"
+                        "hint_cost": 10,
+                        "id": "task-f1b8c0a8"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż metodą przeciwnych współczynników układ równań: $\\begin{cases} 3x + 4y = 2 \\\\ 2x + 3y = 1 \\end{cases}$.",
-                        "scoring_key": "1 pkt za pomnożenie (np. I przez 2, II przez -3) i wyznaczenie jednej zmiennej: -y = 1 \\implies y = -1. 1 pkt za wyznaczenie drugiej zmiennej: x = 2.",
-                        "explanation": "Mnożymy I przez 2: 6x + 8y = 4. Mnożymy II przez -3: -6x - 9y = -3. Dodajemy: -y = 1 -> y = -1. Wtedy 2x + 3(-1) = 1 -> 2x = 4 -> x = 2.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż metodą przeciwnych współczynników układ równań: $\\begin{cases} 4x + 3y = 17 \\\\ 3x - 2y = 0 \\end{cases}$.",
+                        "scoring_key": "1 pkt za poprawne pomnożenie (np. I przez 2, II przez 3) i wyznaczenie jednej zmiennej: 17x = 34 \\implies x = 2. 1 pkt za wyznaczenie drugiej zmiennej: y = 3.",
+                        "explanation": "Mnożymy I przez 2: 8x + 6y = 34. Mnożymy II przez 3: 9x - 6y = 0. Dodajemy: 17x = 34 -> x = 2. 3(2) - 2y = 0 -> 2y = 6 -> y = 3.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-151848af"
+                        "id": "task-6ec1e51f"
                     }
                 ]
             },
             {
                 "id": "lesson-3-7",
-                "title": "Układy równań 3: Zadania tekstowe i modelowanie",
+                "title": "Układy równań: Zadania tekstowe i modelowanie matematyczne",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Zadania z treścią to przekładanie języka polskiego na matematyczny: 'razem kosztują 50 zł' to $x + y = 50$, a 'jeden jest o 6 droższy' to $x = y + 6$. Czytasz zdanie po zdaniu i budujesz dwa równania.",
-                    "matura_context": "Zadanie za 2 punkty na maturze z motywem zakupów, biletów lub wieku.",
+                    "concept_essence": "Modelowanie matematyczne polega na przetłumaczeniu relacji opisanych w języku naturalnym na układ równań algebraicznych. Oznaczamy szukane wielkości jako x i y, zapisujemy dwa niezależne równania wynikające z treści zadania i rozwiązujemy układ.",
+                    "matura_context": "Zadanie otwarte za 2 punkty na maturze podstawowej.",
                     "core_formulas": [
-                        "\\begin{cases} x + y = S \\\\ x - y = R \\end{cases}"
+                        "\\begin{cases} x + y = S \\\\ ax + by = K \\end{cases}"
                     ],
-                    "worked_example": "Bilet normalny $x$ i ulgowy $y$. Razem 40 zł ($x+y=40$). Normalny jest o 10 zł droższy ($x=y+10$). Zatem $y+10+y=40 \\implies 2y=30 \\implies y=15$ zł, $x=25$ zł.",
-                    "exam_trap": "Nieprzeczytanie pytania końcowego! Zadanie pyta o cenę samego biletu ulgowego, a uczeń podaje normalny i traci punkty."
+                    "worked_example": "Suma dwóch liczb to 35, różnica to 5. Układ: $x + y = 35$ oraz $x - y = 5 \\implies 2x = 40 \\implies x = 20, y = 15$.",
+                    "exam_trap": "Nieprzeczytanie pytania końcowego ze zrozumieniem (np. podanie ceny innego towaru niż wymagany w poleceniu)."
                 },
                 "tasks": [
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Zeszyt i długopis kosztują razem 16 zł. Długopis jest o 4 zł droższy od zeszytu. Ile złotych kosztuje zeszyt?",
+                        "source": "Matura maj 2024",
+                        "content": "Książka i zeszyt kosztują łącznie 32 zł. Książka jest o 20 zł droższa od zeszytu. Ile złotych kosztuje zeszyt?",
                         "correct_answer": "6",
-                        "explanation": "z + d = 16 oraz d = z + 4 -> 2z + 4 = 16 -> 2z = 12 -> z = 6 zł.",
-                        "hint": "Niech z to cena zeszytu: z + (z + 4) = 16.",
+                        "explanation": "z + (z + 20) = 32 -> 2z = 12 -> z = 6 zł.",
+                        "hint": "Niech z oznacza cenę zeszytu: z + (z + 20) = 32.",
                         "hint_cost": 10,
-                        "id": "task-6bc7872e"
+                        "id": "task-da657b36"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Suma dwóch liczb wynosi 30, a ich różnica to 6. Te liczby to:",
+                        "source": "Matura maj 2023",
+                        "content": "Suma dwóch liczb wynosi 40, a ich różnica to 8. Liczby te to:",
                         "options": [
-                            "18 i 12",
-                            "20 i 10",
-                            "16 i 14",
-                            "22 i 8"
+                            "24 i 16",
+                            "25 i 15",
+                            "26 i 14",
+                            "20 i 12"
                         ],
-                        "correct_answer": "18 i 12",
-                        "explanation": "x + y = 30, x - y = 6. Dodając: 2x = 36 -> x = 18, y = 12.",
-                        "hint": "18 + 12 = 30 oraz 18 - 12 = 6.",
+                        "correct_answer": "24 i 16",
+                        "explanation": "x + y = 40, x - y = 8. Dodając: 2x = 48 -> x = 24, y = 16.",
+                        "hint": "24 + 16 = 40 oraz 24 - 16 = 8.",
                         "hint_cost": 10,
-                        "id": "task-49a00a67"
+                        "id": "task-c95096a5"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "W klasie jest 28 uczniów. Dziewcząt jest o 4 więcej niż chłopców. Ilu jest chłopców?",
+                        "source": "Informator maturalny",
+                        "content": "W grupie 30 osób kobiet jest o 6 więcej niż mężczyzn. Ilu mężczyzn jest w tej grupie?",
                         "correct_answer": "12",
-                        "explanation": "ch + (ch + 4) = 28 -> 2ch = 24 -> ch = 12.",
-                        "hint": "chłopcy = x, dziewczęta = x + 4.",
+                        "explanation": "m + (m + 6) = 30 -> 2m = 24 -> m = 12.",
+                        "hint": "mężczyźni = m, kobiety = m + 6.",
                         "hint_cost": 10,
-                        "id": "task-a6ec8be3"
+                        "id": "task-94dcffb4"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Układ $\\begin{cases} 2b + 3k = 25 \\\\ b + k = 10 \\end{cases}$ opisuje zakup 2 bułek i 3 kawałków ciasta za 25 zł oraz 1 bułki i 1 ciasta za 10 zł.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Układ $\\begin{cases} x + y = 20 \\\\ 2x + 4y = 56 \\end{cases}$ może modelować liczbę kur (x) i królików (y) mających łącznie 20 głów i 56 nóg.",
                         "correct_answer": "P",
-                        "explanation": "Tak, zmienne idealnie modelują liczbę artykułów i ich ceny.",
-                        "hint": "Sprawdź współczynniki przy b i k.",
+                        "explanation": "Głowy: x + y = 20. Nogi: 2x + 4y = 56. Prawda.",
+                        "hint": "Kury mają 2 nogi, króliki 4 nogi.",
                         "hint_cost": 10,
-                        "id": "task-6dbe1819"
+                        "id": "task-0436a629"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Ojciec jest 3 razy starszy od syna. Razem mają 48 lat. Ile lat ma syn?",
+                        "content": "Matka jest 4 razy starsza od córki. Razem mają 50 lat. Ile lat ma córka?",
                         "options": [
-                            "12",
-                            "16",
                             "10",
-                            "14"
+                            "12",
+                            "8",
+                            "15"
                         ],
-                        "correct_answer": "12",
-                        "explanation": "s + 3s = 48 -> 4s = 48 -> s = 12.",
-                        "hint": "Syn ma x lat, ojciec 3x. Suma x + 3x = 48.",
+                        "correct_answer": "10",
+                        "explanation": "c + 4c = 50 -> 5c = 50 -> c = 10.",
+                        "hint": "córka = x, matka = 4x. x + 4x = 50.",
                         "hint_cost": 10,
-                        "id": "task-2691d7fe"
+                        "id": "task-e6ddb7c5"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Za 3 kg jabłek i 2 kg gruszek zapłacono 23 zł. Kilogram gruszek jest o 4 zł droższy od kilograma jabłek. Ile kosztuje 1 kg jabłek (w zł)?",
-                        "correct_answer": "3",
-                        "explanation": "3j + 2(j + 4) = 23 -> 5j + 8 = 23 -> 5j = 15 -> j = 3 zł.",
-                        "hint": "Podstaw j + 4 w miejsce ceny gruszek.",
+                        "source": "Matura maj 2025",
+                        "content": "Za 2 bilety normalne i 3 ulgowe zapłacono 70 zł. Bilet normalny jest o 10 zł droższy od ulgowego. Ile kosztuje bilet ulgowy (w zł)?",
+                        "correct_answer": "10",
+                        "explanation": "2(u + 10) + 3u = 70 -> 5u + 20 = 70 -> 5u = 50 -> u = 10 zł.",
+                        "hint": "Podstaw u + 10 w miejsce biletu normalnego.",
                         "hint_cost": 10,
-                        "id": "task-6804bbf4"
+                        "id": "task-c94ab994"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Jeśli obwód prostokąta wynosi 20 cm, to suma długości dwóch sąsiednich boków wynosi 10 cm.",
+                        "content": "Jeżeli obwód prostokąta wynosi 30 cm, to suma długości dwóch prostopadłych boków wynosi 15 cm.",
                         "correct_answer": "P",
-                        "explanation": "Obwód = 2a + 2b = 20, zatem a + b = 10 cm. Prawda.",
-                        "hint": "Połowa obwodu to a + b.",
+                        "explanation": "2a + 2b = 30 -> a + b = 15. Prawda.",
+                        "hint": "Połowa obwodu to suma a + b.",
                         "hint_cost": 10,
-                        "id": "task-9fade62d"
+                        "id": "task-6006d3f9"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Na wycieczkę pojechało 35 osób. Kupiono bilety normalne po 30 zł i ulgowe po 20 zł. Łączny koszt biletów wyniósł 800 zł. Ile kupiono biletów ulgowych?",
-                        "scoring_key": "1 pkt za ułożenie poprawnego układu: n + u = 35 oraz 30n + 20u = 800. 1 pkt za wyznaczenie u = 25.",
-                        "explanation": "n = 35 - u -> 30(35 - u) + 20u = 800 -> 1050 - 10u = 800 -> 10u = 250 -> u = 25 biletów ulgowych.",
+                        "source": "Matura maj 2024",
+                        "content": "W skarbonce było 40 monet o nominałach 2 zł i 5 zł o łącznej wartości 125 zł. Ile monet 5-złotowych znajdowało się w skarbonce?",
+                        "scoring_key": "1 pkt za ułożenie poprawnego układu: x + y = 40 oraz 2x + 5y = 125. 1 pkt za rozwiązanie układu i podanie y = 15 monet 5-złotowych.",
+                        "explanation": "x = 40 - y. 2(40 - y) + 5y = 125 -> 80 + 3y = 125 -> 3y = 45 -> y = 15 monet 5-złotowych.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-81d27a93"
+                        "id": "task-312ac3dd"
                     }
                 ]
             },
             {
                 "id": "lesson-3-8",
-                "title": "Równania kwadratowe 1: Postać iloczynowa (Bez Delty!)",
+                "title": "Równania kwadratowe w postaci iloczynowej",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Maturzysto, nie bądź masochistą! Jeśli masz równanie w postaci iloczynowej $(x-2)(x+5) = 0$, to NIE WYMNAŻASZ TEGO i nie liczysz delty! Iloczyn jest zerem, gdy pierwszy nawias jest zerem LUB drugi jest zerem. Rozwiązania odczytujesz w 2 sekundy.",
-                    "matura_context": "Zadanie za 1 punkt, na którym uczniowie bezsensownie tracą 3 minuty na liczenie delty.",
+                    "concept_essence": "Iloczyn dwóch wyrażeń jest równy zero wtedy i tylko wtedy, gdy co najmniej jedno z nich jest równe zero: $a \\cdot b = 0 \\iff a = 0 \\lor b = 0$. W równaniach postaci $(x - x_1)(x - x_2) = 0$ nie wymnażamy nawiasów i nie liczymy delty – pierwiastki odczytujemy natychmiast.",
+                    "matura_context": "Zadanie zamknięte za 1 punkt, standard w arkuszach maturalnych.",
                     "core_formulas": [
-                        "(x - a)(x - b) = 0 \\iff x = a \\lor x = b"
+                        "(x - x_1)(x - x_2) = 0 \\iff x = x_1 \\lor x = x_2"
                     ],
-                    "worked_example": "$(x - 3)(2x + 8) = 0 \\implies x - 3 = 0 \\lor 2x + 8 = 0 \\implies x = 3 \\lor x = -4$.",
-                    "exam_trap": "Liczenie delty: wymnożenie $2x^2 + 2x - 24 = 0$, liczenie $\\Delta = 196$... wynik ten sam, ale ryzykujesz błąd rachunkowy!"
+                    "worked_example": "$(x - 4)(2x + 6) = 0 \\implies x - 4 = 0 \\lor 2x + 6 = 0 \\implies x = 4 \\lor x = -3$.",
+                    "exam_trap": "Wymnażanie nawiasów i żmudne liczenie delty – niepotrzebna strata czasu i ryzyko błędu rachunkowego."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiązaniami równania $(x - 4)(x + 7) = 0$ są liczby:",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiązaniami równania $(x - 5)(x + 8) = 0$ są liczby:",
                         "options": [
-                            "$4$ oraz $-7$",
-                            "$-4$ oraz $7$",
-                            "$4$ oraz $7$",
-                            "$-4$ oraz $-7$"
+                            "$5$ oraz $-8$",
+                            "$-5$ oraz $8$",
+                            "$5$ oraz $8$",
+                            "$-5$ oraz $-8$"
                         ],
-                        "correct_answer": "$4$ oraz $-7$",
-                        "explanation": "x - 4 = 0 -> x = 4; x + 7 = 0 -> x = -7. Znaki zawsze zmieniają się na przeciwne.",
-                        "hint": "Przyrównaj każdy nawias z osobna do zera.",
+                        "correct_answer": "$5$ oraz $-8$",
+                        "explanation": "x - 5 = 0 -> x = 5; x + 8 = 0 -> x = -8.",
+                        "hint": "Przyrównaj każdy nawias do zera.",
                         "hint_cost": 10,
-                        "id": "task-20d04637"
+                        "id": "task-b94215b1"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Podaj WIĘKSZE z rozwiązań równania $(2x - 6)(x + 1) = 0$:",
+                        "source": "Matura maj 2023",
+                        "content": "Podaj WIĘKSZE z rozwiązań równania $(3x - 9)(x + 2) = 0$:",
                         "correct_answer": "3",
-                        "explanation": "2x - 6 = 0 -> x = 3; x + 1 = 0 -> x = -1. Większe to 3.",
-                        "hint": "Rozwiązania to 3 i -1.",
+                        "explanation": "3x - 9 = 0 -> x = 3; x + 2 = 0 -> x = -2. Większe to 3.",
+                        "hint": "Rozwiązania to 3 i -2.",
                         "hint_cost": 10,
-                        "id": "task-60b14890"
+                        "id": "task-01b0e9c4"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Ile różnych rozwiązań ma równanie $(x - 2)^2 = 0$?",
+                        "source": "Informator maturalny",
+                        "content": "Ile rozwiązań rzeczywistych posiada równanie $(x - 4)^2 = 0$?",
                         "options": [
                             "dokładnie jedno",
                             "dwa różne",
@@ -910,106 +910,106 @@
                             "nieskończenie wiele"
                         ],
                         "correct_answer": "dokładnie jedno",
-                        "explanation": "Kwadrat jest zerem tylko wtedy, gdy x - 2 = 0 -> x = 2 (pierwiastek podwójny).",
-                        "hint": "Tylko liczba 2 zeruje ten nawias.",
+                        "explanation": "Kwadrat zeruje się tylko dla x = 4 (pierwiastek podwójny).",
+                        "hint": "Tylko liczba 4 zeruje nawias.",
                         "hint_cost": 10,
-                        "id": "task-4c67a01b"
+                        "id": "task-65e52b1d"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Liczba 0 jest rozwiązaniem równania $x(x - 5) = 0$.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Liczba 0 jest rozwiązaniem równania $x(x - 7) = 0$.",
                         "correct_answer": "P",
-                        "explanation": "Czynnik x przed nawiasem oznacza, że x = 0 jest jednym z rozwiązań.",
-                        "hint": "Samotny x przed nawiasem daje x = 0.",
+                        "explanation": "Czynnik x przed nawiasem oznacza, że x = 0 jest rozwiązaniem. Prawda.",
+                        "hint": "Czynnik x daje x = 0.",
                         "hint_cost": 10,
-                        "id": "task-231ef2cb"
+                        "id": "task-4f8d8a1b"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Jaka jest suma rozwiązań równania $(x - 5)(x + 2) = 0$?",
-                        "correct_answer": "3",
-                        "explanation": "Rozwiązania to 5 oraz -2. Suma: 5 + (-2) = 3.",
-                        "hint": "Wyznacz pierwiastki i dodaj je do siebie.",
+                        "content": "Jaka jest suma rozwiązań równania $(x - 6)(x + 1) = 0$?",
+                        "correct_answer": "5",
+                        "explanation": "Pierwiastki to 6 oraz -1. Suma: 6 + (-1) = 5.",
+                        "hint": "Dodaj oba rozwiązania.",
                         "hint_cost": 10,
-                        "id": "task-13a79255"
+                        "id": "task-3db13e09"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Równanie $(x^2 + 4)(x - 3) = 0$ w zbiorze liczb rzeczywistych ma:",
+                        "source": "Matura maj 2025",
+                        "content": "Równanie $(x^2 + 9)(x - 2) = 0$ w zbiorze liczb rzeczywistych ma:",
                         "options": [
                             "dokładnie 1 rozwiązanie",
-                            "dokładnie 2 rozwiązania",
                             "dokładnie 3 rozwiązania",
-                            "brak rozwiązań"
+                            "brak rozwiązań",
+                            "dokładnie 2 rozwiązania"
                         ],
                         "correct_answer": "dokładnie 1 rozwiązanie",
-                        "explanation": "Nawias x^2 + 4 nie ma rozwiązań rzeczywistych (x^2 >= 0). Jedyne rozwiązanie to x = 3.",
-                        "hint": "x^2 + 4 nigdy nie równa się 0.",
+                        "explanation": "x^2 + 9 > 0 dla każdego x rzeczywistego. Jedynym rozwiązaniem jest x = 2.",
+                        "hint": "x^2 + 9 nigdy nie wynosi 0.",
                         "hint_cost": 10,
-                        "id": "task-8f7f79b6"
+                        "id": "task-60cf6a1e"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Równanie $(x + 3)(x - 1) = 0$ ma rozwiązania o przeciwnych znakach.",
+                        "content": "Równanie $(x + 4)(x - 2) = 0$ posiada rozwiązania o różnych znakach.",
                         "correct_answer": "P",
-                        "explanation": "Rozwiązania to -3 (ujemne) oraz 1 (dodatnie). Mają przeciwne znaki. Prawda.",
-                        "hint": "-3 jest ujemne, 1 jest dodatnie.",
+                        "explanation": "Rozwiązania to -4 oraz 2 (znaki ujemny i dodatni). Prawda.",
+                        "hint": "-4 jest ujemne, 2 jest dodatnie.",
                         "hint_cost": 10,
-                        "id": "task-17104a1a"
+                        "id": "task-33132835"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $(2x - 5)(3x + 9) = 0$. Wypisz oba rozwiązania w postaci liczb lub ułamków nieskracalnych.",
-                        "scoring_key": "1 pkt za przyrównanie obu czynników do zera. 1 pkt za wyznaczenie x = 5/2 = 2,5 oraz x = -3.",
-                        "explanation": "2x - 5 = 0 -> 2x = 5 -> x = 5/2. Drugi nawias: 3x + 9 = 0 -> 3x = -9 -> x = -3.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $(3x - 6)(2x + 5) = 0$. Wypisz oba rozwiązania.",
+                        "scoring_key": "1 pkt za przyrównanie obu czynników do zera. 1 pkt za wyznaczenie x = 2 oraz x = -5/2 = -2,5.",
+                        "explanation": "3x - 6 = 0 -> x = 2. 2x + 5 = 0 -> x = -5/2 = -2,5.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-014c7451"
+                        "id": "task-2e675247"
                     }
                 ]
             },
             {
                 "id": "lesson-3-9",
-                "title": "Równania kwadratowe 2: Wyróżnik Delta i pełna formuła",
+                "title": "Równania kwadratowe w postaci ogólnej i wyróżnik Delta",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Królowa polskiej matury: Delta ($\\Delta$). Gdy równanie jest w postaci ogólnej $ax^2 + bx + c = 0$, wypisujesz $a, b, c$ i liczysz wyróżnik: $\\Delta = b^2 - 4ac$. Jeśli $\\Delta > 0$, masz 2 pierwiastki. Jeśli $\\Delta = 0$, masz 1. Gdy $\\Delta < 0$ – brak rozwiązań rzeczywistych.",
-                    "matura_context": "Zadanie z równaniem kwadratowym i deltą występuje bez wyjątku na każdej maturze.",
+                    "concept_essence": "Dla równania postaci $ax^2 + bx + c = 0$ ($a \\neq 0$) obliczamy wyróżnik: $\\Delta = b^2 - 4ac$. Jeśli $\\Delta > 0$, równanie ma dwa rozwiązania: $x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$. Jeśli $\\Delta = 0$, ma jedno: $x_0 = -\\frac{b}{2a}$. Jeśli $\\Delta < 0$, brak rozwiązań w $\\mathbb{R}$.",
+                    "matura_context": "Absolutny pewniak maturalny w zadaniach otwartych i zamkniętych.",
                     "core_formulas": [
-                        "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}"
+                        "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}, \\quad x_0 = -\\frac{b}{2a}"
                     ],
-                    "worked_example": "$x^2 - 5x + 6 = 0 \\implies \\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 6 = 25 - 24 = 1$. Zatem $x_1 = \\frac{5-1}{2}=2, x_2 = \\frac{5+1}{2}=3$.",
-                    "exam_trap": "Minus w kwadracie: $(-5)^2 = +25$, a NIE $-25$! Kwadrat liczby rzeczywistej ZAWSZE jest dodatni."
+                    "worked_example": "$x^2 - 6x + 8 = 0 \\implies \\Delta = (-6)^2 - 4 \\cdot 1 \\cdot 8 = 36 - 32 = 4 \\implies x_1 = \\frac{6-2}{2}=2, x_2 = \\frac{6+2}{2}=4$.",
+                    "exam_trap": "Błąd znaku przy podnoszeniu b do kwadratu: $(-6)^2 = +36$, a nie $-36$!"
                 },
                 "tasks": [
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Oblicz wyróżnik $\\Delta$ dla równania kwadratowego $x^2 - 6x + 5 = 0$:",
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz wyróżnik $\\Delta$ dla równania $x^2 - 8x + 12 = 0$:",
                         "correct_answer": "16",
-                        "explanation": "\\Delta = (-6)^2 - 4 * 1 * 5 = 36 - 20 = 16.",
-                        "hint": "a = 1, b = -6, c = 5. Wzór: b^2 - 4ac.",
+                        "explanation": "\\Delta = (-8)^2 - 4 * 1 * 12 = 64 - 48 = 16.",
+                        "hint": "a = 1, b = -8, c = 12.",
                         "hint_cost": 10,
-                        "id": "task-f1bf1b13"
+                        "id": "task-2a29ab26"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Równanie $2x^2 - 4x + 5 = 0$ w zbiorze liczb rzeczywistych:",
+                        "source": "Matura maj 2023",
+                        "content": "Równanie $x^2 - 2x + 5 = 0$ w zbiorze liczb rzeczywistych:",
                         "options": [
                             "nie ma rozwiązań",
                             "ma dokładnie jedno rozwiązanie",
@@ -1017,545 +1017,545 @@
                             "ma dwa ujemne rozwiązania"
                         ],
                         "correct_answer": "nie ma rozwiązań",
-                        "explanation": "\\Delta = (-4)^2 - 4 * 2 * 5 = 16 - 40 = -24 < 0. Brak rozwiązań.",
+                        "explanation": "\\Delta = 4 - 4*1*5 = 4 - 20 = -16 < 0. Brak rozwiązań.",
                         "hint": "Oblicz deltę i sprawdź jej znak.",
                         "hint_cost": 10,
-                        "id": "task-fb50b951"
+                        "id": "task-acc2f028"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Rozwiąż równanie: $x^2 - 4x + 4 = 0$. Wpisz jedyne rozwiązanie:",
-                        "correct_answer": "2",
-                        "explanation": "\\Delta = 16 - 16 = 0. x_0 = -b/(2a) = 4/2 = 2.",
-                        "hint": "To wzór skróconego mnożenia: (x - 2)^2 = 0.",
+                        "source": "Informator maturalny",
+                        "content": "Rozwiąż równanie: $x^2 - 6x + 9 = 0$. Wpisz jedyne rozwiązanie:",
+                        "correct_answer": "3",
+                        "explanation": "\\Delta = 36 - 36 = 0. x_0 = -(-6) / 2 = 3.",
+                        "hint": "Delta wynosi 0.",
                         "hint_cost": 10,
-                        "id": "task-efa8f717"
+                        "id": "task-659f544c"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura czerwiec 2024",
-                        "content": "Pierwiastkami równania $x^2 - 3x - 10 = 0$ są liczby:",
+                        "source": "Arkusz pokazowy",
+                        "content": "Pierwiastkami równania $x^2 - 4x - 5 = 0$ są liczby:",
                         "options": [
-                            "$5$ oraz $-2$",
-                            "$-5$ oraz $2$",
-                            "$5$ oraz $2$",
-                            "$-5$ oraz $-2$"
+                            "$5$ oraz $-1$",
+                            "$-5$ oraz $1$",
+                            "$5$ oraz $1$",
+                            "$-5$ oraz $-1$"
                         ],
-                        "correct_answer": "$5$ oraz $-2$",
-                        "explanation": "\\Delta = 9 - 4*1*(-10) = 49, \\sqrt{\\Delta} = 7. x_1 = (3-7)/2 = -2, x_2 = (3+7)/2 = 5.",
-                        "hint": "Delta wynosi 49, jej pierwiastek to 7.",
+                        "correct_answer": "$5$ oraz $-1$",
+                        "explanation": "\\Delta = 16 - 4*1*(-5) = 36, \\sqrt{\\Delta} = 6. x_1 = (4-6)/2 = -1, x_2 = (4+6)/2 = 5.",
+                        "hint": "Delta wynosi 36, jej pierwiastek to 6.",
                         "hint_cost": 10,
-                        "id": "task-91f48bdf"
+                        "id": "task-7ab631f1"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Dla $\\Delta = 0$ równanie kwadratowe ma dokładnie jedno rozwiązanie rzeczywiste.",
+                        "source": "Matura czerwiec 2024",
+                        "content": "Dla $\\Delta > 0$ równanie kwadratowe ma dokładnie dwa różne rozwiązania rzeczywiste.",
                         "correct_answer": "P",
-                        "explanation": "Tak, jest to tzw. pierwiastek podwójny x_0 = -b / (2a). Prawda.",
-                        "hint": "Sprawdź w karcie wzorów przypadek delta = 0.",
+                        "explanation": "Z twierdzenia o liczbie pierwiastków trójmianu kwadratowego: delta > 0 to 2 rozwiązania. Prawda.",
+                        "hint": "Sprawdź definicję w karcie wzorów.",
                         "hint_cost": 10,
-                        "id": "task-c7a00ee6"
+                        "id": "task-8f600b35"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Iloczyn pierwiastków równania $x^2 - 7x + 12 = 0$ wynosi:",
-                        "correct_answer": "12",
-                        "explanation": "Pierwiastki to 3 i 4. Iloczyn: 3 * 4 = 12 (ze wzorów Viete'a x1*x2 = c/a = 12).",
-                        "hint": "Wartość c to 12.",
+                        "source": "Matura maj 2025",
+                        "content": "Iloczyn pierwiastków równania $x^2 - 9x + 14 = 0$ wynosi:",
+                        "correct_answer": "14",
+                        "explanation": "Pierwiastki to 2 i 7. 2 * 7 = 14.",
+                        "hint": "Wartość c to 14.",
                         "hint_cost": 10,
-                        "id": "task-fc8da32b"
+                        "id": "task-160a27bf"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "W równaniu $3x^2 - 2x + 1 = 0$ współczynnik $a$ wynosi 3, a $b$ wynosi 2.",
+                        "content": "W równaniu $2x^2 - 5x + 3 = 0$ współczynnik $b$ wynosi 5.",
                         "correct_answer": "F",
-                        "explanation": "Współczynnik b wynosi -2 (znak minus należy do liczby!).",
-                        "hint": "Pamiętaj o znaku minus przed dwójką.",
+                        "explanation": "Współczynnik b wynosi -5 (razem ze znakiem minus). Fałsz.",
+                        "hint": "Znak minus należy do współczynnika b.",
                         "hint_cost": 10,
-                        "id": "task-b186b84d"
+                        "id": "task-6afd0730"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie kwadratowe: $2x^2 + 5x - 3 = 0$. Oblicz deltę i podaj oba rozwiązania.",
-                        "scoring_key": "1 pkt za obliczenie \\Delta = 25 - 4(2)(-3) = 49 i \\sqrt{\\Delta} = 7. 1 pkt za wyznaczenie x_1 = \\frac{-5-7}{4} = -3 oraz x_2 = \\frac{-5+7}{4} = \\frac{1}{2}.",
-                        "explanation": "\\Delta = 25 + 24 = 49. x_1 = (-5 - 7)/4 = -12/4 = -3, x_2 = (-5 + 7)/4 = 2/4 = 1/2.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie kwadratowe: $2x^2 - 7x + 3 = 0$. Oblicz deltę i podaj oba rozwiązania.",
+                        "scoring_key": "1 pkt za obliczenie \\Delta = 49 - 4(2)(3) = 25 i \\sqrt{\\Delta} = 5. 1 pkt za wyznaczenie x_1 = \\frac{7-5}{4} = \\frac{1}{2} oraz x_2 = \\frac{7+5}{4} = 3.",
+                        "explanation": "\\Delta = 49 - 24 = 25. x_1 = (7 - 5)/4 = 2/4 = 1/2, x_2 = (7 + 5)/4 = 12/4 = 3.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-cf1fb14d"
+                        "id": "task-52463b3e"
                     }
                 ]
             },
             {
                 "id": "lesson-3-10",
-                "title": "Równania kwadratowe 3: Brakujące b lub c (Szybkie triki)",
+                "title": "Równania kwadratowe niepełne: Wyłączanie x oraz pierwiastkowanie",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Gdy w równaniu kwadratowym brakuje $c$ (np. $2x^2 - 8x = 0$), wyciągasz $x$ przed nawias: $x(2x-8)=0$. Gdy brakuje $b$ (np. $x^2 - 9 = 0$), przenosisz liczbę na prawo: $x^2 = 9 \\implies x = 3 \\lor x = -3$. W obu przypadkach nie tykasz delty!",
-                    "matura_context": "Zadania testowe z niepełnymi równaniami kwadratowymi.",
+                    "concept_essence": "Gdy w równaniu kwadratowym $c = 0$ ($ax^2 + bx = 0$), wyłączamy x przed nawias: $x(ax + b) = 0$. Gdy $b = 0$ ($ax^2 + c = 0$), przenosimy wyraz wolny na prawo: $x^2 = -c/a$ i pierwiastkujemy, pamiętając o dwóch rozwiązaniach przeciwnych znaków (o ile prawa strona jest dodatnia). W obu przypadkach nie liczymy delty.",
+                    "matura_context": "Zadania testowe sprawdzające szybkość i spryt algebraiczny.",
                     "core_formulas": [
-                        "ax^2 + bx = 0 \\implies x(ax + b) = 0; \\quad ax^2 + c = 0 \\implies x^2 = -\\frac{c}{a}"
+                        "ax^2 + bx = 0 \\implies x(ax + b) = 0, \\quad x^2 = d \\implies x = \\sqrt{d} \\lor x = -\\sqrt{d} \\quad (d > 0)"
                     ],
-                    "worked_example": "$3x^2 - 12 = 0 \\implies 3x^2 = 12 \\implies x^2 = 4 \\implies x = 2 \\lor x = -2$.",
-                    "exam_trap": "Zgubienie ujemnego rozwiązania! Z równania $x^2 = 25$ rozwiązaniem jest $5$ ORAZ $-5$!"
+                    "worked_example": "$2x^2 - 18 = 0 \\implies 2x^2 = 18 \\implies x^2 = 9 \\implies x = 3 \\lor x = -3$.",
+                    "exam_trap": "Zgubienie ujemnego pierwiastka: z równania $x^2 = 36$ rozwiązaniami są $6$ ORAZ $-6$!"
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiązaniami równania $x^2 - 16 = 0$ są:",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiązaniami równania $x^2 - 25 = 0$ są:",
                         "options": [
-                            "$-4$ oraz $4$",
-                            "tylko $4$",
-                            "tylko $-4$",
+                            "$-5$ oraz $5$",
+                            "tylko $5$",
+                            "tylko $-5$",
                             "brak rozwiązań"
                         ],
-                        "correct_answer": "$-4$ oraz $4$",
-                        "explanation": "x^2 = 16 -> x = 4 lub x = -4.",
-                        "hint": "Pamiętaj o dwóch liczbach, które podniesione do kwadratu dają 16.",
+                        "correct_answer": "$-5$ oraz $5$",
+                        "explanation": "x^2 = 25 -> x = 5 lub x = -5.",
+                        "hint": "Kwadrat liczby -5 również daje 25.",
                         "hint_cost": 10,
-                        "id": "task-aca9aab4"
+                        "id": "task-543cc6ab"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Podaj NIEZEROWE rozwiązanie równania $4x^2 - 8x = 0$:",
-                        "correct_answer": "2",
-                        "explanation": "4x(x - 2) = 0 -> x = 0 lub x = 2.",
-                        "hint": "Wyłącz 4x przed nawias.",
+                        "source": "Matura maj 2023",
+                        "content": "Podaj NIEZEROWE rozwiązanie równania $3x^2 - 12x = 0$:",
+                        "correct_answer": "4",
+                        "explanation": "3x(x - 4) = 0 -> x = 0 lub x = 4. Niezerowe to 4.",
+                        "hint": "Wyłącz 3x przed nawias.",
                         "hint_cost": 10,
-                        "id": "task-77d62165"
+                        "id": "task-7918211a"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Równanie $x^2 + 25 = 0$ w zbiorze liczb rzeczywistych:",
+                        "source": "Informator maturalny",
+                        "content": "Równanie $x^2 + 16 = 0$ w zbiorze liczb rzeczywistych:",
                         "options": [
                             "nie ma rozwiązań",
-                            "ma rozwiązania 5 i -5",
-                            "ma tylko rozwiązanie 5",
+                            "ma rozwiązania 4 i -4",
+                            "ma tylko rozwiązanie 4",
                             "ma rozwiązanie 0"
                         ],
                         "correct_answer": "nie ma rozwiązań",
-                        "explanation": "x^2 = -25. Kwadrat liczby rzeczywistej nie może być ujemny. Brak rozwiązań.",
-                        "hint": "Przenieś 25 na prawą stronę: x^2 = -25.",
+                        "explanation": "x^2 = -16. Kwadrat liczby rzeczywistej nie może być ujemny.",
+                        "hint": "Przenieś 16 na prawo.",
                         "hint_cost": 10,
-                        "id": "task-cac2fa3e"
+                        "id": "task-b16a8d2f"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Liczba 0 jest ZAWSZE jednym z rozwiązań równania postaci $ax^2 + bx = 0$.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Liczba 0 jest zawsze rozwiązaniem równania postaci $ax^2 + bx = 0$.",
                         "correct_answer": "P",
-                        "explanation": "x(ax + b) = 0, więc x = 0 jest zawsze rozwiązaniem. Prawda.",
-                        "hint": "Brak wyrazu wolnego c gwarantuje, że x = 0 zeruje równanie.",
+                        "explanation": "x(ax + b) = 0, stąd x = 0 jest zawsze jednym z pierwiastków. Prawda.",
+                        "hint": "Podstaw x = 0 do równania.",
                         "hint_cost": 10,
-                        "id": "task-21705647"
+                        "id": "task-ff0906c0"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Rozwiąż równanie: $5x^2 = 20$. Podaj DODATNIE rozwiązanie:",
-                        "correct_answer": "2",
-                        "explanation": "x^2 = 4 -> x = 2 lub x = -2. Dodatnie to 2.",
-                        "hint": "Podziel przez 5, a potem spierwiastkuj.",
+                        "content": "Rozwiąż równanie $3x^2 = 27$. Podaj DODATNIE rozwiązanie:",
+                        "correct_answer": "3",
+                        "explanation": "x^2 = 9 -> x = 3 lub x = -3. Dodatnie to 3.",
+                        "hint": "Podziel przez 3 i spierwiastkuj.",
                         "hint_cost": 10,
-                        "id": "task-b09a625e"
+                        "id": "task-8eab2ae3"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Równanie $2x^2 - 6x = 0$ ma zbiór rozwiązań:",
+                        "source": "Matura maj 2025",
+                        "content": "Zbiór rozwiązań równania $4x^2 - 8x = 0$ to:",
                         "options": [
-                            "$\\{0, 3\\}$",
-                            "$\\{0, -3\\}$",
-                            "$\\{3\\}$",
-                            "$\\{-3, 3\\}$"
+                            "$\\{0, 2\\}$",
+                            "$\\{0, -2\\}$",
+                            "$\\{2\\}$",
+                            "$\\{-2, 2\\}$"
                         ],
-                        "correct_answer": "$\\{0, 3\\}$",
-                        "explanation": "2x(x - 3) = 0 -> x = 0 lub x = 3.",
-                        "hint": "Wyciągnij 2x przed nawias.",
+                        "correct_answer": "$\\{0, 2\\}$",
+                        "explanation": "4x(x - 2) = 0 -> x = 0 lub x = 2.",
+                        "hint": "Wyłącz 4x przed nawias.",
                         "hint_cost": 10,
-                        "id": "task-587afce8"
+                        "id": "task-92f1ab64"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Dzieląc obie strony równania $x^2 = 4x$ przez $x$, nie tracimy żadnych rozwiązań.",
+                        "content": "Dzieląc obie strony równania $x^2 = 5x$ przez $x$, nie tracimy żadnego rozwiązania.",
                         "correct_answer": "F",
-                        "explanation": "Tracimy rozwiązanie x = 0! Nigdy nie dziel równania przez niewiadomą x.",
-                        "hint": "Przez zero nie wolno dzielić – tracisz x = 0.",
+                        "explanation": "Tracimy rozwiązanie x = 0. Fałsz.",
+                        "hint": "Nigdy nie dziel równania przez zmienną x.",
                         "hint_cost": 10,
-                        "id": "task-40c442e0"
+                        "id": "task-baef4c92"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $3x^2 - 5x = 0$. Podaj oba rozwiązania w postaci ułamka zwykłego lub liczby całkowitej.",
-                        "scoring_key": "1 pkt za wyłączenie x przed nawias: x(3x - 5) = 0. 1 pkt za wyznaczenie x = 0 oraz x = 5/3.",
-                        "explanation": "x(3x - 5) = 0 -> x = 0 lub 3x = 5 -> x = 5/3.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $2x^2 - 7x = 0$. Podaj oba rozwiązania.",
+                        "scoring_key": "1 pkt za wyłączenie x przed nawias: x(2x - 7) = 0. 1 pkt za wyznaczenie x = 0 oraz x = 7/2 = 3,5.",
+                        "explanation": "x(2x - 7) = 0 -> x = 0 lub 2x = 7 -> x = 7/2 = 3,5.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-be92c1ec"
+                        "id": "task-d1ce0d87"
                     }
                 ]
             },
             {
                 "id": "lesson-3-11",
-                "title": "Nierówności kwadratowe 1: Szkic paraboli",
+                "title": "Nierówności kwadratowe: Znak współczynnika a i szkic paraboli",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Nierówności kwadratowej NIE rozwiązujesz jak równania! Zawsze robisz 3 kroki: 1) Liczysz miejsca zerowe (z delty lub iloczynu), 2) Rysujesz oś liczbową, 3) Rysujesz parabolę: gdy $a > 0$ ramiona idą w górę (uśmiech), gdy $a < 0$ ramiona idą w dół (smutek).",
-                    "matura_context": "Zadanie otwarte za 2 punkty – absolutny pewniak na 100% matur.",
+                    "concept_essence": "Rozwiązanie nierówności kwadratowej wymaga zbadania znaku trójmianu. Wyznaczamy miejsca zerowe (o ile istnieją), nanosimy je na oś liczbową i szkicujemy parabolę: dla a > 0 ramiona paraboli skierowane są w górę, dla a < 0 ramiona skierowane są w dół.",
+                    "matura_context": "Pierwszy etap rozwiązywania zadania otwartego za 2 punkty na maturze majowej.",
                     "core_formulas": [
-                        "a > 0 \\implies \\bigcup \\text{ (ramiona w górę)}, \\quad a < 0 \\implies \\bigcap \\text{ (ramiona w dół)}"
+                        "a > 0 \\implies \\text{ramiona w górę}, \\quad a < 0 \\implies \\text{ramiona w dół}"
                     ],
-                    "worked_example": "$x^2 - 4 > 0$. Miejsca zerowe to $-2$ i $2$. $a = 1 > 0$, więc ramiona w górę. Ponad osią: $x \\in (-\\infty, -2) \\cup (2, +\\infty)$.",
-                    "exam_trap": "Zapisywanie $x^2 > 4 \\implies x > 2$ i koniec. To kardynalny błąd! Gubisz cały przedział $(-\\infty, -2)$!"
+                    "worked_example": "$-x^2 + 5x - 4 \\ge 0 \\implies a = -1 < 0$ (ramiona w dół), miejsca zerowe: $x = 1$ oraz $x = 4$.",
+                    "exam_trap": "Nie wolno rozwiązywać nierówności kwadratowej jak liniowej! $x^2 > 9$ to NIE jest po prostu $x > 3$."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Dla nierówności $-x^2 + 4x - 3 \\ge 0$ ramiona paraboli są skierowane:",
+                        "source": "Matura maj 2024",
+                        "content": "Dla nierówności $-2x^2 + 3x + 5 \\ge 0$ ramiona paraboli są skierowane:",
                         "options": [
-                            "w dół, bo a = -1 < 0",
-                            "w górę, bo a = -1",
+                            "w dół, ponieważ a = -2 < 0",
+                            "w górę, ponieważ c = 5 > 0",
                             "w prawo",
                             "w lewo"
                         ],
-                        "correct_answer": "w dół, bo a = -1 < 0",
-                        "explanation": "Współczynnik przy x^2 to a = -1. Ujemne a oznacza ramiona skierowane w dół.",
-                        "hint": "Znak liczby stojącej przy x^2 decyduje o kierunku ramion.",
+                        "correct_answer": "w dół, ponieważ a = -2 < 0",
+                        "explanation": "Znak współczynnika a stojącego przy x^2 decyduje o kierunku ramion. a = -2 < 0 -> ramiona w dół.",
+                        "hint": "Sprawdź znak współczynnika przy x^2.",
                         "hint_cost": 10,
-                        "id": "task-b182ccc6"
+                        "id": "task-06dffe6e"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Miejscami zerowymi paraboli powiązanej z nierównością $(x - 1)(x - 5) \\le 0$ są:",
+                        "source": "Matura maj 2023",
+                        "content": "Miejscami zerowymi paraboli powiązanej z nierównością $(x - 3)(x - 7) \\le 0$ są:",
                         "options": [
-                            "$1$ oraz $5$",
-                            "$-1$ oraz $-5$",
-                            "$-1$ oraz $5$",
-                            "$1$ oraz $-5$"
+                            "$3$ oraz $7$",
+                            "$-3$ oraz $-7$",
+                            "$-3$ oraz $7$",
+                            "$3$ oraz $-7$"
                         ],
-                        "correct_answer": "$1$ oraz $5$",
-                        "explanation": "x - 1 = 0 -> x = 1; x - 5 = 0 -> x = 5.",
+                        "correct_answer": "$3$ oraz $7$",
+                        "explanation": "x - 3 = 0 -> x = 3; x - 7 = 0 -> x = 7.",
                         "hint": "Przyrównaj nawiasy do zera.",
                         "hint_cost": 10,
-                        "id": "task-78833547"
+                        "id": "task-61c17912"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Parabola o równaniu $y = 2x^2 - 8$ ma ramiona skierowane w górę.",
+                        "source": "Informator maturalny",
+                        "content": "Parabola o równaniu $y = 3x^2 - 12$ ma ramiona skierowane w górę.",
                         "correct_answer": "P",
-                        "explanation": "a = 2 > 0, więc ramiona idą w górę. Prawda.",
-                        "hint": "2 jest liczbą dodatnią.",
+                        "explanation": "a = 3 > 0, więc ramiona są w górę. Prawda.",
+                        "hint": "3 jest liczbą dodatnią.",
                         "hint_cost": 10,
-                        "id": "task-2bd00bb8"
+                        "id": "task-bea1732e"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Ile miejsc zerowych na osi ma parabola powiązana z nierównością $x^2 + 4x + 4 > 0$?",
+                        "source": "Arkusz pokazowy",
+                        "content": "Ile punktów wspólnych z osią OX ma parabola związana z nierównością $x^2 - 6x + 9 > 0$?",
                         "correct_answer": "1",
-                        "explanation": "\\Delta = 16 - 16 = 0. Dokładnie 1 miejsce zerowe (parabola styka się z osią w punkcie x = -2).",
-                        "hint": "Delta wynosi zero.",
+                        "explanation": "\\Delta = 36 - 36 = 0. Dokładnie 1 punkt (styczna do osi w x = 3).",
+                        "hint": "Delta wynosi 0.",
                         "hint_cost": 10,
-                        "id": "task-45d183c2"
+                        "id": "task-d6290ca3"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Wykres paraboli $y = -(x + 2)(x - 4)$ przecina oś OX w punktach:",
+                        "content": "Wykres funkcji $f(x) = -(x + 1)(x - 5)$ przecina oś OX w punktach:",
                         "options": [
-                            "$(-2, 0)$ oraz $(4, 0)$",
-                            "$(2, 0)$ oraz $(-4, 0)$",
-                            "$(-2, 0)$ oraz $(-4, 0)$",
-                            "$(0, -2)$ oraz $(0, 4)$"
+                            "$(-1, 0)$ oraz $(5, 0)$",
+                            "$(1, 0)$ oraz $(-5, 0)$",
+                            "$(-1, 0)$ oraz $(-5, 0)$",
+                            "$(0, -1)$ oraz $(0, 5)$"
                         ],
-                        "correct_answer": "$(-2, 0)$ oraz $(4, 0)$",
-                        "explanation": "Miejsca zerowe to x = -2 oraz x = 4. Punkty przecięcia to (-2, 0) i (4, 0).",
-                        "hint": "Punkty przecięcia z osią OX mają drugą współrzędną y = 0.",
+                        "correct_answer": "$(-1, 0)$ oraz $(5, 0)$",
+                        "explanation": "Miejsca zerowe to x = -1 oraz x = 5. Punkty przecięcia z osią OX to (-1, 0) i (5, 0).",
+                        "hint": "Współrzędna y punktów na osi OX wynosi 0.",
                         "hint_cost": 10,
-                        "id": "task-296d7978"
+                        "id": "task-146c1ca2"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Nierówność $x^2 \\ge 0$ jest spełniona przez każdą liczbę rzeczywistą.",
+                        "source": "Matura maj 2025",
+                        "content": "Nierówność $x^2 + 4 > 0$ jest spełniona przez każdą liczbę rzeczywistą.",
                         "correct_answer": "P",
-                        "explanation": "Kwadrat dowolnej liczby jest większy lub równy 0. Rozwiązaniem jest R. Prawda.",
-                        "hint": "Czy istnieje liczba, której kwadrat jest ujemny?",
+                        "explanation": "x^2 >= 0, więc x^2 + 4 >= 4 > 0 dla każdego x. Prawda.",
+                        "hint": "Parabola leży w całości nad osią OX.",
                         "hint_cost": 10,
-                        "id": "task-23ccc4f3"
+                        "id": "task-d5387b8b"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Jaka jest wartość współczynnika $a$ w nierówności $5x - x^2 \\le 0$?",
+                        "content": "Podaj wartość współczynnika $a$ w nierówności $7x - x^2 \\le 0$:",
                         "correct_answer": "-1",
-                        "explanation": "Przy x^2 stoi -1 (-x^2 + 5x). Zatem a = -1.",
-                        "hint": "Współczynnik a zawsze stoi przy x^2, a nie na początku wyrażenia.",
+                        "explanation": "Przy x^2 stoi -1 (-x^2 + 7x). a = -1.",
+                        "hint": "Współczynnik a to liczba przy x^2.",
                         "hint_cost": 10,
-                        "id": "task-da6b58a2"
+                        "id": "task-9b2379d1"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Dla nierówności $-2(x - 3)(x + 1) > 0$ podaj: 1) kierunek ramion paraboli wraz z uzasadnieniem, 2) miejsca zerowe.",
-                        "scoring_key": "1 pkt za miejsca zerowe: x_1 = -1, x_2 = 3. 1 pkt za kierunek ramion: ramiona w dół, ponieważ współczynnik a = -2 < 0.",
-                        "explanation": "Miejsca zerowe: x = 3 oraz x = -1. Ramiona w dół, bo po wymnożeniu współczynnik przy x^2 wynosi a = -2 < 0.",
+                        "source": "Matura maj 2024",
+                        "content": "Dla nierówności $-3(x - 2)(x + 4) \\ge 0$ podaj: 1) miejsca zerowe, 2) kierunek ramion paraboli wraz z uzasadnieniem.",
+                        "scoring_key": "1 pkt za poprawne miejsca zerowe: x_1 = -4, x_2 = 2. 1 pkt za kierunek ramion: ramiona w dół, ponieważ współczynnik a = -3 < 0.",
+                        "explanation": "Miejsca zerowe: x = -4 oraz x = 2. Po wymnożeniu współczynnik przy x^2 to a = -3 < 0, więc ramiona paraboli skierowane są w dół.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-83b6b1c3"
+                        "id": "task-db196d47"
                     }
                 ]
             },
             {
                 "id": "lesson-3-12",
-                "title": "Nierówności kwadratowe 2: Odczytywanie przedziału",
+                "title": "Nierówności kwadratowe: Odczytywanie zbioru rozwiązań z osi liczbowej",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Ostatni krok nierówności: odczytanie przedziału. Jeśli pytają o $> 0$ lub $\\ge 0$, szukasz części wykresu NAD osią OX. Jeśli pytają o $< 0$ lub $\\le 0$, szukasz części POD osią OX. Kropki zamalowujesz przy $\\le, \\ge$ (nawiasy ostre), a zostawiasz puste przy $<, >$ (nawiasy okrągłe).",
-                    "matura_context": "Klasyczne zadanie otwarte za 2 punkty na maturze.",
+                    "concept_essence": "Zbiór rozwiązań nierówności kwadratowej odczytujemy z osi liczbowej na podstawie położenia paraboli. Dla f(x) > 0 lub >= 0 wybieramy przedziały, w których wykres leży nad osią OX. Dla f(x) < 0 lub <= 0 wybieramy przedziały pod osią OX. Punkty brzegowe włączamy przy nierównościach słabych (<=, >=), a wyłączamy przy ostrych (<, >).",
+                    "matura_context": "Zadanie otwarte za 2 punkty na każdej maturze majowej.",
                     "core_formulas": [
-                        "f(x) > 0 \\implies \\text{obszar nad osią}, \\quad f(x) < 0 \\implies \\text{obszar pod osią}"
+                        "f(x) \\ge 0 \\implies \\text{obszar nad osią i punkty zerowe}, \\quad f(x) \\le 0 \\implies \\text{obszar pod osią i punkty zerowe}"
                     ],
-                    "worked_example": "$(x - 1)(x - 4) \\le 0$. Ramiona w górę, miejsca to 1 i 4. Wartości pod osią (lub na osi): $\\langle 1, 4 \\rangle$.",
-                    "exam_trap": "Zły znak nawiasów! Zapis $(1, 4)$ zamiast $\\langle 1, 4 \\rangle$ przy nierówności $\\le$ to strata 1 punktu."
+                    "worked_example": "$(x - 2)(x - 5) \\le 0$. Ramiona w górę, miejsca: 2 i 5. Wykres pod osią: $x \\in \\langle 2, 5 \\rangle$.",
+                    "exam_trap": "Zastosowanie nawiasów okrągłych zamiast ostrych przy nierównościach słabych (np. zapis $(2, 5)$ zamiast $\\langle 2, 5 \\rangle$)."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiązaniem nierówności $(x - 2)(x - 6) < 0$ jest przedział:",
+                        "source": "Matura maj 2024",
+                        "content": "Zbiorem rozwiązań nierówności $(x - 1)(x - 7) < 0$ jest przedział:",
                         "options": [
-                            "$(2, 6)$",
-                            "$\\langle 2, 6\\rangle$",
-                            "$(-\\infty, 2) \\cup (6, +\\infty)$",
-                            "$(-\\infty, 2\\rangle \\cup \\langle 6, +\\infty)$"
+                            "$(1, 7)$",
+                            "$\\langle 1, 7\\rangle$",
+                            "$(-\\infty, 1) \\cup (7, +\\infty)$",
+                            "$(-\\infty, 1\\rangle \\cup \\langle 7, +\\infty)$"
                         ],
-                        "correct_answer": "$(2, 6)$",
-                        "explanation": "Ramiona w górę, pod osią OX między miejscami zerowymi: (2, 6).",
-                        "hint": "Nierówność jest ostra (<), więc nawiasy muszą być okrągłe.",
+                        "correct_answer": "$(1, 7)$",
+                        "explanation": "Ramiona w górę (a = 1 > 0), wartości ujemne leżą pomiędzy miejscami zerowymi: (1, 7).",
+                        "hint": "Nierówność jest ostra (<), więc nawiasy są okrągłe.",
                         "hint_cost": 10,
-                        "id": "task-8163a477"
+                        "id": "task-f44a34ef"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Rozwiązaniem nierówności $x^2 \\ge 9$ jest zbiór:",
+                        "source": "Matura maj 2023",
+                        "content": "Rozwiązaniem nierówności $x^2 \\ge 16$ jest zbiór:",
                         "options": [
-                            "$(-\\infty, -3\\rangle \\cup \\langle 3, +\\infty)$",
-                            "$\\langle -3, 3\\rangle$",
-                            "$\\langle 3, +\\infty)$",
-                            "$(-\\infty, 3\\rangle$"
+                            "$(-\\infty, -4\\rangle \\cup \\langle 4, +\\infty)$",
+                            "$\\langle -4, 4\\rangle$",
+                            "$\\langle 4, +\\infty)$",
+                            "$(-\\infty, 4\\rangle$"
                         ],
-                        "correct_answer": "$(-\\infty, -3\\rangle \\cup \\langle 3, +\\infty)$",
-                        "explanation": "x^2 - 9 >= 0. Miejsca to -3 i 3. Ramiona w górę, szukamy >= 0: suma przedziałów zewnętrznych.",
-                        "hint": "Przenieś 9 na lewo: (x - 3)(x + 3) >= 0.",
+                        "correct_answer": "$(-\\infty, -4\\rangle \\cup \\langle 4, +\\infty)$",
+                        "explanation": "x^2 - 16 >= 0. Miejsca zerowe to -4 i 4. Wartości nad osią to przedziały zewnętrzne: (-inf, -4> u <4, +inf).",
+                        "hint": "Przenieś 16 na lewo i rozłóż na czynniki.",
                         "hint_cost": 10,
-                        "id": "task-b8a22bab"
+                        "id": "task-80cbf299"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Ile liczb całkowitych należy do zbioru rozwiązań nierówności $x^2 - 5 \\le 0$?",
+                        "source": "Informator maturalny",
+                        "content": "Ile liczb całkowitych należy do zbioru rozwiązań nierówności $x^2 - 7 \\le 0$?",
                         "correct_answer": "5",
-                        "explanation": "x \\in \\langle -\\sqrt{5}, \\sqrt{5} \\rangle \\approx \\langle -2.23, 2.23 \\rangle. Liczby całkowite: -2, -1, 0, 1, 2 (5 liczb).",
-                        "hint": "Pierwiastek z 5 to około 2,23.",
+                        "explanation": "x \\in \\langle -\\sqrt{7}, \\sqrt{7} \\rangle \\approx \\langle -2.64, 2.64 \\rangle. Liczby całkowite: -2, -1, 0, 1, 2 (5 liczb).",
+                        "hint": "Pierwiastek z 7 to około 2,64.",
                         "hint_cost": 15,
-                        "id": "task-727ab187"
+                        "id": "task-4a17b2df"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Nierówność $x^2 + 1 < 0$ nie ma rozwiązań w liczbach rzeczywistych.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Nierówność $x^2 + 5 < 0$ nie posiada rozwiązań w zbiorze liczb rzeczywistych.",
                         "correct_answer": "P",
-                        "explanation": "Kwadrat x^2 >= 0, więc x^2 + 1 >= 1. Wyrażenie nigdy nie jest mniejsze od zera. Prawda.",
-                        "hint": "Parabola wisi w całości nad osią OX.",
+                        "explanation": "Kwadrat x^2 >= 0, więc x^2 + 5 >= 5. Wyrażenie nigdy nie jest mniejsze od zera. Prawda.",
+                        "hint": "Wykres leży w całości powyżej osi OX.",
                         "hint_cost": 10,
-                        "id": "task-89ce34dd"
+                        "id": "task-f7a259b1"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Zbiorem rozwiązań nierówności $-x(x + 4) \\ge 0$ jest:",
+                        "content": "Zbiorem rozwiązań nierówności $-x(x + 6) \\ge 0$ jest:",
                         "options": [
-                            "$\\langle -4, 0\\rangle$",
-                            "$(-\\infty, -4\\rangle \\cup \\langle 0, +\\infty)$",
-                            "$\\langle 0, 4\\rangle$",
-                            "$(-4, 0)$"
+                            "$\\langle -6, 0\\rangle$",
+                            "$(-\\infty, -6\\rangle \\cup \\langle 0, +\\infty)$",
+                            "$\\langle 0, 6\\rangle$",
+                            "$(-6, 0)$"
                         ],
-                        "correct_answer": "$\\langle -4, 0\\rangle$",
-                        "explanation": "Miejsca zerowe to -4 i 0. a = -1 < 0 (ramiona w dół). Wartości nad osią są pomiędzy pierwiastkami: <-4, 0>.",
-                        "hint": "Ramiona paraboli są w dół, a szukamy wartości dodatnich (nad osią).",
+                        "correct_answer": "$\\langle -6, 0\\rangle$",
+                        "explanation": "Miejsca zerowe: -6 i 0. a = -1 < 0 (ramiona w dół). Wartości nieujemne leżą między miejscami: <-6, 0>.",
+                        "hint": "Ramiona paraboli są w dół.",
                         "hint_cost": 10,
-                        "id": "task-28ef5b49"
+                        "id": "task-ed62eb07"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Najmniejszą liczbą całkowitą spełniającą nierówność $x^2 - 4x \\le 0$ jest:",
+                        "source": "Matura maj 2025",
+                        "content": "Najmniejszą liczbą całkowitą spełniającą nierówność $x^2 - 5x \\le 0$ jest:",
                         "correct_answer": "0",
-                        "explanation": "x(x - 4) <= 0 -> x w przedziale <0, 4>. Najmniejsza liczba to 0.",
-                        "hint": "Miejsca zerowe to 0 i 4.",
+                        "explanation": "x(x - 5) <= 0 -> x w <0, 5>. Najmniejsza liczba to 0.",
+                        "hint": "Miejsca zerowe to 0 i 5.",
                         "hint_cost": 10,
-                        "id": "task-4511f4bb"
+                        "id": "task-37f5a939"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Rozwiązaniem nierówności $(x - 3)^2 > 0$ jest zbiór $\\mathbb{R} \\setminus \\{3\\}$.",
+                        "content": "Rozwiązaniem nierówności $(x - 5)^2 > 0$ jest zbiór $\\mathbb{R} \\setminus \\{5\\}$.",
                         "correct_answer": "P",
-                        "explanation": "Kwadrat jest dodatni dla każdej liczby oprócz trójki, dla której daje dokładnie 0. Prawda.",
-                        "hint": "Dla x = 3 mamy 0 > 0, co jest fałszem.",
+                        "explanation": "Kwadrat jest dodatni dla każdego x z wyjątkiem x = 5, gdzie wynosi dokładnie 0. Prawda.",
+                        "hint": "Dla x = 5 otrzymujesz 0 > 0, co nie jest spełnione.",
                         "hint_cost": 10,
-                        "id": "task-50241f3b"
+                        "id": "task-24a9742e"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż nierówność: $x^2 - 3x - 10 \\le 0$. Zapisz obliczenia delty, pierwiastków oraz zbiór rozwiązań.",
-                        "scoring_key": "1 pkt za obliczenie \\Delta = 49 i pierwiastków x_1 = -2, x_2 = 5. 1 pkt za poprawny szkic paraboli i zapis x \\in \\langle -2, 5 \\rangle.",
-                        "explanation": "\\Delta = 9 - 4*1*(-10) = 49, \\sqrt{\\Delta} = 7. x_1 = -2, x_2 = 5. Ramiona w górę, wartości pod osią: \\langle -2, 5 \\rangle.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż nierówność: $x^2 - 4x - 12 \\le 0$. Zapisz obliczenia wyróżnika, pierwiastków oraz zbiór rozwiązań w postaci przedziału.",
+                        "scoring_key": "1 pkt za obliczenie \\Delta = 16 - 4(1)(-12) = 64 i wyznaczenie x_1 = -2, x_2 = 6. 1 pkt za poprawny szkic paraboli i zapis x \\in \\langle -2, 6 \\rangle.",
+                        "explanation": "\\Delta = 16 + 48 = 64, \\sqrt{\\Delta} = 8. x_1 = (4 - 8)/2 = -2, x_2 = (4 + 8)/2 = 6. a = 1 > 0 (ramiona w górę). Wartości pod osią: <-2, 6>.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-1a45ffe3"
+                        "id": "task-034e1598"
                     }
                 ]
             },
             {
                 "id": "lesson-3-13",
-                "title": "Równania wyższych stopni: Rozkład na czynniki w równaniach",
+                "title": "Równania wyższych stopni: Rozkład na czynniki w równaniach wielomianowych",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Gdy widzisz równanie stopnia 3 lub 4, Twoim celem jest zamiana go na postać iloczynową: kilka małych nawiasów przyrównanych do zera. Używasz dwóch narzędzi: wyłączania x przed nawias lub metody grupowania 2x2.",
-                    "matura_context": "Zadanie otwarte za 2 punkty na maturze.",
+                    "concept_essence": "Równania wielomianowe stopnia 3 i wyższych rozwiązujemy poprzez doprowadzenie do postaci iloczynowej: $W(x) = 0 \\iff (x - a)(x - b)(x^2 + c) = 0$. Stosujemy wyłączanie wspólnego czynnika (np. x) lub metodę grupowania wyrazów 2x2. Nigdy nie dzielimy obu stron równania przez zmienną x!",
+                    "matura_context": "Pewniak za 2 lub 3 punkty w części zadań otwartych arkusza maturalnego.",
                     "core_formulas": [
-                        "W(x) = 0 \\iff (x - a)(x - b)(x^2 + c) = 0"
+                        "W(x) = 0 \\iff P(x) \\cdot Q(x) = 0 \\iff P(x) = 0 \\lor Q(x) = 0"
                     ],
-                    "worked_example": "$x^3 - 7x^2 = 0 \\implies x^2(x - 7) = 0 \\implies x = 0 \\lor x = 7$.",
-                    "exam_trap": "Dzielenie przez x! Równanie $x^3 = 4x$: jeśli podzielisz przez $x$, zostanie $x^2 = 4 \\implies x = \\pm 2$ i tracisz bezpowrotnie rozwiązanie $x = 0$!"
+                    "worked_example": "$x^3 - 6x^2 = 0 \\implies x^2(x - 6) = 0 \\implies x = 0 \\lor x = 6$.",
+                    "exam_trap": "Dzielenie przez x: równanie $x^3 = 9x$. Po podzieleniu przez x otrzymujemy $x^2 = 9 \\implies x = \\pm 3$, gubiąc bezpowrotnie pierwiastek $x = 0$!"
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Zbiorem wszystkich rozwiązań równania $x^3 - 9x = 0$ jest:",
+                        "source": "Matura maj 2024",
+                        "content": "Zbiorem wszystkich rozwiązań równania $x^3 - 16x = 0$ jest:",
                         "options": [
-                            "$\\{-3, 0, 3\\}$",
-                            "$\\{-3, 3\\}$",
-                            "$\\{0, 9\\}$",
-                            "$\\{3\\}$"
+                            "$\\{-4, 0, 4\\}$",
+                            "$\\{-4, 4\\}$",
+                            "$\\{0, 16\\}$",
+                            "$\\{4\\}$"
                         ],
-                        "correct_answer": "$\\{-3, 0, 3\\}$",
-                        "explanation": "x(x^2 - 9) = x(x - 3)(x + 3) = 0. Rozwiązania: 0, 3, -3.",
-                        "hint": "Wyciągnij x przed nawias i rozłóż różnicę kwadratów.",
+                        "correct_answer": "$\\{-4, 0, 4\\}$",
+                        "explanation": "x(x^2 - 16) = x(x - 4)(x + 4) = 0. Rozwiązania: 0, 4, -4.",
+                        "hint": "Wyłącz x przed nawias i zastosuj wzór a^2 - b^2.",
                         "hint_cost": 10,
-                        "id": "task-07aa64da"
+                        "id": "task-66d15a2f"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Ile różnych rozwiązań rzeczywistych ma równanie $x^4 - 16 = 0$?",
+                        "source": "Matura maj 2023",
+                        "content": "Ile różnych rozwiązań rzeczywistych ma równanie $x^4 - 81 = 0$?",
                         "correct_answer": "2",
-                        "explanation": "(x^2 - 4)(x^2 + 4) = (x-2)(x+2)(x^2+4) = 0. Rozwiązania rzeczywiste to 2 oraz -2 (2 rozwiązania).",
-                        "hint": "x^2 + 4 nie ma rozwiązań rzeczywistych.",
+                        "explanation": "(x^2 - 9)(x^2 + 9) = (x - 3)(x + 3)(x^2 + 9) = 0. Rozwiązania to 3 oraz -3 (2 rozwiązania).",
+                        "hint": "Czynnik x^2 + 9 nie ma rozwiązań rzeczywistych.",
                         "hint_cost": 10,
-                        "id": "task-3a9efff5"
+                        "id": "task-0ae0971d"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Równanie $x^3 + 2x^2 - 4x - 8 = 0$ po pogrupowaniu ma postać:",
+                        "source": "Informator maturalny",
+                        "content": "Równanie $x^3 + 3x^2 - x - 3 = 0$ po pogrupowaniu ma postać:",
                         "options": [
-                            "$(x + 2)(x^2 - 4) = 0$",
-                            "$(x - 2)(x^2 - 4) = 0$",
-                            "$(x + 2)(x^2 + 4) = 0$",
-                            "$(x - 2)^2 (x + 2) = 0$"
+                            "$(x + 3)(x^2 - 1) = 0$",
+                            "$(x - 3)(x^2 - 1) = 0$",
+                            "$(x + 3)(x^2 + 1) = 0$",
+                            "$(x - 1)^2 (x + 3) = 0$"
                         ],
-                        "correct_answer": "$(x + 2)(x^2 - 4) = 0$",
-                        "explanation": "x^2(x + 2) - 4(x + 2) = (x + 2)(x^2 - 4) = 0.",
-                        "hint": "Wyłącz x^2 z pierwszych dwóch i -4 z kolejnych.",
+                        "correct_answer": "$(x + 3)(x^2 - 1) = 0$",
+                        "explanation": "x^2(x + 3) - 1(x + 3) = (x + 3)(x^2 - 1) = 0.",
+                        "hint": "Wyłącz x^2 z pierwszej pary i -1 z drugiej pary.",
                         "hint_cost": 10,
-                        "id": "task-9e8dd76e"
+                        "id": "task-9557330e"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Liczba 0 jest jednym z rozwiązań równania $x^5 - 4x^3 = 0$.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Liczba 0 jest rozwiązaniem równania $x^4 - 5x^2 = 0$.",
                         "correct_answer": "P",
-                        "explanation": "Wyciągamy x^3(x^2 - 4) = 0, więc x = 0 jest rozwiązaniem. Prawda.",
+                        "explanation": "x^2(x^2 - 5) = 0, stąd x = 0 jest rozwiązaniem. Prawda.",
                         "hint": "Podstaw x = 0 do równania.",
                         "hint_cost": 10,
-                        "id": "task-f2d09ba5"
+                        "id": "task-4fb19d3b"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Podaj NAJWIĘKSZE rozwiązanie równania $x^3 - 2x^2 - 9x + 18 = 0$:",
+                        "content": "Podaj NAJWIĘKSZE rozwiązanie równania $x^3 - 3x^2 - 4x + 12 = 0$:",
                         "correct_answer": "3",
-                        "explanation": "x^2(x - 2) - 9(x - 2) = (x - 2)(x - 3)(x + 3) = 0. Rozwiązania: 2, 3, -3. Największe to 3.",
-                        "hint": "Rozwiązania to 2, 3 oraz -3.",
+                        "explanation": "x^2(x - 3) - 4(x - 3) = (x - 3)(x - 2)(x + 2) = 0. Rozwiązania: 3, 2, -2. Największe to 3.",
+                        "hint": "Rozwiązania to 3, 2 i -2.",
                         "hint_cost": 10,
-                        "id": "task-b22e8521"
+                        "id": "task-ee15fdfd"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Równanie $x(x^2 + 1) = 0$ w zbiorze liczb rzeczywistych:",
+                        "source": "Matura maj 2025",
+                        "content": "Równanie $x(x^2 + 4) = 0$ w zbiorze liczb rzeczywistych:",
                         "options": [
                             "ma dokładnie 1 rozwiązanie",
                             "ma 3 rozwiązania",
@@ -1563,156 +1563,156 @@
                             "ma 2 rozwiązania"
                         ],
                         "correct_answer": "ma dokładnie 1 rozwiązanie",
-                        "explanation": "x = 0 to jedyne rozwiązanie, ponieważ x^2 + 1 > 0 dla każdego x.",
-                        "hint": "Czy x^2 + 1 może równać się 0?",
+                        "explanation": "x = 0 jest jedynym rozwiązaniem, ponieważ x^2 + 4 > 0 dla każdego x.",
+                        "hint": "x^2 + 4 nigdy nie równa się zero.",
                         "hint_cost": 10,
-                        "id": "task-db259502"
+                        "id": "task-bb17c63c"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Równanie stopnia 3 może mieć maksymalnie 3 rozwiązania rzeczywiste.",
+                        "content": "Równanie stopnia 3 ma zawsze co najmniej jedno rozwiązanie rzeczywiste.",
                         "correct_answer": "P",
-                        "explanation": "Wielomian stopnia n ma co najwyżej n pierwiastków rzeczywistych. Prawda.",
-                        "hint": "Stopień wielomianu wyznacza maksymalną liczbę rozwiązań.",
+                        "explanation": "Wielomian stopnia nieparzystego ma zawsze co najmniej jeden pierwiastek rzeczywisty. Prawda.",
+                        "hint": "Każdy wielomian stopnia nieparzystego przecina oś OX.",
                         "hint_cost": 10,
-                        "id": "task-47b61e6e"
+                        "id": "task-3cc3f56b"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $x^3 - 5x^2 - x + 5 = 0$. Wypisz wszystkie rozwiązania.",
-                        "scoring_key": "1 pkt za pogrupowanie: x^2(x - 5) - 1(x - 5) = (x - 5)(x - 1)(x + 1) = 0. 1 pkt za wyznaczenie trzech rozwiązań: x = 5, x = 1, x = -1.",
-                        "explanation": "x^2(x - 5) - (x - 5) = 0 \\implies (x - 5)(x^2 - 1) = 0 \\implies (x - 5)(x - 1)(x + 1) = 0. Rozwiązania: 5, 1, -1.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $x^3 - 4x^2 - x + 4 = 0$. Wypisz wszystkie jego rozwiązania.",
+                        "scoring_key": "1 pkt za poprawne pogrupowanie: x^2(x - 4) - 1(x - 4) = (x - 4)(x - 1)(x + 1) = 0. 1 pkt za wyznaczenie trzech rozwiązań: x = 4, x = 1, x = -1.",
+                        "explanation": "x^2(x - 4) - (x - 4) = 0 -> (x - 4)(x^2 - 1) = 0 -> (x - 4)(x - 1)(x + 1) = 0. Rozwiązania: 4, 1, -1.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-298ecd2e"
+                        "id": "task-46bec703"
                     }
                 ]
             },
             {
                 "id": "lesson-3-14",
-                "title": "Równania wymierne: Mnożenie na krzyż i kolizja z dziedziną",
+                "title": "Równania wymierne: Mnożenie na krzyż i weryfikacja z dziedziną",
                 "estimated_time_minutes": 5,
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Algorytm ma 3 kroki: 1) DZIEDZINA – przyrównaj mianowniki do zera i wyrzuć te liczby, 2) Mnożenie na krzyż lub przez mianownik, 3) WERYFIKACJA – sprawdź, czy obliczony wynik nie jest wyrzucony z dziedziny! Jeśli jest, natychmiast go odrzucasz.",
-                    "matura_context": "Zadanie za 1 lub 2 punkty na maturze. Klasyczna pułapka ze sztucznym pierwiastkiem.",
+                    "concept_essence": "Rozwiązywanie równania wymiernego $\\frac{A(x)}{B(x)} = 0$ wymaga bezwzględnego wykonania trzech kroków: 1) Wyznaczenie dziedziny ($B(x) \\neq 0$), 2) Przyrównanie licznika do zera ($A(x) = 0$) lub mnożenie na krzyż, 3) Weryfikacja otrzymanych rozwiązań z dziedziną i odrzucenie pierwiastków obcych.",
+                    "matura_context": "Zadanie za 1 lub 2 punkty na maturze majowej. Częsta pułapka z pierwiastkiem zerującym mianownik.",
                     "core_formulas": [
-                        "\\frac{A(x)}{B(x)} = 0 \\implies A(x) = 0 \\quad \\text{przy warunku } B(x) \\neq 0"
+                        "\\frac{A(x)}{B(x)} = 0 \\iff A(x) = 0 \\quad \\text{przy założeniu } B(x) \\neq 0"
                     ],
-                    "worked_example": "$\\frac{x^2 - 4}{x - 2} = 0$. Dziedzina: $x \\neq 2$. Licznik: $x = 2 \\lor x = -2$. Wyrzucamy 2! Jedyne rozwiązanie to $x = -2$.",
-                    "exam_trap": "Podanie obu rozwiązań $x = 2$ i $x = -2$. Za brak odrzucenia dwójki egzaminator daje zero punktów!"
+                    "worked_example": "$\\frac{x^2 - 9}{x - 3} = 0 \\implies D = \\mathbb{R} \\setminus \\{3\\}$. Licznik: $x = 3 \\lor x = -3$. Ponieważ $3 \\notin D$, jedynym rozwiązaniem jest $x = -3$.",
+                    "exam_trap": "Brak wyznaczenia dziedziny i podanie rozwiązania, które zeruje mianownik – utrata punktu na maturze."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiązaniem równania $\\frac{x^2 - 16}{x + 4} = 0$ jest:",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiązaniem równania $\\frac{x^2 - 25}{x + 5} = 0$ jest:",
                         "options": [
-                            "tylko $x = 4$",
-                            "$x = 4$ oraz $x = -4$",
-                            "tylko $x = -4$",
+                            "tylko $x = 5$",
+                            "$x = 5$ oraz $x = -5$",
+                            "tylko $x = -5$",
                             "brak rozwiązań"
                         ],
-                        "correct_answer": "tylko $x = 4$",
-                        "explanation": "Dziedzina: x != -4. Licznik: x = 4 lub x = -4. Liczba -4 odpada z powodu dziedziny. Zostaje tylko x = 4.",
-                        "hint": "Pamiętaj o dziedzinie: mianownik nie może być zerem!",
+                        "correct_answer": "tylko $x = 5$",
+                        "explanation": "Dziedzina: x != -5. Licznik daje x = 5 lub x = -5. Liczba -5 odpada z powodu dziedziny. Zostaje x = 5.",
+                        "hint": "Mianownik nie może być zerem, więc x != -5.",
                         "hint_cost": 10,
-                        "id": "task-89d2590f"
+                        "id": "task-6c7f1bb7"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Informator maturalny",
-                        "content": "Rozwiąż równanie: $\\frac{2x - 6}{x + 1} = 0$. Wpisz wartość $x$:",
-                        "correct_answer": "3",
-                        "explanation": "2x - 6 = 0 -> 2x = 6 -> x = 3. Dziedzina x != -1, więc 3 jest poprawnym rozwiązaniem.",
-                        "hint": "Ułamek jest zerem, gdy licznik równa się zero.",
+                        "source": "Matura maj 2023",
+                        "content": "Rozwiąż równanie: $\\frac{3x - 12}{x + 2} = 0$. Wpisz wartość $x$:",
+                        "correct_answer": "4",
+                        "explanation": "3x - 12 = 0 -> 3x = 12 -> x = 4. x = 4 należy do dziedziny D = R \\ {-2}.",
+                        "hint": "Przyrównaj licznik do zera i sprawdź, czy wynik nie zeruje mianownika.",
                         "hint_cost": 10,
-                        "id": "task-dbd3c537"
+                        "id": "task-8210d272"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Równanie $\\frac{x - 3}{x - 3} = 0$:",
+                        "source": "Informator maturalny",
+                        "content": "Równanie $\\frac{x - 4}{x - 4} = 0$:",
                         "options": [
                             "nie ma rozwiązań",
-                            "ma rozwiązanie x = 3",
+                            "ma rozwiązanie x = 4",
                             "ma nieskończenie wiele rozwiązań",
                             "ma rozwiązanie x = 0"
                         ],
                         "correct_answer": "nie ma rozwiązań",
-                        "explanation": "Dziedzina to x != 3. Licznik daje x = 3, ale trójka odpada z dziedziny. Równanie nie ma rozwiązań.",
-                        "hint": "Czy x = 3 należy do dziedziny tego wyrażenia?",
+                        "explanation": "Dziedzina: x != 4. Licznik zeruje się dla x = 4, ale 4 nie należy do dziedziny. Brak rozwiązań.",
+                        "hint": "x = 4 nie należy do dziedziny wyrażenia.",
                         "hint_cost": 10,
-                        "id": "task-ee0015aa"
+                        "id": "task-d81cee20"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Matura czerwiec 2024",
-                        "content": "Rozwiąż równanie $\\frac{x + 1}{2} = \\frac{3}{x}$ dla $x > 0$. Podaj wartość $x$:",
+                        "source": "Arkusz pokazowy",
+                        "content": "Rozwiąż równanie $\\frac{x + 2}{4} = \\frac{2}{x}$ dla $x > 0$. Podaj wartość $x$:",
                         "correct_answer": "2",
-                        "explanation": "Mnożymy na krzyż: x(x + 1) = 6 -> x^2 + x - 6 = 0 -> (x + 3)(x - 2) = 0. Dla x > 0 zostaje x = 2.",
-                        "hint": "Pomnóż na krzyż i rozwiąż równanie kwadratowe.",
+                        "explanation": "Mnożymy na krzyż: x(x + 2) = 8 \\implies x^2 + 2x - 8 = 0 \\implies (x + 4)(x - 2) = 0. Ponieważ x > 0, to x = 2.",
+                        "hint": "Pomnóż na krzyż.",
                         "hint_cost": 10,
-                        "id": "task-7e62db6c"
+                        "id": "task-208a6033"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Liczba $-1$ należy do dziedziny równania $\\frac{x + 2}{x^2 - 1} = 0$.",
+                        "source": "Matura czerwiec 2024",
+                        "content": "Liczba $2$ należy do dziedziny równania $\\frac{x + 5}{x^2 - 4} = 0$.",
                         "correct_answer": "F",
-                        "explanation": "(-1)^2 - 1 = 1 - 1 = 0. Mianownik się zeruje, więc -1 NIE NALEŻY do dziedziny.",
-                        "hint": "Sprawdź, czy mianownik dla x = -1 daje zero.",
+                        "explanation": "2^2 - 4 = 0. Mianownik się zeruje, więc liczba 2 NIE NALEŻY do dziedziny. Fałsz.",
+                        "hint": "Podstaw 2 do mianownika.",
                         "hint_cost": 10,
-                        "id": "task-c7d50443"
+                        "id": "task-62287bc9"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Ile rozwiązań ma równanie $\\frac{(x - 1)(x - 2)(x - 3)}{(x - 2)} = 0$?",
+                        "source": "Matura maj 2025",
+                        "content": "Ile rozwiązań ma równanie $\\frac{(x - 2)(x - 3)(x - 4)}{x - 3} = 0$?",
                         "options": [
-                            "2 rozwiązania (1 oraz 3)",
-                            "3 rozwiązania (1, 2, 3)",
-                            "1 rozwiązanie (2)",
+                            "2 rozwiązania (2 oraz 4)",
+                            "3 rozwiązania (2, 3, 4)",
+                            "1 rozwiązanie (3)",
                             "brak rozwiązań"
                         ],
-                        "correct_answer": "2 rozwiązania (1 oraz 3)",
-                        "explanation": "x = 2 odpada przez mianownik. Rozwiązaniami są x = 1 oraz x = 3.",
-                        "hint": "Odrzuć liczbę, która zeruje mianownik.",
+                        "correct_answer": "2 rozwiązania (2 oraz 4)",
+                        "explanation": "x = 3 odpada z dziedziny. Rozwiązania to x = 2 oraz x = 4.",
+                        "hint": "Odrzuć rozwiązanie zerujące mianownik.",
                         "hint_cost": 10,
-                        "id": "task-0e2fadd6"
+                        "id": "task-7955974e"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Równanie $\\frac{1}{x} = 0$ nie posiada rozwiązań.",
+                        "content": "Równanie $\\frac{5}{x} = 0$ jest sprzeczne.",
                         "correct_answer": "P",
-                        "explanation": "Licznik to 1, który nigdy nie jest zerem. Równanie jest sprzeczne. Prawda.",
-                        "hint": "Czy liczba 1 może kiedykolwiek równać się 0?",
+                        "explanation": "Licznik wynosi 5 i nigdy nie jest zerem. Równanie nie ma rozwiązań. Prawda.",
+                        "hint": "Ułamek jest zerem tylko wtedy, gdy licznik wynosi zero.",
                         "hint_cost": 10,
-                        "id": "task-825ce6f6"
+                        "id": "task-158ad16c"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż równanie: $\\frac{x^2 - 9}{x^2 + 3x} = 0$. Zapisz dziedzinę, uproszczenie i wskaż ostateczne rozwiązanie.",
-                        "scoring_key": "1 pkt za wyznaczenie dziedziny: x(x + 3) \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{-3, 0\\}. 1 pkt za przyrównanie licznika (x-3)(x+3)=0, odrzucenie -3 i podanie x = 3.",
-                        "explanation": "D = \\mathbb{R} \\setminus \\{-3, 0\\}. Licznik: (x-3)(x+3) = 0 \\implies x = 3 \\lor x = -3. Ponieważ -3 \\notin D, jedynym rozwiązaniem jest x = 3.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $\\frac{x^2 - 16}{x^2 + 4x} = 0$. Wyznacz dziedzinę i wskaż poprawne rozwiązanie.",
+                        "scoring_key": "1 pkt za wyznaczenie dziedziny: x(x + 4) \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{-4, 0\\}. 1 pkt za przyrównanie licznika do zera, odrzucenie -4 i podanie x = 4.",
+                        "explanation": "Mianownik: x(x + 4) != 0 -> D = R \\ {-4, 0}. Licznik: (x - 4)(x + 4) = 0 -> x = 4 lub x = -4. Ponieważ -4 nie należy do dziedziny, jedynym rozwiązaniem jest x = 4.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-2263442b"
+                        "id": "task-ee417b06"
                     }
                 ]
             },
@@ -1723,135 +1723,135 @@
                 "estimated_time_formatted": "~5 min",
                 "required_correct_tasks": 3,
                 "theory_pill": {
-                    "concept_essence": "Wartość bezwzględna $|x - a| = r$ to odległość od punktu $a$ równa $r$. Rozbijasz ją na dwa proste równania: wnętrze $= r$ LUB wnętrze $= -r$. Przy nierównościach: $|w| < r$ to przedział wewnątrz (kanapka), a $|w| > r$ to dwa wąsy na zewnątrz.",
-                    "matura_context": "Zadania testowe z osią liczbową i odległością punktów.",
+                    "concept_essence": "Równanie postaci $|x - a| = r$ (dla $r \\ge 0$) rozbijamy na alternatywę dwóch równań liniowych: $x - a = r \\lor x - a = -r$. Nierówność $|x - a| \\le r$ oznacza przedział domknięty wokół punktu a: $-r \\le x - a \\le r$, natomiast $|x - a| \\ge r$ daje sumę dwóch przedziałów zewnętrznych. Gdy $r < 0$, równanie $|x| = r$ jest natychmiast sprzeczne.",
+                    "matura_context": "Zadania z wartością bezwzględną na maturze majowej sprawdzają definicję odległości na osi liczbowej.",
                     "core_formulas": [
-                        "|x - a| = r \\iff x - a = r \\lor x - a = -r; \\quad |x - a| < r \\iff -r < x - a < r"
+                        "|w| = r \\iff w = r \\lor w = -r \\quad (r \\ge 0); \\quad |w| \\le r \\iff -r \\le w \\le r"
                     ],
-                    "worked_example": "$|x - 1| \\le 3 \\implies -3 \\le x - 1 \\le 3 \\implies -2 \\le x \\le 4 \\implies x \\in \\langle -2, 4 \\rangle$.",
-                    "exam_trap": "Próba rozwiązywania sprzeczności: $|x-2| = -5$. Odległość NIGDY nie jest ujemna – to równanie od razu nie ma rozwiązań!"
+                    "worked_example": "$|x - 3| \\le 2 \\implies -2 \\le x - 3 \\le 2 \\implies 1 \\le x \\le 5 \\implies x \\in \\langle 1, 5 \\rangle$.",
+                    "exam_trap": "Próba rozwiązywania równania ze sprzeczną prawą stroną: $|x - 5| = -3$ nie ma rozwiązań, bo wartość bezwzględna nie może być ujemna."
                 },
                 "tasks": [
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiązaniami równania $|x - 4| = 3$ są liczby:",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiązaniami równania $|x - 5| = 2$ są liczby:",
                         "options": [
-                            "$1$ oraz $7$",
-                            "$-1$ oraz $7$",
-                            "$1$ oraz $-7$",
-                            "$-1$ oraz $-7$"
+                            "$3$ oraz $7$",
+                            "$-3$ oraz $7$",
+                            "$3$ oraz $-7$",
+                            "$-3$ oraz $-7$"
                         ],
-                        "correct_answer": "$1$ oraz $7$",
-                        "explanation": "x - 4 = 3 -> x = 7; x - 4 = -3 -> x = 1.",
-                        "hint": "Szukasz liczb oddalonych od 4 o 3 jednostki w lewo i w prawo.",
+                        "correct_answer": "$3$ oraz $7$",
+                        "explanation": "x - 5 = 2 -> x = 7; x - 5 = -2 -> x = 3.",
+                        "hint": "Rozpatrz dwa równania: x - 5 = 2 oraz x - 5 = -2.",
                         "hint_cost": 10,
-                        "id": "task-04d57ff1"
+                        "id": "task-32a829ea"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Równanie $|3x + 1| = -2$:",
+                        "options": [
+                            "nie ma rozwiązań",
+                            "ma dwa rozwiązania",
+                            "ma jedno rozwiązanie x = -1",
+                            "ma rozwiązanie x = 1/3"
+                        ],
+                        "correct_answer": "nie ma rozwiązań",
+                        "explanation": "Wartość bezwzględna nie może być ujemna. Równanie jest sprzeczne.",
+                        "hint": "Czy moduł liczby może równać się -2?",
+                        "hint_cost": 10,
+                        "id": "task-f8a78ee9"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Informator maturalny",
-                        "content": "Równanie $|2x + 6| = -4$:",
+                        "content": "Zbiorem rozwiązań nierówności $|x| < 4$ jest przedział:",
                         "options": [
-                            "nie ma rozwiązań",
-                            "ma dwa rozwiązania",
-                            "ma jedno rozwiązanie x = -5",
-                            "ma rozwiązanie x = -1"
+                            "$(-4, 4)$",
+                            "$\\langle -4, 4\\rangle$",
+                            "$(-\\infty, -4) \\cup (4, +\\infty)$",
+                            "$(0, 4)$"
                         ],
-                        "correct_answer": "nie ma rozwiązań",
-                        "explanation": "Wartość bezwzględna z definicji jest nieujemna, więc nie może równać się -4. Sprzeczność.",
-                        "hint": "Wartość bezwzględna nigdy nie daje liczby ujemnej.",
+                        "correct_answer": "$(-4, 4)$",
+                        "explanation": "Odległość od zera mniejsza od 4 to przedział otwarty (-4, 4).",
+                        "hint": "Nierówność jest ostra, więc przedział jest otwarty.",
                         "hint_cost": 10,
-                        "id": "task-0f50dac2"
-                    },
-                    {
-                        "type": "SINGLE_CHOICE",
-                        "points": 1,
-                        "source": "Arkusz pokazowy",
-                        "content": "Zbiorem rozwiązań nierówności $|x| < 5$ jest przedział:",
-                        "options": [
-                            "$(-5, 5)$",
-                            "$\\langle -5, 5\\rangle$",
-                            "$(-\\infty, -5) \\cup (5, +\\infty)$",
-                            "$(0, 5)$"
-                        ],
-                        "correct_answer": "$(-5, 5)$",
-                        "explanation": "Odległość od zera mniejsza niż 5 to przedział (-5, 5).",
-                        "hint": "Liczby od -5 do 5 leżą bliżej zera niż 5.",
-                        "hint_cost": 10,
-                        "id": "task-f512d404"
+                        "id": "task-fb5792ae"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
-                        "source": "Zadanie autorskie",
-                        "content": "Ile liczb całkowitych spełnia nierówność $|x| \\le 3$?",
-                        "correct_answer": "7",
-                        "explanation": "Są to: -3, -2, -1, 0, 1, 2, 3 (dokładnie 7 liczb).",
-                        "hint": "Wypisz liczby od -3 do 3 i pamiętaj o zerze.",
+                        "source": "Arkusz pokazowy",
+                        "content": "Ile liczb całkowitych spełnia nierówność $|x| \\le 4$?",
+                        "correct_answer": "9",
+                        "explanation": "Są to liczby: -4, -3, -2, -1, 0, 1, 2, 3, 4 (łącznie 9 liczb).",
+                        "hint": "Wypisz liczby od -4 do 4 wraz z zerem.",
                         "hint_cost": 10,
-                        "id": "task-44a9a451"
+                        "id": "task-2c305f25"
                     },
                     {
                         "type": "SINGLE_CHOICE",
                         "points": 1,
                         "source": "Matura czerwiec 2024",
-                        "content": "Nierówność $|x - 2| \\ge 4$ ma zbiór rozwiązań:",
+                        "content": "Nierówność $|x - 3| \\ge 5$ ma zbiór rozwiązań:",
                         "options": [
-                            "$(-\\infty, -2\\rangle \\cup \\langle 6, +\\infty)$",
-                            "$\\langle -2, 6\\rangle$",
-                            "$(-\\infty, 6\\rangle$",
-                            "$\\langle 6, +\\infty)$"
+                            "$(-\\infty, -2\\rangle \\cup \\langle 8, +\\infty)$",
+                            "$\\langle -2, 8\\rangle$",
+                            "$(-\\infty, 8\\rangle$",
+                            "$\\langle 8, +\\infty)$"
                         ],
-                        "correct_answer": "$(-\\infty, -2\\rangle \\cup \\langle 6, +\\infty)$",
-                        "explanation": "x - 2 >= 4 -> x >= 6 lub x - 2 <= -4 -> x <= -2.",
-                        "hint": "Odległość od 2 ma być większa bądź równa 4 w obie strony.",
+                        "correct_answer": "$(-\\infty, -2\\rangle \\cup \\langle 8, +\\infty)$",
+                        "explanation": "x - 3 >= 5 -> x >= 8 lub x - 3 <= -5 -> x <= -2.",
+                        "hint": "Odległość od 3 ma być co najmniej 5.",
                         "hint_cost": 10,
-                        "id": "task-2430ca11"
+                        "id": "task-80857081"
                     },
                     {
                         "type": "TRUE_FALSE",
                         "points": 1,
-                        "source": "Matura maj 2023",
-                        "content": "Równanie $|x - 1| = 0$ ma dokładnie jedno rozwiązanie $x = 1$.",
+                        "source": "Matura maj 2025",
+                        "content": "Równanie $|x - 2| = 0$ ma dokładnie jedno rozwiązanie $x = 2$.",
                         "correct_answer": "P",
-                        "explanation": "Tylko 0 ma wartość bezwzględną równą 0, więc x - 1 = 0 -> x = 1. Prawda.",
-                        "hint": "Wartość bezwzględna zeruje się tylko w jednym punkcie.",
+                        "explanation": "Wartość bezwzględna zeruje się tylko w jednym punkcie: x - 2 = 0 -> x = 2. Prawda.",
+                        "hint": "Tylko moduł z zera daje zero.",
                         "hint_cost": 10,
-                        "id": "task-88b55f2d"
+                        "id": "task-0cc45855"
                     },
                     {
                         "type": "NUMERIC_INPUT",
                         "points": 1,
                         "source": "Zadanie autorskie",
-                        "content": "Podaj WIĘKSZE z rozwiązań równania $|3x - 9| = 6$:",
-                        "correct_answer": "5",
-                        "explanation": "3x - 9 = 6 -> 3x = 15 -> x = 5. Drugie: 3x - 9 = -6 -> 3x = 3 -> x = 1. Większe to 5.",
-                        "hint": "Rozbij na 3x - 9 = 6 oraz 3x - 9 = -6.",
+                        "content": "Podaj WIĘKSZE z rozwiązań równania $|2x - 8| = 10$:",
+                        "correct_answer": "9",
+                        "explanation": "2x - 8 = 10 -> 2x = 18 -> x = 9. Drugie: 2x - 8 = -10 -> 2x = -2 -> x = -1. Większe to 9.",
+                        "hint": "Rozwiąż 2x - 8 = 10.",
                         "hint_cost": 10,
-                        "id": "task-cc969cdb"
+                        "id": "task-eaccf6ba"
                     },
                     {
                         "type": "OPEN_GENERAL",
                         "points": 2,
-                        "source": "Matura maj 2025",
-                        "content": "Rozwiąż nierówność z wartością bezwzględną: $|2x - 4| \\le 6$. Wynik podaj w postaci przedziału liczbowego.",
-                        "scoring_key": "1 pkt za zapis nierówności podwójnej: -6 \\le 2x - 4 \\le 6. 1 pkt za dodanie 4 i podzielenie przez 2: x \\in \\langle -1, 5 \\rangle.",
-                        "explanation": "-6 <= 2x - 4 <= 6 -> -2 <= 2x <= 10 -> -1 <= x <= 5. Przedział: <-1, 5>.",
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż nierówność z wartością bezwzględną: $|3x - 6| \\le 9$. Wynik podaj w postaci przedziału liczbowego.",
+                        "scoring_key": "1 pkt za rozpisanie nierówności podwójnej: -9 \\le 3x - 6 \\le 9. 1 pkt za dodanie 6 i podzielenie przez 3: x \\in \\langle -1, 5 \\rangle.",
+                        "explanation": "-9 <= 3x - 6 <= 9 -> -3 <= 3x <= 15 -> -1 <= x <= 5. Przedział: <-1, 5>.",
                         "ai_hint_enabled": true,
                         "hint_cost": 20,
-                        "id": "task-abd2b4ad"
+                        "id": "task-53dee06c"
                     }
                 ]
             }
         ],
         "final_test": {
-            "title": "Sprawdzian Działu: Wielka Bitwa z Równaniami",
-            "description": "15 lekcji opanowanych. Czas sprawdzić Twoje umiejętności w pełnym przekroju równań, nierówności i układów. Zadania losowane bez asysty wskazówek.",
+            "title": "Sprawdzian Działu: Równania i Nierówności",
+            "description": "Kompleksowy test sprawdzający opanowanie materiału z Działu 3. Zadania losowane bez asysty wskazówek ze wszystkich 15 lekcji.",
             "tasks_to_draw": 15,
-            "boss_message": "Pamiętaj o dziedzinie przy ułamkach i obrocie znaku przy dzieleniu przez minus. Egzaminator czeka na Twoje bezbłędne rozwiązania!"
+            "boss_message": "Zwracaj uwagę na dziedzinę przy równaniach wymiernych, zmianę znaku nierówności przy dzieleniu przez ujemną oraz interpretację wykresu paraboli. Powodzenia!"
         }
     }
 }

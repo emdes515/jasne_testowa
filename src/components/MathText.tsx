@@ -185,7 +185,7 @@ export function MathText({ text, className = '', as: Component = 'span' }: MathT
     if (isBlockDisplay) {
       return (
         <Component className={`math-text-wrapper block w-full ${className}`}>
-          <div className="my-2.5 py-3 px-4 bg-[#0B101B] border border-[#00C2FF]/20 rounded-xl flex items-center justify-center overflow-visible no-scrollbar shadow-inner text-white text-center">
+          <div className="my-2.5 py-3 px-4 bg-[#0B101B] border border-[#FFB800]/20 rounded-xl flex items-center justify-center overflow-visible no-scrollbar shadow-inner text-white text-center">
             <BlockMath
               math={cleaned}
               renderError={() => (
@@ -219,7 +219,7 @@ export function MathText({ text, className = '', as: Component = 'span' }: MathT
           return (
             <div
               key={`block-${index}`}
-              className="my-2.5 py-3 px-4 bg-[#0B101B] border border-[#00C2FF]/20 rounded-xl flex items-center justify-center overflow-visible no-scrollbar shadow-inner text-white text-center"
+              className="my-2.5 py-3 px-4 bg-[#0B101B] border border-[#FFB800]/20 rounded-xl flex items-center justify-center overflow-visible no-scrollbar shadow-inner text-white text-center"
             >
               <BlockMath
                 math={token.content}

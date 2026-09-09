@@ -49,7 +49,7 @@ export function Whiteboard({
 
   // Active Tool: 'pen' | 'highlighter' | 'eraser'
   const [tool, setTool] = useState<'pen' | 'highlighter' | 'eraser'>('pen');
-  const [penColor, setPenColor] = useState<'#FFFFFF' | '#00E5FF'>('#FFFFFF');
+  const [penColor, setPenColor] = useState<'#FFFFFF' | '#FFB800'>('#FFFFFF');
   const [isDrawing, setIsDrawing] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
 
@@ -382,7 +382,7 @@ export function Whiteboard({
         {/* Top Floating Badge with Mode / Fullscreen Toggle */}
         <div className="absolute top-3 left-3 right-3 z-20 flex items-center justify-between pointer-events-none">
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-[#8B8D98] pointer-events-auto shadow-md">
-            <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse" />
             <span>Brudnopis</span>
           </div>
 
@@ -425,7 +425,7 @@ export function Whiteboard({
             }}
             className={`p-2.5 rounded-full transition-all flex items-center justify-center ${
               tool === 'pen'
-                ? 'bg-[#00E5FF] text-black font-black shadow-[0_0_15px_rgba(0,229,255,0.4)]'
+                ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_15px_rgba(255,184,0,0.4)]'
                 : 'text-[#8B8D98] hover:text-white hover:bg-white/5'
             }`}
             title="Długopis (3px)"
@@ -433,13 +433,13 @@ export function Whiteboard({
             <Pen size={17} />
           </button>
 
-          {/* Color Switcher (White / Cyan) - visible if pen active */}
+          {/* Color Switcher (White / Amber) - visible if pen active */}
           {tool === 'pen' && (
             <button
               type="button"
               onClick={() => {
                 triggerHaptic('light');
-                setPenColor((c) => (c === '#FFFFFF' ? '#00E5FF' : '#FFFFFF'));
+                setPenColor((c) => (c === '#FFFFFF' ? '#FFB800' : '#FFFFFF'));
               }}
               className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center transition-transform active:scale-90"
               style={{ backgroundColor: penColor }}
@@ -551,7 +551,7 @@ export function Whiteboard({
       <div className="mt-3 bg-[#0B0F17] border border-white/10 rounded-[22px] p-3.5 sm:p-4 shadow-xl flex flex-col gap-2.5">
         <div className="flex items-center justify-between">
           <label className="text-xs font-black uppercase tracking-wider text-white flex items-center gap-1.5">
-            <Target size={14} className="text-[#00C2FF]" />
+            <Target size={14} className="text-[#FFB800]" />
             <span>Twój wynik końcowy:</span>
           </label>
 
@@ -564,13 +564,13 @@ export function Whiteboard({
             }}
             className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full border transition-all ${
               solutionOnCanvas
-                ? 'bg-[#00E5FF]/15 text-[#00E5FF] border-[#00E5FF]/40 shadow-[0_0_12px_rgba(0,229,255,0.2)]'
+                ? 'bg-[#FFB800]/15 text-[#FFB800] border-[#FFB800]/40 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                 : 'bg-white/5 text-[#8B8D98] border-white/10 hover:border-white/20'
             }`}
           >
             <div
               className={`w-3.5 h-3.5 rounded flex items-center justify-center border transition-colors ${
-                solutionOnCanvas ? 'bg-[#00E5FF] border-[#00E5FF] text-black' : 'border-[#8B8D98]'
+                solutionOnCanvas ? 'bg-[#FFB800] border-[#FFB800] text-[#080B11]' : 'border-[#8B8D98]'
               }`}
             >
               {solutionOnCanvas && <Check size={11} strokeWidth={3} />}
@@ -594,7 +594,7 @@ export function Whiteboard({
             className={`w-full bg-[#161F2E] text-white px-3.5 py-2.5 rounded-xl border outline-none text-sm font-mono transition-colors ${
               solutionOnCanvas
                 ? 'opacity-60 border-transparent cursor-not-allowed italic text-emerald-400'
-                : 'border-white/10 focus:border-[#00E5FF]/50'
+                : 'border-white/10 focus:border-[#FFB800]/50'
             }`}
           />
         </div>

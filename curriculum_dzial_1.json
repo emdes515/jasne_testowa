@@ -1,0 +1,1863 @@
+{
+    "topic": {
+        "id": "dzial-1",
+        "title": "Dział 1: Liczby Rzeczywiste",
+        "description": "Solidne fundamenty maturalne: przedziały liczbowe, ułamki, procenty, potęgi, pierwiastki, logarytmy i wartość bezwzględna. 15 lekcji, 120 zadań.",
+        "lessons": [
+            {
+                "id": "lesson-1-1",
+                "title": "Przedziały liczbowe i interpretacja na osi",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Nawias okrągły (otwarty) wyklucza punkt brzegowy z przedziału (nierówność ostra <, >). Nawias ostry (domknięty) włącza liczbę graniczną do przedziału (nierówność słaba <=, >=).",
+                    "matura_context": "Zadania ze zliczaniem liczb całkowitych w przedziale lub wyznaczaniem części wspólnej zbiorów pojawiają się regularnie na maturze majowej za 1 punkt.",
+                    "core_formulas": [
+                        "x \\in (a, b\\rangle \\iff a < x \\le b"
+                    ],
+                    "worked_example": "W przedziale $(-3, 2\\rangle$ liczbami całkowitymi są: -2, -1, 0, 1, 2. Liczba -3 nie należy do przedziału ze względu na nawias otwarty.",
+                    "exam_trap": "Pamiętaj, że liczba 0 jest liczbą całkowitą! Pominięcie zera przy zliczaniu liczb całkowitych to najczęstszy błąd."
+                },
+                "tasks": [
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Ile liczb całkowitych należy do przedziału $\\langle -4, 3)$?",
+                        "correct_answer": "7",
+                        "explanation": "Do przedziału należą liczby całkowite: -4, -3, -2, -1, 0, 1, 2. Liczba 3 nie należy z powodu nawiasu otwartego. Jest ich 7.",
+                        "hint": "Wypisz liczby całkowite od -4 do 2, pamiętając o zerze.",
+                        "hint_cost": 10,
+                        "id": "task-b9cba94e"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Wskaż liczbę, która NIE NALEŻY do przedziału $(-2, 5\\rangle$:",
+                        "options": [
+                            "$-2$",
+                            "$0$",
+                            "$3$",
+                            "$5$"
+                        ],
+                        "correct_answer": "$-2$",
+                        "explanation": "Przy liczbie -2 nawias jest otwarty, co oznacza, że liczba ta nie należy do przedziału.",
+                        "hint": "Sprawdź, przy której liczbie znajduje się nawias okrągły.",
+                        "hint_cost": 10,
+                        "id": "task-3baf68ce"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Iloczyn przedziałów $A = \\langle -3, 4)$ oraz $B = \\langle 1, 6\\rangle$ jest równy:",
+                        "options": [
+                            "$\\langle 1, 4)$",
+                            "$\\langle -3, 6\\rangle$",
+                            "$(1, 4\\rangle$",
+                            "$\\langle 1, 4\\rangle$"
+                        ],
+                        "correct_answer": "$\\langle 1, 4)$",
+                        "explanation": "Część wspólna obu przedziałów to zbiór liczb leżących jednocześnie w obu przedziałach: od 1 (włącznie) do 4 (wyłącznie).",
+                        "hint": "Znajdź wspólny fragment obu przedziałów na osi liczbowej.",
+                        "hint_cost": 10,
+                        "id": "task-fd5ea48d"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Liczba $0$ należy do przedziału $(-1, 1)$.",
+                        "correct_answer": "P",
+                        "explanation": "Zero leży ściśle pomiędzy liczbami -1 oraz 1 na osi liczbowej, więc należy do tego przedziału.",
+                        "hint": "Czy liczba 0 leży pomiędzy -1 a 1?",
+                        "hint_cost": 10,
+                        "id": "task-0e0cb212"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Podaj najmniejszą liczbę całkowitą spełniającą nierówność $x > -5$:",
+                        "correct_answer": "-4",
+                        "explanation": "Nierówność jest ostra, więc -5 nie spełnia warunku. Najmniejszą większą liczbą całkowitą jest -4.",
+                        "hint": "Liczba musi być ściśle większa od -5.",
+                        "hint_cost": 10,
+                        "id": "task-c9b0be27"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Zbiór rozwiązań nierówności $-2 \\le x < 5$ zapisany w postaci przedziału to:",
+                        "options": [
+                            "$\\langle -2, 5)$",
+                            "$(-2, 5\\rangle$",
+                            "$\\langle -2, 5\\rangle$",
+                            "$(-2, 5)$"
+                        ],
+                        "correct_answer": "$\\langle -2, 5)$",
+                        "explanation": "Znak <= oznacza nawias domknięty przy -2, a znak < oznacza nawias otwarty przy 5.",
+                        "hint": "Nawias ostry odpowiada nierówności słabej.",
+                        "hint_cost": 10,
+                        "id": "task-a1ddcae5"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Do przedziału $\\langle 3, 9)$ należy dokładnie 6 liczb naturalnych.",
+                        "correct_answer": "P",
+                        "explanation": "Są to liczby: 3, 4, 5, 6, 7, 8 (dokładnie 6 liczb). Liczba 9 nie należy do przedziału.",
+                        "hint": "Policz liczby od 3 do 8.",
+                        "hint_cost": 10,
+                        "id": "task-de1ed1fa"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Dany jest przedział $A = (-\\infty, 4\\rangle$. Wyznacz dopełnienie tego przedziału w zbiorze liczb rzeczywistych $\\mathbb{R} \\setminus A$.",
+                        "scoring_key": "1 pkt za poprawne określenie początku przedziału w liczbie 4. 1 pkt za poprawny zapis przedziału otwartego: (4, +\\infty).",
+                        "explanation": "Dopełnieniem zbioru liczb mniejszych bądź równych 4 jest zbiór liczb ściśle większych od 4, czyli przedział (4, +\\infty).",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-78d85817"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-2",
+                "title": "Liczby wymierne i niewymierne: Rozwinięcia dziesiętne",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Liczba wymierna to każda liczba, którą można przedstawić w postaci ułamka zwykłego p/q, gdzie licznik i mianownik są całkowite (q != 0). Rozwinięcia dziesiętne liczb wymiernych są skończone lub nieskończone okresowe. Liczby niewymierne mają rozwinięcia nieskończone nieokresowe (np. pierwiastki niedające się wyliczyć, liczba pi).",
+                    "matura_context": "Zadanie z klasyfikacji liczb wymiernych i niewymiernych pojawia się na maturze majowej w zadaniach zamkniętych.",
+                    "core_formulas": [
+                        "\\mathbb{Q} = \\{\\frac{p}{q}: p \\in \\mathbb{Z}, q \\in \\mathbb{Z} \\setminus \\{0\\}\\}"
+                    ],
+                    "worked_example": "$\\sqrt{2} \\cdot \\sqrt{8} = \\sqrt{16} = 4$ – iloczyn dwóch liczb niewymiernych dał w wyniku liczbę wymierną.",
+                    "exam_trap": "Nie każdy pierwiastek oznacza liczbę niewymierną. $\\sqrt{81} = 9$ oraz $\\sqrt[3]{-8} = -2$ to liczby wymierne i całkowite."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Liczbą wymierną jest:",
+                        "options": [
+                            "$\\sqrt{50} \\cdot \\sqrt{2}$",
+                            "$\\sqrt{2} + \\sqrt{2}$",
+                            "$\\pi - 3$",
+                            "$\\sqrt{7}$"
+                        ],
+                        "correct_answer": "$\\sqrt{50} \\cdot \\sqrt{2}$",
+                        "explanation": "$\\sqrt{50} \\cdot \\sqrt{2} = \\sqrt{100} = 10 \\in \\mathbb{Q}$.",
+                        "hint": "Wykonaj mnożenie pod pierwiastkiem.",
+                        "hint_cost": 10,
+                        "id": "task-8e7f52f7"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Liczba $0,(36)$ jest liczbą wymierną.",
+                        "correct_answer": "P",
+                        "explanation": "Każde rozwinięcie dziesiętne okresowe można zapisać jako ułamek zwykły: 36/99 = 4/11. Prawda.",
+                        "hint": "Rozwinięcie okresowe zawsze daje się zamienić na ułamek zwykły.",
+                        "hint_cost": 10,
+                        "id": "task-52f58111"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Wskaż liczbę niewymierną:",
+                        "options": [
+                            "$\\sqrt{3} + 2$",
+                            "$\\sqrt{2\\frac{7}{9}}$",
+                            "$0,75$",
+                            "$\\sqrt[3]{-64}$"
+                        ],
+                        "correct_answer": "$\\sqrt{3} + 2$",
+                        "explanation": "$\\sqrt{3}$ jest liczbą niewymierną, więc suma $\\sqrt{3} + 2$ również jest niewymierna. Pozostałe liczby to liczby wymierne.",
+                        "hint": "Sprawdź, które pierwiastki można dokładnie obliczyć.",
+                        "hint_cost": 10,
+                        "id": "task-9f189b46"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Oblicz wartość wyrażenia $(\\sqrt{5} - 2)(\\sqrt{5} + 2)$:",
+                        "correct_answer": "1",
+                        "explanation": "Ze wzoru na różnicę kwadratów: (\\sqrt{5})^2 - 2^2 = 5 - 4 = 1.",
+                        "hint": "Użyj wzoru (a - b)(a + b) = a^2 - b^2.",
+                        "hint_cost": 10,
+                        "id": "task-a306c11c"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Ułamek $\\frac{5}{6}$ ma rozwinięcie dziesiętne równe:",
+                        "options": [
+                            "$0,8(3)$",
+                            "$0,(83)$",
+                            "$0,83$",
+                            "$0,(3)$"
+                        ],
+                        "correct_answer": "$0,8(3)$",
+                        "explanation": "5 : 6 = 0,8333... Okres składa się z cyfry 3 i rozpoczyna się na drugim miejscu po przecinku: 0,8(3).",
+                        "hint": "Podziel pisemnie 5 przez 6.",
+                        "hint_cost": 10,
+                        "id": "task-d21c28ad"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Suma dwóch liczb niewymiernych jest zawsze liczbą niewymierną.",
+                        "correct_answer": "F",
+                        "explanation": "Kontrprzykład: $\\sqrt{3} + (-\\sqrt{3}) = 0$, a liczba 0 jest wymierna. Fałsz.",
+                        "hint": "Rozważ sumę liczby i liczby do niej przeciwnej.",
+                        "hint_cost": 10,
+                        "id": "task-ebb067ef"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Różnica $\\sqrt{32} - \\sqrt{8}$ jest równa:",
+                        "options": [
+                            "$2\\sqrt{2}$",
+                            "$\\sqrt{24}$",
+                            "$4\\sqrt{2}$",
+                            "$\\sqrt{2}$"
+                        ],
+                        "correct_answer": "$2\\sqrt{2}$",
+                        "explanation": "$\\sqrt{32} = 4\\sqrt{2}$ oraz $\\sqrt{8} = 2\\sqrt{2}$. Zatem $4\\sqrt{2} - 2\\sqrt{2} = 2\\sqrt{2}$.",
+                        "hint": "Wyłącz czynnik przed znak pierwiastka w obu liczbach.",
+                        "hint_cost": 10,
+                        "id": "task-dbc97474"
+                    },
+                    {
+                        "type": "OPEN_PROOF",
+                        "points": 2,
+                        "source": "Matura maj 2023",
+                        "content": "Wykaż, że liczba $a = (\\sqrt{7} - 1)^2 + 2\\sqrt{7}$ jest liczbą całkowitą.",
+                        "scoring_key": "1 pkt za zastosowanie wzoru skróconego mnożenia: 7 - 2\\sqrt{7} + 1. 1 pkt za redukcję wyrazów z pierwiastkiem i wynik a = 8 \\in \\mathbb{Z}.",
+                        "explanation": "(\\sqrt{7}-1)^2 + 2\\sqrt{7} = 7 - 2\\sqrt{7} + 1 + 2\\sqrt{7} = 8 \\in \\mathbb{Z}.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-b4b15a05"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-3",
+                "title": "Ułamki zwykłe: Dodawanie, odejmowanie i wspólny mianownik",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Aby dodać lub odjąć ułamki zwykłe, należy sprowadzić je do wspólnego mianownika (najlepiej NWW). Mnożymy licznik i mianownik ułamka przez tę samą liczbę (rozszerzanie ułamka), a następnie wykonujemy działanie na samych licznikach.",
+                    "matura_context": "Błędy w dodawaniu i odejmowaniu ułamków prowadzą do utraty punktów w geometrii, prawdopodobieństwie i równaniach.",
+                    "core_formulas": [
+                        "\\frac{a}{b} \\pm \\frac{c}{d} = \\frac{ad \\pm bc}{bd}"
+                    ],
+                    "worked_example": "$\\frac{5}{6} - \\frac{1}{4} = \\frac{10}{12} - \\frac{3}{12} = \\frac{7}{12}$.",
+                    "exam_trap": "Nigdy nie dodawaj mianownika do mianownika! $\\frac{1}{2} + \\frac{1}{3} \\neq \\frac{2}{5}$. Wspólnym mianownikiem jest 6, a poprawny wynik to $\\frac{5}{6}$."
+                },
+                "tasks": [
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz $\\frac{5}{8} - \\frac{1}{6}$. Wynik podaj w postaci ułamka nieskracalnego $p/q$:",
+                        "correct_answer": "11/24",
+                        "explanation": "Wspólny mianownik to 24. 15/24 - 4/24 = 11/24.",
+                        "hint": "NWW dla 8 i 6 wynosi 24.",
+                        "hint_cost": 10,
+                        "id": "task-f2a984bf"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Wartość sumy $\\frac{3}{5} + \\frac{1}{10}$ jest równa:",
+                        "options": [
+                            "$\\frac{7}{10}$",
+                            "$\\frac{4}{15}$",
+                            "$\\frac{2}{5}$",
+                            "$\\frac{4}{10}$"
+                        ],
+                        "correct_answer": "$\\frac{7}{10}$",
+                        "explanation": "6/10 + 1/10 = 7/10.",
+                        "hint": "Rozszerz pierwszy ułamek przez 2.",
+                        "hint_cost": 10,
+                        "id": "task-dea72f8b"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Oblicz: $2\\frac{1}{3} - 1\\frac{3}{4}$. Wynik podaj w postaci ułamka nieskracalnego $p/q$:",
+                        "correct_answer": "7/12",
+                        "explanation": "7/3 - 7/4 = 28/12 - 21/12 = 7/12.",
+                        "hint": "Zamień liczby mieszane na ułamki niewłaściwe i sprowadź do mianownika 12.",
+                        "hint_cost": 10,
+                        "id": "task-8f238d2c"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Ułamek $\\frac{4}{7}$ jest większy od ułamka $\\frac{5}{9}$.",
+                        "correct_answer": "P",
+                        "explanation": "Sprowadzamy do wspólnego mianownika 63: 4/7 = 36/63 oraz 5/9 = 35/63. 36/63 > 35/63. Prawda.",
+                        "hint": "Pomnóż na krzyż: 4*9 oraz 5*7.",
+                        "hint_cost": 10,
+                        "id": "task-43ef9721"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Wartość wyrażenia $3 - \\frac{5}{8}$ jest równa:",
+                        "options": [
+                            "$\\frac{19}{8}$",
+                            "$\\frac{11}{8}$",
+                            "$\\frac{24}{8}$",
+                            "$-\\frac{2}{8}$"
+                        ],
+                        "correct_answer": "$\\frac{19}{8}$",
+                        "explanation": "3 = 24/8. Zatem 24/8 - 5/8 = 19/8.",
+                        "hint": "Zapisz liczbę 3 jako ułamek o mianowniku 8.",
+                        "hint_cost": 10,
+                        "id": "task-aa8cd50a"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Ile wynosi różnica $\\frac{7}{12} - \\frac{1}{4}$? Wynik podaj w postaci ułamka nieskracalnego $p/q$:",
+                        "correct_answer": "1/3",
+                        "explanation": "7/12 - 3/12 = 4/12 = 1/3.",
+                        "hint": "Po odjęciu skróć otrzymany ułamek przez 4.",
+                        "hint_cost": 10,
+                        "id": "task-e7a10f50"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Wartość wyrażenia $\\frac{1}{3} + \\frac{1}{6} = \\frac{1}{2}$.",
+                        "correct_answer": "P",
+                        "explanation": "2/6 + 1/6 = 3/6 = 1/2. Prawda.",
+                        "hint": "2/6 + 1/6 = 3/6.",
+                        "hint_cost": 10,
+                        "id": "task-1dad966b"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz wartość wyrażenia $\\frac{2}{3} + \\frac{3}{4} - \\frac{5}{6}$. Wynik podaj w postaci ułamka nieskracalnego.",
+                        "scoring_key": "1 pkt za sprowadzenie do wspólnego mianownika 12: \\frac{8+9-10}{12}. 1 pkt za poprawny wynik: \\frac{7}{12}.",
+                        "explanation": "Wspólny mianownik dla 3, 4 i 6 to 12. 8/12 + 9/12 - 10/12 = 7/12.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-a43c8466"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-4",
+                "title": "Ułamki zwykłe: Mnożenie, dzielenie i reguły skracania",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Mnożenie ułamków polega na pomnożeniu licznika przez licznik i mianownika przez mianownik (z wcześniejszym skracaniem na krzyż). Dzielenie ułamków to mnożenie pierwszego ułamka przez odwrotność drugiego. Skracać wolno wyłącznie czynniki iloczynu.",
+                    "matura_context": "Kluczowa umiejętność przy rozwiązywaniu równań wymiernych i delty.",
+                    "core_formulas": [
+                        "\\frac{a}{b} \\cdot \\frac{c}{d} = \\frac{ac}{bd}, \\quad \\frac{a}{b} : \\frac{c}{d} = \\frac{a}{b} \\cdot \\frac{d}{c}"
+                    ],
+                    "worked_example": "$\\frac{14}{15} \\cdot \\frac{25}{21} = \\frac{2}{3} \\cdot \\frac{5}{3} = \\frac{10}{9}$.",
+                    "exam_trap": "Nie wolno skracać składników dodawania! W wyrażeniu $\\frac{4 + x}{4}$ nie można skrócić czwórki – plus w liczniku to uniemożliwia."
+                },
+                "tasks": [
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz: $\\frac{8}{15} : \\frac{4}{5}$. Wynik podaj w postaci ułamka nieskracalnego $p/q$:",
+                        "correct_answer": "2/3",
+                        "explanation": "8/15 * 5/4 = (8*5)/(15*4) = 40/60 = 2/3.",
+                        "hint": "Zamień dzielenie na mnożenie przez odwrotność drugiego ułamka.",
+                        "hint_cost": 10,
+                        "id": "task-6dea6043"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Wartość iloczynu $\\frac{3}{7} \\cdot \\frac{14}{9}$ jest równa:",
+                        "options": [
+                            "$\\frac{2}{3}$",
+                            "$\\frac{6}{21}$",
+                            "$\\frac{1}{3}$",
+                            "$\\frac{3}{2}$"
+                        ],
+                        "correct_answer": "$\\frac{2}{3}$",
+                        "explanation": "Skracamy 3 z 9 (zostaje 1 i 3) oraz 14 z 7 (zostaje 2 i 1). Wynik to 2/3.",
+                        "hint": "Skróć ułamki na krzyż przed wymnożeniem.",
+                        "hint_cost": 10,
+                        "id": "task-1db55203"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Odwrotnością liczby $-1\\frac{1}{3}$ jest liczba $-\\frac{3}{4}$.",
+                        "correct_answer": "P",
+                        "explanation": "-1 1/3 = -4/3. Liczba odwrotna to -3/4 (znak liczby pozostaje bez zmian). Prawda.",
+                        "hint": "Zamień liczbę mieszaną na ułamek niewłaściwy i odwróć licznik z mianownikiem.",
+                        "hint_cost": 10,
+                        "id": "task-d491d973"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Oblicz wartość wyrażenia $\\frac{9}{16} \\cdot \\frac{8}{27}$ w postaci ułamka nieskracalnego $p/q$:",
+                        "correct_answer": "1/6",
+                        "explanation": "Skracamy 9 z 27 (1 i 3) oraz 8 z 16 (1 i 2): 1/(2*3) = 1/6.",
+                        "hint": "Skróć 9 z 27 oraz 8 z 16.",
+                        "hint_cost": 10,
+                        "id": "task-b62feb01"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Wyrażenie $\\frac{6a - 9}{3}$ po uproszczeniu jest równe:",
+                        "options": [
+                            "$2a - 3$",
+                            "$2a - 9$",
+                            "$6a - 3$",
+                            "$2a - 1$"
+                        ],
+                        "correct_answer": "$2a - 3$",
+                        "explanation": "3(2a - 3) / 3 = 2a - 3.",
+                        "hint": "Wyłącz 3 przed nawias w liczniku.",
+                        "hint_cost": 10,
+                        "id": "task-4fa40d93"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Dla $x \\neq 0$ wyrażenie $\\frac{x + 5}{x}$ jest równe $1 + \\frac{5}{x}$.",
+                        "correct_answer": "P",
+                        "explanation": "(x/x) + (5/x) = 1 + 5/x. Prawda.",
+                        "hint": "Rozbij ułamek na sumę dwóch ułamków o tym samym mianowniku.",
+                        "hint_cost": 10,
+                        "id": "task-af34cb8e"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Oblicz: $\\frac{3}{4} : 6$. Podaj wynik w postaci ułamka nieskracalnego $p/q$:",
+                        "correct_answer": "1/8",
+                        "explanation": "3/4 * 1/6 = 3/24 = 1/8.",
+                        "hint": "Dzielenie przez 6 to mnożenie przez 1/6.",
+                        "hint_cost": 10,
+                        "id": "task-8f457637"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2023",
+                        "content": "Oblicz wartość wyrażenia $\\left(\\frac{2}{3} - \\frac{1}{2}\\right) : \\frac{5}{12}$. Zapisz kolejne etapy obliczeń.",
+                        "scoring_key": "1 pkt za obliczenie zawartości nawiasu: \\frac{4-3}{6} = \\frac{1}{6}. 1 pkt za poprawne wykonanie dzielenia: \\frac{1}{6} \\cdot \\frac{12}{5} = \\frac{2}{5}.",
+                        "explanation": "W nawiasie: 4/6 - 3/6 = 1/6. Dzielenie: 1/6 * 12/5 = 12/30 = 2/5.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-6302f728"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-5",
+                "title": "Procenty: Obliczenia procentowe, podwyżki i obniżki cen",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Podwyżka ceny o p% oznacza pomnożenie ceny początkowej przez mnożnik (1 + p/100). Obniżka ceny o p% to pomnożenie przez mnożnik (1 - p/100). Przy wielokrotnych zmianach cen mnożymy kolejne mnożniki przez siebie.",
+                    "matura_context": "Zadanie z dwukrotną zmianą ceny pojawia się na każdej maturze majowej za 1 punkt.",
+                    "core_formulas": [
+                        "K_1 = K_0 \\cdot \\left(1 \\pm \\frac{p}{100}\\right)"
+                    ],
+                    "worked_example": "Cena 200 zł wzrosła o 15%: $200 \\cdot 1,15 = 230$ zł. Następnie spadła o 10%: $230 \\cdot 0,90 = 207$ zł.",
+                    "exam_trap": "Podwyżka o 20%, a następnie obniżka o 20% NIE przywraca ceny początkowej! $1,20 \\cdot 0,80 = 0,96$ (cena spadła o 4%)."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Cenę towaru obniżono o 20%, a następnie nową cenę podwyższono o 20%. W wyniku tych zmian cena końcowa w stosunku do początkowej:",
+                        "options": [
+                            "zmniejszyła się o 4%",
+                            "nie zmieniła się",
+                            "zwiększyła się o 4%",
+                            "zmniejszyła się o 2%"
+                        ],
+                        "correct_answer": "zmniejszyła się o 4%",
+                        "explanation": "0,80 * 1,20 = 0,96, co oznacza 96% ceny początkowej, czyli spadek o 4%.",
+                        "hint": "Pomnóż mnożnik obniżki (0,8) przez mnożnik podwyżki (1,2).",
+                        "hint_cost": 10,
+                        "id": "task-20bcc8ab"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Kurtka kosztowała 400 zł. Po obniżce o 25% jej nowa cena wynosi (w zł):",
+                        "correct_answer": "300",
+                        "explanation": "400 * 0,75 = 300 zł.",
+                        "hint": "Obniżka o 25% oznacza, że płacimy 75% ceny wyjściowej.",
+                        "hint_cost": 10,
+                        "id": "task-5e396efb"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Liczba $b$ stanowi 120% liczby 50. Ile wynosi $b$?",
+                        "correct_answer": "60",
+                        "explanation": "1,20 * 50 = 60.",
+                        "hint": "Pomnóż 1,2 przez 50.",
+                        "hint_cost": 10,
+                        "id": "task-cb609ed0"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Cena pewnego artykułu wzrosła z 80 zł na 100 zł. O ile procent wzrosła cena?",
+                        "options": [
+                            "25%",
+                            "20%",
+                            "15%",
+                            "30%"
+                        ],
+                        "correct_answer": "25%",
+                        "explanation": "Różnica to 20 zł. Wzrost w stosunku do ceny początkowej: 20 / 80 = 1/4 = 25%.",
+                        "hint": "Podziel różnicę ceny (20 zł) przez cenę początkową (80 zł).",
+                        "hint_cost": 10,
+                        "id": "task-99bd9fa6"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Dwukrotna podwyżka ceny o 10% jest równoważna jednorazowej podwyżce o 21%.",
+                        "correct_answer": "P",
+                        "explanation": "1,10 * 1,10 = 1,21, co odpowiada wzrostowi o 21%. Prawda.",
+                        "hint": "Oblicz 1,1 do kwadratu.",
+                        "hint_cost": 10,
+                        "id": "task-1b659bf4"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Po obniżce o 10% telefon kosztuje 1800 zł. Ile kosztował przed obniżką (w zł)?",
+                        "correct_answer": "2000",
+                        "explanation": "0,90 * x = 1800 -> x = 1800 / 0,9 = 2000 zł.",
+                        "hint": "Podziel cenę końcową przez 0,90.",
+                        "hint_cost": 10,
+                        "id": "task-1c02b781"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Liczba dodatnia $x$ stanowi 40% liczby $y$. Wynika stąd, że:",
+                        "options": [
+                            "$y = 2,5x$",
+                            "$y = 0,4x$",
+                            "$y = 0,6x$",
+                            "$y = 4x$"
+                        ],
+                        "correct_answer": "$y = 2,5x$",
+                        "explanation": "x = 0,4y -> y = x / 0,4 = 2,5x.",
+                        "hint": "Wyznacz y z równania x = 0,4y.",
+                        "hint_cost": 10,
+                        "id": "task-6125923e"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Cena pewnego towaru wzrosła o 25%. O ile procent należy teraz obniżyć nową cenę, aby powrócić do ceny początkowej?",
+                        "scoring_key": "1 pkt za zapisanie równania 1,25 \\cdot (1 - p) = 1. 1 pkt za wyznaczenie p = 0,20 i odpowiedź: o 20%.",
+                        "explanation": "Niech cena początkowa wynosi 100 zł. Po podwyżce towar kosztuje 125 zł. Aby powrócić do 100 zł, należy cenę obniżyć o 25 zł w odniesieniu do 125 zł: 25/125 = 1/5 = 20%.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-a606e823"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-6",
+                "title": "Procenty: Błąd bezwzględny i błąd względny pomiaru",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Błąd bezwzględny delta to moduł różnicy między wartością dokładną x a przybliżoną x_0. Błąd względny to stosunek błędu bezwzględnego do modułu wartości DOKŁADNEJ (wyrażany najczęściej w procentach).",
+                    "matura_context": "Zadanie z błędu względnego pojawia się cyklicznie w arkuszach maturalnych.",
+                    "core_formulas": [
+                        "\\Delta = |x - x_0|, \\quad \\delta = \\frac{|x - x_0|}{|x|} \\cdot 100\\%"
+                    ],
+                    "worked_example": "Wartość dokładna $x = 25$, przybliżenie $x_0 = 24$. Błąd bezwzględny: $|25 - 24| = 1$. Błąd względny: $\\frac{1}{25} \\cdot 100\\% = 4\\%$.",
+                    "exam_trap": "W mianowniku błędu względnego zawsze wstawiamy wartość DOKŁADNĄ ($x$), a nie przybliżenie ($x_0$)!"
+                },
+                "tasks": [
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Liczbę $x = \\frac{3}{8}$ zaokrąglono do $0,4$. Oblicz błąd bezwzględny tego przybliżenia:",
+                        "correct_answer": "0,025",
+                        "explanation": "3/8 = 0,375. Błąd bezwzględny to |0,375 - 0,4| = 0,025.",
+                        "hint": "Zamień 3/8 na ułamek dziesiętny i odejmij od 0,4.",
+                        "hint_cost": 10,
+                        "id": "task-722283ad"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Wartość dokładna to $x = 50$, a przybliżona to $x_0 = 48$. Błąd względny tego przybliżenia wynosi:",
+                        "options": [
+                            "4%",
+                            "2%",
+                            "5%",
+                            "2,5%"
+                        ],
+                        "correct_answer": "4%",
+                        "explanation": "|50 - 48| / 50 = 2 / 50 = 0,04 = 4%.",
+                        "hint": "Podziel błąd bezwzględny (2) przez wartość dokładną (50).",
+                        "hint_cost": 10,
+                        "id": "task-455c5218"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Błąd bezwzględny pomiaru nigdy nie jest liczbą ujemną.",
+                        "correct_answer": "P",
+                        "explanation": "Błąd bezwzględny definiowany jest za pomocą wartości bezwzględnej, więc jest zawsze nieujemny. Prawda.",
+                        "hint": "We wzorze występuje moduł |x - x_0|.",
+                        "hint_cost": 10,
+                        "id": "task-fa3ad96e"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Dokładna masa towaru to 125 kg, a waga wskazała 120 kg. Oblicz błąd względny tego pomiaru w procentach:",
+                        "correct_answer": "4",
+                        "explanation": "|125 - 120| / 125 = 5 / 125 = 1/25 = 0,04 = 4%.",
+                        "hint": "Podziel 5 przez 125 i pomnóż przez 100%.",
+                        "hint_cost": 10,
+                        "id": "task-5d00b1e9"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Przybliżenie z nadmiarem liczby $x$ wynosi $20$, a błąd bezwzględny to $0,6$. Wartość dokładna liczby $x$ jest równa:",
+                        "options": [
+                            "19,4",
+                            "20,6",
+                            "19,6",
+                            "20,4"
+                        ],
+                        "correct_answer": "19,4",
+                        "explanation": "Przybliżenie z nadmiarem oznacza, że zaokrąglono w górę: x_0 = 20 > x. Zatem x = 20 - 0,6 = 19,4.",
+                        "hint": "Przybliżenie z nadmiarem jest większe od liczby dokładnej.",
+                        "hint_cost": 10,
+                        "id": "task-b5f253df"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Liczbę $1,75$ zaokrąglono do części dziesiątych (do $1,8$). Ile wynosi błąd bezwzględny?",
+                        "correct_answer": "0,05",
+                        "explanation": "|1,75 - 1,8| = 0,05.",
+                        "hint": "Odejmij 1,75 od 1,8.",
+                        "hint_cost": 10,
+                        "id": "task-f185dd00"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Jednostka błędu bezwzględnego jest taka sama jak jednostka mierzonej wielkości.",
+                        "correct_answer": "P",
+                        "explanation": "Błąd bezwzględny ma to samo miano (np. metry, kilogramy), w przeciwieństwie do błędu względnego, który jest bezwymiarowy. Prawda.",
+                        "hint": "Jeśli mierzysz w centymetrach, błąd bezwzględny też jest w centymetrach.",
+                        "hint_cost": 10,
+                        "id": "task-75a1e1f2"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2023",
+                        "content": "Długość boku kwadratu wynosi dokładnie $8\\text{ cm}$. Zmierzono ten bok linijką z wynikiem $8,2\\text{ cm}$. Oblicz błąd bezwzględny oraz błąd względny tego pomiaru (w procentach).",
+                        "scoring_key": "1 pkt za błąd bezwzględny: |8 - 8,2| = 0,2 cm. 1 pkt za błąd względny: \\frac{0,2}{8} \\cdot 100\\% = 2,5\\%.",
+                        "explanation": "Błąd bezwzględny: |8 - 8,2| = 0,2 cm. Błąd względny: 0,2 / 8 = 1/40 = 2,5%.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-f747f9e9"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-7",
+                "title": "Potęgi: Prawa działań na potęgach i wspólna podstawa",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Podstawowa technika maturalna: gdy w zadaniu występują potęgi o różnych podstawach (np. 4, 8, 16, 32), sprowadzamy wszystkie liczby do wspólnej podstawy (np. potęgi dwójki). Przy mnożeniu potęg o tej samej podstawie wykładniki dodajemy, przy dzieleniu odejmujemy, a przy potęgowaniu potęgi – mnożymy.",
+                    "matura_context": "Zadanie otwierające niemal każdy arkusz matury majowej za 1 punkt.",
+                    "core_formulas": [
+                        "a^m \\cdot a^n = a^{m+n}, \\quad \\frac{a^m}{a^n} = a^{m-n}, \\quad (a^m)^n = a^{m \\cdot n}"
+                    ],
+                    "worked_example": "$4^4 \\cdot 8^2 = (2^2)^4 \\cdot (2^3)^2 = 2^8 \\cdot 2^6 = 2^{14}$.",
+                    "exam_trap": "Dodawanie potęg: $3^4 + 3^4 + 3^4$ to NIE jest $3^{12}$! To są 3 jednakowe składniki: $3 \\cdot 3^4 = 3^1 \\cdot 3^4 = 3^5$."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Wartość wyrażenia $\\frac{2^{12} \\cdot 4^3}{8^4}$ zapisana w postaci potęgi liczby 2 to:",
+                        "options": [
+                            "$2^6$",
+                            "$2^{18}$",
+                            "$2^3$",
+                            "$2^2$"
+                        ],
+                        "correct_answer": "$2^6$",
+                        "explanation": "$4^3 = (2^2)^3 = 2^6$. W liczniku: $2^{12} \\cdot 2^6 = 2^{18}$. W mianowniku: $8^4 = (2^3)^4 = 2^{12}$. Zatem $2^{18} : 2^{12} = 2^6$.",
+                        "hint": "Zamień wszystkie liczby na potęgi dwójki: 4 = 2^2, 8 = 2^3.",
+                        "hint_cost": 10,
+                        "id": "task-ce4b6111"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Suma $2^{10} + 2^{10}$ jest równa:",
+                        "options": [
+                            "$2^{11}$",
+                            "$4^{10}$",
+                            "$2^{20}$",
+                            "$4^{20}$"
+                        ],
+                        "correct_answer": "$2^{11}$",
+                        "explanation": "Dwa jednakowe składniki: $2 \\cdot 2^{10} = 2^1 \\cdot 2^{10} = 2^{11}$.",
+                        "hint": "Wyłącz 2^10 przed nawias: 2^10 * (1 + 1).",
+                        "hint_cost": 10,
+                        "id": "task-3448aaf8"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Oblicz: $\\frac{3^9}{3^6}$:",
+                        "correct_answer": "27",
+                        "explanation": "3^(9-6) = 3^3 = 27.",
+                        "hint": "Odejmij wykładniki potęg.",
+                        "hint_cost": 10,
+                        "id": "task-02718ba5"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Liczba $(3^4)^3 : 3^7$ jest równa:",
+                        "options": [
+                            "$3^5$",
+                            "$3^2$",
+                            "$3^{12}$",
+                            "$3^0$"
+                        ],
+                        "correct_answer": "$3^5$",
+                        "explanation": "3^{12} : 3^7 = 3^{12-7} = 3^5.",
+                        "hint": "Pomnóż wykładniki 4 * 3 = 12, a następnie odejmij 7.",
+                        "hint_cost": 10,
+                        "id": "task-af9e502f"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Dla każdej liczby dodatniej zachodzi równość $(a^3)^4 = a^7$.",
+                        "correct_answer": "F",
+                        "explanation": "Potęgowanie potęgi to mnożenie wykładników: $(a^3)^4 = a^{12}$. Fałsz.",
+                        "hint": "Wykładniki należy pomnożyć, a nie dodać.",
+                        "hint_cost": 10,
+                        "id": "task-388c27fc"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Rozwiąż równanie: $3^x = 81$. Podaj wartość $x$:",
+                        "correct_answer": "4",
+                        "explanation": "3^4 = 81, zatem x = 4.",
+                        "hint": "Zapisz 81 jako potęgę liczby 3.",
+                        "hint_cost": 10,
+                        "id": "task-b2ce5581"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Wartość wyrażenia $5^3 \\cdot 25^2$ jest równa:",
+                        "options": [
+                            "$5^7$",
+                            "$5^8$",
+                            "$5^6$",
+                            "$25^5$"
+                        ],
+                        "correct_answer": "$5^7$",
+                        "explanation": "25^2 = (5^2)^2 = 5^4. Zatem 5^3 * 5^4 = 5^7.",
+                        "hint": "Zamień 25 na 5^2.",
+                        "hint_cost": 10,
+                        "id": "task-ded1e5cf"
+                    },
+                    {
+                        "type": "OPEN_PROOF",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Wykaż, że liczba $3^{15} + 3^{16} + 3^{17}$ jest podzielna przez 13.",
+                        "scoring_key": "1 pkt za wyłączenie najmniejszej potęgi przed nawias: 3^{15}(1 + 3 + 9). 1 pkt za obliczenie wartości w nawiasie: 3^{15} \\cdot 13 i wniosek o podzielności.",
+                        "explanation": "3^{15}(1 + 3^1 + 3^2) = 3^{15}(1 + 3 + 9) = 3^{15} \\cdot 13. Iloczyn ten dzieli się przez 13.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-d64267e3"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-8",
+                "title": "Potęgi o wykładniku całkowitym ujemnym",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Znak minus w wykładniku potęgi oznacza odwrotność liczby potęgowanej. Liczba podnoszona do ujemnej potęgi odwraca się do ułamka, a wykładnik staje się dodatni.",
+                    "matura_context": "Zadania z ujemnym wykładnikiem sprawdzają poprawność stosowania definicji potęgi na maturze podstawowej.",
+                    "core_formulas": [
+                        "a^{-n} = \\frac{1}{a^n}, \\quad \\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^n \\quad (a \\neq 0, b \\neq 0)"
+                    ],
+                    "worked_example": "$\\left(\\frac{3}{4}\\right)^{-2} = \\left(\\frac{4}{3}\\right)^2 = \\frac{16}{9}$.",
+                    "exam_trap": "Ujemny wykładnik NIE oznacza, że wynik jest liczbą ujemną! $2^{-3} = \\frac{1}{8}$, a nie $-8$."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Wartość wyrażenia $5^{-2}$ jest równa:",
+                        "options": [
+                            "$\\frac{1}{25}$",
+                            "$-25$",
+                            "$-10$",
+                            "$\\frac{1}{10}$"
+                        ],
+                        "correct_answer": "$\\frac{1}{25}$",
+                        "explanation": "$5^{-2} = \\frac{1}{5^2} = \\frac{1}{25}$.",
+                        "hint": "Zastosuj definicję potęgi o ujemnym wykładniku: a^(-n) = 1/(a^n).",
+                        "hint_cost": 10,
+                        "id": "task-6baf6776"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Oblicz: $\\left(\\frac{1}{2}\\right)^{-4}$:",
+                        "correct_answer": "16",
+                        "explanation": "(2/1)^4 = 2^4 = 16.",
+                        "hint": "Odwróć ułamek i podnieś do potęgi 4.",
+                        "hint_cost": 10,
+                        "id": "task-07aeb849"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Liczba $(-3)^{-2}$ jest liczbą dodatnią.",
+                        "correct_answer": "P",
+                        "explanation": "$(-3)^{-2} = \\frac{1}{(-3)^2} = \\frac{1}{9} > 0$. Parzysty wykładnik daje wynik dodatni. Prawda.",
+                        "hint": "Kwadrat liczby ujemnej jest dodatni.",
+                        "hint_cost": 10,
+                        "id": "task-9dd16464"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Wyrażenie $\\left(\\frac{3}{2}\\right)^{-3}$ po obliczeniu jest równe:",
+                        "options": [
+                            "$\\frac{8}{27}$",
+                            "$\\frac{27}{8}$",
+                            "$-\\frac{27}{8}$",
+                            "$-\\frac{8}{27}$"
+                        ],
+                        "correct_answer": "$\\frac{8}{27}$",
+                        "explanation": "(2/3)^3 = 8/27.",
+                        "hint": "Odwróć ułamek do postaci 2/3 i podnieś licznik i mianownik do potęgi 3.",
+                        "hint_cost": 10,
+                        "id": "task-5cfb2ea9"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Dla jakiej liczby $x$ zachodzi równość $2^x = \\frac{1}{32}$?",
+                        "correct_answer": "-5",
+                        "explanation": "1/32 = 1/(2^5) = 2^(-5), zatem x = -5.",
+                        "hint": "32 to 2^5. Ułamek oznacza wykładnik ujemny.",
+                        "hint_cost": 10,
+                        "id": "task-b6b92eb7"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Iloczyn $3^{-5} \\cdot 3^7$ jest równy:",
+                        "options": [
+                            "9",
+                            "1/9",
+                            "27",
+                            "1/27"
+                        ],
+                        "correct_answer": "9",
+                        "explanation": "$3^{-5+7} = 3^2 = 9$.",
+                        "hint": "Dodaj wykładniki: -5 + 7 = 2.",
+                        "hint_cost": 10,
+                        "id": "task-0770a569"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Liczba $10^{-4}$ jest równa $0,0001$.",
+                        "correct_answer": "P",
+                        "explanation": "10^(-4) = 1/10000 = 0,0001. Prawda.",
+                        "hint": "Wykładnik -4 oznacza 4 miejsca po przecinku.",
+                        "hint_cost": 10,
+                        "id": "task-757815ac"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Zapisz wyrażenie $\\frac{x^{-3} \\cdot x^7}{x^{-2}}$ w postaci jednej potęgi $x^k$ dla $x \\neq 0$.",
+                        "scoring_key": "1 pkt za poprawny licznik: x^{-3+7} = x^4. 1 pkt za dzielenie potęg: x^{4 - (-2)} = x^6.",
+                        "explanation": "Licznik: x^4. Całość: x^4 / x^(-2) = x^{4 - (-2)} = x^6.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-3b1d5ff6"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-9",
+                "title": "Potęgi o wykładniku wymiernym i zapis pierwiastków",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Potęga o wykładniku ułamkowym reprezentuje pierwiastek: mianownik ułamka określa stopień pierwiastka, a licznik jest zwykłą potęgą liczby podpierwiastkowej. Pozwala to na wykonywanie działań na pierwiastkach przy użyciu praw potęg.",
+                    "matura_context": "Typowe zadanie z przekształcania wyrażeń pierwiastkowych na potęgi za 1 punkt.",
+                    "core_formulas": [
+                        "a^{\\frac{m}{n}} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m \\quad (a > 0, n \\in \\mathbb{N} \\setminus \\{0, 1\\})"
+                    ],
+                    "worked_example": "$16^{\\frac{3}{4}} = (\\sqrt[4]{16})^3 = 2^3 = 8$.",
+                    "exam_trap": "Mylenie stopnia pierwiastka z potęgą: $a^{\\frac{1}{2}} = \\sqrt{a}$, a nie $a^2$!"
+                },
+                "tasks": [
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz wartość wyrażenia $25^{\\frac{1}{2}}$:",
+                        "correct_answer": "5",
+                        "explanation": "$25^{\\frac{1}{2}} = \\sqrt{25} = 5$.",
+                        "hint": "Wykładnik 1/2 oznacza pierwiastek kwadratowy.",
+                        "hint_cost": 10,
+                        "id": "task-32c4f24e"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Oblicz wartość wyrażenia $8^{\\frac{2}{3}}$:",
+                        "correct_answer": "4",
+                        "explanation": "$(\\sqrt[3]{8})^2 = 2^2 = 4$.",
+                        "hint": "Wyciągnij pierwiastek 3. stopnia z 8, a wynik podnieś do kwadratu.",
+                        "hint_cost": 10,
+                        "id": "task-2cd495c1"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Liczba $\\sqrt[3]{9}$ zapisana w postaci potęgi liczby 3 to:",
+                        "options": [
+                            "$3^{\\frac{2}{3}}$",
+                            "$3^{\\frac{3}{2}}$",
+                            "$3^{\\frac{1}{3}}$",
+                            "$3^6$"
+                        ],
+                        "correct_answer": "$3^{\\frac{2}{3}}$",
+                        "explanation": "$\\sqrt[3]{9} = \\sqrt[3]{3^2} = 3^{\\frac{2}{3}}$.",
+                        "hint": "Zapisz 9 jako 3^2 i wstaw stopień pierwiastka 3 do mianownika.",
+                        "hint_cost": 10,
+                        "id": "task-4afa38b1"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Oblicz: $16^{0,25}$:",
+                        "correct_answer": "2",
+                        "explanation": "$0,25 = 1/4$. $\\sqrt[4]{16} = 2$, bo $2^4 = 16$.",
+                        "hint": "Zamień 0,25 na ułamek zwykły 1/4.",
+                        "hint_cost": 10,
+                        "id": "task-e120af73"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Wartość wyrażenia $8^{-\\frac{1}{3}}$ jest równa:",
+                        "options": [
+                            "$\\frac{1}{2}$",
+                            "$-2$",
+                            "$2$",
+                            "$-\\frac{1}{2}$"
+                        ],
+                        "correct_answer": "$\\frac{1}{2}$",
+                        "explanation": "Minus oznacza odwrotność: $\\frac{1}{\\sqrt[3]{8}} = \\frac{1}{2}$.",
+                        "hint": "Odwróć liczbę i wyciągnij pierwiastek 3. stopnia.",
+                        "hint_cost": 10,
+                        "id": "task-e1357a99"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Liczba $27^{\\frac{1}{3}}$ jest równa 3.",
+                        "correct_answer": "P",
+                        "explanation": "Pierwiastek 3. stopnia z 27 to 3, ponieważ 3^3 = 27. Prawda.",
+                        "hint": "Sprawdź, czy 3 podniesione do potęgi 3 daje 27.",
+                        "hint_cost": 10,
+                        "id": "task-e2320fe3"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Iloczyn $\\sqrt{2} \\cdot 2^{\\frac{1}{2}}$ jest równy:",
+                        "options": [
+                            "2",
+                            "4",
+                            "$\\sqrt{2}$",
+                            "$2^{\\frac{1}{4}}$"
+                        ],
+                        "correct_answer": "2",
+                        "explanation": "$2^{\\frac{1}{2}} \\cdot 2^{\\frac{1}{2}} = 2^1 = 2$.",
+                        "hint": "Zamień pierwiastek z 2 na 2^(1/2).",
+                        "hint_cost": 10,
+                        "id": "task-33bc4093"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Zapisz wyrażenie $\\frac{\\sqrt{3} \\cdot \\sqrt[3]{3}}{\\sqrt[6]{3}}$ w postaci jednej potęgi liczby 3.",
+                        "scoring_key": "1 pkt za zamianę pierwiastków na wykładniki: \\frac{3^{1/2} \\cdot 3^{1/3}}{3^{1/6}}. 1 pkt za dodanie i odjęcie wykładników: 1/2 + 1/3 - 1/6 = 3/6 + 2/6 - 1/6 = 4/6 = 2/3. Wynik: 3^{2/3}.",
+                        "explanation": "Wykładniki: 1/2 + 1/3 - 1/6 = 3/6 + 2/6 - 1/6 = 4/6 = 2/3. Wynik to 3^(2/3).",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-9c373eac"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-10",
+                "title": "Pierwiastki: Mnożenie, dzielenie i wyłączanie czynnika",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Mnożenie i dzielenie można łączyć pod jeden wspólny znak pierwiastka tego samego stopnia. Dodawania i odejmowania nie wolno rozdzielać pod pierwiastkiem! Aby zredukować sumę pierwiastków, należy wyłączyć czynnik przed znak pierwiastka.",
+                    "matura_context": "Zadania z upraszczania pierwiastków występują w zadaniach z geometrii, algebry i trygonometrii.",
+                    "core_formulas": [
+                        "\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}, \\quad \\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}}, \\quad \\sqrt{a + b} \\neq \\sqrt{a} + \\sqrt{b}"
+                    ],
+                    "worked_example": "$\\sqrt{75} = \\sqrt{25 \\cdot 3} = 5\\sqrt{3}$. Stąd $\\sqrt{75} - \\sqrt{12} = 5\\sqrt{3} - 2\\sqrt{3} = 3\\sqrt{3}$.",
+                    "exam_trap": "Błędne rozdzielanie sumy: $\\sqrt{16 + 9} = \\sqrt{25} = 5$, podczas gdy $\\sqrt{16} + \\sqrt{9} = 4 + 3 = 7$."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Wyrażenie $\\sqrt{18} + \\sqrt{50}$ jest równe:",
+                        "options": [
+                            "$8\\sqrt{2}$",
+                            "$\\sqrt{68}$",
+                            "$7\\sqrt{2}$",
+                            "$5\\sqrt{2}$"
+                        ],
+                        "correct_answer": "$8\\sqrt{2}$",
+                        "explanation": "$\\sqrt{18} = 3\\sqrt{2}$ oraz $\\sqrt{50} = 5\\sqrt{2}$. Razem: $3\\sqrt{2} + 5\\sqrt{2} = 8\\sqrt{2}$.",
+                        "hint": "Rozłóż 18 na 9*2, a 50 na 25*2.",
+                        "hint_cost": 10,
+                        "id": "task-d975b594"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Oblicz: $\\sqrt{3} \\cdot \\sqrt{27}$:",
+                        "correct_answer": "9",
+                        "explanation": "$\\sqrt{3 \\cdot 27} = \\sqrt{81} = 9$.",
+                        "hint": "Wymnóż liczby pod jednym wspólnym pierwiastkiem.",
+                        "hint_cost": 10,
+                        "id": "task-5d1355a0"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Liczba $2\\sqrt{7}$ po włączeniu czynnika pod pierwiastek ma postać:",
+                        "options": [
+                            "$\\sqrt{28}$",
+                            "$\\sqrt{14}$",
+                            "$\\sqrt{56}$",
+                            "$\\sqrt{49}$"
+                        ],
+                        "correct_answer": "$\\sqrt{28}$",
+                        "explanation": "$2 = \\sqrt{4}$. Zatem $\\sqrt{4 \\cdot 7} = \\sqrt{28}$.",
+                        "hint": "Podnieś 2 do kwadratu i pomnóż przez 7.",
+                        "hint_cost": 10,
+                        "id": "task-ae40797e"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Równość $\\sqrt{25 - 9} = \\sqrt{25} - \\sqrt{9}$ jest prawdziwa.",
+                        "correct_answer": "F",
+                        "explanation": "$\\sqrt{25-9} = \\sqrt{16} = 4$, natomiast $5 - 3 = 2$. Wyniki są różne. Fałsz.",
+                        "hint": "Wykonaj najpierw odejmowanie pod pierwiastkiem.",
+                        "hint_cost": 10,
+                        "id": "task-cc646427"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Oblicz wartość ilorazu $\\frac{\\sqrt{98}}{\\sqrt{2}}$:",
+                        "correct_answer": "7",
+                        "explanation": "$\\sqrt{98 / 2} = \\sqrt{49} = 7$.",
+                        "hint": "Zapisz pod jednym pierwiastkiem jako 98/2.",
+                        "hint_cost": 10,
+                        "id": "task-37906740"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Wartość wyrażenia $\\sqrt[3]{54} - \\sqrt[3]{16}$ jest równa:",
+                        "options": [
+                            "$\\sqrt[3]{2}$",
+                            "$\\sqrt[3]{38}$",
+                            "$2$",
+                            "$\\sqrt[3]{4}$"
+                        ],
+                        "correct_answer": "$\\sqrt[3]{2}$",
+                        "explanation": "$\\sqrt[3]{54} = \\sqrt[3]{27 \\cdot 2} = 3\\sqrt[3]{2}$ oraz $\\sqrt[3]{16} = 2\\sqrt[3]{2}$. Różnica: $3\\sqrt[3]{2} - 2\\sqrt[3]{2} = \\sqrt[3]{2}$.",
+                        "hint": "Wyłącz czynnik przed pierwiastek 3. stopnia z obu liczb.",
+                        "hint_cost": 10,
+                        "id": "task-69c408d1"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Liczba $\\sqrt{12}$ jest równa $2\\sqrt{3}$.",
+                        "correct_answer": "P",
+                        "explanation": "$\\sqrt{4 \\cdot 3} = 2\\sqrt{3}$. Prawda.",
+                        "hint": "12 to 4 * 3.",
+                        "hint_cost": 10,
+                        "id": "task-f2b62ae3"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz obwód trójkąta o bokach długości $a = \\sqrt{12}$, $b = \\sqrt{27}$ oraz $c = \\sqrt{48}$. Wynik zapisz w postaci $k\\sqrt{3}$.",
+                        "scoring_key": "1 pkt za wyłączenie czynników przed pierwiastek: a = 2\\sqrt{3}, b = 3\\sqrt{3}, c = 4\\sqrt{3}. 1 pkt za dodanie i wynik: 9\\sqrt{3}.",
+                        "explanation": "Obwód = 2\\sqrt{3} + 3\\sqrt{3} + 4\\sqrt{3} = 9\\sqrt{3}.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-4b72d16d"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-11",
+                "title": "Usuwanie niewymierności z mianownika ułamka",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Niewymierność w mianowniku usuwamy przez rozszerzenie ułamka. Jeśli w mianowniku znajduje się pojedynczy pierwiastek kwadratowy, mnożymy licznik i mianownik przez ten pierwiastek. Jeśli w mianowniku jest suma lub różnica z pierwiastkiem, stosujemy sprzężenie (mnożenie przez wyrażenie z przeciwnym znakiem) oparte na wzorze na różnicę kwadratów.",
+                    "matura_context": "Wymóg formalny w zadaniach otwartych arkusza maturalnego.",
+                    "core_formulas": [
+                        "\\frac{a}{\\sqrt{b}} = \\frac{a\\sqrt{b}}{b}, \\quad \\frac{a}{\\sqrt{b} \\pm c} = \\frac{a(\\sqrt{b} \\mp c)}{b - c^2}"
+                    ],
+                    "worked_example": "$\\frac{8}{\\sqrt{2}} = \\frac{8\\sqrt{2}}{2} = 4\\sqrt{2}$. Dla sumy: $\\frac{2}{\\sqrt{3}+1} = \\frac{2(\\sqrt{3}-1)}{3-1} = \\sqrt{3}-1$.",
+                    "exam_trap": "Pamiętaj o zmianie znaku przy sprzężeniu: dla mianownika $\\sqrt{5} + 2$ mnożymy przez $\\sqrt{5} - 2$."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Liczba $\\frac{6}{\\sqrt{3}}$ po usunięciu niewymierności z mianownika jest równa:",
+                        "options": [
+                            "$2\\sqrt{3}$",
+                            "$6\\sqrt{3}$",
+                            "$\\sqrt{3}$",
+                            "$3$"
+                        ],
+                        "correct_answer": "$2\\sqrt{3}$",
+                        "explanation": "$\\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$.",
+                        "hint": "Pomnóż licznik i mianownik przez pierwiastek z 3.",
+                        "hint_cost": 10,
+                        "id": "task-9d808566"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Usuń niewymierność z ułamka $\\frac{12}{\\sqrt{6}}$ i podaj współczynnik stojący przed $\\sqrt{6}$:",
+                        "correct_answer": "2",
+                        "explanation": "$\\frac{12\\sqrt{6}}{6} = 2\\sqrt{6}$. Współczynnik wynosi 2.",
+                        "hint": "12 podzielone przez 6 daje 2.",
+                        "hint_cost": 10,
+                        "id": "task-d65ab05f"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Ułamek $\\frac{2}{\\sqrt{5} - 1}$ po usunięciu niewymierności jest równy:",
+                        "options": [
+                            "$\\frac{\\sqrt{5} + 1}{2}$",
+                            "$\\sqrt{5} + 1$",
+                            "$\\frac{\\sqrt{5} - 1}{2}$",
+                            "$\\frac{\\sqrt{5} + 1}{4}$"
+                        ],
+                        "correct_answer": "$\\frac{\\sqrt{5} + 1}{2}$",
+                        "explanation": "Mnożymy przez $\\sqrt{5}+1$: w mianowniku otrzymujemy $5 - 1 = 4$. Zatem $\\frac{2(\\sqrt{5}+1)}{4} = \\frac{\\sqrt{5}+1}{2}$.",
+                        "hint": "Zastosuj wzór (a-b)(a+b) = a^2 - b^2 w mianowniku.",
+                        "hint_cost": 10,
+                        "id": "task-31de0caf"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Liczba $\\frac{\\sqrt{2}}{2}$ jest odwrotnością liczby $\\sqrt{2}$.",
+                        "correct_answer": "P",
+                        "explanation": "1 / \\sqrt{2} = \\sqrt{2} / 2. Prawda.",
+                        "hint": "Usuń niewymierność z 1 / pierwiastek z 2.",
+                        "hint_cost": 10,
+                        "id": "task-a5b2165b"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Oblicz wartość wyrażenia $(\\sqrt{3} + 1)(\\sqrt{3} - 1)$:",
+                        "correct_answer": "2",
+                        "explanation": "(\\sqrt{3})^2 - 1^2 = 3 - 1 = 2.",
+                        "hint": "Zastosuj wzór na różnicę kwadratów.",
+                        "hint_cost": 10,
+                        "id": "task-6a41b8d2"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Ułamek $\\frac{1}{\\sqrt{2} + 1}$ jest równy:",
+                        "options": [
+                            "$\\sqrt{2} - 1$",
+                            "$\\sqrt{2} + 1$",
+                            "$\\frac{\\sqrt{2} - 1}{2}$",
+                            "$1 - \\sqrt{2}$"
+                        ],
+                        "correct_answer": "$\\sqrt{2} - 1$",
+                        "explanation": "\\frac{\\sqrt{2}-1}{2-1} = \\sqrt{2} - 1.",
+                        "hint": "Pomnóż licznik i mianownik przez pierwiastek z 2 minus 1.",
+                        "hint_cost": 10,
+                        "id": "task-ba616ea2"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "W ułamku $\\frac{3}{\\sqrt{3}}$ po uproszczeniu otrzymujemy liczbę całkowitą.",
+                        "correct_answer": "F",
+                        "explanation": "3\\sqrt{3}/3 = \\sqrt{3}, a \\sqrt{3} jest liczbą niewymierną. Fałsz.",
+                        "hint": "Wynik to pierwiastek z 3, który nie jest liczbą całkowitą.",
+                        "hint_cost": 10,
+                        "id": "task-dcf6392e"
+                    },
+                    {
+                        "type": "OPEN_PROOF",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Wykaż, że liczba $a = \\frac{1}{2 - \\sqrt{3}} - \\sqrt{3}$ jest liczbą całkowitą.",
+                        "scoring_key": "1 pkt za poprawne usunięcie niewymierności: \\frac{2+\\sqrt{3}}{4-3} = 2 + \\sqrt{3}. 1 pkt za odjęcie \\sqrt{3} i konkluzję: a = 2 \\in \\mathbb{Z}.",
+                        "explanation": "Mnożymy ułamek przez sprzężenie (2 + \\sqrt{3}): w mianowniku mamy 4 - 3 = 1. Ułamek wynosi 2 + \\sqrt{3}. Odejmując \\sqrt{3}, otrzymujemy a = 2 \\in \\mathbb{Z}.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-f4279e3e"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-12",
+                "title": "Wzory skróconego mnożenia: Kwadrat sumy i różnicy",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Kwadrat sumy i kwadrat różnicy to tożsamości algebraiczne: $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$. Pamiętaj o podwojonym iloczynie 2ab. Różnica kwadratów to $a^2 - b^2 = (a-b)(a+b)$.",
+                    "matura_context": "Stosowane we wszystkich działach algebry, geometrii analitycznej i optymalizacji.",
+                    "core_formulas": [
+                        "(a \\pm b)^2 = a^2 \\pm 2ab + b^2, \\quad a^2 - b^2 = (a - b)(a + b)"
+                    ],
+                    "worked_example": "$(2x - 3)^2 = (2x)^2 - 2 \\cdot 2x \\cdot 3 + 3^2 = 4x^2 - 12x + 9$.",
+                    "exam_trap": "Pominięcie środkowego wyrazu: $(x + 5)^2 \\neq x^2 + 25$! Prawidłowo: $x^2 + 10x + 25$."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Wyrażenie $(3x - 2)^2$ po rozwinięciu ma postać:",
+                        "options": [
+                            "$9x^2 - 12x + 4$",
+                            "$9x^2 - 4$",
+                            "$9x^2 - 6x + 4$",
+                            "$3x^2 - 12x + 4$"
+                        ],
+                        "correct_answer": "$9x^2 - 12x + 4$",
+                        "explanation": "(3x)^2 - 2(3x)(2) + 2^2 = 9x^2 - 12x + 4.",
+                        "hint": "Podnieś 3x do kwadratu oraz uwzględnij 2*a*b.",
+                        "hint_cost": 10,
+                        "id": "task-4667b03e"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Oblicz wartość wyrażenia $(\\sqrt{7} + 1)^2 - 2\\sqrt{7}$:",
+                        "correct_answer": "8",
+                        "explanation": "7 + 2\\sqrt{7} + 1 - 2\\sqrt{7} = 8.",
+                        "hint": "Rozwiń nawias ze wzoru skróconego mnożenia.",
+                        "hint_cost": 10,
+                        "id": "task-2adb58bd"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Wyrażenie $x^2 - 36$ po rozłożeniu na czynniki jest równe:",
+                        "options": [
+                            "$(x - 6)(x + 6)$",
+                            "$(x - 6)^2$",
+                            "$(x + 6)^2$",
+                            "$(x - 18)(x + 2)$"
+                        ],
+                        "correct_answer": "$(x - 6)(x + 6)$",
+                        "explanation": "a^2 - b^2 = (a-b)(a+b).",
+                        "hint": "Zastosuj wzór na różnicę kwadratów.",
+                        "hint_cost": 10,
+                        "id": "task-7089e8a6"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Dla każdej liczby rzeczywistej $x$ zachodzi tożsamość $(x - 2)^2 = (2 - x)^2$.",
+                        "correct_answer": "P",
+                        "explanation": "(2 - x)^2 = (-(x - 2))^2 = (x - 2)^2. Prawda.",
+                        "hint": "Kwadrat niweluje zmianę znaku.",
+                        "hint_cost": 10,
+                        "id": "task-30de95d0"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Oblicz: $(\\sqrt{5} - \\sqrt{2})(\\sqrt{5} + \\sqrt{2})$:",
+                        "correct_answer": "3",
+                        "explanation": "(\\sqrt{5})^2 - (\\sqrt{2})^2 = 5 - 2 = 3.",
+                        "hint": "Wzór a^2 - b^2.",
+                        "hint_cost": 10,
+                        "id": "task-44300a57"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Kwadrat liczby $\\sqrt{2} + 3$ wynosi:",
+                        "options": [
+                            "$11 + 6\\sqrt{2}$",
+                            "$11$",
+                            "$5 + 6\\sqrt{2}$",
+                            "$7 + 6\\sqrt{2}$"
+                        ],
+                        "correct_answer": "$11 + 6\\sqrt{2}$",
+                        "explanation": "(\\sqrt{2})^2 + 2(\\sqrt{2})(3) + 3^2 = 2 + 6\\sqrt{2} + 9 = 11 + 6\\sqrt{2}.",
+                        "hint": "2 + 9 = 11.",
+                        "hint_cost": 10,
+                        "id": "task-98ba9ad3"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Wyrażenie $x^2 + 8x + 16$ jest równe $(x + 4)^2$.",
+                        "correct_answer": "P",
+                        "explanation": "x^2 + 2*4*x + 4^2 = x^2 + 8x + 16. Prawda.",
+                        "hint": "Sprawdź podwojony iloczyn 2 * x * 4.",
+                        "hint_cost": 10,
+                        "id": "task-45b150af"
+                    },
+                    {
+                        "type": "OPEN_PROOF",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Wykaż, że dla dowolnych liczb rzeczywistych $a$ i $b$ zachodzi nierówność $(a + b)^2 \\ge 4ab$.",
+                        "scoring_key": "1 pkt za rozwinięcie kwadratu i przeniesienie na jedną stronę: a^2 + 2ab + b^2 - 4ab \\ge 0. 1 pkt za zwinięcie do postaci (a - b)^2 \\ge 0 i uzasadnienie nieujemności kwadratu.",
+                        "explanation": "a^2 + 2ab + b^2 - 4ab = a^2 - 2ab + b^2 = (a - b)^2 >= 0. Kwadrat liczby rzeczywistej jest zawsze nieujemny.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-96a35875"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-13",
+                "title": "Logarytmy: Definicja i obliczanie wartości z definicji",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Logarytm $\\log_a b = c$ odpowiada na pytanie: 'Do jakiej potęgi $c$ należy podnieść podstawę $a$, aby otrzymać liczbę logarytmowaną $b$?'. Podstawa musi być dodatnia i różna od 1 ($a > 0, a \\neq 1$), a liczba logarytmowana ściśle dodatnia ($b > 0$).",
+                    "matura_context": "Pewniak za 1 punkt na każdej maturze majowej.",
+                    "core_formulas": [
+                        "\\log_a b = c \\iff a^c = b \\quad (a > 0, a \\neq 1, b > 0)"
+                    ],
+                    "worked_example": "$\\log_2 16 = 4$, ponieważ $2^4 = 16$. $\\log_3 \\frac{1}{9} = -2$, ponieważ $3^{-2} = \\frac{1}{9}$.",
+                    "exam_trap": "Nie myl logarytmu z dzieleniem! $\\log_2 8 \\neq 4$. Prawidłowy wynik to 3, ponieważ $2^3 = 8$."
+                },
+                "tasks": [
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz wartość logarytmu: $\\log_4 64$:",
+                        "correct_answer": "3",
+                        "explanation": "4^3 = 64, zatem log_4 64 = 3.",
+                        "hint": "Do jakiej potęgi podnosisz 4, aby otrzymać 64?",
+                        "hint_cost": 10,
+                        "id": "task-639b7a3d"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Wartość logarytmu $\\log_3 \\frac{1}{27}$ jest równa:",
+                        "options": [
+                            "-3",
+                            "3",
+                            "-1/3",
+                            "1/3"
+                        ],
+                        "correct_answer": "-3",
+                        "explanation": "3^{-3} = \\frac{1}{3^3} = \\frac{1}{27}.",
+                        "hint": "Ułamek oznacza ujemną potęgę.",
+                        "hint_cost": 10,
+                        "id": "task-c10bc76c"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Oblicz logarytm dziesiętny: $\\log 10000$:",
+                        "correct_answer": "4",
+                        "explanation": "Podstawą jest 10. 10^4 = 10000, więc wynik wynosi 4.",
+                        "hint": "Policz zera w liczbie 10000.",
+                        "hint_cost": 10,
+                        "id": "task-66dde68d"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Wartość $\\log_7 1$ jest równa $0$.",
+                        "correct_answer": "P",
+                        "explanation": "7^0 = 1, zatem logarytm z 1 przy dowolnej dozwolonej podstawie zawsze wynosi 0. Prawda.",
+                        "hint": "Każda liczba podniesiona do potęgi 0 daje 1.",
+                        "hint_cost": 10,
+                        "id": "task-3407b354"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Liczba $\\log_{\\sqrt{3}} 9$ jest równa:",
+                        "options": [
+                            "4",
+                            "2",
+                            "6",
+                            "1/2"
+                        ],
+                        "correct_answer": "4",
+                        "explanation": "(\\sqrt{3})^4 = 3^2 = 9. Wynik to 4.",
+                        "hint": "Ile razy mnożysz pierwiastek z 3 przez siebie, aby otrzymać 9?",
+                        "hint_cost": 10,
+                        "id": "task-95aa9315"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Rozwiąż równanie: $\\log_2 x = 5$. Wpisz wartość $x$:",
+                        "correct_answer": "32",
+                        "explanation": "Z definicji: x = 2^5 = 32.",
+                        "hint": "Podnieś 2 do potęgi 5.",
+                        "hint_cost": 10,
+                        "id": "task-7749a01d"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Wyrażenie $\\log_3 (-9)$ ma sens liczbowy w zbiorze liczb rzeczywistych.",
+                        "correct_answer": "F",
+                        "explanation": "Liczba logarytmowana musi być ściśle dodatnia (b > 0). Fałsz.",
+                        "hint": "Sprawdź założenia definicji logarytmu.",
+                        "hint_cost": 10,
+                        "id": "task-d0d3e81e"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Wyznacz liczbę $a$, wiedząc, że $\\log_a 64 = 3$. Zapisz definicję i wynik.",
+                        "scoring_key": "1 pkt za zapisanie równania z definicji logarytmu: a^3 = 64. 1 pkt za poprawne rozwiązanie: a = 4.",
+                        "explanation": "a^3 = 64. Ponieważ 4^3 = 64, to a = 4.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-db5a35f1"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-14",
+                "title": "Logarytmy: Działania na logarytmach o tej samej podstawie",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Podstawowe prawa działań: suma logarytmów o tej samej podstawie jest logarytmem iloczynu. Różnica logarytmów o tej samej podstawie jest logarytmem ilorazu. Liczbę stojącą przed logarytmem można wciągnąć do wykładnika potęgi liczby logarytmowanej.",
+                    "matura_context": "Zadanie za 1 punkt, w którym podane logarytmy pojedynczo są niewymierne, ale po zwinięciu dają prostą liczbę całkowitą.",
+                    "core_formulas": [
+                        "\\log_a x + \\log_a y = \\log_a(xy), \\quad \\log_a x - \\log_a y = \\log_a\\left(\\frac{x}{y}\\right), \\quad k \\log_a x = \\log_a(x^k)"
+                    ],
+                    "worked_example": "$\\log_2 6 + \\log_2 \\frac{4}{3} = \\log_2\\left(6 \\cdot \\frac{4}{3}\\right) = \\log_2 8 = 3$.",
+                    "exam_trap": "Nie ma wzoru na logarytm sumy! $\\log_a(x + y) \\neq \\log_a x + \\log_a y$. Wzory dotyczą sumy logarytmów, a nie logarytmu sumy."
+                },
+                "tasks": [
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Oblicz wartość wyrażenia: $\\log_2 48 - \\log_2 3$:",
+                        "correct_answer": "4",
+                        "explanation": "\\log_2(48 / 3) = \\log_2 16 = 4.",
+                        "hint": "Zastosuj wzór na różnicę logarytmów: podziel 48 przez 3.",
+                        "hint_cost": 10,
+                        "id": "task-becc289f"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Oblicz: $\\log_6 9 + \\log_6 4$:",
+                        "correct_answer": "2",
+                        "explanation": "\\log_6(9 \\cdot 4) = \\log_6 36 = 2.",
+                        "hint": "Zastosuj wzór na sumę logarytmów: pomnóż 9 przez 4.",
+                        "hint_cost": 10,
+                        "id": "task-adecbe7e"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Wartość wyrażenia $2\\log_5 10 - \\log_5 4$ jest równa:",
+                        "options": [
+                            "2",
+                            "4",
+                            "1",
+                            "0"
+                        ],
+                        "correct_answer": "2",
+                        "explanation": "\\log_5(10^2) - \\log_5 4 = \\log_5 100 - \\log_5 4 = \\log_5(100/4) = \\log_5 25 = 2.",
+                        "hint": "Wciągnij 2 do potęgi dziesiątki (10^2 = 100).",
+                        "hint_cost": 10,
+                        "id": "task-d48a7528"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Liczba $\\log 25 + \\log 40$ (logarytmy dziesiętne) wynosi:",
+                        "options": [
+                            "3",
+                            "2",
+                            "1000",
+                            "4"
+                        ],
+                        "correct_answer": "3",
+                        "explanation": "\\log(25 \\cdot 40) = \\log 1000 = 3.",
+                        "hint": "25 * 40 = 1000.",
+                        "hint_cost": 10,
+                        "id": "task-3384ec04"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Tożsamość $\\log_3(x + y) = \\log_3 x + \\log_3 y$ jest prawdziwa dla dowolnych liczb dodatnich.",
+                        "correct_answer": "F",
+                        "explanation": "Fałsz, logarytm sumy nie jest równy sumie logarytmów.",
+                        "hint": "Wzór działa na sumę logarytmów, zamieniając ją w logarytm iloczynu.",
+                        "hint_cost": 10,
+                        "id": "task-7139de52"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Oblicz: $\\log_3 18 - \\log_3 2$:",
+                        "correct_answer": "2",
+                        "explanation": "\\log_3(18 / 2) = \\log_3 9 = 2.",
+                        "hint": "Podziel 18 przez 2 wewnątrz logarytmu.",
+                        "hint_cost": 10,
+                        "id": "task-7ff41a93"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Wyrażenie $2\\log_3 x$ dla $x > 0$ jest równe:",
+                        "options": [
+                            "$\\log_3(x^2)$",
+                            "$\\log_3(2x)$",
+                            "$(\\log_3 x)^2$",
+                            "$\\log_6 x$"
+                        ],
+                        "correct_answer": "$\\log_3(x^2)$",
+                        "explanation": "Czynnik przed logarytmem staje się wykładnikiem potęgi argumentu.",
+                        "hint": "Zastosuj wzór k * log_a x = log_a (x^k).",
+                        "hint_cost": 10,
+                        "id": "task-a286b9c5"
+                    },
+                    {
+                        "type": "OPEN_PROOF",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Wykaż, że dla dowolnej liczby $a > 1$ wartość wyrażenia $\\log_a 8 + \\log_a 2 - \\log_a 16$ jest równa 0.",
+                        "scoring_key": "1 pkt za zastosowanie wzorów na sumę i różnicę: \\log_a(16) - \\log_a(16). 1 pkt za konkluzję: \\log_a(16/16) = \\log_a 1 = 0.",
+                        "explanation": "\\log_a(8 \\cdot 2) - \\log_a 16 = \\log_a 16 - \\log_a 16 = \\log_a(16/16) = \\log_a 1 = 0.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-39a615a4"
+                    }
+                ]
+            },
+            {
+                "id": "lesson-1-15",
+                "title": "Wartość bezwzględna liczby i interpretacja geometryczna",
+                "estimated_time_minutes": 5,
+                "estimated_time_formatted": "~5 min",
+                "required_correct_tasks": 3,
+                "theory_pill": {
+                    "concept_essence": "Wartość bezwzględna liczby rzeczywistej to jej odległość od zera na osi liczbowej. Wyrażenie $|x - a|$ interpretujemy geometrycznie jako odległość liczby x od punktu a. Odległość nigdy nie jest ujemna, zatem $|x| \\ge 0$.",
+                    "matura_context": "Zadania z wartością bezwzględną pojawiają się na maturze majowej zarówno w postaci równań, jak i interpretacji na osi.",
+                    "core_formulas": [
+                        "|x| = \\begin{cases} x & \\text{dla } x \\ge 0 \\\\ -x & \\text{dla } x < 0 \\end{cases}, \\quad |x - a| = r \\iff x = a - r \\lor x = a + r"
+                    ],
+                    "worked_example": "$|x - 2| = 3 \\implies x - 2 = 3 \\lor x - 2 = -3 \\implies x = 5 \\lor x = -1$.",
+                    "exam_trap": "Równanie $|x| = -2$ jest sprzeczne (brak rozwiązań)! Wartość bezwzględna z definicji nie może być liczbą ujemną."
+                },
+                "tasks": [
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiązaniami równania $|x - 3| = 4$ są liczby:",
+                        "options": [
+                            "$-1$ oraz $7$",
+                            "$1$ oraz $-7$",
+                            "$3$ oraz $-4$",
+                            "$-1$ oraz $-7$"
+                        ],
+                        "correct_answer": "$-1$ oraz $7$",
+                        "explanation": "x - 3 = 4 -> x = 7; x - 3 = -4 -> x = -1.",
+                        "hint": "Rozpatrz dwa przypadki: x - 3 = 4 oraz x - 3 = -4.",
+                        "hint_cost": 10,
+                        "id": "task-15299536"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura maj 2023",
+                        "content": "Oblicz wartość wyrażenia $|-8| - |3 - 7|$:",
+                        "correct_answer": "4",
+                        "explanation": "8 - |-4| = 8 - 4 = 4.",
+                        "hint": "|-8| = 8 oraz |3-7| = |-4| = 4.",
+                        "hint_cost": 10,
+                        "id": "task-8d4a09ed"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Informator maturalny",
+                        "content": "Zbiorem rozwiązań nierówności $|x| \\le 5$ jest przedział:",
+                        "options": [
+                            "$\\langle -5, 5\\rangle$",
+                            "$(-5, 5)$",
+                            "$(-\\infty, -5\\rangle \\cup \\langle 5, +\\infty)$",
+                            "$\\langle 0, 5\\rangle$"
+                        ],
+                        "correct_answer": "$\\langle -5, 5\\rangle$",
+                        "explanation": "Odległość od zera mniejsza bądź równa 5 to przedział domknięty <-5, 5>.",
+                        "hint": "Nierówność jest słaba (<=), więc przedział jest domknięty.",
+                        "hint_cost": 10,
+                        "id": "task-d9d4d8ff"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Arkusz pokazowy",
+                        "content": "Równanie $|x + 5| = -3$ posiada dwa rozwiązania.",
+                        "correct_answer": "F",
+                        "explanation": "Wartość bezwzględna nie może być ujemna. Równanie jest sprzeczne. Fałsz.",
+                        "hint": "Czy odległość na osi może wynosić -3?",
+                        "hint_cost": 10,
+                        "id": "task-7e8a98b1"
+                    },
+                    {
+                        "type": "NUMERIC_INPUT",
+                        "points": 1,
+                        "source": "Matura czerwiec 2024",
+                        "content": "Oblicz wartość wyrażenia $|-20| : |-4| + |3 - 8|$:",
+                        "correct_answer": "10",
+                        "explanation": "20 : 4 + |-5| = 5 + 5 = 10.",
+                        "hint": "Oblicz wartość pod modułem.",
+                        "hint_cost": 10,
+                        "id": "task-19a65ff7"
+                    },
+                    {
+                        "type": "SINGLE_CHOICE",
+                        "points": 1,
+                        "source": "Matura maj 2025",
+                        "content": "Nierówność $|x - 2| > 3$ ma zbiór rozwiązań:",
+                        "options": [
+                            "$(-\\infty, -1) \\cup (5, +\\infty)$",
+                            "$(-1, 5)$",
+                            "$(5, +\\infty)$",
+                            "$(-\\infty, -1)$"
+                        ],
+                        "correct_answer": "$(-\\infty, -1) \\cup (5, +\\infty)$",
+                        "explanation": "x - 2 > 3 -> x > 5 lub x - 2 < -3 -> x < -1.",
+                        "hint": "Szukasz punktów oddalonych od 2 o więcej niż 3 w lewo i w prawo.",
+                        "hint_cost": 10,
+                        "id": "task-3023b73e"
+                    },
+                    {
+                        "type": "TRUE_FALSE",
+                        "points": 1,
+                        "source": "Zadanie autorskie",
+                        "content": "Dla każdej liczby rzeczywistej $x$ zachodzi tożsamość $\\sqrt{x^2} = |x|$.",
+                        "correct_answer": "P",
+                        "explanation": "To podstawowa własność pierwiastka kwadratowego: pierwiastek z x^2 to moduł z x, a nie samo x. Prawda.",
+                        "hint": "Podstaw na próbę x = -4.",
+                        "hint_cost": 10,
+                        "id": "task-ca7b9aa8"
+                    },
+                    {
+                        "type": "OPEN_GENERAL",
+                        "points": 2,
+                        "source": "Matura maj 2024",
+                        "content": "Rozwiąż równanie: $|3x - 6| = 9$. Zapisz oba przypadki i wyznacz rozwiązania.",
+                        "scoring_key": "1 pkt za rozbicie na dwa równania: 3x - 6 = 9 oraz 3x - 6 = -9. 1 pkt za wyznaczenie x = 5 oraz x = -1.",
+                        "explanation": "3x - 6 = 9 -> 3x = 15 -> x = 5. Drugi przypadek: 3x - 6 = -9 -> 3x = -3 -> x = -1.",
+                        "ai_hint_enabled": true,
+                        "hint_cost": 20,
+                        "id": "task-53f0b482"
+                    }
+                ]
+            }
+        ],
+        "final_test": {
+            "title": "Sprawdzian Działu: Liczby Rzeczywiste",
+            "description": "Kompleksowy test podsumowujący Dział 1. Zadania losowane bez asysty wskazówek ze wszystkich 15 lekcji.",
+            "tasks_to_draw": 15,
+            "boss_message": "Zwracaj uwagę na dziedzinę, potęgi ujemne i własności logarytmów. Powodzenia!"
+        }
+    }
+}

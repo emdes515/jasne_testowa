@@ -3,6 +3,13 @@
 @theme {
   --font-sans: 'DM Sans', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
+  --color-jasne: #FFB800;
+  --color-jasne-hover: #FFC72C;
+  --color-jasne-dark: #D97706;
+  --color-jasne-glow: rgba(255, 184, 0, 0.25);
+  --color-jasne-surface: rgba(255, 184, 0, 0.08);
+  --color-jasne-border: rgba(255, 184, 0, 0.25);
+  --color-jasne-blue: #38BDF8;
 }
 
 html, body {
@@ -19,10 +26,28 @@ html, body {
 }
 
 :root {
+  --jasne: #FFB800;
+  --jasne-hover: #FFC72C;
+  --jasne-dark: #D97706;
+  --jasne-glow: rgba(255, 184, 0, 0.25);
+  --jasne-surface: rgba(255, 184, 0, 0.08);
+  --jasne-border: rgba(255, 184, 0, 0.25);
+  --jasne-blue: #38BDF8;
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
   --sar: env(safe-area-inset-right, 0px);
+}
+
+/* Wymogi identyfikacji JASNE. dla przycisków Solar Amber (kontrast WCAG AAA 12.8:1 i poświata) */
+button[class*="bg-[#FFB800]"],
+button[class*="bg-jasne"],
+a[class*="bg-[#FFB800]"],
+a[class*="bg-jasne"],
+.btn-jasne {
+  color: #080B11 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 20px rgba(255, 184, 0, 0.35) !important;
 }
 
 button, a, input, [role="button"] {
@@ -166,26 +191,26 @@ button, a, input, [role="button"] {
   width: 1.625rem;
   height: 1.625rem;
   border-radius: 9999px;
-  background-color: rgba(0, 229, 255, 0.15);
-  border: 1px solid rgba(0, 229, 255, 0.5);
-  color: #00E5FF;
+  background-color: rgba(255, 184, 0, 0.15);
+  border: 1px solid rgba(255, 184, 0, 0.5);
+  color: #FFB800;
   font-weight: 900;
   font-size: 0.75rem;
   margin-right: 0.75rem;
   margin-top: 0.125rem;
   flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.25);
 }
 
 /* Stylizacja wyróżnionych ramek wzorów */
 .math-text-wrapper .formula-callout,
 .math-text-wrapper blockquote {
-  border-left: 3px solid #00E5FF;
-  background: rgba(0, 229, 255, 0.05);
+  border-left: 3px solid #FFB800;
+  background: rgba(255, 184, 0, 0.05);
   border-radius: 0 0.75rem 0.75rem 0;
   padding: 0.75rem 1rem;
   margin: 0.75rem 0;
-  box-shadow: inset 0 0 15px rgba(0, 229, 255, 0.05);
+  box-shadow: inset 0 0 15px rgba(255, 184, 0, 0.05);
 }
 
 /* Animacja shake dla błędnej odpowiedzi */
@@ -209,14 +234,14 @@ button, a, input, [role="button"] {
   text-align: center !important;
   margin: 0.85rem auto !important;
   padding: 0.85rem 1rem !important;
-  background: rgba(0, 194, 255, 0.04) !important;
-  border: 1px solid rgba(0, 194, 255, 0.16) !important;
+  background: rgba(255, 184, 0, 0.03) !important;
+  border: 1px solid rgba(255, 184, 0, 0.15) !important;
   border-radius: 0.875rem !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
-  box-shadow: inset 0 0 20px rgba(0, 194, 255, 0.03) !important;
+  box-shadow: inset 0 0 20px rgba(255, 184, 0, 0.02) !important;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -228,7 +253,7 @@ button, a, input, [role="button"] {
   padding: 0 !important;
   font-size: 1.15em !important;
   color: #FFFFFF !important;
-  text-shadow: 0 0 12px rgba(0, 194, 255, 0.25) !important;
+  text-shadow: 0 0 12px rgba(255, 184, 0, 0.25) !important;
   white-space: nowrap !important;
 }
 

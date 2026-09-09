@@ -56,7 +56,7 @@ export function MathAnswerModule({
             type="button"
             onClick={() => handleModeChange('keyboard')}
             className={`relative z-10 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black transition-colors ${
-              activeMode === 'keyboard' ? 'text-black' : 'text-[#8B8D98] hover:text-white'
+              activeMode === 'keyboard' ? 'text-[#080B11]' : 'text-[#8B8D98] hover:text-white'
             }`}
           >
             <Keyboard size={14} />
@@ -64,7 +64,7 @@ export function MathAnswerModule({
             {activeMode === 'keyboard' && (
               <motion.div
                 layoutId="activeModePill"
-                className="absolute inset-0 bg-[#00E5FF] rounded-full -z-10 shadow-[0_0_18px_rgba(0,229,255,0.4)]"
+                className="absolute inset-0 bg-[#FFB800] rounded-full -z-10 shadow-[0_0_18px_rgba(255,184,0,0.4)]"
                 transition={{ type: 'spring', damping: 25, stiffness: 320 }}
               />
             )}
@@ -75,7 +75,7 @@ export function MathAnswerModule({
             type="button"
             onClick={() => handleModeChange('handwriting')}
             className={`relative z-10 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black transition-colors ${
-              activeMode === 'handwriting' ? 'text-black' : 'text-[#8B8D98] hover:text-white'
+              activeMode === 'handwriting' ? 'text-[#080B11]' : 'text-[#8B8D98] hover:text-white'
             }`}
           >
             <PenTool size={14} />
@@ -83,7 +83,7 @@ export function MathAnswerModule({
             {activeMode === 'handwriting' && (
               <motion.div
                 layoutId="activeModePill"
-                className="absolute inset-0 bg-[#00E5FF] rounded-full -z-10 shadow-[0_0_18px_rgba(0,229,255,0.4)]"
+                className="absolute inset-0 bg-[#FFB800] rounded-full -z-10 shadow-[0_0_18px_rgba(255,184,0,0.4)]"
                 transition={{ type: 'spring', damping: 25, stiffness: 320 }}
               />
             )}
@@ -99,9 +99,9 @@ export function MathAnswerModule({
                 triggerHaptic('light');
                 onAskAI();
               }}
-              className="flex items-center gap-1 text-[11px] font-bold text-[#8B8D98] hover:text-[#00E5FF] transition-colors py-1 px-2 rounded-lg hover:bg-white/5"
+              className="flex items-center gap-1 text-[11px] font-bold text-[#8B8D98] hover:text-[#FFB800] transition-colors py-1 px-2 rounded-lg hover:bg-white/5"
             >
-              <Sparkles size={12} className="text-[#00E5FF]" />
+              <Sparkles size={12} className="text-[#FFB800]" />
               <span>Wskazówka AI</span>
             </button>
           )}
@@ -160,7 +160,7 @@ export function MathAnswerModule({
           }}
           className={`w-full py-3.5 px-6 rounded-2xl font-black text-base flex items-center justify-center gap-2 transition-all ${
             isReadyToSubmit && !isEvaluating
-              ? 'bg-[#00C2FF] hover:bg-[#00B4E6] border-b-4 border-[#0099CC] text-[#0B131E] shadow-[0_0_20px_rgba(0,194,255,0.25)] active:translate-y-1 active:border-b-0 cursor-pointer'
+              ? 'bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)] active:translate-y-1 active:border-b-0 cursor-pointer'
               : 'bg-[#141C28] border border-white/5 text-[#8B8D98]/50 cursor-not-allowed'
           }`}
         >

@@ -403,7 +403,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
         spread: 360,
         ticks: 60,
         origin: { x: Math.random(), y: Math.random() * 0.5 },
-        colors: ['#F59E0B', '#FACC15', '#FFE885', '#00C2FF']
+        colors: ['#F59E0B', '#FACC15', '#FFE885', '#FFB800']
       });
     }, 250);
   };
@@ -714,7 +714,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
     return (
       <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 select-none overflow-hidden">
-        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(0,229,255,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative">
+        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative">
         {/* Top bar header */}
         <header className="shrink-0 px-4 pt-4 pb-3 border-b border-white/5 bg-[#0B0E14] flex items-center justify-end z-20">
           <button 
@@ -770,9 +770,9 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
             className="w-full grid grid-cols-3 gap-3 mb-5 max-w-sm sm:max-w-md"
           >
             {/* XP Card */}
-            <div className="bg-[#141C28] border border-cyan-500/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
-              <div className="w-8 h-8 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center mb-1.5 text-cyan-400">
-                <Zap size={16} className="fill-cyan-400 text-cyan-400" />
+            <div className="bg-[#141C28] border border-[#FFB800]/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+              <div className="w-8 h-8 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center mb-1.5 text-[#FFB800]">
+                <Zap size={16} className="fill-[#FFB800] text-[#FFB800]" />
               </div>
               <span className="text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">+{totalEarnedXp}</span>
               <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider mt-0.5">
@@ -833,7 +833,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
           <div className="flex flex-col items-center w-full">
             <button 
               onClick={handleContinue}
-              className="w-full h-[52px] bg-[#00C2FF] hover:bg-[#00B4E6] border-b-4 border-[#0099CC] text-[#0B131E] font-black text-base px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_25px_rgba(0,194,255,0.35)] cursor-pointer"
+              className="w-full h-[52px] bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold text-base px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
             >
               <span>WRÓĆ DO MAPY NAUKI</span>
               <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
@@ -854,7 +854,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
   if (showRetryInterstitial) {
     return (
       <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 select-none overflow-hidden">
-        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(0,229,255,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative">
+        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.08)] flex flex-col justify-between items-stretch overflow-hidden relative">
           <header className="shrink-0 px-4 pt-4 pb-3 border-b border-white/5 bg-[#0B0E14] flex items-center justify-between z-20">
           <span className="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
             <RotateCcw size={14} /> Pętla Poprawkowa
@@ -872,12 +872,12 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="w-20 h-20 rounded-3xl bg-[#00C2FF]/15 border-2 border-[#00C2FF] text-[#00C2FF] flex items-center justify-center shadow-[0_0_30px_rgba(0,194,255,0.25)] mb-5"
+            className="w-20 h-20 rounded-3xl bg-[#FFB800]/15 border-2 border-[#FFB800] text-[#FFB800] flex items-center justify-center shadow-[0_0_30px_rgba(255,184,0,0.25)] mb-5"
           >
             <RotateCcw size={40} className="animate-spin-slow" />
           </motion.div>
 
-          <span className="text-xs font-black uppercase text-[#00C2FF] tracking-widest px-3 py-1 rounded-full bg-[#00C2FF]/10 border border-[#00C2FF]/20 mb-3">
+          <span className="text-xs font-black uppercase text-[#FFB800] tracking-widest px-3 py-1 rounded-full bg-[#FFB800]/10 border border-[#FFB800]/20 mb-3">
             Faza Poprawkowa
           </span>
 
@@ -900,7 +900,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
               </span>
             </div>
             <p className="text-xs text-[#9CA3AF] leading-relaxed">
-              Za każdą udaną poprawkę otrzymujesz <span className="text-[#00C2FF] font-bold">+5 XP</span> oraz odblokowujesz oficjalny Ekran Sukcesu z gwiazdkami.
+              Za każdą udaną poprawkę otrzymujesz <span className="text-[#FFB800] font-bold">+5 XP</span> oraz odblokowujesz oficjalny Ekran Sukcesu z gwiazdkami.
             </p>
           </div>
         </div>
@@ -908,7 +908,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
         <footer className="shrink-0 w-full p-4 bg-[#0B0E14]/95 backdrop-blur-md border-t border-white/5" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           <button 
             onClick={handleStartRetryPhase}
-            className="w-full bg-[#00C2FF] hover:bg-[#00B4E6] border-b-4 border-[#0099CC] text-[#0B131E] font-black text-base py-3.5 px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(0,194,255,0.25)]"
+            className="w-full bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold text-base py-3.5 px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>Popraw błędy</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -930,7 +930,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
     return (
       <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
-        <div className="w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(0,229,255,0.06)] flex flex-col justify-start items-stretch overflow-hidden relative">
+        <div className="w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-start items-stretch overflow-hidden relative">
           <header className="shrink-0 px-4 pt-3.5 pb-3 border-b border-white/5 bg-[#0B0E14] flex items-center justify-between z-20">
           <button 
             onClick={onCancelTask}
@@ -940,7 +940,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
           </button>
 
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-black uppercase tracking-wider text-[#00C2FF] bg-[#00C2FF]/10 border border-[#00C2FF]/20 px-2.5 py-1 rounded-full flex items-center gap-1">
+            <span className="text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-2.5 py-1 rounded-full flex items-center gap-1">
               <BookOpen size={12} />
               <span>{theoryItem.topic || 'Pigułka wiedzy'}</span>
             </span>
@@ -973,8 +973,8 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                       </>
                     ) : (
                       <>
-                        <Sparkles size={14} className="text-[#00C2FF]" />
-                        <span className="text-[#00C2FF] font-black uppercase tracking-wider">{currentCard.badge || 'Kluczowa Reguła'}</span>
+                        <Sparkles size={14} className="text-[#FFB800]" />
+                        <span className="text-[#FFB800] font-black uppercase tracking-wider">{currentCard.badge || 'Kluczowa Reguła'}</span>
                       </>
                     )}
                   </div>
@@ -990,7 +990,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                           triggerHaptic('light');
                         }}
                         className={`h-1.5 rounded-full transition-all duration-200 ${
-                          idx === currentTheoryIndex ? 'w-5 bg-[#00C2FF] shadow-[0_0_8px_rgba(0,194,255,0.5)]' : 'w-1.5 bg-white/20 hover:bg-white/40'
+                          idx === currentTheoryIndex ? 'w-5 bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.5)]' : 'w-1.5 bg-white/20 hover:bg-white/40'
                         }`}
                         aria-label={`Przejdź do kroku ${idx + 1}`}
                       />
@@ -1007,7 +1007,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                   <div className="flex flex-col gap-3.5 w-full my-auto">
                     {currentCard.concept_essence && (
                       <div className="p-4 sm:p-5 rounded-2xl bg-[#0F1622] border border-white/10 text-white/95 text-sm sm:text-base leading-relaxed break-words">
-                        <span className="text-[11px] font-bold text-[#00C2FF] uppercase tracking-wider block mb-1.5">
+                        <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1.5">
                           Istota pojęcia:
                         </span>
                         <MathRenderer content={currentCard.concept_essence} className="leading-relaxed" />
@@ -1015,7 +1015,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                     )}
                     {currentCard.matura_context && (
                       <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-slate-300 text-xs sm:text-sm leading-relaxed break-words">
-                        <span className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider block mb-1">
+                        <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1">
                           Wskazówka egzaminacyjna:
                         </span>
                         <MathRenderer content={currentCard.matura_context} className="leading-relaxed" />
@@ -1039,7 +1039,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                               key={idx}
                               className="w-full py-2 px-3 flex items-center justify-between gap-2.5 hover:bg-white/[0.02] transition-colors"
                             >
-                              <span className="text-xs font-mono font-bold text-[#00C2FF]/70 shrink-0 w-5 text-left">
+                              <span className="text-xs font-mono font-bold text-[#FFB800]/70 shrink-0 w-5 text-left">
                                 {idx + 1}.
                               </span>
                               <div className="flex-1 flex items-center justify-center py-1 text-center overflow-visible min-h-[36px] no-scrollbar">
@@ -1064,7 +1064,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                   /* Card Type: example (Worked example krok po kroku) */
                   <div className="flex flex-col gap-3 w-full my-auto text-left">
                     <div className="p-3.5 sm:p-4 rounded-xl bg-[#0F1622] border border-white/10">
-                      <span className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider block mb-1">
+                      <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1">
                         Zadanie z arkusza:
                       </span>
                       <div className="text-xs sm:text-sm font-medium text-white leading-relaxed">
@@ -1075,7 +1075,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                     <div className="space-y-2">
                       {currentCard.worked_example.step1 && (
                         <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                          <span className="w-5 h-5 rounded-md bg-cyan-500/20 text-cyan-300 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             1
                           </span>
                           <div className="flex-1 leading-relaxed">
@@ -1086,7 +1086,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
                       {currentCard.worked_example.step2 && (
                         <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                          <span className="w-5 h-5 rounded-md bg-cyan-500/20 text-cyan-300 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             2
                           </span>
                           <div className="flex-1 leading-relaxed">
@@ -1097,7 +1097,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
                       {currentCard.worked_example.steps?.map((st) => (
                         <div key={st.step_num} className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                          <span className="w-5 h-5 rounded-md bg-cyan-500/20 text-cyan-300 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             {st.step_num}
                           </span>
                           <div className="flex-1 leading-relaxed">
@@ -1203,7 +1203,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                 }
               }
             }}
-            className="flex-1 bg-[#00C2FF] hover:bg-[#00B4E6] border-b-4 border-[#0099CC] text-[#0B131E] font-black py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(0,194,255,0.25)]"
+            className="flex-1 bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>
               {!isLastCard 
@@ -1236,7 +1236,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
   return (
     <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
-      <div className={`w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(0,229,255,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative ${shakeIncorrect ? 'animate-shake' : ''}`}>
+      <div className={`w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative ${shakeIncorrect ? 'animate-shake' : ''}`}>
         {/* -------------------------------------------------------------------- */}
         {/* SECTION 1: HEADER (Compact, Zero-Scroll Sticky Top)                  */}
         {/* -------------------------------------------------------------------- */}
@@ -1254,7 +1254,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
           {/* Clean Points Badge: strictly "1 pkt" or "2 pkt" */}
           <div className="flex items-center gap-1.5">
-            <Badge variant="cyan">
+            <Badge variant="jasne">
               {pointsBadge}
             </Badge>
             {(activeTask.difficulty === 'Wymagające' || activeTask.difficulty === 'HARD' || activeTask.tags?.includes('Wymagające')) && (
@@ -1282,7 +1282,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
         <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
           <motion.div 
             className={`h-full rounded-full transition-all duration-300 ${
-              isRetryPhase ? 'bg-amber-400' : 'bg-[#00C2FF]'
+              isRetryPhase ? 'bg-amber-400' : 'bg-[#FFB800]'
             }`}
             style={{ width: `${Math.min(100, Math.max(8, progressPercent))}%` }}
           />
@@ -1309,7 +1309,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
               {pointsBadge}
             </span>
             <span className="text-white/20">•</span>
-            <span className="text-cyan-400 font-semibold tracking-wide">
+            <span className="text-[#38BDF8] font-semibold tracking-wide">
               {activeTask.source || activeTask.cke_source || 'Matura Maj 2024 • Zadanie 1'}
             </span>
           </div>
@@ -1334,7 +1334,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                   triggerHaptic('light');
                   setIsScratchpadOpen(true);
                 }}
-                className="flex items-center gap-1.5 text-xs font-bold text-[#00C2FF] hover:text-[#00E5FF] bg-[#00C2FF]/10 hover:bg-[#00C2FF]/15 border border-[#00C2FF]/25 px-2.5 py-1 rounded-xl transition-all active:scale-95 shadow-[0_0_12px_rgba(0,194,255,0.1)]"
+                className="flex items-center gap-1.5 text-xs font-bold text-[#FFB800] hover:text-[#FFC72C] bg-[#FFB800]/10 hover:bg-[#FFB800]/15 border border-[#FFB800]/25 px-2.5 py-1 rounded-xl transition-all active:scale-95 shadow-[0_0_12px_rgba(255,184,0,0.1)]"
               >
                 <PenTool size={12} />
                 <span>Brudnopis</span>
@@ -1390,8 +1390,8 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
               if (!isEvaluated) {
                 if (isSelected) {
-                  cardClasses += "bg-[#00C2FF]/10 border-[#00C2FF] text-white shadow-[0_0_15px_rgba(0,194,255,0.2)] scale-[1.01]";
-                  badgeClasses += "bg-[#00C2FF] text-[#0B131E] border-[#00C2FF]";
+                  cardClasses += "bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.2)] scale-[1.01]";
+                  badgeClasses += "bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]";
                 } else {
                   cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-white/5 hover:border-white/15 text-white/90";
                   badgeClasses += "bg-[#0F1622] text-[#8B8D98] border-white/10";
@@ -1458,8 +1458,8 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
               if (!isEvaluated) {
                 if (isSelected) {
-                  cardClasses += "bg-[#00C2FF]/10 border-[#00C2FF] text-white shadow-[0_0_15px_rgba(0,194,255,0.2)]";
-                  checkboxClasses += "bg-[#00C2FF] text-[#0B131E] border-[#00C2FF]";
+                  cardClasses += "bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.2)]";
+                  checkboxClasses += "bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]";
                 } else {
                   cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-white/5 hover:border-white/15 text-white/90";
                   checkboxClasses += "bg-[#0F1622] text-transparent border-white/15";
@@ -1508,8 +1508,8 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
           <div className="w-full space-y-4 my-auto py-2">
             {/* Krok 1 */}
             <div className="p-4 rounded-2xl bg-[#141C28] border border-white/10 space-y-2.5 text-left">
-              <div className="text-xs sm:text-sm font-bold text-[#00C2FF] flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-[#00C2FF]/20 text-[#00C2FF] text-xs flex items-center justify-center font-bold">1</span>
+              <div className="text-xs sm:text-sm font-bold text-[#FFB800] flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">1</span>
                 <span>{activeTask.part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -1521,7 +1521,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                   let btnClass = 'p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all text-xs sm:text-sm cursor-pointer select-none ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#00C2FF]/15 border-[#00C2FF] text-white shadow-[0_0_12px_rgba(0,194,255,0.2)]'
+                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                       : 'bg-[#0B0E14] border-white/10 hover:border-white/20 text-white/90';
                   } else {
                     if (isOptionCorrect) {
@@ -1546,7 +1546,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-[#00C2FF] text-[#0B131E] border-[#00C2FF]' : 'bg-white/5 border-white/10 text-white/80'
+                        isSelected ? 'bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]' : 'bg-white/5 border-white/10 text-white/80'
                       }`}>
                         {opt.id}
                       </span>
@@ -1561,8 +1561,8 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
             {/* Krok 2 */}
             <div className="p-4 rounded-2xl bg-[#141C28] border border-white/10 space-y-2.5 text-left">
-              <div className="text-xs sm:text-sm font-bold text-[#00C2FF] flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-[#00C2FF]/20 text-[#00C2FF] text-xs flex items-center justify-center font-bold">2</span>
+              <div className="text-xs sm:text-sm font-bold text-[#FFB800] flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">2</span>
                 <span>{activeTask.part_2?.prompt || 'Wybierz uzasadnienie:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -1574,7 +1574,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                   let btnClass = 'p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all text-xs sm:text-sm cursor-pointer select-none ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#00C2FF]/15 border-[#00C2FF] text-white shadow-[0_0_12px_rgba(0,194,255,0.2)]'
+                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                       : 'bg-[#0B0E14] border-white/10 hover:border-white/20 text-white/90';
                   } else {
                     if (isOptionCorrect) {
@@ -1599,7 +1599,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-[#00C2FF] text-[#0B131E] border-[#00C2FF]' : 'bg-white/5 border-white/10 text-white/80'
+                        isSelected ? 'bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]' : 'bg-white/5 border-white/10 text-white/80'
                       }`}>
                         {opt.id}
                       </span>
@@ -1638,7 +1638,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                     } flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
                   >
                     <div className="flex items-start gap-3 flex-1 min-w-0">
-                      <span className="shrink-0 w-6 h-6 rounded-lg bg-[#0B0E14] border border-white/10 text-[#00C2FF] font-bold text-xs flex items-center justify-center mt-0.5">
+                      <span className="shrink-0 w-6 h-6 rounded-lg bg-[#0B0E14] border border-white/10 text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
                         {idx + 1}
                       </span>
                       <div className="text-xs sm:text-sm text-white/90 leading-relaxed font-medium">
@@ -1654,7 +1654,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                         let btnClass = 'w-11 h-10 rounded-xl text-xs font-black flex items-center justify-center transition-all cursor-pointer border select-none ';
                         if (!isEvaluated) {
                           btnClass += isOptSelected
-                            ? 'bg-[#00C2FF] border-[#00C2FF] text-[#0B131E] shadow-[0_0_12px_rgba(0,194,255,0.3)]'
+                            ? 'bg-[#FFB800] border-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.3)]'
                             : 'bg-[#0B0E14] border-white/10 text-white/70 hover:text-white hover:border-white/20';
                         } else {
                           if (isThisTheCorrectAnswer) {
@@ -1728,7 +1728,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
             onClick={handleVerifyAnswer}
             className={`w-full py-3.5 px-6 rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 select-none ${
               isReadyToVerify
-                ? 'bg-[#00C2FF] hover:bg-[#00B4E6] border-b-4 border-[#0099CC] text-[#0B131E] active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(0,194,255,0.25)]'
+                ? 'bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer'
                 : 'bg-white/5 text-[#8B8D98] border border-white/5 cursor-not-allowed opacity-60'
             }`}
           >
@@ -1785,15 +1785,15 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
           <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col gap-3 pr-1 pb-8">
             {/* Header for solution section */}
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-black uppercase tracking-wider text-[#00C2FF] flex items-center gap-1.5">
-                <BookOpen size={13} className="text-[#00C2FF]" />
+              <span className="text-[11px] font-black uppercase tracking-wider text-[#FFB800] flex items-center gap-1.5">
+                <BookOpen size={13} className="text-[#FFB800]" />
                 {isCorrect ? 'Oficjalne rozwiązanie maturalne:' : 'Wyjaśnienie i kroki rozwiązania:'}
               </span>
               {isCorrect && solutionSteps.length > 1 && (
                 <button
                   type="button"
                   onClick={() => setShowSolutionSteps(!showSolutionSteps)}
-                  className="text-[11px] font-bold text-[#00C2FF] hover:underline flex items-center gap-1"
+                  className="text-[11px] font-bold text-[#FFB800] hover:underline flex items-center gap-1"
                 >
                   <span>{showSolutionSteps ? 'Zwiń kroki' : `Wszystkie kroki (${solutionSteps.length})`}</span>
                   {showSolutionSteps ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
@@ -1813,7 +1813,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                     {Boolean(step.title || (step.label && !step.label.toLowerCase().includes('wyjaśnienie'))) && (
                       <div className="flex items-center gap-2 flex-wrap">
                         {step.label && !step.label.toLowerCase().includes('wyjaśnienie') && (
-                          <span className="bg-[#00C2FF]/15 text-[#00C2FF] font-black text-[11px] px-2.5 py-0.5 rounded-md border border-[#00C2FF]/30 uppercase tracking-wide shrink-0">
+                          <span className="bg-[#FFB800]/15 text-[#FFB800] font-black text-[11px] px-2.5 py-0.5 rounded-md border border-[#FFB800]/30 uppercase tracking-wide shrink-0">
                             {step.label}
                           </span>
                         )}
@@ -1865,7 +1865,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
                           className="bg-[#0F1622] border border-white/10 rounded-xl p-3 flex flex-col gap-1.5 shadow-sm"
                         >
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="bg-[#00C2FF]/15 text-[#00C2FF] font-black text-[10px] px-2 py-0.5 rounded-md border border-[#00C2FF]/30">
+                            <span className="bg-[#FFB800]/15 text-[#FFB800] font-black text-[10px] px-2 py-0.5 rounded-md border border-[#FFB800]/30">
                               {step.label}
                             </span>
                             {step.title && (
@@ -1888,9 +1888,9 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
           <button
             type="button"
             onClick={handleNextQuestion}
-            className={`w-full py-3.5 px-6 rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 group shrink-0 active:translate-y-1 active:border-b-0 ${
+            className={`w-full py-3.5 px-6 rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 group shrink-0 active:translate-y-1 active:border-b-0 cursor-pointer ${
               isCorrect
-                ? 'bg-[#00C2FF] hover:bg-[#00B4E6] border-b-4 border-[#0099CC] text-[#0B131E] shadow-[0_0_20px_rgba(0,194,255,0.25)]'
+                ? 'bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)]'
                 : 'bg-rose-500 hover:bg-rose-600 border-b-4 border-rose-700 text-white shadow-[0_0_20px_rgba(244,63,94,0.3)]'
             }`}
           >
@@ -1970,7 +1970,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
               {/* Level 2 Static Hint */}
               {unlockedHintLevel >= 2 ? (
                 <div className="bg-[#0B0E14] border border-white/10 rounded-xl p-3.5 text-xs text-white/90 leading-relaxed">
-                  <div className="font-bold text-[#00C2FF] mb-1 flex items-center gap-1">
+                  <div className="font-bold text-[#FFB800] mb-1 flex items-center gap-1">
                     <span>Krok rozwiązania:</span>
                   </div>
                   <MathRenderer content={activeTask.hints?.level_2 || 'Podstaw odpowiednie wzory skróconego mnożenia lub twierdzenia o potęgach i logarytmach.'} />
@@ -2015,7 +2015,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-2">
                 <div className="flex items-center gap-2">
-                  <Bot size={18} className="text-[#00C2FF]" />
+                  <Bot size={18} className="text-[#FFB800]" />
                   <span className="font-display font-bold text-white text-sm sm:text-base">
                     Wskazówka Tutora (Metoda sokratejska)
                   </span>
@@ -2031,7 +2031,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
 
               <div className="text-xs sm:text-sm text-white/95 leading-relaxed py-1">
                 {isAiLoading ? (
-                  <div className="flex items-center gap-2 text-[#00C2FF] py-3 font-bold">
+                  <div className="flex items-center gap-2 text-[#FFB800] py-3 font-bold">
                     <Loader2 size={16} className="animate-spin" />
                     <span>Tutor analizuje zadanie i Twoje rozumowanie...</span>
                   </div>

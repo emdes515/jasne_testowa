@@ -173,7 +173,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
                   <BlockMath 
                     math={math} 
                     renderError={() => (
-                      <span className="font-medium text-cyan-300">
+                      <span className="font-medium text-[#FFB800]">
                         {math}
                       </span>
                     )}
@@ -188,7 +188,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
                 <InlineMath 
                   math={math} 
                   renderError={() => (
-                    <span className="font-medium text-cyan-300">
+                    <span className="font-medium text-[#FFB800]">
                       {math}
                     </span>
                   )}

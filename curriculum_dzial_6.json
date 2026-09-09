@@ -1,0 +1,2160 @@
+{
+  "topic": {
+    "id": "dzial-6",
+    "title": "Dział 6: Funkcja Kwadratowa",
+    "description": "Kompleksowe omówienie funkcji kwadratowej: postaci ogólnej, kanonicznej i iloczynowej, wyróżnika delta, wierzchołka paraboli, monotoniczności, wartości w przedziale domkniętym oraz nierówności kwadratowych.",
+    "lessons": [
+      {
+        "id": "l-dzial-6-1",
+        "title": "Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c",
+        "description": "Lekcja 1: Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Postać ogólna funkcji kwadratowej to $f(x) = ax^2 + bx + c$, gdzie $a \\neq 0$. Wykresem jest parabola. Znak współczynnika $a$ decyduje o kierunku ramion paraboli: gdy $a > 0$, ramiona skierowane są w górę (parabola 'uśmiechnięta'), gdy $a < 0$, ramiona skierowane są w dół (parabola 'smutna'). Wyraz wolny $c$ wyznacza punkt przecięcia z osią OY: $(0, c)$.",
+          "matura_context": "Podstawowe zadania testowe sprawdzające kierunek ramion paraboli i punkt przecięcia z osią OY.",
+          "core_formulas": "$f(x) = ax^2 + bx + c$ ($a \\neq 0$). Ramiona w górę: $a > 0$, ramiona w dół: $a < 0$. Punkt przecięcia z OY: $(0, c)$.",
+          "worked_example": "Dla $f(x) = -2x^2 + 5x - 3$: $a = -2 < 0$ (ramiona w dół), punkt przecięcia z OY to $(0, -3)$.",
+          "exam_trap": "Uznanie funkcji za kwadratową, gdy $a = 0$. Jeśli współczynnik przy $x^2$ wynosi 0, funkcja staje się liniowa!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-1-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Ramiona paraboli będącej wykresem funkcji $f(x) = -3x^2 + 4x - 1$ są skierowane:",
+            "explanation": "Współczynnik przy x^2 wynosi $a = -3 < 0$, co oznacza ramiona skierowane w dół.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "w dół, bo $a < 0$",
+            "hint": "Sprawdź znak współczynnika stojącego przy x^2.",
+            "options": [
+              "w dół, bo $a < 0$",
+              "w górę, bo $a < 0$",
+              "w dół, bo $c < 0$",
+              "w górę, bo $b > 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-1-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = 2x^2 - 7x + 5$ przecina oś OY w punkcie:",
+            "explanation": "Dla $x = 0$ mamy $f(0) = c = 5$. Punkt to $(0, 5)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 5)$",
+            "hint": "Punkt przecięcia z osią OY ma współrzędne (0, c).",
+            "options": [
+              "$(0, 5)$",
+              "$(5, 0)$",
+              "$(0, -7)$",
+              "$(2, 0)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-1-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja $f(x) = (m - 2)x^2 + 3x - 1$ jest funkcją kwadratową dla każdej liczby rzeczywistej $m$.",
+            "explanation": "Dla $m = 2$ współczynnik przy $x^2$ wynosi 0 i funkcja redukuje się do liniowej $f(x) = 3x - 1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Co się stanie ze stopniem wielomianu, gdy m = 2?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-1-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Wykres funkcji $f(x) = x^2 - 4x + c$ przechodzi przez punkt $P = (2, 7)$. Ile wynosi wyraz wolny $c$?",
+            "explanation": "$f(2) = 2^2 - 4(2) + c = 7 \\implies 4 - 8 + c = 7 \\implies -4 + c = 7 \\implies c = 11$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "11",
+            "hint": "Podstaw x = 2 oraz f(x) = 7 do wzoru."
+          },
+          {
+            "id": "t-dzial-6-1-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż funkcję kwadratową, której ramiona paraboli skierowane są w górę, a wykres przecina oś OY poniżej osi OX:",
+            "explanation": "Warunki: ramiona w górę $\\implies a > 0$ (tu $a=3$), przecięcie poniżej osi OX $\\implies c < 0$ (tu $c=-4$).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = 3x^2 + 2x - 4$",
+            "hint": "Szukaj a > 0 oraz c < 0.",
+            "options": [
+              "$f(x) = 3x^2 + 2x - 4$",
+              "$f(x) = -2x^2 + x - 3$",
+              "$f(x) = 5x^2 - x + 2$",
+              "$f(x) = -x^2 - 4$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-1-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla jakich wartości parametru $k$ funkcja $f(x) = (3 - k)x^2 + 2x - 1$ ma ramiona skierowane w dół?",
+            "explanation": "$a < 0 \\implies 3 - k < 0 \\implies k > 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$k > 3$",
+            "hint": "Przyrównaj współczynnik przy x^2 do nierówności a < 0.",
+            "options": [
+              "$k > 3$",
+              "$k < 3$",
+              "$k = 3$",
+              "$k > 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-1-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Dziedziną każdej funkcji kwadratowej jest cały zbiór liczb rzeczywistych $\\mathbb{R}$.",
+            "explanation": "Wyrażenie $ax^2 + bx + c$ ma sens liczbowy dla każdego $x \\in \\mathbb{R}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy istnieją jakieś ograniczenia liczbowe dla wielomianu stopnia 2?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-1-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz współczynniki $b$ oraz $c$ funkcji kwadratowej $f(x) = 2x^2 + bx + c$, wiedząc, że wykres tej funkcji przecina oś OY w punkcie $(0, -6)$ i przechodzi przez punkt $A = (1, -1)$.",
+            "explanation": "Krok 1: Punkt przecięcia z osią OY daje bezpośrednio wyraz wolny:\n$f(0) = c = -6$.\nWzór funkcji przyjmuje postać: $f(x) = 2x^2 + bx - 6$.\nKrok 2: Podstawiamy współrzędne punktu $A(1, -1)$:\n$-1 = 2(1)^2 + b(1) - 6$\n$-1 = 2 + b - 6 \\implies -1 = b - 4 \\implies b = 3$.\nOdpowiedź: $b = 3$, $c = -6$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wykorzystaj punkt przecięcia z osią OY do znalezienia c, a następnie podstaw punkt A.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-2",
+        "title": "Wyróżnik równania kwadratowego delta i liczba miejsc zerowych",
+        "description": "Lekcja 2: Wyróżnik równania kwadratowego delta i liczba miejsc zerowych. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Wyróżnik trójmianu kwadratowego obliczamy ze wzoru $\\Delta = b^2 - 4ac$. Liczba miejsc zerowych funkcji kwadratowej zależy od znaku $\\Delta$:\n1. $\\Delta > 0 \\implies$ dwa różne miejsca zerowe (parabola przecina oś OX w 2 punktach),\n2. $\\Delta = 0 \\implies$ dokładnie jedno miejsce zerowe (parabola styka się z osią OX w wierzchołku),\n3. $\\Delta < 0 \\implies$ brak miejsc zerowych (parabola w całości leży po jednej stronie osi OX).",
+          "matura_context": "Żelazny fundament matury. Zadania na obliczenie delty lub określenie liczby pierwiastków pojawiają się w każdym arkuszu.",
+          "core_formulas": "$\\Delta = b^2 - 4ac$. $\\Delta > 0$: 2 pierwiastki, $\\Delta = 0$: 1 pierwiastek, $\\Delta < 0$: 0 pierwiastków.",
+          "worked_example": "Dla $f(x) = x^2 - 6x + 9$: $\\Delta = (-6)^2 - 4(1)(9) = 36 - 36 = 0$. Dokładnie 1 miejsce zerowe.",
+          "exam_trap": "Błąd znaku przy podnoszeniu $b$ do kwadratu: $(-5)^2 = +25$, a nie $-25$!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-2-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wyróżnik trójmianu kwadratowego $f(x) = 2x^2 - 3x - 2$ jest równy:",
+            "explanation": "$\\Delta = (-3)^2 - 4(2)(-2) = 9 + 16 = 25$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "25",
+            "hint": "Zastosuj wzór delta = b^2 - 4ac.",
+            "options": [
+              "25",
+              "-7",
+              "7",
+              "1"
+            ]
+          },
+          {
+            "id": "t-dzial-6-2-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja kwadratowa $f(x) = x^2 - 4x + 5$:",
+            "explanation": "$\\Delta = (-4)^2 - 4(1)(5) = 16 - 20 = -4 < 0$. Brak miejsc zerowych.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "nie ma miejsc zerowych",
+            "hint": "Oblicz deltę i zbadaj jej znak.",
+            "options": [
+              "nie ma miejsc zerowych",
+              "ma dokładnie jedno miejsce zerowe",
+              "ma dwa różne miejsca zerowe",
+              "ma nieskończenie wiele miejsc zerowych"
+            ]
+          },
+          {
+            "id": "t-dzial-6-2-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla jakiej wartości parametru $c$ funkcja $f(x) = x^2 - 6x + c$ ma dokładnie jedno miejsce zerowe?",
+            "explanation": "$\\Delta = 0 \\implies (-6)^2 - 4(1)(c) = 0 \\implies 36 - 4c = 0 \\implies 4c = 36 \\implies c = 9$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Przyrównaj deltę do zera.",
+            "options": [
+              "9",
+              "-9",
+              "3",
+              "36"
+            ]
+          },
+          {
+            "id": "t-dzial-6-2-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli $a$ i $c$ mają przeciwne znaki ($a \\cdot c < 0$), to funkcja kwadratowa ma zawsze dwa różne miejsca zerowe.",
+            "explanation": "Gdy $ac < 0$, to $-4ac > 0$. Wtedy $\\Delta = b^2 - 4ac = b^2 + \\text{coś dodatniego} > 0$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź znak wyrażenia -4ac, gdy a i c mają różne znaki.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-2-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile miejsc zerowych ma funkcja $f(x) = -3x^2 + 12$?",
+            "explanation": "$a = -3, b = 0, c = 12$. $\\Delta = 0^2 - 4(-3)(12) = 144 > 0$. Funkcja ma 2 miejsca zerowe ($x = 2$ oraz $x = -2$).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Oblicz deltę lub przyrównaj wzór do zera."
+          },
+          {
+            "id": "t-dzial-6-2-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = x^2 + bx + 4$ jest styczny do osi OX. Wartość współczynnika $b$ może być równa:",
+            "explanation": "Styczność oznacza $\\Delta = 0 \\implies b^2 - 4(1)(4) = 0 \\implies b^2 = 16 \\implies b = 4 \\lor b = -4$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4 lub -4",
+            "hint": "Styczność z osią OX oznacza dokładnie jedno miejsce zerowe (delta = 0).",
+            "options": [
+              "4 lub -4",
+              "2 lub -2",
+              "16",
+              "0"
+            ]
+          },
+          {
+            "id": "t-dzial-6-2-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli $\\Delta < 0$ i $a > 0$, to dla każdego $x \\in \\mathbb{R}$ zachodzi $f(x) > 0$.",
+            "explanation": "Parabola ma ramiona w górę i w całości wisi nad osią OX, nie dotykając jej.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Parabola leży w całości nad osią OX.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-2-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wszystkie wartości parametru $m$, dla których funkcja kwadratowa $f(x) = x^2 + (m - 1)x + 4$ ma dwa różne miejsca zerowe.",
+            "explanation": "Warunek istnienia dwóch różnych miejsc zerowych: $\\Delta > 0$.\nObliczamy deltę:\n$\\Delta = (m - 1)^2 - 4 \\cdot 1 \\cdot 4 = m^2 - 2m + 1 - 16 = m^2 - 2m - 15$.\nRozwiązujemy nierówność $\\Delta > 0$:\n$m^2 - 2m - 15 > 0$.\nWyróżnik dla m: $\\Delta_m = (-2)^2 - 4(1)(-15) = 4 + 60 = 64$, $\\sqrt{\\Delta_m} = 8$.\nPierwiastki: $m_1 = \\frac{2 - 8}{2} = -3$, $m_2 = \\frac{2 + 8}{2} = 5$.\nRamiona paraboli w górę, więc wartości dodatnie są na zewnątrz pierwiastków:\n$m \\in (-\\infty, -3) \\cup (5, +\\infty)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz warunek delta > 0 i rozwiąż powstałą nierówność kwadratową ze zmienną m.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-3",
+        "title": "Miejsca zerowe funkcji kwadratowej: Wzory na x_1 i x_2",
+        "description": "Lekcja 3: Miejsca zerowe funkcji kwadratowej: Wzory na x_1 i x_2. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Gdy $\\Delta > 0$, miejsca zerowe obliczamy ze wzorów: $x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}$ oraz $x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}$. Gdy $\\Delta = 0$, mamy jedno podwójne miejsce zerowe: $x_0 = -\\frac{b}{2a}$.",
+          "matura_context": "Klasyczne zadanie z rozwiązywaniem równania kwadratowego za 1 lub 2 punkty.",
+          "core_formulas": "$x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}$ dla $\\Delta > 0$; $x_0 = -\\frac{b}{2a}$ dla $\\Delta = 0$.",
+          "worked_example": "Dla $x^2 - 5x + 6 = 0$: $\\Delta = 25 - 24 = 1, \\sqrt{\\Delta} = 1$. Pierwiastki: $x_1 = \\frac{5 - 1}{2} = 2, x_2 = \\frac{5 + 1}{2} = 3$.",
+          "exam_trap": "Dzielenie przez $a$ zamiast przez $2a$ w mianowniku! Pamiętaj: w mianowniku stoi $2a$."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-3-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscami zerowymi funkcji $f(x) = x^2 - 7x + 10$ są liczby:",
+            "explanation": "$\\Delta = 49 - 40 = 9, \\sqrt{\\Delta} = 3$. $x_1 = \\frac{7 - 3}{2} = 2, x_2 = \\frac{7 + 3}{2} = 5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2 oraz 5",
+            "hint": "Oblicz deltę i zastosuj wzory na pierwiastki.",
+            "options": [
+              "2 oraz 5",
+              "-2 oraz -5",
+              "1 oraz 10",
+              "-1 oraz -10"
+            ]
+          },
+          {
+            "id": "t-dzial-6-3-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Jedynym miejscem zerowym funkcji $f(x) = 4x^2 - 12x + 9$ jest liczba:",
+            "explanation": "$4x^2 - 12x + 9 = (2x - 3)^2 = 0 \\implies 2x = 3 \\implies x = \\frac{3}{2}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\frac{3}{2}$",
+            "hint": "Zwiń wyrażenie ze wzoru skróconego mnożenia.",
+            "options": [
+              "$\\frac{3}{2}$",
+              "$-\\frac{3}{2}$",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "id": "t-dzial-6-3-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Suma miejsc zerowych funkcji $f(x) = 2x^2 - 8x - 10$ wynosi:",
+            "explanation": "$x_1 + x_2 = -\\frac{b}{a} = -\\frac{-8}{2} = 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Użyj wzoru Viète'a na sumę pierwiastków: -b/a.",
+            "options": [
+              "4",
+              "-4",
+              "5",
+              "-1"
+            ]
+          },
+          {
+            "id": "t-dzial-6-3-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba 0 jest miejscem zerowym funkcji $f(x) = 3x^2 - 6x$.",
+            "explanation": "$3(0)^2 - 6(0) = 0$. Wyłączając x przed nawias: $3x(x - 2) = 0 \\implies x = 0 \\lor x = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź, czy f(0) = 0.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-3-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Oblicz większe z miejsc zerowych funkcji $f(x) = -x^2 + 2x + 8$.",
+            "explanation": "$\\Delta = 4 - 4(-1)(8) = 4 + 32 = 36, \\sqrt{\\Delta} = 6$. $x_1 = \\frac{-2 - 6}{-2} = 4, x_2 = \\frac{-2 + 6}{-2} = -2$. Większe to 4.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Pamiętaj o dzieleniu przez 2a = -2."
+          },
+          {
+            "id": "t-dzial-6-3-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejsca zerowe funkcji $f(x) = x^2 - 5$ to:",
+            "explanation": "$x^2 = 5 \\implies x = \\sqrt{5} \\lor x = -\\sqrt{5}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$-\\sqrt{5}$ oraz $\\sqrt{5}$",
+            "hint": "Przyrównaj x^2 do 5.",
+            "options": [
+              "$-\\sqrt{5}$ oraz $\\sqrt{5}$",
+              "5 oraz -5",
+              "$\\sqrt{5}$",
+              "brak miejsc zerowych"
+            ]
+          },
+          {
+            "id": "t-dzial-6-3-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Iloczyn miejsc zerowych funkcji $f(x) = x^2 - 3x - 10$ jest równy 10.",
+            "explanation": "Iloczyn miejsc zerowych wynosi $\\frac{c}{a} = \\frac{-10}{1} = -10$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Sprawdź znak wyrazu wolnego c.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-3-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rozwiąż równanie kwadratowe $2x^2 - 5x - 3 = 0$. Zapisz obliczenia wyróżnika delta i pierwiastków.",
+            "explanation": "Krok 1: Wypisujemy współczynniki: $a = 2, b = -5, c = -3$.\nKrok 2: Obliczamy wyróżnik trójmianu:\n$\\Delta = b^2 - 4ac = (-5)^2 - 4 \\cdot 2 \\cdot (-3) = 25 + 24 = 49$.\n$\\sqrt{\\Delta} = \\sqrt{49} = 7$.\nKrok 3: Wyznaczamy pierwiastki równania:\n$x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a} = \\frac{5 - 7}{2 \\cdot 2} = \\frac{-2}{4} = -\\frac{1}{2} = -0{,}5$,\n$x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a} = \\frac{5 + 7}{2 \\cdot 2} = \\frac{12}{4} = 3$.\nOdpowiedź: Rozwiązaniami równania są $x = -\\frac{1}{2}$ oraz $x = 3$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zastosuj deltę i wzory na pierwiastki, pamiętając o mianowniku 2a.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-4",
+        "title": "Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+        "description": "Lekcja 4: Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a). Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Wierzchołek paraboli $W = (p, q)$ to najważniejszy punkt wykresu. Współrzędna $p = -\\frac{b}{2a}$ wyznacza argument, dla którego funkcja przyjmuje wartość ekstremalną. Współrzędna $q = -\\frac{\\Delta}{4a} = f(p)$ to ta wartość ekstremalna (minimum dla $a > 0$, maksimum dla $a < 0$).",
+          "matura_context": "Wierzchołek paraboli pojawia się na każdej maturze – jest fundamentem zadań optymalizacyjnych i badania zbioru wartości.",
+          "core_formulas": "$p = -\\frac{b}{2a}$, $q = -\\frac{\\Delta}{4a} = f(p)$. Wierzchołek $W = (p, q)$.",
+          "worked_example": "Dla $f(x) = x^2 - 4x + 1$: $p = -\\frac{-4}{2(1)} = 2$. $q = f(2) = 2^2 - 4(2) + 1 = 4 - 8 + 1 = -3$. Wierzchołek $W = (2, -3)$.",
+          "exam_trap": "Uciążliwe liczenie $q$ ze wzoru $-\\frac{\\Delta}{4a}$, gdy znacznie szybciej i pewniej oblicza się $q = f(p)$ podstawiając obliczone $p$ do wzoru funkcji!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-4-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Współrzędna $p$ wierzchołka paraboli $f(x) = 2x^2 - 8x + 3$ wynosi:",
+            "explanation": "$p = -\\frac{b}{2a} = -\\frac{-8}{2 \\cdot 2} = \\frac{8}{4} = 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Zastosuj wzór p = -b / (2a).",
+            "options": [
+              "2",
+              "-2",
+              "4",
+              "-4"
+            ]
+          },
+          {
+            "id": "t-dzial-6-4-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wierzchołek paraboli będącej wykresem funkcji $f(x) = -x^2 + 6x - 5$ ma współrzędne:",
+            "explanation": "$p = -\\frac{6}{2(-1)} = 3$. $q = f(3) = -(3)^2 + 6(3) - 5 = -9 + 18 - 5 = 4$. Zatem $W = (3, 4)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(3, 4)$",
+            "hint": "Oblicz p, a następnie wstaw wynik za x, aby uzyskać q.",
+            "options": [
+              "$(3, 4)$",
+              "$(-3, 4)$",
+              "$(3, -4)$",
+              "$(-3, -32)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-4-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli $a > 0$, to wierzchołek paraboli wyznacza najmniejszą wartość funkcji kwadratowej w $\\mathbb{R}$.",
+            "explanation": "Ramiona paraboli idą w górę, więc wierzchołek jest najniższym punktem wykresu (minimum globalne $y_{\\min} = q$).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Naszkicuj parabolę z ramionami w górę.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-4-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla jakiego argumentu $x$ funkcja $f(x) = 3x^2 - 12x + 7$ osiąga swoją najmniejszą wartość?",
+            "explanation": "Najmniejsza wartość jest osiągana w wierzchołku: $x = p = -\\frac{-12}{2 \\cdot 3} = \\frac{12}{6} = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Oblicz odciętą wierzchołka p = -b/(2a)."
+          },
+          {
+            "id": "t-dzial-6-4-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wierzchołek paraboli $f(x) = x^2 - 6x$ leży w punkcie:",
+            "explanation": "$p = -\\frac{-6}{2} = 3$. $q = f(3) = 9 - 18 = -9$. Punkt to $(3, -9)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(3, -9)$",
+            "hint": "Wstaw x = 3 do wzoru funkcji.",
+            "options": [
+              "$(3, -9)$",
+              "$(-3, 9)$",
+              "$(3, 9)$",
+              "$(0, 0)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-4-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Największa wartość funkcji $f(x) = -2x^2 + 8x - 1$ w zbiorze $\\mathbb{R}$ wynosi:",
+            "explanation": "$p = -\\frac{8}{2(-2)} = 2$. Największa wartość to $q = f(2) = -2(4) + 8(2) - 1 = -8 + 16 - 1 = 7$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "7",
+            "hint": "Oblicz rzędną wierzchołka q = f(p).",
+            "options": [
+              "7",
+              "2",
+              "9",
+              "8"
+            ]
+          },
+          {
+            "id": "t-dzial-6-4-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja ma dwa miejsca zerowe $x_1$ i $x_2$, to $p = \\frac{x_1 + x_2}{2}$.",
+            "explanation": "Wierzchołek leży dokładnie w połowie odległości między miejscami zerowymi (oś symetrii paraboli).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Oś symetrii przechodzi przez średnią arytmetyczną pierwiastków.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-4-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz współrzędne wierzchołka paraboli o równaniu $f(x) = -2x^2 + 12x - 10$. Określ, czy funkcja osiąga w wierzchołku wartość największą, czy najmniejszą i ile ona wynosi.",
+            "explanation": "Krok 1: Wypisujemy współczynniki: $a = -2, b = 12, c = -10$.\nKrok 2: Obliczamy pierwszą współrzędną wierzchołka $p$:\n$p = -\\frac{b}{2a} = -\\frac{12}{2(-2)} = -\\frac{12}{-4} = 3$.\nKrok 3: Obliczamy drugą współrzędną wierzchołka $q = f(p)$:\n$q = f(3) = -2(3)^2 + 12(3) - 10 = -2(9) + 36 - 10 = -18 + 36 - 10 = 8$.\nWierzchołek ma współrzędne $W = (3, 8)$.\nKrok 4: Ponieważ $a = -2 < 0$, ramiona paraboli skierowane są w dół. Oznacza to, że funkcja osiąga w wierzchołku wartość największą równą $y_{\\max} = 8$ dla argumentu $x = 3$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz p = -b/(2a), wstaw do wzoru funkcji, aby uzyskać q, i zbadaj znak współczynnika a.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-5",
+        "title": "Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q",
+        "description": "Lekcja 5: Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Postać kanoniczna $f(x) = a(x - p)^2 + q$ bezpośrednio uwidacznia współrzędne wierzchołka paraboli $W = (p, q)$. Powstaje przez przesunięcie paraboli $y = ax^2$ o wektor $[p, q]$.",
+          "matura_context": "Zadania polegające na odczytaniu wierzchołka z postaci kanonicznej lub zapisaniu wzoru funkcji na podstawie danego wierzchołka.",
+          "core_formulas": "$f(x) = a(x - p)^2 + q \\implies W = (p, q)$. Przesunięcie $y = ax^2$ o wektor $[p, q]$.",
+          "worked_example": "Dla $f(x) = 2(x - 3)^2 + 5$: wierzchołek to $W = (3, 5)$.",
+          "exam_trap": "Błąd znaku przy $p$: w nawiasie $(x - 3)$ współrzędna $p = +3$. Z kolei w nawiasie $(x + 4)$ współrzędna $p = -4$!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-5-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wierzchołek paraboli o równaniu $f(x) = 3(x - 4)^2 + 7$ ma współrzędne:",
+            "explanation": "Z postaci kanonicznej $a(x - p)^2 + q$ odczytujemy $p = 4, q = 7$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(4, 7)$",
+            "hint": "Pamiętaj o zmianie znaku w nawiasie.",
+            "options": [
+              "$(4, 7)$",
+              "$(-4, 7)$",
+              "$(4, -7)$",
+              "$(-4, -7)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-5-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wierzchołek paraboli $f(x) = -2(x + 5)^2 - 1$ ma współrzędne:",
+            "explanation": "$x + 5 = x - (-5)$, stąd $p = -5$, a $q = -1$. Punkt to $(-5, -1)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-5, -1)$",
+            "hint": "Plus w nawiasie oznacza ujemną współrzędną p.",
+            "options": [
+              "$(-5, -1)$",
+              "$(5, -1)$",
+              "$(-5, 1)$",
+              "$(5, 1)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-5-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Wzór funkcji kwadratowej o wierzchołku $W = (2, -3)$ i współczynniku $a = 1$ to:",
+            "explanation": "Podstawiamy do postaci kanonicznej: $f(x) = 1(x - 2)^2 + (-3) = (x - 2)^2 - 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = (x - 2)^2 - 3$",
+            "hint": "Wstaw p = 2 i q = -3 do wzoru kanonicznego.",
+            "options": [
+              "$f(x) = (x - 2)^2 - 3$",
+              "$f(x) = (x + 2)^2 - 3$",
+              "$f(x) = (x - 2)^2 + 3$",
+              "$f(x) = (x + 2)^2 + 3$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-5-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja $f(x) = (x - 1)^2$ ma dokładnie jedno miejsce zerowe równe 1.",
+            "explanation": "$q = 0$, wierzchołek leży na osi OX w punkcie $(1, 0)$, więc jedynym pierwiastkiem jest 1.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Gdy q = 0, wierzchołek jest miejscem zerowym.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-5-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla funkcji $f(x) = -3(x - 2)^2 + 8$ oblicz wartość $f(0)$.",
+            "explanation": "$f(0) = -3(0 - 2)^2 + 8 = -3(4) + 8 = -12 + 8 = -4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-4",
+            "hint": "Podstaw x = 0 do postaci kanonicznej."
+          },
+          {
+            "id": "t-dzial-6-5-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = (x - 3)^2 + 4$ powstał przez przesunięcie wykresu $y = x^2$ o wektor:",
+            "explanation": "Przesunięcie o wektor $[p, q] = [3, 4]$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$[3, 4]$",
+            "hint": "Wektor przesunięcia to współrzędne wierzchołka [p, q].",
+            "options": [
+              "$[3, 4]$",
+              "$[-3, 4]$",
+              "$[3, -4]$",
+              "$[-3, -4]$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-5-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Postać kanoniczną można zapisać dla każdej funkcji kwadratowej.",
+            "explanation": "Każda parabola ma wierzchołek w liczbach rzeczywistych, więc każdą funkcję kwadratową można przedstawić w postaci kanonicznej.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Każda funkcja kwadratowa ma wierzchołek.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-5-8",
+            "type": "OPEN_GENERAL",
+            "content": "Przekształć funkcję kwadratową $f(x) = 2x^2 - 8x + 5$ do postaci kanonicznej, wyznaczając współrzędne wierzchołka paraboli.",
+            "explanation": "Krok 1: Wypisujemy współczynniki postaci ogólnej: $a = 2, b = -8, c = 5$.\nKrok 2: Wyznaczamy współrzędną $p$ wierzchołka:\n$p = -\\frac{b}{2a} = -\\frac{-8}{2 \\cdot 2} = \\frac{8}{4} = 2$.\nKrok 3: Wyznaczamy współrzędną $q = f(p)$:\n$q = f(2) = 2(2)^2 - 8(2) + 5 = 2(4) - 16 + 5 = 8 - 16 + 5 = -3$.\nKrok 4: Zapisujemy postać kanoniczną $f(x) = a(x - p)^2 + q$:\n$f(x) = 2(x - 2)^2 - 3$.\nOdpowiedź: Postać kanoniczna to $f(x) = 2(x - 2)^2 - 3$, wierzchołek $W = (2, -3)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz p i q, a następnie wstaw je do wzoru a(x - p)^2 + q.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-6",
+        "title": "Oś symetrii paraboli o równaniu x = p",
+        "description": "Lekcja 6: Oś symetrii paraboli o równaniu x = p. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Parabola jest figurą osiowosymetryczną. Jej osią symetrii jest pionowa prosta przechodząca przez wierzchołek o równaniu $x = p$. Punkty leżące symetrycznie po obu stronach osi symetrii ($p - d$ oraz $p + d$) przyjmują identyczną wartość funkcji: $f(p - d) = f(p + d)$.",
+          "matura_context": "Pewniak maturalny: wyznaczanie osi symetrii ze wzoru lub z dwóch punktów o równej wartości.",
+          "core_formulas": "Równanie osi symetrii: $x = p = -\\frac{b}{2a}$. Środek między punktami o równej wartości: $p = \\frac{x_1 + x_2}{2}$.",
+          "worked_example": "Dla $f(x) = x^2 - 4x + 7$: $p = 2$, więc osią symetrii jest prosta $x = 2$.",
+          "exam_trap": "Zapisywanie osi symetrii jako samej liczby '2' lub 'y = 2'. Oś symetrii to prosta pionowa, jej równanie to ZAWSZE $x = 2$!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-6-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Osią symetrii wykresu funkcji $f(x) = 2x^2 - 12x + 1$ jest prosta o równaniu:",
+            "explanation": "$p = -\\frac{-12}{2 \\cdot 2} = 3$. Oś symetrii to pionowa prosta $x = 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = 3$",
+            "hint": "Oblicz p = -b/(2a) i zapisz równanie x = p.",
+            "options": [
+              "$x = 3$",
+              "$x = -3$",
+              "$y = 3$",
+              "$x = 6$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-6-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji kwadratowej przyjmuje tę samą wartość dla argumentów $x = -1$ oraz $x = 7$. Osią symetrii tej paraboli jest prosta:",
+            "explanation": "Oś symetrii leży w połowie drogi: $p = \\frac{-1 + 7}{2} = \\frac{6}{2} = 3$, stąd $x = 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = 3$",
+            "hint": "Oblicz średnią arytmetyczną podanych argumentów.",
+            "options": [
+              "$x = 3$",
+              "$x = 4$",
+              "$x = 6$",
+              "$y = 3$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-6-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Oś symetrii paraboli zawsze przecina wykres funkcji w jej wierzchołku.",
+            "explanation": "Wierzchołek leży na osi symetrii paraboli (ma pierwszą współrzędną równą p).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy wierzchołek leży na prostej x = p?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-6-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Prosta $x = 4$ jest osią symetrii wykresu funkcji $f(x) = -x^2 + bx - 5$. Oblicz wartość współczynnika $b$.",
+            "explanation": "$p = -\\frac{b}{2(-1)} = \\frac{b}{2} = 4 \\implies b = 8$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "8",
+            "hint": "Przyrównaj wzór na p do 4."
+          },
+          {
+            "id": "t-dzial-6-6-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Jeśli osią symetrii paraboli jest prosta $x = 2$ i jednym z miejsc zerowych jest $x_1 = -1$, to drugim miejscem zerowym jest:",
+            "explanation": "Odległość od -1 do 2 wynosi $2 - (-1) = 3$. Drugie miejsce zerowe leży o 3 w prawo od 2: $2 + 3 = 5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Wykorzystaj symetrię względem liczby 2.",
+            "options": [
+              "5",
+              "3",
+              "4",
+              "6"
+            ]
+          },
+          {
+            "id": "t-dzial-6-6-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Równanie osi symetrii wykresu funkcji $f(x) = (x + 4)^2 - 9$ to:",
+            "explanation": "Wierzchołek to $W = (-4, -9)$, więc oś symetrii ma równanie $x = -4$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = -4$",
+            "hint": "Odczytaj współrzędną p z postaci kanonicznej.",
+            "options": [
+              "$x = -4$",
+              "$x = 4$",
+              "$y = -9$",
+              "$x = 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-6-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Oś symetrii paraboli może mieć równanie postaci $y = ax + b$ dla $a \\neq 0$.",
+            "explanation": "Wykres funkcji $y = ax^2 + bx + c$ ma zawsze oś symetrii pionową ($x = p$).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy oś symetrii funkcji kwadratowej może być ukośna?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-6-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wykres funkcji kwadratowej $f(x) = ax^2 + bx + c$ przechodzi przez punkty $A = (-2, 5)$ oraz $B = (6, 5)$. Wyznacz równanie osi symetrii tej paraboli oraz pierwszą współrzędną wierzchołka $p$.",
+            "explanation": "Punkty A i B mają tę samą rzędną $y = 5$. Oznacza to, że leżą symetrycznie po obu stronach osi symetrii paraboli.\nWspółrzędna $p$ wierzchołka leży dokładnie w środku odcinka łączącego ich odcięte:\n$p = \\frac{x_A + x_B}{2} = \\frac{-2 + 6}{2} = \\frac{4}{2} = 2$.\nRównanie osi symetrii paraboli to prosta pionowa przechodząca przez wierzchołek: $x = 2$.\nOdpowiedź: $p = 2$, równanie osi symetrii to $x = 2$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz średnią arytmetyczną współrzędnych x obu punktów o tej samej wartości y.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-7",
+        "title": "Postać iloczynowa funkcji kwadratowej: f(x) = a(x - x_1)(x - x_2)",
+        "description": "Lekcja 7: Postać iloczynowa funkcji kwadratowej: f(x) = a(x - x_1)(x - x_2). Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Gdy $\\Delta > 0$, funkcja kwadratowa ma postać iloczynową $f(x) = a(x - x_1)(x - x_2)$, gdzie $x_1, x_2$ to miejsca zerowe. Gdy $\\Delta = 0$, postać ta przyjmuje postać $f(x) = a(x - x_0)^2$. Gdy $\\Delta < 0$, postać iloczynowa w liczbach rzeczywistych NIE ISTNIEJE.",
+          "matura_context": "Zadania z postacią iloczynową to najszybsza droga do wyznaczenia wzoru funkcji przy danych miejscach zerowych.",
+          "core_formulas": "$f(x) = a(x - x_1)(x - x_2)$ (dla $\\Delta > 0$). $f(x) = a(x - x_0)^2$ (dla $\\Delta = 0$).",
+          "worked_example": "Miejsca zerowe to 1 i 5, wykres przechodzi przez $(0, 10)$: $f(x) = a(x - 1)(x - 5)$. $10 = a(-1)(-5) \\implies 5a = 10 \\implies a = 2$. Wzór: $f(x) = 2(x - 1)(x - 5)$.",
+          "exam_trap": "Zapominanie o współczynniku $a$ z przodu! Samo $(x - x_1)(x - x_2)$ zakłada $a = 1$, co często jest błędem."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-7-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscami zerowymi funkcji $f(x) = -2(x + 3)(x - 4)$ są liczby:",
+            "explanation": "Przyrównujemy nawiasy do zera: $x + 3 = 0 \\implies x = -3$, $x - 4 = 0 \\implies x = 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3 oraz 4",
+            "hint": "Odczytaj liczby zerujące poszczególne nawiasy.",
+            "options": [
+              "-3 oraz 4",
+              "3 oraz -4",
+              "-2, -3 oraz 4",
+              "3 oraz 4"
+            ]
+          },
+          {
+            "id": "t-dzial-6-7-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja kwadratowa, której jedynymi miejscami zerowymi są -2 oraz 5, może mieć wzór:",
+            "explanation": "Dla pierwiastków -2 i 5 czynniki to $(x - (-2)) = (x + 2)$ oraz $(x - 5)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = 3(x + 2)(x - 5)$",
+            "hint": "Zmień znaki pierwiastków przy wstawianiu do nawiasów.",
+            "options": [
+              "$f(x) = 3(x + 2)(x - 5)$",
+              "$f(x) = 3(x - 2)(x + 5)$",
+              "$f(x) = (x + 2)^2 - 5$",
+              "$f(x) = (x - 2)(x - 5)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-7-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja $f(x) = x^2 + 4$ posiada postać iloczynową w zbiorze liczb rzeczywistych.",
+            "explanation": "$\\Delta = -16 < 0$, funkcja nie ma pierwiastków rzeczywistych, więc nie posiada postaci iloczynowej.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy funkcja bez miejsc zerowych ma postać iloczynową?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-7-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Wykres funkcji $f(x) = a(x - 1)(x - 3)$ przecina oś OY w punkcie $(0, 6)$. Oblicz wartość współczynnika $a$.",
+            "explanation": "$f(0) = a(0 - 1)(0 - 3) = a(-1)(-3) = 3a = 6 \\implies a = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Wstaw x = 0 i f(x) = 6 do wzoru iloczynowego."
+          },
+          {
+            "id": "t-dzial-6-7-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Postać iloczynowa funkcji $f(x) = x^2 - 9$ to:",
+            "explanation": "Rozkład ze wzoru skróconego mnożenia na różnicę kwadratów: $a^2 - b^2 = (a - b)(a + b)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = (x - 3)(x + 3)$",
+            "hint": "Zastosuj wzór na różnicę kwadratów.",
+            "options": [
+              "$f(x) = (x - 3)(x + 3)$",
+              "$f(x) = (x - 9)(x + 1)$",
+              "$f(x) = (x - 3)^2$",
+              "nie istnieje"
+            ]
+          },
+          {
+            "id": "t-dzial-6-7-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż postać iloczynową funkcji $f(x) = 2x^2 - 8x + 8$:",
+            "explanation": "Wyłączamy 2: $2(x^2 - 4x + 4) = 2(x - 2)^2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = 2(x - 2)^2$",
+            "hint": "Wyłącz 2 przed nawias i zwiń wzór skróconego mnożenia.",
+            "options": [
+              "$f(x) = 2(x - 2)^2$",
+              "$f(x) = (2x - 4)^2$",
+              "$f(x) = 2(x - 4)(x + 4)$",
+              "$f(x) = 2(x + 2)^2$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-7-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Współczynnik $a$ w postaci ogólnej, kanonicznej i iloczynowej tej samej funkcji kwadratowej ma zawsze tę samą wartość.",
+            "explanation": "Współczynnik przy najwyższej potędze $x^2$ jest niezmiennikiem i wynosi $a$ w każdej z postaci.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy współczynnik przy x^2 zmienia się przy przekształceniach?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-7-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wzór funkcji kwadratowej w postaci ogólnej, wiedząc, że jej miejscami zerowymi są liczby $x_1 = -1$ oraz $x_2 = 4$, a do wykresu należy punkt $P = (2, -12)$.",
+            "explanation": "Krok 1: Zapisujemy postać iloczynową funkcji:\n$f(x) = a(x - x_1)(x - x_2) = a(x + 1)(x - 4)$.\nKrok 2: Podstawiamy współrzędne punktu $P(2, -12)$:\n$-12 = a(2 + 1)(2 - 4)$\n$-12 = a(3)(-2) \\implies -12 = -6a \\implies a = 2$.\nWzór w postaci iloczynowej: $f(x) = 2(x + 1)(x - 4)$.\nKrok 3: Przekształcamy do postaci ogólnej:\n$f(x) = 2(x^2 - 4x + x - 4) = 2(x^2 - 3x - 4) = 2x^2 - 6x - 8$.\nOdpowiedź: Wzór funkcji w postaci ogólnej to $f(x) = 2x^2 - 6x - 8$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz postać iloczynową, wyznacz parametr a z punktu P i wymnóż nawiasy.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-8",
+        "title": "Przechodzenie między postaciami funkcji kwadratowej",
+        "description": "Lekcja 8: Przechodzenie między postaciami funkcji kwadratowej. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Trzy postacie funkcji kwadratowej:\n1. Ogólna: $ax^2 + bx + c$ (widać przecięcie z OY: $(0, c)$),\n2. Kanoniczna: $a(x - p)^2 + q$ (widać wierzchołek: $(p, q)$),\n3. Iloczynowa: $a(x - x_1)(x - x_2)$ (widać miejsca zerowe: $x_1, x_2$).\nPrzejście do postaci ogólnej polega na wymnożeniu nawiasów i redukcji.",
+          "matura_context": "Podstawowa umiejętność algebraiczna na maturze umożliwiająca swobodne rozwiązywanie zadań.",
+          "core_formulas": "Z ogólnej do kanonicznej: $p = -\\frac{b}{2a}, q = f(p)$. Z ogólnej do iloczynowej: $\\Delta$, $x_1, x_2$. Z kanonicznej/iloczynowej do ogólnej: wymnożenie.",
+          "worked_example": "$f(x) = 2(x - 1)^2 - 8 = 2(x^2 - 2x + 1) - 8 = 2x^2 - 4x + 2 - 8 = 2x^2 - 4x - 6$.",
+          "exam_trap": "Błędy w kolejności działań przy wymnażaniu postaci kanonicznej: najpierw potęgujemy nawias ze wzoru skróconego mnożenia, a dopiero potem mnożymy przez $a$!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-8-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Postać ogólna funkcji $f(x) = (x - 3)^2 + 2$ to:",
+            "explanation": "$(x - 3)^2 + 2 = x^2 - 6x + 9 + 2 = x^2 - 6x + 11$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = x^2 - 6x + 11$",
+            "hint": "Rozwiń kwadrat (x - 3)^2 i dodaj 2.",
+            "options": [
+              "$f(x) = x^2 - 6x + 11$",
+              "$f(x) = x^2 - 6x + 7$",
+              "$f(x) = x^2 - 9x + 2$",
+              "$f(x) = x^2 + 6x + 11$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-8-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż postać ogólną funkcji $f(x) = -2(x + 1)(x - 3)$:",
+            "explanation": "$(x + 1)(x - 3) = x^2 - 2x - 3$. Mnożąc przez -2: $-2x^2 + 4x + 6$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = -2x^2 + 4x + 6$",
+            "hint": "Wymnóż nawiasy, a potem pomnóż każdy wyraz przez -2.",
+            "options": [
+              "$f(x) = -2x^2 + 4x + 6$",
+              "$f(x) = -2x^2 - 4x + 6$",
+              "$f(x) = -2x^2 + 4x - 6$",
+              "$f(x) = 2x^2 - 4x - 6$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-8-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wyrażenia $f(x) = x^2 - 4x + 3$ oraz $g(x) = (x - 2)^2 - 1$ opisują tę samą funkcję.",
+            "explanation": "$(x - 2)^2 - 1 = x^2 - 4x + 4 - 1 = x^2 - 4x + 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Rozwiń postać kanoniczną funkcji g.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-8-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Funkcja $f(x) = 3(x - 2)^2 - 5$ ma w postaci ogólnej wyraz wolny $c$. Oblicz wartość $c$.",
+            "explanation": "$f(0) = c = 3(0 - 2)^2 - 5 = 3(4) - 5 = 12 - 5 = 7$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "7",
+            "hint": "Podstaw x = 0 do wzoru kanonicznego."
+          },
+          {
+            "id": "t-dzial-6-8-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Postać kanoniczna funkcji $f(x) = x^2 + 2x - 3$ to:",
+            "explanation": "$p = -\\frac{2}{2} = -1$, $q = f(-1) = 1 - 2 - 3 = -4$. Zatem $(x + 1)^2 - 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = (x + 1)^2 - 4$",
+            "hint": "Oblicz współrzędne wierzchołka p i q.",
+            "options": [
+              "$f(x) = (x + 1)^2 - 4$",
+              "$f(x) = (x - 1)^2 - 4$",
+              "$f(x) = (x + 1)^2 + 4$",
+              "$f(x) = (x + 2)^2 - 3$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-8-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja $f(x) = 2x^2 - 12x + 16$ w postaci iloczynowej to:",
+            "explanation": "$2(x^2 - 6x + 8) = 2(x - 2)(x - 4)$. Miejsca zerowe to 2 i 4.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = 2(x - 2)(x - 4)$",
+            "hint": "Wyłącz 2 przed nawias i znajdź pierwiastki.",
+            "options": [
+              "$f(x) = 2(x - 2)(x - 4)$",
+              "$f(x) = (x - 2)(x - 4)$",
+              "$f(x) = 2(x + 2)(x + 4)$",
+              "$f(x) = 2(x - 3)^2 - 2$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-8-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Postać ogólna funkcji pozwala natychmiast odczytać współrzędne wierzchołka paraboli bez żadnych obliczeń.",
+            "explanation": "Współrzędne wierzchołka natychmiast widać w postaci kanonicznej, a w postaci ogólnej trzeba je obliczyć ze wzorów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "W której postaci widać wierzchołek bezpośrednio?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-8-8",
+            "type": "OPEN_GENERAL",
+            "content": "Dana jest funkcja kwadratowa w postaci kanonicznej $f(x) = -\\frac{1}{2}(x - 4)^2 + 8$.\na) Przekształć ten wzór do postaci ogólnej.\nb) Wyznacz miejsca zerowe i zapisz wzór w postaci iloczynowej.",
+            "explanation": "a) Przekształcenie do postaci ogólnej:\n$f(x) = -\\frac{1}{2}(x^2 - 8x + 16) + 8 = -\\frac{1}{2}x^2 + 4x - 8 + 8 = -\\frac{1}{2}x^2 + 4x$.\n\nb) Wyznaczanie miejsc zerowych i postaci iloczynowej:\nPrzyrównujemy postać ogólną do zera:\n$-\\frac{1}{2}x^2 + 4x = 0 \\implies -\\frac{1}{2}x(x - 8) = 0$.\nMiejsca zerowe: $x_1 = 0$ oraz $x_2 = 8$.\nWzór w postaci iloczynowej: $f(x) = -\\frac{1}{2}x(x - 8)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Rozwiń kwadrat różnicy, zredukuj wyrazy i wyłącz x przed nawias.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-9",
+        "title": "Wyznaczanie wzoru funkcji kwadratowej na podstawie danych",
+        "description": "Lekcja 9: Wyznaczanie wzoru funkcji kwadratowej na podstawie danych. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Strategia wyboru postaci przy szukaniu wzoru funkcji:\n1. Gdy dany jest wierzchołek $W = (p, q)$ i punkt $\\implies$ startujemy z postaci kanonicznej: $y = a(x - p)^2 + q$.\n2. Gdy dane są miejsca zerowe $x_1, x_2$ i punkt $\\implies$ startujemy z postaci iloczynowej: $y = a(x - x_1)(x - x_2)$.\n3. Gdy dane są trzy dowolne punkty $\\implies$ układamy układ trzech równań z postaci ogólnej.",
+          "matura_context": "Zadanie otwarte za 2-3 punkty na maturze podstawowej.",
+          "core_formulas": "Kanoniczna: $y = a(x - p)^2 + q$. Iloczynowa: $y = a(x - x_1)(x - x_2)$.",
+          "worked_example": "Wierzchołek $(1, -4)$ i punkt $(3, 0)$: $y = a(x - 1)^2 - 4$. $0 = a(3 - 1)^2 - 4 \\implies 4a = 4 \\implies a = 1$.",
+          "exam_trap": "Używanie postaci ogólnej $ax^2 + bx + c$ do wierzchołka i rozwiązywanie skomplikowanego układu 3 równań zamiast prostej postaci kanonicznej!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-9-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wierzchołkiem paraboli jest punkt $W = (3, 2)$, a do wykresu należy punkt $(0, 11)$. Współczynnik $a$ tej paraboli wynosi:",
+            "explanation": "$y = a(x - 3)^2 + 2$. Dla punktu $(0, 11)$: $11 = a(0 - 3)^2 + 2 \\implies 11 = 9a + 2 \\implies 9a = 9 \\implies a = 1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1",
+            "hint": "Użyj postaci kanonicznej i podstaw punkt (0, 11).",
+            "options": [
+              "1",
+              "2",
+              "-1",
+              "3"
+            ]
+          },
+          {
+            "id": "t-dzial-6-9-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Parabola ma wierzchołek w punkcie $W = (0, -4)$ i przechodzi przez punkt $(2, 0)$. Jej wzór ma postać:",
+            "explanation": "$y = a(x - 0)^2 - 4 = ax^2 - 4$. $0 = a(4) - 4 \\implies 4a = 4 \\implies a = 1$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = x^2 - 4$",
+            "hint": "Podstaw wierzchołek do postaci kanonicznej.",
+            "options": [
+              "$y = x^2 - 4$",
+              "$y = 2x^2 - 4$",
+              "$y = x^2 + 4$",
+              "$y = -x^2 - 4$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-9-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Trzy punkty niewspółliniowe jednoznacznie wyznaczają parabolę o osi pionowej.",
+            "explanation": "Układ trzech równań liniowych z trzema niewiadomymi a, b, c ma dokładnie jedno rozwiązanie, gdy punkty mają różne odcięte.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Do wyznaczenia trzech współczynników a, b, c potrzebne są 3 warunki.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-9-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Miejscami zerowymi paraboli są -2 i 6, a jej największa wartość wynosi 16. Ile wynosi współczynnik $a$ tej paraboli?",
+            "explanation": "Wierzchołek leży w połowie: $p = \\frac{-2 + 6}{2} = 2$. Skoro największa wartość to 16, to $W = (2, 16)$. Z postaci iloczynowej: $16 = a(2 - (-2))(2 - 6) = a(4)(-4) = -16a \\implies a = -1$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-1",
+            "hint": "Wyznacz współrzędną p jako środek między miejscami zerowymi."
+          },
+          {
+            "id": "t-dzial-6-9-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = ax^2 + bx + c$ przechodzi przez punkty $(0, 3)$, $(1, 2)$ oraz $(-1, 6)$. Wyraz wolny $c$ wynosi:",
+            "explanation": "Punkt $(0, 3)$ leży na osi OY, co oznacza, że $c = f(0) = 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Punkt o x = 0 wyznacza bezpośrednio wyraz wolny c.",
+            "options": [
+              "3",
+              "2",
+              "6",
+              "0"
+            ]
+          },
+          {
+            "id": "t-dzial-6-9-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja kwadratowa o miejscach zerowych 1 i 3 ma wierzchołek o rzędnej $q = -2$. Współczynnik $a$ wynosi:",
+            "explanation": "$p = \\frac{1 + 3}{2} = 2$. Z postaci iloczynowej: $f(2) = a(2 - 1)(2 - 3) = a(1)(-1) = -a = -2 \\implies a = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Wierzchołek leży dla x = 2.",
+            "options": [
+              "2",
+              "-2",
+              "1",
+              "$\\frac{1}{2}$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-9-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Znajomość tylko dwóch miejsc zerowych wystarcza do jednoznacznego wyznaczenia wzoru funkcji kwadratowej.",
+            "explanation": "Dwa miejsca zerowe wyznaczają nieskończenie wiele parabol różniących się współczynnikiem a (zwężeniem i kierunkiem ramion).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Potrzebny jest jeszcze trzeci warunek, np. współczynnik a lub dodatkowy punkt.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-9-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wzór funkcji kwadratowej w postaci ogólnej, wiedząc, że jej wykres ma wierzchołek w punkcie $W = (1, -4)$ i przechodzi przez punkt $A = (-1, 8)$.",
+            "explanation": "Krok 1: Korzystamy z postaci kanonicznej ze względu na dany wierzchołek $W(p, q) = W(1, -4)$:\n$f(x) = a(x - 1)^2 - 4$.\nKrok 2: Podstawiamy współrzędne punktu $A(-1, 8)$ do wzoru, aby obliczyć współczynnik $a$:\n$8 = a(-1 - 1)^2 - 4$\n$8 = a(-2)^2 - 4$\n$8 = 4a - 4 \\implies 4a = 12 \\implies a = 3$.\nKrok 3: Zapisujemy wzór i przekształcamy go do postaci ogólnej:\n$f(x) = 3(x - 1)^2 - 4$\n$f(x) = 3(x^2 - 2x + 1) - 4 = 3x^2 - 6x + 3 - 4 = 3x^2 - 6x - 1$.\nOdpowiedź: Wzór funkcji to $f(x) = 3x^2 - 6x - 1$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Użyj postaci kanonicznej, oblicz a z punktu A i rozwiń nawiasy.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-10",
+        "title": "Zbiór wartości i przedziały monotoniczności paraboli",
+        "description": "Lekcja 10: Zbiór wartości i przedziały monotoniczności paraboli. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Zbiór wartości i monotoniczność zależą od współczynnika $a$ oraz wierzchołka $W = (p, q)$:\n1. Gdy $a > 0$: zbiór wartości to $ZW = \\langle q, +\\infty)$, funkcja maleje w $(-\\infty, p\\rangle$ i rośnie w $\\langle p, +\\infty)$.\n2. Gdy $a < 0$: zbiór wartości to $ZW = (-\\infty, q\\rangle$, funkcja rośnie w $(-\\infty, p\\rangle$ i maleje w $\\langle p, +\\infty)$.",
+          "matura_context": "Klasyczne pytania testowe sprawdzające zbiór wartości lub przedział, w którym funkcja rośnie/maleje.",
+          "core_formulas": "$a > 0 \\implies ZW = \\langle q, +\\infty)$. $a < 0 \\implies ZW = (-\\infty, q\\rangle$. Zmiana monotoniczności zachodzi w punkcie $x = p$.",
+          "worked_example": "Dla $f(x) = -(x - 2)^2 + 5$: $a = -1 < 0, W=(2, 5)$. $ZW = (-\\infty, 5\\rangle$, rośnie w $(-\\infty, 2\\rangle$, maleje w $\\langle 2, +\\infty)$.",
+          "exam_trap": "Mylenie współrzędnych wierzchołka: zbiór wartości to przedział wyznaczony przez $q$ (oś OY), a przedziały monotoniczności podajemy za pomocą $p$ (oś OX)!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-10-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Zbiorem wartości funkcji kwadratowej $f(x) = 2(x - 3)^2 + 4$ jest:",
+            "explanation": "$a = 2 > 0$ (ramiona w górę), $q = 4$. Zbiór wartości to $\\langle 4, +\\infty)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle 4, +\\infty)$",
+            "hint": "Odczytaj q i pamiętaj, że dla a > 0 idziemy do plus nieskończoności.",
+            "options": [
+              "$\\langle 4, +\\infty)$",
+              "$\\langle 3, +\\infty)$",
+              "$(-\\infty, 4\\rangle$",
+              "$\\langle -3, +\\infty)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-10-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Zbiorem wartości funkcji $f(x) = -x^2 + 6x - 2$ jest:",
+            "explanation": "$p = -\\frac{6}{-2} = 3$, $q = -(3)^2 + 6(3) - 2 = -9 + 18 - 2 = 7$. $a < 0 \\implies ZW = (-\\infty, 7\\rangle$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-\\infty, 7\\rangle$",
+            "hint": "Oblicz rzędną wierzchołka q.",
+            "options": [
+              "$(-\\infty, 7\\rangle$",
+              "$\\langle 7, +\\infty)$",
+              "$(-\\infty, 3\\rangle$",
+              "$\\langle 3, +\\infty)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-10-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja $f(x) = (x - 5)^2 + 1$ jest rosnąca w przedziale:",
+            "explanation": "Ramiona w górę ($a = 1 > 0$), wierzchołek w $p = 5$. Funkcja rośnie na prawo od wierzchołka: $\\langle 5, +\\infty)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle 5, +\\infty)$",
+            "hint": "Przedział monotoniczności odczytujemy z osi OX na prawo od p.",
+            "options": [
+              "$\\langle 5, +\\infty)$",
+              "$(-\\infty, 5\\rangle$",
+              "$\\langle 1, +\\infty)$",
+              "$(-\\infty, 1\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-10-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli zbiorem wartości funkcji kwadratowej jest $(-\\infty, -3\\rangle$, to funkcja ta nie posiada miejsc zerowych.",
+            "explanation": "Największa wartość wynosi -3, więc cały wykres leży poniżej osi OX i nigdy jej nie przecina.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy funkcja osiąga kiedykolwiek wartość zero?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-10-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Funkcja $f(x) = -2x^2 + 8x - 3$ jest malejąca w przedziale $\\langle k, +\\infty)$. Podaj wartość $k$.",
+            "explanation": "$p = -\\frac{8}{2(-2)} = 2$. Funkcja z ramionami w dół maleje od wierzchołka w prawo: $\\langle 2, +\\infty)$, więc $k = 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Oblicz współrzędną p wierzchołka."
+          },
+          {
+            "id": "t-dzial-6-10-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż funkcję, której zbiorem wartości jest przedział $\\langle -2, +\\infty)$:",
+            "explanation": "Szukamy funkcji o $a > 0$ oraz $q = -2$. Spełnia to pierwsza funkcja.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = 3(x + 1)^2 - 2$",
+            "hint": "Szukaj a > 0 i q = -2 w postaci kanonicznej.",
+            "options": [
+              "$f(x) = 3(x + 1)^2 - 2$",
+              "$f(x) = -3(x + 1)^2 - 2$",
+              "$f(x) = 3(x - 2)^2 + 1$",
+              "$f(x) = (x + 2)^2$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-10-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja kwadratowa może być monotoniczna w całym zbiorze liczb rzeczywistych $\\mathbb{R}$.",
+            "explanation": "Każda parabola zmienia kierunek monotoniczności w wierzchołku; nie może być monotoniczna w całym $\\mathbb{R}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Parabola zawsze najpierw rośnie a potem maleje (lub odwrotnie).",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-10-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz zbiór wartości oraz przedziały monotoniczności funkcji kwadratowej $f(x) = -x^2 + 4x + 5$.",
+            "explanation": "Krok 1: Wyznaczamy współrzędne wierzchołka paraboli:\n$a = -1 < 0, b = 4, c = 5$.\n$p = -\\frac{b}{2a} = -\\frac{4}{2(-1)} = 2$.\n$q = f(2) = -(2)^2 + 4(2) + 5 = -4 + 8 + 5 = 9$.\nWierzchołek ma współrzędne $W = (2, 9)$.\nKrok 2: Ponieważ $a = -1 < 0$, ramiona paraboli skierowane są w dół:\nZbiór wartości funkcji to $ZW = (-\\infty, 9\\rangle$.\nKrok 3: Przedziały monotoniczności:\nFunkcja jest rosnąca w przedziale $(-\\infty, 2\\rangle$.\nFunkcja jest malejąca w przedziale $\\langle 2, +\\infty)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz p i q, uwzględnij ramiona w dół i zapisz zbiór wartości oraz przedziały monotoniczności.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-11",
+        "title": "Wartość najmniejsza i największa w przedziale domkniętym",
+        "description": "Lekcja 11: Wartość najmniejsza i największa w przedziale domkniętym. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Algorytm wyznaczania wartości najmniejszej i największej funkcji kwadratowej w przedziale domkniętym $\\langle m, n\\rangle$:\n1. Obliczamy współrzędną $p = -\\frac{b}{2a}$ wierzchołka paraboli,\n2. Sprawdzamy, czy $p \\in \\langle m, n\\rangle$:\n   - Jeśli TAK: obliczamy $f(p), f(m), f(n)$,\n   - Jeśli NIE: obliczamy tylko wartości na krańcach przedziału: $f(m)$ oraz $f(n)$,\n3. Spośród obliczonych wartości wybieramy wartość najmniejszą i największą.",
+          "matura_context": "Pewniak maturalny w zadaniach otwartych za 2 lub 3 punkty.",
+          "core_formulas": "Badamy wartości w punktach $x \\in \\{m, n\\}$ oraz $x = p$ (o ile $p \\in \\langle m, n\\rangle$).",
+          "worked_example": "$f(x) = x^2 - 2x$ w $\\langle 0, 3\\rangle$: $p = 1 \\in \\langle 0, 3\\rangle$. $f(1) = -1, f(0) = 0, f(3) = 3$. $y_{\\min} = -1, y_{\\max} = 3$.",
+          "exam_trap": "Uwzględnianie wierzchołka $p$, gdy $p$ NIE NALEŻY do zadanego przedziału! Jeśli $p \\notin \\langle m, n\\rangle$, wartości skrajne leżą wyłącznie na końcach przedziału."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-11-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wartość najmniejsza funkcji $f(x) = x^2 - 4x + 1$ w przedziale $\\langle 0, 3\\rangle$ wynosi:",
+            "explanation": "$p = 2 \\in \\langle 0, 3\\rangle$. Obliczamy: $f(2) = 4 - 8 + 1 = -3$, $f(0) = 1$, $f(3) = 9 - 12 + 1 = -2$. Najmniejsza to -3.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Wierzchołek p = 2 leży w przedziale, sprawdź f(2).",
+            "options": [
+              "-3",
+              "1",
+              "-2",
+              "0"
+            ]
+          },
+          {
+            "id": "t-dzial-6-11-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wartość największa funkcji $f(x) = -x^2 + 2x + 3$ w przedziale $\\langle 0, 4\\rangle$ wynosi:",
+            "explanation": "$p = 1 \\in \\langle 0, 4\\rangle$. Wierzchołek daje maksimum: $f(1) = -1 + 2 + 3 = 4$. Na końcach: $f(0)=3, f(4)=-5$. Największa to 4.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Oblicz wartość w wierzchołku p = 1.",
+            "options": [
+              "4",
+              "3",
+              "-5",
+              "5"
+            ]
+          },
+          {
+            "id": "t-dzial-6-11-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji $f(x) = x^2 - 6x + 5$ w przedziale $\\langle -2, 1\\rangle$ wierzchołek wynosi $p = 3$. Wartość najmniejsza w tym przedziale jest osiągana dla argumentu:",
+            "explanation": "$p = 3 \\notin \\langle -2, 1\\rangle$. Funkcja w przedziale $\\langle -2, 1\\rangle$ maleje (leży na lewo od wierzchołka), więc najmniejszą wartość przyjmuje na prawym końcu: dla $x = 1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1",
+            "hint": "Zauważ, że wierzchołek nie należy do przedziału.",
+            "options": [
+              "1",
+              "-2",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "id": "t-dzial-6-11-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli wierzchołek paraboli nie należy do przedziału domkniętego, to wartość najmniejsza i największa są osiągane na końcach tego przedziału.",
+            "explanation": "Gdy przedział nie zawiera wierzchołka, funkcja jest w nim ściśle monotoniczna, więc ekstrema leżą na krańcach.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Funkcja bez wierzchołka w przedziale stale rośnie lub stale maleje.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-11-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Oblicz wartość największą funkcji $f(x) = -2x^2 + 8x$ w przedziale $\\langle 1, 3\\rangle$.",
+            "explanation": "$p = -\\frac{8}{-4} = 2 \\in \\langle 1, 3\\rangle$. $f(2) = -2(4) + 16 = 8$. Na krańcach: $f(1) = 6, f(3) = 6$. Największa wartość to 8.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "8",
+            "hint": "Oblicz wartość funkcji dla x = p = 2."
+          },
+          {
+            "id": "t-dzial-6-11-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Suma wartości najmniejszej i największej funkcji $f(x) = x^2$ w przedziale $\\langle -2, 3\\rangle$ jest równa:",
+            "explanation": "$p = 0 \\in \\langle -2, 3\\rangle$. $f(0) = 0$ (najmniejsza). Na krańcach: $f(-2) = 4, f(3) = 9$ (największa). Suma: $0 + 9 = 9$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Najmniejsza wartość to 0, największa to 9.",
+            "options": [
+              "9",
+              "13",
+              "5",
+              "4"
+            ]
+          },
+          {
+            "id": "t-dzial-6-11-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: W przedziale domkniętym funkcja kwadratowa zawsze osiąga wartość największą i najmniejszą.",
+            "explanation": "Funkcja ciągła na przedziale domkniętym z twierdzenia Weierstrassa zawsze osiąga swoje kresy.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Każda funkcja ciągła na przedziale domkniętym ma minimum i maksimum.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-11-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wartość najmniejszą oraz wartość największą funkcji kwadratowej $f(x) = x^2 - 6x + 7$ w przedziale domkniętym $\\langle 1, 4\\rangle$.",
+            "explanation": "Krok 1: Wyznaczamy odciętą wierzchołka paraboli:\n$a = 1, b = -6 \\implies p = -\\frac{-6}{2 \\cdot 1} = 3$.\nKrok 2: Sprawdzamy, czy wierzchołek należy do badanego przedziału:\n$3 \\in \\langle 1, 4\\rangle$ – TAK, należy.\nKrok 3: Obliczamy wartości funkcji w wierzchołku oraz na obu krańcach przedziału:\n$f(3) = 3^2 - 6(3) + 7 = 9 - 18 + 7 = -2$,\n$f(1) = 1^2 - 6(1) + 7 = 1 - 6 + 7 = 2$,\n$f(4) = 4^2 - 6(4) + 7 = 16 - 24 + 7 = -1$.\nKrok 4: Porównujemy otrzymane wartości: $\\{-2, -1, 2\\}$.\nOdpowiedź: Wartość najmniejsza wynosi -2 (dla $x = 3$), a wartość największa wynosi 2 (dla $x = 1$).",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz p, sprawdź czy leży w przedziale, zbadaj wartości w wierzchołku i na końcach przedziału.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-12",
+        "title": "Nierówności kwadratowe z delta > 0",
+        "description": "Lekcja 12: Nierówności kwadratowe z delta > 0. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Algorytm rozwiązywania nierówności kwadratowej $ax^2 + bx + c > 0$ (lub $<, \\ge, \\le$):\n1. Obliczamy $\\Delta$ i wyznaczamy miejsca zerowe $x_1, x_2$,\n2. Zaznaczamy pierwiastki na osi liczbowej i szkicujemy parabolę (ramiona w górę dla $a > 0$, w dół dla $a < 0$),\n3. Odczytujemy przedział: dla $> 0$ szukamy części nad osią, dla $< 0$ części pod osią. Dla $\\ge, \\le$ domykamy końce.",
+          "matura_context": "Klasyczne zadanie otwarte za 2 punkty na KAŻDEJ maturze podstawowej!",
+          "core_formulas": "Dla $a > 0$: $f(x) > 0 \\iff x \\in (-\\infty, x_1) \\cup (x_2, +\\infty)$; $f(x) < 0 \\iff x \\in (x_1, x_2)$.",
+          "worked_example": "$x^2 - 5x + 6 \\le 0$: pierwiastki to 2 i 3, ramiona w górę, wartości $\\le 0$ leżą pod osią: $x \\in \\langle 2, 3\\rangle$.",
+          "exam_trap": "Zapisywanie rozwiązania w postaci 'x > 2 i x < 3' bez zapisu przedziałowego lub błędne otwieranie nawiasów przy nierówności nieostrej $\\le$!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-12-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Rozwiązaniem nierówności $x^2 - 9 < 0$ jest przedział:",
+            "explanation": "Miejsca zerowe to -3 i 3, ramiona w górę, pod osią leży przedział $(-3, 3)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-3, 3)$",
+            "hint": "Zaznacz pierwiastki -3 i 3 i narysuj parabolę z ramionami w górę.",
+            "options": [
+              "$(-3, 3)$",
+              "$(-\\infty, -3) \\cup (3, +\\infty)$",
+              "$\\langle -3, 3\\rangle$",
+              "$(-9, 9)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-12-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Zbiorem rozwiązań nierówności $(x - 1)(x + 4) \\ge 0$ jest:",
+            "explanation": "Pierwiastki to -4 i 1, $a = 1 > 0$ (ramiona w górę). Wartości nieujemne leżą na zewnątrz pierwiastków z domknięciem.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-\\infty, -4\\rangle \\cup \\langle 1, +\\infty)$",
+            "hint": "Dla a > 0 i znaku >= rozwiązaniem jest suma przedziałów zewnętrznych.",
+            "options": [
+              "$(-\\infty, -4\\rangle \\cup \\langle 1, +\\infty)$",
+              "$\\langle -4, 1\\rangle$",
+              "$(-\\infty, -1\\rangle \\cup \\langle 4, +\\infty)$",
+              "$\\langle -1, 4\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-12-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Rozwiązaniem nierówności $-x^2 + 5x - 6 > 0$ jest:",
+            "explanation": "Pierwiastki to 2 i 3, $a = -1 < 0$ (ramiona w dół). Wartości dodatnie leżą nad osią, czyli między pierwiastkami: $(2, 3)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(2, 3)$",
+            "hint": "Uwzględnij ramiona skierowane w dół.",
+            "options": [
+              "$(2, 3)$",
+              "$(-\\infty, 2) \\cup (3, +\\infty)$",
+              "$\\langle 2, 3\\rangle$",
+              "$(-3, -2)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-12-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba 0 jest rozwiązaniem nierówności $x^2 - 2x - 3 \\le 0$.",
+            "explanation": "Podstawiamy $x = 0$: $0 - 0 - 3 = -3 \\le 0$, co jest prawdą.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź, czy 0 spełnia nierówność.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-12-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile liczb całkowitych należy do zbioru rozwiązań nierówności $x^2 - 4x \\le 0$?",
+            "explanation": "Pierwiastki to 0 i 4, $a > 0$, więc rozwiązaniem jest $\\langle 0, 4\\rangle$. Liczby całkowite: 0, 1, 2, 3, 4. Jest ich 5.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Rozwiązaniem jest przedział domknięty od 0 do 4."
+          },
+          {
+            "id": "t-dzial-6-12-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Najmniejszą liczbą całkowitą spełniającą nierówność $x^2 - 3x - 10 \\le 0$ jest:",
+            "explanation": "$\\Delta = 9 + 40 = 49$, pierwiastki to -2 i 5. Rozwiązanie to $\\langle -2, 5\\rangle$, najmniejsza całkowita to -2.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-2",
+            "hint": "Rozwiąż nierówność i wskaż lewy koniec przedziału.",
+            "options": [
+              "-2",
+              "5",
+              "0",
+              "-5"
+            ]
+          },
+          {
+            "id": "t-dzial-6-12-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Nierówność $x^2 > 4$ jest równoważna nierówności $x > 2$.",
+            "explanation": "$x^2 > 4 \\iff x \\in (-\\infty, -2) \\cup (2, +\\infty)$. Liczby ujemne mniejsze od -2 (np. -3) również spełniają nierówność.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Pamiętaj o liczbach ujemnych, których kwadrat jest większy od 4.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-12-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rozwiąż nierówność kwadratową $3x^2 - 10x + 3 \\le 0$. Zapisz obliczenia i zbiór rozwiązań.",
+            "explanation": "Krok 1: Wyznaczamy miejsca zerowe funkcji $f(x) = 3x^2 - 10x + 3$:\n$a = 3, b = -10, c = 3$.\n$\\Delta = (-10)^2 - 4 \\cdot 3 \\cdot 3 = 100 - 36 = 64$.\n$\\sqrt{\\Delta} = 8$.\n$x_1 = \\frac{10 - 8}{2 \\cdot 3} = \\frac{2}{6} = \\frac{1}{3}$,\n$x_2 = \\frac{10 + 8}{2 \\cdot 3} = \\frac{18}{6} = 3$.\nKrok 2: Szkicujemy parabolę:\nWspółczynnik $a = 3 > 0$, więc ramiona paraboli skierowane są do góry.\nKrok 3: Odczytujemy zbiór rozwiązań dla nierówności $\\le 0$ (część leżąca na osi i pod osią OX):\nOdpowiedź: Zbiorem rozwiązań jest przedział domknięty $x \\in \\left\\langle \\frac{1}{3}, 3 \\right\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz deltę, wyznacz pierwiastki i zapisz przedział domknięty pomiędzy nimi.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-13",
+        "title": "Nierówności kwadratowe z delta <= 0",
+        "description": "Lekcja 13: Nierówności kwadratowe z delta <= 0. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Gdy $\\Delta \\le 0$, parabola nie przecina osi OX w dwóch punktach:\n1. $\\Delta = 0$: parabola styka się z osią w $x_0$. Dla $a > 0$: $f(x) \\ge 0 \\implies x \\in \\mathbb{R}$; $f(x) > 0 \\implies x \\in \\mathbb{R} \\setminus \\{x_0\\}$; $f(x) \\le 0 \\implies x = x_0$; $f(x) < 0 \\implies \\emptyset$.\n2. $\\Delta < 0$: parabola w całości wisi nad osią ($a > 0$) lub pod osią ($a < 0$). Wtedy zbiorem rozwiązań jest $\\mathbb{R}$ albo zbiór pusty $\\emptyset$.",
+          "matura_context": "Pułapka maturalna w zadaniach testowych i krótkiej odpowiedzi.",
+          "core_formulas": "Dla $a > 0, \\Delta < 0$: $ax^2 + bx + c > 0 \\implies x \\in \\mathbb{R}$, $ax^2 + bx + c < 0 \\implies x \\in \\emptyset$.",
+          "worked_example": "$x^2 + 4 > 0$: $x^2 \\ge 0 \\implies x^2 + 4 \\ge 4 > 0$ dla każdego $x \\in \\mathbb{R}$. Rozwiązanie: $\\mathbb{R}$.",
+          "exam_trap": "Pisanie 'brak rozwiązań', gdy nierówność jest spełniona przez KAŻDĄ liczbę rzeczywistą (np. $x^2 + 1 > 0$)!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-13-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Zbiorem rozwiązań nierówności $x^2 + 9 > 0$ jest:",
+            "explanation": "$x^2 \\ge 0$ dla każdego $x$, więc $x^2 + 9 \\ge 9 > 0$. Nierówność jest spełniona dla każdej liczby rzeczywistej.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\mathbb{R}$",
+            "hint": "Czy kwadrat powiększony o 9 może być mniejszy od zera?",
+            "options": [
+              "$\\mathbb{R}$",
+              "$\\emptyset$",
+              "$(3, +\\infty)$",
+              "$(-3, 3)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-13-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Nierówność $(x - 3)^2 \\le 0$ ma zbiór rozwiązań:",
+            "explanation": "Kwadrat dowolnej liczby jest nieujemny, więc jedyną możliwością jest $(x - 3)^2 = 0 \\implies x = 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\{3\\}$",
+            "hint": "Kwadrat liczby może być co najwyżej równy zero.",
+            "options": [
+              "$\\{3\\}$",
+              "$\\mathbb{R}$",
+              "$\\emptyset$",
+              "$\\langle 3, +\\infty)$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-13-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Zbiorem rozwiązań nierówności $-x^2 - 4 > 0$ jest:",
+            "explanation": "$-x^2 \\le 0 \\implies -x^2 - 4 \\le -4 < 0$. Lewa strona jest zawsze ujemna, więc nigdy nie jest $> 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\emptyset$",
+            "hint": "Suma dwóch liczb niedodatnich nie może być większa od zera.",
+            "options": [
+              "$\\emptyset$",
+              "$\\mathbb{R}$",
+              "$(-2, 2)$",
+              "$\\{-2, 2\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-13-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Nierówność $x^2 - 2x + 1 > 0$ jest spełniona przez każdą liczbę rzeczywistą różną od 1.",
+            "explanation": "$(x - 1)^2 > 0$ zachodzi dla każdego $x \\neq 1$. Dla $x = 1$ wartość wynosi 0.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zwiń wzór skróconego mnożenia: (x - 1)^2 > 0.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-13-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile liczb rzeczywistych spełnia nierówność $-(x + 5)^2 \\ge 0$?",
+            "explanation": "$-(x + 5)^2 \\le 0$, więc jedynym rozwiązaniem jest $-(x + 5)^2 = 0 \\implies x = -5$. Dokładnie 1 liczba.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1",
+            "hint": "Wyrażenie może być tylko równe zero."
+          },
+          {
+            "id": "t-dzial-6-13-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji $f(x) = x^2 + 2x + 5$ nierówność $f(x) < 0$:",
+            "explanation": "$\\Delta = 4 - 20 = -16 < 0$ oraz $a = 1 > 0$. Cała parabola leży nad osią OX, więc nigdy nie przyjmuje wartości ujemnych.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "nie ma rozwiązań",
+            "hint": "Sprawdź deltę i współczynnik a.",
+            "options": [
+              "nie ma rozwiązań",
+              "ma nieskończenie wiele rozwiązań",
+              "ma dokładnie jedno rozwiązanie",
+              "ma dwa rozwiązania"
+            ]
+          },
+          {
+            "id": "t-dzial-6-13-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Nierówność $x^2 + 1 \\le 0$ nie posiada rozwiązań w zbiorze liczb rzeczywistych.",
+            "explanation": "$x^2 + 1 \\ge 1 > 0$, więc nigdy nie jest mniejsze bądź równe zero.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy suma kwadratu i 1 może być niedodatnia?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-13-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rozwiąż nierówność kwadratową $-2x^2 + 4x - 2 \\ge 0$. Zapisz tok rozumowania i podaj zbiór rozwiązań.",
+            "explanation": "Krok 1: Dzielimy nierówność obustronnie przez -2, pamiętając o zmianie zwrotu znaku nierówności:\n$x^2 - 2x + 1 \\le 0$.\nKrok 2: Zauważamy wzór skróconego mnożenia na kwadrat różnicy:\n$(x - 1)^2 \\le 0$.\nKrok 3: Ponieważ kwadrat dowolnej liczby rzeczywistej jest zawsze nieujemny ($(x - 1)^2 \\ge 0$), nierówność $(x - 1)^2 \\le 0$ jest spełniona wtedy i tylko wtedy, gdy:\n$(x - 1)^2 = 0 \\implies x - 1 = 0 \\implies x = 1$.\nOdpowiedź: Jedynym rozwiązaniem nierówności jest liczba $x = 1$ (zbiór jednoelementowy $\\{1\\}$).",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zwiń lewą stronę do kwadratu różnicy po podzieleniu przez -2.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-14",
+        "title": "Odczytywanie znaków współczynników z rysunku paraboli",
+        "description": "Lekcja 14: Odczytywanie znaków współczynników z rysunku paraboli. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Z rysunku paraboli odczytujemy znaki parametrów:\n1. Znak $a$: ramiona w górę $\\implies a > 0$, ramiona w dół $\\implies a < 0$,\n2. Znak $c$: punkt przecięcia z osią OY $(0, c)$ powyżej OX $\\implies c > 0$, poniżej $\\implies c < 0$,\n3. Znak $\\Delta$: 2 punkty przecięcia z OX $\\implies \\Delta > 0$, styczność $\\implies \\Delta = 0$, brak $\\implies \\Delta < 0$,\n4. Znak $b$: z położenia wierzchołka $p = -\\frac{b}{2a}$. Jeśli $p > 0$ i $a > 0$, to $b < 0$.",
+          "matura_context": "Zadanie zamknięte lub prawda/fałsz oparte na rysunku paraboli bez podanego wzoru liczbowego.",
+          "core_formulas": "$a$: ramiona; $c$: przecięcie z OY; $\\Delta$: przecięcia z OX; $b = -2ap$.",
+          "worked_example": "Ramiona w dół ($a < 0$), przecięcie z OY nad osią ($c > 0$), wierzchołek po prawej stronie ($p > 0 \\implies -\\frac{b}{2a} > 0 \\implies b > 0$).",
+          "exam_trap": "Zgadywanie znaku $b$. Znak $b$ ZAWSZE wyznaczamy ze wzoru $p = -\\frac{b}{2a}$, zestawiając znak $p$ ze znakiem $a$!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-14-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = ax^2 + bx + c$ ma ramiona skierowane w dół i przecina oś OY w punkcie leżącym poniżej osi OX. Wynika stąd, że:",
+            "explanation": "Ramiona w dół to $a < 0$, przecięcie z osią OY poniżej osi OX to $c < 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$a < 0$ oraz $c < 0$",
+            "hint": "Sprawdź kierunek ramion i punkt przecięcia z pionową osią.",
+            "options": [
+              "$a < 0$ oraz $c < 0$",
+              "$a < 0$ oraz $c > 0$",
+              "$a > 0$ oraz $c < 0$",
+              "$a > 0$ oraz $c > 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-14-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji kwadratowej ma ramiona w górę ($a > 0$), a wierzchołek leży w I ćwiartce układu ($p > 0, q > 0$). Wynika stąd, że:",
+            "explanation": "$p = -\\frac{b}{2a} > 0 \\implies b < 0$ (bo $a > 0$). $q > 0$ i ramiona w górę oznacza brak przecięcia z OX $\\implies \\Delta < 0$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$b < 0$ oraz $\\Delta < 0$",
+            "hint": "Zestaw znak p ze znakiem a oraz sprawdź liczbę miejsc zerowych.",
+            "options": [
+              "$b < 0$ oraz $\\Delta < 0$",
+              "$b > 0$ oraz $\\Delta > 0$",
+              "$b < 0$ oraz $\\Delta > 0$",
+              "$b > 0$ oraz $\\Delta < 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-14-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli parabola przecina oś OX w dwóch punktach o różnych znakach, to $a$ i $c$ mają przeciwne znaki.",
+            "explanation": "Iloczyn miejsc zerowych $x_1 \\cdot x_2 = \\frac{c}{a} < 0$, co oznacza, że a i c mają różne znaki.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zastosuj wzór Viète'a na iloczyn pierwiastków.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-14-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Parabola $y = ax^2 + bx + c$ ma wierzchołek w punkcie $W = (0, 4)$. Ile wynosi współczynnik $b$?",
+            "explanation": "$p = -\\frac{b}{2a} = 0 \\implies b = 0$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "0",
+            "hint": "Gdy wierzchołek leży na osi OY, odcięta p wynosi 0."
+          },
+          {
+            "id": "t-dzial-6-14-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Jeśli wykres funkcji kwadratowej jest styczny do osi OX, to:",
+            "explanation": "Styczność oznacza dokładnie jeden punkt wspólny z osią OX, czyli $\\Delta = 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\Delta = 0$",
+            "hint": "Jeden punkt wspólny to jedno podwójne miejsce zerowe.",
+            "options": [
+              "$\\Delta = 0$",
+              "$\\Delta > 0$",
+              "$\\Delta < 0$",
+              "$c = 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-14-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = ax^2 + bx + c$ leży w całości nad osią OX. Prawdziwe są warunki:",
+            "explanation": "Ramiona w górę ($a > 0$) i brak punktów z osią OX ($\\Delta < 0$).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$a > 0$ oraz $\\Delta < 0$",
+            "hint": "Wykres nad osią oznacza brak pierwiastków i ramiona w górę.",
+            "options": [
+              "$a > 0$ oraz $\\Delta < 0$",
+              "$a > 0$ oraz $\\Delta > 0$",
+              "$a < 0$ oraz $\\Delta < 0$",
+              "$a < 0$ oraz $\\Delta = 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-14-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Znak współczynnika $c$ można odczytać bezpośrednio patrząc na punkt przecięcia paraboli z osią OX.",
+            "explanation": "Współczynnik c to punkt przecięcia z osią OY, a nie OX.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Pamiętaj: c to rzędna na osi OY dla x = 0.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-6-14-8",
+            "type": "OPEN_GENERAL",
+            "content": "Na rysunku przedstawiono parabolę o równaniu $y = ax^2 + bx + c$, która ma ramiona skierowane do góry, przecina dodatnią półoś OY oraz ma wierzchołek w IV ćwiartce układu współrzędnych. Ustal znaki liczb $a, b, c$ oraz $\\Delta$. Uzasadnij każdy przypadek.",
+            "explanation": "1) Znak $a$: Ramiona paraboli skierowane są w górę, co oznacza, że $a > 0$.\n2) Znak $c$: Wykres przecina oś OY powyżej osi OX (dodatnia półoś OY), co oznacza, że $c > 0$.\n3) Znak $\\Delta$: Wierzchołek leży w IV ćwiartce ($q < 0$), a ramiona idą w górę, więc parabola przecina oś OX w dwóch różnych punktach. Zatem $\\Delta > 0$.\n4) Znak $b$: Wierzchołek leży w IV ćwiartce, więc $p > 0$. Ze wzoru $p = -\\frac{b}{2a}$: skoro $p > 0$ i $a > 0$, to $-b > 0 \\implies b < 0$.\nPodsumowanie: $a > 0, b < 0, c > 0, \\Delta > 0$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Uzasadnij kolejno znak każdego ze współczynników na podstawie własności geometrycznych paraboli.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-6-15",
+        "title": "Podsumowanie funkcji kwadratowej: Zadania maturalne",
+        "description": "Lekcja 15: Podsumowanie funkcji kwadratowej: Zadania maturalne. Teoria, wzory i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Kompleksowa synteza wiedzy o funkcji kwadratowej łącząca postacie funkcji, wierzchołek, monotoniczność, miejsca zerowe i nierówności w typowych zadaniach egzaminacyjnych.",
+          "matura_context": "Zadania otwarte i zamknięte podsumowujące pełny zakres wymagań z funkcji kwadratowej.",
+          "core_formulas": "Postacie: ogólna, kanoniczna, iloczynowa. Wierzchołek $W = (p, q)$. Wyróżnik $\\Delta$. Nierówności kwadratowe.",
+          "worked_example": "Wyznaczenie najmniejszej wartości w przedziale, rozwiązanie nierówności oraz interpretacja wykresu w jednym zadaniu.",
+          "exam_trap": "Mylenie pojęć: argument to $x$, wartość to $y$, miejsce zerowe to argument dający $y = 0$, wierzchołek to punkt $(p, q)$."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-6-15-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż zbiór wszystkich rozwiązań nierówności $x(x - 6) \\le 0$:",
+            "explanation": "Pierwiastki to 0 i 6, ramiona w górę, wartości niedodatnie leżą pomiędzy pierwiastkami: $\\langle 0, 6\\rangle$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle 0, 6\\rangle$",
+            "hint": "Miejsca zerowe to 0 i 6.",
+            "options": [
+              "$\\langle 0, 6\\rangle$",
+              "$(0, 6)$",
+              "$(-\\infty, 0\\rangle \\cup \\langle 6, +\\infty)$",
+              "$\\langle -6, 0\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-6-15-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja kwadratowa o wzorze $f(x) = (x - 2)^2 - 9$ ma miejsca zerowe:",
+            "explanation": "$(x - 2)^2 = 9 \\implies x - 2 = 3 \\lor x - 2 = -3 \\implies x = 5 \\lor x = -1$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-1 oraz 5",
+            "hint": "Przyrównaj postać kanoniczną do zera.",
+            "options": [
+              "-1 oraz 5",
+              "1 oraz -5",
+              "-2 oraz 9",
+              "2 oraz -9"
+            ]
+          },
+          {
+            "id": "t-dzial-6-15-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Najmniejsza wartość funkcji $f(x) = x^2 - 2x - 8$ w przedziale $\\langle -2, 4\\rangle$ wynosi:",
+            "explanation": "$p = 1 \\in \\langle -2, 4\\rangle$. $q = f(1) = 1 - 2 - 8 = -9$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-9",
+            "hint": "Sprawdź wartość w wierzchołku p = 1.",
+            "options": [
+              "-9",
+              "-8",
+              "0",
+              "-5"
+            ]
+          },
+          {
+            "id": "t-dzial-6-15-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja kwadratowa ma wierzchołek w punkcie $(3, -4)$ i jedno miejsce zerowe $x_1 = 1$, to drugim miejscem zerowym jest $x_2 = 5$.",
+            "explanation": "Odległość od 1 do 3 wynosi 2, więc drugie miejsce zerowe leży w odległości 2 od 3: $3 + 2 = 5$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Wykorzystaj symetrię względem p = 3.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-15-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile punktów wspólnych ma prosta $y = -5$ z parabolą $y = x^2 - 4$?",
+            "explanation": "Wierzchołek paraboli to $(0, -4)$, ramiona w górę, zbiór wartości to $\\langle -4, +\\infty)$. Prosta $y = -5$ leży poniżej wykresu i nie ma z nim punktów wspólnych.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "0",
+            "hint": "Porównaj rzędną prostej z najmniejszą wartością paraboli."
+          },
+          {
+            "id": "t-dzial-6-15-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Równanie $x^2 + 6x + m = 0$ ma dokładnie jedno rozwiązanie dla $m$ równego:",
+            "explanation": "$\\Delta = 36 - 4m = 0 \\implies 4m = 36 \\implies m = 9$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Warunek jednego rozwiązania to delta = 0.",
+            "options": [
+              "9",
+              "-9",
+              "36",
+              "3"
+            ]
+          },
+          {
+            "id": "t-dzial-6-15-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja $f(x) = -3(x + 2)^2 + 5$ rośnie w przedziale $(-\\infty, -2\\rangle$.",
+            "explanation": "$a = -3 < 0$ (ramiona w dół), wierzchołek w $p = -2$. Na lewo od wierzchołka funkcja rośnie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zbadaj monotoniczność paraboli z ramionami w dół na lewo od p.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-6-15-8",
+            "type": "OPEN_GENERAL",
+            "content": "Dana jest funkcja kwadratowa $f(x) = -x^2 + 6x - 5$.\na) Wyznacz współrzędne wierzchołka paraboli i zbiór wartości funkcji.\nb) Rozwiąż nierówność $f(x) \\ge 0$.",
+            "explanation": "a) Wierzchołek i zbiór wartości:\n$a = -1, b = 6, c = -5$.\n$p = -\\frac{b}{2a} = -\\frac{6}{2(-1)} = 3$.\n$q = f(3) = -(3)^2 + 6(3) - 5 = -9 + 18 - 5 = 4$.\nWierzchołek ma współrzędne $W = (3, 4)$.\nPonieważ $a = -1 < 0$, ramiona skierowane są w dół, więc zbiór wartości to $ZW = (-\\infty, 4\\rangle$.\n\nb) Rozwiązanie nierówności $-x^2 + 6x - 5 \\ge 0$:\nObliczamy deltę: $\\Delta = 6^2 - 4(-1)(-5) = 36 - 20 = 16, \\sqrt{\\Delta} = 4$.\nMiejsca zerowe: $x_1 = \\frac{-6 - 4}{-2} = 5$, $x_2 = \\frac{-6 + 4}{-2} = 1$.\nRamiona paraboli w dół, więc wartości nieujemne leżą między pierwiastkami z domknięciem:\nOdpowiedź: $x \\in \\langle 1, 5\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania/wzoru",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wyznacz p i q, zapisz zbiór wartości, a następnie oblicz miejsca zerowe i zapisz przedział dla nierówności.",
+              "Zwróć uwagę na współrzędne wierzchołka, deltę i zwrot ramion paraboli."
+            ]
+          }
+        ]
+      }
+    ],
+    "final_test": {
+      "id": "test-dzial-6",
+      "title": "Sprawdzian wiedzy: Dział 6: Funkcja Kwadratowa",
+      "tasks": [
+        "t-dzial-6-1-1",
+        "t-dzial-6-2-1",
+        "t-dzial-6-3-1",
+        "t-dzial-6-4-1",
+        "t-dzial-6-5-1",
+        "t-dzial-6-6-1",
+        "t-dzial-6-7-1",
+        "t-dzial-6-8-1",
+        "t-dzial-6-9-1",
+        "t-dzial-6-10-1",
+        "t-dzial-6-11-1",
+        "t-dzial-6-12-1",
+        "t-dzial-6-13-1",
+        "t-dzial-6-14-1",
+        "t-dzial-6-15-1"
+      ]
+    }
+  }
+}

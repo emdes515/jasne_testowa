@@ -202,9 +202,79 @@ async function main() {
       ? topic.numericId 
       : parseInt(String(topicId).replace(/\D/g, '') || '1', 10);
 
-    const defaultIcon = topicNumericId === 1 ? 'Hash' : topicNumericId === 2 ? 'Binary' : topicNumericId === 3 ? 'EqualNot' : 'Layers';
-    const defaultColor = topicNumericId === 1 ? '#00E5FF' : topicNumericId === 2 ? '#8B5CF6' : topicNumericId === 3 ? '#10B981' : '#F59E0B';
-    const defaultPoints = topicNumericId === 1 ? '4–8 pkt' : topicNumericId === 2 ? '5–9 pkt' : topicNumericId === 3 ? '6–10 pkt' : '4–8 pkt';
+    const defaultIcons = {
+      1: 'Hash',
+      2: 'Binary',
+      3: 'EqualNot',
+      4: 'Layers',
+      5: 'TrendingUp',
+      6: 'Activity',
+      7: 'Target',
+      8: 'TriangleRight',
+      9: 'CircleDot',
+      10: 'Map',
+      11: 'Box',
+      12: 'ListOrdered',
+      13: 'PieChart',
+      14: 'Clock',
+      15: 'Trophy'
+    };
+    const defaultColors = {
+      1: '#00E5FF',
+      2: '#8B5CF6',
+      3: '#10B981',
+      4: '#F59E0B',
+      5: '#06B6D4',
+      6: '#EC4899',
+      7: '#F97316',
+      8: '#3B82F6',
+      9: '#14B8A6',
+      10: '#6366F1',
+      11: '#A855F7',
+      12: '#EAB308',
+      13: '#EF4444',
+      14: '#22C55E',
+      15: '#E11D48'
+    };
+    const defaultPoints = {
+      1: '4–8 pkt',
+      2: '5–9 pkt',
+      3: '6–10 pkt',
+      4: '4–6 pkt',
+      5: '4–6 pkt',
+      6: '5–8 pkt',
+      7: '5–9 pkt',
+      8: '4–7 pkt',
+      9: '6–10 pkt',
+      10: '4–8 pkt',
+      11: '4–8 pkt',
+      12: '2–5 pkt',
+      13: '2–5 pkt',
+      14: '2–4 pkt',
+      15: '4–6 pkt'
+    };
+    const defaultImportance = {
+      1: 'Kluczowy pewniak',
+      2: 'Kluczowy pewniak',
+      3: 'Gwarantowane punkty',
+      4: 'Wysoka waga',
+      5: 'Pewniak maturalny',
+      6: 'Kluczowy pewniak',
+      7: 'Pewniak maturalny',
+      8: 'Kluczowy pewniak',
+      9: 'Wysoka waga',
+      10: 'Wysoka waga',
+      11: 'Pewniak maturalny',
+      12: 'Częsty temat',
+      13: 'Pewniak maturalny',
+      14: 'Szybkie punkty',
+      15: 'Maksimum punktów'
+    };
+
+    const defaultIcon = defaultIcons[topicNumericId] || 'Layers';
+    const defaultColor = defaultColors[topicNumericId] || '#F59E0B';
+    const defaultPointRange = defaultPoints[topicNumericId] || '4–8 pkt';
+    const defaultImp = defaultImportance[topicNumericId] || 'Kluczowy pewniak';
 
     const topicData = {
       id: topicId,
@@ -215,8 +285,8 @@ async function main() {
       description: topic.description || '',
       icon: topic.icon || defaultIcon,
       color: topic.color || defaultColor,
-      matura_points_range: topic.matura_points_range || defaultPoints,
-      importance: topic.importance || 'Kluczowy pewniak',
+      matura_points_range: topic.matura_points_range || defaultPointRange,
+      importance: topic.importance || defaultImp,
       lessons_metadata: lessonsMetadata,
       final_test: topic.final_test || null,
       updatedAt: new Date().toISOString()

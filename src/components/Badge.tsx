@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type BadgeVariant = 'cyan' | 'amber' | 'emerald';
+export type BadgeVariant = 'cyan' | 'amber' | 'emerald' | 'jasne' | 'blue';
 export type BadgeSize = 'sm' | 'md';
 
 interface BadgeProps {
@@ -13,18 +13,19 @@ interface BadgeProps {
 }
 
 /**
- * Standardowy system odznak MaturaQuest:
+ * Standardowy system odznak aplikacji JASNE.:
  * - Półprzezroczyste ciemne tło
  * - Subtelna ramka 1px
  * - Pełna pastylka (rounded-full)
  * - Mikro-typografia (11-12px, pogrubiona, wielkie litery, brak łamania wierszy)
- * - 3 warianty:
- *    - cyan: Poziom egzaminu (np. MATURA 2025, POZIOM PODSTAWOWY)
- *    - amber: Waga zadania i seria (np. PEWNIAK MATURALNY, SERIA DNI)
+ * - Warianty:
+ *    - jasne / cyan: Główny akcent Solar Amber (#FFB800)
+ *    - blue: Pomocniczy błękit (#38BDF8)
+ *    - amber: Waga zadania i seria
  *    - emerald: Statusy zaliczenia (np. ZALICZONE 100%)
  */
 export const Badge: React.FC<BadgeProps> = ({
-  variant = 'cyan',
+  variant = 'jasne',
   size = 'md',
   children,
   icon,
@@ -32,9 +33,11 @@ export const Badge: React.FC<BadgeProps> = ({
   id
 }) => {
   const variantStyles: Record<BadgeVariant, string> = {
-    cyan: 'bg-[#00E5FF]/10 text-[#00E5FF] border-[#00E5FF]/30 shadow-[0_0_12px_rgba(0,229,255,0.12)]',
+    jasne: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30 shadow-[0_0_12px_rgba(255,184,0,0.12)]',
+    cyan: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30 shadow-[0_0_12px_rgba(255,184,0,0.12)]',
     amber: 'bg-amber-400/10 text-amber-300 border-amber-400/30 shadow-[0_0_12px_rgba(251,191,36,0.12)]',
-    emerald: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/30 shadow-[0_0_12px_rgba(52,211,153,0.12)]'
+    emerald: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/30 shadow-[0_0_12px_rgba(52,211,153,0.12)]',
+    blue: 'bg-[#38BDF8]/10 text-[#38BDF8] border-[#38BDF8]/30 shadow-[0_0_12px_rgba(56,189,248,0.12)]'
   };
 
   const sizeStyles: Record<BadgeSize, string> = {

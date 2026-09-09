@@ -18,10 +18,9 @@ import {
   updateProfile, 
   signInWithPopup 
 } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { auth, db, googleProvider } from '../lib/firebase';
-import { buildInitialUserDocument } from '../schema_firestore';
+import { auth, googleProvider } from '../lib/firebase';
 import { triggerHaptic } from '../utils';
+import { migrateGuestProgressToUser } from '../lib/guestMigration';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -66,7 +65,8 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
     try {
       if (mode === 'login') {
-        await signInWithEmailAndPassword(auth, email.trim(), password);
+        const userCredential = await signInWithEmailAndPassword(auth, email.trim(), password);
+        await migrateGuestProgressToUser(userCredential.user);
         setSuccessMsg('Zalogowano pomyślnie!');
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email.trim(), password);
@@ -75,10 +75,9 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
             displayName: name.trim()
           });
         }
-        await setDoc(doc(db, 'users', userCredential.user.uid), buildInitialUserDocument({
-          ...userCredential.user,
-          displayName: name.trim() || userCredential.user.displayName || 'Uczeń'
-        }), { merge: true });
+        await migrateGuestProgressToUser(userCredential.user, {
+          defaultDisplayName: name.trim()
+        });
         setSuccessMsg('Konto zostało utworzone!');
       }
 
@@ -117,7 +116,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       if (result.user) {
-        await setDoc(doc(db, 'users', result.user.uid), buildInitialUserDocument(result.user), { merge: true });
+        await migrateGuestProgressToUser(result.user);
       }
       setSuccessMsg('Zalogowano przez Google!');
       triggerHaptic('success');

@@ -73,8 +73,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: 'Opanuj potęgi, pierwiastki i logarytmy z Działu 1 Matury.',
     category: 'tasks',
     iconName: 'Trophy',
-    accentColor: 'text-cyan-400',
-    bgGradient: 'from-cyan-500/20 to-blue-500/20',
+    accentColor: 'text-[#FFB800]',
+    bgGradient: 'from-amber-500/20 to-orange-500/20',
     unit: 'zadań',
     getValue: (ctx) => Math.min(8, ctx.completedTasksCount),
     tiers: [

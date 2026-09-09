@@ -77,9 +77,9 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
 
   const [ticketNumber, setTicketNumber] = useState<string>(() => {
     try {
-      return localStorage.getItem('maturaquest_arena_ticket_no') || 'MQ-2025-0842';
+      return localStorage.getItem('maturaquest_arena_ticket_no') || 'JASNE-2025-0842';
     } catch {
-      return 'MQ-2025-0842';
+      return 'JASNE-2025-0842';
     }
   });
 
@@ -184,7 +184,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
     triggerHaptic('success');
     playSuccessSound();
 
-    const randomNum = `MQ-2025-${Math.floor(1000 + Math.random() * 9000)}`;
+    const randomNum = `JASNE-2025-${Math.floor(1000 + Math.random() * 9000)}`;
     setTicketNumber(randomNum);
     setHasClaimedTicket(true);
 
@@ -217,7 +217,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
       particleCount: 70,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#10B981', '#34D399', '#059669', '#6EE7B7', '#00E5FF']
+      colors: ['#10B981', '#34D399', '#059669', '#6EE7B7', '#FFB800']
     });
   };
 
@@ -598,13 +598,13 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             </div>
 
             {/* Card 3 */}
-            <div className="rounded-2xl bg-[#0B1218]/90 border border-emerald-500/20 p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-lg">
+            <div className="rounded-2xl bg-[#0B1218]/90 border border-[#FFB800]/20 p-5 flex flex-col justify-between hover:border-[#FFB800]/40 transition-colors shadow-lg">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center mb-4">
                   <ShieldCheck size={20} />
                 </div>
                 <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-[10px] font-mono font-black uppercase text-cyan-300 bg-cyan-950/60 px-2 py-0.2 rounded border border-cyan-500/20">
+                  <span className="text-[10px] font-mono font-black uppercase text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.2 rounded border border-[#FFB800]/20">
                     Ochrona Skarbca
                   </span>
                 </div>
@@ -633,9 +633,9 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                 <span className="text-sm font-black text-amber-400 font-display">{userRating}</span>
               </div>
               <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-xl border border-white/5">
-                <ShieldCheck size={14} className="text-cyan-400" />
+                <ShieldCheck size={14} className="text-sky-400" />
                 <span className="text-xs text-slate-300 font-bold">Tarcze:</span>
-                <span className="text-sm font-black text-cyan-400 font-display">{userShields}x</span>
+                <span className="text-sm font-black text-sky-400 font-display">{userShields}x</span>
               </div>
               <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-xl border border-white/5">
                 <Sparkles size={14} className="text-emerald-400" />
@@ -656,7 +656,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                   }}
                   className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <GraduationCap size={15} className="text-cyan-400" />
+                  <GraduationCap size={15} className="text-[#FFB800]" />
                   <span>Trenuj w Mapie Wiedzy</span>
                 </button>
 

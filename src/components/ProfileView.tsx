@@ -262,8 +262,8 @@ export function ProfileView({
                   </span>
                   <span className="text-xs text-[#8B8D98]">Rozwiązanych zadań ogółem</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-blue-500/10 text-[#00C2FF] px-3 py-1.5 rounded-full border border-[#00C2FF]/30">
-                  <Flame size={14} className="fill-[#00C2FF]" />
+                <div className="flex items-center gap-1.5 bg-[#FFB800]/10 text-[#FFB800] px-3 py-1.5 rounded-full border border-[#FFB800]/30">
+                  <Flame size={14} className="fill-[#FFB800]" />
                   <span className="text-xs font-bold">
                     Dziś: {todayActivityCount} {todayActivityCount === 1 ? 'zadanie' : 'zadań'}
                   </span>
@@ -273,7 +273,7 @@ export function ProfileView({
               {/* Subtitle / Legend */}
               <div className="flex items-center justify-between text-[11px] text-[#8B8D98] mb-3 pb-2 border-b border-white/5">
                 <span>Historia aktywności (ostatnie 14 dni)</span>
-                <span className="text-[#00C2FF] font-medium">Niebieski = ukończone zadania</span>
+                <span className="text-[#FFB800] font-medium">Bursztynowy = ukończone zadania</span>
               </div>
               
               {/* 14-Day Bars Container */}
@@ -296,7 +296,7 @@ export function ProfileView({
                       </div>
 
                       {hasTasks && (
-                        <span className={`text-[8px] sm:text-[9px] font-bold mb-1 leading-none ${d.isToday ? 'text-[#00C2FF]' : 'text-blue-300/80'}`}>
+                        <span className={`text-[8px] sm:text-[9px] font-bold mb-1 leading-none ${d.isToday ? 'text-[#FFB800]' : 'text-amber-300/80'}`}>
                           {d.count}
                         </span>
                       )}
@@ -306,15 +306,15 @@ export function ProfileView({
                         className={`w-full rounded-t-md transition-all duration-300 ${
                           hasTasks
                             ? d.isToday
-                              ? 'bg-gradient-to-t from-blue-600 via-[#00C2FF] to-cyan-300 shadow-[0_0_12px_rgba(0,194,255,0.5)] border-t border-white/40'
-                              : 'bg-gradient-to-t from-blue-700/80 to-blue-400 group-hover:to-[#00C2FF] shadow-[0_0_8px_rgba(59,130,246,0.3)]'
+                              ? 'bg-gradient-to-t from-amber-600 via-[#FFB800] to-yellow-300 shadow-[0_0_12px_rgba(255,184,0,0.5)] border-t border-white/40'
+                              : 'bg-gradient-to-t from-amber-700/80 to-amber-400 group-hover:to-[#FFB800] shadow-[0_0_8px_rgba(245,158,11,0.3)]'
                             : 'bg-white/5 group-hover:bg-white/10'
                         }`}
                         style={{ height: `${heightPct}%` }}
                       />
 
                       {/* Day Label */}
-                      <span className={`text-[8px] sm:text-[9px] font-bold mt-1.5 leading-none truncate max-w-full ${d.isToday ? 'text-[#00C2FF] font-black' : 'text-[#8B8D98]'}`}>
+                      <span className={`text-[8px] sm:text-[9px] font-bold mt-1.5 leading-none truncate max-w-full ${d.isToday ? 'text-[#FFB800] font-black' : 'text-[#8B8D98]'}`}>
                         {d.isToday ? 'Dziś' : d.dayName}
                       </span>
                     </div>
@@ -333,13 +333,13 @@ export function ProfileView({
                   }}
                   className="w-full p-4 flex items-center gap-4 hover:bg-white/5 transition-colors border-b border-white/5 text-left cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#00C2FF]/10 flex items-center justify-center text-[#00C2FF] shrink-0 border border-[#00C2FF]/20">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFB800]/10 flex items-center justify-center text-[#FFB800] shrink-0 border border-[#FFB800]/20">
                     <Target size={18} />
                   </div>
                   <div className="flex flex-col items-start flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-bold text-white">Twój Cel i Egzamin</span>
-                      <span className="text-[10px] bg-[#00C2FF]/15 text-[#00C2FF] font-bold px-2 py-0.5 rounded-full border border-[#00C2FF]/30">
+                      <span className="text-[10px] bg-[#FFB800]/15 text-[#FFB800] font-bold px-2 py-0.5 rounded-full border border-[#FFB800]/30">
                         {userState?.onboardingPreferences?.targetScore ? `${userState.onboardingPreferences.targetScore}%` : 'Ustaw'}
                       </span>
                     </div>

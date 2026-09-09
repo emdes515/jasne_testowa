@@ -54,8 +54,8 @@ export function MathToolbar({ onInsertSymbol, onInsertTemplate }: MathToolbarPro
   return (
     <div className="flex flex-col gap-2 bg-[#181A24] border border-white/10 rounded-xl p-2.5 my-2 shadow-inner">
       <div className="flex items-center justify-between px-1">
-        <span className="text-[10px] font-bold text-blue-400 uppercase tracking-wider flex items-center gap-1.5">
-          <Calculator size={13} className="text-[#00C2FF]" />
+        <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+          <Calculator size={13} className="text-[#FFB800]" />
           <span>Klawiatura Matematyczna</span>
         </span>
         <span className="text-[10px] text-[#8B8D98]">Kliknij, aby wstawić symbol</span>

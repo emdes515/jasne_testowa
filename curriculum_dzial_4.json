@@ -1,0 +1,2166 @@
+{
+  "topic": {
+    "id": "dzial-4",
+    "title": "Dział 4: Własności Funkcji i Odczytywanie Wykresów",
+    "description": "Kompleksowe omówienie pojęcia funkcji, wyznaczania dziedziny, odczytywania własności z wykresu, przekształceń geometrycznych oraz funkcji wykładniczej i proporcjonalności odwrotnej.",
+    "lessons": [
+      {
+        "id": "l-dzial-4-1",
+        "title": "Pojęcie funkcji: Przyporządkowanie, dziedzina i przeciwdziedzina",
+        "description": "Lekcja 1: Pojęcie funkcji: Przyporządkowanie, dziedzina i przeciwdziedzina. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Funkcja to jednoznaczne przyporządkowanie: każdemu elementowi ze zbioru dziedziny X przyporządkowany jest dokładnie jeden element ze zbioru Y. Jeżeli dla jednego x istniałyby dwa różne y, relacja nie jest funkcją.",
+          "matura_context": "Na egzaminie maturalnym pojawiają się zadania sprawdzające, który z przedstawionych grafów, tabel lub wykresów przedstawia funkcję.",
+          "core_formulas": "$f: X \\to Y$, dla każdego $x \\in X$ istnieje dokładnie jeden $y \\in Y$ taki, że $y = f(x)$.",
+          "worked_example": "Dla par $(1, 3), (2, 5), (1, 4)$ relacja NIE jest funkcją, bo dla $x=1$ przypisano dwie różne wartości: 3 i 4.",
+          "exam_trap": "Mylenie jednoznaczności: różnym argumentom x MOŻE odpowiadać ta sama wartość y (np. funkcja stała $f(x)=2$ jest funkcją), ale jednemu x nie wolno mieć dwóch różnych y."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-1-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Który z poniższych zbiorów par liczb $(x, y)$ określa funkcję?",
+            "explanation": "W funkcji każdemu argumentowi x przypisana jest dokładnie jedna wartość y. Różne argumenty mogą mieć tę samą wartość y.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\{(0,1), (2,1), (3,1)\\}$",
+            "hint": "Zbadaj, czy jakikolwiek argument x powtarza się z inną wartością y.",
+            "options": [
+              "$\\{(1,2), (2,3), (1,4)\\}$",
+              "$\\{(0,1), (2,1), (3,1)\\}$",
+              "$\\{(3,5), (3,6), (4,7)\\}$",
+              "$\\{(5,2), (5,3), (5,4)\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-1-2",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Relacja, w której każdemu uczniowi w klasie przyporządkowujemy jego numer PESEL, jest funkcją.",
+            "explanation": "Każdy uczeń ma dokładnie jeden numer PESEL, więc przyporządkowanie jest jednoznaczne.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy jeden uczeń może mieć dwa różne numery PESEL?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-1-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja $f$ przyporządkowuje każdej liczbie ze zbioru $X = \\{-2, -1, 0, 1, 2\\}$ jej kwadrat powiększony o 1. Zbiorem wartości tej funkcji jest:",
+            "explanation": "Obliczamy: $f(-2)=5$, $f(-1)=2$, $f(0)=1$, $f(1)=2$, $f(2)=5$. Unikalne wartości to $\\{1, 2, 5\\}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\{1, 2, 5\\}$",
+            "hint": "Podstaw kolejno każdy element dziedziny do wzoru $f(x) = x^2 + 1$.",
+            "options": [
+              "$\\{1, 2, 5\\}$",
+              "$\\{0, 1, 4\\}$",
+              "$\\{1, 2, 3, 4, 5\\}$",
+              "$\\{-3, 0, 1, 2, 5\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-1-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Funkcja dana jest tabelą: dla $x \\in \\{1, 2, 3, 4\\}$ wartości wynoszą odpowiednio $f(x) \\in \\{5, 8, 11, 14\\}$. Oblicz wartość wyrażenia $2f(2) - f(4)$.",
+            "explanation": "$f(2)=8$, $f(4)=14$. Zatem $2 \\cdot 8 - 14 = 16 - 14 = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Odczytaj wartości z tabeli dla $x=2$ oraz $x=4$."
+          },
+          {
+            "id": "t-dzial-4-1-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres relacji w układzie współrzędnych przedstawia funkcję zmiennej $x$, jeśli każda prosta pionowa $x = c$ przecina ten wykres w:",
+            "explanation": "Test pionowej prostej: prosta pionowa może przeciąć wykres funkcji w co najwyżej jednym punkcie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "dokładnie jednym punkcie lub wcale",
+            "hint": "Przypomnij sobie geometryczny test pionowej prostej dla funkcji.",
+            "options": [
+              "co najmniej dwóch punktach",
+              "dokładnie jednym punkcie lub wcale",
+              "dokładnie dwóch punktach",
+              "nieskończenie wielu punktach"
+            ]
+          },
+          {
+            "id": "t-dzial-4-1-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja $f$ określona jest wzorem $f(x) = 3x - 2$ dla $x \\in \\{-1, 0, 2\\}$. Suma wszystkich wartości tej funkcji jest równa:",
+            "explanation": "$f(-1) = 3(-1)-2 = -5$, $f(0) = -2$, $f(2) = 3(2)-2 = 4$. Suma: $-5 + (-2) + 4 = -3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Oblicz wartość funkcji dla każdego z trzech podanych argumentów i dodaj je do siebie.",
+            "options": [
+              "-3",
+              "0",
+              "-1",
+              "2"
+            ]
+          },
+          {
+            "id": "t-dzial-4-1-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wykres okręgu o równaniu $x^2 + y^2 = 4$ jest wykresem funkcji $y = f(x)$.",
+            "explanation": "Dla np. $x=0$ mamy $y=2$ oraz $y=-2$. Prosta pionowa $x=0$ przecina okrąg w dwóch punktach, więc nie jest to funkcja.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Sprawdź, ile wartości y odpowiada argumentowi x = 0.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-1-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyjaśnij, dlaczego przyporządkowanie, które każdej dodatniej liczbie rzeczywistej $x$ przypisuje liczbę $y$ taką, że $y^2 = x$, nie jest funkcją w zbiorze liczb rzeczywistych. Podaj konkretny kontrprzykład.",
+            "explanation": "Dla każdego $x > 0$ istnieją dwie różne liczby rzeczywiste spełniające równanie $y^2 = x$: $y = \\sqrt{x}$ oraz $y = -\\sqrt{x}$. Na przykład dla argumentu $x = 4$ otrzymujemy $y = 2$ oraz $y = -2$. Jednemu argumentowi przypisane są dwie różne wartości, co przeczy definicji funkcji.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Każdemu argumentowi musi odpowiadać dokładnie jedna wartość.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-2",
+        "title": "Wyznaczanie dziedziny ze wzoru: Mianownik różny od zera",
+        "description": "Lekcja 2: Wyznaczanie dziedziny ze wzoru: Mianownik różny od zera. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Dziedzina naturalna funkcji to zbiór liczb rzeczywistych, dla których wzór ma sens. Dzielenie przez zero jest niewykonalne, więc mianownik każdego ułamka musi być różny od zera.",
+          "matura_context": "Klasyk maturalny za 1 pkt. Często pojawia się mianownik w postaci iloczynowej lub trójmianu kwadratowego.",
+          "core_formulas": "Dla $f(x) = \\frac{P(x)}{Q(x)}$ warunek: $Q(x) \\neq 0$. Dziedzina: $D = \\mathbb{R} \\setminus \\{x: Q(x) = 0\\}$.",
+          "worked_example": "Dla $f(x) = \\frac{x+1}{x^2 - 4}$: $x^2 - 4 \\neq 0 \\implies x \\neq 2 \\land x \\neq -2$, czyli $D = \\mathbb{R} \\setminus \\{-2, 2\\}$.",
+          "exam_trap": "Skracanie ułamka przed określeniem dziedziny! Zawsze wyznaczaj dziedzinę z postaci wyjściowej."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-2-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\frac{x + 2}{x - 5}$ jest zbiór:",
+            "explanation": "Mianownik nie może być zerem: $x - 5 \\neq 0 \\implies x \\neq 5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\mathbb{R} \\setminus \\{5\\}$",
+            "hint": "Zwróć uwagę tylko na mianownik ułamka.",
+            "options": [
+              "$\\mathbb{R} \\setminus \\{-2\\}$",
+              "$\\mathbb{R} \\setminus \\{5\\}$",
+              "$\\mathbb{R} \\setminus \\{-2, 5\\}$",
+              "$\\mathbb{R}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-2-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\frac{3x}{(x - 1)(x + 4)}$ jest zbiór:",
+            "explanation": "Iloczyn w mianowniku jest zerem, gdy $x=1$ lub $x=-4$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\mathbb{R} \\setminus \\{1, -4\\}$",
+            "hint": "Przyrównaj każdy czynnik mianownika do zera.",
+            "options": [
+              "$\\mathbb{R} \\setminus \\{1, -4\\}$",
+              "$\\mathbb{R} \\setminus \\{-1, 4\\}$",
+              "$\\mathbb{R} \\setminus \\{0\\}$",
+              "$\\mathbb{R} \\setminus \\{-4, 0, 1\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-2-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\frac{x - 3}{x^2 - 9}$ jest zbiór:",
+            "explanation": "$x^2 - 9 \\neq 0 \\implies (x-3)(x+3) \\neq 0 \\implies x \\neq 3 \\land x \\neq -3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\mathbb{R} \\setminus \\{-3, 3\\}$",
+            "hint": "Nie skracaj ułamka przed wyznaczeniem założeń.",
+            "options": [
+              "$\\mathbb{R} \\setminus \\{3\\}$",
+              "$\\mathbb{R} \\setminus \\{-3, 3\\}$",
+              "$\\mathbb{R} \\setminus \\{-3\\}$",
+              "$\\mathbb{R}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-2-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Dziedziną funkcji $f(x) = \\frac{7}{x^2 + 4}$ jest cały zbiór liczb rzeczywistych $\\mathbb{R}$.",
+            "explanation": "$x^2 + 4 \\ge 4 > 0$ dla każdej liczby rzeczywistej.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy kwadrat liczby rzeczywistej powiększony o 4 może być zerem?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-2-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile liczb rzeczywistych nie należy do dziedziny funkcji $f(x) = \\frac{5}{x(x - 2)(x + 3)}$?",
+            "explanation": "Są to trzy liczby: 0, 2, -3.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Przyrównaj mianownik do zera."
+          },
+          {
+            "id": "t-dzial-4-2-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż funkcję, której dziedziną jest zbiór $\\mathbb{R} \\setminus \\{2\\}$:",
+            "explanation": "$2x - 4 = 0 \\implies x = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = \\frac{x}{2x - 4}$",
+            "hint": "Dla której funkcji mianownik zeruje się tylko dla 2?",
+            "options": [
+              "$f(x) = \\frac{2}{x}$",
+              "$f(x) = \\frac{x}{2x - 4}$",
+              "$f(x) = \\frac{x - 2}{x + 2}$",
+              "$f(x) = \\frac{1}{x^2 - 4}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-2-7",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\frac{x + 1}{x^2 - 4x}$ jest zbiór:",
+            "explanation": "$x(x - 4) \\neq 0 \\implies x \\neq 0 \\land x \\neq 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\mathbb{R} \\setminus \\{0, 4\\}$",
+            "hint": "Wyłącz x przed nawias.",
+            "options": [
+              "$\\mathbb{R} \\setminus \\{0, 4\\}$",
+              "$\\mathbb{R} \\setminus \\{4\\}$",
+              "$\\mathbb{R} \\setminus \\{-2, 2\\}$",
+              "$\\mathbb{R} \\setminus \\{-1, 0, 4\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-2-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz dziedzinę funkcji $f(x) = \\frac{2x - 5}{x^2 - 5x + 6}$. Zapisz obliczenia.",
+            "explanation": "Mianownik $x^2 - 5x + 6 \\neq 0$. $\\Delta = 25 - 24 = 1$. Pierwiastki: $x_1 = 2$, $x_2 = 3$. Zatem $D = \\mathbb{R} \\setminus \\{2, 3\\}$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz pierwiastki mianownika za pomocą delty.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-3",
+        "title": "Wyznaczanie dziedziny ze wzoru: Wyrażenie pod pierwiastkiem kwadratowym",
+        "description": "Lekcja 3: Wyznaczanie dziedziny ze wzoru: Wyrażenie pod pierwiastkiem kwadratowym. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Wyrażenie pod pierwiastkiem stopnia parzystego w liczbach rzeczywistych musi być nieujemne ($W(x) \\ge 0$). Jeżeli pierwiastek stoi w mianowniku, musi zachodzić warunek ostry ($W(x) > 0$).",
+          "matura_context": "Zadanie z pierwiastkiem w dziedzinie pojawia się w zadaniach zamkniętych i krótkich otwartych.",
+          "core_formulas": "Dla $f(x) = \\sqrt{W(x)}$: $W(x) \\ge 0$. Dla $g(x) = \\frac{1}{\\sqrt{W(x)}}$: $W(x) > 0$.",
+          "worked_example": "Dla $f(x) = \\sqrt{3 - x}$: $3 - x \\ge 0 \\implies x \\le 3$, więc $D = (-\\infty, 3\\rangle$.",
+          "exam_trap": "Pomyłka przy zmianie zwrotu nierówności podczas dzielenia przez liczbę ujemną (np. $-x \\ge -3 \\implies x \\le 3$)."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-3-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\sqrt{x - 4}$ jest przedział:",
+            "explanation": "$x - 4 \\ge 0 \\implies x \\ge 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle 4, +\\infty)$",
+            "hint": "Pamiętaj o przedziale domkniętym.",
+            "options": [
+              "$(4, +\\infty)$",
+              "$\\langle 4, +\\infty)$",
+              "$(-4, +\\infty)$",
+              "$\\langle -4, +\\infty)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-3-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\sqrt{6 - 2x}$ jest przedział:",
+            "explanation": "$6 - 2x \\ge 0 \\implies -2x \\ge -6 \\implies x \\le 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-\\infty, 3\\rangle$",
+            "hint": "Zmień znak przy dzieleniu przez ujemną.",
+            "options": [
+              "$(-\\infty, 3\\rangle$",
+              "$\\langle 3, +\\infty)$",
+              "$(-\\infty, -3\\rangle$",
+              "$\\langle -3, +\\infty)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-3-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\frac{1}{\\sqrt{x + 5}}$ jest przedział:",
+            "explanation": "Mianownik nie może być zerem, więc $x + 5 > 0 \\implies x > -5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-5, +\\infty)$",
+            "hint": "Otwarty nawias, bo mianownik nie może być zerem.",
+            "options": [
+              "$\\langle -5, +\\infty)$",
+              "$(-5, +\\infty)$",
+              "$(-\\infty, -5)$",
+              "$\\mathbb{R} \\setminus \\{-5\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-3-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba $x = 0$ należy do dziedziny funkcji $f(x) = \\sqrt{3 - x}$.",
+            "explanation": "$3 - 0 = 3 \\ge 0$, więc $\\sqrt{3}$ istnieje.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Podstaw 0 pod pierwiastek.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-3-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\frac{\\sqrt{x - 1}}{x - 3}$ jest zbiór:",
+            "explanation": "$x - 1 \\ge 0 \\implies x \\ge 1$ oraz $x - 3 \\neq 0 \\implies x \\neq 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle 1, 3) \\cup (3, +\\infty)$",
+            "hint": "Połącz warunek pierwiastka i mianownika.",
+            "options": [
+              "$\\langle 1, +\\infty)$",
+              "$\\langle 1, 3) \\cup (3, +\\infty)$",
+              "$(1, 3) \\cup (3, +\\infty)$",
+              "$\\langle 1, +\\infty) \\setminus \\{-3\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-3-6",
+            "type": "NUMERIC_INPUT",
+            "content": "Jaka jest najmniejsza liczba całkowita należąca do dziedziny funkcji $f(x) = \\sqrt{2x + 7}$?",
+            "explanation": "$2x + 7 \\ge 0 \\implies x \\ge -3{,}5$. Najmniejsza całkowita to -3.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Wyznacz x i zaokrąglij w górę do liczby całkowitej."
+          },
+          {
+            "id": "t-dzial-4-3-7",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji $f(x) = \\sqrt{x^2 + 1}$ jest:",
+            "explanation": "$x^2 + 1 \\ge 1 > 0$ dla każdego $x \\in \\mathbb{R}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\mathbb{R}$",
+            "hint": "Czy suma kwadratu i 1 może być ujemna?",
+            "options": [
+              "$\\langle 1, +\\infty)$",
+              "$\\langle -1, +\\infty)$",
+              "$\\mathbb{R}$",
+              "$\\emptyset$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-3-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz dziedzinę funkcji $f(x) = \\sqrt{8 - 4x} + \\frac{1}{x + 1}$. Zapisz warunki.",
+            "explanation": "1) $8 - 4x \\ge 0 \\implies x \\le 2$. 2) $x + 1 \\neq 0 \\implies x \\neq -1$. Część wspólna: $x \\in (-\\infty, -1) \\cup (-1, 2\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz oba warunki i wyznacz część wspólną.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-4",
+        "title": "Odczytywanie dziedziny i zbioru wartości z wykresu",
+        "description": "Lekcja 4: Odczytywanie dziedziny i zbioru wartości z wykresu. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Dziedzinę $D_f$ odczytujemy z osi OX (od lewej do prawej), a zbiór wartości $ZW_f$ z osi OY (od dołu do góry). Kropka zamalowana oznacza koniec domknięty (nawias ostry), a niezamalowana koniec otwarty (nawias okrągły).",
+          "matura_context": "W każdym arkuszu maturalnym znajduje się wykres funkcji, z którego należy odczytać dziedzinę lub zbiór wartości.",
+          "core_formulas": "$D_f = \\langle x_{\\min}, x_{\\max}\\rangle$, $ZW_f = \\langle y_{\\min}, y_{\\max}\\rangle$.",
+          "worked_example": "Wykres rozciąga się od $x=-4$ (zamalowane) do $x=3$ (otwarte), a pionowo od $y=-2$ do $y=5$ (oba punkty osiągane). $D_f = \\langle -4, 3)$, $ZW_f = \\langle -2, 5\\rangle$.",
+          "exam_trap": "Mylenie osi: czytanie dziedziny z osi OY lub zbioru wartości z osi OX!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-4-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji rozciąga się wzdłuż osi OX od $x = -3$ (kropka zamalowana) do $x = 5$ (kropka otwarta). Dziedziną tej funkcji jest:",
+            "explanation": "Kropka zamalowana to domknięcie przy -3, kropka otwarta to nawias okrągły przy 5.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle -3, 5)$",
+            "hint": "Zamalowana kropka oznacza nawias domknięty.",
+            "options": [
+              "$\\langle -3, 5\\rangle$",
+              "$\\langle -3, 5)$",
+              "$(-3, 5\\rangle$",
+              "$(-3, 5)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-4-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Najniższy punkt wykresu ma współrzędne $(-1, -4)$, a najwyższy $(2, 3)$. Oba punkty należą do wykresu, a wykres jest linią ciągłą. Zbiorem wartości funkcji jest:",
+            "explanation": "Zbiór wartości to rzut wykresu na oś OY: od najmniejszej wartości $y=-4$ do największej $y=3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle -4, 3\\rangle$",
+            "hint": "Zbiór wartości czytamy wyłącznie z osi OY.",
+            "options": [
+              "$\\langle -1, 2\\rangle$",
+              "$\\langle -4, 3\\rangle$",
+              "$(-4, 3)$",
+              "$\\langle -4, -1\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-4-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli punkt $(2, -3)$ leży na wykresie funkcji, to liczba -3 należy do jej zbioru wartości.",
+            "explanation": "Punkt $(x, y) = (2, -3)$ oznacza, że $f(2) = -3$, więc -3 jest wartością funkcji.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Współrzędna y to wartość funkcji.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-4-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dziedziną funkcji $f$ jest przedział $\\langle -4, 6\\rangle$. Ile liczb całkowitych należy do dziedziny tej funkcji?",
+            "explanation": "Liczby całkowite to: -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6. Razem jest ich $6 - (-4) + 1 = 11$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "11",
+            "hint": "Pamiętaj o uwzględnieniu zera oraz obu końców."
+          },
+          {
+            "id": "t-dzial-4-4-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f$ składa się z dwóch odcinków: od $(-5, 1)$ do $(-1, 4)$ oraz od $(1, -2)$ do $(4, 3)$ (wszystkie końce zamalowane). Dziedziną funkcji $f$ jest:",
+            "explanation": "Rzut na oś OX to suma dwóch rozłącznych przedziałów: $\\langle -5, -1\\rangle$ oraz $\\langle 1, 4\\rangle$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle -5, -1\\rangle \\cup \\langle 1, 4\\rangle$",
+            "hint": "Odczytaj x-y dla obu odcinków osobno.",
+            "options": [
+              "$\\langle -5, 4\\rangle$",
+              "$\\langle -5, -1\\rangle \\cup \\langle 1, 4\\rangle$",
+              "$\\langle -2, 4\\rangle$",
+              "$\\langle -1, 1\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-4-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja określona na $\\langle -2, 5\\rangle$ przyjmuje tylko wartości ze zbioru liczb całkowitych: $\\{-1, 0, 1, 2\\}$. Zbiorem wartości tej funkcji jest:",
+            "explanation": "Zbiór wartości składa się z izolowanych punktów, więc zapisujemy go w klamrach jako zbiór dyskretny.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\{-1, 0, 1, 2\\}$",
+            "hint": "Nie myl przedziału ciągłego ze zbiorem skończonym.",
+            "options": [
+              "$\\langle -1, 2\\rangle$",
+              "$\\{-1, 0, 1, 2\\}$",
+              "$\\langle -2, 5\\rangle$",
+              "$\\{-2, 5\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-4-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli zbiorem wartości funkcji jest $\\langle 0, +\\infty)$, to funkcja nie przyjmuje wartości ujemnych.",
+            "explanation": "Wszystkie elementy przedziału $\\langle 0, +\\infty)$ są większe lub równe zero.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy w przedziale od 0 do nieskończoności są liczby ujemne?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-4-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wykres funkcji $f$ ma końce w punktach $A=(-3, -2)$ (kropka otwarta) oraz $B=(4, 5)$ (kropka zamalowana). Wykres jest ciągły i w punkcie $(0, -4)$ osiąga minimum globalne. Podaj dziedzinę i zbiór wartości funkcji $f$.",
+            "explanation": "Dziedzina: odcinek wzdłuż osi OX od $x=-3$ (otwarty) do $x=4$ (domknięty): $D_f = (-3, 4\\rangle$.\nZbiór wartości: najmniejsza wartość na osi OY wynosi $-4$ (w punkcie $(0, -4)$), a największa $5$ (w punkcie $(4, 5)$): $ZW_f = \\langle -4, 5\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zwróć uwagę na minimum w punkcie (0, -4), które wyznacza dolną granicę zbioru wartości.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-5",
+        "title": "Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+        "description": "Lekcja 5: Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Wartość funkcji $f(x_0)$ to współrzędna y punktu na wykresie o współrzędnej $x = x_0$. Rozwiązanie równania $f(x) = c$ to współrzędne x punktów przecięcia wykresu funkcji z poziomą prostą $y = c$.",
+          "matura_context": "Pytanie 'Ile rozwiązań ma równanie f(x) = 2?' lub 'Oblicz f(3)' na podstawie wykresu to żelazny punkt matury.",
+          "core_formulas": "Punkt na wykresie: $(x, f(x))$. Liczba rozwiązań $f(x) = c$ = liczba punktów wspólnych wykresu i prostej $y = c$.",
+          "worked_example": "Aby sprawdzić ile rozwiązań ma $f(x) = 1$, prowadzimy poziomą linię na wysokości $y = 1$ i liczymy punkty przecięcia.",
+          "exam_trap": "Mylenie pytania o argument z pytaniem o wartość: $f(2)$ to wartość dla $x=2$, a $f(x)=2$ to szukanie argumentów dających $y=2$."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-5-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f$ przechodzi przez punkt $P = (-2, 5)$. Wartość $f(-2)$ jest równa:",
+            "explanation": "Współrzędne punktu to $(x, f(x))$, zatem dla $x = -2$ wartość $f(x) = 5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Druga współrzędna punktu to wartość funkcji.",
+            "options": [
+              "-2",
+              "5",
+              "3",
+              "-10"
+            ]
+          },
+          {
+            "id": "t-dzial-4-5-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji przecina prostą $y = 3$ w punktach o odciętych $x = -1$, $x = 2$ oraz $x = 4$. Zbiorem rozwiązań równania $f(x) = 3$ jest:",
+            "explanation": "Rozwiązaniami równania są argumenty x punktów przecięcia: $\\{-1, 2, 4\\}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\{-1, 2, 4\\}$",
+            "hint": "Rozwiązaniem równania f(x) = c są wartości x.",
+            "options": [
+              "$\\{-1, 2, 4\\}$",
+              "$\\{3\\}$",
+              "$\\langle -1, 4\\rangle$",
+              "$\\{(-1, 3), (2, 3), (4, 3)\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-5-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli pozioma prosta $y = -1$ nie przecina wykresu funkcji $f$, to równanie $f(x) = -1$ nie ma rozwiązań.",
+            "explanation": "Brak punktów wspólnych oznacza brak argumentów spełniających to równanie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Wykres nie osiąga wartości -1.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-5-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla funkcji danej wzorem $f(x) = x^2 - 3x + 1$ oblicz wartość $f(-2)$.",
+            "explanation": "$f(-2) = (-2)^2 - 3(-2) + 1 = 4 + 6 + 1 = 11$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "11",
+            "hint": "Pamiętaj o potęgowaniu liczby ujemnej: (-2)^2 = 4."
+          },
+          {
+            "id": "t-dzial-4-5-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f$ przedstawia łamaną łączącą punkty $(-4, 2)$, $(0, -2)$ oraz $(4, 2)$. Liczba rozwiązań równania $f(x) = 0$ jest równa:",
+            "explanation": "Łamana przecina oś OX ($y = 0$) w dwóch punktach: pomiędzy $x=-4$ a $x=0$ oraz pomiędzy $x=0$ a $x=4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Narysuj szkic i sprawdź przecięcia z osią OX.",
+            "options": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          },
+          {
+            "id": "t-dzial-4-5-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Równanie $f(x) = m$ ma dokładnie jedno rozwiązanie dla $m$ równego:",
+            "explanation": "Gdy prosta pozioma jest styczna do wierzchołka, ma dokładnie 1 punkt wspólny.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "wartości w wierzchołku pojedynczego ekstremum",
+            "hint": "Wyobraź sobie prostą poziomą dotykającą tylko czubka wykresu.",
+            "options": [
+              "wartości w wierzchołku pojedynczego ekstremum",
+              "każdej liczbie rzeczywistej",
+              "zeru",
+              "żadnej z liczb"
+            ]
+          },
+          {
+            "id": "t-dzial-4-5-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli $f(1) = 4$ i $f(3) = 4$, to funkcja $f$ nie jest funkcją.",
+            "explanation": "Funkcja może przyjmować tę samą wartość dla różnych argumentów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Dwa różne x mogą mieć ten sam y.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-5-8",
+            "type": "OPEN_GENERAL",
+            "content": "Funkcja $f$ określona jest wzorem $f(x) = \\frac{2x + 6}{x - 1}$. Wyznacz argument, dla którego funkcja przyjmuje wartość równą 4.",
+            "explanation": "Układamy równanie: $\\frac{2x + 6}{x - 1} = 4$ przy założeniu $x \\neq 1$.\nMnożymy obustronnie przez $(x - 1)$:\n$2x + 6 = 4(x - 1) \\implies 2x + 6 = 4x - 4 \\implies -2x = -10 \\implies x = 5$.\nArgumentem jest $x = 5$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Przyrównaj wzór funkcji do 4 i pomnóż przez mianownik.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-6",
+        "title": "Miejsca zerowe funkcji: Odczytywanie z wykresu i obliczanie ze wzoru",
+        "description": "Lekcja 6: Miejsca zerowe funkcji: Odczytywanie z wykresu i obliczanie ze wzoru. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Miejsce zerowe to taki argument $x$, dla którego wartość funkcji wynosi zero ($f(x) = 0$). Na wykresie jest to pierwsza współrzędna punktu przecięcia (lub styczności) wykresu z osią OX.",
+          "matura_context": "Zadanie z miejscem zerowym występuje co roku. Może dotyczyć odczytania z wykresu lub rozwiązania równania algebraicznego.",
+          "core_formulas": "$x_0$ jest miejscem zerowym $\\iff f(x_0) = 0$ oraz $x_0 \\in D_f$. Punkt na osi: $(x_0, 0)$.",
+          "worked_example": "Dla $f(x) = 2x - 8$: $2x - 8 = 0 \\implies 2x = 8 \\implies x = 4$. Miejscem zerowym jest 4.",
+          "exam_trap": "Podawanie punktu $(4, 0)$ zamiast samej liczby 4, albo podawanie wartości na osi OY zamiast osi OX!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-6-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscem zerowym funkcji $f(x) = 3x - 12$ jest liczba:",
+            "explanation": "$3x - 12 = 0 \\implies 3x = 12 \\implies x = 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Przyrównaj wzór funkcji do zera.",
+            "options": [
+              "4",
+              "-4",
+              "12",
+              "-12"
+            ]
+          },
+          {
+            "id": "t-dzial-4-6-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscami zerowymi funkcji $f(x) = (x + 3)(x - 5)$ są liczby:",
+            "explanation": "Iloczyn wynosi zero, gdy $x + 3 = 0 \\implies x = -3$ lub $x - 5 = 0 \\implies x = 5$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3 oraz 5",
+            "hint": "Przyrównaj każdy nawias do zera.",
+            "options": [
+              "-3 oraz 5",
+              "3 oraz -5",
+              "-3 oraz -5",
+              "3 oraz 5"
+            ]
+          },
+          {
+            "id": "t-dzial-4-6-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji przecina oś OX w punktach $(-2, 0)$ oraz $(3, 0)$. Miejscami zerowymi tej funkcji są:",
+            "explanation": "Miejsca zerowe to pierwsze współrzędne punktów przecięcia z osią OX.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-2 oraz 3",
+            "hint": "Miejsca zerowe to x-y punktów leżących na osi OX.",
+            "options": [
+              "-2 oraz 3",
+              "0",
+              "tylko 3",
+              "brak miejsc zerowych"
+            ]
+          },
+          {
+            "id": "t-dzial-4-6-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja $f(x) = x^2 + 9$ nie posiada miejsc zerowych w zbiorze liczb rzeczywistych.",
+            "explanation": "$x^2 \\ge 0$, więc $x^2 + 9 \\ge 9 > 0$. Równanie $x^2 + 9 = 0$ nie ma rozwiązań rzeczywistych.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy kwadrat liczby rzeczywistej może wynosić -9?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-6-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile miejsc zerowych ma funkcja $f(x) = x(x - 1)(x + 2)(x^2 + 4)$ w zbiorze liczb rzeczywistych?",
+            "explanation": "Czynniki liniowe dają $x = 0, 1, -2$. Czynnik $x^2 + 4$ nie ma pierwiastków rzeczywistych. Razem są 3 miejsca zerowe.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Sprawdź, które nawiasy mogą przyjąć wartość zero."
+          },
+          {
+            "id": "t-dzial-4-6-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Liczba 2 jest miejscem zerowym funkcji $f(x) = ax + 6$. Współczynnik $a$ jest równy:",
+            "explanation": "$f(2) = 0 \\implies a \\cdot 2 + 6 = 0 \\implies 2a = -6 \\implies a = -3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Podstaw x = 2 oraz f(x) = 0.",
+            "options": [
+              "-3",
+              "3",
+              "-6",
+              "6"
+            ]
+          },
+          {
+            "id": "t-dzial-4-6-7",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscem zerowym funkcji $f(x) = \\frac{x^2 - 16}{x - 4}$ jest:",
+            "explanation": "Dziedzina: $x \\neq 4$. Licznik zeruje się dla $x = 4$ lub $x = -4$. Ponieważ 4 nie należy do dziedziny, jedynym miejscem zerowym jest -4.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-4",
+            "hint": "Uwzględnij dziedzinę ułamka!",
+            "options": [
+              "-4",
+              "4",
+              "-4 oraz 4",
+              "brak miejsc zerowych"
+            ]
+          },
+          {
+            "id": "t-dzial-4-6-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wszystkie miejsca zerowe funkcji $f(x) = \\frac{(x + 1)(2x - 8)}{x + 1}$. Pamiętaj o dziedzinie.",
+            "explanation": "Krok 1: Dziedzina: mianownik $x + 1 \\neq 0 \\implies x \\neq -1$, czyli $D = \\mathbb{R} \\setminus \\{-1\\}$.\nKrok 2: Przyrównujemy licznik do zera: $(x + 1)(2x - 8) = 0 \\implies x = -1$ lub $2x = 8 \\implies x = 4$.\nKrok 3: Sprawdzamy należenie do dziedziny: $x = -1 \\notin D$, natomiast $x = 4 \\in D$.\nOdpowiedź: Jedynym miejscem zerowym jest $x = 4$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Nie zapomnij odrzucić pierwiastka, który zeruje mianownik.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-7",
+        "title": "Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+        "description": "Lekcja 7: Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Funkcja jest rosnąca, gdy wraz ze wzrostem argumentów wartości rosną (wykres idzie w górę). Malejąca – gdy wartości maleją (wykres opada). Przedziały monotoniczności ZAWSZE podajemy na osi OX (dla jakich x funkcja rośnie/maleje).",
+          "matura_context": "Klasyczne pytanie maturalne: 'Funkcja f jest rosnąca w przedziale...'.",
+          "core_formulas": "Rosnąca: $x_1 < x_2 \\implies f(x_1) < f(x_2)$. Malejąca: $x_1 < x_2 \\implies f(x_1) > f(x_2)$.",
+          "worked_example": "Wykres opada od $x=-3$ do $x=1$, a potem wznosi się od $x=1$ do $x=5$. Funkcja maleje w $\\langle -3, 1\\rangle$ i rośnie w $\\langle 1, 5\\rangle$.",
+          "exam_trap": "Zapisywanie przedziałów monotoniczności wartościami z osi OY! Przedziały monotoniczności to ZAWSZE przedziały argumentów x."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-7-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji wznosi się od punktu $(-4, -2)$ do punktu $(1, 5)$. Funkcja jest rosnąca w przedziale:",
+            "explanation": "Przedziały monotoniczności odczytujemy z osi OX: od $x = -4$ do $x = 1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle -4, 1\\rangle$",
+            "hint": "Odczytaj zakres argumentów x.",
+            "options": [
+              "$\\langle -4, 1\\rangle$",
+              "$\\langle -2, 5\\rangle$",
+              "$(-4, 5)$",
+              "$\\langle -2, 1\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-7-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji opada dla $x \\in \\langle -2, 3\\rangle$, a dla $x \\in \\langle 3, 7\\rangle$ jest równoległy do osi OX. W przedziale $\\langle 3, 7\\rangle$ funkcja jest:",
+            "explanation": "Poziomy odcinek wykresu oznacza, że funkcja przyjmuje stałą wartość.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "stała",
+            "hint": "Gdy wykres jest poziomy, funkcja jest stała.",
+            "options": [
+              "rosnąca",
+              "malejąca",
+              "stała",
+              "nieokreślona"
+            ]
+          },
+          {
+            "id": "t-dzial-4-7-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja $f$ rośnie w przedziale $\\langle -1, 3\\rangle$, to $f(0) < f(2)$.",
+            "explanation": "Dla funkcji rosnącej większemu argumentowi odpowiada większa wartość: $0 < 2 \\implies f(0) < f(2)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Z definicji funkcji rosnącej: większy x to większy y.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-7-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Funkcja maleje w przedziale $\\langle -3, k\\rangle$ i rośnie w przedziale $\\langle k, 5\\rangle$. W punkcie o odciętej $x = 2$ funkcja osiąga minimum. Ile wynosi $k$?",
+            "explanation": "Punkt zmiany monotoniczności z malejącej na rosnącą to wierzchołek/minimum, stąd $k = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "W jakim punkcie funkcja przestaje maleć a zaczyna rosnąć?"
+          },
+          {
+            "id": "t-dzial-4-7-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Maksymalny przedział, w którym funkcja $f$ jest malejąca, to:",
+            "explanation": "To formalna definicja maksymalnego przedziału monotoniczności.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "przedział, którego nie można rozszerzyć o żaden punkt zachowując monotoniczność",
+            "hint": "Pomyśl, co oznacza słowo maksymalny w matematyce.",
+            "options": [
+              "przedział, którego nie można rozszerzyć o żaden punkt zachowując monotoniczność",
+              "przedział o największej długości na osi",
+              "zbiór wartości funkcji",
+              "cała dziedzina funkcji"
+            ]
+          },
+          {
+            "id": "t-dzial-4-7-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dana jest funkcja $f(x) = -2x + 5$. Funkcja ta jest:",
+            "explanation": "Współczynnik kierunkowy $a = -2 < 0$, więc funkcja liniowa jest malejąca w całej dziedzinie.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "malejąca w $\\mathbb{R}$",
+            "hint": "Sprawdź znak współczynnika przy x.",
+            "options": [
+              "rosnąca w $\\mathbb{R}$",
+              "malejąca w $\\mathbb{R}$",
+              "stała w $\\mathbb{R}$",
+              "malejąca w $(-\\infty, 0)$ i rosnąca w $\\langle 0, +\\infty)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-7-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przedziały monotoniczności można łączyć symbolem sumy zbiorów $\\cup$.",
+            "explanation": "Przedziały monotoniczności podajemy oddzielnie (przecinkiem lub słowem 'oraz'). Łączenie sumą jest błędem merytorycznym (np. funkcja $f(x)=1/x$).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Pamiętaj o zasadzie egzaminacyjnej: przedziały monotoniczności wymieniamy po przecinku.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-7-8",
+            "type": "OPEN_GENERAL",
+            "content": "Funkcja $f$ określona jest na przedziale $\\langle -5, 5\\rangle$. Jej wykres składa się z odcinków łączących punkty $(-5, -3)$, $(-1, 4)$, $(2, 1)$ oraz $(5, 6)$. Wypisz wszystkie maksymalne przedziały, w których funkcja jest rosnąca.",
+            "explanation": "Analizujemy kolejne odcinki wzdłuż osi OX:\n1) Od $x = -5$ do $x = -1$: wykres rośnie od $y = -3$ do $y = 4$. Funkcja jest rosnąca w $\\langle -5, -1\\rangle$.\n2) Od $x = -1$ do $x = 2$: wykres opada od $y = 4$ do $y = 1$ (funkcja maleje).\n3) Od $x = 2$ do $x = 5$: wykres rośnie od $y = 1$ do $y = 6$. Funkcja jest rosnąca w $\\langle 2, 5\\rangle$.\nOdpowiedź: Funkcja jest rosnąca w przedziałach $\\langle -5, -1\\rangle$ oraz $\\langle 2, 5\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zbadaj znak przyrostu wartości na poszczególnych odcinkach.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-8",
+        "title": "Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne",
+        "description": "Lekcja 8: Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Wartości dodatnie ($f(x) > 0$) to argumenty x, dla których wykres leży ściśle NAD osią OX. Wartości ujemne ($f(x) < 0$) to argumenty x, dla których wykres leży POD osią OX. W punktach przecięcia z osią OX wartość wynosi 0 (ani dodatnia, ani ujemna).",
+          "matura_context": "Pytania o zbiór rozwiązań nierówności $f(x) > 0$ lub $f(x) \\le 0$ na podstawie wykresu są stałym elementem egzaminu.",
+          "core_formulas": "$f(x) > 0 \\iff$ punkty wykresu nad osią OX. $f(x) < 0 \\iff$ punkty wykresu pod osią OX.",
+          "worked_example": "Wykres przecina oś OX w punktach -2 i 4, a pomiędzy nimi leży nad osią. Zatem $f(x) > 0$ dla $x \\in (-2, 4)$.",
+          "exam_trap": "Domknięte nawiasy przy nierówności ostrej! Dla $f(x) > 0$ w miejscach zerowych wartość wynosi 0, więc końce MUSZĄ być otwarte."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-8-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji leży nad osią OX dla $x$ należących do przedziału $(-3, 5)$. Zbiorem rozwiązań nierówności $f(x) > 0$ jest:",
+            "explanation": "Nierówność jest ostra, więc miejsca zerowe -3 i 5 nie należą do rozwiązań.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-3, 5)$",
+            "hint": "Przy ostrej nierówności nawiasy są otwarte.",
+            "options": [
+              "$(-3, 5)$",
+              "$\\langle -3, 5\\rangle$",
+              "$(-3, 5\\rangle$",
+              "$\\mathbb{R} \\setminus \\{-3, 5\\}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-8-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscami zerowymi funkcji są -1 oraz 4. Wykres leży pod osią OX dla $x < -1$ oraz dla $x > 4$. Zbiorem rozwiązań nierówności $f(x) \\le 0$ jest:",
+            "explanation": "Nierówność nieostra $\\le 0$ zawiera również miejsca zerowe, stąd nawiasy domknięte.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-\\infty, -1\\rangle \\cup \\langle 4, +\\infty)$",
+            "hint": "Nierówność słaba dopuszcza zero.",
+            "options": [
+              "$(-\\infty, -1\\rangle \\cup \\langle 4, +\\infty)$",
+              "$(-1, 4)$",
+              "$(-\\infty, -1) \\cup (4, +\\infty)$",
+              "$\\langle -1, 4\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-8-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli $f(x) \\ge 0$ dla każdego $x \\in D$, to wykres funkcji nie ma żadnych punktów pod osią OX.",
+            "explanation": "$f(x) \\ge 0$ oznacza, że cały wykres leży na osi OX lub nad nią.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy wartość większa bądź równa zero może być ujemna?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-8-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Rozwiązaniem nierówności $f(x) < 0$ jest przedział $(-4, 3)$. Ile liczb całkowitych spełnia tę nierówność?",
+            "explanation": "Liczby całkowite w przedziale $(-4, 3)$ to: -3, -2, -1, 0, 1, 2. Jest ich 6.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Nie wliczaj końców przedziału otwartego."
+          },
+          {
+            "id": "t-dzial-4-8-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja dana jest wzorem $f(x) = 2x - 6$. Wartości ujemne funkcja przyjmuje dla:",
+            "explanation": "$2x - 6 < 0 \\implies 2x < 6 \\implies x < 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x < 3$",
+            "hint": "Rozwiąż prostą nierówność liniową.",
+            "options": [
+              "$x < 3$",
+              "$x > 3$",
+              "$x \\le 3$",
+              "$x < -3$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-8-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż rysunek, na którym funkcja spełnia warunek: $f(x) > 0$ dla $x \\in (-\\infty, 2)$ oraz $f(x) < 0$ dla $x \\in (2, +\\infty)$:",
+            "explanation": "Po lewej stronie dwójki wykres jest nad osią, a po prawej pod osią – to prosta malejąca.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "prosta przecinająca oś OX w punkcie (2, 0) o ujemnym współczynniku kierunkowym",
+            "hint": "Funkcja maleje i przecina oś OX w dwójce.",
+            "options": [
+              "prosta przecinająca oś OX w punkcie (2, 0) o ujemnym współczynniku kierunkowym",
+              "prosta o dodatnim współczynniku kierunkowym",
+              "parabola z ramionami do góry",
+              "funkcja stała"
+            ]
+          },
+          {
+            "id": "t-dzial-4-8-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Miejsce zerowe funkcji należy do zbioru rozwiązań nierówności $f(x) > 0$.",
+            "explanation": "W miejscu zerowym $f(x) = 0$, a $0 > 0$ jest fałszem.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy zero jest większe od zera?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-4-8-8",
+            "type": "OPEN_GENERAL",
+            "content": "Na podstawie wykresu funkcji $f$ o dziedzinie $\\langle -4, 6\\rangle$ wiadomo, że jedynymi miejscami zerowymi są $x = -2$ oraz $x = 3$, a wykres leży pod osią OX wyłącznie na odcinku między nimi. Zapisz zbiór rozwiązań nierówności $f(x) \\ge 0$.",
+            "explanation": "Funkcja przyjmuje wartości nieujemne na zewnątrz przedziału $(-2, 3)$, z uwzględnieniem końców dziedziny oraz miejsc zerowych:\n$x \\in \\langle -4, -2\\rangle \\cup \\langle 3, 6\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Pamiętaj o ograniczeniu dziedziny od -4 do 6.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-9",
+        "title": "Wartość największa i najmniejsza funkcji z wykresu",
+        "description": "Lekcja 9: Wartość największa i najmniejsza funkcji z wykresu. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Wartość największa ($y_{\\max}$) to rzędna najwyżej położonego punktu wykresu. Wartość najmniejsza ($y_{\\min}$) to rzędna najniżej położonego punktu wykresu. Wartości te zawsze odczytujemy na osi OY.",
+          "matura_context": "Klasyczne pytanie: 'Wartość największa funkcji f w przedziale wynosi... dla argumentu...'.",
+          "core_formulas": "$y_{\\max} = \\max_{x \\in D} f(x)$, $y_{\\min} = \\min_{x \\in D} f(x)$.",
+          "worked_example": "Wykres osiąga szczyt w punkcie $(3, 7)$. Wartość największa wynosi 7 i jest osiągana dla argumentu 3.",
+          "exam_trap": "Podawanie argumentu zamiast wartości! Wartość to zawsze y (np. 7), a argument to x (np. 3)."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-9-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Najwyższy punkt wykresu funkcji ma współrzędne $(-2, 5)$. Wartość największa tej funkcji jest równa:",
+            "explanation": "Wartość funkcji to współrzędna y, czyli 5.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Wartość to współrzędna y najwyższego punktu.",
+            "options": [
+              "5",
+              "-2",
+              "3",
+              "nie istnieje"
+            ]
+          },
+          {
+            "id": "t-dzial-4-9-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wartość najmniejsza funkcji $f$ wynosi -3 i jest osiągana dla argumentu 4. Punktem należącym do wykresu funkcji jest:",
+            "explanation": "Punkt na wykresie ma postać $(x, y) = (4, -3)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(4, -3)$",
+            "hint": "Pierwsza współrzędna to argument, druga to wartość.",
+            "options": [
+              "$(4, -3)$",
+              "$(-3, 4)$",
+              "$(0, -3)$",
+              "$(4, 0)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-9-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja liniowa $f(x) = 2x - 1$ określona na całym zbiorze $\\mathbb{R}$ nie posiada wartości największej ani najmniejszej.",
+            "explanation": "Funkcja liniowa nieposiadająca ograniczeń dziedziny rośnie do $+\\infty$ i maleje do $-\\infty$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy prosta ma najwyższy punkt?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-9-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Wykres funkcji określonej na przedziale $\\langle -3, 4\\rangle$ ma najniższy punkt w $(-1, -5)$ i najwyższy w $(4, 7)$. Oblicz różnicę między wartością największą a najmniejszą tej funkcji.",
+            "explanation": "Różnica wynosi $y_{\\max} - y_{\\min} = 7 - (-5) = 7 + 5 = 12$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Odejmij wartość najmniejszą od największej."
+          },
+          {
+            "id": "t-dzial-4-9-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji $f(x) = -x^2 + 4$ określonej na $\\mathbb{R}$, wartością największą jest:",
+            "explanation": "Parabola ma ramiona skierowane w dół, wierzchołek w punkcie $(0, 4)$, więc największa wartość to 4.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Wierzchołek paraboli z ramionami w dół wyznacza maksimum.",
+            "options": [
+              "4",
+              "0",
+              "2",
+              "nie istnieje"
+            ]
+          },
+          {
+            "id": "t-dzial-4-9-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji określonej na przedziale $\\langle 1, 5\\rangle$ przyjmuje wartość największą na jednym z końców przedziału. Jeśli funkcja jest rosnąca, to wartość największą przyjmuje dla argumentu:",
+            "explanation": "Funkcja rosnąca przyjmuje największą wartość dla największego argumentu w przedziale domkniętym.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Dla funkcji rosnącej szczyt jest na prawym końcu.",
+            "options": [
+              "5",
+              "1",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "id": "t-dzial-4-9-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli zbiorem wartości funkcji jest przedział $(-2, 6)$, to funkcja nie osiąga ani wartości najmniejszej, ani największej.",
+            "explanation": "Końce przedziału są otwarte, więc liczby -2 i 6 nie są osiągane przez funkcję.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy w przedziale otwartym istnieje element najmniejszy?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-9-8",
+            "type": "OPEN_GENERAL",
+            "content": "Funkcja $f$ ma dziedzinę $D = \\langle -4, 5\\rangle$, a jej zbiorem wartości jest $ZW = \\langle -3, 8\\rangle$. Wiadomo, że $f(-4) = 2$, $f(1) = 8$, a $f(5) = -3$. Podaj wartość największą i najmniejszą tej funkcji oraz argumenty, dla których są osiągane.",
+            "explanation": "Wartość największa wynosi 8 i jest osiągana dla argumentu $x = 1$.\nWartość najmniejsza wynosi -3 i jest osiągana dla argumentu $x = 5$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Odczytaj współrzędne punktów odpowiadających skrajnym wartościom zbioru wartości.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-10",
+        "title": "Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+        "description": "Lekcja 10: Przesunięcie wykresu wzdłuż osi OX: y = f(x - p). Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Zastąpienie $x$ przez $(x - p)$ przesuwa cały wykres funkcji poziomo wzdłuż osi OX: o $p$ jednostek w prawo, gdy $p > 0$ (wzór ma postać $f(x - p)$), lub o $|p|$ jednostek w lewo, gdy $p < 0$ (wzór ma postać $f(x + c)$).",
+          "matura_context": "Typowe zadanie: 'Wykres funkcji g otrzymano przez przesunięcie f(x) o 3 jednostki w lewo. Wzór funkcji g to...'.",
+          "core_formulas": "$y = f(x - p)$: przesunięcie o wektor $[p, 0]$. W prawo: $f(x - p)$, w lewo: $f(x + p)$.",
+          "worked_example": "Wykres $g(x) = f(x - 4)$ to wykres $f$ przesunięty o 4 jednostki W PRAWO.",
+          "exam_trap": "Intuicyjna pułapka znaku: minus w nawiasie $(x - 3)$ oznacza ruch w prawo (w stronę plusa), a plus $(x + 3)$ ruch w lewo!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-10-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $g(x) = f(x - 3)$ otrzymujemy przez przesunięcie wykresu funkcji $f$:",
+            "explanation": "Znak minus w nawiasie oznacza przesunięcie w prawo o 3 jednostki.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "o 3 jednostki w prawo wzdłuż osi OX",
+            "hint": "Pamiętaj o odwrotnym znaku przy przesunięciu poziomym.",
+            "options": [
+              "o 3 jednostki w prawo wzdłuż osi OX",
+              "o 3 jednostki w lewo wzdłuż osi OX",
+              "o 3 jednostki w górę wzdłuż osi OY",
+              "o 3 jednostki w dół wzdłuż osi OY"
+            ]
+          },
+          {
+            "id": "t-dzial-4-10-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Aby otrzymać wykres funkcji $g(x) = f(x + 5)$, należy wykres funkcji $f$ przesunąć wzdłuż osi OX o 5 jednostek:",
+            "explanation": "$x + 5 = x - (-5)$, czyli przesunięcie o wektor $[-5, 0]$ (w lewo).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "w lewo",
+            "hint": "Plus w nawiasie to przesunięcie w stronę ujemną osi OX.",
+            "options": [
+              "w lewo",
+              "w prawo",
+              "w górę",
+              "w dół"
+            ]
+          },
+          {
+            "id": "t-dzial-4-10-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt $(2, 7)$ należy do wykresu funkcji $f$. Do wykresu funkcji $g(x) = f(x - 4)$ należy punkt:",
+            "explanation": "Współrzędna x przesuwa się o 4 w prawo: $2 + 4 = 6$, współrzędna y nie ulega zmianie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(6, 7)$",
+            "hint": "Dodaj 4 do współrzędnej x punktu.",
+            "options": [
+              "$(6, 7)$",
+              "$(-2, 7)$",
+              "$(2, 11)$",
+              "$(2, 3)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-10-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Dziedziną funkcji $f$ jest $\\langle 0, 5\\rangle$. Dziedziną funkcji $g(x) = f(x - 2)$ jest $\\langle 2, 7\\rangle$.",
+            "explanation": "Każdy argument dziedziny przesuwa się o 2 w prawo: $\\langle 0+2, 5+2\\rangle = \\langle 2, 7\\rangle$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Przesuń oba końce przedziału dziedziny o 2 w prawo.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-10-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Miejsce zerowe funkcji $f$ wynosi $x_0 = -3$. Jakie jest miejsce zerowe funkcji $g(x) = f(x - 5)$?",
+            "explanation": "Skoro $f(-3) = 0$, to $g(x) = f(x - 5) = 0 \\implies x - 5 = -3 \\implies x = 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Miejsce zerowe przesuwa się o 5 jednostek w prawo."
+          },
+          {
+            "id": "t-dzial-4-10-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wzór funkcji powstałej przez przesunięcie paraboli $y = x^2$ o 2 jednostki w lewo to:",
+            "explanation": "Przesunięcie w lewo o 2 to podstawienie $(x + 2)$ w miejsce $x$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = (x + 2)^2$",
+            "hint": "Ruch w lewo to plus w nawiasie.",
+            "options": [
+              "$y = (x + 2)^2$",
+              "$y = (x - 2)^2$",
+              "$y = x^2 + 2$",
+              "$y = x^2 - 2$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-10-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przesunięcie wykresu wzdłuż osi OX zmienia zbiór wartości funkcji.",
+            "explanation": "Ruch poziomy zmienia współrzędne x, ale rzędne y (zbiór wartości) pozostają identyczne.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy przesuwanie wykresu w lewo/prawo zmienia wysokość punktów?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-4-10-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wykres funkcji $f$ ma zbiór wartości $ZW = \\langle -1, 4\\rangle$ oraz dziedzinę $D = \\langle -2, 6\\rangle$. Podaj dziedzinę i zbiór wartości funkcji $g(x) = f(x + 3)$.",
+            "explanation": "Przesunięcie $f(x + 3)$ oznacza przesunięcie wykresu o 3 jednostki w lewo (wektor $[-3, 0]$).\nDziedzina: przesuwamy końce o 3 w lewo: $D_g = \\langle -2 - 3, 6 - 3\\rangle = \\langle -5, 3\\rangle$.\nZbiór wartości: nie ulega zmianie przy przesunięciu poziomym, zatem $ZW_g = \\langle -1, 4\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Pamiętaj, że ruch wzdłuż osi OX zmienia dziedzinę, ale nie zbiór wartości.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-11",
+        "title": "Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+        "description": "Lekcja 11: Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Dodanie liczby $q$ do wartości funkcji przesuwa cały wykres pionowo wzdłuż osi OY: o $q$ jednostek w górę (gdy $q > 0$) lub o $|q|$ jednostek w dół (gdy $q < 0$).",
+          "matura_context": "Zadania polegające na wskazaniu wzoru po przesunięciu w pionie lub wyznaczeniu nowego zbioru wartości.",
+          "core_formulas": "$y = f(x) + q$: przesunięcie o wektor $[0, q]$. W górę: $+q$, w dół: $-q$.",
+          "worked_example": "Wykres $g(x) = f(x) - 5$ to wykres funkcji $f$ opuszczony o 5 jednostek w dół.",
+          "exam_trap": "Mylenie przesunięcia pionowego z poziomym: $f(x) + 3$ (dodajemy do y, ruch w pionie) to zupełnie co innego niż $f(x + 3)$ (dodajemy do x, ruch w poziomie)."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-11-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $g(x) = f(x) + 4$ powstał przez przesunięcie wykresu funkcji $f$:",
+            "explanation": "Liczba stojąca poza nawiasem modyfikuje rzędne y: $+4$ oznacza ruch w górę.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "o 4 jednostki w górę",
+            "hint": "Dodawanie na zewnątrz nawiasu to ruch w pionie.",
+            "options": [
+              "o 4 jednostki w górę",
+              "o 4 jednostki w dół",
+              "o 4 jednostki w prawo",
+              "o 4 jednostki w lewo"
+            ]
+          },
+          {
+            "id": "t-dzial-4-11-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Zbiorem wartości funkcji $f$ jest przedział $\\langle -2, 5\\rangle$. Zbiorem wartości funkcji $g(x) = f(x) - 3$ jest:",
+            "explanation": "Odejmujemy 3 od każdego końca zbioru wartości: $\\langle -2 - 3, 5 - 3\\rangle = \\langle -5, 2\\rangle$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\langle -5, 2\\rangle$",
+            "hint": "Odejmij 3 od obu końców przedziału wartości.",
+            "options": [
+              "$\\langle -5, 2\\rangle$",
+              "$\\langle 1, 8\\rangle$",
+              "$\\langle -2, 5\\rangle$",
+              "$\\langle -5, 5\\rangle$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-11-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przesunięcie wykresu funkcji wzdłuż osi OY nie zmienia jej dziedziny.",
+            "explanation": "Ruch w pionie zmienia współrzędne y, natomiast rzuty na oś OX (dziedzina) pozostają bez zmian.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy ruszanie wykresem w górę i w dół zmienia współrzędne x?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-11-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Wykres funkcji $f$ przecina oś OY w punkcie $(0, -3)$. W jakim punkcie oś OY przecina wykres funkcji $g(x) = f(x) + 7$? Podaj rzędną $y$ tego punktu.",
+            "explanation": "$g(0) = f(0) + 7 = -3 + 7 = 4$. Punkt to $(0, 4)$, rzędna $y = 4$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Dodaj 7 do rzędnej punktu przecięcia."
+          },
+          {
+            "id": "t-dzial-4-11-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Jeśli funkcja $f(x) = x^2$ zostanie przesunięta o 3 jednostki w dół, to jej wzór przyjmie postać:",
+            "explanation": "Przesunięcie w dół to odjęcie 3 od całego wzoru.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = x^2 - 3$",
+            "hint": "Odejmij 3 poza nawiasem potęgi.",
+            "options": [
+              "$y = x^2 - 3$",
+              "$y = (x - 3)^2$",
+              "$y = x^2 + 3$",
+              "$y = (x + 3)^2$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-11-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt $P = (3, -1)$ leży na wykresie funkcji $f$. Na wykresie funkcji $g(x) = f(x) + 5$ leży punkt o współrzędnych:",
+            "explanation": "Współrzędna x pozostaje równa 3, a do y dodajemy 5: $-1 + 5 = 4$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(3, 4)$",
+            "hint": "Dodaj 5 do współrzędnej y.",
+            "options": [
+              "$(3, 4)$",
+              "$(8, -1)$",
+              "$(3, -6)$",
+              "$(-2, -1)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-11-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja $f$ ma dwa miejsca zerowe, to funkcja $g(x) = f(x) + 10$ zawsze również ma dwa miejsca zerowe.",
+            "explanation": "Przesunięcie w górę o 10 może unieść cały wykres nad oś OX, przez co funkcja nie będzie miała żadnych miejsc zerowych.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Co się stanie z parabolą leżącą blisko osi po podniesieniu o 10 w górę?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-4-11-8",
+            "type": "OPEN_GENERAL",
+            "content": "Funkcja $f$ określona jest na przedziale $\\langle -1, 4\\rangle$ i ma zbiór wartości $\\langle 2, 9\\rangle$. Podaj dziedzinę oraz zbiór wartości funkcji $h(x) = f(x) - 6$.",
+            "explanation": "Dziedzina funkcji $h$ jest identyczna jak dziedzina funkcji $f$, ponieważ przesunięcie w pionie nie wpływa na argumenty: $D_h = \\langle -1, 4\\rangle$.\nZbiór wartości przesuwamy o 6 jednostek w dół: $ZW_h = \\langle 2 - 6, 9 - 6\\rangle = \\langle -4, 3\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Pamiętaj: dziedzina bez zmian, zbiór wartości pomniejszony o 6.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-12",
+        "title": "Przesunięcie o wektor [p, q]: y = f(x - p) + q",
+        "description": "Lekcja 12: Przesunięcie o wektor [p, q]: y = f(x - p) + q. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Złożenie przesunięcia poziomego i pionowego to przesunięcie o wektor $\\vec{u} = [p, q]$. Wykres funkcji $y = f(x)$ przekształca się we wzór $y = f(x - p) + q$. Każdy punkt $(x, y)$ przechodzi na punkt $(x + p, y + q)$.",
+          "matura_context": "Zadania z wektorem przesunięcia pojawiają się regularnie na maturze podstawowej.",
+          "core_formulas": "$\\vec{u} = [p, q] \\implies g(x) = f(x - p) + q$.",
+          "worked_example": "Przesunięcie o wektor $[-2, 3]$ daje wzór $g(x) = f(x - (-2)) + 3 = f(x + 2) + 3$.",
+          "exam_trap": "Mylenie znaków wektora: pierwsza współrzędna wektora $p$ wchodzi pod funkcję z minusem $(x - p)$, a druga $q$ na zewnątrz z plusem."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-12-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $g(x) = f(x - 2) + 5$ powstał przez przesunięcie wykresu funkcji $f$ o wektor:",
+            "explanation": "$p = 2$ (w prawo o 2), $q = 5$ (w górę o 5), stąd wektor $[2, 5]$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$[2, 5]$",
+            "hint": "Wyznacz p ze wzoru (x - p) oraz q.",
+            "options": [
+              "$[2, 5]$",
+              "$[-2, 5]$",
+              "$[2, -5]$",
+              "$[-2, -5]$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-12-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f$ przesunięto o wektor $\\vec{u} = [-3, -4]$. Wzór otrzymanej funkcji to:",
+            "explanation": "$f(x - (-3)) + (-4) = f(x + 3) - 4$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$g(x) = f(x + 3) - 4$",
+            "hint": "Minus w nawiasie daje plus przy ujemnym p.",
+            "options": [
+              "$g(x) = f(x + 3) - 4$",
+              "$g(x) = f(x - 3) - 4$",
+              "$g(x) = f(x + 3) + 4$",
+              "$g(x) = f(x - 3) + 4$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-12-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Wierzchołek paraboli $y = x^2$ po przesunięciu o wektor $\\vec{u} = [4, -1]$ ma współrzędne:",
+            "explanation": "Początkowy wierzchołek $(0, 0)$ przesunięty o $[4, -1]$ trafia w punkt $(4, -1)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(4, -1)$",
+            "hint": "Dodaj współrzędne wektora do punktu (0,0).",
+            "options": [
+              "$(4, -1)$",
+              "$(-4, -1)$",
+              "$(-4, 1)$",
+              "$(4, 1)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-12-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli wykres funkcji $f$ przesuniemy o wektor $[0, 0]$, to otrzymamy ten sam wykres.",
+            "explanation": "Wektor zerowy oznacza brak przesunięcia.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy wektor [0,0] cokolwiek przesuwa?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-12-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Wykres funkcji $f$ przechodzi przez punkt $A = (1, 3)$. Po przesunięciu o wektor $\\vec{u} = [-4, 5]$ punkt ten przechodzi w punkt $A'$. Ile wynosi suma współrzędnych punktu $A'$?",
+            "explanation": "$A' = (1 + (-4), 3 + 5) = (-3, 8)$. Suma współrzędnych: $-3 + 8 = 5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Oblicz współrzędne nowego punktu i je dodaj."
+          },
+          {
+            "id": "t-dzial-4-12-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dana jest funkcja $f(x) = \\frac{2}{x}$. Wykres przesunięto o wektor $[1, -3]$. Otrzymano wzór:",
+            "explanation": "Podstawiamy $(x - 1)$ w miejsce $x$ oraz odejmujemy 3 na końcu.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$g(x) = \\frac{2}{x - 1} - 3$",
+            "hint": "Zamień x na (x - 1) i dopisz -3.",
+            "options": [
+              "$g(x) = \\frac{2}{x - 1} - 3$",
+              "$g(x) = \\frac{2}{x + 1} - 3$",
+              "$g(x) = \\frac{2}{x - 1} + 3$",
+              "$g(x) = \\frac{2}{x} - 2$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-12-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przesunięcie o wektor $[3, 2]$ zachowuje monotoniczność funkcji.",
+            "explanation": "Przesunięcie sztywne (translacja) nie zmienia kształtu wykresu, więc jeśli funkcja rosła, nadal rośnie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy kształt wykresu zmienia się przy przesunięciu?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-12-8",
+            "type": "OPEN_GENERAL",
+            "content": "Funkcja $f$ ma dziedzinę $D_f = \\langle -3, 2\\rangle$ i zbiór wartości $ZW_f = \\langle 1, 7\\rangle$. Wyznacz dziedzinę i zbiór wartości funkcji $g(x) = f(x - 4) - 5$.",
+            "explanation": "Wzór $g(x) = f(x - 4) - 5$ oznacza przesunięcie o wektor $\\vec{u} = [4, -5]$.\n1) Dziedzina: przesuwamy o 4 w prawo:\n$D_g = \\langle -3 + 4, 2 + 4\\rangle = \\langle 1, 6\\rangle$.\n2) Zbiór wartości: przesuwamy o 5 w dół:\n$ZW_g = \\langle 1 - 5, 7 - 5\\rangle = \\langle -4, 2\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Dodaj 4 do dziedziny i odejmij 5 od zbioru wartości.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-13",
+        "title": "Symetria wykresu względem osi OX oraz osi OY",
+        "description": "Lekcja 13: Symetria wykresu względem osi OX oraz osi OY. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Symetria osiowa odbija wykres jak w lustrze:\n1. Względem osi OX: $y = -f(x)$ (odbicie góra-dół, zmieniają się znaki wartości y).\n2. Względem osi OY: $y = f(-x)$ (odbicie lewo-prawo, zmieniają się znaki argumentów x).",
+          "matura_context": "Zadania maturalne sprawdzają umiejętność rozpoznawania wzoru funkcji po odbiciu symetrycznym.",
+          "core_formulas": "$S_{OX}: y = -f(x)$, punkt $(x, y) \\to (x, -y)$. $S_{OY}: y = f(-x)$, punkt $(x, y) \\to (-x, y)$.",
+          "worked_example": "Dla $f(x) = x^2 - 3x$: po symetrii względem osi OX otrzymujemy $g(x) = -(x^2 - 3x) = -x^2 + 3x$.",
+          "exam_trap": "Mylenie $-f(x)$ z $f(-x)$: minus przed całym wzorem to odbicie względem OX, minus przy samym x to odbicie względem OY."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-13-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $g(x) = -f(x)$ otrzymujemy przez symetryczne odbicie wykresu funkcji $f$ względem:",
+            "explanation": "Minus przed całą funkcją zmienia znaki rzędnych y, co oznacza odbicie względem osi OX.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "osi OX",
+            "hint": "Pomyśl, która oś odpowiada za odbicie góra-dół.",
+            "options": [
+              "osi OX",
+              "osi OY",
+              "początku układu współrzędnych",
+              "prostej $y = x$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-13-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $g(x) = f(-x)$ otrzymujemy przez symetryczne odbicie wykresu funkcji $f$ względem:",
+            "explanation": "Minus przy argumencie x zmienia znaki odciętych, co daje odbicie lewo-prawo względem osi OY.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "osi OY",
+            "hint": "Odbicie lewo-prawo to symetria względem osi OY.",
+            "options": [
+              "osi OY",
+              "osi OX",
+              "prostej $y = -x$",
+              "punktu $(0, 0)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-13-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt $P = (-3, 4)$ leży na wykresie funkcji $f$. Po odbiciu symetrycznym względem osi OX otrzymujemy punkt o współrzędnych:",
+            "explanation": "W symetrii względem OX współrzędna x pozostaje bez zmian, a y zmienia znak na przeciwny: $(-3, -4)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-3, -4)$",
+            "hint": "Zmień znak rzędnej y.",
+            "options": [
+              "$(-3, -4)$",
+              "$(3, 4)$",
+              "$(3, -4)$",
+              "$(4, -3)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-13-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja $f$ jest rosnąca, to funkcja $g(x) = -f(x)$ jest malejąca.",
+            "explanation": "Odbicie góra-dół odwraca kierunek wzrostu wykresu: funkcja rosnąca staje się malejąca.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Wyobraź sobie rosnącą prostą odbitą do góry nogami.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-13-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Wykres funkcji $f$ przecina oś OY w punkcie $(0, 5)$. W jakim punkcie oś OY przecina wykres funkcji $g(x) = -f(x)$? Podaj rzędną $y$ tego punktu.",
+            "explanation": "$g(0) = -f(0) = -5$. Rzędna to -5.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-5",
+            "hint": "Zmień znak wartości dla x = 0."
+          },
+          {
+            "id": "t-dzial-4-13-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dana jest funkcja $f(x) = 2x - 3$. Wzór funkcji $g$, której wykres jest symetryczny do wykresu $f$ względem osi OY, to:",
+            "explanation": "$g(x) = f(-x) = 2(-x) - 3 = -2x - 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$g(x) = -2x - 3$",
+            "hint": "Wstaw (-x) w miejsce każdego x we wzorze.",
+            "options": [
+              "$g(x) = -2x - 3$",
+              "$g(x) = -2x + 3$",
+              "$g(x) = 2x + 3$",
+              "$g(x) = 2x - 3$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-13-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Symetria względem osi OX zmienia miejsca zerowe funkcji.",
+            "explanation": "Jeśli $f(x_0) = 0$, to $-f(x_0) = -0 = 0$. Miejsca zerowe leżą na osi OX i w symetrii względem niej nie zmieniają położenia.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Punkty leżące na osi symetrii nie zmieniają położenia.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-4-13-8",
+            "type": "OPEN_GENERAL",
+            "content": "Funkcja $f$ ma dziedzinę $D_f = \\langle -2, 5\\rangle$ i zbiór wartości $ZW_f = \\langle -4, 3\\rangle$. Podaj dziedzinę i zbiór wartości funkcji $g(x) = -f(x)$ oraz funkcji $h(x) = f(-x)$.",
+            "explanation": "1) Dla $g(x) = -f(x)$ (symetria względem OX):\nDziedzina nie ulega zmianie: $D_g = \\langle -2, 5\\rangle$.\nZbiór wartości: odbijamy rzędne: $\\langle -3, 4\\rangle$ (ponieważ $-(-4) = 4$ i $-(3) = -3$).\n2) Dla $h(x) = f(-x)$ (symetria względem OY):\nDziedzina zmienia znaki: $D_h = \\langle -5, 2\\rangle$.\nZbiór wartości nie ulega zmianie: $ZW_h = \\langle -4, 3\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Pamiętaj: symetria OX zmienia zbiór wartości, symetria OY zmienia dziedzinę.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-14",
+        "title": "Wprowadzenie do funkcji wykładniczej: Wykres y = a^x",
+        "description": "Lekcja 14: Wprowadzenie do funkcji wykładniczej: Wykres y = a^x. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Funkcja wykładnicza ma postać $f(x) = a^x$, gdzie podstawa $a > 0$ i $a \\neq 1$. Jej dziedziną jest cały zbiór $\\mathbb{R}$, a zbiorem wartości liczby ściśle dodatnie $(0, +\\infty)$. Dla $a > 1$ funkcja jest rosnąca, a dla $0 < a < 1$ malejąca. Wykres zawsze przechodzi przez punkt $(0, 1)$.",
+          "matura_context": "Na maturze pojawiają się zadania z odczytywaniem wartości $a^x$, wyznaczaniem podstawy $a$ z punktu oraz badaniem monotoniczności.",
+          "core_formulas": "$f(x) = a^x$ ($a > 0, a \\neq 1$). $D = \\mathbb{R}, ZW = (0, +\\infty)$. $f(0) = 1$. Oś OX ($y = 0$) jest asymptotą poziomą.",
+          "worked_example": "Dla $f(x) = 2^x$: $f(0)=1, f(1)=2, f(2)=4, f(-1)=\\frac{1}{2}$. Funkcja rośnie.",
+          "exam_trap": "Przekonanie, że $a^x$ może przyjąć wartość ujemną lub zero. Wyrażenie $a^x > 0$ dla każdego rzeczywistego $x$!"
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-14-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres każdej funkcji wykładniczej postaci $f(x) = a^x$ (dla $a > 0, a \\neq 1$) przechodzi przez punkt:",
+            "explanation": "$a^0 = 1$ dla dowolnej liczby $a \\neq 0$, stąd punkt $(0, 1)$ zawsze leży na wykresie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 1)$",
+            "hint": "Oblicz wartość a^0.",
+            "options": [
+              "$(0, 1)$",
+              "$(1, 0)$",
+              "$(0, 0)$",
+              "$(1, 1)$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-14-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji wykładniczej $f(x) = a^x$ przechodzi przez punkt $(2, 9)$. Podstawa $a$ jest równa:",
+            "explanation": "$f(2) = a^2 = 9$. Ponieważ w funkcji wykładniczej $a > 0$, otrzymujemy $a = 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Podstaw punkt do wzoru i pamiętaj, że podstawa a musi być dodatnia.",
+            "options": [
+              "3",
+              "-3",
+              "9",
+              "81"
+            ]
+          },
+          {
+            "id": "t-dzial-4-14-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż funkcję wykładniczą, która jest malejąca w całej dziedzinie:",
+            "explanation": "Funkcja wykładnicza jest malejąca, gdy podstawa spełnia warunek $0 < a < 1$. $\\frac{1}{3} \\in (0, 1)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = \\left(\\frac{1}{3}\\right)^x$",
+            "hint": "Dla jakiej podstawy a funkcja wykładnicza maleje?",
+            "options": [
+              "$f(x) = \\left(\\frac{1}{3}\\right)^x$",
+              "$f(x) = 3^x$",
+              "$f(x) = 1{,}5^x$",
+              "$f(x) = 2^x$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-14-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Zbiorem wartości funkcji $f(x) = 3^x$ jest przedział $\\langle 0, +\\infty)$.",
+            "explanation": "Zbiorem wartości jest przedział otwarty $(0, +\\infty)$. Funkcja wykładnicza nigdy nie osiąga zera.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy 3^x może być równe 0?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "t-dzial-4-14-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla funkcji $f(x) = 2^x$ oblicz wartość wyrażenia $f(3) - f(-1)$. Podaj wynik w postaci dziesiętnej.",
+            "explanation": "$f(3) = 2^3 = 8$, $f(-1) = 2^{-1} = 0{,}5$. Różnica: $8 - 0{,}5 = 7{,}5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "7.5",
+            "hint": "Oblicz 2 do potęgi 3 oraz 2 do potęgi -1."
+          },
+          {
+            "id": "t-dzial-4-14-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Asymptotą poziomą wykresu funkcji $f(x) = 5^x$ jest prosta o równaniu:",
+            "explanation": "Wykres zbliża się dowolnie blisko do osi OX ($y = 0$) dla $x \\to -\\infty$, ale jej nie przecina.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = 0$",
+            "hint": "Do jakiej prostej zbliża się wykres dla bardzo małych x?",
+            "options": [
+              "$y = 0$",
+              "$x = 0$",
+              "$y = 1$",
+              "$y = 5$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-14-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Równanie $2^x = -4$ nie ma rozwiązań w zbiorze liczb rzeczywistych.",
+            "explanation": "Funkcja $2^x > 0$ dla każdego $x \\in \\mathbb{R}$, więc nie może przyjąć wartości ujemnej.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy potęga liczby dodatniej może być ujemna?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-14-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wykres funkcji $f(x) = a^x + q$ przechodzi przez punkty $(0, -2)$ oraz $(2, 6)$. Wyznacz współczynniki $a$ oraz $q$.",
+            "explanation": "Krok 1: Podstawiamy punkt $(0, -2)$:\n$f(0) = a^0 + q = -2 \\implies 1 + q = -2 \\implies q = -3$.\nKrok 2: Wzór przyjmuje postać $f(x) = a^x - 3$. Podstawiamy punkt $(2, 6)$:\n$f(2) = a^2 - 3 = 6 \\implies a^2 = 9$.\nPonieważ podstawa funkcji wykładniczej $a > 0$, otrzymujemy $a = 3$.\nOdpowiedź: $a = 3$, $q = -3$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zacznij od punktu o odciętej 0, pamiętając że a^0 = 1.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-dzial-4-15",
+        "title": "Proporcjonalność odwrotna: Wykres y = a/x i modelowanie sytuacji praktycznych",
+        "description": "Lekcja 15: Proporcjonalność odwrotna: Wykres y = a/x i modelowanie sytuacji praktycznych. Teoria, przykłady i zadania maturalne.",
+        "duration": "5 min",
+        "theory_pill": {
+          "concept_essence": "Proporcjonalność odwrotna to zależność postaci $y = \\frac{a}{x}$ ($a \\neq 0$). Iloczyn wielkości jest stały: $x \\cdot y = a$. Wykresem jest hiperbola składająca się z dwóch gałęzi z asymptotami $x = 0$ i $y = 0$. Stosuje się ją do modelowania podziału pracy, prędkości i czasu przy stałej drodze.",
+          "matura_context": "Zadania z hiperbolą i proporcjonalnością odwrotną pojawiają się w kontekście odczytywania współczynnika a lub w zadaniach tekstowych.",
+          "core_formulas": "$f(x) = \\frac{a}{x}$, $D = \\mathbb{R} \\setminus \\{0\\}$, $ZW = \\mathbb{R} \\setminus \\{0\\}$. Stały iloczyn: $x \\cdot y = a$.",
+          "worked_example": "Jeśli 4 robotników wykonuje pracę w 6 dni ($a = 4 \\cdot 6 = 24$), to 3 robotników wykona ją w $24 : 3 = 8$ dni.",
+          "exam_trap": "Mylenie proporcjonalności prostej ($y = ax$, stały iloraz $\\frac{y}{x}$) z proporcjonalnością odwrotną ($y = \\frac{a}{x}$, stały iloczyn $x \\cdot y$)."
+        },
+        "tasks": [
+          {
+            "id": "t-dzial-4-15-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres proporcjonalności odwrotnej $y = \\frac{a}{x}$ przechodzi przez punkt $P = (3, 4)$. Współczynnik $a$ jest równy:",
+            "explanation": "$a = x \\cdot y = 3 \\cdot 4 = 12$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Pomnóż współrzędną x przez y.",
+            "options": [
+              "12",
+              "7",
+              "$\\frac{4}{3}$",
+              "1"
+            ]
+          },
+          {
+            "id": "t-dzial-4-15-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji $f(x) = \\frac{6}{x}$ określonej dla $x \\neq 0$, wartość $f(-2)$ wynosi:",
+            "explanation": "$f(-2) = \\frac{6}{-2} = -3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Podstaw -2 w miejsce x.",
+            "options": [
+              "-3",
+              "3",
+              "-4",
+              "4"
+            ]
+          },
+          {
+            "id": "t-dzial-4-15-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wykres funkcji $f(x) = \\frac{a}{x}$ nie ma punktów wspólnych z osią OX ani z osią OY.",
+            "explanation": "Proste $x = 0$ i $y = 0$ są asymptotami hiperboli; ułamek $\\frac{a}{x}$ nigdy nie jest równy 0 dla $a \\neq 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy ułamek o stałym liczniku może się wyzerować?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-15-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Jeśli 6 jednakowych maszyn wykonuje pewne zlecenie w ciągu 10 godzin, to ile godzin zajmie wykonanie tego samego zlecenia 4 takim maszynom?",
+            "explanation": "Stała praca: $6 \\cdot 10 = 60$ maszynogodzin. Czas dla 4 maszyn: $60 : 4 = 15$ godzin.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "15",
+            "hint": "Iloczyn liczby maszyn i czasu jest stały."
+          },
+          {
+            "id": "t-dzial-4-15-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = \\frac{a}{x}$ leży w I i III ćwiartce układu współrzędnych wtedy i tylko wtedy, gdy:",
+            "explanation": "Gdy $a > 0$, to dla $x > 0$ mamy $y > 0$ (I ćwiartka), a dla $x < 0$ mamy $y < 0$ (III ćwiartka).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$a > 0$",
+            "hint": "Sprawdź znaki ilorazu w ćwiartkach.",
+            "options": [
+              "$a > 0$",
+              "$a < 0$",
+              "$a = 1$",
+              "$a \\ge 0$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-15-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Kierowca przejechał trasę ze średnią prędkością $60\\text{ km/h}$ w czasie 3 godzin. Z jaką prędkością musiałby jechać, aby tę samą trasę pokonać w 2 godziny?",
+            "explanation": "Droga $s = v \\cdot t = 60 \\cdot 3 = 180\\text{ km}$. Nowa prędkość: $v = \\frac{s}{t} = \\frac{180}{2} = 90\\text{ km/h}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$90\\text{ km/h}$",
+            "hint": "Oblicz najpierw całą drogę.",
+            "options": [
+              "$90\\text{ km/h}$",
+              "$80\\text{ km/h}$",
+              "$100\\text{ km/h}$",
+              "$75\\text{ km/h}$"
+            ]
+          },
+          {
+            "id": "t-dzial-4-15-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja $f(x) = \\frac{4}{x}$ jest malejąca w przedziale $(-\\infty, 0)$ oraz malejąca w przedziale $(0, +\\infty)$.",
+            "explanation": "Na każdej z gałęzi osobno funkcja jest malejąca.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź zachowanie wartości na każdej gałęzi hiperboli.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "t-dzial-4-15-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wykres funkcji $f(x) = \\frac{a}{x}$ przesunięto o wektor $\\vec{u} = [2, -1]$ i otrzymano wykres funkcji $g$. Wiadomo, że wykres funkcji $g$ przechodzi przez punkt $A = (5, 1)$. Wyznacz wzór funkcji $g$ oraz jej dziedzinę.",
+            "explanation": "Krok 1: Wzór po przesunięciu: $g(x) = \\frac{a}{x - 2} - 1$.\nKrok 2: Podstawiamy współrzędne punktu $A = (5, 1)$:\n$1 = \\frac{a}{5 - 2} - 1 \\implies 1 = \\frac{a}{3} - 1 \\implies \\frac{a}{3} = 2 \\implies a = 6$.\nKrok 3: Wzór funkcji: $g(x) = \\frac{6}{x - 2} - 1$.\nKrok 4: Dziedzina: mianownik $x - 2 \\neq 0 \\implies x \\neq 2$, czyli $D_g = \\mathbb{R} \\setminus \\{2\\}$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz postać po przesunięciu i wyznacz parametr a podstawiając punkt A.",
+              "Zwróć uwagę na założenia dziedziny i przekształcenia algebraiczne."
+            ]
+          }
+        ]
+      }
+    ],
+    "final_test": {
+      "id": "test-dzial-4",
+      "title": "Sprawdzian wiedzy: Dział 4: Własności Funkcji i Odczytywanie Wykresów",
+      "tasks": [
+        "t-dzial-4-1-1",
+        "t-dzial-4-2-1",
+        "t-dzial-4-3-1",
+        "t-dzial-4-4-1",
+        "t-dzial-4-5-1",
+        "t-dzial-4-6-1",
+        "t-dzial-4-7-1",
+        "t-dzial-4-8-1",
+        "t-dzial-4-9-1",
+        "t-dzial-4-10-1",
+        "t-dzial-4-11-1",
+        "t-dzial-4-12-1",
+        "t-dzial-4-13-1",
+        "t-dzial-4-14-1",
+        "t-dzial-4-15-1"
+      ]
+    }
+  }
+}

@@ -227,7 +227,7 @@ export function DashboardView({
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-        className="bg-[#121A26] border border-white/10 hover:border-[#00C2FF]/40 rounded-2xl p-4 sm:p-5 mb-3.5 relative overflow-hidden transition-colors shadow-sm"
+        className="bg-[#121A26] border border-white/10 hover:border-[#FFB800]/40 rounded-2xl p-4 sm:p-5 mb-3.5 relative overflow-hidden transition-colors shadow-sm"
       >
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
@@ -255,7 +255,7 @@ export function DashboardView({
             <button
               id="dashboard-resume-learning-button"
               onClick={handleResumeClick}
-              className="shrink-0 bg-[#00C2FF] hover:bg-[#38BDF8] text-[#080C12] font-black text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-xl active:scale-95 transition-all flex items-center gap-2 cursor-pointer shadow-[0_0_18px_rgba(0,194,255,0.35)]"
+              className="shrink-0 bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-xl active:scale-95 transition-all flex items-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(255,184,0,0.35)]"
             >
               <span>{nextUp ? 'WZNÓW NAUKĘ' : 'OTWÓRZ MAPĘ'}</span>
               <ArrowRight size={15} strokeWidth={2.5} />
@@ -343,7 +343,7 @@ export function DashboardView({
         {/* Nagłówek: Czysty minimalizm bez kapitalików na siłę i bez zbędnych badge'y */}
         <div className="flex items-center mb-3 px-0.5">
           <div className="flex items-center gap-2">
-            <BarChart3 size={15} className="text-[#00C2FF]" />
+            <BarChart3 size={15} className="text-[#FFB800]" />
             <h3 className="text-sm font-medium text-slate-200">
               Twoje postępy
             </h3>
@@ -374,7 +374,7 @@ export function DashboardView({
 
           {/* KARTA 2: SKUTECZNOŚĆ */}
           <div className="bg-[#121824]/80 border border-white/5 hover:border-white/10 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-[#00C2FF]/10 border border-[#00C2FF]/20 flex items-center justify-center text-[#00C2FF] shrink-0 mb-3">
+            <div className="w-8 h-8 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-[#FFB800] shrink-0 mb-3">
               <Zap size={16} strokeWidth={2.2} />
             </div>
 
