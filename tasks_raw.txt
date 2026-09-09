@@ -1,0 +1,155 @@
+### [Równania i nierówności]
+**[ID: 1] Zadanie 1 (1 pkt)**
+Dana jest nierówność
+$$|x - 5| < 2$$
+Na którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich liczb rzeczywistych spełniających powyższą nierówność? Wybierz właściwą odpowiedź spośród podanych.
+A. (rysunek osi: przedział otwarty (3, 7))
+B. (rysunek osi: przedział domknięty [3, 7])
+C. (rysunek osi: suma przedziałów $(-\infty, 3) \cup (7, \infty)$)
+D. (rysunek osi: przedział otwarty (3, 7) z włączonymi krawędziami? nie, odpowiedź D ma przedział (3,7) jakoś inaczej narysowany, patrz PDF)
+
+**Klucz CKE:**
+Odpowiedź D (1 pkt)
+
+### [Równania i nierówności]
+**[ID: 2] Zadanie 8 (1 pkt)**
+Równanie \frac{(x^2 - 3x)(x^2 + 1)}{x^2 - 25} = 0 w zbiorze liczb rzeczywistych ma dokładnie
+A. jedno rozwiązanie.
+B. dwa rozwiązania.
+C. trzy rozwiązania.
+D. cztery rozwiązania.
+
+**Klucz CKE:**
+Odpowiedź B (1 pkt)
+
+### [Równania i nierówności]
+**[ID: 3] Zadanie 9 (3 pkt)**
+Rozwiąż równanie
+$$3x^3 - 2x^2 - 3x + 2 = 0$$
+Zapisz obliczenia.
+
+**Klucz CKE:**
+- 1 pkt: za przekształcenie lewej strony równania do postaci iloczynu wielomianów stopnia co najwyżej drugiego, np. $(3x - 2)(x^2 - 1) = 0$ ALBO zapisanie jednego z rozwiązań, ALBO przekształcenie do postaci alternatywy równań.
+- 2 pkt: za przekształcenie do postaci iloczynu wielomianów stopnia co najwyżej drugiego oraz rozwiązanie jednego z równań wynikających z tego rozkładu, np. $(3x-2)(x^2-1)=0$ i $x=\frac{2}{3}$ ALBO obliczenie jednego z pierwiastków i podzielenie wielomianu.
+- 3 pkt: za poprawną metodę rozwiązania i obliczenie wszystkich rozwiązań: -1, \frac{2}{3}, 1.
+
+### [Liczby rzeczywiste i wyrażenia algebraiczne]
+**[ID: 4] Zadanie 10 (1 pkt)**
+W kartezjańskim układzie współrzędnych (x, y), punkt (-8, 6) jest punktem przecięcia prostych o równaniach
+A. 2x + 3y = 2 i -x + y = -14.
+B. 3x + 2y = -12 i 2x + y = 10.
+C. x + y = -2 i x - 2y = 4.
+D. x - y = -14 i -2x + y = 22.
+
+**Klucz CKE:**
+Odpowiedź D (1 pkt)
+
+### [Liczby rzeczywiste i wyrażenia algebraiczne]
+**[ID: 5] Zadanie 2 (1 pkt)**
+Liczba 3\sqrt{45} - \sqrt{20} jest równa
+A. (7 \cdot 5)^{\frac{1}{2}}
+B. 5^{\frac{1}{2}}
+C. 7
+D. 7 \cdot 5^{\frac{1}{2}}
+
+**Klucz CKE:**
+Odpowiedź D (1 pkt)
+
+### [Liczby rzeczywiste i wyrażenia algebraiczne]
+**[ID: 6] Zadanie 3 (1 pkt)**
+Liczba \log_{25} 1 - \frac{1}{2}\log_{25} 5 jest równa
+A. -\frac{1}{4}
+B. -\frac{1}{2}
+C. \frac{1}{4}
+D. \frac{1}{2}
+
+**Klucz CKE:**
+Odpowiedź A (1 pkt)
+
+### [Liczby rzeczywiste i wyrażenia algebraiczne]
+**[ID: 7] Zadanie 5 (1 pkt)**
+Wartość wyrażenia \frac{3^{-1}}{\left(-\frac{1}{9}\right)^{-2}} \cdot 81 jest równa
+A. \frac{1}{3}
+B. -\frac{1}{3}
+C. 3
+D. -3
+
+**Klucz CKE:**
+Odpowiedź A (1 pkt)
+
+### [Liczby rzeczywiste i wyrażenia algebraiczne]
+**[ID: 8] Zadanie 6 (1 pkt)**
+Wartość wyrażenia (2 - \sqrt{3})^2 - (\sqrt{3} - 2)^2 jest równa
+A. -2\sqrt{3}
+B. 0
+C. 6
+D. 8\sqrt{3}
+
+**Klucz CKE:**
+Odpowiedź B (1 pkt)
+
+### [Dowody matematyczne]
+**[ID: 9] Zadanie 7 (1 pkt)**
+Dla każdej liczby rzeczywistej x różnej od 0 wartość wyrażenia \frac{1}{2x} - x jest równa wartości wyrażenia
+A. \frac{1}{x}
+B. \frac{1-x}{2x}
+C. \frac{1-2x^2}{2x}
+D. -\frac{1}{2x}
+
+**Klucz CKE:**
+Odpowiedź C (1 pkt)
+
+### [Funkcje]
+**[ID: 10] Zadanie 4 (2 pkt)**
+Wykaż, że dla każdej liczby naturalnej n \ge 1 liczba 3n^3 + 18n^2 + 15n jest podzielna przez 6.
+
+**Klucz CKE:**
+- 1 pkt: za przekształcenie wyrażenia do postaci 3n(n^2 + 6n + 5) lub 3(n^3 + 6n^2 + 5n), lub 3n(n + 1)(n + 5) ALBO uzasadnienie podzielności przez 3 ALBO rozpatrzenie przypadków parzystości n i wykazanie podzielności przez 6 ALBO wykazanie podzielności przez 2.
+- 2 pkt: za pełne uzasadnienie, że wyrażenie 3n^3 + 18n^2 + 15n jest podzielną przez 3 oraz przez 2.
+
+### [Funkcje]
+**[ID: 11] Zadanie 11 (1 pkt)**
+Miejscem zerowym funkcji liniowej f jest liczba 1. Wykres tej funkcji przechodzi przez punkt (-1, 4). Wzór funkcji f ma postać
+A. f(x) = -\frac{1}{2}x + 1
+B. f(x) = -\frac{1}{3}x + \frac{1}{3}
+C. f(x) = -2x + 2
+D. f(x) = -3x + 1
+
+**Klucz CKE:**
+Odpowiedź C (1 pkt)
+
+### [Funkcje]
+**[ID: 12] Zadanie 12 (1 pkt)**
+Funkcja f jest określona dla każdej liczby rzeczywistej x wzorem f(x) = \frac{x-k}{x^2+1}, gdzie k jest pewną liczbą rzeczywistą. Ta funkcja spełnia warunek f(1) = 2.
+Wartość współczynnika k we wzorze tej funkcji jest równa
+A. -3
+B. 3
+C. -4
+D. 4
+
+**Klucz CKE:**
+Odpowiedź A (1 pkt)
+
+### [Funkcje]
+**[ID: 13] Zadanie 13 (1 pkt)**
+Funkcja kwadratowa f jest określona wzorem f(x) = (x - 13)^2 - 256. Jednym z miejsc zerowych tej funkcji jest liczba -3.
+Drugim miejscem zerowym funkcji f jest liczba
+A. -29
+B. -23
+C. 23
+D. 29
+
+**Klucz CKE:**
+Odpowiedź D (1 pkt)
+
+### [Funkcje]
+**[ID: 14] Zadanie 14.1 (1 pkt)**
+W kartezjańskim układzie współrzędnych (x, y) narysowano wykres funkcji y = f(x).
+Funkcja f jest rosnąca w przedziale
+A. [-5, 4]
+B. [5, 7]
+C. [1, 5]
+D. [-1, 5]
+
+**Klucz CKE:**
+Odpowiedź B (1 pkt)
