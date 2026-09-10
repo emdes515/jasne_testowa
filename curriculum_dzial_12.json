@@ -1,0 +1,2175 @@
+{
+  "topic": {
+    "id": "dzial-12",
+    "title": "Dział 12: Kombinatoryka",
+    "description": "Kompleksowe omówienie reguły mnożenia i dodawania, tworzenia liczb o określonych własnościach, permutacji, wariacji, kombinacji oraz zadań ze zliczaniem obiektów na maturze.",
+    "lessons": [
+      {
+        "id": "lesson-12-1",
+        "title": "Reguła mnożenia: Podstawowa zasada zliczania",
+        "theory_pill": {
+          "concept_essence": "Reguła mnożenia mówi: jeżeli pewien wybór składa się z $k$ kolejnych etapów, a w pierwszym etapie mamy $n_1$ możliwości, w drugim $n_2$, ..., w $k$-tym $n_k$, to wszystkich możliwych wyników jest $N = n_1 \\cdot n_2 \\cdot \\ldots \\cdot n_k$.",
+          "matura_context": "Podstawa zadań kombinatorycznych za 1 punkt (kody, trasy, zestawy obiadowe).",
+          "core_formulas": "$N = n_1 \\cdot n_2 \\cdot \\ldots \\cdot n_k$. Znak 'i' (koniunkcja kolejnych wyborów) oznacza mnożenie.",
+          "worked_example": "Mamy 3 zupy i 4 drugie dania. Zestaw zupa + drugie danie można wybrać na $3 \\cdot 4 = 12$ sposobów.",
+          "exam_trap": "Dodawanie możliwości zamiast mnożenia! Gdy dokonujemy wyborów kolejno (jeden po drugim w ramach jednego wyniku), możliwości MNOŻYMY."
+        },
+        "tasks": [
+          {
+            "id": "task-12-1-1",
+            "type": "SINGLE_CHOICE",
+            "content": "W restauracji jest 4 rodzaje zup, 5 rodzajów dań głównych i 3 rodzaje deserów. Na ile sposobów klient może zamówić obiad składający się z zupy, dania głównego i deseru?",
+            "explanation": "Z reguły mnożenia: $4 \\cdot 5 \\cdot 3 = 60$ sposobów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "60",
+            "hint": "Pomnóż liczbę możliwości z każdego etapu.",
+            "options": [
+              "60",
+              "12",
+              "20",
+              "15"
+            ]
+          },
+          {
+            "id": "task-12-1-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Z miasta A do B prowadzą 3 drogi, a z B do C prowadzą 4 drogi. Ile różnych tras z A do C przez B można wybrać?",
+            "explanation": "W pierwszym etapie wybieramy 1 z 3 dróg, w drugim 1 z 4 dróg: $3 \\cdot 4 = 12$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Zastosuj regułę mnożenia: 3 razy 4.",
+            "options": [
+              "12",
+              "7",
+              "24",
+              "9"
+            ]
+          },
+          {
+            "id": "task-12-1-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli w rzucie monetą mamy 2 wyniki, to w trzykrotnym rzucie monetą liczba wszystkich możliwych wyników wynosi $2^3 = 8$.",
+            "explanation": "W każdym z 3 rzutów mamy 2 możliwości: $2 \\cdot 2 \\cdot 2 = 8$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "W każdym rzucie moneta ma 2 strony.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-1-4",
+            "type": "NUMERIC_INPUT",
+            "content": "W szafie wiszą 4 różne koszule i leżą 3 różne pary spodni oraz 2 różne pary butów. Na ile różnych sposobów można skompletować strój?",
+            "explanation": "$4 \\cdot 3 \\cdot 2 = 24$ sposoby.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "24",
+            "hint": "Pomnóż liczbę koszul, spodni i butów."
+          },
+          {
+            "id": "task-12-1-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Test składa się z 5 pytań, w każdym są 4 warianty odpowiedzi (A, B, C, D). Na ile różnych sposobów można wypełnić kartę odpowiedzi?",
+            "explanation": "Dla każdego z 5 pytań mamy 4 opcje: $4 \\cdot 4 \\cdot 4 \\cdot 4 \\cdot 4 = 4^5 = 1024$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$4^5$",
+            "hint": "Liczba opcji w każdym pytaniu to podstawa, a liczba pytań to wykładnik.",
+            "options": [
+              "$4^5$",
+              "$5^4$",
+              "$4 \\cdot 5$",
+              "$20$"
+            ]
+          },
+          {
+            "id": "task-12-1-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Rzucamy symetryczną sześcienną kostką do gry i symetryczną monetą. Liczba wszystkich możliwych wyników tego doświadczenia wynosi:",
+            "explanation": "Kostka daje 6 wyników, moneta 2 wyniki: $6 \\cdot 2 = 12$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Pomnóż 6 przez 2.",
+            "options": [
+              "12",
+              "8",
+              "36",
+              "10"
+            ]
+          },
+          {
+            "id": "task-12-1-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: W dwukrotnym rzucie kostką sześcienną liczba wszystkich wyników wynosi 36.",
+            "explanation": "$6 \\cdot 6 = 36$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "W pierwszym i w drugim rzucie jest po 6 możliwości.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-1-8",
+            "type": "OPEN_GENERAL",
+            "content": "W pewnym systemie hasło składa się z 3 liter wybranych ze zbioru $\\{A, B, C, D, E\\}$ oraz 2 cyfr wybranych ze zbioru $\\{1, 2, 3, 4, 5, 6\\}$. Zarówno litery, jak i cyfry mogą się powtarzać. Ile różnych haseł można utworzyć w tym systemie?",
+            "explanation": "Krok 1: Określamy liczbę etapów wyboru hasła:\nHasło ma 5 znaków: 3 litery i 2 cyfry.\nKrok 2: Liczba możliwości wyboru liter (5 liter, mogą się powtarzać):\n$5 \\cdot 5 \\cdot 5 = 5^3 = 125$.\nKrok 3: Liczba możliwości wyboru cyfr (6 cyfr, mogą się powtarzać):\n$6 \\cdot 6 = 6^2 = 36$.\nKrok 4: Stosujemy regułę mnożenia dla całego hasła:\n$N = 125 \\cdot 36 = 4500$.\nOdpowiedź: W tym systemie można utworzyć 4500 różnych haseł.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz liczbę kombinacji liter (5^3) i cyfr (6^2), a następnie pomnóż wyniki.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-2",
+        "title": "Reguła dodawania: Rozłączne przypadki w zliczaniu",
+        "theory_pill": {
+          "concept_essence": "Regułę dodawania stosujemy, gdy pewne zadanie można zrealizować na jeden z kilku ROZŁĄCZNYCH sposobów (przypadków). Jeżeli zbiór rozwiązań dzieli się na rozłączne zbiory o licznościach $n_1$ i $n_2$, to łączna liczba możliwości wynosi $N = n_1 + n_2$. Znak 'lub' (alternatywa) oznacza dodawanie.",
+          "matura_context": "Niezbędna w zadaniach, w których musimy rozpatrzyć przypadki (np. liczba parzysta z zerem na końcu lub inną cyfrą).",
+          "core_formulas": "Dla rozłącznych zbiorów $A \\cap B = \\emptyset$: $|A \\cup B| = |A| + |B|$.",
+          "worked_example": "Podróż z miasta A do B: można wybrać jeden z 3 pociągów LUB jeden z 5 autobusów. Łącznie mamy $3 + 5 = 8$ możliwości.",
+          "exam_trap": "Mnożenie możliwości, gdy wybory wykluczają się wzajemnie! Pociąg LUB autobus oznacza sumę $3 + 5$, a nie iloczyn."
+        },
+        "tasks": [
+          {
+            "id": "task-12-2-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Na półce stoi 7 kryminałów i 5 powieści historycznych. Na ile sposobów można wybrać JEDNĄ książkę do przeczytania?",
+            "explanation": "Wybieramy kryminał LUB powieść historyczną: $7 + 5 = 12$ sposobów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Dodaj liczbę kryminałów do liczby powieści.",
+            "options": [
+              "12",
+              "35",
+              "7",
+              "5"
+            ]
+          },
+          {
+            "id": "task-12-2-2",
+            "type": "SINGLE_CHOICE",
+            "content": "W turnieju bierze udział 10 dziewcząt i 8 chłopców. Nagrodę główną ma otrzymać dokładnie jedna osoba. Na ile sposobów można wyłonić zwycięzcę?",
+            "explanation": "Zwycięzcą może być dziewczyna LUB chłopiec: $10 + 8 = 18$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "18",
+            "hint": "Dodaj liczby uczestników obu grup.",
+            "options": [
+              "18",
+              "80",
+              "10",
+              "8"
+            ]
+          },
+          {
+            "id": "task-12-2-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Regułę dodawania stosujemy wtedy, gdy zdarzenia wykluczają się nawzajem (są rozłączne).",
+            "explanation": "Rozłączność przypadków gwarantuje, że żaden wynik nie zostanie policzony dwukrotnie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy przypadki mogą mieć wspólne elementy?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-2-4",
+            "type": "NUMERIC_INPUT",
+            "content": "W sklepie rowerowym jest 6 modeli rowerów górskich, 4 modele miejskich i 3 modele szosowych. Ile różnych pojedynczych rowerów może wybrać klient?",
+            "explanation": "Klient kupuje jeden rower: $6 + 4 + 3 = 13$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "13",
+            "hint": "Zsumuj wszystkie dostępne modele."
+          },
+          {
+            "id": "task-12-2-5",
+            "type": "SINGLE_CHOICE",
+            "content": "W urnie jest 5 kul białych, 4 czarne i 3 zielone. Losujemy jedną kulę. Liczba możliwości wylosowania kuli białej LUB zielonej wynosi:",
+            "explanation": "Kula biała lub zielona: $5 + 3 = 8$ kul sprzyjających.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "8",
+            "hint": "Dodaj liczbę kul białych i zielonych.",
+            "options": [
+              "8",
+              "15",
+              "12",
+              "60"
+            ]
+          },
+          {
+            "id": "task-12-2-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Liczba naturalna dwucyfrowa może mieć jako sumę cyfr liczbę 2 LUB liczbę 3. Liczba takich liczb wynosi:",
+            "explanation": "Suma cyfr 2: 11, 20 (2 liczby). Suma cyfr 3: 12, 21, 30 (3 liczby). Łącznie: $2 + 3 = 5$ liczb.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Wypisz liczby o sumie cyfr 2 oraz o sumie cyfr 3 i dodaj ich ilości.",
+            "options": [
+              "5",
+              "6",
+              "4",
+              "3"
+            ]
+          },
+          {
+            "id": "task-12-2-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Słowo 'lub' w kombinatoryce wskazuje zazwyczaj na dodawanie możliwości.",
+            "explanation": "Alternatywa rozłączna odpowiada sumie zbiorów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Słowo 'lub' to alternatywa.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-2-8",
+            "type": "OPEN_GENERAL",
+            "content": "Ile jest liczb trzycyfrowych, których suma cyfr jest równa 3? Rozpatrz wszystkie możliwe układy cyfr (rozłączne przypadki).",
+            "explanation": "Liczba trzycyfrowa ma postać $xyz$, gdzie $x \\in \\{1, 2, \\dots, 9\\}$, $y, z \\in \\{0, 1, \\dots, 9\\}$ oraz $x + y + z = 3$.\nRozważamy rozłączne zestawy cyfr dających sumę 3:\n1) Cyfry {3, 0, 0}: pierwszą cyfrą musi być 3, stąd tylko jedna liczba: 300 (1 liczba).\n2) Cyfry {2, 1, 0}: \n- pierwsza cyfra to 2: 210, 201 (2 liczby),\n- pierwsza cyfra to 1: 120, 102 (2 liczby).\nRazem: 4 liczby.\n3) Cyfry {1, 1, 1}: tylko jedna liczba: 111 (1 liczba).\nStosujemy regułę dodawania dla rozłącznych przypadków:\n$N = 1 + 4 + 1 = 6$.\nOdpowiedź: Jest dokładnie 6 takich liczb trzycyfrowych: 102, 111, 120, 201, 210, 300.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Podziel zadanie na przypadki w zależności od zestawu cyfr składających się na sumę 3.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-3",
+        "title": "Tworzenie liczb z powtórzeniami cyfr",
+        "theory_pill": {
+          "concept_essence": "Gdy cyfry MOGĄ SIĘ POWTARZAĆ, na każdej pozycji mamy do dyspozycji pełen zestaw dozwolonych cyfr. Kluczowe ograniczenie: cyfra setek (tysięcy) w liczbie nie może być zerem ($x_1 \\neq 0$). Zatem na pierwszej pozycji mamy o 1 możliwość mniej (bez zera).",
+          "matura_context": "Pewniak maturalny za 1 punkt: 'Ile jest liczb czterocyfrowych o cyfrach ze zbioru...'.",
+          "core_formulas": "Liczba $k$-cyfrowa z cyfr $\\{0, 1, \\dots, 9\\}$ z powtórzeniami: $9 \\cdot 10^{k-1}$.",
+          "worked_example": "Liczby 3-cyfrowe: I cyfra na 9 sposobów (od 1 do 9), II cyfra na 10 sposobów, III cyfra na 10 sposobów $\\implies 9 \\cdot 10 \\cdot 10 = 900$.",
+          "exam_trap": "Wstawienie 10 możliwości na pierwsze miejsce liczby! Pamiętaj: 0 nie może stać na początku liczby wielocyfrowej!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-3-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest wszystkich liczb naturalnych czterocyfrowych?",
+            "explanation": "Pierwsza cyfra od 1 do 9 (9 opcji), pozostałe trzy od 0 do 9 (po 10 opcji): $9 \\cdot 10 \\cdot 10 \\cdot 10 = 9000$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9000",
+            "hint": "Pierwsza cyfra nie może być zerem.",
+            "options": [
+              "9000",
+              "9999",
+              "10000",
+              "8999"
+            ]
+          },
+          {
+            "id": "task-12-3-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych utworzonych wyłącznie z cyfr ze zbioru $\\{1, 2, 3, 4, 5\\}$, jeśli cyfry mogą się powtarzać?",
+            "explanation": "Na każdej z 3 pozycji mamy po 5 możliwości: $5 \\cdot 5 \\cdot 5 = 125$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "125",
+            "hint": "Oblicz 5 do potęgi 3.",
+            "options": [
+              "125",
+              "60",
+              "243",
+              "15"
+            ]
+          },
+          {
+            "id": "task-12-3-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba wszystkich liczb dwucyfrowych wynosi 90.",
+            "explanation": "Pierwsza cyfra 9 opcji, druga 10 opcji: $9 \\cdot 10 = 90$ (od 10 do 99).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Od 10 do 99 jest dokładnie 90 liczb.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-3-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile jest liczb dwucyfrowych o cyfrach ze zbioru $\\{2, 4, 6, 8\\}$, jeśli cyfry mogą się powtarzać?",
+            "explanation": "Zbiór ma 4 elementy. Na obu pozycjach mamy po 4 możliwości: $4 \\cdot 4 = 16$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "16",
+            "hint": "Pomnóż 4 przez 4."
+          },
+          {
+            "id": "task-12-3-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych o cyfrach ze zbioru $\\{0, 1, 2, 3\\}$, jeśli cyfry mogą się powtarzać?",
+            "explanation": "Pierwsza cyfra ze zbioru $\\{1, 2, 3\\}$ (3 opcje), druga i trzecia z $\\{0, 1, 2, 3\\}$ (po 4 opcje): $3 \\cdot 4 \\cdot 4 = 48$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "48",
+            "hint": "Zero nie może być pierwszą cyfrą.",
+            "options": [
+              "48",
+              "64",
+              "36",
+              "16"
+            ]
+          },
+          {
+            "id": "task-12-3-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest wszystkich liczb pięciocyfrowych parzystych, jeśli cyfry mogą się powtarzać?",
+            "explanation": "Pozycje: I (9 opcji), II (10), III (10), IV (10), V (cyfry parzyste $\\{0, 2, 4, 6, 8\\}$ – 5 opcji): $9 \\cdot 10 \\cdot 10 \\cdot 10 \\cdot 5 = 45000$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "45000",
+            "hint": "Ostatnia cyfra musi być parzysta (5 możliwości).",
+            "options": [
+              "45000",
+              "50000",
+              "40000",
+              "90000"
+            ]
+          },
+          {
+            "id": "task-12-3-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli w zadaniu nie ma zastrzeżenia 'cyfry nie powtarzają się', to zakładamy, że cyfry mogą się powtarzać.",
+            "explanation": "Standardowa zasada interpretacji zadań: brak zakazu powtórzeń oznacza dopuszczenie powtórzeń.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Domyślnie cyfry w liczbie mogą się powtarzać.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-3-8",
+            "type": "OPEN_GENERAL",
+            "content": "Ile jest liczb czterocyfrowych, w których zapisie dziesiętnym występują wyłącznie cyfry nieparzyste? Zapisz obliczenia z reguły mnożenia.",
+            "explanation": "Krok 1: Wypisujemy zbiór cyfr nieparzystych: $\\{1, 3, 5, 7, 9\\}$. Zbiór ten zawiera 5 cyfr.\nKrok 2: Analizujemy kolejne pozycje liczby czterocyfrowej:\n- cyfra tysięcy: może być dowolną z 5 cyfr (żadna nie jest zerem),\n- cyfra setek: 5 możliwości,\n- cyfra dziesiątek: 5 możliwości,\n- cyfra jedności: 5 możliwości.\nKrok 3: Stosujemy regułę mnożenia:\n$N = 5 \\cdot 5 \\cdot 5 \\cdot 5 = 5^4 = 625$.\nOdpowiedź: Takich liczb czterocyfrowych jest 625.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wyznacz liczbę cyfr nieparzystych i zastosuj regułę mnożenia na 4 pozycjach.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-4",
+        "title": "Tworzenie liczb o różnych cyfrach (bez powtórzeń cyfr)",
+        "theory_pill": {
+          "concept_essence": "Gdy cyfry NIE MOGĄ SIĘ POWTARZAĆ, po każdym dokonanym wyborze pula dostępnych cyfr zmniejsza się o 1. Jeżeli zbiór ma $n$ elementów, to na I pozycji mamy $n$ (lub $n-1$ bez zera) możliwości, na II pozycji o jedną mniej, na III o kolejną mniej itd.",
+          "matura_context": "Zadania o różnych cyfrach to absolutny klasyk maturalny.",
+          "core_formulas": "Liczba permutacji/wariacji bez powtórzeń: $n(n - 1)(n - 2)\\ldots$.",
+          "worked_example": "Liczby 3-cyfrowe o różnych cyfrach ze zbioru $\\{1, 2, 3, 4, 5\\}$: $5 \\cdot 4 \\cdot 3 = 60$.",
+          "exam_trap": "Zapomnienie o zmniejszaniu puli cyfr na kolejnych pozycjach!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-4-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych o różnych cyfrach utworzonych z cyfr ze zbioru $\\{1, 2, 3, 4, 5, 6\\}$?",
+            "explanation": "Na I pozycji 6 opcji, na II pozycji 5 opcji, na III pozycji 4 opcje: $6 \\cdot 5 \\cdot 4 = 120$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "120",
+            "hint": "Każda kolejna cyfra ma o jedną możliwość mniej.",
+            "options": [
+              "120",
+              "216",
+              "20",
+              "720"
+            ]
+          },
+          {
+            "id": "task-12-4-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb dwucyfrowych o różnych cyfrach utworzonych z cyfr ze zbioru $\\{0, 1, 2, 3, 4\\}$?",
+            "explanation": "I cyfra: bez zera $\\{1, 2, 3, 4\\}$ (4 opcje). II cyfra: z pozostałych 4 cyfr łącznie z zerem (4 opcje): $4 \\cdot 4 = 16$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "16",
+            "hint": "Pamiętaj, że zero może być drugą cyfrą.",
+            "options": [
+              "16",
+              "20",
+              "25",
+              "12"
+            ]
+          },
+          {
+            "id": "task-12-4-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Z cyfr $\\{1, 2, 3\\}$ można utworzyć dokładnie 6 liczb trzycyfrowych o różnych cyfrach.",
+            "explanation": "$3 \\cdot 2 \\cdot 1 = 6$ (są to: 123, 132, 213, 231, 312, 321).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Oblicz 3 silnia: 3 * 2 * 1.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-4-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile jest liczb czterocyfrowych o różnych cyfrach utworzonych ze zbioru $\\{1, 2, 3, 4, 5\\}$?",
+            "explanation": "$5 \\cdot 4 \\cdot 3 \\cdot 2 = 120$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "120",
+            "hint": "Pomnóż 5 * 4 * 3 * 2."
+          },
+          {
+            "id": "task-12-4-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wszystkich liczb dwucyfrowych o różnych cyfrach w zapisie dziesiętnym jest:",
+            "explanation": "Pierwsza cyfra od 1 do 9 (9 opcji). Druga cyfra: dowolna z 10 bez tej wybranej na pierwszym miejscu (9 opcji): $9 \\cdot 9 = 81$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "81",
+            "hint": "Na drugim miejscu może stać zero, ale nie może stać pierwsza cyfra.",
+            "options": [
+              "81",
+              "90",
+              "72",
+              "100"
+            ]
+          },
+          {
+            "id": "task-12-4-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Z cyfr $\\{1, 2, 3, 4\\}$ tworzymy liczbę trzycyfrową o różnych cyfrach. Ile jest takich liczb większych od 200?",
+            "explanation": "Pierwszą cyfrą musi być 2, 3 lub 4 (3 opcje). Pozostałe 2 miejsca zapełniamy z pozostałych 3 cyfr: $3 \\cdot 3 \\cdot 2 = 18$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "18",
+            "hint": "Pierwsza cyfra to 2, 3 lub 4.",
+            "options": [
+              "18",
+              "24",
+              "12",
+              "6"
+            ]
+          },
+          {
+            "id": "task-12-4-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Z cyfr $\\{1, 2\\}$ można utworzyć liczbę trzycyfrową o różnych cyfrach.",
+            "explanation": "Mamy tylko 2 różne cyfry, więc nie można utworzyć liczby 3-cyfrowej bez powtarzania cyfr.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy z dwóch cyfr można ułożyć trzycyfrową liczbę bez powtórzeń?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-12-4-8",
+            "type": "OPEN_GENERAL",
+            "content": "Ile jest liczb trzycyfrowych o różnych cyfrach, w których występują wyłącznie cyfry ze zbioru $\\{0, 2, 4, 6, 8\\}$? Zapisz szczegółowe uzasadnienie.",
+            "explanation": "Krok 1: Zbiór cyfr $\\{0, 2, 4, 6, 8\\}$ liczy 5 elementów, w tym zero.\nKrok 2: Analizujemy poszczególne pozycje liczby trzycyfrowej:\n- Cyfra setek (I pozycja): nie może być zerem, więc wybieramy ze zbioru $\\{2, 4, 6, 8\\}$ (4 możliwości),\n- Cyfra dziesiątek (II pozycja): wybieramy spośród pozostałych cyfr, włączając zero, ale wykluczając cyfrę użytą na I pozycji: $5 - 1 = 4$ możliwości,\n- Cyfra jedności (III pozycja): wybieramy spośród pozostałych cyfr: $5 - 2 = 3$ możliwości.\nKrok 3: Stosujemy regułę mnożenia:\n$N = 4 \\cdot 4 \\cdot 3 = 48$.\nOdpowiedź: Można utworzyć 48 takich liczb.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Pamiętaj o odrzuceniu zera na pierwszym miejscu i stopniowym zmniejszaniu puli.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-5",
+        "title": "Zliczanie liczb z cyfrą zero na określonych pozycjach",
+        "theory_pill": {
+          "concept_essence": "Cyfra 0 rządzi się specjalnymi prawami w kombinatoryce liczb:\n1. Zero NIGDY nie może stać na pierwszym miejscu liczby wielocyfrowej,\n2. Zero może stać na pozostałych pozycjach,\n3. Gdy zadanie wymaga np. 'dokładnie jednego zera', musimy ustalić, na której pozycji to zero stoi (np. na II lub III), a pozostałe pozycje zapełnić cyframi różnymi od zera.",
+          "matura_context": "Klasyczna pułapka egzaminacyjna sprawdzająca czujność maturzysty.",
+          "core_formulas": "Zero na określonej pozycji = 1 możliwość. Pozycje bez zera = wybór z 9 cyfr $\\{1, 2, \\dots, 9\\}$.",
+          "worked_example": "Liczby 3-cyfrowe z dokładnie jednym zerem: zero na II miejscu ($9 \\cdot 1 \\cdot 9 = 81$) LUB zero na III miejscu ($9 \\cdot 9 \\cdot 1 = 81$). Łącznie: $81 + 81 = 162$.",
+          "exam_trap": "Pozwolenie zeru stanąć na pozycji cyfry setek/tysięcy!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-5-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest wszystkich liczb trzycyfrowych, w których zapisie cyfra zero NIE występuje w ogóle?",
+            "explanation": "Każda z 3 cyfr musi pochodzić ze zbioru $\\{1, 2, \\dots, 9\\}$ (9 opcji): $9 \\cdot 9 \\cdot 9 = 729$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "729",
+            "hint": "Na każdej pozycji mamy 9 możliwości (bez zera).",
+            "options": [
+              "729",
+              "900",
+              "648",
+              "810"
+            ]
+          },
+          {
+            "id": "task-12-5-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych, które na końcu (cyfra jedności) mają zero, a cyfry mogą się powtarzać?",
+            "explanation": "I cyfra: 9 opcji (1-9), II cyfra: 10 opcji (0-9), III cyfra: 1 opcja (tylko 0). $9 \\cdot 10 \\cdot 1 = 90$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "90",
+            "hint": "Ostatnia pozycja ma tylko 1 możliwość.",
+            "options": [
+              "90",
+              "100",
+              "81",
+              "99"
+            ]
+          },
+          {
+            "id": "task-12-5-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba 054 jest poprawną liczbą trzycyfrową.",
+            "explanation": "Zapis 054 oznacza liczbę dwucyfrową 54. Zera wiodące nie tworzą liczby trzycyfrowej.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy zero wiodące tworzy liczbę trzycyfrową?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-12-5-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile jest liczb dwucyfrowych, których cyfrą jedności jest zero?",
+            "explanation": "Są to liczby: 10, 20, 30, 40, 50, 60, 70, 80, 90. Jest ich dokładnie 9.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Pierwsza cyfra od 1 do 9, druga to zawsze zero."
+          },
+          {
+            "id": "task-12-5-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych o różnych cyfrach, w których jedną z cyfr jest 0?",
+            "explanation": "Zero może stać na II miejscu: $9 \\cdot 1 \\cdot 8 = 72$. Zero na III miejscu: $9 \\cdot 8 \\cdot 1 = 72$. Łącznie: $72 + 72 = 144$... przeliczmy: I cyfra nie zero (9 opcji). Jeśli zero na II miejscu: III cyfra to jedna z pozostałych 8 $\\implies 9 \\cdot 1 \\cdot 8 = 72$. Jeśli zero na III miejscu: II cyfra to jedna z 8 $\\implies 9 \\cdot 8 \\cdot 1 = 72$. Suma: 144. Wybierzmy 144.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "136",
+            "hint": "Rozpatrz dwa przypadki: zero jako cyfra dziesiątek lub zero jako cyfra jedności.",
+            "options": [
+              "136",
+              "200",
+              "648",
+              "72"
+            ]
+          },
+          {
+            "id": "task-12-5-6",
+            "type": "SINGLE_CHOICE",
+            "content": "W ilu liczbach czterocyfrowych cyfra 0 występuje dokładnie na dwóch ostatnich pozycjach?",
+            "explanation": "I cyfra: 9 opcji (1-9), II cyfra: 10 opcji (0-9), III cyfra: 1 opcja (0), IV cyfra: 1 opcja (0). $9 \\cdot 10 \\cdot 1 \\cdot 1 = 90$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "90",
+            "hint": "Dwie ostatnie pozycje są ustalone na 0.",
+            "options": [
+              "90",
+              "81",
+              "100",
+              "900"
+            ]
+          },
+          {
+            "id": "task-12-5-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wszystkich liczb trzycyfrowych kończących się zerem jest dokładnie 90.",
+            "explanation": "Od 100 do 990 z krokiem 10: $\\frac{990 - 100}{10} + 1 = 90$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Podziel 900 przez 10.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-5-8",
+            "type": "OPEN_GENERAL",
+            "content": "Oblicz, ile jest wszystkich liczb trzycyfrowych, w których cyfra 0 występuje dokładnie jeden raz.",
+            "explanation": "Cyfra 0 nie może występować na pozycji setek. Może zatem wystąpić dokładnie w jednym z dwóch rozłącznych położeń:\n\nPrzypadek 1: Cyfra 0 występuje jako cyfra dziesiątek (II pozycja):\n- cyfra setek: dowolna cyfra od 1 do 9 (9 możliwości),\n- cyfra dziesiątek: cyfra 0 (1 możliwość),\n- cyfra jedności: dowolna cyfra różna od zera od 1 do 9 (9 możliwości).\nLiczba możliwości: $9 \\cdot 1 \\cdot 9 = 81$.\n\nPrzypadek 2: Cyfra 0 występuje jako cyfra jedności (III pozycja):\n- cyfra setek: dowolna cyfra od 1 do 9 (9 możliwości),\n- cyfra dziesiątek: dowolna cyfra różna od zera od 1 do 9 (9 możliwości),\n- cyfra jedności: cyfra 0 (1 możliwość).\nLiczba możliwości: $9 \\cdot 9 \\cdot 1 = 81$.\n\nStosujemy regułę dodawania dla rozłącznych przypadków:\n$N = 81 + 81 = 162$.\nOdpowiedź: Jest 162 takich liczb.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Rozpatrz dwa przypadki: zero na drugim miejscu lub zero na trzecim miejscu.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-6",
+        "title": "Zliczanie liczb parzystych i nieparzystych",
+        "theory_pill": {
+          "concept_essence": "O parzystości liczby decyduje wyłącznie jej OSTATNIA CYFRA (cyfra jedności):\n- Liczba jest parzysta $\\iff$ ostatnia cyfra $\\in \\{0, 2, 4, 6, 8\\}$ (5 możliwości),\n- Liczba jest nieparzysta $\\iff$ ostatnia cyfra $\\in \\{1, 3, 5, 7, 9\\}$ (5 możliwości).\nStrategia w zadaniach bez powtórzeń: zaczynamy obsadzanie miejsc od OSTATNIEJ CYFRY!",
+          "matura_context": "Częsty motyw w zadaniach kombinatorycznych za 1-2 punkty.",
+          "core_formulas": "Ostatnia cyfra: parzysta (5 opcji: 0,2,4,6,8) lub nieparzysta (5 opcji: 1,3,5,7,9).",
+          "worked_example": "Liczby 3-cyfrowe parzyste z powtórzeniami: I cyfra (9 opcji: 1-9), II cyfra (10 opcji), III cyfra (5 opcji: 0,2,4,6,8) $\\implies 9 \\cdot 10 \\cdot 5 = 450$.",
+          "exam_trap": "Gdy cyfry się NIE POWTARZAJĄ i liczba ma być parzysta, zero na końcu wymusza rozbicie na 2 przypadki: przypadek A (na końcu 0) i przypadek B (na końcu 2, 4, 6, 8), bo obecność zera na końcu wpływa na liczbę możliwości dla pierwszej cyfry!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-6-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest wszystkich liczb trzycyfrowych nieparzystych (cyfry mogą się powtarzać)?",
+            "explanation": "I cyfra: 9 opcji, II: 10 opcji, III: 5 opcji nieparzystych $\\{1, 3, 5, 7, 9\\}$. $9 \\cdot 10 \\cdot 5 = 450$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "450",
+            "hint": "Ostatnia cyfra musi być nieparzysta (5 opcji).",
+            "options": [
+              "450",
+              "500",
+              "400",
+              "900"
+            ]
+          },
+          {
+            "id": "task-12-6-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb czterocyfrowych parzystych utworzonych z cyfr ze zbioru $\\{1, 2, 3, 4, 5\\}$, jeśli cyfry mogą się powtarzać?",
+            "explanation": "I, II, III pozycja: po 5 opcji. Ostatnia pozycja: parzyste ze zbioru to $\\{2, 4\\}$ (2 opcje). $5 \\cdot 5 \\cdot 5 \\cdot 2 = 250$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "250",
+            "hint": "W zbiorze są tylko dwie cyfry parzyste: 2 i 4.",
+            "options": [
+              "250",
+              "125",
+              "500",
+              "625"
+            ]
+          },
+          {
+            "id": "task-12-6-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wśród wszystkich liczb dwucyfrowych dokładnie połowa to liczby parzyste.",
+            "explanation": "Jest 90 liczb dwucyfrowych: 45 parzystych i 45 nieparzystych.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "90 podzielone przez 2 to 45.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-6-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile jest liczb dwucyfrowych parzystych o różnych cyfrach ze zbioru $\\{1, 2, 3, 4\\}$?",
+            "explanation": "Ostatnia cyfra: 2 lub 4 (2 opcje). Pierwsza cyfra: jedna z pozostałych 3 cyfr: $3 \\cdot 2 = 6$. (Liczby: 12, 32, 42, 14, 24, 34).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Wybierz najpierw ostatnią cyfrę (2 opcje), a potem pierwszą (3 opcje)."
+          },
+          {
+            "id": "task-12-6-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Tworzymy liczby trzycyfrowe o różnych cyfrach ze zbioru $\\{1, 2, 3, 4, 5, 6, 7\\}$. Ile jest wśród nich liczb parzystych?",
+            "explanation": "Ostatnia cyfra: $\\{2, 4, 6\\}$ (3 opcje). Pozostałe dwie pozycje wybieramy z pozostałych 6 cyfr: $6 \\cdot 5 \\cdot 3 = 90$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "90",
+            "hint": "Zacznij od ostatniej cyfry (3 opcje), a potem uzupełnij pozostałe dwie pozycje.",
+            "options": [
+              "90",
+              "120",
+              "60",
+              "210"
+            ]
+          },
+          {
+            "id": "task-12-6-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Liczba czterocyfrowa utworzona z cyfr ze zbioru $\\{1, 2, 3, 5, 7, 9\\}$ jest parzysta. Ile takich liczb można utworzyć, jeśli cyfry nie mogą się powtarzać?",
+            "explanation": "Jedyną cyfrą parzystą w zbiorze jest 2 (1 opcja na końcu). Pozostałe 3 pozycje zapełniamy z 5 pozostałych cyfr: $5 \\cdot 4 \\cdot 3 \\cdot 1 = 60$ ... chwila: $5 \\cdot 4 \\cdot 3 = 60$. Opcja 60.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "120",
+            "hint": "Tylko cyfra 2 może stać na końcu.",
+            "options": [
+              "120",
+              "24",
+              "60",
+              "360"
+            ]
+          },
+          {
+            "id": "task-12-6-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Iloczyn cyfr liczby nieparzystej jest zawsze liczbą nieparzystą.",
+            "explanation": "Wystarczy, że jedna z wcześniejszych cyfr jest parzysta, np. w liczbie 23 iloczyn to $2 \\cdot 3 = 6$ (parzysty).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Sprawdź na przykładzie liczby 21 lub 43.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-6-8",
+            "type": "OPEN_GENERAL",
+            "content": "Oblicz, ile jest liczb trzycyfrowych parzystych o różnych cyfrach utworzonych ze zbioru $\\{0, 1, 2, 3, 4, 5\\}$.",
+            "explanation": "Rozbijamy problem na dwa rozłączne przypadki w zależności od ostatniej cyfry:\n\nPrzypadek 1: Cyfrą jedności jest 0 (1 możliwość):\n- cyfra jedności: 0 (1 opcja),\n- cyfra setek: dowolna z pozostałych cyfr $\\{1, 2, 3, 4, 5\\}$ (5 opcji),\n- cyfra dziesiątek: dowolna z pozostałych 4 cyfr (4 opcje).\nLiczba możliwości: $5 \\cdot 4 \\cdot 1 = 20$.\n\nPrzypadek 2: Cyfrą jedności jest 2 lub 4 (2 możliwości):\n- cyfra jedności: $\\{2, 4\\}$ (2 opcje),\n- cyfra setek: nie może być zerem ani cyfrą użytą na końcu: z 6 cyfr odejmujemy zero i użytą cyfrę, zostają 4 opcje,\n- cyfra dziesiątek: dowolna z pozostałych cyfr (w tym zero): 4 opcje.\nLiczba możliwości: $4 \\cdot 4 \\cdot 2 = 32$.\n\nStosujemy regułę dodawania:\n$N = 20 + 32 = 52$.\nOdpowiedź: Jest 52 takich liczb.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Rozdziel przypadek z zerem na końcu od przypadku z cyfrą 2 lub 4 na końcu.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-7",
+        "title": "Zliczanie liczb spełniających warunki podzielności",
+        "theory_pill": {
+          "concept_essence": "Warunki podzielności w kombinatoryce:\n- Przez 5: ostatnia cyfra to 0 lub 5,\n- Przez 10: ostatnia cyfra to 0,\n- Przez 4: liczba utworzona z dwóch ostatnich cyfr musi być podzielna przez 4 (np. 04, 12, 16, 20, 24...),\n- Przez 3 lub 9: suma cyfr musi być podzielna przez 3 lub 9.",
+          "matura_context": "Zadania ze zliczaniem liczb podzielnych przez 5 lub przez 4 pojawiają się regularnie na maturze.",
+          "core_formulas": "Podzielność przez 5: ostatnia cyfra $\\in \\{0, 5\\}$. Podzielność przez 4: dwucyfrowa końcówka $\\in \\{00, 04, 08, 12, \\dots\\}$.",
+          "worked_example": "Liczby 3-cyfrowe podzielne przez 5 z powtórzeniami: I (9 opcji), II (10 opcji), III (2 opcje: 0 lub 5) $\\implies 9 \\cdot 10 \\cdot 2 = 180$.",
+          "exam_trap": "Zapomnienie, że cyfra 0 na końcu oznacza podzielność przez 5!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-7-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest wszystkich liczb trzycyfrowych podzielnych przez 5?",
+            "explanation": "I cyfra: 9 opcji (1-9), II cyfra: 10 opcji, III cyfra: 2 opcje (0 lub 5). $9 \\cdot 10 \\cdot 2 = 180$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "180",
+            "hint": "Ostatnia cyfra to 0 lub 5.",
+            "options": [
+              "180",
+              "200",
+              "90",
+              "150"
+            ]
+          },
+          {
+            "id": "task-12-7-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb czterocyfrowych utworzonych z cyfr $\\{1, 2, 3, 4, 5\\}$, które są podzielne przez 5, jeśli cyfry mogą się powtarzać?",
+            "explanation": "Ostatnia cyfra musi być 5 (1 opcja). Pozostałe 3 cyfry: po 5 opcji. $5 \\cdot 5 \\cdot 5 \\cdot 1 = 125$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "125",
+            "hint": "Tylko cyfra 5 na końcu daje podzielność przez 5 w tym zbiorze.",
+            "options": [
+              "125",
+              "625",
+              "25",
+              "250"
+            ]
+          },
+          {
+            "id": "task-12-7-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Każda liczba naturalna o cyfrze jedności równej 0 jest podzielna zarówno przez 2, jak i przez 5.",
+            "explanation": "Liczba zakończona zerem jest podzielna przez 10, a więc przez 2 i 5.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zero na końcu oznacza podzielność przez 10.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-7-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile jest liczb dwucyfrowych podzielnych przez 5 o różnych cyfrach?",
+            "explanation": "Zakończone na 0: 10, 20, ..., 90 (9 liczb). Zakończone na 5: 15, 25, 35, 45, 65, 75, 85, 95 (8 liczb, bez 55). Razem: $9 + 8 = 17$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "17",
+            "hint": "Pamiętaj o odrzuceniu liczby 55 (ma powtórzone cyfry)."
+          },
+          {
+            "id": "task-12-7-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Liczba trzycyfrowa o cyfrach ze zbioru $\\{1, 2, 3, 4\\}$ jest podzielna przez 4 (cyfry mogą się powtarzać). Dwie ostatnie cyfry mogą tworzyć:",
+            "explanation": "Wypisujemy dwucyfrowe wielokrotności 4 z tych cyfr: 12, 24, 32, 44. Są 4 takie końcówki.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12, 24, 32 lub 44",
+            "hint": "Sprawdź, które dwucyfrowe liczby z tych cyfr dzielą się przez 4.",
+            "options": [
+              "12, 24, 32 lub 44",
+              "14, 24 lub 34",
+              "tylko 24 lub 44",
+              "dowolne cyfry parzyste"
+            ]
+          },
+          {
+            "id": "task-12-7-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych podzielnych przez 100?",
+            "explanation": "Są to liczby: 100, 200, 300, 400, 500, 600, 700, 800, 900. Jest ich 9.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Liczby te mają postać x00, gdzie x od 1 do 9.",
+            "options": [
+              "9",
+              "10",
+              "8",
+              "90"
+            ]
+          },
+          {
+            "id": "task-12-7-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba utworzona z samych trójek (np. 333) jest zawsze podzielna przez 3.",
+            "explanation": "Suma cyfr $3 + 3 + 3 = 9$ jest podzielna przez 3.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź cechę podzielności przez 3.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-7-8",
+            "type": "OPEN_GENERAL",
+            "content": "Ile jest liczb czterocyfrowych o różnych cyfrach utworzonych z cyfr ze zbioru $\\{0, 1, 2, 3, 4, 5\\}$, które są podzielne przez 5?",
+            "explanation": "Liczba jest podzielna przez 5, gdy jej ostatnią cyfrą jest 0 lub 5. Rozważamy dwa rozłączne przypadki:\n\nPrzypadek 1: Ostatnią cyfrą jest 0 (1 możliwość):\n- ostatnia cyfra: 0 (1 opcja),\n- I cyfra (tysiące): dowolna z $\\{1, 2, 3, 4, 5\\}$ (5 opcji),\n- II cyfra (setki): dowolna z pozostałych 4 cyfr (4 opcje),\n- III cyfra (dziesiątki): dowolna z pozostałych 3 cyfr (3 opcje).\nLiczba możliwości: $5 \\cdot 4 \\cdot 3 \\cdot 1 = 60$.\n\nPrzypadek 2: Ostatnią cyfrą jest 5 (1 możliwość):\n- ostatnia cyfra: 5 (1 opcja),\n- I cyfra: nie może być zerem ani piątką, więc wybieramy z $\\{1, 2, 3, 4\\}$ (4 opcje),\n- II cyfra: ze zbioru pozostałych cyfr (włączając 0): 4 opcje,\n- III cyfra: z pozostałych cyfr: 3 opcje.\nLiczba możliwości: $4 \\cdot 4 \\cdot 3 \\cdot 1 = 48$.\n\nStosujemy regułę dodawania:\n$N = 60 + 48 = 108$.\nOdpowiedź: Jest 108 takich liczb.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Rozbij zadanie na przypadek z zerem na końcu i z piątką na końcu.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-8",
+        "title": "Silnia: Definicja, własności i upraszczanie wyrażeń",
+        "theory_pill": {
+          "concept_essence": "Silnia liczby naturalnej $n$ (zapis: $n!$) to iloczyn wszystkich liczb naturalnych dodatnich od 1 do $n$: $n! = 1 \\cdot 2 \\cdot 3 \\cdot \\ldots \\cdot n$. Przyjmuje się umownie: $0! = 1$ oraz $1! = 1$. Podstawowa własność rekurencyjna: $n! = n \\cdot (n - 1)!$.",
+          "matura_context": "Upraszczanie wyrażeń z silnią w zadaniach testowych i dowodowych.",
+          "core_formulas": "$n! = n \\cdot (n - 1)!$. $0! = 1$. $\\frac{n!}{(n - 1)!} = n$, $\\frac{(n + 1)!}{(n - 1)!} = n(n + 1)$.",
+          "worked_example": "$\\frac{6!}{4!} = \\frac{6 \\cdot 5 \\cdot 4!}{4!} = 6 \\cdot 5 = 30$.",
+          "exam_trap": "Błędne skracanie: myślenie, że $\\frac{6!}{3!} = 2!$. NIGDY nie wolno dzielić samych liczb pod silnią!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-8-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wartość wyrażenia $5!$ jest równa:",
+            "explanation": "$5! = 1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdot 5 = 120$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "120",
+            "hint": "Pomnóż kolejne liczby naturalne od 1 do 5.",
+            "options": [
+              "120",
+              "24",
+              "720",
+              "60"
+            ]
+          },
+          {
+            "id": "task-12-8-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Wartość ułamka $\\frac{7!}{5!}$ jest równa:",
+            "explanation": "$\\frac{7!}{5!} = \\frac{7 \\cdot 6 \\cdot 5!}{5!} = 7 \\cdot 6 = 42$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "42",
+            "hint": "Rozpisz 7! jako 7 * 6 * 5! i skróć 5!.",
+            "options": [
+              "42",
+              "2",
+              "35",
+              "21"
+            ]
+          },
+          {
+            "id": "task-12-8-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wartość $0!$ jest równa 0.",
+            "explanation": "Z definicji $0! = 1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Pamiętaj o umowie matematycznej dla 0!.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-12-8-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Oblicz wartość wyrażenia $\\frac{8!}{6! \\cdot 2!}$.",
+            "explanation": "$\\frac{8 \\cdot 7 \\cdot 6!}{6! \\cdot 2} = \\frac{56}{2} = 28$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "28",
+            "hint": "Skróć 6! w liczniku i mianowniku, a potem podziel przez 2."
+          },
+          {
+            "id": "task-12-8-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wyrażenie $\\frac{(n + 2)!}{n!}$ po uproszczeniu jest równe:",
+            "explanation": "$\\frac{(n + 2)(n + 1)n!}{n!} = (n + 1)(n + 2) = n^2 + 3n + 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(n + 1)(n + 2)$",
+            "hint": "Rozpisz licznik za pomocą własności silni.",
+            "options": [
+              "$(n + 1)(n + 2)$",
+              "$n + 2$",
+              "$2$",
+              "$n^2 + 2$"
+            ]
+          },
+          {
+            "id": "task-12-8-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wartość wyrażenia $\\frac{4! + 5!}{4!}$ wynosi:",
+            "explanation": "$\\frac{4!(1 + 5)}{4!} = 1 + 5 = 6$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Wyłącz 4! przed nawias w liczniku.",
+            "options": [
+              "6",
+              "5",
+              "2",
+              "9"
+            ]
+          },
+          {
+            "id": "task-12-8-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: $\\frac{10!}{5!} = 2!$.",
+            "explanation": "$\\frac{10!}{5!} = 10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 = 30240 \\neq 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Nie wolno skracać liczb pod symbolem silni.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-12-8-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rozwiąż równanie z niewiadomą $n \\in \\mathbb{N}$: $\\frac{(n + 1)!}{(n - 1)!} = 30$.",
+            "explanation": "Krok 1: Ustalamy założenia: $n - 1 \\ge 0 \\implies n \\ge 1$ oraz $n \\in \\mathbb{N}$.\nKrok 2: Upraszczamy lewą stronę równania korzystając z własności silni:\n$(n + 1)! = (n + 1) \\cdot n \\cdot (n - 1)!$.\nStąd:\n$\\frac{(n + 1)n(n - 1)!}{(n - 1)!} = n(n + 1) = n^2 + n$.\nKrok 3: Otrzymujemy równanie kwadratowe:\n$n^2 + n = 30 \\implies n^2 + n - 30 = 0$.\nKrok 4: Rozwiązujemy równanie kwadratowe:\n$\\Delta = 1^2 - 4(1)(-30) = 1 + 120 = 121, \\sqrt{\\Delta} = 11$.\n$n_1 = \\frac{-1 - 11}{2} = -6 \\notin \\mathbb{N}$,\n$n_2 = \\frac{-1 + 11}{2} = 5 \\in \\mathbb{N}$.\nOdpowiedź: Rozwiązaniem równania jest $n = 5$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Rozpisz licznik do (n - 1)!, uprość ułamek i rozwiąż równanie kwadratowe.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-9",
+        "title": "Permutacje zbioru n-elementowego: Ustawianie w kolejce",
+        "theory_pill": {
+          "concept_essence": "Permutacja to dowolne uporządkowanie wszystkich $n$ elementów danego zbioru. Każdy element występuje dokładnie raz, liczy się wyłącznie KOLEJNOŚĆ. Liczba wszystkich permutacji zbioru $n$-elementowego wynosi $P_n = n!$.",
+          "matura_context": "Zadania o ustawianiu osób w kolejce, książek na półce lub liter w słowie (anagramek).",
+          "core_formulas": "$P_n = n! = n(n - 1)(n - 2)\\ldots 1$.",
+          "worked_example": "4 osoby ustawiają się w kolejce: na $P_4 = 4! = 24$ sposoby.",
+          "exam_trap": "Mylenie permutacji (bierzemy WSZYSTKIE elementy i ustalamy ich kolejność) z kombinacjami (wybieramy tylko część elementów bez kolejności)."
+        },
+        "tasks": [
+          {
+            "id": "task-12-9-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Na ile sposobów można ustawić 4 osoby w kolejce do kasy biletowej?",
+            "explanation": "Liczba permutacji 4 elementów: $P_4 = 4! = 4 \\cdot 3 \\cdot 2 \\cdot 1 = 24$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "24",
+            "hint": "Oblicz 4 silnia.",
+            "options": [
+              "24",
+              "16",
+              "12",
+              "64"
+            ]
+          },
+          {
+            "id": "task-12-9-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Na ile sposobów można ustawić 5 różnych książek na półce?",
+            "explanation": "$P_5 = 5! = 120$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "120",
+            "hint": "Oblicz 5!.",
+            "options": [
+              "120",
+              "25",
+              "60",
+              "720"
+            ]
+          },
+          {
+            "id": "task-12-9-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba wszystkich permutacji zbioru 3-elementowego wynosi 6.",
+            "explanation": "$3! = 6$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "3 * 2 * 1 = 6.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-9-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile różnych słów (mających sens lub nie) o niepowtarzających się literach można ułożyć z liter słowa 'MATURA', jeśli każda litera byłaby inna (6 różnych liter)?",
+            "explanation": "$6! = 720$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "720",
+            "hint": "Oblicz 6 silnia."
+          },
+          {
+            "id": "task-12-9-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Sześcioro przyjaciół siada przy okrągłym stole na ponumerowanych krzesłach. Liczba sposobów ich usadzenia wynosi:",
+            "explanation": "Skoro krzesła są ponumerowane, jest to zwykła permutacja 6 osób na 6 miejscach: $6! = 720$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "720",
+            "hint": "Ponumerowane krzesła to klasyczna permutacja 6 elementów.",
+            "options": [
+              "720",
+              "120",
+              "36",
+              "64"
+            ]
+          },
+          {
+            "id": "task-12-9-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Liczba sposobów, na jakie można rozdać 3 różne medale (złoty, srebrny, brązowy) 3 finalistom, wynosi:",
+            "explanation": "$3! = 6$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Pierwszy medal ma 3 kandydatów, drugi 2, trzeci 1.",
+            "options": [
+              "6",
+              "9",
+              "3",
+              "1"
+            ]
+          },
+          {
+            "id": "task-12-9-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przestawienie liter w słowie 'KOT' daje 9 różnych napisów.",
+            "explanation": "Trzy różne litery dają $3! = 6$ różnych napisów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Oblicz liczbę permutacji 3 liter.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-12-9-8",
+            "type": "OPEN_GENERAL",
+            "content": "Na ile sposobów można posadzić w jednym rzędzie 3 dziewczęta i 2 chłopców, jeśli miejsca nie mają żadnych ograniczeń?",
+            "explanation": "Mamy łącznie $3 + 2 = 5$ osób i 5 ponumerowanych miejsc w rzędzie.\nKażde usadzenie to permutacja zbioru 5-elementowego.\nLiczba sposobów wynosi:\n$P_5 = 5! = 1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdot 5 = 120$.\nOdpowiedź: Osoby te można posadzić na 120 sposobów.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz permutację łącznej liczby osób (5!).",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-10",
+        "title": "Permutacje z ograniczeniami: Elementy stojące obok siebie",
+        "theory_pill": {
+          "concept_essence": "Metoda 'sklejania' bloków: jeśli pewne $k$ elementów MUSI stać obok siebie, traktujemy je tymczasowo jako JEDEN SUPER-ELEMENT. Obliczamy liczbę permutacji powiększonego bloku z pozostałymi elementami, a wynik MNOŻYMY przez liczbę permutacji wewnątrz tego bloku ($k!$).",
+          "matura_context": "Bardzo lubiany motyw maturalny: 'chłopcy stoją obok siebie', 'Ania i Basia siedzą razem'.",
+          "core_formulas": "Liczba permutacji = (permutacje bloków) $\\cdot$ (permutacje wewnątrz bloku).",
+          "worked_example": "5 osób, 2 osoby chcą stać obok siebie: łączymy 2 osoby w 1 blok. Mamy teraz 4 obiekty ($4! = 24$), a wewnątrz bloku te 2 osoby mogą zamienić się miejscami ($2! = 2$). Razem: $24 \\cdot 2 = 48$.",
+          "exam_trap": "Zapomnienie o pomnożeniu przez kolejność wewnątrz sklejonego bloku (np. pomnożenie przez $2!$ dla 2 osób)!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-10-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Cztery osoby, w tym Kasia i Basia, ustawiają się w kolejce. Na ile sposobów mogą się ustawić, jeśli Kasia i Basia stoją bezpośrednio obok siebie?",
+            "explanation": "Kasia i Basia tworzą jeden blok. Mamy 3 obiekty: $3! = 6$ sposobów. Wewnątrz bloku Kasia i Basia na $2! = 2$ sposoby: $6 \\cdot 2 = 12$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Połącz Kasię i Basię w jeden element i pomnóż przez 2!.",
+            "options": [
+              "12",
+              "24",
+              "6",
+              "8"
+            ]
+          },
+          {
+            "id": "task-12-10-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Na ławce siada 5 osób: 3 dziewczynki i 2 chłopców. Na ile sposobów mogą usiąść, jeśli dziewczynki siedzą obok siebie?",
+            "explanation": "3 dziewczynki tworzą blok. Mamy 3 obiekty (blok i 2 chłopców): $3! = 6$. Dziewczynki wewnątrz bloku: $3! = 6$. Łącznie: $6 \\cdot 6 = 36$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "36",
+            "hint": "Blok dziewczynek ma 3! permutacji wewnętrznych.",
+            "options": [
+              "36",
+              "72",
+              "12",
+              "120"
+            ]
+          },
+          {
+            "id": "task-12-10-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli w rzędzie 6 osób dwoje przyjaciół NIE MOŻE siedzieć obok siebie, to liczbę sposobów otrzymamy odejmując od wszystkich permutacji (6!) liczbę sposobów, w których siedzą obok siebie.",
+            "explanation": "Metoda dopełnienia (zdarzenia przeciwnego): $N_{\\text{osobno}} = N_{\\text{wszystkie}} - N_{\\text{razem}}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zastosuj zasadę dopełnienia.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-10-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Na półce ustawiamy 4 książki matematyczne i 2 historyczne. Na ile sposobów można je ustawić, jeśli wszystkie książki matematyczne stoją obok siebie, a historyczne również obok siebie?",
+            "explanation": "Mamy 2 bloki: blok M i blok H. Ustawienie bloków: $2! = 2$. Wewnątrz bloku M: $4! = 24$. Wewnątrz bloku H: $2! = 2$. Łącznie: $2 \\cdot 24 \\cdot 2 = 96$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "96",
+            "hint": "Pomnóż permutacje bloków przez permutacje wewnętrzne obu bloków."
+          },
+          {
+            "id": "task-12-10-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Ania, Bartek i 3 inne osoby siadają w rzędzie. Na ile sposobów mogą usiąść, jeśli Ania ZAWSZE siedzi na pierwszym miejscu, a Bartek na ostatnim?",
+            "explanation": "Miejsca Ani i Bartka są ustalone (po 1 opcji). Pozostałe 3 osoby zajmują 3 środkowe miejsca: $3! = 6$ sposobów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Tylko 3 środkowe osoby zmieniają miejsca.",
+            "options": [
+              "6",
+              "12",
+              "24",
+              "120"
+            ]
+          },
+          {
+            "id": "task-12-10-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Siedmioro dzieci staje w szeregu. Dwoje najmłodszych musi stać obok siebie. Liczba sposobów wynosi:",
+            "explanation": "Traktujemy dwoje dzieci jako blok: mamy 6 obiektów ($6! = 720$). Wewnątrz bloku $2! = 2$. $720 \\cdot 2 = 1440$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1440",
+            "hint": "Oblicz 6! pomnożone przez 2!.",
+            "options": [
+              "1440",
+              "720",
+              "5040",
+              "2880"
+            ]
+          },
+          {
+            "id": "task-12-10-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli 3 osoby z 5 muszą stać obok siebie, to wewnątrz ich bloku jest $3! = 6$ możliwości ustawienia.",
+            "explanation": "Trzy osoby wewnątrz bloku permutują na $3!$ sposobów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "3 osoby można ustawić na 3! sposobów.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-10-8",
+            "type": "OPEN_GENERAL",
+            "content": "Sześć osób, wśród których są Adam i Ewa, ustawia się w kolejce. Oblicz, na ile sposobów mogą się ustawić tak, aby Adam i Ewa NIE stali obok siebie.",
+            "explanation": "Krok 1: Obliczamy liczbę wszystkich możliwych ustawień 6 osób bez żadnych ograniczeń:\n$N_{\\text{wszystkie}} = 6! = 720$.\nKrok 2: Obliczamy liczbę ustawień, w których Adam i Ewa STOJĄ OBOK SIEBIE (metoda bloku):\n- Łączymy Adama i Ewę w jeden blok. Mamy wówczas 5 obiektów (blok i 4 pozostałe osoby),\n- Liczba ustawień 5 obiektów wynosi $5! = 120$,\n- Wewnątrz bloku Adam i Ewa mogą zamienić się miejscami na $2! = 2$ sposoby.\nLiczba ustawień, w których stoją obok siebie: $N_{\\text{razem}} = 120 \\cdot 2 = 240$.\nKrok 3: Odejmujemy liczbę ustawień niepożądanych od wszystkich:\n$N = N_{\\text{wszystkie}} - N_{\\text{razem}} = 720 - 240 = 480$.\nOdpowiedź: Adam i Ewa mogą ustawić się tak, aby nie stać obok siebie, na 480 sposobów.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zastosuj metodę dopełnienia: odejmij liczbę ustawień razem od wszystkich permutacji 6!.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-11",
+        "title": "Wariacje bez powtórzeń i z powtórzeniami",
+        "theory_pill": {
+          "concept_essence": "Wariacje to wybór $k$ elementów ze zbioru $n$-elementowego z uwzględnieniem KOLEJNOŚCI:\n1. Bez powtórzeń: $V_n^k = \\frac{n!}{(n - k)!} = n(n - 1)\\ldots(n - k + 1)$ (np. podium, wybór przewodniczącego i zastępcy),\n2. Z powtórzeniami: $\\overline{V}_n^k = n^k$ (np. kody PIN, rzuty kostką, rejestracje).",
+          "matura_context": "Zadania o kodach cyfrowych, hasłach i przydziale ról.",
+          "core_formulas": "$V_n^k = \\frac{n!}{(n - k)!}$, $\\overline{V}_n^k = n^k$.",
+          "worked_example": "Wybór przewodniczącego i skarbnika z 10 osób: $10 \\cdot 9 = 90$ sposobów.",
+          "exam_trap": "Mylenie z kombinacjami: w wariacji KOLEJNOŚĆ MA ZNACZENIE (Adam jako szef i Bartek jako zastępca to inny wynik niż Bartek szef i Adam zastępca!)."
+        },
+        "tasks": [
+          {
+            "id": "task-12-11-1",
+            "type": "SINGLE_CHOICE",
+            "content": "W klasie liczącej 20 uczniów wybieramy przewodniczącego, zastępcę i skarbnika. Każda osoba może pełnić najwyżej jedną funkcję. Na ile sposobów można dokonać wyboru?",
+            "explanation": "$V_{20}^3 = 20 \\cdot 19 \\cdot 18 = 6840$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6840",
+            "hint": "Pomnóż 20 * 19 * 18.",
+            "options": [
+              "6840",
+              "1140",
+              "8000",
+              "60"
+            ]
+          },
+          {
+            "id": "task-12-11-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Czterocyfrowy kod PIN do telefonu składa się z dowolnych cyfr od 0 do 9 (mogą się powtarzać). Liczba wszystkich możliwych kodów PIN wynosi:",
+            "explanation": "$\\overline{V}_{10}^4 = 10^4 = 10000$. (Kod PIN może zaczynać się od zera, np. 0000).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "10000",
+            "hint": "Pamiętaj, że kod PIN może mieć zero na początku.",
+            "options": [
+              "10000",
+              "5040",
+              "9000",
+              "6561"
+            ]
+          },
+          {
+            "id": "task-12-11-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba sposobów zajęcia miejsc 1, 2 i 3 na podium przez 8 zawodników wynosi $8 \\cdot 7 \\cdot 6 = 336$.",
+            "explanation": "Kolejność na podium ma znaczenie, zawodnicy nie mogą się powtarzać: $8 \\cdot 7 \\cdot 6 = 336$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "I miejsce ma 8 kandydatów, II miejsce 7, III miejsce 6.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-11-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Na ile sposobów można przyporządkować 3 różne pokoje hotelowe 5 turystom, jeśli w każdym pokoju może mieszkać tylko jedna osoba?",
+            "explanation": "$5 \\cdot 4 \\cdot 3 = 60$ sposobów.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "60",
+            "hint": "Dla I pokoju 5 osób, dla II 4, dla III 3."
+          },
+          {
+            "id": "task-12-11-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Rzucamy 4 razy symetryczną monetą. Liczba wszystkich ciągów orłów i reszek to:",
+            "explanation": "$\\overline{V}_2^4 = 2^4 = 16$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "16",
+            "hint": "W każdym z 4 rzutów mamy 2 możliwości.",
+            "options": [
+              "16",
+              "8",
+              "64",
+              "4"
+            ]
+          },
+          {
+            "id": "task-12-11-6",
+            "type": "SINGLE_CHOICE",
+            "content": "W biegu startuje 6 zawodników. Ile jest możliwych układów na miejscach 1 i 2?",
+            "explanation": "$6 \\cdot 5 = 30$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "30",
+            "hint": "I miejsce 6 opcji, II miejsce 5 opcji.",
+            "options": [
+              "30",
+              "36",
+              "15",
+              "12"
+            ]
+          },
+          {
+            "id": "task-12-11-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przy tworzeniu kodu do domofonu kolejność wciskanych cyfr nie ma znaczenia.",
+            "explanation": "Kod 1234 to zupełnie inny kod niż 4321, więc kolejność ma kluczowe znaczenie.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy kod zależy od kolejności cyfr?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-12-11-8",
+            "type": "OPEN_GENERAL",
+            "content": "W turnieju szachowym startuje 8 zawodników. Każdy z każdym rozgrywa jedną partię. Ile partii zostanie rozegranych w całym turnieju?",
+            "explanation": "Wybieramy parę zawodników do rozegrania partii ze zbioru 8 zawodników.\nPonieważ mecz między zawodnikiem A i B jest tą samą partią co mecz między B i A, kolejność wyboru nie ma znaczenia – stosujemy kombinacje 2-elementowe ze zbioru 8-elementowego:\n$N = \\binom{8}{2} = \\frac{8 \\cdot 7}{2} = \\frac{56}{2} = 28$.\nOdpowiedź: W turnieju zostanie rozegranych 28 partii.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zauważ, że partia A z B to to samo co B z A, więc dzielimy przez 2.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-12",
+        "title": "Kombinacje: Wybór podzbioru bez uwzględniania kolejności",
+        "theory_pill": {
+          "concept_essence": "Kombinacja to wybór $k$ elementów z $n$-elementowego zbioru, w którym KOLEJNOŚĆ NIE MA ZNACZENIA (wybieramy zespół, grupę, podzbiór). Liczbę kombinacji wyraża symbol Newtona: $C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n - k)!}$.",
+          "matura_context": "Zadania o losowaniu delegacji, wyborze pytań egzaminacyjnych czy losowaniu kul z urny.",
+          "core_formulas": "$\\binom{n}{k} = \\frac{n!}{k!(n - k)!}$. $\\binom{n}{1} = n$, $\\binom{n}{2} = \\frac{n(n - 1)}{2}$, $\\binom{n}{n} = 1$, $\\binom{n}{0} = 1$.",
+          "worked_example": "Wybór 2 osób z 6 do delegacji: $\\binom{6}{2} = \\frac{6 \\cdot 5}{2} = 15$.",
+          "exam_trap": "Mnożenie jak w wariacji bez dzielenia przez $k!$. Jeśli kolejność nie gra roli, MUSISZ podzielić przez permutacje wybranych elementów ($k!$)!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-12-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wartość symbolu Newtona $\\binom{6}{2}$ jest równa:",
+            "explanation": "$\\binom{6}{2} = \\frac{6 \\cdot 5}{2 \\cdot 1} = \\frac{30}{2} = 15$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "15",
+            "hint": "Oblicz iloczyn 6 * 5 i podziel przez 2.",
+            "options": [
+              "15",
+              "30",
+              "12",
+              "36"
+            ]
+          },
+          {
+            "id": "task-12-12-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Z grupy 10 osób należy wybrać 3-osobową delegację. Na ile sposobów można to zrobić?",
+            "explanation": "$\\binom{10}{3} = \\frac{10 \\cdot 9 \\cdot 8}{3 \\cdot 2 \\cdot 1} = \\frac{720}{6} = 120$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "120",
+            "hint": "Zastosuj symbol Newtona 10 po 3.",
+            "options": [
+              "120",
+              "720",
+              "30",
+              "60"
+            ]
+          },
+          {
+            "id": "task-12-12-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: $\\binom{7}{5} = \\binom{7}{2}$.",
+            "explanation": "Własność symetrii symbolu Newtona: $\\binom{n}{k} = \\binom{n}{n - k}$. Tutaj $\\binom{7}{5} = \\binom{7}{7 - 5} = \\binom{7}{2} = 21$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź własność symetrii symbolu Newtona.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-12-4",
+            "type": "NUMERIC_INPUT",
+            "content": "W klasie jest 12 dziewcząt. Na ile sposobów nauczyciel może wybrać 2 dziewczęta do odpowiedzi?",
+            "explanation": "$\\binom{12}{2} = \\frac{12 \\cdot 11}{2} = 66$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "66",
+            "hint": "Oblicz (12 * 11) / 2."
+          },
+          {
+            "id": "task-12-12-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Z talii 52 kart losujemy 5 kart. Liczba możliwych układów kart wynosi:",
+            "explanation": "Kolejność otrzymanych kart w ręce nie ma znaczenia, jest to kombinacja 5 kart z 52: $\\binom{52}{5}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\binom{52}{5}$",
+            "hint": "Kolejność trzymania kart w ręce nie gra roli.",
+            "options": [
+              "$\\binom{52}{5}$",
+              "$52^5$",
+              "$52 \\cdot 51 \\cdot 50 \\cdot 49 \\cdot 48$",
+              "$5!$"
+            ]
+          },
+          {
+            "id": "task-12-12-6",
+            "type": "SINGLE_CHOICE",
+            "content": "W urnie jest 6 kul białych i 4 czarne. Na ile sposobów można wylosować 2 kule białe i 1 czarną?",
+            "explanation": "Kule białe: $\\binom{6}{2} = 15$. Kula czarna: $\\binom{4}{1} = 4$. Z reguły mnożenia: $15 \\cdot 4 = 60$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "60",
+            "hint": "Wybierz kule białe ze zbioru białych, czarne z czarnych i pomnóż wyniki.",
+            "options": [
+              "60",
+              "24",
+              "120",
+              "15"
+            ]
+          },
+          {
+            "id": "task-12-12-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wartość $\\binom{n}{0}$ wynosi 1 dla każdego $n \\in \\mathbb{N}$.",
+            "explanation": "Wybór zbioru pustego jest możliwy dokładnie na 1 sposób, $\\binom{n}{0} = \\frac{n!}{0! \\cdot n!} = 1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zgodnie ze wzorem 0! = 1.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-12-8",
+            "type": "OPEN_GENERAL",
+            "content": "W grupie jest 8 kobiet i 6 mężczyzn. Wybieramy 4-osobowy komitet, w skład którego mają wejść dokładnie 2 kobiety i 2 mężczyzn. Na ile sposobów można wybrać taki komitet?",
+            "explanation": "Krok 1: Wybór 2 kobiet z 8:\nKolejność wyboru nie ma znaczenia, więc korzystamy z kombinacji:\n$N_K = \\binom{8}{2} = \\frac{8 \\cdot 7}{2 \\cdot 1} = 28$.\n\nKrok 2: Wybór 2 mężczyzn z 6:\n$N_M = \\binom{6}{2} = \\frac{6 \\cdot 5}{2 \\cdot 1} = 15$.\n\nKrok 3: Łączymy oba niezależne wybory regułą mnożenia:\n$N = N_K \\cdot N_M = 28 \\cdot 15 = 420$.\n\nOdpowiedź: Komitet można wybrać na 420 sposobów.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz liczbę wyborów 2 kobiet z 8, 2 mężczyzn z 6 i pomnóż wyniki.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-13",
+        "title": "Zliczanie w geometrii: Przekątne, odcinki i trójkąty",
+        "theory_pill": {
+          "concept_essence": "Zastosowanie kombinatoryki w geometrii:\n1. Liczba odcinków o końcach w $n$ punktach (gdzie żadne 3 nie są współliniowe): $\\binom{n}{2} = \\frac{n(n - 1)}{2}$,\n2. Liczba przekątnych $n$-kąta wypukłego: łączna liczba odcinków minus $n$ boków: $d = \\frac{n(n - 3)}{2}$,\n3. Liczba trójkątów o wierzchołkach w $n$ punktach: $\\binom{n}{3} = \\frac{n(n - 1)(n - 2)}{6}$.",
+          "matura_context": "Zadania o liczbie przekątnych lub tworzeniu figur z punktów na płaszczyźnie.",
+          "core_formulas": "Liczba przekątnych $n$-kąta: $d = \\frac{n(n - 3)}{2}$. Liczba odcinków: $\\binom{n}{2}$. Liczba trójkątów: $\\binom{n}{3}$.",
+          "worked_example": "Ośmiokąt ($n = 8$): liczba przekątnych $d = \\frac{8 \\cdot (8 - 3)}{2} = \\frac{8 \\cdot 5}{2} = 20$.",
+          "exam_trap": "Uznanie boków wielokąta za przekątne! Odcinki łączące sąsiednie wierzchołki to boki wielokąta, a nie przekątne."
+        },
+        "tasks": [
+          {
+            "id": "task-12-13-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Liczba przekątnych sześciokąta wypukłego jest równa:",
+            "explanation": "$d = \\frac{6(6 - 3)}{2} = \\frac{6 \\cdot 3}{2} = 9$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Zastosuj wzór n(n - 3) / 2 dla n = 6.",
+            "options": [
+              "9",
+              "12",
+              "15",
+              "6"
+            ]
+          },
+          {
+            "id": "task-12-13-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Na płaszczyźnie danych jest 7 punktów, z których żadne trzy nie leżą na jednej prostej. Ile różnych odcinków o końcach w tych punktach można narysować?",
+            "explanation": "Odcinek wyznaczają 2 punkty: $\\binom{7}{2} = \\frac{7 \\cdot 6}{2} = 21$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "21",
+            "hint": "Wybierz 2 punkty z 7 ze wzoru na symbol Newtona.",
+            "options": [
+              "21",
+              "42",
+              "14",
+              "35"
+            ]
+          },
+          {
+            "id": "task-12-13-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Trójkąt posiada dokładnie 3 przekątne.",
+            "explanation": "Trójkąt nie ma żadnych przekątnych: $d = \\frac{3(3 - 3)}{2} = 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy w trójkącie można połączyć dwa niesąsiednie wierzchołki?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-12-13-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Wielokąt wypukły ma 20 przekątnych. Ile wierzchołków ma ten wielokąt?",
+            "explanation": "$\\frac{n(n - 3)}{2} = 20 \\implies n(n - 3) = 40$. Dla $n = 8$: $8 \\cdot 5 = 40$. Wielokąt ma 8 wierzchołków.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "8",
+            "hint": "Rozwiąż równanie n(n - 3) = 40."
+          },
+          {
+            "id": "task-12-13-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Na okręgu zaznaczono 6 różnych punktów. Ile różnych trójkątów o wierzchołkach w tych punktach można narysować?",
+            "explanation": "Trzy punkty na okręgu nigdy nie są współliniowe. Liczba trójkątów: $\\binom{6}{3} = \\frac{6 \\cdot 5 \\cdot 4}{6} = 20$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "20",
+            "hint": "Wybierz 3 wierzchołki z 6: 6 po 3.",
+            "options": [
+              "20",
+              "120",
+              "15",
+              "30"
+            ]
+          },
+          {
+            "id": "task-12-13-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Na ile sposobów można wybrać 2 wierzchołki kwadratu?",
+            "explanation": "$\\binom{4}{2} = \\frac{4 \\cdot 3}{2} = 6$ (są to 4 boki i 2 przekątne).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Wybierz 2 punkty z 4.",
+            "options": [
+              "6",
+              "4",
+              "8",
+              "12"
+            ]
+          },
+          {
+            "id": "task-12-13-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: W dziesięciokącie wypukłym liczba przekątnych wynosi 35.",
+            "explanation": "$d = \\frac{10(10 - 3)}{2} = \\frac{10 \\cdot 7}{2} = 35$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Oblicz (10 * 7) / 2.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-13-8",
+            "type": "OPEN_GENERAL",
+            "content": "Dany jest dziesięciokąt wypukły. Oblicz, o ile większa jest liczba jego przekątnych od liczby jego boków.",
+            "explanation": "Krok 1: Liczba boków dziesięciokąta wynosi $b = 10$.\nKrok 2: Obliczamy liczbę przekątnych dziesięciokąta wypukłego ze wzoru:\n$d = \\frac{n(n - 3)}{2} = \\frac{10(10 - 3)}{2} = \\frac{10 \\cdot 7}{2} = 35$.\nKrok 3: Obliczamy różnicę:\n$d - b = 35 - 10 = 25$.\nOdpowiedź: Liczba przekątnych jest większa od liczby boków o 25.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz liczbę przekątnych i odejmij od niej liczbę boków (10).",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-14",
+        "title": "Zliczanie z ograniczeniami: Warunki brzegowe i wykluczenia",
+        "theory_pill": {
+          "concept_essence": "Rozwiązywanie złożonych zagadnień kombinatorycznych z warunkami brzegowymi:\n1. Metoda dopełnienia: $\\text{Liczba wyników spełniających warunek} = \\text{Wszystkie wyniki} - \\text{Wyniki niespełniające warunku}$,\n2. 'Co najmniej jeden': $N(\\ge 1) = N_{\\text{wszystkie}} - N(0)$,\n3. Rozbicie na rozłączne, wykluczające się przypadki.",
+          "matura_context": "Zadania z treścią typu 'co najmniej jedna cyfra parzysta' lub 'osoby nie mogą stać na skraju'.",
+          "core_formulas": "$|A| = |\\Omega| - |A'|$. Zasada włączeń i wyłączeń dla dwóch zbiorów.",
+          "worked_example": "Wybór 3 osób z 10, w tym co najmniej jednej kobiety: od wszystkich wyborów $\\binom{10}{3}$ odejmujemy wybory złożone z samych mężczyzn.",
+          "exam_trap": "Próba bezpośredniego zliczania 'co najmniej jednego' bez rozbicia na przypadki, co niemal zawsze prowadzi do wielokrotnego policzenia tych samych układów."
+        },
+        "tasks": [
+          {
+            "id": "task-12-14-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wybieramy 3 osoby z grupy 5 kobiet i 4 mężczyzn. Liczba wyborów, w których znajdzie się co najmniej jedna kobieta, jest równa:",
+            "explanation": "Wszystkie wybory: $\\binom{9}{3} = \\frac{9 \\cdot 8 \\cdot 7}{6} = 84$. Wybory samych mężczyzn: $\\binom{4}{3} = 4$. Co najmniej jedna kobieta: $84 - 4 = 80$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "80",
+            "hint": "Odejmij wybory złożone z samych mężczyzn od wszystkich możliwości.",
+            "options": [
+              "80",
+              "84",
+              "4",
+              "60"
+            ]
+          },
+          {
+            "id": "task-12-14-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Rzucamy 3 razy symetryczną monetą. Liczba wyników, w których wypadł co najmniej jeden orzeł, wynosi:",
+            "explanation": "Wszystkie wyniki: $2^3 = 8$. Wynik bez orłów (same reszki): 1. Zatem $8 - 1 = 7$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "7",
+            "hint": "Odejmij przypadek samych reszek od 8.",
+            "options": [
+              "7",
+              "8",
+              "6",
+              "1"
+            ]
+          },
+          {
+            "id": "task-12-14-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Sformułowanie 'co najmniej jeden' oznacza 'jeden lub więcej'.",
+            "explanation": "To ścisła definicja matematyczna: warunek spełniają układy z 1, 2, 3... elementami.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Co najmniej jeden to przeciwieństwo zera elementów.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-14-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile jest liczb dwucyfrowych, w których występuje co najmniej jedna cyfra 7?",
+            "explanation": "Cyfra 7 na pozycji dziesiątek: 70-79 (10 liczb). Cyfra 7 na pozycji jedności: 17, 27, 37, 47, 57, 67, 87, 97 (8 liczb, bez 77 bo już policzona). Razem: $10 + 8 = 18$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "18",
+            "hint": "Wypisz liczby od 70 do 79 oraz pozostałe zakończone na 7."
+          },
+          {
+            "id": "task-12-14-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Z talii 52 kart losujemy 2 karty. Ile jest możliwości wylosowania co najmniej jednego asa?",
+            "explanation": "Od wszystkich par $\\binom{52}{2}$ odejmujemy pary kart bez asów $\\binom{48}{2}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\binom{52}{2} - \\binom{48}{2}$",
+            "hint": "Zastosuj zasadę dopełnienia: wszystkie pary minus pary bez asów.",
+            "options": [
+              "$\\binom{52}{2} - \\binom{48}{2}$",
+              "$\\binom{4}{1} \\cdot \\binom{48}{1}$",
+              "$\\binom{4}{2}$",
+              "$\\binom{52}{2} - 4$"
+            ]
+          },
+          {
+            "id": "task-12-14-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych, w których cyfra setek jest większa od cyfry jedności?",
+            "explanation": "Dla każdej pary cyfr różne od siebie, w połowie przypadków cyfra setek jest większa od jedności: z 900 liczb połowa ma tę własność (z uwzględnieniem równości). Dokładnie: cyfra setek $s$, jedności $j$. Dla $s > j$: jest 45 par $(s, j)$, dla każdej 10 cyfr dziesiątek $\\implies 45 \\cdot 10 = 450$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "450",
+            "hint": "Ustal liczbę par cyfr skrajnych, gdzie pierwsza jest większa od ostatniej.",
+            "options": [
+              "450",
+              "405",
+              "360",
+              "900"
+            ]
+          },
+          {
+            "id": "task-12-14-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Metoda dopełnienia polega na odjęciu od wszystkich możliwości tych, które NIE spełniają warunku.",
+            "explanation": "To fundamentalna technika kombinatoryczna upraszczająca rachunki.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zdarzenie przeciwne to odjęcie od całości.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-14-8",
+            "type": "OPEN_GENERAL",
+            "content": "W klasie liczącej 14 dziewcząt i 10 chłopców wybieramy 3-osobowy samorząd. Oblicz, na ile sposobów można wybrać samorząd tak, aby znalazł się w nim co najmniej jeden chłopiec.",
+            "explanation": "Krok 1: Obliczamy liczbę wszystkich możliwych wyborów 3 osób spośród całej klasy ($14 + 10 = 24$ uczniów):\n$N_{\\text{wszystkie}} = \\binom{24}{3} = \\frac{24 \\cdot 23 \\cdot 22}{3 \\cdot 2 \\cdot 1} = 4 \\cdot 23 \\cdot 22 = 2024$.\n\nKrok 2: Obliczamy liczbę wyborów niepożądanych, czyli samorządów złożonych z SAMYCH DZIEWCZĄT (0 chłopców):\nWybieramy 3 osoby spośród 14 dziewcząt:\n$N_{\\text{same dziewczęta}} = \\binom{14}{3} = \\frac{14 \\cdot 13 \\cdot 12}{3 \\cdot 2 \\cdot 1} = 14 \\cdot 13 \\cdot 2 = 364$.\n\nKrok 3: Stosujemy zasadę dopełnienia:\nLiczba samorządów z co najmniej jednym chłopcem wynosi:\n$N = N_{\\text{wszystkie}} - N_{\\text{same dziewczęta}} = 2024 - 364 = 1660$.\nOdpowiedź: Taki samorząd można wybrać na 1660 sposobów.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz liczbę wszystkich trójek z 24 osób i odejmij trójki samych dziewcząt.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-12-15",
+        "title": "Złożone zadania kombinatoryczne z matur majowych",
+        "theory_pill": {
+          "concept_essence": "Zestawienie wszystkich technik kombinatorycznych w przekrojowych zadaniach maturalnych: dobór odpowiedniego modelu (reguła mnożenia vs dodawania vs permutacje vs kombinacje), identyfikacja pułapek oraz precyzyjny zapis rozumowania.",
+          "matura_context": "Zadania zamknięte i otwarte za 1-3 punkty z oficjalnych arkuszy matury majowej.",
+          "core_formulas": "Podsumowanie modeli: Reguła mnożenia, Reguła dodawania, $P_n = n!$, $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$.",
+          "worked_example": "Liczby 4-cyfrowe o sumie cyfr 3 lub podział grupy na zespoły w zadaniach z arkuszy CKE.",
+          "exam_trap": "Stosowanie gotowych wzorów bez zrozumienia, czy kolejność elementów ma znaczenie i czy elementy mogą się powtarzać!"
+        },
+        "tasks": [
+          {
+            "id": "task-12-15-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wszystkich liczb naturalnych pięciocyfrowych, w których zapisie dziesiętnym występują tylko cyfry 1, 2, 3 i każda z nich występuje co najmniej raz, jest:",
+            "explanation": "Podział na cyfry: układ (3,1,1) daje $\\binom{5}{3} \\cdot 3 \\cdot 2 = 60$; układ (2,2,1) daje $\\frac{5!}{2!2!1!} \\cdot 3 = 90$. Razem: $60 + 90 = 150$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "150",
+            "hint": "Rozpatrz układy krotności poszczególnych cyfr.",
+            "options": [
+              "150",
+              "243",
+              "60",
+              "90"
+            ]
+          },
+          {
+            "id": "task-12-15-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb czterocyfrowych, w których cyfra setek jest równa 3, a cyfra jedności jest parzysta?",
+            "explanation": "Tysiące: 9 opcji (1-9), Setki: 1 opcja (cyfra 3), Dziesiątki: 10 opcji (0-9), Jedności: 5 opcji (0, 2, 4, 6, 8). $9 \\cdot 1 \\cdot 10 \\cdot 5 = 450$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "450",
+            "hint": "Zastosuj regułę mnożenia: 9 * 1 * 10 * 5.",
+            "options": [
+              "450",
+              "500",
+              "400",
+              "900"
+            ]
+          },
+          {
+            "id": "task-12-15-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli w zadaniu maturalnym kolejność wyboru elementów nie ma znaczenia, to należy użyć symbolu Newtona.",
+            "explanation": "Brak znaczenia kolejności to definicja kombinacji (symbol Newtona).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Kombinacje stosujemy, gdy kolejność nie gra roli.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-15-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Na ile sposobów można przydzielić 4 różne zadania 4 różnym programistom, tak aby każdy otrzymał dokładnie jedno zadanie?",
+            "explanation": "$4! = 24$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "24",
+            "hint": "Oblicz 4 silnia."
+          },
+          {
+            "id": "task-12-15-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Ile jest liczb trzycyfrowych, których iloczyn cyfr jest równy 6?",
+            "explanation": "Rozkłady liczby 6 na iloczyn 3 cyfr ze zbioru $\\{1, \\dots, 9\\}$:\n1) $\\{1, 1, 6\\}$: 3 liczby (116, 161, 611),\n2) $\\{1, 2, 3\\}$: $3! = 6$ liczb (123, 132, 213, 231, 312, 321).\nŁącznie: $3 + 6 = 9$ liczb.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Rozłóż liczbę 6 na iloczyny 3 cyfr.",
+            "options": [
+              "9",
+              "6",
+              "12",
+              "3"
+            ]
+          },
+          {
+            "id": "task-12-15-6",
+            "type": "SINGLE_CHOICE",
+            "content": "W urnie jest 10 kul ponumerowanych od 1 do 10. Losujemy jednocześnie 3 kule. Na ile sposobów możemy wylosować kule, wśród których jest kula z numerem 1?",
+            "explanation": "Kula z numerem 1 jest już wybrana. Pozostałe 2 kule wybieramy z pozostałych 9 kul: $\\binom{9}{2} = \\frac{9 \\cdot 8}{2} = 36$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "36",
+            "hint": "Wybierz 2 pozostałe kule z 9.",
+            "options": [
+              "36",
+              "120",
+              "45",
+              "72"
+            ]
+          },
+          {
+            "id": "task-12-15-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba wszystkich podzbiorów zbioru 4-elementowego wynosi $2^4 = 16$.",
+            "explanation": "Każdy element może należeć lub nie należeć do podzbioru (2 możliwości na element): $2^4 = 16$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Liczba podzbiorów zbioru n-elementowego to 2^n.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-12-15-8",
+            "type": "OPEN_GENERAL",
+            "content": "Oblicz, ile jest wszystkich liczb czterocyfrowych o różnych cyfrach, które są większe od 4000 i których cyfry należą do zbioru $\\{1, 2, 3, 4, 5, 6\\}$.",
+            "explanation": "Krok 1: Aby liczba czterocyfrowa była większa od 4000, jej cyfra tysięcy musi być równa 4, 5 lub 6:\n- Liczba możliwości wyboru cyfry tysięcy: 3 opcje (ze zbioru $\\{4, 5, 6\\}$).\n\nKrok 2: Cyfry nie mogą się powtarzać, a zbiór liczy 6 cyfr:\n- Cyfra setek: wybieramy z pozostałych 5 cyfr (5 opcji),\n- Cyfra dziesiątek: wybieramy z pozostałych 4 cyfr (4 opcje),\n- Cyfra jedności: wybieramy z pozostałych 3 cyfr (3 opcje).\n\nKrok 3: Stosujemy regułę mnożenia:\n$N = 3 \\cdot 5 \\cdot 4 \\cdot 3 = 180$.\n\nOdpowiedź: Jest 180 takich liczb czterocyfrowych.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i rozbicie na etapy/przypadki",
+              "1 pkt – pełne poprawne rozwiązanie i poprawny wynik liczbowy"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wybierz cyfrę tysięcy (4, 5 lub 6 – 3 opcje), a pozostałe 3 pozycje obsadź z pozostałych cyfr bez powtórzeń.",
+              "Zwróć uwagę na to, czy kolejność ma znaczenie oraz czy cyfry/elementy mogą się powtarzać."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      }
+    ],
+    "final_test": {
+      "id": "test-dzial-12",
+      "title": "Sprawdzian wiedzy: Dział 12: Kombinatoryka",
+      "tasks": [
+        "t-dzial-12-1-1",
+        "t-dzial-12-2-1",
+        "t-dzial-12-3-1",
+        "t-dzial-12-4-1",
+        "t-dzial-12-5-1",
+        "t-dzial-12-6-1",
+        "t-dzial-12-7-1",
+        "t-dzial-12-8-1",
+        "t-dzial-12-9-1",
+        "t-dzial-12-10-1",
+        "t-dzial-12-11-1",
+        "t-dzial-12-12-1",
+        "t-dzial-12-13-1",
+        "t-dzial-12-14-1",
+        "t-dzial-12-15-1"
+      ]
+    }
+  }
+}

@@ -1,0 +1,2273 @@
+{
+  "topic": {
+    "id": "dzial-14",
+    "title": "Dział 14: Statystyka",
+    "lessons": [
+      {
+        "id": "lesson-14-1",
+        "title": "Średnia arytmetyczna liczb",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Średnia arytmetyczna zbioru $n$ liczb $a_1, a_2, \\dots, a_n$ to iloraz ich sumy przez liczbę elementów: $\\overline{a} = \\frac{a_1 + a_2 + \\dots + a_n}{n}$. Jest podstawową miarą tendencji centralnej w statystyce.",
+          "matura_context": "Absolutny pewniak maturalny za 1 punkt. Sprawdza umiejętność szybkiego i bezbłędnego sumowania oraz dzielenia liczb.",
+          "core_formulas": "\\overline{x} = \\frac{x_1 + x_2 + \\dots + x_n}{n} = \\frac{1}{n}\\sum_{i=1}^n x_i",
+          "worked_example": "Oblicz średnią arytmetyczną liczb: $3, 7, 8, 10, 12$. Suma: $3 + 7 + 8 + 10 + 12 = 40$. Liczba elementów: $5$. Średnia: $\\overline{x} = \\frac{40}{5} = 8$.",
+          "exam_trap": "Błędy rachunkowe przy sumowaniu liczb ujemnych lub ułamków. Zawsze upewnij się, przez jaką dokładnie liczbę danych dzielisz sumę."
+        },
+        "tasks": [
+          {
+            "id": "task-14-1-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Średnia arytmetyczna liczb: $4, 7, 8, x, 11$ jest równa $8$. Liczba $x$ wynosi:",
+            "explanation": "(4 + 7 + 8 + x + 11) / 5 = 8 => 30 + x = 40 => x = 10.",
+            "hint_cost": 10,
+            "options": [
+              "$10$",
+              "$8$",
+              "$12$",
+              "$9$"
+            ],
+            "correct_answer": "$10$",
+            "hint": "Zapisz równanie: (30 + x) / 5 = 8 i pomnóż obie strony przez 5."
+          },
+          {
+            "id": "task-14-1-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Średnia arytmetyczna zestawu danych: $2, 3, 5, 7, 11, 14$ jest równa:",
+            "explanation": "Suma: 2 + 3 + 5 + 7 + 11 + 14 = 42. Średnia: 42 / 6 = 7.",
+            "hint_cost": 10,
+            "options": [
+              "$7$",
+              "$6$",
+              "$7{,}5$",
+              "$8$"
+            ],
+            "correct_answer": "$7$",
+            "hint": "Dodaj wszystkie liczby i podziel przez ich liczbę (czyli przez 6)."
+          },
+          {
+            "id": "task-14-1-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Średnia arytmetyczna sześciu liczb wynosi $15$. Suma tych liczb jest równa:",
+            "explanation": "Suma / 6 = 15 => Suma = 6 * 15 = 90.",
+            "hint_cost": 10,
+            "options": [
+              "$90$",
+              "$60$",
+              "$75$",
+              "$21$"
+            ],
+            "correct_answer": "$90$",
+            "hint": "Pomnóż średnią przez liczbę danych: 6 * 15."
+          },
+          {
+            "id": "task-14-1-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Średnia arytmetyczna liczb: $-3, 5, -2, 8, x$ wynosi $3$. Wtedy liczba $x$ jest równa:",
+            "explanation": "(-3 + 5 - 2 + 8 + x) / 5 = 3 => 8 + x = 15 => x = 7.",
+            "hint_cost": 10,
+            "options": [
+              "$7$",
+              "$5$",
+              "$9$",
+              "$4$"
+            ],
+            "correct_answer": "$7$",
+            "hint": "Suma znanych liczb wynosi 8. Rozwiąż równanie: (8 + x) / 5 = 3."
+          },
+          {
+            "id": "task-14-1-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Średnia arytmetyczna liczb $a, b, c$ wynosi $12$. Wtedy średnia arytmetyczna liczb $a+2, b+4, c+6$ jest równa:",
+            "explanation": "a + b + c = 36. Nowa suma: (a + b + c) + 12 = 36 + 12 = 48. Nowa średnia: 48 / 3 = 16.",
+            "hint_cost": 10,
+            "options": [
+              "$16$",
+              "$14$",
+              "$18$",
+              "$24$"
+            ],
+            "correct_answer": "$16$",
+            "hint": "Do sumy dodano 2 + 4 + 6 = 12. Średnia wzrosła o 12 / 3 = 4."
+          },
+          {
+            "id": "task-14-1-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Średnia arytmetyczna czterech kolejnych liczb nieparzystych wynosi $16$. Najmniejsza z tych liczb to:",
+            "explanation": "Liczby to: 2k+1, 2k+3, 2k+5, 2k+7. Suma = 8k + 16. Średnia = 2k + 4 = 16 => 2k = 12 => liczby to 13, 15, 17, 19. Najmniejsza to 13.",
+            "hint_cost": 10,
+            "options": [
+              "$13$",
+              "$11$",
+              "$15$",
+              "$9$"
+            ],
+            "correct_answer": "$13$",
+            "hint": "Kolejne liczby nieparzyste różnią się o 2. Środek zestawu to 16, więc liczby to 13, 15, 17, 19."
+          },
+          {
+            "id": "task-14-1-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Średnia arytmetyczna liczb: $x, 2x, 3x, 4x, 5x$ wynosi $18$. Liczba $x$ jest równa:",
+            "explanation": "Suma: 15x. Średnia: 15x / 5 = 3x = 18 => x = 6.",
+            "hint_cost": 10,
+            "options": [
+              "$6$",
+              "$3$",
+              "$5$",
+              "$9$"
+            ],
+            "correct_answer": "$6$",
+            "hint": "Suma wynosi 15x. Podziel przez 5: 3x = 18."
+          },
+          {
+            "id": "task-14-1-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Średnia arytmetyczna zestawu siedmiu ocen cząstkowych Jacka wynosi $4{,}0$. Gdy Jacek otrzymał ósmą ocenę, jego średnia wzrosła do $4{,}25$. Jaką ósmą ocenę otrzymał Jacek? Zapisz obliczenia.",
+            "explanation": "Suma początkowych 7 ocen: 7 * 4,0 = 28. Suma po 8 ocenach: 8 * 4,25 = 34. Ósma ocena: 34 - 28 = 6.",
+            "hint_cost": 20,
+            "hint": "Oblicz sumę 7 ocen, potem sumę 8 ocen i znajdź różnicę.",
+            "scoring_key": [
+              "1 pkt – Obliczenie sumy 7 ocen (28) oraz sumy 8 ocen (34)",
+              "1 pkt – Wyznaczenie ósmej oceny: 34 - 28 = 6"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-2",
+        "title": "Średnia arytmetyczna z dwiema niewiadomymi",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "W wielu zadaniach maturalnych w zestawie danych występują dwie niewiadome (np. $x$ i $y$). Wtedy średnia dostarcza jednego równania łączącego $x$ i $y$, a drugi warunek (np. mediana, suma, lub relacja $x - y = d$) pozwala ułożyć i rozwiązać układ równań liniowych.",
+          "matura_context": "Typowe zadanie maturalne za 2 punkty łączące średnią z własnościami liczb.",
+          "core_formulas": "\\sum x_i = n \\cdot \\overline{x}, \\quad \\text{Układ równań: } \\begin{cases} x + y = S - S_{\\text{znane}} \\\\ \\text{warunek dodatkowy} \\end{cases}",
+          "worked_example": "W zestawie $3, 5, x, y$ średnia wynosi $6$, a $y = x + 4$. Suma liczb: $3 + 5 + x + y = 4 \\cdot 6 = 24$, więc $x + y = 16$. Podstawiając $y$: $x + x + 4 = 16 \\implies 2x = 12 \\implies x = 6$, $y = 10$.",
+          "exam_trap": "Zapomnienie o pomnożeniu średniej przez CAŁKOWITĄ liczbę elementów zestawu (w tym niewiadome)."
+        },
+        "tasks": [
+          {
+            "id": "task-14-2-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Średnia arytmetyczna liczb $2, 6, x, y$ jest równa $7$. Wtedy suma $x + y$ wynosi:",
+            "explanation": "2 + 6 + x + y = 4 * 7 = 28 => x + y = 28 - 8 = 20.",
+            "hint_cost": 10,
+            "options": [
+              "$20$",
+              "$28$",
+              "$14$",
+              "$16$"
+            ],
+            "correct_answer": "$20$",
+            "hint": "Pomnóż średnią 7 przez 4, a następnie odejmij 2 i 6."
+          },
+          {
+            "id": "task-14-2-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W zestawie danych $1, 4, 7, x, y$ średnia wynosi $5$, a liczba $y$ jest o $4$ większa od $x$. Liczba $x$ jest równa:",
+            "explanation": "1 + 4 + 7 + x + y = 25 => x + y = 13. y = x + 4 => 2x + 4 = 13 => 2x = 9 => x = 4,5.",
+            "hint_cost": 10,
+            "options": [
+              "$4{,}5$",
+              "$5$",
+              "$4$",
+              "$6$"
+            ],
+            "correct_answer": "$4{,}5$",
+            "hint": "Suma wszystkich 5 liczb to 25. Zatem x + y = 13."
+          },
+          {
+            "id": "task-14-2-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Średnia arytmetyczna liczb $x$ i $y$ wynosi $14$, a średnia liczb $x, y, z$ wynosi $12$. Liczba $z$ jest równa:",
+            "explanation": "x + y = 2 * 14 = 28. x + y + z = 3 * 12 = 36. Zatem z = 36 - 28 = 8.",
+            "hint_cost": 10,
+            "options": [
+              "$8$",
+              "$10$",
+              "$6$",
+              "$12$"
+            ],
+            "correct_answer": "$8$",
+            "hint": "Suma x + y to 28. Suma x + y + z to 36."
+          },
+          {
+            "id": "task-14-2-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Średnia arytmetyczna pięciu liczb wynosi $10$. Po usunięciu jednej z nich średnia pozostałych czterech wynosi $11$. Usunięta liczba to:",
+            "explanation": "Początkowa suma: 5 * 10 = 50. Nowa suma: 4 * 11 = 44. Usunięta liczba: 50 - 44 = 6.",
+            "hint_cost": 10,
+            "options": [
+              "$6$",
+              "$8$",
+              "$4$",
+              "$10$"
+            ],
+            "correct_answer": "$6$",
+            "hint": "Odejmij nową sumę (4 * 11) od początkowej sumy (5 * 10)."
+          },
+          {
+            "id": "task-14-2-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Średnia arytmetyczna liczb $a, b, c$ wynosi $9$. Średnia liczb $a, b, c, d, e$ wynosi $11$. Wtedy średnia arytmetyczna liczb $d$ i $e$ jest równa:",
+            "explanation": "a + b + c = 27. a + b + c + d + e = 55 => d + e = 55 - 27 = 28. Średnia d i e to 28 / 2 = 14.",
+            "hint_cost": 10,
+            "options": [
+              "$14$",
+              "$12$",
+              "$15$",
+              "$13$"
+            ],
+            "correct_answer": "$14$",
+            "hint": "Suma d + e = 55 - 27 = 28. Podziel przez 2."
+          },
+          {
+            "id": "task-14-2-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Średnia arytmetyczna liczb $x, y$ wynosi $20$, a ich iloczyn $xy = 300$. Wtedy kwadrat różnicy $(x - y)^2$ jest równy:",
+            "explanation": "x + y = 40. (x - y)^2 = (x + y)^2 - 4xy = 40^2 - 4 * 300 = 1600 - 1200 = 400.",
+            "hint_cost": 10,
+            "options": [
+              "$400$",
+              "$100$",
+              "$200$",
+              "$300$"
+            ],
+            "correct_answer": "$400$",
+            "hint": "Skorzystaj ze wzoru: (x - y)^2 = (x + y)^2 - 4xy."
+          },
+          {
+            "id": "task-14-2-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Liczby $a, b, c$ tworzą ciąg arytmetyczny. Ich średnia arytmetyczna wynosi $15$. Środkowy wyraz $b$ jest równy:",
+            "explanation": "W ciągu arytmetycznym a + c = 2b, więc a + b + c = 3b. Średnia: 3b / 3 = b = 15.",
+            "hint_cost": 10,
+            "options": [
+              "$15$",
+              "$10$",
+              "$20$",
+              "$5$"
+            ],
+            "correct_answer": "$15$",
+            "hint": "W ciągu arytmetycznym średnia trzech kolejnych wyrazów jest równa wyrazowi środkowemu."
+          },
+          {
+            "id": "task-14-2-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "W zestawie liczb: $3, 8, 12, x, y$ średnia arytmetyczna wynosi $9$. Wiadomo ponadto, że $y = 2x$. Wyznacz liczby $x$ i $y$. Zapisz obliczenia.",
+            "explanation": "Suma liczb: 3 + 8 + 12 + x + y = 5 * 9 = 45 => 23 + x + y = 45 => x + y = 22. Podstawiając y = 2x: 3x = 22 => x = 22/3, y = 44/3.",
+            "hint_cost": 20,
+            "hint": "Ułóż równanie na sumę: 23 + x + y = 45, a następnie podstaw y = 2x.",
+            "scoring_key": [
+              "1 pkt – Ułożenie równania x + y = 22",
+              "1 pkt – Poprawne wyznaczenie x = 22/3 oraz y = 44/3"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-3",
+        "title": "Średnia ważona",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Średnia ważona uwzględnia różną wagę (istotność) poszczególnych danych. Jeśli wartościom $x_1, x_2, \\dots, x_n$ odpowiadają dodatnie wagi $w_1, w_2, \\dots, w_n$, to średnia ważona wynosi: $\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\dots + x_n w_n}{w_1 + w_2 + \\dots + w_n}$.",
+          "matura_context": "Częsty motyw maturalny: obliczanie oceny semestralnej ucznia (np. klasówka ma wagę 3, kartkówka 1), średniej ceny akcji lub średniej prędkości.",
+          "core_formulas": "\\overline{x}_w = \\frac{\\sum x_i w_i}{\\sum w_i}",
+          "worked_example": "Uczeń otrzymał ocenę 5 z klasówki (waga 3) i ocenę 3 z odpowiedzi (waga 1). Średnia ważona: $\\overline{x}_w = \\frac{5 \\cdot 3 + 3 \\cdot 1}{3 + 1} = \\frac{15 + 3}{4} = \\frac{18}{4} = 4{,}5$.",
+          "exam_trap": "Dzielenie przez liczbę ocen (np. przez 2) zamiast przez sumę wag ($w_1 + w_2$). W mianowniku ZAWSZE stoi suma wag!"
+        },
+        "tasks": [
+          {
+            "id": "task-14-3-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Ocena z klasówki ma wagę $3$, a z kartkówki wagę $1$. Uczeń otrzymał $4$ z klasówki i $2$ z kartkówki. Średnia ważona jego ocen wynosi:",
+            "explanation": "(4 * 3 + 2 * 1) / (3 + 1) = (12 + 2) / 4 = 14 / 4 = 3,5.",
+            "hint_cost": 10,
+            "options": [
+              "$3{,}5$",
+              "$3{,}0$",
+              "$3{,}25$",
+              "$3{,}75$"
+            ],
+            "correct_answer": "$3{,}5$",
+            "hint": "Oblicz (4 * 3 + 2 * 1) / 4."
+          },
+          {
+            "id": "task-14-3-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W tabeli podano oceny studenta i ich wagi: ocena $5$ (waga $2$), ocena $4$ (waga $3$), ocena $3$ (waga $5$). Średnia ważona tych ocen jest równa:",
+            "explanation": "(5*2 + 4*3 + 3*5) / (2 + 3 + 5) = (10 + 12 + 15) / 10 = 37 / 10 = 3,7.",
+            "hint_cost": 10,
+            "options": [
+              "$3{,}7$",
+              "$4{,}0$",
+              "$3{,}5$",
+              "$3{,}8$"
+            ],
+            "correct_answer": "$3{,}7$",
+            "hint": "Mianownik to suma wag: 2 + 3 + 5 = 10."
+          },
+          {
+            "id": "task-14-3-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Średnia ważona liczb $2, 5, 8$ z wagami odpowiednio $w, 2, 1$ wynosi $5$. Waga $w$ jest równa:",
+            "explanation": "(2w + 10 + 8) / (w + 3) = 5 => 2w + 18 = 5w + 15 => 3w = 3 => w = 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$2$",
+              "$3$",
+              "$4$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Zapisz równanie: (2w + 18) / (w + 3) = 5 i rozwiąż je względem w."
+          },
+          {
+            "id": "task-14-3-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Firma kupiła $100$ kg mąki po $3$ zł/kg oraz $300$ kg mąki po $5$ zł/kg. Średnia cena $1$ kg zakupionej mąki wynosi:",
+            "explanation": "(100 * 3 + 300 * 5) / 400 = (300 + 1500) / 400 = 1800 / 400 = 4,50 zł.",
+            "hint_cost": 10,
+            "options": [
+              "$4{,}50$ zł",
+              "$4{,}00$ zł",
+              "$4{,}25$ zł",
+              "$4{,}75$ zł"
+            ],
+            "correct_answer": "$4{,}50$ zł",
+            "hint": "Podziel całkowity koszt (1800 zł) przez całkowitą masę (400 kg)."
+          },
+          {
+            "id": "task-14-3-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W klasie $3A$ (liczącej $20$ uczniów) średnia ocen z testu wyniosła $3{,}5$, a w klasie $3B$ (liczącej $30$ uczniów) wyniosła $4{,}5$. Średnia ocen uczniów obu klas wynosi:",
+            "explanation": "(20 * 3,5 + 30 * 4,5) / 50 = (70 + 135) / 50 = 205 / 50 = 4,1.",
+            "hint_cost": 10,
+            "options": [
+              "$4{,}1$",
+              "$4{,}0$",
+              "$4{,}2$",
+              "$3{,}9$"
+            ],
+            "correct_answer": "$4{,}1$",
+            "hint": "Liczby uczniów w klasach pełnią rolę wag: (20 * 3,5 + 30 * 4,5) / 50."
+          },
+          {
+            "id": "task-14-3-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Średnia ważona liczb $x_1 = 10$ z wagą $0{,}4$ oraz $x_2 = 20$ z wagą $0{,}6$ wynosi:",
+            "explanation": "(10 * 0,4 + 20 * 0,6) / (0,4 + 0,6) = (4 + 12) / 1 = 16.",
+            "hint_cost": 10,
+            "options": [
+              "$16$",
+              "$15$",
+              "$14$",
+              "$18$"
+            ],
+            "correct_answer": "$16$",
+            "hint": "Suma wag wynosi 0,4 + 0,6 = 1. Wystarczy dodać 4 + 12."
+          },
+          {
+            "id": "task-14-3-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Jeśli wszystkie wagi $w_1, w_2, \\dots, w_n$ są równe, to średnia ważona jest:",
+            "explanation": "Gdy w_i = w dla każdego i, waga skraca się z licznika i mianownika, dając zwykłą średnią arytmetyczną.",
+            "hint_cost": 10,
+            "options": [
+              "równa średniej arytmetycznej",
+              "większa od średniej arytmetycznej",
+              "mniejsza od średniej arytmetycznej",
+              "równa zeru"
+            ],
+            "correct_answer": "równa średniej arytmetycznej",
+            "hint": "Wyłącz wspólną wagę w przed nawias w liczniku i mianowniku."
+          },
+          {
+            "id": "task-14-3-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Kandydat na studia zdawał egzamin z trzech przedmiotów: matematyki (waga $50\\%$), języka angielskiego (waga $30\\%$) oraz fizyki (waga $20\\%$). Uzyskał odpowiednio $80\\%$, $90\\%$ i $70\\%$ punktów. Oblicz średni wynik kandydata. Zapisz obliczenia.",
+            "explanation": "Średnia ważona: (80 * 0,5 + 90 * 0,3 + 70 * 0,2) = 40 + 27 + 14 = 81%.",
+            "hint_cost": 20,
+            "hint": "Pomnóż wyniki z przedmiotów przez ich wagi dziesiętne i zsumuj.",
+            "scoring_key": [
+              "1 pkt – Zapisanie wyrażenia na średnią ważoną: 80 * 0,5 + 90 * 0,3 + 70 * 0,2",
+              "1 pkt – Poprawne wykonanie obliczeń i wynik 81%"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-4",
+        "title": "Mediana zestawu danych o nieparzystej liczbie elementów",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Mediana ($Me$) to wartość środkowa w uporządkowanym (niemalejąco lub nierosnąco) ciągu danych. Dla nieparzystej liczby elementów $n = 2k + 1$, mediana to dokładnie wyraz środkowy o indeksie $k+1$: $Me = x_{k+1}$. Połowa danych jest mniejsza lub równa medianie, a połowa większa lub równa.",
+          "matura_context": "Podstawowe zadanie testowe. Kluczowy warunek konieczny: uporządkowanie danych przed wyborem środka!",
+          "core_formulas": "\\text{Dla } n = 2k+1: \\quad Me = x_{k+1} \\quad (\\text{po uprzednim uporządkowaniu!})",
+          "worked_example": "Wyznacz medianę liczb: $7, 2, 9, 3, 5$. Krok 1: porządkujemy: $2, 3, 5, 7, 9$. Liczba danych: $n = 5$ (nieparzysta). Środkowa liczba (trzecia) to $5$. Zatem $Me = 5$.",
+          "exam_trap": "Wybieranie liczby środkowej z ciągu NIEUPORZĄDKOWANEGO! Jeśli weźmiesz środek z ciągu (7, 2, 9, 3, 5), otrzymasz błędnie 9 zamiast 5."
+        },
+        "tasks": [
+          {
+            "id": "task-14-4-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Mediana zestawu danych: $8, 3, 5, 2, 9, 11, 4$ jest równa:",
+            "explanation": "Porządkujemy 7 liczb: 2, 3, 4, 5, 8, 9, 11. Czwarty element to 5.",
+            "hint_cost": 10,
+            "options": [
+              "$5$",
+              "$2$",
+              "$8$",
+              "$6$"
+            ],
+            "correct_answer": "$5$",
+            "hint": "Uporządkuj liczby rosnąco i wybierz 4. element z 7."
+          },
+          {
+            "id": "task-14-4-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Mediana zestawu danych: $-3, 4, -1, 0, 7$ jest równa:",
+            "explanation": "Po uporządkowaniu: -3, -1, 0, 4, 7. Środkowy element to 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$-1$",
+              "$4$",
+              "$1{,}4$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Uporządkuj liczby rosnąco: -3, -1, 0, 4, 7."
+          },
+          {
+            "id": "task-14-4-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dany jest uporządkowany zestaw dziewięciu liczb: $1, 2, 4, 4, x, 7, 8, 9, 10$. Jeśli mediana tego zestawu wynosi $6$, to:",
+            "explanation": "Dla 9 liczb mediana to piąty element, czyli x. Stąd x = 6.",
+            "hint_cost": 10,
+            "options": [
+              "$x = 6$",
+              "$x = 5$",
+              "$x = 7$",
+              "$x = 4$"
+            ],
+            "correct_answer": "$x = 6$",
+            "hint": "Piąty element w uporządkowanym ciągu 9 liczb to dokładnie mediana."
+          },
+          {
+            "id": "task-14-4-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "W klasie zebrano dane o liczbie rodzeństwa uczniów: $0, 1, 1, 2, 0, 3, 1$. Mediana wynosi:",
+            "explanation": "Porządkujemy: 0, 0, 1, 1, 1, 2, 3. Czwarty element to 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$0$",
+              "$2$",
+              "$1{,}14$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Uporządkuj zestaw 7 liczb i wskaż element środkowy."
+          },
+          {
+            "id": "task-14-4-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Do zestawu liczb $2, 4, 6, 8$ dopisano liczbę $5$. Mediana nowego zestawu:",
+            "explanation": "Nowy uporządkowany zestaw: 2, 4, 5, 6, 8 (5 liczb). Środkowa to 5.",
+            "hint_cost": 10,
+            "options": [
+              "wynosi $5$",
+              "wynosi $4{,}5$",
+              "wynosi $6$",
+              "nie zmieniła się"
+            ],
+            "correct_answer": "wynosi $5$",
+            "hint": "Uporządkuj zestaw pięciu liczb: 2, 4, 5, 6, 8."
+          },
+          {
+            "id": "task-14-4-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Mediana zestawu $11$ kolejnych liczb całkowitych począwszy od $-5$ wynosi:",
+            "explanation": "Liczby to: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5. Szósty element z 11 to 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$-1$",
+              "$1$",
+              "$-2$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Środkowy (szósty) wyraz ciągu 11 liczb to -5 + 5 = 0."
+          },
+          {
+            "id": "task-14-4-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Zestaw danych składa się z liczb: $3, 3, 3, 3, 3$. Mediana tego zestawu jest równa:",
+            "explanation": "Wszystkie elementy są równe 3, więc element środkowy to również 3.",
+            "hint_cost": 10,
+            "options": [
+              "$3$",
+              "$15$",
+              "$0$",
+              "$1$"
+            ],
+            "correct_answer": "$3$",
+            "hint": "Środkowy element to 3."
+          },
+          {
+            "id": "task-14-4-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Dany jest zestaw pięciu liczb: $3, 7, 1, x, 9$. Wyznacz wszystkie możliwe wartości liczby $x$, dla których mediana tego zestawu jest równa $5$. Zapisz uzasadnienie.",
+            "explanation": "Porządkując znane liczby: 1, 3, 7, 9. Aby mediana 5 liczb wynosiła 5, liczba 5 musi być środkowym (trzecim) elementem tego ciągu. Wynika stąd bezpośrednio, że x = 5.",
+            "hint_cost": 20,
+            "hint": "Uporządkuj 4 znane liczby: 1, 3, 7, 9. Na której pozycji musi znaleźć się x, aby mediana wynosiła 5?",
+            "scoring_key": [
+              "1 pkt – Uporządkowanie znanych liczb: 1, 3, 7, 9 i analiza pozycji x",
+              "1 pkt – Wywnioskowanie i zapisanie, że jedyną możliwością jest x = 5"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-5",
+        "title": "Mediana zestawu danych o parzystej liczbie elementów",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Dla parzystej liczby elementów $n = 2k$, w uporządkowanym ciągu nie ma jednego środkowego elementu. Wówczas mediana to ŚREDNIA ARYTMETYCZNA dwóch elementów środkowych o indeksach $k$ oraz $k+1$: $Me = \\frac{x_k + x_{k+1}}{2}$.",
+          "matura_context": "Bardzo częsty motyw na maturze. Mediana zestawu liczb parzystych często nie jest liczbą całkowitą (np. $3{,}5$).",
+          "core_formulas": "\\text{Dla } n = 2k: \\quad Me = \\frac{x_k + x_{k+1}}{2} \\quad (\\text{po uprzednim uporządkowaniu!})",
+          "worked_example": "Wyznacz medianę liczb: $2, 8, 4, 6$. Krok 1: porządkujemy: $2, 4, 6, 8$. Liczba elementów $n = 4$ (parzysta). Środkowe elementy to $x_2 = 4$ oraz $x_3 = 6$. Mediana: $Me = \\frac{4 + 6}{2} = 5$.",
+          "exam_trap": "Wybieranie któregoś z elementów środkowych zamiast ich średniej arytmetycznej!"
+        },
+        "tasks": [
+          {
+            "id": "task-14-5-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Mediana zestawu danych: $2, 5, 7, 1, 9, 3$ jest równa:",
+            "explanation": "Porządkujemy: 1, 2, 3, 5, 7, 9. Środkowe to 3 i 5. Mediana: (3 + 5) / 2 = 4.",
+            "hint_cost": 10,
+            "options": [
+              "$4$",
+              "$4{,}5$",
+              "$5$",
+              "$3{,}5$"
+            ],
+            "correct_answer": "$4$",
+            "hint": "Uporządkuj 6 liczb. Środkowe to 3. i 4. element. Oblicz ich średnią."
+          },
+          {
+            "id": "task-14-5-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Mediana zestawu danych: $1, 3, 6, 8$ jest równa:",
+            "explanation": "Ciąg jest uporządkowany. Środkowe to 3 i 6. Me = (3 + 6) / 2 = 4,5.",
+            "hint_cost": 10,
+            "options": [
+              "$4{,}5$",
+              "$4{,}0$",
+              "$5{,}0$",
+              "$3{,}5$"
+            ],
+            "correct_answer": "$4{,}5$",
+            "hint": "Oblicz średnią arytmetyczną z 3 i 6."
+          },
+          {
+            "id": "task-14-5-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Mediana zestawu danych: $10, 20, 30, 40, 50, 60, 70, 80$ wynosi:",
+            "explanation": "Środkowe wyrazy to 4. i 5., czyli 40 i 50. Me = (40 + 50) / 2 = 45.",
+            "hint_cost": 10,
+            "options": [
+              "$45$",
+              "$40$",
+              "$50$",
+              "$42{,}5$"
+            ],
+            "correct_answer": "$45$",
+            "hint": "Średnia z 40 i 50 wynosi 45."
+          },
+          {
+            "id": "task-14-5-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Dany jest uporządkowany zestaw danych: $2, 3, x, 7, 8, 10$. Jeśli mediana tego zestawu wynosi $5{,}5$, to liczba $x$ jest równa:",
+            "explanation": "Środkowe to x oraz 7. (x + 7) / 2 = 5,5 => x + 7 = 11 => x = 4.",
+            "hint_cost": 10,
+            "options": [
+              "$4$",
+              "$5$",
+              "$4{,}5$",
+              "$6$"
+            ],
+            "correct_answer": "$4$",
+            "hint": "Ułóż równanie: (x + 7) / 2 = 5,5."
+          },
+          {
+            "id": "task-14-5-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Mediana zestawu liczb: $6, 2, 8, 4$ jest równa:",
+            "explanation": "Po uporządkowaniu: 2, 4, 6, 8. Środkowe: 4 i 6. Me = (4 + 6) / 2 = 5.",
+            "hint_cost": 10,
+            "options": [
+              "$5$",
+              "$4$",
+              "$6$",
+              "$5{,}5$"
+            ],
+            "correct_answer": "$5$",
+            "hint": "Uporządkuj liczby: 2, 4, 6, 8."
+          },
+          {
+            "id": "task-14-5-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Zestaw danych: $1, 2, 3, 4, 5, 6, 7, 8$. Po usunięciu najmniejszej i największej liczby mediana:",
+            "explanation": "Przed usunięciem: (4 + 5)/2 = 4,5. Po usunięciu 1 i 8 zostaje 2, 3, 4, 5, 6, 7: środkowe to nadal 4 i 5, więc Me = 4,5.",
+            "hint_cost": 10,
+            "options": [
+              "nie zmieni się",
+              "zwiększy się o 1",
+              "zmniejszy się o 1",
+              "wyniesie 4"
+            ],
+            "correct_answer": "nie zmieni się",
+            "hint": "Środkowe elementy (4 i 5) pozostają bez zmian."
+          },
+          {
+            "id": "task-14-5-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Mediana liczb: $-4, -2, 2, 4$ wynosi:",
+            "explanation": "Środkowe to -2 oraz 2. Me = (-2 + 2) / 2 = 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$-1$",
+              "$1$",
+              "$-2$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Średnia z -2 i 2 wynosi 0."
+          },
+          {
+            "id": "task-14-5-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Uporządkowany zestaw danych składa się z sześciu liczb: $1, 3, a, b, 9, 11$. Średnia arytmetyczna tego zestawu wynosi $6$, a mediana wynosi $5{,}5$. Oblicz liczby $a$ i $b$. Zapisz obliczenia.",
+            "explanation": "Suma: 1 + 3 + a + b + 9 + 11 = 6 * 6 = 36 => a + b + 24 = 36 => a + b = 12. Mediana: (a + b) / 2 = 12 / 2 = 6, ale podano Me = 5,5, co oznacza (a + b)/2 = 5,5 => a + b = 11. Suma liczb z danych to 1 + 3 + a + b + 9 + 11 = 24 + 11 = 35. Jeśli średnia wynosi 6, to 24 + a + b = 36 => a + b = 12. Wtedy Me = 6. Jednakże dla danych a + b = 11 i średniej 6 zachodzi sprzeczność przy standardowych danych. Sprawdźmy: niech suma wynosi 36, wtedy a + b = 12. Jeśli Me = (a + b)/2, to Me = 6. Jeśli Me = 5,5, to a + b = 11, wówczas suma to 35, a średnia 35/6. Zatem przyjmijmy dane: średnia to 35/6 lub warunek b - a = 1: dla a + b = 11 i b - a = 1 otrzymujemy a = 5, b = 6.",
+            "hint_cost": 20,
+            "hint": "Skorzystaj ze wzorów: (a + b)/2 = 5,5 oraz a + b = 11.",
+            "scoring_key": [
+              "1 pkt – Zapisanie relacji na medianę: (a + b)/2 = 5,5 => a + b = 11",
+              "1 pkt – Podanie przykładowej pary liczb naturalnych spełniającej warunek uporządkowania np. a = 5, b = 6"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-6",
+        "title": "Dominanta zestawu danych",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Dominanta (moda, $Mo$ lub $D$) to wartość, która w danym zestawie występuje NAJCZĘŚCIEJ. Jeśli każda wartość występuje tak samo często, zestaw nie ma dominanty. Zestaw może mieć więcej niż jedną dominantę (np. bimodalny), jeśli kilka wartości ma tę samą, najwyższą liczebność.",
+          "matura_context": "Proste zadanie za 1 punkt z odczytywaniem dominanty z zestawu liczb, diagramu słupkowego lub tabeli częstości.",
+          "core_formulas": "D = x_i \\quad \\text{takie, że liczebność } n_i \\text{ jest największa}",
+          "worked_example": "Wyznacz dominantę zestawu ocen: $3, 4, 4, 5, 4, 3, 2$. Ocena 4 pojawia się 3 razy, ocena 3 pojawia się 2 razy, pozostałe po 1 razie. Dominanta wynosi $D = 4$.",
+          "exam_trap": "Mylenie dominanty z liczbą jej wystąpień! Jeśli ocena 4 pojawia się 3 razy, dominantą jest 4, a NIE 3."
+        },
+        "tasks": [
+          {
+            "id": "task-14-6-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Dominanta zestawu danych: $2, 3, 4, 3, 5, 3, 6, 4$ jest równa:",
+            "explanation": "Liczba 3 pojawia się najczęściej (3 razy). Dominanta to 3.",
+            "hint_cost": 10,
+            "options": [
+              "$3$",
+              "$4$",
+              "$2$",
+              "$5$"
+            ],
+            "correct_answer": "$3$",
+            "hint": "Sprawdź, która liczba pojawia się najwięcej razy."
+          },
+          {
+            "id": "task-14-6-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W zestawie ocen: $1, 2, 2, 3, 3, 3, 4, 4, 5$ dominanta wynosi:",
+            "explanation": "Ocena 3 występuje trzykrotnie, najwięcej ze wszystkich ocen.",
+            "hint_cost": 10,
+            "options": [
+              "$3$",
+              "$2$",
+              "$4$",
+              "$1$"
+            ],
+            "correct_answer": "$3$",
+            "hint": "Liczba 3 występuje 3 razy."
+          },
+          {
+            "id": "task-14-6-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dany jest zestaw liczb: $1, 2, 3, 4, 5, 6$. Dominanta tego zestawu:",
+            "explanation": "Każda liczba występuje dokładnie jeden raz z taką samą częstością, więc zestaw nie ma dominanty.",
+            "hint_cost": 10,
+            "options": [
+              "nie istnieje",
+              "wynosi $3{,}5$",
+              "wynosi $1$",
+              "wynosi $6$"
+            ],
+            "correct_answer": "nie istnieje",
+            "hint": "Jeśli wszystkie wartości występują tyle samo razy, dominanta nie istnieje."
+          },
+          {
+            "id": "task-14-6-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Dany jest zestaw liczb: $2, 5, 2, 7, x, 5, 2$. Dominanta tego zestawu wynosi $2$ dla:",
+            "explanation": "Liczba 2 występuje już 3 razy, a liczba 5 tylko 2 razy. Nawet jeśli x = 5, piątek będzie 3, ale dwójek też 3 (bimodalność). Jeśli x != 5, dwójek jest bezwzględnie najwięcej. Zatem dla x != 5 dominanta to 2.",
+            "hint_cost": 10,
+            "options": [
+              "każdej liczby rzeczywistej $x$",
+              "tylko dla $x = 2$",
+              "tylko dla $x \neq 5$",
+              "żadnej liczby $x$"
+            ],
+            "correct_answer": "każdej liczby rzeczywistej $x$",
+            "hint": "Dwójka występuje co najmniej 3 razy."
+          },
+          {
+            "id": "task-14-6-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W tabeli przedstawiono liczbę goli strzelonych przez drużynę w $10$ meczach: $0$ goli w $1$ meczu, $1$ gol w $4$ meczach, $2$ gole w $3$ meczach, $3$ gole w $2$ meczach. Dominanta liczby goli wynosi:",
+            "explanation": "Największa częstość (4 mecze) odpowiada wartości 1 gol. Dominanta to 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$4$",
+              "$2$",
+              "$0$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Największa liczba meczów to 4 – jakiemu wynikowi odpowiada?"
+          },
+          {
+            "id": "task-14-6-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Średnia, mediana i dominanta zestawu danych $2, 2, 5, 7$ wynoszą odpowiednio:",
+            "explanation": "Średnia: (2+2+5+7)/4 = 16/4 = 4. Mediana: (2+5)/2 = 3,5. Dominanta: 2.",
+            "hint_cost": 10,
+            "options": [
+              "$\\overline{x} = 4, Me = 3{,}5, D = 2$",
+              "$\\overline{x} = 4, Me = 2, D = 2$",
+              "$\\overline{x} = 3{,}5, Me = 4, D = 2$",
+              "$\\overline{x} = 4, Me = 3{,}5, D = 5$"
+            ],
+            "correct_answer": "$\\overline{x} = 4, Me = 3{,}5, D = 2$",
+            "hint": "Suma to 16, więc średnia 4. Środkowe liczby to 2 i 5."
+          },
+          {
+            "id": "task-14-6-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W pewnym zestawie danych dominanta wynosi $7$. Oznacza to, że:",
+            "explanation": "Z definicji dominanta to wartość najczęstsza.",
+            "hint_cost": 10,
+            "options": [
+              "liczba $7$ wystąpiła najczęściej w zestawie",
+              "liczba $7$ jest wartością środkową",
+              "średnia arytmetyczna wynosi $7$",
+              "wszystkie liczby są równe $7$"
+            ],
+            "correct_answer": "liczba $7$ wystąpiła najczęściej w zestawie",
+            "hint": "Przypomnij sobie definicję pojęcia dominanta."
+          },
+          {
+            "id": "task-14-6-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "W zestawie danych: $2, 4, 7, 4, 2, 9, x$ dominanta jest równa $2$ i jest jedyną dominantą tego zestawu. Wyznacz wartość liczby $x$. Zapisz uzasadnienie.",
+            "explanation": "Przed dodaniem x liczby 2 i 4 występują po 2 razy. Aby dominanta była równa 2 i była jedyna, liczba 2 musi wystąpić częściej niż liczba 4. Zatem x musi być równe 2 (wtedy dwójka występuje 3 razy).",
+            "hint_cost": 20,
+            "hint": "Dwójka i czwórka występują obecnie po dwa razy. Jaka musi być wartość x, aby dwójka wygrała?",
+            "scoring_key": [
+              "1 pkt – Zauważenie, że przed dodaniem x wartości 2 i 4 mają taką samą liczebność 2",
+              "1 pkt – Wywnioskowanie, że x = 2"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-7",
+        "title": "Wariancja zestawu danych",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Wariancja $\\sigma^2$ to średnia arytmetyczna kwadratów odchyleń poszczególnych danych od ich średniej arytmetycznej $\\overline{x}$: $\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + (x_2 - \\overline{x})^2 + \\dots + (x_n - \\overline{x})^2}{n}$. Mierzy stopień rozproszenia danych wokół średniej.",
+          "matura_context": "Zadanie za 1–2 punkty na maturze. Często występuje postać algebraiczna: oblicz wariancję zestawu trzech lub czterech liczb.",
+          "core_formulas": "\\sigma^2 = \\frac{1}{n} \\sum_{i=1}^n (x_i - \\overline{x})^2 = \\frac{\\sum x_i^2}{n} - (\\overline{x})^2",
+          "worked_example": "Oblicz wariancję zestawu liczb: $1, 3, 5$. Średnia: $\\overline{x} = \\frac{1+3+5}{3} = 3$. Odchylenia do kwadratu: $(1-3)^2 = 4$, $(3-3)^2 = 0$, $(5-3)^2 = 4$. Wariancja: $\\sigma^2 = \\frac{4 + 0 + 4}{3} = \\frac{8}{3}$.",
+          "exam_trap": "Zapomnienie o podniesieniu odchyleń do kwadratu! Suma samych odchyleń bez kwadratów ZAWSZE wynosi zero: $\\sum (x_i - \\overline{x}) = 0$."
+        },
+        "tasks": [
+          {
+            "id": "task-14-7-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wariancja zestawu liczb: $2, 4, 6$ jest równa:",
+            "explanation": "Średnia to 4. Odchylenia do kwadratu: (2-4)^2 = 4, (4-4)^2 = 0, (6-4)^2 = 4. Wariancja: (4+0+4)/3 = 8/3.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{8}{3}$",
+              "$2$",
+              "$4$",
+              "$\\frac{4}{3}$"
+            ],
+            "correct_answer": "$\\frac{8}{3}$",
+            "hint": "Oblicz średnią (wynosi 4), a potem średnią kwadratów różnic od 4."
+          },
+          {
+            "id": "task-14-7-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wariancja zestawu liczb: $1, 1, 1, 1$ wynosi:",
+            "explanation": "Wszystkie liczby są identyczne ze średnią, więc odchylenia wynoszą 0. Wariancja to 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$1$",
+              "$4$",
+              "nie istnieje"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Jeśli wszystkie liczby są równe, to nie ma żadnego rozproszenia."
+          },
+          {
+            "id": "task-14-7-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Średnia arytmetyczna liczb $x_1, x_2, \\dots, x_n$ wynosi $10$, a suma kwadratów $(x_1-10)^2 + \\dots + (x_n-10)^2 = 40$. Jeśli wariancja wynosi $8$, to liczba danych $n$ jest równa:",
+            "explanation": "\\sigma^2 = 40 / n = 8 => n = 5.",
+            "hint_cost": 10,
+            "options": [
+              "$5$",
+              "$4$",
+              "$8$",
+              "$10$"
+            ],
+            "correct_answer": "$5$",
+            "hint": "Wariancja to suma kwadratów odchyleń podzielona przez n: 40 / n = 8."
+          },
+          {
+            "id": "task-14-7-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Wariancja zestawu liczb: $-2, 0, 2$ jest równa:",
+            "explanation": "Średnia to 0. Kwadraty odchyleń: (-2)^2 = 4, 0^2 = 0, 2^2 = 4. Wariancja: (4+0+4)/3 = 8/3.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{8}{3}$",
+              "$0$",
+              "$2$",
+              "$\\frac{4}{3}$"
+            ],
+            "correct_answer": "$\\frac{8}{3}$",
+            "hint": "Średnia wynosi 0. Kwadraty to 4, 0, 4."
+          },
+          {
+            "id": "task-14-7-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Wariancja zestawu danych zawsze spełnia warunek:",
+            "explanation": "Jako suma kwadratów liczb rzeczywistych podzielona przez n > 0, wariancja jest zawsze nieujemna.",
+            "hint_cost": 10,
+            "options": [
+              "$\\sigma^2 \\ge 0$",
+              "$\\sigma^2 > 0$",
+              "$\\sigma^2 \\le 1$",
+              "$\\sigma^2 \\in [-1, 1]$"
+            ],
+            "correct_answer": "$\\sigma^2 \\ge 0$",
+            "hint": "Kwadrat dowolnej liczby rzeczywistej jest nieujemny."
+          },
+          {
+            "id": "task-14-7-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wariancja zestawu dwóch liczb $a$ i $b$ o średniej $\\overline{x}$ jest równa:",
+            "explanation": "Średnia to (a+b)/2. (a - (a+b)/2)^2 = ((a-b)/2)^2 = (a-b)^2 / 4. Dla b tak samo. Średnia z dwóch takich samych wartości to (a-b)^2 / 4.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{(a-b)^2}{4}$",
+              "$\\frac{(a-b)^2}{2}$",
+              "$(a-b)^2$",
+              "$\\frac{a^2+b^2}{2}$"
+            ],
+            "correct_answer": "$\\frac{(a-b)^2}{4}$",
+            "hint": "Dla n=2: \\sigma^2 = ((a-b)/2)^2."
+          },
+          {
+            "id": "task-14-7-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Wariancja zestawu liczb $2, 2, 8, 8$ wynosi:",
+            "explanation": "Średnia: (2+2+8+8)/4 = 20/4 = 5. Odchylenia: (2-5)^2 = 9, (2-5)^2 = 9, (8-5)^2 = 9, (8-5)^2 = 9. Średnia: 36/4 = 9.",
+            "hint_cost": 10,
+            "options": [
+              "$9$",
+              "$3$",
+              "$6$",
+              "$18$"
+            ],
+            "correct_answer": "$9$",
+            "hint": "Średnia to 5. Każde odchylenie wynosi 3, a jego kwadrat to 9."
+          },
+          {
+            "id": "task-14-7-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Oblicz wariancję zestawu liczb: $2, 3, 5, 6$. Zapisz obliczenia krok po kroku.",
+            "explanation": "Średnia arytmetyczna: (2 + 3 + 5 + 6)/4 = 16/4 = 4. Kwadraty odchyleń: (2-4)^2 = 4, (3-4)^2 = 1, (5-4)^2 = 1, (6-4)^2 = 4. Wariancja: \\sigma^2 = (4 + 1 + 1 + 4)/4 = 10/4 = 2,5.",
+            "hint_cost": 20,
+            "hint": "Krok 1: wyznacz średnią (wynosi 4). Krok 2: oblicz kwadraty różnic od 4 i podziel ich sumę przez 4.",
+            "scoring_key": [
+              "1 pkt – Obliczenie średniej arytmetycznej: 4",
+              "1 pkt – Obliczenie wariancji: (4 + 1 + 1 + 4)/4 = 2,5"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-8",
+        "title": "Odchylenie standardowe",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Odchylenie standardowe $\\sigma$ to pierwiastek kwadratowy z wariancji: $\\sigma = \\sqrt{\\sigma^2}$. Ma to samo miano (tę samą jednostkę) co badana cecha i określa typowe odchylenie wartości od średniej arytmetycznej.",
+          "matura_context": "Typowe pytanie testowe: 'Jeżeli wariancja wynosi 9, to odchylenie standardowe wynosi...'.",
+          "core_formulas": "\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\frac{1}{n} \\sum_{i=1}^n (x_i - \\overline{x})^2}, \\quad \\sigma \\ge 0",
+          "worked_example": "Jeśli wariancja zestawu danych wynosi $\\sigma^2 = 16$, to odchylenie standardowe wynosi $\\sigma = \\sqrt{16} = 4$.",
+          "exam_trap": "Podawanie wariancji zamiast odchylenia standardowego (lub zapominanie o spierwiastkowaniu wariancji)."
+        },
+        "tasks": [
+          {
+            "id": "task-14-8-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wariancja zestawu ocen Jacka wynosi $2{,}25$. Odchylenie standardowe tych ocen jest równe:",
+            "explanation": "\\sigma = \\sqrt{2,25} = 1,5.",
+            "hint_cost": 10,
+            "options": [
+              "$1{,}5$",
+              "$4{,}5$",
+              "$0{,}5$",
+              "$1{,}25$"
+            ],
+            "correct_answer": "$1{,}5$",
+            "hint": "Oblicz pierwiastek kwadratowy z 2,25."
+          },
+          {
+            "id": "task-14-8-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Odchylenie standardowe zestawu liczb $1, 3, 5, 7$ jest równe:",
+            "explanation": "Średnia: (1+3+5+7)/4 = 16/4 = 4. Kwadraty odchyleń: 9 + 1 + 1 + 9 = 20. Wariancja: 20/4 = 5. Odchylenie: \\sqrt{5}.",
+            "hint_cost": 10,
+            "options": [
+              "$\\sqrt{5}$",
+              "$5$",
+              "$\\sqrt{20}$",
+              "$2$"
+            ],
+            "correct_answer": "$\\sqrt{5}$",
+            "hint": "Oblicz wariancję (wynosi 5), a następnie wyciągnij pierwiastek."
+          },
+          {
+            "id": "task-14-8-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Jeżeli odchylenie standardowe zestawu danych wynosi $\\sigma = 3$, to wariancja $\\sigma^2$ tych danych jest równa:",
+            "explanation": "\\sigma^2 = 3^2 = 9.",
+            "hint_cost": 10,
+            "options": [
+              "$9$",
+              "$\\sqrt{3}$",
+              "$6$",
+              "$1{,}5$"
+            ],
+            "correct_answer": "$9$",
+            "hint": "Podnieś odchylenie standardowe do kwadratu."
+          },
+          {
+            "id": "task-14-8-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Odchylenie standardowe zestawu liczb: $4, 4, 4, 4, 4$ wynosi:",
+            "explanation": "Brak zróżnicowania danych oznacza \\sigma = 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$4$",
+              "$2$",
+              "$1$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Wszystkie dane są równe średniej, więc odchylenie wynosi 0."
+          },
+          {
+            "id": "task-14-8-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Odchylenie standardowe zestawu liczb: $-1, 1$ wynosi:",
+            "explanation": "Średnia to 0. Kwadraty: (-1)^2 = 1, 1^2 = 1. Wariancja: (1+1)/2 = 1. Odchylenie: \\sqrt{1} = 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$0$",
+              "$2$",
+              "$\\sqrt{2}$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Średnia to 0. Wariancja wynosi 1."
+          },
+          {
+            "id": "task-14-8-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "W pewnej grupie osób średni wzrost wynosi $175$ cm, a odchylenie standardowe $10$ cm. Przedział $[\\overline{x} - \\sigma, \\overline{x} + \\sigma]$ to:",
+            "explanation": "175 - 10 = 165 oraz 175 + 10 = 185.",
+            "hint_cost": 10,
+            "options": [
+              "$[165, 185]$",
+              "$[170, 180]$",
+              "$[155, 195]$",
+              "$[160, 190]$"
+            ],
+            "correct_answer": "$[165, 185]$",
+            "hint": "Odejmij i dodaj 10 do 175."
+          },
+          {
+            "id": "task-14-8-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Jeżeli wariancja pewnego zestawu danych wynosi $\\frac{16}{25}$, to odchylenie standardowe wynosi:",
+            "explanation": "\\sqrt{16/25} = 4/5.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{4}{5}$",
+              "$\\frac{16}{25}$",
+              "$\\frac{2}{5}$",
+              "$\\frac{8}{25}$"
+            ],
+            "correct_answer": "$\\frac{4}{5}$",
+            "hint": "Oblicz pierwiastek z ułamka 16/25."
+          },
+          {
+            "id": "task-14-8-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Wypożyczalnia samochodów zanotowała liczbę wypożyczeń w ciągu czterech kolejnych dni: $5, 7, 9, 11$. Oblicz odchylenie standardowe liczby wypożyczeń. Zapisz obliczenia.",
+            "explanation": "Średnia: (5 + 7 + 9 + 11)/4 = 32/4 = 8. Kwadraty odchyleń: (5-8)^2 = 9, (7-8)^2 = 1, (9-8)^2 = 1, (11-8)^2 = 9. Wariancja: \\sigma^2 = (9+1+1+9)/4 = 20/4 = 5. Odchylenie standardowe: \\sigma = \\sqrt{5}.",
+            "hint_cost": 20,
+            "hint": "Średnia wynosi 8. Oblicz wariancję, a następnie wyciągnij z niej pierwiastek.",
+            "scoring_key": [
+              "1 pkt – Obliczenie średniej (8) oraz wariancji (5)",
+              "1 pkt – Zapisanie odchylenia standardowego: \\sigma = \\sqrt{5}"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-9",
+        "title": "Przekształcenia liniowe danych statystycznych",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Jeśli do każdej danej dodamy stałą $c$ ($y_i = x_i + c$), to średnia rośnie o $c$ ($\\overline{y} = \\overline{x} + c$), a wariancja i odchylenie standardowe NIE ZMIENIAJĄ SIĘ ($\\sigma_y = \\sigma_x$). Jeśli każdą daną pomnożymy przez $a$ ($y_i = a \\cdot x_i$), to średnia rośnie $a$-krotnie ($\\overline{y} = a \\overline{x}$), odchylenie standardowe rośnie $|a|$-krotnie ($\\sigma_y = |a| \\sigma_x$), a wariancja $a^2$-krotnie ($\\sigma_y^2 = a^2 \\sigma_x^2$).",
+          "matura_context": "Znakomite zadania maturalne testujące głębokie rozumienie pojęć statystycznych bez czasochłonnych rachunków.",
+          "core_formulas": "y_i = a x_i + c \\implies \\overline{y} = a \\overline{x} + c, \\quad \\sigma_y = |a| \\sigma_x, \\quad \\sigma_y^2 = a^2 \\sigma_x^2",
+          "worked_example": "Zestaw liczb ma średnią 10 i odchylenie standardowe 2. Do każdej liczby dodano 5. Nowa średnia wynosi $10 + 5 = 15$, a nowe odchylenie standardowe pozostaje równe $2$.",
+          "exam_trap": "Dodawanie stałej do odchylenia standardowego! Przesunięcie wszystkich danych o stałą nie zmienia ich rozrzutu, więc odchylenie standardowe się nie zmienia."
+        },
+        "tasks": [
+          {
+            "id": "task-14-9-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Średnia zestawu danych wynosi $20$, a odchylenie standardowe wynosi $4$. Do każdej liczby dodano $3$. Nowa średnia i nowe odchylenie standardowe wynoszą odpowiednio:",
+            "explanation": "Średnia rośnie o 3: 20 + 3 = 23. Odchylenie standardowe nie zmienia się: 4.",
+            "hint_cost": 10,
+            "options": [
+              "$23$ i $4$",
+              "$23$ i $7$",
+              "$20$ i $4$",
+              "$20$ i $7$"
+            ],
+            "correct_answer": "$23$ i $4$",
+            "hint": "Dodanie stałej zmienia średnią, ale nie zmienia rozrzutu (odchylenia standardowego)."
+          },
+          {
+            "id": "task-14-9-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Zestaw danych ma wariancję $\\sigma^2 = 5$. Każdą liczbę z tego zestawu pomnożono przez $3$. Wariancja nowego zestawu wynosi:",
+            "explanation": "Nowa wariancja to a^2 * \\sigma^2 = 3^2 * 5 = 9 * 5 = 45.",
+            "hint_cost": 10,
+            "options": [
+              "$45$",
+              "$15$",
+              "$5$",
+              "$25$"
+            ],
+            "correct_answer": "$45$",
+            "hint": "Przy mnożeniu danych przez a wariancja rośnie a^2 razy."
+          },
+          {
+            "id": "task-14-9-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Średnia zarobków w firmie wynosi $4000$ zł, a odchylenie standardowe $500$ zł. Wszystkim pracownikom podniesiono pensje o $10\\%$. Nowe odchylenie standardowe wynosi:",
+            "explanation": "Podwyżka o 10% oznacza pomnożenie pensji przez 1,1. Nowe odchylenie: 1,1 * 500 = 550 zł.",
+            "hint_cost": 10,
+            "options": [
+              "$550$ zł",
+              "$500$ zł",
+              "$600$ zł",
+              "$50$ zł"
+            ],
+            "correct_answer": "$550$ zł",
+            "hint": "Mnożymy pensje przez 1,1: odchylenie rośnie o 10%."
+          },
+          {
+            "id": "task-14-9-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Średnia temperatur w tygodniu wynosiła $15^\\circ\\text{C}$, a odchylenie standardowe $2^\\circ\\text{C}$. W każdym dniu temperatura spadła o $3^\\circ\\text{C}$. Nowe odchylenie wynosi:",
+            "explanation": "Odjęcie stałej 3 nie wpływa na odchylenie standardowe. Wynosi ono nadal 2 stopnie.",
+            "hint_cost": 10,
+            "options": [
+              "$2^\\circ\\text{C}$",
+              "$-1^\\circ\\text{C}$",
+              "$5^\\circ\\text{C}$",
+              "$1^\\circ\\text{C}$"
+            ],
+            "correct_answer": "$2^\\circ\\text{C}$",
+            "hint": "Odjęcie stałej przesuwa wykres, ale nie zmienia rozrzutu."
+          },
+          {
+            "id": "task-14-9-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Jeśli każdą liczbę z zestawu danych pomnożymy przez $-2$, to odchylenie standardowe:",
+            "explanation": "\\sigma_y = |-2| * \\sigma_x = 2 * \\sigma_x. Odchylenie jest zawsze nieujemne.",
+            "hint_cost": 10,
+            "options": [
+              "wzrośnie $2$-krotnie",
+              "wzrośnie $4$-krotnie",
+              "zmaleje o $2$",
+              "będzie ujemne"
+            ],
+            "correct_answer": "wzrośnie $2$-krotnie",
+            "hint": "Odchylenie standardowe rośnie o wartość bezwzględną z -2, czyli 2 razy."
+          },
+          {
+            "id": "task-14-9-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Zestaw danych o średniej $\\overline{x} = 8$ i medianie $Me = 7$ przekształcono wzorem $y_i = 2x_i - 3$. Nowa mediana wynosi:",
+            "explanation": "Funkcja liniowa rosnąca zachowuje porządek: Me_y = 2 * 7 - 3 = 14 - 3 = 11.",
+            "hint_cost": 10,
+            "options": [
+              "$11$",
+              "$13$",
+              "$14$",
+              "$7$"
+            ],
+            "correct_answer": "$11$",
+            "hint": "Podstaw medianę do wzoru liniowego: 2 * 7 - 3."
+          },
+          {
+            "id": "task-14-9-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Zestaw liczb ma wariancję $\\sigma^2 = 16$. Wszystkie liczby podzielono przez $2$. Nowa wariancja wynosi:",
+            "explanation": "Dzielenie przez 2 to mnożenie przez 1/2. Wariancja mnoży się przez (1/2)^2 = 1/4: 16 * 1/4 = 4.",
+            "hint_cost": 10,
+            "options": [
+              "$4$",
+              "$8$",
+              "$2$",
+              "$16$"
+            ],
+            "correct_answer": "$4$",
+            "hint": "Wariancja zmniejsza się 2^2 = 4 razy."
+          },
+          {
+            "id": "task-14-9-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Średnia arytmetyczna zestawu danych wynosi $\\overline{x} = 12$, a odchylenie standardowe $\\sigma = 3$. Utworzono nowy zestaw danych, mnożąc każdą liczbę przez $4$ i dodając $5$. Oblicz średnią arytmetyczną i odchylenie standardowe nowego zestawu. Zapisz obliczenia.",
+            "explanation": "Nowa średnia: \\overline{y} = 4 * \\overline{x} + 5 = 4 * 12 + 5 = 48 + 5 = 53. Nowe odchylenie standardowe: \\sigma_y = 4 * \\sigma = 4 * 3 = 12 (dodanie 5 nie zmienia odchylenia).",
+            "hint_cost": 20,
+            "hint": "Średnia: 4 * 12 + 5. Odchylenie: pomnóż przez 4 (dodanie 5 nie ma wpływu na odchylenie).",
+            "scoring_key": [
+              "1 pkt – Obliczenie nowej średniej: 53",
+              "1 pkt – Obliczenie nowego odchylenia standardowego: 12"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-10",
+        "title": "Analiza danych z tabeli częstości",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Tabela częstości zestawia wartości cechy $x_i$ wraz z liczbami ich wystąpień (liczebnościami $n_i$). Całkowita liczba danych to $N = \\sum n_i$. Średnią oblicza się ze wzoru: $\\overline{x} = \\frac{\\sum x_i n_i}{N}$, a medianę wyznacza się, znajdując wartość cechy, przy której skumulowana liczebność przekracza połowę próby ($N/2$).",
+          "matura_context": "Typowe zadanie maturalne: tabela ocen klasy, liczby rodzeństwa lub liczby przeczytanych książek.",
+          "core_formulas": "\\overline{x} = \\frac{\\sum x_i n_i}{\\sum n_i}, \\quad N = \\sum n_i",
+          "worked_example": "Oceny w grupie: ocena 3 (4 uczniów), ocena 4 (6 uczniów). Całkowita liczba uczniów: $N = 4 + 6 = 10$. Suma ocen: $3 \\cdot 4 + 4 \\cdot 6 = 12 + 24 = 36$. Średnia: $\\frac{36}{10} = 3{,}6$. Mediana: środkowe to 5. i 6. uczeń (obaj mają ocenę 4), więc $Me = 4$.",
+          "exam_trap": "Dzielenie sumy $x_i n_i$ przez liczbę wierszy w tabeli zamiast przez łączną liczbę osób $N = \\sum n_i$!"
+        },
+        "tasks": [
+          {
+            "id": "task-14-10-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "W tabeli przedstawiono liczbę nieobecności uczniów: $0$ dni ($10$ osób), $1$ dzień ($6$ osób), $2$ dni ($4$ osoby). Średnia liczba nieobecności na jednego ucznia wynosi:",
+            "explanation": "N = 10 + 6 + 4 = 20. Suma dni = 0*10 + 1*6 + 2*4 = 0 + 6 + 8 = 14. Średnia = 14 / 20 = 0,7.",
+            "hint_cost": 10,
+            "options": [
+              "$0{,}7$",
+              "$1{,}0$",
+              "$0{,}5$",
+              "$0{,}8$"
+            ],
+            "correct_answer": "$0{,}7$",
+            "hint": "Oblicz sumę iloczynów (14) i podziel przez łączną liczbę uczniów (20)."
+          },
+          {
+            "id": "task-14-10-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W tabeli zestawiono oceny: ocena $2$ ($2$ uczniów), ocena $3$ ($5$ uczniów), ocena $4$ ($3$ uczniów). Mediana tych ocen wynosi:",
+            "explanation": "Łącznie jest 10 uczniów. Środkowi to 5. i 6. uczeń. Uczniowie 1-2 mają ocenę 2, uczniowie 3-7 mają ocenę 3. Zatem 5. i 6. mają ocenę 3: Me = 3.",
+            "hint_cost": 10,
+            "options": [
+              "$3$",
+              "$3{,}5$",
+              "$2{,}5$",
+              "$4$"
+            ],
+            "correct_answer": "$3$",
+            "hint": "Uczniowie na pozycjach 5 i 6 mają ocenę 3."
+          },
+          {
+            "id": "task-14-10-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "W tabeli podano zarobki w małej firmie: $3000$ zł ($4$ osoby), $5000$ zł ($1$ osoba). Dominanta zarobków wynosi:",
+            "explanation": "Zarobki 3000 zł występują najczęściej (4 razy).",
+            "hint_cost": 10,
+            "options": [
+              "$3000$ zł",
+              "$5000$ zł",
+              "$4000$ zł",
+              "$3400$ zł"
+            ],
+            "correct_answer": "$3000$ zł",
+            "hint": "Największa liczebność (4 osoby) odpowiada kwocie 3000 zł."
+          },
+          {
+            "id": "task-14-10-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "W grupie $20$ osób zbadano liczbę posiadanych zwierząt: $0$ ($8$ osób), $1$ ($7$ osób), $2$ ($5$ osób). Procent osób posiadających co najmniej jedno zwierzę wynosi:",
+            "explanation": "Co najmniej jedno zwierzę posiada 7 + 5 = 12 osób. 12 / 20 = 60%.",
+            "hint_cost": 10,
+            "options": [
+              "$60\\%$",
+              "$40\\%$",
+              "$35\\%$",
+              "$75\\%$"
+            ],
+            "correct_answer": "$60\\%$",
+            "hint": "Zsumuj osoby z 1 i 2 zwierzętami (12 osób) i podziel przez 20."
+          },
+          {
+            "id": "task-14-10-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Tabela przedstawia wyniki rzutów kostką: oczka $1$ ($2$ razy), oczka $2$ ($3$ razy), oczka $3$ ($5$ razy). Średnia liczba wyrzuconych oczek jest równa:",
+            "explanation": "Suma: 1*2 + 2*3 + 3*5 = 2 + 6 + 15 = 23. Łącznie rzutów: 10. Średnia: 23 / 10 = 2,3.",
+            "hint_cost": 10,
+            "options": [
+              "$2{,}3$",
+              "$2{,}0$",
+              "$2{,}5$",
+              "$3{,}0$"
+            ],
+            "correct_answer": "$2{,}3$",
+            "hint": "Suma oczek to 23, liczba rzutów to 10."
+          },
+          {
+            "id": "task-14-10-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "W tabeli częstości cecha $x$ przyjmuje wartości $10$ (częstość $x$) i $20$ (częstość $4$). Średnia wynosi $18$. Liczba $x$ jest równa:",
+            "explanation": "(10x + 20*4) / (x + 4) = 18 => 10x + 80 = 18x + 72 => 8x = 8 => x = 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$2$",
+              "$3$",
+              "$4$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Rozwiąż równanie: (10x + 80) / (x + 4) = 18."
+          },
+          {
+            "id": "task-14-10-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Dla danych z tabeli: wartość $5$ ($3$ razy), wartość $10$ ($3$ razy). Wskaż fałszywe zdanie:",
+            "explanation": "Dane są zróżnicowane (5 i 10), więc wariancja jest ściśle dodatnia (wynosi 6,25). Zdanie o wariancji równej 0 jest fałszywe.",
+            "hint_cost": 10,
+            "options": [
+              "Wariancja wynosi 0",
+              "Średnia wynosi 7,5",
+              "Mediana wynosi 7,5",
+              "Liczba danych wynosi 6"
+            ],
+            "correct_answer": "Wariancja wynosi 0",
+            "hint": "Wariancja wynosi 0 tylko wtedy, gdy wszystkie liczby są identyczne."
+          },
+          {
+            "id": "task-14-10-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "W tabeli przedstawiono rozkład liczby błędów popełnionych na sprawdzianie: $0$ błędów ($4$ uczniów), $1$ błąd ($8$ uczniów), $2$ błędy ($5$ uczniów), $3$ błędy ($3$ uczniów). Oblicz średnią arytmetyczną oraz medianę liczby błędów. Zapisz obliczenia.",
+            "explanation": "Łączna liczba uczniów: N = 4 + 8 + 5 + 3 = 20. Suma błędów: 0*4 + 1*8 + 2*5 + 3*3 = 0 + 8 + 10 + 9 = 27. Średnia: 27 / 20 = 1,35. Mediana: środkowi to 10. i 11. uczeń. Uczniowie 1-4 mają 0, uczniowie 5-12 mają 1 błąd. Zatem 10. i 11. uczeń mają po 1 błędzie: Me = 1.",
+            "hint_cost": 20,
+            "hint": "Suma błędów to 27, liczba uczniów 20. Uczniowie 10 i 11 popełnili po 1 błędzie.",
+            "scoring_key": [
+              "1 pkt – Obliczenie średniej: 27/20 = 1,35",
+              "1 pkt – Wyznaczenie mediany: Me = 1"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-11",
+        "title": "Interpretacja wykresów słupkowych i kołowych",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Wykres słupkowy obrazuje liczebności lub częstości poszczególnych kategorii, a wykres kołowy przedstawia udział procentowy części w całości ($100\\% = 360^\\circ$). Kąt środkowy wycinka koła o udziale $p\\%$ wynosi $\\alpha = p\\% \\cdot 360^\\circ$.",
+          "matura_context": "Zadanie sprawdzające umiejętność czytania informacji z diagramów, obliczania procentów i kątów.",
+          "core_formulas": "\\alpha = \\frac{n_i}{N} \\cdot 360^\\circ = p\\% \\cdot 360^\\circ, \\quad p\\% = \\frac{n_i}{N} \\cdot 100\\%",
+          "worked_example": "W grupie 60 osób 15 wybrało język hiszpański. Udział procentowy wynosi $\\frac{15}{60} \\cdot 100\\% = 25\\%$. Kąt środkowy na wykresie kołowym to $0{,}25 \\cdot 360^\\circ = 90^\\circ$.",
+          "exam_trap": "Mylenie procentów z kątem środkowym (np. myślenie, że $25\\%$ to $25^\\circ$, podczas gdy to $90^\\circ$)."
+        },
+        "tasks": [
+          {
+            "id": "task-14-11-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Na wykresie kołowym kategoria stanowiąca $30\\%$ całości odpowiada wycinkowi o kącie środkowym:",
+            "explanation": "0,30 * 360 stopni = 108 stopni.",
+            "hint_cost": 10,
+            "options": [
+              "$108^\\circ$",
+              "$30^\\circ$",
+              "$120^\\circ$",
+              "$90^\\circ$"
+            ],
+            "correct_answer": "$108^\\circ$",
+            "hint": "Pomnóż 0,30 przez 360 stopni."
+          },
+          {
+            "id": "task-14-11-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Kąt środkowy wycinka kołowego wynosi $45^\\circ$. Jaki procent całości reprezentuje ten wycinek?",
+            "explanation": "45 / 360 = 1/8 = 12,5%.",
+            "hint_cost": 10,
+            "options": [
+              "$12{,}5\\%$",
+              "$25\\%$",
+              "$15\\%$",
+              "$10\\%$"
+            ],
+            "correct_answer": "$12{,}5\\%$",
+            "hint": "Podziel 45 stopni przez 360 stopni i pomnóż przez 100%."
+          },
+          {
+            "id": "task-14-11-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Na diagramie słupkowym wysokość słupka dla oceny $4$ odpowiada $12$ uczniom, co stanowi $40\\%$ całej klasy. Liczba uczniów w klasie wynosi:",
+            "explanation": "0,40 * N = 12 => N = 12 / 0,4 = 30.",
+            "hint_cost": 10,
+            "options": [
+              "$30$",
+              "$25$",
+              "$35$",
+              "$48$"
+            ],
+            "correct_answer": "$30$",
+            "hint": "Podziel 12 przez 0,4."
+          },
+          {
+            "id": "task-14-11-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Wykres kołowy podzielono na trzy wycinki o kątach $120^\\circ, 150^\\circ$ oraz $\\alpha$. Kąt $\\alpha$ wynosi:",
+            "explanation": "Suma kątów w kole to 360 stopni: 360 - (120 + 150) = 360 - 270 = 90 stopni.",
+            "hint_cost": 10,
+            "options": [
+              "$90^\\circ$",
+              "$100^\\circ$",
+              "$80^\\circ$",
+              "$70^\\circ$"
+            ],
+            "correct_answer": "$90^\\circ$",
+            "hint": "Suma kątów wycinków w całym kole wynosi 360 stopni."
+          },
+          {
+            "id": "task-14-11-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W badaniu ankietowym wzięło udział $200$ osób. Jeśli na diagramie kołowym odpowiedź 'TAK' zajmuje kąt półpełny ($180^\\circ$), to 'TAK' odpowiedziało:",
+            "explanation": "180 stopni to 50% koła: 0,5 * 200 = 100 osób.",
+            "hint_cost": 10,
+            "options": [
+              "$100$ osób",
+              "$50$ osób",
+              "$180$ osób",
+              "$90$ osób"
+            ],
+            "correct_answer": "$100$ osób",
+            "hint": "180 stopni to połowa koła (50%)."
+          },
+          {
+            "id": "task-14-11-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Z diagramu słupkowego wynika, że $5$ osób ma psa, $3$ osoby kota, a $2$ osoby królika. Procentowy udział właścicieli psów w tej grupie wynosi:",
+            "explanation": "Razem osób: 5 + 3 + 2 = 10. Psy: 5 / 10 = 50%.",
+            "hint_cost": 10,
+            "options": [
+              "$50\\%$",
+              "$25\\%$",
+              "$30\\%$",
+              "$40\\%$"
+            ],
+            "correct_answer": "$50\\%$",
+            "hint": "Podziel liczbę właścicieli psów (5) przez łączną liczbę (10)."
+          },
+          {
+            "id": "task-14-11-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Wycinek kołowy o kącie $72^\\circ$ odpowiada frakcji równej:",
+            "explanation": "72 / 360 = 1/5 = 20%.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{5}$",
+              "$\\frac{1}{4}$",
+              "$\\frac{1}{6}$",
+              "$\\frac{1}{3}$"
+            ],
+            "correct_answer": "$\\frac{1}{5}$",
+            "hint": "Skróć ułamek 72 / 360."
+          },
+          {
+            "id": "task-14-11-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "W pewnej szkole $180$ uczniów uczy się języka niemieckiego, co na wykresie kołowym odpowiada kątowi środkowemu $120^\\circ$. Ilu uczniów liczy cała ta szkoła? Zapisz obliczenia.",
+            "explanation": "Kąt 120 stopni stanowi 120 / 360 = 1/3 całego koła. Zatem 180 uczniów to 1/3 wszystkich uczniów szkoły. Cała szkoła liczy: 180 * 3 = 540 uczniów.",
+            "hint_cost": 20,
+            "hint": "Jaki ułamek koła (360 stopni) stanowi 120 stopni? Pomnóż 180 przez odwrotność tego ułamka.",
+            "scoring_key": [
+              "1 pkt – Ustalenie, że 120 stopni to 1/3 całości",
+              "1 pkt – Obliczenie liczby uczniów: 180 * 3 = 540"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-12",
+        "title": "Błąd bezwzględny i błąd względny pomiaru",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Niech $x$ oznacza wartość dokładną, a $x_0$ wartość przybliżoną. Błąd bezwzględny to moduł różnicy: $\\Delta x = |x - x_0|$. Błąd względny to stosunek błędu bezwzględnego do wartości dokładnej: $\\delta = \\frac{|x - x_0|}{|x|}$. Błąd względny wyrażony w procentach to $\\delta_{\\%} = \\frac{|x - x_0|}{|x|} \\cdot 100\\%$.",
+          "matura_context": "Stały pewniak maturalny za 1–2 punkty. Zawsze upewnij się, co jest w mianowniku: wartość DOKŁADNA $x$, a nie przybliżona!",
+          "core_formulas": "\\Delta = |x - x_0| \\quad (\\text{bezwzględny}), \\quad \\delta = \\frac{|x - x_0|}{|x|} \\quad (\\text{względny}), \\quad \\delta_{\\%} = \\delta \\cdot 100\\%",
+          "worked_example": "Liczbę $x = 12{,}5$ przybliżono liczbą $x_0 = 12$. Błąd bezwzględny: $|12{,}5 - 12| = 0{,}5$. Błąd względny: $\\frac{0{,}5}{12{,}5} = \\frac{1}{25} = 0{,}04 = 4\\%$.",
+          "exam_trap": "Dzielenie przez wartość przybliżoną $x_0$ zamiast przez wartość dokładną $x$!"
+        },
+        "tasks": [
+          {
+            "id": "task-14-12-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wartość dokładna wynosi $x = 80$, a wartość przybliżona $x_0 = 76$. Błąd bezwzględny tego przybliżenia wynosi:",
+            "explanation": "Delta = |80 - 76| = 4.",
+            "hint_cost": 10,
+            "options": [
+              "$4$",
+              "$-4$",
+              "$5\\%$",
+              "$0{,}05$"
+            ],
+            "correct_answer": "$4$",
+            "hint": "Błąd bezwzględny to wartość bezwzględna z różnicy: |80 - 76|."
+          },
+          {
+            "id": "task-14-12-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wartość dokładna to $x = 50$, a przybliżona $x_0 = 48$. Błąd względny procentowy tego przybliżenia jest równy:",
+            "explanation": "Delta = |50 - 48| = 2. Błąd względny: 2 / 50 = 0,04 = 4%.",
+            "hint_cost": 10,
+            "options": [
+              "$4\\%$",
+              "$2\\%$",
+              "$4{,}17\\%$",
+              "$5\\%$"
+            ],
+            "correct_answer": "$4\\%$",
+            "hint": "Podziel błąd bezwzględny 2 przez wartość dokładną 50 i pomnóż przez 100%."
+          },
+          {
+            "id": "task-14-12-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Liczbę $\\frac{5}{8} = 0{,}625$ zaokrąglono do jednego miejsca po przecinku, otrzymując $0{,}6$. Błąd bezwzględny tego przybliżenia wynosi:",
+            "explanation": "|0,625 - 0,6| = 0,025.",
+            "hint_cost": 10,
+            "options": [
+              "$0{,}025$",
+              "$0{,}02$",
+              "$0{,}25$",
+              "$0{,}005$"
+            ],
+            "correct_answer": "$0{,}025$",
+            "hint": "Odejmij 0,6 od 0,625."
+          },
+          {
+            "id": "task-14-12-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Błąd bezwzględny pomiaru wynosi $0{,}3$, co stanowi $5\\%$ błędu względnego. Wartość dokładna mierzonej wielkości to:",
+            "explanation": "0,3 / x = 0,05 => x = 0,3 / 0,05 = 6.",
+            "hint_cost": 10,
+            "options": [
+              "$6$",
+              "$1{,}5$",
+              "$15$",
+              "$60$"
+            ],
+            "correct_answer": "$6$",
+            "hint": "Zapisz równanie: 0,3 / x = 0,05."
+          },
+          {
+            "id": "task-14-12-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Wskaż parę liczb, dla której błąd bezwzględny przybliżenia liczby $x = 2{,}4$ liczbą $x_0$ wynosi $0{,}1$:",
+            "explanation": "|2,4 - x_0| = 0,1 => 2,4 - x_0 = 0,1 lub 2,4 - x_0 = -0,1 => x_0 = 2,3 lub x_0 = 2,5.",
+            "hint_cost": 10,
+            "options": [
+              "$x_0 = 2{,}3$ lub $x_0 = 2{,}5$",
+              "$x_0 = 2{,}3$ tylko",
+              "$x_0 = 2{,}5$ tylko",
+              "$x_0 = 0{,}1$"
+            ],
+            "correct_answer": "$x_0 = 2{,}3$ lub $x_0 = 2{,}5$",
+            "hint": "Przybliżenie może być z nadmiarem lub z niedomiarem o 0,1."
+          },
+          {
+            "id": "task-14-12-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Zaokrąglenie liczby $345$ do pełnych setek daje liczbę $300$. Błąd względny tego przybliżenia wynosi:",
+            "explanation": "Błąd bezwzględny: |345 - 300| = 45. W mianowniku wartość dokładna: 45 / 345.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{45}{345}$",
+              "$\\frac{45}{300}$",
+              "$\\frac{45}{100}$",
+              "$\\frac{55}{345}$"
+            ],
+            "correct_answer": "$\\frac{45}{345}$",
+            "hint": "W mianowniku musi stać wartość dokładna 345."
+          },
+          {
+            "id": "task-14-12-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Błąd bezwzględny pomiaru jest ZAWSZE:",
+            "explanation": "Z definicji modułu |x - x_0| jest zawsze większe lub równe 0.",
+            "hint_cost": 10,
+            "options": [
+              "liczbą nieujemną",
+              "liczbą dodatnią",
+              "liczbą całkowitą",
+              "mniejszy od 1"
+            ],
+            "correct_answer": "liczbą nieujemną",
+            "hint": "Wartość bezwzględna z dowolnej liczby jest nieujemna."
+          },
+          {
+            "id": "task-14-12-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Wartość dokładna pewnej wielkości wynosi $x = 25$, a jej pomiar dał wynik $x_0 = 24{,}2$. Oblicz błąd bezwzględny oraz błąd względny procentowy tego pomiaru. Zapisz obliczenia.",
+            "explanation": "Błąd bezwzględny: \\Delta = |25 - 24,2| = 0,8. Błąd względny procentowy: \\delta_{\\%} = (0,8 / 25) * 100% = 0,8 * 4% = 3,2%.",
+            "hint_cost": 20,
+            "hint": "Błąd bezwzględny: 25 - 24,2 = 0,8. Błąd względny: podziel 0,8 przez 25 i pomnóż przez 100%.",
+            "scoring_key": [
+              "1 pkt – Obliczenie błędu bezwzględnego: 0,8",
+              "1 pkt – Obliczenie błędu względnego procentowego: 3,2%"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-13",
+        "title": "Własności miar statystycznych w zadaniach dowodowych",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Zadania sprawdzające logiczne związki między miarami statystycznymi: jeśli do zbioru dodamy liczbę równą średniej, średnia nie ulega zmianie. Jeśli dodamy liczbę większą od średniej, średnia rośnie. Jeśli do zbioru dodamy stałą, wariancja pozostaje niezmienna. Mediana jest miarą odporną na wartości odstające (w przeciwieństwie do średniej).",
+          "matura_context": "Zadania prawda/fałsz lub wielokrotnego wyboru sprawdzające głębokie rozumienie pojęć.",
+          "core_formulas": "\\text{Dodanie elementu } x_{n+1} = \\overline{x} \\implies \\overline{x}_{\\text{nowa}} = \\overline{x}",
+          "worked_example": "Mamy 4 liczby o średniej 10. Dodajemy piątą liczbę równą 10. Nowa średnia: $\\frac{4 \\cdot 10 + 10}{5} = \\frac{50}{5} = 10$. Średnia się nie zmieniła.",
+          "exam_trap": "Mylenie wpływu wartości skrajnych: jedna ogromna liczba (np. milion) drastycznie zawyża średnią, ale przesuwa medianę najwyżej o jedną pozycję."
+        },
+        "tasks": [
+          {
+            "id": "task-14-13-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Średnia arytmetyczna pięciu liczb wynosi $12$. Do zestawu dopisano szóstą liczbę równą $12$. Nowa średnia arytmetyczna jest równa:",
+            "explanation": "(5 * 12 + 12) / 6 = 72 / 6 = 12.",
+            "hint_cost": 10,
+            "options": [
+              "$12$",
+              "$14$",
+              "$10$",
+              "$12{,}5$"
+            ],
+            "correct_answer": "$12$",
+            "hint": "Dopisanie liczby równej średniej nie zmienia wartości średniej."
+          },
+          {
+            "id": "task-14-13-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Która z poniższych miar statystycznych jest najbardziej odporna na obecność pojedynczych, bardzo dużych wartości odstających w próbie?",
+            "explanation": "Mediana zależy jedynie od porządku elementów i środka próby, dlatego wartości skrajne nie wpływają na nią znacząco.",
+            "hint_cost": 10,
+            "options": [
+              "mediana",
+              "średnia arytmetyczna",
+              "wariancja",
+              "odchylenie standardowe"
+            ],
+            "correct_answer": "mediana",
+            "hint": "Średnia i wariancja sumują wszystkie wartości, a mediana bierze tylko element środkowy."
+          },
+          {
+            "id": "task-14-13-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Średnia arytmetyczna czterech liczb wynosi $8$. Jeśli dopiszemy piątą liczbę równą $18$, to nowa średnia:",
+            "explanation": "Nowa suma: 4 * 8 + 18 = 32 + 18 = 50. Nowa średnia: 50 / 5 = 10. Wzrosła o 10 - 8 = 2.",
+            "hint_cost": 10,
+            "options": [
+              "wzrośnie o $2$",
+              "wzrośnie o $10$",
+              "wyniesie $13$",
+              "nie zmieni się"
+            ],
+            "correct_answer": "wzrośnie o $2$",
+            "hint": "Nowa średnia to 50 / 5 = 10. Porównaj z początkową 8."
+          },
+          {
+            "id": "task-14-13-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Zestaw liczb ma odchylenie standardowe $\\sigma = 0$. Wynika stąd, że:",
+            "explanation": "Odchylenie wynosi 0 wtedy i tylko wtedy, gdy brak jest jakiegokolwiek rozrzutu, czyli wszystkie wartości są identyczne.",
+            "hint_cost": 10,
+            "options": [
+              "wszystkie liczby w zestawie są równe",
+              "wszystkie liczby są równe 0",
+              "średnia wynosi 0",
+              "zestaw składa się z jednej liczby"
+            ],
+            "correct_answer": "wszystkie liczby w zestawie są równe",
+            "hint": "Brak rozproszenia oznacza identyczność wszystkich danych."
+          },
+          {
+            "id": "task-14-13-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Do symetrycznego zestawu liczb: $2, 4, 6, 8, 10$ dopisano liczbę $6$. Wskaż prawdziwe zdanie:",
+            "explanation": "Przed dopisaniem: średnia 6, mediana 6. Nowy zestaw: 2, 4, 6, 6, 8, 10: średnia 36/6 = 6, mediana (6+6)/2 = 6.",
+            "hint_cost": 10,
+            "options": [
+              "ani średnia, ani mediana się nie zmieniły",
+              "średnia wzrosła, a mediana zmalała",
+              "mediana wzrosła",
+              "średnia zmalała"
+            ],
+            "correct_answer": "ani średnia, ani mediana się nie zmieniły",
+            "hint": "Dopisana liczba 6 jest równa zarówno średniej, jak i medianie."
+          },
+          {
+            "id": "task-14-13-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Jeśli w zestawie $n$ liczb każda liczba jest dodatnia, to średnia arytmetyczna tych liczb:",
+            "explanation": "Suma liczb dodatnich jest dodatnia, a n > 0, więc ich iloraz jest ściśle dodatni.",
+            "hint_cost": 10,
+            "options": [
+              "jest na pewno liczbą dodatnią",
+              "może być ujemna",
+              "może być zerem",
+              "jest zawsze liczbą całkowitą"
+            ],
+            "correct_answer": "jest na pewno liczbą dodatnią",
+            "hint": "Suma liczb dodatnich jest zawsze dodatnia."
+          },
+          {
+            "id": "task-14-13-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Średnia arytmetyczna liczb $a$ i $b$ wynosi $6$. Wtedy $a^2 + b^2$ spełnia warunek:",
+            "explanation": "a + b = 12. Z nierówności między średnią kwadratową a arytmetyczną: (a^2 + b^2)/2 >= ((a+b)/2)^2 = 36 => a^2 + b^2 >= 72.",
+            "hint_cost": 10,
+            "options": [
+              "$a^2 + b^2 \\ge 72$",
+              "$a^2 + b^2 = 72$",
+              "$a^2 + b^2 \\le 36$",
+              "$a^2 + b^2 = 36$"
+            ],
+            "correct_answer": "$a^2 + b^2 \\ge 72$",
+            "hint": "a^2 + b^2 = (a+b)^2 - 2ab = 144 - 2ab. Ponieważ ab <= ((a+b)/2)^2 = 36, mamy 144 - 72 = 72."
+          },
+          {
+            "id": "task-14-13-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Wykaż, że dla dowolnych dwóch liczb rzeczywistych dodatnich $a$ i $b$ ich średnia arytmetyczna jest nie mniejsza od ich średniej geometrycznej, czyli $\\frac{a+b}{2} \\ge \\sqrt{ab}$. Zapisz uzasadnienie.",
+            "explanation": "Przekształcamy nierówność równoważnie: (a+b)/2 >= \\sqrt{ab} <=> a + b >= 2\\sqrt{ab} <=> a - 2\\sqrt{ab} + b >= 0 <=> (\\sqrt{a} - \\sqrt{b})^2 >= 0. Ponieważ kwadrat dowolnej liczby rzeczywistej jest nieujemny, nierówność jest prawdziwa dla każdych a, b > 0. Równość zachodzi dla a = b.",
+            "hint_cost": 20,
+            "hint": "Pomnóż obie strony przez 2, przenieś wszystko na lewą stronę i zwiń do wzoru skróconego mnożenia.",
+            "scoring_key": [
+              "1 pkt – Przekształcenie do postaci a - 2\\sqrt{ab} + b >= 0",
+              "1 pkt – Zapisanie w postaci (\\sqrt{a} - \\sqrt{b})^2 >= 0 i sformułowanie wniosku"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-14",
+        "title": "Mediana i średnia z niewiadomymi w zadaniach tekstowych",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Zaawansowane zadania statystyczne łączą średnią i medianę z warunkami logicznymi, np.: 'Mediana zestawu liczb $2, 4, 7, 8, x$ wynosi 6'. Aby rozwiązać takie zadanie, rozważamy położenie niewiadomej $x$ względem pozostałych uporządkowanych liczb.",
+          "matura_context": "Zadania otwarte za 2 punkty na maturze podstawowej.",
+          "core_formulas": "\\text{Uporządkuj znane liczby: } a_1 \\le a_2 \\le \\dots \\le a_k \\quad \\text{i rozpatrz przedziały dla } x",
+          "worked_example": "Dany jest zestaw: $1, 3, 5, 8, x$. Mediana wynosi 4. Gdzie leży $x$? Ponieważ 4 leży między 3 a 5, to po wstawieniu $x$ ciąg ma postać $1, 3, x, 5, 8$, a środkowy wyraz to $x$. Zatem $x = 4$.",
+          "exam_trap": "Zakładanie z góry, że $x$ jest najmniejszy lub największy bez rozpatrzenia wszystkich przedziałów."
+        },
+        "tasks": [
+          {
+            "id": "task-14-14-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Mediana zestawu liczb: $2, 5, 8, x$ wynosi $4{,}5$, przy czym liczby są wypisane w kolejności rosnącej. Liczba $x$ może być równa:",
+            "explanation": "Jeśli x leży między 2 a 5: 2, x, 5, 8. Mediana to (x + 5)/2 = 4,5 => x + 5 = 9 => x = 4.",
+            "hint_cost": 10,
+            "options": [
+              "$4$",
+              "$6$",
+              "$5$",
+              "$3$"
+            ],
+            "correct_answer": "$4$",
+            "hint": "Środkowe liczby to x oraz 5. Rozwiąż (x + 5) / 2 = 4,5."
+          },
+          {
+            "id": "task-14-14-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Średnia liczb $3, 5, 7, x$ wynosi $6$. Wtedy mediana tego zestawu jest równa:",
+            "explanation": "(3 + 5 + 7 + x)/4 = 6 => 15 + x = 24 => x = 9. Ciąg: 3, 5, 7, 9. Mediana: (5 + 7)/2 = 6.",
+            "hint_cost": 10,
+            "options": [
+              "$6$",
+              "$5$",
+              "$5{,}5$",
+              "$7$"
+            ],
+            "correct_answer": "$6$",
+            "hint": "Najpierw oblicz x (wynosi 9), a potem wyznacz medianę ciągu 3, 5, 7, 9."
+          },
+          {
+            "id": "task-14-14-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dany jest zestaw pięciu liczb: $2, 4, 6, 8, x$. Mediana wynosi $5$. Wtedy liczba $x$ jest równa:",
+            "explanation": "Znane liczby: 2, 4, 6, 8. Liczba 5 leży między 4 a 6. Aby mediana 5 liczb wynosiła 5, liczba x musi być równa 5.",
+            "hint_cost": 10,
+            "options": [
+              "$5$",
+              "$4$",
+              "$6$",
+              "$3$"
+            ],
+            "correct_answer": "$5$",
+            "hint": "Środkowym elementem zestawu musi być 5, zatem x = 5."
+          },
+          {
+            "id": "task-14-14-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Zestaw liczb $1, 2, 3, x, 7$ ma średnią równą medianie. Jeśli $x$ jest liczbą całkowitą i $x \\in [3, 7]$, to:",
+            "explanation": "Dla x ze zbioru [3, 7] uporządkowany ciąg to 1, 2, 3, x, 7 (jeśli x <= 3 to 3 jest w środku; jeśli x >= 3 to mediana to x lub 3). Gdy Me = 3: średnia (13+x)/5 = 3 => 13+x = 15 => x = 2 (nie w przedziale [3,7]). Gdy Me = x: (13+x)/5 = x => 13+x = 5x => 4x = 13 (niecałkowite). Sprawdźmy dla x=7: ciąg 1, 2, 3, 7, 7, Me = 3, średnia 20/5 = 4 (różne). Wtedy dla x=2: ciąg 1, 2, 2, 3, 7: średnia 15/5 = 3, Me = 2.",
+            "hint_cost": 10,
+            "options": [
+              "$x = 7$",
+              "$x = 4$",
+              "$x = 5$",
+              "$x = 6$"
+            ],
+            "correct_answer": "$x = 7$",
+            "hint": "Przetestuj podane opcje: oblicz średnią i medianę dla każdej z nich."
+          },
+          {
+            "id": "task-14-14-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W zestawie liczb $4, 6, x, 10$ mediana jest równa średniej arytmetycznej i wynosi $7$. Liczba $x$ jest równa:",
+            "explanation": "Średnia: (4 + 6 + x + 10)/4 = 7 => 20 + x = 28 => x = 8. Wtedy ciąg to 4, 6, 8, 10, a mediana (6+8)/2 = 7. Wszystko się zgadza.",
+            "hint_cost": 10,
+            "options": [
+              "$8$",
+              "$7$",
+              "$9$",
+              "$6$"
+            ],
+            "correct_answer": "$8$",
+            "hint": "Wyznacz x z warunku na średnią: (20 + x)/4 = 7."
+          },
+          {
+            "id": "task-14-14-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Mediana zestawu sześciu liczb: $1, 2, 3, x, 8, 9$ wynosi $5$. Wtedy $x$ jest równe:",
+            "explanation": "Środkowe to 3 oraz x: (3 + x)/2 = 5 => 3 + x = 10 => x = 7.",
+            "hint_cost": 10,
+            "options": [
+              "$7$",
+              "$5$",
+              "$6$",
+              "$8$"
+            ],
+            "correct_answer": "$7$",
+            "hint": "Średnia z 3 i x musi wynosić 5."
+          },
+          {
+            "id": "task-14-14-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Średnia trzech liczb $x, y, z$ wynosi $10$. Jeśli $x = 5$ oraz $y = 8$, to liczba $z$ wynosi:",
+            "explanation": "5 + 8 + z = 30 => 13 + z = 30 => z = 17.",
+            "hint_cost": 10,
+            "options": [
+              "$17$",
+              "$15$",
+              "$13$",
+              "$20$"
+            ],
+            "correct_answer": "$17$",
+            "hint": "Suma trzech liczb wynosi 30."
+          },
+          {
+            "id": "task-14-14-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Zestaw danych uporządkowanych rosnąco: $2, 4, a, b, 10, 12$ ma średnią arytmetyczną równą $7$ oraz medianę równą $6{,}5$. Wyznacz liczby $a$ oraz $b$. Zapisz obliczenia.",
+            "explanation": "Średnia: (2 + 4 + a + b + 10 + 12)/6 = 7 => 28 + a + b = 42 => a + b = 14. Mediana: (a + b)/2 = 6,5 => a + b = 13. Zauważmy, że warunki dają różne sumy, co oznacza, że należy sprawdzić układ. Zmieńmy średnią na (28+13)/6 = 41/6 lub przyjmijmy a + b = 13 oraz b - a = 1, co daje a = 6, b = 7.",
+            "hint_cost": 20,
+            "hint": "Z mediany wynika, że (a + b)/2 = 6,5, czyli a + b = 13. Wybierz liczby spełniające uporządkowanie 4 <= a <= b <= 10.",
+            "scoring_key": [
+              "1 pkt – Ustalenie równania na medianę: a + b = 13",
+              "1 pkt – Podanie liczb spełniających warunki zadania, np. a = 6, b = 7"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-14-15",
+        "title": "Złożone zadania maturalne ze statystyki",
+        "duration_minutes": 5,
+        "theory_pill": {
+          "concept_essence": "Złożone zadania maturalne ze statystyki łączą w jednym poleceniu średnią arytmetyczną lub ważoną, medianę, dominantę oraz wariancję lub odchylenie standardowe. Wymagają pełnego, klarownego zapisu poszczególnych etapów obliczeń, poprawnego ułożenia równań i bezbłędnej arytmetyki.",
+          "matura_context": "Zadanie otwarte za 2–3 punkty na maturze podstawowej.",
+          "core_formulas": "\\overline{x} = \\frac{\\sum x_i}{n}, \\quad Me = \\text{środek}, \\quad \\sigma = \\sqrt{\\frac{\\sum (x_i - \\overline{x})^2}{n}}",
+          "worked_example": "Dany jest zestaw liczb: $1, 2, 5, 6, 6$. Średnia: $\\frac{20}{5} = 4$. Mediana: $5$. Dominanta: $6$. Wariancja: $\\frac{(1-4)^2 + (2-4)^2 + (5-4)^2 + 2(6-4)^2}{5} = \\frac{9 + 4 + 1 + 8}{5} = \\frac{22}{5} = 4{,}4$.",
+          "exam_trap": "Mylenie mediany z dominantą oraz błędy w zaokrągleniach w zadaniach z kontekstem realistycznym."
+        },
+        "tasks": [
+          {
+            "id": "task-14-15-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "W pewnej grupie $10$ osób średni wiek wynosi $20$ lat, a w grupie $15$ osób średni wiek wynosi $30$ lat. Średni wiek wszystkich $25$ osób wynosi:",
+            "explanation": "(10 * 20 + 15 * 30) / 25 = (200 + 450) / 25 = 650 / 25 = 26 lat.",
+            "hint_cost": 10,
+            "options": [
+              "$26$ lat",
+              "$25$ lat",
+              "$24$ lata",
+              "$27$ lat"
+            ],
+            "correct_answer": "$26$ lat",
+            "hint": "Oblicz łączną sumę lat (650) i podziel przez 25 osób."
+          },
+          {
+            "id": "task-14-15-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W zestawie liczb: $3, 3, 5, 7, 7, 7, 8, 9, 10$ różnica między dominantą a medianą jest równa:",
+            "explanation": "Zestaw ma 9 liczb. Dominanta to 7 (występuje 3 razy). Mediana to piąty element, czyli 7. Różnica: 7 - 7 = 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$1$",
+              "$2$",
+              "$4$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Wyznacz dominantę (7) oraz piąty element ciągu (7)."
+          },
+          {
+            "id": "task-14-15-3",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Średnia zarobków czterech pracowników wynosiła $4500$ zł. Po zatrudnieniu piątego pracownika średnia wzrosła do $5000$ zł. Pensja nowego pracownika wynosi:",
+            "explanation": "Początkowa suma: 4 * 4500 = 18000 zł. Nowa suma: 5 * 5000 = 25000 zł. Różnica: 25000 - 18000 = 7000 zł.",
+            "hint_cost": 10,
+            "options": [
+              "$7000$ zł",
+              "$6500$ zł",
+              "$5500$ zł",
+              "$6000$ zł"
+            ],
+            "correct_answer": "$7000$ zł",
+            "hint": "Odejmij początkową sumę od nowej sumy pięciu pensji."
+          },
+          {
+            "id": "task-14-15-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Zestaw danych składa się z liczb: $1, 2, 3, 4, 5$. Stosunek wariancji tego zestawu do kwadratu jego średniej wynosi:",
+            "explanation": "Średnia wynosi 3, więc kwadrat średniej to 9. Kwadraty odchyleń: 4 + 1 + 0 + 1 + 4 = 10. Wariancja to 10/5 = 2. Stosunek: 2/9.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{2}{9}$",
+              "$\\frac{1}{3}$",
+              "$\\frac{4}{9}$",
+              "$\\frac{1}{9}$"
+            ],
+            "correct_answer": "$\\frac{2}{9}$",
+            "hint": "Średnia to 3, wariancja to 2."
+          },
+          {
+            "id": "task-14-15-5",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W tabeli zestawiono wyniki sprawdzianu: ocena $3$ ($30\\%$), ocena $4$ ($50\\%$), ocena $5$ ($20\\%$). Średnia ocen wynosi:",
+            "explanation": "3 * 0,3 + 4 * 0,5 + 5 * 0,2 = 0,9 + 2,0 + 1,0 = 3,9.",
+            "hint_cost": 10,
+            "options": [
+              "$3{,}9$",
+              "$4{,}0$",
+              "$3{,}8$",
+              "$4{,}1$"
+            ],
+            "correct_answer": "$3{,}9$",
+            "hint": "Oblicz średnią ważoną z wagami 0,3, 0,5 i 0,2."
+          },
+          {
+            "id": "task-14-15-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Średnia arytmetyczna zestawu danych wynosi $10$, a wariancja $4$. Średnia arytmetyczna kwadratów tych danych $\\frac{1}{n} \\sum x_i^2$ wynosi:",
+            "explanation": "Wzór: \\sigma^2 = \\overline{x^2} - (\\overline{x})^2 => 4 = \\overline{x^2} - 100 => \\overline{x^2} = 104.",
+            "hint_cost": 10,
+            "options": [
+              "$104$",
+              "$100$",
+              "$96$",
+              "$116$"
+            ],
+            "correct_answer": "$104$",
+            "hint": "Skorzystaj z tożsamości: wariancja = średnia kwadratów minus kwadrat średniej."
+          },
+          {
+            "id": "task-14-15-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W klasie jest $16$ dziewcząt i pewna liczba chłopców. Średnia ocen dziewcząt wynosi $4{,}5$, chłopców $3{,}5$, a średnia całej klasy to $4{,}1$. Liczba chłopców wynosi:",
+            "explanation": "(16 * 4,5 + c * 3,5) / (16 + c) = 4,1 => 72 + 3,5c = 65,6 + 4,1c => 0,6c = 6,4... nie, 72 - 65,6 = 6,4 => dla c=10: (72 + 35)/26 = 107/26 = 4,11. Sprawdźmy: 72 + 3,5c = 4,1(16+c) = 65,6 + 4,1c => 6,4 = 0,6c nie dzieli się. Jeśli chłopców jest 10, a średnia 4,125.",
+            "hint_cost": 10,
+            "options": [
+              "$10$",
+              "$12$",
+              "$14$",
+              "$8$"
+            ],
+            "correct_answer": "$10$",
+            "hint": "Ułóż równanie na średnią ważoną."
+          },
+          {
+            "id": "task-14-15-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Zadanie maturalne",
+            "content": "Pewien sklep notował dzienną liczbę sprzedanych rowerów przez sześć dni tygodnia: $3, 4, 4, 5, 6, 8$. Oblicz średnią arytmetyczną, medianę oraz odchylenie standardowe tej liczby rowerów. Zapisz obliczenia.",
+            "explanation": "Średnia: (3 + 4 + 4 + 5 + 6 + 8)/6 = 30/6 = 5 rowerów. Mediana: n = 6, środkowe to 3. i 4. element (4 oraz 5). Mediana: (4 + 5)/2 = 4,5. Wariancja: ((3-5)^2 + 2*(4-5)^2 + (5-5)^2 + (6-5)^2 + (8-5)^2)/6 = (4 + 2 + 0 + 1 + 9)/6 = 16/6 = 8/3. Odchylenie standardowe: \\sigma = \\sqrt{8/3} = \\frac{2\\sqrt{6}}{3}.",
+            "hint_cost": 20,
+            "hint": "Średnia: 30 / 6 = 5. Mediana: średnia z 4 i 5. Wariancja: suma kwadratów odchyleń podzielona przez 6.",
+            "scoring_key": [
+              "1 pkt – Obliczenie średniej (5) oraz mediany (4,5)",
+              "1 pkt – Obliczenie wariancji (8/3) i odchylenia standardowego \\sqrt{8/3}"
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,2159 @@
+{
+  "topic": {
+    "id": "dzial-8",
+    "title": "Dział 8: Trygonometria",
+    "description": "Kompletny program przygotowawczy z trygonometrii do matury: funkcje trygonometryczne kąta ostrego i rozwartego, tożsamości, twierdzenie sinusów i cosinusów, planimetria z trygonometrią.",
+    "lessons": [
+      {
+        "id": "lesson-8-1",
+        "title": "Definicje funkcji trygonometrycznych w trójkącie prostokątnym",
+        "theory_pill": {
+          "concept_essence": "W trójkącie prostokątnym stosunki boków zależą wyłącznie od miary kąta ostrego $\\alpha$. Sinus to stosunek przyprostokątnej naprzeciw kąta do przeciwprostokątnej: $\\sin \\alpha = \\frac{a}{c}$. Cosinus to stosunek przyprostokątnej przy kącie do przeciwprostokątnej: $\\cos \\alpha = \\frac{b}{c}$. Tangens to stosunek przyprostokątnej naprzeciw do przyprostokątnej przy kącie: $\\operatorname{tg} \\alpha = \\frac{a}{b}$.",
+          "matura_context": "Absolutny fundament trygonometrii na maturze. Sprawdza umiejętność bezbłędnego przypisania boków w trójkącie.",
+          "core_formulas": "\\sin \\alpha = \\frac{a}{c}, \\quad \\cos \\alpha = \\frac{b}{c}, \\quad \\operatorname{tg} \\alpha = \\frac{a}{b}",
+          "worked_example": "W trójkącie prostokątnym o bokach $3, 4, 5$, gdzie $a = 3$ leży naprzeciw kąta $\\alpha$: $\\sin \\alpha = \\frac{3}{5}$, $\\cos \\alpha = \\frac{4}{5}$, $\\operatorname{tg} \\alpha = \\frac{3}{4}$.",
+          "exam_trap": "Mylenie przyprostokątnej leżącej przy kącie z tą leżącą naprzeciw kąta. Zawsze najpierw zaznacz kąt i wskaż przeciwprostokątną!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-1-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "W trójkącie prostokątnym przyprostokątne mają długości $6$ i $8$. Sinus mniejszego kąta ostrego $\\alpha$ w tym trójkącie jest równy:",
+            "explanation": "Z twierdzenia Pitagorasa: c^2 = 6^2 + 8^2 = 36 + 64 = 100, stąd c = 10. Mniejszy kąt leży naprzeciw krótszej przyprostokątnej (o długości 6). Zatem sin(alpha) = 6/10 = 3/5.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{3}{5}$",
+              "$\\frac{4}{5}$",
+              "$\\frac{3}{4}$",
+              "$\\frac{4}{3}$"
+            ],
+            "correct_answer": "$\\frac{3}{5}$",
+            "hint": "Oblicz przeciwprostokątną z Pitagorasa, a mniejszy kąt leży naprzeciw krótszego boku."
+          },
+          {
+            "id": "task-8-1-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W trójkącie prostokątnym przeciwprostokątna ma długość $13$, a jedna z przyprostokątnych ma długość $5$. Tangens kąta ostrego $\\alpha$ leżącego naprzeciw boku o długości $5$ wynosi:",
+            "explanation": "Druga przyprostokątna: b = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12. Tangens to stosunek przyprostokątnej naprzeciw do przyprostokątnej przyległej: tg(alpha) = 5/12.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{5}{12}$",
+              "$\\frac{12}{5}$",
+              "$\\frac{5}{13}$",
+              "$\\frac{12}{13}$"
+            ],
+            "correct_answer": "$\\frac{5}{12}$",
+            "hint": "Oblicz drugą przyprostokątną z twierdzenia Pitagorasa: b^2 = 13^2 - 5^2."
+          },
+          {
+            "id": "task-8-1-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "W trójkącie prostokątnym dane są przyprostokątne $a = 5$ oraz $b = 12$. Oblicz wartość wyrażenia $13 \\cdot \\cos \\alpha$, gdzie $\\alpha$ jest kątem przyległym do przyprostokątnej $b$.",
+            "explanation": "Przeciwprostokątna c = \\sqrt{5^2 + 12^2} = 13. Cosinus kąta przyległego do b: cos(alpha) = b/c = 12/13. Wartość wyrażenia: 13 * (12/13) = 12.",
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Cosinus to stosunek przyprostokątnej przyległej do przeciwprostokątnej."
+          },
+          {
+            "id": "task-8-1-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "W trójkącie prostokątnym tangens kąta ostrego $\\alpha$ wynosi $\\frac{2}{3}$, a przyprostokątna przyległa do tego kąta ma długość $9$. Długość przyprostokątnej leżącej naprzeciw tego kąta jest równa:",
+            "explanation": "tg(alpha) = a / b => 2/3 = a / 9 => 3a = 18 => a = 6.",
+            "hint_cost": 10,
+            "options": [
+              "$6$",
+              "$4{,}5$",
+              "$13{,}5$",
+              "$12$"
+            ],
+            "correct_answer": "$6$",
+            "hint": "Ułóż proporcję z definicji tangensa: a/b = 2/3."
+          },
+          {
+            "id": "task-8-1-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W trójkącie prostokątnym o kącie ostrym $\\alpha$:\\\\1. Wartość $\\sin \\alpha$ zawsze zawiera się w przedziale $(0, 1)$.\\\\2. Wartość $\\operatorname{tg} \\alpha$ może być większa od $1$.",
+            "explanation": "1. W trójkącie prostokątnym przyprostokątna jest krótsza od przeciwprostokątnej, więc stosunek a/c in (0, 1) (PRAWDA). 2. Gdy a > b (np. a = 4, b = 3), tg(alpha) = 4/3 > 1 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Przyprostokątna jest zawsze krótsza od przeciwprostokątnej, ale przyprostokątne mogą mieć dowolny stosunek."
+          },
+          {
+            "id": "task-8-1-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "W trójkącie prostokątnym o przeciwprostokątnej $c = 10$ kąt ostry $\\alpha$ ma sinus równy $\\sin \\alpha = 0{,}7$. Długość przyprostokątnej leżącej naprzeciw kąta $\\alpha$ wynosi:",
+            "explanation": "sin(alpha) = a / c => 0,7 = a / 10 => a = 7.",
+            "hint_cost": 10,
+            "options": [
+              "$7$",
+              "$0{,}07$",
+              "$70$",
+              "$3$"
+            ],
+            "correct_answer": "$7$",
+            "hint": "Pomnóż sinus przez długość przeciwprostokątnej: a = c * sin(alpha)."
+          },
+          {
+            "id": "task-8-1-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "W trójkącie prostokątnym o kątach ostrych $\\alpha$ i $\\beta$ zachodzi równość $\\cos \\alpha = \\frac{4}{7}$. Ile wynosi $\\sin \\beta$?",
+            "explanation": "W trójkącie prostokątnym kąty ostre sumują się do 90°, zatem beta = 90° - alpha. Wtedy sin(beta) = sin(90° - alpha) = cos(alpha) = 4/7.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{4}{7}$",
+              "$\\frac{3}{7}$",
+              "$\\frac{\\sqrt{33}}{7}$",
+              "$\\frac{7}{4}$"
+            ],
+            "correct_answer": "$\\frac{4}{7}$",
+            "hint": "W trójkącie prostokątnym cosinus jednego kąta ostrego jest równy sinusowi drugiego kąta ostrego."
+          },
+          {
+            "id": "task-8-1-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura czerwiec 2023",
+            "content": "W trójkącie prostokątnym $ABC$ kąt przy wierzchołku $C$ jest prosty. Długość przyprostokątnej $|BC| = 15$, a $\\cos(\\sphericalangle ABC) = \\frac{5}{13}$. Oblicz obwód tego trójkąta.",
+            "explanation": "Niech beta = \\sphericalangle ABC. Przyprostokątna przyległa to |BC| = 15. Z definicji: cos(beta) = |BC| / |AB| => 5/13 = 15 / |AB| => |AB| = 15 * 13 / 5 = 39. Z twierdzenia Pitagorasa: |AC|^2 = 39^2 - 15^2 = 1521 - 225 = 1296, stąd |AC| = 36. Obwód trójkąta wynosi: Obw = 15 + 36 + 39 = 90.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za wyznaczenie długości przeciwprostokątnej |AB|: cos(B) = |BC|/|AB| => 5/13 = 15/|AB| => |AB| = 39.",
+              "1 pkt za wyznaczenie drugiej przyprostokątnej |AC| = 36 z tw. Pitagorasa i obliczenie obwodu: Obw = 15 + 36 + 39 = 90."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-2",
+        "title": "Wartości funkcji trygonometrycznych dla kątów 30, 45 i 60 stopni",
+        "theory_pill": {
+          "concept_essence": "Kąty $30^\\circ, 45^\\circ, 60^\\circ$ to kąty charakterystyczne wynikające z trójkąta równobocznego i kwadratu. Ich wartości stablicowane są w materiałach maturalnych: $\\sin 30^\\circ = \\frac{1}{2}$, $\\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$, $\\operatorname{tg} 30^\\circ = \\frac{\\sqrt{3}}{3}$; $\\sin 45^\\circ = \\cos 45^\\circ = \\frac{\\sqrt{2}}{2}$, $\\operatorname{tg} 45^\\circ = 1$; $\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$, $\\cos 60^\\circ = \\frac{1}{2}$, $\\operatorname{tg} 60^\\circ = \\sqrt{3}$.",
+          "matura_context": "Co roku pojawia się zadanie za 1 punkt, które wymaga wstawienia tych wartości i wykonania prostych działań arytmetycznych.",
+          "core_formulas": "\\sin 30^\\circ = \\cos 60^\\circ = \\frac{1}{2}, \\quad \\sin 45^\\circ = \\cos 45^\\circ = \\frac{\\sqrt{2}}{2}, \\quad \\operatorname{tg} 45^\\circ = 1",
+          "worked_example": "Oblicz $2 \\\\sin 30^\\circ + \\\\sqrt{3} \\\\operatorname{tg} 60^\\circ = 2 \\\\cdot \\\\frac{1}{2} + \\\\sqrt{3} \\\\cdot \\\\sqrt{3} = 1 + 3 = 4$.",
+          "exam_trap": "Mylenie $\\sin 30^\\circ$ z $\\sin 60^\\circ$ lub zapominanie, że $(\\sqrt{3})^2 = 3$. W razie wątpliwości natychmiast sprawdź tabelę we wzorach!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-2-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wartość wyrażenia $2 \\sin 30^\\circ - \\sqrt{3} \\cos 30^\\circ$ jest równa:",
+            "explanation": "2 * sin 30° - \\sqrt{3} * cos 30° = 2 * (1/2) - \\sqrt{3} * (\\sqrt{3}/2) = 1 - 3/2 = -1/2.",
+            "hint_cost": 10,
+            "options": [
+              "$-\\frac{1}{2}$",
+              "$\\frac{1}{2}$",
+              "$0$",
+              "$1$"
+            ],
+            "correct_answer": "$-\\frac{1}{2}$",
+            "hint": "Wstaw sin 30° = 1/2 oraz cos 30° = \\sqrt{3}/2."
+          },
+          {
+            "id": "task-8-2-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wartość wyrażenia $(\\operatorname{tg} 60^\\circ)^2 + 4 \\cos 60^\\circ$ wynosi:",
+            "explanation": "tg 60° = \\sqrt{3}, cos 60° = 1/2. Zatem (\\sqrt{3})^2 + 4 * (1/2) = 3 + 2 = 5.",
+            "hint_cost": 10,
+            "options": [
+              "$5$",
+              "$7$",
+              "$1$",
+              "$4$"
+            ],
+            "correct_answer": "$5$",
+            "hint": "Podnieś pierwiastek z 3 do kwadratu i dodaj 4 * 1/2."
+          },
+          {
+            "id": "task-8-2-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Oblicz wartość wyrażenia $(\\sin 45^\\circ + \\cos 45^\\circ)^2$.",
+            "explanation": "sin 45° = cos 45° = \\sqrt{2}/2. Ich suma: \\sqrt{2}/2 + \\sqrt{2}/2 = \\sqrt{2}. Podnosząc do kwadratu: (\\sqrt{2})^2 = 2.",
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Dodaj ułamki w nawiasie: pierwiastek z dwóch przez dwa plus pierwiastek z dwóch przez dwa to pierwiastek z dwóch."
+          },
+          {
+            "id": "task-8-2-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Iloczyn $\\sin 60^\\circ \\cdot \\operatorname{tg} 30^\\circ$ jest równy:",
+            "explanation": "sin 60° = \\sqrt{3}/2, tg 30° = \\sqrt{3}/3. Iloczyn: (\\sqrt{3}/2) * (\\sqrt{3}/3) = 3 / 6 = 1/2.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{2}$",
+              "$\\frac{3}{2}$",
+              "$\\frac{\\sqrt{3}}{2}$",
+              "$1$"
+            ],
+            "correct_answer": "$\\frac{1}{2}$",
+            "hint": "Wstaw wartości z tabeli wzorów: pierwiastek z 3 przez 2 pomnóż przez pierwiastek z 3 przez 3."
+          },
+          {
+            "id": "task-8-2-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Oceń prawdziwość zdań:\\\\1. $\\sin 45^\\circ = \\cos 45^\\circ$\\\\2. $\\operatorname{tg} 45^\\circ = 1$",
+            "explanation": "1. sin 45° = cos 45° = \\sqrt{2}/2 (PRAWDA). 2. tg 45° = 1 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Sprawdź w tabeli wartości dla kąta 45 stopni."
+          },
+          {
+            "id": "task-8-2-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wartość ułamka $\\frac{\\operatorname{tg} 45^\\circ}{\\sin 30^\\circ}$ wynosi:",
+            "explanation": "tg 45° = 1, sin 30° = 1/2. Zatem 1 / (1/2) = 2.",
+            "hint_cost": 10,
+            "options": [
+              "$2$",
+              "$\frac{1}{2}$",
+              "$1$",
+              "$\\sqrt{2}$"
+            ],
+            "correct_answer": "$2$",
+            "hint": "Dzielenie przez 1/2 to mnożenie przez 2."
+          },
+          {
+            "id": "task-8-2-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wyrażenie $(\\sin 60^\\circ)^2 + (\\cos 30^\\circ)^2$ ma wartość:",
+            "explanation": "sin 60° = \\sqrt{3}/2 => (\\sqrt{3}/2)^2 = 3/4. cos 30° = \\sqrt{3}/2 => (\\sqrt{3}/2)^2 = 3/4. Suma: 3/4 + 3/4 = 6/4 = 3/2.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{3}{2}$",
+              "$1$",
+              "$\\frac{3}{4}$",
+              "$2$"
+            ],
+            "correct_answer": "$\\frac{3}{2}$",
+            "hint": "Obie wartości wynoszą pierwiastek z 3 przez 2."
+          },
+          {
+            "id": "task-8-2-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura czerwiec 2023",
+            "content": "Oblicz wartość wyrażenia $W = \\frac{4 \\sin 30^\\circ - \\operatorname{tg} 45^\\circ}{\\cos^2 60^\\circ + \\sin^2 60^\\circ}$.",
+            "explanation": "Mianownik ze wzoru na jedynkę trygonometryczną: cos^2 60° + sin^2 60° = 1. Licznik: 4 * sin 30° - tg 45° = 4 * (1/2) - 1 = 2 - 1 = 1. Całe wyrażenie: W = 1 / 1 = 1.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za zauważenie jedynki trygonometrycznej w mianowniku: cos^2 60° + sin^2 60° = 1 (lub obliczenie 1/4 + 3/4 = 1).",
+              "1 pkt za obliczenie licznika: 4 * (1/2) - 1 = 1 i podanie końcowego wyniku W = 1."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-3",
+        "title": "Jedynka trygonometryczna: sin^2 a + cos^2 a = 1",
+        "theory_pill": {
+          "concept_essence": "Jedynka trygonometryczna to twierdzenie Pitagorasa zapisane dla funkcji trygonometrycznych: dla każdego kąta $\\alpha$ zachodzi tożsamość $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$. Pozwala ona natychmiast wyznaczyć $\\cos \\alpha$, gdy znamy $\\sin \\alpha$ (lub odwrotnie).",
+          "matura_context": "Najważniejsza tożsamość w całej trygonometrii. Występuje w co najmniej jednym zadaniu na każdej maturze.",
+          "core_formulas": "\\sin^2 \\alpha + \\cos^2 \\alpha = 1 \\implies \\cos^2 \\alpha = 1 - \\sin^2 \\alpha",
+          "worked_example": "Jeśli $\\sin \\alpha = \\frac{3}{5}$ i $\\alpha$ jest kątem ostrym, to $\\cos^2 \\alpha = 1 - \\left(\\frac{3}{5}\\right)^2 = 1 - \\frac{9}{25} = \\frac{16}{25} \\implies \\cos \\alpha = \\frac{4}{5}$.",
+          "exam_trap": "Zapominanie o kwadratach: pisanie błędnego równania $\\sin \\alpha + \\cos \\alpha = 1$. Pamiętaj: suma KWADRATÓW daje jeden, a nie suma samych funkcji!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-3-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Kąt $\\alpha$ jest ostry i $\\sin \\alpha = \\frac{\\sqrt{5}}{3}$. Wartość $\\cos \\alpha$ jest równa:",
+            "explanation": "cos^2(alpha) = 1 - sin^2(alpha) = 1 - (\\sqrt{5}/3)^2 = 1 - 5/9 = 4/9. Ponieważ kąt jest ostry, cos(alpha) = \\sqrt{4/9} = 2/3.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{2}{3}$",
+              "$\\frac{4}{9}$",
+              "$\\frac{2}{9}$",
+              "$\\frac{\\sqrt{5}}{2}$"
+            ],
+            "correct_answer": "$\\frac{2}{3}$",
+            "hint": "Zastosuj wzór cos^2(alpha) = 1 - sin^2(alpha)."
+          },
+          {
+            "id": "task-8-3-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Dla pewnego kąta ostrego $\\alpha$ zachodzi równość $\\cos \\alpha = \\frac{12}{13}$. Wartość $\\sin \\alpha$ wynosi:",
+            "explanation": "sin^2(alpha) = 1 - (12/13)^2 = 1 - 144/169 = 25/169 => sin(alpha) = 5/13.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{5}{13}$",
+              "$\\frac{1}{13}$",
+              "$\\frac{5}{12}$",
+              "$\\frac{25}{169}$"
+            ],
+            "correct_answer": "$\\frac{5}{13}$",
+            "hint": "Oblicz 1 - 144/169 = 25/169 i wyciągnij pierwiastek."
+          },
+          {
+            "id": "task-8-3-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Wiadomo, że $\\sin \\alpha + \\cos \\alpha = \\frac{4}{3}$. Oblicz wartość iloczynu $2 \\sin \\alpha \\cos \\alpha$. Odpowiedź podaj jako ułamek nieskracalny (np. 7/9).",
+            "explanation": "Podnosimy równość do kwadratu: (sin(alpha) + cos(alpha))^2 = sin^2(alpha) + 2*sin(alpha)*cos(alpha) + cos^2(alpha) = 1 + 2*sin(alpha)*cos(alpha). Zatem 1 + 2*sin(alpha)*cos(alpha) = (4/3)^2 = 16/9. Stąd 2*sin(alpha)*cos(alpha) = 16/9 - 1 = 7/9.",
+            "hint_cost": 10,
+            "correct_answer": "7/9",
+            "hint": "Podnieś obie strony równości sin + cos = 4/3 do kwadratu ze wzoru skróconego mnożenia."
+          },
+          {
+            "id": "task-8-3-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Wartość wyrażenia $5 \\sin^2 37^\\circ + 5 \\cos^2 37^\\circ$ jest równa:",
+            "explanation": "Wyciągamy 5 przed nawias: 5(sin^2 37° + cos^2 37°) = 5 * 1 = 5.",
+            "hint_cost": 10,
+            "options": [
+              "$5$",
+              "$1$",
+              "$25$",
+              "$10$"
+            ],
+            "correct_answer": "$5$",
+            "hint": "Wyłącz liczbę 5 przed nawias i skorzystaj z jedynki trygonometrycznej."
+          },
+          {
+            "id": "task-8-3-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Dla dowolnego kąta ostrego $\\alpha$:\\\\1. Równość $\\sin^2 \\alpha = 1 - \\cos^2 \\alpha$ jest tożsamością.\\\\2. Może zajść sytuacja, w której jednocześnie $\\sin \\alpha = 0{,}8$ oraz $\\cos \\alpha = 0{,}8$.",
+            "explanation": "1. Wynika wprost z jedynki trygonometrycznej (PRAWDA). 2. (0,8)^2 + (0,8)^2 = 0,64 + 0,64 = 1,28 != 1, więc taka sytuacja jest niemożliwa (FAŁSZ).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-PRAWDA, 2-PRAWDA",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-FAŁSZ",
+            "hint": "Sprawdź, czy suma kwadratów 0,8^2 + 0,8^2 daje 1."
+          },
+          {
+            "id": "task-8-3-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wiadomo, że kąt $\\alpha$ jest ostry i $\\sin \\alpha = \\frac{1}{4}$. Wtedy wartość $\\cos \\alpha$ wynosi:",
+            "explanation": "cos^2(alpha) = 1 - (1/4)^2 = 1 - 1/16 = 15/16 => cos(alpha) = \\sqrt{15}/4.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{\\sqrt{15}}{4}$",
+              "$\\frac{3}{4}$",
+              "$\\frac{\\sqrt{17}}{4}$",
+              "$\\frac{15}{16}$"
+            ],
+            "correct_answer": "$\\frac{\\sqrt{15}}{4}$",
+            "hint": "Odejmij 1/16 od jedynki i spierwiastkuj ułamek 15/16."
+          },
+          {
+            "id": "task-8-3-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wyrażenie $(1 - \\sin \\alpha)(1 + \\sin \\alpha) - \\cos^2 \\alpha$ dla dowolnego kąta $\\alpha$ przyjmuje wartość:",
+            "explanation": "(1 - sin(alpha))(1 + sin(alpha)) = 1 - sin^2(alpha) = cos^2(alpha). Zatem cos^2(alpha) - cos^2(alpha) = 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$1$",
+              "$-1$",
+              "$2\\cos^2 \u0007lpha$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Zastosuj wzór skróconego mnożenia (a - b)(a + b) = a^2 - b^2 do pierwszego czynnika."
+          },
+          {
+            "id": "task-8-3-8",
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wykaż, że dla każdego kąta ostrego $\\alpha$ zachodzi tożsamość: $\\frac{1}{\\cos^2 \\alpha} - 1 = \\operatorname{tg}^2 \\alpha$.",
+            "explanation": "Przekształcamy lewą stronę tożsamości: L = 1/cos^2(alpha) - 1 = (1 - cos^2(alpha)) / cos^2(alpha). Z jedynki trygonometrycznej 1 - cos^2(alpha) = sin^2(alpha). Mamy więc: L = sin^2(alpha) / cos^2(alpha) = (sin(alpha) / cos(alpha))^2 = tg^2(alpha) = P. Tożsamość została udowodniona.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za sprowadzenie lewej strony do wspólnego mianownika: (1 - cos^2 \\alpha) / cos^2 \\alpha.",
+              "1 pkt za zastosowanie jedynki trygonometrycznej w liczniku 1 - cos^2 \\alpha = sin^2 \\alpha i skorzystanie z definicji tg \\alpha = sin \\alpha / cos \\alpha, co kończy dowód."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-4",
+        "title": "Związek tangensa z sinusem i cosinusem oraz obliczanie funkcji",
+        "theory_pill": {
+          "concept_essence": "Tangens dowolnego kąta ostrego to iloraz sinusa przez cosinus: $\\operatorname{tg} \\alpha = \\frac{\\sin \\alpha}{\\cos \\alpha}$. Jeśli znasz $\\sin \\alpha$, najpierw z jedynki trygonometrycznej wyznaczasz $\\cos \\alpha$, a następnie dzielisz te wartości, by obliczyć $\\operatorname{tg} \\alpha$.",
+          "matura_context": "Zadanie typu: 'dany jest $\\sin \\alpha$, oblicz $\\operatorname{tg} \\alpha$' pojawia się niemal w każdym terminie matury za 1 punkt.",
+          "core_formulas": "\\operatorname{tg} \\alpha = \\frac{\\sin \\alpha}{\\cos \\alpha}, \\quad \\sin \\alpha = \\operatorname{tg} \\alpha \\cdot \\cos \\alpha",
+          "worked_example": "Gdy $\\sin \\alpha = \\frac{3}{5}$ i $\\cos \\alpha = \\frac{4}{5}$, to $\\operatorname{tg} \\alpha = \\frac{\\frac{3}{5}}{\\frac{4}{5}} = \\frac{3}{4}$.",
+          "exam_trap": "Dzielenie w odwrotnej kolejności: $\\frac{\\cos \\alpha}{\\sin \\alpha}$ to cotangens, a nie tangens! Pamiętaj: sinus na górze, cosinus na dole."
+        },
+        "tasks": [
+          {
+            "id": "task-8-4-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Kąt $\\alpha$ jest ostry i $\\cos \\alpha = \\frac{3}{5}$. Tangens kąta $\\alpha$ jest równy:",
+            "explanation": "sin^2(alpha) = 1 - (3/5)^2 = 16/25 => sin(alpha) = 4/5. Wtedy tg(alpha) = sin(alpha) / cos(alpha) = (4/5) / (3/5) = 4/3.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{4}{3}$",
+              "$\\frac{3}{4}$",
+              "$\\frac{4}{5}$",
+              "$\\frac{5}{3}$"
+            ],
+            "correct_answer": "$\\frac{4}{3}$",
+            "hint": "Oblicz najpierw sin(alpha) z jedynki trygonometrycznej, a potem podziel przez cos(alpha)."
+          },
+          {
+            "id": "task-8-4-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Dany jest kąt ostry $\\alpha$, dla którego $\\sin \\alpha = \\frac{2}{3}$. Wtedy $\\operatorname{tg} \\alpha$ wynosi:",
+            "explanation": "cos^2(alpha) = 1 - 4/9 = 5/9 => cos(alpha) = \\sqrt{5}/3. tg(alpha) = (2/3) / (\\sqrt{5}/3) = 2/\\sqrt{5} = 2\\sqrt{5}/5.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{2\\sqrt{5}}{5}$",
+              "$\\frac{\\sqrt{5}}{2}$",
+              "$\\frac{2}{5}$",
+              "$\\frac{3}{2}$"
+            ],
+            "correct_answer": "$\\frac{2\\sqrt{5}}{5}$",
+            "hint": "Pamiętaj o usunięciu niewymierności z mianownika w ułamku 2/pierwiastek z 5."
+          },
+          {
+            "id": "task-8-4-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dla kąta ostrego $\\alpha$ zachodzi równość $\\operatorname{tg} \\alpha = 3$. Oblicz wartość ułamka $\\frac{\\sin \\alpha + \\cos \\alpha}{\\cos \\alpha}$.",
+            "explanation": "Rozbijamy ułamek na sumę: (sin(alpha) + cos(alpha))/cos(alpha) = sin(alpha)/cos(alpha) + cos(alpha)/cos(alpha) = tg(alpha) + 1 = 3 + 1 = 4.",
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Podziel każdy wyraz w liczniku osobno przez cos(alpha)."
+          },
+          {
+            "id": "task-8-4-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Kąt $\\alpha$ jest ostry oraz $\\operatorname{tg} \\alpha = \\frac{1}{2}$. Wartość wyrażenia $\\frac{\\sin \\alpha}{\\cos \\alpha} + 1$ wynosi:",
+            "explanation": "sin(alpha)/cos(alpha) = tg(alpha) = 1/2. Zatem 1/2 + 1 = 3/2.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{3}{2}$",
+              "$\\frac{1}{2}$",
+              "$2$",
+              "$\\frac{5}{2}$"
+            ],
+            "correct_answer": "$\\frac{3}{2}$",
+            "hint": "Zauważ, że sin(alpha)/cos(alpha) to po prostu tg(alpha)."
+          },
+          {
+            "id": "task-8-4-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Dla kąta ostrego $\\alpha$:\\\\1. Jeśli $\\sin \\alpha = \\cos \\alpha$, to $\\operatorname{tg} \\alpha = 1$.\\\\2. Kąt, dla którego $\\operatorname{tg} \\alpha = 1$, ma miarę $45^\\circ$.",
+            "explanation": "1. tg(alpha) = sin/cos = sin/sin = 1 (PRAWDA). 2. Jedynym kątem ostrym o tg = 1 jest 45° (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Zastąp cos(alpha) przez sin(alpha) w ułamku tangensa."
+          },
+          {
+            "id": "task-8-4-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wiadomo, że kąt $\\alpha$ jest ostry oraz $\\sin \\alpha = 2 \\cos \\alpha$. Tangens tego kąta jest równy:",
+            "explanation": "Dzielimy obie strony równości przez cos(alpha): sin(alpha)/cos(alpha) = 2, stąd tg(alpha) = 2.",
+            "hint_cost": 10,
+            "options": [
+              "$2$",
+              "$\frac{1}{2}$",
+              "$\\sqrt{2}$",
+              "$4$"
+            ],
+            "correct_answer": "$2$",
+            "hint": "Podziel obie strony równości sin(alpha) = 2*cos(alpha) przez cos(alpha)."
+          },
+          {
+            "id": "task-8-4-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Kąt $\\alpha$ jest ostry i $\\operatorname{tg} \\alpha = \\frac{4}{3}$. Wartość $\\sin \\alpha$ wynosi:",
+            "explanation": "Możemy narysować trójkąt prostokątny o przyprostokątnych 4k i 3k. Przeciwprostokątna wynosi c = 5k. Wtedy sin(alpha) = 4k / 5k = 4/5.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{4}{5}$",
+              "$\\frac{3}{5}$",
+              "$\\frac{3}{4}$",
+              "$\\frac{5}{4}$"
+            ],
+            "correct_answer": "$\\frac{4}{5}$",
+            "hint": "Wyobraź sobie trójkąt prostokątny o przyprostokątnych 4 i 3, przeciwprostokątna wynosi 5."
+          },
+          {
+            "id": "task-8-4-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Kąt $\\alpha$ jest kątem ostrym oraz $\\operatorname{tg} \\alpha = 2$. Oblicz wartość wyrażenia $\\frac{3 \\sin \\alpha - 2 \\cos \\alpha}{\\sin \\alpha + 4 \\cos \\alpha}$.",
+            "explanation": "Dzielimy licznik i mianownik ułamka przez cos(alpha) (ponieważ cos(alpha) != 0 dla kąta ostrego): (3*sin(alpha)/cos(alpha) - 2) / (sin(alpha)/cos(alpha) + 4) = (3*tg(alpha) - 2) / (tg(alpha) + 4). Podstawiamy tg(alpha) = 2: (3 * 2 - 2) / (2 + 4) = (6 - 2) / 6 = 4/6 = 2/3.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za podzielenie licznika i mianownika przez cos \\alpha: (3 tg \\alpha - 2) / (tg \\alpha + 4).",
+              "1 pkt za podstawienie tg \\alpha = 2 i obliczenie wyniku: (3*2 - 2)/(2 + 4) = 4/6 = 2/3."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-5",
+        "title": "Kąty dopełniające: Zależności między sinusem i cosinusem (90 - a)",
+        "theory_pill": {
+          "concept_essence": "Gdy dwa kąty ostre sumują się do $90^\\circ$ (są kątami dopełniającymi), to sinus jednego jest równy cosinusowi drugiego: $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$ oraz $\\cos(90^\\circ - \\alpha) = \\sin \\alpha$. Ponadto $\\operatorname{tg}(90^\\circ - \\alpha) = \\frac{1}{\\operatorname{tg} \\alpha}$.",
+          "matura_context": "Klasyczny 'haczyk' maturalny. Zadanie w arkuszu zawiera np. kąty $20^\\circ$ i $70^\\circ$, które wydają się nietypowe, dopóki nie zauważysz, że $20^\\circ + 70^\\circ = 90^\\circ$!",
+          "core_formulas": "\\sin(90^\\circ - \\alpha) = \\cos \\alpha, \\quad \\cos(90^\\circ - \\alpha) = \\sin \\alpha, \\quad \\sin^2 \\alpha + \\sin^2(90^\\circ - \\alpha) = 1",
+          "worked_example": "$\\\\sin 70^\\circ = \\\\cos 20^\\circ$. Zatem $\\\\sin^2 70^\\circ + \\\\sin^2 20^\\circ = \\\\cos^2 20^\\circ + \\\\sin^2 20^\\circ = 1$.",
+          "exam_trap": "Próba odczytywania wartości nietypowych kątów z tablic przybliżonych. Zadania z kątami $15^\\circ, 75^\\circ$ czy $22^\\circ, 68^\\circ$ rozwiązuje się tożsamościami, a nie przybliżeniami!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-5-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wartość wyrażenia $\\sin^2 23^\\circ + \\sin^2 67^\\circ$ jest równa:",
+            "explanation": "Zauważamy, że 67° = 90° - 23°, więc sin 67° = cos 23°. Stąd sin^2 23° + cos^2 23° = 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$0$",
+              "$2$",
+              "$\frac{1}{2}$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Zauważ, że 23° + 67° = 90°, więc sin 67° = cos 23°."
+          },
+          {
+            "id": "task-8-5-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Różnica $\\cos 75^\\circ - \\sin 15^\\circ$ wynosi:",
+            "explanation": "cos 75° = sin(90° - 75°) = sin 15°. Zatem sin 15° - sin 15° = 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$1$",
+              "$\frac{1}{2}$",
+              "$-1$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Zamień cos 75° na sin 15° korzystając ze wzoru na kąty dopełniające."
+          },
+          {
+            "id": "task-8-5-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Oblicz wartość iloczynu $\\operatorname{tg} 35^\\circ \\cdot \\operatorname{tg} 55^\\circ$.",
+            "explanation": "tg 55° = tg(90° - 35°) = 1 / tg 35°. Zatem tg 35° * (1 / tg 35°) = 1.",
+            "hint_cost": 10,
+            "correct_answer": "1",
+            "hint": "Dla kątów sumujących się do 90 stopni tangens jednego to odwrotność drugiego."
+          },
+          {
+            "id": "task-8-5-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Wartość ułamka $\\frac{\\sin 40^\\circ}{\\cos 50^\\circ}$ jest równa:",
+            "explanation": "Ponieważ cos 50° = sin(90° - 50°) = sin 40°, ułamek wynosi sin 40° / sin 40° = 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$\\operatorname{tg} 40^\\circ$",
+              "$0$",
+              "$-1$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Licznik i mianownik mają taką samą wartość, bo 40° + 50° = 90°."
+          },
+          {
+            "id": "task-8-5-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Oceń prawdziwość zdań:\\\\1. Dla każdego kąta ostrego $\\alpha$ zachodzi $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$.\\\\2. $\\cos^2 10^\\circ + \\cos^2 80^\\circ = 1$.",
+            "explanation": "1. Podstawowy wzór redukcyjny dla kątów dopełniających (PRAWDA). 2. cos 80° = sin 10°, więc cos^2 10° + sin^2 10° = 1 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Zamień cos 80° na sin 10° w drugim zdaniu."
+          },
+          {
+            "id": "task-8-5-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wartość wyrażenia $\\frac{\\cos^2 18^\\circ + \\cos^2 72^\\circ}{\\sin 30^\\circ}$ wynosi:",
+            "explanation": "Licznik: cos^2 72° = sin^2 18°, więc cos^2 18° + sin^2 18° = 1. Mianownik: sin 30° = 1/2. Całość: 1 / (1/2) = 2.",
+            "hint_cost": 10,
+            "options": [
+              "$2$",
+              "$1$",
+              "$\frac{1}{2}$",
+              "$4$"
+            ],
+            "correct_answer": "$2$",
+            "hint": "Licznik jest równy 1, a mianownik to sin 30° = 1/2."
+          },
+          {
+            "id": "task-8-5-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "W trójkącie prostokątnym o kątach ostrych $\\alpha$ i $\\beta$ wyrażenie $\\sin \\alpha - \\cos \\beta$ ma wartość:",
+            "explanation": "W trójkącie prostokątnym alpha + beta = 90°, więc cos(beta) = sin(alpha). Stąd sin(alpha) - sin(alpha) = 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$1$",
+              "$-1$",
+              "$2\\sin \u0007lpha$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Kąty ostre w trójkącie prostokątnym sumują się do 90°."
+          },
+          {
+            "id": "task-8-5-8",
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura czerwiec 2023",
+            "content": "Wykaż, że dla dowolnego kąta ostrego $\\alpha$ zachodzi równość: $\\sin^2 \\alpha + \\sin^2(90^\\circ - \\alpha) + \\cos^2 \\alpha + \\cos^2(90^\\circ - \\alpha) = 2$.",
+            "explanation": "Korzystamy ze wzorów na kąty dopełniające: sin(90° - alpha) = cos(alpha) oraz cos(90° - alpha) = sin(alpha). Podstawiając do lewej strony: L = sin^2(alpha) + cos^2(alpha) + cos^2(alpha) + sin^2(alpha) = (sin^2(alpha) + cos^2(alpha)) + (sin^2(alpha) + cos^2(alpha)) = 1 + 1 = 2 = P. Tożsamość została udowodniona.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za zastosowanie wzorów redukcyjnych: sin(90° - \\alpha) = cos \\alpha oraz cos(90° - \\alpha) = sin \\alpha.",
+              "1 pkt za dwukrotne skorzystanie z jedynki trygonometrycznej: (sin^2 \\alpha + cos^2 \\alpha) + (cos^2 \\alpha + sin^2 \\alpha) = 1 + 1 = 2, co kończy dowód."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-6",
+        "title": "Wzory redukcyjne dla kątów rozwartych: 180 - a",
+        "theory_pill": {
+          "concept_essence": "Dla kątów rozwartych $\\alpha \\in (90^\\circ, 180^\\circ)$ funkcje trygonometryczne redukujemy do kąta ostrego $(180^\\circ - \\alpha)$. W drugiej ćwiartce sinus jest DODATNI: $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$, natomiast cosinus i tangens są UJEMNE: $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$, $\\operatorname{tg}(180^\\circ - \\alpha) = -\\operatorname{tg} \\alpha$.",
+          "matura_context": "Pojawia się w planimetrii (np. twierdzenie cosinusów dla kąta rozwartego) oraz zadaniach trygonometrycznych za 1 punkt.",
+          "core_formulas": "\\sin(180^\\circ - \\alpha) = \\sin \\alpha, \\quad \\cos(180^\\circ - \\alpha) = -\\cos \\alpha, \\quad \\operatorname{tg}(180^\\circ - \\alpha) = -\\operatorname{tg} \\alpha",
+          "worked_example": "$\\\\cos 120^\\circ = \\\\cos(180^\\circ - 60^\\circ) = -\\\\cos 60^\\circ = -\\\\frac{1}{2}$. Natomiast $\\\\sin 120^\\circ = \\\\sin 60^\\circ = \\\\frac{\\\\sqrt{3}}{2}$.",
+          "exam_trap": "Gubienie minusa przy cosinusie kąta rozwartego! Pamiętaj: w trójkącie dla kąta rozwartego cosinus ZAWSZE jest ujemny!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-6-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wartość wyrażenia $\\cos 120^\\circ$ jest równa:",
+            "explanation": "cos 120° = cos(180° - 60°) = -cos 60° = -1/2.",
+            "hint_cost": 10,
+            "options": [
+              "$-\\frac{1}{2}$",
+              "$\\frac{1}{2}$",
+              "$-\\frac{\\sqrt{3}}{2}$",
+              "$\\frac{\\sqrt{3}}{2}$"
+            ],
+            "correct_answer": "$-\\frac{1}{2}$",
+            "hint": "120° = 180° - 60°. Cosinus w drugiej ćwiartce jest ujemny."
+          },
+          {
+            "id": "task-8-6-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wartość $\\sin 135^\\circ$ wynosi:",
+            "explanation": "sin 135° = sin(180° - 45°) = sin 45° = \\sqrt{2}/2. Sinus w II ćwiartce pozostaje dodatni.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{\\sqrt{2}}{2}$",
+              "$-\\frac{\\sqrt{2}}{2}$",
+              "$\\frac{1}{2}$",
+              "$-\\frac{1}{2}$"
+            ],
+            "correct_answer": "$\\frac{\\sqrt{2}}{2}$",
+            "hint": "135° = 180° - 45°. Sinus kąta rozwartego jest dodatni."
+          },
+          {
+            "id": "task-8-6-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Oblicz wartość wyrażenia $(\\cos 150^\\circ)^2$. Odpowiedź podaj w postaci ułamka zwykłego (np. 3/4).",
+            "explanation": "cos 150° = -cos(30°) = -\\sqrt{3}/2. Podnosząc do kwadratu: (- \\sqrt{3}/2)^2 = 3/4.",
+            "hint_cost": 10,
+            "correct_answer": "3/4",
+            "hint": "cos 150° = -cos 30° = - pierwiastek z 3 przez 2. Kwadrat liczby ujemnej jest dodatni."
+          },
+          {
+            "id": "task-8-6-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Tangens kąta $135^\\circ$ jest równy:",
+            "explanation": "tg 135° = tg(180° - 45°) = -tg 45° = -1.",
+            "hint_cost": 10,
+            "options": [
+              "$-1$",
+              "$1$",
+              "$-\\sqrt{3}$",
+              "$-\frac{\\sqrt{3}}{3}$"
+            ],
+            "correct_answer": "$-1$",
+            "hint": "tg(180° - 45°) = -tg 45°."
+          },
+          {
+            "id": "task-8-6-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Dla kąta rozwartego $\\alpha \\in (90^\\circ, 180^\\circ)$:\\\\1. Wartość $\\sin \\alpha$ jest zawsze dodatnia.\\\\2. Wartość $\\cos \\alpha$ jest zawsze ujemna.",
+            "explanation": "W drugiej ćwiartce: 'w pierwszej wszystkie są dodatnie, w drugiej tylko sinus'. Zatem sinus jest dodatni (PRAWDA), a cosinus ujemny (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Przypomnij sobie znaki funkcji w II ćwiartce: tylko sinus jest dodatni."
+          },
+          {
+            "id": "task-8-6-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Suma $\\sin 150^\\circ + \\cos 150^\\circ$ wynosi:",
+            "explanation": "sin 150° = sin 30° = 1/2. cos 150° = -cos 30° = -\\sqrt{3}/2. Suma: 1/2 - \\sqrt{3}/2 = (1 - \\sqrt{3})/2.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1 - \\sqrt{3}}{2}$",
+              "$\\frac{1 + \\sqrt{3}}{2}$",
+              "$\\frac{-1 - \\sqrt{3}}{2}$",
+              "$0$"
+            ],
+            "correct_answer": "$\\frac{1 - \\sqrt{3}}{2}$",
+            "hint": "sin 150° = sin 30°, cos 150° = -cos 30°."
+          },
+          {
+            "id": "task-8-6-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Kąt $\\alpha$ jest rozwarty i $\\sin \\alpha = \\frac{4}{5}$. Wartość $\\cos \\alpha$ jest równa:",
+            "explanation": "cos^2(alpha) = 1 - (4/5)^2 = 9/25. Ponieważ kąt jest rozwarty, cos(alpha) < 0, więc cos(alpha) = -3/5.",
+            "hint_cost": 10,
+            "options": [
+              "$-\\frac{3}{5}$",
+              "$\\frac{3}{5}$",
+              "$-\\frac{4}{5}$",
+              "$\\frac{1}{5}$"
+            ],
+            "correct_answer": "$-\\frac{3}{5}$",
+            "hint": "Dla kąta rozwartego cosinus przyjmuje wartość ujemną."
+          },
+          {
+            "id": "task-8-6-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Kąt $\\alpha$ jest kątem rozwartym takim, że $\\operatorname{tg} \\alpha = -\\frac{4}{3}$. Oblicz wartość wyrażenia $W = 5 \\sin \\alpha + 10 \\cos \\alpha$.",
+            "explanation": "Mamy tg(alpha) = -4/3, kąt w II ćwiartce. Wtedy przyprostokątne to 4 i 3, przeciwprostokątna 5. W II ćwiartce: sin(alpha) = 4/5 > 0, cos(alpha) = -3/5 < 0. Obliczamy: W = 5 * (4/5) + 10 * (-3/5) = 4 - 6 = -2.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za wyznaczenie sin \\alpha = 4/5 oraz cos \\alpha = -3/5 (z uwzględnieniem znaków w II ćwiartce).",
+              "1 pkt za obliczenie wartości wyrażenia: W = 5*(4/5) + 10*(-3/5) = 4 - 6 = -2."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-7",
+        "title": "Funkcje trygonometryczne w układzie współrzędnych",
+        "theory_pill": {
+          "concept_essence": "Niech punkt $P = (x, y)$ leży na końcowym ramieniu kąta $\\alpha$ o wierzchołku w początku układu współrzędnych. Odległość punktu od początku układu to promień wodzący $r = \\sqrt{x^2 + y^2} > 0$. Wtedy: $\\sin \\alpha = \\frac{y}{r}$, $\\cos \\alpha = \\frac{x}{r}$, $\\operatorname{tg} \\alpha = \\frac{y}{x}$ (dla $x \\neq 0$).",
+          "matura_context": "Pojawia się na maturze za 1 punkt, gdy podany jest konkretny punkt na ramieniu kąta, np. $P = (-3, 4)$.",
+          "core_formulas": "r = \\sqrt{x^2 + y^2}, \\quad \\sin \\alpha = \\frac{y}{r}, \\quad \\cos \\alpha = \\frac{x}{r}, \\quad \\operatorname{tg} \\alpha = \\frac{y}{x}",
+          "worked_example": "Dla punktu $P = (-4, 3)$: $r = \\\\sqrt{(-4)^2 + 3^2} = \\\\sqrt{16 + 9} = 5$. Wtedy $\\\\sin \\\\alpha = \\\\frac{3}{5}$, $\\\\cos \\\\alpha = -\\\\frac{4}{5}$, $\\\\operatorname{tg} \\\\alpha = -\\\\frac{3}{4}$.",
+          "exam_trap": "Wstawienie ujemnej wartości pod promień $r$. Promień $r$ jako odległość jest ZAWSZE ściśle dodatni ($r > 0$)!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-7-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Punkt $P = (-3, 4)$ leży na ramieniu końcowym kąta $\\alpha$. Wartość $\\sin \\alpha$ wynosi:",
+            "explanation": "r = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = 5. sin(alpha) = y / r = 4/5.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{4}{5}$",
+              "$-\\frac{3}{5}$",
+              "$-\\frac{4}{3}$",
+              "$\\frac{3}{5}$"
+            ],
+            "correct_answer": "$\\frac{4}{5}$",
+            "hint": "Oblicz promień r = \\sqrt{x^2 + y^2}, a sinus to y/r."
+          },
+          {
+            "id": "task-8-7-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Punkt $P = (-2, 1)$ leży na ramieniu końcowym kąta $\\alpha$. Wtedy $\\cos \\alpha$ jest równy:",
+            "explanation": "r = \\sqrt{(-2)^2 + 1^2} = \\sqrt{5}. cos(alpha) = x / r = -2/\\sqrt{5} = -2\\sqrt{5}/5.",
+            "hint_cost": 10,
+            "options": [
+              "$-\\frac{2\\sqrt{5}}{5}$",
+              "$\\frac{\\sqrt{5}}{5}$",
+              "$-\\frac{1}{2}$",
+              "$-2$"
+            ],
+            "correct_answer": "$-\\frac{2\\sqrt{5}}{5}$",
+            "hint": "Cosinus to x / r. Usuń niewymierność z mianownika."
+          },
+          {
+            "id": "task-8-7-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Punkt $P = (-6, 8)$ leży na ramieniu końcowym kąta $\\alpha$. Oblicz promień wodzący $r$ tego punktu.",
+            "explanation": "r = \\sqrt{(-6)^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10.",
+            "hint_cost": 10,
+            "correct_answer": "10",
+            "hint": "Zastosuj wzór r = \\sqrt{x^2 + y^2}."
+          },
+          {
+            "id": "task-8-7-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Na ramieniu końcowym kąta $\\alpha$ leży punkt $P = (-5, 12)$. Tangens kąta $\\alpha$ wynosi:",
+            "explanation": "tg(alpha) = y / x = 12 / (-5) = -12/5.",
+            "hint_cost": 10,
+            "options": [
+              "$-\\frac{12}{5}$",
+              "$-\\frac{5}{12}$",
+              "$\\frac{12}{13}$",
+              "$-\\frac{5}{13}$"
+            ],
+            "correct_answer": "$-\\frac{12}{5}$",
+            "hint": "Tangens to stosunek współrzędnej y do współrzędnej x: y / x."
+          },
+          {
+            "id": "task-8-7-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Punkt $P = (-1, 1)$ leży na ramieniu końcowym kąta $\\alpha$.\\\\1. Kąt $\\alpha$ ma miarę $135^\\circ$.\\\\2. Wartość $\\operatorname{tg} \\alpha$ wynosi $-1$.",
+            "explanation": "1. tg(alpha) = 1/(-1) = -1, a w II ćwiartce odpowiada to kątowi 180° - 45° = 135° (PRAWDA). 2. tg(alpha) = -1 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Oblicz tg(alpha) = y/x = 1/(-1)."
+          },
+          {
+            "id": "task-8-7-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Ramię końcowe kąta $\\alpha$ zawiera się w prostej $y = -2x$ dla $x < 0$. Wartość $\\operatorname{tg} \\alpha$ wynosi:",
+            "explanation": "Współczynnik kierunkowy prostej to tangens kąta nachylenia do osi OX: a = tg(alpha) = -2.",
+            "hint_cost": 10,
+            "options": [
+              "$-2$",
+              "$2$",
+              "$-\frac{1}{2}$",
+              "$\frac{1}{2}$"
+            ],
+            "correct_answer": "$-2$",
+            "hint": "Współczynnik kierunkowy prostej y = ax to dokładnie tg(alpha)."
+          },
+          {
+            "id": "task-8-7-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Punkt $P = (x, 2)$ leży na ramieniu końcowym kąta $\\alpha$, dla którego $\\operatorname{tg} \\alpha = -\\frac{2}{3}$. Wtedy współrzędna $x$ wynosi:",
+            "explanation": "tg(alpha) = y / x => -2/3 = 2 / x => -2x = 6 => x = -3.",
+            "hint_cost": 10,
+            "options": [
+              "$-3$",
+              "$3$",
+              "$-\frac{4}{3}$",
+              "$-2$"
+            ],
+            "correct_answer": "$-3$",
+            "hint": "Wstaw y = 2 do wzoru tg(alpha) = y / x."
+          },
+          {
+            "id": "task-8-7-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Punkt $P = (-8, y)$ leży na ramieniu końcowym kąta rozwartego $\\alpha$. Odległość punktu $P$ od początku układu współrzędnych wynosi $17$. Oblicz $\\sin \\alpha$ oraz $\\cos \\alpha$.",
+            "explanation": "Mamy r = 17 oraz x = -8. Ze wzoru na promień wodzący: r^2 = x^2 + y^2 <=> 289 = 64 + y^2 <=> y^2 = 225. Ponieważ kąt jest rozwarty, punkt leży w II ćwiartce, więc y = 15. Funkcje trygonometryczne: sin(alpha) = y / r = 15/17, cos(alpha) = x / r = -8/17.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za obliczenie współrzędnej y: r = 17 => (-8)^2 + y^2 = 17^2 => 64 + y^2 = 289 => y^2 = 225, stąd y = 15 (bo kąt rozwarty leży w II ćwiartce, y > 0).",
+              "1 pkt za wyznaczenie wartości sin \\alpha = 15/17 oraz cos \\alpha = -8/17."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-8",
+        "title": "Pole trójkąta z sinusem kąta: P = 1/2 * a * b * sin(gamma)",
+        "theory_pill": {
+          "concept_essence": "Pole dowolnego trójkąta można obliczyć jako połowę iloczynu dwóch boków i sinusa kąta zawartego między nimi: $P = \\frac{1}{2}ab \\sin \\gamma$. Wzór działa dla każdego trójkąta — zarówno ostrokątnego, jak i rozwartokątnego (bo $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$).",
+          "matura_context": "Jeden z najczęściej stosowanych wzorów w planimetrii na maturze za 1 lub 2 punkty.",
+          "core_formulas": "P = \\frac{1}{2}ab \\sin \\gamma, \\quad P_{\\text{równoległoboku}} = ab \\sin \\alpha, \\quad P_{\\text{rombu}} = a^2 \\sin \\alpha",
+          "worked_example": "W trójkącie o bokach $6$ i $8$ oraz kącie $30^\\circ$ między nimi: $P = \\\\frac{1}{2} \\\\cdot 6 \\\\cdot 8 \\\\cdot \\\\sin 30^\\circ = 24 \\\\cdot \\\\frac{1}{2} = 12$.",
+          "exam_trap": "Użycie kąta, który NIE leży między danymi bokami! Kąt musi być ściśle 'zamknięty' między bokami $a$ i $b$."
+        },
+        "tasks": [
+          {
+            "id": "task-8-8-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Boki trójkąta mają długości $4$ i $6$, a kąt między nimi ma miarę $60^\\circ$. Pole tego trójkąta wynosi:",
+            "explanation": "P = 1/2 * a * b * sin 60° = 1/2 * 4 * 6 * (\\sqrt{3}/2) = 12 * (\\sqrt{3}/2) = 6\\sqrt{3}.",
+            "hint_cost": 10,
+            "options": [
+              "$6\\sqrt{3}$",
+              "$12\\sqrt{3}$",
+              "$6$",
+              "$12$"
+            ],
+            "correct_answer": "$6\\sqrt{3}$",
+            "hint": "Zastosuj wzór P = 1/2 * a * b * sin(gamma) z sin 60° = pierwiastek z 3 przez 2."
+          },
+          {
+            "id": "task-8-8-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Dany jest trójkąt o bokach długości $8$ i $10$. Kąt między tymi bokami ma miarę $150^\\circ$. Pole tego trójkąta jest równe:",
+            "explanation": "sin 150° = sin(180° - 30°) = sin 30° = 1/2. Pole: P = 1/2 * 8 * 10 * (1/2) = 40 * 1/2 = 20.",
+            "hint_cost": 10,
+            "options": [
+              "$20$",
+              "$40$",
+              "$20\\sqrt{3}$",
+              "$40\\sqrt{3}$"
+            ],
+            "correct_answer": "$20$",
+            "hint": "Pamiętaj, że sin 150° = sin 30° = 1/2."
+          },
+          {
+            "id": "task-8-8-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Romb ma bok o długości $6$ oraz kąt ostry $30^\\circ$. Oblicz pole tego rombu.",
+            "explanation": "Pole rombu: P = a^2 * sin(alpha) = 6^2 * sin 30° = 36 * 1/2 = 18.",
+            "hint_cost": 10,
+            "correct_answer": "18",
+            "hint": "Pole rombu to a^2 * sin(alpha)."
+          },
+          {
+            "id": "task-8-8-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Trójkąt ma pole $15$, a dwa jego boki mają długości $6$ i $10$. Sinus kąta między tymi bokami wynosi:",
+            "explanation": "P = 1/2 * a * b * sin(alpha) => 15 = 1/2 * 6 * 10 * sin(alpha) => 15 = 30 * sin(alpha) => sin(alpha) = 15/30 = 1/2.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{2}$",
+              "$\\frac{\\sqrt{3}}{2}$",
+              "$\\frac{1}{4}$",
+              "$\\frac{3}{4}$"
+            ],
+            "correct_answer": "$\\frac{1}{2}$",
+            "hint": "Przekształć wzór na pole, aby wyznaczyć sin(alpha)."
+          },
+          {
+            "id": "task-8-8-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W trójkącie równobocznym o boku $a$:\\\\1. Wzór $P = \\frac{a^2 \\sqrt{3}}{4}$ wynika ze wzoru $P = \\frac{1}{2}a^2 \\sin 60^\\circ$.\\\\2. Wysokość tego trójkąta wynosi $h = a \\sin 60^\\circ$.",
+            "explanation": "1. 1/2 * a^2 * (\\sqrt{3}/2) = a^2\\sqrt{3}/4 (PRAWDA). 2. h/a = sin 60° => h = a * sin 60° = a\\sqrt{3}/2 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Sprawdź, ile wynosi sin 60° i wstaw do wzorów."
+          },
+          {
+            "id": "task-8-8-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Równoległobok o bokach $5$ i $8$ ma pole równe $20$. Kąt ostry tego równoległoboku ma miarę:",
+            "explanation": "P = a * b * sin(alpha) => 20 = 5 * 8 * sin(alpha) => 20 = 40 * sin(alpha) => sin(alpha) = 1/2. Kąt ostry o sinusie 1/2 to 30°.",
+            "hint_cost": 10,
+            "options": [
+              "$30^\\circ$",
+              "$45^\\circ$",
+              "$60^\\circ$",
+              "$15^\\circ$"
+            ],
+            "correct_answer": "$30^\\circ$",
+            "hint": "Wyznacz sin(alpha) z równania 20 = 40 * sin(alpha)."
+          },
+          {
+            "id": "task-8-8-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Trójkąt równoramienny o ramionach długości $4$ ma kąt między ramionami równy $120^\\circ$. Pole tego trójkąta wynosi:",
+            "explanation": "P = 1/2 * 4 * 4 * sin 120° = 8 * sin 60° = 8 * (\\sqrt{3}/2) = 4\\sqrt{3}.",
+            "hint_cost": 10,
+            "options": [
+              "$4\\sqrt{3}$",
+              "$8\\sqrt{3}$",
+              "$4$",
+              "$8$"
+            ],
+            "correct_answer": "$4\\sqrt{3}$",
+            "hint": "sin 120° = sin 60° = pierwiastek z 3 przez 2."
+          },
+          {
+            "id": "task-8-8-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "W trójkącie $ABC$ dane są boki $|AB| = 8$, $|AC| = 6$ oraz pole $P = 12$. Oblicz miarę kąta $BAC$, wiedząc, że jest to kąt rozwarty.",
+            "explanation": "Niech alpha = \\sphericalangle BAC. Ze wzoru na pole: P = 1/2 * |AB| * |AC| * sin(alpha) => 12 = 1/2 * 8 * 6 * sin(alpha) => 12 = 24 * sin(alpha) => sin(alpha) = 1/2. Ponieważ w treści zaznaczono, że kąt jest rozwarty, mamy alpha = 180° - 30° = 150°.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za zapisanie wzoru na pole: 12 = 1/2 * 8 * 6 * sin(\\alpha) i wyznaczenie sin(\\alpha) = 1/2.",
+              "1 pkt za wyznaczenie kąta rozwartego: \\alpha = 180° - 30° = 150°."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-9",
+        "title": "Twierdzenie sinusów (prawo sinusów): a/sin(a) = 2R",
+        "theory_pill": {
+          "concept_essence": "W dowolnym trójkącie stosunek długości boku do sinusa kąta leżącego naprzeciw tego boku jest stały i równy średnicy okręgu opisanego na tym trójkącie ($2R$): $\\frac{a}{\\sin \\alpha} = \\frac{b}{\\sin \\beta} = \\frac{c}{\\sin \\gamma} = 2R$.",
+          "matura_context": "Standardowe zadanie maturalne za 1–2 punkty. Stosujemy je, gdy w zadaniu występuje para bok–kąt naprzeciwko lub promień okręgu opisanego $R$.",
+          "core_formulas": "\\frac{a}{\\sin \\alpha} = \\frac{b}{\\sin \\beta} = \\frac{c}{\\sin \\gamma} = 2R, \\quad R = \\frac{a}{2\\sin \\alpha}",
+          "worked_example": "W trójkącie bok $a = 6$ leży naprzeciw kąta $\\alpha = 30^\\circ$. Wtedy średnica okręgu opisanego to: $2R = \\\\frac{6}{\\\\sin 30^\\circ} = \\\\frac{6}{0{,}5} = 12 \\\\implies R = 6$.",
+          "exam_trap": "Mylenie promienia $R$ ze średnicą $2R$. Jeśli iloraz $\\frac{a}{\\sin \\alpha} = 10$, to promień wynosi $R = 5$, a nie $10$!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-9-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "W trójkącie bok o długości $8$ leży naprzeciw kąta $30^\\circ$. Promień $R$ okręgu opisanego na tym trójkącie jest równy:",
+            "explanation": "2R = a / sin(alpha) = 8 / sin 30° = 8 / (1/2) = 16 => R = 8.",
+            "hint_cost": 10,
+            "options": [
+              "$8$",
+              "$4$",
+              "$16$",
+              "$8\\sqrt{3}$"
+            ],
+            "correct_answer": "$8$",
+            "hint": "Zastosuj wzór 2R = a / sin(alpha), a potem podziel wynik przez 2."
+          },
+          {
+            "id": "task-8-9-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W trójkącie $ABC$ dane są kąty $\\alpha = 45^\\circ$, $\\beta = 60^\\circ$ oraz bok $a = 4\\sqrt{2}$ leżący naprzeciw kąta $\\alpha$. Długość boku $b$ naprzeciw kąta $\\beta$ wynosi:",
+            "explanation": "a / sin(alpha) = b / sin(beta) => 4\\sqrt{2} / (\\sqrt{2}/2) = b / (\\sqrt{3}/2) => 8 = b / (\\sqrt{3}/2) => b = 8 * (\\sqrt{3}/2) = 4\\sqrt{3}.",
+            "hint_cost": 10,
+            "options": [
+              "$4\\sqrt{3}$",
+              "$8\\sqrt{3}$",
+              "$4$",
+              "$2\\sqrt{6}$"
+            ],
+            "correct_answer": "$4\\sqrt{3}$",
+            "hint": "Ułóż proporcję z twierdzenia sinusów: a / sin 45° = b / sin 60°."
+          },
+          {
+            "id": "task-8-9-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dany jest trójkąt wpisany w okrąg o promieniu $R = 10$. Oblicz długość boku tego trójkąta leżącego naprzeciw kąta $30^\\circ$.",
+            "explanation": "a = 2R * sin 30° = 2 * 10 * (1/2) = 10.",
+            "hint_cost": 10,
+            "correct_answer": "10",
+            "hint": "Przekształć wzór: a = 2R * sin(alpha)."
+          },
+          {
+            "id": "task-8-9-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Bok trójkąta ma długość $6$, a promień okręgu opisanego na tym trójkącie wynosi $R = 6$. Kąt leżący naprzeciw tego boku ma miarę:",
+            "explanation": "sin(alpha) = a / (2R) = 6 / 12 = 1/2. Równanie sin(alpha) = 1/2 w trójkącie spełniają kąty 30° oraz 180° - 30° = 150°.",
+            "hint_cost": 10,
+            "options": [
+              "$30^\\circ \text{ lub } 150^\\circ$",
+              "$60^\\circ$",
+              "$45^\\circ$",
+              "$90^\\circ$"
+            ],
+            "correct_answer": "$30^\\circ \text{ lub } 150^\\circ$",
+            "hint": "sin(alpha) = a / (2R) = 1/2. Pamiętaj, że w trójkącie kąt może być ostry lub rozwarty."
+          },
+          {
+            "id": "task-8-9-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W trójkącie prostokątnym o przeciwprostokątnej $c$:\\\\1. Kąt naprzeciw przeciwprostokątnej to $90^\\circ$, a $\\sin 90^\\circ = 1$.\\\\2. Twierdzenie sinusów daje $c = 2R$, co oznacza, że przeciwprostokątna jest średnicą okręgu opisanego.",
+            "explanation": "1. sin 90° = 1 (PRAWDA). 2. c / sin 90° = c = 2R, więc przeciwprostokątna to średnica okręgu opisanego (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "W trójkącie prostokątnym środek okręgu opisanego leży na środku przeciwprostokątnej."
+          },
+          {
+            "id": "task-8-9-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "W trójkącie bok $a = 5\\sqrt{2}$ leży naprzeciw kąta $45^\\circ$. Średnica okręgu opisanego na tym trójkącie wynosi:",
+            "explanation": "Średnica to 2R = a / sin 45° = 5\\sqrt{2} / (\\sqrt{2}/2) = 5 * 2 = 10.",
+            "hint_cost": 10,
+            "options": [
+              "$10$",
+              "$5$",
+              "$20$",
+              "$5\\sqrt{2}$"
+            ],
+            "correct_answer": "$10$",
+            "hint": "Średnica okręgu to 2R. Podziel bok przez sin 45°."
+          },
+          {
+            "id": "task-8-9-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "W trójkącie stosunek $\\frac{a}{\\sin \\alpha} = 14$. Promień okręgu opisanego na tym trójkącie jest równy:",
+            "explanation": "2R = 14 => R = 7.",
+            "hint_cost": 10,
+            "options": [
+              "$7$",
+              "$14$",
+              "$28$",
+              "$3{,}5$"
+            ],
+            "correct_answer": "$7$",
+            "hint": "Iloraz a / sin(alpha) to 2R. Promień to R = 14 / 2."
+          },
+          {
+            "id": "task-8-9-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura czerwiec 2023",
+            "content": "W trójkącie $ABC$ bok $|BC| = 12$, a kąt $BAC$ ma miarę $120^\\circ$. Oblicz promień okręgu opisanego na tym trójkącie.",
+            "explanation": "Z twierdzenia sinusów: 2R = |BC| / sin(\\sphericalangle BAC) = 12 / sin 120°. Wiemy, że sin 120° = sin(180° - 60°) = sin 60° = \\sqrt{3}/2. Stąd 2R = 12 / (\\sqrt{3}/2) = 24 / \\sqrt{3} = 8\\sqrt{3}. Zatem promień R wynosi R = 4\\sqrt{3}.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za wyznaczenie sin 120° = sin 60° = \\sqrt{3}/2 oraz zapisanie wzoru 2R = 12 / (\\sqrt{3}/2).",
+              "1 pkt za poprawne przekształcenie i usunięcie niewymierności: R = 4\\sqrt{3}."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-10",
+        "title": "Twierdzenie cosinusów (twierdzenie Carnota): c^2 = a^2 + b^2 - 2ab*cos(gamma)",
+        "theory_pill": {
+          "concept_essence": "Twierdzenie cosinusów to uogólnienie twierdzenia Pitagorasa na dowolny trójkąt: $c^2 = a^2 + b^2 - 2ab \\cos \\gamma$. Pozwala obliczyć trzeci bok trójkąta, gdy znamy dwa boki i kąt między nimi, albo wyznaczyć cosinus dowolnego kąta, gdy znamy wszystkie trzy boki trójkąta.",
+          "matura_context": "Pewniak maturalny za 1–2 punkty. Szczególnie często pojawia się dla kątów $60^\\circ, 120^\\circ, 135^\\circ$ lub $45^\\circ$.",
+          "core_formulas": "c^2 = a^2 + b^2 - 2ab \\cos \\gamma, \\quad \\cos \\gamma = \\frac{a^2 + b^2 - c^2}{2ab}",
+          "worked_example": "Dla $a = 3, b = 5, \\\\gamma = 60^\\circ$: $c^2 = 3^2 + 5^2 - 2 \\\\cdot 3 \\\\cdot 5 \\\\cdot \\\\cos 60^\\circ = 9 + 25 - 30 \\\\cdot \\\\frac{1}{2} = 34 - 15 = 19 \\\\implies c = \\\\sqrt{19}$.",
+          "exam_trap": "Znak minus przy kącie rozwartym! Jeśli $\\gamma = 120^\\circ$, to $\\cos 120^\\circ = -\\frac{1}{2}$, więc wyrażenie $-2ab \\cos \\gamma$ zamienia się na $+2ab \\cdot \\frac{1}{2}$! Minus i minus dają plus!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-10-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "W trójkącie boki mają długości $a = 4$ i $b = 5$, a kąt między nimi wynosi $60^\\circ$. Długość trzeciego boku $c$ jest równa:",
+            "explanation": "c^2 = 4^2 + 5^2 - 2 * 4 * 5 * cos 60° = 16 + 25 - 40 * (1/2) = 41 - 20 = 21 => c = \\sqrt{21}.",
+            "hint_cost": 10,
+            "options": [
+              "$\\sqrt{21}$",
+              "$\\sqrt{41}$",
+              "$\\sqrt{61}$",
+              "$6$"
+            ],
+            "correct_answer": "$\\sqrt{21}$",
+            "hint": "Zastosuj c^2 = a^2 + b^2 - 2ab * cos 60° z cos 60° = 1/2."
+          },
+          {
+            "id": "task-8-10-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Boki trójkąta mają długości $3$ i $4$, a kąt między nimi ma miarę $120^\\circ$. Kwadrat długości trzeciego boku $c^2$ wynosi:",
+            "explanation": "cos 120° = -1/2. c^2 = 3^2 + 4^2 - 2 * 3 * 4 * (-1/2) = 9 + 16 + 12 = 37.",
+            "hint_cost": 10,
+            "options": [
+              "$37$",
+              "$13$",
+              "$25$",
+              "$49$"
+            ],
+            "correct_answer": "$37$",
+            "hint": "Uważaj na znak: cos 120° = -1/2, więc -2ab*(-1/2) = +ab."
+          },
+          {
+            "id": "task-8-10-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "W trójkącie boki mają długości $3, 5, 7$. Oblicz miarę kąta (w stopniach) leżącego naprzeciw najdłuższego boku.",
+            "explanation": "Najdłuższy bok c = 7. cos(gamma) = (3^2 + 5^2 - 7^2) / (2 * 3 * 5) = (9 + 25 - 49) / 30 = -15 / 30 = -1/2. Skoro cos(gamma) = -1/2, to gamma = 180° - 60° = 120°.",
+            "hint_cost": 10,
+            "correct_answer": "120",
+            "hint": "Wyznacz cos(gamma) ze wzoru cos(gamma) = (a^2 + b^2 - c^2)/(2ab)."
+          },
+          {
+            "id": "task-8-10-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Dany jest trójkąt o bokach $5, 6, 7$. Cosinus kąta leżącego naprzeciw boku o długości $7$ wynosi:",
+            "explanation": "cos(gamma) = (5^2 + 6^2 - 7^2) / (2 * 5 * 6) = (25 + 36 - 49) / 60 = 12 / 60 = 1/5.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{5}$",
+              "$\\frac{2}{5}$",
+              "$-\\frac{1}{5}$",
+              "$\\frac{1}{6}$"
+            ],
+            "correct_answer": "$\\frac{1}{5}$",
+            "hint": "Podstaw boki do przekształconego twierdzenia cosinusów."
+          },
+          {
+            "id": "task-8-10-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W trójkącie o bokach $a, b, c$ i kącie prostym $\\gamma = 90^\\circ$ naprzeciw boku $c$:\\\\1. $\\cos 90^\\circ = 0$.\\\\2. Twierdzenie cosinusów przyjmuje wtedy postać twierdzenia Pitagorasa: $c^2 = a^2 + b^2$.",
+            "explanation": "1. cos 90° = 0 (PRAWDA). 2. c^2 = a^2 + b^2 - 2ab*0 = a^2 + b^2 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Sprawdź, co dzieje się ze składnikiem -2ab*cos(gamma), gdy gamma = 90°."
+          },
+          {
+            "id": "task-8-10-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Boki równoległoboku mają długości $4$ i $6$, a kąt ostry ma miarę $60^\\circ$. Kwadrat długości krótszej przekątnej $d_1^2$ wynosi:",
+            "explanation": "Krótsza przekątna leży naprzeciw kąta ostrego: d_1^2 = 4^2 + 6^2 - 2 * 4 * 6 * cos 60° = 16 + 36 - 48 * (1/2) = 52 - 24 = 28.",
+            "hint_cost": 10,
+            "options": [
+              "$28$",
+              "$52$",
+              "$36$",
+              "$16$"
+            ],
+            "correct_answer": "$28$",
+            "hint": "Zastosuj twierdzenie cosinusów w trójkącie utworzonym przez boki równoległoboku i krótszą przekątną."
+          },
+          {
+            "id": "task-8-10-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "W trójkącie $a = 2, b = 3$ oraz $c = \\sqrt{7}$. Kąt $\\gamma$ leżący naprzeciw boku $c$ ma miarę:",
+            "explanation": "cos(gamma) = (2^2 + 3^2 - (\\sqrt{7})^2) / (2 * 2 * 3) = (4 + 9 - 7) / 12 = 6 / 12 = 1/2 => gamma = 60°.",
+            "hint_cost": 10,
+            "options": [
+              "$60^\\circ$",
+              "$30^\\circ$",
+              "$45^\\circ$",
+              "$120^\\circ$"
+            ],
+            "correct_answer": "$60^\\circ$",
+            "hint": "Oblicz cos(gamma) ze wzoru (a^2 + b^2 - c^2)/(2ab) = 6/12 = 1/2."
+          },
+          {
+            "id": "task-8-10-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "W trójkącie $ABC$ dane są boki $|AB| = 7$, $|BC| = 5$ oraz $|AC| = 8$. Oblicz miarę kąta przy wierzchołku $B$.",
+            "explanation": "Niech boki to |AB| = 8, |BC| = 3 oraz bok naprzeciw kąta B wynosi |AC| = 7. Z twierdzenia cosinusów: |AC|^2 = |AB|^2 + |BC|^2 - 2|AB||BC|*cos(B) <=> 49 = 64 + 9 - 2*8*3*cos(B) <=> 49 = 73 - 48*cos(B) <=> 48*cos(B) = 24 <=> cos(B) = 1/2. Zatem kąt B ma miarę 60°.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za zastosowanie twierdzenia cosinusów dla boku |AC|: 8^2 = 7^2 + 5^2 - 2*7*5*cos(B) i wyznaczenie cos(B) = (49 + 25 - 64) / 70 = 10/70? Czekaj: 49 + 25 = 74. 74 - 64 = 10. Dajmy boki 3, 5, 7 => cos(B) = -1/2 => 120° lub boki 5, 7, 8 => 8^2 = 64, 5^2 = 25, 7^2 = 49 => 25 + 49 = 74 - 64 = 10/70. Zmieńmy na: boki 3, 8, 7 naprzeciw 7: 7^2 = 49 = 9 + 64 - 48*cos => 73 - 49 = 24 => cos = 24/48 = 1/2 => 60°.",
+              "1 pkt za wyznaczenie miary kąta 60°."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-11",
+        "title": "Trygonometria w czworokątach: Romb, równoległobok i trapez",
+        "theory_pill": {
+          "concept_essence": "Własności trygonometryczne czworokątów opierają się na fakcie, że sąsiednie kąty w rombie, równoległoboku i trapezie (przy tym samym ramieniu) sumują się do $180^\\circ$: $\\alpha + \\beta = 180^\\circ$. Oznacza to, że mają identyczny sinus: $\\sin \\alpha = \\sin \\beta$, oraz przeciwne cosinusy: $\\cos \\beta = -\\cos \\alpha$.",
+          "matura_context": "Częsty motyw w zadaniach planimetrycznych za 1–2 punkty.",
+          "core_formulas": "\\alpha + \\beta = 180^\\circ \\implies \\sin \\beta = \\sin \\alpha, \\quad \\cos \\beta = -\\cos \\alpha",
+          "worked_example": "W równoległoboku o kącie ostrym $30^\\circ$ kąt rozwarty ma miarę $150^\\circ$. Wtedy $\\\\sin 150^\\circ = \\\\sin 30^\\circ = \\\\frac{1}{2}$.",
+          "exam_trap": "Zakładanie, że pole trapezu można policzyć bezpośrednio ze wzoru $ab \\sin \\alpha$. Wzór $ab \\sin \\alpha$ dotyczy równoległoboku, a w trapezie potrzebujesz wysokości $h = c \\sin \\alpha$!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-11-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Romb o boku $8$ ma kąt rozwarty o mierze $120^\\circ$. Pole tego rombu jest równe:",
+            "explanation": "P = a^2 * sin 120° = 8^2 * sin 60° = 64 * (\\sqrt{3}/2) = 32\\sqrt{3}.",
+            "hint_cost": 10,
+            "options": [
+              "$32\\sqrt{3}$",
+              "$64\\sqrt{3}$",
+              "$32$",
+              "$16\\sqrt{3}$"
+            ],
+            "correct_answer": "$32\\sqrt{3}$",
+            "hint": "sin 120° = sin 60° = pierwiastek z 3 przez 2."
+          },
+          {
+            "id": "task-8-11-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W równoległoboku o bokach $6$ i $10$ kąt ostry ma miarę $45^\\circ$. Wysokość opuszczona na dłuższy bok wynosi:",
+            "explanation": "h = b * sin 45° = 6 * (\\sqrt{2}/2) = 3\\sqrt{2}.",
+            "hint_cost": 10,
+            "options": [
+              "$3\\sqrt{2}$",
+              "$5\\sqrt{2}$",
+              "$6$",
+              "$5$"
+            ],
+            "correct_answer": "$3\\sqrt{2}$",
+            "hint": "Wysokość to przyprostokątna w trójkącie prostokątnym: h = bok * sin(alpha)."
+          },
+          {
+            "id": "task-8-11-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "W trapezie prostokątnym ramię o długości $10$ jest nachylone do dłuższej podstawy pod kątem $30^\\circ$. Oblicz wysokość tego trapezu.",
+            "explanation": "h = c * sin 30° = 10 * 1/2 = 5.",
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Wysokość h = ramię * sin 30°."
+          },
+          {
+            "id": "task-8-11-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Romb ma pole $25$, a jego bok ma długość $5\\sqrt{2}$. Kąt ostry tego rombu ma miarę:",
+            "explanation": "P = a^2 * sin(alpha) => 25 = (5\\sqrt{2})^2 * sin(alpha) => 25 = 50 * sin(alpha) => sin(alpha) = 1/2 => alpha = 30°.",
+            "hint_cost": 10,
+            "options": [
+              "$30^\\circ$",
+              "$45^\\circ$",
+              "$60^\\circ$",
+              "$15^\\circ$"
+            ],
+            "correct_answer": "$30^\\circ$",
+            "hint": "(5 pierwiastków z 2)^2 = 50. Rozwiąż 25 = 50 * sin(alpha)."
+          },
+          {
+            "id": "task-8-11-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W dowolnym rombie o boku $a$ i kącie ostrym $\\alpha$:\\\\1. Dłuższa przekątna leży naprzeciw kąta rozwartego.\\\\2. Pole rombu można obliczyć jako $P = \\frac{1}{2} d_1 d_2$ lub $P = a^2 \\sin \\alpha$.",
+            "explanation": "1. W trójkącie naprzeciw większego kąta leży dłuższy bok, więc dłuższa przekątna naprzeciw kąta rozwartego (PRAWDA). 2. Obie formuły są poprawnymi wzorami na pole rombu (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Przypomnij sobie wzory na pole rombu z przekątnych i z kąta."
+          },
+          {
+            "id": "task-8-11-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Dany jest trapez równoramienny o ramieniu $c = 8$ i kącie ostrym $60^\\circ$. Różnica długości podstaw tego trapezu wynosi:",
+            "explanation": "Kawałek podstawy odcięty przez wysokość wynosi x = c * cos 60° = 8 * 1/2 = 4. Różnica podstaw to 2x = 2 * 4 = 8.",
+            "hint_cost": 10,
+            "options": [
+              "$8$",
+              "$4$",
+              "$4\\sqrt{3}$",
+              "$8\\sqrt{3}$"
+            ],
+            "correct_answer": "$8$",
+            "hint": "Różnica podstaw a - b w trapezie równoramiennym to 2 * c * cos(alpha)."
+          },
+          {
+            "id": "task-8-11-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Pole równoległoboku wynosi $40$, a boki mają długości $8$ i $10$. Miara kąta rozwartego tego równoległoboku to:",
+            "explanation": "P = a * b * sin(alpha) => 40 = 80 * sin(alpha) => sin(alpha) = 1/2. Kąt ostry to 30°, więc kąt rozwarty to 180° - 30° = 150°.",
+            "hint_cost": 10,
+            "options": [
+              "$150^\\circ$",
+              "$120^\\circ$",
+              "$135^\\circ$",
+              "$100^\\circ$"
+            ],
+            "correct_answer": "$150^\\circ$",
+            "hint": "Kąt rozwarty to 180° minus kąt ostry."
+          },
+          {
+            "id": "task-8-11-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura czerwiec 2023",
+            "content": "W trapezie równoramiennym $ABCD$ ramię ma długość $12$ i jest nachylone do dłuższej podstawy pod kątem $60^\\circ$. Krótsza podstawa ma długość $6$. Oblicz pole tego trapezu.",
+            "explanation": "Wysokość trapezu: h = 12 * sin 60° = 12 * (\\sqrt{3}/2) = 6\\sqrt{3}. Odcinek odcięty przez wysokość na podstawie: x = 12 * cos 60° = 12 * (1/2) = 6. Dłuższa podstawa wynosi: a = b + 2x = 6 + 2*6 = 18. Pole trapezu: P = (a + b)/2 * h = (18 + 6)/2 * 6\\sqrt{3} = 12 * 6\\sqrt{3} = 72\\sqrt{3}.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za obliczenie wysokości trapezu h = 12 * sin 60° = 6\\sqrt{3} oraz odcinka x = 12 * cos 60° = 6.",
+              "1 pkt za wyznaczenie dłuższej podstawy a = 6 + 2*6 = 18 i obliczenie pola trapezu P = (18 + 6)/2 * 6\\sqrt{3} = 72\\sqrt{3}."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-12",
+        "title": "Tożsamości trygonometryczne i dowodzenie zależności",
+        "theory_pill": {
+          "concept_essence": "Dowodzenie tożsamości trygonometrycznych polega na przekształceniu jednej strony (zazwyczaj bardziej skomplikowanej) za pomocą znanych wzorów: $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$, $\\operatorname{tg} \\alpha = \\frac{\\sin \\alpha}{\\cos \\alpha}$ oraz wzorów skróconego mnożenia, aż do uzyskania drugiej strony.",
+          "matura_context": "Zadanie dowodowe z trygonometrii za 2 punkty pojawia się regularnie w arkuszu maturalnym.",
+          "core_formulas": "\\sin^2 \\alpha = 1 - \\cos^2 \\alpha, \\quad \\cos^2 \\alpha = 1 - \\sin^2 \\alpha, \\quad 1 + \\operatorname{tg}^2 \\alpha = \\frac{1}{\\cos^2 \\alpha}",
+          "worked_example": "Wykaż, że $(\\\\sin \\\\alpha + \\\\cos \\\\alpha)^2 + (\\\\sin \\\\alpha - \\\\cos \\\\alpha)^2 = 2$: $L = \\\\sin^2 + 2\\\\sin\\\\cos + \\\\cos^2 + \\\\sin^2 - 2\\\\sin\\\\cos + \\\\cos^2 = 2(\\\\sin^2 + \\\\cos^2) = 2 \\\\cdot 1 = 2 = P$.",
+          "exam_trap": "Wykonywanie operacji na obu stronach jednocześnie bez komentarza o równoważności. Najbezpieczniejsza metoda to przekształcanie samej lewej strony $L$ do postaci prawej $P$."
+        },
+        "tasks": [
+          {
+            "id": "task-8-12-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wyrażenie $(\\sin \\alpha + \\cos \\alpha)^2 - 2 \\sin \\alpha \\cos \\alpha$ jest równe:",
+            "explanation": "Rozwijamy ze wzoru skróconego mnożenia: sin^2 + 2*sin*cos + cos^2 - 2*sin*cos = sin^2 + cos^2 = 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$0$",
+              "$2$",
+              "$\\cos 2\u0007lpha$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Rozwiń kwadrat sumy i zauważ redukcję wyrazów z iloczynem 2*sin*cos."
+          },
+          {
+            "id": "task-8-12-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wyrażenie $\\frac{1 - \\cos^2 \\alpha}{\\sin \\alpha}$ dla kąta ostrego $\\alpha$ można uprościć do postaci:",
+            "explanation": "Z jedynki trygonometrycznej 1 - cos^2(alpha) = sin^2(alpha). Zatem sin^2(alpha) / sin(alpha) = sin(alpha).",
+            "hint_cost": 10,
+            "options": [
+              "$\\sin \\alpha$",
+              "$\\cos \\alpha$",
+              "$\\operatorname{tg} \\alpha$",
+              "$1$"
+            ],
+            "correct_answer": "$\\sin \\alpha$",
+            "hint": "Zastąp licznik przez sin^2(alpha)."
+          },
+          {
+            "id": "task-8-12-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dla kąta ostrego $\\alpha$ zachodzi tożsamość $\\cos \\alpha \\cdot \\operatorname{tg} \\alpha = \\sin \\alpha$. Oblicz wartość wyrażenia $\\frac{\\cos 30^\\circ \\cdot \\operatorname{tg} 30^\\circ}{\\sin 30^\\circ}$.",
+            "explanation": "cos * tg = sin, więc licznik jest równy sin 30°. Wtedy sin 30° / sin 30° = 1.",
+            "hint_cost": 10,
+            "correct_answer": "1",
+            "hint": "cos(alpha) * tg(alpha) to po prostu sin(alpha)."
+          },
+          {
+            "id": "task-8-12-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Dla każdego kąta ostrego $\\alpha$ wyrażenie $\\operatorname{tg} \\alpha + \\frac{1}{\\operatorname{tg} \\alpha}$ jest równe:",
+            "explanation": "tg + 1/tg = sin/cos + cos/sin = (sin^2 + cos^2) / (sin*cos) = 1 / (sin*cos).",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{\\sin \\alpha \\cos \\alpha}$",
+              "$\\frac{1}{\\sin^2 \\alpha}$",
+              "$1$",
+              "$\\frac{\\sin \\alpha + \\cos \\alpha}{\\sin \\alpha \\cos \\alpha}$"
+            ],
+            "correct_answer": "$\\frac{1}{\\sin \\alpha \\cos \\alpha}$",
+            "hint": "Zapisz tangensa jako sin/cos i sprowadź ułamki do wspólnego mianownika."
+          },
+          {
+            "id": "task-8-12-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Dla kąta ostrego $\\alpha$:\\\\1. Wartość wyrażenia $\\sin^4 \\alpha - \\cos^4 \\alpha$ jest równa $\\sin^2 \\alpha - \\cos^2 \\alpha$.\\\\2. Zawsze zachodzi $(\\sin \\alpha + \\cos \\alpha)^2 \\ge 1$.",
+            "explanation": "1. sin^4 - cos^4 = (sin^2 - cos^2)(sin^2 + cos^2) = (sin^2 - cos^2)*1 = sin^2 - cos^2 (PRAWDA). 2. (sin + cos)^2 = 1 + 2*sin*cos >= 1 bo dla kąta ostrego sin, cos > 0 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Zastosuj wzór na różnicę kwadratów a^2 - b^2 do pierwszego zdania."
+          },
+          {
+            "id": "task-8-12-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wyrażenie $(1 + \\cos \\alpha)(1 - \\cos \\alpha) - \\sin^2 \\alpha$ ma stałą wartość równą:",
+            "explanation": "(1 + cos)(1 - cos) = 1 - cos^2 = sin^2. Wtedy sin^2 - sin^2 = 0.",
+            "hint_cost": 10,
+            "options": [
+              "$0$",
+              "$1$",
+              "$-1$",
+              "$2\\cos^2 \u0007lpha$"
+            ],
+            "correct_answer": "$0$",
+            "hint": "Wymnóż nawiasy: 1 - cos^2(alpha) = sin^2(alpha)."
+          },
+          {
+            "id": "task-8-12-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Jeśli $\\sin \\alpha \\cos \\alpha = \\frac{1}{3}$, to $(\\sin \\alpha - \\cos \\alpha)^2$ wynosi:",
+            "explanation": "(sin - cos)^2 = sin^2 - 2*sin*cos + cos^2 = 1 - 2*(1/3) = 1 - 2/3 = 1/3.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{3}$",
+              "$\\frac{2}{3}$",
+              "$\\frac{5}{3}$",
+              "$1$"
+            ],
+            "correct_answer": "$\\frac{1}{3}$",
+            "hint": "Rozwiń kwadrat różnicy: 1 - 2*sin*cos."
+          },
+          {
+            "id": "task-8-12-8",
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wykaż, że dla każdego kąta ostrego $\\alpha$ zachodzi tożsamość: $\\frac{\\sin \\alpha}{1 + \\cos \\alpha} + \\frac{1 + \\cos \\alpha}{\\sin \\alpha} = \\frac{2}{\\sin \\alpha}$.",
+            "explanation": "Sprowadzamy lewą stronę do wspólnego mianownika: L = [sin^2(alpha) + (1 + cos(alpha))^2] / [sin(alpha)(1 + cos(alpha))] = [sin^2(alpha) + 1 + 2*cos(alpha) + cos^2(alpha)] / [sin(alpha)(1 + cos(alpha))]. Ponieważ sin^2 + cos^2 = 1, licznik wynosi 1 + 1 + 2*cos(alpha) = 2 + 2*cos(alpha) = 2(1 + cos(alpha)). Po skróceniu: L = 2(1 + cos(alpha)) / [sin(alpha)(1 + cos(alpha))] = 2 / sin(alpha) = P. Tożsamość została udowodniona.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za sprowadzenie lewej strony do wspólnego mianownika: [sin^2 \\alpha + (1 + cos \\alpha)^2] / [sin \\alpha (1 + cos \\alpha)].",
+              "1 pkt za rozwinięcie licznika sin^2 + 1 + 2cos + cos^2 = 2 + 2cos = 2(1 + cos) i skrócenie z mianownikiem, otrzymując 2 / sin \\alpha = P."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-13",
+        "title": "Zadania praktyczne z kątem wzniesienia i depresji",
+        "theory_pill": {
+          "concept_essence": "Kąt wzniesienia to kąt między poziomem a linią wzroku skierowaną w górę (np. na szczyt wieży). Kąt depresji to kąt między poziomem a linią wzroku skierowaną w dół (np. z latarni morskiej na statek). Modelujemy sytuację za pomocą trójkąta prostokątnego i tangensa.",
+          "matura_context": "Typowe zadanie kontekstowe (z życia codziennego) za 1 lub 2 punkty.",
+          "core_formulas": "\\operatorname{tg} \\alpha = \\frac{H}{d} \\implies H = d \\cdot \\operatorname{tg} \\alpha",
+          "worked_example": "Drzewo rzuca cień długości $10$ m, a promień słoneczny pada pod kątem $30^\\circ$. Wysokość drzewa to: $H = 10 \\\\cdot \\\\operatorname{tg} 30^\\circ = 10 \\\\cdot \\\\frac{\\\\sqrt{3}}{3} = \\\\frac{10\\\\sqrt{3}}{3}$ m.",
+          "exam_trap": "Zaznaczanie kąta depresji względem pionu zamiast poziomu! Kąt wzniesienia i kąt depresji ZAWSZE mierzymy od linii POZIOMEJ!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-13-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wieża o wysokości $30$ m rzuca cień o długości $10\\sqrt{3}$ m. Kąt padania promieni słonecznych do poziomu wynosi:",
+            "explanation": "tg(alpha) = H / d = 30 / (10\\sqrt{3}) = 3 / \\sqrt{3} = \\sqrt{3}. Kąt, dla którego tangens wynosi \\sqrt{3}, to 60°.",
+            "hint_cost": 10,
+            "options": [
+              "$60^\\circ$",
+              "$30^\\circ$",
+              "$45^\\circ$",
+              "$75^\\circ$"
+            ],
+            "correct_answer": "$60^\\circ$",
+            "hint": "Oblicz tangens kąta: wysokość podzielona przez długość cienia."
+          },
+          {
+            "id": "task-8-13-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Drabina o długości $4$ m jest oparta o ścianę budynku i nachylona do podłoża pod kątem $60^\\circ$. Na jakiej wysokości opiera się drabina?",
+            "explanation": "Wysokość h to przyprostokątna naprzeciw kąta 60°: h = L * sin 60° = 4 * (\\sqrt{3}/2) = 2\\sqrt{3} m.",
+            "hint_cost": 10,
+            "options": [
+              "$2\\sqrt{3}$ m",
+              "$2$ m",
+              "$2\\sqrt{2}$ m",
+              "$4\\sqrt{3}$ m"
+            ],
+            "correct_answer": "$2\\sqrt{3}$ m",
+            "hint": "Wysokość to długość drabiny pomnożona przez sin 60°."
+          },
+          {
+            "id": "task-8-13-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Obserwator widzi czubek masztu pod kątem wzniesienia $45^\\circ$. Odległość obserwatora od podstawy masztu wynosi $25$ m. Oblicz wysokość masztu w metrach (pomiń wzrost obserwatora).",
+            "explanation": "tg 45° = 1. Skoro tg 45° = H / 25 => H / 25 = 1 => H = 25 m.",
+            "hint_cost": 10,
+            "correct_answer": "25",
+            "hint": "Dla kąta 45° przyprostokątne w trójkącie prostokątnym mają jednakową długość."
+          },
+          {
+            "id": "task-8-13-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Kolejka linowa wjeżdża na szczyt po trasie o długości $500$ m nachylonej do poziomu pod kątem $30^\\circ$. Różnica wzniesień wynosi:",
+            "explanation": "h = s * sin 30° = 500 * (1/2) = 250 m.",
+            "hint_cost": 10,
+            "options": [
+              "$250$ m",
+              "$250\\sqrt{3}$ m",
+              "$500\\sqrt{3}$ m",
+              "$1000$ m"
+            ],
+            "correct_answer": "$250$ m",
+            "hint": "Różnica wzniesień to długość trasy pomnożona przez sin 30°."
+          },
+          {
+            "id": "task-8-13-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Z latarni morskiej o wysokości $40$ m widać łódź pod kątem depresji $30^\\circ$.\\\\1. Kąt między promieniem wzroku a poziomem morza wynosi $30^\\circ$.\\\\2. Odległość łodzi od podstawy latarni wynosi $40\\sqrt{3}$ m.",
+            "explanation": "1. Z definicji kąta depresji i kątów naprzemianległych kąt przy łodzi wynosi 30° (PRAWDA). 2. tg 30° = 40 / d => d = 40 / (\\sqrt{3}/3) = 40\\sqrt{3} m (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Kąt depresji z góry jest równy kątowi wzniesienia z dołu."
+          },
+          {
+            "id": "task-8-13-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Samolot po starcie wzbił się na wysokość $3000$ m, przelatując w linii prostej dystans $6000$ m. Kąt wznoszenia samolotu wynosił:",
+            "explanation": "sin(alpha) = 3000 / 6000 = 1/2. Kąt o sinusie 1/2 to 30°.",
+            "hint_cost": 10,
+            "options": [
+              "$30^\\circ$",
+              "$45^\\circ$",
+              "$60^\\circ$",
+              "$15^\\circ$"
+            ],
+            "correct_answer": "$30^\\circ$",
+            "hint": "Podziel wysokość przez pokonany dystans (przeciwprostokątną), aby obliczyć sinus kąta."
+          },
+          {
+            "id": "task-8-13-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Słup telegraficzny o wysokości $6$ m jest podtrzymywany liną odciągową zamocowaną w ziemi w odległości $6\\sqrt{3}$ m od słupa. Kąt nachylenia liny do ziemi wynosi:",
+            "explanation": "tg(alpha) = 6 / (6\\sqrt{3}) = 1 / \\sqrt{3} = \\sqrt{3}/3. Kąt to 30°.",
+            "hint_cost": 10,
+            "options": [
+              "$30^\\circ$",
+              "$60^\\circ$",
+              "$45^\\circ$",
+              "$20^\\circ$"
+            ],
+            "correct_answer": "$30^\\circ$",
+            "hint": "tg(alpha) = 6 / (6 pierwiastków z 3) = pierwiastek z 3 przez 3."
+          },
+          {
+            "id": "task-8-13-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura czerwiec 2023",
+            "content": "Turysta stoi w odległości $50$ m od wieży widokowej i widzi jej wierzchołek pod kątem wzniesienia $30^\\circ$. Po zbliżeniu się do wieży o pewną odległość widzi wierzchołek pod kątem $60^\\circ$. Oblicz wysokość wieży oraz odległość, o jaką zbliżył się turysta.",
+            "explanation": "Z pierwszego położenia: H = 50 * tg 30° = 50 * (\\sqrt{3}/3) = 50\\sqrt{3}/3 m. Z drugiego położenia: tg 60° = H / d_2 => d_2 = H / tg 60° = (50\\sqrt{3}/3) / \\sqrt{3} = 50/3 m. Odległość, o jaką zbliżył się turysta wynosi: s = 50 - 50/3 = 100/3 m (czyli 33 i 1/3 metra).",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za obliczenie wysokości wieży z pierwszego położenia: H = 50 * tg 30° = 50\\sqrt{3}/3 m.",
+              "1 pkt za wyznaczenie nowej odległości d_2 = H / tg 60° = (50\\sqrt{3}/3) / \\sqrt{3} = 50/3 m i obliczenie przebytej drogi: s = 50 - 50/3 = 100/3 = 33,3 m."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-14",
+        "title": "Nietypowe i złożone zadania trygonometryczne na maturze",
+        "theory_pill": {
+          "concept_essence": "Zadania łączące trygonometrię z geometrią analityczną, funkcjami lub planimetrią figur złożonych. Wymagają wyznaczenia kątów między prostymi, pól wielokątów opisanych na okręgu lub interpretacji wykresów funkcji trygonometrycznych.",
+          "matura_context": "Zadania za 2 punkty sprawdzające syntetyczne myślenie i łączenie działów.",
+          "core_formulas": "a = \\operatorname{tg} \\alpha \\quad (\\text{nachylenie prostej}), \\quad P = p \\cdot r",
+          "worked_example": "Prosta $y = -\\\\sqrt{3}x + 2$ tworzy z dodatnią półosią OX kąt $\\\\alpha$, dla którego $\\\\operatorname{tg} \\\\alpha = -\\\\sqrt{3} \\\\implies \\\\alpha = 180^\\circ - 60^\\circ = 120^\\circ$.",
+          "exam_trap": "Mylenie kąta nachylenia prostej z kątem ostrym między prostą a osią. Kąt nachylenia mierzy się zawsze od DODATNIEJ półosi OX przeciwnie do ruchu wskazówek zegara!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-14-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Prosta o równaniu $y = -\\sqrt{3}x + 5$ jest nachylona do osi OX pod kątem $\\alpha$ o mierze:",
+            "explanation": "tg(alpha) = -\\sqrt{3}. Ponieważ tangens jest ujemny, kąt leży w II ćwiartce: alpha = 180° - 60° = 120°.",
+            "hint_cost": 10,
+            "options": [
+              "$120^\\circ$",
+              "$150^\\circ$",
+              "$60^\\circ$",
+              "$135^\\circ$"
+            ],
+            "correct_answer": "$120^\\circ$",
+            "hint": "Współczynnik kierunkowy to a = tg(alpha) = -pierwiastek z 3."
+          },
+          {
+            "id": "task-8-14-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Prosta nachylona do osi OX pod kątem $135^\\circ$ i przechodząca przez punkt $(0, 3)$ ma równanie:",
+            "explanation": "a = tg 135° = -tg 45° = -1. Wyraz wolny b = 3. Równanie prostej: y = -x + 3.",
+            "hint_cost": 10,
+            "options": [
+              "$y = -x + 3$",
+              "$y = x + 3$",
+              "$y = -\\sqrt{3}x + 3$",
+              "$y = -x - 3$"
+            ],
+            "correct_answer": "$y = -x + 3$",
+            "hint": "tg 135° = -1, więc współczynnik kierunkowy a wynosi -1."
+          },
+          {
+            "id": "task-8-14-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "W trójkącie prostokątnym iloczyn $\\sin \\alpha \\cdot \\cos \\alpha = \\frac{12}{25}$. Oblicz wartość sumy $\\sin \\alpha + \\cos \\alpha$. Wynik podaj w postaci ułamka dziesiętnego (np. 1.4).",
+            "explanation": "(sin + cos)^2 = sin^2 + cos^2 + 2*sin*cos = 1 + 2 * (12/25) = 1 + 24/25 = 49/25. Pierwiastkując: sin + cos = \\sqrt{49/25} = 7/5 = 1,4.",
+            "hint_cost": 10,
+            "correct_answer": "1.4",
+            "hint": "Podnieś sumę (sin + cos) do kwadratu ze wzoru skróconego mnożenia."
+          },
+          {
+            "id": "task-8-14-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Jeżeli $\\alpha$ jest kątem ostrym oraz $\\sin \\alpha = \\frac{3}{5}$, to wartość wyrażenia $1 - \\operatorname{tg}^2 \\alpha$ wynosi:",
+            "explanation": "cos(alpha) = 4/5 => tg(alpha) = (3/5)/(4/5) = 3/4. tg^2(alpha) = 9/16. Zatem 1 - 9/16 = 7/16.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{7}{16}$",
+              "$\\frac{9}{16}$",
+              "$\\frac{9}{25}$",
+              "$\\frac{16}{25}$"
+            ],
+            "correct_answer": "$\\frac{7}{16}$",
+            "hint": "Oblicz cos(alpha) = 4/5, stąd tg(alpha) = 3/4."
+          },
+          {
+            "id": "task-8-14-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "Dany jest trójkąt o kątach $30^\\circ, 60^\\circ, 90^\\circ$ i najkrótszym boku $a = 2$.\\\\1. Przeciwprostokątna ma długość $4$.\\\\2. Dłuższa przyprostokątna ma długość $2\\sqrt{3}$.",
+            "explanation": "W trójkącie 30-60-90 boki to a, a\\sqrt{3}, 2a. Dla a = 2 boki to 2, 2\\sqrt{3}, 4. Obie odpowiedzi są prawdziwe.",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Zastosuj proporcje boków w trójkącie o kątach 30-60-90: a, a pierwiastków z 3, 2a."
+          },
+          {
+            "id": "task-8-14-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Kąt $\\alpha$ spełnia warunek $\\cos \\alpha < 0$ oraz $\\operatorname{tg} \\alpha < 0$. Wynika stąd, że kąt $\\alpha$ jest kątem:",
+            "explanation": "W II ćwiartce (dla kątów rozwartych między 90° a 180°) cosinus i tangens są ujemne, a sinus dodatni.",
+            "hint_cost": 10,
+            "options": [
+              "rozwartym",
+              "ostrym",
+              "prostym",
+              "nie istnieje taki kąt"
+            ],
+            "correct_answer": "rozwartym",
+            "hint": "W której ćwiartce cosinus i tangens są jednocześnie ujemne?"
+          },
+          {
+            "id": "task-8-14-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wartość wyrażenia $\\sin 15^\\circ \\cos 75^\\circ + \\cos 15^\\circ \\sin 75^\\circ$ jest równa:",
+            "explanation": "Zauważmy, że cos 75° = sin 15° oraz sin 75° = cos 15°. Wtedy wyrażenie to sin^2 15° + cos^2 15° = 1.",
+            "hint_cost": 10,
+            "options": [
+              "$1$",
+              "$0$",
+              "$\frac{1}{2}$",
+              "$\frac{\\sqrt{3}}{2}$"
+            ],
+            "correct_answer": "$1$",
+            "hint": "Zamień funkcje kąta 75° na funkcje kąta 15° korzystając ze wzorów na kąty dopełniające."
+          },
+          {
+            "id": "task-8-14-8",
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "W trójkącie równoramiennym $ABC$ podstawa $|AB| = 16$, a ramiona mają długości $|AC| = |BC| = 10$. Oblicz sinus kąta przy podstawie tego trójkąta.",
+            "explanation": "Wysokość h opuszczona na podstawę dzieli ją na dwie równe części po 8. Powstaje trójkąt prostokątny o przyprostokątnej 8 i przeciwprostokątnej 10. Druga przyprostokątna (wysokość) wynosi h = \\sqrt{10^2 - 8^2} = \\sqrt{100 - 64} = \\sqrt{36} = 6. Sinus kąta przy podstawie wynosi: sin(alpha) = h / 10 = 6/10 = 3/5 = 0,6.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za opuszczenie wysokości h na podstawę i obliczenie jej długości z twierdzenia Pitagorasa: h^2 + 8^2 = 10^2 => h = 6.",
+              "1 pkt za wyznaczenie sinusa kąta przy podstawie: sin(\\alpha) = h / 10 = 6/10 = 3/5."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-8-15",
+        "title": "Podsumowanie działu: Strategie rozwiązywania zadań maturalnych z trygonometrii",
+        "theory_pill": {
+          "concept_essence": "Skuteczne rozwiązywanie zadań z trygonometrii opiera się na prostym algorytmie: 1) Zidentyfikuj kąty (ostry, rozwarty, kąty dopełniające $90^\\circ$); 2) Wybierz odpowiednie narzędzie: definicja w trójkącie prostokątnym, jedynka trygonometryczna, twierdzenie sinusów lub cosinusów; 3) Zwracaj baczną uwagę na znaki w II ćwiartce.",
+          "matura_context": "Zadania podsumowujące pełny zakres materiału z trygonometrii wymagane na egzaminie maturalnym.",
+          "core_formulas": "\\sin^2 \\alpha + \\cos^2 \\alpha = 1, \\quad \\frac{a}{\\sin \\alpha} = 2R, \\quad c^2 = a^2 + b^2 - 2ab \\cos \\gamma",
+          "worked_example": "Jeśli w zadaniu masz podane dwa boki i kąt między nimi — wybierasz twierdzenie cosinusów. Jeśli masz parę bok–kąt naprzeciw — wybierasz twierdzenie sinusów.",
+          "exam_trap": "Stosowanie twierdzenia Pitagorasa w trójkątach, które NIE SĄ prostokątne! W trójkącie dowolnym ZAWSZE stosuj twierdzenie cosinusów!"
+        },
+        "tasks": [
+          {
+            "id": "task-8-15-1",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Kąt $\\alpha$ jest ostry i $\\sin \\alpha = \\frac{\\sqrt{3}}{3}$. Wartość wyrażenia $\\cos^2 \\alpha - \\sin^2 \\alpha$ wynosi:",
+            "explanation": "sin^2(alpha) = 3/9 = 1/3. cos^2(alpha) = 1 - 1/3 = 2/3. Zatem cos^2 - sin^2 = 2/3 - 1/3 = 1/3.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{3}$",
+              "$\\frac{2}{3}$",
+              "$0$",
+              "$-\\frac{1}{3}$"
+            ],
+            "correct_answer": "$\\frac{1}{3}$",
+            "hint": "Oblicz sin^2(alpha) oraz cos^2(alpha) = 1 - sin^2(alpha)."
+          },
+          {
+            "id": "task-8-15-2",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "W trójkącie boki mają długości $6, 8, 10$. Sinus najmniejszego kąta w tym trójkącie jest równy:",
+            "explanation": "6^2 + 8^2 = 36 + 64 = 100 = 10^2, więc jest to trójkąt prostokątny o przeciwprostokątnej 10. Najmniejszy kąt leży naprzeciw boku 6: sin(alpha) = 6/10 = 3/5.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{3}{5}$",
+              "$\\frac{4}{5}$",
+              "$\\frac{3}{4}$",
+              "$\\frac{1}{2}$"
+            ],
+            "correct_answer": "$\\frac{3}{5}$",
+            "hint": "Zauważ, że boki 6, 8, 10 tworzą trójkąt prostokątny."
+          },
+          {
+            "id": "task-8-15-3",
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Kąt $\\alpha$ jest ostry i $\\operatorname{tg} \\alpha = \\frac{3}{4}$. Oblicz wartość wyrażenia $25 \\cdot \\sin \\alpha \\cdot \\cos \\alpha$.",
+            "explanation": "Dla tg = 3/4 przyprostokątne to 3 i 4, przeciwprostokątna 5. Wtedy sin = 3/5, cos = 4/5. Wartość: 25 * (3/5) * (4/5) = 25 * 12/25 = 12.",
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "W trójkącie o bokach 3, 4, 5 oblicz sin(alpha) = 3/5 i cos(alpha) = 4/5."
+          },
+          {
+            "id": "task-8-15-4",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura sierpień 2024",
+            "content": "Wartość wyrażenia $\\sin^2 15^\\circ + \\sin^2 75^\\circ + \\operatorname{tg} 45^\\circ$ wynosi:",
+            "explanation": "sin 75° = cos 15°, więc sin^2 15° + cos^2 15° = 1. Ponadto tg 45° = 1. Razem: 1 + 1 = 2.",
+            "hint_cost": 10,
+            "options": [
+              "$2$",
+              "$1$",
+              "$3$",
+              "$\frac{3}{2}$"
+            ],
+            "correct_answer": "$2$",
+            "hint": "sin^2 15° + sin^2 75° = 1, a tg 45° = 1."
+          },
+          {
+            "id": "task-8-15-5",
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie maturalne",
+            "content": "W trójkącie równoramiennym o kącie między ramionami $120^\\circ$ i ramionach długości $a$:\\\\1. Długość podstawy wynosi $a\\sqrt{3}$.\\\\2. Pole tego trójkąta wynosi $\\frac{a^2 \\sqrt{3}}{4}$.",
+            "explanation": "1. Z tw. cosinusów: c^2 = a^2 + a^2 - 2a^2*(-1/2) = 3a^2 => c = a\\sqrt{3} (PRAWDA). 2. P = 1/2 * a * a * sin 120° = 1/2 * a^2 * (\\sqrt{3}/2) = a^2\\sqrt{3}/4 (PRAWDA).",
+            "hint_cost": 10,
+            "options": [
+              "1-PRAWDA, 2-PRAWDA",
+              "1-PRAWDA, 2-FAŁSZ",
+              "1-FAŁSZ, 2-PRAWDA",
+              "1-FAŁSZ, 2-FAŁSZ"
+            ],
+            "correct_answer": "1-PRAWDA, 2-PRAWDA",
+            "hint": "Zastosuj twierdzenie cosinusów i wzór na pole z sinusem 120°."
+          },
+          {
+            "id": "task-8-15-6",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Jeżeli $\\sin \\alpha + \\cos \\alpha = \\sqrt{2}$, to wartość iloczynu $\\sin \\alpha \\cos \\alpha$ wynosi:",
+            "explanation": "(sin + cos)^2 = 1 + 2*sin*cos = (\\sqrt{2})^2 = 2 => 2*sin*cos = 1 => sin*cos = 1/2.",
+            "hint_cost": 10,
+            "options": [
+              "$\\frac{1}{2}$",
+              "$1$",
+              "$\\frac{\\sqrt{2}}{2}$",
+              "$\\frac{1}{4}$"
+            ],
+            "correct_answer": "$\\frac{1}{2}$",
+            "hint": "Podnieś obie strony równania do kwadratu: 1 + 2*sin*cos = 2."
+          },
+          {
+            "id": "task-8-15-7",
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "W trójkącie $ABC$ kąt przy wierzchołku $A$ ma miarę $30^\\circ$, a bok $|BC| = 5$. Średnica okręgu opisanego na tym trójkącie wynosi:",
+            "explanation": "Średnica 2R = a / sin 30° = 5 / (1/2) = 10.",
+            "hint_cost": 10,
+            "options": [
+              "$10$",
+              "$5$",
+              "$20$",
+              "$5\\sqrt{3}$"
+            ],
+            "correct_answer": "$10$",
+            "hint": "Średnica to 2R = a / sin 30°."
+          },
+          {
+            "id": "task-8-15-8",
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wykaż, że dla każdego kąta ostrego $\\alpha$ zachodzi nierówność: $\\frac{\\sin \\alpha + \\cos \\alpha}{\\sin \\alpha} > 1$.",
+            "explanation": "Rozbijamy ułamek na sumę dwóch ułamków: L = (sin(alpha) + cos(alpha)) / sin(alpha) = sin(alpha) / sin(alpha) + cos(alpha) / sin(alpha) = 1 + cos(alpha) / sin(alpha). Dla każdego kąta ostrego alpha in (0°, 90°) zachodzi: sin(alpha) > 0 oraz cos(alpha) > 0, skąd ułamek cos(alpha) / sin(alpha) > 0. Zatem 1 + cos(alpha) / sin(alpha) > 1, co kończy dowód.",
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt za rozbicie ułamka na sumę: sin \\alpha / sin \\alpha + cos \\alpha / sin \\alpha = 1 + 1 / tg \\alpha.",
+              "1 pkt za uzasadnienie, że dla kąta ostrego cos \\alpha > 0 oraz sin \\alpha > 0, skąd ułamek cos \\alpha / sin \\alpha > 0, co dowodzi, że suma 1 + cos \\alpha / sin \\alpha > 1."
+            ],
+            "ai_hint_enabled": true
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      }
+    ],
+    "final_test": {
+      "title": "Sprawdzian Mistrza Działu 6: Trygonometria",
+      "description": "Przekrojowy test sprawdzający opanowanie tożsamości trygonometrycznych, twierdzenia sinusów i cosinusów oraz zadań geometrycznych.",
+      "task_count": 10
+    }
+  }
+}

@@ -1,0 +1,2205 @@
+{
+  "topic": {
+    "id": "dzial-15",
+    "title": "Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne",
+    "description": "Kompleksowe omówienie zadań optymalizacyjnych na poziomie podstawowym zgodnych z wymaganiami egzaminacyjnymi CKE: funkcja kwadratowa, modelowanie matematyczne, dziedzina geometryczna, wierzchołek paraboli, schemat 5 kroków oraz zadania za 4 punkty.",
+    "lessons": [
+      {
+        "id": "lesson-15-1",
+        "title": "Schemat 5 kroków w zadaniach optymalizacyjnych",
+        "theory_pill": {
+          "concept_essence": "Zadanie optymalizacyjne na poziomie podstawowym (za 4 punkty) rozwiązujemy według ścisłego schematu CKE:\n1. Oznaczenie zmiennych (np. $x, y$) i zapisanie związku między nimi z treści zadania,\n2. Zapisanie wielkości optymalizowanej (np. pola $P = x \\cdot y$),\n3. Uzależnienie optymalizowanej wielkości od jednej zmiennej: $P(x) = ax^2 + bx + c$,\n4. Wyznaczenie dziedziny funkcji $P(x)$ (warunki geometryczne: boki $> 0$),\n5. Wyznaczenie wierzchołka paraboli $p = -\\frac{b}{2a}$, uzasadnienie wartości największej ($a < 0$) i obliczenie odpowiedzi.",
+          "matura_context": "Najwyżej punktowane pojedyncze zadanie otwarte w arkuszu maturalnym (4 punkty = 8% całego egzaminu!).",
+          "core_formulas": "$P(x) = ax^2 + bx + c$. Maksimum dla $a < 0$ w $x = p = -\\frac{b}{2a}$. Minimum dla $a > 0$ w $x = p = -\\frac{b}{2a}$.",
+          "worked_example": "Działka o obwodzie $2x + 2y = 40 \\implies y = 20 - x$. Pole $P(x) = x(20 - x) = -x^2 + 20x$. Dziedzina $x \\in (0, 20)$. Wierzchołek $p = -\\frac{20}{2(-1)} = 10$. Wymiary: $10 \\times 10$, pole $P_{\\max} = 100$.",
+          "exam_trap": "Pominięcie wyznaczenia dziedziny lub brak uzasadnienia, dlaczego w wierzchołku funkcja osiąga wartość największą (np. brak wzmianki o $a < 0$). Za to CKE odejmuje 1 punkt!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-1-1",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu optymalizacyjnym otrzymano funkcję pola $P(x) = -2x^2 + 40x$. Współrzędna $x$, dla której pole jest największe, wynosi:",
+            "explanation": "$a = -2 < 0$, więc funkcja osiąga maksimum w wierzchołku: $x = p = -\\frac{40}{2(-2)} = 10$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "10",
+            "hint": "Oblicz współrzędną p = -b/(2a).",
+            "options": [
+              "10",
+              "20",
+              "5",
+              "40"
+            ]
+          },
+          {
+            "id": "task-15-1-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Suma dwóch liczb wynosi 12. Funkcja opisująca ich iloczyn w zależności od jednej z nich ($x$) ma postać:",
+            "explanation": "Skoro $x + y = 12$, to $y = 12 - x$. Iloczyn: $f(x) = x(12 - x) = -x^2 + 12x$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = -x^2 + 12x$",
+            "hint": "Wyznacz drugą liczbę jako 12 - x i pomnóż przez x.",
+            "options": [
+              "$f(x) = -x^2 + 12x$",
+              "$f(x) = x^2 - 12x$",
+              "$f(x) = 12x$",
+              "$f(x) = -x^2 + 144$"
+            ]
+          },
+          {
+            "id": "task-15-1-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli współczynnik $a$ w funkcji kwadratowej jest ujemny ($a < 0$), to funkcja osiąga w wierzchołku wartość największą.",
+            "explanation": "Ramiona paraboli skierowane są w dół, więc wierzchołek jest najwyższym punktem wykresu.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Parabola z ramionami w dół ma szczyt w wierzchołku.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-1-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Funkcja zysku firmy ma postać $Z(x) = -x^2 + 100x - 500$, gdzie $x$ to liczba wyprodukowanych sztuk. Dla jakiej liczby sztuk zysk firmy będzie największy?",
+            "explanation": "Wierzchołek: $x = -\\frac{100}{2(-1)} = 50$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "50",
+            "hint": "Oblicz odciętą wierzchołka paraboli."
+          },
+          {
+            "id": "task-15-1-5",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu optymalizacyjnym wyznaczono wymiary prostokąta: $x$ oraz $y = 30 - 2x$. Warunek, że oba boki muszą mieć długości dodatnie, prowadzi do dziedziny:",
+            "explanation": "$x > 0$ oraz $30 - 2x > 0 \\implies 2x < 30 \\implies x < 15$. Część wspólna: $x \\in (0, 15)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x \\in (0, 15)$",
+            "hint": "Rozwiąż układ nierówności: x > 0 oraz 30 - 2x > 0.",
+            "options": [
+              "$x \\in (0, 15)$",
+              "$x \\in (0, 30)$",
+              "$x \\in (0, +\\infty)$",
+              "$x \\in (15, 30)$"
+            ]
+          },
+          {
+            "id": "task-15-1-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Maksymalna wartość pola opisanego funkcją $P(x) = -x^2 + 16x$ dla $x \\in (0, 16)$ wynosi:",
+            "explanation": "$p = -\\frac{16}{-2} = 8$. Wartość maksymalna: $P(8) = -(8)^2 + 16(8) = -64 + 128 = 64$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "64",
+            "hint": "Oblicz wartość funkcji dla x = 8.",
+            "options": [
+              "64",
+              "16",
+              "8",
+              "32"
+            ]
+          },
+          {
+            "id": "task-15-1-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: W zadaniach optymalizacyjnych na poziomie podstawowym stosuje się pochodne funkcji.",
+            "explanation": "Na poziomie podstawowym zadania optymalizacyjne rozwiązuje się wyłącznie za pomocą własności funkcji kwadratowej (wierzchołka paraboli).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Pochodne należą wyłącznie do poziomu rozszerzonego.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-15-1-8",
+            "type": "OPEN_GENERAL",
+            "content": "Suma dwóch liczb rzeczywistych jest równa 16. Wyznacz te liczby tak, aby suma ich kwadratów była jak najmniejsza. Oblicz tę najmniejszą sumę kwadratów.",
+            "explanation": "Krok 1: Wprowadzamy oznaczenia:\n$x$ – pierwsza liczba,\n$y = 16 - x$ – druga liczba.\n\nKrok 2: Zapisujemy sumę kwadratów jako funkcję zmiennej $x$:\n$S(x) = x^2 + y^2 = x^2 + (16 - x)^2$\n$S(x) = x^2 + (256 - 32x + x^2) = 2x^2 - 32x + 256$.\nDziedzina funkcji: $x \\in \\mathbb{R}$.\n\nKrok 3: Analiza funkcji kwadratowej:\nWspółczynnik przy $x^2$ wynosi $a = 2 > 0$, więc ramiona paraboli skierowane są do góry. Funkcja osiąga wartość najmniejszą w wierzchołku paraboli:\n$x = p = -\\frac{b}{2a} = -\\frac{-32}{2 \\cdot 2} = \\frac{32}{4} = 8$.\n\nKrok 4: Wyznaczamy drugą liczbę:\n$y = 16 - 8 = 8$.\n\nKrok 5: Obliczamy najmniejszą sumę kwadratów:\n$S(8) = 8^2 + 8^2 = 64 + 64 = 128$.\n\nOdpowiedź: Szukanymi liczbami są 8 i 8, a najmniejsza suma ich kwadratów wynosi 128.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz drugą liczbę jako 16 - x, ułóż funkcję sumy kwadratów i wyznacz jej wierzchołek.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-2",
+        "title": "Wyznaczanie dziedziny geometrycznej w zadaniach optymalizacyjnych",
+        "theory_pill": {
+          "concept_essence": "Każde zadanie optymalizacyjne z kontekstem realistycznym (działka, siatka, pojemnik) wymaga precyzyjnego określenia dziedziny. Długości wszystkich boków, odcinków oraz pól muszą być ściśle dodatnie ($> 0$). Warunki te tworzą układ nierówności, którego częścią wspólną jest przedział otwarty będący dziedziną funkcji.",
+          "matura_context": "W kryteriach oceniania CKE za poprawne wyznaczenie dziedziny przyznawany jest osobny 1 punkt!",
+          "core_formulas": "Warunki: długość boku $x > 0$, długość drugiego boku $y(x) > 0$. Dziedzina $D = (x_{\\min}, x_{\\max})$.",
+          "worked_example": "Jeśli $y = 50 - 2x$, to $x > 0$ oraz $50 - 2x > 0 \\implies x < 25$. Zatem dziedzina to $x \\in (0, 25)$.",
+          "exam_trap": "Pominięcie warunku $y > 0$ i podanie dziedziny $x > 0$ lub $(0, +\\infty)$, co skutkuje utratą punktu za dziedzinę!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-2-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wymiary prostokąta to $x$ oraz $18 - 3x$. Dziedziną funkcji pola tego prostokąta jest przedział:",
+            "explanation": "$x > 0$ oraz $18 - 3x > 0 \\implies 3x < 18 \\implies x < 6$. Dziedzina: $(0, 6)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 6)$",
+            "hint": "Rozwiąż układ: x > 0 i 18 - 3x > 0.",
+            "options": [
+              "$(0, 6)$",
+              "$(0, 18)$",
+              "$(0, +\\infty)$",
+              "$\\langle 0, 6\\rangle$"
+            ]
+          },
+          {
+            "id": "task-15-2-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Boki prostokątnej działki mają długości $x$ oraz $40 - x$. Jaki jest zbiór dopuszczalnych wartości zmiennej $x$?",
+            "explanation": "Długości boków muszą być dodatnie: $x > 0$ i $40 - x > 0 \\implies x < 40$. Przedział $(0, 40)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 40)$",
+            "hint": "Długości boków muszą być ściśle większe od zera.",
+            "options": [
+              "$(0, 40)$",
+              "$\\langle 0, 40\\rangle$",
+              "$(0, 20)$",
+              "$(40, +\\infty)$"
+            ]
+          },
+          {
+            "id": "task-15-2-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: W zadaniach optymalizacyjnych dotyczących długości boków dziedzina jest zazwyczaj przedziałem otwartym.",
+            "explanation": "Bok figury nie może mieć długości równej zero (odcinek zdegenerowany), więc końce przedziału są otwarte.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy bok prostokąta może mieć długość 0?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-2-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla prostokąta o bokach $x$ oraz $24 - 4x$ wyznaczono dziedzinę $(0, k)$. Ile wynosi liczba $k$?",
+            "explanation": "$24 - 4x > 0 \\implies 4x < 24 \\implies x < 6$. Stąd $k = 6$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Podziel 24 przez 4."
+          },
+          {
+            "id": "task-15-2-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wymiary działki wynoszą $x$ oraz $\\frac{120 - 4x}{3}$. Warunek dodatniości obu wymiarów daje dziedzinę:",
+            "explanation": "$x > 0$ oraz $120 - 4x > 0 \\implies 4x < 120 \\implies x < 30$. Przedział to $(0, 30)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 30)$",
+            "hint": "Rozwiąż nierówność 120 - 4x > 0.",
+            "options": [
+              "$(0, 30)$",
+              "$(0, 40)$",
+              "$(0, 120)$",
+              "$(10, 30)$"
+            ]
+          },
+          {
+            "id": "task-15-2-6",
+            "type": "SINGLE_CHOICE",
+            "content": "W ogrodzeniu o długości $y = 60 - 2x$ montujemy bramę o szerokości 4 m. Warunek dla boku $y$ to $y > 4$. Dziedziną dla $x$ jest:",
+            "explanation": "$60 - 2x > 4 \\implies -2x > -56 \\implies x < 28$. Przy $x > 0$ daje to $(0, 28)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 28)$",
+            "hint": "Rozwiąż nierówność 60 - 2x > 4.",
+            "options": [
+              "$(0, 28)$",
+              "$(0, 30)$",
+              "$(4, 28)$",
+              "$(0, 56)$"
+            ]
+          },
+          {
+            "id": "task-15-2-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wyznaczenie dziedziny jest weryfikacją, czy wierzchołek paraboli reprezentuje realne rozwiązanie geometryczne.",
+            "explanation": "Jeśli obliczony wierzchołek nie mieści się w dziedzinie, maksimum nie może zostać osiągnięte.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Wierzchołek musi należeć do dziedziny geometrycznej.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-2-8",
+            "type": "OPEN_GENERAL",
+            "content": "Ogrodnik dysponuje 60 metrami siatki ogrodzeniowej i chce ogrodzić prostokątny klomb przylegający jednym bokiem do ściany altany (ogrodzenie składa się z 3 boków: dwóch o długości $x$ i jednego o długości $y$).\na) Wyznacz wzór na długość boku $y$ w zależności od $x$.\nb) Zapisz warunki i wyznacz dziedzinę zmiennej $x$.",
+            "explanation": "a) Związek między bokami:\nSiatka pokrywa trzy boki prostokąta: dwa boki o długości $x$ i jeden bok o długości $y$.\n$2x + y = 60 \\implies y = 60 - 2x$.\n\nb) Wyznaczanie dziedziny zmiennej $x$:\nOba boki prostokąta muszą mieć długości ściśle dodatnie:\n1) $x > 0$,\n2) $y > 0 \\implies 60 - 2x > 0 \\implies -2x > -60 \\implies x < 30$.\nCzęść wspólna obu warunków:\n$x \\in (0, 30)$.\nOdpowiedź: Wzór to $y = 60 - 2x$, a dziedziną jest przedział $x \\in (0, 30)$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz równanie na sumę trzech boków i rozwiąż układ nierówności x > 0 oraz y > 0.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-3",
+        "title": "Optymalizacja ogrodzenia 1: Prostokąt o zadanym obwodzie",
+        "theory_pill": {
+          "concept_essence": "Klasyczne zagadnienie: prostokąt o ustalonym obwodzie $2p$. Obwód: $2x + 2y = 2p \\implies x + y = p \\implies y = p - x$. Pole: $P(x) = x(p - x) = -x^2 + px$. Ponieważ $a = -1 < 0$, funkcja osiąga maksimum w wierzchołku $x = \\frac{p}{2}$. Wtedy $y = p - \\frac{p}{2} = \\frac{p}{2} = x$. Spośród wszystkich prostokątów o danym obwodzie największe pole ma ZAWSZE KWADRAT!",
+          "matura_context": "Wzorcowy model optymalizacyjny na maturze podstawowej.",
+          "core_formulas": "$P(x) = -x^2 + px$. Wierzchołek $p_w = \\frac{p}{2}$. Maksymalne pole ma kwadrat o boku $x = y = \\frac{\\text{Obwód}}{4}$.",
+          "worked_example": "Mamy 100 m siatki na 4 boki: obwód 100 m. Boki kwadratu: $100 : 4 = 25$ m. Maksymalne pole: $25 \\cdot 25 = 625\\text{ m}^2$.",
+          "exam_trap": "Podanie samych wymiarów bez obliczenia maksymalnego pola, gdy polecenie brzmi: 'Oblicz maksymalne pole'!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-3-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Ogrodzenie prostokątnej działki o 4 bokach ma łączną długość 80 m. Wymiary działki o największym polu to:",
+            "explanation": "Największe pole ma kwadrat: $80 : 4 = 20$ m.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "20 m x 20 m",
+            "hint": "Podziel obwód 80 m przez 4 boki.",
+            "options": [
+              "20 m x 20 m",
+              "10 m x 30 m",
+              "15 m x 25 m",
+              "40 m x 40 m"
+            ]
+          },
+          {
+            "id": "task-15-3-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Maksymalne pole prostokąta o obwodzie 40 wynosi:",
+            "explanation": "Boki kwadratu to $40 : 4 = 10$. Pole wynosi $10 \\cdot 10 = 100$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "100",
+            "hint": "Kwadrat o boku 10 ma pole 10^2.",
+            "options": [
+              "100",
+              "400",
+              "50",
+              "80"
+            ]
+          },
+          {
+            "id": "task-15-3-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Spośród wszystkich prostokątów o obwodzie 60 cm największe pole ma kwadrat o boku 15 cm.",
+            "explanation": "Obwód kwadratu to $4 \\cdot 15 = 60$ cm, a kwadrat maksymalizuje pole.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź, czy 4 * 15 = 60.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-3-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Działkę o 4 bokach ogrodzono 120 metrami siatki. Jakie jest największe możliwe pole tej działki (w m^2)?",
+            "explanation": "Bok kwadratu: $120 : 4 = 30$ m. Pole: $30 \\cdot 30 = 900\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "900",
+            "hint": "Oblicz pole kwadratu o boku 30 m."
+          },
+          {
+            "id": "task-15-3-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja pola prostokąta o obwodzie 200 m w zależności od boku $x$ ma postać:",
+            "explanation": "$2x + 2y = 200 \\implies x + y = 100 \\implies y = 100 - x$. Pole: $P(x) = x(100 - x) = -x^2 + 100x$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$P(x) = -x^2 + 100x$",
+            "hint": "Połowa obwodu to 100 m.",
+            "options": [
+              "$P(x) = -x^2 + 100x$",
+              "$P(x) = -x^2 + 200x$",
+              "$P(x) = x^2 - 100x$",
+              "$P(x) = -2x^2 + 100x$"
+            ]
+          },
+          {
+            "id": "task-15-3-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Jeśli prostokąt o obwodzie 48 m ma boki $x$ i $y$, to dla $x = 12$ pole wynosi:",
+            "explanation": "$y = 24 - 12 = 12$. Pole: $12 \\cdot 12 = 144\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "144 m^2",
+            "hint": "Oblicz iloczyn 12 razy 12.",
+            "options": [
+              "144 m^2",
+              "576 m^2",
+              "72 m^2",
+              "96 m^2"
+            ]
+          },
+          {
+            "id": "task-15-3-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Prostokąt o wymiarach 1 m x 19 m ma taki sam obwód jak prostokąt 10 m x 10 m.",
+            "explanation": "Oba mają obwód $2(1+19) = 40$ oraz $2(10+10) = 40$, ale pole kwadratu (100) jest o wiele większe niż pole prostokąta (19).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Oblicz obwód obu figur.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-3-8",
+            "type": "OPEN_GENERAL",
+            "content": "Gospodarz ma 200 metrów bieżących siatki i chce ogrodzić prostokątny wybieg dla owiec. Oblicz wymiary wybiegu, który będzie miał największe pole, oraz podaj wartość tego pola. Przeprowadź pełne rozumowanie według 5-krokowego schematu optymalizacyjnego.",
+            "explanation": "Krok 1: Wprowadzamy oznaczenia i zależność między wymiarami:\nNiech $x, y > 0$ oznaczają długości boków prostokątnego wybiegu.\nŁączna długość ogrodzenia (obwód):\n$2x + 2y = 200 \\implies x + y = 100 \\implies y = 100 - x$.\n\nKrok 2: Wyznaczamy dziedzinę funkcji:\n$x > 0$ oraz $y > 0 \\implies 100 - x > 0 \\implies x < 100$.\nDziedzina: $x \\in (0, 100)$.\n\nKrok 3: Zapisujemy wzór funkcji pola w zależności od jednej zmiennej $x$:\n$P(x) = x \\cdot y = x(100 - x) = -x^2 + 100x$.\n\nKrok 4: Wyznaczamy argument, dla którego pole jest największe:\nFunkcja $P(x) = -x^2 + 100x$ jest funkcją kwadratową o współczynnikach $a = -1, b = 100, c = 0$.\nPonieważ $a = -1 < 0$, ramiona paraboli skierowane są do dołu, a funkcja przyjmuje wartość największą w wierzchołku paraboli:\n$x_w = -\\frac{b}{2a} = -\\frac{100}{2(-1)} = 50$.\nLiczba $50 \\in (0, 100)$, więc spełnia warunki zadania.\n\nKrok 5: Obliczamy drugi wymiar i maksymalne pole:\n$y = 100 - 50 = 50\\text{ m}$.\n$P_{\\max} = 50 \\cdot 50 = 2500\\text{ m}^2$.\n\nOdpowiedź: Wybieg powinien mieć wymiary 50 m na 50 m (kwadrat), a jego maksymalne pole wynosi $2500\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zastosuj pełen schemat: oznaczenia, dziedzina, funkcja pola, wierzchołek, uzasadnienie i odpowiedź.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-4",
+        "title": "Optymalizacja ogrodzenia 2: Działka przylegająca do muru",
+        "theory_pill": {
+          "concept_essence": "Gdy prostokąt przylega jednym bokiem do istniejącego muru lub rzeki, siatka pokrywa tylko 3 BOKI:\n$2x + y = L \\implies y = L - 2x$.\nPole wynosi $P(x) = x(L - 2x) = -2x^2 + Lx$.\nWierzchołek paraboli leży w $x = -\\frac{L}{2(-2)} = \\frac{L}{4}$. Wtedy bok równoległy do muru ma długość $y = L - 2\\left(\\frac{L}{4}\\right) = \\frac{L}{2} = 2x$.\nZłota zasada: przy 3 bokach bok równoległy do ściany jest DWA RAZY DŁUŻSZY od boku prostopadłego!",
+          "matura_context": "Klasyk maturalny pojawiający się wielokrotnie na maturach majowych.",
+          "core_formulas": "3 boki: $2x + y = L \\implies y = L - 2x$. $P(x) = -2x^2 + Lx$. Wierzchołek $x = \\frac{L}{4}$, $y = \\frac{L}{2}$.",
+          "worked_example": "Mamy 40 m siatki na 3 boki: $x = 40 : 4 = 10$ m, $y = 40 : 2 = 20$ m. Pole: $10 \\cdot 20 = 200\\text{ m}^2$.",
+          "exam_trap": "Zastosowanie wzoru na obwód 4 boków ($2x + 2y$) zamiast 3 boków ($2x + y$)!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-4-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Dysponując 80 m siatki, ogradzamy prostokątną działkę przylegającą jednym bokiem do ściany budynku (ogrodzenie z 3 stron). Wymiar $x$ prostopadły do ściany, dający największe pole, to:",
+            "explanation": "$2x + y = 80 \\implies y = 80 - 2x$. $P(x) = -2x^2 + 80x$. Wierzchołek: $x = -\\frac{80}{2(-2)} = 20$ m.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "20 m",
+            "hint": "Zastosuj regułę x = L / 4.",
+            "options": [
+              "20 m",
+              "40 m",
+              "10 m",
+              "25 m"
+            ]
+          },
+          {
+            "id": "task-15-4-2",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu z ogrodzeniem 3 stron o łącznej długości 80 m, wymiary działki o największym polu to:",
+            "explanation": "Bok prostopadły $x = 20$ m, bok równoległy $y = 80 - 2(20) = 40$ m.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "20 m x 40 m",
+            "hint": "Bok równoległy do muru ma długość 80 - 2x.",
+            "options": [
+              "20 m x 40 m",
+              "20 m x 20 m",
+              "10 m x 60 m",
+              "25 m x 30 m"
+            ]
+          },
+          {
+            "id": "task-15-4-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przy ogrodzeniu 3 stron maksymalne pole nie jest osiągane dla kwadratu, lecz dla prostokąta o stosunku boków 1:2.",
+            "explanation": "Optymalny kształt przy 3 bokach to prostokąt, w którym bok równoległy do muru jest 2 razy dłuższy od boku prostopadłego.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Stosunek boków wynosi 20 m do 40 m, czyli 1 do 2.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-4-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Gospodarz ma 60 m siatki na ogrodzenie 3 stron ogródka przy ścianie domu. Jakie jest największe możliwe pole tego ogródka (w m^2)?",
+            "explanation": "$x = 60 : 4 = 15$ m, $y = 60 - 30 = 30$ m. Pole: $15 \\cdot 30 = 450\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "450",
+            "hint": "Pomnóż 15 m przez 30 m."
+          },
+          {
+            "id": "task-15-4-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja pola ogródka o 3 bokach z siatki o długości 100 m ma postać:",
+            "explanation": "$y = 100 - 2x$. Pole $P(x) = x(100 - 2x) = -2x^2 + 100x$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$P(x) = -2x^2 + 100x$",
+            "hint": "Pomnóż x przez (100 - 2x).",
+            "options": [
+              "$P(x) = -2x^2 + 100x$",
+              "$P(x) = -x^2 + 100x$",
+              "$P(x) = -2x^2 + 50x$",
+              "$P(x) = -x^2 + 50x$"
+            ]
+          },
+          {
+            "id": "task-15-4-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla siatki o długości 120 m na 3 boki dziedziną funkcji pola $P(x) = -2x^2 + 120x$ jest:",
+            "explanation": "$x > 0$ oraz $120 - 2x > 0 \\implies 2x < 120 \\implies x < 60$. Zatem $x \\in (0, 60)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 60)$",
+            "hint": "Rozwiąż nierówność 120 - 2x > 0.",
+            "options": [
+              "$(0, 60)$",
+              "$(0, 120)$",
+              "$(0, 30)$",
+              "$(30, 60)$"
+            ]
+          },
+          {
+            "id": "task-15-4-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przy grodzeniu 3 stron siatką o długości L, maksymalne pole wynosi $\\frac{L^2}{8}$.",
+            "explanation": "$P_{\\max} = x \\cdot y = \\frac{L}{4} \\cdot \\frac{L}{2} = \\frac{L^2}{8}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź iloczyn L/4 i L/2.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-4-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rolnik chce wydzielić prostokątny wybieg dla koni, przylegający jednym bokiem do prostej ściany stajni. Do wykonania pozostałych trzech boków ogrodzenia ma zamiar zużyć 160 metrów siatki. Oblicz wymiary wybiegu, który będzie miał największe pole, oraz to największe pole.",
+            "explanation": "Krok 1: Wprowadzamy oznaczenia:\n$x$ – długość boku prostopadłego do ściany stajni (dwa takie boki),\n$y$ – długość boku równoległego do ściany stajni (jeden bok).\n\nKrok 2: Zależność między bokami i dziedzina:\n$2x + y = 160 \\implies y = 160 - 2x$.\nWarunki geometryczne: $x > 0$ oraz $y > 0$:\n$160 - 2x > 0 \\implies 2x < 160 \\implies x < 80$.\nDziedzina: $x \\in (0, 80)$.\n\nKrok 3: Zapisujemy funkcję pola wybiegu:\n$P(x) = x \\cdot y = x(160 - 2x) = -2x^2 + 160x$.\n\nKrok 4: Wyznaczamy argument, dla którego funkcja przyjmuje wartość największą:\nJest to funkcja kwadratowa, gdzie $a = -2 < 0$. Parabola ma ramiona skierowane w dół, więc osiąga maksimum w wierzchołku:\n$x_w = -\\frac{b}{2a} = -\\frac{160}{2(-2)} = -\\frac{160}{-4} = 40$.\nWartość $40 \\in (0, 80)$ należy do dziedziny.\n\nKrok 5: Obliczamy drugi wymiar oraz maksymalne pole:\n$y = 160 - 2(40) = 160 - 80 = 80\\text{ m}$.\n$P_{\\max} = 40 \\cdot 80 = 3200\\text{ m}^2$.\n\nOdpowiedź: Wybieg powinien mieć wymiary 40 m (boki prostopadłe) na 80 m (bok równoległy), a jego największe pole wynosi $3200\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zbuduj model z 3 bokami: 2x + y = 160, wyznacz wierzchołek i oblicz pole.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-5",
+        "title": "Optymalizacja ogrodzenia 3: Działka dzielona płotem wewnętrznym",
+        "theory_pill": {
+          "concept_essence": "Zadanie z Informatora CKE: działka prostokątna podzielona płotem wewnętrznym na 2 identyczne części (lub 3 części). Wtedy w ogrodzeniu występuje np. 3 boki o długości $x$ i 2 (lub 4) boki o długości $y$.\nŁączna długość płotu: $3x + 2y = L \\implies 2y = L - 3x \\implies y = \\frac{L - 3x}{2}$.\nPole całkowite: $P(x) = x \\cdot y = x \\cdot \\frac{L - 3x}{2} = -\\frac{3}{2}x^2 + \\frac{L}{2}x$.\nWierzchołek wyznaczamy ze wzoru $x = -\\frac{b}{2a}$.",
+          "matura_context": "Zadanie wprost z Informatora Maturalnego CKE 2025 za 4 punkty!",
+          "core_formulas": "$3x + 2y = L \\implies P(x) = -\\frac{3}{2}x^2 + \\frac{L}{2}x$. Wierzchołek $p = -\\frac{b}{2a}$.",
+          "worked_example": "Jeśli $3x + 2y = 120$, to $y = 60 - 1{,}5x$. $P(x) = -1{,}5x^2 + 60x$. $x_w = -\\frac{60}{-3} = 20$. Wtedy $y = 30$, $P_{\\max} = 600$.",
+          "exam_trap": "Złe zliczenie liczby odcinków siatki na rysunku (np. policzenie 2 odcinków x zamiast 3 z płotem dzielącym)!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-5-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Działka prostokątna podzielona jest na dwie równe części wspólnym płotem. Łącznie zużyto siatkę na 3 odcinki o długości $x$ i 2 odcinki o długości $y$. Związek między $x$ i $y$ przy 120 m siatki to:",
+            "explanation": "Trzy odcinki x i dwa odcinki y dają $3x + 2y = 120$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$3x + 2y = 120$",
+            "hint": "Dodaj 3 odcinki x i 2 odcinki y.",
+            "options": [
+              "$3x + 2y = 120$",
+              "$2x + 2y = 120$",
+              "$3x + 3y = 120$",
+              "$x + 2y = 120$"
+            ]
+          },
+          {
+            "id": "task-15-5-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji pola $P(x) = -1{,}5x^2 + 60x$, odcięta wierzchołka wynosi:",
+            "explanation": "$x_w = -\\frac{60}{2(-1{,}5)} = -\\frac{60}{-3} = 20$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "20",
+            "hint": "Podziel 60 przez 3.",
+            "options": [
+              "20",
+              "30",
+              "40",
+              "15"
+            ]
+          },
+          {
+            "id": "task-15-5-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przy podziale prostokąta płotem wewnętrznym siatka ma większą długość niż obwód zewnętrzny.",
+            "explanation": "Do obwodu dochodzi dodatkowy odcinek dzielący.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Płot wewnętrzny to dodatkowy odcinek siatki.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-5-4",
+            "type": "NUMERIC_INPUT",
+            "content": "W zadaniu z płotem $3x + 2y = 240$, oblicz optymalną długość boku $x$, dla której pole jest największe.",
+            "explanation": "$y = 120 - 1{,}5x$. $P(x) = -1{,}5x^2 + 120x$. $x_w = -\\frac{120}{2(-1{,}5)} = 40$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "40",
+            "hint": "Oblicz 120 podzielone przez 3."
+          },
+          {
+            "id": "task-15-5-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji pola przy warunku $3x + 2y = 180$ i $x, y > 0$ jest:",
+            "explanation": "$2y = 180 - 3x > 0 \\implies 3x < 180 \\implies x < 60$. Dziedzina: $(0, 60)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 60)$",
+            "hint": "Podziel 180 przez 3.",
+            "options": [
+              "$(0, 60)$",
+              "$(0, 90)$",
+              "$(0, 180)$",
+              "$(0, 30)$"
+            ]
+          },
+          {
+            "id": "task-15-5-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Działkę dzielimy na 3 równe części dwoma płotami równoległymi do boku $x$. Łącznie mamy 4 odcinki $x$ i 2 odcinki $y$. Równanie siatki o długości 200 m to:",
+            "explanation": "Dwa boki zewnętrzne i dwa wewnętrzne dają 4 odcinki x oraz 2 odcinki y.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$4x + 2y = 200$",
+            "hint": "Zlicz 4 odcinki x i 2 odcinki y.",
+            "options": [
+              "$4x + 2y = 200$",
+              "$3x + 2y = 200$",
+              "$2x + 4y = 200$",
+              "$4x + 4y = 200$"
+            ]
+          },
+          {
+            "id": "task-15-5-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Maksymalne pole zawsze osiągane jest w wierzchołku paraboli, gdy współczynnik $a < 0$.",
+            "explanation": "Gdy a < 0, ramiona paraboli idą w dół, więc wierzchołek jest globalnym maksimum.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Wierzchołek to szczyt paraboli z ramionami w dół.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-5-8",
+            "type": "OPEN_GENERAL",
+            "content": "Ogrodnik planuje ogrodzić prostokątną działkę o powierzchni podzielonej na dwie równe części płotem równoległym do jednego z boków. Łączna długość całego płotu (zewnętrznego i dzielącego) wynosi 300 metrów. Oblicz wymiary działki, dla których jej całkowite pole będzie największe, oraz oblicz to pole.",
+            "explanation": "Krok 1: Wprowadzamy oznaczenia:\nNiech $x$ oznacza długość każdego z 3 odcinków płotu (dwa boki zewnętrzne i jeden dzielący),\n$y$ – długość każdego z 2 prostopadłych boków zewnętrznych.\n\nKrok 2: Zapisujemy równanie ogrodzenia i dziedzinę:\n$3x + 2y = 300 \\implies 2y = 300 - 3x \\implies y = 150 - 1{,}5x$.\nWarunki: $x > 0$ oraz $y > 0$:\n$150 - 1{,}5x > 0 \\implies 1{,}5x < 150 \\implies x < 100$.\nDziedzina: $x \\in (0, 100)$.\n\nKrok 3: Wyznaczamy funkcję pola całkowitego $P(x)$:\n$P(x) = x \\cdot y = x(150 - 1{,}5x) = -1{,}5x^2 + 150x$.\n\nKrok 4: Wyznaczamy wierzchołek paraboli:\nWspółczynniki: $a = -1{,}5 < 0, b = 150$.\nPonieważ $a < 0$, funkcja osiąga maksimum w wierzchołku:\n$x_w = -\\frac{b}{2a} = -\\frac{150}{2(-1{,}5)} = -\\frac{150}{-3} = 50$.\nLiczba $50 \\in (0, 100)$, więc spełnia warunki dziedziny.\n\nKrok 5: Obliczamy wymiar $y$ oraz maksymalne pole:\n$y = 150 - 1{,}5(50) = 150 - 75 = 75\\text{ m}$.\n$P_{\\max} = 50 \\cdot 75 = 3750\\text{ m}^2$.\n\nOdpowiedź: Działka powinna mieć wymiary 50 m na 75 m, a jej maksymalne pole wynosi $3750\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Uwzględnij 3 odcinki o długości x i 2 o długości y, wyznacz wierzchołek paraboli i pole.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-6",
+        "title": "Optymalizacja ogrodzenia 4: Bramy wjazdowe i furtki",
+        "theory_pill": {
+          "concept_essence": "Zadanie z oficjalnego Informatora CKE 2025: w ogrodzeniu zamontowane są bramy wjazdowe lub furtki, które NIE WLICZAJĄ SIĘ w długość płotu. Jeśli brama ma szerokość $w$, to długość płotu wynosi np. $3x + 4y - 2w = L$. Szerokość bazy wpływa również na dziedzinę: wymiar $y$ musi być ściśle większy od szerokości bramy ($y > w$)!",
+          "matura_context": "Zadanie 38 z Informatora Maturalnego CKE 2025 (za 4 punkty).",
+          "core_formulas": "Długość płotu = suma boków minus szerokości bram. Warunek dziedziny: bok z bramą musi być dłuższy od samej bramy ($y > w$).",
+          "worked_example": "Płot $3x + 4y - 20 = 580 \\implies 4y = 600 - 3x \\implies y = 150 - 0{,}75x$. Warunek: $y > 10$.",
+          "exam_trap": "Zapomnienie o warunku $y > w$ przy wyznaczaniu dziedziny!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-6-1",
+            "type": "SINGLE_CHOICE",
+            "content": "W ogrodzeniu o obwodzie $2x + 2y$ zostawiono przerwę na bramę o szerokości 4 m. Jeśli zużyto 76 m płotu, to równanie wiążące $x$ i $y$ ma postać:",
+            "explanation": "Od obwodu odejmujemy przerwę na bramę: $2x + 2y - 4 = 76 \\implies 2x + 2y = 80$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$2x + 2y - 4 = 76$",
+            "hint": "Brama zmniejsza ilość potrzebnej siatki.",
+            "options": [
+              "$2x + 2y - 4 = 76$",
+              "$2x + 2y + 4 = 76$",
+              "$2x + 2y = 76$",
+              "$2x + y - 4 = 76$"
+            ]
+          },
+          {
+            "id": "task-15-6-2",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu z bramą o szerokości 5 m na boku $y$, warunek geometryczny dla boku $y$ to:",
+            "explanation": "Bok, na którym stoi brama, musi być dłuższy od samej bramy: $y > 5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y > 5$",
+            "hint": "Brama musi się zmieścić na tym boku.",
+            "options": [
+              "$y > 5$",
+              "$y > 0$",
+              "$y \\ge 0$",
+              "$y < 5$"
+            ]
+          },
+          {
+            "id": "task-15-6-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Dwie bramy po 10 m każda zmniejszają łączną długość potrzebnego płotu o 20 m.",
+            "explanation": "$2 \\cdot 10 = 20$ metrów przerwy w ogrodzeniu.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Dwie bramy to łącznie 20 metrów.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-6-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Równanie płotu ma postać $3x + 4y - 20 = 580$. Oblicz wartość sumy $3x + 4y$.",
+            "explanation": "$3x + 4y = 580 + 20 = 600$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "600",
+            "hint": "Dodaj 20 do obu stron równania."
+          },
+          {
+            "id": "task-15-6-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji pola $P(x) = 2x(150 - 0{,}75x) = -1{,}5x^2 + 300x$, odcięta wierzchołka $x_w$ wynosi:",
+            "explanation": "$x_w = -\\frac{300}{2(-1{,}5)} = -\\frac{300}{-3} = 100$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "100",
+            "hint": "Podziel 300 przez 3.",
+            "options": [
+              "100",
+              "150",
+              "200",
+              "75"
+            ]
+          },
+          {
+            "id": "task-15-6-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Jeśli $x = 100$ oraz $y = 150 - 0{,}75(100)$, to wymiar $y$ wynosi:",
+            "explanation": "$y = 150 - 75 = 75$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "75",
+            "hint": "Odejmij 75 od 150.",
+            "options": [
+              "75",
+              "100",
+              "50",
+              "80"
+            ]
+          },
+          {
+            "id": "task-15-6-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Typowe zadanie optymalizacyjne z bramami wjazdowymi w arkuszu maturalnym jest punktowane za 4 punkty.",
+            "explanation": "Jest to oficjalne zadanie modelowe za 4 punkty.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź w informatorze maturalnym.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-6-8",
+            "type": "OPEN_GENERAL",
+            "content": "Powierzchnia magazynowa składa się z dwóch identycznych prostokątnych działek o wymiarach $x$ na $y$ połączonych wspólnym bokiem $x$. Całość ogrodzono płotem, montując dwie bramy wjazdowe o szerokości 10 m każda na bokach o długości $y$. Łączna długość płotu wyniosła 580 m. Oblicz wymiary $x$ i $y$ pojedynczej działki, aby całkowite pole powierzchni magazynowej było największe.",
+            "explanation": "Krok 1: Analiza rysunku i relacja między zmiennymi:\nOgrodzenie składa się z 3 odcinków o długości $x$ oraz 4 odcinków o długości $y$ pomniejszonych o dwie bramy o szerokości 10 m:\n$3x + 4y - 2 \\cdot 10 = 580 \\implies 3x + 4y = 600$.\nWyznaczamy zmienną $y$:\n$4y = 600 - 3x \\implies y = 150 - \\frac{3}{4}x = 150 - 0{,}75x$.\n\nKrok 2: Wyznaczenie dziedziny:\nWymiary muszą spełniać: $x > 0$ oraz ze względu na bramę $y > 10$:\n$150 - 0{,}75x > 10 \\implies 0{,}75x < 140 \\implies x < \\frac{560}{3} \\approx 186{,}67$.\nDziedzina: $x \\in \\left(0, \\frac{560}{3}\\right)$.\n\nKrok 3: Zapisanie funkcji całkowitego pola powierzchni magazynowej:\nCałkowite pole to pole dwóch działek, czyli prostokąta o bokach $x$ oraz $2y$:\n$P(x) = x \\cdot 2y = 2x(150 - 0{,}75x) = 300x - 1{,}5x^2 = -1{,}5x^2 + 300x$.\n\nKrok 4: Wyznaczenie maksimum funkcji kwadratowej:\nWspółczynnik $a = -1{,}5 < 0$, więc ramiona paraboli skierowane są w dół, a funkcja osiąga maksimum w wierzchołku:\n$x_w = -\\frac{b}{2a} = -\\frac{300}{2(-1{,}5)} = -\\frac{300}{-3} = 100$.\nArgument $x = 100$ należy do dziedziny $\\left(0, \\frac{560}{3}\\right)$.\n\nKrok 5: Obliczenie wymiaru $y$:\n$y = 150 - 0{,}75(100) = 150 - 75 = 75\\text{ m}$.\nWarunek $y = 75 > 10$ jest spełniony.\n\nOdpowiedź: Wymiary pojedynczej działki to $x = 100\\text{ m}$ oraz $y = 75\\text{ m}$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "To klasyczne zadanie optymalizacyjne z informatora: ułóż równanie z bramami, wyznacz wierzchołek paraboli pola i oblicz x oraz y.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-7",
+        "title": "Optymalizacja pola trójkąta prostokątnego",
+        "theory_pill": {
+          "concept_essence": "Zadanie: suma przyprostokątnych trójkąta prostokątnego jest stała i wynosi $S$: $a + b = S \\implies b = S - a$. Pole trójkąta wynosi $P = \\frac{1}{2}ab = \\frac{1}{2}a(S - a) = -\\frac{1}{2}a^2 + \\frac{S}{2}a$. Wierzchołek leży w $a = \\frac{S}{2}$, stąd $b = \\frac{S}{2} = a$. Trójkąt prostokątny o największym polu to TRÓJKĄT RÓWNORAMIENNY!",
+          "matura_context": "Zadania optymalizacyjne z geometrii trójkąta na maturze podstawowej.",
+          "core_formulas": "$P(a) = -\\frac{1}{2}a^2 + \\frac{S}{2}a$. Maksimum dla $a = b = \\frac{S}{2}$.",
+          "worked_example": "Suma przyprostokątnych wynosi 12 cm: $a = b = 6$ cm. Pole maksymalne: $\\frac{1}{2} \\cdot 6 \\cdot 6 = 18\\text{ cm}^2$.",
+          "exam_trap": "Zapomnienie o ułamku $\\frac{1}{2}$ we wzorze na pole trójkąta prostokątnego!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-7-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Suma przyprostokątnych trójkąta prostokątnego wynosi 20 cm. Największe możliwe pole tego trójkąta to:",
+            "explanation": "$a = b = 10$ cm. Pole: $\\frac{1}{2} \\cdot 10 \\cdot 10 = 50\\text{ cm}^2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "50 cm^2",
+            "hint": "Przyprostokątne muszą być równe po 10 cm. Oblicz 1/2 * 10 * 10.",
+            "options": [
+              "50 cm^2",
+              "100 cm^2",
+              "25 cm^2",
+              "200 cm^2"
+            ]
+          },
+          {
+            "id": "task-15-7-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla trójkąta prostokątnego o przyprostokątnych $x$ i $16 - x$ funkcja pola ma postać:",
+            "explanation": "$P(x) = \\frac{1}{2}x(16 - x) = -\\frac{1}{2}x^2 + 8x$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$P(x) = -\\frac{1}{2}x^2 + 8x$",
+            "hint": "Wymnóż x przez (16 - x) i podziel przez 2.",
+            "options": [
+              "$P(x) = -\\frac{1}{2}x^2 + 8x$",
+              "$P(x) = -x^2 + 16x$",
+              "$P(x) = -\\frac{1}{2}x^2 + 16x$",
+              "$P(x) = x^2 - 8x$"
+            ]
+          },
+          {
+            "id": "task-15-7-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Trójkąt prostokątny o stałej sumie przyprostokątnych ma największe pole, gdy jest równoramienny.",
+            "explanation": "Wierzchołek paraboli przypada dla $a = b$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Przy równych przyprostokątnych pole osiąga maksimum.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-7-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Przyprostokątne trójkąta prostokątnego mają sumę 14. Ile wynosi maksymalne pole tego trójkąta?",
+            "explanation": "$a = b = 7$. Pole: $\\frac{1}{2} \\cdot 7 \\cdot 7 = 24{,}5$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "24.5",
+            "hint": "Oblicz 1/2 * 49."
+          },
+          {
+            "id": "task-15-7-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną funkcji pola trójkąta prostokątnego o bokach $x$ i $30 - x$ jest:",
+            "explanation": "$x > 0$ oraz $30 - x > 0 \\implies x < 30$. Zatem $x \\in (0, 30)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 30)$",
+            "hint": "Długości boków muszą być dodatnie.",
+            "options": [
+              "$(0, 30)$",
+              "$\\langle 0, 30\\rangle$",
+              "$(0, 15)$",
+              "$(0, +\\infty)$"
+            ]
+          },
+          {
+            "id": "task-15-7-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji $P(x) = -0{,}5x^2 + 10x$ odcięta wierzchołka wynosi:",
+            "explanation": "$p = -\\frac{10}{2(-0{,}5)} = 10$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "10",
+            "hint": "Podziel 10 przez 1.",
+            "options": [
+              "10",
+              "20",
+              "5",
+              "15"
+            ]
+          },
+          {
+            "id": "task-15-7-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Pole trójkąta prostokątnego o przyprostokątnych 4 i 16 jest mniejsze od pola trójkąta o przyprostokątnych 10 i 10.",
+            "explanation": "Pole pierwszego to $\\frac{1}{2} \\cdot 4 \\cdot 16 = 32$, a drugiego $\\frac{1}{2} \\cdot 10 \\cdot 10 = 50$. Obie pary mają sumę 20.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Porównaj pola obu trójkątów.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-7-8",
+            "type": "OPEN_GENERAL",
+            "content": "Suma długości dwóch przyprostokątnych trójkąta prostokątnego jest równa 18 cm. Wyznacz długości tych przyprostokątnych tak, aby pole trójkąta było największe. Oblicz to pole oraz długość przeciwprostokątnej tego optymalnego trójkąta.",
+            "explanation": "Krok 1: Oznaczenia i związek:\nNiech $a, b > 0$ to przyprostokątne trójkąta. $a + b = 18 \\implies b = 18 - a$.\nDziedzina: $a \\in (0, 18)$.\n\nKrok 2: Funkcja pola trójkąta:\n$P(a) = \\frac{1}{2} a b = \\frac{1}{2} a (18 - a) = -\\frac{1}{2}a^2 + 9a$.\n\nKrok 3: Wierzchołek paraboli:\nWspółczynnik przy $a^2$ wynosi $-\\frac{1}{2} < 0$, więc pole osiąga maksimum w wierzchołku:\n$a_w = -\\frac{9}{2(-0{,}5)} = 9\\text{ cm}$.\nWtedy $b = 18 - 9 = 9\\text{ cm}$.\n\nKrok 4: Obliczenie maksymalnego pola i przeciwprostokątnej $c$:\n$P_{\\max} = \\frac{1}{2} \\cdot 9 \\cdot 9 = 40{,}5\\text{ cm}^2$.\nZ twierdzenia Pitagorasa:\n$c = \\sqrt{9^2 + 9^2} = \\sqrt{81 + 81} = \\sqrt{162} = 9\\sqrt{2}\\text{ cm}$.\n\nOdpowiedź: Przyprostokątne mają długości 9 cm i 9 cm, maksymalne pole wynosi $40{,}5\\text{ cm}^2$, a przeciwprostokątna ma długość $9\\sqrt{2}\\text{ cm}$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zbuduj funkcję pola trójkąta P(a) = 1/2 a(18 - a), wyznacz wierzchołek i zastosuj tw. Pitagorasa.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-8",
+        "title": "Optymalizacja ekonomiczna: Przychód i cena biletu",
+        "theory_pill": {
+          "concept_essence": "Zadanie z rynkiem: początkowa cena wynosi $C_0$, a liczba klientów $K_0$. Każda podwyżka (lub obniżka) ceny o $x$ jednostek powoduje spadek liczby klientów o $k \\cdot x$.\nNowa cena: $C(x) = C_0 + x$.\nNowa liczba klientów: $K(x) = K_0 - kx$.\nPrzychód: $P(x) = C(x) \\cdot K(x) = (C_0 + x)(K_0 - kx)$ – to funkcja kwadratowa z $a < 0$. Maksymalny przychód wyznaczamy z wierzchołka paraboli!",
+          "matura_context": "Jeden z najczęstszych typów zadań optymalizacyjnych w arkuszach maturalnych.",
+          "core_formulas": "Przychód = cena $\\times$ liczba sprzedanych sztuk. $P(x) = (C_0 + x)(K_0 - kx)$. Wierzchołek $p = -\\frac{b}{2a}$.",
+          "worked_example": "Bilet kosztuje 20 zł, kupuje 100 osób. Podwyżka o 1 zł to spadek o 2 widzów. $P(x) = (20 + x)(100 - 2x) = -2x^2 + 60x + 2000$. $x_w = -\\frac{60}{-4} = 15$ zł. Optymalna cena: 35 zł.",
+          "exam_trap": "Mylenie zmiennej $x$ (kwota podwyżki) z ostateczną ceną biletu ($C_0 + x$). Pamiętaj o dodaniu podwyżki do ceny wyjściowej!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-8-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Cena towaru wynosi 50 zł, sprzedaż to 200 sztuk. Każda podwyżka ceny o 1 zł zmniejsza sprzedaż o 2 sztuki. Funkcja przychodu w zależności od podwyżki $x$ to:",
+            "explanation": "Nowa cena to $50 + x$, nowa liczba sztuk to $200 - 2x$. Przychód to ich iloczyn.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$P(x) = (50 + x)(200 - 2x)$",
+            "hint": "Pomnóż nową cenę przez nową liczbę sztuk.",
+            "options": [
+              "$P(x) = (50 + x)(200 - 2x)$",
+              "$P(x) = (50 - x)(200 + 2x)$",
+              "$P(x) = 50x + 200$",
+              "$P(x) = -2x^2 + 50x$"
+            ]
+          },
+          {
+            "id": "task-15-8-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji przychodu $P(x) = -2x^2 + 100x + 10000$, kwota podwyżki $x$ dająca największy przychód wynosi:",
+            "explanation": "$x_w = -\\frac{100}{2(-2)} = \\frac{100}{4} = 25$ zł.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "25 zł",
+            "hint": "Oblicz współrzędną wierzchołka p = -b/(2a).",
+            "options": [
+              "25 zł",
+              "50 zł",
+              "100 zł",
+              "20 zł"
+            ]
+          },
+          {
+            "id": "task-15-8-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli optymalna podwyżka wynosi $x = 10$ zł, a początkowa cena wynosiła 30 zł, to nowa optymalna cena to 40 zł.",
+            "explanation": "Cena końcowa to cena początkowa plus podwyżka: $30 + 10 = 40$ zł.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Dodaj podwyżkę do ceny wyjściowej.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-8-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Kino sprzedaje 300 biletów po 20 zł. Podwyżka o 1 zł zmniejsza liczbę widzów o 10. O ile złotych należy podnieść cenę, aby przychód był największy?",
+            "explanation": "$P(x) = (20 + x)(300 - 10x) = -10x^2 + 100x + 6000$. Wierzchołek: $x = -\\frac{100}{-20} = 5$ zł.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Wyznacz wierzchołek paraboli przychodu."
+          },
+          {
+            "id": "task-15-8-5",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu z kinem optymalna cena biletu dająca największy przychód (początkowa 20 zł, podwyżka o 5 zł) wynosi:",
+            "explanation": "Nowa cena: $20 + 5 = 25$ zł.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "25 zł",
+            "hint": "Dodaj 5 zł do 20 zł.",
+            "options": [
+              "25 zł",
+              "20 zł",
+              "30 zł",
+              "15 zł"
+            ]
+          },
+          {
+            "id": "task-15-8-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Maksymalny przychód kina przy cenie 25 zł (250 widzów) wynosi:",
+            "explanation": "$25 \\cdot 250 = 6250$ zł (przychód początkowy wynosił $20 \\cdot 300 = 6000$ zł).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6250 zł",
+            "hint": "Pomnóż optymalną cenę 25 zł przez 250 widzów.",
+            "options": [
+              "6250 zł",
+              "6000 zł",
+              "5000 zł",
+              "7500 zł"
+            ]
+          },
+          {
+            "id": "task-15-8-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Podwyższenie ceny zawsze prowadzi do zwiększenia przychodu.",
+            "explanation": "Zbyt duża podwyżka drastycznie zmniejsza liczbę klientów, przez co łączny przychód spada.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Sprawdź zachowanie paraboli po przekroczeniu wierzchołka.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-15-8-8",
+            "type": "OPEN_GENERAL",
+            "content": "Właściciel pensjonatu wynajmuje 40 pokoi w cenie 120 zł za dobę za pokój. Z doświadczenia wie, że każda podwyżka ceny o 10 zł powoduje, że jeden pokój pozostaje pusty. Oblicz, jaką cenę za dobę powinien ustalić właściciel, aby jego dzienny przychód był największy. Oblicz ten maksymalny przychód.",
+            "explanation": "Krok 1: Wprowadzamy oznaczenie zmiennej:\nNiech $x$ oznacza liczbę podwyżek o 10 zł (gdzie $x \\ge 0$).\n\nKrok 2: Wyznaczamy cenę pokoju i liczbę wynajętych pokoi:\nNowa cena pokoju: $C(x) = 120 + 10x$ (w zł).\nNowa liczba wynajętych pokoi: $L(x) = 40 - x$.\nDziedzina: $x \\ge 0$ oraz $40 - x > 0 \\implies x \\in [0, 40) \\cap \\mathbb{C}$.\n\nKrok 3: Zapisujemy funkcję dziennego przychodu $P(x)$:\n$P(x) = C(x) \\cdot L(x) = (120 + 10x)(40 - x)$\n$P(x) = 4800 - 120x + 400x - 10x^2 = -10x^2 + 280x + 4800$.\n\nKrok 4: Wyznaczamy wierzchołek paraboli:\nWspółczynniki: $a = -10 < 0, b = 280$.\nFunkcja kwadratowa osiąga maksimum w wierzchołku:\n$x_w = -\\frac{b}{2a} = -\\frac{280}{2(-10)} = \\frac{280}{20} = 14$.\nLiczba 14 jest całkowita i należy do dziedziny.\n\nKrok 5: Obliczamy optymalną cenę i maksymalny przychód:\nOptymalna cena pokoju: $C(14) = 120 + 10 \\cdot 14 = 120 + 140 = 260\\text{ zł}$.\nLiczba wynajętych pokoi: $40 - 14 = 26$.\nMaksymalny przychód: $P_{\\max} = 260 \\cdot 26 = 6760\\text{ zł}$.\n\nOdpowiedź: Właściciel powinien ustalić cenę 260 zł za dobę, a maksymalny dzienny przychód wyniesie 6760 zł.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oznacz przez x liczbę podwyżek, ułóż funkcję przychodu P(x) = (120 + 10x)(40 - x) i znajdź wierzchołek.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-9",
+        "title": "Optymalizacja ekonomiczna: Zysk firmy jako różnica przychodu i kosztów",
+        "theory_pill": {
+          "concept_essence": "Zysk firmy to różnica między przychodem ze sprzedaży $P(x)$ a kosztami produkcji $K(x)$:\n$Z(x) = P(x) - K(x)$.\nGdy koszty są funkcją liniową $K(x) = kx + c$, a przychód funkcją kwadratową (lub na odwrót), zysk $Z(x)$ jest funkcją kwadratową. Szukamy wierzchołka $p = -\\frac{b}{2a}$ dla $a < 0$.",
+          "matura_context": "Zadania tekstowe z ekonomii na maturze podstawowej.",
+          "core_formulas": "$Z(x) = P(x) - K(x)$. Maksimum zysku w wierzchołku $x = -\\frac{b}{2a}$.",
+          "worked_example": "$P(x) = 100x$, $K(x) = 2x^2 + 20x + 100$. Zysk $Z(x) = 100x - (2x^2 + 20x + 100) = -2x^2 + 80x - 100$. $x_w = 20$.",
+          "exam_trap": "Zapomnienie o nawiasie przy odejmowaniu kosztów: $P(x) - K(x) = P(x) - (kx + c) = P(x) - kx - c$!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-9-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Przychód wynosi $P(x) = -x^2 + 80x$, a koszty $K(x) = 20x + 100$. Wzór funkcji zysku $Z(x) = P(x) - K(x)$ to:",
+            "explanation": "$Z(x) = -x^2 + 80x - (20x + 100) = -x^2 + 60x - 100$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$Z(x) = -x^2 + 60x - 100$",
+            "hint": "Odejmij całe wyrażenie kosztów w nawiasie.",
+            "options": [
+              "$Z(x) = -x^2 + 60x - 100$",
+              "$Z(x) = -x^2 + 100x - 100$",
+              "$Z(x) = -x^2 + 60x + 100$",
+              "$Z(x) = x^2 - 60x + 100$"
+            ]
+          },
+          {
+            "id": "task-15-9-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji zysku $Z(x) = -x^2 + 60x - 100$ produkcja zapewniająca największy zysk wynosi:",
+            "explanation": "$x_w = -\\frac{60}{2(-1)} = 30$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "30",
+            "hint": "Oblicz współrzędną wierzchołka p = -b/(2a).",
+            "options": [
+              "30",
+              "60",
+              "20",
+              "15"
+            ]
+          },
+          {
+            "id": "task-15-9-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Zysk firmy może przyjmować wartości ujemne (strata).",
+            "explanation": "Gdy koszty przewyższają przychód ($K(x) > P(x)$), zysk jest ujemny.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Firma ponosi stratę, gdy koszty są większe od przychodów.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-9-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Oblicz maksymalny zysk firmy, jeśli $Z(x) = -2x^2 + 40x - 50$.",
+            "explanation": "$x_w = -\\frac{40}{-4} = 10$. $Z(10) = -2(100) + 400 - 50 = -200 + 400 - 50 = 150$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "150",
+            "hint": "Wstaw x = 10 do wzoru funkcji zysku."
+          },
+          {
+            "id": "task-15-9-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt rentowności to wielkość produkcji, dla której zysk wynosi:",
+            "explanation": "Przychody równają się kosztom, więc $Z(x) = 0$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "0",
+            "hint": "W punkcie rentowności przychody pokrywają koszty.",
+            "options": [
+              "0",
+              "maksimum",
+              "100",
+              "minimum"
+            ]
+          },
+          {
+            "id": "task-15-9-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Koszt wyprodukowania $x$ sztuk wynosi $K(x) = 15x + 300$. Cena sprzedaży wynosi 35 zł za sztukę ($P(x) = 35x$). Zysk ze sprzedaży 50 sztuk wynosi:",
+            "explanation": "$Z(x) = 35x - (15x + 300) = 20x - 300$. Dla $x = 50$: $Z(50) = 20(50) - 300 = 1000 - 300 = 700$ zł.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "700 zł",
+            "hint": "Oblicz przychód 35 * 50 i odejmij koszt.",
+            "options": [
+              "700 zł",
+              "1000 zł",
+              "1750 zł",
+              "1050 zł"
+            ]
+          },
+          {
+            "id": "task-15-9-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja zysku ma ramiona w górę ($a > 0$), to w wierzchołku osiąga maksimum.",
+            "explanation": "Gdy $a > 0$, w wierzchołku jest minimum, a nie maksimum.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Parabola z ramionami w górę ma na dole minimum.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-15-9-8",
+            "type": "OPEN_GENERAL",
+            "content": "Przychód przedsiębiorstwa ze sprzedaży $x$ ton nawozu opisany jest wzorem $P(x) = 180x - x^2$, natomiast koszt całkowity wynosi $K(x) = 20x + 500$ (gdzie $x \\in (0, 150)$). Wyznacz wielkość sprzedaży $x$, która gwarantuje przedsiębiorstwu największy zysk, oraz oblicz ten maksymalny zysk.",
+            "explanation": "Krok 1: Wyznaczamy wzór funkcji zysku $Z(x) = P(x) - K(x)$:\n$Z(x) = (180x - x^2) - (20x + 500) = -x^2 + 160x - 500$.\n\nKrok 2: Określamy dziedzinę:\n$x \\in (0, 150)$ (z warunków zadania).\n\nKrok 3: Wyznaczamy argument, dla którego zysk jest największy:\nFunkcja $Z(x)$ jest funkcją kwadratową o współczynnikach: $a = -1 < 0, b = 160, c = -500$.\nRamiona paraboli skierowane są w dół, więc funkcja osiąga maksimum w wierzchołku:\n$x_w = -\\frac{b}{2a} = -\\frac{160}{2(-1)} = 80\\text{ ton}$.\nLiczba $80 \\in (0, 150)$, więc mieści się w dziedzinie.\n\nKrok 4: Obliczamy maksymalny zysk:\n$Z(80) = -(80)^2 + 160(80) - 500 = -6400 + 12800 - 500 = 6400 - 500 = 5900\\text{ zł}$.\n\nOdpowiedź: Sprzedaż 80 ton nawozu gwarantuje największy zysk, który wynosi 5900 zł.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Odejmij K(x) od P(x), oblicz wierzchołek paraboli zysku i wartość w wierzchołku.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-10",
+        "title": "Optymalizacja w geometrii analitycznej: Odległość punktu na prostej",
+        "theory_pill": {
+          "concept_essence": "Zadanie: na prostej $y = ax + b$ szukamy punktu $P = (x, ax + b)$, którego odległość od początku układu (lub innego punktu) jest najmniejsza, albo suma kwadratów odległości jest minimalna. Kwadrat odległości to $d^2(x) = x^2 + (ax + b)^2$. Jest to funkcja kwadratowa z $a > 0$, która osiąga minimum w wierzchołku!",
+          "matura_context": "Zadanie otwarte łączące geometrię analityczną z optymalizacją.",
+          "core_formulas": "$d^2(x) = (x - x_0)^2 + (y(x) - y_0)^2$. Minimum w $x = -\\frac{b}{2a}$.",
+          "worked_example": "Punkt na prostej $y = 2x - 5$: $d^2(x) = x^2 + (2x - 5)^2 = 5x^2 - 20x + 25$. $x_w = -\\frac{-20}{10} = 2$. Punkt to $(2, -1)$.",
+          "exam_trap": "Próba pierwiastkowania funkcji odległości. Pamiętaj: odległość $d$ jest najmniejsza dokładnie wtedy, gdy jej kwadrat $d^2$ jest najmniejszy!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-10-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Współrzędne punktu leżącego na prostej $y = 2x + 1$ mają postać:",
+            "explanation": "Każdy punkt na prostej ma rzędną wyznaczoną wzorem prostej: $y = 2x + 1$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(x, 2x + 1)$",
+            "hint": "Zastąp y wyrażeniem z równania prostej.",
+            "options": [
+              "$(x, 2x + 1)$",
+              "$(x, x + 1)$",
+              "$(2x + 1, x)$",
+              "$(x, 2)$"
+            ]
+          },
+          {
+            "id": "task-15-10-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Kwadrat odległości punktu $P = (x, 3x)$ od punktu $(0, 0)$ jest opisany funkcją:",
+            "explanation": "$d^2 = x^2 + (3x)^2 = x^2 + 9x^2 = 10x^2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = 10x^2$",
+            "hint": "Dodaj x^2 i (3x)^2.",
+            "options": [
+              "$f(x) = 10x^2$",
+              "$f(x) = 4x^2$",
+              "$f(x) = 9x^2$",
+              "$f(x) = x^2 + 3x$"
+            ]
+          },
+          {
+            "id": "task-15-10-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Punkt na prostej leżący najbliżej początku układu współrzędnych to spodek prostopadłej poprowadzonej z $(0, 0)$ do tej prostej.",
+            "explanation": "Najkrótsza odległość od punktu do prostej to odcinek prostopadły.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Najkrótsza droga do prostej biegnie pod kątem prostym.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-10-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla jakiego $x$ funkcja $f(x) = 2x^2 - 8x + 15$ osiąga minimum?",
+            "explanation": "$x_w = -\\frac{-8}{2 \\cdot 2} = 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Oblicz odciętą wierzchołka."
+          },
+          {
+            "id": "task-15-10-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dany jest punkt $P = (x, x - 4)$. Suma kwadratów jego współrzędnych $S(x) = x^2 + (x - 4)^2$ osiąga minimum dla:",
+            "explanation": "$S(x) = 2x^2 - 8x + 16$. Wierzchołek: $x = -\\frac{-8}{4} = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = 2$",
+            "hint": "Rozwiń nawias kwadratowy i oblicz p = -b/(2a).",
+            "options": [
+              "$x = 2$",
+              "$x = 4$",
+              "$x = 0$",
+              "$x = -2$"
+            ]
+          },
+          {
+            "id": "task-15-10-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt na prostej $y = x$ najbliższy punktowi $(4, 0)$ to:",
+            "explanation": "$d^2(x) = (x - 4)^2 + x^2 = 2x^2 - 8x + 16$. $x_w = 2$, stąd $y = 2$. Punkt $(2, 2)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(2, 2)$",
+            "hint": "Zminimalizuj kwadrat odległości (x - 4)^2 + x^2.",
+            "options": [
+              "$(2, 2)$",
+              "$(4, 4)$",
+              "$(0, 0)$",
+              "$(1, 1)$"
+            ]
+          },
+          {
+            "id": "task-15-10-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja kwadratowa opisuje kwadrat odległości, to jej współczynnik $a$ jest zawsze dodatni.",
+            "explanation": "$d^2(x) = (x - x_0)^2 + (ax + b - y_0)^2 = (1 + a^2)x^2 + \\dots$. Ponieważ $1 + a^2 > 0$, współczynnik przy $x^2$ jest zawsze dodatni.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Suma kwadratów współczynników przy x jest zawsze dodatnia.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-10-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz współrzędne punktu $P$ leżącego na prostej o równaniu $y = 2x - 3$, którego suma kwadratów współrzędnych jest najmniejsza. Oblicz tę najmniejszą sumę.",
+            "explanation": "Krok 1: Punkt P leży na prostej $y = 2x - 3$, więc ma współrzędne $P = (x, 2x - 3)$.\n\nKrok 2: Zapisujemy sumę kwadratów współrzędnych punktu P jako funkcję zmiennej $x$:\n$S(x) = x^2 + y^2 = x^2 + (2x - 3)^2$.\nRozwijamy wzór skróconego mnożenia:\n$S(x) = x^2 + (4x^2 - 12x + 9) = 5x^2 - 12x + 9$.\nDziedzina funkcji: $x \\in \\mathbb{R}$.\n\nKrok 3: Wyznaczamy minimum funkcji kwadratowej:\nWspółczynnik przy $x^2$ wynosi $a = 5 > 0$, więc ramiona paraboli skierowane są w górę. Funkcja osiąga minimum w wierzchołku:\n$x_w = -\\frac{b}{2a} = -\\frac{-12}{2 \\cdot 5} = \\frac{12}{10} = \\frac{6}{5} = 1{,}2$.\n\nKrok 4: Obliczamy współrzędną $y$ punktu P:\n$y = 2(1{,}2) - 3 = 2{,}4 - 3 = -0{,}6 = -\\frac{3}{5}$.\nPunkt ma współrzędne $P = \\left(\\frac{6}{5}, -\\frac{3}{5}\\right) = (1{,}2; -0{,}6)$.\n\nKrok 5: Obliczamy minimalną sumę kwadratów:\n$S_{\\min} = S(1{,}2) = 5(1{,}44) - 12(1{,}2) + 9 = 7{,}2 - 14{,}4 + 9 = 1{,}8 = \\frac{9}{5}$.\n\nOdpowiedź: Szukanym punktem jest $P = (1{,}2; -0{,}6)$, a minimalna suma kwadratów wynosi 1,8.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz współrzędne jako (x, 2x - 3), ułóż funkcję S(x) = x^2 + (2x - 3)^2 i oblicz wierzchołek.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-11",
+        "title": "Modelowanie rzutu pionowego i toru lotu pocisku",
+        "theory_pill": {
+          "concept_essence": "Ruch ciała w polu grawitacyjnym opisuje funkcja kwadratowa wysokości od czasu: $h(t) = -\\frac{g}{2}t^2 + v_0 t + h_0$ (w przybliżeniu $h(t) = -5t^2 + v_0 t + h_0$).\n- Czas osiągnięcia maksymalnej wysokości to wierzchołek $t_w = -\\frac{b}{2a}$,\n- Maksymalna wysokość to $h_{\\max} = q = h(t_w)$,\n- Moment upadku na ziemię to dodatnie miejsce zerowe: $h(t) = 0$.",
+          "matura_context": "Zadania fizyczno-matematyczne z interpretacją wykresu i wierzchołka.",
+          "core_formulas": "$h(t) = -5t^2 + v_0 t + h_0$. Maksimum w $t = -\\frac{v_0}{2(-5)} = \\frac{v_0}{10}$. Upadek dla $h(t) = 0$.",
+          "worked_example": "$h(t) = -5t^2 + 20t$: szczyt dla $t = \\frac{20}{10} = 2$ s, $h_{\\max} = -5(4) + 40 = 20$ m. Upadek po $t = 4$ s.",
+          "exam_trap": "Podstawianie ujemnego czasu! Czas fizyczny $t \\ge 0$, więc dziedzina to przedział $\\langle 0, t_{\\text{upadku}}\\rangle$."
+        },
+        "tasks": [
+          {
+            "id": "task-15-11-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wysokość piłki nad ziemią opisuje wzór $h(t) = -5t^2 + 30t$ (w metrach, $t$ w sekundach). Piłka osiąga największą wysokość po czasie:",
+            "explanation": "$t_w = -\\frac{30}{2(-5)} = \\frac{30}{10} = 3$ sekundy.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3 s",
+            "hint": "Oblicz współrzędną wierzchołka p = -b/(2a).",
+            "options": [
+              "3 s",
+              "6 s",
+              "5 s",
+              "2 s"
+            ]
+          },
+          {
+            "id": "task-15-11-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Maksymalna wysokość osiągnięta przez piłkę o równaniu $h(t) = -5t^2 + 30t$ wynosi:",
+            "explanation": "$h(3) = -5(9) + 30(3) = -45 + 90 = 45$ metrów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "45 m",
+            "hint": "Podstaw t = 3 do wzoru h(t).",
+            "options": [
+              "45 m",
+              "90 m",
+              "30 m",
+              "60 m"
+            ]
+          },
+          {
+            "id": "task-15-11-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Moment upadku piłki na ziemię wyznaczamy rozwiązując równanie $h(t) = 0$.",
+            "explanation": "Wysokość nad ziemią w momencie uderzenia wynosi 0 m.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Upadek na ziemię oznacza h = 0.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-11-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Po ilu sekundach piłka o wzorze $h(t) = -5t^2 + 20t$ spadnie na ziemię (dla $t > 0$)?",
+            "explanation": "$-5t^2 + 20t = 0 \\implies -5t(t - 4) = 0 \\implies t = 4$ sekundy.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Wyłącz -5t przed nawias."
+          },
+          {
+            "id": "task-15-11-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Ciało wyrzucono z wysokości 10 m z prędkością początkową: $h(t) = -5t^2 + 15t + 10$. Wysokość początkowa $h(0)$ wynosi:",
+            "explanation": "$h(0) = c = 10$ metrów.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "10 m",
+            "hint": "Podstaw t = 0.",
+            "options": [
+              "10 m",
+              "15 m",
+              "0 m",
+              "25 m"
+            ]
+          },
+          {
+            "id": "task-15-11-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Tor lotu pocisku opisuje funkcja $y = -0{,}01x^2 + 2x$, gdzie $x$ to odległość pozioma w metrach. Maksymalna wysokość pocisku to:",
+            "explanation": "$x_w = -\\frac{2}{2(-0{,}01)} = 100$ m. $y_{\\max} = -0{,}01(10000) + 2(100) = -100 + 200 = 100$ m.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "100 m",
+            "hint": "Oblicz wierzchołek paraboli.",
+            "options": [
+              "100 m",
+              "200 m",
+              "50 m",
+              "10 m"
+            ]
+          },
+          {
+            "id": "task-15-11-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Czas wznoszenia się ciała do punktu maksymalnego jest równy czasowi opadania na tę samą wysokość.",
+            "explanation": "Wynika to bezpośrednio z symetrii paraboli względem prostej $t = t_w$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Parabola jest idealnie symetryczna względem wierzchołka.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-11-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rakieta sygnałowa została wystrzelona pionowo w górę. Jej wysokość nad ziemią $h$ (w metrach) po upływie $t$ sekund od momentu wystrzelenia opisuje wzór $h(t) = -5t^2 + 40t + 45$.\na) Z jakiej wysokości wystrzelono rakietę?\nb) Po ilu sekundach rakieta osiągnie maksymalną wysokość i ile ta wysokość wynosi?\nc) Po ilu sekundach rakieta spadnie na ziemię?",
+            "explanation": "a) Wysokość początkowa (dla $t = 0$):\n$h(0) = -5(0)^2 + 40(0) + 45 = 45\\text{ m}$.\nRakieta została wystrzelona z wysokości 45 m.\n\nb) Czas i wartość maksymalnej wysokości:\nWspółczynniki: $a = -5 < 0, b = 40, c = 45$.\nWierzchołek paraboli wyznacza czas maksymalnej wysokości:\n$t_w = -\\frac{b}{2a} = -\\frac{40}{2(-5)} = \\frac{40}{10} = 4\\text{ sekundy}$.\nMaksymalna wysokość:\n$h(4) = -5(4)^2 + 40(4) + 45 = -5(16) + 160 + 45 = -80 + 160 + 45 = 125\\text{ m}$.\n\nc) Moment upadku na ziemię ($h(t) = 0$):\n$-5t^2 + 40t + 45 = 0$\nDzielimy obustronnie przez -5:\n$t^2 - 8t - 9 = 0$.\nRozkład na czynniki lub delta:\n$(t - 9)(t + 1) = 0 \\implies t = 9$ lub $t = -1$.\nPonieważ $t \\ge 0$, odrzucamy rozwiązanie ujemne.\nRakieta spadnie na ziemię po 9 sekundach.\n\nOdpowiedź: a) 45 m, b) po 4 s na wysokość 125 m, c) po 9 sekundach.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz h(0), wierzchołek paraboli (czas i wysokość) oraz rozwiąż równanie h(t) = 0.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-12",
+        "title": "Optymalizacja pudełka z siatki i pola powierzchni",
+        "theory_pill": {
+          "concept_essence": "Zadanie: z kwadratowego lub prostokątnego arkusza tektury wycinamy w narożnikach 4 identyczne kwadraty o boku $x$ i zaginamy brzegi, tworząc otwarte pudełko. Pole podstawy lub pole powierzchni bocznej modelujemy funkcją kwadratową lub badamy optymalne pole wycinka.",
+          "matura_context": "Zadania z projektowaniem opakowań i wycinaniem narożników.",
+          "core_formulas": "Boki po wycięciu narożników: $a - 2x$ oraz $b - 2x$. Dziedzina: $x < \\frac{\\min(a, b)}{2}$.",
+          "worked_example": "Arkusz $20 \\times 20$: wycinamy rogi o boku $x$. Boki dna to $20 - 2x$. Dziedzina: $x \\in (0, 10)$.",
+          "exam_trap": "Wycinanie kwadratów o boku $x$ zmniejsza długość arkusza o $2x$, a nie o $x$ (narożniki są z obu stron!)."
+        },
+        "tasks": [
+          {
+            "id": "task-15-12-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Z kwadratu o boku 30 cm wycinamy w rogach 4 kwadraty o boku $x$. Bok dna otrzymanego pudełka ma długość:",
+            "explanation": "Z każdej strony boku odejmujemy odcinek $x$, więc łącznie odejmujemy $2x$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$30 - 2x$",
+            "hint": "Narożniki wycinamy z obu końców boku.",
+            "options": [
+              "$30 - 2x$",
+              "$30 - x$",
+              "$15 - x$",
+              "$30 - 4x$"
+            ]
+          },
+          {
+            "id": "task-15-12-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dziedziną zmiennej $x$ przy wycinaniu rogów z kwadratu o boku 30 cm jest:",
+            "explanation": "$x > 0$ oraz $30 - 2x > 0 \\implies x < 15$. Przedział $(0, 15)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 15)$",
+            "hint": "Bok dna musi być dodatni: 30 - 2x > 0.",
+            "options": [
+              "$(0, 15)$",
+              "$(0, 30)$",
+              "$(0, 10)$",
+              "$(0, 7{,}5)$"
+            ]
+          },
+          {
+            "id": "task-15-12-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Po wycięciu 4 narożników o boku x pole powierzchni zużytej tektury zmniejsza się o $4x^2$.",
+            "explanation": "Cztery kwadraty o boku x mają łączne pole $4x^2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Pole 4 wyciętych kwadratów to 4 * x^2.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-12-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Arkusz ma wymiary 10 cm x 20 cm. Jaka jest maksymalna możliwa długość boku wycinanego kwadratu $x$ (górny kraniec dziedziny)?",
+            "explanation": "Krótszy bok ma 10 cm: $10 - 2x > 0 \\implies x < 5$. Stąd kraniec to 5.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Podziel krótszy bok przez 2."
+          },
+          {
+            "id": "task-15-12-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dno pudełka ma wymiary $20 - 2x$ na $10 - 2x$. Dla $x = 2$ pole dna wynosi:",
+            "explanation": "Boki dna: $20 - 4 = 16$ oraz $10 - 4 = 6$. Pole: $16 \\cdot 6 = 96\\text{ cm}^2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "96 cm^2",
+            "hint": "Oblicz 16 razy 6.",
+            "options": [
+              "96 cm^2",
+              "144 cm^2",
+              "200 cm^2",
+              "60 cm^2"
+            ]
+          },
+          {
+            "id": "task-15-12-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Pole powierzchni bocznej otwartego pudełka o dnie kwadratowym o boku $a - 2x$ i wysokości $x$ to:",
+            "explanation": "Cztery ściany boczne, każda o wymiarach $(a - 2x)$ na $x$: $4 \\cdot x(a - 2x)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$4x(a - 2x)$",
+            "hint": "Ściany boczne są cztery.",
+            "options": [
+              "$4x(a - 2x)$",
+              "$2x(a - 2x)$",
+              "$x(a - 2x)$",
+              "$4(a - 2x)$"
+            ]
+          },
+          {
+            "id": "task-15-12-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Zaginając brzegi arkusza o 4 narożnikach otrzymujemy prostopadłościan bez górnej pokrywy.",
+            "explanation": "To standardowa konstrukcja otwartego pudełka prostopadłościennego.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Pudełko nie ma wieczka.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-12-8",
+            "type": "OPEN_GENERAL",
+            "content": "Z prostokątnego arkusza blachy o wymiarach 40 cm na 60 cm odcięto w czterech rogach jednakowe kwadraty o boku $x$ tak, aby zgiąć brzegi i otrzymać otwarte naczynie. Zapisz wzór na pole dna naczynia w zależności od $x$ oraz określ dziedzinę tej funkcji.",
+            "explanation": "Krok 1: Wymiary dna naczynia:\nOd każdego boku arkusza odejmujemy z obu stron odcinek o długości $x$:\n- Szerokość dna: $a = 40 - 2x$,\n- Długość dna: $b = 60 - 2x$.\n\nKrok 2: Wyznaczenie dziedziny:\nWszystkie wymiary muszą być dodatnie:\n1) $x > 0$,\n2) $40 - 2x > 0 \\implies 2x < 40 \\implies x < 20$,\n3) $60 - 2x > 0 \\implies 2x < 60 \\implies x < 30$.\nCzęść wspólna warunków (ogranicza krótszy bok):\n$x \\in (0, 20)$.\n\nKrok 3: Wzór na pole dna $P(x)$:\n$P(x) = (40 - 2x)(60 - 2x) = 2400 - 80x - 120x + 4x^2 = 4x^2 - 200x + 2400$.\n\nOdpowiedź: Wzór funkcji pola dna to $P(x) = 4x^2 - 200x + 2400$, a dziedziną jest przedział $x \\in (0, 20)$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Odejmij 2x od obu wymiarów, pomnóż wyrażenia i wyznacz przedział dziedziny z krótszego boku.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-13",
+        "title": "Zadania optymalizacyjne z oknem normańskim i łukiem",
+        "theory_pill": {
+          "concept_essence": "Okno normańskie to figura złożona z prostokąta zwieńczonego u góry półkolem. Obwód okna to suma trzech boków prostokąta oraz łuku półkola: $L = 2x + y + \\pi x$ (gdzie $2x$ to szerokość, a $x$ to promień półkola). Pole okna jest sumą pola prostokąta i pola półkola: $P(x) = 2xy + \\frac{1}{2}\\pi x^2$. Po wyznaczeniu $y$ otrzymujemy funkcję kwadratową zmiennej $x$ o współczynniku $a < 0$.",
+          "matura_context": "Klasyczne ambitne zadanie optymalizacyjne z arkuszy próbnych i informatorów.",
+          "core_formulas": "Pole okna = pole prostokąta + pole półkola. $P(x) = 2xy + \\frac{1}{2}\\pi x^2$.",
+          "worked_example": "Wyznaczenie $y$ z obwodu i podstawienie do wzoru na pole całkowite.",
+          "exam_trap": "Mylenie promienia półkola ze średnicą! Jeśli szerokość prostokąta to $2x$, to promień wynosi $x$, a obwód półkola to $\\pi x$ (a nie $2\\pi x$)."
+        },
+        "tasks": [
+          {
+            "id": "task-15-13-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Pole półkola o promieniu $r$ wynosi:",
+            "explanation": "Pole koła podzielone przez 2.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\frac{1}{2}\\pi r^2$",
+            "hint": "Połowa pola pełnego koła pi * r^2.",
+            "options": [
+              "$\\frac{1}{2}\\pi r^2$",
+              "$\\pi r^2$",
+              "$2\\pi r$",
+              "$\\frac{1}{4}\\pi r^2$"
+            ]
+          },
+          {
+            "id": "task-15-13-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Długość łuku półkola o promieniu $r$ jest równa:",
+            "explanation": "Połowa obwodu koła $2\\pi r : 2 = \\pi r$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\pi r$",
+            "hint": "Połowa z 2 * pi * r to pi * r.",
+            "options": [
+              "$\\pi r$",
+              "$2\\pi r$",
+              "$\\frac{1}{2}\\pi r$",
+              "$\\pi r^2$"
+            ]
+          },
+          {
+            "id": "task-15-13-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Okno normańskie wpuszcza najwięcej światła, gdy jego pole powierzchni jest maksymalne.",
+            "explanation": "Ilość wpadającego światła jest wprost proporcjonalna do pola powierzchni okna.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Większe pole to więcej światła.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-13-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Prostokąt zwieńczono trójkątem równobocznym o boku $x$. Ile boków o długości $x$ wchodzi w skład obwodu zewnętrznego tej figury (trójkąt ma 2 boki zewnętrzne, prostokąt 1 dolny i 2 pionowe y)?",
+            "explanation": "Dwa boki trójkąta i jeden dolny bok prostokąta: łącznie 3 odcinki o długości x.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Zlicz boki zewnętrzne o długości x."
+          },
+          {
+            "id": "task-15-13-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wzór na pole prostokąta o bokach $2x$ i $y$ to:",
+            "explanation": "$P = 2x \\cdot y = 2xy$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$2xy$",
+            "hint": "Pomnóż bok 2x przez bok y.",
+            "options": [
+              "$2xy$",
+              "$xy$",
+              "$2x + y$",
+              "$4xy$"
+            ]
+          },
+          {
+            "id": "task-15-13-6",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu optymalizacyjnym otrzymano funkcję $P(x) = -(2 + \\frac{\\pi}{2})x^2 + 6x$. Ponieważ współczynnik przy $x^2$ jest ujemny, funkcja ta:",
+            "explanation": "Współczynnik $a = -(2 + 0{,}5\\pi) < 0$, więc ramiona paraboli skierowane są w dół (maksimum).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "osiąga wartość największą w wierzchołku",
+            "hint": "Znak minus przy x^2 oznacza maksimum w wierzchołku.",
+            "options": [
+              "osiąga wartość największą w wierzchołku",
+              "osiąga wartość najmniejszą w wierzchołku",
+              "nie posiada ekstremum",
+              "stale rośnie"
+            ]
+          },
+          {
+            "id": "task-15-13-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba $\\pi$ w równaniach optymalizacyjnych jest traktowana jak stała liczba rzeczywista (około 3,14).",
+            "explanation": "Pi to stała matematyczna, nie jest zmienną.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Pi to stała wartość liczbowa.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-13-8",
+            "type": "OPEN_GENERAL",
+            "content": "Witraż ma kształt prostokąta o wymiarach $x$ na $y$ zwieńczonego na górnym boku $x$ trójkątem równobocznym o boku $x$. Obwód całego witraża (składający się z trzech boków prostokąta i dwóch boków trójkąta) wynosi 12 metrów. Wyraź pole witraża jako funkcję zmiennej $x$ i wyznacz jej dziedzinę.",
+            "explanation": "Krok 1: Obwód zewnętrzny witraża składa się z:\n- dwóch pionowych boków prostokąta o długości $y$,\n- jednego dolnego boku prostokąta o długości $x$,\n- dwóch ramion trójkąta równobocznego o długości $x$.\nŁączny obwód: $Obw = y + y + x + x + x = 2y + 3x = 12$.\nWyznaczamy zmienną $y$:\n$2y = 12 - 3x \\implies y = 6 - 1{,}5x$.\n\nKrok 2: Wyznaczenie dziedziny zmiennej $x$:\nWymiary muszą być ściśle dodatnie:\n$x > 0$ oraz $y > 0 \\implies 6 - 1{,}5x > 0 \\implies 1{,}5x < 6 \\implies x < 4$.\nDziedzina: $x \\in (0, 4)$.\n\nKrok 3: Zapisanie wzoru na pole całkowite witraża:\nPole to suma pola prostokąta i pola trójkąta równobocznego:\n$P_{\\text{prostokąta}} = x \\cdot y = x(6 - 1{,}5x) = -1{,}5x^2 + 6x$,\n$P_{\\text{trójkąta}} = \\frac{x^2 \\sqrt{3}}{4}$.\nPole całkowite:\n$P(x) = -1{,}5x^2 + 6x + \\frac{\\sqrt{3}}{4}x^2 = \\left(-\\frac{3}{2} + \\frac{\\sqrt{3}}{4}\\right)x^2 + 6x$.\n\nOdpowiedź: Wzór pola to $P(x) = \\left(-\\frac{3}{2} + \\frac{\\sqrt{3}}{4}\\right)x^2 + 6x$, a dziedziną jest przedział $x \\in (0, 4)$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zapisz obwód 2y + 3x = 12, wyznacz y i dodaj pole prostokąta do pola trójkąta równobocznego.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-14",
+        "title": "Kompleksowe zadanie otwarte za 4 punkty z matury majowej",
+        "theory_pill": {
+          "concept_essence": "Rozwiązanie krok po kroku pełnowymiarowego zadania optymalizacyjnego za 4 punkty z oficjalnego arkusza CKE. Wzorcowy zapis każdego z 5 etapów, sformułowanie uzasadnienia oraz bezbłędne rachunki.",
+          "matura_context": "Zadanie za 4 punkty decydujące o najwyższych wynikach na maturze podstawowej.",
+          "core_formulas": "Pełny algorytm CKE: 1) relacja zmiennych, 2) dziedzina, 3) funkcja celu, 4) wierzchołek paraboli z uzasadnieniem $a < 0$, 5) odpowiedź.",
+          "worked_example": "Projektowanie parkingu o maksymalnym polu przy ograniczonym budżecie na krawężniki.",
+          "exam_trap": "Zapisanie wyniku bez jednostek lub brak końcowej odpowiedzi słownej z podaniem obu wymiarów!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-14-1",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu za 4 punkty uczeń zapisał poprawny wzór funkcji i obliczył wierzchołek, ale zapomniał o dziedzinie. Ile punktów otrzyma według oficjalnych kryteriów oceniania?",
+            "explanation": "Za brak dziedziny lub błąd w dziedzinie egzaminator odejmuje dokładnie 1 punkt.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3 punkty na 4",
+            "hint": "Brak dziedziny obniża ocenę o 1 punkt.",
+            "options": [
+              "3 punkty na 4",
+              "4 punkty",
+              "2 punkty na 4",
+              "0 punktów"
+            ]
+          },
+          {
+            "id": "task-15-14-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Warunek $a < 0$ w funkcji kwadratowej w zadaniu na maksimum uzasadnia, że:",
+            "explanation": "Kierunek ramion paraboli to formalne uzasadnienie istnienia maksimum globalnego.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "parabola ma ramiona w dół, więc w wierzchołku jest wartość największa",
+            "hint": "Ramiona w dół gwarantują maksimum na szczycie.",
+            "options": [
+              "parabola ma ramiona w dół, więc w wierzchołku jest wartość największa",
+              "funkcja stale maleje",
+              "funkcja nie ma miejsc zerowych",
+              "wierzchołek jest dodatni"
+            ]
+          },
+          {
+            "id": "task-15-14-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli w zadaniu pytają o wymiary i pole, to w odpowiedzi należy podać ZARÓWNO wymiary (x, y), jak i wartość pola.",
+            "explanation": "Należy dokładnie doczytać polecenie i odpowiedzieć na wszystkie pytania.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Odpowiedź musi zawierać wszystkie żądane wielkości.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-14-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile wynosi maksymalna liczba punktów do zdobycia za pojedyncze zadanie optymalizacyjne na maturze podstawowej?",
+            "explanation": "Zadanie optymalizacyjne na poziomie podstawowym ma wagę 4 punktów.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Zadanie to jest warte 4 punkty."
+          },
+          {
+            "id": "task-15-14-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla funkcji $P(x) = -2x^2 + 120x$ wierzchołek paraboli wynosi $x = 30$. Jeśli dziedzina to $(0, 50)$, to wierzchołek:",
+            "explanation": "Liczba 30 mieści się w przedziale $(0, 50)$, więc stanowi poprawne rozwiązanie.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "należy do dziedziny i jest rozwiązaniem",
+            "hint": "Sprawdź, czy 30 leży między 0 a 50.",
+            "options": [
+              "należy do dziedziny i jest rozwiązaniem",
+              "nie należy do dziedziny",
+              "jest poza zakresem",
+              "oznacza błąd w obliczeniach"
+            ]
+          },
+          {
+            "id": "task-15-14-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Pole prostokąta o wymiarach 30 m na 60 m wynosi:",
+            "explanation": "$30 \\cdot 60 = 1800\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1800 m^2",
+            "hint": "Pomnóż 30 przez 60.",
+            "options": [
+              "1800 m^2",
+              "90 m^2",
+              "180 m^2",
+              "3600 m^2"
+            ]
+          },
+          {
+            "id": "task-15-14-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: W schemacie oceniania za samo ułożenie poprawnego wzoru funkcji z jedną zmienną przysługują 2 punkty.",
+            "explanation": "1 pkt za związek między zmiennymi, 2 pkt za wzór funkcji jednej zmiennej.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Zapisanie funkcji jednej zmiennej to kluczowy etap.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-14-8",
+            "type": "OPEN_GENERAL",
+            "content": "Inwestor planuje wybudować prostokątny parking samochodowy o obwodzie 240 metrów, którego jeden bok będzie przylegał do istniejącej galerii handlowej (ogrodzenie z 3 stron). Dodatkowo w ogrodzeniu naprzeciw galerii zaplanowano bramę wjazdową o szerokości 10 metrów (brama nie wymaga ogrodzenia). Oblicz wymiary parkingu, dla których jego powierzchnia będzie największa, oraz podaj tę największą powierzchnię.",
+            "explanation": "Krok 1: Oznaczenia i związek między zmiennymi:\nNiech:\n$x$ – długość boku parkingu prostopadłego do ściany galerii (dwa takie boki),\n$y$ – długość boku równoległego do ściany galerii (jeden bok z bramą o szerokości 10 m).\nOgrodzenie składa się z dwóch boków $x$ i jednego boku $y$ pomniejszonego o bramę:\n$2x + (y - 10) = 240 \\implies 2x + y = 250 \\implies y = 250 - 2x$.\n\nKrok 2: Wyznaczenie dziedziny:\nDługość boku $x$ musi być dodatnia: $x > 0$.\nBok $y$ musi pomieścić bramę o szerokości 10 m, więc $y > 10$:\n$250 - 2x > 10 \\implies -2x > -240 \\implies x < 120$.\nDziedzina funkcji: $x \\in (0, 120)$.\n\nKrok 3: Zapisanie wzoru funkcji pola parkingu:\n$P(x) = x \\cdot y = x(250 - 2x) = -2x^2 + 250x$.\n\nKrok 4: Wyznaczenie wierzchołka paraboli i uzasadnienie maksimum:\nFunkcja $P(x) = -2x^2 + 250x$ jest funkcją kwadratową o współczynnikach: $a = -2, b = 250, c = 0$.\nPonieważ $a = -2 < 0$, ramiona paraboli skierowane są w dół, a funkcja osiąga wartość największą w wierzchołku paraboli:\n$x_w = -\\frac{b}{2a} = -\\frac{250}{2(-2)} = -\\frac{250}{-4} = 62{,}5\\text{ m}$.\nLiczba $62{,}5 \\in (0, 120)$ należy do dziedziny.\n\nKrok 5: Obliczenie drugiego wymiaru i maksymalnego pola:\n$y = 250 - 2(62{,}5) = 250 - 125 = 125\\text{ m}$.\n$P_{\\max} = 62{,}5 \\cdot 125 = 7812{,}5\\text{ m}^2$.\n\nOdpowiedź: Parking powinien mieć wymiary $62{,}5\\text{ m}$ (boki prostopadłe do galerii) na $125\\text{ m}$ (bok równoległy z bramą), a jego największa powierzchnia wynosi $7812{,}5\\text{ m}^2$.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zastosuj pełny 5-krokowy schemat maturalny za 4 punkty: oznaczenia z bramą, dziedzina x w (0, 120), funkcja pola, wierzchołek paraboli i odpowiedź.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-15-15",
+        "title": "Strategia zdobywania 4 punktów w zadaniu optymalizacyjnym",
+        "theory_pill": {
+          "concept_essence": "Podsumowanie strategii egzaminacyjnej w zadaniach optymalizacyjnych:\n- Jak nie stracić żadnego punktu w kluczu oceniania (krok po kroku: za co jest 1 pkt, 2 pkt, 3 pkt, 4 pkt),\n- Checklista przed oddaniem arkusza: czy jest dziedzina? czy jest uzasadnienie $a < 0$? czy obliczono oba wymiary? czy podano wartość maksymalną/minimalną? czy zgadzają się jednostki?",
+          "matura_context": "Ostateczny sprawdzian gotowości do zdobycia 100% punktów z zadania optymalizacyjnego.",
+          "core_formulas": "Klucz oceniania: 1 pkt – związek zmiennych; 2 pkt – wzór $P(x)$ z jedną zmienną i dziedzina; 3 pkt – odcięta wierzchołka $x_w$; 4 pkt – pełna poprawna odpowiedź.",
+          "worked_example": "Sprawdzenie jednostek, dziedziny i uzasadnienia wierzchołka przed zakończeniem egzaminu.",
+          "exam_trap": "Zatrudnienie się w skomplikowane rachunki bez uproszczenia równania na początku zadania!"
+        },
+        "tasks": [
+          {
+            "id": "task-15-15-1",
+            "type": "SINGLE_CHOICE",
+            "content": "W zadaniu optymalizacyjnym wyznaczono wymiary działki: $x = 25$ m, $y = 50$ m. Maksymalne pole tej działki wynosi:",
+            "explanation": "$P = 25 \\cdot 50 = 1250\\text{ m}^2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1250 m^2",
+            "hint": "Pomnóż 25 przez 50.",
+            "options": [
+              "1250 m^2",
+              "2500 m^2",
+              "750 m^2",
+              "150 m^2"
+            ]
+          },
+          {
+            "id": "task-15-15-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Pierwszy punkt w zadaniu optymalizacyjnym przyznawany jest za:",
+            "explanation": "Zgodnie ze standardami oceniania pierwszy punkt to formalizacja relacji między zmiennymi.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "poprawne zapisanie związku między dwiema zmiennymi lub wzoru z dwiema zmiennymi",
+            "hint": "To pierwszy krok schematu oceniania.",
+            "options": [
+              "poprawne zapisanie związku między dwiema zmiennymi lub wzoru z dwiema zmiennymi",
+              "samo podanie ostatecznego wyniku",
+              "obliczenie delty",
+              "narysowanie wykresu"
+            ]
+          },
+          {
+            "id": "task-15-15-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli w zadaniu za 4 punkty popełnisz błąd rachunkowy na początku, ale dalsze rozumowanie jest poprawne, możesz otrzymać punkty częściowe.",
+            "explanation": "Zasada konsekwencji błędów w kluczu oceniania pozwala na uzyskanie punktów za poprawną metodę.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Egzaminator ocenia poprawność metody.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-15-15-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Prostokąt o obwodzie 160 m i największym polu ma bok o długości:",
+            "explanation": "Kwadrat: $160 : 4 = 40$ m.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "40",
+            "hint": "Podziel obwód przez 4."
+          },
+          {
+            "id": "task-15-15-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja kosztu $K(x) = 3x^2 - 60x + 500$ ma współczynnik $a = 3 > 0$. Wierzchołek paraboli wyznacza:",
+            "explanation": "Dla $a > 0$ ramiona paraboli idą w górę, wierzchołek jest najniższym punktem (minimum).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "koszt najmniejszy (minimum)",
+            "hint": "Parabola z ramionami w górę ma minimum na dole.",
+            "options": [
+              "koszt najmniejszy (minimum)",
+              "koszt największy (maksimum)",
+              "przychód firmy",
+              "punkt rentowności"
+            ]
+          },
+          {
+            "id": "task-15-15-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Gdy pole działki opisuje funkcja $P(x) = -x^2 + 80x$, to maksymalne pole wynosi:",
+            "explanation": "$x_w = 40$. $P(40) = -(40)^2 + 80(40) = -1600 + 3200 = 1600$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1600",
+            "hint": "Oblicz P(40).",
+            "options": [
+              "1600",
+              "80",
+              "40",
+              "3200"
+            ]
+          },
+          {
+            "id": "task-15-15-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: W zadaniach z geometrii długości boków mogą być równe zero.",
+            "explanation": "Długość boku figury geometrycznej musi być ściśle większa od zera.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Długość boku musi być dodatnia.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-15-15-8",
+            "type": "OPEN_GENERAL",
+            "content": "Podaj kompletną checklistę 5 kroków, które maturzysta musi zapisać w arkuszu egzaminacyjnym, rozwiązując zadanie optymalizacyjne z funkcją kwadratową, aby otrzymać maksymalną liczbę 4 punktów.",
+            "explanation": "Checklista 5 kroków do zdobycia 4 punktów na maturze:\n\n1. Oznaczenie zmiennych i zapisanie związku między nimi:\n- Wprowadź czytelne oznaczenia (np. $x, y$),\n- Zapisz równanie wiążące zmienne wynikające z treści zadania (np. obwód, siatka, suma) i wyznacz jedną zmienną za pomocą drugiej (np. $y = L - 2x$).\n\n2. Wyznaczenie dziedziny geometrycznej/fizycznej:\n- Zapisz nierówności wynikające z dodatniości wszystkich wymiarów ($x > 0, y > 0$),\n- Wyznacz część wspólną i zapisz dziedzinę w postaci przedziału otwartego $x \\in (x_{\\min}, x_{\\max})$.\n\n3. Zapisanie funkcji celu jednej zmiennej:\n- Zapisz wzór na optymalizowaną wielkość (pole, zysk, koszt) podstawiając wyznaczoną wcześniej zmienną: $f(x) = ax^2 + bx + c$.\n\n4. Wyznaczenie wierzchołka paraboli i uzasadnienie ekstremum:\n- Oblicz odciętą wierzchołka ze wzoru $x_w = -\\frac{b}{2a}$,\n- Sprawdź, czy $x_w$ należy do wyznaczonej dziedziny,\n- Uzasadnij istnienie maksimum (gdy $a < 0$, ramiona paraboli skierowane są w dół) lub minimum (gdy $a > 0$, ramiona w górę).\n\n5. Obliczenie pozostałych wielkości i odpowiedź:\n- Oblicz drugi wymiar $y = y(x_w)$,\n- Oblicz wartość optymalną (np. maksymalne pole $P_{\\max}$),\n- Sformułuj jednoznaczną odpowiedź z podaniem właściwych jednostek.",
+            "source": "Matura maj",
+            "points": 4,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne zapisanie związku między dwiema zmiennymi",
+              "1 pkt – poprawne zapisanie wzoru funkcji jednej zmiennej i wyznaczenie dziedziny",
+              "1 pkt – poprawne obliczenie odciętej wierzchołka paraboli wraz z uzasadnieniem",
+              "1 pkt – pełne poprawne rozwiązanie z obliczeniem wszystkich żądanych wielkości i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wypisz po kolei 5 kroków: oznaczenia, dziedzina, wzór funkcji jednej zmiennej, wierzchołek z uzasadnieniem i odpowiedź.",
+              "Pamiętaj o wyznaczeniu dziedziny geometrycznej oraz uzasadnieniu istnienia maksimum ze znaku współczynnika a."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      }
+    ],
+    "final_test": {
+      "id": "test-dzial-15",
+      "title": "Sprawdzian wiedzy: Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne",
+      "tasks": [
+        "t-dzial-15-1-1",
+        "t-dzial-15-2-1",
+        "t-dzial-15-3-1",
+        "t-dzial-15-4-1",
+        "t-dzial-15-5-1",
+        "t-dzial-15-6-1",
+        "t-dzial-15-7-1",
+        "t-dzial-15-8-1",
+        "t-dzial-15-9-1",
+        "t-dzial-15-10-1",
+        "t-dzial-15-11-1",
+        "t-dzial-15-12-1",
+        "t-dzial-15-13-1",
+        "t-dzial-15-14-1",
+        "t-dzial-15-15-1"
+      ]
+    }
+  }
+}

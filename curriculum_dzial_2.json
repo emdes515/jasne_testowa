@@ -1,0 +1,1998 @@
+{
+  "topic": {
+    "id": "dzial-2",
+    "title": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "description": "Zrozumienie i biegłość w algebrze maturalnej: redukcja wyrazów podobnych, wzory skróconego mnożenia, wyłączanie przed nawias, metoda grupowania, działania na wielomianach, wyrażenia wymierne oraz dowodzenie nierówności. 15 lekcji, 120 zadań.",
+    "lessons": [
+      {
+        "id": "lesson-2-1",
+        "title": "Jednomiany i sumy algebraiczne: Redukcja wyrazów podobnych",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Wyrazy podobne to wyrażenia różniące się co najwyżej współczynnikiem liczbowym, posiadające te same zmienne w tych samych potęgach. Redukcja polega na dodawaniu lub odejmowaniu ich współczynników. Znak minus przed nawiasem zmienia znak każdego składnika wewnątrz nawiasu na przeciwny.",
+          "matura_context": "Kluczowa umiejętność elementarna wymagana w zadaniach algebraicznych i równaniach na maturze.",
+          "core_formulas": "-(a - b + c) = -a + b - c, \\quad ax^n + bx^n = (a + b)x^n",
+          "worked_example": "$-(3x^2 - 4x + 2) + 5x^2 = -3x^2 + 4x - 2 + 5x^2 = 2x^2 + 4x - 2$.",
+          "exam_trap": "Nie wolno dodawać wyrazów o różnych potęgach: $3x + 2x^2 \\neq 5x^3$. Różne potęgi nie są wyrazami podobnymi."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wyrażenie $-(2x - 5) + (3x - 4)$ po uproszczeniu ma postać:",
+            "options": [
+              "$x + 1$",
+              "$x - 9$",
+              "$-x + 1$",
+              "$5x - 9$"
+            ],
+            "correct_answer": "$x + 1$",
+            "explanation": "-2x + 5 + 3x - 4 = x + 1.",
+            "hint": "Zmień znaki w pierwszym nawiasie na przeciwne: -2x + 5.",
+            "hint_cost": 10,
+            "id": "task-2-1-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Dla $x = -3$ wartość wyrażenia $2x^2 - 3x + 4$ jest równa:",
+            "correct_answer": "31",
+            "explanation": "2*(-3)^2 - 3*(-3) + 4 = 2*9 + 9 + 4 = 18 + 9 + 4 = 31.",
+            "hint": "Kwadrat liczby ujemnej jest dodatni: (-3)^2 = 9.",
+            "hint_cost": 10,
+            "id": "task-2-1-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Wyrażenie $3(x - 2) - 2(3 - x)$ jest równe:",
+            "options": [
+              "$5x - 12$",
+              "$x - 12$",
+              "$5x$",
+              "$x$"
+            ],
+            "correct_answer": "$5x - 12$",
+            "explanation": "3x - 6 - 6 + 2x = 5x - 12.",
+            "hint": "-2 * (-x) daje +2x.",
+            "hint_cost": 10,
+            "id": "task-2-1-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wyrażenia $5x^3$ oraz $5x^2$ są wyrazami podobnymi.",
+            "correct_answer": "Fałsz",
+            "explanation": "Wyrazy podobne muszą mieć tę samą potęgę zmiennej. 3 i 2 to różne wykładniki. Fałsz.",
+            "hint": "Sprawdź wykładnik potęgi przy x.",
+            "hint_cost": 10,
+            "id": "task-2-1-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Współczynnik przy $x$ po uproszczeniu wyrażenia $4(3x - 2) - 3(5x - 1)$ wynosi:",
+            "correct_answer": "-3",
+            "explanation": "12x - 8 - 15x + 3 = -3x - 5. Współczynnik przy x wynosi -3.",
+            "hint": "12x - 15x = -3x.",
+            "hint_cost": 10,
+            "id": "task-2-1-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Różnica sum algebraicznych $(5x^2 - 4x) - (2x^2 - 4x + 3)$ wynosi:",
+            "options": [
+              "$3x^2 - 3$",
+              "$3x^2 - 8x - 3$",
+              "$3x^2 + 3$",
+              "$7x^2 - 3$"
+            ],
+            "correct_answer": "$3x^2 - 3$",
+            "explanation": "5x^2 - 4x - 2x^2 + 4x - 3 = 3x^2 - 3.",
+            "hint": "Wyrazy z x redukują się: -4x + 4x = 0.",
+            "hint_cost": 10,
+            "id": "task-2-1-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Wartość wyrażenia $x^2 - 6x + 9$ dla $x = 3$ jest równa 0.",
+            "correct_answer": "Prawda",
+            "explanation": "3^2 - 6*3 + 9 = 9 - 18 + 9 = 0. Prawda.",
+            "hint": "Podstaw x = 3 i oblicz wynik.",
+            "hint_cost": 10,
+            "id": "task-2-1-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Doprowadź wyrażenie do najprostszej postaci: $2(x^2 - 3x + 2) - 3(x^2 - 2x - 1)$ i oblicz jego wartość dla $x = -2$.",
+            "scoring_key": [
+              "1 pkt za doprowadzenie do postaci -x^2 + 7.",
+              "1 pkt za podstawienie x = -2 i wynik: -(-2)^2 + 7 = -4 + 7 = 3."
+            ],
+            "explanation": "2x^2 - 6x + 4 - 3x^2 + 6x + 3 = -x^2 + 7. Dla x = -2: -(-2)^2 + 7 = -4 + 7 = 3.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-1-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-2",
+        "title": "Mnożenie sum algebraicznych: Zasadnicze reguły i znaki",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Mnożenie dwóch sum algebraicznych polega na pomnożeniu każdego wyrazu z pierwszego nawiasu przez każdy wyraz z drugiego nawiasu z zachowaniem reguł znaków (plus razy minus daje minus, minus razy minus daje plus). Po wymnożeniu redukujemy wyrazy podobne.",
+          "matura_context": "Podstawa wyznaczania wzorów funkcji, pól powierzchni i przekształceń geometrycznych.",
+          "core_formulas": "(a + b)(c + d) = ac + ad + bc + bd",
+          "worked_example": "$(3x - 2)(2x + 5) = 6x^2 + 15x - 4x - 10 = 6x^2 + 11x - 10$.",
+          "exam_trap": "Uważaj na iloczyn dwóch liczb ujemnych: $(-2) \\cdot (-5) = +10$, a nie $-10$."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Iloczyn $(x - 4)(x + 6)$ po redukcji wyrazów podobnych jest równy:",
+            "options": [
+              "$x^2 + 2x - 24$",
+              "$x^2 - 24$",
+              "$x^2 - 2x - 24$",
+              "$x^2 + 10x - 24$"
+            ],
+            "correct_answer": "$x^2 + 2x - 24$",
+            "explanation": "x^2 + 6x - 4x - 24 = x^2 + 2x - 24.",
+            "hint": "Wymnóż nawiasy i zredukuj 6x - 4x.",
+            "hint_cost": 10,
+            "id": "task-2-2-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Podaj wyraz wolny w wyniku mnożenia $(3x - 5)(2x - 4)$:",
+            "correct_answer": "20",
+            "explanation": "(-5) * (-4) = 20.",
+            "hint": "Pomnóż przez siebie liczby stojące na końcu każdego nawiasu.",
+            "hint_cost": 10,
+            "id": "task-2-2-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Wyrażenie $(3x - 1)(x - 3)$ jest równe:",
+            "options": [
+              "$3x^2 - 10x + 3$",
+              "$3x^2 - 8x + 3$",
+              "$3x^2 - 10x - 3$",
+              "$3x^2 + 3$"
+            ],
+            "correct_answer": "$3x^2 - 10x + 3$",
+            "explanation": "3x^2 - 9x - x + 3 = 3x^2 - 10x + 3.",
+            "hint": "-9x - x = -10x.",
+            "hint_cost": 10,
+            "id": "task-2-2-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Iloczyn $(x - 2)(x + 2)(x^2 + 4)$ jest równy $x^4 - 16$.",
+            "correct_answer": "Prawda",
+            "explanation": "(x-2)(x+2) = x^2 - 4. Następnie (x^2-4)(x^2+4) = x^4 - 16. Prawda.",
+            "hint": "Zastosuj dwukrotnie wzór na różnicę kwadratów.",
+            "hint_cost": 10,
+            "id": "task-2-2-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Podaj współczynnik przy $x^2$ po wymnożeniu $(2x - 3)(x^2 + 5)$:",
+            "correct_answer": "-3",
+            "explanation": "2x^3 + 10x - 3x^2 - 15. Przy x^2 stoi współczynnik -3.",
+            "hint": "Wyraz x^2 powstaje z (-3) * x^2.",
+            "hint_cost": 10,
+            "id": "task-2-2-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wyrażenie $(x + 3)(x^2 - 3x + 9)$ po uproszczeniu ma postać:",
+            "options": [
+              "$x^3 + 27$",
+              "$x^3 - 27$",
+              "$x^3 + 9x + 27$",
+              "$x^3 - 6x^2 + 27$"
+            ],
+            "correct_answer": "$x^3 + 27$",
+            "explanation": "To wzór na sumę sześcianów: a^3 + b^3 = x^3 + 3^3 = x^3 + 27.",
+            "hint": "Zauważ strukturę wzoru na sumę sześcianów z karty wzorów.",
+            "hint_cost": 10,
+            "id": "task-2-2-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Wyrażenie $(x - 1)(x + 4)$ jest równe $x^2 + 3x - 4$.",
+            "correct_answer": "Prawda",
+            "explanation": "x^2 + 4x - x - 4 = x^2 + 3x - 4. Prawda.",
+            "hint": "4x - x = 3x.",
+            "hint_cost": 10,
+            "id": "task-2-2-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wymnóż i zredukuj wyrazy podobne: $(3x - 2)(2x^2 + x - 4)$.",
+            "scoring_key": [
+              "1 pkt za poprawne wymnożenie wszystkich 6 składników: 6x^3 + 3x^2 - 12x - 4x^2 - 2x + 8.",
+              "1 pkt za redukcję wyrazów podobnych: 6x^3 - x^2 - 14x + 8."
+            ],
+            "explanation": "3x(2x^2 + x - 4) - 2(2x^2 + x - 4) = 6x^3 + 3x^2 - 12x - 4x^2 - 2x + 8 = 6x^3 - x^2 - 14x + 8.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-2-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-3",
+        "title": "Dzielenie wielomianu przez dwumian (x - a): Schemat Hornera",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Twierdzenie Bézouta mówi, że reszta z dzielenia wielomianu $W(x)$ przez dwumian $(x - a)$ jest równa $W(a)$. Jeśli $W(a) = 0$, to $(x - a)$ jest dzielnikiem wielomianu $W(x)$ i można go wyłączyć jako czynnik. Schemat Hornera pozwala szybko dzielić wielomian przez $(x - a)$ bez rozpisywania dzielenia pisemnego — jest to najszybsza metoda na maturze.",
+          "matura_context": "Schemat Hornera pojawia się w zadaniach otwartych za 2 punkty. Sprawdza umiejętność rozkładu wielomianu na czynniki liniowe.",
+          "core_formulas": "W(x) = (x - a) \\cdot Q(x) + W(a). \\quad \\text{Jeśli } W(a) = 0 \\text{, to } (x - a) | W(x).",
+          "worked_example": "$W(x) = x^3 - 6x^2 + 11x - 6$. Sprawdzamy $W(1) = 1 - 6 + 11 - 6 = 0$. Zatem $(x - 1)$ dzieli $W(x)$. Schemat Hornera: $W(x) = (x - 1)(x^2 - 5x + 6) = (x-1)(x-2)(x-3)$.",
+          "exam_trap": "Zapominanie o współczynnikach równych zero! Jeśli wielomian nie ma wyrazu np. z $x^2$, w schemacie Hornera wpisujesz 0 w odpowiednie miejsce."
+        },
+        "tasks": [
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Reszta z dzielenia wielomianu $W(x) = x^3 + 2x^2 - 5x + 1$ przez dwumian $(x - 2)$ wynosi:",
+            "correct_answer": "7",
+            "explanation": "Z twierdzenia Bézouta reszta to $W(2) = 8 + 8 - 10 + 1 = 7$.",
+            "hint": "Reszta z dzielenia W(x) przez (x - a) to W(a).",
+            "hint_cost": 10,
+            "id": "task-2-3-1"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wielomian $W(x) = x^3 - 7x + 6$ jest podzielny przez dwumian:",
+            "options": [
+              "$(x - 1)$",
+              "$(x - 3)$",
+              "$(x + 7)$",
+              "$(x - 6)$"
+            ],
+            "correct_answer": "$(x - 1)$",
+            "explanation": "$W(1) = 1 - 7 + 6 = 0$. Zatem $(x - 1)$ jest dzielnikiem $W(x)$.",
+            "hint": "Sprawdź, dla jakiego a zachodzi W(a) = 0.",
+            "hint_cost": 10,
+            "id": "task-2-3-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Po podzieleniu wielomianu $W(x) = 2x^3 - 3x^2 - 5x + 6$ przez dwumian $(x - 2)$ iloraz ma postać:",
+            "options": [
+              "$2x^2 + x - 3$",
+              "$2x^2 - x + 3$",
+              "$2x^2 + x + 3$",
+              "$x^2 + x - 3$"
+            ],
+            "correct_answer": "$2x^2 + x - 3$",
+            "explanation": "Schemat Hornera dla a = 2: [2, -3, -5, 6] → [2, 1, -3, 0]. Iloraz to $2x^2 + x - 3$, reszta 0.",
+            "hint": "Sprawdź najpierw, że W(2) = 0 (reszta wynosi zero).",
+            "hint_cost": 10,
+            "id": "task-2-3-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wielomian $W(x) = x^4 - 1$ jest podzielny przez $(x + 1)$.",
+            "correct_answer": "Prawda",
+            "explanation": "$W(-1) = (-1)^4 - 1 = 1 - 1 = 0$. Zatem $(x + 1)$ dzieli $W(x)$. Prawda.",
+            "hint": "Oblicz W(-1). Pamiętaj: dzielenie przez (x + 1) to dzielenie przez (x - (-1)).",
+            "hint_cost": 10,
+            "id": "task-2-3-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dla jakiej wartości parametru $k$ wielomian $W(x) = x^3 + kx - 10$ jest podzielny przez $(x - 2)$?",
+            "correct_answer": "1",
+            "explanation": "$W(2) = 8 + 2k - 10 = 2k - 2 = 0 \\implies k = 1$.",
+            "hint": "Przyrównaj W(2) do zera i rozwiąż równanie.",
+            "hint_cost": 10,
+            "id": "task-2-3-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Liczba $x = -3$ jest pierwiastkiem wielomianu $W(x) = x^3 + 4x^2 + x - 6$. Drugi czynnik ilorazu $W(x) : (x + 3)$ ma postać:",
+            "options": [
+              "$x^2 + x - 2$",
+              "$x^2 - x + 2$",
+              "$x^2 + 3x - 2$",
+              "$x^2 + x + 2$"
+            ],
+            "correct_answer": "$x^2 + x - 2$",
+            "explanation": "Schemat Hornera dla a = -3: [1, 4, 1, -6] → [1, 1, -2, 0]. Iloraz to $x^2 + x - 2 = (x + 2)(x - 1)$.",
+            "hint": "Zastosuj schemat Hornera z a = -3.",
+            "hint_cost": 10,
+            "id": "task-2-3-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Jeśli reszta z dzielenia wielomianu $W(x)$ przez $(x - 5)$ wynosi 0, to liczba 5 jest pierwiastkiem równania $W(x) = 0$.",
+            "correct_answer": "Prawda",
+            "explanation": "Reszta 0 oznacza $W(5) = 0$, czyli 5 jest pierwiastkiem wielomianu. Prawda.",
+            "hint": "Twierdzenie Bézouta: reszta = W(a).",
+            "hint_cost": 10,
+            "id": "task-2-3-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Dany jest wielomian $W(x) = x^3 - 2x^2 - 5x + 6$. Rozłóż $W(x)$ na iloczyn trzech czynników liniowych, stosując schemat Hornera.",
+            "scoring_key": [
+              "1 pkt za sprawdzenie W(1) = 0 i zastosowanie schematu Hornera: W(x) = (x - 1)(x^2 - x - 6).",
+              "1 pkt za dalszy rozkład ilorazu: x^2 - x - 6 = (x - 3)(x + 2) i podanie końcowej postaci W(x) = (x - 1)(x - 3)(x + 2)."
+            ],
+            "explanation": "W(1) = 1 - 2 - 5 + 6 = 0. Schemat Hornera: [1, -2, -5, 6] → [1, -1, -6, 0]. W(x) = (x - 1)(x^2 - x - 6) = (x - 1)(x - 3)(x + 2).",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-3-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-4",
+        "title": "Wzory skróconego mnożenia: Różnica kwadratów",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Wzór na różnicę kwadratów $a^2 - b^2 = (a-b)(a+b)$ umożliwia natychmiastowy rozkład wyrażeń dwumianowych na iloczyn dwóch czynników liniowych oraz błyskawiczne mnożenie sumy i różnicy.",
+          "matura_context": "Klucz do rozkładania wielomianów na czynniki i rozwiązywania równań wyższych stopni.",
+          "core_formulas": "a^2 - b^2 = (a - b)(a + b)",
+          "worked_example": "$16x^2 - 49 = (4x - 7)(4x + 7)$.",
+          "exam_trap": "Suma kwadratów $a^2 + b^2$ NIE rozkłada się w zbiorze liczb rzeczywistych! $x^2 + 9 \\neq (x+3)(x-3)$."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wyrażenie $25x^2 - 36$ po rozłożeniu na czynniki ma postać:",
+            "options": [
+              "$(5x - 6)(5x + 6)$",
+              "$(25x - 6)(x + 6)$",
+              "$(5x - 6)^2$",
+              "$(5x - 36)(5x + 1)$"
+            ],
+            "correct_answer": "$(5x - 6)(5x + 6)$",
+            "explanation": "\\sqrt{25x^2} = 5x oraz \\sqrt{36} = 6. Stąd (5x - 6)(5x + 6).",
+            "hint": "Wyciągnij pierwiastki z obu wyrazów.",
+            "hint_cost": 10,
+            "id": "task-2-4-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Oblicz bez użycia kalkulatora wartość: $65^2 - 35^2$:",
+            "correct_answer": "3000",
+            "explanation": "(65 - 35)(65 + 35) = 30 * 100 = 3000.",
+            "hint": "Zastosuj wzór (a - b)(a + b).",
+            "hint_cost": 10,
+            "id": "task-2-4-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Iloczyn $(\\sqrt{5} - x)(\\sqrt{5} + x)$ jest równy:",
+            "options": [
+              "$5 - x^2$",
+              "$x^2 - 5$",
+              "$25 - x^2$",
+              "$5 - 2x + x^2$"
+            ],
+            "correct_answer": "$5 - x^2$",
+            "explanation": "(\\sqrt{5})^2 - x^2 = 5 - x^2.",
+            "hint": "Kwadrat z pierwiastka z 5 to 5.",
+            "hint_cost": 10,
+            "id": "task-2-4-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wyrażenie $x^2 + 16$ można rozłożyć w zbiorze liczb rzeczywistych na postać $(x - 4)(x + 4)$.",
+            "correct_answer": "Fałsz",
+            "explanation": "Fałsz, (x-4)(x+4) = x^2 - 16. Suma kwadratów x^2 + 16 nie ma pierwiastków rzeczywistych.",
+            "hint": "Wzór dotyczy różnicy kwadratów, a nie sumy.",
+            "hint_cost": 10,
+            "id": "task-2-4-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Podaj DODATNIE rozwiązanie równania $x^2 - 81 = 0$:",
+            "correct_answer": "9",
+            "explanation": "(x - 9)(x + 9) = 0 -> x = 9 lub x = -9. Dodatnie to 9.",
+            "hint": "Pierwiastek kwadratowy z 81 to 9.",
+            "hint_cost": 10,
+            "id": "task-2-4-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wyrażenie $4 - 9a^2$ jest równe:",
+            "options": [
+              "$(2 - 3a)(2 + 3a)$",
+              "$(4 - 3a)(1 + 3a)$",
+              "$(2 - 3a)^2$",
+              "$(3a - 2)(3a + 2)$"
+            ],
+            "correct_answer": "$(2 - 3a)(2 + 3a)$",
+            "explanation": "2^2 - (3a)^2 = (2 - 3a)(2 + 3a).",
+            "hint": "Pierwiastek z 4 to 2, a z 9a^2 to 3a.",
+            "hint_cost": 10,
+            "id": "task-2-4-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Dla każdej liczby $x$ zachodzi tożsamość $(x - 5)(x + 5) = x^2 - 25$.",
+            "correct_answer": "Prawda",
+            "explanation": "Tak, to bezpośrednia tożsamość różnicy kwadratów. Prawda.",
+            "hint": "5 do kwadratu to 25.",
+            "hint_cost": 10,
+            "id": "task-2-4-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wykaż, że dla dowolnej liczby całkowitej $n$ liczba $(n + 3)^2 - (n - 1)^2$ jest podzielna przez 8.",
+            "scoring_key": [
+              "1 pkt za zastosowanie wzoru na różnicę kwadratów: [(n+3)-(n-1)][(n+3)+(n-1)] = 4(2n+2).",
+              "1 pkt za wyłączenie 2 przed nawias i postać 8(n+1) wraz z wnioskiem o podzielności."
+            ],
+            "explanation": "[(n+3)-(n-1)][(n+3)+(n-1)] = [n+3-n+1][2n+2] = 4 \\cdot 2(n+1) = 8(n+1). Liczba ma czynnik 8, więc dzieli się przez 8.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-4-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-5",
+        "title": "Wzory skróconego mnożenia: Sześciany i wzory trzeciego stopnia",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Wzory trzeciego stopnia obejmują sześcian sumy/różnicy oraz rozkład sumy/różnicy sześcianów na iloczyn. Wszystkie te formuły znajdują się we Wzorach maturalnych.",
+          "matura_context": "Stosowane przy zaawansowanych zadaniach z wielomianami stopnia 3.",
+          "core_formulas": "(a \\pm b)^3 = a^3 \\pm 3a^2b + 3ab^2 \\pm b^3, \\quad a^3 \\pm b^3 = (a \\pm b)(a^2 \\mp ab + b^2)",
+          "worked_example": "$(x - 2)^3 = x^3 - 3 \\cdot x^2 \\cdot 2 + 3 \\cdot x \\cdot 2^2 - 2^3 = x^3 - 6x^2 + 12x - 8$.",
+          "exam_trap": "Nie myl $(a+b)^3$ z $a^3 + b^3$. W rozwinięciu sześcianu sumy występują cztery składniki!"
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wyrażenie $(x + 1)^3$ po rozwinięciu jest równe:",
+            "options": [
+              "$x^3 + 3x^2 + 3x + 1$",
+              "$x^3 + 1$",
+              "$x^3 + 3x + 1$",
+              "$x^3 + x^2 + x + 1$"
+            ],
+            "correct_answer": "$x^3 + 3x^2 + 3x + 1$",
+            "explanation": "x^3 + 3*x^2*1 + 3*x*1^2 + 1^3 = x^3 + 3x^2 + 3x + 1.",
+            "hint": "Zastosuj wzór (a + b)^3 z karty wzorów.",
+            "hint_cost": 10,
+            "id": "task-2-5-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Podaj współczynnik przy $x^2$ po rozwinięciu wyrażenia $(x - 2)^3$:",
+            "correct_answer": "-6",
+            "explanation": "-3 * x^2 * 2 = -6x^2. Współczynnik wynosi -6.",
+            "hint": "Zwróć uwagę na znak minus przy wyrazie 3a^2b.",
+            "hint_cost": 10,
+            "id": "task-2-5-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Wyrażenie $x^3 + 8$ można rozłożyć na czynniki w postaci:",
+            "options": [
+              "$(x + 2)(x^2 - 2x + 4)$",
+              "$(x + 2)^3$",
+              "$(x + 2)(x^2 + 2x + 4)$",
+              "$(x + 8)(x^2 - 1)$"
+            ],
+            "correct_answer": "$(x + 2)(x^2 - 2x + 4)$",
+            "explanation": "a^3 + b^3 = (a + b)(a^2 - ab + b^2) dla a = x, b = 2.",
+            "hint": "Zastosuj wzór na sumę sześcianów.",
+            "hint_cost": 10,
+            "id": "task-2-5-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Dla $x = 1$ wartość wyrażenia $x^3 - 1$ wynosi 0.",
+            "correct_answer": "Prawda",
+            "explanation": "1^3 - 1 = 1 - 1 = 0. Prawda.",
+            "hint": "Podstaw x = 1.",
+            "hint_cost": 10,
+            "id": "task-2-5-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Ile wynosi wyraz wolny w rozwinięciu $(x - 3)^3$?",
+            "correct_answer": "-27",
+            "explanation": "(-3)^3 = -27.",
+            "hint": "Podnieś -3 do potęgi 3.",
+            "hint_cost": 10,
+            "id": "task-2-5-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wyrażenie $(x - 1)^3 - x^3$ po uproszczeniu jest wielomianem stopnia:",
+            "options": [
+              "2",
+              "3",
+              "1",
+              "0"
+            ],
+            "correct_answer": "2",
+            "explanation": "(x^3 - 3x^2 + 3x - 1) - x^3 = -3x^2 + 3x - 1. Stopień wynosi 2.",
+            "hint": "Wyrazy x^3 redukują się do zera.",
+            "hint_cost": 10,
+            "id": "task-2-5-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Równość $(a - b)^3 = a^3 - b^3$ jest tożsamością prawdziwą dla wszystkich liczb.",
+            "correct_answer": "Fałsz",
+            "explanation": "Fałsz, brakuje wyrazów pośrednich -3a^2b + 3ab^2.",
+            "hint": "Sześcian różnicy to nie różnica sześcianów.",
+            "hint_cost": 10,
+            "id": "task-2-5-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Rozwiń wyrażenie $(2x + 1)^3$ i zapisz je w postaci uporządkowanego wielomianu.",
+            "scoring_key": [
+              "1 pkt za zastosowanie wzoru na sześcian sumy: (2x)^3 + 3(2x)^2(1) + 3(2x)(1)^2 + 1^3.",
+              "1 pkt za uporządkowany wynik: 8x^3 + 12x^2 + 6x + 1."
+            ],
+            "explanation": "(2x)^3 = 8x^3, 3*(4x^2)*1 = 12x^2, 3*(2x)*1 = 6x, 1^3 = 1. Wynik: 8x^3 + 12x^2 + 6x + 1.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-5-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-6",
+        "title": "Wyłączanie wspólnego czynnika: Liczby i jednomiany",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Wyłączanie przed nawias to operacja odwrotna do rozdzielności mnożenia względem dodawania. Wyznaczamy największy wspólny dzielnik współczynników liczbowych oraz zmienną w najniższej potędze występującej we wszystkich składnikach.",
+          "matura_context": "Pierwszy krok przy upraszczaniu ułamków algebraicznych i rozwiązywaniu równań.",
+          "core_formulas": "ab + ac = a(b + c)",
+          "worked_example": "$6x^3 - 9x^2 = 3x^2(2x - 3)$.",
+          "exam_trap": "Gdy wyłączasz cały składnik, na jego miejscu w nawiasie zostaje 1, a nie 0! Np. $4x + 4 = 4(x + 1)$, a nie $4(x)$."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Po wyłączeniu maksymalnego wspólnego czynnika z wyrażenia $6x^3 - 8x^2$ otrzymujemy:",
+            "options": [
+              "$2x^2(3x - 4)$",
+              "$2x(3x^2 - 4x)$",
+              "$x^2(6x - 8)$",
+              "$2x^2(3x - 8)$"
+            ],
+            "correct_answer": "$2x^2(3x - 4)$",
+            "explanation": "NWD(6, 8) = 2, najniższa potęga x to x^2. Zatem 2x^2(3x - 4).",
+            "hint": "Wyłącz przed nawias 2 oraz x^2.",
+            "hint_cost": 10,
+            "id": "task-2-6-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Rozwiąż równanie: $2x^2 - 8x = 0$. Podaj WIĘKSZE z rozwiązań:",
+            "correct_answer": "4",
+            "explanation": "2x(x - 4) = 0 -> x = 0 lub x = 4. Większe to 4.",
+            "hint": "Wyłącz 2x przed nawias.",
+            "hint_cost": 10,
+            "id": "task-2-6-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Wyrażenie $7x + 7$ po wyłączeniu czynnika jest równe:",
+            "options": [
+              "$7(x + 1)$",
+              "$7x$",
+              "$7(x + 0)$",
+              "$14x$"
+            ],
+            "correct_answer": "$7(x + 1)$",
+            "explanation": "7 podzielone przez 7 daje 1: 7(x + 1).",
+            "hint": "Pamiętaj, że 7 / 7 = 1.",
+            "hint_cost": 10,
+            "id": "task-2-6-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Równość $3x^2 - 3x = 3x(x - 1)$ jest prawdziwa dla każdej liczby rzeczywistej $x$.",
+            "correct_answer": "Prawda",
+            "explanation": "3x * x - 3x * 1 = 3x^2 - 3x. Prawda.",
+            "hint": "Wymnóż prawą stronę, aby zweryfikować lewą.",
+            "hint_cost": 10,
+            "id": "task-2-6-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dla jakiej wartości $x$ wyrażenie $x(2x - 6)$ przyjmuje wartość 0 (podaj rozwiązanie różne od zera)?",
+            "correct_answer": "3",
+            "explanation": "2x - 6 = 0 -> 2x = 6 -> x = 3.",
+            "hint": "Przyrównaj nawias do zera.",
+            "hint_cost": 10,
+            "id": "task-2-6-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wyrażenie $x^4 + 3x^3 - x^2$ po wyłączeniu $x^2$ ma postać:",
+            "options": [
+              "$x^2(x^2 + 3x - 1)$",
+              "$x^2(x^2 + 3x)$",
+              "$x^2(x^2 + 3x - 0)$",
+              "$x(x^3 + 3x^2 - x)$"
+            ],
+            "correct_answer": "$x^2(x^2 + 3x - 1)$",
+            "explanation": "-x^2 / x^2 = -1, stąd w nawiasie zostaje -1 na końcu.",
+            "hint": "-x^2 podzielone przez x^2 daje -1.",
+            "hint_cost": 10,
+            "id": "task-2-6-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Z sumy $4x + 8y$ można wyłączyć przed nawias liczbę 4.",
+            "correct_answer": "Prawda",
+            "explanation": "4(x + 2y). Prawda.",
+            "hint": "Zarówno 4 jak i 8 dzielą się przez 4.",
+            "hint_cost": 10,
+            "id": "task-2-6-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wykaż, że dla dowolnej liczby całkowitej $n$ liczba $n^3 - 4n$ jest podzielna przez 6.",
+            "scoring_key": [
+              "1 pkt za wyłączenie n i rozkład ze wzoru różnicy kwadratów: n(n^2 - 4) = (n-2)n(n+2).",
+              "1 pkt za uzasadnienie, że jest to iloczyn trzech liczb o tej samej parzystości lub podzielności (zawiera czynnik parzysty i podzielny przez 3)."
+            ],
+            "explanation": "n(n^2 - 4) = (n-2)n(n+2). Dla dowolnego n całkowitego iloczyn ten jest podzielny przez 2 i przez 3, czyli dzieli się przez 6.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-6-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-7",
+        "title": "Wyłączanie wspólnego czynnika: Wyrażenia nawiasowe",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Wspólnym czynnikiem może być całe wyrażenie ujęte w nawias. Jeśli w dwóch składnikach sumy występuje ten sam nawias (np. $(x - 3)$), wyłączamy go przed całość, traktując jako pojedynczy blok.",
+          "matura_context": "Kluczowa technika stanowiąca drugi etap metody grupowania wyrazów na maturze.",
+          "core_formulas": "a(x - y) + b(x - y) = (x - y)(a + b)",
+          "worked_example": "$2x(x + 5) - 3(x + 5) = (x + 5)(2x - 3)$.",
+          "exam_trap": "Odwrotne znaki: $(b - a) = -(a - b)$. Jeśli w drugim nawiasie masz odwróconą kolejność odejmowania, wyciągnij znak minus przed nawias!"
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wyrażenie $3x(x - 2) + 4(x - 2)$ po wyłączeniu wspólnego nawiasu ma postać:",
+            "options": [
+              "$(x - 2)(3x + 4)$",
+              "$(x - 2)(3x - 4)$",
+              "$(x - 2) + (3x + 4)$",
+              "$7x(x - 2)$"
+            ],
+            "correct_answer": "$(x - 2)(3x + 4)$",
+            "explanation": "Wyłączamy powtarzający się czynnik (x - 2): (x - 2)(3x + 4).",
+            "hint": "Wyłącz nawias (x - 2) przed nawias.",
+            "hint_cost": 10,
+            "id": "task-2-7-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Rozwiąż równanie: $(x - 4)(3x + 6) = 0$. Podaj DODATNIE rozwiązanie:",
+            "correct_answer": "4",
+            "explanation": "x - 4 = 0 -> x = 4; 3x + 6 = 0 -> x = -2. Dodatnie to 4.",
+            "hint": "Przyrównaj nawias (x - 4) do zera.",
+            "hint_cost": 10,
+            "id": "task-2-7-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Wyrażenie $x(x - 2) - (x - 2)$ po uproszczeniu jest równe:",
+            "options": [
+              "$(x - 2)(x - 1)$",
+              "$(x - 2)(x + 1)$",
+              "$x(x - 2)$",
+              "$(x - 2)^2$"
+            ],
+            "correct_answer": "$(x - 2)(x - 1)$",
+            "explanation": "x(x - 2) - 1(x - 2) = (x - 2)(x - 1).",
+            "hint": "Przed drugim nawiasem stoi niewidoczny współczynnik -1.",
+            "hint_cost": 10,
+            "id": "task-2-7-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Równość $3 - x = -(x - 3)$ jest prawdziwa dla każdej liczby $x$.",
+            "correct_answer": "Prawda",
+            "explanation": "-(x - 3) = -x + 3 = 3 - x. Prawda.",
+            "hint": "Opuszczając nawias z minusem, zmieniasz znaki obu wyrazów.",
+            "hint_cost": 10,
+            "id": "task-2-7-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dla jakiej wartości $x$ wyrażenie $(x - 6)(x + 2)$ osiąga wartość 0 dla $x < 0$?",
+            "correct_answer": "-2",
+            "explanation": "x + 2 = 0 -> x = -2.",
+            "hint": "Rozwiązanie ujemne wynika z przyrównania x + 2 = 0.",
+            "hint_cost": 10,
+            "id": "task-2-7-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wyrażenie $x^2(x + 3) - 9(x + 3)$ rozłożone na czynniki liniowe to:",
+            "options": [
+              "$(x + 3)^2 (x - 3)$",
+              "$(x + 3)(x - 3)$",
+              "$(x + 3)(x^2 - 9)$",
+              "$(x - 3)^3$"
+            ],
+            "correct_answer": "$(x + 3)^2 (x - 3)$",
+            "explanation": "(x + 3)(x^2 - 9) = (x + 3)(x - 3)(x + 3) = (x + 3)^2 (x - 3).",
+            "hint": "Rozłóż x^2 - 9 ze wzoru na różnicę kwadratów.",
+            "hint_cost": 10,
+            "id": "task-2-7-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Iloczyn $(x - 2)(x - 3)$ jest równy $(2 - x)(3 - x)$.",
+            "correct_answer": "Prawda",
+            "explanation": "(2 - x)(3 - x) = -(x - 2) * [-(x - 3)] = (x - 2)(x - 3). Prawda.",
+            "hint": "Dwa minusy wyłączone przed nawias dają plus.",
+            "hint_cost": 10,
+            "id": "task-2-7-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Rozłóż na czynniki wyrażenie: $W = (3x - 2)(x + 4) - (3x - 2)(2x - 1)$.",
+            "scoring_key": [
+              "1 pkt za wyłączenie (3x - 2) przed nawias: (3x - 2)[(x + 4) - (2x - 1)].",
+              "1 pkt za redukcję wewnątrz drugiego nawiasu: (3x - 2)(-x + 5)."
+            ],
+            "explanation": "(3x - 2)[x + 4 - 2x + 1] = (3x - 2)(-x + 5).",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-7-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-8",
+        "title": "Rozkładanie wielomianów na czynniki: Metoda grupowania wyrazów",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Metodę grupowania 2x2 stosujemy dla wielomianów czterowyrazowych. Dzielimy wielomian na dwie pary, wyłączamy z każdej pary wspólny czynnik tak, aby w obu nawiasach otrzymać identyczne wyrażenie, a następnie wyłączamy ten nawias przed całość.",
+          "matura_context": "Zadanie otwarte za 2 punkty – stały element arkuszy maturalnych.",
+          "core_formulas": "x^3 + ax^2 + bx + ab = x^2(x + a) + b(x + a) = (x + a)(x^2 + b)",
+          "worked_example": "$x^3 - 2x^2 - 9x + 18 = x^2(x - 2) - 9(x - 2) = (x - 2)(x^2 - 9) = (x - 2)(x - 3)(x + 3)$.",
+          "exam_trap": "Błąd znaku przy wyłączaniu liczby ujemnej z drugiej pary: $-9x + 18 = -9(x - 2)$, a NIE $-9(x + 2)$!"
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wielomian $W(x) = x^3 - 3x^2 - 4x + 12$ po rozłożeniu na czynniki ma postać:",
+            "options": [
+              "$(x - 3)(x - 2)(x + 2)$",
+              "$(x + 3)(x - 2)(x + 2)$",
+              "$(x - 3)(x^2 + 4)$",
+              "$(x - 3)^2 (x + 4)$"
+            ],
+            "correct_answer": "$(x - 3)(x - 2)(x + 2)$",
+            "explanation": "x^2(x - 3) - 4(x - 3) = (x - 3)(x^2 - 4) = (x - 3)(x - 2)(x + 2).",
+            "hint": "Wyłącz x^2 z pierwszej pary i -4 z drugiej pary.",
+            "hint_cost": 10,
+            "id": "task-2-8-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Ile różnych pierwiastków rzeczywistych ma równanie $x^3 - 5x^2 - x + 5 = 0$?",
+            "correct_answer": "3",
+            "explanation": "x^2(x - 5) - (x - 5) = (x - 5)(x^2 - 1) = (x - 5)(x - 1)(x + 1) = 0. Pierwiastki: 5, 1, -1 (3 pierwiastki).",
+            "hint": "Rozłóż równanie na postać iloczynową.",
+            "hint_cost": 10,
+            "id": "task-2-8-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Po pogrupowaniu wyrazów w wielomianie $x^3 + 4x^2 + 3x + 12$ otrzymujemy:",
+            "options": [
+              "$(x + 4)(x^2 + 3)$",
+              "$(x - 4)(x^2 + 3)$",
+              "$(x + 4)(x^2 - 3)$",
+              "$(x + 3)(x^2 + 4)$"
+            ],
+            "correct_answer": "$(x + 4)(x^2 + 3)$",
+            "explanation": "x^2(x + 4) + 3(x + 4) = (x + 4)(x^2 + 3).",
+            "hint": "Wyłącz x^2 z pierwszych dwóch wyrazów i 3 z pozostałych.",
+            "hint_cost": 10,
+            "id": "task-2-8-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Równanie $x^3 + 2x^2 + 4x + 8 = 0$ ma dokładnie jedno rozwiązanie rzeczywiste.",
+            "correct_answer": "Prawda",
+            "explanation": "x^2(x + 2) + 4(x + 2) = (x + 2)(x^2 + 4) = 0. x^2 + 4 nie ma rozwiązań rzeczywistych. Jedyne to x = -2. Prawda.",
+            "hint": "Sprawdź, czy x^2 + 4 może być zerem.",
+            "hint_cost": 10,
+            "id": "task-2-8-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Podaj NAJWIĘKSZE rozwiązanie równania $x^3 - 4x^2 - 9x + 36 = 0$:",
+            "correct_answer": "4",
+            "explanation": "x^2(x - 4) - 9(x - 4) = (x - 4)(x - 3)(x + 3) = 0. Rozwiązania: 4, 3, -3. Największe to 4.",
+            "hint": "Rozwiązania to 4, 3 i -3.",
+            "hint_cost": 10,
+            "id": "task-2-8-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Jednym z rozwiązań równania $x(x^2 - 25) = 0$ jest:",
+            "options": [
+              "-5",
+              "25",
+              "2",
+              "10"
+            ],
+            "correct_answer": "-5",
+            "explanation": "x = 0 lub x = 5 lub x = -5.",
+            "hint": "Rozłóż x^2 - 25 na (x - 5)(x + 5).",
+            "hint_cost": 10,
+            "id": "task-2-8-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Liczba 1 jest rozwiązaniem równania $x^3 - 2x^2 - x + 2 = 0$.",
+            "correct_answer": "Prawda",
+            "explanation": "1 - 2 - 1 + 2 = 0. Prawda.",
+            "hint": "Podstaw x = 1 do równania.",
+            "hint_cost": 10,
+            "id": "task-2-8-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Rozwiąż równanie: $x^3 - 2x^2 - 16x + 32 = 0$. Zapisz kolejne etapy metody grupowania i podaj zbiór rozwiązań.",
+            "scoring_key": [
+              "1 pkt za poprawne pogrupowanie: x^2(x - 2) - 16(x - 2) = (x - 2)(x - 4)(x + 4) = 0.",
+              "1 pkt za wyznaczenie trzech rozwiązań: x = 2, x = 4, x = -4."
+            ],
+            "explanation": "x^2(x - 2) - 16(x - 2) = 0 -> (x - 2)(x^2 - 16) = 0 -> (x - 2)(x - 4)(x + 4) = 0. Rozwiązania: 2, 4, -4.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-8-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-9",
+        "title": "Wielomiany: Stopień, współczynniki i wyraz wolny",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Stopień wielomianu to najwyższa potęga zmiennej x o niezerowym współczynniku (po zredukowaniu wyrazów podobnych). Wyraz wolny to współczynnik a_0 niezawierający zmiennej x (jest to wartość W(0)). Przy mnożeniu wielomianów stopnie wielomianów składowych się dodają.",
+          "matura_context": "Zadania testowe sprawdzające znajomość definicji wielomianu.",
+          "core_formulas": "\\deg(W \\cdot P) = \\deg(W) + \\deg(P), \\quad W(0) = a_0",
+          "worked_example": "Wielomian $W(x) = (x^2 - 3)(2x^3 + 1)$ ma stopień $2 + 3 = 5$, a jego wyraz wolny to $(-3) \\cdot 1 = -3$.",
+          "exam_trap": "Nie musisz wymnażać całego wielomianu, aby znaleźć jego stopień! Dodaj najwyższe wykładniki."
+        },
+        "tasks": [
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Jaki jest stopień wielomianu $W(x) = (x^2 + 3)(x^5 - 2x)$?",
+            "correct_answer": "7",
+            "explanation": "2 + 5 = 7.",
+            "hint": "Dodaj najwyższe potęgi: 2 + 5.",
+            "hint_cost": 10,
+            "id": "task-2-9-1"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wyraz wolny wielomianu $W(x) = (3x - 2)^2$ jest równy:",
+            "options": [
+              "4",
+              "-4",
+              "-2",
+              "2"
+            ],
+            "correct_answer": "4",
+            "explanation": "(-2)^2 = 4 (lub W(0) = (0 - 2)^2 = 4).",
+            "hint": "Oblicz W(0).",
+            "hint_cost": 10,
+            "id": "task-2-9-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Stopień wielomianu $W(x) = x^3 - (x - 1)^3$ wynosi:",
+            "options": [
+              "2",
+              "3",
+              "1",
+              "0"
+            ],
+            "correct_answer": "2",
+            "explanation": "x^3 - (x^3 - 3x^2 + 3x - 1) = 3x^2 - 3x + 1. Stopień to 2, ponieważ x^3 się zredukowało.",
+            "hint": "Rozwiń nawias ze wzoru na sześcian różnicy.",
+            "hint_cost": 10,
+            "id": "task-2-9-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wielomian $W(x) = -7$ jest wielomianem stopnia 0.",
+            "correct_answer": "Prawda",
+            "explanation": "Niezerowa stała to wielomian stopnia zerowego (-7 = -7 * x^0). Prawda.",
+            "hint": "Stała różna od zera ma stopień 0.",
+            "hint_cost": 10,
+            "id": "task-2-9-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Wartość wielomianu $W(x) = 3x^3 - 4x + 2$ dla $x = -1$ wynosi:",
+            "correct_answer": "3",
+            "explanation": "3*(-1)^3 - 4*(-1) + 2 = -3 + 4 + 2 = 3.",
+            "hint": "Podstaw -1 pod x.",
+            "hint_cost": 10,
+            "id": "task-2-9-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Współczynnik przy najwyższej potędze wielomianu $W(x) = (2 - 3x)(x^2 + 4)$ to:",
+            "options": [
+              "-3",
+              "3",
+              "2",
+              "-2"
+            ],
+            "correct_answer": "-3",
+            "explanation": "(-3x) * x^2 = -3x^3. Współczynnik wynosi -3.",
+            "hint": "Pomnóż wyrazy z najwyższymi potęgami.",
+            "hint_cost": 10,
+            "id": "task-2-9-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Wielomian $W(x) = (x - 1)(x - 2)(x - 3)$ ma stopień 3.",
+            "correct_answer": "Prawda",
+            "explanation": "Mnożymy 3 czynniki liniowe: x*x*x = x^3. Prawda.",
+            "hint": "Stopień iloczynu to suma stopni czynników.",
+            "hint_cost": 10,
+            "id": "task-2-9-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Dany jest wielomian $W(x) = (2x^2 - x + 3)(x^2 - 4)$. Wyznacz jego stopień oraz oblicz wyraz wolny bez wykonywania pełnego mnożenia.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie stopnia: 2 + 2 = 4.",
+              "1 pkt za wyznaczenie wyrazu wolnego: W(0) = 3 \\cdot (-4) = -12."
+            ],
+            "explanation": "Stopień to 2 + 2 = 4. Wyraz wolny to W(0) = (3) * (-4) = -12.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-9-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-10",
+        "title": "Wielomiany: Dodawanie i odejmowanie wielomianów",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Dodawanie i odejmowanie wielomianów sprowadza się do redukcji wyrazów podobnych. Przy odejmowaniu wielomianu P(x) od W(x) należy cały odejmowany wielomian ująć w nawias i zmienić znaki wszystkich jego wyrazów.",
+          "matura_context": "Zadania otwarte i zamknięte sprawdzające poprawność działań na funkcjach wielomianowych.",
+          "core_formulas": "W(x) - P(x) = W(x) - (b_n x^n + \\dots + b_0)",
+          "worked_example": "$(4x^3 - 2x + 1) - (x^3 + 3x - 5) = 4x^3 - 2x + 1 - x^3 - 3x + 5 = 3x^3 - 5x + 6$.",
+          "exam_trap": "Opuszczenie nawiasu przy odejmowaniu bez zmiany znaków wszystkich składników."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Dla $W(x) = 3x^2 - 5x$ oraz $P(x) = x^2 - 5x + 4$ różnica $W(x) - P(x)$ wynosi:",
+            "options": [
+              "$2x^2 - 4$",
+              "$2x^2 - 10x + 4$",
+              "$2x^2 + 4$",
+              "$4x^2 - 4$"
+            ],
+            "correct_answer": "$2x^2 - 4$",
+            "explanation": "(3x^2 - 5x) - (x^2 - 5x + 4) = 3x^2 - 5x - x^2 + 5x - 4 = 2x^2 - 4.",
+            "hint": "-5x - (-5x) = -5x + 5x = 0.",
+            "hint_cost": 10,
+            "id": "task-2-10-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Dla $W(x) = x^3 + 2$ i $P(x) = 3x^2 - 1$. Oblicz wartość $W(2) + P(2)$:",
+            "correct_answer": "21",
+            "explanation": "W(2) = 8 + 2 = 10. P(2) = 3*4 - 1 = 11. 10 + 11 = 21.",
+            "hint": "Oblicz wartości dla x = 2 i dodaj je do siebie.",
+            "hint_cost": 10,
+            "id": "task-2-10-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Suma wielomianów $W(x) = 2x^2 - 4x + 3$ oraz $P(x) = -2x^2 + 4x + 1$ jest równa:",
+            "options": [
+              "4",
+              "$4x^2 + 4$",
+              "$-8x + 4$",
+              "0"
+            ],
+            "correct_answer": "4",
+            "explanation": "Wyrazy z x^2 i x się redukują: 3 + 1 = 4.",
+            "hint": "Zredukuj wyrazy podobne.",
+            "hint_cost": 10,
+            "id": "task-2-10-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Stopień różnicy dwóch wielomianów stopnia 3 może być mniejszy niż 3.",
+            "correct_answer": "Prawda",
+            "explanation": "Prawda, np. (x^3 + x) - (x^3 - 2) = x + 2 (stopień 1).",
+            "hint": "Współczynniki przy najwyższych potęgach mogą się zredukować.",
+            "hint_cost": 10,
+            "id": "task-2-10-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Wyraz wolny wielomianu $H(x) = 3W(x) - P(x)$, jeśli $W(0) = 5$ oraz $P(0) = 4$, wynosi:",
+            "correct_answer": "11",
+            "explanation": "H(0) = 3*5 - 4 = 15 - 4 = 11.",
+            "hint": "Wyraz wolny to wartość wielomianu dla x = 0.",
+            "hint_cost": 10,
+            "id": "task-2-10-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Dany jest $W(x) = 2x^3 - 5$. Wielomian $-W(x)$ ma postać:",
+            "options": [
+              "$-2x^3 + 5$",
+              "$-2x^3 - 5$",
+              "$2x^3 + 5$",
+              "$-2x^3$"
+            ],
+            "correct_answer": "$-2x^3 + 5$",
+            "explanation": "-(2x^3 - 5) = -2x^3 + 5.",
+            "hint": "Zmień znaki obu wyrazów.",
+            "hint_cost": 10,
+            "id": "task-2-10-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Dla dowolnych wielomianów $W(x) + P(x) = P(x) + W(x)$.",
+            "correct_answer": "Prawda",
+            "explanation": "Dodawanie wielomianów jest przemienne. Prawda.",
+            "hint": "Dodawanie jest przemienne.",
+            "hint_cost": 10,
+            "id": "task-2-10-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Dane są wielomiany $W(x) = 4x^3 - 3x^2 + 2$ oraz $P(x) = 2x^3 + x^2 - 3x + 1$. Wyznacz wielomian $Q(x) = W(x) - 2P(x)$.",
+            "scoring_key": [
+              "1 pkt za poprawne pomnożenie P(x) przez 2 i zapis: (4x^3 - 3x^2 + 2) - (4x^3 + 2x^2 - 6x + 2).",
+              "1 pkt za redukcję wyrazów podobnych: -5x^2 + 6x."
+            ],
+            "explanation": "4x^3 - 3x^2 + 2 - 4x^3 - 2x^2 + 6x - 2 = -5x^2 + 6x.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-10-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-11",
+        "title": "Wielomiany: Mnożenie wielomianów i współczynniki potęg",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Aby wyznaczyć współczynnik przy określonej potędze x (np. przy x^2) w iloczynie wielomianów, nie trzeba wykonywać pełnego mnożenia. Wystarczy wybrać i zsumować iloczyny tych par wyrazów, których wykładniki sumują się do pożądanej potęgi.",
+          "matura_context": "Zadanie zamknięte sprawdzające efektywność rachunkową maturzysty.",
+          "core_formulas": "a_k x^k \\cdot b_{n-k} x^{n-k} = a_k b_{n-k} x^n",
+          "worked_example": "W iloczynie $(x^2 - 3)(2x + 1)$ wyraz z $x^2$ powstaje z: $x^2 \\cdot 1 = 1x^2$.",
+          "exam_trap": "Marnowanie czasu na rozpisywanie iloczynu 3x3 na brudnopisie zamiast bezpośredniego znalezienia odpowiednich par."
+        },
+        "tasks": [
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Jaki jest współczynnik przy $x^3$ w iloczynie $(2x^2 + 1)(3x - 4)$?",
+            "correct_answer": "6",
+            "explanation": "2x^2 * 3x = 6x^3. Współczynnik wynosi 6.",
+            "hint": "Pomnóż wyraz z x^2 przez wyraz z x.",
+            "hint_cost": 10,
+            "id": "task-2-11-1"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Współczynnik przy $x^2$ w iloczynie $(3x - 2)(x^2 + 4x)$ wynosi:",
+            "options": [
+              "10",
+              "12",
+              "-2",
+              "14"
+            ],
+            "correct_answer": "10",
+            "explanation": "Wyraz z x^2: 3x * 4x + (-2) * x^2 = 12x^2 - 2x^2 = 10x^2.",
+            "hint": "Dodaj iloczyny: (3x)*(4x) oraz (-2)*(x^2).",
+            "hint_cost": 10,
+            "id": "task-2-11-2"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Podaj stopień wielomianu $W(x) = (x^3 + 2)^2$:",
+            "correct_answer": "6",
+            "explanation": "(x^3)^2 = x^6. Stopień wynosi 6.",
+            "hint": "3 * 2 = 6.",
+            "hint_cost": 10,
+            "id": "task-2-11-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Iloczyn wielomianu stopnia 1 i wielomianu stopnia 4 jest wielomianem stopnia 5.",
+            "correct_answer": "Prawda",
+            "explanation": "1 + 4 = 5. Prawda.",
+            "hint": "Stopnie wielomianów dodajemy.",
+            "hint_cost": 10,
+            "id": "task-2-11-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Wyraz wolny wielomianu $W(x) = (x - 1)(x + 2)(x - 4)$ wynosi:",
+            "options": [
+              "8",
+              "-8",
+              "6",
+              "-6"
+            ],
+            "correct_answer": "8",
+            "explanation": "(-1) * 2 * (-4) = 8.",
+            "hint": "Wymnóż liczby z końców każdego nawiasu.",
+            "hint_cost": 10,
+            "id": "task-2-11-5"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Współczynnik przy najwyższej potędze wielomianu $W(x) = (4x - 1)(3x^2 + 2)$ wynosi:",
+            "correct_answer": "12",
+            "explanation": "4x * 3x^2 = 12x^3. Współczynnik to 12.",
+            "hint": "Pomnóż 4 przez 3.",
+            "hint_cost": 10,
+            "id": "task-2-11-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Wielomian $(x^2 - 1)^3$ ma stopień 6.",
+            "correct_answer": "Prawda",
+            "explanation": "(x^2)^3 = x^6. Prawda.",
+            "hint": "2 * 3 = 6.",
+            "hint_cost": 10,
+            "id": "task-2-11-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Nie wykonując pełnego mnożenia, wyznacz współczynnik przy $x^2$ w wielomianie $W(x) = (2x^2 - 3x + 1)(x^2 + 4x - 2)$.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie trzech składników dających x^2: (2x^2)(-2) + (-3x)(4x) + (1)(x^2).",
+              "1 pkt za obliczenie sumy: -4 - 12 + 1 = -15."
+            ],
+            "explanation": "Pary dające x^2: (2x^2)*(-2) = -4x^2; (-3x)*(4x) = -12x^2; 1*(x^2) = 1x^2. Suma: (-4 - 12 + 1)x^2 = -15x^2. Współczynnik to -15.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-11-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-12",
+        "title": "Wielomiany: Równość wielomianów i wyznaczanie parametrów",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Dwa wielomiany są równe wtedy i tylko wtedy, gdy są tego samego stopnia i mają identyczne współczynniki przy odpowiednich potęgach zmiennej x. Aby wyznaczyć parametry, doprowadzamy oba wielomiany do postaci uporządkowanej i przyrównujemy współczynniki parami.",
+          "matura_context": "Klasyczne zadanie z parametrem na maturze za 1 lub 2 punkty.",
+          "core_formulas": "W(x) \\equiv P(x) \\iff a_k = b_k \\quad \\text{dla każdego } k \\in \\{0, 1, \\dots, n\\}",
+          "worked_example": "$(a - 1)x^2 + 4x = 3x^2 + bx \\implies a - 1 = 3 \\implies a = 4$ oraz $b = 4$.",
+          "exam_trap": "Przyrównywanie współczynników przed wymnożeniem i zredukowaniem wielomianu."
+        },
+        "tasks": [
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wielomiany $W(x) = (a + 3)x^2 - 2x$ oraz $P(x) = 7x^2 - 2x$ są równe. Podaj wartość $a$:",
+            "correct_answer": "4",
+            "explanation": "a + 3 = 7 -> a = 4.",
+            "hint": "Przyrównaj współczynniki przy x^2.",
+            "hint_cost": 10,
+            "id": "task-2-12-1"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Wielomiany $W(x) = ax^2 + bx - 6$ oraz $P(x) = (x - 2)(3x + 3)$ są równe dla:",
+            "options": [
+              "$a = 3, b = -3$",
+              "$a = 3, b = 3$",
+              "$a = 1, b = -3$",
+              "$a = 3, b = -6$"
+            ],
+            "correct_answer": "$a = 3, b = -3$",
+            "explanation": "(x - 2)(3x + 3) = 3x^2 + 3x - 6x - 6 = 3x^2 - 3x - 6. Stąd a = 3, b = -3.",
+            "hint": "Wymnóż P(x) i odczytaj współczynniki.",
+            "hint_cost": 10,
+            "id": "task-2-12-2"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Dla jakiej wartości $c > 0$ wielomiany $W(x) = x^2 + 10x + 25$ oraz $P(x) = (x + c)^2$ są równe?",
+            "correct_answer": "5",
+            "explanation": "c^2 = 25 i 2c = 10 -> c = 5.",
+            "hint": "c do kwadratu to 25.",
+            "hint_cost": 10,
+            "id": "task-2-12-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Równe wielomiany przyjmują te same wartości dla dowolnego argumentu $x$.",
+            "correct_answer": "Prawda",
+            "explanation": "Z definicji równości wielomianów W(x) = P(x) dla każdego x rzeczywistego. Prawda.",
+            "hint": "Równość wielomianów to tożsamość dla każdego x.",
+            "hint_cost": 10,
+            "id": "task-2-12-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Wielomiany $W(x) = 2x^2 + kx + 1$ oraz $P(x) = 2x^2 - 7x + 1$ są równe. Podaj wartość $k$:",
+            "correct_answer": "-7",
+            "explanation": "k = -7.",
+            "hint": "Przyrównaj współczynniki przy x.",
+            "hint_cost": 10,
+            "id": "task-2-12-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wielomiany $W(x) = 4x^3 - 6x$ oraz $P(x) = mx(2x^2 - 3)$ są równe dla $m$ równego:",
+            "options": [
+              "2",
+              "-2",
+              "4",
+              "1"
+            ],
+            "correct_answer": "2",
+            "explanation": "mx(2x^2 - 3) = 2mx^3 - 3mx. Dla m = 2: 4x^3 - 6x.",
+            "hint": "Wymnóż nawias w P(x).",
+            "hint_cost": 10,
+            "id": "task-2-12-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Jeśli dwa wielomiany są równe, to ich wyrazy wolne są równe.",
+            "correct_answer": "Prawda",
+            "explanation": "Wyraz wolny to W(0) = P(0), więc muszą być identyczne. Prawda.",
+            "hint": "Wstaw x = 0 do obu wielomianów.",
+            "hint_cost": 10,
+            "id": "task-2-12-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wyznacz parametry $a$ i $b$, dla których wielomiany $W(x) = (x^2 - 4)(x + a)$ oraz $P(x) = x^3 + 2x^2 - 4x + b$ są równe.",
+            "scoring_key": [
+              "1 pkt za wymnożenie W(x) = x^3 + ax^2 - 4x - 4a.",
+              "1 pkt za przyrównanie współczynników i wyznaczenie a = 2 oraz b = -8."
+            ],
+            "explanation": "W(x) = x^3 + ax^2 - 4x - 4a. Porównując z P(x): przy x^2 mamy a = 2. Wyraz wolny: b = -4a = -4*2 = -8.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-12-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-13",
+        "title": "Wyrażenia wymierne: Dziedzina i warunki istnienia ułamka",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Wyrażenie wymierne ma sens liczbowy tylko wtedy, gdy jego mianownik jest różny od zera. Dziedzinę wyznaczamy poprzez przyrównanie mianownika do zera i wykluczenie otrzymanych rozwiązań ze zbioru liczb rzeczywistych. Licznik ułamka nie ma wpływu na dziedzinę.",
+          "matura_context": "Obowiązkowy krok w zadaniach z wyrażeń i równań wymiernych.",
+          "core_formulas": "\\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad D = \\mathbb{R} \\setminus \\{x: Q(x) = 0\\}",
+          "worked_example": "$\\frac{2x + 1}{x^2 - 4} \\implies x^2 - 4 \\neq 0 \\implies x \\neq 2 \\land x \\neq -2 \\implies D = \\mathbb{R} \\setminus \\{-2, 2\\}$.",
+          "exam_trap": "Przyrównywanie licznika do zera przy wyznaczaniu dziedziny! Licznik może być zerem – to mianownik decyduje o dziedzinie."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Dziedziną wyrażenia wymiernego $\\frac{x + 3}{x - 5}$ jest zbiór:",
+            "options": [
+              "$\\mathbb{R} \\setminus \\{5\\}$",
+              "$\\mathbb{R} \\setminus \\{-3, 5\\}$",
+              "$\\mathbb{R} \\setminus \\{-3\\}$",
+              "$\\mathbb{R}$"
+            ],
+            "correct_answer": "$\\mathbb{R} \\setminus \\{5\\}$",
+            "explanation": "x - 5 != 0 -> x != 5. D = R \\ {5}.",
+            "hint": "Tylko mianownik nie może być zerem.",
+            "hint_cost": 10,
+            "id": "task-2-13-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Ile liczb należy wykluczyć ze zbioru $\\mathbb{R}$ przy wyznaczaniu dziedziny wyrażenia $\\frac{1}{x^2 - 16}$?",
+            "correct_answer": "2",
+            "explanation": "x^2 - 16 = 0 -> x = 4 lub x = -4. Wykluczamy 2 liczby.",
+            "hint": "Rozwiąż równanie x^2 - 16 = 0.",
+            "hint_cost": 10,
+            "id": "task-2-13-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Dziedziną wyrażenia $\\frac{2x}{x^2 + 9}$ jest:",
+            "options": [
+              "$\\mathbb{R}$",
+              "$\\mathbb{R} \\setminus \\{-3, 3\\}$",
+              "$\\mathbb{R} \\setminus \\{3\\}$",
+              "$\\mathbb{R} \\setminus \\{-9\\}$"
+            ],
+            "correct_answer": "$\\mathbb{R}$",
+            "explanation": "x^2 >= 0, więc x^2 + 9 >= 9 > 0. Mianownik nigdy się nie zeruje. D = R.",
+            "hint": "Czy suma kwadratu i liczby 9 może być zerem?",
+            "hint_cost": 10,
+            "id": "task-2-13-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Liczba 0 należy do dziedziny wyrażenia $\\frac{x - 1}{x + 2}$.",
+            "correct_answer": "Prawda",
+            "explanation": "Dla x = 0 mianownik wynosi 0 + 2 = 2 != 0. Dziedziną jest R \\ {-2}, więc 0 należy. Prawda.",
+            "hint": "Sprawdź, czy 0 zeruje mianownik.",
+            "hint_cost": 10,
+            "id": "task-2-13-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dla jakiej wartości $x$ wyrażenie $\\frac{5x}{2x - 8}$ nie ma sensu liczbowego?",
+            "correct_answer": "4",
+            "explanation": "2x - 8 = 0 -> 2x = 8 -> x = 4.",
+            "hint": "Przyrównaj mianownik do zera.",
+            "hint_cost": 10,
+            "id": "task-2-13-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Dziedziną wyrażenia $\\frac{1}{x(x - 3)}$ jest:",
+            "options": [
+              "$\\mathbb{R} \\setminus \\{0, 3\\}$",
+              "$\\mathbb{R} \\setminus \\{-3, 0\\}$",
+              "$\\mathbb{R} \\setminus \\{3\\}$",
+              "$\\mathbb{R} \\setminus \\{0\\}$"
+            ],
+            "correct_answer": "$\\mathbb{R} \\setminus \\{0, 3\\}$",
+            "explanation": "x != 0 oraz x - 3 != 0 -> x != 3. D = R \\ {0, 3}.",
+            "hint": "Mianownik zeruje się dla x = 0 oraz x = 3.",
+            "hint_cost": 10,
+            "id": "task-2-13-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Wyrażenie $\\frac{x^2 - 1}{x + 1}$ ma dziedzinę $D = \\mathbb{R}$.",
+            "correct_answer": "Fałsz",
+            "explanation": "Fałsz! Mimo że ułamek można skrócić, dziedzinę wyznaczamy ZAWSZE z postaci pierwotnej: x != -1.",
+            "hint": "Dziedzinę wyznaczamy przed skracaniem ułamka.",
+            "hint_cost": 10,
+            "id": "task-2-13-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_GENERAL",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wyznacz dziedzinę wyrażenia wymiernego: $W(x) = \\frac{x^2 - 4}{x^3 - 9x}$.",
+            "scoring_key": [
+              "1 pkt za rozłożenie mianownika na czynniki: x(x^2 - 9) = x(x - 3)(x + 3).",
+              "1 pkt za podanie dziedziny: D = \\mathbb{R} \\setminus \\{-3, 0, 3\\}."
+            ],
+            "explanation": "Mianownik: x(x^2 - 9) = x(x - 3)(x + 3) = 0 -> x = 0 lub x = 3 lub x = -3. Zatem D = R \\ {-3, 0, 3}.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-13-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-14",
+        "title": "Wyrażenia wymierne: Skracanie ułamków algebraicznych",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Skracanie ułamków algebraicznych polega na dzieleniu licznika i mianownika przez ten sam niezerowy czynnik. Aby skrócić ułamek, należy NAJPIERW rozłożyć licznik i mianownik na czynniki (wyłączając wspólny czynnik lub stosując wzory skróconego mnożenia).",
+          "matura_context": "Zadanie za 1 punkt na maturze majowej.",
+          "core_formulas": "\\frac{A(x) \\cdot C(x)}{B(x) \\cdot C(x)} = \\frac{A(x)}{B(x)} \\quad \\text{dla } C(x) \\neq 0",
+          "worked_example": "$\\frac{x^2 - 9}{x - 3} = \\frac{(x - 3)(x + 3)}{x - 3} = x + 3$ dla $x \\neq 3$.",
+          "exam_trap": "Nie wolno skracać składników sumy! $\\frac{x + 2}{2} \\neq x + 1$. Skracać można wyłącznie czynniki iloczynu."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Wyrażenie $\\frac{x^2 - 16}{x - 4}$ dla $x \\neq 4$ jest równe:",
+            "options": [
+              "$x + 4$",
+              "$x - 4$",
+              "$x + 16$",
+              "$4$"
+            ],
+            "correct_answer": "$x + 4$",
+            "explanation": "(x - 4)(x + 4) / (x - 4) = x + 4.",
+            "hint": "Rozłóż licznik ze wzoru a^2 - b^2.",
+            "hint_cost": 10,
+            "id": "task-2-14-1"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Dla $x = 50$ oblicz wartość ułamka $\\frac{3x + 9}{x + 3}$:",
+            "correct_answer": "3",
+            "explanation": "3(x + 3) / (x + 3) = 3. Wartość jest stała i wynosi 3 dla każdego x != -3.",
+            "hint": "Wyłącz 3 przed nawias w liczniku i skróć ułamek.",
+            "hint_cost": 10,
+            "id": "task-2-14-2"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Wyrażenie $\\frac{x^2 - 6x + 9}{x - 3}$ dla $x \\neq 3$ ma postać:",
+            "options": [
+              "$x - 3$",
+              "$x + 3$",
+              "$x - 9$",
+              "$1$"
+            ],
+            "correct_answer": "$x - 3$",
+            "explanation": "(x - 3)^2 / (x - 3) = x - 3.",
+            "hint": "Zwiń licznik do wzoru kwadratu różnicy.",
+            "hint_cost": 10,
+            "id": "task-2-14-3"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Ułamek $\\frac{x + 6}{3}$ po skróceniu ma postać $x + 2$.",
+            "correct_answer": "Fałsz",
+            "explanation": "Fałsz, mianownik 3 dzieli również x: (x/3) + 2. Nie można skrócić samej szóstki.",
+            "hint": "Każdy składnik licznika musi być podzielony przez 3.",
+            "hint_cost": 10,
+            "id": "task-2-14-4",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Wartość wyrażenia $\\frac{x^2 - 4}{x + 2}$ dla $x = 10$ wynosi:",
+            "correct_answer": "8",
+            "explanation": "(x - 2)(x + 2) / (x + 2) = x - 2. Dla x = 10: 10 - 2 = 8.",
+            "hint": "Skróć ułamek do postaci x - 2.",
+            "hint_cost": 10,
+            "id": "task-2-14-5"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Wyrażenie $\\frac{4x^2}{8x^3}$ po uproszczeniu dla $x \\neq 0$ jest równe:",
+            "options": [
+              "$\\frac{1}{2x}$",
+              "$\\frac{x}{2}$",
+              "$\\frac{1}{2}$",
+              "$2x$"
+            ],
+            "correct_answer": "$\\frac{1}{2x}$",
+            "explanation": "4/8 = 1/2 oraz x^2 / x^3 = 1/x. Razem: 1/(2x).",
+            "hint": "Skróć 4 z 8 oraz potęgi zmiennej x.",
+            "hint_cost": 10,
+            "id": "task-2-14-6"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Dla $x \\neq 2$ ułamek $\\frac{2 - x}{x - 2}$ jest równy $-1$.",
+            "correct_answer": "Prawda",
+            "explanation": "2 - x = -(x - 2), zatem -(x - 2) / (x - 2) = -1. Prawda.",
+            "hint": "Wyłącz -1 przed nawias w liczniku.",
+            "hint_cost": 10,
+            "id": "task-2-14-7",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wykaż, że dla każdej liczby $x \\in \\mathbb{R} \\setminus \\{-2, 2\\}$ wartość wyrażenia $\\frac{x^3 - 4x}{x^2 - 4}$ jest równa $x$.",
+            "scoring_key": [
+              "1 pkt za wyłączenie x w liczniku: x(x^2 - 4).",
+              "1 pkt za skrócenie z mianownikiem (x^2 - 4) i konkluzję: wynik to x."
+            ],
+            "explanation": "\\frac{x(x^2 - 4)}{x^2 - 4} = x dla x \\neq 2 i x \\neq -2.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-14-8"
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-15",
+        "title": "Dowodzenie algebraiczne: Wykazywanie nierówności i zwijanie do kwadratu",
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3,
+        "theory_pill": {
+          "concept_essence": "Dowodzenie nierówności polega na przekształceniu tezy do równoważnej postaci, w której po jednej stronie występuje suma pełnych kwadratów, a po drugiej zero. Ponieważ kwadrat dowolnej liczby rzeczywistej jest nieujemny ($a^2 \\ge 0$), dowód zostaje zakończony stosownym komentarzem słownym.",
+          "matura_context": "Zadanie otwarte na dowodzenie za 2 punkty na każdej maturze majowej.",
+          "core_formulas": "(a - b)^2 \\ge 0 \\quad \\text{dla każdego } a, b \\in \\mathbb{R}",
+          "worked_example": "Wykaż, że $a^2 + 9 \\ge 6a$. Przenosimy: $a^2 - 6a + 9 \\ge 0 \\implies (a - 3)^2 \\ge 0$. Kwadrat liczby rzeczywistej jest zawsze nieujemny, co kończy dowód.",
+          "exam_trap": "Brak komentarza słownego pod koniec dowodu: 'Kwadrat dowolnej liczby rzeczywistej jest nieujemny'. Sam zapis algebraiczny bez wniosku może skutkować utratą 1 punktu."
+        },
+        "tasks": [
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2024",
+            "content": "Nierówność $x^2 - 8x + 16 \\ge 0$ po zwinięciu do kwadratu ma postać:",
+            "options": [
+              "$(x - 4)^2 \\ge 0$",
+              "$(x + 4)^2 \\ge 0$",
+              "$(x - 16)^2 \\ge 0$",
+              "$(x - 8)^2 \\ge 0$"
+            ],
+            "correct_answer": "$(x - 4)^2 \\ge 0$",
+            "explanation": "x^2 - 2*4*x + 4^2 = (x - 4)^2 >= 0.",
+            "hint": "Zastosuj wzór (a - b)^2.",
+            "hint_cost": 10,
+            "id": "task-2-15-1"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Matura maj 2023",
+            "content": "Dla każdej liczby rzeczywistej $a$ prawdziwa jest nierówność $a^2 + 4 > 0$.",
+            "correct_answer": "Prawda",
+            "explanation": "a^2 >= 0, zatem a^2 + 4 >= 4 > 0. Prawda.",
+            "hint": "Kwadrat liczby rzeczywistej jest nieujemny, a dodając 4 otrzymujesz liczbę dodatnią.",
+            "hint_cost": 10,
+            "id": "task-2-15-2",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Informator maturalny",
+            "content": "Jaka jest najmniejsza wartość wyrażenia $(x - 7)^2 + 5$ dla $x \\in \\mathbb{R}$?",
+            "correct_answer": "5",
+            "explanation": "Kwadrat osiąga minimum równe 0 dla x = 7. Wtedy 0 + 5 = 5.",
+            "hint": "Kwadrat nawiasu jest najmniejszy, gdy wynosi zero.",
+            "hint_cost": 10,
+            "id": "task-2-15-3"
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Arkusz pokazowy",
+            "content": "Wyrażenie $a^2 + b^2 - 2ab$ dla dowolnych liczb $a, b \\in \\mathbb{R}$ jest zawsze:",
+            "options": [
+              "nieujemne",
+              "dodatnie",
+              "ujemne",
+              "niedodatnie"
+            ],
+            "correct_answer": "nieujemne",
+            "explanation": "To wzór (a - b)^2 >= 0 (czyli nieujemne).",
+            "hint": "Zwiń wyrażenie do kwadratu różnicy.",
+            "hint_cost": 10,
+            "id": "task-2-15-4"
+          },
+          {
+            "type": "TRUE_FALSE",
+            "points": 1,
+            "source": "Matura czerwiec 2024",
+            "content": "Dla dowolnych liczb rzeczywistych zachodzi nierówność $(a - b)^2 \\ge 0$.",
+            "correct_answer": "Prawda",
+            "explanation": "Kwadrat dowolnej liczby rzeczywistej jest nieujemny. Prawda.",
+            "hint": "Z definicji kwadrat liczby rzeczywistej jest większy bądź równy zero.",
+            "hint_cost": 10,
+            "id": "task-2-15-5",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "type": "SINGLE_CHOICE",
+            "points": 1,
+            "source": "Matura maj 2025",
+            "content": "Nierówność $x^2 + 1 \\ge 2x$ po przekształceniu ma postać:",
+            "options": [
+              "$(x - 1)^2 \\ge 0$",
+              "$(x + 1)^2 \\ge 0$",
+              "$x^2 - 2 \\ge 0$",
+              "$(x - 2)^2 \\ge 0$"
+            ],
+            "correct_answer": "$(x - 1)^2 \\ge 0$",
+            "explanation": "x^2 - 2x + 1 >= 0 -> (x - 1)^2 >= 0.",
+            "hint": "Przenieś 2x na lewą stronę.",
+            "hint_cost": 10,
+            "id": "task-2-15-6"
+          },
+          {
+            "type": "NUMERIC_INPUT",
+            "points": 1,
+            "source": "Zadanie autorskie",
+            "content": "Dla jakiej wartości $x$ wyrażenie $(3x - 12)^2$ osiąga wartość najmniejszą?",
+            "correct_answer": "4",
+            "explanation": "3x - 12 = 0 -> 3x = 12 -> x = 4.",
+            "hint": "Przyrównaj zawartość nawiasu do zera.",
+            "hint_cost": 10,
+            "id": "task-2-15-7"
+          },
+          {
+            "type": "OPEN_PROOF",
+            "points": 2,
+            "source": "Matura maj 2024",
+            "content": "Wykaż, że dla dowolnych liczb rzeczywistych $x$ i $y$ prawdziwa jest nierówność $x^2 + y^2 + 2 \\ge 2(x + y)$.",
+            "scoring_key": [
+              "1 pkt za przeniesienie wyrazów i pogrupowanie w dwa pełne kwadraty: (x^2 - 2x + 1) + (y^2 - 2y + 1) \\ge 0.",
+              "1 pkt za zapis (x - 1)^2 + (y - 1)^2 \\ge 0 i wniosek, że suma dwóch kwadratów jest zawsze nieujemna."
+            ],
+            "explanation": "x^2 - 2x + 1 + y^2 - 2y + 1 >= 0 -> (x - 1)^2 + (y - 1)^2 >= 0. Suma kwadratów liczb rzeczywistych jest zawsze nieujemna, co kończy dowód.",
+            "ai_hint_enabled": true,
+            "hint_cost": 20,
+            "id": "task-2-15-8"
+          }
+        ]
+      }
+    ],
+    "final_test": {
+      "title": "Sprawdzian Działu: Wyrażenia Algebraiczne i Wielomiany",
+      "description": "Kompleksowy test sprawdzający opanowanie materiału z Działu 2. Zadania losowane bez asysty wskazówek ze wszystkich 15 lekcji.",
+      "tasks_to_draw": 15,
+      "boss_message": "Zwracaj uwagę na znaki minus przed nawiasem, wyraz 2ab we wzorach oraz dziedzinę ułamków. Powodzenia!"
+    }
+  }
+}

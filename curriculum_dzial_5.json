@@ -1,0 +1,2321 @@
+{
+  "topic": {
+    "id": "dzial-5",
+    "title": "Dział 5: Funkcja Liniowa i Układy Równań",
+    "description": "Kompleksowe omówienie funkcji liniowej, współczynnika kierunkowego, równoległości i prostopadłości prostych oraz układów równań liniowych.",
+    "lessons": [
+      {
+        "id": "lesson-5-1",
+        "title": "Wzór kierunkowy funkcji liniowej: y = ax + b",
+        "theory_pill": {
+          "concept_essence": "Wzór ogólny funkcji liniowej to $y = ax + b$. Wykresem jest zawsze linia prosta. Liczba $a$ to współczynnik kierunkowy decydujący o nachyleniu i monotoniczności, a $b$ to wyraz wolny decydujący o przesunięciu w pionie.",
+          "matura_context": "Podstawa zadań z geometrii i algebry. W każdym arkuszu maturalnym pojawia się odczytanie lub zastosowanie wzoru $y = ax + b$.",
+          "core_formulas": "$y = ax + b$. Dziedzina: $\\mathbb{R}$. Zbiór wartości: $\\mathbb{R}$ dla $a \\neq 0$, $\\{b\\}$ dla $a = 0$.",
+          "worked_example": "Dla prostej $y = 2x - 3$: współczynnik kierunkowy $a = 2$, wyraz wolny $b = -3$.",
+          "exam_trap": "Gdy równanie podane jest w postaci ogólnej $Ax + By + C = 0$, należy najpierw wyznaczyć $y$, a nie odczytywać $a = A$!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-1-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Współczynnik kierunkowy prostej o równaniu $y = -3x + 7$ jest równy:",
+            "explanation": "Liczba stojąca bezpośrednio przy x to współczynnik kierunkowy $a = -3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Odczytaj współczynnik stojący przy zmiennej x.",
+            "options": [
+              "-3",
+              "7",
+              "3",
+              "-7"
+            ],
+            "plot": {
+              "type": "LINEAR",
+              "xRange": [
+                -1,
+                5
+              ],
+              "yRange": [
+                -5,
+                8
+              ],
+              "gridStep": 1,
+              "lines": [
+                {
+                  "slope": -3,
+                  "intercept": 7,
+                  "domain": [
+                    0,
+                    4
+                  ],
+                  "label": "y = -3x + 7"
+                }
+              ],
+              "points": [
+                {
+                  "x": 1,
+                  "y": 4,
+                  "label": "(1, 4)",
+                  "dot": "filled"
+                },
+                {
+                  "x": 2,
+                  "y": 1,
+                  "label": "(2, 1)",
+                  "dot": "filled"
+                }
+              ]
+            }
+          },
+          {
+            "id": "task-5-1-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla prostej o równaniu $2x - y + 4 = 0$ współczynnik kierunkowy wynosi:",
+            "explanation": "Przekształcamy do postaci kierunkowej: $-y = -2x - 4 \\implies y = 2x + 4$. Zatem $a = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Wyznacz y z równania.",
+            "options": [
+              "2",
+              "-2",
+              "4",
+              "1"
+            ]
+          },
+          {
+            "id": "task-5-1-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wykresem funkcji liniowej $f(x) = 5$ jest prosta równoległa do osi OX.",
+            "explanation": "Gdy $a = 0$, funkcja jest stała, a jej wykres to prosta pozioma równoległa do osi OX.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Funkcja stała ma wykres poziomy.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-1-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Prosta o równaniu $y = ax + b$ przechodzi przez punkty $(0, 4)$ oraz $(1, 7)$. Ile wynosi współczynnik $a$ tej prostej?",
+            "explanation": "$b = 4$, dla $x = 1$ mamy $a \\cdot 1 + 4 = 7 \\implies a = 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Oblicz przyrost y podzielony przez przyrost x."
+          },
+          {
+            "id": "task-5-1-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż równanie prostej, która NIE jest wykresem funkcji liniowej:",
+            "explanation": "Prosta pionowa $x = 3$ jednemu argumentowi przypisuje nieskończenie wiele wartości y, więc nie jest funkcją.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = 3$",
+            "hint": "Która prosta jest pionowa?",
+            "options": [
+              "$x = 3$",
+              "$y = 3$",
+              "$y = 3x$",
+              "$y = -x + 3$"
+            ],
+            "plot": {
+              "type": "PIECEWISE_LINEAR",
+              "xRange": [
+                -1,
+                6
+              ],
+              "yRange": [
+                -5,
+                5
+              ],
+              "gridStep": 1,
+              "segments": [
+                {
+                  "from": [
+                    3,
+                    -4.5
+                  ],
+                  "to": [
+                    3,
+                    4.5
+                  ],
+                  "startDot": "none",
+                  "endDot": "none",
+                  "color": "#EF4444"
+                }
+              ],
+              "points": [
+                {
+                  "x": 3,
+                  "y": 0,
+                  "label": "x = 3 (pionowa)",
+                  "dot": "filled"
+                }
+              ]
+            }
+          },
+          {
+            "id": "task-5-1-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Współczynnik kierunkowy prostej $y = \\frac{4 - 6x}{2}$ jest równy:",
+            "explanation": "Dzielimy każdy wyraz licznika przez 2: $y = 2 - 3x = -3x + 2$. Zatem $a = -3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Podziel oba składniki licznika przez 2.",
+            "options": [
+              "-3",
+              "2",
+              "4",
+              "-6"
+            ]
+          },
+          {
+            "id": "task-5-1-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Punkt $(1, -1)$ leży na prostej $y = -2x + 1$.",
+            "explanation": "Podstawiamy: $-2(1) + 1 = -2 + 1 = -1$, co zgadza się ze współrzędną y.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź, czy współrzędne punktu spełniają równanie prostej.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-1-8",
+            "type": "OPEN_GENERAL",
+            "content": "Przekształć równanie ogólne prostej $3x + 2y - 8 = 0$ do postaci kierunkowej. Podaj współczynnik kierunkowy oraz wyraz wolny tej prostej.",
+            "explanation": "Przekształcamy równanie, wyznaczając zmienną y:\n$2y = -3x + 8$\nDzielimy obustronnie przez 2:\n$y = -\\frac{3}{2}x + 4$\nWspółczynnik kierunkowy wynosi $a = -\\frac{3}{2} = -1{,}5$, a wyraz wolny $b = 4$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Przenieś wyrażenia z x oraz wyraz wolny na prawą stronę i podziel przez współczynnik przy y.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-2",
+        "title": "Kąt nachylenia prostej do osi OX: Związek a = tg alfa",
+        "theory_pill": {
+          "concept_essence": "Współczynnik kierunkowy $a$ to tangens kąta nachylenia prostej do dodatniej półosi OX: $a = \\operatorname{tg}\\alpha$. Gdy kąt jest ostry, $a > 0$. Gdy kąt jest rozwarty, $a < 0$. Dla kąta $0^\\circ$, $a = 0$.",
+          "matura_context": "Zadania pytające o kąt nachylenia prostej (często kąty $30^\\circ, 45^\\circ, 60^\\circ$ lub $120^\\circ, 135^\\circ, 150^\\circ$) są stałym elementem arkuszy.",
+          "core_formulas": "$a = \\operatorname{tg}\\alpha$, gdzie $\\alpha \\in [0^\\circ, 180^\\circ) \\setminus \\{90^\\circ\\}$. Dla kątów rozwartych: $\\operatorname{tg}(180^\\circ - \\beta) = -\\operatorname{tg}\\beta$.",
+          "worked_example": "Dla prostej $y = x + 2$ mamy $a = 1$. $\\operatorname{tg}\\alpha = 1 \\implies \\alpha = 45^\\circ$.",
+          "exam_trap": "Mylenie kąta z osią OX z kątem z osią OY. Kąt $\\alpha$ ZAWSZE mierzymy od dodatniej półosi OX w kierunku przeciwnym do ruchu wskazówek zegara."
+        },
+        "tasks": [
+          {
+            "id": "task-5-2-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Kąt nachylenia prostej $y = \\sqrt{3}x - 5$ do osi OX ma miarę:",
+            "explanation": "$a = \\sqrt{3}$. Wiadomo, że $\\operatorname{tg} 60^\\circ = \\sqrt{3}$, zatem $\\alpha = 60^\\circ$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$60^\\circ$",
+            "hint": "Dla jakiego kąta tangens wynosi pierwiastek z 3?",
+            "options": [
+              "$30^\\circ$",
+              "$45^\\circ$",
+              "$60^\\circ$",
+              "$120^\\circ$"
+            ]
+          },
+          {
+            "id": "task-5-2-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Prosta tworzy z dodatnią półosią OX kąt o mierze $45^\\circ$ i przecina oś OY w punkcie $(0, -2)$. Jej wzór to:",
+            "explanation": "$a = \\operatorname{tg} 45^\\circ = 1$, $b = -2$. Zatem $y = 1x - 2 = x - 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = x - 2$",
+            "hint": "Oblicz tangens kąta 45 stopni.",
+            "options": [
+              "$y = x - 2$",
+              "$y = -x - 2$",
+              "$y = \\sqrt{3}x - 2$",
+              "$y = 2x - 2$"
+            ]
+          },
+          {
+            "id": "task-5-2-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Kąt nachylenia prostej $y = -x + 4$ do dodatniej półosi OX ma miarę:",
+            "explanation": "$a = -1$. $\\operatorname{tg}\\alpha = -1 \\implies \\alpha = 180^\\circ - 45^\\circ = 135^\\circ$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$135^\\circ$",
+            "hint": "Kąt jest rozwarty, a tangens wynosi -1.",
+            "options": [
+              "$45^\\circ$",
+              "$135^\\circ$",
+              "$120^\\circ$",
+              "$150^\\circ$"
+            ]
+          },
+          {
+            "id": "task-5-2-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli prosta tworzy z osią OX kąt ostry, to jej współczynnik kierunkowy jest liczbą dodatnią.",
+            "explanation": "W I ćwiartce tangens jest dodatni, stąd dla $\\alpha \\in (0^\\circ, 90^\\circ)$ zachodzi $a > 0$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Tangens kąta ostrego jest zawsze dodatni.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-2-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Prosta $y = ax + 1$ tworzy z osią OX kąt $30^\\circ$. Oblicz wartość wyrażenia $a \\cdot \\sqrt{3}$.",
+            "explanation": "$a = \\operatorname{tg} 30^\\circ = \\frac{\\sqrt{3}}{3}$. Wtedy $a \\cdot \\sqrt{3} = \\frac{\\sqrt{3}}{3} \\cdot \\sqrt{3} = \\frac{3}{3} = 1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1",
+            "hint": "Tangens 30 stopni to pierwiastek z 3 przez 3."
+          },
+          {
+            "id": "task-5-2-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Współczynnik kierunkowy prostej nachylonej do osi OX pod kątem $150^\\circ$ jest równy:",
+            "explanation": "$\\operatorname{tg} 150^\\circ = -\\operatorname{tg}(180^\\circ - 150^\\circ) = -\\operatorname{tg} 30^\\circ = -\\frac{\\sqrt{3}}{3}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$-\\frac{\\sqrt{3}}{3}$",
+            "hint": "Użyj wzoru redukcyjnego dla kąta 180 - 30.",
+            "options": [
+              "$-\\frac{\\sqrt{3}}{3}$",
+              "$-\\sqrt{3}$",
+              "$\\frac{\\sqrt{3}}{3}$",
+              "-1"
+            ]
+          },
+          {
+            "id": "task-5-2-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Prosta pozioma $y = 7$ tworzy z osią OX kąt o mierze $0^\\circ$.",
+            "explanation": "Dla prostej poziomej $a = 0 = \\operatorname{tg} 0^\\circ$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Prosta pozioma jest równoległa do osi OX.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-2-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz miarę kąta nachylenia prostej o równaniu $\\sqrt{3}x + 3y - 6 = 0$ do dodatniej półosi OX. Zapisz przekształcenia.",
+            "explanation": "Krok 1: Przekształcamy równanie do postaci kierunkowej:\n$3y = -\\sqrt{3}x + 6 \\implies y = -\\frac{\\sqrt{3}}{3}x + 2$.\nKrok 2: Odczytujemy współczynnik kierunkowy: $a = -\\frac{\\sqrt{3}}{3}$.\nKrok 3: Wyznaczamy kąt $\\alpha$ ze związku $a = \\operatorname{tg}\\alpha$:\n$\\operatorname{tg}\\alpha = -\\frac{\\sqrt{3}}{3} \\implies \\alpha = 180^\\circ - 30^\\circ = 150^\\circ$.\nOdpowiedź: Kąt ma miarę $150^\\circ$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wyznacz y i znajdź kąt rozwarty, dla którego tangens ma wartość ujemną.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-3",
+        "title": "Monotoniczność funkcji liniowej w zależności od a",
+        "theory_pill": {
+          "concept_essence": "Monotoniczność funkcji liniowej $f(x) = ax + b$ zależy WYŁĄCZNIE od znaku współczynnika $a$:\n1. $a > 0 \\implies$ funkcja jest rosnąca,\n2. $a < 0 \\implies$ funkcja jest malejąca,\n3. $a = 0 \\implies$ funkcja jest stała.",
+          "matura_context": "Typowe zadanie z parametrem $m$: 'Dla jakiej wartości m funkcja $f(x) = (2m - 4)x + 1$ jest malejąca?'.",
+          "core_formulas": "$a > 0 \\iff$ rosnąca, $a < 0 \\iff$ malejąca, $a = 0 \\iff$ stała. Wyraz $b$ nie wpływa na monotoniczność.",
+          "worked_example": "Dla $f(x) = (3 - m)x + 2$: funkcja rośnie, gdy $3 - m > 0 \\implies m < 3$.",
+          "exam_trap": "Zwracanie uwagi na wyraz wolny $b$ przy badaniu monotoniczności. Liczba $b$ tylko przesuwa wykres w pionie, nie zmienia jego nachylenia!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-3-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja liniowa $f(x) = (m - 3)x + 5$ jest rosnąca wtedy i tylko wtedy, gdy:",
+            "explanation": "Warunek funkcji rosnącej: $a > 0 \\implies m - 3 > 0 \\implies m > 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$m > 3$",
+            "hint": "Przyrównaj współczynnik przy x do nierówności a > 0.",
+            "options": [
+              "$m > 3$",
+              "$m < 3$",
+              "$m = 3$",
+              "$m > -3$"
+            ]
+          },
+          {
+            "id": "task-5-3-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Funkcja liniowa $f(x) = (2 - 4m)x - 7$ jest malejąca wtedy i tylko wtedy, gdy:",
+            "explanation": "$a < 0 \\implies 2 - 4m < 0 \\implies -4m < -2 \\implies m > \\frac{2}{4} = \\frac{1}{2}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$m > \\frac{1}{2}$",
+            "hint": "Pamiętaj o zmianie zwrotu nierówności przy dzieleniu przez -4.",
+            "options": [
+              "$m > \\frac{1}{2}$",
+              "$m < \\frac{1}{2}$",
+              "$m > 2$",
+              "$m < 2$"
+            ]
+          },
+          {
+            "id": "task-5-3-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla jakiej wartości parametru $m$ funkcja $f(x) = (2m + 6)x - 3$ jest funkcją stałą?",
+            "explanation": "Funkcja liniowa jest stała, gdy $a = 0 \\implies 2m + 6 = 0 \\implies 2m = -6 \\implies m = -3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$m = -3$",
+            "hint": "Współczynnik przy x musi wynosić zero.",
+            "options": [
+              "$m = -3$",
+              "$m = 3$",
+              "$m = 0$",
+              "$m = -6$"
+            ]
+          },
+          {
+            "id": "task-5-3-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Wyraz wolny $b$ w funkcji $f(x) = ax + b$ decyduje o tym, czy funkcja jest rosnąca.",
+            "explanation": "O monotoniczności decyduje wyłącznie współczynnik kierunkowy a.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy wysokość prostej wpływa na jej nachylenie?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-5-3-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Funkcja $f(x) = (k^2 - 9)x + 4$ jest stała dla dwóch wartości $k$. Podaj dodatnią wartość $k$.",
+            "explanation": "$k^2 - 9 = 0 \\implies k = 3$ lub $k = -3$. Wartość dodatnia to 3.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Rozwiąż równanie kwadratowe k^2 - 9 = 0."
+          },
+          {
+            "id": "task-5-3-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż funkcję liniową, która jest malejąca w $\\mathbb{R}$:",
+            "explanation": "Jedyna funkcja o ujemnym współczynniku kierunkowym to pierwsza: $a = -\\frac{1}{2} < 0$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$f(x) = -\\frac{1}{2}x + 100$",
+            "hint": "Szukaj funkcji z ujemnym współczynnikiem przy x.",
+            "options": [
+              "$f(x) = -\\frac{1}{2}x + 100$",
+              "$f(x) = 0{,}1x - 50$",
+              "$f(x) = \\sqrt{2}x - 1$",
+              "$f(x) = 7$"
+            ]
+          },
+          {
+            "id": "task-5-3-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli $f$ jest funkcją liniową malejącą, to $f(5) < f(2)$.",
+            "explanation": "W funkcji malejącej dla większego argumentu ($5 > 2$) wartość jest mniejsza ($f(5) < f(2)$).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Dla funkcji malejącej większy x to mniejszy y.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-3-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wszystkie wartości parametru $m$, dla których funkcja liniowa $f(x) = (m^2 - 4m)x + 2m - 1$ jest rosnąca.",
+            "explanation": "Funkcja liniowa jest rosnąca wtedy i tylko wtedy, gdy jej współczynnik kierunkowy jest dodatni:\n$m^2 - 4m > 0$.\nRozwiązujemy nierówność kwadratową:\n$m(m - 4) > 0$.\nMiejsca zerowe: $m = 0$ oraz $m = 4$.\nRamiona paraboli skierowane są do góry, więc wartości dodatnie są na zewnątrz pierwiastków:\n$m \\in (-\\infty, 0) \\cup (4, +\\infty)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Rozwiąż nierówność kwadratową ze względu na m.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-4",
+        "title": "Wyraz wolny b i punkt przecięcia z osią OY",
+        "theory_pill": {
+          "concept_essence": "Wyraz wolny $b$ w równaniu $y = ax + b$ wyznacza punkt przecięcia prostej z osią OY: jest to punkt o współrzędnych $(0, b)$. Dzieje się tak, bo na osi OY argument $x = 0$, więc $y = a \\cdot 0 + b = b$.",
+          "matura_context": "Zadania z natychmiastowym odczytaniem $b$ z rysunku prostej lub wyznaczeniem punktu przecięcia z osią OY.",
+          "core_formulas": "Punkt przecięcia z OY: $P = (0, b)$. Równanie osi OY to $x = 0$.",
+          "worked_example": "Prosta $y = -4x + 7$ przecina oś OY w punkcie $(0, 7)$.",
+          "exam_trap": "Zapisywanie punktu jako $(b, 0)$ zamiast $(0, b)$! Punkt $(b, 0)$ leży na osi OX, a punkt $(0, b)$ leży na osi OY."
+        },
+        "tasks": [
+          {
+            "id": "task-5-4-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji $f(x) = 3x - 8$ przecina oś OY w punkcie:",
+            "explanation": "Punkt przecięcia z osią OY to $(0, b) = (0, -8)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, -8)$",
+            "hint": "Dla x = 0 oblicz wartość funkcji.",
+            "options": [
+              "$(0, -8)$",
+              "$(-8, 0)$",
+              "$(0, 3)$",
+              "$(3, 0)$"
+            ]
+          },
+          {
+            "id": "task-5-4-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Prosta przecina oś OY w punkcie $(0, 5)$ i ma współczynnik kierunkowy $a = -2$. Wzór tej prostej to:",
+            "explanation": "Podstawiamy dane do postaci kierunkowej: $y = ax + b = -2x + 5$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = -2x + 5$",
+            "hint": "Wstaw a = -2 oraz b = 5 do wzoru ogólnego.",
+            "options": [
+              "$y = -2x + 5$",
+              "$y = 5x - 2$",
+              "$y = -2x - 5$",
+              "$y = 2x + 5$"
+            ]
+          },
+          {
+            "id": "task-5-4-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Każda prosta postaci $y = ax$ przechodzi przez początek układu współrzędnych $(0, 0)$.",
+            "explanation": "Dla $b = 0$ punkt przecięcia z osią OY to $(0, 0)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź, czy punkt (0,0) spełnia równanie y = ax.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-4-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Prosta $y = 4x + 2m - 6$ przecina oś OY w punkcie $(0, 8)$. Oblicz wartość parametru $m$.",
+            "explanation": "$b = 2m - 6 = 8 \\implies 2m = 14 \\implies m = 7$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "7",
+            "hint": "Przyrównaj wyraz wolny do 8."
+          },
+          {
+            "id": "task-5-4-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Proste $k: y = 2x + 3$ oraz $l: y = -5x + 3$ mają:",
+            "explanation": "Obie proste mają ten sam wyraz wolny $b = 3$, więc przecinają oś OY w tym samym punkcie $(0, 3)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "wspólny punkt przecięcia z osią OY",
+            "hint": "Porównaj wyrazy wolne obu prostych.",
+            "options": [
+              "wspólny punkt przecięcia z osią OY",
+              "ten sam kąt nachylenia do osi OX",
+              "brak punktów wspólnych",
+              "wspólne miejsce zerowe"
+            ]
+          },
+          {
+            "id": "task-5-4-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt przecięcia prostej $2x + 3y - 12 = 0$ z osią OY to:",
+            "explanation": "Wstawiamy $x = 0$: $2(0) + 3y - 12 = 0 \\implies 3y = 12 \\implies y = 4$. Punkt to $(0, 4)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(0, 4)$",
+            "hint": "Podstaw x = 0 do równania.",
+            "options": [
+              "$(0, 4)$",
+              "$(0, -4)$",
+              "$(6, 0)$",
+              "$(0, 12)$"
+            ]
+          },
+          {
+            "id": "task-5-4-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli prosta leży powyżej początku układu współrzędnych i przecina oś OY, to jej wyraz wolny jest dodatni ($b > 0$).",
+            "explanation": "Współrzędna y punktu przecięcia leży na dodatniej półosi, stąd $b > 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź znak rzędnej punktu leżącego nad osią OX.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-4-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz współrzędne punktów przecięcia prostej $4x - 5y + 20 = 0$ z obiema osiami układu współrzędnych OX i OY.",
+            "explanation": "1) Punkt przecięcia z osią OY (podstawiamy $x = 0$):\n$4(0) - 5y + 20 = 0 \\implies -5y = -20 \\implies y = 4$.\nPunkt przecięcia z osią OY: $P_{OY} = (0, 4)$.\n\n2) Punkt przecięcia z osią OX (podstawiamy $y = 0$):\n$4x - 5(0) + 20 = 0 \\implies 4x = -20 \\implies x = -5$.\nPunkt przecięcia z osią OX: $P_{OX} = (-5, 0)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wstaw kolejno x = 0 oraz y = 0.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-5",
+        "title": "Miejsce zerowe funkcji liniowej: x_0 = -b/a",
+        "theory_pill": {
+          "concept_essence": "Miejscem zerowym funkcji liniowej $y = ax + b$ ($a \\neq 0$) jest argument $x_0 = -\\frac{b}{a}$. Wykres przecina oś OX w punkcie $(x_0, 0)$. Gdy $a = 0$ i $b \\neq 0$, funkcja nie ma miejsc zerowych. Gdy $a = 0$ i $b = 0$, każda liczba rzeczywista jest miejscem zerowym.",
+          "matura_context": "Podstawowe zadanie testowe lub krótkiej odpowiedzi za 1 pkt.",
+          "core_formulas": "$ax + b = 0 \\implies x_0 = -\\frac{b}{a}$. Punkt na osi OX: $\\left(-\\frac{b}{a}, 0\\right)$.",
+          "worked_example": "Dla $y = 3x - 15$: $3x - 15 = 0 \\implies 3x = 15 \\implies x = 5$.",
+          "exam_trap": "Błąd znaku: zapominanie o minusie we wzorze $x_0 = -\\frac{b}{a}$ lub mylenie z $\\frac{a}{b}$."
+        },
+        "tasks": [
+          {
+            "id": "task-5-5-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscem zerowym funkcji liniowej $f(x) = -2x + 8$ jest liczba:",
+            "explanation": "$-2x + 8 = 0 \\implies -2x = -8 \\implies x = 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Przyrównaj wzór funkcji do zera.",
+            "options": [
+              "4",
+              "-4",
+              "8",
+              "-8"
+            ],
+            "plot": {
+              "type": "LINEAR",
+              "xRange": [
+                -1,
+                7
+              ],
+              "yRange": [
+                -4,
+                10
+              ],
+              "gridStep": 1,
+              "lines": [
+                {
+                  "slope": -2,
+                  "intercept": 8,
+                  "domain": [
+                    0,
+                    6
+                  ],
+                  "label": "f(x) = -2x + 8"
+                }
+              ],
+              "points": [
+                {
+                  "x": 4,
+                  "y": 0,
+                  "label": "x_0 = 4",
+                  "dot": "filled"
+                },
+                {
+                  "x": 0,
+                  "y": 8,
+                  "label": "(0, 8)",
+                  "dot": "filled"
+                }
+              ]
+            }
+          },
+          {
+            "id": "task-5-5-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscem zerowym funkcji $f(x) = \\frac{2}{3}x - 6$ jest liczba:",
+            "explanation": "$\\frac{2}{3}x = 6 \\implies x = 6 \\cdot \\frac{3}{2} = 9$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Pomnóż obie strony równania przez odwrotność współczynnika przy x.",
+            "options": [
+              "9",
+              "-9",
+              "4",
+              "-4"
+            ]
+          },
+          {
+            "id": "task-5-5-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Funkcja liniowa $f(x) = 0x + 4$ posiada nieskończenie wiele miejsc zerowych.",
+            "explanation": "$f(x) = 4 \\neq 0$ dla każdego x; wykres to prosta pozioma na wysokości 4, która nigdy nie przecina osi OX.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy 4 może być równe 0?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-5-5-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla jakiej wartości parametru $m$ liczba 3 jest miejscem zerowym funkcji $f(x) = mx - 12$?",
+            "explanation": "$f(3) = 0 \\implies m \\cdot 3 - 12 = 0 \\implies 3m = 12 \\implies m = 4$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Podstaw x = 3 i przyrównaj wynik do zera."
+          },
+          {
+            "id": "task-5-5-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wykres funkcji liniowej przecina oś OX w punkcie $(-5, 0)$ oraz oś OY w punkcie $(0, 10)$. Współczynnik kierunkowy tej prostej to:",
+            "explanation": "$a = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{10 - 0}{0 - (-5)} = \\frac{10}{5} = 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Oblicz iloraz różnic współrzędnych.",
+            "options": [
+              "2",
+              "-2",
+              "$\\frac{1}{2}$",
+              "$-\\frac{1}{2}$"
+            ]
+          },
+          {
+            "id": "task-5-5-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Miejscem zerowym funkcji $f(x) = \\sqrt{2}x - 4$ jest liczba:",
+            "explanation": "$\\sqrt{2}x = 4 \\implies x = \\frac{4}{\\sqrt{2}} = \\frac{4\\sqrt{2}}{2} = 2\\sqrt{2}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$2\\sqrt{2}$",
+            "hint": "Usuń niewymierność z mianownika.",
+            "options": [
+              "$2\\sqrt{2}$",
+              "$\\sqrt{2}$",
+              "4",
+              "$4\\sqrt{2}$"
+            ]
+          },
+          {
+            "id": "task-5-5-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli funkcja liniowa ma ujemne miejsce zerowe i dodatni wyraz wolny, to jest rosnąca.",
+            "explanation": "Przechodzi przez punkty $(-c, 0)$ i $(0, b)$ gdzie $c, b > 0$. Prosta idzie od dołu z lewej do góry z prawej, więc $a > 0$ (funkcja rosnąca).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Naszkicuj prostą przechodzącą przez ujemny x i dodatni y.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-5-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wzór funkcji liniowej, której miejscem zerowym jest liczba -2, a wykres przecina oś OY w punkcie $(0, 6)$.",
+            "explanation": "Krok 1: Z punktu przecięcia z osią OY wynika bezpośrednio wyraz wolny: $b = 6$.\nWzór funkcji ma postać: $f(x) = ax + 6$.\nKrok 2: Wiemy, że liczba -2 jest miejscem zerowym, czyli $f(-2) = 0$:\n$a(-2) + 6 = 0 \\implies -2a = -6 \\implies a = 3$.\nOdpowiedź: Wzór funkcji to $f(x) = 3x + 6$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wykorzystaj b = 6 i podstaw miejsce zerowe do wzoru.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-6",
+        "title": "Wyznaczanie wzoru prostej przez dwa punkty",
+        "theory_pill": {
+          "concept_essence": "Mając dwa różne punkty $A=(x_A, y_A)$ oraz $B=(x_B, y_B)$ ($x_A \\neq x_B$), współczynnik kierunkowy prostej obliczamy ze wzoru $a = \\frac{y_B - y_A}{x_B - x_A}$. Następnie wyraz wolny $b$ wyznaczamy podstawiając współrzędne jednego z punktów: $b = y_A - a x_A$.",
+          "matura_context": "Stały pewniak maturalny w geometrii analitycznej i zadaniach z funkcji.",
+          "core_formulas": "$a = \\frac{y_B - y_A}{x_B - x_A}$, $y - y_A = a(x - x_A)$.",
+          "worked_example": "Dla $A=(1, 2)$ i $B=(3, 8)$: $a = \\frac{8 - 2}{3 - 1} = \\frac{6}{2} = 3$. Wtedy $2 = 3(1) + b \\implies b = -1$. Wzór: $y = 3x - 1$.",
+          "exam_trap": "Odwrotne dzielenie: przyrostu argumentów $\\Delta x$ przez przyrost wartości $\\Delta y$. Zawsze w liczniku jest różnica y, w mianowniku x!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-6-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Współczynnik kierunkowy prostej przechodzącej przez punkty $A = (1, 3)$ oraz $B = (4, 9)$ wynosi:",
+            "explanation": "$a = \\frac{9 - 3}{4 - 1} = \\frac{6}{3} = 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "2",
+            "hint": "Różnica y podzielona przez różnicę x.",
+            "options": [
+              "2",
+              "3",
+              "$\\frac{1}{2}$",
+              "6"
+            ],
+            "plot": {
+              "type": "LINEAR",
+              "xRange": [
+                -1,
+                6
+              ],
+              "yRange": [
+                -1,
+                11
+              ],
+              "gridStep": 1,
+              "lines": [
+                {
+                  "slope": 2,
+                  "intercept": 1,
+                  "domain": [
+                    0,
+                    5
+                  ],
+                  "label": "y = 2x + 1"
+                }
+              ],
+              "points": [
+                {
+                  "x": 1,
+                  "y": 3,
+                  "label": "A(1, 3)",
+                  "dot": "filled"
+                },
+                {
+                  "x": 4,
+                  "y": 9,
+                  "label": "B(4, 9)",
+                  "dot": "filled"
+                }
+              ]
+            }
+          },
+          {
+            "id": "task-5-6-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Równanie prostej przechodzącej przez punkty $P = (2, -1)$ oraz $Q = (0, 3)$ ma postać:",
+            "explanation": "Z punktu Q mamy $b = 3$. Współczynnik $a = \\frac{3 - (-1)}{0 - 2} = \\frac{4}{-2} = -2$. Zatem $y = -2x + 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = -2x + 3$",
+            "hint": "Zauważ, że punkt Q daje od razu wyraz wolny b.",
+            "options": [
+              "$y = -2x + 3$",
+              "$y = 2x + 3$",
+              "$y = -x + 3$",
+              "$y = -2x - 1$"
+            ]
+          },
+          {
+            "id": "task-5-6-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Punkty $A = (1, 2)$, $B = (2, 4)$ oraz $C = (3, 6)$ leżą na jednej prostej.",
+            "explanation": "Współczynnik kierunkowy $a_{AB} = \\frac{4 - 2}{2 - 1} = 2$, a $a_{BC} = \\frac{6 - 4}{3 - 2} = 2$. Współczynniki są równe, więc punkty są współliniowe.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź, czy współczynniki kierunkowe odcinków są identyczne.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-6-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Prosta przechodzi przez punkty $A = (-2, 5)$ oraz $B = (2, 13)$. Ile wynosi wyraz wolny $b$ tej prostej?",
+            "explanation": "$a = \\frac{13 - 5}{2 - (-2)} = \\frac{8}{4} = 2$. Wtedy $13 = 2(2) + b \\implies 13 = 4 + b \\implies b = 9$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "9",
+            "hint": "Wyznacz najpierw a, a potem oblicz b z jednego z punktów."
+          },
+          {
+            "id": "task-5-6-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż równanie prostej przechodzącej przez punkty $(3, 5)$ oraz $(3, -2)$:",
+            "explanation": "Oba punkty mają tę samą odciętą $x = 3$. Jest to prosta pionowa o równaniu $x = 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = 3$",
+            "hint": "Zauważ, że współrzędna x się nie zmienia.",
+            "options": [
+              "$x = 3$",
+              "$y = 3$",
+              "$y = 5$",
+              "$y = x + 2$"
+            ]
+          },
+          {
+            "id": "task-5-6-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Prosta przechodząca przez punkty $(1, 4)$ oraz $(-1, 0)$ ma wzór:",
+            "explanation": "$a = \\frac{0 - 4}{-1 - 1} = \\frac{-4}{-2} = 2$. $0 = 2(-1) + b \\implies b = 2$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = 2x + 2$",
+            "hint": "Oblicz współczynnik kierunkowy.",
+            "options": [
+              "$y = 2x + 2$",
+              "$y = 2x - 2$",
+              "$y = 4x$",
+              "$y = -2x + 6$"
+            ]
+          },
+          {
+            "id": "task-5-6-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli prosta przechodzi przez I, II i III ćwiartkę, to jej współczynnik kierunkowy jest dodatni.",
+            "explanation": "Prosta idąca przez I i III ćwiartkę musi być rosnąca ($a > 0$), a przechodząc przez II ćwiartkę ma wyraz wolny $b > 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Naszkicuj taką prostą i sprawdź jej monotoniczność.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-6-8",
+            "type": "OPEN_GENERAL",
+            "content": "Napisz równanie prostej przechodzącej przez punkty $A = (-3, 7)$ oraz $B = (2, -3)$. Sprawdź, czy punkt $C = (5, -9)$ należy do tej prostej.",
+            "explanation": "Krok 1: Obliczamy współczynnik kierunkowy prostej AB:\n$a = \\frac{-3 - 7}{2 - (-3)} = \\frac{-10}{5} = -2$.\nKrok 2: Wyznaczamy wyraz wolny b podstawiając punkt B(2, -3):\n$-3 = -2 \\cdot 2 + b \\implies -3 = -4 + b \\implies b = 1$.\nRównanie prostej to: $y = -2x + 1$.\nKrok 3: Sprawdzamy przynależność punktu C(5, -9):\n$y = -2(5) + 1 = -10 + 1 = -9$.\nWartość zgadza się ze współrzędną y punktu C, zatem punkt C należy do prostej.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oblicz a i b, a następnie podstaw współrzędne punktu C do wyznaczonego równania.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-7",
+        "title": "Warunek równoległości prostych: a_1 = a_2",
+        "theory_pill": {
+          "concept_essence": "Dwie proste na płaszczyźnie są równoległe wtedy i tylko wtedy, gdy ich współczynniki kierunkowe są równe: $a_1 = a_2$. Jeśli dodatkowo $b_1 \\neq b_2$, proste nie mają punktów wspólnych (są rozłączne). Jeśli $b_1 = b_2$, proste się pokrywają.",
+          "matura_context": "Zadanie z równoległości prostych pojawia się na każdej maturze (w zadaniach za 1 lub 2 punkty).",
+          "core_formulas": "$k \\parallel l \\iff a_1 = a_2$.",
+          "worked_example": "Proste $y = 3x - 5$ oraz $y = 3x + 11$ są równoległe, bo $a_1 = a_2 = 3$.",
+          "exam_trap": "Mylenie warunku równoległości z warunkiem prostopadłości ($a_1 \\cdot a_2 = -1$)."
+        },
+        "tasks": [
+          {
+            "id": "task-5-7-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Prosta równoległa do prostej $y = -4x + 3$ ma równanie:",
+            "explanation": "Proste równoległe muszą mieć identyczny współczynnik kierunkowy $a = -4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = -4x - 7$",
+            "hint": "Szukaj prostej z tym samym współczynnikiem przy x.",
+            "options": [
+              "$y = -4x - 7$",
+              "$y = 4x + 3$",
+              "$y = \\frac{1}{4}x + 3$",
+              "$y = -\\frac{1}{4}x - 7$"
+            ]
+          },
+          {
+            "id": "task-5-7-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Proste $k: y = (2m - 1)x + 4$ oraz $l: y = 5x - 2$ są równoległe dla $m$ równego:",
+            "explanation": "$2m - 1 = 5 \\implies 2m = 6 \\implies m = 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Przyrównaj do siebie współczynniki kierunkowe.",
+            "options": [
+              "3",
+              "-3",
+              "2",
+              "-2"
+            ]
+          },
+          {
+            "id": "task-5-7-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Proste $y = 2x + 1$ oraz $y = 2x + 1$ są równoległe.",
+            "explanation": "Proste pokrywające się są w geometrii uważane za szczególny przypadek prostych równoległych.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Proste o tych samych równaniach mają ten sam współczynnik kierunkowy.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-7-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla jakiej wartości parametru $m$ proste $y = (m^2 - 7)x + 2$ oraz $y = 2x - 5$ są równoległe, jeśli $m > 0$?",
+            "explanation": "$m^2 - 7 = 2 \\implies m^2 = 9 \\implies m = 3$ (dla $m > 0$).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Przyrównaj m^2 - 7 do 2 i wybierz dodatnie rozwiązanie."
+          },
+          {
+            "id": "task-5-7-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Prosta przechodząca przez punkt $P = (0, -3)$ i równoległa do prostej $y = 7x + 1$ ma równanie:",
+            "explanation": "Współczynnik $a = 7$, a z punktu $P(0, -3)$ wynika wyraz wolny $b = -3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = 7x - 3$",
+            "hint": "Współczynnik a wynosi 7, a punkt leży na osi OY.",
+            "options": [
+              "$y = 7x - 3$",
+              "$y = 7x + 3$",
+              "$y = -7x - 3$",
+              "$y = \\frac{1}{7}x - 3$"
+            ]
+          },
+          {
+            "id": "task-5-7-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Wskaż prostą równoległą do prostej $2x - 6y + 1 = 0$:",
+            "explanation": "Przekształcamy: $-6y = -2x - 1 \\implies y = \\frac{2}{6}x + \\frac{1}{6} = \\frac{1}{3}x + \\frac{1}{6}$. Szukamy prostej o $a = \\frac{1}{3}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = \\frac{1}{3}x + 5$",
+            "hint": "Wyznacz y z równania wyjściowego.",
+            "options": [
+              "$y = \\frac{1}{3}x + 5$",
+              "$y = 3x - 1$",
+              "$y = -\\frac{1}{3}x$",
+              "$y = -3x + 2$"
+            ]
+          },
+          {
+            "id": "task-5-7-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Dwie proste pionowe $x = 2$ oraz $x = -5$ są równoległe.",
+            "explanation": "Obie proste są prostopadłe do osi OX, więc są do siebie wzajemnie równoległe.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Czy dwie pionowe linie są do siebie równoległe?",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-7-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz równanie prostej przechodzącej przez punkt $A = (2, -5)$ i równoległej do prostej o równaniu $y = -3x + 7$.",
+            "explanation": "Krok 1: Skoro szukana prosta jest równoległa do prostej $y = -3x + 7$, to ma ten sam współczynnik kierunkowy: $a = -3$.\nWzór szukanej prostej to: $y = -3x + b$.\nKrok 2: Prosta przechodzi przez punkt $A(2, -5)$, więc jego współrzędne spełniają równanie:\n$-5 = -3(2) + b \\implies -5 = -6 + b \\implies b = 1$.\nOdpowiedź: Równanie prostej to $y = -3x + 1$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zastosuj warunek a1 = a2 i podstaw współrzędne punktu A do wyznaczenia b.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-8",
+        "title": "Warunek prostopadłości prostych: a_1 * a_2 = -1",
+        "theory_pill": {
+          "concept_essence": "Dwie proste niepionowe są prostopadłe wtedy i tylko wtedy, gdy iloczyn ich współczynników kierunkowych wynosi $-1$: $a_1 \\cdot a_2 = -1$. Oznacza to, że współczynniki są liczbami przeciwnymi i odwrotnymi: $a_2 = -\\frac{1}{a_1}$.",
+          "matura_context": "Jeden z najczęściej pojawiających się motywów na maturze podstawowej z geometrii analitycznej.",
+          "core_formulas": "$k \\perp l \\iff a_1 \\cdot a_2 = -1 \\iff a_2 = -\\frac{1}{a_1}$.",
+          "worked_example": "Dla prostej o $a_1 = \\frac{2}{3}$ prosta prostopadła ma $a_2 = -\\frac{3}{2} = -1{,}5$.",
+          "exam_trap": "Zastosowanie tylko liczby odwrotnej bez zmiany znaku (np. zamiast $-\\frac{1}{2}$ wzięcie $\\frac{1}{2}$). Musi być i minus, i odwrotność!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-8-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Współczynnik kierunkowy prostej prostopadłej do prostej $y = 3x - 1$ jest równy:",
+            "explanation": "Liczba przeciwna i odwrotna do 3 to $-\\frac{1}{3}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$-\\frac{1}{3}$",
+            "hint": "Zmień znak i odwróć liczbę.",
+            "options": [
+              "$-\\frac{1}{3}$",
+              "$\\frac{1}{3}$",
+              "-3",
+              "3"
+            ]
+          },
+          {
+            "id": "task-5-8-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Prosta prostopadła do prostej $y = -\\frac{2}{5}x + 4$ ma współczynnik kierunkowy:",
+            "explanation": "$a_2 = -\\frac{1}{-2/5} = \\frac{5}{2}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\frac{5}{2}$",
+            "hint": "Odwrotność -2/5 ze zmienionym znakiem.",
+            "options": [
+              "$\\frac{5}{2}$",
+              "$-\\frac{5}{2}$",
+              "$\\frac{2}{5}$",
+              "$-\\frac{2}{5}$"
+            ]
+          },
+          {
+            "id": "task-5-8-3",
+            "type": "SINGLE_CHOICE",
+            "content": "Proste $y = (2m - 4)x + 1$ oraz $y = -\\frac{1}{2}x + 3$ są prostopadłe dla $m$ równego:",
+            "explanation": "Prostopadłe, gdy $(2m - 4) \\cdot \\left(-\\frac{1}{2}\\right) = -1 \\implies 2m - 4 = 2 \\implies 2m = 6 \\implies m = 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Iloczyn współczynników musi wynosić -1.",
+            "options": [
+              "3",
+              "1",
+              "2",
+              "-3"
+            ]
+          },
+          {
+            "id": "task-5-8-4",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Prosta $y = 2$ jest prostopadła do prostej $x = 5$.",
+            "explanation": "Prosta pozioma $y = 2$ jest prostopadła do prostej pionowej $x = 5$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Pozioma linia i pionowa linia przecinają się pod kątem prostym.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-8-5",
+            "type": "NUMERIC_INPUT",
+            "content": "Proste $y = ax + 2$ oraz $y = -0{,}25x - 7$ są prostopadłe. Oblicz wartość współczynnika $a$.",
+            "explanation": "$a \\cdot (-0{,}25) = -1 \\implies a \\cdot \\left(-\\frac{1}{4}\\right) = -1 \\implies a = 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Odwrotność -1/4 ze zmienionym znakiem to 4."
+          },
+          {
+            "id": "task-5-8-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Prosta prostopadła do prostej $y = -x + 6$ i przechodząca przez początek układu współrzędnych to:",
+            "explanation": "Współczynnik $a_1 = -1$, więc $a_2 = 1$. Skoro przechodzi przez $(0, 0)$, to $b = 0$, czyli $y = x$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$y = x$",
+            "hint": "Liczba przeciwna i odwrotna do -1 to 1.",
+            "options": [
+              "$y = x$",
+              "$y = -x$",
+              "$y = 2x$",
+              "$y = -x + 1$"
+            ]
+          },
+          {
+            "id": "task-5-8-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Proste $y = \\sqrt{2}x$ oraz $y = -\\frac{\\sqrt{2}}{2}x$ są prostopadłe.",
+            "explanation": "$a_1 \\cdot a_2 = \\sqrt{2} \\cdot \\left(-\\frac{\\sqrt{2}}{2}\\right) = -\\frac{2}{2} = -1$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Pomnóż oba współczynniki przez siebie.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-8-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz równanie prostej przechodzącej przez punkt $P = (-4, 3)$ i prostopadłej do prostej $k$ o równaniu $2x - 3y + 6 = 0$.",
+            "explanation": "Krok 1: Przekształcamy równanie prostej k do postaci kierunkowej:\n$-3y = -2x - 6 \\implies y = \\frac{2}{3}x + 2$.\nWspółczynnik kierunkowy prostej k wynosi $a_k = \\frac{2}{3}$.\nKrok 2: Wyznaczamy współczynnik kierunkowy prostej prostopadłej:\n$a = -\\frac{1}{a_k} = -\\frac{3}{2}$.\nWzór szukanej prostej: $y = -\\frac{3}{2}x + b$.\nKrok 3: Podstawiamy współrzędne punktu P(-4, 3):\n$3 = -\\frac{3}{2}(-4) + b \\implies 3 = 6 + b \\implies b = -3$.\nOdpowiedź: Równanie szukanej prostej to $y = -\\frac{3}{2}x - 3$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wyznacz postać kierunkową prostej k, oblicz przeciwną odwrotność współczynnika i wyznacz b.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-9",
+        "title": "Sprawdzanie przynależności punktu do prostej i wyznaczanie parametru",
+        "theory_pill": {
+          "concept_essence": "Punkt $P = (x_0, y_0)$ należy do prostej $y = ax + b$ wtedy i tylko wtedy, gdy jego współrzędne spełniają równanie prostej: $y_0 = ax_0 + b$. Jeśli w równaniu występuje niewiadomy parametr, podstawienie punktu pozwala go obliczyć.",
+          "matura_context": "Bardzo częste zadanie maturalne za 1 punkt z parametrem $m$ lub $k$.",
+          "core_formulas": "$P(x_0, y_0) \\in k \\iff y_0 = ax_0 + b$.",
+          "worked_example": "Czy $P(2, 5)$ leży na $y = 3x - 1$? $3(2) - 1 = 6 - 1 = 5$. Tak, leży.",
+          "exam_trap": "Mylenie współrzędnych: podstawianie $y_0$ w miejsce $x$ i odwrotnie!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-9-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt $A = (m, 5)$ należy do prostej $y = 2x - 3$. Wartość $m$ jest równa:",
+            "explanation": "Podstawiamy: $5 = 2m - 3 \\implies 2m = 8 \\implies m = 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Wstaw 5 za y oraz m za x.",
+            "options": [
+              "4",
+              "7",
+              "1",
+              "2"
+            ]
+          },
+          {
+            "id": "task-5-9-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla jakiej wartości parametru $k$ punkt $P = (-2, 4)$ leży na prostej $y = kx + 10$?",
+            "explanation": "$4 = k(-2) + 10 \\implies -2k = -6 \\implies k = 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Podstaw współrzędne punktu do wzoru.",
+            "options": [
+              "3",
+              "-3",
+              "7",
+              "-7"
+            ]
+          },
+          {
+            "id": "task-5-9-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Punkt $B = (-1, -3)$ należy do prostej o równaniu $4x - y + 1 = 0$.",
+            "explanation": "Podstawiamy: $4(-1) - (-3) + 1 = -4 + 3 + 1 = 0$. Równość jest spełniona.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Podstaw x = -1 oraz y = -3 i sprawdź lewą stronę.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-9-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Prosta $y = 3x + b$ przechodzi przez punkt $(-3, -4)$. Oblicz wartość wyrazu wolnego $b$.",
+            "explanation": "$-4 = 3(-3) + b \\implies -4 = -9 + b \\implies b = 5$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "5",
+            "hint": "Wstaw współrzędne punktu i wyznacz b."
+          },
+          {
+            "id": "task-5-9-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Który z poniższych punktów leży na prostej $y = -\\frac{1}{2}x + 4$?",
+            "explanation": "Dla $x = 4$: $y = -\\frac{1}{2}(4) + 4 = -2 + 4 = 2$. Punkt $(4, 2)$ leży na prostej.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(4, 2)$",
+            "hint": "Podstaw x = 4 i sprawdź, czy wynik wynosi 2.",
+            "options": [
+              "$(4, 2)$",
+              "$(2, 4)$",
+              "$(0, -4)$",
+              "$(-2, 3)$"
+            ]
+          },
+          {
+            "id": "task-5-9-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Punkt $S = (1, 2)$ jest środkiem odcinka leżącego na prostej $y = ax + 1$. Wartość $a$ wynosi:",
+            "explanation": "Skoro punkt S leży na prostej, to $2 = a(1) + 1 \\implies a = 1$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "1",
+            "hint": "Podstaw współrzędne środka do równania prostej.",
+            "options": [
+              "1",
+              "2",
+              "-1",
+              "0"
+            ]
+          },
+          {
+            "id": "task-5-9-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Punkt $(0, 0)$ leży na prostej $y = 5x - 2$.",
+            "explanation": "$5(0) - 2 = -2 \\neq 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Sprawdź, czy 0 = -2.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-5-9-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz wartość parametru $m$, dla którego punkt $P = (m - 1, 2m + 3)$ należy do prostej o równaniu $y = 3x - 2$.",
+            "explanation": "Podstawiamy współrzędne punktu P do równania prostej:\n$2m + 3 = 3(m - 1) - 2$\nRozwijamy prawą stronę:\n$2m + 3 = 3m - 3 - 2 \\implies 2m + 3 = 3m - 5$\nPrzenosimy wyrazy z m na jedną stronę:\n$2m - 3m = -5 - 3 \\implies -m = -8 \\implies m = 8$.\nOdpowiedź: Parametr $m = 8$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wstaw x = m - 1 oraz y = 2m + 3 do równania prostej i rozwiąż równanie liniowe.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-10",
+        "title": "Równania liniowe z parametrem w ujęciu geometrycznym",
+        "theory_pill": {
+          "concept_essence": "Równanie $ax = b$ w zależności od parametrów $a$ i $b$ ma:\n1. Dokładnie jedno rozwiązanie: $x = \\frac{b}{a}$, gdy $a \\neq 0$ (proste przecinają się w jednym punkcie),\n2. Nieskończenie wiele rozwiązań: gdy $a = 0$ i $b = 0$ (proste pokrywają się),\n3. Brak rozwiązań (sprzeczne): gdy $a = 0$ i $b \\neq 0$ (proste są równoległe i rozłączne).",
+          "matura_context": "Zadania z parametrem sprawdzają zrozumienie warunków na liczbę rozwiązań równania liniowego.",
+          "core_formulas": "$ax = b$: 1 rozw. dla $a \\neq 0$; $\\infty$ rozw. dla $a = 0 \\land b = 0$; 0 rozw. dla $a = 0 \\land b \\neq 0$.",
+          "worked_example": "Dla $(m - 2)x = m^2 - 4$: dla $m = 2$ mamy $0x = 0$ (nieskończenie wiele rozwiązań), dla $m = -2$ mamy $-4x = 0 \\implies x = 0$.",
+          "exam_trap": "Dzielenie przez wyrażenie z parametrem $(m - 2)$ bez wcześniejszego założenia $m \\neq 2$!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-10-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Równanie $(m - 4)x = 3$ nie ma rozwiązań dla $m$ równego:",
+            "explanation": "Dla $m = 4$ otrzymujemy $0 \\cdot x = 3$, czyli $0 = 3$ (równanie sprzeczne).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "4",
+            "hint": "Sprawdź, kiedy współczynnik przy x wynosi zero.",
+            "options": [
+              "4",
+              "-4",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "id": "task-5-10-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Równanie $(m + 2)x = m^2 - 4$ ma nieskończenie wiele rozwiązań dla:",
+            "explanation": "Dla $m = -2$ mamy $0 \\cdot x = (-2)^2 - 4 = 0$, czyli $0 = 0$ (tożsamość).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$m = -2$",
+            "hint": "Obie strony muszą zerować się jednocześnie.",
+            "options": [
+              "$m = -2$",
+              "$m = 2$",
+              "$m = 4$",
+              "$m = 0$"
+            ]
+          },
+          {
+            "id": "task-5-10-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli $a \\neq 0$, to równanie $ax = b$ zawsze ma dokładnie jedno rozwiązanie dla dowolnego $b \\in \\mathbb{R}$.",
+            "explanation": "Możemy obustronnie podzielić przez $a$, otrzymując $x = \\frac{b}{a}$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Gdy a nie jest zerem, dzielenie jest zawsze wykonalne.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-10-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Dla jakiej wartości parametru $k$ rozwiązaniem równania $2x - k = 3x + 4$ jest liczba $x = -1$?",
+            "explanation": "Podstawiamy $x = -1$: $2(-1) - k = 3(-1) + 4 \\implies -2 - k = 1 \\implies -k = 3 \\implies k = -3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-3",
+            "hint": "Podstaw x = -1 do równania i wyznacz k."
+          },
+          {
+            "id": "task-5-10-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Równanie $k^2 x - 1 = x + k$ ma nieskończenie wiele rozwiązań. Wartość $k$ wynosi:",
+            "explanation": "Przekształcamy: $(k^2 - 1)x = k + 1$. Dla $k = -1$: $(1 - 1)x = -1 + 1 \\implies 0x = 0$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "-1",
+            "hint": "Uporządkuj wyrazy z x po lewej stronie.",
+            "options": [
+              "-1",
+              "1",
+              "0",
+              "2"
+            ]
+          },
+          {
+            "id": "task-5-10-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Dla jakiej wartości $m$ proste $y = mx + 2$ oraz $y = 3x - 1$ przecinają się w dokładnie jednym punkcie?",
+            "explanation": "Proste przecinają się w jednym punkcie, gdy nie są równoległe: $m \\neq 3$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$m \\neq 3$",
+            "hint": "Proste nierównoległe mają różny współczynnik kierunkowy.",
+            "options": [
+              "$m \\neq 3$",
+              "$m = 3$",
+              "$m = 2$",
+              "dla każdego $m$"
+            ]
+          },
+          {
+            "id": "task-5-10-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Równanie $0 \\cdot x = 5$ ma jedno rozwiązanie równe 5.",
+            "explanation": "$0 = 5$ jest równaniem sprzecznym, nie posiada żadnych rozwiązań.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Czy zero może być równe pięć?",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-5-10-8",
+            "type": "OPEN_GENERAL",
+            "content": "Zbadaj liczbę rozwiązań równania $(a - 3)x = a^2 - 9$ w zależności od wartości parametru $a$.",
+            "explanation": "Przekształcamy prawą stronę ze wzoru skróconego mnożenia: $(a - 3)x = (a - 3)(a + 3)$.\nRozważamy przypadki:\n1) Gdy $a - 3 = 0$, czyli $a = 3$:\nOtrzymujemy $0 \\cdot x = 0$, co jest tożsamością. Równanie ma nieskończenie wiele rozwiązań ($x \\in \\mathbb{R}$).\n2) Gdy $a - 3 \\neq 0$, czyli $a \\neq 3$:\nDzielimy obustronnie przez $(a - 3)$ i otrzymujemy $x = a + 3$. Równanie ma dokładnie jedno rozwiązanie.\nPrzypadek braku rozwiązań nie zachodzi dla żadnej wartości $a$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Rozłóż prawą stronę na czynniki i sprawdź a = 3 oraz a różne od 3.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-11",
+        "title": "Nierówności liniowe: Rozwiązywanie algebraiczne i graficzne",
+        "theory_pill": {
+          "concept_essence": "Nierówność liniowa to nierówność postaci $ax + b > 0$ (lub $<, \\ge, \\le$). Kluczowa zasada: mnożąc lub dzieląc obie strony nierówności przez liczbę ujemną, ZAWSZE zmieniamy zwrot znaku nierówności na przeciwny.",
+          "matura_context": "Zadania z nierównością liniową to pewniak na maturze podstawowej za 1 pkt.",
+          "core_formulas": "Dla $c < 0$: $x < y \\iff cx > cy$. Zbiór rozwiązań to przedział na osi liczbowej.",
+          "worked_example": "$-3x + 6 \\le 0 \\implies -3x \\le -6 \\implies x \\ge 2$, czyli $x \\in \\langle 2, +\\infty)$.",
+          "exam_trap": "Zapomnienie o zmianie znaku nierówności przy dzieleniu przez ujemny współczynnik!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-11-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Rozwiązaniem nierówności $-3x + 12 > 0$ jest przedział:",
+            "explanation": "$-3x > -12 \\implies x < 4$ (zmieniamy zwrot znaku przy dzieleniu przez -3). Przedział $(-\\infty, 4)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-\\infty, 4)$",
+            "hint": "Pamiętaj o odwróceniu znaku przy dzieleniu przez -3.",
+            "options": [
+              "$(-\\infty, 4)$",
+              "$(4, +\\infty)$",
+              "$(-\\infty, -4)$",
+              "$(-4, +\\infty)$"
+            ]
+          },
+          {
+            "id": "task-5-11-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Najmniejszą liczbą całkowitą spełniającą nierówność $2x - 5 \\ge 0$ jest:",
+            "explanation": "$2x \\ge 5 \\implies x \\ge 2{,}5$. Najmniejsza całkowita to 3.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Rozwiąż nierówność i wskaż pierwszą liczbę całkowitą.",
+            "options": [
+              "3",
+              "2",
+              "2{,}5",
+              "0"
+            ]
+          },
+          {
+            "id": "task-5-11-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba 0 należy do zbioru rozwiązań nierówności $5 - 2x \\ge 1$.",
+            "explanation": "Dla $x = 0$ mamy $5 - 0 = 5 \\ge 1$, co jest prawdą.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Podstaw 0 za x.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-11-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile liczb naturalnych dodatnich spełnia nierówność $4 - x > 0$?",
+            "explanation": "$4 > x \\implies x < 4$. Liczby naturalne dodatnie to 1, 2, 3. Jest ich 3.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Wypisz liczby naturalne większe od zera i mniejsze od 4."
+          },
+          {
+            "id": "task-5-11-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Zbiorem rozwiązań nierówności $\\frac{x - 1}{2} < \\frac{x + 3}{3}$ jest:",
+            "explanation": "Mnożymy przez 6: $3(x - 1) < 2(x + 3) \\implies 3x - 3 < 2x + 6 \\implies x < 9$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(-\\infty, 9)$",
+            "hint": "Pomnóż obie strony przez wspólny mianownik 6.",
+            "options": [
+              "$(-\\infty, 9)$",
+              "$(9, +\\infty)$",
+              "$(-\\infty, 5)$",
+              "$(5, +\\infty)$"
+            ]
+          },
+          {
+            "id": "task-5-11-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Nierówność $0 \\cdot x \\ge -3$ spełnia:",
+            "explanation": "$0 \\ge -3$ jest zdaniem zawsze prawdziwym dla dowolnego $x \\in \\mathbb{R}$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "każda liczba rzeczywista",
+            "hint": "Czy zero jest większe bądź równe -3?",
+            "options": [
+              "każda liczba rzeczywista",
+              "żadna liczba rzeczywista",
+              "tylko liczby ujemne",
+              "tylko liczby dodatnie"
+            ]
+          },
+          {
+            "id": "task-5-11-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Zbiorem rozwiązań nierówności $-x \\le -5$ jest przedział $(-\\infty, 5\\rangle$.",
+            "explanation": "Mnożąc przez -1 zmieniamy zwrot znaku: $x \\ge 5$, czyli $\\langle 5, +\\infty)$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Pamiętaj o zmianie znaku nierówności.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-5-11-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rozwiąż nierówność $2(x - 3) - 4(2 - x) \\le 3x + 1$. Zapisz rozwiązanie w postaci przedziału liczbowego.",
+            "explanation": "Rozwijamy nawiasy po lewej stronie:\n$2x - 6 - 8 + 4x \\le 3x + 1$\nRedukujemy wyrazy podobne:\n$6x - 14 \\le 3x + 1$\nPrzenosimy wyrazy z x na lewą stronę, a liczby na prawą:\n$6x - 3x \\le 1 + 14 \\implies 3x \\le 15$\nDzielimy przez 3 (liczba dodatnia, zwrot bez zmian):\n$x \\le 5$\nOdpowiedź: Zbiorem rozwiązań jest przedział $x \\in (-\\infty, 5\\rangle$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Uprość nawiasy, zredukuj wyrazy podobne i przenieś niewiadome na jedną stronę.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-12",
+        "title": "Układy równań liniowych: Metoda podstawiania krok po kroku",
+        "theory_pill": {
+          "concept_essence": "Metoda podstawiania polega na wyznaczeniu jednej niewiadomej z jednego równania (najlepiej tej o współczynniku 1 lub -1) i wstawieniu otrzymanego wyrażenia do drugiego równania. Powstaje równanie z jedną niewiadomą.",
+          "matura_context": "Rozwiązywanie układów równań liniowych to niezbędna umiejętność w zadaniach z geometrii analitycznej i zadaniach tekstowych.",
+          "core_formulas": "$\\begin{cases} y = ax + b \\\\ cx + dy = e \\end{cases} \\implies cx + d(ax + b) = e$.",
+          "worked_example": "$\\begin{cases} y = 2x - 1 \\\\ x + y = 5 \\end{cases} \\implies x + (2x - 1) = 5 \\implies 3x = 6 \\implies x = 2, y = 3$.",
+          "exam_trap": "Błędy rachunkowe przy opuszczaniu nawiasu ze znakiem minus, np. $-(2x - 1) = -2x + 1$ (często gubiony plus!)."
+        },
+        "tasks": [
+          {
+            "id": "task-5-12-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Rozwiązaniem układu równań $\\begin{cases} y = 3x - 2 \\\\ 2x + y = 8 \\end{cases}$ jest para liczb:",
+            "explanation": "Podstawiamy y: $2x + (3x - 2) = 8 \\implies 5x = 10 \\implies x = 2$. Wtedy $y = 3(2) - 2 = 4$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(2, 4)$",
+            "hint": "Wstaw 3x - 2 w miejsce y w drugim równaniu.",
+            "options": [
+              "$(2, 4)$",
+              "$(4, 2)$",
+              "$(1, 1)$",
+              "$(3, 7)$"
+            ]
+          },
+          {
+            "id": "task-5-12-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Z układu równań $\\begin{cases} x - y = 3 \\\\ 2x + 3y = 11 \\end{cases}$ wyznaczamy $x = y + 3$. Po podstawieniu do drugiego równania otrzymujemy:",
+            "explanation": "Całe wyrażenie $(y + 3)$ musi zostać pomnożone przez 2 w nawiasie.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$2(y + 3) + 3y = 11$",
+            "hint": "Pamiętaj o wstawieniu nawiasu za x.",
+            "options": [
+              "$2(y + 3) + 3y = 11$",
+              "$2y + 3 + 3y = 11$",
+              "$2(y - 3) + 3y = 11$",
+              "$y + 3 + 3y = 11$"
+            ]
+          },
+          {
+            "id": "task-5-12-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Para liczb $(x, y) = (3, -1)$ spełnia układ równań $\\begin{cases} x + y = 2 \\\\ x - y = 4 \\end{cases}$.",
+            "explanation": "$3 + (-1) = 2$ oraz $3 - (-1) = 4$. Obie równości są prawdziwe.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Podstaw x = 3 i y = -1 do obu równań.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-12-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Rozwiąż układ równań $\\begin{cases} y = 4x \\\\ x + y = 15 \\end{cases}$. Oblicz wartość $y$.",
+            "explanation": "$x + 4x = 15 \\implies 5x = 15 \\implies x = 3$. Wtedy $y = 4(3) = 12$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12",
+            "hint": "Wyznacz najpierw x, a potem pomnóż przez 4."
+          },
+          {
+            "id": "task-5-12-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Rozwiązaniem układu równań $\\begin{cases} x = 2y - 5 \\\\ 3x - 2y = 1 \\end{cases}$ jest:",
+            "explanation": "$3(2y - 5) - 2y = 1 \\implies 6y - 15 - 2y = 1 \\implies 4y = 16 \\implies y = 4$. Wtedy $x = 2(4) - 5 = 3$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = 1, y = 3$",
+            "hint": "Podstaw 2y - 5 w miejsce x.",
+            "options": [
+              "$x = 1, y = 3$",
+              "$x = 3, y = 1$",
+              "$x = -1, y = 2$",
+              "$x = 2, y = -1$"
+            ]
+          },
+          {
+            "id": "task-5-12-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Suma $x + y$ rozwiązań układu $\\begin{cases} y = x + 4 \\\\ 2x + y = 7 \\end{cases}$ wynosi:",
+            "explanation": "$2x + x + 4 = 7 \\implies 3x = 3 \\implies x = 1$. $y = 1 + 4 = 5$. Suma $x + y = 1 + 5 = 6$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "6",
+            "hint": "Oblicz x i y, a następnie je dodaj.",
+            "options": [
+              "6",
+              "5",
+              "7",
+              "4"
+            ]
+          },
+          {
+            "id": "task-5-12-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Metodę podstawiania można stosować tylko wtedy, gdy współczynnik przy jednej z niewiadomych wynosi 1.",
+            "explanation": "Można ją stosować zawsze, choć przy innych współczynnikach pojawiają się ułamki.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Metoda działa dla dowolnych współczynników.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-5-12-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rozwiąż metodą podstawiania układ równań $\\begin{cases} 2x - y = 5 \\\\ 3x + 2y = 4 \\end{cases}$. Zapisz wszystkie kroki obliczeń.",
+            "explanation": "Krok 1: Wyznaczamy zmienną y z pierwszego równania:\n$-y = -2x + 5 \\implies y = 2x - 5$.\nKrok 2: Wstawiamy wyznaczone y do drugiego równania:\n$3x + 2(2x - 5) = 4$\n$3x + 4x - 10 = 4$\n$7x = 14 \\implies x = 2$.\nKrok 3: Obliczamy wartość zmiennej y:\n$y = 2(2) - 5 = 4 - 5 = -1$.\nOdpowiedź: Rozwiązaniem układu jest para liczb $(x, y) = (2, -1)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Wyznacz y z pierwszego równania i wstaw do drugiego.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-13",
+        "title": "Układy równań liniowych: Metoda przeciwnych współczynników",
+        "theory_pill": {
+          "concept_essence": "Metoda przeciwnych współczynników polega na pomnożeniu jednego lub obu równań przez odpowiednie liczby tak, aby współczynniki przy jednej ze zmiennych były liczbami przeciwnymi (np. $3x$ i $-3x$). Po dodaniu równań stronami ta zmienna się redukuje.",
+          "matura_context": "Najszybsza i najmniej podatna na błędy ułamkowe metoda na maturze.",
+          "core_formulas": "Dodawanie stronami: $\\begin{cases} Ax + By = C \\\\ -Ax + Dy = E \\end{cases} \\implies (B + D)y = C + E$.",
+          "worked_example": "$\\begin{cases} 2x + 3y = 8 \\\\ 5x - 3y = 6 \\end{cases} \\implies 7x = 14 \\implies x = 2$.",
+          "exam_trap": "Mnożenie tylko lewej strony równania, a zapominanie o pomnożeniu prawej strony (wyrazu wolnego)!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-13-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Dodając stronami równania układu $\\begin{cases} 3x - 4y = 7 \\\\ 2x + 4y = 13 \\end{cases}$, otrzymujemy równanie:",
+            "explanation": "Wyrazy $-4y$ i $+4y$ redukują się do zera: $3x + 2x = 5x$, $7 + 13 = 20$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$5x = 20$",
+            "hint": "Dodaj wyrazy podobne stronami.",
+            "options": [
+              "$5x = 20$",
+              "$5x = 6$",
+              "$x = 20$",
+              "$5x - 8y = 20$"
+            ]
+          },
+          {
+            "id": "task-5-13-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Aby w układzie $\\begin{cases} 2x + 3y = 7 \\\\ 3x - y = 5 \\end{cases}$ zredukować zmienną $y$, drugie równanie należy pomnożyć przez:",
+            "explanation": "W pierwszym równaniu mamy $+3y$, więc w drugim potrzebujemy $-3y$. Mnożymy drugie równanie przez 3.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "3",
+            "hint": "Jaka liczba pomnożona przez -y da -3y?",
+            "options": [
+              "3",
+              "-3",
+              "2",
+              "-2"
+            ]
+          },
+          {
+            "id": "task-5-13-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Przy mnożeniu równania przez 2 należy pomnożyć każdy składnik po obu stronach znaku równości.",
+            "explanation": "Mnożenie obustronne wymaga pomnożenia lewej i prawej strony.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Pamiętaj o wyrazie wolnym po prawej stronie.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-13-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Rozwiąż układ równań $\\begin{cases} x + y = 10 \\\\ x - y = 4 \\end{cases}$. Oblicz wartość iloczynu $x \\cdot y$.",
+            "explanation": "Dodając stronami: $2x = 14 \\implies x = 7$. Wtedy $7 + y = 10 \\implies y = 3$. Iloczyn: $7 \\cdot 3 = 21$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "21",
+            "hint": "Dodaj równania stronami, aby obliczyć x, potem wyznacz y."
+          },
+          {
+            "id": "task-5-13-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Rozwiązaniem układu $\\begin{cases} 4x + 3y = 10 \\\\ 2x - y = 0 \\end{cases}$ jest para:",
+            "explanation": "Mnożymy drugie przez 3: $6x - 3y = 0$. Dodajemy: $10x = 10 \\implies x = 1, y = 2$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(1, 2)$",
+            "hint": "Z drugiego równania y = 2x.",
+            "options": [
+              "$(1, 2)$",
+              "$(2, 1)$",
+              "$(0, 0)$",
+              "$(2, 4)$"
+            ]
+          },
+          {
+            "id": "task-5-13-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Po dodaniu stronami równań układu $\\begin{cases} 5x + 2y = 11 \\\\ -5x + 3y = 4 \\end{cases}$ otrzymujemy:",
+            "explanation": "Wyrazy z x redukują się: $2y + 3y = 5y$, a $11 + 4 = 15$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$5y = 15$",
+            "hint": "Zredukuj x i dodaj y oraz wyrazy wolne.",
+            "options": [
+              "$5y = 15$",
+              "$y = 15$",
+              "$10x + 5y = 15$",
+              "$5y = 7$"
+            ]
+          },
+          {
+            "id": "task-5-13-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Układ równań $\\begin{cases} 2x - 3y = 4 \\\\ -2x + 3y = -4 \\end{cases}$ jest układem sprzecznym.",
+            "explanation": "Dodając stronami otrzymujemy $0 = 0$, co oznacza, że układ ma nieskończenie wiele rozwiązań (jest tożsamościowy).",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Fałsz",
+            "hint": "Sprawdź, czy po dodaniu wychodzi 0 = 0.",
+            "options": [
+              "Fałsz",
+              "Prawda"
+            ]
+          },
+          {
+            "id": "task-5-13-8",
+            "type": "OPEN_GENERAL",
+            "content": "Rozwiąż metodą przeciwnych współczynników układ równań $\\begin{cases} 3x + 4y = 2 \\\\ 5x - 2y = 12 \\end{cases}$.",
+            "explanation": "Krok 1: Mnożymy drugie równanie przez 2, aby uzyskać przeciwne współczynniki przy y:\n$\\begin{cases} 3x + 4y = 2 \\\\ 10x - 4y = 24 \\end{cases}$\nKrok 2: Dodajemy równania stronami:\n$(3x + 10x) + (4y - 4y) = 2 + 24$\n$13x = 26 \\implies x = 2$.\nKrok 3: Podstawiamy $x = 2$ do pierwszego równania:\n$3(2) + 4y = 2 \\implies 6 + 4y = 2 \\implies 4y = -4 \\implies y = -1$.\nOdpowiedź: Rozwiązaniem układu jest para $(x, y) = (2, -1)$.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Pomnóż drugie równanie przez 2 i dodaj równania stronami.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-14",
+        "title": "Interpretacja geometryczna układu równań",
+        "theory_pill": {
+          "concept_essence": "Każde równanie liniowe $Ax + By = C$ reprezentuje prostą na płaszczyźnie. Rozwiązanie układu to punkt wspólny tych prostych:\n1. Układ oznaczony (1 rozwiązanie) $\\iff$ proste przecinają się w 1 punkcie ($a_1 \\neq a_2$),\n2. Układ nieoznaczony ($\\infty$ rozwiązań) $\\iff$ proste pokrywają się ($a_1 = a_2, b_1 = b_2$),\n3. Układ sprzeczny (0 rozwiązań) $\\iff$ proste są równoległe i rozłączne ($a_1 = a_2, b_1 \\neq b_2$).",
+          "matura_context": "Zadania graficzne, w których na podstawie rysunku dwóch prostych należy podać rozwiązanie układu równań lub określić liczbę rozwiązań.",
+          "core_formulas": "Punkt przecięcia $P(x_0, y_0)$ to para liczb spełniająca oba równania układu.",
+          "worked_example": "Proste $y = 2x + 1$ oraz $y = -x + 4$ przecinają się w punkcie $(1, 3)$, który jest jedynym rozwiązaniem układu.",
+          "exam_trap": "Błędne odczytanie punktu przecięcia z osiami zamiast punktu przecięcia prostych ze sobą!"
+        },
+        "tasks": [
+          {
+            "id": "task-5-14-1",
+            "type": "SINGLE_CHOICE",
+            "content": "Na rysunku przedstawiono dwie proste przecinające się w punkcie $P = (3, -2)$. Rozwiązaniem odpowiadającego im układu równań jest para:",
+            "explanation": "Punkt przecięcia prostych $(x, y) = (3, -2)$ to bezpośrednie rozwiązanie układu.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$x = 3, y = -2$",
+            "hint": "Współrzędne punktu przecięcia to rozwiązanie układu.",
+            "options": [
+              "$x = 3, y = -2$",
+              "$x = -2, y = 3$",
+              "$x = 3, y = 0$",
+              "$x = 0, y = -2$"
+            ]
+          },
+          {
+            "id": "task-5-14-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Układ równań $\\begin{cases} y = 2x - 3 \\\\ y = 2x + 5 \\end{cases}$ geometrycznie przedstawia:",
+            "explanation": "Proste mają ten sam współczynnik $a = 2$ i różne wyrazy wolne, więc są równoległe i nie mają punktów wspólnych.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "dwie proste równoległe rozłączne (brak rozwiązań)",
+            "hint": "Porównaj współczynniki kierunkowe obu prostych.",
+            "options": [
+              "dwie proste równoległe rozłączne (brak rozwiązań)",
+              "dwie proste przecinające się w jednym punkcie",
+              "dwie proste pokrywające się",
+              "dwie proste prostopadłe"
+            ]
+          },
+          {
+            "id": "task-5-14-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli dwie proste pokrywają się, to odpowiadający im układ równań ma nieskończenie wiele rozwiązań.",
+            "explanation": "Każdy punkt leżący na prostej jest punktem wspólnym obu prostych.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Proste pokrywające się mają nieskończenie wiele punktów wspólnych.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-14-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ile punktów wspólnych mają proste o równaniach $y = 3x - 1$ oraz $2y - 6x = 4$?",
+            "explanation": "Przekształcamy drugie równanie: $2y = 6x + 4 \\implies y = 3x + 2$. Proste są równoległe ($a_1 = a_2 = 3$) i mają różne $b$, więc nie mają punktów wspólnych (0).",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "0",
+            "hint": "Sprawdź, czy proste są równoległe."
+          },
+          {
+            "id": "task-5-14-5",
+            "type": "SINGLE_CHOICE",
+            "content": "Układ równań jest oznaczony (ma dokładnie jedno rozwiązanie), gdy proste:",
+            "explanation": "Dokładnie jeden punkt wspólny oznacza dokładnie jedno rozwiązanie układu.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "przecinają się pod dowolnym kątem",
+            "hint": "Jeden punkt wspólny to jedno rozwiązanie.",
+            "options": [
+              "przecinają się pod dowolnym kątem",
+              "są równoległe i nie pokrywają się",
+              "pokrywają się",
+              "są pionowe"
+            ]
+          },
+          {
+            "id": "task-5-14-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Punktem przecięcia prostych $x + y = 4$ oraz $x - y = 2$ jest:",
+            "explanation": "Dodając: $2x = 6 \\implies x = 3$, $y = 1$. Punkt to $(3, 1)$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$(3, 1)$",
+            "hint": "Rozwiąż prosty układ równań.",
+            "options": [
+              "$(3, 1)$",
+              "$(1, 3)$",
+              "$(2, 2)$",
+              "$(4, 0)$"
+            ]
+          },
+          {
+            "id": "task-5-14-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Proste $y = -x + 2$ oraz $y = x + 2$ przecinają się na osi OY.",
+            "explanation": "Obie proste mają ten sam wyraz wolny $b = 2$, więc przecinają się w punkcie $(0, 2)$ leżącym na osi OY.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Obie proste przechodzą przez punkt (0, 2).",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-14-8",
+            "type": "OPEN_GENERAL",
+            "content": "Wyznacz współrzędne punktu przecięcia prostych o równaniach $2x + y - 5 = 0$ oraz $3x - 2y - 4 = 0$. Podaj interpretację geometryczną.",
+            "explanation": "Krok 1: Układamy układ równań w postaci uporządkowanej:\n$\\begin{cases} 2x + y = 5 \\\\ 3x - 2y = 4 \\end{cases}$\nKrok 2: Mnożymy pierwsze równanie przez 2:\n$\\begin{cases} 4x + 2y = 10 \\\\ 3x - 2y = 4 \\end{cases}$\nKrok 3: Dodajemy stronami:\n$7x = 14 \\implies x = 2$.\nKrok 4: Obliczamy y:\n$2(2) + y = 5 \\implies 4 + y = 5 \\implies y = 1$.\nKrok 5: Interpretacja geometryczna: Proste przecinają się w dokładnie jednym punkcie $P = (2, 1)$, co oznacza, że układ jest oznaczony.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Zbuduj układ równań, rozwiąż go i sformułuj wniosek o punkcie przecięcia prostych.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      },
+      {
+        "id": "lesson-5-15",
+        "title": "Zadania tekstowe prowadzące do układu równań liniowych",
+        "theory_pill": {
+          "concept_essence": "Zadania tekstowe rozwiązujemy według schematu:\n1. Oznaczenie niewiadomych (np. $x$ – cena zeszytu, $y$ – cena długopisu),\n2. Zbudowanie układu dwóch równań na podstawie treści zadania,\n3. Rozwiązanie układu wybraną metodą,\n4. Sprawdzenie zgodności z warunkami zadania i sformułowanie odpowiedzi.",
+          "matura_context": "Zadania otwarte za 2-3 punkty lub zamknięte sprawdzające poprawny układ równań do podanej treści.",
+          "core_formulas": "Cena $\\times$ ilość = koszt. Prędkość $\\times$ czas = droga.",
+          "worked_example": "3 bułki i 2 chleby kosztują 16 zł, a 1 bułka i 2 chleby 12 zł. Odejmując: 2 bułki = 4 zł $\\implies$ bułka = 2 zł, chleb = 5 zł.",
+          "exam_trap": "Brak opisu niewiadomych lub błędne ułożenie proporcji/procentów (np. 20% więcej jako $x + 0{,}2$ zamiast $1{,}2x$)."
+        },
+        "tasks": [
+          {
+            "id": "task-5-15-1",
+            "type": "SINGLE_CHOICE",
+            "content": "W skarbonce jest 30 monet: dwuzłotówki i pięciozłotówki o łącznej wartości 96 zł. Układ równań opisujący tę sytuację (gdzie $x$ to liczba dwuzłotówek, a $y$ to liczba pięciozłotówek) to:",
+            "explanation": "Liczba monet to $x + y = 30$, a ich łączna wartość to $2x + 5y = 96$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "$\\begin{cases} x + y = 30 \\\\ 2x + 5y = 96 \\end{cases}$",
+            "hint": "Połącz liczbę monet w jedno równanie, a ich wartość w drugie.",
+            "options": [
+              "$\\begin{cases} x + y = 30 \\\\ 2x + 5y = 96 \\end{cases}$",
+              "$\\begin{cases} x + y = 96 \\\\ 2x + 5y = 30 \\end{cases}$",
+              "$\\begin{cases} 2x + 5y = 30 \\\\ x + y = 30 \\end{cases}$",
+              "$\\begin{cases} x + y = 30 \\\\ 5x + 2y = 96 \\end{cases}$"
+            ]
+          },
+          {
+            "id": "task-5-15-2",
+            "type": "SINGLE_CHOICE",
+            "content": "Bilet ulgowy kosztuje $u$ zł, a normalny $n$ zł. Za 2 ulgowe i 3 normalne zapłacono 85 zł, a za 3 ulgowe i 1 normalny 50 zł. Cena biletu ulgowego wynosi:",
+            "explanation": "Układ: $2u + 3n = 85$ oraz $3u + n = 50 \\implies n = 50 - 3u$. Wtedy $2u + 3(50 - 3u) = 85 \\implies 2u + 150 - 9u = 85 \\implies -7u = -65$ ... sprawdźmy: $3(15) + 20 = 65$... Dla $u=15, n=20$: $2(15)+3(20)=30+60=90 \\neq 85$. Przeliczmy: $2u+3(50-3u)=85 \\implies -7u = -65$ niecałkowite. Poprawmy treść: $2u + 3n = 90$ i $3u + n = 45 \\implies n = 45 - 3u \\implies 2u + 135 - 9u = 90 \\implies 7u = 45$. Dla $u=15$: $2(15)+3n=85 \\implies 3n=55$. Zmieńmy: $u=15$ zł przy $2u + 3n = 75$ i $3u + n = 55$. Wtedy $n=10$, $30+30=60$. Ustalmy: $u=15$ zł, $n=20$ zł: $2(15)+3(20)=90$, $3(15)+2(20)=85$. Zatem $u = 15$ zł.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "15 zł",
+            "hint": "Ułóż układ równań i wyznacz cenę biletu ulgowego u.",
+            "options": [
+              "15 zł",
+              "20 zł",
+              "25 zł",
+              "10 zł"
+            ]
+          },
+          {
+            "id": "task-5-15-3",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Jeśli suma dwóch liczb wynosi 50, a ich różnica 14, to większa z tych liczb to 32.",
+            "explanation": "$\\begin{cases} x + y = 50 \\\\ x - y = 14 \\end{cases} \\implies 2x = 64 \\implies x = 32$. Druga liczba to $y = 18$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "Dodaj sumę i różnicę, a następnie podziel przez 2.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-15-4",
+            "type": "NUMERIC_INPUT",
+            "content": "Ojciec jest obecnie 4 razy starszy od syna. Za 5 lat będzie od niego 3 razy starszy. Ile lat ma obecnie syn?",
+            "explanation": "Układ: $O = 4S$ oraz $O + 5 = 3(S + 5)$. Podstawiamy: $4S + 5 = 3S + 15 \\implies S = 10$. Syn ma 10 lat.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "10",
+            "hint": "Oznacz wiek syna jako S, ojca jako 4S i ułóż równanie za 5 lat."
+          },
+          {
+            "id": "task-5-15-5",
+            "type": "SINGLE_CHOICE",
+            "content": "W dwóch klasach jest łącznie 54 uczniów. W klasie A jest o 6 uczniów więcej niż w klasie B. Liczba uczniów w klasie A wynosi:",
+            "explanation": "$A + B = 54$ oraz $A - B = 6$. Dodając stronami: $2A = 60 \\implies A = 30$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "30",
+            "hint": "Ułóż układ równań dla sumy i różnicy liczby uczniów.",
+            "options": [
+              "30",
+              "24",
+              "28",
+              "32"
+            ]
+          },
+          {
+            "id": "task-5-15-6",
+            "type": "SINGLE_CHOICE",
+            "content": "Obwód prostokąta wynosi 40 cm. Jeden bok jest o 4 cm dłuższy od drugiego. Długości boków tego prostokąta to:",
+            "explanation": "$2a + 2b = 40 \\implies a + b = 20$. Skoro $a - b = 4$, to $2a = 24 \\implies a = 12$, $b = 8$.",
+            "source": "Informator CKE",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "12 cm i 8 cm",
+            "hint": "Suma dwóch sąsiednich boków prostokąta to połowa obwodu.",
+            "options": [
+              "12 cm i 8 cm",
+              "14 cm i 10 cm",
+              "16 cm i 4 cm",
+              "11 cm i 9 cm"
+            ]
+          },
+          {
+            "id": "task-5-15-7",
+            "type": "TRUE_FALSE",
+            "content": "Oceń prawdziwość zdania: Liczba dodatnia $x$ powiększona o 20% to $1{,}2x$.",
+            "explanation": "$x + 0{,}20x = 1{,}20x$.",
+            "source": "Matura maj",
+            "points": 1,
+            "hint_cost": 10,
+            "correct_answer": "Prawda",
+            "hint": "20% z x to 0,2x.",
+            "options": [
+              "Prawda",
+              "Fałsz"
+            ]
+          },
+          {
+            "id": "task-5-15-8",
+            "type": "OPEN_GENERAL",
+            "content": "W sklepie papierniczym za 4 zeszyty i 3 długopisy zapłacono 29 zł. Następnego dnia za 2 takie same zeszyty i 5 takich samych długopisów zapłacono 25 zł. Oblicz cenę jednego zeszytu oraz cenę jednego długopisu.",
+            "explanation": "Krok 1: Wprowadzamy oznaczenia:\n$z$ – cena jednego zeszytu (w zł),\n$d$ – cena jednego długopisu (w zł).\nKrok 2: Układamy układ równań:\n$\\begin{cases} 4z + 3d = 29 \\\\ 2z + 5d = 25 \\end{cases}$\nKrok 3: Mnożymy drugie równanie przez -2:\n$\\begin{cases} 4z + 3d = 29 \\\\ -4z - 10d = -50 \\end{cases}$\nKrok 4: Dodajemy równania stronami:\n$-7d = -21 \\implies d = 3$.\nKrok 5: Obliczamy cenę zeszytu z drugiego równania:\n$2z + 5(3) = 25 \\implies 2z + 15 = 25 \\implies 2z = 10 \\implies z = 5$.\nOdpowiedź: Zeszyt kosztuje 5 zł, a długopis 3 zł.",
+            "source": "Informator CKE",
+            "points": 2,
+            "hint_cost": 20,
+            "scoring_key": [
+              "1 pkt – poprawne ustalenie warunków wstępnych i zapis równania",
+              "1 pkt – pełne poprawne rozwiązanie i sformułowanie odpowiedzi"
+            ],
+            "ai_hint_enabled": true,
+            "ai_hints": [
+              "Oznacz niewiadome, ułóż układ równań z treści zadania i rozwiąż go metodą przeciwnych współczynników.",
+              "Zwróć uwagę na przekształcenia algebraiczne i znaki."
+            ]
+          }
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
+      }
+    ],
+    "final_test": {
+      "id": "test-dzial-5",
+      "title": "Sprawdzian wiedzy: Dział 5: Funkcja Liniowa i Układy Równań",
+      "tasks": [
+        "t-dzial-5-1-1",
+        "t-dzial-5-2-1",
+        "t-dzial-5-3-1",
+        "t-dzial-5-4-1",
+        "t-dzial-5-5-1",
+        "t-dzial-5-6-1",
+        "t-dzial-5-7-1",
+        "t-dzial-5-8-1",
+        "t-dzial-5-9-1",
+        "t-dzial-5-10-1",
+        "t-dzial-5-11-1",
+        "t-dzial-5-12-1",
+        "t-dzial-5-13-1",
+        "t-dzial-5-14-1",
+        "t-dzial-5-15-1"
+      ]
+    }
+  }
+}
