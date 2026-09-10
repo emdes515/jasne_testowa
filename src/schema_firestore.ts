@@ -19,6 +19,32 @@
 
 import { LessonTheoryPill, UserPerks } from './types';
 import { filterActualTaskIds } from './utils';
+export interface SubjectTopicMetadata {
+  id: string; // e.g. "dzial-1"
+  numericId: number; // 1
+  title: string;
+  name: string;
+  short_title: string;
+  icon: string;
+  color: string;
+  lessons_count: number;
+  tasks_count: number;
+}
+
+export interface SubjectDocument {
+  id: string; // e.g. "matematyka-podstawowa"
+  key: string; // e.g. "math"
+  name: string; // e.g. "Matematyka Podstawowa"
+  short_name: string; // e.g. "Matematyka"
+  level: string; // e.g. "Nowa Formuła 2023 (Poziom Podstawowy)"
+  icon: string; // e.g. "Calculator"
+  color: string; // e.g. "#FFB800"
+  topics_count: number;
+  lessons_count: number;
+  tasks_count: number;
+  topics_metadata?: SubjectTopicMetadata[];
+  updatedAt?: string;
+}
 
 export interface LessonMetadataItem {
   id: string; // e.g. "lesson-1-1"

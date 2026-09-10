@@ -5,7 +5,7 @@
     "description": "Kompletny program przygotowawczy z ciągów liczbowych do matury: ciąg arytmetyczny, geometryczny, procent składany, zadania optymalizacyjne i dowodowe.",
     "lessons": [
       {
-        "id": "l-dzial-7-1",
+        "id": "lesson-7-1",
         "title": "Pojęcie ciągu liczbowego i obliczanie wyrazów z wzoru ogólnego",
         "theory_pill": {
           "concept_essence": "Ciąg to funkcja, której dziedziną są dodatnie liczby naturalne: $n \\in \\{1, 2, 3, \\dots\\}$. Wyraz $a_n$ to wartość ciągu dla numeru $n$. Aby obliczyć np. trzeci wyraz $a_3$, w miejsce $n$ wstawiasz po prostu liczbę $3$.",
@@ -16,7 +16,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-1-1",
+            "id": "task-7-1-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -33,7 +33,7 @@
             "hint": "Wstaw n = 3 do wzoru ciągu i pamiętaj o potęgowaniu przed mnożeniem."
           },
           {
-            "id": "t-dzial-7-1-2",
+            "id": "task-7-1-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -50,7 +50,7 @@
             "hint": "Liczba -1 podniesiona do potęgi nieparzystej daje -1."
           },
           {
-            "id": "t-dzial-7-1-3",
+            "id": "task-7-1-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura maj 2024",
@@ -61,7 +61,7 @@
             "hint": "Podstaw n = 6 do wzoru ogólnego."
           },
           {
-            "id": "t-dzial-7-1-4",
+            "id": "task-7-1-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2023",
@@ -78,7 +78,7 @@
             "hint": "Ułóż równanie (n + 1)/(2n) = 3/5 i rozwiąż je metodą mnożenia na krzyż."
           },
           {
-            "id": "t-dzial-7-1-5",
+            "id": "task-7-1-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -95,7 +95,7 @@
             "hint": "Dla zdania 1 oblicz a_2. Dla zdania 2 sprawdź, czy równanie 3n - 7 = 14 daje n będące liczbą naturalną."
           },
           {
-            "id": "t-dzial-7-1-6",
+            "id": "task-7-1-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -112,7 +112,7 @@
             "hint": "Wyznacz najpierw a_{n+1}, wstawiając (n+1) w miejsce n, a następnie odejmij a_n."
           },
           {
-            "id": "t-dzial-7-1-7",
+            "id": "task-7-1-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -129,20 +129,26 @@
             "hint": "Rozwiąż nierówność 20 - 3n > 0 i pamiętaj, że n musi być liczbą naturalną od 1."
           },
           {
-            "id": "t-dzial-7-1-8",
+            "id": "task-7-1-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Dany jest ciąg o wzorze ogólnym $a_n = \\frac{n^2 - 4}{n + 1}$ dla $n \\ge 1$. Wykaż, że żaden wyraz tego ciągu nie jest równy $1$.",
             "explanation": "Układamy równanie: (n^2 - 4)/(n + 1) = 1 <=> n^2 - 4 = n + 1 <=> n^2 - n - 5 = 0. Delta = 1 - 4*(-5) = 21. Pierwiastki to n = (1 - \\sqrt{21})/2 lub n = (1 + \\sqrt{21})/2. Żaden z nich nie jest liczbą naturalną, więc żaden wyraz ciągu nie jest równy 1.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie równania (n^2 - 4)/(n + 1) = 1 i przekształcenie do postaci n^2 - n - 5 = 0. 1 pkt za wyznaczenie delty (\\Delta = 21) i uzasadnienie, że pierwiastki nie są liczbami naturalnymi, co kończy dowód.",
+            "scoring_key": [
+              "1 pkt za zapisanie równania (n^2 - 4)/(n + 1) = 1 i przekształcenie do postaci n^2 - n - 5 = 0.",
+              "1 pkt za wyznaczenie delty (\\Delta = 21) i uzasadnienie, że pierwiastki nie są liczbami naturalnymi, co kończy dowód."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-2",
+        "id": "lesson-7-2",
         "title": "Badanie znaków wyrazów ciągu: Wyrazy dodatnie i ujemne",
         "theory_pill": {
           "concept_essence": "Aby wyznaczyć, które wyrazy ciągu są dodatnie, rozwiązujemy nierówność $a_n > 0$, pamiętając o warunku $n \\in \\mathbb{N}_+$. Zbiór rozwiązań to liczby naturalne spełniające tę nierówność.",
@@ -153,7 +159,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-2-1",
+            "id": "task-7-2-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -170,7 +176,7 @@
             "hint": "Rozwiąż nierówność kwadratową (n - 2)(n - 7) < 0 i wypisz liczby naturalne wewnątrz przedziału."
           },
           {
-            "id": "t-dzial-7-2-2",
+            "id": "task-7-2-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -187,7 +193,7 @@
             "hint": "Wyrażenie w liczniku musi być dodatnie: 15 - 2n > 0."
           },
           {
-            "id": "t-dzial-7-2-3",
+            "id": "task-7-2-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -198,7 +204,7 @@
             "hint": "Ułóż nierówność 35 - 4n > 5 i wyznacz maksymalne naturalne n."
           },
           {
-            "id": "t-dzial-7-2-4",
+            "id": "task-7-2-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -215,7 +221,7 @@
             "hint": "Iloczyn jest zerem, gdy co najmniej jeden z czynników jest zerem."
           },
           {
-            "id": "t-dzial-7-2-5",
+            "id": "task-7-2-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -232,7 +238,7 @@
             "hint": "Pamiętaj, że n musi być dodatnie, więc n = -4 nie jest wyrazem ciągu."
           },
           {
-            "id": "t-dzial-7-2-6",
+            "id": "task-7-2-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -249,7 +255,7 @@
             "hint": "Wyznacz współrzędną wierzchołka paraboli n_w = -b/(2a)."
           },
           {
-            "id": "t-dzial-7-2-7",
+            "id": "task-7-2-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -266,20 +272,26 @@
             "hint": "Rozbij ułamek na sumę: 12/n - n/n = 12/n - 1."
           },
           {
-            "id": "t-dzial-7-2-8",
+            "id": "task-7-2-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Wyznacz wszystkie ujemne wyrazy ciągu określonego wzorem $a_n = n^2 - 7n + 10$ dla $n \\ge 1$.",
             "explanation": "Rozwiązujemy nierówność: n^2 - 7n + 10 < 0. Miejsca zerowe to n_1 = 2, n_2 = 5. Rozwiązaniem w R jest n in (2, 5). Ponieważ n jest naturalne, mamy n in {3, 4}. Obliczamy wyrazy: a_3 = 3^2 - 7*3 + 10 = -2, a_4 = 4^2 - 7*4 + 10 = -2. Ujemnymi wyrazami są a_3 = -2 oraz a_4 = -2.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie nierówności n^2 - 7n + 10 < 0 i wyznaczenie jej rozwiązania w zbiorze liczb rzeczywistych: n in (2, 5). 1 pkt za wskazanie liczb naturalnych n = 3 oraz n = 4 i obliczenie wartości tych wyrazów: a_3 = -2, a_4 = -2.",
+            "scoring_key": [
+              "1 pkt za zapisanie nierówności n^2 - 7n + 10 < 0 i wyznaczenie jej rozwiązania w zbiorze liczb rzeczywistych: n in (2, 5).",
+              "1 pkt za wskazanie liczb naturalnych n = 3 oraz n = 4 i obliczenie wartości tych wyrazów: a_3 = -2, a_4 = -2."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-3",
+        "id": "lesson-7-3",
         "title": "Badanie monotoniczności ciągów: Różnica a_{n+1} - a_n",
         "theory_pill": {
           "concept_essence": "Ciąg jest rosnący, gdy każdy kolejny wyraz jest większy od poprzedniego, czyli różnica $a_{n+1} - a_n > 0$ dla każdego $n \\in \\mathbb{N}_+$. Gdy różnica jest ujemna, ciąg jest malejący. Gdy wynosi zero — stały.",
@@ -290,7 +302,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-3-1",
+            "id": "task-7-3-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -307,7 +319,7 @@
             "hint": "Sprawdź znak współczynnika przy n lub oblicz różnicę a_2 - a_1."
           },
           {
-            "id": "t-dzial-7-3-2",
+            "id": "task-7-3-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -324,7 +336,7 @@
             "hint": "Ciąg liniowy jest rosnący, gdy współczynnik przy n jest dodatni."
           },
           {
-            "id": "t-dzial-7-3-3",
+            "id": "task-7-3-3",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -341,7 +353,7 @@
             "hint": "Porównaj a_1 = 2, a_2 = 1, a_3 = 2/3."
           },
           {
-            "id": "t-dzial-7-3-4",
+            "id": "task-7-3-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -358,7 +370,7 @@
             "hint": "Rozwiń (n+1)^2 ze wzoru skróconego mnożenia."
           },
           {
-            "id": "t-dzial-7-3-5",
+            "id": "task-7-3-5",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura sierpień 2023",
@@ -369,7 +381,7 @@
             "hint": "Różnica dwóch kolejnych wyrazów ciągu liniowego jest równa współczynnikowi przy n."
           },
           {
-            "id": "t-dzial-7-3-6",
+            "id": "task-7-3-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -386,7 +398,7 @@
             "hint": "Współczynnik kierunkowy przy n decyduje o monotoniczności."
           },
           {
-            "id": "t-dzial-7-3-7",
+            "id": "task-7-3-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -403,20 +415,26 @@
             "hint": "Oblicz a_1, a_2 i a_3 i sprawdź, czy wartości stale rosną lub stale maleją."
           },
           {
-            "id": "t-dzial-7-3-8",
+            "id": "task-7-3-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Informator maturalny",
             "content": "Wykaż, że ciąg o wzorze ogólnym $a_n = \\frac{n}{n + 1}$ dla $n \\ge 1$ jest rosnący.",
             "explanation": "Badamy różnicę a_{n+1} - a_n: a_{n+1} - a_n = (n+1)/(n+2) - n/(n+1) = ((n+1)^2 - n(n+2)) / ((n+2)(n+1)) = (n^2 + 2n + 1 - n^2 - 2n) / ((n+2)(n+1)) = 1 / ((n+2)(n+1)). Ponieważ n >= 1, mianownik (n+2)(n+1) jest dodatni, więc cały ułamek 1/((n+2)(n+1)) > 0. Różnica jest dodatnia, co dowodzi, że ciąg jest rosnący.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za poprawne wyznaczenie różnicy a_{n+1} - a_n i sprowadzenie jej do wspólnego mianownika: 1/((n+2)(n+1)). 1 pkt za uzasadnienie, że licznik 1 > 0 oraz mianownik (n+2)(n+1) > 0 dla każdego n >= 1, skąd wynika, że różnica jest dodatnia, co dowodzi, że ciąg jest rosnący.",
+            "scoring_key": [
+              "1 pkt za poprawne wyznaczenie różnicy a_{n+1} - a_n i sprowadzenie jej do wspólnego mianownika: 1/((n+2)(n+1)).",
+              "1 pkt za uzasadnienie, że licznik 1 > 0 oraz mianownik (n+2)(n+1) > 0 dla każdego n >= 1, skąd wynika, że różnica jest dodatnia, co dowodzi, że ciąg jest rosnący."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-4",
+        "id": "lesson-7-4",
         "title": "Ciąg arytmetyczny 1: Rozpoznawanie i wyznaczanie różnicy r",
         "theory_pill": {
           "concept_essence": "W ciągu arytmetycznym każdy kolejny wyraz powstaje przez DODANIE do poprzedniego tej samej stałej liczby $r$ (różnicy ciągu): $a_{n+1} = a_n + r$. Różnicę wyznaczamy odejmując wyraz wcześniejszy od późniejszego: $r = a_{n+1} - a_n$.",
@@ -427,7 +445,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-4-1",
+            "id": "task-7-4-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -444,7 +462,7 @@
             "hint": "Odejmij pierwszy wyraz od drugiego: r = a_2 - a_1."
           },
           {
-            "id": "t-dzial-7-4-2",
+            "id": "task-7-4-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -461,7 +479,7 @@
             "hint": "Oblicz różnicę między trzecim a drugim wyrazem: a_3 - a_2."
           },
           {
-            "id": "t-dzial-7-4-3",
+            "id": "task-7-4-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -472,7 +490,7 @@
             "hint": "Dodaj dwukrotnie różnicę r do pierwszego wyrazu: a_3 = a_1 + 2r."
           },
           {
-            "id": "t-dzial-7-4-4",
+            "id": "task-7-4-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -489,7 +507,7 @@
             "hint": "Ciąg arytmetyczny ma wzór pierwszego stopnia względem n (postać funkcji liniowej)."
           },
           {
-            "id": "t-dzial-7-4-5",
+            "id": "task-7-4-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -506,7 +524,7 @@
             "hint": "Oblicz r = a_2 - a_1."
           },
           {
-            "id": "t-dzial-7-4-6",
+            "id": "task-7-4-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -523,7 +541,7 @@
             "hint": "Różnica między wyrazami a_7 i a_4 to dokładnie 3 różnice (3r)."
           },
           {
-            "id": "t-dzial-7-4-7",
+            "id": "task-7-4-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -540,20 +558,26 @@
             "hint": "Znak różnicy r określa monotoniczność ciągu arytmetycznego."
           },
           {
-            "id": "t-dzial-7-4-8",
+            "id": "task-7-4-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "W ciągu arytmetycznym $(a_n)$ określonym dla $n \\ge 1$ dane są wyrazy: $a_2 = 5$ oraz $a_5 = -4$. Oblicz różnicę $r$ oraz pierwszy wyraz $a_1$ tego ciągu.",
             "explanation": "Mamy a_5 - a_2 = 3r. Stąd 3r = -4 - 5 = -9, czyli r = -3. Następnie a_1 = a_2 - r = 5 - (-3) = 8. Odpowiedź: r = -3, a_1 = 8.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie równania 3r = a_5 - a_2 i obliczenie r = -3. 1 pkt za obliczenie pierwszego wyrazu a_1 = a_2 - r = 5 - (-3) = 8.",
+            "scoring_key": [
+              "1 pkt za zapisanie równania 3r = a_5 - a_2 i obliczenie r = -3.",
+              "1 pkt za obliczenie pierwszego wyrazu a_1 = a_2 - r = 5 - (-3) = 8."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-5",
+        "id": "lesson-7-5",
         "title": "Ciąg arytmetyczny 2: Wzór ogólny a_n = a_1 + (n-1)r",
         "theory_pill": {
           "concept_essence": "Aby dotrzeć do $n$-tego wyrazu, do pierwszego wyrazu $a_1$ dodajemy $(n-1)$ razy różnicę $r$. Wzór ogólny to $a_n = a_1 + (n-1)r$. Pozwala natychmiast obliczyć dowolny wyraz bez wypisywania wyrazów po kolei.",
@@ -564,7 +588,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-5-1",
+            "id": "task-7-5-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -581,7 +605,7 @@
             "hint": "Zastosuj wzór a_{15} = a_1 + 14r."
           },
           {
-            "id": "t-dzial-7-5-2",
+            "id": "task-7-5-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -598,7 +622,7 @@
             "hint": "Najpierw wyznacz różnicę r z równania a_7 - a_3 = 4r."
           },
           {
-            "id": "t-dzial-7-5-3",
+            "id": "task-7-5-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -609,7 +633,7 @@
             "hint": "Podstaw 100 pod a_n i rozwiąż równanie ze zmienną n."
           },
           {
-            "id": "t-dzial-7-5-4",
+            "id": "task-7-5-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -626,7 +650,7 @@
             "hint": "Wymnóż nawias: a_1 + n*r - r."
           },
           {
-            "id": "t-dzial-7-5-5",
+            "id": "task-7-5-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -643,7 +667,7 @@
             "hint": "Podstaw n = 1 oraz n = 2 i sprawdź różnicę."
           },
           {
-            "id": "t-dzial-7-5-6",
+            "id": "task-7-5-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -660,7 +684,7 @@
             "hint": "Zauważ, że z a_5 do a_8 brakuje dokładnie 3 różnic (3r)."
           },
           {
-            "id": "t-dzial-7-5-7",
+            "id": "task-7-5-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -677,20 +701,26 @@
             "hint": "Rozwiąż nierówność 47 - 5n > 0 dla n będącego liczbą naturalną."
           },
           {
-            "id": "t-dzial-7-5-8",
+            "id": "task-7-5-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W ciągu arytmetycznym $(a_n)$ określonym dla $n \\ge 1$ suma drugiego i czwartego wyrazu wynosi $16$, a wyraz szósty jest równy $17$. Wyznacz wzór ogólny tego ciągu.",
             "explanation": "Mamy układ: 2*a_1 + 4r = 16 => a_1 + 2r = 8. Drugie równanie: a_1 + 5r = 17. Odejmując stronami: 3r = 9 => r = 3. Wtedy a_1 = 8 - 2*3 = 2. Wzór ogólny: a_n = 2 + (n - 1)*3 = 3n - 1.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie układu równań: (a_1 + r) + (a_1 + 3r) = 16 oraz a_1 + 5r = 17 i wyznaczenie r = 3 oraz a_1 = 2. 1 pkt za wyznaczenie wzoru ogólnego: a_n = 3n - 1.",
+            "scoring_key": [
+              "1 pkt za zapisanie układu równań: (a_1 + r) + (a_1 + 3r) = 16 oraz a_1 + 5r = 17 i wyznaczenie r = 3 oraz a_1 = 2.",
+              "1 pkt za wyznaczenie wzoru ogólnego: a_n = 3n - 1."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-6",
+        "id": "lesson-7-6",
         "title": "Ciąg arytmetyczny 3: Własność trzech sąsiednich wyrazów",
         "theory_pill": {
           "concept_essence": "W każdym ciągu arytmetycznym wyraz środkowy jest średnią arytmetyczną wyrazów sąsiednich: $a_n = \\frac{a_{n-1} + a_{n+1}}{2}$, lub równoważnie: $2a_n = a_{n-1} + a_{n+1}$. Ta własność pozwala błyskawicznie ułożyć równanie z niewiadomą $x$.",
@@ -701,7 +731,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-6-1",
+            "id": "task-7-6-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -718,7 +748,7 @@
             "hint": "Zastosuj zależność: 2 * środkowy = lewy + prawy."
           },
           {
-            "id": "t-dzial-7-6-2",
+            "id": "task-7-6-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -735,7 +765,7 @@
             "hint": "Środkowy wyraz to (x - 2). Pomnóż go przez 2 i przyrównaj do sumy 3 + 11."
           },
           {
-            "id": "t-dzial-7-6-3",
+            "id": "task-7-6-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -746,7 +776,7 @@
             "hint": "Środkowy wyraz jest średnią arytmetyczną wyrazów skrajnych."
           },
           {
-            "id": "t-dzial-7-6-4",
+            "id": "task-7-6-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -763,7 +793,7 @@
             "hint": "Podwójny środkowy wyraz: 2 * (2x) = suma skrajnych."
           },
           {
-            "id": "t-dzial-7-6-5",
+            "id": "task-7-6-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -780,7 +810,7 @@
             "hint": "Oblicz różnicę drugiego i pierwszego wyrazu oraz sprawdź średnią skrajnych."
           },
           {
-            "id": "t-dzial-7-6-6",
+            "id": "task-7-6-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -797,7 +827,7 @@
             "hint": "Ułóż równanie 2 * m^2 = m + 6 i rozwiąż równanie kwadratowe za pomocą delty."
           },
           {
-            "id": "t-dzial-7-6-7",
+            "id": "task-7-6-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -814,20 +844,26 @@
             "hint": "Środkowy wyraz pomnożony przez 2 równa się sumie wyrazów skrajnych."
           },
           {
-            "id": "t-dzial-7-6-8",
+            "id": "task-7-6-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Wyznacz wszystkie wartości $x$, dla których liczby $x + 2, x^2 - 1, 3x + 2$ w podanej kolejności tworzą ciąg arytmetyczny.",
             "explanation": "Z własności trzech kolejnych wyrazów: 2(x^2 - 1) = (x + 2) + (3x + 2) <=> 2x^2 - 2 = 4x + 4 <=> 2x^2 - 4x - 6 = 0 <=> x^2 - 2x - 3 = 0. Rozkładając na czynniki: (x - 3)(x + 1) = 0. Zatem x = -1 lub x = 3.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie równania wynikającego z własności ciągu arytmetycznego: 2(x^2 - 1) = (x + 2) + (3x + 2) i uporządkowanie do postaci 2x^2 - 4x - 6 = 0 (lub x^2 - 2x - 3 = 0). 1 pkt za wyznaczenie obu rozwiązań: x = -1 oraz x = 3.",
+            "scoring_key": [
+              "1 pkt za zapisanie równania wynikającego z własności ciągu arytmetycznego: 2(x^2 - 1) = (x + 2) + (3x + 2) i uporządkowanie do postaci 2x^2 - 4x - 6 = 0 (lub x^2 - 2x - 3 = 0).",
+              "1 pkt za wyznaczenie obu rozwiązań: x = -1 oraz x = 3."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-7",
+        "id": "lesson-7-7",
         "title": "Ciąg arytmetyczny 4: Suma początkowych wyrazów S_n",
         "theory_pill": {
           "concept_essence": "Suma $n$ początkowych wyrazów to średnia arytmetyczna wyrazu pierwszego i ostatniego, pomnożona przez liczbę wyrazów $n$: $S_n = \\frac{a_1 + a_n}{2} \\cdot n$. Jeśli nie znasz ostatniego wyrazu, podstawiasz $a_n = a_1 + (n-1)r$, uzyskując wzór: $S_n = \\frac{2a_1 + (n-1)r}{2} \\cdot n$.",
@@ -838,7 +874,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-7-1",
+            "id": "task-7-7-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -855,7 +891,7 @@
             "hint": "Użyj wzoru S_n = (a_1 + a_n)/2 * n."
           },
           {
-            "id": "t-dzial-7-7-2",
+            "id": "task-7-7-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -872,7 +908,7 @@
             "hint": "Oblicz najpierw a_{20}, a następnie wstaw do wzoru na sumę."
           },
           {
-            "id": "t-dzial-7-7-3",
+            "id": "task-7-7-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -883,7 +919,7 @@
             "hint": "Wyznacz najpierw liczbę wyrazów n ze wzoru na a_n, a potem oblicz sumę."
           },
           {
-            "id": "t-dzial-7-7-4",
+            "id": "task-7-7-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -900,7 +936,7 @@
             "hint": "Suma jednego wyrazu S_1 jest równa pierwszemu wyrazowi a_1."
           },
           {
-            "id": "t-dzial-7-7-5",
+            "id": "task-7-7-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -917,7 +953,7 @@
             "hint": "Oblicz S_1 i S_2, pamiętając że a_2 = S_2 - S_1."
           },
           {
-            "id": "t-dzial-7-7-6",
+            "id": "task-7-7-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -934,7 +970,7 @@
             "hint": "Jest to suma ciągu arytmetycznego o a_1 = 1, a_n = 50 i n = 50."
           },
           {
-            "id": "t-dzial-7-7-7",
+            "id": "task-7-7-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -951,20 +987,26 @@
             "hint": "W sumie nieparzystej liczby wyrazów średnia pierwszego i ostatniego to wyraz środkowy."
           },
           {
-            "id": "t-dzial-7-7-8",
+            "id": "task-7-7-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Suma $n$ początkowych wyrazów ciągu arytmetycznego $(a_n)$ jest dana wzorem $S_n = 3n^2 - 2n$ dla każdego $n \\ge 1$. Wyznacz wzór ogólny tego ciągu.",
             "explanation": "Obliczamy pierwsze sumy: a_1 = S_1 = 3(1)^2 - 2(1) = 1. S_2 = 3(2)^2 - 2(2) = 12 - 4 = 8. Drugi wyraz to a_2 = S_2 - S_1 = 8 - 1 = 7. Różnica ciągu wynosi r = a_2 - a_1 = 7 - 1 = 6. Wzór ogólny: a_n = a_1 + (n - 1)r = 1 + (n - 1)*6 = 6n - 5.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie a_1 = S_1 = 1 oraz wyznaczenie a_2 = S_2 - S_1 = 8 - 1 = 7 (lub zastosowanie tożsamości a_n = S_n - S_{n-1}). 1 pkt za wyznaczenie różnicy r = 6 i zapisanie poprawnego wzoru ogólnego: a_n = 6n - 5.",
+            "scoring_key": [
+              "1 pkt za obliczenie a_1 = S_1 = 1 oraz wyznaczenie a_2 = S_2 - S_1 = 8 - 1 = 7 (lub zastosowanie tożsamości a_n = S_n - S_{n-1}).",
+              "1 pkt za wyznaczenie różnicy r = 6 i zapisanie poprawnego wzoru ogólnego: a_n = 6n - 5."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-8",
+        "id": "lesson-7-8",
         "title": "Ciąg arytmetyczny 5: Zadania tekstowe i praktyczne",
         "theory_pill": {
           "concept_essence": "Wiele zjawisk fizycznych i ekonomicznych ma charakter przyrostu arytmetycznego (np. spłacanie rat malejących, układanie rzędów krzeseł, oszczędzanie ze stałym przyrostem). Tłumaczymy treść zadania na parametry: $a_1$, $r$, $n$ oraz $S_n$.",
@@ -975,7 +1017,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-8-1",
+            "id": "task-7-8-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -992,7 +1034,7 @@
             "hint": "Oblicz wyraz a_8 dla ciągu arytmetycznego o a_1 = 18 i r = 2."
           },
           {
-            "id": "t-dzial-7-8-2",
+            "id": "task-7-8-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1009,7 +1051,7 @@
             "hint": "Pytanie dotyczy sumy S_6, a nie samego szóstego tygodnia."
           },
           {
-            "id": "t-dzial-7-8-3",
+            "id": "task-7-8-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1020,7 +1062,7 @@
             "hint": "Użyj wzoru na sumę S_6 z r = -20 i przyrównaj do 1200 zł."
           },
           {
-            "id": "t-dzial-7-8-4",
+            "id": "task-7-8-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1037,7 +1079,7 @@
             "hint": "Pytanie o koszt dziesiątego metra to a_{10} = a_1 + 9r."
           },
           {
-            "id": "t-dzial-7-8-5",
+            "id": "task-7-8-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1054,7 +1096,7 @@
             "hint": "Wyznacz a_{10} oraz sumę S_{10}."
           },
           {
-            "id": "t-dzial-7-8-6",
+            "id": "task-7-8-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1071,7 +1113,7 @@
             "hint": "W dwunastym miesiącu wyraz a_{12} = a_1 + 11r."
           },
           {
-            "id": "t-dzial-7-8-7",
+            "id": "task-7-8-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1088,20 +1130,26 @@
             "hint": "Oblicz sumę S_8 ze wzoru (a_1 + a_8)/2 * 8."
           },
           {
-            "id": "t-dzial-7-8-8",
+            "id": "task-7-8-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2023",
             "content": "Pewna firma zobowiązała się spłacić pożyczkę w wysokości $10\\\\,500$ zł w $14$ ratach, z których każda kolejna rata była większa od poprzedniej o $50$ zł. Oblicz wysokość pierwszej oraz ostatniej raty.",
             "explanation": "Dane: S_{14} = 10500, n = 14, r = 50. Wzór na sumę: S_{14} = [2a_1 + (14-1)*50] / 2 * 14 = (2a_1 + 650) * 7. Zatem 7(2a_1 + 650) = 10500 <=> 2a_1 + 650 = 1500 <=> 2a_1 = 850 <=> a_1 = 425 zł. Ostatnia rata: a_{14} = a_1 + 13r = 425 + 13 * 50 = 425 + 650 = 1075 zł.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie równania sumy ciągu arytmetycznego: S_{14} = 10500 = (2*a_1 + 13*50)/2 * 14 i wyznaczenie a_1 = 425 zł. 1 pkt za obliczenie ostatniej raty a_{14} = a_1 + 13*50 = 425 + 650 = 1075 zł.",
+            "scoring_key": [
+              "1 pkt za zapisanie równania sumy ciągu arytmetycznego: S_{14} = 10500 = (2*a_1 + 13*50)/2 * 14 i wyznaczenie a_1 = 425 zł.",
+              "1 pkt za obliczenie ostatniej raty a_{14} = a_1 + 13*50 = 425 + 650 = 1075 zł."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-9",
+        "id": "lesson-7-9",
         "title": "Ciąg geometryczny 1: Rozpoznawanie i wyznaczanie ilorazu q",
         "theory_pill": {
           "concept_essence": "W ciągu geometrycznym każdy kolejny wyraz powstaje przez POMNOŻENIE poprzedniego wyrazu przez stałą liczbę $q$ (iloraz ciągu): $a_{n+1} = a_n \\cdot q$. Iloraz wyznaczamy dzieląc wyraz późniejszy przez wcześniejszy: $q = \\frac{a_{n+1}}{a_n}$.",
@@ -1112,7 +1160,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-9-1",
+            "id": "task-7-9-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1129,7 +1177,7 @@
             "hint": "Podziel drugi wyraz przez pierwszy: q = a_2 / a_1."
           },
           {
-            "id": "t-dzial-7-9-2",
+            "id": "task-7-9-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1146,7 +1194,7 @@
             "hint": "Podziel a_2 przez a_1."
           },
           {
-            "id": "t-dzial-7-9-3",
+            "id": "task-7-9-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1157,7 +1205,7 @@
             "hint": "Pomnóż wyraz pierwszy dwukrotnie przez iloraz q: a_3 = a_1 * q^2."
           },
           {
-            "id": "t-dzial-7-9-4",
+            "id": "task-7-9-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1174,7 +1222,7 @@
             "hint": "Wzór ogólny ciągu geometrycznego ma postać funkcji wykładniczej."
           },
           {
-            "id": "t-dzial-7-9-5",
+            "id": "task-7-9-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1191,7 +1239,7 @@
             "hint": "Dla ujemnego q wyrazy mają naprzemienne znaki: +, -, +, -, +..."
           },
           {
-            "id": "t-dzial-7-9-6",
+            "id": "task-7-9-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1208,7 +1256,7 @@
             "hint": "Z a_3 do a_5 mnożymy dwukrotnie przez q, czyli q^2 = a_5 / a_3."
           },
           {
-            "id": "t-dzial-7-9-7",
+            "id": "task-7-9-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1225,20 +1273,26 @@
             "hint": "Podstawą potęgi przy wykładniku n jest iloraz q."
           },
           {
-            "id": "t-dzial-7-9-8",
+            "id": "task-7-9-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "W ciągu geometrycznym $(a_n)$ o wyrazach dodatnich dane są $a_2 = \\sqrt{2}$ oraz $a_4 = 2\\sqrt{2}$. Oblicz iloraz $q$ oraz pierwszy wyraz $a_1$ tego ciągu.",
             "explanation": "Mamy a_4 / a_2 = q^2 => q^2 = 2\\sqrt{2} / \\sqrt{2} = 2. Ponieważ wyrazy są dodatnie, q = \\sqrt{2}. Wtedy a_1 = a_2 / q = \\sqrt{2} / \\sqrt{2} = 1. Odpowiedź: q = \\sqrt{2}, a_1 = 1.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie q^2 = a_4 / a_2 = 2 i zapisanie q = \\sqrt{2} (uwzględniając założenie q > 0). 1 pkt za obliczenie pierwszego wyrazu a_1 = a_2 / q = \\sqrt{2} / \\sqrt{2} = 1.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie q^2 = a_4 / a_2 = 2 i zapisanie q = \\sqrt{2} (uwzględniając założenie q > 0).",
+              "1 pkt za obliczenie pierwszego wyrazu a_1 = a_2 / q = \\sqrt{2} / \\sqrt{2} = 1."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-10",
+        "id": "lesson-7-10",
         "title": "Ciąg geometryczny 2: Wzór ogólny a_n = a_1 * q^{n-1}",
         "theory_pill": {
           "concept_essence": "Aby wyznaczyć $n$-ty wyraz ciągu geometrycznego, mnożymy wyraz pierwszy $a_1$ przez iloraz $q$ podniesiony do potęgi $(n-1)$: $a_n = a_1 \\cdot q^{n-1}$. Wykładnik potęgi jest zawsze o $1$ mniejszy od numeru wyrazu.",
@@ -1249,7 +1303,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-10-1",
+            "id": "task-7-10-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1266,7 +1320,7 @@
             "hint": "Zastosuj wzór a_6 = a_1 * q^5."
           },
           {
-            "id": "t-dzial-7-10-2",
+            "id": "task-7-10-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1283,7 +1337,7 @@
             "hint": "Pamiętaj, że (-3)^3 = -27."
           },
           {
-            "id": "t-dzial-7-10-3",
+            "id": "task-7-10-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1294,7 +1348,7 @@
             "hint": "(1/3)^4 = 1/81. Pomnóż 81 przez 1/81."
           },
           {
-            "id": "t-dzial-7-10-4",
+            "id": "task-7-10-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1311,7 +1365,7 @@
             "hint": "Oblicz q^3 = a_5 / a_2, stąd wyznacz q, a potem a_1 = a_2 / q."
           },
           {
-            "id": "t-dzial-7-10-5",
+            "id": "task-7-10-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1328,7 +1382,7 @@
             "hint": "Sprawdź wartość potęgi (-1)^n dla wykładnika parzystego i nieparzystego."
           },
           {
-            "id": "t-dzial-7-10-6",
+            "id": "task-7-10-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1345,7 +1399,7 @@
             "hint": "Iloraz q = 2. Żeby cofnąć się do a_1, podziel a_3 przez q^2."
           },
           {
-            "id": "t-dzial-7-10-7",
+            "id": "task-7-10-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1362,20 +1416,26 @@
             "hint": "Stosunek a_{n+1} do a_n to po prostu iloraz q."
           },
           {
-            "id": "t-dzial-7-10-8",
+            "id": "task-7-10-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W ciągu geometrycznym $(a_n)$ o wyrazach różnych od zera dane są $a_3 = 9$ oraz $a_5 = 81$. Wyznacz wszystkie możliwe wartości wyrazu pierwszego $a_1$.",
             "explanation": "Mamy q^2 = a_5 / a_3 = 81 / 9 = 9. Stąd q = 3 lub q = -3. Niezależnie od znaku q, wyraz pierwszy to a_1 = a_3 / q^2 = 9 / 9 = 1. W obu przypadkach a_1 = 1.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie równania q^2 = a_5 / a_3 = 9 i wyznaczenie dwóch możliwych wartości ilorazu: q = 3 lub q = -3. 1 pkt za wyznaczenie wyrazu pierwszego: a_1 = a_3 / q^2 = 9 / 9 = 1 w obu przypadkach.",
+            "scoring_key": [
+              "1 pkt za zapisanie równania q^2 = a_5 / a_3 = 9 i wyznaczenie dwóch możliwych wartości ilorazu: q = 3 lub q = -3.",
+              "1 pkt za wyznaczenie wyrazu pierwszego: a_1 = a_3 / q^2 = 9 / 9 = 1 w obu przypadkach."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-11",
+        "id": "lesson-7-11",
         "title": "Ciąg geometryczny 3: Własność trzech sąsiednich wyrazów",
         "theory_pill": {
           "concept_essence": "W każdym ciągu geometrycznym kwadrat wyrazu środkowego jest równy iloczynowi wyrazów sąsiednich: $a_n^2 = a_{n-1} \\cdot a_{n+1}$ (dla trzech wyrazów: $b^2 = a \\cdot c$). Pozwala to ułożyć równanie kwadratowe na niewiadomą $x$.",
@@ -1386,7 +1446,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-11-1",
+            "id": "task-7-11-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1403,7 +1463,7 @@
             "hint": "Użyj wzoru b^2 = a * c i wybierz wartość dodatnią."
           },
           {
-            "id": "t-dzial-7-11-2",
+            "id": "task-7-11-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1420,7 +1480,7 @@
             "hint": "Podnieś środkowy wyraz do kwadratu i przyrównaj do iloczynu skrajnych: (x + 2)^2 = x(x + 6)."
           },
           {
-            "id": "t-dzial-7-11-3",
+            "id": "task-7-11-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1431,7 +1491,7 @@
             "hint": "(2x)^2 = 4x^2. Przyrównaj do 3 * 48 = 144."
           },
           {
-            "id": "t-dzial-7-11-4",
+            "id": "task-7-11-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1448,7 +1508,7 @@
             "hint": "Oblicz bezpośrednio 2 * 50."
           },
           {
-            "id": "t-dzial-7-11-5",
+            "id": "task-7-11-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1465,7 +1525,7 @@
             "hint": "Sprawdź, czy (\\sqrt{3})^2 = 1 * 3."
           },
           {
-            "id": "t-dzial-7-11-6",
+            "id": "task-7-11-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1482,7 +1542,7 @@
             "hint": "(x - 1)^2 = 36, stąd x - 1 = 6."
           },
           {
-            "id": "t-dzial-7-11-7",
+            "id": "task-7-11-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1499,20 +1559,26 @@
             "hint": "Ułóż równanie kwadratowe x^2 = 2(x + 4) i znajdź oba pierwiastki."
           },
           {
-            "id": "t-dzial-7-11-8",
+            "id": "task-7-11-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Liczby $x - 3, 2x, 5x + 4$ są odpowiednio pierwszym, drugim i trzecim wyrazem ciągu geometrycznego. Wyznacz wszystkie wartości $x$, dla których ten ciąg jest geometryczny.",
             "explanation": "Korzystamy z własności ciągu geometrycznego: (2x)^2 = (x - 3)(5x + 4) <=> 4x^2 = 5x^2 + 4x - 15x - 12 <=> 4x^2 = 5x^2 - 11x - 12 <=> x^2 - 11x - 12 = 0. Rozkładamy na czynniki: (x - 12)(x + 1) = 0. Zatem x = 12 lub x = -1.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie równania (2x)^2 = (x - 3)(5x + 4) i przekształcenie do postaci x^2 + 11x + 12 = 0 (lub poprawnej postaci kwadratowej). 1 pkt za wyznaczenie pierwiastków równania kwadratowego: x = -1 lub x = -12 (sprawdzenie: (2x)^2 = 4x^2; (x-3)(5x+4) = 5x^2 - 11x - 12 => x^2 - 11x - 12 = 0 => (x - 12)(x + 1) = 0, stąd x = 12 lub x = -1).",
+            "scoring_key": [
+              "1 pkt za zapisanie równania (2x)^2 = (x - 3)(5x + 4) i przekształcenie do postaci x^2 + 11x + 12 = 0 (lub poprawnej postaci kwadratowej).",
+              "1 pkt za wyznaczenie pierwiastków równania kwadratowego: x = -1 lub x = -12 (sprawdzenie: (2x)^2 = 4x^2; (x-3)(5x+4) = 5x^2 - 11x - 12 => x^2 - 11x - 12 = 0 => (x - 12)(x + 1) = 0, stąd x = 12 lub x = -1)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-12",
+        "id": "lesson-7-12",
         "title": "Ciąg geometryczny 4: Suma początkowych wyrazów S_n",
         "theory_pill": {
           "concept_essence": "Suma $n$ początkowych wyrazów ciągu geometrycznego o ilorazie $q \\neq 1$ wyraża się wzorem: $S_n = a_1 \\cdot \\frac{1 - q^n}{1 - q}$. Dla $q = 1$ suma wynosi po prostu $S_n = n \\cdot a_1$.",
@@ -1523,7 +1589,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-12-1",
+            "id": "task-7-12-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1540,7 +1606,7 @@
             "hint": "Zastosuj wzór S_4 = a_1 * (1 - q^4) / (1 - q)."
           },
           {
-            "id": "t-dzial-7-12-2",
+            "id": "task-7-12-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1557,7 +1623,7 @@
             "hint": "Dodaj bezpośrednio pięć wyrazów lub zastosuj wzór na S_5."
           },
           {
-            "id": "t-dzial-7-12-3",
+            "id": "task-7-12-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1568,7 +1634,7 @@
             "hint": "Oblicz trzy pierwsze wyrazy i dodaj je do siebie."
           },
           {
-            "id": "t-dzial-7-12-4",
+            "id": "task-7-12-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1585,7 +1651,7 @@
             "hint": "Wyrazy parują się: 4 + (-4) = 0."
           },
           {
-            "id": "t-dzial-7-12-5",
+            "id": "task-7-12-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1602,7 +1668,7 @@
             "hint": "Gdy q = 1, wzór ogólny na sumę to n * a_1."
           },
           {
-            "id": "t-dzial-7-12-6",
+            "id": "task-7-12-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1619,7 +1685,7 @@
             "hint": "Podstaw n = 1 do wzoru na sumę."
           },
           {
-            "id": "t-dzial-7-12-7",
+            "id": "task-7-12-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1636,20 +1702,26 @@
             "hint": "Skorzystaj ze związku: S_n = (a_1 - a_n * q) / (1 - q)."
           },
           {
-            "id": "t-dzial-7-12-8",
+            "id": "task-7-12-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W ciągu geometrycznym $(a_n)$ dane są $a_1 = 3$ oraz $q = 2$. Oblicz, dla jakiego $n$ suma $n$ początkowych wyrazów tego ciągu wynosi $381$.",
             "explanation": "Stosujemy wzór na sumę: S_n = a_1 * (q^n - 1)/(q - 1). Mamy: 381 = 3 * (2^n - 1) / (2 - 1) <=> 381 = 3(2^n - 1) <=> 127 = 2^n - 1 <=> 2^n = 128. Ponieważ 2^7 = 128, otrzymujemy n = 7.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za podstawienie danych do wzoru na sumę: 381 = 3 * (1 - 2^n) / (1 - 2) i doprowadzenie do równania 2^n - 1 = 127 (czyli 2^n = 128). 1 pkt za wyznaczenie n = 7.",
+            "scoring_key": [
+              "1 pkt za podstawienie danych do wzoru na sumę: 381 = 3 * (1 - 2^n) / (1 - 2) i doprowadzenie do równania 2^n - 1 = 127 (czyli 2^n = 128).",
+              "1 pkt za wyznaczenie n = 7."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-13",
+        "id": "lesson-7-13",
         "title": "Ciągi mieszane: Układy warunków arytmetycznych i geometrycznych",
         "theory_pill": {
           "concept_essence": "W zadaniach z ciągów mieszanych trzy liczby tworzą jeden ciąg (np. arytmetyczny), a po modyfikacji jednej z nich — inny ciąg (geometryczny). Zapisujemy układ równań korzystając z własności wyrazów sąsiednich: $2b = a + c$ oraz $y^2 = x \\cdot z$.",
@@ -1660,7 +1732,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-13-1",
+            "id": "task-7-13-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1677,7 +1749,7 @@
             "hint": "Skorzystaj z warunku ciągu arytmetycznego: 2x = 2 + y."
           },
           {
-            "id": "t-dzial-7-13-2",
+            "id": "task-7-13-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1694,7 +1766,7 @@
             "hint": "Iloczyn trzech wyrazów ciągu geometrycznego wynosi b^3, gdzie b to wyraz środkowy."
           },
           {
-            "id": "t-dzial-7-13-3",
+            "id": "task-7-13-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1705,7 +1777,7 @@
             "hint": "Zapisz układ: 2x = 4 + y oraz x^2 = 4(y + 4)."
           },
           {
-            "id": "t-dzial-7-13-4",
+            "id": "task-7-13-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1722,7 +1794,7 @@
             "hint": "Suma trzech wyrazów ciągu arytmetycznego jest równa 3-krotności wyrazu środkowego."
           },
           {
-            "id": "t-dzial-7-13-5",
+            "id": "task-7-13-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1739,7 +1811,7 @@
             "hint": "Sprawdź iloraz dla pierwszego zdania i różnicę dla drugiego zdania."
           },
           {
-            "id": "t-dzial-7-13-6",
+            "id": "task-7-13-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1756,7 +1828,7 @@
             "hint": "W ciągu arytmetycznym: c = 2b - a = 2*3 - 1 = 5."
           },
           {
-            "id": "t-dzial-7-13-7",
+            "id": "task-7-13-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1773,20 +1845,27 @@
             "hint": "Podstaw x = 6 i sprawdź warunki obu ciągów."
           },
           {
-            "id": "t-dzial-7-13-8",
+            "id": "task-7-13-8",
             "type": "OPEN_GENERAL",
             "points": 3,
             "source": "Matura maj 2024",
             "content": "Ciąg $(a, b, c)$ jest rosnącym ciągiem geometrycznym, którego suma wynosi $26$. Jeśli od trzeciego wyrazu odejmiemy $8$, to otrzymamy ciąg arytmetyczny. Wyznacz liczby $a, b, c$.",
             "explanation": "Mamy układ: 1) a + b + c = 26 => a + c = 26 - b. 2) 2b = a + c - 8 => a + c = 2b + 8. Przyrównujemy: 26 - b = 2b + 8 <=> 3b = 18 <=> b = 6. Wtedy a + c = 20, czyli c = 20 - a. Z własności ciągu geometrycznego: b^2 = ac => 36 = a(20 - a) <=> a^2 - 20a + 36 = 0 <=> (a - 2)(a - 18) = 0. Ponieważ ciąg jest rosnący, wybieramy a = 2, stąd c = 18. Szukane liczby to: a = 2, b = 6, c = 18.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie układu równań: a + b + c = 26, b^2 = ac oraz 2b = a + (c - 8). 1 pkt za przekształcenie układu: z pierwszego i trzeciego a + c = 26 - b oraz a + c = 2b + 8, skąd 3b = 18 => b = 6. 1 pkt za wyznaczenie liczb a i c: a = 2, c = 18 (odrzucając malejący zestaw).",
+            "scoring_key": [
+              "1 pkt za zapisanie układu równań: a + b + c = 26, b^2 = ac oraz 2b = a + (c - 8).",
+              "1 pkt za przekształcenie układu: z pierwszego i trzeciego a + c = 26 - b oraz a + c = 2b + 8, skąd 3b = 18 => b = 6.",
+              "1 pkt za wyznaczenie liczb a i c: a = 2, c = 18 (odrzucając malejący zestaw)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-14",
+        "id": "lesson-7-14",
         "title": "Procent składany: Lokaty, kapitalizacja odsetek i podatki",
         "theory_pill": {
           "concept_essence": "Procent składany to zastosowanie ciągu geometrycznego w finansach. Kapitał końcowy wynosi $K_n = K_0 \\cdot \\left(1 + \\frac{p}{100 \\cdot m}\\right)^{n \\cdot m}$, gdzie $K_0$ to kapitał początkowy, $p$ to roczna stopa procentowa, $m$ to liczba kapitalizacji w roku, a $n$ to liczba lat.",
@@ -1797,7 +1876,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-14-1",
+            "id": "task-7-14-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1814,7 +1893,7 @@
             "hint": "Użyj wzoru K_n = K_0 * (1 + p/100)^n."
           },
           {
-            "id": "t-dzial-7-14-2",
+            "id": "task-7-14-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1831,7 +1910,7 @@
             "hint": "Podziel oprocentowanie przez 2, a liczbę lat pomnóż przez 2."
           },
           {
-            "id": "t-dzial-7-14-3",
+            "id": "task-7-14-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1842,7 +1921,7 @@
             "hint": "Oblicz kapitał końcowy i odejmij wpłacony kapitał początkowy."
           },
           {
-            "id": "t-dzial-7-14-4",
+            "id": "task-7-14-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1859,7 +1938,7 @@
             "hint": "W roku są 4 kwartały, więc stopę dzielimy przez 4, a potęga wynosi 4."
           },
           {
-            "id": "t-dzial-7-14-5",
+            "id": "task-7-14-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1876,7 +1955,7 @@
             "hint": "Podziel 12% przez 12 miesięcy w roku."
           },
           {
-            "id": "t-dzial-7-14-6",
+            "id": "task-7-14-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1893,7 +1972,7 @@
             "hint": "Zwiększenie o 5% to mnożenie przez 1,05."
           },
           {
-            "id": "t-dzial-7-14-7",
+            "id": "task-7-14-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1910,20 +1989,26 @@
             "hint": "Skoro kapitalizacja jest półroczna (2 razy w roku), to 8 kapitalizacji oznacza 8/2 = 4 lata."
           },
           {
-            "id": "t-dzial-7-14-8",
+            "id": "task-7-14-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Inwestor wpłacił do banku $8000$ zł na lokatę $2$-letnią z roczną kapitalizacją odsetek. Po dwóch latach wypłacił z banku kwotę $9331{,}20$ zł. Oblicz roczną stopę procentową tej lokaty.",
             "explanation": "Mamy równanie: 8000 * (1 + p/100)^2 = 9331,20 <=> (1 + p/100)^2 = 9331,20 / 8000 = 1,1664. Pierwiastkujemy obie strony: 1 + p/100 = \\sqrt{1,1664} = 1,08. Stąd p/100 = 0,08 => p = 8%. Roczna stopa procentowa wynosiła 8%.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za ułożenie równania: 8000 * (1 + p/100)^2 = 9331,20 i przekształcenie do postaci (1 + p/100)^2 = 1,1664. 1 pkt za spierwiastkowanie 1 + p/100 = 1,08 i wyznaczenie stopy procentowej p = 8%.",
+            "scoring_key": [
+              "1 pkt za ułożenie równania: 8000 * (1 + p/100)^2 = 9331,20 i przekształcenie do postaci (1 + p/100)^2 = 1,1664.",
+              "1 pkt za spierwiastkowanie 1 + p/100 = 1,08 i wyznaczenie stopy procentowej p = 8%."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-7-15",
+        "id": "lesson-7-15",
         "title": "Zadania dowodowe i nietypowe z ciągów liczbowych",
         "theory_pill": {
           "concept_essence": "Zadania dowodowe z ciągów wymagają wykazania stałości różnicy lub ilorazu, uzasadnienia podzielności sumy wyrazów lub udowodnienia tożsamości. Korzystamy ze wzorów ogólnych $a_n = a_1 + (n-1)r$ i przekształceń algebraicznych.",
@@ -1934,7 +2019,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-7-15-1",
+            "id": "task-7-15-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1951,7 +2036,7 @@
             "hint": "Oblicz pierwsze wyrazy ciągu ze związku a_n = S_n - S_{n-1}."
           },
           {
-            "id": "t-dzial-7-15-2",
+            "id": "task-7-15-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1968,7 +2053,7 @@
             "hint": "Dla S_n = An^2 + Bn różnica ciągu arytmetycznego wynosi r = 2A."
           },
           {
-            "id": "t-dzial-7-15-3",
+            "id": "task-7-15-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1979,7 +2064,7 @@
             "hint": "Iloczyn a_1 * a_2 * a_3 jest równy (a_2)^3."
           },
           {
-            "id": "t-dzial-7-15-4",
+            "id": "task-7-15-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1996,7 +2081,7 @@
             "hint": "Suma wyrazów symetrycznych względem środka: a_1 + a_5 = 2 * a_3."
           },
           {
-            "id": "t-dzial-7-15-5",
+            "id": "task-7-15-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2013,7 +2098,7 @@
             "hint": "Porównaj sumy indeksów: 1 + 29 = 30 oraz 10 + 20 = 30."
           },
           {
-            "id": "t-dzial-7-15-6",
+            "id": "task-7-15-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -2030,7 +2115,7 @@
             "hint": "Suma indeksów wynosi 10 w obu iloczynach."
           },
           {
-            "id": "t-dzial-7-15-7",
+            "id": "task-7-15-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -2047,17 +2132,23 @@
             "hint": "Dodawaj dwa poprzednie wyrazy, aby otrzymać kolejny: 1, 1, 2, 3, 5..."
           },
           {
-            "id": "t-dzial-7-15-8",
+            "id": "task-7-15-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Wykaż, że dla dowolnego ciągu arytmetycznego $(a_n)$ zachodzi równość: $a_1 + a_6 = a_3 + a_4$.",
             "explanation": "Rozpisujemy lewą stronę za pomocą wzoru na n-ty wyraz ciągu arytmetycznego: L = a_1 + a_6 = a_1 + (a_1 + 5r) = 2a_1 + 5r. Rozpisujemy prawą stronę: P = a_3 + a_4 = (a_1 + 2r) + (a_1 + 3r) = 2a_1 + 5r. Ponieważ L = P = 2a_1 + 5r, tożsamość została udowodniona dla dowolnego ciągu arytmetycznego.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za rozpisanie obu stron za pomocą pierwszego wyrazu a_1 i różnicy r: L = a_1 + (a_1 + 5r) = 2a_1 + 5r oraz P = (a_1 + 2r) + (a_1 + 3r) = 2a_1 + 5r. 1 pkt za stwierdzenie L = P i sformułowanie wniosku kończącego dowód.",
+            "scoring_key": [
+              "1 pkt za rozpisanie obu stron za pomocą pierwszego wyrazu a_1 i różnicy r: L = a_1 + (a_1 + 5r) = 2a_1 + 5r oraz P = (a_1 + 2r) + (a_1 + 3r) = 2a_1 + 5r.",
+              "1 pkt za stwierdzenie L = P i sformułowanie wniosku kończącego dowód."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       }
     ],
     "final_test": {

@@ -4,7 +4,7 @@
     "title": "Dział 14: Statystyka",
     "lessons": [
       {
-        "id": "l-dzial-14-1",
+        "id": "lesson-14-1",
         "title": "Średnia arytmetyczna liczb",
         "duration_minutes": 5,
         "theory_pill": {
@@ -16,7 +16,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-1-1",
+            "id": "task-14-1-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -33,7 +33,7 @@
             "hint": "Zapisz równanie: (30 + x) / 5 = 8 i pomnóż obie strony przez 5."
           },
           {
-            "id": "t-dzial-14-1-2",
+            "id": "task-14-1-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -50,7 +50,7 @@
             "hint": "Dodaj wszystkie liczby i podziel przez ich liczbę (czyli przez 6)."
           },
           {
-            "id": "t-dzial-14-1-3",
+            "id": "task-14-1-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -67,7 +67,7 @@
             "hint": "Pomnóż średnią przez liczbę danych: 6 * 15."
           },
           {
-            "id": "t-dzial-14-1-4",
+            "id": "task-14-1-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -84,7 +84,7 @@
             "hint": "Suma znanych liczb wynosi 8. Rozwiąż równanie: (8 + x) / 5 = 3."
           },
           {
-            "id": "t-dzial-14-1-5",
+            "id": "task-14-1-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -101,7 +101,7 @@
             "hint": "Do sumy dodano 2 + 4 + 6 = 12. Średnia wzrosła o 12 / 3 = 4."
           },
           {
-            "id": "t-dzial-14-1-6",
+            "id": "task-14-1-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -118,7 +118,7 @@
             "hint": "Kolejne liczby nieparzyste różnią się o 2. Środek zestawu to 16, więc liczby to 13, 15, 17, 19."
           },
           {
-            "id": "t-dzial-14-1-7",
+            "id": "task-14-1-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -135,7 +135,7 @@
             "hint": "Suma wynosi 15x. Podziel przez 5: 3x = 18."
           },
           {
-            "id": "t-dzial-14-1-8",
+            "id": "task-14-1-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -144,21 +144,18 @@
             "hint_cost": 20,
             "hint": "Oblicz sumę 7 ocen, potem sumę 8 ocen i znajdź różnicę.",
             "scoring_key": [
-              {
-                "step": "Obliczenie sumy 7 ocen (28) oraz sumy 8 ocen (34)",
-                "points": 1
-              },
-              {
-                "step": "Wyznaczenie ósmej oceny: 34 - 28 = 6",
-                "points": 1
-              }
+              "1 pkt – Obliczenie sumy 7 ocen (28) oraz sumy 8 ocen (34)",
+              "1 pkt – Wyznaczenie ósmej oceny: 34 - 28 = 6"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-2",
+        "id": "lesson-14-2",
         "title": "Średnia arytmetyczna z dwiema niewiadomymi",
         "duration_minutes": 5,
         "theory_pill": {
@@ -170,7 +167,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-2-1",
+            "id": "task-14-2-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -187,7 +184,7 @@
             "hint": "Pomnóż średnią 7 przez 4, a następnie odejmij 2 i 6."
           },
           {
-            "id": "t-dzial-14-2-2",
+            "id": "task-14-2-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -204,7 +201,7 @@
             "hint": "Suma wszystkich 5 liczb to 25. Zatem x + y = 13."
           },
           {
-            "id": "t-dzial-14-2-3",
+            "id": "task-14-2-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -221,7 +218,7 @@
             "hint": "Suma x + y to 28. Suma x + y + z to 36."
           },
           {
-            "id": "t-dzial-14-2-4",
+            "id": "task-14-2-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -238,7 +235,7 @@
             "hint": "Odejmij nową sumę (4 * 11) od początkowej sumy (5 * 10)."
           },
           {
-            "id": "t-dzial-14-2-5",
+            "id": "task-14-2-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -255,7 +252,7 @@
             "hint": "Suma d + e = 55 - 27 = 28. Podziel przez 2."
           },
           {
-            "id": "t-dzial-14-2-6",
+            "id": "task-14-2-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -272,7 +269,7 @@
             "hint": "Skorzystaj ze wzoru: (x - y)^2 = (x + y)^2 - 4xy."
           },
           {
-            "id": "t-dzial-14-2-7",
+            "id": "task-14-2-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -289,7 +286,7 @@
             "hint": "W ciągu arytmetycznym średnia trzech kolejnych wyrazów jest równa wyrazowi środkowemu."
           },
           {
-            "id": "t-dzial-14-2-8",
+            "id": "task-14-2-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -298,21 +295,18 @@
             "hint_cost": 20,
             "hint": "Ułóż równanie na sumę: 23 + x + y = 45, a następnie podstaw y = 2x.",
             "scoring_key": [
-              {
-                "step": "Ułożenie równania x + y = 22",
-                "points": 1
-              },
-              {
-                "step": "Poprawne wyznaczenie x = 22/3 oraz y = 44/3",
-                "points": 1
-              }
+              "1 pkt – Ułożenie równania x + y = 22",
+              "1 pkt – Poprawne wyznaczenie x = 22/3 oraz y = 44/3"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-3",
+        "id": "lesson-14-3",
         "title": "Średnia ważona",
         "duration_minutes": 5,
         "theory_pill": {
@@ -324,7 +318,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-3-1",
+            "id": "task-14-3-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -341,7 +335,7 @@
             "hint": "Oblicz (4 * 3 + 2 * 1) / 4."
           },
           {
-            "id": "t-dzial-14-3-2",
+            "id": "task-14-3-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -358,7 +352,7 @@
             "hint": "Mianownik to suma wag: 2 + 3 + 5 = 10."
           },
           {
-            "id": "t-dzial-14-3-3",
+            "id": "task-14-3-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -375,7 +369,7 @@
             "hint": "Zapisz równanie: (2w + 18) / (w + 3) = 5 i rozwiąż je względem w."
           },
           {
-            "id": "t-dzial-14-3-4",
+            "id": "task-14-3-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -392,7 +386,7 @@
             "hint": "Podziel całkowity koszt (1800 zł) przez całkowitą masę (400 kg)."
           },
           {
-            "id": "t-dzial-14-3-5",
+            "id": "task-14-3-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -409,7 +403,7 @@
             "hint": "Liczby uczniów w klasach pełnią rolę wag: (20 * 3,5 + 30 * 4,5) / 50."
           },
           {
-            "id": "t-dzial-14-3-6",
+            "id": "task-14-3-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -426,7 +420,7 @@
             "hint": "Suma wag wynosi 0,4 + 0,6 = 1. Wystarczy dodać 4 + 12."
           },
           {
-            "id": "t-dzial-14-3-7",
+            "id": "task-14-3-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -443,7 +437,7 @@
             "hint": "Wyłącz wspólną wagę w przed nawias w liczniku i mianowniku."
           },
           {
-            "id": "t-dzial-14-3-8",
+            "id": "task-14-3-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -452,21 +446,18 @@
             "hint_cost": 20,
             "hint": "Pomnóż wyniki z przedmiotów przez ich wagi dziesiętne i zsumuj.",
             "scoring_key": [
-              {
-                "step": "Zapisanie wyrażenia na średnią ważoną: 80 * 0,5 + 90 * 0,3 + 70 * 0,2",
-                "points": 1
-              },
-              {
-                "step": "Poprawne wykonanie obliczeń i wynik 81%",
-                "points": 1
-              }
+              "1 pkt – Zapisanie wyrażenia na średnią ważoną: 80 * 0,5 + 90 * 0,3 + 70 * 0,2",
+              "1 pkt – Poprawne wykonanie obliczeń i wynik 81%"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-4",
+        "id": "lesson-14-4",
         "title": "Mediana zestawu danych o nieparzystej liczbie elementów",
         "duration_minutes": 5,
         "theory_pill": {
@@ -478,7 +469,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-4-1",
+            "id": "task-14-4-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -495,7 +486,7 @@
             "hint": "Uporządkuj liczby rosnąco i wybierz 4. element z 7."
           },
           {
-            "id": "t-dzial-14-4-2",
+            "id": "task-14-4-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -512,7 +503,7 @@
             "hint": "Uporządkuj liczby rosnąco: -3, -1, 0, 4, 7."
           },
           {
-            "id": "t-dzial-14-4-3",
+            "id": "task-14-4-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -529,7 +520,7 @@
             "hint": "Piąty element w uporządkowanym ciągu 9 liczb to dokładnie mediana."
           },
           {
-            "id": "t-dzial-14-4-4",
+            "id": "task-14-4-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -546,7 +537,7 @@
             "hint": "Uporządkuj zestaw 7 liczb i wskaż element środkowy."
           },
           {
-            "id": "t-dzial-14-4-5",
+            "id": "task-14-4-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -563,7 +554,7 @@
             "hint": "Uporządkuj zestaw pięciu liczb: 2, 4, 5, 6, 8."
           },
           {
-            "id": "t-dzial-14-4-6",
+            "id": "task-14-4-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -580,7 +571,7 @@
             "hint": "Środkowy (szósty) wyraz ciągu 11 liczb to -5 + 5 = 0."
           },
           {
-            "id": "t-dzial-14-4-7",
+            "id": "task-14-4-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -597,7 +588,7 @@
             "hint": "Środkowy element to 3."
           },
           {
-            "id": "t-dzial-14-4-8",
+            "id": "task-14-4-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -606,21 +597,18 @@
             "hint_cost": 20,
             "hint": "Uporządkuj 4 znane liczby: 1, 3, 7, 9. Na której pozycji musi znaleźć się x, aby mediana wynosiła 5?",
             "scoring_key": [
-              {
-                "step": "Uporządkowanie znanych liczb: 1, 3, 7, 9 i analiza pozycji x",
-                "points": 1
-              },
-              {
-                "step": "Wywnioskowanie i zapisanie, że jedyną możliwością jest x = 5",
-                "points": 1
-              }
+              "1 pkt – Uporządkowanie znanych liczb: 1, 3, 7, 9 i analiza pozycji x",
+              "1 pkt – Wywnioskowanie i zapisanie, że jedyną możliwością jest x = 5"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-5",
+        "id": "lesson-14-5",
         "title": "Mediana zestawu danych o parzystej liczbie elementów",
         "duration_minutes": 5,
         "theory_pill": {
@@ -632,7 +620,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-5-1",
+            "id": "task-14-5-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -649,7 +637,7 @@
             "hint": "Uporządkuj 6 liczb. Środkowe to 3. i 4. element. Oblicz ich średnią."
           },
           {
-            "id": "t-dzial-14-5-2",
+            "id": "task-14-5-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -666,7 +654,7 @@
             "hint": "Oblicz średnią arytmetyczną z 3 i 6."
           },
           {
-            "id": "t-dzial-14-5-3",
+            "id": "task-14-5-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -683,7 +671,7 @@
             "hint": "Średnia z 40 i 50 wynosi 45."
           },
           {
-            "id": "t-dzial-14-5-4",
+            "id": "task-14-5-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -700,7 +688,7 @@
             "hint": "Ułóż równanie: (x + 7) / 2 = 5,5."
           },
           {
-            "id": "t-dzial-14-5-5",
+            "id": "task-14-5-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -717,7 +705,7 @@
             "hint": "Uporządkuj liczby: 2, 4, 6, 8."
           },
           {
-            "id": "t-dzial-14-5-6",
+            "id": "task-14-5-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -734,7 +722,7 @@
             "hint": "Środkowe elementy (4 i 5) pozostają bez zmian."
           },
           {
-            "id": "t-dzial-14-5-7",
+            "id": "task-14-5-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -751,7 +739,7 @@
             "hint": "Średnia z -2 i 2 wynosi 0."
           },
           {
-            "id": "t-dzial-14-5-8",
+            "id": "task-14-5-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -760,21 +748,18 @@
             "hint_cost": 20,
             "hint": "Skorzystaj ze wzorów: (a + b)/2 = 5,5 oraz a + b = 11.",
             "scoring_key": [
-              {
-                "step": "Zapisanie relacji na medianę: (a + b)/2 = 5,5 => a + b = 11",
-                "points": 1
-              },
-              {
-                "step": "Podanie przykładowej pary liczb naturalnych spełniającej warunek uporządkowania np. a = 5, b = 6",
-                "points": 1
-              }
+              "1 pkt – Zapisanie relacji na medianę: (a + b)/2 = 5,5 => a + b = 11",
+              "1 pkt – Podanie przykładowej pary liczb naturalnych spełniającej warunek uporządkowania np. a = 5, b = 6"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-6",
+        "id": "lesson-14-6",
         "title": "Dominanta zestawu danych",
         "duration_minutes": 5,
         "theory_pill": {
@@ -786,7 +771,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-6-1",
+            "id": "task-14-6-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -803,7 +788,7 @@
             "hint": "Sprawdź, która liczba pojawia się najwięcej razy."
           },
           {
-            "id": "t-dzial-14-6-2",
+            "id": "task-14-6-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -820,7 +805,7 @@
             "hint": "Liczba 3 występuje 3 razy."
           },
           {
-            "id": "t-dzial-14-6-3",
+            "id": "task-14-6-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -837,7 +822,7 @@
             "hint": "Jeśli wszystkie wartości występują tyle samo razy, dominanta nie istnieje."
           },
           {
-            "id": "t-dzial-14-6-4",
+            "id": "task-14-6-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -854,7 +839,7 @@
             "hint": "Dwójka występuje co najmniej 3 razy."
           },
           {
-            "id": "t-dzial-14-6-5",
+            "id": "task-14-6-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -871,7 +856,7 @@
             "hint": "Największa liczba meczów to 4 – jakiemu wynikowi odpowiada?"
           },
           {
-            "id": "t-dzial-14-6-6",
+            "id": "task-14-6-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -888,7 +873,7 @@
             "hint": "Suma to 16, więc średnia 4. Środkowe liczby to 2 i 5."
           },
           {
-            "id": "t-dzial-14-6-7",
+            "id": "task-14-6-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -905,7 +890,7 @@
             "hint": "Przypomnij sobie definicję pojęcia dominanta."
           },
           {
-            "id": "t-dzial-14-6-8",
+            "id": "task-14-6-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -914,21 +899,18 @@
             "hint_cost": 20,
             "hint": "Dwójka i czwórka występują obecnie po dwa razy. Jaka musi być wartość x, aby dwójka wygrała?",
             "scoring_key": [
-              {
-                "step": "Zauważenie, że przed dodaniem x wartości 2 i 4 mają taką samą liczebność 2",
-                "points": 1
-              },
-              {
-                "step": "Wywnioskowanie, że x = 2",
-                "points": 1
-              }
+              "1 pkt – Zauważenie, że przed dodaniem x wartości 2 i 4 mają taką samą liczebność 2",
+              "1 pkt – Wywnioskowanie, że x = 2"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-7",
+        "id": "lesson-14-7",
         "title": "Wariancja zestawu danych",
         "duration_minutes": 5,
         "theory_pill": {
@@ -940,7 +922,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-7-1",
+            "id": "task-14-7-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -957,7 +939,7 @@
             "hint": "Oblicz średnią (wynosi 4), a potem średnią kwadratów różnic od 4."
           },
           {
-            "id": "t-dzial-14-7-2",
+            "id": "task-14-7-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -974,7 +956,7 @@
             "hint": "Jeśli wszystkie liczby są równe, to nie ma żadnego rozproszenia."
           },
           {
-            "id": "t-dzial-14-7-3",
+            "id": "task-14-7-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -991,7 +973,7 @@
             "hint": "Wariancja to suma kwadratów odchyleń podzielona przez n: 40 / n = 8."
           },
           {
-            "id": "t-dzial-14-7-4",
+            "id": "task-14-7-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1008,7 +990,7 @@
             "hint": "Średnia wynosi 0. Kwadraty to 4, 0, 4."
           },
           {
-            "id": "t-dzial-14-7-5",
+            "id": "task-14-7-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1025,7 +1007,7 @@
             "hint": "Kwadrat dowolnej liczby rzeczywistej jest nieujemny."
           },
           {
-            "id": "t-dzial-14-7-6",
+            "id": "task-14-7-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1042,7 +1024,7 @@
             "hint": "Dla n=2: \\sigma^2 = ((a-b)/2)^2."
           },
           {
-            "id": "t-dzial-14-7-7",
+            "id": "task-14-7-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1059,7 +1041,7 @@
             "hint": "Średnia to 5. Każde odchylenie wynosi 3, a jego kwadrat to 9."
           },
           {
-            "id": "t-dzial-14-7-8",
+            "id": "task-14-7-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -1068,21 +1050,18 @@
             "hint_cost": 20,
             "hint": "Krok 1: wyznacz średnią (wynosi 4). Krok 2: oblicz kwadraty różnic od 4 i podziel ich sumę przez 4.",
             "scoring_key": [
-              {
-                "step": "Obliczenie średniej arytmetycznej: 4",
-                "points": 1
-              },
-              {
-                "step": "Obliczenie wariancji: (4 + 1 + 1 + 4)/4 = 2,5",
-                "points": 1
-              }
+              "1 pkt – Obliczenie średniej arytmetycznej: 4",
+              "1 pkt – Obliczenie wariancji: (4 + 1 + 1 + 4)/4 = 2,5"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-8",
+        "id": "lesson-14-8",
         "title": "Odchylenie standardowe",
         "duration_minutes": 5,
         "theory_pill": {
@@ -1094,7 +1073,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-8-1",
+            "id": "task-14-8-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1111,7 +1090,7 @@
             "hint": "Oblicz pierwiastek kwadratowy z 2,25."
           },
           {
-            "id": "t-dzial-14-8-2",
+            "id": "task-14-8-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1128,7 +1107,7 @@
             "hint": "Oblicz wariancję (wynosi 5), a następnie wyciągnij pierwiastek."
           },
           {
-            "id": "t-dzial-14-8-3",
+            "id": "task-14-8-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1145,7 +1124,7 @@
             "hint": "Podnieś odchylenie standardowe do kwadratu."
           },
           {
-            "id": "t-dzial-14-8-4",
+            "id": "task-14-8-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1162,7 +1141,7 @@
             "hint": "Wszystkie dane są równe średniej, więc odchylenie wynosi 0."
           },
           {
-            "id": "t-dzial-14-8-5",
+            "id": "task-14-8-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1179,7 +1158,7 @@
             "hint": "Średnia to 0. Wariancja wynosi 1."
           },
           {
-            "id": "t-dzial-14-8-6",
+            "id": "task-14-8-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1196,7 +1175,7 @@
             "hint": "Odejmij i dodaj 10 do 175."
           },
           {
-            "id": "t-dzial-14-8-7",
+            "id": "task-14-8-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1213,7 +1192,7 @@
             "hint": "Oblicz pierwiastek z ułamka 16/25."
           },
           {
-            "id": "t-dzial-14-8-8",
+            "id": "task-14-8-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -1222,21 +1201,18 @@
             "hint_cost": 20,
             "hint": "Średnia wynosi 8. Oblicz wariancję, a następnie wyciągnij z niej pierwiastek.",
             "scoring_key": [
-              {
-                "step": "Obliczenie średniej (8) oraz wariancji (5)",
-                "points": 1
-              },
-              {
-                "step": "Zapisanie odchylenia standardowego: \\sigma = \\sqrt{5}",
-                "points": 1
-              }
+              "1 pkt – Obliczenie średniej (8) oraz wariancji (5)",
+              "1 pkt – Zapisanie odchylenia standardowego: \\sigma = \\sqrt{5}"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-9",
+        "id": "lesson-14-9",
         "title": "Przekształcenia liniowe danych statystycznych",
         "duration_minutes": 5,
         "theory_pill": {
@@ -1248,7 +1224,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-9-1",
+            "id": "task-14-9-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1265,7 +1241,7 @@
             "hint": "Dodanie stałej zmienia średnią, ale nie zmienia rozrzutu (odchylenia standardowego)."
           },
           {
-            "id": "t-dzial-14-9-2",
+            "id": "task-14-9-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1282,7 +1258,7 @@
             "hint": "Przy mnożeniu danych przez a wariancja rośnie a^2 razy."
           },
           {
-            "id": "t-dzial-14-9-3",
+            "id": "task-14-9-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1299,7 +1275,7 @@
             "hint": "Mnożymy pensje przez 1,1: odchylenie rośnie o 10%."
           },
           {
-            "id": "t-dzial-14-9-4",
+            "id": "task-14-9-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1316,7 +1292,7 @@
             "hint": "Odjęcie stałej przesuwa wykres, ale nie zmienia rozrzutu."
           },
           {
-            "id": "t-dzial-14-9-5",
+            "id": "task-14-9-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1333,7 +1309,7 @@
             "hint": "Odchylenie standardowe rośnie o wartość bezwzględną z -2, czyli 2 razy."
           },
           {
-            "id": "t-dzial-14-9-6",
+            "id": "task-14-9-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1350,7 +1326,7 @@
             "hint": "Podstaw medianę do wzoru liniowego: 2 * 7 - 3."
           },
           {
-            "id": "t-dzial-14-9-7",
+            "id": "task-14-9-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1367,7 +1343,7 @@
             "hint": "Wariancja zmniejsza się 2^2 = 4 razy."
           },
           {
-            "id": "t-dzial-14-9-8",
+            "id": "task-14-9-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -1376,21 +1352,18 @@
             "hint_cost": 20,
             "hint": "Średnia: 4 * 12 + 5. Odchylenie: pomnóż przez 4 (dodanie 5 nie ma wpływu na odchylenie).",
             "scoring_key": [
-              {
-                "step": "Obliczenie nowej średniej: 53",
-                "points": 1
-              },
-              {
-                "step": "Obliczenie nowego odchylenia standardowego: 12",
-                "points": 1
-              }
+              "1 pkt – Obliczenie nowej średniej: 53",
+              "1 pkt – Obliczenie nowego odchylenia standardowego: 12"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-10",
+        "id": "lesson-14-10",
         "title": "Analiza danych z tabeli częstości",
         "duration_minutes": 5,
         "theory_pill": {
@@ -1402,7 +1375,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-10-1",
+            "id": "task-14-10-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1419,7 +1392,7 @@
             "hint": "Oblicz sumę iloczynów (14) i podziel przez łączną liczbę uczniów (20)."
           },
           {
-            "id": "t-dzial-14-10-2",
+            "id": "task-14-10-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1436,7 +1409,7 @@
             "hint": "Uczniowie na pozycjach 5 i 6 mają ocenę 3."
           },
           {
-            "id": "t-dzial-14-10-3",
+            "id": "task-14-10-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1453,7 +1426,7 @@
             "hint": "Największa liczebność (4 osoby) odpowiada kwocie 3000 zł."
           },
           {
-            "id": "t-dzial-14-10-4",
+            "id": "task-14-10-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1470,7 +1443,7 @@
             "hint": "Zsumuj osoby z 1 i 2 zwierzętami (12 osób) i podziel przez 20."
           },
           {
-            "id": "t-dzial-14-10-5",
+            "id": "task-14-10-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1487,7 +1460,7 @@
             "hint": "Suma oczek to 23, liczba rzutów to 10."
           },
           {
-            "id": "t-dzial-14-10-6",
+            "id": "task-14-10-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1504,7 +1477,7 @@
             "hint": "Rozwiąż równanie: (10x + 80) / (x + 4) = 18."
           },
           {
-            "id": "t-dzial-14-10-7",
+            "id": "task-14-10-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1521,7 +1494,7 @@
             "hint": "Wariancja wynosi 0 tylko wtedy, gdy wszystkie liczby są identyczne."
           },
           {
-            "id": "t-dzial-14-10-8",
+            "id": "task-14-10-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -1530,21 +1503,18 @@
             "hint_cost": 20,
             "hint": "Suma błędów to 27, liczba uczniów 20. Uczniowie 10 i 11 popełnili po 1 błędzie.",
             "scoring_key": [
-              {
-                "step": "Obliczenie średniej: 27/20 = 1,35",
-                "points": 1
-              },
-              {
-                "step": "Wyznaczenie mediany: Me = 1",
-                "points": 1
-              }
+              "1 pkt – Obliczenie średniej: 27/20 = 1,35",
+              "1 pkt – Wyznaczenie mediany: Me = 1"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-11",
+        "id": "lesson-14-11",
         "title": "Interpretacja wykresów słupkowych i kołowych",
         "duration_minutes": 5,
         "theory_pill": {
@@ -1556,7 +1526,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-11-1",
+            "id": "task-14-11-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1573,7 +1543,7 @@
             "hint": "Pomnóż 0,30 przez 360 stopni."
           },
           {
-            "id": "t-dzial-14-11-2",
+            "id": "task-14-11-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1590,7 +1560,7 @@
             "hint": "Podziel 45 stopni przez 360 stopni i pomnóż przez 100%."
           },
           {
-            "id": "t-dzial-14-11-3",
+            "id": "task-14-11-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1607,7 +1577,7 @@
             "hint": "Podziel 12 przez 0,4."
           },
           {
-            "id": "t-dzial-14-11-4",
+            "id": "task-14-11-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1624,7 +1594,7 @@
             "hint": "Suma kątów wycinków w całym kole wynosi 360 stopni."
           },
           {
-            "id": "t-dzial-14-11-5",
+            "id": "task-14-11-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1641,7 +1611,7 @@
             "hint": "180 stopni to połowa koła (50%)."
           },
           {
-            "id": "t-dzial-14-11-6",
+            "id": "task-14-11-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1658,7 +1628,7 @@
             "hint": "Podziel liczbę właścicieli psów (5) przez łączną liczbę (10)."
           },
           {
-            "id": "t-dzial-14-11-7",
+            "id": "task-14-11-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1675,7 +1645,7 @@
             "hint": "Skróć ułamek 72 / 360."
           },
           {
-            "id": "t-dzial-14-11-8",
+            "id": "task-14-11-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -1684,21 +1654,18 @@
             "hint_cost": 20,
             "hint": "Jaki ułamek koła (360 stopni) stanowi 120 stopni? Pomnóż 180 przez odwrotność tego ułamka.",
             "scoring_key": [
-              {
-                "step": "Ustalenie, że 120 stopni to 1/3 całości",
-                "points": 1
-              },
-              {
-                "step": "Obliczenie liczby uczniów: 180 * 3 = 540",
-                "points": 1
-              }
+              "1 pkt – Ustalenie, że 120 stopni to 1/3 całości",
+              "1 pkt – Obliczenie liczby uczniów: 180 * 3 = 540"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-12",
+        "id": "lesson-14-12",
         "title": "Błąd bezwzględny i błąd względny pomiaru",
         "duration_minutes": 5,
         "theory_pill": {
@@ -1710,7 +1677,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-12-1",
+            "id": "task-14-12-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1727,7 +1694,7 @@
             "hint": "Błąd bezwzględny to wartość bezwzględna z różnicy: |80 - 76|."
           },
           {
-            "id": "t-dzial-14-12-2",
+            "id": "task-14-12-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1744,7 +1711,7 @@
             "hint": "Podziel błąd bezwzględny 2 przez wartość dokładną 50 i pomnóż przez 100%."
           },
           {
-            "id": "t-dzial-14-12-3",
+            "id": "task-14-12-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1761,7 +1728,7 @@
             "hint": "Odejmij 0,6 od 0,625."
           },
           {
-            "id": "t-dzial-14-12-4",
+            "id": "task-14-12-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1778,7 +1745,7 @@
             "hint": "Zapisz równanie: 0,3 / x = 0,05."
           },
           {
-            "id": "t-dzial-14-12-5",
+            "id": "task-14-12-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1795,7 +1762,7 @@
             "hint": "Przybliżenie może być z nadmiarem lub z niedomiarem o 0,1."
           },
           {
-            "id": "t-dzial-14-12-6",
+            "id": "task-14-12-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1812,7 +1779,7 @@
             "hint": "W mianowniku musi stać wartość dokładna 345."
           },
           {
-            "id": "t-dzial-14-12-7",
+            "id": "task-14-12-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1829,7 +1796,7 @@
             "hint": "Wartość bezwzględna z dowolnej liczby jest nieujemna."
           },
           {
-            "id": "t-dzial-14-12-8",
+            "id": "task-14-12-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -1838,21 +1805,18 @@
             "hint_cost": 20,
             "hint": "Błąd bezwzględny: 25 - 24,2 = 0,8. Błąd względny: podziel 0,8 przez 25 i pomnóż przez 100%.",
             "scoring_key": [
-              {
-                "step": "Obliczenie błędu bezwzględnego: 0,8",
-                "points": 1
-              },
-              {
-                "step": "Obliczenie błędu względnego procentowego: 3,2%",
-                "points": 1
-              }
+              "1 pkt – Obliczenie błędu bezwzględnego: 0,8",
+              "1 pkt – Obliczenie błędu względnego procentowego: 3,2%"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-13",
+        "id": "lesson-14-13",
         "title": "Własności miar statystycznych w zadaniach dowodowych",
         "duration_minutes": 5,
         "theory_pill": {
@@ -1864,7 +1828,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-13-1",
+            "id": "task-14-13-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1881,7 +1845,7 @@
             "hint": "Dopisanie liczby równej średniej nie zmienia wartości średniej."
           },
           {
-            "id": "t-dzial-14-13-2",
+            "id": "task-14-13-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1898,7 +1862,7 @@
             "hint": "Średnia i wariancja sumują wszystkie wartości, a mediana bierze tylko element środkowy."
           },
           {
-            "id": "t-dzial-14-13-3",
+            "id": "task-14-13-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1915,7 +1879,7 @@
             "hint": "Nowa średnia to 50 / 5 = 10. Porównaj z początkową 8."
           },
           {
-            "id": "t-dzial-14-13-4",
+            "id": "task-14-13-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1932,7 +1896,7 @@
             "hint": "Brak rozproszenia oznacza identyczność wszystkich danych."
           },
           {
-            "id": "t-dzial-14-13-5",
+            "id": "task-14-13-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1949,7 +1913,7 @@
             "hint": "Dopisana liczba 6 jest równa zarówno średniej, jak i medianie."
           },
           {
-            "id": "t-dzial-14-13-6",
+            "id": "task-14-13-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1966,7 +1930,7 @@
             "hint": "Suma liczb dodatnich jest zawsze dodatnia."
           },
           {
-            "id": "t-dzial-14-13-7",
+            "id": "task-14-13-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1983,7 +1947,7 @@
             "hint": "a^2 + b^2 = (a+b)^2 - 2ab = 144 - 2ab. Ponieważ ab <= ((a+b)/2)^2 = 36, mamy 144 - 72 = 72."
           },
           {
-            "id": "t-dzial-14-13-8",
+            "id": "task-14-13-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -1992,21 +1956,18 @@
             "hint_cost": 20,
             "hint": "Pomnóż obie strony przez 2, przenieś wszystko na lewą stronę i zwiń do wzoru skróconego mnożenia.",
             "scoring_key": [
-              {
-                "step": "Przekształcenie do postaci a - 2\\sqrt{ab} + b >= 0",
-                "points": 1
-              },
-              {
-                "step": "Zapisanie w postaci (\\sqrt{a} - \\sqrt{b})^2 >= 0 i sformułowanie wniosku",
-                "points": 1
-              }
+              "1 pkt – Przekształcenie do postaci a - 2\\sqrt{ab} + b >= 0",
+              "1 pkt – Zapisanie w postaci (\\sqrt{a} - \\sqrt{b})^2 >= 0 i sformułowanie wniosku"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-14",
+        "id": "lesson-14-14",
         "title": "Mediana i średnia z niewiadomymi w zadaniach tekstowych",
         "duration_minutes": 5,
         "theory_pill": {
@@ -2018,7 +1979,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-14-1",
+            "id": "task-14-14-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -2035,7 +1996,7 @@
             "hint": "Środkowe liczby to x oraz 5. Rozwiąż (x + 5) / 2 = 4,5."
           },
           {
-            "id": "t-dzial-14-14-2",
+            "id": "task-14-14-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -2052,7 +2013,7 @@
             "hint": "Najpierw oblicz x (wynosi 9), a potem wyznacz medianę ciągu 3, 5, 7, 9."
           },
           {
-            "id": "t-dzial-14-14-3",
+            "id": "task-14-14-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -2069,7 +2030,7 @@
             "hint": "Środkowym elementem zestawu musi być 5, zatem x = 5."
           },
           {
-            "id": "t-dzial-14-14-4",
+            "id": "task-14-14-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -2086,7 +2047,7 @@
             "hint": "Przetestuj podane opcje: oblicz średnią i medianę dla każdej z nich."
           },
           {
-            "id": "t-dzial-14-14-5",
+            "id": "task-14-14-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2103,7 +2064,7 @@
             "hint": "Wyznacz x z warunku na średnią: (20 + x)/4 = 7."
           },
           {
-            "id": "t-dzial-14-14-6",
+            "id": "task-14-14-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -2120,7 +2081,7 @@
             "hint": "Średnia z 3 i x musi wynosić 5."
           },
           {
-            "id": "t-dzial-14-14-7",
+            "id": "task-14-14-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2137,7 +2098,7 @@
             "hint": "Suma trzech liczb wynosi 30."
           },
           {
-            "id": "t-dzial-14-14-8",
+            "id": "task-14-14-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -2146,21 +2107,18 @@
             "hint_cost": 20,
             "hint": "Z mediany wynika, że (a + b)/2 = 6,5, czyli a + b = 13. Wybierz liczby spełniające uporządkowanie 4 <= a <= b <= 10.",
             "scoring_key": [
-              {
-                "step": "Ustalenie równania na medianę: a + b = 13",
-                "points": 1
-              },
-              {
-                "step": "Podanie liczb spełniających warunki zadania, np. a = 6, b = 7",
-                "points": 1
-              }
+              "1 pkt – Ustalenie równania na medianę: a + b = 13",
+              "1 pkt – Podanie liczb spełniających warunki zadania, np. a = 6, b = 7"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-14-15",
+        "id": "lesson-14-15",
         "title": "Złożone zadania maturalne ze statystyki",
         "duration_minutes": 5,
         "theory_pill": {
@@ -2172,7 +2130,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-14-15-1",
+            "id": "task-14-15-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -2189,7 +2147,7 @@
             "hint": "Oblicz łączną sumę lat (650) i podziel przez 25 osób."
           },
           {
-            "id": "t-dzial-14-15-2",
+            "id": "task-14-15-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -2206,7 +2164,7 @@
             "hint": "Wyznacz dominantę (7) oraz piąty element ciągu (7)."
           },
           {
-            "id": "t-dzial-14-15-3",
+            "id": "task-14-15-3",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -2223,7 +2181,7 @@
             "hint": "Odejmij początkową sumę od nowej sumy pięciu pensji."
           },
           {
-            "id": "t-dzial-14-15-4",
+            "id": "task-14-15-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -2240,7 +2198,7 @@
             "hint": "Średnia to 3, wariancja to 2."
           },
           {
-            "id": "t-dzial-14-15-5",
+            "id": "task-14-15-5",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2257,7 +2215,7 @@
             "hint": "Oblicz średnią ważoną z wagami 0,3, 0,5 i 0,2."
           },
           {
-            "id": "t-dzial-14-15-6",
+            "id": "task-14-15-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -2274,7 +2232,7 @@
             "hint": "Skorzystaj z tożsamości: wariancja = średnia kwadratów minus kwadrat średniej."
           },
           {
-            "id": "t-dzial-14-15-7",
+            "id": "task-14-15-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2291,7 +2249,7 @@
             "hint": "Ułóż równanie na średnią ważoną."
           },
           {
-            "id": "t-dzial-14-15-8",
+            "id": "task-14-15-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Zadanie maturalne",
@@ -2300,18 +2258,15 @@
             "hint_cost": 20,
             "hint": "Średnia: 30 / 6 = 5. Mediana: średnia z 4 i 5. Wariancja: suma kwadratów odchyleń podzielona przez 6.",
             "scoring_key": [
-              {
-                "step": "Obliczenie średniej (5) oraz mediany (4,5)",
-                "points": 1
-              },
-              {
-                "step": "Obliczenie wariancji (8/3) i odchylenia standardowego \\sqrt{8/3}",
-                "points": 1
-              }
+              "1 pkt – Obliczenie średniej (5) oraz mediany (4,5)",
+              "1 pkt – Obliczenie wariancji (8/3) i odchylenia standardowego \\sqrt{8/3}"
             ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       }
     ]
   }

@@ -14,7 +14,34 @@ service cloud.firestore {
       allow write: if request.auth != null;
     }
     
-    // Topics (Działy) and Subcollection Lessons (Lekcje)
+    // Subjects (Przedmioty) -> Topics (Działy) -> Lessons (Lekcje)
+    match /subjects/{subjectId} {
+      allow read: if true;
+      allow write: if false; // Admin only via Admin SDK / service account
+
+      match /topics/{topicId} {
+        allow read: if true;
+        allow write: if false;
+
+        match /lessons/{lessonId} {
+          allow read: if true;
+          allow write: if false;
+        }
+      }
+    }
+
+    // Alias dla kolekcji przedmioty
+    match /przedmioty/{przedmiotId} {
+      allow read: if true;
+      allow write: if false;
+
+      match /{allChildren=**} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+
+    // Topics (Działy) and Subcollection Lessons (Lekcje) - Fallback/Mirror
     match /topics/{topicId} {
       allow read: if true;
       allow write: if false; // Admin only via Admin SDK / service account

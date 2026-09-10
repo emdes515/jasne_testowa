@@ -5,7 +5,7 @@
     "description": "Kompletny program przygotowawczy z geometrii analitycznej do matury: długość i środek odcinka, proste równoległe i prostopadłe, równanie okręgu, wektory, symetrie i dowody analityczne.",
     "lessons": [
       {
-        "id": "l-dzial-10-1",
+        "id": "lesson-10-1",
         "title": "Długość odcinka w układzie współrzędnych",
         "theory_pill": {
           "concept_essence": "Długość odcinka o końcach $A = (x_1, y_1)$ oraz $B = (x_2, y_2)$ to odległość między tymi punktami, wynikająca wprost z twierdzenia Pitagorasa: $|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$.",
@@ -16,7 +16,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-1-1",
+            "id": "task-10-1-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -33,7 +33,7 @@
             "hint": "Oblicz różnice współrzędnych: delta x = 4 - (-2) = 6, delta y = 9 - 1 = 8."
           },
           {
-            "id": "t-dzial-10-1-2",
+            "id": "task-10-1-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -50,7 +50,7 @@
             "hint": "Zastosuj wzór na odległość od punktu (0,0): d = \\sqrt{x^2 + y^2}."
           },
           {
-            "id": "t-dzial-10-1-3",
+            "id": "task-10-1-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -61,7 +61,7 @@
             "hint": "Oblicz (-3)^2 + 4^2."
           },
           {
-            "id": "t-dzial-10-1-4",
+            "id": "task-10-1-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -78,7 +78,7 @@
             "hint": "Ponieważ współrzędne y są równe, odległość to po prostu |x - 2| = 7."
           },
           {
-            "id": "t-dzial-10-1-5",
+            "id": "task-10-1-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -95,7 +95,7 @@
             "hint": "Punkty leżą na osiach układu współrzędnych."
           },
           {
-            "id": "t-dzial-10-1-6",
+            "id": "task-10-1-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -112,7 +112,7 @@
             "hint": "Delta x wynosi 3, delta y wynosi 4."
           },
           {
-            "id": "t-dzial-10-1-7",
+            "id": "task-10-1-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -129,20 +129,26 @@
             "hint": "Boki to 6, 8 oraz przeciwprostokątna 10."
           },
           {
-            "id": "t-dzial-10-1-8",
+            "id": "task-10-1-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Wyznacz współrzędne punktu $P$ leżącego na osi $OX$, który jest jednakowo oddalony od punktów $A = (-2, 2)$ oraz $B = (4, 4)$.",
             "explanation": "Punkt P leży na osi OX, zatem ma współrzędne P = (x, 0). Z warunku jednakowej odległości: |PA|^2 = |PB|^2 <=> (x - (-2))^2 + (0 - 2)^2 = (x - 4)^2 + (0 - 4)^2 <=> (x + 2)^2 + 4 = (x - 4)^2 + 16 <=> x^2 + 4x + 4 + 4 = x^2 - 8x + 16 + 16 <=> 4x + 8 = -8x + 32 <=> 12x = 24 => x = 2. Szukany punkt to P = (2, 0).",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie współrzędnych punktu na osi OX w postaci P = (x, 0) oraz równania |PA|^2 = |PB|^2: (x + 2)^2 + (-2)^2 = (x - 4)^2 + (-4)^2. 1 pkt za rozwiązanie równania: x^2 + 4x + 8 = x^2 - 8x + 32 <=> 12x = 24 => x = 2 i podanie odpowiedzi P = (2, 0).",
+            "scoring_key": [
+              "1 pkt za zapisanie współrzędnych punktu na osi OX w postaci P = (x, 0) oraz równania |PA|^2 = |PB|^2: (x + 2)^2 + (-2)^2 = (x - 4)^2 + (-4)^2.",
+              "1 pkt za rozwiązanie równania: x^2 + 4x + 8 = x^2 - 8x + 32 <=> 12x = 24 => x = 2 i podanie odpowiedzi P = (2, 0)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-2",
+        "id": "lesson-10-2",
         "title": "Środek odcinka w układzie współrzędnych",
         "theory_pill": {
           "concept_essence": "Współrzędne środka odcinka $S = (x_s, y_s)$ to średnie arytmetyczne współrzędnych jego końców: $x_s = \\frac{x_1 + x_2}{2}$ oraz $y_s = \\frac{y_1 + y_2}{2}$. Jeśli znasz środek i jeden koniec, wyznaczasz drugi koniec mnożąc współrzędne środka przez 2 i odejmując znany koniec.",
@@ -153,7 +159,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-2-1",
+            "id": "task-10-2-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -170,7 +176,7 @@
             "hint": "Dodaj współrzędne x i podziel przez 2, to samo zrób ze współrzędnymi y."
           },
           {
-            "id": "t-dzial-10-2-2",
+            "id": "task-10-2-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -187,7 +193,7 @@
             "hint": "Skorzystaj ze wzorów: x_B = 2*x_S - x_A oraz y_B = 2*y_S - y_A."
           },
           {
-            "id": "t-dzial-10-2-3",
+            "id": "task-10-2-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -198,7 +204,7 @@
             "hint": "x_B = 2 * x_S - x_A = 2 * 5 - 3."
           },
           {
-            "id": "t-dzial-10-2-4",
+            "id": "task-10-2-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -215,7 +221,7 @@
             "hint": "Punkt przecięcia przekątnych równoległoboku jest środkiem odcinka AC."
           },
           {
-            "id": "t-dzial-10-2-5",
+            "id": "task-10-2-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -232,7 +238,7 @@
             "hint": "Oblicz środek odcinka dodając współrzędne."
           },
           {
-            "id": "t-dzial-10-2-6",
+            "id": "task-10-2-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -249,7 +255,7 @@
             "hint": "Ułóż dwa niezależne równania: dla współrzędnej x oraz dla współrzędnej y."
           },
           {
-            "id": "t-dzial-10-2-7",
+            "id": "task-10-2-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -266,20 +272,26 @@
             "hint": "Oblicz odległość od A do środka S i pomnóż ją przez 2."
           },
           {
-            "id": "t-dzial-10-2-8",
+            "id": "task-10-2-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Punkty $A = (-1, 2)$, $B = (5, 0)$ oraz $C = (3, 6)$ są kolejnymi wierzchołkami równoległoboku $ABCD$. Wyznacz współrzędne czwartego wierzchołka $D$.",
             "explanation": "W równoległoboku przekątne AC i BD mają wspólny środek S. Środek przekątnej AC: S = ((-1 + 3)/2, (2 + 6)/2) = (1, 4). Punkt S jest również środkiem przekątnej BD: x_S = (x_B + x_D)/2 => 1 = (5 + x_D)/2 => 5 + x_D = 2 => x_D = -3. y_S = (y_B + y_D)/2 => 4 = (0 + y_D)/2 => y_D = 8. Czwarty wierzchołek to D = (-3, 8).",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie środka przekątnej AC: S = ((-1 + 3)/2, (2 + 6)/2) = (1, 4). 1 pkt za wyznaczenie wierzchołka D ze środka przekątnej BD: x_D = 2*1 - 5 = -3, y_D = 2*4 - 0 = 8, czyli D = (-3, 8).",
+            "scoring_key": [
+              "1 pkt za wyznaczenie środka przekątnej AC: S = ((-1 + 3)/2, (2 + 6)/2) = (1, 4).",
+              "1 pkt za wyznaczenie wierzchołka D ze środka przekątnej BD: x_D = 2*1 - 5 = -3, y_D = 2*4 - 0 = 8, czyli D = (-3, 8)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-3",
+        "id": "lesson-10-3",
         "title": "Proste w postaci kierunkowej: y = ax + b i kąt nachylenia",
         "theory_pill": {
           "concept_essence": "Równanie $y = ax + b$ opisuje prostą niepionową. Współczynnik $a$ (kierunkowy) jest tangensem kąta nachylenia prostej do osi OX ($a = \\operatorname{tg} \\alpha$) i wyznacza monotoniczność: $a > 0$ (rosnąca), $a < 0$ (malejąca), $a = 0$ (pozioma). Współczynnik $b$ to punkt przecięcia z osią OY: $(0, b)$.",
@@ -290,7 +302,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-3-1",
+            "id": "task-10-3-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -307,7 +319,7 @@
             "hint": "Współczynnik kierunkowy a jest tangensem kąta nachylenia prostej."
           },
           {
-            "id": "t-dzial-10-3-2",
+            "id": "task-10-3-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -324,7 +336,7 @@
             "hint": "Na osi OY współrzędna x wynosi 0."
           },
           {
-            "id": "t-dzial-10-3-3",
+            "id": "task-10-3-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -335,7 +347,7 @@
             "hint": "Przyrównaj wzór prostej do zera: -4x + 20 = 0."
           },
           {
-            "id": "t-dzial-10-3-4",
+            "id": "task-10-3-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -352,7 +364,7 @@
             "hint": "Współczynnik przy x musi być ściśle dodatni."
           },
           {
-            "id": "t-dzial-10-3-5",
+            "id": "task-10-3-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -369,7 +381,7 @@
             "hint": "Wyznacz punkty przecięcia z osiami: (0, 4) oraz (4, 0)."
           },
           {
-            "id": "t-dzial-10-3-6",
+            "id": "task-10-3-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -386,7 +398,7 @@
             "hint": "tg 135° = -1."
           },
           {
-            "id": "t-dzial-10-3-7",
+            "id": "task-10-3-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -403,20 +415,26 @@
             "hint": "Wzór na współczynnik kierunkowy to delta y / delta x."
           },
           {
-            "id": "t-dzial-10-3-8",
+            "id": "task-10-3-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Wyznacz równanie prostej przechodzącej przez punkty $A = (-2, 5)$ oraz $B = (4, -1)$.",
             "explanation": "Współczynnik kierunkowy prostej wyznaczamy ze wzoru: a = (y_B - y_A) / (x_B - x_A) = (-1 - 5) / (4 - (-2)) = -6 / 6 = -1. Wstawiamy punkt A = (-2, 5) do równania y = ax + b: 5 = -1 * (-2) + b <=> 5 = 2 + b => b = 3. Równanie prostej ma postać: y = -x + 3.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie współczynnika kierunkowego a: a = (-1 - 5) / (4 - (-2)) = -6 / 6 = -1. 1 pkt za wyznaczenie wyrazu wolnego b: 5 = -1 * (-2) + b => b = 3 i zapisanie równania prostej y = -x + 3.",
+            "scoring_key": [
+              "1 pkt za obliczenie współczynnika kierunkowego a: a = (-1 - 5) / (4 - (-2)) = -6 / 6 = -1.",
+              "1 pkt za wyznaczenie wyrazu wolnego b: 5 = -1 * (-2) + b => b = 3 i zapisanie równania prostej y = -x + 3."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-4",
+        "id": "lesson-10-4",
         "title": "Proste równoległe i prostopadłe w układzie współrzędnych",
         "theory_pill": {
           "concept_essence": "Dwie proste w postaci kierunkowej $y = a_1 x + b_1$ oraz $y = a_2 x + b_2$ są:\\n1. RÓWNOLEGŁE, gdy mają równe współczynniki kierunkowe: $a_1 = a_2$;\\n2. PROSTOPADŁE, gdy iloczyn ich współczynników wynosi $-1$: $a_1 \\cdot a_2 = -1$ (czyli $a_2 = -\\frac{1}{a_1}$, współczynnik jest liczbą przeciwną i odwrotną!).",
@@ -427,7 +445,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-4-1",
+            "id": "task-10-4-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -444,7 +462,7 @@
             "hint": "Zmień znak na przeciwny i odwróć ułamek."
           },
           {
-            "id": "t-dzial-10-4-2",
+            "id": "task-10-4-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -461,7 +479,7 @@
             "hint": "Przyrównaj współczynniki kierunkowe obu prostych."
           },
           {
-            "id": "t-dzial-10-4-3",
+            "id": "task-10-4-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -472,7 +490,7 @@
             "hint": "Liczba odwrotna i przeciwna do 1/4 to -4."
           },
           {
-            "id": "t-dzial-10-4-4",
+            "id": "task-10-4-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -489,7 +507,7 @@
             "hint": "Współczynnik a wynosi -2. Wstaw punkt (1, 3) do y = -2x + b."
           },
           {
-            "id": "t-dzial-10-4-5",
+            "id": "task-10-4-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -506,7 +524,7 @@
             "hint": "Iloczyn współczynników wynosi 2 * (-0,5) = -1."
           },
           {
-            "id": "t-dzial-10-4-6",
+            "id": "task-10-4-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -523,7 +541,7 @@
             "hint": "Rozwiąż równanie: (k + 1) * (-2) = -1."
           },
           {
-            "id": "t-dzial-10-4-7",
+            "id": "task-10-4-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -540,20 +558,26 @@
             "hint": "Jedna prosta jest pozioma, a druga pionowa."
           },
           {
-            "id": "t-dzial-10-4-8",
+            "id": "task-10-4-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Wyznacz równanie prostej prostopadłej do prostej $l: y = 2x - 3$ przechodzącej przez punkt $P = (4, 1)$.",
             "explanation": "Współczynnik kierunkowy danej prostej to a_1 = 2. Prosta prostopadła ma współczynnik kierunkowy a_2 = -1 / a_1 = -1/2. Jej równanie ma postać y = -1/2 x + b. Podstawiamy współrzędne punktu P = (4, 1): 1 = -1/2 * 4 + b <=> 1 = -2 + b => b = 3. Szukane równanie prostej to y = -1/2 x + 3.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie współczynnika kierunkowego prostej prostopadłej: a = -1/2. 1 pkt za wyznaczenie wyrazu wolnego: 1 = -1/2 * 4 + b => b = 3 i zapisanie równania: y = -1/2 x + 3.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie współczynnika kierunkowego prostej prostopadłej: a = -1/2.",
+              "1 pkt za wyznaczenie wyrazu wolnego: 1 = -1/2 * 4 + b => b = 3 i zapisanie równania: y = -1/2 x + 3."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-5",
+        "id": "lesson-10-5",
         "title": "Równanie okręgu w postaci kanonicznej: (x - a)^2 + (y - b)^2 = r^2",
         "theory_pill": {
           "concept_essence": "Równanie okręgu o środku $S = (a, b)$ i promieniu $r > 0$ ma postać: $(x - a)^2 + (y - b)^2 = r^2$. Znaki przy $a$ i $b$ w nawiasach są ZAWSZE PRZECIWNE do współrzędnych środka! Po prawej stronie stoi KWADRAT promienia ($r^2$), a nie sam promień.",
@@ -564,7 +588,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-5-1",
+            "id": "task-10-5-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -581,7 +605,7 @@
             "hint": "Zmień znaki liczb w nawiasach na przeciwne i wyciągnij pierwiastek z 25."
           },
           {
-            "id": "t-dzial-10-5-2",
+            "id": "task-10-5-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -598,7 +622,7 @@
             "hint": "Wstaw a = 2, b = -3 i r^2 = (pierwiastek z 5)^2 = 5."
           },
           {
-            "id": "t-dzial-10-5-3",
+            "id": "task-10-5-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -609,7 +633,7 @@
             "hint": "Wyciągnij pierwiastek kwadratowy z prawej strony równania: \\sqrt{49}."
           },
           {
-            "id": "t-dzial-10-5-4",
+            "id": "task-10-5-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -626,7 +650,7 @@
             "hint": "Wyrażenie y^2 oznacza, że współrzędna b środka wynosi 0."
           },
           {
-            "id": "t-dzial-10-5-5",
+            "id": "task-10-5-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -643,7 +667,7 @@
             "hint": "Podstaw x = 0 i y = 0 do równania okręgu."
           },
           {
-            "id": "t-dzial-10-5-6",
+            "id": "task-10-5-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -660,7 +684,7 @@
             "hint": "Promień to połowa długości średnicy AB."
           },
           {
-            "id": "t-dzial-10-5-7",
+            "id": "task-10-5-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -677,20 +701,26 @@
             "hint": "Odległość od osi OY to wartość bezwzględna pierwszej współrzędnej środka: |x_s|."
           },
           {
-            "id": "t-dzial-10-5-8",
+            "id": "task-10-5-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Napisz równanie okręgu, którego średnicą jest odcinek o końcach $A = (-3, 1)$ oraz $B = (1, 5)$.",
             "explanation": "Środek okręgu S jest środkiem odcinka AB: S = ((-3 + 1)/2, (1 + 5)/2) = (-2/2, 6/2) = (-1, 3). Promień r to odległość od środka S do punktu B: r^2 = |SB|^2 = (1 - (-1))^2 + (5 - 3)^2 = 2^2 + 2^2 = 4 + 4 = 8. Równanie okręgu ma postać: (x + 1)^2 + (y - 3)^2 = 8.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie środka okręgu S = ((-3+1)/2, (1+5)/2) = (-1, 3). 1 pkt za obliczenie kwadratu promienia r^2: r^2 = (1 - (-1))^2 + (5 - 3)^2 = 2^2 + 2^2 = 8 i zapisanie równania: (x + 1)^2 + (y - 3)^2 = 8.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie środka okręgu S = ((-3+1)/2, (1+5)/2) = (-1, 3).",
+              "1 pkt za obliczenie kwadratu promienia r^2: r^2 = (1 - (-1))^2 + (5 - 3)^2 = 2^2 + 2^2 = 8 i zapisanie równania: (x + 1)^2 + (y - 3)^2 = 8."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-6",
+        "id": "lesson-10-6",
         "title": "Wzajemne położenie prostej i okręgu oraz styczność",
         "theory_pill": {
           "concept_essence": "Aby określić położenie prostej względem okręgu o środku $S$ i promieniu $r$, obliczamy odległość $d$ środka okręgu od prostej:\\n1. $d > r$ — prosta i okrąg nie mają punktów wspólnych (rozłączne);\\n2. $d = r$ — prosta jest STYCZNA (dokładnie 1 punkt wspólny);\\n3. $d < r$ — prosta jest SIECZNĄ (2 punkty wspólne).",
@@ -701,7 +731,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-6-1",
+            "id": "task-10-6-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -718,7 +748,7 @@
             "hint": "Oblicz odległość rzędnej środka y = -1 od prostej y = 3."
           },
           {
-            "id": "t-dzial-10-6-2",
+            "id": "task-10-6-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -735,7 +765,7 @@
             "hint": "Okrąg jest styczny do obu osi układu współrzędnych."
           },
           {
-            "id": "t-dzial-10-6-3",
+            "id": "task-10-6-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -746,7 +776,7 @@
             "hint": "Odległość od osi OX jest równa współrzędnej y środka."
           },
           {
-            "id": "t-dzial-10-6-4",
+            "id": "task-10-6-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -763,7 +793,7 @@
             "hint": "Porównaj odległość prostej od środka d = 4 z promieniem r = 3."
           },
           {
-            "id": "t-dzial-10-6-5",
+            "id": "task-10-6-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -780,7 +810,7 @@
             "hint": "Wstaw y = 5 do równania okręgu x^2 + y^2 = 25."
           },
           {
-            "id": "t-dzial-10-6-6",
+            "id": "task-10-6-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -797,7 +827,7 @@
             "hint": "Zauważ, że prosta y = 4 przechodzi przez środek okręgu."
           },
           {
-            "id": "t-dzial-10-6-7",
+            "id": "task-10-6-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -814,20 +844,26 @@
             "hint": "Podstaw x = 2 do równania x^2 + y^2 = 16 i oblicz różnicę wartości y."
           },
           {
-            "id": "t-dzial-10-6-8",
+            "id": "task-10-6-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Zbadaj liczbę punktów wspólnych prostej $y = x + 1$ i okręgu $(x - 1)^2 + (y - 2)^2 = 8$.",
             "explanation": "Podstawiamy równanie prostej y = x + 1 do równania okręgu: (x - 1)^2 + (x + 1 - 2)^2 = 8 <=> (x - 1)^2 + (x - 1)^2 = 8 <=> 2(x - 1)^2 = 8 <=> (x - 1)^2 = 4. Stąd x - 1 = 2 lub x - 1 = -2, czyli x = 3 lub x = -1. Równanie kwadratowe ma 2 różne rozwiązania (delta > 0), więc prosta i okrąg mają dokładnie 2 punkty wspólne.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za podstawienie y = x + 1 do równania okręgu: (x - 1)^2 + (x + 1 - 2)^2 = 8 <=> 2(x - 1)^2 = 8 <=> (x - 1)^2 = 4. 1 pkt za wyznaczenie dwóch rozwiązań x = 3 lub x = -1 i podanie odpowiedzi: prosta przecina okrąg w 2 punktach.",
+            "scoring_key": [
+              "1 pkt za podstawienie y = x + 1 do równania okręgu: (x - 1)^2 + (x + 1 - 2)^2 = 8 <=> 2(x - 1)^2 = 8 <=> (x - 1)^2 = 4.",
+              "1 pkt za wyznaczenie dwóch rozwiązań x = 3 lub x = -1 i podanie odpowiedzi: prosta przecina okrąg w 2 punktach."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-7",
+        "id": "lesson-10-7",
         "title": "Wektory w układzie współrzędnych: Współrzędne i działania",
         "theory_pill": {
           "concept_essence": "Wektor o początku w punkcie $A = (x_1, y_1)$ i końcu w $B = (x_2, y_2)$ ma współrzędne: $\\vec{AB} = [x_2 - x_1, y_2 - y_1]$ (współrzędne końca minus początku!). Długość wektora to $|\\vec{u}| = \\sqrt{u_x^2 + u_y^2}$. Wektory dodajemy i odejmujemy 'po współrzędnych'.",
@@ -838,7 +874,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-7-1",
+            "id": "task-10-7-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -855,7 +891,7 @@
             "hint": "Odejmij współrzędne punktu A od współrzędnych punktu B."
           },
           {
-            "id": "t-dzial-10-7-2",
+            "id": "task-10-7-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -872,7 +908,7 @@
             "hint": "Zastosuj wzór: \\sqrt{x^2 + y^2}."
           },
           {
-            "id": "t-dzial-10-7-3",
+            "id": "task-10-7-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -883,7 +919,7 @@
             "hint": "Pomnóż pierwszą współrzędną wektora u przez 2 i dodaj pierwszą współrzędną wektora v."
           },
           {
-            "id": "t-dzial-10-7-4",
+            "id": "task-10-7-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -900,7 +936,7 @@
             "hint": "Dodaj współrzędne wektora do współrzędnych punktu A."
           },
           {
-            "id": "t-dzial-10-7-5",
+            "id": "task-10-7-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -917,7 +953,7 @@
             "hint": "Wektor przeciwny ma przeciwne znaki obu współrzędnych."
           },
           {
-            "id": "t-dzial-10-7-6",
+            "id": "task-10-7-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -934,7 +970,7 @@
             "hint": "Punkt początkowy A to koniec B minus wektor: A = B - \\vec{AB}."
           },
           {
-            "id": "t-dzial-10-7-7",
+            "id": "task-10-7-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -951,20 +987,26 @@
             "hint": "Przyrównaj pierwsze współrzędne: 2m = 4."
           },
           {
-            "id": "t-dzial-10-7-8",
+            "id": "task-10-7-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W równoległoboku $ABCD$ dane są wierzchołki $A = (-2, 1)$, $B = (4, 3)$ oraz $D = (-1, 5)$. Wyznacz współrzędne wierzchołka $C$ za pomocą wektorów.",
             "explanation": "W równoległoboku wektory przeciwległych boków są równe: \\vec{DC} = \\vec{AB}. Wyznaczamy wektor \\vec{AB}: \\vec{AB} = [4 - (-2), 3 - 1] = [6, 2]. Dodajemy ten wektor do punktu D: C = (-1 + 6, 5 + 2) = (5, 7). Współrzędne punktu C to (5, 7).",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie wektora AB: \\vec{AB} = [4 - (-2), 3 - 1] = [6, 2]. 1 pkt za zauważenie, że \\vec{DC} = \\vec{AB} i wyznaczenie współrzędnych C: C = D + \\vec{AB} = (-1 + 6, 5 + 2) = (5, 7).",
+            "scoring_key": [
+              "1 pkt za wyznaczenie wektora AB: \\vec{AB} = [4 - (-2), 3 - 1] = [6, 2].",
+              "1 pkt za zauważenie, że \\vec{DC} = \\vec{AB} i wyznaczenie współrzędnych C: C = D + \\vec{AB} = (-1 + 6, 5 + 2) = (5, 7)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-8",
+        "id": "lesson-10-8",
         "title": "Symetria osiowa i środkowa w układzie współrzędnych",
         "theory_pill": {
           "concept_essence": "Przekształcenia punktu $P = (x, y)$:\\n1. Symetria względem osi OX ($S_{OX}$): zmienia się znak $y \\implies (x, -y)$;\\n2. Symetria względem osi OY ($S_{OY}$): zmienia się znak $x \\implies (-x, y)$;\\n3. Symetria względem początku układu $O = (0, 0)$ ($S_O$): zmieniają się OBA znaki $\\implies (-x, -y)$.",
@@ -975,7 +1017,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-8-1",
+            "id": "task-10-8-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -992,7 +1034,7 @@
             "hint": "W symetrii względem osi OX zmień znak współrzędnej y."
           },
           {
-            "id": "t-dzial-10-8-2",
+            "id": "task-10-8-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1009,7 +1051,7 @@
             "hint": "Zmień znaki obu współrzędnych na przeciwne."
           },
           {
-            "id": "t-dzial-10-8-3",
+            "id": "task-10-8-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1020,7 +1062,7 @@
             "hint": "Zmień znak pierwszej współrzędnej na przeciwny."
           },
           {
-            "id": "t-dzial-10-8-4",
+            "id": "task-10-8-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1037,7 +1079,7 @@
             "hint": "Pomnóż całe wyrażenie po prawej stronie przez -1."
           },
           {
-            "id": "t-dzial-10-8-5",
+            "id": "task-10-8-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1054,7 +1096,7 @@
             "hint": "Punkty (2, -3) i (2, 3) różnią się współrzędną y o 6."
           },
           {
-            "id": "t-dzial-10-8-6",
+            "id": "task-10-8-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1071,7 +1113,7 @@
             "hint": "Zmień znak pierwszej współrzędnej środka na przeciwny."
           },
           {
-            "id": "t-dzial-10-8-7",
+            "id": "task-10-8-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1088,20 +1130,26 @@
             "hint": "W symetrii względem (0,0) współrzędne mają przeciwne znaki."
           },
           {
-            "id": "t-dzial-10-8-8",
+            "id": "task-10-8-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Punkty $A = (-4, 1)$ oraz $B = (2, 5)$ są wierzchołkami trójkąta $ABC$. Wierzchołek $C$ jest obrazem punktu $A$ w symetrii względem osi OY. Oblicz pole trójkąta $ABC$.",
             "explanation": "Punkt C jest obrazem punktu A = (-4, 1) w symetrii względem osi OY, zatem C = (4, 1). Punkty A i C mają tę samą współrzędną y = 1, więc bok AC jest poziomy o długości |AC| = 4 - (-4) = 8. Wierzchołek B = (2, 5) ma współrzędną y = 5, zatem wysokość opuszczona na bok AC wynosi h = 5 - 1 = 4. Pole trójkąta wynosi: P = 1/2 * |AC| * h = 1/2 * 8 * 4 = 16.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie punktu C: C = (4, 1) oraz zauważenie, że odcinek AC leży na prostej poziomej y = 1 i ma długość |AC| = 4 - (-4) = 8. 1 pkt za wyznaczenie wysokości h = 5 - 1 = 4 i obliczenie pola: P = 1/2 * 8 * 4 = 16.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie punktu C: C = (4, 1) oraz zauważenie, że odcinek AC leży na prostej poziomej y = 1 i ma długość |AC| = 4 - (-4) = 8.",
+              "1 pkt za wyznaczenie wysokości h = 5 - 1 = 4 i obliczenie pola: P = 1/2 * 8 * 4 = 16."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-9",
+        "id": "lesson-10-9",
         "title": "Postać ogólna prostej: Ax + By + C = 0",
         "theory_pill": {
           "concept_essence": "Równanie ogólne $Ax + By + C = 0$ (gdzie $A^2 + B^2 > 0$) opisuje każdą prostą na płaszczyźnie, w tym proste pionowe (dla $B = 0$). Aby przejść do postaci kierunkowej, wyznaczamy $y$: $By = -Ax - C \\implies y = -\\frac{A}{B}x - \\frac{C}{B}$. Wektor $[A, B]$ jest zawsze wektorem normalnym (prostopadłym do prostej).",
@@ -1112,7 +1160,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-9-1",
+            "id": "task-10-9-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1129,7 +1177,7 @@
             "hint": "Wyznacz y z równania: przenieś 3x na drugą stronę i podziel przez -2."
           },
           {
-            "id": "t-dzial-10-9-2",
+            "id": "task-10-9-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1146,7 +1194,7 @@
             "hint": "Wstaw y = 0 do równania prostej."
           },
           {
-            "id": "t-dzial-10-9-3",
+            "id": "task-10-9-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1157,7 +1205,7 @@
             "hint": "Podstaw x = 2 oraz y = 1 do równania i rozwiąż równanie z niewiadomą C."
           },
           {
-            "id": "t-dzial-10-9-4",
+            "id": "task-10-9-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1174,7 +1222,7 @@
             "hint": "Sprowadź obie proste do postaci y = ax + b i porównaj współczynniki kierunkowe."
           },
           {
-            "id": "t-dzial-10-9-5",
+            "id": "task-10-9-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1191,7 +1239,7 @@
             "hint": "Współczynniki [A, B] tworzą wektor prostopadły do prostej."
           },
           {
-            "id": "t-dzial-10-9-6",
+            "id": "task-10-9-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1208,7 +1256,7 @@
             "hint": "Współczynnik danej prostej to 1/3. Odwróć go i zmień znak."
           },
           {
-            "id": "t-dzial-10-9-7",
+            "id": "task-10-9-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1225,20 +1273,26 @@
             "hint": "Jaką wartość przyjmuje współrzędna y dla wszystkich punktów leżących na osi OX?"
           },
           {
-            "id": "t-dzial-10-9-8",
+            "id": "task-10-9-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Wyznacz punkt przecięcia prostych o równaniach $2x - y + 3 = 0$ oraz $x + 2y - 6 = 0$.",
             "explanation": "Rozwiązujemy układ równań: 1) y = 2x + 3. 2) x + 2y - 6 = 0. Podstawiamy y z pierwszego równania do drugiego: x + 2(2x + 3) - 6 = 0 <=> x + 4x + 6 - 6 = 0 <=> 5x = 0 => x = 0. Wtedy y = 2(0) + 3 = 3. Punkt przecięcia to P = (0, 3).",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za ułożenie układu równań i wyznaczenie jednej ze zmiennych: y = 2x + 3, x + 2(2x + 3) - 6 = 0 => 5x = 0 => x = 0. 1 pkt za obliczenie y = 3 i podanie punktu przecięcia P = (0, 3).",
+            "scoring_key": [
+              "1 pkt za ułożenie układu równań i wyznaczenie jednej ze zmiennych: y = 2x + 3, x + 2(2x + 3) - 6 = 0 => 5x = 0 => x = 0.",
+              "1 pkt za obliczenie y = 3 i podanie punktu przecięcia P = (0, 3)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-10",
+        "id": "lesson-10-10",
         "title": "Pole trójkąta i wielokąta ze współrzędnych wierzchołków",
         "theory_pill": {
           "concept_essence": "Pole trójkąta o wierzchołkach $A = (x_A, y_A)$, $B = (x_B, y_B)$, $C = (x_C, y_C)$ można błyskawicznie obliczyć z wyznacznika wektorów $\\vec{AB} = [u_x, u_y]$ oraz $\\vec{AC} = [v_x, v_y]$: $P = \\frac{1}{2} |u_x v_y - u_y v_x|$. Alternatywnie zamykamy figurę w prostokącie o bokach równoległych do osi i odejmujemy pola skrajnych trójkątów prostokątnych (metoda 'pudełkowa').",
@@ -1249,7 +1303,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-10-1",
+            "id": "task-10-10-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1266,7 +1320,7 @@
             "hint": "Podstawa ma długość 6, a wysokość wynosi 4."
           },
           {
-            "id": "t-dzial-10-10-2",
+            "id": "task-10-10-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1283,7 +1337,7 @@
             "hint": "Bok AB ma długość 4, a wysokość wynosi 7 - 1 = 6."
           },
           {
-            "id": "t-dzial-10-10-3",
+            "id": "task-10-10-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1294,7 +1348,7 @@
             "hint": "Oblicz długości boków a i b, a następnie pomnóż je przez siebie."
           },
           {
-            "id": "t-dzial-10-10-4",
+            "id": "task-10-10-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1311,7 +1365,7 @@
             "hint": "Zastosuj wzór na pole ze współrzędnych wektorów: P = 1/2 * |x_1*y_2 - x_2*y_1|."
           },
           {
-            "id": "t-dzial-10-10-5",
+            "id": "task-10-10-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1328,7 +1382,7 @@
             "hint": "Sprawdź, czy wektory AB i BC są równoległe."
           },
           {
-            "id": "t-dzial-10-10-6",
+            "id": "task-10-10-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1345,7 +1399,7 @@
             "hint": "Trójkąt prostokątny ma przyprostokątne o długościach 3 oraz 6."
           },
           {
-            "id": "t-dzial-10-10-7",
+            "id": "task-10-10-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1362,20 +1416,26 @@
             "hint": "Oblicz kwadrat przekątnej d^2 i podziel przez 2."
           },
           {
-            "id": "t-dzial-10-10-8",
+            "id": "task-10-10-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Punkty $A = (-2, -1)$, $B = (4, 1)$ oraz $C = (1, 5)$ są wierzchołkami trójkąta. Oblicz pole tego trójkąta.",
             "explanation": "Wyznaczamy współrzędne wektorów wychodzących z wierzchołka A: \\vec{AB} = [4 - (-2), 1 - (-1)] = [6, 2], \\vec{AC} = [1 - (-2), 5 - (-1)] = [3, 6]. Ze wzoru na pole trójkąta z wyznacznika wektorów: P = 1/2 * |x_AB * y_AC - y_AB * x_AC| = 1/2 * |6 * 6 - 2 * 3| = 1/2 * |36 - 6| = 1/2 * 30 = 15.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie wektorów AB i AC: \\vec{AB} = [6, 2] oraz \\vec{AC} = [3, 6]. 1 pkt za obliczenie wyznacznika d = 6*6 - 2*3 = 36 - 6 = 30 i podanie pola P = 1/2 * 30 = 15.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie wektorów AB i AC: \\vec{AB} = [6, 2] oraz \\vec{AC} = [3, 6].",
+              "1 pkt za obliczenie wyznacznika d = 6*6 - 2*3 = 36 - 6 = 30 i podanie pola P = 1/2 * 30 = 15."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-11",
+        "id": "lesson-10-11",
         "title": "Symetralna odcinka w układzie współrzędnych",
         "theory_pill": {
           "concept_essence": "Symetralna odcinka $AB$ to prosta prostopadła do odcinka $AB$ przechodząca przez jego ŚRODEK $S$. Algorytm: 1) Wyznacz współrzędne środka $S$; 2) Wyznacz współczynnik $a_{AB}$; 3) Wyznacz współczynnik prostopadły $a_{\\text{sym}} = -\\frac{1}{a_{AB}}$; 4) Wstaw punkt $S$ i oblicz wyraz wolny $b$.",
@@ -1386,7 +1446,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-11-1",
+            "id": "task-10-11-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1403,7 +1463,7 @@
             "hint": "Symetralna jest prostopadła do odcinka, więc jej współczynnik to -1/a."
           },
           {
-            "id": "t-dzial-10-11-2",
+            "id": "task-10-11-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1420,7 +1480,7 @@
             "hint": "Prosta prostopadła do odcinka poziomego to prosta pionowa x = x_S."
           },
           {
-            "id": "t-dzial-10-11-3",
+            "id": "task-10-11-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1431,7 +1491,7 @@
             "hint": "Środek odcinka w pionie ma współrzędną y = (-1 + 7)/2 = 3."
           },
           {
-            "id": "t-dzial-10-11-4",
+            "id": "task-10-11-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1448,7 +1508,7 @@
             "hint": "Środek to (2, 2), a współczynnik prostopadły do 1 to -1."
           },
           {
-            "id": "t-dzial-10-11-5",
+            "id": "task-10-11-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1465,7 +1525,7 @@
             "hint": "Przypomnij sobie definicję symetralnej odcinka."
           },
           {
-            "id": "t-dzial-10-11-6",
+            "id": "task-10-11-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1482,7 +1542,7 @@
             "hint": "Równanie symetralnej to y = -x + 6. Wstaw y = 3."
           },
           {
-            "id": "t-dzial-10-11-7",
+            "id": "task-10-11-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1499,20 +1559,26 @@
             "hint": "Symetralne boków wyznaczają środek okręgu opisanego."
           },
           {
-            "id": "t-dzial-10-11-8",
+            "id": "task-10-11-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Wyznacz równanie symetralnej odcinka $AB$ o końcach $A = (-3, 2)$ oraz $B = (1, 6)$.",
             "explanation": "Wyznaczamy środek odcinka AB: S = ((-3 + 1)/2, (2 + 6)/2) = (-1, 4). Obliczamy współczynnik kierunkowy prostej AB: a_AB = (6 - 2) / (1 - (-3)) = 4 / 4 = 1. Współczynnik kierunkowy symetralnej wynosi: a_sym = -1 / a_AB = -1. Równanie symetralnej przechodzącej przez punkt S = (-1, 4): y - 4 = -1(x - (-1)) <=> y - 4 = -x - 1 <=> y = -x + 3.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie środka odcinka S = ((-3+1)/2, (2+6)/2) = (-1, 4) oraz współczynnika kierunkowego a_AB = (6-2)/(1-(-3)) = 4/4 = 1. 1 pkt za wyznaczenie współczynnika prostopadłego a = -1 i zapisanie równania symetralnej: y - 4 = -1(x - (-1)) <=> y = -x + 3.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie środka odcinka S = ((-3+1)/2, (2+6)/2) = (-1, 4) oraz współczynnika kierunkowego a_AB = (6-2)/(1-(-3)) = 4/4 = 1.",
+              "1 pkt za wyznaczenie współczynnika prostopadłego a = -1 i zapisanie równania symetralnej: y - 4 = -1(x - (-1)) <=> y = -x + 3."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-12",
+        "id": "lesson-10-12",
         "title": "Odległość punktu od prostej: d = |Ax_0 + By_0 + C| / sqrt(A^2 + B^2)",
         "theory_pill": {
           "concept_essence": "Odległość punktu $P = (x_0, y_0)$ od prostej w postaci ogólnej $Ax + By + C = 0$ wyraża się wzorem: $d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}$. Jest to długość najkrótszego odcinka łączącego punkt z prostą (odcinka prostopadłego).",
@@ -1523,7 +1589,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-12-1",
+            "id": "task-10-12-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1540,7 +1606,7 @@
             "hint": "Wstaw współrzędne punktu do licznika wzoru i podziel przez pierwiastek z 25."
           },
           {
-            "id": "t-dzial-10-12-2",
+            "id": "task-10-12-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1557,7 +1623,7 @@
             "hint": "Wstaw x = 0 i y = 0 do licznika: |-20| / 5 = 4."
           },
           {
-            "id": "t-dzial-10-12-3",
+            "id": "task-10-12-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1568,7 +1634,7 @@
             "hint": "Odejmij -2 od 4."
           },
           {
-            "id": "t-dzial-10-12-4",
+            "id": "task-10-12-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1585,7 +1651,7 @@
             "hint": "Promień jest odległością środka okręgu od prostej stycznej."
           },
           {
-            "id": "t-dzial-10-12-5",
+            "id": "task-10-12-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1602,7 +1668,7 @@
             "hint": "Odległość od prostej poziomej y = 2 to różnica współrzędnych y."
           },
           {
-            "id": "t-dzial-10-12-6",
+            "id": "task-10-12-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1619,7 +1685,7 @@
             "hint": "Wybierz punkt na jednej prostej, np. (0, 1), i policz jego odległość od drugiej prostej."
           },
           {
-            "id": "t-dzial-10-12-7",
+            "id": "task-10-12-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1636,20 +1702,26 @@
             "hint": "Odległość punktu od pionowej prostej x = 1 to |a - 1|."
           },
           {
-            "id": "t-dzial-10-12-8",
+            "id": "task-10-12-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Oblicz wysokość trójkąta $ABC$ opuszczoną z wierzchołka $C = (2, 5)$ na bok $AB$ zawarty w prostej o równaniu $3x + 4y - 6 = 0$.",
             "explanation": "Wysokość trójkąta opuszczona z wierzchołka C na bok AB jest równa odległości punktu C od prostej AB. Stosujemy wzór na odległość punktu od prostej: h = |3 * 2 + 4 * 5 - 6| / \\sqrt{3^2 + 4^2} = |6 + 20 - 6| / \\sqrt{25} = 20 / 5 = 4.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za podstawienie współrzędnych punktu C do wzoru na odległość punktu od prostej: h = |3(2) + 4(5) - 6| / \\sqrt{3^2 + 4^2}. 1 pkt za obliczenie h = |6 + 20 - 6| / 5 = 20 / 5 = 4.",
+            "scoring_key": [
+              "1 pkt za podstawienie współrzędnych punktu C do wzoru na odległość punktu od prostej: h = |3(2) + 4(5) - 6| / \\sqrt{3^2 + 4^2}.",
+              "1 pkt za obliczenie h = |6 + 20 - 6| / 5 = 20 / 5 = 4."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-13",
+        "id": "lesson-10-13",
         "title": "Przekształcenia geometryczne figur: Przesunięcie o wektor [p, q]",
         "theory_pill": {
           "concept_essence": "Przesunięcie figury o wektor $\\vec{v} = [p, q]$ oznacza przesunięcie każdego jej punktu: $x' = x + p$ oraz $y' = y + q$. W równaniu funkcji lub prostej zastępujemy $x$ przez $(x - p)$, a $y$ przez $(y - q)$, co daje $y = f(x - p) + q$. Dla okręgu $(x - a)^2 + (y - b)^2 = r^2$ środek przesuwa się do $(a + p, b + q)$, a promień $r$ pozostaje bez zmian.",
@@ -1660,7 +1732,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-13-1",
+            "id": "task-10-13-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1677,7 +1749,7 @@
             "hint": "Wyznacz środek okręgu (-2, 3) i dodaj współrzędne wektora."
           },
           {
-            "id": "t-dzial-10-13-2",
+            "id": "task-10-13-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1694,7 +1766,7 @@
             "hint": "Dodaj 4 do wyrazu wolnego prostej."
           },
           {
-            "id": "t-dzial-10-13-3",
+            "id": "task-10-13-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1705,7 +1777,7 @@
             "hint": "Oblicz współrzędne wektora v = [x' - x, y' - y] i wyznacz jego długość."
           },
           {
-            "id": "t-dzial-10-13-4",
+            "id": "task-10-13-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1722,7 +1794,7 @@
             "hint": "Zastąp x przez (x - 1) i dodaj 2 na końcu."
           },
           {
-            "id": "t-dzial-10-13-5",
+            "id": "task-10-13-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1739,7 +1811,7 @@
             "hint": "Przesunięcie zachowuje kształt i orientację figury."
           },
           {
-            "id": "t-dzial-10-13-6",
+            "id": "task-10-13-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1756,7 +1828,7 @@
             "hint": "Dodaj współrzędne wektora do (0, 0)."
           },
           {
-            "id": "t-dzial-10-13-7",
+            "id": "task-10-13-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1773,20 +1845,26 @@
             "hint": "Przesunięcie o wektor zachowuje pole figury."
           },
           {
-            "id": "t-dzial-10-13-8",
+            "id": "task-10-13-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Okrąg $O_1: (x - 2)^2 + (y + 1)^2 = 25$ przesunięto o wektor $\\vec{v} = [-4, 3]$, otrzymując okrąg $O_2$. Napisz równanie okręgu $O_2$ i oblicz odległość między środkami tych okręgów.",
             "explanation": "Środek okręgu O_1 to S_1 = (2, -1), a promień r = 5. Nowy środek po przesunięciu o wektor [-4, 3] to: S_2 = (2 + (-4), -1 + 3) = (-2, 2). Ponieważ promień nie ulega zmianie, równanie okręgu O_2 to: (x + 2)^2 + (y - 2)^2 = 25. Odległość między środkami okręgów jest równa długości wektora przesunięcia: d = |\\vec{v}| = \\sqrt{(-4)^2 + 3^2} = \\sqrt{16 + 9} = 5.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie nowego środka S_2 = (2 - 4, -1 + 3) = (-2, 2) i zapisanie równania okręgu O_2: (x + 2)^2 + (y - 2)^2 = 25. 1 pkt za obliczenie odległości między środkami: d = |\\vec{v}| = \\sqrt{(-4)^2 + 3^2} = 5.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie nowego środka S_2 = (2 - 4, -1 + 3) = (-2, 2) i zapisanie równania okręgu O_2: (x + 2)^2 + (y - 2)^2 = 25.",
+              "1 pkt za obliczenie odległości między środkami: d = |\\vec{v}| = \\sqrt{(-4)^2 + 3^2} = 5."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-14",
+        "id": "lesson-10-14",
         "title": "Zadania dowodowe w geometrii analitycznej",
         "theory_pill": {
           "concept_essence": "Dowodzenie własności figur w geometrii analitycznej opiera się na wykazaniu równości iloczynu współczynników kierunkowych ($a_1 \\cdot a_2 = -1$ dla kąta prostego), równości długości odcinków ($|AB| = |BC|$ dla trójkąta równoramiennego) lub zgodności środków przekątnych (dla równoległoboku).",
@@ -1797,7 +1875,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-14-1",
+            "id": "task-10-14-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1814,7 +1892,7 @@
             "hint": "Oblicz delta y podzielone przez delta x."
           },
           {
-            "id": "t-dzial-10-14-2",
+            "id": "task-10-14-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1831,7 +1909,7 @@
             "hint": "Iloczyn współczynników wynosi -1, co oznacza prostopadłość."
           },
           {
-            "id": "t-dzial-10-14-3",
+            "id": "task-10-14-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1842,7 +1920,7 @@
             "hint": "Wysokość trójkąta równobocznego o boku 6 wynosi 3 pierwiastki z 3. Podnieś ją do kwadratu."
           },
           {
-            "id": "t-dzial-10-14-4",
+            "id": "task-10-14-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1859,7 +1937,7 @@
             "hint": "Wspólny środek przekątnych definiuje równoległobok."
           },
           {
-            "id": "t-dzial-10-14-5",
+            "id": "task-10-14-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1876,7 +1954,7 @@
             "hint": "Oblicz długość boku BC i porównaj z bokiem AB."
           },
           {
-            "id": "t-dzial-10-14-6",
+            "id": "task-10-14-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1893,7 +1971,7 @@
             "hint": "Sprawdź twierdzenie Pitagorasa: |AC|^2 + |BC|^2 = |AB|^2."
           },
           {
-            "id": "t-dzial-10-14-7",
+            "id": "task-10-14-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1910,20 +1988,26 @@
             "hint": "Kąt oparty na średnicy ma zawsze 90°."
           },
           {
-            "id": "t-dzial-10-14-8",
+            "id": "task-10-14-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Dany jest trójkąt o wierzchołkach $A = (-2, -1)$, $B = (2, 1)$ oraz $C = (0, 5)$. Wykaż, że trójkąt $ABC$ jest prostokątny.",
             "explanation": "Obliczamy współczynniki kierunkowe prostych zawierających boki trójkąta: a_AB = (1 - (-1)) / (2 - (-2)) = 2 / 4 = 1/2. a_BC = (5 - 1) / (0 - 2) = 4 / (-2) = -2. Sprawdzamy warunek prostopadłości boków AB i BC: a_AB * a_BC = 1/2 * (-2) = -1. Iloczyn współczynników kierunkowych jest równy -1, co dowodzi, że boki AB i BC są wzajemnie prostopadłe (kąt ABC = 90°). Zatem trójkąt ABC jest prostokątny, co kończy dowód.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie współczynników kierunkowych prostych zawierających boki: a_AB = (1 - (-1)) / (2 - (-2)) = 2 / 4 = 1/2 oraz a_BC = (5 - 1) / (0 - 2) = 4 / (-2) = -2. 1 pkt za wykazanie prostopadłości: a_AB * a_BC = 1/2 * (-2) = -1 i sformułowanie wniosku kończącego dowód.",
+            "scoring_key": [
+              "1 pkt za obliczenie współczynników kierunkowych prostych zawierających boki: a_AB = (1 - (-1)) / (2 - (-2)) = 2 / 4 = 1/2 oraz a_BC = (5 - 1) / (0 - 2) = 4 / (-2) = -2.",
+              "1 pkt za wykazanie prostopadłości: a_AB * a_BC = 1/2 * (-2) = -1 i sformułowanie wniosku kończącego dowód."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-10-15",
+        "id": "lesson-10-15",
         "title": "Podsumowanie geometrii analitycznej: Strategie rozwiązywania zadań",
         "theory_pill": {
           "concept_essence": "Podsumowanie technik geometrii analitycznej: odległość punktów, środek odcinka, proste równoległe i prostopadłe, równanie okręgu, odległość punktu od prostej. Zawsze wykonaj szkic w układzie współrzędnych i wybierz najprostszą metodę algebraiczną.",
@@ -1934,7 +2018,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-10-15-1",
+            "id": "task-10-15-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1951,7 +2035,7 @@
             "hint": "Punkty przecięcia z osiami to (2, 0) oraz (0, -4). Oblicz odległość między nimi."
           },
           {
-            "id": "t-dzial-10-15-2",
+            "id": "task-10-15-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1968,7 +2052,7 @@
             "hint": "Podstaw współrzędne punktu do równania okręgu i sprawdź, czy wynik wynosi 10."
           },
           {
-            "id": "t-dzial-10-15-3",
+            "id": "task-10-15-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1979,7 +2063,7 @@
             "hint": "Podstawa ma długość 8, a wysokość wynosi 6."
           },
           {
-            "id": "t-dzial-10-15-4",
+            "id": "task-10-15-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1996,7 +2080,7 @@
             "hint": "Punkt o ujemnym x i dodatnim y leży w II ćwiartce."
           },
           {
-            "id": "t-dzial-10-15-5",
+            "id": "task-10-15-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2013,7 +2097,7 @@
             "hint": "3^2 + (-4)^2 = 9 + 16 = 25."
           },
           {
-            "id": "t-dzial-10-15-6",
+            "id": "task-10-15-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -2030,7 +2114,7 @@
             "hint": "Prosta prostopadła do osi OY jest prostą poziomą."
           },
           {
-            "id": "t-dzial-10-15-7",
+            "id": "task-10-15-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -2047,17 +2131,24 @@
             "hint": "Oblicz wektor AB = [6, -8], a potem zmień znaki obu współrzędnych."
           },
           {
-            "id": "t-dzial-10-15-8",
+            "id": "task-10-15-8",
             "type": "OPEN_GENERAL",
             "points": 3,
             "source": "Matura maj 2024",
             "content": "Wierzchołki trójkąta to $A = (-3, 1)$, $B = (5, -3)$ oraz $C = (1, 5)$. Wyznacz równanie prostej zawierającej środkową poprowadzoną z wierzchołka $C$.",
             "explanation": "Środkowa poprowadzona z wierzchołka C łączy punkt C ze środkiem S przeciwległego boku AB. Wyznaczamy środek odcinka AB: S = ((-3 + 5)/2, (1 + (-3))/2) = (2/2, -2/2) = (1, -1). Mamy dwa punkty wyznaczające środkową: C = (1, 5) oraz S = (1, -1). Zauważmy, że oba punkty mają jednakową pierwszą współrzędną x = 1. Oznacza to, że prosta jest prostą pionową, prostopadłą do osi OX. Jej równanie ma postać: x = 1.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie środka boku AB: S = ((-3+5)/2, (1-3)/2) = (1, -1). 1 pkt za zauważenie, że punkty C = (1, 5) oraz S = (1, -1) mają taką samą współrzędną x = 1. 1 pkt za zapisanie poprawnego równania prostej pionowej: x = 1.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie środka boku AB: S = ((-3+5)/2, (1-3)/2) = (1, -1).",
+              "1 pkt za zauważenie, że punkty C = (1, 5) oraz S = (1, -1) mają taką samą współrzędną x = 1.",
+              "1 pkt za zapisanie poprawnego równania prostej pionowej: x = 1."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       }
     ],
     "final_test": {

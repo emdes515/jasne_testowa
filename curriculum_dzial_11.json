@@ -5,7 +5,7 @@
     "description": "Kompletny program przygotowawczy ze stereometrii do matury: graniastosłupy, ostrosłupy, bryły obrotowe (walec, stożek, kula), przekroje, kąty w przestrzeni i zadania optymalizacyjne.",
     "lessons": [
       {
-        "id": "l-dzial-11-1",
+        "id": "lesson-11-1",
         "title": "Prostopadłościan i sześcian: Przekątne, pole i objętość",
         "theory_pill": {
           "concept_essence": "W prostopadłościanie o krawędziach $a, b, c$: objętość wynosi $V = abc$, pole powierzchni całkowitej $P_c = 2(ab + bc + ac)$, a przekątna bryły $D = \\sqrt{a^2 + b^2 + c^2}$. W sześcianie o krawędzi $a$: $V = a^3$, $P_c = 6a^2$, przekątna ściany $d = a\\sqrt{2}$, a przekątna sześcianu $D = a\\sqrt{3}$.",
@@ -16,7 +16,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-1-1",
+            "id": "task-11-1-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -33,7 +33,7 @@
             "hint": "Wyznacz krawędź sześcianu a z równania a pierwiastków z 3 = 6 pierwiastków z 3."
           },
           {
-            "id": "t-dzial-11-1-2",
+            "id": "task-11-1-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -50,7 +50,7 @@
             "hint": "Oblicz pierwiastek z sumy kwadratów wymiarów: 2^2 + 3^2 + 6^2."
           },
           {
-            "id": "t-dzial-11-1-3",
+            "id": "task-11-1-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -61,7 +61,7 @@
             "hint": "Sześcian ma 12 krawędzi o równej długości. Oblicz krawędź a, a potem V = a^3."
           },
           {
-            "id": "t-dzial-11-1-4",
+            "id": "task-11-1-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -78,7 +78,7 @@
             "hint": "Ściana sześcianu jest kwadratem o przekątnej a pierwiastków z 2."
           },
           {
-            "id": "t-dzial-11-1-5",
+            "id": "task-11-1-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -95,7 +95,7 @@
             "hint": "Pole rośnie 2^2 razy, a objętość 2^3 razy."
           },
           {
-            "id": "t-dzial-11-1-6",
+            "id": "task-11-1-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -112,7 +112,7 @@
             "hint": "Tangens to stosunek wysokości a do przekątnej podstawy a pierwiastków z 2."
           },
           {
-            "id": "t-dzial-11-1-7",
+            "id": "task-11-1-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -129,20 +129,26 @@
             "hint": "Podziel objętość 72 przez wysokość 8, aby otrzymać a^2."
           },
           {
-            "id": "t-dzial-11-1-8",
+            "id": "task-11-1-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Pole powierzchni całkowitej prostopadłościanu o podstawie kwadratowej jest równe $150$. Krawędź podstawy ma długość $5$. Oblicz objętość tego prostopadłościanu.",
             "explanation": "Niech a = 5 będzie krawędzią podstawy, a h wysokością prostopadłościanu. Pole powierzchni całkowitej wynosi: P_c = 2*a^2 + 4*a*h. Zatem 150 = 2 * 25 + 4 * 5 * h <=> 150 = 50 + 20h <=> 20h = 100 => h = 5. Ponieważ a = h = 5, bryła jest sześcianem. Jej objętość wynosi: V = a^2 * h = 25 * 5 = 125.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie wysokości h z równania pola całkowitego: 2*5^2 + 4*5*h = 150 <=> 50 + 20h = 150 => 20h = 100 => h = 5. 1 pkt za zauważenie, że prostopadłościan jest sześcianem o krawędzi 5 i obliczenie objętości: V = 5^3 = 125.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie wysokości h z równania pola całkowitego: 2*5^2 + 4*5*h = 150 <=> 50 + 20h = 150 => 20h = 100 => h = 5.",
+              "1 pkt za zauważenie, że prostopadłościan jest sześcianem o krawędzi 5 i obliczenie objętości: V = 5^3 = 125."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-2",
+        "id": "lesson-11-2",
         "title": "Graniastosłupy proste: Siatka, pole całkowite i objętość",
         "theory_pill": {
           "concept_essence": "W każdym graniastosłupie prostym ściany boczne są prostokątami prostopadłymi do podstaw. Objętość to iloczyn pola podstawy i wysokości: $V = P_p \\cdot H$. Pole całkowite to suma dwóch podstaw i pola powierzchni bocznej: $P_c = 2P_p + P_b$, gdzie $P_b = \\text{Obw}_p \\cdot H$.",
@@ -153,7 +159,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-2-1",
+            "id": "task-11-2-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -170,7 +176,7 @@
             "hint": "Pomnóż pole podstawy przez wysokość."
           },
           {
-            "id": "t-dzial-11-2-2",
+            "id": "task-11-2-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -187,7 +193,7 @@
             "hint": "Graniastosłup o n-kątnej podstawie ma 3n krawędzi i 2n wierzchołków."
           },
           {
-            "id": "t-dzial-11-2-3",
+            "id": "task-11-2-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -198,7 +204,7 @@
             "hint": "Pole rombu to 1/2 * d_1 * d_2. Pomnóż je przez wysokość 10."
           },
           {
-            "id": "t-dzial-11-2-4",
+            "id": "task-11-2-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -215,7 +221,7 @@
             "hint": "Liczba ścian bocznych jest równa liczbie boków wielokąta w podstawie."
           },
           {
-            "id": "t-dzial-11-2-5",
+            "id": "task-11-2-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -232,7 +238,7 @@
             "hint": "Słowo 'prawidłowy' oznacza, że w podstawie leży wielokąt foremny."
           },
           {
-            "id": "t-dzial-11-2-6",
+            "id": "task-11-2-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -249,7 +255,7 @@
             "hint": "Podziel pole powierzchni bocznej przez obwód podstawy."
           },
           {
-            "id": "t-dzial-11-2-7",
+            "id": "task-11-2-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -266,20 +272,26 @@
             "hint": "Liczba ścian to n + 2, gdzie n to liczba boków podstawy."
           },
           {
-            "id": "t-dzial-11-2-8",
+            "id": "task-11-2-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Podstawą graniastosłupa prostego jest trójkąt prostokątny o przyprostokątnych $6$ i $8$. Największa ściana boczna tego graniastosłupa jest kwadratem. Oblicz objętość i pole powierzchni całkowitej tego graniastosłupa.",
             "explanation": "Przeciwprostokątna podstawy trójkąta prostokątnego z tw. Pitagorasa wynosi: c = \\sqrt{6^2 + 8^2} = 10. Największa ściana boczna opiera się na najdłuższym boku podstawy (przeciwprostokątnej c = 10). Ponieważ jest ona kwadratem, wysokość graniastosłupa wynosi H = c = 10. Pole podstawy: P_p = 1/2 * 6 * 8 = 24. Objętość: V = P_p * H = 24 * 10 = 240. Pole boczne: P_b = Obw_p * H = (6 + 8 + 10) * 10 = 24 * 10 = 240. Pole powierzchni całkowitej: P_c = 2 * P_p + P_b = 2 * 24 + 240 = 288.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie przeciwprostokątnej podstawy c = \\sqrt{6^2 + 8^2} = 10 i wyznaczenie wysokości graniastosłupa H = 10 (jako boku kwadratu). 1 pkt za obliczenie objętości: V = 1/2 * 6 * 8 * 10 = 240 oraz pola całkowitego: P_c = 2 * 24 + (6 + 8 + 10)*10 = 48 + 240 = 288.",
+            "scoring_key": [
+              "1 pkt za obliczenie przeciwprostokątnej podstawy c = \\sqrt{6^2 + 8^2} = 10 i wyznaczenie wysokości graniastosłupa H = 10 (jako boku kwadratu).",
+              "1 pkt za obliczenie objętości: V = 1/2 * 6 * 8 * 10 = 240 oraz pola całkowitego: P_c = 2 * 24 + (6 + 8 + 10)*10 = 48 + 240 = 288."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-3",
+        "id": "lesson-11-3",
         "title": "Graniastosłup prawidłowy trójkątny i sześciokątny",
         "theory_pill": {
           "concept_essence": "Graniastosłup prawidłowy trójkątny ma w podstawie trójkąt równoboczny ($P_p = \\frac{a^2\\sqrt{3}}{4}$). Graniastosłup prawidłowy sześciokątny ma w podstawie sześciokąt foremny, który składa się z $6$ jednakowych trójkątów równobocznych ($P_p = 6 \\cdot \\frac{a^2\\sqrt{3}}{4} = \\frac{3a^2\\sqrt{3}}{2}$).",
@@ -290,7 +302,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-3-1",
+            "id": "task-11-3-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -307,7 +319,7 @@
             "hint": "Oblicz pole podstawy ze wzoru na trójkąt równoboczny i pomnóż przez 6."
           },
           {
-            "id": "t-dzial-11-3-2",
+            "id": "task-11-3-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -324,7 +336,7 @@
             "hint": "Graniastosłup trójkątny ma 3 ściany boczne."
           },
           {
-            "id": "t-dzial-11-3-3",
+            "id": "task-11-3-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -335,7 +347,7 @@
             "hint": "Pole podstawy sześciokąta to 6 razy pole trójkąta równobocznego."
           },
           {
-            "id": "t-dzial-11-3-4",
+            "id": "task-11-3-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -352,7 +364,7 @@
             "hint": "Dłuższa przekątna sześciokąta foremnego ma długość 2a."
           },
           {
-            "id": "t-dzial-11-3-5",
+            "id": "task-11-3-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -369,7 +381,7 @@
             "hint": "Przypomnij sobie wzory na przekątne w sześciokącie foremnym."
           },
           {
-            "id": "t-dzial-11-3-6",
+            "id": "task-11-3-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -386,7 +398,7 @@
             "hint": "Podziel pole boczne 72 przez (6 * 2)."
           },
           {
-            "id": "t-dzial-11-3-7",
+            "id": "task-11-3-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -403,20 +415,26 @@
             "hint": "Zastosuj twierdzenie Pitagorasa w ścianie bocznej, aby obliczyć a = 3."
           },
           {
-            "id": "t-dzial-11-3-8",
+            "id": "task-11-3-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "W graniastosłupie prawidłowym trójkątnym pole powierzchni całkowitej jest równe $24\\sqrt{3} + 180$, a krawędź podstawy ma długość $a = 4\\sqrt{3}$. Oblicz objętość tego graniastosłupa.",
             "explanation": "Pole podstawy wynosi: P_p = a^2\\sqrt{3}/4 = (4\\sqrt{3})^2 \\sqrt{3} / 4 = 48\\sqrt{3} / 4 = 12\\sqrt{3}. Dwie podstawy mają pole 2P_p = 24\\sqrt{3}. Z treści zadania pole całkowite to P_c = 2P_p + P_b = 24\\sqrt{3} + 180, stąd pole boczne P_b = 180. Obwód podstawy to Obw_p = 3 * 4\\sqrt{3} = 12\\sqrt{3}. Wysokość graniastosłupa: H = P_b / Obw_p = 180 / (12\\sqrt{3}) = 15 / \\sqrt{3} = 5\\sqrt{3}. Objętość: V = P_p * H = 12\\sqrt{3} * 5\\sqrt{3} = 60 * 3 = 180.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie pola podstawy P_p = (4\\sqrt{3})^2 \\sqrt{3} / 4 = 12\\sqrt{3} i wyznaczenie pola powierzchni bocznej P_b = 180, skąd H = 180 / (3 * 4\\sqrt{3}) = 15 / \\sqrt{3} = 5\\sqrt{3}. 1 pkt za obliczenie objętości: V = P_p * H = 12\\sqrt{3} * 5\\sqrt{3} = 180.",
+            "scoring_key": [
+              "1 pkt za obliczenie pola podstawy P_p = (4\\sqrt{3})^2 \\sqrt{3} / 4 = 12\\sqrt{3} i wyznaczenie pola powierzchni bocznej P_b = 180, skąd H = 180 / (3 * 4\\sqrt{3}) = 15 / \\sqrt{3} = 5\\sqrt{3}.",
+              "1 pkt za obliczenie objętości: V = P_p * H = 12\\sqrt{3} * 5\\sqrt{3} = 180."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-4",
+        "id": "lesson-11-4",
         "title": "Ostrosłupy proste i prawidłowe: Pole całkowite i objętość (1/3 Pp*H)",
         "theory_pill": {
           "concept_essence": "W ostrosłupie wszystkie ściany boczne zbiegają się w jednym wierzchołku. Objętość ostrosłupa stanowi dokładnie JEDNĄ TRZECIĄ objętości graniastosłupa o tej samej podstawie i wysokości: $V = \\frac{1}{3}P_p \\cdot H$. Pole powierzchni całkowitej to suma pola podstawy i wszystkich ścian bocznych: $P_c = P_p + P_b$.",
@@ -427,7 +445,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-4-1",
+            "id": "task-11-4-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -444,7 +462,7 @@
             "hint": "Zastosuj wzór V = 1/3 * P_p * H."
           },
           {
-            "id": "t-dzial-11-4-2",
+            "id": "task-11-4-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -461,7 +479,7 @@
             "hint": "Ostrosłup ma 2n krawędzi i n + 1 wierzchołków."
           },
           {
-            "id": "t-dzial-11-4-3",
+            "id": "task-11-4-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -472,7 +490,7 @@
             "hint": "Podstaw 48 i 36 do wzoru V = 1/3 * P_p * H i wyznacz H."
           },
           {
-            "id": "t-dzial-11-4-4",
+            "id": "task-11-4-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -489,7 +507,7 @@
             "hint": "Pole powierzchni całkowitej czworościanu foremnego to a^2 pierwiastków z 3."
           },
           {
-            "id": "t-dzial-11-4-5",
+            "id": "task-11-4-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -506,7 +524,7 @@
             "hint": "Ostrosłup ma n+1 ścian, n+1 wierzchołków i 2n krawędzi."
           },
           {
-            "id": "t-dzial-11-4-6",
+            "id": "task-11-4-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -523,7 +541,7 @@
             "hint": "Objętość ostrosłupa to 1/3 objętości graniastosłupa o tych samych wymiarach."
           },
           {
-            "id": "t-dzial-11-4-7",
+            "id": "task-11-4-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -540,20 +558,26 @@
             "hint": "Objętość jest wprost proporcjonalna do wysokości."
           },
           {
-            "id": "t-dzial-11-4-8",
+            "id": "task-11-4-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Podstawą ostrosłupa jest prostokąt o bokach $6$ i $8$. Wszystkie krawędzie boczne tego ostrosłupa mają długość $13$. Oblicz objętość tego ostrosłupa.",
             "explanation": "Przekątna prostokątnej podstawy: d = \\sqrt{6^2 + 8^2} = 10. Ponieważ wszystkie krawędzie boczne są równe, spodek wysokości ostrosłupa leży w punkcie przecięcia przekątnych podstawy. Odległość od wierzchołka podstawy do spodka wysokości to połowa przekątnej: R = d/2 = 5. Z twierdzenia Pitagorasa w trójkącie utworzonym przez wysokość H, promień R i krawędź boczną b = 13: H = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12. Pole podstawy wynosi: P_p = 6 * 8 = 48. Objętość: V = 1/3 * P_p * H = 1/3 * 48 * 12 = 192.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie przekątnej podstawy d = \\sqrt{6^2 + 8^2} = 10 i połowy przekątnej d/2 = 5, a następnie wysokości ostrosłupa z tw. Pitagorasa: H = \\sqrt{13^2 - 5^2} = 12. 1 pkt za obliczenie pola podstawy P_p = 6 * 8 = 48 i objętości: V = 1/3 * 48 * 12 = 192.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie przekątnej podstawy d = \\sqrt{6^2 + 8^2} = 10 i połowy przekątnej d/2 = 5, a następnie wysokości ostrosłupa z tw. Pitagorasa: H = \\sqrt{13^2 - 5^2} = 12.",
+              "1 pkt za obliczenie pola podstawy P_p = 6 * 8 = 48 i objętości: V = 1/3 * 48 * 12 = 192."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-5",
+        "id": "lesson-11-5",
         "title": "Ostrosłup prawidłowy czworokątny: Trójkąty prostokątne w bryle",
         "theory_pill": {
           "concept_essence": "W ostrosłupie prawidłowym czworokątnym o podstawie kwadratu $a$ i wysokości $H$ kluczowe są dwa trójkąty prostokątne:\\n1. Z krawędzią boczną $b$: $H^2 + \\left(\\frac{a\\sqrt{2}}{2}\\right)^2 = b^2$ (przyprostokątne to wysokość $H$ i połowa przekątnej podstawy);\\n2. Z wysokością ściany bocznej $h_s$: $H^2 + \\left(\\frac{a}{2}\\right)^2 = h_s^2$ (przyprostokątne to wysokość $H$ i połowa boku podstawy).",
@@ -564,7 +588,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-5-1",
+            "id": "task-11-5-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -581,7 +605,7 @@
             "hint": "Zastosuj twierdzenie Pitagorasa dla trójkąta: H, połowa boku podstawy (a/2) i wysokość ściany bocznej h_s."
           },
           {
-            "id": "t-dzial-11-5-2",
+            "id": "task-11-5-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -598,7 +622,7 @@
             "hint": "Ściana boczna to trójkąt równoramienny o podstawie 6 i ramionach 5."
           },
           {
-            "id": "t-dzial-11-5-3",
+            "id": "task-11-5-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -609,7 +633,7 @@
             "hint": "Zastosuj twierdzenie Pitagorasa: H^2 + (połowa przekątnej)^2 = krawędź boczna^2."
           },
           {
-            "id": "t-dzial-11-5-4",
+            "id": "task-11-5-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -626,7 +650,7 @@
             "hint": "Ostrosłup ma 4 jednakowe ściany boczne o polu 1/2 * a * h_s."
           },
           {
-            "id": "t-dzial-11-5-5",
+            "id": "task-11-5-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -643,7 +667,7 @@
             "hint": "Ostrosłup prawidłowy ma pełną symetrię obrotową."
           },
           {
-            "id": "t-dzial-11-5-6",
+            "id": "task-11-5-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -660,7 +684,7 @@
             "hint": "Dla kąta 45° wysokość jest równa połowie przekątnej podstawy."
           },
           {
-            "id": "t-dzial-11-5-7",
+            "id": "task-11-5-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -677,20 +701,27 @@
             "hint": "Rzutem punktu wierzchołka ściany bocznej jest środek boku kwadratu."
           },
           {
-            "id": "t-dzial-11-5-8",
+            "id": "task-11-5-8",
             "type": "OPEN_GENERAL",
             "points": 3,
             "source": "Matura maj 2024",
             "content": "W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $10$, a pole powierzchni całkowitej wynosi $360$. Oblicz objętość tego ostrosłupa.",
             "explanation": "Pole podstawy to pole kwadratu: P_p = 10^2 = 100. Pole powierzchni bocznej: P_b = P_c - P_p = 360 - 100 = 260. Ponieważ P_b = 4 * (1/2 * a * h_s) = 2 * a * h_s: 260 = 2 * 10 * h_s <=> 20 * h_s = 260 => h_s = 13. W trójkącie prostokątnym utworzonym przez wysokość ostrosłupa H, połowę boku podstawy a/2 = 5 oraz wysokość ściany bocznej h_s = 13: H = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12. Objętość ostrosłupa wynosi: V = 1/3 * P_p * H = 1/3 * 100 * 12 = 400.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie pola podstawy P_p = 100 oraz pola bocznego P_b = 360 - 100 = 260 i wyznaczenie wysokości ściany bocznej: 4 * (1/2 * 10 * h_s) = 260 => 20 * h_s = 260 => h_s = 13. 1 pkt za wyznaczenie wysokości ostrosłupa z tw. Pitagorasa: H = \\sqrt{13^2 - 5^2} = 12. 1 pkt za obliczenie objętości: V = 1/3 * 100 * 12 = 400.",
+            "scoring_key": [
+              "1 pkt za obliczenie pola podstawy P_p = 100 oraz pola bocznego P_b = 360 - 100 = 260 i wyznaczenie wysokości ściany bocznej: 4 * (1/2 * 10 * h_s) = 260 => 20 * h_s = 260 => h_s = 13.",
+              "1 pkt za wyznaczenie wysokości ostrosłupa z tw. Pitagorasa: H = \\sqrt{13^2 - 5^2} = 12.",
+              "1 pkt za obliczenie objętości: V = 1/3 * 100 * 12 = 400."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-6",
+        "id": "lesson-11-6",
         "title": "Walec: Przekrój osiowy, pole powierzchni i objętość",
         "theory_pill": {
           "concept_essence": "Walec powstaje przez obrót prostokąta wokół jednego z boków. Podstawą jest koło o promieniu $r$. Przekrojem osiowym walca jest prostokąt o bokach $2r$ oraz $H$. Wzory: objętość $V = \\pi r^2 H$, pole powierzchni bocznej $P_b = 2\\pi r H$, pole powierzchni całkowitej $P_c = 2\\pi r^2 + 2\\pi r H = 2\\pi r(r + H)$.",
@@ -701,7 +732,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-6-1",
+            "id": "task-11-6-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -718,7 +749,7 @@
             "hint": "Średnica 2r = 8, więc promień r = 4. Wysokość H = 8."
           },
           {
-            "id": "t-dzial-11-6-2",
+            "id": "task-11-6-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -735,7 +766,7 @@
             "hint": "Zastosuj wzór P_b = 2 * pi * r * H."
           },
           {
-            "id": "t-dzial-11-6-3",
+            "id": "task-11-6-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -746,7 +777,7 @@
             "hint": "Podziel objętość 72*pi przez pole podstawy 9*pi."
           },
           {
-            "id": "t-dzial-11-6-4",
+            "id": "task-11-6-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -763,7 +794,7 @@
             "hint": "Pamiętaj o dwóch podstawach: 2 * 16*pi + 40*pi."
           },
           {
-            "id": "t-dzial-11-6-5",
+            "id": "task-11-6-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -780,7 +811,7 @@
             "hint": "Wstaw 2r i H/2 do wzorów na pole boczne i objętość."
           },
           {
-            "id": "t-dzial-11-6-6",
+            "id": "task-11-6-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -797,7 +828,7 @@
             "hint": "Wysokość H to d * sin 60°."
           },
           {
-            "id": "t-dzial-11-6-7",
+            "id": "task-11-6-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -814,20 +845,26 @@
             "hint": "Oś obrotu to wysokość walca, a drugi bok to promień."
           },
           {
-            "id": "t-dzial-11-6-8",
+            "id": "task-11-6-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Przekątna przekroju osiowego walca ma długość $d = 13$, a wysokość walca wynosi $H = 12$. Oblicz objętość i pole powierzchni całkowitej tego walca.",
             "explanation": "Przekrój osiowy walca to prostokąt o bokach 2r oraz H. Z twierdzenia Pitagorasa: (2r)^2 + H^2 = d^2 <=> (2r)^2 + 12^2 = 13^2 <=> (2r)^2 = 169 - 144 = 25, stąd 2r = 5, czyli r = 2,5. Objętość walca: V = \\pi r^2 H = \\pi * (2,5)^2 * 12 = \\pi * 6,25 * 12 = 75\\pi. Pole całkowite: P_c = 2\\pi r(r + H) = 2\\pi * 2,5 * (2,5 + 12) = 5\\pi * 14,5 = 72,5\\pi.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie średnicy podstawy z twierdzenia Pitagorasa: 2r = \\sqrt{13^2 - 12^2} = 5, stąd promień r = 2,5. 1 pkt za obliczenie objętości: V = \\pi * (2,5)^2 * 12 = 75\\pi oraz pola całkowitego: P_c = 2\\pi * 2,5 * (2,5 + 12) = 5\\pi * 14,5 = 72,5\\pi.",
+            "scoring_key": [
+              "1 pkt za obliczenie średnicy podstawy z twierdzenia Pitagorasa: 2r = \\sqrt{13^2 - 12^2} = 5, stąd promień r = 2,5.",
+              "1 pkt za obliczenie objętości: V = \\pi * (2,5)^2 * 12 = 75\\pi oraz pola całkowitego: P_c = 2\\pi * 2,5 * (2,5 + 12) = 5\\pi * 14,5 = 72,5\\pi."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-7",
+        "id": "lesson-11-7",
         "title": "Stożek: Tworząca l, pole powierzchni i objętość (1/3 pi r^2 H)",
         "theory_pill": {
           "concept_essence": "Stożek powstaje przez obrót trójkąta prostokątnego wokół jednej z przyprostokątnych. Przyprostokątne to promień podstawy $r$ i wysokość $H$, a przeciwprostokątna to tworząca stożka $l$: $r^2 + H^2 = l^2$. Wzory: objętość $V = \\frac{1}{3}\\pi r^2 H$, pole powierzchni bocznej $P_b = \\pi r l$, pole całkowite $P_c = \\pi r^2 + \\pi r l = \\pi r(r + l)$.",
@@ -838,7 +875,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-7-1",
+            "id": "task-11-7-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -855,7 +892,7 @@
             "hint": "Zastosuj twierdzenie Pitagorasa: l^2 = r^2 + H^2."
           },
           {
-            "id": "t-dzial-11-7-2",
+            "id": "task-11-7-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -872,7 +909,7 @@
             "hint": "Użyj wzoru P_b = pi * r * l."
           },
           {
-            "id": "t-dzial-11-7-3",
+            "id": "task-11-7-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -883,7 +920,7 @@
             "hint": "1/3 * 36 = 12. Rozwiąż 12 * H = 48."
           },
           {
-            "id": "t-dzial-11-7-4",
+            "id": "task-11-7-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -900,7 +937,7 @@
             "hint": "Średnica podstawy 2r jest równa bokowi trójkąta równobocznego."
           },
           {
-            "id": "t-dzial-11-7-5",
+            "id": "task-11-7-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -917,7 +954,7 @@
             "hint": "Przekrój to trójkąt prostokątny równoramienny."
           },
           {
-            "id": "t-dzial-11-7-6",
+            "id": "task-11-7-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -934,7 +971,7 @@
             "hint": "Wysokość leży naprzeciw kąta 30°: H = l * sin 30°."
           },
           {
-            "id": "t-dzial-11-7-7",
+            "id": "task-11-7-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -951,20 +988,26 @@
             "hint": "Obwód podstawy stożka 2*pi*r jest równy długości łuku wycinka powierzchni bocznej."
           },
           {
-            "id": "t-dzial-11-7-8",
+            "id": "task-11-7-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Przekrój osiowy stożka jest trójkątem równoramiennym o kącie między ramionami $120^\\circ$ i podstawie równej $12$. Oblicz objętość tego stożka.",
             "explanation": "Podstawa przekroju to średnica stożka 2r = 12, stąd promień r = 6. Kąt między ramionami to 120°, więc wysokość stożka dzieli go na dwa kąty po 60°. Kąt nachylenia tworzącej do podstawy wynosi 90° - 60° = 30°. Ze związku trygonometrycznego: tg 30° = H / r => \\sqrt{3}/3 = H / 6 => H = 2\\sqrt{3}. Objętość stożka: V = 1/3 \\pi r^2 H = 1/3 * \\pi * 36 * 2\\sqrt{3} = 24\\sqrt{3}\\pi.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie promienia podstawy r = 12/2 = 6 oraz wysokości stożka z trójkąta 30-60-90: tg 30° = H / 6 => H = 6 * (\\sqrt{3}/3) = 2\\sqrt{3}. 1 pkt za obliczenie objętości: V = 1/3 * \\pi * 6^2 * 2\\sqrt{3} = 24\\sqrt{3}\\pi.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie promienia podstawy r = 12/2 = 6 oraz wysokości stożka z trójkąta 30-60-90: tg 30° = H / 6 => H = 6 * (\\sqrt{3}/3) = 2\\sqrt{3}.",
+              "1 pkt za obliczenie objętości: V = 1/3 * \\pi * 6^2 * 2\\sqrt{3} = 24\\sqrt{3}\\pi."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-8",
+        "id": "lesson-11-8",
         "title": "Kula: Pole powierzchni i objętość",
         "theory_pill": {
           "concept_essence": "Kula o promieniu $R$ ma pole powierzchni równe czterem polom koła wielkiego: $P = 4\\pi R^2$, a objętość $V = \\frac{4}{3}\\pi R^3$. Przekrój kuli płaszczyzną przechodzącą przez środek to koło wielkie o polu $\\pi R^2$ i obwodzie $2\\pi R$.",
@@ -975,7 +1018,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-8-1",
+            "id": "task-11-8-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -992,7 +1035,7 @@
             "hint": "Zastosuj wzór P = 4 * pi * R^2."
           },
           {
-            "id": "t-dzial-11-8-2",
+            "id": "task-11-8-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1009,7 +1052,7 @@
             "hint": "Zastosuj wzór V = 4/3 * pi * R^3."
           },
           {
-            "id": "t-dzial-11-8-3",
+            "id": "task-11-8-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1020,7 +1063,7 @@
             "hint": "Podziel 64 przez 4 i wyciągnij pierwiastek kwadratowy."
           },
           {
-            "id": "t-dzial-11-8-4",
+            "id": "task-11-8-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1037,7 +1080,7 @@
             "hint": "Obwód koła wielkiego to 2 * pi * R."
           },
           {
-            "id": "t-dzial-11-8-5",
+            "id": "task-11-8-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1054,7 +1097,7 @@
             "hint": "Pole rośnie z kwadratem skali (3^2), a objętość z sześcianem skali (3^3)."
           },
           {
-            "id": "t-dzial-11-8-6",
+            "id": "task-11-8-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1071,7 +1114,7 @@
             "hint": "Wyznacz promień R = 2, a średnica to 2R."
           },
           {
-            "id": "t-dzial-11-8-7",
+            "id": "task-11-8-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1088,20 +1131,26 @@
             "hint": "Skala liniowa wynosi k = 1/2. Podnieś ją do sześcianu."
           },
           {
-            "id": "t-dzial-11-8-8",
+            "id": "task-11-8-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Metalową kulę o promieniu $R = 6$ przetopiono na jednakowe małe kulki o promieniu $r = 2$. Ile takich małych kulek otrzymano?",
             "explanation": "Objętość kuli jest proporcjonalna do sześcianu jej promienia: V = 4/3 \\pi R^3. Stosunek objętości dużej kuli do małej wynosi: n = V_dużej / V_małej = (R / r)^3 = (6 / 2)^3 = 3^3 = 27. Otrzymano 27 małych kulek.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie objętości dużej kuli V_1 = 4/3 \\pi * 6^3 = 288\\pi oraz małej kuli V_2 = 4/3 \\pi * 2^3 = 32/3 \\pi (lub zauważenie stosunku k^3 = (6/2)^3 = 3^3). 1 pkt za wyznaczenie liczby kulek: n = 288\\pi / (32/3 \\pi) = 27.",
+            "scoring_key": [
+              "1 pkt za obliczenie objętości dużej kuli V_1 = 4/3 \\pi * 6^3 = 288\\pi oraz małej kuli V_2 = 4/3 \\pi * 2^3 = 32/3 \\pi (lub zauważenie stosunku k^3 = (6/2)^3 = 3^3).",
+              "1 pkt za wyznaczenie liczby kulek: n = 288\\pi / (32/3 \\pi) = 27."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-9",
+        "id": "lesson-11-9",
         "title": "Kąty w graniastosłupach: Kąt nachylenia przekątnej bryły",
         "theory_pill": {
           "concept_essence": "Kąt nachylenia przekątnej prostopadłościanu do płaszczyzny podstawy to kąt w trójkącie prostokątnym utworzonym przez: wysokość $H$, przekątną podstawy $d_p$ oraz przekątną bryły $D$. Wtedy: $\\operatorname{tg} \\alpha = \\frac{H}{d_p}$, $\\sin \\alpha = \\frac{H}{D}$, $\\cos \\alpha = \\frac{d_p}{D}$.",
@@ -1112,7 +1161,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-9-1",
+            "id": "task-11-9-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1129,7 +1178,7 @@
             "hint": "Wysokość H to D * sin 30°."
           },
           {
-            "id": "t-dzial-11-9-2",
+            "id": "task-11-9-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1146,7 +1195,7 @@
             "hint": "cos(alpha) to przekątna podstawy podzielona przez przekątną sześcianu."
           },
           {
-            "id": "t-dzial-11-9-3",
+            "id": "task-11-9-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1157,7 +1206,7 @@
             "hint": "Oblicz H = 4 pierwiastki z 2 i podnieś do kwadratu."
           },
           {
-            "id": "t-dzial-11-9-4",
+            "id": "task-11-9-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1174,7 +1223,7 @@
             "hint": "tg(alpha) to wysokość H podzielona przez przekątną podstawy d_p."
           },
           {
-            "id": "t-dzial-11-9-5",
+            "id": "task-11-9-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1191,7 +1240,7 @@
             "hint": "Przekątna podstawy jest dłuższa niż bok podstawy."
           },
           {
-            "id": "t-dzial-11-9-6",
+            "id": "task-11-9-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1208,7 +1257,7 @@
             "hint": "sin(alpha) = krawędź a / przekątna sześcianu a pierwiastków z 3."
           },
           {
-            "id": "t-dzial-11-9-7",
+            "id": "task-11-9-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1225,20 +1274,26 @@
             "hint": "Oblicz H = 4 pierwiastki z 3 oraz P_p = d^2 / 2 = 8."
           },
           {
-            "id": "t-dzial-11-9-8",
+            "id": "task-11-9-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W graniastosłupie prawidłowym czworokątnym przekątna bryły o długości $8\\sqrt{2}$ tworzy z płaszczyzną podstawy kąt $45^\\circ$. Oblicz objętość tego graniastosłupa.",
             "explanation": "Trójkąt utworzony przez wysokość H, przekątną podstawy d oraz przekątną bryły D = 8\\sqrt{2} jest prostokątny równoramienny (kąt 45°). Stąd: H = d = D * sin 45° = 8\\sqrt{2} * (\\sqrt{2}/2) = 8. Podstawą jest kwadrat o przekątnej d = 8. Pole podstawy wynosi: P_p = d^2 / 2 = 8^2 / 2 = 64 / 2 = 32. Objętość graniastosłupa: V = P_p * H = 32 * 8 = 256.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie wysokości H i przekątnej podstawy d: H = d = 8\\sqrt{2} * sin 45° = 8. 1 pkt za obliczenie pola podstawy P_p = d^2 / 2 = 64 / 2 = 32 oraz objętości: V = 32 * 8 = 256.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie wysokości H i przekątnej podstawy d: H = d = 8\\sqrt{2} * sin 45° = 8.",
+              "1 pkt za obliczenie pola podstawy P_p = d^2 / 2 = 64 / 2 = 32 oraz objętości: V = 32 * 8 = 256."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-10",
+        "id": "lesson-11-10",
         "title": "Kąty w ostrosłupach: Kąt krawędzi i ściany bocznej do podstawy",
         "theory_pill": {
           "concept_essence": "W ostrosłupie prawidłowym czworokątnym:\\n1. Kąt nachylenia KRAWĘDZI BOCZNEJ do podstawy ($\\alpha$): leży w trójkącie prostokątnym o przyprostokątnych $H$ i $\\frac{a\\sqrt{2}}{2}$ (przeciwprostokątna to $b$);\\n2. Kąt nachylenia ŚCIANY BOCZNEJ do podstawy ($\\beta$): leży w trójkącie prostokątnym o przyprostokątnych $H$ i $\\frac{a}{2}$ (przeciwprostokątna to $h_s$).",
@@ -1249,7 +1304,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-10-1",
+            "id": "task-11-10-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1266,7 +1321,7 @@
             "hint": "Podziel wysokość H przez połowę boku podstawy a/2."
           },
           {
-            "id": "t-dzial-11-10-2",
+            "id": "task-11-10-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1283,7 +1338,7 @@
             "hint": "sin 30° = H / b => b = H / sin 30°."
           },
           {
-            "id": "t-dzial-11-10-3",
+            "id": "task-11-10-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1294,7 +1349,7 @@
             "hint": "tg 45° = 1 => H = a/2."
           },
           {
-            "id": "t-dzial-11-10-4",
+            "id": "task-11-10-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1311,7 +1366,7 @@
             "hint": "Środek trójkąta równobocznego dzieli wysokość w stosunku 2:1."
           },
           {
-            "id": "t-dzial-11-10-5",
+            "id": "task-11-10-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1328,7 +1383,7 @@
             "hint": "Promień okręgu opisanego R jest większy od promienia wpisanego r."
           },
           {
-            "id": "t-dzial-11-10-6",
+            "id": "task-11-10-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1345,7 +1400,7 @@
             "hint": "H = h_s * sin 60°."
           },
           {
-            "id": "t-dzial-11-10-7",
+            "id": "task-11-10-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1362,20 +1417,27 @@
             "hint": "Każda ściana czworościanu foremnego jest trójkątem równobocznym."
           },
           {
-            "id": "t-dzial-11-10-8",
+            "id": "task-11-10-8",
             "type": "OPEN_GENERAL",
             "points": 3,
             "source": "Matura maj 2024",
             "content": "W ostrosłupie prawidłowym czworokątnym krawędź boczna ma długość $10$ i tworzy z płaszczyzną podstawy kąt $60^\\circ$. Oblicz objętość tego ostrosłupa.",
             "explanation": "Rozważamy trójkąt prostokątny utworzony przez wysokość H, połowę przekątnej podstawy d/2 oraz krawędź boczną b = 10 o kącie 60°. Wysokość ostrosłupa: H = b * sin 60° = 10 * (\\sqrt{3}/2) = 5\\sqrt{3}. Połowa przekątnej podstawy: d/2 = b * cos 60° = 10 * 1/2 = 5, stąd cała przekątna podstawy to d = 10. Ponieważ podstawa jest kwadratem, jej pole wynosi: P_p = d^2 / 2 = 10^2 / 2 = 50. Objętość ostrosłupa: V = 1/3 * P_p * H = 1/3 * 50 * 5\\sqrt{3} = 250\\sqrt{3} / 3.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie wysokości ostrosłupa H = 10 * sin 60° = 5\\sqrt{3} oraz połowy przekątnej podstawy: d/2 = 10 * cos 60° = 5. 1 pkt za wyznaczenie całej przekątnej d = 10 i pola podstawy P_p = d^2 / 2 = 100 / 2 = 50. 1 pkt za obliczenie objętości: V = 1/3 * 50 * 5\\sqrt{3} = 250\\sqrt{3} / 3.",
+            "scoring_key": [
+              "1 pkt za obliczenie wysokości ostrosłupa H = 10 * sin 60° = 5\\sqrt{3} oraz połowy przekątnej podstawy: d/2 = 10 * cos 60° = 5.",
+              "1 pkt za wyznaczenie całej przekątnej d = 10 i pola podstawy P_p = d^2 / 2 = 100 / 2 = 50.",
+              "1 pkt za obliczenie objętości: V = 1/3 * 50 * 5\\sqrt{3} = 250\\sqrt{3} / 3."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-11",
+        "id": "lesson-11-11",
         "title": "Przekroje wielościanów płaszczyzną",
         "theory_pill": {
           "concept_essence": "Przekrój wielościanu to figura płaska powstała w wyniku przecięcia bryły płaszczyzną. Najczęstsze przekroje na maturze:\\n1. Przekrój sześcianu płaszczyzną przechodzącą przez przeciwległe krawędzie (prostokąt o bokach $a$ i $a\\sqrt{2}$);\\n2. Przekrój sześcianu płaszczyzną przechodzącą przez trzy wierzchołki (trójkąt równoboczny o boku $a\\sqrt{2}$);\\n3. Przekrój ostrosłupa płaszczyzną zawierającą wysokość i wierzchołek (trójkąt równoramienny).",
@@ -1386,7 +1448,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-11-1",
+            "id": "task-11-11-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1403,7 +1465,7 @@
             "hint": "Boki tego trójkąta to przekątne kwadratowych ścian sześcianu."
           },
           {
-            "id": "t-dzial-11-11-2",
+            "id": "task-11-11-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1420,7 +1482,7 @@
             "hint": "Przekrój jest prostokątem o bokach a i a pierwiastków z 2."
           },
           {
-            "id": "t-dzial-11-11-3",
+            "id": "task-11-11-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1431,7 +1493,7 @@
             "hint": "Tworząca stożka jest ramieniem trójkąta przekroju osiowego."
           },
           {
-            "id": "t-dzial-11-11-4",
+            "id": "task-11-11-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1448,7 +1510,7 @@
             "hint": "Odległość d, promień przekroju r i promień kuli R tworzą trójkąt prostokątny."
           },
           {
-            "id": "t-dzial-11-11-5",
+            "id": "task-11-11-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1465,7 +1527,7 @@
             "hint": "Przekrój kuli to zawsze koło o promieniu r <= R."
           },
           {
-            "id": "t-dzial-11-11-6",
+            "id": "task-11-11-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1482,7 +1544,7 @@
             "hint": "Średnica podstawy wynosi 2*3 = 6. Zastosuj tw. Pitagorasa: H^2 + 6^2 = 10^2."
           },
           {
-            "id": "t-dzial-11-11-7",
+            "id": "task-11-11-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1499,20 +1561,26 @@
             "hint": "Pole przekroju to 1/2 * 2r * H = r * H."
           },
           {
-            "id": "t-dzial-11-11-8",
+            "id": "task-11-11-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Sześcian o krawędzi $a = 4$ przecięto płaszczyzną przechodzącą przez przekątną podstawy i jeden z przeciwległych wierzchołków górnej podstawy. Oblicz pole otrzymanego przekroju.",
             "explanation": "Wszystkie trzy boki przekroju łączą wierzchołki sześcianu po przekątnych ścian kwadratowych: każdy bok ma długość d = a\\sqrt{2} = 4\\sqrt{2}. Zatem przekrój jest trójkątem równobocznym o boku 4\\sqrt{2}. Pole przekroju wynosi: P = d^2 \\sqrt{3} / 4 = (4\\sqrt{2})^2 \\sqrt{3} / 4 = 32\\sqrt{3} / 4 = 8\\sqrt{3}.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zauważenie, że przekrój jest trójkątem równoramiennym o podstawie d = 4\\sqrt{2} i ramionach będących przekątnymi ścian bocznych b = 4\\sqrt{2} (jest to trójkąt równoboczny!). 1 pkt za obliczenie pola trójkąta równobocznego: P = (4\\sqrt{2})^2 \\sqrt{3} / 4 = 32\\sqrt{3} / 4 = 8\\sqrt{3}.",
+            "scoring_key": [
+              "1 pkt za zauważenie, że przekrój jest trójkątem równoramiennym o podstawie d = 4\\sqrt{2} i ramionach będących przekątnymi ścian bocznych b = 4\\sqrt{2} (jest to trójkąt równoboczny!).",
+              "1 pkt za obliczenie pola trójkąta równobocznego: P = (4\\sqrt{2})^2 \\sqrt{3} / 4 = 32\\sqrt{3} / 4 = 8\\sqrt{3}."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-12",
+        "id": "lesson-11-12",
         "title": "Bryły wpisane i opisane (wzajemne relacje)",
         "theory_pill": {
           "concept_essence": "Typowe układy brył na maturze:\\n1. Kula wpisana w sześcian o krawędzi $a$: średnica kuli to krawędź sześcianu ($2R = a \\implies R = \\frac{a}{2}$);\\n2. Kula opisana na sześcianie: średnica kuli to przekątna sześcianu ($2R = a\\sqrt{3} \\implies R = \\frac{a\\sqrt{3}}{2}$);\\n3. Walec wpisany w sześcian: $2r = a$ oraz $H = a$.",
@@ -1523,7 +1591,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-12-1",
+            "id": "task-11-12-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1540,7 +1608,7 @@
             "hint": "Promień kuli wpisanej w sześcian to połowa krawędzi sześcianu."
           },
           {
-            "id": "t-dzial-11-12-2",
+            "id": "task-11-12-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1557,7 +1625,7 @@
             "hint": "Promień kuli opisanej na sześcianie to połowa przekątnej sześcianu."
           },
           {
-            "id": "t-dzial-11-12-3",
+            "id": "task-11-12-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1568,7 +1636,7 @@
             "hint": "Zastosuj twierdzenie Pitagorasa: r^2 + (H/2)^2 = R^2."
           },
           {
-            "id": "t-dzial-11-12-4",
+            "id": "task-11-12-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1585,7 +1653,7 @@
             "hint": "Objętość walca to pi * (a/2)^2 * a."
           },
           {
-            "id": "t-dzial-11-12-5",
+            "id": "task-11-12-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1602,7 +1670,7 @@
             "hint": "Promień walca to R, a jego wysokość to 2R."
           },
           {
-            "id": "t-dzial-11-12-6",
+            "id": "task-11-12-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1619,7 +1687,7 @@
             "hint": "R = 3, wstaw do wzoru 4/3 * pi * R^3."
           },
           {
-            "id": "t-dzial-11-12-7",
+            "id": "task-11-12-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1636,20 +1704,26 @@
             "hint": "Stosunek promieni to 1 / pierwiastek z 3. Podnieś go do sześcianu."
           },
           {
-            "id": "t-dzial-11-12-8",
+            "id": "task-11-12-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W kulę o promieniu $R = 5$ wpisano stożek, którego tworząca jest nachylona do podstawy pod kątem $45^\\circ$. Wykaż, że wysokość stożka wynosi $5$, i oblicz jego objętość.",
             "explanation": "Przekrój osiowy stożka jest trójkątem równoramiennym o kątach przy podstawie 45°, zatem kąt przy wierzchołku wynosi 180° - 45° - 45° = 90°. Jest to kąt wpisany w koło wielkie kuli oparty na średnicy, co oznacza, że podstawa stożka jest średnicą kuli (2r = 2R => r = R = 5), a wierzchołek stożka leży na biegunie kuli. Wysokość stożka jest równa promieniowi kuli: H = R = 5. Objętość stożka wynosi: V = 1/3 \\pi r^2 H = 1/3 * \\pi * 5^2 * 5 = 125\\pi / 3.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zauważenie, że przekrój osiowy stożka jest trójkątem prostokątnym wpisanym w koło wielkie (kąt rozwarcia 90°), więc podstawa stożka jest średnicą kuli 2r = 2R => r = 5 oraz H = 5. 1 pkt za obliczenie objętości stożka: V = 1/3 * \\pi * 5^2 * 5 = 125\\pi / 3.",
+            "scoring_key": [
+              "1 pkt za zauważenie, że przekrój osiowy stożka jest trójkątem prostokątnym wpisanym w koło wielkie (kąt rozwarcia 90°), więc podstawa stożka jest średnicą kuli 2r = 2R => r = 5 oraz H = 5.",
+              "1 pkt za obliczenie objętości stożka: V = 1/3 * \\pi * 5^2 * 5 = 125\\pi / 3."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-13",
+        "id": "lesson-11-13",
         "title": "Zadania praktyczne z geometrii przestrzennej",
         "theory_pill": {
           "concept_essence": "Zadania osadzone w kontekście realnym (zbiorniki na wodę, namioty, puszki, usypywanie piasku, pakowanie pudełek). Kluczem jest konwersja jednostek objętości: $1\\text{ dm}^3 = 1\\text{ litr}$, $1\\text{ m}^3 = 1000\\text{ litrów}$, $1\\text{ litr} = 1000\\text{ cm}^3$.",
@@ -1660,7 +1734,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-13-1",
+            "id": "task-11-13-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1677,7 +1751,7 @@
             "hint": "1 litr to 1 decymetr sześcienny (dm^3). Zamień centymetry na decymetry przed mnożeniem."
           },
           {
-            "id": "t-dzial-11-13-2",
+            "id": "task-11-13-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1694,7 +1768,7 @@
             "hint": "1 metr sześcienny to 1000 litrów."
           },
           {
-            "id": "t-dzial-11-13-3",
+            "id": "task-11-13-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1705,7 +1779,7 @@
             "hint": "20 cm to 2 dm. Podnieś 2 do potęgi trzeciej."
           },
           {
-            "id": "t-dzial-11-13-4",
+            "id": "task-11-13-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1722,7 +1796,7 @@
             "hint": "V = 1/3 * a^2 * H."
           },
           {
-            "id": "t-dzial-11-13-5",
+            "id": "task-11-13-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1739,7 +1813,7 @@
             "hint": "1 dm^3 to dokładnie 1 litr."
           },
           {
-            "id": "t-dzial-11-13-6",
+            "id": "task-11-13-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1756,7 +1830,7 @@
             "hint": "Oblicz całą objętość walca i pomnóż przez 3/4."
           },
           {
-            "id": "t-dzial-11-13-7",
+            "id": "task-11-13-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1773,20 +1847,26 @@
             "hint": "Objętość kamienia jest równa polu podstawy pomnożonemu przez przyrost wysokości wody."
           },
           {
-            "id": "t-dzial-11-13-8",
+            "id": "task-11-13-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Dół na wapno ma kształt prostopadłościanu o wymiarach podstawy $3$ m $\\times 2$ m i głębokości $1{,}5$ m. Ile kursów taczki o pojemności $75$ litrów należy wykonać, aby wywieźć całą ziemię z tego wykopu?",
             "explanation": "Obliczamy objętość wykopu: V = 3 * 2 * 1,5 = 9 m^3. Ponieważ 1 m^3 = 1000 litrów, objętość ziemi wynosi 9000 litrów. Pojemność jednej taczki to 75 litrów. Liczba kursów wynosi: n = 9000 / 75 = 120 kursów.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie objętości ziemi w metrach sześciennych i przeliczenie na litry: V = 3 * 2 * 1,5 = 9 m^3 = 9000 litrów. 1 pkt za obliczenie liczby kursów: 9000 / 75 = 120 kursów.",
+            "scoring_key": [
+              "1 pkt za obliczenie objętości ziemi w metrach sześciennych i przeliczenie na litry: V = 3 * 2 * 1,5 = 9 m^3 = 9000 litrów.",
+              "1 pkt za obliczenie liczby kursów: 9000 / 75 = 120 kursów."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-14",
+        "id": "lesson-11-14",
         "title": "Podobieństwo brył: Skala k, k^2 oraz k^3",
         "theory_pill": {
           "concept_essence": "Dla brył podobnych w skali $k$:\\n1. Wszystkie wymiary liniowe (krawędzie, wysokości, promienie, obwody) są w skali $k$;\\n2. Wszystkie pola powierzchni (podstawy, boczne, całkowite) są w skali $k^2$;\\n3. Objętości brył są w skali $k^3$! Jeśli powiększysz wymiary bryły $2$-krotnie, jej pole rośnie $4$-krotnie, a objętość i masa rosną aż $8$-krotnie!",
@@ -1797,7 +1877,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-14-1",
+            "id": "task-11-14-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1814,7 +1894,7 @@
             "hint": "Skala k = 3. Objętość rośnie w skali k^3 = 3^3."
           },
           {
-            "id": "t-dzial-11-14-2",
+            "id": "task-11-14-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1831,7 +1911,7 @@
             "hint": "Wyciągnij pierwiastek sześcienny z 1/64, a potem podnieś wynik do kwadratu."
           },
           {
-            "id": "t-dzial-11-14-3",
+            "id": "task-11-14-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1842,7 +1922,7 @@
             "hint": "Pomnóż 10 przez 2^3 = 8."
           },
           {
-            "id": "t-dzial-11-14-4",
+            "id": "task-11-14-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1859,7 +1939,7 @@
             "hint": "Skala liniowa wynosi k = 3. Objętość rośnie 3^3 razy."
           },
           {
-            "id": "t-dzial-11-14-5",
+            "id": "task-11-14-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1876,7 +1956,7 @@
             "hint": "4^3 = 64."
           },
           {
-            "id": "t-dzial-11-14-6",
+            "id": "task-11-14-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1893,7 +1973,7 @@
             "hint": "(1/2)^3 = 1/8."
           },
           {
-            "id": "t-dzial-11-14-7",
+            "id": "task-11-14-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1910,20 +1990,26 @@
             "hint": "Masa rośnie w skali 100^3 = 1 000 000. Przelicz gramy na tony."
           },
           {
-            "id": "t-dzial-11-14-8",
+            "id": "task-11-14-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Stożek przecięto płaszczyzną równoległą do podstawy przechodzącą przez środek wysokości stożka. Oblicz, jaką część objętości całego stożka stanowi odcięty mały stożek.",
             "explanation": "Płaszczyzna przechodzi przez środek wysokości stożka, więc wysokość odciętego górnego stożka wynosi H_1 = 1/2 H. Z twierdzenia o podobieństwie figur stożek odcięty jest podobny do całego stożka w skali k = 1/2. Stosunek objętości brył podobnych jest równy sześcianowi skali podobieństwa: V_1 / V = k^3 = (1/2)^3 = 1/8. Odcięty mały stożek stanowi 1/8 objętości całego stożka.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zauważenie, że odcięty stożek jest podobny do całego stożka w skali k = (1/2 H) / H = 1/2. 1 pkt za obliczenie stosunku objętości: V_mały / V_cały = k^3 = (1/2)^3 = 1/8 i sformułowanie odpowiedzi (stanowi 1/8 objętości).",
+            "scoring_key": [
+              "1 pkt za zauważenie, że odcięty stożek jest podobny do całego stożka w skali k = (1/2 H) / H = 1/2.",
+              "1 pkt za obliczenie stosunku objętości: V_mały / V_cały = k^3 = (1/2)^3 = 1/8 i sformułowanie odpowiedzi (stanowi 1/8 objętości)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-11-15",
+        "id": "lesson-11-15",
         "title": "Podsumowanie stereometrii: Strategie rozwiązywania zadań",
         "theory_pill": {
           "concept_essence": "Podsumowanie geometrii przestrzennej do matury: identyfikacja bryły (graniastosłup, ostrosłup, bryła obrotowa), sprowadzanie zadań przestrzennych do planimetrii poprzez przekroje osiowe i trójkąty prostokątne z twierdzeniem Pitagorasa lub funkcjami trygonometrycznymi.",
@@ -1934,7 +2020,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-11-15-1",
+            "id": "task-11-15-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1951,7 +2037,7 @@
             "hint": "V = 1/3 * P_p * H."
           },
           {
-            "id": "t-dzial-11-15-2",
+            "id": "task-11-15-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1968,7 +2054,7 @@
             "hint": "P_b = 2 * pi * r * H."
           },
           {
-            "id": "t-dzial-11-15-3",
+            "id": "task-11-15-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1979,7 +2065,7 @@
             "hint": "Krawędź sześcianu to 4. Podnieś 4 do potęgi 3."
           },
           {
-            "id": "t-dzial-11-15-4",
+            "id": "task-11-15-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1996,7 +2082,7 @@
             "hint": "Oblicz wysokość H = 8 z twierdzenia Pitagorasa, a potem V = 1/3 * pi * r^2 * H."
           },
           {
-            "id": "t-dzial-11-15-5",
+            "id": "task-11-15-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2013,7 +2099,7 @@
             "hint": "Przekrój przechodzi przez przekątną podstawy i wierzchołek ostrosłupa."
           },
           {
-            "id": "t-dzial-11-15-6",
+            "id": "task-11-15-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -2030,7 +2116,7 @@
             "hint": "Wyznacz R = 3 z objętości, a następnie oblicz pole 4*pi*R^2."
           },
           {
-            "id": "t-dzial-11-15-7",
+            "id": "task-11-15-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -2047,17 +2133,23 @@
             "hint": "Zastosuj wzór D^2 = a^2 + a^2 + H^2 = 2a^2 + H^2."
           },
           {
-            "id": "t-dzial-11-15-8",
+            "id": "task-11-15-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Wykaż, że objętość sześcianu o przekątnej $D$ wyraża się wzorem: $V = \\frac{D^3 \\sqrt{3}}{9}$.",
             "explanation": "Przekątna sześcianu o krawędzi a dana jest wzorem D = a\\sqrt{3}. Wyznaczamy krawędź a: a = D / \\sqrt{3}. Objętość sześcianu wynosi V = a^3. Podstawiamy: V = (D / \\sqrt{3})^3 = D^3 / (\\sqrt{3})^3 = D^3 / (3\\sqrt{3}). Usuwając niewymierność z mianownika przez pomnożenie licznika i mianownika przez \\sqrt{3}: V = (D^3 * \\sqrt{3}) / (3\\sqrt{3} * \\sqrt{3}) = (D^3 \\sqrt{3}) / (3 * 3) = \\frac{D^3 \\sqrt{3}}{9}, co kończy dowód.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie krawędzi sześcianu w zależności od przekątnej: D = a\\sqrt{3} => a = D / \\sqrt{3} = D\\sqrt{3} / 3. 1 pkt za podniesienie krawędzi do potęgi trzeciej: V = a^3 = (D\\sqrt{3} / 3)^3 = D^3 * 3\\sqrt{3} / 27 = D^3\\sqrt{3} / 9, co kończy dowód.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie krawędzi sześcianu w zależności od przekątnej: D = a\\sqrt{3} => a = D / \\sqrt{3} = D\\sqrt{3} / 3.",
+              "1 pkt za podniesienie krawędzi do potęgi trzeciej: V = a^3 = (D\\sqrt{3} / 3)^3 = D^3 * 3\\sqrt{3} / 27 = D^3\\sqrt{3} / 9, co kończy dowód."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       }
     ],
     "final_test": {

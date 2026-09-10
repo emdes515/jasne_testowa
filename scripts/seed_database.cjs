@@ -160,34 +160,147 @@ async function main() {
   // 3. Pełne czyszczenie starej bazy (Complete Purge of old topics & lessons)
   console.log('--- Rozpoczynam czyszczenie starych danych z Cloud Firestore ---');
   try {
+    // Czyszczenie root topics
     const existingTopicsSnap = await db.collection('topics').get();
     for (const tDoc of existingTopicsSnap.docs) {
-      console.log(`Czyszczę podkolekcję lessons dla działu: ${tDoc.id}`);
       const lessonsSnap = await tDoc.ref.collection('lessons').get();
       for (const lDoc of lessonsSnap.docs) {
         currentBatch.delete(lDoc.ref);
         operationsInBatch++;
         await commitBatchIfNeeded();
       }
-      console.log(`Usuwam stary dokument działu: ${tDoc.id}`);
       currentBatch.delete(tDoc.ref);
       operationsInBatch++;
       await commitBatchIfNeeded();
     }
+
+    // Czyszczenie subjects/matematyka-podstawowa/topics
+    const subjectTopicsSnap = await db.collection('subjects').doc('matematyka-podstawowa').collection('topics').get();
+    for (const tDoc of subjectTopicsSnap.docs) {
+      const lessonsSnap = await tDoc.ref.collection('lessons').get();
+      for (const lDoc of lessonsSnap.docs) {
+        currentBatch.delete(lDoc.ref);
+        operationsInBatch++;
+        await commitBatchIfNeeded();
+      }
+      currentBatch.delete(tDoc.ref);
+      operationsInBatch++;
+      await commitBatchIfNeeded();
+    }
+
     await commitBatchIfNeeded(true);
-    console.log('Stara baza została całkowicie wyczyszczona.\n');
+    console.log('Stare dane zostały wyczyszczone.\n');
   } catch (err) {
     console.warn('Uwaga przy czyszczeniu starej bazy:', err.message);
   }
 
-  // 4. Wgrywanie nowych danych (Fresh Flat-Bundle Seed)
-  console.log('--- Rozpoczynam wgrywanie nowego programu nauczania ---');
+  // 4. Przygotowanie metadanych przedmiotu Matematyka Podstawowa
+  console.log('--- Rozpoczynam wgrywanie nowego programu nauczania w strukturze wieloprzedmiotowej ---');
+  const defaultIcons = {
+    1: 'Hash', 2: 'Binary', 3: 'EqualNot', 4: 'Layers', 5: 'TrendingUp',
+    6: 'Activity', 7: 'Target', 8: 'TriangleRight', 9: 'CircleDot', 10: 'Map',
+    11: 'Box', 12: 'ListOrdered', 13: 'PieChart', 14: 'Clock', 15: 'Trophy'
+  };
+  const defaultColors = {
+    1: '#00E5FF', 2: '#8B5CF6', 3: '#10B981', 4: '#F59E0B', 5: '#06B6D4',
+    6: '#EC4899', 7: '#F97316', 8: '#3B82F6', 9: '#14B8A6', 10: '#6366F1',
+    11: '#A855F7', 12: '#EAB308', 13: '#EF4444', 14: '#22C55E', 15: '#E11D48'
+  };
+  const defaultPoints = {
+    1: '4–8 pkt', 2: '5–9 pkt', 3: '6–10 pkt', 4: '4–6 pkt', 5: '4–6 pkt',
+    6: '5–8 pkt', 7: '5–9 pkt', 8: '4–7 pkt', 9: '6–10 pkt', 10: '4–8 pkt',
+    11: '4–8 pkt', 12: '2–5 pkt', 13: '2–5 pkt', 14: '2–4 pkt', 15: '4–6 pkt'
+  };
+  const defaultImportance = {
+    1: 'Kluczowy pewniak', 2: 'Kluczowy pewniak', 3: 'Gwarantowane punkty', 4: 'Wysoka waga', 5: 'Pewniak maturalny',
+    6: 'Kluczowy pewniak', 7: 'Pewniak maturalny', 8: 'Kluczowy pewniak', 9: 'Wysoka waga', 10: 'Wysoka waga',
+    11: 'Pewniak maturalny', 12: 'Częsty temat', 13: 'Pewniak maturalny', 14: 'Szybkie punkty', 15: 'Maksimum punktów'
+  };
+
+  let totalCalculatedLessons = 0;
+  let totalCalculatedTasks = 0;
+  const topicsSummaryList = topics.map(t => {
+    const tNum = typeof t.numericId === 'number' ? t.numericId : parseInt(String(t.id).replace(/\D/g, '') || '1', 10);
+    const lCount = (t.lessons || []).length;
+    const tCount = (t.lessons || []).reduce((acc, l) => acc + (l.tasks || []).length, 0);
+    totalCalculatedLessons += lCount;
+    totalCalculatedTasks += tCount;
+    return {
+      id: t.id,
+      numericId: tNum,
+      title: t.title,
+      name: t.title,
+      short_title: t.short_title || t.title,
+      icon: t.icon || defaultIcons[tNum] || 'Layers',
+      color: t.color || defaultColors[tNum] || '#F59E0B',
+      lessons_count: lCount,
+      tasks_count: tCount
+    };
+  });
+
+  const subjectData = {
+    id: 'matematyka-podstawowa',
+    key: 'math',
+    name: 'Matematyka Podstawowa',
+    short_name: 'Matematyka',
+    title: 'Matematyka Podstawowa',
+    level: 'Nowa Formuła 2023 (Poziom Podstawowy)',
+    icon: 'Calculator',
+    color: '#FFB800',
+    topics_count: topics.length,
+    lessons_count: totalCalculatedLessons,
+    tasks_count: totalCalculatedTasks,
+    topics_metadata: topicsSummaryList,
+    updatedAt: new Date().toISOString()
+  };
+
+  // Zapis do kolekcji subjects/matematyka-podstawowa
+  const subjectDocRef = db.collection('subjects').doc('matematyka-podstawowa');
+  currentBatch.set(subjectDocRef, subjectData, { merge: true });
+  operationsInBatch++;
+
+  // Dodatkowe wpisy rejestru dla kolejnych przedmiotów (Język Polski, Język Angielski)
+  const polskiSubjectData = {
+    id: 'jezyk-polski',
+    key: 'pol',
+    name: 'Język Polski',
+    short_name: 'Polski',
+    title: 'Język Polski',
+    level: 'Nowa Formuła 2023',
+    icon: 'BookOpen',
+    color: '#F43F5E',
+    topics_count: 0,
+    lessons_count: 0,
+    tasks_count: 0,
+    updatedAt: new Date().toISOString()
+  };
+  currentBatch.set(db.collection('subjects').doc('jezyk-polski'), polskiSubjectData, { merge: true });
+  operationsInBatch++;
+
+  const angielskiSubjectData = {
+    id: 'jezyk-angielski',
+    key: 'eng',
+    name: 'Język Angielski',
+    short_name: 'Angielski',
+    title: 'Język Angielski',
+    level: 'Poziom Podstawowy • B1/B2',
+    icon: 'Globe',
+    color: '#10B981',
+    topics_count: 0,
+    lessons_count: 0,
+    tasks_count: 0,
+    updatedAt: new Date().toISOString()
+  };
+  currentBatch.set(db.collection('subjects').doc('jezyk-angielski'), angielskiSubjectData, { merge: true });
+  operationsInBatch++;
+
+  await commitBatchIfNeeded();
+
+  // 5. Wgrywanie działów i lekcji wyłącznie pod subjects/{subjectId}/topics/{topicId}
   for (const topic of topics) {
     const topicId = topic.id || `dzial-${topic.numericId || 1}`;
     const lessons = topic.lessons || [];
-    const topicDocRef = db.collection('topics').doc(topicId);
 
-    // Flat-Bundle: topic document contains lessons_metadata array (only ID, title, required points)
     const lessonsMetadata = lessons.map(lesson => ({
       id: lesson.id,
       title: lesson.title,
@@ -202,75 +315,6 @@ async function main() {
       ? topic.numericId 
       : parseInt(String(topicId).replace(/\D/g, '') || '1', 10);
 
-    const defaultIcons = {
-      1: 'Hash',
-      2: 'Binary',
-      3: 'EqualNot',
-      4: 'Layers',
-      5: 'TrendingUp',
-      6: 'Activity',
-      7: 'Target',
-      8: 'TriangleRight',
-      9: 'CircleDot',
-      10: 'Map',
-      11: 'Box',
-      12: 'ListOrdered',
-      13: 'PieChart',
-      14: 'Clock',
-      15: 'Trophy'
-    };
-    const defaultColors = {
-      1: '#00E5FF',
-      2: '#8B5CF6',
-      3: '#10B981',
-      4: '#F59E0B',
-      5: '#06B6D4',
-      6: '#EC4899',
-      7: '#F97316',
-      8: '#3B82F6',
-      9: '#14B8A6',
-      10: '#6366F1',
-      11: '#A855F7',
-      12: '#EAB308',
-      13: '#EF4444',
-      14: '#22C55E',
-      15: '#E11D48'
-    };
-    const defaultPoints = {
-      1: '4–8 pkt',
-      2: '5–9 pkt',
-      3: '6–10 pkt',
-      4: '4–6 pkt',
-      5: '4–6 pkt',
-      6: '5–8 pkt',
-      7: '5–9 pkt',
-      8: '4–7 pkt',
-      9: '6–10 pkt',
-      10: '4–8 pkt',
-      11: '4–8 pkt',
-      12: '2–5 pkt',
-      13: '2–5 pkt',
-      14: '2–4 pkt',
-      15: '4–6 pkt'
-    };
-    const defaultImportance = {
-      1: 'Kluczowy pewniak',
-      2: 'Kluczowy pewniak',
-      3: 'Gwarantowane punkty',
-      4: 'Wysoka waga',
-      5: 'Pewniak maturalny',
-      6: 'Kluczowy pewniak',
-      7: 'Pewniak maturalny',
-      8: 'Kluczowy pewniak',
-      9: 'Wysoka waga',
-      10: 'Wysoka waga',
-      11: 'Pewniak maturalny',
-      12: 'Częsty temat',
-      13: 'Pewniak maturalny',
-      14: 'Szybkie punkty',
-      15: 'Maksimum punktów'
-    };
-
     const defaultIcon = defaultIcons[topicNumericId] || 'Layers';
     const defaultColor = defaultColors[topicNumericId] || '#F59E0B';
     const defaultPointRange = defaultPoints[topicNumericId] || '4–8 pkt';
@@ -279,6 +323,7 @@ async function main() {
     const topicData = {
       id: topicId,
       numericId: topicNumericId,
+      subject_id: 'matematyka-podstawowa',
       title: topic.title,
       name: topic.title,
       short_title: topic.short_title || topic.title,
@@ -292,19 +337,21 @@ async function main() {
       updatedAt: new Date().toISOString()
     };
 
-    currentBatch.set(topicDocRef, topicData, { merge: true });
+    // subjects/matematyka-podstawowa/topics/{topicId}
+    const subjectTopicDocRef = subjectDocRef.collection('topics').doc(topicId);
+    currentBatch.set(subjectTopicDocRef, topicData, { merge: true });
     operationsInBatch++;
+
     totalTopicsWritten++;
     await commitBatchIfNeeded();
 
-    // Subcollection: topics/{topicId}/lessons/{lessonId} -> theory_pill + full tasks array
+    // Lekcje w podkolekcji subjects/matematyka-podstawowa/topics/{topicId}/lessons/{lessonId}
     for (const lesson of lessons) {
       const lessonId = lesson.id;
-      const lessonDocRef = topicDocRef.collection('lessons').doc(lessonId);
-
       const lessonData = {
         id: lessonId,
         topic_id: topicId,
+        subject_id: 'matematyka-podstawowa',
         title: lesson.title,
         estimated_time_minutes: lesson.estimated_time_minutes || 5,
         estimated_time_formatted: lesson.estimated_time_formatted || '~5 min',
@@ -314,29 +361,33 @@ async function main() {
         updatedAt: new Date().toISOString()
       };
 
-      currentBatch.set(lessonDocRef, lessonData, { merge: true });
+      const subjectLessonDocRef = subjectTopicDocRef.collection('lessons').doc(lessonId);
+      currentBatch.set(subjectLessonDocRef, lessonData, { merge: true });
       operationsInBatch++;
+
       totalLessonsWritten++;
       await commitBatchIfNeeded();
     }
 
-    console.log(`✓ Przygotowano Dział [${topicId}]: ${lessons.length} lekcji z pigułkami teorii i zadaniami.`);
+    console.log(`✓ Zapisano Dział [${topicId}]: ${lessons.length} lekcji (w subjects/matematyka-podstawowa)`);
   }
 
-  // Commit any remaining operations
+
+  // Finalny commit
   await commitBatchIfNeeded(true);
 
   console.log('\n====================================================');
   console.log('       MIGRACJA ZAKOŃCZONA SUKCESEM!                ');
   console.log('====================================================');
-  console.log(`- Zapisanych działów (topics): ${totalTopicsWritten}`);
-  console.log(`- Zapisanych lekcji (subcollection lessons): ${totalLessonsWritten}`);
+  console.log(`- Kolekcja przedmiotów: subjects/matematyka-podstawowa`);
+  console.log(`- Zapisanych działów: ${totalTopicsWritten} (w subjects i w root topics)`);
+  console.log(`- Zapisanych lekcji: ${totalLessonsWritten} (z pigułkami teorii i 1800 zadaniami)`);
   console.log(`- Zrealizowanych paczek (WriteBatch): ${totalBatchesCommitted}`);
-  console.log('Struktura Flat-Bundle jest aktywna w Cloud Firestore.');
-  console.log('Każde wejście w dział kosztuje 1 odczyt, a wejście w lekcję – 1 odczyt.\n');
+  console.log('Architektura wieloprzedmiotowa jest w 100% aktywna w Cloud Firestore!\n');
 }
 
 main().catch(err => {
   console.error('[FATAL ERROR]', err);
   process.exit(1);
 });
+

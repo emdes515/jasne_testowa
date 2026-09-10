@@ -22,30 +22,75 @@ import { db } from '../firebase';
 import { 
   TopicDocument, 
   LessonDocument, 
-  UserTopicProgressDocument 
+  UserTopicProgressDocument,
+  SubjectDocument
 } from '../schema_firestore';
 import { normalizeTask } from '../data/mathTasks';
 
+export const DEFAULT_SUBJECT_ID = 'matematyka-podstawowa';
+
 // In-Memory Caches for zero unnecessary reads within the app session
-let topicsCache: TopicDocument[] | null = null;
+let subjectsCache: SubjectDocument[] | null = null;
+const topicsBySubjectCache = new Map<string, TopicDocument[]>();
 const topicByIdCache = new Map<string, TopicDocument>();
 const lessonCache = new Map<string, LessonDocument>();
 const userTopicProgressCache = new Map<string, UserTopicProgressDocument>();
 
 export const curriculumRepository = {
   /**
-   * Fetches all topic cards (metadata + lessons_metadata).
-   * Reads from in-memory cache first, then Firestore persistent cache / network.
+   * Fetches all registered subjects (e.g. Matematyka Podstawowa, Język Polski, etc.).
    */
-  async getTopics(): Promise<TopicDocument[]> {
-    if (topicsCache && topicsCache.length > 0) {
-      return topicsCache;
+  async getSubjects(): Promise<SubjectDocument[]> {
+    if (subjectsCache && subjectsCache.length > 0) {
+      return subjectsCache;
     }
 
     try {
-      const topicsColRef = collection(db, 'topics');
-      const q = query(topicsColRef);
-      const snapshot = await getDocs(q);
+      const subjectsColRef = collection(db, 'subjects');
+      const snap = await getDocs(query(subjectsColRef));
+      if (!snap.empty) {
+        const list: SubjectDocument[] = [];
+        snap.forEach(d => {
+          list.push({ ...d.data(), id: d.id } as SubjectDocument);
+        });
+        subjectsCache = list;
+        return list;
+      }
+    } catch (err) {
+      console.warn('[curriculumRepository] Failed to fetch subjects from Firestore:', err);
+    }
+
+    return subjectsCache || [];
+  },
+
+  /**
+   * Fetches a single subject metadata document: subjects/{subjectId}.
+   */
+  async getSubject(subjectId: string = DEFAULT_SUBJECT_ID): Promise<SubjectDocument | null> {
+    const subjects = await this.getSubjects();
+    return subjects.find(s => s.id === subjectId || s.key === subjectId) || null;
+  },
+
+  /**
+   * Fetches all topic cards (metadata + lessons_metadata) for a subject.
+   * Checks subjects/{subjectId}/topics first, then falls back to /topics.
+   * Reads from in-memory cache first, then Firestore persistent cache / network.
+   */
+  async getTopics(subjectId: string = DEFAULT_SUBJECT_ID): Promise<TopicDocument[]> {
+    if (topicsBySubjectCache.has(subjectId)) {
+      return topicsBySubjectCache.get(subjectId)!;
+    }
+
+    try {
+      // 1. Sprawdź nową hierarchię wieloprzedmiotową: subjects/{subjectId}/topics
+      const subjectTopicsColRef = collection(db, 'subjects', subjectId, 'topics');
+      let snapshot = await getDocs(query(subjectTopicsColRef));
+
+      // 2. Fallback do root /topics jeśli hierarchia subjectu jest pusta
+      if (snapshot.empty) {
+        const rootTopicsColRef = collection(db, 'topics');
+        snapshot = await getDocs(query(rootTopicsColRef));
+      }
 
       if (!snapshot.empty) {
         const topicsList: TopicDocument[] = [];
@@ -61,32 +106,45 @@ export const curriculumRepository = {
             lessons_metadata: data.lessons_metadata || []
           };
           topicsList.push(topicDoc);
-          topicByIdCache.set(topicDoc.id, topicDoc);
+          topicByIdCache.set(`${subjectId}/${topicDoc.id}`, topicDoc);
+          topicByIdCache.set(topicDoc.id, topicDoc); // fallback alias
         });
 
         topicsList.sort((a, b) => (a.numericId || 0) - (b.numericId || 0));
-        topicsCache = topicsList;
+        topicsBySubjectCache.set(subjectId, topicsList);
         return topicsList;
       }
     } catch (err) {
-      console.warn('[curriculumRepository] Failed to fetch topics from Firestore:', err);
+      console.warn(`[curriculumRepository] Failed to fetch topics for subject ${subjectId}:`, err);
     }
 
-    return topicsCache || [];
+    return topicsBySubjectCache.get(subjectId) || [];
   },
 
   /**
-   * Fetches a single topic document: topics/{topic_id}.
+   * Fetches a single topic document: subjects/{subjectId}/topics/{topicId} or topics/{topicId}.
    * Exactly 1 document read.
    */
-  async getTopic(topicId: string): Promise<TopicDocument | null> {
+  async getTopic(topicId: string, subjectId: string = DEFAULT_SUBJECT_ID): Promise<TopicDocument | null> {
+    const cacheKey = `${subjectId}/${topicId}`;
+    if (topicByIdCache.has(cacheKey)) {
+      return topicByIdCache.get(cacheKey)!;
+    }
     if (topicByIdCache.has(topicId)) {
       return topicByIdCache.get(topicId)!;
     }
 
     try {
-      const topicRef = doc(db, 'topics', topicId);
-      const snap = await getDoc(topicRef);
+      // 1. Sprawdź subjects/{subjectId}/topics/{topicId}
+      let topicRef = doc(db, 'subjects', subjectId, 'topics', topicId);
+      let snap = await getDoc(topicRef);
+
+      // 2. Fallback do topics/{topicId}
+      if (!snap.exists()) {
+        topicRef = doc(db, 'topics', topicId);
+        snap = await getDoc(topicRef);
+      }
+
       if (snap.exists()) {
         const data = snap.data() as TopicDocument;
         const topicDoc: TopicDocument = {
@@ -97,6 +155,7 @@ export const curriculumRepository = {
           numericId: data.numericId || parseInt(snap.id.replace(/\D/g, '') || '1', 10),
           lessons_metadata: data.lessons_metadata || []
         };
+        topicByIdCache.set(cacheKey, topicDoc);
         topicByIdCache.set(topicId, topicDoc);
         return topicDoc;
       }
@@ -108,19 +167,32 @@ export const curriculumRepository = {
   },
 
   /**
-   * Fetches full lesson document: topics/{topic_id}/lessons/{lesson_id}.
+   * Fetches full lesson document:
+   * subjects/{subjectId}/topics/{topicId}/lessons/{lessonId} or topics/{topicId}/lessons/{lessonId}.
    * Contains theory_pill and full tasks array.
    * Exactly 1 document read. Cached in-memory afterwards (0 reads on revisit).
    */
-  async getLesson(topicId: string, lessonId: string): Promise<LessonDocument | null> {
-    const cacheKey = `${topicId}/${lessonId}`;
+  async getLesson(topicId: string, lessonId: string, subjectId: string = DEFAULT_SUBJECT_ID): Promise<LessonDocument | null> {
+    const cacheKey = `${subjectId}/${topicId}/${lessonId}`;
+    const fallbackCacheKey = `${topicId}/${lessonId}`;
+
     if (lessonCache.has(cacheKey)) {
       return lessonCache.get(cacheKey)!;
     }
+    if (lessonCache.has(fallbackCacheKey)) {
+      return lessonCache.get(fallbackCacheKey)!;
+    }
 
     try {
-      const lessonRef = doc(db, 'topics', topicId, 'lessons', lessonId);
-      const snap = await getDoc(lessonRef);
+      // 1. Sprawdź subjects/{subjectId}/topics/{topicId}/lessons/{lessonId}
+      let lessonRef = doc(db, 'subjects', subjectId, 'topics', topicId, 'lessons', lessonId);
+      let snap = await getDoc(lessonRef);
+
+      // 2. Fallback do topics/{topicId}/lessons/{lessonId}
+      if (!snap.exists()) {
+        lessonRef = doc(db, 'topics', topicId, 'lessons', lessonId);
+        snap = await getDoc(lessonRef);
+      }
 
       if (snap.exists()) {
         const data = snap.data() as LessonDocument;
@@ -139,6 +211,7 @@ export const curriculumRepository = {
         };
 
         lessonCache.set(cacheKey, lessonDoc);
+        lessonCache.set(fallbackCacheKey, lessonDoc);
         return lessonDoc;
       }
     } catch (err) {
@@ -237,9 +310,11 @@ export const curriculumRepository = {
    * Clears in-memory caches if manual refresh is requested.
    */
   clearCache(): void {
-    topicsCache = null;
+    subjectsCache = null;
+    topicsBySubjectCache.clear();
     topicByIdCache.clear();
     lessonCache.clear();
     userTopicProgressCache.clear();
   }
 };
+

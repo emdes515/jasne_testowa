@@ -5,7 +5,7 @@
     "description": "Kompletny program przygotowawczy z planimetrii do matury: kąty, trójkąty, czworokąty, okręgi i koła, podobieństwo, pole i obwody, dowody geometryczne.",
     "lessons": [
       {
-        "id": "l-dzial-9-1",
+        "id": "lesson-9-1",
         "title": "Kąty na płaszczyźnie: Przyległe, wierzchołkowe i naprzemianległe",
         "theory_pill": {
           "concept_essence": "Dwie przecinające się proste tworzą kąty wierzchołkowe (o równych miarach) oraz kąty przyległe (których suma wynosi $180^\\circ$). Gdy dwie proste równoległe przetniemy trzecią prostą, otrzymujemy pary kątów odpowiadających i naprzemianległych o równych miarach.",
@@ -16,7 +16,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-1-1",
+            "id": "task-9-1-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -33,7 +33,7 @@
             "hint": "Suma kątów przyległych wynosi 180°, a ich różnica to 40°."
           },
           {
-            "id": "t-dzial-9-1-2",
+            "id": "task-9-1-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -50,7 +50,7 @@
             "hint": "Kąty odpowiadające przy prostych równoległych są równe."
           },
           {
-            "id": "t-dzial-9-1-3",
+            "id": "task-9-1-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -61,7 +61,7 @@
             "hint": "Zapisz sumę x + 4x = 180°."
           },
           {
-            "id": "t-dzial-9-1-4",
+            "id": "task-9-1-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -78,7 +78,7 @@
             "hint": "Przyrównaj do siebie wyrażenia opisujące kąty wierzchołkowe."
           },
           {
-            "id": "t-dzial-9-1-5",
+            "id": "task-9-1-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -95,7 +95,7 @@
             "hint": "Gdy jeden kąt przecięcia wynosi 90°, to 180° - 90° = 90°."
           },
           {
-            "id": "t-dzial-9-1-6",
+            "id": "task-9-1-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -112,7 +112,7 @@
             "hint": "Jeden z nich jest ostry, a drugi rozwarty, tworząc razem kąt półpełny 180°."
           },
           {
-            "id": "t-dzial-9-1-7",
+            "id": "task-9-1-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -129,20 +129,26 @@
             "hint": "Ułóż równanie: alpha + (alpha + 50°) = 180°."
           },
           {
-            "id": "t-dzial-9-1-8",
+            "id": "task-9-1-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Dwie proste przecinają się w punkcie $O$, tworząc cztery kąty. Suma miar trzech z tych kątów jest równa $290^\\circ$. Oblicz miary wszystkich czterech kątów.",
             "explanation": "Suma czterech kątów wokół punktu O wynosi 360°. Czwarty kąt ma miarę: 360° - 290° = 70°. Kąt wierzchołkowy do niego ma również miarę 70°. Dwa pozostałe kąty są przyległe do kąta 70°, więc każdy z nich ma miarę: 180° - 70° = 110°. Kąty mają miary: 70°, 110°, 70°, 110°.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zauważenie, że suma wszystkich czterech kątów wynosi 360°, i obliczenie czwartego kąta: 360° - 290° = 70°. 1 pkt za wyznaczenie pozostałych kątów: kąt wierzchołkowy wynosi 70°, a dwa kąty przyległe wynoszą po 180° - 70° = 110°.",
+            "scoring_key": [
+              "1 pkt za zauważenie, że suma wszystkich czterech kątów wynosi 360°, i obliczenie czwartego kąta: 360° - 290° = 70°.",
+              "1 pkt za wyznaczenie pozostałych kątów: kąt wierzchołkowy wynosi 70°, a dwa kąty przyległe wynoszą po 180° - 70° = 110°."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-2",
+        "id": "lesson-9-2",
         "title": "Trójkąty 1: Suma kątów, nierówność trójkąta i klasyfikacja",
         "theory_pill": {
           "concept_essence": "Suma miar kątów w każdym trójkącie wynosi $180^\\circ$. Nierówność trójkąta mówi, że suma długości dowolnych dwóch boków musi być ściśle większa od długości trzeciego boku: $a + b > c$ (wystarczy sprawdzić, czy suma dwóch najkrótszych boków jest większa od najdłuższego).",
@@ -153,7 +159,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-2-1",
+            "id": "task-9-2-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -170,7 +176,7 @@
             "hint": "Suma dwóch krótszych boków musi być większa od najdłuższego boku."
           },
           {
-            "id": "t-dzial-9-2-2",
+            "id": "task-9-2-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -187,7 +193,7 @@
             "hint": "Odejmij 40° od 180° i podziel wynik na dwa równe kąty."
           },
           {
-            "id": "t-dzial-9-2-3",
+            "id": "task-9-2-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -198,7 +204,7 @@
             "hint": "Podziel 180° przez 10 równych części."
           },
           {
-            "id": "t-dzial-9-2-4",
+            "id": "task-9-2-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -215,7 +221,7 @@
             "hint": "Długość trzeciego boku musi być większa od różnicy 9 - 5 = 4 i mniejsza od sumy 9 + 5 = 14."
           },
           {
-            "id": "t-dzial-9-2-5",
+            "id": "task-9-2-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -232,7 +238,7 @@
             "hint": "Oblicz trzeci kąt odejmując od 180° sumę dwóch pozostałych."
           },
           {
-            "id": "t-dzial-9-2-6",
+            "id": "task-9-2-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -249,7 +255,7 @@
             "hint": "Miara kąta zewnętrznego jest równa sumie dwóch kątów wewnętrznych do niego nieprzyległych."
           },
           {
-            "id": "t-dzial-9-2-7",
+            "id": "task-9-2-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -266,20 +272,26 @@
             "hint": "Sprawdź, czy 5^2 + 12^2 = 13^2."
           },
           {
-            "id": "t-dzial-9-2-8",
+            "id": "task-9-2-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W trójkącie $ABC$ poprowadzono dwusieczną kąta $ACB$, która przecięła bok $AB$ w punkcie $D$. Wykaż, że jeśli $|AC| = |BC|$, to odcinek $CD$ jest prostopadły do boku $AB$.",
             "explanation": "W trójkącie ABC o |AC| = |BC| odcinek CD jest dwusieczną, więc kąt ACD = kąt BCD. Trójkąty ACD i BCD mają dwa równe boki (|AC|=|BC| oraz wspólny bok CD) i równy kąt między nimi, zatem na mocy cechy BKB są przystające. Stąd wynika, że kąt ADC = kąt BDC. Ponieważ kąty te tworzą kąt półpełny (są przyległe): kąt ADC + kąt BDC = 180°, więc 2 * kąt ADC = 180° => kąt ADC = 90°. To oznacza, że odcinek CD jest prostopadły do boku AB, co kończy dowód.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zauważenie, że w trójkącie równoramiennym dwusieczna kąta między ramionami dzieli trójkąt na dwa trójkąty przystające: ACD i BCD (cecha BKB: |AC|=|BC|, kąty ACD=BCD, wspólny bok CD). 1 pkt za wywnioskowanie, że kąty CDA i CDB są równe i przyległe, więc każdy ma miarę 90°, co dowodzi, że CD prostopadłe do AB.",
+            "scoring_key": [
+              "1 pkt za zauważenie, że w trójkącie równoramiennym dwusieczna kąta między ramionami dzieli trójkąt na dwa trójkąty przystające: ACD i BCD (cecha BKB: |AC|=|BC|, kąty ACD=BCD, wspólny bok CD).",
+              "1 pkt za wywnioskowanie, że kąty CDA i CDB są równe i przyległe, więc każdy ma miarę 90°, co dowodzi, że CD prostopadłe do AB."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-3",
+        "id": "lesson-9-3",
         "title": "Trójkąty 2: Twierdzenie Pitagorasa i trójki pitagorejskie",
         "theory_pill": {
           "concept_essence": "W trójkącie prostokątnym suma kwadratów przyprostokątnych jest równa kwadratowi przeciwprostokątnej: $a^2 + b^2 = c^2$. Popularne trójki pitagorejskie, które warto znać na pamięć: $(3, 4, 5)$, $(5, 12, 13)$, $(8, 15, 17)$, $(7, 24, 25)$ oraz ich wielokrotności (np. $6, 8, 10$).",
@@ -290,7 +302,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-3-1",
+            "id": "task-9-3-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -307,7 +319,7 @@
             "hint": "Odejmij 7^2 od 25^2 i wyciągnij pierwiastek."
           },
           {
-            "id": "t-dzial-9-3-2",
+            "id": "task-9-3-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -324,7 +336,7 @@
             "hint": "(2 pierwiastki z 3)^2 = 12. Dodaj 4 i spierwiastkuj."
           },
           {
-            "id": "t-dzial-9-3-3",
+            "id": "task-9-3-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -335,7 +347,7 @@
             "hint": "Oblicz przeciwprostokątną z Pitagorasa, a potem zsumuj wszystkie trzy boki."
           },
           {
-            "id": "t-dzial-9-3-4",
+            "id": "task-9-3-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -352,7 +364,7 @@
             "hint": "Połowa podstawy to 5, więc cała podstawa wynosi 2 * 5."
           },
           {
-            "id": "t-dzial-9-3-5",
+            "id": "task-9-3-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -369,7 +381,7 @@
             "hint": "Przyprostokątne to 6 i 8, przeciwprostokątna to 10."
           },
           {
-            "id": "t-dzial-9-3-6",
+            "id": "task-9-3-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -386,7 +398,7 @@
             "hint": "Przekątna prostokąta to przeciwprostokątna trójkąta: d^2 = 8^2 + 15^2."
           },
           {
-            "id": "t-dzial-9-3-7",
+            "id": "task-9-3-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -403,20 +415,26 @@
             "hint": "Promień poprowadzony do punktu styczności jest prostopadły do stycznej."
           },
           {
-            "id": "t-dzial-9-3-8",
+            "id": "task-9-3-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W trójkącie prostokątnym wysokość poprowadzona z wierzchołka kąta prostego dzieli przeciwprostokątną na odcinki o długościach $4$ i $9$. Oblicz tę wysokość oraz pole trójkąta.",
             "explanation": "Z twierdzenia o wysokości w trójkącie prostokątnym: h^2 = 4 * 9 = 36, stąd h = 6. Przeciwprostokątna trójkąta ma długość c = 4 + 9 = 13. Pole trójkąta wynosi: P = 1/2 * c * h = 1/2 * 13 * 6 = 39.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie wysokości ze związku h^2 = x * y: h = \\sqrt{4 * 9} = \\sqrt{36} = 6. 1 pkt za wyznaczenie długości całej przeciwprostokątnej c = 4 + 9 = 13 i obliczenie pola trójkąta: P = 1/2 * 13 * 6 = 39.",
+            "scoring_key": [
+              "1 pkt za obliczenie wysokości ze związku h^2 = x * y: h = \\sqrt{4 * 9} = \\sqrt{36} = 6.",
+              "1 pkt za wyznaczenie długości całej przeciwprostokątnej c = 4 + 9 = 13 i obliczenie pola trójkąta: P = 1/2 * 13 * 6 = 39."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-4",
+        "id": "lesson-9-4",
         "title": "Trójkąt równoboczny: Wysokość, pole i promienie okręgów",
         "theory_pill": {
           "concept_essence": "Trójkąt równoboczny o boku $a$ ma wszystkie kąty równe $60^\\circ$. Kluczowe wzory: wysokość $h = \\frac{a\\sqrt{3}}{2}$, pole $P = \\frac{a^2\\sqrt{3}}{4}$. Środek ciężkości dzieli wysokość w stosunku $2:1$, co daje promień okręgu opisanego $R = \\frac{2}{3}h = \\frac{a\\sqrt{3}}{3}$ oraz promień okręgu wpisanego $r = \\frac{1}{3}h = \\frac{a\\sqrt{3}}{6}$.",
@@ -427,7 +445,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-4-1",
+            "id": "task-9-4-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -444,7 +462,7 @@
             "hint": "Przyrównaj 6 pierwiastków z 3 do wzoru a pierwiastków z 3 przez 2."
           },
           {
-            "id": "t-dzial-9-4-2",
+            "id": "task-9-4-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -461,7 +479,7 @@
             "hint": "Wyznacz najpierw bok a z równania pola, a potem pomnóż przez 3."
           },
           {
-            "id": "t-dzial-9-4-3",
+            "id": "task-9-4-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -472,7 +490,7 @@
             "hint": "Promień R to 2/3 wysokości, czyli a pierwiastków z 3 przez 3."
           },
           {
-            "id": "t-dzial-9-4-4",
+            "id": "task-9-4-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -489,7 +507,7 @@
             "hint": "Wysokość trójkąta równobocznego jest 3 razy większa od promienia okręgu wpisanego."
           },
           {
-            "id": "t-dzial-9-4-5",
+            "id": "task-9-4-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -506,7 +524,7 @@
             "hint": "Środek okręgów dzieli wysokość w stosunku 2:1."
           },
           {
-            "id": "t-dzial-9-4-6",
+            "id": "task-9-4-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -523,7 +541,7 @@
             "hint": "Pole powierzchni zależy od kwadratu skali podobieństwa: 2^2 = 4."
           },
           {
-            "id": "t-dzial-9-4-7",
+            "id": "task-9-4-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -540,20 +558,26 @@
             "hint": "Oblicz promień R = 2 pierwiastki z 3 i wstaw do wzoru pi * R^2."
           },
           {
-            "id": "t-dzial-9-4-8",
+            "id": "task-9-4-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Promień okręgu wpisanego w trójkąt równoboczny jest równy $r = \\sqrt{3}$. Oblicz pole i obwód tego trójkąta.",
             "explanation": "Z własności trójkąta równobocznego r = h/3, stąd h = 3r = 3\\sqrt{3}. Ze wzoru na wysokość: h = a\\sqrt{3}/2 => 3\\sqrt{3} = a\\sqrt{3}/2 => a = 6. Obwód wynosi: Obw = 3 * 6 = 18. Pole wynosi: P = a^2\\sqrt{3}/4 = 36\\sqrt{3}/4 = 9\\sqrt{3}.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie wysokości h = 3r = 3\\sqrt{3} i boku trójkąta: a\\sqrt{3}/2 = 3\\sqrt{3} => a = 6. 1 pkt za obliczenie pola P = 6^2\\sqrt{3}/4 = 9\\sqrt{3} oraz obwodu Obw = 3 * 6 = 18.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie wysokości h = 3r = 3\\sqrt{3} i boku trójkąta: a\\sqrt{3}/2 = 3\\sqrt{3} => a = 6.",
+              "1 pkt za obliczenie pola P = 6^2\\sqrt{3}/4 = 9\\sqrt{3} oraz obwodu Obw = 3 * 6 = 18."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-5",
+        "id": "lesson-9-5",
         "title": "Trójkąty szczególne: Kąty 30-60-90 oraz 45-45-90",
         "theory_pill": {
           "concept_essence": "Trójkąty o kątach $30^\\circ, 60^\\circ, 90^\\circ$ to połówki trójkąta równobocznego: boki mają proporcję $a, a\\sqrt{3}, 2a$ (krótka przyprostokątna $a$ naprzeciw $30^\\circ$, długa $a\\sqrt{3}$ naprzeciw $60^\\circ$, przeciwprostokątna $2a$). Trójkąt o kątach $45^\\circ, 45^\\circ, 90^\\circ$ to połówka kwadratu: boki mają proporcję $a, a, a\\sqrt{2}$.",
@@ -564,7 +588,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-5-1",
+            "id": "task-9-5-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -581,7 +605,7 @@
             "hint": "Dłuższa przyprostokątna to połowa przeciwprostokątnej pomnożona przez pierwiastek z 3."
           },
           {
-            "id": "t-dzial-9-5-2",
+            "id": "task-9-5-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -598,7 +622,7 @@
             "hint": "Oblicz przyprostokątną a z równania a^2 / 2 = 18, a potem c = a pierwiastków z 2."
           },
           {
-            "id": "t-dzial-9-5-3",
+            "id": "task-9-5-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -609,7 +633,7 @@
             "hint": "Przeciwprostokątna wynosi 2a."
           },
           {
-            "id": "t-dzial-9-5-4",
+            "id": "task-9-5-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -626,7 +650,7 @@
             "hint": "Podziel 10 przez pierwiastek z 2 i usuń niewymierność z mianownika."
           },
           {
-            "id": "t-dzial-9-5-5",
+            "id": "task-9-5-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -643,7 +667,7 @@
             "hint": "Wysokość w trójkącie prostokątnym równoramiennym jest równa połowie przeciwprostokątnej."
           },
           {
-            "id": "t-dzial-9-5-6",
+            "id": "task-9-5-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -660,7 +684,7 @@
             "hint": "Romb o kącie 60° składa się z dwóch trójkątów równobocznych."
           },
           {
-            "id": "t-dzial-9-5-7",
+            "id": "task-9-5-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -677,20 +701,26 @@
             "hint": "Wyznacz krótszą przyprostokątną a = 3 i oblicz pole P = 1/2 * a * b."
           },
           {
-            "id": "t-dzial-9-5-8",
+            "id": "task-9-5-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W trapezie prostokątnym dłuższa podstawa ma długość $14$, a krótsza $8$. Kąt ostry trapezu ma miarę $60^\\circ$. Oblicz wysokość i pole tego trapezu.",
             "explanation": "Różnica podstaw wynosi: x = 14 - 8 = 6. Powstały trójkąt prostokątny ma kąty 30°, 60°, 90°, gdzie przyprostokątna przyległa do kąta 60° to x = 6. Wysokość leży naprzeciw kąta 60°, zatem h = x\\sqrt{3} = 6\\sqrt{3}. Pole trapezu: P = (a + b)/2 * h = (14 + 8)/2 * 6\\sqrt{3} = 11 * 6\\sqrt{3} = 66\\sqrt{3}.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie odcinka odciętego przez wysokość na podstawie: x = 14 - 8 = 6 oraz obliczenie wysokości trapezu z trójkąta 30-60-90: h = 6\\sqrt{3}. 1 pkt za obliczenie pola trapezu: P = (14 + 8)/2 * 6\\sqrt{3} = 11 * 6\\sqrt{3} = 66\\sqrt{3}.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie odcinka odciętego przez wysokość na podstawie: x = 14 - 8 = 6 oraz obliczenie wysokości trapezu z trójkąta 30-60-90: h = 6\\sqrt{3}.",
+              "1 pkt za obliczenie pola trapezu: P = (14 + 8)/2 * 6\\sqrt{3} = 11 * 6\\sqrt{3} = 66\\sqrt{3}."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-6",
+        "id": "lesson-9-6",
         "title": "Twierdzenie Talesa: Podział odcinków i proste równoległe",
         "theory_pill": {
           "concept_essence": "Jeżeli ramiona kąta przetniemy dwiema prostymi równoległymi, to odcinki wyznaczone przez te proste na jednym ramieniu kąta są proporcjonalne do odpowiednich odcinków na drugim ramieniu kąta: $\\frac{|AD|}{|DB|} = \\frac{|AE|}{|EC|}$ oraz $\\frac{|AD|}{|AB|} = \\frac{|DE|}{|BC|}$.",
@@ -701,7 +731,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-6-1",
+            "id": "task-9-6-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -718,7 +748,7 @@
             "hint": "Ułóż proporcję z twierdzenia Talesa: 3/6 = 4/x."
           },
           {
-            "id": "t-dzial-9-6-2",
+            "id": "task-9-6-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -735,7 +765,7 @@
             "hint": "Stosunek małego ramienia do całego ramienia równa się stosunkowi małej podstawy do dużej podstawy: 2/6 = 5/AB."
           },
           {
-            "id": "t-dzial-9-6-3",
+            "id": "task-9-6-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -746,7 +776,7 @@
             "hint": "Rozwiąż proporcję: x / 12 = 4 / 8."
           },
           {
-            "id": "t-dzial-9-6-4",
+            "id": "task-9-6-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -763,7 +793,7 @@
             "hint": "Odcinek łączący środki boków trójkąta jest dwa razy krótszy od podstawy."
           },
           {
-            "id": "t-dzial-9-6-5",
+            "id": "task-9-6-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -780,7 +810,7 @@
             "hint": "Pamiętaj, że całe ramię składa się z 1 + 2 = 3 części."
           },
           {
-            "id": "t-dzial-9-6-6",
+            "id": "task-9-6-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -797,7 +827,7 @@
             "hint": "Ułóż proporcję 4 / x = 6 / 9."
           },
           {
-            "id": "t-dzial-9-6-7",
+            "id": "task-9-6-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -814,20 +844,26 @@
             "hint": "Odcinek łączący środki ramion to (a + b)/2."
           },
           {
-            "id": "t-dzial-9-6-8",
+            "id": "task-9-6-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "W trójkącie $ABC$ o podstawie $|AB| = 18$ poprowadzono prostą równoległą do podstawy, która podzieliła bok $AC$ w stosunku $2 : 1$ licząc od wierzchołka $C$. Oblicz długość odcinka tej prostej zawartego wewnątrz trójkąta.",
             "explanation": "Niech odcinek to DE. Prosta dzieli bok AC na części 2x i 1x, więc cały bok |AC| = 3x. Skala podobieństwa trójkąta CDE do trójkąta CAB wynosi k = |CD| / |CA| = 2x / 3x = 2/3. Z twierdzenia Talesa stosunek podstaw: |DE| / |AB| = 2/3 => |DE| = 2/3 * 18 = 12.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie skali podobieństwa trójkątów: k = |CD| / |CA| = 2 / (2 + 1) = 2/3. 1 pkt za obliczenie szukanej długości odcinka: x = 2/3 * 18 = 12.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie skali podobieństwa trójkątów: k = |CD| / |CA| = 2 / (2 + 1) = 2/3.",
+              "1 pkt za obliczenie szukanej długości odcinka: x = 2/3 * 18 = 12."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-7",
+        "id": "lesson-9-7",
         "title": "Podobieństwo figur: Cechy podobieństwa i skala k",
         "theory_pill": {
           "concept_essence": "Dwie figury są podobne, gdy mają ten sam kształt (odpowiednie kąty są równe), a ich wymiary liniowe są proporcjonalne w skali $k$. Cechy podobieństwa trójkątów: KKK (kąt-kąt-kąt), BBB (bok-bok-bok), BKB (bok-kąt-bok).",
@@ -838,7 +874,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-7-1",
+            "id": "task-9-7-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -855,7 +891,7 @@
             "hint": "Pomnóż najdłuższy bok trójkąta T_1 przez skalę k = 3."
           },
           {
-            "id": "t-dzial-9-7-2",
+            "id": "task-9-7-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -872,7 +908,7 @@
             "hint": "Oblicz trzeci kąt wyjściowego trójkąta odejmując od 180° miary 40° i 75°."
           },
           {
-            "id": "t-dzial-9-7-3",
+            "id": "task-9-7-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -883,7 +919,7 @@
             "hint": "Stosunek obwodów figur podobnych jest równy skali podobieństwa k."
           },
           {
-            "id": "t-dzial-9-7-4",
+            "id": "task-9-7-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -900,7 +936,7 @@
             "hint": "Wyznacz skalę k dzieląc 15 przez najkrótszy bok 5, a potem pomnóż 9 przez k."
           },
           {
-            "id": "t-dzial-9-7-5",
+            "id": "task-9-7-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -917,7 +953,7 @@
             "hint": "Czy wszystkie trójkąty prostokątne mają jednakowe kąty ostre?"
           },
           {
-            "id": "t-dzial-9-7-6",
+            "id": "task-9-7-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -934,7 +970,7 @@
             "hint": "Stosunek wysokości figur podobnych jest równy skali k."
           },
           {
-            "id": "t-dzial-9-7-7",
+            "id": "task-9-7-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -951,20 +987,26 @@
             "hint": "Kąty naprzemianległe przy podstawach równoległych są równe."
           },
           {
-            "id": "t-dzial-9-7-8",
+            "id": "task-9-7-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W trójkącie prostokątnym $ABC$ poprowadzono wysokość $CD$ z wierzchołka kąta prostego na przeciwprostokątną $AB$. Wykaż, że trójkąt $ADC$ jest podobny do trójkąta $CDB$.",
             "explanation": "Oznaczmy kąt CAD = alpha. W trójkącie prostokątnym ADC (kąt ADC = 90°) kąt ACD wynosi 90° - alpha. Kąt ACB jest prosty (90°), więc kąt DCB = 90° - kąt ACD = 90° - (90° - alpha) = alpha. W trójkącie prostokątnym CDB (kąt BDC = 90°) kąt CBD wynosi 90° - alpha. Trójkąty ADC oraz CDB mają jednakowe kąty: alpha, 90° - alpha oraz 90°. Na mocy cechy KKK (kąt-kąt-kąt) trójkąty te są podobne, co kończy dowód.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zauważenie relacji kątowych: niech kąt CAD = \\alpha, wtedy w trójkącie prostokątnym ACD kąt ACD = 90° - \\alpha. Ponieważ kąt ACB = 90°, to kąt DCB = 90° - (90° - \\alpha) = \\alpha. 1 pkt za sformułowanie wniosku: oba trójkąty mają kąty o miarach \\alpha, 90° - \\alpha oraz 90°, więc są podobne na mocy cechy KKK.",
+            "scoring_key": [
+              "1 pkt za zauważenie relacji kątowych: niech kąt CAD = \\alpha, wtedy w trójkącie prostokątnym ACD kąt ACD = 90° - \\alpha. Ponieważ kąt ACB = 90°, to kąt DCB = 90° - (90° - \\alpha) = \\alpha.",
+              "1 pkt za sformułowanie wniosku: oba trójkąty mają kąty o miarach \\alpha, 90° - \\alpha oraz 90°, więc są podobne na mocy cechy KKK."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-8",
+        "id": "lesson-9-8",
         "title": "Stosunek pól i obwodów figur podobnych: Skala k i k^2",
         "theory_pill": {
           "concept_essence": "Dla figur podobnych w skali $k$: wszystkie wymiary liniowe (boki, obwody, wysokości, promienie) są w stosunku $k$, natomiast POLA powierzchni są w stosunku $k^2$! Jeśli powiększysz każdy bok trójkąta $3$-krotnie, to jego obwód wzrośnie $3$-krotnie, ale pole wzrośnie $3^2 = 9$-krotnie!",
@@ -975,7 +1017,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-8-1",
+            "id": "task-9-8-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -992,7 +1034,7 @@
             "hint": "Pomnóż pole mniejszego trójkąta przez k^2 = 9."
           },
           {
-            "id": "t-dzial-9-8-2",
+            "id": "task-9-8-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1009,7 +1051,7 @@
             "hint": "Wyciągnij pierwiastek kwadratowy ze stosunku pól 4/9."
           },
           {
-            "id": "t-dzial-9-8-3",
+            "id": "task-9-8-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1020,7 +1062,7 @@
             "hint": "Podziel pole T_2 przez pole T_1 i spierwiastkuj wynik."
           },
           {
-            "id": "t-dzial-9-8-4",
+            "id": "task-9-8-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1037,7 +1079,7 @@
             "hint": "Podnieś skalę obwodów k = 4 do kwadratu."
           },
           {
-            "id": "t-dzial-9-8-5",
+            "id": "task-9-8-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1054,7 +1096,7 @@
             "hint": "Skala długości wynosi 2, a skala pól to 2^2 = 4."
           },
           {
-            "id": "t-dzial-9-8-6",
+            "id": "task-9-8-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1071,7 +1113,7 @@
             "hint": "Trójkąty przy podstawach są podobne. Stosunek ich pól to kwadrat stosunku podstaw: (4/8)^2."
           },
           {
-            "id": "t-dzial-9-8-7",
+            "id": "task-9-8-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1088,20 +1130,26 @@
             "hint": "Obwód rośnie w skali k, a pole w skali k^2."
           },
           {
-            "id": "t-dzial-9-8-8",
+            "id": "task-9-8-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Dwa trójkąty prostokątne są podobne. Przyprostokątne pierwszego trójkąta mają długości $6$ i $8$, a pole drugiego trójkąta wynosi $96$. Oblicz obwód drugiego trójkąta.",
             "explanation": "Pole pierwszego trójkąta: P_1 = 1/2 * 6 * 8 = 24. Ponieważ trójkąty są podobne, stosunek ich pól wynosi k^2: k^2 = P_2 / P_1 = 96 / 24 = 4, stąd skala podobieństwa k = 2. Przeciwprostokątna pierwszego trójkąta z tw. Pitagorasa wynosi c_1 = \\sqrt{6^2 + 8^2} = 10. Obwód pierwszego trójkąta: Obw_1 = 6 + 8 + 10 = 24. Obwód drugiego trójkąta wynosi: Obw_2 = Obw_1 * k = 24 * 2 = 48.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie pola pierwszego trójkąta P_1 = 1/2 * 6 * 8 = 24 oraz wyznaczenie skali podobieństwa: k^2 = P_2 / P_1 = 96 / 24 = 4 => k = 2. 1 pkt za wyznaczenie przeciwprostokątnej c_1 = 10, obwodu Obw_1 = 6 + 8 + 10 = 24 i obliczenie obwodu drugiego trójkąta: Obw_2 = 24 * 2 = 48.",
+            "scoring_key": [
+              "1 pkt za obliczenie pola pierwszego trójkąta P_1 = 1/2 * 6 * 8 = 24 oraz wyznaczenie skali podobieństwa: k^2 = P_2 / P_1 = 96 / 24 = 4 => k = 2.",
+              "1 pkt za wyznaczenie przeciwprostokątnej c_1 = 10, obwodu Obw_1 = 6 + 8 + 10 = 24 i obliczenie obwodu drugiego trójkąta: Obw_2 = 24 * 2 = 48."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-9",
+        "id": "lesson-9-9",
         "title": "Okrąg wpisany i opisany na trójkącie: Promienie r i R",
         "theory_pill": {
           "concept_essence": "Dla dowolnego trójkąta o bokach $a, b, c$ i polu $P$: promień okręgu wpisanego wynosi $r = \\frac{2P}{a+b+c} = \\frac{P}{p}$ (gdzie $p$ to połowa obwodu). Promień okręgu opisanego wynosi $R = \\frac{abc}{4P}$ lub z twierdzenia sinusów $R = \\frac{a}{2\\sin \\alpha}$. W trójkącie prostokątnym mamy proste wzory: $R = \\frac{c}{2}$ oraz $r = \\frac{a+b-c}{2}$.",
@@ -1112,7 +1160,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-9-1",
+            "id": "task-9-9-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1129,7 +1177,7 @@
             "hint": "W trójkącie prostokątnym R = c / 2."
           },
           {
-            "id": "t-dzial-9-9-2",
+            "id": "task-9-9-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1146,7 +1194,7 @@
             "hint": "Zastosuj szybki wzór dla trójkąta prostokątnego: r = (a + b - c)/2."
           },
           {
-            "id": "t-dzial-9-9-3",
+            "id": "task-9-9-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1157,7 +1205,7 @@
             "hint": "Zastosuj wzór P = p * r, gdzie p to połowa obwodu."
           },
           {
-            "id": "t-dzial-9-9-4",
+            "id": "task-9-9-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1174,7 +1222,7 @@
             "hint": "Przeciwprostokątna jest średnicą okręgu opisanego."
           },
           {
-            "id": "t-dzial-9-9-5",
+            "id": "task-9-9-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1191,7 +1239,7 @@
             "hint": "Oblicz wysokość h = 6 pierwiastków z 3, a potem weź 2/3 oraz 1/3 z h."
           },
           {
-            "id": "t-dzial-9-9-6",
+            "id": "task-9-9-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1208,7 +1256,7 @@
             "hint": "p = P / r = 12. Obwód to podwojone p."
           },
           {
-            "id": "t-dzial-9-9-7",
+            "id": "task-9-9-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1225,20 +1273,26 @@
             "hint": "Wierzchołek kąta prostego leży na okręgu opisanym, więc szukana odległość to promień R."
           },
           {
-            "id": "t-dzial-9-9-8",
+            "id": "task-9-9-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Boki trójkąta mają długości $10, 10$ oraz $12$. Oblicz pole tego trójkąta oraz promień $R$ okręgu opisanego na tym trójkącie.",
             "explanation": "Trójkąt jest równoramienny o podstawie 12 i ramionach 10. Wysokość opuszczona na podstawę dzieli ją na odcinki o długości 6: h = \\sqrt{10^2 - 6^2} = \\sqrt{64} = 8. Pole trójkąta wynosi: P = 1/2 * 12 * 8 = 48. Promień okręgu opisanego ze wzoru R = (a*b*c)/(4P): R = (10 * 10 * 12) / (4 * 48) = 1200 / 192 = 25/4 = 6,25.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za opuszczenie wysokości na podstawę 12: h = \\sqrt{10^2 - 6^2} = 8 i obliczenie pola P = 1/2 * 12 * 8 = 48. 1 pkt za obliczenie promienia okręgu opisanego ze wzoru R = abc / 4P: R = (10 * 10 * 12) / (4 * 48) = 1200 / 192 = 6,25 (lub 25/4).",
+            "scoring_key": [
+              "1 pkt za opuszczenie wysokości na podstawę 12: h = \\sqrt{10^2 - 6^2} = 8 i obliczenie pola P = 1/2 * 12 * 8 = 48.",
+              "1 pkt za obliczenie promienia okręgu opisanego ze wzoru R = abc / 4P: R = (10 * 10 * 12) / (4 * 48) = 1200 / 192 = 6,25 (lub 25/4)."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-10",
+        "id": "lesson-9-10",
         "title": "Kąty w okręgu: Kąt środkowy i wpisany",
         "theory_pill": {
           "concept_essence": "Kąt wpisany ma wierzchołek na okręgu, a środkowy w środku okręgu. Twierdzenie o kątach: miara kąta środkowego jest dwa razy większa od miary kąta wpisanego opartego na tym samym łuku: $\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}$. Wnioski: wszystkie kąty wpisane oparte na tym samym łuku są równe, a kąt wpisany oparty na średnicy ma zawsze $90^\\circ$!",
@@ -1249,7 +1303,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-10-1",
+            "id": "task-9-10-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1266,7 +1320,7 @@
             "hint": "Pomnóż miarę kąta wpisanego przez 2."
           },
           {
-            "id": "t-dzial-9-10-2",
+            "id": "task-9-10-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1283,7 +1337,7 @@
             "hint": "Różnica między kątem podwójnym a pojedynczym (2x - x = x) wynosi 35°."
           },
           {
-            "id": "t-dzial-9-10-3",
+            "id": "task-9-10-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1294,7 +1348,7 @@
             "hint": "Oblicz kąt środkowy: 360° / 6 = 60°, a kąt wpisany to jego połowa."
           },
           {
-            "id": "t-dzial-9-10-4",
+            "id": "task-9-10-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1311,7 +1365,7 @@
             "hint": "Kąt oparty na średnicy jest zawsze kątem prostym."
           },
           {
-            "id": "t-dzial-9-10-5",
+            "id": "task-9-10-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1328,7 +1382,7 @@
             "hint": "Kąt wpisany oparty na średnicy ma miarę 90°."
           },
           {
-            "id": "t-dzial-9-10-6",
+            "id": "task-9-10-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1345,7 +1399,7 @@
             "hint": "Podziel 130° przez 2."
           },
           {
-            "id": "t-dzial-9-10-7",
+            "id": "task-9-10-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1362,20 +1416,26 @@
             "hint": "Kąt środkowy to 2 części, wpisany to 1 część. Razem 3 części dają 120°."
           },
           {
-            "id": "t-dzial-9-10-8",
+            "id": "task-9-10-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Punkty $A, B, C, D$ leżą w tej kolejności na okręgu. Odcinek $AC$ jest średnicą okręgu, a kąt $BAC$ ma miarę $28^\\circ$. Oblicz miary kątów trójkąta $ABC$ oraz miarę kąta wpisanego $BDC$.",
             "explanation": "Ponieważ AC jest średnicą okręgu, kąt wpisany ABC oparty na średnicy jest prosty: kąt ABC = 90°. Wtedy kąt BCA = 180° - 90° - 28° = 62°. Kąt BDC jest kątem wpisanym opartym na tym samym łuku BC co kąt BAC. Na mocy twierdzenia o kątach wpisanych: kąt BDC = kąt BAC = 28°.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie kąta ABC = 90° (oparty na średnicy) i obliczenie kąta BCA = 180° - 90° - 28° = 62°. 1 pkt za zauważenie, że kąt BDC jest oparty na tym samym łuku co kąt BAC, więc kąt BDC = 28°.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie kąta ABC = 90° (oparty na średnicy) i obliczenie kąta BCA = 180° - 90° - 28° = 62°.",
+              "1 pkt za zauważenie, że kąt BDC jest oparty na tym samym łuku co kąt BAC, więc kąt BDC = 28°."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-11",
+        "id": "lesson-9-11",
         "title": "Styczne do okręgu i kąt dopisany",
         "theory_pill": {
           "concept_essence": "Promień poprowadzony do punktu styczności jest zawsze PROSTOPADŁY do prostej stycznej ($r \\perp s$). Odcinki stycznych poprowadzone z jednego punktu zewnętrznego do punktów styczności mają RÓWNE długości. Kąt dopisany (między cięciwą a styczną) jest równy kątowi wpisanemu opartemu na tej cięciwie.",
@@ -1386,7 +1446,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-11-1",
+            "id": "task-9-11-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1403,7 +1463,7 @@
             "hint": "Promień i styczna w punkcie styczności są prostopadłe."
           },
           {
-            "id": "t-dzial-9-11-2",
+            "id": "task-9-11-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1420,7 +1480,7 @@
             "hint": "Zastosuj twierdzenie Pitagorasa w trójkącie utworzonym przez promień, styczną i odcinek PS."
           },
           {
-            "id": "t-dzial-9-11-3",
+            "id": "task-9-11-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1431,7 +1491,7 @@
             "hint": "Przyrównaj długości obu odcinków stycznych."
           },
           {
-            "id": "t-dzial-9-11-4",
+            "id": "task-9-11-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1448,7 +1508,7 @@
             "hint": "Miara kąta dopisanego jest równa mierze kąta wpisanego opartego na tej cięciwie."
           },
           {
-            "id": "t-dzial-9-11-5",
+            "id": "task-9-11-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1465,7 +1525,7 @@
             "hint": "Styczna dotyka okręgu w odległości równej promieniowi r."
           },
           {
-            "id": "t-dzial-9-11-6",
+            "id": "task-9-11-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1482,7 +1542,7 @@
             "hint": "Suma kąta między stycznymi i odpowiadającego kąta środkowego wynosi 180°."
           },
           {
-            "id": "t-dzial-9-11-7",
+            "id": "task-9-11-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1499,20 +1559,26 @@
             "hint": "Kąt dopisany to połowa kąta środkowego opartego na tej cięciwie."
           },
           {
-            "id": "t-dzial-9-11-8",
+            "id": "task-9-11-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura czerwiec 2023",
             "content": "Z punktu $P$ leżącego na zewnątrz okręgu o środku $S$ poprowadzono dwie styczne w punktach $A$ i $B$. Wiadomo, że kąt $APB$ ma miarę $50^\\circ$. Oblicz miarę kąta $SAB$.",
             "explanation": "W czworokącie PASB kąty PAS i PBS są proste (po 90°). Stąd kąt środkowy ASB = 360° - 90° - 90° - 50° = 130°. Trójkąt ASB jest trójkątem równoramiennym, ponieważ ramiona to promienie okręgu |SA| = |SB| = r. Kąty przy podstawie AB są równe: kąt SAB = (180° - 130°) / 2 = 50° / 2 = 25°.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie miary kąta środkowego ASB = 180° - 50° = 130°. 1 pkt za zauważenie, że trójkąt ASB jest równoramienny (|SA|=|SB|=r) i obliczenie kąta SAB: (180° - 130°) / 2 = 25°.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie miary kąta środkowego ASB = 180° - 50° = 130°.",
+              "1 pkt za zauważenie, że trójkąt ASB jest równoramienny (|SA|=|SB|=r) i obliczenie kąta SAB: (180° - 130°) / 2 = 25°."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-12",
+        "id": "lesson-9-12",
         "title": "Czworokąty wpisane i opisane na okręgu",
         "theory_pill": {
           "concept_essence": "Warunek wpisania czworokąta w okrąg: sumy przeciwległych KĄTÓW muszą być równe i wynosić $180^\\circ$: $\\alpha + \\gamma = \\beta + \\delta = 180^\\circ$. Warunek opisania czworokąta na okręgu: sumy przeciwległych BOKÓW muszą być równe: $a + c = b + d$.",
@@ -1523,7 +1589,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-12-1",
+            "id": "task-9-12-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1540,7 +1606,7 @@
             "hint": "W czworokącie wpisanym w okrąg suma kątów przeciwległych wynosi 180°."
           },
           {
-            "id": "t-dzial-9-12-2",
+            "id": "task-9-12-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1557,7 +1623,7 @@
             "hint": "W czworokącie opisanym na okręgu: a + c = b + d."
           },
           {
-            "id": "t-dzial-9-12-3",
+            "id": "task-9-12-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1568,7 +1634,7 @@
             "hint": "Suma ramion to połowa obwodu trapezu opisanego na okręgu."
           },
           {
-            "id": "t-dzial-9-12-4",
+            "id": "task-9-12-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1585,7 +1651,7 @@
             "hint": "Sprawdź, w którym z tych czworokątów kąty przeciwległe zawsze sumują się do 180°."
           },
           {
-            "id": "t-dzial-9-12-5",
+            "id": "task-9-12-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1602,7 +1668,7 @@
             "hint": "Sprawdź warunek a + c = b + d dla rombu i alfa + gamma = 180° dla prostokąta."
           },
           {
-            "id": "t-dzial-9-12-6",
+            "id": "task-9-12-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1619,7 +1685,7 @@
             "hint": "Kąty A i C są przeciwległe, więc ich suma wynosi 180°."
           },
           {
-            "id": "t-dzial-9-12-7",
+            "id": "task-9-12-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1636,20 +1702,26 @@
             "hint": "Średnica okręgu wpisanego jest równa wysokości rombu: 2r = h."
           },
           {
-            "id": "t-dzial-9-12-8",
+            "id": "task-9-12-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Wykaż, że jeśli w trapez równoramienny można wpisać okrąg, to długość ramienia tego trapezu jest równa średniej arytmetycznej długości jego podstaw.",
             "explanation": "Niech a i b oznaczają długości podstaw trapezu, a c długość jego ramienia. W trapezie równoramiennym oba ramiona mają jednakową długość c. Z warunku wpisywalności okręgu w czworokąt: suma przeciwległych boków musi być równa, zatem a + b = c + c <=> a + b = 2c. Dzieląc obie strony przez 2, otrzymujemy: c = (a + b) / 2. Oznacza to, że ramię c jest równe średniej arytmetycznej podstaw a i b, co kończy dowód.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zapisanie warunku wpisania okręgu w czworokąt: a + b = c + c = 2c, gdzie a, b to podstawy, a c to ramię trapezu równoramiennego. 1 pkt za podzielenie stronami przez 2: c = (a + b) / 2 i sformułowanie wniosku kończącego dowód.",
+            "scoring_key": [
+              "1 pkt za zapisanie warunku wpisania okręgu w czworokąt: a + b = c + c = 2c, gdzie a, b to podstawy, a c to ramię trapezu równoramiennego.",
+              "1 pkt za podzielenie stronami przez 2: c = (a + b) / 2 i sformułowanie wniosku kończącego dowód."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-13",
+        "id": "lesson-9-13",
         "title": "Czworokąty: Własności przekątnych i pola figur",
         "theory_pill": {
           "concept_essence": "W kwadracie przekątne są równe, prostopadłe i dzielą się na połowy ($d = a\\sqrt{2}$). W prostokącie przekątne są równe i dzielą się na połowy. W rombie przekątne są prostopadłe i dzielą się na połowy ($P = \\frac{1}{2}d_1 d_2$). W równoległoboku przekątne dzielą się na połowy.",
@@ -1660,7 +1732,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-13-1",
+            "id": "task-9-13-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1677,7 +1749,7 @@
             "hint": "Połowy przekątnych rombu tworzą trójkąt prostokątny z bokiem rombu."
           },
           {
-            "id": "t-dzial-9-13-2",
+            "id": "task-9-13-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1694,7 +1766,7 @@
             "hint": "Pole kwadratu to d^2 / 2."
           },
           {
-            "id": "t-dzial-9-13-3",
+            "id": "task-9-13-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1705,7 +1777,7 @@
             "hint": "Podstaw dane do wzoru P = 1/2 * d_1 * d_2."
           },
           {
-            "id": "t-dzial-9-13-4",
+            "id": "task-9-13-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1722,7 +1794,7 @@
             "hint": "Trójkąt utworzony przez krótszy bok i połówki przekątnych jest równoboczny."
           },
           {
-            "id": "t-dzial-9-13-5",
+            "id": "task-9-13-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1739,7 +1811,7 @@
             "hint": "P = a * b * sin 30° oraz P = a * h_a."
           },
           {
-            "id": "t-dzial-9-13-6",
+            "id": "task-9-13-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1756,7 +1828,7 @@
             "hint": "Dla każdego czworokąta z prostopadłymi przekątnymi P = 1/2 * d_1 * d_2."
           },
           {
-            "id": "t-dzial-9-13-7",
+            "id": "task-9-13-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1773,20 +1845,26 @@
             "hint": "Bok kwadratu to 8. Obwód to 4 * 8."
           },
           {
-            "id": "t-dzial-9-13-8",
+            "id": "task-9-13-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W trapezie $ABCD$ o podstawach $AB$ i $CD$ dane są: $|AB| = 12$, $|CD| = 4$ oraz wysokość $h = 6$. Przekątne przecinają się w punkcie $P$. Oblicz pole trójkąta $ABP$.",
             "explanation": "Trójkąty ABP i CDP są podobne w skali k = |AB| / |CD| = 12 / 4 = 3. Ich wysokości h_1 oraz h_2 sumują się do wysokości trapezu h = 6, przy czym h_1 = 3 * h_2. Zatem 4 * h_2 = 6 => h_2 = 1,5, a h_1 = 4,5. Pole trójkąta ABP wynosi: P = 1/2 * |AB| * h_1 = 1/2 * 12 * 4,5 = 27.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za wyznaczenie skali podobieństwa trójkątów ABP i CDP: k = 12 / 4 = 3 oraz podział wysokości trapezu na wysokości trójkątów w stosunku 3 : 1, skąd h_1 = 3/4 * 6 = 4,5. 1 pkt za obliczenie pola trójkąta ABP: P = 1/2 * 12 * 4,5 = 27.",
+            "scoring_key": [
+              "1 pkt za wyznaczenie skali podobieństwa trójkątów ABP i CDP: k = 12 / 4 = 3 oraz podział wysokości trapezu na wysokości trójkątów w stosunku 3 : 1, skąd h_1 = 3/4 * 6 = 4,5.",
+              "1 pkt za obliczenie pola trójkąta ABP: P = 1/2 * 12 * 4,5 = 27."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-14",
+        "id": "lesson-9-14",
         "title": "Pole koła, wycinek koła i długość łuku",
         "theory_pill": {
           "concept_essence": "Okrąg o promieniu $r$ ma długość (obwód) $L = 2\\pi r$, a koło ma pole $P = \\pi r^2$. Wycinek koła o kącie środkowym $\\alpha$ stanowi ułamek $\\frac{\\alpha}{360^\\circ}$ całego koła: pole wycinka to $P_w = \\frac{\\alpha}{360^\\circ} \\cdot \\pi r^2$, a długość łuku to $l = \\frac{\\alpha}{360^\\circ} \\cdot 2\\pi r$.",
@@ -1797,7 +1875,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-14-1",
+            "id": "task-9-14-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1814,7 +1892,7 @@
             "hint": "Zastosuj wzór l = (alfa / 360) * 2 * pi * r."
           },
           {
-            "id": "t-dzial-9-14-2",
+            "id": "task-9-14-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1831,7 +1909,7 @@
             "hint": "120° to 1/3 całego koła."
           },
           {
-            "id": "t-dzial-9-14-3",
+            "id": "task-9-14-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1842,7 +1920,7 @@
             "hint": "Podziel pole przez pi i wyciągnij pierwiastek kwadratowy."
           },
           {
-            "id": "t-dzial-9-14-4",
+            "id": "task-9-14-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1859,7 +1937,7 @@
             "hint": "Sprawdź, jaką częścią całego obwodu 12*pi jest łuk 3*pi."
           },
           {
-            "id": "t-dzial-9-14-5",
+            "id": "task-9-14-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -1876,7 +1954,7 @@
             "hint": "60° to 1/6 kąta pełnego 360°."
           },
           {
-            "id": "t-dzial-9-14-6",
+            "id": "task-9-14-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -1893,7 +1971,7 @@
             "hint": "Odejmij pole mniejszego koła od pola większego koła."
           },
           {
-            "id": "t-dzial-9-14-7",
+            "id": "task-9-14-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -1910,20 +1988,26 @@
             "hint": "20 minut to 1/3 pełnej godziny."
           },
           {
-            "id": "t-dzial-9-14-8",
+            "id": "task-9-14-8",
             "type": "OPEN_GENERAL",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "W kole o promieniu $r = 6$ poprowadzono cięciwę $AB$, na której oparty jest kąt środkowy $90^\\circ$. Oblicz pole odcinka koła odciętego przez tę cięciwę.",
             "explanation": "Pole odcinka koła to różnica między polem wycinka koła a polem trójkąta ASB. Kąt środkowy to 90° (czyli 1/4 koła). Pole wycinka: P_w = 1/4 * \\pi * 6^2 = 9\\pi. Trójkąt ASB jest prostokątny o przyprostokątnych r = 6: P_t = 1/2 * 6 * 6 = 18. Pole odcinka koła wynosi: P = P_w - P_t = 9\\pi - 18 = 9(\\pi - 2).",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za obliczenie pola wycinka koła o kącie 90°: P_w = (90/360) * \\pi * 6^2 = 9\\pi. 1 pkt za obliczenie pola trójkąta prostokątnego P_t = 1/2 * 6 * 6 = 18 i podanie pola odcinka koła: P = 9\\pi - 18.",
+            "scoring_key": [
+              "1 pkt za obliczenie pola wycinka koła o kącie 90°: P_w = (90/360) * \\pi * 6^2 = 9\\pi.",
+              "1 pkt za obliczenie pola trójkąta prostokątnego P_t = 1/2 * 6 * 6 = 18 i podanie pola odcinka koła: P = 9\\pi - 18."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       },
       {
-        "id": "l-dzial-9-15",
+        "id": "lesson-9-15",
         "title": "Dowodzenie w planimetrii: Relacje miarowe i kątowe",
         "theory_pill": {
           "concept_essence": "Zadania dowodowe w geometrii płaskiej wymagają wykazania przystawania trójkątów (BKB, KKK, BBB), równości kątów (wierzchołkowe, naprzemianległe, wpisane oparte na tym samym łuku) lub związków miarowych z podobieństwa i twierdzenia Pitagorasa.",
@@ -1934,7 +2018,7 @@
         },
         "tasks": [
           {
-            "id": "t-dzial-9-15-1",
+            "id": "task-9-15-1",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2023",
@@ -1951,7 +2035,7 @@
             "hint": "Połowy równych kątów są sobie równe."
           },
           {
-            "id": "t-dzial-9-15-2",
+            "id": "task-9-15-2",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2024",
@@ -1968,7 +2052,7 @@
             "hint": "Odcinek ten jest równy połowie różnicy podstaw."
           },
           {
-            "id": "t-dzial-9-15-3",
+            "id": "task-9-15-3",
             "type": "NUMERIC_INPUT",
             "points": 1,
             "source": "Matura czerwiec 2024",
@@ -1979,7 +2063,7 @@
             "hint": "Środkowa przeciwprostokątnej w trójkącie prostokątnym ma długość równą R = c/2."
           },
           {
-            "id": "t-dzial-9-15-4",
+            "id": "task-9-15-4",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura sierpień 2024",
@@ -1996,7 +2080,7 @@
             "hint": "Trójkąt ADC jest równoramienny, bo środkowa CD ma długość równą AD = R."
           },
           {
-            "id": "t-dzial-9-15-5",
+            "id": "task-9-15-5",
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
@@ -2013,7 +2097,7 @@
             "hint": "Środek ciężkości dzieli środkową w stosunku 2:1 i dzieli pole na równe części."
           },
           {
-            "id": "t-dzial-9-15-6",
+            "id": "task-9-15-6",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Matura maj 2025",
@@ -2030,7 +2114,7 @@
             "hint": "Środkowa dzieli trójkąt na dwa trójkąty o równych polach."
           },
           {
-            "id": "t-dzial-9-15-7",
+            "id": "task-9-15-7",
             "type": "SINGLE_CHOICE",
             "points": 1,
             "source": "Arkusz pokazowy",
@@ -2047,17 +2131,23 @@
             "hint": "Bok nowego kwadratu to przekątna trójkąta prostokątnego o bokach a/2."
           },
           {
-            "id": "t-dzial-9-15-8",
+            "id": "task-9-15-8",
             "type": "OPEN_PROOF",
             "points": 2,
             "source": "Matura maj 2024",
             "content": "Dany jest trójkąt równoramienny $ABC$, w którym $|AC| = |BC|$. Na ramionach $AC$ i $BC$ obrano odpowiednio punkty $D$ i $E$ tak, że $|AD| = |BE|$. Wykaż, że $|AE| = |BD|$.",
             "explanation": "Rozważmy trójkąty ABE oraz BAD. Mają one: 1) Wspólny bok AB; 2) Równe boki |BE| = |AD| (z treści zadania); 3) Równe kąty między tymi bokami: kąt ABE = kąt BAD (jako kąty przy podstawie trójkąta równoramiennego ABC). Na mocy cechy BKB (bok-kąt-bok) trójkąty ABE i BAD są przystające. Z przystawania tych trójkątów wynika równość odpowiadających sobie trzecich boków: |AE| = |BD|, co kończy dowód.",
             "hint_cost": 20,
-            "scoring_key": "1 pkt za zauważenie cechy przystawania BKB dla trójkątów ABE i BAD: wspólny bok AB, równe kąty przy podstawie trójkąta równoramiennego kąt CAB = kąt CBA oraz równe boki |AD| = |BE|. 1 pkt za sformułowanie wniosku: trójkąty ABE i BAD są przystające, skąd bezpośrednio wynika równość odpowiadających boków |AE| = |BD|.",
+            "scoring_key": [
+              "1 pkt za zauważenie cechy przystawania BKB dla trójkątów ABE i BAD: wspólny bok AB, równe kąty przy podstawie trójkąta równoramiennego kąt CAB = kąt CBA oraz równe boki |AD| = |BE|.",
+              "1 pkt za sformułowanie wniosku: trójkąty ABE i BAD są przystające, skąd bezpośrednio wynika równość odpowiadających boków |AE| = |BD|."
+            ],
             "ai_hint_enabled": true
           }
-        ]
+        ],
+        "estimated_time_minutes": 5,
+        "estimated_time_formatted": "~5 min",
+        "required_correct_tasks": 3
       }
     ],
     "final_test": {
