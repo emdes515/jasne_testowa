@@ -17,6 +17,7 @@ import {
 import confetti from 'canvas-confetti';
 import { motion, AnimatePresence } from 'motion/react';
 import { MathRenderer } from './MathRenderer';
+import { OpenTaskWorkspace } from './OpenTaskWorkspace';
 import { BossExamData, BossExamTask, generateDzial1BossExam } from '../data/dzial1TaskPool';
 import { triggerHaptic, playSuccessSound, playErrorSound } from '../utils';
 
@@ -113,10 +114,45 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
           score += (task.points || 1);
         }
       } else if (task.type === 'NUMERIC_INPUT') {
-        const val = (openAnswers[idx] || '').trim().replace(/\s+/g, '').replace(/,/g, '.');
-        const expected = String(task.correct_answer || (task as any).numeric_correct_answer || '').trim().replace(/\s+/g, '').replace(/,/g, '.');
-        if (val && val === expected) {
+        const parseVal = (raw: string) => {
+          const s = raw.trim().replace(',', '.');
+          const frac = s.match(/\\frac\{([^}]+)\}\{([^}]+)\}/);
+          if (frac) {
+            const n = parseFloat(frac[1]);
+            const d = parseFloat(frac[2]);
+            if (!isNaN(n) && !isNaN(d) && d !== 0) return n / d;
+          }
+          if (s.includes('/')) {
+            const p = s.split('/');
+            if (p.length === 2) {
+              const n = parseFloat(p[0]);
+              const d = parseFloat(p[1]);
+              if (!isNaN(n) && !isNaN(d) && d !== 0) return n / d;
+            }
+          }
+          return parseFloat(s);
+        };
+        const normStr = (s: string) => s
+          .replace(/\s+/g, '')
+          .replace(/,/g, '.')
+          .replace(/\\left/g, '')
+          .replace(/\\right/g, '')
+          .replace(/\\langle\s*/g, '⟨')
+          .replace(/\\rangle\s*/g, '⟩')
+          .replace(/\\infty\s*/g, '∞')
+          .replace(/−/g, '-');
+
+        const val = (openAnswers[idx] || '').trim();
+        const expected = String(task.correct_answer || (task as any).numeric_correct_answer || '').trim();
+
+        if (normStr(val) === normStr(expected)) {
           score += (task.points || 1);
+        } else {
+          const vNum = parseVal(val);
+          const eNum = parseVal(expected);
+          if (!isNaN(vNum) && !isNaN(eNum) && Math.abs(vNum - eNum) < 1e-6) {
+            score += (task.points || 1);
+          }
         }
       } else if (task.type === 'OPEN_PROOF' || (!task.options || task.options.length === 0)) {
         const text = (openAnswers[idx] || '').toLowerCase();
@@ -586,17 +622,16 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
 
           {/* NUMERIC_INPUT */}
           {isNumeric && (
-            <div className="space-y-3">
+            <div className="space-y-2 pt-1">
               <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">
                 Wpisz wynik liczbowy:
               </label>
-              <input
-                type="text"
-                inputMode="decimal"
+              <OpenTaskWorkspace
+                task={currentTask as any}
                 value={openAnswers[currentIndex] || ''}
-                onChange={(e) => handleOpenAnswerChange(e.target.value)}
-                placeholder="Wpisz liczbę lub ułamek (np. 12 lub 3/4)..."
-                className="w-full rounded-xl bg-slate-900/80 border border-white/10 p-4 text-white placeholder-slate-500 focus:outline-none focus:border-[#FFB800] transition text-base font-mono"
+                onChangeValue={(val) => handleOpenAnswerChange(val)}
+                hideWhiteboard={true}
+                inputPlaceholder="Wpisz wynik (użyj klawiatury)..."
               />
             </div>
           )}

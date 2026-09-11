@@ -187,7 +187,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.1",
+          "title": "Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.1",
+          "title": "Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-2",
@@ -330,7 +394,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.2",
+          "title": "Wyróżnik równania kwadratowego delta i liczba miejsc zerowych",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.2",
+          "title": "Wyróżnik równania kwadratowego delta i liczba miejsc zerowych",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-3",
@@ -473,7 +601,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.3",
+          "title": "Miejsca zerowe funkcji kwadratowej: Wzory na x_1 i x_2",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.3",
+          "title": "Miejsca zerowe funkcji kwadratowej: Wzory na x_1 i x_2",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-4",
@@ -646,7 +838,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.4",
+          "title": "Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.4",
+          "title": "Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-5",
@@ -789,7 +1045,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.5",
+          "title": "Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.5",
+          "title": "Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-6",
@@ -932,7 +1252,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.6",
+          "title": "Oś symetrii paraboli o równaniu x = p",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.6",
+          "title": "Oś symetrii paraboli o równaniu x = p",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-7",
@@ -1075,7 +1459,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.7",
+          "title": "Postać iloczynowa funkcji kwadratowej: f(x) = a(x - x_1)(x - x_2)",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.7",
+          "title": "Postać iloczynowa funkcji kwadratowej: f(x) = a(x - x_1)(x - x_2)",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-8",
@@ -1218,7 +1666,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.8",
+          "title": "Przechodzenie między postaciami funkcji kwadratowej",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.8",
+          "title": "Przechodzenie między postaciami funkcji kwadratowej",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-9",
@@ -1361,7 +1873,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.9",
+          "title": "Wyznaczanie wzoru funkcji kwadratowej na podstawie danych",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.9",
+          "title": "Wyznaczanie wzoru funkcji kwadratowej na podstawie danych",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-10",
@@ -1504,7 +2080,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.10",
+          "title": "Zbiór wartości i przedziały monotoniczności paraboli",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.10",
+          "title": "Zbiór wartości i przedziały monotoniczności paraboli",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-11",
@@ -1647,7 +2287,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.11",
+          "title": "Wartość najmniejsza i największa w przedziale domkniętym",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.11",
+          "title": "Wartość najmniejsza i największa w przedziale domkniętym",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-12",
@@ -1790,7 +2494,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.12",
+          "title": "Nierówności kwadratowe z delta > 0",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.12",
+          "title": "Nierówności kwadratowe z delta > 0",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-13",
@@ -1933,7 +2701,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.13",
+          "title": "Nierówności kwadratowe z delta <= 0",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.13",
+          "title": "Nierówności kwadratowe z delta <= 0",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-14",
@@ -2076,7 +2908,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.14",
+          "title": "Odczytywanie znaków współczynników z rysunku paraboli",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.14",
+          "title": "Odczytywanie znaków współczynników z rysunku paraboli",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       },
       {
         "id": "lesson-6-15",
@@ -2219,7 +3115,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "6.15",
+          "title": "Podsumowanie funkcji kwadratowej: Zadania maturalne",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "6.15",
+          "title": "Podsumowanie funkcji kwadratowej: Zadania maturalne",
+          "formulas": [
+            {
+              "title": "Postać ogólna",
+              "latex": "f(x) = ax^2 + bx + c"
+            },
+            {
+              "title": "Postać kanoniczna",
+              "latex": "f(x) = a(x - p)^2 + q"
+            },
+            {
+              "title": "Współrzędne wierzchołka paraboli",
+              "latex": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a} = f(p)"
+            },
+            {
+              "title": "Postać iloczynowa",
+              "latex": "f(x) = a(x - x_1)(x - x_2) \\quad (\\Delta > 0)"
+            },
+            {
+              "title": "Wyróżnik i pierwiastki",
+              "latex": "\\Delta = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            }
+          ],
+          "goldenRule": "Dla $a > 0$ funkcja osiąga wartość najmniejszą w wierzchołku: $q = f(p)$, a zbiór wartości to $\\langle q, \\infty)$. Dla $a < 0$ wierzchołek to wartość największa: $(-\\infty, q\\rangle$.",
+          "ckeTrap": {
+            "error": "f(x) = 2(x + 3)^2 - 5 \\implies p = 3",
+            "correct": "f(x) = 2(x + 3)^2 - 5 \\implies p = -3, q = -5",
+            "description": "W postaci kanonicznej jest minus: $a(x - p)^2 + q$, więc $x + 3 = x - (-3)$!"
+          }
+        }
       }
     ],
     "final_test": {

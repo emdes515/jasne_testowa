@@ -145,7 +145,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.1",
+          "title": "Przestrzeń zdarzeń elementarnych i prawdopodobieństwo klasyczne",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.1",
+          "title": "Przestrzeń zdarzeń elementarnych i prawdopodobieństwo klasyczne",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-2",
@@ -288,7 +344,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.2",
+          "title": "Dwukrotny rzut kostką: Tabela zdarzeń jako niezawodna metoda",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.2",
+          "title": "Dwukrotny rzut kostką: Tabela zdarzeń jako niezawodna metoda",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-3",
@@ -431,7 +543,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.3",
+          "title": "Losowanie kul z urny: Doświadczenie jednokrotne z wieloma kolorami",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.3",
+          "title": "Losowanie kul z urny: Doświadczenie jednokrotne z wieloma kolorami",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-4",
@@ -574,7 +742,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.4",
+          "title": "Własności prawdopodobieństwa i zdarzenie przeciwne",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.4",
+          "title": "Własności prawdopodobieństwa i zdarzenie przeciwne",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-5",
@@ -717,7 +941,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.5",
+          "title": "Suma zdarzeń i prawdopodobieństwo łączne",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.5",
+          "title": "Suma zdarzeń i prawdopodobieństwo łączne",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-6",
@@ -860,7 +1140,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.6",
+          "title": "Doświadczenia wieloetapowe: Reguła drzewa stochastycznego",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.6",
+          "title": "Doświadczenia wieloetapowe: Reguła drzewa stochastycznego",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-7",
@@ -1003,7 +1339,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.7",
+          "title": "Losowanie dwuetapowe bez zwracania",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.7",
+          "title": "Losowanie dwuetapowe bez zwracania",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-8",
@@ -1146,7 +1538,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.8",
+          "title": "Doświadczenia z monetami i kostkami: Szacowanie i reguła mnożenia",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.8",
+          "title": "Doświadczenia z monetami i kostkami: Szacowanie i reguła mnożenia",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-9",
@@ -1289,7 +1737,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.9",
+          "title": "Losowanie liczb ze zbioru z warunkami podzielności i nierówności",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.9",
+          "title": "Losowanie liczb ze zbioru z warunkami podzielności i nierówności",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-10",
@@ -1432,7 +1936,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.10",
+          "title": "Złożone zadania z prawdopodobieństwa z matur majowych",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.10",
+          "title": "Złożone zadania z prawdopodobieństwa z matur majowych",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-11",
@@ -1575,7 +2135,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.11",
+          "title": "Prawdopodobieństwo geometryczne na odcinku",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.11",
+          "title": "Prawdopodobieństwo geometryczne na odcinku",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-12",
@@ -1718,7 +2334,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.12",
+          "title": "Doświadczenia z monetami: Rzuty wielokrotne i symetria",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.12",
+          "title": "Doświadczenia z monetami: Rzuty wielokrotne i symetria",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-13",
@@ -1861,7 +2533,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.13",
+          "title": "Doświadczenia losowe z kartami do gry",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.13",
+          "title": "Doświadczenia losowe z kartami do gry",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-14",
@@ -2004,7 +2732,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.14",
+          "title": "Niezależność zdarzeń losowych w ujęciu intuicyjnym",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.14",
+          "title": "Niezależność zdarzeń losowych w ujęciu intuicyjnym",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       },
       {
         "id": "lesson-13-15",
@@ -2147,7 +2931,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "13.15",
+          "title": "Podsumowanie rachunku prawdopodobieństwa: Zadania przekrojowe",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "13.15",
+          "title": "Podsumowanie rachunku prawdopodobieństwa: Zadania przekrojowe",
+          "formulas": [
+            {
+              "title": "Prawdopodobieństwo klasyczne",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "title": "Zdarzenie przeciwne",
+              "latex": "P(A') = 1 - P(A)"
+            },
+            {
+              "title": "Suma zdarzeń",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "title": "Zdarzenia rozłączne",
+              "latex": "A \\cap B = \\emptyset \\implies P(A \\cup B) = P(A) + P(B)"
+            }
+          ],
+          "goldenRule": "Gdy zadanie zawiera frazę 'co najmniej raz' / 'co najmniej jeden', ZAWSZE licz przez zdarzenie przeciwne: $P(A) = 1 - P(A')$, gdzie $A'$ to 'ani razu'.",
+          "ckeTrap": {
+            "error": "P(A) = 1.25",
+            "correct": "0 \\le P(A) \\le 1",
+            "description": "Prawdopodobieństwo NIGDY nie może przekraczać 1 ani być ujemne!"
+          }
+        }
       }
     ],
     "final_test": {

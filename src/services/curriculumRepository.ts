@@ -207,6 +207,8 @@ export const curriculumRepository = {
           topic_id: topicId,
           title: data.title || snap.id,
           theory_pill: data.theory_pill || { concept_essence: data.title },
+          formulaSheet: (data as any).formulaSheet || (data as any).formula_sheet || null,
+          formula_sheet: (data as any).formula_sheet || (data as any).formulaSheet || null,
           tasks: normalizedTasks
         };
 

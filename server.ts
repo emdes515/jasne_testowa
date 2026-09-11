@@ -306,7 +306,88 @@ ${studentAnswer || (hasImage ? 'Uczeń narysował/zapisał swoje rozwiązanie na
       };
     }
 
-    const systemPrompt = `Jesteś oficjalnym egzaminatorem maturalnym z matematyki CKE.
+    const isPolishTask = Boolean(
+      body.isPolish === true ||
+      taskType === 'OPEN_POLISH' ||
+      taskType === 'OPEN_TASK' ||
+      taskType === 'OPEN_SHORT' ||
+      taskType === 'OPEN_SYNTHESIS' ||
+      taskType === 'ESSAY' ||
+      (typeof question === 'string' && (question.includes('tekst') || question.includes('lektur') || question.includes('bohater') || question.includes('motyw') || question.includes('CKE') || question.includes('Wokulsk') || question.includes('Kmicic') || question.includes('Hiob') || question.includes('styl') || question.includes('funkcj') || question.includes('wypracowan') || question.includes('rozprawk') || question.includes('esej')))
+    );
+
+    const isEssay35 = isPolishTask && (maxPts >= 30 || taskType === 'ESSAY');
+
+    let systemPrompt = '';
+    if (isEssay35) {
+      systemPrompt = `Jesteś starszym egzaminatorem Centralnej Komisji Egzaminacyjnej (CKE) z języka polskiego oceniającym wypracowanie maturalne (Nowa Formuła 2023/2026, Poziom Podstawowy, max 35 punktów).
+Twoim zadaniem jest RZETELNA, WNIKLIWA I SPRAWIEDLIWA ocena eseju ucznia według oficjalnych 4 kryteriów CKE:
+
+KRYTERIA OCENY WYPRACOWANIA CKE (35 PKT):
+1. Spełnienie formalnych warunków polecenia (0–1 pkt):
+   - 1 pkt: praca odnosi się do problemu z polecenia i przynajmniej w części do lektury obowiązkowej, brak błędu kardynalnego.
+   - 0 pkt: praca zupełnie nie na temat LUB zawiera BŁĄD KARDYNALNY (całkowite zniekształcenie fabuły/wymowy lektury obowiązkowej). UWAGA: Błąd kardynalny zeruje CAŁE wypracowanie (0/35 pkt)!
+2. Kompetencje literackie i kulturowe (0–16 pkt):
+   - Funkcjonalne wykorzystanie lektury obowiązkowej (0-8 pkt): trafność argumentacji, analiza zachowań bohaterów, brak błędów rzeczowych.
+   - Funkcjonalne wykorzystanie innego utworu literackiego lub kontekstów (0-8 pkt): kontekst historyczny, filozoficzny, biograficzny, kulturowy. Kontekst musi być funkcjonalny (nie tylko wspomniany).
+3. Kompozycja tekstu (0–7 pkt):
+   - Układ pracy: wstęp z tezą/hipotezą, rozwinięcie z akapitami, zakończenie z syntezą.
+   - Spójność lokalna i globalna, stosowanie konektorów logicznych, podział na akapity.
+4. Język i styl (0–11 pkt):
+   - Poprawność językowa i gramatyczna (0-5 pkt): bogactwo słownictwa, dojrzałość składniowa.
+   - Poprawność ortograficzna (0-3 pkt): zasady pisowni.
+   - Poprawność interpunkcyjna (0-3 pkt): przecinki, zdania złożone.
+
+ZASADA OBJĘTOŚCI CKE:
+- Wymagana minimalna objętość wypracowania to 300 słów.
+- Jeśli praca liczy poniżej 300 słów (np. 150-299), punkty za kryteria III i IV są obniżane lub nieprzyznawane zgodnie z instrukcją CKE.
+- Jeśli praca liczy poniżej 150 słów, egzaminator przyznaje 0 punktów za kompozycję i język.
+
+Zwróć odpowiedź WYŁĄCZNIE jako prawidłowy obiekt JSON o polach:
+{
+  "score": <suma punktów całkowita od 0 do 35>,
+  "maxPoints": 35,
+  "isPassed": <true jeśli score >= 11 (próg 30%), false w przeciwnym razie>,
+  "gradeTitle": "<np. '31 / 35 PKT – Wybitne wypracowanie maturalne' lub '24 / 35 PKT – Bardzo dobry esej' lub '12 / 35 PKT – Praca zaliczona na progu'>",
+  "summary": "<zwięzła ocena całościowa w 1-2 zdaniach>",
+  "mentorComment": "<ciepły, mentorski, motywujący komentarz egzaminatora w 2. os. lp. z odniesieniem do tezy i argumentów ucznia>",
+  "strengths": ["<lista 2-4 najmocniejszych stron eseju>"],
+  "errors": ["<lista 1-3 elementów wymagających poprawy/korekty>"],
+  "ckeFeedback": "<oficjalna opinia egzaminatora CKE z podsumowaniem punktacji>",
+  "suggestion": "<wskazówka redakcyjna do kolejnego wypracowania>",
+  "hintForNextAttempt": "<podpowiedź jak wzbogacić konteksty lub argumentację>",
+  "criteriaBreakdown": {
+    "formal": { "score": <0-1>, "max": 1, "comment": "<uzasadnienie>" },
+    "literary_cultural": { "score": <0-16>, "max": 16, "comment": "<uzasadnienie lektury i kontekstów>" },
+    "composition": { "score": <0-7>, "max": 7, "comment": "<uzasadnienie struktury i spójności>" },
+    "language_style": { "score": <0-11>, "max": 11, "comment": "<uzasadnienie języka, stylu i interpunkcji>" }
+  }
+}`;
+    } else if (isPolishTask) {
+      systemPrompt = `Jesteś oficjalnym egzaminatorem maturalnym CKE z języka polskiego (Nowa Formuła 2023/2026).
+Twoim zadaniem jest RZETELNA, PRECYZYJNA OCENA pisemnej odpowiedzi ucznia na zadanie otwarte (interpretacja, uzasadnienie, argumentacja lub notatka syntetyzująca) zgodnie z oficjalnym kluczem CKE.
+
+ZASADY OCENIANIA CKE DLA JĘZYKA POLSKIEGO:
+1. ${maxPts} PKT (Pełna punktacja): Odpowiedź w pełni poprawna merytorycznie (brak błędu kardynalnego i rzeczowego), zawierająca trafną tezę/rozpoznanie oraz logiczne, poparte tekstem lub lekturą uzasadnienie.
+2. 1 PKT: Odpowiedź częściowa (np. trafne rozpoznanie cechy/funkcji/motywu, lecz uzasadnienie zbyt ogólne, lakoniczne lub brak odwołania do fragmentu).
+3. 0 PKT: Odpowiedź błędna merytorycznie, sprzeczna z sensem tekstu lub lektury (błąd rzeczowy/kardynalny) albo brak argumentacji.
+
+Zwróć odpowiedź WYŁĄCZNIE jako prawidłowy obiekt JSON o polach:
+{
+  "score": <liczba punktów całkowita od 0 do ${maxPts}>,
+  "maxPoints": ${maxPts},
+  "isPassed": <true jeśli score >= ${Math.ceil(maxPts * 0.5)}, false w przeciwnym razie>,
+  "gradeTitle": "<np. '${maxPts} / ${maxPts} PKT – Pełna odpowiedź i argumentacja' lub '1 / ${maxPts} PKT – Częściowa odpowiedź' lub '0 / ${maxPts} PKT – Próba odpowiedzi'>",
+  "summary": "<krótkie podsumowanie oceny w 1 zdaniu>",
+  "mentorComment": "<życzliwy, motywujący komentarz egzaminatora w 2. os. lp. odnoszący się do konkretnych sformułowań ucznia>",
+  "strengths": ["<lista mocnych stron odpowiedzi>"],
+  "errors": ["<lista braków lub błędów zgodnie z kluczem CKE>"],
+  "ckeFeedback": "<oficjalne uzasadnienie egzaminatora CKE>",
+  "suggestion": "<wskazówka dla ucznia>",
+  "hintForNextAttempt": "<podpowiedź co uzupełnić w kolejnej próbie>"
+}`;
+    } else {
+      systemPrompt = `Jesteś oficjalnym egzaminatorem maturalnym z matematyki CKE.
 Twoim zadaniem jest RZETELNA, PRECYZYJNA OCENA toku myślenia ucznia, jego obliczeń, pisma odręcznego na wirtualnej tablicy lub wpisanego dowodu algebraicznego.
 
 Zwróć odpowiedź WYŁĄCZNIE jako prawidłowy obiekt JSON o polach:
@@ -329,6 +410,7 @@ ZASADY OCENIANIA MATURALNEGO:
 2. 1 PUNKT: Zasadniczy postęp w rozwiązaniu zadania (np. poprawne przekształcenie algebraiczne), ale bez pełnego wniosku lub z drobnym błędem.
 3. 0 PUNKTÓW: Brak istotnego postępu lub brak powiązania z tezą.
 4. Jeśli dołączono obraz tablicy, dokładnie odczytaj pismo odręczne, wzory i obliczenia.`;
+    }
 
     const userPrompt = `[DANE ZADANIA]
 Typ zadania: ${taskType || 'Zadanie maturalne otwarte'}
@@ -402,7 +484,45 @@ ${hasImage ? 'DOŁĄCZONO OBRAZ WIRTUALNEJ TABLICY Z PISMEM ODRĘCZNYM / OBLICZE
             errors: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Lista brakujących elementów lub błędów' },
             ckeFeedback: { type: Type.STRING, description: 'Komentarz egzaminatora maturalnego' },
             suggestion: { type: Type.STRING, description: 'Instrukcja/porada dla ucznia' },
-            hintForNextAttempt: { type: Type.STRING, description: 'Wskazówka naprowadzająca' }
+            hintForNextAttempt: { type: Type.STRING, description: 'Wskazówka naprowadzająca' },
+            criteriaBreakdown: {
+              type: Type.OBJECT,
+              description: 'Szczegółowa ocena 4 kryteriów CKE dla wypracowania',
+              properties: {
+                formal: {
+                  type: Type.OBJECT,
+                  properties: {
+                    score: { type: Type.NUMBER },
+                    max: { type: Type.NUMBER },
+                    comment: { type: Type.STRING }
+                  }
+                },
+                literary_cultural: {
+                  type: Type.OBJECT,
+                  properties: {
+                    score: { type: Type.NUMBER },
+                    max: { type: Type.NUMBER },
+                    comment: { type: Type.STRING }
+                  }
+                },
+                composition: {
+                  type: Type.OBJECT,
+                  properties: {
+                    score: { type: Type.NUMBER },
+                    max: { type: Type.NUMBER },
+                    comment: { type: Type.STRING }
+                  }
+                },
+                language_style: {
+                  type: Type.OBJECT,
+                  properties: {
+                    score: { type: Type.NUMBER },
+                    max: { type: Type.NUMBER },
+                    comment: { type: Type.STRING }
+                  }
+                }
+              }
+            }
           },
           required: ['score', 'maxPoints', 'isPassed', 'gradeTitle', 'summary', 'mentorComment', 'strengths', 'errors', 'ckeFeedback', 'suggestion', 'hintForNextAttempt']
         }

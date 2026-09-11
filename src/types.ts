@@ -37,6 +37,13 @@ export interface UserState {
   };
   completed_lessons?: string[]; // Array of completed lesson IDs (e.g. ['lesson-1-1', '1.1'])
   completedLessons?: Record<string, any>; // Record of lesson progression metadata
+  // Hearts & PRO Sponsorship fields
+  isPro?: boolean; // Czy użytkownik ma aktywny pakiet PRO (nielimitowane serca, AI Vision)
+  hearts?: number; // Bieżąca liczba serc (0 do 5, domyślnie 5)
+  maxHearts?: number; // Maksymalna liczba serc (domyślnie 5)
+  lastHeartRegenTimestamp?: number; // Timestamp (Date.now()) ostatniej regeneracji serca
+  aiVisionDailyCount?: number; // Liczba użytych ocen tablicy przez AI w danym dniu
+  lastVisionDate?: string; // YYYY-MM-DD ostatniego sprawdzenia AI
 }
 
 export interface WorkedExampleStep {
@@ -54,6 +61,27 @@ export interface WorkedExample {
   result?: string;
 }
 
+export interface BookCharacter {
+  name: string;
+  role: string;
+}
+
+export interface BookScene {
+  scene: string;
+  significance: string;
+}
+
+export interface BookSummary {
+  title: string;
+  author?: string;
+  epoch?: string;
+  genre?: string;
+  plot_overview: string;
+  key_events: string[];
+  characters: BookCharacter[];
+  key_scenes: BookScene[];
+}
+
 export interface LessonTheoryPill {
   lessonId?: string;
   title?: string;
@@ -68,6 +96,10 @@ export interface LessonTheoryPill {
   keyTakeaway?: string;
   trapAlert?: string;
   summary?: string;
+  key_points?: string[];
+  keyPoints?: string[];
+  book_summary?: BookSummary;
+  streszczenie?: string;
 }
 
 export type TabState = 'dashboard' | 'nauka' | 'arena' | 'profile' | 'simulator';
@@ -141,3 +173,67 @@ export interface AiTaskEvaluationResult {
   suggestion?: string;
   hintForNextAttempt?: string;
 }
+
+// ==========================================
+// CKE Matura Predictor Types
+// ==========================================
+
+export type CkeTopicImportance = 'CRITICAL_PEWNIAK' | 'HIGH' | 'MEDIUM';
+
+export interface TopicCkeWeight {
+  topicId: string; // np. "dzial-1"
+  name: string;
+  minPoints: number;
+  maxPoints: number;
+  averagePoints: number; // waga punktowa (suma dla matmy = 50 pkt)
+  importance: CkeTopicImportance;
+}
+
+export interface SubjectCkeConfig {
+  subjectId: string; // "matematyka-podstawowa", "matematyka-rozszerzona", "jezyk-polski"
+  name: string;
+  totalExamPoints: number; // 50
+  passingThresholdPoints: number; // 15 (30%)
+  passingThresholdPercent: number; // 30
+  topics: Record<string, TopicCkeWeight>;
+}
+
+export interface TopicMasteryBreakdown {
+  topicId: string;
+  name: string;
+  importance: CkeTopicImportance;
+  masteryPercent: number; // 0 - 100
+  expectedPoints: number; // oczekiwana liczba punktów (np. 4.2)
+  maxPoints: number; // maksymalna waga CKE (np. 5.5)
+  completedLessonsCount: number;
+  totalLessonsCount: number;
+  completedTasksCount: number;
+  mistakesCount: number;
+}
+
+export interface PredictorResult {
+  subjectId: string; // "matematyka-podstawowa", "jezyk-polski"
+  subjectName: string; // "Matematyka", "Język Polski"
+  predictedPercent: number; // np. 54
+  predictedPoints: number; // np. 27 / 50
+  minPercent: number; // np. 48
+  maxPercent: number; // np. 60
+  confidenceScore: number; // 0 do 100 (%)
+  isPassing: boolean; // true jeśli predictedPercent >= 30
+  totalExamPoints: number; // 50
+  passingThresholdPoints: number; // 15
+  isCalibrating: boolean; // true jeśli użytkownik rozwiązał < 5 zadań i brak prób matury
+  calibrationProgress: {
+    current: number; // np. 1
+    required: number; // 5
+    percentage: number; // np. 20
+  };
+  nextBestTopic: {
+    topicId: string;
+    topicName: string;
+    potentialPointGain: number; // np. +5.5 pkt
+    importance: CkeTopicImportance;
+  };
+  topicBreakdown: TopicMasteryBreakdown[];
+}
+

@@ -38,14 +38,19 @@ export interface ProcessedTopic {
  */
 export function normalizeTask(task: any, lesson: any, topic: any): any {
   if (!task) return null;
-  const isMulti = task.type === 'MULTI_CHOICE';
-  const isSingle = task.type === 'SINGLE_CHOICE';
-  const isProof = task.type === 'OPEN_PROOF' || task.type === 'OPEN_GENERAL';
-  const isNumeric = task.type === 'NUMERIC_INPUT';
-  const isTrueFalse = task.type === 'TRUE_FALSE';
-  const isTwoPart = task.type === 'TWO_PART';
+  const rawType = String(task.type || 'SINGLE_CHOICE').toUpperCase();
+  const isMulti = rawType === 'MULTI_CHOICE';
+  const isSingle = rawType === 'SINGLE_CHOICE';
+  const isProof = rawType === 'OPEN_PROOF' || rawType === 'OPEN_GENERAL' || rawType === 'OPEN_TASK';
+  const isNumeric = rawType === 'NUMERIC_INPUT';
+  const isTrueFalse = rawType === 'TRUE_FALSE';
+  const isTwoPart = rawType === 'TWO_PART';
 
-  const rawCorrect = task.correct_answer || task.correctAnswer || 'A';
+  // Resilient resolution of correct answer (from direct field OR from options array marked is_correct: true)
+  const optionWithCorrect = Array.isArray(task.options)
+    ? task.options.find((o: any) => o && (o.is_correct === true || o.isCorrect === true))
+    : null;
+  const rawCorrect = task.correct_answer || task.correctAnswer || (optionWithCorrect ? (optionWithCorrect.id || optionWithCorrect.key || 'A') : 'A');
   let normCorrect = String(rawCorrect).trim();
   const letterMatch = normCorrect.match(/^(?:Odp\s*)?([A-D1-4])/i);
   if (letterMatch && (isSingle || isMulti)) {
@@ -66,6 +71,15 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
     }
   }
 
+  // Support TRUE_FALSE conversion ('P' / 'F')
+  if (isTrueFalse) {
+    if (normCorrect === 'B' || normCorrect.toLowerCase() === 'fałsz' || normCorrect.toLowerCase() === 'false') {
+      normCorrect = 'F';
+    } else if (normCorrect === 'A' || normCorrect.toLowerCase() === 'prawda' || normCorrect.toLowerCase() === 'true') {
+      normCorrect = 'P';
+    }
+  }
+
   const options: TaskOption[] = (task.options || []).map((opt: any, idx: number) => {
     if (typeof opt === 'string') {
       const optLetterMatch = opt.match(/^([A-D1-4])[\.\)]\s*(.*)$/);
@@ -83,11 +97,12 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
     }
     const optId = opt.id || opt.key || opt.label || (['A', 'B', 'C', 'D'][idx] || String(idx + 1));
     const optText = opt.text || opt.content_latex || opt.content || '';
+    const isOptMarked = opt.is_correct === true || opt.isCorrect === true;
     return {
       id: optId,
       text: optText,
       content_latex: optText,
-      is_correct: isSingle ? (optId === normCorrect || optId === task.correct_answer) : (task.correct_answers || []).includes(optId)
+      is_correct: isOptMarked || (isSingle ? (optId === normCorrect || optId === task.correct_answer) : (task.correct_answers || []).includes(optId))
     };
   });
 
@@ -102,18 +117,20 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
   if (task.difficulty === 'EASY') difficultyLabel = 'Rozgrzewka';
   if (task.difficulty === 'HARD') difficultyLabel = 'Wymagające';
 
-  const questionContent = task.content || task.question || '';
+  const questionContent = task.content || task.question || task.statement || '';
 
   return {
     id: task.id,
-    type: task.type,
-    source: task.source || 'Zadanie Maturalne',
-    cke_source: task.source || 'Zadanie Maturalne',
+    type: rawType,
+    source: task.source || task.cke_source || 'Zadanie Maturalne',
+    cke_source: task.source || task.cke_source || 'Zadanie Maturalne',
+    cke_tag: task.cke_tag,
+    cke_badge: task.cke_badge || task.badge,
     points: task.points || (isProof ? 2 : 1),
     ai_tutor_rubric: task.ai_tutor_rubric,
     title: lesson ? `Lekcja ${lesson.id}: ${lesson.title}` : 'Zadanie',
     topic: topic ? `${topic.short_title || topic.title} • ${lesson?.title || ''}` : 'Matematyka',
-    instruction: defaultInstruction,
+    instruction: task.instruction || defaultInstruction,
     math_statement: questionContent,
     question: questionContent,
     content: questionContent,
@@ -124,7 +141,7 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
     correct_answer: isSingle ? normCorrect : task.correct_answer,
     correctAnswer: isSingle ? normCorrect : (task.correctAnswer || task.correct_answer),
     raw_correct_answer: rawCorrect,
-    input_placeholder: task.input_placeholder || 'Wpisz liczbę lub ułamek...',
+    input_placeholder: task.input_placeholder || (isProof ? 'Sformułuj odpowiedź pisemną...' : 'Wpisz liczbę lub ułamek...'),
     statements: task.statements,
     part_1: task.part_1 ? {
       ...task.part_1,
@@ -141,13 +158,13 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
       }))
     } : undefined,
     hints: {
-      level_1: task.hint_1 || task.hint || 'Zastosuj wzory z Karty Wzorów CKE.',
-      level_2: task.hint_2 || 'Przekształć wyrażenie krok po kroku.',
+      level_1: task.hints?.level_1 || task.hint_1 || task.hint || 'Zwróć uwagę na kluczowe założenia w poleceniu.',
+      level_2: task.hints?.level_2 || task.hint_2 || 'Przeanalizuj powiązania logiczne i sformułuj precyzyjny wniosek.',
       ai_tutor_prompt: `Pomóż uczniowi rozwiązać zadanie maturalne: ${questionContent}`
     },
-    hint: task.hint || task.hint_1 || task.hints?.level_1 || 'Zastosuj wzory z Karty Wzorów CKE.',
+    hint: task.hint || task.hints?.level_1 || task.hint_1 || 'Zwróć uwagę na kluczowe założenia w poleceniu.',
     hint_cost: task.hint_cost || task.hintCost || (isProof ? 20 : 10),
-    ai_hint_enabled: Boolean(task.ai_hint_enabled || isProof || task.type === 'OPEN_GENERAL' || task.type === 'OPEN_PROOF'),
+    ai_hint_enabled: Boolean(task.ai_hint_enabled !== undefined ? task.ai_hint_enabled : (isProof || task.type === 'OPEN_GENERAL' || task.type === 'OPEN_PROOF' || task.type === 'OPEN_TASK')),
     ai_hint_cost: task.ai_hint_cost || task.hint_cost || 20,
     scoring_key: task.scoring_key || task.scoringKey || task.explanation || '',
     official_solution_steps: (() => {

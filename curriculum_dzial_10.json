@@ -82,17 +82,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dane są punkty $A = (0, 0)$, $B = (4, 0)$, $C = (0, 3)$.\\\\1. Trójkąt $ABC$ jest prostokątny.\\\\2. Długość przeciwprostokątnej $BC$ wynosi $5$.",
+            "content": "Oceń prawdziwość zdania: Dane są punkty $A = (0, 0)$, $B = (4, 0)$, $C = (0, 3)$.\\ Trójkąt $ABC$ jest prostokątny.",
             "explanation": "1. Boki leżą na osiach OX i OY, które przecinają się pod kątem 90° (PRAWDA). 2. |BC| = \\sqrt{4^2 + 3^2} = 5 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Punkty leżą na osiach układu współrzędnych."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-1-6",
@@ -145,7 +143,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.1",
+          "title": "Długość odcinka w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.1",
+          "title": "Długość odcinka w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-2",
@@ -225,17 +287,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest odcinek $AB$ o końcach $A = (-5, 2)$ i $B = (5, -2)$.\\\\1. Środek odcinka $AB$ leży w początku układu współrzędnych $(0, 0)$.\\\\2. Punkty $A$ i $B$ są symetryczne względem punktu $(0, 0)$.",
+            "content": "Oceń prawdziwość zdania: Dany jest odcinek $AB$ o końcach $A = (-5, 2)$ i $B = (5, -2)$.\\ Środek odcinka $AB$ leży w początku układu współrzędnych $(0, 0)$.",
             "explanation": "1. S = ((-5+5)/2, (2-2)/2) = (0, 0) (PRAWDA). 2. Jeśli środek odcinka to (0,0), to punkty są symetryczne względem początku układu (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz środek odcinka dodając współrzędne."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-2-6",
@@ -288,7 +348,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.2",
+          "title": "Środek odcinka w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.2",
+          "title": "Środek odcinka w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-3",
@@ -368,17 +492,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dana jest prosta $y = -x + 4$.\\\\1. Prosta przechodzi przez II, I i IV ćwiartkę układu współrzędnych.\\\\2. Pole trójkąta ograniczonego tą prostą i osiami układu wynosi $8$.",
+            "content": "Oceń prawdziwość zdania: Dana jest prosta $y = -x + 4$.\\ Prosta przechodzi przez II, I i IV ćwiartkę układu współrzędnych.",
             "explanation": "1. Punkty przecięcia z osiami to (0, 4) i (4, 0). Prosta leży w I ćwiartce, a jej ramiona wchodzą w II i IV (PRAWDA). 2. Pole trójkąta prostokątnego P = 1/2 * 4 * 4 = 8 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Wyznacz punkty przecięcia z osiami: (0, 4) oraz (4, 0)."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-3-6",
@@ -431,7 +553,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.3",
+          "title": "Proste w postaci kierunkowej: y = ax + b i kąt nachylenia",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.3",
+          "title": "Proste w postaci kierunkowej: y = ax + b i kąt nachylenia",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-4",
@@ -511,17 +697,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dane są proste $k: y = 2x - 1$ oraz $l: y = -0{,}5x + 3$.\\\\1. Proste $k$ i $l$ są do siebie prostopadłe.\\\\2. Proste te przecinają się pod kątem $90^\\circ$.",
+            "content": "Oceń prawdziwość zdania: Dane są proste $k: y = 2x - 1$ oraz $l: y = -0{,}5x + 3$.\\ Proste $k$ i $l$ są do siebie prostopadłe.",
             "explanation": "1. 2 * (-0,5) = -1 (PRAWDA). 2. Proste prostopadłe przecinają się pod kątem 90° (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Iloczyn współczynników wynosi 2 * (-0,5) = -1."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-4-6",
@@ -574,7 +758,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.4",
+          "title": "Proste równoległe i prostopadłe w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.4",
+          "title": "Proste równoległe i prostopadłe w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-5",
@@ -654,17 +902,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest okrąg $(x - 3)^2 + (y - 4)^2 = 25$.\\\\1. Okrąg ten przechodzi przez początek układu współrzędnych $(0, 0)$.\\\\2. Promień tego okręgu wynosi $5$.",
+            "content": "Oceń prawdziwość zdania: Dany jest okrąg $(x - 3)^2 + (y - 4)^2 = 25$.\\ Okrąg ten przechodzi przez początek układu współrzędnych $(0, 0)$.",
             "explanation": "1. Podstawiamy (0, 0): (0 - 3)^2 + (0 - 4)^2 = 9 + 16 = 25 (PRAWDA). 2. r = \\sqrt{25} = 5 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Podstaw x = 0 i y = 0 do równania okręgu."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-5-6",
@@ -717,7 +963,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.5",
+          "title": "Równanie okręgu w postaci kanonicznej: (x - a)^2 + (y - b)^2 = r^2",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.5",
+          "title": "Równanie okręgu w postaci kanonicznej: (x - a)^2 + (y - b)^2 = r^2",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-6",
@@ -797,17 +1107,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest okrąg $x^2 + y^2 = 25$ oraz prosta $y = 5$.\\\\1. Prosta $y = 5$ jest styczna do okręgu.\\\\2. Punktem styczności jest punkt $(0, 5)$.",
+            "content": "Oceń prawdziwość zdania: Dany jest okrąg $x^2 + y^2 = 25$ oraz prosta $y = 5$.\\ Prosta $y = 5$ jest styczna do okręgu.",
             "explanation": "1. Środek (0,0), r = 5. Odległość do y = 5 to 5 = r (PRAWDA). 2. Podstawiając y = 5: x^2 + 25 = 25 => x = 0, punkt (0, 5) (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Wstaw y = 5 do równania okręgu x^2 + y^2 = 25."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-6-6",
@@ -860,7 +1168,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.6",
+          "title": "Wzajemne położenie prostej i okręgu oraz styczność",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.6",
+          "title": "Wzajemne położenie prostej i okręgu oraz styczność",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-7",
@@ -940,17 +1312,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest wektor $\\vec{u} = [4, -3]$.\\\\1. Długość wektora wynosi $|\\vec{u}| = 5$.\\\\2. Wektor przeciwny $-\\vec{u}$ ma współrzędne $[-4, 3]$.",
+            "content": "Oceń prawdziwość zdania: Dany jest wektor $\\vec{u} = [4, -3]$.\\ Długość wektora wynosi $|\\vec{u}| = 5$.",
             "explanation": "1. \\sqrt{16 + 9} = 5 (PRAWDA). 2. Wektor przeciwny to zmiana znaków na przeciwne: [-4, 3] (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Wektor przeciwny ma przeciwne znaki obu współrzędnych."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-7-6",
@@ -1003,7 +1373,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.7",
+          "title": "Wektory w układzie współrzędnych: Współrzędne i działania",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.7",
+          "title": "Wektory w układzie współrzędnych: Współrzędne i działania",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-8",
@@ -1083,17 +1517,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest punkt $P = (2, -3)$.\\\\1. Obrazem punktu $P$ w symetrii względem OY jest punkt $(-2, -3)$.\\\\2. Odległość punktu $P$ od jego obrazu w symetrii względem OX wynosi $6$.",
+            "content": "Oceń prawdziwość zdania: Dany jest punkt $P = (2, -3)$.\\ Obrazem punktu $P$ w symetrii względem OY jest punkt $(-2, -3)$.",
             "explanation": "1. S_{OY}(2, -3) = (-2, -3) (PRAWDA). 2. S_{OX}(2, -3) = (2, 3), odległość między (2, -3) a (2, 3) wynosi 3 - (-3) = 6 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Punkty (2, -3) i (2, 3) różnią się współrzędną y o 6."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-8-6",
@@ -1146,7 +1578,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.8",
+          "title": "Symetria osiowa i środkowa w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.8",
+          "title": "Symetria osiowa i środkowa w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-9",
@@ -1226,17 +1722,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dana jest prosta $3x + 4y - 12 = 0$.\\\\1. Prosta ta przecina oś OY w punkcie $(0, 3)$.\\\\2. Wektor $[3, 4]$ jest prostopadły do tej prostej.",
+            "content": "Oceń prawdziwość zdania: Dana jest prosta $3x + 4y - 12 = 0$.\\ Prosta ta przecina oś OY w punkcie $(0, 3)$.",
             "explanation": "1. Dla x = 0: 4y = 12 => y = 3 (PRAWDA). 2. Wektor [A, B] = [3, 4] jest wektorem normalnym (prostopadłym) do prostej (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Współczynniki [A, B] tworzą wektor prostopadły do prostej."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-9-6",
@@ -1289,7 +1783,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.9",
+          "title": "Postać ogólna prostej: Ax + By + C = 0",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.9",
+          "title": "Postać ogólna prostej: Ax + By + C = 0",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-10",
@@ -1369,17 +1927,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Punkty $A = (1, 2)$, $B = (3, 6)$, $C = (5, 10)$:\\\\1. Leżą na jednej prostej.\\\\2. 'Pole' trójkąta utworzonego przez te punkty wynosi $0$.",
+            "content": "Oceń prawdziwość zdania: Punkty $A = (1, 2)$, $B = (3, 6)$, $C = (5, 10)$:\\ Leżą na jednej prostej.",
             "explanation": "1. Wektor AB = [2, 4], wektor BC = [2, 4], punkty są współliniowe (PRAWDA). 2. Gdy punkty leżą na jednej prostej, pole wynosi 0 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź, czy wektory AB i BC są równoległe."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-10-6",
@@ -1432,7 +1988,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.10",
+          "title": "Pole trójkąta i wielokąta ze współrzędnych wierzchołków",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.10",
+          "title": "Pole trójkąta i wielokąta ze współrzędnych wierzchołków",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-11",
@@ -1512,17 +2132,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Symetralna odcinka $AB$:\\\\1. Jest zbiorem wszystkich punktów płaszczyzny jednakowo oddalonych od punktów $A$ i $B$.\\\\2. Przechodzi przez środek odcinka $AB$ pod kątem prostym.",
+            "content": "Oceń prawdziwość zdania: Symetralna odcinka $AB$:\\ Jest zbiorem wszystkich punktów płaszczyzny jednakowo oddalonych od punktów $A$ i $B$.",
             "explanation": "1. Geometryczna definicja symetralnej (PRAWDA). 2. Konstrukcyjna definicja symetralnej (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przypomnij sobie definicję symetralnej odcinka."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-11-6",
@@ -1575,7 +2193,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.11",
+          "title": "Symetralna odcinka w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.11",
+          "title": "Symetralna odcinka w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-12",
@@ -1655,17 +2337,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest punkt $P = (3, 5)$ oraz prosta pozioma $y = 2$.\\\\1. Odległość punktu $P$ od tej prostej wynosi $3$.\\\\2. Rzut prostokątny punktu $P$ na tę prostą ma współrzędne $(3, 2)$.",
+            "content": "Oceń prawdziwość zdania: Dany jest punkt $P = (3, 5)$ oraz prosta pozioma $y = 2$.\\ Odległość punktu $P$ od tej prostej wynosi $3$.",
             "explanation": "1. d = |5 - 2| = 3 (PRAWDA). 2. Rzut ma ten sam x = 3 i leży na prostej y = 2, czyli (3, 2) (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Odległość od prostej poziomej y = 2 to różnica współrzędnych y."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-12-6",
@@ -1718,7 +2398,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.12",
+          "title": "Odległość punktu od prostej: d = |Ax_0 + By_0 + C| / sqrt(A^2 + B^2)",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.12",
+          "title": "Odległość punktu od prostej: d = |Ax_0 + By_0 + C| / sqrt(A^2 + B^2)",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-13",
@@ -1798,17 +2542,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Przesunięcie figury o wektor $\\vec{v} \\neq \\vec{0}$:\\\\1. Jest izometrią (zachowuje odległości między punktami).\\\\2. Przekształca każdą prostą w prostą do niej równoległą.",
+            "content": "Oceń prawdziwość zdania: Przesunięcie figury o wektor $\\vec{v} \\neq \\vec{0}$:\\ Jest izometrią (zachowuje odległości między punktami).",
             "explanation": "1. Przesunięcie nie zmienia rozmiarów figur (PRAWDA). 2. Współczynnik kierunkowy prostej nie ulega zmianie, więc proste są równoległe (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przesunięcie zachowuje kształt i orientację figury."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-13-6",
@@ -1861,7 +2603,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.13",
+          "title": "Przekształcenia geometryczne figur: Przesunięcie o wektor [p, q]",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.13",
+          "title": "Przekształcenia geometryczne figur: Przesunięcie o wektor [p, q]",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-14",
@@ -1941,17 +2747,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Punkty $A = (-2, 1)$, $B = (2, 3)$, $C = (0, 7)$ tworzą trójkąt.\\\\1. Długość boku $AB$ wynosi $\\sqrt{20}$.\\\\2. Trójkąt $ABC$ jest trójkątem równoramiennym.",
+            "content": "Oceń prawdziwość zdania: Punkty $A = (-2, 1)$, $B = (2, 3)$, $C = (0, 7)$ tworzą trójkąt.\\ Długość boku $AB$ wynosi $\\sqrt{20}$.",
             "explanation": "1. |AB|^2 = 4^2 + 2^2 = 20 => |AB| = \\sqrt{20} (PRAWDA). 2. |BC|^2 = (-2)^2 + 4^2 = 20 => |BC| = \\sqrt{20}, więc |AB| = |BC| (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz długość boku BC i porównaj z bokiem AB."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-14-6",
@@ -2004,7 +2808,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.14",
+          "title": "Zadania dowodowe w geometrii analitycznej",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.14",
+          "title": "Zadania dowodowe w geometrii analitycznej",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       },
       {
         "id": "lesson-10-15",
@@ -2084,17 +2952,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest punkt $P = (3, -4)$.\\\\1. Odległość punktu $P$ od początku układu wynosi $5$.\\\\2. Punkt $P$ leży na okręgu $x^2 + y^2 = 25$.",
+            "content": "Oceń prawdziwość zdania: Dany jest punkt $P = (3, -4)$.\\ Odległość punktu $P$ od początku układu wynosi $5$.",
             "explanation": "1. \\sqrt{3^2 + (-4)^2} = 5 (PRAWDA). 2. 3^2 + (-4)^2 = 25 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "3^2 + (-4)^2 = 9 + 16 = 25."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-10-15-6",
@@ -2148,7 +3014,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "10.15",
+          "title": "Podsumowanie geometrii analitycznej: Strategie rozwiązywania zadań",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "10.15",
+          "title": "Podsumowanie geometrii analitycznej: Strategie rozwiązywania zadań",
+          "formulas": [
+            {
+              "title": "Długość odcinka",
+              "latex": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+            },
+            {
+              "title": "Współrzędne środka odcinka",
+              "latex": "S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)"
+            },
+            {
+              "title": "Równanie okręgu w postaci kanonicznej",
+              "latex": "(x - a)^2 + (y - b)^2 = r^2 \\quad (S = (a, b))"
+            },
+            {
+              "title": "Odległość punktu od prostej",
+              "latex": "d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}"
+            },
+            {
+              "title": "Wektor ze współrzędnych punktów",
+              "latex": "\\vec{AB} = [x_B - x_A, y_B - y_A], \\quad |\\vec{u}| = \\sqrt{u_x^2 + u_y^2}"
+            }
+          ],
+          "goldenRule": "W równaniu okręgu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi $r^2$, a nie $r$. Jeżeli po prawej stronie jest 25, to promień wynosi $\\sqrt{25} = 5$.",
+          "ckeTrap": {
+            "error": "(x - 2)^2 + (y + 3)^2 = 16 \\implies S = (-2, 3), r = 16",
+            "correct": "S = (2, -3), \\quad r = \\sqrt{16} = 4",
+            "description": "Pamiętaj o zmianie znaków współrzędnych środka oraz spierwiastkowaniu prawej strony!"
+          }
+        }
       }
     ],
     "final_test": {

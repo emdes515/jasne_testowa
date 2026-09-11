@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Search, BookOpen, AlertTriangle, Sparkles, Filter } from 'lucide-react';
+import { X, Search, BookOpen, AlertTriangle, Compass, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS, CkeFormulaItem } from '../data/ckeFormulasData';
 import { MathRenderer } from './MathRenderer';
@@ -199,7 +199,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                     {item.goldenRule && (
                       <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 flex items-start gap-2 text-xs text-amber-200">
-                        <Sparkles size={15} className="text-amber-400 shrink-0 mt-0.5" />
+                        <Compass size={15} className="text-amber-400 shrink-0 mt-0.5" />
                         <div className="flex-1">
                           <strong className="block text-amber-300 font-bold text-[11px] uppercase tracking-wider mb-0.5">
                             Złota Zasada Maturalna

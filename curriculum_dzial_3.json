@@ -135,7 +135,47 @@
             "hint_cost": 20,
             "id": "task-3-1-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.1",
+          "title": "Równania liniowe: Przenoszenie wyrazów i redukcja",
+          "formulas": [
+            {
+              "title": "Równanie liniowe",
+              "latex": "ax + b = 0 \\iff ax = -b"
+            },
+            {
+              "title": "Rozwiązanie dla a != 0",
+              "latex": "x = -\\frac{b}{a}"
+            }
+          ],
+          "goldenRule": "Dla $a = 0, b = 0$ równanie jest tożsamościowe ($x \\in \\mathbb{R}$). Dla $a = 0, b \\neq 0$ równanie jest sprzeczne (brak rozwiązań).",
+          "ckeTrap": {
+            "error": "0x = 5 \\implies x = 0",
+            "correct": "0x = 5 \\implies x \\in \\emptyset \\text{ (sprzeczność)}",
+            "description": "Żadna liczba pomnożona przez 0 nie daje 5!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.1",
+          "title": "Równania liniowe: Przenoszenie wyrazów i redukcja",
+          "formulas": [
+            {
+              "title": "Równanie liniowe",
+              "latex": "ax + b = 0 \\iff ax = -b"
+            },
+            {
+              "title": "Rozwiązanie dla a != 0",
+              "latex": "x = -\\frac{b}{a}"
+            }
+          ],
+          "goldenRule": "Dla $a = 0, b = 0$ równanie jest tożsamościowe ($x \\in \\mathbb{R}$). Dla $a = 0, b \\neq 0$ równanie jest sprzeczne (brak rozwiązań).",
+          "ckeTrap": {
+            "error": "0x = 5 \\implies x = 0",
+            "correct": "0x = 5 \\implies x \\in \\emptyset \\text{ (sprzeczność)}",
+            "description": "Żadna liczba pomnożona przez 0 nie daje 5!"
+          }
+        }
       },
       {
         "id": "lesson-3-2",
@@ -262,7 +302,47 @@
             "hint_cost": 20,
             "id": "task-3-2-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.2",
+          "title": "Równania liniowe: Ułamki i mnożenie obustronne",
+          "formulas": [
+            {
+              "title": "Równanie liniowe",
+              "latex": "ax + b = 0 \\iff ax = -b"
+            },
+            {
+              "title": "Rozwiązanie dla a != 0",
+              "latex": "x = -\\frac{b}{a}"
+            }
+          ],
+          "goldenRule": "Dla $a = 0, b = 0$ równanie jest tożsamościowe ($x \\in \\mathbb{R}$). Dla $a = 0, b \\neq 0$ równanie jest sprzeczne (brak rozwiązań).",
+          "ckeTrap": {
+            "error": "0x = 5 \\implies x = 0",
+            "correct": "0x = 5 \\implies x \\in \\emptyset \\text{ (sprzeczność)}",
+            "description": "Żadna liczba pomnożona przez 0 nie daje 5!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.2",
+          "title": "Równania liniowe: Ułamki i mnożenie obustronne",
+          "formulas": [
+            {
+              "title": "Równanie liniowe",
+              "latex": "ax + b = 0 \\iff ax = -b"
+            },
+            {
+              "title": "Rozwiązanie dla a != 0",
+              "latex": "x = -\\frac{b}{a}"
+            }
+          ],
+          "goldenRule": "Dla $a = 0, b = 0$ równanie jest tożsamościowe ($x \\in \\mathbb{R}$). Dla $a = 0, b \\neq 0$ równanie jest sprzeczne (brak rozwiązań).",
+          "ckeTrap": {
+            "error": "0x = 5 \\implies x = 0",
+            "correct": "0x = 5 \\implies x \\in \\emptyset \\text{ (sprzeczność)}",
+            "description": "Żadna liczba pomnożona przez 0 nie daje 5!"
+          }
+        }
       },
       {
         "id": "lesson-3-3",
@@ -395,7 +475,47 @@
             "hint_cost": 20,
             "id": "task-3-3-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.3",
+          "title": "Nierówności liniowe: Zmiana zwrotu przy dzieleniu przez liczbę ujemną",
+          "formulas": [
+            {
+              "title": "Nierówność liniowa",
+              "latex": "ax + b > 0"
+            },
+            {
+              "title": "Dzielenie przez liczbę ujemną",
+              "latex": "-2x < 6 \\iff x > -3"
+            }
+          ],
+          "goldenRule": "Gdy mnożysz lub dzielisz nierówność przez liczbę UJEMNĄ, ZAWSZE zmień zwrot znaku nierówności na przeciwny!",
+          "ckeTrap": {
+            "error": "-3x \\ge 12 \\implies x \\ge -4",
+            "correct": "-3x \\ge 12 \\implies x \\le -4",
+            "description": "Dzielenie przez -3 odwraca znak nierówności!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.3",
+          "title": "Nierówności liniowe: Zmiana zwrotu przy dzieleniu przez liczbę ujemną",
+          "formulas": [
+            {
+              "title": "Nierówność liniowa",
+              "latex": "ax + b > 0"
+            },
+            {
+              "title": "Dzielenie przez liczbę ujemną",
+              "latex": "-2x < 6 \\iff x > -3"
+            }
+          ],
+          "goldenRule": "Gdy mnożysz lub dzielisz nierówność przez liczbę UJEMNĄ, ZAWSZE zmień zwrot znaku nierówności na przeciwny!",
+          "ckeTrap": {
+            "error": "-3x \\ge 12 \\implies x \\ge -4",
+            "correct": "-3x \\ge 12 \\implies x \\le -4",
+            "description": "Dzielenie przez -3 odwraca znak nierówności!"
+          }
+        }
       },
       {
         "id": "lesson-3-4",
@@ -528,7 +648,47 @@
             "hint_cost": 20,
             "id": "task-3-4-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.4",
+          "title": "Nierówności liniowe: Zapis przedziałowy i nierówności podwójne",
+          "formulas": [
+            {
+              "title": "Nierówność liniowa",
+              "latex": "ax + b > 0"
+            },
+            {
+              "title": "Dzielenie przez liczbę ujemną",
+              "latex": "-2x < 6 \\iff x > -3"
+            }
+          ],
+          "goldenRule": "Gdy mnożysz lub dzielisz nierówność przez liczbę UJEMNĄ, ZAWSZE zmień zwrot znaku nierówności na przeciwny!",
+          "ckeTrap": {
+            "error": "-3x \\ge 12 \\implies x \\ge -4",
+            "correct": "-3x \\ge 12 \\implies x \\le -4",
+            "description": "Dzielenie przez -3 odwraca znak nierówności!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.4",
+          "title": "Nierówności liniowe: Zapis przedziałowy i nierówności podwójne",
+          "formulas": [
+            {
+              "title": "Nierówność liniowa",
+              "latex": "ax + b > 0"
+            },
+            {
+              "title": "Dzielenie przez liczbę ujemną",
+              "latex": "-2x < 6 \\iff x > -3"
+            }
+          ],
+          "goldenRule": "Gdy mnożysz lub dzielisz nierówność przez liczbę UJEMNĄ, ZAWSZE zmień zwrot znaku nierówności na przeciwny!",
+          "ckeTrap": {
+            "error": "-3x \\ge 12 \\implies x \\ge -4",
+            "correct": "-3x \\ge 12 \\implies x \\le -4",
+            "description": "Dzielenie przez -3 odwraca znak nierówności!"
+          }
+        }
       },
       {
         "id": "lesson-3-5",
@@ -661,7 +821,55 @@
             "hint_cost": 20,
             "id": "task-3-5-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.5",
+          "title": "Układy równań liniowych: Metoda podstawiania",
+          "formulas": [
+            {
+              "title": "Wyróżnik równania kwadratowego",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "title": "Pierwiastki dla Delta > 0",
+              "latex": "x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "title": "Pierwiastek dla Delta = 0",
+              "latex": "x_0 = -\\frac{b}{2a}"
+            }
+          ],
+          "goldenRule": "Uważaj na znak minus przy obliczaniu delty: gdy $c < 0$, to $-4ac > 0$ i delta rośnie!",
+          "ckeTrap": {
+            "error": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 - 12 = -8",
+            "correct": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16",
+            "description": "Minus razy minus daje plus: $-4 \\cdot (-3) = +12$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.5",
+          "title": "Układy równań liniowych: Metoda podstawiania",
+          "formulas": [
+            {
+              "title": "Wyróżnik równania kwadratowego",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "title": "Pierwiastki dla Delta > 0",
+              "latex": "x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "title": "Pierwiastek dla Delta = 0",
+              "latex": "x_0 = -\\frac{b}{2a}"
+            }
+          ],
+          "goldenRule": "Uważaj na znak minus przy obliczaniu delty: gdy $c < 0$, to $-4ac > 0$ i delta rośnie!",
+          "ckeTrap": {
+            "error": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 - 12 = -8",
+            "correct": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16",
+            "description": "Minus razy minus daje plus: $-4 \\cdot (-3) = +12$!"
+          }
+        }
       },
       {
         "id": "lesson-3-6",
@@ -788,7 +996,55 @@
             "hint_cost": 20,
             "id": "task-3-6-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.6",
+          "title": "Układy równań liniowych: Metoda przeciwnych współczynników",
+          "formulas": [
+            {
+              "title": "Wyróżnik równania kwadratowego",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "title": "Pierwiastki dla Delta > 0",
+              "latex": "x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "title": "Pierwiastek dla Delta = 0",
+              "latex": "x_0 = -\\frac{b}{2a}"
+            }
+          ],
+          "goldenRule": "Uważaj na znak minus przy obliczaniu delty: gdy $c < 0$, to $-4ac > 0$ i delta rośnie!",
+          "ckeTrap": {
+            "error": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 - 12 = -8",
+            "correct": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16",
+            "description": "Minus razy minus daje plus: $-4 \\cdot (-3) = +12$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.6",
+          "title": "Układy równań liniowych: Metoda przeciwnych współczynników",
+          "formulas": [
+            {
+              "title": "Wyróżnik równania kwadratowego",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "title": "Pierwiastki dla Delta > 0",
+              "latex": "x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "title": "Pierwiastek dla Delta = 0",
+              "latex": "x_0 = -\\frac{b}{2a}"
+            }
+          ],
+          "goldenRule": "Uważaj na znak minus przy obliczaniu delty: gdy $c < 0$, to $-4ac > 0$ i delta rośnie!",
+          "ckeTrap": {
+            "error": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 - 12 = -8",
+            "correct": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16",
+            "description": "Minus razy minus daje plus: $-4 \\cdot (-3) = +12$!"
+          }
+        }
       },
       {
         "id": "lesson-3-7",
@@ -915,7 +1171,55 @@
             "hint_cost": 20,
             "id": "task-3-7-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.7",
+          "title": "Układy równań: Zadania tekstowe i modelowanie matematyczne",
+          "formulas": [
+            {
+              "title": "Wyróżnik równania kwadratowego",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "title": "Pierwiastki dla Delta > 0",
+              "latex": "x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "title": "Pierwiastek dla Delta = 0",
+              "latex": "x_0 = -\\frac{b}{2a}"
+            }
+          ],
+          "goldenRule": "Uważaj na znak minus przy obliczaniu delty: gdy $c < 0$, to $-4ac > 0$ i delta rośnie!",
+          "ckeTrap": {
+            "error": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 - 12 = -8",
+            "correct": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16",
+            "description": "Minus razy minus daje plus: $-4 \\cdot (-3) = +12$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.7",
+          "title": "Układy równań: Zadania tekstowe i modelowanie matematyczne",
+          "formulas": [
+            {
+              "title": "Wyróżnik równania kwadratowego",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "title": "Pierwiastki dla Delta > 0",
+              "latex": "x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "title": "Pierwiastek dla Delta = 0",
+              "latex": "x_0 = -\\frac{b}{2a}"
+            }
+          ],
+          "goldenRule": "Uważaj na znak minus przy obliczaniu delty: gdy $c < 0$, to $-4ac > 0$ i delta rośnie!",
+          "ckeTrap": {
+            "error": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 - 12 = -8",
+            "correct": "\\Delta = 2^2 - 4 \\cdot 1 \\cdot (-3) = 4 + 12 = 16",
+            "description": "Minus razy minus daje plus: $-4 \\cdot (-3) = +12$!"
+          }
+        }
       },
       {
         "id": "lesson-3-8",
@@ -1048,7 +1352,47 @@
             "hint_cost": 20,
             "id": "task-3-8-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.8",
+          "title": "Równania kwadratowe w postaci iloczynowej",
+          "formulas": [
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, \\infty)"
+            },
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c < 0 \\implies x \\in (x_1, x_2)"
+            }
+          ],
+          "goldenRule": "Zawsze narysuj oś i przybliżoną parabolę: ramiona w górę ($a > 0$) lub w dół ($a < 0$). Odczytaj przedziały nad/pod osią.",
+          "ckeTrap": {
+            "error": "x^2 - 9 > 0 \\implies x > 3",
+            "correct": "x^2 - 9 > 0 \\implies x \\in (-\\infty, -3) \\cup (3, \\infty)",
+            "description": "Pamiętaj o lewym ramieniu paraboli: liczby mniejsze od -3 również spełniają nierówność (np. $(-4)^2 = 16 > 9$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.8",
+          "title": "Równania kwadratowe w postaci iloczynowej",
+          "formulas": [
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, \\infty)"
+            },
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c < 0 \\implies x \\in (x_1, x_2)"
+            }
+          ],
+          "goldenRule": "Zawsze narysuj oś i przybliżoną parabolę: ramiona w górę ($a > 0$) lub w dół ($a < 0$). Odczytaj przedziały nad/pod osią.",
+          "ckeTrap": {
+            "error": "x^2 - 9 > 0 \\implies x > 3",
+            "correct": "x^2 - 9 > 0 \\implies x \\in (-\\infty, -3) \\cup (3, \\infty)",
+            "description": "Pamiętaj o lewym ramieniu paraboli: liczby mniejsze od -3 również spełniają nierówność (np. $(-4)^2 = 16 > 9$)!"
+          }
+        }
       },
       {
         "id": "lesson-3-9",
@@ -1175,7 +1519,47 @@
             "hint_cost": 20,
             "id": "task-3-9-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.9",
+          "title": "Równania kwadratowe w postaci ogólnej i wyróżnik Delta",
+          "formulas": [
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, \\infty)"
+            },
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c < 0 \\implies x \\in (x_1, x_2)"
+            }
+          ],
+          "goldenRule": "Zawsze narysuj oś i przybliżoną parabolę: ramiona w górę ($a > 0$) lub w dół ($a < 0$). Odczytaj przedziały nad/pod osią.",
+          "ckeTrap": {
+            "error": "x^2 - 9 > 0 \\implies x > 3",
+            "correct": "x^2 - 9 > 0 \\implies x \\in (-\\infty, -3) \\cup (3, \\infty)",
+            "description": "Pamiętaj o lewym ramieniu paraboli: liczby mniejsze od -3 również spełniają nierówność (np. $(-4)^2 = 16 > 9$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.9",
+          "title": "Równania kwadratowe w postaci ogólnej i wyróżnik Delta",
+          "formulas": [
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, \\infty)"
+            },
+            {
+              "title": "Nierówność kwadratowa z a > 0",
+              "latex": "ax^2 + bx + c < 0 \\implies x \\in (x_1, x_2)"
+            }
+          ],
+          "goldenRule": "Zawsze narysuj oś i przybliżoną parabolę: ramiona w górę ($a > 0$) lub w dół ($a < 0$). Odczytaj przedziały nad/pod osią.",
+          "ckeTrap": {
+            "error": "x^2 - 9 > 0 \\implies x > 3",
+            "correct": "x^2 - 9 > 0 \\implies x \\in (-\\infty, -3) \\cup (3, \\infty)",
+            "description": "Pamiętaj o lewym ramieniu paraboli: liczby mniejsze od -3 również spełniają nierówność (np. $(-4)^2 = 16 > 9$)!"
+          }
+        }
       },
       {
         "id": "lesson-3-10",
@@ -1308,7 +1692,47 @@
             "hint_cost": 20,
             "id": "task-3-10-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.10",
+          "title": "Równania kwadratowe niepełne: Wyłączanie x oraz pierwiastkowanie",
+          "formulas": [
+            {
+              "title": "Postać iloczynowa wielomianu",
+              "latex": "W(x) = (x - x_1)(x - x_2)(x - x_3) = 0"
+            },
+            {
+              "title": "Zasada iloczynu zerowego",
+              "latex": "A \\cdot B = 0 \\iff A = 0 \\lor B = 0"
+            }
+          ],
+          "goldenRule": "Iloczyn jest równy zero, gdy co najmniej jeden z czynników jest zerem. Przyrównaj każdy nawias z osobna do zera.",
+          "ckeTrap": {
+            "error": "x(x^2 - 4) = 0 \\implies x^2 = 4 \\implies x = 2",
+            "correct": "x(x^2 - 4) = 0 \\implies x = 0 \\lor x = 2 \\lor x = -2",
+            "description": "Nie zapominaj o rozwiązaniu $x = 0$ z pierwszego czynnika oraz o ujemnym pierwiastku $x = -2$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.10",
+          "title": "Równania kwadratowe niepełne: Wyłączanie x oraz pierwiastkowanie",
+          "formulas": [
+            {
+              "title": "Postać iloczynowa wielomianu",
+              "latex": "W(x) = (x - x_1)(x - x_2)(x - x_3) = 0"
+            },
+            {
+              "title": "Zasada iloczynu zerowego",
+              "latex": "A \\cdot B = 0 \\iff A = 0 \\lor B = 0"
+            }
+          ],
+          "goldenRule": "Iloczyn jest równy zero, gdy co najmniej jeden z czynników jest zerem. Przyrównaj każdy nawias z osobna do zera.",
+          "ckeTrap": {
+            "error": "x(x^2 - 4) = 0 \\implies x^2 = 4 \\implies x = 2",
+            "correct": "x(x^2 - 4) = 0 \\implies x = 0 \\lor x = 2 \\lor x = -2",
+            "description": "Nie zapominaj o rozwiązaniu $x = 0$ z pierwszego czynnika oraz o ujemnym pierwiastku $x = -2$!"
+          }
+        }
       },
       {
         "id": "lesson-3-11",
@@ -1441,7 +1865,47 @@
             "hint_cost": 20,
             "id": "task-3-11-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.11",
+          "title": "Nierówności kwadratowe: Znak współczynnika a i szkic paraboli",
+          "formulas": [
+            {
+              "title": "Postać iloczynowa wielomianu",
+              "latex": "W(x) = (x - x_1)(x - x_2)(x - x_3) = 0"
+            },
+            {
+              "title": "Zasada iloczynu zerowego",
+              "latex": "A \\cdot B = 0 \\iff A = 0 \\lor B = 0"
+            }
+          ],
+          "goldenRule": "Iloczyn jest równy zero, gdy co najmniej jeden z czynników jest zerem. Przyrównaj każdy nawias z osobna do zera.",
+          "ckeTrap": {
+            "error": "x(x^2 - 4) = 0 \\implies x^2 = 4 \\implies x = 2",
+            "correct": "x(x^2 - 4) = 0 \\implies x = 0 \\lor x = 2 \\lor x = -2",
+            "description": "Nie zapominaj o rozwiązaniu $x = 0$ z pierwszego czynnika oraz o ujemnym pierwiastku $x = -2$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.11",
+          "title": "Nierówności kwadratowe: Znak współczynnika a i szkic paraboli",
+          "formulas": [
+            {
+              "title": "Postać iloczynowa wielomianu",
+              "latex": "W(x) = (x - x_1)(x - x_2)(x - x_3) = 0"
+            },
+            {
+              "title": "Zasada iloczynu zerowego",
+              "latex": "A \\cdot B = 0 \\iff A = 0 \\lor B = 0"
+            }
+          ],
+          "goldenRule": "Iloczyn jest równy zero, gdy co najmniej jeden z czynników jest zerem. Przyrównaj każdy nawias z osobna do zera.",
+          "ckeTrap": {
+            "error": "x(x^2 - 4) = 0 \\implies x^2 = 4 \\implies x = 2",
+            "correct": "x(x^2 - 4) = 0 \\implies x = 0 \\lor x = 2 \\lor x = -2",
+            "description": "Nie zapominaj o rozwiązaniu $x = 0$ z pierwszego czynnika oraz o ujemnym pierwiastku $x = -2$!"
+          }
+        }
       },
       {
         "id": "lesson-3-12",
@@ -1574,7 +2038,47 @@
             "hint_cost": 20,
             "id": "task-3-12-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.12",
+          "title": "Nierówności kwadratowe: Odczytywanie zbioru rozwiązań z osi liczbowej",
+          "formulas": [
+            {
+              "title": "Równanie wymierne",
+              "latex": "\\frac{P(x)}{Q(x)} = 0 \\iff P(x) = 0 \\land Q(x) \\neq 0"
+            },
+            {
+              "title": "Proporcja",
+              "latex": "\\frac{a}{b} = \\frac{c}{d} \\iff ad = bc \\quad (b, d \\neq 0)"
+            }
+          ],
+          "goldenRule": "Krok 1 w każdym równaniu wymiernym: wyznacz dziedzinę ($D: \\text{mianowniki} \\neq 0$). Po rozwiązaniu odrzuć pierwiastki spoza dziedziny.",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 9}{x - 3} = 0 \\implies x = 3 \\lor x = -3",
+            "correct": "x = -3 \\quad (x = 3 \\notin D)",
+            "description": "Liczba 3 zeruje mianownik, więc nie może być rozwiązaniem!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.12",
+          "title": "Nierówności kwadratowe: Odczytywanie zbioru rozwiązań z osi liczbowej",
+          "formulas": [
+            {
+              "title": "Równanie wymierne",
+              "latex": "\\frac{P(x)}{Q(x)} = 0 \\iff P(x) = 0 \\land Q(x) \\neq 0"
+            },
+            {
+              "title": "Proporcja",
+              "latex": "\\frac{a}{b} = \\frac{c}{d} \\iff ad = bc \\quad (b, d \\neq 0)"
+            }
+          ],
+          "goldenRule": "Krok 1 w każdym równaniu wymiernym: wyznacz dziedzinę ($D: \\text{mianowniki} \\neq 0$). Po rozwiązaniu odrzuć pierwiastki spoza dziedziny.",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 9}{x - 3} = 0 \\implies x = 3 \\lor x = -3",
+            "correct": "x = -3 \\quad (x = 3 \\notin D)",
+            "description": "Liczba 3 zeruje mianownik, więc nie może być rozwiązaniem!"
+          }
+        }
       },
       {
         "id": "lesson-3-13",
@@ -1707,7 +2211,47 @@
             "hint_cost": 20,
             "id": "task-3-13-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.13",
+          "title": "Równania wyższych stopni: Rozkład na czynniki w równaniach wielomianowych",
+          "formulas": [
+            {
+              "title": "Równanie z wartością bezwzględną",
+              "latex": "|x| = a \\iff x = a \\lor x = -a \\quad (a \\ge 0)"
+            },
+            {
+              "title": "Nierówność z wartością bezwzględną",
+              "latex": "|x| \\le a \\iff -a \\le x \\le a"
+            }
+          ],
+          "goldenRule": "Gdy $|W(x)| = a$ i $a < 0$, równanie jest natychmiast sprzeczne.",
+          "ckeTrap": {
+            "error": "|2x - 1| = -5 \\implies 2x - 1 = 5",
+            "correct": "|2x - 1| = -5 \\implies x \\in \\emptyset",
+            "description": "Wartość bezwzględna nie może być ujemna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.13",
+          "title": "Równania wyższych stopni: Rozkład na czynniki w równaniach wielomianowych",
+          "formulas": [
+            {
+              "title": "Równanie z wartością bezwzględną",
+              "latex": "|x| = a \\iff x = a \\lor x = -a \\quad (a \\ge 0)"
+            },
+            {
+              "title": "Nierówność z wartością bezwzględną",
+              "latex": "|x| \\le a \\iff -a \\le x \\le a"
+            }
+          ],
+          "goldenRule": "Gdy $|W(x)| = a$ i $a < 0$, równanie jest natychmiast sprzeczne.",
+          "ckeTrap": {
+            "error": "|2x - 1| = -5 \\implies 2x - 1 = 5",
+            "correct": "|2x - 1| = -5 \\implies x \\in \\emptyset",
+            "description": "Wartość bezwzględna nie może być ujemna!"
+          }
+        }
       },
       {
         "id": "lesson-3-14",
@@ -1840,7 +2384,47 @@
             "hint_cost": 20,
             "id": "task-3-14-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.14",
+          "title": "Równania wymierne: Mnożenie na krzyż i weryfikacja z dziedziną",
+          "formulas": [
+            {
+              "title": "Równanie z wartością bezwzględną",
+              "latex": "|x| = a \\iff x = a \\lor x = -a \\quad (a \\ge 0)"
+            },
+            {
+              "title": "Nierówność z wartością bezwzględną",
+              "latex": "|x| \\le a \\iff -a \\le x \\le a"
+            }
+          ],
+          "goldenRule": "Gdy $|W(x)| = a$ i $a < 0$, równanie jest natychmiast sprzeczne.",
+          "ckeTrap": {
+            "error": "|2x - 1| = -5 \\implies 2x - 1 = 5",
+            "correct": "|2x - 1| = -5 \\implies x \\in \\emptyset",
+            "description": "Wartość bezwzględna nie może być ujemna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.14",
+          "title": "Równania wymierne: Mnożenie na krzyż i weryfikacja z dziedziną",
+          "formulas": [
+            {
+              "title": "Równanie z wartością bezwzględną",
+              "latex": "|x| = a \\iff x = a \\lor x = -a \\quad (a \\ge 0)"
+            },
+            {
+              "title": "Nierówność z wartością bezwzględną",
+              "latex": "|x| \\le a \\iff -a \\le x \\le a"
+            }
+          ],
+          "goldenRule": "Gdy $|W(x)| = a$ i $a < 0$, równanie jest natychmiast sprzeczne.",
+          "ckeTrap": {
+            "error": "|2x - 1| = -5 \\implies 2x - 1 = 5",
+            "correct": "|2x - 1| = -5 \\implies x \\in \\emptyset",
+            "description": "Wartość bezwzględna nie może być ujemna!"
+          }
+        }
       },
       {
         "id": "lesson-3-15",
@@ -1975,7 +2559,47 @@
             "hint_cost": 20,
             "id": "task-3-15-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "3.15",
+          "title": "Równania i nierówności z wartością bezwzględną",
+          "formulas": [
+            {
+              "title": "Równanie z wartością bezwzględną",
+              "latex": "|x| = a \\iff x = a \\lor x = -a \\quad (a \\ge 0)"
+            },
+            {
+              "title": "Nierówność z wartością bezwzględną",
+              "latex": "|x| \\le a \\iff -a \\le x \\le a"
+            }
+          ],
+          "goldenRule": "Gdy $|W(x)| = a$ i $a < 0$, równanie jest natychmiast sprzeczne.",
+          "ckeTrap": {
+            "error": "|2x - 1| = -5 \\implies 2x - 1 = 5",
+            "correct": "|2x - 1| = -5 \\implies x \\in \\emptyset",
+            "description": "Wartość bezwzględna nie może być ujemna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "3.15",
+          "title": "Równania i nierówności z wartością bezwzględną",
+          "formulas": [
+            {
+              "title": "Równanie z wartością bezwzględną",
+              "latex": "|x| = a \\iff x = a \\lor x = -a \\quad (a \\ge 0)"
+            },
+            {
+              "title": "Nierówność z wartością bezwzględną",
+              "latex": "|x| \\le a \\iff -a \\le x \\le a"
+            }
+          ],
+          "goldenRule": "Gdy $|W(x)| = a$ i $a < 0$, równanie jest natychmiast sprzeczne.",
+          "ckeTrap": {
+            "error": "|2x - 1| = -5 \\implies 2x - 1 = 5",
+            "correct": "|2x - 1| = -5 \\implies x \\in \\emptyset",
+            "description": "Wartość bezwzględna nie może być ujemna!"
+          }
+        }
       }
     ],
     "final_test": {

@@ -6,12 +6,14 @@ import {
   Sparkles, Layers, Play, Target, RefreshCw, X, Loader2,
   Hash, Binary, EqualNot, TrendingUp, Activity, 
   ListOrdered, TriangleRight, CircleDot, Map as MapIcon, Box, PieChart, Clock, Trophy,
-  GraduationCap
+  GraduationCap, MessageSquare, Flame, Feather, ShieldAlert, Sun, Moon, Scale, Shield,
+  Bookmark, Music, AlertTriangle, Eye, Compass, GitCommit, AlertOctagon
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { MathRenderer } from './MathRenderer';
 import { mathTopics, setGlobalMathTopics, buildProcessedTopic } from '../data/mathTasks';
+import { polishTopics as defaultPolishTopics, polishPillars } from '../data/polishCurriculum';
 import { drawSessionTasks, getLessonFormulaSheet } from '../data/dzial1TaskPool';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { BossExamRunner } from './BossExamRunner';
@@ -34,11 +36,64 @@ const mathIcons = [
   Trophy
 ];
 
-function getTopicIcon(subjectKey: string, topicIndex: number, DefaultIcon: any) {
+const polishIconMap: Record<string, any> = {
+  MessageSquare,
+  BookOpen,
+  PenTool,
+  ShieldAlert,
+  Scale,
+  Flame,
+  Feather,
+  Sun,
+  Moon,
+  Bookmark,
+  Shield,
+  Music,
+  AlertTriangle,
+  Eye,
+  Compass,
+  GitCommit,
+  AlertOctagon,
+  Trophy,
+  Layers,
+  GraduationCap
+};
+
+function getTopicIcon(subjectKey: string, topicIndex: number, DefaultIcon: any, topic?: any) {
+  if (topic?.icon && polishIconMap[topic.icon]) {
+    return polishIconMap[topic.icon];
+  }
   if (subjectKey === 'math' && topicIndex < mathIcons.length) {
     return mathIcons[topicIndex];
   }
+  if (subjectKey === 'pol') {
+    return BookOpen;
+  }
   return DefaultIcon;
+}
+
+/**
+ * Polskie reguły gramatyczne liczebników dla lekcji:
+ * 1 lekcja, 2-4 lekcje, 5-21 lekcji, 22-24 lekcje itd.
+ */
+export function formatLessonsCount(count: number): string {
+  if (count === 1) return '1 lekcja';
+  const rem10 = count % 10;
+  const rem100 = count % 100;
+  if (rem10 >= 2 && rem10 <= 4 && (rem100 < 10 || rem100 >= 20)) {
+    return `${count} lekcje`;
+  }
+  return `${count} lekcji`;
+}
+
+export function formatLessonsNoun(count: number): string {
+  if (count === 1) return 'lekcja';
+  const rem10 = count % 10;
+  const rem100 = count % 100;
+  if (rem10 >= 2 && rem10 <= 4 && (rem100 < 10 || rem100 >= 20)) {
+    return 'lekcje';
+  }
+  return 'lekcji';
 }
 
 /**
@@ -46,12 +101,20 @@ function getTopicIcon(subjectKey: string, topicIndex: number, DefaultIcon: any) 
  * Oparty na zasadach ergonomii wizualnej (Cognitive Load Theory) oraz subtelnej mikrointerakcji:
  * Stały, czytelny punkt odniesienia + łagodna fala sonaru o 2.5s interwale.
  */
-export function ActiveBadge({ label = 'W TOKU' }: { label?: string }) {
+export function ActiveBadge({ label = 'W TOKU', isRose = false }: { label?: string; isRose?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 px-2.5 py-0.5 rounded-full shadow-[0_0_10px_rgba(255,184,0,0.15)] select-none">
+    <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none ${
+      isRose
+        ? 'text-[#F43F5E] bg-[#F43F5E]/10 border border-[#F43F5E]/30 shadow-[0_0_10px_rgba(244,63,94,0.15)]'
+        : 'text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-[0_0_10px_rgba(255,184,0,0.15)]'
+    }`}>
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFB800] opacity-75 [animation-duration:2.5s]" />
-        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFB800]" />
+        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] ${
+          isRose ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
+        }`} />
+        <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${
+          isRose ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
+        }`} />
       </span>
       <span>{label}</span>
     </span>
@@ -136,9 +199,10 @@ export function isLessonCompleted(
   userState?: any
 ): boolean {
   if (!group) return false;
-  const cleanId = group.id.replace('lesson-', '');
+  const cleanId = group.id.replace(/^lesson-/, '').replace(/^pol-lesson-/, '');
   const dotId = cleanId.replace('-', '.');
   const dashId = `lesson-${dotId.replace('.', '-')}`;
+  const polDashId = `pol-lesson-${dotId.replace('.', '-')}`;
 
   // Check userState completed_lessons if available
   const userCompletedLessons: string[] = userState?.completed_lessons || [];
@@ -149,10 +213,12 @@ export function isLessonCompleted(
     userCompletedLessons.includes(cleanId) ||
     userCompletedLessons.includes(dotId) ||
     userCompletedLessons.includes(dashId) ||
+    userCompletedLessons.includes(polDashId) ||
     userCompletedMap[group.id]?.status === 'COMPLETED' ||
     userCompletedMap[dotId]?.status === 'COMPLETED' ||
     userCompletedMap[cleanId]?.status === 'COMPLETED' ||
-    userCompletedMap[dashId]?.status === 'COMPLETED'
+    userCompletedMap[dashId]?.status === 'COMPLETED' ||
+    userCompletedMap[polDashId]?.status === 'COMPLETED'
   ) {
     return true;
   }
@@ -163,10 +229,12 @@ export function isLessonCompleted(
     completedTasks.includes(`LESSON-${cleanId}`) ||
     completedTasks.includes(`LESSON-${dotId}`) ||
     completedTasks.includes(`LESSON-${dashId}`) ||
+    completedTasks.includes(`LESSON-${polDashId}`) ||
     completedTasks.includes(`LESSON-${group.id.toLowerCase()}`) ||
     completedTasks.includes(group.id) ||
     completedTasks.includes(cleanId) ||
-    completedTasks.includes(dotId)
+    completedTasks.includes(dotId) ||
+    completedTasks.includes(polDashId)
   ) {
     return true;
   }
@@ -187,10 +255,8 @@ export function isLessonUnlocked(
   completedTasks: string[],
   userState?: any
 ): boolean {
-  if (groupIdx === 0) return true;
-  const prevGroup = allGroups[groupIdx - 1];
-  if (!prevGroup) return false;
-  return isLessonCompleted(prevGroup, completedTasks, userState);
+  // Wszystkie lekcje odblokowane na żądanie (tryb testowy / pełny dostęp)
+  return true;
 }
 
 export function getLockRequirementLabel(prevGroup?: LessonGroup): string {
@@ -209,17 +275,27 @@ export function getLockRequirementLabel(prevGroup?: LessonGroup): string {
   return 'poprzedniej lekcji';
 }
 
+export function cleanLessonTitle(title?: string): string {
+  if (!title) return '';
+  return title
+    .replace(/^(?:Lekcja\s+)?(?:\d+[-.]\d+)\s*[:.]\s*/i, '')
+    .replace(/^★\s*/i, '')
+    .trim();
+}
+
 export function getLessonsForTopic(topic: any): LessonGroup[] {
   if (!topic) return [];
   
   // Cost-Optimized Flat-Bundle: lessons_metadata contains the list of lessons for this topic
   if (topic.lessons_metadata && Array.isArray(topic.lessons_metadata) && topic.lessons_metadata.length > 0) {
     return topic.lessons_metadata.map((meta: any) => {
-      const isSprawdzian = (meta.title || '').toLowerCase().includes('sprawdzian');
-      const cleanId = String(meta.id).replace(/^lesson-/, '').replace('-', '.');
+      const rawTitle = meta.name || meta.title || '';
+      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian');
+      const cleanId = String(meta.id).replace(/^lesson-/, '').replace(/^pol-lesson-/, '').replace('-', '.');
+      const cleanName = cleanLessonTitle(rawTitle);
       return {
         id: String(meta.id),
-        name: meta.title,
+        name: cleanName,
         badge: isSprawdzian ? 'Sprawdzian' : `Lekcja ${cleanId}`,
         tasks: meta.tasks || [],
         estimated_time_formatted: meta.estimated_time_formatted || '~5 min',
@@ -233,13 +309,15 @@ export function getLessonsForTopic(topic: any): LessonGroup[] {
   if (topic.lessons && Array.isArray(topic.lessons) && topic.lessons.length > 0) {
     return topic.lessons.map((lesson: any) => {
       const lessonTasks = (topic.tasks || []).filter((t: any) => String(t.lessonId) === String(lesson.id));
-      const isSprawdzian = (lesson.title || '').toLowerCase().includes('sprawdzian');
-      const cleanId = String(lesson.id).replace(/^lesson-/, '').replace('-', '.');
+      const rawTitle = lesson.name || lesson.title || '';
+      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian');
+      const cleanId = String(lesson.id).replace(/^lesson-/, '').replace(/^pol-lesson-/, '').replace('-', '.');
+      const cleanName = cleanLessonTitle(rawTitle);
       return {
         id: String(lesson.id),
-        name: lesson.title,
+        name: cleanName,
         badge: isSprawdzian ? 'Sprawdzian' : `Lekcja ${cleanId}`,
-        tasks: lessonTasks,
+        tasks: (lesson.tasks && lesson.tasks.length > 0) ? lesson.tasks : lessonTasks,
         estimated_time_formatted: lesson.estimated_time_formatted || '~5 min',
         estimated_time_minutes: lesson.estimated_time_minutes || 5,
         required_correct_tasks: lesson.required_correct_tasks || lesson.required_points || 3
@@ -252,50 +330,15 @@ export function getLessonsForTopic(topic: any): LessonGroup[] {
 
 function cleanTopicTitle(text: string): string {
   if (!text) return '';
-  return text.replace(/^Dział\s+\d+:\s*/i, '').replace(/\s*\(Poziom\s+Podstawowy\)/gi, '').trim();
+  return text
+    .replace(/^Dział\s+\d+:\s*/i, '')
+    .replace(/\s*\(Poziom\s+Podstawowy\)/gi, '')
+    .replace(/\s*\(Formuła\s+2023\)/gi, '')
+    .trim();
 }
 
-// Curriculum metadata for Polish (Clean metadata, no hardcoded task arrays)
-const polishTopics = [
-  {
-    id: 'pol-1',
-    numericId: 1,
-    name: 'Dział 1: Epoki Literackie – Od Antyku do Współczesności',
-    short_title: 'Epoki Literackie',
-    icon: 'BookOpen',
-    color: '#F43F5E',
-    matura_points_range: '6–12 pkt',
-    importance: 'Kluczowy (rozprawka i test historycznoliteracki)',
-    description: 'Fundament matury z języka polskiego: toposy biblijne i antyczne, arcydzieła renesansu, romantyzmu oraz pozytywizmu.',
-    progress: '0%',
-    locked: false,
-    lessons_metadata: [
-      { id: '1.1', title: 'Antyk i Biblia – motywy i toposy maturalne', required_points: 3, estimated_time_formatted: '~5 min' },
-      { id: '1.2', title: 'Średniowiecze – Bogurodzica i etos rycerski', required_points: 3, estimated_time_formatted: '~5 min' },
-      { id: '1.3', title: 'Renesans – Jan Kochanowski (Pieśni i Treny)', required_points: 3, estimated_time_formatted: '~5 min' }
-    ],
-    tasks: []
-  },
-  {
-    id: 'pol-2',
-    numericId: 2,
-    name: 'Dział 2: Lektury Obowiązkowe (Pan Tadeusz, Dziady, Lalka)',
-    short_title: 'Lektury Obowiązkowe',
-    icon: 'BookOpen',
-    color: '#E11D48',
-    matura_points_range: '15–35 pkt',
-    importance: 'Fundament wypracowania maturalnego',
-    description: 'Najważniejsze dzieła polskiego kanonu: problematyka narodowa, egzystencjalna i obyczajowa.',
-    progress: '0%',
-    locked: false,
-    lessons_metadata: [
-      { id: '2.1', title: 'Adam Mickiewicz: Dziady cz. III i Kordian', required_points: 3, estimated_time_formatted: '~5 min' },
-      { id: '2.2', title: 'Adam Mickiewicz: Pan Tadeusz', required_points: 3, estimated_time_formatted: '~5 min' },
-      { id: '2.3', title: 'Bolesław Prus: Lalka', required_points: 3, estimated_time_formatted: '~5 min' }
-    ],
-    tasks: []
-  }
-];
+// Curriculum metadata for Polish (20 Działów, 3 Filary)
+const polishTopics = defaultPolishTopics;
 
 const initialDataBySubject: Record<string, any> = {
   math: {
@@ -312,7 +355,8 @@ const initialDataBySubject: Record<string, any> = {
     level: 'Nowa Formuła 2023',
     icon: BookOpen,
     color: 'text-rose-400',
-    topics: polishTopics
+    topics: defaultPolishTopics,
+    pillars: polishPillars
   },
   eng: {
     key: 'eng',
@@ -465,20 +509,53 @@ export function LearnView({
   }, [viewState, selectedSubjectKey, selectedTopicIndex]);
 
   const [mathTopicsList, setMathTopicsList] = useState<any[]>(() => mathTopics);
-  const [isLoadingTopics, setIsLoadingTopics] = useState<boolean>(mathTopics.length === 0);
+  const [polishTopicsList, setPolishTopicsList] = useState<any[]>(() => defaultPolishTopics);
+  const [isLoadingTopics, setIsLoadingTopics] = useState<boolean>(false);
+  const [selectedPillarId, setSelectedPillarId] = useState<string>(() => {
+    try {
+      const stored = localStorage.getItem('matura_quest_selected_polish_pillar');
+      if (stored && (stored === 'pillar-1-jezyk-w-uzyciu' || stored === 'pillar-2-lektury' || stored === 'pillar-3-wypracowanie')) {
+        return stored;
+      }
+    } catch(e) {}
+    return 'pillar-1-jezyk-w-uzyciu';
+  });
+
+  useEffect(() => {
+    if (selectedSubjectKey === 'pol') {
+      try {
+        localStorage.setItem('matura_quest_selected_polish_pillar', selectedPillarId);
+      } catch(e) {}
+    }
+  }, [selectedPillarId, selectedSubjectKey]);
 
   useEffect(() => {
     let isMounted = true;
-    curriculumRepository.getTopics().then(loaded => {
+    // 1. Load Math topics from Firestore
+    curriculumRepository.getTopics('matematyka-podstawowa').then(loaded => {
       if (isMounted && loaded && loaded.length > 0) {
         setMathTopicsList(loaded);
         setGlobalMathTopics(loaded.map(t => buildProcessedTopic(t)));
-        setIsLoadingTopics(false);
       }
     }).catch(err => {
-      console.warn('Could not load topics from Firestore:', err);
-      if (isMounted) setIsLoadingTopics(false);
+      console.warn('Could not load math topics from Firestore:', err);
     });
+
+    // 2. Load Polish topics from Firestore (All 17 Działów: Filar 1 & Filar 2)
+    curriculumRepository.getTopics('jezyk-polski').then(loaded => {
+      if (isMounted && loaded && loaded.length > 0) {
+        const polishTopicsFiltered = loaded
+          .filter((t: any) => {
+            const num = typeof t.numericId === 'number' ? t.numericId : parseInt(String(t.id).replace(/\D/g, '') || '1', 10);
+            return num >= 1 && num <= 17;
+          })
+          .sort((a: any, b: any) => (a.numericId || 0) - (b.numericId || 0));
+        setPolishTopicsList(polishTopicsFiltered.length > 0 ? polishTopicsFiltered : defaultPolishTopics);
+      }
+    }).catch(err => {
+      console.warn('Could not load polish topics from Firestore:', err);
+    });
+
     return () => { isMounted = false; };
   }, []);
 
@@ -487,6 +564,11 @@ export function LearnView({
     math: {
       ...initialDataBySubject.math,
       topics: mathTopicsList
+    },
+    pol: {
+      ...initialDataBySubject.pol,
+      topics: polishTopicsList,
+      pillars: polishPillars
     }
   };
 
@@ -584,12 +666,12 @@ export function LearnView({
   }, 0);
   const mathProgressPercent = totalMathTasks > 0 ? Math.round((completedMathTasks / totalMathTasks) * 100) : 0;
 
-  // Polish progress calculation
-  const totalPolTasks = polishTopics.reduce((acc, t) => acc + (t.tasks?.length || 0), 0);
-  const completedPolTasks = polishTopics.reduce((acc, t) => {
-    return acc + (t.tasks || []).filter((tsk: any) => completedTasks.includes(tsk.id)).length;
+  // Polish progress calculation (based on 20 topics and complete lesson suite)
+  const totalPolLessons = polishTopicsList.reduce((acc, t) => acc + (getLessonsForTopic(t).length || 0), 0);
+  const completedPolLessons = polishTopicsList.reduce((acc, t) => {
+    return acc + getLessonsForTopic(t).filter(l => isLessonCompleted(l, completedTasks, userState)).length;
   }, 0);
-  const polProgressPercent = totalPolTasks > 0 ? Math.round((completedPolTasks / totalPolTasks) * 100) : 0;
+  const polProgressPercent = totalPolLessons > 0 ? Math.round((completedPolLessons / totalPolLessons) * 100) : 0;
 
   const handleSelectTopic = (index: number, locked: boolean = false) => {
     if (locked) {
@@ -647,20 +729,31 @@ export function LearnView({
   const handleStartLessonSession = async (group: LessonGroup, nextLessonPayload?: any) => {
     triggerHaptic('medium');
     const topicId = currentTopic?.id || 'dzial-1';
+    const subjectFirestoreId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
     // Flat-Bundle: 1 single document read for full theory_pill + tasks (0 reads if cached)
-    const lessonDoc = await curriculumRepository.getLesson(topicId, group.id);
+    const lessonDoc = await curriculumRepository.getLesson(topicId, group.id, subjectFirestoreId);
     const tasks = (lessonDoc?.tasks && lessonDoc.tasks.length > 0) ? lessonDoc.tasks : group.tasks;
-    const poolResult = drawSessionTasks(group.id, tasks);
+    const lessonFormulaSheet = lessonDoc?.formula_sheet || lessonDoc?.formulaSheet;
+    const poolResult = drawSessionTasks(group.id, tasks, lessonFormulaSheet);
     const tasksToRun = (poolResult.sessionTasks && poolResult.sessionTasks.length > 0)
       ? poolResult.sessionTasks
       : tasks;
 
+    const cleanName = cleanLessonTitle(group.name);
+    const isSprawdzian = group.badge.toLowerCase().includes('sprawdzian') || cleanName.toLowerCase().includes('sprawdzian');
+    const fullLessonTitle = isSprawdzian
+      ? (cleanName.toLowerCase().includes('sprawdzian') ? cleanName : `${group.badge}: ${cleanName}`)
+      : `${group.badge}: ${cleanName}`;
+
     const sessionPayload = {
       isSession: true,
+      isPolish: selectedSubjectKey === 'pol',
+      subjectId: subjectFirestoreId,
+      topicId: topicId,
       lessonId: group.id,
-      lessonTitle: `${group.badge}: ${group.name}`,
+      lessonTitle: fullLessonTitle,
       tasks: tasksToRun,
-      formulaSheet: poolResult.formulaSheet || getLessonFormulaSheet(group.id),
+      formulaSheet: lessonFormulaSheet || poolResult.formulaSheet || (selectedSubjectKey === 'pol' ? (lessonDoc as any)?.leksykon || null : getLessonFormulaSheet(group.id)),
       theoryPill: lessonDoc?.theory_pill || poolResult.theoryPill,
       nextLesson: nextLessonPayload,
       allTaskIdsToMarkCompleted: tasks.map((t: any) => t.id),
@@ -668,7 +761,7 @@ export function LearnView({
       estimated_time_formatted: group.estimated_time_formatted || poolResult.estimated_time_formatted
     };
 
-    onStartTask?.(sessionPayload, tasksToRun, `${group.badge}: ${group.name}`, nextLessonPayload);
+    onStartTask?.(sessionPayload, tasksToRun, fullLessonTitle, nextLessonPayload);
   };
 
   return (
@@ -707,7 +800,12 @@ export function LearnView({
             Działa dla Matematyki oraz Języka Polskiego.
            ========================================================================= */}
         {(viewState === 'topics' || viewState === 'subjects') && currentSubject && (() => {
-          const completedTopicsCount = currentSubject.topics.filter((t: any) => {
+          const allSubjectTopics = currentSubject.topics || [];
+          const topicsMatchingFilter = (selectedSubjectKey === 'pol' && selectedPillarId !== 'all')
+            ? allSubjectTopics.filter((t: any) => t.pillar_id === selectedPillarId)
+            : allSubjectTopics;
+
+          const completedTopicsCount = topicsMatchingFilter.filter((t: any) => {
             const lessons = getLessonsForTopic(t);
             if (lessons.length > 0) {
               return lessons.every((l: any) => isLessonCompleted(l, completedTasks, userState));
@@ -715,10 +813,10 @@ export function LearnView({
             const tasks = t.tasks || [];
             return tasks.length > 0 && tasks.every((tsk: any) => completedTasks.includes(tsk.id));
           }).length;
-          const totalTopicsCount = currentSubject.topics.length;
+          const totalTopicsCount = topicsMatchingFilter.length;
 
           // Find active topic index: pierwszy nieukończony dział
-          const activeTopicIdx = currentSubject.topics.findIndex((t: any) => {
+          const activeTopicIdx = topicsMatchingFilter.findIndex((t: any) => {
             const lessons = getLessonsForTopic(t);
             if (lessons.length > 0) {
               return !lessons.every((l: any) => isLessonCompleted(l, completedTasks, userState));
@@ -727,12 +825,12 @@ export function LearnView({
             return tasks.length === 0 || !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
           });
           const currentActiveIdx = activeTopicIdx !== -1 ? activeTopicIdx : 0;
-          const visibleTopics = currentSubject.topics.slice(0, visibleTopicsCount);
-          const hasMoreTopics = visibleTopicsCount < currentSubject.topics.length;
+          const visibleTopics = topicsMatchingFilter.slice(0, visibleTopicsCount);
+          const hasMoreTopics = visibleTopicsCount < topicsMatchingFilter.length;
 
           return (
             <motion.div 
-              key={`topics-${selectedSubjectKey}`}
+              key={`topics-${selectedSubjectKey}-${selectedPillarId}`}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
@@ -762,10 +860,124 @@ export function LearnView({
 
                   <div className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#101726] border border-white/10 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap shadow-sm">
                     <span className="text-emerald-400 font-black">{completedTopicsCount}/{totalTopicsCount}</span>
-                    <span>działów</span>
+                    <span>{selectedSubjectKey === 'pol' ? (selectedPillarId === 'pillar-2-lektury' ? 'epok' : selectedPillarId === 'pillar-3-wypracowanie' ? 'modułów' : 'działów') : 'działów'}</span>
                   </div>
                 </div>
               </header>
+
+              {/* Pillar Switcher Segmented Control (Język Polski: Filar I vs Filar II vs Filar III) */}
+              {selectedSubjectKey === 'pol' && (
+                <div className="px-3 sm:px-6 py-2 sticky top-[49px] bg-[#0B0E14]/95 backdrop-blur-xl z-19 border-b border-white/5 shadow-sm">
+                  <div className="max-w-3xl mx-auto w-full">
+                    <div className="grid grid-cols-3 p-1 rounded-xl bg-[#101726] border border-white/10 relative gap-1">
+                      {/* Tab 1: Filar I */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedPillarId('pillar-1-jezyk-w-uzyciu');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedPillarId === 'pillar-1-jezyk-w-uzyciu'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedPillarId === 'pillar-1-jezyk-w-uzyciu' && (
+                          <motion.div
+                            layoutId="activePolishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-[0_0_15px_rgba(244,63,94,0.25)]"
+                          />
+                        )}
+                        <MessageSquare size={13} className={selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Filar I: Język</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          7 działów
+                        </span>
+                      </button>
+
+                      {/* Tab 2: Filar II */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedPillarId('pillar-2-lektury');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedPillarId === 'pillar-2-lektury'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedPillarId === 'pillar-2-lektury' && (
+                          <motion.div
+                            layoutId="activePolishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-[0_0_15px_rgba(244,63,94,0.25)]"
+                          />
+                        )}
+                        <BookOpen size={13} className={selectedPillarId === 'pillar-2-lektury' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Filar II: Lektury</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedPillarId === 'pillar-2-lektury' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          10 epok
+                        </span>
+                      </button>
+
+                      {/* Tab 3: Filar III */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedPillarId('pillar-3-wypracowanie');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedPillarId === 'pillar-3-wypracowanie'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedPillarId === 'pillar-3-wypracowanie' && (
+                          <motion.div
+                            layoutId="activePolishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-[0_0_15px_rgba(244,63,94,0.25)]"
+                          />
+                        )}
+                        <Feather size={13} className={selectedPillarId === 'pillar-3-wypracowanie' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Filar III: Esej CKE</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedPillarId === 'pillar-3-wypracowanie' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          35 pkt
+                        </span>
+                      </button>
+                    </div>
+
+                    {/* Sub-description ribbon for active pillar */}
+                    <div className="mt-1.5 flex items-center justify-between text-[11px] text-slate-400 px-1">
+                      <span className="truncate">
+                        {selectedPillarId === 'pillar-1-jezyk-w-uzyciu'
+                          ? '• Arkusz 1, cz. 1: Język w użyciu i notatka syntetyzująca (10 pkt)'
+                          : selectedPillarId === 'pillar-2-lektury'
+                            ? '• Arkusz 1 cz. 2 & Wypracowanie: 28 lektur obowiązkowych (45 pkt)'
+                            : '• Arkusz 2: Warsztat eseju maturalnego i symulacje CKE (35 pkt)'}
+                      </span>
+                      <span className="text-[10px] text-rose-400 font-semibold shrink-0 ml-2">
+                        {selectedPillarId === 'pillar-1-jezyk-w-uzyciu' 
+                          ? '42 lekcje CKE' 
+                          : selectedPillarId === 'pillar-2-lektury'
+                            ? '60 lekcji CKE • 28 lektur'
+                            : '30 lekcji CKE • Symulacje 35 pkt'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
               
               {/* Lista Działów z marginesem pod dolną nawigację */}
               <div className="flex-1 px-4 sm:px-6 pt-3 pb-36 sm:pb-40 relative max-w-3xl mx-auto w-full">
@@ -792,21 +1004,26 @@ export function LearnView({
                         ? Math.round((completedTopicTasks.length / allTopicTasks.length) * 100) 
                         : 0;
 
-                    const cleanName = cleanTopicTitle(topic.name);
-                    const formattedNumber = String(idx + 1).padStart(2, '0');
+                    const cleanName = cleanTopicTitle(topic.name || topic.title);
+                    const topicNum = topic.numericId || (idx + 1);
+                    const formattedNumber = String(topicNum).padStart(2, '0');
+                    const realTopicIdx = currentSubject.topics.findIndex((t: any) => t.id === topic.id);
+                    const TopicIcon = getTopicIcon(selectedSubjectKey, idx, BookOpen, topic);
 
                     return (
                       <button 
                         key={topic.id || idx}
                         id={`topic-card-${topic.id || idx}`}
-                        onClick={() => handleSelectTopic(idx, isLocked)}
+                        onClick={() => handleSelectTopic(realTopicIdx !== -1 ? realTopicIdx : idx, isLocked)}
                         style={{
                           contentVisibility: 'auto',
                           containIntrinsicSize: '0 100px'
                         }}
                         className={`w-full p-4 sm:p-5 rounded-2xl border text-left transition-all duration-200 group flex flex-col gap-2.5 relative overflow-hidden cursor-pointer active:scale-[0.99] ${
                           isBeaconTopic
-                            ? 'bg-gradient-to-r from-[#151D2C] to-[#0E1420] border-[#FFB800] ring-1 ring-[#FFB800]/30 shadow-[0_4px_24px_rgba(255,184,0,0.15)]'
+                            ? selectedSubjectKey === 'pol'
+                              ? 'bg-gradient-to-r from-[#221018] to-[#140C12] border-[#F43F5E] ring-1 ring-[#F43F5E]/30 shadow-[0_4px_24px_rgba(244,63,94,0.18)]'
+                              : 'bg-gradient-to-r from-[#151D2C] to-[#0E1420] border-[#FFB800] ring-1 ring-[#FFB800]/30 shadow-[0_4px_24px_rgba(255,184,0,0.15)]'
                             : isFullyCompleted
                               ? 'bg-[#0E1524] border-emerald-500/30 hover:border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.08)]'
                               : isLocked
@@ -814,12 +1031,31 @@ export function LearnView({
                                 : 'bg-[#101726] border-white/10 hover:border-white/20 shadow-sm'
                         }`}
                       >
-                        {/* Wiersz 1 (Góra): Numer działu (np. "01") + Pastylka stanu po lewej, Liczba lekcji po prawej */}
-                        <div className="flex items-center justify-between gap-2 w-full">
-                          <div className="flex items-center gap-2">
+                        {/* Wiersz 1 (Góra): Numer działu (np. "01") + Pastylka stanu / Filar po lewej, Liczba lekcji po prawej */}
+                        <div className="flex items-center justify-between gap-2 w-full flex-wrap">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-display font-black text-xs text-slate-300 bg-black/40 border border-white/10 px-2 py-0.5 rounded-lg tracking-wider">
                               {formattedNumber}
                             </span>
+                            {/* Filar Tag dla Języka Polskiego */}
+                            {topic.pillar_name && (
+                              <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${
+                                topic.pillar_id === 'pillar-1-jezyk-w-uzyciu'
+                                  ? 'bg-rose-500/10 text-rose-300 border-rose-500/30'
+                                  : topic.pillar_id === 'pillar-2-lektury'
+                                    ? 'bg-purple-500/10 text-purple-300 border-purple-500/30'
+                                    : 'bg-gradient-to-r from-amber-500/15 to-rose-500/15 text-amber-300 border-amber-500/40 shadow-[0_0_10px_rgba(245,158,11,0.15)]'
+                              }`}>
+                                {topic.pillar_id === 'pillar-3-wypracowanie' ? (
+                                  <Feather size={11} className="text-amber-400 shrink-0" />
+                                ) : topic.pillar_id === 'pillar-2-lektury' ? (
+                                  <BookOpen size={11} className="text-purple-400 shrink-0" />
+                                ) : (
+                                  <MessageSquare size={11} className="text-rose-400 shrink-0" />
+                                )}
+                                <span>{topic.pillar_name}</span>
+                              </span>
+                            )}
                             {isLocked ? (
                               <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-white/5 border border-white/5 px-2.5 py-0.5 rounded-full">
                                 <Lock size={10} className="text-slate-400" />
@@ -831,7 +1067,7 @@ export function LearnView({
                                 <span>ZALICZONY</span>
                               </span>
                             ) : isBeaconTopic ? (
-                              <ActiveBadge label="W TOKU" />
+                              <ActiveBadge label="W TOKU" isRose={selectedSubjectKey === 'pol'} />
                             ) : (
                               <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase text-slate-300 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
                                 DOSTĘPNY
@@ -839,23 +1075,64 @@ export function LearnView({
                             )}
                           </div>
 
-                          <span className="text-[11px] font-semibold text-slate-400">
-                            {topicLessonsCount > 0 ? `${topicLessonsCount} lekcji` : 'W opracowaniu'}
-                          </span>
+                          <div className="flex items-center gap-2">
+                            {topic.matura_points_range && (
+                              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md hidden sm:inline-block ${
+                                selectedSubjectKey === 'pol'
+                                  ? 'text-rose-300 bg-rose-500/10 border border-rose-500/20'
+                                  : 'text-amber-400/90 bg-amber-400/10 border border-amber-400/20'
+                              }`}>
+                                {topic.matura_points_range}
+                              </span>
+                            )}
+                            <span className="text-[11px] font-semibold text-slate-400">
+                              {topicLessonsCount > 0 ? formatLessonsCount(topicLessonsCount) : 'W opracowaniu'}
+                            </span>
+                          </div>
                         </div>
 
-                        {/* Wiersz 2 (Środek): Duży, czytelny tytuł działu + wskaźnik wejścia */}
+                        {/* Wiersz 2 (Środek): Ikona + Duży, czytelny tytuł działu + wskaźnik wejścia */}
                         <div className="flex items-center justify-between gap-3 w-full">
-                          <h2 className={`font-display font-black text-base sm:text-lg leading-snug break-words transition-colors ${
-                            isLocked ? 'text-slate-400' : 'text-white group-hover:text-[#FFB800]'
-                          }`}>
-                            {cleanName}
-                          </h2>
+                          <div className="flex items-center gap-3 min-w-0 flex-1">
+                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+                              isBeaconTopic
+                                ? selectedSubjectKey === 'pol'
+                                  ? 'bg-rose-500/15 border-rose-500/40 text-rose-400'
+                                  : 'bg-[#FFB800]/15 border-[#FFB800]/40 text-[#FFB800]'
+                                : isFullyCompleted
+                                  ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400'
+                                  : 'bg-white/5 border-white/10 text-slate-300 group-hover:text-white group-hover:border-white/20'
+                            }`}>
+                              <TopicIcon size={18} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <h2 className={`font-display font-black text-base sm:text-lg leading-snug break-words transition-colors ${
+                                isLocked 
+                                  ? 'text-slate-400' 
+                                  : selectedSubjectKey === 'pol' 
+                                    ? 'text-white group-hover:text-rose-400' 
+                                    : 'text-white group-hover:text-[#FFB800]'
+                              }`}>
+                                {cleanName}
+                              </h2>
+                              {topic.matura_focus ? (
+                                <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                                  {topic.matura_focus}
+                                </p>
+                              ) : topic.short_title && topic.short_title !== cleanName ? (
+                                <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                                  {topic.short_title}
+                                </p>
+                              ) : null}
+                            </div>
+                          </div>
 
                           {!isLocked && (
                             <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
                               isBeaconTopic
-                                ? 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                                ? selectedSubjectKey === 'pol'
+                                  ? 'bg-rose-500/15 text-rose-400 group-hover:bg-rose-500 group-hover:text-white shadow-[0_0_12px_rgba(244,63,94,0.2)]'
+                                  : 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950'
                                   : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
@@ -872,11 +1149,17 @@ export function LearnView({
                               {isLocked 
                                 ? 'Zablokowany' 
                                 : topicLessonsCount > 0 
-                                  ? `Ukończono: ${completedTopicLessonsCount}/${topicLessonsCount} lekcji` 
+                                  ? `Ukończono: ${completedTopicLessonsCount}/${topicLessonsCount} ${formatLessonsNoun(topicLessonsCount)}` 
                                   : `Postęp zadań: ${completedTopicTasks.length}/${allTopicTasks.length}`}
                             </span>
                             {!isLocked && (
-                              <span className={isFullyCompleted ? "text-emerald-400 font-bold" : isBeaconTopic ? "text-[#FFB800] font-bold" : "text-slate-300 font-bold"}>
+                              <span className={
+                                isFullyCompleted 
+                                  ? "text-emerald-400 font-bold" 
+                                  : isBeaconTopic 
+                                    ? selectedSubjectKey === 'pol' ? "text-rose-400 font-bold" : "text-[#FFB800] font-bold" 
+                                    : "text-slate-300 font-bold"
+                              }>
                                 {progressPercent}%
                               </span>
                             )}
@@ -889,13 +1172,33 @@ export function LearnView({
                                   : isFullyCompleted
                                     ? 'bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.5)]'
                                     : isBeaconTopic 
-                                      ? 'bg-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.6)]' 
+                                      ? selectedSubjectKey === 'pol'
+                                        ? 'bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.6)]'
+                                        : 'bg-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.6)]' 
                                       : 'bg-white/30'
                               }`} 
                               style={{ width: `${isLocked ? 0 : progressPercent}%` }} 
                             />
                           </div>
                         </div>
+
+                        {/* Wiersz 4: Lektury obowiązkowe w danym dziale / epoce (Filar II) */}
+                        {topic.required_books && topic.required_books.length > 0 && (
+                          <div className="pt-2 border-t border-white/5 w-full flex flex-wrap items-center gap-1.5">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-0.5">
+                              Lektury:
+                            </span>
+                            {topic.required_books.map((book: string, bIdx: number) => (
+                              <span
+                                key={bIdx}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-rose-500/10 text-rose-300 border border-rose-500/20"
+                              >
+                                <BookOpen size={10} className="text-rose-400 shrink-0" />
+                                <span className="truncate max-w-[200px] sm:max-w-[280px]">{book}</span>
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </button>
                     );
                   })}
@@ -970,18 +1273,18 @@ export function LearnView({
                         <ChevronLeft size={20} />
                       </button>
                       <h2 className="font-display font-black text-white text-base sm:text-lg leading-tight truncate">
-                        {cleanTopicTitle(currentTopic.name)}
+                        {cleanTopicTitle(currentTopic.name || currentTopic.title)}
                       </h2>
                     </div>
 
                     <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#101726] border border-white/10 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap">
                       {totalLessonsCount > 0 ? (
                         <>
-                          <span className="text-emerald-400 font-black">{completedLessonsCount}/{totalLessonsCount}</span>
-                          <span>lekcji</span>
+                          <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-black' : 'text-emerald-400 font-black'}>{completedLessonsCount}/{totalLessonsCount}</span>
+                          <span>{formatLessonsNoun(totalLessonsCount)}</span>
                         </>
                       ) : (
-                        <span className="text-[#FFB800] font-semibold">W opracowaniu</span>
+                        <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-semibold' : 'text-[#FFB800] font-semibold'}>W opracowaniu</span>
                       )}
                     </div>
                   </div>
@@ -993,14 +1296,16 @@ export function LearnView({
                         triggerHaptic('light');
                         openSubjectSheet(true);
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#141A23] border border-white/10 hover:border-[#FFB800]/40 text-[10px] sm:text-[11px] font-medium text-[#9CA3AF] transition-colors cursor-pointer group"
+                      className={`inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#141A23] border border-white/10 text-[10px] sm:text-[11px] font-medium text-[#9CA3AF] transition-colors cursor-pointer group ${
+                        selectedSubjectKey === 'pol' ? 'hover:border-rose-500/40' : 'hover:border-[#FFB800]/40'
+                      }`}
                       title="Zmień przedmiot"
                     >
                       <span className="text-slate-400 font-normal">Dział {(selectedTopicIndex ?? 0) + 1}</span>
                       <span className="text-white/20">•</span>
-                      <span className="text-white group-hover:text-[#FFB800] font-medium transition-colors">{currentSubject.name}</span>
+                      <span className={`font-medium transition-colors ${selectedSubjectKey === 'pol' ? 'text-white group-hover:text-rose-400' : 'text-white group-hover:text-[#FFB800]'}`}>{currentSubject.name}</span>
                       <span className="text-white/20">•</span>
-                      <span className="text-[#FFB800] font-medium">{currentSubject.key === 'math' ? 'Nowa Formuła 2023' : (currentSubject.level || 'Nowa Formuła 2023')}</span>
+                      <span className={`font-medium ${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-[#FFB800]'}`}>{currentSubject.key === 'math' ? 'Nowa Formuła 2023' : (currentSubject.level || 'Nowa Formuła 2023')}</span>
                     </button>
                   </div>
                 </div>
@@ -1018,17 +1323,21 @@ export function LearnView({
                     <div className="bg-[#101724] border border-white/10 rounded-2xl p-4 shadow-sm flex flex-col gap-2.5 mb-1">
                       <div className="flex items-center justify-between text-xs sm:text-sm">
                         <span className="text-slate-300 font-semibold flex items-center gap-2">
-                          <GraduationCap className="w-4 h-4 text-[#FFB800]" />
+                          <GraduationCap className={`w-4 h-4 ${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-[#FFB800]'}`} />
                           <span>Postęp Działu {(selectedTopicIndex ?? 0) + 1}:</span>
                         </span>
                         <span className="font-bold text-white">
-                          <span className="text-emerald-400 font-extrabold">{completedLessonsCount}/{totalLessonsCount}</span> lekcji ukończonych ({progressPct}%)
+                          <span className={`${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-emerald-400'} font-extrabold`}>{completedLessonsCount}/{totalLessonsCount}</span> {formatLessonsNoun(totalLessonsCount)} ukończonych ({progressPct}%)
                         </span>
                       </div>
                       {/* Minimalistyczny 6-milimetrowy (h-2) pasek postępu */}
                       <div className="w-full h-2 rounded-full bg-slate-950 overflow-hidden border border-white/10">
                         <div 
-                          className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] transition-all duration-500 rounded-full shadow-[0_0_12px_rgba(255,184,0,0.5)]"
+                          className={`h-full transition-all duration-500 rounded-full ${
+                            selectedSubjectKey === 'pol'
+                              ? 'bg-gradient-to-r from-rose-600 to-rose-400 shadow-[0_0_12px_rgba(244,63,94,0.5)]'
+                              : 'bg-gradient-to-r from-[#D97706] to-[#FFB800] shadow-[0_0_12px_rgba(255,184,0,0.5)]'
+                          }`}
                           style={{ width: `${progressPct}%` }}
                         />
                       </div>
@@ -1107,6 +1416,8 @@ export function LearnView({
 
                       const nextLessonPayload = nextGroup ? {
                         isSession: true,
+                        isPolish: selectedSubjectKey === 'pol',
+                        subjectId: currentSubject.firestoreId,
                         lessonId: nextGroup.id,
                         lessonTitle: `${nextGroup.badge}: ${nextGroup.name}`,
                         tasks: nextTasksToRun,
@@ -1116,10 +1427,19 @@ export function LearnView({
                         allTaskIdsToMarkCompleted: nextGroup.tasks.map((t: any) => t.id),
                         nextLesson: afterNextGroup ? {
                           isSession: true,
+                          isPolish: selectedSubjectKey === 'pol',
+                          subjectId: currentSubject.firestoreId,
                           lessonId: afterNextGroup.id,
                           lessonTitle: `${afterNextGroup.badge}: ${afterNextGroup.name}`
                         } : null
                       } : null;
+
+                      const cleanLessonNumber = (() => {
+                        if (/sprawdzian/i.test(group.id) || /sprawdzian/i.test(group.badge || '')) return '★';
+                        const badgeMatch = (group.badge || '').match(/(\d+\.\d+)/);
+                        if (badgeMatch) return badgeMatch[1];
+                        return group.id.replace(/^(pol-)?lesson-/, '').replace('-', '.');
+                      })();
 
                       return (
                         <div 
@@ -1129,7 +1449,9 @@ export function LearnView({
                             isCompleted
                               ? 'border-emerald-500/30 bg-[#0E1524] shadow-[0_4px_20px_rgba(16,185,129,0.06)]'
                               : isCurrentActiveLesson
-                                ? 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-[0_0_25px_rgba(255,184,0,0.22)] ring-1 ring-[#FFB800]/40'
+                                ? selectedSubjectKey === 'pol'
+                                  ? 'border-2 border-rose-500 bg-gradient-to-b from-[#201318] to-[#120B0E] shadow-[0_0_25px_rgba(244,63,94,0.22)] ring-1 ring-rose-500/40'
+                                  : 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-[0_0_25px_rgba(255,184,0,0.22)] ring-1 ring-[#FFB800]/40'
                                 : !isUnlocked
                                   ? 'border-white/5 bg-[#0A0E17]/60 opacity-60'
                                   : 'border-white/10 bg-[#101726]'
@@ -1143,7 +1465,9 @@ export function LearnView({
                                 isCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.25)]'
                                   : isCurrentActiveLesson
-                                    ? 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.3)]'
+                                    ? selectedSubjectKey === 'pol'
+                                      ? 'bg-rose-500/20 border border-rose-500 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.3)]'
+                                      : 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.3)]'
                                     : !isUnlocked
                                       ? 'bg-white/5 border-white/10 text-slate-500'
                                       : 'bg-white/5 border-white/10 text-slate-300'
@@ -1153,7 +1477,7 @@ export function LearnView({
                                 ) : !isUnlocked ? (
                                   <Lock size={18} />
                                 ) : (
-                                  <span className="font-display font-extrabold text-xs sm:text-sm">{group.id.replace('lesson-', '')}</span>
+                                  <span className="font-display font-extrabold text-xs sm:text-sm">{cleanLessonNumber}</span>
                                 )}
                               </div>
 
@@ -1169,7 +1493,7 @@ export function LearnView({
                                     </span>
                                   )}
                                   {isCurrentActiveLesson && (
-                                    <ActiveBadge label="AKTUALNA LEKCJA" />
+                                    <ActiveBadge label="AKTUALNA LEKCJA" isRose={selectedSubjectKey === 'pol'} />
                                   )}
                                   {!isUnlocked && (
                                     <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase text-slate-500 bg-white/5 border border-white/5 px-2 py-0.5 rounded-full">
@@ -1282,9 +1606,13 @@ export function LearnView({
                               <button
                                 id={`start-lesson-btn-${group.id}`}
                                 onClick={() => handleStartLessonSession(group, nextLessonPayload)}
-                                className="w-full py-3.5 px-6 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-[0.98] transition cursor-pointer"
+                                className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.98] transition cursor-pointer ${
+                                  selectedSubjectKey === 'pol'
+                                    ? 'bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_20px_rgba(244,63,94,0.35)]'
+                                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                                }`}
                               >
-                                <Play size={16} fill="#080B11" strokeWidth={0} />
+                                <Play size={16} fill={selectedSubjectKey === 'pol' ? '#FFFFFF' : '#080B11'} strokeWidth={0} />
                                 <span>ROZPOCZNIJ LEKCJĘ</span>
                                 <ArrowRight size={16} strokeWidth={3} />
                               </button>
@@ -1294,15 +1622,41 @@ export function LearnView({
                       );
                     })}
 
-                    {/* ================= AUTOMATYCZNY SPRAWDZIAN DZIAŁU (BOSS EXAM) ================= */}
+                    {/* ================= AUTOMATYCZNY SPRAWDZIAN DZIAŁU / LEKTURY (BOSS EXAM) ================= */}
                     {(() => {
-                      const isBossExamPassed = completedTasks.includes('BOSS-EXAM-DZIAL-1') || completedTasks.includes('SPRAWDZIAN-DZIAL-1');
+                      const isMath = selectedSubjectKey === 'math';
+                      const isMathDzial1 = isMath && (currentTopic.id === 'dzial-1' || currentTopic.numericId === 1);
+                      const examData = currentTopic.final_test || currentTopic.epoch_exam || currentTopic.book_exam || (isMathDzial1 ? {
+                        id: 'BOSS-EXAM-DZIAL-1',
+                        title: 'SPRAWDZIAN DZIAŁU 1: LICZBY RZECZYWISTE',
+                        subtitle: '7 kluczowych zadań maturalnych (po 1 z lekcji 1.1–1.7) • Limit: 15 minut • Próg zaliczenia: 70% (5 z 7 zadań)',
+                        totalQuestions: 7,
+                        timeLimitMinutes: 15,
+                        rewardXp: 100,
+                        badgeTitle: 'MISTRZ LICZB RZECZYWISTYCH'
+                      } : null);
+
+                      if (!examData) return null;
+
+                      const examId = examData.id || `exam-${currentTopic.id}`;
+                      const isBossExamPassed = completedTasks.includes(examId) || 
+                                               completedTasks.includes(`BOSS-EXAM-${currentTopic.id}`) ||
+                                               completedTasks.includes(`SPRAWDZIAN-${currentTopic.id}`) ||
+                                               completedTasks.includes('BOSS-EXAM-DZIAL-1') ||
+                                               completedTasks.includes('SPRAWDZIAN-DZIAL-1');
+
                       const completedCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, userState)).length;
                       const allDone = completedCount === lessonsForCurrentTopic.length;
 
+                      const sprawdzianGroup = lessonsForCurrentTopic.find(g => 
+                        g.id.toLowerCase().includes('sprawdzian') || 
+                        g.badge.toLowerCase().includes('sprawdzian') || 
+                        g.name.toLowerCase().includes('sprawdzian')
+                      );
+
                       return (
                         <div 
-                          id="boss-exam-dzial-1-card"
+                          id={`boss-exam-${currentTopic.id}-card`}
                           className={`rounded-3xl border-2 p-5 sm:p-6 flex flex-col gap-4 transition-all duration-300 mt-6 relative overflow-hidden ${
                             isBossExamPassed
                               ? 'bg-gradient-to-br from-[#101A14] via-[#0D1612] to-[#0A110E] border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.15)]'
@@ -1326,19 +1680,19 @@ export function LearnView({
                               <div>
                                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                                   <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-purple-300">
-                                    Zwieńczenie Działu 1
+                                    {currentTopic.pillar_name ? currentTopic.pillar_name : `Zwieńczenie Działu ${(selectedTopicIndex ?? 0) + 1}`}
                                   </span>
                                   {isBossExamPassed && (
                                     <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300">
-                                      ✓ MISTRZ LICZB RZECZYWISTYCH
+                                      ✓ {examData.badgeTitle || 'ZALICZONY'}
                                     </span>
                                   )}
                                 </div>
                                 <h3 className="font-display font-extrabold text-white text-lg sm:text-xl">
-                                  SPRAWDZIAN DZIAŁU 1: LICZBY RZECZYWISTE
+                                  {examData.title || `SPRAWDZIAN: ${cleanTopicTitle(currentTopic.name).toUpperCase()}`}
                                 </h3>
                                 <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
-                                  7 kluczowych zadań maturalnych (po 1 z lekcji 1.1–1.7) • Limit: 15 minut • Próg zaliczenia: 70% (5 z 7 zadań)
+                                  {examData.subtitle || `${examData.totalQuestions || 8} pytań maturalnych • Limit: ${examData.timeLimitMinutes || 15} minut`}
                                 </p>
                               </div>
                             </div>
@@ -1348,15 +1702,15 @@ export function LearnView({
                           <div className="grid grid-cols-3 gap-2 py-1 text-center">
                             <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
                               <span className="text-[10px] text-slate-400 font-semibold block uppercase">Liczba Zadań</span>
-                              <span className="text-sm font-extrabold text-white">7 pytań</span>
+                              <span className="text-sm font-extrabold text-white">{examData.totalQuestions || 8} pytań</span>
                             </div>
                             <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
                               <span className="text-[10px] text-slate-400 font-semibold block uppercase">Limit Czasu</span>
-                              <span className="text-sm font-extrabold text-[#FFB800]">15 minut</span>
+                              <span className="text-sm font-extrabold text-[#FFB800]">{examData.timeLimitMinutes || 15} minut</span>
                             </div>
                             <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
                               <span className="text-[10px] text-slate-400 font-semibold block uppercase">Nagroda</span>
-                              <span className="text-sm font-extrabold text-amber-400">+100 XP + Trofeum</span>
+                              <span className="text-sm font-extrabold text-amber-400">+{examData.rewardXp || 100} XP + Trofeum</span>
                             </div>
                           </div>
 
@@ -1365,7 +1719,13 @@ export function LearnView({
                             id="start-boss-exam-btn"
                             onClick={() => {
                               triggerHaptic('medium');
-                              setIsBossExamOpen(true);
+                              if (isMathDzial1) {
+                                setIsBossExamOpen(true);
+                              } else if (sprawdzianGroup) {
+                                handleStartLessonSession(sprawdzianGroup);
+                              } else {
+                                setIsBossExamOpen(true);
+                              }
                             }}
                             className={`w-full py-3.5 sm:py-4 px-6 rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 transition active:scale-[0.99] cursor-pointer shadow-lg ${
                               isBossExamPassed
@@ -1529,13 +1889,17 @@ export function LearnView({
                         <BookOpen size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2 mb-1">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
                           <span className="font-display font-black text-white text-base">
                             Język Polski
                           </span>
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                            <span className="w-1 h-1 rounded-full bg-rose-400" />
+                            Nowa Formuła 2023
+                          </span>
                         </div>
                         <p className="text-xs text-[#8B8D98] truncate">
-                          Epoki literackie • Lektury • Język w użyciu
+                          17 działów • 2 Filary • 102 lekcje • 28 lektur
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
                           <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">

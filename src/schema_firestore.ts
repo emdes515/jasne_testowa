@@ -84,6 +84,7 @@ export interface LessonDocument {
   theory_pill: LessonTheoryPill;
   tasks: any[];
   formulaSheet?: any;
+  formula_sheet?: any;
   updatedAt?: string;
 }
 
@@ -183,6 +184,14 @@ export interface FirestoreUserDocument {
   taskStars?: Record<string, number>;
   completed_lessons?: string[];
   completedLessons?: Record<string, any>;
+
+  // Hearts & PRO Sponsorship fields
+  isPro?: boolean;
+  hearts?: number;
+  maxHearts?: number;
+  lastHeartRegenTimestamp?: number;
+  aiVisionDailyCount?: number;
+  lastVisionDate?: string;
 }
 
 export function getCurrentIsoWeekKey(): string {
@@ -229,6 +238,11 @@ export function buildInitialUserDocument(authUser?: any): Partial<FirestoreUserD
     streakActiveDates: [],
     dailyTaskCounts: {},
     claimedAchievements: {},
+    isPro: false,
+    hearts: 5,
+    maxHearts: 5,
+    lastHeartRegenTimestamp: Date.now(),
+    aiVisionDailyCount: 0,
     perks: {
       xpBoostPercent: 0,
       coinBoostPercent: 0,
@@ -344,6 +358,12 @@ export function buildFirestoreUserPayload(
     maturaBestScore: userState.maturaBestScore || 0,
     hasCompletedOnboarding: userState.hasCompletedOnboarding ?? true,
     onboardingPreferences: userState.onboardingPreferences || null,
+    isPro: Boolean(userState.isPro),
+    hearts: typeof userState.hearts === 'number' ? userState.hearts : 5,
+    maxHearts: userState.maxHearts || 5,
+    lastHeartRegenTimestamp: userState.lastHeartRegenTimestamp || Date.now(),
+    aiVisionDailyCount: userState.aiVisionDailyCount || 0,
+    lastVisionDate: userState.lastVisionDate || undefined,
     completedTasks,
     taskStars,
     completed_lessons: Array.from(new Set([

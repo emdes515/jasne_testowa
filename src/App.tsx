@@ -22,6 +22,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, ArrowRight, LogIn, User } from 'lucide-react';
 import { OnboardingOverlay, OnboardingPreferences } from './components/OnboardingOverlay';
 import { ProPopup } from './components/ProPopup';
+import { ParentSponsorModal } from './components/ParentSponsorModal';
+import { activatePro, deductHeart, refillHeartsWithCoins, getSyncedHearts } from './lib/heartsManager';
 import { AuthModal } from './components/AuthModal';
 import { ACHIEVEMENTS, ShopItem } from './data/achievements';
 import { triggerHaptic, calculateStreakOnTaskCompletion, getTodayDateString, filterActualTaskIds, isActualTaskId } from './utils';
@@ -101,6 +103,7 @@ export default function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
   const [showProPopup, setShowProPopup] = useState(false);
+  const [showParentSponsorModal, setShowParentSponsorModal] = useState(false);
   const [isSubjectSheetOpen, setIsSubjectSheetOpen] = useState(false);
   const [profileInitialTab, setProfileInitialTab] = useState<'overview' | 'achievements' | 'perks'>('overview');
   
@@ -121,6 +124,11 @@ export default function App() {
     timeSpentTotalSeconds: 0,
     weeklyTimeSpentMinutes: 0,
     lastWeekKey: getCurrentIsoWeekKey(),
+    hearts: 5,
+    maxHearts: 5,
+    isPro: false,
+    lastHeartRegenTimestamp: Date.now(),
+    aiVisionDailyCount: 0,
     perks: {
       xpBoostPercent: 0,
       coinBoostPercent: 0,
@@ -199,6 +207,12 @@ export default function App() {
             timeSpentTotalSeconds: stats.timeSpentTotalSeconds ?? data.timeSpentTotalSeconds ?? prev.timeSpentTotalSeconds ?? 0,
             weeklyTimeSpentMinutes: stats.weeklyTimeSpentMinutes ?? data.weeklyTimeSpentMinutes ?? prev.weeklyTimeSpentMinutes ?? 0,
             lastWeekKey: stats.lastWeekKey ?? data.lastWeekKey ?? prev.lastWeekKey ?? getCurrentIsoWeekKey(),
+            hearts: typeof data.hearts === 'number' ? data.hearts : (prev.hearts ?? 5),
+            maxHearts: typeof data.maxHearts === 'number' ? data.maxHearts : (prev.maxHearts ?? 5),
+            isPro: data.isPro ?? prev.isPro ?? false,
+            lastHeartRegenTimestamp: data.lastHeartRegenTimestamp ?? prev.lastHeartRegenTimestamp ?? Date.now(),
+            aiVisionDailyCount: data.aiVisionDailyCount ?? prev.aiVisionDailyCount ?? 0,
+            lastVisionDate: data.lastVisionDate ?? prev.lastVisionDate,
             completed_lessons: loadedCompletedLessons,
             completedLessons: data.completedLessons || progress.completedLessons || prev.completedLessons || {},
             perks: {
@@ -246,6 +260,12 @@ export default function App() {
             lastStreakDate: parsed.lastStreakDate || prev.lastStreakDate,
             completed_lessons: Array.isArray(parsed.completed_lessons) ? parsed.completed_lessons : (prev.completed_lessons || []),
             completedLessons: parsed.completedLessons || prev.completedLessons || {},
+            hearts: typeof parsed.hearts === 'number' ? parsed.hearts : (prev.hearts ?? 5),
+            maxHearts: typeof parsed.maxHearts === 'number' ? parsed.maxHearts : (prev.maxHearts ?? 5),
+            isPro: parsed.isPro ?? prev.isPro ?? false,
+            lastHeartRegenTimestamp: parsed.lastHeartRegenTimestamp ?? prev.lastHeartRegenTimestamp ?? Date.now(),
+            aiVisionDailyCount: parsed.aiVisionDailyCount ?? prev.aiVisionDailyCount ?? 0,
+            lastVisionDate: parsed.lastVisionDate ?? prev.lastVisionDate,
             perks: {
               xpBoostPercent: 0,
               coinBoostPercent: 0,
@@ -276,6 +296,11 @@ export default function App() {
           claimedAchievements: {},
           completed_lessons: [],
           completedLessons: {},
+          hearts: 5,
+          maxHearts: 5,
+          isPro: false,
+          lastHeartRegenTimestamp: Date.now(),
+          aiVisionDailyCount: 0,
           perks: {
             xpBoostPercent: 0,
             coinBoostPercent: 0,
@@ -447,7 +472,7 @@ export default function App() {
 
     // Determine lesson key (e.g. "1.1") from lessonTitle or lessonId
     const rawLessonId = String(activeTaskData?.lessonId || '');
-    const cleanLessonId = rawLessonId.replace('lesson-', '');
+    const cleanLessonId = rawLessonId.replace(/^(lesson-|pol-lesson-)/, '');
     const dotLessonId = cleanLessonId.replace('-', '.');
     const lessonTitle = activeTaskData?.lessonTitle || '';
     const match = lessonTitle.match(/(?:Lekcja\s+|[\d]+:|^)([\d]+[.-][\d]+)/i) || lessonTitle.match(/([\d]+\.[\d]+)/);
@@ -795,6 +820,33 @@ export default function App() {
     return true;
   };
 
+  const handleActivatePro = () => {
+    setUserState(prev => {
+      const updated = activatePro(prev);
+      saveUserData(updated);
+      return updated;
+    });
+  };
+
+  const handleDeductHeart = (): { wasDeducted: boolean; isOutOfHearts: boolean } => {
+    let result = { wasDeducted: false, isOutOfHearts: false };
+    setUserState(prev => {
+      if (prev.isPro) {
+        return prev;
+      }
+      const res = deductHeart(prev);
+      result = {
+        wasDeducted: res.wasDeducted,
+        isOutOfHearts: res.isOutOfHearts
+      };
+      if (res.wasDeducted) {
+        saveUserData(res.updatedState);
+      }
+      return res.updatedState;
+    });
+    return result;
+  };
+
   if (loading) {
     return <LoadingScreen message="Autoryzacja..." />;
   }
@@ -834,6 +886,15 @@ export default function App() {
               }
             }}
             currentTab={currentTab} 
+            onOpenParentSponsor={() => setShowParentSponsorModal(true)}
+            onOpenProPopup={() => setShowProPopup(true)}
+            onUpdateUserState={(updater) => {
+              setUserState(prev => {
+                const next = updater(prev);
+                saveUserData(next);
+                return next;
+              });
+            }}
           />
         )}
         
@@ -871,6 +932,16 @@ export default function App() {
                 onCompleteSession={handleCompleteTask} 
                 onCancelSession={handleCancelTask}
                 onDeductCoins={handleDeductCoins}
+                onDeductHeart={handleDeductHeart}
+                onOpenParentSponsor={() => setShowParentSponsorModal(true)}
+                onOpenProPopup={() => setShowProPopup(true)}
+                onUpdateUserState={(updater) => {
+                  setUserState(prev => {
+                    const next = updater(prev);
+                    saveUserData(next);
+                    return next;
+                  });
+                }}
               />
             ) : (
               <TaskView 
@@ -879,6 +950,17 @@ export default function App() {
                 userState={userState} 
                 onCompleteTask={handleCompleteTask} 
                 onCancelTask={handleCancelTask} 
+                onDeductCoins={handleDeductCoins}
+                onDeductHeart={handleDeductHeart}
+                onOpenParentSponsor={() => setShowParentSponsorModal(true)}
+                onOpenProPopup={() => setShowProPopup(true)}
+                onUpdateUserState={(updater) => {
+                  setUserState(prev => {
+                    const next = updater(prev);
+                    saveUserData(next);
+                    return next;
+                  });
+                }}
               />
             )
           ) : (
@@ -896,6 +978,8 @@ export default function App() {
                   onStartTask={handleStartTask}
                   onUpdateUserState={setUserState}
                   saveUserData={saveUserData}
+                  onOpenParentSponsor={() => setShowParentSponsorModal(true)}
+                  onOpenProPopup={() => setShowProPopup(true)}
                 />
               )}
               {currentTab === 'nauka' && (
@@ -956,7 +1040,21 @@ export default function App() {
       </AnimatePresence>
 
       <RewardPopup reward={reward} onClose={() => setReward(null)} />
-      <ProPopup isOpen={showProPopup} onClose={() => setShowProPopup(false)} />
+      <ProPopup 
+        isOpen={showProPopup} 
+        onClose={() => setShowProPopup(false)} 
+        onOpenParentSponsor={() => {
+          setShowProPopup(false);
+          setShowParentSponsorModal(true);
+        }}
+        onActivatePro={handleActivatePro}
+      />
+      <ParentSponsorModal
+        isOpen={showParentSponsorModal}
+        onClose={() => setShowParentSponsorModal(false)}
+        onActivatePro={handleActivatePro}
+        studentName="Twój maturzysta"
+      />
       <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </div>
   );

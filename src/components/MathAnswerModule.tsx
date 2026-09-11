@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Keyboard, PenTool, CheckCircle2, ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { Keyboard, PenTool, CheckCircle2, ArrowRight, Loader2, Lightbulb } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 import { SmartMathKeyboard } from './SmartMathKeyboard';
 import { Whiteboard } from './Whiteboard';
@@ -101,7 +101,7 @@ export function MathAnswerModule({
               }}
               className="flex items-center gap-1 text-[11px] font-bold text-[#8B8D98] hover:text-[#FFB800] transition-colors py-1 px-2 rounded-lg hover:bg-white/5"
             >
-              <Sparkles size={12} className="text-[#FFB800]" />
+              <Lightbulb size={12} className="text-[#FFB800]" />
               <span>Wskazówka AI</span>
             </button>
           )}

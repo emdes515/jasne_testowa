@@ -26,7 +26,9 @@ import {
   HelpCircle,
   Bot,
   Loader2,
-  Coins
+  Coins,
+  Heart,
+  HeartCrack
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -38,12 +40,18 @@ import { CkeScratchpad } from './CkeScratchpad';
 import { OpenTaskWorkspace } from './OpenTaskWorkspace';
 import { SessionRunner } from './SessionRunner';
 import { UserState, MathTaskItem, TaskOption, TaskSolutionStep } from '../types';
+import { deductHeart, getSyncedHearts } from '../lib/heartsManager';
 
 interface TaskViewProps {
   taskData?: any;
   userState?: UserState;
   onCompleteTask: (taskIds?: string | string[], stars?: number, earnedXp?: number, earnedCoins?: number, nextLesson?: any) => void;
   onCancelTask: () => void;
+  onDeductCoins?: (amount: number) => boolean;
+  onDeductHeart?: () => { wasDeducted: boolean; isOutOfHearts: boolean };
+  onOpenParentSponsor?: () => void;
+  onOpenProPopup?: () => void;
+  onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
 }
 
 interface TheoryCardItem {
@@ -189,17 +197,34 @@ function parseTheoryCards(officialKey: string, question: string): TheoryCardItem
   }];
 }
 
-export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: TaskViewProps) {
+export function TaskView({ 
+  taskData, 
+  userState, 
+  onCompleteTask, 
+  onCancelTask,
+  onDeductCoins,
+  onDeductHeart,
+  onOpenParentSponsor,
+  onOpenProPopup,
+  onUpdateUserState
+}: TaskViewProps) {
   if (taskData?.isSession) {
     return (
       <SessionRunner 
         sessionData={taskData} 
         userState={userState} 
         onCompleteSession={onCompleteTask} 
-        onCancelSession={onCancelTask} 
+        onCancelSession={onCancelTask}
+        onDeductCoins={onDeductCoins}
+        onDeductHeart={onDeductHeart}
+        onOpenParentSponsor={onOpenParentSponsor}
+        onOpenProPopup={onOpenProPopup}
+        onUpdateUserState={onUpdateUserState}
       />
     );
   }
+
+  const heartsData = getSyncedHearts(userState);
 
   // Determine tasks pool for this lesson
   const rawLessonTasks: any[] = (taskData?.lessonTasks && Array.isArray(taskData.lessonTasks) && taskData.lessonTasks.length > 0)
@@ -592,6 +617,12 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
       setShakeIncorrect(true);
       setShowSolutionSteps(true);
       setTimeout(() => setShakeIncorrect(false), 500);
+
+      if (onDeductHeart) {
+        onDeductHeart();
+      } else if (onUpdateUserState) {
+        onUpdateUserState(prev => deductHeart(prev).updatedState);
+      }
 
       if (!isRetryPhase) {
         setFirstPassMistakesCount(m => m + 1);
@@ -1264,8 +1295,28 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
             )}
           </div>
 
-          {/* Lesson progress indicator */}
-          <div className="flex items-center gap-1.5">
+          {/* Lesson progress & hearts indicator */}
+          <div className="flex items-center gap-2">
+            <button
+              id="taskview-hearts-pill"
+              onClick={() => {
+                triggerHaptic('light');
+                if (onOpenParentSponsor) onOpenParentSponsor();
+                else if (onOpenProPopup) onOpenProPopup();
+              }}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-full border text-xs font-semibold select-none transition active:scale-95 cursor-pointer ${
+                heartsData.isPro
+                  ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                  : heartsData.hearts <= 1
+                    ? 'bg-rose-500/20 border-rose-500/50 text-rose-400 animate-pulse'
+                    : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+              }`}
+              title={heartsData.isPro ? 'Pakiet PRO: Nielimitowane serca' : `Serca: ${heartsData.hearts}/${heartsData.maxHearts}`}
+            >
+              <Heart className={`w-3.5 h-3.5 text-rose-500 ${heartsData.hearts > 0 ? 'fill-rose-500' : ''} shrink-0`} />
+              <span className="font-bold tracking-wide leading-none">{heartsData.isPro ? '∞' : heartsData.hearts}</span>
+            </button>
+
             {isRetryPhase ? (
               <Badge variant="amber" icon={<RotateCcw size={10} />}>
                 Poprawka: {currentTaskIndex + 1}/{practiceQueue.length}
@@ -1712,6 +1763,7 @@ export function TaskView({ taskData, userState, onCompleteTask, onCancelTask }: 
             onOpenScratchpad={() => setIsScratchpadOpen(true)}
             onSubmit={handleVerifyAnswer}
             onAskAiTutor={taskType === 'OPEN_PROOF' ? handleAskAiTutor : undefined}
+            hideWhiteboard={taskType === 'NUMERIC_INPUT'}
           />
         )}
       </main>

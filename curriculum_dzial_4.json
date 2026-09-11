@@ -145,7 +145,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.1",
+          "title": "Pojęcie funkcji: Przyporządkowanie, dziedzina i przeciwdziedzina",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.1",
+          "title": "Pojęcie funkcji: Przyporządkowanie, dziedzina i przeciwdziedzina",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-2",
@@ -290,7 +346,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.2",
+          "title": "Wyznaczanie dziedziny ze wzoru: Mianownik różny od zera",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.2",
+          "title": "Wyznaczanie dziedziny ze wzoru: Mianownik różny od zera",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-3",
@@ -435,7 +547,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.3",
+          "title": "Wyznaczanie dziedziny ze wzoru: Wyrażenie pod pierwiastkiem kwadratowym",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.3",
+          "title": "Wyznaczanie dziedziny ze wzoru: Wyrażenie pod pierwiastkiem kwadratowym",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-4",
@@ -738,7 +906,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.4",
+          "title": "Odczytywanie dziedziny i zbioru wartości z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.4",
+          "title": "Odczytywanie dziedziny i zbioru wartości z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-5",
@@ -1052,7 +1276,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.5",
+          "title": "Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.5",
+          "title": "Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-6",
@@ -1273,7 +1553,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.6",
+          "title": "Miejsca zerowe funkcji: Odczytywanie z wykresu i obliczanie ze wzoru",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.6",
+          "title": "Miejsca zerowe funkcji: Odczytywanie z wykresu i obliczanie ze wzoru",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-7",
@@ -1527,7 +1863,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.7",
+          "title": "Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.7",
+          "title": "Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-8",
@@ -1705,7 +2097,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.8",
+          "title": "Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.8",
+          "title": "Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-9",
@@ -1964,7 +2412,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.9",
+          "title": "Wartość największa i najmniejsza funkcji z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.9",
+          "title": "Wartość największa i najmniejsza funkcji z wykresu",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-10",
@@ -2107,7 +2611,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.10",
+          "title": "Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.10",
+          "title": "Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-11",
@@ -2250,7 +2810,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.11",
+          "title": "Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.11",
+          "title": "Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-12",
@@ -2393,7 +3009,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.12",
+          "title": "Przesunięcie o wektor [p, q]: y = f(x - p) + q",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.12",
+          "title": "Przesunięcie o wektor [p, q]: y = f(x - p) + q",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-13",
@@ -2536,7 +3208,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.13",
+          "title": "Symetria wykresu względem osi OX oraz osi OY",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.13",
+          "title": "Symetria wykresu względem osi OX oraz osi OY",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-14",
@@ -2679,7 +3407,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.14",
+          "title": "Wprowadzenie do funkcji wykładniczej: Wykres y = a^x",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.14",
+          "title": "Wprowadzenie do funkcji wykładniczej: Wykres y = a^x",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       },
       {
         "id": "lesson-4-15",
@@ -2822,7 +3606,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "4.15",
+          "title": "Proporcjonalność odwrotna: Wykres y = a/x i modelowanie sytuacji praktycznych",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "4.15",
+          "title": "Proporcjonalność odwrotna: Wykres y = a/x i modelowanie sytuacji praktycznych",
+          "formulas": [
+            {
+              "title": "Warunek dziedziny ze wzoru",
+              "latex": "f(x) = \\frac{P(x)}{Q(x)} \\implies Q(x) \\neq 0, \\quad f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OX",
+              "latex": "y = f(x - p) \\quad (\\text{o } p \\text{ w prawo dla } p > 0)"
+            },
+            {
+              "title": "Przesunięcie wzdłuż osi OY",
+              "latex": "y = f(x) + q \\quad (\\text{o } q \\text{ w górę dla } q > 0)"
+            },
+            {
+              "title": "Symetrie osiowe",
+              "latex": "y = -f(x) \\text{ (względem OX)}, \\quad y = f(-x) \\text{ (względem OY)}"
+            }
+          ],
+          "goldenRule": "$f(x - p)$: znak w nawiasie jest odwrotny do kierunku ruchu! $f(x - 3)$ przesuwa w PRAWO, a $f(x + 3)$ przesuwa w LEWO.",
+          "ckeTrap": {
+            "error": "y = f(x + 2) \\implies \\text{przesunięcie w prawo o 2}",
+            "correct": "y = f(x + 2) \\implies \\text{przesunięcie w LEWO o 2}",
+            "description": "Dodatnia liczba przy $x$ w nawiasie oznacza przesunięcie w stronę ujemnych $x$!"
+          }
+        }
       }
     ],
     "final_test": {

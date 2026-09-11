@@ -30,27 +30,6 @@ service cloud.firestore {
       }
     }
 
-    // Alias dla kolekcji przedmioty
-    match /przedmioty/{przedmiotId} {
-      allow read: if true;
-      allow write: if false;
-
-      match /{allChildren=**} {
-        allow read: if true;
-        allow write: if false;
-      }
-    }
-
-    // Topics (Działy) and Subcollection Lessons (Lekcje) - Fallback/Mirror
-    match /topics/{topicId} {
-      allow read: if true;
-      allow write: if false; // Admin only via Admin SDK / service account
-
-      match /lessons/{lessonId} {
-        allow read: if true;
-        allow write: if false; // Admin only via Admin SDK / service account
-      }
-    }
     
     // Legacy collections (optional read access during migration)
     match /mathTasks/{document=**} {

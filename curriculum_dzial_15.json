@@ -112,16 +112,16 @@
           {
             "id": "task-15-1-7",
             "type": "TRUE_FALSE",
-            "content": "Oceń prawdziwość zdania: W zadaniach optymalizacyjnych na poziomie podstawowym stosuje się pochodne funkcji.",
-            "explanation": "Na poziomie podstawowym zadania optymalizacyjne rozwiązuje się wyłącznie za pomocą własności funkcji kwadratowej (wierzchołka paraboli).",
+            "content": "Oceń prawdziwość zdania: W zadaniach optymalizacyjnych na poziomie podstawowym badamy wielkość opisaną funkcją kwadratową, wyznaczając jej wierzchołek.",
+            "explanation": "Na poziomie podstawowym zadania optymalizacyjne polegają na ułożeniu wzoru funkcji kwadratowej jednej zmiennej i wyznaczeniu jej wartości największej lub najmniejszej w wierzchołku paraboli $x_w = -\\frac{b}{2a}$.",
             "source": "Informator CKE",
             "points": 1,
             "hint_cost": 10,
-            "correct_answer": "Fałsz",
-            "hint": "Pochodne należą wyłącznie do poziomu rozszerzonego.",
+            "correct_answer": "Prawda",
+            "hint": "Wierzchołek paraboli wyznacza wartość optymalną.",
             "options": [
-              "Fałsz",
-              "Prawda"
+              "Prawda",
+              "Fałsz"
             ]
           },
           {
@@ -147,7 +147,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.1",
+          "title": "Schemat 5 kroków w zadaniach optymalizacyjnych",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.1",
+          "title": "Schemat 5 kroków w zadaniach optymalizacyjnych",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-2",
@@ -292,7 +348,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.2",
+          "title": "Wyznaczanie dziedziny geometrycznej w zadaniach optymalizacyjnych",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.2",
+          "title": "Wyznaczanie dziedziny geometrycznej w zadaniach optymalizacyjnych",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-3",
@@ -437,7 +549,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.3",
+          "title": "Optymalizacja ogrodzenia 1: Prostokąt o zadanym obwodzie",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.3",
+          "title": "Optymalizacja ogrodzenia 1: Prostokąt o zadanym obwodzie",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-4",
@@ -582,7 +750,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.4",
+          "title": "Optymalizacja ogrodzenia 2: Działka przylegająca do muru",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.4",
+          "title": "Optymalizacja ogrodzenia 2: Działka przylegająca do muru",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-5",
@@ -727,7 +951,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.5",
+          "title": "Optymalizacja ogrodzenia 3: Działka dzielona płotem wewnętrznym",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.5",
+          "title": "Optymalizacja ogrodzenia 3: Działka dzielona płotem wewnętrznym",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-6",
@@ -872,7 +1152,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.6",
+          "title": "Optymalizacja ogrodzenia 4: Bramy wjazdowe i furtki",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.6",
+          "title": "Optymalizacja ogrodzenia 4: Bramy wjazdowe i furtki",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-7",
@@ -1017,7 +1353,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.7",
+          "title": "Optymalizacja pola trójkąta prostokątnego",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.7",
+          "title": "Optymalizacja pola trójkąta prostokątnego",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-8",
@@ -1162,7 +1554,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.8",
+          "title": "Optymalizacja ekonomiczna: Przychód i cena biletu",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.8",
+          "title": "Optymalizacja ekonomiczna: Przychód i cena biletu",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-9",
@@ -1307,7 +1755,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.9",
+          "title": "Optymalizacja ekonomiczna: Zysk firmy jako różnica przychodu i kosztów",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.9",
+          "title": "Optymalizacja ekonomiczna: Zysk firmy jako różnica przychodu i kosztów",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-10",
@@ -1452,7 +1956,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.10",
+          "title": "Optymalizacja w geometrii analitycznej: Odległość punktu na prostej",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.10",
+          "title": "Optymalizacja w geometrii analitycznej: Odległość punktu na prostej",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-11",
@@ -1597,7 +2157,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.11",
+          "title": "Modelowanie rzutu pionowego i toru lotu pocisku",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.11",
+          "title": "Modelowanie rzutu pionowego i toru lotu pocisku",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-12",
@@ -1742,7 +2358,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.12",
+          "title": "Optymalizacja pudełka z siatki i pola powierzchni",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.12",
+          "title": "Optymalizacja pudełka z siatki i pola powierzchni",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-13",
@@ -1887,7 +2559,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.13",
+          "title": "Zadania optymalizacyjne z oknem normańskim i łukiem",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.13",
+          "title": "Zadania optymalizacyjne z oknem normańskim i łukiem",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-14",
@@ -2032,7 +2760,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.14",
+          "title": "Kompleksowe zadanie otwarte za 4 punkty z matury majowej",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.14",
+          "title": "Kompleksowe zadanie otwarte za 4 punkty z matury majowej",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       },
       {
         "id": "lesson-15-15",
@@ -2177,7 +2961,63 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "15.15",
+          "title": "Strategia zdobywania 4 punktów w zadaniu optymalizacyjnym",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "15.15",
+          "title": "Strategia zdobywania 4 punktów w zadaniu optymalizacyjnym",
+          "formulas": [
+            {
+              "title": "5-krokowy schemat optymalizacji",
+              "latex": "1) \\text{ Związek } y(x) \\quad 2) \\text{ Dziedzina } D \\quad 3) \\text{ Wzór celu } f(x) \\quad 4) x_w = -\\frac{b}{2a} \\quad 5) \\text{ Wynik}"
+            },
+            {
+              "title": "Wierzchołek paraboli (wartość optymalna)",
+              "latex": "x_w = -\\frac{b}{2a}, \\quad y_w = f(x_w) = -\\frac{\\Delta}{4a}"
+            },
+            {
+              "title": "Uzasadnienie maksimum",
+              "latex": "a < 0 \\implies \\text{ramiona w dół} \\implies \\text{w } x_w \\text{ funkcja osiąga maksimum}"
+            },
+            {
+              "title": "Uzasadnienie minimum",
+              "latex": "a > 0 \\implies \\text{ramiona w górę} \\implies \\text{w } x_w \\text{ funkcja osiąga minimum}"
+            }
+          ],
+          "goldenRule": "W zadaniu za 4 punkty pamiętaj o podaniu: 1) zależności między zmiennymi, 2) dziedziny geometrycznej, 3) funkcji jednej zmiennej, 4) wierzchołka $x_w = -\\frac{b}{2a}$ wraz z uzasadnieniem $a < 0$, 5) obu wymiarów oraz odpowiedzi z jednostkami.",
+          "ckeTrap": {
+            "error": "P(x) = -x^2 + 100x \\implies \\text{brak dziedziny w zapisie}",
+            "correct": "\\text{Warunki: } x > 0 \\land 100 - x > 0 \\implies D: x \\in (0, 100)",
+            "description": "Brak wyznaczenia dziedziny geometrycznej to strata 1 punktu w kluczu maturalnym!"
+          }
+        }
       }
     ],
     "final_test": {

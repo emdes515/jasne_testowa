@@ -1,6 +1,8 @@
 import { TaskOption, LessonTheoryPill } from '../types';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { normalizeTask } from './mathTasks';
+import { allFormulaSheetsByLesson } from './allFormulaSheets';
+import { polishTopics } from './polishCurriculum';
 
 export type TaskDifficultyTier = 'A' | 'B' | 'C';
 
@@ -43,6 +45,7 @@ export interface PoolTask {
 export interface LessonFormulaSheet {
   lessonId: string;
   title: string;
+  isLeksykon?: boolean;
   formulas: { title: string; latex: string }[];
   goldenRule: string;
   ckeTrap: {
@@ -176,7 +179,7 @@ function normalizeLessonId(id: string): string {
 
 export function getLessonFormulaSheet(lessonId: string): LessonFormulaSheet | null {
   const normId = normalizeLessonId(lessonId);
-  return formulaSheetsByLesson[normId] || null;
+  return (allFormulaSheetsByLesson as Record<string, LessonFormulaSheet>)[normId] || formulaSheetsByLesson[normId] || null;
 }
 
 export function getLessonTheoryPill(lessonId: string): LessonTheoryPill | null {
@@ -184,6 +187,15 @@ export function getLessonTheoryPill(lessonId: string): LessonTheoryPill | null {
 }
 
 export function getLessonTaskPool(lessonId: string): PoolTask[] {
+  if (lessonId.startsWith('pol-')) {
+    for (const topic of polishTopics) {
+      for (const lesson of topic.lessons || []) {
+        if (lesson.id === lessonId) {
+          return (lesson.tasks || []) as unknown as PoolTask[];
+        }
+      }
+    }
+  }
   return [];
 }
 
@@ -198,39 +210,62 @@ export interface SessionTasksDrawResult {
 
 /**
  * Draws session tasks for a lesson.
- * If tasks are provided (from Firestore lesson document), uses them.
- * Otherwise falls back to cached tasks in curriculumRepository.
+ * Supports task randomization from pools for both Mathematics and Polish.
  */
-export function drawSessionTasks(lessonId: string, providedTasks?: any[]): SessionTasksDrawResult {
+export function drawSessionTasks(lessonId: string, providedTasks?: any[], providedFormulaSheet?: any): SessionTasksDrawResult {
   const normId = normalizeLessonId(lessonId);
-  const formulaSheet = getLessonFormulaSheet(normId);
+  const formulaSheet = providedFormulaSheet || getLessonFormulaSheet(normId);
+  const isPolish = lessonId.startsWith('pol-') || (providedTasks && providedTasks[0]?.id?.includes('pol'));
 
-  if (providedTasks && providedTasks.length > 0) {
-    const derivedTopicId = lessonId.startsWith('lesson-2') 
-      ? 'dzial-2' 
-      : lessonId.startsWith('lesson-3') 
-      ? 'dzial-3' 
-      : (lessonId.match(/^lesson-(\d+)/) ? `dzial-${lessonId.match(/^lesson-(\d+)/)![1]}` : 'dzial-1');
+  if (isPolish) {
+    let pool = (providedTasks && providedTasks.length > 0) ? providedTasks : getLessonTaskPool(lessonId);
+    if (!pool || pool.length === 0) {
+      pool = getLessonTaskPool(lessonId);
+    }
 
-    const sessionTasks = providedTasks.map((t: any) => {
-      const norm = normalizeTask(t, { id: lessonId }, { id: derivedTopicId });
-      if (t && (t.question || t.math_statement) && t.options && t.options[0]?.text) {
-        return {
-          ...norm,
-          ...t,
-          hint: t.hint || norm.hint,
-          hint_cost: t.hint_cost || norm.hint_cost,
-          ai_hint_enabled: t.ai_hint_enabled !== undefined ? t.ai_hint_enabled : norm.ai_hint_enabled,
-          scoring_key: t.scoring_key || norm.scoring_key
-        };
+    // Losowanie zadań z puli (Task Pool Randomization)
+    const shuffle = <T>(arr: T[]): T[] => [...arr].sort(() => 0.5 - Math.random());
+    let drawnTasks: any[] = [];
+
+    if (pool && pool.length > 5) {
+      const openTasks = pool.filter((t: any) => 
+        t.type === 'OPEN_TASK' || t.type === 'OPEN_SHORT' || t.type === 'OPEN_PROOF' || t.type === 'SHORT_ANSWER' || t.type === 'OPEN_SYNTHESIS'
+      );
+      const singleTasks = pool.filter((t: any) => t.type === 'SINGLE_CHOICE' || t.type === 'SINGLE');
+      const tfTasks = pool.filter((t: any) => t.type === 'TRUE_FALSE');
+
+      const chosenOpen = shuffle(openTasks).slice(0, Math.min(2, openTasks.length));
+      const chosenSingle = shuffle(singleTasks).slice(0, Math.min(2, singleTasks.length));
+      const chosenTf = shuffle(tfTasks).slice(0, Math.min(1, tfTasks.length));
+
+      drawnTasks = [...chosenSingle, ...chosenOpen, ...chosenTf];
+      if (drawnTasks.length < 5) {
+        const remaining = pool.filter((t: any) => !drawnTasks.some(d => d.id === t.id));
+        drawnTasks.push(...shuffle(remaining).slice(0, 5 - drawnTasks.length));
       }
-      return norm;
+    } else if (pool && pool.length > 0) {
+      drawnTasks = shuffle(pool);
+    }
+
+    const sessionTasks = drawnTasks.map((t: any) => {
+      const norm = normalizeTask(t, { id: lessonId, title: t.title || 'Lekcja' }, { id: 'jezyk-polski', short_title: 'Język Polski' });
+      return {
+        ...norm,
+        ...t,
+        topic: 'Język Polski',
+        instruction: t.instruction || (norm.instruction.includes('dowód') ? 'Sformułuj odpowiedź własnymi słowami na podstawie tekstu/lektury. Pamiętaj o uzasadnieniu.' : norm.instruction),
+        cke_badge: t.cke_badge || t.badge,
+        hint: t.hints?.level_1 || t.hint_1 || t.hint || norm.hint,
+        hint_cost: t.hint_cost || 10,
+        ai_hint_enabled: true,
+        scoring_key: t.scoring_key || norm.scoring_key
+      };
     });
 
     return {
       lessonId,
       sessionTasks,
-      formulaSheet,
+      formulaSheet: formulaSheet || null,
       required_correct_tasks: 3,
       estimated_time_formatted: '~5 min'
     };

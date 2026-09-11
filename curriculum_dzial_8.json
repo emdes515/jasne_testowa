@@ -82,17 +82,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie prostokątnym o kącie ostrym $\\alpha$:\\\\1. Wartość $\\sin \\alpha$ zawsze zawiera się w przedziale $(0, 1)$.\\\\2. Wartość $\\operatorname{tg} \\alpha$ może być większa od $1$.",
+            "content": "Oceń prawdziwość zdania: W trójkącie prostokątnym o kącie ostrym $\\alpha$:\\ Wartość $\\sin \\alpha$ zawsze zawiera się w przedziale $(0, 1)$.",
             "explanation": "1. W trójkącie prostokątnym przyprostokątna jest krótsza od przeciwprostokątnej, więc stosunek a/c in (0, 1) (PRAWDA). 2. Gdy a > b (np. a = 4, b = 3), tg(alpha) = 4/3 > 1 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przyprostokątna jest zawsze krótsza od przeciwprostokątnej, ale przyprostokątne mogą mieć dowolny stosunek."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-1-6",
@@ -145,7 +143,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.1",
+          "title": "Definicje funkcji trygonometrycznych w trójkącie prostokątnym",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.1",
+          "title": "Definicje funkcji trygonometrycznych w trójkącie prostokątnym",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-2",
@@ -225,17 +295,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Oceń prawdziwość zdań:\\\\1. $\\sin 45^\\circ = \\cos 45^\\circ$\\\\2. $\\operatorname{tg} 45^\\circ = 1$",
+            "content": "Oceń prawdziwość zdania: $\\sin 45^\\circ = \\cos 45^\\circ$",
             "explanation": "1. sin 45° = cos 45° = \\sqrt{2}/2 (PRAWDA). 2. tg 45° = 1 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź w tabeli wartości dla kąta 45 stopni."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-2-6",
@@ -288,7 +356,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.2",
+          "title": "Wartości funkcji trygonometrycznych dla kątów 30, 45 i 60 stopni",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.2",
+          "title": "Wartości funkcji trygonometrycznych dla kątów 30, 45 i 60 stopni",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-3",
@@ -368,17 +508,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dla dowolnego kąta ostrego $\\alpha$:\\\\1. Równość $\\sin^2 \\alpha = 1 - \\cos^2 \\alpha$ jest tożsamością.\\\\2. Może zajść sytuacja, w której jednocześnie $\\sin \\alpha = 0{,}8$ oraz $\\cos \\alpha = 0{,}8$.",
+            "content": "Oceń prawdziwość zdania: Dla dowolnego kąta ostrego $\\alpha$:\\ Równość $\\sin^2 \\alpha = 1 - \\cos^2 \\alpha$ jest tożsamością.",
             "explanation": "1. Wynika wprost z jedynki trygonometrycznej (PRAWDA). 2. (0,8)^2 + (0,8)^2 = 0,64 + 0,64 = 1,28 != 1, więc taka sytuacja jest niemożliwa (FAŁSZ).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-PRAWDA, 2-PRAWDA",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-FAŁSZ",
-            "hint": "Sprawdź, czy suma kwadratów 0,8^2 + 0,8^2 daje 1."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-3-6",
@@ -431,7 +569,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.3",
+          "title": "Jedynka trygonometryczna: sin^2 a + cos^2 a = 1",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.3",
+          "title": "Jedynka trygonometryczna: sin^2 a + cos^2 a = 1",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-4",
@@ -511,17 +721,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dla kąta ostrego $\\alpha$:\\\\1. Jeśli $\\sin \\alpha = \\cos \\alpha$, to $\\operatorname{tg} \\alpha = 1$.\\\\2. Kąt, dla którego $\\operatorname{tg} \\alpha = 1$, ma miarę $45^\\circ$.",
+            "content": "Oceń prawdziwość zdania: Dla kąta ostrego $\\alpha$:\\ Jeśli $\\sin \\alpha = \\cos \\alpha$, to $\\operatorname{tg} \\alpha = 1$.",
             "explanation": "1. tg(alpha) = sin/cos = sin/sin = 1 (PRAWDA). 2. Jedynym kątem ostrym o tg = 1 jest 45° (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Zastąp cos(alpha) przez sin(alpha) w ułamku tangensa."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-4-6",
@@ -574,7 +782,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.4",
+          "title": "Związek tangensa z sinusem i cosinusem oraz obliczanie funkcji",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.4",
+          "title": "Związek tangensa z sinusem i cosinusem oraz obliczanie funkcji",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-5",
@@ -654,17 +934,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Oceń prawdziwość zdań:\\\\1. Dla każdego kąta ostrego $\\alpha$ zachodzi $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$.\\\\2. $\\cos^2 10^\\circ + \\cos^2 80^\\circ = 1$.",
+            "content": "Oceń prawdziwość zdania: Dla każdego kąta ostrego $\\alpha$ zachodzi $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$.",
             "explanation": "1. Podstawowy wzór redukcyjny dla kątów dopełniających (PRAWDA). 2. cos 80° = sin 10°, więc cos^2 10° + sin^2 10° = 1 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Zamień cos 80° na sin 10° w drugim zdaniu."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-5-6",
@@ -717,7 +995,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.5",
+          "title": "Kąty dopełniające: Zależności między sinusem i cosinusem (90 - a)",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.5",
+          "title": "Kąty dopełniające: Zależności między sinusem i cosinusem (90 - a)",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-6",
@@ -797,17 +1147,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dla kąta rozwartego $\\alpha \\in (90^\\circ, 180^\\circ)$:\\\\1. Wartość $\\sin \\alpha$ jest zawsze dodatnia.\\\\2. Wartość $\\cos \\alpha$ jest zawsze ujemna.",
+            "content": "Oceń prawdziwość zdania: Dla kąta rozwartego $\\alpha \\in (90^\\circ, 180^\\circ)$:\\ Wartość $\\sin \\alpha$ jest zawsze dodatnia.",
             "explanation": "W drugiej ćwiartce: 'w pierwszej wszystkie są dodatnie, w drugiej tylko sinus'. Zatem sinus jest dodatni (PRAWDA), a cosinus ujemny (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przypomnij sobie znaki funkcji w II ćwiartce: tylko sinus jest dodatni."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-6-6",
@@ -860,7 +1208,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.6",
+          "title": "Wzory redukcyjne dla kątów rozwartych: 180 - a",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.6",
+          "title": "Wzory redukcyjne dla kątów rozwartych: 180 - a",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-7",
@@ -940,17 +1360,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Punkt $P = (-1, 1)$ leży na ramieniu końcowym kąta $\\alpha$.\\\\1. Kąt $\\alpha$ ma miarę $135^\\circ$.\\\\2. Wartość $\\operatorname{tg} \\alpha$ wynosi $-1$.",
+            "content": "Oceń prawdziwość zdania: Punkt $P = (-1, 1)$ leży na ramieniu końcowym kąta $\\alpha$.\\ Kąt $\\alpha$ ma miarę $135^\\circ$.",
             "explanation": "1. tg(alpha) = 1/(-1) = -1, a w II ćwiartce odpowiada to kątowi 180° - 45° = 135° (PRAWDA). 2. tg(alpha) = -1 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz tg(alpha) = y/x = 1/(-1)."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-7-6",
@@ -1003,7 +1421,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.7",
+          "title": "Funkcje trygonometryczne w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.7",
+          "title": "Funkcje trygonometryczne w układzie współrzędnych",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-8",
@@ -1083,17 +1573,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie równobocznym o boku $a$:\\\\1. Wzór $P = \\frac{a^2 \\sqrt{3}}{4}$ wynika ze wzoru $P = \\frac{1}{2}a^2 \\sin 60^\\circ$.\\\\2. Wysokość tego trójkąta wynosi $h = a \\sin 60^\\circ$.",
+            "content": "Oceń prawdziwość zdania: W trójkącie równobocznym o boku $a$:\\ Wzór $P = \\frac{a^2 \\sqrt{3}}{4}$ wynika ze wzoru $P = \\frac{1}{2}a^2 \\sin 60^\\circ$.",
             "explanation": "1. 1/2 * a^2 * (\\sqrt{3}/2) = a^2\\sqrt{3}/4 (PRAWDA). 2. h/a = sin 60° => h = a * sin 60° = a\\sqrt{3}/2 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź, ile wynosi sin 60° i wstaw do wzorów."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-8-6",
@@ -1146,7 +1634,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.8",
+          "title": "Pole trójkąta z sinusem kąta: P = 1/2 * a * b * sin(gamma)",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.8",
+          "title": "Pole trójkąta z sinusem kąta: P = 1/2 * a * b * sin(gamma)",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-9",
@@ -1226,17 +1786,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie prostokątnym o przeciwprostokątnej $c$:\\\\1. Kąt naprzeciw przeciwprostokątnej to $90^\\circ$, a $\\sin 90^\\circ = 1$.\\\\2. Twierdzenie sinusów daje $c = 2R$, co oznacza, że przeciwprostokątna jest średnicą okręgu opisanego.",
+            "content": "Oceń prawdziwość zdania: W trójkącie prostokątnym o przeciwprostokątnej $c$:\\ Kąt naprzeciw przeciwprostokątnej to $90^\\circ$, a $\\sin 90^\\circ = 1$.",
             "explanation": "1. sin 90° = 1 (PRAWDA). 2. c / sin 90° = c = 2R, więc przeciwprostokątna to średnica okręgu opisanego (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "W trójkącie prostokątnym środek okręgu opisanego leży na środku przeciwprostokątnej."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-9-6",
@@ -1289,7 +1847,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.9",
+          "title": "Twierdzenie sinusów (prawo sinusów): a/sin(a) = 2R",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.9",
+          "title": "Twierdzenie sinusów (prawo sinusów): a/sin(a) = 2R",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-10",
@@ -1369,17 +1999,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie o bokach $a, b, c$ i kącie prostym $\\gamma = 90^\\circ$ naprzeciw boku $c$:\\\\1. $\\cos 90^\\circ = 0$.\\\\2. Twierdzenie cosinusów przyjmuje wtedy postać twierdzenia Pitagorasa: $c^2 = a^2 + b^2$.",
+            "content": "Oceń prawdziwość zdania: W trójkącie o bokach $a, b, c$ i kącie prostym $\\gamma = 90^\\circ$ naprzeciw boku $c$:\\ $\\cos 90^\\circ = 0$.",
             "explanation": "1. cos 90° = 0 (PRAWDA). 2. c^2 = a^2 + b^2 - 2ab*0 = a^2 + b^2 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź, co dzieje się ze składnikiem -2ab*cos(gamma), gdy gamma = 90°."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-10-6",
@@ -1432,7 +2060,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.10",
+          "title": "Twierdzenie cosinusów (twierdzenie Carnota): c^2 = a^2 + b^2 - 2ab*cos(gamma)",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.10",
+          "title": "Twierdzenie cosinusów (twierdzenie Carnota): c^2 = a^2 + b^2 - 2ab*cos(gamma)",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-11",
@@ -1512,17 +2212,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W dowolnym rombie o boku $a$ i kącie ostrym $\\alpha$:\\\\1. Dłuższa przekątna leży naprzeciw kąta rozwartego.\\\\2. Pole rombu można obliczyć jako $P = \\frac{1}{2} d_1 d_2$ lub $P = a^2 \\sin \\alpha$.",
+            "content": "Oceń prawdziwość zdania: W dowolnym rombie o boku $a$ i kącie ostrym $\\alpha$:\\ Dłuższa przekątna leży naprzeciw kąta rozwartego.",
             "explanation": "1. W trójkącie naprzeciw większego kąta leży dłuższy bok, więc dłuższa przekątna naprzeciw kąta rozwartego (PRAWDA). 2. Obie formuły są poprawnymi wzorami na pole rombu (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przypomnij sobie wzory na pole rombu z przekątnych i z kąta."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-11-6",
@@ -1575,7 +2273,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.11",
+          "title": "Trygonometria w czworokątach: Romb, równoległobok i trapez",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.11",
+          "title": "Trygonometria w czworokątach: Romb, równoległobok i trapez",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-12",
@@ -1655,17 +2425,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dla kąta ostrego $\\alpha$:\\\\1. Wartość wyrażenia $\\sin^4 \\alpha - \\cos^4 \\alpha$ jest równa $\\sin^2 \\alpha - \\cos^2 \\alpha$.\\\\2. Zawsze zachodzi $(\\sin \\alpha + \\cos \\alpha)^2 \\ge 1$.",
+            "content": "Oceń prawdziwość zdania: Dla kąta ostrego $\\alpha$:\\ Wartość wyrażenia $\\sin^4 \\alpha - \\cos^4 \\alpha$ jest równa $\\sin^2 \\alpha - \\cos^2 \\alpha$.",
             "explanation": "1. sin^4 - cos^4 = (sin^2 - cos^2)(sin^2 + cos^2) = (sin^2 - cos^2)*1 = sin^2 - cos^2 (PRAWDA). 2. (sin + cos)^2 = 1 + 2*sin*cos >= 1 bo dla kąta ostrego sin, cos > 0 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Zastosuj wzór na różnicę kwadratów a^2 - b^2 do pierwszego zdania."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-12-6",
@@ -1718,7 +2486,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.12",
+          "title": "Tożsamości trygonometryczne i dowodzenie zależności",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.12",
+          "title": "Tożsamości trygonometryczne i dowodzenie zależności",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-13",
@@ -1798,17 +2638,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Z latarni morskiej o wysokości $40$ m widać łódź pod kątem depresji $30^\\circ$.\\\\1. Kąt między promieniem wzroku a poziomem morza wynosi $30^\\circ$.\\\\2. Odległość łodzi od podstawy latarni wynosi $40\\sqrt{3}$ m.",
+            "content": "Oceń prawdziwość zdania: Z latarni morskiej o wysokości $40$ m widać łódź pod kątem depresji $30^\\circ$.\\ Kąt między promieniem wzroku a poziomem morza wynosi $30^\\circ$.",
             "explanation": "1. Z definicji kąta depresji i kątów naprzemianległych kąt przy łodzi wynosi 30° (PRAWDA). 2. tg 30° = 40 / d => d = 40 / (\\sqrt{3}/3) = 40\\sqrt{3} m (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Kąt depresji z góry jest równy kątowi wzniesienia z dołu."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-13-6",
@@ -1861,7 +2699,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.13",
+          "title": "Zadania praktyczne z kątem wzniesienia i depresji",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.13",
+          "title": "Zadania praktyczne z kątem wzniesienia i depresji",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-14",
@@ -1941,17 +2851,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest trójkąt o kątach $30^\\circ, 60^\\circ, 90^\\circ$ i najkrótszym boku $a = 2$.\\\\1. Przeciwprostokątna ma długość $4$.\\\\2. Dłuższa przyprostokątna ma długość $2\\sqrt{3}$.",
+            "content": "Oceń prawdziwość zdania: Dany jest trójkąt o kątach $30^\\circ, 60^\\circ, 90^\\circ$ i najkrótszym boku $a = 2$.\\ Przeciwprostokątna ma długość $4$.",
             "explanation": "W trójkącie 30-60-90 boki to a, a\\sqrt{3}, 2a. Dla a = 2 boki to 2, 2\\sqrt{3}, 4. Obie odpowiedzi są prawdziwe.",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Zastosuj proporcje boków w trójkącie o kątach 30-60-90: a, a pierwiastków z 3, 2a."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-14-6",
@@ -2004,7 +2912,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.14",
+          "title": "Nietypowe i złożone zadania trygonometryczne na maturze",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.14",
+          "title": "Nietypowe i złożone zadania trygonometryczne na maturze",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       },
       {
         "id": "lesson-8-15",
@@ -2084,17 +3064,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie równoramiennym o kącie między ramionami $120^\\circ$ i ramionach długości $a$:\\\\1. Długość podstawy wynosi $a\\sqrt{3}$.\\\\2. Pole tego trójkąta wynosi $\\frac{a^2 \\sqrt{3}}{4}$.",
+            "content": "Oceń prawdziwość zdania: W trójkącie równoramiennym o kącie między ramionami $120^\\circ$ i ramionach długości $a$:\\ Długość podstawy wynosi $a\\sqrt{3}$.",
             "explanation": "1. Z tw. cosinusów: c^2 = a^2 + a^2 - 2a^2*(-1/2) = 3a^2 => c = a\\sqrt{3} (PRAWDA). 2. P = 1/2 * a * a * sin 120° = 1/2 * a^2 * (\\sqrt{3}/2) = a^2\\sqrt{3}/4 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Zastosuj twierdzenie cosinusów i wzór na pole z sinusem 120°."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-8-15-6",
@@ -2147,7 +3125,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "8.15",
+          "title": "Podsumowanie działu: Strategie rozwiązywania zadań maturalnych z trygonometrii",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "8.15",
+          "title": "Podsumowanie działu: Strategie rozwiązywania zadań maturalnych z trygonometrii",
+          "formulas": [
+            {
+              "title": "Definicje w trójkącie prostokątnym",
+              "latex": "\\sin\\alpha = \\frac{a}{c}, \\quad \\cos\\alpha = \\frac{b}{c}, \\quad \\operatorname{tg}\\alpha = \\frac{a}{b}"
+            },
+            {
+              "title": "Jedynka trygonometryczna",
+              "latex": "\\sin^2\\alpha + \\cos^2\\alpha = 1"
+            },
+            {
+              "title": "Tangens przez sinus i cosinus",
+              "latex": "\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}"
+            },
+            {
+              "title": "Pole trójkąta z sinusem",
+              "latex": "P = \\frac{1}{2}ab \\sin\\gamma"
+            },
+            {
+              "title": "Twierdzenie sinusów",
+              "latex": "\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta} = \\frac{c}{\\sin\\gamma} = 2R"
+            },
+            {
+              "title": "Twierdzenie cosinusów",
+              "latex": "c^2 = a^2 + b^2 - 2ab \\cos\\gamma"
+            }
+          ],
+          "goldenRule": "W kącie rozwartym $\\alpha \\in (90^\\circ, 180^\\circ)$: sinus jest dodatni ($\\sin(180^\\circ - \\alpha) = \\sin\\alpha$), a cosinus i tangens są ujemne ($\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$).",
+          "ckeTrap": {
+            "error": "\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = \\frac{1}{2}",
+            "correct": "\\cos 120^\\circ = -\\cos 60^\\circ = -\\frac{1}{2}",
+            "description": "Cosinus kąta rozwartego w trójkącie jest ZAWSZE ujemny!"
+          }
+        }
       }
     ],
     "final_test": {

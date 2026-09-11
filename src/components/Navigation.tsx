@@ -26,15 +26,6 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
     { id: 'profile' as TabState, label: 'Profil', sublabel: 'Skarbiec & Odznaki', icon: User },
   ];
 
-  // League calculation for mini profile
-  const rating = userState?.arenaRating || 1000;
-  let leagueName = 'Liga Brązowa';
-  let leagueColor = 'text-amber-500';
-  if (rating >= 1800) { leagueName = 'Diament'; leagueColor = 'text-sky-400'; }
-  else if (rating >= 1500) { leagueName = 'Platyna'; leagueColor = 'text-teal-300'; }
-  else if (rating >= 1300) { leagueName = 'Złoto'; leagueColor = 'text-yellow-400'; }
-  else if (rating >= 1100) { leagueName = 'Srebro'; leagueColor = 'text-gray-300'; }
-
   const currentLevel = userState?.level || 1;
   const currentXp = userState?.xp || 0;
   const xpInLevel = currentXp % 1000;
@@ -249,9 +240,6 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
             <div className="flex items-center justify-between">
               <span className="font-display font-black text-white text-xs truncate group-hover:text-[#FFB800] transition-colors">
                 Konto Ucznia
-              </span>
-              <span className={`text-[10px] font-bold ${leagueColor}`}>
-                {leagueName}
               </span>
             </div>
             <div className="flex items-center justify-between text-[10px] text-[#8B8D98] mt-0.5">

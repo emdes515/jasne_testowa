@@ -145,7 +145,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.1",
+          "title": "Reguła mnożenia: Podstawowa zasada zliczania",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.1",
+          "title": "Reguła mnożenia: Podstawowa zasada zliczania",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-2",
@@ -288,7 +360,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.2",
+          "title": "Reguła dodawania: Rozłączne przypadki w zliczaniu",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.2",
+          "title": "Reguła dodawania: Rozłączne przypadki w zliczaniu",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-3",
@@ -431,7 +575,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.3",
+          "title": "Tworzenie liczb z powtórzeniami cyfr",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.3",
+          "title": "Tworzenie liczb z powtórzeniami cyfr",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-4",
@@ -574,7 +790,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.4",
+          "title": "Tworzenie liczb o różnych cyfrach (bez powtórzeń cyfr)",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.4",
+          "title": "Tworzenie liczb o różnych cyfrach (bez powtórzeń cyfr)",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-5",
@@ -717,7 +1005,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.5",
+          "title": "Zliczanie liczb z cyfrą zero na określonych pozycjach",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.5",
+          "title": "Zliczanie liczb z cyfrą zero na określonych pozycjach",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-6",
@@ -860,7 +1220,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.6",
+          "title": "Zliczanie liczb parzystych i nieparzystych",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.6",
+          "title": "Zliczanie liczb parzystych i nieparzystych",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-7",
@@ -1003,7 +1435,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.7",
+          "title": "Zliczanie liczb spełniających warunki podzielności",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.7",
+          "title": "Zliczanie liczb spełniających warunki podzielności",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-8",
@@ -1146,7 +1650,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.8",
+          "title": "Silnia: Definicja, własności i upraszczanie wyrażeń",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.8",
+          "title": "Silnia: Definicja, własności i upraszczanie wyrażeń",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-9",
@@ -1289,7 +1865,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.9",
+          "title": "Permutacje zbioru n-elementowego: Ustawianie w kolejce",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.9",
+          "title": "Permutacje zbioru n-elementowego: Ustawianie w kolejce",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-10",
@@ -1432,7 +2080,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.10",
+          "title": "Permutacje z ograniczeniami: Elementy stojące obok siebie",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.10",
+          "title": "Permutacje z ograniczeniami: Elementy stojące obok siebie",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-11",
@@ -1575,7 +2295,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.11",
+          "title": "Wariacje bez powtórzeń i z powtórzeniami",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.11",
+          "title": "Wariacje bez powtórzeń i z powtórzeniami",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-12",
@@ -1718,7 +2510,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.12",
+          "title": "Kombinacje: Wybór podzbioru bez uwzględniania kolejności",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.12",
+          "title": "Kombinacje: Wybór podzbioru bez uwzględniania kolejności",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-13",
@@ -1861,7 +2725,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.13",
+          "title": "Zliczanie w geometrii: Przekątne, odcinki i trójkąty",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.13",
+          "title": "Zliczanie w geometrii: Przekątne, odcinki i trójkąty",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-14",
@@ -2004,7 +2940,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.14",
+          "title": "Zliczanie z ograniczeniami: Warunki brzegowe i wykluczenia",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.14",
+          "title": "Zliczanie z ograniczeniami: Warunki brzegowe i wykluczenia",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       },
       {
         "id": "lesson-12-15",
@@ -2147,7 +3155,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "12.15",
+          "title": "Złożone zadania kombinatoryczne z matur majowych",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "12.15",
+          "title": "Złożone zadania kombinatoryczne z matur majowych",
+          "formulas": [
+            {
+              "title": "Reguła mnożenia",
+              "latex": "|A_1 \\times A_2 \\times \\cdots \\times A_k| = n_1 \\cdot n_2 \\cdots n_k"
+            },
+            {
+              "title": "Silnia",
+              "latex": "n! = 1 \\cdot 2 \\cdots n, \\quad 0! = 1"
+            },
+            {
+              "title": "Permutacje (uporządkowania)",
+              "latex": "P_n = n!"
+            },
+            {
+              "title": "Wariacje bez powtórzeń",
+              "latex": "V_n^k = \\frac{n!}{(n-k)!}"
+            },
+            {
+              "title": "Wariacje z powtórzeniami",
+              "latex": "\\overline{V}_n^k = n^k"
+            },
+            {
+              "title": "Kombinacje (wybór bez kolejności)",
+              "latex": "C_n^k = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            }
+          ],
+          "goldenRule": "Jeśli kolejność MA znaczenie (kod PIN, miejsca na podium, cyfry w liczbie) -> wariacje / reguła mnożenia. Jeśli kolejność NIE MA znaczenia (losowanie 3 osób z grupy) -> kombinacje $\\binom{n}{k}$.",
+          "ckeTrap": {
+            "error": "\\text{Wybór 2 osób z 10 to } 10 \\cdot 9 = 90",
+            "correct": "\\text{Wybór 2 osób z 10 to } \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45",
+            "description": "Wybór delegacji to kombinacje (nie ma znaczenia kto wylosowany jako pierwszy)!"
+          }
+        }
       }
     ],
     "final_test": {

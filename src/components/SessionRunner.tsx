@@ -6,7 +6,6 @@ import {
   AlertTriangle, 
   ArrowRight, 
   ArrowLeft,
-  Sparkles, 
   Trophy, 
   Flame, 
   Coins, 
@@ -18,7 +17,15 @@ import {
   Clock,
   FileText,
   Lightbulb,
-  Loader2
+  Loader2,
+  Heart,
+  HeartCrack,
+  ShieldCheck,
+  Users,
+  Compass,
+  Target,
+  GraduationCap,
+  Feather
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -30,6 +37,10 @@ import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTas
 import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace } from './OpenTaskWorkspace';
 import { MathPlot } from './MathPlot';
+import { OutOfHeartsModal } from './OutOfHeartsModal';
+import { ParentSponsorModal } from './ParentSponsorModal';
+import { ProPopup } from './ProPopup';
+import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro } from '../lib/heartsManager';
 
 /**
  * Helper to render micro-article text containing markdown bold (**bold**) and LaTeX ($...$)
@@ -91,6 +102,21 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
   if (!raw) return null;
 
   if (typeof raw === 'object') {
+    if (raw.text_fragment) {
+      const problem = `${raw.text_fragment}\n\n**Polecenie:** ${raw.question || ''}`;
+      const steps: { num: number | string; label?: string; text: string }[] = [];
+      if (raw.model_solution) {
+        steps.push({ num: 1, label: 'Wzorcowa odpowiedź', text: raw.model_solution });
+      }
+      if (raw.examiner_tip) {
+        steps.push({ num: 2, label: 'Wskazówka egzaminatora', text: raw.examiner_tip });
+      }
+      return {
+        problem,
+        steps,
+        result: raw.result || undefined
+      };
+    }
     const steps: { num: number | string; label?: string; text: string }[] = [];
     if (raw.step1) steps.push({ num: 1, text: typeof raw.step1 === 'string' ? raw.step1 : (raw.step1.explanation || raw.step1.text || String(raw.step1)) });
     if (raw.step2) steps.push({ num: 2, text: typeof raw.step2 === 'string' ? raw.step2 : (raw.step2.explanation || raw.step2.text || String(raw.step2)) });
@@ -200,6 +226,24 @@ export interface SessionRunnerProps {
   ) => void;
   onCancelSession: () => void;
   onDeductCoins?: (amount: number) => boolean;
+  onDeductHeart?: () => { wasDeducted: boolean; isOutOfHearts: boolean };
+  onOpenParentSponsor?: () => void;
+  onOpenProPopup?: () => void;
+  onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
+}
+
+export function sanitizeLessonHeading(title?: string): string {
+  if (!title) return '';
+  let cleaned = title.trim();
+  // Fix double prefixes like "Lekcja 8.1: 8.1: Paszport Epoki..." -> "Lekcja 8.1: Paszport Epoki..."
+  cleaned = cleaned.replace(/^Lekcja\s+(\d+[-.]\d+)\s*[:.]\s*(?:Lekcja\s+\1\s*[:.]\s*|\1\s*[:.]\s*)+/i, 'Lekcja $1: ');
+  // Fix "8.1: 8.1: ..." -> "Lekcja 8.1: ..."
+  cleaned = cleaned.replace(/^(\d+[-.]\d+)\s*[:.]\s*(?:\1\s*[:.]\s*)+/i, 'Lekcja $1: ');
+  // Fix "Lekcja 8.1: Lekcja 8.1: ..." -> "Lekcja 8.1: ..."
+  cleaned = cleaned.replace(/^(Lekcja\s+\d+[-.]\d+:\s*)(?:Lekcja\s+\d+[-.]\d+:\s*)+/i, '$1');
+  // Fix "Sprawdzian:\s*Sprawdzian" -> "Sprawdzian:"
+  cleaned = cleaned.replace(/^Sprawdzian\s*[:.]\s*(?:Sprawdzian\s*[:.]\s*)+/i, 'Sprawdzian: ');
+  return cleaned;
 }
 
 export const SessionRunner: React.FC<SessionRunnerProps> = ({
@@ -207,16 +251,60 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   userState,
   onCompleteSession,
   onCancelSession,
-  onDeductCoins
+  onDeductCoins,
+  onDeductHeart,
+  onOpenParentSponsor,
+  onOpenProPopup,
+  onUpdateUserState
 }) => {
   const {
     lessonId = '1.1',
-    lessonTitle = 'Lekcja 1.1',
+    lessonTitle: rawLessonTitle = 'Lekcja 1.1',
     tasks = [],
     formulaSheet,
     nextLesson,
     allTaskIdsToMarkCompleted = []
   } = sessionData;
+
+  const lessonTitle = sanitizeLessonHeading(rawLessonTitle);
+
+  const isPolishSession = Boolean(
+    (sessionData as any)?.isPolish ||
+    (sessionData as any)?.subjectId === 'jezyk-polski' ||
+    String(lessonId).startsWith('pol-') ||
+    String((sessionData as any)?.topicId || '').startsWith('pol-') ||
+    formulaSheet?.isLeksykon === true ||
+    (sessionData as any)?.theoryPill?.leksykon
+  );
+
+  // Serca i ochrona PRO
+  const heartsData = getSyncedHearts(userState);
+  const [showOutOfHeartsModal, setShowOutOfHeartsModal] = useState<boolean>(false);
+  const [showParentSponsorModal, setShowParentSponsorModal] = useState<boolean>(false);
+  const [showProPopup, setShowProPopup] = useState<boolean>(false);
+  const [showHeartsPopover, setShowHeartsPopover] = useState<boolean>(false);
+  const [isHeartShaking, setIsHeartShaking] = useState<boolean>(false);
+  const [pillShockwave, setPillShockwave] = useState<boolean>(false);
+  const [pillImpactDone, setPillImpactDone] = useState<boolean>(false);
+  const [heartFlyAnim, setHeartFlyAnim] = useState<{
+    active: boolean;
+    key: number;
+    startX: number;
+    startY: number;
+    targetX: number;
+    targetY: number;
+    currentHearts: number;
+    nextHearts: number;
+  } | null>(null);
+
+  // Synchronizacja liczby serc z animacją – zmiana dopiero w momencie uderzenia komety w nagłówek
+  const displayedHeartsCount = useMemo(() => {
+    if (heartsData.isPro) return '∞';
+    if (heartFlyAnim?.active && !pillImpactDone) {
+      return heartFlyAnim.currentHearts;
+    }
+    return heartsData.hearts;
+  }, [heartsData, heartFlyAnim, pillImpactDone]);
 
   // Dynamiczny wymóg zaliczenia zadań – odczytywany z obiektu lekcji
   const targetCorrectAnswers = sessionData.required_correct_tasks || (sessionData as any).tasksRequired || 4;
@@ -233,7 +321,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   });
   const [currentQueueIndex, setCurrentQueueIndex] = useState<number>(0);
   const [currentStep, setCurrentStep] = useState<number>(0); // 0: Pigułka wiedzy, 1: Zadania
-  const [theorySubStep, setTheorySubStep] = useState<number>(0); // 0: Istota i Strategia, 1: Wzory, 2: Przykład i Pułapka
+  const [theorySubStep, setTheorySubStep] = useState<number>(0); // 0: Istota i Strategia, 1: Wzory / Pojęcia, 2: Przykład / Analiza, 3: Pułapka CKE
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isEvaluated, setIsEvaluated] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -246,17 +334,34 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   // Theory Pill resolution: provided in payload or fetched from lesson curriculum with resilient fallback
   const theoryPill: LessonTheoryPill = useMemo(() => {
     const raw = sessionData.theoryPill || getLessonTheoryPill(lessonId);
-    if (raw) return raw;
+    if (raw) {
+      const normRaw = { ...raw };
+      if (!normRaw.worked_example && (raw as any).workedExample) {
+        normRaw.worked_example = (raw as any).workedExample;
+      }
+      if (!normRaw.exam_trap && ((raw as any).cke_trap || (raw as any).ckeTrap)) {
+        const ct = (raw as any).cke_trap || (raw as any).ckeTrap;
+        normRaw.exam_trap = typeof ct === 'string' ? ct : `❌ Błąd typowy: ${ct.error}\n\n✓ Poprawnie: ${ct.correct}`;
+      }
+      if (!normRaw.keyTakeaway && (raw as any).golden_rule) {
+        normRaw.keyTakeaway = (raw as any).golden_rule;
+      }
+      return normRaw;
+    }
     return {
       title: lessonTitle || `Lekcja ${lessonId}`,
-      concept_essence: 'Zapoznaj się z kluczowymi pojęciami, własnościami i wzorami dla tej lekcji.',
-      matura_context: 'Pewniak maturalny – opanowanie tego schematu pozwala zdobyć cenne punkty na egzaminie.',
+      concept_essence: isPolishSession
+        ? 'Zapoznaj się z kluczowymi pojęciami, funkcjami języka i strategiami analizy tekstu.'
+        : 'Zapoznaj się z kluczowymi pojęciami, własnościami i wzorami dla tej lekcji.',
+      matura_context: isPolishSession
+        ? 'Pewniak maturalny w Arkuszu 1 (Język polski w użyciu) – zadania sprawdzają świadomość językową i retoryczną.'
+        : 'Pewniak maturalny – opanowanie tego schematu pozwala zdobyć cenne punkty na egzaminie.',
       core_formulas: formulaSheet?.formulas || [],
       worked_example: undefined,
       exam_trap: formulaSheet?.ckeTrap ? `${formulaSheet.ckeTrap.error} ➔ ${formulaSheet.ckeTrap.correct}` : undefined,
-      keyTakeaway: formulaSheet?.goldenRule || 'Pamiętaj o dokładnym czytaniu polecenia i weryfikacji założeń zadania.'
+      keyTakeaway: formulaSheet?.goldenRule || (isPolishSession ? 'Uważnie analizuj kontekst fragmentu i intencję nadawcy.' : 'Pamiętaj o dokładnym czytaniu polecenia i weryfikacji założeń zadania.')
     } as LessonTheoryPill;
-  }, [sessionData.theoryPill, lessonId, lessonTitle, formulaSheet]);
+  }, [sessionData.theoryPill, lessonId, lessonTitle, formulaSheet, isPolishSession]);
 
   // AI Tutor for Open Tasks
   const [openAnswerText, setOpenAnswerText] = useState<string>('');
@@ -285,8 +390,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   // Task format classification
   const isNumericTask = currentTask?.type === 'NUMERIC_INPUT';
   const isTrueFalseTask = currentTask?.type === 'TRUE_FALSE';
-  const isTwoPartTask = currentTask?.type === 'TWO_PART';
-  const isOpenTask = (currentTask?.type === 'OPEN_PROOF' || currentTask?.type === 'OPEN_TASK' || currentTask?.type === 'OPEN_GENERAL') && !isNumericTask && !isTrueFalseTask && !isTwoPartTask;
+  const isTwoPartTask = currentTask?.type === 'TWO_PART' || Boolean(currentTask?.part_1 && currentTask?.part_2);
+  const isOpenTask = (
+    currentTask?.type === 'OPEN_PROOF' || 
+    currentTask?.type === 'OPEN_TASK' || 
+    currentTask?.type === 'OPEN_GENERAL' ||
+    currentTask?.type === 'OPEN' ||
+    currentTask?.type === 'OPEN_SHORT' ||
+    currentTask?.type === 'OPEN_SYNTHESIS' ||
+    currentTask?.type === 'SHORT_ANSWER'
+  ) && !isNumericTask && !isTrueFalseTask && !isTwoPartTask;
   const isSingleChoice = !isOpenTask && !isNumericTask && !isTrueFalseTask && !isTwoPartTask;
   const isAiHintTask = Boolean(isOpenTask || currentTask?.ai_hint_enabled);
   const currentTaskHintCost = typeof currentTask?.hint_cost === 'number'
@@ -357,7 +470,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           })
         });
         const data = await res.json();
-        const hintText = data.reply || currentTask?.hint || currentTask?.hints?.level_1 || 'Zwróć uwagę na kluczowe przekształcenia algebraiczne i założenia zadania.';
+        const hintText = data.reply || currentTask?.hint || currentTask?.hints?.level_1 || (
+          isPolishSession
+            ? 'Zwróć uwagę na intencję nadawcy, kontekst i kluczowe pojęcia w poleceniu.'
+            : 'Zwróć uwagę na kluczowe przekształcenia algebraiczne i założenia zadania.'
+        );
         const ok = spendCoins(hintCost);
         if (ok) {
           setUnlockedHints(prev => ({ ...prev, [taskId]: hintText }));
@@ -367,7 +484,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         }
       } catch (err) {
         console.warn('AI Hint error:', err);
-        const fallbackHint = currentTask?.hint || currentTask?.hints?.level_1 || 'Przeanalizuj założenia zadania i skorzystaj ze wzorów z Karty Wzorów CKE.';
+        const fallbackHint = currentTask?.hint || currentTask?.hints?.level_1 || (
+          isPolishSession
+            ? 'Przeanalizuj uważnie polecenie i odwołaj się do podanego fragmentu tekstu.'
+            : 'Przeanalizuj założenia zadania i skorzystaj ze wzorów z oficjalnej Karty Wzorów.'
+        );
         const ok = spendCoins(hintCost);
         if (ok) {
           setUnlockedHints(prev => ({ ...prev, [taskId]: fallbackHint }));
@@ -480,16 +601,138 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return `${m} min ${s} s`;
   }, [activeSeconds]);
 
+  const taskSourceLabel = useMemo(() => {
+    const raw = currentTask?.source || currentTask?.cke_source;
+    if (!raw) return 'Zadanie maturalne';
+    let clean = raw.replace(/CKE\s*/gi, '').replace(/\s*•\s*\d+\s*pkt.*$/gi, '').trim();
+    clean = clean.replace(/^[,\-–\s]+|[,\-–\s]+$/g, '').trim();
+    if (!clean) return 'Zadanie maturalne';
+    return clean;
+  }, [currentTask]);
+
+  const taskPointsCount = useMemo(() => {
+    const pts = currentTask?.points || (isOpenTask ? 2 : 1);
+    if (pts === 1) return '1 punkt';
+    if (pts >= 2 && pts <= 4) return `${pts} punkty`;
+    return `${pts} punktów`;
+  }, [currentTask?.points, isOpenTask]);
+
   const formatSourceTag = (source?: string, points?: number, isOpen?: boolean) => {
     const pts = points || (isOpen ? 2 : 1);
     if (!source) return `Zadanie maturalne • ${pts} pkt`;
-    let clean = source.replace(/CKE/gi, 'Zadanie').replace(/Zadanie\s*Zadanie/gi, 'Zadanie').trim();
+    let clean = source.replace(/CKE/gi, '').replace(/Zadanie\s*Zadanie/gi, 'Zadanie').trim();
     if (clean.toLowerCase().includes('pkt')) return clean;
     return `${clean} • ${pts} pkt`;
   };
 
+  // Randomized single-choice options for the current question
+  const randomizedOptions = useMemo(() => {
+    if (!currentTask?.options || !Array.isArray(currentTask.options) || currentTask.options.length === 0) {
+      return [];
+    }
+
+    if (!isSingleChoice) {
+      return currentTask.options;
+    }
+
+    const rawOptions = currentTask.options;
+    const targetRaw = String(currentTask?.correct_answer || currentTask?.correctAnswer || '').trim();
+    const normTarget = targetRaw.replace(/^Odp\s*/i, '').trim().toUpperCase();
+
+    // 1. Normalize each option into { origId, text, isCorrect }
+    const normalized = rawOptions.map((opt: any, idx: number) => {
+      let origId = ['A', 'B', 'C', 'D', 'E', 'F'][idx] || String(idx + 1);
+      let text = '';
+      let isCorrect = false;
+
+      if (typeof opt === 'string') {
+        const m = opt.match(/^([A-D1-4])[\.\)]\s*(.*)$/);
+        if (m) {
+          origId = m[1].toUpperCase();
+          text = m[2].trim();
+        } else {
+          text = opt.trim();
+        }
+        isCorrect = (
+          origId === targetRaw ||
+          origId === normTarget ||
+          targetRaw.startsWith(origId + '.') ||
+          targetRaw.startsWith(origId + ')') ||
+          opt.trim() === targetRaw ||
+          text === targetRaw
+        );
+      } else if (typeof opt === 'object' && opt !== null) {
+        origId = opt.id || opt.key || opt.label || (['A', 'B', 'C', 'D', 'E', 'F'][idx] || String(idx + 1));
+        text = opt.text || opt.content_latex || opt.content || '';
+        const textPrefix = typeof text === 'string' ? text.match(/^([A-D1-4])[\.\)]\s*(.*)$/) : null;
+        if (textPrefix) {
+          text = textPrefix[2].trim();
+        }
+        isCorrect = Boolean(
+          opt.is_correct ||
+          opt.isCorrect ||
+          origId === targetRaw ||
+          origId === normTarget ||
+          targetRaw.startsWith(origId + '.') ||
+          targetRaw.startsWith(origId + ')') ||
+          (text && targetRaw && text.trim() === targetRaw)
+        );
+      }
+
+      return {
+        origId,
+        text,
+        isCorrect
+      };
+    });
+
+    // Fallback if no option was flagged as correct: mark the one matching targetRaw or default to index 0
+    if (!normalized.some(o => o.isCorrect)) {
+      const idx = normalized.findIndex(o => o.origId === targetRaw || o.origId === normTarget);
+      if (idx !== -1) {
+        normalized[idx].isCorrect = true;
+      } else if (normalized.length > 0) {
+        normalized[0].isCorrect = true;
+      }
+    }
+
+    // 2. Stable pseudo-random shuffle per question presentation
+    const seedStr = `${currentTask.id || 'task'}_step_${currentStep}_q_${currentQueueIndex}_${sessionMistakesCount}`;
+    let h = 2166136261;
+    for (let i = 0; i < seedStr.length; i++) {
+      h ^= seedStr.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    const pseudoRandom = () => {
+      h += 0x6D2B79F5;
+      let t = Math.imul(h ^ (h >>> 15), 1 | h);
+      t = t + Math.imul(t ^ (t >>> 7), 61 | t) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+
+    const shuffled = [...normalized];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(pseudoRandom() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    // 3. Re-assign ABCD letters to the shuffled positions
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+    return shuffled.map((item, idx) => ({
+      id: letters[idx] || String.fromCharCode(65 + idx),
+      text: item.text,
+      content_latex: item.text,
+      is_correct: item.isCorrect,
+      origId: item.origId
+    }));
+  }, [currentTask, currentStep, currentQueueIndex, sessionMistakesCount, isSingleChoice]);
+
   const correctAnswerLabel = useMemo(() => {
     if (isSingleChoice) {
+      const correctOpt = (randomizedOptions || []).find((o: any) => o.is_correct);
+      if (correctOpt) {
+        return correctOpt.text ? `${correctOpt.id} ${correctOpt.text}` : correctOpt.id;
+      }
       return currentTask?.correct_answer || currentTask?.correctAnswer || 'A';
     }
     if (isNumericTask) {
@@ -508,7 +751,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       return String(currentTask?.correctAnswer || currentTask?.correct_answer || '');
     }
     return '';
-  }, [currentTask, isSingleChoice, isNumericTask, isTrueFalseTask, isTwoPartTask]);
+  }, [currentTask, isSingleChoice, isNumericTask, isTrueFalseTask, isTwoPartTask, randomizedOptions]);
 
   // Reset state on step / question change
   useEffect(() => {
@@ -578,6 +821,89 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       }
     }
   }, [lessonId]);
+
+  // Obsługa utraty serc (Hearts Engine)
+  const handleMistakeDeduction = () => {
+    if (userState?.isPro) return;
+
+    // Obliczenie dokładnych współrzędnych docelowych wskaźnika serc w nagłówku
+    let targetX = typeof window !== 'undefined' ? window.innerWidth - 65 : 140;
+    let targetY = 28;
+    const pillEl = document.getElementById('session-hearts-pill');
+    if (pillEl) {
+      const rect = pillEl.getBoundingClientRect();
+      targetX = rect.left + rect.width / 2;
+      targetY = rect.top + rect.height / 2;
+    }
+
+    const currentH = typeof userState?.hearts === 'number' ? userState.hearts : 5;
+    const nextH = Math.max(0, currentH - 1);
+    const dyingSlotIdx = nextH; // 0-indexed: when dropping from 5 to 4, slot 4 loses its heart
+    const slotStep = 44;
+    const startX = typeof window !== 'undefined' ? window.innerWidth / 2 + (dyingSlotIdx - 2) * slotStep : 0;
+    const startY = 135; // Dokładny środek pojemnika w pływającej pigułce HUD
+
+    // Reset stanu uderzenia w nagłówek (licznik w nagłówku trzyma stary stan aż do uderzenia komety)
+    setPillImpactDone(false);
+
+    // Uruchomienie animacji 5 serc i lecącej komety
+    setHeartFlyAnim({
+      active: true,
+      key: Date.now(),
+      startX,
+      startY,
+      targetX,
+      targetY,
+      currentHearts: currentH,
+      nextHearts: nextH
+    });
+
+    // Moment uderzenia komety we wskaźnik w nagłówku (~800ms)
+    setTimeout(() => {
+      setPillImpactDone(true);
+      setIsHeartShaking(true);
+      setPillShockwave(true);
+      triggerHaptic('medium');
+      setTimeout(() => setIsHeartShaking(false), 650);
+      setTimeout(() => setPillShockwave(false), 750);
+    }, 800);
+
+    // Zakończenie animacji HUD (~1350ms)
+    setTimeout(() => {
+      setHeartFlyAnim(null);
+    }, 1350);
+
+    if (onDeductHeart) {
+      const res = onDeductHeart();
+      if (res.isOutOfHearts) {
+        setTimeout(() => setShowOutOfHeartsModal(true), 1400);
+      }
+    } else if (onUpdateUserState) {
+      onUpdateUserState(prev => {
+        const res = deductHeart(prev);
+        if (res.isOutOfHearts) {
+          setTimeout(() => setShowOutOfHeartsModal(true), 1400);
+        }
+        return res.updatedState;
+      });
+    }
+  };
+
+  const handleRefillHeartsWithCoins = () => {
+    if (!onUpdateUserState || !userState) return;
+    const res = refillHeartsWithCoins(userState);
+    if (res.success) {
+      onUpdateUserState(() => res.updatedState);
+      setShowOutOfHeartsModal(false);
+    }
+  };
+
+  const handleActivatePro = () => {
+    if (!onUpdateUserState || !userState) return;
+    onUpdateUserState(prev => activatePro(prev));
+    setShowOutOfHeartsModal(false);
+    setShowParentSponsorModal(false);
+  };
 
   // Dynamically resolve next lesson in chain (e.g. lesson-1-1 -> lesson-1-2 -> ... -> lesson-1-15)
   const resolvedNextLesson = useMemo(() => {
@@ -704,22 +1030,25 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       }
 
       // Handle Option Selection (1, 2, 3, 4 or A, B, C, D)
-      if (!isEvaluated && currentTask?.options && !isOpenTask && !isTrueFalseTask) {
-        let chosenOptionId: string | null = null;
-        if (key === '1' || key === 'A') {
-          chosenOptionId = currentTask.options[0]?.id || 'A';
-        } else if (key === '2' || key === 'B') {
-          chosenOptionId = currentTask.options[1]?.id || 'B';
-        } else if (key === '3' || key === 'C') {
-          chosenOptionId = currentTask.options[2]?.id || 'C';
-        } else if (key === '4' || key === 'D') {
-          chosenOptionId = currentTask.options[3]?.id || 'D';
-        }
+      if (!isEvaluated && !isOpenTask && !isTrueFalseTask) {
+        const opts = randomizedOptions.length > 0 ? randomizedOptions : (currentTask?.options || []);
+        if (opts.length > 0) {
+          let chosenOptionId: string | null = null;
+          if (key === '1' || key === 'A') {
+            chosenOptionId = opts[0]?.id || 'A';
+          } else if (key === '2' || key === 'B') {
+            chosenOptionId = opts[1]?.id || 'B';
+          } else if (key === '3' || key === 'C') {
+            chosenOptionId = opts[2]?.id || 'C';
+          } else if (key === '4' || key === 'D') {
+            chosenOptionId = opts[3]?.id || 'D';
+          }
 
-        if (chosenOptionId) {
-          e.preventDefault();
-          handleSelectOption(chosenOptionId);
-          return;
+          if (chosenOptionId) {
+            e.preventDefault();
+            handleSelectOption(chosenOptionId);
+            return;
+          }
         }
       }
 
@@ -785,23 +1114,62 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const handleCheckAnswer = () => {
     if (isEvaluated) return;
 
+    const currentHearts = getSyncedHearts(userState);
+    if (!currentHearts.isPro && currentHearts.hearts <= 0) {
+      triggerHaptic('warning');
+      setShowOutOfHeartsModal(true);
+      return;
+    }
+
     let correct = false;
 
     if (isSingleChoice) {
       if (!selectedOption) return;
+      const opts = randomizedOptions.length > 0 ? randomizedOptions : (currentTask?.options || []);
+      const matchingOpt = opts.find((o: any) => o.id === selectedOption);
       const target = String(currentTask?.correct_answer || currentTask?.correctAnswer || 'A').trim();
       const normTarget = target.replace(/^Odp\s*/i, '').trim().toUpperCase();
-      const matchingOpt = (currentTask?.options || []).find((o: any) => o.id === selectedOption);
-      correct = selectedOption === target || selectedOption === normTarget || target.startsWith(selectedOption + '.') || target.startsWith(selectedOption + ')') || Boolean(matchingOpt?.is_correct);
+      correct = Boolean(matchingOpt?.is_correct) || selectedOption === target || selectedOption === normTarget;
     } else if (isNumericTask) {
       if (!numericInput.trim()) return;
-      const userClean = numericInput.trim().replace(',', '.');
-      const targetClean = String(currentTask?.correctAnswer || currentTask?.correct_answer || currentTask?.numeric_correct_answer || '').trim().replace(',', '.');
-      if (userClean === targetClean) {
+
+      const parseNumericVal = (raw: string): number => {
+        const s = raw.trim().replace(',', '.');
+        const frac = s.match(/\\frac\{([^}]+)\}\{([^}]+)\}/);
+        if (frac) {
+          const n = parseFloat(frac[1]);
+          const d = parseFloat(frac[2]);
+          if (!isNaN(n) && !isNaN(d) && d !== 0) return n / d;
+        }
+        if (s.includes('/')) {
+          const parts = s.split('/');
+          if (parts.length === 2) {
+            const n = parseFloat(parts[0]);
+            const d = parseFloat(parts[1]);
+            if (!isNaN(n) && !isNaN(d) && d !== 0) return n / d;
+          }
+        }
+        return parseFloat(s);
+      };
+
+      const normStr = (s: string) => s
+        .replace(/\s+/g, '')
+        .replace(/,/g, '.')
+        .replace(/\\left/g, '')
+        .replace(/\\right/g, '')
+        .replace(/\\langle\s*/g, '⟨')
+        .replace(/\\rangle\s*/g, '⟩')
+        .replace(/\\infty\s*/g, '∞')
+        .replace(/−/g, '-');
+
+      const userClean = numericInput.trim();
+      const targetClean = String(currentTask?.correctAnswer || currentTask?.correct_answer || currentTask?.numeric_correct_answer || '').trim();
+
+      if (normStr(userClean) === normStr(targetClean)) {
         correct = true;
       } else {
-        const userNum = parseFloat(userClean);
-        const targetNum = parseFloat(targetClean);
+        const userNum = parseNumericVal(userClean);
+        const targetNum = parseNumericVal(targetClean);
         if (!isNaN(userNum) && !isNaN(targetNum) && Math.abs(userNum - targetNum) < 1e-6) {
           correct = true;
         }
@@ -854,6 +1222,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       playErrorSound();
       setEarnedXp(prev => prev + 2); // Small effort XP
       setSessionMistakesCount(prev => prev + 1);
+      handleMistakeDeduction();
 
       if (currentTask?.id) {
         addMistakeToBank(currentTask.id);
@@ -906,10 +1275,20 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
     if (!effectiveAnswer.trim() || isTutorScanning || isEvaluated) return;
 
+    const currentHearts = getSyncedHearts(userState);
+    if (!currentHearts.isPro && currentHearts.hearts <= 0) {
+      triggerHaptic('warning');
+      setShowOutOfHeartsModal(true);
+      return;
+    }
+
     setIsTutorScanning(true);
     triggerHaptic('medium');
 
     let evalData: any = null;
+
+    const targetPts = currentTask?.points || 2;
+    const isEssay = isPolishSession && (targetPts >= 30 || currentTask?.type === 'ESSAY');
 
     try {
       const response = await fetch('/api/evaluate-task', {
@@ -917,12 +1296,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           question: currentTask?.question || currentTask?.math_statement,
+          contextText: currentTask?.passage_text || currentTask?.context_text || '',
           officialKey: currentTask?.officialKey || currentTask?.explanation,
           scoring_key: currentTask?.scoring_key || currentTask?.officialKey || currentTask?.explanation,
           studentAnswer: openAnswerText,
           studentImage: openCanvasDataUrl || undefined,
-          taskType: 'OPEN_PROOF',
-          maxPoints: currentTask?.points || 2,
+          taskType: isPolishSession ? (isEssay ? 'ESSAY' : (currentTask?.type || 'OPEN_TASK')) : 'OPEN_PROOF',
+          isPolish: isPolishSession,
+          maxPoints: targetPts,
           ai_tutor_rubric: currentTask?.ai_tutor_rubric,
           attemptCount: 1,
           mode: 'grade'
@@ -941,76 +1322,173 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     // If server evaluation didn't succeed, generate resilient rubric evaluation
     if (!evalData) {
       const text = openAnswerText.toLowerCase();
-      const hasAlgebraProgress = 
-        text.includes('3n^2') || 
-        text.includes('3n²') || 
-        text.includes('4n(n+1)') || 
-        text.includes('4k(k+1)') || 
-        text.includes('4k(') || 
-        text.includes('4n(') || 
-        text.includes('5(n-1)') || 
-        text.includes('5n(') || 
-        text.includes('2^96') || 
-        text.includes('2^{96}') || 
-        text.includes('2^20') || 
-        text.includes('2^{20}') || 
-        text.includes('2k') ||
-        text.includes('wyłącz') || 
-        text.includes('wspólny') ||
-        text.includes('rozł') || 
-        text.includes('kwadrat') || 
-        text.includes('iloczyn') ||
-        text.includes('reszt');
 
-      const hasConclusion = 
-        text.includes('podziel') || 
-        text.includes('całkowit') || 
-        text.includes('wniosek') || 
-        text.includes('udowodnion') || 
-        text.includes('cnd') || 
-        text.includes('c.n.d') || 
-        text.includes('reszta 2') || 
-        text.includes('8k') || 
-        text.includes('30k') || 
-        text.includes('21k') || 
-        text.includes('k \\in') || 
-        text.includes('c \\in') || 
-        text.includes('n \\in');
+      if (isEssay) {
+        const words = text.split(/\s+/).filter(Boolean).length;
+        const hasThesis = text.includes('teza') || text.includes('uważam') || text.includes('twierdzę') || text.includes('wnios') || text.includes('stanowisk');
+        const hasLektura = text.includes('lalk') || text.includes('wokulsk') || text.includes('rzeck') || text.includes('dżum') || text.includes('dziad') || text.includes('wesele') || text.includes('kordian') || text.includes('pan tad') || text.includes('antygon') || text.includes('makbet') || text.includes('tren') || text.includes('bohater');
+        const hasKontekst = text.includes('kontekst') || text.includes('epok') || text.includes('filozof') || text.includes('historycz') || text.includes('biblij') || text.includes('mitolog') || text.includes('pozytywiz') || text.includes('romantyz');
+        const hasKonektory = text.includes('ponadto') || text.includes('z jednej strony') || text.includes('z kolei') || text.includes('warto zauważyć') || text.includes('konkludując') || text.includes('świadczy o tym');
 
-      let fallbackScore = 0;
-      if (hasAlgebraProgress && hasConclusion) {
-        fallbackScore = 2;
-      } else if (hasAlgebraProgress || text.length > 25) {
-        fallbackScore = 1;
+        let formalScore = 1;
+        let litScore = 8;
+        let compScore = 3;
+        let langScore = 5;
+
+        if (words >= 300) {
+          litScore = hasLektura ? (hasKontekst ? 14 : 11) : 8;
+          compScore = (hasThesis && hasKonektory) ? 6 : 5;
+          langScore = words > 400 ? 10 : 8;
+        } else if (words >= 150) {
+          litScore = hasLektura ? 9 : 6;
+          compScore = 4;
+          langScore = 5;
+        } else {
+          litScore = 4;
+          compScore = 2;
+          langScore = 2;
+        }
+
+        const totalScore = formalScore + litScore + compScore + langScore;
+        const passThreshold = 11; // 30% z 35 pkt CKE
+
+        evalData = {
+          score: totalScore,
+          maxPoints: 35,
+          isPassed: totalScore >= passThreshold,
+          gradeTitle: `${totalScore} / 35 PKT – ${totalScore >= 28 ? 'Znakomite wypracowanie maturalne' : totalScore >= 20 ? 'Dobra rozprawka maturalna' : 'Praca zaliczona na progu'}`,
+          summary: `Oficjalna ocena wypracowania CKE (${words} słów). ${words < 300 ? 'Uwaga: objętość poniżej normy 300 słów.' : 'Wymóg objętościowy 300+ słów spełniony.'}`,
+          mentorComment: `Twoje wypracowanie podejmuje temat w sposób ${hasThesis ? 'uporządkowany z wyraźną tezą' : 'ogólny'}. ${hasKontekst ? 'Świetnie, że przywołujesz funkcjonalny kontekst!' : 'Pamiętaj o wyraźniejszym rozbudowaniu kontekstu (historycznego/filozoficznego).'}.`,
+          strengths: [
+            words >= 300 ? `Spełniono wymóg objętościowy CKE (${words} słów)` : `Podjęto próbę rozwinięcia tematu`,
+            hasLektura ? 'Trafne odwołanie do motywów z kanonu lektur obowiązkowych' : 'Zrozumienie problemu polecenia',
+            hasKonektory ? 'Dojrzałe stosowanie konektorów logicznych między akapitami' : 'Zachowano logiczny podział wypowiedzi'
+          ],
+          errors: [
+            words < 300 ? `Objętość ${words} słów jest poniżej progu 300 słów CKE – uzupełnij argumentację.` : null,
+            !hasKontekst ? 'Wzbogać wywód o wyrazisty kontekst (np. historyczny, filozoficzny lub biograficzny).' : null,
+            !hasThesis ? 'Sformułuj jednoznaczną tezę lub hipotezę już w pierwszym akapicie (wstępie).' : null
+          ].filter(Boolean),
+          ckeFeedback: `Karta CKE: Warunki formalne ${formalScore}/1, Lektura i konteksty ${litScore}/16, Kompozycja ${compScore}/7, Język i styl ${langScore}/11. Łącznie: ${totalScore}/35 pkt.`,
+          suggestion: 'Przejrzyj wzorcowy konspekt i schemat argumentacji TEEL poniżej.',
+          hintForNextAttempt: '',
+          criteriaBreakdown: {
+            formal: { score: formalScore, max: 1, comment: 'Temat podjęty, brak błędu kardynalnego.' },
+            literary_cultural: { score: litScore, max: 16, comment: hasLektura ? 'Trafny dobór motywów i postaci z lektury.' : 'Wymagane pogłębienie analizy lektury.' },
+            composition: { score: compScore, max: 7, comment: hasKonektory ? 'Poprawny podział na akapity i spójność wywodu.' : 'Zadbaj o płynniejsze przejścia (konektory).' },
+            language_style: { score: langScore, max: 11, comment: 'Dojrzałe słownictwo i poprawna składnia.' }
+          }
+        };
+      } else if (isPolishSession) {
+        const words = text.split(/\s+/).filter(Boolean).length;
+        let fallbackScore = 0;
+        if (words >= 10 || text.length >= 50) {
+          fallbackScore = targetPts;
+        } else if (words >= 3 || text.length >= 15) {
+          fallbackScore = Math.max(1, Math.floor(targetPts / 2));
+        }
+
+        evalData = {
+          score: fallbackScore,
+          maxPoints: targetPts,
+          isPassed: fallbackScore >= Math.ceil(targetPts * 0.5),
+          gradeTitle: fallbackScore === targetPts 
+            ? `${targetPts} / ${targetPts} PKT – Kompletna odpowiedź i argumentacja`
+            : (fallbackScore > 0 ? `${fallbackScore} / ${targetPts} PKT – Częściowa odpowiedź` : `0 / ${targetPts} PKT – Próba odpowiedzi`),
+          summary: fallbackScore === targetPts 
+            ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Odpowiedź w pełni zgodna ze schematem maturalnym.')
+            : (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Częściowo poprawna odpowiedź. Wskaż dodatkowy element z tekstu.'),
+          mentorComment: fallbackScore === targetPts
+            ? 'Znakomicie odczytałeś intencję polecenia i przedstawiłeś precyzyjne uzasadnienie.'
+            : 'Twoja odpowiedź idzie w dobrym kierunku, ale pamiętaj o precyzyjniejszym odwołaniu do tekstu.',
+          strengths: fallbackScore > 0 
+            ? ['Poprawnie zidentyfikowano kluczowe cechy wypowiedzi', 'Trafna argumentacja w kontekście polecenia'] 
+            : [],
+          errors: fallbackScore < targetPts 
+            ? ['Upewnij się, że odwołujesz się do konkretnych sformułowań z załączonego tekstu lub lektury'] 
+            : [],
+          ckeFeedback: fallbackScore === targetPts 
+            ? 'Egzaminator przyznaje pełne punkty za trafną interpretację i wyczerpujące uzasadnienie.'
+            : 'Egzaminator maturalny docenia próbę odpowiedzi. Do pełnej punktacji uzupełnij wypowiedź o wskazany w poleceniu element.',
+          suggestion: 'Zapoznaj się z wzorcowym modelem rozwiązania poniżej.',
+          hintForNextAttempt: ''
+        };
+      } else {
+        const hasAlgebraProgress = 
+          text.includes('3n^2') || 
+          text.includes('3n²') || 
+          text.includes('4n(n+1)') || 
+          text.includes('4k(k+1)') || 
+          text.includes('4k(') || 
+          text.includes('4n(') || 
+          text.includes('5(n-1)') || 
+          text.includes('5n(') || 
+          text.includes('2^96') || 
+          text.includes('2^{96}') || 
+          text.includes('2^20') || 
+          text.includes('2^{20}') || 
+          text.includes('2k') ||
+          text.includes('wyłącz') || 
+          text.includes('wspólny') ||
+          text.includes('rozł') || 
+          text.includes('kwadrat') || 
+          text.includes('iloczyn') ||
+          text.includes('reszt');
+
+        const hasConclusion = 
+          text.includes('podziel') || 
+          text.includes('całkowit') || 
+          text.includes('wniosek') || 
+          text.includes('udowodnion') || 
+          text.includes('cnd') || 
+          text.includes('c.n.d') || 
+          text.includes('reszta 2') || 
+          text.includes('8k') || 
+          text.includes('30k') || 
+          text.includes('21k') || 
+          text.includes('k \\in') || 
+          text.includes('c \\in') || 
+          text.includes('n \\in');
+
+        let fallbackScore = 0;
+        if (hasAlgebraProgress && hasConclusion) {
+          fallbackScore = 2;
+        } else if (hasAlgebraProgress || text.length > 25) {
+          fallbackScore = 1;
+        }
+
+        evalData = {
+          score: fallbackScore,
+          maxPoints: currentTask?.points || 2,
+          isPassed: fallbackScore >= 1,
+          gradeTitle: fallbackScore === 2 
+            ? '2 / 2 PKT – Pełny dowód i wniosek'
+            : (fallbackScore === 1 ? '1 / 2 PKT – Zasadniczy postęp' : '0 / 2 PKT – Próba rozwiązania'),
+          summary: fallbackScore === 2 
+            ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Dowód w pełni zgodny ze schematem maturalnym.')
+            : fallbackScore === 1 
+            ? (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w dowodzie. Poprawne przekształcenie algebraiczne.')
+            : 'Dowód wymaga dopracowania kluczowych przekształceń algebraicznych.',
+          strengths: fallbackScore >= 1 
+            ? ['Podjęto poprawną metodę algebraiczną', 'Zastosowano rozkład na czynniki'] 
+            : [],
+          errors: fallbackScore < 2 
+            ? ['Pamiętaj o formalnym wniosku końcowym powołującym się na podzielność przez liczbę całkowitą'] 
+            : [],
+          maturaFeedback: fallbackScore === 2 
+            ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
+            : fallbackScore === 1 
+            ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
+            : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
+          ckeFeedback: fallbackScore === 2 
+            ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
+            : fallbackScore === 1 
+            ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
+            : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
+          suggestion: 'Zapoznaj się z wzorcowym modelem rozwiązania poniżej.',
+          hintForNextAttempt: ''
+        };
       }
-
-      evalData = {
-        score: fallbackScore,
-        maxPoints: currentTask?.points || 2,
-        isPassed: fallbackScore >= 1,
-        gradeTitle: fallbackScore === 2 
-          ? '2 / 2 PKT – Pełny dowód i wniosek' 
-          : (fallbackScore === 1 ? '1 / 2 PKT – Zasadniczy postęp' : '0 / 2 PKT – Próba rozwiązania'),
-        summary: fallbackScore === 2 
-          ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Odpowiedź w pełni zgodna ze schematem maturalnym.')
-          : fallbackScore === 1 
-          ? (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w dowodzie. Poprawne przekształcenie algebraiczne.')
-          : 'Dowód wymaga dopracowania kluczowych przekształceń algebraicznych.',
-        strengths: fallbackScore >= 1 ? ['Podjęto poprawną metodę algebraiczną', 'Zastosowano rozkład na czynniki'] : [],
-        errors: fallbackScore < 2 ? ['Pamiętaj o formalnym wniosku końcowym powołującym się na podzielność przez liczbę całkowitą'] : [],
-        maturaFeedback: fallbackScore === 2 
-          ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
-          : fallbackScore === 1 
-          ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
-          : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
-        ckeFeedback: fallbackScore === 2 
-          ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
-          : fallbackScore === 1 
-          ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
-          : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
-        suggestion: 'Zapoznaj się z wzorcowym modelem rozwiązania poniżej.',
-        hintForNextAttempt: ''
-      };
     }
 
     setTutorEvaluation(evalData);
@@ -1053,6 +1531,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       playErrorSound();
       setEarnedXp(prev => prev + 3);
       setSessionMistakesCount(prev => prev + 1);
+      handleMistakeDeduction();
       if (currentTask?.id) addMistakeToBank(currentTask.id);
 
       // Re-queue open task
@@ -1087,6 +1566,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       return;
     }
 
+    const currentHearts = getSyncedHearts(userState);
+    if (!currentHearts.isPro && currentHearts.hearts <= 0) {
+      triggerHaptic('warning');
+      setShowOutOfHeartsModal(true);
+      return;
+    }
+
     if (correctAnswersCount >= targetCorrectAnswers) {
       // Zdobyto wymaganą liczbę poprawnych odpowiedzi – lekcja zaliczona!
       setIsSessionComplete(true);
@@ -1105,6 +1591,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       setIsEvaluated(false);
       setIsCorrect(null);
       setOpenAnswerText('');
+      setNumericInput('');
+      setTfSelections({});
+      setTwoPart1(null);
+      setTwoPart2(null);
       setTutorEvaluation(null);
       setShowModelSolution(false);
     }
@@ -1342,12 +1832,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         className="w-full shrink-0 bg-[#0B0F19] border-b border-white/10 z-20 sticky top-0"
       >
         <div className="w-full mx-auto px-4 sm:px-6 pt-3 pb-2.5 flex flex-col gap-2 transition-all max-w-2xl">
-          {/* Linia 1: Przycisk wyjścia X oraz 4 segmenty postępu */}
-          <div className="flex items-center gap-3 w-full">
+          {/* Linia 1: Przycisk wyjścia X, Pasek postępu ORAZ Kapsuła Serc */}
+          <div className="flex items-center gap-2.5 sm:gap-3 w-full">
             <button
               id="session-exit-button"
               onClick={() => setShowExitModal(true)}
-              className="w-9 h-9 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 shrink-0 flex items-center justify-center cursor-pointer"
+              className="w-9 h-9 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 shrink-0 flex items-center justify-center cursor-pointer border border-white/5"
               title="Przerwij sesję"
               aria-label="Przerwij sesję"
             >
@@ -1356,65 +1846,551 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
             {isTheoryStep ? (
               <div className="flex-1 flex items-center gap-2 min-w-0">
-                <span className="text-xs font-bold text-[#FFB800] whitespace-nowrap">Krok 1: Pigułka wiedzy</span>
-                <span className="text-xs text-slate-400 truncate">• Wprowadzenie i Wzory</span>
+                <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 ${
+                  isPolishSession
+                    ? 'bg-[#F43F5E]/15 text-[#F43F5E] border border-[#F43F5E]/30 shadow-[0_0_10px_rgba(244,63,94,0.15)]'
+                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30 shadow-[0_0_10px_rgba(255,184,0,0.15)]'
+                }`}>
+                  Pigułka wiedzy
+                </span>
+                <div className="flex items-center gap-1.5 flex-1 min-w-0">
+                  {Array.from({ length: 4 }).map((_, idx) => {
+                    const isTheoryFilled = idx <= theorySubStep;
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex-1 h-2 sm:h-2.5 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
+                          isTheoryFilled
+                            ? (isPolishSession
+                                ? 'bg-rose-950/40 border border-rose-500/40'
+                                : 'bg-amber-950/40 border border-[#FFB800]/40')
+                            : 'bg-slate-900/90 border border-white/10'
+                        }`}
+                      >
+                        <motion.div
+                          initial={false}
+                          animate={{ width: isTheoryFilled ? '100%' : '0%' }}
+                          transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+                          className={`h-full rounded-full relative overflow-hidden ${
+                            isPolishSession
+                              ? 'bg-gradient-to-r from-[#E11D48] via-[#F43F5E] to-[#FDA4AF] shadow-[0_0_8px_rgba(244,63,94,0.5)]'
+                              : 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFD54F] shadow-[0_0_8px_rgba(255,184,0,0.5)]'
+                          }`}
+                        >
+                          <div className="absolute top-0 inset-x-0.5 h-[40%] bg-white/45 rounded-full pointer-events-none" />
+                        </motion.div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             ) : (
-              <div className="flex-1 flex items-center gap-1.5">
-                {Array.from({ length: targetCorrectAnswers }).map((_, segIdx) => {
-                  const isDone = correctAnswersCount > segIdx;
-                  const isNext = correctAnswersCount === segIdx;
+              /* Segmented Progress Bars for Lesson Tasks */
+              <div className="flex-1 flex items-center min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 w-full">
+                  {Array.from({ length: Math.max(1, targetCorrectAnswers) }).map((_, idx) => {
+                    const isFilled = idx < correctAnswersCount;
+                    const isActive = idx === correctAnswersCount;
+                    const isAllDone = correctAnswersCount >= targetCorrectAnswers;
 
-                  return (
-                    <div
-                      key={segIdx}
-                      className={`h-2.5 flex-1 rounded-full transition-all duration-300 ${
-                        isDone
-                          ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.7)]'
-                          : isNext
-                            ? 'bg-[#FFB800]/40 border border-[#FFB800]/60'
-                            : 'bg-slate-800'
-                      }`}
-                    />
-                  );
-                })}
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex-1 h-2.5 sm:h-3 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
+                          isFilled
+                            ? (isPolishSession
+                                ? 'bg-rose-950/40 border border-rose-500/30'
+                                : isAllDone
+                                  ? 'bg-emerald-950/40 border border-emerald-500/40'
+                                  : 'bg-amber-950/40 border border-[#FFB800]/40')
+                            : isActive
+                              ? (isPolishSession
+                                  ? 'bg-slate-900/90 border border-rose-500/50 shadow-[0_0_10px_rgba(244,63,94,0.3)]'
+                                  : 'bg-slate-900/90 border border-[#FFB800]/50 shadow-[0_0_10px_rgba(255,184,0,0.3)]')
+                              : 'bg-slate-900/90 border border-white/10 shadow-inner'
+                        }`}
+                      >
+                        <motion.div
+                          initial={false}
+                          animate={{
+                            width: isFilled ? '100%' : '0%'
+                          }}
+                          transition={{
+                            type: 'spring',
+                            stiffness: 140,
+                            damping: 18,
+                            mass: 0.8
+                          }}
+                          className={`h-full rounded-full relative overflow-hidden transition-colors duration-500 ${
+                            isAllDone
+                              ? 'bg-gradient-to-r from-emerald-500 via-emerald-400 to-[#FFD54F] shadow-[0_0_14px_rgba(16,185,129,0.7)]'
+                              : isPolishSession
+                                ? 'bg-gradient-to-r from-[#E11D48] via-[#F43F5E] to-[#FDA4AF] shadow-[0_0_12px_rgba(244,63,94,0.6)]'
+                                : 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFD54F] shadow-[0_0_12px_rgba(255,184,0,0.6)]'
+                          }`}
+                        >
+                          {/* Top Specular Glass Reflection */}
+                          <div className="absolute top-0 inset-x-0.5 h-[40%] bg-white/45 rounded-full pointer-events-none" />
+
+                          {/* Ambient Shimmer Sweep on latest completed bar */}
+                          {idx === correctAnswersCount - 1 && (
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12"
+                              animate={{ x: ['-100%', '200%'] }}
+                              transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut', repeatDelay: 1.5 }}
+                            />
+                          )}
+                        </motion.div>
+
+                        {/* Soft pulsing indicator for current active task bar */}
+                        {isActive && !isFilled && (
+                          <motion.div
+                            animate={{ opacity: [0.15, 0.45, 0.15] }}
+                            transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+                            className={`absolute inset-0.5 rounded-full ${
+                              isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
+                            }`}
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
+
+            {/* Hearts Indicator Pill with Shockwave Arrival Effect in Line 1 */}
+            <div className="relative shrink-0">
+              {/* Expanding Shockwave Ring upon Heart Impact */}
+              <AnimatePresence>
+                {pillShockwave && (
+                  <motion.div
+                    initial={{ opacity: 0.95, scale: 0.8 }}
+                    animate={{ opacity: 0, scale: 2.3 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.65, ease: 'easeOut' }}
+                    className="absolute inset-0 rounded-full border-2 border-rose-500 bg-rose-500/25 pointer-events-none shadow-[0_0_20px_rgba(244,63,94,0.85)] z-10"
+                  />
+                )}
+              </AnimatePresence>
+
+              <motion.button
+                id="session-hearts-pill"
+                type="button"
+                onClick={() => {
+                  triggerHaptic('light');
+                  if (!heartsData.isPro && heartsData.hearts <= 0) {
+                    setShowOutOfHeartsModal(true);
+                  } else {
+                    setShowHeartsPopover(prev => !prev);
+                  }
+                }}
+                animate={isHeartShaking ? {
+                  x: [0, -6, 6, -5, 5, -2, 2, 0],
+                  scale: [1, 1.25, 0.9, 1.1, 1]
+                } : {}}
+                transition={{ duration: 0.6 }}
+                className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold shadow-sm select-none transition-all active:scale-95 cursor-pointer ${
+                  heartsData.isPro
+                    ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                    : isHeartShaking
+                      ? 'bg-rose-500/30 border-rose-500 text-rose-300 shadow-[0_0_20px_rgba(244,63,94,0.6)]'
+                      : Number(displayedHeartsCount) <= 1 && !heartsData.isPro
+                        ? 'bg-rose-500/20 border-rose-500/50 text-rose-400 animate-pulse'
+                        : 'bg-rose-500/10 border-rose-500/30 text-rose-300 hover:bg-rose-500/20'
+                }`}
+                title={heartsData.isPro ? 'Pakiet PRO: Nielimitowane serca' : `Serca: ${displayedHeartsCount}/${heartsData.maxHearts}`}
+              >
+                {isHeartShaking ? (
+                  <HeartCrack className="w-3.5 h-3.5 text-rose-400 animate-bounce shrink-0" />
+                ) : (
+                  <Heart className={`w-3.5 h-3.5 text-rose-500 ${Number(displayedHeartsCount) > 0 || heartsData.isPro ? 'fill-rose-500' : ''} shrink-0`} />
+                )}
+                <motion.span 
+                  key={String(displayedHeartsCount)}
+                  initial={{ scale: 1.45, color: '#f43f5e' }}
+                  animate={{ scale: 1, color: 'inherit' }}
+                  transition={{ type: 'spring', stiffness: 450, damping: 15 }}
+                  className="font-bold tracking-wide leading-none inline-block"
+                >
+                  {displayedHeartsCount}
+                </motion.span>
+              </motion.button>
+
+              {/* Quick Hearts Popover Dropdown in Session */}
+              <AnimatePresence>
+                {showHeartsPopover && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-40" 
+                      onClick={() => setShowHeartsPopover(false)} 
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                      className="absolute right-0 top-full mt-2 z-50 w-72 bg-[#0E131F] border border-slate-700/80 rounded-2xl p-4 shadow-2xl shadow-black/80"
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <Heart size={16} className="text-rose-500 fill-rose-500" />
+                          <span className="font-bold text-white text-sm">Twoje serca</span>
+                        </div>
+                        <span className="text-xs font-mono font-bold text-slate-300">
+                          {heartsData.isPro ? 'Nielimitowane' : `${heartsData.hearts} / ${heartsData.maxHearts}`}
+                        </span>
+                      </div>
+
+                      {/* 5 Serc Wizualnie */}
+                      <div className="flex items-center justify-center gap-2 py-2 mb-3 bg-slate-900/60 rounded-xl border border-white/5">
+                        {Array.from({ length: heartsData.maxHearts }).map((_, idx) => {
+                          const hasHeart = idx < heartsData.hearts || heartsData.isPro;
+                          return (
+                            <Heart
+                              key={idx}
+                              size={20}
+                              className={`transition-all duration-300 ${
+                                hasHeart 
+                                  ? 'text-rose-500 fill-rose-500 drop-shadow-[0_0_6px_rgba(244,63,94,0.5)]' 
+                                  : 'text-slate-700 stroke-slate-700'
+                              }`}
+                            />
+                          );
+                        })}
+                      </div>
+
+                      {/* Timer regeneracji */}
+                      {!heartsData.isPro && heartsData.hearts < heartsData.maxHearts && (
+                        <div className="flex items-center justify-between text-xs text-slate-400 mb-3 bg-slate-950/40 p-2.5 rounded-lg border border-white/5">
+                          <div className="flex items-center gap-1.5">
+                            <Clock size={13} className="text-[#FFB800]" />
+                            <span>Kolejne serce za:</span>
+                          </div>
+                          <span className="font-mono font-bold text-[#FFB800]">{heartsData.formattedTime}</span>
+                        </div>
+                      )}
+
+                      {heartsData.isPro && (
+                        <div className="text-xs text-amber-300/90 mb-3 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20 text-center font-medium">
+                          Pakiet PRO: Uczysz się bez przerw i bez utraty serc!
+                        </div>
+                      )}
+
+                      {/* Akcje doładowania */}
+                      <div className="space-y-2 pt-1">
+                        {!heartsData.isPro && heartsData.hearts < heartsData.maxHearts && (
+                          <button
+                            onClick={() => {
+                              setShowHeartsPopover(false);
+                              handleRefillHeartsWithCoins();
+                            }}
+                            disabled={currentCoins < 150}
+                            className={`w-full py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition active:scale-98 cursor-pointer ${
+                              currentCoins >= 150
+                                ? 'bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30'
+                                : 'bg-slate-800/60 text-slate-500 border border-slate-700/40 cursor-not-allowed'
+                            }`}
+                          >
+                            <Coins size={14} className="text-amber-400" />
+                            <span>Napełnij serca za 150 monet</span>
+                          </button>
+                        )}
+
+                        {!heartsData.isPro && (
+                          <button
+                            onClick={() => {
+                              setShowHeartsPopover(false);
+                              if (onOpenParentSponsor) onOpenParentSponsor();
+                              else setShowParentSponsorModal(true);
+                            }}
+                            className="w-full py-2 px-3 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 hover:brightness-110 flex items-center justify-center gap-1.5 transition active:scale-98 shadow-md shadow-orange-500/20 cursor-pointer"
+                          >
+                            <Users size={14} className="fill-slate-950" />
+                            <span>Poproś rodzica o PRO (BLIK)</span>
+                          </button>
+                        )}
+                      </div>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Linia 2: Cel lekcji / Portfel & Wzory */}
           <div className="flex items-center justify-between gap-3 w-full">
-            <div className="text-xs font-medium text-slate-300 select-none flex items-center gap-1.5 whitespace-nowrap">
-              <span>Cel lekcji:</span>
-              <span className="text-emerald-400 font-bold">{correctAnswersCount} z {targetCorrectAnswers}</span>
-              <span className="text-slate-400">poprawnych zadań</span>
+            <div className="flex items-center gap-2 select-none">
+              {isTheoryStep ? (
+                <>
+                  <span className="text-xs text-slate-400 font-medium">Pigułka wiedzy:</span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs shadow-inner">
+                    <span className={isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black"}>
+                      {theorySubStep + 1}
+                    </span>
+                    <span className="text-slate-600 font-normal">/</span>
+                    <span className="text-slate-400 font-semibold">4</span>
+                  </span>
+                  <span className="text-slate-500 text-[11px] hidden sm:inline">• wprowadzenie</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-xs text-slate-400 font-medium">Cel lekcji:</span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs shadow-inner">
+                    <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
+                      {correctAnswersCount}
+                    </span>
+                    <span className="text-slate-600 font-normal">/</span>
+                    <span className="text-slate-400 font-semibold">{targetCorrectAnswers}</span>
+                  </span>
+                  <span className="text-slate-500 text-[11px] hidden sm:inline">• poprawnych</span>
+                </>
+              )}
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
               {/* Wallet Counter Pill */}
               <div 
                 id="session-coins-pill"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700 text-slate-200 text-xs font-semibold shadow-sm select-none"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 text-slate-200 text-xs font-semibold shadow-sm select-none"
                 title={`Stan portfela: ${currentCoins} monet`}
               >
                 <Coins className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span className="font-bold text-white tracking-wide">{currentCoins}</span>
               </div>
 
-              {/* Formulas Sheet Button */}
+              {/* Formulas Sheet / Leksykon Button */}
               <button
                 id="session-formulas-button"
                 onClick={() => setShowFormulaSheet(true)}
-                className="px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700 hover:border-[#FFB800]/50 hover:bg-slate-800/80 text-[#FFB800] text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer"
-                title="Otwórz Kartę Wzorów CKE"
+                className={`group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
+                  isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
+                }`}
+                title={isPolishSession ? 'Otwórz Leksykon Pojęć' : 'Otwórz Kartę Wzorów'}
               >
-                <BookOpen className="w-3.5 h-3.5 text-[#FFB800] shrink-0" />
-                <span>Wzory</span>
+                <BookOpen className={`w-3.5 h-3.5 text-slate-400 transition-colors shrink-0 ${
+                  isPolishSession ? 'group-hover:text-[#F43F5E]' : 'group-hover:text-[#FFB800]'
+                }`} />
+                <span>{isPolishSession ? 'Leksykon' : 'Wzory'}</span>
               </button>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Dynamic Studio-Grade 5-Hearts Floating HUD Tray & Parabolic Flight Animation */}
+      <AnimatePresence>
+        {heartFlyAnim?.active && (() => {
+          const startX = heartFlyAnim.startX;
+          const startY = heartFlyAnim.startY;
+          const targetX = heartFlyAnim.targetX;
+          const targetY = heartFlyAnim.targetY;
+
+          return (
+            <div 
+              key={heartFlyAnim.key} 
+              className="fixed inset-0 pointer-events-none z-50 overflow-hidden select-none"
+              aria-hidden="true"
+            >
+              {/* 1. Subtle Atmospheric Top Vignette (Zero Murkiness, 100% Content Legibility) */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.75, 0.5, 0] }}
+                transition={{ duration: 1.35, times: [0, 0.2, 0.75, 1], ease: 'easeInOut' }}
+                className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-rose-950/30 via-rose-950/10 to-transparent pointer-events-none"
+              />
+
+              {/* 2. Sleek Dynamic Island 5-Hearts Floating HUD Tray */}
+              <motion.div
+                initial={{ opacity: 0, y: -25, scale: 0.92 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ type: 'spring', damping: 24, stiffness: 350 }}
+                className="fixed top-20 sm:top-22 left-1/2 -translate-x-1/2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-2xl sm:rounded-3xl bg-[#090D18]/95 border border-rose-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(244,63,94,0.18)] backdrop-blur-xl flex flex-col items-center gap-2.5 z-50 pointer-events-none"
+              >
+                {/* Header Warning Tag */}
+                <div className="flex items-center gap-2 px-3 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 shadow-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-rose-300">
+                    -1 Serce • Pomyłka
+                  </span>
+                </div>
+
+                {/* The 5 Heart Containers Tray */}
+                <div className="flex items-center gap-2 sm:gap-2.5">
+                  {[0, 1, 2, 3, 4].map((idx) => {
+                    const isRemainingActive = idx < heartFlyAnim.nextHearts;
+                    const isDying = idx === heartFlyAnim.nextHearts;
+                    const isAlreadyEmpty = idx > heartFlyAnim.nextHearts;
+
+                    return (
+                      <div
+                        key={idx}
+                        className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center bg-slate-950/80 border border-white/10 shadow-inner overflow-hidden"
+                      >
+                        {/* Empty Vessel Bed (Always present underneath - subtle gray outline) */}
+                        <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7 absolute pointer-events-none" fill="none">
+                          <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                            fill="#070A12"
+                            stroke="#334155"
+                            strokeWidth="1.6"
+                            strokeDasharray={isAlreadyEmpty ? "2 2" : undefined}
+                            opacity={isAlreadyEmpty ? "0.4" : "0.75"}
+                          />
+                        </svg>
+
+                        {/* CASE 1: FULL ACTIVE RUBY GEM HEART */}
+                        {isRemainingActive && (
+                          <div className="relative w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-rose-500/30 rounded-full blur-sm animate-pulse" />
+                            <svg viewBox="0 0 24 24" className="w-full h-full relative z-10 drop-shadow-[0_2px_8px_rgba(244,63,94,0.85)]">
+                              <defs>
+                                <linearGradient id={`ruby-active-${idx}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#FF4D6D" />
+                                  <stop offset="60%" stopColor="#E01E5A" />
+                                  <stop offset="100%" stopColor="#A00030" />
+                                </linearGradient>
+                              </defs>
+                              <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                fill={`url(#ruby-active-${idx})`}
+                              />
+                              <ellipse cx="7.5" cy="6.5" rx="2.5" ry="1.4" fill="rgba(255,255,255,0.45)" transform="rotate(-25 7.5 6.5)" />
+                            </svg>
+                          </div>
+                        )}
+
+                        {/* CASE 2: THE SHATTERING HEART (SPLITS IN HALF WITH SPARKS & DISSOLVES) */}
+                        {isDying && (
+                          <div className="relative w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
+                            {/* Left Half Split & Disintegrate */}
+                            <motion.svg
+                              viewBox="0 0 24 24"
+                              className="w-full h-full absolute z-10 pointer-events-none"
+                              initial={{ x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 }}
+                              animate={{
+                                x: [0, -3, 3, -10],
+                                y: [0, -2, 2, 8],
+                                rotate: [0, -8, 8, -22],
+                                scale: [1, 1.2, 1.05, 0.3],
+                                opacity: [1, 1, 1, 0]
+                              }}
+                              transition={{ duration: 0.65, delay: 0.12, times: [0, 0.2, 0.45, 1] }}
+                            >
+                              <defs>
+                                <linearGradient id="ruby-left" x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#FF4D6D" />
+                                  <stop offset="60%" stopColor="#E01E5A" />
+                                  <stop offset="100%" stopColor="#A00030" />
+                                </linearGradient>
+                              </defs>
+                              <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09V21.35z"
+                                fill="url(#ruby-left)"
+                              />
+                            </motion.svg>
+
+                            {/* Right Half Split & Disintegrate */}
+                            <motion.svg
+                              viewBox="0 0 24 24"
+                              className="w-full h-full absolute z-10 pointer-events-none"
+                              initial={{ x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 }}
+                              animate={{
+                                x: [0, 3, -3, 10],
+                                y: [0, -2, 2, 8],
+                                rotate: [0, 8, -8, 22],
+                                scale: [1, 1.2, 1.05, 0.3],
+                                opacity: [1, 1, 1, 0]
+                              }}
+                              transition={{ duration: 0.65, delay: 0.12, times: [0, 0.2, 0.45, 1] }}
+                            >
+                              <defs>
+                                <linearGradient id="ruby-right" x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#FF4D6D" />
+                                  <stop offset="60%" stopColor="#E01E5A" />
+                                  <stop offset="100%" stopColor="#A00030" />
+                                </linearGradient>
+                              </defs>
+                              <path
+                                d="M12 5.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35V5.09z"
+                                fill="url(#ruby-right)"
+                              />
+                            </motion.svg>
+
+                            {/* Burst Ember Sparks */}
+                            {[
+                              { dx: -20, dy: -18 },
+                              { dx: 18, dy: -20 },
+                              { dx: -18, dy: 16 },
+                              { dx: 20, dy: 18 },
+                              { dx: 0, dy: -24 },
+                              { dx: 0, dy: 22 },
+                            ].map((spark, sIdx) => (
+                              <motion.div
+                                key={`spark-${sIdx}`}
+                                initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                                animate={{
+                                  opacity: [0, 1, 0],
+                                  scale: [0, 1.3, 0.2],
+                                  x: [0, spark.dx],
+                                  y: [0, spark.dy],
+                                }}
+                                transition={{ duration: 0.55, delay: 0.2, ease: 'easeOut' }}
+                                className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r from-rose-400 to-amber-300 shadow-[0_0_10px_#ff4d6d] z-20 pointer-events-none"
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Status Bottom Count */}
+                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-300">
+                  <span className="text-slate-400 font-medium">Pozostało:</span>
+                  <span className="text-rose-400 font-black text-sm">{heartFlyAnim.nextHearts} z 5</span>
+                  <span className="text-slate-400 font-normal">serc</span>
+                </div>
+              </motion.div>
+
+              {/* 3. Luminous Star Comet Flying from exact slot in HUD to Header Pill */}
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: startX,
+                  y: startY,
+                  scale: 0.6,
+                  rotate: 0
+                }}
+                animate={{
+                  opacity: [0, 1, 1, 0.95, 0],
+                  scale: [0.6, 1.4, 0.95, 0.3],
+                  rotate: [0, -18, 24, 0],
+                  x: [startX, startX, (startX + targetX) / 2, targetX],
+                  y: [startY, startY - 20, Math.min(startY, targetY) - 30, targetY],
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.22,
+                  times: [0, 0.15, 0.55, 0.85, 1],
+                  ease: [0.18, 0.95, 0.28, 1]
+                }}
+                className="fixed top-0 left-0 flex items-center justify-center pointer-events-none z-50"
+              >
+                <div className="relative flex items-center justify-center">
+                  {/* Outer Pulsing Glow */}
+                  <div className="absolute w-12 h-12 rounded-full bg-rose-500/40 blur-lg animate-pulse" />
+                  {/* Comet Head */}
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-white via-rose-400 to-rose-600 shadow-[0_0_20px_rgba(255,77,109,1)] flex items-center justify-center">
+                    <div className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_#fff]" />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          );
+        })()}
+      </AnimatePresence>
 
       {/* ================= MAIN TASK AREA ================= */}
       <main 
@@ -1434,12 +2410,20 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           <div id="session-theory-pill-content" className="w-full max-w-2xl mx-auto space-y-4 pt-2">
             {/* 4 logiczne segmenty pigułki wiedzy */}
             <div className="grid grid-cols-4 gap-1.5 py-1">
-              {[
-                { id: 0, title: 'Istota' },
-                { id: 1, title: 'Wzory' },
-                { id: 2, title: 'Przykład' },
-                { id: 3, title: 'Pułapka' }
-              ].map((step) => {
+              {(isPolishSession
+                ? [
+                    { id: 0, title: (theoryPill as any)?.book_summary ? 'Fabuła & Istota' : 'Istota' },
+                    { id: 1, title: 'Pojęcia' },
+                    { id: 2, title: 'Analiza tekstu' },
+                    { id: 3, title: 'Pułapka' }
+                  ]
+                : [
+                    { id: 0, title: 'Istota' },
+                    { id: 1, title: 'Wzory' },
+                    { id: 2, title: 'Przykład' },
+                    { id: 3, title: 'Pułapka' }
+                  ]
+              ).map((step) => {
                 const isActive = theorySubStep === step.id;
                 const isDone = theorySubStep > step.id;
                 return (
@@ -1455,13 +2439,17 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   >
                     <div className={`h-1.5 rounded-full transition-all duration-200 ${
                       isActive 
-                        ? 'bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.5)]' 
+                        ? isPolishSession
+                          ? 'bg-[#F43F5E] shadow-[0_0_8px_rgba(244,63,94,0.5)]'
+                          : 'bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.5)]' 
                         : isDone 
                           ? 'bg-slate-500' 
                           : 'bg-slate-800'
                     }`} />
                     <span className={`text-[11px] sm:text-xs text-center font-medium transition-colors ${
-                      isActive ? 'text-[#FFB800] font-bold' : 'text-slate-400 group-hover:text-slate-300'
+                      isActive 
+                        ? isPolishSession ? 'text-[#F43F5E] font-bold' : 'text-[#FFB800] font-bold' 
+                        : 'text-slate-400 group-hover:text-slate-300'
                     }`}>
                       {step.title}
                     </span>
@@ -1482,25 +2470,126 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   <section className="flex flex-col gap-2.5">
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#FFB800]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
-                      <span>Istota pojęcia</span>
+                    <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${
+                      isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'}`} />
+                      <span>{isPolishSession ? 'Istota zagadnienia' : 'Istota pojęcia'}</span>
                     </div>
                     <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight">
-                      {theoryPill?.title || lessonTitle}
+                      {sanitizeLessonHeading(theoryPill?.title || lessonTitle)}
                     </h1>
                     {(theoryPill?.concept_essence || theoryPill?.intuition) && (
                       <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 text-slate-200 text-sm sm:text-base leading-relaxed">
                         {renderMicroContent(theoryPill?.concept_essence || theoryPill?.intuition)}
                       </div>
                     )}
+
+                    {/* STRESZCZENIE FABUŁY I PLAN WYDARZEŃ LEKTURY (DLA LEKTUR MATURALNYCH) */}
+                    {(theoryPill as any)?.book_summary && (() => {
+                      const bs = (theoryPill as any).book_summary;
+                      return (
+                        <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#1C1217] via-[#161218] to-[#101726] border border-rose-500/30 shadow-[0_4px_24px_rgba(244,63,94,0.15)] flex flex-col gap-4">
+                          {/* Nagłówek lektury */}
+                          <div className="flex items-center justify-between gap-2 border-b border-rose-500/20 pb-3 flex-wrap">
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-8 h-8 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(244,63,94,0.25)]">
+                                <BookOpen size={16} />
+                              </div>
+                              <div>
+                                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-rose-300 block">
+                                  Przewodnik po lekturze i motywach
+                                </span>
+                                {bs.title && (
+                                  <h3 className="text-sm sm:text-base font-black text-white">
+                                    {bs.title} {bs.author ? `• ${bs.author}` : ''}
+                                  </h3>
+                                )}
+                              </div>
+                            </div>
+                            {bs.genre && (
+                              <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-full">
+                                {bs.genre}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Streszczenie fabuły / Oś akcji */}
+                          {bs.plot_overview && (
+                            <div className="space-y-1.5">
+                              <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider block">
+                                📖 Zwięzłe streszczenie fabuły
+                              </span>
+                              <div className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-black/40 p-3.5 sm:p-4 rounded-xl border border-white/5 whitespace-pre-line shadow-inner">
+                                {renderMicroContent(bs.plot_overview)}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Oś kluczowych wydarzeń */}
+                          {bs.key_events && bs.key_events.length > 0 && (
+                            <div className="space-y-2 pt-1 border-t border-white/5">
+                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider block">
+                                ⏱️ Kluczowy ciąg wydarzeń (oś dramatyczna)
+                              </span>
+                              <div className="space-y-2 pl-0.5">
+                                {bs.key_events.map((ev: string, evIdx: number) => (
+                                  <div key={evIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                                    <span className="w-5 h-5 rounded-full bg-rose-500/15 border border-rose-500/30 text-[10px] font-mono font-bold text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+                                      {evIdx + 1}
+                                    </span>
+                                    <span className="leading-relaxed flex-1">{renderMicroContent(ev)}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Bohaterowie i relacje */}
+                          {bs.characters && bs.characters.length > 0 && (
+                            <div className="space-y-2 pt-1 border-t border-white/5">
+                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider block">
+                                👥 Kluczowi bohaterowie i ich role
+                              </span>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                {bs.characters.map((ch: any, chIdx: number) => (
+                                  <div key={chIdx} className="p-2.5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col gap-0.5">
+                                    <span className="text-xs font-bold text-rose-300">{ch.name}</span>
+                                    <span className="text-[11px] text-slate-400 leading-snug">{ch.role}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Kluczowe sceny maturalne */}
+                          {bs.key_scenes && bs.key_scenes.length > 0 && (
+                            <div className="space-y-2 pt-1 border-t border-white/5">
+                              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">
+                                ⭐ Sceny o fundamentalnym znaczeniu maturalnym
+                              </span>
+                              <div className="space-y-2">
+                                {bs.key_scenes.map((sc: any, scIdx: number) => (
+                                  <div key={scIdx} className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-xs leading-relaxed">
+                                    <span className="font-bold text-amber-300 block mb-0.5">{sc.scene}</span>
+                                    <span className="text-slate-300">{sc.significance}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </section>
 
                   {(theoryPill?.matura_context || theoryPill?.keyTakeaway) && (
                     <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/40 border border-slate-800 flex flex-col gap-2.5">
-                      <div className="flex items-center gap-2 text-[#FFB800] text-xs font-semibold uppercase tracking-wider">
-                        <Sparkles className="w-4 h-4 text-[#FFB800] shrink-0" />
-                        <span>Strategia maturalna</span>
+                      <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${
+                        isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
+                      }`}>
+                        <Compass className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
+                        <span>{isPolishSession ? 'Złota strategia maturalna' : 'Strategia maturalna'}</span>
                       </div>
                       <div className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                         {renderMicroContent(theoryPill?.matura_context || theoryPill?.keyTakeaway)}
@@ -1510,7 +2599,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </motion.div>
               )}
 
-              {/* Zakładka 1: Wzory (KaTeX) */}
+              {/* Zakładka 1: Wzory / Leksykon Pojęć */}
               {theorySubStep === 1 && (
                 <motion.div
                   key="theory-tab-1"
@@ -1520,7 +2609,62 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   transition={{ duration: 0.15 }}
                   className="space-y-4"
                 >
-                  {(() => {
+                  {isPolishSession ? (
+                    <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-3.5">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-rose-300 text-xs font-semibold uppercase tracking-wider">
+                          <BookOpen className="w-4 h-4 text-[#F43F5E]" />
+                          <span>Kluczowe pojęcia i leksykon</span>
+                        </div>
+                        <span className="text-[10px] font-medium text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-full">
+                          Leksykon pojęć
+                        </span>
+                      </div>
+
+                      {formulaSheet?.formulas && formulaSheet.formulas.length > 0 ? (
+                        <div className="space-y-2.5 py-1">
+                          {formulaSheet.formulas.map((f: any, fIdx: number) => (
+                            <div
+                              key={fIdx}
+                              className="rounded-xl p-3.5 sm:p-4 bg-slate-950/60 border border-slate-800/80 shadow-sm flex flex-col gap-1.5"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="w-5 h-5 rounded-md bg-rose-500/10 border border-rose-500/25 text-[10px] font-mono font-bold text-rose-400 flex items-center justify-center shrink-0">
+                                  {String(fIdx + 1).padStart(2, '0')}
+                                </span>
+                                <span className="text-xs sm:text-sm font-bold text-white">
+                                  {f.title}
+                                </span>
+                              </div>
+                              <div className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-7">
+                                {renderMicroContent(f.latex || f.def || '')}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="p-4 rounded-xl bg-slate-950/40 text-center text-slate-400 text-sm">
+                          Zapoznaj się z kluczowymi pojęciami zdefiniowanymi w treści lekcji oraz arkuszu egzaminacyjnym.
+                        </div>
+                      )}
+
+                      {(theoryPill?.key_points || (theoryPill as any)?.keyPoints) && (
+                        <div className="mt-1 text-xs sm:text-sm text-slate-300 border-t border-slate-800/80 pt-3 space-y-2">
+                          <span className="text-[11px] font-semibold text-rose-400 uppercase tracking-wider block">
+                            Wskaźniki językowe do zapamiętania
+                          </span>
+                          <ul className="space-y-1.5 pl-1">
+                            {(theoryPill.key_points || (theoryPill as any).keyPoints).map((kp: string, kIdx: number) => (
+                              <li key={kIdx} className="flex items-start gap-2 text-slate-300">
+                                <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0" />
+                                <span>{renderMicroContent(kp)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </section>
+                  ) : (() => {
                     const formulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
                     return (
                       <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-3.5">
@@ -1560,7 +2704,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </motion.div>
               )}
 
-              {/* Zakładka 2: Przykład z arkusza */}
+              {/* Zakładka 2: Przykład / Analiza tekstu */}
               {theorySubStep === 2 && (
                 <motion.div
                   key="theory-tab-2"
@@ -1575,7 +2719,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     if (!normExample) {
                       return (
                         <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-slate-400 text-sm text-center">
-                          Brak przykładu dla tej pigułki wiedzy.
+                          {isPolishSession ? 'Brak tekstu źródłowego dla tej pigułki.' : 'Brak przykładu dla tej pigułki wiedzy.'}
                         </div>
                       );
                     }
@@ -1583,14 +2727,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     return (
                       <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-4">
                         <div className="flex items-center gap-2 text-slate-300 text-xs font-semibold uppercase tracking-wider">
-                          <FileText className="w-4 h-4 text-[#FFB800]" />
-                          <span>Przykład z arkusza krok po kroku</span>
+                          <FileText className={`w-4 h-4 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
+                          <span>{isPolishSession ? 'Analiza fragmentu krok po kroku' : 'Przykład z arkusza krok po kroku'}</span>
                         </div>
 
                         {/* Treść zadania */}
-                        <div className="border-l-2 border-[#FFB800]/50 pl-3.5 py-1 bg-slate-950/30 rounded-r-xl">
+                        <div className={`border-l-2 pl-3.5 py-1 bg-slate-950/30 rounded-r-xl ${
+                          isPolishSession ? 'border-rose-500/50' : 'border-[#FFB800]/50'
+                        }`}>
                           <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
-                            Treść zadania
+                            {isPolishSession ? 'Fragment tekstu i polecenie' : 'Treść zadania'}
                           </span>
                           <div className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
                             {renderMicroContent(normExample.problem)}
@@ -1602,12 +2748,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           <div className="space-y-3 pt-1 border-t border-slate-800/80">
                             {normExample.steps.map((st, sIdx) => (
                               <div key={sIdx} className="flex items-start gap-3 text-sm sm:text-base text-slate-200">
-                                <span className="shrink-0 w-6 h-6 rounded-full bg-slate-800 border border-slate-700 text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
+                                <span className={`shrink-0 w-6 h-6 rounded-full bg-slate-800 border font-bold text-xs flex items-center justify-center mt-0.5 ${
+                                  isPolishSession ? 'border-rose-500/30 text-rose-400' : 'border-slate-700 text-[#FFB800]'
+                                }`}>
                                   {st.num}
                                 </span>
                                 <div className="flex-1 leading-relaxed">
                                   {st.label && (
-                                    <span className="text-xs font-semibold text-[#FFB800] block mb-0.5">
+                                    <span className={`text-xs font-semibold block mb-0.5 ${
+                                      isPolishSession ? 'text-rose-400' : 'text-[#FFB800]'
+                                    }`}>
                                       {st.label}
                                     </span>
                                   )}
@@ -1620,10 +2770,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {/* Wynik / Odpowiedź końcowa */}
                         {normExample.result && (
-                          <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm">
-                            <span className="text-slate-400 font-medium">Odpowiedź końcowa:</span>
-                            <span className="font-semibold text-emerald-400">
-                              <MathRenderer content={normExample.result.includes('$') ? normExample.result : `$${normExample.result}$`} />
+                          <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm gap-2">
+                            <span className="text-slate-400 font-medium shrink-0">
+                              {isPolishSession ? 'Wniosek egzaminatora:' : 'Odpowiedź końcowa:'}
+                            </span>
+                            <span className="font-semibold text-emerald-400 text-right">
+                              {isPolishSession ? (
+                                <span>{normExample.result}</span>
+                              ) : (
+                                <MathRenderer content={normExample.result.includes('$') ? normExample.result : `$${normExample.result}$`} />
+                              )}
                             </span>
                           </div>
                         )}
@@ -1655,7 +2811,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     </section>
                   ) : (
                     <section className="rounded-2xl p-5 bg-slate-900/60 border border-slate-800 text-slate-300 text-sm leading-relaxed">
-                      Zwracaj szczególną uwagę na dziedzinę wyrażeń i znaki przy redukcji wyrazów podobnych.
+                      {isPolishSession
+                        ? 'Zwracaj szczególną uwagę na intencję nadawcy i kontekst wypowiedzi – nie oceniaj tekstu wyłącznie na podstawie pojedynczych słów wyrwanych z akapitu.'
+                        : 'Zwracaj szczególną uwagę na dziedzinę wyrażeń i znaki przy redukcji wyrazów podobnych.'}
                     </section>
                   )}
                 </motion.div>
@@ -1670,18 +2828,36 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {lessonTitle}
               </h1>
               
-              {/* Autentyczna, elegancka etykieta źródła zadania (Source Tag) */}
+              {/* Autentyczne, nowoczesne etykiety źródła zadania i punktacji */}
               <div className="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-sky-300 font-medium text-[11px] sm:text-xs shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0" />
-                  <span>{formatSourceTag(currentTask?.source || currentTask?.cke_source, currentTask?.points, isOpenTask)}</span>
+                {/* Badge 1: Źródło zadania / sesja */}
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/25 text-sky-300 font-semibold text-[11px] sm:text-xs shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0 shadow-[0_0_6px_rgba(56,189,248,0.8)]" />
+                  <span>{taskSourceLabel}</span>
                 </span>
+
+                {/* Badge 2: Waga punktowa */}
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/25 text-amber-300 font-bold text-[11px] sm:text-xs shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
+                  <span>{taskPointsCount}</span>
+                </span>
+
+                {(currentTask?.cke_badge || currentTask?.badge) && (
+                  <span className={`px-2.5 py-1 rounded-lg border font-bold text-[11px] sm:text-xs shadow-sm ${
+                    isPolishSession 
+                      ? 'bg-rose-500/15 border-rose-500/30 text-rose-300 shadow-[0_0_10px_rgba(244,63,94,0.15)]' 
+                      : 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]'
+                  }`}>
+                    {String(currentTask.cke_badge || currentTask.badge).replace(/CKE/gi, '').trim()}
+                  </span>
+                )}
                 {isOpenTask ? (
-                  <span className="px-2 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[10px] font-bold uppercase tracking-wider">
-                    Zadanie Otwarte • 2 pkt
+                  <span className="px-2.5 py-1 rounded-lg bg-purple-500/10 border border-purple-500/25 text-purple-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                    <Target size={12} className="text-purple-400 shrink-0" />
+                    <span>Zadanie Otwarte • Tutor AI</span>
                   </span>
                 ) : (
-                  <span className="px-2 py-0.5 rounded-md bg-slate-800/80 border border-slate-700/50 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+                  <span className="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/50 text-slate-400 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
                     Pewniak Maturalny
                   </span>
                 )}
@@ -1704,7 +2880,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               )}
             </div>
 
-        {/* OPEN TASK WORKSPACE (DWA TRYBY: KLAWIATURA VS TABLICA) */}
+        {/* OPEN TASK WORKSPACE (DWA TRYBY: KLAWIATURA VS TABLICA VS POLSKI TEKST) */}
         {isOpenTask ? (
           <div className="space-y-4 pt-1">
             <OpenTaskWorkspace
@@ -1717,7 +2893,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               onSaveCanvasData={(dataUrl) => setOpenCanvasDataUrl(dataUrl)}
               onSubmit={handleCheckOpenAnswerWithTutor}
               onAskAiTutor={handleCheckOpenAnswerWithTutor}
-              inputPlaceholder="Zapisz swoje rozwiązanie lub użyj klawiatury..."
+              inputPlaceholder={isPolishSession 
+                ? "Sformułuj swoją odpowiedź, uzasadnienie lub argument na podstawie załączonego tekstu/lektury..." 
+                : "Zapisz swoje rozwiązanie lub użyj klawiatury..."}
+              hideWhiteboard={isPolishSession}
+              mode={isPolishSession ? 'text' : 'math'}
             />
 
             {/* AI Tutor Scanning State (pulsujący gradient bursztynowy) */}
@@ -1728,14 +2908,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-[#FFB800]/50 shadow-[0_0_35px_rgba(255,184,0,0.22)] flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
               >
                 <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB800]/30 to-amber-600/40 border border-[#FFB800]/60 flex items-center justify-center mb-3 shadow-[0_0_25px_rgba(255,184,0,0.5)]">
-                  <Sparkles className="w-7 h-7 text-[#FFB800] animate-spin-slow shrink-0" />
+                  <Loader2 className="w-7 h-7 text-[#FFB800] animate-spin shrink-0" />
                   <div className="absolute inset-0 rounded-2xl border border-[#FFB800]/40 animate-ping opacity-25" />
                 </div>
                 <h4 className="font-bold text-white text-base sm:text-lg mb-1">
                   Egzaminator AI analizuje Twoje rozwiązanie...
                 </h4>
                 <p className="text-xs sm:text-sm text-amber-200/90 max-w-md">
-                  Weryfikuję obliczenia, przekształcenia algebraiczne oraz zgodność ze schematem oceniania CKE.
+                  {isPolishSession
+                    ? 'Weryfikuję argumentację, styl i poprawność merytoryczną oraz zgodność z oficjalnymi kryteriami oceniania.'
+                    : 'Weryfikuję obliczenia, przekształcenia algebraiczne oraz zgodność ze schematem oceniania.'}
                 </p>
               </motion.div>
             )}
@@ -1751,7 +2933,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800]">
-                      <Sparkles size={18} />
+                      <GraduationCap size={18} />
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-sm sm:text-base leading-tight">
@@ -1774,13 +2956,108 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     {tutorEvaluation.score === (currentTask?.points || 2) ? (
                       <CheckCircle2 size={16} />
                     ) : tutorEvaluation.score > 0 ? (
-                      <Sparkles size={16} />
+                      <Target size={16} />
                     ) : (
                       <AlertTriangle size={16} />
                     )}
                     <span>{tutorEvaluation.gradeTitle || `${tutorEvaluation.score} / ${currentTask?.points || 2} PKT`}</span>
                   </div>
                 </div>
+
+                {/* 4 CKE Criteria Breakdown for 35-pt Essays */}
+                {tutorEvaluation.criteriaBreakdown && (
+                  <div className="p-3.5 rounded-xl bg-slate-950/90 border border-rose-500/25 space-y-2.5">
+                    <div className="flex items-center justify-between text-xs font-bold text-rose-300 pb-1.5 border-b border-rose-500/20">
+                      <span className="flex items-center gap-1.5">
+                        <Feather size={14} className="text-rose-400" />
+                        <span>Karta Oceny CKE (4 Oficjalne Kryteria Egzaminacyjne):</span>
+                      </span>
+                      <span className="font-mono text-white font-black text-xs sm:text-sm">
+                        {tutorEvaluation.score} / 35 PKT
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                      {/* 1. Formalne */}
+                      {tutorEvaluation.criteriaBreakdown.formal && (
+                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                          <div className="flex items-center justify-between font-semibold text-slate-300">
+                            <span>I. Warunki formalne</span>
+                            <span className="font-mono text-emerald-400 font-bold">
+                              {tutorEvaluation.criteriaBreakdown.formal.score} / {tutorEvaluation.criteriaBreakdown.formal.max || 1} pkt
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-400 leading-tight">
+                            {tutorEvaluation.criteriaBreakdown.formal.comment}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* 2. Kompetencje literackie */}
+                      {tutorEvaluation.criteriaBreakdown.literary_cultural && (
+                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                          <div className="flex items-center justify-between font-semibold text-slate-300">
+                            <span>II. Lektura i konteksty</span>
+                            <span className="font-mono text-rose-400 font-bold">
+                              {tutorEvaluation.criteriaBreakdown.literary_cultural.score} / {tutorEvaluation.criteriaBreakdown.literary_cultural.max || 16} pkt
+                            </span>
+                          </div>
+                          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className="bg-rose-500 h-full rounded-full transition-all duration-500" 
+                              style={{ width: `${Math.min(100, Math.round((tutorEvaluation.criteriaBreakdown.literary_cultural.score / (tutorEvaluation.criteriaBreakdown.literary_cultural.max || 16)) * 100))}%` }} 
+                            />
+                          </div>
+                          <p className="text-[11px] text-slate-400 leading-tight">
+                            {tutorEvaluation.criteriaBreakdown.literary_cultural.comment}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* 3. Kompozycja */}
+                      {tutorEvaluation.criteriaBreakdown.composition && (
+                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                          <div className="flex items-center justify-between font-semibold text-slate-300">
+                            <span>III. Kompozycja tekstu</span>
+                            <span className="font-mono text-amber-400 font-bold">
+                              {tutorEvaluation.criteriaBreakdown.composition.score} / {tutorEvaluation.criteriaBreakdown.composition.max || 7} pkt
+                            </span>
+                          </div>
+                          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className="bg-amber-400 h-full rounded-full transition-all duration-500" 
+                              style={{ width: `${Math.min(100, Math.round((tutorEvaluation.criteriaBreakdown.composition.score / (tutorEvaluation.criteriaBreakdown.composition.max || 7)) * 100))}%` }} 
+                            />
+                          </div>
+                          <p className="text-[11px] text-slate-400 leading-tight">
+                            {tutorEvaluation.criteriaBreakdown.composition.comment}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* 4. Język i styl */}
+                      {tutorEvaluation.criteriaBreakdown.language_style && (
+                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                          <div className="flex items-center justify-between font-semibold text-slate-300">
+                            <span>IV. Język, styl, ortografia</span>
+                            <span className="font-mono text-sky-400 font-bold">
+                              {tutorEvaluation.criteriaBreakdown.language_style.score} / {tutorEvaluation.criteriaBreakdown.language_style.max || 11} pkt
+                            </span>
+                          </div>
+                          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className="bg-sky-400 h-full rounded-full transition-all duration-500" 
+                              style={{ width: `${Math.min(100, Math.round((tutorEvaluation.criteriaBreakdown.language_style.score / (tutorEvaluation.criteriaBreakdown.language_style.max || 11)) * 100))}%` }} 
+                            />
+                          </div>
+                          <p className="text-[11px] text-slate-400 leading-tight">
+                            {tutorEvaluation.criteriaBreakdown.language_style.comment}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* Tutor Explanation & Strengths/Errors */}
                 <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/5 text-xs sm:text-sm text-slate-200 leading-relaxed">
@@ -1791,7 +3068,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {tutorEvaluation.strengths && tutorEvaluation.strengths.length > 0 && (
                     <div className="mt-2.5 pt-2.5 border-t border-white/5 space-y-1">
                       <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wide block">
-                        Mocne strony Twojego dowodu:
+                        {isPolishSession ? 'Mocne strony Twojej odpowiedzi:' : 'Mocne strony Twojego dowodu:'}
                       </span>
                       {tutorEvaluation.strengths.map((str: string, sIdx: number) => (
                         <div key={sIdx} className="flex items-start gap-1.5 text-xs text-slate-300">
@@ -1857,58 +3134,33 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             )}
           </div>
         ) : isNumericTask ? (
-          /* 1. NUMERIC INPUT FORMAT */
+          /* 1. NUMERIC INPUT FORMAT (Dedykowana klawiatura matematyczna, bez opcji tablicy) */
           <motion.div
             key={`session-numeric-${currentStep}-${currentTask?.id || ''}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="w-full my-auto py-2"
+            className="w-full space-y-3 pt-1"
           >
-            <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 flex flex-col gap-3">
-              <label className="text-xs sm:text-sm font-semibold text-slate-300 flex items-center justify-between">
-                <span>Wpisz wynik liczbowy:</span>
-                <span className="text-[11px] text-slate-500 font-mono">użyj przecinka lub kropki</span>
-              </label>
-              <div className="relative flex items-center">
-                <input
-                  type="text"
-                  inputMode="decimal"
-                  disabled={isEvaluated}
-                  value={numericInput}
-                  onChange={(e) => {
-                    const val = e.target.value.replace(/[^0-9.,/-]/g, '');
-                    setNumericInput(val);
-                  }}
-                  placeholder={currentTask?.input_placeholder || "np. 12 lub 3,5"}
-                  className={`w-full text-lg sm:text-2xl font-bold font-mono px-4 py-3.5 rounded-xl border transition-all outline-none ${
-                    isEvaluated
-                      ? isCorrect
-                        ? 'bg-emerald-950/30 border-emerald-500 text-emerald-300'
-                        : 'bg-rose-950/30 border-rose-500 text-rose-300'
-                      : 'bg-slate-950 border-slate-700 text-white focus:border-[#FFB800] focus:ring-2 focus:ring-[#FFB800]/20'
-                  }`}
-                />
-                {isEvaluated && (
-                  <div className="absolute right-3.5 flex items-center gap-2">
-                    {isCorrect ? (
-                      <CheckCircle2 className="w-6 h-6 text-emerald-400" />
-                    ) : (
-                      <X className="w-6 h-6 text-rose-400 stroke-[2.5]" />
-                    )}
-                  </div>
-                )}
-              </div>
+            <OpenTaskWorkspace
+              task={currentTask}
+              isEvaluated={isEvaluated}
+              isCorrect={isCorrect}
+              value={numericInput}
+              onChangeValue={(val) => setNumericInput(val)}
+              onSubmit={handleCheckAnswer}
+              hideWhiteboard={true}
+              inputPlaceholder={currentTask?.input_placeholder || "Wpisz wynik (użyj klawiatury)..."}
+            />
 
-              {isEvaluated && !isCorrect && (
-                <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs sm:text-sm text-rose-200 flex items-center justify-between">
-                  <span>Prawidłowy wynik:</span>
-                  <span className="font-mono font-black text-emerald-400 text-base">
-                    {currentTask?.correctAnswer || currentTask?.correct_answer}
-                  </span>
-                </div>
-              )}
-            </div>
+            {isEvaluated && !isCorrect && (
+              <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-xs sm:text-sm text-rose-200 flex items-center justify-between shadow-sm">
+                <span className="font-medium">Prawidłowy wynik:</span>
+                <span className="font-mono font-black text-emerald-400 text-base">
+                  {currentTask?.correctAnswer || currentTask?.correct_answer}
+                </span>
+              </div>
+            )}
           </motion.div>
         ) : isTrueFalseTask ? (
           /* 2. TRUE_FALSE STATEMENTS FORMAT */
@@ -2225,7 +3477,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             transition={{ duration: 0.15, ease: 'easeOut' }}
             className="space-y-3 pt-1"
           >
-            {currentTask?.options?.map((option: any, optIdx: number) => {
+            {(randomizedOptions.length > 0 ? randomizedOptions : (currentTask?.options || [])).map((option: any, optIdx: number) => {
               const isString = typeof option === 'string';
               const defaultLetter = String.fromCharCode(65 + optIdx);
               let optId = defaultLetter;
@@ -2243,7 +3495,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               const isSelected = selectedOption === optId;
               const targetRaw = String(currentTask?.correct_answer || currentTask?.correctAnswer || '').trim();
               const normTarget = targetRaw.replace(/^Odp\s*/i, '').trim().toUpperCase();
-              const isOptionCorrect = optId === targetRaw || 
+              const isOptionCorrect = Boolean(option.is_correct) || 
+                optId === targetRaw || 
                 optId === normTarget || 
                 targetRaw.startsWith(optId + '.') || 
                 (isString && option === targetRaw);
@@ -2251,7 +3504,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               // Clean high-contrast styles: answers remain 100% visible on screen
               let borderStyle = 'border-slate-800 hover:border-slate-700 bg-slate-900/50';
               if (isSelected && !isEvaluated) {
-                borderStyle = 'border-[#FFB800] bg-[#FFB800]/15 shadow-[0_0_15px_rgba(255,184,0,0.2)]';
+                borderStyle = isPolishSession
+                  ? 'border-[#F43F5E] bg-[#F43F5E]/15 shadow-[0_0_15px_rgba(244,63,94,0.2)]'
+                  : 'border-[#FFB800] bg-[#FFB800]/15 shadow-[0_0_15px_rgba(255,184,0,0.2)]';
               } else if (isEvaluated) {
                 if (isOptionCorrect) {
                   borderStyle = 'border-emerald-500 bg-emerald-950/35 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.25)]';
@@ -2274,7 +3529,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <span 
                       className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 border transition-colors ${
                         isSelected && !isEvaluated
-                          ? 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold'
+                          ? isPolishSession
+                            ? 'bg-[#F43F5E] border-[#E11D48] text-white font-bold'
+                            : 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold'
                           : isEvaluated && isOptionCorrect
                             ? 'bg-emerald-500 border-emerald-400 text-slate-950 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
@@ -2298,8 +3555,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                   {/* Selection / Status Icon */}
                   {isSelected && !isEvaluated && (
-                    <div className="w-5 h-5 rounded-full bg-[#FFB800]/20 flex items-center justify-center shrink-0">
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
+                      isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
+                    }`}>
+                      <div className={`w-2.5 h-2.5 rounded-full ${
+                        isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
+                      }`} />
                     </div>
                   )}
                   {isEvaluated && isOptionCorrect && (
@@ -2346,7 +3607,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   triggerHaptic('light');
                   setTheorySubStep(prev => Math.min(3, prev + 1));
                 }}
-                className="flex-1 h-[48px] px-4 rounded-xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                className={`flex-1 h-[48px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
+                  isPolishSession
+                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-[0_0_20px_rgba(244,63,94,0.35)]'
+                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                }`}
               >
                 <span>Dalej</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -2360,7 +3625,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   playSuccessSound();
                   setCurrentStep(1);
                 }}
-                className="flex-1 h-[48px] px-4 rounded-xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                className={`flex-1 h-[48px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
+                  isPolishSession
+                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-[0_0_20px_rgba(244,63,94,0.35)]'
+                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                }`}
               >
                 <span>Rozpocznij zadania</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -2442,11 +3711,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       disabled={(!openAnswerText.trim() && openCanvasDataUrl.length <= 50) || isTutorScanning}
                       className={`flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 ${
                         (openAnswerText.trim() || openCanvasDataUrl.length > 50) && !isTutorScanning
-                          ? 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-[0_0_25px_rgba(255,184,0,0.35)] active:scale-[0.99] cursor-pointer'
+                          ? isPolishSession
+                            ? 'bg-gradient-to-r from-[#F43F5E] to-rose-600 hover:from-[#FB7185] hover:to-rose-500 text-white shadow-[0_0_25px_rgba(244,63,94,0.35)] active:scale-[0.99] cursor-pointer'
+                            : 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-[0_0_25px_rgba(255,184,0,0.35)] active:scale-[0.99] cursor-pointer'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
-                      <Sparkles className="w-5 h-5 text-slate-950 stroke-[2.2]" />
+                      <CheckCircle2 className={`w-5 h-5 stroke-[2.2] ${isPolishSession ? 'text-white' : 'text-slate-950'}`} />
                       <span>{isTutorScanning ? 'ANALIZA W TOKU...' : 'SPRAWDŹ Z TUTOREM AI'}</span>
                     </button>
                   ) : (
@@ -2456,7 +3727,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       disabled={!isReadyToCheck}
                       className={`flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer ${
                         isReadyToCheck
-                          ? 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-[0.99]'
+                          ? isPolishSession
+                            ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-[0_0_20px_rgba(244,63,94,0.35)] active:scale-[0.99]'
+                            : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-[0.99]'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
@@ -2470,7 +3743,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <Info className="w-3.5 h-3.5" />
                   <span>
                     {isOpenTask 
-                      ? 'Naciśnij Enter aby sprawdzić dowód z Tutorem AI' 
+                      ? (isPolishSession ? 'Naciśnij Enter aby sprawdzić odpowiedź z Tutorem AI' : 'Naciśnij Enter aby sprawdzić dowód z Tutorem AI') 
                       : isNumericTask 
                         ? 'Wpisz liczbę i naciśnij Enter' 
                         : isTrueFalseTask
@@ -2511,14 +3784,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     )}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className={`font-bold text-sm sm:text-base leading-snug whitespace-normal ${
-                      isCorrect ? 'text-emerald-300' : 'text-rose-300'
-                    }`}>
-                      {isCorrect ? 'Świetnie! Poprawna odpowiedź' : 'Niepoprawna odpowiedź'}
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <div className={`font-bold text-sm sm:text-base leading-snug whitespace-normal ${
+                        isCorrect ? 'text-emerald-300' : 'text-rose-300'
+                      }`}>
+                        {isCorrect ? 'Świetnie! Poprawna odpowiedź' : 'Niepoprawna odpowiedź'}
+                      </div>
                     </div>
                     {!isCorrect && (
                       <div className="text-[11px] sm:text-xs text-slate-300 mt-0.5">
-                        Prawidłowa: <span className="font-bold text-white font-mono bg-white/10 px-1.5 py-0.5 rounded">{correctAnswerLabel}</span>
+                        Prawidłowa: <span className="font-bold text-white font-mono bg-white/10 px-1.5 py-0.5 rounded inline-flex items-center"><MathRenderer content={correctAnswerLabel} /></span>
                       </div>
                     )}
                     {/* View Explanation Trigger */}
@@ -2628,8 +3903,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {/* Poprawna odpowiedź */}
                 <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-slate-400 font-medium">Poprawna odpowiedź:</span>
-                  <span className="font-mono font-bold text-emerald-400 text-sm sm:text-base">
-                    {correctAnswerLabel}
+                  <span className="font-mono font-bold text-emerald-400 text-sm sm:text-base inline-flex items-center">
+                    <MathRenderer content={correctAnswerLabel} />
                   </span>
                 </div>
               </div>
@@ -2673,7 +3948,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       ? 'bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800]' 
                       : 'bg-amber-500/10 border border-amber-500/30 text-amber-400'
                   }`}>
-                    {isAiHintTask ? <Sparkles size={18} /> : <Lightbulb size={18} />}
+                    <Lightbulb size={18} />
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-base">
@@ -2705,7 +3980,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 ) : isAiHintTask ? (
                   <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-amber-950/20 border border-[#FFB800]/30 shadow-lg space-y-3">
                     <div className="flex items-center gap-2 text-[#FFB800] text-xs font-bold uppercase tracking-wider">
-                      <Sparkles className="w-4 h-4 text-[#FFB800] shrink-0" />
+                      <Lightbulb className="w-4 h-4 text-[#FFB800] shrink-0" />
                       <span>Tok myślenia & Wskazówka</span>
                     </div>
                     <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
@@ -2791,64 +4066,106 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       <AnimatePresence>
         {showFormulaSheet && (
           <div 
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm p-0 sm:p-4"
+            id="session-formula-sheet-backdrop"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-md p-0 sm:p-4"
             onClick={(e) => {
               if (e.target === e.currentTarget) setShowFormulaSheet(false);
             }}
           >
             <motion.div
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 280 }}
-              className="bg-slate-900 border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-3xl w-full max-w-xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden"
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '100%', opacity: 0 }}
+              transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+              className="bg-[#0B0F17] border border-white/10 rounded-t-[28px] sm:rounded-3xl w-full max-w-xl max-h-[90vh] sm:max-h-[85vh] flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden"
             >
+              {/* Mobile Swipe / Drag indicator handle */}
+              <div className="w-full flex justify-center pt-2.5 pb-1 sm:hidden">
+                <div className="w-10 h-1 bg-slate-700/80 rounded-full" />
+              </div>
+
               {/* Drawer Header */}
-              <div className="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
-                <div className="flex items-center gap-2.5">
-                  <BookOpen className="w-5 h-5 text-[#FFB800]" />
+              <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#111724]/80 shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,184,0,0.2)]">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
                   <div>
-                    <h3 className="font-bold text-white text-base">Karta Wzorów Maturalnych</h3>
-                    <p className="text-xs text-slate-400">{formulaSheet?.title || lessonTitle}</p>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-bold text-white text-base sm:text-lg tracking-tight">
+                        {formulaSheet?.isLeksykon ? 'Leksykon Pojęć & Złote Zasady' : 'Karta Wzorów'}
+                      </h3>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/25">
+                        Formuła 2023
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                      {sanitizeLessonHeading(formulaSheet?.title || lessonTitle)}
+                    </p>
                   </div>
                 </div>
                 <button
                   id="session-formulas-close-button"
                   onClick={() => setShowFormulaSheet(false)}
-                  className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer shrink-0"
+                  aria-label="Zamknij"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
               {/* Drawer Content */}
-              <div className="p-5 overflow-y-auto space-y-4">
+              <div className="p-4 sm:p-6 overflow-y-auto space-y-4 custom-scrollbar flex-1 pb-16 sm:pb-8">
                 {/* Core Formula from Theory Pill */}
                 {theoryPill?.coreFormulaLatex && (
-                  <div className="bg-[#FFB800]/10 border border-[#FFB800]/40 rounded-xl p-4 text-center">
-                    <span className="text-xs font-bold text-[#FFB800] uppercase tracking-wider block mb-2">
-                      Główny Wzór Lekcji (Pigułka Wiedzy)
-                    </span>
-                    <div className="w-full max-w-full overflow-x-auto py-1 px-2 text-center">
+                  <div className="formula-sheet-card bg-gradient-to-br from-[#FFB800]/15 via-[#FFB800]/5 to-transparent border border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 shadow-[0_0_20px_rgba(255,184,0,0.08)]">
+                    <div className="flex items-center gap-1.5 mb-2.5">
+                      <Target className="w-4 h-4 text-[#FFB800]" />
+                      <span className="text-xs font-bold text-[#FFB800] uppercase tracking-wider">
+                        Główny Wzór Lekcji (Pigułka Wiedzy)
+                      </span>
+                    </div>
+                    <div className="bg-[#080C14] border border-[#FFB800]/20 rounded-xl p-3 sm:p-4 overflow-x-auto custom-scrollbar touch-pan-x">
                       <MathRenderer content={theoryPill.coreFormulaLatex} displayMode={true} />
                     </div>
                   </div>
                 )}
 
-                {/* Additional Formulas List if provided */}
+                {/* Additional Formulas / Leksykon List */}
                 {formulaSheet?.formulas && formulaSheet.formulas.length > 0 && (
-                  <div className="space-y-2.5">
-                    <span className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
-                      Tablice i Tożsamości Maturalne
-                    </span>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between pt-1">
+                      <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]"></span>
+                        {formulaSheet?.isLeksykon ? 'Pojęcia Kluczowe i Definicje' : 'Tablice i Tożsamości Maturalne'}
+                      </span>
+                      <span className="text-[11px] font-medium text-slate-500">
+                        {formulaSheet?.isLeksykon
+                          ? `${formulaSheet.formulas.length} ${formulaSheet.formulas.length === 1 ? 'pojęcie' : formulaSheet.formulas.length < 5 ? 'pojęcia' : 'pojęć'}`
+                          : `${formulaSheet.formulas.length} ${formulaSheet.formulas.length === 1 ? 'wzór' : formulaSheet.formulas.length < 5 ? 'wzory' : 'wzorów'}`}
+                      </span>
+                    </div>
+
                     {formulaSheet.formulas.map((f, i) => (
                       <div 
                         key={i} 
-                        className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 flex flex-col gap-1"
+                        className="formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-[#FFB800]/30 rounded-2xl p-4 transition-all duration-200 flex flex-col gap-2.5 shadow-sm"
                       >
-                        <span className="text-xs text-slate-400 font-medium">{f.title}</span>
-                        <div className="w-full max-w-full overflow-x-auto py-1 px-2 text-center">
-                          <MathRenderer content={f.latex} displayMode={true} />
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className="w-5 h-5 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono font-bold text-slate-400 flex items-center justify-center">
+                              {String(i + 1).padStart(2, '0')}
+                            </span>
+                            <span className="text-xs sm:text-sm font-semibold text-slate-200">
+                              {f.title}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-medium text-[#FFB800]/80 bg-[#FFB800]/10 border border-[#FFB800]/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            {formulaSheet?.isLeksykon ? 'Leksykon' : 'Wzór maturalny'}
+                          </span>
+                        </div>
+                        <div className="bg-[#080C14] border border-white/5 rounded-xl p-3 sm:p-3.5 overflow-x-auto custom-scrollbar touch-pan-x">
+                          <MathRenderer content={f.latex} displayMode={!formulaSheet?.isLeksykon} />
                         </div>
                       </div>
                     ))}
@@ -2857,36 +4174,53 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                 {/* Golden Rule */}
                 {(theoryPill?.keyTakeaway || formulaSheet?.goldenRule) && (
-                  <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 text-xs sm:text-sm text-emerald-200/90 leading-relaxed">
-                    <span className="font-bold text-emerald-300 block mb-1">Złota Strategia Maturalna:</span>
-                    <MathRenderer content={theoryPill?.keyTakeaway || formulaSheet?.goldenRule} />
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-emerald-950/25 to-[#071612]/60 border border-emerald-500/25 shadow-lg shadow-emerald-950/20 space-y-2">
+                    <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-1">
+                      <Compass className="w-4 h-4" />
+                      <span>{formulaSheet?.isLeksykon ? 'Złota Zasada Egzaminatora' : 'Złota Strategia Maturalna'}</span>
+                    </div>
+                    <div className="text-emerald-100/90 text-xs sm:text-sm leading-relaxed pl-0.5">
+                      <MathRenderer content={theoryPill?.keyTakeaway || formulaSheet?.goldenRule} />
+                    </div>
                   </div>
                 )}
 
                 {/* Exam Trap */}
                 {(theoryPill?.trapAlert || formulaSheet?.ckeTrap) && (
-                  <div className="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-2">
-                    <div className="flex items-center gap-1.5 text-amber-400 font-bold text-xs">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-950/20 to-[#181108]/60 border border-amber-500/25 shadow-lg shadow-amber-950/20 space-y-3">
+                    <div className="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
                       <AlertTriangle className="w-4 h-4" />
                       <span>Uwaga na Pułapkę Egzaminacyjną!</span>
                     </div>
                     {theoryPill?.trapAlert ? (
-                      <div className="text-slate-300 leading-relaxed text-xs">
+                      <div className="text-slate-300 leading-relaxed text-xs sm:text-sm">
                         <MathRenderer content={theoryPill.trapAlert} />
                       </div>
                     ) : formulaSheet?.ckeTrap ? (
-                      <div className="space-y-1 text-xs">
-                        <div className="text-rose-300">
-                          <span className="font-semibold">Błąd Typowy: </span>
-                          <MathRenderer content={`$${formulaSheet.ckeTrap.error}$`} />
+                      <div className="space-y-2.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                          <div className="bg-rose-950/30 border border-rose-500/30 rounded-xl p-3">
+                            <span className="font-bold text-rose-400 text-[11px] uppercase tracking-wider block mb-1">
+                              ❌ Błąd Typowy
+                            </span>
+                            <div className="text-rose-200 overflow-x-auto custom-scrollbar py-0.5">
+                              <MathRenderer content={formulaSheet.ckeTrap.error} displayMode={true} />
+                            </div>
+                          </div>
+                          <div className="bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-3">
+                            <span className="font-bold text-emerald-400 text-[11px] uppercase tracking-wider block mb-1">
+                              ✓ Poprawnie
+                            </span>
+                            <div className="text-emerald-200 overflow-x-auto custom-scrollbar py-0.5">
+                              <MathRenderer content={formulaSheet.ckeTrap.correct} displayMode={true} />
+                            </div>
+                          </div>
                         </div>
-                        <div className="text-emerald-300">
-                          <span className="font-semibold">Poprawnie: </span>
-                          <MathRenderer content={`$${formulaSheet.ckeTrap.correct}$`} />
-                        </div>
-                        <div className="text-slate-300 mt-1 leading-relaxed text-[11px]">
-                          <MathRenderer content={formulaSheet.ckeTrap.description} />
-                        </div>
+                        {formulaSheet.ckeTrap.description && (
+                          <div className="text-slate-300 text-xs sm:text-xs leading-relaxed bg-black/40 border border-white/5 rounded-xl p-3">
+                            <MathRenderer content={formulaSheet.ckeTrap.description} />
+                          </div>
+                        )}
                       </div>
                     ) : null}
                   </div>
@@ -2894,18 +4228,68 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </div>
 
               {/* Drawer Footer */}
-              <div className="p-4 border-t border-slate-800 bg-slate-950/40 flex justify-end">
+              <div className="p-4 sm:p-5 border-t border-white/10 bg-[#0B0F17]/95 backdrop-blur-md flex items-center justify-between shrink-0">
+                <span className="text-xs text-slate-500 hidden sm:inline">
+                  Naciśnij Esc lub kliknij w tło, aby zamknąć
+                </span>
                 <button
+                  id="session-formulas-close-drawer-button"
                   onClick={() => setShowFormulaSheet(false)}
-                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-semibold text-sm bg-slate-800 hover:bg-slate-700 text-white transition"
+                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-[#FF8800] to-[#FFB800] hover:from-[#FFA000] hover:to-[#FFC833] text-slate-950 shadow-[0_0_20px_rgba(255,184,0,0.25)] hover:shadow-[0_0_25px_rgba(255,184,0,0.4)] active:scale-98 transition cursor-pointer"
                 >
-                  Zamknij kartę wzorów
+                  Wróć do rozwiązywania zadania
                 </button>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+
+      {/* ================= HEARTS & SPONSOR MODALS ================= */}
+      <OutOfHeartsModal
+        isOpen={showOutOfHeartsModal}
+        onClose={() => setShowOutOfHeartsModal(false)}
+        onRefillWithCoins={handleRefillHeartsWithCoins}
+        onOpenParentSponsor={() => {
+          setShowOutOfHeartsModal(false);
+          if (onOpenParentSponsor) {
+            onOpenParentSponsor();
+          } else {
+            setShowParentSponsorModal(true);
+          }
+        }}
+        onOpenProPopup={() => {
+          setShowOutOfHeartsModal(false);
+          if (onOpenProPopup) {
+            onOpenProPopup();
+          } else {
+            setShowProPopup(true);
+          }
+        }}
+        coins={userState?.coins ?? currentCoins}
+        initialTimeToNextRegenMs={heartsData.timeToNextRegenMs}
+      />
+
+      <ParentSponsorModal
+        isOpen={showParentSponsorModal}
+        onClose={() => setShowParentSponsorModal(false)}
+        onActivatePro={handleActivatePro}
+        studentName="Twój maturzysta"
+      />
+
+      <ProPopup
+        isOpen={showProPopup}
+        onClose={() => setShowProPopup(false)}
+        onOpenParentSponsor={() => {
+          setShowProPopup(false);
+          if (onOpenParentSponsor) {
+            onOpenParentSponsor();
+          } else {
+            setShowParentSponsorModal(true);
+          }
+        }}
+        onActivatePro={handleActivatePro}
+      />
       </div>
     </div>
   );

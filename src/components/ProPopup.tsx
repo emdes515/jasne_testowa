@@ -1,28 +1,31 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Sparkles, Check, Crown } from 'lucide-react';
+import { X, Sparkles, Check, Crown, Heart, Users, ShieldCheck, Zap } from 'lucide-react';
+import { triggerHaptic } from '../utils';
 
 interface ProPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenParentSponsor?: () => void;
+  onActivatePro?: () => void;
 }
 
-export function ProPopup({ isOpen, onClose }: ProPopupProps) {
+export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }: ProPopupProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#050505]/80 backdrop-blur-sm overflow-y-auto">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#050505]/80 backdrop-blur-sm"
+            className="fixed inset-0"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-sm overflow-hidden rounded-[32px] p-[1px] bg-gradient-to-b from-amber-400/50 via-orange-500/20 to-[#13141A] shadow-2xl shadow-orange-500/20"
+            className="relative w-full max-w-sm overflow-hidden rounded-[32px] p-[1px] bg-gradient-to-b from-amber-400/50 via-orange-500/20 to-[#13141A] shadow-2xl shadow-orange-500/20 my-auto"
           >
             <div className="bg-[#0B0E14] rounded-[31px] p-6 relative overflow-hidden h-full">
               {/* Background effects */}
@@ -31,48 +34,78 @@ export function ProPopup({ isOpen, onClose }: ProPopupProps) {
               
               <button 
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-colors cursor-pointer"
               >
                 <X size={16} />
               </button>
 
-              <div className="flex flex-col items-center text-center relative z-10 pt-4">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 p-[1px] mb-6 shadow-lg shadow-orange-500/20">
+              <div className="flex flex-col items-center text-center relative z-10 pt-2">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 p-[1px] mb-4 shadow-lg shadow-orange-500/20">
                   <div className="w-full h-full bg-[#0B0E14] rounded-2xl flex items-center justify-center">
                     <Crown size={32} className="text-amber-400" />
                   </div>
                 </div>
                 
-                <h2 className="text-2xl font-display font-bold text-white mb-2">Odblokuj pełen potencjał</h2>
-                <p className="text-[#8B8D98] text-[14px] leading-relaxed mb-6">
-                  Uzyskaj dostęp do wszystkich przedmiotów, nielimitowanych powtórek i zaawansowanych statystyk.
+                <h2 className="text-2xl font-display font-black text-white mb-1.5">
+                  Pakiet JASNE. PRO
+                </h2>
+                <p className="text-[#8B8D98] text-[13px] leading-relaxed mb-5">
+                  Gwarancja zdanej matury bez limitów i bez stresu.
                 </p>
 
-                <div className="w-full space-y-3 mb-8">
+                <div className="w-full space-y-2.5 mb-6 text-left">
                   {[
-                    'Dostęp do wszystkich przedmiotów',
-                    'Inteligentne powtórki (Spaced Repetition)',
-                    'Brak reklam i limitów',
-                    'Priorytetowe wsparcie lektorów'
-                  ].map((feature, i) => (
-                    <div key={i} className="flex items-center gap-3 text-left">
-                      <div className="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
-                        <Check size={12} className="text-amber-400" />
+                    { title: 'Nielimitowane serca', desc: 'Ucz się bez przerw i bez kar za błędy', icon: Heart, color: 'text-rose-400' },
+                    { title: 'AI Egzaminator Maturalny', desc: 'Nielimitowane sprawdzanie odręcznych dowodów CKE', icon: Sparkles, color: 'text-amber-400' },
+                    { title: 'Wszystkie 225 lekcji & Arkusze', desc: 'Pełna baza zadań Nowej Formuły 2023/2025', icon: Check, color: 'text-emerald-400' },
+                    { title: 'Płatność jednorazowa BLIK', desc: '39 zł raz na zawsze, bez subskrypcji', icon: ShieldCheck, color: 'text-blue-400' }
+                  ].map((feat, i) => {
+                    const Icon = feat.icon;
+                    return (
+                      <div key={i} className="flex items-start gap-3 bg-white/[0.03] border border-white/5 rounded-xl p-2.5">
+                        <div className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon size={14} className={feat.color} />
+                        </div>
+                        <div>
+                          <div className="text-[13px] font-bold text-white">{feat.title}</div>
+                          <div className="text-[11px] text-slate-400">{feat.desc}</div>
+                        </div>
                       </div>
-                      <span className="text-[13px] text-white/90">{feature}</span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
+
+                {/* Primary Button: Poproś rodzica o PRO */}
+                {onOpenParentSponsor && (
+                  <button 
+                    onClick={() => {
+                      triggerHaptic('medium');
+                      onClose();
+                      onOpenParentSponsor();
+                    }}
+                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 hover:brightness-110 text-slate-950 font-black text-[14px] transition-all shadow-lg shadow-orange-500/25 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 mb-2.5"
+                  >
+                    <Users size={17} className="fill-slate-950" />
+                    <span>Poproś rodzica o PRO (BLIK)</span>
+                  </button>
+                )}
+
+                {/* Secondary Button: Aktywuj PRO bezpośrednio */}
+                <button 
+                  onClick={() => {
+                    triggerHaptic('success');
+                    if (onActivatePro) onActivatePro();
+                    onClose();
+                  }}
+                  className="w-full bg-white/10 hover:bg-white/15 text-white font-bold py-3 rounded-xl text-[13px] transition-all border border-white/10 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <Zap size={15} className="text-amber-400" />
+                  <span>Kupuję sam za 39 zł</span>
+                </button>
 
                 <button 
                   onClick={onClose}
-                  className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold py-4 rounded-xl text-[15px] transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  Przejdź na PRO
-                </button>
-                <button 
-                  onClick={onClose}
-                  className="mt-4 text-[#8B8D98] hover:text-white text-[13px] font-bold transition-colors"
+                  className="mt-3 text-[#8B8D98] hover:text-white text-[12px] font-medium transition-colors cursor-pointer"
                 >
                   Może później
                 </button>

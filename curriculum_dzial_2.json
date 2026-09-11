@@ -135,7 +135,55 @@
             "hint_cost": 20,
             "id": "task-2-1-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.1",
+          "title": "Jednomiany i sumy algebraiczne: Redukcja wyrazów podobnych",
+          "formulas": [
+            {
+              "title": "Redukcja wyrazów podobnych",
+              "latex": "ax^n + bx^n = (a + b)x^n"
+            },
+            {
+              "title": "Mnożenie sum algebraicznych",
+              "latex": "(a + b)(c + d) = ac + ad + bc + bd"
+            },
+            {
+              "title": "Znak minus przed nawiasem",
+              "latex": "-(a - b + c) = -a + b - c"
+            }
+          ],
+          "goldenRule": "Minus przed nawiasem zmienia znaki WSZYSTKICH składników wewnątrz nawiasu.",
+          "ckeTrap": {
+            "error": "-(2x - 5) = -2x - 5",
+            "correct": "-(2x - 5) = -2x + 5",
+            "description": "Pamiętaj o zmianie znaku drugiego wyrazu: $-(-5) = +5$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.1",
+          "title": "Jednomiany i sumy algebraiczne: Redukcja wyrazów podobnych",
+          "formulas": [
+            {
+              "title": "Redukcja wyrazów podobnych",
+              "latex": "ax^n + bx^n = (a + b)x^n"
+            },
+            {
+              "title": "Mnożenie sum algebraicznych",
+              "latex": "(a + b)(c + d) = ac + ad + bc + bd"
+            },
+            {
+              "title": "Znak minus przed nawiasem",
+              "latex": "-(a - b + c) = -a + b - c"
+            }
+          ],
+          "goldenRule": "Minus przed nawiasem zmienia znaki WSZYSTKICH składników wewnątrz nawiasu.",
+          "ckeTrap": {
+            "error": "-(2x - 5) = -2x - 5",
+            "correct": "-(2x - 5) = -2x + 5",
+            "description": "Pamiętaj o zmianie znaku drugiego wyrazu: $-(-5) = +5$!"
+          }
+        }
       },
       {
         "id": "lesson-2-2",
@@ -268,7 +316,55 @@
             "hint_cost": 20,
             "id": "task-2-2-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.2",
+          "title": "Mnożenie sum algebraicznych: Zasadnicze reguły i znaki",
+          "formulas": [
+            {
+              "title": "Redukcja wyrazów podobnych",
+              "latex": "ax^n + bx^n = (a + b)x^n"
+            },
+            {
+              "title": "Mnożenie sum algebraicznych",
+              "latex": "(a + b)(c + d) = ac + ad + bc + bd"
+            },
+            {
+              "title": "Znak minus przed nawiasem",
+              "latex": "-(a - b + c) = -a + b - c"
+            }
+          ],
+          "goldenRule": "Minus przed nawiasem zmienia znaki WSZYSTKICH składników wewnątrz nawiasu.",
+          "ckeTrap": {
+            "error": "-(2x - 5) = -2x - 5",
+            "correct": "-(2x - 5) = -2x + 5",
+            "description": "Pamiętaj o zmianie znaku drugiego wyrazu: $-(-5) = +5$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.2",
+          "title": "Mnożenie sum algebraicznych: Zasadnicze reguły i znaki",
+          "formulas": [
+            {
+              "title": "Redukcja wyrazów podobnych",
+              "latex": "ax^n + bx^n = (a + b)x^n"
+            },
+            {
+              "title": "Mnożenie sum algebraicznych",
+              "latex": "(a + b)(c + d) = ac + ad + bc + bd"
+            },
+            {
+              "title": "Znak minus przed nawiasem",
+              "latex": "-(a - b + c) = -a + b - c"
+            }
+          ],
+          "goldenRule": "Minus przed nawiasem zmienia znaki WSZYSTKICH składników wewnątrz nawiasu.",
+          "ckeTrap": {
+            "error": "-(2x - 5) = -2x - 5",
+            "correct": "-(2x - 5) = -2x + 5",
+            "description": "Pamiętaj o zmianie znaku drugiego wyrazu: $-(-5) = +5$!"
+          }
+        }
       },
       {
         "id": "lesson-2-3",
@@ -401,7 +497,55 @@
             "hint_cost": 20,
             "id": "task-2-3-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.3",
+          "title": "Dzielenie wielomianu przez dwumian (x - a): Schemat Hornera",
+          "formulas": [
+            {
+              "title": "Redukcja wyrazów podobnych",
+              "latex": "ax^n + bx^n = (a + b)x^n"
+            },
+            {
+              "title": "Mnożenie sum algebraicznych",
+              "latex": "(a + b)(c + d) = ac + ad + bc + bd"
+            },
+            {
+              "title": "Znak minus przed nawiasem",
+              "latex": "-(a - b + c) = -a + b - c"
+            }
+          ],
+          "goldenRule": "Minus przed nawiasem zmienia znaki WSZYSTKICH składników wewnątrz nawiasu.",
+          "ckeTrap": {
+            "error": "-(2x - 5) = -2x - 5",
+            "correct": "-(2x - 5) = -2x + 5",
+            "description": "Pamiętaj o zmianie znaku drugiego wyrazu: $-(-5) = +5$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.3",
+          "title": "Dzielenie wielomianu przez dwumian (x - a): Schemat Hornera",
+          "formulas": [
+            {
+              "title": "Redukcja wyrazów podobnych",
+              "latex": "ax^n + bx^n = (a + b)x^n"
+            },
+            {
+              "title": "Mnożenie sum algebraicznych",
+              "latex": "(a + b)(c + d) = ac + ad + bc + bd"
+            },
+            {
+              "title": "Znak minus przed nawiasem",
+              "latex": "-(a - b + c) = -a + b - c"
+            }
+          ],
+          "goldenRule": "Minus przed nawiasem zmienia znaki WSZYSTKICH składników wewnątrz nawiasu.",
+          "ckeTrap": {
+            "error": "-(2x - 5) = -2x - 5",
+            "correct": "-(2x - 5) = -2x + 5",
+            "description": "Pamiętaj o zmianie znaku drugiego wyrazu: $-(-5) = +5$!"
+          }
+        }
       },
       {
         "id": "lesson-2-4",
@@ -534,7 +678,47 @@
             "hint_cost": 20,
             "id": "task-2-4-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.4",
+          "title": "Wzory skróconego mnożenia: Różnica kwadratów",
+          "formulas": [
+            {
+              "title": "Kwadrat sumy",
+              "latex": "(a + b)^2 = a^2 + 2ab + b^2"
+            },
+            {
+              "title": "Kwadrat różnicy",
+              "latex": "(a - b)^2 = a^2 - 2ab + b^2"
+            }
+          ],
+          "goldenRule": "Nigdy nie zapominaj o podwojonym iloczynie $2ab$ w środku wzoru!",
+          "ckeTrap": {
+            "error": "(a + b)^2 = a^2 + b^2",
+            "correct": "(a + b)^2 = a^2 + 2ab + b^2",
+            "description": "Zawsze występuje podwojony iloczyn $2ab$."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.4",
+          "title": "Wzory skróconego mnożenia: Różnica kwadratów",
+          "formulas": [
+            {
+              "title": "Kwadrat sumy",
+              "latex": "(a + b)^2 = a^2 + 2ab + b^2"
+            },
+            {
+              "title": "Kwadrat różnicy",
+              "latex": "(a - b)^2 = a^2 - 2ab + b^2"
+            }
+          ],
+          "goldenRule": "Nigdy nie zapominaj o podwojonym iloczynie $2ab$ w środku wzoru!",
+          "ckeTrap": {
+            "error": "(a + b)^2 = a^2 + b^2",
+            "correct": "(a + b)^2 = a^2 + 2ab + b^2",
+            "description": "Zawsze występuje podwojony iloczyn $2ab$."
+          }
+        }
       },
       {
         "id": "lesson-2-5",
@@ -667,7 +851,39 @@
             "hint_cost": 20,
             "id": "task-2-5-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.5",
+          "title": "Wzory skróconego mnożenia: Sześciany i wzory trzeciego stopnia",
+          "formulas": [
+            {
+              "title": "Różnica kwadratów",
+              "latex": "a^2 - b^2 = (a - b)(a + b)"
+            }
+          ],
+          "goldenRule": "Różnica kwadratów pozwala błyskawicznie rozłożyć wyrażenie na iloczyn i skrócić ułamki algebraiczne.",
+          "ckeTrap": {
+            "error": "a^2 + b^2 = (a + b)^2",
+            "correct": "(a + b)^2 = a^2 + 2ab + b^2 \\neq a^2 + b^2",
+            "description": "Suma kwadratów $a^2 + b^2$ nie rozkłada się w liczbach rzeczywistych!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.5",
+          "title": "Wzory skróconego mnożenia: Sześciany i wzory trzeciego stopnia",
+          "formulas": [
+            {
+              "title": "Różnica kwadratów",
+              "latex": "a^2 - b^2 = (a - b)(a + b)"
+            }
+          ],
+          "goldenRule": "Różnica kwadratów pozwala błyskawicznie rozłożyć wyrażenie na iloczyn i skrócić ułamki algebraiczne.",
+          "ckeTrap": {
+            "error": "a^2 + b^2 = (a + b)^2",
+            "correct": "(a + b)^2 = a^2 + 2ab + b^2 \\neq a^2 + b^2",
+            "description": "Suma kwadratów $a^2 + b^2$ nie rozkłada się w liczbach rzeczywistych!"
+          }
+        }
       },
       {
         "id": "lesson-2-6",
@@ -800,7 +1016,63 @@
             "hint_cost": 20,
             "id": "task-2-6-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.6",
+          "title": "Wyłączanie wspólnego czynnika: Liczby i jednomiany",
+          "formulas": [
+            {
+              "title": "Sześcian sumy",
+              "latex": "(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
+            },
+            {
+              "title": "Sześcian różnicy",
+              "latex": "(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3"
+            },
+            {
+              "title": "Suma sześcianów",
+              "latex": "a^3 + b^3 = (a + b)(a^2 - ab + b^2)"
+            },
+            {
+              "title": "Różnica sześcianów",
+              "latex": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)"
+            }
+          ],
+          "goldenRule": "Zwróć uwagę na znak przy $ab$ w drugim nawiasie: dla $a^3 - b^3$ jest $(a^2 + ab + b^2)$ (z plusem!).",
+          "ckeTrap": {
+            "error": "a^3 - b^3 = (a - b)(a^2 - 2ab + b^2)",
+            "correct": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)",
+            "description": "W drugim nawiasie jest pojedynczy iloczyn ze zmienionym znakiem, a nie podwojony iloczyn!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.6",
+          "title": "Wyłączanie wspólnego czynnika: Liczby i jednomiany",
+          "formulas": [
+            {
+              "title": "Sześcian sumy",
+              "latex": "(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
+            },
+            {
+              "title": "Sześcian różnicy",
+              "latex": "(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3"
+            },
+            {
+              "title": "Suma sześcianów",
+              "latex": "a^3 + b^3 = (a + b)(a^2 - ab + b^2)"
+            },
+            {
+              "title": "Różnica sześcianów",
+              "latex": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)"
+            }
+          ],
+          "goldenRule": "Zwróć uwagę na znak przy $ab$ w drugim nawiasie: dla $a^3 - b^3$ jest $(a^2 + ab + b^2)$ (z plusem!).",
+          "ckeTrap": {
+            "error": "a^3 - b^3 = (a - b)(a^2 - 2ab + b^2)",
+            "correct": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)",
+            "description": "W drugim nawiasie jest pojedynczy iloczyn ze zmienionym znakiem, a nie podwojony iloczyn!"
+          }
+        }
       },
       {
         "id": "lesson-2-7",
@@ -933,7 +1205,63 @@
             "hint_cost": 20,
             "id": "task-2-7-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.7",
+          "title": "Wyłączanie wspólnego czynnika: Wyrażenia nawiasowe",
+          "formulas": [
+            {
+              "title": "Sześcian sumy",
+              "latex": "(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
+            },
+            {
+              "title": "Sześcian różnicy",
+              "latex": "(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3"
+            },
+            {
+              "title": "Suma sześcianów",
+              "latex": "a^3 + b^3 = (a + b)(a^2 - ab + b^2)"
+            },
+            {
+              "title": "Różnica sześcianów",
+              "latex": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)"
+            }
+          ],
+          "goldenRule": "Zwróć uwagę na znak przy $ab$ w drugim nawiasie: dla $a^3 - b^3$ jest $(a^2 + ab + b^2)$ (z plusem!).",
+          "ckeTrap": {
+            "error": "a^3 - b^3 = (a - b)(a^2 - 2ab + b^2)",
+            "correct": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)",
+            "description": "W drugim nawiasie jest pojedynczy iloczyn ze zmienionym znakiem, a nie podwojony iloczyn!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.7",
+          "title": "Wyłączanie wspólnego czynnika: Wyrażenia nawiasowe",
+          "formulas": [
+            {
+              "title": "Sześcian sumy",
+              "latex": "(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
+            },
+            {
+              "title": "Sześcian różnicy",
+              "latex": "(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3"
+            },
+            {
+              "title": "Suma sześcianów",
+              "latex": "a^3 + b^3 = (a + b)(a^2 - ab + b^2)"
+            },
+            {
+              "title": "Różnica sześcianów",
+              "latex": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)"
+            }
+          ],
+          "goldenRule": "Zwróć uwagę na znak przy $ab$ w drugim nawiasie: dla $a^3 - b^3$ jest $(a^2 + ab + b^2)$ (z plusem!).",
+          "ckeTrap": {
+            "error": "a^3 - b^3 = (a - b)(a^2 - 2ab + b^2)",
+            "correct": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)",
+            "description": "W drugim nawiasie jest pojedynczy iloczyn ze zmienionym znakiem, a nie podwojony iloczyn!"
+          }
+        }
       },
       {
         "id": "lesson-2-8",
@@ -1066,7 +1394,47 @@
             "hint_cost": 20,
             "id": "task-2-8-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.8",
+          "title": "Rozkładanie wielomianów na czynniki: Metoda grupowania wyrazów",
+          "formulas": [
+            {
+              "title": "Wyłączanie wspólnego czynnika",
+              "latex": "ab + ac = a(b + c)"
+            },
+            {
+              "title": "Grupowanie wyrazów",
+              "latex": "ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)"
+            }
+          ],
+          "goldenRule": "Grupuj wyrazy parami (z pierwszych dwóch wyciągnij wspólny czynnik, z kolejnych dwóch drugi) tak, aby w nawiasach powstał IDENTYCZNY dwumian.",
+          "ckeTrap": {
+            "error": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - (x + 2)",
+            "correct": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - 1(x - 2) = (x^2 - 1)(x - 2)",
+            "description": "Wyciągając minus przed nawias zmieniamy znak $+2$ na $-2$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.8",
+          "title": "Rozkładanie wielomianów na czynniki: Metoda grupowania wyrazów",
+          "formulas": [
+            {
+              "title": "Wyłączanie wspólnego czynnika",
+              "latex": "ab + ac = a(b + c)"
+            },
+            {
+              "title": "Grupowanie wyrazów",
+              "latex": "ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)"
+            }
+          ],
+          "goldenRule": "Grupuj wyrazy parami (z pierwszych dwóch wyciągnij wspólny czynnik, z kolejnych dwóch drugi) tak, aby w nawiasach powstał IDENTYCZNY dwumian.",
+          "ckeTrap": {
+            "error": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - (x + 2)",
+            "correct": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - 1(x - 2) = (x^2 - 1)(x - 2)",
+            "description": "Wyciągając minus przed nawias zmieniamy znak $+2$ na $-2$!"
+          }
+        }
       },
       {
         "id": "lesson-2-9",
@@ -1199,7 +1567,47 @@
             "hint_cost": 20,
             "id": "task-2-9-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.9",
+          "title": "Wielomiany: Stopień, współczynniki i wyraz wolny",
+          "formulas": [
+            {
+              "title": "Wyłączanie wspólnego czynnika",
+              "latex": "ab + ac = a(b + c)"
+            },
+            {
+              "title": "Grupowanie wyrazów",
+              "latex": "ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)"
+            }
+          ],
+          "goldenRule": "Grupuj wyrazy parami (z pierwszych dwóch wyciągnij wspólny czynnik, z kolejnych dwóch drugi) tak, aby w nawiasach powstał IDENTYCZNY dwumian.",
+          "ckeTrap": {
+            "error": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - (x + 2)",
+            "correct": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - 1(x - 2) = (x^2 - 1)(x - 2)",
+            "description": "Wyciągając minus przed nawias zmieniamy znak $+2$ na $-2$!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.9",
+          "title": "Wielomiany: Stopień, współczynniki i wyraz wolny",
+          "formulas": [
+            {
+              "title": "Wyłączanie wspólnego czynnika",
+              "latex": "ab + ac = a(b + c)"
+            },
+            {
+              "title": "Grupowanie wyrazów",
+              "latex": "ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)"
+            }
+          ],
+          "goldenRule": "Grupuj wyrazy parami (z pierwszych dwóch wyciągnij wspólny czynnik, z kolejnych dwóch drugi) tak, aby w nawiasach powstał IDENTYCZNY dwumian.",
+          "ckeTrap": {
+            "error": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - (x + 2)",
+            "correct": "x^3 - 2x^2 - x + 2 = x^2(x - 2) - 1(x - 2) = (x^2 - 1)(x - 2)",
+            "description": "Wyciągając minus przed nawias zmieniamy znak $+2$ na $-2$!"
+          }
+        }
       },
       {
         "id": "lesson-2-10",
@@ -1332,7 +1740,47 @@
             "hint_cost": 20,
             "id": "task-2-10-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.10",
+          "title": "Wielomiany: Dodawanie i odejmowanie wielomianów",
+          "formulas": [
+            {
+              "title": "Wzór ogólny wielomianu",
+              "latex": "W(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0"
+            },
+            {
+              "title": "Stopień iloczynu wielomianów",
+              "latex": "\\operatorname{st}(W \\cdot P) = \\operatorname{st}(W) + \\operatorname{st}(P)"
+            }
+          ],
+          "goldenRule": "Stopień wielomianu to najwyższa potęga zmiennej $x$ przy niezerowym współczynniku.",
+          "ckeTrap": {
+            "error": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 6",
+            "correct": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 2 + 3 = 5",
+            "description": "Przy mnożeniu wielomianów ich stopnie się DODAJE, a nie mnoży!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.10",
+          "title": "Wielomiany: Dodawanie i odejmowanie wielomianów",
+          "formulas": [
+            {
+              "title": "Wzór ogólny wielomianu",
+              "latex": "W(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0"
+            },
+            {
+              "title": "Stopień iloczynu wielomianów",
+              "latex": "\\operatorname{st}(W \\cdot P) = \\operatorname{st}(W) + \\operatorname{st}(P)"
+            }
+          ],
+          "goldenRule": "Stopień wielomianu to najwyższa potęga zmiennej $x$ przy niezerowym współczynniku.",
+          "ckeTrap": {
+            "error": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 6",
+            "correct": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 2 + 3 = 5",
+            "description": "Przy mnożeniu wielomianów ich stopnie się DODAJE, a nie mnoży!"
+          }
+        }
       },
       {
         "id": "lesson-2-11",
@@ -1459,7 +1907,47 @@
             "hint_cost": 20,
             "id": "task-2-11-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.11",
+          "title": "Wielomiany: Mnożenie wielomianów i współczynniki potęg",
+          "formulas": [
+            {
+              "title": "Wzór ogólny wielomianu",
+              "latex": "W(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0"
+            },
+            {
+              "title": "Stopień iloczynu wielomianów",
+              "latex": "\\operatorname{st}(W \\cdot P) = \\operatorname{st}(W) + \\operatorname{st}(P)"
+            }
+          ],
+          "goldenRule": "Stopień wielomianu to najwyższa potęga zmiennej $x$ przy niezerowym współczynniku.",
+          "ckeTrap": {
+            "error": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 6",
+            "correct": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 2 + 3 = 5",
+            "description": "Przy mnożeniu wielomianów ich stopnie się DODAJE, a nie mnoży!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.11",
+          "title": "Wielomiany: Mnożenie wielomianów i współczynniki potęg",
+          "formulas": [
+            {
+              "title": "Wzór ogólny wielomianu",
+              "latex": "W(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0"
+            },
+            {
+              "title": "Stopień iloczynu wielomianów",
+              "latex": "\\operatorname{st}(W \\cdot P) = \\operatorname{st}(W) + \\operatorname{st}(P)"
+            }
+          ],
+          "goldenRule": "Stopień wielomianu to najwyższa potęga zmiennej $x$ przy niezerowym współczynniku.",
+          "ckeTrap": {
+            "error": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 6",
+            "correct": "\\operatorname{st}((x^2 + 1)(x^3 - 2)) = 2 + 3 = 5",
+            "description": "Przy mnożeniu wielomianów ich stopnie się DODAJE, a nie mnoży!"
+          }
+        }
       },
       {
         "id": "lesson-2-12",
@@ -1586,7 +2074,55 @@
             "hint_cost": 20,
             "id": "task-2-12-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.12",
+          "title": "Wielomiany: Równość wielomianów i wyznaczanie parametrów",
+          "formulas": [
+            {
+              "title": "Wyrażenie wymierne",
+              "latex": "W(x) = \\frac{P(x)}{Q(x)}, \\quad Q(x) \\neq 0"
+            },
+            {
+              "title": "Mnożenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} \\cdot \\frac{R(x)}{S(x)} = \\frac{P(x)R(x)}{Q(x)S(x)}"
+            },
+            {
+              "title": "Dzielenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} : \\frac{R(x)}{S(x)} = \\frac{P(x)S(x)}{Q(x)R(x)}"
+            }
+          ],
+          "goldenRule": "Zanim cokolwiek skrócisz w wyrażeniu wymiernym, ZAWSZE wyznacz dziedzinę: mianownik $Q(x) \\neq 0$!",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\in \\mathbb{R}",
+            "correct": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\neq 2",
+            "description": "Skracanie jest poprawne tylko dla $x$ należących do dziedziny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.12",
+          "title": "Wielomiany: Równość wielomianów i wyznaczanie parametrów",
+          "formulas": [
+            {
+              "title": "Wyrażenie wymierne",
+              "latex": "W(x) = \\frac{P(x)}{Q(x)}, \\quad Q(x) \\neq 0"
+            },
+            {
+              "title": "Mnożenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} \\cdot \\frac{R(x)}{S(x)} = \\frac{P(x)R(x)}{Q(x)S(x)}"
+            },
+            {
+              "title": "Dzielenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} : \\frac{R(x)}{S(x)} = \\frac{P(x)S(x)}{Q(x)R(x)}"
+            }
+          ],
+          "goldenRule": "Zanim cokolwiek skrócisz w wyrażeniu wymiernym, ZAWSZE wyznacz dziedzinę: mianownik $Q(x) \\neq 0$!",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\in \\mathbb{R}",
+            "correct": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\neq 2",
+            "description": "Skracanie jest poprawne tylko dla $x$ należących do dziedziny!"
+          }
+        }
       },
       {
         "id": "lesson-2-13",
@@ -1719,7 +2255,55 @@
             "hint_cost": 20,
             "id": "task-2-13-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.13",
+          "title": "Wyrażenia wymierne: Dziedzina i warunki istnienia ułamka",
+          "formulas": [
+            {
+              "title": "Wyrażenie wymierne",
+              "latex": "W(x) = \\frac{P(x)}{Q(x)}, \\quad Q(x) \\neq 0"
+            },
+            {
+              "title": "Mnożenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} \\cdot \\frac{R(x)}{S(x)} = \\frac{P(x)R(x)}{Q(x)S(x)}"
+            },
+            {
+              "title": "Dzielenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} : \\frac{R(x)}{S(x)} = \\frac{P(x)S(x)}{Q(x)R(x)}"
+            }
+          ],
+          "goldenRule": "Zanim cokolwiek skrócisz w wyrażeniu wymiernym, ZAWSZE wyznacz dziedzinę: mianownik $Q(x) \\neq 0$!",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\in \\mathbb{R}",
+            "correct": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\neq 2",
+            "description": "Skracanie jest poprawne tylko dla $x$ należących do dziedziny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.13",
+          "title": "Wyrażenia wymierne: Dziedzina i warunki istnienia ułamka",
+          "formulas": [
+            {
+              "title": "Wyrażenie wymierne",
+              "latex": "W(x) = \\frac{P(x)}{Q(x)}, \\quad Q(x) \\neq 0"
+            },
+            {
+              "title": "Mnożenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} \\cdot \\frac{R(x)}{S(x)} = \\frac{P(x)R(x)}{Q(x)S(x)}"
+            },
+            {
+              "title": "Dzielenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} : \\frac{R(x)}{S(x)} = \\frac{P(x)S(x)}{Q(x)R(x)}"
+            }
+          ],
+          "goldenRule": "Zanim cokolwiek skrócisz w wyrażeniu wymiernym, ZAWSZE wyznacz dziedzinę: mianownik $Q(x) \\neq 0$!",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\in \\mathbb{R}",
+            "correct": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\neq 2",
+            "description": "Skracanie jest poprawne tylko dla $x$ należących do dziedziny!"
+          }
+        }
       },
       {
         "id": "lesson-2-14",
@@ -1852,7 +2436,55 @@
             "hint_cost": 20,
             "id": "task-2-14-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.14",
+          "title": "Wyrażenia wymierne: Skracanie ułamków algebraicznych",
+          "formulas": [
+            {
+              "title": "Wyrażenie wymierne",
+              "latex": "W(x) = \\frac{P(x)}{Q(x)}, \\quad Q(x) \\neq 0"
+            },
+            {
+              "title": "Mnożenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} \\cdot \\frac{R(x)}{S(x)} = \\frac{P(x)R(x)}{Q(x)S(x)}"
+            },
+            {
+              "title": "Dzielenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} : \\frac{R(x)}{S(x)} = \\frac{P(x)S(x)}{Q(x)R(x)}"
+            }
+          ],
+          "goldenRule": "Zanim cokolwiek skrócisz w wyrażeniu wymiernym, ZAWSZE wyznacz dziedzinę: mianownik $Q(x) \\neq 0$!",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\in \\mathbb{R}",
+            "correct": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\neq 2",
+            "description": "Skracanie jest poprawne tylko dla $x$ należących do dziedziny!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.14",
+          "title": "Wyrażenia wymierne: Skracanie ułamków algebraicznych",
+          "formulas": [
+            {
+              "title": "Wyrażenie wymierne",
+              "latex": "W(x) = \\frac{P(x)}{Q(x)}, \\quad Q(x) \\neq 0"
+            },
+            {
+              "title": "Mnożenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} \\cdot \\frac{R(x)}{S(x)} = \\frac{P(x)R(x)}{Q(x)S(x)}"
+            },
+            {
+              "title": "Dzielenie wyrażeń wymiernych",
+              "latex": "\\frac{P(x)}{Q(x)} : \\frac{R(x)}{S(x)} = \\frac{P(x)S(x)}{Q(x)R(x)}"
+            }
+          ],
+          "goldenRule": "Zanim cokolwiek skrócisz w wyrażeniu wymiernym, ZAWSZE wyznacz dziedzinę: mianownik $Q(x) \\neq 0$!",
+          "ckeTrap": {
+            "error": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\in \\mathbb{R}",
+            "correct": "\\frac{x^2 - 4}{x - 2} = x + 2 \\text{ dla } x \\neq 2",
+            "description": "Skracanie jest poprawne tylko dla $x$ należących do dziedziny!"
+          }
+        }
       },
       {
         "id": "lesson-2-15",
@@ -1985,7 +2617,47 @@
             "hint_cost": 20,
             "id": "task-2-15-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "2.15",
+          "title": "Dowodzenie algebraiczne: Wykazywanie nierówności i zwijanie do kwadratu",
+          "formulas": [
+            {
+              "title": "Kwadrat liczby jest nieujemny",
+              "latex": "x^2 \\ge 0 \\text{ dla każdego } x \\in \\mathbb{R}"
+            },
+            {
+              "title": "Kolejne liczby całkowite",
+              "latex": "n, n+1, n+2 \\implies n(n+1) \\text{ dzieli się przez } 2"
+            }
+          ],
+          "goldenRule": "Aby udowodnić nierówność, przenieś wszystko na lewą stronę i zwiń do pełnego kwadratu: $(a - b)^2 \\ge 0$.",
+          "ckeTrap": {
+            "error": "a^2 + b^2 \\ge 2ab \\iff a + b \\ge \\sqrt{2ab}",
+            "correct": "a^2 - 2ab + b^2 \\ge 0 \\iff (a - b)^2 \\ge 0",
+            "description": "Nie pierwiastkuj stronami nierówności! Zwiń do kwadratu różnicy."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "2.15",
+          "title": "Dowodzenie algebraiczne: Wykazywanie nierówności i zwijanie do kwadratu",
+          "formulas": [
+            {
+              "title": "Kwadrat liczby jest nieujemny",
+              "latex": "x^2 \\ge 0 \\text{ dla każdego } x \\in \\mathbb{R}"
+            },
+            {
+              "title": "Kolejne liczby całkowite",
+              "latex": "n, n+1, n+2 \\implies n(n+1) \\text{ dzieli się przez } 2"
+            }
+          ],
+          "goldenRule": "Aby udowodnić nierówność, przenieś wszystko na lewą stronę i zwiń do pełnego kwadratu: $(a - b)^2 \\ge 0$.",
+          "ckeTrap": {
+            "error": "a^2 + b^2 \\ge 2ab \\iff a + b \\ge \\sqrt{2ab}",
+            "correct": "a^2 - 2ab + b^2 \\ge 0 \\iff (a - b)^2 \\ge 0",
+            "description": "Nie pierwiastkuj stronami nierówności! Zwiń do kwadratu różnicy."
+          }
+        }
       }
     ],
     "final_test": {

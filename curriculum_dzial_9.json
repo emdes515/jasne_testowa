@@ -82,17 +82,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dwie proste przecinają się pod kątem $\\alpha = 90^\\circ$.\\\\1. Wszystkie cztery powstałe kąty są proste.\\\\2. Każda para sąsiednich kątów to kąty przyległe.",
+            "content": "Oceń prawdziwość zdania: Dwie proste przecinają się pod kątem $\\alpha = 90^\\circ$.\\ Wszystkie cztery powstałe kąty są proste.",
             "explanation": "1. 180° - 90° = 90°, wierzchołkowe też 90° (PRAWDA). 2. Sąsiednie kąty tworzą linię prostą, więc są przyległe (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Gdy jeden kąt przecięcia wynosi 90°, to 180° - 90° = 90°."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-1-6",
@@ -145,7 +143,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.1",
+          "title": "Kąty na płaszczyźnie: Przyległe, wierzchołkowe i naprzemianległe",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.1",
+          "title": "Kąty na płaszczyźnie: Przyległe, wierzchołkowe i naprzemianległe",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-2",
@@ -225,17 +295,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest trójkąt o kątach $40^\\circ$ i $60^\\circ$.\\\\1. Trzeci kąt ma miarę $80^\\circ$.\\\\2. Trójkąt ten jest ostrokątny.",
+            "content": "Oceń prawdziwość zdania: Dany jest trójkąt o kątach $40^\\circ$ i $60^\\circ$.\\ Trzeci kąt ma miarę $80^\\circ$.",
             "explanation": "1. 180° - 40° - 60° = 80° (PRAWDA). 2. Wszystkie trzy kąty (40°, 60°, 80°) są ostre, więc trójkąt jest ostrokątny (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz trzeci kąt odejmując od 180° sumę dwóch pozostałych."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-2-6",
@@ -288,7 +356,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.2",
+          "title": "Trójkąty 1: Suma kątów, nierówność trójkąta i klasyfikacja",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.2",
+          "title": "Trójkąty 1: Suma kątów, nierówność trójkąta i klasyfikacja",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-3",
@@ -368,17 +508,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest trójkąt o bokach $6, 8, 10$.\\\\1. Trójkąt ten jest prostokątny.\\\\2. Pole tego trójkąta wynosi $24$.",
+            "content": "Oceń prawdziwość zdania: Dany jest trójkąt o bokach $6, 8, 10$.\\ Trójkąt ten jest prostokątny.",
             "explanation": "1. 36 + 64 = 100 (PRAWDA). 2. Pole P = 1/2 * 6 * 8 = 24 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przyprostokątne to 6 i 8, przeciwprostokątna to 10."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-3-6",
@@ -431,7 +569,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.3",
+          "title": "Trójkąty 2: Twierdzenie Pitagorasa i trójki pitagorejskie",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.3",
+          "title": "Trójkąty 2: Twierdzenie Pitagorasa i trójki pitagorejskie",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-4",
@@ -511,17 +721,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie równobocznym o boku $a$:\\\\1. Promień okręgu opisanego jest dwa razy większy od promienia okręgu wpisanego: $R = 2r$.\\\\2. Wysokość trójkąta wynosi $h = R + r$.",
+            "content": "Oceń prawdziwość zdania: W trójkącie równobocznym o boku $a$:\\ Promień okręgu opisanego jest dwa razy większy od promienia okręgu wpisanego: $R = 2r$.",
             "explanation": "1. R = 2/3 h, r = 1/3 h, więc R = 2r (PRAWDA). 2. 2/3 h + 1/3 h = h (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Środek okręgów dzieli wysokość w stosunku 2:1."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-4-6",
@@ -574,7 +782,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.4",
+          "title": "Trójkąt równoboczny: Wysokość, pole i promienie okręgów",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.4",
+          "title": "Trójkąt równoboczny: Wysokość, pole i promienie okręgów",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-5",
@@ -654,17 +934,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie o kątach $45^\\circ, 45^\\circ, 90^\\circ$ przyprostokątne mają długość $a$.\\\\1. Przeciwprostokątna ma długość $a\\sqrt{2}$.\\\\2. Wysokość opuszczona na przeciwprostokątną ma długość $\\frac{a\\sqrt{2}}{2}$.",
+            "content": "Oceń prawdziwość zdania: W trójkącie o kątach $45^\\circ, 45^\\circ, 90^\\circ$ przyprostokątne mają długość $a$.\\ Przeciwprostokątna ma długość $a\\sqrt{2}$.",
             "explanation": "1. Wynika z twierdzenia Pitagorasa: a^2 + a^2 = 2a^2 => c = a\\sqrt{2} (PRAWDA). 2. Wysokość na przeciwprostokątną to połowa przeciwprostokątnej: a\\sqrt{2}/2 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Wysokość w trójkącie prostokątnym równoramiennym jest równa połowie przeciwprostokątnej."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-5-6",
@@ -717,7 +995,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.5",
+          "title": "Trójkąty szczególne: Kąty 30-60-90 oraz 45-45-90",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.5",
+          "title": "Trójkąty szczególne: Kąty 30-60-90 oraz 45-45-90",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-6",
@@ -797,17 +1147,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie odcinek równoległy do podstawy dzieli ramiona w stosunku $1 : 2$ licząc od wierzchołka.\\\\1. Skala podobieństwa mniejszego trójkąta do większego wynosi $k = \\frac{1}{3}$.\\\\2. Długość odcinka równoległego to $\\frac{1}{3}$ długości podstawy.",
+            "content": "Oceń prawdziwość zdania: W trójkącie odcinek równoległy do podstawy dzieli ramiona w stosunku $1 : 2$ licząc od wierzchołka.\\ Skala podobieństwa mniejszego trójkąta do większego wynosi $k = \\frac{1}{3}$.",
             "explanation": "1. Całe ramię ma 1 + 2 = 3 części, więc małe/całe = 1/3 (PRAWDA). 2. Podstawy są w skali 1/3 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Pamiętaj, że całe ramię składa się z 1 + 2 = 3 części."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-6-6",
@@ -860,7 +1208,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.6",
+          "title": "Twierdzenie Talesa: Podział odcinków i proste równoległe",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.6",
+          "title": "Twierdzenie Talesa: Podział odcinków i proste równoległe",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-7",
@@ -940,17 +1360,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Oceń prawdziwość zdań:\\\\1. Każde dwa trójkąty równoboczne są do siebie podobne.\\\\2. Każde dwa trójkąty prostokątne są do siebie podobne.",
+            "content": "Oceń prawdziwość zdania: Każde dwa trójkąty równoboczne są do siebie podobne.",
             "explanation": "1. Wszystkie trójkąty równoboczne mają kąty 60°, 60°, 60°, więc są podobne na mocy KKK (PRAWDA). 2. Trójkąt prostokątny o kątach 30-60 nie jest podobny do trójkąta 45-45 (FAŁSZ).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-PRAWDA, 2-PRAWDA",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-FAŁSZ",
-            "hint": "Czy wszystkie trójkąty prostokątne mają jednakowe kąty ostre?"
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-7-6",
@@ -1003,7 +1421,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.7",
+          "title": "Podobieństwo figur: Cechy podobieństwa i skala k",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.7",
+          "title": "Podobieństwo figur: Cechy podobieństwa i skala k",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-8",
@@ -1083,17 +1573,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dwa kwadraty mają boki $a = 3$ oraz $b = 6$.\\\\1. Skala podobieństwa tych kwadratów wynosi $k = 2$.\\\\2. Pole drugiego kwadratu jest $4$ razy większe od pola pierwszego.",
+            "content": "Oceń prawdziwość zdania: Dwa kwadraty mają boki $a = 3$ oraz $b = 6$.\\ Skala podobieństwa tych kwadratów wynosi $k = 2$.",
             "explanation": "1. k = 6/3 = 2 (PRAWDA). 2. P_1 = 9, P_2 = 36, 36/9 = 4 = 2^2 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Skala długości wynosi 2, a skala pól to 2^2 = 4."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-8-6",
@@ -1146,7 +1634,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.8",
+          "title": "Stosunek pól i obwodów figur podobnych: Skala k i k^2",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.8",
+          "title": "Stosunek pól i obwodów figur podobnych: Skala k i k^2",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-9",
@@ -1226,17 +1786,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie równobocznym o boku $12$:\\\\1. Promień okręgu opisanego wynosi $R = 4\\sqrt{3}$.\\\\2. Promień okręgu wpisanego wynosi $r = 2\\sqrt{3}$.",
+            "content": "Oceń prawdziwość zdania: W trójkącie równobocznym o boku $12$:\\ Promień okręgu opisanego wynosi $R = 4\\sqrt{3}$.",
             "explanation": "h = 12\\sqrt{3}/2 = 6\\sqrt{3}. R = 2/3 h = 4\\sqrt{3} (PRAWDA). r = 1/3 h = 2\\sqrt{3} (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz wysokość h = 6 pierwiastków z 3, a potem weź 2/3 oraz 1/3 z h."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-9-6",
@@ -1289,7 +1847,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.9",
+          "title": "Okrąg wpisany i opisany na trójkącie: Promienie r i R",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.9",
+          "title": "Okrąg wpisany i opisany na trójkącie: Promienie r i R",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-10",
@@ -1369,17 +1999,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W okręgu o środku $S$ punkty $A, B$ leżą na okręgu, a punkt $C$ leży na okręgu tak, że $AB$ jest średnicą.\\\\1. Trójkąt $ABC$ jest prostokątny.\\\\2. Środek okręgu $S$ jest środkiem boku $AB$.",
+            "content": "Oceń prawdziwość zdania: W okręgu o środku $S$ punkty $A, B$ leżą na okręgu, a punkt $C$ leży na okręgu tak, że $AB$ jest średnicą.\\ Trójkąt $ABC$ jest prostokątny.",
             "explanation": "1. Kąt przy wierzchołku C jest oparty na średnicy, więc wynosi 90° (PRAWDA). 2. Średnica AB przechodzi przez środek S, więc S dzieli AB na dwa równe promienie (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Kąt wpisany oparty na średnicy ma miarę 90°."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-10-6",
@@ -1432,7 +2060,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.10",
+          "title": "Kąty w okręgu: Kąt środkowy i wpisany",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.10",
+          "title": "Kąty w okręgu: Kąt środkowy i wpisany",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-11",
@@ -1512,17 +2212,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Prosta $l$ ma z okręgiem dokładnie jeden punkt wspólny.\\\\1. Prosta $l$ jest styczną do tego okręgu.\\\\2. Odległość środka okręgu od prostej $l$ jest równa promieniowi okręgu.",
+            "content": "Oceń prawdziwość zdania: Prosta $l$ ma z okręgiem dokładnie jeden punkt wspólny.\\ Prosta $l$ jest styczną do tego okręgu.",
             "explanation": "1. Z definicji styczna ma dokładnie 1 punkt wspólny (PRAWDA). 2. Odległość środka od stycznej wynosi dokładnie d = r (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Styczna dotyka okręgu w odległości równej promieniowi r."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-11-6",
@@ -1575,7 +2273,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.11",
+          "title": "Styczne do okręgu i kąt dopisany",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.11",
+          "title": "Styczne do okręgu i kąt dopisany",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-12",
@@ -1655,17 +2425,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Oceń prawdziwość zdań:\\\\1. W każdy romb można wpisać okrąg.\\\\2. Na każdym prostokącie można opisać okrąg.",
+            "content": "Oceń prawdziwość zdania: W każdy romb można wpisać okrąg.",
             "explanation": "1. W rombie wszystkie boki są równe, więc a + a = a + a (PRAWDA). 2. W prostokącie wszystkie kąty to 90°, więc 90° + 90° = 180° (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź warunek a + c = b + d dla rombu i alfa + gamma = 180° dla prostokąta."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-12-6",
@@ -1718,7 +2486,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.12",
+          "title": "Czworokąty wpisane i opisane na okręgu",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.12",
+          "title": "Czworokąty wpisane i opisane na okręgu",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-13",
@@ -1798,17 +2638,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest równoległobok o bokach $6$ i $8$ oraz kącie ostrym $30^\\circ$.\\\\1. Pole tego równoległoboku wynosi $24$.\\\\2. Dłuższa wysokość tego równoległoboku ma długość $4$.",
+            "content": "Oceń prawdziwość zdania: Dany jest równoległobok o bokach $6$ i $8$ oraz kącie ostrym $30^\\circ$.\\ Pole tego równoległoboku wynosi $24$.",
             "explanation": "1. P = 6 * 8 * sin 30° = 48 * 1/2 = 24 (PRAWDA). 2. Dłuższa wysokość h_1 opada na krótszy bok: 24 = 6 * h_1 => h_1 = 4 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "P = a * b * sin 30° oraz P = a * h_a."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-13-6",
@@ -1861,7 +2699,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.13",
+          "title": "Czworokąty: Własności przekątnych i pola figur",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.13",
+          "title": "Czworokąty: Własności przekątnych i pola figur",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-14",
@@ -1941,17 +2851,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest wycinek koła o promieniu $r$ i kącie środkowym $60^\\circ$.\\\\1. Pole wycinka stanowi $\\frac{1}{6}$ pola całego koła.\\\\2. Długość łuku tego wycinka wynosi $\\frac{\\pi r}{3}$.",
+            "content": "Oceń prawdziwość zdania: Dany jest wycinek koła o promieniu $r$ i kącie środkowym $60^\\circ$.\\ Pole wycinka stanowi $\\frac{1}{6}$ pola całego koła.",
             "explanation": "1. 60° / 360° = 1/6 (PRAWDA). 2. 1/6 * 2\\pi r = \\pi r / 3 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "60° to 1/6 kąta pełnego 360°."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-14-6",
@@ -2004,7 +2912,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.14",
+          "title": "Pole koła, wycinek koła i długość łuku",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.14",
+          "title": "Pole koła, wycinek koła i długość łuku",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       },
       {
         "id": "lesson-9-15",
@@ -2084,17 +3064,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W trójkącie środkowe przecinają się w jednym punkcie (środku ciężkości).\\\\1. Środek ciężkości dzieli każdą środkową w stosunku $2 : 1$ licząc od wierzchołka.\\\\2. Środkowe dzielą trójkąt na $6$ mniejszych trójkątów o równych polach.",
+            "content": "Oceń prawdziwość zdania: W trójkącie środkowe przecinają się w jednym punkcie (środku ciężkości).\\ Środek ciężkości dzieli każdą środkową w stosunku $2 : 1$ licząc od wierzchołka.",
             "explanation": "1. Podstawowe twierdzenie o środku ciężkości (PRAWDA). 2. Każdy z 6 trójkątów ma pole równe 1/6 pola wyjściowego trójkąta (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Środek ciężkości dzieli środkową w stosunku 2:1 i dzieli pole na równe części."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-9-15-6",
@@ -2147,7 +3125,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "9.15",
+          "title": "Dowodzenie w planimetrii: Relacje miarowe i kątowe",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "9.15",
+          "title": "Dowodzenie w planimetrii: Relacje miarowe i kątowe",
+          "formulas": [
+            {
+              "title": "Trójkąt równoboczny",
+              "latex": "h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad r = \\frac{a\\sqrt{3}}{6}, \\quad R = \\frac{a\\sqrt{3}}{3}"
+            },
+            {
+              "title": "Twierdzenie Pitagorasa",
+              "latex": "a^2 + b^2 = c^2"
+            },
+            {
+              "title": "Kąty w okręgu",
+              "latex": "\\alpha_{\\text{środkowy}} = 2 \\cdot \\alpha_{\\text{wpisany}}"
+            },
+            {
+              "title": "Czworokąt wpisany w okrąg",
+              "latex": "\\alpha + \\gamma = \\beta + \\delta = 180^\\circ"
+            },
+            {
+              "title": "Czworokąt opisany na okręgu",
+              "latex": "a + c = b + d"
+            },
+            {
+              "title": "Stosunek pól figur podobnych",
+              "latex": "\\frac{P_1}{P_2} = k^2, \\quad \\frac{Obw_1}{Obw_2} = k"
+            }
+          ],
+          "goldenRule": "Jeśli figura jest podobna w skali $k$, to jej obwód rośnie $k$ razy, ale jej pole powierzchni rośnie $k^2$ razy!",
+          "ckeTrap": {
+            "error": "k = 3 \\implies \\text{pole wzrosło 3 razy}",
+            "correct": "k = 3 \\implies \\text{pole wzrosło } 3^2 = 9 \\text{ razy}",
+            "description": "Stosunek pól jest kwadratem skali podobieństwa!"
+          }
+        }
       }
     ],
     "final_test": {

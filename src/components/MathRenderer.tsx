@@ -162,14 +162,21 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
             (trimmed.startsWith('$') && trimmed.endsWith('$') && trimmed.length >= 2) ||
             (trimmed.startsWith('\\(') && trimmed.endsWith('\\)') && trimmed.length >= 4);
 
+          // Smart detection: standalone unescaped LaTeX expression without $ delimiters (e.g. \frac{1}{2} or \sqrt{3})
+          const isStandaloneLatex = 
+            !isDisplayMath && 
+            !isInlineMath && 
+            parts.length === 1 && 
+            (trimmed.startsWith('\\frac') || trimmed.startsWith('\\sqrt') || trimmed.startsWith('\\pm') || trimmed.startsWith('\\sum') || trimmed.startsWith('\\int') || trimmed.startsWith('\\lim') || (trimmed.startsWith('\\') && !trimmed.includes(' ')));
+
           if (isDisplayMath) {
             const math = cleanLatex(trimmed);
             return (
               <span 
                 key={index} 
-                className="block my-2 w-full max-w-full flex flex-col items-center justify-center overflow-x-auto overflow-y-hidden py-1.5 px-2 text-center touch-pan-x"
+                className="block my-1.5 w-full max-w-full overflow-x-auto overflow-y-hidden py-1 px-1 touch-pan-x flex custom-scrollbar"
               >
-                <span className="mx-auto flex flex-col items-center justify-center text-center max-w-full box-border">
+                <span className="m-auto inline-flex flex-col items-center justify-center min-w-0 flex-shrink-0 text-center">
                   <BlockMath 
                     math={math} 
                     renderError={() => (
@@ -181,7 +188,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
                 </span>
               </span>
             );
-          } else if (isInlineMath) {
+          } else if (isInlineMath || isStandaloneLatex) {
             const math = cleanLatex(trimmed);
             return (
               <span key={index} className="inline align-baseline mx-0.5 font-normal">
@@ -205,23 +212,23 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
 
   const trimmedForBlockCheck = rawContent.trim();
   const hasInlineDelimiters = trimmedForBlockCheck.includes('$');
-  const hasPolishLetters = /[ąćęłńóśźż]/i.test(trimmedForBlockCheck);
 
-  // Czysty blok LaTeX: displayMode lub \begin{...} lub $$...$$, ale TYLKO wtedy, gdy nie jest to tekst mieszany z $
+  // Czysty blok LaTeX:
+  // 1. Gdy caller wyraźnie prosi o displayMode={true} (np. karty wzorów, pigułki wiedzy, opcje zadań)
+  // 2. Gdy tekst zaczyna się i kończy znakami blokowymi: $$, \[, lub \begin{...}
   const isPureLatexBlock = 
-    !hasInlineDelimiters && 
-    !hasPolishLetters && 
-    (
-      displayMode || 
-      trimmedForBlockCheck.startsWith('\\begin{') || 
-      (trimmedForBlockCheck.startsWith('$$') && trimmedForBlockCheck.endsWith('$$') && !trimmedForBlockCheck.slice(2, -2).includes('$$'))
-    );
+    displayMode || 
+    (!hasInlineDelimiters && (
+      (trimmedForBlockCheck.startsWith('$$') && trimmedForBlockCheck.endsWith('$$') && !trimmedForBlockCheck.slice(2, -2).includes('$$')) ||
+      (trimmedForBlockCheck.startsWith('\\[') && trimmedForBlockCheck.endsWith('\\]')) ||
+      (trimmedForBlockCheck.startsWith('\\begin{') && trimmedForBlockCheck.endsWith('}'))
+    ));
 
   if (isPureLatexBlock) {
     const cleanMath = cleanLatex(trimmedForBlockCheck);
     return (
-      <div className={`my-2 w-full max-w-full flex flex-col items-center justify-center overflow-x-auto overflow-y-hidden py-1 px-2 text-center touch-pan-x text-white ${className}`}>
-        <div className="mx-auto flex flex-col items-center justify-center text-center max-w-full box-border">
+      <div className={`my-1.5 w-full max-w-full overflow-x-auto overflow-y-hidden py-1 px-1 touch-pan-x flex custom-scrollbar text-white ${className}`}>
+        <div className="m-auto inline-flex flex-col items-center justify-center min-w-0 flex-shrink-0 text-center">
           <BlockMath 
             math={cleanMath} 
             renderError={() => renderMixedParts(trimmedForBlockCheck, className)}

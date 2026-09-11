@@ -13,7 +13,14 @@ import {
   Redo2,
   Maximize2,
   Minimize2,
-  Check
+  Check,
+  ArrowRight,
+  Feather,
+  BookOpen,
+  Lightbulb,
+  Sparkles,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
@@ -29,6 +36,8 @@ export interface OpenTaskWorkspaceProps {
   onSubmit?: () => void;
   onAskAiTutor?: () => void;
   inputPlaceholder?: string;
+  hideWhiteboard?: boolean;
+  mode?: 'math' | 'text';
 }
 
 /**
@@ -43,9 +52,10 @@ export function formatMathDisplay(raw: string): string {
     return '\\text{Rozwiązanie odręczne na tablicy}';
   }
 
-  // Decimal comma in numbers (0,3 -> 0{,}3)
-  s = s.replace(/(\d+),(\d+)/g, (_m, d1, d2) => `${d1}{,}${d2}`);
-  s = s.replace(/,/g, '{,}');
+  // Handle explicit LaTeX commands first
+  s = s.replace(/\\langle\s*/g, '\\langle ');
+  s = s.replace(/\\rangle\s*/g, '\\rangle ');
+  s = s.replace(/\\infty\s*/g, '\\infty ');
 
   // Multiplication symbol: replace * with \cdot
   s = s.replace(/\*/g, ' \\cdot ');
@@ -60,11 +70,23 @@ export function formatMathDisplay(raw: string): string {
 
   // Fractions:
   if (s.endsWith('/')) {
-    const num = s.slice(0, -1);
-    s = `\\frac{${num || '1'}}{\\square}`;
+    const base = s.slice(0, -1);
+    const m = base.match(/(?:^|[\s\+\-\*\(\⟨=])([0-9a-zA-Z\^_{}\(\)]+)$/);
+    if (m) {
+      const prefix = base.slice(0, base.length - m[1].length);
+      s = `${prefix}\\frac{${m[1]}}{\\square}`;
+    } else {
+      s = `${base}\\frac{1}{\\square}`;
+    }
   } else {
-    s = s.replace(/(\([^\)]+\)|[0-9a-zA-Z\^_{}]+)\/(\([^\)]+\)|[0-9a-zA-Z\^_{}]+)/g, (_m, n, d) => `\\frac{${n}}{${d}}`);
+    // Replace n/d fractions where n and d are alphanumeric or bracketed expressions
+    s = s.replace(/(\([^\)]+\)|[0-9a-zA-Z\^]+)\/(\([^\)]+\)|[0-9a-zA-Z\^]+)/g, (_m, n, d) => `\\frac{${n}}{${d}}`);
   }
+
+  // Decimal comma in numbers only (e.g. 0,3 -> 0{,}3)
+  s = s.replace(/(\d+),(\d+)/g, (_m, d1, d2) => `${d1}{,}${d2}`);
+  // Remaining commas (interval separators, lists): comma with space
+  s = s.replace(/,(?!\d)/g, ',\\ ');
 
   // Unfinished square root
   if (s.endsWith('\\sqrt{}')) {
@@ -88,7 +110,61 @@ export function formatMathDisplay(raw: string): string {
   return s;
 }
 
+const ESSAY_CONNECTORS = [
+  {
+    id: 'thesis',
+    label: 'Wstęp i Teza',
+    chips: [
+      'Warto zauważyć, że...',
+      'Kluczową kwestią staje się pytanie, czy...',
+      'Analiza problemu prowadzi do tezy, iż...',
+      'W świetle załączonego zagadnienia należy uznać, że...'
+    ]
+  },
+  {
+    id: 'argument',
+    label: 'Argumentacja TEEL',
+    chips: [
+      'Kluczowym argumentem przemawiającym za tą tezą jest...',
+      'Dowodzi tego postawa bohatera, który...',
+      'Szczególnie wymowny jest moment, w którym...',
+      'Ilustracją tej zasady w utworze staje się...'
+    ]
+  },
+  {
+    id: 'dialectic',
+    label: 'Dialektyka i Kontrargument',
+    chips: [
+      'Z drugiej strony nie sposób pominąć faktu, że...',
+      'Przeciwwagą dla tej postawy okazuje się...',
+      'Pozorny paradoks wynika z faktu, że...',
+      'Należy jednak dostrzec drugie dno tej sytuacji, mianowicie...'
+    ]
+  },
+  {
+    id: 'context',
+    label: 'Kontekst 4/4 pkt',
+    chips: [
+      'W kontekście historyczno-społecznym epoki warto przywołać...',
+      'Pogląd ten ściśle koresponduje z filozofią...',
+      'Podobny topos kulturowy odnajdujemy w dziele...',
+      'W perspektywie biograficznej autora zauważamy, że...'
+    ]
+  },
+  {
+    id: 'conclusion',
+    label: 'Synteza i Zakończenie',
+    chips: [
+      'Konkludując powyższe rozważania, należy stwierdzić, że...',
+      'Reasumując, losy bohaterów jednoznacznie dowodzą, iż...',
+      'Wnioskiem wieńczącym analizę jest przekonanie, że...',
+      'Ostatecznie literatura udowadnia, że...'
+    ]
+  }
+];
+
 export function OpenTaskWorkspace({
+  task,
   isEvaluated = false,
   isCorrect = null,
   value,
@@ -97,11 +173,17 @@ export function OpenTaskWorkspace({
   onSaveCanvasData,
   onOpenScratchpad,
   onSubmit,
-  inputPlaceholder = 'Wpisz wyrażenie matematyczne lub użyj klawiatury...'
+  inputPlaceholder = 'Wpisz wyrażenie matematyczne lub użyj klawiatury...',
+  hideWhiteboard = false,
+  mode = 'math'
 }: OpenTaskWorkspaceProps) {
   // Przełącznik segmentowy (Toggle): 'keyboard' vs 'whiteboard'
   const [activeTab, setActiveTab] = useState<'keyboard' | 'whiteboard'>('keyboard');
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [showConnectorStudio, setShowConnectorStudio] = useState<boolean>(true);
+  const [activeConnectorTab, setActiveConnectorTab] = useState<string>('thesis');
+  const [showStructureGuide, setShowStructureGuide] = useState<boolean>(false);
+  const textRef = useRef<HTMLTextAreaElement>(null);
 
   // --------------------------------------------------------------------------
   // Whiteboard Canvas State & Logic
@@ -350,10 +432,20 @@ export function OpenTaskWorkspace({
 
     if (keyToken === 'BACKSPACE') {
       if (!currentVal) return;
-      if (currentVal.endsWith(' \\cdot ')) {
+      // Usuń trailing spację jeśli występuje po komendzie LaTeX
+      if (currentVal.endsWith(' ')) {
+        currentVal = currentVal.trimEnd();
+      }
+      if (currentVal.endsWith('\\infty')) {
+        onChangeValue(currentVal.slice(0, -6));
+      } else if (currentVal.endsWith('\\langle')) {
+        onChangeValue(currentVal.slice(0, -7));
+      } else if (currentVal.endsWith('\\rangle')) {
+        onChangeValue(currentVal.slice(0, -7));
+      } else if (currentVal.endsWith(' \\cdot ')) {
         onChangeValue(currentVal.slice(0, -7));
       } else if (currentVal.endsWith('\\sqrt{}')) {
-        onChangeValue(currentVal.slice(0, -8));
+        onChangeValue(currentVal.slice(0, -7));
       } else if (currentVal.endsWith('\\sqrt{')) {
         onChangeValue(currentVal.slice(0, -6));
       } else if (currentVal.endsWith('x^2') || currentVal.endsWith('x^')) {
@@ -386,6 +478,15 @@ export function OpenTaskWorkspace({
       return;
     }
 
+    // Przejście dalej / Wyjście z ułamka / Spacja
+    if (keyToken === 'NEXT' || keyToken === 'RIGHT' || keyToken === 'SPACE' || keyToken === '→') {
+      if (!currentVal) return;
+      if (!currentVal.endsWith(' ')) {
+        onChangeValue(currentVal + ' ');
+      }
+      return;
+    }
+
     // Symbole algebraiczne
     if (keyToken === 'POW2') {
       // Potęga x²
@@ -412,13 +513,89 @@ export function OpenTaskWorkspace({
       return;
     }
 
-    if (keyToken === 'FRAC' || keyToken === '÷') {
+    // Inteligentny ułamek (a/b)
+    if (keyToken === 'FRAC') {
+      if (!currentVal || /[+\-*\/(\⟨=,\s]$/.test(currentVal)) {
+        onChangeValue(currentVal + '1/');
+        return;
+      }
+      // Jeśli uczeń wpisał już mianownik (np. 99/5) i klika ponownie a/b, wychodzi z ułamka!
+      if (/\/[0-9a-zA-Z^]+$/.test(currentVal)) {
+        onChangeValue(currentVal + ' ');
+        return;
+      }
+      if (currentVal.endsWith('/')) {
+        return;
+      }
       onChangeValue(currentVal + '/');
       return;
     }
 
-    if (keyToken === '·' || keyToken === '*') {
-      onChangeValue(currentVal + '*');
+    if (keyToken === '÷') {
+      if (/\/[0-9a-zA-Z^]+$/.test(currentVal)) {
+        onChangeValue(currentVal + ' ÷ ');
+        return;
+      }
+      onChangeValue(currentVal + '/');
+      return;
+    }
+
+    // Przecinek (dziesiętny lub separator przedziału)
+    if (keyToken === ',') {
+      if (/\/[0-9a-zA-Z^]+$/.test(currentVal)) {
+        // Wyjście z ułamka i wstawienie przecinka przedziału (np. 1/2, )
+        onChangeValue(currentVal + ', ');
+        return;
+      }
+      if (currentVal.endsWith(',')) return;
+      onChangeValue(currentVal + ',');
+      return;
+    }
+
+    // Operatory arytmetyczne (+, -, ·, =)
+    if (keyToken === '+' || keyToken === '-' || keyToken === '=' || keyToken === '·' || keyToken === '*') {
+      const op = keyToken === '·' ? '*' : keyToken;
+      if (/\/[0-9a-zA-Z^]+$/.test(currentVal)) {
+        // Wyjście z mianownika i kontynuacja wyrażenia na zewnątrz
+        onChangeValue(currentVal + ' ' + op + ' ');
+        return;
+      }
+      onChangeValue(currentVal + op);
+      return;
+    }
+
+    // Zmienna x
+    if (keyToken === 'x') {
+      if (/\/\d+$/.test(currentVal)) {
+        // Jeśli uczeń wpisał mianownik liczbowy (np. 99/5) i klika x, mnoży ułamek z zewnątrz (99/5 x)
+        onChangeValue(currentVal + ' x');
+        return;
+      }
+      onChangeValue(currentVal + 'x');
+      return;
+    }
+
+    if (keyToken === ')') {
+      if (/\/[0-9a-zA-Z^]+$/.test(currentVal)) {
+        onChangeValue(currentVal + ')');
+        return;
+      }
+      onChangeValue(currentVal + ')');
+      return;
+    }
+
+    if (keyToken === 'LANGLE' || keyToken === '⟨') {
+      onChangeValue(currentVal + '\\langle ');
+      return;
+    }
+
+    if (keyToken === 'RANGLE' || keyToken === '⟩') {
+      onChangeValue(currentVal + '\\rangle ');
+      return;
+    }
+
+    if (keyToken === 'INFTY' || keyToken === '∞') {
+      onChangeValue(currentVal + '\\infty ');
       return;
     }
 
@@ -431,8 +608,342 @@ export function OpenTaskWorkspace({
     onChangeValue(currentVal + keyToken);
   };
 
+  // Obsługa fizycznej klawiatury komputera
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isEvaluated || activeTab !== 'keyboard') return;
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) return;
+
+      if (e.key >= '0' && e.key <= '9') {
+        handleKeyClick(e.key);
+      } else if (e.key === ',' || e.key === '.') {
+        handleKeyClick(',');
+      } else if (e.key === '+' || e.key === '-') {
+        handleKeyClick(e.key);
+      } else if (e.key === '*' || e.key === 'x' || e.key === 'X') {
+        handleKeyClick(e.key.toLowerCase());
+      } else if (e.key === '/') {
+        handleKeyClick('/');
+      } else if (e.key === '(' || e.key === ')') {
+        handleKeyClick(e.key);
+      } else if (e.key === '[' || e.key === '<') {
+        handleKeyClick('⟨');
+      } else if (e.key === ']' || e.key === '>') {
+        handleKeyClick('⟩');
+      } else if (e.key === 'Backspace') {
+        handleKeyClick('BACKSPACE');
+      } else if (e.key === 'Escape') {
+        handleKeyClick('CLEAR');
+      } else if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Tab') {
+        e.preventDefault();
+        handleKeyClick('NEXT');
+      } else if (e.key === 'Enter') {
+        if (value && value.trim().length > 0 && onSubmit) {
+          e.preventDefault();
+          onSubmit();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [value, isEvaluated, activeTab, onSubmit]);
+
   const formattedMath = formatMathDisplay(value);
-  const isInputReady = Boolean((value && value.trim().length > 0) || hasCanvasStrokes);
+  if (mode === 'text') {
+    const isEssayTask = Boolean(
+      (task?.points >= 30) ||
+      (task?.type === 'ESSAY') ||
+      (task?.id && String(task.id).includes('essay')) ||
+      (typeof task?.question === 'string' && task?.question.toLowerCase().includes('rozprawk'))
+    );
+
+    const isSynthesisTask = Boolean(
+      (task?.type === 'OPEN_SYNTHESIS') ||
+      (task?.points === 3 && (task?.question || '').toLowerCase().includes('notatk')) ||
+      (typeof task?.question === 'string' && task?.question.toLowerCase().includes('notatka syntetyzuj'))
+    );
+
+    const words = (value || '').trim() ? (value || '').trim().split(/\s+/).filter(Boolean).length : 0;
+    const chars = (value || '').length;
+
+    const insertSnippet = (rawSnippet: string) => {
+      triggerHaptic('light');
+      const snippet = rawSnippet.replace(/\.\.\.$/, ' ');
+      if (textRef.current) {
+        const el = textRef.current;
+        const start = el.selectionStart || 0;
+        const end = el.selectionEnd || 0;
+        const curr = value || '';
+        const needsSpace = start > 0 && !/\s$/.test(curr.slice(0, start));
+        const inserted = (needsSpace ? ' ' : '') + snippet;
+        const nextVal = curr.slice(0, start) + inserted + curr.slice(end);
+        onChangeValue(nextVal);
+        setTimeout(() => {
+          el.focus();
+          const pos = start + inserted.length;
+          el.setSelectionRange(pos, pos);
+        }, 20);
+      } else {
+        onChangeValue((value ? value + ' ' : '') + snippet);
+      }
+    };
+
+    return (
+      <div className="w-full flex flex-col gap-3 text-white">
+        <div className={`w-full bg-[#0F172A]/95 border transition-all rounded-2xl p-3.5 sm:p-5 shadow-xl flex flex-col gap-3 ${
+          isEvaluated
+            ? isCorrect
+              ? 'border-emerald-500/50 bg-emerald-950/15 shadow-[0_0_25px_rgba(16,185,129,0.15)]'
+              : 'border-rose-500/50 bg-rose-950/15 shadow-[0_0_25px_rgba(244,63,94,0.15)]'
+            : 'border-slate-700/80 focus-within:border-rose-500/70 focus-within:shadow-[0_0_25px_rgba(244,63,94,0.18)]'
+        }`}>
+          {/* Header z tytułem i licznikiem słów */}
+          <div className="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-800 flex-wrap gap-2">
+            <span className="font-bold text-slate-200 flex items-center gap-2">
+              {isEssayTask ? (
+                <>
+                  <div className="w-5 h-5 rounded-lg bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400">
+                    <Feather size={12} />
+                  </div>
+                  <span>Studio Wypracowania CKE (35 pkt):</span>
+                </>
+              ) : isSynthesisTask ? (
+                <>
+                  <div className="w-5 h-5 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                    <BookOpen size={12} />
+                  </div>
+                  <span>Notatka Syntetyzująca CKE (3 pkt):</span>
+                </>
+              ) : (
+                <>
+                  <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+                  <span>Odpowiedź pisemna (Tutor AI):</span>
+                </>
+              )}
+            </span>
+
+            <span className="text-[11px] text-slate-400 font-mono bg-slate-800/80 px-2.5 py-0.5 rounded-md border border-slate-700/50">
+              {words} słów • {chars} znaków
+            </span>
+          </div>
+
+          {/* CKE Wskaźnik Objętości (dla Wypracowania 300+ słów oraz Notatki 60-90 słów) */}
+          {isEssayTask && (
+            <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5 space-y-2">
+              <div className="flex items-center justify-between text-xs flex-wrap gap-2">
+                <span className={`text-[11px] font-bold flex items-center gap-1.5 ${
+                  words >= 300 
+                    ? 'text-emerald-400' 
+                    : words >= 150 
+                      ? 'text-amber-400' 
+                      : 'text-rose-400'
+                }`}>
+                  {words >= 300 ? (
+                    <>
+                      <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                      <span>Wymóg CKE 300+ słów spełniony ({words} słów)</span>
+                    </>
+                  ) : words >= 150 ? (
+                    <>
+                      <AlertTriangle size={13} className="text-amber-400 shrink-0" />
+                      <span>Poniżej progu 300 słów CKE ({words} / 300 słów – uzupełnij rozwinięcie)</span>
+                    </>
+                  ) : (
+                    <>
+                      <AlertTriangle size={13} className="text-rose-400 shrink-0" />
+                      <span>Zbyt krótka praca (&lt;150 słów). Wymagane min. 300 słów CKE</span>
+                    </>
+                  )}
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  Próg zaliczenia kompozycji i języka: 300 słów
+                </span>
+              </div>
+              <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden border border-white/5">
+                <div 
+                  className={`h-full transition-all duration-300 rounded-full ${
+                    words >= 300 
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_10px_rgba(16,185,129,0.5)]' 
+                      : words >= 150 
+                        ? 'bg-gradient-to-r from-amber-500 to-yellow-400' 
+                        : 'bg-gradient-to-r from-rose-600 to-rose-500'
+                  }`}
+                  style={{ width: `${Math.min(100, Math.max(4, Math.round((words / 300) * 100)))}%` }}
+                />
+              </div>
+            </div>
+          )}
+
+          {isSynthesisTask && (
+            <div className="p-2.5 rounded-xl bg-slate-900/80 border border-white/5 flex items-center justify-between text-xs flex-wrap gap-2">
+              <span className={`text-[11px] font-bold flex items-center gap-1.5 ${
+                words >= 60 && words <= 90
+                  ? 'text-emerald-400'
+                  : words < 60
+                    ? 'text-amber-400'
+                    : 'text-rose-400'
+              }`}>
+                {words >= 60 && words <= 90 ? (
+                  <>
+                    <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                    <span>Idealny limit CKE (60–90 słów): {words} słów</span>
+                  </>
+                ) : words < 60 ? (
+                  <>
+                    <AlertTriangle size={13} className="text-amber-400 shrink-0" />
+                    <span>Za krótka notatka ({words} / 60 słów – dodaj syntezę obu tekstów)</span>
+                  </>
+                ) : (
+                  <>
+                    <AlertTriangle size={13} className="text-rose-400 shrink-0" />
+                    <span>Za długa notatka ({words} / 90 słów – skróć tekst, by nie stracić 1 pkt)</span>
+                  </>
+                )}
+              </span>
+              <span className="text-[10px] text-slate-400">
+                Wymóg CKE: 60–90 słów
+              </span>
+            </div>
+          )}
+
+          {/* Model Kompozycji CKE (Akordeon dla Wypracowania) */}
+          {isEssayTask && (
+            <div className="rounded-xl border border-white/10 bg-slate-900/60 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setShowStructureGuide(prev => !prev)}
+                className="w-full px-3 py-2 flex items-center justify-between text-left text-xs font-bold text-slate-300 hover:bg-white/5 transition-colors cursor-pointer"
+              >
+                <span className="flex items-center gap-1.5 text-rose-300">
+                  <BookOpen size={13} />
+                  <span>Oficjalny model kompozycji CKE (4 filary sukcesu)</span>
+                </span>
+                <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                  <span>{showStructureGuide ? 'Zwiń' : 'Rozwiń'}</span>
+                  {showStructureGuide ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+                </span>
+              </button>
+              {showStructureGuide && (
+                <div className="p-3 pt-1 border-t border-white/5 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div className="p-2 rounded-lg bg-slate-950/60 border border-white/5">
+                    <div className="font-bold text-rose-400 mb-0.5">1. Wstęp z tezą</div>
+                    <p className="text-[11px] text-slate-300 leading-tight">Wprowadzenie w problem polecenia + jednoznaczna teza lub hipoteza badawcza.</p>
+                  </div>
+                  <div className="p-2 rounded-lg bg-slate-950/60 border border-white/5">
+                    <div className="font-bold text-rose-400 mb-0.5">2. Rozwinięcie (Lektura)</div>
+                    <p className="text-[11px] text-slate-300 leading-tight">Argumentacja TEEL z lektury obowiązkowej (analiza bohatera, bez błędu kardynalnego!).</p>
+                  </div>
+                  <div className="p-2 rounded-lg bg-slate-950/60 border border-white/5">
+                    <div className="font-bold text-rose-400 mb-0.5">3. Kontekst funkcjonalny (4 pkt)</div>
+                    <p className="text-[11px] text-slate-300 leading-tight">Filozoficzny, historyczny, kulturowy lub inny utwór pogłębiający wniosek.</p>
+                  </div>
+                  <div className="p-2 rounded-lg bg-slate-950/60 border border-white/5">
+                    <div className="font-bold text-rose-400 mb-0.5">4. Zakończenie (Synteza)</div>
+                    <p className="text-[11px] text-slate-300 leading-tight">Uogólnienie wniosków, synteza motywu, brak mechanicznego powtarzania wstępu.</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Konektorownik CKE (Pasek szybkiego wstawiania łączników stylu) */}
+          <div className="rounded-xl border border-white/10 bg-slate-900/80 overflow-hidden">
+            <div className="px-3 py-2 flex items-center justify-between border-b border-white/5">
+              <button
+                type="button"
+                onClick={() => setShowConnectorStudio(prev => !prev)}
+                className="flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:text-amber-200 transition-colors cursor-pointer"
+              >
+                <Sparkles size={13} className="text-amber-400" />
+                <span>Konektorownik CKE (Szybkie zwroty stylu dojrzałego)</span>
+                {showConnectorStudio ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+              </button>
+              <span className="text-[10px] text-slate-400 hidden sm:inline">
+                Kliknij zwrot, aby wstawić w miejscu kursora
+              </span>
+            </div>
+
+            {showConnectorStudio && (
+              <div className="p-2.5 space-y-2">
+                {/* Zakładki kategorii konektorów */}
+                <div className="flex items-center gap-1 overflow-x-auto pb-1 scrollbar-none text-[11px]">
+                  {ESSAY_CONNECTORS.map(cat => (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => setActiveConnectorTab(cat.id)}
+                      className={`px-2.5 py-1 rounded-lg font-semibold shrink-0 transition-colors cursor-pointer ${
+                        activeConnectorTab === cat.id
+                          ? 'bg-amber-400/20 text-amber-300 border border-amber-400/40'
+                          : 'bg-white/5 text-slate-400 hover:text-slate-200 border border-transparent'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Chipy ze zwrotami */}
+                <div className="flex flex-wrap gap-1.5">
+                  {ESSAY_CONNECTORS.find(c => c.id === activeConnectorTab)?.chips.map((chip, cIdx) => (
+                    <button
+                      key={cIdx}
+                      type="button"
+                      disabled={isEvaluated}
+                      onClick={() => insertSnippet(chip)}
+                      className="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-200 border border-slate-700/60 hover:border-amber-400/60 hover:text-white hover:bg-slate-700/80 transition-all cursor-pointer text-left active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {chip}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Pole tekstowe edycji wypracowania / odpowiedzi */}
+          <textarea
+            ref={textRef}
+            value={value}
+            onChange={(e) => onChangeValue(e.target.value)}
+            disabled={isEvaluated}
+            placeholder={inputPlaceholder || (isEssayTask 
+              ? "Napisz swoje wypracowanie maturalne (min. 300 słów). Sformułuj wstęp z tezą, rozwinięcie z argumentacją TEEL z lektury obowiązkowej, funkcjonalny kontekst oraz syntezę w zakończeniu..."
+              : isSynthesisTask
+                ? "Sformułuj zwięzłą notatkę syntetyzującą (60–90 słów) na podstawie obu tekstów..."
+                : "Sformułuj swoją odpowiedź, uzasadnienie lub argument na podstawie załączonego tekstu lub znajomości lektury...")}
+            rows={isEssayTask ? 12 : (isSynthesisTask ? 6 : 5)}
+            className={`w-full bg-slate-950/70 border border-white/5 rounded-xl p-3.5 text-slate-100 placeholder:text-slate-500 text-sm sm:text-base leading-relaxed resize-y outline-none font-normal ${
+              isEssayTask ? 'min-h-[260px]' : (isSynthesisTask ? 'min-h-[140px]' : 'min-h-[120px]')
+            }`}
+          />
+
+          {/* Pasek narzędziowy pod polem */}
+          <div className="flex items-center justify-between pt-2.5 border-t border-slate-800/80 text-[11px] text-slate-400 flex-wrap gap-2">
+            <div className="flex items-center gap-1.5 text-slate-400">
+              <span>Wskazówka:</span>
+              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px] border border-slate-700">Ctrl</kbd>
+              <span>+</span>
+              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px] border border-slate-700">Enter</kbd>
+              <span>zatwierdza odpowiedź</span>
+            </div>
+            {value.trim().length > 0 && !isEvaluated && (
+              <button
+                type="button"
+                onClick={() => onChangeValue('')}
+                className="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 cursor-pointer transition-colors"
+              >
+                <RotateCcw size={13} />
+                <span>Wyczyść pole</span>
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={isFullscreen ? "fixed inset-0 z-50 bg-[#070A0F] flex flex-col p-3 sm:p-5 text-white select-none overflow-hidden" : "w-full flex flex-col justify-end items-stretch gap-2.5"}>
@@ -511,7 +1022,7 @@ export function OpenTaskWorkspace({
             </button>
           </div>
         </div>
-      ) : (
+      ) : !hideWhiteboard ? (
         <div className="flex items-center justify-between bg-[#0B0F19] p-1 rounded-2xl border border-white/10 w-full shrink-0 shadow-lg">
           <div className="flex-1 flex items-center">
             <button
@@ -552,20 +1063,23 @@ export function OpenTaskWorkspace({
             </button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              triggerHaptic('medium');
-              setIsFullscreen(true);
-            }}
-            className="p-2 rounded-xl text-[#FFB800] hover:text-white bg-[#141C28] hover:bg-[#FFB800]/20 border border-white/10 transition-all cursor-pointer shrink-0 ml-1.5 shadow-sm flex items-center gap-1.5 text-xs font-bold"
-            title="Rozwiń na pełny ekran"
-          >
-            <Maximize2 size={15} />
-            <span className="hidden sm:inline">Rozwiń</span>
-          </button>
+          {/* Przycisk powiększenia widoczny WYŁĄCZNIE dla Tablicy (dla klawiatury bez sensu) */}
+          {activeTab === 'whiteboard' && (
+            <button
+              type="button"
+              onClick={() => {
+                triggerHaptic('medium');
+                setIsFullscreen(true);
+              }}
+              className="p-2 rounded-xl text-[#FFB800] hover:text-white bg-[#141C28] hover:bg-[#FFB800]/20 border border-white/10 transition-all cursor-pointer shrink-0 ml-1.5 shadow-sm flex items-center gap-1.5 text-xs font-bold"
+              title="Rozwiń na pełny ekran"
+            >
+              <Maximize2 size={15} />
+              <span className="hidden sm:inline">Rozwiń</span>
+            </button>
+          )}
         </div>
-      )}
+      ) : null}
 
       {/* ================================================================== */}
       {/* TRYB A: INTUICYJNA KLAWIATURA MATEMATYCZNA                          */}
@@ -579,9 +1093,14 @@ export function OpenTaskWorkspace({
             </span>
             <div className="w-full overflow-x-auto no-scrollbar py-0.5 min-h-[36px] flex items-center text-left">
               {formattedMath ? (
-                <span className="text-white font-black text-lg sm:text-2xl tracking-wide">
-                  <InlineMath math={formattedMath} />
-                </span>
+                <div className="flex items-center text-left">
+                  <span className="text-white font-black text-lg sm:text-2xl tracking-wide">
+                    <InlineMath math={formattedMath} />
+                  </span>
+                  {!isEvaluated && (
+                    <span className="inline-block w-0.5 h-6 bg-[#FFB800] ml-1.5 animate-pulse rounded-full" />
+                  )}
+                </div>
               ) : (
                 <span className="text-slate-500 text-xs sm:text-sm italic font-normal">
                   {inputPlaceholder}
@@ -624,8 +1143,8 @@ export function OpenTaskWorkspace({
 
         {/* UKŁAD KLAWIATURY W 4 ERGONOMICZNYCH RZĘDACH */}
         <div className={`w-full flex flex-col gap-1.5 shrink-0 ${isEvaluated ? 'opacity-50 pointer-events-none' : ''}`}>
-          {/* Rząd 1 (Symbole algebraiczne): x, n, x², xⁿ, √, a/b, ( ) */}
-          <div className="grid grid-cols-8 gap-1 sm:gap-1.5 w-full">
+          {/* Rząd 1 (Symbole algebraiczne i przedziały - 10 kolumn): x, x², xⁿ, √, a/b, (, ), ⟨, ⟩, ∞ */}
+          <div className="grid grid-cols-10 gap-1 sm:gap-1.5 w-full">
             <button
               type="button"
               onClick={() => handleKeyClick('x')}
@@ -633,14 +1152,6 @@ export function OpenTaskWorkspace({
               title="Zmienna x"
             >
               x
-            </button>
-            <button
-              type="button"
-              onClick={() => handleKeyClick('n')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 italic font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
-              title="Zmienna n"
-            >
-              n
             </button>
             <button
               type="button"
@@ -690,9 +1201,33 @@ export function OpenTaskWorkspace({
             >
               )
             </button>
+            <button
+              type="button"
+              onClick={() => handleKeyClick('⟨')}
+              className="h-10 sm:h-11 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              title="Przedział domknięty lewostronnie ⟨"
+            >
+              ⟨
+            </button>
+            <button
+              type="button"
+              onClick={() => handleKeyClick('⟩')}
+              className="h-10 sm:h-11 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              title="Przedział domknięty prawostronnie ⟩"
+            >
+              ⟩
+            </button>
+            <button
+              type="button"
+              onClick={() => handleKeyClick('∞')}
+              className="h-10 sm:h-11 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              title="Nieskończoność (∞)"
+            >
+              ∞
+            </button>
           </div>
 
-          {/* Rząd 2 (Liczby i operatory): Cyfry 7, 8, 9, znak dzielenia ÷, znak mnożenia ·, znak minus - */}
+          {/* Rząd 2 (Liczby i operatory - 6 kolumn): 7, 8, 9, ÷, ·, - */}
           <div className="grid grid-cols-6 gap-1 sm:gap-1.5 w-full">
             <button
               type="button"
@@ -741,7 +1276,7 @@ export function OpenTaskWorkspace({
             </button>
           </div>
 
-          {/* Rząd 3: Cyfry 4, 5, 6, znak plus +, przecinek dziesiętny ,, znak równości = */}
+          {/* Rząd 3 (Liczby i operatory - 6 kolumn): 4, 5, 6, +, ,, = */}
           <div className="grid grid-cols-6 gap-1 sm:gap-1.5 w-full">
             <button
               type="button"
@@ -790,8 +1325,8 @@ export function OpenTaskWorkspace({
             </button>
           </div>
 
-          {/* Rząd 4: Cyfry 1, 2, 3, cyfra 0, klawisz kasowania ⌫ (Backspace) oraz wyraźny przycisk zatwierdzenia: Zatwierdź odpowiedź */}
-          <div className="grid grid-cols-7 gap-1 sm:gap-1.5 w-full">
+          {/* Rząd 4 (Liczby i edycja - 6 kolumn): 1, 2, 3, 0, ⌫ (Backspace), C (Wyczyść) */}
+          <div className="grid grid-cols-6 gap-1 sm:gap-1.5 w-full">
             <button
               type="button"
               onClick={() => handleKeyClick('1')}
@@ -830,18 +1365,11 @@ export function OpenTaskWorkspace({
             </button>
             <button
               type="button"
-              id="math-keyboard-submit-btn"
-              disabled={isEvaluated || (!value && !hasCanvasStrokes)}
-              onClick={() => {
-                if (onSubmit) {
-                  triggerHaptic('medium');
-                  onSubmit();
-                }
-              }}
-              className="col-span-2 h-10 sm:h-11 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-95 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              onClick={() => handleKeyClick('NEXT')}
+              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 hover:border-[#FFB800]/50 text-[#FFB800] font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              title="Przejdź dalej / Wyjdź z ułamka (→ / Spacja)"
             >
-              <Check size={16} strokeWidth={2.5} />
-              <span className="whitespace-nowrap">Zatwierdź odpowiedź</span>
+              <ArrowRight size={18} className="stroke-[2.5]" />
             </button>
           </div>
         </div>

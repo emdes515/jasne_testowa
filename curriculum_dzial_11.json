@@ -82,17 +82,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Krawędź sześcianu zwiększono $2$-krotnie.\\\\1. Pole powierzchni całkowitej sześcianu wzrosło $4$-krotnie.\\\\2. Objętość sześcianu wzrosła $8$-krotnie.",
+            "content": "Oceń prawdziwość zdania: Krawędź sześcianu zwiększono $2$-krotnie.\\ Pole powierzchni całkowitej sześcianu wzrosło $4$-krotnie.",
             "explanation": "1. Pole rośnie z kwadratem skali: 2^2 = 4 (PRAWDA). 2. Objętość rośnie z sześcianem skali: 2^3 = 8 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Pole rośnie 2^2 razy, a objętość 2^3 razy."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-1-6",
@@ -145,7 +143,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.1",
+          "title": "Prostopadłościan i sześcian: Przekątne, pole i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.1",
+          "title": "Prostopadłościan i sześcian: Przekątne, pole i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-2",
@@ -225,17 +295,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest graniastosłup prawidłowy czworokątny.\\\\1. Wszystkie ściany boczne są przystającymi prostokątami.\\\\2. Podstawą tego graniastosłupa jest kwadrat.",
+            "content": "Oceń prawdziwość zdania: Dany jest graniastosłup prawidłowy czworokątny.\\ Wszystkie ściany boczne są przystającymi prostokątami.",
             "explanation": "1. W graniastosłupie prawidłowym ściany boczne są jednakowymi prostokątami (PRAWDA). 2. Podstawą graniastosłupa prawidłowego czworokątnego jest wielokąt foremny, czyli kwadrat (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Słowo 'prawidłowy' oznacza, że w podstawie leży wielokąt foremny."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-2-6",
@@ -288,7 +356,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.2",
+          "title": "Graniastosłupy proste: Siatka, pole całkowite i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.2",
+          "title": "Graniastosłupy proste: Siatka, pole całkowite i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-3",
@@ -368,17 +508,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W graniastosłupie prawidłowym sześciokątnym o krawędzi podstawy $a$:\\\\1. Krótsza przekątna podstawy ma długość $a\\sqrt{3}$.\\\\2. Dłuższa przekątna podstawy ma długość $2a$.",
+            "content": "Oceń prawdziwość zdania: W graniastosłupie prawidłowym sześciokątnym o krawędzi podstawy $a$:\\ Krótsza przekątna podstawy ma długość $a\\sqrt{3}$.",
             "explanation": "1. Krótsza przekątna łączy wierzchołki oddalone o 1 i wynosi 2 * (a\\sqrt{3}/2) = a\\sqrt{3} (PRAWDA). 2. Dłuższa przekątna przechodzi przez środek i wynosi 2a (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przypomnij sobie wzory na przekątne w sześciokącie foremnym."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-3-6",
@@ -431,7 +569,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.3",
+          "title": "Graniastosłup prawidłowy trójkątny i sześciokątny",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.3",
+          "title": "Graniastosłup prawidłowy trójkątny i sześciokątny",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-4",
@@ -511,17 +721,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ostrosłup o podstawie n-kąta.\\\\1. Liczba ścian ostrosłupa jest równa liczbie jego wierzchołków: $S = W = n + 1$.\\\\2. Liczba krawędzi wynosi $K = 2n$.",
+            "content": "Oceń prawdziwość zdania: Dany jest ostrosłup o podstawie n-kąta.\\ Liczba ścian ostrosłupa jest równa liczbie jego wierzchołków: $S = W = n + 1$.",
             "explanation": "1. W ostrosłupie zawsze S = n + 1 oraz W = n + 1 (PRAWDA). 2. Krawędzi jest n w podstawie i n bocznych, czyli 2n (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Ostrosłup ma n+1 ścian, n+1 wierzchołków i 2n krawędzi."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-4-6",
@@ -574,7 +782,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.4",
+          "title": "Ostrosłupy proste i prawidłowe: Pole całkowite i objętość (1/3 Pp*H)",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.4",
+          "title": "Ostrosłupy proste i prawidłowe: Pole całkowite i objętość (1/3 Pp*H)",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-5",
@@ -654,17 +934,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W ostrosłupie prawidłowym czworokątnym:\\\\1. Spodek wysokości ostrosłupa znajduje się w punkcie przecięcia przekątnych podstawy.\\\\2. Wszystkie krawędzie boczne mają jednakową długość.",
+            "content": "Oceń prawdziwość zdania: W ostrosłupie prawidłowym czworokątnym:\\ Spodek wysokości ostrosłupa znajduje się w punkcie przecięcia przekątnych podstawy.",
             "explanation": "1. Wynika z symetrii ostrosłupa prawidłowego (PRAWDA). 2. Z przystawania trójkątów prostokątnych krawędzie boczne są równe (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Ostrosłup prawidłowy ma pełną symetrię obrotową."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-5-6",
@@ -718,7 +996,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.5",
+          "title": "Ostrosłup prawidłowy czworokątny: Trójkąty prostokątne w bryle",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.5",
+          "title": "Ostrosłup prawidłowy czworokątny: Trójkąty prostokątne w bryle",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-6",
@@ -798,17 +1148,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Promień podstawy walca zwiększono $2$-krotnie, a wysokość zmniejszono $2$-krotnie.\\\\1. Pole powierzchni bocznej walca nie zmieniło się.\\\\2. Objętość walca wzrosła $2$-krotnie.",
+            "content": "Oceń prawdziwość zdania: Promień podstawy walca zwiększono $2$-krotnie, a wysokość zmniejszono $2$-krotnie.\\ Pole powierzchni bocznej walca nie zmieniło się.",
             "explanation": "1. P_b' = 2\\pi (2r) (H/2) = 2\\pi r H (PRAWDA). 2. V' = \\pi (2r)^2 (H/2) = \\pi (4r^2) (H/2) = 2\\pi r^2 H = 2V (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Wstaw 2r i H/2 do wzorów na pole boczne i objętość."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-6-6",
@@ -861,7 +1209,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.6",
+          "title": "Walec: Przekrój osiowy, pole powierzchni i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.6",
+          "title": "Walec: Przekrój osiowy, pole powierzchni i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-7",
@@ -941,17 +1361,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W stożku kąt rozwarcia ma miarę $90^\\circ$, a tworząca ma długość $l = 4\\sqrt{2}$.\\\\1. Promień podstawy stożka wynosi $r = 4$.\\\\2. Wysokość stożka wynosi $H = 4$.",
+            "content": "Oceń prawdziwość zdania: W stożku kąt rozwarcia ma miarę $90^\\circ$, a tworząca ma długość $l = 4\\sqrt{2}$.\\ Promień podstawy stożka wynosi $r = 4$.",
             "explanation": "Kąt rozwarcia 90° oznacza, że przekrój to trójkąt prostokątny równoramienny o ramionach l = 4\\sqrt{2}. Średnica 2r = l\\sqrt{2} = 8 => r = 4. Wysokość H = r = 4. Obie odpowiedzi są prawdziwe.",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przekrój to trójkąt prostokątny równoramienny."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-7-6",
@@ -1004,7 +1422,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.7",
+          "title": "Stożek: Tworząca l, pole powierzchni i objętość (1/3 pi r^2 H)",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.7",
+          "title": "Stożek: Tworząca l, pole powierzchni i objętość (1/3 pi r^2 H)",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-8",
@@ -1084,17 +1574,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Promień kuli zwiększono $3$-krotnie.\\\\1. Pole powierzchni kuli wzrosło $9$-krotnie.\\\\2. Objętość kuli wzrosła $27$-krotnie.",
+            "content": "Oceń prawdziwość zdania: Promień kuli zwiększono $3$-krotnie.\\ Pole powierzchni kuli wzrosło $9$-krotnie.",
             "explanation": "1. 3^2 = 9 (PRAWDA). 2. 3^3 = 27 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Pole rośnie z kwadratem skali (3^2), a objętość z sześcianem skali (3^3)."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-8-6",
@@ -1147,7 +1635,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.8",
+          "title": "Kula: Pole powierzchni i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.8",
+          "title": "Kula: Pole powierzchni i objętość",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-9",
@@ -1227,17 +1787,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W prostopadłościanie o podstawie kwadratowej kąt nachylenia przekątnej ściany bocznej do podstawy wynosi $\\beta$, a przekątnej bryły do podstawy wynosi $\\alpha$.\\\\1. Zawsze zachodzi $\\alpha < \\beta$.\\\\2. Rzutem przekątnej bryły na podstawę jest przekątna podstawy.",
+            "content": "Oceń prawdziwość zdania: W prostopadłościanie o podstawie kwadratowej kąt nachylenia przekątnej ściany bocznej do podstawy wynosi $\\beta$, a przekątnej bryły do podstawy wynosi $\\alpha$.\\ Zawsze zachodzi $\\alpha < \\beta$.",
             "explanation": "1. Przekątna podstawy jest dłuższa od krawędzi (a\\sqrt{2} > a), więc tg(alpha) = H/(a\\sqrt{2}) < H/a = tg(beta) => alpha < beta (PRAWDA). 2. Z definicji rzutu prostokątnego (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przekątna podstawy jest dłuższa niż bok podstawy."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-9-6",
@@ -1290,7 +1848,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.9",
+          "title": "Kąty w graniastosłupach: Kąt nachylenia przekątnej bryły",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.9",
+          "title": "Kąty w graniastosłupach: Kąt nachylenia przekątnej bryły",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-10",
@@ -1370,17 +2000,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W dowolnym ostrosłupie prawidłowym:\\\\1. Kąt nachylenia krawędzi bocznej do podstawy jest mniejszy od kąta nachylenia ściany bocznej do podstawy.\\\\2. Rzutem krawędzi bocznej na podstawę jest odcinek łączący wierzchołek podstawy ze spodkiem wysokości.",
+            "content": "Oceń prawdziwość zdania: W dowolnym ostrosłupie prawidłowym:\\ Kąt nachylenia krawędzi bocznej do podstawy jest mniejszy od kąta nachylenia ściany bocznej do podstawy.",
             "explanation": "1. Mianownik tg(alfa) to promień R, a mianownik tg(beta) to promień r. Ponieważ R > r, to tg(alfa) < tg(beta) => alfa < beta (PRAWDA). 2. Z definicji rzutu (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Promień okręgu opisanego R jest większy od promienia wpisanego r."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-10-6",
@@ -1434,7 +2062,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.10",
+          "title": "Kąty w ostrosłupach: Kąt krawędzi i ściany bocznej do podstawy",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.10",
+          "title": "Kąty w ostrosłupach: Kąt krawędzi i ściany bocznej do podstawy",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-11",
@@ -1514,17 +2214,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Każdy przekrój kuli płaszczyzną:\\\\1. Jest kołem.\\\\2. Ma największe pole, gdy płaszczyzna przechodzi przez środek kuli.",
+            "content": "Oceń prawdziwość zdania: Każdy przekrój kuli płaszczyzną:\\ Jest kołem.",
             "explanation": "1. Każde cięcie kuli płaszczyzną daje koło (PRAWDA). 2. Największe koło to koło wielkie o promieniu R (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przekrój kuli to zawsze koło o promieniu r <= R."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-11-6",
@@ -1577,7 +2275,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.11",
+          "title": "Przekroje wielościanów płaszczyzną",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.11",
+          "title": "Przekroje wielościanów płaszczyzną",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-12",
@@ -1657,17 +2427,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Kula o promieniu $R$ jest wpisana w walec.\\\\1. Wysokość walca wynosi $H = 2R$.\\\\2. Pole powierzchni całkowitej walca wynosi $6\\pi R^2$.",
+            "content": "Oceń prawdziwość zdania: Kula o promieniu $R$ jest wpisana w walec.\\ Wysokość walca wynosi $H = 2R$.",
             "explanation": "1. Walec opasuje kulę, więc H = 2R (PRAWDA). 2. P_c = 2\\pi R^2 + 2\\pi R(2R) = 2\\pi R^2 + 4\\pi R^2 = 6\\pi R^2 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Promień walca to R, a jego wysokość to 2R."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-12-6",
@@ -1720,7 +2488,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.12",
+          "title": "Bryły wpisane i opisane (wzajemne relacje)",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.12",
+          "title": "Bryły wpisane i opisane (wzajemne relacje)",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-13",
@@ -1800,17 +2640,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Oceń prawdziwość zdań:\\\\1. $1\\text{ m}^3$ mieści dokładnie $1000$ litrów wody.\\\\2. Kostka lodu o objętości $1\\text{ dm}^3$ waży w przybliżeniu około $1$ kg.",
+            "content": "Oceń prawdziwość zdania: $1\\text{ m}^3$ mieści dokładnie $1000$ litrów wody.",
             "explanation": "1. 1 m^3 = 1000 dm^3 = 1000 litrów (PRAWDA). 2. 1 litr wody to 1 kg, lód ma zbliżoną gęstość ok. 0,9 kg (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "1 dm^3 to dokładnie 1 litr."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-13-6",
@@ -1863,7 +2701,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.13",
+          "title": "Zadania praktyczne z geometrii przestrzennej",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.13",
+          "title": "Zadania praktyczne z geometrii przestrzennej",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-14",
@@ -1943,17 +2853,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dwa ostrosłupy są podobne w skali $k = 4$.\\\\1. Wysokość większego ostrosłupa jest $4$ razy większa.\\\\2. Objętość większego ostrosłupa jest $64$ razy większa.",
+            "content": "Oceń prawdziwość zdania: Dwa ostrosłupy są podobne w skali $k = 4$.\\ Wysokość większego ostrosłupa jest $4$ razy większa.",
             "explanation": "1. Wymiary liniowe rosną k-krotnie (PRAWDA). 2. Objętość rośnie k^3 = 4^3 = 64 razy (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "4^3 = 64."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-14-6",
@@ -2006,7 +2914,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.14",
+          "title": "Podobieństwo brył: Skala k, k^2 oraz k^3",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.14",
+          "title": "Podobieństwo brył: Skala k, k^2 oraz k^3",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       },
       {
         "id": "lesson-11-15",
@@ -2086,17 +3066,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W ostrosłupie prawidłowym czworokątnym krawędź podstawy to $a$, a wysokość to $H$.\\\\1. Przekrój płaszczyzną zawierającą dwie przeciwległe krawędzie boczne jest trójkątem o podstawie $a\\sqrt{2}$.\\\\2. Wysokość tego przekroju jest równa wysokości ostrosłupa $H$.",
+            "content": "Oceń prawdziwość zdania: W ostrosłupie prawidłowym czworokątnym krawędź podstawy to $a$, a wysokość to $H$.\\ Przekrój płaszczyzną zawierającą dwie przeciwległe krawędzie boczne jest trójkątem o podstawie $a\\sqrt{2}$.",
             "explanation": "1. Podstawą przekroju jest przekątna kwadratu a\\sqrt{2} (PRAWDA). 2. Przekrój zawiera wysokość ostrosłupa H (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Przekrój przechodzi przez przekątną podstawy i wierzchołek ostrosłupa."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-11-15-6",
@@ -2149,7 +3127,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "11.15",
+          "title": "Podsumowanie stereometrii: Strategie rozwiązywania zadań",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "11.15",
+          "title": "Podsumowanie stereometrii: Strategie rozwiązywania zadań",
+          "formulas": [
+            {
+              "title": "Prostopadłościan i sześcian",
+              "latex": "V = abc, \\quad D = \\sqrt{a^2 + b^2 + c^2}, \\quad D_{\\text{sześcianu}} = a\\sqrt{3}"
+            },
+            {
+              "title": "Graniastosłup prosty",
+              "latex": "V = P_p \\cdot H, \\quad P_c = 2P_p + P_b"
+            },
+            {
+              "title": "Ostrosłup",
+              "latex": "V = \\frac{1}{3}P_p \\cdot H, \\quad P_c = P_p + P_b"
+            },
+            {
+              "title": "Walec",
+              "latex": "V = \\pi r^2 H, \\quad P_c = 2\\pi r^2 + 2\\pi r H"
+            },
+            {
+              "title": "Stożek",
+              "latex": "V = \\frac{1}{3}\\pi r^2 H, \\quad P_c = \\pi r^2 + \\pi r l, \\quad r^2 + H^2 = l^2"
+            },
+            {
+              "title": "Kula",
+              "latex": "V = \\frac{4}{3}\\pi R^3, \\quad P = 4\\pi R^2"
+            }
+          ],
+          "goldenRule": "W ostrosłupie i stożku ZAWSZE pamiętaj o ułamku $\\frac{1}{3}$ we wzorze na objętość: $V = \\frac{1}{3}P_p H$.",
+          "ckeTrap": {
+            "error": "V_{\\text{stożka}} = \\pi r^2 H",
+            "correct": "V_{\\text{stożka}} = \\frac{1}{3}\\pi r^2 H",
+            "description": "Bez ułamka $\\frac{1}{3}$ obliczasz objętość walca, a nie stożka!"
+          }
+        }
       }
     ],
     "final_test": {

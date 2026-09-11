@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
-import { Delete, ArrowLeft, ArrowRight, RotateCcw, Check, Sparkles } from 'lucide-react';
+import { Delete, ArrowLeft, ArrowRight, RotateCcw, Check, Eye } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
 interface SmartMathKeyboardProps {
@@ -191,7 +191,7 @@ export function SmartMathKeyboard({
         {/* Top subtle badge & quick clear */}
         <div className="w-full flex items-center justify-between text-[11px] font-bold text-[#8B8D98] mb-1">
           <span className="flex items-center gap-1.5 uppercase tracking-wider text-[#FFB800]">
-            <Sparkles size={12} /> Podgląd wzoru maturalnego
+            <Eye size={12} /> Podgląd wzoru maturalnego
           </span>
           {value.length > 0 && (
             <button

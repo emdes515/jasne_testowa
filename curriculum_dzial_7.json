@@ -82,17 +82,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Oceń prawdziwość zdań dla ciągu $a_n = 3n - 7$:\\\\1. Wyraz $a_2$ jest ujemny.\\\\2. Liczba $14$ jest wyrazem tego ciągu.",
+            "content": "Oceń prawdziwość zdania: Dla ciągu $a_n = 3n - 7$:\\ Wyraz $a_2$ jest ujemny.",
             "explanation": "1. a_2 = 3*2 - 7 = -1 < 0 (PRAWDA). 2. 3n - 7 = 14 <=> 3n = 21 <=> n = 7 (naturalna dodatnia, więc PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Dla zdania 1 oblicz a_2. Dla zdania 2 sprawdź, czy równanie 3n - 7 = 14 daje n będące liczbą naturalną."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-1-6",
@@ -145,7 +143,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.1",
+          "title": "Pojęcie ciągu liczbowego i obliczanie wyrazów z wzoru ogólnego",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.1",
+          "title": "Pojęcie ciągu liczbowego i obliczanie wyrazów z wzoru ogólnego",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-2",
@@ -225,17 +295,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg $a_n = n^2 - 16$.\\\\1. Ciąg ten ma dokładnie jeden wyraz równy $0$.\\\\2. Wyraz $a_5$ jest liczbą dodatnią.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg $a_n = n^2 - 16$.\\ Ciąg ten ma dokładnie jeden wyraz równy $0$.",
             "explanation": "1. n^2 - 16 = 0 <=> n = 4 (bo n = -4 odrzucamy, n naturalne). Dokładnie jeden wyraz: a_4 = 0 (PRAWDA). 2. a_5 = 25 - 16 = 9 > 0 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Pamiętaj, że n musi być dodatnie, więc n = -4 nie jest wyrazem ciągu."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-2-6",
@@ -288,7 +356,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.2",
+          "title": "Badanie znaków wyrazów ciągu: Wyrazy dodatnie i ujemne",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.2",
+          "title": "Badanie znaków wyrazów ciągu: Wyrazy dodatnie i ujemne",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-3",
@@ -340,17 +480,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg $a_n = \\frac{2}{n}$. Oceń prawdziwość zdań:\\\\1. Ciąg $(a_n)$ jest malejący.\\\\2. Wszystkie wyrazy ciągu są większe od $0$.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg $a_n = \\frac{2}{n}$. Oceń prawdziwość zdań:\\ Ciąg $(a_n)$ jest malejący.",
             "explanation": "1. Wraz ze wzrostem mianownika n ułamek 2/n maleje, więc ciąg jest malejący (PRAWDA). 2. Licznik i mianownik są dodatnie dla każdego n naturalnego dodatniego, więc a_n > 0 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Porównaj a_1 = 2, a_2 = 1, a_3 = 2/3."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-3-4",
@@ -431,7 +569,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.3",
+          "title": "Badanie monotoniczności ciągów: Różnica a_{n+1} - a_n",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.3",
+          "title": "Badanie monotoniczności ciągów: Różnica a_{n+1} - a_n",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-4",
@@ -511,17 +721,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg arytmetyczny o wyrazach $-8, -3, 2, 7, \\\\dots$\\\\1. Różnica tego ciągu wynosi $5$.\\\\2. Dziesiąty wyraz tego ciągu jest liczbą dodatnią.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg arytmetyczny o wyrazach $-8, -3, 2, 7, \\\\dots$\\ Różnica tego ciągu wynosi $5$.",
             "explanation": "1. r = -3 - (-8) = 5 (PRAWDA). 2. Skoro r = 5 > 0, to ciąg rośnie i już od 3. wyrazu jest dodatni (a_3 = 2), więc a_{10} > 0 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz r = a_2 - a_1."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-4-6",
@@ -574,7 +782,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.4",
+          "title": "Ciąg arytmetyczny 1: Rozpoznawanie i wyznaczanie różnicy r",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.4",
+          "title": "Ciąg arytmetyczny 1: Rozpoznawanie i wyznaczanie różnicy r",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-5",
@@ -654,17 +934,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg arytmetyczny $a_n = 6n - 2$.\\\\1. Pierwszy wyraz tego ciągu to $a_1 = 4$.\\\\2. Różnica tego ciągu wynosi $r = 6$.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg arytmetyczny $a_n = 6n - 2$.\\ Pierwszy wyraz tego ciągu to $a_1 = 4$.",
             "explanation": "1. a_1 = 6*1 - 2 = 4 (PRAWDA). 2. Różnica ciągu arytmetycznego zapisanego w postaci An + B to współczynnik przy n, czyli r = 6 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Podstaw n = 1 oraz n = 2 i sprawdź różnicę."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-5-6",
@@ -717,7 +995,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.5",
+          "title": "Ciąg arytmetyczny 2: Wzór ogólny a_n = a_1 + (n-1)r",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.5",
+          "title": "Ciąg arytmetyczny 2: Wzór ogólny a_n = a_1 + (n-1)r",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-6",
@@ -797,17 +1147,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg liczb: $\\sqrt{2} - 1, \\\\sqrt{2}, \\\\sqrt{2} + 1$.\\\\1. Podany ciąg jest ciągiem arytmetycznym.\\\\2. Różnica tego ciągu wynosi $1$.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg liczb: $\\sqrt{2} - 1, \\\\sqrt{2}, \\\\sqrt{2} + 1$.\\ Podany ciąg jest ciągiem arytmetycznym.",
             "explanation": "1. Średnia arytmetyczna skrajnych: (\\sqrt{2} - 1 + \\sqrt{2} + 1)/2 = 2\\sqrt{2}/2 = \\sqrt{2} (PRAWDA). 2. r = \\sqrt{2} - (\\sqrt{2} - 1) = 1 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz różnicę drugiego i pierwszego wyrazu oraz sprawdź średnią skrajnych."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-6-6",
@@ -860,7 +1208,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.6",
+          "title": "Ciąg arytmetyczny 3: Własność trzech sąsiednich wyrazów",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.6",
+          "title": "Ciąg arytmetyczny 3: Własność trzech sąsiednich wyrazów",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-7",
@@ -940,17 +1360,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg arytmetyczny o sumie $S_n = n^2 + n$.\\\\1. Drugi wyraz ciągu wynosi $a_2 = 4$.\\\\2. Różnica tego ciągu wynosi $r = 2$.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg arytmetyczny o sumie $S_n = n^2 + n$.\\ Drugi wyraz ciągu wynosi $a_2 = 4$.",
             "explanation": "S_1 = 1 + 1 = 2 => a_1 = 2. S_2 = 4 + 2 = 6 => a_2 = S_2 - S_1 = 6 - 2 = 4 (PRAWDA). r = a_2 - a_1 = 4 - 2 = 2 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Oblicz S_1 i S_2, pamiętając że a_2 = S_2 - S_1."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-7-6",
@@ -1003,7 +1421,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.7",
+          "title": "Ciąg arytmetyczny 4: Suma początkowych wyrazów S_n",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.7",
+          "title": "Ciąg arytmetyczny 4: Suma początkowych wyrazów S_n",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-8",
@@ -1083,17 +1573,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W pierwszym rzędzie teatru jest 12 miejsc, a w każdym kolejnym o 2 więcej. W teatrze jest 10 rzędów.\\\\1. W ostatnim rzędzie jest 30 miejsc.\\\\2. Łącznie w teatrze jest 210 miejsc.",
+            "content": "Oceń prawdziwość zdania: W pierwszym rzędzie teatru jest 12 miejsc, a w każdym kolejnym o 2 więcej. W teatrze jest 10 rzędów.\\ W ostatnim rzędzie jest 30 miejsc.",
             "explanation": "1. a_{10} = 12 + 9*2 = 30 (PRAWDA). 2. S_{10} = (12 + 30)/2 * 10 = 21 * 10 = 210 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Wyznacz a_{10} oraz sumę S_{10}."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-8-6",
@@ -1146,7 +1634,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.8",
+          "title": "Ciąg arytmetyczny 5: Zadania tekstowe i praktyczne",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.8",
+          "title": "Ciąg arytmetyczny 5: Zadania tekstowe i praktyczne",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-9",
@@ -1226,17 +1786,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg geometryczny o wyrazach $4, -8, 16, -32, \\\\dots$\\\\1. Iloraz tego ciągu wynosi $q = -2$.\\\\2. Wyraz $a_5$ jest liczbą dodatnią.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg geometryczny o wyrazach $4, -8, 16, -32, \\\\dots$\\ Iloraz tego ciągu wynosi $q = -2$.",
             "explanation": "1. q = -8 / 4 = -2 (PRAWDA). 2. a_5 = -32 * (-2) = 64 > 0 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Dla ujemnego q wyrazy mają naprzemienne znaki: +, -, +, -, +..."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-9-6",
@@ -1289,7 +1847,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.9",
+          "title": "Ciąg geometryczny 1: Rozpoznawanie i wyznaczanie ilorazu q",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.9",
+          "title": "Ciąg geometryczny 1: Rozpoznawanie i wyznaczanie ilorazu q",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-10",
@@ -1369,17 +1999,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg geometryczny o wzorze $a_n = 2 \\cdot (-1)^n$.\\\\1. Ciąg ten przyjmuje tylko dwie różne wartości: $-2$ oraz $2$.\\\\2. Wyraz $a_{100}$ jest równy $2$.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg geometryczny o wzorze $a_n = 2 \\cdot (-1)^n$.\\ Ciąg ten przyjmuje tylko dwie różne wartości: $-2$ oraz $2$.",
             "explanation": "1. (-1)^n to -1 dla n nieparzystych i 1 dla n parzystych, więc a_n przyjmuje na zmianę -2 i 2 (PRAWDA). 2. n = 100 jest parzyste, więc a_{100} = 2 * 1 = 2 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź wartość potęgi (-1)^n dla wykładnika parzystego i nieparzystego."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-10-6",
@@ -1432,7 +2060,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.10",
+          "title": "Ciąg geometryczny 2: Wzór ogólny a_n = a_1 * q^{n-1}",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.10",
+          "title": "Ciąg geometryczny 2: Wzór ogólny a_n = a_1 * q^{n-1}",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-11",
@@ -1512,17 +2212,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Liczby $1, \\sqrt{3}, 3$ w podanej kolejności tworzą ciąg.\\\\1. Jest to ciąg geometryczny o ilorazie $q = \\sqrt{3}$.\\\\2. Kwadrat wyrazu środkowego jest równy iloczynowi wyrazów skrajnych.",
+            "content": "Oceń prawdziwość zdania: Liczby $1, \\sqrt{3}, 3$ w podanej kolejności tworzą ciąg.\\ Jest to ciąg geometryczny o ilorazie $q = \\sqrt{3}$.",
             "explanation": "1. q = \\sqrt{3} / 1 = \\sqrt{3}, kolejny to \\sqrt{3} * \\sqrt{3} = 3 (PRAWDA). 2. (\\sqrt{3})^2 = 3 = 1 * 3 (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź, czy (\\sqrt{3})^2 = 1 * 3."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-11-6",
@@ -1575,7 +2273,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.11",
+          "title": "Ciąg geometryczny 3: Własność trzech sąsiednich wyrazów",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.11",
+          "title": "Ciąg geometryczny 3: Własność trzech sąsiednich wyrazów",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-12",
@@ -1655,17 +2425,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg geometryczny o wyrazach $a_1 = 5$ oraz $q = 1$.\\\\1. Suma $S_{10}$ tego ciągu wynosi $50$.\\\\2. Ciąg ten jest ciągiem stałym.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg geometryczny o wyrazach $a_1 = 5$ oraz $q = 1$.\\ Suma $S_{10}$ tego ciągu wynosi $50$.",
             "explanation": "1. Dla q = 1 każdy wyraz wynosi 5, więc S_{10} = 10 * 5 = 50 (PRAWDA). 2. Skoro każdy wyraz jest taki sam, ciąg jest stały (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Gdy q = 1, wzór ogólny na sumę to n * a_1."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-12-6",
@@ -1718,7 +2486,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.12",
+          "title": "Ciąg geometryczny 4: Suma początkowych wyrazów S_n",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.12",
+          "title": "Ciąg geometryczny 4: Suma początkowych wyrazów S_n",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-13",
@@ -1798,17 +2638,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Dany jest ciąg trzech liczb: $1, 2, 4$.\\\\1. Ciąg ten jest ciągiem geometrycznym.\\\\2. Jeśli do środkowej liczby dodamy $0{,}5$, otrzymamy ciąg arytmetyczny.",
+            "content": "Oceń prawdziwość zdania: Dany jest ciąg trzech liczb: $1, 2, 4$.\\ Ciąg ten jest ciągiem geometrycznym.",
             "explanation": "1. 2/1 = 4/2 = 2 (PRAWDA). 2. Liczby 1, 2.5, 4 mają różnicę r = 1.5, więc tworzą ciąg arytmetyczny (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Sprawdź iloraz dla pierwszego zdania i różnicę dla drugiego zdania."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-13-6",
@@ -1862,7 +2700,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.13",
+          "title": "Ciągi mieszane: Układy warunków arytmetycznych i geometrycznych",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.13",
+          "title": "Ciągi mieszane: Układy warunków arytmetycznych i geometrycznych",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-14",
@@ -1942,17 +2852,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "Pani Anna wpłaciła $10\\\\,000$ zł na lokatę roczną z kapitalizacją miesięczną i oprocentowaniem $12\\%$ w skali roku.\\\\1. Miesięczna stopa procentowa wynosi $1\\%$.\\\\2. Po roku liczba okresów kapitalizacji wynosi $12$.",
+            "content": "Oceń prawdziwość zdania: Pani Anna wpłaciła $10\\\\,000$ zł na lokatę roczną z kapitalizacją miesięczną i oprocentowaniem $12\\%$ w skali roku.\\ Miesięczna stopa procentowa wynosi $1\\%$.",
             "explanation": "1. 12% / 12 miesięcy = 1% na miesiąc (PRAWDA). 2. W roku jest 12 miesięcy, więc 12 kapitalizacji (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Podziel 12% przez 12 miesięcy w roku."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-14-6",
@@ -2005,7 +2913,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.14",
+          "title": "Procent składany: Lokaty, kapitalizacja odsetek i podatki",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.14",
+          "title": "Procent składany: Lokaty, kapitalizacja odsetek i podatki",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       },
       {
         "id": "lesson-7-15",
@@ -2085,17 +3065,15 @@
             "type": "TRUE_FALSE",
             "points": 1,
             "source": "Zadanie maturalne",
-            "content": "W ciągu arytmetycznym $a_{10} = 25$ oraz $a_{20} = 45$.\\\\1. Różnica ciągu wynosi $r = 2$.\\\\2. Suma $a_1 + a_{29}$ jest równa sumie $a_{10} + a_{20}$.",
+            "content": "Oceń prawdziwość zdania: W ciągu arytmetycznym $a_{10} = 25$ oraz $a_{20} = 45$.\\ Różnica ciągu wynosi $r = 2$.",
             "explanation": "1. 10r = 45 - 25 = 20 => r = 2 (PRAWDA). 2. Suma indeksów: 1 + 29 = 30 oraz 10 + 20 = 30, zatem sumy wyrazów są równe (PRAWDA).",
             "hint_cost": 10,
             "options": [
-              "1-PRAWDA, 2-PRAWDA",
-              "1-PRAWDA, 2-FAŁSZ",
-              "1-FAŁSZ, 2-PRAWDA",
-              "1-FAŁSZ, 2-FAŁSZ"
+              "Prawda",
+              "Fałsz"
             ],
-            "correct_answer": "1-PRAWDA, 2-PRAWDA",
-            "hint": "Porównaj sumy indeksów: 1 + 29 = 30 oraz 10 + 20 = 30."
+            "correct_answer": "Prawda",
+            "hint": "Sprawdź definicję i podstaw odpowiednie wartości."
           },
           {
             "id": "task-7-15-6",
@@ -2148,7 +3126,79 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "7.15",
+          "title": "Zadania dowodowe i nietypowe z ciągów liczbowych",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "7.15",
+          "title": "Zadania dowodowe i nietypowe z ciągów liczbowych",
+          "formulas": [
+            {
+              "title": "Wzór ogólny ciągu arytmetycznego",
+              "latex": "a_n = a_1 + (n - 1)r"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu arytmetycznego",
+              "latex": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu arytmetycznego",
+              "latex": "S_n = \\frac{a_1 + a_n}{2} \\cdot n = \\frac{2a_1 + (n-1)r}{2} \\cdot n"
+            },
+            {
+              "title": "Wzór ogólny ciągu geometrycznego",
+              "latex": "a_n = a_1 \\cdot q^{n-1}"
+            },
+            {
+              "title": "Trzy kolejne wyrazy ciągu geometrycznego",
+              "latex": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+            },
+            {
+              "title": "Suma n wyrazów ciągu geometrycznego",
+              "latex": "S_n = a_1 \\frac{1 - q^n}{1 - q} \\quad (q \\neq 1)"
+            }
+          ],
+          "goldenRule": "Środkowy wyraz ciągu arytmetycznego to średnia arytmetyczna sąsiadów: $2a_2 = a_1 + a_3$. Dla geometrycznego kwadrat środkowego to iloczyn: $a_2^2 = a_1 \\cdot a_3$.",
+          "ckeTrap": {
+            "error": "a_n = 3 \\cdot 2^{n-1} \\implies a_1 = 3 \\cdot 2^0 = 0",
+            "correct": "a_1 = 3 \\cdot 2^0 = 3 \\cdot 1 = 3",
+            "description": "Każda niezerowa liczba podniesiona do potęgi zerowej wynosi 1 ($2^0 = 1$)!"
+          }
+        }
       }
     ],
     "final_test": {

@@ -152,7 +152,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.1",
+          "title": "Średnia arytmetyczna liczb",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.1",
+          "title": "Średnia arytmetyczna liczb",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-2",
@@ -303,7 +367,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.2",
+          "title": "Średnia arytmetyczna z dwiema niewiadomymi",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.2",
+          "title": "Średnia arytmetyczna z dwiema niewiadomymi",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-3",
@@ -454,7 +582,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.3",
+          "title": "Średnia ważona",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.3",
+          "title": "Średnia ważona",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-4",
@@ -605,7 +797,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.4",
+          "title": "Mediana zestawu danych o nieparzystej liczbie elementów",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.4",
+          "title": "Mediana zestawu danych o nieparzystej liczbie elementów",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-5",
@@ -756,7 +1012,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.5",
+          "title": "Mediana zestawu danych o parzystej liczbie elementów",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.5",
+          "title": "Mediana zestawu danych o parzystej liczbie elementów",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-6",
@@ -907,7 +1227,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.6",
+          "title": "Dominanta zestawu danych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.6",
+          "title": "Dominanta zestawu danych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-7",
@@ -1058,7 +1442,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.7",
+          "title": "Wariancja zestawu danych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.7",
+          "title": "Wariancja zestawu danych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-8",
@@ -1209,7 +1657,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.8",
+          "title": "Odchylenie standardowe",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.8",
+          "title": "Odchylenie standardowe",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-9",
@@ -1360,7 +1872,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.9",
+          "title": "Przekształcenia liniowe danych statystycznych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.9",
+          "title": "Przekształcenia liniowe danych statystycznych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-10",
@@ -1511,7 +2087,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.10",
+          "title": "Analiza danych z tabeli częstości",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.10",
+          "title": "Analiza danych z tabeli częstości",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-11",
@@ -1662,7 +2302,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.11",
+          "title": "Interpretacja wykresów słupkowych i kołowych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.11",
+          "title": "Interpretacja wykresów słupkowych i kołowych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-12",
@@ -1813,7 +2517,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.12",
+          "title": "Błąd bezwzględny i błąd względny pomiaru",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.12",
+          "title": "Błąd bezwzględny i błąd względny pomiaru",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-13",
@@ -1964,7 +2732,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.13",
+          "title": "Własności miar statystycznych w zadaniach dowodowych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.13",
+          "title": "Własności miar statystycznych w zadaniach dowodowych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-14",
@@ -2115,7 +2947,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.14",
+          "title": "Mediana i średnia z niewiadomymi w zadaniach tekstowych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.14",
+          "title": "Mediana i średnia z niewiadomymi w zadaniach tekstowych",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       },
       {
         "id": "lesson-14-15",
@@ -2266,7 +3162,71 @@
         ],
         "estimated_time_minutes": 5,
         "estimated_time_formatted": "~5 min",
-        "required_correct_tasks": 3
+        "required_correct_tasks": 3,
+        "formula_sheet": {
+          "lessonId": "14.15",
+          "title": "Złożone zadania maturalne ze statystyki",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "14.15",
+          "title": "Złożone zadania maturalne ze statystyki",
+          "formulas": [
+            {
+              "title": "Średnia arytmetyczna",
+              "latex": "\\overline{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n}"
+            },
+            {
+              "title": "Średnia ważona",
+              "latex": "\\overline{x}_w = \\frac{x_1 w_1 + x_2 w_2 + \\cdots + x_k w_k}{w_1 + w_2 + \\cdots + w_k}"
+            },
+            {
+              "title": "Mediana",
+              "latex": "Me = \\begin{cases} x_{\\frac{n+1}{2}} & \\text{dla } n \\text{ nieparzystego} \\\\[6pt] \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2} & \\text{dla } n \\text{ parzystego} \\end{cases}"
+            },
+            {
+              "title": "Wariancja",
+              "latex": "\\sigma^2 = \\frac{(x_1 - \\overline{x})^2 + \\cdots + (x_n - \\overline{x})^2}{n}"
+            },
+            {
+              "title": "Odchylenie standardowe",
+              "latex": "\\sigma = \\sqrt{\\sigma^2}"
+            }
+          ],
+          "goldenRule": "Zanim wyznaczysz medianę, ZAWSZE posortuj liczby w kolejności NIEMALEJĄCEJ (od najmniejszej do największej)!",
+          "ckeTrap": {
+            "error": "\\text{Mediana } (5, 1, 9) = 1",
+            "correct": "\\text{Po posortowaniu: } (1, 5, 9) \\implies Me = 5",
+            "description": "Bez uporządkowania danych mediana jest błędna!"
+          }
+        }
       }
     ]
   }

@@ -135,7 +135,63 @@
             "hint_cost": 20,
             "id": "task-1-1-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.1",
+          "title": "Przedziały liczbowe i interpretacja na osi",
+          "formulas": [
+            {
+              "title": "Przedział obustronnie otwarty",
+              "latex": "x \\in (a, b) \\iff a < x < b"
+            },
+            {
+              "title": "Przedział obustronnie domknięty",
+              "latex": "x \\in \\langle a, b \\rangle \\iff a \\le x \\le b"
+            },
+            {
+              "title": "Przedział lewostronnie domknięty",
+              "latex": "x \\in \\langle a, b) \\iff a \\le x < b"
+            },
+            {
+              "title": "Przedział prawostronnie domknięty",
+              "latex": "x \\in (a, b \\rangle \\iff a < x \\le b"
+            }
+          ],
+          "goldenRule": "Nawias ostry $\\langle$ lub $\\rangle$ oznacza włączenie liczby do zbioru (nierówność $\\le, \\ge$). Nawias okrągły $($ lub $)$ wyklucza liczbę graniczną ($<, >$).",
+          "ckeTrap": {
+            "error": "x \\in (2, 5\\rangle \\implies x = 2",
+            "correct": "x \\in (2, 5\\rangle \\implies x > 2 \\text{ i } x \\le 5 \\implies x \\in \\{3, 4, 5\\} \\text{ dla } x \\in \\mathbb{C}",
+            "description": "Nawias okrągły wyklucza punkt brzegowy! Liczba 2 nie należy do przedziału."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.1",
+          "title": "Przedziały liczbowe i interpretacja na osi",
+          "formulas": [
+            {
+              "title": "Przedział obustronnie otwarty",
+              "latex": "x \\in (a, b) \\iff a < x < b"
+            },
+            {
+              "title": "Przedział obustronnie domknięty",
+              "latex": "x \\in \\langle a, b \\rangle \\iff a \\le x \\le b"
+            },
+            {
+              "title": "Przedział lewostronnie domknięty",
+              "latex": "x \\in \\langle a, b) \\iff a \\le x < b"
+            },
+            {
+              "title": "Przedział prawostronnie domknięty",
+              "latex": "x \\in (a, b \\rangle \\iff a < x \\le b"
+            }
+          ],
+          "goldenRule": "Nawias ostry $\\langle$ lub $\\rangle$ oznacza włączenie liczby do zbioru (nierówność $\\le, \\ge$). Nawias okrągły $($ lub $)$ wyklucza liczbę graniczną ($<, >$).",
+          "ckeTrap": {
+            "error": "x \\in (2, 5\\rangle \\implies x = 2",
+            "correct": "x \\in (2, 5\\rangle \\implies x > 2 \\text{ i } x \\le 5 \\implies x \\in \\{3, 4, 5\\} \\text{ dla } x \\in \\mathbb{C}",
+            "description": "Nawias okrągły wyklucza punkt brzegowy! Liczba 2 nie należy do przedziału."
+          }
+        }
       },
       {
         "id": "lesson-1-2",
@@ -274,7 +330,55 @@
             "hint_cost": 20,
             "id": "task-1-2-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.2",
+          "title": "Liczby wymierne i niewymierne: Rozwinięcia dziesiętne",
+          "formulas": [
+            {
+              "title": "Suma zbiorów",
+              "latex": "A \\cup B = \\{x: x \\in A \\lor x \\in B\\}"
+            },
+            {
+              "title": "Iloczyn (część wspólna) zbiorów",
+              "latex": "A \\cap B = \\{x: x \\in A \\land x \\in B\\}"
+            },
+            {
+              "title": "Różnica zbiorów",
+              "latex": "A \\setminus B = \\{x: x \\in A \\land x \\notin B\\}"
+            }
+          ],
+          "goldenRule": "Rysuj przedziały na jednej osi liczbowej. Iloczyn $A \\cap B$ to obszar, gdzie oba przedziały się nakładają (podwójne kreskowanie).",
+          "ckeTrap": {
+            "error": "\\langle 1, 4) \\cap \\langle 4, 7\\rangle = \\{4\\}",
+            "correct": "\\langle 1, 4) \\cap \\langle 4, 7\\rangle = \\emptyset",
+            "description": "Liczba 4 nie należy do pierwszego przedziału (nawias okrągły), więc nie może należeć do części wspólnej!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.2",
+          "title": "Liczby wymierne i niewymierne: Rozwinięcia dziesiętne",
+          "formulas": [
+            {
+              "title": "Suma zbiorów",
+              "latex": "A \\cup B = \\{x: x \\in A \\lor x \\in B\\}"
+            },
+            {
+              "title": "Iloczyn (część wspólna) zbiorów",
+              "latex": "A \\cap B = \\{x: x \\in A \\land x \\in B\\}"
+            },
+            {
+              "title": "Różnica zbiorów",
+              "latex": "A \\setminus B = \\{x: x \\in A \\land x \\notin B\\}"
+            }
+          ],
+          "goldenRule": "Rysuj przedziały na jednej osi liczbowej. Iloczyn $A \\cap B$ to obszar, gdzie oba przedziały się nakładają (podwójne kreskowanie).",
+          "ckeTrap": {
+            "error": "\\langle 1, 4) \\cap \\langle 4, 7\\rangle = \\{4\\}",
+            "correct": "\\langle 1, 4) \\cap \\langle 4, 7\\rangle = \\emptyset",
+            "description": "Liczba 4 nie należy do pierwszego przedziału (nawias okrągły), więc nie może należeć do części wspólnej!"
+          }
+        }
       },
       {
         "id": "lesson-1-3",
@@ -401,7 +505,55 @@
             "hint_cost": 20,
             "id": "task-1-3-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.3",
+          "title": "Ułamki zwykłe: Dodawanie, odejmowanie i wspólny mianownik",
+          "formulas": [
+            {
+              "title": "Podzielność przez 3 i 9",
+              "latex": "3 | n \\iff 3 | (\\text{suma cyfr } n)"
+            },
+            {
+              "title": "Podzielność przez 4",
+              "latex": "4 | n \\iff 4 | (\\text{dwie ostatnie cyfry } n)"
+            },
+            {
+              "title": "Rozkład na czynniki pierwsze",
+              "latex": "n = p_1^{k_1} \\cdot p_2^{k_2} \\cdots p_m^{k_m}"
+            }
+          ],
+          "goldenRule": "Liczba pierwsza ma dokładnie dwa różne dzielniki: 1 oraz samą siebie. Liczby 0 i 1 NIE SĄ liczbami pierwszymi!",
+          "ckeTrap": {
+            "error": "1 \\text{ jest liczbą pierwszą}",
+            "correct": "1 \\text{ nie jest liczbą pierwszą}",
+            "description": "Najmniejszą liczbą pierwszą jest 2 (jedyna parzysta liczba pierwsza)."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.3",
+          "title": "Ułamki zwykłe: Dodawanie, odejmowanie i wspólny mianownik",
+          "formulas": [
+            {
+              "title": "Podzielność przez 3 i 9",
+              "latex": "3 | n \\iff 3 | (\\text{suma cyfr } n)"
+            },
+            {
+              "title": "Podzielność przez 4",
+              "latex": "4 | n \\iff 4 | (\\text{dwie ostatnie cyfry } n)"
+            },
+            {
+              "title": "Rozkład na czynniki pierwsze",
+              "latex": "n = p_1^{k_1} \\cdot p_2^{k_2} \\cdots p_m^{k_m}"
+            }
+          ],
+          "goldenRule": "Liczba pierwsza ma dokładnie dwa różne dzielniki: 1 oraz samą siebie. Liczby 0 i 1 NIE SĄ liczbami pierwszymi!",
+          "ckeTrap": {
+            "error": "1 \\text{ jest liczbą pierwszą}",
+            "correct": "1 \\text{ nie jest liczbą pierwszą}",
+            "description": "Najmniejszą liczbą pierwszą jest 2 (jedyna parzysta liczba pierwsza)."
+          }
+        }
       },
       {
         "id": "lesson-1-4",
@@ -528,7 +680,47 @@
             "hint_cost": 20,
             "id": "task-1-4-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.4",
+          "title": "Ułamki zwykłe: Mnożenie, dzielenie i reguły skracania",
+          "formulas": [
+            {
+              "title": "Liczba wymierna",
+              "latex": "x \\in \\mathbb{Q} \\iff x = \\frac{m}{n}, \\quad m \\in \\mathbb{C}, n \\in \\mathbb{C} \\setminus \\{0\\}"
+            },
+            {
+              "title": "Liczba niewymierna",
+              "latex": "x \\in \\mathbb{R} \\setminus \\mathbb{Q} \\quad (\\text{np. } \\sqrt{2}, \\sqrt{3}, \\pi)"
+            }
+          ],
+          "goldenRule": "Pierwiastek z liczby całkowitej, która nie jest kwadratem, jest ZAWSZE liczbą niewymierną.",
+          "ckeTrap": {
+            "error": "\\sqrt{16} \\text{ jest niewymierna}",
+            "correct": "\\sqrt{16} = 4 \\in \\mathbb{W} \\text{ (wymierna)}",
+            "description": "Zawsze uprość pierwiastek przed oceną jego wymierności!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.4",
+          "title": "Ułamki zwykłe: Mnożenie, dzielenie i reguły skracania",
+          "formulas": [
+            {
+              "title": "Liczba wymierna",
+              "latex": "x \\in \\mathbb{Q} \\iff x = \\frac{m}{n}, \\quad m \\in \\mathbb{C}, n \\in \\mathbb{C} \\setminus \\{0\\}"
+            },
+            {
+              "title": "Liczba niewymierna",
+              "latex": "x \\in \\mathbb{R} \\setminus \\mathbb{Q} \\quad (\\text{np. } \\sqrt{2}, \\sqrt{3}, \\pi)"
+            }
+          ],
+          "goldenRule": "Pierwiastek z liczby całkowitej, która nie jest kwadratem, jest ZAWSZE liczbą niewymierną.",
+          "ckeTrap": {
+            "error": "\\sqrt{16} \\text{ jest niewymierna}",
+            "correct": "\\sqrt{16} = 4 \\in \\mathbb{W} \\text{ (wymierna)}",
+            "description": "Zawsze uprość pierwiastek przed oceną jego wymierności!"
+          }
+        }
       },
       {
         "id": "lesson-1-5",
@@ -657,7 +849,55 @@
             "hint_cost": 20,
             "id": "task-1-5-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.5",
+          "title": "Procenty: Obliczenia procentowe, podwyżki i obniżki cen",
+          "formulas": [
+            {
+              "title": "Ułamek okresowy na ułamek zwykły",
+              "latex": "0,(3) = \\frac{3}{9} = \\frac{1}{3}, \\quad 0,(a) = \\frac{a}{9}"
+            },
+            {
+              "title": "Mnożenie ułamków",
+              "latex": "\\frac{a}{b} \\cdot \\frac{c}{d} = \\frac{a \\cdot c}{b \\cdot d}"
+            },
+            {
+              "title": "Dzielenie ułamków",
+              "latex": "\\frac{a}{b} : \\frac{c}{d} = \\frac{a}{b} \\cdot \\frac{d}{c} = \\frac{ad}{bc}"
+            }
+          ],
+          "goldenRule": "Przy dodawaniu i odejmowaniu ułamków ZAWSZE sprowadzaj do wspólnego mianownika (NWW).",
+          "ckeTrap": {
+            "error": "\\frac{a}{b} + \\frac{c}{d} = \\frac{a+c}{b+d}",
+            "correct": "\\frac{a}{b} + \\frac{c}{d} = \\frac{ad + bc}{bd}",
+            "description": "Nigdy nie dodawaj mianowników!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.5",
+          "title": "Procenty: Obliczenia procentowe, podwyżki i obniżki cen",
+          "formulas": [
+            {
+              "title": "Ułamek okresowy na ułamek zwykły",
+              "latex": "0,(3) = \\frac{3}{9} = \\frac{1}{3}, \\quad 0,(a) = \\frac{a}{9}"
+            },
+            {
+              "title": "Mnożenie ułamków",
+              "latex": "\\frac{a}{b} \\cdot \\frac{c}{d} = \\frac{a \\cdot c}{b \\cdot d}"
+            },
+            {
+              "title": "Dzielenie ułamków",
+              "latex": "\\frac{a}{b} : \\frac{c}{d} = \\frac{a}{b} \\cdot \\frac{d}{c} = \\frac{ad}{bc}"
+            }
+          ],
+          "goldenRule": "Przy dodawaniu i odejmowaniu ułamków ZAWSZE sprowadzaj do wspólnego mianownika (NWW).",
+          "ckeTrap": {
+            "error": "\\frac{a}{b} + \\frac{c}{d} = \\frac{a+c}{b+d}",
+            "correct": "\\frac{a}{b} + \\frac{c}{d} = \\frac{ad + bc}{bd}",
+            "description": "Nigdy nie dodawaj mianowników!"
+          }
+        }
       },
       {
         "id": "lesson-1-6",
@@ -784,7 +1024,47 @@
             "hint_cost": 20,
             "id": "task-1-6-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.6",
+          "title": "Procenty: Błąd bezwzględny i błąd względny pomiaru",
+          "formulas": [
+            {
+              "title": "Definicja wartości bezwzględnej",
+              "latex": "|x| = \\begin{cases} x & \\text{dla } x \\ge 0 \\\\ -x & \\text{dla } x < 0 \\end{cases}"
+            },
+            {
+              "title": "Własności wartości bezwzględnej",
+              "latex": "|-x| = |x|, \\quad |x \\cdot y| = |x| \\cdot |y|, \\quad \\sqrt{x^2} = |x|"
+            }
+          ],
+          "goldenRule": "Gdy wyrażenie pod wartością bezwzględną jest ujemne, opuszczając pionowe kreski zmieniamy znak KAŻDEGO wyrazu: $|x - 3| = -(x - 3) = 3 - x$ dla $x < 3$.",
+          "ckeTrap": {
+            "error": "\\sqrt{(1 - \\sqrt{2})^2} = 1 - \\sqrt{2}",
+            "correct": "\\sqrt{(1 - \\sqrt{2})^2} = |1 - \\sqrt{2}| = \\sqrt{2} - 1",
+            "description": "Pierwiastek kwadratowy zawsze daje wynik nieujemny! Ponieważ $1 - \\sqrt{2} < 0$, wynikiem jest $\\sqrt{2} - 1$."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.6",
+          "title": "Procenty: Błąd bezwzględny i błąd względny pomiaru",
+          "formulas": [
+            {
+              "title": "Definicja wartości bezwzględnej",
+              "latex": "|x| = \\begin{cases} x & \\text{dla } x \\ge 0 \\\\ -x & \\text{dla } x < 0 \\end{cases}"
+            },
+            {
+              "title": "Własności wartości bezwzględnej",
+              "latex": "|-x| = |x|, \\quad |x \\cdot y| = |x| \\cdot |y|, \\quad \\sqrt{x^2} = |x|"
+            }
+          ],
+          "goldenRule": "Gdy wyrażenie pod wartością bezwzględną jest ujemne, opuszczając pionowe kreski zmieniamy znak KAŻDEGO wyrazu: $|x - 3| = -(x - 3) = 3 - x$ dla $x < 3$.",
+          "ckeTrap": {
+            "error": "\\sqrt{(1 - \\sqrt{2})^2} = 1 - \\sqrt{2}",
+            "correct": "\\sqrt{(1 - \\sqrt{2})^2} = |1 - \\sqrt{2}| = \\sqrt{2} - 1",
+            "description": "Pierwiastek kwadratowy zawsze daje wynik nieujemny! Ponieważ $1 - \\sqrt{2} < 0$, wynikiem jest $\\sqrt{2} - 1$."
+          }
+        }
       },
       {
         "id": "lesson-1-7",
@@ -919,7 +1199,55 @@
             "hint_cost": 20,
             "id": "task-1-7-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.7",
+          "title": "Potęgi: Prawa działań na potęgach i wspólna podstawa",
+          "formulas": [
+            {
+              "title": "Odległość na osi liczbowej",
+              "latex": "d(x, a) = |x - a|"
+            },
+            {
+              "title": "Nierówność $|x - a| \\le r$",
+              "latex": "|x - a| \\le r \\iff a - r \\le x \\le a + r \\iff x \\in \\langle a - r, a + r \\rangle"
+            },
+            {
+              "title": "Nierówność $|x - a| > r$",
+              "latex": "|x - a| > r \\iff x < a - r \\lor x > a + r"
+            }
+          ],
+          "goldenRule": "$|x - a| \\le r$ to przedział o środku $a$ i promieniu $r$. Środek $a = \\frac{x_1 + x_2}{2}$, promień $r = \\frac{x_2 - x_1}{2}$.",
+          "ckeTrap": {
+            "error": "|x| < -2 \\implies x < -2",
+            "correct": "|x| < -2 \\iff x \\in \\emptyset",
+            "description": "Wartość bezwzględna nigdy nie jest mniejsza od liczby ujemnej!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.7",
+          "title": "Potęgi: Prawa działań na potęgach i wspólna podstawa",
+          "formulas": [
+            {
+              "title": "Odległość na osi liczbowej",
+              "latex": "d(x, a) = |x - a|"
+            },
+            {
+              "title": "Nierówność $|x - a| \\le r$",
+              "latex": "|x - a| \\le r \\iff a - r \\le x \\le a + r \\iff x \\in \\langle a - r, a + r \\rangle"
+            },
+            {
+              "title": "Nierówność $|x - a| > r$",
+              "latex": "|x - a| > r \\iff x < a - r \\lor x > a + r"
+            }
+          ],
+          "goldenRule": "$|x - a| \\le r$ to przedział o środku $a$ i promieniu $r$. Środek $a = \\frac{x_1 + x_2}{2}$, promień $r = \\frac{x_2 - x_1}{2}$.",
+          "ckeTrap": {
+            "error": "|x| < -2 \\implies x < -2",
+            "correct": "|x| < -2 \\iff x \\in \\emptyset",
+            "description": "Wartość bezwzględna nigdy nie jest mniejsza od liczby ujemnej!"
+          }
+        }
       },
       {
         "id": "lesson-1-8",
@@ -1052,7 +1380,47 @@
             "hint_cost": 20,
             "id": "task-1-8-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.8",
+          "title": "Potęgi o wykładniku całkowitym ujemnym",
+          "formulas": [
+            {
+              "title": "Potęga o wykładniku naturalnym",
+              "latex": "a^n = \\underbrace{a \\cdot a \\cdots a}_{n \\text{ razy}}, \\quad a^0 = 1 \\text{ dla } a \\neq 0"
+            },
+            {
+              "title": "Potęga o wykładniku ujemnym",
+              "latex": "a^{-n} = \\frac{1}{a^n}, \\quad \\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^n"
+            }
+          ],
+          "goldenRule": "Ujemny wykładnik odwraca liczbę/ułamek do góry nogami: $\\left(\\frac{2}{3}\\right)^{-2} = \\left(\\frac{3}{2}\\right)^2 = \\frac{9}{4}$.",
+          "ckeTrap": {
+            "error": "(-2)^2 = -4",
+            "correct": "(-2)^2 = 4, \\quad -2^2 = -4",
+            "description": "Minus bez nawiasu nie jest potęgowany: $-2^2 = -(2^2) = -4$."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.8",
+          "title": "Potęgi o wykładniku całkowitym ujemnym",
+          "formulas": [
+            {
+              "title": "Potęga o wykładniku naturalnym",
+              "latex": "a^n = \\underbrace{a \\cdot a \\cdots a}_{n \\text{ razy}}, \\quad a^0 = 1 \\text{ dla } a \\neq 0"
+            },
+            {
+              "title": "Potęga o wykładniku ujemnym",
+              "latex": "a^{-n} = \\frac{1}{a^n}, \\quad \\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^n"
+            }
+          ],
+          "goldenRule": "Ujemny wykładnik odwraca liczbę/ułamek do góry nogami: $\\left(\\frac{2}{3}\\right)^{-2} = \\left(\\frac{3}{2}\\right)^2 = \\frac{9}{4}$.",
+          "ckeTrap": {
+            "error": "(-2)^2 = -4",
+            "correct": "(-2)^2 = 4, \\quad -2^2 = -4",
+            "description": "Minus bez nawiasu nie jest potęgowany: $-2^2 = -(2^2) = -4$."
+          }
+        }
       },
       {
         "id": "lesson-1-9",
@@ -1181,7 +1549,47 @@
             "hint_cost": 20,
             "id": "task-1-9-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.9",
+          "title": "Potęgi o wykładniku wymiernym i zapis pierwiastków",
+          "formulas": [
+            {
+              "title": "Potęga o wykładniku ułamkowym",
+              "latex": "a^{\\frac{m}{n}} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m \\quad (a \\ge 0, n \\ge 2)"
+            },
+            {
+              "title": "Pierwiastek jako potęga",
+              "latex": "\\sqrt{a} = a^{\\frac{1}{2}}, \\quad \\sqrt[3]{a} = a^{\\frac{1}{3}}"
+            }
+          ],
+          "goldenRule": "Mianownik wykładnika to zawsze STOPNIEŃ pierwiastka, a licznik to potęga liczby pod pierwiastkiem.",
+          "ckeTrap": {
+            "error": "8^{\\frac{2}{3}} = \\sqrt{8^3}",
+            "correct": "8^{\\frac{2}{3}} = (\\sqrt[3]{8})^2 = 2^2 = 4",
+            "description": "Mianownik 3 oznacza pierwiastek sześcienny, a nie kwadratowy!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.9",
+          "title": "Potęgi o wykładniku wymiernym i zapis pierwiastków",
+          "formulas": [
+            {
+              "title": "Potęga o wykładniku ułamkowym",
+              "latex": "a^{\\frac{m}{n}} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m \\quad (a \\ge 0, n \\ge 2)"
+            },
+            {
+              "title": "Pierwiastek jako potęga",
+              "latex": "\\sqrt{a} = a^{\\frac{1}{2}}, \\quad \\sqrt[3]{a} = a^{\\frac{1}{3}}"
+            }
+          ],
+          "goldenRule": "Mianownik wykładnika to zawsze STOPNIEŃ pierwiastka, a licznik to potęga liczby pod pierwiastkiem.",
+          "ckeTrap": {
+            "error": "8^{\\frac{2}{3}} = \\sqrt{8^3}",
+            "correct": "8^{\\frac{2}{3}} = (\\sqrt[3]{8})^2 = 2^2 = 4",
+            "description": "Mianownik 3 oznacza pierwiastek sześcienny, a nie kwadratowy!"
+          }
+        }
       },
       {
         "id": "lesson-1-10",
@@ -1314,7 +1722,63 @@
             "hint_cost": 20,
             "id": "task-1-10-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.10",
+          "title": "Pierwiastki: Mnożenie, dzielenie i wyłączanie czynnika",
+          "formulas": [
+            {
+              "title": "Iloczyn potęg o tej samej podstawie",
+              "latex": "a^r \\cdot a^s = a^{r+s}"
+            },
+            {
+              "title": "Iloraz potęg o tej samej podstawie",
+              "latex": "\\frac{a^r}{a^s} = a^{r-s}"
+            },
+            {
+              "title": "Potęga potęgi",
+              "latex": "(a^r)^s = a^{r \\cdot s}"
+            },
+            {
+              "title": "Potęga iloczynu i ilorazu",
+              "latex": "(ab)^r = a^r b^r, \\quad \\left(\\frac{a}{b}\\right)^r = \\frac{a^r}{b^r}"
+            }
+          ],
+          "goldenRule": "Sprowadzaj wszystkie potęgi do wspólnej podstawy będącej liczbą pierwszą (np. $4 = 2^2, 8 = 2^3, 9 = 3^2, 27 = 3^3$).",
+          "ckeTrap": {
+            "error": "2^3 \\cdot 2^4 = 4^7",
+            "correct": "2^3 \\cdot 2^4 = 2^{3+4} = 2^7",
+            "description": "Przy mnożeniu potęg o tej samej podstawie podstawa POZOSTAJE BEZ ZMIAN!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.10",
+          "title": "Pierwiastki: Mnożenie, dzielenie i wyłączanie czynnika",
+          "formulas": [
+            {
+              "title": "Iloczyn potęg o tej samej podstawie",
+              "latex": "a^r \\cdot a^s = a^{r+s}"
+            },
+            {
+              "title": "Iloraz potęg o tej samej podstawie",
+              "latex": "\\frac{a^r}{a^s} = a^{r-s}"
+            },
+            {
+              "title": "Potęga potęgi",
+              "latex": "(a^r)^s = a^{r \\cdot s}"
+            },
+            {
+              "title": "Potęga iloczynu i ilorazu",
+              "latex": "(ab)^r = a^r b^r, \\quad \\left(\\frac{a}{b}\\right)^r = \\frac{a^r}{b^r}"
+            }
+          ],
+          "goldenRule": "Sprowadzaj wszystkie potęgi do wspólnej podstawy będącej liczbą pierwszą (np. $4 = 2^2, 8 = 2^3, 9 = 3^2, 27 = 3^3$).",
+          "ckeTrap": {
+            "error": "2^3 \\cdot 2^4 = 4^7",
+            "correct": "2^3 \\cdot 2^4 = 2^{3+4} = 2^7",
+            "description": "Przy mnożeniu potęg o tej samej podstawie podstawa POZOSTAJE BEZ ZMIAN!"
+          }
+        }
       },
       {
         "id": "lesson-1-11",
@@ -1447,7 +1911,55 @@
             "hint_cost": 20,
             "id": "task-1-11-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.11",
+          "title": "Usuwanie niewymierności z mianownika ułamka",
+          "formulas": [
+            {
+              "title": "Definicja pierwiastka arytmetycznego",
+              "latex": "\\sqrt[n]{a} = b \\iff b^n = a \\quad (a, b \\ge 0)"
+            },
+            {
+              "title": "Pierwiastek nieparzystego stopnia",
+              "latex": "\\sqrt[3]{-a} = -\\sqrt[3]{a}"
+            },
+            {
+              "title": "Kwadrat pierwiastka",
+              "latex": "(\\sqrt{a})^2 = a \\text{ dla } a \\ge 0, \\quad \\sqrt{a^2} = |a|"
+            }
+          ],
+          "goldenRule": "Pierwiastek kwadratowy z liczby ujemnej nie istnieje w liczbach rzeczywistych, ale pierwiastek sześcienny z liczby ujemnej istnieje i jest ujemny: $\\sqrt[3]{-8} = -2$.",
+          "ckeTrap": {
+            "error": "\\sqrt{a + b} = \\sqrt{a} + \\sqrt{b}",
+            "correct": "\\sqrt{a + b} \\neq \\sqrt{a} + \\sqrt{b}",
+            "description": "Pierwiastek sumy to NIE suma pierwiastków! $\\sqrt{9 + 16} = \\sqrt{25} = 5 \\neq 3 + 4 = 7$."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.11",
+          "title": "Usuwanie niewymierności z mianownika ułamka",
+          "formulas": [
+            {
+              "title": "Definicja pierwiastka arytmetycznego",
+              "latex": "\\sqrt[n]{a} = b \\iff b^n = a \\quad (a, b \\ge 0)"
+            },
+            {
+              "title": "Pierwiastek nieparzystego stopnia",
+              "latex": "\\sqrt[3]{-a} = -\\sqrt[3]{a}"
+            },
+            {
+              "title": "Kwadrat pierwiastka",
+              "latex": "(\\sqrt{a})^2 = a \\text{ dla } a \\ge 0, \\quad \\sqrt{a^2} = |a|"
+            }
+          ],
+          "goldenRule": "Pierwiastek kwadratowy z liczby ujemnej nie istnieje w liczbach rzeczywistych, ale pierwiastek sześcienny z liczby ujemnej istnieje i jest ujemny: $\\sqrt[3]{-8} = -2$.",
+          "ckeTrap": {
+            "error": "\\sqrt{a + b} = \\sqrt{a} + \\sqrt{b}",
+            "correct": "\\sqrt{a + b} \\neq \\sqrt{a} + \\sqrt{b}",
+            "description": "Pierwiastek sumy to NIE suma pierwiastków! $\\sqrt{9 + 16} = \\sqrt{25} = 5 \\neq 3 + 4 = 7$."
+          }
+        }
       },
       {
         "id": "lesson-1-12",
@@ -1580,7 +2092,55 @@
             "hint_cost": 20,
             "id": "task-1-12-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.12",
+          "title": "Wzory skróconego mnożenia: Kwadrat sumy i różnicy",
+          "formulas": [
+            {
+              "title": "Mnożenie pierwiastków",
+              "latex": "\\sqrt[n]{a} \\cdot \\sqrt[n]{b} = \\sqrt[n]{a \\cdot b}"
+            },
+            {
+              "title": "Dzielenie pierwiastków",
+              "latex": "\\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}} = \\sqrt[n]{\\frac{a}{b}}"
+            },
+            {
+              "title": "Wyłączanie czynnika przed pierwiastek",
+              "latex": "\\sqrt{a^2 \\cdot b} = a\\sqrt{b}"
+            }
+          ],
+          "goldenRule": "Rozkładaj liczbę pod pierwiastkiem na iloczyn kwadratu liczby całkowitej: $\\sqrt{72} = \\sqrt{36 \\cdot 2} = 6\\sqrt{2}$.",
+          "ckeTrap": {
+            "error": "2\\sqrt{3} + 3\\sqrt{2} = 5\\sqrt{5}",
+            "correct": "2\\sqrt{3} + 3\\sqrt{2} \\text{ (nie da się zredukować)}",
+            "description": "Dodawać można tylko pierwiastki tego samego stopnia i o tej samej liczbie podpierwiastkowej: $2\\sqrt{3} + 5\\sqrt{3} = 7\\sqrt{3}$."
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.12",
+          "title": "Wzory skróconego mnożenia: Kwadrat sumy i różnicy",
+          "formulas": [
+            {
+              "title": "Mnożenie pierwiastków",
+              "latex": "\\sqrt[n]{a} \\cdot \\sqrt[n]{b} = \\sqrt[n]{a \\cdot b}"
+            },
+            {
+              "title": "Dzielenie pierwiastków",
+              "latex": "\\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}} = \\sqrt[n]{\\frac{a}{b}}"
+            },
+            {
+              "title": "Wyłączanie czynnika przed pierwiastek",
+              "latex": "\\sqrt{a^2 \\cdot b} = a\\sqrt{b}"
+            }
+          ],
+          "goldenRule": "Rozkładaj liczbę pod pierwiastkiem na iloczyn kwadratu liczby całkowitej: $\\sqrt{72} = \\sqrt{36 \\cdot 2} = 6\\sqrt{2}$.",
+          "ckeTrap": {
+            "error": "2\\sqrt{3} + 3\\sqrt{2} = 5\\sqrt{5}",
+            "correct": "2\\sqrt{3} + 3\\sqrt{2} \\text{ (nie da się zredukować)}",
+            "description": "Dodawać można tylko pierwiastki tego samego stopnia i o tej samej liczbie podpierwiastkowej: $2\\sqrt{3} + 5\\sqrt{3} = 7\\sqrt{3}$."
+          }
+        }
       },
       {
         "id": "lesson-1-13",
@@ -1707,7 +2267,47 @@
             "hint_cost": 20,
             "id": "task-1-13-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.13",
+          "title": "Logarytmy: Definicja i obliczanie wartości z definicji",
+          "formulas": [
+            {
+              "title": "Mianownik z pojedynczym pierwiastkiem",
+              "latex": "\\frac{a}{\\sqrt{b}} = \\frac{a\\sqrt{b}}{b}"
+            },
+            {
+              "title": "Mianownik z sumą/różnicą pierwiastków",
+              "latex": "\\frac{c}{\\sqrt{a} - \\sqrt{b}} = \\frac{c(\\sqrt{a} + \\sqrt{b})}{a - b}"
+            }
+          ],
+          "goldenRule": "Mnożymy licznik i mianownik przez sprzężenie mianownika ze zmienionym znakiem: dla $\\sqrt{a} - b$ sprzężeniem jest $\\sqrt{a} + b$ (wzór skróconego mnożenia $a^2 - b^2$).",
+          "ckeTrap": {
+            "error": "\\frac{2}{\\sqrt{3} - 1} = \\frac{2\\sqrt{3} - 2}{3 - 1}",
+            "correct": "\\frac{2(\\sqrt{3} + 1)}{(\\sqrt{3}-1)(\\sqrt{3}+1)} = \\frac{2(\\sqrt{3}+1)}{3 - 1} = \\sqrt{3} + 1",
+            "description": "Mnożymy przez wyrażenie z PRZECIWNYM znakiem!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.13",
+          "title": "Logarytmy: Definicja i obliczanie wartości z definicji",
+          "formulas": [
+            {
+              "title": "Mianownik z pojedynczym pierwiastkiem",
+              "latex": "\\frac{a}{\\sqrt{b}} = \\frac{a\\sqrt{b}}{b}"
+            },
+            {
+              "title": "Mianownik z sumą/różnicą pierwiastków",
+              "latex": "\\frac{c}{\\sqrt{a} - \\sqrt{b}} = \\frac{c(\\sqrt{a} + \\sqrt{b})}{a - b}"
+            }
+          ],
+          "goldenRule": "Mnożymy licznik i mianownik przez sprzężenie mianownika ze zmienionym znakiem: dla $\\sqrt{a} - b$ sprzężeniem jest $\\sqrt{a} + b$ (wzór skróconego mnożenia $a^2 - b^2$).",
+          "ckeTrap": {
+            "error": "\\frac{2}{\\sqrt{3} - 1} = \\frac{2\\sqrt{3} - 2}{3 - 1}",
+            "correct": "\\frac{2(\\sqrt{3} + 1)}{(\\sqrt{3}-1)(\\sqrt{3}+1)} = \\frac{2(\\sqrt{3}+1)}{3 - 1} = \\sqrt{3} + 1",
+            "description": "Mnożymy przez wyrażenie z PRZECIWNYM znakiem!"
+          }
+        }
       },
       {
         "id": "lesson-1-14",
@@ -1836,7 +2436,55 @@
             "hint_cost": 20,
             "id": "task-1-14-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.14",
+          "title": "Logarytmy: Działania na logarytmach o tej samej podstawie",
+          "formulas": [
+            {
+              "title": "Definicja logarytmu",
+              "latex": "\\log_a b = c \\iff a^c = b \\quad (a > 0, a \\neq 1, b > 0)"
+            },
+            {
+              "title": "Logarytmy podstawowe",
+              "latex": "\\log_a 1 = 0, \\quad \\log_a a = 1, \\quad a^{\\log_a b} = b"
+            },
+            {
+              "title": "Logarytm dziesiętny",
+              "latex": "\\log b = \\log_{10} b"
+            }
+          ],
+          "goldenRule": "Zawsze zadawaj pytanie: do jakiej potęgi muszę podnieść podstawę $a$, aby otrzymać liczbę logarytmowaną $b$?",
+          "ckeTrap": {
+            "error": "\\log_2 0 = 0",
+            "correct": "\\log_2 0 \\text{ nie istnieje (b > 0)}",
+            "description": "Liczba logarytmowana musi być ŚCIŚLE większa od zera!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.14",
+          "title": "Logarytmy: Działania na logarytmach o tej samej podstawie",
+          "formulas": [
+            {
+              "title": "Definicja logarytmu",
+              "latex": "\\log_a b = c \\iff a^c = b \\quad (a > 0, a \\neq 1, b > 0)"
+            },
+            {
+              "title": "Logarytmy podstawowe",
+              "latex": "\\log_a 1 = 0, \\quad \\log_a a = 1, \\quad a^{\\log_a b} = b"
+            },
+            {
+              "title": "Logarytm dziesiętny",
+              "latex": "\\log b = \\log_{10} b"
+            }
+          ],
+          "goldenRule": "Zawsze zadawaj pytanie: do jakiej potęgi muszę podnieść podstawę $a$, aby otrzymać liczbę logarytmowaną $b$?",
+          "ckeTrap": {
+            "error": "\\log_2 0 = 0",
+            "correct": "\\log_2 0 \\text{ nie istnieje (b > 0)}",
+            "description": "Liczba logarytmowana musi być ŚCIŚLE większa od zera!"
+          }
+        }
       },
       {
         "id": "lesson-1-15",
@@ -1969,7 +2617,63 @@
             "hint_cost": 20,
             "id": "task-1-15-8"
           }
-        ]
+        ],
+        "formula_sheet": {
+          "lessonId": "1.15",
+          "title": "Wartość bezwzględna liczby i interpretacja geometryczna",
+          "formulas": [
+            {
+              "title": "Logarytm iloczynu",
+              "latex": "\\log_a x + \\log_a y = \\log_a (x \\cdot y)"
+            },
+            {
+              "title": "Logarytm ilorazu",
+              "latex": "\\log_a x - \\log_a y = \\log_a \\left(\\frac{x}{y}\\right)"
+            },
+            {
+              "title": "Potęga w liczbie logarytmowanej",
+              "latex": "\\log_a (x^k) = k \\cdot \\log_a x"
+            },
+            {
+              "title": "Zamiana podstawy logarytmu",
+              "latex": "\\log_a b = \\frac{\\log_c b}{\\log_c a}"
+            }
+          ],
+          "goldenRule": "Zwijaj sumę i różnicę logarytmów o TEJ SAMEJ podstawie: $\\log_3 6 + \\log_3 1.5 = \\log_3 (6 \\cdot 1.5) = \\log_3 9 = 2$.",
+          "ckeTrap": {
+            "error": "\\log(x + y) = \\log x + \\log y",
+            "correct": "\\log(x \\cdot y) = \\log x + \\log y",
+            "description": "Suma logarytmów to logarytm iloczynu, a nie sumy!"
+          }
+        },
+        "formulaSheet": {
+          "lessonId": "1.15",
+          "title": "Wartość bezwzględna liczby i interpretacja geometryczna",
+          "formulas": [
+            {
+              "title": "Logarytm iloczynu",
+              "latex": "\\log_a x + \\log_a y = \\log_a (x \\cdot y)"
+            },
+            {
+              "title": "Logarytm ilorazu",
+              "latex": "\\log_a x - \\log_a y = \\log_a \\left(\\frac{x}{y}\\right)"
+            },
+            {
+              "title": "Potęga w liczbie logarytmowanej",
+              "latex": "\\log_a (x^k) = k \\cdot \\log_a x"
+            },
+            {
+              "title": "Zamiana podstawy logarytmu",
+              "latex": "\\log_a b = \\frac{\\log_c b}{\\log_c a}"
+            }
+          ],
+          "goldenRule": "Zwijaj sumę i różnicę logarytmów o TEJ SAMEJ podstawie: $\\log_3 6 + \\log_3 1.5 = \\log_3 (6 \\cdot 1.5) = \\log_3 9 = 2$.",
+          "ckeTrap": {
+            "error": "\\log(x + y) = \\log x + \\log y",
+            "correct": "\\log(x \\cdot y) = \\log x + \\log y",
+            "description": "Suma logarytmów to logarytm iloczynu, a nie sumy!"
+          }
+        }
       }
     ],
     "final_test": {

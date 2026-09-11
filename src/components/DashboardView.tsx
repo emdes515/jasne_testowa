@@ -3,19 +3,30 @@ import {
   Flame, 
   Check, 
   Play, 
-  ArrowRight,
-  BarChart3,
-  CheckCircle2,
-  Zap,
-  Clock
+  ArrowRight, 
+  BarChart3, 
+  CheckCircle2, 
+  Zap, 
+  Clock,
+  BookOpen,
+  Calculator,
+  Globe,
+  Dna,
+  FlaskConical,
+  Lock
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
 import { UserState } from '../types';
 import { mathTopics } from '../data/mathTasks';
+import { defaultPolishTopics } from '../data/polishCurriculum';
 import { getLessonsForTopic } from './LearnView';
 import { drawSessionTasks } from '../data/dzial1TaskPool';
 import { curriculumRepository } from '../services/curriculumRepository';
+import { PredictorWidget } from './PredictorWidget';
+import { PredictorDetailsModal } from './PredictorDetailsModal';
+import { calculateMaturaPrediction } from '../lib/maturaPredictor';
+import { CKE_AVAILABLE_SUBJECTS } from '../data/ckeSubjectWeights';
 
 interface DashboardViewProps {
   onNavigate?: (tab: string, subTab?: string) => void;
@@ -26,6 +37,8 @@ interface DashboardViewProps {
   onStartTask?: (task: any, lessonTasks?: any[], lessonTitle?: string, nextLesson?: any) => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
   saveUserData?: (state: UserState) => void;
+  onOpenParentSponsor?: () => void;
+  onOpenProPopup?: () => void;
 }
 
 export function DashboardView({ 
@@ -34,7 +47,9 @@ export function DashboardView({
   completedTasks = [], 
   lessonMistakes = {},
   taskStars = {},
-  onStartTask 
+  onStartTask,
+  onOpenParentSponsor,
+  onOpenProPopup
 }: DashboardViewProps) {
   const streakDays = userState?.streakDays || 0;
 
@@ -136,24 +151,82 @@ export function DashboardView({
     );
   }, [streakDays, userState?.lastStreakDate, userState?.streakActiveDates]);
 
-  const [topics, setTopics] = useState<any[]>(() => mathTopics);
+  const [selectedSubjectKey, setSelectedSubjectKey] = useState<string>(() => {
+    try {
+      return localStorage.getItem('matura_quest_selected_subject') || 'math';
+    } catch {
+      return 'math';
+    }
+  });
+
+  const [topics, setTopics] = useState<any[]>(() => 
+    selectedSubjectKey === 'pol' ? defaultPolishTopics : mathTopics
+  );
 
   useEffect(() => {
     let isSubscribed = true;
-    curriculumRepository.getTopics().then(loaded => {
+    const firestoreSubjectId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
+    const fallbackTopics = selectedSubjectKey === 'pol' ? defaultPolishTopics : mathTopics;
+    setTopics(fallbackTopics);
+
+    curriculumRepository.getTopics(firestoreSubjectId).then(loaded => {
       if (isSubscribed && loaded && loaded.length > 0) {
         setTopics(loaded);
       }
     });
     return () => { isSubscribed = false; };
-  }, []);
+  }, [selectedSubjectKey]);
+
+  useEffect(() => {
+    const handleStorage = () => {
+      try {
+        const stored = localStorage.getItem('matura_quest_selected_subject') || 'math';
+        if (stored !== selectedSubjectKey) {
+          setSelectedSubjectKey(stored);
+        }
+      } catch {}
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, [selectedSubjectKey]);
+
+  const [showPredictorDetails, setShowPredictorDetails] = useState<boolean>(false);
+
+  const handleSelectSubject = (newSubjectKey: string) => {
+    setSelectedSubjectKey(newSubjectKey);
+    try {
+      localStorage.setItem('matura_quest_selected_subject', newSubjectKey);
+      window.dispatchEvent(new Event('storage'));
+    } catch {}
+  };
+
+  const currentSubjectId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
+
+  // Dynamiczny predyktor wyniku maturalnego CKE (obliczany w czasie rzeczywistym)
+  const maturaPrediction = useMemo(() => {
+    return calculateMaturaPrediction({
+      subjectId: currentSubjectId,
+      completedTasks,
+      lessonMistakes,
+      userLessonsCompleted: userState?.completed_lessons,
+      maturaAttempts: userState?.maturaAttempts,
+      maturaBestScore: userState?.maturaBestScore
+    });
+  }, [
+    currentSubjectId,
+    completedTasks,
+    lessonMistakes,
+    userState?.completed_lessons,
+    userState?.maturaAttempts,
+    userState?.maturaBestScore
+  ]);
 
   const nextUp = useMemo(() => {
     for (let topicIdx = 0; topicIdx < topics.length; topicIdx++) {
       const topic = topics[topicIdx];
       const lessons = getLessonsForTopic(topic);
       const incompleteLesson = lessons.find(l => {
-        const cleanId = l.id.replace('lesson-', '');
+        const cleanId = l.id.replace(/^(lesson-|pol-lesson-)/, '');
         const dotId = cleanId.replace('-', '.');
         const userLessons: string[] = (userState as any)?.completed_lessons || [];
         const isDone = 
@@ -177,7 +250,8 @@ export function DashboardView({
           lessonName: `${incompleteLesson.badge}: ${incompleteLesson.name}`,
           lessonBadge: incompleteLesson.badge,
           task: null,
-          groupTasks: [],
+          groupTasks: incompleteLesson.tasks || [],
+          incompleteLesson,
           completedCount: 0,
           totalCount: incompleteLesson.required_correct_tasks || 3
         };
@@ -188,29 +262,57 @@ export function DashboardView({
 
   const handleResumeClick = async () => {
     triggerHaptic('medium');
-    if (nextUp && onStartTask) {
-      const topicId = nextUp.topicId || 'dzial-1';
-      // 1 document read (0 if cached)
-      const lessonDoc = await curriculumRepository.getLesson(topicId, nextUp.groupId);
-      const tasks = lessonDoc?.tasks || [];
-      const poolResult = drawSessionTasks(nextUp.groupId, tasks);
-      const tasksToRun = (poolResult.sessionTasks && poolResult.sessionTasks.length > 0)
-        ? poolResult.sessionTasks
-        : tasks;
+    if (!nextUp) {
+      onNavigate?.('nauka');
+      return;
+    }
 
-      const sessionPayload = {
-        isSession: true,
-        lessonId: nextUp.groupId,
-        lessonTitle: nextUp.lessonName,
-        tasks: tasksToRun,
-        firstTask: tasksToRun[0],
-        allTasks: tasks,
-        formulaSheet: poolResult.formulaSheet || null,
-        theoryPill: lessonDoc?.theory_pill || poolResult.theoryPill,
-        allTaskIdsToMarkCompleted: tasks.map((t: any) => t.id)
-      };
+    const defaultTopicId = selectedSubjectKey === 'pol' ? 'pol-dzial-1' : 'dzial-1';
+    const topicId = nextUp.topicId || defaultTopicId;
+    const subjectFirestoreId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
 
-      onStartTask(sessionPayload, sessionPayload.tasks, sessionPayload.lessonTitle);
+    // 1 document read (0 if cached)
+    let lessonDoc: any = null;
+    try {
+      lessonDoc = await curriculumRepository.getLesson(topicId, nextUp.groupId, subjectFirestoreId);
+    } catch (err) {
+      console.warn('Could not fetch lesson from repository, falling back to local curriculum', err);
+    }
+
+    const localTasks = (nextUp.groupTasks && nextUp.groupTasks.length > 0)
+      ? nextUp.groupTasks
+      : ((nextUp as any).incompleteLesson?.tasks || []);
+    const tasks = (lessonDoc?.tasks && lessonDoc.tasks.length > 0) ? lessonDoc.tasks : localTasks;
+    const lessonFormulaSheet = lessonDoc?.formula_sheet || lessonDoc?.formulaSheet || (nextUp as any).incompleteLesson?.formula_sheet;
+    const poolResult = drawSessionTasks(nextUp.groupId, tasks, lessonFormulaSheet);
+    const tasksToRun = (poolResult.sessionTasks && poolResult.sessionTasks.length > 0)
+      ? poolResult.sessionTasks
+      : (tasks.length > 0 ? tasks : localTasks);
+
+    if (!tasksToRun || tasksToRun.length === 0) {
+      onNavigate?.('nauka');
+      return;
+    }
+
+    const sessionPayload = {
+      isSession: true,
+      isPolish: selectedSubjectKey === 'pol',
+      subjectId: subjectFirestoreId,
+      topicId,
+      lessonId: nextUp.groupId,
+      lessonTitle: nextUp.lessonName,
+      tasks: tasksToRun,
+      firstTask: tasksToRun[0],
+      allTasks: tasks,
+      formulaSheet: lessonFormulaSheet || poolResult.formulaSheet || (selectedSubjectKey === 'pol' ? (lessonDoc as any)?.leksykon || ((nextUp as any).incompleteLesson as any)?.leksykon || null : null),
+      theoryPill: lessonDoc?.theory_pill || poolResult.theoryPill || ((nextUp as any).incompleteLesson as any)?.theory_pill,
+      allTaskIdsToMarkCompleted: tasks.map((t: any) => t.id),
+      required_correct_tasks: (nextUp as any).incompleteLesson?.required_correct_tasks || poolResult.required_correct_tasks || 3,
+      estimated_time_formatted: (nextUp as any).incompleteLesson?.estimated_time_formatted || poolResult.estimated_time_formatted || '~5 min'
+    };
+
+    if (onStartTask) {
+      onStartTask(sessionPayload, tasksToRun, sessionPayload.lessonTitle);
     } else {
       onNavigate?.('nauka');
     }
@@ -222,19 +324,110 @@ export function DashboardView({
       className="flex flex-col p-4 sm:p-6 pt-5 pb-[140px] max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full overflow-x-hidden"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
+      {/* 0. PASEK WYBORU PRZEDMIOTU (GLOBAL DASHBOARD CONTEXT) */}
+      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 mb-3.5 scroll-smooth select-none">
+        {CKE_AVAILABLE_SUBJECTS.map((sub) => {
+          const isActive = sub.key === selectedSubjectKey;
+          const SubIcon = 
+            sub.iconName === 'math' ? Calculator :
+            sub.iconName === 'book' ? BookOpen :
+            sub.iconName === 'dna' ? Dna :
+            sub.iconName === 'flask' ? FlaskConical :
+            Globe;
+
+          return (
+            <button
+              key={sub.id}
+              type="button"
+              onClick={() => {
+                if (!sub.isAvailable) {
+                  triggerHaptic('medium');
+                  return;
+                }
+                triggerHaptic('light');
+                handleSelectSubject(sub.key);
+              }}
+              className={`group relative flex items-center gap-2.5 px-3.5 py-2 rounded-2xl text-xs font-bold transition-all duration-200 shrink-0 border cursor-pointer ${
+                isActive
+                  ? sub.key === 'pol'
+                    ? 'bg-gradient-to-r from-rose-500/20 via-rose-500/10 to-transparent border-rose-500/50 text-white shadow-[0_0_20px_rgba(244,63,94,0.25)]'
+                    : 'bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-transparent border-amber-500/50 text-white shadow-[0_0_20px_rgba(255,184,0,0.25)]'
+                  : sub.isAvailable
+                  ? 'bg-[#111726]/80 hover:bg-[#162033] border-white/5 hover:border-white/15 text-slate-400 hover:text-slate-200'
+                  : 'bg-black/30 border-white/5 text-slate-600 opacity-60 cursor-not-allowed'
+              }`}
+            >
+              <div 
+                className={`w-6 h-6 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                  isActive
+                    ? sub.key === 'pol' ? 'bg-rose-500 text-white' : 'bg-[#FFB800] text-slate-950'
+                    : 'bg-white/5 text-slate-400 group-hover:text-white'
+                }`}
+              >
+                <SubIcon size={13} />
+              </div>
+
+              <div className="flex flex-col text-left">
+                <div className="flex items-center gap-1.5 leading-none">
+                  <span className="font-extrabold text-[12px] tracking-tight">{sub.shortName}</span>
+                  {!sub.isAvailable ? (
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-white/5 text-slate-500 border border-white/5">
+                      Wkrótce
+                    </span>
+                  ) : isActive ? (
+                    <span 
+                      className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0"
+                      style={{ backgroundColor: sub.key === 'pol' ? '#F43F5E' : '#FFB800' }}
+                    />
+                  ) : null}
+                </div>
+                <span className="text-[10px] text-slate-400/80 font-medium leading-tight mt-0.5">
+                  {sub.examTag}
+                </span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* 1. DYNAMICZNY PREDYKTOR WYNIKU MATURALNEGO CKE */}
+      <PredictorWidget
+        result={maturaPrediction}
+        currentSubjectKey={selectedSubjectKey}
+        onOpenDetails={() => setShowPredictorDetails(true)}
+        onNavigate={onNavigate}
+      />
+
       {/* 1. KARTA BIEŻĄCEGO POSTĘPU: NASTĘPNY KROK W NAUCE */}
       <motion.div
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-        className="bg-[#121A26] border border-white/10 hover:border-[#FFB800]/40 rounded-2xl p-4 sm:p-5 mb-3.5 relative overflow-hidden transition-colors shadow-sm"
+        className={`border rounded-2xl p-4 sm:p-5 mb-3.5 relative overflow-hidden transition-colors shadow-sm ${
+          selectedSubjectKey === 'pol'
+            ? 'bg-[#18111A] border-rose-500/25 hover:border-rose-500/45'
+            : 'bg-[#121A26] border-white/10 hover:border-[#FFB800]/40'
+        }`}
       >
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-[10px] font-black uppercase text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full">
-              <Play size={10} fill="currentColor" />
-              <span>Następny Krok w Nauce</span>
-            </span>
+            <div className="flex items-center gap-2">
+              <span className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2 py-0.5 rounded-full border ${
+                selectedSubjectKey === 'pol'
+                  ? 'text-rose-400 bg-rose-500/15 border-rose-500/30'
+                  : 'text-amber-400 bg-amber-400/10 border-amber-400/20'
+              }`}>
+                <Play size={10} fill="currentColor" />
+                <span>Następny Krok w Nauce</span>
+              </span>
+              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                selectedSubjectKey === 'pol'
+                  ? 'bg-rose-500/10 border-rose-500/20 text-rose-300'
+                  : 'bg-amber-500/10 border-amber-500/20 text-amber-300'
+              }`}>
+                {selectedSubjectKey === 'pol' ? 'Język Polski' : 'Matematyka'}
+              </span>
+            </div>
             <span className="text-[11px] font-semibold text-slate-400">
               {nextUp ? `${nextUp.completedCount}/${nextUp.totalCount} kroków` : 'Wszystko zaliczone!'}
             </span>
@@ -252,14 +445,20 @@ export function DashboardView({
               )}
             </div>
 
-            <button
+            <motion.button
               id="dashboard-resume-learning-button"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.96 }}
               onClick={handleResumeClick}
-              className="shrink-0 bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-xl active:scale-95 transition-all flex items-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+              className={`shrink-0 font-bold text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-xl transition-all flex items-center gap-2 cursor-pointer relative overflow-hidden ${
+                selectedSubjectKey === 'pol'
+                  ? 'bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_25px_rgba(244,63,94,0.4)]'
+                  : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_25px_rgba(255,184,0,0.4)]'
+              }`}
             >
               <span>{nextUp ? 'WZNÓW NAUKĘ' : 'OTWÓRZ MAPĘ'}</span>
               <ArrowRight size={15} strokeWidth={2.5} />
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.div>
@@ -269,7 +468,7 @@ export function DashboardView({
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.05, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-        className="bg-gradient-to-br from-[#141A23] to-[#0B0E14] border border-[#F97316]/30 rounded-2xl p-4 sm:p-5 relative overflow-hidden shadow-[0_4px_20px_rgba(249,115,22,0.12)]"
+        className="bg-gradient-to-br from-[#141A23] to-[#0B0E14] border border-[#F97316]/30 rounded-2xl p-4 sm:p-5 relative overflow-hidden shadow-[0_4px_25px_rgba(249,115,22,0.15)] group"
       >
         <div className="absolute top-0 right-0 w-36 h-36 bg-[#F97316]/15 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#EA580C]/10 rounded-full blur-[30px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
@@ -277,7 +476,7 @@ export function DashboardView({
         <div className="flex items-center justify-between relative z-10 mb-3.5">
           <div className="pr-2">
             <div className="flex items-center gap-2">
-              <h3 className="font-display font-black text-[#F97316] text-lg sm:text-xl tracking-wide drop-shadow-[0_0_8px_rgba(249,115,22,0.4)]">
+              <h3 className="font-display font-black text-[#F97316] text-lg sm:text-xl tracking-wide drop-shadow-[0_0_12px_rgba(249,115,22,0.5)]">
                 {streakDays} {streakDays === 1 ? 'Dzień' : 'Dni'} z rzędu!
               </h3>
             </div>
@@ -288,8 +487,8 @@ export function DashboardView({
             </p>
           </div>
           
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-[0_0_15px_rgba(249,115,22,0.4)] border border-white/20 shrink-0">
-            <Flame size={20} className="text-white fill-white animate-pulse" />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-[0_0_18px_rgba(249,115,22,0.5)] border border-white/20 shrink-0">
+            <Flame size={20} className="text-white fill-white animate-flame-breath" />
           </div>
         </div>
 
@@ -303,7 +502,7 @@ export function DashboardView({
                     m.isCompleted
                       ? 'bg-[#F97316] text-white shadow-[0_0_12px_rgba(249,115,22,0.5)] border border-white/20'
                       : m.isTargetToday
-                      ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/15 shadow-[0_0_10px_rgba(249,115,22,0.3)] animate-pulse'
+                      ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/15 shadow-[0_0_12px_rgba(249,115,22,0.4)] animate-pulse'
                       : 'bg-white/5 border border-white/5 text-[#8B8D98]'
                   }`}
                   title={m.fullLabel}
@@ -311,7 +510,7 @@ export function DashboardView({
                   {m.isCompleted ? (
                     <Check size={16} strokeWidth={3} />
                   ) : m.isTargetToday ? (
-                    <Flame size={15} className="fill-[#F97316]" />
+                    <Flame size={15} className="fill-[#F97316] animate-flame-breath" />
                   ) : (
                     <span>{m.dayNumber}</span>
                   )}
@@ -321,7 +520,7 @@ export function DashboardView({
                     m.isCompleted 
                       ? 'text-[#F97316]' 
                       : m.isTargetToday 
-                      ? 'text-white' 
+                      ? 'text-white font-extrabold' 
                       : 'text-[#8B8D98]'
                   }`}
                 >
@@ -355,8 +554,11 @@ export function DashboardView({
           className="grid grid-cols-3 gap-2.5 sm:gap-3"
         >
           {/* KARTA 1: UKOŃCZONE ZADANIA */}
-          <div className="bg-[#121824]/80 border border-white/5 hover:border-white/10 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mb-3">
+          <motion.div 
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="bg-[#121824]/80 hover:bg-[#151E2E] border border-white/5 hover:border-emerald-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+          >
+            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200">
               <CheckCircle2 size={16} strokeWidth={2.2} />
             </div>
 
@@ -370,11 +572,14 @@ export function DashboardView({
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* KARTA 2: SKUTECZNOŚĆ */}
-          <div className="bg-[#121824]/80 border border-white/5 hover:border-white/10 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-[#FFB800] shrink-0 mb-3">
+          <motion.div 
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="bg-[#121824]/80 hover:bg-[#151E2E] border border-white/5 hover:border-amber-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+          >
+            <div className="w-8 h-8 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-[#FFB800] shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200">
               <Zap size={16} strokeWidth={2.2} />
             </div>
 
@@ -391,11 +596,14 @@ export function DashboardView({
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* KARTA 3: CZAS NAUKI */}
-          <div className="bg-[#121824]/80 border border-white/5 hover:border-white/10 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 mb-3">
+          <motion.div 
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="bg-[#121824]/80 hover:bg-[#151E2E] border border-white/5 hover:border-amber-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+          >
+            <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200">
               <Clock size={16} strokeWidth={2.2} />
             </div>
 
@@ -412,9 +620,27 @@ export function DashboardView({
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
+
+      {/* MODAL SZCZEGÓŁOWY I SYMULATOR PREDYKTORA */}
+      <PredictorDetailsModal
+        isOpen={showPredictorDetails}
+        onClose={() => setShowPredictorDetails(false)}
+        baseResult={maturaPrediction}
+        subjectId={currentSubjectId}
+        currentSubjectKey={selectedSubjectKey}
+        onSelectSubject={handleSelectSubject}
+        completedTasks={completedTasks}
+        lessonMistakes={lessonMistakes}
+        userLessonsCompleted={userState?.completed_lessons}
+        maturaAttempts={userState?.maturaAttempts}
+        maturaBestScore={userState?.maturaBestScore}
+        onNavigate={onNavigate}
+        onOpenParentSponsor={onOpenParentSponsor}
+        onOpenProPopup={onOpenProPopup}
+      />
     </div>
   );
 }
