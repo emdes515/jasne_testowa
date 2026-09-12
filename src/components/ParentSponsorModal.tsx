@@ -37,7 +37,7 @@ export const ParentSponsorModal: React.FC<ParentSponsorModalProps> = ({
   const displayName = customName.trim() || 'Twoje dziecko';
   const sponsorUrl = 'https://jasne.edu.pl/sponsor/matura-pro';
   
-  const sponsorMessage = `Cześć! Uczę się do matury z matematyki w aplikacji JASNE (https://jasne.edu.pl).
+  const sponsorMessage = `Cześć! Uczę się do egzaminu maturalnego w aplikacji JASNE. (https://jasne.edu.pl).
 
 Żebym mógł uczyć się bez limitów (nielimitowane serca, sprawdzanie zadań otwartych przez AI egzaminatora wg oficjalnego klucza CKE), potrzebuję pełnego konta PRO.
 

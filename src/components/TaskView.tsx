@@ -54,6 +54,11 @@ interface TaskViewProps {
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
 }
 
+export interface FormattedFormulaItem {
+  title?: string;
+  latex: string;
+}
+
 interface TheoryCardItem {
   title: string;
   badge?: string;
@@ -61,6 +66,7 @@ interface TheoryCardItem {
   concept_essence?: string;
   matura_context?: string;
   formulas?: string[];
+  structuredFormulas?: FormattedFormulaItem[];
   core_formulas?: string;
   formula_notes?: string;
   worked_example?: {
@@ -75,6 +81,41 @@ interface TheoryCardItem {
   trap_correct?: string;
   trap_note?: string;
   content?: string;
+}
+
+function extractStructuredFormulas(raw: any): FormattedFormulaItem[] {
+  if (!raw) return [];
+  const list = Array.isArray(raw) ? raw : [raw];
+  const results: FormattedFormulaItem[] = [];
+
+  for (const item of list) {
+    if (!item) continue;
+    if (typeof item === 'string') {
+      const trimmed = item.trim();
+      if (!trimmed) continue;
+      if (trimmed.startsWith('\\begin{aligned}') && trimmed.endsWith('\\end{aligned}')) {
+        results.push({ latex: trimmed });
+      } else if (trimmed.includes('\n')) {
+        const lines = trimmed.split('\n').map(l => l.trim()).filter(Boolean);
+        for (const line of lines) {
+          results.push({ latex: line });
+        }
+      } else {
+        results.push({ latex: trimmed });
+      }
+    } else if (typeof item === 'object') {
+      const latex = item.latex || item.formula || item.content_latex || item.content || item.math || item.def || '';
+      const title = item.title || item.name || item.label || item.description || '';
+      if (latex || title) {
+        results.push({
+          title: title ? String(title).trim() : undefined,
+          latex: latex ? String(latex).trim() : (title ? String(title).trim() : '')
+        });
+      }
+    }
+  }
+
+  return results;
 }
 
 function buildTheoryCards(theoryItem: any): TheoryCardItem[] {
@@ -95,26 +136,16 @@ function buildTheoryCards(theoryItem: any): TheoryCardItem[] {
     }
 
     // Card 2: Złote Wzory (Karty Wzorów)
-    const rawFormulas = pill.core_formulas || pill.core_formula || pill.coreFormulaLatex;
-    if (rawFormulas || (pill.formulas && pill.formulas.length > 0)) {
-      let formulasList: string[] = pill.formulas || [];
-      if (!formulasList || formulasList.length === 0) {
-        if (Array.isArray(rawFormulas)) {
-          formulasList = rawFormulas.map(f => String(f).trim()).filter(Boolean);
-        } else if (typeof rawFormulas === 'string') {
-          formulasList = rawFormulas
-            .split(/\n+|\$\$\s*\$\$|\\quad(?!\w)|,\s*(?=\\[a-zA-Z]+|[a-zA-Z0-9])/)
-            .map((f: string) => f.replace(/\$\$/g, '').trim())
-            .filter((f: string) => f.length > 0 && f !== ',');
-        }
-      }
-
+    const rawFormulas = pill.core_formulas || pill.core_formula || pill.coreFormulaLatex || pill.formulas;
+    if (rawFormulas && (Array.isArray(rawFormulas) ? rawFormulas.length > 0 : Boolean(rawFormulas))) {
+      const structured = extractStructuredFormulas(rawFormulas);
       cards.push({
         title: 'Złote Wzory i Zależności',
         badge: 'Karta Wzorów',
         type: 'formulas',
         core_formulas: typeof rawFormulas === 'string' ? rawFormulas : undefined,
-        formulas: formulasList,
+        structuredFormulas: structured,
+        formulas: structured.map(s => s.latex),
         formula_notes: pill.formula_notes
       });
     }
@@ -333,38 +364,65 @@ export function TaskView({
 
   // Parse or normalize options
   const normalizedOptions: TaskOption[] = (() => {
+    let result: TaskOption[] = [];
+    const targetRaw = String(activeTask.correct_answer || activeTask.correctAnswer || '').trim();
+    const normTarget = targetRaw.replace(/^Odp\s*/i, '').trim().toUpperCase();
+
     if (activeTask.options && Array.isArray(activeTask.options) && activeTask.options.length > 0) {
-      return activeTask.options.map((opt: any, idx: number) => {
+      result = activeTask.options.map((opt: any, idx: number) => {
+        const defaultLetter = ['A', 'B', 'C', 'D', 'E', 'F'][idx] || String(idx + 1);
         if (typeof opt === 'string') {
           const match = opt.match(/^([A-D1-4])[\.\)]\s*(.*)$/);
-          const optId = match ? match[1].toUpperCase() : (['A', 'B', 'C', 'D'][idx] || String(idx + 1));
+          const optId = match ? match[1].toUpperCase() : defaultLetter;
           const optText = match ? match[2].trim() : opt;
-          const targetRaw = String(activeTask.correct_answer || activeTask.correctAnswer || '').trim();
-          const normTarget = targetRaw.replace(/^Odp\s*/i, '').trim().toUpperCase();
           const isCorr = optId === normTarget || opt === targetRaw || targetRaw.startsWith(optId + '.');
           return { id: optId, text: optText, content_latex: optText, is_correct: isCorr };
         }
-        return opt;
+        const optId = opt.id || opt.key || opt.label || defaultLetter;
+        const optText = opt.text || opt.content_latex || opt.content || '';
+        const isCorr = Boolean(
+          opt.is_correct ||
+          opt.isCorrect ||
+          optId === normTarget ||
+          optId === targetRaw ||
+          targetRaw.startsWith(optId + '.') ||
+          (optText && targetRaw && optText.trim() === targetRaw)
+        );
+        return {
+          id: optId,
+          text: optText,
+          content_latex: optText,
+          is_correct: isCorr
+        };
       });
-    }
-    // Fallback: parse lines like "A) $3^3$" from legacy question string
-    if (activeTask.question) {
+    } else if (activeTask.question) {
+      // Fallback: parse lines like "A) $3^3$" from legacy question string
       const lines = activeTask.question.split('\n');
-      const parsed: TaskOption[] = [];
-      const key = (activeTask.officialKey || '').toUpperCase();
-
       lines.forEach((line: string) => {
         const match = line.match(/^([A-F])[\).]\s+(.*)/i);
         if (match) {
           const optId = match[1].toUpperCase();
           const content = match[2].trim();
-          const isCorr = key.includes(optId);
-          parsed.push({ id: optId, content_latex: content, is_correct: isCorr });
+          const isCorr = optId === normTarget || targetRaw.startsWith(optId + '.');
+          result.push({ id: optId, text: content, content_latex: content, is_correct: isCorr });
         }
       });
-      return parsed;
     }
-    return [];
+
+    if (taskType === 'SINGLE_CHOICE' && result.length > 0) {
+      const correctIndices = result.map((o, idx) => (o.is_correct ? idx : -1)).filter(idx => idx !== -1);
+      if (correctIndices.length === 0) {
+        const directIdx = result.findIndex(o => o.id === normTarget || o.id === targetRaw);
+        const chosenIdx = directIdx !== -1 ? directIdx : 0;
+        result.forEach((o, idx) => { o.is_correct = idx === chosenIdx; });
+      } else if (correctIndices.length > 1) {
+        const directIdx = result.findIndex(o => o.id === normTarget || o.id === targetRaw);
+        const chosenIdx = directIdx !== -1 ? directIdx : correctIndices[0];
+        result.forEach((o, idx) => { o.is_correct = idx === chosenIdx; });
+      }
+    }
+
+    return result;
   })();
 
   // Formatted solution steps with individual cards, highlighted titles, and spacing
@@ -1056,31 +1114,38 @@ export function TaskView({
                 ) : currentCard.type === 'formulas' ? (
                   /* Card Type: formulas */
                   <div className="flex flex-col gap-3 w-full my-auto">
-                    {currentCard.core_formulas ? (
+                    {currentCard.structuredFormulas && currentCard.structuredFormulas.length > 0 ? (
+                      <div className="space-y-2.5 w-full">
+                        {currentCard.structuredFormulas.map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="w-full bg-[#0B101B] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-2 shadow-inner hover:border-[#FFB800]/30 transition-all"
+                          >
+                            {item.title && (
+                              <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                                <div className="flex items-center gap-2">
+                                  <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
+                                    {String(idx + 1).padStart(2, '0')}
+                                  </span>
+                                  <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
+                                    {item.title}
+                                  </span>
+                                </div>
+                                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider bg-white/5 border border-white/5 px-2 py-0.5 rounded-full shrink-0">
+                                  Wzór CKE
+                                </span>
+                              </div>
+                            )}
+                            <div className="w-full text-center overflow-x-auto py-1 text-white">
+                              <MathRenderer content={item.latex} displayMode={true} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : currentCard.core_formulas ? (
                       <div className="w-full bg-[#0B101B] border border-white/10 rounded-2xl p-4 sm:p-5 text-center">
                         <div className="w-full max-w-full overflow-x-auto py-1 text-center">
                           <MathRenderer content={currentCard.core_formulas} displayMode={true} />
-                        </div>
-                      </div>
-                    ) : currentCard.formulas && currentCard.formulas.length > 0 ? (
-                      <div className="w-full bg-[#0B101B] border border-white/10 rounded-xl overflow-hidden shadow-inner">
-                        <div className="divide-y divide-white/10 flex flex-col">
-                          {currentCard.formulas.map((formula, idx) => (
-                            <div
-                              key={idx}
-                              className="w-full py-2 px-3 flex items-center justify-between gap-2.5 hover:bg-white/[0.02] transition-colors"
-                            >
-                              <span className="text-xs font-mono font-bold text-[#FFB800]/70 shrink-0 w-5 text-left">
-                                {idx + 1}.
-                              </span>
-                              <div className="flex-1 flex items-center justify-center py-1 text-center overflow-visible min-h-[36px] no-scrollbar">
-                                <MathRenderer 
-                                  content={formula.startsWith('$') ? formula : `$${formula}$`} 
-                                  className="text-white font-bold text-xs sm:text-sm text-center"
-                                />
-                              </div>
-                            </div>
-                          ))}
                         </div>
                       </div>
                     ) : null}

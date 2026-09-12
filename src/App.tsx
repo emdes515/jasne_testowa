@@ -25,6 +25,8 @@ import { ProPopup } from './components/ProPopup';
 import { ParentSponsorModal } from './components/ParentSponsorModal';
 import { activatePro, deductHeart, refillHeartsWithCoins, getSyncedHearts } from './lib/heartsManager';
 import { AuthModal } from './components/AuthModal';
+import { DiagnosticTestModal } from './components/DiagnosticTestModal';
+import { AiTaskGeneratorModal } from './components/AiTaskGeneratorModal';
 import { ACHIEVEMENTS, ShopItem } from './data/achievements';
 import { triggerHaptic, calculateStreakOnTaskCompletion, getTodayDateString, filterActualTaskIds, isActualTaskId } from './utils';
 import { buildFirestoreUserPayload } from './schema_firestore';
@@ -104,6 +106,8 @@ export default function App() {
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
   const [showProPopup, setShowProPopup] = useState(false);
   const [showParentSponsorModal, setShowParentSponsorModal] = useState(false);
+  const [showDiagnosticModal, setShowDiagnosticModal] = useState(false);
+  const [showAiGeneratorModal, setShowAiGeneratorModal] = useState(false);
   const [isSubjectSheetOpen, setIsSubjectSheetOpen] = useState(false);
   const [profileInitialTab, setProfileInitialTab] = useState<'overview' | 'achievements' | 'perks'>('overview');
   
@@ -430,6 +434,26 @@ export default function App() {
   const handleCancelTask = () => {
     setActiveTask(false);
     setActiveTaskData(null);
+  };
+
+  const handleCompleteDiagnostic = (assessedPercent: number, correctCount: number, _totalCount: number) => {
+    setUserState(prev => {
+      const next: UserState = {
+        ...prev,
+        maturaBestScore: Math.max(prev.maturaBestScore || 0, assessedPercent),
+        maturaAttempts: Math.max(1, (prev.maturaAttempts || 0) + 1),
+        xp: (prev.xp || 0) + correctCount * 25 + 50,
+        coins: (prev.coins || 0) + correctCount * 15 + 30,
+      };
+      saveUserData(next);
+      return next;
+    });
+    setReward({
+      xp: correctCount * 25 + 50,
+      coins: correctCount * 15 + 30,
+      title: 'Diagnoza Poziomu Zakończona!',
+      description: `Twój wynik to ${assessedPercent}%. Twój Predyktor Maturalny został zaktualizowany!`
+    });
   };
 
   // Rule 3: Single atomic write per lesson completion (No write-bombing, 0 writes during questions)
@@ -980,6 +1004,8 @@ export default function App() {
                   saveUserData={saveUserData}
                   onOpenParentSponsor={() => setShowParentSponsorModal(true)}
                   onOpenProPopup={() => setShowProPopup(true)}
+                  onOpenDiagnostic={() => setShowDiagnosticModal(true)}
+                  onOpenAiGenerator={() => setShowAiGeneratorModal(true)}
                 />
               )}
               {currentTab === 'nauka' && (
@@ -1056,6 +1082,19 @@ export default function App() {
         studentName="Twój maturzysta"
       />
       <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+      <DiagnosticTestModal
+        isOpen={showDiagnosticModal}
+        onClose={() => setShowDiagnosticModal(false)}
+        onComplete={handleCompleteDiagnostic}
+      />
+      <AiTaskGeneratorModal
+        isOpen={showAiGeneratorModal}
+        onClose={() => setShowAiGeneratorModal(false)}
+        onStartCustomTask={(task) => {
+          setShowAiGeneratorModal(false);
+          handleStartTask(task, [task], task.title || 'Zadanie Wygenerowane przez AI');
+        }}
+      />
     </div>
   );
 }

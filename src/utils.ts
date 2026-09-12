@@ -283,7 +283,7 @@ export interface FormattedSolutionStep {
  * into structured, beautifully formatted solution steps.
  */
 export function parseSolutionSteps(rawText?: string): FormattedSolutionStep[] {
-  if (!rawText) return [];
+  if (!rawText || !rawText.trim()) return [];
   const text = rawText.trim();
   
   // Check if text contains "Krok 1", "Krok 2", etc.
@@ -313,7 +313,7 @@ export function parseSolutionSteps(rawText?: string): FormattedSolutionStep[] {
     const match = chunk.match(/^Krok\s+(\d+)[:.]?\s*([\s\S]*)$/i);
     if (match) {
       const num = parseInt(match[1], 10) || fallbackNum;
-      fallbackNum = num + 1;
+      fallbackNum = Math.max(fallbackNum, num + 1);
       const rest = match[2].trim();
 
       // Check if there is a clean title before newline or colon

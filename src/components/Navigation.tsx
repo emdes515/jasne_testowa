@@ -153,9 +153,14 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
           {/* Oficjalna Identyfikacja JASNE. */}
           <div className="flex items-center gap-3 px-1">
             <img src="/logo.png" alt="JASNE." className="h-10 w-auto object-contain drop-shadow-[0_0_12px_rgba(255,184,0,0.4)]" />
-            <span className="text-2xl font-black tracking-wider text-white">
-              JASNE<span className="text-[#FFB800]">.</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="text-xl font-black tracking-wider text-white leading-none">
+                JASNE<span className="text-[#FFB800]">.</span>
+              </span>
+              <span className="text-[9px] font-bold text-slate-400 tracking-wider uppercase mt-1">
+                Matura staje się prosta
+              </span>
+            </div>
           </div>
 
           {/* Lista zakładek */}

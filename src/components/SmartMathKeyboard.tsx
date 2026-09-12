@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
-import { Delete, ArrowLeft, ArrowRight, RotateCcw, Check, Eye } from 'lucide-react';
+import { Delete, ArrowLeft, ArrowRight, RotateCcw, Check, Sparkles } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
 interface SmartMathKeyboardProps {
@@ -49,10 +49,10 @@ export function SmartMathKeyboard({
     return str + '}'.repeat(openBraces);
   };
 
-  // Generate HTML for Live Preview with pulsing amber cursor
+  // Generate HTML for Live Preview with pulsing cyan cursor
   const getRenderedHtml = useCallback((): string => {
     if (!value || value.trim() === '') {
-      const emptyLatex = `\\textcolor{#64748B}{\\text{Wpisz wynik (np. } x = 5, y = \\frac{1}{2} \\text{)... }}\\textcolor{#FFB800}{${cursorVisible ? '|' : ' '}}`;
+      const emptyLatex = `\\textcolor{#64748B}{\\text{Wpisz wynik (np. } x = 5, y = \\frac{1}{2} \\text{)... }}\\textcolor{#00E5FF}{${cursorVisible ? '|' : ' '}}`;
       try {
         return katex.renderToString(emptyLatex, {
           displayMode: true,
@@ -68,12 +68,21 @@ export function SmartMathKeyboard({
     const before = value.slice(0, safeCursor);
     const after = value.slice(safeCursor);
 
-    // Glowing amber cursor
+    // Glowing cyan cursor
     const cursorLatex = cursorVisible
-      ? '{\\textcolor{#FFB800}{\\mathbf{\\vert}}}'
-      : '{\\textcolor{#FFB80022}{\\mathbf{\\vert}}}';
+      ? '{\\textcolor{#00E5FF}{\\mathbf{\\vert}}}'
+      : '{\\textcolor{#00E5FF22}{\\mathbf{\\vert}}}';
 
     const fullLatex = sanitizeLatexForDisplay(before + cursorLatex + after);
+
+    const escapeHtml = (str: string) => {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    };
 
     try {
       return katex.renderToString(fullLatex, {
@@ -82,7 +91,7 @@ export function SmartMathKeyboard({
       });
     } catch {
       // Fallback: simple text with cursor
-      return `<div class="font-mono text-white text-base">${before}<span class="text-[#FFB800] font-black animate-pulse">|</span>${after}</div>`;
+      return `<div class="font-mono text-white text-base">${escapeHtml(before)}<span class="text-[#00E5FF] font-black animate-pulse">|</span>${escapeHtml(after)}</div>`;
     }
   }, [value, cursorPos, cursorVisible]);
 
@@ -186,12 +195,12 @@ export function SmartMathKeyboard({
       <div
         ref={previewRef}
         onClick={() => setCursorPos(value.length)}
-        className="w-full min-h-[96px] max-h-[140px] bg-[#0B0F17] border-2 border-white/10 hover:border-[#FFB800]/40 focus-within:border-[#FFB800] rounded-[22px] p-4 flex flex-col justify-center items-center relative overflow-x-auto overflow-y-hidden shadow-inner transition-colors cursor-text mb-3"
+        className="w-full min-h-[96px] max-h-[140px] bg-[#0B0F17] border-2 border-white/10 hover:border-[#00E5FF]/40 focus-within:border-[#00E5FF] rounded-[22px] p-4 flex flex-col justify-center items-center relative overflow-x-auto overflow-y-hidden shadow-inner transition-colors cursor-text mb-3"
       >
         {/* Top subtle badge & quick clear */}
         <div className="w-full flex items-center justify-between text-[11px] font-bold text-[#8B8D98] mb-1">
-          <span className="flex items-center gap-1.5 uppercase tracking-wider text-[#FFB800]">
-            <Eye size={12} /> Podgląd wzoru maturalnego
+          <span className="flex items-center gap-1.5 uppercase tracking-wider text-[#00E5FF]">
+            <Sparkles size={12} /> Podgląd wzoru maturalnego
           </span>
           {value.length > 0 && (
             <button
@@ -224,12 +233,12 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('\\frac{}{}', 6)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-black text-sm flex items-center justify-center transition-transform active:bg-[#FFB800]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-black text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Ułamek zwykły"
           >
             <span className="flex flex-col items-center leading-none text-xs">
               <span>a</span>
-              <span className="w-3 h-[1.5px] bg-[#FFB800] my-0.5" />
+              <span className="w-3 h-[1.5px] bg-[#00E5FF] my-0.5" />
               <span>b</span>
             </span>
           </button>
@@ -238,7 +247,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('\\sqrt{}', 6)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#FFB800]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Pierwiastek"
           >
             √x
@@ -248,7 +257,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('^{2}', 4)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#FFB800]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Kwadrat"
           >
             x²
@@ -258,7 +267,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('^{}', 2)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#FFB800]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Potęga do wykładnika"
           >
             xⁿ
@@ -268,7 +277,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('()', 1)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#FFB800]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Nawiasy"
           >
             ( )
@@ -278,7 +287,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('\\pi ')}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-serif font-bold text-sm flex items-center justify-center transition-transform active:bg-[#FFB800]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-serif font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Liczba Pi"
           >
             π
@@ -291,14 +300,14 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('x')}
-            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#FFB800] font-black text-base italic flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-black text-base italic flex items-center justify-center transition-transform"
           >
             x
           </button>
           <button
             type="button"
             onClick={() => insertToken('y')}
-            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#FFB800] font-black text-base italic flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-black text-base italic flex items-center justify-center transition-transform"
           >
             y
           </button>
@@ -341,14 +350,14 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken(' + ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#FFB800] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
           >
             +
           </button>
           <button
             type="button"
             onClick={() => insertToken(' - ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#FFB800] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
           >
             -
           </button>
@@ -376,7 +385,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken(' \\cdot ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#FFB800] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
             title="Mnożenie"
           >
             ·
@@ -386,7 +395,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken(' = ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#FFB800] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
           >
             =
           </button>

@@ -88,7 +88,9 @@ interface MathRendererProps {
   displayMode?: boolean;
 }
 
-export const MathRenderer: React.FC<MathRendererProps> = ({ 
+const MATH_SPLIT_REGEX = /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{cases\}[\s\S]*?\\end\{cases\}|\$[^\$]+?\$|\\\([^\n]*?\\\))/g;
+
+const MathRendererComponent: React.FC<MathRendererProps> = ({
   content, 
   text, 
   className = '',
@@ -146,7 +148,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
   // Funkcja pomocnicza do parsowania tekstu mieszanego z $...$ lub $$...$$
   const renderMixedParts = (str: string, extraClass: string = '') => {
     // Splits by $$...$$, \[...\], \begin{cases}...\end{cases}, $...$, \(...\)
-    const parts = str.split(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{cases\}[\s\S]*?\\end\{cases\}|\$[^\$]+?\$|\\\([^\n]*?\\\))/g);
+    const parts = str.split(MATH_SPLIT_REGEX);
     return (
       <span className={`break-words max-w-full leading-relaxed inline ${extraClass}`}>
         {parts.map((part, index) => {
@@ -162,25 +164,18 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
             (trimmed.startsWith('$') && trimmed.endsWith('$') && trimmed.length >= 2) ||
             (trimmed.startsWith('\\(') && trimmed.endsWith('\\)') && trimmed.length >= 4);
 
-          // Smart detection: standalone unescaped LaTeX expression without $ delimiters (e.g. \frac{1}{2} or \sqrt{3})
-          const isStandaloneLatex = 
-            !isDisplayMath && 
-            !isInlineMath && 
-            parts.length === 1 && 
-            (trimmed.startsWith('\\frac') || trimmed.startsWith('\\sqrt') || trimmed.startsWith('\\pm') || trimmed.startsWith('\\sum') || trimmed.startsWith('\\int') || trimmed.startsWith('\\lim') || (trimmed.startsWith('\\') && !trimmed.includes(' ')));
-
           if (isDisplayMath) {
             const math = cleanLatex(trimmed);
             return (
               <span 
                 key={index} 
-                className="block my-1.5 w-full max-w-full overflow-x-auto overflow-y-hidden py-1 px-1 touch-pan-x flex custom-scrollbar"
+                className="block my-2 w-full max-w-full flex flex-col items-center justify-center overflow-x-auto overflow-y-hidden py-1.5 px-2 text-center touch-pan-x"
               >
-                <span className="m-auto inline-flex flex-col items-center justify-center min-w-0 flex-shrink-0 text-center">
+                <span className="mx-auto flex flex-col items-center justify-center text-center max-w-full box-border">
                   <BlockMath 
                     math={math} 
                     renderError={() => (
-                      <span className="font-medium text-[#FFB800]">
+                      <span className="font-medium text-cyan-300">
                         {math}
                       </span>
                     )}
@@ -188,14 +183,14 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
                 </span>
               </span>
             );
-          } else if (isInlineMath || isStandaloneLatex) {
+          } else if (isInlineMath) {
             const math = cleanLatex(trimmed);
             return (
               <span key={index} className="inline align-baseline mx-0.5 font-normal">
                 <InlineMath 
                   math={math} 
                   renderError={() => (
-                    <span className="font-medium text-[#FFB800]">
+                    <span className="font-medium text-cyan-300">
                       {math}
                     </span>
                   )}
@@ -212,23 +207,23 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
 
   const trimmedForBlockCheck = rawContent.trim();
   const hasInlineDelimiters = trimmedForBlockCheck.includes('$');
+  const hasPolishLetters = /[ąćęłńóśźż]/i.test(trimmedForBlockCheck);
 
-  // Czysty blok LaTeX:
-  // 1. Gdy caller wyraźnie prosi o displayMode={true} (np. karty wzorów, pigułki wiedzy, opcje zadań)
-  // 2. Gdy tekst zaczyna się i kończy znakami blokowymi: $$, \[, lub \begin{...}
+  // Czysty blok LaTeX: displayMode lub \begin{...} lub $$...$$, ale TYLKO wtedy, gdy nie jest to tekst mieszany z $
   const isPureLatexBlock = 
-    displayMode || 
-    (!hasInlineDelimiters && (
-      (trimmedForBlockCheck.startsWith('$$') && trimmedForBlockCheck.endsWith('$$') && !trimmedForBlockCheck.slice(2, -2).includes('$$')) ||
-      (trimmedForBlockCheck.startsWith('\\[') && trimmedForBlockCheck.endsWith('\\]')) ||
-      (trimmedForBlockCheck.startsWith('\\begin{') && trimmedForBlockCheck.endsWith('}'))
-    ));
+    !hasInlineDelimiters && 
+    !hasPolishLetters && 
+    (
+      displayMode || 
+      trimmedForBlockCheck.startsWith('\\begin{') || 
+      (trimmedForBlockCheck.startsWith('$$') && trimmedForBlockCheck.endsWith('$$') && !trimmedForBlockCheck.slice(2, -2).includes('$$'))
+    );
 
   if (isPureLatexBlock) {
     const cleanMath = cleanLatex(trimmedForBlockCheck);
     return (
-      <div className={`my-1.5 w-full max-w-full overflow-x-auto overflow-y-hidden py-1 px-1 touch-pan-x flex custom-scrollbar text-white ${className}`}>
-        <div className="m-auto inline-flex flex-col items-center justify-center min-w-0 flex-shrink-0 text-center">
+      <div className={`my-2 w-full max-w-full flex flex-col items-center justify-center overflow-x-auto overflow-y-hidden py-1 px-2 text-center touch-pan-x text-white ${className}`}>
+        <div className="mx-auto flex flex-col items-center justify-center text-center max-w-full box-border">
           <BlockMath 
             math={cleanMath} 
             renderError={() => renderMixedParts(trimmedForBlockCheck, className)}
@@ -241,5 +236,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
   // Domyślnie parsujemy jako tekst mieszany (LaTeX z $ lub $$ oraz zwykły tekst)
   return renderMixedParts(rawContent, className);
 };
+
+export const MathRenderer = React.memo(MathRendererComponent);
 
 export default MathRenderer;

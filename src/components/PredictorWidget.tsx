@@ -16,6 +16,7 @@ interface PredictorWidgetProps {
   result: PredictorResult;
   currentSubjectKey?: string;
   onOpenDetails: () => void;
+  onOpenDiagnostic?: () => void;
   onNavigate?: (tab: string, subTab?: string) => void;
 }
 
@@ -51,6 +52,7 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
   result,
   currentSubjectKey = 'math',
   onOpenDetails,
+  onOpenDiagnostic,
   onNavigate
 }) => {
   const isPol = result.subjectId === 'jezyk-polski' || currentSubjectKey === 'pol';
@@ -271,7 +273,38 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
         </div>
       </div>
 
-      {/* 4. RECOMMENDED ACTION TILE (NO TRUNCATION, EXECUTIVE FINISH) */}
+      {/* 4. DIAGNOSTIC LEVEL TEST CALLOUT */}
+      {onOpenDiagnostic && (
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            triggerHaptic('medium');
+            onOpenDiagnostic();
+          }}
+          className="mt-3 p-3 rounded-2xl bg-gradient-to-r from-amber-500/15 via-emerald-500/10 to-transparent hover:bg-white/[0.08] border border-amber-500/30 hover:border-amber-400/50 transition-all flex items-center justify-between gap-3 cursor-pointer group/diag shadow-sm"
+        >
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-7 h-7 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
+              <Award size={14} className="animate-pulse" />
+            </div>
+            <div className="min-w-0">
+              <span className="text-[10px] font-extrabold text-amber-300 uppercase tracking-wider block leading-none">
+                Szybka Diagnoza Poziomu
+              </span>
+              <p className="text-xs text-slate-200 mt-1 leading-snug">
+                Zrób 3 pytania, aby sprawdzić poziom i skalibrować predyktor
+              </p>
+            </div>
+          </div>
+
+          <span className="text-xs font-black text-amber-300 flex items-center gap-1 shrink-0 px-2.5 py-1 rounded-lg bg-amber-400/15 border border-amber-400/30 group-hover/diag:scale-105 transition-transform">
+            <span>Sprawdź</span>
+            <ArrowRight size={13} />
+          </span>
+        </div>
+      )}
+
+      {/* 5. RECOMMENDED ACTION TILE (NO TRUNCATION, EXECUTIVE FINISH) */}
       {result.nextBestTopic && (
         <div 
           onClick={(e) => {

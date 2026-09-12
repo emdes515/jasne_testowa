@@ -31,6 +31,7 @@ interface PredictorDetailsModalProps {
   onNavigate?: (tab: string, subTab?: string) => void;
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
+  onOpenDiagnostic?: () => void;
 }
 
 export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
@@ -41,6 +42,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
   currentSubjectKey = 'math',
   onSelectSubject,
   onOpenParentSponsor,
+  onOpenDiagnostic,
   onNavigate
 }) => {
   const isPol = subjectId.includes('polski') || currentSubjectKey === 'pol';
@@ -183,6 +185,27 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
               <span className="font-bold text-white block mb-1">Podsumowanie:</span>
               {commentText}
             </div>
+
+            {/* Opcja Testu Diagnostycznego */}
+            {onOpenDiagnostic && (
+              <div className="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/20 to-emerald-500/10 border border-amber-500/30 flex items-center justify-between gap-3">
+                <div className="text-xs text-slate-200">
+                  <span className="font-extrabold text-amber-300 block">Szybki Test Diagnostyczny CKE</span>
+                  <span className="text-[11px] text-slate-300">Rozwiąż 3 zadania, aby dokładnie skalibrować predyktor.</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('medium');
+                    onClose();
+                    onOpenDiagnostic();
+                  }}
+                  className="px-3.5 py-2 rounded-xl bg-[#FFB800] hover:bg-amber-400 active:scale-95 text-slate-950 font-black text-xs shrink-0 cursor-pointer transition-all shadow-md"
+                >
+                  Rozpocznij ›
+                </button>
+              </div>
+            )}
 
             {/* Opcja sponsoringu rodzica */}
             {onOpenParentSponsor && (

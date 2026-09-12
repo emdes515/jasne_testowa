@@ -47,7 +47,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 'first_step',
     name: 'Pierwszy Krok',
-    description: 'Rozwiąż swoje pierwsze zadanie maturalne z matematyki.',
+    description: 'Rozwiąż swoje pierwsze zadanie maturalne.',
     category: 'tasks',
     iconName: 'Sparkles',
     accentColor: 'text-amber-400',

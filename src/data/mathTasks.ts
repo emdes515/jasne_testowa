@@ -106,6 +106,19 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
     };
   });
 
+  if (isSingle && options.length > 0) {
+    const correctIndices = options.map((o, idx) => (o.is_correct ? idx : -1)).filter(idx => idx !== -1);
+    if (correctIndices.length === 0) {
+      const directIdx = options.findIndex(o => o.id === normCorrect);
+      const chosenIdx = directIdx !== -1 ? directIdx : 0;
+      options.forEach((o, idx) => { o.is_correct = idx === chosenIdx; });
+    } else if (correctIndices.length > 1) {
+      const directIdx = options.findIndex(o => o.id === normCorrect);
+      const chosenIdx = directIdx !== -1 ? directIdx : correctIndices[0];
+      options.forEach((o, idx) => { o.is_correct = idx === chosenIdx; });
+    }
+  }
+
   let defaultInstruction = 'Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.';
   if (isMulti) defaultInstruction = 'Wybierz wszystkie właściwe odpowiedzi spośród podanych.';
   if (isNumeric) defaultInstruction = 'Oblicz wartość i wpisz ostateczny wynik poniżej.';

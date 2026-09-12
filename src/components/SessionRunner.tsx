@@ -51,7 +51,14 @@ function renderMicroContent(rawText?: string | any) {
   if (typeof rawText === 'string') {
     textToParse = rawText;
   } else if (Array.isArray(rawText)) {
-    textToParse = rawText.map(item => String(item ?? '')).join('\n\n');
+    textToParse = rawText.map(item => {
+      if (!item) return '';
+      if (typeof item === 'string') return item;
+      if (typeof item === 'object') {
+        return item.text || item.description || item.title || item.content || item.latex || '';
+      }
+      return String(item);
+    }).filter(Boolean).join('\n\n');
   } else if (typeof rawText === 'object') {
     if ('description' in rawText && typeof rawText.description === 'string') {
       textToParse = rawText.description;
@@ -180,26 +187,47 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
   return null;
 }
 
+export interface FormattedFormulaItem {
+  title?: string;
+  latex: string;
+}
+
 /**
- * Helper to extract array of formulas safely
+ * Helper to extract array of formulas safely with title and latex
  */
-function getCoreFormulas(raw: any): string[] {
+function getCoreFormulas(raw: any): FormattedFormulaItem[] {
   if (!raw) return [];
-  if (Array.isArray(raw)) {
-    return raw.map(item => String(item ?? '').trim()).filter(Boolean);
-  }
-  if (typeof raw === 'string') {
-    const trimmed = raw.trim();
-    if (!trimmed) return [];
-    if (trimmed.startsWith('\\begin{aligned}') && trimmed.endsWith('\\end{aligned}')) {
-      return [trimmed];
+  const list = Array.isArray(raw) ? raw : [raw];
+  const results: FormattedFormulaItem[] = [];
+
+  for (const item of list) {
+    if (!item) continue;
+    if (typeof item === 'string') {
+      const trimmed = item.trim();
+      if (!trimmed) continue;
+      if (trimmed.startsWith('\\begin{aligned}') && trimmed.endsWith('\\end{aligned}')) {
+        results.push({ latex: trimmed });
+      } else if (trimmed.includes('\n')) {
+        const lines = trimmed.split('\n').map(l => l.trim()).filter(Boolean);
+        for (const line of lines) {
+          results.push({ latex: line });
+        }
+      } else {
+        results.push({ latex: trimmed });
+      }
+    } else if (typeof item === 'object') {
+      const latex = item.latex || item.formula || item.content_latex || item.content || item.math || item.def || '';
+      const title = item.title || item.name || item.label || item.description || '';
+      if (latex || title) {
+        results.push({
+          title: title ? String(title).trim() : undefined,
+          latex: latex ? String(latex).trim() : (title ? String(title).trim() : '')
+        });
+      }
     }
-    if (trimmed.includes('\n')) {
-      return trimmed.split('\n').map(l => l.trim()).filter(Boolean);
-    }
-    return [trimmed];
   }
-  return [String(raw)];
+
+  return results;
 }
 
 export interface SessionRunnerProps {
@@ -625,7 +653,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return `${clean} • ${pts} pkt`;
   };
 
-  // Randomized single-choice options for the current question
+  // Normalized single-choice options for the current question (preserving authentic CKE order and single truth of is_correct)
   const randomizedOptions = useMemo(() => {
     if (!currentTask?.options || !Array.isArray(currentTask.options) || currentTask.options.length === 0) {
       return [];
@@ -639,93 +667,78 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     const targetRaw = String(currentTask?.correct_answer || currentTask?.correctAnswer || '').trim();
     const normTarget = targetRaw.replace(/^Odp\s*/i, '').trim().toUpperCase();
 
-    // 1. Normalize each option into { origId, text, isCorrect }
+    // 1. Normalize each option into { id, text, content_latex, is_correct }
     const normalized = rawOptions.map((opt: any, idx: number) => {
-      let origId = ['A', 'B', 'C', 'D', 'E', 'F'][idx] || String(idx + 1);
+      const defaultLetter = ['A', 'B', 'C', 'D', 'E', 'F'][idx] || String(idx + 1);
+      let optId = defaultLetter;
       let text = '';
-      let isCorrect = false;
+      let isExplicitlyCorrect = false;
 
       if (typeof opt === 'string') {
         const m = opt.match(/^([A-D1-4])[\.\)]\s*(.*)$/);
         if (m) {
-          origId = m[1].toUpperCase();
+          optId = m[1].toUpperCase();
           text = m[2].trim();
         } else {
           text = opt.trim();
         }
-        isCorrect = (
-          origId === targetRaw ||
-          origId === normTarget ||
-          targetRaw.startsWith(origId + '.') ||
-          targetRaw.startsWith(origId + ')') ||
+        isExplicitlyCorrect = (
+          optId === targetRaw ||
+          optId === normTarget ||
+          targetRaw.startsWith(optId + '.') ||
+          targetRaw.startsWith(optId + ')') ||
           opt.trim() === targetRaw ||
           text === targetRaw
         );
       } else if (typeof opt === 'object' && opt !== null) {
-        origId = opt.id || opt.key || opt.label || (['A', 'B', 'C', 'D', 'E', 'F'][idx] || String(idx + 1));
+        optId = opt.id || opt.key || opt.label || defaultLetter;
         text = opt.text || opt.content_latex || opt.content || '';
         const textPrefix = typeof text === 'string' ? text.match(/^([A-D1-4])[\.\)]\s*(.*)$/) : null;
         if (textPrefix) {
           text = textPrefix[2].trim();
         }
-        isCorrect = Boolean(
+        isExplicitlyCorrect = Boolean(
           opt.is_correct ||
           opt.isCorrect ||
-          origId === targetRaw ||
-          origId === normTarget ||
-          targetRaw.startsWith(origId + '.') ||
-          targetRaw.startsWith(origId + ')') ||
+          optId === targetRaw ||
+          optId === normTarget ||
+          targetRaw.startsWith(optId + '.') ||
+          targetRaw.startsWith(optId + ')') ||
           (text && targetRaw && text.trim() === targetRaw)
         );
       }
 
       return {
-        origId,
+        id: optId,
         text,
-        isCorrect
+        content_latex: text,
+        is_correct: isExplicitlyCorrect
       };
     });
 
-    // Fallback if no option was flagged as correct: mark the one matching targetRaw or default to index 0
-    if (!normalized.some(o => o.isCorrect)) {
-      const idx = normalized.findIndex(o => o.origId === targetRaw || o.origId === normTarget);
-      if (idx !== -1) {
-        normalized[idx].isCorrect = true;
-      } else if (normalized.length > 0) {
-        normalized[0].isCorrect = true;
-      }
+    // 2. Guarantee EXACTLY ONE correct answer in single-choice questions
+    let correctIndices = normalized
+      .map((o, idx) => (o.is_correct ? idx : -1))
+      .filter(idx => idx !== -1);
+
+    if (correctIndices.length === 0) {
+      // If none matched, find by ID matching normTarget or default to 0
+      const directIdx = normalized.findIndex(o => o.id === normTarget || o.id === targetRaw);
+      const chosenIdx = directIdx !== -1 ? directIdx : 0;
+      normalized.forEach((o, idx) => {
+        o.is_correct = idx === chosenIdx;
+      });
+    } else if (correctIndices.length > 1) {
+      // If multiple were somehow flagged, keep ONLY the one matching normTarget or the first one
+      const directIdx = normalized.findIndex(o => o.id === normTarget || o.id === targetRaw);
+      const chosenIdx = directIdx !== -1 ? directIdx : correctIndices[0];
+      normalized.forEach((o, idx) => {
+        o.is_correct = idx === chosenIdx;
+      });
     }
 
-    // 2. Stable pseudo-random shuffle per question presentation
-    const seedStr = `${currentTask.id || 'task'}_step_${currentStep}_q_${currentQueueIndex}_${sessionMistakesCount}`;
-    let h = 2166136261;
-    for (let i = 0; i < seedStr.length; i++) {
-      h ^= seedStr.charCodeAt(i);
-      h = Math.imul(h, 16777619);
-    }
-    const pseudoRandom = () => {
-      h += 0x6D2B79F5;
-      let t = Math.imul(h ^ (h >>> 15), 1 | h);
-      t = t + Math.imul(t ^ (t >>> 7), 61 | t) ^ t;
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-
-    const shuffled = [...normalized];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(pseudoRandom() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-
-    // 3. Re-assign ABCD letters to the shuffled positions
-    const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
-    return shuffled.map((item, idx) => ({
-      id: letters[idx] || String.fromCharCode(65 + idx),
-      text: item.text,
-      content_latex: item.text,
-      is_correct: item.isCorrect,
-      origId: item.origId
-    }));
-  }, [currentTask, currentStep, currentQueueIndex, sessionMistakesCount, isSingleChoice]);
+    return normalized;
+  }, [currentTask, isSingleChoice]);
 
   const correctAnswerLabel = useMemo(() => {
     if (isSingleChoice) {
@@ -1127,9 +1140,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       if (!selectedOption) return;
       const opts = randomizedOptions.length > 0 ? randomizedOptions : (currentTask?.options || []);
       const matchingOpt = opts.find((o: any) => o.id === selectedOption);
-      const target = String(currentTask?.correct_answer || currentTask?.correctAnswer || 'A').trim();
-      const normTarget = target.replace(/^Odp\s*/i, '').trim().toUpperCase();
-      correct = Boolean(matchingOpt?.is_correct) || selectedOption === target || selectedOption === normTarget;
+      correct = Boolean(matchingOpt?.is_correct);
     } else if (isNumericTask) {
       if (!numericInput.trim()) return;
 
@@ -1855,26 +1866,30 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </span>
                 <div className="flex items-center gap-1.5 flex-1 min-w-0">
                   {Array.from({ length: 4 }).map((_, idx) => {
-                    const isTheoryFilled = idx <= theorySubStep;
+                    const isDone = idx < theorySubStep;
+                    const isActive = idx === theorySubStep;
+
                     return (
                       <div
                         key={idx}
                         className={`flex-1 h-2 sm:h-2.5 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
-                          isTheoryFilled
-                            ? (isPolishSession
-                                ? 'bg-rose-950/40 border border-rose-500/40'
-                                : 'bg-amber-950/40 border border-[#FFB800]/40')
-                            : 'bg-slate-900/90 border border-white/10'
+                          isDone
+                            ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-[0_0_8px_rgba(16,185,129,0.35)]'
+                            : isActive
+                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-[0_0_12px_rgba(255,184,0,0.5)] ring-1 ring-[#FFB800]/50'
+                              : 'bg-slate-900/90 border border-white/10 shadow-inner'
                         }`}
                       >
                         <motion.div
                           initial={false}
-                          animate={{ width: isTheoryFilled ? '100%' : '0%' }}
+                          animate={{ width: isDone || isActive ? '100%' : '0%' }}
                           transition={{ type: 'spring', stiffness: 150, damping: 20 }}
-                          className={`h-full rounded-full relative overflow-hidden ${
-                            isPolishSession
-                              ? 'bg-gradient-to-r from-[#E11D48] via-[#F43F5E] to-[#FDA4AF] shadow-[0_0_8px_rgba(244,63,94,0.5)]'
-                              : 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFD54F] shadow-[0_0_8px_rgba(255,184,0,0.5)]'
+                          className={`h-full rounded-full relative overflow-hidden transition-all duration-300 ${
+                            isDone
+                              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.5)]'
+                              : isActive
+                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-[0_0_12px_rgba(255,184,0,0.6)] animate-pulse'
+                                : 'bg-transparent'
                           }`}
                         >
                           <div className="absolute top-0 inset-x-0.5 h-[40%] bg-white/45 rounded-full pointer-events-none" />
@@ -1889,31 +1904,24 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="flex-1 flex items-center min-w-0">
                 <div className="flex items-center gap-1.5 sm:gap-2 w-full">
                   {Array.from({ length: Math.max(1, targetCorrectAnswers) }).map((_, idx) => {
-                    const isFilled = idx < correctAnswersCount;
+                    const isDone = idx < correctAnswersCount;
                     const isActive = idx === correctAnswersCount;
-                    const isAllDone = correctAnswersCount >= targetCorrectAnswers;
 
                     return (
                       <div
                         key={idx}
                         className={`flex-1 h-2.5 sm:h-3 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
-                          isFilled
-                            ? (isPolishSession
-                                ? 'bg-rose-950/40 border border-rose-500/30'
-                                : isAllDone
-                                  ? 'bg-emerald-950/40 border border-emerald-500/40'
-                                  : 'bg-amber-950/40 border border-[#FFB800]/40')
+                          isDone
+                            ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.35)]'
                             : isActive
-                              ? (isPolishSession
-                                  ? 'bg-slate-900/90 border border-rose-500/50 shadow-[0_0_10px_rgba(244,63,94,0.3)]'
-                                  : 'bg-slate-900/90 border border-[#FFB800]/50 shadow-[0_0_10px_rgba(255,184,0,0.3)]')
+                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-[0_0_14px_rgba(255,184,0,0.5)] ring-1 ring-[#FFB800]/50'
                               : 'bg-slate-900/90 border border-white/10 shadow-inner'
                         }`}
                       >
                         <motion.div
                           initial={false}
                           animate={{
-                            width: isFilled ? '100%' : '0%'
+                            width: isDone || isActive ? '100%' : '0%'
                           }}
                           transition={{
                             type: 'spring',
@@ -1922,18 +1930,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             mass: 0.8
                           }}
                           className={`h-full rounded-full relative overflow-hidden transition-colors duration-500 ${
-                            isAllDone
-                              ? 'bg-gradient-to-r from-emerald-500 via-emerald-400 to-[#FFD54F] shadow-[0_0_14px_rgba(16,185,129,0.7)]'
-                              : isPolishSession
-                                ? 'bg-gradient-to-r from-[#E11D48] via-[#F43F5E] to-[#FDA4AF] shadow-[0_0_12px_rgba(244,63,94,0.6)]'
-                                : 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFD54F] shadow-[0_0_12px_rgba(255,184,0,0.6)]'
+                            isDone
+                              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.6)]'
+                              : isActive
+                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-[0_0_12px_rgba(255,184,0,0.65)] animate-pulse'
+                                : 'bg-transparent'
                           }`}
                         >
                           {/* Top Specular Glass Reflection */}
                           <div className="absolute top-0 inset-x-0.5 h-[40%] bg-white/45 rounded-full pointer-events-none" />
 
                           {/* Ambient Shimmer Sweep on latest completed bar */}
-                          {idx === correctAnswersCount - 1 && (
+                          {idx === correctAnswersCount - 1 && isDone && (
                             <motion.div
                               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12"
                               animate={{ x: ['-100%', '200%'] }}
@@ -1941,17 +1949,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             />
                           )}
                         </motion.div>
-
-                        {/* Soft pulsing indicator for current active task bar */}
-                        {isActive && !isFilled && (
-                          <motion.div
-                            animate={{ opacity: [0.15, 0.45, 0.15] }}
-                            transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-                            className={`absolute inset-0.5 rounded-full ${
-                              isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
-                            }`}
-                          />
-                        )}
                       </div>
                     );
                   })}
@@ -2439,17 +2436,17 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   >
                     <div className={`h-1.5 rounded-full transition-all duration-200 ${
                       isActive 
-                        ? isPolishSession
-                          ? 'bg-[#F43F5E] shadow-[0_0_8px_rgba(244,63,94,0.5)]'
-                          : 'bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.5)]' 
+                        ? 'bg-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.6)]' 
                         : isDone 
-                          ? 'bg-slate-500' 
+                          ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]' 
                           : 'bg-slate-800'
                     }`} />
                     <span className={`text-[11px] sm:text-xs text-center font-medium transition-colors ${
                       isActive 
-                        ? isPolishSession ? 'text-[#F43F5E] font-bold' : 'text-[#FFB800] font-bold' 
-                        : 'text-slate-400 group-hover:text-slate-300'
+                        ? 'text-[#FFB800] font-black' 
+                        : isDone
+                          ? 'text-emerald-400 font-semibold'
+                          : 'text-slate-400 group-hover:text-slate-300'
                     }`}>
                       {step.title}
                     </span>
@@ -2674,13 +2671,30 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         </div>
 
                         {formulas.length > 0 ? (
-                          <div className="space-y-2.5 py-1">
-                            {formulas.map((formula, fIdx) => (
+                          <div className="space-y-3 py-1">
+                            {formulas.map((item, fIdx) => (
                               <div
                                 key={fIdx}
-                                className="rounded-xl p-3.5 sm:p-4 bg-slate-950/60 border border-slate-800/80 text-center overflow-x-auto shadow-inner"
+                                className="rounded-2xl p-4 sm:p-5 bg-gradient-to-b from-[#0F1422] to-[#0A0D16] border border-white/10 hover:border-[#FFB800]/40 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.35)] flex flex-col gap-2.5 group"
                               >
-                                <MathRenderer content={formula} displayMode={true} />
+                                {item.title && (
+                                  <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2">
+                                    <div className="flex items-center gap-2">
+                                      <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
+                                        {String(fIdx + 1).padStart(2, '0')}
+                                      </span>
+                                      <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
+                                        {item.title}
+                                      </span>
+                                    </div>
+                                    <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider bg-white/5 border border-white/5 px-2 py-0.5 rounded-full shrink-0">
+                                      Wzór CKE
+                                    </span>
+                                  </div>
+                                )}
+                                <div className="w-full text-center overflow-x-auto py-1 text-white">
+                                  <MathRenderer content={item.latex} displayMode={true} />
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -3493,13 +3507,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               }
 
               const isSelected = selectedOption === optId;
-              const targetRaw = String(currentTask?.correct_answer || currentTask?.correctAnswer || '').trim();
-              const normTarget = targetRaw.replace(/^Odp\s*/i, '').trim().toUpperCase();
-              const isOptionCorrect = Boolean(option.is_correct) || 
-                optId === targetRaw || 
-                optId === normTarget || 
-                targetRaw.startsWith(optId + '.') || 
-                (isString && option === targetRaw);
+              const isOptionCorrect = Boolean(option.is_correct);
 
               // Clean high-contrast styles: answers remain 100% visible on screen
               let borderStyle = 'border-slate-800 hover:border-slate-700 bg-slate-900/50';

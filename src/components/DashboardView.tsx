@@ -13,7 +13,9 @@ import {
   Globe,
   Dna,
   FlaskConical,
-  Lock
+  Lock,
+  Target,
+  Sparkles
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
@@ -39,6 +41,8 @@ interface DashboardViewProps {
   saveUserData?: (state: UserState) => void;
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
+  onOpenDiagnostic?: () => void;
+  onOpenAiGenerator?: () => void;
 }
 
 export function DashboardView({ 
@@ -49,7 +53,9 @@ export function DashboardView({
   taskStars = {},
   onStartTask,
   onOpenParentSponsor,
-  onOpenProPopup
+  onOpenProPopup,
+  onOpenDiagnostic,
+  onOpenAiGenerator
 }: DashboardViewProps) {
   const streakDays = userState?.streakDays || 0;
 
@@ -395,10 +401,66 @@ export function DashboardView({
         result={maturaPrediction}
         currentSubjectKey={selectedSubjectKey}
         onOpenDetails={() => setShowPredictorDetails(true)}
+        onOpenDiagnostic={onOpenDiagnostic}
         onNavigate={onNavigate}
       />
 
-      {/* 1. KARTA BIEŻĄCEGO POSTĘPU: NASTĘPNY KROK W NAUCE */}
+      {/* SZYBKIE AKCJE AI & DIAGNOSTYKA */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3.5">
+        {onOpenDiagnostic && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('medium');
+              onOpenDiagnostic();
+            }}
+            className="p-3.5 rounded-2xl bg-gradient-to-r from-[#121A26] to-[#10141E] hover:from-[#172233] hover:to-[#141A26] border border-amber-500/25 hover:border-amber-400/50 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
+          >
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Target size={18} />
+              </div>
+              <div className="min-w-0">
+                <span className="text-[10px] font-extrabold text-amber-300 uppercase tracking-wider block">
+                  Test Poziomu
+                </span>
+                <p className="text-xs font-bold text-white truncate">
+                  Oceń poziom i skalibruj predyktor
+                </p>
+              </div>
+            </div>
+            <ArrowRight size={14} className="text-amber-400 shrink-0 group-hover:translate-x-1 transition-transform" />
+          </button>
+        )}
+
+        {onOpenAiGenerator && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('medium');
+              onOpenAiGenerator();
+            }}
+            className="p-3.5 rounded-2xl bg-gradient-to-r from-[#18111A] to-[#120F16] hover:from-[#211624] hover:to-[#18111A] border border-purple-500/25 hover:border-purple-400/50 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
+          >
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-9 h-9 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Sparkles size={18} />
+              </div>
+              <div className="min-w-0">
+                <span className="text-[10px] font-extrabold text-purple-300 uppercase tracking-wider block">
+                  Generator Zadań AI
+                </span>
+                <p className="text-xs font-bold text-white truncate">
+                  Nowe zadania z kluczem CKE
+                </p>
+              </div>
+            </div>
+            <ArrowRight size={14} className="text-purple-400 shrink-0 group-hover:translate-x-1 transition-transform" />
+          </button>
+        )}
+      </div>
+
+      {/* 2. KARTA BIEŻĄCEGO POSTĘPU: NASTĘPNY KROK W NAUCE */}
       <motion.div
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -456,7 +518,7 @@ export function DashboardView({
                   : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_25px_rgba(255,184,0,0.4)]'
               }`}
             >
-              <span>{nextUp ? 'WZNÓW NAUKĘ' : 'OTWÓRZ MAPĘ'}</span>
+              <span>{nextUp ? ((nextUp.completedCount || 0) > 0 ? 'WZNÓW NAUKĘ' : 'ROZPOCZNIJ NAUKĘ') : 'OTWÓRZ MAPĘ'}</span>
               <ArrowRight size={15} strokeWidth={2.5} />
             </motion.button>
           </div>

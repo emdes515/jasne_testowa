@@ -110,6 +110,7 @@ export type CkeTaskType = TaskType;
 export interface TaskOption {
   id: string; // e.g. "A", "B", "C", "D"
   content_latex: string; // e.g. "$3^5$"
+  text?: string;
   is_correct: boolean;
 }
 

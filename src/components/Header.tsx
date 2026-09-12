@@ -67,11 +67,11 @@ export function Header({
           <div className="absolute inset-0 bg-[#FFB800]/20 blur-md rounded-full -z-10 group-hover:bg-[#FFB800]/35 transition-colors" />
         </div>
         <div className="flex flex-col text-left">
-          <span className="text-lg sm:text-xl font-black tracking-wider text-white group-hover:text-[#FFB800] transition-colors leading-none">
+          <span className="text-base sm:text-lg font-black tracking-wider text-white group-hover:text-[#FFB800] transition-colors leading-none">
             JASNE<span className="text-[#FFB800]">.</span>
           </span>
           <span className="hidden sm:inline-block text-[9px] font-bold text-slate-400 tracking-wider uppercase mt-0.5">
-            Matura 2025
+            Matura staje się prosta
           </span>
         </div>
       </button>
