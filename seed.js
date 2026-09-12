@@ -4,7 +4,11 @@ import { readFileSync } from 'fs';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const config = JSON.parse(readFileSync('./firebase-applet-config.json', 'utf8'));
+const baseConfig = JSON.parse(readFileSync('./firebase-applet-config.json', 'utf8'));
+const config = {
+  ...baseConfig,
+  apiKey: process.env.VITE_FIREBASE_API_KEY || baseConfig.apiKey
+};
 const app = initializeApp(config);
 const db = getFirestore(app, config.firestoreDatabaseId);
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { 
   BookOpen, 
   GraduationCap, 
@@ -111,6 +111,16 @@ export function MaturaSimulatorView({ onEarnReward }: MaturaSimulatorViewProps) 
       saveMistakesBank(updated);
     }
   };
+
+  // Precompute section task counts to avoid O(N*M) filtering inside the render loop
+  const sectionCounts = useMemo(() => {
+    const counts: Record<string, number> = { 'Wszystkie': tasks.length };
+    for (let i = 0; i < tasks.length; i++) {
+      const section = tasks[i].section;
+      counts[section] = (counts[section] || 0) + 1;
+    }
+    return counts;
+  }, [tasks]);
 
   // Fetch or retrieve tasks with caching
   useEffect(() => {
@@ -528,9 +538,7 @@ export function MaturaSimulatorView({ onEarnReward }: MaturaSimulatorViewProps) 
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {sections.map(sec => {
-                  const count = sec === 'Wszystkie' 
-                    ? tasks.length 
-                    : tasks.filter(t => t.section === sec).length;
+                  const count = sectionCounts[sec] || 0;
 
                   return (
                     <button

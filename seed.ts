@@ -3,7 +3,14 @@ import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { readFileSync } from 'fs';
 import { mathTopics } from './src/data/mathTasks';
 
-const config = JSON.parse(readFileSync('./firebase-applet-config.json', 'utf8'));
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const baseConfig = JSON.parse(readFileSync('./firebase-applet-config.json', 'utf8'));
+const config = {
+    ...baseConfig,
+    apiKey: process.env.VITE_FIREBASE_API_KEY || baseConfig.apiKey
+};
 const app = initializeApp(config);
 const db = getFirestore(app, config.firestoreDatabaseId);
 

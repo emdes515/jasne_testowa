@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Flame, Clock, Trophy, Sparkles, Check, ArrowRight, Target, Swords, FileText, Zap, Coins, Gift } from 'lucide-react';
+import { Flame, Clock, Sparkles, Check, ArrowRight, Swords, FileText, Zap, Coins, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { UserState } from '../types';
 import { getMilestoneStreakDays, getTodayDateString, triggerHaptic, playSuccessSound } from '../utils';

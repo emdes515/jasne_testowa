@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { 
   BookOpen, Calculator, Globe, FlaskConical, ChevronRight, ChevronLeft, ChevronDown,
@@ -94,15 +94,18 @@ export function formatLessonDuration(group: LessonGroup): string {
 export function isTaskCompletedInLesson(
   task: any,
   completedTasks: string[],
-  lessonTasks: any[] = []
+  lessonTasks: any[] = [],
+  completedTasksSet?: Set<string>
 ): boolean {
   if (!task) return false;
-  if (completedTasks.includes(task.id)) return true;
+  const checkHas = (id: string) => completedTasksSet ? completedTasksSet.has(id) : completedTasks.includes(id);
+
+  if (checkHas(task.id)) return true;
 
   const isTheory = task.id?.includes('THEORY') || task.type === 'theory' || task.cke_source === 'Pigułka Wiedzy';
   if (isTheory && lessonTasks && lessonTasks.length > 1) {
     const practiceTasks = lessonTasks.filter(t => !t.id?.includes('THEORY') && t.type !== 'theory' && t.cke_source !== 'Pigułka Wiedzy');
-    if (practiceTasks.length > 0 && practiceTasks.some(t => completedTasks.includes(t.id))) {
+    if (practiceTasks.length > 0 && practiceTasks.some(t => checkHas(t.id))) {
       return true;
     }
   }
@@ -112,17 +115,20 @@ export function isTaskCompletedInLesson(
 /**
  * A lesson is 100% completed if every task in it is completed.
  */
-export function isLessonCompleted(group: LessonGroup, completedTasks: string[]): boolean {
+export function isLessonCompleted(group: LessonGroup, completedTasks: string[], completedTasksSet?: Set<string>): boolean {
   if (!group || !group.tasks || group.tasks.length === 0) return false;
   const cleanId = group.id.replace('lesson-', '');
+
+  const checkHas = (id: string) => completedTasksSet ? completedTasksSet.has(id) : completedTasks.includes(id);
+
   if (
-    completedTasks.includes(`LESSON-${group.id}`) ||
-    completedTasks.includes(`LESSON-${cleanId}`) ||
-    completedTasks.includes(`LESSON-${group.id.toLowerCase()}`)
+    checkHas(`LESSON-${group.id}`) ||
+    checkHas(`LESSON-${cleanId}`) ||
+    checkHas(`LESSON-${group.id.toLowerCase()}`)
   ) {
     return true;
   }
-  return group.tasks.every(task => isTaskCompletedInLesson(task, completedTasks, group.tasks));
+  return group.tasks.every(task => isTaskCompletedInLesson(task, completedTasks, group.tasks, completedTasksSet));
 }
 
 /**
@@ -134,12 +140,13 @@ export function isLessonCompleted(group: LessonGroup, completedTasks: string[]):
 export function isLessonUnlocked(
   groupIdx: number,
   allGroups: LessonGroup[],
-  completedTasks: string[]
+  completedTasks: string[],
+  completedTasksSet?: Set<string>
 ): boolean {
   if (groupIdx === 0) return true;
   const prevGroup = allGroups[groupIdx - 1];
   if (!prevGroup) return false;
-  return isLessonCompleted(prevGroup, completedTasks);
+  return isLessonCompleted(prevGroup, completedTasks, completedTasksSet);
 }
 
 export function getLockRequirementLabel(prevGroup?: LessonGroup): string {
@@ -510,6 +517,7 @@ export function LearnView({
   lessonMistakes = {},
   onSheetToggle
 }: LearnViewProps) {
+  const completedTasksSet = useMemo(() => new Set(completedTasks), [completedTasks]);
   const [isBossExamOpen, setIsBossExamOpen] = useState<boolean>(false);
 
   const getLessonMistakes = (lessonGroupId: string) => {
@@ -633,14 +641,14 @@ export function LearnView({
     const activeTopicIdx = currentSubject.topics.findIndex((t: any, i: number) => {
       if (i === 0) {
         const tasks = t.tasks || [];
-        return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+        return !tasks.every((tsk: any) => completedTasksSet.has(tsk.id));
       }
       const prev = currentSubject.topics[i - 1];
       const prevTasks = prev?.tasks || [];
-      const prevDone = prevTasks.length > 0 && prevTasks.every((tsk: any) => completedTasks.includes(tsk.id));
+      const prevDone = prevTasks.length > 0 && prevTasks.every((tsk: any) => completedTasksSet.has(tsk.id));
       if (!prevDone) return false;
       const tasks = t.tasks || [];
-      return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+      return !tasks.every((tsk: any) => completedTasksSet.has(tsk.id));
     });
     const beaconIdx = activeTopicIdx !== -1 ? activeTopicIdx : 0;
     const targetIdx = Math.max(beaconIdx, selectedTopicIndex ?? 0);
@@ -695,8 +703,8 @@ export function LearnView({
     if (viewState === 'lessons' && lessonsForCurrentTopic.length > 0) {
       // Find the first unlocked, incomplete lesson
       const activeLesson = lessonsForCurrentTopic.find((group, idx) => {
-        const unlocked = isLessonUnlocked(idx, lessonsForCurrentTopic, completedTasks);
-        const completed = isLessonCompleted(group, completedTasks);
+        const unlocked = isLessonUnlocked(idx, lessonsForCurrentTopic, completedTasks, completedTasksSet);
+        const completed = isLessonCompleted(group, completedTasks, completedTasksSet);
         return unlocked && !completed;
       }) || lessonsForCurrentTopic[0];
 
@@ -709,14 +717,14 @@ export function LearnView({
   // Overall math progress calculation
   const totalMathTasks = mathTopics.reduce((acc, t) => acc + (t.tasks?.length || 0), 0);
   const completedMathTasks = mathTopics.reduce((acc, t) => {
-    return acc + (t.tasks || []).filter((tsk: any) => completedTasks.includes(tsk.id)).length;
+    return acc + (t.tasks || []).filter((tsk: any) => completedTasksSet.has(tsk.id)).length;
   }, 0);
   const mathProgressPercent = totalMathTasks > 0 ? Math.round((completedMathTasks / totalMathTasks) * 100) : 0;
 
   // Polish progress calculation
   const totalPolTasks = polishTopics.reduce((acc, t) => acc + (t.tasks?.length || 0), 0);
   const completedPolTasks = polishTopics.reduce((acc, t) => {
-    return acc + (t.tasks || []).filter((tsk: any) => completedTasks.includes(tsk.id)).length;
+    return acc + (t.tasks || []).filter((tsk: any) => completedTasksSet.has(tsk.id)).length;
   }, 0);
   const polProgressPercent = totalPolTasks > 0 ? Math.round((completedPolTasks / totalPolTasks) * 100) : 0;
 
@@ -834,7 +842,7 @@ export function LearnView({
         {(viewState === 'topics' || viewState === 'subjects') && currentSubject && (() => {
           const completedTopicsCount = currentSubject.topics.filter((t: any) => {
             const tasks = t.tasks || [];
-            return tasks.length > 0 && tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+            return tasks.length > 0 && tasks.every((tsk: any) => completedTasksSet.has(tsk.id));
           }).length;
           const totalTopicsCount = currentSubject.topics.length;
 
@@ -842,14 +850,14 @@ export function LearnView({
           const activeTopicIdx = currentSubject.topics.findIndex((t: any, i: number) => {
             if (i === 0) {
               const tasks = t.tasks || [];
-              return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+              return !tasks.every((tsk: any) => completedTasksSet.has(tsk.id));
             }
             const prev = currentSubject.topics[i - 1];
             const prevTasks = prev?.tasks || [];
-            const prevDone = prevTasks.length > 0 && prevTasks.every((tsk: any) => completedTasks.includes(tsk.id));
+            const prevDone = prevTasks.length > 0 && prevTasks.every((tsk: any) => completedTasksSet.has(tsk.id));
             if (!prevDone) return false;
             const tasks = t.tasks || [];
-            return !tasks.every((tsk: any) => completedTasks.includes(tsk.id));
+            return !tasks.every((tsk: any) => completedTasksSet.has(tsk.id));
           });
           const currentActiveIdx = activeTopicIdx !== -1 ? activeTopicIdx : 0;
           const visibleTopics = currentSubject.topics.slice(0, visibleTopicsCount);
@@ -916,18 +924,18 @@ export function LearnView({
                     // Kaskadowe odblokowywanie działów: Dział 0 zawsze odblokowany; kolejny po ukończeniu poprzednika
                     const prevTopic = idx > 0 ? currentSubject.topics[idx - 1] : null;
                     const prevTopicTasks = prevTopic?.tasks || [];
-                    const prevTopicCompleted = idx === 0 || (prevTopicTasks.length > 0 && prevTopicTasks.every((t: any) => completedTasks.includes(t.id)));
+                    const prevTopicCompleted = idx === 0 || (prevTopicTasks.length > 0 && prevTopicTasks.every((t: any) => completedTasksSet.has(t.id)));
                     const isUnlocked = idx === 0 || prevTopicCompleted;
                     const isLocked = !isUnlocked;
 
                     const allTopicTasks = topic.tasks || [];
-                    const completedTopicTasks = allTopicTasks.filter((t: any) => completedTasks.includes(t.id));
+                    const completedTopicTasks = allTopicTasks.filter((t: any) => completedTasksSet.has(t.id));
                     const isFullyCompleted = allTopicTasks.length > 0 && completedTopicTasks.length === allTopicTasks.length;
                     const isBeaconTopic = (idx === currentActiveIdx) && !isFullyCompleted && isUnlocked;
                     
                     const topicLessons = getLessonsForTopic(topic);
                     const topicLessonsCount = topicLessons.length;
-                    const completedTopicLessonsCount = topicLessons.filter(l => isLessonCompleted(l, completedTasks)).length;
+                    const completedTopicLessonsCount = topicLessons.filter(l => isLessonCompleted(l, completedTasks, completedTasksSet)).length;
 
                     const progressPercent = topicLessonsCount > 0 
                       ? Math.round((completedTopicLessonsCount / topicLessonsCount) * 100)
@@ -992,7 +1000,7 @@ export function LearnView({
 
                         {/* Wiersz 2 (Środek): Duży, czytelny tytuł działu */}
                         <h2 className={`font-display font-black text-base sm:text-lg leading-snug break-words transition-colors ${
-                          isLocked ? 'text-slate-400' : 'text-white group-hover:text-[#00C2FF]'
+                          isLocked ? 'text-gray-400' : 'text-white group-hover:text-blue-50 transition-colors'
                         }`}>
                           {cleanName}
                         </h2>
@@ -1077,7 +1085,7 @@ export function LearnView({
            ========================================================================= */}
         {viewState === 'lessons' && currentTopic && (() => {
           const allTopicTasks = lessonsForCurrentTopic.flatMap(g => g.tasks);
-          const completedInCurrentTopic = allTopicTasks.filter(t => isTaskCompletedInLesson(t, completedTasks, allTopicTasks)).length;
+          const completedInCurrentTopic = allTopicTasks.filter(t => isTaskCompletedInLesson(t, completedTasks, allTopicTasks, completedTasksSet)).length;
           const totalInCurrentTopic = allTopicTasks.length;
 
           return (
@@ -1139,7 +1147,7 @@ export function LearnView({
               <div className="flex-1 px-4 sm:px-5 pt-3 pb-36 sm:pb-40 space-y-3.5">
                 {/* Pasek Postępu Działu - Minimalistyczny, 6-milimetrowy pasek w kolorze szmaragdowym/turkusowym */}
                 {(() => {
-                  const completedLessonsCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks)).length;
+                  const completedLessonsCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, completedTasksSet)).length;
                   const totalLessonsCount = lessonsForCurrentTopic.length;
                   const progressPct = totalLessonsCount > 0 ? Math.round((completedLessonsCount / totalLessonsCount) * 100) : 0;
 
@@ -1213,12 +1221,12 @@ export function LearnView({
                   <>
                     {lessonsForCurrentTopic.map((group, groupIdx) => {
                       // CASCADING PROGRESSION ENGINE:
-                      const isUnlocked = isLessonUnlocked(groupIdx, lessonsForCurrentTopic, completedTasks);
-                      const isCompleted = isLessonCompleted(group, completedTasks);
+                      const isUnlocked = isLessonUnlocked(groupIdx, lessonsForCurrentTopic, completedTasks, completedTasksSet);
+                      const isCompleted = isLessonCompleted(group, completedTasks, completedTasksSet);
                       const prevGroup = groupIdx > 0 ? lessonsForCurrentTopic[groupIdx - 1] : null;
 
                       const isCurrentActiveLesson = isUnlocked && !isCompleted && (
-                        lessonsForCurrentTopic.findIndex((g, i) => isLessonUnlocked(i, lessonsForCurrentTopic, completedTasks) && !isLessonCompleted(g, completedTasks)) === groupIdx
+                        lessonsForCurrentTopic.findIndex((g, i) => isLessonUnlocked(i, lessonsForCurrentTopic, completedTasks, completedTasksSet) && !isLessonCompleted(g, completedTasks, completedTasksSet)) === groupIdx
                       );
 
                       // Next lesson in line
@@ -1311,7 +1319,7 @@ export function LearnView({
                                 </div>
 
                                 <h3 className={`font-display font-bold text-base sm:text-lg leading-snug break-words ${
-                                  isUnlocked ? 'text-white' : 'text-slate-400'
+                                  isUnlocked ? 'text-white group-hover:text-blue-50 transition-colors' : 'text-gray-400'
                                 }`}>
                                   {group.name}
                                 </h3>
@@ -1428,8 +1436,8 @@ export function LearnView({
 
                     {/* ================= AUTOMATYCZNY SPRAWDZIAN DZIAŁU (BOSS EXAM) ================= */}
                     {(() => {
-                      const isBossExamPassed = completedTasks.includes('BOSS-EXAM-DZIAL-1') || completedTasks.includes('SPRAWDZIAN-DZIAL-1');
-                      const completedCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks)).length;
+                      const isBossExamPassed = completedTasksSet.has('BOSS-EXAM-DZIAL-1') || completedTasksSet.has('SPRAWDZIAN-DZIAL-1');
+                      const completedCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, completedTasksSet)).length;
                       const allDone = completedCount === lessonsForCurrentTopic.length;
 
                       return (

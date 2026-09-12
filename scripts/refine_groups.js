@@ -31,7 +31,7 @@ const replacement = `return grouped.map((group, groupIdx) => {
                 <div className="flex flex-col gap-3">`;
 
 content = content.replace(targetStr, replacement);
-content = content.replace('))', ')}'); // fix the map callback closing
+content = content.replace(/(\s*<\/div>\s*)\)\)/, '$1)}'); // fix the map callback closing
 
 fs.writeFileSync('src/components/LearnView.tsx', content);
 

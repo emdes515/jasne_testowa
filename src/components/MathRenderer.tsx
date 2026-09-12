@@ -88,7 +88,9 @@ interface MathRendererProps {
   displayMode?: boolean;
 }
 
-export const MathRenderer: React.FC<MathRendererProps> = ({ 
+const MATH_SPLIT_REGEX = /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{cases\}[\s\S]*?\\end\{cases\}|\$[^\$]+?\$|\\\([^\n]*?\\\))/g;
+
+const MathRendererComponent: React.FC<MathRendererProps> = ({
   content, 
   text, 
   className = '',
@@ -146,7 +148,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
   // Funkcja pomocnicza do parsowania tekstu mieszanego z $...$ lub $$...$$
   const renderMixedParts = (str: string, extraClass: string = '') => {
     // Splits by $$...$$, \[...\], \begin{cases}...\end{cases}, $...$, \(...\)
-    const parts = str.split(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{cases\}[\s\S]*?\\end\{cases\}|\$[^\$]+?\$|\\\([^\n]*?\\\))/g);
+    const parts = str.split(MATH_SPLIT_REGEX);
     return (
       <span className={`break-words max-w-full leading-relaxed inline ${extraClass}`}>
         {parts.map((part, index) => {
@@ -234,5 +236,7 @@ export const MathRenderer: React.FC<MathRendererProps> = ({
   // Domyślnie parsujemy jako tekst mieszany (LaTeX z $ lub $$ oraz zwykły tekst)
   return renderMixedParts(rawContent, className);
 };
+
+export const MathRenderer = React.memo(MathRendererComponent);
 
 export default MathRenderer;

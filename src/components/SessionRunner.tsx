@@ -737,20 +737,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
   };
 
-  // Check open task answer with AI Tutor
-  const handleCheckOpenAnswerWithTutor = async () => {
-    let effectiveAnswer = openAnswerText;
-    if (!effectiveAnswer.trim() && openCanvasDataUrl && openCanvasDataUrl.length > 50) {
-      effectiveAnswer = '[Rozwiązanie odręczne na tablicy]';
-      setOpenAnswerText(effectiveAnswer);
-    }
-    if (!effectiveAnswer.trim() || isTutorScanning || isEvaluated) return;
-
-    setIsTutorScanning(true);
-    triggerHaptic('medium');
-
-    let evalData: any = null;
-
+  const fetchAiTutorEvaluation = async (effectiveAnswer: string) => {
     try {
       const response = await fetch('/api/evaluate-task', {
         method: 'POST',
@@ -758,105 +745,78 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         body: JSON.stringify({
           question: currentTask?.question || currentTask?.math_statement,
           officialKey: currentTask?.officialKey || currentTask?.explanation,
-          studentAnswer: openAnswerText,
+          studentAnswer: effectiveAnswer,
           taskType: 'OPEN_PROOF',
           maxPoints: currentTask?.points || 2,
           ai_tutor_rubric: currentTask?.ai_tutor_rubric,
           attemptCount: 1
         })
       });
-
       if (response.ok) {
-        evalData = await response.json();
-      } else {
-        console.warn('AI Tutor response not OK, using client-side rubric evaluation');
+        return await response.json();
       }
+      console.warn('AI Tutor response not OK, using client-side rubric evaluation');
     } catch (err) {
       console.warn('AI Tutor service unavailable, activating client-side evaluation fallback');
     }
+    return null;
+  };
 
-    // If server evaluation didn't succeed, generate resilient rubric evaluation
-    if (!evalData) {
-      const text = openAnswerText.toLowerCase();
-      const hasAlgebraProgress = 
-        text.includes('3n^2') || 
-        text.includes('3n²') || 
-        text.includes('4n(n+1)') || 
-        text.includes('4k(k+1)') || 
-        text.includes('4k(') || 
-        text.includes('4n(') || 
-        text.includes('5(n-1)') || 
-        text.includes('5n(') || 
-        text.includes('2^96') || 
-        text.includes('2^{96}') || 
-        text.includes('2^20') || 
-        text.includes('2^{20}') || 
-        text.includes('2k') ||
-        text.includes('wyłącz') || 
-        text.includes('wspólny') ||
-        text.includes('rozł') || 
-        text.includes('kwadrat') || 
-        text.includes('iloczyn') ||
-        text.includes('reszt');
+  const getFallbackEvaluation = (effectiveAnswer: string) => {
+    const text = effectiveAnswer.toLowerCase();
+    const hasAlgebraProgress =
+      text.includes('3n^2') || text.includes('3n²') || text.includes('4n(n+1)') ||
+      text.includes('4k(k+1)') || text.includes('4k(') || text.includes('4n(') ||
+      text.includes('5(n-1)') || text.includes('5n(') || text.includes('2^96') ||
+      text.includes('2^{96}') || text.includes('2^20') || text.includes('2^{20}') ||
+      text.includes('2k') || text.includes('wyłącz') || text.includes('wspólny') ||
+      text.includes('rozł') || text.includes('kwadrat') || text.includes('iloczyn') ||
+      text.includes('reszt');
 
-      const hasConclusion = 
-        text.includes('podziel') || 
-        text.includes('całkowit') || 
-        text.includes('wniosek') || 
-        text.includes('udowodnion') || 
-        text.includes('cnd') || 
-        text.includes('c.n.d') || 
-        text.includes('reszta 2') || 
-        text.includes('8k') || 
-        text.includes('30k') || 
-        text.includes('21k') || 
-        text.includes('k \\in') || 
-        text.includes('c \\in') || 
-        text.includes('n \\in');
+    const hasConclusion =
+      text.includes('podziel') || text.includes('całkowit') || text.includes('wniosek') ||
+      text.includes('udowodnion') || text.includes('cnd') || text.includes('c.n.d') ||
+      text.includes('reszta 2') || text.includes('8k') || text.includes('30k') ||
+      text.includes('21k') || text.includes('k \\in') || text.includes('c \\in') ||
+      text.includes('n \\in');
 
-      let fallbackScore = 0;
-      if (hasAlgebraProgress && hasConclusion) {
-        fallbackScore = 2;
-      } else if (hasAlgebraProgress || text.length > 25) {
-        fallbackScore = 1;
-      }
-
-      evalData = {
-        score: fallbackScore,
-        maxPoints: currentTask?.points || 2,
-        isPassed: fallbackScore >= 1,
-        gradeTitle: fallbackScore === 2 
-          ? '2 / 2 PKT – Pełny dowód i wniosek' 
-          : (fallbackScore === 1 ? '1 / 2 PKT – Zasadniczy postęp' : '0 / 2 PKT – Próba rozwiązania'),
-        summary: fallbackScore === 2 
-          ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Odpowiedź w pełni zgodna ze schematem maturalnym.')
-          : fallbackScore === 1 
-          ? (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w dowodzie. Poprawne przekształcenie algebraiczne.')
-          : 'Dowód wymaga dopracowania kluczowych przekształceń algebraicznych.',
-        strengths: fallbackScore >= 1 ? ['Podjęto poprawną metodę algebraiczną', 'Zastosowano rozkład na czynniki'] : [],
-        errors: fallbackScore < 2 ? ['Pamiętaj o formalnym wniosku końcowym powołującym się na podzielność przez liczbę całkowitą'] : [],
-        maturaFeedback: fallbackScore === 2 
-          ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
-          : fallbackScore === 1 
-          ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
-          : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
-        ckeFeedback: fallbackScore === 2 
-          ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
-          : fallbackScore === 1 
-          ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
-          : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
-        suggestion: 'Zapoznaj się z wzorcowym modelem rozwiązania poniżej.',
-        hintForNextAttempt: ''
-      };
+    let fallbackScore = 0;
+    if (hasAlgebraProgress && hasConclusion) {
+      fallbackScore = 2;
+    } else if (hasAlgebraProgress || text.length > 25) {
+      fallbackScore = 1;
     }
 
-    setTutorEvaluation(evalData);
-    setIsEvaluated(true);
-    setIsTutorScanning(false);
+    return {
+      score: fallbackScore,
+      maxPoints: currentTask?.points || 2,
+      isPassed: fallbackScore >= 1,
+      gradeTitle: fallbackScore === 2
+        ? '2 / 2 PKT – Pełny dowód i wniosek'
+        : (fallbackScore === 1 ? '1 / 2 PKT – Zasadniczy postęp' : '0 / 2 PKT – Próba rozwiązania'),
+      summary: fallbackScore === 2
+        ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Odpowiedź w pełni zgodna ze schematem maturalnym.')
+        : fallbackScore === 1
+        ? (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w dowodzie. Poprawne przekształcenie algebraiczne.')
+        : 'Dowód wymaga dopracowania kluczowych przekształceń algebraicznych.',
+      strengths: fallbackScore >= 1 ? ['Podjęto poprawną metodę algebraiczną', 'Zastosowano rozkład na czynniki'] : [],
+      errors: fallbackScore < 2 ? ['Pamiętaj o formalnym wniosku końcowym powołującym się na podzielność przez liczbę całkowitą'] : [],
+      maturaFeedback: fallbackScore === 2
+        ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
+        : fallbackScore === 1
+        ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
+        : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
+      ckeFeedback: fallbackScore === 2
+        ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
+        : fallbackScore === 1
+        ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
+        : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
+      suggestion: 'Zapoznaj się z wzorcowym modelem rozwiązania poniżej.',
+      hintForNextAttempt: ''
+    };
+  };
 
-    const passed = evalData.isPassed ?? (evalData.score >= 1);
-    setIsCorrect(passed);
-
+  const applyEvaluationRewardsAndRequeue = (evalData: any) => {
     if (evalData.score >= (currentTask?.points || 2)) {
       triggerHaptic('success');
       playSuccessSound();
@@ -905,6 +865,35 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         setTaskQueue(prev => [...prev, { ...currentTask, isRetry: true }]);
       }
     }
+  };
+
+  // Check open task answer with AI Tutor
+  const handleCheckOpenAnswerWithTutor = async () => {
+    let effectiveAnswer = openAnswerText;
+    if (!effectiveAnswer.trim() && openCanvasDataUrl && openCanvasDataUrl.length > 50) {
+      effectiveAnswer = '[Rozwiązanie odręczne na tablicy]';
+      setOpenAnswerText(effectiveAnswer);
+    }
+    if (!effectiveAnswer.trim() || isTutorScanning || isEvaluated) return;
+
+    setIsTutorScanning(true);
+    triggerHaptic('medium');
+
+    let evalData = await fetchAiTutorEvaluation(effectiveAnswer);
+
+    // If server evaluation didn't succeed, generate resilient rubric evaluation
+    if (!evalData) {
+      evalData = getFallbackEvaluation(effectiveAnswer);
+    }
+
+    setTutorEvaluation(evalData);
+    setIsEvaluated(true);
+    setIsTutorScanning(false);
+
+    const passed = evalData.isPassed ?? (evalData.score >= 1);
+    setIsCorrect(passed);
+
+    applyEvaluationRewardsAndRequeue(evalData);
   };
 
   // Next step or finish – Mastery Learning (dynamiczny wymóg poprawnych odpowiedzi)

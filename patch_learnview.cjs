@@ -23,7 +23,7 @@ content = content.replace(
 // Fix title colors on locked cards
 content = content.replace(
   /h3 className=\{`font-display font-semibold text-base mb-2 \$\{isLocked \? 'text-white\/50' : 'text-white group-hover:text-white\/90'\}\`\}/g,
-  "h3 className={`font-display font-semibold text-base mb-2 ${isLocked ? 'text-gray-400' : 'text-white group-hover:text-blue-50 transition-colors'}`}"
+  "h3 className={`font-display font-semibold text-base mb-2 ${isLocked ? 'text-slate-400' : 'text-white group-hover:text-blue-50 transition-colors'}`}"
 );
 
 // Fix locked label color
@@ -35,13 +35,13 @@ content = content.replace(
 // Fix locked text for question
 content = content.replace(
   /<div className="text-sm text-white\/40 line-clamp-1 mb-4 italic">/g,
-  "<div className={`text-sm line-clamp-1 mb-4 italic ${isLocked ? 'text-gray-600' : 'text-gray-400'}`}>"
+  "<div className={`text-sm line-clamp-1 mb-4 italic ${isLocked ? 'text-slate-600' : 'text-slate-400'}`}>"
 );
 
 // Fix locked time text
 content = content.replace(
   /<span className="text-xs text-white\/40 font-medium">\{task\.time \|\| '2 min'\}<\/span>/g,
-  "<span className={`text-xs font-medium ${isLocked ? 'text-gray-600' : 'text-gray-400'}`}>{task.time || '2 min'}</span>"
+  "<span className={`text-xs font-medium ${isLocked ? 'text-slate-600' : 'text-slate-400'}`}>{task.time || '2 min'}</span>"
 );
 
 // Enhance CTA button

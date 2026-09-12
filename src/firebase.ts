@@ -10,7 +10,12 @@ import {
 } from 'firebase/firestore';
 import firebaseConfig from '../firebase-applet-config.json';
 
-export const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+const config = {
+  ...firebaseConfig,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || firebaseConfig.apiKey
+};
+
+export const app = getApps().length > 0 ? getApp() : initializeApp(config);
 export const auth = getAuth(app);
 
 // Rule 4: Enable offline cache with persistentLocalCache & multi-tab manager
@@ -20,10 +25,10 @@ try {
     localCache: persistentLocalCache({
       tabManager: persistentMultipleTabManager()
     })
-  }, firebaseConfig.firestoreDatabaseId);
+  }, config.firestoreDatabaseId);
 } catch (e) {
   try {
-    firestoreDb = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+    firestoreDb = getFirestore(app, config.firestoreDatabaseId);
   } catch (err) {
     firestoreDb = getFirestore(app);
   }

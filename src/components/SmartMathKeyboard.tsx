@@ -75,6 +75,15 @@ export function SmartMathKeyboard({
 
     const fullLatex = sanitizeLatexForDisplay(before + cursorLatex + after);
 
+    const escapeHtml = (str: string) => {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    };
+
     try {
       return katex.renderToString(fullLatex, {
         displayMode: true,
@@ -82,7 +91,7 @@ export function SmartMathKeyboard({
       });
     } catch {
       // Fallback: simple text with cursor
-      return `<div class="font-mono text-white text-base">${before}<span class="text-[#00E5FF] font-black animate-pulse">|</span>${after}</div>`;
+      return `<div class="font-mono text-white text-base">${escapeHtml(before)}<span class="text-[#00E5FF] font-black animate-pulse">|</span>${escapeHtml(after)}</div>`;
     }
   }, [value, cursorPos, cursorVisible]);
 
