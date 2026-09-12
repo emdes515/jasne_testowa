@@ -97,16 +97,27 @@ BEZWZGLĘDNE REGUŁY:
 
   // Helper for resilient rubric-based matura evaluation
   function evaluateFallback(params: {
-    cleanAnswer: string;
-    officialKey?: string;
-    scoring_key?: string;
+    cleanAnswer: any;
+    officialKey?: any;
+    scoring_key?: any;
     maxPts: number;
     isFirstAttempt: boolean;
     ai_tutor_rubric?: { criterion_1_point?: string; criterion_2_points?: string };
   }) {
     const { cleanAnswer, officialKey, scoring_key, maxPts, isFirstAttempt, ai_tutor_rubric } = params;
-    const text = cleanAnswer.toLowerCase();
-    const rubricSource = scoring_key || officialKey || '';
+    const text = (typeof cleanAnswer === 'string' ? cleanAnswer : JSON.stringify(cleanAnswer || '')).toLowerCase();
+    
+    const rawRubric = scoring_key || officialKey || '';
+    let rubricSource = '';
+    if (typeof rawRubric === 'string') {
+      rubricSource = rawRubric;
+    } else if (Array.isArray(rawRubric)) {
+      rubricSource = rawRubric.map(item => (typeof item === 'string' ? item : JSON.stringify(item))).join(' ');
+    } else if (rawRubric && typeof rawRubric === 'object') {
+      rubricSource = Object.values(rawRubric).map(item => (typeof item === 'string' ? item : JSON.stringify(item))).join(' ');
+    } else {
+      rubricSource = String(rawRubric || '');
+    }
     
     // Check algebra tokens for progress (Lesson 1.7 and general algebra)
     const hasAlgebraProgress = 
@@ -178,9 +189,9 @@ BEZWZGLĘDNE REGUŁY:
           ? `${calculatedScore} / ${maxPts} PKT – Zasadniczy postęp`
           : `0 / ${maxPts} PKT – Próba rozwiązania`,
       summary: calculatedScore === maxPts 
-        ? (ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Odpowiedź w pełni zgodna ze schematem maturalnym.')
+        ? (typeof ai_tutor_rubric?.criterion_2_points === 'string' ? ai_tutor_rubric.criterion_2_points : 'Perfekcyjne rozwiązanie! Odpowiedź w pełni zgodna ze schematem maturalnym.')
         : calculatedScore > 0 
-        ? (ai_tutor_rubric?.criterion_1_point || 'Częściowo poprawna odpowiedź (zasadniczy postęp algebraiczny).')
+        ? (typeof ai_tutor_rubric?.criterion_1_point === 'string' ? ai_tutor_rubric.criterion_1_point : 'Częściowo poprawna odpowiedź (zasadniczy postęp algebraiczny).')
         : 'Odpowiedź wymaga dopracowania kluczowych przekształceń algebraicznych.',
       mentorComment,
       strengths: calculatedScore > 0 ? ['Zastosowano poprawną tożsamość algebraiczną', 'Przedstawiono zasadniczy tok rozumowania'] : [],
