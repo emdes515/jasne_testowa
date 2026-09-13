@@ -883,12 +883,14 @@ export default function App() {
     return true;
   };
 
-  const handleActivatePro = () => {
+  const handleActivatePro = async (code: string) => {
+    console.log("Pro activation with code", code);
     setUserState(prev => {
       const updated = activatePro(prev);
       saveUserData(updated);
       return updated;
     });
+    return { ok: true };
   };
 
   const handleDeductHeart = (): { wasDeducted: boolean; isOutOfHearts: boolean } => {

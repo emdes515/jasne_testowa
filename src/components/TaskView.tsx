@@ -2071,6 +2071,7 @@ export function TaskView({
                   type="button"
                   onClick={() => setShowHintModal(false)}
                   className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white"
+                  aria-label="Zamknij wskazówkę"
                 >
                   <X size={14} />
                 </button>
@@ -2141,6 +2142,7 @@ export function TaskView({
                   type="button"
                   onClick={() => setShowOpenProofTutorSheet(false)}
                   className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white"
+                  aria-label="Zamknij wskazówkę tutora"
                 >
                   <X size={14} />
                 </button>

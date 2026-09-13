@@ -444,6 +444,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
             onClick={() => setShowExitConfirm(true)}
             className="w-9 h-9 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center justify-center cursor-pointer"
             title="Przerwij sprawdzian"
+            aria-label="Przerwij sprawdzian"
           >
             <X size={20} />
           </button>
