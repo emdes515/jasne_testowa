@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Search, BookOpen, AlertTriangle, Compass, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS, CkeFormulaItem } from '../data/ckeFormulasData';
+import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem } from '../services/ckeCatalogRepository';
 import { MathRenderer } from './MathRenderer';
 
 interface CkeFormulasModalProps {
@@ -31,11 +31,14 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  // Katalog wzorów CKE pochodzi z Firestore (system/ckeFormulas).
+  const isCatalogLoaded = useCkeCatalogs();
+
   // Filtered formulas
   const filteredFormulas = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
-    return CKE_FORMULAS_DATA.filter((item: CkeFormulaItem) => {
+    return getCkeFormulas().filter((item: CkeFormulaItem) => {
       // Topic match
       if (selectedTopic !== 'all' && item.topicId !== selectedTopic) {
         return false;
@@ -53,7 +56,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
 
       return inTitle || inFormula || inTopic || inKeywords || inGolden || inTrap;
     });
-  }, [searchQuery, selectedTopic]);
+  }, [searchQuery, selectedTopic, isCatalogLoaded]);
 
   if (!isOpen) return null;
 
@@ -125,7 +128,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
             {/* Topic Filter Chips */}
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 -mb-1">
               <Filter size={13} className="text-slate-500 shrink-0 mr-1" />
-              {CKE_FORMULA_TOPICS.map(topic => {
+              {getCkeFormulaTopics().map(topic => {
                 const isSelected = selectedTopic === topic.id;
                 return (
                   <button
@@ -150,7 +153,13 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
             className="flex-1 overflow-y-auto p-4 space-y-3.5"
             style={{ paddingBottom: 'max(24px, env(safe-area-inset-bottom, 24px))' }}
           >
-            {filteredFormulas.length === 0 ? (
+            {!isCatalogLoaded ? (
+              <div className="py-12 text-center flex flex-col items-center justify-center">
+                <div className="w-8 h-8 rounded-full border-2 border-[#FFB800]/30 border-t-[#FFB800] animate-spin mb-3" />
+                <p className="text-sm font-semibold text-slate-300">Wczytuję oficjalne wzory CKE…</p>
+                <p className="text-xs text-slate-500 mt-1">Katalog pobierany z chmury.</p>
+              </div>
+            ) : filteredFormulas.length === 0 ? (
               <div className="py-12 text-center flex flex-col items-center justify-center">
                 <BookOpen size={36} className="text-slate-600 mb-2" />
                 <p className="text-sm font-semibold text-slate-300">Nie znaleziono wzorów</p>

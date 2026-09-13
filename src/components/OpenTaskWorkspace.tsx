@@ -20,7 +20,11 @@ import {
   Lightbulb,
   Sparkles,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Plus,
+  ArrowDown,
+  ArrowUp,
+  Layers
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
@@ -327,6 +331,8 @@ export function OpenTaskWorkspace({
   // --------------------------------------------------------------------------
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const scrollViewportRef = useRef<HTMLDivElement>(null);
+  const [canvasHeight, setCanvasHeight] = useState<number>(440);
   const [wbTool, setWbTool] = useState<'pen' | 'eraser'>('pen');
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const [hasCanvasStrokes, setHasCanvasStrokes] = useState<boolean>(Boolean(savedCanvasDataUrl && savedCanvasDataUrl.length > 50));
@@ -338,6 +344,42 @@ export function OpenTaskWorkspace({
   const updateUndoRedoState = () => {
     setCanUndo(historyIndexRef.current > 0);
     setCanRedo(historyIndexRef.current < historyRef.current.length - 1);
+  };
+
+  // Rozszerzenie arkusza w dół (+350px)
+  const handleExpandCanvas = () => {
+    triggerHaptic('medium');
+    setCanvasHeight(prev => Math.min(prev + 350, 3200));
+    setTimeout(() => {
+      if (scrollViewportRef.current) {
+        scrollViewportRef.current.scrollTo({
+          top: scrollViewportRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 60);
+  };
+
+  // Zmniejszenie arkusza o 350px (minimum 440px)
+  const handleShrinkCanvas = () => {
+    if (canvasHeight <= 440) return;
+    triggerHaptic('light');
+    setCanvasHeight(prev => Math.max(prev - 350, 440));
+  };
+
+  const handleScrollToTop = () => {
+    triggerHaptic('light');
+    scrollViewportRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleScrollToBottom = () => {
+    triggerHaptic('light');
+    if (scrollViewportRef.current) {
+      scrollViewportRef.current.scrollTo({
+        top: scrollViewportRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   // Zapis stanu do historii i powiadomienie rodzica
@@ -366,7 +408,7 @@ export function OpenTaskWorkspace({
     }
   };
 
-  // Inicjalizacja canvasu (zarówno przy montowaniu, jak i gdy kontener uzyskuje wymiary)
+  // Inicjalizacja canvasu (zarówno przy montowaniu, jak i gdy kontener uzyskuje wymiary lub wysokość)
   const initCanvas = () => {
     const canvas = canvasRef.current;
     const container = canvasContainerRef.current;
@@ -375,10 +417,10 @@ export function OpenTaskWorkspace({
     const rect = container.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
     const width = rect.width || 360;
-    const height = rect.height || 280;
+    const height = canvasHeight;
 
-    if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-      // 1. Capture current canvas into an offscreen canvas BEFORE resizing wipes out pixels!
+    if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+      // 1. Przechwyć obecny stan do canvasu offscreen, aby nie utracić ani piksela przy powiększaniu!
       let backupCanvas: HTMLCanvasElement | null = null;
       if (hasCanvasStrokes && canvas.width > 0 && canvas.height > 0) {
         try {
@@ -392,8 +434,8 @@ export function OpenTaskWorkspace({
         } catch {}
       }
 
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
 
@@ -404,8 +446,8 @@ export function OpenTaskWorkspace({
       ctx.lineJoin = 'round';
 
       if (backupCanvas) {
-        // SYNCHRONOUS RESTORE! No pixel loss, no async delay!
-        ctx.drawImage(backupCanvas, 0, 0, width, height);
+        // SYNCHRONICZNE ODTWORZENIE! Zero utraty pikseli, zero migotania!
+        ctx.drawImage(backupCanvas, 0, 0, backupCanvas.width / dpr, backupCanvas.height / dpr);
         saveCanvasState();
       } else if (savedCanvasDataUrl && savedCanvasDataUrl.length > 50) {
         const img = new Image();
@@ -425,15 +467,15 @@ export function OpenTaskWorkspace({
       clearTimeout(timer);
       window.removeEventListener('resize', initCanvas);
     };
-  }, []);
+  }, [canvasHeight]);
 
-  // Gdy uczeń przełącza na tablicę lub zmienia tryb pełnoekranowy
+  // Gdy uczeń przełącza na tablicę, zmienia wysokość lub tryb pełnoekranowy
   useEffect(() => {
     if (activeTab === 'whiteboard' || isFullscreen) {
       const timer = setTimeout(initCanvas, 40);
       return () => clearTimeout(timer);
     }
-  }, [activeTab, isFullscreen]);
+  }, [activeTab, isFullscreen, canvasHeight]);
 
   // Rysowanie: pointer events
   const startDrawing = (e: React.PointerEvent<HTMLCanvasElement>) => {
@@ -1528,11 +1570,11 @@ export function OpenTaskWorkspace({
       </div>
 
       {/* ================================================================== */}
-      {/* TRYB B: CYFROWA TABLICA DO PISANIA                                 */}
+      {/* TRYB B: ROZWIJALNA CYFROWA TABLICA DO PISANIA (EXPANDABLE CANVAS)    */}
       {/* ================================================================== */}
       <div className={`w-full flex flex-col gap-2 ${isFullscreen ? 'flex-1 overflow-hidden' : 'shrink-0'} ${activeTab === 'whiteboard' ? 'flex' : 'hidden'}`}>
         <div className={`w-full bg-[#0B101B] border border-white/15 rounded-2xl p-2.5 sm:p-3 flex flex-col gap-2.5 shadow-xl ${isFullscreen ? 'flex-1 overflow-hidden justify-between' : ''}`}>
-          {/* PASEK NARZĘDZI NA GÓRZE TABLICY: Pióro, Gumka, Cofnij, Ponów, Wyczyść */}
+          {/* PASEK NARZĘDZI NA GÓRZE TABLICY */}
           <div className="flex items-center justify-between gap-2 shrink-0 flex-wrap">
             {/* Narzędzia pisania: Pióro / Gumka */}
             <div className="flex items-center gap-1.5 bg-[#141C28] p-1 rounded-xl border border-white/10">
@@ -1569,7 +1611,7 @@ export function OpenTaskWorkspace({
               </button>
             </div>
 
-            {/* Narzędzia historii i czyszczenia: Cofnij, Ponów, Wyczyść, Pełny ekran */}
+            {/* Narzędzia historii, skoku i rozszerzania */}
             <div className="flex items-center gap-1">
               <button
                 type="button"
@@ -1604,6 +1646,39 @@ export function OpenTaskWorkspace({
                 <span className="hidden sm:inline">Wyczyść</span>
               </button>
 
+              {/* Szybka nawigacja góra/dół przy długim arkuszu */}
+              {canvasHeight > 440 && (
+                <div className="flex items-center gap-0.5 bg-[#141C28] p-0.5 rounded-xl border border-white/10">
+                  <button
+                    type="button"
+                    onClick={handleScrollToTop}
+                    className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                    title="Przewiń na początek arkusza"
+                  >
+                    <ArrowUp size={14} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleScrollToBottom}
+                    className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                    title="Przewiń na dół arkusza"
+                  >
+                    <ArrowDown size={14} />
+                  </button>
+                </div>
+              )}
+
+              {/* Przycisk rozszerzenia arkusza w belce */}
+              <button
+                type="button"
+                onClick={handleExpandCanvas}
+                className="px-2.5 py-1.5 rounded-xl text-[#FFB800] hover:text-amber-300 bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
+                title="Dodaj 350px miejsca na obliczenia w dół"
+              >
+                <Plus size={14} />
+                <span className="hidden sm:inline">+350px</span>
+              </button>
+
               <button
                 type="button"
                 onClick={() => {
@@ -1622,37 +1697,63 @@ export function OpenTaskWorkspace({
             </div>
           </div>
 
-          {/* OBSZAR ROBOCZY: PEŁNOWYMIAROWY KAFELEK TABLICY Z DELIKATNĄ SIATKĄ W KRATKĘ */}
+          {/* OBSZAR ROBOCZY: PRZEWIJALNY VIEWPORT Z ROZSZERZALNYM ARKUSZEM */}
           <div 
-            ref={canvasContainerRef}
-            className={`w-full rounded-xl border border-white/15 relative overflow-hidden touch-none ${
-              isFullscreen ? 'flex-1 min-h-[350px]' : 'h-[280px] sm:h-[320px]'
+            ref={scrollViewportRef}
+            className={`w-full rounded-xl border border-white/15 relative overflow-y-auto overflow-x-hidden ${
+              isFullscreen ? 'flex-1 min-h-[380px]' : 'h-[360px] sm:h-[420px]'
             }`}
             style={{
               backgroundColor: '#070B12',
-              backgroundImage: `
-                linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
-              `,
-              backgroundSize: '24px 24px',
+              overscrollBehavior: 'contain',
+              scrollBehavior: 'smooth'
             }}
           >
-            <canvas
-              ref={canvasRef}
-              onPointerDown={startDrawing}
-              onPointerMove={draw}
-              onPointerUp={stopDrawing}
-              onPointerCancel={stopDrawing}
-              className="w-full h-full cursor-crosshair block"
-            />
+            {/* KONTENER CANVASU O DYNAMICZNEJ WYSOKOŚCI */}
+            <div
+              ref={canvasContainerRef}
+              className="w-full relative touch-none"
+              style={{
+                height: `${canvasHeight}px`,
+                minHeight: `${canvasHeight}px`,
+                backgroundColor: '#070B12',
+                backgroundImage: `
+                  linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
+                `,
+                backgroundSize: '24px 24px',
+              }}
+            >
+              <canvas
+                ref={canvasRef}
+                onPointerDown={startDrawing}
+                onPointerMove={draw}
+                onPointerUp={stopDrawing}
+                onPointerCancel={stopDrawing}
+                className="w-full h-full cursor-crosshair block"
+              />
 
-            {/* Delikatny znak wodny z instrukcją arkusza maturalnego */}
-            {!hasCanvasStrokes && !isDrawing && (
-              <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center text-slate-500/40 text-xs font-medium gap-1 select-none">
-                <span>Arkusz roboczy • Kratka 0,5 cm</span>
-                <span className="text-[11px] text-slate-500/30">Pisz palcem, rysikiem lub myszką</span>
+              {/* Delikatny znak wodny z instrukcją arkusza maturalnego */}
+              {!hasCanvasStrokes && !isDrawing && (
+                <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center text-slate-500/40 text-xs font-medium gap-1 select-none">
+                  <span>Arkusz roboczy CKE • Kratka 0,5 cm</span>
+                  <span className="text-[11px] text-slate-500/30">Pisz palcem, rysikiem lub myszką • Przewijaj w dół i rozwijaj bez limitu</span>
+                </div>
+              )}
+
+              {/* DYNAMICZNY PRZYCISK ROZSZERZENIA NA DOLE ARKUSZA */}
+              <div className="sticky bottom-2 inset-x-0 flex justify-center pointer-events-none z-10 px-4 py-1">
+                <button
+                  type="button"
+                  onClick={handleExpandCanvas}
+                  className="pointer-events-auto px-4 py-2 rounded-full bg-[#111827]/95 hover:bg-[#1F2937] border border-amber-500/40 hover:border-amber-400 text-amber-300 hover:text-amber-200 text-xs font-bold flex items-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.6)] backdrop-blur-md active:scale-95 transition-all cursor-pointer group"
+                >
+                  <Plus size={14} className="text-amber-400 group-hover:rotate-90 transition-transform duration-200" />
+                  <span>Rozwiń arkusz w dół (+350px)</span>
+                  <ArrowDown size={13} className="text-amber-400 animate-bounce" />
+                </button>
               </div>
-            )}
+            </div>
           </div>
 
           {/* PRZYCISK ZATWIERDZENIA Z TABLICY */}

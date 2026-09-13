@@ -36,3 +36,29 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
+# Firebase CLI state (may contain deploy cache / project aliases)
+.firebase/
+
+# Local, machine-specific seed overrides (never the tracked seed/curriculum data)
+seed/*.local.json
+
+# Archives
+*.zip
+*.rar
+
+# One-off temporary scripts / codemods kept in the repository root only.
+# Anchored with a leading slash so nested, legitimate source files with the same
+# prefix (e.g. src/**/test*.js) are NOT silently ignored.
+/test*.js
+/test*.cjs
+/fix_*.js
+/patch_*.js
+/rewrite_*.js
+
+# Firebase Admin SDK service account keys (CRITICAL SECURITY)
+*-firebase-adminsdk*.json
+
+# Local environment overrides
+.env.local
+.env.*.local
+

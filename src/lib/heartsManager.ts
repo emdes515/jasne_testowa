@@ -1,4 +1,6 @@
 import { UserState } from '../types';
+import { auth, db } from '../firebase';
+import { doc, writeBatch, serverTimestamp } from 'firebase/firestore';
 
 export const MAX_HEARTS = 5;
 export const REGEN_INTERVAL_MS = 30 * 60 * 1000; // 30 minut na 1 serce
@@ -225,6 +227,63 @@ export function activatePro(userState: UserState): UserState {
     maxHearts: MAX_HEARTS,
     lastHeartRegenTimestamp: Date.now()
   };
+}
+
+export interface ProActivationResult {
+  ok: boolean;
+  error?: string;
+}
+
+/**
+ * Aktywacja PRO kodem jednorazowym.
+ *
+ * Reguły Firestore nie pozwalają klientowi samodzielnie ustawić `isPro = true`.
+ * Jedyne legalne przejście to atomowy batch:
+ *   1) users/{uid}: { isPro: true, proCode: '<kod>' }
+ *   2) system/proCodes/{kod}: { usedBy: <uid>, usedAt: ... }
+ * Dzięki temu kod nie może być użyty dwa razy, a pole `isPro` nie da się
+ * włączyć z konsoli przeglądarki.
+ */
+export async function activateProWithCode(code: string): Promise<ProActivationResult> {
+  const uid = auth.currentUser?.uid;
+  if (!uid) {
+    return { ok: false, error: 'Zaloguj się, aby aktywować PRO. Kod przypisujemy do Twojego konta.' };
+  }
+
+  const normalized = String(code || '').trim().toUpperCase();
+  if (!/^[A-Z0-9-]{6,64}$/.test(normalized)) {
+    return { ok: false, error: 'Nieprawidłowy format kodu. Kod ma min. 6 znaków (litery, cyfry, myślnik).' };
+  }
+
+  try {
+    const batch = writeBatch(db);
+    batch.update(doc(db, 'users', uid), {
+      isPro: true,
+      proCode: normalized,
+      hearts: MAX_HEARTS,
+      maxHearts: MAX_HEARTS,
+      lastHeartRegenTimestamp: Date.now()
+    });
+    batch.update(doc(db, 'system', 'proCodes', normalized), {
+      usedBy: uid,
+      usedAt: serverTimestamp()
+    });
+    await batch.commit();
+    return { ok: true };
+  } catch (err: any) {
+    const code = String(err?.code || '');
+    if (code.includes('permission-denied')) {
+      return {
+        ok: false,
+        error: 'Kod jest nieprawidłowy lub został już wykorzystany. Sprawdź kod i spróbuj ponownie.'
+      };
+    }
+    if (code.includes('unavailable') || code.includes('network')) {
+      return { ok: false, error: 'Brak połączenia z internetem. Spróbuj ponownie za chwilę.' };
+    }
+    console.warn('[heartsManager] PRO activation failed:', err);
+    return { ok: false, error: 'Nie udało się aktywować PRO. Spróbuj ponownie.' };
+  }
 }
 
 /**

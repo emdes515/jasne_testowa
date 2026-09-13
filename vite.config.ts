@@ -17,6 +17,13 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
     },
     build: {
       chunkSizeWarningLimit: 1500,
@@ -37,12 +44,6 @@ export default defineConfig(() => {
                 return 'vendor-animation';
               }
               return 'vendor';
-            }
-            if (id.includes('polishCurriculum') || id.includes('curriculum_jezyk_polski')) {
-              return 'data-polish';
-            }
-            if (id.includes('allFormulaSheets') || id.includes('curriculum_matematyka')) {
-              return 'data-math';
             }
           }
         }

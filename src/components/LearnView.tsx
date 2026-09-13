@@ -12,9 +12,7 @@ import {
 import { triggerHaptic } from '../utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { MathRenderer } from './MathRenderer';
-import { mathTopics, setGlobalMathTopics, buildProcessedTopic } from '../data/mathTasks';
-import { polishTopics as defaultPolishTopics, polishPillars } from '../data/polishCurriculum';
-import { drawSessionTasks, getLessonFormulaSheet, generateTopicBossExam } from '../data/dzial1TaskPool';
+import { drawSessionTasks, getLessonFormulaSheet, loadTopicBossExam } from '../data/dzial1TaskPool';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { BossExamRunner } from './BossExamRunner';
 
@@ -121,212 +119,27 @@ export function ActiveBadge({ label = 'W TOKU', isRose = false }: { label?: stri
   );
 }
 
-export interface LessonGroup {
-  id: string;
-  name: string;
-  badge: string;
-  tasks: any[];
-  estimated_time_formatted?: string;
-  estimated_time_minutes?: number;
-  required_correct_tasks?: number;
-}
+import {
+  type LessonGroup,
+  cleanLessonTitle,
+  formatLessonDuration,
+  isTaskCompletedInLesson,
+  isLessonCompleted,
+  isLessonUnlocked,
+  getLockRequirementLabel,
+  getLessonsForTopic
+} from '../utils/lessonGrouping';
 
-const LESSON_EXPLICIT_DURATIONS: Record<string, string> = {
-  '1.1': '~5 min',
-  '1.2': '~6 min',
-  '1.3': '~6 min',
-  '1.4': '~5 min',
-  '1.5': '~6 min',
-  '1.6': '~7 min',
-  '1.7': '~8 min',
+export {
+  type LessonGroup,
+  cleanLessonTitle,
+  formatLessonDuration,
+  isTaskCompletedInLesson,
+  isLessonCompleted,
+  isLessonUnlocked,
+  getLockRequirementLabel,
+  getLessonsForTopic
 };
-
-export function formatLessonDuration(group: LessonGroup): string {
-  const isSprawdzian = group.id.includes('SPRAWDZIAN') || group.name.toLowerCase().includes('sprawdzian');
-  if (isSprawdzian) {
-    return '~15–20 min';
-  }
-
-  // Wymóg dynamicznego szacowania: Użycie pola estimated_time_formatted z curriculum
-  if (group.estimated_time_formatted) {
-    return group.estimated_time_formatted;
-  }
-
-  if (group.estimated_time_minutes) {
-    return `~${group.estimated_time_minutes} min`;
-  }
-
-  const cleanIdMatch = group.id.match(/(?:lesson-)?(\d+)[-.](\d+)/i) || group.badge.match(/(\d+)\.(\d+)/);
-  if (cleanIdMatch) {
-    const key = `${cleanIdMatch[1]}.${cleanIdMatch[2]}`;
-    if (LESSON_EXPLICIT_DURATIONS[key]) {
-      return LESSON_EXPLICIT_DURATIONS[key];
-    }
-  }
-
-  return '~6 min';
-}
-
-/**
- * Robust check if a single task in a lesson is completed.
- * Theory tasks are considered completed if explicitly in completedTasks
- * OR if any practice task in that same lesson has been completed.
- */
-export function isTaskCompletedInLesson(
-  task: any,
-  completedTasks: string[],
-  lessonTasks: any[] = []
-): boolean {
-  if (!task) return false;
-  if (completedTasks.includes(task.id)) return true;
-
-  const isTheory = task.id?.includes('THEORY') || task.type === 'theory' || task.cke_source === 'Pigułka Wiedzy';
-  if (isTheory && lessonTasks && lessonTasks.length > 1) {
-    const practiceTasks = lessonTasks.filter(t => !t.id?.includes('THEORY') && t.type !== 'theory' && t.cke_source !== 'Pigułka Wiedzy');
-    if (practiceTasks.length > 0 && practiceTasks.some(t => completedTasks.includes(t.id))) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * A lesson is 100% completed if it is registered in completed_lessons, completedTasks, or all its tasks are done.
- */
-export function isLessonCompleted(
-  group: LessonGroup, 
-  completedTasks: string[], 
-  userState?: any
-): boolean {
-  if (!group) return false;
-  const cleanId = group.id.replace(/^lesson-/, '').replace(/^pol-lesson-/, '');
-  const dotId = cleanId.replace('-', '.');
-  const dashId = `lesson-${dotId.replace('.', '-')}`;
-  const polDashId = `pol-lesson-${dotId.replace('.', '-')}`;
-
-  // Check userState completed_lessons if available
-  const userCompletedLessons: string[] = userState?.completed_lessons || [];
-  const userCompletedMap = userState?.completedLessons || userState?.progress?.completedLessons || {};
-
-  if (
-    userCompletedLessons.includes(group.id) ||
-    userCompletedLessons.includes(cleanId) ||
-    userCompletedLessons.includes(dotId) ||
-    userCompletedLessons.includes(dashId) ||
-    userCompletedLessons.includes(polDashId) ||
-    userCompletedMap[group.id]?.status === 'COMPLETED' ||
-    userCompletedMap[dotId]?.status === 'COMPLETED' ||
-    userCompletedMap[cleanId]?.status === 'COMPLETED' ||
-    userCompletedMap[dashId]?.status === 'COMPLETED' ||
-    userCompletedMap[polDashId]?.status === 'COMPLETED'
-  ) {
-    return true;
-  }
-
-  // Check completedTasks tags and identifiers
-  if (
-    completedTasks.includes(`LESSON-${group.id}`) ||
-    completedTasks.includes(`LESSON-${cleanId}`) ||
-    completedTasks.includes(`LESSON-${dotId}`) ||
-    completedTasks.includes(`LESSON-${dashId}`) ||
-    completedTasks.includes(`LESSON-${polDashId}`) ||
-    completedTasks.includes(`LESSON-${group.id.toLowerCase()}`) ||
-    completedTasks.includes(group.id) ||
-    completedTasks.includes(cleanId) ||
-    completedTasks.includes(dotId) ||
-    completedTasks.includes(polDashId)
-  ) {
-    return true;
-  }
-
-  if (!group.tasks || group.tasks.length === 0) return false;
-  return group.tasks.every(task => isTaskCompletedInLesson(task, completedTasks, group.tasks));
-}
-
-/**
- * Cascading Progression Rule:
- * 1. Lesson at index 0 is ALWAYS unlocked.
- * 2. Lesson at index > 0 is unlocked IF AND ONLY IF the immediately preceding lesson
- *    (index - 1) is 100% completed.
- */
-export function isLessonUnlocked(
-  groupIdx: number,
-  allGroups: LessonGroup[],
-  completedTasks: string[],
-  userState?: any
-): boolean {
-  // Wszystkie lekcje odblokowane na żądanie (tryb testowy / pełny dostęp)
-  return true;
-}
-
-export function getLockRequirementLabel(prevGroup?: LessonGroup): string {
-  if (!prevGroup) return 'poprzedniej lekcji';
-  const rawBadge = (prevGroup.badge || '').trim();
-  if (!rawBadge) return 'poprzedniej lekcji';
-  
-  if (/sprawdzian/i.test(rawBadge)) {
-    return 'Sprawdzianu';
-  }
-  
-  const numOrSub = rawBadge.replace(/^lekcja[\s\u00a0:]*/i, '').trim();
-  if (numOrSub) {
-    return `Lekcji ${numOrSub}`;
-  }
-  return 'poprzedniej lekcji';
-}
-
-export function cleanLessonTitle(title?: string): string {
-  if (!title) return '';
-  return title
-    .replace(/^(?:Lekcja\s+)?(?:\d+[-.]\d+)\s*[:.]\s*/i, '')
-    .replace(/^★\s*/i, '')
-    .trim();
-}
-
-export function getLessonsForTopic(topic: any): LessonGroup[] {
-  if (!topic) return [];
-  
-  // Cost-Optimized Flat-Bundle: lessons_metadata contains the list of lessons for this topic
-  if (topic.lessons_metadata && Array.isArray(topic.lessons_metadata) && topic.lessons_metadata.length > 0) {
-    return topic.lessons_metadata.map((meta: any) => {
-      const rawTitle = meta.name || meta.title || '';
-      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian');
-      const cleanId = String(meta.id).replace(/^lesson-/, '').replace(/^pol-lesson-/, '').replace('-', '.');
-      const cleanName = cleanLessonTitle(rawTitle);
-      return {
-        id: String(meta.id),
-        name: cleanName,
-        badge: isSprawdzian ? 'Sprawdzian' : `Lekcja ${cleanId}`,
-        tasks: meta.tasks || [],
-        estimated_time_formatted: meta.estimated_time_formatted || '~5 min',
-        estimated_time_minutes: meta.estimated_time_minutes || 5,
-        required_correct_tasks: meta.required_points || meta.required_correct_tasks || 3
-      };
-    });
-  }
-
-  // Fallback for full lessons structure
-  if (topic.lessons && Array.isArray(topic.lessons) && topic.lessons.length > 0) {
-    return topic.lessons.map((lesson: any) => {
-      const lessonTasks = (topic.tasks || []).filter((t: any) => String(t.lessonId) === String(lesson.id));
-      const rawTitle = lesson.name || lesson.title || '';
-      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian');
-      const cleanId = String(lesson.id).replace(/^lesson-/, '').replace(/^pol-lesson-/, '').replace('-', '.');
-      const cleanName = cleanLessonTitle(rawTitle);
-      return {
-        id: String(lesson.id),
-        name: cleanName,
-        badge: isSprawdzian ? 'Sprawdzian' : `Lekcja ${cleanId}`,
-        tasks: (lesson.tasks && lesson.tasks.length > 0) ? lesson.tasks : lessonTasks,
-        estimated_time_formatted: lesson.estimated_time_formatted || '~5 min',
-        estimated_time_minutes: lesson.estimated_time_minutes || 5,
-        required_correct_tasks: lesson.required_correct_tasks || lesson.required_points || 3
-      };
-    });
-  }
-  
-  return [];
-}
 
 function cleanTopicTitle(text: string): string {
   if (!text) return '';
@@ -337,8 +150,8 @@ function cleanTopicTitle(text: string): string {
     .trim();
 }
 
-// Curriculum metadata for Polish (20 Działów, 3 Filary)
-const polishTopics = defaultPolishTopics;
+// Treści (działy, filary, zadania) pochodzą WYŁĄCZNIE z Cloud Firestore.
+// Bundle aplikacji nie zawiera żadnego kurikulum.
 
 const initialDataBySubject: Record<string, any> = {
   math: {
@@ -355,8 +168,8 @@ const initialDataBySubject: Record<string, any> = {
     level: 'Nowa Formuła 2023',
     icon: BookOpen,
     color: 'text-rose-400',
-    topics: defaultPolishTopics,
-    pillars: polishPillars
+    topics: [],
+    pillars: []
   },
   eng: {
     key: 'eng',
@@ -400,6 +213,8 @@ export function LearnView({
   onSheetToggle
 }: LearnViewProps) {
   const [isBossExamOpen, setIsBossExamOpen] = useState<boolean>(false);
+  const [bossExamData, setBossExamData] = useState<any>(null);
+  const [isBossExamLoading, setIsBossExamLoading] = useState<boolean>(false);
 
   const getLessonMistakes = (lessonGroupId: string) => {
     if (lessonMistakes && lessonMistakes[lessonGroupId] !== undefined) {
@@ -430,6 +245,10 @@ export function LearnView({
   });
 
   const selectedSubjectKey = propSubjectKey || internalSubjectKey;
+
+  // Identyfikator przedmiotu w Firestore — jedno źródło prawdy dla odczytów treści.
+  const subjectFirestoreId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
+
   const setSelectedSubjectKey = (key: string) => {
     setInternalSubjectKey(key);
     if (onSelectSubject && (key === 'math' || key === 'pol')) {
@@ -520,9 +339,11 @@ export function LearnView({
     }));
   }, [viewState, selectedSubjectKey, selectedTopicIndex]);
 
-  const [mathTopicsList, setMathTopicsList] = useState<any[]>(() => mathTopics);
-  const [polishTopicsList, setPolishTopicsList] = useState<any[]>(() => defaultPolishTopics);
-  const [isLoadingTopics, setIsLoadingTopics] = useState<boolean>(false);
+  const [mathTopicsList, setMathTopicsList] = useState<any[]>([]);
+  const [polishTopicsList, setPolishTopicsList] = useState<any[]>([]);
+  const [polishPillarsList, setPolishPillarsList] = useState<any[]>([]);
+  const [isLoadingTopics, setIsLoadingTopics] = useState<boolean>(true);
+  const [topicsLoadError, setTopicsLoadError] = useState<string | null>(null);
   const [selectedPillarId, setSelectedPillarId] = useState<string>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_selected_polish_pillar');
@@ -543,31 +364,44 @@ export function LearnView({
 
   useEffect(() => {
     let isMounted = true;
-    // 1. Load Math topics from Firestore
-    curriculumRepository.getTopics('matematyka-podstawowa').then(loaded => {
-      if (isMounted && loaded && loaded.length > 0) {
-        setMathTopicsList(loaded);
-        setGlobalMathTopics(loaded.map(t => buildProcessedTopic(t)));
-      }
-    }).catch(err => {
-      console.warn('Could not load math topics from Firestore:', err);
-    });
+    setIsLoadingTopics(true);
+    setTopicsLoadError(null);
 
-    // 2. Load Polish topics from Firestore (All 17 Działów: Filar 1 & Filar 2)
-    curriculumRepository.getTopics('jezyk-polski').then(loaded => {
-      if (isMounted && loaded && loaded.length > 0) {
-        const polishTopicsFiltered = loaded
+    const loadCurriculum = async () => {
+      try {
+        const [mathLoaded, polishLoaded, pillars] = await Promise.all([
+          curriculumRepository.getTopics('matematyka-podstawowa'),
+          curriculumRepository.getTopics('jezyk-polski'),
+          curriculumRepository.getSubjectPillars('jezyk-polski')
+        ]);
+
+        if (!isMounted) return;
+
+        const polishTopicsFiltered = (polishLoaded || [])
           .filter((t: any) => {
             const num = typeof t.numericId === 'number' ? t.numericId : parseInt(String(t.id).replace(/\D/g, '') || '1', 10);
             return num >= 1 && num <= 17;
           })
           .sort((a: any, b: any) => (a.numericId || 0) - (b.numericId || 0));
-        setPolishTopicsList(polishTopicsFiltered.length > 0 ? polishTopicsFiltered : defaultPolishTopics);
-      }
-    }).catch(err => {
-      console.warn('Could not load polish topics from Firestore:', err);
-    });
 
+        setMathTopicsList(mathLoaded || []);
+        setPolishTopicsList(polishTopicsFiltered);
+        setPolishPillarsList(Array.isArray(pillars) ? pillars : []);
+
+        if ((mathLoaded || []).length === 0 && polishTopicsFiltered.length === 0) {
+          setTopicsLoadError('Nie udało się wczytać programu nauczania. Sprawdź połączenie z internetem i spróbuj ponownie.');
+        }
+      } catch (err) {
+        console.warn('[LearnView] Could not load curriculum from Firestore:', err);
+        if (isMounted) {
+          setTopicsLoadError('Nie udało się wczytać programu nauczania z chmury.');
+        }
+      } finally {
+        if (isMounted) setIsLoadingTopics(false);
+      }
+    };
+
+    void loadCurriculum();
     return () => { isMounted = false; };
   }, []);
 
@@ -580,7 +414,7 @@ export function LearnView({
     pol: {
       ...initialDataBySubject.pol,
       topics: polishTopicsList,
-      pillars: polishPillars
+      pillars: polishPillarsList
     }
   };
 
@@ -672,10 +506,8 @@ export function LearnView({
   }, [viewState, selectedTopicIndex, lessonsForCurrentTopic.length]);
 
   // Overall math progress calculation
-  const totalMathTasks = mathTopics.reduce((acc, t) => acc + (t.tasks?.length || 0), 0);
-  const completedMathTasks = mathTopics.reduce((acc, t) => {
-    return acc + (t.tasks || []).filter((tsk: any) => completedTasks.includes(tsk.id)).length;
-  }, 0);
+  const totalMathTasks = mathTopicsList.reduce((acc, t) => acc + (t.lessons_metadata?.reduce((sum: number, l: any) => sum + (l.tasks_count || 0), 0) || 0), 0);
+  const completedMathTasks = mathTopicsList.reduce((acc, t) => acc + (t.tasks || []).filter((tsk: any) => completedTasks.includes(tsk.id)).length, 0);
   const mathProgressPercent = totalMathTasks > 0 ? Math.round((completedMathTasks / totalMathTasks) * 100) : 0;
 
   // Polish progress calculation (based on 20 topics and complete lesson suite)
@@ -741,7 +573,6 @@ export function LearnView({
   const handleStartLessonSession = async (group: LessonGroup, nextLessonPayload?: any) => {
     triggerHaptic('medium');
     const topicId = currentTopic?.id || 'dzial-1';
-    const subjectFirestoreId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
     // Flat-Bundle: 1 single document read for full theory_pill + tasks (0 reads if cached)
     const lessonDoc = await curriculumRepository.getLesson(topicId, group.id, subjectFirestoreId);
     const tasks = (lessonDoc?.tasks && lessonDoc.tasks.length > 0) ? lessonDoc.tasks : group.tasks;
@@ -876,6 +707,38 @@ export function LearnView({
                   </div>
                 </div>
               </header>
+
+              {/* Stany ładowania / błędu — treści pobieramy wyłącznie z Firestore */}
+              {isLoadingTopics && currentSubject.topics.length === 0 && (
+                <div className="px-3 sm:px-6 pt-3">
+                  <div className="max-w-3xl mx-auto w-full space-y-2.5">
+                    {[0, 1, 2].map(i => (
+                      <div key={i} className="h-[76px] rounded-2xl bg-[#101726] border border-white/5 animate-pulse" />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {!isLoadingTopics && topicsLoadError && currentSubject.topics.length === 0 && (
+                <div className="px-3 sm:px-6 pt-3">
+                  <div className="max-w-3xl mx-auto w-full rounded-2xl border border-amber-500/30 bg-amber-500/5 px-4 py-3.5 flex items-start gap-3">
+                    <AlertTriangle size={16} className="mt-0.5 shrink-0 text-amber-400" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-bold text-amber-200">{topicsLoadError}</p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          triggerHaptic('light');
+                          window.location.reload();
+                        }}
+                        className="mt-2 rounded-lg bg-amber-500/15 px-3 py-1.5 text-[11px] font-bold text-amber-200 active:scale-95"
+                      >
+                        Spróbuj ponownie
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Pillar Switcher Segmented Control (Język Polski: Filar I vs Filar II vs Filar III) */}
               {selectedSubjectKey === 'pol' && (
@@ -1640,6 +1503,22 @@ export function LearnView({
                       const isMath = selectedSubjectKey === 'math';
                       const topicIdUpper = String(currentTopic.id || 'dzial-1').toUpperCase();
                       const cleanTitle = cleanTopicTitle(currentTopic.name);
+
+                      // Egzamin działowy pobiera zadania z Firestore (1 odczyt na lekcję,
+                      // potem z pamięci podręcznej) — w bundlu nie ma żadnych zadań.
+                      const openExam = async () => {
+                        triggerHaptic('medium');
+                        setIsBossExamLoading(true);
+                        try {
+                          const data = await loadTopicBossExam(currentTopic, subjectFirestoreId);
+                          setBossExamData(data);
+                          setIsBossExamOpen(true);
+                        } catch (err) {
+                          console.warn('[LearnView] Nie udało się wczytać sprawdzianu działu:', err);
+                        } finally {
+                          setIsBossExamLoading(false);
+                        }
+                      };
                       const defaultTotalQuestions = lessonsForCurrentTopic.length > 0 ? Math.min(10, Math.max(5, lessonsForCurrentTopic.length)) : 7;
                       const examData = currentTopic.final_test || currentTopic.epoch_exam || currentTopic.book_exam || {
                         id: `BOSS-EXAM-${topicIdUpper}`,
@@ -1726,9 +1605,9 @@ export function LearnView({
                           <button
                             id="start-boss-exam-btn"
                             onClick={() => {
-                              triggerHaptic('medium');
-                              setIsBossExamOpen(true);
+                              void openExam();
                             }}
+                            disabled={isBossExamLoading}
                             className={`w-full py-3.5 sm:py-4 px-6 rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 transition active:scale-[0.99] cursor-pointer shadow-lg ${
                               isBossExamPassed
                                 ? 'bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-emerald-500/40'
@@ -1736,7 +1615,7 @@ export function LearnView({
                             }`}
                           >
                             <Trophy size={18} />
-                            <span>{isBossExamPassed ? 'POWTÓRZ SPRAWDZIAN DZIAŁU' : 'ROZPOCZNIJ SPRAWDZIAN DZIAŁU'}</span>
+                            <span>{isBossExamLoading ? 'WCZYTUJĘ ZADANIA...' : (isBossExamPassed ? 'POWTÓRZ SPRAWDZIAN DZIAŁU' : 'ROZPOCZNIJ SPRAWDZIAN DZIAŁU')}</span>
                             <ArrowRight size={18} strokeWidth={2.5} />
                           </button>
                         </div>
@@ -1977,11 +1856,11 @@ export function LearnView({
       {/* =========================================================================
           BOSS EXAM RUNNER: DYNAMICZNY SPRAWDZIAN DZIAŁU / LEKTURY
          ========================================================================= */}
-      {isBossExamOpen && isMounted && typeof document !== 'undefined' && createPortal(
+      {isBossExamOpen && bossExamData && isMounted && typeof document !== 'undefined' && createPortal(
         <div className="fixed inset-0 z-[150] bg-[#080C14] text-white">
           <BossExamRunner
-            initialExamData={generateTopicBossExam(currentTopic, currentTopic?.tasks)}
-            onRestart={() => generateTopicBossExam(currentTopic, currentTopic?.tasks)}
+            initialExamData={bossExamData}
+            onRestart={() => bossExamData}
             onCancel={() => setIsBossExamOpen(false)}
             onCompleteExam={(score, passed, xp, coins, badgeId) => {
               setIsBossExamOpen(false);

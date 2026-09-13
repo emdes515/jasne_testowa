@@ -11,7 +11,9 @@ import {
   Zap, 
   Smartphone, 
   MessageCircle,
-  Coins
+  Coins,
+  KeyRound,
+  Loader2
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { triggerHaptic } from '../utils';
@@ -19,7 +21,8 @@ import { triggerHaptic } from '../utils';
 interface ParentSponsorModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onActivatePro: () => void;
+  /** Aktywacja kodem jednorazowym (atomowy zapis w Firestore). */
+  onActivatePro: (code: string) => Promise<{ ok: boolean; error?: string }>;
   studentName?: string;
 }
 
@@ -31,6 +34,9 @@ export const ParentSponsorModal: React.FC<ParentSponsorModalProps> = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const [customName, setCustomName] = useState(studentName === 'Twój maturzysta' || studentName === 'Uczeń' ? '' : studentName);
+  const [activationCode, setActivationCode] = useState('');
+  const [isActivating, setIsActivating] = useState(false);
+  const [activationError, setActivationError] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
@@ -70,18 +76,31 @@ Dzięki wielkie za pomoc w zdaniu matury! ❤️
     window.location.href = url;
   };
 
-  const handleSimulatePayment = () => {
-    triggerHaptic('success');
+  const handleActivateWithCode = async () => {
+    if (isActivating) return;
+    triggerHaptic('medium');
+    setIsActivating(true);
+    setActivationError(null);
     try {
-      confetti({
-        particleCount: 50,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#FFB800', '#10B981', '#F59E0B', '#3B82F6']
-      });
-    } catch (e) {}
-    onActivatePro();
-    onClose();
+      const result = await onActivatePro(activationCode);
+      if (result?.ok) {
+        try {
+          confetti({
+            particleCount: 50,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#FFB800', '#10B981', '#F59E0B', '#3B82F6']
+          });
+        } catch (e) {}
+        triggerHaptic('success');
+        setActivationCode('');
+        onClose();
+      } else {
+        setActivationError(result?.error || 'Nie udało się aktywować PRO.');
+      }
+    } finally {
+      setIsActivating(false);
+    }
   };
 
   return (
@@ -225,22 +244,54 @@ Dzięki wielkie za pomoc w zdaniu matury! ❤️
             </button>
           </div>
 
-          {/* Modal Footer with Sandbox Simulator */}
-          <div className="p-4 sm:p-5 border-t border-white/10 bg-[#111724]/90 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-            <span className="text-[11px] text-slate-500 text-center sm:text-left">
-              🔒 Płatności realizowane przez bezpieczny PayU / BLIK
-            </span>
+          {/* Modal Footer: aktywacja kodem po opłaceniu BLIK-iem */}
+          <div className="p-4 sm:p-5 border-t border-white/10 bg-[#111724]/90 flex flex-col gap-3 shrink-0">
+            <div className="flex items-center gap-2 text-[11px] text-slate-400">
+              <ShieldCheck size={14} className="text-emerald-400 shrink-0" />
+              <span>Płatność BLIK realizuje rodzic. Kod aktywacyjny przychodzi w potwierdzeniu zakupu.</span>
+            </div>
 
-            {/* Sandbox Button for Instant Testing */}
-            <button
-              id="simulate-parent-blik-button"
-              onClick={handleSimulatePayment}
-              className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-xs transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)] cursor-pointer flex items-center justify-center gap-1.5"
-              title="Test deweloperski: symuluje natychmiastowe opłacenie przez rodzica i aktywuje PRO"
-            >
-              <Zap size={14} className="fill-slate-950" />
-              <span>Symuluj opłatę rodzica (Test PRO)</span>
-            </button>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <input
+                id="parent-activation-code"
+                type="text"
+                value={activationCode}
+                onChange={(e) => {
+                  setActivationCode(e.target.value.toUpperCase());
+                  setActivationError(null);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') void handleActivateWithCode();
+                }}
+                autoComplete="off"
+                autoCapitalize="characters"
+                spellCheck={false}
+                placeholder="JASNE-XXXX-XXXX"
+                className="flex-1 bg-[#080C14] border border-white/10 focus:border-[#FFB800]/60 rounded-xl px-3.5 py-2.5 text-center text-sm font-black tracking-[0.12em] text-white placeholder:text-slate-600 outline-none transition"
+              />
+              <button
+                id="activate-pro-with-code-button"
+                onClick={() => void handleActivateWithCode()}
+                disabled={isActivating || activationCode.trim().length < 6}
+                className="py-2.5 px-5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-black text-xs transition-all shadow-[0_0_15px_rgba(16,185,129,0.25)] cursor-pointer flex items-center justify-center gap-1.5 whitespace-nowrap"
+              >
+                {isActivating ? (
+                  <>
+                    <Loader2 size={14} className="animate-spin" />
+                    <span>Weryfikuję…</span>
+                  </>
+                ) : (
+                  <>
+                    <KeyRound size={14} />
+                    <span>Aktywuj PRO</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {activationError && (
+              <p className="text-[11px] font-semibold text-rose-300 leading-relaxed">{activationError}</p>
+            )}
           </div>
         </motion.div>
       </div>

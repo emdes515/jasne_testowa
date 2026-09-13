@@ -34,7 +34,19 @@ let subjectsCache: SubjectDocument[] | null = null;
 const topicsBySubjectCache = new Map<string, TopicDocument[]>();
 const topicByIdCache = new Map<string, TopicDocument>();
 const lessonCache = new Map<string, LessonDocument>();
+/** Lekcje po samym lessonId — potrzebne, gdy znamy tylko identyfikator lekcji. */
+const lessonByIdCache = new Map<string, LessonDocument>();
 const userTopicProgressCache = new Map<string, UserTopicProgressDocument>();
+
+/** 'lesson-1-1' oraz '1.1' opisują tę samą lekcję — ujednolicamy klucz. */
+export function normalizeLessonKey(lessonId: string): string {
+  return String(lessonId || '')
+    .replace(/^pol-/, '')
+    .replace(/^lesson-/, '')
+    .replace(/^pol-/, '')
+    .replace(/-/g, '.')
+    .toLowerCase();
+}
 
 export const curriculumRepository = {
   /**
@@ -214,6 +226,8 @@ export const curriculumRepository = {
 
         lessonCache.set(cacheKey, lessonDoc);
         lessonCache.set(fallbackCacheKey, lessonDoc);
+        lessonByIdCache.set(lessonDoc.id, lessonDoc);
+        lessonByIdCache.set(normalizeLessonKey(lessonDoc.id), lessonDoc);
         return lessonDoc;
       }
     } catch (err) {
@@ -221,6 +235,67 @@ export const curriculumRepository = {
     }
 
     return null;
+  },
+
+  /**
+   * Zwraca lekcję z pamięci podręcznej po samym lessonId ('lesson-1-1' / '1.1').
+   *
+   * Używane przez funkcje synchroniczne (losowanie zadań sesji, karta wzorów),
+   * które nie mogą wykonać odczytu z sieci. Lekcja MUSI zostać wcześniej pobrana
+   * przez getLesson() — robią to widoki przed rozpoczęciem sesji.
+   */
+  getCachedLesson(lessonId: string): LessonDocument | null {
+    if (!lessonId) return null;
+    const direct = lessonByIdCache.get(lessonId) || lessonByIdCache.get(normalizeLessonKey(lessonId));
+    if (direct) return direct;
+
+    const wanted = normalizeLessonKey(lessonId);
+    for (const lesson of lessonCache.values()) {
+      if (lesson?.id && normalizeLessonKey(lesson.id) === wanted) {
+        return lesson;
+      }
+    }
+    return null;
+  },
+
+  /**
+   * Dociąga lekcję, jeśli nie ma jej jeszcze w pamięci (np. wznowienie sesji
+   * z localStorage albo wejście z egzaminu działowego).
+   */
+  async ensureLessonLoaded(
+    lessonId: string,
+    topicId?: string,
+    subjectId: string = DEFAULT_SUBJECT_ID
+  ): Promise<LessonDocument | null> {
+    const cached = this.getCachedLesson(lessonId);
+    if (cached) return cached;
+    if (!topicId) return null;
+    return this.getLesson(topicId, lessonId, subjectId);
+  },
+
+  /**
+   * Pobiera wszystkie lekcje działu (na podstawie lessons_metadata).
+   * Koszt: 1 odczyt na lekcję, po pierwszym razie 0 (pamięć podręczna).
+   * Używane do generowania egzaminów działowych.
+   */
+  async getTopicLessons(topicId: string, subjectId: string = DEFAULT_SUBJECT_ID): Promise<LessonDocument[]> {
+    const topic = await this.getTopic(topicId, subjectId);
+    if (!topic) return [];
+
+    const lessons: LessonDocument[] = [];
+    for (const meta of topic.lessons_metadata || []) {
+      const lesson = await this.getLesson(topicId, meta.id, subjectId);
+      if (lesson) lessons.push(lesson);
+    }
+    return lessons;
+  },
+
+  /**
+   * Filary przedmiotu (język polski). Treść pochodzi z dokumentu subjects/{id}.
+   */
+  async getSubjectPillars(subjectId: string = DEFAULT_SUBJECT_ID): Promise<any[]> {
+    const subject = await this.getSubject(subjectId);
+    return subject?.pillars || [];
   },
 
   /**
@@ -316,6 +391,7 @@ export const curriculumRepository = {
     topicsBySubjectCache.clear();
     topicByIdCache.clear();
     lessonCache.clear();
+    lessonByIdCache.clear();
     userTopicProgressCache.clear();
   }
 };

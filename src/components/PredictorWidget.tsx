@@ -127,22 +127,22 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
       <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none" />
 
       {/* 1. HEADER: BRANDING + CALM STATUS PILL */}
-      <div className="flex items-center justify-between gap-3 mb-4 relative z-10">
-        <div className="flex items-center gap-2 min-w-0">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 relative z-10">
+        <div className="flex items-center gap-2">
           <span 
             className="w-2 h-2 rounded-full animate-pulse shrink-0 shadow-[0_0_8px_currentColor]"
             style={{ backgroundColor: statusConfig.ringColor, color: statusConfig.ringColor }}
           />
-          <span className="text-xs font-bold tracking-wider text-slate-300 uppercase">
+          <span className="text-xs font-bold tracking-wider text-slate-300 uppercase whitespace-nowrap">
             Prognoza Matury
           </span>
-          <span className="text-[11px] font-semibold text-slate-400 px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.05]">
+          <span className="hidden sm:inline-flex text-[11px] font-semibold text-slate-400 px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.05] whitespace-nowrap">
             {subjectMeta.shortName}
           </span>
         </div>
 
         {/* Single Refined Status Pill */}
-        <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-semibold shrink-0 ${statusConfig.badgeClass}`}>
+        <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-semibold shrink-0 whitespace-nowrap ${statusConfig.badgeClass}`}>
           <StatusIcon size={12} className="shrink-0" />
           <span>{statusConfig.statusLabel}</span>
         </div>
@@ -225,7 +225,7 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
           <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
             {!result.isPassing ? (
               <>
-                Do zdania matury (15 pkt) brakuje Ci{' '}
+                Do zdania matury ({result.passingThresholdPoints} pkt) brakuje Ci{' '}
                 <strong className="text-rose-300 font-bold">{pointsMissingToPass.toFixed(1)} pkt</strong>.
               </>
             ) : (
@@ -243,8 +243,8 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
         {/* Milestone Labels */}
         <div className="flex items-center justify-between text-[11px] font-medium text-slate-400 mb-1.5 px-0.5">
           <span>0 pkt</span>
-          <span className="text-amber-400/90 font-semibold flex items-center gap-1">
-            Próg zdania: 15 pkt (30%)
+          <span className="text-amber-400/90 font-semibold flex items-center gap-1 whitespace-nowrap">
+            Próg zdania: {result.passingThresholdPoints} pkt (30%)
           </span>
           <span>{result.totalExamPoints} pkt max</span>
         </div>

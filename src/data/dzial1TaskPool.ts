@@ -1,8 +1,20 @@
+/**
+ * Sesje nauki i egzaminy działowe.
+ *
+ * ZASADA ARCHITEKTONICZNA: ten moduł NIE zawiera żadnych treści. Wszystkie
+ * zadania, karty wzorów i pigułki wiedzy pochodzą z Cloud Firestore przez
+ * `curriculumRepository` (pamięć podręczna wypełniana przez getLesson()).
+ * Dzięki temu bundle aplikacji nie zawiera kurikulum.
+ *
+ * Funkcje są synchroniczne, bo wywołują je komponenty w trakcie renderowania —
+ * dlatego czytają wyłącznie z pamięci podręcznej. Widoki mają obowiązek pobrać
+ * lekcję (getLesson/ensureLessonLoaded) ZANIM uruchomią sesję.
+ */
+
 import { TaskOption, LessonTheoryPill } from '../types';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { normalizeTask } from './mathTasks';
-import { allFormulaSheetsByLesson } from './allFormulaSheets';
-import { polishTopics } from './polishCurriculum';
+import type { LessonDocument } from '../schema_firestore';
 
 export type TaskDifficultyTier = 'A' | 'B' | 'C';
 
@@ -48,155 +60,58 @@ export interface LessonFormulaSheet {
   isLeksykon?: boolean;
   formulas: { title: string; latex: string }[];
   goldenRule: string;
-  ckeTrap: {
-    error: string;
-    correct: string;
-    description: string;
+  /** Pułapka CKE. Dla części lekcji humanistycznych może nie istnieć. */
+  ckeTrap?: { error: string; correct: string; description: string } | null;
+}
+
+function normalizeLessonId(id: string): string {
+  return String(id).replace(/^pol-/, '').replace(/^lesson-/, '').replace(/^pol-/, '').replace('-', '.');
+}
+
+function normalizeCkeTrap(raw: any): LessonFormulaSheet['ckeTrap'] {
+  if (!raw) return null;
+  if (typeof raw === 'string') {
+    return { error: raw, correct: '', description: raw };
+  }
+  const error = typeof raw.error === 'string' ? raw.error : '';
+  const correct = typeof raw.correct === 'string' ? raw.correct : '';
+  const description = typeof raw.description === 'string' ? raw.description : '';
+  if (!error && !correct && !description) return null;
+  return { error, correct, description };
+}
+
+function toFormulaSheet(raw: any, lesson?: LessonDocument | null): LessonFormulaSheet | null {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+  return {
+    lessonId: raw.lessonId || lesson?.id || '',
+    title: raw.title || lesson?.title || '',
+    isLeksykon: raw.isLeksykon === true || Boolean((lesson as any)?.leksykon),
+    formulas: Array.isArray(raw.formulas) ? raw.formulas : [],
+    goldenRule: raw.goldenRule || raw.golden_rule || '',
+    ckeTrap: normalizeCkeTrap(raw.ckeTrap ?? raw.cke_trap)
   };
 }
 
-export const formulaSheetsByLesson: Record<string, LessonFormulaSheet> = {
-  '1.1': {
-    lessonId: '1.1',
-    title: 'Potęgi o wykładnikach całkowitych i wymiernych',
-    formulas: [
-      { title: 'Iloczyn potęg o tej samej podstawie', latex: 'a^x \\cdot a^y = a^{x+y}' },
-      { title: 'Iloraz potęg o tej samej podstawie', latex: '\\frac{a^x}{a^y} = a^{x-y}' },
-      { title: 'Potęga potęgi', latex: '(a^x)^y = a^{x \\cdot y}' },
-      { title: 'Potęga o wykładniku ujemnym', latex: 'a^{-n} = \\frac{1}{a^n}' },
-      { title: 'Potęga o wykładniku wymiernym', latex: 'a^{\\frac{m}{n}} = \\sqrt[n]{a^m}' }
-    ],
-    goldenRule: 'Zawsze sprowadzaj podstawy potęg do liczb pierwszych (np. $4 = 2^2$, $9 = 3^2$, $8 = 2^3$).',
-    ckeTrap: {
-      error: '(-2)^2 \\neq -2^2',
-      correct: '(-2)^2 = 4, \\quad -2^2 = -4',
-      description: 'Znak minus bez nawiasu nie jest podnoszony do potęgi!'
-    }
-  },
-  '1.2': {
-    lessonId: '1.2',
-    title: 'Pierwiastki i działania na pierwiastkach',
-    formulas: [
-      { title: 'Iloczyn pierwiastków', latex: '\\sqrt[n]{a} \\cdot \\sqrt[n]{b} = \\sqrt[n]{a \\cdot b}' },
-      { title: 'Iloraz pierwiastków', latex: '\\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}} = \\sqrt[n]{\\frac{a}{b}}' },
-      { title: 'Pierwiastek z potęgi parzystej', latex: '\\sqrt{a^2} = |a|' },
-      { title: 'Usuwanie niewymierności', latex: '\\frac{a}{\\sqrt{b}} = \\frac{a\\sqrt{b}}{b}' }
-    ],
-    goldenRule: 'Pamiętaj: $\\sqrt{a+b} \\neq \\sqrt{a} + \\sqrt{b}$! Pierwiastków nie wolno rozbijać przez dodawanie.',
-    ckeTrap: {
-      error: '\\sqrt{9 + 16} = 3 + 4 = 7',
-      correct: '\\sqrt{9 + 16} = \\sqrt{25} = 5',
-      description: 'Zawsze wykonaj najpierw dodawanie pod znakiem pierwiastka.'
-    }
-  },
-  '1.3': {
-    lessonId: '1.3',
-    title: 'Wzory skróconego mnożenia',
-    formulas: [
-      { title: 'Kwadrat sumy', latex: '(a+b)^2 = a^2 + 2ab + b^2' },
-      { title: 'Kwadrat różnicy', latex: '(a-b)^2 = a^2 - 2ab + b^2' },
-      { title: 'Różnica kwadratów', latex: 'a^2 - b^2 = (a-b)(a+b)' },
-      { title: 'Sześcian sumy', latex: '(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3' },
-      { title: 'Różnica sześcianów', latex: 'a^3 - b^3 = (a-b)(a^2 + ab + b^2)' }
-    ],
-    goldenRule: 'Różnica kwadratów $(a-b)(a+b)$ to najczęstszy sposób na usuwanie niewymierności i rozkład na czynniki.',
-    ckeTrap: {
-      error: '(a+b)^2 = a^2 + b^2',
-      correct: '(a+b)^2 = a^2 + 2ab + b^2',
-      description: 'Nigdy nie zapominaj o podwojonym iloczynie ($2ab$)!'
-    }
-  },
-  '1.4': {
-    lessonId: '1.4',
-    title: 'Logarytmy i ich własności',
-    formulas: [
-      { title: 'Definicja logarytmu', latex: '\\log_a b = c \\iff a^c = b' },
-      { title: 'Suma logarytmów', latex: '\\log_a x + \\log_a y = \\log_a(x \\cdot y)' },
-      { title: 'Różnica logarytmów', latex: '\\log_a x - \\log_a y = \\log_a\\left(\\frac{x}{y}\\right)' },
-      { title: 'Potęga w liczbie logarytmowanej', latex: '\\log_a(x^k) = k \\cdot \\log_a x' },
-      { title: 'Zamiana podstawy', latex: '\\log_a b = \\frac{\\log_c b}{\\log_c a}' }
-    ],
-    goldenRule: 'Zanim obliczysz logarytm, sprawdź założenia: podstawa $a > 0, a \\neq 1$ oraz liczba logarytmowana $b > 0$.',
-    ckeTrap: {
-      error: '\\log(x+y) = \\log x + \\log y',
-      correct: '\\log(x \\cdot y) = \\log x + \\log y',
-      description: 'Suma logarytmów daje logarytm iloczynu, a nie sumy!'
-    }
-  },
-  '1.5': {
-    lessonId: '1.5',
-    title: 'Wartość bezwzględna i odległość na osi',
-    formulas: [
-      { title: 'Definicja wartości bezwzględnej', latex: '|x| = \\begin{cases} x & \\text{dla } x \\geq 0 \\\\ -x & \\text{dla } x < 0 \\end{cases}' },
-      { title: 'Interpretacja geometryczna', latex: '|x - a| = d(x, a)' },
-      { title: 'Równanie $|x| = a$', latex: '|x| = a \\iff x = a \\lor x = -a \\quad (a \\geq 0)' },
-      { title: 'Nierówność $|x| < a$', latex: '|x| < a \\iff -a < x < a' },
-      { title: 'Nierówność $|x| > a$', latex: '|x| > a \\iff x < -a \\lor x > a' }
-    ],
-    goldenRule: '$|x - a| \\leq r$ oznacza przedział domknięty o środku w $a$ i promieniu $r$: $[a-r, a+r]$.',
-    ckeTrap: {
-      error: '|x| = -3 \\implies x = 3',
-      correct: '|x| = -3 \\implies x \\in \\emptyset',
-      description: 'Wartość bezwzględna nigdy nie może być ujemna!'
-    }
-  },
-  '1.6': {
-    lessonId: '1.6',
-    title: 'Procenty, punkty procentowe i kapitalizacja',
-    formulas: [
-      { title: 'Obliczanie procentu danej liczby', latex: 'p\\% \\cdot a = \\frac{p}{100} \\cdot a' },
-      { title: 'Podwyżka o p%', latex: 'a \\cdot \\left(1 + \\frac{p}{100}\\right)' },
-      { title: 'Obniżka o p%', latex: 'a \\cdot \\left(1 - \\frac{p}{100}\\right)' },
-      { title: 'Procent składany', latex: 'K_n = K_0 \\cdot \\left(1 + \\frac{p}{100}\\right)^n' }
-    ],
-    goldenRule: 'Pamiętaj: wzrost z $10\\%$ do $15\\%$ to wzrost o $5$ punktów procentowych, ale o $50\\%$!',
-    ckeTrap: {
-      error: 'Cena wzrosła o 20%, a potem spadła o 20% = cena bez zmian',
-      correct: '1.20 \\cdot 0.80 = 0.96 \\implies \\text{cena spadła o 4%}',
-      description: 'Druga zmiana procentowa odnosi się do nowej, wyższej kwoty bazowej!'
-    }
-  },
-  '1.7': {
-    lessonId: '1.7',
-    title: 'Błąd bezwzględny, błąd względny i szacowanie',
-    formulas: [
-      { title: 'Błąd bezwzględny', latex: '\\Delta x = |x - x_0|' },
-      { title: 'Błąd względny', latex: '\\delta = \\frac{|x - x_0|}{x}' },
-      { title: 'Błąd względny procentowy', latex: '\\delta\\% = \\frac{|x - x_0|}{x} \\cdot 100\\%' }
-    ],
-    goldenRule: 'W mianowniku błędu względnego zawsze stoi wartość dokładna ($x$), a nie przybliżona ($x_0$).',
-    ckeTrap: {
-      error: '\\delta = \\frac{|x - x_0|}{x_0}',
-      correct: '\\delta = \\frac{|x - x_0|}{x}',
-      description: 'Dzielimy przez dokładną wartość rzeczywistą, a nie przez szacunek!'
-    }
-  }
-};
-
-function normalizeLessonId(id: string): string {
-  return String(id).replace(/^lesson-/, '').replace('-', '.');
-}
-
+/**
+ * Karta wzorów dla lekcji — wyłącznie z dokumentu lekcji w Firestore.
+ * Zwraca null, jeśli lekcja nie została jeszcze wczytana.
+ */
 export function getLessonFormulaSheet(lessonId: string): LessonFormulaSheet | null {
-  const normId = normalizeLessonId(lessonId);
-  return (allFormulaSheetsByLesson as Record<string, LessonFormulaSheet>)[normId] || formulaSheetsByLesson[normId] || null;
+  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  if (!lesson) return null;
+  return toFormulaSheet((lesson as any).formulaSheet || (lesson as any).formula_sheet, lesson);
 }
 
+/** Pigułka wiedzy z dokumentu lekcji (wcześniej zwracała zawsze null). */
 export function getLessonTheoryPill(lessonId: string): LessonTheoryPill | null {
-  return null;
+  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  return (lesson?.theory_pill as LessonTheoryPill) || null;
 }
 
+/** Pula zadań lekcji z dokumentu lekcji w Firestore. */
 export function getLessonTaskPool(lessonId: string): PoolTask[] {
-  if (lessonId.startsWith('pol-')) {
-    for (const topic of polishTopics) {
-      for (const lesson of topic.lessons || []) {
-        if (lesson.id === lessonId) {
-          return (lesson.tasks || []) as unknown as PoolTask[];
-        }
-      }
-    }
-  }
-  return [];
+  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  return ((lesson?.tasks as unknown as PoolTask[]) || []);
 }
 
 export interface SessionTasksDrawResult {
@@ -208,80 +123,96 @@ export interface SessionTasksDrawResult {
   estimated_time_formatted?: string;
 }
 
+/** Losowanie bez powtórzeń z zachowaniem kolejności. */
+function shuffle<T>(arr: T[]): T[] {
+  return [...arr].sort(() => 0.5 - Math.random());
+}
+
 /**
- * Draws session tasks for a lesson.
- * Supports task randomization from pools for both Mathematics and Polish.
+ * Przygotowuje zadania sesji dla lekcji.
+ *
+ * Źródło zadań (w kolejności): jawne `providedTasks` z widoku → dokument lekcji
+ * w pamięci podręcznej Firestore. Dla języka polskiego pula jest losowana
+ * (2 otwarte + 2 zamknięte + 1 prawda/fałsz), dla matematyki zwracamy komplet.
  */
-export function drawSessionTasks(lessonId: string, providedTasks?: any[], providedFormulaSheet?: any): SessionTasksDrawResult {
-  const normId = normalizeLessonId(lessonId);
-  const formulaSheet = providedFormulaSheet || getLessonFormulaSheet(normId);
-  const isPolish = lessonId.startsWith('pol-') || (providedTasks && providedTasks[0]?.id?.includes('pol'));
+export function drawSessionTasks(
+  lessonId: string,
+  providedTasks?: any[],
+  providedFormulaSheet?: any
+): SessionTasksDrawResult {
+  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  const formulaSheet =
+    toFormulaSheet(providedFormulaSheet, lesson) || toFormulaSheet(
+      (lesson as any)?.formulaSheet || (lesson as any)?.formula_sheet,
+      lesson
+    );
 
-  if (isPolish) {
-    let pool = (providedTasks && providedTasks.length > 0) ? providedTasks : getLessonTaskPool(lessonId);
-    if (!pool || pool.length === 0) {
-      pool = getLessonTaskPool(lessonId);
-    }
+  const provided = Array.isArray(providedTasks) && providedTasks.length > 0 ? providedTasks : null;
+  const pool: any[] = provided || ((lesson?.tasks as any[]) || []);
 
-    // Losowanie zadań z puli (Task Pool Randomization)
-    const shuffle = <T>(arr: T[]): T[] => [...arr].sort(() => 0.5 - Math.random());
-    let drawnTasks: any[] = [];
+  const isPolish =
+    lessonId.startsWith('pol-') ||
+    String(pool[0]?.id || '').includes('pol') ||
+    Boolean((lesson as any)?.leksykon);
 
-    if (pool && pool.length > 5) {
-      const openTasks = pool.filter((t: any) => 
-        t.type === 'OPEN_TASK' || t.type === 'OPEN_SHORT' || t.type === 'OPEN_PROOF' || t.type === 'SHORT_ANSWER' || t.type === 'OPEN_SYNTHESIS'
-      );
-      const singleTasks = pool.filter((t: any) => t.type === 'SINGLE_CHOICE' || t.type === 'SINGLE');
-      const tfTasks = pool.filter((t: any) => t.type === 'TRUE_FALSE');
-
-      const chosenOpen = shuffle(openTasks).slice(0, Math.min(2, openTasks.length));
-      const chosenSingle = shuffle(singleTasks).slice(0, Math.min(2, singleTasks.length));
-      const chosenTf = shuffle(tfTasks).slice(0, Math.min(1, tfTasks.length));
-
-      drawnTasks = [...chosenSingle, ...chosenOpen, ...chosenTf];
-      if (drawnTasks.length < 5) {
-        const remaining = pool.filter((t: any) => !drawnTasks.some(d => d.id === t.id));
-        drawnTasks.push(...shuffle(remaining).slice(0, 5 - drawnTasks.length));
-      }
-    } else if (pool && pool.length > 0) {
-      drawnTasks = shuffle(pool);
-    }
-
-    const sessionTasks = drawnTasks.map((t: any) => {
-      const norm = normalizeTask(t, { id: lessonId, title: t.title || 'Lekcja' }, { id: 'jezyk-polski', short_title: 'Język Polski' });
-      return {
-        ...norm,
-        ...t,
-        topic: 'Język Polski',
-        instruction: t.instruction || (norm.instruction.includes('dowód') ? 'Sformułuj odpowiedź własnymi słowami na podstawie tekstu/lektury. Pamiętaj o uzasadnieniu.' : norm.instruction),
-        cke_badge: t.cke_badge || t.badge,
-        hint: t.hints?.level_1 || t.hint_1 || t.hint || norm.hint,
-        hint_cost: t.hint_cost || 10,
-        ai_hint_enabled: true,
-        scoring_key: t.scoring_key || norm.scoring_key
-      };
-    });
-
+  if (!isPolish) {
     return {
       lessonId,
-      sessionTasks,
-      formulaSheet: formulaSheet || null,
-      required_correct_tasks: 3,
-      estimated_time_formatted: '~5 min'
+      sessionTasks: pool,
+      formulaSheet,
+      theoryPill: lesson?.theory_pill,
+      required_correct_tasks: lesson?.required_correct_tasks || 3,
+      estimated_time_formatted: lesson?.estimated_time_formatted || '~5 min'
     };
   }
 
-  // Fallback to cached tasks in curriculumRepository
-  const cachedTasks = curriculumRepository.getAllCachedTasks().filter((t: any) => {
-    return t.lessonId === lessonId || t.lessonId === normId || t.id?.includes(lessonId);
+  let drawnTasks: any[] = [];
+  if (pool.length > 5) {
+    const openTasks = pool.filter((t: any) =>
+      t.type === 'OPEN_TASK' || t.type === 'OPEN_SHORT' || t.type === 'OPEN_PROOF' ||
+      t.type === 'SHORT_ANSWER' || t.type === 'OPEN_SYNTHESIS'
+    );
+    const singleTasks = pool.filter((t: any) => t.type === 'SINGLE_CHOICE' || t.type === 'SINGLE');
+    const tfTasks = pool.filter((t: any) => t.type === 'TRUE_FALSE');
+
+    drawnTasks = [
+      ...shuffle(singleTasks).slice(0, Math.min(2, singleTasks.length)),
+      ...shuffle(openTasks).slice(0, Math.min(2, openTasks.length)),
+      ...shuffle(tfTasks).slice(0, Math.min(1, tfTasks.length))
+    ];
+
+    if (drawnTasks.length < 5) {
+      const remaining = pool.filter((t: any) => !drawnTasks.some(d => d.id === t.id));
+      drawnTasks.push(...shuffle(remaining).slice(0, 5 - drawnTasks.length));
+    }
+  } else if (pool.length > 0) {
+    drawnTasks = shuffle(pool);
+  }
+
+  const sessionTasks = drawnTasks.map((t: any) => {
+    const norm = normalizeTask(t, { id: lessonId, title: t.title || lesson?.title || 'Lekcja' }, { id: 'jezyk-polski', short_title: 'Język Polski' });
+    return {
+      ...norm,
+      ...t,
+      topic: 'Język Polski',
+      instruction: t.instruction || (norm.instruction.includes('dowód')
+        ? 'Sformułuj odpowiedź własnymi słowami na podstawie tekstu/lektury. Pamiętaj o uzasadnieniu.'
+        : norm.instruction),
+      cke_badge: t.cke_badge || t.badge,
+      hint: t.hints?.level_1 || t.hint_1 || t.hint || norm.hint,
+      hint_cost: t.hint_cost || 10,
+      ai_hint_enabled: true,
+      scoring_key: t.scoring_key || norm.scoring_key
+    };
   });
 
   return {
     lessonId,
-    sessionTasks: cachedTasks,
+    sessionTasks,
     formulaSheet,
-    required_correct_tasks: 3,
-    estimated_time_formatted: '~5 min'
+    theoryPill: lesson?.theory_pill,
+    required_correct_tasks: lesson?.required_correct_tasks || 3,
+    estimated_time_formatted: lesson?.estimated_time_formatted || '~5 min'
   };
 }
 
@@ -323,11 +254,12 @@ export interface BossExamData {
   tasks: BossExamTask[];
 }
 
+/** @deprecated Zachowane dla zgodności importów. Pula jest teraz w Firestore. */
 export const dzial1TasksPool: PoolTask[] = [];
 
 /**
- * Generates a dynamic Boss Exam for any topic (Math Działy 1-15, Polish, etc.)
- * Selects representative practice tasks across lessons with timer, passing score, and rewards.
+ * Generuje egzamin działowy z podanych zadań (z Firestore).
+ * Gdy zadania nie zostaną przekazane, sięga do pamięci podręcznej repozytorium.
  */
 export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossExamData {
   const topicId = topic?.id || 'dzial-1';
@@ -338,7 +270,6 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
     .replace(/\s*\(Formuła\s+2023\)/gi, '')
     .trim();
 
-  // 1. Gather all candidate tasks for this topic
   let pool: any[] = [];
   if (allTopicTasks && allTopicTasks.length > 0) {
     pool = [...allTopicTasks];
@@ -346,33 +277,25 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
     pool = [...topic.tasks];
   } else if (topic?.lessons && Array.isArray(topic.lessons)) {
     topic.lessons.forEach((l: any) => {
-      if (Array.isArray(l.tasks)) {
-        pool.push(...l.tasks);
-      }
+      if (Array.isArray(l.tasks)) pool.push(...l.tasks);
     });
   }
 
   if (pool.length === 0) {
     const cached = curriculumRepository.getAllCachedTasks();
-    pool = cached.filter((t: any) => {
-      return (
-        t.topicId === topicId ||
-        t.lessonId?.startsWith(topicId) ||
-        t.id?.includes(topicId) ||
-        (t.topic && t.topic.toLowerCase().includes(cleanTitle.toLowerCase()))
-      );
-    });
-    if (pool.length === 0 && cached.length > 0) {
-      pool = cached;
-    }
+    pool = cached.filter((t: any) => (
+      t.topicId === topicId ||
+      t.lessonId?.startsWith(topicId) ||
+      t.id?.includes(topicId) ||
+      (t.topic && t.topic.toLowerCase().includes(cleanTitle.toLowerCase()))
+    ));
+    if (pool.length === 0 && cached.length > 0) pool = cached;
   }
 
-  // 2. Filter out pure theory tasks
-  const practiceTasks = pool.filter((t: any) => 
+  const practiceTasks = pool.filter((t: any) =>
     t.type !== 'theory' && !t.id?.includes('THEORY') && t.cke_source !== 'Pigułka Wiedzy'
   );
 
-  // 3. Diversify tasks across lessons if possible
   const tasksByLesson = new Map<string, any[]>();
   practiceTasks.forEach((t: any) => {
     const lId = t.lessonId || 'general';
@@ -383,13 +306,10 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
   const chosenPool: any[] = [];
   if (tasksByLesson.size > 1) {
     tasksByLesson.forEach((lessonTasks) => {
-      if (chosenPool.length < 10 && lessonTasks.length > 0) {
-        chosenPool.push(lessonTasks[0]);
-      }
+      if (chosenPool.length < 10 && lessonTasks.length > 0) chosenPool.push(lessonTasks[0]);
     });
   }
 
-  // Fill up to 7-10 tasks
   if (chosenPool.length < 7) {
     for (const t of practiceTasks) {
       if (!chosenPool.some(cp => cp.id === t.id)) {
@@ -399,7 +319,6 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
     }
   }
 
-  // Fallback to initial pool if still empty
   if (chosenPool.length === 0 && pool.length > 0) {
     chosenPool.push(...pool.slice(0, 7));
   }
@@ -408,7 +327,7 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
     id: chosen.id || `boss-task-${topicId}-${idx + 1}`,
     lessonId: chosen.lessonId || `${topicId}.${idx + 1}`,
     lessonOrder: idx + 1,
-    lessonTitle: chosen.title || `Zadanie ${idx + 1}`,
+    lessonTitle: chosen.lessonTitle || chosen.title || `Zadanie ${idx + 1}`,
     topicLabel: chosen.topic || cleanTitle,
     question: chosen.question || chosen.content || '',
     options: chosen.options || [],
@@ -428,7 +347,7 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
   }));
 
   const totalQuestions = examTasks.length || 7;
-  const passingScore = Math.max(1, Math.ceil(totalQuestions * 0.7)); // 70% threshold
+  const passingScore = Math.max(1, Math.ceil(totalQuestions * 0.7));
 
   return {
     id: `BOSS-EXAM-${String(topicId).toUpperCase()}`,
@@ -447,9 +366,26 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
 }
 
 /**
- * Generates Boss Exam for Dział 1 using available cached tasks.
- * Maintained for backwards compatibility.
+ * Pobiera zadania działu z Firestore i buduje egzamin działowy.
+ * To preferowana droga — widoki nie mają dostępu do treści poza Firestore.
  */
+export async function loadTopicBossExam(topic: any, subjectId: string): Promise<BossExamData> {
+  const topicId = topic?.id;
+  let tasks: any[] = [];
+
+  if (topicId) {
+    const lessons = await curriculumRepository.getTopicLessons(topicId, subjectId);
+    tasks = lessons.flatMap(lesson => (lesson.tasks || []).map((task: any) => ({
+      ...task,
+      lessonId: lesson.id,
+      lessonTitle: lesson.title
+    })));
+  }
+
+  return generateTopicBossExam(topic, tasks);
+}
+
+/** @deprecated Użyj loadTopicBossExam — wymaga identyfikatora przedmiotu. */
 export function generateDzial1BossExam(tasks?: any[]): BossExamData {
   return generateTopicBossExam({ id: 'dzial-1', name: 'Liczby Rzeczywiste' }, tasks);
 }

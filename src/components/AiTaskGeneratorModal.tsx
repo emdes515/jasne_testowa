@@ -18,6 +18,7 @@ import {
 import confetti from 'canvas-confetti';
 import { MathRenderer } from './MathRenderer';
 import { triggerHaptic, playSuccessSound, playErrorSound } from '../utils';
+import { recordAiTokenUsage } from '../services/aiUsageTracker';
 
 interface AiTaskGeneratorModalProps {
   isOpen: boolean;
@@ -104,6 +105,13 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
       if (res.ok) {
         const task = await res.json();
         setGeneratedTask(task);
+        if (task?.usage) {
+          recordAiTokenUsage({
+            type: 'GENERATION',
+            usage: task.usage,
+            taskId: task.id
+          });
+        }
         triggerHaptic('success');
       } else {
         console.warn('API error in generate-task, using fallback task');
@@ -137,6 +145,13 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
       if (res.ok) {
         const data = await res.json();
         setAiHint(data.reply || generatedTask.hints?.level_1 || 'Zwróć uwagę na kluczowe założenia.');
+        if (data?.usage) {
+          recordAiTokenUsage({
+            type: 'HINT',
+            usage: data.usage,
+            taskId: generatedTask?.id
+          });
+        }
       } else {
         setAiHint(generatedTask.hints?.level_1 || 'Zastosuj odpowiednie tożsamości algebraiczne.');
       }
@@ -198,6 +213,13 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
           setEvaluationFeedback(evalResult);
           setIsCorrect(evalResult.isPassed);
           setIsEvaluated(true);
+          if (evalResult?.usage) {
+            recordAiTokenUsage({
+              type: 'EVALUATION',
+              usage: evalResult.usage,
+              taskId: generatedTask?.id
+            });
+          }
           if (evalResult.isPassed) {
             triggerHaptic('success');
             playSuccessSound();

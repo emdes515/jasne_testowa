@@ -44,6 +44,27 @@ export interface UserState {
   lastHeartRegenTimestamp?: number; // Timestamp (Date.now()) ostatniej regeneracji serca
   aiVisionDailyCount?: number; // Liczba użytych ocen tablicy przez AI w danym dniu
   lastVisionDate?: string; // YYYY-MM-DD ostatniego sprawdzenia AI
+  // AI Token Analytics
+  aiUsage?: UserAiUsageSummary;
+}
+
+export interface AiTokenUsageData {
+  promptTokens: number;
+  completionTokens: number;
+  totalTokens: number;
+  model: string;
+  estimatedCostUsd?: number;
+}
+
+export interface UserAiUsageSummary {
+  totalTokens: number;
+  promptTokens: number;
+  completionTokens: number;
+  totalRequests: number;
+  estimatedCostUsd: number;
+  lastUsedAt?: string;
+  modelsUsed?: Record<string, number>;
+  dailyTokens?: Record<string, number>;
 }
 
 export interface WorkedExampleStep {

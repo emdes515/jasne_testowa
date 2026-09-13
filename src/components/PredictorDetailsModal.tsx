@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { PredictorResult } from '../types';
 import { triggerHaptic } from '../utils';
-import { CKE_AVAILABLE_SUBJECTS } from '../data/ckeSubjectWeights';
+import { getCkeAvailableSubjects, useCkeCatalogs } from '../services/ckeCatalogRepository';
 
 interface PredictorDetailsModalProps {
   isOpen: boolean;
@@ -46,6 +46,8 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
   onNavigate
 }) => {
   const isPol = subjectId.includes('polski') || currentSubjectKey === 'pol';
+  // Lista przedmiotów CKE pochodzi z Firestore (system/ckeSubjectWeights).
+  useCkeCatalogs();
   const pointsMissing = Math.max(0, baseResult.passingThresholdPoints - baseResult.predictedPoints);
   const pointsOver = Math.max(0, baseResult.predictedPoints - baseResult.passingThresholdPoints);
 
@@ -109,7 +111,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
           {/* Subject Switcher Bar inside modal */}
           <div className="p-3 bg-black/30 border-b border-white/5">
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-              {CKE_AVAILABLE_SUBJECTS.map((sub) => {
+              {getCkeAvailableSubjects().map((sub) => {
                 const isActive = (sub.key === 'math' && !isPol) || (sub.key === 'pol' && isPol);
                 const SubIcon = 
                   sub.iconName === 'math' ? Calculator : 

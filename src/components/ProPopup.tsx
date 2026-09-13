@@ -1,15 +1,46 @@
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Sparkles, Check, Crown, Heart, Users, ShieldCheck, Zap } from 'lucide-react';
+import { X, Sparkles, Check, Crown, Heart, Users, ShieldCheck, KeyRound, Loader2 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
 interface ProPopupProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenParentSponsor?: () => void;
-  onActivatePro?: () => void;
+  /**
+   * Aktywacja kodem jednorazowym. Weryfikacja odbywa się w Firestore
+   * (atomowy batch: users/{uid} + system/proCodes/{kod}) — klient nie może
+   * samodzielnie włączyć PRO.
+   */
+  onActivatePro?: (code: string) => Promise<{ ok: boolean; error?: string }>;
 }
 
 export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }: ProPopupProps) {
+  const [code, setCode] = useState('');
+  const [showCodeField, setShowCodeField] = useState(false);
+  const [isActivating, setIsActivating] = useState(false);
+  const [activationError, setActivationError] = useState<string | null>(null);
+
+  const handleActivate = async () => {
+    if (!onActivatePro || isActivating) return;
+    triggerHaptic('medium');
+    setIsActivating(true);
+    setActivationError(null);
+    try {
+      const result = await onActivatePro(code);
+      if (result?.ok) {
+        triggerHaptic('success');
+        setCode('');
+        setShowCodeField(false);
+        onClose();
+      } else {
+        setActivationError(result?.error || 'Nie udało się aktywować PRO.');
+      }
+    } finally {
+      setIsActivating(false);
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -57,8 +88,8 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                   {[
                     { title: 'Nielimitowane serca', desc: 'Ucz się bez przerw i bez kar za błędy', icon: Heart, color: 'text-rose-400' },
                     { title: 'AI Egzaminator Maturalny', desc: 'Nielimitowane sprawdzanie odręcznych dowodów CKE', icon: Sparkles, color: 'text-amber-400' },
-                    { title: 'Wszystkie 225 lekcji & Arkusze', desc: 'Pełna baza zadań Nowej Formuły 2023/2025', icon: Check, color: 'text-emerald-400' },
-                    { title: 'Płatność jednorazowa BLIK', desc: '39 zł raz na zawsze, bez subskrypcji', icon: ShieldCheck, color: 'text-blue-400' }
+                    { title: 'Wszystkie lekcje & arkusze', desc: 'Pełna baza zadań Nowej Formuły 2023/2025', icon: Check, color: 'text-emerald-400' },
+                    { title: 'Kod aktywacyjny PRO', desc: 'Płatność jednorazowa, aktywacja na Twoim koncie', icon: ShieldCheck, color: 'text-blue-400' }
                   ].map((feat, i) => {
                     const Icon = feat.icon;
                     return (
@@ -90,18 +121,66 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                   </button>
                 )}
 
-                {/* Secondary Button: Aktywuj PRO bezpośrednio */}
-                <button 
-                  onClick={() => {
-                    triggerHaptic('success');
-                    if (onActivatePro) onActivatePro();
-                    onClose();
-                  }}
-                  className="w-full bg-white/10 hover:bg-white/15 text-white font-bold py-3 rounded-xl text-[13px] transition-all border border-white/10 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
-                >
-                  <Zap size={15} className="text-amber-400" />
-                  <span>Kupuję sam za 39 zł</span>
-                </button>
+                {/* Kod aktywacyjny — jedyna droga do włączenia PRO */}
+                {!showCodeField ? (
+                  <button 
+                    onClick={() => {
+                      triggerHaptic('light');
+                      setShowCodeField(true);
+                      setActivationError(null);
+                    }}
+                    className="w-full bg-white/10 hover:bg-white/15 text-white font-bold py-3 rounded-xl text-[13px] transition-all border border-white/10 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
+                  >
+                    <KeyRound size={15} className="text-amber-400" />
+                    <span>Mam kod aktywacyjny PRO</span>
+                  </button>
+                ) : (
+                  <div className="w-full">
+                    <label htmlFor="pro-activation-code" className="block text-left text-[11px] font-bold text-[#8B8D98] mb-1.5">
+                      Wpisz kod aktywacyjny z potwierdzenia zakupu
+                    </label>
+                    <input
+                      id="pro-activation-code"
+                      type="text"
+                      value={code}
+                      onChange={(e) => {
+                        setCode(e.target.value.toUpperCase());
+                        setActivationError(null);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') void handleActivate();
+                      }}
+                      autoComplete="off"
+                      autoCapitalize="characters"
+                      spellCheck={false}
+                      inputMode="text"
+                      placeholder="JASNE-XXXX-XXXX"
+                      className="w-full rounded-xl bg-black/40 border border-white/10 focus:border-amber-400/60 focus:outline-none px-3.5 py-3 text-center text-[15px] font-black tracking-[0.12em] text-white placeholder:text-slate-600"
+                    />
+                    {activationError && (
+                      <p className="mt-2 text-left text-[11px] font-semibold text-rose-300 leading-relaxed">
+                        {activationError}
+                      </p>
+                    )}
+                    <button
+                      onClick={() => void handleActivate()}
+                      disabled={isActivating || code.trim().length < 6}
+                      className="mt-2.5 w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-black text-[13px] transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
+                    >
+                      {isActivating ? (
+                        <>
+                          <Loader2 size={15} className="animate-spin" />
+                          <span>Weryfikuję kod…</span>
+                        </>
+                      ) : (
+                        <>
+                          <KeyRound size={15} />
+                          <span>Aktywuj PRO</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                )}
 
                 <button 
                   onClick={onClose}

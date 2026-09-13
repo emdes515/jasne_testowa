@@ -17,7 +17,7 @@
  *    Subcollection: users/{user_id}/progress/{topic_id} -> Completed lessons, errors, stars, unlocked elements.
  */
 
-import { LessonTheoryPill, UserPerks } from './types';
+import { LessonTheoryPill, UserPerks, UserAiUsageSummary } from './types';
 import { filterActualTaskIds } from './utils';
 export interface SubjectTopicMetadata {
   id: string; // e.g. "dzial-1"
@@ -43,6 +43,16 @@ export interface SubjectDocument {
   lessons_count: number;
   tasks_count: number;
   topics_metadata?: SubjectTopicMetadata[];
+  /** Filary przedmiotu (język polski: 3 filary). Treść wyłącznie z Firestore. */
+  pillars?: Array<{
+    id: string;
+    name: string;
+    short_title?: string;
+    description?: string;
+    icon?: string;
+    color?: string;
+    topics_count?: number;
+  }>;
   updatedAt?: string;
 }
 
@@ -192,6 +202,9 @@ export interface FirestoreUserDocument {
   lastHeartRegenTimestamp?: number;
   aiVisionDailyCount?: number;
   lastVisionDate?: string;
+
+  // AI Token Usage Analytics
+  aiUsage?: UserAiUsageSummary;
 }
 
 export function getCurrentIsoWeekKey(): string {
@@ -370,7 +383,8 @@ export function buildFirestoreUserPayload(
       ...(userState.completed_lessons || []),
       ...Object.keys(completedLessons || {})
     ])),
-    completedLessons: completedLessons || {}
+    completedLessons: completedLessons || {},
+    aiUsage: userState.aiUsage || undefined
   };
 
   return removeUndefinedFields(rawPayload);

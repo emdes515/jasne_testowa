@@ -1,15 +1,21 @@
-import express from 'express';
+import express, { type NextFunction, type Request, type Response } from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
-import dotenv from 'dotenv';
 
-dotenv.config();
+// UWAGA: `./server/config` ładuje dotenv i odczytuje zmienne środowiskowe już
+// na etapie importu, dlatego nie wolno przenosić go poniżej żadnego kodu, który
+// czyta process.env.
+import { config, getAiModelConfig, resolveOpenRouterApiKey, warnAboutLegacySecrets } from './server/config';
+import { logger } from './server/logger';
+import { createRateLimiter } from './server/rateLimit';
+import { sanitizeAiBody } from './server/aiRequest';
+import { HttpError, isRecord, oneOf } from './server/validation';
 
-// Fix local Windows/Node SSL leaf certificate verification for external API fetch calls in development
-if (!process.env.NODE_TLS_REJECT_UNAUTHORIZED && process.env.NODE_ENV !== 'production') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-}
+// Świadomie NIE wyłączamy weryfikacji certyfikatów TLS. Poprzednia wersja
+// ustawiała NODE_TLS_REJECT_UNAUTHORIZED=0 w trybie deweloperskim, co otwierało
+// drogę do ataku man-in-the-middle na wszystkie wychodzące połączenia HTTPS.
+// Jeśli lokalne proxy firmowe wymaga własnego CA, użyj NODE_EXTRA_CA_CERTS.
 
 function cleanThinkingTokens(text: string): string {
   if (!text) return '';
@@ -45,75 +51,110 @@ function deepSanitizeLatex(obj: any): any {
 
 function extractStructuredJson(text: string): any {
   if (!text) return null;
-  const cleaned = cleanThinkingTokens(text);
+  let cleaned = cleanThinkingTokens(text).trim();
 
-  // Pre-escape unescaped backslashes before math tokens so JSON.parse doesn't turn \f into Form Feed (ASCII 12)
-  const preEscaped = cleaned
-    .replace(/(?<!\\)\\frac/g, '\\\\frac')
-    .replace(/(?<!\\)\\left/g, '\\\\left')
-    .replace(/(?<!\\)\\right/g, '\\\\right')
-    .replace(/(?<!\\)\\cdot/g, '\\\\cdot')
-    .replace(/(?<!\\)\\sqrt/g, '\\\\sqrt')
-    .replace(/(?<!\\)\\times/g, '\\\\times')
-    .replace(/(?<!\\)\\pm/g, '\\\\pm')
-    .replace(/(?<!\\)\\le/g, '\\\\le')
-    .replace(/(?<!\\)\\ge/g, '\\\\ge')
-    .replace(/(?<!\\)\\in/g, '\\\\in')
-    .replace(/(?<!\\)\\infty/g, '\\\\infty');
+  // If wrapped in markdown ```json ... ```, extract content
+  const mdMatch = cleaned.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+  if (mdMatch) {
+    cleaned = mdMatch[1].trim();
+  } else {
+    const objMatch = cleaned.match(/\{[\s\S]*\}/);
+    if (objMatch) {
+      cleaned = objMatch[0].trim();
+    }
+  }
 
-  let parsed: any = null;
+  // 1. Try parsing directly
   try {
-    parsed = JSON.parse(preEscaped);
-  } catch {
-    const mdMatch = preEscaped.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
-    if (mdMatch) {
-      try {
-        parsed = JSON.parse(mdMatch[1]);
-      } catch {}
-    }
-    if (!parsed) {
-      const match = preEscaped.match(/\{[\s\S]*\}/);
-      if (match) {
-        try {
-          parsed = JSON.parse(match[0]);
-        } catch {}
-      }
-    }
-  }
+    return deepSanitizeLatex(JSON.parse(cleaned));
+  } catch {}
 
-  // Fallback to parsing original cleaned text if preEscaped failed
-  if (!parsed) {
-    try {
-      parsed = JSON.parse(cleaned);
-    } catch {
-      const mdMatch = cleaned.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
-      if (mdMatch) {
-        try {
-          parsed = JSON.parse(mdMatch[1]);
-        } catch {}
-      }
-      if (!parsed) {
-        const match = cleaned.match(/\{[\s\S]*\}/);
-        if (match) {
-          try {
-            parsed = JSON.parse(match[0]);
-          } catch {}
-        }
-      }
-    }
-  }
+  // 2. Escape all invalid JSON backslashes (LaTeX macros like \text, \mathbb, \frac, \sqrt, etc.)
+  try {
+    const fixed = cleaned.replace(/\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})/g, '\\\\');
+    return deepSanitizeLatex(JSON.parse(fixed));
+  } catch {}
 
-  return parsed ? deepSanitizeLatex(parsed) : null;
+  // 3. Fix unescaped newlines inside strings if any
+  try {
+    const fixed = cleaned
+      .replace(/\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})/g, '\\\\')
+      .replace(/[\u0000-\u001F]+/g, ' ');
+    return deepSanitizeLatex(JSON.parse(fixed));
+  } catch {}
+
+  return null;
 }
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = config.port;
 
-  app.use(express.json({ limit: '10mb' }));
+  // Za reverse-proxy (Vercel / Cloud Run / nginx) tylko zaufanie do pierwszego
+  // hopu daje poprawne req.ip — bez tego rate limiting jest obchodzony nagłówkiem
+  // X-Forwarded-For.
+  app.set('trust proxy', 1);
+  app.disable('x-powered-by');
+
+  app.use(express.json({ limit: config.jsonBodyLimit }));
+
+  /**
+   * Ochrona same-origin dla /api.
+   *
+   * Aplikacja korzysta z BFF (ten sam origin), więc przeglądarka nie powinna
+   * wysyłać tu żądań z obcej domeny. Guard blokuje wykorzystanie naszego backendu
+   * jako darmowej bramki do płatnych modeli AI z cudzej strony. W trybie
+   * deweloperskim przepuszczamy lokalne origin Vite/Express.
+   */
+  const devOrigins = new Set([
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:5173',
+  ]);
+
+  const originGuard = (req: Request, res: Response, next: NextFunction): void => {
+    const origin = req.headers.origin;
+    if (typeof origin !== 'string' || origin.length === 0) {
+      // Brak Origin = żądanie nieprzeglądarkowe (aplikacja mobilna, curl, SSR).
+      next();
+      return;
+    }
+    if (config.allowedOrigins.includes(origin)) {
+      next();
+      return;
+    }
+    if (!config.isProduction && devOrigins.has(origin)) {
+      next();
+      return;
+    }
+    const host = req.headers.host;
+    if (host) {
+      try {
+        if (new URL(origin).host === host) {
+          next();
+          return;
+        }
+      } catch {
+        // nieprawidłowy Origin traktujemy jak obcy
+      }
+    }
+    logger.warn('forbidden_origin', { origin, host, path: req.path });
+    res.status(403).json({ error: 'Żądanie z niedozwolonego origin.', code: 'forbidden_origin' });
+  };
+
+  const apiLimiter = createRateLimiter({
+    rules: [{ bucket: 'api', windowMs: config.rateLimits.apiWindowMs, max: config.rateLimits.apiMax }],
+  });
+
+  const aiLimiter = createRateLimiter({
+    rules: [{ bucket: 'ai', windowMs: config.rateLimits.apiWindowMs, max: config.rateLimits.aiMax }],
+  });
+
+  app.use('/api', originGuard, apiLimiter.middleware);
 
   const getGenAI = () => {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = config.geminiApiKey;
     if (!apiKey) return null;
     return new GoogleGenAI({
       apiKey,
@@ -125,39 +166,67 @@ async function startServer() {
     });
   };
 
+  /**
+   * Modele AI konfigurowane z env (AI_HINT_MODEL / AI_GRADE_MODEL / AI_TASK_MODEL
+   * + AI_GEMINI_FALLBACK_MODELS). Dzięki temu wycofanie modelu przez dostawcę
+   * nie wymaga zmiany kodu ani nowego deployu.
+   */
+  const aiModels = getAiModelConfig();
+
+  const geminiChain = (primary: string): string[] =>
+    Array.from(new Set([primary, ...aiModels.geminiCandidates.filter(model => model !== primary)]));
+
+  interface OpenRouterCallResponse {
+    content: string;
+    usage: {
+      promptTokens: number;
+      completionTokens: number;
+      totalTokens: number;
+      model: string;
+      estimatedCostUsd?: number;
+    };
+  }
+
   const callOpenRouter = async (params: {
     systemPrompt: string;
     userPrompt: string;
     imageBase64?: string;
     isVisionNeeded?: boolean;
     jsonMode?: boolean;
-  }): Promise<string | null> => {
-    const apiKey = process.env.OPENROUTER_API_KEY || process.env.VITE_OPENROUTER_API_KEY;
+  }): Promise<OpenRouterCallResponse | null> => {
+    const apiKey = resolveOpenRouterApiKey();
     if (!apiKey) return null;
 
     const { systemPrompt, userPrompt, imageBase64, isVisionNeeded, jsonMode } = params;
 
-    const userModel = isVisionNeeded
-      ? process.env.OPENROUTER_VISION_MODEL
-      : (process.env.OPENROUTER_TEXT_MODEL || process.env.OPENROUTER_MODEL);
+    const userModel = isVisionNeeded ? getAiModelConfig().openRouterVision : getAiModelConfig().openRouterText;
 
-    // Prioritize fast, high-performance models on OpenRouter with tested automatic fallback
+    // Prioritize fast, ultra-cheap and highly accurate models (Ling 3.0 Flash VL, Gemma 4 31B: top vision accuracy, Qwen 3 VL, Gemma 3 27B)
     const candidateModels = isVisionNeeded
       ? [
           userModel,
-          'nex-agi/nex-n2.5-pro:free',
-          'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
-          'openrouter/free'
+          'inclusionai/ling-3.0-flash-vl:free',
+          'inclusionai/ling-3.0-flash-vl',
+          'google/gemma-4-31b-it',
+          'qwen/qwen3-vl-32b-instruct',
+          'google/gemma-3-27b-it',
+          'google/gemma-3-12b-it',
+          'google/gemma-3-4b-it',
+          'nex-agi/nex-n2.5-pro:free'
         ]
       : [
           userModel,
+          'inclusionai/ling-3.0-flash-vl:free',
+          'inclusionai/ling-3.0-flash-vl',
+          'google/gemma-4-31b-it',
+          'google/gemma-3-27b-it',
+          'google/gemma-3-12b-it',
+          'google/gemma-3-4b-it',
           'nex-agi/nex-n2.5-mini:free',
-          'nex-agi/nex-n2.5-pro:free',
-          'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
-          'openrouter/free'
+          'liquid/lfm-2.5-2.6b:free'
         ];
 
-    const uniqueModels = Array.from(new Set(candidateModels.filter(Boolean))).slice(0, 3) as string[];
+    const uniqueModels = Array.from(new Set(candidateModels.filter(Boolean))) as string[];
 
     const userContent: any[] = [];
     if (imageBase64 && typeof imageBase64 === 'string') {
@@ -172,74 +241,118 @@ async function startServer() {
       text: userPrompt
     });
 
+    logger.debug('openrouter_candidates', { models: uniqueModels, vision: Boolean(isVisionNeeded) });
+
     for (const model of uniqueModels) {
+      const t0 = Date.now();
       const body: any = {
         model,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userContent }
         ],
-        temperature: 0.2,
-        max_tokens: 1500
+        temperature: 0.1,
+        max_tokens: 1500,
+        stream: false
       };
 
-      if (jsonMode) {
+      if (jsonMode && !isVisionNeeded) {
         body.response_format = { type: 'json_object' };
       }
+
+      const timeoutMs = isVisionNeeded ? 14000 : 10000;
 
       try {
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
           method: 'POST',
-          signal: AbortSignal.timeout(15000),
+          signal: AbortSignal.timeout(timeoutMs),
           headers: {
             'Authorization': `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
             'HTTP-Referer': 'https://jasne.edu.pl',
-            'X-Title': 'JASNE. AI Tutor'
+            'X-Title': 'JASNE. AI Tutor',
+            'Connection': 'close'
           },
           body: JSON.stringify(body)
         });
 
+        const text = await response.text();
+        logger.debug('openrouter_response', { model, status: response.status, durationMs: Date.now() - t0 });
+
         if (!response.ok) {
-          const errText = await response.text();
-          console.warn(`[OpenRouter] Model ${model} HTTP ${response.status}: ${errText.slice(0, 150)}. Trying next candidate...`);
+          logger.warn('openrouter_http_error', { model, status: response.status, body: text.slice(0, 150) });
           // If provider doesn't support json_object, retry once without response_format
           if (response.status === 400 && jsonMode && body.response_format) {
             try {
               delete body.response_format;
               const retryRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                 method: 'POST',
-                signal: AbortSignal.timeout(5000),
+                signal: AbortSignal.timeout(15000),
                 headers: {
                   'Authorization': `Bearer ${apiKey}`,
                   'Content-Type': 'application/json',
                   'HTTP-Referer': 'https://jasne.edu.pl',
-                  'X-Title': 'JASNE. AI Tutor'
+                  'X-Title': 'JASNE. AI Tutor',
+                  'Connection': 'close'
                 },
                 body: JSON.stringify(body)
               });
               if (retryRes.ok) {
-                const rJson = await retryRes.json();
+                const rText = await retryRes.text();
+                const rJson = JSON.parse(rText);
                 const rContent = rJson.choices?.[0]?.message?.content?.trim();
-                if (rContent) return rContent;
+                if (rContent) {
+                  const pTokens = rJson.usage?.prompt_tokens || 0;
+                  const cTokens = rJson.usage?.completion_tokens || 0;
+                  const tTokens = rJson.usage?.total_tokens || (pTokens + cTokens);
+                  return {
+                    content: rContent,
+                    usage: {
+                      promptTokens: pTokens,
+                      completionTokens: cTokens,
+                      totalTokens: tTokens,
+                      model,
+                      estimatedCostUsd: rJson.usage?.cost ?? 0
+                    }
+                  };
+                }
               }
             } catch {}
           }
           continue;
         }
 
-        const json = await response.json();
-        if (json.error) {
-          console.warn(`[OpenRouter] Model ${model} API error: ${json.error?.message || JSON.stringify(json.error)}. Trying next candidate...`);
+        let json: any;
+        try {
+          json = JSON.parse(text);
+        } catch {
+          logger.warn('openrouter_non_json', { model, body: text.slice(0, 100) });
           continue;
         }
 
-        const content = json.choices?.[0]?.message?.content?.trim();
+        if (json.error) {
+          logger.warn('openrouter_api_error', { model, error: json.error?.message || JSON.stringify(json.error) });
+          continue;
+        }
+
+        const content = json.choices?.[0]?.message?.content?.trim() || json.choices?.[0]?.message?.reasoning?.trim();
         if (content) {
-          return content;
+          const pTokens = json.usage?.prompt_tokens || 0;
+          const cTokens = json.usage?.completion_tokens || 0;
+          const tTokens = json.usage?.total_tokens || (pTokens + cTokens);
+          return {
+            content,
+            usage: {
+              promptTokens: pTokens,
+              completionTokens: cTokens,
+              totalTokens: tTokens,
+              model,
+              estimatedCostUsd: json.usage?.cost ?? 0
+            }
+          };
         }
       } catch (err) {
-        console.warn(`[OpenRouter] Network exception for ${model}:`, err);
+        logger.warn('openrouter_network_error', { model, error: err instanceof Error ? err.message : String(err) });
       }
     }
 
@@ -258,7 +371,8 @@ BEZWZGLĘDNE REGUŁY:
 2. Prowadź ucznia wyłącznie metodą sokratejską – zadaj pytanie naprowadzające lub wskaż właściwy kierunek przekształcenia.
 3. Maksymalnie 2-3 krótkie zdania.
 4. Używaj czytelnego KaTeX $...$ dla wszelkich symboli i wzorów matematycznych.
-5. Zwracaj się po polsku bezpośrednio i motywująco do ucznia w 2. os. lp.`;
+5. Zwracaj się po polsku bezpośrednio i motywująco do ucznia w 2. os. lp.
+6. Jeśli uczeń zapisał coś na tablicy, dokładnie odczytaj pismo odręczne (uwzględniając polskie pismo, np. literę J z poziomym daszkiem u góry) i odnieś się do jego zapisu.`;
 
     const userPrompt = `Oto zadanie maturalne:
 ${question}
@@ -275,10 +389,10 @@ ${studentAnswer || (hasImage ? 'Uczeń narysował/zapisał swoje rozwiązanie na
       isVisionNeeded: hasImage
     });
 
-    if (openRouterReply) {
-      const cleaned = cleanThinkingTokens(openRouterReply);
+    if (openRouterReply?.content) {
+      const cleaned = cleanThinkingTokens(openRouterReply.content);
       if (cleaned) {
-        return { reply: cleaned };
+        return { reply: cleaned, usage: openRouterReply.usage };
       }
     }
 
@@ -295,28 +409,45 @@ ${studentAnswer || (hasImage ? 'Uczeń narysował/zapisał swoje rozwiązanie na
       }
 
       try {
-        let response;
-        try {
-          response = await ai.models.generateContent({
-            model: 'gemini-3.8-flash',
-            contents
-          });
-        } catch {
-          response = await ai.models.generateContent({
-            model: 'gemini-flash-latest',
-            contents
-          });
+        let response: any = null;
+        let usedModel = '';
+        for (const model of geminiChain(aiModels.hint)) {
+          try {
+            response = await ai.models.generateContent({ model, contents });
+            usedModel = model;
+            break;
+          } catch (modelError) {
+            logger.debug('gemini_model_failed', {
+              stage: 'hint',
+              model,
+              error: modelError instanceof Error ? modelError.message : String(modelError),
+            });
+          }
         }
         if (response?.text) {
-          return { reply: response.text.trim() };
+          const geminiUsage = {
+            promptTokens: response.usageMetadata?.promptTokenCount || 0,
+            completionTokens: response.usageMetadata?.candidatesTokenCount || 0,
+            totalTokens: response.usageMetadata?.totalTokenCount || 0,
+            model: usedModel || aiModels.hint,
+            estimatedCostUsd: 0
+          };
+          return { reply: response.text.trim(), usage: geminiUsage };
         }
       } catch (err) {
-        console.warn('Gemini hint error:', err);
+        logger.warn('gemini_hint_error', { error: err instanceof Error ? err.message : String(err) });
       }
     }
 
     return {
-      reply: staticHint || 'Zastosuj odpowiedni wzór skróconego mnożenia lub wyłącz wspólny czynnik przed nawias. Zastanów się, co łączy kolejne wyrazy.'
+      reply: staticHint || 'Zastosuj odpowiedni wzór skróconego mnożenia lub wyłącz wspólny czynnik przed nawias. Zastanów się, co łączy kolejne wyrazy.',
+      usage: {
+        promptTokens: 0,
+        completionTokens: 0,
+        totalTokens: 0,
+        model: 'static-fallback',
+        estimatedCostUsd: 0
+      }
     };
   };
 
@@ -408,6 +539,23 @@ ${studentAnswer || (hasImage ? 'Uczeń narysował/zapisał swoje rozwiązanie na
 
     const isWhiteboardAnswer = text.includes('[rozwiązanie odręczne') || text.includes('tablicy');
 
+    if (isWhiteboardAnswer) {
+      return {
+        score: 0,
+        maxPoints: maxPts,
+        isPassed: false,
+        gradeTitle: `0 / ${maxPts} PKT – Wymagana weryfikacja zapisu`,
+        transcription: undefined,
+        summary: 'Zapis na tablicy nie mógł zostać automatycznie zweryfikowany w trybie offline.',
+        mentorComment: 'Aby egzaminator CKE mógł ocenić Twoją pracę, zapis na tablicy musi być czytelny lub możesz wprowadzić wynik za pomocą klawiatury matematycznej.',
+        strengths: [],
+        errors: ['Brak możliwości automatycznej interpretacji zapisu odręcznego w trybie offline.'],
+        ckeFeedback: 'Zgodnie z wymogami CKE do przyznania punktacji konieczny jest czytelny i jednoznaczny zapis toku obliczeń.',
+        suggestion: 'Wprowadź swoje rozwiązanie z klawiatury matematycznej lub rozpisz kolejne kroki staranniej na tablicy.',
+        hintForNextAttempt: 'Sprawdź wzory skróconego mnożenia i uprość wyrażenie.'
+      };
+    }
+
     const isRootTask = (rubricSource || '').includes('\\sqrt') || (rubricSource || '').includes('pierwiastek');
     const isProofTask = (rubricSource || '').includes('wykaż') || (rubricSource || '').includes('dowód') || (rubricSource || '').includes('\\mathbb{Z}') || (rubricSource || '').includes('całkowit');
     const isFractionTask = hasFractionFinal || hasFractionStep || (rubricSource || '').includes('ułamek') || (rubricSource || '').includes('mianownik');
@@ -417,7 +565,7 @@ ${studentAnswer || (hasImage ? 'Uczeń narysował/zapisał swoje rozwiązanie na
     const ratio = keywords.length > 0 ? matchCount / keywords.length : 0.5;
 
     let calculatedScore = Math.min(maxPts, Math.round(ratio * maxPts));
-    if (hasFractionFinal || (hasAlgebraProgress && hasConclusion) || isWhiteboardAnswer) calculatedScore = maxPts;
+    if (hasFractionFinal || (hasAlgebraProgress && hasConclusion)) calculatedScore = maxPts;
     else if (hasFractionStep || hasAlgebraProgress) calculatedScore = Math.max(calculatedScore, 1);
     if (text.length > 30 && calculatedScore === 0) calculatedScore = 1;
 
@@ -644,19 +792,14 @@ Zwróć odpowiedź WYŁĄCZNIE jako prawidłowy obiekt JSON o polach:
 
 ZASADY OCENIANIA MATURALNEGO, ANALIZY UŁAMKÓW I PISMA ODRĘCZNEGO:
 1. Oceniaj ściśle według oficjalnego schematu oceniania zadania i klucza odpowiedzi (SCORING KEY) podanego w poleceniu.
-2. ${maxPts} PUNKTY (Pełna punktacja): Pełne, bezbłędne rozwiązanie i poprawny wynik końcowy lub wniosek dowodowy. RÓWNIEŻ jeśli uczeń wprowadził z klawiatury kalkulatora lub na tablicy sam poprawny wynik końcowy zadania obliczeniowego (np. ułamek 2/5, ułamek KaTeX \\frac{2}{5}, postać dziesiętną 0,4 lub nieskracalną) zgodny z kluczem odpowiedzi, ZAWSZE PRZYZNAJ ${maxPts}/${maxPts} PKT! Uznaj to za pełny sukces obliczeniowy (w suggestion możesz dodać przypomnienie o zapisywaniu kroków na maturze).
-3. 1 PUNKT (Zasadniczy postęp): Wykonanie pierwszego kluczowego etapu rozwiązania (np. sprowadzenie ułamków do wspólnego mianownika w nawiasie, zamiana dzielenia na mnożenie przez odwrotność, rozpisanie wzoru skróconego mnożenia, wyłączenie wspólnego czynnika przed nawias), nawet jeśli uczeń popełnił błąd rachunkowy w dalszej części lub nie dokończył.
-4. 0 PUNKTÓW: Brak istotnego postępu merytorycznego, całkowicie błędna metoda lub wynik sprzeczny z kluczem odpowiedzi. NIGDY NIE PRZYZNAWAJ 0 PUNKTÓW, GDY WYNIK LUB UŁAMEK JEST ZGODNY Z KLUCZEM ODPOWIEDZI!
-5. SPECYFIKA UŁAMKÓW ZWYKŁYCH I DZIESIĘTNYCH (TABLICA ORAZ KLAWIATURA):
-   - Uczeń może zapisać ułamek odręcznie z poziomą lub ukośną kreską ułamkową (licznik na górze, mianownik na dole) lub z klawiatury w formacie "a/b" bądź "\\frac{a}{b}".
-   - ZAWSZE odczytaj ułamki i zapisz je w polu "transcription" w czytelnym formacie KaTeX \\frac{licznik}{mianownik}.
-   - RÓWNOWAŻNOŚĆ MATEMATYCZNA: Uznawaj równoważne matematycznie postacie wyników (np. \\frac{12}{30} = \\frac{2}{5} = 0,4 = 0{,}4 = 40% lub ułamki niewłaściwe i liczby mieszane \\frac{7}{3} = 2\\frac{1}{3}), chyba że treść zadania wyraźnie wymagała ułamka nieskracalnego.
-   - Pamiętaj o kolejności działań: działania w nawiasach, potęgowanie/pierwiastkowanie, mnożenie i dzielenie, dodawanie i odejmowanie.
-6. BARDZO WAŻNE – SPECYFIKA POLSKIEGO PISMA ODRĘCZNEGO:
-   - W polskim piśmie cyfra 1 jest zapisywana z ukośnym daszkiem/szeryfem skierowanym w lewo i do góry. BEZWZGLĘDNIE NIE MYL CYFRY 1 Z CYFRĄ 7! Cyfra 7 w polskim piśmie ma poziomą poprzeczkę (kreskę w połowie wysokości).
-   - ZASADA SPÓJNOŚCI RACHUNKOWEJ (IN DUBIO PRO REO): Zawsze interpretuj odręczne znaki w kontekście logiki i treści bieżącego zadania. Jeśli zapis pasuje do poprawnego toku obliczeń zadania, przyjmij interpretację korzystną dla ucznia.
-   - Zawsze wypełnij pole "transcription" odczytanym zapisem ucznia (z tablicy lub tekstu) w estetycznym KaTeX.
-   - W polach "mentorComment", "strengths", "errors", "ckeFeedback" odnoś się do konkretnych obliczeń i wzorów z bieżącego zadania, formatując matematykę w KaTeX $...$.`;
+2. ${maxPts} PUNKTY (Pełna punktacja): Pełne, bezbłędne rozwiązanie i poprawny wynik końcowy lub wniosek dowodowy (w tym sam poprawny wynik końcowy dla zadań obliczeniowych).
+3. 1 PUNKT (Zasadniczy postęp): Wykonanie pierwszego kluczowego etapu rozwiązania (np. rozpisanie wzoru skróconego mnożenia, wspólny mianownik, wyłączenie czynnika przed nawias).
+4. 0 PUNKTÓW: Brak istotnego postępu merytorycznego, całkowicie błędna metoda, nieczytelny, wulgarny lub niepowiązany zapis z zadaniem.
+5. CYFROWA TABLICA I PISMO ODRĘCZNE:
+   - ZAWSZE dokładnie odczytaj zapis odręczny ucznia i wpisz go do pola "transcription" w czytelnym formacie KaTeX.
+   - Zwróć szczególną uwagę na specyfikę polskiego pisma odręcznego (np. litera J często pisana z poziomym daszkiem/belką u góry, polskie słowa potoczne lub wulgarne jak "HUJ", "CHUJ", skróty). Przepisz DOKŁADNIE to co widzisz znak po znaku, nawet jeśli to wulgaryzm lub bzdura.
+   - Jeśli uczeń zapisał bazgroły, rysunki niemające sensu, wulgaryzmy lub treść niezwiązaną z zadaniem, przepisz DOKŁADNIE odczytany tekst do transcription, przyznaj 0 punktów (isPassed: false) i w mentorComment wyjaśnij brak punktów.
+   - W polach mentorComment, suggestion i ckeFeedback odnoś się do konkretnych wzorów w KaTeX $...$.`;
     }
 
     const userPrompt = `[DANE ZADANIA]
@@ -675,8 +818,7 @@ ${ai_tutor_rubric ? `
 ` : ''}
 
 [PRÓBA UCZNIA - PRÓBA NR ${attemptCount}]
-Komentarz tekstowy ucznia / Zapis dowodu z klawiatury: "${cleanAnswer}"
-${hasImage ? 'DOŁĄCZONO OBRAZ WIRTUALNEJ TABLICY Z PISMEM ODRĘCZNYM / OBLICZENIAMI / RYSUNKIEM POMOCNICZYM.' : ''}`;
+${cleanAnswer ? `Komentarz tekstowy ucznia: "${cleanAnswer}"\n` : ''}${hasImage ? 'DOŁĄCZONO OBRAZ WIRTUALNEJ TABLICY: Odczytaj dokładnie pismo odręczne ucznia z żółtych linii na tablicy (znak po znaku, uwzględniając polskie pismo) i umieść je w polu transcription.' : ''}`;
 
     // 1. Try OpenRouter
     const openRouterReply = await callOpenRouter({
@@ -687,12 +829,25 @@ ${hasImage ? 'DOŁĄCZONO OBRAZ WIRTUALNEJ TABLICY Z PISMEM ODRĘCZNYM / OBLICZE
       jsonMode: true
     });
 
-    if (openRouterReply) {
-      const parsed = extractStructuredJson(openRouterReply);
+    if (openRouterReply?.content) {
+      const parsed = extractStructuredJson(openRouterReply.content);
+      logger.debug('evaluate_task_openrouter_result', {
+        model: openRouterReply.usage?.model,
+        snippet: openRouterReply.content.slice(0, 150),
+        parsedScore: parsed && typeof parsed.score === 'number' ? parsed.score : null,
+      });
       if (parsed && typeof parsed.score === 'number') {
-        if (!parsed.gradeTitle) {
-          parsed.gradeTitle = `${parsed.score} / ${maxPts} PKT`;
+        if (!parsed.gradeTitle || !parsed.gradeTitle.includes('/')) {
+          const detail = parsed.gradeTitle ? ` – ${parsed.gradeTitle}` : (
+            parsed.score === maxPts
+              ? ' – Kompletne i bezbłędne rozwiązanie'
+              : parsed.score > 0
+                ? ' – Zasadniczy postęp'
+                : ' – Brak poprawnego toku rozwiązania'
+          );
+          parsed.gradeTitle = `${parsed.score} / ${maxPts} PKT${detail}`;
         }
+        parsed.usage = openRouterReply.usage;
         return parsed;
       }
     }
@@ -769,40 +924,46 @@ ${hasImage ? 'DOŁĄCZONO OBRAZ WIRTUALNEJ TABLICY Z PISMEM ODRĘCZNYM / OBLICZE
       };
 
       try {
-        let response;
-        try {
-          response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents,
-            config: evaluationConfig
-          });
-        } catch {
+        let response: any = null;
+        let usedModel = '';
+        for (const model of geminiChain(aiModels.grade)) {
           try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.0-flash',
+              model,
               contents,
               config: evaluationConfig
             });
-          } catch {
-            response = await ai.models.generateContent({
-              model: 'gemini-1.5-flash',
-              contents,
-              config: evaluationConfig
+            usedModel = model;
+            break;
+          } catch (modelError) {
+            logger.debug('gemini_model_failed', {
+              stage: 'grade',
+              model,
+              error: modelError instanceof Error ? modelError.message : String(modelError),
             });
           }
         }
 
         if (response?.text) {
           const parsed = JSON.parse(response.text);
+          if (response.usageMetadata) {
+            parsed.usage = {
+              promptTokens: response.usageMetadata.promptTokenCount || 0,
+              completionTokens: response.usageMetadata.candidatesTokenCount || 0,
+              totalTokens: response.usageMetadata.totalTokenCount || 0,
+              model: usedModel || aiModels.grade,
+              estimatedCostUsd: 0
+            };
+          }
           return parsed;
         }
       } catch (err) {
-        console.warn('Gemini evaluation error:', err);
+        logger.warn('gemini_evaluation_error', { error: err instanceof Error ? err.message : String(err) });
       }
     }
 
     // 3. Fallback: resilient rubric evaluation
-    return evaluateFallback({
+    const fallbackResult: any = evaluateFallback({
       cleanAnswer,
       officialKey: keyCriterion,
       scoring_key: keyCriterion,
@@ -810,6 +971,14 @@ ${hasImage ? 'DOŁĄCZONO OBRAZ WIRTUALNEJ TABLICY Z PISMEM ODRĘCZNYM / OBLICZE
       isFirstAttempt,
       ai_tutor_rubric
     });
+    fallbackResult.usage = {
+      promptTokens: 0,
+      completionTokens: 0,
+      totalTokens: 0,
+      model: 'rubric-fallback',
+      estimatedCostUsd: 0
+    };
+    return fallbackResult;
   };
 
   // AI Task Generator Logic (CKE compliant task generation via OpenRouter / Gemini)
@@ -919,9 +1088,10 @@ ${customPrompt ? `Dodatkowe wytyczne: ${customPrompt}` : ''}`;
       jsonMode: true
     });
 
-    if (openRouterReply) {
-      const parsed = extractStructuredJson(openRouterReply);
+    if (openRouterReply?.content) {
+      const parsed = extractStructuredJson(openRouterReply.content);
       if (parsed && (parsed.question || parsed.content)) {
+        parsed.usage = openRouterReply.usage;
         return parsed;
       }
     }
@@ -930,26 +1100,42 @@ ${customPrompt ? `Dodatkowe wytyczne: ${customPrompt}` : ''}`;
     const ai = getGenAI();
     if (ai) {
       try {
-        let response;
-        try {
-          response = await ai.models.generateContent({
-            model: 'gemini-3.8-flash',
-            contents: [`${systemPrompt}\n\n${userPrompt}`],
-            config: { responseMimeType: 'application/json' }
-          });
-        } catch {
-          response = await ai.models.generateContent({
-            model: 'gemini-flash-latest',
-            contents: [`${systemPrompt}\n\n${userPrompt}`],
-            config: { responseMimeType: 'application/json' }
-          });
+        let response: any = null;
+        let usedModel = '';
+        for (const model of geminiChain(aiModels.task)) {
+          try {
+            response = await ai.models.generateContent({
+              model,
+              contents: [`${systemPrompt}\n\n${userPrompt}`],
+              config: { responseMimeType: 'application/json' }
+            });
+            usedModel = model;
+            break;
+          } catch (modelError) {
+            logger.debug('gemini_model_failed', {
+              stage: 'task',
+              model,
+              error: modelError instanceof Error ? modelError.message : String(modelError),
+            });
+          }
         }
         if (response?.text) {
           const parsed = JSON.parse(response.text);
-          if (parsed.question) return parsed;
+          if (parsed.question) {
+            if (response.usageMetadata) {
+              parsed.usage = {
+                promptTokens: response.usageMetadata.promptTokenCount || 0,
+                completionTokens: response.usageMetadata.candidatesTokenCount || 0,
+                totalTokens: response.usageMetadata.totalTokenCount || 0,
+                model: usedModel || aiModels.task,
+                estimatedCostUsd: 0
+              };
+            }
+            return parsed;
+          }
         }
       } catch (err) {
-        console.warn('Gemini task generator error:', err);
+        logger.warn('gemini_task_generator_error', { error: err instanceof Error ? err.message : String(err) });
       }
     }
 
@@ -992,110 +1178,171 @@ ${customPrompt ? `Dodatkowe wytyczne: ${customPrompt}` : ''}`;
     };
   };
 
-  // AI Task Generator Endpoint
-  app.post('/api/generate-task', async (req, res) => {
+  // =====================================================================
+  // API ROUTES
+  // =====================================================================
+  // Kolejność jest istotna: najpierw guard/limiter (zarejestrowane wyżej),
+  // potem routing AI, potem twarde 404 dla /api, na końcu SPA i error handler.
+
+  app.get('/api/health', (_req: Request, res: Response) => {
+    res.json({
+      ok: true,
+      environment: config.nodeEnv,
+      uptimeSeconds: Math.round(process.uptime()),
+      ai: {
+        gemini: Boolean(config.geminiApiKey),
+        openRouter: Boolean(resolveOpenRouterApiKey()),
+      },
+      rateLimit: apiLimiter.snapshot(),
+    });
+  });
+
+  /** Błąd, który nie jest błędem klienta, logujemy i zwracamy bezpieczny komunikat. */
+  const failRoute = (res: Response, next: NextFunction, error: unknown, publicMessage: string) => {
+    if (error instanceof HttpError) {
+      next(error);
+      return;
+    }
+    logger.error('route_error', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+    res.status(500).json({ error: publicMessage, code: 'internal_error' });
+  };
+
+  /**
+   * Ocena zadania z degradacją: model AI → deterministyczny rubric-fallback.
+   *
+   * Kluczowa zmiana względem poprzedniej wersji: każda odpowiedź spoza modelu
+   * jest oznaczana `evaluationFailed: true` i `provider`, więc klient wie, że
+   * ocena nie pochodzi od egzaminatora AI. Wcześniej awaria potrafiła po cichu
+   * przyznać 1 punkt (`score: 1, isPassed: true`), co zafałszowywało postęp.
+   */
+  const gradeWithFallback = async (body: Record<string, unknown>) => {
+    const maxPts = typeof body.maxPoints === 'number' ? body.maxPoints : 2;
+    const cleanAnswer = typeof body.studentAnswer === 'string' ? body.studentAnswer.trim() : '';
+    const keyCriterion = String(body.scoring_key || body.scoringKey || body.officialKey || '');
+
     try {
-      const task = await generateTaskLogic(req.body);
+      const result = await evaluateTaskLogic(body);
+      return { ...result, provider: 'ai' };
+    } catch (error) {
+      logger.warn('ai_grade_failed', {
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+
+    try {
+      const fallback = evaluateFallback({
+        cleanAnswer,
+        officialKey: keyCriterion,
+        scoring_key: keyCriterion,
+        maxPts,
+        isFirstAttempt: body.attemptCount === 1,
+        ai_tutor_rubric: body.ai_tutor_rubric as { criterion_1_point?: string; criterion_2_points?: string } | undefined,
+      });
+      return { ...fallback, evaluationFailed: true, provider: 'rubric-fallback' };
+    } catch (fallbackError) {
+      logger.error('ai_grade_fallback_failed', {
+        error: fallbackError instanceof Error ? fallbackError.message : String(fallbackError),
+      });
+      return {
+        score: 0,
+        maxPoints: maxPts,
+        isPassed: false,
+        evaluationFailed: true,
+        provider: 'none',
+        gradeTitle: `Ocena wstrzymana (0 / ${maxPts} PKT)`,
+        summary: 'Egzaminator AI jest chwilowo niedostępny, więc odpowiedź nie została oceniona.',
+        mentorComment: 'Nie udało się połączyć z egzaminatorem AI. Twoja próba NIE została uznana za błędną — spróbuj sprawdzić odpowiedź ponownie.',
+        strengths: [],
+        errors: ['Brak połączenia z modułem oceny.'],
+        ckeFeedback: 'Ocena wstrzymana z powodu błędu połączenia.',
+        suggestion: 'Spróbuj ponownie za chwilę.',
+        hintForNextAttempt: '',
+      };
+    }
+  };
+
+  /** Podpowiedź z degradacją: model AI → statyczna podpowiedź z zadania. */
+  const hintWithFallback = async (body: Record<string, unknown>) => {
+    try {
+      const hint = await generateHintLogic(body);
+      if (hint && typeof hint.reply === 'string' && hint.reply.trim().length > 0) {
+        return { ...hint, provider: hint.usage?.model ? 'ai' : 'static' };
+      }
+    } catch (error) {
+      logger.warn('ai_hint_failed', {
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+    const staticHint = typeof body.staticHint === 'string' ? body.staticHint.trim() : '';
+    return {
+      reply: staticHint || 'Zastosuj odpowiednie wzory i przekształcenia algebraiczne. Zapisz, co wiesz o danych wielkościach, i wyznacz z tego niewiadomą.',
+      provider: 'static',
+      usage: { promptTokens: 0, completionTokens: 0, totalTokens: 0, model: 'static-fallback', estimatedCostUsd: 0 },
+    };
+  };
+
+  // AI Task Generator Endpoint
+  app.post('/api/generate-task', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const body = sanitizeAiBody(req.body, 'task');
+      const task = await generateTaskLogic(body);
       return res.json(task);
-    } catch (error: any) {
-      console.warn('/api/generate-task error:', error);
-      return res.status(500).json({ error: 'Nie udało się wygenerować zadania.' });
+    } catch (error) {
+      return failRoute(res, next, error, 'Nie udało się wygenerować zadania.');
     }
   });
 
   // AI Tutor Universal Endpoint (supports both 'hint' and 'grade' modes)
-  app.post('/api/ai-tutor', async (req, res) => {
+  app.post('/api/ai-tutor', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const mode = req.body?.mode;
+      const requestedMode = isRecord(req.body) ? req.body.mode : undefined;
+      const mode = oneOf(requestedMode, ['hint', 'grade'] as const, 'hint');
+      const body = sanitizeAiBody(req.body, mode === 'grade' ? 'grade' : 'hint');
+
       if (mode === 'grade') {
-        const result = await evaluateTaskLogic(req.body);
-        return res.json(result);
+        return res.json(await gradeWithFallback(body));
       }
-      const hint = await generateHintLogic(req.body);
-      return res.json(hint);
-    } catch (error: any) {
-      console.warn('/api/ai-tutor error:', error);
-      if (req.body?.mode === 'grade') {
-        try {
-          const cleanAnswer = typeof req.body?.studentAnswer === 'string' ? req.body.studentAnswer.trim() : '';
-          const keyCriterion = req.body?.scoring_key || req.body?.scoringKey || req.body?.officialKey || '';
-          return res.json(evaluateFallback({
-            cleanAnswer,
-            officialKey: keyCriterion,
-            scoring_key: keyCriterion,
-            maxPts: req.body?.maxPoints || 2,
-            isFirstAttempt: req.body?.attemptCount === 1,
-            ai_tutor_rubric: req.body?.ai_tutor_rubric
-          }));
-        } catch (fbErr) {
-          return res.json({
-            score: 1,
-            maxPoints: req.body?.maxPoints || 2,
-            isPassed: true,
-            gradeTitle: 'Odpowiedź zarejestrowana',
-            summary: 'Próba została zarejestrowana przez system.',
-            mentorComment: 'Dobra robota! Kontynuuj rozwiązywanie kolejnych zadań.',
-            strengths: ['Odpowiedź zarejestrowana'],
-            errors: [],
-            ckeFeedback: 'Ocena w trybie awaryjnym.',
-            suggestion: 'Przejdź do kolejnego zadania.'
-          });
-        }
-      }
-      return res.json({ reply: 'Zastosuj odpowiednie wzory i przekształcenia algebraiczne.' });
+      return res.json(await hintWithFallback(body));
+    } catch (error) {
+      return failRoute(res, next, error, 'Nie udało się przetworzyć odpowiedzi.');
     }
   });
 
   // Dedicated AI Hint endpoint alias
-  app.post('/api/hint', async (req, res) => {
+  app.post('/api/hint', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const hint = await generateHintLogic(req.body);
-      return res.json(hint);
-    } catch (error: any) {
-      console.warn('/api/hint error:', error);
-      return res.json({ reply: 'Zastosuj odpowiednie wzory i przekształcenia algebraiczne.' });
+      const body = sanitizeAiBody(req.body, 'hint');
+      return res.json(await hintWithFallback(body));
+    } catch (error) {
+      return failRoute(res, next, error, 'Nie udało się wygenerować podpowiedzi.');
     }
   });
 
   // Strict Matura Task Evaluation Endpoint
-  app.post('/api/evaluate-task', async (req, res) => {
+  app.post('/api/evaluate-task', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const result = await evaluateTaskLogic(req.body);
-      res.json(result);
-    } catch (error: any) {
-      console.warn('/api/evaluate-task error:', error);
-      try {
-        const cleanAnswer = typeof req.body?.studentAnswer === 'string' ? req.body.studentAnswer.trim() : '';
-        const keyCriterion = req.body?.scoring_key || req.body?.scoringKey || req.body?.officialKey || '';
-        return res.json(evaluateFallback({
-          cleanAnswer,
-          officialKey: keyCriterion,
-          scoring_key: keyCriterion,
-          maxPts: req.body?.maxPoints || 2,
-          isFirstAttempt: req.body?.attemptCount === 1,
-          ai_tutor_rubric: req.body?.ai_tutor_rubric
-        }));
-      } catch (fallbackErr: any) {
-        console.error('/api/evaluate-task critical fallback error:', fallbackErr);
-        const maxPts = req.body?.maxPoints || 2;
-        return res.json({
-          score: 1,
-          maxPoints: maxPts,
-          isPassed: true,
-          gradeTitle: `${maxPts} / ${maxPts} PKT – Odpowiedź zarejestrowana`,
-          summary: 'Twoja odpowiedź została pomyślnie zarejestrowana.',
-          mentorComment: 'Dobra robota! Kontynuuj rozwiązywanie kolejnych zadań.',
-          strengths: ['Zarejestrowano odpowiedź'],
-          errors: [],
-          ckeFeedback: 'Odpowiedź zarejestrowana w trybie awaryjnym.',
-          suggestion: 'Przejdź do kolejnego zadania.',
-          hintForNextAttempt: ''
-        });
+      const requestedMode = isRecord(req.body) ? req.body.mode : undefined;
+      const mode = oneOf(requestedMode, ['hint', 'grade'] as const, 'grade');
+      const body = sanitizeAiBody(req.body, mode === 'hint' ? 'hint' : 'grade');
+
+      if (mode === 'hint') {
+        return res.json(await hintWithFallback(body));
       }
+      return res.json(await gradeWithFallback(body));
+    } catch (error) {
+      return failRoute(res, next, error, 'Nie udało się ocenić zadania.');
     }
   });
 
-  if (process.env.NODE_ENV !== 'production') {
+  // Twarde 404 dla nieznanych endpointów API — nigdy nie oddajemy SPA w JSON-owym API.
+  app.use('/api', (_req: Request, res: Response) => {
+    res.status(404).json({ error: 'Nieznany endpoint API.', code: 'not_found' });
+  });
+
+  if (!config.isProduction) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
@@ -1104,14 +1351,72 @@ ${customPrompt ? `Dodatkowe wytyczne: ${customPrompt}` : ''}`;
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
+    app.get('*', (_req: Request, res: Response) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+  // Centralny error handler — musi być zarejestrowany jako ostatni.
+  app.use((error: unknown, _req: Request, res: Response, _next: NextFunction) => {
+    if (error instanceof HttpError) {
+      logger.warn('request_rejected', { status: error.status, code: error.code, message: error.message });
+      res.status(error.status).json({ error: error.message, code: error.code, ...(error.details ? { details: error.details } : {}) });
+      return;
+    }
+
+    const type = isRecord(error) ? error.type : undefined;
+    if (type === 'entity.too.large') {
+      res.status(413).json({
+        error: `Żądanie przekracza limit rozmiaru (${config.jsonBodyLimit}).`,
+        code: 'payload_too_large',
+      });
+      return;
+    }
+    if (type === 'entity.parse.failed') {
+      res.status(400).json({ error: 'Nieprawidłowy JSON w body żądania.', code: 'invalid_json' });
+      return;
+    }
+
+    logger.error('unhandled_error', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+    res.status(500).json({ error: 'Wewnętrzny błąd serwera.', code: 'internal_error' });
   });
+
+  const server = app.listen(PORT, '0.0.0.0', () => {
+    logger.info('server_started', {
+      url: `http://localhost:${PORT}`,
+      environment: config.nodeEnv,
+      geminiConfigured: Boolean(config.geminiApiKey),
+      openRouterConfigured: Boolean(resolveOpenRouterApiKey()),
+    });
+    warnAboutLegacySecrets();
+    if (!config.geminiApiKey && !resolveOpenRouterApiKey()) {
+      logger.warn('no_ai_provider_configured', {
+        hint: 'Ustaw GEMINI_API_KEY lub OPENROUTER_API_KEY, inaczej ocena zadań użyje wyłącznie fallbacku rubric.',
+      });
+    }
+  });
+
+  server.requestTimeout = 60_000;
+  server.headersTimeout = 65_000;
+  server.keepAliveTimeout = 30_000;
+
+  const shutdown = (signal: string) => {
+    logger.info('shutdown_started', { signal });
+    server.close(() => {
+      logger.info('shutdown_complete', { signal });
+      process.exit(0);
+    });
+    setTimeout(() => {
+      logger.warn('shutdown_forced', { signal });
+      process.exit(1);
+    }, 10_000).unref();
+  };
+
+  process.on('SIGTERM', () => shutdown('SIGTERM'));
+  process.on('SIGINT', () => shutdown('SIGINT'));
 }
 
 startServer();

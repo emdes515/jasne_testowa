@@ -20,13 +20,11 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { db } from '../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import Markdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
-import { seedMaturaTasks } from '../scripts/seedMatura';
-import { zadania_matura } from '../data/zadania_matura';
 import { ScratchpadModal } from './ScratchpadModal';
 import { MaturaExamReview, MaturaTaskReviewItem } from './MaturaExamReview';
 
@@ -50,7 +48,7 @@ const EXAM_DURATION_SECONDS = 20 * 60; // 20 minutes
 export function MaturaSimulatorView({ onEarnReward }: MaturaSimulatorViewProps) {
   const [tasks, setTasks] = useState<MaturaTask[]>([]);
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState<'menu' | 'select_section_single' | 'select_section_exam' | 'single' | 'exam' | 'mistakes'>('menu');
+  const [loadError, setLoadError] = useState<string | null>(null);  const [view, setView] = useState<'menu' | 'select_section_single' | 'select_section_exam' | 'single' | 'exam' | 'mistakes'>('menu');
   const [sections, setSections] = useState<string[]>([]);
   const [selectedSection, setSelectedSection] = useState<string>('Wszystkie');
   
@@ -112,49 +110,46 @@ export function MaturaSimulatorView({ onEarnReward }: MaturaSimulatorViewProps) 
     }
   };
 
-  // Fetch or retrieve tasks with caching
+  // Arkusze pochodzą WYŁĄCZNIE z Firestore: exams/matura-podstawowa (1 odczyt).
+  // Wcześniej klient seedował kolekcję z bundla i miał lokalny fallback.
   useEffect(() => {
+    let isMounted = true;
+
     const fetchTasks = async () => {
       setLoading(true);
+      setLoadError(null);
       try {
-        // Fast path: session cache
-        const cached = sessionStorage.getItem('cached_zadania_matura');
-        if (cached) {
-          const parsed = JSON.parse(cached) as MaturaTask[];
-          if (parsed && parsed.length > 0) {
-            setTasks(parsed);
-            setSections(['Wszystkie', ...Array.from(new Set(parsed.map(t => t.section)))]);
-            setLoading(false);
-            return;
-          }
+        const snap = await getDoc(doc(db, 'exams', 'matura-podstawowa'));
+        if (!isMounted) return;
+
+        if (!snap.exists()) {
+          setTasks([]);
+          setSections(['Wszystkie']);
+          setLoadError('Baza arkuszy nie została jeszcze wgrana do Firestore. Uruchom `npm run seed`.');
+          return;
         }
 
-        const tasksRef = collection(db, 'zadania_matura');
-        const snap = await getDocs(tasksRef);
-        
-        let loaded: MaturaTask[] = [];
-        if (snap.empty) {
-          await seedMaturaTasks();
-          const snap2 = await getDocs(tasksRef);
-          loaded = snap2.docs.map(d => ({ id: d.id, ...d.data() } as MaturaTask));
-        } else {
-          loaded = snap.docs.map(d => ({ id: d.id, ...d.data() } as MaturaTask));
-        }
-
+        const data = snap.data() as { tasks?: MaturaTask[] };
+        const loaded = Array.isArray(data.tasks) ? data.tasks : [];
         setTasks(loaded);
-        setSections(['Wszystkie', ...Array.from(new Set(loaded.map(t => t.section)))]);
-        try {
-          sessionStorage.setItem('cached_zadania_matura', JSON.stringify(loaded));
-        } catch {}
+        setSections(['Wszystkie', ...Array.from(new Set(loaded.map(t => t.section).filter(Boolean)))]);
+
+        if (loaded.length === 0) {
+          setLoadError('Dokument arkuszy istnieje, ale nie zawiera zadań. Uruchom `npm run seed`.');
+        }
       } catch (err) {
-        console.warn("Using offline/cached matura tasks due to network/permissions:", err);
-        setTasks(zadania_matura);
-        setSections(['Wszystkie', ...Array.from(new Set(zadania_matura.map(t => t.section)))]);
+        console.warn('[MaturaSimulatorView] Nie udało się wczytać arkuszy z Firestore:', err);
+        if (isMounted) {
+          setTasks([]);
+          setLoadError('Brak połączenia z chmurą — arkusze nie zostały wczytane.');
+        }
+      } finally {
+        if (isMounted) setLoading(false);
       }
-      setLoading(false);
     };
 
-    fetchTasks();
+    void fetchTasks();
+    return () => { isMounted = false; };
   }, []);
 
   // Exam timer effect
@@ -412,6 +407,14 @@ export function MaturaSimulatorView({ onEarnReward }: MaturaSimulatorViewProps) 
         <div className="flex-1 flex flex-col items-center justify-center py-20">
           <Loader2 className="w-8 h-8 text-blue-500 animate-spin mb-4" />
           <p className="text-[#8B8D98] text-sm">Ładowanie arkuszy maturalnych...</p>
+        </div>
+      ) : loadError ? (
+        <div className="flex-1 flex flex-col items-center justify-center py-20 px-6 text-center">
+          <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
+            <AlertTriangle className="text-amber-400" size={22} />
+          </div>
+          <p className="text-white text-sm font-bold mb-1.5">Arkusze niedostępne</p>
+          <p className="text-[#8B8D98] text-xs max-w-xs leading-relaxed">{loadError}</p>
         </div>
       ) : (
         <AnimatePresence mode="wait">

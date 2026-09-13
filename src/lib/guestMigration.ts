@@ -4,6 +4,7 @@ import { db } from '../firebase';
 import { UserState } from '../types';
 import { buildInitialUserDocument, removeUndefinedFields } from '../schema_firestore';
 import { filterActualTaskIds, isActualTaskId } from '../utils';
+import { getGuestAiTokens, clearGuestAiTokens } from '../services/aiUsageTracker';
 
 export interface GuestProgressData {
   completed_lessons: string[];
@@ -132,6 +133,8 @@ export function getGuestProgress(): GuestProgressData | null {
  * Checks whether the current device has guest progress worth migrating.
  */
 export function hasGuestProgress(): boolean {
+  const guestAi = getGuestAiTokens();
+  if (guestAi && (guestAi.totalTokens > 0 || guestAi.totalRequests > 0)) return true;
   const progress = getGuestProgress();
   if (!progress) return false;
   return progress.completed_lessons.length > 0 || 
@@ -160,11 +163,14 @@ export async function migrateGuestProgressToUser(
   inFlightMigrationPromise = (async () => {
     try {
       const guestProgress = getGuestProgress();
-      const hasProgress = guestProgress && (
-        guestProgress.completed_lessons.length > 0 ||
-        guestProgress.completedTasks.length > 0 ||
-        guestProgress.xp > 0 ||
-        guestProgress.coins > 0
+      const guestAi = getGuestAiTokens();
+      const hasProgress = Boolean(
+        (guestProgress && (
+          guestProgress.completed_lessons.length > 0 ||
+          guestProgress.completedTasks.length > 0 ||
+          guestProgress.xp > 0 ||
+          guestProgress.coins > 0
+        )) || (guestAi && (guestAi.totalTokens > 0 || guestAi.totalRequests > 0))
       );
 
       const userRef = doc(db, 'users', authUser.uid);
@@ -313,7 +319,34 @@ export async function migrateGuestProgressToUser(
             completedTasks: mergedTasks,
             taskStars: mergedStars,
             completedLessons: mergedLessonsMap
-          }
+          },
+          ...(guestAi && (guestAi.totalTokens > 0 || guestAi.totalRequests > 0) ? {
+            aiUsage: (() => {
+              const currentAi = dbData.aiUsage || {};
+              const mergedModels = { ...(currentAi.modelsUsed || {}) };
+              if (guestAi.modelsUsed) {
+                for (const [m, count] of Object.entries(guestAi.modelsUsed)) {
+                  mergedModels[m] = (mergedModels[m] || 0) + count;
+                }
+              }
+              const mergedDaily = { ...(currentAi.dailyTokens || {}) };
+              if (guestAi.dailyTokens) {
+                for (const [d, count] of Object.entries(guestAi.dailyTokens)) {
+                  mergedDaily[d] = (mergedDaily[d] || 0) + count;
+                }
+              }
+              return {
+                totalTokens: (currentAi.totalTokens || 0) + (guestAi.totalTokens || 0),
+                promptTokens: (currentAi.promptTokens || 0) + (guestAi.promptTokens || 0),
+                completionTokens: (currentAi.completionTokens || 0) + (guestAi.completionTokens || 0),
+                totalRequests: (currentAi.totalRequests || 0) + (guestAi.totalRequests || 0),
+                estimatedCostUsd: Number(((currentAi.estimatedCostUsd || 0) + (guestAi.estimatedCostUsd || 0)).toFixed(6)),
+                lastUsedAt: guestAi.lastUsedAt || currentAi.lastUsedAt || new Date().toISOString(),
+                modelsUsed: mergedModels,
+                dailyTokens: mergedDaily
+              };
+            })()
+          } : {})
         };
 
         await setDoc(userRef, removeUndefinedFields(mergedPayload), { merge: true });
@@ -382,7 +415,8 @@ export async function migrateGuestProgressToUser(
             completedTasks: mergedTasks,
             taskStars: mergedStars,
             completedLessons: mergedLessonsMap
-          }
+          },
+          aiUsage: (guestAi && (guestAi.totalTokens > 0 || guestAi.totalRequests > 0)) ? guestAi : undefined
         };
 
         await setDoc(userRef, removeUndefinedFields(newUserData), { merge: true });
@@ -404,11 +438,12 @@ export async function migrateGuestProgressToUser(
         }
       }
 
-      // Czyszczenie tymczasowego stanu gościa z localStorage (zapobieganie dublowaniu punktów)
+      // Czyszczenie tymczasowego stanu gościa z localStorage (zapobieganie dublowaniu punktów i tokenów)
       try {
         localStorage.removeItem('matura_quest_guest_user');
         localStorage.setItem('matura_quest_completed_tasks', JSON.stringify(mergedTasks));
         localStorage.setItem('matura_quest_task_stars', JSON.stringify(mergedStars));
+        clearGuestAiTokens();
       } catch (e) {
         console.error("Failed to update localStorage after migration:", e);
       }

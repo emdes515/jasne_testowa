@@ -44,7 +44,8 @@ import { MathPlot } from './MathPlot';
 import { OutOfHeartsModal } from './OutOfHeartsModal';
 import { ParentSponsorModal } from './ParentSponsorModal';
 import { ProPopup } from './ProPopup';
-import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro } from '../lib/heartsManager';
+import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro, activateProWithCode } from '../lib/heartsManager';
+import { recordAiTokenUsage } from '../services/aiUsageTracker';
 
 /**
  * Helper to render micro-article text containing markdown bold (**bold**) and LaTeX ($...$)
@@ -406,6 +407,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const [isTutorScanning, setIsTutorScanning] = useState<boolean>(false);
   const [isScanFinished, setIsScanFinished] = useState<boolean>(false);
   const pendingEvalDataRef = React.useRef<any>(null);
+  /** Backend nie miał żadnego ewaluatora (provider:'none') — nie oceniamy i nie karzemy. */
+  const aiEvaluationUnavailableRef = React.useRef<boolean>(false);
+  /** Ocena policzona rubryką/heurystyką zamiast AI — UI oznacza ją jako przybliżoną. */
+  const usedApproximateEvaluationRef = React.useRef<boolean>(false);
+  const [evaluationUnavailable, setEvaluationUnavailable] = useState<boolean>(false);
+  const [isApproximateEvaluation, setIsApproximateEvaluation] = useState<boolean>(false);
   const [tutorEvaluation, setTutorEvaluation] = useState<any | null>(null);
   const evaluationCardRef = React.useRef<HTMLDivElement>(null);
   const [showModelSolution, setShowModelSolution] = useState<boolean>(false);
@@ -504,20 +511,34 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             question: currentTask?.question || currentTask?.content || currentTask?.math_statement || '',
             instruction: currentTask?.instruction || '',
             studentAnswer: openAnswerText || '',
-            studentImage: openCanvasDataUrl || '',
+            studentImage: latestCanvasDataRef.current || openCanvasDataUrl || '',
             scoring_key: currentTask?.scoring_key || currentTask?.officialKey || currentTask?.explanation || '',
             staticHint: currentTask?.hint || currentTask?.hints?.level_1 || ''
           })
         });
-        const data = await res.json();
-        const hintText = data.reply || currentTask?.hint || currentTask?.hints?.level_1 || (
+        const data = res.ok ? await res.json() : null;
+        let hintText = data?.reply;
+        if (data?.usage) {
+          recordAiTokenUsage({
+            type: 'HINT',
+            usage: data.usage,
+            taskId,
+            hasImage: Boolean(latestCanvasDataRef.current || openCanvasDataUrl)
+          });
+        }
+
+        // Wskazówka AI pochodzi WYŁĄCZNIE z backendu (/api/ai-tutor).
+        // Klucz OpenRouter nigdy nie trafia do przeglądarki — klient nie wykonuje
+        // żadnych wywołań do dostawców AI.
+
+        const finalHintText = hintText || currentTask?.hint || currentTask?.hints?.level_1 || (
           isPolishSession
             ? 'Zwróć uwagę na intencję nadawcy, kontekst i kluczowe pojęcia w poleceniu.'
             : 'Zwróć uwagę na kluczowe przekształcenia algebraiczne i założenia zadania.'
         );
         const ok = spendCoins(hintCost);
         if (ok) {
-          setUnlockedHints(prev => ({ ...prev, [taskId]: hintText }));
+          setUnlockedHints(prev => ({ ...prev, [taskId]: finalHintText }));
           setIsHintExpanded(prev => ({ ...prev, [taskId]: true }));
           setIsHintSheetOpen(true);
           triggerHaptic('success');
@@ -978,11 +999,20 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
   };
 
-  const handleActivatePro = () => {
-    if (!onUpdateUserState || !userState) return;
+  const handleActivatePro = async (code: string): Promise<{ ok: boolean; error?: string }> => {
+    if (!onUpdateUserState || !userState) {
+      return { ok: false, error: 'Nie można teraz aktywować PRO. Odśwież aplikację i spróbuj ponownie.' };
+    }
+
+    // Reguły Firestore dopuszczają tylko atomową aktywację kodem jednorazowym.
+    const result = await activateProWithCode(code);
+    if (!result.ok) return result;
+
+    // Stan lokalny aktualizujemy dopiero po potwierdzonym zapisie w chmurze.
     onUpdateUserState(prev => activatePro(prev));
     setShowOutOfHeartsModal(false);
     setShowParentSponsorModal(false);
+    return { ok: true };
   };
 
   // Dynamically resolve next lesson in chain (e.g. lesson-1-1 -> lesson-1-2 -> ... -> lesson-1-15)
@@ -1371,6 +1401,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
     setIsTutorScanning(true);
     setIsScanFinished(false);
+    setEvaluationUnavailable(false);
+    aiEvaluationUnavailableRef.current = false;
+    usedApproximateEvaluationRef.current = false;
     triggerHaptic('medium');
 
     let evalData: any = null;
@@ -1410,16 +1443,47 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       });
 
       if (response.ok) {
-        evalData = await response.json();
+        const serverEval = await response.json();
+
+        // Backend zwraca provider:'none', gdy żaden ewaluator (AI ani rubryka)
+        // nie był dostępny. Wtedy NIE wystawiamy oceny i nie zabieramy serca —
+        // uczeń widzi komunikat i może spróbować ponownie.
+        if (serverEval?.evaluationFailed && serverEval?.provider === 'none') {
+          aiEvaluationUnavailableRef.current = true;
+        } else {
+          evalData = serverEval;
+          if (serverEval?.evaluationFailed) {
+            // Ocena policzona rubryką po stronie serwera (AI niedostępne).
+            usedApproximateEvaluationRef.current = true;
+          }
+          if (serverEval?.usage) {
+            recordAiTokenUsage({
+              type: 'EVALUATION',
+              usage: serverEval.usage,
+              taskId: currentTask?.id,
+              hasImage: Boolean(optimizedImagePayload)
+            });
+          }
+        }
+      } else if (response.status === 429) {
+        // Limit zapytań — nie oceniamy, ale też nie karzemy ucznia.
+        aiEvaluationUnavailableRef.current = true;
       } else {
-        console.warn('AI Tutor response not OK, using client-side rubric evaluation');
+        console.warn('[SessionRunner] /api/evaluate-task zwróciło', response.status);
+        usedApproximateEvaluationRef.current = true;
       }
     } catch (err) {
-      console.warn('AI Tutor service unavailable, activating client-side evaluation fallback');
+      console.warn('[SessionRunner] Brak połączenia z /api/evaluate-task:', err);
+      usedApproximateEvaluationRef.current = true;
     }
 
-    // If server evaluation didn't succeed, generate resilient rubric evaluation
-    if (!evalData) {
+    // UWAGA BEZPIECZEŃSTWO: usunięto bezpośrednie wywołanie OpenRouter z
+    // przeglądarki (klucz VITE_OPENROUTER_API_KEY trafiał do publicznego bundla).
+    // Każde zapytanie do modelu przechodzi przez backend: /api/ai-tutor,
+    // /api/evaluate-task, /api/generate-task.
+
+    // If server AI evaluation didn't succeed, generate resilient offline rubric evaluation
+    if (!evalData && !aiEvaluationUnavailableRef.current) {
       const text = effectiveAnswer.toLowerCase();
       const hasHandwriting = Boolean(rawCanvasUrl && rawCanvasUrl.length > 50);
 
@@ -1575,77 +1639,105 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           (text.length >= 1 && keyText.split(/[\s,;=]+/).some(token => token && token === text))
         ));
 
-        let fallbackScore = 0;
-        if (matchesOfficial || hasFractionFinal || (hasAlgebraProgress && hasConclusion) || hasHandwriting) {
-          fallbackScore = targetPts;
-        } else if (hasFractionStep || hasAlgebraProgress || text.length > 20) {
-          fallbackScore = 1;
-        }
-
-        const isRootTask = (currentTask?.question || '').includes('\\sqrt') || (currentTask?.question || '').includes('pierwiastek');
-        const isProofTask = (currentTask?.question || '').includes('wykaż') || (currentTask?.question || '').includes('dowód') || (currentTask?.question || '').includes('\\mathbb{Z}') || (currentTask?.type === 'OPEN_PROOF');
-        const isFractionTask = hasFractionFinal || hasFractionStep || (currentTask?.question || '').includes('ułamek') || (currentTask?.question || '').includes('/');
-
-        let dynamicMentorComment = '';
-        let dynamicStrengths: string[] = [];
-        let dynamicErrors: string[] = [];
-        let dynamicSuggestion = 'Pamiętaj o czytelnym zapisywaniu każdego kroku na arkuszu maturalnym.';
-        let dynamicTranscription: string | undefined = hasHandwriting 
-          ? '[Odczytano zapis odręczny z tablicy]' 
-          : (openAnswerText && openAnswerText !== '[Rozwiązanie odręczne na tablicy]' ? openAnswerText : undefined);
-
-        if (isRootTask || isProofTask) {
-          dynamicMentorComment = fallbackScore === targetPts
-            ? 'Znakomita praca! Zastosowano właściwe wzory i przekształcenia, zredukowano wyrazy i sformułowano poprawny wniosek końcowy.'
-            : fallbackScore === 1
-            ? 'Dobra robota za poprawny pierwszy etap przekształceń algebraicznych. Dokończ redukcję wyrazów, aby uzyskać pełną punktację.'
-            : 'Zwróć uwagę na wzory skróconego mnożenia oraz redukcję wyrazów podobnych.';
-          dynamicStrengths = fallbackScore >= 1 ? ['Zastosowano poprawny tok przekształceń', 'Logiczny ciąg operacji'] : [];
-          dynamicErrors = fallbackScore < targetPts ? ['Wymagane pełne zredukowanie wyrazów do wniosku końcowego'] : [];
-          dynamicSuggestion = 'Pamiętaj o starannym rozpisaniu każdego etapu dowodu algebraicznego.';
-        } else if (isFractionTask) {
-          dynamicMentorComment = fallbackScore === targetPts
-            ? 'Znakomita praca! Działania na ułamkach oraz kolejność wykonywania operacji zostały przeprowadzone bezbłędnie.'
-            : fallbackScore === 1
-            ? 'Dobra robota za poprawny pierwszy krok (np. wspólny mianownik lub zamiana dzielenia na mnożenie). Pamiętaj, aby dokończyć obliczenia i podać wynik w najprostszej postaci.'
-            : 'Zwróć uwagę na kolejność wykonywania działań oraz poprawne sprowadzanie ułamków do wspólnego mianownika.';
-          dynamicStrengths = fallbackScore >= 1 ? ['Poprawne wykonanie kluczowych działań na ułamkach', 'Zastosowanie właściwych reguł arytmetycznych'] : [];
-          dynamicErrors = fallbackScore < targetPts ? ['Upewnij się, że wynik końcowy jest podany w postaci nieskracalnej'] : [];
-          dynamicSuggestion = 'Pamiętaj o zamianie dzielenia przez ułamek na mnożenie przez jego odwrotność.';
+        if (hasHandwriting) {
+          evalData = {
+            score: 0,
+            maxPoints: targetPts,
+            isPassed: false,
+            gradeTitle: `0 / ${targetPts} PKT – Wymagana weryfikacja`,
+            transcription: undefined,
+            summary: 'Zapis z tablicy nie mógł zostać automatycznie oceniony w trybie offline.',
+            mentorComment: 'Aby egzaminator CKE mógł ocenić Twoje rozwiązanie z tablicy, upewnij się, że masz połączenie z internetem lub wprowadź ostateczny wynik za pomocą klawiatury matematycznej.',
+            strengths: [],
+            errors: ['Brak połączenia z siecią do analizy zapisu odręcznego.'],
+            ckeFeedback: 'Do oceny zapisu odręcznego z tablicy wymagana jest aktywna weryfikacja AI.',
+            suggestion: 'Wprowadź odpowiedź za pomocą klawiatury matematycznej lub sprawdź połączenie z siecią.',
+            hintForNextAttempt: ''
+          };
         } else {
-          dynamicMentorComment = fallbackScore === targetPts
-            ? 'Znakomita praca! Rozwiązanie zadania w pełni odpowiada oficjalnym wymaganiom maturalnym CKE.'
-            : fallbackScore === 1
-            ? 'Dobra próba i wykonanie pierwszego kluczowego etapu. Uzupełnij ostateczne uzasadnienie.'
-            : 'Przeanalizuj założenia polecenia i skorzystaj z oficjalnej karty wzorów CKE.';
-          dynamicStrengths = fallbackScore >= 1 ? ['Poprawny pierwszy etap rozwiązania', 'Zgodność z tokiem CKE'] : [];
-          dynamicErrors = fallbackScore < targetPts ? ['Brak pełnego uzasadnienia lub wyniku'] : [];
-        }
+          let fallbackScore = 0;
+          if (matchesOfficial || hasFractionFinal || (hasAlgebraProgress && hasConclusion)) {
+            fallbackScore = targetPts;
+          } else if (hasFractionStep || hasAlgebraProgress || text.length > 20) {
+            fallbackScore = 1;
+          }
 
-        evalData = {
-          score: fallbackScore,
-          maxPoints: targetPts,
-          isPassed: fallbackScore >= 1,
-          gradeTitle: fallbackScore === targetPts 
-            ? `${targetPts} / ${targetPts} PKT – Kompletne i bezbłędne rozwiązanie`
-            : (fallbackScore === 1 ? `1 / ${targetPts} PKT – Zasadniczy postęp` : `0 / ${targetPts} PKT – Próba rozwiązania`),
-          transcription: dynamicTranscription,
-          summary: fallbackScore === targetPts 
-            ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Obliczenia i wynik są w pełni poprawne.')
-            : (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w rozwiązaniu zadania. Poprawny pierwszy etap obliczeń.'),
-          mentorComment: dynamicMentorComment,
-          strengths: dynamicStrengths,
-          errors: dynamicErrors,
-          ckeFeedback: fallbackScore === targetPts 
-            ? 'Zgodnie z oficjalnym modelem oceniania CKE przyznano pełną punktację za bezbłędny wynik końcowy.'
-            : 'Zgodnie z kryteriami CKE za zasadniczy postęp w toku rozumowania przysługuje 1 punkt.',
-          suggestion: dynamicSuggestion,
-          hintForNextAttempt: ''
-        };
+          const isRootTask = (currentTask?.question || '').includes('\\sqrt') || (currentTask?.question || '').includes('pierwiastek');
+          const isProofTask = (currentTask?.question || '').includes('wykaż') || (currentTask?.question || '').includes('dowód') || (currentTask?.question || '').includes('\\mathbb{Z}') || (currentTask?.type === 'OPEN_PROOF');
+          const isFractionTask = hasFractionFinal || hasFractionStep || (currentTask?.question || '').includes('ułamek') || (currentTask?.question || '').includes('/');
+
+          let dynamicMentorComment = '';
+          let dynamicStrengths: string[] = [];
+          let dynamicErrors: string[] = [];
+          let dynamicSuggestion = 'Pamiętaj o czytelnym zapisywaniu każdego kroku na arkuszu maturalnym.';
+          let dynamicTranscription: string | undefined = (openAnswerText && openAnswerText !== '[Rozwiązanie odręczne na tablicy]' ? openAnswerText : undefined);
+
+          if (isRootTask || isProofTask) {
+            dynamicMentorComment = fallbackScore === targetPts
+              ? 'Znakomita praca! Zastosowano właściwe wzory i przekształcenia, zredukowano wyrazy i sformułowano poprawny wniosek końcowy.'
+              : fallbackScore === 1
+              ? 'Dobra robota za poprawny pierwszy etap przekształceń algebraicznych. Dokończ redukcję wyrazów, aby uzyskać pełną punktację.'
+              : 'Zwróć uwagę na wzory skróconego mnożenia oraz redukcję wyrazów podobnych.';
+            dynamicStrengths = fallbackScore >= 1 ? ['Zastosowano poprawny tok przekształceń', 'Logiczny ciąg operacji'] : [];
+            dynamicErrors = fallbackScore < targetPts ? ['Wymagane pełne zredukowanie wyrazów do wniosku końcowego'] : [];
+            dynamicSuggestion = 'Pamiętaj o starannym rozpisaniu każdego etapu dowodu algebraicznego.';
+          } else if (isFractionTask) {
+            dynamicMentorComment = fallbackScore === targetPts
+              ? 'Znakomita praca! Działania na ułamkach oraz kolejność wykonywania operacji zostały przeprowadzone bezbłędnie.'
+              : fallbackScore === 1
+              ? 'Dobra robota za poprawny pierwszy krok (np. wspólny mianownik lub zamiana dzielenia na mnożenie). Pamiętaj, aby dokończyć obliczenia i podać wynik w najprostszej postaci.'
+              : 'Zwróć uwagę na kolejność wykonywania działań oraz poprawne sprowadzanie ułamków do wspólnego mianownika.';
+            dynamicStrengths = fallbackScore >= 1 ? ['Poprawne wykonanie kluczowych działań na ułamkach', 'Zastosowanie właściwych reguł arytmetycznych'] : [];
+            dynamicErrors = fallbackScore < targetPts ? ['Upewnij się, że wynik końcowy jest podany w postaci nieskracalnej'] : [];
+            dynamicSuggestion = 'Pamiętaj o zamianie dzielenia przez ułamek na mnożenie przez jego odwrotność.';
+          } else {
+            dynamicMentorComment = fallbackScore === targetPts
+              ? 'Znakomita praca! Rozwiązanie zadania w pełni odpowiada oficjalnym wymaganiom maturalnym CKE.'
+              : fallbackScore === 1
+              ? 'Dobra próba i wykonanie pierwszego kluczowego etapu. Uzupełnij ostateczne uzasadnienie.'
+              : 'Przeanalizuj założenia polecenia i skorzystaj z oficjalnej karty wzorów CKE.';
+            dynamicStrengths = fallbackScore >= 1 ? ['Poprawny pierwszy etap rozwiązania', 'Zgodność z tokiem CKE'] : [];
+            dynamicErrors = fallbackScore < targetPts ? ['Brak pełnego uzasadnienia lub wyniku'] : [];
+          }
+
+          evalData = {
+            score: fallbackScore,
+            maxPoints: targetPts,
+            isPassed: fallbackScore >= 1,
+            gradeTitle: fallbackScore === targetPts 
+              ? `${targetPts} / ${targetPts} PKT – Kompletne i bezbłędne rozwiązanie`
+              : (fallbackScore === 1 ? `1 / ${targetPts} PKT – Zasadniczy postęp` : `0 / ${targetPts} PKT – Próba rozwiązania`),
+            transcription: dynamicTranscription,
+            summary: fallbackScore === targetPts 
+              ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Obliczenia i wynik są w pełni poprawne.')
+              : (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w rozwiązaniu zadania. Poprawny pierwszy etap obliczeń.'),
+            mentorComment: dynamicMentorComment,
+            strengths: dynamicStrengths,
+            errors: dynamicErrors,
+            ckeFeedback: fallbackScore === targetPts 
+              ? 'Zgodnie z oficjalnym modelem oceniania CKE przyznano pełną punktację za bezbłędny wynik końcowy.'
+              : 'Zgodnie z kryteriami CKE za zasadniczy postęp w toku rozumowania przysługuje 1 punkt.',
+            suggestion: dynamicSuggestion,
+            hintForNextAttempt: ''
+          };
+        }
       }
     }
 
+    // Brak jakiegokolwiek ewaluatora: pokazujemy komunikat i pozwalamy ponowić
+    // próbę. Nie zapisujemy błędu, nie zabieramy serca, nie zaniżamy XP.
+    if (aiEvaluationUnavailableRef.current || !evalData) {
+      aiEvaluationUnavailableRef.current = false;
+      pendingEvalDataRef.current = null;
+      setEvaluationUnavailable(true);
+      setIsTutorScanning(false);
+      setIsScanFinished(false);
+      return;
+    }
+
     // Set pending evaluation and signal the scanning animation to conclude
+    setIsApproximateEvaluation(usedApproximateEvaluationRef.current);
+    usedApproximateEvaluationRef.current = false;
     pendingEvalDataRef.current = evalData;
     setIsScanFinished(true);
 
@@ -4551,6 +4643,43 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         }}
         onActivatePro={handleActivatePro}
       />
+
+      {/* Ocena policzona rubryką/heurystyką zamiast AI — jasna informacja dla ucznia */}
+      {isApproximateEvaluation && isEvaluated && (
+        <div className="fixed inset-x-0 top-2 z-[120] flex justify-center px-4 pointer-events-none">
+          <div className="pointer-events-none rounded-full border border-amber-500/30 bg-[#1A1408]/90 px-3 py-1 text-[11px] font-semibold text-amber-200/90 backdrop-blur">
+            Ocena przybliżona — egzaminator AI był chwilowo niedostępny
+          </div>
+        </div>
+      )}
+
+      {/* Komunikat braku ewaluatora — bez utraty serca, z możliwością ponowienia */}
+      {evaluationUnavailable && (
+        <div className="fixed inset-x-0 bottom-24 z-[120] flex justify-center px-4 pointer-events-none">
+          <div className="pointer-events-auto w-full max-w-md rounded-2xl border border-amber-500/40 bg-[#1A1408]/95 backdrop-blur px-4 py-3.5 shadow-2xl">
+            <div className="flex items-start gap-3">
+              <AlertTriangle size={18} className="mt-0.5 shrink-0 text-amber-400" />
+              <div className="flex-1">
+                <p className="text-sm font-bold text-amber-200">Egzaminator AI jest chwilowo niedostępny</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-amber-100/70">
+                  Twoja odpowiedź <span className="font-semibold">nie została oceniona</span> i nie stracisz za nią serca.
+                  Spróbuj ponownie za moment.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEvaluationUnavailable(false);
+                    triggerHaptic('light');
+                  }}
+                  className="mt-2.5 rounded-xl bg-amber-500/20 px-3 py-1.5 text-xs font-bold text-amber-200 transition active:scale-95"
+                >
+                  Rozumiem, spróbuję ponownie
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Full-Screen Immersive Cyber AI Tutor Neural Scanner Overlay */}
       {isTutorScanning && (

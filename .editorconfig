@@ -1,0 +1,39 @@
+# EditorConfig — https://editorconfig.org
+# Ujednolica styl plików niezależnie od edytora/IDE.
+root = true
+
+# Domyślne dla całego repozytorium
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+
+# Kod źródłowy: 2 spacje
+[*.{js,jsx,cjs,mjs,ts,tsx,json,jsonc,css,scss,html,yml,yaml}]
+indent_size = 2
+
+# Dokumentacja: 2 spacje (spójnie z kodem; listy i tabele markdown
+# łamią się czytelniej przy węższym wcięciu niż 4 spacje)
+[*.md]
+indent_size = 2
+
+# Pliki generowane / zależności — bez wymuszania finalnego newline
+[*.{lock,lockb}]
+insert_final_newline = false
+
+[{package-lock.json,bun.lock}]
+indent_size = 2
+
+# Windows scripts muszą zachować CRLF
+[*.{bat,cmd}]
+end_of_line = crlf
+
+# PowerShell
+[*.ps1]
+indent_size = 4
+
+# Makefile wymaga tabulatorów
+[Makefile]
+indent_style = tab

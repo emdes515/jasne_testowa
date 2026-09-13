@@ -26,8 +26,15 @@ export const loginWithGoogle = async () => {
       error?.message?.includes('unauthorized-domain') ||
       error?.message?.includes('Pending promise was never set')
     ) {
-      console.warn('Domain is not authorized in Firebase Auth console for Google popup sign-in.');
-      alert('Tryb Demo aktywne: Domena podglądu wymaga autoryzacji w konsoli Firebase Auth. Wszystkie funkcje aplikacji działają w trybie gościa z lokalnym zapisem stanu.');
+      console.warn('[FirebaseAuth] Domena nie jest dodana do Authorized Domains w Firebase Auth console.');
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('app_notification', {
+          detail: {
+            message: 'Tryb gościa aktywny: dodaj domenę do Authorized Domains w Firebase Auth, aby logować się kontem Google.',
+            type: 'warning'
+          }
+        }));
+      }
       return null;
     }
     console.error("Error signing in with Google", error);

@@ -6,7 +6,10 @@ import {
   PenTool, 
   Eraser, 
   Trash2, 
-  Undo2
+  Undo2,
+  Plus,
+  ArrowDown,
+  ArrowUp
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
@@ -30,7 +33,9 @@ export function CkeScratchpad({
 }: CkeScratchpadProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollViewportRef = useRef<HTMLDivElement>(null);
 
+  const [canvasHeight, setCanvasHeight] = useState<number>(() => Math.max(window.innerHeight - 60, 650));
   const [tool, setTool] = useState<'pen' | 'eraser'>('pen');
   const [penColor] = useState<string>('#FFB800');
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -38,6 +43,35 @@ export function CkeScratchpad({
   // History stack for Undo
   const historyRef = useRef<ImageData[]>([]);
   const historyIndexRef = useRef<number>(-1);
+
+  // Rozszerzenie arkusza brudnopisu w dół (+450px)
+  const handleExpandCanvas = () => {
+    triggerHaptic('medium');
+    setCanvasHeight(prev => Math.min(prev + 450, 4500));
+    setTimeout(() => {
+      if (scrollViewportRef.current) {
+        scrollViewportRef.current.scrollTo({
+          top: scrollViewportRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 60);
+  };
+
+  const handleScrollToTop = () => {
+    triggerHaptic('light');
+    scrollViewportRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleScrollToBottom = () => {
+    triggerHaptic('light');
+    if (scrollViewportRef.current) {
+      scrollViewportRef.current.scrollTo({
+        top: scrollViewportRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Close and commit state
   const handleClose = () => {
@@ -65,7 +99,7 @@ export function CkeScratchpad({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  // Initialize canvas in full screen
+  // Initialize canvas with dynamic height and lossless buffer retention
   useEffect(() => {
     if (!isOpen) return;
 
@@ -77,34 +111,51 @@ export function CkeScratchpad({
       const rect = container.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       const width = rect.width || window.innerWidth || 380;
-      const height = rect.height || (window.innerHeight - 60) || 500;
+      const height = canvasHeight;
 
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
+      if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+        let backupCanvas: HTMLCanvasElement | null = null;
+        if (canvas.width > 0 && canvas.height > 0) {
+          try {
+            backupCanvas = document.createElement('canvas');
+            backupCanvas.width = canvas.width;
+            backupCanvas.height = canvas.height;
+            const bctx = backupCanvas.getContext('2d');
+            if (bctx) {
+              bctx.drawImage(canvas, 0, 0);
+            }
+          } catch {}
+        }
 
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      ctx.scale(dpr, dpr);
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
 
-      // Restore saved drawing if available
-      if (savedDataUrl && savedDataUrl.length > 50) {
-        const img = new Image();
-        img.onload = () => {
-          ctx.drawImage(img, 0, 0, width, height);
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        ctx.scale(dpr, dpr);
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        if (backupCanvas) {
+          ctx.drawImage(backupCanvas, 0, 0, backupCanvas.width / dpr, backupCanvas.height / dpr);
           saveState();
-        };
-        img.src = savedDataUrl;
-      } else {
-        saveState();
+        } else if (savedDataUrl && savedDataUrl.length > 50) {
+          const img = new Image();
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0, width, height);
+            saveState();
+          };
+          img.src = savedDataUrl;
+        } else {
+          saveState();
+        }
       }
-    }, 60);
+    }, 50);
 
     return () => clearTimeout(timer);
-  }, [isOpen]);
+  }, [isOpen, canvasHeight]);
 
   const saveState = () => {
     const canvas = canvasRef.current;
@@ -271,8 +322,40 @@ export function CkeScratchpad({
             </button>
           </div>
 
-          {/* Right side: Undo & Clear buttons */}
-          <div className="flex items-center gap-1.5 shrink-0">
+          {/* Szybka nawigacja i rozszerzanie arkusza brudnopisu */}
+          <div className="flex items-center gap-1 shrink-0">
+            {canvasHeight > 700 && (
+              <div className="flex items-center gap-0.5 bg-[#141C28] p-0.5 rounded-xl border border-white/10">
+                <button
+                  type="button"
+                  onClick={handleScrollToTop}
+                  className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  title="Przewiń na górę brudnopisu"
+                >
+                  <ArrowUp size={14} />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleScrollToBottom}
+                  className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  title="Przewiń na dół brudnopisu"
+                >
+                  <ArrowDown size={14} />
+                </button>
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={handleExpandCanvas}
+              className="px-2.5 py-1.5 rounded-xl text-[#FFB800] hover:text-amber-300 bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
+              title="Dodaj 450px miejsca na obliczenia w dół"
+            >
+              <Plus size={14} />
+              <span className="hidden sm:inline">+450px</span>
+            </button>
+
+            {/* Right side: Undo & Clear buttons */}
             <button
               type="button"
               onClick={handleUndo}
@@ -295,27 +378,52 @@ export function CkeScratchpad({
           </div>
         </header>
 
-        {/* FULLSCREEN SQUARED MATHEMATICS NOTEBOOK CANVAS */}
+        {/* PRZEWIJALNY VIEWPORT Z ROZSZERZALNYM BRUDNOPISEM */}
         <div
-          ref={containerRef}
-          className="flex-1 w-full h-full relative cursor-crosshair overflow-hidden touch-none"
+          ref={scrollViewportRef}
+          className="flex-1 w-full h-full relative overflow-y-auto overflow-x-hidden select-none"
           style={{
             backgroundColor: '#070B12',
-            backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
-            `,
-            backgroundSize: '24px 24px'
+            overscrollBehavior: 'contain',
+            scrollBehavior: 'smooth'
           }}
         >
-          <canvas
-            ref={canvasRef}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerCancel={handlePointerUp}
-            className="absolute inset-0 block w-full h-full"
-          />
+          <div
+            ref={containerRef}
+            className="w-full relative touch-none"
+            style={{
+              height: `${canvasHeight}px`,
+              minHeight: `${canvasHeight}px`,
+              backgroundColor: '#070B12',
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
+              `,
+              backgroundSize: '24px 24px'
+            }}
+          >
+            <canvas
+              ref={canvasRef}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              className="w-full h-full cursor-crosshair block"
+            />
+
+            {/* DYNAMICZNY PRZYCISK ROZSZERZENIA BRUDNOPISU NA DOLE */}
+            <div className="sticky bottom-4 inset-x-0 flex justify-center pointer-events-none z-10 px-4">
+              <button
+                type="button"
+                onClick={handleExpandCanvas}
+                className="pointer-events-auto px-5 py-2.5 rounded-full bg-[#111827]/95 hover:bg-[#1F2937] border border-amber-500/40 hover:border-amber-400 text-amber-300 hover:text-amber-200 text-xs font-bold flex items-center gap-2 shadow-[0_6px_25px_rgba(0,0,0,0.7)] backdrop-blur-md active:scale-95 transition-all cursor-pointer group"
+              >
+                <Plus size={15} className="text-amber-400 group-hover:rotate-90 transition-transform duration-200" />
+                <span>Rozwiń brudnopis w dół (+450px)</span>
+                <ArrowDown size={14} className="text-amber-400 animate-bounce" />
+              </button>
+            </div>
+          </div>
         </div>
       </motion.div>
     </AnimatePresence>,

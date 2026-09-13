@@ -1,5 +1,5 @@
 import { PredictorResult, TopicMasteryBreakdown } from '../types';
-import { getSubjectCkeConfig } from '../data/ckeSubjectWeights';
+import { getSubjectCkeConfig } from '../services/ckeCatalogRepository';
 import { filterActualTaskIds } from '../utils';
 
 export interface CalculateMaturaPredictionParams {
@@ -248,7 +248,7 @@ export function calculateMaturaPrediction(params: CalculateMaturaPredictionParam
 
   // 8. Dynamiczny wybór "Najszybszego Skoku Punktowego" (Next Best Topic)
   // Szukamy działu o największej liczbie niezdobytych punktów CKE z preferencją dla pewniaków
-  let bestTopicCandidate = topicBreakdown[0];
+  let bestTopicCandidate: TopicMasteryBreakdown | undefined = topicBreakdown[0];
   let maxPriorityScore = -1;
 
   topicBreakdown.forEach(topic => {
@@ -270,8 +270,10 @@ export function calculateMaturaPrediction(params: CalculateMaturaPredictionParam
   });
 
   // Obliczenie potencjalnego zysku punktowego z rekomendowanego działu
-  const unmasteredOfBest = 1 - (bestTopicCandidate.masteryPercent / 100);
-  const potentialPointGain = Math.round(unmasteredOfBest * bestTopicCandidate.maxPoints * scalingFactor * 10) / 10;
+  const unmasteredOfBest = bestTopicCandidate ? (1 - (bestTopicCandidate.masteryPercent / 100)) : 0;
+  const potentialPointGain = bestTopicCandidate 
+    ? Math.round(unmasteredOfBest * bestTopicCandidate.maxPoints * scalingFactor * 10) / 10 
+    : 0;
 
   return {
     subjectId: config.subjectId,
@@ -286,11 +288,16 @@ export function calculateMaturaPrediction(params: CalculateMaturaPredictionParam
     passingThresholdPoints: config.passingThresholdPoints,
     isCalibrating,
     calibrationProgress,
-    nextBestTopic: {
+    nextBestTopic: bestTopicCandidate ? {
       topicId: bestTopicCandidate.topicId,
       topicName: bestTopicCandidate.name,
       potentialPointGain: Math.max(1.5, potentialPointGain),
       importance: bestTopicCandidate.importance
+    } : {
+      topicId: 'dzial-1',
+      topicName: 'Liczby Rzeczywiste',
+      potentialPointGain: 2.0,
+      importance: 'CRITICAL_PEWNIAK'
     },
     topicBreakdown
   };

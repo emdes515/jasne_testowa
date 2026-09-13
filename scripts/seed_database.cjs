@@ -8,7 +8,8 @@
  * Schema: Flat-Bundle under subjects/{subject_id}/topics/{topic_id}/lessons/{lesson_id}
  */
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+// UWAGA BEZPIECZEŃSTWO: nie wyłączamy weryfikacji certyfikatów TLS.
+// W środowiskach z własnym CA (proxy firmowe) użyj NODE_EXTRA_CA_CERTS=/ścieżka/ca.pem
 process.env.FIRESTORE_PREFER_REST = 'true';
 const fs = require('fs');
 const path = require('path');
@@ -18,8 +19,8 @@ try {
   require('dotenv').config();
 } catch (e) {}
 
-const MATH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'curriculum_matematyka.json');
-const POLISH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'curriculum_jezyk_polski.json');
+const MATH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka.json');
+const POLISH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_jezyk_polski.json');
 const PROJECT_ID = process.env.VITE_FIREBASE_PROJECT_ID || 'jasne-7efe7';
 
 async function main() {
@@ -399,6 +400,61 @@ async function main() {
   };
   currentBatch.set(db.collection('subjects').doc('jezyk-angielski'), angielskiSubjectData, { merge: true });
   operationsInBatch++;
+
+  // 5. Katalogi CKE (oficjalne wzory + wagi punktowe) -> system/ckeFormulas,
+  //    system/ckeSubjectWeights. Klient czyta je z Firestore; w bundlu nie ma
+  //    żadnych wzorów ani wag.
+  const CKE_FORMULAS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_formulas.json');
+  const CKE_WEIGHTS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_weights.json');
+  if (fs.existsSync(CKE_FORMULAS_PATH)) {
+    const ckeFormulas = JSON.parse(fs.readFileSync(CKE_FORMULAS_PATH, 'utf8'));
+    currentBatch.set(db.collection('system').doc('ckeFormulas'), {
+      id: 'ckeFormulas',
+      topics: ckeFormulas.topics || [],
+      formulas: ckeFormulas.formulas || [],
+      formulas_count: (ckeFormulas.formulas || []).length,
+      updatedAt: new Date().toISOString()
+    }, { merge: true });
+    operationsInBatch++;
+    console.log(`✓ Katalogi CKE: system/ckeFormulas (${(ckeFormulas.formulas || []).length} wzorów)`);
+  } else {
+    console.warn('[WARN] Brak seed/curriculum/cke_formulas.json — wzory CKE pominięte.');
+  }
+  if (fs.existsSync(CKE_WEIGHTS_PATH)) {
+    const ckeWeights = JSON.parse(fs.readFileSync(CKE_WEIGHTS_PATH, 'utf8'));
+    currentBatch.set(db.collection('system').doc('ckeSubjectWeights'), {
+      id: 'ckeSubjectWeights',
+      subjects: ckeWeights.subjects || {},
+      options: ckeWeights.options || [],
+      updatedAt: new Date().toISOString()
+    }, { merge: true });
+    operationsInBatch++;
+    console.log(`✓ Katalogi CKE: system/ckeSubjectWeights (${Object.keys(ckeWeights.subjects || {}).length} przedmioty)`);
+  } else {
+    console.warn('[WARN] Brak seed/curriculum/cke_weights.json — wagi CKE pominięte.');
+  }
+
+  // 6. Egzaminy maturalne (arkusze CKE) -> exams/matura-podstawowa
+  //    Jedyne źródło: seed/curriculum/zadania_matura.json. Aplikacja czyta ten
+  //    dokument z Firestore — w bundlu klienta nie ma żadnych zadań.
+  const MATURA_TASKS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'zadania_matura.json');
+  if (fs.existsSync(MATURA_TASKS_PATH)) {
+    const maturaTasks = JSON.parse(fs.readFileSync(MATURA_TASKS_PATH, 'utf8'));
+    const sections = Array.from(new Set(maturaTasks.map(t => t.section).filter(Boolean)));
+    currentBatch.set(db.collection('exams').doc('matura-podstawowa'), {
+      id: 'matura-podstawowa',
+      subject_id: 'matematyka-podstawowa',
+      name: 'Matura próbna — Matematyka (poziom podstawowy)',
+      sections,
+      tasks: maturaTasks,
+      tasks_count: maturaTasks.length,
+      updatedAt: new Date().toISOString()
+    }, { merge: true });
+    operationsInBatch++;
+    console.log(`✓ Egzaminy: exams/matura-podstawowa (${maturaTasks.length} zadań, ${sections.length} sekcji)`);
+  } else {
+    console.warn('[WARN] Brak seed/curriculum/zadania_matura.json — egzaminy pominięte.');
+  }
 
   await commitBatchIfNeeded(true);
 

@@ -1,23 +1,387 @@
 rules_version = '2';
 
+// =====================================================================
+// JASNE. — Cloud Firestore Security Rules (Standard Edition, native mode)
+// =====================================================================
+//
+// ZAKRES ODPOWIEDZIALNOŚCI
+// Reguły nie są w stanie w pełni zastąpić logiki serwerowej. Ich zadaniem jest:
+//   1) izolacja danych między użytkownikami (zero wycieków),
+//   2) uniemożliwienie zapisania niepoprawnego typu/schematu na własnym dokumencie,
+//   3) utrudnienie samo-wzbogacania się (anty-cheat na walucie i PRO),
+//   4) treści kurikulum: publiczny odczyt, zapis wyłącznie przez Admin SDK.
+//
+// ŚWIADOME OGRANICZENIE: pełna ochrona ekonomii gry wymaga autorytetu serwera
+// (Cloud Functions / endpoint BFF z Admin SDK). Tu stosujemy obronę w głąb:
+// monotoniczne XP/level/arenaWins + limity przyrostu na pojedynczy zapis.
+//
+// =====================================================================
+// MODEL DANYCH (zakładany przez te reguły)
+// =====================================================================
+//
+// subjects/{subjectId}                       — metadane przedmiotu (publiczny odczyt)
+//   topics/{topicId}                         — dział + lessons_metadata
+//     lessons/{lessonId}                     — theory_pill + tasks[] + formula_sheet
+// topics/{topicId}[/lessons/{lessonId}]      — kolekcje legacy (read-only)
+// mathTasks/{taskId}, zadania_matura/{id}    — kolekcje legacy (read-only)
+//
+// users/{userId}
+//   coins, xp, gems, level, campusRust, lastActive: int/float
+//   masteryTokens, arenaRating, arenaWins, streakDays: int
+//   timeSpentTotalSeconds, weeklyTimeSpentMinutes: int
+//   hearts (0..maxHearts), maxHearts (1..10), lastHeartRegenTimestamp: int
+//   isPro: bool  — wyłącznie serwer/kod aktywacyjny (patrz system/proCodes)
+//   proCode: string (tylko przy aktywacji PRO)
+//   streakActiveDates: list<string> (≤1000)
+//   completedTasks: list<string> (≤20000), completed_lessons: list<string> (≤5000)
+//   taskStars, completedLessons, dailyTaskCounts, claimedAchievements: map
+//   profile{displayName,email,avatarUrl,createdAt}
+//   stats{...}, streak{currentDays,lastActiveDate,streakActiveDates,activityHistory}
+//   perks{xpBoostPercent,coinBoostPercent,streakFreezes,arenaShields,arenaTokenBonusPercent,temporaryXpBoostCharges}
+//   aiUsage{totalTokens,promptTokens,completionTokens,totalRequests,estimatedCostUsd,lastUsedAt,modelsUsed,dailyTokens}
+//   onboardingPreferences{targetExam,targetScore,dailyMinutes} | null
+//   progress{completedTasks,taskStars,completedLessons}  (z migracji gościa)
+//   progress/{topicId}                     — postęp per dział
+//     {topic_id, completedLessons, completedTasks, taskStars, mistakesCount, unlockedItems, updatedAt}
+//
+// system/meta                                — publiczny odczyt (wersja kurikulum)
+// system/proCodes/{code}                      — kody aktywacyjne PRO:
+//     {active: bool, usedBy?: uid, usedAt?: timestamp, plan?: string}
+//   Odczyt przez klienta ZABRONIONY; reguły używają get()/exists(), które
+//   działają niezależnie od uprawnień odczytu klienta.
+//
+// matches/{matchId}                          — Arena (przyszłość): tylko uczestnicy
+//
+// UWAGA DLA ROZWOJU: dodanie nowego pola do dokumentu użytkownika wymaga
+// dopisania go do listy userWritableKeys() i sprawdzenia typu w userDocShape().
+// Bez tego zapis postępu zostanie odrzucony (permission-denied).
+// =====================================================================
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Connection test document
-    match /test/{document=**} {
-      allow read: if true;
-      allow write: if request.auth != null;
+
+    // ---------------------------------------------------------------
+    // Helpery ogólne
+    // ---------------------------------------------------------------
+    function isSignedIn() {
+      return request.auth != null;
     }
-  
-    // System metadata - read only for authenticated users
-    match /system/{document=**} {
-      allow read: if request.auth != null;
-      allow write: if false; // Admin only via Admin SDK / service account
+
+    function isSelf(userId) {
+      return isSignedIn() && request.auth.uid == userId;
     }
-    
-    // Subjects (Przedmioty) -> Topics (Działy) -> Lessons (Lekcje)
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function changedKeys() {
+      return incoming().diff(existing()).affectedKeys();
+    }
+
+    function isNum(value) {
+      return value is int || value is float;
+    }
+
+    function inRange(value, lo, hi) {
+      return isNum(value) && value >= lo && value <= hi;
+    }
+
+    function isSmallText(value, maxLen) {
+      return value is string && value.size() <= maxLen;
+    }
+
+    function isListWithLimit(value, maxSize) {
+      return value is list && value.size() <= maxSize;
+    }
+
+    function isMapWithLimit(value, maxSize) {
+      return value is map && value.size() <= maxSize;
+    }
+
+    function optionalInt(data, field, lo, hi) {
+      return !(field in data) || data[field] == null || inRange(data[field], lo, hi);
+    }
+
+    function optionalText(data, field, maxLen) {
+      return !(field in data) || data[field] == null || isSmallText(data[field], maxLen);
+    }
+
+    // ---------------------------------------------------------------
+    // Walidacja dokumentu użytkownika
+    // ---------------------------------------------------------------
+    function aiUsageShape(usage) {
+      return usage is map
+        && usage.keys().hasOnly([
+          'totalTokens', 'promptTokens', 'completionTokens', 'totalRequests',
+          'estimatedCostUsd', 'lastUsedAt', 'modelsUsed', 'dailyTokens'
+        ])
+        && inRange(usage.totalTokens, 0, 100000000000)
+        && inRange(usage.promptTokens, 0, 100000000000)
+        && inRange(usage.completionTokens, 0, 100000000000)
+        && inRange(usage.totalRequests, 0, 100000000)
+        && inRange(usage.estimatedCostUsd, 0, 1000000)
+        && optionalText(usage, 'lastUsedAt', 40)
+        && (!('modelsUsed' in usage) || isMapWithLimit(usage.modelsUsed, 100))
+        && (!('dailyTokens' in usage) || isMapWithLimit(usage.dailyTokens, 400));
+    }
+
+    function onboardingPreferencesShape(prefs) {
+      return prefs == null || (
+        prefs is map
+        && prefs.keys().hasOnly(['targetExam', 'targetScore', 'dailyMinutes'])
+        && prefs.targetExam in ['matura_2025', 'poprawka', 'e8']
+        && prefs.targetScore in ['30', '70', '100']
+        && prefs.dailyMinutes in [5, 10, 15]
+      );
+    }
+
+    function profileShape(profile) {
+      return profile is map
+        && profile.keys().hasOnly(['displayName', 'email', 'avatarUrl', 'createdAt'])
+        && isSmallText(profile.displayName, 80)
+        && isSmallText(profile.email, 320)
+        && isSmallText(profile.avatarUrl, 500)
+        && isNum(profile.createdAt);
+    }
+
+    function statsShape(stats) {
+      return stats is map
+        && stats.keys().hasOnly([
+          'level', 'xp', 'coins', 'gems', 'masteryTokens', 'arenaRating', 'arenaWins',
+          'totalTasksCompleted', 'timeSpentTotalSeconds', 'weeklyTimeSpentMinutes'
+        ])
+        && inRange(stats.level, 1, 1000)
+        && inRange(stats.xp, 0, 100000000)
+        && inRange(stats.coins, 0, 100000000)
+        && inRange(stats.gems, 0, 1000000)
+        && inRange(stats.masteryTokens, 0, 10000000)
+        && inRange(stats.arenaRating, 0, 100000)
+        && inRange(stats.arenaWins, 0, 100000)
+        && inRange(stats.totalTasksCompleted, 0, 20000)
+        && inRange(stats.timeSpentTotalSeconds, 0, 1000000000)
+        && inRange(stats.weeklyTimeSpentMinutes, 0, 1000000);
+    }
+
+    function streakShape(streak) {
+      return streak is map
+        && streak.keys().hasOnly(['currentDays', 'lastActiveDate', 'streakActiveDates', 'activityHistory'])
+        && inRange(streak.currentDays, 0, 100000)
+        && optionalText(streak, 'lastActiveDate', 32)
+        && isListWithLimit(streak.streakActiveDates, 1000)
+        && isMapWithLimit(streak.activityHistory, 64);
+    }
+
+    function perksShape(perks) {
+      return perks is map
+        && perks.keys().hasOnly([
+          'xpBoostPercent', 'coinBoostPercent', 'streakFreezes', 'arenaShields',
+          'arenaTokenBonusPercent', 'temporaryXpBoostCharges'
+        ])
+        && inRange(perks.xpBoostPercent, 0, 1000)
+        && inRange(perks.coinBoostPercent, 0, 1000)
+        && inRange(perks.streakFreezes, 0, 1000)
+        && inRange(perks.arenaShields, 0, 1000)
+        && inRange(perks.arenaTokenBonusPercent, 0, 1000)
+        && inRange(perks.temporaryXpBoostCharges, 0, 1000);
+    }
+
+    function guestProgressShape(progress) {
+      return progress is map
+        && progress.keys().hasOnly(['completedTasks', 'taskStars', 'completedLessons'])
+        && isListWithLimit(progress.completedTasks, 20000)
+        && isMapWithLimit(progress.taskStars, 20000)
+        && isMapWithLimit(progress.completedLessons, 5000);
+    }
+
+    // Pola, które klient może w ogóle zmienić.
+    function userWritableKeys() {
+      return [
+        'profile', 'stats', 'streak', 'perks',
+        'coins', 'xp', 'gems', 'level', 'campusRust', 'lastActive',
+        'arenaRating', 'arenaWins', 'masteryTokens', 'streakDays',
+        'lastStreakDate', 'streakActiveDates', 'dailyTaskCounts', 'claimedAchievements',
+        'timeSpentTotalSeconds', 'weeklyTimeSpentMinutes', 'lastWeekKey',
+        'maturaAttempts', 'maturaBestScore', 'hasCompletedOnboarding', 'onboardingPreferences',
+        'completedTasks', 'taskStars', 'completed_lessons', 'completedLessons', 'progress',
+        'isPro', 'proCode', 'hearts', 'maxHearts', 'lastHeartRegenTimestamp',
+        'aiVisionDailyCount', 'lastVisionDate', 'aiUsage'
+      ];
+    }
+
+    // Rdzeń ekonomii i stanu — musi mieć poprawny typ i zakres.
+    function userCoreShape(data) {
+      return inRange(data.coins, 0, 100000000)
+        && inRange(data.xp, 0, 100000000)
+        && inRange(data.gems, 0, 1000000)
+        && inRange(data.level, 1, 1000)
+        && inRange(data.campusRust, 0, 100)
+        && isNum(data.lastActive) && data.lastActive > 0
+        && inRange(data.arenaRating, 0, 100000)
+        && inRange(data.arenaWins, 0, 100000)
+        && inRange(data.masteryTokens, 0, 10000000)
+        && inRange(data.streakDays, 0, 100000)
+        && data.isPro is bool
+        && inRange(data.hearts, 0, 10)
+        && inRange(data.maxHearts, 1, 10)
+        && data.hearts <= data.maxHearts;
+    }
+
+    // Pola opcjonalne/rozszerzone — walidowane tylko wtedy, gdy występują.
+    function userExtendedShape(data) {
+      return optionalInt(data, 'timeSpentTotalSeconds', 0, 1000000000)
+        && optionalInt(data, 'weeklyTimeSpentMinutes', 0, 1000000)
+        && optionalInt(data, 'maturaAttempts', 0, 10000)
+        && optionalInt(data, 'maturaBestScore', 0, 100)
+        && optionalInt(data, 'aiVisionDailyCount', 0, 100000)
+        && optionalInt(data, 'lastHeartRegenTimestamp', 0, 100000000000000)
+        && optionalText(data, 'lastStreakDate', 32)
+        && optionalText(data, 'lastWeekKey', 16)
+        && optionalText(data, 'lastVisionDate', 32)
+        && optionalText(data, 'proCode', 64)
+        && (!('hasCompletedOnboarding' in data) || data.hasCompletedOnboarding is bool)
+        && (!('completedTasks' in data) || isListWithLimit(data.completedTasks, 20000))
+        && (!('completed_lessons' in data) || isListWithLimit(data.completed_lessons, 5000))
+        && (!('streakActiveDates' in data) || isListWithLimit(data.streakActiveDates, 1000))
+        && (!('taskStars' in data) || isMapWithLimit(data.taskStars, 20000))
+        && (!('completedLessons' in data) || isMapWithLimit(data.completedLessons, 5000))
+        && (!('dailyTaskCounts' in data) || isMapWithLimit(data.dailyTaskCounts, 1000))
+        && (!('claimedAchievements' in data) || isMapWithLimit(data.claimedAchievements, 500))
+        && (!('profile' in data) || profileShape(data.profile))
+        && (!('stats' in data) || statsShape(data.stats))
+        && (!('streak' in data) || streakShape(data.streak))
+        && (!('perks' in data) || perksShape(data.perks))
+        && (!('progress' in data) || guestProgressShape(data.progress))
+        && (!('aiUsage' in data) || data.aiUsage == null || aiUsageShape(data.aiUsage))
+        && (!('onboardingPreferences' in data) || onboardingPreferencesShape(data.onboardingPreferences));
+    }
+
+    // Anty-cheat: XP/level/arenaWins nigdy nie maleją, a przyrost na pojedynczy
+    // zapis jest ograniczony. Bez serwerowego autorytetu to najlepsza możliwa
+    // ochrona przed „xp: 999999” wpisanym z konsoli przeglądarki.
+    function userEconomyDeltaOk() {
+      return (!('xp' in existing()) || (incoming().xp >= existing().xp && incoming().xp - existing().xp <= 2000))
+        && (!('level' in existing()) || (incoming().level >= existing().level && incoming().level - existing().level <= 20))
+        && (!('arenaWins' in existing()) || incoming().arenaWins >= existing().arenaWins)
+        && (!('coins' in existing()) || incoming().coins - existing().coins <= 5000)
+        && (!('gems' in existing()) || incoming().gems - existing().gems <= 500)
+        && (!('masteryTokens' in existing()) || incoming().masteryTokens - existing().masteryTokens <= 2000)
+        && (!('aiVisionDailyCount' in existing()) 
+            || !('lastVisionDate' in existing()) 
+            || !('lastVisionDate' in incoming()) 
+            || incoming().lastVisionDate != existing().lastVisionDate 
+            || incoming().aiVisionDailyCount >= existing().aiVisionDailyCount 
+            || incoming().isPro == true);
+    }
+
+    // ---------------------------------------------------------------
+    // Aktywacja PRO wyłącznie kodem z system/proCodes
+    // ---------------------------------------------------------------
+    function proCodeRef(code) {
+      return /databases/$(database)/documents/system/proCodes/$(code);
+    }
+
+    function proActivationOk() {
+      return incoming().isPro == true
+        && existing().isPro == false
+        && ('proCode' in incoming())
+        && isSmallText(incoming().proCode, 64)
+        && incoming().proCode.size() >= 4
+        && exists(proCodeRef(incoming().proCode))
+        && get(proCodeRef(incoming().proCode)).data.active == true
+        && (
+          !('usedBy' in get(proCodeRef(incoming().proCode)).data)
+          || get(proCodeRef(incoming().proCode)).data.usedBy == request.auth.uid
+        )
+        // Kod musi zostać „spalony” w tej samej atomowej paczce zapisów.
+        && getAfter(proCodeRef(incoming().proCode)).data.usedBy == request.auth.uid;
+    }
+
+    function isProChangeAllowed() {
+      // PRO można wyłącznie NADAĆ kodem aktywacyjnym. Nie da się go włączyć bez
+      // kodu ani odebrać sobie (true -> false nie spełnia proActivationOk).
+      return incoming().isPro == existing().isPro || proActivationOk();
+    }
+
+    // ---------------------------------------------------------------
+    // users/{userId}
+    // ---------------------------------------------------------------
+    match /users/{userId} {
+      allow read: if isSelf(userId);
+      allow delete: if isSelf(userId);
+
+      // Nowe konto: pełna kontrola użytkownika nad własnym dokumentem, ale bez PRO
+      // i bez możliwości dopisania pola spoza schematu.
+      allow create: if isSelf(userId)
+        && incoming().keys().hasOnly(userWritableKeys())
+        && userCoreShape(incoming())
+        && userExtendedShape(incoming())
+        && incoming().isPro == false
+        && !('proCode' in incoming());
+
+      allow update: if isSelf(userId)
+        && changedKeys().hasOnly(userWritableKeys())
+        && userCoreShape(incoming())
+        && userExtendedShape(incoming())
+        && userEconomyDeltaOk()
+        && isProChangeAllowed();
+
+      // Postęp per dział — jedyna podkolekcja zapisywana przez klienta.
+      match /progress/{topicId} {
+        allow read: if isSelf(userId);
+        allow create, update: if isSelf(userId)
+          && incoming().keys().hasOnly([
+            'topic_id', 'completedLessons', 'completedTasks', 'taskStars',
+            'mistakesCount', 'unlockedItems', 'updatedAt'
+          ])
+          && (!('topic_id' in incoming()) || isSmallText(incoming().topic_id, 64))
+          && (!('completedLessons' in incoming()) || isMapWithLimit(incoming().completedLessons, 5000))
+          && (!('completedTasks' in incoming()) || isListWithLimit(incoming().completedTasks, 20000))
+          && (!('taskStars' in incoming()) || isMapWithLimit(incoming().taskStars, 20000))
+          && (!('mistakesCount' in incoming()) || inRange(incoming().mistakesCount, 0, 100000))
+          && (!('unlockedItems' in incoming()) || isListWithLimit(incoming().unlockedItems, 500))
+          && (!('updatedAt' in incoming()) || isSmallText(incoming().updatedAt, 40));
+        allow delete: if isSelf(userId);
+      }
+
+      // Log audytu zużycia tokenów AI (zapisywany przez aiUsageTracker)
+      match /ai_usage_events/{eventId} {
+        allow read: if isSelf(userId);
+        allow create: if isSelf(userId)
+          && incoming().keys().hasOnly([
+            'type', 'model', 'promptTokens', 'completionTokens', 'totalTokens',
+            'estimatedCostUsd', 'taskId', 'hasImage', 'timestamp', 'createdAt'
+          ])
+          && incoming().type in ['EVALUATION', 'HINT', 'GENERATION', 'OTHER']
+          && isSmallText(incoming().model, 128)
+          && inRange(incoming().totalTokens, 0, 100000000)
+          && inRange(incoming().promptTokens, 0, 100000000)
+          && inRange(incoming().completionTokens, 0, 100000000)
+          && isNum(incoming().timestamp)
+          && optionalText(incoming(), 'createdAt', 40)
+          && optionalText(incoming(), 'taskId', 64)
+          && incoming().hasImage is bool;
+        allow update, delete: if false;
+      }
+
+      // Żadna inna podkolekcja nie jest zapisywalna z klienta.
+      match /{allChildren=**} {
+        allow read: if isSelf(userId);
+        allow write: if false;
+      }
+    }
+
+    // ---------------------------------------------------------------
+    // Kurikulum — publiczny odczyt (treści nie są danymi osobowymi),
+    // zapis wyłącznie przez Admin SDK (seed_database.cjs).
+    // ---------------------------------------------------------------
     match /subjects/{subjectId} {
       allow read: if true;
-      allow write: if false; // Admin only via Admin SDK / service account
+      allow write: if false;
 
       match /topics/{topicId} {
         allow read: if true;
@@ -30,47 +394,99 @@ service cloud.firestore {
       }
     }
 
-    
-    // Legacy collections (read-only for migration)
-    match /mathTasks/{document=**} {
+    // Kolekcje legacy (root topics + stare bazy zadań) — tylko odczyt.
+    match /topics/{topicId} {
       allow read: if true;
       allow write: if false;
-    }
-    match /zadania_matura/{document=**} {
-      allow read: if true;
-      allow write: if false;
-    }
-    
-    // Users Profile and Progress - SECURED: users can only access their own data
-    match /users/{userId} {
-      // Users can ONLY read their own profile, not others
-      allow read: if request.auth != null && request.auth.uid == userId;
-      allow write: if request.auth != null && request.auth.uid == userId;
 
-      // Subcollection progress: users/{userId}/progress/{topicId}
-      match /progress/{topicId} {
-        allow read, write: if request.auth != null && request.auth.uid == userId;
-      }
-
-      // Any other user subcollections - strictly isolated per user
-      match /{allChildren=**} {
-        allow read, write: if request.auth != null && request.auth.uid == userId;
+      match /lessons/{lessonId} {
+        allow read: if true;
+        allow write: if false;
       }
     }
 
-    // Arena multiplayer matches - only participants can access
+    match /mathTasks/{taskId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Arkusze egzaminacyjne (symulator matury) — treść publiczna, zapis przez Admin SDK.
+    match /exams/{examId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /zadania_matura/{taskId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------
+    // system/*
+    // ---------------------------------------------------------------
+    // Wersja kurikulum musi być czytelna także dla gościa (tryb bez logowania).
+    match /system/meta {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Publiczne katalogi treści (bez danych osobowych): oficjalne wzory CKE oraz
+    // wagi punktowe działów. Zapis wyłącznie przez Admin SDK (seed).
+    match /system/ckeFormulas {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /system/ckeSubjectWeights {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /system/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+
+    // Kody aktywacyjne PRO. Odczyt przez klienta zabroniony (reguły i tak widzą
+    // dokument przez get()). Użytkownik może jednorazowo „spalić” kod na siebie.
+    match /system/proCodes/{code} {
+      allow read: if false;
+      allow create, delete: if false;
+      allow update: if isSignedIn()
+        && isSmallText(code, 64)
+        && !('usedBy' in existing())
+        && changedKeys().hasOnly(['usedBy', 'usedAt'])
+        && incoming().usedBy == request.auth.uid;
+    }
+
+    // ---------------------------------------------------------------
+    // Arena (moduł w przygotowaniu) — dostęp tylko dla uczestników meczu.
+    // ---------------------------------------------------------------
     match /matches/{matchId} {
-      allow read: if request.auth != null && 
-        (resource.data.player1Id == request.auth.uid || 
-         resource.data.player2Id == request.auth.uid ||
-         (!resource.exists() && request.auth != null)); // Allow create
-      allow write: if request.auth != null && 
-        (resource.data.player1Id == request.auth.uid || 
-         resource.data.player2Id == request.auth.uid ||
-         (!resource.exists())); // Allow create
+      allow read: if isSignedIn() && (
+        existing().player1Id == request.auth.uid
+        || existing().player2Id == request.auth.uid
+      );
+      allow create: if isSignedIn()
+        && incoming().keys().hasOnly(['player1Id', 'player2Id', 'status', 'createdAt', 'tasks', 'scores'])
+        && incoming().player1Id == request.auth.uid
+        && isSmallText(incoming().player2Id, 128);
+      allow update: if isSignedIn() && (
+        existing().player1Id == request.auth.uid
+        || existing().player2Id == request.auth.uid
+      );
+      allow delete: if false;
     }
-    
-    // Default fallback - DENY ALL by default for security
+
+    // Test łączności z Firestore (używany przez klienta przy starcie).
+    match /test/connection {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    // ---------------------------------------------------------------
+    // Domyślny zakaz — wszystko, co nie zostało jawnie dozwolone powyżej.
+    // ---------------------------------------------------------------
     match /{document=**} {
       allow read, write: if false;
     }
