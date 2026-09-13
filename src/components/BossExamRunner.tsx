@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { motion, AnimatePresence } from 'motion/react';
-import { MathRenderer } from './MathRenderer';
+import { MathRenderer, formatMathAnswer } from './MathRenderer';
 import { OpenTaskWorkspace } from './OpenTaskWorkspace';
 import { BossExamData, BossExamTask, generateDzial1BossExam } from '../data/dzial1TaskPool';
 import { triggerHaptic, playSuccessSound, playErrorSound } from '../utils';
@@ -25,12 +25,14 @@ interface BossExamRunnerProps {
   initialExamData?: BossExamData;
   onCompleteExam: (score: number, passed: boolean, xp: number, coins: number, badgeId: string) => void;
   onCancel: () => void;
+  onRestart?: () => BossExamData;
 }
 
 export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
   initialExamData,
   onCompleteExam,
-  onCancel
+  onCancel,
+  onRestart
 }) => {
   const [examData, setExamData] = useState<BossExamData>(() => initialExamData || generateDzial1BossExam());
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -43,6 +45,21 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
   const [showExitConfirm, setShowExitConfirm] = useState<boolean>(false);
   const [resultScore, setResultScore] = useState<number>(0);
   const [isPassed, setIsPassed] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (initialExamData) {
+      setExamData(initialExamData);
+      setTimeLeftSeconds((initialExamData.timeLimitMinutes || 20) * 60);
+      setCurrentIndex(0);
+      setSelectedAnswers({});
+      setOpenAnswers({});
+      setTwoPartAnswers({});
+      setTfAnswers({});
+      setIsFinished(false);
+      setResultScore(0);
+      setIsPassed(false);
+    }
+  }, [initialExamData]);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -195,7 +212,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
   };
 
   const handleRestartExam = () => {
-    const newExam = generateDzial1BossExam();
+    const newExam = onRestart ? onRestart() : (initialExamData || generateDzial1BossExam());
     setExamData(newExam);
     setCurrentIndex(0);
     setSelectedAnswers({});
@@ -338,8 +355,11 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                             Zadanie {idx + 1}: {t.topicLabel}
                           </span>
                           {!isOk && t.correct_answer && (
-                            <span className="text-[11px] text-rose-300">
-                              Prawidłowa odp: {t.correct_answer}
+                            <span className="text-[11px] text-rose-300 flex items-center gap-1">
+                              <span>Prawidłowa odp:</span>
+                              <span className="font-bold text-white inline-flex items-center">
+                                <MathRenderer content={formatMathAnswer(t.correct_answer)} />
+                              </span>
                             </span>
                           )}
                         </div>

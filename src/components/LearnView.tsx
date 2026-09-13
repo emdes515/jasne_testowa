@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { MathRenderer } from './MathRenderer';
 import { mathTopics, setGlobalMathTopics, buildProcessedTopic } from '../data/mathTasks';
 import { polishTopics as defaultPolishTopics, polishPillars } from '../data/polishCurriculum';
-import { drawSessionTasks, getLessonFormulaSheet } from '../data/dzial1TaskPool';
+import { drawSessionTasks, getLessonFormulaSheet, generateTopicBossExam } from '../data/dzial1TaskPool';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { BossExamRunner } from './BossExamRunner';
 
@@ -375,6 +375,8 @@ interface LearnViewProps {
   completedTasks?: string[];
   taskStars?: Record<string, number>;
   lessonMistakes?: Record<string, number>;
+  selectedSubjectKey?: 'math' | 'pol' | 'eng' | string;
+  onSelectSubject?: (key: 'math' | 'pol') => void;
   onStartTask?: (task: any, lessonTasks?: any[], lessonTitle?: string, nextLesson?: any) => void;
   onCompleteTask?: (taskIds?: string | string[], stars?: number, earnedXp?: number, earnedCoins?: number, nextLesson?: any, sessionDurationSeconds?: number) => void;
   isGuest?: boolean;
@@ -393,6 +395,8 @@ export function LearnView({
   completedTasks = [],
   taskStars = {},
   lessonMistakes = {},
+  selectedSubjectKey: propSubjectKey,
+  onSelectSubject,
   onSheetToggle
 }: LearnViewProps) {
   const [isBossExamOpen, setIsBossExamOpen] = useState<boolean>(false);
@@ -417,13 +421,21 @@ export function LearnView({
   };
 
   // Subject selection (math, pol, eng)
-  const [selectedSubjectKey, setSelectedSubjectKey] = useState<string>(() => {
+  const [internalSubjectKey, setInternalSubjectKey] = useState<string>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_selected_subject');
       if (stored && (stored === 'math' || stored === 'pol')) return stored;
     } catch(e) {}
     return 'math';
   });
+
+  const selectedSubjectKey = propSubjectKey || internalSubjectKey;
+  const setSelectedSubjectKey = (key: string) => {
+    setInternalSubjectKey(key);
+    if (onSelectSubject && (key === 'math' || key === 'pol')) {
+      onSelectSubject(key);
+    }
+  };
 
   // Screen view state
   const [viewState, setViewState] = useState<ViewState>(() => {
@@ -1624,42 +1636,38 @@ export function LearnView({
 
                     {/* ================= AUTOMATYCZNY SPRAWDZIAN DZIAŁU / LEKTURY (BOSS EXAM) ================= */}
                     {(() => {
+                      if (!currentTopic) return null;
                       const isMath = selectedSubjectKey === 'math';
-                      const isMathDzial1 = isMath && (currentTopic.id === 'dzial-1' || currentTopic.numericId === 1);
-                      const examData = currentTopic.final_test || currentTopic.epoch_exam || currentTopic.book_exam || (isMathDzial1 ? {
-                        id: 'BOSS-EXAM-DZIAL-1',
-                        title: 'SPRAWDZIAN DZIAŁU 1: LICZBY RZECZYWISTE',
-                        subtitle: '7 kluczowych zadań maturalnych (po 1 z lekcji 1.1–1.7) • Limit: 15 minut • Próg zaliczenia: 70% (5 z 7 zadań)',
-                        totalQuestions: 7,
-                        timeLimitMinutes: 15,
-                        rewardXp: 100,
-                        badgeTitle: 'MISTRZ LICZB RZECZYWISTYCH'
-                      } : null);
+                      const topicIdUpper = String(currentTopic.id || 'dzial-1').toUpperCase();
+                      const cleanTitle = cleanTopicTitle(currentTopic.name);
+                      const defaultTotalQuestions = lessonsForCurrentTopic.length > 0 ? Math.min(10, Math.max(5, lessonsForCurrentTopic.length)) : 7;
+                      const examData = currentTopic.final_test || currentTopic.epoch_exam || currentTopic.book_exam || {
+                        id: `BOSS-EXAM-${topicIdUpper}`,
+                        title: `SPRAWDZIAN: ${cleanTitle.toUpperCase()}`,
+                        subtitle: `${defaultTotalQuestions} kluczowych zadań maturalnych z działu • Limit: 20 minut • Próg zaliczenia: 70%`,
+                        totalQuestions: defaultTotalQuestions,
+                        timeLimitMinutes: 20,
+                        rewardXp: 150,
+                        badgeTitle: `MISTRZ: ${cleanTitle.toUpperCase()}`
+                      };
 
-                      if (!examData) return null;
-
-                      const examId = examData.id || `exam-${currentTopic.id}`;
+                      const examId = examData.id || `BOSS-EXAM-${topicIdUpper}`;
                       const isBossExamPassed = completedTasks.includes(examId) || 
                                                completedTasks.includes(`BOSS-EXAM-${currentTopic.id}`) ||
+                                               completedTasks.includes(`BOSS-EXAM-${topicIdUpper}`) ||
                                                completedTasks.includes(`SPRAWDZIAN-${currentTopic.id}`) ||
-                                               completedTasks.includes('BOSS-EXAM-DZIAL-1') ||
-                                               completedTasks.includes('SPRAWDZIAN-DZIAL-1');
+                                               completedTasks.includes(`SPRAWDZIAN-${topicIdUpper}`) ||
+                                               (currentTopic.id === 'dzial-1' && (completedTasks.includes('BOSS-EXAM-DZIAL-1') || completedTasks.includes('SPRAWDZIAN-DZIAL-1')));
 
                       const completedCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, userState)).length;
-                      const allDone = completedCount === lessonsForCurrentTopic.length;
-
-                      const sprawdzianGroup = lessonsForCurrentTopic.find(g => 
-                        g.id.toLowerCase().includes('sprawdzian') || 
-                        g.badge.toLowerCase().includes('sprawdzian') || 
-                        g.name.toLowerCase().includes('sprawdzian')
-                      );
+                      const allDone = lessonsForCurrentTopic.length > 0 && completedCount === lessonsForCurrentTopic.length;
 
                       return (
                         <div 
                           id={`boss-exam-${currentTopic.id}-card`}
                           className={`rounded-3xl border-2 p-5 sm:p-6 flex flex-col gap-4 transition-all duration-300 mt-6 relative overflow-hidden ${
                             isBossExamPassed
-                              ? 'bg-gradient-to-br from-[#101A14] via-[#0D1612] to-[#0A110E] border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.15)]'
+                              ? 'bg-gradient-to-br from-[#101A14] via-[#0D1612] to-[#0A110E] border-emerald-500/50 shadow-[0_0_30px_rgba(168,85,247,0.15)]'
                               : allDone
                                 ? 'bg-gradient-to-br from-[#1A152C] via-[#141024] to-[#0D0B18] border-purple-500/60 shadow-[0_0_35px_rgba(168,85,247,0.2)]'
                                 : 'bg-gradient-to-br from-[#161724] via-[#11121C] to-[#0B0C14] border-white/15'
@@ -1692,7 +1700,7 @@ export function LearnView({
                                   {examData.title || `SPRAWDZIAN: ${cleanTopicTitle(currentTopic.name).toUpperCase()}`}
                                 </h3>
                                 <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
-                                  {examData.subtitle || `${examData.totalQuestions || 8} pytań maturalnych • Limit: ${examData.timeLimitMinutes || 15} minut`}
+                                  {examData.subtitle || `${examData.totalQuestions || 8} pytań maturalnych • Limit: ${examData.timeLimitMinutes || 20} minut`}
                                 </p>
                               </div>
                             </div>
@@ -1706,11 +1714,11 @@ export function LearnView({
                             </div>
                             <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
                               <span className="text-[10px] text-slate-400 font-semibold block uppercase">Limit Czasu</span>
-                              <span className="text-sm font-extrabold text-[#FFB800]">{examData.timeLimitMinutes || 15} minut</span>
+                              <span className="text-sm font-extrabold text-[#FFB800]">{examData.timeLimitMinutes || 20} minut</span>
                             </div>
                             <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
                               <span className="text-[10px] text-slate-400 font-semibold block uppercase">Nagroda</span>
-                              <span className="text-sm font-extrabold text-amber-400">+{examData.rewardXp || 100} XP + Trofeum</span>
+                              <span className="text-sm font-extrabold text-amber-400">+{examData.rewardXp || 150} XP + Trofeum</span>
                             </div>
                           </div>
 
@@ -1719,13 +1727,7 @@ export function LearnView({
                             id="start-boss-exam-btn"
                             onClick={() => {
                               triggerHaptic('medium');
-                              if (isMathDzial1) {
-                                setIsBossExamOpen(true);
-                              } else if (sprawdzianGroup) {
-                                handleStartLessonSession(sprawdzianGroup);
-                              } else {
-                                setIsBossExamOpen(true);
-                              }
+                              setIsBossExamOpen(true);
                             }}
                             className={`w-full py-3.5 sm:py-4 px-6 rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 transition active:scale-[0.99] cursor-pointer shadow-lg ${
                               isBossExamPassed
@@ -1973,17 +1975,26 @@ export function LearnView({
       )}
 
       {/* =========================================================================
-          BOSS EXAM RUNNER: SPRAWDZIAN DZIAŁU 1 (MISTRZ LICZB RZECZYWISTYCH)
+          BOSS EXAM RUNNER: DYNAMICZNY SPRAWDZIAN DZIAŁU / LEKTURY
          ========================================================================= */}
       {isBossExamOpen && isMounted && typeof document !== 'undefined' && createPortal(
         <div className="fixed inset-0 z-[150] bg-[#080C14] text-white">
           <BossExamRunner
+            initialExamData={generateTopicBossExam(currentTopic, currentTopic?.tasks)}
+            onRestart={() => generateTopicBossExam(currentTopic, currentTopic?.tasks)}
             onCancel={() => setIsBossExamOpen(false)}
             onCompleteExam={(score, passed, xp, coins, badgeId) => {
               setIsBossExamOpen(false);
               if (onCompleteTask) {
+                const topicTag = String(currentTopic?.id || 'dzial-1').toUpperCase();
                 onCompleteTask(
-                  ['BOSS-EXAM-DZIAL-1', 'SPRAWDZIAN-DZIAL-1'],
+                  [
+                    `BOSS-EXAM-${topicTag}`, 
+                    `SPRAWDZIAN-${topicTag}`, 
+                    `BOSS-EXAM-${currentTopic?.id}`, 
+                    `SPRAWDZIAN-${currentTopic?.id}`,
+                    badgeId
+                  ],
                   passed ? 3 : 1,
                   xp,
                   coins

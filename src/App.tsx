@@ -12,7 +12,6 @@ import { MaturaSimulatorView } from './components/MaturaSimulatorView';
 import { ProfileView } from './components/ProfileView';
 import { Navigation } from './components/Navigation';
 import { Header } from './components/Header';
-import { TaskView } from './components/TaskView';
 import { SessionRunner } from './components/SessionRunner';
 import { RewardPopup } from './components/RewardPopup';
 import { auth, db, loginWithGoogle } from './lib/firebase';
@@ -27,6 +26,7 @@ import { activatePro, deductHeart, refillHeartsWithCoins, getSyncedHearts } from
 import { AuthModal } from './components/AuthModal';
 import { DiagnosticTestModal } from './components/DiagnosticTestModal';
 import { AiTaskGeneratorModal } from './components/AiTaskGeneratorModal';
+import { MistakesBankModal } from './components/MistakesBankModal';
 import { ACHIEVEMENTS, ShopItem } from './data/achievements';
 import { triggerHaptic, calculateStreakOnTaskCompletion, getTodayDateString, filterActualTaskIds, isActualTaskId } from './utils';
 import { buildFirestoreUserPayload } from './schema_firestore';
@@ -108,6 +108,23 @@ export default function App() {
   const [showParentSponsorModal, setShowParentSponsorModal] = useState(false);
   const [showDiagnosticModal, setShowDiagnosticModal] = useState(false);
   const [showAiGeneratorModal, setShowAiGeneratorModal] = useState(false);
+  const [showMistakesModal, setShowMistakesModal] = useState(false);
+  const [selectedSubjectKey, setSelectedSubjectKey] = useState<'math' | 'pol'>(() => {
+    try {
+      const stored = localStorage.getItem('matura_quest_selected_subject');
+      if (stored === 'math' || stored === 'pol') return stored;
+    } catch {}
+    return 'math';
+  });
+
+  const handleSelectSubject = (key: 'math' | 'pol') => {
+    setSelectedSubjectKey(key);
+    try {
+      localStorage.setItem('matura_quest_selected_subject', key);
+      window.dispatchEvent(new Event('storage'));
+    } catch {}
+  };
+
   const [isSubjectSheetOpen, setIsSubjectSheetOpen] = useState(false);
   const [profileInitialTab, setProfileInitialTab] = useState<'overview' | 'achievements' | 'perks'>('overview');
   
@@ -422,9 +439,12 @@ export default function App() {
       }));
     } catch {}
 
+    const tasksList = task?.tasks || lessonTasks || task?.lessonTasks || (task ? [task] : []);
     setActiveTaskData({
       ...(task || {}),
-      lessonTasks: lessonTasks || task?.lessonTasks || (task ? [task] : []),
+      isSession: true,
+      tasks: tasksList,
+      lessonTasks: tasksList,
       lessonTitle: lessonTitle || task?.lessonTitle || task?.topic || 'Lekcja',
       nextLesson: nextLesson || task?.nextLesson
     });
@@ -434,6 +454,25 @@ export default function App() {
   const handleCancelTask = () => {
     setActiveTask(false);
     setActiveTaskData(null);
+  };
+
+  const handleStartRehabSession = (tasks: any[]) => {
+    if (!tasks || tasks.length === 0) return;
+    const sessionPayload = {
+      isSession: true,
+      isPolish: selectedSubjectKey === 'pol',
+      subjectId: selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa',
+      topicId: 'rehab-mistakes',
+      lessonId: 'rehab',
+      lessonTitle: 'Trening Błędów: Sesja Rehabilitacji',
+      tasks,
+      firstTask: tasks[0],
+      allTasks: tasks,
+      allTaskIdsToMarkCompleted: tasks.map((t: any) => t.id),
+      required_correct_tasks: tasks.length,
+      estimated_time_formatted: `~${tasks.length * 2} min`
+    };
+    handleStartTask(sessionPayload, tasks, sessionPayload.lessonTitle);
   };
 
   const handleCompleteDiagnostic = (assessedPercent: number, correctCount: number, _totalCount: number) => {
@@ -900,6 +939,8 @@ export default function App() {
         {!activeTask && (
           <Header 
             state={userState} 
+            selectedSubjectKey={selectedSubjectKey}
+            onSelectSubject={handleSelectSubject}
             onProfileClick={() => setCurrentTab('profile')} 
             onLogoClick={() => {
               triggerHaptic('medium');
@@ -938,9 +979,10 @@ export default function App() {
         
         <main 
           id="main-scroll-container"
-          className={`flex-1 min-h-0 ${
-            activeTask 
-              ? 'overflow-hidden flex flex-col justify-start items-stretch' 
+          tabIndex={-1}
+          className={`flex-1 min-h-0 flex flex-col focus:outline-none ${
+            activeTask
+              ? 'overflow-hidden p-0'
               : 'overflow-y-auto overflow-x-hidden overscroll-y-contain touch-pan-y no-scrollbar pb-32 md:pb-8'
           } relative z-10 w-full`} 
           style={{ 
@@ -948,45 +990,30 @@ export default function App() {
           }}
         >
           {activeTask ? (
-            activeTaskData?.isSession ? (
-              <SessionRunner 
-                key={activeTaskData?.lessonId || activeTaskData?.id || 'session-runner'}
-                sessionData={activeTaskData} 
-                userState={userState} 
-                onCompleteSession={handleCompleteTask} 
-                onCancelSession={handleCancelTask}
-                onDeductCoins={handleDeductCoins}
-                onDeductHeart={handleDeductHeart}
-                onOpenParentSponsor={() => setShowParentSponsorModal(true)}
-                onOpenProPopup={() => setShowProPopup(true)}
-                onUpdateUserState={(updater) => {
-                  setUserState(prev => {
-                    const next = updater(prev);
-                    saveUserData(next);
-                    return next;
-                  });
-                }}
-              />
-            ) : (
-              <TaskView 
-                key={activeTaskData?.id || activeTaskData?.lessonTitle || activeTaskData?.title || 'active-task'}
-                taskData={activeTaskData} 
-                userState={userState} 
-                onCompleteTask={handleCompleteTask} 
-                onCancelTask={handleCancelTask} 
-                onDeductCoins={handleDeductCoins}
-                onDeductHeart={handleDeductHeart}
-                onOpenParentSponsor={() => setShowParentSponsorModal(true)}
-                onOpenProPopup={() => setShowProPopup(true)}
-                onUpdateUserState={(updater) => {
-                  setUserState(prev => {
-                    const next = updater(prev);
-                    saveUserData(next);
-                    return next;
-                  });
-                }}
-              />
-            )
+            <SessionRunner 
+              key={activeTaskData?.lessonId || activeTaskData?.id || 'session-runner'}
+              sessionData={activeTaskData?.isSession ? activeTaskData : {
+                isSession: true,
+                lessonId: activeTaskData?.lessonId || activeTaskData?.id || 'single-task',
+                lessonTitle: activeTaskData?.lessonTitle || activeTaskData?.title || 'Zadanie',
+                tasks: activeTaskData?.tasks || activeTaskData?.lessonTasks || (activeTaskData ? [activeTaskData] : []),
+                ...activeTaskData
+              }} 
+              userState={userState} 
+              onCompleteSession={handleCompleteTask} 
+              onCancelSession={handleCancelTask}
+              onDeductCoins={handleDeductCoins}
+              onDeductHeart={handleDeductHeart}
+              onOpenParentSponsor={() => setShowParentSponsorModal(true)}
+              onOpenProPopup={() => setShowProPopup(true)}
+              onUpdateUserState={(updater) => {
+                setUserState(prev => {
+                  const next = updater(prev);
+                  saveUserData(next);
+                  return next;
+                });
+              }}
+            />
           ) : (
             <>
               {currentTab === 'dashboard' && (
@@ -999,6 +1026,8 @@ export default function App() {
                   completedTasks={completedTasks}
                   lessonMistakes={lessonMistakes}
                   taskStars={taskStars}
+                  selectedSubjectKey={selectedSubjectKey}
+                  onSelectSubject={handleSelectSubject}
                   onStartTask={handleStartTask}
                   onUpdateUserState={setUserState}
                   saveUserData={saveUserData}
@@ -1006,11 +1035,14 @@ export default function App() {
                   onOpenProPopup={() => setShowProPopup(true)}
                   onOpenDiagnostic={() => setShowDiagnosticModal(true)}
                   onOpenAiGenerator={() => setShowAiGeneratorModal(true)}
+                  onOpenMistakesBank={() => setShowMistakesModal(true)}
                 />
               )}
               {currentTab === 'nauka' && (
                 <LearnView 
                   userState={userState}
+                  selectedSubjectKey={selectedSubjectKey}
+                  onSelectSubject={handleSelectSubject}
                   onStartTask={handleStartTask} 
                   onCompleteTask={handleCompleteTask}
                   isGuest={isGuest} 
@@ -1085,17 +1117,38 @@ export default function App() {
       <DiagnosticTestModal
         isOpen={showDiagnosticModal}
         onClose={() => setShowDiagnosticModal(false)}
+        subjectKey={selectedSubjectKey}
         onComplete={handleCompleteDiagnostic}
       />
       <AiTaskGeneratorModal
         isOpen={showAiGeneratorModal}
         onClose={() => setShowAiGeneratorModal(false)}
+        currentSubjectKey={selectedSubjectKey}
         onStartCustomTask={(task) => {
           setShowAiGeneratorModal(false);
-          handleStartTask(task, [task], task.title || 'Zadanie Wygenerowane przez AI');
+          const customSession = {
+            isSession: true,
+            isPolish: selectedSubjectKey === 'pol',
+            subjectId: selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa',
+            topicId: 'custom-ai-task',
+            lessonId: 'ai-gen',
+            lessonTitle: task.topic || 'Zadanie Wygenerowane przez AI',
+            tasks: [task],
+            firstTask: task,
+            allTasks: [task],
+            allTaskIdsToMarkCompleted: [task.id],
+            required_correct_tasks: 1,
+            estimated_time_formatted: '~3 min'
+          };
+          handleStartTask(customSession, [task], task.title || 'Zadanie Wygenerowane przez AI');
         }}
+      />
+      <MistakesBankModal
+        isOpen={showMistakesModal}
+        onClose={() => setShowMistakesModal(false)}
+        onStartRehabSession={handleStartRehabSession}
+        onNavigateToLessons={() => setCurrentTab('nauka')}
       />
     </div>
   );
 }
-

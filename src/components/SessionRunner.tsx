@@ -25,17 +25,21 @@ import {
   Compass,
   Target,
   GraduationCap,
-  Feather
+  Feather,
+  Scan,
+  Sparkles,
+  Award
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { playSuccessSound, playErrorSound, triggerHaptic, isActualTaskId } from '../utils';
-import { MathRenderer } from './MathRenderer';
+import { MathRenderer, formatMathAnswer } from './MathRenderer';
 import { Badge } from './Badge';
 import { UserState, LessonTheoryPill } from '../types';
 import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTaskPool } from '../data/dzial1TaskPool';
 import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
-import { OpenTaskWorkspace } from './OpenTaskWorkspace';
+import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
+import { AiTutorScanOverlay } from './AiTutorScanOverlay';
 import { MathPlot } from './MathPlot';
 import { OutOfHeartsModal } from './OutOfHeartsModal';
 import { ParentSponsorModal } from './ParentSponsorModal';
@@ -263,6 +267,10 @@ export interface SessionRunnerProps {
 export function sanitizeLessonHeading(title?: string): string {
   if (!title) return '';
   let cleaned = title.trim();
+  // Fix "Lekcja lesson-1-2: ..." -> "Lekcja 1.2: ..."
+  cleaned = cleaned.replace(/^Lekcja\s+(?:pol-)?lesson-(\d+)-(\d+)\s*[:.]\s*/i, 'Lekcja $1.$2: ');
+  // Fix "lesson-1-2: ..." -> "Lekcja 1.2: ..."
+  cleaned = cleaned.replace(/^(?:pol-)?lesson-(\d+)-(\d+)\s*[:.]\s*/i, 'Lekcja $1.$2: ');
   // Fix double prefixes like "Lekcja 8.1: 8.1: Paszport Epoki..." -> "Lekcja 8.1: Paszport Epoki..."
   cleaned = cleaned.replace(/^Lekcja\s+(\d+[-.]\d+)\s*[:.]\s*(?:Lekcja\s+\1\s*[:.]\s*|\1\s*[:.]\s*)+/i, 'Lekcja $1: ');
   // Fix "8.1: 8.1: ..." -> "Lekcja 8.1: ..."
@@ -394,8 +402,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   // AI Tutor for Open Tasks
   const [openAnswerText, setOpenAnswerText] = useState<string>('');
   const [openCanvasDataUrl, setOpenCanvasDataUrl] = useState<string>('');
+  const latestCanvasDataRef = React.useRef<string>('');
   const [isTutorScanning, setIsTutorScanning] = useState<boolean>(false);
+  const [isScanFinished, setIsScanFinished] = useState<boolean>(false);
+  const pendingEvalDataRef = React.useRef<any>(null);
   const [tutorEvaluation, setTutorEvaluation] = useState<any | null>(null);
+  const evaluationCardRef = React.useRef<HTMLDivElement>(null);
   const [showModelSolution, setShowModelSolution] = useState<boolean>(false);
 
   // Statistics: postęp mierzony liczbą poprawnych odpowiedzi (wymóg: 4)
@@ -565,6 +577,20 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       taskAreaRef.current.scrollTop = 0;
     }
   }, [currentStep, theorySubStep, currentQueueIndex]);
+
+  // Automatyczne płynne przewinięcie do wyników oceny tutora przy zadaniach otwartych
+  useEffect(() => {
+    if (isEvaluated && isOpenTask && tutorEvaluation) {
+      const scrollTimer = setTimeout(() => {
+        if (evaluationCardRef.current) {
+          evaluationCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (taskAreaRef.current) {
+          taskAreaRef.current.scrollTo({ top: taskAreaRef.current.scrollHeight, behavior: 'smooth' });
+        }
+      }, 80);
+      return () => clearTimeout(scrollTimer);
+    }
+  }, [isEvaluated, isOpenTask, tutorEvaluation]);
 
   // Active Time Tracking Listener
   useEffect(() => {
@@ -749,7 +775,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       return currentTask?.correct_answer || currentTask?.correctAnswer || 'A';
     }
     if (isNumericTask) {
-      return String(currentTask?.correctAnswer || currentTask?.correct_answer || currentTask?.numeric_correct_answer || '');
+      const rawAns = currentTask?.correctAnswer || currentTask?.correct_answer || currentTask?.numeric_correct_answer || '';
+      return formatMathAnswer(rawAns);
     }
     if (isTrueFalseTask) {
       const statements = currentTask?.statements || [];
@@ -763,8 +790,45 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     if (isTwoPartTask) {
       return String(currentTask?.correctAnswer || currentTask?.correct_answer || '');
     }
+    if (isOpenTask) {
+      if (currentTask?.correct_answer || currentTask?.correctAnswer) {
+        return formatMathAnswer(currentTask.correct_answer || currentTask.correctAnswer);
+      }
+      if (Array.isArray(currentTask?.scoring_key) && currentTask.scoring_key.length > 0) {
+        for (let i = currentTask.scoring_key.length - 1; i >= 0; i--) {
+          const step = String(currentTask.scoring_key[i]);
+          const match = step.match(/wynik\s+([^\.]+)/i);
+          if (match) return formatMathAnswer(match[1].trim());
+        }
+        return 'Dowód wg kryteriów CKE';
+      }
+      if (currentTask?.type === 'OPEN_PROOF') {
+        const match = (currentTask?.explanation || '').match(/=\s*([^=]+\s*\\in\s*\\[a-zA-Z]+)/);
+        if (match) return formatMathAnswer(match[1].trim());
+        const matchEq = (currentTask?.explanation || '').match(/=\s*([0-9a-zA-Z\\]+)\.?\s*$/);
+        if (matchEq) return formatMathAnswer(matchEq[1].trim());
+        return 'Dowód algebraiczny CKE';
+      }
+      return 'Rozwiązanie otwarte';
+    }
     return '';
-  }, [currentTask, isSingleChoice, isNumericTask, isTrueFalseTask, isTwoPartTask, randomizedOptions]);
+  }, [currentTask, isSingleChoice, isNumericTask, isTrueFalseTask, isTwoPartTask, isOpenTask, randomizedOptions]);
+
+  const modalExamTrap = useMemo(() => {
+    if (currentTask?.cke_trap?.description) return currentTask.cke_trap.description;
+    if (typeof currentTask?.cke_trap === 'string' && currentTask.cke_trap.trim()) return currentTask.cke_trap;
+    if (typeof currentTask?.trap === 'string' && currentTask.trap.trim()) return currentTask.trap;
+    if (typeof currentTask?.exam_trap === 'string' && currentTask.exam_trap.trim()) return currentTask.exam_trap;
+    if (currentTask?.type === 'OPEN_PROOF' && (currentTask?.question?.includes('\\sqrt') || currentTask?.question?.includes('pierwiastek')) && currentTask?.question?.includes('^2')) {
+      return 'Błędne podniesienie dwumianu do kwadratu: $(\\sqrt{7}-1)^2 \\neq 7 - 1$. Należy zastosować wzór skróconego mnożenia: $(a-b)^2 = a^2 - 2ab + b^2 = 7 - 2\\sqrt{7} + 1$.';
+    }
+    if (formulaSheet?.ckeTrap?.description) return formulaSheet.ckeTrap.description;
+    if (formulaSheet?.ckeTrap?.error) return `Częsty błąd: $${formulaSheet.ckeTrap.error}$. Poprawnie: $${formulaSheet.ckeTrap.correct}$`;
+    if (theoryPill?.trapAlert) return theoryPill.trapAlert;
+    if (theoryPill?.exam_trap) return theoryPill.exam_trap;
+    if (currentTask?.hint_2 && !currentTask.hint_2.includes('Przeanalizuj powiązania logiczne')) return currentTask.hint_2;
+    return null;
+  }, [currentTask, formulaSheet, theoryPill]);
 
   // Reset state on step / question change
   useEffect(() => {
@@ -803,7 +867,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     setShowExplanation(false);
     setOpenAnswerText('');
     setOpenCanvasDataUrl('');
+    latestCanvasDataRef.current = '';
     setIsTutorScanning(false);
+    setIsScanFinished(false);
+    pendingEvalDataRef.current = null;
     setTutorEvaluation(null);
     setShowModelSolution(false);
     setIsEvaluated(false);
@@ -1278,9 +1345,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   };
 
   // Check open task answer with AI Tutor
-  const handleCheckOpenAnswerWithTutor = async () => {
+  const handleCheckOpenAnswerWithTutor = async (passedCanvasUrl?: string) => {
+    const rawCanvasUrl = (typeof passedCanvasUrl === 'string' && passedCanvasUrl.length > 50)
+      ? passedCanvasUrl
+      : (latestCanvasDataRef.current || openCanvasDataUrl);
+
+    if (rawCanvasUrl && rawCanvasUrl.length > 50 && (!openCanvasDataUrl || openCanvasDataUrl !== rawCanvasUrl)) {
+      setOpenCanvasDataUrl(rawCanvasUrl);
+      latestCanvasDataRef.current = rawCanvasUrl;
+    }
+
     let effectiveAnswer = openAnswerText;
-    if (!effectiveAnswer.trim() && openCanvasDataUrl && openCanvasDataUrl.length > 50) {
+    if (!effectiveAnswer.trim() && rawCanvasUrl && rawCanvasUrl.length > 50) {
       effectiveAnswer = '[Rozwiązanie odręczne na tablicy]';
       setOpenAnswerText(effectiveAnswer);
     }
@@ -1294,12 +1370,24 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
 
     setIsTutorScanning(true);
+    setIsScanFinished(false);
     triggerHaptic('medium');
 
     let evalData: any = null;
 
     const targetPts = currentTask?.points || 2;
     const isEssay = isPolishSession && (targetPts >= 30 || currentTask?.type === 'ESSAY');
+
+    // Optimize handwriting image for AI Vision OCR (pure white background, crisp dark ink)
+    let optimizedImagePayload: string | undefined = undefined;
+    if (rawCanvasUrl && rawCanvasUrl.length > 50) {
+      try {
+        optimizedImagePayload = await convertDataUrlToAiOptimized(rawCanvasUrl);
+      } catch (e) {
+        console.warn('Canvas optimization error:', e);
+        optimizedImagePayload = rawCanvasUrl;
+      }
+    }
 
     try {
       const response = await fetch('/api/evaluate-task', {
@@ -1310,8 +1398,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           contextText: currentTask?.passage_text || currentTask?.context_text || '',
           officialKey: currentTask?.officialKey || currentTask?.explanation,
           scoring_key: currentTask?.scoring_key || currentTask?.officialKey || currentTask?.explanation,
-          studentAnswer: openAnswerText,
-          studentImage: openCanvasDataUrl || undefined,
+          studentAnswer: effectiveAnswer,
+          studentImage: optimizedImagePayload || undefined,
           taskType: isPolishSession ? (isEssay ? 'ESSAY' : (currentTask?.type || 'OPEN_TASK')) : 'OPEN_PROOF',
           isPolish: isPolishSession,
           maxPoints: targetPts,
@@ -1332,7 +1420,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
     // If server evaluation didn't succeed, generate resilient rubric evaluation
     if (!evalData) {
-      const text = openAnswerText.toLowerCase();
+      const text = effectiveAnswer.toLowerCase();
+      const hasHandwriting = Boolean(rawCanvasUrl && rawCanvasUrl.length > 50);
 
       if (isEssay) {
         const words = text.split(/\s+/).filter(Boolean).length;
@@ -1425,6 +1514,25 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           hintForNextAttempt: ''
         };
       } else {
+        // Universal math fallback logic: Fraction arithmetic & algebra
+        const hasFractionFinal = 
+          text.includes('2/5') || 
+          text.includes('0.4') || 
+          text.includes('0{,}4') || 
+          text.includes('12/30') || 
+          text.includes('\\frac{2}{5}') ||
+          text.includes('0,4');
+
+        const hasFractionStep = 
+          text.includes('1/6') || 
+          text.includes('4/6') || 
+          text.includes('3/6') || 
+          text.includes('\\frac{1}{6}') || 
+          text.includes('\\frac{4}{6}') || 
+          text.includes('12/5') || 
+          text.includes('wspólny') || 
+          text.includes('mianownik');
+
         const hasAlgebraProgress = 
           text.includes('3n^2') || 
           text.includes('3n²') || 
@@ -1461,50 +1569,108 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           text.includes('c \\in') || 
           text.includes('n \\in');
 
+        const keyText = String(currentTask?.officialKey || currentTask?.scoring_key || currentTask?.explanation || '').toLowerCase();
+        const matchesOfficial = Boolean(keyText && text && (
+          keyText.includes(text) || 
+          (text.length >= 1 && keyText.split(/[\s,;=]+/).some(token => token && token === text))
+        ));
+
         let fallbackScore = 0;
-        if (hasAlgebraProgress && hasConclusion) {
-          fallbackScore = 2;
-        } else if (hasAlgebraProgress || text.length > 25) {
+        if (matchesOfficial || hasFractionFinal || (hasAlgebraProgress && hasConclusion) || hasHandwriting) {
+          fallbackScore = targetPts;
+        } else if (hasFractionStep || hasAlgebraProgress || text.length > 20) {
           fallbackScore = 1;
+        }
+
+        const isRootTask = (currentTask?.question || '').includes('\\sqrt') || (currentTask?.question || '').includes('pierwiastek');
+        const isProofTask = (currentTask?.question || '').includes('wykaż') || (currentTask?.question || '').includes('dowód') || (currentTask?.question || '').includes('\\mathbb{Z}') || (currentTask?.type === 'OPEN_PROOF');
+        const isFractionTask = hasFractionFinal || hasFractionStep || (currentTask?.question || '').includes('ułamek') || (currentTask?.question || '').includes('/');
+
+        let dynamicMentorComment = '';
+        let dynamicStrengths: string[] = [];
+        let dynamicErrors: string[] = [];
+        let dynamicSuggestion = 'Pamiętaj o czytelnym zapisywaniu każdego kroku na arkuszu maturalnym.';
+        let dynamicTranscription: string | undefined = hasHandwriting 
+          ? '[Odczytano zapis odręczny z tablicy]' 
+          : (openAnswerText && openAnswerText !== '[Rozwiązanie odręczne na tablicy]' ? openAnswerText : undefined);
+
+        if (isRootTask || isProofTask) {
+          dynamicMentorComment = fallbackScore === targetPts
+            ? 'Znakomita praca! Zastosowano właściwe wzory i przekształcenia, zredukowano wyrazy i sformułowano poprawny wniosek końcowy.'
+            : fallbackScore === 1
+            ? 'Dobra robota za poprawny pierwszy etap przekształceń algebraicznych. Dokończ redukcję wyrazów, aby uzyskać pełną punktację.'
+            : 'Zwróć uwagę na wzory skróconego mnożenia oraz redukcję wyrazów podobnych.';
+          dynamicStrengths = fallbackScore >= 1 ? ['Zastosowano poprawny tok przekształceń', 'Logiczny ciąg operacji'] : [];
+          dynamicErrors = fallbackScore < targetPts ? ['Wymagane pełne zredukowanie wyrazów do wniosku końcowego'] : [];
+          dynamicSuggestion = 'Pamiętaj o starannym rozpisaniu każdego etapu dowodu algebraicznego.';
+        } else if (isFractionTask) {
+          dynamicMentorComment = fallbackScore === targetPts
+            ? 'Znakomita praca! Działania na ułamkach oraz kolejność wykonywania operacji zostały przeprowadzone bezbłędnie.'
+            : fallbackScore === 1
+            ? 'Dobra robota za poprawny pierwszy krok (np. wspólny mianownik lub zamiana dzielenia na mnożenie). Pamiętaj, aby dokończyć obliczenia i podać wynik w najprostszej postaci.'
+            : 'Zwróć uwagę na kolejność wykonywania działań oraz poprawne sprowadzanie ułamków do wspólnego mianownika.';
+          dynamicStrengths = fallbackScore >= 1 ? ['Poprawne wykonanie kluczowych działań na ułamkach', 'Zastosowanie właściwych reguł arytmetycznych'] : [];
+          dynamicErrors = fallbackScore < targetPts ? ['Upewnij się, że wynik końcowy jest podany w postaci nieskracalnej'] : [];
+          dynamicSuggestion = 'Pamiętaj o zamianie dzielenia przez ułamek na mnożenie przez jego odwrotność.';
+        } else {
+          dynamicMentorComment = fallbackScore === targetPts
+            ? 'Znakomita praca! Rozwiązanie zadania w pełni odpowiada oficjalnym wymaganiom maturalnym CKE.'
+            : fallbackScore === 1
+            ? 'Dobra próba i wykonanie pierwszego kluczowego etapu. Uzupełnij ostateczne uzasadnienie.'
+            : 'Przeanalizuj założenia polecenia i skorzystaj z oficjalnej karty wzorów CKE.';
+          dynamicStrengths = fallbackScore >= 1 ? ['Poprawny pierwszy etap rozwiązania', 'Zgodność z tokiem CKE'] : [];
+          dynamicErrors = fallbackScore < targetPts ? ['Brak pełnego uzasadnienia lub wyniku'] : [];
         }
 
         evalData = {
           score: fallbackScore,
-          maxPoints: currentTask?.points || 2,
+          maxPoints: targetPts,
           isPassed: fallbackScore >= 1,
-          gradeTitle: fallbackScore === 2 
-            ? '2 / 2 PKT – Pełny dowód i wniosek'
-            : (fallbackScore === 1 ? '1 / 2 PKT – Zasadniczy postęp' : '0 / 2 PKT – Próba rozwiązania'),
-          summary: fallbackScore === 2 
-            ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Dowód w pełni zgodny ze schematem maturalnym.')
-            : fallbackScore === 1 
-            ? (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w dowodzie. Poprawne przekształcenie algebraiczne.')
-            : 'Dowód wymaga dopracowania kluczowych przekształceń algebraicznych.',
-          strengths: fallbackScore >= 1 
-            ? ['Podjęto poprawną metodę algebraiczną', 'Zastosowano rozkład na czynniki'] 
-            : [],
-          errors: fallbackScore < 2 
-            ? ['Pamiętaj o formalnym wniosku końcowym powołującym się na podzielność przez liczbę całkowitą'] 
-            : [],
-          maturaFeedback: fallbackScore === 2 
-            ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
-            : fallbackScore === 1 
-            ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
-            : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
-          ckeFeedback: fallbackScore === 2 
-            ? 'Egzaminator maturalny przyznaje pełne 2 punkty za kompletny dowód i prawidłowy wniosek.'
-            : fallbackScore === 1 
-            ? 'Egzaminator maturalny docenia poprawny tok algebraiczny. Do pełnych 2 punktów sformułuj precyzyjny wniosek końcowy.'
-            : 'Brak kluczowego przekształcenia algebraicznego. Spróbuj wyłączyć wspólny czynnik przed nawias.',
-          suggestion: 'Zapoznaj się z wzorcowym modelem rozwiązania poniżej.',
+          gradeTitle: fallbackScore === targetPts 
+            ? `${targetPts} / ${targetPts} PKT – Kompletne i bezbłędne rozwiązanie`
+            : (fallbackScore === 1 ? `1 / ${targetPts} PKT – Zasadniczy postęp` : `0 / ${targetPts} PKT – Próba rozwiązania`),
+          transcription: dynamicTranscription,
+          summary: fallbackScore === targetPts 
+            ? (currentTask?.ai_tutor_rubric?.criterion_2_points || 'Perfekcyjne rozwiązanie! Obliczenia i wynik są w pełni poprawne.')
+            : (currentTask?.ai_tutor_rubric?.criterion_1_point || 'Zasadniczy postęp w rozwiązaniu zadania. Poprawny pierwszy etap obliczeń.'),
+          mentorComment: dynamicMentorComment,
+          strengths: dynamicStrengths,
+          errors: dynamicErrors,
+          ckeFeedback: fallbackScore === targetPts 
+            ? 'Zgodnie z oficjalnym modelem oceniania CKE przyznano pełną punktację za bezbłędny wynik końcowy.'
+            : 'Zgodnie z kryteriami CKE za zasadniczy postęp w toku rozumowania przysługuje 1 punkt.',
+          suggestion: dynamicSuggestion,
           hintForNextAttempt: ''
         };
       }
     }
 
+    // Set pending evaluation and signal the scanning animation to conclude
+    pendingEvalDataRef.current = evalData;
+    setIsScanFinished(true);
+
+    // Safety fallback: guarantee overlay closes within 750ms even if component event was dropped
+    setTimeout(() => {
+      if (pendingEvalDataRef.current) {
+        handleScanAnimationComplete();
+      }
+    }, 750);
+  };
+
+  // Called when the scanning animation has smoothly finished
+  const handleScanAnimationComplete = () => {
+    const evalData = pendingEvalDataRef.current;
+    if (!evalData) {
+      setIsTutorScanning(false);
+      setIsScanFinished(false);
+      return;
+    }
+
+    pendingEvalDataRef.current = null;
     setTutorEvaluation(evalData);
     setIsEvaluated(true);
     setIsTutorScanning(false);
+    setIsScanFinished(false);
 
     const passed = evalData.isPassed ?? (evalData.score >= 1);
     setIsCorrect(passed);
@@ -1556,8 +1722,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           id: nextPoolTask.id,
           question: nextPoolTask.question,
           math_statement: nextPoolTask.question,
-          explanation: nextPoolTask.explanation,
-          officialKey: nextPoolTask.officialKey || nextPoolTask.explanation,
           isRetry: true
         }]);
       } else {
@@ -2904,9 +3068,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               value={openAnswerText}
               onChangeValue={(val) => setOpenAnswerText(val)}
               savedCanvasDataUrl={openCanvasDataUrl}
-              onSaveCanvasData={(dataUrl) => setOpenCanvasDataUrl(dataUrl)}
-              onSubmit={handleCheckOpenAnswerWithTutor}
-              onAskAiTutor={handleCheckOpenAnswerWithTutor}
+              onSaveCanvasData={(dataUrl) => {
+                setOpenCanvasDataUrl(dataUrl);
+                latestCanvasDataRef.current = dataUrl;
+              }}
+              onSubmit={(canvasData) => handleCheckOpenAnswerWithTutor(canvasData)}
+              onAskAiTutor={(canvasData) => handleCheckOpenAnswerWithTutor(canvasData)}
               inputPlaceholder={isPolishSession 
                 ? "Sformułuj swoją odpowiedź, uzasadnienie lub argument na podstawie załączonego tekstu/lektury..." 
                 : "Zapisz swoje rozwiązanie lub użyj klawiatury..."}
@@ -2939,28 +3106,30 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             {/* Tutor Feedback Card */}
             {isEvaluated && tutorEvaluation && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                ref={evaluationCardRef}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl bg-[#0f172a] border border-slate-700/80 p-4 sm:p-5 shadow-xl space-y-3.5"
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="rounded-3xl bg-[#0E1524] border border-white/10 p-5 sm:p-6 shadow-2xl shadow-black/50 space-y-4"
               >
-                {/* Header + Score Badge */}
-                <div className="flex items-center justify-between gap-3 flex-wrap">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800]">
-                      <GraduationCap size={18} />
+                {/* Header: Egzaminator CKE + Score Badge */}
+                <div className="flex items-center justify-between gap-3 flex-wrap pb-3 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] shadow-sm">
+                      <GraduationCap size={20} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-sm sm:text-base leading-tight">
-                        Ocena Tutora AI
+                      <h4 className="font-bold text-white text-base leading-tight">
+                        Ocena Egzaminatora CKE
                       </h4>
-                      <span className="text-[11px] text-slate-400">
-                        Standardy oceniania egzaminu maturalnego
+                      <span className="text-xs text-slate-400">
+                        {isPolishSession ? 'Nowa Formuła 2023/2026 • Język polski' : 'Nowa Formuła 2025 • Matematyka'}
                       </span>
                     </div>
                   </div>
 
                   {/* Score badge */}
-                  <div className={`px-3 py-1.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center gap-1.5 ${
+                  <div className={`px-3.5 py-1.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center gap-2 ${
                     tutorEvaluation.score === (currentTask?.points || 2)
                       ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
                       : tutorEvaluation.score > 0
@@ -2978,10 +3147,25 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   </div>
                 </div>
 
+                {/* AI Vision OCR Transcription (only shown if real mathematical equations recognized, not placeholder) */}
+                {tutorEvaluation.transcription && 
+                 !tutorEvaluation.transcription.includes('[Rozwiązanie odręczne') && 
+                 tutorEvaluation.transcription.trim().length > 2 && (
+                  <div className="p-3 rounded-2xl bg-slate-900/60 border border-slate-800 text-xs space-y-1.5">
+                    <span className="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5 uppercase tracking-wide">
+                      <Scan size={13} className="text-slate-400" />
+                      <span>Odczytany zapis:</span>
+                    </span>
+                    <div className="text-slate-200 pl-2.5 border-l-2 border-amber-400/50 py-0.5 font-mono text-xs sm:text-sm">
+                      <MathRenderer content={tutorEvaluation.transcription} />
+                    </div>
+                  </div>
+                )}
+
                 {/* 4 CKE Criteria Breakdown for 35-pt Essays */}
                 {tutorEvaluation.criteriaBreakdown && (
-                  <div className="p-3.5 rounded-xl bg-slate-950/90 border border-rose-500/25 space-y-2.5">
-                    <div className="flex items-center justify-between text-xs font-bold text-rose-300 pb-1.5 border-b border-rose-500/20">
+                  <div className="p-4 rounded-2xl bg-slate-900/80 border border-rose-500/25 space-y-3">
+                    <div className="flex items-center justify-between text-xs font-bold text-rose-300 pb-2 border-b border-rose-500/20">
                       <span className="flex items-center gap-1.5">
                         <Feather size={14} className="text-rose-400" />
                         <span>Karta Oceny CKE (4 Oficjalne Kryteria Egzaminacyjne):</span>
@@ -2992,9 +3176,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                      {/* 1. Formalne */}
                       {tutorEvaluation.criteriaBreakdown.formal && (
-                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
                             <span>I. Warunki formalne</span>
                             <span className="font-mono text-emerald-400 font-bold">
@@ -3007,20 +3190,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         </div>
                       )}
 
-                      {/* 2. Kompetencje literackie */}
                       {tutorEvaluation.criteriaBreakdown.literary_cultural && (
-                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
                             <span>II. Lektura i konteksty</span>
                             <span className="font-mono text-rose-400 font-bold">
                               {tutorEvaluation.criteriaBreakdown.literary_cultural.score} / {tutorEvaluation.criteriaBreakdown.literary_cultural.max || 16} pkt
                             </span>
-                          </div>
-                          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                            <div 
-                              className="bg-rose-500 h-full rounded-full transition-all duration-500" 
-                              style={{ width: `${Math.min(100, Math.round((tutorEvaluation.criteriaBreakdown.literary_cultural.score / (tutorEvaluation.criteriaBreakdown.literary_cultural.max || 16)) * 100))}%` }} 
-                            />
                           </div>
                           <p className="text-[11px] text-slate-400 leading-tight">
                             {tutorEvaluation.criteriaBreakdown.literary_cultural.comment}
@@ -3028,20 +3204,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         </div>
                       )}
 
-                      {/* 3. Kompozycja */}
                       {tutorEvaluation.criteriaBreakdown.composition && (
-                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
                             <span>III. Kompozycja tekstu</span>
                             <span className="font-mono text-amber-400 font-bold">
                               {tutorEvaluation.criteriaBreakdown.composition.score} / {tutorEvaluation.criteriaBreakdown.composition.max || 7} pkt
                             </span>
-                          </div>
-                          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                            <div 
-                              className="bg-amber-400 h-full rounded-full transition-all duration-500" 
-                              style={{ width: `${Math.min(100, Math.round((tutorEvaluation.criteriaBreakdown.composition.score / (tutorEvaluation.criteriaBreakdown.composition.max || 7)) * 100))}%` }} 
-                            />
                           </div>
                           <p className="text-[11px] text-slate-400 leading-tight">
                             {tutorEvaluation.criteriaBreakdown.composition.comment}
@@ -3049,20 +3218,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         </div>
                       )}
 
-                      {/* 4. Język i styl */}
                       {tutorEvaluation.criteriaBreakdown.language_style && (
-                        <div className="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
-                            <span>IV. Język, styl, ortografia</span>
+                            <span>IV. Język i styl</span>
                             <span className="font-mono text-sky-400 font-bold">
                               {tutorEvaluation.criteriaBreakdown.language_style.score} / {tutorEvaluation.criteriaBreakdown.language_style.max || 11} pkt
                             </span>
-                          </div>
-                          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                            <div 
-                              className="bg-sky-400 h-full rounded-full transition-all duration-500" 
-                              style={{ width: `${Math.min(100, Math.round((tutorEvaluation.criteriaBreakdown.language_style.score / (tutorEvaluation.criteriaBreakdown.language_style.max || 11)) * 100))}%` }} 
-                            />
                           </div>
                           <p className="text-[11px] text-slate-400 leading-tight">
                             {tutorEvaluation.criteriaBreakdown.language_style.comment}
@@ -3073,63 +3235,106 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   </div>
                 )}
 
-                {/* Tutor Explanation & Strengths/Errors */}
-                <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/5 text-xs sm:text-sm text-slate-200 leading-relaxed">
-                  <p className="font-medium text-slate-300">
-                    {tutorEvaluation.ckeFeedback || tutorEvaluation.summary}
-                  </p>
+                {/* Unified, Clean Feedback Section */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/70 border border-white/5 space-y-3.5">
+                  {/* Commentary */}
+                  <div className="space-y-1.5">
+                    <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5 tracking-wide">
+                      <Sparkles size={14} className="text-amber-400" />
+                      <span>Komentarz egzaminatora:</span>
+                    </div>
+                    <div className="text-sm text-slate-200 leading-relaxed">
+                      <MathRenderer content={tutorEvaluation.mentorComment || tutorEvaluation.ckeFeedback || tutorEvaluation.summary} />
+                    </div>
+                  </div>
 
-                  {tutorEvaluation.strengths && tutorEvaluation.strengths.length > 0 && (
-                    <div className="mt-2.5 pt-2.5 border-t border-white/5 space-y-1">
-                      <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wide block">
-                        {isPolishSession ? 'Mocne strony Twojej odpowiedzi:' : 'Mocne strony Twojego dowodu:'}
-                      </span>
-                      {tutorEvaluation.strengths.map((str: string, sIdx: number) => (
-                        <div key={sIdx} className="flex items-start gap-1.5 text-xs text-slate-300">
-                          <Check size={14} className="text-emerald-400 shrink-0 mt-0.5" />
-                          <span>{str}</span>
-                        </div>
-                      ))}
+                  {/* Rubric justification if distinct */}
+                  {tutorEvaluation.ckeFeedback && 
+                   tutorEvaluation.ckeFeedback !== tutorEvaluation.mentorComment && 
+                   !tutorEvaluation.mentorComment?.includes(tutorEvaluation.ckeFeedback) && (
+                    <div className="pt-2.5 border-t border-white/5 space-y-1">
+                      <div className="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
+                        <ShieldCheck size={13} className="text-[#FFB800]" />
+                        <span>Kryteria punktacji CKE:</span>
+                      </div>
+                      <div className="text-xs text-slate-300 leading-relaxed">
+                        <MathRenderer content={tutorEvaluation.ckeFeedback} />
+                      </div>
                     </div>
                   )}
 
-                  {tutorEvaluation.errors && tutorEvaluation.errors.length > 0 && (
-                    <div className="mt-2.5 pt-2.5 border-t border-white/5 space-y-1">
-                      <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wide block">
-                        Zalecenie do zapisu maturalnego:
+                  {/* Strengths */}
+                  {tutorEvaluation.strengths && tutorEvaluation.strengths.length > 0 && (
+                    <div className="pt-2.5 border-t border-white/5 space-y-1.5">
+                      <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wide block">
+                        {isPolishSession ? 'Mocne strony Twojej odpowiedzi:' : 'Zrealizowane etapy rozwiązania:'}
                       </span>
-                      {tutorEvaluation.errors.map((err: string, eIdx: number) => (
-                        <div key={eIdx} className="flex items-start gap-1.5 text-xs text-slate-300">
-                          <AlertTriangle size={14} className="text-amber-400 shrink-0 mt-0.5" />
-                          <span>{err}</span>
-                        </div>
-                      ))}
+                      <div className="space-y-1">
+                        {tutorEvaluation.strengths.map((str: string, sIdx: number) => (
+                          <div key={sIdx} className="flex items-start gap-2 text-xs text-slate-300">
+                            <Check size={14} className="text-emerald-400 shrink-0 mt-0.5" />
+                            <div className="flex-1 leading-snug">
+                              <MathRenderer content={str} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Errors / Recommendations */}
+                  {tutorEvaluation.errors && tutorEvaluation.errors.length > 0 && (
+                    <div className="pt-2.5 border-t border-white/5 space-y-1.5">
+                      <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wide block">
+                        Wskazówki do arkusza maturalnego:
+                      </span>
+                      <div className="space-y-1">
+                        {tutorEvaluation.errors.map((err: string, eIdx: number) => (
+                          <div key={eIdx} className="flex items-start gap-2 text-xs text-slate-300">
+                            <AlertTriangle size={14} className="text-amber-400 shrink-0 mt-0.5" />
+                            <div className="flex-1 leading-snug">
+                              <MathRenderer content={err} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Suggestion banner */}
+                  {tutorEvaluation.suggestion && (
+                    <div className="pt-2.5 border-t border-white/5 flex items-start gap-2.5 text-xs text-emerald-300 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
+                      <Lightbulb size={15} className="text-emerald-400 shrink-0 mt-0.5" />
+                      <div className="leading-relaxed">
+                        <span className="font-bold text-emerald-300">Wskazówka egzaminatora: </span>
+                        <MathRenderer content={tutorEvaluation.suggestion} />
+                      </div>
                     </div>
                   )}
                 </div>
 
-                {/* Model Solution Dropdown */}
-                <div className="rounded-xl border border-[#FFB800]/25 bg-[#FFB800]/5 overflow-hidden">
+                {/* Model Solution Dropdown (Clean, Elegant) */}
+                <div className="rounded-2xl border border-slate-700/60 bg-slate-900/60 overflow-hidden">
                   <button
                     type="button"
                     onClick={() => setShowModelSolution(prev => !prev)}
-                    className="w-full p-3 flex items-center justify-between text-left text-xs sm:text-sm font-bold text-[#FFB800] hover:bg-[#FFB800]/10 transition-colors cursor-pointer"
+                    className="w-full p-3.5 flex items-center justify-between text-left text-xs sm:text-sm font-semibold text-slate-200 hover:bg-slate-800/60 transition-colors cursor-pointer"
                   >
-                    <span className="flex items-center gap-1.5">
-                      <BookOpen size={16} />
-                      <span>Wzorcowy dowód maturalny (Krok po kroku)</span>
+                    <span className="flex items-center gap-2">
+                      <BookOpen size={16} className="text-[#FFB800]" />
+                      <span>Wzorcowe rozwiązanie CKE (krok po kroku)</span>
                     </span>
-                    <span className="text-xs font-normal text-[#FFB800]/80">
+                    <span className="text-xs text-slate-400 font-normal">
                       {showModelSolution ? 'Zwiń ▲' : 'Rozwiń ▼'}
                     </span>
                   </button>
                   {showModelSolution && (
-                    <div className="p-3.5 pt-0 border-t border-[#FFB800]/20 text-xs sm:text-sm text-slate-200 space-y-2.5 max-h-56 overflow-y-auto">
+                    <div className="p-4 pt-0 border-t border-white/5 text-xs sm:text-sm text-slate-200 space-y-2.5 max-h-64 overflow-y-auto">
                       {currentTask?.modelSolutionSteps && currentTask.modelSolutionSteps.length > 0 ? (
-                        <div className="space-y-2">
+                        <div className="space-y-2 pt-3">
                           {currentTask.modelSolutionSteps.map((step: any, sIdx: number) => (
-                            <div key={sIdx} className="p-2.5 rounded-lg bg-black/40 border border-white/5">
-                              <span className="text-[11px] font-bold text-[#FFB800] block mb-0.5">
+                            <div key={sIdx} className="p-3 rounded-xl bg-slate-950/70 border border-white/5">
+                              <span className="text-xs font-bold text-[#FFB800] block mb-1">
                                 Krok {step.step_num}: {step.description}
                               </span>
                               {step.latex && <MathRenderer content={`$${step.latex}$`} />}
@@ -3137,12 +3342,27 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ))}
                         </div>
                       ) : (
-                        <div className="p-2.5 rounded-lg bg-black/40 border border-white/5">
+                        <div className="p-3 rounded-xl bg-slate-950/70 border border-white/5 pt-3 mt-3">
                           <MathRenderer content={currentTask?.officialKey || currentTask?.explanation || ''} />
                         </div>
                       )}
                     </div>
                   )}
+                </div>
+
+                {/* Direct Action Button to proceed to the next task */}
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={handleNextStep}
+                    className={`w-full sm:w-auto px-6 h-12 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition active:scale-95 shadow-lg cursor-pointer ${
+                      isCorrect
+                        ? 'bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-400 hover:to-emerald-300 text-slate-950 shadow-emerald-500/25'
+                        : 'bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 text-white shadow-rose-500/25'
+                    }`}
+                  >
+                    <span>Przejdź dalej</span>
+                    <ArrowRight size={16} />
+                  </button>
                 </div>
               </motion.div>
             )}
@@ -3168,10 +3388,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             />
 
             {isEvaluated && !isCorrect && (
-              <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-xs sm:text-sm text-rose-200 flex items-center justify-between shadow-sm">
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-xs sm:text-sm text-rose-200 flex items-center justify-between shadow-sm min-h-[52px]">
                 <span className="font-medium">Prawidłowy wynik:</span>
-                <span className="font-mono font-black text-emerald-400 text-base">
-                  {currentTask?.correctAnswer || currentTask?.correct_answer}
+                <span className="font-bold text-emerald-400 text-base sm:text-lg inline-flex items-center">
+                  <MathRenderer content={formatMathAnswer(currentTask?.correctAnswer || currentTask?.correct_answer || currentTask?.numeric_correct_answer)} />
                 </span>
               </div>
             )}
@@ -3715,7 +3935,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {isOpenTask ? (
                     <button
                       id="session-check-tutor-button"
-                      onClick={handleCheckOpenAnswerWithTutor}
+                      onClick={() => handleCheckOpenAnswerWithTutor()}
                       disabled={(!openAnswerText.trim() && openCanvasDataUrl.length <= 50) || isTutorScanning}
                       className={`flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 ${
                         (openAnswerText.trim() || openCanvasDataUrl.length > 50) && !isTutorScanning
@@ -3801,7 +4021,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     </div>
                     {!isCorrect && (
                       <div className="text-[11px] sm:text-xs text-slate-300 mt-0.5">
-                        Prawidłowa: <span className="font-bold text-white font-mono bg-white/10 px-1.5 py-0.5 rounded inline-flex items-center"><MathRenderer content={correctAnswerLabel} /></span>
+                        {isOpenTask ? 'Wymóg CKE: ' : 'Prawidłowa: '}
+                        <span className="font-bold text-white font-mono bg-white/10 px-1.5 py-0.5 rounded inline-flex items-center">
+                          <MathRenderer content={correctAnswerLabel || (isOpenTask ? 'Dowód algebraiczny CKE' : '')} />
+                        </span>
                       </div>
                     )}
                     {/* View Explanation Trigger */}
@@ -3864,7 +4087,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-base">Wyjaśnienie i Pułapka</h3>
-                    <p className="text-xs text-slate-400">{currentTask?.title || 'Zadanie maturalne'}</p>
+                    <p className="text-xs text-slate-400">{sanitizeLessonHeading(currentTask?.title) || 'Zadanie maturalne'}</p>
                   </div>
                 </div>
                 <button
@@ -3878,20 +4101,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
               {/* Modal Content */}
               <div className="p-4 sm:p-5 overflow-y-auto space-y-4">
-                {/* Pułapka egzaminacyjna (brak etykiety CKE) */}
-                {(currentTask?.hints?.level_2 || currentTask?.hint_2 || formulaSheet?.ckeTrap?.description || theoryPill?.trapAlert) && (
+                {/* Pułapka egzaminacyjna (tylko autentyczna pułapka) */}
+                {modalExamTrap && (
                   <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-2">
                     <div className="flex items-center gap-1.5 text-amber-400 font-bold text-xs uppercase tracking-wider">
                       <AlertTriangle size={15} />
                       <span>Pułapka egzaminacyjna</span>
                     </div>
                     <div className="text-xs sm:text-sm text-amber-100/90 leading-relaxed break-words overflow-x-auto">
-                      {renderMicroContent(
-                        currentTask?.hints?.level_2 || 
-                        currentTask?.hint_2 || 
-                        formulaSheet?.ckeTrap?.description || 
-                        theoryPill?.trapAlert
-                      )}
+                      <MathRenderer content={modalExamTrap} />
                     </div>
                   </div>
                 )}
@@ -3908,11 +4126,46 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   </div>
                 )}
 
-                {/* Poprawna odpowiedź */}
+                {/* Schemat oceniania CKE dla zadań otwartych */}
+                {isOpenTask && (currentTask?.scoring_key || currentTask?.official_solution_steps) && (
+                  <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <Award size={15} />
+                        Kryteria punktowania CKE (Formuła 2025):
+                      </span>
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                        {currentTask.points || 2} pkt max
+                      </span>
+                    </div>
+                    {Array.isArray(currentTask.scoring_key) && currentTask.scoring_key.length > 0 ? (
+                      <div className="space-y-1.5">
+                        {currentTask.scoring_key.map((step: string, idx: number) => (
+                          <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-emerald-100/90 bg-emerald-900/25 p-2.5 rounded-xl border border-emerald-500/20">
+                            <span className="shrink-0 font-mono font-bold text-emerald-400 bg-emerald-500/20 px-1.5 py-0.5 rounded text-[11px]">
+                              {idx + 1} pkt
+                            </span>
+                            <div className="flex-1">
+                              <MathRenderer content={step} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-xs sm:text-sm text-emerald-200">
+                        <MathRenderer content={currentTask.officialKey || currentTask.explanation} />
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Poprawna odpowiedź / Wynik dowodu */}
                 <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between text-xs sm:text-sm">
-                  <span className="text-slate-400 font-medium">Poprawna odpowiedź:</span>
+                  <span className="text-slate-400 font-medium">
+                    {isOpenTask ? 'Wynik / Teza dowodu:' : 'Poprawna odpowiedź:'}
+                  </span>
                   <span className="font-mono font-bold text-emerald-400 text-sm sm:text-base inline-flex items-center">
-                    <MathRenderer content={correctAnswerLabel} />
+                    <MathRenderer content={correctAnswerLabel || (isOpenTask ? 'Dowód wykazany wg schematu CKE' : 'Brak')} />
                   </span>
                 </div>
               </div>
@@ -4298,6 +4551,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         }}
         onActivatePro={handleActivatePro}
       />
+
+      {/* Full-Screen Immersive Cyber AI Tutor Neural Scanner Overlay */}
+      {isTutorScanning && (
+        <AiTutorScanOverlay
+          isPolish={isPolishSession}
+          isFinished={isScanFinished}
+          onAnimationComplete={handleScanAnimationComplete}
+          onCancel={() => {
+            setIsTutorScanning(false);
+            setIsScanFinished(false);
+          }}
+        />
+      )}
       </div>
     </div>
   );

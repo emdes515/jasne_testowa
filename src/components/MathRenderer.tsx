@@ -14,6 +14,16 @@ export function cleanLatex(mathStr: string): string {
   if (!mathStr) return '';
   let s = mathStr.trim();
 
+  // Fix corrupted form-feed/triangle artifacts (e.g. \f in unescaped \frac becoming Form Feed 0x0C or ▲)
+  s = s
+    .replace(/\x0c\s*rac/g, '\\frac')
+    .replace(/▲\s*rac/g, '\\frac')
+    .replace(/\u25B2\s*rac/g, '\\frac')
+    .replace(/\\?▲\s*rac/g, '\\frac')
+    .replace(/\x0c/g, '')
+    .replace(/\x0dight/g, '\\right')
+    .replace(/\x08egin/g, '\\begin');
+
   // Strip outer delimiters
   if (s.startsWith('$$') && s.endsWith('$$') && s.length >= 4) {
     s = s.slice(2, -2).trim();
@@ -26,7 +36,7 @@ export function cleanLatex(mathStr: string): string {
   }
 
   // Remove leading and trailing backslash spaces (e.g., "\ a^x \"), but NOT commands like \sqrt or \pi!
-  s = s.replace(/^\\\s+/, '').replace(/\\\s+$/, '').trim();
+  s = s.replace(/^\\\s+/, '').replace(/\\(\s+)?$/, '').trim();
 
   // Polish decimal comma in math mode (0,3 -> 0{,}3)
   s = s.replace(/(\d+),(\d+)/g, (_match, d1, d2) => `${d1}{,}${d2}`);
@@ -34,22 +44,181 @@ export function cleanLatex(mathStr: string): string {
   // Escape unescaped % (in LaTeX % is comment, which causes formula truncation in KaTeX)
   s = s.replace(/(?<!\\)%/g, '\\%');
 
-  // Replace standalone * with \cdot
-  s = s.replace(/(?<!\\)\*/g, '\\cdot ');
+  // Replace standalone * or middle dot · with \cdot
+  s = s.replace(/(?<!\\)[\*·]/g, ' \\cdot ');
 
-  // Standard math operators
+  // Standard math operators - longer multi-char patterns matched before substrings
+  s = s.replace(/<=>/g, '\\iff ');
+  s = s.replace(/=>/g, '\\implies ');
   s = s.replace(/<=/g, '\\le ');
   s = s.replace(/>=/g, '\\ge ');
   s = s.replace(/=\/=/g, '\\neq ');
   s = s.replace(/!=/g, '\\neq ');
-  s = s.replace(/<=>/g, '\\iff ');
-  s = s.replace(/=>/g, '\\implies ');
   s = s.replace(/\+-/g, '\\pm ');
+
+  // Convert slash-notated fractions (e.g. 8/15 -> \frac{8}{15}, (8 \cdot 5)/(15 \cdot 4) -> \frac{8 \cdot 5}{15 \cdot 4})
+  s = convertSlashFractions(s);
 
   // Clean empty or redundant double-spaces
   s = s.replace(/\s+/g, ' ').trim();
 
   return s;
+}
+
+/**
+ * Converts inline slash-notated fractions (e.g. 8/15, (8*5)/(15*4), 2 1/3, \sqrt{2}/2, a/b)
+ * into proper LaTeX vertical fractions (\frac{...}{...}) for KaTeX rendering.
+ */
+export function convertSlashFractions(mathStr: string): string {
+  if (!mathStr || typeof mathStr !== 'string') return '';
+  let s = mathStr;
+
+  // 1. Protect \text{...} blocks from slash replacement (e.g. \text{km/h})
+  const textBlocks: string[] = [];
+  s = s.replace(/\\text\{[^{}]*\}/g, (m) => {
+    textBlocks.push(m);
+    return `___TEXT_BLOCK_${textBlocks.length - 1}___`;
+  });
+
+  // 2. Mixed numbers: e.g. '2 1/3' -> '2\frac{1}{3}', '-1 2/5' -> '-1\frac{2}{5}'
+  s = s.replace(/(^|[\s=+\-(<*·]|\\cdot\s*|\\pm\s*)([+-]?\d+)\s+(\d+)\/(\d+)(?=[\s=+\-),.;$*·]|\\cdot|\\pm|$)/g, (_m, pre, whole, num, den) => {
+    return `${pre}${whole}\\frac{${num}}{${den}}`;
+  });
+
+  // 3. (expr) / (expr) -> \frac{expr}{expr} (e.g. (8 \cdot 5)/(15 \cdot 4) -> \frac{8 \cdot 5}{15 \cdot 4})
+  s = s.replace(/\(([^()]+)\)\s*\/\s*\(([^()]+)\)/g, (_m, num, den) => {
+    return `\\frac{${num.trim()}}{${den.trim()}}`;
+  });
+
+  // 4. (expr) / term -> \frac{expr}{term} (e.g. (x+1)/2 -> \frac{x+1}{2})
+  s = s.replace(/\(([^()]+)\)\s*\/\s*([+-]?(?!(?:\\frac\b))(?:\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^[\]]*\])*|[a-zA-Z0-9^_{}]+))/g, (_m, num, den) => {
+    return `\\frac{${num.trim()}}{${den.trim()}}`;
+  });
+
+  // 5. term / (expr) -> \frac{term}{expr} (e.g. 1/(x-1) -> \frac{1}{x-1})
+  s = s.replace(/(^|[\s=+\-(<*·]|\\cdot\s*|\\pm\s*)([+-]?(?!(?:\\frac\b))(?:\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^[\]]*\])*|[a-zA-Z0-9^_{}]+))\s*\/\s*\(([^()]+)\)/g, (_m, pre, num, den) => {
+    return `${pre}\\frac{${num.trim()}}{${den.trim()}}`;
+  });
+
+  // 6. Simple tokens: term / term -> \frac{term}{term}
+  // (e.g. 8/15 -> \frac{8}{15}, \sqrt{2}/2 -> \frac{\sqrt{2}}{2}, a/b -> \frac{a}{b}, x/2 -> \frac{x}{2})
+  for (let iter = 0; iter < 3; iter++) {
+    const before = s;
+    s = s.replace(/(^|[\s=+\-(<*·]|\\cdot\s*|\\pm\s*)([+-]?(?!(?:\\frac\b))(?:\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^[\]]*\])*|[a-zA-Z0-9^_{}]+))\s*\/\s*((?!(?:\\frac\b))(?:\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^[\]]*\])*|[a-zA-Z0-9^_{}]+))(?=[\s=+\-),.;*<>·]|\\cdot|\\pm|$)/g, (_m, pre, num, den) => {
+      let sign = '';
+      let cleanNum = num.trim();
+      if (cleanNum.startsWith('-')) {
+        sign = '-';
+        cleanNum = cleanNum.slice(1).trim();
+      } else if (cleanNum.startsWith('+')) {
+        sign = '+';
+        cleanNum = cleanNum.slice(1).trim();
+      }
+      return `${pre}${sign}\\frac{${cleanNum}}{${den.trim()}}`;
+    });
+    if (s === before) break;
+  }
+
+  // 7. Scale parentheses around fractions: (\frac{...}{...}) -> \left(\frac{...}{...}\right)
+  s = s.replace(/(?<!\\left)\((\\frac\{[^{}]*\}\{[^{}]*\})\)(?!\\right)/g, '\\left($1\\right)');
+
+  // Restore \text{...} blocks
+  textBlocks.forEach((tb, i) => {
+    s = s.replace(`___TEXT_BLOCK_${i}___`, tb);
+  });
+
+  return s;
+}
+
+/**
+ * Formats mathematical answers, fractions, and numeric values for KaTeX rendering:
+ * - Converts simple fractions (e.g. "1/8" -> "$\\frac{1}{8}$", "-3/4" -> "$-\\frac{3}{4}$")
+ * - Converts mixed fractions (e.g. "2 1/3" -> "$2\\frac{1}{3}$", "-1 2/5" -> "$-1\\frac{2}{5}$")
+ * - Converts algebraic fractions (e.g. "(x+1)/(x-1)" -> "$\\frac{x+1}{x-1}$", "x/2" -> "$\\frac{x}{2}$")
+ * - Formats Polish decimal commas (e.g. "0.125" / "0,125" -> "$0{,}125$")
+ * - Wraps raw unbracketed LaTeX commands (e.g. "\\frac{1}{8}", "\\sqrt{2}") in "$...$"
+ * - Preserves existing math delimiters ($...$, $$...$$) and multiple-choice labels ("A", "P (Prawda)")
+ */
+export function formatMathAnswer(raw: string | number | null | undefined): string {
+  if (raw === null || raw === undefined) return '';
+  const str = String(raw).trim();
+  if (!str) return '';
+
+  // If already wrapped in delimiters, return as is
+  if (
+    (str.startsWith('$') && str.endsWith('$') && str.length >= 2) ||
+    (str.startsWith('$$') && str.endsWith('$$') && str.length >= 4) ||
+    (str.startsWith('\\[') && str.endsWith('\\]') && str.length >= 4) ||
+    (str.startsWith('\\(') && str.endsWith('\\)') && str.length >= 4)
+  ) {
+    return str;
+  }
+
+  // If it's a special system string, don't format as math
+  if (str.startsWith('[') && str.endsWith(']')) {
+    return str;
+  }
+
+  // If it's a single letter option (A, B, C, D) or True/False label (P / F / Prawda / Fałsz)
+  if (/^[A-D]$/i.test(str) || /^([PF]|TRUE|FALSE)\s*\(.+\)$/i.test(str)) {
+    return str;
+  }
+
+  // If it's already a full LaTeX command without delimiters (e.g. \frac{1}{8}, \sqrt{2})
+  if (/^\\[a-zA-Z]+/.test(str)) {
+    return `$${str}$`;
+  }
+
+  let formatted = str;
+
+  // 1. Mixed numbers: e.g. "2 1/3" -> "2\frac{1}{3}", "-1 2/5" -> "-1\frac{2}{5}"
+  formatted = formatted.replace(
+    /(^|[\s\+\-\(=])([+-]?\d+)\s+(\d+)\/(\d+)(?=[\s\+\-\)=,]|$)/g,
+    (_m, prefix, whole, num, den) => `${prefix}${whole}\\frac{${num}}{${den}}`
+  );
+
+  // 2. Simple numeric fractions: e.g. "1/8" -> "\frac{1}{8}", "-3/4" -> "-\frac{3}{4}"
+  formatted = formatted.replace(
+    /(^|[\s\+\-\(=])([+-]?\d+)\/(\d+)(?=[\s\+\-\)=,]|$)/g,
+    (_m, prefix, num, den) => {
+      const isNeg = num.startsWith('-');
+      const absNum = isNeg ? num.slice(1) : (num.startsWith('+') ? num.slice(1) : num);
+      const sign = isNeg ? '-' : (num.startsWith('+') ? '+' : '');
+      return `${prefix}${sign}\\frac{${absNum}}{${den}}`;
+    }
+  );
+
+  // 3. Algebraic fractions: e.g. "(x+1)/(x-1)" -> "\frac{x+1}{x-1}" or "x/2" -> "\frac{x}{2}"
+  if (formatted.includes('/')) {
+    formatted = formatted.replace(
+      /(^|[\s\+\-\(=])(\([^\)]+\)|[a-zA-Z\d\^]+)\/(\([^\)]+\)|[a-zA-Z\d\^]+)(?=[\s\+\-\)=,]|$)/g,
+      (_m, prefix, num, den) => {
+        const cleanNum = num.startsWith('(') && num.endsWith(')') ? num.slice(1, -1) : num;
+        const cleanDen = den.startsWith('(') && den.endsWith(')') ? den.slice(1, -1) : den;
+        return `${prefix}\\frac{${cleanNum}}{${cleanDen}}`;
+      }
+    );
+  }
+
+  // 4. Polish decimal commas: "0,5" or "0.5" in numeric answer -> "0{,}5"
+  if (/^[+-]?\d+[.,]\d+$/.test(formatted)) {
+    const match = formatted.match(/^([+-]?)(\d+)[.,](\d+)$/);
+    if (match) {
+      const [, sign, intPart, decPart] = match;
+      return `$${sign || ''}${intPart}{,}${decPart}$`;
+    }
+  }
+
+  // 5. If it contains math elements (\frac, \sqrt, \cdot, ^, =, <, >) or is a signed number
+  if (
+    /\\frac|\\sqrt|\\cdot|\^|[=<>_]/.test(formatted) ||
+    /^[+-]?\d+$/.test(formatted)
+  ) {
+    formatted = formatted.replace(/(?<!\\)%/g, '\\%');
+    return `$${formatted}$`;
+  }
+
+  return formatted;
 }
 
 // Renders text segments supporting markdown **bold** and newlines
@@ -79,6 +248,119 @@ function renderFormattedText(textChunk: string, keyPrefix: string): React.ReactN
       })}
     </React.Fragment>
   );
+}
+
+/**
+ * Automatically wraps un-delimited LaTeX expressions, pure math equations,
+ * and mixed scoring criteria lines in $...$ so KaTeX can render them properly.
+ */
+export function autoWrapLatex(rawStr: string): string {
+  if (!rawStr || typeof rawStr !== 'string') return '';
+  let s = rawStr.trim();
+
+  // If already contains math delimiters everywhere it needs to ($...$ or $$...$$ or \[...\])
+  const hasInlineDelimiters = s.includes('$') || s.includes('\\(') || s.includes('\\[') || s.includes('\\begin{');
+  const hasLatexCommands = /\\[a-zA-Z]+/.test(s);
+  // Check if string contains regular prose words (words of 2+ letters that are not math commands/functions)
+  const textWithoutLatex = s.replace(/\\[a-zA-Z]+/g, '');
+  const words = textWithoutLatex.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
+  const mathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
+  const hasProseWords = words.some(w => !mathKeywords.has(w.toLowerCase()));
+
+  // Case 1: Pure math expression without delimiters (e.g. "(\sqrt{7}-1)^2 + 2\sqrt{7} = 8 \in \mathbb{Z}." or "8/15 · 5/4 = (8 · 5)/(15 · 4) = 40/60 = 2/3.")
+  // MUST NOT be prose text with words like "W nawiasie", "Dzielenie", "Krok", etc.!
+  if (!hasInlineDelimiters && !hasProseWords && (hasLatexCommands || /[=<>^_+\-*\/·]/.test(s))) {
+    let math = s;
+    let punct = '';
+    if (math.endsWith('.')) {
+      punct = '.';
+      math = math.slice(0, -1).trim();
+    }
+    return `$${cleanLatex(math)}$${punct}`;
+  }
+
+  // Case 2: Prose text with mathematical clauses following colons (e.g. "W nawiasie: 4/6 - 3/6 = 1/6. Dzielenie: 1/6 * 12/5 = 12/30 = 2/5.")
+  if (!hasInlineDelimiters && hasProseWords) {
+    s = s.replace(/([A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\s]+:\s*)([\d\s\+\-\*\/\=\(\)\^\.\,\<\>·]{3,})(?=\.|\;|$|\s+[A-ZĄĆĘŁŃÓŚŹŻ])/g, (match, label, mathExpr) => {
+      const trimmedMath = mathExpr.trim();
+      if (/[=+\-*/<>·]/.test(trimmedMath) && !trimmedMath.startsWith('$')) {
+        let clean = cleanLatex(trimmedMath);
+        let punct = '';
+        if (clean.endsWith('.')) {
+          punct = '.';
+          clean = clean.slice(0, -1).trim();
+        }
+        return `${label}$${clean}$${punct}`;
+      }
+      return match;
+    });
+  }
+
+  // Case 3: Mixed text where math expressions or scoring criteria contain \commands without $
+  if (hasLatexCommands) {
+    // 3a. Wrap after colon: "1 pkt za zastosowanie wzoru: 7 - 2\sqrt{7} + 1."
+    if (!hasInlineDelimiters) {
+      s = s.replace(/(:)(\s*)([^\n]+)$/, (match, colon, space, rest) => {
+        let r = rest.trim();
+        let punct = '';
+        if (r.endsWith('.')) {
+          punct = '.';
+          r = r.slice(0, -1).trim();
+        }
+        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/i.test(r)) {
+          return `${colon}${space}$${r}$${punct}`;
+        }
+        return match;
+      });
+
+      // 3b. Wrap after "wynik ": "wynik a = 8 \in \mathbb{Z}."
+      s = s.replace(/(wynik\s+)([^.,;\n]+)(\.?)/i, (match, prefix, expr, punct) => {
+        let r = expr.trim();
+        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźż]/i.test(r)) {
+          return `${prefix}$${r}$${punct}`;
+        }
+        return match;
+      });
+    }
+
+    // 3c. Only on parts outside $...$: wrap standalone \command tokens (e.g. "liczba \sqrt{7}")
+    const parts = s.split(/(\$\$[\s\S]*?\$\$|\$[^\$]+?\$)/g);
+    s = parts.map(part => {
+      if (part.startsWith('$')) return part;
+      return part.replace(/(?<=\s|^)(\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)(?=[\s.,;!?]|$)/g, '$$$1$$');
+    }).join('');
+  }
+
+  // Case 4: Standalone fractions in prose outside $...$ (e.g. "Wynik to 2/3." -> "Wynik to $\frac{2}{3}$.")
+  // Exclude URLs and dates like 12/05/2024
+  const proseParts = s.split(/(\$\$[\s\S]*?\$\$|\$[^\$]+?\$)/g);
+  s = proseParts.map(part => {
+    if (part.startsWith('$')) return part;
+    if (/\d+\/\d+\/\d+/.test(part) || /https?:\/\//.test(part)) return part;
+
+    // Mixed numbers in prose: "2 1/3" -> "$2\frac{1}{3}$"
+    let p = part.replace(/(^|[\s(])([+-]?\d+)\s+(\d+)\/(\d+)(?=[\s).,;!?]|$)/g, (_m, pre, whole, num, den) => {
+      return `${pre}$${whole}\\frac{${num}}{${den}}$`;
+    });
+
+    // Simple numeric fractions in prose: "2/3" -> "$\frac{2}{3}$", "-3/4" -> "$-\frac{3}{4}$"
+    p = p.replace(/(^|[\s(])([+-]?\d+)\/(\d+)(?=[\s).,;!?]|$)/g, (_m, pre, num, den) => {
+      let sign = '';
+      let absNum = num;
+      if (num.startsWith('-')) {
+        sign = '-';
+        absNum = num.slice(1);
+      } else if (num.startsWith('+')) {
+        sign = '+';
+        absNum = num.slice(1);
+      }
+      return `${pre}$${sign}\\frac{${absNum}}{${den}}$`;
+    });
+
+    return p;
+  }).join('');
+
+  return s;
 }
 
 interface MathRendererProps {
@@ -142,8 +424,17 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
 
   if (!rawInput || !rawInput.trim()) return null;
 
+  // Fix Form Feed / triangle artifacts across the entire rawInput before splitting by $
+  const sanitizedInput = rawInput
+    .replace(/\x0c\s*rac/g, '\\frac')
+    .replace(/▲\s*rac/g, '\\frac')
+    .replace(/\u25B2\s*rac/g, '\\frac')
+    .replace(/\\?▲\s*rac/g, '\\frac')
+    .replace(/\x0dight/g, '\\right')
+    .replace(/\x08egin/g, '\\begin');
+
   // Normalizacja powielonych znaków dolara (np. $$$$ -> $$) bez ucinania spacji na krańcach tekstu
-  const rawContent = rawInput.replace(/\${3,}/g, '$$');
+  const rawContent = sanitizedInput.replace(/\${3,}/g, '$$');
 
   // Funkcja pomocnicza do parsowania tekstu mieszanego z $...$ lub $$...$$
   const renderMixedParts = (str: string, extraClass: string = '') => {
@@ -208,11 +499,16 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
   const trimmedForBlockCheck = rawContent.trim();
   const hasInlineDelimiters = trimmedForBlockCheck.includes('$');
   const hasPolishLetters = /[ąćęłńóśźż]/i.test(trimmedForBlockCheck);
+  const textWithoutLatexBlock = trimmedForBlockCheck.replace(/\\[a-zA-Z]+/g, '');
+  const blockWords = textWithoutLatexBlock.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
+  const blockMathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
+  const hasProseWordsBlock = blockWords.some(w => !blockMathKeywords.has(w.toLowerCase()));
 
-  // Czysty blok LaTeX: displayMode lub \begin{...} lub $$...$$, ale TYLKO wtedy, gdy nie jest to tekst mieszany z $
+  // Czysty blok LaTeX: displayMode lub \begin{...} lub $$...$$, ale TYLKO wtedy, gdy nie jest to tekst mieszany z $ ani tekst zawierający słowa
   const isPureLatexBlock = 
     !hasInlineDelimiters && 
     !hasPolishLetters && 
+    !hasProseWordsBlock &&
     (
       displayMode || 
       trimmedForBlockCheck.startsWith('\\begin{') || 
@@ -233,8 +529,21 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
     );
   }
 
-  // Domyślnie parsujemy jako tekst mieszany (LaTeX z $ lub $$ oraz zwykły tekst)
-  return renderMixedParts(rawContent, className);
+  // Domyślnie parsujemy jako tekst mieszany (LaTeX z $ lub $$ oraz zwykły tekst).
+  // Automatycznie wykrywamy formuły bez znaczników $ i ułamki, aby KaTeX wyrenderował estetyczny wzór.
+  let effectiveContent = autoWrapLatex(rawContent);
+  if (!effectiveContent.includes('$') && !/[ąćęłńóśźż]/i.test(effectiveContent)) {
+    const trimmed = effectiveContent.trim();
+    if (
+      /^[+-]?\s*\d+\/\d+$/.test(trimmed) ||
+      /^[+-]?\s*\d+\s+\d+\/\d+$/.test(trimmed) ||
+      /^[+-]?\s*(\([^\)]+\)|[a-zA-Z\d\^]+)\/(\([^\)]+\)|[a-zA-Z\d\^]+)$/.test(trimmed)
+    ) {
+      effectiveContent = formatMathAnswer(trimmed);
+    }
+  }
+
+  return renderMixedParts(effectiveContent, className);
 };
 
 export const MathRenderer = React.memo(MathRendererComponent);

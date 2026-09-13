@@ -326,18 +326,90 @@ export interface BossExamData {
 export const dzial1TasksPool: PoolTask[] = [];
 
 /**
- * Generates Boss Exam for Dział 1 using available cached tasks.
+ * Generates a dynamic Boss Exam for any topic (Math Działy 1-15, Polish, etc.)
+ * Selects representative practice tasks across lessons with timer, passing score, and rewards.
  */
-export function generateDzial1BossExam(tasks?: any[]): BossExamData {
-  const pool = (tasks && tasks.length > 0) ? tasks : curriculumRepository.getAllCachedTasks();
-  const chosenPool = pool.slice(0, Math.min(10, pool.length));
+export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossExamData {
+  const topicId = topic?.id || 'dzial-1';
+  const rawTopicName = topic?.name || topic?.title || 'Liczby Rzeczywiste';
+  const cleanTitle = String(rawTopicName)
+    .replace(/^Dział\s+\d+:\s*/i, '')
+    .replace(/\s*\(Poziom\s+Podstawowy\)/gi, '')
+    .replace(/\s*\(Formuła\s+2023\)/gi, '')
+    .trim();
+
+  // 1. Gather all candidate tasks for this topic
+  let pool: any[] = [];
+  if (allTopicTasks && allTopicTasks.length > 0) {
+    pool = [...allTopicTasks];
+  } else if (topic?.tasks && Array.isArray(topic.tasks) && topic.tasks.length > 0) {
+    pool = [...topic.tasks];
+  } else if (topic?.lessons && Array.isArray(topic.lessons)) {
+    topic.lessons.forEach((l: any) => {
+      if (Array.isArray(l.tasks)) {
+        pool.push(...l.tasks);
+      }
+    });
+  }
+
+  if (pool.length === 0) {
+    const cached = curriculumRepository.getAllCachedTasks();
+    pool = cached.filter((t: any) => {
+      return (
+        t.topicId === topicId ||
+        t.lessonId?.startsWith(topicId) ||
+        t.id?.includes(topicId) ||
+        (t.topic && t.topic.toLowerCase().includes(cleanTitle.toLowerCase()))
+      );
+    });
+    if (pool.length === 0 && cached.length > 0) {
+      pool = cached;
+    }
+  }
+
+  // 2. Filter out pure theory tasks
+  const practiceTasks = pool.filter((t: any) => 
+    t.type !== 'theory' && !t.id?.includes('THEORY') && t.cke_source !== 'Pigułka Wiedzy'
+  );
+
+  // 3. Diversify tasks across lessons if possible
+  const tasksByLesson = new Map<string, any[]>();
+  practiceTasks.forEach((t: any) => {
+    const lId = t.lessonId || 'general';
+    if (!tasksByLesson.has(lId)) tasksByLesson.set(lId, []);
+    tasksByLesson.get(lId)!.push(t);
+  });
+
+  const chosenPool: any[] = [];
+  if (tasksByLesson.size > 1) {
+    tasksByLesson.forEach((lessonTasks) => {
+      if (chosenPool.length < 10 && lessonTasks.length > 0) {
+        chosenPool.push(lessonTasks[0]);
+      }
+    });
+  }
+
+  // Fill up to 7-10 tasks
+  if (chosenPool.length < 7) {
+    for (const t of practiceTasks) {
+      if (!chosenPool.some(cp => cp.id === t.id)) {
+        chosenPool.push(t);
+        if (chosenPool.length >= 7) break;
+      }
+    }
+  }
+
+  // Fallback to initial pool if still empty
+  if (chosenPool.length === 0 && pool.length > 0) {
+    chosenPool.push(...pool.slice(0, 7));
+  }
 
   const examTasks: BossExamTask[] = chosenPool.map((chosen, idx) => ({
-    id: chosen.id || `boss-task-${idx + 1}`,
-    lessonId: chosen.lessonId || '1.1',
+    id: chosen.id || `boss-task-${topicId}-${idx + 1}`,
+    lessonId: chosen.lessonId || `${topicId}.${idx + 1}`,
     lessonOrder: idx + 1,
     lessonTitle: chosen.title || `Zadanie ${idx + 1}`,
-    topicLabel: chosen.topic || 'Liczby Rzeczywiste',
+    topicLabel: chosen.topic || cleanTitle,
     question: chosen.question || chosen.content || '',
     options: chosen.options || [],
     correct_answer: chosen.correct_answer || chosen.correctAnswer,
@@ -349,24 +421,35 @@ export function generateDzial1BossExam(tasks?: any[]): BossExamData {
     explanation: chosen.explanation || '',
     hint_1: chosen.hints?.level_1 || chosen.hint_1 || '',
     hint_2: chosen.hints?.level_2 || chosen.hint_2 || '',
-    source: chosen.source || `Zadanie Maturalne ${idx + 1}`,
+    source: chosen.source || `Zadanie Maturalne CKE ${idx + 1}`,
     type: chosen.type || 'SINGLE_CHOICE',
     points: chosen.points || 1,
     ai_tutor_rubric: chosen.ai_tutor_rubric
   }));
 
+  const totalQuestions = examTasks.length || 7;
+  const passingScore = Math.max(1, Math.ceil(totalQuestions * 0.7)); // 70% threshold
+
   return {
-    id: 'exam-dzial-1',
-    title: 'Sprawdzian: Liczby Rzeczywiste',
-    subtitle: 'Ostateczne starcie z działem 1. Rozwiąż zadania ze wszystkich lekcji.',
-    boss_name: 'Królowa Liczb Rzeczywistych',
-    boss_message: 'Egzaminator czeka! Przypomnij sobie wzory na logarytmy i potęgi.',
-    timeLimitMinutes: 20,
-    passingScore: 7,
-    totalQuestions: examTasks.length || 7,
+    id: `BOSS-EXAM-${String(topicId).toUpperCase()}`,
+    title: `Sprawdzian: ${cleanTitle}`,
+    subtitle: `Ostateczne starcie z materiałem: ${cleanTitle}. Rozwiąż ${totalQuestions} zadań z tego działu.`,
+    boss_name: `Mistrz: ${cleanTitle}`,
+    boss_message: `Egzaminator czeka! Wykaż się wiedzą z działu: ${cleanTitle}. Zdobądź minimum 70%!`,
+    timeLimitMinutes: Math.min(30, Math.max(15, totalQuestions * 2.5)),
+    passingScore,
+    totalQuestions,
     rewardXp: 200,
     rewardCoins: 100,
-    badgeId: 'master_dzial_1',
+    badgeId: `master_${String(topicId).toLowerCase().replace(/[^a-z0-9]/g, '_')}`,
     tasks: examTasks
   };
+}
+
+/**
+ * Generates Boss Exam for Dział 1 using available cached tasks.
+ * Maintained for backwards compatibility.
+ */
+export function generateDzial1BossExam(tasks?: any[]): BossExamData {
+  return generateTopicBossExam({ id: 'dzial-1', name: 'Liczby Rzeczywiste' }, tasks);
 }

@@ -10,6 +10,8 @@ export interface HeaderProps {
   onProfileClick?: () => void;
   onLogoClick?: () => void;
   currentTab?: string;
+  selectedSubjectKey?: 'math' | 'pol';
+  onSelectSubject?: (key: 'math' | 'pol') => void;
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
@@ -19,6 +21,9 @@ export function Header({
   state, 
   onProfileClick, 
   onLogoClick, 
+  currentTab,
+  selectedSubjectKey,
+  onSelectSubject,
   onOpenParentSponsor,
   onOpenProPopup,
   onUpdateUserState 
@@ -76,7 +81,19 @@ export function Header({
         </div>
       </button>
 
-      {/* Spacer na desktopie, aby prawa strona pozostała wyrównana */}
+      {/* Indykator aktywnego przedmiotu */}
+      {selectedSubjectKey && (
+        <div className={`hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black tracking-wide border shadow-sm ${
+          selectedSubjectKey === 'pol'
+            ? 'bg-rose-500/10 text-rose-300 border-rose-500/30'
+            : 'bg-amber-500/10 text-amber-300 border-amber-500/30'
+        }`}>
+          <span className={`w-2 h-2 rounded-full ${selectedSubjectKey === 'pol' ? 'bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.6)]' : 'bg-amber-400 shadow-[0_0_8px_rgba(255,184,0,0.6)]'} animate-pulse`} />
+          <span>{selectedSubjectKey === 'pol' ? 'Język Polski CKE' : 'Matematyka CKE'}</span>
+        </div>
+      )}
+
+      {/* Spacer na desktopie */}
       <div className="hidden lg:block w-4" />
 
       {/* PRAWA STRONA: Skarbiec i Profil gracza */}

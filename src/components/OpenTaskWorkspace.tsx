@@ -33,8 +33,8 @@ export interface OpenTaskWorkspaceProps {
   savedCanvasDataUrl?: string;
   onSaveCanvasData?: (dataUrl: string) => void;
   onOpenScratchpad?: () => void;
-  onSubmit?: () => void;
-  onAskAiTutor?: () => void;
+  onSubmit?: (canvasDataUrl?: string) => void;
+  onAskAiTutor?: (canvasDataUrl?: string) => void;
   inputPlaceholder?: string;
   hideWhiteboard?: boolean;
   mode?: 'math' | 'text';
@@ -108,6 +108,143 @@ export function formatMathDisplay(raw: string): string {
   }
 
   return s;
+}
+
+/**
+ * Transforms an amber/dark whiteboard drawing into a pristine, high-contrast
+ * document scan (pure white background #FFFFFF, crisp dark ink #0F172A).
+ * This maximizes OCR and handwriting accuracy for Vision models (Nemotron/Gemini).
+ */
+export function getAiOptimizedCanvasDataUrl(canvas: HTMLCanvasElement): string {
+  try {
+    const offscreen = document.createElement('canvas');
+    offscreen.width = canvas.width;
+    offscreen.height = canvas.height;
+    const octx = offscreen.getContext('2d');
+    if (!octx) return canvas.toDataURL('image/png');
+
+    // Solid white paper background
+    octx.fillStyle = '#FFFFFF';
+    octx.fillRect(0, 0, offscreen.width, offscreen.height);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return canvas.toDataURL('image/png');
+
+    const srcImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const dstImgData = octx.createImageData(canvas.width, canvas.height);
+    const src = srcImgData.data;
+    const dst = dstImgData.data;
+
+    // Default dst to pure white
+    for (let i = 0; i < dst.length; i += 4) {
+      dst[i] = 255;
+      dst[i + 1] = 255;
+      dst[i + 2] = 255;
+      dst[i + 3] = 255;
+    }
+
+    // Detect user ink strokes and convert to deep, crisp dark ink
+    for (let i = 0; i < src.length; i += 4) {
+      const a = src[i + 3];
+      const r = src[i];
+      const g = src[i + 1];
+      const b = src[i + 2];
+      const isEraser = r < 25 && g < 25 && b < 35;
+
+      if (a > 20 && !isEraser) {
+        const alphaFactor = a / 255;
+        dst[i] = Math.round(15 * alphaFactor + 255 * (1 - alphaFactor));
+        dst[i + 1] = Math.round(23 * alphaFactor + 255 * (1 - alphaFactor));
+        dst[i + 2] = Math.round(42 * alphaFactor + 255 * (1 - alphaFactor));
+        dst[i + 3] = 255;
+      }
+    }
+
+    octx.putImageData(dstImgData, 0, 0);
+    return offscreen.toDataURL('image/jpeg', 0.95);
+  } catch (err) {
+    console.warn('[Whiteboard] Optimization failed, using raw dataURL:', err);
+    return canvas.toDataURL('image/png');
+  }
+}
+
+/**
+ * Asynchronously transforms a dataUrl string of the whiteboard into a high-contrast
+ * black-on-white image suitable for AI handwriting OCR.
+ */
+export function convertDataUrlToAiOptimized(dataUrl: string): Promise<string> {
+  return new Promise((resolve) => {
+    if (!dataUrl || !dataUrl.startsWith('data:image/')) {
+      return resolve(dataUrl);
+    }
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const rawW = img.naturalWidth || img.width || 600;
+        const rawH = img.naturalHeight || img.height || 400;
+
+        // Scale down to max 1024px for lightning-fast AI transfer without loss in OCR quality
+        const maxDim = 1024;
+        let w = rawW;
+        let h = rawH;
+        if (w > maxDim || h > maxDim) {
+          const ratio = Math.min(maxDim / w, maxDim / h);
+          w = Math.round(w * ratio);
+          h = Math.round(h * ratio);
+        }
+
+        const offscreen = document.createElement('canvas');
+        offscreen.width = w;
+        offscreen.height = h;
+        const octx = offscreen.getContext('2d');
+        if (!octx) return resolve(dataUrl);
+
+        // 1. Draw original transparent canvas with strokes
+        octx.clearRect(0, 0, w, h);
+        octx.drawImage(img, 0, 0, w, h);
+
+        const srcData = octx.getImageData(0, 0, w, h);
+        const src = srcData.data;
+
+        // 2. Prepare target buffer: pure white background with dark charcoal ink
+        const targetData = octx.createImageData(w, h);
+        const dst = targetData.data;
+
+        for (let i = 0; i < src.length; i += 4) {
+          const r = src[i];
+          const g = src[i + 1];
+          const b = src[i + 2];
+          const a = src[i + 3];
+
+          // Eraser strokes on whiteboard are dark #070B12
+          const isEraser = r < 25 && g < 25 && b < 35;
+
+          // High-contrast black ink on pure white paper for maximum AI Vision OCR precision
+          if (a > 15 && !isEraser) {
+            const factor = Math.min(1, (a / 255) * 1.35);
+            const ink = Math.round(255 * (1 - factor));
+            dst[i] = ink;
+            dst[i + 1] = ink;
+            dst[i + 2] = ink;
+            dst[i + 3] = 255;
+          } else {
+            // Pure crisp white background
+            dst[i] = 255;
+            dst[i + 1] = 255;
+            dst[i + 2] = 255;
+            dst[i + 3] = 255;
+          }
+        }
+
+        octx.putImageData(targetData, 0, 0);
+        resolve(offscreen.toDataURL('image/jpeg', 0.85));
+      } catch {
+        resolve(dataUrl);
+      }
+    };
+    img.onerror = () => resolve(dataUrl);
+    img.src = dataUrl;
+  });
 }
 
 const ESSAY_CONNECTORS = [
@@ -241,10 +378,17 @@ export function OpenTaskWorkspace({
     const height = rect.height || 280;
 
     if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-      let currentDrawingUrl: string | null = null;
+      // 1. Capture current canvas into an offscreen canvas BEFORE resizing wipes out pixels!
+      let backupCanvas: HTMLCanvasElement | null = null;
       if (hasCanvasStrokes && canvas.width > 0 && canvas.height > 0) {
         try {
-          currentDrawingUrl = canvas.toDataURL('image/png');
+          backupCanvas = document.createElement('canvas');
+          backupCanvas.width = canvas.width;
+          backupCanvas.height = canvas.height;
+          const bctx = backupCanvas.getContext('2d');
+          if (bctx) {
+            bctx.drawImage(canvas, 0, 0);
+          }
         } catch {}
       }
 
@@ -259,16 +403,17 @@ export function OpenTaskWorkspace({
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
-      const sourceUrl = currentDrawingUrl || savedCanvasDataUrl;
-      if (sourceUrl && sourceUrl.length > 50) {
+      if (backupCanvas) {
+        // SYNCHRONOUS RESTORE! No pixel loss, no async delay!
+        ctx.drawImage(backupCanvas, 0, 0, width, height);
+        saveCanvasState();
+      } else if (savedCanvasDataUrl && savedCanvasDataUrl.length > 50) {
         const img = new Image();
         img.onload = () => {
           ctx.drawImage(img, 0, 0, width, height);
           saveCanvasState();
         };
-        img.src = sourceUrl;
-      } else {
-        saveCanvasState();
+        img.src = savedCanvasDataUrl;
       }
     }
   };
@@ -311,7 +456,7 @@ export function OpenTaskWorkspace({
 
     if (wbTool === 'pen') {
       ctx.strokeStyle = '#FFB800';
-      ctx.lineWidth = 2.5;
+      ctx.lineWidth = 3.5;
     } else {
       ctx.strokeStyle = '#070B12';
       ctx.lineWidth = 22;
@@ -406,15 +551,18 @@ export function OpenTaskWorkspace({
     if (isEvaluated) return;
     triggerHaptic('medium');
     const canvas = canvasRef.current;
-    if (canvas && onSaveCanvasData) {
-      const dataUrl = canvas.toDataURL('image/png');
-      onSaveCanvasData(dataUrl);
+    let dataUrl = '';
+    if (canvas) {
+      dataUrl = canvas.toDataURL('image/png');
+      if (onSaveCanvasData) {
+        onSaveCanvasData(dataUrl);
+      }
     }
     // Jeśli pole tekstowe jest puste, zaznacz obecność odpowiedzi odręcznej
     if (!value || !value.trim()) {
       onChangeValue('[Rozwiązanie odręczne na tablicy]');
     }
-    onSubmit?.();
+    onSubmit?.(dataUrl);
   };
 
   // --------------------------------------------------------------------------
@@ -1089,7 +1237,7 @@ export function OpenTaskWorkspace({
         <div className="w-full bg-[#121824] border border-white/10 focus-within:border-[#FFB800]/80 focus-within:shadow-[0_0_20px_rgba(255,184,0,0.2)] rounded-2xl p-3 sm:p-4 shadow-md flex items-center justify-between gap-2.5 transition-all shrink-0">
           <div className="flex-1 min-w-0 flex flex-col justify-center text-left">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
-              Twoja odpowiedź (podgląd KaTeX):
+              Twoja odpowiedź:
             </span>
             <div className="w-full overflow-x-auto no-scrollbar py-0.5 min-h-[36px] flex items-center text-left">
               {formattedMath ? (
@@ -1181,9 +1329,13 @@ export function OpenTaskWorkspace({
               type="button"
               onClick={() => handleKeyClick('FRAC')}
               className="h-10 sm:h-11 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
-              title="Ułamek zwykły (a/b)"
+              title="Ułamek zwykły"
             >
-              a/b
+              <span className="flex flex-col items-center justify-center leading-none">
+                <span className="text-[11px] font-bold">a</span>
+                <span className="w-3.5 h-[1.5px] bg-[#FFB800] my-0.5 rounded-full" />
+                <span className="text-[11px] font-bold">b</span>
+              </span>
             </button>
             <button
               type="button"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
+import { convertSlashFractions } from './MathRenderer';
 
 /**
  * Normalizes LaTeX math strings safely:
@@ -36,7 +37,7 @@ export function cleanLatex(mathStr: string): string {
   s = s.replace(/(?<!\\)%/g, '\\%');
 
   // Replace standalone * with \cdot
-  s = s.replace(/(?<!\\)\*/g, '\\cdot ');
+  s = s.replace(/(?<!\\)\*/g, ' \\cdot ');
 
   // Standard math operators
   s = s.replace(/<=/g, '\\le ');
@@ -46,6 +47,9 @@ export function cleanLatex(mathStr: string): string {
   s = s.replace(/<=>/g, '\\iff ');
   s = s.replace(/=>/g, '\\implies ');
   s = s.replace(/\+-/g, '\\pm ');
+
+  // Convert slash-notated fractions (e.g. 8/15 -> \frac{8}{15})
+  s = convertSlashFractions(s);
 
   // Clean empty or redundant double-spaces
   s = s.replace(/\s+/g, ' ').trim();
