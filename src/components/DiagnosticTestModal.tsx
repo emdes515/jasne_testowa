@@ -191,7 +191,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
     }
   };
 
-  const correctAnswersCount = Object.values(answersState).filter(a => a.isCorrect).length;
+  const correctAnswersCount = Object.values(answersState).filter((a: any) => a.isCorrect).length;
   
   // Dynamic scale: 3/3 -> 78%, 2/3 -> 54%, 1/3 -> 34%, 0/3 -> 20%
   const assessedPercent = Math.min(
