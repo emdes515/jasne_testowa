@@ -248,7 +248,7 @@ export function DashboardView({
       const topic = topics[topicIdx];
       const lessons = getLessonsForTopic(topic);
       const incompleteLesson = lessons.find(l => {
-        const cleanId = l.id.replace(/^(lesson-|pol-lesson-)/, '');
+        const cleanId = l.id.replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, '');
         const dotId = cleanId.replace('-', '.');
         const userLessons: string[] = (userState as any)?.completed_lessons || [];
         const isDone = 

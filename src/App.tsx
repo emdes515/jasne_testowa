@@ -536,7 +536,7 @@ export default function App() {
 
     // Determine lesson key (e.g. "1.1") from lessonTitle or lessonId
     const rawLessonId = String(activeTaskData?.lessonId || '');
-    const cleanLessonId = rawLessonId.replace(/^(lesson-|pol-lesson-)/, '');
+    const cleanLessonId = rawLessonId.replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, '');
     const dotLessonId = cleanLessonId.replace('-', '.');
     const lessonTitle = activeTaskData?.lessonTitle || '';
     const match = lessonTitle.match(/(?:Lekcja\s+|[\d]+:|^)([\d]+[.-][\d]+)/i) || lessonTitle.match(/([\d]+\.[\d]+)/);

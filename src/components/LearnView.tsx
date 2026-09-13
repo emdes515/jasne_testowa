@@ -1381,9 +1381,10 @@ export function LearnView({
 
                       const cleanLessonNumber = (() => {
                         if (/sprawdzian/i.test(group.id) || /sprawdzian/i.test(group.badge || '')) return '★';
-                        const badgeMatch = (group.badge || '').match(/(\d+\.\d+)/);
+                        const badgeMatch = (group.badge || '').match(/(\d+(?:\.\d+)?)/);
                         if (badgeMatch) return badgeMatch[1];
-                        return group.id.replace(/^(pol-)?lesson-/, '').replace('-', '.');
+                        const stripped = group.id.replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, '');
+                        return stripped.replace('-', '.');
                       })();
 
                       return (

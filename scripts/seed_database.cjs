@@ -440,7 +440,9 @@ async function main() {
 
       const lessonsMetadata = lessons.map(lesson => ({
         id: lesson.id,
-        title: lesson.title,
+        title: lesson.title || lesson.name || '',
+        name: lesson.name || lesson.title || '',
+        badge: lesson.badge || '',
         required_points: lesson.required_correct_tasks || 3,
         required_correct_tasks: lesson.required_correct_tasks || 3,
         estimated_time_minutes: lesson.estimated_time_minutes || 6,
@@ -477,7 +479,9 @@ async function main() {
           id: lesson.id,
           topic_id: topicId,
           subject_id: subjectId,
-          title: lesson.title,
+          title: lesson.title || lesson.name || '',
+          name: lesson.name || lesson.title || '',
+          badge: lesson.badge || '',
           estimated_time_minutes: lesson.estimated_time_minutes || 6,
           estimated_time_formatted: lesson.estimated_time_formatted || '~6 min',
           required_correct_tasks: lesson.required_correct_tasks || 3,

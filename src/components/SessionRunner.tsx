@@ -269,9 +269,9 @@ export function sanitizeLessonHeading(title?: string): string {
   if (!title) return '';
   let cleaned = title.trim();
   // Fix "Lekcja lesson-1-2: ..." -> "Lekcja 1.2: ..."
-  cleaned = cleaned.replace(/^Lekcja\s+(?:pol-)?lesson-(\d+)-(\d+)\s*[:.]\s*/i, 'Lekcja $1.$2: ');
+  cleaned = cleaned.replace(/^Lekcja\s+(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson-(\d+)-(\d+)\s*[:.]\s*/i, 'Lekcja $1.$2: ');
   // Fix "lesson-1-2: ..." -> "Lekcja 1.2: ..."
-  cleaned = cleaned.replace(/^(?:pol-)?lesson-(\d+)-(\d+)\s*[:.]\s*/i, 'Lekcja $1.$2: ');
+  cleaned = cleaned.replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson-(\d+)-(\d+)\s*[:.]\s*/i, 'Lekcja $1.$2: ');
   // Fix double prefixes like "Lekcja 8.1: 8.1: Paszport Epoki..." -> "Lekcja 8.1: Paszport Epoki..."
   cleaned = cleaned.replace(/^Lekcja\s+(\d+[-.]\d+)\s*[:.]\s*(?:Lekcja\s+\1\s*[:.]\s*|\1\s*[:.]\s*)+/i, 'Lekcja $1: ');
   // Fix "8.1: 8.1: ..." -> "Lekcja 8.1: ..."

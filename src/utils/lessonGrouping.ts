@@ -80,10 +80,13 @@ export function isLessonCompleted(
   userState?: any
 ): boolean {
   if (!group) return false;
-  const cleanId = group.id.replace(/^lesson-/, '').replace(/^pol-lesson-/, '');
+  const cleanId = group.id.replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, '');
   const dotId = cleanId.replace('-', '.');
   const dashId = `lesson-${dotId.replace('.', '-')}`;
   const polDashId = `pol-lesson-${dotId.replace('.', '-')}`;
+  const engDashId = `eng-lesson-${dotId.replace('.', '-')}`;
+  const matRozDashId = `mat-roz-lesson-${dotId.replace('.', '-')}`;
+  const engRozDashId = `eng-roz-lesson-${dotId.replace('.', '-')}`;
 
   const userCompletedLessons: string[] = userState?.completed_lessons || [];
   const userCompletedMap = userState?.completedLessons || userState?.progress?.completedLessons || {};
@@ -94,11 +97,15 @@ export function isLessonCompleted(
     userCompletedLessons.includes(dotId) ||
     userCompletedLessons.includes(dashId) ||
     userCompletedLessons.includes(polDashId) ||
+    userCompletedLessons.includes(engDashId) ||
+    userCompletedLessons.includes(matRozDashId) ||
+    userCompletedLessons.includes(engRozDashId) ||
     userCompletedMap[group.id]?.status === 'COMPLETED' ||
     userCompletedMap[dotId]?.status === 'COMPLETED' ||
     userCompletedMap[cleanId]?.status === 'COMPLETED' ||
     userCompletedMap[dashId]?.status === 'COMPLETED' ||
-    userCompletedMap[polDashId]?.status === 'COMPLETED'
+    userCompletedMap[polDashId]?.status === 'COMPLETED' ||
+    userCompletedMap[engDashId]?.status === 'COMPLETED'
   ) {
     return true;
   }
@@ -109,11 +116,15 @@ export function isLessonCompleted(
     completedTasks.includes(`LESSON-${dotId}`) ||
     completedTasks.includes(`LESSON-${dashId}`) ||
     completedTasks.includes(`LESSON-${polDashId}`) ||
+    completedTasks.includes(`LESSON-${engDashId}`) ||
+    completedTasks.includes(`LESSON-${matRozDashId}`) ||
+    completedTasks.includes(`LESSON-${engRozDashId}`) ||
     completedTasks.includes(`LESSON-${group.id.toLowerCase()}`) ||
     completedTasks.includes(group.id) ||
     completedTasks.includes(cleanId) ||
     completedTasks.includes(dotId) ||
-    completedTasks.includes(polDashId)
+    completedTasks.includes(polDashId) ||
+    completedTasks.includes(engDashId)
   ) {
     return true;
   }
@@ -153,13 +164,14 @@ export function getLessonsForTopic(topic: any): LessonGroup[] {
   if (topic.lessons_metadata && Array.isArray(topic.lessons_metadata) && topic.lessons_metadata.length > 0) {
     return topic.lessons_metadata.map((meta: any) => {
       const rawTitle = meta.name || meta.title || '';
-      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian');
-      const cleanId = String(meta.id).replace(/^lesson-/, '').replace(/^pol-lesson-/, '').replace('-', '.');
+      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian') || String(meta.id).toLowerCase().includes('sprawdzian');
+      const cleanId = String(meta.id).replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, '').replace('-', '.');
       const cleanName = cleanLessonTitle(rawTitle);
+      const formattedBadge = isSprawdzian ? 'Sprawdzian' : (meta.badge && !meta.badge.includes('lesson-') ? meta.badge : `Lekcja ${cleanId}`);
       return {
         id: String(meta.id),
         name: cleanName,
-        badge: isSprawdzian ? 'Sprawdzian' : `Lekcja ${cleanId}`,
+        badge: formattedBadge,
         tasks: meta.tasks || [],
         estimated_time_formatted: meta.estimated_time_formatted || '~5 min',
         estimated_time_minutes: meta.estimated_time_minutes || 5,
@@ -172,13 +184,14 @@ export function getLessonsForTopic(topic: any): LessonGroup[] {
     return topic.lessons.map((lesson: any) => {
       const lessonTasks = (topic.tasks || []).filter((t: any) => String(t.lessonId) === String(lesson.id));
       const rawTitle = lesson.name || lesson.title || '';
-      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian');
-      const cleanId = String(lesson.id).replace(/^lesson-/, '').replace(/^pol-lesson-/, '').replace('-', '.');
+      const isSprawdzian = rawTitle.toLowerCase().includes('sprawdzian') || String(lesson.id).toLowerCase().includes('sprawdzian');
+      const cleanId = String(lesson.id).replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, '').replace('-', '.');
       const cleanName = cleanLessonTitle(rawTitle);
+      const formattedBadge = isSprawdzian ? 'Sprawdzian' : (lesson.badge && !lesson.badge.includes('lesson-') ? lesson.badge : `Lekcja ${cleanId}`);
       return {
         id: String(lesson.id),
         name: cleanName,
-        badge: isSprawdzian ? 'Sprawdzian' : `Lekcja ${cleanId}`,
+        badge: formattedBadge,
         tasks: (lesson.tasks && lesson.tasks.length > 0) ? lesson.tasks : lessonTasks,
         estimated_time_formatted: lesson.estimated_time_formatted || '~5 min',
         estimated_time_minutes: lesson.estimated_time_minutes || 5,
