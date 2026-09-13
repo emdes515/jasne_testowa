@@ -7,11 +7,11 @@ service cloud.firestore {
       allow read: if true;
       allow write: if request.auth != null;
     }
-
-    // System metadata
+  
+    // System metadata - read only for authenticated users
     match /system/{document=**} {
-      allow read: if true;
-      allow write: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only via Admin SDK / service account
     }
     
     // Subjects (Przedmioty) -> Topics (Działy) -> Lessons (Lekcje)
@@ -31,19 +31,20 @@ service cloud.firestore {
     }
 
     
-    // Legacy collections (optional read access during migration)
+    // Legacy collections (read-only for migration)
     match /mathTasks/{document=**} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if false;
     }
     match /zadania_matura/{document=**} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if false;
     }
     
-    // Users Profile and Progress
+    // Users Profile and Progress - SECURED: users can only access their own data
     match /users/{userId} {
-      allow read: if true;
+      // Users can ONLY read their own profile, not others
+      allow read: if request.auth != null && request.auth.uid == userId;
       allow write: if request.auth != null && request.auth.uid == userId;
 
       // Subcollection progress: users/{userId}/progress/{topicId}
@@ -51,21 +52,27 @@ service cloud.firestore {
         allow read, write: if request.auth != null && request.auth.uid == userId;
       }
 
-      // Any other user subcollections
+      // Any other user subcollections - strictly isolated per user
       match /{allChildren=**} {
         allow read, write: if request.auth != null && request.auth.uid == userId;
       }
     }
 
-    // Arena multiplayer matches
+    // Arena multiplayer matches - only participants can access
     match /matches/{matchId} {
-      allow read: if true;
-      allow write: if request.auth != null;
+      allow read: if request.auth != null && 
+        (resource.data.player1Id == request.auth.uid || 
+         resource.data.player2Id == request.auth.uid ||
+         (!resource.exists() && request.auth != null)); // Allow create
+      allow write: if request.auth != null && 
+        (resource.data.player1Id == request.auth.uid || 
+         resource.data.player2Id == request.auth.uid ||
+         (!resource.exists())); // Allow create
     }
     
-    // Default fallback
+    // Default fallback - DENY ALL by default for security
     match /{document=**} {
-      allow read, write: if request.auth != null;
+      allow read, write: if false;
     }
   }
 }
