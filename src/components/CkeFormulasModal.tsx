@@ -119,6 +119,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                 <button
                   onClick={() => setSearchQuery('')}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5 rounded-md"
+                  aria-label="Wyczyść wyszukiwanie"
                 >
                   <X size={14} />
                 </button>

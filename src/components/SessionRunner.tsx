@@ -4186,6 +4186,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   type="button"
                   onClick={() => setShowExplanation(false)}
                   className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+                  aria-label="Zamknij wyjaśnienie"
                 >
                   <X size={20} />
                 </button>

@@ -264,6 +264,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
             <button
               onClick={onClose}
               className="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition border border-white/5 cursor-pointer"
+              aria-label="Zamknij"
             >
               <X size={15} />
             </button>

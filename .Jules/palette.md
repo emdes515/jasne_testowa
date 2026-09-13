@@ -1,0 +1,1 @@
+## 2026-09-13 - Added aria-labels to icon-only buttons\n**Learning:** Icon-only buttons used for closing modals/sheets often miss `aria-label` attributes, impacting screen reader accessibility.\n**Action:** Ensure all icon-only buttons (especially those containing only an SVG/icon component like `<X />`) have a descriptive `aria-label` (e.g., "Zamknij") across the application.
