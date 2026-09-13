@@ -33,11 +33,11 @@ export const Badge: React.FC<BadgeProps> = ({
   id
 }) => {
   const variantStyles: Record<BadgeVariant, string> = {
-    jasne: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30 shadow-[0_0_12px_rgba(255,184,0,0.12)]',
-    cyan: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30 shadow-[0_0_12px_rgba(255,184,0,0.12)]',
-    amber: 'bg-amber-400/10 text-amber-300 border-amber-400/30 shadow-[0_0_12px_rgba(251,191,36,0.12)]',
-    emerald: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/30 shadow-[0_0_12px_rgba(52,211,153,0.12)]',
-    blue: 'bg-[#38BDF8]/10 text-[#38BDF8] border-[#38BDF8]/30 shadow-[0_0_12px_rgba(56,189,248,0.12)]'
+    jasne: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30',
+    cyan: 'bg-[#FFB800]/10 text-[#FFB800] border-[#FFB800]/30',
+    amber: 'bg-amber-400/10 text-amber-300 border-amber-400/30',
+    emerald: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/30',
+    blue: 'bg-[#38BDF8]/10 text-[#38BDF8] border-[#38BDF8]/30'
   };
 
   const sizeStyles: Record<BadgeSize, string> = {

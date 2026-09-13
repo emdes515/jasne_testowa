@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UserState } from '../types';
+import { UserState, SubjectKey } from '../types';
 import { User, Flame, Coins, Sparkles, X, Heart, Clock, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
@@ -10,8 +10,8 @@ export interface HeaderProps {
   onProfileClick?: () => void;
   onLogoClick?: () => void;
   currentTab?: string;
-  selectedSubjectKey?: 'math' | 'pol';
-  onSelectSubject?: (key: 'math' | 'pol') => void;
+  selectedSubjectKey?: SubjectKey;
+  onSelectSubject?: (key: SubjectKey) => void;
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;

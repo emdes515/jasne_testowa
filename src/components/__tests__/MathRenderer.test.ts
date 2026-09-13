@@ -143,5 +143,18 @@ describe('autoWrapLatex', () => {
     expect(autoWrapLatex('Krok po kroku: 8/15 · 5/4 = (8 · 5)/(15 · 4) = 40/60 = 2/3.'))
       .toBe('Krok po kroku: $\\frac{8}{15} \\cdot \\frac{5}{4} = \\frac{8 \\cdot 5}{15 \\cdot 4} = \\frac{40}{60} = \\frac{2}{3}$.');
   });
+
+  it('converts algebraic variable fractions, inequalities with != and pi in prose', () => {
+    const input = 'Liczba wymierna to każda liczba, którą można przedstawić w postaci ułamka zwykłego p/q, gdzie licznik i mianownik są całkowite (q != 0). Rozwinięcia dziesiętne liczb wymiernych są skończone lub nieskończone okresowe. Liczby niewymierne mają rozwinięcia nieskończone nieokresowe (np. pierwiastki niedające się wyliczyć, liczba pi).';
+    const output = autoWrapLatex(input);
+    expect(output).toContain('$\\frac{p}{q}$');
+    expect(output).toContain('($q \\neq 0$)');
+    expect(output).toContain('liczba $\\pi$');
+    expect(output).not.toContain('!=');
+
+    expect(autoWrapLatex('x != 5')).toBe('$x \\neq 5$');
+    expect(autoWrapLatex('a != 0')).toBe('$a \\neq 0$');
+    expect(autoWrapLatex('wartość pi')).toBe('wartość $\\pi$');
+  });
 });
 

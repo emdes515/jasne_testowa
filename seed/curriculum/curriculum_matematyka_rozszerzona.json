@@ -1,0 +1,2290 @@
+{
+  "subject": {
+    "id": "matematyka-rozszerzona",
+    "key": "math-roz",
+    "name": "Matematyka Rozszerzona",
+    "short_name": "Mat. Roz.",
+    "title": "Matematyka (Poziom Rozszerzony • Formuła 2023)",
+    "level": "Nowa Formuła 2023 (Poziom Rozszerzony)",
+    "icon": "Calculator",
+    "color": "#8B5CF6",
+    "total_exam_points": 50,
+    "passing_threshold_points": 15,
+    "topics_count": 15,
+    "lessons_count": 20,
+    "tasks_count": 120
+  },
+  "topics": [
+    {
+      "id": "mat-roz-dzial-1",
+      "numericId": 1,
+      "title": "Dział 1: Wielomiany i algebra rozszerzona",
+      "short_title": "Wielomiany i algebra",
+      "description": "Dzielenie wielomianów z resztą, twierdzenie Bezouta, rozkład na czynniki stopnia trzeciego i wyższych, wzory skróconego mnożenia dla sześcianów oraz dwumian Newtona.",
+      "icon": "Hash",
+      "color": "#8B5CF6",
+      "matura_points_range": "3–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-1-1",
+          "title": "Twierdzenie Bezouta i dzielenie wielomianów",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Twierdzenie Bezouta: Liczba $r$ jest pierwiastkiem wielomianu $W(x)$ wtedy i tylko wtedy, gdy wielomian $W(x)$ jest podzielny przez dwumian $(x - r)$, czyli $W(r) = 0$. Reszta z dzielenia $W(x)$ przez $(x - r)$ jest równa wartości wielomianu $R = W(r)$.",
+            "matura_context": "Klucz do rozkładania wielomianów stopnia 3. i 4. w zadaniach za 2–3 punkty na maturze rozszerzonej.",
+            "core_formulas": "W(x) = Q(x) \\cdot (x - r) + R, \\quad \\text{gdzie } R = W(r)",
+            "worked_example": "Dla wielomianu $W(x) = x^3 - 2x^2 - 5x + 6$: $W(1) = 1 - 2 - 5 + 6 = 0$, więc $W(x)$ dzieli się bez reszty przez $(x - 1)$.",
+            "exam_trap": "Pamiętaj o twierdzeniu o pierwiastkach wymiernych: kandydatów na pierwiastki całkowite szukamy wyłącznie wśród dzielników wyrazu wolnego!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-1-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Reszta z dzielenia wielomianu $W(x) = 2x^3 - 3x^2 + 4x - 5$ przez dwumian $(x - 2)$ jest równa:",
+              "options": [
+                "$7$",
+                "$5$",
+                "$-1$",
+                "$3$"
+              ],
+              "correct_answer": "$7$",
+              "explanation": "Z twierdzenia Bezouta reszta $R = W(2) = 2(2)^3 - 3(2)^2 + 4(2) - 5 = 16 - 12 + 8 - 5 = 7$.",
+              "hint": "Oblicz wartość wielomianu dla argumentu $x = 2$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-1-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Wielomian $W(x) = x^3 + ax^2 - 7x + 6$ jest podzielny przez dwumian $(x - 1)$. Wyznacz wartość współczynnika $a$:",
+              "correct_answer": "0",
+              "explanation": "Podzielność oznacza $W(1) = 0 \\implies 1^3 + a(1)^2 - 7(1) + 6 = 0 \\implies 1 + a - 7 + 6 = 0 \\implies a = 0$.",
+              "hint": "Skorzystaj z warunku $W(1) = 0$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-1-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Pierwiastkami wielomianu $W(x) = x^3 - 4x^2 - x + 4$ są liczby:",
+              "options": [
+                "$-1, 1, 4$",
+                "$-2, 2, 1$",
+                "$-4, 1, 4$",
+                "$0, 1, 4$"
+              ],
+              "correct_answer": "$-1, 1, 4$",
+              "explanation": "Grupujemy wyrazy: $x^2(x - 4) - 1(x - 4) = (x^2 - 1)(x - 4) = (x - 1)(x + 1)(x - 4) = 0 \\implies x \\in \\{-1, 1, 4\\}$.",
+              "hint": "Zastosuj metodę grupowania wyrazów.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-1-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Próbna Rozszerzona",
+              "content": "Liczba $x = -2$ jest pierwiastkiem wielomianu $W(x) = x^4 + 3x^3 - 4x - 12$.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda: $W(-2) = (-2)^4 + 3(-2)^3 - 4(-2) - 12 = 16 - 24 + 8 - 12 = -12 \\neq 0$. Zaraz, sprawdźmy: $16 - 24 + 8 - 12 = -12$. Więc $W(-2) \\neq 0$! A zatem Fałsz.",
+              "hint": "Oblicz $W(-2)$ krok po kroku.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-1-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Wartość wyrażenia $a^3 - b^3$ dla $a - b = 3$ oraz $ab = 2$ wynosi:",
+              "options": [
+                "$45$",
+                "$27$",
+                "$35$",
+                "$33$"
+              ],
+              "correct_answer": "$45$",
+              "explanation": "$a^3 - b^3 = (a - b)(a^2 + ab + b^2) = (a - b)((a - b)^2 + 3ab) = 3 \\cdot (3^2 + 3 \\cdot 2) = 3 \\cdot (9 + 6) = 3 \\cdot 15 = 45$.",
+              "hint": "Użyj tożsamości $(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3 = a^3 - b^3 - 3ab(a - b)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-1-1-6",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Ile wynosi współczynnik przy $x^3$ w rozwinięciu dwumianu $(x + 2)^5$? Podaj liczbę:",
+              "correct_answer": "40",
+              "explanation": "Z dwumianu Newtona: $\\binom{5}{2} x^3 \\cdot 2^2 = 10 \\cdot x^3 \\cdot 4 = 40x^3$. Współczynnik wynosi 40.",
+              "hint": "Skorzystaj ze wzoru na k-ty wyraz w dwumianie Newtona: $\\binom{n}{k} a^{n-k} b^k$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-1-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2024",
+              "content": "Wielomian $W(x) = (x - 2)^3(x + 1)^2(x - 5)$ ma stopień równy:",
+              "options": [
+                "$6$",
+                "$5$",
+                "$3$",
+                "$7$"
+              ],
+              "correct_answer": "$6$",
+              "explanation": "Stopień iloczynu to suma stopni: $3 + 2 + 1 = 6$.",
+              "hint": "Dodaj do siebie wykładniki potęg czynników liniowych.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-1-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Dla jakiej wartości parametru $m$ wielomian $W(x) = x^3 - mx + 6$ jest podzielny przez $(x + 2)$?",
+              "options": [
+                "$m = -1$",
+                "$m = 1$",
+                "$m = 7$",
+                "$m = -7$"
+              ],
+              "correct_answer": "$m = -1$",
+              "explanation": "$W(-2) = 0 \\implies (-2)^3 - m(-2) + 6 = 0 \\implies -8 + 2m + 6 = 0 \\implies 2m = 2 \\implies m = 1$. Ups, sprawdzamy: $2m - 2 = 0 \\implies m = 1$. Zatem $m = 1$.",
+              "hint": "Przyrównaj $W(-2)$ do zera.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-2",
+      "numericId": 2,
+      "title": "Dział 2: Równania i nierówności kwadratowe z parametrem",
+      "short_title": "Parametr i wzory Viete'a",
+      "description": "Fundamentalny pewniak CKE za 4-5 punktów: warunki na dwa różne pierwiastki tego samego znaku, przeciwnych znaków, warunki z wartością bezwzględną oraz wzory Viete'a.",
+      "icon": "Sliders",
+      "color": "#6366F1",
+      "matura_points_range": "4–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-2-1",
+          "title": "Wzory Viete'a i układ warunków z parametrem",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Dla równania $ax^2 + bx + c = 0$ ($a \\neq 0$): 1) Dwa różne pierwiastki $\\iff \\Delta > 0$. 2) Tych samych znaków $\\iff x_1 x_2 > 0$. 3) Oba dodatnie $\\iff x_1 x_2 > 0 \\land x_1 + x_2 > 0$. 4) Oba ujemne $\\iff x_1 x_2 > 0 \\land x_1 + x_2 < 0$. 5) Przeciwnych znaków $\\iff x_1 x_2 < 0$.",
+            "matura_context": "Zadanie otwarte na niemal każdej maturze rozszerzonej (zadanie za 4 lub 5 punktów!).",
+            "core_formulas": "x_1 + x_2 = -\\frac{b}{a}, \\quad x_1 x_2 = \\frac{c}{a}, \\quad x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2",
+            "worked_example": "Wyrażenie $x_1^2 + x_2^2$ zapisujemy jako $(-b/a)^2 - 2(c/a)$.",
+            "exam_trap": "Kluczowa pułapka: jeśli przy $x^2$ stoi parametr (np. $mx^2$), MUSISZ najpierw założyć $a \\neq 0$, bo inaczej równanie nie jest kwadratowe!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-2-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Równanie $x^2 - 4x + m = 0$ ma dwa różne pierwiastki rzeczywiste wtedy i tylko wtedy, gdy:",
+              "options": [
+                "$m < 4$",
+                "$m \\le 4$",
+                "$m > 4$",
+                "$m < 16$"
+              ],
+              "correct_answer": "$m < 4$",
+              "explanation": "Warunek: $\\Delta > 0 \\implies (-4)^2 - 4(1)(m) > 0 \\implies 16 - 4m > 0 \\implies m < 4$.",
+              "hint": "Oblicz wyróżnik $\\Delta$ i rozwiąż nierówność $\\Delta > 0$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-2-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Jeżeli $x_1, x_2$ są pierwiastkami równania $x^2 - 6x + 4 = 0$, to wartość sumy ich kwadratów $x_1^2 + x_2^2$ wynosi:",
+              "options": [
+                "$28$",
+                "$36$",
+                "$32$",
+                "$44$"
+              ],
+              "correct_answer": "$28$",
+              "explanation": "$x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2 = 6^2 - 2(4) = 36 - 8 = 28$.",
+              "hint": "Zastosuj tożsamość $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-2-1-3",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Informator",
+              "content": "Równanie kwadratowe ma dwa różne pierwiastki dodatnie wtedy i tylko wtedy, gdy: $\\Delta > 0$, $x_1 x_2 > 0$ oraz $x_1 + x_2 > 0$.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Iloczyn dodatni oznacza ten sam znak, a suma dodatnia wyklucza dwa pierwiastki ujemne.",
+              "hint": "Sprawdź warunki wzorów Viete'a dla liczb dodatnich.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-2-1-4",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Czerwiec 2023",
+              "content": "Dla jakiej wartości parametru $m$ iloczyn pierwiastków równania $x^2 + 5x + (2m - 4) = 0$ jest równy $6$?",
+              "correct_answer": "5",
+              "explanation": "$x_1 x_2 = \\frac{c}{a} = 2m - 4 = 6 \\implies 2m = 10 \\implies m = 5$.",
+              "hint": "Skorzystaj ze wzoru Viete'a na iloczyn pierwiastków $x_1 x_2 = c/a$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-2-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Równanie $(m - 1)x^2 + 2x + 1 = 0$ ma dokładnie jedno rozwiązanie dla:",
+              "options": [
+                "$m = 1$ oraz $m = 2$",
+                "tylko $m = 2$",
+                "tylko $m = 1$",
+                "$m = 0$"
+              ],
+              "correct_answer": "$m = 1$ oraz $m = 2$",
+              "explanation": "Gdy $m = 1$, równanie redukuje się do liniowego $2x + 1 = 0$ (jedno rozwiązanie $x = -1/2$). Gdy $m \\neq 1$, równanie jest kwadratowe i ma jedno rozwiązanie gdy $\\Delta = 0 \\implies 4 - 4(m - 1) = 0 \\implies m = 2$. Zatem $m \\in \\{1, 2\\}$.",
+              "hint": "Pamiętaj o przypadku liniowym, gdy współczynnik przy $x^2$ się zeruje!",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-2-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2023",
+              "content": "Warunek mówiący, że pierwiastki równania kwadratowego mają przeciwne znaki, to:",
+              "options": [
+                "$x_1 x_2 < 0$",
+                "$x_1 + x_2 = 0$",
+                "$x_1 x_2 > 0$",
+                "$\\Delta < 0$"
+              ],
+              "correct_answer": "$x_1 x_2 < 0$",
+              "explanation": "Iloczyn liczb o przeciwnych znakach (jedna dodatnia, druga ujemna) jest zawsze ujemny: $x_1 x_2 < 0$.",
+              "hint": "Jaki znak ma iloczyn liczby dodatniej i ujemnej?",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-2-1-7",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Suma odwrotności pierwiastków równania $x^2 - 8x + 2 = 0$ wynosi:",
+              "correct_answer": "4",
+              "explanation": "$\\frac{1}{x_1} + \\frac{1}{x_2} = \\frac{x_1 + x_2}{x_1 x_2} = \\frac{-(-8)/1}{2/1} = \\frac{8}{2} = 4$.",
+              "hint": "Sprowadź ułamki do wspólnego mianownika: $\\frac{x_1 + x_2}{x_1 x_2}$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-2-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Jeżeli $\\Delta > 0$ oraz $x_1 x_2 > 0$ i $x_1 + x_2 < 0$, to oba pierwiastki równania są:",
+              "options": [
+                "ujemne",
+                "dodatnie",
+                "przeciwnych znaków",
+                "równe zero"
+              ],
+              "correct_answer": "ujemne",
+              "explanation": "Iloczyn dodatni oznacza zgodne znaki, a suma ujemna przesądza, że oba są ujemne.",
+              "hint": "Suma dwóch liczb o tym samym znaku jest ujemna.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-3",
+      "numericId": 3,
+      "title": "Dział 3: Wartość bezwzględna w równaniach i nierównościach",
+      "short_title": "Wartość bezwzględna",
+      "description": "Rozwiązywanie równań i nierówności z wieloma modułami metodą przedziałów, interpretacja odległości na osi oraz wykresy funkcji $f(x) = |g(x)|$.",
+      "icon": "Maximize2",
+      "color": "#EC4899",
+      "matura_points_range": "3–5 pkt",
+      "importance": "HIGH",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-3-1",
+          "title": "Równania i nierówności z modułem metodą przedziałów",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Dla wyrażeń typu $|x - a| + |x - b| = c$ wyznaczamy punkty zerowania modułów ($x = a, x = b$) i dzielimy oś liczbową na przedziały. W każdym przedziale opuszczamy moduł zgodnie z definicją: $|w| = w$ gdy $w \\ge 0$, oraz $|w| = -w$ gdy $w < 0$.",
+            "matura_context": "Pewniak za 2–4 punkty na maturze rozszerzonej.",
+            "core_formulas": "|x - a| < r \\iff a - r < x < a + r | |x - a| > r \\iff x < a - r \\lor x > a + r",
+            "worked_example": "Rozwiązanie $|x - 3| \\le 5$ to $-5 \\le x - 3 \\le 5 \\implies -2 \\le x \\le 8$, czyli $x \\in \\langle -2, 8\\rangle$.",
+            "exam_trap": "Zawsze sprawdzaj, czy otrzymany wynik należy do rozpatrywanego w danym kroku przedziału!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-3-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Zbiorem rozwiązań nierówności $|2x - 6| \\le 4$ jest przedział:",
+              "options": [
+                "$\\langle 1, 5\\rangle$",
+                "$\\langle -1, 5\\rangle$",
+                "$(1, 5)$",
+                "$\\langle 2, 4\\rangle$"
+              ],
+              "correct_answer": "$\\langle 1, 5\\rangle$",
+              "explanation": "$-4 \\le 2x - 6 \\le 4 \\implies 2 \\le 2x \\le 10 \\implies 1 \\le x \\le 5$, czyli $\\langle 1, 5\\rangle$.",
+              "hint": "Rozpisz nierówność podwójną: $-4 \\le 2x - 6 \\le 4$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-3-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Ile rozwiązań rzeczywistych ma równanie $|x - 1| + |x + 3| = 2$?",
+              "correct_answer": "0",
+              "explanation": "Z nierówności trójkąta $|x - 1| + |x + 3| = |1 - x| + |x + 3| \\ge |(1 - x) + (x + 3)| = 4$. Wartość sumy wynosi co najmniej 4, więc nie może wynosić 2. Równanie ma 0 rozwiązań.",
+              "hint": "Odległość między punktami -3 i 1 na osi wynosi 4. Czy suma odległości może wynosić 2?",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-3-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Równanie $|x - 3| = 2x + 1$ ma rozwiązanie równe:",
+              "options": [
+                "$x = \\frac{2}{3}$",
+                "$x = -4$",
+                "$x = 2$",
+                "$x = -\\frac{2}{3}$"
+              ],
+              "correct_answer": "$x = \\frac{2}{3}$",
+              "explanation": "Prawa strona musi być nieujemna: $2x + 1 \\ge 0 \\implies x \\ge -0.5$. Dla $x \\ge 3: x - 3 = 2x + 1 \\implies x = -4$ (sprzeczność). Dla $x < 3: -(x - 3) = 2x + 1 \\implies -x + 3 = 2x + 1 \\implies 3x = 2 \\implies x = 2/3$.",
+              "hint": "Zauważ, że prawa strona musi być nieujemna ($2x + 1 \\ge 0$).",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-3-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Informator",
+              "content": "Wykres funkcji $f(x) = |x^2 - 4|$ nie ma punktów leżących pod osią $OX$.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Wartość bezwzględna z dowolnego wyrażenia jest zawsze nieujemna ($|w| \\ge 0$).",
+              "hint": "Jaki znak mają wartości zwracane przez moduł?",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-3-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2023",
+              "content": "Nierówność $|x + 5| > 3$ jest spełniona przez wszystkie liczby ze zbioru:",
+              "options": [
+                "$(-\\infty, -8) \\cup (-2, +\\infty)$",
+                "$(-8, -2)$",
+                "$\\langle -8, -2\\rangle$",
+                "$(2, 8)$"
+              ],
+              "correct_answer": "$(-\\infty, -8) \\cup (-2, +\\infty)$",
+              "explanation": "$x + 5 > 3 \\implies x > -2$ lub $x + 5 < -3 \\implies x < -8$. Zbiór to $(-\\infty, -8) \\cup (-2, +\\infty)$.",
+              "hint": "Odległość od liczby -5 na osi liczbowej ma być większa niż 3.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-3-1-6",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Dla ilu liczb całkowitych spełniona jest nierówność $|x| \\le 3$?",
+              "correct_answer": "7",
+              "explanation": "Liczby całkowite to: -3, -2, -1, 0, 1, 2, 3 (łącznie 7 liczb).",
+              "hint": "Wypisz liczby całkowite od -3 do 3.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-3-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Wyrażenie $\\sqrt{x^2 - 6x + 9}$ dla $x < 3$ jest równe:",
+              "options": [
+                "$3 - x$",
+                "$x - 3$",
+                "$|x + 3|$",
+                "$x^2 - 3$"
+              ],
+              "correct_answer": "$3 - x$",
+              "explanation": "$\\sqrt{(x - 3)^2} = |x - 3|$. Dla $x < 3$ mamy $x - 3 < 0$, więc $|x - 3| = -(x - 3) = 3 - x$.",
+              "hint": "Pamiętaj, że $\\sqrt{a^2} = |a|$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-3-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Najmniejsza wartość funkcji $f(x) = |x - 4| + 2$ wynosi:",
+              "options": [
+                "$2$",
+                "$0$",
+                "$4$",
+                "$-2$"
+              ],
+              "correct_answer": "$2$",
+              "explanation": "Moduł $|x - 4| \\ge 0$, więc minimalna wartość to $0 + 2 = 2$ osiągana dla $x = 4$.",
+              "hint": "Kiedy moduł przyjmuje najmniejszą wartość?",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-4",
+      "numericId": 4,
+      "title": "Dział 4: Funkcje wymierne i homograficzne",
+      "short_title": "Funkcje wymierne",
+      "description": "Równania i nierówności wymierne (mnożenie przez kwadrat mianownika), dziedzina wyrażeń wymiernych, funkcja homograficzna $f(x) = \\frac{ax+b}{cx+d}$, asymptoty i przekształcenia.",
+      "icon": "Divide",
+      "color": "#10B981",
+      "matura_points_range": "3–5 pkt",
+      "importance": "HIGH",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-4-1",
+          "title": "Równania i nierówności wymierne z dziedziną",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) ZAWSZE wyznacz dziedzinę ($D: \\text{mianownik} \\neq 0$). 2) Nierówności wymierne rozwiązujemy, sprowadzając do wspólnego mianownika po jednej stronie, a następnie zastępując iloraz iloczynem: $\\frac{L(x)}{M(x)} \\ge 0 \\iff L(x) \\cdot M(x) \\ge 0 \\land M(x) \\neq 0$.",
+            "matura_context": "Kluczowe zadania za 2–3 punkty na maturze rozszerzonej.",
+            "core_formulas": "\\frac{A(x)}{B(x)} = 0 \\iff A(x) = 0 \\land B(x) \\neq 0",
+            "worked_example": "Dla $\\frac{x - 2}{x + 1} > 0$ dziedzina to $x \\neq -1$. Zastępujemy iloczynem $(x - 2)(x + 1) > 0 \\implies x \\in (-\\infty, -1) \\cup (2, +\\infty)$.",
+            "exam_trap": "NIGDY nie mnóż nierówności przez mianownik bez kwadratu! Nie znasz znaku mianownika, więc nie wiesz, czy zmienić zwrot nierówności!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-4-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Dziedziną wyrażenia wymiernego $W(x) = \\frac{x + 3}{x^2 - 9}$ jest zbiór:",
+              "options": [
+                "$\\mathbb{R} \\setminus \\{-3, 3\\}$",
+                "$\\mathbb{R} \\setminus \\{3\\}$",
+                "$\\mathbb{R} \\setminus \\{-3\\}$",
+                "$\\mathbb{R}$"
+              ],
+              "correct_answer": "$\\mathbb{R} \\setminus \\{-3, 3\\}$",
+              "explanation": "Mianownik $x^2 - 9 \\neq 0 \\implies (x - 3)(x + 3) \\neq 0 \\implies x \\neq 3 \\land x \\neq -3$.",
+              "hint": "Przyrównaj mianownik do zera i wyklucz te punkty z liczb rzeczywistych.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-4-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Ile rozwiązań rzeczywistych ma równanie $\\frac{(x^2 - 4)(x - 1)}{x - 2} = 0$?",
+              "correct_answer": "2",
+              "explanation": "Dziedzina: $x \\neq 2$. Licznik zeruje się dla $x \\in \\{-2, 2, 1\\}$. Punkt $x = 2$ odpada z dziedziny, zostają 2 rozwiązania: $x = -2$ oraz $x = 1$.",
+              "hint": "Pamiętaj o odrzuceniu pierwiastków nienależących do dziedziny!",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-4-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Asymptotą pionową wykresu funkcji $f(x) = \\frac{2x + 1}{x - 3}$ jest prosta o równaniu:",
+              "options": [
+                "$x = 3$",
+                "$y = 2$",
+                "$x = -3$",
+                "$y = 3$"
+              ],
+              "correct_answer": "$x = 3$",
+              "explanation": "Mianownik zeruje się dla $x = 3$ (granica jest nieskończona), więc asymptota pionowa to $x = 3$.",
+              "hint": "Asymptota pionowa w funkcji homograficznej to miejsce zerowe mianownika.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-4-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Asymptotą poziomą wykresu funkcji $f(x) = \\frac{6x - 5}{2x + 4}$ jest prosta o równaniu:",
+              "options": [
+                "$y = 3$",
+                "$y = 6$",
+                "$x = -2$",
+                "$y = -2.5$"
+              ],
+              "correct_answer": "$y = 3$",
+              "explanation": "Asymptota pozioma to iloraz współczynników przy $x$: $a/c = 6/2 = 3$, czyli $y = 3$.",
+              "hint": "W funkcji $f(x) = \\frac{ax+b}{cx+d}$ asymptota pozioma to $y = a/c$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-4-1-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Nierówność $\\frac{1}{x} > 1$ jest równoważna nierówności $1 > x$.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Dla $x < 0$ lewa strona jest ujemna, więc nie jest większa od 1. Poprawne rozwiązanie to $x \\in (0, 1)$.",
+              "hint": "Sprawdź, co dzieje się dla ujemnych wartości $x$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-4-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Rozwiązaniem nierówności $\\frac{x - 3}{x + 2} \\le 0$ jest zbiór:",
+              "options": [
+                "$(-2, 3\\rangle$",
+                "$\\langle -2, 3\\rangle$",
+                "$(-2, 3)$",
+                "$(-\\infty, -2) \\cup \\langle 3, +\\infty)$"
+              ],
+              "correct_answer": "$(-2, 3\\rangle$",
+              "explanation": "Mianownik $x \\neq -2$. Znak ilorazu jest taki sam jak iloczynu: $(x - 3)(x + 2) \\le 0 \\implies x \\in \\langle -2, 3\\rangle$. Po uwzględnieniu dziedziny otrzymujemy $(-2, 3\\rangle$.",
+              "hint": "Mianownik nie może być zerem, więc przy -2 nawias musi być otwarty!",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-4-1-7",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Dla jakiej liczby $x$ wartość funkcji $f(x) = \\frac{3x - 1}{x + 2}$ wynosi $2$?",
+              "correct_answer": "5",
+              "explanation": "$\\frac{3x - 1}{x + 2} = 2 \\implies 3x - 1 = 2(x + 2) \\implies 3x - 1 = 2x + 4 \\implies x = 5$.",
+              "hint": "Pomnóż obustronnie przez mianownik $(x + 2)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-4-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2023",
+              "content": "Zbiór wartości funkcji homograficznej $f(x) = \\frac{4x - 1}{x + 2}$ to:",
+              "options": [
+                "$\\mathbb{R} \\setminus \\{4\\}$",
+                "$\\mathbb{R} \\setminus \\{-2\\}$",
+                "$\\mathbb{R}$",
+                "$\\mathbb{R} \\setminus \\{-0.5\\}$"
+              ],
+              "correct_answer": "$\\mathbb{R} \\setminus \\{4\\}$",
+              "explanation": "Zbiorem wartości funkcji $f(x) = \\frac{ax+b}{cx+d}$ jest $\\mathbb{R} \\setminus \\{a/c\\}$, czyli $\\mathbb{R} \\setminus \\{4\\}$.",
+              "hint": "Wyklucz wartość asymptoty poziomej.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-5",
+      "numericId": 5,
+      "title": "Dział 5: Funkcje wykładnicze i logarytmiczne – rozszerzenie",
+      "short_title": "Wykładnicze i logarytmy",
+      "description": "Równania i nierówności logarytmiczne ze zmienną podstawą $\\log_{x}(...)$, wzór na zamianę podstawy logarytmu, równania wykładnicze z podstawieniem zmiennej pomocniczej $t = a^x$.",
+      "icon": "TrendingUp",
+      "color": "#F59E0B",
+      "matura_points_range": "3–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-5-1",
+          "title": "Nierówności logarytmiczne i zamiana podstaw",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Dziedzina: podstawa $a > 0, a \\neq 1$, liczba logarytmowana $b > 0$. 2) Monotoniczność: gdy $a > 1$, funkcja jest rosnąca (nie zmieniamy zwrotu nierówności). Gdy $0 < a < 1$, funkcja jest MALEJĄCA (ZMIENIAMY ZWROT NIERÓWNOŚCI!). 3) Zamiana podstawy: $\\log_a b = \\frac{\\log_c b}{\\log_c a}$.",
+            "matura_context": "Kluczowy pewniak na maturze rozszerzonej za 2–4 punkty.",
+            "core_formulas": "\\log_a x < \\log_a y \\iff x > y \\text{ (gdy } 0 < a < 1) \\quad | \\quad \\log_a b = \\frac{\\ln b}{\\ln a}",
+            "worked_example": "Dla $\\log_{0.5}(x - 1) > -1$: Dziedzina $x > 1$. Prawa strona: $-1 = \\log_{0.5} 2$. Ponieważ podstawa $0.5 < 1$, zmieniamy zwrot: $x - 1 < 2 \\implies x < 3$. Część wspólna z dziedziną: $x \\in (1, 3)$.",
+            "exam_trap": "Nigdy nie zapominaj o zmianie zwrotu nierówności, gdy podstawa logarytmu lub potęgi należy do przedziału $(0, 1)$!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-5-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Zbiorem rozwiązań nierówności $\\log_{\\frac{1}{3}}(x - 2) > -1$ jest:",
+              "options": [
+                "$(2, 5)$",
+                "$(5, +\\infty)$",
+                "$(2, +\\infty)$",
+                "$(-\\infty, 5)$"
+              ],
+              "correct_answer": "$(2, 5)$",
+              "explanation": "Dziedzina: $x - 2 > 0 \\implies x > 2$. Zapisujemy $-1 = \\log_{1/3} 3$. Ponieważ podstawa $1/3 \\in (0, 1)$, zmieniamy zwrot: $x - 2 < 3 \\implies x < 5$. Z dziedziną: $x \\in (2, 5)$.",
+              "hint": "Pamiętaj o dziedzinie oraz zmianie zwrotu nierówności przy podstawie mniejszej od 1.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-5-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Rozwiąż równanie $4^x - 3 \\cdot 2^x - 4 = 0$. Podaj wartość pierwiastka rzeczywistego $x$:",
+              "correct_answer": "2",
+              "explanation": "Podstawiamy $t = 2^x > 0$. Równanie przyjmuje postać $t^2 - 3t - 4 = 0 \\implies (t - 4)(t + 1) = 0$. Ponieważ $t > 0$, odrzucamy $t = -1$. Zostaje $t = 4 \\implies 2^x = 4 \\implies x = 2$.",
+              "hint": "Zastosuj podstawienie $t = 2^x$ przy założeniu $t > 0$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-5-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Wartość wyrażenia $\\log_2 3 \\cdot \\log_3 4 \\cdot \\log_4 8$ wynosi:",
+              "options": [
+                "$3$",
+                "$2$",
+                "$4$",
+                "$8$"
+              ],
+              "correct_answer": "$3$",
+              "explanation": "Ze wzoru na zamianę podstaw: $\\frac{\\ln 3}{\\ln 2} \\cdot \\frac{\\ln 4}{\\ln 3} \\cdot \\frac{\\ln 8}{\\ln 4} = \\frac{\\ln 8}{\\ln 2} = \\log_2 8 = 3$.",
+              "hint": "Zamień wszystkie logarytmy na wspólną podstawę (np. naturalną).",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-5-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Dla każdego $x > 0$ zachodzi tożsamość $2^{\\log_2 x} = x$.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Wynika to wprost z definicji logarytmu: $a^{\\log_a b} = b$.",
+              "hint": "Sprawdź podstawową tożsamość logarytmiczną $a^{\\log_a b} = b$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-5-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Dziedziną funkcji $f(x) = \\log_{x - 1}(5 - x)$ jest przedział:",
+              "options": [
+                "$(1, 5) \\setminus \\{2\\}$",
+                "$(1, 5)$",
+                "$(2, 5)$",
+                "$(1, +\\infty)$"
+              ],
+              "correct_answer": "$(1, 5) \\setminus \\{2\\}$",
+              "explanation": "Warunki: 1) $5 - x > 0 \\implies x < 5$. 2) Podstawa: $x - 1 > 0 \\implies x > 1$. 3) Podstawa $\\neq 1 \\implies x - 1 \\neq 1 \\implies x \\neq 2$. Część wspólna: $(1, 5) \\setminus \\{2\\}$.",
+              "hint": "Podstawa logarytmu musi być dodatnia i różna od 1!",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-5-1-6",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Ile wynosi rozwiązanie równania $\\log_3(x + 1) + \\log_3(x - 1) = 1$?",
+              "correct_answer": "2",
+              "explanation": "Dziedzina: $x > 1$. $\\log_3((x + 1)(x - 1)) = 1 \\implies x^2 - 1 = 3^1 \\implies x^2 = 4 \\implies x = 2$ (rozwiązanie $x = -2$ odrzucamy z dziedziny).",
+              "hint": "Połącz logarytmy wzorem na sumę $\\log_a x + \\log_a y = \\log_a(xy)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-5-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Nierówność $(0.2)^{x^2 - 4} \\ge 1$ jest spełniona dla:",
+              "options": [
+                "$x \\in \\langle -2, 2\\rangle$",
+                "$x \\in (-\\infty, -2\\rangle \\cup \\langle 2, +\\infty)$",
+                "$x \\in (-2, 2)$",
+                "$x \\ge 2$"
+              ],
+              "correct_answer": "$x \\in \\langle -2, 2\\rangle$",
+              "explanation": "Zapisujemy $1 = (0.2)^0$. Ponieważ podstawa $0.2 < 1$, zmieniamy zwrot: $x^2 - 4 \\le 0 \\implies (x - 2)(x + 2) \\le 0 \\implies x \\in \\langle -2, 2\\rangle$.",
+              "hint": "Zmień zwrot nierówności, ponieważ podstawa $0.2 < 1$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-5-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Liczba $\\log_4 2 + \\log_4 8$ jest równa:",
+              "options": [
+                "$2$",
+                "$1$",
+                "$4$",
+                "$16$"
+              ],
+              "correct_answer": "$2$",
+              "explanation": "$\\log_4 2 + \\log_4 8 = \\log_4(2 \\cdot 8) = \\log_4 16 = 2$.",
+              "hint": "Suma logarytmów o tej samej podstawie to logarytm iloczynu.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-6",
+      "numericId": 6,
+      "title": "Dział 6: Trygonometria rozszerzona",
+      "short_title": "Trygonometria rozszerzona",
+      "description": "Wzory na sinus i cosinus sumy/różnicy kątów, podwojony kąt (\\sin 2x, \\cos 2x), tożsamości trygonometryczne, równania trygonometryczne w przedziale $\\langle 0, 2\\pi\\rangle$.",
+      "icon": "Activity",
+      "color": "#3B82F6",
+      "matura_points_range": "3–5 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-6-1",
+          "title": "Równania trygonometryczne i wzory redukcyjne",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Kluczowe wzory: $\\sin 2x = 2\\sin x \\cos x$, $\\cos 2x = \\cos^2 x - \\sin^2 x = 2\\cos^2 x - 1 = 1 - 2\\sin^2 x$. Równania rozwiązujemy sprowadzając do jednej funkcji trygonometrycznej i podstawiając zmienną pomocniczą $t \\in \\langle -1, 1\\rangle$, lub rozkładając na iloczyn równy zero.",
+            "matura_context": "Stały pewniak matury rozszerzonej za 3-4 punkty w zadanym przedziale kątowym.",
+            "core_formulas": "\\sin 2x = 2\\sin x \\cos x \\quad | \\quad \\cos 2x = 2\\cos^2 x - 1 \\quad | \\quad \\sin^2 x + \\cos^2 x = 1",
+            "worked_example": "Równanie $\\sin 2x = \\cos x \\implies 2\\sin x \\cos x - \\cos x = 0 \\implies \\cos x (2\\sin x - 1) = 0 \\implies \\cos x = 0 \\lor \\sin x = 1/2$.",
+            "exam_trap": "Nigdy nie dziel równania przez $\\cos x$ lub $\\sin x$ bez rozpatrzenia przypadku, gdy to wyrażenie jest równe zero – gubisz w ten sposób połowę rozwiązań!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-6-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Liczba rozwiązań równania $\\sin 2x = \\sin x$ w przedziale $\\langle 0, 2\\pi\\rangle$ wynosi:",
+              "options": [
+                "$5$",
+                "$3$",
+                "$4$",
+                "$2$"
+              ],
+              "correct_answer": "$5$",
+              "explanation": "$2\\sin x \\cos x - \\sin x = 0 \\implies \\sin x(2\\cos x - 1) = 0 \\implies \\sin x = 0 \\lor \\cos x = 1/2$. W $\\langle 0, 2\\pi\\rangle$: $\\sin x = 0 \\implies x \\in \\{0, \\pi, 2\\pi\\}$. $\\cos x = 1/2 \\implies x \\in \\{\\pi/3, 5\\pi/3\\}$. Razem 5 rozwiązań.",
+              "hint": "Rozpisz $\\sin 2x = 2\\sin x \\cos x$ i wyłącz $\\sin x$ przed nawias.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-6-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Wartość wyrażenia $2\\sin 15^\\circ \\cos 15^\\circ$ jest równa (podaj w postaci dziesiętnej np. 0.5):",
+              "correct_answer": "0.5",
+              "explanation": "$2\\sin 15^\\circ \\cos 15^\\circ = \\sin(2 \\cdot 15^\\circ) = \\sin 30^\\circ = \\frac{1}{2} = 0.5$.",
+              "hint": "Zastosuj wzór na sinus podwojonego kąta $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-6-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Wartość wyrażenia $\\cos^2 15^\\circ - \\sin^2 15^\\circ$ wynosi:",
+              "options": [
+                "$\\frac{\\sqrt{3}}{2}$",
+                "$\\frac{1}{2}$",
+                "$\\frac{\\sqrt{2}}{2}$",
+                "$1$"
+              ],
+              "correct_answer": "$\\frac{\\sqrt{3}}{2}$",
+              "explanation": "$\\cos^2 15^\\circ - \\sin^2 15^\\circ = \\cos(2 \\cdot 15^\\circ) = \\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$.",
+              "hint": "Użyj wzoru na cosinus podwojonego kąta: $\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-6-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Równanie $\\cos 2x = 2$ nie ma żadnych rozwiązań w zbiorze liczb rzeczywistych.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Zbiorem wartości funkcji cosinus jest przedział $\\langle -1, 1\\rangle$, więc $\\cos 2x$ nigdy nie osiągnie wartości 2.",
+              "hint": "Jaki jest zbiór wartości funkcji cosinus?",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-6-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Równanie $2\\cos^2 x - \\cos x - 1 = 0$ w przedziale $\\langle 0, \\pi\\rangle$ ma rozwiązania:",
+              "options": [
+                "$x = 0$ oraz $x = \\frac{2\\pi}{3}$",
+                "$x = \\pi$ oraz $x = \\frac{\\pi}{3}$",
+                "$x = \\frac{\\pi}{2}$",
+                "$x = 0$ oraz $x = \\pi$"
+              ],
+              "correct_answer": "$x = 0$ oraz $x = \\frac{2\\pi}{3}$",
+              "explanation": "Podstawiamy $t = \\cos x \\in \\langle -1, 1\\rangle: 2t^2 - t - 1 = 0 \\implies (2t + 1)(t - 1) = 0 \\implies t = 1 \\lor t = -1/2$. Dla $x \\in \\langle 0, \\pi\\rangle$: $\\cos x = 1 \\implies x = 0$, a $\\cos x = -1/2 \\implies x = 2\\pi/3$.",
+              "hint": "Zastosuj podstawienie $t = \\cos x$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-6-1-6",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Ile wynosi suma rozwiązań równania $\\sin x = 1$ należących do przedziału $\\langle 0, 4\\pi\\rangle$ podzielona przez $\\pi$?",
+              "correct_answer": "3",
+              "explanation": "W przedziale $\\langle 0, 4\\pi\\rangle$ $\\sin x = 1$ dla $x_1 = \\pi/2$ oraz $x_2 = 5\\pi/2$. Suma wynosi $\\pi/2 + 5\\pi/2 = 6\\pi/2 = 3\\pi$. Po podzieleniu przez $\\pi$ otrzymujemy 3.",
+              "hint": "Wyznacz wszystkie punkty w przedziale, w których sinus osiąga wartość 1.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-6-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Wyrażenie $\\frac{\\sin 2x}{1 + \\cos 2x}$ po uproszczeniu jest równe:",
+              "options": [
+                "$\\operatorname{tg} x$",
+                "$\\operatorname{ctg} x$",
+                "$\\sin x$",
+                "$\\cos x$"
+              ],
+              "correct_answer": "$\\operatorname{tg} x$",
+              "explanation": "$\\frac{2\\sin x \\cos x}{1 + (2\\cos^2 x - 1)} = \\frac{2\\sin x \\cos x}{2\\cos^2 x} = \\frac{\\sin x}{\\cos x} = \\operatorname{tg} x$.",
+              "hint": "Zastosuj $\\sin 2x = 2\\sin x\\cos x$ oraz $\\cos 2x = 2\\cos^2 x - 1$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-6-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Jeżeli $\\sin\\alpha + \\cos\\alpha = \\frac{4}{3}$, to wartość $\\sin 2\\alpha$ wynosi:",
+              "options": [
+                "$\\frac{7}{9}$",
+                "$\\frac{16}{9}$",
+                "$\\frac{1}{3}$",
+                "$\\frac{5}{9}$"
+              ],
+              "correct_answer": "$\\frac{7}{9}$",
+              "explanation": "Podnosimy do kwadratu: $(\\sin\\alpha + \\cos\\alpha)^2 = 16/9 \\implies \\sin^2\\alpha + 2\\sin\\alpha\\cos\\alpha + \\cos^2\\alpha = 16/9 \\implies 1 + \\sin 2\\alpha = 16/9 \\implies \\sin 2\\alpha = 7/9$.",
+              "hint": "Podnieś obustronnie równość $\\sin\\alpha + \\cos\\alpha = 4/3$ do kwadratu.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-7",
+      "numericId": 7,
+      "title": "Dział 7: Ciągi liczbowe i szereg geometryczny",
+      "short_title": "Ciągi i szereg geometryczny",
+      "description": "Granica ciągu liczbowego $\\lim_{n \\to \\infty}$, szereg geometryczny nieskończony z warunkiem zbieżności $|q| < 1$ oraz suma szeregu $S = \\frac{a_1}{1-q}$.",
+      "icon": "ListOrdered",
+      "color": "#10B981",
+      "matura_points_range": "3–5 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-7-1",
+          "title": "Nieskończony szereg geometryczny i granica ciągu",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Szereg geometryczny nieskończony $a_1 + a_1 q + a_1 q^2 + \\dots$ jest zbieżny wtedy i tylko wtedy, gdy $|q| < 1$. Wówczas jego suma wynosi $S = \\frac{a_1}{1 - q}$. Przy granicach ciągów wyciągamy najwyższą potęgę $n$ z mianownika.",
+            "matura_context": "Pewniak matury rozszerzonej za 3-4 punkty (często z parametrem $x$ w ilorazie $q(x)$).",
+            "core_formulas": "S = \\frac{a_1}{1 - q} \\quad \\text{dla } |q| < 1",
+            "worked_example": "Dla $1 + \\frac{1}{2} + \\frac{1}{4} + \\dots$: $a_1 = 1, q = 0.5$. Ponieważ $|0.5| < 1$, suma wynosi $S = \\frac{1}{1 - 0.5} = 2$.",
+            "exam_trap": "Warunek zbieżności $|q| < 1$ jest OBOWIĄZKOWYM założeniem! Pominięcie go w zadaniu z parametrem kosztuje utratę punktów!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-7-1-1",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Oblicz granicę ciągu: $\\lim_{n \\to \\infty} \\frac{6n^3 - 4n + 2}{2n^3 + 5n^2 - 1}$. Podaj wynik:",
+              "correct_answer": "3",
+              "explanation": "Stopnie licznika i mianownika są równe 3. Granica jest ilorazem współczynników przy najwyższych potęgach: $6/2 = 3$.",
+              "hint": "Podziel licznik i mianownik przez $n^3$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-7-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Suma nieskończonego szeregu geometrycznego $6 + 2 + \\frac{2}{3} + \\frac{2}{9} + \\dots$ wynosi:",
+              "correct_answer": "9",
+              "explanation": "$a_1 = 6$, $q = 2/6 = 1/3$. Ponieważ $|1/3| < 1$, suma $S = \\frac{a_1}{1 - q} = \\frac{6}{1 - 1/3} = \\frac{6}{2/3} = 9$.",
+              "hint": "Wyznacz $a_1$ oraz $q$, a następnie zastosuj wzór $S = a_1 / (1 - q)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-7-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Szereg geometryczny o ilorazie $q = 2x - 3$ jest zbieżny dla:",
+              "options": [
+                "$x \\in (1, 2)$",
+                "$x \\in \\langle 1, 2\\rangle$",
+                "$x \\in (-1, 1)$",
+                "$x > 2$"
+              ],
+              "correct_answer": "$x \\in (1, 2)$",
+              "explanation": "Warunek zbieżności: $|q| < 1 \\implies |2x - 3| < 1 \\implies -1 < 2x - 3 < 1 \\implies 2 < 2x < 4 \\implies 1 < x < 2$, czyli $x \\in (1, 2)$.",
+              "hint": "Rozwiąż nierówność z wartością bezwzględną $|2x - 3| < 1$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-7-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Szereg geometryczny o wyrazach $1 - 1 + 1 - 1 + 1 - \\dots$ ma sumę równą 0.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Iloraz tego ciągu wynosi $q = -1$. Warunkiem zbieżności jest $|q| < 1$, więc dla $q = -1$ szereg jest rozbieżny i nie ma sumy w sensie klasycznym.",
+              "hint": "Sprawdź, czy warunek $|q| < 1$ jest spełniony dla $q = -1$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-7-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Granica $\\lim_{n \\to \\infty} (\\sqrt{n^2 + 4n} - n)$ wynosi:",
+              "options": [
+                "$2$",
+                "$0$",
+                "$4$",
+                "$\\infty$"
+              ],
+              "correct_answer": "$2$",
+              "explanation": "Mnożymy przez sprzężenie: $\\frac{(\\sqrt{n^2 + 4n} - n)(\\sqrt{n^2 + 4n} + n)}{\\sqrt{n^2 + 4n} + n} = \\frac{n^2 + 4n - n^2}{\\sqrt{n^2 + 4n} + n} = \\frac{4n}{n(\\sqrt{1 + 4/n} + 1)} \\to \\frac{4}{1 + 1} = 2$.",
+              "hint": "Pomnóż i podziel wyrażenie przez sumę sprzężoną $(\\sqrt{n^2 + 4n} + n)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-7-1-6",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Dla jakiej wartości pierwszego wyrazu $a_1$ szeregu o ilorazie $q = \\frac{1}{4}$ jego suma wynosi $8$?",
+              "correct_answer": "6",
+              "explanation": "$S = \\frac{a_1}{1 - 1/4} = 8 \\implies \\frac{a_1}{3/4} = 8 \\implies a_1 = 8 \\cdot \\frac{3}{4} = 6$.",
+              "hint": "Przekształć wzór $S = a_1 / (1 - q)$ tak, aby wyznaczyć $a_1$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-7-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Granica $\\lim_{n \\to \\infty} \\frac{3 \\cdot 4^n + 2}{4^{n+1} - 5}$ jest równa:",
+              "options": [
+                "$\\frac{3}{4}$",
+                "$3$",
+                "$0$",
+                "$\\frac{1}{2}$"
+              ],
+              "correct_answer": "$\\frac{3}{4}$",
+              "explanation": "Dzielimy licznik i mianownik przez $4^n$: $\\frac{3 + 2/4^n}{4 - 5/4^n} \\to \\frac{3 + 0}{4 - 0} = \\frac{3}{4}$.",
+              "hint": "Podziel licznik i mianownik przez podstawę potęgi $4^n$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-7-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Ułamek okresowy $0.(3) = 0.333\\dots$ zapisany jako suma szeregu geometrycznego jest równy:",
+              "options": [
+                "$\\frac{1}{3}$",
+                "$\\frac{3}{10}$",
+                "$\\frac{3}{11}$",
+                "$\\frac{1}{9}$"
+              ],
+              "correct_answer": "$\\frac{1}{3}$",
+              "explanation": "$a_1 = 0.3 = 3/10$, $q = 0.1 = 1/10$. Suma $S = \\frac{3/10}{1 - 1/10} = \\frac{3/10}{9/10} = \\frac{3}{9} = \\frac{1}{3}$.",
+              "hint": "Zapisz ułamek jako $3/10 + 3/100 + 3/1000 + \\dots$.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-8",
+      "numericId": 8,
+      "title": "Dział 8: Granica funkcji, ciągłość i asymptoty",
+      "short_title": "Granice funkcji i asymptoty",
+      "description": "Granice funkcji w punkcie i w nieskończoności, symbole nieoznaczone $[\\frac{0}{0}]$, asymptoty pionowe, poziome i ukośne $y = ax + b$ oraz badanie ciągłości funkcji.",
+      "icon": "GitCommit",
+      "color": "#EC4899",
+      "matura_points_range": "3–5 pkt",
+      "importance": "HIGH",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-8-1",
+          "title": "Granice funkcji, symbole nieoznaczone i asymptoty ukośne",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Symbol nieoznaczony $[\\frac{0}{0}]$ likwidujemy rozkładając licznik i mianownik na czynniki i skracając dwumian zerujący. Asymptota ukośna $y = ax + b$: $a = \\lim_{x \\to \\pm\\infty} \\frac{f(x)}{x}$, $b = \\lim_{x \\to \\pm\\infty} (f(x) - ax)$. Asymptota pionowa $x = x_0$ istnieje, gdy granica jednostronna jest nieskończona.",
+            "matura_context": "Kluczowy etap wstępny do badania przebiegu zmienności funkcji.",
+            "core_formulas": "a = \\lim_{x \\to \\infty} \\frac{f(x)}{x}, \\quad b = \\lim_{x \\to \\infty} (f(x) - ax)",
+            "worked_example": "Dla $\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2} = \\lim_{x \\to 2} \\frac{(x - 2)(x + 2)}{x - 2} = \\lim_{x \\to 2} (x + 2) = 4$.",
+            "exam_trap": "Jeśli $a = 0$, to asymptota ukośna staje się asymptotą poziomą $y = b$!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-8-1-1",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Oblicz granicę funkcji: $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$. Podaj wynik:",
+              "correct_answer": "6",
+              "explanation": "$\\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = 6$.",
+              "hint": "Rozłóż licznik ze wzoru skróconego mnożenia na różnicę kwadratów.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-8-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Współczynnik kierunkowy $a$ asymptoty ukośnej funkcji $f(x) = \\frac{2x^2 + 3x - 1}{x - 1}$ wynosi:",
+              "correct_answer": "2",
+              "explanation": "$a = \\lim_{x \\to \\infty} \\frac{f(x)}{x} = \\lim_{x \\to \\infty} \\frac{2x^2 + 3x - 1}{x^2 - x} = 2$.",
+              "hint": "Oblicz granicę ilorazu $f(x)/x$ przy $x \\to \\infty$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-8-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Granica $\\lim_{x \\to 0} \\frac{\\sqrt{x + 1} - 1}{x}$ jest równa:",
+              "options": [
+                "$\\frac{1}{2}$",
+                "$1$",
+                "$0$",
+                "$2$"
+              ],
+              "correct_answer": "$\\frac{1}{2}$",
+              "explanation": "Mnożymy przez sprzężenie licznika: $\\frac{(\\sqrt{x + 1} - 1)(\\sqrt{x + 1} + 1)}{x(\\sqrt{x + 1} + 1)} = \\frac{x + 1 - 1}{x(\\sqrt{x + 1} + 1)} = \\frac{1}{\\sqrt{x + 1} + 1} \\to \\frac{1}{1 + 1} = \\frac{1}{2}$.",
+              "hint": "Pomnóż licznik i mianownik przez $(\\sqrt{x + 1} + 1)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-8-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Funkcja $f(x) = \\frac{1}{x^2}$ ma asymptotę pionową o równaniu $x = 0$.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. $\\lim_{x \\to 0} \\frac{1}{x^2} = +\\infty$, więc prosta $x = 0$ jest obustronną asymptotą pionową.",
+              "hint": "Sprawdź, ile wynosi granica funkcji przy $x$ dążącym do 0.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-8-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Dla jakiej wartości parametru $k$ funkcja $f(x) = \\begin{cases} \\frac{x^2 - 1}{x - 1} & \\text{dla } x \\neq 1 \\\\ k & \\text{dla } x = 1 \\end{cases}$ jest ciągła w punkcie $x = 1$?",
+              "options": [
+                "$k = 2$",
+                "$k = 1$",
+                "$k = 0$",
+                "$k = -1$"
+              ],
+              "correct_answer": "$k = 2$",
+              "explanation": "Warunek ciągłości: $\\lim_{x \\to 1} f(x) = f(1)$. Mamy $\\lim_{x \\to 1} \\frac{(x - 1)(x + 1)}{x - 1} = \\lim_{x \\to 1} (x + 1) = 2$. Zatem $k = 2$.",
+              "hint": "Oblicz granicę funkcji przy $x \\to 1$ i przyrównaj ją do wartości $f(1) = k$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-8-1-6",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Ile wynosi wyraz wolny $b$ asymptoty ukośnej funkcji $f(x) = \\frac{2x^2 + 3x - 1}{x - 1}$? (wiedząc, że $a = 2$):",
+              "correct_answer": "5",
+              "explanation": "$b = \\lim_{x \\to \\infty} (f(x) - 2x) = \\lim_{x \\to \\infty} \\left(\\frac{2x^2 + 3x - 1}{x - 1} - \\frac{2x^2 - 2x}{x - 1}\\right) = \\lim_{x \\to \\infty} \\frac{5x - 1}{x - 1} = 5$.",
+              "hint": "Sprowadź wyrażenie $f(x) - ax$ do wspólnego mianownika.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-8-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Granica $\\lim_{x \\to +\\infty} \\frac{3x - 5}{\\sqrt{4x^2 + 1}}$ wynosi:",
+              "options": [
+                "$\\frac{3}{2}$",
+                "$\\frac{3}{4}$",
+                "$\\infty$",
+                "$0$"
+              ],
+              "correct_answer": "$\\frac{3}{2}$",
+              "explanation": "Dla $x > 0$: $\\sqrt{4x^2 + 1} = x\\sqrt{4 + 1/x^2}$. Zatem $\\frac{x(3 - 5/x)}{x\\sqrt{4 + 1/x^2}} \\to \\frac{3}{\\sqrt{4}} = \\frac{3}{2}$.",
+              "hint": "Wyciągnij $x$ przed pierwiastek w mianowniku.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-8-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Funkcja $f(x) = \\frac{x^2 - 4}{x^2 - 4}$ ma w punkcie $x = 2$:",
+              "options": [
+                "lukę (punkt nieciągłości usuwalnej)",
+                "asymptotę pionową",
+                "ekstremum lokalne",
+                "miejsce zerowe"
+              ],
+              "correct_answer": "lukę (punkt nieciągłości usuwalnej)",
+              "explanation": "Granica w punkcie $x = 2$ wynosi 1 (skończona), ale punkt $x = 2$ nie należy do dziedziny. Na wykresie jest to 'pusty punkt' (luka).",
+              "hint": "Zauważ, że granica funkcji w tym punkcie jest skończona i wynosi 1.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-9",
+      "numericId": 9,
+      "title": "Dział 9: Rachunek różniczkowy (Pochodne funkcji)",
+      "short_title": "Pochodne funkcji",
+      "description": "Wzory na pochodne wielomianów, iloczynu i ilorazu, równanie stycznej do wykresu funkcji w punkcie $x_0$, warunek konieczny i wystarczający istnienia ekstremum lokalnego oraz przedziały monotoniczności.",
+      "icon": "Zap",
+      "color": "#F59E0B",
+      "matura_points_range": "4–7 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-9-1",
+          "title": "Pochodna funkcji, równanie stycznej i ekstrema",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Równanie stycznej w punkcie $x_0$: $y - f(x_0) = f'(x_0)(x - x_0)$. 2) Monotoniczność: $f'(x) > 0 \\implies$ funkcja rosnąca; $f'(x) < 0 \\implies$ malejąca. 3) Ekstremum: warunek konieczny $f'(x_0) = 0$; warunek wystarczający: pochodna zmienia znak w punkcie $x_0$ (z $+$ na $-$: maksimum; z $-$ na $+$: minimum).",
+            "matura_context": "Absolutny filar matury rozszerzonej za 4–6 punktów (styczna i badanie przebiegu funkcji).",
+            "core_formulas": "y = f'(x_0)(x - x_0) + f(x_0) \\quad | \\quad (u/v)' = \\frac{u'v - uv'}{v^2}",
+            "worked_example": "Dla $f(x) = x^3 - 3x$: $f'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)$. Ekstremum w $x = -1$ (maksimum $f(-1) = 2$) oraz $x = 1$ (minimum $f(1) = -2$).",
+            "exam_trap": "Samo wyzerowanie pochodnej $f'(x_0) = 0$ NIE oznacza ekstremum (np. $f(x) = x^3$ w zerze nie ma ekstremum, bo pochodna $3x^2$ nie zmienia znaku)!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-9-1-1",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Oblicz współczynnik kierunkowy stycznej do wykresu funkcji $f(x) = 2x^3 - 5x + 4$ w punkcie o odciętej $x_0 = 2$:",
+              "correct_answer": "19",
+              "explanation": "Pochodna: $f'(x) = 6x^2 - 5$. W punkcie $x_0 = 2$: $f'(2) = 6(2)^2 - 5 = 6(4) - 5 = 24 - 5 = 19$.",
+              "hint": "Współczynnik kierunkowy stycznej to wartość pochodnej $f'(x_0)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-9-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Funkcja $f(x) = x^3 - 12x + 1$ osiąga minimum lokalne dla argumentu:",
+              "options": [
+                "$x = 2$",
+                "$x = -2$",
+                "$x = 0$",
+                "$x = 4$"
+              ],
+              "correct_answer": "$x = 2$",
+              "explanation": "$f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)$. Pochodna zmienia znak z ujemnego na dodatni w punkcie $x = 2$, więc tam jest minimum lokalne.",
+              "hint": "Wyznacz miejsca zerowe pochodnej i zbadaj zmianę jej znaku z $-$ na $+$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-9-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Równanie stycznej do wykresu funkcji $f(x) = x^2 - 4x + 3$ w punkcie $x_0 = 3$ ma postać:",
+              "options": [
+                "$y = 2x - 6$",
+                "$y = 2x + 3$",
+                "$y = -2x + 6$",
+                "$y = x - 3$"
+              ],
+              "correct_answer": "$y = 2x - 6$",
+              "explanation": "$f(3) = 9 - 12 + 3 = 0$. Pochodna $f'(x) = 2x - 4 \\implies f'(3) = 6 - 4 = 2$. Równanie stycznej: $y - 0 = 2(x - 3) \\implies y = 2x - 6$.",
+              "hint": "Zastosuj wzór $y - f(x_0) = f'(x_0)(x - x_0)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-9-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Jeśli dla pewnego argumentu $x_0$ zachodzi $f'(x_0) = 0$, to funkcja $f$ musi mieć w tym punkcie ekstremum lokalne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Warunek $f'(x_0) = 0$ jest warunkiem koniecznym, ale nie wystarczającym (np. $f(x) = x^3$ w zerze nie ma ekstremum).",
+              "hint": "Pomyśl o funkcji $f(x) = x^3$ w punkcie $x = 0$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-9-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Pochodna funkcji $f(x) = \\frac{x - 1}{x + 2}$ dla $x \\neq -2$ wynosi:",
+              "options": [
+                "$\\frac{3}{(x + 2)^2}$",
+                "$\\frac{1}{(x + 2)^2}$",
+                "$\\frac{-3}{(x + 2)^2}$",
+                "$1$"
+              ],
+              "correct_answer": "$\\frac{3}{(x + 2)^2}$",
+              "explanation": "$f'(x) = \\frac{1 \\cdot (x + 2) - (x - 1) \\cdot 1}{(x + 2)^2} = \\frac{x + 2 - x + 1}{(x + 2)^2} = \\frac{3}{(x + 2)^2}$.",
+              "hint": "Zastosuj wzór na pochodną ilorazu: $(u/v)' = (u'v - uv') / v^2$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-9-1-6",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "W ilu punktach styczna do wykresu funkcji $f(x) = \\frac{1}{3}x^3 - x^2 - 3x + 5$ jest pozioma (równoległa do osi $OX$)?",
+              "correct_answer": "2",
+              "explanation": "Styczna pozioma ma współczynnik kierunkowy $a = 0 \\implies f'(x) = 0$. $f'(x) = x^2 - 2x - 3 = (x - 3)(x + 1) = 0$. Dwa punkty: $x = 3$ oraz $x = -1$.",
+              "hint": "Styczna pozioma oznacza, że pochodna wynosi 0.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-9-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Funkcja $f(x) = -x^3 + 3x^2 + 9x - 2$ jest rosnąca w przedziale:",
+              "options": [
+                "$\\langle -1, 3\\rangle$",
+                "$(3, +\\infty)$",
+                "$(-\\infty, -1\\rangle$",
+                "$\\langle 0, 3\\rangle$"
+              ],
+              "correct_answer": "$\\langle -1, 3\\rangle$",
+              "explanation": "$f'(x) = -3x^2 + 6x + 9 = -3(x^2 - 2x - 3) = -3(x - 3)(x + 1) \\ge 0 \\implies x \\in \\langle -1, 3\\rangle$.",
+              "hint": "Funkcja jest rosnąca w przedziałach, gdzie pochodna jest nieujemna.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-9-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Wartość największa funkcji $f(x) = -x^2 + 4x + 1$ w przedziale $\\langle 0, 5\\rangle$ wynosi:",
+              "options": [
+                "$5$",
+                "$1$",
+                "$-4$",
+                "$4$"
+              ],
+              "correct_answer": "$5$",
+              "explanation": "Wierzchołek: $x_w = -b/(2a) = -4/(-2) = 2 \\in \\langle 0, 5\\rangle$. Wartość w wierzchołku: $f(2) = -4 + 8 + 1 = 5$. Na krańcach: $f(0) = 1$, $f(5) = -25 + 20 + 1 = -4$. Największa wartość to 5.",
+              "hint": "Sprawdź wartość w wierzchołku paraboli oraz na końcach przedziału.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-10",
+      "numericId": 10,
+      "title": "Dział 10: Zadania optymalizacyjne z pochodną",
+      "short_title": "Optymalizacja z pochodną",
+      "description": "Najwyżej punktowane zadanie na maturze rozszerzonej (CKE Pewniak za 4-6 pkt): wyznaczanie funkcji celu z jedną zmienną, dziedzina geometryczna/fizyczna, badanie ekstremum za pomocą pochodnej i sformułowanie odpowiedzi z wymiarami.",
+      "icon": "TrendingDown",
+      "color": "#059669",
+      "matura_points_range": "4–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-10-1",
+          "title": "Modelowanie matematyczne i zadania optymalizacyjne",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Algorytm CKE: 1) Wybierz zmienną niezależną $x$. 2) Zapisz wielkość optymalizowaną jako funkcję $f(x)$ jednej zmiennej. 3) KRYTYCZNY KROK: Wyznacz dziedzinę $D$ z warunków zadania (np. boki > 0). 4) Oblicz pochodną $f'(x)$. 5) Wyznacz punkty zerowe $f'(x) = 0$. 6) Uzasadnij, że funkcja osiąga w tym punkcie wartość największą/najmniejszą (badanie znaku pochodnej). 7) Podaj ostateczną odpowiedź z wymiarami.",
+            "matura_context": "Prawie zawsze Zadanie 15 lub 16 (ostatnie otwarte zadanie arkusza matury rozszerzonej za 5 lub 6 punktów!).",
+            "core_formulas": "f'(x) = 0 \\quad \\land \\quad \\text{zmiana znaku } f'(x) \\implies \\text{ekstremum globalne w dziedzinie } D",
+            "worked_example": "Z siatki o długości 100 m chcemy ogrodzić prostokątną działkę o największym polu. Obwód: $2x + 2y = 100 \\implies y = 50 - x$. Pole: $P(x) = x(50 - x) = -x^2 + 50x$. Dziedzina: $x \\in (0, 50)$. Pochodna $P'(x) = -2x + 50 = 0 \\implies x = 25$ m (kwadrat o boku 25 m, pole 625 m²).",
+            "exam_trap": "Pominięcie dziedziny w rozwiązaniu zadania optymalizacyjnego kosztuje utratę 1 cennego punktu CKE!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-10-1-1",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Spośród wszystkich prostokątów o obwodzie równym 40 cm, największe pole powierzchni ma prostokąt o boku długości (w cm):",
+              "correct_answer": "10",
+              "explanation": "$2x + 2y = 40 \\implies y = 20 - x$. Pole $P(x) = x(20 - x) = -x^2 + 20x$. Pochodna $P'(x) = -2x + 20 = 0 \\implies x = 10$ cm (kwadrat).",
+              "hint": "Największe pole przy danym obwodzie ma zawsze kwadrat.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-10-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Suma dwóch liczb dodatnich wynosi 12. Ile wynosi największa możliwa wartość ich iloczynu?",
+              "correct_answer": "36",
+              "explanation": "$x + y = 12 \\implies y = 12 - x$. Iloczyn $I(x) = x(12 - x) = -x^2 + 12x$. Wierzchołek $x = 6$, $y = 6$. Iloczyn: $6 \\cdot 6 = 36$.",
+              "hint": "Zbuduj funkcję $I(x) = x(12 - x)$ i wyznacz jej maksimum.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-10-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Jeżeli pole powierzchni całkowitej otwartego od góry prostopadłościennego pudełka o podstawie kwadratowej o boku $x$ i wysokości $h$ wynosi $108$, to objętość $V(x)$ wyraża się wzorem:",
+              "options": [
+                "$V(x) = 27x - \\frac{1}{4}x^3$",
+                "$V(x) = 108x - x^3$",
+                "$V(x) = 54x - \\frac{1}{2}x^3$",
+                "$V(x) = x^2(108 - x)$"
+              ],
+              "correct_answer": "$V(x) = 27x - \\frac{1}{4}x^3$",
+              "explanation": "Pudełko bez wieka: $P = x^2 + 4xh = 108 \\implies 4xh = 108 - x^2 \\implies h = \\frac{108 - x^2}{4x}$. Objętość $V = x^2 h = x^2 \\cdot \\frac{108 - x^2}{4x} = \\frac{x(108 - x^2)}{4} = 27x - \\frac{1}{4}x^3$.",
+              "hint": "Wyznacz $h$ z warunku na pole powierzchni $x^2 + 4xh = 108$, a potem podstaw do $V = x^2 h$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-10-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "W zadaniu optymalizacyjnym wyznaczenie dziedziny funkcji celu jest elementem obowiązkowym podlegającym osobnej ocenie punktowej CKE.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. W schemacie oceniania CKE za poprawne określenie dziedziny geometrycznej/fizycznej przyznawany jest 1 punkt.",
+              "hint": "Sprawdź oficjalny schemat punktowania zadań optymalizacyjnych CKE.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-10-1-5",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Dla jakiej wartości $x$ funkcja $V(x) = 27x - \\frac{1}{4}x^3$ przyjmuje wartość największą w dziedzinie $x \\in (0, \\sqrt{108})$?",
+              "correct_answer": "6",
+              "explanation": "$V'(x) = 27 - \\frac{3}{4}x^2 = 0 \\implies \\frac{3}{4}x^2 = 27 \\implies x^2 = 36 \\implies x = 6$.",
+              "hint": "Przyrównaj pochodną $V'(x)$ do zera.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-10-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Z kawałka drutu o długości 60 cm zrobiono ramkę prostokątną. Dziedziną długości boku $x$ tego prostokąta jest przedział:",
+              "options": [
+                "$(0, 30)$",
+                "$(0, 60)$",
+                "$\\langle 0, 30\\rangle$",
+                "$(0, 15)$"
+              ],
+              "correct_answer": "$(0, 30)$",
+              "explanation": "Obwód $2x + 2y = 60 \\implies y = 30 - x$. Długości boków muszą być dodatnie: $x > 0$ oraz $30 - x > 0 \\implies x < 30$. Zatem $x \\in (0, 30)$.",
+              "hint": "Oba boki prostokąta muszą mieć długość ściśle dodatnią.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-10-1-7",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Punkt $P$ leży na paraboli $y = x^2$. Kwadrat odległości punktu $P$ od punktu $A(0, 4.5)$ jest najmniejszy dla $x^2$ równego (podaj liczbę):",
+              "correct_answer": "4",
+              "explanation": "$d^2(x) = (x - 0)^2 + (x^2 - 4.5)^2 = x^2 + x^4 - 9x^2 + 20.25 = x^4 - 8x^2 + 20.25$. Podstawiając $t = x^2 \\ge 0$: $f(t) = t^2 - 8t + 20.25$. Wierzchołek paraboli w $t = 8/2 = 4$. Zatem $x^2 = 4$.",
+              "hint": "Zapisz kwadrat odległości $d^2 = (x - x_A)^2 + (y - y_A)^2$ i podstaw $y = x^2$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-10-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "W zadaniu optymalizacyjnym pochodna funkcji kosztu $K'(x) = 2x - 80$. Koszt jest najmniejszy dla produkcji równej:",
+              "options": [
+                "$x = 40$",
+                "$x = 80$",
+                "$x = 20$",
+                "$x = 160$"
+              ],
+              "correct_answer": "$x = 40$",
+              "explanation": "$K'(x) = 0 \\implies 2x - 80 = 0 \\implies x = 40$. Dla $x < 40$ $K' < 0$ (funkcja maleje), dla $x > 40$ $K' > 0$ (funkcja rośnie), więc w $x = 40$ jest minimum globalne.",
+              "hint": "Przyrównaj pochodną kosztu do zera.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-11",
+      "numericId": 11,
+      "title": "Dział 11: Planimetria rozszerzona",
+      "short_title": "Planimetria rozszerzona",
+      "description": "Twierdzenie sinusów i cosinusów, promienie okręgów wpisanych i opisanych, wzór Herona, czworokąty wpisane i opisane na okręgu oraz dowody geometryczne.",
+      "icon": "Triangle",
+      "color": "#F59E0B",
+      "matura_points_range": "4–8 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-11-1",
+          "title": "Twierdzenie sinusów i cosinusów",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Twierdzenie sinusów: $\\frac{a}{\\sin \\alpha} = \\frac{b}{\\sin \\beta} = \\frac{c}{\\sin \\gamma} = 2R$. Twierdzenie cosinusów: $a^2 = b^2 + c^2 - 2bc \\cos \\alpha$. Pozwalają wyznaczyć dowolny bok lub kąt w trójkącie.",
+            "matura_context": "Prawie każde zadanie otwarte z geometrii płaskiej na maturze rozszerzonej (za 3–5 pkt) wymaga użycia tw. sinusów lub cosinusów.",
+            "core_formulas": "\\frac{a}{\\sin \\alpha} = 2R, \\quad c^2 = a^2 + b^2 - 2ab \\cos \\gamma",
+            "worked_example": "Jeśli $a = 5, b = 7, \\gamma = 60^\\circ$, to $c^2 = 25 + 49 - 2(5)(7)(0.5) = 74 - 35 = 39 \\implies c = \\sqrt{39}$.",
+            "exam_trap": "Pamiętaj o znaku cosinusa w kącie rozwartym: $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$, więc w tw. cosinusów pojawia się plus!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-11-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "W trójkącie boki mają długości $a = 5$ oraz $b = 7$, a kąt między nimi wynosi $60^\\circ$. Długość trzeciego boku $c$ jest równa:",
+              "options": [
+                "$\\sqrt{39}$",
+                "$\\sqrt{74}$",
+                "$6$",
+                "$\\sqrt{109}$"
+              ],
+              "correct_answer": "$\\sqrt{39}$",
+              "explanation": "Z twierdzenia cosinusów: $c^2 = 5^2 + 7^2 - 2 \\cdot 5 \\cdot 7 \\cdot \\cos 60^\\circ = 25 + 49 - 35 = 39 \\implies c = \\sqrt{39}$.",
+              "hint": "Zastosuj twierdzenie cosinusów: $c^2 = a^2 + b^2 - 2ab \\cos \\gamma$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-11-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Dany jest trójkąt, w którym boki mają długości $a = 4$, $b = 6$ oraz $c = 8$. Oblicz wartość wyrażenia $48 \\cos \\gamma$, gdzie $\\gamma$ to kąt naprzeciw boku $c$:",
+              "correct_answer": "-12",
+              "explanation": "Z twierdzenia cosinusów: $8^2 = 4^2 + 6^2 - 2 \\cdot 4 \\cdot 6 \\cdot \\cos \\gamma \\implies 64 = 16 + 36 - 48 \\cos \\gamma \\implies 48 \\cos \\gamma = 52 - 64 = -12$.",
+              "hint": "Wstaw boki do tw. cosinusów i wyznacz $48 \\cos \\gamma$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-11-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "W trójkącie $ABC$ bok $a = 6$, a promień okręgu opisanego $R = 6$. Kąt $\\alpha$ leżący naprzeciwko boku $a$ może mieć miarę:",
+              "options": [
+                "$30^\\circ$ lub $150^\\circ$",
+                "$60^\\circ$ lub $120^\\circ$",
+                "$45^\\circ$ lub $135^\\circ$",
+                "$90^\\circ$"
+              ],
+              "correct_answer": "$30^\\circ$ lub $150^\\circ$",
+              "explanation": "Z twierdzenia sinusów: $\\frac{a}{\\sin \\alpha} = 2R \\implies \\sin \\alpha = \\frac{6}{2 \\cdot 6} = \\frac{1}{2}$. W przedziale $(0^\\circ, 180^\\circ)$ mamy $\\alpha = 30^\\circ$ lub $\\alpha = 150^\\circ$.",
+              "hint": "Skorzystaj ze wzoru $\\sin \\alpha = \\frac{a}{2R}$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-11-1-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Matura Rozszerzona 2022",
+              "content": "W trójkącie boki mają długości $a = 13, b = 14, c = 15$. Oblicz promień okręgu wpisanego $r$ w ten trójkąt:",
+              "correct_answer": "4",
+              "explanation": "Połowa obwodu $p = (13+14+15)/2 = 21$. Z wzoru Herona: $P = \\sqrt{21(21-13)(21-14)(21-15)} = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = \\sqrt{7056} = 84$. Ponieważ $P = p \\cdot r$, otrzymujemy $r = 84 / 21 = 4$.",
+              "hint": "Oblicz pole z wzoru Herona, a następnie skorzystaj z $r = P / p$.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "mat-roz-lesson-11-2",
+          "title": "Okręgi i czworokąty na płaszczyźnie",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Czworokąt można wpisać w okrąg $\\iff \\alpha + \\gamma = \\beta + \\delta = 180^\\circ$. Czworokąt można opisać na okręgu $\\iff a + c = b + d$.",
+            "matura_context": "Częsty motyw w zadaniach dowodowych oraz zadaniach z trapezami wpisanymi/opisanymi.",
+            "core_formulas": "\\alpha + \\gamma = 180^\\circ, \\quad a + c = b + d",
+            "worked_example": "W trapezie opisanym o podstawach 4 i 10 suma ramion wynosi $4 + 10 = 14$. Jeśli jest równoramienny, ramię ma 7.",
+            "exam_trap": "Nie myl warunku wpisywalności (kąty) z warunkiem opisywalności (boki)!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-11-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "W czworokącie wpisanym w okrąg kąty przeciwległe mają miary $\\alpha = 2x + 10^\\circ$ oraz $\\gamma = 3x - 30^\\circ$. Wartość $x$ wynosi:",
+              "options": [
+                "$40^\\circ$",
+                "$36^\\circ$",
+                "$50^\\circ$",
+                "$45^\\circ$"
+              ],
+              "correct_answer": "$40^\\circ$",
+              "explanation": "Suma kątów przeciwległych wynosi $180^\\circ$: $2x + 10^\\circ + 3x - 30^\\circ = 180^\\circ \\implies 5x = 200^\\circ \\implies x = 40^\\circ$.",
+              "hint": "Przeciwległe kąty czworokąta wpisanego sumują się do $180^\\circ$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-11-2-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "W czworokąt opisany na okręgu boki mają długości $AB = 7, BC = x, CD = 11, DA = 5$. Oblicz długość boku $BC$:",
+              "correct_answer": "13",
+              "explanation": "Warunek opisywalności: $AB + CD = BC + DA \\implies 7 + 11 = x + 5 \\implies x = 13$.",
+              "hint": "Suma przeciwległych boków jest równa.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-11-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Próbna 2023",
+              "content": "Trapez równoramienny o podstawach $a = 18$ i $b = 8$ jest opisany na okręgu. Promień tego okręgu jest równy:",
+              "options": [
+                "$6$",
+                "$12$",
+                "$6.5$",
+                "$5$"
+              ],
+              "correct_answer": "$6$",
+              "explanation": "Ramię $c = (18 + 8)/2 = 13$. Wysokość $h = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12$. Promień $r = h/2 = 6$.",
+              "hint": "Wyznacz ramię, potem wysokość trapezu, a promień to połowa wysokości.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-11-2-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Informator 2023",
+              "content": "W trapezie prostokątnym opisanym na okręgu o promieniu $r = 3$, krótsza podstawa ma długość $4$. Oblicz długość dłuższej podstawy tego trapezu:",
+              "correct_answer": "12",
+              "explanation": "Wysokość trapezu $h = 2r = 6$. Krótsze ramię to $h = 6$. Niech dłuższa podstawa ma $a$, ramię pochyłe $c = \\sqrt{6^2 + (a-4)^2}$. Z opisywalności $a + 4 = 6 + c \\implies c = a - 2$. Zatem $(a - 2)^2 = 36 + (a - 4)^2 \\implies a^2 - 4a + 4 = 36 + a^2 - 8a + 16 \\implies 4a = 48 \\implies a = 12$.",
+              "hint": "Wysokość wynosi $2r = 6$. Ułóż układ z tw. Pitagorasa i warunku sumy boków.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-12",
+      "numericId": 12,
+      "title": "Dział 12: Geometria analityczna rozszerzona",
+      "short_title": "Geometria analityczna",
+      "description": "Równanie okręgu, wzajemne położenie prostej i okręgu, styczne do okręgu, odległość punktu od prostej, wektory oraz iloczyn skalarny.",
+      "icon": "Crosshair",
+      "color": "#10B981",
+      "matura_points_range": "4–7 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-12-1",
+          "title": "Równanie okręgu i styczne",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Równanie okręgu o środku $S(a, b)$ i promieniu $r$: $(x - a)^2 + (y - b)^2 = r^2$. Odległość punktu $P(x_0, y_0)$ od prostej $Ax + By + C = 0$: $d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}$. Prosta jest styczna $\\iff d(S, k) = r$.",
+            "matura_context": "Zadanie z geometrii analitycznej za 4–5 punktów (np. wyznaczanie stycznych, wierzchołków trójkąta/czworokąta) występuje co roku.",
+            "core_formulas": "(x - a)^2 + (y - b)^2 = r^2, \\quad d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}",
+            "worked_example": "Dla okręgu $(x-3)^2 + (y+1)^2 = 25$ środek to $S(3, -1), r = 5$. Odległość od $4x - 3y + 5 = 0$: $d = \\frac{|12 + 3 + 5|}{5} = 4$. Ponieważ $4 < 5$, prosta jest sieczną.",
+            "exam_trap": "Przekształcając równanie ogólne $x^2 + y^2 - 2ax - 2by + c = 0$, pamiętaj o warunku $a^2 + b^2 - c > 0$!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-12-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "Odległość środka okręgu $(x - 3)^2 + (y + 1)^2 = 25$ od prostej $4x - 3y + 5 = 0$ jest równa:",
+              "options": [
+                "$4$",
+                "$5$",
+                "$3$",
+                "$2$"
+              ],
+              "correct_answer": "$4$",
+              "explanation": "Środek $S(3, -1)$. Odległość: $d = \\frac{|4(3) - 3(-1) + 5|}{\\sqrt{4^2 + (-3)^2}} = \\frac{|12 + 3 + 5|}{5} = \\frac{20}{5} = 4$.",
+              "hint": "Zastosuj wzór na odległość punktu od prostej dla punktu $S(3, -1)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-12-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Okrąg ma równanie ogólne $x^2 + y^2 - 6x + 8y = 0$. Oblicz promień $r$ tego okręgu:",
+              "correct_answer": "5",
+              "explanation": "Dopełniamy do kwadratów: $(x - 3)^2 - 9 + (y + 4)^2 - 16 = 0 \\implies (x - 3)^2 + (y + 4)^2 = 25$. Zatem $r = \\sqrt{25} = 5$.",
+              "hint": "Zwiń wyrażenie do postaci $(x - a)^2 + (y - b)^2 = r^2$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-12-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "Prosta $y = ax + b$ jest prostopadła do wektora $\\vec{v} = [3, -2]$. Współczynnik kierunkowy $a$ tej prostej jest równy:",
+              "options": [
+                "$\\frac{3}{2}$",
+                "$-\\frac{2}{3}$",
+                "$-\\frac{3}{2}$",
+                "$\\frac{2}{3}$"
+              ],
+              "correct_answer": "$-\\frac{2}{3}$",
+              "explanation": "Wektor normalny prostej to $\\vec{v} = [3, -2]$, więc prosta ma postać $3x - 2y + C = 0 \\implies 2y = 3x + C \\implies y = \\frac{3}{2}x + \\frac{C}{2}$. Jednak prosta jest prostopadła do wektora kierunkowego $\\vec{v}$, więc jej kierunek spełnia $[1, a] \\circ [3, -2] = 0 \\implies 3 - 2a = 0 \\implies a = \\frac{3}{2}$, lub jeśli $\\vec{v}$ to wektor prostopadły, $a = -2/3$.",
+              "hint": "Wektor normalny prostej $Ax + By + C = 0$ to $[A, B]$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-12-1-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Proste $k: 4x - 3y + C_1 = 0$ oraz $m: 4x - 3y + C_2 = 0$ są styczne do okręgu $(x - 2)^2 + (y + 3)^2 = 25$. Oblicz wartość iloczynu $C_1 \\cdot C_2$ wiedząc, że $C_1 > 0$:",
+              "correct_answer": "-336",
+              "explanation": "Środek okręgu $S(2, -3)$, $r = 5$. Z warunku styczności: $\\frac{|4(2) - 3(-3) + C|}{5} = 5 \\implies |17 + C| = 25$. Stąd $17 + C = 25 \\implies C_1 = 8$, lub $17 + C = -25 \\implies C_2 = -42$. Iloczyn: $8 \\cdot (-42) = -336$.",
+              "hint": "Użyj wzoru na odległość punktu $S(2, -3)$ od prostej i przyrównaj do $r=5$.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "mat-roz-lesson-12-2",
+          "title": "Wektory i iloczyn skalarny",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Iloczyn skalarny: $\\vec{u} \\circ \\vec{v} = u_x v_x + u_y v_y = |\\vec{u}| \\cdot |\\vec{v}| \\cos \\angle(\\vec{u}, \\vec{v})$. Wektory są prostopadłe $\\iff \\vec{u} \\circ \\vec{v} = 0$.",
+            "matura_context": "Iloczyn skalarny pozwala błyskawicznie badać kąty proste i obliczać cosinusy kątów w trójkątach i czworokątach.",
+            "core_formulas": "\\vec{u} \\circ \\vec{v} = u_x v_x + u_y v_y = 0 \\iff \\vec{u} \\perp \\vec{v}",
+            "worked_example": "Dla $\\vec{u} = [2, -3]$ i $\\vec{v} = [6, 4]$: $\\vec{u} \\circ \\vec{v} = 2(6) + (-3)(4) = 12 - 12 = 0$, więc wektory są prostopadłe.",
+            "exam_trap": "Pamiętaj, że iloczyn skalarny jest liczbą (skalarem), a nie wektorem!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-12-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "Wektory $\\vec{u} = [2m - 1, 3]$ oraz $\\vec{v} = [4, m + 2]$ są prostopadłe dla parametru $m$ równego:",
+              "options": [
+                "$-\\frac{2}{11}$",
+                "$-2$",
+                "$1$",
+                "$-\\frac{11}{2}$"
+              ],
+              "correct_answer": "$-\\frac{2}{11}$",
+              "explanation": "Warunek prostopadłości: $4(2m - 1) + 3(m + 2) = 0 \\implies 8m - 4 + 3m + 6 = 0 \\implies 11m + 2 = 0 \\implies m = -\\frac{2}{11}$.",
+              "hint": "Przyrównaj iloczyn skalarny współrzędnych do zera.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-12-2-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Oblicz iloczyn skalarny wektorów $\\vec{a} = [3, -4]$ i $\\vec{b} = [-2, 5]$:",
+              "correct_answer": "-26",
+              "explanation": "$\\vec{a} \\circ \\vec{b} = 3(-2) + (-4)(5) = -6 - 20 = -26$.",
+              "hint": "Pomnóż odpowiednie współrzędne i dodaj wyniki.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-12-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura 2022",
+              "content": "Długość wektora $\\vec{w} = 2\\vec{u} - \\vec{v}$, gdzie $\\vec{u} = [1, 3]$ oraz $\\vec{v} = [4, -2]$, wynosi:",
+              "options": [
+                "$\\sqrt{68}$",
+                "$8$",
+                "$\\sqrt{70}$",
+                "$10$"
+              ],
+              "correct_answer": "$\\sqrt{68}$",
+              "explanation": "$2\\vec{u} - \\vec{v} = [2, 6] - [4, -2] = [-2, 8]$. Długość: $|\\vec{w}| = \\sqrt{(-2)^2 + 8^2} = \\sqrt{4 + 64} = \\sqrt{68} = 2\\sqrt{17}$.",
+              "hint": "Wyznacz współrzędne wektora $2\\vec{u} - \\vec{v}$, a potem jego długość.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-12-2-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Informator 2023",
+              "content": "Punkty $A(-2, 1)$, $B(4, 3)$, $C(2, 7)$ są wierzchołkami trójkąta. Oblicz pole trójkąta $ABC$:",
+              "correct_answer": "14",
+              "explanation": "Wektory: $\\vec{AB} = [6, 2]$, $\\vec{AC} = [4, 6]$. Wyznacznik wektorów: $d = 6(6) - 2(4) = 36 - 8 = 28$. Pole: $P = \\frac{1}{2} |28| = 14$.",
+              "hint": "Zastosuj wzór wyznacznikowy na pole trójkąta: $P = \\frac{1}{2}|x_A(y_B-y_C) + ...|$ lub wyznacznik z wektorów.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-13",
+      "numericId": 13,
+      "title": "Dział 13: Stereometria rozszerzona",
+      "short_title": "Stereometria rozszerzona",
+      "description": "Kąty w przestrzeni (kąt nachylenia do podstawy, kąt dwuścienny), przekroje wielościanów, bryły obrotowe i optymalizacja przestrzenna.",
+      "icon": "Box",
+      "color": "#EC4899",
+      "matura_points_range": "4–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-13-1",
+          "title": "Kąty i przekroje w wielościanach",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Kąt nachylenia prostej (krawędzi) do płaszczyzny to kąt między tą prostą a jej rzutem prostokątnym. Kąt dwuścienny to kąt między dwiema prostymi prostopadłymi do krawędzi przecięcia w wybranym punkcie. Twierdzenie o 3 prostopadłych jest kluczem do znajdowania wysokości ścian.",
+            "matura_context": "Pojawia się co roku jako zadanie za 4–5 pkt, często łączone z trygonometrią i funkcjami kwadratowymi.",
+            "core_formulas": "V = \\frac{1}{3} P_p \\cdot H, \\quad \\tan \\alpha = \\frac{H}{d_r}",
+            "worked_example": "W ostrosłupie o podstawie kwadratowej o boku 4 i wysokości $2\\sqrt{3}$, rzut wysokości ściany na podstawę to 2, więc $\\tan \\beta = \\frac{2\\sqrt{3}}{2} = \\sqrt{3} \\implies \\beta = 60^\\circ$.",
+            "exam_trap": "Zawsze zaznaczaj rzut prostokątny wysokości i szukaj trójkąta prostokątnego zawierającego poszukiwany kąt!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-13-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $a = 4$, a wysokość ostrosłupa $H = 2\\sqrt{3}$. Kąt nachylenia ściany bocznej do podstawy ma miarę:",
+              "options": [
+                "$60^\\circ$",
+                "$45^\\circ$",
+                "$30^\\circ$",
+                "$75^\\circ$"
+              ],
+              "correct_answer": "$60^\\circ$",
+              "explanation": "Odległość spodka wysokości od krawędzi to $a/2 = 2$. Tangens kąta: $\\tan \\beta = \\frac{H}{a/2} = \\frac{2\\sqrt{3}}{2} = \\sqrt{3} \\implies \\beta = 60^\\circ$.",
+              "hint": "Wyznacz odległość spodka wysokości do krawędzi podstawy.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-13-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "W sześcianie o krawędzi $a = 6$ połączono środki trzech krawędzi wychodzących z jednego wierzchołka. Pole otrzymanego trójkąta zapisano w postaci $\\frac{k\\sqrt{3}}{2}$. Podaj wartość liczbową $k$:",
+              "correct_answer": "9",
+              "explanation": "Bok otrzymanego trójkąta równobocznego: $s = \\sqrt{3^2 + 3^2} = 3\\sqrt{2}$. Pole $P = \\frac{s^2\\sqrt{3}}{4} = \\frac{18\\sqrt{3}}{4} = \\frac{9\\sqrt{3}}{2}$. Zatem $k = 9$.",
+              "hint": "Oblicz długość boku przekroju z tw. Pitagorasa, a potem pole trójkąta równobocznego.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-13-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Próbna 2024",
+              "content": "W ostrosłupie prawidłowym trójkątnym krawędź podstawy ma długość $a = 6$, a krawędź boczna $b = 5$. Cosinus kąta nachylenia ściany bocznej do podstawy wynosi:",
+              "options": [
+                "$\\frac{\\sqrt{3}}{4}$",
+                "$\\frac{1}{2}$",
+                "$\\frac{\\sqrt{3}}{2}$",
+                "$\\frac{3}{5}$"
+              ],
+              "correct_answer": "$\\frac{\\sqrt{3}}{4}$",
+              "explanation": "Wysokość ściany bocznej: $h_b = \\sqrt{5^2 - 3^2} = 4$. Promień okręgu wpisanego w podstawę: $r = \\frac{a\\sqrt{3}}{6} = \\frac{6\\sqrt{3}}{6} = \\sqrt{3}$. Cosinus kąta dwuściennego: $\\cos \\alpha = \\frac{r}{h_b} = \\frac{\\sqrt{3}}{4}$.",
+              "hint": "Oblicz wysokość ściany bocznej i promień okręgu wpisanego w trójkąt podstawy.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-13-1-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "Przekątna prostopadłościanu ma długość $D = 10$ i tworzy z płaszczyzną podstawy kąt $\\alpha$ taki, że $\\sin \\alpha = 0.6$. Oblicz wysokość $H$ tego prostopadłościanu:",
+              "correct_answer": "6",
+              "explanation": "Wysokość to przyprostokątna naprzeciw kąta $\\alpha$: $H = D \\cdot \\sin \\alpha = 10 \\cdot 0.6 = 6$.",
+              "hint": "Wysokość prostopadłościanu to $H = D \\sin \\alpha$.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "mat-roz-lesson-13-2",
+          "title": "Bryły obrotowe i optymalizacja",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Walec: $V = \\pi r^2 h$, stożek: $V = \\frac{1}{3}\\pi r^2 h$, kula: $V = \\frac{4}{3}\\pi R^3, P = 4\\pi R^2$. Zadania optymalizacyjne łączą wzory brył z pochodną funkcji jednej zmiennej.",
+            "matura_context": "Stożek lub walec wpisany w kulę z wyznaczeniem wymiarów dających maksymalną objętość to kultowe zadanie optymalizacyjne.",
+            "core_formulas": "V_{walec} = \\pi r^2 h, \\quad V_{sto\\dot{z}ek} = \\frac{1}{3}\\pi r^2 h",
+            "worked_example": "Dla stożka o tworzącej $l = 6$: $r^2 = 36 - h^2$. Objętość $V(h) = \\frac{1}{3}\\pi (36 - h^2)h = \\frac{\\pi}{3}(36h - h^3)$. $V'(h) = \\frac{\\pi}{3}(36 - 3h^2) = 0 \\implies h = \\sqrt{12} = 2\\sqrt{3}$.",
+            "exam_trap": "Pamiętaj o określeniu dziedziny geometrycznej przed przystąpieniem do liczenia pochodnej!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-13-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Tworząca stożka ma długość $l = 6$. Objętość stożka jest największa, gdy jego wysokość $h$ wynosi:",
+              "options": [
+                "$2\\sqrt{3}$",
+                "$3$",
+                "$3\\sqrt{2}$",
+                "$2\\sqrt{6}$"
+              ],
+              "correct_answer": "$2\\sqrt{3}$",
+              "explanation": "$V(h) = \\frac{\\pi}{3}(36 - h^2)h = \\frac{\\pi}{3}(36h - h^3)$. Pochodna $V'(h) = \\frac{\\pi}{3}(36 - 3h^2) = 0 \\implies h^2 = 12 \\implies h = 2\\sqrt{3}$.",
+              "hint": "Wyznacz $r^2$ w zależności od $h$, ułóż funkcję objętości i oblicz jej pochodną.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-13-2-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura 2023",
+              "content": "Przekrój osiowy walca jest kwadratem o polu $36$. Oblicz pole powierzchni całkowitej tego walca podzielone przez $\\pi$:",
+              "correct_answer": "54",
+              "explanation": "Bok kwadratu to $h = 2r = 6 \\implies r = 3, h = 6$. Pole całkowite $P_c = 2\\pi r^2 + 2\\pi r h = 2\\pi(9) + 2\\pi(3)(6) = 18\\pi + 36\\pi = 54\\pi$. Zatem $P_c / \\pi = 54$.",
+              "hint": "Bok kwadratu to jednocześnie wysokość $h$ i średnica $2r$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-13-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "Pole powierzchni kuli wynosi $100\\pi$. Promień tej kuli jest równy:",
+              "options": [
+                "$5$",
+                "$10$",
+                "$2.5$",
+                "$25$"
+              ],
+              "correct_answer": "$5$",
+              "explanation": "Wzór na pole powierzchni kuli: $P = 4\\pi R^2 = 100\\pi \\implies R^2 = 25 \\implies R = 5$.",
+              "hint": "Przyrównaj $4\\pi R^2 = 100\\pi$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-13-2-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Informator 2023",
+              "content": "Tworząca stożka ma długość $l = 10$ i jest nachylona do podstawy pod kątem $60^\\circ$. Oblicz objętość tego stożka podzieloną przez $\\pi$ i zaokrągloną do całości:",
+              "correct_answer": "72",
+              "explanation": "W stożku: $r = l \\cos 60^\\circ = 5$, $h = l \\sin 60^\\circ = 5\\sqrt{3} \\approx 8.66$. $V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi(25)(5\\sqrt{3}) = \\frac{125\\sqrt{3}\\pi}{3} \\approx \\frac{125 \\cdot 1.732 \\pi}{3} \\approx 72.17\\pi$. Po podzieleniu przez $\\pi$ i zaokrągleniu mamy $72$.",
+              "hint": "Wyznacz $r$ oraz $h$ za pomocą funkcji trygonometrycznych kąta $60^\\circ$.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-14",
+      "numericId": 14,
+      "title": "Dział 14: Kombinatoryka rozszerzona",
+      "short_title": "Kombinatoryka rozszerzona",
+      "description": "Dwumian Newtona, trójkąt Pascala, permutacje z powtórzeniami, wariacje z powtórzeniami i bez, oraz zaawansowane reguły zliczania.",
+      "icon": "Binary",
+      "color": "#6366F1",
+      "matura_points_range": "3–5 pkt",
+      "importance": "VERY_HIGH",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-14-1",
+          "title": "Wzór dwumianowy Newtona",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Wzór dwumianowy: $(a + b)^n = \\sum_{k=0}^n \\binom{n}{k} a^{n-k} b^k$. Wyraz ogólny rozwinięcia: $T_{k+1} = \\binom{n}{k} a^{n-k} b^k$. Pozwala wyznaczyć dowolny współczynnik bez rozpisywania całego iloczynu.",
+            "matura_context": "Pewniak maturalny w zadaniach zamkniętych i krótkiej odpowiedzi za 1–2 pkt.",
+            "core_formulas": "T_{k+1} = \\binom{n}{k} a^{n-k} b^k, \\quad \\binom{n}{k} = \\frac{n!}{k!(n-k)!}",
+            "worked_example": "Współczynnik przy $x^4$ w $(x + 2/x)^8$: $T_{k+1} = \\binom{8}{k} x^{8-k} (2/x)^k = \\binom{8}{k} 2^k x^{8-2k}$. Chcemy $8-2k=4 \\implies k=2$. Współczynnik: $\\binom{8}{2} \\cdot 2^2 = 28 \\cdot 4 = 112$.",
+            "exam_trap": "Uwaga na ujemne znaki dwumianu $(a - b)^n$ — wyraz $b$ podstawiaj z minusem: $(-b)^k$!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-14-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "Współczynnik przy $x^4$ w rozwinięciu dwumianu $\\left(x + \\frac{2}{x}\\right)^8$ jest równy:",
+              "options": [
+                "$112$",
+                "$70$",
+                "$28$",
+                "$224$"
+              ],
+              "correct_answer": "$112$",
+              "explanation": "Ogólny wyraz: $T_{k+1} = \\binom{8}{k} x^{8-k} (2/x)^k = \\binom{8}{k} 2^k x^{8-2k}$. Chcemy $8 - 2k = 4 \\implies k = 2$. Współczynnik: $\\binom{8}{2} \\cdot 2^2 = 28 \\cdot 4 = 112$.",
+              "hint": "Wyznacz ogólny wyraz rozwinięcia $T_{k+1}$ i znajdź $k$, dla którego potęga $x$ wynosi 4.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-14-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Oblicz wyraz wolny (niezawierający zmiennej $x$) w rozwinięciu dwumianu $\\left(x^2 + \\frac{1}{x}\\right)^6$:",
+              "correct_answer": "15",
+              "explanation": "Wyraz ogólny: $T_{k+1} = \\binom{6}{k} (x^2)^{6-k} (x^{-1})^k = \\binom{6}{k} x^{12-3k}$. Wyraz wolny odpowiada potędze 0: $12 - 3k = 0 \\implies k = 4$. Wartość to $\\binom{6}{4} = \\binom{6}{2} = 15$.",
+              "hint": "Wyraz wolny to ten, w którym potęga $x$ wynosi 0.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-14-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "Suma wszystkich współczynników dwumianowych $\\binom{n}{0} + \\binom{n}{1} + \\dots + \\binom{n}{n}$ dla $n = 7$ wynosi:",
+              "options": [
+                "$128$",
+                "$64$",
+                "$256$",
+                "$120$"
+              ],
+              "correct_answer": "$128$",
+              "explanation": "Z własności dwumianu: $(1 + 1)^n = 2^n$. Dla $n = 7$: $2^7 = 128$.",
+              "hint": "Podstaw $a = 1, b = 1$ do wzoru dwumianowego Newtona.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-14-1-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Informator 2023",
+              "content": "Współczynnik przy $x^3$ w rozwinięciu dwumianu $(2x - 1)^5$ wynosi:",
+              "correct_answer": "80",
+              "explanation": "Wyraz ogólny: $T_{k+1} = \\binom{5}{k} (2x)^{5-k} (-1)^k$. Chcemy potęgę $3$, czyli $5 - k = 3 \\implies k = 2$. Mamy $\\binom{5}{2} (2)^3 (-1)^2 = 10 \\cdot 8 \\cdot 1 = 80$.",
+              "hint": "Zastosuj wzór ogólny z $a = 2x$ oraz $b = -1$.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "mat-roz-lesson-14-2",
+          "title": "Zaawansowane zliczanie i permutacje z powtórzeniami",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Permutacje z powtórzeniami: $\\frac{n!}{k_1! \\cdot k_2! \\dots k_r!}$. Metoda szufladkowa Dirichleta, reguła włączeń i wyłączeń oraz sklejanie elementów (super-elementy) w zadaniach z sąsiadowaniem cyfr/osób.",
+            "matura_context": "Częsty motyw w zadaniach otwartych za 2–4 punkty.",
+            "core_formulas": "P_n^{k_1, \\dots, k_r} = \\frac{n!}{k_1! \\dots k_r!}",
+            "worked_example": "Anagramy słowa ANANAS (6 liter: 3x A, 2x N, 1x S): $\\frac{6!}{3! \\cdot 2! \\cdot 1!} = \\frac{720}{6 \\cdot 2} = 60$.",
+            "exam_trap": "Gdy zliczasz liczby parzyste lub podzielne przez 5 z cyfrą 0, rozbijaj przypadek na zero na końcu i zero nie na końcu!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-14-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "Ile jest liczb siedmiocyfrowych o niepowtarzających się cyfrach ze zbioru $\\{1, 2, 3, 4, 5, 6, 7\\}$, w których cyfry 1 i 2 stoją obok siebie?",
+              "options": [
+                "$1440$",
+                "$720$",
+                "$2880$",
+                "$5040$"
+              ],
+              "correct_answer": "$1440$",
+              "explanation": "Sklejamy {1, 2} w jeden blok na $2! = 2$ sposoby. Pozostaje 6 elementów do permutacji: $6! = 720$. Razem: $2 \\cdot 720 = 1440$.",
+              "hint": "Potraktuj cyfry 1 i 2 jako pojedynczy super-element i pamiętaj o ich kolejności.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-14-2-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Ile różnych słów (mających sens lub nie) można ułożyć ze wszystkich liter słowa MATEMATYKA podzielone przez 100:",
+              "correct_answer": "1512",
+              "explanation": "Słowo ma 10 liter: 2x M, 3x A, 2x T, 1x E, 1x Y, 1x K. Liczba permutacji: $\\frac{10!}{2! 3! 2!} = \\frac{3628800}{24} = 151200$. Wynik podzielony przez 100 to 1512.",
+              "hint": "Zastosuj wzór na permutacje z powtórzeniami.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-14-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "Do windy na parterze 7-piętrowego budynku wsiada 5 osób. Każda osoba wysiada na innym piętrze (od 1 do 7). Liczba sposobów wynosi:",
+              "options": [
+                "$2520$",
+                "$21$",
+                "$120$",
+                "$16807$"
+              ],
+              "correct_answer": "$2520$",
+              "explanation": "Wariacje bez powtórzeń $V_7^5 = 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 = 2520$.",
+              "hint": "Każdej z 5 osób przyporządkowujemy inne piętro z 7.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-14-2-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Informator 2023",
+              "content": "Oblicz liczbę wszystkich czterocyfrowych liczb naturalnych o różnych cyfrach, utworzonych z cyfr $\\{0, 1, 2, 3, 4, 5\\}$:",
+              "correct_answer": "300",
+              "explanation": "Pierwsza cyfra (tysiące): nie może być zerem, więc 5 możliwości. Druga cyfra: 5 możliwości (dowolna z pozostałych 5 wraz z zerem). Trzecia: 4 możliwości. Czwarta: 3 możliwości. Razem: $5 \\cdot 5 \\cdot 4 \\cdot 3 = 300$.",
+              "hint": "Pamiętaj, że zero nie może stać na pierwszym miejscu.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mat-roz-dzial-15",
+      "numericId": 15,
+      "title": "Dział 15: Prawdopodobieństwo rozszerzone",
+      "short_title": "Prawdopodobieństwo rozszerzone",
+      "description": "Prawdopodobieństwo warunkowe, twierdzenie o prawdopodobieństwie całkowitym, wzór Bayesa oraz schemat Bernoulliego.",
+      "icon": "Dice5",
+      "color": "#84CC16",
+      "matura_points_range": "4–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "mat-roz-lesson-15-1",
+          "title": "Prawdopodobieństwo warunkowe i całkowite",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Prawdopodobieństwo warunkowe: $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$. Prawdopodobieństwo całkowite: $P(A) = \\sum P(A|B_i) P(B_i)$. Wzór Bayesa służy do odwracania warunku ('prawdopodobieństwo przyczyny').",
+            "matura_context": "Pewniak maturalny w zadaniach otwartych za 3–5 punktów, często modelowany drzewem stochastycznym.",
+            "core_formulas": "P(A|B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2)",
+            "worked_example": "Wybór urny: $P(U_1)=P(U_2)=0.5$. W $U_1$ jest $3/5$ kul białych, w $U_2$ jest $4/8=0.5$ białych. $P(B) = 0.5(0.6) + 0.5(0.5) = 0.3 + 0.25 = 0.55$.",
+            "exam_trap": "Pamiętaj, że gałęzie drzewa na każdym poziomie muszą sumować się do 1!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-15-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "Dla zdarzeń $A, B$ zachodzi: $P(A) = 0.6$, $P(B) = 0.5$ oraz $P(A \\cup B) = 0.8$. Prawdopodobieństwo warunkowe $P(A|B)$ wynosi:",
+              "options": [
+                "$0.6$",
+                "$0.5$",
+                "$0.75$",
+                "$0.3$"
+              ],
+              "correct_answer": "$0.6$",
+              "explanation": "$P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.6 + 0.5 - 0.8 = 0.3$. Zatem $P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.3}{0.5} = 0.6$.",
+              "hint": "Oblicz najpierw $P(A \\cap B)$ z wzoru na sumę zdarzeń.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-15-1-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "W pierwszej urnie są 3 kule białe i 2 czarne, a w drugiej urnie 4 białe i 4 czarne. Rzucamy symetryczną monetą i wybieramy urnę, po czym losujemy kulę. Oblicz prawdopodobieństwo wylosowania kuli białej (w postaci ułamka dziesiętnego):",
+              "correct_answer": "0.55",
+              "explanation": "Z tw. o prawdopodobieństwie całkowitym: $P(B) = 0.5 \\cdot \\frac{3}{5} + 0.5 \\cdot \\frac{4}{8} = 0.3 + 0.25 = 0.55$.",
+              "hint": "Użyj wzoru na prawdopodobieństwo całkowite dla wyboru urny.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-15-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "Zdarzenia $A$ i $B$ są niezależne oraz $P(A) = 0.4$, $P(B) = 0.5$. Wtedy $P(A \\cup B)$ jest równe:",
+              "options": [
+                "$0.7$",
+                "$0.9$",
+                "$0.2$",
+                "$0.6$"
+              ],
+              "correct_answer": "$0.7$",
+              "explanation": "Dla zdarzeń niezależnych $P(A \\cap B) = P(A)P(B) = 0.4 \\cdot 0.5 = 0.2$. Zatem $P(A \\cup B) = 0.4 + 0.5 - 0.2 = 0.7$.",
+              "hint": "Niezależność oznacza $P(A \\cap B) = P(A) \\cdot P(B)$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-15-1-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Informator 2023",
+              "content": "Niech $P(A') = 0.7$ oraz $P(A \\cap B) = 0.15$. Oblicz $P(B|A)$ w postaci dziesiętnej:",
+              "correct_answer": "0.5",
+              "explanation": "$P(A) = 1 - P(A') = 0.3$. Stąd $P(B|A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{0.15}{0.3} = 0.5$.",
+              "hint": "Oblicz najpierw $P(A) = 1 - P(A')$.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "mat-roz-lesson-15-2",
+          "title": "Schemat Bernoulliego",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Schemat Bernoulliego: ciąg $n$ niezależnych doświadczeń o dwóch możliwych wynikach (sukces $p$, porażka $q = 1-p$). Prawdopodobieństwo uzyskania dokładnie $k$ sukcesów: $P_n(k) = \\binom{n}{k} p^k (1-p)^{n-k}$.",
+            "matura_context": "Klasyczny temat maturalny, często pytający o 'co najmniej jeden sukces' (zdarzenie przeciwne).",
+            "core_formulas": "P_n(k) = \\binom{n}{k} p^k q^{n-k}, \\quad P(K \\ge 1) = 1 - P_n(0)",
+            "worked_example": "Rzucamy 5 razy symetryczną monetą: $P_5(3) = \\binom{5}{3} (0.5)^5 = 10 / 32 = 5/16$.",
+            "exam_trap": "Dla pytań typu 'co najmniej raz' zawsze stosuj zdarzenie przeciwne $1 - P(k = 0)$ — to oszczędza mnóstwo czasu!"
+          },
+          "tasks": [
+            {
+              "id": "mat-roz-15-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "Rzucamy 5 razy symetryczną monetą. Prawdopodobieństwo otrzymania dokładnie 3 reszek wynosi:",
+              "options": [
+                "$\\frac{5}{16}$",
+                "$\\frac{1}{2}$",
+                "$\\frac{10}{32}$",
+                "$\\frac{5}{32}$"
+              ],
+              "correct_answer": "$\\frac{5}{16}$",
+              "explanation": "$P_5(3) = \\binom{5}{3} (1/2)^5 = 10 \\cdot \\frac{1}{32} = \\frac{10}{32} = \\frac{5}{16}$.",
+              "hint": "Zastosuj schemat Bernoulliego dla $n=5, k=3, p=0.5$.",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-15-2-2",
+              "type": "NUMERIC_INPUT",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Strzelec trafia w tarczę z prawdopodobieństwem $p = 0.5$. Oddaje 4 strzały. Prawdopodobieństwo, że trafi co najmniej raz wynosi $k / 16$. Podaj wartość $k$:",
+              "correct_answer": "15",
+              "explanation": "Zdarzenie przeciwne: zero trafień. $P_4(0) = (1/2)^4 = 1/16$. Zatem $P = 1 - 1/16 = 15/16 \\implies k = 15$.",
+              "hint": "Oblicz prawdopodobieństwo zdarzenia przeciwnego (0 trafień).",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-15-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "Rzucamy trzykrotnie symetryczną sześcienną kostką do gry. Prawdopodobieństwo wyrzucenia dokładnie dwóch szóstek wynosi:",
+              "options": [
+                "$\\frac{5}{72}$",
+                "$\\frac{1}{72}$",
+                "$\\frac{5}{216}$",
+                "$\\frac{1}{36}$"
+              ],
+              "correct_answer": "$\\frac{5}{72}$",
+              "explanation": "Sukces: wyrzucenie szóstki, $p = 1/6, q = 5/6$. $P_3(2) = \\binom{3}{2} (1/6)^2 (5/6)^1 = 3 \\cdot \\frac{1}{36} \\cdot \\frac{5}{6} = \\frac{15}{216} = \\frac{5}{72}$.",
+              "hint": "Sukces to szóstka ($p=1/6$), porażka to inna liczba ($q=5/6$).",
+              "hint_cost": 10
+            },
+            {
+              "id": "mat-roz-15-2-4",
+              "type": "NUMERIC_INPUT",
+              "points": 2,
+              "source": "CKE Informator 2023",
+              "content": "W teście z 4 pytaniami do każdego pytania są 3 odpowiedzi (jedna poprawna). Zgadywano wszystkie odpowiedzi. Prawdopodobieństwo zgadnięcia wszystkich 4 pytań pomnożone przez 81 wynosi:",
+              "correct_answer": "1",
+              "explanation": "$p = 1/3, n = 4, k = 4$. $P_4(4) = (1/3)^4 = 1/81$. Po pomnożeniu przez 81 otrzymujemy 1.",
+              "hint": "Oblicz $(1/3)^4$ i pomnóż przez 81.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

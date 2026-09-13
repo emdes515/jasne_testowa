@@ -21,6 +21,9 @@ try {
 
 const MATH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka.json');
 const POLISH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_jezyk_polski.json');
+const ENG_BASIC_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_angielski_podstawa.json');
+const MATH_ROZ_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka_rozszerzona.json');
+const ENG_ROZ_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_angielski_rozszerzony.json');
 const PROJECT_ID = process.env.VITE_FIREBASE_PROJECT_ID || 'jasne-7efe7';
 
 async function main() {
@@ -102,32 +105,27 @@ async function main() {
       await commitBatchIfNeeded();
     }
 
-    // subjects/matematyka-podstawowa/topics
-    const mathTopicsSnap = await db.collection('subjects').doc('matematyka-podstawowa').collection('topics').get();
-    for (const tDoc of mathTopicsSnap.docs) {
-      const lessonsSnap = await tDoc.ref.collection('lessons').get();
-      for (const lDoc of lessonsSnap.docs) {
-        currentBatch.delete(lDoc.ref);
-        operationsInBatch++;
-        await commitBatchIfNeeded();
-      }
-      currentBatch.delete(tDoc.ref);
-      operationsInBatch++;
-      await commitBatchIfNeeded();
-    }
+    const allSubjectIds = [
+      'matematyka-podstawowa',
+      'jezyk-polski',
+      'jezyk-angielski',
+      'matematyka-rozszerzona',
+      'jezyk-angielski-rozszerzony'
+    ];
 
-    // subjects/jezyk-polski/topics
-    const polTopicsSnap = await db.collection('subjects').doc('jezyk-polski').collection('topics').get();
-    for (const tDoc of polTopicsSnap.docs) {
-      const lessonsSnap = await tDoc.ref.collection('lessons').get();
-      for (const lDoc of lessonsSnap.docs) {
-        currentBatch.delete(lDoc.ref);
+    for (const subId of allSubjectIds) {
+      const topicsSnap = await db.collection('subjects').doc(subId).collection('topics').get();
+      for (const tDoc of topicsSnap.docs) {
+        const lessonsSnap = await tDoc.ref.collection('lessons').get();
+        for (const lDoc of lessonsSnap.docs) {
+          currentBatch.delete(lDoc.ref);
+          operationsInBatch++;
+          await commitBatchIfNeeded();
+        }
+        currentBatch.delete(tDoc.ref);
         operationsInBatch++;
         await commitBatchIfNeeded();
       }
-      currentBatch.delete(tDoc.ref);
-      operationsInBatch++;
-      await commitBatchIfNeeded();
     }
 
     await commitBatchIfNeeded(true);
@@ -383,23 +381,150 @@ async function main() {
     }
   }
 
-  // 4. Subject Język Angielski (Rejestr)
-  const angielskiSubjectData = {
-    id: 'jezyk-angielski',
+  async function seedStandardSubject(subjectId, filePath, fallbackMeta) {
+    if (!fs.existsSync(filePath)) {
+      console.warn(`[WARN] Brak pliku ${filePath} — pomijam przedmiot ${subjectId}.`);
+      return;
+    }
+    const raw = fs.readFileSync(filePath, 'utf8');
+    const curriculum = JSON.parse(raw);
+    const topics = curriculum.topics || [];
+    const meta = curriculum.subject || fallbackMeta;
+
+    console.log(`--- Wgrywanie przedmiotu: ${meta.name ? meta.name.toUpperCase() : subjectId} ---`);
+
+    let totalLessons = 0;
+    let totalTasks = 0;
+    const topicsSummary = topics.map(t => {
+      const tNum = typeof t.numericId === 'number' ? t.numericId : parseInt(String(t.id).replace(/\D/g, '') || '1', 10);
+      const lCount = (t.lessons || []).length;
+      const tCount = (t.lessons || []).reduce((acc, l) => acc + (l.tasks || []).length, 0);
+      totalLessons += lCount;
+      totalTasks += tCount;
+      return {
+        id: t.id,
+        numericId: tNum,
+        title: t.title,
+        name: t.title,
+        short_title: t.short_title || t.title,
+        icon: t.icon || fallbackMeta.icon || 'Layers',
+        color: t.color || fallbackMeta.color || '#10B981',
+        lessons_count: lCount,
+        tasks_count: tCount
+      };
+    });
+
+    const subjectDocRef = db.collection('subjects').doc(subjectId);
+    currentBatch.set(subjectDocRef, {
+      id: subjectId,
+      key: meta.key || fallbackMeta.key,
+      name: meta.name || fallbackMeta.name,
+      short_name: meta.short_name || fallbackMeta.short_name,
+      title: meta.title || fallbackMeta.title,
+      level: meta.level || fallbackMeta.level,
+      icon: meta.icon || fallbackMeta.icon,
+      color: meta.color || fallbackMeta.color,
+      topics_count: topics.length,
+      lessons_count: totalLessons,
+      tasks_count: totalTasks,
+      topics_metadata: topicsSummary,
+      updatedAt: new Date().toISOString()
+    }, { merge: true });
+    operationsInBatch++;
+    await commitBatchIfNeeded();
+
+    for (const topic of topics) {
+      const topicId = topic.id;
+      const lessons = topic.lessons || [];
+      const topicNumericId = typeof topic.numericId === 'number' ? topic.numericId : parseInt(String(topicId).replace(/\D/g, '') || '1', 10);
+
+      const lessonsMetadata = lessons.map(lesson => ({
+        id: lesson.id,
+        title: lesson.title,
+        required_points: lesson.required_correct_tasks || 3,
+        required_correct_tasks: lesson.required_correct_tasks || 3,
+        estimated_time_minutes: lesson.estimated_time_minutes || 6,
+        estimated_time_formatted: lesson.estimated_time_formatted || '~6 min',
+        tasks_count: (lesson.tasks || []).length
+      }));
+
+      const topicData = {
+        id: topicId,
+        numericId: topicNumericId,
+        subject_id: subjectId,
+        title: topic.title,
+        name: topic.title,
+        short_title: topic.short_title || topic.title,
+        description: topic.description || '',
+        icon: topic.icon || fallbackMeta.icon || 'Layers',
+        color: topic.color || fallbackMeta.color || '#10B981',
+        matura_points_range: topic.matura_points_range || '3–6 pkt',
+        importance: topic.importance || 'CRITICAL_PEWNIAK',
+        lessons_metadata: lessonsMetadata,
+        final_test: topic.final_test || null,
+        updatedAt: new Date().toISOString()
+      };
+
+      const topicDocRef = subjectDocRef.collection('topics').doc(topicId);
+      currentBatch.set(topicDocRef, topicData, { merge: true });
+      operationsInBatch++;
+      totalTopicsWritten++;
+      await commitBatchIfNeeded();
+
+      for (const lesson of lessons) {
+        const lessonDocRef = topicDocRef.collection('lessons').doc(lesson.id);
+        currentBatch.set(lessonDocRef, {
+          id: lesson.id,
+          topic_id: topicId,
+          subject_id: subjectId,
+          title: lesson.title,
+          estimated_time_minutes: lesson.estimated_time_minutes || 6,
+          estimated_time_formatted: lesson.estimated_time_formatted || '~6 min',
+          required_correct_tasks: lesson.required_correct_tasks || 3,
+          theory_pill: lesson.theory_pill || null,
+          tasks: lesson.tasks || [],
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+        operationsInBatch++;
+        totalLessonsWritten++;
+        await commitBatchIfNeeded();
+      }
+      console.log(`✓ ${meta.short_name || subjectId}: [${topicId}] "${topic.short_title || topic.title}" (${lessons.length} lekcji)`);
+    }
+  }
+
+  // 4. Wgrywanie JĘZYKA ANGIELSKIEGO (Podstawa)
+  await seedStandardSubject('jezyk-angielski', ENG_BASIC_CURRICULUM_PATH, {
     key: 'eng',
     name: 'Język Angielski',
     short_name: 'Angielski',
-    title: 'Język Angielski',
-    level: 'Poziom Podstawowy • B1/B2',
+    title: 'Język Angielski (Poziom Podstawowy)',
+    level: 'Nowa Formuła 2023 (Poziom Podstawowy • B1/B2)',
     icon: 'Globe',
-    color: '#10B981',
-    topics_count: 0,
-    lessons_count: 0,
-    tasks_count: 0,
-    updatedAt: new Date().toISOString()
-  };
-  currentBatch.set(db.collection('subjects').doc('jezyk-angielski'), angielskiSubjectData, { merge: true });
-  operationsInBatch++;
+    color: '#10B981'
+  });
+
+  // 5. Wgrywanie MATEMATYKI ROZSZERZONEJ
+  await seedStandardSubject('matematyka-rozszerzona', MATH_ROZ_CURRICULUM_PATH, {
+    key: 'math-roz',
+    name: 'Matematyka Rozszerzona',
+    short_name: 'Mat. Roz.',
+    title: 'Matematyka (Poziom Rozszerzony)',
+    level: 'Nowa Formuła 2023 (Poziom Rozszerzony)',
+    icon: 'Calculator',
+    color: '#8B5CF6'
+  });
+
+  // 6. Wgrywanie JĘZYKA ANGIELSKIEGO ROZSZERZONEGO
+  await seedStandardSubject('jezyk-angielski-rozszerzony', ENG_ROZ_CURRICULUM_PATH, {
+    key: 'eng-roz',
+    name: 'Język Angielski Rozszerzony',
+    short_name: 'Ang. Roz.',
+    title: 'Język Angielski (Poziom Rozszerzony)',
+    level: 'Nowa Formuła 2023 (Poziom Rozszerzony • B2+/C1)',
+    icon: 'Globe',
+    color: '#06B6D4'
+  });
 
   // 5. Katalogi CKE (oficjalne wzory + wagi punktowe) -> system/ckeFormulas,
   //    system/ckeSubjectWeights. Klient czyta je z Firestore; w bundlu nie ma

@@ -43,7 +43,7 @@ export interface CkeSubjectOption {
   accentColor: string;
   glowColor: string;
   isAvailable: boolean;
-  iconName: 'math' | 'book' | 'globe' | 'dna' | 'flask';
+  iconName: 'math' | 'book' | 'globe' | 'dna' | 'flask' | 'calculator';
 }
 
 export const DEFAULT_CKE_SUBJECTS_CONFIG: Record<string, SubjectCkeConfig> = {
@@ -96,6 +96,68 @@ export const DEFAULT_CKE_SUBJECTS_CONFIG: Record<string, SubjectCkeConfig> = {
       'pol-dzial-16': { topicId: 'pol-dzial-16', name: 'Literatura po 1945 r.', minPoints: 4, maxPoints: 15, averagePoints: 8.0, importance: 'CRITICAL_PEWNIAK' },
       'pol-dzial-17': { topicId: 'pol-dzial-17', name: 'Literatura współczesna', minPoints: 2, maxPoints: 10, averagePoints: 5.0, importance: 'HIGH' }
     }
+  },
+  'jezyk-angielski': {
+    subjectId: 'jezyk-angielski',
+    name: 'Język Angielski (Poziom Podstawowy)',
+    totalExamPoints: 60,
+    passingThresholdPoints: 18,
+    passingThresholdPercent: 30,
+    topics: {
+      'eng-dzial-1': { topicId: 'eng-dzial-1', name: 'Czasy gramatyczne i aspekty', minPoints: 4, maxPoints: 7, averagePoints: 5.5, importance: 'CRITICAL_PEWNIAK' },
+      'eng-dzial-2': { topicId: 'eng-dzial-2', name: 'Konstrukcje czasownikowe (Gerund & Infinitive)', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'eng-dzial-3': { topicId: 'eng-dzial-3', name: 'Rzeczowniki, przedimki i kwantyfikatory', minPoints: 2, maxPoints: 4, averagePoints: 3.0, importance: 'MEDIUM' },
+      'eng-dzial-4': { topicId: 'eng-dzial-4', name: 'Przymiotniki, przysłówki i zaimki', minPoints: 2, maxPoints: 4, averagePoints: 3.0, importance: 'MEDIUM' },
+      'eng-dzial-5': { topicId: 'eng-dzial-5', name: 'Czasowniki modalne', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'eng-dzial-6': { topicId: 'eng-dzial-6', name: 'Strona bierna i mowa zależna', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-dzial-7': { topicId: 'eng-dzial-7', name: 'Okresy warunkowe (Conditionals 0, 1, 2)', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-dzial-8': { topicId: 'eng-dzial-8', name: 'Słowotwórstwo podstawowe', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'eng-dzial-9': { topicId: 'eng-dzial-9', name: 'Reakcje językowe i parafrazy zdań', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-dzial-10': { topicId: 'eng-dzial-10', name: 'Wypowiedź pisemna (E-mail i wpis na blogu)', minPoints: 12, maxPoints: 12, averagePoints: 12.0, importance: 'CRITICAL_PEWNIAK' }
+    }
+  },
+  'matematyka-rozszerzona': {
+    subjectId: 'matematyka-rozszerzona',
+    name: 'Matematyka (Poziom Rozszerzony)',
+    totalExamPoints: 50,
+    passingThresholdPoints: 15,
+    passingThresholdPercent: 30,
+    topics: {
+      'mat-roz-dzial-1': { topicId: 'mat-roz-dzial-1', name: 'Wielomiany i algebra rozszerzona', minPoints: 3, maxPoints: 6, averagePoints: 4.5, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-2': { topicId: 'mat-roz-dzial-2', name: 'Równania i nierówności z parametrem', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-3': { topicId: 'mat-roz-dzial-3', name: 'Wartość bezwzględna i nierówności z modułem', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'mat-roz-dzial-4': { topicId: 'mat-roz-dzial-4', name: 'Funkcje wymierne i ułamki algebraiczne', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'mat-roz-dzial-5': { topicId: 'mat-roz-dzial-5', name: 'Funkcja wykładnicza i logarytmy rozszerzone', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'mat-roz-dzial-6': { topicId: 'mat-roz-dzial-6', name: 'Trygonometria rozszerzona', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-7': { topicId: 'mat-roz-dzial-7', name: 'Ciągi i szeregi geometryczne', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'mat-roz-dzial-8': { topicId: 'mat-roz-dzial-8', name: 'Granice funkcji i asymptoty', minPoints: 2, maxPoints: 4, averagePoints: 3.0, importance: 'MEDIUM' },
+      'mat-roz-dzial-9': { topicId: 'mat-roz-dzial-9', name: 'Pochodna funkcji i styczne', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-10': { topicId: 'mat-roz-dzial-10', name: 'Zadania optymalizacyjne', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-11': { topicId: 'mat-roz-dzial-11', name: 'Planimetria rozszerzona', minPoints: 4, maxPoints: 7, averagePoints: 5.5, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-12': { topicId: 'mat-roz-dzial-12', name: 'Geometria analityczna rozszerzona', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-13': { topicId: 'mat-roz-dzial-13', name: 'Stereometria rozszerzona', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' },
+      'mat-roz-dzial-14': { topicId: 'mat-roz-dzial-14', name: 'Kombinatoryka rozszerzona', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'HIGH' },
+      'mat-roz-dzial-15': { topicId: 'mat-roz-dzial-15', name: 'Prawdopodobieństwo rozszerzone', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' }
+    }
+  },
+  'jezyk-angielski-rozszerzony': {
+    subjectId: 'jezyk-angielski-rozszerzony',
+    name: 'Język Angielski (Poziom Rozszerzony)',
+    totalExamPoints: 60,
+    passingThresholdPoints: 18,
+    passingThresholdPercent: 30,
+    topics: {
+      'eng-roz-dzial-1': { topicId: 'eng-roz-dzial-1', name: 'Inwersja stylistyczna i emfaza', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-2': { topicId: 'eng-roz-dzial-2', name: 'Mixed & Inverted Conditionals', minPoints: 3, maxPoints: 6, averagePoints: 4.5, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-3': { topicId: 'eng-roz-dzial-3', name: 'Wish, Rather & Subjunctive', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-4': { topicId: 'eng-roz-dzial-4', name: 'Modals in the Past & Deduction', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-5': { topicId: 'eng-roz-dzial-5', name: 'Participle Clauses', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-6': { topicId: 'eng-roz-dzial-6', name: 'Strona bierna i kauzatywy', minPoints: 3, maxPoints: 6, averagePoints: 4.5, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-7': { topicId: 'eng-roz-dzial-7', name: 'Słowotwórstwo zaawansowane', minPoints: 3, maxPoints: 5, averagePoints: 4.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-8': { topicId: 'eng-roz-dzial-8', name: 'Phrasal Verbs i kolokacje', minPoints: 3, maxPoints: 6, averagePoints: 4.5, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-9': { topicId: 'eng-roz-dzial-9', name: 'Key Word Transformations', minPoints: 4, maxPoints: 6, averagePoints: 5.0, importance: 'CRITICAL_PEWNIAK' },
+      'eng-roz-dzial-10': { topicId: 'eng-roz-dzial-10', name: 'Wypowiedź pisemna i leksyka', minPoints: 13, maxPoints: 18, averagePoints: 15.0, importance: 'CRITICAL_PEWNIAK' }
+    }
   }
 };
 
@@ -125,6 +187,45 @@ export const DEFAULT_CKE_SUBJECT_OPTIONS: CkeSubjectOption[] = [
     glowColor: 'rgba(244, 63, 94, 0.25)',
     isAvailable: true,
     iconName: 'book'
+  },
+  {
+    id: 'jezyk-angielski',
+    key: 'eng',
+    shortName: 'Język Angielski',
+    fullName: 'Język Angielski (Poziom Podstawowy)',
+    examTag: 'Podstawa • 60 pkt',
+    totalPoints: 60,
+    passingPoints: 18,
+    accentColor: '#10B981',
+    glowColor: 'rgba(16, 185, 129, 0.25)',
+    isAvailable: true,
+    iconName: 'globe'
+  },
+  {
+    id: 'matematyka-rozszerzona',
+    key: 'math-roz',
+    shortName: 'Matematyka Roz.',
+    fullName: 'Matematyka (Poziom Rozszerzony)',
+    examTag: 'Rozszerzenie • 50 pkt',
+    totalPoints: 50,
+    passingPoints: 15,
+    accentColor: '#8B5CF6',
+    glowColor: 'rgba(139, 92, 246, 0.25)',
+    isAvailable: true,
+    iconName: 'calculator'
+  },
+  {
+    id: 'jezyk-angielski-rozszerzony',
+    key: 'eng-roz',
+    shortName: 'Angielski Roz.',
+    fullName: 'Język Angielski (Poziom Rozszerzony)',
+    examTag: 'Rozszerzenie • 60 pkt',
+    totalPoints: 60,
+    passingPoints: 18,
+    accentColor: '#06B6D4',
+    glowColor: 'rgba(6, 182, 212, 0.25)',
+    isAvailable: true,
+    iconName: 'globe'
   }
 ];
 
@@ -255,12 +356,18 @@ export function getCkeAvailableSubjects(): CkeSubjectOption[] {
   return subjectOptions;
 }
 
+export function normalizeSubjectFirestoreId(subjectKeyOrId?: string): string {
+  if (!subjectKeyOrId) return 'matematyka-podstawowa';
+  if (subjectKeyOrId === 'pol' || subjectKeyOrId === 'jezyk-polski') return 'jezyk-polski';
+  if (subjectKeyOrId === 'eng' || subjectKeyOrId === 'jezyk-angielski') return 'jezyk-angielski';
+  if (subjectKeyOrId === 'math-roz' || subjectKeyOrId === 'mat-roz' || subjectKeyOrId === 'matematyka-rozszerzona') return 'matematyka-rozszerzona';
+  if (subjectKeyOrId === 'eng-roz' || subjectKeyOrId === 'ang-roz' || subjectKeyOrId === 'jezyk-angielski-rozszerzony') return 'jezyk-angielski-rozszerzony';
+  return 'matematyka-podstawowa';
+}
+
 /** Konfiguracja wag CKE przedmiotu (kształt zapasowy do czasu wczytania katalogu). */
 export function getSubjectCkeConfig(subjectId?: string): SubjectCkeConfig {
-  const normId = subjectId === 'pol' || subjectId === 'jezyk-polski'
-    ? 'jezyk-polski'
-    : 'matematyka-podstawowa';
-
+  const normId = normalizeSubjectFirestoreId(subjectId);
   return subjectsConfig[normId] || subjectsConfig['matematyka-podstawowa'] || FALLBACK_SUBJECT_CONFIG;
 }
 

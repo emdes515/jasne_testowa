@@ -15,6 +15,8 @@ import { MathRenderer } from './MathRenderer';
 import { drawSessionTasks, getLessonFormulaSheet, loadTopicBossExam } from '../data/dzial1TaskPool';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { BossExamRunner } from './BossExamRunner';
+import { SubjectKey } from '../types';
+import { normalizeSubjectFirestoreId } from '../services/ckeCatalogRepository';
 
 const mathIcons = [
   Hash, 
@@ -103,8 +105,8 @@ export function ActiveBadge({ label = 'W TOKU', isRose = false }: { label?: stri
   return (
     <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none ${
       isRose
-        ? 'text-[#F43F5E] bg-[#F43F5E]/10 border border-[#F43F5E]/30 shadow-[0_0_10px_rgba(244,63,94,0.15)]'
-        : 'text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-[0_0_10px_rgba(255,184,0,0.15)]'
+        ? 'text-[#F43F5E] bg-[#F43F5E]/10 border border-[#F43F5E]/30 shadow-sm'
+        : 'text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-sm'
     }`}>
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
         <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] ${
@@ -157,26 +159,52 @@ const initialDataBySubject: Record<string, any> = {
   math: {
     key: 'math',
     name: 'Matematyka',
+    shortName: 'Matematyka',
     level: 'Nowa Formuła 2023',
     icon: Calculator,
     color: 'text-blue-400',
+    accentColor: '#FFB800',
     topics: []
   },
   pol: {
     key: 'pol',
     name: 'Język Polski',
+    shortName: 'J. Polski',
     level: 'Nowa Formuła 2023',
     icon: BookOpen,
     color: 'text-rose-400',
+    accentColor: '#F43F5E',
     topics: [],
     pillars: []
   },
   eng: {
     key: 'eng',
     name: 'Język Angielski',
+    shortName: 'Angielski',
     level: 'Poziom Podstawowy • B1/B2',
     icon: Globe,
     color: 'text-emerald-400',
+    accentColor: '#10B981',
+    topics: []
+  },
+  'math-roz': {
+    key: 'math-roz',
+    name: 'Matematyka Rozszerzona',
+    shortName: 'Matematyka Roz.',
+    level: 'Poziom Rozszerzony • Formuła 2023',
+    icon: Calculator,
+    color: 'text-sky-400',
+    accentColor: '#38BDF8',
+    topics: []
+  },
+  'eng-roz': {
+    key: 'eng-roz',
+    name: 'Język Angielski Rozszerzony',
+    shortName: 'Angielski Roz.',
+    level: 'Poziom Rozszerzony • B2+/C1',
+    icon: Globe,
+    color: 'text-purple-400',
+    accentColor: '#A855F7',
     topics: []
   }
 };
@@ -188,8 +216,8 @@ interface LearnViewProps {
   completedTasks?: string[];
   taskStars?: Record<string, number>;
   lessonMistakes?: Record<string, number>;
-  selectedSubjectKey?: 'math' | 'pol' | 'eng' | string;
-  onSelectSubject?: (key: 'math' | 'pol') => void;
+  selectedSubjectKey?: SubjectKey;
+  onSelectSubject?: (key: SubjectKey) => void;
   onStartTask?: (task: any, lessonTasks?: any[], lessonTitle?: string, nextLesson?: any) => void;
   onCompleteTask?: (taskIds?: string | string[], stars?: number, earnedXp?: number, earnedCoins?: number, nextLesson?: any, sessionDurationSeconds?: number) => void;
   isGuest?: boolean;
@@ -235,23 +263,23 @@ export function LearnView({
     return 0;
   };
 
-  // Subject selection (math, pol, eng)
-  const [internalSubjectKey, setInternalSubjectKey] = useState<string>(() => {
+  // Subject selection (math, pol, eng, math-roz, eng-roz)
+  const [internalSubjectKey, setInternalSubjectKey] = useState<SubjectKey>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_selected_subject');
-      if (stored && (stored === 'math' || stored === 'pol')) return stored;
+      if (stored && ['math', 'pol', 'eng', 'math-roz', 'eng-roz'].includes(stored)) return stored as SubjectKey;
     } catch(e) {}
     return 'math';
   });
 
-  const selectedSubjectKey = propSubjectKey || internalSubjectKey;
+  const selectedSubjectKey = (propSubjectKey || internalSubjectKey) as SubjectKey;
 
   // Identyfikator przedmiotu w Firestore — jedno źródło prawdy dla odczytów treści.
-  const subjectFirestoreId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
+  const subjectFirestoreId = normalizeSubjectFirestoreId(selectedSubjectKey);
 
-  const setSelectedSubjectKey = (key: string) => {
+  const setSelectedSubjectKey = (key: SubjectKey) => {
     setInternalSubjectKey(key);
-    if (onSelectSubject && (key === 'math' || key === 'pol')) {
+    if (onSelectSubject) {
       onSelectSubject(key);
     }
   };
@@ -342,6 +370,9 @@ export function LearnView({
   const [mathTopicsList, setMathTopicsList] = useState<any[]>([]);
   const [polishTopicsList, setPolishTopicsList] = useState<any[]>([]);
   const [polishPillarsList, setPolishPillarsList] = useState<any[]>([]);
+  const [engTopicsList, setEngTopicsList] = useState<any[]>([]);
+  const [mathRozTopicsList, setMathRozTopicsList] = useState<any[]>([]);
+  const [engRozTopicsList, setEngRozTopicsList] = useState<any[]>([]);
   const [isLoadingTopics, setIsLoadingTopics] = useState<boolean>(true);
   const [topicsLoadError, setTopicsLoadError] = useState<string | null>(null);
   const [selectedPillarId, setSelectedPillarId] = useState<string>(() => {
@@ -369,10 +400,13 @@ export function LearnView({
 
     const loadCurriculum = async () => {
       try {
-        const [mathLoaded, polishLoaded, pillars] = await Promise.all([
+        const [mathLoaded, polishLoaded, pillars, engLoaded, mathRozLoaded, engRozLoaded] = await Promise.all([
           curriculumRepository.getTopics('matematyka-podstawowa'),
           curriculumRepository.getTopics('jezyk-polski'),
-          curriculumRepository.getSubjectPillars('jezyk-polski')
+          curriculumRepository.getSubjectPillars('jezyk-polski'),
+          curriculumRepository.getTopics('jezyk-angielski'),
+          curriculumRepository.getTopics('matematyka-rozszerzona'),
+          curriculumRepository.getTopics('jezyk-angielski-rozszerzony')
         ]);
 
         if (!isMounted) return;
@@ -387,8 +421,11 @@ export function LearnView({
         setMathTopicsList(mathLoaded || []);
         setPolishTopicsList(polishTopicsFiltered);
         setPolishPillarsList(Array.isArray(pillars) ? pillars : []);
+        setEngTopicsList(engLoaded || []);
+        setMathRozTopicsList(mathRozLoaded || []);
+        setEngRozTopicsList(engRozLoaded || []);
 
-        if ((mathLoaded || []).length === 0 && polishTopicsFiltered.length === 0) {
+        if ((mathLoaded || []).length === 0 && polishTopicsFiltered.length === 0 && (engLoaded || []).length === 0) {
           setTopicsLoadError('Nie udało się wczytać programu nauczania. Sprawdź połączenie z internetem i spróbuj ponownie.');
         }
       } catch (err) {
@@ -415,6 +452,18 @@ export function LearnView({
       ...initialDataBySubject.pol,
       topics: polishTopicsList,
       pillars: polishPillarsList
+    },
+    eng: {
+      ...initialDataBySubject.eng,
+      topics: engTopicsList
+    },
+    'math-roz': {
+      ...initialDataBySubject['math-roz'],
+      topics: mathRozTopicsList
+    },
+    'eng-roz': {
+      ...initialDataBySubject['eng-roz'],
+      topics: engRozTopicsList
     }
   };
 
@@ -510,12 +559,33 @@ export function LearnView({
   const completedMathTasks = mathTopicsList.reduce((acc, t) => acc + (t.tasks || []).filter((tsk: any) => completedTasks.includes(tsk.id)).length, 0);
   const mathProgressPercent = totalMathTasks > 0 ? Math.round((completedMathTasks / totalMathTasks) * 100) : 0;
 
-  // Polish progress calculation (based on 20 topics and complete lesson suite)
+  // Polish progress calculation
   const totalPolLessons = polishTopicsList.reduce((acc, t) => acc + (getLessonsForTopic(t).length || 0), 0);
   const completedPolLessons = polishTopicsList.reduce((acc, t) => {
     return acc + getLessonsForTopic(t).filter(l => isLessonCompleted(l, completedTasks, userState)).length;
   }, 0);
   const polProgressPercent = totalPolLessons > 0 ? Math.round((completedPolLessons / totalPolLessons) * 100) : 0;
+
+  // English basic progress calculation
+  const totalEngLessons = engTopicsList.reduce((acc, t) => acc + (getLessonsForTopic(t).length || 0), 0);
+  const completedEngLessons = engTopicsList.reduce((acc, t) => {
+    return acc + getLessonsForTopic(t).filter(l => isLessonCompleted(l, completedTasks, userState)).length;
+  }, 0);
+  const engProgressPercent = totalEngLessons > 0 ? Math.round((completedEngLessons / totalEngLessons) * 100) : 0;
+
+  // Math extended progress calculation
+  const totalMathRozLessons = mathRozTopicsList.reduce((acc, t) => acc + (getLessonsForTopic(t).length || 0), 0);
+  const completedMathRozLessons = mathRozTopicsList.reduce((acc, t) => {
+    return acc + getLessonsForTopic(t).filter(l => isLessonCompleted(l, completedTasks, userState)).length;
+  }, 0);
+  const mathRozProgressPercent = totalMathRozLessons > 0 ? Math.round((completedMathRozLessons / totalMathRozLessons) * 100) : 0;
+
+  // English extended progress calculation
+  const totalEngRozLessons = engRozTopicsList.reduce((acc, t) => acc + (getLessonsForTopic(t).length || 0), 0);
+  const completedEngRozLessons = engRozTopicsList.reduce((acc, t) => {
+    return acc + getLessonsForTopic(t).filter(l => isLessonCompleted(l, completedTasks, userState)).length;
+  }, 0);
+  const engRozProgressPercent = totalEngRozLessons > 0 ? Math.round((completedEngRozLessons / totalEngRozLessons) * 100) : 0;
 
   const handleSelectTopic = (index: number, locked: boolean = false) => {
     if (locked) {
@@ -762,7 +832,7 @@ export function LearnView({
                           <motion.div
                             layoutId="activePolishPillarTab"
                             transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-[0_0_15px_rgba(244,63,94,0.25)]"
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-sm"
                           />
                         )}
                         <MessageSquare size={13} className={selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
@@ -791,7 +861,7 @@ export function LearnView({
                           <motion.div
                             layoutId="activePolishPillarTab"
                             transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-[0_0_15px_rgba(244,63,94,0.25)]"
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-sm"
                           />
                         )}
                         <BookOpen size={13} className={selectedPillarId === 'pillar-2-lektury' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
@@ -820,7 +890,7 @@ export function LearnView({
                           <motion.div
                             layoutId="activePolishPillarTab"
                             transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-[0_0_15px_rgba(244,63,94,0.25)]"
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-sm"
                           />
                         )}
                         <Feather size={13} className={selectedPillarId === 'pillar-3-wypracowanie' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
@@ -900,7 +970,7 @@ export function LearnView({
                               ? 'bg-gradient-to-r from-[#221018] to-[#140C12] border-[#F43F5E] ring-1 ring-[#F43F5E]/30 shadow-[0_4px_24px_rgba(244,63,94,0.18)]'
                               : 'bg-gradient-to-r from-[#151D2C] to-[#0E1420] border-[#FFB800] ring-1 ring-[#FFB800]/30 shadow-[0_4px_24px_rgba(255,184,0,0.15)]'
                             : isFullyCompleted
-                              ? 'bg-[#0E1524] border-emerald-500/30 hover:border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.08)]'
+                              ? 'bg-[#0E1524] border-emerald-500/30 hover:border-emerald-500/50 shadow-sm'
                               : isLocked
                                 ? 'bg-[#0B0F17]/60 border-white/5 opacity-60 hover:opacity-75'
                                 : 'bg-[#101726] border-white/10 hover:border-white/20 shadow-sm'
@@ -919,7 +989,7 @@ export function LearnView({
                                   ? 'bg-rose-500/10 text-rose-300 border-rose-500/30'
                                   : topic.pillar_id === 'pillar-2-lektury'
                                     ? 'bg-purple-500/10 text-purple-300 border-purple-500/30'
-                                    : 'bg-gradient-to-r from-amber-500/15 to-rose-500/15 text-amber-300 border-amber-500/40 shadow-[0_0_10px_rgba(245,158,11,0.15)]'
+                                    : 'bg-gradient-to-r from-amber-500/15 to-rose-500/15 text-amber-300 border-amber-500/40 shadow-sm'
                               }`}>
                                 {topic.pillar_id === 'pillar-3-wypracowanie' ? (
                                   <Feather size={11} className="text-amber-400 shrink-0" />
@@ -937,7 +1007,7 @@ export function LearnView({
                                 <span>ZABLOKOWANY</span>
                               </span>
                             ) : isFullyCompleted ? (
-                              <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                              <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 rounded-full shadow-sm">
                                 <CheckCircle2 size={11} className="text-emerald-400" />
                                 <span>ZALICZONY</span>
                               </span>
@@ -1006,8 +1076,8 @@ export function LearnView({
                             <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
                               isBeaconTopic
                                 ? selectedSubjectKey === 'pol'
-                                  ? 'bg-rose-500/15 text-rose-400 group-hover:bg-rose-500 group-hover:text-white shadow-[0_0_12px_rgba(244,63,94,0.2)]'
-                                  : 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                                  ? 'bg-rose-500/15 text-rose-400 group-hover:bg-rose-500 group-hover:text-white shadow-sm'
+                                  : 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-sm'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950'
                                   : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
@@ -1045,11 +1115,11 @@ export function LearnView({
                                 isLocked 
                                   ? 'bg-transparent' 
                                   : isFullyCompleted
-                                    ? 'bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.5)]'
+                                    ? 'bg-emerald-400 shadow-sm'
                                     : isBeaconTopic 
                                       ? selectedSubjectKey === 'pol'
-                                        ? 'bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.6)]'
-                                        : 'bg-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.6)]' 
+                                        ? 'bg-rose-500 shadow-sm'
+                                        : 'bg-[#FFB800] shadow-sm' 
                                       : 'bg-white/30'
                               }`} 
                               style={{ width: `${isLocked ? 0 : progressPercent}%` }} 
@@ -1105,7 +1175,7 @@ export function LearnView({
                 {/* Trofeum na mecie (wyświetlane po wczytaniu wszystkich działów) */}
                 {!hasMoreTopics && (
                   <div className="flex flex-col items-center justify-center mt-8 mb-4 relative z-10 text-center">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#F59E0B] to-[#D97706] rounded-2xl flex items-center justify-center shadow-[0_0_25px_rgba(245,158,11,0.3)] border border-[#FFFBEB]/30 mb-2">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#F59E0B] to-[#D97706] rounded-2xl flex items-center justify-center shadow-sm border border-[#FFFBEB]/30 mb-2">
                       <Trophy size={28} className="text-white drop-shadow-md" />
                     </div>
                     <p className="text-xs font-black uppercase text-amber-400 tracking-wider">Matura zdana na 100%</p>
@@ -1210,8 +1280,8 @@ export function LearnView({
                         <div 
                           className={`h-full transition-all duration-500 rounded-full ${
                             selectedSubjectKey === 'pol'
-                              ? 'bg-gradient-to-r from-rose-600 to-rose-400 shadow-[0_0_12px_rgba(244,63,94,0.5)]'
-                              : 'bg-gradient-to-r from-[#D97706] to-[#FFB800] shadow-[0_0_12px_rgba(255,184,0,0.5)]'
+                              ? 'bg-gradient-to-r from-rose-600 to-rose-400 shadow-sm'
+                              : 'bg-gradient-to-r from-[#D97706] to-[#FFB800] shadow-sm'
                           }`}
                           style={{ width: `${progressPct}%` }}
                         />
@@ -1222,7 +1292,7 @@ export function LearnView({
 
                 {lessonsForCurrentTopic.length === 0 ? (
                   <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-[#141A23]/70 border border-white/10 rounded-3xl mt-4 sm:mt-6 max-w-md mx-auto shadow-xl">
-                    <div className="w-16 h-16 rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] mb-4 shadow-[0_0_20px_rgba(255,184,0,0.2)]">
+                    <div className="w-16 h-16 rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] mb-4 shadow-sm">
                       <Sparkles size={28} />
                     </div>
                     <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/25 px-3 py-1 rounded-full mb-3">
@@ -1251,7 +1321,7 @@ export function LearnView({
                           setSelectedTopicIndex(0);
                           setViewState('lessons');
                         }}
-                        className="w-full py-3.5 px-5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-98 transition-all cursor-pointer"
+                        className="w-full py-3.5 px-5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm active:scale-98 transition-all cursor-pointer"
                       >
                         <span>Przejdź do Działu 1 (Liczby Rzeczywiste)</span>
                         <ArrowRight size={16} strokeWidth={3} />
@@ -1292,7 +1362,7 @@ export function LearnView({
                       const nextLessonPayload = nextGroup ? {
                         isSession: true,
                         isPolish: selectedSubjectKey === 'pol',
-                        subjectId: currentSubject.firestoreId,
+                        subjectId: subjectFirestoreId,
                         lessonId: nextGroup.id,
                         lessonTitle: `${nextGroup.badge}: ${nextGroup.name}`,
                         tasks: nextTasksToRun,
@@ -1303,7 +1373,7 @@ export function LearnView({
                         nextLesson: afterNextGroup ? {
                           isSession: true,
                           isPolish: selectedSubjectKey === 'pol',
-                          subjectId: currentSubject.firestoreId,
+                          subjectId: subjectFirestoreId,
                           lessonId: afterNextGroup.id,
                           lessonTitle: `${afterNextGroup.badge}: ${afterNextGroup.name}`
                         } : null
@@ -1325,8 +1395,8 @@ export function LearnView({
                               ? 'border-emerald-500/30 bg-[#0E1524] shadow-[0_4px_20px_rgba(16,185,129,0.06)]'
                               : isCurrentActiveLesson
                                 ? selectedSubjectKey === 'pol'
-                                  ? 'border-2 border-rose-500 bg-gradient-to-b from-[#201318] to-[#120B0E] shadow-[0_0_25px_rgba(244,63,94,0.22)] ring-1 ring-rose-500/40'
-                                  : 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-[0_0_25px_rgba(255,184,0,0.22)] ring-1 ring-[#FFB800]/40'
+                                  ? 'border-2 border-rose-500 bg-gradient-to-b from-[#201318] to-[#120B0E] shadow-sm ring-1 ring-rose-500/40'
+                                  : 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-sm ring-1 ring-[#FFB800]/40'
                                 : !isUnlocked
                                   ? 'border-white/5 bg-[#0A0E17]/60 opacity-60'
                                   : 'border-white/10 bg-[#101726]'
@@ -1338,11 +1408,11 @@ export function LearnView({
                               {/* Ikona statusu (3 Stany) */}
                               <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border mt-0.5 transition-all ${
                                 isCompleted
-                                  ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.25)]'
+                                  ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-sm'
                                   : isCurrentActiveLesson
                                     ? selectedSubjectKey === 'pol'
-                                      ? 'bg-rose-500/20 border border-rose-500 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.3)]'
-                                      : 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.3)]'
+                                      ? 'bg-rose-500/20 border border-rose-500 text-rose-400 shadow-sm'
+                                      : 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-sm'
                                     : !isUnlocked
                                       ? 'bg-white/5 border-white/10 text-slate-500'
                                       : 'bg-white/5 border-white/10 text-slate-300'
@@ -1483,8 +1553,8 @@ export function LearnView({
                                 onClick={() => handleStartLessonSession(group, nextLessonPayload)}
                                 className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.98] transition cursor-pointer ${
                                   selectedSubjectKey === 'pol'
-                                    ? 'bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_20px_rgba(244,63,94,0.35)]'
-                                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                                    ? 'bg-rose-500 hover:bg-rose-400 text-white shadow-sm'
+                                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
                                 }`}
                               >
                                 <Play size={16} fill={selectedSubjectKey === 'pol' ? '#FFFFFF' : '#080B11'} strokeWidth={0} />
@@ -1546,9 +1616,9 @@ export function LearnView({
                           id={`boss-exam-${currentTopic.id}-card`}
                           className={`rounded-3xl border-2 p-5 sm:p-6 flex flex-col gap-4 transition-all duration-300 mt-6 relative overflow-hidden ${
                             isBossExamPassed
-                              ? 'bg-gradient-to-br from-[#101A14] via-[#0D1612] to-[#0A110E] border-emerald-500/50 shadow-[0_0_30px_rgba(168,85,247,0.15)]'
+                              ? 'bg-gradient-to-br from-[#101A14] via-[#0D1612] to-[#0A110E] border-emerald-500/50 shadow-md shadow-black/20'
                               : allDone
-                                ? 'bg-gradient-to-br from-[#1A152C] via-[#141024] to-[#0D0B18] border-purple-500/60 shadow-[0_0_35px_rgba(168,85,247,0.2)]'
+                                ? 'bg-gradient-to-br from-[#1A152C] via-[#141024] to-[#0D0B18] border-purple-500/60 shadow-md shadow-black/20'
                                 : 'bg-gradient-to-br from-[#161724] via-[#11121C] to-[#0B0C14] border-white/15'
                           }`}
                         >
@@ -1556,9 +1626,9 @@ export function LearnView({
                             <div className="flex items-start gap-3.5">
                               <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border ${
                                 isBossExamPassed
-                                  ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]'
+                                  ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-sm'
                                   : allDone
-                                    ? 'bg-purple-500/20 border-purple-500/50 text-purple-300 shadow-[0_0_15px_rgba(168,85,247,0.3)]'
+                                    ? 'bg-purple-500/20 border-purple-500/50 text-purple-300 shadow-sm'
                                     : 'bg-amber-500/15 border-amber-500/30 text-amber-400'
                               }`}>
                                 <Trophy size={24} className="stroke-[2.2]" />
@@ -1611,7 +1681,7 @@ export function LearnView({
                             className={`w-full py-3.5 sm:py-4 px-6 rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 transition active:scale-[0.99] cursor-pointer shadow-lg ${
                               isBossExamPassed
                                 ? 'bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-emerald-500/40'
-                                : 'bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white shadow-[0_0_25px_rgba(168,85,247,0.4)]'
+                                : 'bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white shadow-sm'
                             }`}
                           >
                             <Trophy size={18} />
@@ -1699,12 +1769,12 @@ export function LearnView({
                     }}
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'math'
-                        ? 'border-[#FFB800] bg-gradient-to-br from-[#151D2C] via-[#111724] to-[#0E1420] ring-1 ring-[#FFB800]/40 shadow-[0_0_24px_rgba(255,184,0,0.22)]'
+                        ? 'border-[#FFB800] bg-gradient-to-br from-[#151D2C] via-[#111724] to-[#0E1420] ring-1 ring-[#FFB800]/40 shadow-sm'
                         : 'border-white/10 bg-[#101726] hover:border-white/20 hover:bg-[#141C2C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+                      <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0 shadow-sm">
                         <Calculator size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -1742,7 +1812,7 @@ export function LearnView({
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-                        className="w-6 h-6 rounded-full bg-[#FFB800] text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
+                        className="w-6 h-6 rounded-full bg-[#FFB800] text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
                       >
                         <Check size={14} strokeWidth={3} />
                       </motion.div>
@@ -1761,7 +1831,7 @@ export function LearnView({
                     }}
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'pol'
-                        ? 'border-rose-500 bg-gradient-to-br from-[#2D161F] to-[#1C1217] ring-1 ring-rose-500/30 shadow-[0_0_24px_rgba(244,63,94,0.22)]'
+                        ? 'border-rose-500 bg-gradient-to-br from-[#2D161F] to-[#1C1217] ring-1 ring-rose-500/30 shadow-sm'
                         : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
                     }`}
                   >
@@ -1804,7 +1874,7 @@ export function LearnView({
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-                        className="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(244,63,94,0.4)]"
+                        className="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-sm"
                       >
                         <Check size={14} strokeWidth={3} />
                       </motion.div>
@@ -1815,22 +1885,198 @@ export function LearnView({
                   <div
                     id="subject-card-eng"
                     onClick={() => {
-                      triggerHaptic('medium');
-                      setLockedToastMessage('Kurs Języka Angielskiego pojawi się w kolejnej aktualizacji!');
-                      setShowLockedToast(true);
-                      if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
-                      toastTimeoutRef.current = setTimeout(() => setShowLockedToast(false), 2500);
+                      triggerHaptic('light');
+                      setSelectedSubjectKey('eng');
+                      setSelectedTopicIndex(0);
+                      setViewState('topics');
+                      openSubjectSheet(false);
                     }}
-                    className="p-4 rounded-2xl border border-white/5 bg-[#10141C]/70 opacity-70 hover:opacity-90 transition-all cursor-pointer flex items-center justify-between gap-4"
+                    className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
+                      selectedSubjectKey === 'eng'
+                        ? 'border-emerald-500 bg-gradient-to-br from-[#10281F] to-[#0A1A14] ring-1 ring-emerald-500/30 shadow-sm'
+                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                    }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 shadow-sm">
                         <Globe size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="font-display font-black text-white/70 text-base">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <span className="font-display font-black text-white text-base">
                             Język Angielski
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                            Podstawa • B1/B2
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#8B8D98] truncate">
+                          10 działów • 23 lekcje • 184 zadania
+                        </p>
+                        <div className="mt-2.5 flex items-center gap-2.5">
+                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                            <div 
+                              className={`h-full rounded-full transition-all duration-300 ${
+                                engProgressPercent > 0 ? 'bg-emerald-400' : 'bg-transparent'
+                              }`}
+                              style={{ width: `${engProgressPercent}%` }}
+                            />
+                          </div>
+                          <span className={`text-[11px] font-bold shrink-0 ${
+                            engProgressPercent > 0 ? 'text-emerald-400' : 'text-slate-500'
+                          }`}>
+                            {engProgressPercent}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    {selectedSubjectKey === 'eng' && (
+                      <motion.div 
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ type: 'spring', stiffness: 450, damping: 22 }}
+                        className="w-6 h-6 rounded-full bg-emerald-500 text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
+                      >
+                        <Check size={14} strokeWidth={3} />
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* 4. Matematyka Rozszerzona */}
+                  <div
+                    id="subject-card-math-roz"
+                    onClick={() => {
+                      triggerHaptic('light');
+                      setSelectedSubjectKey('math-roz');
+                      setSelectedTopicIndex(0);
+                      setViewState('topics');
+                      openSubjectSheet(false);
+                    }}
+                    className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
+                      selectedSubjectKey === 'math-roz'
+                        ? 'border-sky-400 bg-gradient-to-br from-[#0E2034] to-[#0A1524] ring-1 ring-sky-400/30 shadow-sm'
+                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                      <div className="w-12 h-12 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center shrink-0 shadow-sm">
+                        <Calculator size={24} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <span className="font-display font-black text-white text-base">
+                            Matematyka Rozszerzona
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                            <span className="w-1 h-1 rounded-full bg-sky-400" />
+                            Rozszerzenie • 2023
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#8B8D98] truncate">
+                          15 działów • 20 lekcji • 120 zadań
+                        </p>
+                        <div className="mt-2.5 flex items-center gap-2.5">
+                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                            <div 
+                              className={`h-full rounded-full transition-all duration-300 ${
+                                mathRozProgressPercent > 0 ? 'bg-sky-400' : 'bg-transparent'
+                              }`}
+                              style={{ width: `${mathRozProgressPercent}%` }}
+                            />
+                          </div>
+                          <span className={`text-[11px] font-bold shrink-0 ${
+                            mathRozProgressPercent > 0 ? 'text-sky-400' : 'text-slate-500'
+                          }`}>
+                            {mathRozProgressPercent}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    {selectedSubjectKey === 'math-roz' && (
+                      <motion.div 
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ type: 'spring', stiffness: 450, damping: 22 }}
+                        className="w-6 h-6 rounded-full bg-sky-400 text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
+                      >
+                        <Check size={14} strokeWidth={3} />
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* 5. Język Angielski Rozszerzony */}
+                  <div
+                    id="subject-card-eng-roz"
+                    onClick={() => {
+                      triggerHaptic('light');
+                      setSelectedSubjectKey('eng-roz');
+                      setSelectedTopicIndex(0);
+                      setViewState('topics');
+                      openSubjectSheet(false);
+                    }}
+                    className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
+                      selectedSubjectKey === 'eng-roz'
+                        ? 'border-purple-400 bg-gradient-to-br from-[#241233] to-[#160B20] ring-1 ring-purple-400/30 shadow-sm'
+                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                      <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-400 flex items-center justify-center shrink-0 shadow-sm">
+                        <Globe size={24} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <span className="font-display font-black text-white text-base">
+                            Język Angielski Rozszerzony
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                            <span className="w-1 h-1 rounded-full bg-purple-400" />
+                            Rozszerzenie • B2+/C1
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#8B8D98] truncate">
+                          10 działów • 18 lekcji • 72 zadania
+                        </p>
+                        <div className="mt-2.5 flex items-center gap-2.5">
+                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                            <div 
+                              className={`h-full rounded-full transition-all duration-300 ${
+                                engRozProgressPercent > 0 ? 'bg-purple-400' : 'bg-transparent'
+                              }`}
+                              style={{ width: `${engRozProgressPercent}%` }}
+                            />
+                          </div>
+                          <span className={`text-[11px] font-bold shrink-0 ${
+                            engRozProgressPercent > 0 ? 'text-purple-400' : 'text-slate-500'
+                          }`}>
+                            {engRozProgressPercent}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    {selectedSubjectKey === 'eng-roz' && (
+                      <motion.div 
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ type: 'spring', stiffness: 450, damping: 22 }}
+                        className="w-6 h-6 rounded-full bg-purple-400 text-white font-bold flex items-center justify-center shrink-0 shadow-sm"
+                      >
+                        <Check size={14} strokeWidth={3} />
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* 6. Przedmioty w przygotowaniu */}
+                  <div className="p-4 rounded-2xl border border-white/5 bg-[#10141C]/50 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center shrink-0">
+                        <Sparkles size={24} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="font-display font-bold text-white/70 text-base">
+                            Kolejne przedmioty
                           </span>
                           <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
                             <Lock size={10} className="text-slate-400" />
@@ -1838,7 +2084,7 @@ export function LearnView({
                           </span>
                         </div>
                         <p className="text-xs text-[#6B7280] truncate">
-                          Gramatyka • Słownictwo • Wypowiedź
+                          Biologia • Chemia • Fizyka
                         </p>
                       </div>
                     </div>

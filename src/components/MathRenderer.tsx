@@ -331,19 +331,30 @@ export function autoWrapLatex(rawStr: string): string {
     }).join('');
   }
 
-  // Case 4: Standalone fractions in prose outside $...$ (e.g. "Wynik to 2/3." -> "Wynik to $\frac{2}{3}$.")
-  // Exclude URLs and dates like 12/05/2024
+  // Case 4: Mathematical notation in prose outside $...$ (fractions, inequalities, pi, !=)
   const proseParts = s.split(/(\$\$[\s\S]*?\$\$|\$[^\$]+?\$)/g);
   s = proseParts.map(part => {
     if (part.startsWith('$')) return part;
     if (/\d+\/\d+\/\d+/.test(part) || /https?:\/\//.test(part)) return part;
 
-    // Mixed numbers in prose: "2 1/3" -> "$2\frac{1}{3}$"
-    let p = part.replace(/(^|[\s(])([+-]?\d+)\s+(\d+)\/(\d+)(?=[\s).,;!?]|$)/g, (_m, pre, whole, num, den) => {
+    let p = part;
+
+    // 4a. Expressions with != in parentheses: e.g. "(q != 0)" -> "($q \neq 0$)"
+    p = p.replace(/\(\s*([a-zA-Z\d\^_{}\\\+\-\*\/\s]+?)\s*!=\s*([a-zA-Z\d\^_{}\\\+\-\*\/\s]+?)\s*\)/g, (_m, left, right) => {
+      return `($${left.trim()} \\neq ${right.trim()}$)`;
+    });
+
+    // 4b. Expressions with != in prose: e.g. "q != 0" -> "$q \neq 0$", "x != 5" -> "$x \neq 5$"
+    p = p.replace(/(^|[\s(])([a-zA-Z\d\^_{}\\\+\-\*\/]+)\s*!=\s*([a-zA-Z\d\^_{}\\\+\-\*\/]+)(?=[\s).,;!?]|$)/g, (_m, pre, left, right) => {
+      return `${pre}$${left.trim()} \\neq ${right.trim()}$`;
+    });
+
+    // 4c. Mixed numbers in prose: "2 1/3" -> "$2\frac{1}{3}$"
+    p = p.replace(/(^|[\s(])([+-]?\d+)\s+(\d+)\/(\d+)(?=[\s).,;!?]|$)/g, (_m, pre, whole, num, den) => {
       return `${pre}$${whole}\\frac{${num}}{${den}}$`;
     });
 
-    // Simple numeric fractions in prose: "2/3" -> "$\frac{2}{3}$", "-3/4" -> "$-\frac{3}{4}$"
+    // 4d. Simple numeric fractions in prose: "2/3" -> "$\frac{2}{3}$", "-3/4" -> "$-\frac{3}{4}$"
     p = p.replace(/(^|[\s(])([+-]?\d+)\/(\d+)(?=[\s).,;!?]|$)/g, (_m, pre, num, den) => {
       let sign = '';
       let absNum = num;
@@ -356,6 +367,24 @@ export function autoWrapLatex(rawStr: string): string {
       }
       return `${pre}$${sign}\\frac{${absNum}}{${den}}$`;
     });
+
+    // 4e. Variable / algebraic fractions in prose: e.g. "p/q", "a/b", "m/n", "x/y", "1/x", "x/2"
+    p = p.replace(/(^|[\s(])(?!(?:i\/lub)\b)([a-zA-Z\d]{1,2})\/([a-zA-Z\d]{1,2})(?=[\s).,;!?]|$)/g, (match, pre, num, den) => {
+      const mathLetters = /^[a-zA-Z\d]{1,2}$/;
+      if (mathLetters.test(num) && mathLetters.test(den)) {
+        return `${pre}$\\frac{${num}}{${den}}$`;
+      }
+      return match;
+    });
+
+    // 4f. Symbol pi in prose: "liczba pi" -> "liczba $\pi$"
+    p = p.replace(/\b(liczba|liczby|wartość|wartości|stała|stałej)\s+pi\b/gi, (_m, prefix) => {
+      return `${prefix} $\\pi$`;
+    });
+    p = p.replace(/,\s*pi(?=[\s),.;!?]|$)/gi, ', $\\pi$');
+
+    // 4g. Any leftover raw != outside math delimiters -> $\neq$
+    p = p.replace(/!=/g, '$\\neq$');
 
     return p;
   }).join('');

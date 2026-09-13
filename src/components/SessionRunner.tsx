@@ -1941,7 +1941,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="absolute w-36 h-36 rounded-full border border-amber-400/20 animate-spin pointer-events-none" style={{ animationDuration: '24s' }} />
 
               {/* Glowing golden success circle with centered Lucide Trophy */}
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-amber-400/25 via-yellow-500/15 to-amber-600/20 flex items-center justify-center border-2 border-amber-400/80 shadow-[0_0_40px_rgba(245,158,11,0.4)] z-10">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-amber-400/25 via-yellow-500/15 to-amber-600/20 flex items-center justify-center border-2 border-amber-400/80 shadow-md shadow-black/20 z-10">
                 <Trophy size={50} className="text-amber-400 drop-shadow-md shrink-0" strokeWidth={2} />
               </div>
             </motion.div>
@@ -2019,8 +2019,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             >
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold ${
                 sessionMistakesCount === 0 
-                  ? 'bg-slate-900/90 border-emerald-500/30 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.12)]' 
-                  : 'bg-slate-900/90 border-amber-500/30 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.12)]'
+                  ? 'bg-slate-900/90 border-emerald-500/30 text-emerald-300 shadow-sm' 
+                  : 'bg-slate-900/90 border-amber-500/30 text-amber-300 shadow-sm'
               }`}>
                 {sessionMistakesCount === 0 ? (
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -2043,7 +2043,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <button
                     id="session-celebration-next-button"
                     onClick={() => handleFinishSession(true)}
-                    className="w-full py-4 px-6 rounded-2xl font-black text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
+                    className="w-full py-4 px-6 rounded-2xl font-black text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-sm flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
                   >
                     <span>Następna lekcja</span>
                     <ArrowRight className="w-5 h-5 stroke-[2.5]" />
@@ -2061,7 +2061,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-celebration-return-button"
                   onClick={() => handleFinishSession(false)}
-                  className="w-full py-4 px-6 rounded-2xl font-black text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
+                  className="w-full py-4 px-6 rounded-2xl font-black text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-sm flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
                 >
                   <span>Wróć do mapy lekcji</span>
                   <ArrowRight className="w-5 h-5 stroke-[2.5]" />
@@ -2115,8 +2115,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="flex-1 flex items-center gap-2 min-w-0">
                 <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 ${
                   isPolishSession
-                    ? 'bg-[#F43F5E]/15 text-[#F43F5E] border border-[#F43F5E]/30 shadow-[0_0_10px_rgba(244,63,94,0.15)]'
-                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30 shadow-[0_0_10px_rgba(255,184,0,0.15)]'
+                    ? 'bg-[#F43F5E]/15 text-[#F43F5E] border border-[#F43F5E]/30 shadow-sm'
+                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30 shadow-sm'
                 }`}>
                   Pigułka wiedzy
                 </span>
@@ -2130,9 +2130,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         key={idx}
                         className={`flex-1 h-2 sm:h-2.5 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
                           isDone
-                            ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-[0_0_8px_rgba(16,185,129,0.35)]'
+                            ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-sm'
                             : isActive
-                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-[0_0_12px_rgba(255,184,0,0.5)] ring-1 ring-[#FFB800]/50'
+                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-sm ring-1 ring-[#FFB800]/50'
                               : 'bg-slate-900/90 border border-white/10 shadow-inner'
                         }`}
                       >
@@ -2142,9 +2142,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           transition={{ type: 'spring', stiffness: 150, damping: 20 }}
                           className={`h-full rounded-full relative overflow-hidden transition-all duration-300 ${
                             isDone
-                              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.5)]'
+                              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-sm'
                               : isActive
-                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-[0_0_12px_rgba(255,184,0,0.6)] animate-pulse'
+                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-sm animate-pulse'
                                 : 'bg-transparent'
                           }`}
                         >
@@ -2168,9 +2168,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         key={idx}
                         className={`flex-1 h-2.5 sm:h-3 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
                           isDone
-                            ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.35)]'
+                            ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-sm'
                             : isActive
-                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-[0_0_14px_rgba(255,184,0,0.5)] ring-1 ring-[#FFB800]/50'
+                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-sm ring-1 ring-[#FFB800]/50'
                               : 'bg-slate-900/90 border border-white/10 shadow-inner'
                         }`}
                       >
@@ -2187,9 +2187,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           }}
                           className={`h-full rounded-full relative overflow-hidden transition-colors duration-500 ${
                             isDone
-                              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.6)]'
+                              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-sm'
                               : isActive
-                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-[0_0_12px_rgba(255,184,0,0.65)] animate-pulse'
+                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-sm animate-pulse'
                                 : 'bg-transparent'
                           }`}
                         >
@@ -2222,7 +2222,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     animate={{ opacity: 0, scale: 2.3 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.65, ease: 'easeOut' }}
-                    className="absolute inset-0 rounded-full border-2 border-rose-500 bg-rose-500/25 pointer-events-none shadow-[0_0_20px_rgba(244,63,94,0.85)] z-10"
+                    className="absolute inset-0 rounded-full border-2 border-rose-500 bg-rose-500/25 pointer-events-none shadow-sm z-10"
                   />
                 )}
               </AnimatePresence>
@@ -2247,7 +2247,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   heartsData.isPro
                     ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
                     : isHeartShaking
-                      ? 'bg-rose-500/30 border-rose-500 text-rose-300 shadow-[0_0_20px_rgba(244,63,94,0.6)]'
+                      ? 'bg-rose-500/30 border-rose-500 text-rose-300 shadow-sm'
                       : Number(displayedHeartsCount) <= 1 && !heartsData.isPro
                         ? 'bg-rose-500/20 border-rose-500/50 text-rose-400 animate-pulse'
                         : 'bg-rose-500/10 border-rose-500/30 text-rose-300 hover:bg-rose-500/20'
@@ -2304,7 +2304,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               size={20}
                               className={`transition-all duration-300 ${
                                 hasHeart 
-                                  ? 'text-rose-500 fill-rose-500 drop-shadow-[0_0_6px_rgba(244,63,94,0.5)]' 
+                                  ? 'text-rose-500 fill-rose-500' 
                                   : 'text-slate-700 stroke-slate-700'
                               }`}
                             />
@@ -2589,7 +2589,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   y: [0, spark.dy],
                                 }}
                                 transition={{ duration: 0.55, delay: 0.2, ease: 'easeOut' }}
-                                className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r from-rose-400 to-amber-300 shadow-[0_0_10px_#ff4d6d] z-20 pointer-events-none"
+                                className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r from-rose-400 to-amber-300 shadow-sm z-20 pointer-events-none"
                               />
                             ))}
                           </div>
@@ -2635,8 +2635,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {/* Outer Pulsing Glow */}
                   <div className="absolute w-12 h-12 rounded-full bg-rose-500/40 blur-lg animate-pulse" />
                   {/* Comet Head */}
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-white via-rose-400 to-rose-600 shadow-[0_0_20px_rgba(255,77,109,1)] flex items-center justify-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_#fff]" />
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-white via-rose-400 to-rose-600 shadow-sm flex items-center justify-center">
+                    <div className="w-2.5 h-2.5 rounded-full bg-white shadow-sm" />
                   </div>
                 </div>
               </motion.div>
@@ -2692,9 +2692,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   >
                     <div className={`h-1.5 rounded-full transition-all duration-200 ${
                       isActive 
-                        ? 'bg-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.6)]' 
+                        ? 'bg-[#FFB800]' 
                         : isDone 
-                          ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]' 
+                          ? 'bg-emerald-500' 
                           : 'bg-slate-800'
                     }`} />
                     <span className={`text-[11px] sm:text-xs text-center font-medium transition-colors ${
@@ -2746,7 +2746,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           {/* Nagłówek lektury */}
                           <div className="flex items-center justify-between gap-2 border-b border-rose-500/20 pb-3 flex-wrap">
                             <div className="flex items-center gap-2.5">
-                              <div className="w-8 h-8 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(244,63,94,0.25)]">
+                              <div className="w-8 h-8 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0 shadow-sm">
                                 <BookOpen size={16} />
                               </div>
                               <div>
@@ -3070,7 +3070,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   {(theoryPill?.exam_trap || theoryPill?.trapAlert) ? (
-                    <section className="rounded-2xl p-5 bg-amber-500/10 border border-amber-500/30 flex flex-col gap-3 shadow-[0_0_20px_rgba(245,158,11,0.06)]">
+                    <section className="rounded-2xl p-5 bg-amber-500/10 border border-amber-500/30 flex flex-col gap-3 shadow-sm">
                       <div className="flex items-center gap-2 text-amber-400 text-xs font-semibold uppercase tracking-wider">
                         <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
                         <span>Pułapka egzaminacyjna</span>
@@ -3102,21 +3102,21 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
                 {/* Badge 1: Źródło zadania / sesja */}
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/25 text-sky-300 font-semibold text-[11px] sm:text-xs shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0 shadow-[0_0_6px_rgba(56,189,248,0.8)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0 shadow-sm" />
                   <span>{taskSourceLabel}</span>
                 </span>
 
                 {/* Badge 2: Waga punktowa */}
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/25 text-amber-300 font-bold text-[11px] sm:text-xs shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-sm" />
                   <span>{taskPointsCount}</span>
                 </span>
 
                 {(currentTask?.cke_badge || currentTask?.badge) && (
                   <span className={`px-2.5 py-1 rounded-lg border font-bold text-[11px] sm:text-xs shadow-sm ${
                     isPolishSession 
-                      ? 'bg-rose-500/15 border-rose-500/30 text-rose-300 shadow-[0_0_10px_rgba(244,63,94,0.15)]' 
-                      : 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]'
+                      ? 'bg-rose-500/15 border-rose-500/30 text-rose-300 shadow-sm' 
+                      : 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300 shadow-sm'
                   }`}>
                     {String(currentTask.cke_badge || currentTask.badge).replace(/CKE/gi, '').trim()}
                   </span>
@@ -3178,9 +3178,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-[#FFB800]/50 shadow-[0_0_35px_rgba(255,184,0,0.22)] flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
+                className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-[#FFB800]/50 shadow-md shadow-black/20 flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
               >
-                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB800]/30 to-amber-600/40 border border-[#FFB800]/60 flex items-center justify-center mb-3 shadow-[0_0_25px_rgba(255,184,0,0.5)]">
+                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB800]/30 to-amber-600/40 border border-[#FFB800]/60 flex items-center justify-center mb-3 shadow-sm">
                   <Loader2 className="w-7 h-7 text-[#FFB800] animate-spin shrink-0" />
                   <div className="absolute inset-0 rounded-2xl border border-[#FFB800]/40 animate-ping opacity-25" />
                 </div>
@@ -3223,10 +3223,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {/* Score badge */}
                   <div className={`px-3.5 py-1.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center gap-2 ${
                     tutorEvaluation.score === (currentTask?.points || 2)
-                      ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
+                      ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300 shadow-sm'
                       : tutorEvaluation.score > 0
-                        ? 'bg-amber-500/15 border-amber-500/40 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]'
-                        : 'bg-rose-500/15 border-rose-500/40 text-rose-300 shadow-[0_0_15px_rgba(244,63,94,0.2)]'
+                        ? 'bg-amber-500/15 border-amber-500/40 text-amber-300 shadow-sm'
+                        : 'bg-rose-500/15 border-rose-500/40 text-rose-300 shadow-sm'
                   }`}>
                     {tutorEvaluation.score === (currentTask?.points || 2) ? (
                       <CheckCircle2 size={16} />
@@ -3518,15 +3518,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     let cardClass = 'group relative flex flex-col p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left select-none ';
                     if (!isEvaluated) {
                       if (isOptSelected) {
-                        cardClass += 'bg-[#FFB800]/10 border-[#FFB800] shadow-[0_0_24px_rgba(255,184,0,0.25)] ring-2 ring-[#FFB800]/20';
+                        cardClass += 'bg-[#FFB800]/10 border-[#FFB800] shadow-sm ring-2 ring-[#FFB800]/20';
                       } else {
                         cardClass += 'bg-slate-900/60 hover:bg-slate-900/90 border-slate-800 hover:border-slate-700 text-slate-200';
                       }
                     } else {
                       if (isThisTheCorrectAnswer) {
-                        cardClass += 'bg-emerald-950/30 border-emerald-500 text-emerald-100 shadow-[0_0_24px_rgba(16,185,129,0.2)]';
+                        cardClass += 'bg-emerald-950/30 border-emerald-500 text-emerald-100 shadow-sm';
                       } else if (isOptSelected && !isThisTheCorrectAnswer) {
-                        cardClass += 'bg-rose-950/30 border-rose-500 text-rose-200 shadow-[0_0_20px_rgba(244,63,94,0.2)]';
+                        cardClass += 'bg-rose-950/30 border-rose-500 text-rose-200 shadow-sm';
                       } else {
                         cardClass += 'bg-slate-900/30 border-slate-800/60 opacity-40 cursor-not-allowed';
                       }
@@ -3633,13 +3633,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             let btnClass = 'w-11 h-10 rounded-xl font-bold text-sm flex items-center justify-center transition-all cursor-pointer ';
                             if (!isEvaluated) {
                               if (isOptSelected) {
-                                btnClass += 'bg-[#FFB800] text-[#080B11] border border-[#D97706] shadow-[0_0_12px_rgba(255,184,0,0.35)]';
+                                btnClass += 'bg-[#FFB800] text-[#080B11] border border-[#D97706] shadow-sm';
                               } else {
                                 btnClass += 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700';
                               }
                             } else {
                               if (isThisTheCorrectAnswer) {
-                                btnClass += 'bg-emerald-500 text-slate-950 border border-emerald-400 font-black shadow-[0_0_12px_rgba(16,185,129,0.3)]';
+                                btnClass += 'bg-emerald-500 text-slate-950 border border-emerald-400 font-black shadow-sm';
                               } else if (isOptSelected && !isThisTheCorrectAnswer) {
                                 btnClass += 'bg-rose-500 text-white border border-rose-400';
                               } else {
@@ -3702,7 +3702,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-sm'
                       : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-200';
                   } else {
                     if (isOptionCorrect) {
@@ -3756,7 +3756,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-sm'
                       : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-200';
                   } else {
                     if (isOptionCorrect) {
@@ -3825,13 +3825,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               let borderStyle = 'border-slate-800 hover:border-slate-700 bg-slate-900/50';
               if (isSelected && !isEvaluated) {
                 borderStyle = isPolishSession
-                  ? 'border-[#F43F5E] bg-[#F43F5E]/15 shadow-[0_0_15px_rgba(244,63,94,0.2)]'
-                  : 'border-[#FFB800] bg-[#FFB800]/15 shadow-[0_0_15px_rgba(255,184,0,0.2)]';
+                  ? 'border-[#F43F5E] bg-[#F43F5E]/15 shadow-sm'
+                  : 'border-[#FFB800] bg-[#FFB800]/15 shadow-sm';
               } else if (isEvaluated) {
                 if (isOptionCorrect) {
-                  borderStyle = 'border-emerald-500 bg-emerald-950/35 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.25)]';
+                  borderStyle = 'border-emerald-500 bg-emerald-950/35 text-emerald-100 shadow-sm';
                 } else if (isSelected && !isOptionCorrect) {
-                  borderStyle = 'border-rose-500/80 bg-rose-950/35 text-rose-100 shadow-[0_0_15px_rgba(244,63,94,0.25)]';
+                  borderStyle = 'border-rose-500/80 bg-rose-950/35 text-rose-100 shadow-sm';
                 } else {
                   borderStyle = 'border-slate-800/50 opacity-40 bg-slate-900/20 text-slate-500';
                 }
@@ -3929,8 +3929,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 }}
                 className={`flex-1 h-[48px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
                   isPolishSession
-                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-[0_0_20px_rgba(244,63,94,0.35)]'
-                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm'
+                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
                 }`}
               >
                 <span>Dalej</span>
@@ -3947,8 +3947,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 }}
                 className={`flex-1 h-[48px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
                   isPolishSession
-                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-[0_0_20px_rgba(244,63,94,0.35)]'
-                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm'
+                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
                 }`}
               >
                 <span>Rozpocznij zadania</span>
@@ -3983,7 +3983,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       disabled={isAiHintLoading || (!isHintUnlocked && currentCoins < currentTaskHintCost)}
                       className={`w-14 h-14 rounded-2xl flex flex-col items-center justify-center border transition-all shrink-0 select-none cursor-pointer active:scale-95 ${
                         isHintUnlocked
-                          ? 'border-amber-400/60 bg-amber-500/20 hover:bg-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.25)]'
+                          ? 'border-amber-400/60 bg-amber-500/20 hover:bg-amber-500/30 shadow-sm'
                           : currentCoins >= currentTaskHintCost
                             ? 'border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20'
                             : 'border-slate-800 bg-slate-900/60 opacity-50 cursor-not-allowed'
@@ -4004,7 +4004,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           <Lightbulb
                             className={`w-5 h-5 transition-transform ${
                               isHintUnlocked
-                                ? 'text-amber-400 fill-amber-400 drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
+                                ? 'text-amber-400 fill-amber-400'
                                 : 'text-amber-400/90'
                             }`}
                           />
@@ -4032,8 +4032,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       className={`flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 ${
                         (openAnswerText.trim() || openCanvasDataUrl.length > 50) && !isTutorScanning
                           ? isPolishSession
-                            ? 'bg-gradient-to-r from-[#F43F5E] to-rose-600 hover:from-[#FB7185] hover:to-rose-500 text-white shadow-[0_0_25px_rgba(244,63,94,0.35)] active:scale-[0.99] cursor-pointer'
-                            : 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-[0_0_25px_rgba(255,184,0,0.35)] active:scale-[0.99] cursor-pointer'
+                            ? 'bg-gradient-to-r from-[#F43F5E] to-rose-600 hover:from-[#FB7185] hover:to-rose-500 text-white shadow-sm active:scale-[0.99] cursor-pointer'
+                            : 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-sm active:scale-[0.99] cursor-pointer'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
@@ -4048,8 +4048,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       className={`flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer ${
                         isReadyToCheck
                           ? isPolishSession
-                            ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-[0_0_20px_rgba(244,63,94,0.35)] active:scale-[0.99]'
-                            : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-[0.99]'
+                            ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm active:scale-[0.99]'
+                            : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm active:scale-[0.99]'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
@@ -4137,8 +4137,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   onClick={handleNextStep}
                   className={`h-11 sm:h-12 px-5 sm:px-6 rounded-xl font-black text-sm flex items-center justify-center gap-1.5 transition active:scale-[0.98] shadow-lg cursor-pointer shrink-0 ${
                     isCorrect
-                      ? 'bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.35)]'
-                      : 'bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_20px_rgba(244,63,94,0.35)]'
+                      ? 'bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-sm'
+                      : 'bg-rose-500 hover:bg-rose-400 text-white shadow-sm'
                   }`}
                 >
                   <span>
@@ -4395,7 +4395,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-modal-stay-button"
                   onClick={() => setShowExitModal(false)}
-                  className="w-full py-3.5 px-4 rounded-xl font-bold bg-[#FFB800] text-[#080B11] hover:bg-[#FFC72C] transition shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-3.5 px-4 rounded-xl font-bold bg-[#FFB800] text-[#080B11] hover:bg-[#FFC72C] transition shadow-sm"
                 >
                   WRÓĆ DO SESJI
                 </button>
@@ -4440,7 +4440,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Drawer Header */}
               <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#111724]/80 shrink-0">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,184,0,0.2)]">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center shrink-0 shadow-sm">
                     <BookOpen className="w-5 h-5" />
                   </div>
                   <div>
@@ -4471,7 +4471,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="p-4 sm:p-6 overflow-y-auto space-y-4 custom-scrollbar flex-1 pb-16 sm:pb-8">
                 {/* Core Formula from Theory Pill */}
                 {theoryPill?.coreFormulaLatex && (
-                  <div className="formula-sheet-card bg-gradient-to-br from-[#FFB800]/15 via-[#FFB800]/5 to-transparent border border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 shadow-[0_0_20px_rgba(255,184,0,0.08)]">
+                  <div className="formula-sheet-card bg-gradient-to-br from-[#FFB800]/15 via-[#FFB800]/5 to-transparent border border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 shadow-sm">
                     <div className="flex items-center gap-1.5 mb-2.5">
                       <Target className="w-4 h-4 text-[#FFB800]" />
                       <span className="text-xs font-bold text-[#FFB800] uppercase tracking-wider">
@@ -4588,7 +4588,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-formulas-close-drawer-button"
                   onClick={() => setShowFormulaSheet(false)}
-                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-[#FF8800] to-[#FFB800] hover:from-[#FFA000] hover:to-[#FFC833] text-slate-950 shadow-[0_0_20px_rgba(255,184,0,0.25)] hover:shadow-[0_0_25px_rgba(255,184,0,0.4)] active:scale-98 transition cursor-pointer"
+                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-[#FF8800] to-[#FFB800] hover:from-[#FFA000] hover:to-[#FFC833] text-slate-950 shadow-sm hover:shadow-md active:scale-98 transition cursor-pointer"
                 >
                   Wróć do rozwiązywania zadania
                 </button>

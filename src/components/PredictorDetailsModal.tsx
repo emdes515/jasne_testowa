@@ -112,13 +112,13 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
           <div className="p-3 bg-black/30 border-b border-white/5">
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
               {getCkeAvailableSubjects().map((sub) => {
-                const isActive = (sub.key === 'math' && !isPol) || (sub.key === 'pol' && isPol);
+                const isActive = sub.key === currentSubjectKey || sub.id === subjectId;
                 const SubIcon = 
-                  sub.iconName === 'math' ? Calculator : 
+                  sub.iconName === 'math' || sub.iconName === 'calculator' ? Calculator : 
                   sub.iconName === 'book' ? BookOpen : 
+                  sub.iconName === 'globe' ? Globe :
                   sub.iconName === 'dna' ? Dna :
-                  sub.iconName === 'flask' ? FlaskConical :
-                  Globe;
+                  sub.iconName === 'flask' ? FlaskConical : Calculator;
 
                 return (
                   <button
@@ -126,24 +126,27 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
                     type="button"
                     disabled={!sub.isAvailable}
                     onClick={() => {
-                      if (sub.isAvailable && onSelectSubject && sub.key !== (isPol ? 'pol' : 'math')) {
+                      if (sub.isAvailable && onSelectSubject && sub.key !== currentSubjectKey) {
                         triggerHaptic('light');
                         onSelectSubject(sub.key);
                       }
                     }}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                       isActive
-                        ? sub.key === 'pol'
-                          ? 'bg-rose-500 text-white shadow-[0_0_12px_rgba(244,63,94,0.4)]'
-                          : 'bg-[#FFB800] text-slate-950 shadow-[0_0_12px_rgba(255,184,0,0.4)]'
+                        ? 'text-white shadow-sm'
                         : sub.isAvailable
                         ? 'text-slate-400 hover:text-white hover:bg-white/5'
                         : 'text-slate-600 opacity-50 cursor-not-allowed'
                     }`}
+                    style={isActive ? {
+                      backgroundColor: sub.accentColor,
+                      color: sub.accentColor === '#FFB800' ? '#080B11' : '#FFFFFF',
+                      boxShadow: `0 0 14px ${sub.accentColor}66`
+                    } : undefined}
                   >
-                    <SubIcon size={12} />
+                    <SubIcon size={13} />
                     <span>{sub.shortName}</span>
-                    {!sub.isAvailable && <Lock size={10} className="ml-0.5 text-slate-500" />}
+                    {!sub.isAvailable && <Lock size={10} className="ml-0.5 text-slate-600" />}
                   </button>
                 );
               })}

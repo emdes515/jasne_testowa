@@ -19,16 +19,14 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
-import { UserState } from '../types';
-import { mathTopics } from '../data/mathTasks';
-import { defaultPolishTopics } from '../data/polishCurriculum';
-import { getLessonsForTopic } from './LearnView';
+import { UserState, SubjectKey } from '../types';
+import { getLessonsForTopic } from '../utils/lessonGrouping';
 import { drawSessionTasks } from '../data/dzial1TaskPool';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { PredictorWidget } from './PredictorWidget';
 import { PredictorDetailsModal } from './PredictorDetailsModal';
 import { calculateMaturaPrediction } from '../lib/maturaPredictor';
-import { CKE_AVAILABLE_SUBJECTS } from '../data/ckeSubjectWeights';
+import { getCkeAvailableSubjects, normalizeSubjectFirestoreId } from '../services/ckeCatalogRepository';
 
 interface DashboardViewProps {
   onNavigate?: (tab: string, subTab?: string) => void;
@@ -36,8 +34,8 @@ interface DashboardViewProps {
   completedTasks?: string[];
   lessonMistakes?: Record<string, number>;
   taskStars?: Record<string, number>;
-  selectedSubjectKey?: 'math' | 'pol';
-  onSelectSubject?: (key: 'math' | 'pol') => void;
+  selectedSubjectKey?: SubjectKey;
+  onSelectSubject?: (key: SubjectKey) => void;
   onStartTask?: (task: any, lessonTasks?: any[], lessonTitle?: string, nextLesson?: any) => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
   saveUserData?: (state: UserState) => void;
@@ -163,25 +161,25 @@ export function DashboardView({
     );
   }, [streakDays, userState?.lastStreakDate, userState?.streakActiveDates]);
 
-  const [internalSubjectKey, setInternalSubjectKey] = useState<string>(() => {
+  const [internalSubjectKey, setInternalSubjectKey] = useState<SubjectKey>(() => {
     try {
-      return localStorage.getItem('matura_quest_selected_subject') || 'math';
+      const stored = localStorage.getItem('matura_quest_selected_subject');
+      if (stored && ['math', 'pol', 'eng', 'math-roz', 'eng-roz'].includes(stored)) {
+        return stored as SubjectKey;
+      }
+      return 'math';
     } catch {
       return 'math';
     }
   });
 
-  const selectedSubjectKey = (propSubjectKey || internalSubjectKey) as 'math' | 'pol';
+  const selectedSubjectKey = (propSubjectKey || internalSubjectKey) as SubjectKey;
 
-  const [topics, setTopics] = useState<any[]>(() => 
-    selectedSubjectKey === 'pol' ? defaultPolishTopics : mathTopics
-  );
+  const [topics, setTopics] = useState<any[]>([]);
 
   useEffect(() => {
     let isSubscribed = true;
-    const firestoreSubjectId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
-    const fallbackTopics = selectedSubjectKey === 'pol' ? defaultPolishTopics : mathTopics;
-    setTopics(fallbackTopics);
+    const firestoreSubjectId = normalizeSubjectFirestoreId(selectedSubjectKey);
 
     curriculumRepository.getTopics(firestoreSubjectId).then(loaded => {
       if (isSubscribed && loaded && loaded.length > 0) {
@@ -195,9 +193,10 @@ export function DashboardView({
     const handleStorage = () => {
       try {
         const stored = localStorage.getItem('matura_quest_selected_subject') || 'math';
-        if (stored !== selectedSubjectKey && (stored === 'math' || stored === 'pol')) {
-          setInternalSubjectKey(stored);
-          onSelectSubject?.(stored as 'math' | 'pol');
+        const validKeys: SubjectKey[] = ['math', 'pol', 'eng', 'math-roz', 'eng-roz'];
+        if (stored !== selectedSubjectKey && validKeys.includes(stored as SubjectKey)) {
+          setInternalSubjectKey(stored as SubjectKey);
+          onSelectSubject?.(stored as SubjectKey);
         }
       } catch {}
     };
@@ -208,20 +207,22 @@ export function DashboardView({
   const [showPredictorDetails, setShowPredictorDetails] = useState<boolean>(false);
 
   const handleSelectSubject = (newSubjectKey: string) => {
-    const subMeta = CKE_AVAILABLE_SUBJECTS.find(s => s.key === newSubjectKey);
+    const subMeta = getCkeAvailableSubjects().find(s => s.key === newSubjectKey);
     if (subMeta && !subMeta.isAvailable) {
-      return; // ignores unavailable subjects (e.g. English, Bio, Chem)
+      return; // ignores unavailable subjects
     }
-    if (newSubjectKey !== 'math' && newSubjectKey !== 'pol') return;
-    setInternalSubjectKey(newSubjectKey);
-    onSelectSubject?.(newSubjectKey);
+    const validKeys: SubjectKey[] = ['math', 'pol', 'eng', 'math-roz', 'eng-roz'];
+    if (!validKeys.includes(newSubjectKey as SubjectKey)) return;
+    const key = newSubjectKey as SubjectKey;
+    setInternalSubjectKey(key);
+    onSelectSubject?.(key);
     try {
-      localStorage.setItem('matura_quest_selected_subject', newSubjectKey);
+      localStorage.setItem('matura_quest_selected_subject', key);
       window.dispatchEvent(new Event('storage'));
     } catch {}
   };
 
-  const currentSubjectId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
+  const currentSubjectId = normalizeSubjectFirestoreId(selectedSubjectKey);
 
   // Dynamiczny predyktor wyniku maturalnego CKE (obliczany w czasie rzeczywistym)
   const maturaPrediction = useMemo(() => {
@@ -288,9 +289,19 @@ export function DashboardView({
       return;
     }
 
-    const defaultTopicId = selectedSubjectKey === 'pol' ? 'pol-dzial-1' : 'dzial-1';
+    const defaultTopicId = (() => {
+      switch (selectedSubjectKey) {
+        case 'pol': return 'pol-dzial-1';
+        case 'eng': return 'eng-dzial-1';
+        case 'math-roz': return 'mat-roz-dzial-1';
+        case 'eng-roz': return 'eng-roz-dzial-1';
+        case 'math':
+        default:
+          return 'dzial-1';
+      }
+    })();
     const topicId = nextUp.topicId || defaultTopicId;
-    const subjectFirestoreId = selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa';
+    const subjectFirestoreId = normalizeSubjectFirestoreId(selectedSubjectKey);
 
     // 1 document read (0 if cached)
     let lessonDoc: any = null;
@@ -348,9 +359,10 @@ export function DashboardView({
       {/* 0. PASEK WYBORU PRZEDMIOTU (RESPONSYWNY, BEZ OBCINANIA KART) */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5 select-none">
         <div className="flex items-center gap-2.5 flex-wrap">
-          {CKE_AVAILABLE_SUBJECTS.filter(s => s.isAvailable).map((sub) => {
+          {getCkeAvailableSubjects().filter(s => s.isAvailable).map((sub) => {
             const isActive = sub.key === selectedSubjectKey;
-            const SubIcon = sub.key === 'pol' ? BookOpen : Calculator;
+            const SubIcon = sub.key === 'pol' ? BookOpen : sub.key.includes('eng') ? Globe : Calculator;
+            const accentColor = sub.accentColor || (sub.key === 'pol' ? '#F43F5E' : '#FFB800');
 
             return (
               <button
@@ -362,18 +374,25 @@ export function DashboardView({
                 }}
                 className={`group relative flex items-center gap-3 px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border cursor-pointer ${
                   isActive
-                    ? sub.key === 'pol'
-                      ? 'bg-gradient-to-r from-rose-500/20 via-rose-500/10 to-transparent border-rose-500/50 text-white shadow-[0_0_20px_rgba(244,63,94,0.25)]'
-                      : 'bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-transparent border-amber-500/50 text-white shadow-[0_0_20px_rgba(255,184,0,0.25)]'
+                    ? 'text-white shadow-sm'
                     : 'bg-[#111726]/80 hover:bg-[#162033] border-white/5 hover:border-white/15 text-slate-400 hover:text-slate-200'
                 }`}
+                style={isActive ? {
+                  backgroundColor: `${accentColor}18`,
+                  borderColor: `${accentColor}80`,
+                  boxShadow: `0 0 12px ${accentColor}25`
+                } : undefined}
               >
                 <div 
                   className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                     isActive
-                      ? sub.key === 'pol' ? 'bg-rose-500 text-white' : 'bg-[#FFB800] text-slate-950 font-bold'
+                      ? 'text-white'
                       : 'bg-white/5 text-slate-400 group-hover:text-white'
                   }`}
+                  style={isActive ? {
+                    backgroundColor: accentColor,
+                    color: accentColor === '#FFB800' ? '#080B11' : '#FFFFFF'
+                  } : undefined}
                 >
                   <SubIcon size={14} />
                 </div>
@@ -384,7 +403,7 @@ export function DashboardView({
                     {isActive && (
                       <span 
                         className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0"
-                        style={{ backgroundColor: sub.key === 'pol' ? '#F43F5E' : '#FFB800' }}
+                        style={{ backgroundColor: accentColor }}
                       />
                     )}
                   </div>
@@ -397,14 +416,14 @@ export function DashboardView({
           })}
         </div>
 
-        {/* Wskaźnik kolejnych przedmiotów w przygotowaniu (zamiast obciętych, nieaktywnych kafli) */}
+        {/* Wskaźnik kolejnych przedmiotów w przygotowaniu */}
         <div className="hidden sm:flex items-center gap-2 text-[11px] text-slate-400 bg-[#121824]/80 border border-white/5 px-3.5 py-2 rounded-xl">
           <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]">Wkrótce w JASNE:</span>
-          <span className="text-slate-300 font-medium">Język Angielski</span>
-          <span className="text-slate-600">•</span>
           <span className="text-slate-300 font-medium">Biologia</span>
           <span className="text-slate-600">•</span>
           <span className="text-slate-300 font-medium">Chemia</span>
+          <span className="text-slate-600">•</span>
+          <span className="text-slate-300 font-medium">Fizyka</span>
         </div>
       </div>
 
@@ -423,69 +442,85 @@ export function DashboardView({
           />
 
           {/* 2. KARTA BIEŻĄCEGO POSTĘPU: NASTĘPNY KROK W NAUCE */}
-          <motion.div
-            initial={{ y: 15, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className={`border rounded-2xl p-4 sm:p-5 relative overflow-hidden transition-colors shadow-sm ${
-              selectedSubjectKey === 'pol'
-                ? 'bg-[#18111A] border-rose-500/25 hover:border-rose-500/45'
-                : 'bg-[#121A26] border-white/10 hover:border-[#FFB800]/40'
-            }`}
-          >
-            <div className="flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2 py-0.5 rounded-full border ${
-                    selectedSubjectKey === 'pol'
-                      ? 'text-rose-400 bg-rose-500/15 border-rose-500/30'
-                      : 'text-amber-400 bg-amber-400/10 border-amber-400/20'
-                  }`}>
-                    <Play size={10} fill="currentColor" />
-                    <span>Następny Krok w Nauce</span>
-                  </span>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
-                    selectedSubjectKey === 'pol'
-                      ? 'bg-rose-500/10 border-rose-500/20 text-rose-300'
-                      : 'bg-amber-500/10 border-amber-500/20 text-amber-300'
-                  }`}>
-                    {selectedSubjectKey === 'pol' ? 'Język Polski' : 'Matematyka'}
-                  </span>
-                </div>
-                <span className="text-[11px] font-semibold text-slate-400">
-                  {nextUp ? `${nextUp.completedCount}/${nextUp.totalCount} kroków` : 'Wszystko zaliczone!'}
-                </span>
-              </div>
+          {(() => {
+            const activeSub = getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey) || {
+              name: 'Matematyka',
+              shortName: 'Matematyka',
+              accentColor: '#FFB800'
+            };
+            const accentColor = activeSub.accentColor || '#FFB800';
 
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="min-w-0 flex-1 pr-2">
-                  <h3 className="font-display font-black text-white text-base sm:text-lg leading-snug">
-                    {nextUp ? nextUp.lessonName : 'Wszystkie działy ukończone!'}
-                  </h3>
-                  {nextUp && (
-                    <p className="text-xs text-slate-400 font-medium mt-1 truncate">
-                      {nextUp.topicName}
-                    </p>
-                  )}
-                </div>
+            return (
+              <motion.div
+                initial={{ y: 15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                className="border rounded-2xl p-4 sm:p-5 relative overflow-hidden transition-colors shadow-sm bg-[#121824]/90"
+                style={{
+                  borderColor: `${accentColor}35`
+                }}
+              >
+                <div className="flex flex-col gap-3.5">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span 
+                        className="flex items-center gap-1.5 text-[10px] font-black uppercase px-2 py-0.5 rounded-full border"
+                        style={{
+                          color: accentColor,
+                          backgroundColor: `${accentColor}15`,
+                          borderColor: `${accentColor}30`
+                        }}
+                      >
+                        <Play size={10} fill="currentColor" />
+                        <span>Następny Krok w Nauce</span>
+                      </span>
+                      <span 
+                        className="text-[10px] font-bold px-2 py-0.5 rounded-full border"
+                        style={{
+                          color: accentColor,
+                          backgroundColor: `${accentColor}10`,
+                          borderColor: `${accentColor}20`
+                        }}
+                      >
+                        {activeSub.name}
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-semibold text-slate-400">
+                      {nextUp ? `${nextUp.completedCount}/${nextUp.totalCount} kroków` : 'Wszystko zaliczone!'}
+                    </span>
+                  </div>
 
-                <motion.button
-                  id="dashboard-resume-learning-button"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.96 }}
-                  onClick={handleResumeClick}
-                  className={`shrink-0 font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md whitespace-nowrap ${
-                    selectedSubjectKey === 'pol'
-                      ? 'bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_25px_rgba(244,63,94,0.4)]'
-                      : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-[0_0_25px_rgba(255,184,0,0.4)]'
-                  }`}
-                >
-                  <span>{nextUp ? ((nextUp.completedCount || 0) > 0 ? 'WZNÓW NAUKĘ' : 'ROZPOCZNIJ NAUKĘ') : 'OTWÓRZ MAPĘ'}</span>
-                  <ArrowRight size={15} strokeWidth={2.5} />
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="min-w-0 flex-1 pr-2">
+                      <h3 className="font-display font-black text-white text-base sm:text-lg leading-snug">
+                        {nextUp ? nextUp.lessonName : 'Wszystkie działy ukończone!'}
+                      </h3>
+                      {nextUp && (
+                        <p className="text-xs text-slate-400 font-medium mt-1 truncate">
+                          {nextUp.topicName}
+                        </p>
+                      )}
+                    </div>
+
+                    <motion.button
+                      id="dashboard-resume-learning-button"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.96 }}
+                      onClick={handleResumeClick}
+                      className="shrink-0 font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md whitespace-nowrap"
+                      style={{
+                        backgroundColor: accentColor,
+                        color: accentColor === '#FFB800' ? '#080B11' : '#FFFFFF'
+                      }}
+                    >
+                      <span>{nextUp ? ((nextUp.completedCount || 0) > 0 ? 'WZNÓW NAUKĘ' : 'ROZPOCZNIJ NAUKĘ') : 'OTWÓRZ MAPĘ'}</span>
+                      <ArrowRight size={15} strokeWidth={2.5} />
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })()}
 
           {/* 3. SEKCJA: PANEL STATYSTYK NAUKI */}
           <motion.div
@@ -548,7 +583,7 @@ export function DashboardView({
                 }}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
                 className={`bg-[#121824]/80 hover:bg-[#151E2E] border rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group select-none ${
-                  onOpenMistakesBank ? 'cursor-pointer hover:border-amber-500/40 hover:shadow-[0_0_20px_rgba(255,184,0,0.15)] border-white/10' : 'cursor-default border-white/5'
+                  onOpenMistakesBank ? 'cursor-pointer hover:border-amber-500/40 hover:shadow-md border-white/10' : 'cursor-default border-white/5'
                 }`}
                 title={onOpenMistakesBank ? "Kliknij, aby otworzyć Bank Błędów i sesję rehabilitacyjną" : undefined}
               >
@@ -632,7 +667,7 @@ export function DashboardView({
             <div className="flex items-center justify-between relative z-10 mb-3.5">
               <div className="pr-2">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-display font-black text-[#F97316] text-lg sm:text-xl tracking-wide drop-shadow-[0_0_12px_rgba(249,115,22,0.5)]">
+                  <h3 className="font-display font-black text-[#F97316] text-lg sm:text-xl tracking-wide">
                     {streakDays} {streakDays === 1 ? 'Dzień' : 'Dni'} z rzędu!
                   </h3>
                 </div>
@@ -643,7 +678,7 @@ export function DashboardView({
                 </p>
               </div>
               
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-[0_0_18px_rgba(249,115,22,0.5)] border border-white/20 shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-sm border border-white/20 shrink-0">
                 <Flame size={20} className="text-white fill-white animate-flame-breath" />
               </div>
             </div>
@@ -656,9 +691,9 @@ export function DashboardView({
                     <div 
                       className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-black transition-all duration-200 relative ${
                         m.isCompleted
-                          ? 'bg-[#F97316] text-white shadow-[0_0_12px_rgba(249,115,22,0.5)] border border-white/20'
+                          ? 'bg-[#F97316] text-white shadow-sm border border-white/20'
                           : m.isTargetToday
-                          ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/20 shadow-[0_0_12px_rgba(249,115,22,0.4)] animate-pulse'
+                          ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/20 shadow-sm animate-pulse'
                           : 'bg-[#18202F] border border-white/10 text-slate-400'
                       }`}
                       title={m.fullLabel}

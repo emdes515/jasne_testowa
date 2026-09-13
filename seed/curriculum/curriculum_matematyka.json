@@ -201,7 +201,7 @@
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 3,
           "theory_pill": {
-            "concept_essence": "Liczba wymierna to każda liczba, którą można przedstawić w postaci ułamka zwykłego p/q, gdzie licznik i mianownik są całkowite (q != 0). Rozwinięcia dziesiętne liczb wymiernych są skończone lub nieskończone okresowe. Liczby niewymierne mają rozwinięcia nieskończone nieokresowe (np. pierwiastki niedające się wyliczyć, liczba pi).",
+            "concept_essence": "Liczba wymierna to każda liczba, którą można przedstawić w postaci ułamka zwykłego $\\frac{p}{q}$, gdzie licznik i mianownik są liczbami całkowitymi ($q \\neq 0$). Rozwinięcia dziesiętne liczb wymiernych są skończone lub nieskończone okresowe. Liczby niewymierne mają rozwinięcia nieskończone nieokresowe (np. pierwiastki niedające się wyliczyć $\\sqrt{2}$, liczba $\\pi$).",
             "matura_context": "Zadanie z klasyfikacji liczb wymiernych i niewymiernych pojawia się na maturze majowej w zadaniach zamkniętych.",
             "core_formulas": "\\mathbb{Q} = \\{\\frac{p}{q}: p \\in \\mathbb{Z}, q \\in \\mathbb{Z} \\setminus \\{0\\}\\}",
             "worked_example": "$\\sqrt{2} \\cdot \\sqrt{8} = \\sqrt{16} = 4$ – iloczyn dwóch liczb niewymiernych dał w wyniku liczbę wymierną.",
@@ -4835,7 +4835,7 @@
                 "$\\mathbb{R}$"
               ],
               "correct_answer": "$\\mathbb{R} \\setminus \\{5\\}$",
-              "explanation": "x - 5 != 0 -> x != 5. D = R \\ {5}.",
+              "explanation": "$x - 5 \\neq 0 \\implies x \\neq 5$. $D = \\mathbb{R} \\setminus \\{5\\}$.",
               "hint": "Tylko mianownik nie może być zerem.",
               "hint_cost": 10,
               "id": "task-2-13-1"
@@ -4874,7 +4874,7 @@
               "source": "Arkusz pokazowy",
               "content": "Liczba 0 należy do dziedziny wyrażenia $\\frac{x - 1}{x + 2}$.",
               "correct_answer": "Prawda",
-              "explanation": "Dla x = 0 mianownik wynosi 0 + 2 = 2 != 0. Dziedziną jest R \\ {-2}, więc 0 należy. Prawda.",
+              "explanation": "Dla x = 0 mianownik wynosi 0 + 2 = $2 \\neq 0$. Dziedziną jest R \\ {-2}, więc 0 należy. Prawda.",
               "hint": "Sprawdź, czy 0 zeruje mianownik.",
               "hint_cost": 10,
               "id": "task-2-13-4",
@@ -4906,7 +4906,7 @@
                 "$\\mathbb{R} \\setminus \\{0\\}$"
               ],
               "correct_answer": "$\\mathbb{R} \\setminus \\{0, 3\\}$",
-              "explanation": "x != 0 oraz x - 3 != 0 -> x != 3. D = R \\ {0, 3}.",
+              "explanation": "$x \\neq 0$ oraz $x - 3 \\neq 0 \\implies x \\neq 3$. $D = \\mathbb{R} \\setminus \\{0, 3\\}$.",
               "hint": "Mianownik zeruje się dla x = 0 oraz x = 3.",
               "hint_cost": 10,
               "id": "task-2-13-6"
@@ -4917,7 +4917,7 @@
               "source": "Zadanie autorskie",
               "content": "Wyrażenie $\\frac{x^2 - 1}{x + 1}$ ma dziedzinę $D = \\mathbb{R}$.",
               "correct_answer": "Fałsz",
-              "explanation": "Fałsz! Mimo że ułamek można skrócić, dziedzinę wyznaczamy ZAWSZE z postaci pierwotnej: x != -1.",
+              "explanation": "Fałsz! Mimo że ułamek można skrócić, dziedzinę wyznaczamy ZAWSZE z postaci pierwotnej: $x \\neq -1$.",
               "hint": "Dziedzinę wyznaczamy przed skracaniem ułamka.",
               "hint_cost": 10,
               "id": "task-2-13-7",
@@ -5027,7 +5027,7 @@
               "source": "Matura maj 2023",
               "content": "Dla $x = 50$ oblicz wartość ułamka $\\frac{3x + 9}{x + 3}$:",
               "correct_answer": "3",
-              "explanation": "3(x + 3) / (x + 3) = 3. Wartość jest stała i wynosi 3 dla każdego x != -3.",
+              "explanation": "3(x + 3) / (x + 3) = 3. Wartość jest stała i wynosi 3 dla każdego $x \\neq -3$.",
               "hint": "Wyłącz 3 przed nawias w liczniku i skróć ułamek.",
               "hint_cost": 10,
               "id": "task-2-14-2"
@@ -5498,7 +5498,7 @@
                 "latex": "ax + b = 0 \\iff ax = -b"
               },
               {
-                "title": "Rozwiązanie dla a != 0",
+                "title": "Rozwiązanie dla $a \\neq 0$",
                 "latex": "x = -\\frac{b}{a}"
               }
             ],
@@ -5518,7 +5518,7 @@
                 "latex": "ax + b = 0 \\iff ax = -b"
               },
               {
-                "title": "Rozwiązanie dla a != 0",
+                "title": "Rozwiązanie dla $a \\neq 0$",
                 "latex": "x = -\\frac{b}{a}"
               }
             ],
@@ -5665,7 +5665,7 @@
                 "latex": "ax + b = 0 \\iff ax = -b"
               },
               {
-                "title": "Rozwiązanie dla a != 0",
+                "title": "Rozwiązanie dla $a \\neq 0$",
                 "latex": "x = -\\frac{b}{a}"
               }
             ],
@@ -5685,7 +5685,7 @@
                 "latex": "ax + b = 0 \\iff ax = -b"
               },
               {
-                "title": "Rozwiązanie dla a != 0",
+                "title": "Rozwiązanie dla $a \\neq 0$",
                 "latex": "x = -\\frac{b}{a}"
               }
             ],
@@ -7632,8 +7632,8 @@
                 "brak rozwiązań"
               ],
               "correct_answer": "tylko $x = 5$",
-              "explanation": "Dziedzina: x != -5. Licznik daje x = 5 lub x = -5. Liczba -5 odpada z powodu dziedziny. Zostaje x = 5.",
-              "hint": "Mianownik nie może być zerem, więc x != -5.",
+              "explanation": "Dziedzina: $x \\neq -5$. Licznik daje x = 5 lub x = -5. Liczba -5 odpada z powodu dziedziny. Zostaje x = 5.",
+              "hint": "Mianownik nie może być zerem, więc $x \\neq -5$.",
               "hint_cost": 10,
               "id": "task-3-14-1"
             },
@@ -7660,7 +7660,7 @@
                 "ma rozwiązanie x = 0"
               ],
               "correct_answer": "nie ma rozwiązań",
-              "explanation": "Dziedzina: x != 4. Licznik zeruje się dla x = 4, ale 4 nie należy do dziedziny. Brak rozwiązań.",
+              "explanation": "Dziedzina: $x \\neq 4$. Licznik zeruje się dla x = 4, ale 4 nie należy do dziedziny. Brak rozwiązań.",
               "hint": "x = 4 nie należy do dziedziny wyrażenia.",
               "hint_cost": 10,
               "id": "task-3-14-3"
@@ -7732,7 +7732,7 @@
                 "1 pkt za wyznaczenie dziedziny: x(x + 4) \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{-4, 0\\}.",
                 "1 pkt za przyrównanie licznika do zera, odrzucenie -4 i podanie x = 4."
               ],
-              "explanation": "Mianownik: x(x + 4) != 0 -> D = R \\ {-4, 0}. Licznik: (x - 4)(x + 4) = 0 -> x = 4 lub x = -4. Ponieważ -4 nie należy do dziedziny, jedynym rozwiązaniem jest x = 4.",
+              "explanation": "Mianownik: $x(x + 4) \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{-4, 0\\}$. Licznik: (x - 4)(x + 4) = 0 -> x = 4 lub x = -4. Ponieważ -4 nie należy do dziedziny, jedynym rozwiązaniem jest x = 4.",
               "ai_hint_enabled": true,
               "hint_cost": 20,
               "id": "task-3-14-8"
@@ -20789,7 +20789,7 @@
               "points": 1,
               "source": "Matura maj 2025",
               "content": "Liczby $a, b, c$ tworzą ciąg arytmetyczny, a liczby $a, b, c + 2$ tworzą ciąg geometryczny. Jeśli $a = 1$ i $b = 3$, to $c$ wynosi:",
-              "explanation": "Ciąg arytmetyczny: 1, 3, c => r = 2 => c = 5. Sprawdźmy geometryczny: 1, 3, 5 + 2 = 7? Wait, 3^2 = 9 != 7. Jeśli c + 4 = 9 => c = 5, to geometryczny to 1, 3, 9. W treści: c = 5.",
+              "explanation": "Ciąg arytmetyczny: 1, 3, c => r = 2 => c = 5. Sprawdźmy geometryczny: 1, 3, 5 + 2 = 7? Wait, 3^2 = $9 \\neq 7$. Jeśli c + 4 = 9 => c = 5, to geometryczny to 1, 3, 9. W treści: c = 5.",
               "hint_cost": 10,
               "options": [
                 "$5$",
@@ -21852,7 +21852,7 @@
               "points": 1,
               "source": "Zadanie maturalne",
               "content": "Oceń prawdziwość zdania: Dla dowolnego kąta ostrego $\\alpha$:\\ Równość $\\sin^2 \\alpha = 1 - \\cos^2 \\alpha$ jest tożsamością.",
-              "explanation": "1. Wynika wprost z jedynki trygonometrycznej (PRAWDA). 2. (0,8)^2 + (0,8)^2 = 0,64 + 0,64 = 1,28 != 1, więc taka sytuacja jest niemożliwa (FAŁSZ).",
+              "explanation": "1. Wynika wprost z jedynki trygonometrycznej (PRAWDA). 2. (0,8)^2 + (0,8)^2 = 0,64 + 0,64 = $1{,}28 \\neq 1$, więc taka sytuacja jest niemożliwa (FAŁSZ).",
               "hint_cost": 10,
               "options": [
                 "Prawda",
@@ -22114,7 +22114,7 @@
               "points": 2,
               "source": "Matura maj 2024",
               "content": "Kąt $\\alpha$ jest kątem ostrym oraz $\\operatorname{tg} \\alpha = 2$. Oblicz wartość wyrażenia $\\frac{3 \\sin \\alpha - 2 \\cos \\alpha}{\\sin \\alpha + 4 \\cos \\alpha}$.",
-              "explanation": "Dzielimy licznik i mianownik ułamka przez cos(alpha) (ponieważ cos(alpha) != 0 dla kąta ostrego): (3*sin(alpha)/cos(alpha) - 2) / (sin(alpha)/cos(alpha) + 4) = (3*tg(alpha) - 2) / (tg(alpha) + 4). Podstawiamy tg(alpha) = 2: (3 * 2 - 2) / (2 + 4) = (6 - 2) / 6 = 4/6 = 2/3.",
+              "explanation": "Dzielimy licznik i mianownik ułamka przez cos(alpha) (ponieważ $\\cos(\\alpha) \\neq 0$ dla kąta ostrego): (3*sin(alpha)/cos(alpha) - 2) / (sin(alpha)/cos(alpha) + 4) = (3*tg(alpha) - 2) / (tg(alpha) + 4). Podstawiamy tg(alpha) = 2: (3 * 2 - 2) / (2 + 4) = (6 - 2) / 6 = 4/6 = 2/3.",
               "hint_cost": 20,
               "scoring_key": [
                 "1 pkt za podzielenie licznika i mianownika przez cos \\alpha: (3 tg \\alpha - 2) / (tg \\alpha + 4).",
@@ -41467,7 +41467,7 @@
               "points": 1,
               "source": "Matura sierpień 2024",
               "content": "Dany jest zestaw liczb: $2, 5, 2, 7, x, 5, 2$. Dominanta tego zestawu wynosi $2$ dla:",
-              "explanation": "Liczba 2 występuje już 3 razy, a liczba 5 tylko 2 razy. Nawet jeśli x = 5, piątek będzie 3, ale dwójek też 3 (bimodalność). Jeśli x != 5, dwójek jest bezwzględnie najwięcej. Zatem dla x != 5 dominanta to 2.",
+              "explanation": "Liczba 2 występuje już 3 razy, a liczba 5 tylko 2 razy. Nawet jeśli x = 5, piątek będzie 3, ale dwójek też 3 (bimodalność). Jeśli $x \\neq 5$, dwójek jest bezwzględnie najwięcej. Zatem dla $x \\neq 5$ dominanta to 2.",
               "hint_cost": 10,
               "options": [
                 "każdej liczby rzeczywistej $x$",

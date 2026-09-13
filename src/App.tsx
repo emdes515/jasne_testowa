@@ -33,6 +33,7 @@ import { buildFirestoreUserPayload } from './schema_firestore';
 import { checkSystemMetaVersion } from './lib/curriculumSync';
 import { handleFirestoreError, OperationType } from './lib/firestoreErrors';
 import { migrateGuestProgressToUser, hasGuestProgress } from './lib/guestMigration';
+import { normalizeSubjectFirestoreId } from './services/ckeCatalogRepository';
 
 import { LoadingScreen } from './components/Loading';
 
@@ -461,7 +462,7 @@ export default function App() {
     const sessionPayload = {
       isSession: true,
       isPolish: selectedSubjectKey === 'pol',
-      subjectId: selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa',
+      subjectId: normalizeSubjectFirestoreId(selectedSubjectKey),
       topicId: 'rehab-mistakes',
       lessonId: 'rehab',
       lessonTitle: 'Trening Błędów: Sesja Rehabilitacji',
@@ -1129,7 +1130,7 @@ export default function App() {
           const customSession = {
             isSession: true,
             isPolish: selectedSubjectKey === 'pol',
-            subjectId: selectedSubjectKey === 'pol' ? 'jezyk-polski' : 'matematyka-podstawowa',
+            subjectId: normalizeSubjectFirestoreId(selectedSubjectKey),
             topicId: 'custom-ai-task',
             lessonId: 'ai-gen',
             lessonTitle: task.topic || 'Zadanie Wygenerowane przez AI',

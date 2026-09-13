@@ -259,3 +259,4 @@ export interface PredictorResult {
   topicBreakdown: TopicMasteryBreakdown[];
 }
 
+export type SubjectKey = 'math' | 'pol' | 'eng' | 'math-roz' | 'eng-roz';

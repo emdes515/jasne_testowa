@@ -39,7 +39,7 @@ html, body {
   --sar: env(safe-area-inset-right, 0px);
 }
 
-/* Wymogi identyfikacji JASNE. dla przycisków Solar Amber (kontrast WCAG AAA 12.8:1 i poświata) */
+/* Wymogi identyfikacji JASNE. dla przycisków Solar Amber */
 button[class*="bg-[#FFB800]"],
 button[class*="bg-jasne"],
 a[class*="bg-[#FFB800]"],
@@ -47,7 +47,7 @@ a[class*="bg-jasne"],
 .btn-jasne {
   color: #080B11 !important;
   font-weight: 700 !important;
-  box-shadow: 0 0 20px rgba(255, 184, 0, 0.35) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
 }
 
 button, a, input, [role="button"] {
@@ -199,7 +199,7 @@ button, a, input, [role="button"] {
   margin-right: 0.75rem;
   margin-top: 0.125rem;
   flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(255, 184, 0, 0.25);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Stylizacja wyróżnionych ramek wzorów */
@@ -210,7 +210,6 @@ button, a, input, [role="button"] {
   border-radius: 0 0.75rem 0.75rem 0;
   padding: 0.75rem 1rem;
   margin: 0.75rem 0;
-  box-shadow: inset 0 0 15px rgba(255, 184, 0, 0.05);
 }
 
 /* Animacja shake dla błędnej odpowiedzi */
@@ -235,8 +234,8 @@ button, a, input, [role="button"] {
 }
 
 @keyframes flame-breath {
-  0%, 100% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.4)); }
-  50% { transform: scale(1.08) translateY(-1px); filter: drop-shadow(0 0 14px rgba(249, 115, 22, 0.7)); }
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.05) translateY(-1px); }
 }
 
 .animate-flame-breath {

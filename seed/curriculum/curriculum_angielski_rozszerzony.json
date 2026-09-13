@@ -1,0 +1,1662 @@
+{
+  "subject": {
+    "id": "jezyk-angielski-rozszerzony",
+    "key": "eng-roz",
+    "name": "Język Angielski Rozszerzony",
+    "short_name": "Ang. Roz.",
+    "title": "Język Angielski (Poziom Rozszerzony • Formuła 2023)",
+    "level": "Nowa Formuła 2023 (Poziom Rozszerzony • B2+/C1)",
+    "icon": "Globe",
+    "color": "#06B6D4",
+    "total_exam_points": 60,
+    "passing_threshold_points": 18,
+    "topics_count": 10,
+    "lessons_count": 18,
+    "tasks_count": 72
+  },
+  "topics": [
+    {
+      "id": "eng-roz-dzial-1",
+      "numericId": 1,
+      "title": "Dział 1: Inwersja stylistyczna i struktury emfatyczne (Inversion & Cleft Sentences)",
+      "short_title": "Inwersja i emfaza",
+      "description": "Inwersja stylistyczna po wyrażeniach przeczących (Never, Seldom, Hardly, No sooner, Under no circumstances) oraz zdania rozszczepione (Cleft sentences: What I need..., It was Mark who...).",
+      "icon": "Zap",
+      "color": "#8B5CF6",
+      "matura_points_range": "3–5 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-1-1",
+          "title": "Inwersja po wyrażeniach przeczących i ograniczających",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Gdy zdanie zaczyna się od przysłówka przeczącego lub ograniczającego (Never, Rarely, Seldom, Hardly, Scarcely, Barely, No sooner, Under no circumstances, Little), orzeczenie przyjmuje szyk pytania: przysłówek + operator (did/had/do/is) + podmiot + czasownik główny.",
+            "matura_context": "Jeden z najczęściej testowanych elementów w zadaniach parafrazy (Key Word Transformation) i wielokrotnego wyboru na maturze rozszerzonej.",
+            "core_formulas": "Hardly + had + S + V3 + when... | No sooner + had + S + V3 + than... | Under no circumstances + should/can + S + V",
+            "worked_example": "Hardly had the plane taken off when the engine stopped working. (Zaledwie samolot wystartował, gdy silnik przestał działać).",
+            "exam_trap": "Pamiętaj: 'Hardly... when', ale 'No sooner... than'! Pomylenie 'when' z 'than' to utrata punktu."
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-1-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Under no circumstances ______ to leave the building without permission.",
+              "options": [
+                "are students allowed",
+                "students are allowed",
+                "allowed are students",
+                "do students allow"
+              ],
+              "correct_answer": "are students allowed",
+              "explanation": "Po wyrażeniu 'Under no circumstances' obowiązuje inwersja stylistyczna (szyk pytania): operator 'are' + podmiot 'students' + imiesłów 'allowed'.",
+              "hint": "Zastosuj szyk pytania po wyrażeniu przeczącym na początku zdania.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-1-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2024",
+              "content": "Hardly ______ the front door when the phone started ringing.",
+              "options": [
+                "had he opened",
+                "did he open",
+                "he had opened",
+                "opened he"
+              ],
+              "correct_answer": "had he opened",
+              "explanation": "W strukturze 'Hardly ... when' z dwiema czynnościami z przeszłości stosujemy inwersję z czasem Past Perfect: 'had he opened'.",
+              "hint": "Czynność wcześniejsza w czasie Past Perfect w szyku inwersyjnym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-1-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Czerwiec 2023",
+              "content": "No sooner had we sat down for dinner ______ the doorbell rang.",
+              "options": [
+                "than",
+                "when",
+                "then",
+                "that"
+              ],
+              "correct_answer": "than",
+              "explanation": "'No sooner' (stopień wyższy od 'soon') zawsze łączy się ze spójnikiem 'than' (nie 'when').",
+              "hint": "Stopień wyższy przymiotnika/przysłówka wymaga spójnika 'than'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-1-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator Rozszerzony 2023",
+              "content": "Little ______ that their conversation was being recorded by the detective.",
+              "options": [
+                "did they suspect",
+                "they suspected",
+                "had they suspected",
+                "they did suspect"
+              ],
+              "correct_answer": "did they suspect",
+              "explanation": "Po 'Little' na początku zdania oznaczającym 'ani trochę / wcale' stosujemy inwersję w czasie Past Simple: 'did they suspect'.",
+              "hint": "Wyrażenie 'Little' w znaczeniu przeczącym wymaga operatora 'did'.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-1-2",
+          "title": "Zdania rozszczepione i emfaza (Cleft Sentences & 'do/did')",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Zdania rozszczepione (cleft sentences) służą do podkreślenia konkretnego elementu zdania: 1) 'It is/was X that/who...', 2) 'What I really need is...', 3) 'All I want is...', 4) Użycie 'do/did' w zdaniu twierdzącym dla wzmocnienia: 'I DO love you'.",
+            "matura_context": "Używane do podnoszenia rejestru w rozprawce i artykule oraz testowane w transformacjach zdań.",
+            "core_formulas": "It was [X] that/who... | What + S + V + is/was [X] | All + S + V + is/was [X]",
+            "worked_example": "Tom broke the window. -> It was Tom who broke the window. What Tom did was break the window.",
+            "exam_trap": "Pamiętaj, że po 'It was...' dla rzeczy używamy 'that' lub 'which', a dla osób 'who' lub 'that'."
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-1-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "It was only after reading the report ______ the full extent of the problem.",
+              "options": [
+                "that she realized",
+                "did she realize",
+                "when she realized",
+                "which she realized"
+              ],
+              "correct_answer": "that she realized",
+              "explanation": "W strukturze 'It was only after... that...' drugą część wprowadzamy spójnikiem 'that' z szykiem prostym.",
+              "hint": "Zwróć uwagę na konstrukcję zdania rozszczepionego 'It was ... that ...'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-1-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "What astonished the scientists most ______ the speed at which the bacteria mutated.",
+              "options": [
+                "was",
+                "were",
+                "it was",
+                "being"
+              ],
+              "correct_answer": "was",
+              "explanation": "W zdaniu typu wh-cleft orzeczeniem łączącym całe zdanie podrzędne z dopełnieniem w liczbie pojedynczej jest 'was'.",
+              "hint": "Cała fraza 'What astonished the scientists most' stanowi podmiot w liczbie pojedynczej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-1-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Próbna 2024",
+              "content": "'You never listen to my advice!' — 'That's not true, I ______ listen to you every time!'",
+              "options": [
+                "do",
+                "am",
+                "did",
+                "have"
+              ],
+              "correctAnswer": "do",
+              "correct_answer": "do",
+              "explanation": "Operator 'do' przed bezokolicznikiem 'listen' służy emfazie (podkreśleniu: 'Naprawdę cię słucham!').",
+              "hint": "Użyj operatora czasu teraźniejszego dla wzmocnienia twierdzenia.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-1-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura 2023",
+              "content": "All he ever cared about ______ his career and social status.",
+              "options": [
+                "was",
+                "were",
+                "are",
+                "been"
+              ],
+              "correct_answer": "was",
+              "explanation": "Konstrukcja 'All he ever cared about was...' traktuje cały zbiór jako jedno pojęcie.",
+              "hint": "Konstrukcja 'All + S + V + was ...'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-2",
+      "numericId": 2,
+      "title": "Dział 2: Tryby warunkowe mieszane i inwersja warunkowa (Mixed & Inverted Conditionals)",
+      "short_title": "Mixed & Inverted Conditionals",
+      "description": "Tryby warunkowe mieszane (Typ 3+2 i Typ 2+3), inwersja warunkowa bez 'if' (Had I known, Were he to, Should you need) oraz 'But for' / 'If it hadn't been for'.",
+      "icon": "GitFork",
+      "color": "#3B82F6",
+      "matura_points_range": "3–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-2-1",
+          "title": "Tryby warunkowe mieszane (Mixed Conditionals)",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Warunek w przeszłości (Past Perfect) -> Skutek w teraźniejszości (would + V): 'If I had accepted the offer, I would be living in London today.' 2) Cecha stała / stan teraźniejszy (Past Simple) -> Skutek w przeszłości (would have + V3): 'If he spoke Spanish, he would have translated the document yesterday.'",
+            "matura_context": "Absolutny klasyk matury rozszerzonej w zadaniach 'Key Word Transformation' i teście luk.",
+            "core_formulas": "Typ 3+2: If + S + had + V3, S + would + V (now) | Typ 2+3: If + S + V2, S + would have + V3 (then)",
+            "worked_example": "If you hadn't forgotten the map (wtedy), we wouldn't be lost in the forest now (teraz).",
+            "exam_trap": "Zwracaj uwagę na okoliczniki czasu: 'now / today' w zdaniu głównym sygnalizuje 'would + bezokolicznik', a 'yesterday / last week' sygnalizuje 'would have + V3'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-2-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "If Peter ______ his driving test last month, he wouldn't have to take the bus to university every day.",
+              "options": [
+                "had passed",
+                "passed",
+                "would pass",
+                "would have passed"
+              ],
+              "correct_answer": "had passed",
+              "explanation": "Warunek dotyczy przeszłości ('last month' -> Past Perfect: 'had passed'), a skutek odnosi się do teraźniejszości ('every day' -> would + V).",
+              "hint": "Warunek w przeszłości ('last month') wymaga czasu Past Perfect.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-2-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "If Sarah weren't so afraid of heights, she ______ with us to the top of the mountain yesterday.",
+              "options": [
+                "would have climbed",
+                "would climb",
+                "climbed",
+                "had climbed"
+              ],
+              "correct_answer": "would have climbed",
+              "explanation": "Stała cecha Sarah ('weren't so afraid' - stan obecny) miała wpływ na zdarzenie wczoraj ('yesterday' -> 'would have climbed').",
+              "hint": "Skutek odnosi się do przeszłości ('yesterday').",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-2-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Czerwiec 2023",
+              "content": "We ______ completely broke today if we hadn't made that risky investment three years ago.",
+              "options": [
+                "wouldn't be",
+                "wouldn't have been",
+                "aren't",
+                "weren't"
+              ],
+              "correct_answer": "wouldn't be",
+              "explanation": "Okolicznik 'today' wskazuje, że skutek jest teraźniejszy, więc używamy 'wouldn't be'.",
+              "hint": "Słowo 'today' oznacza skutek w chwili obecnej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-2-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator Rozszerzony 2023",
+              "content": "If you had listened to my warnings, you ______ in such deep trouble right now.",
+              "options": [
+                "wouldn't be",
+                "wouldn't have been",
+                "hadn't been",
+                "won't be"
+              ],
+              "correct_answer": "wouldn't be",
+              "explanation": "Warunek przeszły ('had listened') skutkuje sytuacją obecną ('right now' -> 'wouldn't be').",
+              "hint": "Słowa 'right now' decydują o formie czasownika.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-2-2",
+          "title": "Inwersja warunkowa i struktury 'But for'",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Możemy pominąć 'if' stosując inwersję: 1) Typ 1: Should you see him... (= If you see him...), 2) Typ 2: Were I you... / Were he to ask... (= If I were you / If he asked), 3) Typ 3: Had we known... (= If we had known...). Ponadto: 'But for + rzeczownik' (= gdyby nie...) + zdanie główne.",
+            "matura_context": "Sztandarowe konstrukcje w zadaniach transformacji zdań ze słowem kluczem.",
+            "core_formulas": "Should + S + V... | Were + S + to + V... | Had + S + V3... | But for + noun / gerund",
+            "worked_example": "If I had known the truth -> Had I known the truth. But for your advice, I would have failed.",
+            "exam_trap": "Pamiętaj: 'Were I you' (nie: 'Was I you') - w trybach warunkowych stosujemy wyłącznie formę 'were'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-2-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "______ you require any further assistance, please contact our helpline.",
+              "options": [
+                "Should",
+                "Were",
+                "Had",
+                "If should"
+              ],
+              "correct_answer": "Should",
+              "explanation": "'Should you require...' to formalna inwersja w pierwszym okresie warunkowym zastępująca 'If you require...'.",
+              "hint": "Inwersja w pierwszym trybie warunkowym zaczyna się od 'Should'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-2-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "______ he to discover the secret, our whole plan would be completely ruined.",
+              "options": [
+                "Were",
+                "Should",
+                "Had",
+                "If"
+              ],
+              "correct_answer": "Were",
+              "explanation": "Struktura 'Were + podmiot + to + bezokolicznik' to inwersja drugiego okresu warunkowego: 'Were he to discover...'.",
+              "hint": "Inwersja w drugim trybie warunkowym z czasownikiem w bezokoliczniku ('to discover').",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-2-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "______ I known about the cancellation earlier, I wouldn't have booked the hotel room.",
+              "options": [
+                "Had",
+                "Were",
+                "Should",
+                "Have"
+              ],
+              "correct_answer": "Had",
+              "explanation": "Inwersja w trzecim okresie warunkowym: 'Had I known...' zamiast 'If I had known...'.",
+              "hint": "Trzeci tryb warunkowy bez 'if' rozpoczyna się od operatora 'Had'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-2-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "______ his quick reaction, the child would have fallen into the deep pool.",
+              "options": [
+                "But for",
+                "Unless",
+                "Without that",
+                "Provided"
+              ],
+              "correct_answer": "But for",
+              "explanation": "'But for + rzeczownik' oznacza 'Gdyby nie...': 'But for his quick reaction...'.",
+              "hint": "Wyrażenie oznaczające 'Gdyby nie' przed rzeczownikiem to 'But for'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-3",
+      "numericId": 3,
+      "title": "Dział 3: Życzenia, preferencje i tryb łączący (Wish, Rather & Subjunctive)",
+      "short_title": "Wish, Rather & Subjunctive",
+      "description": "Konstrukcje z 'wish' i 'if only' (Past Simple, Past Perfect, would), 'would rather / would sooner', 'it's high time' oraz formalny Subjunctive (suggest that he go).",
+      "icon": "Heart",
+      "color": "#EC4899",
+      "matura_points_range": "3–5 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-3-1",
+          "title": "Wish, If only & It's high time",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Życzenie co do teraźniejszości: wish + Past Simple ('I wish I lived by the sea'). 2) Żal co do przeszłości: wish + Past Perfect ('I wish I had studied harder'). 3) Irytacja czyimś zachowaniem: wish + would ('I wish you would stop talking'). 4) 'It's (high) time + S + Past Simple' ('It's high time you went to bed').",
+            "matura_context": "Stały element arkuszy CKE rozszerzonych w transformacjach.",
+            "core_formulas": "wish + Past Simple (present) | wish + Past Perfect (past) | wish + would (annoyance) | It's high time + S + Past Simple",
+            "worked_example": "It's 11 PM. It's high time we left for the station.",
+            "exam_trap": "Nigdy nie mówimy: 'I wish I would...'! Po podmiocie 'I' lub 'we' nie można użyć 'would' w konstrukcji z wish (użyj 'could')."
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-3-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2023",
+              "content": "It's high time you ______ wasting your time on video games and started preparing for exams.",
+              "options": [
+                "stopped",
+                "stop",
+                "have stopped",
+                "had stopped"
+              ],
+              "correct_answer": "stopped",
+              "explanation": "Po konstrukcji 'It's high time + podmiot' zawsze stosujemy czas Past Simple: 'stopped'.",
+              "hint": "Po 'It's high time + S' wymagany jest czas Past Simple.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-3-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "I really regret not buying that laptop when it was on sale. -> I wish I ______ that laptop when it was on sale.",
+              "options": [
+                "had bought",
+                "bought",
+                "would buy",
+                "have bought"
+              ],
+              "correct_answer": "had bought",
+              "explanation": "Żal dotyczący sytuacji z przeszłości ('regret not buying') wyrażamy za pomocą 'wish + Past Perfect': 'had bought'.",
+              "hint": "Żal co do przeszłości wymaga czasu Past Perfect.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-3-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "I wish my neighbours ______ playing loud music late at night; it's driving me crazy!",
+              "options": [
+                "would stop",
+                "stopped",
+                "had stopped",
+                "will stop"
+              ],
+              "correct_answer": "would stop",
+              "explanation": "Używamy 'wish + would', aby wyrazić irytację czyimś uciążliwym nawykiem lub zachowaniem i chęć jego zmiany.",
+              "hint": "Irytacja czyimś zachowaniem wymaga konstrukcji z 'would'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-3-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "If only we ______ the train schedule in advance, we wouldn't be stranded here right now.",
+              "options": [
+                "had checked",
+                "checked",
+                "would check",
+                "have checked"
+              ],
+              "correct_answer": "had checked",
+              "explanation": "'If only' działa jak 'wish'. Sprawdzenie rozkładu miało miejsce w przeszłości, stąd Past Perfect: 'had checked'.",
+              "hint": "Czynność przeszła z 'If only' wymaga formy Past Perfect.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-3-2",
+          "title": "Would rather / Would sooner & The Subjunctive",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) 'I'd rather + bezokolicznik bez to' (dla siebie): 'I'd rather stay home'. 2) 'I'd rather + inny podmiot + Past Simple' (teraźniejszość): 'I'd rather you didn't smoke here'. 3) 'I'd rather + inny podmiot + Past Perfect' (przeszłość): 'I'd rather you had told me earlier'. 4) Subjunctive: czasowniki insist, demand, suggest, recommend wymagają bezokolicznika: 'She insisted that he BE present'.",
+            "matura_context": "Pułapka w zdaniach ze zmianą podmiotu po 'would rather'.",
+            "core_formulas": "I'd rather + V | I'd rather + S + Past Simple (present) | suggest/insist + that + S + (should) + base V",
+            "worked_example": "I'd rather you paid by credit card if you don't mind. The doctor recommended that he take a few days off.",
+            "exam_trap": "Po 'I'd rather you...' nigdy nie używaj bezokolicznika! Zawsze forma czasu przeszłego!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-3-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "I would rather you ______ anyone about our conversation yesterday.",
+              "options": [
+                "hadn't told",
+                "didn't tell",
+                "won't tell",
+                "not tell"
+              ],
+              "correct_answer": "hadn't told",
+              "explanation": "Preferencja dotyczy przeszłości ('yesterday') i innej osoby ('you'), więc stosujemy Past Perfect: 'hadn't told'.",
+              "hint": "Inna osoba po 'would rather' w odniesieniu do przeszłości wymaga Past Perfect.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-3-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "The committee recommended that the proposal ______ immediately.",
+              "options": [
+                "be accepted",
+                "is accepted",
+                "was accepted",
+                "to be accepted"
+              ],
+              "correct_answer": "be accepted",
+              "explanation": "W formalnym trybie łączącym (Subjunctive) po czasownikach typu 'recommend that' stosujemy bezokolicznik 'be accepted'.",
+              "hint": "Tryb łączący (Subjunctive) po 'recommend that' wymaga formy podstawowej czasownika 'be'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-3-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "I would rather ______ at home tonight than go to that noisy club.",
+              "options": [
+                "stay",
+                "to stay",
+                "staying",
+                "stayed"
+              ],
+              "correct_answer": "stay",
+              "explanation": "Gdy podmiot 'would rather' odnosi się do tej samej osoby ('I would rather [I]...'), stosujemy goły bezokolicznik: 'stay'.",
+              "hint": "Ten sam podmiot po 'would rather' łączy się z gołym bezokolicznikiem.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-3-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "It is essential that every applicant ______ the necessary documents before Friday.",
+              "options": [
+                "submit",
+                "submits",
+                "submitted",
+                "will submit"
+              ],
+              "correct_answer": "submit",
+              "explanation": "Konstrukcja z przymiotnikiem 'essential that' wymaga Subjunctive (forma podstawowa czasownika: 'submit' bez końcówki -s).",
+              "hint": "Subjunctive z przymiotnikiem 'It is essential that ...' nie przyjmuje końcówki -s.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-4",
+      "numericId": 4,
+      "title": "Dział 4: Czasowniki modalne w przeszłości i dedukcja (Modals in the Past)",
+      "short_title": "Modals in the Past",
+      "description": "Dedukcja w odniesieniu do przeszłości (must have, can't have, might have), krytyka i powinność (should have, ought to have) oraz różnica między 'needn't have done' a 'didn't need to do'.",
+      "icon": "HelpCircle",
+      "color": "#10B981",
+      "matura_points_range": "3–5 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-4-1",
+          "title": "Dedukcja przeszła: Must have vs Can't have vs Might have",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Pewność na tak (99%): must have + V3 ('He must have forgotten his keys'). 2) Pewność na nie (99% niemożliwe): can't have / couldn't have + V3 ('She can't have stolen the money, she was with me'). 3) Możliwość (50%): might have / may have / could have + V3 ('They might have missed the train').",
+            "matura_context": "Pojawia się w transformacjach zdań i testach leksykalno-gramatycznych.",
+            "core_formulas": "must have + V3 (certain it happened) | can't have + V3 (certain it didn't happen) | might/may/could have + V3 (possible)",
+            "worked_example": "The lights are off and the car is gone. They must have left.",
+            "exam_trap": "Nigdy nie używaj 'mustn't have done' do dedukcji! Do dedukcji przeczącej służy wyłącznie 'can't have done'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-4-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Look at the wet ground! It ______ heavily during the night.",
+              "options": [
+                "must have rained",
+                "can't have rained",
+                "should have rained",
+                "needn't have rained"
+              ],
+              "correct_answer": "must have rained",
+              "explanation": "Mamy niezbity dowód ('Look at the wet ground'), więc wyrażamy logiczną pewność w przeszłości: 'must have rained'.",
+              "hint": "Logiczna pewność co do przeszłości na podstawie widocznych dowodów.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-4-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "I am certain Mark didn't commit the crime because he was in Paris at the time. -> Mark ______ the crime.",
+              "options": [
+                "can't have committed",
+                "mustn't have committed",
+                "shouldn't have committed",
+                "might not have committed"
+              ],
+              "correct_answer": "can't have committed",
+              "explanation": "'I am certain ... didn't' przekształcamy na 'can't have committed' (niemożliwe, że to zrobił).",
+              "hint": "Pewność, że coś się NIE wydarzyło wyrażamy przez 'can't have + V3'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-4-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "Why didn't you answer my calls? You ______ asleep at 2 in the afternoon!",
+              "options": [
+                "couldn't have been",
+                "mustn't be",
+                "should have been",
+                "needn't have been"
+              ],
+              "correct_answer": "couldn't have been",
+              "explanation": "'Couldn't have been' wyraża niedowierzanie i przekonanie o niemożliwości danego faktu.",
+              "hint": "Wyrażenie niedowierzania co do czynności w przeszłości.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-4-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "I can't find my wallet. I ______ it on the bus, but I'm not entirely sure.",
+              "options": [
+                "might have left",
+                "must have left",
+                "should have left",
+                "can't have left"
+              ],
+              "correct_answer": "might have left",
+              "explanation": "Brak pewności ('I'm not entirely sure') wskazuje na prawdopodobieństwo: 'might have left'.",
+              "hint": "Wyrażenie 'not entirely sure' oznacza brak pewności (możliwość: might have).",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-4-2",
+          "title": "Needn't have done vs Didn't need to do oraz Should have done",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) 'Needn't have + V3': czynność została wykonana, ale okazała się niepotrzebna ('You needn't have bought bread, we had plenty'). 2) 'Didn't need to + bezokolicznik': czynność nie była konieczna i z reguły jej nie zrobiono ('I didn't need to buy a ticket because entry was free'). 3) 'Should have + V3': powinność z przeszłości, która nie została zrealizowana (wyrzut/żal).",
+            "matura_context": "Subtelna różnica znaczeniowa uwielbiana przez autorów zadań CKE.",
+            "core_formulas": "needn't have + V3 (did it, but unnecessary) | didn't need to + V (wasn't necessary, didn't do it) | should have + V3 (ought to have done)",
+            "worked_example": "She needn't have rushed; the meeting was delayed by an hour anyway.",
+            "exam_trap": "Pamiętaj: jeśli ktoś coś ZROBIŁ i dopiero potem dowiedział się, że to zbędne -> 'needn't have done'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-4-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "We bought lots of food, but there was already a huge buffet at the party. -> We ______ so much food.",
+              "options": [
+                "needn't have bought",
+                "didn't need to buy",
+                "mustn't have bought",
+                "couldn't buy"
+              ],
+              "correct_answer": "needn't have bought",
+              "explanation": "Kupiliśmy jedzenie (czynność wykonana), a potem okazało się to niepotrzebne: 'needn't have bought'.",
+              "hint": "Czynność została wykonana niepotrzebnie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-4-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Since it was Sunday, I ______ get up early, so I stayed in bed until 10 AM.",
+              "options": [
+                "didn't need to",
+                "needn't have",
+                "mustn't",
+                "shouldn't"
+              ],
+              "correct_answer": "didn't need to",
+              "explanation": "Nie było potrzeby wstawania wcześnie i osoba nie wstała (brak konieczności): 'didn't need to get up'.",
+              "hint": "Czynność nie była konieczna i nie została wykonana.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-4-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "You ______ to her so rudely; now she refuses to speak to us.",
+              "options": [
+                "shouldn't have spoken",
+                "mustn't have spoken",
+                "needn't speak",
+                "couldn't speak"
+              ],
+              "correct_answer": "shouldn't have spoken",
+              "explanation": "Krytyka zachowania z przeszłości ('Nie powinieneś był tak niemile się odzywać') to 'shouldn't have spoken'.",
+              "hint": "Krytyka przeszłego zachowania.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-4-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "The flight was cancelled, so we ______ at the airport all night after all.",
+              "options": [
+                "didn't have to wait",
+                "needn't have waited",
+                "mustn't wait",
+                "hadn't waited"
+              ],
+              "correct_answer": "didn't have to wait",
+              "explanation": "Lot odwołano, więc nie musieliśmy czekać (brak konieczności w przeszłości): 'didn't have to wait'.",
+              "hint": "Brak konieczności z przeszłości.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-5",
+      "numericId": 5,
+      "title": "Dział 5: Imiesłowowe równoważniki zdań (Participle Clauses)",
+      "short_title": "Participle Clauses",
+      "description": "Present Participle (doing), Past Participle (done), Perfect Participle (having done / having been done) oraz konstrukcje skracania zdań przydawkowych i okolicznikowych.",
+      "icon": "Scissors",
+      "color": "#F59E0B",
+      "matura_points_range": "3–5 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-5-1",
+          "title": "Present, Past i Perfect Participles",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Czynności jednoczesne: V-ing ('Walking down the street, I ran into an old friend'). 2) Czynność wcześniejsza: Having + V3 ('Having finished the report, he sent it to the manager'). 3) Strona bierna imiesłowu: V3 lub Having been + V3 ('Built in the 14th century, the castle attracts thousands of tourists').",
+            "matura_context": "Kluczowa cecha stylu zaawansowanego w wypracowaniu maturalnym oraz w transformacjach zdań.",
+            "core_formulas": "V-ing (simultaneous) | Having + V3 (prior action) | Having been + V3 (prior passive)",
+            "worked_example": "After he had passed all his exams, he went on vacation. -> Having passed all his exams, he went on vacation.",
+            "exam_trap": "Dangling participle: podmiot imiesłowu MUSI być taki sam jak podmiot zdania głównego! 'Walking in the park, the tree fell' jest błędem!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-5-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "______ all his money on bad investments, George had to move back in with his parents.",
+              "options": [
+                "Having lost",
+                "Losing",
+                "Lost",
+                "Have lost"
+              ],
+              "correct_answer": "Having lost",
+              "explanation": "Utrata pieniędzy nastąpiła wcześniej niż powrót do rodziców, więc stosujemy Perfect Participle: 'Having lost'.",
+              "hint": "Czynność wcześniejsza w imiesłowie wymaga formy 'Having + V3'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-5-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "______ by professional critics, the new movie became an instant box-office hit.",
+              "options": [
+                "Although praised",
+                "Praising",
+                "Having praised",
+                "While praising"
+              ],
+              "correct_answer": "Although praised",
+              "explanation": "Strona bierna (film był chwalony): 'Although praised by professional critics...'.",
+              "hint": "Imiesłów bierny (Past Participle) odnosi się do filmu chwalonego przez krytyków.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-5-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "Not ______ what to say, she remained completely silent during the meeting.",
+              "options": [
+                "knowing",
+                "known",
+                "having known",
+                "to know"
+              ],
+              "correct_answer": "knowing",
+              "explanation": "Przeczenie w imiesłowie tworzymy przez 'Not' na początku: 'Not knowing what to say'.",
+              "hint": "Przeczenie z imiesłowem współczesnym tworzymy słowem 'Not'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-5-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "______ several times before, the device still failed during the final demonstration.",
+              "options": [
+                "Having been tested",
+                "Testing",
+                "Being tested",
+                "To have been tested"
+              ],
+              "correct_answer": "Having been tested",
+              "explanation": "Urządzenie zostało przetestowane wcześniej (bierny Perfect Participle): 'Having been tested several times before...'.",
+              "hint": "Wcześniejsza czynność w stronie biernej: 'Having been + V3'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-6",
+      "numericId": 6,
+      "title": "Dział 6: Strona bierna rozszerzona i konstrukcje kauzatywne (Advanced Passive & Causatives)",
+      "short_title": "Strona bierna i kauzatywy",
+      "description": "Konstrukcje z czasownikami przekazu (He is believed to have..., It is said that...), konstrukcje kauzatywne (have/get something done) oraz 'need doing'.",
+      "icon": "Layers",
+      "color": "#06B6D4",
+      "matura_points_range": "3–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-6-1",
+          "title": "Konstrukcje z czasownikami przekazu (Personal & Impersonal Passive)",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Impersonal: 'It is said / thought / believed / reported that...' 2) Personal z bezokolicznikiem teraźniejszym: 'He is said TO BE rich' (mówi się, że teraz jest). 3) Personal z bezokolicznikiem przeszłym (Perfect Infinitive): 'He is said TO HAVE ESCAPED from prison' (mówi się teraz, że wtedy uciekł).",
+            "matura_context": "Pewniak maturalny w zadaniach transformacyjnych (Key Word Transformation).",
+            "core_formulas": "S + be + believed/said/thought + to + V (present) | S + be + believed/said/thought + to have + V3 (past)",
+            "worked_example": "People believe that the suspect fled the country. -> The suspect is believed to have fled the country.",
+            "exam_trap": "Jeśli czynność podrzędna wydarzyła się WCZEŚNIEJ niż przekaz, koniecznie użyj 'to have + V3' (Perfect Infinitive)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-6-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "The famous painting is believed ______ stolen during the blackout yesterday.",
+              "options": [
+                "to have been",
+                "to be",
+                "having been",
+                "that it was"
+              ],
+              "correct_answer": "to have been",
+              "explanation": "Kradzież miała miejsce wczoraj ('yesterday' - wcześniej), a w stronie biernej wymaga to 'to have been + V3': 'to have been stolen'.",
+              "hint": "Czynność bierna w przeszłości wymaga Perfect Infinitive ('to have been + V3').",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-6-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "People claim that the CEO earns over a million pounds a year. -> The CEO is claimed ______ over a million pounds a year.",
+              "options": [
+                "to earn",
+                "to have earned",
+                "earning",
+                "that he earns"
+              ],
+              "correct_answer": "to earn",
+              "explanation": "Czynność teraźniejsza stała ('earns') zamienia się na prosty bezokolicznik: 'to earn'.",
+              "hint": "Czynność teraźniejsza po czasowniku przekazu przyjmuje prosty bezokolicznik 'to + V'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-6-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "The escaped convict is thought ______ hiding somewhere in the dense forest right now.",
+              "options": [
+                "to be",
+                "to have been",
+                "being",
+                "to be having"
+              ],
+              "correct_answer": "to be",
+              "explanation": "Czynność dziejąca się w tej chwili ('right now') to Continuous Infinitive: 'to be hiding'.",
+              "hint": "Czynność trwająca w tej chwili (Continuous) po konstrukcji biernej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-6-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "It is widely reported that the economy ______ signs of steady recovery.",
+              "options": [
+                "is showing",
+                "to show",
+                "showing",
+                "to have shown"
+              ],
+              "correct_answer": "is showing",
+              "explanation": "W konstrukcji bezosobowej 'It is reported that...' po spójniku 'that' następuje normalne zdanie: podmiot + czasownik 'is showing'.",
+              "hint": "Po konstrukcji bezosobowej z 'that' stosujemy pełne zdanie podrzędne.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-6-2",
+          "title": "Konstrukcje kauzatywne (Have/Get sth done)",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) 'have / get something done': zlecenie wykonania usługi komuś innemu ('I had my car repaired'). 2) Doświadczenie nieprzyjemnego zdarzenia z zewnątrz: 'She had her purse stolen on the bus'. 3) 'have somebody DO something' (bez to) vs 'get somebody TO DO something' (z to). 4) 'need + V-ing': oznacza konieczność naprawy w sensie biernym ('The roof needs repairing').",
+            "matura_context": "Bardzo często sprawdzane w zadaniach parafrazy.",
+            "core_formulas": "S + have/get + object + V3 | S + get + person + to + V | S + have + person + base V",
+            "worked_example": "A mechanic serviced our brakes. -> We had our brakes serviced.",
+            "exam_trap": "Pamiętaj o odmianie czasownika 'have' przez czasy: 'I am having it done', 'I had it done', 'I will have it done'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-6-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "A technician is installing a new security system at our office today. -> We ______ a new security system installed today.",
+              "options": [
+                "are having",
+                "have",
+                "had",
+                "will have"
+              ],
+              "correct_answer": "are having",
+              "explanation": "Czynność dzieje się dzisiaj (Present Continuous), więc czasownik 'have' przyjmuje formę 'are having'.",
+              "hint": "Zastosuj czas Present Continuous w konstrukcji kauzatywnej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-6-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "I finally managed to get the plumber ______ the leaking pipe under the sink.",
+              "options": [
+                "to fix",
+                "fix",
+                "fixing",
+                "fixed"
+              ],
+              "correct_answer": "to fix",
+              "explanation": "Konstrukcja 'get somebody TO do something' zawsze wymaga bezokolicznika z 'to'.",
+              "hint": "Po czasowniku 'get' i osobie stosujemy bezokolicznik z 'to'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-6-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "These dirty windows really need ______ before the guests arrive.",
+              "options": [
+                "cleaning",
+                "to clean",
+                "clean",
+                "cleaned"
+              ],
+              "correct_answer": "cleaning",
+              "explanation": "'Need + V-ing' ma znaczenie bierne ('wymagają umycia' = need to be cleaned).",
+              "hint": "Po czasowniku 'need' w znaczeniu biernym stosujemy formę z końcówką -ing.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-6-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "The teacher had each student ______ a short summary of the book.",
+              "options": [
+                "write",
+                "to write",
+                "writing",
+                "written"
+              ],
+              "correct_answer": "write",
+              "explanation": "Po konstrukcji 'have somebody + czynność' stosujemy goły bezokolicznik bez 'to': 'write'.",
+              "hint": "Konstrukcja 'have somebody DO something' wymaga gołego bezokolicznika.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-7",
+      "numericId": 7,
+      "title": "Dział 7: Słowotwórstwo zaawansowane (Advanced Word Formation)",
+      "short_title": "Słowotwórstwo zaawansowane",
+      "description": "Prefiksy przeczące i modyfikujące (mis-, over-, under-, out-, in-/un-/dis-), sufiksy rzeczownikowe i przymiotnikowe, konwersja oraz nieregularne mutacje rdzenia (broad -> breadth).",
+      "icon": "Sparkles",
+      "color": "#10B981",
+      "matura_points_range": "3–5 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-7-1",
+          "title": "Prefiksy przeczące i semantyczne",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Prefiksy przeczące: un- (unreliable), in- (inconvenient), im- (impatient), il- (illegible), ir- (irresponsible), dis- (disapproval). 2) Prefiksy semantyczne: over- (overestimate - przecenić), under- (underestimate), mis- (misunderstand - źle zrozumieć), out- (outperform - przewyższyć), re- (reconsider).",
+            "matura_context": "Kluczowe zadanie na uzupełnianie luk słowotwórczych (Word Formation) w Arkuszu CKE.",
+            "core_formulas": "Słowo bazowe -> Analiza części mowy -> Dobór prefiksu/sufiksu -> Weryfikacja kontekstu (pozytywny/negatywny)",
+            "worked_example": "ESTIMATE -> The cost was grossly UNDERESTIMATED (niedoszacowany).",
+            "exam_trap": "Zawsze czytaj całe zdanie! Bardzo często kontekst wymaga dodania prefiksu PRZECZĄCEGO (np. fortunate -> unfortunately)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-7-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Due to a complete ______ of the instructions, the experiment yielded false results. [UNDERSTAND]",
+              "options": [
+                "misunderstanding",
+                "understanding",
+                "disunderstanding",
+                "inunderstanding"
+              ],
+              "correct_answer": "misunderstanding",
+              "explanation": "Złe zrozumienie instrukcji to 'misunderstanding' (prefiks mis- oznacza błędnie/źle).",
+              "hint": "Prefiks oznaczający błędne wykonanie czynności to 'mis-'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-7-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "The manager's decision to cut salaries caused widespread ______ among the staff. [APPROVE]",
+              "options": [
+                "disapproval",
+                "inapproval",
+                "unapproval",
+                "misapproval"
+              ],
+              "correct_answer": "disapproval",
+              "explanation": "Rzeczownik od approve z prefiksem przeczącym to 'disapproval' (brak aprobaty, dezaprobata).",
+              "hint": "Przeczenie od 'approval' tworzy prefiks 'dis-'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-7-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "Never ______ your opponent, even if they appear weak. [ESTIMATE]",
+              "options": [
+                "underestimate",
+                "overestimate",
+                "disestimate",
+                "misestimate"
+              ],
+              "correct_answer": "underestimate",
+              "explanation": "'Underestimate' oznacza niedoceniać / zlekceważyć przeciwnika.",
+              "hint": "Prefiks oznaczający zbyt małą ocenę to 'under-'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-7-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "The signature on the contract was completely ______ and could not be verified. [LEGIBLE]",
+              "options": [
+                "illegible",
+                "unlegible",
+                "dislegible",
+                "inlegible"
+              ],
+              "correct_answer": "illegible",
+              "explanation": "Przymiotniki zaczynające się na literę 'l' tworzą przeczenie przez prefiks 'il-': 'illegible' (nieczytelny).",
+              "hint": "Przymiotniki na literę 'l' przyjmują prefiks 'il-'.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-7-2",
+          "title": "Nieregularne mutacje rdzenia i sufiksy B2+/C1",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Nieregularne mutacje przymiotnik -> rzeczownik: broad -> BREADTH, strong -> STRENGTH, long -> LENGTH, deep -> DEPTH, wide -> WIDTH, high -> HEIGHT. 2) Sufiksy czasownikowe: -en (widen, strengthen, lengthen), -ify (clarify, simplify), -ize (criticize, prioritize). 3) Sufiksy abstrakcyjne: -hood (likelihood), -ship (companionship).",
+            "matura_context": "Klasyczne 'perełki' słowotwórcze, które różnicują najlepsze wyniki 90%+ na maturze rozszerzonej.",
+            "core_formulas": "long -> length -> lengthen | wide -> width -> widen | deep -> depth -> deepen",
+            "worked_example": "The local council plans to WIDEN the road to reduce congestion. [WIDE]",
+            "exam_trap": "Pamiętaj o pisowni 'height' (nie 'heigth') oraz 'width'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-7-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Regular exercise can help ______ your immune system. [STRONG]",
+              "options": [
+                "strengthen",
+                "strength",
+                "strongly",
+                "strongen"
+              ],
+              "correct_answer": "strengthen",
+              "explanation": "Czasownik od 'strong' to 'strengthen' (wzmocnić) po czasowniku modalnym 'help'.",
+              "hint": "Szukamy formy czasownika (wzmocnić) utworzonej od słowa 'strong'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-7-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "The divers explored the dark ______ of the ocean trench. [DEEP]",
+              "options": [
+                "depths",
+                "deepness",
+                "deepths",
+                "deepening"
+              ],
+              "correct_answer": "depths",
+              "explanation": "Rzeczownik w liczbie mnogiej od 'deep' to 'depths' (głębiny).",
+              "hint": "Rzeczownik oznaczający głębię w liczbie mnogiej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-7-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "Could you please ______ your explanation so that everyone understands? [CLEAR]",
+              "options": [
+                "clarify",
+                "clearen",
+                "clarificate",
+                "clearify"
+              ],
+              "correct_answer": "clarify",
+              "explanation": "Czasownik utworzony od 'clear' to 'clarify' (wyjaśnić, doprecyzować).",
+              "hint": "Czasownik z końcówką '-ify'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-7-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "In all ______, the flight will be delayed due to heavy snowfall. [LIKELY]",
+              "options": [
+                "likelihood",
+                "likeliness",
+                "likelyhood",
+                "liking"
+              ],
+              "correct_answer": "likelihood",
+              "explanation": "Fraza 'In all likelihood' oznacza 'według wszelkiego prawdopodobieństwa'.",
+              "hint": "Rzeczownik abstrakcyjny od 'likely' z sufiksem '-hood'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-8",
+      "numericId": 8,
+      "title": "Dział 8: Phrasal Verbs, idiomy i kolokacje (Advanced Lexis & Collocations)",
+      "short_title": "Phrasal Verbs i kolokacje",
+      "description": "Złożone czasowniki frazowe trzyskładnikowe (put up with, look down on, cut down on), rekcja czasowników i przymiotników (dependent prepositions) oraz zaawansowane idiomy.",
+      "icon": "Compass",
+      "color": "#F59E0B",
+      "matura_points_range": "3–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-8-1",
+          "title": "Trójskładnikowe Phrasal Verbs",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) 'put up with': tolerować, znosić. 2) 'come up with': wpaść na pomysł. 3) 'look forward to (+ V-ing)': oczekiwać z niecierpliwością. 4) 'run out of': skończyć się (zasoby). 5) 'cut down on': ograniczyć spożycie/wydatki. 6) 'get away with': ujść na sucho. 7) 'look down on': patrzeć na kogoś z góry.",
+            "matura_context": "Kluczowe w zadaniach wyboru wielokrotnego i parafrazy.",
+            "core_formulas": "Verb + Particle + Preposition + Object",
+            "worked_example": "I simply cannot put up with his constant complaining anymore.",
+            "exam_trap": "Pamiętaj, że po 'look forward to' następuje gerundium (V-ing) lub rzeczownik, np. 'looking forward to hearing from you'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-8-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "I can no longer ______ with his disrespectful behaviour in my class.",
+              "options": [
+                "put up",
+                "stand up",
+                "keep up",
+                "make up"
+              ],
+              "correct_answer": "put up",
+              "explanation": "'Put up with' to frazal oznaczający 'tolerować / znosić'.",
+              "hint": "Czasownik 'put' tworzy z 'up with' wyrażenie oznaczające znoszenie czegoś.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-8-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "The marketing team has ______ with a brilliant slogan for the new campaign.",
+              "options": [
+                "come up",
+                "run up",
+                "taken up",
+                "brought up"
+              ],
+              "correct_answer": "come up",
+              "explanation": "'Come up with' oznacza 'wpaść na pomysł / wymyślić'.",
+              "hint": "Czasownik 'come' z 'up with' oznacza wpaść na pomysł.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-8-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "The doctor advised him to cut ______ on sugar and processed carbohydrates.",
+              "options": [
+                "down",
+                "off",
+                "out",
+                "back"
+              ],
+              "correct_answer": "down",
+              "explanation": "'Cut down on' oznacza 'ograniczyć spożycie'.",
+              "hint": "Ograniczyć spożycie to 'cut down on'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-8-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "He managed to get ______ with cheating on the exam because the teacher wasn't looking.",
+              "options": [
+                "away",
+                "out",
+                "off",
+                "by"
+              ],
+              "correct_answer": "away",
+              "explanation": "'Get away with' oznacza 'ujść na sucho / uniknąć kary'.",
+              "hint": "Uniknąć kary to 'get away with'.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-8-2",
+          "title": "Rekcja czasowników i przymiotników (Dependent Prepositions)",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Przymiotniki: capable OF, aware OF, keen ON, enthusiastic ABOUT, prone TO, susceptible TO, committed TO (+ V-ing). 2) Czasowniki: prevent FROM, object TO (+ V-ing), approve OF, congratulate ON, accuse OF, contribute TO.",
+            "matura_context": "Stałe punkty w zadaniach na uzupełnianie luk w tekście.",
+            "core_formulas": "adjective + preposition | verb + object + preposition + V-ing",
+            "worked_example": "She was accused OF leaking confidential documents to the press.",
+            "exam_trap": "Uważaj na przyimek 'to', po którym często następuje gerundium (V-ing), np. 'object to paying', 'committed to improving'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-8-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "Many local residents strongly objected ______ the construction of a shopping mall.",
+              "options": [
+                "to",
+                "at",
+                "against",
+                "for"
+              ],
+              "correct_answer": "to",
+              "explanation": "Czasownik 'object' łączy się wyłącznie z przyimkiem 'to' ('object to something').",
+              "hint": "Sprzeciwiać się czemuś to 'object to'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-8-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "The police prevented the protesters ______ entering the governmental district.",
+              "options": [
+                "from",
+                "to",
+                "against",
+                "with"
+              ],
+              "correct_answer": "from",
+              "explanation": "Struktura: 'prevent somebody FROM doing something'.",
+              "hint": "Uniemożliwić komuś zrobienie czegoś to 'prevent from'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-8-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "He was found guilty of the theft and accused ______ forging company receipts.",
+              "options": [
+                "of",
+                "with",
+                "about",
+                "for"
+              ],
+              "correct_answer": "of",
+              "explanation": "'Accuse somebody OF something' (oskarżyć kogoś o coś).",
+              "hint": "Oskarżyć o coś to 'accuse of'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-8-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "She is deeply committed ______ protecting endangered species in the Amazon rainforest.",
+              "options": [
+                "to",
+                "for",
+                "with",
+                "at"
+              ],
+              "correct_answer": "to",
+              "explanation": "'Committed to doing something' (zaangażowany w robienie czegoś).",
+              "hint": "Przymiotnik 'committed' łączy się z 'to'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-9",
+      "numericId": 9,
+      "title": "Dział 9: Parafrazy ze słowem-kluczem (Key Word Transformations)",
+      "short_title": "Key Word Transformations",
+      "description": "Zadania otwarte na przekształcanie zdań: od 2 do 5 wyrazów, włączając podane słowo kluczowe w niezmienionej formie.",
+      "icon": "RefreshCw",
+      "color": "#8B5CF6",
+      "matura_points_range": "4–6 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-9-1",
+          "title": "Strategia i zasady w Key Word Transformations",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Reguły CKE: 1) Musisz użyć podanego wyrazu NIE ZMIENIAJĄC jego formy. 2) Długość wstawki to od 2 do 5 wyrazów (skróty typu 'don't' liczą się jako 2 słowa). 3) Sens zdania wyjściowego musi pozostać w 100% zachowany. 4) Za bezbłędną odpowiedź przysługuje 1 punkt.",
+            "matura_context": "Zadanie 8 w arkuszu maturalnym na poziomie rozszerzonym.",
+            "core_formulas": "Zdanie A -> SŁOWO KLUCZ -> Zdanie B z luką (2-5 słów)",
+            "worked_example": "I haven't seen Mark for three years. [LAST] -> It is three years SINCE I LAST SAW Mark.",
+            "exam_trap": "Nigdy nie zmieniaj podanego wyrazu (np. z czasownika na rzeczownik) i dokładnie policz słowa!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-9-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "It was impossible for Tom to finish the marathon. [CAPABLE]\nTom ______ the marathon.",
+              "options": [
+                "was not capable of finishing",
+                "was incapable to finish",
+                "did not capable of finishing",
+                "was not capable to finish"
+              ],
+              "correct_answer": "was not capable of finishing",
+              "explanation": "'Capable' łączy się z 'of + V-ing'. W czasie przeszłym: 'was not capable of finishing'.",
+              "hint": "Użyj przymiotnika 'capable' z przyimkiem 'of' oraz formą -ing.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-9-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "I am sure that Lucy didn't take your jacket by mistake. [HAVE]\nLucy ______ your jacket by mistake.",
+              "options": [
+                "can't have taken",
+                "mustn't have taken",
+                "shouldn't have taken",
+                "might not have taken"
+              ],
+              "correct_answer": "can't have taken",
+              "explanation": "'I am sure ... didn't' przekształca się na 'can't have + V3': 'can't have taken'.",
+              "hint": "Pewność, że coś NIE zaszło w przeszłości wyrażamy przez 'can't have'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-9-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "We didn't leave early, so we missed the flight. [HAD]\nIf ______ early, we wouldn't have missed the flight.",
+              "options": [
+                "we had left",
+                "had we left",
+                "we had not left",
+                "having left"
+              ],
+              "correct_answer": "we had left",
+              "explanation": "Trzeci okres warunkowy: 'If we had left early...'.",
+              "hint": "Trzeci tryb warunkowy po spójniku 'If'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-9-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "'You really must not tell anyone about this,' she told me. [WARNED]\nShe ______ anyone about it.",
+              "options": [
+                "warned me not to tell",
+                "warned that I not tell",
+                "warned to not tell",
+                "warned me to tell not"
+              ],
+              "correct_answer": "warned me not to tell",
+              "explanation": "Konstrukcja: 'warn somebody NOT TO do something': 'warned me not to tell'.",
+              "hint": "Czasownik 'warn' z osobą i przeczeniem przed bezokolicznikiem.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-roz-dzial-10",
+      "numericId": 10,
+      "title": "Dział 10: Czytanie krytyczne, rejestr formalny i wypowiedź pisemna (Advanced Reading & Writing)",
+      "short_title": "Wypowiedź pisemna i leksyka",
+      "description": "Struktura rozprawki ('za i przeciw' oraz opiniującej), artykuł publicystyczny, list formalny, łączniki tekstu (linkers) oraz czytanie ze zrozumieniem na poziomie B2+/C1.",
+      "icon": "PenTool",
+      "color": "#EC4899",
+      "matura_points_range": "13–18 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-roz-lesson-10-1",
+          "title": "Łączniki logiczne i spójność tekstu (Discourse Markers & Linkers)",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "1) Kontrast: However, Nevertheless, Nonetheless, On the contrary, Whereas, While, In spite of / Despite (+ V-ing/noun). 2) Dodawanie: Furthermore, Moreover, In addition to (+ noun/V-ing), Not only... but also. 3) Przyczyna/Skutek: Consequently, Therefore, As a result, Due to, Owing to.",
+            "matura_context": "Klucz do uzyskania maksymalnych 4 punktów za spójność i logikę wypowiedzi (Cohesion & Coherence) w wypracowaniu.",
+            "core_formulas": "Despite / In spite of + noun/V-ing | Although / Even though + clause | Furthermore / Moreover + sentence",
+            "worked_example": "Despite the harsh weather conditions, the rescue team successfully reached the climbers.",
+            "exam_trap": "Nigdy nie mów: 'Despite of...'! Jest albo 'despite', albo 'in spite OF'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-10-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "______ the severe thunderstorm, the outdoor concert went ahead as planned.",
+              "options": [
+                "Despite",
+                "Although",
+                "Even though",
+                "In spite"
+              ],
+              "correct_answer": "Despite",
+              "explanation": "Przed frazą rzeczownikową ('the severe thunderstorm') używamy 'Despite' (lub 'In spite of'). 'Although' wymaga pełnego zdania.",
+              "hint": "Przed samym rzeczownikiem stosujemy 'Despite'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-10-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "The new policy is environmentally friendly; ______, it will significantly reduce company operational costs.",
+              "options": [
+                "moreover",
+                "however",
+                "nevertheless",
+                "whereas"
+              ],
+              "correct_answer": "moreover",
+              "explanation": "'Moreover' (ponadto / co więcej) służy dodaniu kolejnego mocnego argumentu popierającego tę samą tezę.",
+              "hint": "Łącznik służący do dodania argumentu na korzyść tezy.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-10-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "The project was delayed ______ unforeseen technical issues with the servers.",
+              "options": [
+                "owing to",
+                "because",
+                "since",
+                "as a result"
+              ],
+              "correct_answer": "owing to",
+              "explanation": "'Owing to + noun' oznacza 'z powodu / ze względu na'.",
+              "hint": "Wyrażenie oznaczające 'z powodu' przed rzeczownikiem to 'owing to'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-10-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Some employees prefer working remotely, ______ others miss the social aspect of office life.",
+              "options": [
+                "whereas",
+                "despite",
+                "furthermore",
+                "nonetheless"
+              ],
+              "correct_answer": "whereas",
+              "explanation": "'Whereas' służy do zestawienia dwóch kontrastujących ze sobą faktów ('podczas gdy').",
+              "hint": "Spójnik przeciwstawny oznaczający 'podczas gdy'.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-roz-lesson-10-2",
+          "title": "Kompozycja wypowiedzi pisemnej (Rozprawka, Artykuł, List)",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Kryteria oceny CKE (13 pkt): 1) Zgodność z poleceniem (5 pkt) - teza, dwa elementy polecenia omówione dogłębnie. 2) Spójność i logika (2 pkt). 3) Zakres środków językowych (3 pkt) - bogate słownictwo C1, inwersja, strona bierna, zaawansowane czasy. 4) Poprawność środków językowych (3 pkt). Limit słów: 200–250 słów.",
+            "matura_context": "Ostatnie i najważniejsze zadanie otwarte w arkuszu rozszerzonym.",
+            "core_formulas": "Introduction (hook + thesis) -> Body Paragraph 1 (Topic sentence + argument + example) -> Body Paragraph 2 -> Conclusion (restatement + final thought)",
+            "worked_example": "One cannot overlook the substantial benefits of adopting renewable energy sources...",
+            "exam_trap": "Unikaj potocznych skrótów (don't, can't) w rozprawce i liście formalnym — pisz pełne formy: do not, cannot!"
+          },
+          "tasks": [
+            {
+              "id": "eng-roz-10-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona Maj 2023",
+              "content": "W formalnej rozprawce maturalnej należy bezwzględnie unikać:",
+              "options": [
+                "form skróconych (np. don't, wouldn't) i języka potocznego",
+                "zdań podrzędnie złożonych",
+                "strony biernej",
+                "formalnych łączników dyskursu (np. furthermore)"
+              ],
+              "correct_answer": "form skróconych (np. don't, wouldn't) i języka potocznego",
+              "explanation": "W stylu formalnym (rozprawka, list formalny) nie stosujemy form ściągniętych ani slangu.",
+              "hint": "Styl formalny wymaga pełnych form czasowników.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-10-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Rozszerzona 2024",
+              "content": "Które z poniższych zdań stanowi najbardziej eleganckie rozpoczęcie podsumowania rozprawki (Conclusion)?",
+              "options": [
+                "Taking everything into consideration, it appears that...",
+                "At the end I want to say that...",
+                "Finally, like I wrote before...",
+                "To finish my essay, my point is..."
+              ],
+              "correct_answer": "Taking everything into consideration, it appears that...",
+              "explanation": "'Taking everything into consideration, it appears that...' to wzorcowa fraza podsumowująca na poziomie C1.",
+              "hint": "Wybierz frazę o najwyższym rejestrze formalnym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-10-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "W artykule publicystycznym (w odróżnieniu od tradycyjnej rozprawki) kluczowym elementem wstępu jest:",
+              "options": [
+                "chwytliwy tytuł oraz intrygujący wstęp przyciągający uwagę czytelnika",
+                "sztywny podział na wady i zalety bez tytułu",
+                "podpis z imieniem i nazwiskiem kandydata",
+                "użycie wyłącznie strony biernej"
+              ],
+              "correct_answer": "chwytliwy tytuł oraz intrygujący wstęp przyciągający uwagę czytelnika",
+              "explanation": "Artykuł wymaga chwytliwego tytułu (Catchy title) oraz wstępu angażującego czytelnika (retoryczne pytania, anegdota).",
+              "hint": "Artykuł musi zaciekawić czytelnika już od samego nagłówka.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-roz-10-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "W liście formalnym rozpoczynającym się od zwrotu 'Dear Sir or Madam,', poprawny zwrot pożegnalny to:",
+              "options": [
+                "Yours faithfully,",
+                "Yours sincerely,",
+                "Best wishes,",
+                "Warm regards,"
+              ],
+              "correct_answer": "Yours faithfully,",
+              "explanation": "Gdy nie znamy nazwiska adresata ('Dear Sir or Madam'), kończymy list 'Yours faithfully,'. 'Yours sincerely,' używamy, gdy znamy nazwisko (np. 'Dear Mr Smith').",
+              "hint": "Brak nazwiska we wstępie wymaga zwrotu 'Yours faithfully'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -19,6 +19,18 @@ describe('maturaPredictor', () => {
       expect(extractTopicIdFromEntityId('pol-lesson-1-4', 'jezyk-polski')).toBe('pol-dzial-1');
     });
 
+    it('correctly maps english basic and extended identifiers', () => {
+      expect(extractTopicIdFromEntityId('eng-1-1-1', 'jezyk-angielski')).toBe('eng-dzial-1');
+      expect(extractTopicIdFromEntityId('eng-dzial-4', 'jezyk-angielski')).toBe('eng-dzial-4');
+      expect(extractTopicIdFromEntityId('eng-roz-1-1-1', 'jezyk-angielski-rozszerzony')).toBe('eng-roz-dzial-1');
+      expect(extractTopicIdFromEntityId('eng-roz-dzial-3', 'jezyk-angielski-rozszerzony')).toBe('eng-roz-dzial-3');
+    });
+
+    it('correctly maps math extended identifiers', () => {
+      expect(extractTopicIdFromEntityId('mat-roz-1-1-1', 'matematyka-rozszerzona')).toBe('mat-roz-dzial-1');
+      expect(extractTopicIdFromEntityId('mat-roz-dzial-5', 'matematyka-rozszerzona')).toBe('mat-roz-dzial-5');
+    });
+
     it('returns null for unmatchable IDs', () => {
       expect(extractTopicIdFromEntityId('random-id-xyz', 'matematyka-podstawowa')).toBeNull();
       expect(extractTopicIdFromEntityId('', 'matematyka-podstawowa')).toBeNull();
@@ -86,6 +98,27 @@ describe('maturaPredictor', () => {
       expect(resultWithOverride.predictedPoints).toBeGreaterThan(resultWithoutOverride.predictedPoints);
       const dzial1 = resultWithOverride.topicBreakdown.find(t => t.topicId === 'dzial-1');
       expect(dzial1?.masteryPercent).toBe(100);
+    });
+
+    it('correctly calculates prediction for English and Math Rozszerzona', () => {
+      const engResult = calculateMaturaPrediction({
+        subjectId: 'jezyk-angielski',
+        completedTasks: ['eng-1-1-1', 'eng-1-1-2', 'eng-1-1-3', 'eng-1-1-4', 'eng-1-1-5'],
+        lessonMistakes: {},
+        userLessonsCompleted: ['eng-lesson-1-1']
+      });
+      expect(engResult.subjectId).toBe('jezyk-angielski');
+      expect(engResult.totalExamPoints).toBe(60);
+      expect(engResult.passingThresholdPoints).toBe(18);
+
+      const mathRozResult = calculateMaturaPrediction({
+        subjectId: 'matematyka-rozszerzona',
+        completedTasks: ['mat-roz-1-1-1', 'mat-roz-1-1-2', 'mat-roz-1-1-3', 'mat-roz-1-1-4', 'mat-roz-1-1-5'],
+        lessonMistakes: {},
+        userLessonsCompleted: ['mat-roz-lesson-1-1']
+      });
+      expect(mathRozResult.subjectId).toBe('matematyka-rozszerzona');
+      expect(mathRozResult.totalExamPoints).toBe(50);
     });
   });
 });

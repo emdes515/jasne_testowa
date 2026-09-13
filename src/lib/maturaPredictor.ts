@@ -13,13 +13,31 @@ export interface CalculateMaturaPredictionParams {
 }
 
 /**
- * Wyodrębnia identyfikator działu (np. "dzial-1", "pol-dzial-3") z identyfikatora zadania lub lekcji
+ * Wyodrębnia identyfikator działu (np. "dzial-1", "pol-dzial-3", "eng-dzial-1", "mat-roz-dzial-1", "eng-roz-dzial-1") z identyfikatora zadania lub lekcji
  */
 export function extractTopicIdFromEntityId(id: string, subjectId: string): string | null {
   if (!id) return null;
-  const isPol = subjectId === 'pol' || subjectId === 'jezyk-polski';
 
-  // Obsługa zadań/lekcji języka polskiego
+  // 1. Angielski Rozszerzony
+  if (subjectId === 'eng-roz' || subjectId === 'jezyk-angielski-rozszerzony' || id.includes('eng-roz')) {
+    const match = id.match(/eng[-_]roz[-_]?(?:dzial|task|lesson)?[-_]?(\d+)/i);
+    if (match) return `eng-roz-dzial-${match[1]}`;
+  }
+
+  // 2. Matematyka Rozszerzona
+  if (subjectId === 'math-roz' || subjectId === 'matematyka-rozszerzona' || id.includes('mat-roz') || id.includes('math-roz')) {
+    const match = id.match(/(?:mat|math)[-_]roz[-_]?(?:dzial|task|lesson)?[-_]?(\d+)/i);
+    if (match) return `mat-roz-dzial-${match[1]}`;
+  }
+
+  // 3. Język Angielski Podstawowy
+  if (subjectId === 'eng' || subjectId === 'jezyk-angielski' || id.includes('eng-') || id.includes('eng_')) {
+    const match = id.match(/eng[-_]?(?:dzial|task|lesson)?[-_]?(\d+)/i);
+    if (match) return `eng-dzial-${match[1]}`;
+  }
+
+  // 4. Obsługa zadań/lekcji języka polskiego
+  const isPol = subjectId === 'pol' || subjectId === 'jezyk-polski';
   if (isPol || id.includes('pol-')) {
     const polMatch = id.match(/pol[-_]?(?:dzial|task|lesson)[-_]?(\d+)/i) || id.match(/pol[-_]?(\d+)/i);
     if (polMatch) {
@@ -27,14 +45,7 @@ export function extractTopicIdFromEntityId(id: string, subjectId: string): strin
     }
   }
 
-  // Obsługa matematyki:
-  // Wzorce:
-  // "task-1-2-3" -> dzial-1
-  // "lesson-1-2" -> dzial-1
-  // "dzial-1" -> dzial-1
-  // "THEORY-lesson-1-2" -> dzial-1
-  // "LESSON-1-2" -> dzial-1
-  // "1.2" lub "1-2" -> dzial-1
+  // 5. Obsługa matematyki podstawowej:
   const directDzialMatch = id.match(/dzial[-_]?(\d+)/i);
   if (directDzialMatch) {
     return `dzial-${directDzialMatch[1]}`;
@@ -62,9 +73,13 @@ export function extractTopicIdFromEntityId(id: string, subjectId: string): strin
 }
 
 /**
- * Szacuje liczbę lekcji w danym dziale (Dział 1 ma 15 lekcji, pozostałe po ok. 10-14)
+ * Szacuje liczbę lekcji w danym dziale w zależności od przedmiotu
  */
 function getExpectedLessonsForTopic(topicId: string): number {
+  if (topicId.startsWith('pol-')) return 6;
+  if (topicId.startsWith('eng-roz-')) return 2;
+  if (topicId.startsWith('eng-')) return 3;
+  if (topicId.startsWith('mat-roz-')) return 2;
   if (topicId === 'dzial-1') return 15;
   if (topicId === 'dzial-3' || topicId === 'dzial-6' || topicId === 'dzial-9') return 14;
   return 11;

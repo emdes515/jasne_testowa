@@ -1,0 +1,3386 @@
+{
+  "subject": {
+    "id": "jezyk-angielski",
+    "key": "eng",
+    "name": "Język Angielski",
+    "short_name": "Angielski",
+    "title": "Język Angielski (Formuła 2023)",
+    "level": "Nowa Formuła 2023 (Poziom Podstawowy • B1/B2)",
+    "icon": "Globe",
+    "color": "#10B981",
+    "total_exam_points": 60,
+    "passing_threshold_points": 18
+  },
+  "topics": [
+    {
+      "id": "eng-dzial-1",
+      "numericId": 1,
+      "title": "Dział 1: Czasy gramatyczne i aspekty (Tenses & Aspects)",
+      "short_title": "Czasy gramatyczne",
+      "description": "Kluczowe czasy teraźniejsze, przeszłe i przyszłe wymagane na maturze podstawowej: Present Simple/Cont., Past Simple/Cont., Present Perfect oraz formy przyszłe.",
+      "icon": "Clock",
+      "color": "#10B981",
+      "matura_points_range": "4–7 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-lesson-1-1",
+          "title": "Present Simple vs Present Continuous (Czynności stałe vs chwilowe)",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Present Simple wyraża rutyny, nawyki i prawdy ogólne (always, usually, every day). Present Continuous opisuje czynności trwające w tej chwili lub tymczasowe (now, at the moment, this week).",
+            "matura_context": "Pojawia się w zadaniach wielokrotnego wyboru, transformacjach oraz w e-mailu przy opisie codzienności.",
+            "core_formulas": "Present Simple: S + V(s/es) | Present Continuous: S + am/is/are + V-ing",
+            "worked_example": "She usually drives to work, but this week she is taking the tram.",
+            "exam_trap": "Czasowniki statyczne (know, believe, understand, hate, love, want) nie występują w czasie Continuous!"
+          },
+          "tasks": [
+            {
+              "id": "eng-1-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Listen! Somebody ______ the violin in the hall.",
+              "options": [
+                "is playing",
+                "plays",
+                "played",
+                "has played"
+              ],
+              "correct_answer": "is playing",
+              "explanation": "'Listen!' wskazuje na czynność dziejącą się dokładnie w tej chwili (Present Continuous).",
+              "hint": "Czynność odbywa się w momencie mówienia.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "I ______ what you are saying, but I still have some doubts.",
+              "options": [
+                "understand",
+                "am understanding",
+                "understands",
+                "have understood"
+              ],
+              "correct_answer": "understand",
+              "explanation": "'Understand' to czasownik stanu, który nie przyjmuje formy -ing.",
+              "hint": "Czasownik wyrażający stan umysłu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-1-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2023",
+              "content": "The library ______ at 8:00 p.m. every evening.",
+              "options": [
+                "closes",
+                "is closing",
+                "close",
+                "will close"
+              ],
+              "correct_answer": "closes",
+              "explanation": "Rozkłady, godziny otwarcia i stałe harmonogramy wyrażamy w Present Simple w 3. os. lp. (closes).",
+              "hint": "Oficjalny harmonogram.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Zdanie 'He is wanting a cup of coffee right now' jest gramatycznie poprawne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Czasownik 'want' to czasownik stanu; poprawna forma to 'He wants'.",
+              "hint": "Czy 'want' może mieć końcówkę -ing?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-1-5",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "My father usually ______ (drink) black coffee, but today he is drinking green tea.",
+              "options": [
+                "drinks",
+                "is drinking",
+                "drank",
+                "has drunk"
+              ],
+              "correct_answer": "drinks",
+              "explanation": "'Usually' wskazuje na stałą rutynę w Present Simple (drinks dla he).",
+              "hint": "3. osoba liczby pojedynczej dla nawyku.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-1-6",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "Look! The bus (come) ______. Hurry up! Wpisz poprawną formę:",
+              "correct_answer": "is coming",
+              "explanation": "Czynność dziejąca się w tej chwili ('Look!') -> is coming.",
+              "hint": "Forma czasu Present Continuous dla 'the bus'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Sierpień 2023",
+              "content": "Why ______ your winter coat today? It is quite warm outside.",
+              "options": [
+                "are you wearing",
+                "do you wear",
+                "you wear",
+                "have you worn"
+              ],
+              "correct_answer": "are you wearing",
+              "explanation": "Sytuacja tymczasowa dotycząca dzisiejszego dnia ('today') -> are you wearing.",
+              "hint": "Pytanie o sytuację dzisiejszą, tymczasową.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna Grudzień 2023",
+              "content": "Water ______ at 100 degrees Celsius.",
+              "options": [
+                "boils",
+                "is boiling",
+                "boil",
+                "boiled"
+              ],
+              "correct_answer": "boils",
+              "explanation": "Prawa fizyki i natury wyrażamy w Present Simple (boils).",
+              "hint": "Niezmienne prawo przyrody.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-1-2",
+          "title": "Past Simple vs Past Continuous & used to",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Past Simple opisuje dokonane czynności w określonym momencie przeszłości. Past Continuous to tło zdarzeń (while, when). 'Used to' to dawny, nieaktualny nawyk.",
+            "matura_context": "Kluczowe w opowiadaniach maturalnych i zadaniach ze słuchu.",
+            "core_formulas": "was/were + V-ing (tło) vs V-ed (nagła czynność) | used to + bezokolicznik",
+            "worked_example": "While I was studying, the phone rang.",
+            "exam_trap": "Po 'did' w pytaniach i przeczeniach used to traci końcówkę -d ('did you use to')."
+          },
+          "tasks": [
+            {
+              "id": "eng-1-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "We ______ down the street when a black cat crossed our path.",
+              "options": [
+                "were walking",
+                "walked",
+                "have walked",
+                "had walked"
+              ],
+              "correct_answer": "were walking",
+              "explanation": "Dłuższa czynność w tle przerwana przez nagłe zdarzenie -> Past Continuous.",
+              "hint": "Tło trwające w przeszłości.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "My grandfather ______ smoke twenty cigarettes a day, but he quit five years ago.",
+              "options": [
+                "used to",
+                "was used to",
+                "use to",
+                "is used to"
+              ],
+              "correct_answer": "used to",
+              "explanation": "'Used to' wyraża dawny, porzucony nawyk w przeszłości.",
+              "hint": "Dawny nawyk, który już nie istnieje.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-2-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "What (you / do) ______ yesterday at 6 p.m.? Wpisz poprawną formę pytania:",
+              "correct_answer": "were you doing",
+              "explanation": "Pytanie o konkretny punkt czasowy w trakcie trwania czynności w przeszłości -> were you doing.",
+              "hint": "Pytanie w Past Continuous dla 'you'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "Did she ______ play the piano when she was younger?",
+              "options": [
+                "use to",
+                "used to",
+                "using to",
+                "uses to"
+              ],
+              "correct_answer": "use to",
+              "explanation": "Po operatorze 'Did' czasownik wraca do formy podstawowej bez 'd': use to.",
+              "hint": "Pamiętaj o braku końcówki -d po 'Did'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-2-5",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "While Mark was doing his homework, his sister ______ (listen) to loud music.",
+              "options": [
+                "was listening",
+                "listened",
+                "has listened",
+                "had listened"
+              ],
+              "correct_answer": "was listening",
+              "explanation": "Dwie czynności trwające równolegle w przeszłości wymagają Past Continuous.",
+              "hint": "Czynności działy się jednocześnie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-2-6",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Zadanie Maturalne",
+              "content": "W zdaniu 'I met my best friend ten years ago' użycie czasu Past Simple jest poprawne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Określenie 'ago' zawsze łączy się z czasem Past Simple.",
+              "hint": "Zwróć uwagę na słowo 'ago'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "I ______ my ankle while I was playing football.",
+              "options": [
+                "sprained",
+                "was spraining",
+                "have sprained",
+                "had sprained"
+              ],
+              "correct_answer": "sprained",
+              "explanation": "Krótkie, nagłe zdarzenie przerywające czynność w tle -> Past Simple: sprained.",
+              "hint": "Krótka, punktowa czynność.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2024",
+              "content": "They didn't ______ live in a flat, they had a big house with a garden.",
+              "options": [
+                "use to",
+                "used to",
+                "using",
+                "uses to"
+              ],
+              "correct_answer": "use to",
+              "explanation": "Przeczenie 'didn't use to' bez litery 'd'.",
+              "hint": "Brak litery d po didn't.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-1-3",
+          "title": "Present Perfect vs Past Simple (For, Since, Just, Already, Yet)",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Past Simple dotyczy czasu zakończonego (yesterday, in 2021). Present Perfect dotyczy przeszłości mającej bezpośredni wpływ na teraźniejszość lub okresu trwającego nadal.",
+            "matura_context": "Stały faworyt w zadaniach wielokrotnego wyboru i parafrazy zdań (since/for).",
+            "core_formulas": "have/has + V3/ed | since (punkt startu) | for (długość trwania)",
+            "worked_example": "I haven't seen Anna since Monday. (od poniedziałku do teraz)",
+            "exam_trap": "Nigdy nie używaj Present Perfect z konkretnym określeniem minionego czasu (yesterday, two days ago)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-1-3-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "She has lived in Warsaw ______ five years now.",
+              "options": [
+                "for",
+                "since",
+                "from",
+                "during"
+              ],
+              "correct_answer": "for",
+              "explanation": "Dla przedziału czasu ('five years') używamy 'for'.",
+              "hint": "Przedział czasu trwania.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-3-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Have you seen Peter ______? He hasn't answered my messages.",
+              "options": [
+                "lately",
+                "yesterday",
+                "ago",
+                "last week"
+              ],
+              "correct_answer": "lately",
+              "explanation": "'Lately' (ostatnio) łączy się z czasem Present Perfect.",
+              "hint": "Słówko oznaczające 'ostatnio'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-3-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "I (never / be) ______ to New York before. Wpisz poprawną formę:",
+              "correct_answer": "have never been",
+              "explanation": "Doświadczenie życiowe w Present Perfect: have never been.",
+              "hint": "Forma Present Perfect dla I + never + be.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-3-4",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Informator",
+              "content": "The plane ______ (land) ten minutes ago.",
+              "options": [
+                "landed",
+                "has landed",
+                "was landing",
+                "had landed"
+              ],
+              "correct_answer": "landed",
+              "explanation": "Słowo 'ago' wymaga czasu Past Simple: landed.",
+              "hint": "Zwróć uwagę na słowo 'ago'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-3-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2023",
+              "content": "I haven't eaten anything ______ breakfast this morning.",
+              "options": [
+                "since",
+                "for",
+                "from",
+                "at"
+              ],
+              "correct_answer": "since",
+              "explanation": "'Breakfast' to konkretny punkt startowy w czasie -> since.",
+              "hint": "Punkt w czasie jako początek trwania.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-3-6",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Zdanie 'Did you finish your project yet?' jest standardowym pytaniem maturalnym CKE.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Słowo 'yet' w standardzie brytyjskim CKE łączy się z Present Perfect: 'Have you finished your project yet?'.",
+              "hint": "Z jakim czasem standardowo łączy się 'yet'?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-3-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "I'm sorry, Mr. Brown isn't in his office. He ______ out.",
+              "options": [
+                "has just gone",
+                "just went",
+                "has just been",
+                "goes"
+              ],
+              "correct_answer": "has just gone",
+              "explanation": "Wyszedł przed chwilą i nadal go nie ma -> has gone out z 'just'.",
+              "hint": "Nie ma go na miejscu, skutek w teraźniejszości.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-3-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna Grudzień 2023",
+              "content": "Where ______ you buy that stylish jacket yesterday?",
+              "options": [
+                "did",
+                "have",
+                "were",
+                "had"
+              ],
+              "correct_answer": "did",
+              "explanation": "Pytanie o wczoraj ('yesterday') w Past Simple wymaga operatora 'did'.",
+              "hint": "Pytanie o czynność wczorajszą.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-1-4",
+          "title": "Wyrażanie przyszłości: will, be going to & Present Continuous",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "will = spontaniczne decyzje, obietnice; be going to = intencje, dowody; Present Continuous = ustalone spotkania. W zdaniach czasowych po when, as soon as, before używamy Present Simple.",
+            "matura_context": "Kluczowe w redagowaniu e-maili i zaproszeń.",
+            "core_formulas": "will + V (decyzja) | going to + V (intencja) | as soon as + Present Simple",
+            "worked_example": "I will text you as soon as I arrive.",
+            "exam_trap": "Nigdy nie stawiaj 'will' bezpośrednio po spójnikach czasu (when, as soon as, unless, if)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-1-4-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Don't carry that heavy box alone! I ______ you.",
+              "options": [
+                "will help",
+                "am helping",
+                "am going to help",
+                "help"
+              ],
+              "correct_answer": "will help",
+              "explanation": "Spontaniczna oferta pomocy w chwili mówienia -> will help.",
+              "hint": "Spontaniczna pomoc zaoferowana w tej chwili.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-4-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Look at the dark sky! It ______ snow soon.",
+              "options": [
+                "is going to",
+                "will",
+                "is snowing",
+                "snows"
+              ],
+              "correct_answer": "is going to",
+              "explanation": "Przewidywanie oparte na widocznym dowodzie na niebie -> is going to.",
+              "hint": "Mamy widoczny dowód zjawiska.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-4-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "We will leave the house when the rain (stop) ______. Wpisz poprawną formę czasownika:",
+              "correct_answer": "stops",
+              "explanation": "Zdanie czasowe po 'when' wymaga czasu Present Simple (the rain stops).",
+              "hint": "Present Simple w 3. os. lp. po 'when'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-4-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "We ______ married on Saturday, 15th July. Everything has been arranged.",
+              "options": [
+                "are getting",
+                "will get",
+                "get",
+                "got"
+              ],
+              "correct_answer": "are getting",
+              "explanation": "Wszystko ustalone i zorganizowane -> Present Continuous (are getting).",
+              "hint": "W 100% zaaranżowane wydarzenie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-4-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Zdanie 'I will text you when I will reach the train station' jest poprawne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Po spójniku 'when' nie wolno stawiać 'will'. Poprawnie: 'when I reach...'.",
+              "hint": "Czy 'will' może stać po 'when'?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-4-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "I promise I ______ (not / be) late for the interview tomorrow.",
+              "options": [
+                "won't be",
+                "am not being",
+                "am not going to be",
+                "am not"
+              ],
+              "correct_answer": "won't be",
+              "explanation": "Obietnice ze słowem 'promise' wyrażamy z 'won't'.",
+              "hint": "Obietnica.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-4-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "What are you doing this evening? - Nothing special. I think I ______ at home.",
+              "options": [
+                "will stay",
+                "am staying",
+                "am going to stay",
+                "stay"
+              ],
+              "correct_answer": "will stay",
+              "explanation": "Po zwrocie 'I think' wyrażającym przypuszczenie stosujemy 'will stay'.",
+              "hint": "Wyrażenie 'I think' sugeruje will.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-1-4-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Before you leave, you ______ turn off all the lights.",
+              "options": [
+                "must",
+                "will",
+                "going to",
+                "are"
+              ],
+              "correct_answer": "must",
+              "explanation": "Nakaz/obowiązek wyłączenia świateł -> must.",
+              "hint": "Obowiązek wyłączenia świateł.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-2",
+      "numericId": 2,
+      "title": "Dział 2: Czasowniki modalne, strona bierna i okresy warunkowe",
+      "short_title": "Modale, Passive & Conditionals",
+      "description": "Filary gramatyczne matury: modalne (nakaz, zakaz, brak konieczności), strona bierna (Passive Voice) oraz okresy warunkowe 0, 1 i 2.",
+      "icon": "Shield",
+      "color": "#059669",
+      "matura_points_range": "5–8 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-lesson-2-1",
+          "title": "Czasowniki modalne: must, have to, mustn't, don't have to, should",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "must = nakaz wewnętrzny; have to = obowiązek zewnętrzny; mustn't = BEZWZGLĘDNY ZAKAZ; don't have to / needn't = brak konieczności (nie musisz); should = dobra rada.",
+            "matura_context": "Kluczowa pułapka maturalna to mylenie 'mustn't' (nie wolno!) z 'don't have to' (nie musisz).",
+            "core_formulas": "mustn't = zakaz | don't have to = brak obowiązku | should = rada",
+            "worked_example": "You don't have to pay for parking on Sundays. It's completely free.",
+            "exam_trap": "Formą przeszłą dla 'must' i 'have to' jest wyłącznie 'had to'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-2-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "You ______ touch the paintings in the museum! It's strictly forbidden.",
+              "options": [
+                "mustn't",
+                "don't have to",
+                "needn't",
+                "shouldn't"
+              ],
+              "correct_answer": "mustn't",
+              "explanation": "'Strictly forbidden' oznacza bezwzględny zakaz -> mustn't.",
+              "hint": "Całkowity zakaz.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Tomorrow is a public holiday, so we ______ go to school.",
+              "options": [
+                "don't have to",
+                "mustn't",
+                "can't",
+                "shouldn't"
+              ],
+              "correct_answer": "don't have to",
+              "explanation": "Brak konieczności (dzień wolny) -> don't have to.",
+              "hint": "Nie musimy, bo jest święto.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "It is not necessary for you to bring your own laptop. (HAVE) -> You do not ______ bring your own laptop. Wpisz brakujące słowo:",
+              "correct_answer": "have to",
+              "explanation": "'It is not necessary' = do not have to.",
+              "hint": "Zwrot oznaczający brak konieczności.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "You look completely exhausted. You ______ go to bed early tonight.",
+              "options": [
+                "should",
+                "mustn't",
+                "can't",
+                "needn't"
+              ],
+              "correct_answer": "should",
+              "explanation": "Dobra rada i życzliwa sugestia -> should.",
+              "hint": "Udzielenie rady.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-1-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Zadanie Maturalne",
+              "content": "Zwroty 'You needn't pay' oraz 'You don't have to pay' mają to samo znaczenie.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Oba zwroty oznaczają brak obowiązku zapłaty.",
+              "hint": "Porównaj znaczenie obu konstrukcji.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Yesterday I ______ stay at work until 8 p.m. because we had an urgent deadline.",
+              "options": [
+                "had to",
+                "must",
+                "could",
+                "should"
+              ],
+              "correct_answer": "had to",
+              "explanation": "Przeszłość dla przymusu/obowiązku to 'had to'.",
+              "hint": "Przeszła forma dla must/have to.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-1-7",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "Passengers ______ (not / allow) to use mobile phones during take-off.",
+              "options": [
+                "are not allowed",
+                "must not allow",
+                "do not allow",
+                "cannot allow"
+              ],
+              "correct_answer": "are not allowed",
+              "explanation": "Brak zezwolenia w stronie biernej: are not allowed to.",
+              "hint": "Brak zezwolenia.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2023",
+              "content": "______ I borrow your pen for a second, please?",
+              "options": [
+                "May",
+                "Must",
+                "Should",
+                "Need"
+              ],
+              "correct_answer": "May",
+              "explanation": "Uprzejme pytanie o pozwolenie -> May I borrow...?",
+              "hint": "Uprzejma prośba o pozwolenie.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-2-2",
+          "title": "Strona bierna (Passive Voice) w czasach maturalnych",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Strona bierna skupia się na obiekcie i rezultacie czynności. Tworzymy ją przez odpowiednią formę 'be' + III formę czasownika (Past Participle).",
+            "matura_context": "Stały punkt transformacji zdań i uzupełniania luk.",
+            "core_formulas": "Present: is/are + V3 | Past: was/were + V3 | Future: will be + V3",
+            "worked_example": "This castle was built in the 14th century.",
+            "exam_trap": "Pamiętaj o dopasowaniu liczby pojedynczej/mnogiej czasownika 'be' do NOWEGO podmiotu!"
+          },
+          "tasks": [
+            {
+              "id": "eng-2-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "This famous bridge ______ in 1894.",
+              "options": [
+                "was built",
+                "built",
+                "is built",
+                "has built"
+              ],
+              "correct_answer": "was built",
+              "explanation": "Most został wybudowany w przeszłości (1894) -> was built.",
+              "hint": "Podmiot nieożywiony w konkretnym roku z przeszłości.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-2-2",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Transformacje CKE",
+              "content": "They produce high-quality cars in this factory. -> High-quality cars (produce) ______ in this factory. Wpisz poprawną formę:",
+              "correct_answer": "are produced",
+              "explanation": "Strona bierna Present Simple dla l. mnogiej ('cars'): are produced.",
+              "hint": "Liczba mnoga czasownika 'to be' w czasie teraźniejszym + III forma.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2023",
+              "content": "English ______ in many countries all around the globe.",
+              "options": [
+                "is spoken",
+                "speaks",
+                "was spoken",
+                "is speaking"
+              ],
+              "correct_answer": "is spoken",
+              "explanation": "Powszechny fakt teraźniejszy -> is spoken.",
+              "hint": "Czynność powszechna i trwała.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "The Harry Potter books ______ by J.K. Rowling.",
+              "options": [
+                "were written",
+                "wrote",
+                "was written",
+                "are writing"
+              ],
+              "correct_answer": "were written",
+              "explanation": "Liczba mnoga 'books' w czasie przeszłym -> were written.",
+              "hint": "Zwróć uwagę na liczbę mnogą 'books'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Informator",
+              "content": "Zdanie: 'The suspect was arrested by the police last night' jest poprawne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Schemat: podmiot + was + arrested + by + wykonawca.",
+              "hint": "Sprawdź strukturę was + V3.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-2-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Matura Sierpień 2024",
+              "content": "A new modern shopping center ______ (open) in our town next month.",
+              "options": [
+                "will be opened",
+                "is opened",
+                "was opened",
+                "has opened"
+              ],
+              "correct_answer": "will be opened",
+              "explanation": "Przyszłość w stronie biernej ('next month') -> will be opened.",
+              "hint": "Określenie 'next month' wskazuje na przyszłość.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-2-7",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Parafrazy",
+              "content": "Someone stole my wallet on the bus. -> My wallet (steal) ______ on the bus. Wpisz poprawną formę:",
+              "correct_answer": "was stolen",
+              "explanation": "Past Simple Passive: was + stolen.",
+              "hint": "Czasownik 'steal' jest nieregularny: steal - stole - stolen.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2023",
+              "content": "The invitations ______ to all guests yesterday afternoon.",
+              "options": [
+                "were sent",
+                "was sent",
+                "sent",
+                "are sent"
+              ],
+              "correct_answer": "were sent",
+              "explanation": "Liczba mnoga 'invitations' oraz czas przeszły 'yesterday' dają 'were sent'.",
+              "hint": "Zwróć uwagę na podmiot w liczbie mnogiej.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-2-3",
+          "title": "Okresy warunkowe: Zero, First & Second Conditional",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "0: prawdy ogólne (If + Pres. Simp., Pres. Simp.). 1st: realna przyszłość (If + Pres. Simp., will + V). 2nd: nierealne gdybanie w teraźniejszości (If + Past Simp., would + V).",
+            "matura_context": "Kluczowy pewniak maturalny CKE, testowany w niemal każdym arkuszu!",
+            "core_formulas": "1st: If + Present, will + V | 2nd: If + Past, would + V | If I were you",
+            "worked_example": "If you don't hurry, you will miss the flight. | If I had more money, I would buy that camera.",
+            "exam_trap": "Nigdy nie wstawiaj 'will' ani 'would' bezpośrednio po spójniku 'if'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-2-3-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "If you heat ice, it ______ into water.",
+              "options": [
+                "melts",
+                "will melt",
+                "would melt",
+                "melted"
+              ],
+              "correct_answer": "melts",
+              "explanation": "Prawa fizyki (Zero Conditional) -> melts.",
+              "hint": "Prawa fizyki – zerowy okres warunkowy.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-3-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "If the weather is fine tomorrow, we ______ for a picnic in the park.",
+              "options": [
+                "will go",
+                "would go",
+                "went",
+                "go"
+              ],
+              "correct_answer": "will go",
+              "explanation": "Realna przyszłość (First Conditional) -> will go.",
+              "hint": "Pierwszy okres warunkowy odnoszący się do realnego jutra.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-3-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Czerwiec 2024",
+              "content": "If I ______ more free time, I would travel around the world.",
+              "options": [
+                "had",
+                "have",
+                "would have",
+                "will have"
+              ],
+              "correct_answer": "had",
+              "explanation": "Second Conditional: po 'if' stosujemy Past Simple ('had').",
+              "hint": "Spójrz na 'would travel' w zdaniu głównym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-3-4",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "If I (be) ______ you, I would consult a doctor immediately. Wpisz poprawną formę:",
+              "correct_answer": "were",
+              "explanation": "W radach w II okresie warunkowym klasyczną formą jest 'were'.",
+              "hint": "Klasyczny zwrot 'Gdybym był na twoim miejscu...'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-3-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Zdanie: 'If I will win the lottery, I will buy a sports car' jest w pełni poprawne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Po spójniku 'If' nie wolno stawiać 'will'.",
+              "hint": "Czy po 'if' może stać will?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-3-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Unless you ______ (study) hard, you won't pass your final exams.",
+              "options": [
+                "study",
+                "don't study",
+                "will study",
+                "studied"
+              ],
+              "correct_answer": "study",
+              "explanation": "'Unless' zawiera w sobie zaprzeczenie (jeśli nie), stąd czasownik w formie twierdzącej: study.",
+              "hint": "Słowo 'unless' samo w sobie jest przeczeniem.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-3-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Sierpień 2023",
+              "content": "What would you do if you ______ a wallet full of money on the street?",
+              "options": [
+                "found",
+                "find",
+                "will find",
+                "have found"
+              ],
+              "correct_answer": "found",
+              "explanation": "Second Conditional ('What would you do') wymaga Past Simple po 'if': found.",
+              "hint": "Druga forma czasownika 'find'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-2-3-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator Maturalny",
+              "content": "She will be very disappointed if you ______ to her birthday party.",
+              "options": [
+                "don't come",
+                "won't come",
+                "didn't come",
+                "wouldn't come"
+              ],
+              "correct_answer": "don't come",
+              "explanation": "1st conditional: Present Simple po 'if' w przeczeniu -> don't come.",
+              "hint": "Przeczenie w Present Simple po 'if'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-3",
+      "numericId": 3,
+      "title": "Dział 3: Mowa zależna, pytania, zaimki i spójniki",
+      "short_title": "Mowa zależna i Składnia",
+      "description": "Zasada cofania czasów w mowie zależnej (Reported Speech), zaimki względne (who, which, that, whose), pytania pośrednie oraz Question Tags.",
+      "icon": "MessageSquare",
+      "color": "#3B82F6",
+      "matura_points_range": "3–6 pkt",
+      "importance": "HIGH",
+      "lessons": [
+        {
+          "id": "eng-lesson-3-1",
+          "title": "Mowa zależna (Reported Speech) – twierdzenia i pytania",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Gdy czasownik wprowadzający jest w czasie przeszłym (said, told), następuje cofnięcie czasu (Backshift of tenses): Present -> Past, Past Simple -> Past Perfect, will -> would, can -> could. Szyk pytania staje się szykiem zdania twierdzącego!",
+            "matura_context": "Kluczowe w transformacjach maturalnych CKE ze słowem kluczem.",
+            "core_formulas": "said (that) + zdanie | told me (that) | asked if/whether + szyk twierdzący",
+            "worked_example": "'Where do you live?' -> He asked me where I lived.",
+            "exam_trap": "Po 'told' ZAWSZE musi być odbiorca (told me, told him), a po 'said' nie stawia się zaimka bez przyimka 'to' (said that, said to me)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-3-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "\"I am working on a new project,\" said Tom. -> Tom said that he ______ on a new project.",
+              "options": [
+                "was working",
+                "is working",
+                "works",
+                "has worked"
+              ],
+              "correct_answer": "was working",
+              "explanation": "Cofnięcie czasu: Present Continuous ('am working') cofa się do Past Continuous ('was working').",
+              "hint": "Cofnij czas Present Continuous o jeden stopień w przeszłość.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "She asked me where ______ my summer holidays.",
+              "options": [
+                "I had spent",
+                "had I spent",
+                "did I spend",
+                "I spend"
+              ],
+              "correct_answer": "I had spent",
+              "explanation": "W pytaniu pośrednim w mowie zależnej obowiązuje szyk zdania twierdzącego (podmiot przed orzeczeniem) i cofnięcie czasu: 'I had spent'.",
+              "hint": "Szyk twierdzący: najpierw podmiot 'I', potem orzeczenie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "\"I will call you tomorrow,\" said Mary. -> Mary said that she (call) ______ me the next day. Wpisz poprawną formę:",
+              "correct_answer": "would call",
+              "explanation": "W mowie zależnej 'will' zamienia się na 'would': would call.",
+              "hint": "Forma przeszła od czasownika modalnego 'will'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2023",
+              "content": "The teacher told ______ silent during the test.",
+              "options": [
+                "us to be",
+                "us being",
+                "to us be",
+                "that we be"
+              ],
+              "correct_answer": "us to be",
+              "explanation": "Polecenie w mowie zależnej: tell + odbiorca + to + bezokolicznik (told us to be).",
+              "hint": "Konstrukcja tell someone to do something.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-1-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Informator",
+              "content": "Zdanie: 'He told that he was tired' jest poprawne gramatycznie.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Po 'told' musi wystąpić osoba (np. He told me that...). Samo 'He said that...' byłoby poprawne.",
+              "hint": "Czy po 'told' może zabraknąć odbiorcy?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna Grudzień 2023",
+              "content": "Anna asked me ______ I wanted to go to the cinema with her.",
+              "options": [
+                "if",
+                "that",
+                "what",
+                "did"
+              ],
+              "correct_answer": "if",
+              "explanation": "Pytania o rozstrzygnięcie (tak/nie) wprowadzamy słowem 'if' lub 'whether'.",
+              "hint": "Słówko oznaczające 'czy' w pytaniu zależnym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-1-7",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Matura Sierpień 2024",
+              "content": "\"I bought this car last week,\" he said. -> He said that he had bought that car the ______ (week).",
+              "options": [
+                "previous week",
+                "last week",
+                "next week",
+                "following week"
+              ],
+              "correct_answer": "previous week",
+              "explanation": "'Last week' w mowie zależnej zamienia się na 'the previous week' lub 'the week before'.",
+              "hint": "Zamiana określeń czasu: last week -> the previous week.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Mark asked his friend: \"Can you lend me your dictionary?\" -> Mark asked his friend if he ______ lend him his dictionary.",
+              "options": [
+                "could",
+                "can",
+                "will",
+                "would can"
+              ],
+              "correct_answer": "could",
+              "explanation": "'Can' w mowie zależnej cofa się do 'could'.",
+              "hint": "Przeszła forma czasownika 'can'.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-3-2",
+          "title": "Zaimki względne i zdania przydawkowe (who, which, that, whose, where)",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "who = osoby; which = rzeczy/zwierzęta; that = osoby i rzeczy (w zdaniach definiujących); whose = przynależność (czyj/którego); where = miejsca.",
+            "matura_context": "Klucz do łączenia zdań pojedynczych w zdania złożone w liście oraz w zadaniach zamkniętych.",
+            "core_formulas": "person + who/that | thing + which/that | person/thing + whose + noun | place + where",
+            "worked_example": "That is the boy whose dog won the competition.",
+            "exam_trap": "W zdaniach ze przecinkami (Non-defining relative clauses) NIGDY nie używamy 'that', lecz 'which' lub 'who'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-3-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "This is the student ______ won the international science competition.",
+              "options": [
+                "who",
+                "which",
+                "whose",
+                "where"
+              ],
+              "correct_answer": "who",
+              "explanation": "Odnosimy się do osoby ('the student') -> zaimek 'who'.",
+              "hint": "Zaimek odnoszący się do osoby.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "I met a girl ______ brother is a professional football player.",
+              "options": [
+                "whose",
+                "who",
+                "which",
+                "whom"
+              ],
+              "correct_answer": "whose",
+              "explanation": "Wyrażamy przynależność (dziewczyna, której brat...) -> 'whose'.",
+              "hint": "Zaimek dzierżawczy (której brat).",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-2-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "The cafe (where / which) ______ we used to drink hot chocolate has closed down. Wpisz właściwe słowo:",
+              "correct_answer": "where",
+              "explanation": "Odnosimy się do miejsca ('The cafe'), w którym piliśmy czekoladę -> 'where'.",
+              "hint": "Zaimek odnoszący się do miejsca czynności.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "The laptop ______ I bought yesterday is extremely fast and lightweight.",
+              "options": [
+                "which",
+                "who",
+                "whose",
+                "where"
+              ],
+              "correct_answer": "which",
+              "explanation": "Odnosimy się do rzeczy nieożywionej ('the laptop') -> 'which' (lub that).",
+              "hint": "Zaimek dla przedmiotu nieożywionego.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "W zdaniu 'My brother, that lives in Canada, is a software engineer' użycie 'that' jest poprawne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. W zdaniach wydzielonych przecinkami nie wolno użyć 'that'; poprawnie: 'who lives in Canada'.",
+              "hint": "Czy 'that' może występować po przecinku?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-2-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Informator",
+              "content": "The hotel ______ we stayed last summer was right next to the beach.",
+              "options": [
+                "where",
+                "which",
+                "that",
+                "whose"
+              ],
+              "correct_answer": "where",
+              "explanation": "Określenie miejsca, w którym mieszkaliśmy -> where.",
+              "hint": "Miejsce pobytu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2023",
+              "content": "The man ______ car was damaged in the accident called the police.",
+              "options": [
+                "whose",
+                "who",
+                "which",
+                "that"
+              ],
+              "correct_answer": "whose",
+              "explanation": "Mężczyzna, którego samochód uległ uszkodzeniu -> whose.",
+              "hint": "Przynależność samochodu do mężczyzny.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-3-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Is there anything ______ I can do to help you?",
+              "options": [
+                "that",
+                "who",
+                "where",
+                "whose"
+              ],
+              "correct_answer": "that",
+              "explanation": "Po zaimkach nieokreślonych (anything, nothing, all) preferowanym zaimkiem jest 'that'.",
+              "hint": "Zaimek po słowie 'anything'.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-4",
+      "numericId": 4,
+      "title": "Dział 4: Use of English – Parafrazy i transformacje ze słowem kluczem",
+      "short_title": "Parafrazy i Transformacje",
+      "description": "Trening mistrzowski zadań otwartych CKE: parafrazy od 2 do 4 wyrazów, mini-dialogi reakcji językowych oraz uzupełnianie zdań z zachowaniem sensu.",
+      "icon": "Repeat",
+      "color": "#8B5CF6",
+      "matura_points_range": "6–10 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-lesson-4-1",
+          "title": "Transformacje maturalne CKE – konstrukcje kluczowe",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "W zadaniach na transformację należy uzupełnić lukę tak, aby zachować sens zdania wyjściowego, używając od 2 do 4 słów (w tym podanego słowa-klucza bez zmian).",
+            "matura_context": "Kluczowe zadanie otwarte na maturze podstawowej (Zadanie 11 i 12 za 3–4 punkty).",
+            "core_formulas": "too + adj + to V = not + adj + enough to V | so + adj + that = such a + adj + noun + that",
+            "worked_example": "The coffee was too hot to drink. (ENOUGH) -> The coffee was not cool enough to drink.",
+            "exam_trap": "Nie zmieniaj formy podanego słowa klucza! Jeśli podano 'SUCH', nie możesz wpisać 'so'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-4-1-1",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "This suitcase is too heavy for me to lift. (ENOUGH) -> This suitcase is ______ for me to lift. Wpisz brakujące słowa (2-3 słowa):",
+              "correct_answer": "not light enough",
+              "explanation": "'Too heavy' parafrazujemy jako 'not light enough' (lub 'not light enough').",
+              "hint": "Zaprzeczenie przymiotnika o przeciwnym znaczeniu + enough.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-1-2",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "I last saw Peter three months ago. (SEEN) -> I ______ Peter for three months. Wpisz brakujące słowa:",
+              "correct_answer": "have not seen",
+              "explanation": "'Last saw ... ago' zamienia się na czas Present Perfect z zaprzeczeniem: have not seen (lub haven't seen).",
+              "hint": "Present Perfect przeczenie z czasownikiem see.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Whose bag is this? (BELONG) -> Who ______ to? Wpisz brakujące słowa:",
+              "correct_answer": "does this bag belong",
+              "explanation": "Whose bag is this = Who does this bag belong to?",
+              "hint": "Pytanie w Present Simple z czasownikiem belong to.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-1-4",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "It is a good idea for you to see a doctor. (SHOULD) -> You ______ a doctor. Wpisz brakujące słowa:",
+              "correct_answer": "should see",
+              "explanation": "'It is a good idea for you to...' = You should see.",
+              "hint": "Użyj czasownika modalnego should.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-1-5",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Próbna 2024",
+              "content": "They are building a new cinema in our city. (BEING) -> A new cinema ______ built in our city. Wpisz brakujące słowa:",
+              "correct_answer": "is being",
+              "explanation": "Strona bierna Present Continuous: is being built.",
+              "hint": "Forma czasu Present Continuous w stronie biernej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-1-6",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "It is possible that Mark is at the library. (MIGHT) -> Mark ______ at the library. Wpisz brakujące słowa:",
+              "correct_answer": "might be",
+              "explanation": "'It is possible that...' parafrazujemy jako modal 'might be'.",
+              "hint": "Czasownik modalny wyrażający możliwość.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-1-7",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Sierpień 2023",
+              "content": "I prefer swimming to running. (RATHER) -> I would ______ run. Wpisz brakujące słowa:",
+              "correct_answer": "rather swim than",
+              "explanation": "Konstrukcja preferencji: would rather + V + than + V (would rather swim than run).",
+              "hint": "Konstrukcja would rather ... than ...",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-1-8",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Smoking is not allowed inside this building. (YOU) -> ______ smoke inside this building. Wpisz brakujące słowa:",
+              "correct_answer": "You cannot",
+              "explanation": "Smoking is not allowed = You cannot (lub You mustn't) smoke.",
+              "hint": "Wyrażenie zakazu dla osoby You.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-4-2",
+          "title": "Mini-dialogi i reakcje językowe w sytuacjach codziennych",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Reakcje językowe sprawdzają znajomość naturalnych zwrotów grzecznościowych w sklepie, restauracji, na ulicy czy w szkole (np. Would you like some help? - No, I'm just browsing; How about going to the cinema? - Sounds great!).",
+            "matura_context": "Zadanie 4 i 5 na maturze podstawowej – dobieranie właściwych reakcji do pytań rozmówcy.",
+            "core_formulas": "Offering help: Can I give you a hand? | Suggestions: Why don't we...? / How about...? | Apologies: Never mind / Don't mention it",
+            "worked_example": "X: Could you tell me the way to the station? -> Y: Go straight on and turn left at the traffic lights.",
+            "exam_trap": "Zwracaj uwagę na rejestr (formalny vs nieformalny) oraz czas gramatyczny w pytaniu i odpowiedzi!"
+          },
+          "tasks": [
+            {
+              "id": "eng-4-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "X: Could you lend me five pounds, please? \nY: ______",
+              "options": [
+                "Here you are.",
+                "Not at all.",
+                "You are welcome.",
+                "Never mind."
+              ],
+              "correct_answer": "Here you are.",
+              "explanation": "Gdy podajemy komuś pieniądze lub przedmiot, mówimy 'Here you are' (proszę bardzo).",
+              "hint": "Zwrot używany przy wręczaniu czegoś rozmówcy.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "X: Thank you so much for your help! \nY: ______",
+              "options": [
+                "Don't mention it.",
+                "Same to you.",
+                "Good luck.",
+                "Here it is."
+              ],
+              "correct_answer": "Don't mention it.",
+              "explanation": "Na podziękowanie odpowiadamy: 'Don't mention it' (nie ma za co / drobiazg) lub 'You're welcome'.",
+              "hint": "Odpowiedź na podziękowanie 'nie ma za co'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-2-3",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "X: How about ordering a pizza tonight? \nY: ______",
+              "options": [
+                "That sounds like a brilliant idea!",
+                "I don't agree with your pizza.",
+                "Yes, I do.",
+                "No, I haven't ordered yet."
+              ],
+              "correct_answer": "That sounds like a brilliant idea!",
+              "explanation": "Na propozycję ('How about...?') entuzjastycznie odpowiadamy 'That sounds like a brilliant idea!'.",
+              "hint": "Reakcja akceptująca propozycję wspólnego posiłku.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "X: Excuse me, is this seat taken? \nY: ______",
+              "options": [
+                "No, go ahead and sit down.",
+                "Yes, you can take it.",
+                "Please don't mention it.",
+                "I am taking a seat."
+              ],
+              "correct_answer": "No, go ahead and sit down.",
+              "explanation": "'Is this seat taken?' (Czy to miejsce jest zajęte?). Odpowiedź przecząca: 'No, go ahead and sit down' (Nie, śmiało siadaj).",
+              "hint": "Miejsce jest wolne, zachęcasz do zajęcia miejsca.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Na pytanie sprzedawcy w sklepie 'Can I help you?' poprawną odpowiedzią klienta, który chce tylko się rozejrzeć, jest 'No, I'm just browsing, thank you'.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. 'I'm just browsing' oznacza 'tylko się rozglądam'.",
+              "hint": "Zwrot używany w sklepach.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-2-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "X: I have just passed my driving test! \nY: ______",
+              "options": [
+                "Congratulations! I'm so happy for you!",
+                "Good luck next time!",
+                "Cheer up, it's not the end of the world.",
+                "Never mind."
+              ],
+              "correct_answer": "Congratulations! I'm so happy for you!",
+              "explanation": "Na wiadomość o zdanym egzaminie składamy gratulacje ('Congratulations!').",
+              "hint": "Gratulacje z okazji zdanego egzaminu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "X: I'm really sorry for breaking your favourite mug. \nY: ______",
+              "options": [
+                "Don't worry about it, it was an old mug anyway.",
+                "You are welcome.",
+                "Congratulations!",
+                "I am sorry too."
+              ],
+              "correct_answer": "Don't worry about it, it was an old mug anyway.",
+              "explanation": "Uspokajamy rozmówcę po przeprosinach: 'Don't worry about it'.",
+              "hint": "Uspokojenie rozmówcy po przeprosinach.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-4-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna Grudzień 2023",
+              "content": "X: What size are these running shoes? \nY: ______",
+              "options": [
+                "They are a size 42.",
+                "They cost forty pounds.",
+                "They are made of leather.",
+                "They fit me perfectly."
+              ],
+              "correct_answer": "They are a size 42.",
+              "explanation": "Pytanie dotyczy rozmiaru ('What size...?'), więc odpowiedź musi zawierać numer rozmiaru.",
+              "hint": "Pytanie o rozmiar buta.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-5",
+      "numericId": 5,
+      "title": "Dział 5: Use of English – Słowotwórstwo i luki leksykalne",
+      "short_title": "Słowotwórstwo i Luki",
+      "description": "Prefiksy i sufiksy tworzące rzeczowniki, przymiotniki i przysłówki (un-, dis-, -tion, -ment, -ful, -less, -ly) oraz techniki rozwiązywania zadań z luką.",
+      "icon": "Layers",
+      "color": "#EC4899",
+      "matura_points_range": "4–6 pkt",
+      "importance": "HIGH",
+      "lessons": [
+        {
+          "id": "eng-lesson-5-1",
+          "title": "Słowotwórstwo maturalne – tworzenie części mowy",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Słowotwórstwo wymaga rozpoznania, jakiej części mowy brakuje w zdaniu (rzeczownika, przymiotnika, przysłówka czy czasownika) oraz czy potrzebne jest znaczenie przeciwne (np. un-, dis-, im-).",
+            "matura_context": "Pojawia się w zadaniu z lukami w tekście ciągłym lub pojedynczych zdaniach.",
+            "core_formulas": "verb + tion/ment -> noun | noun + ful/less -> adj | adj + ly -> adv | un/dis/im + word -> antonim",
+            "worked_example": "help -> helpful (pomocny) / helpless (bezradny) | decide -> decision (decyzja)",
+            "exam_trap": "Zwracaj uwagę na kontekst negatywny! Jeśli w tekście mowa o wypadku lub nieszczęściu, 'fortune' zamieni się na 'unfortunately' (z przedrostkiem 'un-')!"
+          },
+          "tasks": [
+            {
+              "id": "eng-5-1-1",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "It was a very (COMFORT) ______ flight, and I slept for six hours. Wpisz poprawną formę słowa:",
+              "correct_answer": "comfortable",
+              "explanation": "Przymiotnik od comfort opisujący wygodny lot to 'comfortable'.",
+              "hint": "Dodaj przyrostek tworzący przymiotnik.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-1-2",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Thank you for your (KIND) ______. Your advice was very useful. Wpisz poprawną formę słowa:",
+              "correct_answer": "kindness",
+              "explanation": "Rzeczownik od przymiotnika kind (życzliwość) tworzymy z sufiksem -ness: kindness.",
+              "hint": "Rzeczownik oznaczający dobroć, życzliwość.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Driving in this thick fog is extremely (DANGER) ______. Wpisz poprawną formę:",
+              "correct_answer": "dangerous",
+              "explanation": "Przymiotnik od danger (niebezpieczny) to 'dangerous'.",
+              "hint": "Dodaj sufiks -ous.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-1-4",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "She passed all her exams (EASY) ______ because she had studied systematically. Wpisz poprawną formę:",
+              "correct_answer": "easily",
+              "explanation": "Przysłówek od easy (z łatwością) tworzymy zamieniając -y na -i i dodając -ly: easily.",
+              "hint": "Przysłówek opisujący 'jak' zdała egzamin.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-1-5",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Próbna Grudzień 2023",
+              "content": "(FORTUNATE) ______, the concert was canceled due to the storm. Wpisz właściwe słowo:",
+              "correct_answer": "Unfortunately",
+              "explanation": "Kontekst negatywny (odwołany koncert) wymaga przedrostka 'un-' i formy przysłówkowej: Unfortunately.",
+              "hint": "Słowo oznacza 'Niestety'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-1-6",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "The government is trying to solve the problem of (EMPLOY) ______ among young graduates. Wpisz formę rzeczownika:",
+              "correct_answer": "unemployment",
+              "explanation": "Problem braku pracy to bezrobocie: unemployment (przedrostek un- + sufiks -ment).",
+              "hint": "Słowo oznaczające bezrobocie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-1-7",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "His latest painting is absolutely (BEAUTY) ______. Wpisz poprawny przymiotnik:",
+              "correct_answer": "beautiful",
+              "explanation": "Przymiotnik od beauty (piękny) to 'beautiful'.",
+              "hint": "Dodaj przyrostek -ful po zamianie y na i.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-1-8",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "We need to make an important (DECIDE) ______ about our future. Wpisz poprawny rzeczownik:",
+              "correct_answer": "decision",
+              "explanation": "Rzeczownik od decide to 'decision' (decyzja).",
+              "hint": "Rzeczownik oznaczający decyzję.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-5-2",
+          "title": "Phrasal Verbs – kluczowe czasowniki złożone na maturze",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Kluczowe phrasale na poziomie podstawowym: look for (szukać), look forward to + -ing (wyczekiwać na), give up (rzucić nawyk), find out (dowiedzieć się), run out of (skończyć się np. mleko), turn up/down (zgłośnić/przyciszyć lub pojawić się/odrzucić), put off (odłożyć w czasie).",
+            "matura_context": "Stały element zadań z luką i transformacji zdań.",
+            "core_formulas": "look forward to + V-ing | run out of + noun | give up + V-ing",
+            "worked_example": "We have run out of milk, so I need to go to the grocery store.",
+            "exam_trap": "Po 'look forward to' ZAWSZE występuje czasownik z końcówką -ing (I look forward to hearing from you)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-5-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "I am really looking forward to ______ you at the weekend party.",
+              "options": [
+                "seeing",
+                "see",
+                "saw",
+                "seen"
+              ],
+              "correct_answer": "seeing",
+              "explanation": "Po 'look forward to' stawiamy formę z końcówką -ing: seeing.",
+              "hint": "Końcówka -ing po zwrocie 'look forward to'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "We couldn't make pancakes because we had ______ of eggs.",
+              "options": [
+                "run out",
+                "given up",
+                "turned off",
+                "put away"
+              ],
+              "correct_answer": "run out",
+              "explanation": "'Run out of eggs' oznacza skończenie się zapasów jajek.",
+              "hint": "Wyrażenie oznaczające wyczerpanie zapasów.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-2-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "He decided to stop smoking for health reasons. (GIVE) -> He decided to ______ smoking. Wpisz brakujące słowa (2 słowa):",
+              "correct_answer": "give up",
+              "explanation": "'Stop smoking' = give up smoking.",
+              "hint": "Phrasal verb oznaczający porzucenie nałogu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Can you please ______ the TV? I'm trying to prepare for my test.",
+              "options": [
+                "turn down",
+                "give up",
+                "look after",
+                "find out"
+              ],
+              "correct_answer": "turn down",
+              "explanation": "Przyciszyć telewizor to 'turn down the TV'.",
+              "hint": "Ściszyć głośność telewizora.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Phrasal verb 'find out' oznacza 'zgubić coś na ulicy'.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'Find out' oznacza 'dowiedzieć się / odkryć informację'.",
+              "hint": "Znaczenie słowa find out.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-2-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "My sister agreed to ______ (look) after our cat while we were on holiday.",
+              "options": [
+                "look",
+                "see",
+                "watch",
+                "take"
+              ],
+              "correct_answer": "look",
+              "explanation": "Opiekować się kimś/czymś to 'look after'.",
+              "hint": "Opiekować się kotem.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "The football match was ______ until next Friday due to the thunderstorm.",
+              "options": [
+                "put off",
+                "run out",
+                "taken in",
+                "given up"
+              ],
+              "correct_answer": "put off",
+              "explanation": "Odłożyć wydarzenie na późniejszy termin to 'put off' (postpone).",
+              "hint": "Przełożyć na inny termin.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-5-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "She ______ into a famous actress after starring in that historical series.",
+              "options": [
+                "turned",
+                "grew",
+                "made",
+                "came"
+              ],
+              "correct_answer": "turned",
+              "explanation": "Zmienić się / przekształcić w kogoś to 'turn into'.",
+              "hint": "Przekształcić się w kogoś.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-6",
+      "numericId": 6,
+      "title": "Dział 6: Słownictwo tematyczne: Człowiek, Dom, Szkoła, Praca",
+      "short_title": "Człowiek, Dom, Szkoła, Praca",
+      "description": "Pewniaki leksykalne CKE: opis wyglądu, cechy charakteru, typy mieszkań, wyposażenie pokoju, przedmioty szkolne, egzaminy, zawody oraz poszukiwanie pracy.",
+      "icon": "Users",
+      "color": "#F59E0B",
+      "matura_points_range": "5–8 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-lesson-6-1",
+          "title": "Człowiek i relacje międzyludzkie (Wygląd, cechy charakteru, uczucia)",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Kluczowe przymiotniki charakteru: reliable (niezawodny), stubborn (uparty), generous (hojny), ambitious (ambitny), patient (cierpliwy). Wygląd: freckles (piegi), wrinkles (zmarszczki), curly hair (kręcone włosy), middle-aged (w średnim wieku).",
+            "matura_context": "Opis nowego kolegi, współlokatora lub nauczyciela w e-mailu maturalnym.",
+            "core_formulas": "look like + noun (wyglądać jak) | look + adj (wyglądać na...) | get on well with (mieć dobre relacje)",
+            "worked_example": "She looks like her mother and she is very outgoing and reliable.",
+            "exam_trap": "'Sensitive' oznacza 'wrażliwy' (nie 'rozsądny'!). 'Rozsądny' to 'sensible'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-6-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "You can always count on Mark. He never lets his friends down because he is very ______.",
+              "options": [
+                "reliable",
+                "stubborn",
+                "selfish",
+                "jealous"
+              ],
+              "correct_answer": "reliable",
+              "explanation": "Na Marka zawsze można liczyć ('count on'), co oznacza, że jest niezawodny -> reliable.",
+              "hint": "Osoba, na której można polegać.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "She is very ______. She cries easily whenever she watches a sad romantic movie.",
+              "options": [
+                "sensitive",
+                "sensible",
+                "confident",
+                "ambitious"
+              ],
+              "correct_answer": "sensitive",
+              "explanation": "Łatwo wzrusza się na filmach -> jest wrażliwa (sensitive).",
+              "hint": "Wrażliwy emocjonalnie (uważaj na fałszywego przyjaciela!).",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "I have a good relationship with my older brother. (GET) -> I ______ with my older brother. Wpisz brakujące słowa (3 słowa):",
+              "correct_answer": "get on well",
+              "explanation": "'Have a good relationship' = get on well with.",
+              "hint": "Phrasal verb oznaczający dobre dogadywanie się z kimś.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "My grandmother has grey hair and small ______ around her warm, smiling eyes.",
+              "options": [
+                "wrinkles",
+                "freckles",
+                "beard",
+                "scars"
+              ],
+              "correct_answer": "wrinkles",
+              "explanation": "Zmarszczki wokół oczu u starszej osoby to 'wrinkles'.",
+              "hint": "Zmarszczki wokół oczu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-1-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Zadanie Maturalne",
+              "content": "Słowo 'sensible' w języku angielskim oznacza 'rozsądny, myślący racjonalnie'.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. 'Sensible' = rozsądny; 'sensitive' = wrażliwy.",
+              "hint": "Pamiętaj o różnicy między sensible a sensitive.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-1-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Peter refuses to change his mind even when he is wrong. He is as ______ as a mule.",
+              "options": [
+                "stubborn",
+                "generous",
+                "shy",
+                "modest"
+              ],
+              "correct_answer": "stubborn",
+              "explanation": "Nie chce zmienić zdania -> uparty jak osioł (stubborn as a mule).",
+              "hint": "Uparty.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Tom is very ______. He always shares his lunch and lends money to those in need.",
+              "options": [
+                "generous",
+                "greedy",
+                "arrogant",
+                "lazy"
+              ],
+              "correct_answer": "generous",
+              "explanation": "Chętnie dzieli się z innymi -> hojny (generous).",
+              "hint": "Osoba hojna i szczodra.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna Grudzień 2023",
+              "content": "What does your new English teacher ______ like? - She is tall and wears glasses.",
+              "options": [
+                "look",
+                "see",
+                "watch",
+                "glance"
+              ],
+              "correct_answer": "look",
+              "explanation": "Pytanie o wygląd zewnętrzny: 'What does she look like?'.",
+              "hint": "Pytanie o wygląd zewnętrzny.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-6-2",
+          "title": "Dom, Szkoła i Praca (Mieszkanie, edukacja, zawody)",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Dom: detached house (dom wolnostojący), terraced house (szeregowiec), rent a flat (wynajmować mieszkanie), fully furnished (w pełni umeblowane). Szkoła: take an exam (podejść do egzaminu), pass/fail, cheat, compulsory (obowiązkowy). Praca: apply for a job (ubiegać się o pracę), salary, deadline, shift work (praca zmianowa).",
+            "matura_context": "Opis nowego mieszkania studenckiego lub pierwszej pracy wakacyjnej w e-mailu.",
+            "core_formulas": "apply for a position | take an exam | pass with flying colours | fully-equipped",
+            "worked_example": "I decided to apply for a part-time job as a waiter to earn extra pocket money.",
+            "exam_trap": "Nigdy nie mów 'write an exam' w znaczeniu zdawania egzaminu! Po angielsku jest to 'take / sit an exam'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-6-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Next Monday all high school seniors will ______ their final Polish exam.",
+              "options": [
+                "take",
+                "make",
+                "write",
+                "do"
+              ],
+              "correct_answer": "take",
+              "explanation": "Podchodzić do egzaminu to po angielsku 'take an exam' lub 'sit an exam'.",
+              "hint": "Właściwy kolokant dla słowa 'exam'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "I saw an interesting vacancy online and decided to ______ for the job.",
+              "options": [
+                "apply",
+                "ask",
+                "demand",
+                "order"
+              ],
+              "correct_answer": "apply",
+              "explanation": "Składać podanie o pracę to 'apply for a job'.",
+              "hint": "Czasownik łączący się z 'for the job'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-2-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "Our flat is located in the (SUBURB) ______ of the city, where it is quiet and green. Wpisz poprawną formę:",
+              "correct_answer": "suburbs",
+              "explanation": "Na przedmieściach = in the suburbs.",
+              "hint": "Przedmieścia w liczbie mnogiej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2023",
+              "content": "The apartment is completely ______ with a modern kitchen and comfortable sofa.",
+              "options": [
+                "furnished",
+                "built",
+                "decorated",
+                "located"
+              ],
+              "correct_answer": "furnished",
+              "explanation": "Umeblowane mieszkanie to 'furnished'.",
+              "hint": "Posiadające meble.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Zwrot 'to get fired' oznacza dostać awans w pracy.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'To get fired' oznacza zostać zwolnionym z pracy. Awans to 'to get promoted'.",
+              "hint": "Co oznacza 'get fired'?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-2-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "She works as a nurse and often has to do ______ (shift) work at night.",
+              "options": [
+                "shift",
+                "turn",
+                "hour",
+                "part"
+              ],
+              "correct_answer": "shift",
+              "explanation": "Praca zmianowa to 'shift work'.",
+              "hint": "Praca w systemie zmianowym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Mathematics and English are ______ subjects for all secondary school students.",
+              "options": [
+                "compulsory",
+                "optional",
+                "voluntary",
+                "free"
+              ],
+              "correct_answer": "compulsory",
+              "explanation": "Przedmioty obowiązkowe to 'compulsory subjects'.",
+              "hint": "Obowiązkowe, wymagane.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-6-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "How much is the monthly ______ for this two-bedroom apartment?",
+              "options": [
+                "rent",
+                "hire",
+                "salary",
+                "wage"
+              ],
+              "correct_answer": "rent",
+              "explanation": "Czynsz za wynajem mieszkania to 'rent'.",
+              "hint": "Opłata za wynajem lokalu.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-7",
+      "numericId": 7,
+      "title": "Dział 7: Słownictwo tematyczne: Żywienie, Zakupy, Podróże, Zdrowie, Sport",
+      "short_title": "Żywienie, Podróże, Zdrowie, Sport",
+      "description": "Niezbędnik maturalny: zamawianie posiłków, składanie reklamacji, rezerwacja biletów i hoteli, wizyta u lekarza oraz opisywanie zawodów sportowych.",
+      "icon": "Compass",
+      "color": "#14B8A6",
+      "matura_points_range": "5–8 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-lesson-7-1",
+          "title": "Podróże, Wakacje i Środki transportu",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Lotnisko: boarding pass (karta pokładowa), luggage/baggage (bagaż - niepoliczalny!), departure lounge (hala odlotów), delayed (opóźniony), cancelled. Podróż: take off (startować), land (lądować), set off (wyruszać w drogę), book in advance (zarezerwować z wyprzedzeniem).",
+            "matura_context": "Główny temat e-maili o nieudanej wycieczce lub zaproszeniu znajomego z zagranicy.",
+            "core_formulas": "travel by plane / train / bus | go on foot | book accommodation | check in/out",
+            "worked_example": "We set off early in the morning to avoid heavy traffic on the highway.",
+            "exam_trap": "Słowo 'luggage' jest NIEPOLICZALNE! Nie ma słowa 'luggages' ani 'a luggage'!"
+          },
+          "tasks": [
+            {
+              "id": "eng-7-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Due to dense fog, our flight was ______ by more than two hours.",
+              "options": [
+                "delayed",
+                "cancelled",
+                "arrived",
+                "missed"
+              ],
+              "correct_answer": "delayed",
+              "explanation": "Opóźniony lot to 'delayed flight'.",
+              "hint": "Opóźniony.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Don't forget to download your ______ pass onto your smartphone before going to the airport.",
+              "options": [
+                "boarding",
+                "ticket",
+                "travel",
+                "flight"
+              ],
+              "correct_answer": "boarding",
+              "explanation": "Karta pokładowa na lotnisku to 'boarding pass'.",
+              "hint": "Karta pokładowa uprawniająca do wejścia do samolotu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "We began our journey at 6 a.m. (SET) -> We ______ at 6 a.m. Wpisz brakujące słowa (2 słowa):",
+              "correct_answer": "set off",
+              "explanation": "'Begin a journey' to phrasal verb 'set off' (lub set out).",
+              "hint": "Phrasal verb oznaczający wyruszenie w podróż.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-1-4",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Zdanie: 'I have two heavy luggages to check in' jest w pełni poprawne.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'Luggage' jest niepoliczalne; poprawnie: 'two pieces of luggage'.",
+              "hint": "Czy luggage tworzy liczbę mnogą z końcówką -s?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-1-5",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Please fasten your seatbelts because the plane is going to ______ (land) in five minutes.",
+              "options": [
+                "land",
+                "take off",
+                "fly",
+                "stop"
+              ],
+              "correct_answer": "land",
+              "explanation": "Lądować na pasie startowym to 'land'.",
+              "hint": "Lądować.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2023",
+              "content": "It is always cheaper to ______ accommodation well in advance.",
+              "options": [
+                "book",
+                "order",
+                "rent",
+                "buy"
+              ],
+              "correct_answer": "book",
+              "explanation": "Zarezerwować nocleg to 'book accommodation'.",
+              "hint": "Zarezerwować pokój lub hotel.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "We decided to go to the city centre ______ foot to admire the historic monuments.",
+              "options": [
+                "on",
+                "by",
+                "with",
+                "at"
+              ],
+              "correct_answer": "on",
+              "explanation": "Pieszo to wyłącznie wyrażenie przyimkowe 'on foot'.",
+              "hint": "Przyimek dla wyrażenia 'pieszo'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2024",
+              "content": "Excuse me, which ______ does the train to Oxford leave from?",
+              "options": [
+                "platform",
+                "stop",
+                "station",
+                "terminal"
+              ],
+              "correct_answer": "platform",
+              "explanation": "Pociąg odjeżdża z peronu -> 'platform'.",
+              "hint": "Peron kolejowy.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-7-2",
+          "title": "Zdrowie, Dolegliwości i Wizyta u Lekarza",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Dolegliwości: sore throat (ból gardła), headache, fever/high temperature, cough, painkillers (środki przeciwbólowe), prescription (recepta). U lekarza: recover / get over an illness, undergo surgery (przejść operację), feel dizzy (mieć zawroty głowy).",
+            "matura_context": "Wyjaśnienie nieobecności na lekcjach lub odwołania spotkania ze znajomym.",
+            "core_formulas": "have a sore throat | catch a cold | make an appointment | take medicine",
+            "worked_example": "The doctor examined the patient and prescribed some strong antibiotics.",
+            "exam_trap": "'Prescription' to recepta lekarska, natomiast 'recipe' to przepis kulinarny! Częsty błąd maturalny."
+          },
+          "tasks": [
+            {
+              "id": "eng-7-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "The doctor wrote me a ______ for some antibiotics.",
+              "options": [
+                "prescription",
+                "recipe",
+                "receipt",
+                "bill"
+              ],
+              "correct_answer": "prescription",
+              "explanation": "Recepta lekarska to 'prescription' ('recipe' to przepis kulinarny).",
+              "hint": "Recepta od lekarza.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "I couldn't eat or speak properly because I had a terribly ______ throat.",
+              "options": [
+                "sore",
+                "painful",
+                "hurt",
+                "aching"
+              ],
+              "correct_answer": "sore",
+              "explanation": "Ból gardła to w języku angielskim stała kolokacja 'sore throat'.",
+              "hint": "Stały zwrot oznaczający ból gardła.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-2-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "It took him nearly three weeks to (RECOVER) ______ from the flu. Wpisz phrasal verb zastępujący recover (2 słowa):",
+              "correct_answer": "get over",
+              "explanation": "Wyzdrowieć / dojść do siebie po chorobie to phrasal verb 'get over'.",
+              "hint": "Phrasal verb z czasownikiem get oznaczający dojście do zdrowia.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "If you have a terrible headache, you should take a ______.",
+              "options": [
+                "painkiller",
+                "bandage",
+                "prescription",
+                "cough"
+              ],
+              "correct_answer": "painkiller",
+              "explanation": "Środek przeciwbólowy to 'painkiller'.",
+              "hint": "Tabletka przeciwbólowa.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Słowo 'recipe' oznacza w języku angielskim receptę lekarską.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'Recipe' to przepis kulinarny; recepta to 'prescription'.",
+              "hint": "Pamiętaj o false friend: recipe vs prescription.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-2-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "She felt very weak and ______ (dizzy), so she sat down on the bench.",
+              "options": [
+                "dizzy",
+                "blind",
+                "deaf",
+                "dumb"
+              ],
+              "correct_answer": "dizzy",
+              "explanation": "Uczucie zawrotów głowy to 'feel dizzy'.",
+              "hint": "Zawroty głowy.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "I need to call the clinic to ______ an appointment with the dermatologist.",
+              "options": [
+                "make",
+                "do",
+                "take",
+                "write"
+              ],
+              "correct_answer": "make",
+              "explanation": "Umawiać wizytę to 'make an appointment'.",
+              "hint": "Kolokacja ze słowem appointment.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-7-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "He fell down the stairs and ______ his wrist.",
+              "options": [
+                "twisted",
+                "cut",
+                "scratched",
+                "infected"
+              ],
+              "correct_answer": "twisted",
+              "explanation": "Skręcić nadgarstek to 'twist a wrist' (lub sprain).",
+              "hint": "Skręcenie nadgarstka.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-8",
+      "numericId": 8,
+      "title": "Dział 8: Słownictwo tematyczne: Kultura, Przyroda, Nauka, Państwo",
+      "short_title": "Kultura, Przyroda, Nauka, Państwo",
+      "description": "Świat współczesny na maturze: ekologia (global warming, recycle), technologie (gadgets, artificial intelligence), sztuka oraz struktury społeczne i wolontariat.",
+      "icon": "Cpu",
+      "color": "#3B82F6",
+      "matura_points_range": "4–7 pkt",
+      "importance": "HIGH",
+      "lessons": [
+        {
+          "id": "eng-lesson-8-1",
+          "title": "Ekologia, Środowisko i Nauka (Global Warming, Renewable Energy)",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Ekologia: global warming, climate change, renewable energy (energia odnawialna), protect endangered species (chronić zagrożone gatunki), air pollution, recycle waste. Nauka: scientific breakthrough (przełom naukowy), discover, invent, artificial intelligence.",
+            "matura_context": "Stały temat czytanek maturalnych i tekstów argumentacyjnych.",
+            "core_formulas": "protect the environment | cut down on plastic | invent a device | discover a cure",
+            "worked_example": "Many schools are organizing campaigns to cut down on single-use plastic.",
+            "exam_trap": "'Invent' oznacza wynaleźć coś, co wcześniej nie istniało (urządzenie). 'Discover' oznacza odkryć coś, co już istniało (np. Amerykę, prawo fizyki)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-8-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Solar and wind power are well-known examples of ______ energy sources.",
+              "options": [
+                "renewable",
+                "recycled",
+                "reusable",
+                "artificial"
+              ],
+              "correct_answer": "renewable",
+              "explanation": "Odnawialne źródła energii to 'renewable energy'.",
+              "hint": "Odnawialne źródła energii.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Alexander Fleming ______ penicillin by accident in 1928.",
+              "options": [
+                "discovered",
+                "invented",
+                "created",
+                "manufactured"
+              ],
+              "correct_answer": "discovered",
+              "explanation": "Penicylina istniała w naturze, więc została odkryta -> discovered.",
+              "hint": "Odkrycie czegoś, co istniało w przyrodzie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "We need to reduce the amount of electricity we use. (CUT) -> We must ______ on our electricity consumption. Wpisz brakujące słowa (2 słowa):",
+              "correct_answer": "cut down",
+              "explanation": "'Reduce' parafrazujemy jako phrasal verb 'cut down on'.",
+              "hint": "Phrasal verb oznaczający ograniczenie zużycia.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Heavy industry causes severe air and water ______ in big metropolitan areas.",
+              "options": [
+                "pollution",
+                "contamination",
+                "dirt",
+                "waste"
+              ],
+              "correct_answer": "pollution",
+              "explanation": "Zanieczyszczenie powietrza to 'air pollution'.",
+              "hint": "Zanieczyszczenie środowiska.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-1-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Zdanie: 'Thomas Edison discovered the electric light bulb' jest w pełni poprawne pod względem leksykalnym.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. Żarówka została wynaleziona (invented), a nie odkryta w naturze.",
+              "hint": "Zastanów się nad różnicą między invent a discover.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-1-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Due to deforestation, many rare animal species are now ______ (danger) of extinction.",
+              "options": [
+                "in",
+                "at",
+                "with",
+                "under"
+              ],
+              "correct_answer": "in",
+              "explanation": "W zagrożeniu wyginięciem = 'in danger of extinction'.",
+              "hint": "Przyimek tworzący zwrot 'w niebezpieczeństwie'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Scientists have recently made an incredible ______ in cancer treatment research.",
+              "options": [
+                "breakthrough",
+                "breakdown",
+                "outbreak",
+                "outcome"
+              ],
+              "correct_answer": "breakthrough",
+              "explanation": "Przełom naukowy to 'breakthrough'.",
+              "hint": "Wielki przełom naukowy.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "You should always ______ glass, plastic, and paper into separate bins.",
+              "options": [
+                "recycle",
+                "rebuild",
+                "redo",
+                "replace"
+              ],
+              "correct_answer": "recycle",
+              "explanation": "Segregować i przetwarzać odpady to 'recycle'.",
+              "hint": "Recykling odpadów.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-8-2",
+          "title": "Kultura, Media i Wydarzenia Artystyczne",
+          "estimated_time_minutes": 5,
+          "estimated_time_formatted": "~5 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Kultura: plot (fabuła), cast (obsada), directed by (w reżyserii), exhibition (wystawa), review (recenzja), audience (widownia), live performance (występ na żywo), masterpiece (arcydzieło). Media: headline (nagłówek), commercial/advertisement, social media influencer, broadsheet.",
+            "matura_context": "Opis obejrzanego filmu lub spektaklu teatralnego w liście/e-mailu.",
+            "core_formulas": "be set in (miejsce akcji) | star in a film | based on a true story | receive rave reviews",
+            "worked_example": "The movie is set in 19th-century London and stars Leonardo DiCaprio.",
+            "exam_trap": "'Audience' odnosi się do widzów w teatrze lub kinie. 'Spectators' to widzowie na stadionie sportowym!"
+          },
+          "tasks": [
+            {
+              "id": "eng-8-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "The movie is based ______ a bestselling crime novel.",
+              "options": [
+                "on",
+                "in",
+                "at",
+                "with"
+              ],
+              "correct_answer": "on",
+              "explanation": "Oparty na czymś to stałe wyrażenie przyimkowe 'based on'.",
+              "hint": "Przyimek po słowie 'based'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "At the end of the theatre play, the whole ______ stood up and applauded.",
+              "options": [
+                "audience",
+                "spectators",
+                "viewers",
+                "passers-by"
+              ],
+              "correct_answer": "audience",
+              "explanation": "Widownia w teatrze lub na koncercie to 'audience' ('spectators' to kibice na stadionie).",
+              "hint": "Widownia w teatrze.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-2-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "The film tells the story of an astronaut and is (SET) ______ in outer space. Wpisz brakujące słowo:",
+              "correct_answer": "set",
+              "explanation": "Akcja filmu toczy się w... = 'is set in'.",
+              "hint": "Czasownik set w stronie biernej.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "The science-fiction movie had an unpredictable ______ with a shocking ending.",
+              "options": [
+                "plot",
+                "stage",
+                "curtain",
+                "cast"
+              ],
+              "correct_answer": "plot",
+              "explanation": "Fabuła filmu lub powieści to 'plot'.",
+              "hint": "Fabuła, bieg wydarzeń w filmie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Wyrażenie 'spectators' odnosi się do publiczności oglądającej sztukę w teatrze.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'Spectators' to widzowie na zawodach sportowych; publiczność w teatrze to 'audience'.",
+              "hint": "Zastanów się nad różnicą między audience a spectators.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-2-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Leonardo DiCaprio ______ (star) in many award-winning Hollywood blockbusters.",
+              "options": [
+                "has starred",
+                "was starred",
+                "had been starring",
+                "stars"
+              ],
+              "correct_answer": "has starred",
+              "explanation": "Doświadczenie życiowe i dotychczasowa kariera aktora w czasie Present Perfect: 'has starred'.",
+              "hint": "Grał w filmach do tej pory w swoim życiu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "I read a very positive ______ of the concert in today's newspaper.",
+              "options": [
+                "review",
+                "revision",
+                "preview",
+                "interview"
+              ],
+              "correct_answer": "review",
+              "explanation": "Recenzja spektaklu lub koncertu to 'review'.",
+              "hint": "Krytyczna ocena / recenzja w prasie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-8-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "The modern art ______ will be open to visitors until the end of November.",
+              "options": [
+                "exhibition",
+                "performance",
+                "rehearsal",
+                "audition"
+              ],
+              "correct_answer": "exhibition",
+              "explanation": "Wystawa sztuki to 'art exhibition'.",
+              "hint": "Wystawa w galerii lub muzeum.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-9",
+      "numericId": 9,
+      "title": "Dział 9: Rozumienie tekstów pisanych (Reading Comprehension)",
+      "short_title": "Czytanie ze zrozumieniem",
+      "description": "Strategie maturalne CKE dla zadań na czytanie: dobieranie nagłówków do akapitów, uzupełnianie luk zdaniami, zadania Prawda/Fałsz oraz wielokrotny wybór ABCD.",
+      "icon": "BookOpen",
+      "color": "#6366F1",
+      "matura_points_range": "15–20 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-lesson-9-1",
+          "title": "Dobieranie nagłówków i zdań do luk w tekście (Matching & Gapped Text)",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Przy dobieraniu nagłówków szukaj myśli przewodniej całego akapitu (Topic Sentence), a nie pojedynczych powtórzonych słów, które często są zmyłkami (distractors). Przy lukach analizuj zaimki (this, that, these, he, they) oraz spójniki logiczne (however, furthermore, therefore).",
+            "matura_context": "Zadania 6, 7 i 8 w arkuszu CKE przynoszące aż do 15 punktów!",
+            "core_formulas": "Topic sentence (główna teza) + cohesive ties (spójniki logiczne) -> właściwe dopasowanie",
+            "worked_example": "Akapit opisuje historię powstania muzeum -> poprawny nagłówek to 'How it all started'.",
+            "exam_trap": "Nie wybieraj nagłówka tylko dlatego, że zawiera to samo słowo co akapit! Egzaminatorzy CKE celowo umieszczają w złych opcjach słowa-klucze jako pułapki."
+          },
+          "tasks": [
+            {
+              "id": "eng-9-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Przeczytaj fragment: 'When the project began in 2010, few people believed it would succeed. Today, it has over a million active users worldwide.' Jaki nagłówek najlepiej pasuje?",
+              "options": [
+                "From humble beginnings to global success",
+                "A costly project with no future",
+                "Why people stopped using the app",
+                "The rules of using the service"
+              ],
+              "correct_answer": "From humble beginnings to global success",
+              "explanation": "Fragment zestawia trudny początek ('few believed') z globalnym sukcesem ('over a million active users').",
+              "hint": "Zwróć uwagę na kontrast między rokiem 2010 a stanem obecnym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "W tekście czytamy: 'Visitors are not allowed to take photos with a flash or bring large backpacks inside.' Które zdanie streszcza ten fragment?",
+              "options": [
+                "There are strict safety rules for tourists.",
+                "Photography is completely free for all.",
+                "Backpacks can be purchased at the entrance.",
+                "The museum is closed on weekends."
+              ],
+              "correct_answer": "There are strict safety rules for tourists.",
+              "explanation": "Fragment wylicza zasady i ograniczenia dla zwiedzających (zakaz flesza, plecaków).",
+              "hint": "O czym informują zakazy w tekście?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-1-3",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "Na podstawie tekstu: 'The festival takes place every two years in Edinburgh.' P/F: Festiwal odbywa się co roku.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'Every two years' oznacza 'co dwa lata', a nie co roku.",
+              "hint": "Co oznacza wyrażenie 'every two years'?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Który spójnik logiczny najlepiej wstawić w lukę: 'The weather was cold and rainy. ______, thousands of fans waited outside for the concert.'",
+              "options": [
+                "However",
+                "Therefore",
+                "Because",
+                "So"
+              ],
+              "correct_answer": "However",
+              "explanation": "'However' wprowadza kontrast: mimo fatalnej pogody fani czekali na koncert.",
+              "hint": "Szukamy spójnika wyrażającego kontrast (jednakże).",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Wybierz intencję autora tekstu: 'If you ever find yourself in Rome, don't miss the chance to taste real Italian gelato near the Pantheon.' Intencją autora jest:",
+              "options": [
+                "to recommend an experience to the reader",
+                "to complain about food prices",
+                "to warn against dangerous places",
+                "to invite the reader to a private party"
+              ],
+              "correct_answer": "to recommend an experience to the reader",
+              "explanation": "Zwrot 'don't miss the chance' to wyraźna rekomendacja i zachęta dla czytelnika.",
+              "hint": "Autor gorąco poleca spróbowanie lodów.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-1-6",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Tekst: 'Admission is free of charge for children under 12.' P/F: 10-letnie dziecko wejdzie na wystawę bezpłatnie.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. 'Free of charge for children under 12' oznacza darmowy wstęp dla dzieci poniżej 12 roku życia.",
+              "hint": "Czy 10 lat to mniej niż 12?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Z tekstu: 'Despite their exhaustion, the hikers managed to reach the summit before sunset.' Wynika z tego, że wspinacze:",
+              "options": [
+                "successfully climbed to the top",
+                "gave up half-way through",
+                "arrived at the summit late at night",
+                "got lost in the mountains"
+              ],
+              "correct_answer": "successfully climbed to the top",
+              "explanation": "'Managed to reach the summit' oznacza, że pomyślnie dotarli na szczyt.",
+              "hint": "Zwrot 'managed to reach' oznacza sukces.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna 2023",
+              "content": "Gdzie najprawdopodobniej przeczytasz taki tekst: 'Please keep all aisles clear of baggage at all times.'?",
+              "options": [
+                "On a train or aeroplane",
+                "In a private garden",
+                "In a personal diary",
+                "In an art gallery"
+              ],
+              "correct_answer": "On a train or aeroplane",
+              "explanation": "Komunikat dotyczy bezpieczeństwa przejść między fotelami w środkach transportu zbiorowego ('aisles').",
+              "hint": "Słowo 'aisles' oznacza przejścia między rzędami foteli.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-9-2",
+          "title": "Pytania wielokrotnego wyboru i prawda/fałsz w wywiadach i artykułach",
+          "estimated_time_minutes": 7,
+          "estimated_time_formatted": "~7 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Kolejność pytań zamkniętych w CKE ZAWSZE odpowiada chronologii tekstu (pytanie 1 dotyczy akapitu 1 lub 2, pytanie 2 kolejnych itd.). Ostatnie pytanie często dotyczy wydźwięku całego tekstu (main idea, attitude of the author).",
+            "matura_context": "Zadanie 7 w arkuszu CKE (5 pytań wielokrotnego wyboru za 5 punktów).",
+            "core_formulas": "Chronological search (od góry do dołu) + Eliminate extreme options (always, never, only) + Paraphrase check",
+            "worked_example": "W tekście 'He was reluctant to participate' -> prawidłowa odpowiedź to 'He did not really want to take part'.",
+            "exam_trap": "Odrzucaj odpowiedzi zawierające skrajne słowa 'always', 'never', 'completely', chyba że padły one dosłownie w tekście źródłowym!"
+          },
+          "tasks": [
+            {
+              "id": "eng-9-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Z tekstu: 'Mark decided to study computer science because his parents insisted, even though his real passion had always been photography.' Dlaczego Mark wybrał informatykę?",
+              "options": [
+                "He wanted to please his parents.",
+                "He was fascinated by modern technology.",
+                "He couldn't afford photography equipment.",
+                "He had failed his art school exams."
+              ],
+              "correct_answer": "He wanted to please his parents.",
+              "explanation": "'His parents insisted' oznacza, że uległ presji rodziców, chcąc spełnić ich oczekiwania.",
+              "hint": "Zwróć uwagę na zwrot 'his parents insisted'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Z artykułu: 'The scientist spent fifteen years living in the jungle, observing chimpanzees in their natural habitat.' Co wynika z tego fragmentu?",
+              "options": [
+                "Her research required a long-term commitment in the wild.",
+                "She preferred laboratory experiments to field research.",
+                "She was rescued from the jungle after fifteen years.",
+                "Her study focused on domestic animals."
+              ],
+              "correct_answer": "Her research required a long-term commitment in the wild.",
+              "explanation": "15 lat życia w dżungli ('spent fifteen years living in the jungle') dowodzi długoterminowego poświęcenia badaniom w dziczy.",
+              "hint": "15 lat w dżungli to wieloletnie zaangażowanie w terenie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-2-3",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Tekst: 'Participants must be at least 18 years old.' P/F: Osoba w wieku 17 lat może wziąć udział w zawodach.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'At least 18' oznacza co najmniej 18 lat (wiek pełnoletni).",
+              "hint": "Co oznacza 'at least 18'?",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "Z tekstu: 'Although the invention looked promising on paper, it proved to be completely impractical in daily life.' Jak autor ocenia wynalazek?",
+              "options": [
+                "It failed to meet practical expectations.",
+                "It was an instant commercial success.",
+                "It was too cheap to produce.",
+                "It was dangerous for people's health."
+              ],
+              "correct_answer": "It failed to meet practical expectations.",
+              "explanation": "'Impractical in daily life' oznacza, że nie sprawdził się w praktyce.",
+              "hint": "Słowo 'impractical' oznacza niepraktyczny.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-2-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Próbna Grudzień 2023",
+              "content": "Jaki jest główny cel autora w artykule ostrzegającym przed oszustwami internetowymi (phishing)?",
+              "options": [
+                "To raise awareness about online safety.",
+                "To advertise a new bank service.",
+                "To criticise computer game players.",
+                "To explain how to create a social media account."
+              ],
+              "correct_answer": "To raise awareness about online safety.",
+              "explanation": "Artykuł o cyberzagrożeniach ma na celu zwiększenie świadomości o bezpieczeństwie w sieci (raise awareness).",
+              "hint": "Główny cel artykułu o bezpieczeństwie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-2-6",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Z tekstu: 'The concert was postponed until next Sunday due to unforeseen technical difficulties.' P/F: Koncert został całkowicie odwołany i nie odbędzie się.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Fałsz",
+              "explanation": "Fałsz. 'Postponed' oznacza przełożony na inny termin (next Sunday), a nie odwołany (cancelled).",
+              "hint": "Różnica między postpone a cancel.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "W wywiadzie muzyk mówi: 'I never expected my first single to top the charts in ten countries.' Wynika z tego, że muzyk był:",
+              "options": [
+                "surprised by his sudden international fame",
+                "disappointed with the song sales",
+                "planning to quit music industry",
+                "angry at the radio stations"
+              ],
+              "correct_answer": "surprised by his sudden international fame",
+              "explanation": "'Never expected' wskazuje na wielkie zaskoczenie nagłą sławą (surprised).",
+              "hint": "Zwróć uwagę na zwrot 'never expected'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-9-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Tekst: 'The library will remain closed on Mondays throughout July and August.' W jakie dni biblioteka jest zamknięta w wakacje?",
+              "options": [
+                "On Mondays",
+                "On weekends",
+                "Every day",
+                "On Fridays"
+              ],
+              "correct_answer": "On Mondays",
+              "explanation": "Tekst precyzuje: zamknięte w poniedziałki ('closed on Mondays').",
+              "hint": "Dzień tygodnia podany w ogłoszeniu.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng-dzial-10",
+      "numericId": 10,
+      "title": "Dział 10: Wypowiedź pisemna CKE (Writing: E-mail, Wpis na blogu)",
+      "short_title": "Wypowiedź pisemna (12 pkt)",
+      "description": "Zasady uzyskania maksymalnych 12 punktów CKE: realizacja 4 podpunktów polecenia, spójność i logika (linking words), bogactwo środków językowych oraz poprawność gramatyczno-ortograficzna.",
+      "icon": "PenTool",
+      "color": "#10B981",
+      "matura_points_range": "12 pkt",
+      "importance": "CRITICAL_PEWNIAK",
+      "lessons": [
+        {
+          "id": "eng-lesson-10-1",
+          "title": "Struktura i zwroty użytkowe w e-mailu i poście na blogu",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Limit słów CKE: 80–130 wyrazów. Wypowiedź musi rozwinąć każdy z 4 podpunktów polecenia. Struktura: 1) Powitanie (Hi Mark, / Dear Sarah,), 2) Wstęp z nawiązaniem (How are you? I'm writing to tell you...), 3) Rozwinięcie 4 kropek z polecenia, 4) Zwrot końcowy (Write back soon, / Hope to hear from you), 5) Podpis (XYZ - bez nazwiska!).",
+            "matura_context": "Zadanie 12 na maturze podstawowej warte aż 12 punktów (20% całego wyniku egzaminu!).",
+            "core_formulas": "Greeting -> Reason for writing -> 4 bullet points -> Call to action -> Sign-off XYZ",
+            "worked_example": "Hi Tom, hope you're doing well. I'm writing to share some exciting news about my new pet...",
+            "exam_trap": "NIGDY nie podpisuj się własnym imieniem ani nazwiskiem! Zawsze używaj podpisu 'XYZ' z polecenia CKE!"
+          },
+          "tasks": [
+            {
+              "id": "eng-10-1-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Który ze zwrotów jest najlepszym nieformalnym powitaniem w e-mailu do angielskiego kolegi?",
+              "options": [
+                "Hi Jack, hope you're doing fine!",
+                "Dear Sir or Madam,",
+                "To whom it may concern,",
+                "Yours faithfully,"
+              ],
+              "correct_answer": "Hi Jack, hope you're doing fine!",
+              "explanation": "E-mail do kolegi ma styl nieformalny, więc idealne powitanie to 'Hi Jack, hope you're doing fine!'.",
+              "hint": "Styl przyjazny, swobodny, nieformalny.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2023",
+              "content": "Jak poprawnie zakończyć nieformalny wpis na blogu, zachęcając czytelników do dyskusji?",
+              "options": [
+                "What do you think about this? Let me know in the comments below!",
+                "I look forward to hearing from you at your earliest convenience.",
+                "I remain, Sir, your humble servant.",
+                "Yours sincerely, XYZ"
+              ],
+              "correct_answer": "What do you think about this? Let me know in the comments below!",
+              "explanation": "Blog wymaga bezpośredniego i angażującego zwrotu do czytelników zachęcającego do komentowania.",
+              "hint": "Wezwanie do komentowania wpisu na blogu.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-1-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Wytyczne Oceniania",
+              "content": "Jaki jest zalecany przedział liczby słów w zadaniu pisemnym na maturze podstawowej z języka angielskiego? (np. 80-130)",
+              "correct_answer": "80-130",
+              "explanation": "Zgodnie z Informatorem CKE Formuła 2023 zalecana długość wypowiedzi wynosi od 80 do 130 słów.",
+              "hint": "Wpisz przedział liczbowy np. 80-130.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-1-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Który łącznik logiczny najlepiej pasuje do dodania kolejnego argumentu: 'The hotel was very cheap. ______, it was located right next to the beach.'",
+              "options": [
+                "What is more",
+                "However",
+                "Although",
+                "In spite of"
+              ],
+              "correct_answer": "What is more",
+              "explanation": "'What is more' (co więcej / ponadto) służy do dodawania kolejnego pozytywnego punktu.",
+              "hint": "Szukamy zwrotu dodającego kolejny argument (ponadto).",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-1-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Procedury Maturalne",
+              "content": "Podpisanie wypowiedzi maturalnej własnym imieniem i nazwiskiem zamiast 'XYZ' może skutkować unieważnieniem pracy z powodu naruszenia anonimowości.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. Zasady CKE bezwzględnie nakazują podpis 'XYZ' w celu zachowania pełnej anonimowości arkusza.",
+              "hint": "Zasada anonimowości prac maturalnych.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-1-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "I am writing to invite you to my 18th birthday party, ______ (take) place next Saturday.",
+              "options": [
+                "which takes",
+                "who takes",
+                "where takes",
+                "whose takes"
+              ],
+              "correct_answer": "which takes",
+              "explanation": "Zdanie przydawkowe odnoszące się do imprezy ('birthday party') -> which takes place.",
+              "hint": "Zaimek względny dla wydarzenia.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Który ze zwrotów najlepiej wyraża przeprosiny za opóźnienie w odpowiedzi?",
+              "options": [
+                "Sorry for not writing for so long, but I've been extremely busy.",
+                "I demand an immediate apology from you.",
+                "It was completely your fault.",
+                "Please do not reply to this message."
+              ],
+              "correct_answer": "Sorry for not writing for so long, but I've been extremely busy.",
+              "explanation": "Klasyczny, uprzejmy zwrot otwierający e-mail do znajomego.",
+              "hint": "Uprzejme przeprosiny za zwłokę w korespondencji.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Jakie są 4 kryteria oceny wypowiedzi pisemnej na maturze podstawowej CKE?",
+              "options": [
+                "Treść (5p), Spójność i logika (2p), Zakres środków (3p), Poprawność (2p)",
+                "Długość tekstu (10p), Rysunek (2p)",
+                "Gramatyka (6p), Liczba słów (6p)",
+                "Wyłącznie poprawność ortograficzna (12p)"
+              ],
+              "correct_answer": "Treść (5p), Spójność i logika (2p), Zakres środków (3p), Poprawność (2p)",
+              "explanation": "Oficjalny taryfikator CKE: Treść max 5 pkt, Spójność i logika max 2 pkt, Zakres środków językowych max 3 pkt, Poprawność środków językowych max 2 pkt (razem 12 pkt).",
+              "hint": "Oficjalna tabela punktacji CKE.",
+              "hint_cost": 10
+            }
+          ]
+        },
+        {
+          "id": "eng-lesson-10-2",
+          "title": "Łączniki logiczne (Linking Words) i technika rozwinięcia 4 podpunktów",
+          "estimated_time_minutes": 6,
+          "estimated_time_formatted": "~6 min",
+          "required_correct_tasks": 3,
+          "theory_pill": {
+            "concept_essence": "Aby zdobyć punkty za spójność (2 pkt) i bogactwo językowe (3 pkt), stosuj łączniki: Dodawanie: furthermore, besides, in addition; Kontrast: however, on the one hand, although; Skutek: as a result, therefore; Czas: first of all, then, finally. Każda z 4 kropek z polecenia CKE musi być ROZWINIĘTA (nie wystarczy o niej tylko wspomnieć!).",
+            "matura_context": "Klucz do przejścia z oceny 'odniesienie' (1p) do 'rozwinięcie' (2p) w kryterium Treści.",
+            "core_formulas": "Point 1: odniesienie + rozwinięcie (np. przyczyna i skutek) | Linking words łączące myśli",
+            "worked_example": "I lost my passport at the airport (odniesienie). Fortunately, a kind police officer found it and returned it to me within an hour (rozwinięcie).",
+            "exam_trap": "Samo jednozdaniowe wspomnienie o kropce daje tylko 0.5 pkt (odniesienie)! Dopiero dodanie szczegółu, uzasadnienia lub reakcji emocjonalnej daje 1 pkt (rozwinięcie)!"
+          },
+          "tasks": [
+            {
+              "id": "eng-10-2-1",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Kryteria Oceniania",
+              "content": "Jaka jest różnica między 'odniesieniem się' do kropki a jej 'rozwinięciem' w pracy maturalnej CKE?",
+              "options": [
+                "Odniesienie to tylko wspomnienie o fakcie, a rozwinięcie dodaje szczegóły, przyczynę lub reakcję.",
+                "Odniesienie musi mieć 50 słów, a rozwinięcie 100 słów.",
+                "Nie ma żadnej różnicy, to synonimy.",
+                "Rozwinięcie to przetłumaczenie polecenia na język polski."
+              ],
+              "correct_answer": "Odniesienie to tylko wspomnienie o fakcie, a rozwinięcie dodaje szczegóły, przyczynę lub reakcję.",
+              "explanation": "Zgodnie z kryteriami CKE rozwinięcie wymaga podania dodatkowych informacji, uzasadnienia lub okoliczności.",
+              "hint": "Kryteria punktacji CKE.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-2-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Wybierz najlepszy łącznik wyrażający skutek: 'It rained all day long. ______, the outdoor concert had to be cancelled.'",
+              "options": [
+                "As a result",
+                "However",
+                "Although",
+                "In spite of"
+              ],
+              "correct_answer": "As a result",
+              "explanation": "'As a result' (w rezultacie / w konsekwencji) łączy przyczynę (deszcz) ze skutkiem (odwołanie koncertu).",
+              "hint": "Łącznik wyrażający skutek lub rezultat.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-2-3",
+              "type": "OPEN_SHORT",
+              "points": 1,
+              "source": "CKE Use of English",
+              "content": "(ADDITION) ______ to good food, the restaurant also offered live acoustic music. Wpisz brakujące słowo tworzące łącznik 'In...':",
+              "correct_answer": "addition",
+              "explanation": "Zwrot 'In addition to...' oznacza 'w dodatku do / oprócz'.",
+              "hint": "In addition to.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-2-4",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Informator 2023",
+              "content": "Które z poniższych zdań stanowi pełne ROZWINIĘCIE podpunktu o zgubieniu bagażu?",
+              "options": [
+                "I lost my suitcase when I arrived at the hotel because the taxi driver mistakenly gave it to someone else.",
+                "I lost my suitcase.",
+                "My bag was black.",
+                "I have a suitcase."
+              ],
+              "correct_answer": "I lost my suitcase when I arrived at the hotel because the taxi driver mistakenly gave it to someone else.",
+              "explanation": "To zdanie podaje okoliczności (przy hotelu) oraz przyczynę (taksówkarz pomylił bagaże), co stanowi wzorowe rozwinięcie.",
+              "hint": "Szukaj zdania z bogatym rozwinięciem przyczynowo-skutkowym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-2-5",
+              "type": "TRUE_FALSE",
+              "points": 1,
+              "source": "CKE Matura Próbna",
+              "content": "W e-mailu nieformalnym na maturze podstawowej można używać skrótów typu I'm, don't, we'll.",
+              "options": [
+                "Prawda",
+                "Fałsz"
+              ],
+              "correct_answer": "Prawda",
+              "explanation": "Prawda. W stylu nieformalnym (e-mail do kolegi, wpis na blogu) formy ściągnięte (contractions) są jak najbardziej naturalne i wskazane.",
+              "hint": "Formy ściągnięte w stylu nieformalnym.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-2-6",
+              "type": "CLOZE",
+              "points": 1,
+              "source": "CKE Czerwiec 2024",
+              "content": "The weather was terrible. ______, we decided to go hiking anyway.",
+              "options": [
+                "Nevertheless",
+                "Because",
+                "So",
+                "Since"
+              ],
+              "correct_answer": "Nevertheless",
+              "explanation": "'Nevertheless' (niemniej jednak / mimo to) doskonale łączy kontrastujące fakty.",
+              "hint": "Łącznik wyrażający 'mimo to'.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-2-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Sierpień 2024",
+              "content": "Jak poprawnie pożegnać się w e-mailu do kolegi?",
+              "options": [
+                "Take care and write back soon, XYZ",
+                "I remain yours faithfully, XYZ",
+                "Yours sincerely, Sir XYZ",
+                "With utmost respect, XYZ"
+              ],
+              "correct_answer": "Take care and write back soon, XYZ",
+              "explanation": "'Take care and write back soon, XYZ' to ciepłe, nieformalne pożegnanie.",
+              "hint": "Przyjazne pożegnanie koleżeńskie.",
+              "hint_cost": 10
+            },
+            {
+              "id": "eng-10-2-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "CKE Matura Maj 2024",
+              "content": "Co się stanie, jeśli praca maturalna będzie liczyć mniej niż 60 słów?",
+              "options": [
+                "Egzaminator przyzna 0 punktów w kryterium zakresu i poprawności środków językowych.",
+                "Praca zostanie automatycznie oceniona na 100%.",
+                "Nie ma to żadnego wpływu na ocenę.",
+                "Uczeń dostaje nagrodę za zwięzłość."
+              ],
+              "correct_answer": "Egzaminator przyzna 0 punktów w kryterium zakresu i poprawności środków językowych.",
+              "explanation": "Zgodnie z Informatorem CKE praca licząca mniej niż 60 słów otrzymuje 0 punktów za zakres i poprawność środków językowych.",
+              "hint": "Konsekwencja zbyt krótkiej wypowiedzi pisemnej.",
+              "hint_cost": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

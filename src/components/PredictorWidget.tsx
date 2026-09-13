@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { PredictorResult } from '../types';
 import { triggerHaptic } from '../utils';
-import { getSubjectMetaByKey } from '../data/ckeSubjectWeights';
+import { getSubjectMetaByKey } from '../services/ckeCatalogRepository';
 
 interface PredictorWidgetProps {
   result: PredictorResult;
