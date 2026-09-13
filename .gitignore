@@ -1,10 +1,38 @@
+# Dependencies
 node_modules/
-build/
+
+# Build outputs
 dist/
-coverage/
-.DS_Store
+build/
+target/
+*.tsbuildinfo
+
+# Logs and temporary files
 *.log
+*.tmp
+debug*.cjs
+patch_*.cjs
+rewrite_*.cjs
+fix_*.cjs
+
+# Environment variables
 .env*
 !.env.example
+
+# Service account credentials (CRITICAL SECURITY)
 serviceAccountKey*.json
 *adminsdk*.json
+
+# Editors
+.vscode/
+.idea/
+
+# Testing and coverage
+coverage/
+htmlcov/
+.coverage
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
