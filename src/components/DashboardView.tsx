@@ -15,7 +15,8 @@ import {
   FlaskConical,
   Lock,
   Target,
-  Sparkles
+  Sparkles,
+  FileText
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
@@ -26,7 +27,7 @@ import { curriculumRepository } from '../services/curriculumRepository';
 import { PredictorWidget } from './PredictorWidget';
 import { PredictorDetailsModal } from './PredictorDetailsModal';
 import { calculateMaturaPrediction } from '../lib/maturaPredictor';
-import { getCkeAvailableSubjects, normalizeSubjectFirestoreId } from '../services/ckeCatalogRepository';
+import { getCkeAvailableSubjects, normalizeSubjectFirestoreId, useCkeCatalogs } from '../services/ckeCatalogRepository';
 
 interface DashboardViewProps {
   onNavigate?: (tab: string, subTab?: string) => void;
@@ -61,6 +62,7 @@ export function DashboardView({
   onOpenAiGenerator,
   onOpenMistakesBank
 }: DashboardViewProps) {
+  useCkeCatalogs();
   const streakDays = userState?.streakDays || 0;
 
   // 1. ZADANIA - Rzeczywista liczba unikalnych, poprawnie rozwiązanych zadań
@@ -350,15 +352,88 @@ export function DashboardView({
     }
   };
 
+  const renderStreakWidget = () => (
+    <motion.div 
+      initial={{ y: 15, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.05, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+      className="bg-gradient-to-br from-[#141A23] to-[#0B0E14] border border-[#F97316]/30 rounded-2xl p-4 sm:p-5 relative overflow-hidden shadow-[0_4px_25px_rgba(249,115,22,0.15)] group"
+    >
+      <div className="absolute top-0 right-0 w-36 h-36 bg-[#F97316]/15 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#EA580C]/10 rounded-full blur-[30px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+      
+      <div className="flex items-center justify-between relative z-10 mb-3.5">
+        <div className="pr-2">
+          <div className="flex items-center gap-2">
+            <h3 className="font-display font-black text-[#F97316] text-lg sm:text-xl tracking-wide">
+              {streakDays} {streakDays === 1 ? 'Dzień' : 'Dni'} z rzędu!
+            </h3>
+          </div>
+          <p className="text-slate-300 text-[11px] leading-tight mt-0.5">
+            {isCompletedToday 
+              ? "Dzisiejszy cel serii zaliczony! Ogień płonie dalej."
+              : `Cel na dziś: rozwiąż zadanie, aby zaliczyć Dzień ${todayTargetDayNumber}!`}
+          </p>
+        </div>
+        
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-sm border border-white/20 shrink-0">
+          <Flame size={20} className="text-white fill-white animate-flame-breath" />
+        </div>
+      </div>
+
+      {/* 7-dniowa ścieżka serii z wysokim kontrastem */}
+      <div className="grid grid-cols-7 gap-1.5 sm:gap-2 relative z-10 pt-3 border-t border-white/10">
+        {streakMilestones.map((m) => {
+          return (
+            <div key={m.dayNumber} className="flex flex-col items-center gap-1">
+              <div 
+                className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-black transition-all duration-200 relative ${
+                  m.isCompleted
+                    ? 'bg-[#F97316] text-white shadow-sm border border-white/20'
+                    : m.isTargetToday
+                    ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/20 shadow-sm animate-pulse'
+                    : 'bg-[#18202F] border border-white/10 text-slate-400'
+                }`}
+                title={m.fullLabel}
+              >
+                {m.isCompleted ? (
+                  <Check size={15} strokeWidth={3} />
+                ) : m.isTargetToday ? (
+                  <Flame size={14} className="fill-[#F97316] animate-flame-breath" />
+                ) : (
+                  <span>{m.dayNumber}</span>
+                )}
+              </div>
+              <span 
+                className={`text-[9px] sm:text-[10px] font-bold text-center leading-none truncate max-w-full ${
+                  m.isCompleted 
+                    ? 'text-[#F97316]' 
+                    : m.isTargetToday 
+                    ? 'text-white font-extrabold' 
+                    : 'text-slate-400'
+                }`}
+              >
+                {m.shortLabel}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+
   return (
     <div 
       id="dashboard-scroll-content"
       className="flex flex-col p-4 sm:p-6 lg:p-8 pt-5 pb-[140px] max-w-6xl xl:max-w-7xl mx-auto w-full overflow-x-hidden"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
-      {/* 0. PASEK WYBORU PRZEDMIOTU (RESPONSYWNY, BEZ OBCINANIA KART) */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 select-none">
-        <div className="flex items-center gap-2.5 flex-wrap">
+      {/* 0. PASEK WYBORU PRZEDMIOTU (WYŚRODKOWANY, PŁYNNE PRZEWIJANIE, PEŁNA WIDOCZNOŚĆ BEZ ZWIJANIA) */}
+      <div className="w-full shrink-0 mb-6 select-none">
+        <div 
+          id="dashboard-subject-pills"
+          className="flex items-center sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-2 pt-1 px-1 scrollbar-none flex-nowrap touch-pan-x w-full"
+        >
           {getCkeAvailableSubjects().filter(s => s.isAvailable).map((sub) => {
             const isActive = sub.key === selectedSubjectKey;
             const SubIcon = sub.key === 'pol' ? BookOpen : sub.key.includes('eng') ? Globe : Calculator;
@@ -372,15 +447,15 @@ export function DashboardView({
                   triggerHaptic('light');
                   handleSelectSubject(sub.key);
                 }}
-                className={`group relative flex items-center gap-3 px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border cursor-pointer ${
+                className={`group relative flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border cursor-pointer shrink-0 whitespace-nowrap min-h-[48px] ${
                   isActive
-                    ? 'text-white shadow-sm'
-                    : 'bg-[#111726]/80 hover:bg-[#162033] border-white/5 hover:border-white/15 text-slate-400 hover:text-slate-200'
+                    ? 'text-white shadow-md'
+                    : 'bg-[#0E1522] hover:bg-[#141D2E] border-white/10 hover:border-white/20 text-slate-400 hover:text-slate-200'
                 }`}
                 style={isActive ? {
                   backgroundColor: `${accentColor}18`,
-                  borderColor: `${accentColor}80`,
-                  boxShadow: `0 0 12px ${accentColor}25`
+                  borderColor: accentColor,
+                  boxShadow: `0 0 16px ${accentColor}30`
                 } : undefined}
               >
                 <div 
@@ -399,7 +474,7 @@ export function DashboardView({
 
                 <div className="flex flex-col text-left">
                   <div className="flex items-center gap-1.5 leading-none">
-                    <span className="font-extrabold text-[13px] tracking-tight">{sub.shortName}</span>
+                    <span className="font-extrabold text-[12px] sm:text-[13px] tracking-tight">{sub.shortName}</span>
                     {isActive && (
                       <span 
                         className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0"
@@ -407,32 +482,151 @@ export function DashboardView({
                       />
                     )}
                   </div>
-                  <span className="text-[10px] text-slate-400/80 font-medium leading-tight mt-0.5">
+                  <span className="text-[10px] text-slate-400/90 font-medium leading-tight mt-0.5">
                     {sub.examTag}
                   </span>
                 </div>
               </button>
             );
           })}
-        </div>
 
-        {/* Wskaźnik kolejnych przedmiotów w przygotowaniu */}
-        <div className="hidden sm:flex items-center gap-2 text-[11px] text-slate-400 bg-[#121824]/80 border border-white/5 px-3.5 py-2 rounded-xl">
-          <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]">Wkrótce w JASNE:</span>
-          <span className="text-slate-300 font-medium">Biologia</span>
-          <span className="text-slate-600">•</span>
-          <span className="text-slate-300 font-medium">Chemia</span>
-          <span className="text-slate-600">•</span>
-          <span className="text-slate-300 font-medium">Fizyka</span>
+          {/* Kafelek kolejnych przedmiotów w przygotowaniu na końcu rzędu */}
+          <div className="flex items-center gap-2 text-[11px] text-slate-400 bg-[#0E1522]/80 border border-white/5 px-3.5 py-2.5 rounded-2xl shrink-0 whitespace-nowrap min-h-[48px]">
+            <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]">Wkrótce w JASNE:</span>
+            <span className="text-slate-300 font-medium">Biologia</span>
+            <span className="text-slate-600">•</span>
+            <span className="text-slate-300 font-medium">Chemia</span>
+            <span className="text-slate-600">•</span>
+            <span className="text-slate-300 font-medium">Fizyka</span>
+          </div>
         </div>
       </div>
 
       {/* GŁÓWNA SIATKA DASHBOARDU: 2 KOLUMNY NA DESKTOPIE, 1 NA MOBILE */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         
-        {/* LEWA KOLUMNA: PREDYKTOR, NASTĘPNY KROK, STATYSTYKI */}
+        {/* LEWA KOLUMNA: KARTA LEKCJI (HERO), PREDYKTOR, STATYSTYKI */}
         <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
-          {/* 1. DYNAMICZNY PREDYKTOR WYNIKU MATURALNEGO CKE */}
+          
+          {/* 1. KARTA BIEŻĄCEGO POSTĘPU / NASTĘPNA LEKCJA (HERO CARD) */}
+          {(() => {
+            const activeSub = getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey) || {
+              name: 'Matematyka',
+              shortName: 'Matematyka',
+              accentColor: '#FFB800'
+            };
+            const accentColor = activeSub.accentColor || (selectedSubjectKey === 'pol' ? '#F43F5E' : '#FFB800');
+
+            return (
+              <motion.div
+                initial={{ y: 15, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                className="border rounded-2xl p-4 sm:p-6 relative overflow-hidden transition-colors shadow-lg bg-[#121824]/90 group"
+                style={{
+                  borderColor: `${accentColor}35`
+                }}
+              >
+                {/* Ciepła poświata żarówki w prawym górnym rogu */}
+                <div className="absolute top-4 right-4 flex items-center justify-center">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-md border"
+                    style={{
+                      backgroundColor: `${accentColor}18`,
+                      borderColor: `${accentColor}30`,
+                      boxShadow: `0 0 24px ${accentColor}30`
+                    }}
+                  >
+                    💡
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3 pr-10 sm:pr-14">
+                  {/* Tag działu i nazwa przedmiotu */}
+                  <div className="flex items-center gap-2">
+                    <span 
+                      className="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border uppercase tracking-wider"
+                      style={{
+                        color: accentColor,
+                        backgroundColor: `${accentColor}15`,
+                        borderColor: `${accentColor}30`
+                      }}
+                    >
+                      {nextUp ? `Dział ${(nextUp.topicIdx ?? 0) + 1}` : 'Dział 1'}
+                    </span>
+                    <span className="text-xs font-semibold text-slate-300">
+                      {(activeSub as any).name || activeSub.shortName}
+                    </span>
+                  </div>
+
+                  {/* Tytuł lekcji */}
+                  <div>
+                    <h2 className="font-display font-black text-white text-lg sm:text-2xl leading-tight">
+                      {nextUp ? nextUp.lessonName : 'Wszystkie działy ukończone!'}
+                    </h2>
+                    {nextUp?.topicName && (
+                      <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
+                        {nextUp.topicName}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Pigułki metadanych lekcji: czas, zadania, pewniak */}
+                  <div className="flex items-center gap-2 flex-wrap pt-0.5">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">
+                      <Clock size={13} className="text-slate-400" />
+                      <span>~8 min</span>
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">
+                      <FileText size={13} className="text-slate-400" />
+                      <span>{nextUp ? `${nextUp.totalCount} zadania` : '4 zadania'}</span>
+                    </span>
+                    <span 
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold"
+                      style={{
+                        color: accentColor,
+                        backgroundColor: `${accentColor}12`,
+                        borderColor: `${accentColor}25`
+                      }}
+                    >
+                      <Target size={13} />
+                      <span>Pewniak maturalny</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Stopka karty: postęp i wyrazisty CTA */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pt-4 mt-2 border-t border-white/5">
+                  <span className="text-xs sm:text-sm font-medium text-slate-400">
+                    {nextUp ? `${nextUp.completedCount}/${nextUp.totalCount} zadań zaliczonych w tej lekcji` : 'Wszystko zaliczone!'}
+                  </span>
+
+                  <motion.button
+                    id="dashboard-resume-learning-button"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
+                    onClick={handleResumeClick}
+                    className="shrink-0 font-display font-black text-xs sm:text-sm py-2.5 px-5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg whitespace-nowrap self-stretch sm:self-auto"
+                    style={{
+                      backgroundColor: accentColor,
+                      color: accentColor === '#FFB800' ? '#080B11' : '#FFFFFF',
+                      boxShadow: `0 4px 20px ${accentColor}35`
+                    }}
+                  >
+                    <span>{nextUp ? ((nextUp.completedCount || 0) > 0 ? 'Wznów lekcję' : 'Rozpocznij lekcję') : 'Otwórz mapę'}</span>
+                    <ArrowRight size={15} strokeWidth={2.5} />
+                  </motion.button>
+                </div>
+              </motion.div>
+            );
+          })()}
+
+          {/* WIDGET SERII (STREAK) NA MOBILE - WYŻEJ W PIONOWYM UKŁADZIE PONIŻEJ KARTY LEKCJI */}
+          <div className="block lg:hidden">
+            {renderStreakWidget()}
+          </div>
+
+          {/* 2. DYNAMICZNY PREDYKTOR WYNIKU MATURALNEGO CKE */}
           <PredictorWidget
             result={maturaPrediction}
             currentSubjectKey={selectedSubjectKey}
@@ -440,87 +634,6 @@ export function DashboardView({
             onOpenDiagnostic={onOpenDiagnostic}
             onNavigate={onNavigate}
           />
-
-          {/* 2. KARTA BIEŻĄCEGO POSTĘPU: NASTĘPNY KROK W NAUCE */}
-          {(() => {
-            const activeSub = getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey) || {
-              name: 'Matematyka',
-              shortName: 'Matematyka',
-              accentColor: '#FFB800'
-            };
-            const accentColor = activeSub.accentColor || '#FFB800';
-
-            return (
-              <motion.div
-                initial={{ y: 15, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                className="border rounded-2xl p-4 sm:p-5 relative overflow-hidden transition-colors shadow-sm bg-[#121824]/90"
-                style={{
-                  borderColor: `${accentColor}35`
-                }}
-              >
-                <div className="flex flex-col gap-3.5">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span 
-                        className="flex items-center gap-1.5 text-[10px] font-black uppercase px-2 py-0.5 rounded-full border"
-                        style={{
-                          color: accentColor,
-                          backgroundColor: `${accentColor}15`,
-                          borderColor: `${accentColor}30`
-                        }}
-                      >
-                        <Play size={10} fill="currentColor" />
-                        <span>Następny Krok w Nauce</span>
-                      </span>
-                      <span 
-                        className="text-[10px] font-bold px-2 py-0.5 rounded-full border"
-                        style={{
-                          color: accentColor,
-                          backgroundColor: `${accentColor}10`,
-                          borderColor: `${accentColor}20`
-                        }}
-                      >
-                        {activeSub.name}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-semibold text-slate-400">
-                      {nextUp ? `${nextUp.completedCount}/${nextUp.totalCount} kroków` : 'Wszystko zaliczone!'}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="min-w-0 flex-1 pr-2">
-                      <h3 className="font-display font-black text-white text-base sm:text-lg leading-snug">
-                        {nextUp ? nextUp.lessonName : 'Wszystkie działy ukończone!'}
-                      </h3>
-                      {nextUp && (
-                        <p className="text-xs text-slate-400 font-medium mt-1 truncate">
-                          {nextUp.topicName}
-                        </p>
-                      )}
-                    </div>
-
-                    <motion.button
-                      id="dashboard-resume-learning-button"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.96 }}
-                      onClick={handleResumeClick}
-                      className="shrink-0 font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md whitespace-nowrap"
-                      style={{
-                        backgroundColor: accentColor,
-                        color: accentColor === '#FFB800' ? '#080B11' : '#FFFFFF'
-                      }}
-                    >
-                      <span>{nextUp ? ((nextUp.completedCount || 0) > 0 ? 'WZNÓW NAUKĘ' : 'ROZPOCZNIJ NAUKĘ') : 'OTWÓRZ MAPĘ'}</span>
-                      <ArrowRight size={15} strokeWidth={2.5} />
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })()}
 
           {/* 3. SEKCJA: PANEL STATYSTYK NAUKI */}
           <motion.div
@@ -618,7 +731,7 @@ export function DashboardView({
                       )}
                     </div>
                     <span className="text-[10px] sm:text-[11px] text-slate-400 font-normal mt-0.5 truncate">
-                      {totalMistakes > 0 ? `${totalMistakes} do powtórki` : 'Z poprawnych odp.'}
+                      {totalMistakes > 0 ? `${totalMistakes} do powtórki` : '0 błędów'}
                     </span>
                   </div>
                 </div>
@@ -654,74 +767,10 @@ export function DashboardView({
         {/* PRAWA KOLUMNA: SERIA DNI (STREAK) + SZYBKIE NARZĘDZIA */}
         <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4">
           
-          {/* KARTA SERII DNI (STREAK) */}
-          <motion.div 
-            initial={{ y: 15, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.05, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="bg-gradient-to-br from-[#141A23] to-[#0B0E14] border border-[#F97316]/30 rounded-2xl p-4 sm:p-5 relative overflow-hidden shadow-[0_4px_25px_rgba(249,115,22,0.15)] group"
-          >
-            <div className="absolute top-0 right-0 w-36 h-36 bg-[#F97316]/15 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#EA580C]/10 rounded-full blur-[30px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
-            
-            <div className="flex items-center justify-between relative z-10 mb-3.5">
-              <div className="pr-2">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-display font-black text-[#F97316] text-lg sm:text-xl tracking-wide">
-                    {streakDays} {streakDays === 1 ? 'Dzień' : 'Dni'} z rzędu!
-                  </h3>
-                </div>
-                <p className="text-slate-300 text-[11px] leading-tight mt-0.5">
-                  {isCompletedToday 
-                    ? "Dzisiejszy cel serii zaliczony! Ogień płonie dalej."
-                    : `Cel na dziś: rozwiąż zadanie, aby zaliczyć Dzień ${todayTargetDayNumber}!`}
-                </p>
-              </div>
-              
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-sm border border-white/20 shrink-0">
-                <Flame size={20} className="text-white fill-white animate-flame-breath" />
-              </div>
-            </div>
-
-            {/* 7-dniowa ścieżka serii z wysokim kontrastem */}
-            <div className="grid grid-cols-7 gap-1.5 sm:gap-2 relative z-10 pt-3 border-t border-white/10">
-              {streakMilestones.map((m) => {
-                return (
-                  <div key={m.dayNumber} className="flex flex-col items-center gap-1">
-                    <div 
-                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-black transition-all duration-200 relative ${
-                        m.isCompleted
-                          ? 'bg-[#F97316] text-white shadow-sm border border-white/20'
-                          : m.isTargetToday
-                          ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/20 shadow-sm animate-pulse'
-                          : 'bg-[#18202F] border border-white/10 text-slate-400'
-                      }`}
-                      title={m.fullLabel}
-                    >
-                      {m.isCompleted ? (
-                        <Check size={15} strokeWidth={3} />
-                      ) : m.isTargetToday ? (
-                        <Flame size={14} className="fill-[#F97316] animate-flame-breath" />
-                      ) : (
-                        <span>{m.dayNumber}</span>
-                      )}
-                    </div>
-                    <span 
-                      className={`text-[9px] sm:text-[10px] font-bold text-center leading-none truncate max-w-full ${
-                        m.isCompleted 
-                          ? 'text-[#F97316]' 
-                          : m.isTargetToday 
-                          ? 'text-white font-extrabold' 
-                          : 'text-slate-400'
-                      }`}
-                    >
-                      {m.shortLabel}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </motion.div>
+          {/* WIDGET SERII (STREAK) NA DESKTOPIE */}
+          <div className="hidden lg:block">
+            {renderStreakWidget()}
+          </div>
 
           {/* SZYBKIE AKCJE AI & DIAGNOSTYKA */}
           <div className="flex flex-col gap-2.5">

@@ -156,13 +156,37 @@ export function drawSessionTasks(
     Boolean((lesson as any)?.leksykon);
 
   if (!isPolish) {
+    let mathTasks = [...pool];
+    if (mathTasks.length > 18) {
+      // Wymieszaj i wylosuj 15-18 zadań z zachowaniem reprezentacji zadań otwartych
+      const openTasks = mathTasks.filter((t: any) => 
+        t.type === 'OPEN_PROOF' || t.type === 'OPEN_TASK' || t.type === 'SHORT_ANSWER'
+      );
+      const closedTasks = mathTasks.filter((t: any) => 
+        t.type !== 'OPEN_PROOF' && t.type !== 'OPEN_TASK' && t.type !== 'SHORT_ANSWER'
+      );
+
+      // Cel: 15-18 zadań, w tym 2-4 otwarte
+      const openCount = Math.min(openTasks.length, Math.max(2, Math.min(4, Math.floor(openTasks.length * 0.5))));
+      const closedCount = Math.min(closedTasks.length, 16 - openCount);
+
+      const drawn = [
+        ...shuffle(openTasks).slice(0, openCount),
+        ...shuffle(closedTasks).slice(0, closedCount)
+      ];
+      mathTasks = shuffle(drawn);
+    } else if (mathTasks.length > 0) {
+      // Losowa kolejność przy każdym podejściu do sesji
+      mathTasks = shuffle(mathTasks);
+    }
+
     return {
       lessonId,
-      sessionTasks: pool,
+      sessionTasks: mathTasks,
       formulaSheet,
       theoryPill: lesson?.theory_pill,
-      required_correct_tasks: lesson?.required_correct_tasks || 3,
-      estimated_time_formatted: lesson?.estimated_time_formatted || '~5 min'
+      required_correct_tasks: lesson?.required_correct_tasks || 4,
+      estimated_time_formatted: lesson?.estimated_time_formatted || '~8 min'
     };
   }
 

@@ -298,8 +298,14 @@ export async function ensureCkeCatalogsLoaded(): Promise<void> {
 
       if (weightsSnap.exists()) {
         const data = weightsSnap.data() as { subjects?: Record<string, SubjectCkeConfig>; options?: CkeSubjectOption[] };
-        subjectsConfig = data.subjects && typeof data.subjects === 'object' ? data.subjects : {};
-        subjectOptions = Array.isArray(data.options) ? data.options : [];
+        if (data.subjects && typeof data.subjects === 'object' && Object.keys(data.subjects).length > 0) {
+          subjectsConfig = { ...DEFAULT_CKE_SUBJECTS_CONFIG, ...data.subjects };
+        }
+        if (Array.isArray(data.options) && data.options.length > 0) {
+          subjectOptions = data.options;
+        } else if (!subjectOptions || subjectOptions.length === 0) {
+          subjectOptions = [ ...DEFAULT_CKE_SUBJECT_OPTIONS ];
+        }
       }
 
       isLoaded = formulas.length > 0 || subjectOptions.length > 0;
@@ -353,7 +359,9 @@ export function getCkeFormulaTopics(): CkeFormulaTopic[] {
 }
 
 export function getCkeAvailableSubjects(): CkeSubjectOption[] {
-  return subjectOptions;
+  return (Array.isArray(subjectOptions) && subjectOptions.length > 0)
+    ? subjectOptions
+    : DEFAULT_CKE_SUBJECT_OPTIONS;
 }
 
 export function normalizeSubjectFirestoreId(subjectKeyOrId?: string): string {

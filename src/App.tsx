@@ -884,12 +884,13 @@ export default function App() {
     return true;
   };
 
-  const handleActivatePro = () => {
+  const handleActivatePro = async (_code?: string): Promise<{ ok: boolean; error?: string }> => {
     setUserState(prev => {
       const updated = activatePro(prev);
       saveUserData(updated);
       return updated;
     });
+    return { ok: true };
   };
 
   const handleDeductHeart = (): { wasDeducted: boolean; isOutOfHearts: boolean } => {

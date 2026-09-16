@@ -181,7 +181,7 @@ const initialDataBySubject: Record<string, any> = {
     key: 'eng',
     name: 'Język Angielski',
     shortName: 'Angielski',
-    level: 'Poziom Podstawowy • B1/B2',
+    level: 'Podstawa • B1/B2',
     icon: Globe,
     color: 'text-emerald-400',
     accentColor: '#10B981',
@@ -191,7 +191,7 @@ const initialDataBySubject: Record<string, any> = {
     key: 'math-roz',
     name: 'Matematyka Rozszerzona',
     shortName: 'Matematyka Roz.',
-    level: 'Poziom Rozszerzony • Formuła 2023',
+    level: 'Rozszerzenie • 2023',
     icon: Calculator,
     color: 'text-sky-400',
     accentColor: '#38BDF8',
@@ -201,7 +201,7 @@ const initialDataBySubject: Record<string, any> = {
     key: 'eng-roz',
     name: 'Język Angielski Rozszerzony',
     shortName: 'Angielski Roz.',
-    level: 'Poziom Rozszerzony • B2+/C1',
+    level: 'Rozszerzenie • B2/C1',
     icon: Globe,
     color: 'text-purple-400',
     accentColor: '#A855F7',
@@ -714,9 +714,17 @@ export function LearnView({
            ========================================================================= */}
         {(viewState === 'topics' || viewState === 'subjects') && currentSubject && (() => {
           const allSubjectTopics = currentSubject.topics || [];
+          // Ochrona przed duplikowaniem działów na liście (np. topic-1 i dzial-1)
+          const seenTopicNums = new Set<number>();
+          const dedupedTopics = allSubjectTopics.filter((t: any, idx: number) => {
+            const num = t.numericId || (idx + 1);
+            if (seenTopicNums.has(num)) return false;
+            seenTopicNums.add(num);
+            return true;
+          });
           const topicsMatchingFilter = (selectedSubjectKey === 'pol' && selectedPillarId !== 'all')
-            ? allSubjectTopics.filter((t: any) => t.pillar_id === selectedPillarId)
-            : allSubjectTopics;
+            ? dedupedTopics.filter((t: any) => t.pillar_id === selectedPillarId)
+            : dedupedTopics;
 
           const completedTopicsCount = topicsMatchingFilter.filter((t: any) => {
             const lessons = getLessonsForTopic(t);
@@ -762,11 +770,17 @@ export function LearnView({
                     className="flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 rounded-xl bg-[#101726] hover:bg-[#141C2D] border border-white/10 hover:border-[#FFB800]/40 transition-all cursor-pointer group active:scale-[0.98] shadow-sm min-w-0"
                     title="Kliknij, aby zmienić przedmiot"
                   >
-                    <h1 className="font-display font-black text-white text-sm sm:text-base tracking-tight leading-none group-hover:text-[#FFB800] transition-colors truncate">
+                    <h1 className="font-display font-black text-white text-sm sm:text-base tracking-tight leading-none group-hover:text-[#FFB800] transition-colors shrink-0 whitespace-nowrap">
                       {currentSubject.name}
                     </h1>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#FFB800]/10 text-[#FFB800] border border-[#FFB800]/25 shrink-0">
-                      {currentSubject.key === 'math' ? 'Formuła 2023' : (currentSubject.level || 'Formuła 2023')}
+                      {currentSubject.key === 'math' 
+                        ? 'Formuła 2023' 
+                        : currentSubject.key === 'eng' 
+                          ? 'Podstawa • B1/B2' 
+                          : currentSubject.key === 'eng-roz' 
+                            ? 'Rozszerzenie • B2/C1'
+                            : (currentSubject.level || 'Formuła 2023')}
                     </span>
                     <ChevronDown size={13} className="text-slate-400 group-hover:text-[#FFB800] transition-colors shrink-0" />
                   </button>
@@ -1058,7 +1072,7 @@ export function LearnView({
                                     ? 'text-white group-hover:text-rose-400' 
                                     : 'text-white group-hover:text-[#FFB800]'
                               }`}>
-                                {cleanName}
+                                <MathRenderer content={cleanName} />
                               </h2>
                               {topic.matura_focus ? (
                                 <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
@@ -1218,7 +1232,7 @@ export function LearnView({
                         <ChevronLeft size={20} />
                       </button>
                       <h2 className="font-display font-black text-white text-base sm:text-lg leading-tight truncate">
-                        {cleanTopicTitle(currentTopic.name || currentTopic.title)}
+                        <MathRenderer content={cleanTopicTitle(currentTopic.name || currentTopic.title)} />
                       </h2>
                     </div>
 
@@ -1299,7 +1313,7 @@ export function LearnView({
                       W opracowaniu • Dostępne wkrótce
                     </span>
                     <h3 className="text-lg sm:text-xl font-display font-black text-white mb-2">
-                      {cleanTopicTitle(currentTopic.name)}
+                      <MathRenderer content={cleanTopicTitle(currentTopic.name)} />
                     </h3>
                     <p className="text-xs sm:text-sm text-[#8B8D98] leading-relaxed mb-4 max-w-xs">
                       {currentTopic.description || 'Struktura lekcji oraz baza zadań dla tego działu są przygotowywane zgodnie z wymogami Nowej Formuły 2023.'}
@@ -1451,7 +1465,7 @@ export function LearnView({
                                 <h3 className={`font-display font-bold text-base sm:text-lg leading-snug break-words ${
                                   isUnlocked ? 'text-white' : 'text-slate-400'
                                 }`}>
-                                  {group.name}
+                                  <MathRenderer content={group.name} />
                                 </h3>
 
                                 {/* Szacowany czas i zadania w sesji - Bilans Skuteczności i dynamiczny wymóg */}
@@ -1462,23 +1476,16 @@ export function LearnView({
                                     const lessonMistakesCount = getLessonMistakes(group.id);
 
                                     if (isCompleted) {
-                                      const mistakesLabel = lessonMistakesCount === 1 
-                                        ? '1 błąd poprawiony' 
-                                        : lessonMistakesCount < 5 
-                                          ? `${lessonMistakesCount} błędy poprawione` 
-                                          : `${lessonMistakesCount} błędów poprawionych`;
-
                                       return (
                                         <>
                                           {lessonMistakesCount === 0 ? (
                                             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
                                               <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
-                                              <span>Bezbłędnie (0 błędów) • {reqTasks}/{reqTasks} zadań</span>
+                                              <span>0 błędów</span>
                                             </span>
                                           ) : (
-                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/25 text-slate-300 text-xs font-semibold">
-                                              <RefreshCw size={11} className="text-[#38BDF8] shrink-0" />
-                                              <span>Zaliczono z pętlą • <span className="text-[#38BDF8] font-bold">{mistakesLabel}</span></span>
+                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-semibold">
+                                              <span>{lessonMistakesCount} {lessonMistakesCount === 1 ? 'błąd' : lessonMistakesCount < 5 ? 'błędy' : 'błędów'}</span>
                                             </span>
                                           )}
                                           <span>•</span>
@@ -1647,7 +1654,7 @@ export function LearnView({
                                   )}
                                 </div>
                                 <h3 className="font-display font-extrabold text-white text-lg sm:text-xl">
-                                  {examData.title || `SPRAWDZIAN: ${cleanTopicTitle(currentTopic.name).toUpperCase()}`}
+                                  <MathRenderer content={examData.title || `SPRAWDZIAN: ${cleanTopicTitle(currentTopic.name).toUpperCase()}`} />
                                 </h3>
                                 <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
                                   {examData.subtitle || `${examData.totalQuestions || 8} pytań maturalnych • Limit: ${examData.timeLimitMinutes || 20} minut`}
@@ -1731,7 +1738,7 @@ export function LearnView({
                 animate={isDesktop ? { opacity: 1, scale: 1, y: 0 } : { y: 0 }}
                 exit={isDesktop ? { opacity: 0, scale: 0.96, y: 0 } : { y: '100%' }}
                 transition={isDesktop ? { duration: 0.2, ease: [0.16, 1, 0.3, 1] } : { type: 'spring', damping: 26, stiffness: 280 }}
-                className="relative z-[125] w-full max-w-lg md:max-w-[800px] bg-[#0E131C] border-t md:border border-white/10 rounded-t-3xl md:rounded-3xl p-5 sm:p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.9)] flex flex-col gap-4 max-h-[85vh] md:max-h-[90vh] overflow-y-auto"
+                className="relative z-[125] w-full max-w-lg md:max-w-[800px] mx-auto bg-[#0E131C] border-t md:border border-white/10 rounded-t-3xl md:rounded-3xl p-5 sm:p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.9)] flex flex-col gap-4 max-h-[85vh] md:max-h-[90vh] overflow-y-auto"
                 style={{ paddingBottom: isDesktop ? '1.5rem' : 'max(24px, env(safe-area-inset-bottom, 24px))' }}
               >
                 {/* Grab handle (tylko na mobile) */}

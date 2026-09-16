@@ -14,15 +14,24 @@ export function cleanLatex(mathStr: string): string {
   if (!mathStr) return '';
   let s = mathStr.trim();
 
-  // Fix corrupted form-feed/triangle artifacts (e.g. \f in unescaped \frac becoming Form Feed 0x0C or ▲)
+  // Fix corrupted form-feed/triangle artifacts and control characters (e.g. \f -> 0x0C, \r -> 0x0D, \b -> 0x08, \t -> 0x09)
   s = s
-    .replace(/\x0c\s*rac/g, '\\frac')
-    .replace(/▲\s*rac/g, '\\frac')
-    .replace(/\u25B2\s*rac/g, '\\frac')
-    .replace(/\\?▲\s*rac/g, '\\frac')
-    .replace(/\x0c/g, '')
-    .replace(/\x0dight/g, '\\right')
-    .replace(/\x08egin/g, '\\begin');
+    .replace(/(?:\\x0c|\x0c|\f|\\?▲|\u25B2)\s*rac/g, '\\frac')
+    .replace(/(?:\\x0d|\x0d|\r)\s*angle/g, '\\rangle')
+    .replace(/(?:\\x0d|\x0d|\r)\s*ight/g, '\\right')
+    .replace(/(?:\\x0d|\x0d|\r)\s*ho/g, '\\rho')
+    .replace(/(?:\\x0d|\x0d|\r)\s*oot/g, '\\root')
+    .replace(/(?:\\x08|\x08)\s*egin/g, '\\begin')
+    .replace(/(?:\\x08|\x08)\s*ullet/g, '\\bullet')
+    .replace(/(?:\\x08|\x08)\s*eta/g, '\\beta')
+    .replace(/(?:\\x09|\x09|\t)\s*imes/g, '\\times')
+    .replace(/(?:\\x09|\x09|\t)\s*heta/g, '\\theta')
+    .replace(/(?:\\x09|\x09|\t)\s*ext/g, '\\text')
+    .replace(/(?:\\x09|\x09|\t)\s*an/g, '\\tan')
+    .replace(/(?:\\x09|\x09|\t)\s*au/g, '\\tau')
+    .replace(/(?:\\x0a|\x0a|\n)\s*eq/g, '\\neq')
+    .replace(/(?:\\x0c|\x0c)/g, '')
+    .replace(/(?<=[,\s\d\-+])angle(?=[\s\)\],.;$]|\b)/g, '\\rangle');
 
   // Strip outer delimiters
   if (s.startsWith('$$') && s.endsWith('$$') && s.length >= 4) {
@@ -256,13 +265,21 @@ function renderFormattedText(textChunk: string, keyPrefix: string): React.ReactN
  */
 export function autoWrapLatex(rawStr: string): string {
   if (!rawStr || typeof rawStr !== 'string') return '';
+  const leadingSpace = rawStr.match(/^\s*/)?.[0] || '';
+  const trailingSpace = rawStr.match(/\s*$/)?.[0] || '';
   let s = rawStr.trim();
 
   // If already contains math delimiters everywhere it needs to ($...$ or $$...$$ or \[...\])
   const hasInlineDelimiters = s.includes('$') || s.includes('\\(') || s.includes('\\[') || s.includes('\\begin{');
   const hasLatexCommands = /\\[a-zA-Z]+/.test(s);
   // Check if string contains regular prose words (words of 2+ letters that are not math commands/functions)
-  const textWithoutLatex = s.replace(/\\[a-zA-Z]+/g, '');
+  const textWithoutLatex = s
+    .replace(/\\text\{[^{}]*\}/g, '')
+    .replace(/\\mbox\{[^{}]*\}/g, '')
+    .replace(/\\[a-zA-Z]+/g, '')
+    .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   const words = textWithoutLatex.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
   const mathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
   const hasProseWords = words.some(w => !mathKeywords.has(w.toLowerCase()));
@@ -276,7 +293,7 @@ export function autoWrapLatex(rawStr: string): string {
       punct = '.';
       math = math.slice(0, -1).trim();
     }
-    return `$${cleanLatex(math)}$${punct}`;
+    return leadingSpace + `$${cleanLatex(math)}$${punct}` + trailingSpace;
   }
 
   // Case 2: Prose text with mathematical clauses following colons (e.g. "W nawiasie: 4/6 - 3/6 = 1/6. Dzielenie: 1/6 * 12/5 = 12/30 = 2/5.")
@@ -322,6 +339,15 @@ export function autoWrapLatex(rawStr: string): string {
         return match;
       });
     }
+
+    // 3b2. Wrap mathematical intervals in prose before standalone command wrapping:
+    // e.g. "A = \langle -5, 2)", "B = (-1, 6\rangle)", "\langle 1, 5)"
+    s = s.replace(/(^|[\s(])([A-Z]\s*=\s*(?:\\langle|[(\langle])\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*[,;]\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*(?:\\rangle|[)\rangle]))(?=[\s).,;!?]|$)/g, (_m, pre, expr) => {
+      return `${pre}$${cleanLatex(expr)}$`;
+    });
+    s = s.replace(/(^|[\s(])((?:\\langle|[(\langle])\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*[,;]\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*(?:\\rangle|[)\rangle]))(?=[\s).,;!?]|$)/g, (_m, pre, expr) => {
+      return `${pre}$${cleanLatex(expr)}$`;
+    });
 
     // 3c. Only on parts outside $...$: wrap standalone \command tokens (e.g. "liczba \sqrt{7}")
     const parts = s.split(/(\$\$[\s\S]*?\$\$|\$[^\$]+?\$)/g);
@@ -386,10 +412,18 @@ export function autoWrapLatex(rawStr: string): string {
     // 4g. Any leftover raw != outside math delimiters -> $\neq$
     p = p.replace(/!=/g, '$\\neq$');
 
+    // 4h. Ensure space after colon before letters (e.g. ":nową" -> ": nową")
+    p = p.replace(/:([a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ])/g, ': $1');
+
+    // 4i. Standalone powers or expressions with ^ outside math delimiters: e.g. "x^2", "(a+b)^2", "a^n", "2^3"
+    p = p.replace(/(^|[\s(])([a-zA-Z\d\(\)]+\^[a-zA-Z\d\(\)\{\}\+\-]+(?:\s*[\+\-\*\/=]\s*[a-zA-Z\d\(\)]+\^[a-zA-Z\d\(\)\{\}\+\-]+|\s*[\+\-\*\/=]\s*[a-zA-Z\d]+)*)(?=[\s).,;!?]|$)/g, (_m, pre, mathExpr) => {
+      return `${pre}$${cleanLatex(mathExpr)}$`;
+    });
+
     return p;
   }).join('');
 
-  return s;
+  return leadingSpace + s + trailingSpace;
 }
 
 interface MathRendererProps {
@@ -455,12 +489,22 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
 
   // Fix Form Feed / triangle artifacts across the entire rawInput before splitting by $
   const sanitizedInput = rawInput
-    .replace(/\x0c\s*rac/g, '\\frac')
-    .replace(/▲\s*rac/g, '\\frac')
-    .replace(/\u25B2\s*rac/g, '\\frac')
-    .replace(/\\?▲\s*rac/g, '\\frac')
-    .replace(/\x0dight/g, '\\right')
-    .replace(/\x08egin/g, '\\begin');
+    .replace(/(?:\\x0c|\x0c|\f|\\?▲|\u25B2)\s*rac/g, '\\frac')
+    .replace(/(?:\\x0d|\x0d|\r)\s*angle/g, '\\rangle')
+    .replace(/(?:\\x0d|\x0d|\r)\s*ight/g, '\\right')
+    .replace(/(?:\\x0d|\x0d|\r)\s*ho/g, '\\rho')
+    .replace(/(?:\\x0d|\x0d|\r)\s*oot/g, '\\root')
+    .replace(/(?:\\x08|\x08)\s*egin/g, '\\begin')
+    .replace(/(?:\\x08|\x08)\s*ullet/g, '\\bullet')
+    .replace(/(?:\\x08|\x08)\s*eta/g, '\\beta')
+    .replace(/(?:\\x09|\x09|\t)\s*imes/g, '\\times')
+    .replace(/(?:\\x09|\x09|\t)\s*heta/g, '\\theta')
+    .replace(/(?:\\x09|\x09|\t)\s*ext/g, '\\text')
+    .replace(/(?:\\x09|\x09|\t)\s*an/g, '\\tan')
+    .replace(/(?:\\x09|\x09|\t)\s*au/g, '\\tau')
+    .replace(/(?:\\x0a|\x0a|\n)\s*eq/g, '\\neq')
+    .replace(/(?:\\x0c|\x0c)/g, '')
+    .replace(/(?<=[,\s\d\-+])angle(?=[\s\)\],.;$]|\b)/g, '\\rangle');
 
   // Normalizacja powielonych znaków dolara (np. $$$$ -> $$) bez ucinania spacji na krańcach tekstu
   const rawContent = sanitizedInput.replace(/\${3,}/g, '$$');
@@ -527,19 +571,24 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
 
   const trimmedForBlockCheck = rawContent.trim();
   const hasInlineDelimiters = trimmedForBlockCheck.includes('$');
-  const hasPolishLetters = /[ąćęłńóśźż]/i.test(trimmedForBlockCheck);
-  const textWithoutLatexBlock = trimmedForBlockCheck.replace(/\\[a-zA-Z]+/g, '');
+  // Strip \text{...} blocks, LaTeX commands, and math symbols before checking for non-math prose words
+  const textWithoutLatexBlock = trimmedForBlockCheck
+    .replace(/\\text\{[^{}]*\}/g, '')
+    .replace(/\\[a-zA-Z]+/g, '')
+    .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   const blockWords = textWithoutLatexBlock.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
   const blockMathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
   const hasProseWordsBlock = blockWords.some(w => !blockMathKeywords.has(w.toLowerCase()));
 
-  // Czysty blok LaTeX: displayMode lub \begin{...} lub $$...$$, ale TYLKO wtedy, gdy nie jest to tekst mieszany z $ ani tekst zawierający słowa
+  // Czysty blok LaTeX: displayMode lub \begin{...} lub $$...$$, lub ciąg z komendami LaTeX
+  const hasLatexCommands = /\\[a-zA-Z]+|\{|\}/.test(trimmedForBlockCheck);
   const isPureLatexBlock = 
-    !hasInlineDelimiters && 
-    !hasPolishLetters && 
-    !hasProseWordsBlock &&
+    (!hasInlineDelimiters && (displayMode || !hasProseWordsBlock)) &&
     (
       displayMode || 
+      hasLatexCommands ||
       trimmedForBlockCheck.startsWith('\\begin{') || 
       (trimmedForBlockCheck.startsWith('$$') && trimmedForBlockCheck.endsWith('$$') && !trimmedForBlockCheck.slice(2, -2).includes('$$'))
     );

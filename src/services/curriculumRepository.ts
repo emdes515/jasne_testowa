@@ -122,9 +122,20 @@ export const curriculumRepository = {
           topicByIdCache.set(topicDoc.id, topicDoc); // fallback alias
         });
 
-        topicsList.sort((a, b) => (a.numericId || 0) - (b.numericId || 0));
-        topicsBySubjectCache.set(subjectId, topicsList);
-        return topicsList;
+        // Dedyplikacja tematów po numericId (faworyzuj dzial- nad archiwalnymi topic-)
+        const dedupedMap = new Map<number, TopicDocument>();
+        for (const t of topicsList) {
+          const num = t.numericId || 1;
+          const existing = dedupedMap.get(num);
+          if (!existing) {
+            dedupedMap.set(num, t);
+          } else if (t.id.startsWith('dzial-') && !existing.id.startsWith('dzial-')) {
+            dedupedMap.set(num, t);
+          }
+        }
+        const finalTopicsList = Array.from(dedupedMap.values()).sort((a, b) => (a.numericId || 0) - (b.numericId || 0));
+        topicsBySubjectCache.set(subjectId, finalTopicsList);
+        return finalTopicsList;
       }
     } catch (err) {
       console.warn(`[curriculumRepository] Failed to fetch topics for subject ${subjectId}:`, err);

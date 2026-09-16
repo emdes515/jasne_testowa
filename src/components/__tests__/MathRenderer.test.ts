@@ -121,6 +121,8 @@ describe('autoWrapLatex', () => {
       .toBe('$(\\sqrt{7}-1)^2 + 2\\sqrt{7} = 7 - 2\\sqrt{7} + 1 + 2\\sqrt{7} = 8 \\in \\mathbb{Z}$.');
     expect(autoWrapLatex('8 \\in \\mathbb{Z}')).toBe('$8 \\in \\mathbb{Z}$');
     expect(autoWrapLatex('\\frac{1}{8}')).toBe('$\\frac{1}{8}$');
+    expect(cleanLatex('A \\cup B = \\{x \\in \\mathbb{R}: x \\in A \\text{ lub } x \\in B\\}'))
+      .toBe('A \\cup B = \\{x \\in \\mathbb{R}: x \\in A \\text{ lub } x \\in B\\}');
   });
 
   it('wraps math expressions in CKE scoring criteria lines', () => {
@@ -155,6 +157,15 @@ describe('autoWrapLatex', () => {
     expect(autoWrapLatex('x != 5')).toBe('$x \\neq 5$');
     expect(autoWrapLatex('a != 0')).toBe('$a \\neq 0$');
     expect(autoWrapLatex('wartość pi')).toBe('wartość $\\pi$');
+  });
+
+  it('wraps mathematical interval definitions in prose and heals corrupted angle tokens', () => {
+    expect(cleanLatex('B = (-1, 6angle.')).toBe('B = (-1, 6\\rangle.');
+    expect(cleanLatex('x \\in \\x0dangle -5, 2)')).toBe('x \\in \\rangle -5, 2)');
+    expect(autoWrapLatex('Wyznacz zbiór B = (-1, 6\\rangle. Zbadaj jego elementy.'))
+      .toBe('Wyznacz zbiór $B = (-1, 6\\rangle$. Zbadaj jego elementy.');
+    expect(autoWrapLatex('Wyznacz zbiór A = \\langle -5, 2) w zadaniu.'))
+      .toBe('Wyznacz zbiór $A = \\langle -5, 2)$ w zadaniu.');
   });
 });
 

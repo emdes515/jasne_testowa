@@ -283,82 +283,130 @@
       "topics": {
         "eng-dzial-1": {
           "topicId": "eng-dzial-1",
-          "name": "Czasy gramatyczne i aspekty",
-          "minPoints": 4,
-          "maxPoints": 7,
-          "averagePoints": 5.5,
-          "importance": "CRITICAL_PEWNIAK"
+          "name": "Dział 1: Człowiek (People & Personality)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
         },
         "eng-dzial-2": {
           "topicId": "eng-dzial-2",
-          "name": "Konstrukcje czasownikowe (Gerund & Infinitive)",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
+          "name": "Dział 2: Miejsce zamieszkania (Home & Housing)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
           "importance": "HIGH"
         },
         "eng-dzial-3": {
           "topicId": "eng-dzial-3",
-          "name": "Rzeczowniki, przedimki i kwantyfikatory",
+          "name": "Dział 3: Edukacja i szkoła (Education & School)",
           "minPoints": 2,
           "maxPoints": 4,
-          "averagePoints": 3,
-          "importance": "MEDIUM"
+          "averagePoints": 2.5,
+          "importance": "HIGH"
         },
         "eng-dzial-4": {
           "topicId": "eng-dzial-4",
-          "name": "Przymiotniki, przysłówki i zaimki",
+          "name": "Dział 4: Praca i kariera (Work & Career)",
           "minPoints": 2,
           "maxPoints": 4,
-          "averagePoints": 3,
-          "importance": "MEDIUM"
+          "averagePoints": 2.5,
+          "importance": "HIGH"
         },
         "eng-dzial-5": {
           "topicId": "eng-dzial-5",
-          "name": "Czasowniki modalne",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
+          "name": "Dział 5: Życie prywatne i relacje (Family & Social Life)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
           "importance": "HIGH"
         },
         "eng-dzial-6": {
           "topicId": "eng-dzial-6",
-          "name": "Strona bierna i mowa zależna",
-          "minPoints": 4,
-          "maxPoints": 6,
-          "averagePoints": 5,
-          "importance": "CRITICAL_PEWNIAK"
+          "name": "Dział 6: Żywienie i gastronomia (Food & Dining)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
         },
         "eng-dzial-7": {
           "topicId": "eng-dzial-7",
-          "name": "Okresy warunkowe (Conditionals 0, 1, 2)",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
-          "importance": "CRITICAL_PEWNIAK"
+          "name": "Dział 7: Zakupy i usługi (Shopping & Services)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
         },
         "eng-dzial-8": {
           "topicId": "eng-dzial-8",
-          "name": "Słowotwórstwo podstawowe",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
+          "name": "Dział 8: Podróżowanie i turystyka (Travel & Tourism)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
           "importance": "HIGH"
         },
         "eng-dzial-9": {
           "topicId": "eng-dzial-9",
-          "name": "Reakcje językowe i parafrazy zdań",
-          "minPoints": 4,
-          "maxPoints": 6,
-          "averagePoints": 5,
-          "importance": "CRITICAL_PEWNIAK"
+          "name": "Dział 9: Kultura i media (Culture & Media)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
         },
         "eng-dzial-10": {
           "topicId": "eng-dzial-10",
-          "name": "Wypowiedź pisemna (E-mail i wpis na blogu)",
+          "name": "Dział 10: Sport i zdrowy tryb życia (Sport & Healthy Living)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
+        },
+        "eng-dzial-11": {
+          "topicId": "eng-dzial-11",
+          "name": "Dział 11: Zdrowie i medycyna (Health & Medicine)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
+        },
+        "eng-dzial-12": {
+          "topicId": "eng-dzial-12",
+          "name": "Dział 12: Świat przyrody i ekologia (Nature & Ecology)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
+        },
+        "eng-dzial-13": {
+          "topicId": "eng-dzial-13",
+          "name": "Dział 13: Nauka i technologia (Science & Technology)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
+        },
+        "eng-dzial-14": {
+          "topicId": "eng-dzial-14",
+          "name": "Dział 14: Państwo i społeczeństwo (State & Society)",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 2.5,
+          "importance": "HIGH"
+        },
+        "eng-dzial-15": {
+          "topicId": "eng-dzial-15",
+          "name": "Dział 15: Use of English Master (Środki Językowe CKE)",
+          "minPoints": 9,
+          "maxPoints": 13,
+          "averagePoints": 11.0,
+          "importance": "CRITICAL_PEWNIAK"
+        },
+        "eng-dzial-16": {
+          "topicId": "eng-dzial-16",
+          "name": "Dział 16: Writing & Reading Master (Wypowiedź Pisemna i Czytanie CKE)",
           "minPoints": 12,
-          "maxPoints": 12,
-          "averagePoints": 12,
+          "maxPoints": 16,
+          "averagePoints": 14.0,
           "importance": "CRITICAL_PEWNIAK"
         }
       }

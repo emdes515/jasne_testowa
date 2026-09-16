@@ -504,7 +504,23 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
           {/* Question banner */}
           <div className="p-5 sm:p-6 rounded-2xl bg-[#0F1622] border border-white/10 shadow-lg">
             <div className="flex items-center justify-between text-xs text-slate-400 mb-3 border-b border-white/5 pb-2">
-              <span className="font-semibold">{currentTask.source}</span>
+              {(() => {
+                const s = currentTask.source || 'Zadanie egzaminacyjne';
+                const isAutorskie = /autorsk/i.test(s);
+                const isInformator = /informator|arkusz\s*pokazowy/i.test(s);
+                const badgeClass = isAutorskie
+                  ? 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300'
+                  : isInformator
+                    ? 'bg-amber-500/15 border-amber-400/30 text-amber-300'
+                    : 'bg-sky-500/15 border-sky-400/30 text-sky-300';
+                const dotClass = isAutorskie ? 'bg-emerald-400' : isInformator ? 'bg-amber-400' : 'bg-sky-400';
+                return (
+                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg border font-semibold text-[11px] sm:text-xs shadow-sm ${badgeClass}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 shadow-sm ${dotClass}`} />
+                    <span>{s}</span>
+                  </span>
+                );
+              })()}
               <span className="font-bold text-amber-400">{currentTask.points} pkt</span>
             </div>
 

@@ -103,6 +103,12 @@ export interface BookSummary {
   key_scenes: BookScene[];
 }
 
+export interface FormattedFormulaItem {
+  title?: string;
+  latex: string;
+  description?: string;
+}
+
 export interface LessonTheoryPill {
   lessonId?: string;
   title?: string;

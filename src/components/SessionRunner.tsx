@@ -28,7 +28,10 @@ import {
   Feather,
   Scan,
   Sparkles,
-  Award
+  Award,
+  Calculator,
+  ShieldAlert,
+  BookmarkCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -82,7 +85,50 @@ function renderMicroContent(rawText?: string | any) {
 
   if (!textToParse || !textToParse.trim()) return null;
 
-  const parts = textToParse.split(/(\*\*[^*]+\*\*)/g);
+  // Format bullet items into distinct micro-cards if bullet points are present
+  const bulletItems = textToParse
+    .split(/(?:^|\n+)\s*[•\-\*]\s+/g)
+    .map(item => item.trim())
+    .filter(Boolean);
+
+  if (bulletItems.length > 1 || (textToParse.trim().startsWith('•') && bulletItems.length >= 1)) {
+    return (
+      <div className="space-y-3 my-1">
+        {bulletItems.map((itemStr, idx) => {
+          // Ensure space after colon before words (e.g. ":nową" -> ": nową")
+          const normalizedItem = itemStr.replace(/:([a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ])/g, ': $1');
+          const parts = normalizedItem.split(/(\*\*[^*]+\*\*)/g);
+
+          return (
+            <div
+              key={idx}
+              className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-[#0E1522]/90 border border-white/10 hover:border-amber-500/30 transition-all shadow-sm group"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.6)] shrink-0 mt-2" />
+              <div className="flex-1 text-slate-200 text-sm sm:text-base leading-relaxed break-words font-normal">
+                {parts.map((part, pIdx) => {
+                  if (!part) return null;
+                  if (part.startsWith('**') && part.endsWith('**')) {
+                    const boldText = part.slice(2, -2);
+                    return (
+                      <strong key={pIdx} className="font-bold text-white tracking-wide mr-1">
+                        <MathRenderer content={boldText} />
+                      </strong>
+                    );
+                  }
+                  return <MathRenderer key={pIdx} content={part} />;
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // Standard non-bullet inline text formatting
+  const normalizedText = textToParse.replace(/:([a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ])/g, ': $1');
+  const parts = normalizedText.split(/(\*\*[^*]+\*\*)/g);
   return (
     <>
       {parts.map((part, index) => {
@@ -90,7 +136,7 @@ function renderMicroContent(rawText?: string | any) {
         if (part.startsWith('**') && part.endsWith('**')) {
           const boldText = part.slice(2, -2);
           return (
-            <strong key={index} className="font-bold text-white">
+            <strong key={index} className="font-bold text-white mr-1">
               <MathRenderer content={boldText} />
             </strong>
           );
@@ -98,6 +144,136 @@ function renderMicroContent(rawText?: string | any) {
         return <MathRenderer key={index} content={part} />;
       })}
     </>
+  );
+}
+
+/**
+ * Sanitizes and cleans up examiner tips, replacing sensationalist phrases (e.g. ALL CAPS "ŻELAZNY PEWNIAK")
+ * with a professional, mentoring tone.
+ */
+function sanitizeExaminerTip(text: string): string {
+  if (!text) return '';
+  let cleaned = text
+    .replace(/[Żż]elazny\s+pewniak[^\n:!.]*(?::|!|\.|\b)\s*/gi, '')
+    .replace(/\b100%\s+pewniak!?/gi, 'Częsty motyw w arkuszach CKE.')
+    .replace(/NIGDY\s+nie\s+daje/g, 'nie daje')
+    .replace(/\bZAWSZE\b/g, 'zawsze')
+    .replace(/\bDOKŁADNY\b/g, 'dokładny')
+    .trim();
+  if (cleaned.length > 0) {
+    cleaned = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+  }
+  return cleaned;
+}
+
+/**
+ * Renders the conceptual introduction & definition card with visual hierarchy:
+ * - Upper card: Conceptual definition with stylish left accent border (border-l-4)
+ * - Lower cards: Extracted key formulas and operational rules (e.g. Podwyżka/Obniżka)
+ */
+function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolean) {
+  if (!rawText) return null;
+  let textToParse = '';
+  if (typeof rawText === 'string') {
+    textToParse = rawText;
+  } else if (Array.isArray(rawText)) {
+    textToParse = rawText.map(item => (typeof item === 'string' ? item : item?.text || item?.description || '')).filter(Boolean).join('\n\n');
+  } else if (typeof rawText === 'object') {
+    textToParse = rawText.description || rawText.text || JSON.stringify(rawText);
+  } else {
+    textToParse = String(rawText);
+  }
+
+  if (!textToParse || !textToParse.trim()) return null;
+
+  // Split by full stop when followed by capital letters (distinct conceptual sentences)
+  const sentences = textToParse
+    .split(/(?<=[.?!])\s+(?=[A-ZĄĆĘŁŃÓŚŹŻ])/)
+    .map(s => s.trim())
+    .filter(Boolean);
+
+  const hasFormulaClauses = sentences.length >= 2 && sentences.slice(1).some(s => 
+    /podwyżka|obniżka|mnożenie|iloraz|wzór|równanie|zależność|współczynnik|dodawanie/i.test(s) && (s.includes('$') || s.includes('='))
+  );
+
+  if (hasFormulaClauses) {
+    const mainDefinition = sentences[0];
+    const formulaClauses = sentences.slice(1);
+
+    return (
+      <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-4">
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+          <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
+          <span>Wprowadzenie i definicja</span>
+        </div>
+
+        {/* 1. Definicja pojęciowa z lewym paskiem akcentującym */}
+        <div className={`p-3.5 sm:p-4 rounded-xl border-l-4 ${
+          isPolishSession
+            ? 'border-rose-500 bg-rose-500/5 text-rose-100'
+            : 'border-amber-400 bg-amber-500/5 text-amber-100'
+        } text-sm sm:text-base leading-relaxed`}>
+          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+            Intuicja i definicja
+          </div>
+          <div className="text-slate-200">
+            {renderMicroContent(mainDefinition)}
+          </div>
+        </div>
+
+        {/* 2. Wyodrębnione kafelki z kluczowymi formułami / operacjami */}
+        <div className="space-y-2">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+            Kluczowe reguły i zależności
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {formulaClauses.map((clause, idx) => {
+              let label = `Reguła ${idx + 1}`;
+              if (/^podwyżka/i.test(clause)) label = 'Podwyżka procentowa';
+              else if (/^obniżka/i.test(clause)) label = 'Obniżka procentowa';
+              else if (/^wzór/i.test(clause)) label = 'Zapis formalny';
+              else if (/^zależność/i.test(clause)) label = 'Zależność';
+
+              return (
+                <div
+                  key={idx}
+                  className="p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-white/5 hover:border-white/10 transition-colors flex flex-col gap-1.5 shadow-sm"
+                >
+                  <span className={`text-[11px] font-bold uppercase tracking-wide flex items-center gap-1.5 ${
+                    isPolishSession ? 'text-rose-400' : 'text-amber-400'
+                  }`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-rose-400' : 'bg-amber-400'}`} />
+                    {label}
+                  </span>
+                  <div className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    {renderMicroContent(clause)}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Standardowy elegancki widok z lewym paskiem akcentującym dla pojedynczych definicji
+  return (
+    <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 text-slate-200 text-sm sm:text-base leading-relaxed shadow-sm space-y-3">
+      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+        <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
+        <span>Wprowadzenie i definicja</span>
+      </div>
+      <div className={`p-3.5 sm:p-4 rounded-xl border-l-4 ${
+        isPolishSession
+          ? 'border-rose-500 bg-rose-500/5 text-rose-100'
+          : 'border-amber-400 bg-amber-500/5 text-amber-100'
+      } text-sm sm:text-base leading-relaxed`}>
+        <div className="text-slate-200">
+          {renderMicroContent(textToParse)}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -195,10 +371,11 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
 export interface FormattedFormulaItem {
   title?: string;
   latex: string;
+  description?: string;
 }
 
 /**
- * Helper to extract array of formulas safely with title and latex
+ * Helper to extract array of formulas safely with title, latex and description
  */
 function getCoreFormulas(raw: any): FormattedFormulaItem[] {
   if (!raw) return [];
@@ -222,11 +399,13 @@ function getCoreFormulas(raw: any): FormattedFormulaItem[] {
       }
     } else if (typeof item === 'object') {
       const latex = item.latex || item.formula || item.content_latex || item.content || item.math || item.def || '';
-      const title = item.title || item.name || item.label || item.description || '';
-      if (latex || title) {
+      const title = item.title || item.name || item.label || '';
+      const description = item.description || item.desc || item.explanation || item.note || item.legend || '';
+      if (latex || title || description) {
         results.push({
           title: title ? String(title).trim() : undefined,
-          latex: latex ? String(latex).trim() : (title ? String(title).trim() : '')
+          latex: latex ? String(latex).trim() : (title ? String(title).trim() : ''),
+          description: description ? String(description).trim() : undefined
         });
       }
     }
@@ -676,14 +855,99 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return `${m} min ${s} s`;
   }, [activeSeconds]);
 
-  const taskSourceLabel = useMemo(() => {
-    const raw = currentTask?.source || currentTask?.cke_source;
-    if (!raw) return 'Zadanie maturalne';
-    let clean = raw.replace(/CKE\s*/gi, '').replace(/\s*•\s*\d+\s*pkt.*$/gi, '').trim();
-    clean = clean.replace(/^[,\-–\s]+|[,\-–\s]+$/g, '').trim();
-    if (!clean) return 'Zadanie maturalne';
-    return clean;
+  const { lessonPillLabel, lessonTitleClean } = useMemo(() => {
+    const raw = lessonTitle || '';
+    const match = raw.match(/^(?:Lekcja\s+)?(\d+\.\d+)\s*[:\-–]?\s*(.*)$/i);
+    if (match) {
+      return {
+        lessonPillLabel: `LEKCJA ${match[1]}`,
+        lessonTitleClean: match[2].trim() || raw
+      };
+    }
+    return {
+      lessonPillLabel: null,
+      lessonTitleClean: raw
+    };
+  }, [lessonTitle]);
+
+  // Rozpoznawanie autentycznego źródła zadania i stylu plakietki (CKE vs Autorskie vs Informator)
+  const taskSourceBadge = useMemo(() => {
+    const raw = String(currentTask?.source || currentTask?.cke_source || currentTask?.cke_badge || currentTask?.badge || '').trim();
+    
+    // 1. Zadanie autorskie / treningowe
+    if (/autorsk/i.test(raw) || !raw) {
+      return {
+        label: 'Zadanie autorskie',
+        type: 'autorskie' as const,
+        badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
+        dotClass: 'bg-emerald-400'
+      };
+    }
+
+    // 2. Informator CKE / Arkusz pokazowy
+    if (/informator|arkusz\s*pokazowy/i.test(raw)) {
+      const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+)/i);
+      let label = 'CKE • Informator maturalny';
+      if (/pokazowy/i.test(raw)) {
+        label = 'CKE • Arkusz pokazowy';
+      }
+      if (zadMatch) {
+        label += ` • Zad. ${zadMatch[1]}`;
+      }
+      return {
+        label,
+        type: 'informator' as const,
+        badgeClass: 'bg-amber-500/15 border-amber-400/30 text-amber-300',
+        dotClass: 'bg-amber-400'
+      };
+    }
+
+    // 3. Oficjalne arkusze CKE
+    const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+)/i);
+    const monthMatch = raw.match(/(maj|czerwiec|sierpi?e[nń]|grudzi?e[nń]|wrzesi?e[nń]|marzec)/i);
+    const yearMatch = raw.match(/20\d\d/);
+    
+    if (monthMatch && yearMatch) {
+      const mRaw = monthMatch[1].toLowerCase();
+      const monthMap: Record<string, string> = {
+        maj: 'Maj', czerwiec: 'Czerwiec', sierpien: 'Sierpień', 'sierpień': 'Sierpień',
+        grudzien: 'Grudzień', 'grudzień': 'Grudzień', wrzesien: 'Wrzesień', 'wrzesień': 'Wrzesień', marzec: 'Marzec'
+      };
+      const mClean = monthMap[mRaw] || mRaw.charAt(0).toUpperCase() + mRaw.slice(1);
+      const isProbna = /próbna|probna|grudz|wrzes/i.test(raw);
+      const prefix = isProbna ? 'Matura Próbna' : 'Matura';
+      let label = `${prefix} ${mClean} ${yearMatch[0]}`;
+      if (zadMatch) {
+        label += ` • Zad. ${zadMatch[1]}`;
+      }
+      return {
+        label,
+        type: 'cke_matura' as const,
+        badgeClass: 'bg-sky-500/15 border-sky-400/30 text-sky-300',
+        dotClass: 'bg-sky-400'
+      };
+    }
+
+    // Jeśli raw zawiera "Zad.", zachowaj go z przedrostkiem Matura CKE
+    if (zadMatch) {
+      return {
+        label: raw.startsWith('CKE') || raw.startsWith('Matura') ? raw : `Matura CKE • Zad. ${zadMatch[1]}`,
+        type: 'cke_matura' as const,
+        badgeClass: 'bg-sky-500/15 border-sky-400/30 text-sky-300',
+        dotClass: 'bg-sky-400'
+      };
+    }
+
+    // Fallback: jeśli brak konkretnego oznaczenia matury ani numeru, to ćwiczenie autorskie
+    return {
+      label: 'Zadanie autorskie',
+      type: 'autorskie' as const,
+      badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
+      dotClass: 'bg-emerald-400'
+    };
   }, [currentTask]);
+
+  const taskSourceLabel = taskSourceBadge.label;
 
   const taskPointsCount = useMemo(() => {
     const pts = currentTask?.points || (isOpenTask ? 2 : 1);
@@ -791,7 +1055,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     if (isSingleChoice) {
       const correctOpt = (randomizedOptions || []).find((o: any) => o.is_correct);
       if (correctOpt) {
-        return correctOpt.text ? `${correctOpt.id} ${correctOpt.text}` : correctOpt.id;
+        return correctOpt.text ? `${correctOpt.id}: ${correctOpt.text}` : correctOpt.id;
       }
       return currentTask?.correct_answer || currentTask?.correctAnswer || 'A';
     }
@@ -1964,7 +2228,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             >
               {sessionMistakesCount === 0 
                 ? 'Perfekcyjna runda! Opanowałeś wszystkie zadania za pierwszym podejściem.'
-                : 'Lekcja zaliczona. Wyeliminowałeś pułapki w pętli i opanowałeś materiał.'
+                : 'Lekcja zaliczona. Materiał opanowany.'
               }
             </motion.p>
 
@@ -2120,40 +2384,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 }`}>
                   Pigułka wiedzy
                 </span>
-                <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                  {Array.from({ length: 4 }).map((_, idx) => {
-                    const isDone = idx < theorySubStep;
-                    const isActive = idx === theorySubStep;
-
-                    return (
-                      <div
-                        key={idx}
-                        className={`flex-1 h-2 sm:h-2.5 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
-                          isDone
-                            ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-sm'
-                            : isActive
-                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-sm ring-1 ring-[#FFB800]/50'
-                              : 'bg-slate-900/90 border border-white/10 shadow-inner'
-                        }`}
-                      >
-                        <motion.div
-                          initial={false}
-                          animate={{ width: isDone || isActive ? '100%' : '0%' }}
-                          transition={{ type: 'spring', stiffness: 150, damping: 20 }}
-                          className={`h-full rounded-full relative overflow-hidden transition-all duration-300 ${
-                            isDone
-                              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-sm'
-                              : isActive
-                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-sm animate-pulse'
-                                : 'bg-transparent'
-                          }`}
-                        >
-                          <div className="absolute top-0 inset-x-0.5 h-[40%] bg-white/45 rounded-full pointer-events-none" />
-                        </motion.div>
-                      </div>
-                    );
-                  })}
-                </div>
               </div>
             ) : (
               /* Segmented Progress Bars for Lesson Tasks */
@@ -2373,21 +2603,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           {/* Linia 2: Cel lekcji / Portfel & Wzory */}
           <div className="flex items-center justify-between gap-3 w-full">
             <div className="flex items-center gap-2 select-none">
-              {isTheoryStep ? (
+              {isTheoryStep ? null : (
                 <>
-                  <span className="text-xs text-slate-400 font-medium">Pigułka wiedzy:</span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs shadow-inner">
-                    <span className={isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black"}>
-                      {theorySubStep + 1}
-                    </span>
-                    <span className="text-slate-600 font-normal">/</span>
-                    <span className="text-slate-400 font-semibold">4</span>
-                  </span>
-                  <span className="text-slate-500 text-[11px] hidden sm:inline">• wprowadzenie</span>
-                </>
-              ) : (
-                <>
-                  <span className="text-xs text-slate-400 font-medium">Cel lekcji:</span>
+                  <span className="text-xs text-slate-400 font-medium">Cel:</span>
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs shadow-inner">
                     <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
                       {correctAnswersCount}
@@ -2395,7 +2613,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <span className="text-slate-600 font-normal">/</span>
                     <span className="text-slate-400 font-semibold">{targetCorrectAnswers}</span>
                   </span>
-                  <span className="text-slate-500 text-[11px] hidden sm:inline">• poprawnych</span>
                 </>
               )}
             </div>
@@ -2411,20 +2628,22 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <span className="font-bold text-white tracking-wide">{currentCoins}</span>
               </div>
 
-              {/* Formulas Sheet / Leksykon Button */}
-              <button
-                id="session-formulas-button"
-                onClick={() => setShowFormulaSheet(true)}
-                className={`group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
-                  isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
-                }`}
-                title={isPolishSession ? 'Otwórz Leksykon Pojęć' : 'Otwórz Kartę Wzorów'}
-              >
-                <BookOpen className={`w-3.5 h-3.5 text-slate-400 transition-colors shrink-0 ${
-                  isPolishSession ? 'group-hover:text-[#F43F5E]' : 'group-hover:text-[#FFB800]'
-                }`} />
-                <span>{isPolishSession ? 'Leksykon' : 'Wzory'}</span>
-              </button>
+              {/* Formulas Sheet Button - widoczny tylko podczas zadań praktycznych */}
+              {!isTheoryStep && (
+                <button
+                  id="session-formulas-button"
+                  onClick={() => setShowFormulaSheet(true)}
+                  className={`group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
+                    isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
+                  }`}
+                  title={isPolishSession ? 'Otwórz Leksykon Pojęć' : 'Otwórz Kartę Wzorów'}
+                >
+                  <BookOpen className={`w-3.5 h-3.5 text-slate-400 transition-colors shrink-0 ${
+                    isPolishSession ? 'group-hover:text-[#F43F5E]' : 'group-hover:text-[#FFB800]'
+                  }`} />
+                  <span className="hidden sm:inline">{isPolishSession ? 'Leksykon' : 'Karta'}</span>
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -2651,7 +2870,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         ref={taskAreaRef}
         className={`w-full mx-auto flex-1 min-h-0 overflow-y-auto overscroll-y-contain touch-pan-y flex flex-col justify-start transition-all max-w-2xl px-4 ${
           isTheoryStep 
-            ? 'pb-28 sm:pb-32' 
+            ? 'pb-36 sm:pb-36' 
             : isEvaluated ? 'pb-28 sm:pb-32' : 'pb-24 sm:pb-28'
         }`}
         style={{
@@ -2661,22 +2880,23 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       >
         {isTheoryStep ? (
           <div id="session-theory-pill-content" className="w-full max-w-2xl mx-auto space-y-4 pt-2">
-            {/* 4 logiczne segmenty pigułki wiedzy */}
-            <div className="grid grid-cols-4 gap-1.5 py-1">
+            {/* Minimalistyczne zakładki z dolnym akcentem (underline tabs) */}
+            <div className="w-full border-b border-white/10 flex items-center justify-between gap-1 sm:gap-2 px-1 pb-px">
               {(isPolishSession
                 ? [
-                    { id: 0, title: (theoryPill as any)?.book_summary ? 'Fabuła & Istota' : 'Istota' },
-                    { id: 1, title: 'Pojęcia' },
-                    { id: 2, title: 'Analiza tekstu' },
-                    { id: 3, title: 'Pułapka' }
+                    { id: 0, title: (theoryPill as any)?.book_summary ? 'Fabuła' : 'Istota', icon: (theoryPill as any)?.book_summary ? BookOpen : Compass },
+                    { id: 1, title: 'Pojęcia', icon: BookmarkCheck },
+                    { id: 2, title: 'Analiza', icon: FileText },
+                    { id: 3, title: 'Pułapka', icon: ShieldAlert }
                   ]
                 : [
-                    { id: 0, title: 'Istota' },
-                    { id: 1, title: 'Wzory' },
-                    { id: 2, title: 'Przykład' },
-                    { id: 3, title: 'Pułapka' }
+                    { id: 0, title: 'Istota', icon: Compass },
+                    { id: 1, title: 'Wzory', icon: Calculator },
+                    { id: 2, title: 'Przykład', icon: CheckCircle2 },
+                    { id: 3, title: 'Pułapka', icon: ShieldAlert }
                   ]
               ).map((step) => {
+                const StepIcon = step.icon;
                 const isActive = theorySubStep === step.id;
                 const isDone = theorySubStep > step.id;
                 return (
@@ -2687,25 +2907,34 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       triggerHaptic('light');
                       setTheorySubStep(step.id);
                     }}
-                    className="py-1 flex flex-col gap-1.5 cursor-pointer group transition-all"
+                    className={`relative py-2.5 px-2 sm:px-3 flex items-center justify-center gap-1.5 text-xs sm:text-sm font-medium cursor-pointer transition-colors duration-150 flex-1 ${
+                      isActive
+                        ? isPolishSession
+                          ? 'text-rose-300 font-bold'
+                          : 'text-amber-400 font-bold'
+                        : isDone
+                          ? 'text-slate-300 hover:text-white'
+                          : 'text-slate-400 hover:text-slate-200'
+                    }`}
                     aria-label={`Przejdź do zakładki: ${step.title}`}
                   >
-                    <div className={`h-1.5 rounded-full transition-all duration-200 ${
+                    <StepIcon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 transition-colors ${
                       isActive 
-                        ? 'bg-[#FFB800]' 
+                        ? isPolishSession ? 'text-rose-400' : 'text-amber-400' 
                         : isDone 
-                          ? 'bg-emerald-500' 
-                          : 'bg-slate-800'
+                          ? 'text-emerald-400/80' 
+                          : 'text-slate-500'
                     }`} />
-                    <span className={`text-[11px] sm:text-xs text-center font-medium transition-colors ${
-                      isActive 
-                        ? 'text-[#FFB800] font-black' 
-                        : isDone
-                          ? 'text-emerald-400 font-semibold'
-                          : 'text-slate-400 group-hover:text-slate-300'
-                    }`}>
-                      {step.title}
-                    </span>
+                    <span className="truncate">{step.title}</span>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTheoryTabUnderline"
+                        className={`absolute -bottom-px left-0 right-0 h-0.5 rounded-full ${
+                          isPolishSession ? 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]' : 'bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)]'
+                        }`}
+                        transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                      />
+                    )}
                   </button>
                 );
               })}
@@ -2723,20 +2952,27 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   <section className="flex flex-col gap-2.5">
-                    <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${
-                      isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
-                    }`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'}`} />
-                      <span>{isPolishSession ? 'Istota zagadnienia' : 'Istota pojęcia'}</span>
-                    </div>
-                    <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight">
-                      {sanitizeLessonHeading(theoryPill?.title || lessonTitle)}
-                    </h1>
-                    {(theoryPill?.concept_essence || theoryPill?.intuition) && (
-                      <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 text-slate-200 text-sm sm:text-base leading-relaxed">
-                        {renderMicroContent(theoryPill?.concept_essence || theoryPill?.intuition)}
+                    <div className="flex flex-col items-start gap-1.5">
+                      <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${
+                        isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'}`} />
+                        <span>{isPolishSession ? 'Istota zagadnienia' : 'Istota pojęcia'}</span>
                       </div>
-                    )}
+                      {lessonPillLabel && (
+                        <span className={`px-2.5 py-0.5 rounded-md ${
+                          isPolishSession
+                            ? 'bg-rose-500/15 border border-rose-500/35 text-rose-300'
+                            : 'bg-amber-500/15 border border-amber-500/35 text-amber-300'
+                        } font-mono font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-sm mt-0.5`}>
+                          {lessonPillLabel}
+                        </span>
+                      )}
+                      <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight mt-0.5">
+                        <MathRenderer content={lessonTitleClean || sanitizeLessonHeading(theoryPill?.title || lessonTitle)} />
+                      </h1>
+                    </div>
+                    {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession)}
 
                     {/* STRESZCZENIE FABUŁY I PLAN WYDARZEŃ LEKTURY (DLA LEKTUR MATURALNYCH) */}
                     {(theoryPill as any)?.book_summary && (() => {
@@ -2837,15 +3073,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   </section>
 
                   {(theoryPill?.matura_context || theoryPill?.keyTakeaway) && (
-                    <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/40 border border-slate-800 flex flex-col gap-2.5">
-                      <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${
+                    <section className={`rounded-2xl p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm border ${
+                      isPolishSession
+                        ? 'bg-gradient-to-br from-rose-950/30 via-slate-900/80 to-slate-900/90 border-rose-500/30'
+                        : 'bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)]'
+                    }`}>
+                      <div className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${
                         isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
                       }`}>
-                        <Compass className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
-                        <span>{isPolishSession ? 'Złota strategia maturalna' : 'Strategia maturalna'}</span>
+                        <GraduationCap className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
+                        <span>Wskazówka egzaminatora CKE</span>
                       </div>
-                      <div className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                        {renderMicroContent(theoryPill?.matura_context || theoryPill?.keyTakeaway)}
+                      <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                        {renderMicroContent(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway))}
                       </div>
                     </section>
                   )}
@@ -2921,9 +3161,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     const formulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
                     return (
                       <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-3.5">
-                        <div className="flex items-center gap-2 text-slate-300 text-xs font-semibold uppercase tracking-wider">
+                        <div className="flex items-center gap-2 text-slate-400 text-xs font-semibold">
                           <BookOpen className="w-4 h-4 text-[#FFB800]" />
-                          <span>Kluczowe wzory i zależności</span>
+                          <span>Zależności i reguły</span>
                         </div>
 
                         {formulas.length > 0 ? (
@@ -2943,14 +3183,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                         {item.title}
                                       </span>
                                     </div>
-                                    <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider bg-white/5 border border-white/5 px-2 py-0.5 rounded-full shrink-0">
-                                      Wzór CKE
-                                    </span>
                                   </div>
                                 )}
-                                <div className="w-full text-center overflow-x-auto py-1 text-white">
+                                <div className="w-full py-3 px-3 sm:px-4 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center flex items-center justify-center my-1 text-white">
                                   <MathRenderer content={item.latex} displayMode={true} />
                                 </div>
+                                {item.description && (
+                                  <div className="mt-1 pt-2.5 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-white/[0.02] -mx-1 px-3 py-2 rounded-xl">
+                                    <Info className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                                    <div className="w-full font-normal">
+                                      {renderMicroContent(item.description)}
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             ))}
                           </div>
@@ -2962,8 +3207,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {theoryPill?.formula_notes && (
                           <div className="mt-1 text-xs sm:text-sm text-slate-300 border-t border-slate-800/80 pt-3 leading-relaxed">
-                            <span className="text-[11px] font-semibold text-[#FFB800] uppercase tracking-wider block mb-1">
-                              Wskazówka do wzorów
+                            <span className="text-[11px] font-semibold text-[#FFB800] block mb-1">
+                              Wskazówka
                             </span>
                             {renderMicroContent(theoryPill.formula_notes)}
                           </div>
@@ -2985,74 +3230,131 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   {(() => {
+                    const isEnglishSession = Boolean((sessionData as any)?.isEnglish || (sessionData as any)?.subjectId === 'jezyk-angielski' || currentTask?.subject === 'eng');
                     const normExample = normalizeWorkedExample(theoryPill?.worked_example);
                     if (!normExample) {
                       return (
                         <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-slate-400 text-sm text-center">
-                          {isPolishSession ? 'Brak tekstu źródłowego dla tej pigułki.' : 'Brak przykładu dla tej pigułki wiedzy.'}
+                          {isPolishSession ? 'Brak tekstu źródłowego dla tej pigułki.' : isEnglishSession ? 'Brak przykładu dla tej pigułki wiedzy.' : 'Brak przykładu dla tej pigułki wiedzy.'}
                         </div>
                       );
                     }
 
                     return (
-                      <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-4">
-                        <div className="flex items-center gap-2 text-slate-300 text-xs font-semibold uppercase tracking-wider">
-                          <FileText className={`w-4 h-4 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
-                          <span>{isPolishSession ? 'Analiza fragmentu krok po kroku' : 'Przykład z arkusza krok po kroku'}</span>
+                      <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 flex flex-col gap-4 shadow-sm">
+                        <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                          <div className="flex items-center gap-2.5">
+                            <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm ${
+                              isPolishSession 
+                                ? 'bg-rose-500/15 text-rose-400 border-rose-500/30' 
+                                : isEnglishSession 
+                                  ? 'bg-sky-500/15 text-sky-400 border-sky-500/30' 
+                                  : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
+                            }`}>
+                              <FileText className="w-4 h-4" />
+                            </div>
+                            <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+                              {isPolishSession ? 'Analiza fragmentu krok po kroku' : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'Przykład z arkusza krok po kroku'}
+                            </h3>
+                          </div>
+                          {normExample.steps.length > 0 && (
+                            <span className="text-[11px] font-bold text-slate-400 bg-slate-800/80 border border-slate-700/60 px-2.5 py-0.5 rounded-full shrink-0">
+                              {normExample.steps.length} {normExample.steps.length === 1 ? 'krok' : normExample.steps.length < 5 ? 'kroki' : 'kroków'}
+                            </span>
+                          )}
                         </div>
 
-                        {/* Treść zadania */}
-                        <div className={`border-l-2 pl-3.5 py-1 bg-slate-950/30 rounded-r-xl ${
-                          isPolishSession ? 'border-rose-500/50' : 'border-[#FFB800]/50'
-                        }`}>
-                          <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
-                            {isPolishSession ? 'Fragment tekstu i polecenie' : 'Treść zadania'}
-                          </span>
-                          <div className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
-                            {renderMicroContent(normExample.problem)}
+                        {/* Treść polecenia CKE */}
+                        {normExample.problem && (
+                          <div className="rounded-xl p-4 bg-slate-950/60 border border-slate-800 flex flex-col gap-1.5">
+                            <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider block ${
+                              isPolishSession ? 'text-rose-400' : isEnglishSession ? 'text-sky-400' : 'text-[#FFB800]'
+                            }`}>
+                              {isPolishSession ? 'Fragment tekstu i polecenie' : 'Treść zadania CKE'}
+                            </span>
+                            <div className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
+                              {renderMicroContent(normExample.problem)}
+                            </div>
                           </div>
-                        </div>
+                        )}
 
                         {/* Lista kroków rozwiązania */}
-                        {normExample.steps.length > 0 && (
-                          <div className="space-y-3 pt-1 border-t border-slate-800/80">
-                            {normExample.steps.map((st, sIdx) => (
-                              <div key={sIdx} className="flex items-start gap-3 text-sm sm:text-base text-slate-200">
-                                <span className={`shrink-0 w-6 h-6 rounded-full bg-slate-800 border font-bold text-xs flex items-center justify-center mt-0.5 ${
-                                  isPolishSession ? 'border-rose-500/30 text-rose-400' : 'border-slate-700 text-[#FFB800]'
-                                }`}>
-                                  {st.num}
-                                </span>
-                                <div className="flex-1 leading-relaxed">
-                                  {st.label && (
-                                    <span className={`text-xs font-semibold block mb-0.5 ${
-                                      isPolishSession ? 'text-rose-400' : 'text-[#FFB800]'
-                                    }`}>
-                                      {st.label}
-                                    </span>
-                                  )}
-                                  {renderMicroContent(st.text)}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {normExample.steps.length > 0 && (() => {
+                          const formatStepLabel = (label?: string) => {
+                            if (!label) return '';
+                            return label.replace(/^(?:krok|step)\s*\d+[:.\-\s]*/i, '').trim();
+                          };
+
+                          return (
+                            <div className="space-y-3 pt-1">
+                              {normExample.steps.map((st, sIdx) => {
+                                const cleanLabel = formatStepLabel(st.label);
+                                return (
+                                  <div 
+                                    key={sIdx} 
+                                    className="rounded-xl p-3.5 sm:p-4 bg-slate-950/50 border border-slate-800/90 flex flex-col gap-2 transition-all hover:border-slate-700 shadow-sm"
+                                  >
+                                    <div className="flex items-center gap-2.5 flex-wrap">
+                                      <span className={`px-2 py-0.5 rounded-md font-mono text-xs font-bold shrink-0 border ${
+                                        isPolishSession 
+                                          ? 'bg-rose-500/15 text-rose-300 border-rose-500/30' 
+                                          : isEnglishSession 
+                                            ? 'bg-sky-500/15 text-sky-300 border-sky-500/30' 
+                                            : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
+                                      }`}>
+                                        Krok {st.num}
+                                      </span>
+                                      {cleanLabel && (
+                                        <span className="text-xs sm:text-sm font-bold text-white tracking-tight">
+                                          {cleanLabel}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                                      {renderMicroContent(st.text)}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          );
+                        })()}
 
                         {/* Wynik / Odpowiedź końcowa */}
-                        {normExample.result && (
-                          <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm gap-2">
-                            <span className="text-slate-400 font-medium shrink-0">
-                              {isPolishSession ? 'Wniosek egzaminatora:' : 'Odpowiedź końcowa:'}
-                            </span>
-                            <span className="font-semibold text-emerald-400 text-right">
-                              {isPolishSession ? (
-                                <span>{normExample.result}</span>
-                              ) : (
-                                <MathRenderer content={normExample.result.includes('$') ? normExample.result : `$${normExample.result}$`} />
-                              )}
-                            </span>
-                          </div>
-                        )}
+                        {(() => {
+                          const steps = normExample.steps || [];
+                          const rawResult = typeof normExample.result === 'string' ? normExample.result.trim() : (normExample.result ? String(normExample.result).trim() : '');
+                          const cleanResult = rawResult || (() => {
+                            if (steps.length > 0) {
+                              const lastText = steps[steps.length - 1]?.text || '';
+                              const eqMatch = lastText.match(/=\s*([^=.,;]+)[.,;]?\s*$/);
+                              if (eqMatch) return eqMatch[1].trim();
+                            }
+                            return null;
+                          })();
+
+                          if (!cleanResult) return null;
+
+                          return (
+                            <div className="rounded-xl p-3.5 sm:p-4 bg-emerald-950/40 border border-emerald-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm mt-1">
+                              <div className="flex items-center gap-2.5">
+                                <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                                  <CheckCircle2 className="w-4 h-4" />
+                                </div>
+                                <span className="text-xs font-bold text-emerald-300 uppercase tracking-wider block">
+                                  {isPolishSession ? 'Wniosek egzaminatora CKE' : isEnglishSession ? 'Wzorcowa odpowiedź CKE' : 'Odpowiedź końcowa CKE'}
+                                </span>
+                              </div>
+                              <div className="text-base sm:text-lg font-black text-white bg-slate-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-lg shadow-inner self-stretch sm:self-auto text-center sm:text-right">
+                                {isPolishSession || isEnglishSession ? (
+                                  <span>{cleanResult}</span>
+                                ) : (
+                                  <MathRenderer content={cleanResult.includes('$') ? cleanResult : `$${cleanResult}$`} />
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })()}
                       </section>
                     );
                   })()}
@@ -3070,10 +3372,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   {(theoryPill?.exam_trap || theoryPill?.trapAlert) ? (
-                    <section className="rounded-2xl p-5 bg-amber-500/10 border border-amber-500/30 flex flex-col gap-3 shadow-sm">
-                      <div className="flex items-center gap-2 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+                    <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-amber-500/10 via-amber-950/20 to-slate-900/90 border border-amber-500/40 flex flex-col gap-3 shadow-[0_4px_20px_rgba(245,158,11,0.08)]">
+                      <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
                         <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                        <span>Pułapka egzaminacyjna</span>
+                        <span>Pułapka egzaminacyjna CKE</span>
                       </div>
                       <div className="text-sm sm:text-base text-amber-100/95 leading-relaxed font-normal">
                         {renderMicroContent(theoryPill.exam_trap || theoryPill.trapAlert)}
@@ -3092,44 +3394,55 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           </div>
         ) : (
           <>
-            {/* Sztywny margines górny + Tytuł lekcji i pojedyncza linia metadanych */}
+            {/* Sztywny margines górny + Tytuł lekcji z pastylką i pojedyncza linia metadanych */}
             <div className="pt-5 pb-3 flex flex-col gap-2 shrink-0">
-              <h1 className="text-base sm:text-lg font-bold text-white leading-snug break-words">
-                {lessonTitle}
-              </h1>
+              <div className="flex flex-col items-start gap-1.5">
+                {lessonPillLabel && (
+                  <span className="px-2.5 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/35 text-amber-300 font-mono font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-sm">
+                    {lessonPillLabel}
+                  </span>
+                )}
+                <h1 className="text-base sm:text-lg font-bold text-white leading-snug break-words">
+                  <MathRenderer content={lessonTitleClean} />
+                </h1>
+              </div>
               
               {/* Autentyczne, nowoczesne etykiety źródła zadania i punktacji */}
               <div className="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
-                {/* Badge 1: Źródło zadania / sesja */}
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/25 text-sky-300 font-semibold text-[11px] sm:text-xs shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0 shadow-sm" />
-                  <span>{taskSourceLabel}</span>
+                {/* Badge 1: Źródło zadania (CKE vs Autorskie vs Informator) */}
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border font-semibold text-[11px] sm:text-xs shadow-sm ${taskSourceBadge.badgeClass}`}>
+                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 shadow-sm ${taskSourceBadge.dotClass}`} />
+                  <span>{taskSourceBadge.label}</span>
                 </span>
 
                 {/* Badge 2: Waga punktowa */}
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/25 text-amber-300 font-bold text-[11px] sm:text-xs shadow-sm">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-400/30 text-amber-300 font-bold text-[11px] sm:text-xs shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-sm" />
                   <span>{taskPointsCount}</span>
                 </span>
 
-                {(currentTask?.cke_badge || currentTask?.badge) && (
-                  <span className={`px-2.5 py-1 rounded-lg border font-bold text-[11px] sm:text-xs shadow-sm ${
-                    isPolishSession 
-                      ? 'bg-rose-500/15 border-rose-500/30 text-rose-300 shadow-sm' 
-                      : 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300 shadow-sm'
-                  }`}>
-                    {String(currentTask.cke_badge || currentTask.badge).replace(/CKE/gi, '').trim()}
-                  </span>
-                )}
+                {/* Badge 3: Typ zadania */}
                 {isOpenTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-purple-500/10 border border-purple-500/25 text-purple-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-400/30 text-purple-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
                     <Target size={12} className="text-purple-400 shrink-0" />
                     <span>Zadanie Otwarte • Tutor AI</span>
                   </span>
-                ) : (
-                  <span className="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/50 text-slate-400 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
-                    Pewniak Maturalny
+                ) : isTrueFalseTask ? (
+                  <span className="px-2.5 py-1 rounded-lg bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
+                    Prawda / Fałsz
                   </span>
+                ) : isTwoPartTask ? (
+                  <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
+                    Wybór dwuczęściowy
+                  </span>
+                ) : (
+                  (currentTask?.cke_badge || currentTask?.badge) && 
+                  !String(currentTask?.cke_badge || currentTask?.badge).toLowerCase().includes(taskSourceLabel.toLowerCase()) &&
+                  !taskSourceLabel.toLowerCase().includes(String(currentTask?.cke_badge || currentTask?.badge).toLowerCase()) && (
+                    <span className="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
+                      {String(currentTask.cke_badge || currentTask.badge).replace(/CKE/gi, '').trim()}
+                    </span>
+                  )
                 )}
                 {currentTask?.tierLabel && (
                   <span className="text-[11px] text-slate-500 hidden sm:inline">
@@ -3332,7 +3645,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {/* Commentary */}
                   <div className="space-y-1.5">
                     <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5 tracking-wide">
-                      <Sparkles size={14} className="text-amber-400" />
+                      <GraduationCap size={15} className="text-amber-400 shrink-0" />
                       <span>Komentarz egzaminatora:</span>
                     </div>
                     <div className="text-sm text-slate-200 leading-relaxed">
@@ -3565,11 +3878,21 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             </span>
                           </div>
 
-                          <div className="flex items-center gap-1.5">
+                          <div className="flex items-center gap-2">
                             {!isEvaluated && (
                               <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400">
                                 {item.shortcut}
                               </span>
+                            )}
+                            {/* Glowing Active Radio Dot when selected */}
+                            {isOptSelected && !isEvaluated && (
+                              <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
+                                isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
+                              }`}>
+                                <div className={`w-2.5 h-2.5 rounded-full ${
+                                  isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
+                                } shadow-[0_0_8px_${isPolishSession ? '#F43F5E' : '#FFB800'}]`} />
+                              </div>
                             )}
                             {isEvaluated && isThisTheCorrectAnswer && (
                               <span className="flex items-center gap-1 text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
@@ -3726,7 +4049,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       }}
                       className={btnClass}
                     >
-                      <span className="font-bold text-xs px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+                      <span className={`font-bold text-xs px-2 py-0.5 rounded border transition-colors ${
+                        isSelected && !isEvaluated
+                          ? 'bg-[#FFB800] text-[#080B11] border-[#D97706]'
+                          : isEvaluated && isOptionCorrect
+                            ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black'
+                            : isEvaluated && isSelected && !isOptionCorrect
+                              ? 'bg-rose-500 text-white border-rose-400 font-black'
+                              : 'bg-slate-800 border-slate-700 text-slate-300'
+                      }`}>
                         {optId}
                       </span>
                       <span className="flex-1 break-words">
@@ -3780,7 +4111,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       }}
                       className={btnClass}
                     >
-                      <span className="font-bold text-xs px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+                      <span className={`font-bold text-xs px-2 py-0.5 rounded border transition-colors ${
+                        isSelected && !isEvaluated
+                          ? 'bg-[#FFB800] text-[#080B11] border-[#D97706]'
+                          : isEvaluated && isOptionCorrect
+                            ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black'
+                            : isEvaluated && isSelected && !isOptionCorrect
+                              ? 'bg-rose-500 text-white border-rose-400 font-black'
+                              : 'bg-slate-800 border-slate-700 text-slate-300'
+                      }`}>
                         {optId}
                       </span>
                       <span className="flex-1 break-words">
@@ -3927,13 +4266,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   triggerHaptic('light');
                   setTheorySubStep(prev => Math.min(3, prev + 1));
                 }}
-                className={`flex-1 h-[48px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
+                className={`flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
                   isPolishSession
                     ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm'
                     : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
                 }`}
               >
-                <span>Dalej</span>
+                <span>
+                  {theorySubStep === 0 
+                    ? (isPolishSession ? 'Dalej: Pojęcia' : 'Dalej: Wzory')
+                    : theorySubStep === 1
+                      ? (isPolishSession ? 'Dalej: Analiza' : 'Dalej: Przykład')
+                      : 'Dalej: Pułapka'}
+                </span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
             ) : (
@@ -3945,13 +4290,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   playSuccessSound();
                   setCurrentStep(1);
                 }}
-                className={`flex-1 h-[48px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
+                className={`flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
                   isPolishSession
                     ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm'
                     : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
                 }`}
               >
-                <span>Rozpocznij zadania</span>
+                <span>Rozpocznij zadania{taskQueue.length > 0 ? ` (${taskQueue.length})` : ''}</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
             )}
@@ -4111,14 +4456,34 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {isCorrect ? 'Świetnie! Poprawna odpowiedź' : 'Niepoprawna odpowiedź'}
                       </div>
                     </div>
-                    {!isCorrect && (
-                      <div className="text-[11px] sm:text-xs text-slate-300 mt-0.5">
-                        {isOpenTask ? 'Wymóg CKE: ' : 'Prawidłowa: '}
-                        <span className="font-bold text-white font-mono bg-white/10 px-1.5 py-0.5 rounded inline-flex items-center">
-                          <MathRenderer content={correctAnswerLabel || (isOpenTask ? 'Dowód algebraiczny CKE' : '')} />
-                        </span>
-                      </div>
-                    )}
+                    {!isCorrect && (() => {
+                      const rawLabel = correctAnswerLabel || (isOpenTask ? 'Dowód algebraiczny CKE' : '');
+                      const letterMatch = rawLabel.match(/^([A-D])\s*[:\.\-]?\s*(.*)$/);
+                      const optionLetter = letterMatch ? letterMatch[1] : null;
+                      const restText = letterMatch ? letterMatch[2].trim() : rawLabel;
+
+                      return (
+                        <div className="text-[11px] sm:text-xs text-slate-300 mt-0.5 flex items-center gap-1.5 flex-wrap">
+                          <span>{isOpenTask ? 'Wymóg CKE:' : 'Prawidłowa:'}</span>
+                          {optionLetter ? (
+                            <span className="inline-flex items-center gap-1.5">
+                              <span className="px-2 py-0.5 rounded-md bg-emerald-500/25 border border-emerald-400/60 text-emerald-300 font-display font-black text-xs shadow-sm">
+                                {optionLetter}
+                              </span>
+                              {restText && (
+                                <span className="font-medium text-white/95">
+                                  <MathRenderer content={restText} />
+                                </span>
+                              )}
+                            </span>
+                          ) : (
+                            <span className="font-bold text-white font-mono bg-white/10 px-1.5 py-0.5 rounded inline-flex items-center">
+                              <MathRenderer content={rawLabel} />
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })()}
                     {/* View Explanation Trigger */}
                     <button
                       type="button"
@@ -4179,7 +4544,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-base">Wyjaśnienie i Pułapka</h3>
-                    <p className="text-xs text-slate-400">{sanitizeLessonHeading(currentTask?.title) || 'Zadanie maturalne'}</p>
+                    <div className="text-xs text-slate-400">
+                      <MathRenderer content={sanitizeLessonHeading(currentTask?.title) || 'Zadanie maturalne'} />
+                    </div>
                   </div>
                 </div>
                 <button
@@ -4252,13 +4619,33 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
 
                 {/* Poprawna odpowiedź / Wynik dowodu */}
-                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between text-xs sm:text-sm">
+                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between gap-3 text-xs sm:text-sm flex-wrap">
                   <span className="text-slate-400 font-medium">
                     {isOpenTask ? 'Wynik / Teza dowodu:' : 'Poprawna odpowiedź:'}
                   </span>
-                  <span className="font-mono font-bold text-emerald-400 text-sm sm:text-base inline-flex items-center">
-                    <MathRenderer content={correctAnswerLabel || (isOpenTask ? 'Dowód wykazany wg schematu CKE' : 'Brak')} />
-                  </span>
+                  {(() => {
+                    const rawLabel = correctAnswerLabel || (isOpenTask ? 'Dowód wykazany wg schematu CKE' : 'Brak');
+                    const letterMatch = rawLabel.match(/^([A-D])\s*[:\.\-]?\s*(.*)$/);
+                    if (letterMatch) {
+                      return (
+                        <span className="inline-flex items-center gap-1.5">
+                          <span className="px-2 py-0.5 rounded-md bg-emerald-500/25 border border-emerald-400/60 text-emerald-300 font-display font-black text-xs shadow-sm">
+                            {letterMatch[1]}
+                          </span>
+                          {letterMatch[2].trim() && (
+                            <span className="font-bold text-emerald-400 text-sm sm:text-base">
+                              <MathRenderer content={letterMatch[2].trim()} />
+                            </span>
+                          )}
+                        </span>
+                      );
+                    }
+                    return (
+                      <span className="font-mono font-bold text-emerald-400 text-sm sm:text-base inline-flex items-center">
+                        <MathRenderer content={rawLabel} />
+                      </span>
+                    );
+                  })()}
                 </div>
               </div>
 
@@ -4452,9 +4839,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         Formuła 2023
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
-                      {sanitizeLessonHeading(formulaSheet?.title || lessonTitle)}
-                    </p>
+                    <div className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                      <MathRenderer content={sanitizeLessonHeading(formulaSheet?.title || lessonTitle)} />
+                    </div>
                   </div>
                 </div>
                 <button
@@ -4549,33 +4936,46 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <div className="text-slate-300 leading-relaxed text-xs sm:text-sm">
                         <MathRenderer content={theoryPill.trapAlert} />
                       </div>
-                    ) : formulaSheet?.ckeTrap ? (
-                      <div className="space-y-2.5">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                          <div className="bg-rose-950/30 border border-rose-500/30 rounded-xl p-3">
-                            <span className="font-bold text-rose-400 text-[11px] uppercase tracking-wider block mb-1">
-                              ❌ Błąd Typowy
-                            </span>
-                            <div className="text-rose-200 overflow-x-auto custom-scrollbar py-0.5">
-                              <MathRenderer content={formulaSheet.ckeTrap.error} displayMode={true} />
+                    ) : formulaSheet?.ckeTrap ? (() => {
+                      const trap = formulaSheet.ckeTrap;
+                      const hasRealError = Boolean(trap.error && !/błąd typowy/i.test(trap.error));
+                      const hasRealCorrect = Boolean(trap.correct && !/poprawna metoda/i.test(trap.correct));
+                      const showMathBoxes = hasRealError || hasRealCorrect;
+
+                      return (
+                        <div className="space-y-2.5">
+                          {showMathBoxes && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                              {hasRealError && (
+                                <div className="bg-rose-950/30 border border-rose-500/30 rounded-xl p-3">
+                                  <span className="font-bold text-rose-400 text-[11px] uppercase tracking-wider block mb-1">
+                                    ❌ Błąd Typowy
+                                  </span>
+                                  <div className="text-rose-200 overflow-x-auto custom-scrollbar py-0.5">
+                                    <MathRenderer content={trap.error} />
+                                  </div>
+                                </div>
+                              )}
+                              {hasRealCorrect && (
+                                <div className="bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-3">
+                                  <span className="font-bold text-emerald-400 text-[11px] uppercase tracking-wider block mb-1">
+                                    ✓ Poprawnie
+                                  </span>
+                                  <div className="text-emerald-200 overflow-x-auto custom-scrollbar py-0.5">
+                                    <MathRenderer content={trap.correct} />
+                                  </div>
+                                </div>
+                              )}
                             </div>
-                          </div>
-                          <div className="bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-3">
-                            <span className="font-bold text-emerald-400 text-[11px] uppercase tracking-wider block mb-1">
-                              ✓ Poprawnie
-                            </span>
-                            <div className="text-emerald-200 overflow-x-auto custom-scrollbar py-0.5">
-                              <MathRenderer content={formulaSheet.ckeTrap.correct} displayMode={true} />
+                          )}
+                          {trap.description && (
+                            <div className="text-slate-300 text-xs sm:text-xs leading-relaxed bg-black/40 border border-white/5 rounded-xl p-3">
+                              <MathRenderer content={trap.description} />
                             </div>
-                          </div>
+                          )}
                         </div>
-                        {formulaSheet.ckeTrap.description && (
-                          <div className="text-slate-300 text-xs sm:text-xs leading-relaxed bg-black/40 border border-white/5 rounded-xl p-3">
-                            <MathRenderer content={formulaSheet.ckeTrap.description} />
-                          </div>
-                        )}
-                      </div>
-                    ) : null}
+                      );
+                    })() : null}
                   </div>
                 )}
               </div>

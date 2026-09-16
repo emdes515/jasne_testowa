@@ -1,0 +1,1512 @@
+[
+  {
+    "id": "pol-task-21-2-4",
+    "source": null,
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_jezyk_polski.json > Dział 21: Styl, Kompozycja, Spójność i Językowa Klasa Mistrzowska > Słownictwo dojrzałe: synonimy erudycyjne, unikanie kolokwializmów i pustosłowia",
+    "question_preview": "Wyjaśnij, czym jest 'pustosłowie' w wypracowaniu maturalnym. Wskaż w poniższym zdaniu fragmenty będące czystym pustosłowiem i zredaguj je ta"
+  },
+  {
+    "id": "pol-task-21-4-2",
+    "source": null,
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_jezyk_polski.json > Dział 21: Styl, Kompozycja, Spójność i Językowa Klasa Mistrzowska > Ortografia i interpunkcja w wypracowaniu: zasady przecinkowe w zdaniach wielokrotnie złożonych",
+    "question_preview": "Wstaw wszystkie brakujące przecinki w poniższym zdaniu: „Stanisław Wokulski który mimo ogromnego majątku nie potrafił zyskać względów arysto"
+  },
+  {
+    "id": "pol-task-21-4-6",
+    "source": null,
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_jezyk_polski.json > Dział 21: Styl, Kompozycja, Spójność i Językowa Klasa Mistrzowska > Ortografia i interpunkcja w wypracowaniu: zasady przecinkowe w zdaniach wielokrotnie złożonych",
+    "question_preview": "Popraw błędy w zapisie wielkich i małych liter w poniższym zdaniu: „Bohaterowie Polskiego Romantyzmu, tacy jak Konrad z dziadów części trzec"
+  },
+  {
+    "id": "task-4-01-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Pojęcie funkcji: Przyporządkowanie, dziedzina i przeciwdziedzina",
+    "question_preview": "Dziedziną funkcji $f$ jest zbiór $X = \\{1, 2, 3\\}$. Wykres funkcji składa się z:"
+  },
+  {
+    "id": "task-4-4-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-4-2",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-4-3",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-04-09",
+    "source": "Matura Maj 2024 • Zad. 8",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Na rysunku obok przedstawiono wykres funkcji $f$. Dziedziną tej funkcji jest przedział:"
+  },
+  {
+    "id": "task-4-04-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Zbiorem wartości funkcji $f$ przedstawionej na powyższym wykresie jest:"
+  },
+  {
+    "id": "task-4-04-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Korzystając z wykresu funkcji $f$, odczytaj wartość $f(0)$."
+  },
+  {
+    "id": "task-4-04-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Na podstawie wykresu funkcji $f$ wyznacz liczbę rozwiązań równania $f(x) = 1$."
+  },
+  {
+    "id": "task-4-04-13",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Wykaż, że dla funkcji $f$ przedstawionej na wykresie zachodzi nierówność $f(-1) + f(5) > 0$."
+  },
+  {
+    "id": "task-4-04-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Jaka jest największa wartość funkcji $f$ na powyższym wykresie?"
+  },
+  {
+    "id": "task-4-04-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Funkcja $f$ jest stała w przedziale:"
+  },
+  {
+    "id": "task-4-04-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie dziedziny i zbioru wartości z wykresu",
+    "question_preview": "Najmniejsza wartość funkcji $f$ na wykresie wynosi:"
+  },
+  {
+    "id": "task-4-5-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-5-2",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-05-09",
+    "source": "Matura Maj 2024 • Zad. 11",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Na rysunku przedstawiono wykres funkcji $f$. Wartość $f(-2)$ jest równa:"
+  },
+  {
+    "id": "task-4-05-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Ile rozwiązań ma równanie $f(x) = 0$ dla funkcji przedstawionej na powyższym wykresie?"
+  },
+  {
+    "id": "task-4-05-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Równanie $f(x) = 2$ na powyższym wykresie ma:"
+  },
+  {
+    "id": "task-4-05-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Na podstawie powyższego wykresu funkcji $f$ wyznacz wszystkie wartości $x$, dla których $f(x) = -3$."
+  },
+  {
+    "id": "task-4-05-13",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Wykaż, że funkcja $f$ przedstawiona na wykresie przyjmuje wartość $0$ dla dokładnie dwóch argumentów, których suma wynosi $-1$."
+  },
+  {
+    "id": "task-4-05-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Oblicz $f(4)$ na podstawie powyższego wykresu funkcji."
+  },
+  {
+    "id": "task-4-05-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Równanie $f(x) = 5$ na powyższym wykresie:"
+  },
+  {
+    "id": "task-4-05-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Ile wynosi wartość $f(-5)$ odczytana z powyższego wykresu?"
+  },
+  {
+    "id": "task-4-05-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Odczytywanie wartości funkcji oraz rozwiązywanie równania f(x) = c z wykresu",
+    "question_preview": "Dla jakiego argumentu funkcja przyjmuje swoją największą wartość równą $3$?"
+  },
+  {
+    "id": "task-4-6-3",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Miejsca zerowe funkcji: Odczytywanie z wykresu i obliczanie ze wzoru",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-7-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-7-2",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-07-09",
+    "source": "Matura Maj 2024 • Zad. 13",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": "Wykres funkcji $f$ przedstawiono obok. Funkcja ta jest malejąca w przedziale:"
+  },
+  {
+    "id": "task-4-07-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": "Funkcja $f$ jest rosnąca w przedziale:"
+  },
+  {
+    "id": "task-4-07-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": "Podaj wszystkie maksymalne przedziały monotoniczności funkcji przedstawionej na powyższym wykresie."
+  },
+  {
+    "id": "task-4-07-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": "Jaka jest długość przedziału, w którym funkcja z powyższego wykresu maleje?"
+  },
+  {
+    "id": "task-4-07-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": "Funkcja stała $f(x) = c$ ma wykres:"
+  },
+  {
+    "id": "task-4-07-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały monotoniczności: Funkcja rosnąca, malejąca i stała z wykresu",
+    "question_preview": "Dla ilu liczb całkowitych $x \\in \\langle -2, 1\\rangle$ funkcja z powyższego wykresu maleje?"
+  },
+  {
+    "id": "task-4-8-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PARABOLA",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-08-09",
+    "source": "Matura Maj 2024 • Zad. 14",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne",
+    "question_preview": "Na podstawie powyższego wykresu funkcji $f$ zbiorem rozwiązań nierówności $f(x) > 0$ jest:"
+  },
+  {
+    "id": "task-4-08-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne",
+    "question_preview": "Ile liczb całkowitych spełnia nierówność $f(x) < 0$ dla funkcji przedstawionej na powyższym wykresie?"
+  },
+  {
+    "id": "task-4-08-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przedziały, w których funkcja przyjmuje wartości dodatnie lub ujemne",
+    "question_preview": "Gdy $f(x) < 0$, wykres funkcji leży:"
+  },
+  {
+    "id": "task-4-9-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Wartość największa i najmniejsza funkcji z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-9-2",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Wartość największa i najmniejsza funkcji z wykresu",
+    "question_preview": ""
+  },
+  {
+    "id": "task-4-09-09",
+    "source": "Matura Maj 2024 • Zad. 15",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PARABOLA",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Wartość największa i najmniejsza funkcji z wykresu",
+    "question_preview": "Największą wartością funkcji przedstawionej na powyższym wykresie paraboli jest:"
+  },
+  {
+    "id": "task-4-09-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PARABOLA",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Wartość największa i najmniejsza funkcji z wykresu",
+    "question_preview": "Dla jakiego argumentu $x$ funkcja z powyższego wykresu osiąga swoje maksimum?"
+  },
+  {
+    "id": "task-4-09-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PARABOLA",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Wartość największa i najmniejsza funkcji z wykresu",
+    "question_preview": "W przedziale $\\langle -2, 4\\rangle$ najmniejszą wartością funkcji z powyższego wykresu jest:"
+  },
+  {
+    "id": "task-4-09-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Wartość największa i najmniejsza funkcji z wykresu",
+    "question_preview": "Wierzchołek paraboli o ramionach skierowanych w dół wyznacza:"
+  },
+  {
+    "id": "task-4-10-09",
+    "source": "Matura Maj 2024 • Zad. 16",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+    "question_preview": "Wykres funkcji $g(x) = f(x - 4)$ otrzymujemy przesuwając wykres funkcji $f$ o 4 jednostki:"
+  },
+  {
+    "id": "task-4-10-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+    "question_preview": "Wykres funkcji $f(x) = 2x$ przesunięto w prawo o 3 jednostki, otrzymując funkcję $g(x)$. Oblicz $g(5)$."
+  },
+  {
+    "id": "task-4-10-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+    "question_preview": "Wykres funkcji $f(x) = x^2$ przesunięto o 2 jednostki w lewo. Otrzymano funkcję:"
+  },
+  {
+    "id": "task-4-10-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+    "question_preview": "Wykres funkcji $f(x) = |x|$ przesunięto wzdłuż osi $OX$ tak, że jego wierzchołek znalazł się w punkcie $(5, 0)$. Podaj wzór otrzymanej funkc"
+  },
+  {
+    "id": "task-4-10-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OX: y = f(x - p)",
+    "question_preview": "O ile jednostek w prawo przesunięto wykres funkcji $f(x)$, jeśli otrzymano $g(x) = f(x - 7)$?"
+  },
+  {
+    "id": "task-4-11-09",
+    "source": "Matura Maj 2024 • Zad. 17",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+    "question_preview": "Wykres funkcji $g(x) = f(x) - 5$ otrzymujemy przez przesunięcie wykresu funkcji $f$ o 5 jednostek:"
+  },
+  {
+    "id": "task-4-11-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+    "question_preview": "Wykres funkcji $f(x) = 3x - 1$ przesunięto o 4 jednostki w górę. Jaki jest wyraz wolny nowej funkcji?"
+  },
+  {
+    "id": "task-4-11-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+    "question_preview": "Wykres funkcji $f(x) = x^2$ przesunięto pionowo wzdłuż osi $OY$, otrzymując funkcję $g$. Wiedząc, że $g(2) = 1$, wyznacz wzór funkcji $g$ or"
+  },
+  {
+    "id": "task-4-11-13",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+    "question_preview": "Wykaż, że dla dowolnej liczby $q > 0$ wykres funkcji $g(x) = x^2 + q$ nie ma punktów wspólnych z osią $OX$."
+  },
+  {
+    "id": "task-4-11-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie wykresu wzdłuż osi OY: y = f(x) + q",
+    "question_preview": "Wykres funkcji $f(x) = 2^x$ przesunięto o 3 jednostki w górę. Jaka jest wartość nowej funkcji dla $x = 0$?"
+  },
+  {
+    "id": "task-4-12-09",
+    "source": "Matura Maj 2024 • Zad. 18",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie o wektor [p, q]: y = f(x - p) + q",
+    "question_preview": "Wykres funkcji $g(x) = f(x - 2) + 3$ powstaje przez przesunięcie wykresu funkcji $f$ o wektor:"
+  },
+  {
+    "id": "task-4-12-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie o wektor [p, q]: y = f(x - p) + q",
+    "question_preview": "Wykres funkcji $f(x) = x^2$ przesunięto o wektor $\\vec{u} = [-1, 4]$. Otrzymano funkcję o wzorze:"
+  },
+  {
+    "id": "task-4-12-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie o wektor [p, q]: y = f(x - p) + q",
+    "question_preview": "Wykres funkcji $f(x) = 2x - 3$ przesunięto o wektor $\\vec{u} = [3, -2]$. Wyznacz wzór otrzymanej funkcji $g$ i oblicz jej miejsce zerowe."
+  },
+  {
+    "id": "task-4-12-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Przesunięcie o wektor [p, q]: y = f(x - p) + q",
+    "question_preview": "Wierzchołek paraboli $f(x) = (x - 2)^2 + 5$ ma współrzędne $(p, q)$. Ile wynosi suma $p + q$?"
+  },
+  {
+    "id": "task-4-13-09",
+    "source": "Matura Maj 2024 • Zad. 19",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Symetria wykresu względem osi OX oraz osi OY",
+    "question_preview": "Wykres funkcji $g(x) = -f(x)$ jest symetryczny do wykresu funkcji $f$ względem:"
+  },
+  {
+    "id": "task-4-13-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Symetria wykresu względem osi OX oraz osi OY",
+    "question_preview": "Wykres funkcji $g(x) = f(-x)$ powstaje przez odbicie symetryczne wykresu $f$ względem:"
+  },
+  {
+    "id": "task-4-13-13",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Symetria wykresu względem osi OX oraz osi OY",
+    "question_preview": "Wykaż, że wykres funkcji kwadratowej $f(x) = x^2 - 4$ jest symetryczny względem osi $OY$."
+  },
+  {
+    "id": "task-4-13-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Symetria wykresu względem osi OX oraz osi OY",
+    "question_preview": "Wykres funkcji $f(x) = 5x$ odbito względem osi $OX$. Ile wynosi współczynnik kierunkowy nowej prostej?"
+  },
+  {
+    "id": "task-4-14-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Wprowadzenie do funkcji wykładniczej: Wykres y = a^x",
+    "question_preview": "Dany jest wykres funkcji $f(x) = a^x$. Punkt $A = (3, 8)$ należy do tego wykresu. Wyznacz wzór funkcji oraz rozwiąż równanie $f(x) = \\frac{1"
+  },
+  {
+    "id": "task-4-15-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Proporcjonalność odwrotna: Wykres y = a/x i modelowanie sytuacji praktycznych",
+    "question_preview": "Wykres funkcji proporcjonalności odwrotnej nazywa się:"
+  },
+  {
+    "id": "task-4-15-13",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 4: Własności Funkcji i Odczytywanie Wykresów > Proporcjonalność odwrotna: Wykres y = a/x i modelowanie sytuacji praktycznych",
+    "question_preview": "Wykaż, że dla każdego $a > 0$ wykres proporcjonalności odwrotnej $y = \\frac{a}{x}$ leży wyłącznie w I i III ćwiartce układu współrzędnych."
+  },
+  {
+    "id": "task-5-1-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 5: Funkcja Liniowa i Układy Równań > Wzór kierunkowy funkcji liniowej: y = ax + b",
+    "question_preview": ""
+  },
+  {
+    "id": "task-5-1-5",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PIECEWISE_LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 5: Funkcja Liniowa i Układy Równań > Wzór kierunkowy funkcji liniowej: y = ax + b",
+    "question_preview": ""
+  },
+  {
+    "id": "task-5-01-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 5: Funkcja Liniowa i Układy Równań > Wzór kierunkowy funkcji liniowej: y = ax + b",
+    "question_preview": "Wykres funkcji liniowej jest:"
+  },
+  {
+    "id": "task-5-5-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 5: Funkcja Liniowa i Układy Równań > Miejsce zerowe funkcji liniowej: x_0 = -b/a",
+    "question_preview": ""
+  },
+  {
+    "id": "task-5-6-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 5: Funkcja Liniowa i Układy Równań > Wyznaczanie wzoru prostej przez dwa punkty",
+    "question_preview": ""
+  },
+  {
+    "id": "task-5-07-09",
+    "source": "Matura Maj 2024 • Zad. 23",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 5: Funkcja Liniowa i Układy Równań > Warunek równoległości prostych: a_1 = a_2",
+    "question_preview": "Prosta równoległa do prostej $y = 3x - 4$ ma współczynnik kierunkowy równy:"
+  },
+  {
+    "id": "task-5-08-09",
+    "source": "Matura Maj 2024 • Zad. 24",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "LINEAR",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 5: Funkcja Liniowa i Układy Równań > Warunek prostopadłości prostych: a_1 * a_2 = -1",
+    "question_preview": "Prosta prostopadła do prostej o równaniu $y = 2x - 3$ ma współczynnik kierunkowy równy:"
+  },
+  {
+    "id": "task-6-1-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PARABOLA",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c",
+    "question_preview": ""
+  },
+  {
+    "id": "task-6-01-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 2x + 1$."
+  },
+  {
+    "id": "task-6-01-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 1$?"
+  },
+  {
+    "id": "task-6-01-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać ogólna funkcji kwadratowej: f(x) = ax^2 + bx + c",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-02-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wyróżnik równania kwadratowego delta i liczba miejsc zerowych",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 4x + 1$."
+  },
+  {
+    "id": "task-6-02-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wyróżnik równania kwadratowego delta i liczba miejsc zerowych",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 2$?"
+  },
+  {
+    "id": "task-6-02-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wyróżnik równania kwadratowego delta i liczba miejsc zerowych",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-03-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Miejsca zerowe funkcji kwadratowej: Wzory na x_1 i x_2",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 6x + 1$."
+  },
+  {
+    "id": "task-6-03-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Miejsca zerowe funkcji kwadratowej: Wzory na x_1 i x_2",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 3$?"
+  },
+  {
+    "id": "task-6-03-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Miejsca zerowe funkcji kwadratowej: Wzory na x_1 i x_2",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-4-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": false,
+    "plot_type": "PARABOLA",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": ""
+  },
+  {
+    "id": "task-6-04-09",
+    "source": "Matura Maj 2024 • Zad. 13",
+    "has_plot_object": true,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": "PARABOLA",
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Wierzchołkiem paraboli o równaniu $y = (x - 2)^2 - 1$ jest punkt:"
+  },
+  {
+    "id": "task-6-04-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Oblicz pierwszą współrzędną wierzchołka paraboli $y = 3x^2 - 18x + 5$."
+  },
+  {
+    "id": "task-6-04-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Rzędna wierzchołka paraboli $f(x) = -2x^2 + 4x + 1$ wynosi:"
+  },
+  {
+    "id": "task-6-04-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Wyznacz współrzędne wierzchołka paraboli $f(x) = 2x^2 - 8x + 3$ oraz jej zbiór wartości."
+  },
+  {
+    "id": "task-6-04-13",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Wykaż, że dla każdego $m \\in \\mathbb{R}$ wierzchołek paraboli $y = x^2 - 2mx + m^2 + 3$ leży na prostej o równaniu $y = 3$."
+  },
+  {
+    "id": "task-6-04-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Jaka jest suma współrzędnych wierzchołka paraboli $y = (x - 3)^2 + 4$?"
+  },
+  {
+    "id": "task-6-04-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Wierzchołek paraboli o równaniu $y = x^2 + 6$ leży w punkcie:"
+  },
+  {
+    "id": "task-6-04-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)",
+    "question_preview": "Współrzędna $p$ wierzchołka paraboli jest jednocześnie:"
+  },
+  {
+    "id": "task-6-05-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 10x + 1$."
+  },
+  {
+    "id": "task-6-05-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 5$?"
+  },
+  {
+    "id": "task-6-05-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-06-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Oś symetrii paraboli o równaniu x = p",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 12x + 1$."
+  },
+  {
+    "id": "task-6-06-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Oś symetrii paraboli o równaniu x = p",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 6$?"
+  },
+  {
+    "id": "task-6-06-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Oś symetrii paraboli o równaniu x = p",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-07-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać iloczynowa funkcji kwadratowej: f(x) = a(x - x_1)(x - x_2)",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 14x + 1$."
+  },
+  {
+    "id": "task-6-07-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać iloczynowa funkcji kwadratowej: f(x) = a(x - x_1)(x - x_2)",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 7$?"
+  },
+  {
+    "id": "task-6-07-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Postać iloczynowa funkcji kwadratowej: f(x) = a(x - x_1)(x - x_2)",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-08-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Przechodzenie między postaciami funkcji kwadratowej",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 16x + 1$."
+  },
+  {
+    "id": "task-6-08-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Przechodzenie między postaciami funkcji kwadratowej",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 8$?"
+  },
+  {
+    "id": "task-6-08-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Przechodzenie między postaciami funkcji kwadratowej",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-09-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wyznaczanie wzoru funkcji kwadratowej na podstawie danych",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 18x + 1$."
+  },
+  {
+    "id": "task-6-09-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wyznaczanie wzoru funkcji kwadratowej na podstawie danych",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 9$?"
+  },
+  {
+    "id": "task-6-09-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wyznaczanie wzoru funkcji kwadratowej na podstawie danych",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-10-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Zbiór wartości i przedziały monotoniczności paraboli",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 20x + 1$."
+  },
+  {
+    "id": "task-6-10-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Zbiór wartości i przedziały monotoniczności paraboli",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 10$?"
+  },
+  {
+    "id": "task-6-10-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Zbiór wartości i przedziały monotoniczności paraboli",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-11-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wartość najmniejsza i największa w przedziale domkniętym",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 22x + 1$."
+  },
+  {
+    "id": "task-6-11-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wartość najmniejsza i największa w przedziale domkniętym",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 11$?"
+  },
+  {
+    "id": "task-6-11-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Wartość najmniejsza i największa w przedziale domkniętym",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-12-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Nierówności kwadratowe z delta > 0",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 24x + 1$."
+  },
+  {
+    "id": "task-6-12-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Nierówności kwadratowe z delta > 0",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 12$?"
+  },
+  {
+    "id": "task-6-12-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Nierówności kwadratowe z delta > 0",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-13-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Nierówności kwadratowe z delta <= 0",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 26x + 1$."
+  },
+  {
+    "id": "task-6-13-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Nierówności kwadratowe z delta <= 0",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 13$?"
+  },
+  {
+    "id": "task-6-13-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Nierówności kwadratowe z delta <= 0",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-14-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Odczytywanie znaków współczynników z rysunku paraboli",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 28x + 1$."
+  },
+  {
+    "id": "task-6-14-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Odczytywanie znaków współczynników z rysunku paraboli",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 14$?"
+  },
+  {
+    "id": "task-6-14-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Odczytywanie znaków współczynników z rysunku paraboli",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-6-15-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Podsumowanie funkcji kwadratowej: Zadania maturalne",
+    "question_preview": "Oblicz współrzędną $p$ wierzchołka paraboli $y = x^2 - 30x + 1$."
+  },
+  {
+    "id": "task-6-15-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Podsumowanie funkcji kwadratowej: Zadania maturalne",
+    "question_preview": "Ile wynosi wyraz wolny $c$ paraboli $y = 2x^2 + 3x + 15$?"
+  },
+  {
+    "id": "task-6-15-17",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 6: Funkcja Kwadratowa > Podsumowanie funkcji kwadratowej: Zadania maturalne",
+    "question_preview": "Parabola o $a < 0$ osiąga:"
+  },
+  {
+    "id": "task-9-6-6",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 9: Planimetria > Twierdzenie Talesa: Podział odcinków i proste równoległe",
+    "question_preview": "Na rysunku proste $k$ i $l$ są równoległe. Odcinki mają długości: $a = 4, b = x, c = 6, d = 9$. Wartość $x$ wynosi:"
+  },
+  {
+    "id": "task-10-1-12",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Długość odcinka w układzie współrzędnych",
+    "question_preview": "Oceń prawdziwość zdań o długości odcinka w układzie współrzędnych."
+  },
+  {
+    "id": "task-10-3-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Proste w postaci kierunkowej: y = ax + b i kąt nachylenia",
+    "question_preview": "Prosta $y = 4$ w układzie współrzędnych jest prostą:"
+  },
+  {
+    "id": "task-10-4-7",
+    "source": "CKE • Arkusz pokazowy",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Proste równoległe i prostopadłe w układzie współrzędnych",
+    "question_preview": "Prosta $y = 4$ oraz prosta $x = -2$ w układzie współrzędnych:"
+  },
+  {
+    "id": "task-10-4-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Proste równoległe i prostopadłe w układzie współrzędnych",
+    "question_preview": "Proste $y = 5x + 2$ i $y = 5x - 8$ w układzie współrzędnych:"
+  },
+  {
+    "id": "task-10-5-12",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Równanie okręgu w postaci kanonicznej: (x - a)^2 + (y - b)^2 = r^2",
+    "question_preview": "Oceń prawdziwość zdań o okręgach w układzie współrzędnych."
+  },
+  {
+    "id": "task-10-8-12",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Symetria osiowa i środkowa w układzie współrzędnych",
+    "question_preview": "Oceń prawdziwość zdań o symetriach w układzie współrzędnych."
+  },
+  {
+    "id": "task-10-10-12",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Pole trójkąta i wielokąta ze współrzędnych wierzchołków",
+    "question_preview": "Oceń prawdziwość zdań o polu figury w układzie współrzędnych."
+  },
+  {
+    "id": "task-10-13-9",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Przekształcenia geometryczne figur: Przesunięcie o wektor [p, q]",
+    "question_preview": "Wykres funkcji $y = f(x)$ przesunięto o wektor $\\vec{u} = [2, -3]$. Wzór nowej funkcji to:"
+  },
+  {
+    "id": "task-10-13-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 10: Geometria Analityczna > Przekształcenia geometryczne figur: Przesunięcie o wektor [p, q]",
+    "question_preview": "O jaki wektor $[p, 0]$ należy przesunąć wykres funkcji, aby punkt $(2, 3)$ przeszedł w punkt $(7, 3)$? Podaj wartość $p$."
+  },
+  {
+    "id": "task-14-11-1",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 14: Statystyka > Interpretacja wykresów słupkowych i kołowych",
+    "question_preview": "Na wykresie kołowym kategoria stanowiąca $30\\%$ całości odpowiada wycinkowi o kącie środkowym:"
+  },
+  {
+    "id": "task-14-11-4",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 14: Statystyka > Interpretacja wykresów słupkowych i kołowych",
+    "question_preview": "Wykres kołowy podzielono na trzy wycinki o kątach $120^\\circ, 150^\\circ$ oraz $\\alpha$. Kąt $\\alpha$ wynosi:"
+  },
+  {
+    "id": "task-14-11-8",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 14: Statystyka > Interpretacja wykresów słupkowych i kołowych",
+    "question_preview": "W pewnej szkole $180$ uczniów uczy się języka niemieckiego, co na wykresie kołowym odpowiada kątowi środkowemu $120^\\circ$. Ilu uczniów licz"
+  },
+  {
+    "id": "task-14-11-11",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 14: Statystyka > Interpretacja wykresów słupkowych i kołowych",
+    "question_preview": "Na wykresie słupkowym słupki odpowiadające ocenom 1, 2, 3, 4, 5 mają wysokości odpowiednio: 1, 3, 6, 8, 2. Mediana ocen wynosi:"
+  },
+  {
+    "id": "task-14-11-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 14: Statystyka > Interpretacja wykresów słupkowych i kołowych",
+    "question_preview": "Na wykresie słupkowym z osią pionową zaczynającą się od 100 zamiast od 0, słupek o wartości 110 wydaje się dwa razy wyższy od słupka o warto"
+  },
+  {
+    "id": "task-15-2-7",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Wyznaczanie dziedziny geometrycznej w zadaniach optymalizacyjnych",
+    "question_preview": "Oceń prawdziwość zdania: Wyznaczenie dziedziny jest weryfikacją, czy wierzchołek paraboli reprezentuje realne rozwiązanie geometryczne."
+  },
+  {
+    "id": "task-15-2-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Wyznaczanie dziedziny geometrycznej w zadaniach optymalizacyjnych",
+    "question_preview": "Z siatki o długości 140 m budujemy 4 jednakowe przylegające klatki dla zwierząt w układzie $1 \\times 4$ (zob. rysunek z 5 poprzeczkami długo"
+  },
+  {
+    "id": "task-15-5-7",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Optymalizacja ogrodzenia 3: Działka dzielona płotem wewnętrznym",
+    "question_preview": "Oceń prawdziwość zdania: Maksymalne pole zawsze osiągane jest w wierzchołku paraboli, gdy współczynnik $a < 0$."
+  },
+  {
+    "id": "task-15-10-15",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Optymalizacja w geometrii analitycznej: Odległość punktu na prostej",
+    "question_preview": "Odległość punktu $P = (x, y)$ leżącego na paraboli $y = x^2$ od punktu $A = (0, 2)$ jest najmniejsza dla $x^2$ równego:"
+  },
+  {
+    "id": "task-15-11-12",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Modelowanie rzutu pionowego i toru lotu pocisku",
+    "question_preview": "Tor lotu piłki opisany jest równaniem paraboli $y = -0{,}05x^2 + x$, gdzie $x$ to odległość w poziomie, a $y$ to wysokość (w metrach). Zasię"
+  },
+  {
+    "id": "task-15-11-16",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Modelowanie rzutu pionowego i toru lotu pocisku",
+    "question_preview": "Fontanna wyrzuca strumień wody w kształcie paraboli. Dysza fontanny znajduje się na wysokości 1 metra nad ziemią ($x = 0, y = 1$). Maksymaln"
+  },
+  {
+    "id": "task-15-14-5",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Kompleksowe zadanie otwarte za 4 punkty z matury majowej",
+    "question_preview": "Dla funkcji $P(x) = -2x^2 + 120x$ wierzchołek paraboli wynosi $x = 30$. Jeśli dziedzina to $(0, 50)$, to wierzchołek:"
+  },
+  {
+    "id": "task-15-14-10",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Kompleksowe zadanie otwarte za 4 punkty z matury majowej",
+    "question_preview": "W zadaniu CKE za 4 punkty, ile punktów traci zdający, jeśli poprawnie obliczy wierzchołek paraboli, ale w ogóle nie poda dziedziny funkcji?"
+  },
+  {
+    "id": "task-15-14-14",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Kompleksowe zadanie otwarte za 4 punkty z matury majowej",
+    "question_preview": "Jeżeli wierzchołek paraboli wynosi $x_w = 25$, a dziedzina zadania to $D = (0, 20)$, to największa wartość funkcji na tej dziedzinie:"
+  },
+  {
+    "id": "task-15-15-5",
+    "source": "CKE • Informator maturalny",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Strategia zdobywania 4 punktów w zadaniu optymalizacyjnym",
+    "question_preview": "Funkcja kosztu $K(x) = 3x^2 - 60x + 500$ ma współczynnik $a = 3 > 0$. Wierzchołek paraboli wyznacza:"
+  },
+  {
+    "id": "task-15-15-13",
+    "source": "Zadanie autorskie",
+    "has_plot_object": false,
+    "has_image": false,
+    "has_drawing_text": true,
+    "plot_type": null,
+    "source_info": "seed/curriculum\\curriculum_matematyka.json > Dział 15: Zadania Optymalizacyjne i Modelowanie Matematyczne > Strategia zdobywania 4 punktów w zadaniu optymalizacyjnym",
+    "question_preview": "Oblicz wartość $q$ wierzchołka paraboli $f(x) = -3x^2 + 12x + 8$."
+  }
+]

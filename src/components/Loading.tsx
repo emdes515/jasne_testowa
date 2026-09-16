@@ -10,7 +10,7 @@ export function LoadingSpinner({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) {
   };
   
   return (
-    <div className="relative flex items-center justify-center">
+    <div role="status" aria-label="Ładowanie..." className="relative flex items-center justify-center">
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}

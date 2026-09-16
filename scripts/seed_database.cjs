@@ -486,6 +486,9 @@ async function main() {
           estimated_time_formatted: lesson.estimated_time_formatted || '~6 min',
           required_correct_tasks: lesson.required_correct_tasks || 3,
           theory_pill: lesson.theory_pill || null,
+          theoryPill: lesson.theory_pill || null,
+          formula_sheet: lesson.formula_sheet || lesson.formulaSheet || null,
+          formulaSheet: lesson.formula_sheet || lesson.formulaSheet || null,
           tasks: lesson.tasks || [],
           updatedAt: new Date().toISOString()
         }, { merge: true });

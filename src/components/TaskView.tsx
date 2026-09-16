@@ -28,7 +28,8 @@ import {
   Loader2,
   Coins,
   Heart,
-  HeartCrack
+  HeartCrack,
+  Info
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -57,6 +58,7 @@ interface TaskViewProps {
 export interface FormattedFormulaItem {
   title?: string;
   latex: string;
+  description?: string;
 }
 
 interface TheoryCardItem {
@@ -105,11 +107,13 @@ function extractStructuredFormulas(raw: any): FormattedFormulaItem[] {
       }
     } else if (typeof item === 'object') {
       const latex = item.latex || item.formula || item.content_latex || item.content || item.math || item.def || '';
-      const title = item.title || item.name || item.label || item.description || '';
-      if (latex || title) {
+      const title = item.title || item.name || item.label || '';
+      const description = item.description || item.desc || item.explanation || item.note || item.legend || '';
+      if (latex || title || description) {
         results.push({
           title: title ? String(title).trim() : undefined,
-          latex: latex ? String(latex).trim() : (title ? String(title).trim() : '')
+          latex: latex ? String(latex).trim() : (title ? String(title).trim() : ''),
+          description: description ? String(description).trim() : undefined
         });
       }
     }
@@ -906,12 +910,12 @@ export function TaskView({
             {firstPassMistakesCount === 0 ? (
               <>
                 <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
-                <span>Bezbłędnie (0 błędów) • 100% skuteczności</span>
+                <span>0 błędów</span>
               </>
             ) : (
               <>
                 <RefreshCw size={13} className="text-amber-400 shrink-0" />
-                <span>Zaliczono z pętlą • {firstPassMistakesCount} {firstPassMistakesCount === 1 ? 'błąd poprawiony' : firstPassMistakesCount < 5 ? 'błędy poprawione' : 'błędów poprawionych'}</span>
+                <span>{firstPassMistakesCount} {firstPassMistakesCount === 1 ? 'błąd' : firstPassMistakesCount < 5 ? 'błędy' : 'błędów'}</span>
               </>
             )}
           </motion.div>
@@ -1131,14 +1135,19 @@ export function TaskView({
                                     {item.title}
                                   </span>
                                 </div>
-                                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider bg-white/5 border border-white/5 px-2 py-0.5 rounded-full shrink-0">
-                                  Wzór CKE
-                                </span>
                               </div>
                             )}
                             <div className="w-full text-center overflow-x-auto py-1 text-white">
                               <MathRenderer content={item.latex} displayMode={true} />
                             </div>
+                            {item.description && (
+                              <div className="mt-1 pt-2.5 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-white/[0.02] -mx-2 px-3 py-2 rounded-xl">
+                                <Info className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                                <div className="w-full font-normal">
+                                  <MathRenderer content={item.description} className="leading-relaxed" />
+                                </div>
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
