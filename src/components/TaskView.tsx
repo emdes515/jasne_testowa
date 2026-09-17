@@ -1315,9 +1315,7 @@ export function TaskView({
             <span>
               {!isLastCard 
                 ? 'Następna karta' 
-                : practiceQueue.length > 0 
-                  ? `Rozpocznij zadania (1/${practiceQueue.length})` 
-                  : 'Rozpocznij zadania'}
+                : 'Przejdź do zadań'}
             </span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </button>

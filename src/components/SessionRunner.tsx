@@ -4338,7 +4338,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
                 }`}
               >
-                <span>Rozpocznij zadania{taskQueue.length > 0 ? ` (${taskQueue.length})` : ''}</span>
+                <span>Przejdź do zadań</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
             )}
