@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  Sparkles, 
   CheckCircle2, 
   AlertTriangle, 
   ArrowRight, 
@@ -808,10 +807,10 @@ export function TaskView({
     };
 
     return (
-      <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 select-none overflow-hidden">
-        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative">
+      <div className="fixed inset-0 z-50 bg-surface-bg/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 select-none overflow-hidden">
+        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-surface-elevated md:rounded-[32px] md:border md:border-surface-border md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative">
         {/* Top bar header */}
-        <header className="shrink-0 px-4 pt-4 pb-3 border-b border-white/5 bg-[#0B0E14] flex items-center justify-end z-20">
+        <header className="shrink-0 px-4 pt-4 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-end z-20">
           <button 
             onClick={handleContinue}
             className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#9CA3AF] hover:text-white transition-colors active:scale-95"
@@ -924,16 +923,16 @@ export function TaskView({
         </div>
 
         {/* 5. Sticky Action Footer: powrót do mapy lekcji */}
-        <footer className="shrink-0 w-full p-4 bg-[#0B0E14] border-t border-white/5 z-20" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
+        <footer className="shrink-0 w-full p-4 bg-surface-elevated border-t border-surface-border z-20" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           <div className="flex flex-col items-center w-full">
             <button 
               onClick={handleContinue}
-              className="w-full h-[52px] bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold text-base px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+              className="w-full h-[52px] bg-primary hover:bg-[#FFC72C] border-b-4 border-primary-hover text-[#070A0F] font-bold text-base px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
             >
               <span>WRÓĆ DO MAPY NAUKI</span>
               <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
             </button>
-            <p className="text-center text-xs font-semibold text-[#8B8D98] mt-2.5 truncate max-w-full px-2">
+            <p className="text-center text-xs font-semibold text-text-muted mt-2.5 truncate max-w-full px-2">
               Zobacz swój zaliczony krok na mapie działu
             </p>
           </div>
@@ -948,9 +947,9 @@ export function TaskView({
   // --------------------------------------------------------------------------
   if (showRetryInterstitial) {
     return (
-      <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 select-none overflow-hidden">
-        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.08)] flex flex-col justify-between items-stretch overflow-hidden relative">
-          <header className="shrink-0 px-4 pt-4 pb-3 border-b border-white/5 bg-[#0B0E14] flex items-center justify-between z-20">
+      <div className="fixed inset-0 z-50 bg-surface-bg/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 select-none overflow-hidden">
+        <div className="w-full h-full md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-surface-elevated md:rounded-[32px] md:border md:border-surface-border md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.08)] flex flex-col justify-between items-stretch overflow-hidden relative">
+          <header className="shrink-0 px-4 pt-4 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-between z-20">
           <span className="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
             <RotateCcw size={14} /> Pętla Poprawkowa
           </span>
@@ -1000,7 +999,7 @@ export function TaskView({
           </div>
         </div>
 
-        <footer className="shrink-0 w-full p-4 bg-[#0B0E14]/95 backdrop-blur-md border-t border-white/5" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
+        <footer className="shrink-0 w-full p-4 bg-surface-elevated/95 backdrop-blur-md border-t border-surface-border" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           <button 
             onClick={handleStartRetryPhase}
             className="w-full bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold text-base py-3.5 px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
@@ -1025,8 +1024,8 @@ export function TaskView({
 
     return (
       <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
-        <div className="w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-start items-stretch overflow-hidden relative">
-          <header className="shrink-0 px-4 pt-3.5 pb-3 border-b border-white/5 bg-[#0B0E14] flex items-center justify-between z-20">
+        <div className="w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-surface-bg md:rounded-[32px] md:border md:border-surface-border md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-start items-stretch overflow-hidden relative">
+          <header className="shrink-0 px-4 pt-3.5 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-between z-20">
           <button 
             onClick={onCancelTask}
             className="flex items-center gap-1.5 text-[#9CA3AF] hover:text-white text-xs font-bold bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full transition-colors active:scale-95"
@@ -1068,7 +1067,7 @@ export function TaskView({
                       </>
                     ) : (
                       <>
-                        <Sparkles size={14} className="text-[#FFB800]" />
+                        <Lightbulb size={14} className="text-[#FFB800]" />
                         <span className="text-[#FFB800] font-black uppercase tracking-wider">{currentCard.badge || 'Kluczowa Reguła'}</span>
                       </>
                     )}
@@ -1283,7 +1282,7 @@ export function TaskView({
           </AnimatePresence>
         </main>
 
-        <footer className="shrink-0 p-4 border-t border-white/5 bg-[#0B0E14] flex gap-3 z-20" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
+        <footer className="shrink-0 p-4 border-t border-surface-border bg-surface-elevated flex gap-3 z-20" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           {currentTheoryIndex > 0 && (
             <button
               onClick={() => {
@@ -1340,12 +1339,12 @@ export function TaskView({
   const isShortOptions = normalizedOptions.every(opt => (opt.content_latex || '').length < 35 && !opt.content_latex.includes('\n'));
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
-      <div className={`w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-[#0B0E14] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative ${shakeIncorrect ? 'animate-shake' : ''}`}>
+    <div className="fixed inset-0 z-50 bg-surface-bg/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
+      <div className={`w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-surface-elevated md:rounded-[32px] md:border md:border-surface-border md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between items-stretch overflow-hidden relative ${shakeIncorrect ? 'animate-shake' : ''}`}>
         {/* -------------------------------------------------------------------- */}
         {/* SECTION 1: HEADER (Compact, Zero-Scroll Sticky Top)                  */}
         {/* -------------------------------------------------------------------- */}
-      <header className="shrink-0 px-4 pt-3 pb-2.5 border-b border-white/5 bg-[#0B0E14] flex flex-col gap-2 z-20">
+      <header className="shrink-0 px-4 pt-3 pb-2.5 border-b border-surface-border bg-surface-elevated flex flex-col gap-2 z-20">
         <div className="flex items-center justify-between">
           {/* Exit button */}
           <button 
@@ -1638,9 +1637,9 @@ export function TaskView({
         {taskType === 'TWO_PART' && (
           <div className="w-full space-y-4 my-auto py-2">
             {/* Krok 1 */}
-            <div className="p-4 rounded-2xl bg-[#141C28] border border-white/10 space-y-2.5 text-left">
-              <div className="text-xs sm:text-sm font-bold text-[#FFB800] flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">1</span>
+            <div className="p-4 rounded-2xl bg-surface-card border border-surface-border space-y-2.5 text-left">
+              <div className="text-xs sm:text-sm font-bold text-primary flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-primary/20 text-primary text-xs flex items-center justify-center font-bold">1</span>
                 <span>{activeTask.part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -1652,15 +1651,15 @@ export function TaskView({
                   let btnClass = 'p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all text-xs sm:text-sm cursor-pointer select-none ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
-                      : 'bg-[#0B0E14] border-white/10 hover:border-white/20 text-white/90';
+                      ? 'bg-primary/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                      : 'bg-surface-elevated border-surface-border hover:border-primary/40 text-text-primary';
                   } else {
                     if (isOptionCorrect) {
                       btnClass += 'bg-emerald-500/15 border-emerald-500 text-emerald-100';
                     } else if (isSelected && !isOptionCorrect) {
                       btnClass += 'bg-rose-500/15 border-rose-500 text-rose-100';
                     } else {
-                      btnClass += 'bg-[#0B0E14]/40 border-white/5 opacity-40 text-white/40';
+                      btnClass += 'bg-surface-elevated/40 border-surface-border/50 opacity-40 text-text-muted';
                     }
                   }
 
@@ -1677,7 +1676,7 @@ export function TaskView({
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]' : 'bg-white/5 border-white/10 text-white/80'
+                        isSelected ? 'bg-primary text-[#080B11] font-bold border-primary' : 'bg-white/5 border-surface-border text-text-secondary'
                       }`}>
                         {opt.id}
                       </span>
@@ -1691,9 +1690,9 @@ export function TaskView({
             </div>
 
             {/* Krok 2 */}
-            <div className="p-4 rounded-2xl bg-[#141C28] border border-white/10 space-y-2.5 text-left">
-              <div className="text-xs sm:text-sm font-bold text-[#FFB800] flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">2</span>
+            <div className="p-4 rounded-2xl bg-surface-card border border-surface-border space-y-2.5 text-left">
+              <div className="text-xs sm:text-sm font-bold text-primary flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-primary/20 text-primary text-xs flex items-center justify-center font-bold">2</span>
                 <span>{activeTask.part_2?.prompt || 'Wybierz uzasadnienie:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -1705,15 +1704,15 @@ export function TaskView({
                   let btnClass = 'p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all text-xs sm:text-sm cursor-pointer select-none ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
-                      : 'bg-[#0B0E14] border-white/10 hover:border-white/20 text-white/90';
+                      ? 'bg-primary/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                      : 'bg-surface-elevated border-surface-border hover:border-primary/40 text-text-primary';
                   } else {
                     if (isOptionCorrect) {
                       btnClass += 'bg-emerald-500/15 border-emerald-500 text-emerald-100';
                     } else if (isSelected && !isOptionCorrect) {
                       btnClass += 'bg-rose-500/15 border-rose-500 text-rose-100';
                     } else {
-                      btnClass += 'bg-[#0B0E14]/40 border-white/5 opacity-40 text-white/40';
+                      btnClass += 'bg-surface-elevated/40 border-surface-border/50 opacity-40 text-text-muted';
                     }
                   }
 
@@ -1765,14 +1764,14 @@ export function TaskView({
                         ? isStatementCorrect
                           ? 'bg-emerald-500/10 border-emerald-500/30'
                           : 'bg-rose-500/10 border-rose-500/30'
-                        : 'bg-[#141C28] border-white/10'
+                        : 'bg-surface-card border-surface-border'
                     } flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
                   >
                     <div className="flex items-start gap-3 flex-1 min-w-0">
-                      <span className="shrink-0 w-6 h-6 rounded-lg bg-[#0B0E14] border border-white/10 text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
+                      <span className="shrink-0 w-6 h-6 rounded-lg bg-surface-elevated border border-surface-border text-primary font-bold text-xs flex items-center justify-center mt-0.5">
                         {idx + 1}
                       </span>
-                      <div className="text-xs sm:text-sm text-white/90 leading-relaxed font-medium">
+                      <div className="text-xs sm:text-sm text-text-primary leading-relaxed font-medium">
                         <MathRenderer content={stmt.text || stmt.statement || ''} />
                       </div>
                     </div>
@@ -1785,15 +1784,15 @@ export function TaskView({
                         let btnClass = 'w-11 h-10 rounded-xl text-xs font-black flex items-center justify-center transition-all cursor-pointer border select-none ';
                         if (!isEvaluated) {
                           btnClass += isOptSelected
-                            ? 'bg-[#FFB800] border-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.3)]'
-                            : 'bg-[#0B0E14] border-white/10 text-white/70 hover:text-white hover:border-white/20';
+                            ? 'bg-primary border-primary text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.3)]'
+                            : 'bg-surface-elevated border-surface-border text-text-secondary hover:text-text-primary hover:border-primary/40';
                         } else {
                           if (isThisTheCorrectAnswer) {
                             btnClass += 'bg-emerald-500 border-emerald-500 text-white';
                           } else if (isOptSelected && !isThisTheCorrectAnswer) {
                             btnClass += 'bg-rose-500 border-rose-500 text-white';
                           } else {
-                            btnClass += 'bg-[#0B0E14]/40 border-white/5 text-white/30 opacity-40';
+                            btnClass += 'bg-surface-elevated/40 border-surface-border/50 text-text-muted opacity-40';
                           }
                         }
 
@@ -1852,7 +1851,7 @@ export function TaskView({
       {/* SECTION 3: BOTTOM PANEL / BOTTOM SHEET (Duolingo-style Feedback)      */}
       {/* -------------------------------------------------------------------- */}
       {!isEvaluated ? (
-        <footer className="shrink-0 p-4 border-t border-white/5 bg-[#0B0E14] z-20 flex flex-col gap-2.5" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
+        <footer className="shrink-0 p-4 border-t border-surface-border bg-surface-elevated z-20 flex flex-col gap-2.5" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           {/* Main Action Button (No lonely hanging hint here - hint is next to scratchpad) */}
           <button
             type="button"
@@ -1939,7 +1938,7 @@ export function TaskView({
                 {solutionSteps.map((step, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#0B0E14]/95 border border-white/10 hover:border-white/20 rounded-xl p-3 sm:p-3.5 flex flex-col gap-2 shadow-sm transition-all"
+                    className="bg-surface-elevated/95 border border-surface-border hover:border-surface-border rounded-xl p-3 sm:p-3.5 flex flex-col gap-2 shadow-sm transition-all"
                   >
                     {/* Step Title / Badge - hide redundant WYJAŚNIENIE badge */}
                     {Boolean(step.title || (step.label && !step.label.toLowerCase().includes('wyjaśnienie'))) && (
@@ -1967,7 +1966,7 @@ export function TaskView({
             ) : (
               /* If CORRECT: Show primary solution, with collapsible detailed breakdown */
               <div className="flex flex-col gap-2.5">
-                <div className="bg-[#0B0E14]/95 border border-white/10 rounded-xl p-3 sm:p-3.5 flex flex-col gap-1.5 shadow-sm">
+                <div className="bg-surface-elevated/95 border border-surface-border rounded-xl p-3 sm:p-3.5 flex flex-col gap-1.5 shadow-sm">
                   {solutionSteps[0]?.title && (
                     <div className="flex items-center gap-2 mb-1">
                       {solutionSteps[0].label && !solutionSteps[0].label.toLowerCase().includes('wyjaśnienie') && (
@@ -2092,8 +2091,8 @@ export function TaskView({
               </div>
 
               {/* Level 1 Static Hint */}
-              <div className="bg-[#0B0E14] border border-white/10 rounded-xl p-3.5 text-xs text-white/90 leading-relaxed">
-                <div className="font-bold text-amber-400 mb-1 flex items-center gap-1">
+              <div className="bg-surface-elevated border border-surface-border rounded-xl p-3.5 text-xs text-text-primary leading-relaxed">
+                <div className="font-bold text-primary mb-1 flex items-center gap-1">
                   <span>Wskazówka (Karta Wzorów):</span>
                 </div>
                 <MathRenderer content={activeTask.hints?.level_1 || 'Zwróć uwagę na sprowadzenie wyrażeń do wspólnej postaci i odpowiednie wzory maturalne.'} />
@@ -2101,8 +2100,8 @@ export function TaskView({
 
               {/* Level 2 Static Hint */}
               {unlockedHintLevel >= 2 ? (
-                <div className="bg-[#0B0E14] border border-white/10 rounded-xl p-3.5 text-xs text-white/90 leading-relaxed">
-                  <div className="font-bold text-[#FFB800] mb-1 flex items-center gap-1">
+                <div className="bg-surface-elevated border border-surface-border rounded-xl p-3.5 text-xs text-text-primary leading-relaxed">
+                  <div className="font-bold text-primary mb-1 flex items-center gap-1">
                     <span>Krok rozwiązania:</span>
                   </div>
                   <MathRenderer content={activeTask.hints?.level_2 || 'Podstaw odpowiednie wzory skróconego mnożenia lub twierdzenia o potęgach i logarytmach.'} />

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Trophy, Coins, Star, X, Crown, Sparkles } from 'lucide-react';
+import { Trophy, Coins, Star, X, Crown, Zap } from 'lucide-react';
 import { useEffect } from 'react';
 import { triggerHaptic } from '../utils';
 import confetti from 'canvas-confetti';
@@ -158,7 +158,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
                 </p>
                 {reward.bonusNote && (
                   <div className="inline-flex items-center gap-1.5 mt-2.5 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-300 text-[11px] font-bold">
-                    <Sparkles size={12} />
+                    <Zap size={12} />
                     {reward.bonusNote}
                   </div>
                 )}

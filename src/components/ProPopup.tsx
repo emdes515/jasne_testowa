@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Sparkles, Check, Crown, Heart, Users, ShieldCheck, KeyRound, Loader2 } from 'lucide-react';
+import { X, Brain, Check, Crown, Heart, Users, ShieldCheck, KeyRound, Loader2 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
 interface ProPopupProps {
@@ -58,36 +58,36 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="relative w-full max-w-sm overflow-hidden rounded-[32px] p-[1px] bg-gradient-to-b from-amber-400/50 via-orange-500/20 to-[#13141A] shadow-2xl shadow-orange-500/20 my-auto"
           >
-            <div className="bg-[#0B0E14] rounded-[31px] p-6 relative overflow-hidden h-full">
+            <div className="bg-surface-card rounded-[31px] p-6 relative overflow-hidden h-full">
               {/* Background effects */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-orange-500/20 blur-3xl rounded-full" />
-              <div className="absolute top-1/2 left-0 w-32 h-32 bg-amber-500/10 blur-3xl rounded-full -translate-y-1/2" />
+              <div className="absolute top-1/2 left-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full -translate-y-1/2" />
               
               <button 
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-text-muted hover:text-text-primary transition-colors cursor-pointer"
               >
                 <X size={16} />
               </button>
 
               <div className="flex flex-col items-center text-center relative z-10 pt-2">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-500 p-[1px] mb-4 shadow-lg shadow-orange-500/20">
-                  <div className="w-full h-full bg-[#0B0E14] rounded-2xl flex items-center justify-center">
+                  <div className="w-full h-full bg-surface-elevated rounded-2xl flex items-center justify-center">
                     <Crown size={32} className="text-amber-400" />
                   </div>
                 </div>
                 
-                <h2 className="text-2xl font-display font-black text-white mb-1.5">
+                <h2 className="text-2xl font-display font-black text-text-primary mb-1.5">
                   Pakiet JASNE. PRO
                 </h2>
-                <p className="text-[#8B8D98] text-[13px] leading-relaxed mb-5">
+                <p className="text-text-secondary text-[13px] leading-relaxed mb-5">
                   Gwarancja zdanej matury bez limitów i bez stresu.
                 </p>
 
                 <div className="w-full space-y-2.5 mb-6 text-left">
                   {[
                     { title: 'Nielimitowane serca', desc: 'Ucz się bez przerw i bez kar za błędy', icon: Heart, color: 'text-rose-400' },
-                    { title: 'AI Egzaminator Maturalny', desc: 'Nielimitowane sprawdzanie odręcznych dowodów CKE', icon: Sparkles, color: 'text-amber-400' },
+                    { title: 'AI Egzaminator Maturalny', desc: 'Nielimitowane sprawdzanie odręcznych dowodów CKE', icon: Brain, color: 'text-amber-400' },
                     { title: 'Wszystkie lekcje & arkusze', desc: 'Pełna baza zadań Nowej Formuły 2023/2025', icon: Check, color: 'text-emerald-400' },
                     { title: 'Kod aktywacyjny PRO', desc: 'Płatność jednorazowa, aktywacja na Twoim koncie', icon: ShieldCheck, color: 'text-blue-400' }
                   ].map((feat, i) => {

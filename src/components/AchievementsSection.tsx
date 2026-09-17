@@ -6,7 +6,6 @@ import {
   Swords, 
   GraduationCap, 
   Flame, 
-  Sparkles, 
   Crown, 
   Coins, 
   Zap, 
@@ -83,7 +82,7 @@ export function AchievementsSection({
       case 'Trophy': return <Trophy size={20} />;
       case 'GraduationCap': return <GraduationCap size={20} />;
       case 'Flame': return <Flame size={20} />;
-      case 'Sparkles': return <Sparkles size={20} />;
+      case 'Zap': return <Zap size={20} />;
       default: return <Star size={20} />;
     }
   };
@@ -104,8 +103,8 @@ export function AchievementsSection({
       <div className="bg-[#141A23] border border-white/5 rounded-[24px] p-5 relative shadow-lg">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#0B0E14] border border-[#F59E0B]/30 flex items-center justify-center shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-              <Trophy size={24} className="text-[#F59E0B]" />
+            <div className="w-12 h-12 rounded-xl bg-surface-elevated border border-primary/30 flex items-center justify-center shadow-[0_0_15px_rgba(255,184,0,0.2)]">
+              <Trophy size={24} className="text-primary" />
             </div>
             <div>
               <h2 className="text-base font-display font-black text-white leading-tight">Centrum Gracza & Odznaki</h2>
@@ -171,7 +170,7 @@ export function AchievementsSection({
                 : 'bg-amber-500/10 text-amber-400 border-amber-500/30 hover:bg-amber-500/20'
             }`}
           >
-            <Sparkles size={13} />
+            <Zap size={13} />
             <span>Do odebrania ({totalClaimableCount})</span>
           </button>
         )}
@@ -256,7 +255,7 @@ export function AchievementsSection({
                       ? 'bg-gradient-to-br from-[#10B981]/20 to-emerald-600/20 text-[#10B981] border-[#10B981]/40 animate-pulse'
                       : isEarned
                       ? 'bg-gradient-to-br from-amber-500/20 to-yellow-600/20 text-amber-400 border-amber-500/30'
-                      : 'bg-[#0B0E14] text-[#6B7280] border-white/5 relative'
+                      : 'bg-surface-elevated text-text-muted border-surface-border relative'
                   }`}>
                     {isLocked ? <Lock size={22} /> : (isEarned ? <Trophy size={24} className="text-amber-400" /> : getCategoryIcon(ach.iconName))}
                   </div>
@@ -318,7 +317,7 @@ export function AchievementsSection({
                       </span>
                     </div>
                     
-                    <div className="w-full h-2 bg-[#0B0E14] rounded-full mb-3 border border-white/5">
+                    <div className="w-full h-2 bg-surface-elevated rounded-full mb-3 border border-surface-border">
                       <div 
                         className={`h-full rounded-full transition-all duration-500 ${
                           item.canClaim 
@@ -378,7 +377,7 @@ export function AchievementsSection({
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="border-t border-white/5 bg-[#0B0E14] p-5 space-y-3"
+                    className="border-t border-surface-border bg-surface-elevated p-5 space-y-3"
                   >
                     <span className="text-[10px] uppercase font-black text-[#9CA3AF] tracking-wider block mb-2">
                       Historia rang:

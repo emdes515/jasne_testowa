@@ -272,23 +272,23 @@ export function CkeScratchpad({
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.99 }}
         transition={{ duration: 0.15 }}
-        className="fixed inset-0 z-[999999] bg-[#070B12] flex flex-col justify-between items-stretch overflow-hidden select-none"
+        className="fixed inset-0 z-[999999] bg-surface-bg flex flex-col justify-between items-stretch overflow-hidden select-none"
         style={{ touchAction: 'none' }}
       >
         {/* HEADER TOOLBAR: ALWAYS PINNED TO THE VERY TOP WITH HIGHEST Z-INDEX */}
-        <header className="shrink-0 px-3 py-2.5 bg-[#0B0E14] border-b border-white/10 flex items-center justify-between gap-2 z-50 shadow-2xl">
+        <header className="shrink-0 px-3 py-2.5 bg-surface-elevated border-b border-surface-border flex items-center justify-between gap-2 z-50 shadow-2xl">
           {/* Left: Prominent EXIT BUTTON */}
           <button
             type="button"
             onClick={handleClose}
-            className="bg-[#FFB800] hover:bg-[#FFC72C] border-b-2 border-[#D97706] text-[#080B11] font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all shrink-0 cursor-pointer"
+            className="bg-primary hover:bg-[#FFC72C] border-b-2 border-primary-hover text-[#070A0F] font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all shrink-0 cursor-pointer"
           >
             <ArrowLeft size={17} className="stroke-[3]" />
             <span>← Wróć do zadania</span>
           </button>
 
           {/* Middle: Tool selector (Pen vs Eraser) */}
-          <div className="flex items-center bg-[#141C28] border border-white/10 rounded-xl p-1 gap-1 shrink-0">
+          <div className="flex items-center bg-surface-card border border-surface-border rounded-xl p-1 gap-1 shrink-0">
             <button
               type="button"
               onClick={() => {
@@ -297,8 +297,8 @@ export function CkeScratchpad({
               }}
               className={`py-1.5 px-2.5 sm:px-3 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
                 tool === 'pen'
-                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-sm'
-                  : 'text-white/60 hover:text-white'
+                  ? 'bg-primary text-[#070A0F] font-bold shadow-sm'
+                  : 'text-text-muted hover:text-text-primary'
               }`}
             >
               <PenTool size={13} />
@@ -314,7 +314,7 @@ export function CkeScratchpad({
               className={`py-1.5 px-2.5 sm:px-3 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
                 tool === 'eraser'
                   ? 'bg-rose-500 text-white font-black shadow-sm'
-                  : 'text-white/60 hover:text-white'
+                  : 'text-text-muted hover:text-text-primary'
               }`}
             >
               <Eraser size={13} />
@@ -325,7 +325,7 @@ export function CkeScratchpad({
           {/* Szybka nawigacja i rozszerzanie arkusza brudnopisu */}
           <div className="flex items-center gap-1 shrink-0">
             {canvasHeight > 700 && (
-              <div className="flex items-center gap-0.5 bg-[#141C28] p-0.5 rounded-xl border border-white/10">
+              <div className="flex items-center gap-0.5 bg-surface-card p-0.5 rounded-xl border border-surface-border">
                 <button
                   type="button"
                   onClick={handleScrollToTop}

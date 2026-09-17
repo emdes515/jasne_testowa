@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Swords, 
   Trophy, 
-  Sparkles, 
   Zap, 
   ShieldCheck, 
   ArrowRight, 
@@ -237,7 +236,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
   const userTokens = userState?.masteryTokens || 0;
 
   return (
-    <div className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden bg-[#070A0F] text-slate-100 flex flex-col items-center justify-start pb-24">
+    <div className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden bg-surface-bg text-text-primary flex flex-col items-center justify-start pb-24">
       {/* Background canvas with drifting emerald math matrix */}
       <canvas
         ref={canvasRef}
@@ -353,7 +352,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-gradient-to-br from-[#064E3B]/80 via-[#022c22]/90 to-[#031510] border-2 border-emerald-400/60 p-1 flex flex-col items-center justify-center shadow-[0_0_35px_rgba(16,185,129,0.5)] group hover:scale-105 transition-transform duration-300">
               <div className="relative flex items-center justify-center">
                 <Swords size={38} className="text-emerald-300 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
-                <Sparkles size={16} className="text-teal-200 absolute -top-2 -right-2 animate-bounce" />
+                <Zap size={16} className="text-teal-200 absolute -top-2 -right-2 animate-bounce" />
               </div>
               <span className="text-[9px] font-black uppercase tracking-widest text-emerald-300 mt-1">
                 SEZON 1
@@ -480,7 +479,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                 onClick={handleClaimTicket}
                 className="w-full sm:w-auto shrink-0 px-5 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-black font-black text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Sparkles size={16} />
+                <Zap size={16} />
                 <span>Odbierz Bilet (+100 Żetonów)</span>
               </button>
             </div>
@@ -556,7 +555,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Card 1 */}
-            <div className="rounded-2xl bg-[#0B1218]/90 border border-emerald-500/20 p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-lg">
+            <div className="rounded-2xl bg-surface-card/90 border border-emerald-500/20 p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-lg">
               <div>
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mb-4">
                   <Zap size={20} />
@@ -566,10 +565,10 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                     Czas: 60 sekund
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-white text-base mb-2">
+                <h3 className="font-display font-bold text-text-primary text-base mb-2">
                   Starcia Blitz 1v1
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-text-secondary leading-relaxed">
                   3 dynamiczne rundy zadań zamkniętych CKE. Oboje widzicie to samo zadanie w tym samym momencie. 
                   Szybka kalkulacja i bezbłędna intuicja dają przewagę.
                 </p>
@@ -577,7 +576,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             </div>
 
             {/* Card 2 */}
-            <div className="rounded-2xl bg-[#0B1218]/90 border border-emerald-500/20 p-5 flex flex-col justify-between hover:border-emerald-500/40 transition-colors shadow-lg">
+            <div className="rounded-2xl bg-surface-card/90 border border-teal-500/20 p-5 flex flex-col justify-between hover:border-teal-500/40 transition-colors shadow-lg">
               <div>
                 <div className="w-10 h-10 rounded-xl bg-teal-500/15 border border-teal-500/30 text-teal-300 flex items-center justify-center mb-4">
                   <Trophy size={20} />
@@ -587,10 +586,10 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                     5 Lig ELO
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-white text-base mb-2">
+                <h3 className="font-display font-bold text-text-primary text-base mb-2">
                   System Rankingowy ELO
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-text-secondary leading-relaxed">
                   Od Ligi Brązowej po elitarny Diament. Matchmaking dobierze rywala o zbliżonym poziomie. 
                   Za awans do wyższej ligi otrzymasz unikalne tytuły na profilu i mnożniki XP.
                 </p>
@@ -598,20 +597,20 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             </div>
 
             {/* Card 3 */}
-            <div className="rounded-2xl bg-[#0B1218]/90 border border-[#FFB800]/20 p-5 flex flex-col justify-between hover:border-[#FFB800]/40 transition-colors shadow-lg">
+            <div className="rounded-2xl bg-surface-card/90 border border-primary/20 p-5 flex flex-col justify-between hover:border-primary/40 transition-colors shadow-lg">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/30 text-primary flex items-center justify-center mb-4">
                   <ShieldCheck size={20} />
                 </div>
                 <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-[10px] font-mono font-black uppercase text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.2 rounded border border-[#FFB800]/20">
+                  <span className="text-[10px] font-mono font-black uppercase text-primary bg-primary/10 px-2 py-0.2 rounded border border-primary/20">
                     Ochrona Skarbca
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-white text-base mb-2">
+                <h3 className="font-display font-bold text-text-primary text-base mb-2">
                   Tarcze Straty ELO
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-text-secondary leading-relaxed">
                   Twoje Tarcze ELO ze Skarbca chronią Twój dorobek. Nawet przy gorszym dniu lub trudnym zadaniu 
                   nie stracisz punktów rankingowych. Pełne bezpieczeństwo i motywacja.
                 </p>
@@ -623,9 +622,9 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
         {/* =========================================================================
             6. USER'S PRESERVED STATS & TRAINING CTAs
            ========================================================================= */}
-        <div className="w-full max-w-3xl bg-[#0D151F] border border-white/10 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="w-full max-w-3xl bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex flex-col gap-1 text-center sm:text-left">
-            <span className="text-xs text-[#8B8D98] font-mono">Twój stan konta do Sezonu 1:</span>
+            <span className="text-xs text-text-muted font-mono">Twój stan konta do Sezonu 1:</span>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-1">
               <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-xl border border-white/5">
                 <Trophy size={14} className="text-amber-400" />
@@ -638,7 +637,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                 <span className="text-sm font-black text-sky-400 font-display">{userShields}x</span>
               </div>
               <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-xl border border-white/5">
-                <Sparkles size={14} className="text-emerald-400" />
+                <Zap size={14} className="text-emerald-400" />
                 <span className="text-xs text-slate-300 font-bold">Żetony:</span>
                 <span className="text-sm font-black text-emerald-400 font-display">{userTokens}</span>
               </div>

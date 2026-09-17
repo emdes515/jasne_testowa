@@ -4,7 +4,6 @@ import confetti from 'canvas-confetti';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import {
-  Sparkles,
   Flame,
   Check,
   ArrowRight,
@@ -226,7 +225,7 @@ export function OnboardingOverlay({
             </button>
           ) : (
             <div className="flex items-center gap-2">
-              <Badge variant="jasne" icon={<Sparkles size={13} />}>
+              <Badge variant="jasne" icon={<Zap size={13} />}>
                 NOWA FORMUŁA 2023
               </Badge>
             </div>

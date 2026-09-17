@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
-  Sparkles, 
+  Cpu, 
   CheckCircle2, 
   XCircle, 
   ArrowRight, 
@@ -260,7 +260,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
           <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500/20 to-purple-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center">
-                <Sparkles size={18} />
+                <Cpu size={18} />
               </div>
               <div>
                 <h3 className="text-sm sm:text-base font-black text-white flex items-center gap-2">
@@ -359,7 +359,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                     </>
                   ) : (
                     <>
-                      <Sparkles size={16} />
+                      <Cpu size={16} />
                       <span>Wygeneruj zadanie z kluczem CKE</span>
                     </>
                   )}
@@ -574,7 +574,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                       onClick={() => setGeneratedTask(null)}
                       className="flex-1 py-3.5 rounded-xl bg-[#FFB800] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <Sparkles size={16} />
+                      <Cpu size={16} />
                       <span>Wygeneruj kolejne zadanie</span>
                     </button>
                   )}

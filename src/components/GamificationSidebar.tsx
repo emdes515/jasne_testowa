@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Flame, Clock, Trophy, Sparkles, Check, ArrowRight, Target, Swords, FileText, Zap, Coins, Gift } from 'lucide-react';
+import { Flame, Clock, Trophy, Check, ArrowRight, Target, Swords, FileText, Zap, Coins, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { UserState } from '../types';
 import { getMilestoneStreakDays, getTodayDateString, triggerHaptic, playSuccessSound, filterActualTaskIds } from '../utils';
@@ -171,20 +171,20 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
       className="hidden lg:flex flex-col gap-5 w-full sticky top-20 self-start"
     >
       {/* 1. STREAK WIDGET (Seria Dni) */}
-      <div className="bg-gradient-to-br from-[#141A23] to-[#0B0E14] border border-[#F97316]/30 rounded-3xl p-5 relative overflow-hidden shadow-[0_4px_24px_rgba(249,115,22,0.12)]">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[#F97316]/15 rounded-full blur-[35px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
+      <div className="bg-gradient-to-br from-surface-card to-surface-bg border border-streak-flame/30 rounded-3xl p-5 relative overflow-hidden shadow-[0_4px_24px_rgba(234,88,12,0.12)]">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-streak-flame/15 rounded-full blur-[35px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
         
         <div className="flex items-center justify-between mb-3 relative z-10">
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-display font-black text-[#F97316] text-xl tracking-tight">
+              <span className="font-display font-black text-streak-flame text-xl tracking-tight">
                 {streakDays} {streakDays === 1 ? 'Dzień' : 'Dni'}
               </span>
-              <span className="text-[10px] font-black uppercase tracking-wider text-[#F97316] bg-[#F97316]/10 px-2 py-0.5 rounded-full border border-[#F97316]/20">
+              <span className="text-[10px] font-black uppercase tracking-wider text-streak-flame bg-streak-flame/10 px-2 py-0.5 rounded-full border border-streak-flame/20">
                 Seria
               </span>
             </div>
-            <p className="text-[#8B8D98] text-[11px] leading-tight mt-1">
+            <p className="text-text-muted text-[11px] leading-tight mt-1">
               {isCompletedToday 
                 ? 'Cel na dziś zaliczony! Płomień płonie.' 
                 : `Rozwiąż zadanie, aby zaliczyć Dzień ${todayTargetDayNumber}!`}
@@ -196,7 +196,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         </div>
 
         {/* 7-dniowa ścieżka serii */}
-        <div className="grid grid-cols-7 gap-1.5 pt-3 border-t border-white/5 relative z-10">
+        <div className="grid grid-cols-7 gap-1.5 pt-3 border-t border-surface-border relative z-10">
           {streakMilestones.map(m => (
             <div key={m.dayNumber} className="flex flex-col items-center gap-1">
               <div 
@@ -205,7 +205,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
                     ? 'bg-[#F97316] text-white shadow-[0_0_10px_rgba(249,115,22,0.5)] border border-white/20' 
                     : m.isTargetToday
                       ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/15 animate-pulse'
-                      : 'bg-white/5 border border-white/5 text-[#8B8D98]'
+                      : 'bg-white/5 border border-surface-border text-text-muted'
                 }`}
                 title={m.fullLabel}
               >
@@ -217,7 +217,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
                   <span>{m.dayNumber}</span>
                 )}
               </div>
-              <span className={`text-[9px] font-bold ${m.isCompleted ? 'text-[#F97316]' : m.isTargetToday ? 'text-white' : 'text-[#8B8D98]'}`}>
+              <span className={`text-[9px] font-bold ${m.isCompleted ? 'text-streak-flame' : m.isTargetToday ? 'text-text-primary' : 'text-text-muted'}`}>
                 {m.shortLabel}
               </span>
             </div>
@@ -226,7 +226,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
       </div>
 
       {/* 2. WYZWANIE DNIA (Daily Missions) Z ZEGAREM */}
-      <div className="bg-gradient-to-br from-[#121824] via-[#0E131C] to-[#0A0E15] border border-[#FFB800]/30 rounded-3xl p-5 relative overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+      <div className="bg-surface-card border border-primary/30 rounded-3xl p-5 relative overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
         <AnimatePresence>
           {floatingReward && (
             <motion.div
@@ -243,8 +243,8 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
 
         <div className="flex items-center justify-between mb-3 relative z-10">
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-[0_0_10px_rgba(255,184,0,0.15)]">
-              <Sparkles size={10} />
+            <span className="text-[10px] font-black uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-[0_0_10px_rgba(255,184,0,0.15)]">
+              <Zap size={10} />
               <span>WYZWANIE DNIA</span>
             </span>
           </div>
@@ -256,17 +256,17 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
 
         {/* Progress header */}
         <div className="flex items-baseline justify-between mb-2">
-          <span className="text-xs font-bold text-white">
-            Postęp zadań: <span className="text-[#FFB800] font-black">{currentProgress}</span> / 5
+          <span className="text-xs font-bold text-text-primary">
+            Postęp zadań: <span className="text-primary font-black">{currentProgress}</span> / 5
           </span>
-          <span className="text-[11px] text-[#8B8D98]">
+          <span className="text-[11px] text-text-muted">
             {isAllTiersCompleted ? 'Wszystko odebrane' : `Do celu: ${tasksToNextTier}`}
           </span>
         </div>
 
         {/* Progress line with nodes */}
         <div className="relative w-full my-3 px-2">
-          <div className="w-full bg-[#182232] h-2 rounded-full overflow-hidden border border-white/5">
+          <div className="w-full bg-surface-bg h-2 rounded-full overflow-hidden border border-surface-border">
             <div 
               className="h-full bg-gradient-to-r from-[#D97706] via-[#FFB800] to-amber-400 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
               style={{ width: `${Math.min(100, Math.round((currentProgress / 5) * 100))}%` }}
@@ -294,8 +294,8 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
                       : isClaimable
                         ? 'bg-gradient-to-br from-amber-400 to-yellow-500 border-white text-black shadow-[0_0_12px_rgba(245,158,11,0.8)] scale-110 animate-bounce cursor-pointer'
                         : isUnlocked
-                          ? 'bg-[#FFB800] border-white text-black'
-                          : 'bg-[#151D2A] border-white/20 text-[#6B7280]'
+                          ? 'bg-primary border-white text-black'
+                          : 'bg-surface-card border-surface-border text-text-muted'
                   }`}
                   title={`${tier.title}: ${tier.shortReward}`}
                 >
@@ -307,12 +307,12 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         </div>
 
         {/* Action button */}
-        <div className="pt-2 border-t border-white/5 flex items-center justify-between gap-2">
-          <div className="text-[11px] font-semibold text-white/90 truncate flex-1">
+        <div className="pt-2 border-t border-surface-border flex items-center justify-between gap-2">
+          <div className="text-[11px] font-semibold text-text-primary/90 truncate flex-1">
             {claimableTier ? (
               <span className="text-amber-300 font-black">Nagroda gotowa do odebrania!</span>
             ) : tasksToNextTier > 0 ? (
-              <span>Cel: <strong className="text-white">{nextTargetTier.title}</strong></span>
+              <span>Cel: <strong className="text-text-primary">{nextTargetTier.title}</strong></span>
             ) : (
               <span className="text-emerald-400">Komplet nagród odebrany</span>
             )}
@@ -328,7 +328,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
           ) : (
             <button
               onClick={() => onNavigate?.('nauka')}
-              className="px-3 py-1.5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs flex items-center gap-1 shadow-[0_0_12px_rgba(255,184,0,0.35)] active:scale-95 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-xl bg-primary hover:bg-primary-hover text-[#070A0F] font-bold text-xs flex items-center gap-1 shadow-[0_0_12px_rgba(255,184,0,0.35)] active:scale-95 transition-all cursor-pointer"
             >
               <span>TRENUJ</span>
               <ArrowRight size={12} strokeWidth={3} />
@@ -338,55 +338,55 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
       </div>
 
       {/* 3. SKRÓT DO POWTÓREK & STATYSTYK */}
-      <div className="bg-[#141A23] border border-white/10 rounded-3xl p-5 flex flex-col gap-3.5 shadow-lg">
-        <span className="text-[10px] font-black uppercase text-[#8B8D98] tracking-widest flex items-center gap-1.5">
-          <Zap size={13} className="text-[#FFB800]" />
+      <div className="bg-surface-card border border-surface-border rounded-3xl p-5 flex flex-col gap-3.5 shadow-lg">
+        <span className="text-[10px] font-black uppercase text-text-muted tracking-widest flex items-center gap-1.5">
+          <Zap size={13} className="text-primary" />
           <span>Szybkie Moduły</span>
         </span>
 
         <button
           onClick={() => onNavigate?.('simulator')}
-          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-[#FFB800]/30 transition-all text-left group cursor-pointer"
+          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-surface-border hover:border-primary/30 transition-all text-left group cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center border border-purple-500/30 group-hover:scale-105 transition-transform">
               <FileText size={18} />
             </div>
             <div>
-              <div className="font-display font-bold text-white text-xs">Arkusze Maturalne</div>
-              <div className="text-[10px] text-[#8B8D98]">Nowa Formuła 2023 • Podstawa</div>
+              <div className="font-display font-bold text-text-primary text-xs">Arkusze Maturalne</div>
+              <div className="text-[10px] text-text-muted">Nowa Formuła 2023 • Podstawa</div>
             </div>
           </div>
-          <ArrowRight size={14} className="text-[#8B8D98] group-hover:text-white group-hover:translate-x-1 transition-all" />
+          <ArrowRight size={14} className="text-text-muted group-hover:text-text-primary group-hover:translate-x-1 transition-all" />
         </button>
 
         <button
           id="gamification-sidebar-arena-btn"
           onClick={() => onNavigate?.('arena')}
-          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/30 transition-all text-left group cursor-pointer"
+          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-emerald-500/10 border border-surface-border hover:border-emerald-500/30 transition-all text-left group cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center border border-emerald-500/30 group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(16,185,129,0.3)] transition-all">
               <Swords size={18} />
             </div>
             <div>
-              <div className="font-display font-bold text-white text-xs flex items-center gap-1.5">
+              <div className="font-display font-bold text-text-primary text-xs flex items-center gap-1.5">
                 <span>Arena 2.0</span>
                 <span className="text-[9px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-500/15 px-1.5 py-0.2 rounded border border-emerald-500/30">
                   Wkrótce
                 </span>
               </div>
-              <div className="text-[10px] text-[#8B8D98] group-hover:text-emerald-300/80 transition-colors">
+              <div className="text-[10px] text-text-muted group-hover:text-emerald-300/80 transition-colors">
                 Multiplayer Live 1v1 • Bilet
               </div>
             </div>
           </div>
-          <ArrowRight size={14} className="text-[#8B8D98] group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+          <ArrowRight size={14} className="text-text-muted group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
         </button>
 
-        <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-[#8B8D98] px-1">
+        <div className="pt-2 border-t border-surface-border flex items-center justify-between text-[11px] text-text-muted px-1">
           <span>Zrobione zadania maturalne:</span>
-          <strong className="text-white font-black text-xs">{filterActualTaskIds(completedTasks).length}</strong>
+          <strong className="text-text-primary font-black text-xs">{filterActualTaskIds(completedTasks).length}</strong>
         </div>
       </div>
     </aside>

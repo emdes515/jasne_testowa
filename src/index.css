@@ -3,6 +3,41 @@
 @theme {
   --font-sans: 'DM Sans', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
+
+  /* Core Surfaces & Backgrounds */
+  --color-surface-bg: #070A0F;
+  --color-background-base: #070A0F;
+  --color-surface-card: #0E1522;
+  --color-surface-card-hover: #141D2E;
+  --color-surface-elevated: #141D2E;
+  --color-surface-border: rgba(255, 255, 255, 0.08);
+  --color-surface-border-hover: rgba(255, 255, 255, 0.16);
+  --color-surface-border-active: #FFB800;
+
+  /* Brand Primary & Accents */
+  --color-primary: #FFB800;
+  --color-primary-hover: #FFC72C;
+  --color-primary-glow: rgba(255, 184, 0, 0.25);
+  --color-primary-dark: #B37F00;
+
+  /* Typography Text Tokens */
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-text-subtle: #475569;
+  --color-text-accent: #FFB800;
+
+  /* Gamification & Semantic Accents */
+  --color-alert-crimson: #F43F5E;
+  --color-alert-crimson-bg: rgba(244, 63, 94, 0.12);
+  --color-accent-danger: #F43F5E;
+  --color-streak-flame: #EA580C;
+  --color-accent-streak: #FF782D;
+  --color-accent-success: #10B981;
+  --color-accent-arena: #06B6D4;
+  --color-accent-ai: #A855F7;
+
+  /* Backward Compatibility Aliases */
   --color-jasne: #FFB800;
   --color-jasne-hover: #FFC72C;
   --color-jasne-dark: #D97706;
@@ -328,5 +363,105 @@ button, a, input, [role="button"] {
 }
 .pt-safe-top {
   padding-top: max(12px, env(safe-area-inset-top));
+}
+
+/* =========================================================================
+   DESIGN SYSTEM TYPOGRAPHY SPECIFICATION (DESIGN.md)
+   Plus Jakarta Sans (Display, Headlines, Labels, Metrics)
+   DM Sans (Body text, continuous reading)
+   ========================================================================= */
+
+.text-display-hero {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 48px;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 640px) {
+  .text-display-hero {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+  }
+}
+
+.text-headline-xl {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 640px) {
+  .text-headline-xl {
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.text-headline-lg {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+}
+
+.text-headline-sm {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.text-body-lg {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.text-body-md {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.text-body-sm {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.text-label-lg {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+}
+
+.text-label-sm {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-metric {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 

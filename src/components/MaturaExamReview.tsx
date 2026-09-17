@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Trophy, CheckCircle2, XCircle, Clock, RotateCcw, ArrowLeft, ChevronDown, ChevronUp, Sparkles, BookOpen, AlertCircle } from 'lucide-react';
+import { Trophy, CheckCircle2, XCircle, Clock, RotateCcw, ArrowLeft, ChevronDown, ChevronUp, Zap, BookOpen, AlertCircle } from 'lucide-react';
 import Markdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -118,7 +118,7 @@ export function MaturaExamReview({
           <div>
             <span className="text-[11px] text-[#8B8D98] block">Nagroda</span>
             <div className="flex items-center gap-1 mt-0.5 text-purple-300 font-bold text-sm">
-              <Sparkles size={14} className="text-purple-400" />
+              <Zap size={14} className="text-purple-400" />
               <span>+{xpAwarded} XP</span>
             </div>
           </div>

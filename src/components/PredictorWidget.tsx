@@ -4,9 +4,7 @@ import {
   ChevronRight, 
   ShieldAlert, 
   ShieldCheck, 
-  Award,
-  Zap,
-  ArrowRight
+  Award
 } from 'lucide-react';
 import { PredictorResult } from '../types';
 import { triggerHaptic } from '../utils';
@@ -117,10 +115,10 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
         triggerHaptic('light');
         onOpenDetails();
       }}
-      className={`group relative w-full rounded-3xl bg-[#0B0F19]/95 border p-4 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 cursor-pointer mb-3.5 select-none overflow-hidden ${
+      className={`group relative w-full rounded-3xl bg-surface-card/95 border p-4 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 cursor-pointer mb-3.5 select-none overflow-hidden ${
         isPol 
           ? 'border-rose-500/20 hover:border-rose-500/40' 
-          : 'border-white/[0.08] hover:border-[#FFB800]/40'
+          : 'border-surface-border hover:border-primary/40'
       }`}
     >
       {/* Top Glass Highlight */}
@@ -133,10 +131,10 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
             className="w-2 h-2 rounded-full animate-pulse shrink-0 shadow-[0_0_8px_currentColor]"
             style={{ backgroundColor: statusConfig.ringColor, color: statusConfig.ringColor }}
           />
-          <span className="text-xs font-bold tracking-wider text-slate-300 uppercase whitespace-nowrap">
+          <span className="text-xs font-bold tracking-wider text-text-secondary uppercase whitespace-nowrap">
             Prognoza Matury
           </span>
-          <span className="hidden sm:inline-flex text-[11px] font-semibold text-slate-400 px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.05] whitespace-nowrap">
+          <span className="hidden sm:inline-flex text-[11px] font-semibold text-text-muted px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.05] whitespace-nowrap">
             {subjectMeta.shortName}
           </span>
         </div>
@@ -202,10 +200,10 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
 
           {/* Center Metric */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center select-none">
-            <span className="font-display text-2xl font-black text-white tracking-tight leading-none">
+            <span className="font-display text-2xl font-bold text-text-primary tracking-tight leading-none">
               {animatedPercent}%
             </span>
-            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-1">
+            <span className="text-[9px] font-bold text-text-muted uppercase tracking-wider mt-1">
               PROGNOZA
             </span>
           </div>
@@ -214,15 +212,15 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
         {/* Right Info: Clean Score & Sentence */}
         <div className="min-w-0 flex-1 flex flex-col justify-center">
           <div className="flex items-baseline gap-1.5">
-            <span className="font-display text-3xl font-black text-white tracking-tight leading-none">
+            <span className="font-display text-3xl font-bold text-text-primary tracking-tight leading-none">
               {result.predictedPoints}
             </span>
-            <span className="text-slate-400 font-medium text-sm">
+            <span className="text-text-muted font-medium text-sm">
               / {result.totalExamPoints} pkt
             </span>
           </div>
 
-          <p className="text-xs text-slate-300 leading-relaxed mt-1.5">
+          <p className="text-xs text-text-secondary leading-relaxed mt-1.5">
             {!result.isPassing ? (
               <>
                 Do zdania matury ({result.passingThresholdPoints} pkt) brakuje Ci{' '}
@@ -273,79 +271,13 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
         </div>
       </div>
 
-      {/* 4. DIAGNOSTIC LEVEL TEST CALLOUT */}
-      {onOpenDiagnostic && (
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-            triggerHaptic('medium');
-            onOpenDiagnostic();
-          }}
-          className="mt-3 p-3 rounded-2xl bg-gradient-to-r from-amber-500/15 via-emerald-500/10 to-transparent hover:bg-white/[0.08] border border-amber-500/30 hover:border-amber-400/50 transition-all flex items-center justify-between gap-3 cursor-pointer group/diag shadow-sm"
-        >
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-7 h-7 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
-              <Award size={14} className="animate-pulse" />
-            </div>
-            <div className="min-w-0">
-              <span className="text-[10px] font-extrabold text-amber-300 uppercase tracking-wider block leading-none">
-                Szybka Diagnoza Poziomu
-              </span>
-              <p className="text-xs text-slate-200 mt-1 leading-snug">
-                Zrób 3 pytania, aby sprawdzić poziom i skalibrować predyktor
-              </p>
-            </div>
-          </div>
-
-          <span className="text-xs font-black text-amber-300 flex items-center gap-1 shrink-0 px-2.5 py-1 rounded-lg bg-amber-400/15 border border-amber-400/30 group-hover/diag:scale-105 transition-transform">
-            <span>Sprawdź</span>
-            <ArrowRight size={13} />
-          </span>
-        </div>
-      )}
-
-      {/* 5. RECOMMENDED ACTION TILE (NO TRUNCATION, EXECUTIVE FINISH) */}
-      {result.nextBestTopic && (
-        <div 
-          onClick={(e) => {
-            e.stopPropagation();
-            triggerHaptic('medium');
-            if (onNavigate) {
-              onNavigate('learn');
-            } else {
-              onOpenDetails();
-            }
-          }}
-          className="mt-3 p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] hover:border-amber-500/30 transition-all flex items-center justify-between gap-3 group/tip cursor-pointer"
-        >
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-7 h-7 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
-              <Zap size={14} className="fill-amber-400/30" />
-            </div>
-            <div className="min-w-0">
-              <span className="text-[10px] font-bold text-amber-400/90 uppercase tracking-wider block leading-none">
-                Najszybszy skok punktowy
-              </span>
-              <p className="text-xs text-slate-200 mt-1 leading-snug">
-                Opanuj dział <strong className="text-white font-bold">{result.nextBestTopic.topicName}</strong>, aby zyskać <span className="text-amber-400 font-extrabold">+{result.nextBestTopic.potentialPointGain} pkt</span>
-              </p>
-            </div>
-          </div>
-
-          <span className="text-xs font-bold text-amber-400 flex items-center gap-0.5 shrink-0 group-hover/tip:translate-x-1 transition-transform">
-            <span>Trenuj</span>
-            <ArrowRight size={13} />
-          </span>
-        </div>
-      )}
-
-      {/* 5. FOOTER: QUIET CALCULATION PROMPT */}
-      <div className="flex items-center justify-between pt-2.5 mt-2 border-t border-white/[0.05] text-xs relative z-10">
-        <span className="text-[11px] text-slate-400">
-          Model predykcji punktowej
+      {/* 4. FOOTER: QUIET CALCULATION PROMPT */}
+      <div className="flex items-center justify-between pt-3 mt-3 border-t border-surface-border text-xs relative z-10">
+        <span className="text-[11px] text-text-muted">
+          Kalibracja modelu CKE
         </span>
 
-        <div className="flex items-center gap-1 text-xs font-semibold text-slate-300 group-hover:text-white transition-colors shrink-0 ml-2">
+        <div className="flex items-center gap-1 text-xs font-semibold text-text-secondary group-hover:text-primary transition-colors shrink-0 ml-2">
           <span>Szczegóły kalkulacji</span>
           <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
         </div>

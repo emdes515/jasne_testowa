@@ -25,16 +25,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   type = 'button',
   ...props
 }, ref) => {
-  const baseStyles = 'inline-flex items-center justify-center font-display font-bold transition-all duration-75 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:shadow-none disabled:translate-y-0 active:translate-y-1 active:shadow-none';
+  const baseStyles = 'inline-flex items-center justify-center font-display font-bold transition-all duration-75 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-bg disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:shadow-none disabled:translate-y-0 active:translate-y-1 active:shadow-none';
 
   const variantStyles: Record<ButtonVariant, string> = {
-    primary: 'bg-primary text-[#0A0E18] shadow-[0_4px_0_#B37F00] hover:bg-[#FFC72C] hover:brightness-105',
-    secondary: 'bg-surface-card-hover text-text-primary border border-surface-border shadow-[0_4px_0_#10192A] hover:bg-surface-elevated hover:border-white/20 hover:text-white',
-    outline: 'bg-transparent text-text-primary border border-white/15 shadow-[0_2px_0_#10192A] hover:border-primary hover:text-primary hover:bg-primary/5',
+    primary: 'bg-primary text-[#070A0F] shadow-[0_4px_0_#B37F00] hover:bg-[#FFC72C] hover:brightness-105',
+    secondary: 'bg-surface-card-hover text-text-primary border border-surface-border shadow-[0_4px_0_#070A0F] hover:bg-surface-elevated hover:border-white/20 hover:text-white',
+    outline: 'bg-transparent text-text-primary border border-white/15 shadow-[0_2px_0_#070A0F] hover:border-primary hover:text-primary hover:bg-primary/5',
     ghost: 'bg-transparent text-text-secondary hover:text-text-primary hover:bg-white/[0.06] active:translate-y-0.5',
     destructive: 'bg-[#F43F5E]/15 text-[#FB7185] border border-[#F43F5E]/30 shadow-[0_4px_0_#A62A3F] hover:bg-[#F43F5E]/25 hover:border-[#F43F5E]/50',
     ok: 'bg-[#10B981] text-[#04140E] shadow-[0_4px_0_#0A7D57] hover:brightness-105',
-    neutral: 'bg-ink-800 text-ink-050 border-2 border-ink-700 shadow-[0_4px_0_#10192A] hover:bg-ink-850'
+    neutral: 'bg-surface-card text-text-primary border border-surface-border shadow-[0_4px_0_#070A0F] hover:bg-surface-card-hover'
   };
 
   const sizeStyles: Record<ButtonSize, string> = {

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { UserState, SubjectKey } from '../types';
-import { User, Flame, Coins, Sparkles, X, Heart, Clock, Users } from 'lucide-react';
+import { User, Flame, Coins, Zap, X, Heart, Clock, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
+import { formatPromoSeconds } from '../services/promotionService';
 
 export interface HeaderProps {
   state: UserState;
@@ -15,6 +16,10 @@ export interface HeaderProps {
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
+  isGuest?: boolean;
+  onLoginClick?: () => void;
+  guestPromoSecondsLeft?: number;
+  onOpenGuestPromo?: () => void;
 }
 
 export function Header({ 
@@ -26,7 +31,11 @@ export function Header({
   onSelectSubject,
   onOpenParentSponsor,
   onOpenProPopup,
-  onUpdateUserState 
+  onUpdateUserState,
+  isGuest,
+  onLoginClick,
+  guestPromoSecondsLeft,
+  onOpenGuestPromo
 }: HeaderProps) {
   const [showXpTooltip, setShowXpTooltip] = useState(false);
   const [showHeartsPopup, setShowHeartsPopup] = useState(false);
@@ -51,7 +60,7 @@ export function Header({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#0B0E14]/90 backdrop-blur-2xl border-b border-white/10 px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between relative shadow-lg select-none">
+    <header className="sticky top-0 z-40 bg-surface-bg/90 backdrop-blur-2xl border-b border-surface-border px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between relative shadow-lg select-none">
       {/* LEWA STRONA: Klikalny Brand & Logo JASNE. (widoczny tylko na mobile/tablecie, na PC ukryty bo jest w stałym sidebarze) */}
       <button 
         id="header-brand-logo"
@@ -59,7 +68,7 @@ export function Header({
           triggerHaptic('medium');
           if (onLogoClick) onLogoClick();
         }}
-        className="lg:hidden flex items-center gap-2.5 group cursor-pointer select-none active:scale-95 transition-all text-left py-1 px-1.5 -ml-1 rounded-xl hover:bg-white/[0.04]"
+        className="lg:hidden flex items-center gap-2 group cursor-pointer select-none active:scale-95 transition-all text-left py-1 px-1 -ml-1 rounded-xl hover:bg-white/[0.04] shrink-0"
         title="Przejdź do pulpitu głównego JASNE."
         aria-label="Pulpit główny JASNE."
       >
@@ -134,12 +143,12 @@ export function Header({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full right-0 mt-2 z-50 w-72 bg-[#0B0F17] border border-white/10 rounded-2xl p-4 shadow-2xl text-left"
+                  className="absolute top-full right-0 mt-2 z-50 w-72 bg-surface-elevated border border-surface-border rounded-2xl p-4 shadow-2xl text-left"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                  <div className="flex items-center justify-between pb-3 border-b border-surface-border">
                     <div className="flex items-center gap-1.5">
                       <Heart size={16} className="text-rose-500 fill-rose-500" />
-                      <span className="font-bold text-sm text-white">Serca (Życia)</span>
+                      <span className="font-bold text-sm text-text-primary">Serca (Życia)</span>
                     </div>
                     <span className="font-mono text-xs font-bold text-rose-400">
                       {heartsData.isPro ? 'Nielimitowane' : `${heartsData.hearts} / ${heartsData.maxHearts}`}
@@ -162,19 +171,19 @@ export function Header({
 
                   {/* Status regeneracji */}
                   {!heartsData.isPro && heartsData.hearts < heartsData.maxHearts && (
-                    <div className="bg-[#111726] border border-white/5 rounded-xl p-2.5 mb-3 flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-1.5 text-slate-400">
-                        <Clock size={13} className="text-[#FFB800]" />
+                    <div className="bg-surface-card border border-surface-border rounded-xl p-2.5 mb-3 flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-1.5 text-text-muted">
+                        <Clock size={13} className="text-primary" />
                         <span>Kolejne serce za:</span>
                       </div>
-                      <span className="font-mono font-bold text-[#FFB800]">{heartsData.formattedTime}</span>
+                      <span className="font-mono font-bold text-primary">{heartsData.formattedTime}</span>
                     </div>
                   )}
 
                   {heartsData.isPro && (
                     <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-2.5 mb-3 text-center">
                       <span className="text-xs font-bold text-amber-300">
-                        ✨ Pakiet PRO aktywny – brak limitu serc
+                        Pakiet PRO aktywny – brak limitu serc
                       </span>
                     </div>
                   )}
@@ -244,6 +253,22 @@ export function Header({
           </span>
         </div>
 
+        {/* Wskaźnik Gościa (widoczny tylko na desktopie, gdy jest dużo miejsca) */}
+        {isGuest && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('medium');
+              onLoginClick?.();
+            }}
+            className="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary text-xs font-bold transition-all cursor-pointer active:scale-95 shadow-sm"
+            title="Kliknij, aby się zalogować i zapisać postępy w chmurze"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0" />
+            <span>Konto Gościa • Zaloguj się</span>
+          </button>
+        )}
+
         {/* Wskaźnik 3: Profil & Poziom Gracza */}
         <button 
           id="header-profile-button"
@@ -253,20 +278,20 @@ export function Header({
           }}
           onMouseEnter={() => setShowXpTooltip(true)}
           onMouseLeave={() => setShowXpTooltip(false)}
-          className="flex items-center gap-2 pl-1 pr-2 sm:pr-2.5 py-1 rounded-full bg-[#101726] hover:bg-[#141C2D] border border-white/10 hover:border-[#FFB800]/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm"
+          className="flex items-center gap-2 pl-1 pr-2 sm:pr-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm"
           title="Twój profil i postęp XP"
         >
           {/* Avatar z subtelnym bursztynowym obwodem */}
           <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-[#FFB800] to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
-            <div className="w-full h-full bg-[#0E1420] rounded-full flex items-center justify-center">
-              <User size={13} className="text-[#FFB800]" />
+            <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center">
+              <User size={13} className="text-primary" />
             </div>
           </div>
           <div className="flex flex-col text-left">
-            <span className="font-display font-black text-[11px] sm:text-xs text-white leading-tight group-hover:text-[#FFB800] transition-colors">
+            <span className="font-display font-black text-[11px] sm:text-xs text-text-primary leading-tight group-hover:text-primary transition-colors">
               LVL {state.level}
             </span>
-            <span className="text-[9px] font-bold text-slate-400 leading-tight">
+            <span className="text-[9px] font-bold text-text-muted leading-tight">
               {currentXpInLevel} XP
             </span>
           </div>
@@ -291,38 +316,38 @@ export function Header({
           <>
             <div 
               className="fixed inset-0 z-40" 
-              onClick={() => setShowXpTooltip(false)}
+              onClick={() => setShowXpTooltip(false)} 
             />
             <motion.div
               initial={{ opacity: 0, y: -6, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -6, scale: 0.96 }}
               transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
-              className="absolute top-[58px] right-3 sm:right-6 z-50 bg-[#101726] border border-[#FFB800]/30 p-3.5 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(255,184,0,0.15)] w-64"
+              className="absolute top-[58px] right-3 sm:right-6 z-50 bg-surface-elevated border border-primary/30 p-3.5 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(255,184,0,0.15)] w-64"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-black uppercase tracking-wider text-[#FFB800] flex items-center gap-1">
-                  <Sparkles size={12} /> Postęp Poziomu {state.level}
+                <span className="text-[11px] font-black uppercase tracking-wider text-primary flex items-center gap-1">
+                  <Zap size={12} /> Postęp Poziomu {state.level}
                 </span>
                 <button 
                   onClick={() => setShowXpTooltip(false)}
-                  className="text-[#8B8D98] hover:text-white p-0.5 rounded-md"
+                  className="text-text-muted hover:text-text-primary p-0.5 rounded-md"
                 >
                   <X size={13} />
                 </button>
               </div>
               <div className="flex items-baseline justify-between text-xs mb-1.5">
-                <span className="text-white font-black">{currentXpInLevel} / 1000 XP</span>
-                <span className="text-[#8B8D98] text-[10px]">{Math.round(xpPercent)}%</span>
+                <span className="text-text-primary font-black">{currentXpInLevel} / 1000 XP</span>
+                <span className="text-text-muted text-[10px]">{Math.round(xpPercent)}%</span>
               </div>
-              <div className="w-full h-1.5 bg-[#0B0E14] rounded-full overflow-hidden mb-2">
+              <div className="w-full h-1.5 bg-surface-bg rounded-full overflow-hidden mb-2">
                 <div 
                   className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] rounded-full shadow-[0_0_8px_#FFB800]" 
                   style={{ width: `${xpPercent}%` }}
                 />
               </div>
-              <p className="text-[10px] text-[#9CA3AF] leading-snug">
-                Brakuje jeszcze <strong className="text-white">{1000 - currentXpInLevel} XP</strong> do Poziomu {state.level + 1}.
+              <p className="text-[10px] text-text-secondary leading-snug">
+                Brakuje jeszcze <strong className="text-text-primary">{1000 - currentXpInLevel} XP</strong> do Poziomu {state.level + 1}.
               </p>
             </motion.div>
           </>

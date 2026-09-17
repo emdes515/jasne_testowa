@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Heart, 
   HeartCrack, 
-  Sparkles, 
+  Zap, 
   Coins, 
   Clock, 
   ArrowRight, 
@@ -196,7 +196,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
               }}
               className="w-full py-2 text-xs text-[#FFB800] hover:text-amber-300 font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              <Sparkles size={14} />
+              <Zap size={14} />
               <span>Odblokuj nielimitowane serca w PRO</span>
             </button>
 

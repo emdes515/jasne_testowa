@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, X, Check, Brain } from 'lucide-react';
+import { BookOpen, X, Check, Brain } from 'lucide-react';
 
 interface AiTutorScanOverlayProps {
   isPolish?: boolean;
@@ -111,7 +111,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
               {isCompleted ? (
                 <Check className="w-8 h-8 drop-shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
               ) : isPolish ? (
-                <Sparkles className="w-8 h-8 drop-shadow-[0_0_12px_rgba(255,184,0,0.8)]" />
+                <BookOpen className="w-8 h-8 drop-shadow-[0_0_12px_rgba(255,184,0,0.8)]" />
               ) : (
                 <Brain className="w-8 h-8 drop-shadow-[0_0_12px_rgba(255,184,0,0.8)]" />
               )}

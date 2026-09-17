@@ -6,7 +6,6 @@ import {
   Zap, 
   Crown, 
   Coins, 
-  Sparkles, 
   ShoppingBag, 
   Check, 
   AlertCircle,
@@ -114,7 +113,7 @@ export function PerksVaultSection({
       <div>
         <div className="flex items-center justify-between mb-3 px-0.5">
           <h3 className="text-sm font-display font-black text-white flex items-center gap-2">
-            <Sparkles size={16} className="text-[#FFB800]" /> Sloty Ekwipunku & Wzmocnienia
+            <Zap size={16} className="text-[#FFB800]" /> Sloty Ekwipunku & Wzmocnienia
           </h3>
           <span className="text-[10px] uppercase tracking-wider font-bold text-[#8B8D98]">3 Gniazda RPG</span>
         </div>
@@ -265,7 +264,7 @@ export function PerksVaultSection({
                 <div className="flex items-center gap-2">
                   {(perks.temporaryXpBoostCharges || 0) > 0 ? (
                     <span className="text-[11px] font-black text-amber-300 flex items-center gap-1.5">
-                      <Sparkles size={13} className="text-amber-400 animate-spin" />
+                      <Zap size={13} className="text-amber-400 animate-pulse" />
                       Mnożnik aktywny w bieżących zadaniach!
                     </span>
                   ) : (
@@ -285,7 +284,7 @@ export function PerksVaultSection({
         {/* Pasek pasywnych relikwii z odznak */}
         <div className="mt-3.5 bg-white/[0.03] border border-white/5 rounded-2xl p-3 flex items-center justify-between gap-2 text-[11px] text-[#9CA3AF]">
           <span className="font-bold flex items-center gap-1.5 text-white">
-            <Sparkles size={13} className="text-purple-400" /> Pasywne premie z odznak:
+            <Zap size={13} className="text-purple-400" /> Pasywne premie z odznak:
           </span>
           <div className="flex items-center gap-2.5 font-mono font-bold text-[10px]">
             <span className="text-purple-300">+{perks.xpBoostPercent || 0}% XP</span>
@@ -337,11 +336,11 @@ export function PerksVaultSection({
             return (
               <div
                 key={item.id}
-                className="bg-[#141A23] border border-white/5 rounded-2xl p-5 flex flex-col gap-4 shadow-lg hover:border-white/10 transition-colors"
+                className="bg-surface-card border border-surface-border rounded-2xl p-5 flex flex-col gap-4 shadow-lg hover:border-surface-border transition-colors"
               >
                 {/* Header Karty */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#0B0E14] border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                  <div className="w-12 h-12 rounded-xl bg-surface-elevated border border-primary/30 flex items-center justify-center shrink-0 text-primary shadow-[0_0_15px_rgba(255,184,0,0.2)]">
                     {item.icon === 'Shield' && <Shield size={24} />}
                     {item.icon === 'ShieldCheck' && <ShieldCheck size={24} />}
                     {item.icon === 'Zap' && <Zap size={24} />}

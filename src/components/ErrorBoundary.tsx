@@ -52,23 +52,23 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0B0E14] text-white p-4 pb-[env(safe-area-inset-bottom,16px)]">
-          <div className="max-w-md w-full bg-[#101726]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 text-center">
+        <div className="min-h-screen flex items-center justify-center bg-surface-bg text-text-primary p-4 pb-[env(safe-area-inset-bottom,16px)]">
+          <div className="max-w-md w-full bg-surface-card/90 backdrop-blur-xl border border-surface-border rounded-2xl shadow-2xl p-6 sm:p-8 text-center">
             <div className="mx-auto w-16 h-16 bg-rose-500/15 border border-rose-500/30 rounded-2xl flex items-center justify-center mb-4 shadow-[0_0_25px_rgba(244,63,94,0.2)]">
               <AlertTriangle className="w-8 h-8 text-rose-400" />
             </div>
             
-            <h2 className="text-xl sm:text-2xl font-black text-white mb-2 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-display font-black text-text-primary mb-2 tracking-tight">
               Ups! Coś poszło nie tak
             </h2>
             
-            <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+            <p className="text-sm text-text-secondary mb-6 leading-relaxed">
               Przepraszamy za utrudnienia. Spróbuj odświeżyć stronę lub wróć do strony głównej. Twój stan nauki jest bezpieczny w pamięci podręcznej.
             </p>
 
             {this.state.error && (
-              <details className="mb-6 text-left bg-black/40 border border-white/5 rounded-xl p-3.5">
-                <summary className="cursor-pointer text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors">
+              <details className="mb-6 text-left bg-surface-elevated/80 border border-surface-border rounded-xl p-3.5">
+                <summary className="cursor-pointer text-xs font-semibold text-text-muted hover:text-text-primary transition-colors">
                   Szczegóły błędu
                 </summary>
                 <pre className="mt-2 text-[11px] font-mono text-rose-300 overflow-auto max-h-36 leading-tight">
@@ -80,7 +80,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={this.handleReset}
-                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm shadow-lg shadow-blue-500/25 active:scale-95 transition-all cursor-pointer"
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary hover:bg-[#FFC72C] text-[#070A0F] font-bold text-sm shadow-[0_0_20px_rgba(255,184,0,0.3)] active:scale-95 transition-all cursor-pointer"
               >
                 <RefreshCw className="w-4 h-4" />
                 Odśwież stronę
@@ -88,7 +88,7 @@ export class ErrorBoundary extends Component<Props, State> {
               
               <button
                 onClick={this.handleGoHome}
-                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 font-semibold text-sm active:scale-95 transition-all cursor-pointer"
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-surface-elevated hover:bg-surface-card-hover border border-surface-border text-text-primary font-semibold text-sm active:scale-95 transition-all cursor-pointer"
               >
                 <Home className="w-4 h-4" />
                 Strona główna

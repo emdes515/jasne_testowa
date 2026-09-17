@@ -11,7 +11,6 @@ import {
   RefreshCw, 
   BookOpen, 
   Award,
-  Sparkles,
   ArrowRight
 } from 'lucide-react';
 import confetti from 'canvas-confetti';

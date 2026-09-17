@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Target, CheckCircle2, RotateCcw, ArrowRight, ShieldAlert, Sparkles } from 'lucide-react';
+import { X, Target, CheckCircle2, RotateCcw, ArrowRight, ShieldAlert, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getMistakeTasks, clearMistakesBank } from '../utils/mistakesBank';
 
@@ -103,7 +103,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                 </p>
                 <div className="mt-5 p-3.5 rounded-2xl bg-white/5 border border-white/10 text-left max-w-sm w-full">
                   <div className="flex items-center gap-2 text-xs font-semibold text-[#FFB800] mb-1">
-                    <Sparkles size={14} />
+                    <Zap size={14} />
                     <span>Jak działa Bank Błędów?</span>
                   </div>
                   <p className="text-[11px] text-slate-400 leading-normal">

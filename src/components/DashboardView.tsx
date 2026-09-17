@@ -15,7 +15,7 @@ import {
   FlaskConical,
   Lock,
   Target,
-  Sparkles,
+  Cpu,
   FileText
 } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -357,49 +357,46 @@ export function DashboardView({
       initial={{ y: 15, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.05, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-      className="bg-gradient-to-br from-[#141A23] to-[#0B0E14] border border-[#F97316]/30 rounded-2xl p-4 sm:p-5 relative overflow-hidden shadow-[0_4px_25px_rgba(249,115,22,0.15)] group"
+      className="bg-surface-card border border-surface-border rounded-2xl p-4 sm:p-5 relative overflow-hidden shadow-sm group"
     >
-      <div className="absolute top-0 right-0 w-36 h-36 bg-[#F97316]/15 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#EA580C]/10 rounded-full blur-[30px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
-      
       <div className="flex items-center justify-between relative z-10 mb-3.5">
         <div className="pr-2">
           <div className="flex items-center gap-2">
-            <h3 className="font-display font-black text-[#F97316] text-lg sm:text-xl tracking-wide">
+            <h3 className="font-display font-black text-streak-flame text-lg sm:text-xl tracking-wide">
               {streakDays} {streakDays === 1 ? 'Dzień' : 'Dni'} z rzędu!
             </h3>
           </div>
-          <p className="text-slate-300 text-[11px] leading-tight mt-0.5">
+          <p className="text-text-secondary text-[11px] leading-tight mt-0.5">
             {isCompletedToday 
               ? "Dzisiejszy cel serii zaliczony! Ogień płonie dalej."
               : `Cel na dziś: rozwiąż zadanie, aby zaliczyć Dzień ${todayTargetDayNumber}!`}
           </p>
         </div>
         
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-sm border border-white/20 shrink-0">
-          <Flame size={20} className="text-white fill-white animate-flame-breath" />
+        <div className="w-10 h-10 rounded-xl bg-[#F97316]/15 border border-[#F97316]/30 flex items-center justify-center shrink-0">
+          <Flame size={20} className="text-[#F97316] fill-[#F97316]" />
         </div>
       </div>
 
       {/* 7-dniowa ścieżka serii z wysokim kontrastem */}
-      <div className="grid grid-cols-7 gap-1.5 sm:gap-2 relative z-10 pt-3 border-t border-white/10">
+      <div className="grid grid-cols-7 gap-1.5 sm:gap-2 relative z-10 pt-3 border-t border-surface-border">
         {streakMilestones.map((m) => {
           return (
             <div key={m.dayNumber} className="flex flex-col items-center gap-1">
               <div 
                 className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-black transition-all duration-200 relative ${
                   m.isCompleted
-                    ? 'bg-[#F97316] text-white shadow-sm border border-white/20'
+                    ? 'bg-[#F97316] text-white shadow-sm border border-[#F97316]'
                     : m.isTargetToday
-                    ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/20 shadow-sm animate-pulse'
-                    : 'bg-[#18202F] border border-white/10 text-slate-400'
+                    ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/10 shadow-sm'
+                    : 'bg-surface-bg border border-surface-border text-slate-400'
                 }`}
                 title={m.fullLabel}
               >
                 {m.isCompleted ? (
                   <Check size={15} strokeWidth={3} />
                 ) : m.isTargetToday ? (
-                  <Flame size={14} className="fill-[#F97316] animate-flame-breath" />
+                  <Flame size={14} className="fill-[#F97316]" />
                 ) : (
                   <span>{m.dayNumber}</span>
                 )}
@@ -410,7 +407,7 @@ export function DashboardView({
                     ? 'text-[#F97316]' 
                     : m.isTargetToday 
                     ? 'text-white font-extrabold' 
-                    : 'text-slate-400'
+                    : 'text-text-muted'
                 }`}
               >
                 {m.shortLabel}
@@ -428,11 +425,11 @@ export function DashboardView({
       className="flex flex-col p-4 sm:p-6 lg:p-8 pt-5 pb-[140px] max-w-6xl xl:max-w-7xl mx-auto w-full overflow-x-hidden"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
-      {/* 0. PASEK WYBORU PRZEDMIOTU (WYŚRODKOWANY, PŁYNNE PRZEWIJANIE, PEŁNA WIDOCZNOŚĆ BEZ ZWIJANIA) */}
-      <div className="w-full shrink-0 mb-6 select-none">
+      {/* 0. PASEK WYBORU PRZEDMIOTU (SEGMENTED CONTROL, CYBER-TACTILE) */}
+      <div className="w-full shrink-0 mb-6 select-none flex justify-center">
         <div 
           id="dashboard-subject-pills"
-          className="flex items-center sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-2 pt-1 px-1 scrollbar-none flex-nowrap touch-pan-x w-full"
+          className="bg-surface-card border border-surface-border p-1.5 rounded-2xl flex items-center gap-1.5 overflow-x-auto max-w-full scrollbar-none touch-pan-x"
         >
           {getCkeAvailableSubjects().filter(s => s.isAvailable).map((sub) => {
             const isActive = sub.key === selectedSubjectKey;
@@ -447,29 +444,28 @@ export function DashboardView({
                   triggerHaptic('light');
                   handleSelectSubject(sub.key);
                 }}
-                className={`group relative flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border cursor-pointer shrink-0 whitespace-nowrap min-h-[48px] ${
+                className={`group relative flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-150 border cursor-pointer shrink-0 whitespace-nowrap min-h-[42px] ${
                   isActive
-                    ? 'text-white shadow-md'
-                    : 'bg-[#0E1522] hover:bg-[#141D2E] border-white/10 hover:border-white/20 text-slate-400 hover:text-slate-200'
+                    ? 'bg-surface-card-hover border-primary/40 text-text-primary shadow-sm'
+                    : 'border-transparent text-text-muted hover:text-text-secondary hover:bg-white/[0.04]'
                 }`}
                 style={isActive ? {
-                  backgroundColor: `${accentColor}18`,
-                  borderColor: accentColor,
-                  boxShadow: `0 0 16px ${accentColor}30`
+                  borderColor: `${accentColor}50`,
+                  backgroundColor: `${accentColor}12`
                 } : undefined}
               >
                 <div 
-                  className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                  className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                     isActive
                       ? 'text-white'
-                      : 'bg-white/5 text-slate-400 group-hover:text-white'
+                      : 'bg-white/5 text-text-muted group-hover:text-text-primary'
                   }`}
                   style={isActive ? {
                     backgroundColor: accentColor,
                     color: accentColor === '#FFB800' ? '#080B11' : '#FFFFFF'
                   } : undefined}
                 >
-                  <SubIcon size={14} />
+                  <SubIcon size={13} />
                 </div>
 
                 <div className="flex flex-col text-left">
@@ -477,12 +473,12 @@ export function DashboardView({
                     <span className="font-extrabold text-[12px] sm:text-[13px] tracking-tight">{sub.shortName}</span>
                     {isActive && (
                       <span 
-                        className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0"
+                        className="w-1.5 h-1.5 rounded-full shrink-0"
                         style={{ backgroundColor: accentColor }}
                       />
                     )}
                   </div>
-                  <span className="text-[10px] text-slate-400/90 font-medium leading-tight mt-0.5">
+                  <span className="text-[10px] text-text-muted font-medium leading-tight mt-0.5">
                     {sub.examTag}
                   </span>
                 </div>
@@ -491,13 +487,13 @@ export function DashboardView({
           })}
 
           {/* Kafelek kolejnych przedmiotów w przygotowaniu na końcu rzędu */}
-          <div className="flex items-center gap-2 text-[11px] text-slate-400 bg-[#0E1522]/80 border border-white/5 px-3.5 py-2.5 rounded-2xl shrink-0 whitespace-nowrap min-h-[48px]">
-            <span className="font-bold text-slate-500 uppercase tracking-wider text-[9px]">Wkrótce w JASNE:</span>
-            <span className="text-slate-300 font-medium">Biologia</span>
+          <div className="hidden sm:flex items-center gap-2 text-[11px] text-text-muted bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap">
+            <span className="font-bold text-text-muted uppercase tracking-wider text-[9px]">Wkrótce:</span>
+            <span className="text-text-secondary font-medium">Biologia</span>
             <span className="text-slate-600">•</span>
-            <span className="text-slate-300 font-medium">Chemia</span>
+            <span className="text-text-secondary font-medium">Chemia</span>
             <span className="text-slate-600">•</span>
-            <span className="text-slate-300 font-medium">Fizyka</span>
+            <span className="text-text-secondary font-medium">Fizyka</span>
           </div>
         </div>
       </div>
@@ -522,50 +518,37 @@ export function DashboardView({
                 initial={{ y: 15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                className="border rounded-2xl p-4 sm:p-6 relative overflow-hidden transition-colors shadow-lg bg-[#121824]/90 group"
+                className="bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-sm group"
                 style={{
-                  borderColor: `${accentColor}35`
+                  borderLeftColor: accentColor,
+                  borderLeftWidth: '3px'
                 }}
               >
-                {/* Ciepła poświata żarówki w prawym górnym rogu */}
-                <div className="absolute top-4 right-4 flex items-center justify-center">
-                  <div 
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-md border"
-                    style={{
-                      backgroundColor: `${accentColor}18`,
-                      borderColor: `${accentColor}30`,
-                      boxShadow: `0 0 24px ${accentColor}30`
-                    }}
-                  >
-                    💡
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-3 pr-10 sm:pr-14">
+                <div className="flex flex-col gap-3">
                   {/* Tag działu i nazwa przedmiotu */}
                   <div className="flex items-center gap-2">
                     <span 
-                      className="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border uppercase tracking-wider"
+                      className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-md uppercase tracking-wider"
                       style={{
                         color: accentColor,
-                        backgroundColor: `${accentColor}15`,
-                        borderColor: `${accentColor}30`
+                        backgroundColor: `${accentColor}18`,
+                        border: `1px solid ${accentColor}35`
                       }}
                     >
                       {nextUp ? `Dział ${(nextUp.topicIdx ?? 0) + 1}` : 'Dział 1'}
                     </span>
-                    <span className="text-xs font-semibold text-slate-300">
+                    <span className="text-xs font-semibold text-text-secondary">
                       {(activeSub as any).name || activeSub.shortName}
                     </span>
                   </div>
 
                   {/* Tytuł lekcji */}
                   <div>
-                    <h2 className="font-display font-black text-white text-lg sm:text-2xl leading-tight">
+                    <h2 className="font-display font-black text-text-primary text-lg sm:text-2xl leading-tight">
                       {nextUp ? nextUp.lessonName : 'Wszystkie działy ukończone!'}
                     </h2>
                     {nextUp?.topicName && (
-                      <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
+                      <p className="text-xs sm:text-sm text-text-secondary font-medium mt-1">
                         {nextUp.topicName}
                       </p>
                     )}
@@ -573,20 +556,20 @@ export function DashboardView({
 
                   {/* Pigułki metadanych lekcji: czas, zadania, pewniak */}
                   <div className="flex items-center gap-2 flex-wrap pt-0.5">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">
-                      <Clock size={13} className="text-slate-400" />
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-bg border border-surface-border text-xs font-medium text-text-secondary">
+                      <Clock size={13} className="text-text-muted" />
                       <span>~8 min</span>
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">
-                      <FileText size={13} className="text-slate-400" />
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-bg border border-surface-border text-xs font-medium text-text-secondary">
+                      <FileText size={13} className="text-text-muted" />
                       <span>{nextUp ? `${nextUp.totalCount} zadania` : '4 zadania'}</span>
                     </span>
                     <span 
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold"
                       style={{
                         color: accentColor,
                         backgroundColor: `${accentColor}12`,
-                        borderColor: `${accentColor}25`
+                        border: `1px solid ${accentColor}25`
                       }}
                     >
                       <Target size={13} />
@@ -596,26 +579,25 @@ export function DashboardView({
                 </div>
 
                 {/* Stopka karty: postęp i wyrazisty CTA */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pt-4 mt-2 border-t border-white/5">
-                  <span className="text-xs sm:text-sm font-medium text-slate-400">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pt-4 mt-2 border-t border-surface-border">
+                  <span className="text-xs sm:text-sm font-medium text-text-secondary">
                     {nextUp ? `${nextUp.completedCount}/${nextUp.totalCount} zadań zaliczonych w tej lekcji` : 'Wszystko zaliczone!'}
                   </span>
 
-                  <motion.button
+                  <button
                     id="dashboard-resume-learning-button"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.96 }}
+                    type="button"
                     onClick={handleResumeClick}
-                    className="shrink-0 font-display font-black text-xs sm:text-sm py-2.5 px-5 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg whitespace-nowrap self-stretch sm:self-auto"
+                    className="shrink-0 font-display font-black text-xs sm:text-sm py-2.5 px-6 rounded-xl transition-transform duration-100 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap self-stretch sm:self-auto active:translate-y-1"
                     style={{
                       backgroundColor: accentColor,
-                      color: accentColor === '#FFB800' ? '#080B11' : '#FFFFFF',
-                      boxShadow: `0 4px 20px ${accentColor}35`
+                      color: accentColor === '#FFB800' ? '#070A0F' : '#FFFFFF',
+                      boxShadow: accentColor === '#FFB800' ? '0 3px 0 #B37F00' : '0 3px 0 #BE123C'
                     }}
                   >
                     <span>{nextUp ? ((nextUp.completedCount || 0) > 0 ? 'Wznów lekcję' : 'Rozpocznij lekcję') : 'Otwórz mapę'}</span>
                     <ArrowRight size={15} strokeWidth={2.5} />
-                  </motion.button>
+                  </button>
                 </div>
               </motion.div>
             );
@@ -657,21 +639,21 @@ export function DashboardView({
               {/* KARTA 1: UKOŃCZONE ZADANIA */}
               <motion.div 
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="bg-[#121824]/80 hover:bg-[#151E2E] border border-white/5 hover:border-emerald-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-emerald-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
               >
                 <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200">
                   <CheckCircle2 size={16} strokeWidth={2.2} />
                 </div>
 
                 <div>
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-white tracking-tight leading-none">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none">
                     {masteredTasksCount}
                   </div>
                   <div className="mt-1.5 flex flex-col">
-                    <span className="text-xs sm:text-sm font-medium text-slate-200 leading-tight">
+                    <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight">
                       Ukończone zadania
                     </span>
-                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-normal mt-0.5 truncate">
+                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate">
                       W wybranym programie
                     </span>
                   </div>
@@ -695,13 +677,13 @@ export function DashboardView({
                   }
                 }}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className={`bg-[#121824]/80 hover:bg-[#151E2E] border rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group select-none ${
-                  onOpenMistakesBank ? 'cursor-pointer hover:border-amber-500/40 hover:shadow-md border-white/10' : 'cursor-default border-white/5'
+                className={`bg-surface-card hover:bg-surface-card-hover border rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group select-none ${
+                  onOpenMistakesBank ? 'cursor-pointer hover:border-amber-500/40 hover:shadow-md border-surface-border' : 'cursor-default border-surface-border'
                 }`}
                 title={onOpenMistakesBank ? "Kliknij, aby otworzyć Bank Błędów i sesję rehabilitacyjną" : undefined}
               >
                 <div className="flex items-center justify-between w-full mb-3">
-                  <div className="w-8 h-8 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-[#FFB800] shrink-0 group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform duration-200">
                     <Zap size={16} strokeWidth={2.2} />
                   </div>
                   {totalMistakes > 0 ? (
@@ -716,12 +698,12 @@ export function DashboardView({
                 </div>
 
                 <div>
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-white tracking-tight leading-none">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none">
                     {accuracyPercent}%
                   </div>
                   <div className="mt-1.5 flex flex-col">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs sm:text-sm font-medium text-slate-200 leading-tight">
+                      <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight">
                         Skuteczność
                       </span>
                       {onOpenMistakesBank && totalMistakes > 0 && (
@@ -730,7 +712,7 @@ export function DashboardView({
                         </span>
                       )}
                     </div>
-                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-normal mt-0.5 truncate">
+                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate">
                       {totalMistakes > 0 ? `${totalMistakes} do powtórki` : '0 błędów'}
                     </span>
                   </div>
@@ -740,21 +722,21 @@ export function DashboardView({
               {/* KARTA 3: CZAS NAUKI */}
               <motion.div 
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="bg-[#121824]/80 hover:bg-[#151E2E] border border-white/5 hover:border-amber-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-amber-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
               >
                 <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200">
                   <Clock size={16} strokeWidth={2.2} />
                 </div>
 
                 <div>
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-white tracking-tight leading-none whitespace-nowrap">
-                    {studyTimeValue} <span className="text-xs sm:text-sm font-medium text-slate-400">{studyTimeUnit}</span>
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none whitespace-nowrap">
+                    {studyTimeValue} <span className="text-xs sm:text-sm font-medium text-text-muted">{studyTimeUnit}</span>
                   </div>
                   <div className="mt-1.5 flex flex-col">
-                    <span className="text-xs sm:text-sm font-medium text-slate-200 leading-tight">
+                    <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight">
                       Czas nauki
                     </span>
-                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-normal mt-0.5 truncate">
+                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate">
                       W tym tygodniu
                     </span>
                   </div>
@@ -775,8 +757,8 @@ export function DashboardView({
           {/* SZYBKIE AKCJE AI & DIAGNOSTYKA */}
           <div className="flex flex-col gap-2.5">
             <div className="flex items-center gap-2 px-0.5">
-              <Sparkles size={14} className="text-amber-400" />
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <Cpu size={14} className="text-primary" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">
                 Narzędzia Egzaminacyjne
               </h3>
             </div>
@@ -788,22 +770,27 @@ export function DashboardView({
                   triggerHaptic('medium');
                   onOpenDiagnostic();
                 }}
-                className="p-3.5 rounded-2xl bg-gradient-to-r from-[#121A26] to-[#10141E] hover:from-[#172233] hover:to-[#141A26] border border-amber-500/25 hover:border-amber-400/50 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
+                className="p-3.5 rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                     <Target size={18} />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[10px] font-extrabold text-amber-300 uppercase tracking-wider block">
-                      Test Poziomu
-                    </span>
-                    <p className="text-xs font-bold text-white truncate">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-extrabold text-primary uppercase tracking-wider">
+                        Test Poziomu
+                      </span>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                        CKE
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold text-text-primary truncate mt-0.5">
                       Oceń poziom i skalibruj predyktor
                     </p>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-amber-400 shrink-0 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={14} className="text-text-muted group-hover:text-primary shrink-0 group-hover:translate-x-1 transition-all" />
               </button>
             )}
 
@@ -814,22 +801,27 @@ export function DashboardView({
                   triggerHaptic('medium');
                   onOpenAiGenerator();
                 }}
-                className="p-3.5 rounded-2xl bg-gradient-to-r from-[#18111A] to-[#120F16] hover:from-[#211624] hover:to-[#18111A] border border-purple-500/25 hover:border-purple-400/50 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
+                className="p-3.5 rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-purple-500/40 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-9 h-9 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Sparkles size={18} />
+                  <div className="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Cpu size={18} />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[10px] font-extrabold text-purple-300 uppercase tracking-wider block">
-                      Generator Zadań AI
-                    </span>
-                    <p className="text-xs font-bold text-white truncate">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-extrabold text-purple-300 uppercase tracking-wider">
+                        Generator Zadań AI
+                      </span>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                        Model CKE
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold text-text-primary truncate mt-0.5">
                       Nowe zadania z kluczem CKE
                     </p>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-purple-400 shrink-0 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={14} className="text-text-muted group-hover:text-purple-400 shrink-0 group-hover:translate-x-1 transition-all" />
               </button>
             )}
 
@@ -840,22 +832,27 @@ export function DashboardView({
                   triggerHaptic('medium');
                   onOpenMistakesBank();
                 }}
-                className="p-3.5 rounded-2xl bg-gradient-to-r from-[#1C1610] to-[#14110E] hover:from-[#261E16] hover:to-[#1A1512] border border-amber-500/30 hover:border-amber-400/60 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
+                className="p-3.5 rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all flex items-center justify-between text-left group shadow-sm cursor-pointer"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                     <Zap size={18} />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[10px] font-extrabold text-amber-300 uppercase tracking-wider block">
-                      Bank Błędów ({totalMistakes})
-                    </span>
-                    <p className="text-xs font-bold text-white truncate">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-extrabold text-primary uppercase tracking-wider">
+                        Bank Błędów
+                      </span>
+                      <span className="text-[9px] font-extrabold text-primary bg-primary/15 border border-primary/30 px-1.5 py-0.5 rounded-full">
+                        {totalMistakes} do powtórki
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold text-text-primary truncate mt-0.5">
                       Rozpocznij sesję rehabilitacji
                     </p>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-amber-400 shrink-0 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={14} className="text-text-muted group-hover:text-primary shrink-0 group-hover:translate-x-1 transition-all" />
               </button>
             )}
           </div>

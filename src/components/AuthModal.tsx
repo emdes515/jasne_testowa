@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
@@ -9,7 +9,8 @@ import {
   User, 
   AlertCircle, 
   CheckCircle2, 
-  Sparkles
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import { LoadingSpinner } from './Loading';
 import { 
@@ -21,14 +22,19 @@ import {
 import { auth, googleProvider } from '../lib/firebase';
 import { triggerHaptic } from '../utils';
 import { migrateGuestProgressToUser } from '../lib/guestMigration';
+import { PromotionConfig, claimPromotionForUser } from '../services/promotionService';
 
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess?: () => void;
+  promoContext?: {
+    promoConfig: PromotionConfig;
+    timeLeftFormatted?: string;
+  };
 }
 
-export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
+export function AuthModal({ isOpen, onClose, onSuccess, promoContext }: AuthModalProps) {
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -36,6 +42,12 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (promoContext) {
+      setMode('register');
+    }
+  }, [promoContext, isOpen]);
 
   if (!isOpen) return null;
 
@@ -67,6 +79,9 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
       if (mode === 'login') {
         const userCredential = await signInWithEmailAndPassword(auth, email.trim(), password);
         await migrateGuestProgressToUser(userCredential.user);
+        if (promoContext) {
+          await claimPromotionForUser(userCredential.user.uid, promoContext.promoConfig);
+        }
         setSuccessMsg('Zalogowano pomyślnie!');
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email.trim(), password);
@@ -78,7 +93,10 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
         await migrateGuestProgressToUser(userCredential.user, {
           defaultDisplayName: name.trim()
         });
-        setSuccessMsg('Konto zostało utworzone!');
+        if (promoContext) {
+          await claimPromotionForUser(userCredential.user.uid, promoContext.promoConfig);
+        }
+        setSuccessMsg('Konto zostało utworzone! Rabat powitalny został przypisany.');
       }
 
       triggerHaptic('success');
@@ -117,6 +135,9 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
       const result = await signInWithPopup(auth, googleProvider);
       if (result.user) {
         await migrateGuestProgressToUser(result.user);
+        if (promoContext) {
+          await claimPromotionForUser(result.user.uid, promoContext.promoConfig);
+        }
       }
       setSuccessMsg('Zalogowano przez Google!');
       triggerHaptic('success');
@@ -147,22 +168,27 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div className="fixed inset-0 z-[140] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md">
+      {/* Backdrop dismiss */}
+      <div 
+        onClick={onClose}
+        className="fixed inset-0"
+      />
+
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-        className="w-full max-w-md bg-[#141A23] border border-white/10 rounded-3xl p-6 relative shadow-2xl overflow-hidden"
+        className="relative w-full max-w-md bg-surface-card border-t sm:border border-surface-border rounded-t-[32px] sm:rounded-3xl p-6 sm:p-7 shadow-2xl overflow-y-auto max-h-[92vh] z-10"
       >
-        {/* Glow ambient background */}
-        <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-[50px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-36 h-36 bg-purple-500/10 rounded-full blur-[40px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+        {/* Subtle Cyber Amber Accent Bar */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-[#FFB800] to-[#F59E0B]" />
 
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-[#8B8D98] hover:text-white p-2 rounded-xl hover:bg-white/5 transition-colors z-10"
+          className="absolute top-4 right-4 text-text-muted hover:text-text-primary p-2 rounded-xl hover:bg-white/5 transition-colors z-20 cursor-pointer"
           aria-label="Zamknij"
         >
           <X size={18} />
@@ -170,31 +196,55 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
         {/* Modal Header */}
         <div className="flex flex-col items-center text-center mb-5">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-3 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
-            <Sparkles size={22} />
+          <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary mb-3 shadow-sm">
+            <ShieldCheck size={24} />
           </div>
-          <h2 className="font-display font-black text-xl text-white">
-            {mode === 'login' ? 'Witaj ponownie!' : 'Dołącz do Kampusu'}
+          <h2 className="font-display font-black text-xl text-text-primary">
+            {mode === 'login' ? 'Witaj ponownie!' : 'Dołącz do Kampusu JASNE'}
           </h2>
-          <p className="text-xs text-[#8B8D98] mt-1 max-w-xs">
+          <p className="text-xs text-text-secondary mt-1 max-w-xs">
             {mode === 'login' 
               ? 'Zaloguj się, aby synchronizować serię dni, zadania i odznaki w chmurze.' 
               : 'Utwórz konto i zachowaj swoje osiągnięcia na każdym urządzeniu.'}
           </p>
         </div>
 
+        {/* Promotional Context Banner */}
+        {promoContext && (
+          <div className="w-full mb-4 p-3 rounded-2xl bg-primary/10 border border-primary/25 flex items-center justify-between text-left">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                <Zap size={15} />
+              </div>
+              <div className="min-w-0">
+                <div className="text-xs font-black text-primary uppercase tracking-wide truncate">
+                  Rabat -{promoContext.promoConfig.discountPercent}% zarezerwowany
+                </div>
+                <div className="text-[11px] text-text-secondary truncate">
+                  Zostanie przypisany do Twojego konta
+                </div>
+              </div>
+            </div>
+            {promoContext.timeLeftFormatted && (
+              <span className="text-xs font-mono font-black text-primary px-2 py-0.5 rounded-md bg-surface-elevated border border-primary/30 shrink-0 ml-2">
+                {promoContext.timeLeftFormatted}
+              </span>
+            )}
+          </div>
+        )}
+
         {/* Tabs: Logowanie / Rejestracja */}
-        <div className="bg-[#0B0E14] p-1 rounded-xl flex items-center gap-1 mb-5 border border-white/5">
+        <div className="bg-surface-elevated p-1 rounded-xl flex items-center gap-1 mb-5 border border-surface-border">
           <button
             type="button"
             onClick={() => {
               resetForm();
               setMode('login');
             }}
-            className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               mode === 'login'
-                ? 'bg-blue-600 text-white shadow-md'
-                : 'text-[#8B8D98] hover:text-white'
+                ? 'bg-primary text-[#070A0F] shadow-sm font-black'
+                : 'text-text-muted hover:text-text-primary'
             }`}
           >
             <LogIn size={13} />
@@ -206,10 +256,10 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
               resetForm();
               setMode('register');
             }}
-            className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               mode === 'register'
-                ? 'bg-blue-600 text-white shadow-md'
-                : 'text-[#8B8D98] hover:text-white'
+                ? 'bg-primary text-[#070A0F] shadow-sm font-black'
+                : 'text-text-muted hover:text-text-primary'
             }`}
           >
             <UserPlus size={13} />
@@ -248,52 +298,52 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
         <form onSubmit={handleEmailAuth} className="space-y-3">
           {mode === 'register' && (
             <div>
-              <label className="block text-[11px] font-bold text-[#8B8D98] uppercase tracking-wider mb-1.5">
+              <label className="block text-[11px] font-bold text-text-muted uppercase tracking-wider mb-1.5 text-left">
                 Twoje Imię lub Pseudonim
               </label>
               <div className="relative">
-                <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B8D98]" />
+                <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="np. Aleksander"
-                  className="w-full bg-[#0B0E14] border border-white/10 focus:border-blue-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none transition-colors"
+                  className="w-full bg-surface-elevated border border-surface-border focus:border-primary rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none transition-colors"
                 />
               </div>
             </div>
           )}
 
           <div>
-            <label className="block text-[11px] font-bold text-[#8B8D98] uppercase tracking-wider mb-1.5">
+            <label className="block text-[11px] font-bold text-text-muted uppercase tracking-wider mb-1.5 text-left">
               Adres E-mail
             </label>
             <div className="relative">
-              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B8D98]" />
+              <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="twoj.email@gmail.com"
-                className="w-full bg-[#0B0E14] border border-white/10 focus:border-blue-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none transition-colors"
+                className="w-full bg-surface-elevated border border-surface-border focus:border-primary rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-[#8B8D98] uppercase tracking-wider mb-1.5">
-              Hasło {mode === 'register' && <span className="text-white/40 normal-case">(min. 6 znaków)</span>}
+            <label className="block text-[11px] font-bold text-text-muted uppercase tracking-wider mb-1.5 text-left">
+              Hasło {mode === 'register' && <span className="text-text-muted normal-case">(min. 6 znaków)</span>}
             </label>
             <div className="relative">
-              <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B8D98]" />
+              <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-[#0B0E14] border border-white/10 focus:border-blue-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none transition-colors"
+                className="w-full bg-surface-elevated border border-surface-border focus:border-primary rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none transition-colors"
               />
             </div>
           </div>
@@ -301,17 +351,22 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 py-3 px-4 bg-blue-600 hover:bg-blue-500 disabled:opacity-60 text-white font-black text-sm rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] min-h-[46px]"
+            className="w-full mt-2 py-3 px-4 bg-primary hover:bg-amber-400 disabled:opacity-60 text-[#070A0F] font-display font-black text-sm rounded-xl transition-all shadow-[0_3px_0_#B37F00] active:translate-y-1 active:shadow-none flex items-center justify-center gap-2 cursor-pointer min-h-[46px]"
           >
             {loading ? (
               <div className="flex items-center gap-2">
-                <LoadingSpinner size="sm" color="#ffffff" className="shrink-0" />
+                <LoadingSpinner size="sm" color="#070A0F" className="shrink-0" />
                 <span>Przetwarzanie...</span>
               </div>
             ) : mode === 'login' ? (
               <>
                 <LogIn size={15} />
                 <span>Zaloguj się</span>
+              </>
+            ) : promoContext ? (
+              <>
+                <Zap size={15} />
+                <span>Odbierz rabat -{promoContext.promoConfig.discountPercent}% i utwórz konto</span>
               </>
             ) : (
               <>
@@ -324,9 +379,9 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
         {/* Divider */}
         <div className="flex items-center gap-3 my-4">
-          <div className="flex-1 h-[1px] bg-white/10" />
-          <span className="text-[10px] uppercase font-bold text-[#8B8D98]">lub</span>
-          <div className="flex-1 h-[1px] bg-white/10" />
+          <div className="flex-1 h-[1px] bg-surface-border" />
+          <span className="text-[10px] uppercase font-bold text-text-muted">lub</span>
+          <div className="flex-1 h-[1px] bg-surface-border" />
         </div>
 
         {/* Google Sign-in Button */}
@@ -334,7 +389,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
           type="button"
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="w-full py-2.5 px-4 bg-[#0B0E14] hover:bg-white/5 border border-white/10 text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.98] min-h-[42px]"
+          className="w-full py-2.5 px-4 bg-surface-elevated hover:bg-surface-card-hover border border-surface-border text-text-primary font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.98] min-h-[42px]"
         >
           {loading ? (
             <div className="flex items-center gap-2 text-white/70">
@@ -343,7 +398,6 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
             </div>
           ) : (
             <>
-              {/* SVG Google icon */}
               <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                 <path
                   fill="#4285F4"

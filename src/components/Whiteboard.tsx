@@ -9,7 +9,6 @@ import {
   Maximize2, 
   Minimize2, 
   Check, 
-  Sparkles,
   Palette,
   Target
 } from 'lucide-react';

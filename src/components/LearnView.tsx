@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { 
   BookOpen, Calculator, Globe, FlaskConical, ChevronRight, ChevronLeft, ChevronDown,
   Lock, BookText, Zap, PenTool, Award, Dna, ArrowRight, CheckCircle2, Check,
-  Sparkles, Layers, Play, Target, RefreshCw, X, Loader2,
+  Layers, Play, Target, RefreshCw, X, Loader2,
   Hash, Binary, EqualNot, TrendingUp, Activity, 
   ListOrdered, TriangleRight, CircleDot, Map as MapIcon, Box, PieChart, Clock, Trophy,
   GraduationCap, MessageSquare, Flame, Feather, ShieldAlert, Sun, Moon, Scale, Shield,
@@ -759,7 +759,7 @@ export function LearnView({
               className="flex-1 flex flex-col w-full"
             >
               {/* Sub-header wyboru przedmiotu i postępu działów */}
-              <header className="px-3 sm:px-6 py-2.5 sticky top-0 bg-[#0B0E14]/90 backdrop-blur-xl z-20 border-b border-white/5 shadow-sm shrink-0">
+              <header className="px-3 sm:px-6 py-2.5 sticky top-0 bg-surface-bg/90 backdrop-blur-xl z-20 border-b border-surface-border shadow-sm shrink-0">
                 <div className="max-w-3xl mx-auto w-full flex items-center justify-between gap-2.5">
                   <button
                     id="learn-subject-switcher-trigger"
@@ -767,13 +767,13 @@ export function LearnView({
                       triggerHaptic('light');
                       openSubjectSheet(true);
                     }}
-                    className="flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 rounded-xl bg-[#101726] hover:bg-[#141C2D] border border-white/10 hover:border-[#FFB800]/40 transition-all cursor-pointer group active:scale-[0.98] shadow-sm min-w-0"
+                    className="flex items-center gap-2 sm:gap-2.5 px-3 py-1.5 rounded-xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all cursor-pointer group active:scale-[0.98] shadow-sm min-w-0"
                     title="Kliknij, aby zmienić przedmiot"
                   >
-                    <h1 className="font-display font-black text-white text-sm sm:text-base tracking-tight leading-none group-hover:text-[#FFB800] transition-colors shrink-0 whitespace-nowrap">
+                    <h1 className="font-display font-black text-text-primary text-sm sm:text-base tracking-tight leading-none group-hover:text-primary transition-colors shrink-0 whitespace-nowrap">
                       {currentSubject.name}
                     </h1>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#FFB800]/10 text-[#FFB800] border border-[#FFB800]/25 shrink-0">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary border border-primary/25 shrink-0">
                       {currentSubject.key === 'math' 
                         ? 'Formuła 2023' 
                         : currentSubject.key === 'eng' 
@@ -782,10 +782,10 @@ export function LearnView({
                             ? 'Rozszerzenie • B2/C1'
                             : (currentSubject.level || 'Formuła 2023')}
                     </span>
-                    <ChevronDown size={13} className="text-slate-400 group-hover:text-[#FFB800] transition-colors shrink-0" />
+                    <ChevronDown size={13} className="text-text-muted group-hover:text-primary transition-colors shrink-0" />
                   </button>
 
-                  <div className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#101726] border border-white/10 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap shadow-sm">
+                  <div className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card border border-surface-border text-[11px] font-bold text-text-muted whitespace-nowrap shadow-sm">
                     <span className="text-emerald-400 font-black">{completedTopicsCount}/{totalTopicsCount}</span>
                     <span>{selectedSubjectKey === 'pol' ? (selectedPillarId === 'pillar-2-lektury' ? 'epok' : selectedPillarId === 'pillar-3-wypracowanie' ? 'modułów' : 'działów') : 'działów'}</span>
                   </div>
@@ -797,7 +797,7 @@ export function LearnView({
                 <div className="px-3 sm:px-6 pt-3">
                   <div className="max-w-3xl mx-auto w-full space-y-2.5">
                     {[0, 1, 2].map(i => (
-                      <div key={i} className="h-[76px] rounded-2xl bg-[#101726] border border-white/5 animate-pulse" />
+                      <div key={i} className="h-[76px] rounded-2xl bg-surface-card border border-surface-border animate-pulse" />
                     ))}
                   </div>
                 </div>
@@ -826,7 +826,7 @@ export function LearnView({
 
               {/* Pillar Switcher Segmented Control (Język Polski: Filar I vs Filar II vs Filar III) */}
               {selectedSubjectKey === 'pol' && (
-                <div className="px-3 sm:px-6 py-2 sticky top-[49px] bg-[#0B0E14]/95 backdrop-blur-xl z-19 border-b border-white/5 shadow-sm">
+                <div className="px-3 sm:px-6 py-2 sticky top-[49px] bg-surface-bg/95 backdrop-blur-xl z-19 border-b border-surface-border shadow-sm">
                   <div className="max-w-3xl mx-auto w-full">
                     <div className="grid grid-cols-3 p-1 rounded-xl bg-[#101726] border border-white/10 relative gap-1">
                       {/* Tab 1: Filar I */}
@@ -1123,7 +1123,7 @@ export function LearnView({
                               </span>
                             )}
                           </div>
-                          <div className="w-full h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                          <div className="w-full h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
                                 isLocked 
@@ -1219,31 +1219,31 @@ export function LearnView({
               className="flex-1 flex flex-col w-full"
             >
               {/* Header działu */}
-              <header className="px-4 py-2.5 sm:py-3 sticky top-0 bg-[#0B0E14]/95 backdrop-blur-md z-20 border-b border-white/5 shadow-sm shrink-0">
+              <header className="px-4 py-2.5 sm:py-3 sticky top-0 bg-surface-bg/95 backdrop-blur-md z-20 border-b border-surface-border shadow-sm shrink-0">
                 <div className="max-w-3xl mx-auto w-full flex flex-col gap-2">
                   <div className="flex items-center justify-between gap-3 w-full">
                     <div className="flex items-center gap-2.5 min-w-0">
                       <button 
                         id="lessons-back-button"
                         onClick={handleBack}
-                        className="w-9 h-9 rounded-xl bg-[#141A23] border border-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors shadow-sm shrink-0 cursor-pointer active:scale-95"
+                        className="w-9 h-9 rounded-xl bg-surface-card border border-surface-border flex items-center justify-center text-text-primary hover:bg-surface-card-hover transition-colors shadow-sm shrink-0 cursor-pointer active:scale-95"
                         aria-label="Wróć do listy działów"
                       >
                         <ChevronLeft size={20} />
                       </button>
-                      <h2 className="font-display font-black text-white text-base sm:text-lg leading-tight truncate">
+                      <h2 className="font-display font-black text-text-primary text-base sm:text-lg leading-tight truncate">
                         <MathRenderer content={cleanTopicTitle(currentTopic.name || currentTopic.title)} />
                       </h2>
                     </div>
 
-                    <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#101726] border border-white/10 text-[11px] font-bold text-[#8B8D98] whitespace-nowrap">
+                    <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-card border border-surface-border text-[11px] font-bold text-text-muted whitespace-nowrap">
                       {totalLessonsCount > 0 ? (
                         <>
                           <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-black' : 'text-emerald-400 font-black'}>{completedLessonsCount}/{totalLessonsCount}</span>
                           <span>{formatLessonsNoun(totalLessonsCount)}</span>
                         </>
                       ) : (
-                        <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-semibold' : 'text-[#FFB800] font-semibold'}>W opracowaniu</span>
+                        <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-semibold' : 'text-primary font-semibold'}>W opracowaniu</span>
                       )}
                     </div>
                   </div>
@@ -1255,16 +1255,16 @@ export function LearnView({
                         triggerHaptic('light');
                         openSubjectSheet(true);
                       }}
-                      className={`inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#141A23] border border-white/10 text-[10px] sm:text-[11px] font-medium text-[#9CA3AF] transition-colors cursor-pointer group ${
-                        selectedSubjectKey === 'pol' ? 'hover:border-rose-500/40' : 'hover:border-[#FFB800]/40'
+                      className={`inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-surface-card border border-surface-border text-[10px] sm:text-[11px] font-medium text-text-muted transition-colors cursor-pointer group ${
+                        selectedSubjectKey === 'pol' ? 'hover:border-rose-500/40' : 'hover:border-primary/40'
                       }`}
                       title="Zmień przedmiot"
                     >
-                      <span className="text-slate-400 font-normal">Dział {(selectedTopicIndex ?? 0) + 1}</span>
+                      <span className="text-text-muted font-normal">Dział {(selectedTopicIndex ?? 0) + 1}</span>
                       <span className="text-white/20">•</span>
-                      <span className={`font-medium transition-colors ${selectedSubjectKey === 'pol' ? 'text-white group-hover:text-rose-400' : 'text-white group-hover:text-[#FFB800]'}`}>{currentSubject.name}</span>
+                      <span className={`font-medium transition-colors ${selectedSubjectKey === 'pol' ? 'text-text-primary group-hover:text-rose-400' : 'text-text-primary group-hover:text-primary'}`}>{currentSubject.name}</span>
                       <span className="text-white/20">•</span>
-                      <span className={`font-medium ${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-[#FFB800]'}`}>{currentSubject.key === 'math' ? 'Nowa Formuła 2023' : (currentSubject.level || 'Nowa Formuła 2023')}</span>
+                      <span className={`font-medium ${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-primary'}`}>{currentSubject.key === 'math' ? 'Nowa Formuła 2023' : (currentSubject.level || 'Nowa Formuła 2023')}</span>
                     </button>
                   </div>
                 </div>
@@ -1307,7 +1307,7 @@ export function LearnView({
                 {lessonsForCurrentTopic.length === 0 ? (
                   <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-[#141A23]/70 border border-white/10 rounded-3xl mt-4 sm:mt-6 max-w-md mx-auto shadow-xl">
                     <div className="w-16 h-16 rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] mb-4 shadow-sm">
-                      <Sparkles size={28} />
+                      <Clock size={28} />
                     </div>
                     <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/25 px-3 py-1 rounded-full mb-3">
                       W opracowaniu • Dostępne wkrótce
@@ -1318,12 +1318,12 @@ export function LearnView({
                     <p className="text-xs sm:text-sm text-[#8B8D98] leading-relaxed mb-4 max-w-xs">
                       {currentTopic.description || 'Struktura lekcji oraz baza zadań dla tego działu są przygotowywane zgodnie z wymogami Nowej Formuły 2023.'}
                     </p>
-                    <div className="w-full bg-[#0B0E14] border border-white/5 rounded-xl p-3 mb-5 text-left text-xs text-slate-300 space-y-1.5">
-                      <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium">
+                    <div className="w-full bg-surface-elevated border border-surface-border rounded-xl p-3 mb-5 text-left text-xs text-text-secondary space-y-1.5">
+                      <div className="flex items-center justify-between text-[11px] text-text-muted font-medium">
                         <span>Waga w arkuszu maturalnym:</span>
-                        <span className="text-[#FFB800] font-bold">{currentTopic.matura_points_range || '3–6 pkt'}</span>
+                        <span className="text-primary font-bold">{currentTopic.matura_points_range || '3–6 pkt'}</span>
                       </div>
-                      <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium">
+                      <div className="flex items-center justify-between text-[11px] text-text-muted font-medium">
                         <span>Status:</span>
                         <span className="text-amber-400 font-bold">Pewniaki w przygotowaniu</span>
                       </div>
@@ -1799,7 +1799,7 @@ export function LearnView({
                           14 działów • 150+ lekcji
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
-                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                          <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
                                 mathProgressPercent > 0 ? 'bg-[#FFB800]' : 'bg-transparent'
@@ -1861,7 +1861,7 @@ export function LearnView({
                           17 działów • 2 Filary • 102 lekcje • 28 lektur
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
-                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                          <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
                                 polProgressPercent > 0 ? 'bg-rose-400' : 'bg-transparent'
@@ -1923,7 +1923,7 @@ export function LearnView({
                           10 działów • 23 lekcje • 184 zadania
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
-                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                          <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
                                 engProgressPercent > 0 ? 'bg-emerald-400' : 'bg-transparent'
@@ -1985,7 +1985,7 @@ export function LearnView({
                           15 działów • 20 lekcji • 120 zadań
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
-                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                          <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
                                 mathRozProgressPercent > 0 ? 'bg-sky-400' : 'bg-transparent'
@@ -2047,7 +2047,7 @@ export function LearnView({
                           10 działów • 18 lekcji • 72 zadania
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
-                          <div className="flex-1 h-1.5 bg-[#0B0E14] rounded-full overflow-hidden border border-white/5">
+                          <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
                                 engRozProgressPercent > 0 ? 'bg-purple-400' : 'bg-transparent'
@@ -2079,7 +2079,7 @@ export function LearnView({
                   <div className="p-4 rounded-2xl border border-white/5 bg-[#10141C]/50 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
                       <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center shrink-0">
-                        <Sparkles size={24} />
+                        <BookOpen size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1">

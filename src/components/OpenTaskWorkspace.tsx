@@ -18,7 +18,6 @@ import {
   Feather,
   BookOpen,
   Lightbulb,
-  Sparkles,
   ChevronDown,
   ChevronUp,
   Plus,
@@ -1046,7 +1045,7 @@ export function OpenTaskWorkspace({
                 onClick={() => setShowConnectorStudio(prev => !prev)}
                 className="flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:text-amber-200 transition-colors cursor-pointer"
               >
-                <Sparkles size={13} className="text-amber-400" />
+                <Feather size={13} className="text-amber-400" />
                 <span>Konektorownik CKE (Szybkie zwroty stylu dojrzałego)</span>
                 {showConnectorStudio ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
               </button>

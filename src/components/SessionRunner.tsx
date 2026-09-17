@@ -27,7 +27,6 @@ import {
   GraduationCap,
   Feather,
   Scan,
-  Sparkles,
   Award,
   Calculator,
   ShieldAlert,

@@ -18,12 +18,23 @@ import { auth, db, loginWithGoogle } from './lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, ArrowRight, LogIn, User } from 'lucide-react';
+import { ArrowRight, LogIn, User } from 'lucide-react';
 import { OnboardingOverlay, OnboardingPreferences } from './components/OnboardingOverlay';
 import { ProPopup } from './components/ProPopup';
 import { ParentSponsorModal } from './components/ParentSponsorModal';
 import { activatePro, deductHeart, refillHeartsWithCoins, getSyncedHearts } from './lib/heartsManager';
 import { AuthModal } from './components/AuthModal';
+import { GuestPromoModal } from './components/GuestPromoModal';
+import { PromoFloatingPill } from './components/PromoFloatingPill';
+import { 
+  fetchPromotionConfig, 
+  PromotionConfig, 
+  DEFAULT_GUEST_PROMOTION, 
+  getGuestPromoRemainingSeconds, 
+  formatPromoSeconds,
+  hasSeenGuestPromoModal,
+  markGuestPromoModalSeen 
+} from './services/promotionService';
 import { DiagnosticTestModal } from './components/DiagnosticTestModal';
 import { AiTaskGeneratorModal } from './components/AiTaskGeneratorModal';
 import { MistakesBankModal } from './components/MistakesBankModal';
@@ -48,6 +59,33 @@ function getCurrentIsoWeekKey(): string {
 
 export default function App() {
   const [user, loading] = useAuthState(auth);
+  const isGuest = !user;
+
+  const [promoConfig, setPromoConfig] = useState<PromotionConfig>(DEFAULT_GUEST_PROMOTION);
+  const [showGuestPromoModal, setShowGuestPromoModal] = useState(false);
+  const [guestPromoSecondsLeft, setGuestPromoSecondsLeft] = useState<number>(() => getGuestPromoRemainingSeconds(DEFAULT_GUEST_PROMOTION.durationMinutes));
+  const [activeAuthPromo, setActiveAuthPromo] = useState<PromotionConfig | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    fetchPromotionConfig().then(cfg => {
+      if (mounted) {
+        setPromoConfig(cfg);
+        setGuestPromoSecondsLeft(getGuestPromoRemainingSeconds(cfg.durationMinutes));
+      }
+    });
+
+    const timer = setInterval(() => {
+      setGuestPromoSecondsLeft(getGuestPromoRemainingSeconds(promoConfig.durationMinutes));
+    }, 1000);
+
+    return () => {
+      mounted = false;
+      clearInterval(timer);
+    };
+  }, [promoConfig.durationMinutes]);
+
+
   const [completedTasks, setCompletedTasks] = useState<string[]>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_completed_tasks');
@@ -110,6 +148,17 @@ export default function App() {
   const [showDiagnosticModal, setShowDiagnosticModal] = useState(false);
   const [showAiGeneratorModal, setShowAiGeneratorModal] = useState(false);
   const [showMistakesModal, setShowMistakesModal] = useState(false);
+
+  useEffect(() => {
+    // Pokazuj po 1.2s od wejścia tylko jeśli użytkownik nie przechodzi akurat onboarding
+    if (isGuest && !hasSeenGuestPromoModal() && guestPromoSecondsLeft > 0 && !showGuestPrompt && !isNewUser) {
+      const timeout = setTimeout(() => {
+        setShowGuestPromoModal(true);
+        markGuestPromoModalSeen();
+      }, 1200);
+      return () => clearTimeout(timeout);
+    }
+  }, [isGuest, guestPromoSecondsLeft, showGuestPrompt, isNewUser]);
   const [selectedSubjectKey, setSelectedSubjectKey] = useState<'math' | 'pol'>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_selected_subject');
@@ -419,15 +468,20 @@ export default function App() {
     setIsNewUser(false);
     setCurrentTab('nauka');
 
-    setReward({
-      xp: 15,
-      coins: 20,
-      title: 'Plan Nauki Uruchomiony!',
-      bonusNote: 'Dzień 1 Serii rozpalony! Powodzenia w Dziale 1.'
-    });
-
     if (shouldOpenAuth) {
       setTimeout(() => setShowAuthModal(true), 400);
+    } else if (isGuest && guestPromoSecondsLeft > 0) {
+      setTimeout(() => {
+        setShowGuestPromoModal(true);
+        markGuestPromoModalSeen();
+      }, 350);
+    } else {
+      setReward({
+        xp: 15,
+        coins: 20,
+        title: 'Plan Nauki Uruchomiony!',
+        bonusNote: 'Dzień 1 Serii rozpalony! Powodzenia w Dziale 1.'
+      });
     }
   };
 
@@ -744,6 +798,11 @@ export default function App() {
       setActiveTask(false);
       setActiveTaskData(null);
       setCurrentTab('nauka');
+      if (isGuest && guestPromoSecondsLeft > 0) {
+        setTimeout(() => {
+          setShowGuestPromoModal(true);
+        }, 600);
+      }
     }
   };
 
@@ -945,7 +1004,6 @@ export default function App() {
     setShowAuthModal(true);
   };
 
-  const isGuest = !user;
   const guestHasProgress = isGuest && (
     (userState.xp || 0) > 0 || 
     ((userState.completed_lessons || []).length > 0) || 
@@ -954,7 +1012,7 @@ export default function App() {
   );
 
   return (
-    <div className="h-full h-[100dvh] w-full bg-[#0B0E14] text-slate-100 font-sans flex flex-col md:flex-row overflow-hidden selection:bg-blue-500/30">
+    <div className="h-full h-[100dvh] w-full bg-surface-bg text-text-primary font-sans flex flex-col md:flex-row overflow-hidden selection:bg-primary/20">
       <AnimatePresence>
         {loading && (
           <LoadingScreen 
@@ -989,6 +1047,10 @@ export default function App() {
             currentTab={currentTab} 
             onOpenParentSponsor={() => setShowParentSponsorModal(true)}
             onOpenProPopup={() => setShowProPopup(true)}
+            isGuest={isGuest}
+            onLoginClick={handleLoginClick}
+            guestPromoSecondsLeft={isGuest ? guestPromoSecondsLeft : 0}
+            onOpenGuestPromo={() => setShowGuestPromoModal(true)}
             onUpdateUserState={(updater) => {
               setUserState(prev => {
                 const next = updater(prev);
@@ -998,20 +1060,22 @@ export default function App() {
             }}
           />
         )}
-        
-        {isGuest && !activeTask && !showGuestPrompt && (
-          <div className="bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-blue-900/40 border-b border-blue-500/20 px-4 py-2 flex items-center justify-between text-xs shrink-0">
-            <span className="text-slate-300">
-              Używasz wersji demonstracyjnej jako Gość. Zaloguj się, aby zapisywać postępy w chmurze!
-            </span>
-            <button
-              onClick={handleLoginClick}
-              className="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg transition shrink-0 ml-2"
-            >
-              Zaloguj się
-            </button>
-          </div>
-        )}
+
+        {/* Powiększona Złota Pływająca Pastylka Promocji -50% PRO (top-26 right-3) */}
+        <PromoFloatingPill
+          secondsLeft={guestPromoSecondsLeft}
+          onClick={() => {
+            setShowGuestPromoModal(true);
+          }}
+          isVisible={
+            isGuest && 
+            guestPromoSecondsLeft > 0 && 
+            !showGuestPromoModal && 
+            !showAuthModal && 
+            !showGuestPrompt && 
+            !isNewUser
+          }
+        />
         
         <main 
           id="main-scroll-container"
@@ -1149,7 +1213,27 @@ export default function App() {
         onActivatePro={handleActivatePro}
         studentName="Twój maturzysta"
       />
-      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+      <GuestPromoModal
+        isOpen={showGuestPromoModal}
+        onClose={() => setShowGuestPromoModal(false)}
+        onClaimPromo={(promo) => {
+          setShowGuestPromoModal(false);
+          setActiveAuthPromo(promo);
+          setShowAuthModal(true);
+        }}
+        promoConfig={promoConfig}
+      />
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => {
+          setShowAuthModal(false);
+          setActiveAuthPromo(null);
+        }} 
+        promoContext={activeAuthPromo ? {
+          promoConfig: activeAuthPromo,
+          timeLeftFormatted: formatPromoSeconds(guestPromoSecondsLeft)
+        } : undefined}
+      />
       <DiagnosticTestModal
         isOpen={showDiagnosticModal}
         onClose={() => setShowDiagnosticModal(false)}

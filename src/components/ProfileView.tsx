@@ -12,7 +12,6 @@ import {
   LogIn, 
   Flame, 
   Trophy, 
-  Sparkles, 
   Crown, 
   CheckCircle2, 
   Swords, 
@@ -194,7 +193,7 @@ export function ProfileView({
                 : 'text-[#8B8D98] hover:text-white'
             }`}
           >
-            <Sparkles size={14} />
+            <Zap size={14} />
             <span>Skarbiec</span>
           </button>
         </div>
@@ -291,7 +290,7 @@ export function ProfileView({
                       title={`${d.date.toLocaleDateString('pl-PL')}: ${d.count} zadań`}
                     >
                       {/* Tooltip on hover */}
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 bg-[#0B0E14] text-white text-[9px] font-bold py-0.5 px-1.5 rounded-md border border-white/10 pointer-events-none whitespace-nowrap z-20 shadow-lg">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 bg-surface-elevated text-text-primary text-[9px] font-bold py-0.5 px-1.5 rounded-md border border-surface-border pointer-events-none whitespace-nowrap z-20 shadow-lg">
                         {d.count} {d.count === 1 ? 'zadanie' : 'zadań'}
                       </div>
 
@@ -372,7 +371,7 @@ export function ProfileView({
                 className="w-full p-4 flex items-center gap-4 hover:bg-white/5 transition-colors border-b border-white/5"
               >
                 <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
-                  <Sparkles size={18} />
+                  <Zap size={18} />
                 </div>
                 <div className="flex flex-col items-start flex-1">
                   <span className="text-sm font-bold text-white">Skarbiec & Perki</span>
