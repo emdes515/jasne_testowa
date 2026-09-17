@@ -155,6 +155,7 @@ function renderMicroContent(rawText?: string | any) {
 function sanitizeExaminerTip(text: string): string {
   if (!text) return '';
   let cleaned = text
+    .replace(/^(?:wskazówka\s+egzaminatora\s+cke|wskazówka\s+cke|wskazówka)\s*:\s*/i, '')
     .replace(/[Żż]elazny\s+pewniak[^\n:!.]*(?::|!|\.|\b)\s*/gi, '')
     .replace(/\b100%\s+pewniak!?/gi, 'Częsty motyw w arkuszach CKE.')
     .replace(/NIGDY\s+nie\s+daje/g, 'nie daje')
@@ -206,13 +207,8 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
           isPolishSession
             ? 'border-rose-500 bg-rose-500/5 text-rose-100'
             : 'border-amber-400 bg-amber-500/5 text-amber-100'
-        } text-sm sm:text-base leading-relaxed`}>
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-            Intuicja i definicja
-          </div>
-          <div className="text-slate-200">
-            {renderMicroContent(mainDefinition)}
-          </div>
+        } text-sm sm:text-base leading-relaxed text-slate-200`}>
+          {renderMicroContent(mainDefinition)}
         </div>
       )}
 
@@ -257,14 +253,9 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
   if (diagram) {
     return (
       <div className="rounded-2xl p-4 sm:p-6 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-5">
-        <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-3">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-            <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
-            <span>Wprowadzenie i definicja pojęcia</span>
-          </div>
-          <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 font-semibold tracking-wide flex items-center gap-1.5">
-            📐 Schemat geometryczny
-          </span>
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-white/5 pb-3">
+          <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
+          <span>Wprowadzenie i definicja</span>
         </div>
 
         {/* 1. Definicja i kluczowe reguły operacyjne */}
@@ -385,6 +376,9 @@ export interface FormattedFormulaItem {
   title?: string;
   latex: string;
   description?: string;
+  cke_page?: string | number;
+  in_cke_sheet?: boolean;
+  matura_tip?: string;
 }
 
 /**
@@ -414,11 +408,18 @@ function getCoreFormulas(raw: any): FormattedFormulaItem[] {
       const latex = item.latex || item.formula || item.content_latex || item.content || item.math || item.def || '';
       const title = item.title || item.name || item.label || '';
       const description = item.description || item.desc || item.explanation || item.note || item.legend || '';
-      if (latex || title || description) {
+      const cke_page = item.cke_page || item.ckePage || item.tablice_str || item.page;
+      const in_cke_sheet = item.in_cke_sheet ?? item.inCkeSheet ?? (cke_page ? true : undefined);
+      const matura_tip = item.matura_tip || item.maturaTip || item.patent || item.tip;
+
+      if (latex || title || description || matura_tip) {
         results.push({
           title: title ? String(title).trim() : undefined,
           latex: latex ? String(latex).trim() : (title ? String(title).trim() : ''),
-          description: description ? String(description).trim() : undefined
+          description: description ? String(description).trim() : undefined,
+          cke_page: cke_page ? String(cke_page).trim() : undefined,
+          in_cke_sheet: in_cke_sheet,
+          matura_tip: matura_tip ? String(matura_tip).trim() : undefined
         });
       }
     }
@@ -2375,9 +2376,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         id="session-header"
         className="w-full shrink-0 bg-[#0B0F19] border-b border-white/10 z-20 sticky top-0"
       >
-        <div className="w-full mx-auto px-4 sm:px-6 pt-3 pb-2.5 flex flex-col gap-2 transition-all max-w-2xl">
-          {/* Linia 1: Przycisk wyjścia X, Pasek postępu ORAZ Kapsuła Serc */}
-          <div className="flex items-center gap-2.5 sm:gap-3 w-full">
+        <div className="w-full mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 transition-all max-w-2xl">
+          {/* Lewa strona: Przycisk wyjścia [X] + Etykieta fazy / Pasek postępu z celem */}
+          <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0">
             <button
               id="session-exit-button"
               onClick={() => setShowExitModal(true)}
@@ -2389,8 +2390,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             </button>
 
             {isTheoryStep ? (
-              <div className="flex-1 flex items-center gap-2 min-w-0">
-                <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 ${
+              <div className="flex items-center gap-2 min-w-0">
+                <span className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 ${
                   isPolishSession
                     ? 'bg-[#F43F5E]/15 text-[#F43F5E] border border-[#F43F5E]/30 shadow-sm'
                     : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30 shadow-sm'
@@ -2399,9 +2400,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </span>
               </div>
             ) : (
-              /* Segmented Progress Bars for Lesson Tasks */
-              <div className="flex-1 flex items-center min-w-0">
-                <div className="flex items-center gap-1.5 sm:gap-2 w-full">
+              /* Segmented Progress Bars for Lesson Tasks + Kompaktowy Cel */
+              <div className="flex-1 flex items-center gap-2 sm:gap-3 min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
                   {Array.from({ length: Math.max(1, targetCorrectAnswers) }).map((_, idx) => {
                     const isDone = idx < correctAnswersCount;
                     const isActive = idx === correctAnswersCount;
@@ -2452,10 +2453,23 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     );
                   })}
                 </div>
+
+                {/* Zwięzły wskaźnik celu w jednej linii z paskiem */}
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] sm:text-xs shrink-0 select-none shadow-inner">
+                  <span className="text-slate-400 font-medium hidden sm:inline">Cel:</span>
+                  <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
+                    {correctAnswersCount}
+                  </span>
+                  <span className="text-slate-600 font-normal">/</span>
+                  <span className="text-slate-400 font-semibold">{targetCorrectAnswers}</span>
+                </span>
               </div>
             )}
+          </div>
 
-            {/* Hearts Indicator Pill with Shockwave Arrival Effect in Line 1 */}
+          {/* Prawa strona: Kapsułki gracza (Serca + Monety + ewentualnie Karta wzorów) w jednym rzędzie */}
+          <div className="flex items-center gap-2 shrink-0">
+            {/* Hearts Indicator Pill with Shockwave Arrival Effect */}
             <div className="relative shrink-0">
               {/* Expanding Shockwave Ring upon Heart Impact */}
               <AnimatePresence>
@@ -2611,53 +2625,33 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
               </AnimatePresence>
             </div>
-          </div>
 
-          {/* Linia 2: Cel lekcji / Portfel & Wzory */}
-          <div className="flex items-center justify-between gap-3 w-full">
-            <div className="flex items-center gap-2 select-none">
-              {isTheoryStep ? null : (
-                <>
-                  <span className="text-xs text-slate-400 font-medium">Cel:</span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs shadow-inner">
-                    <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
-                      {correctAnswersCount}
-                    </span>
-                    <span className="text-slate-600 font-normal">/</span>
-                    <span className="text-slate-400 font-semibold">{targetCorrectAnswers}</span>
-                  </span>
-                </>
-              )}
+            {/* Wallet Counter Pill */}
+            <div 
+              id="session-coins-pill"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 text-slate-200 text-xs font-semibold shadow-sm select-none"
+              title={`Stan portfela: ${currentCoins} monet`}
+            >
+              <Coins className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span className="font-bold text-white tracking-wide">{currentCoins}</span>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              {/* Wallet Counter Pill */}
-              <div 
-                id="session-coins-pill"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 text-slate-200 text-xs font-semibold shadow-sm select-none"
-                title={`Stan portfela: ${currentCoins} monet`}
+            {/* Formulas Sheet Button - widoczny tylko podczas zadań praktycznych */}
+            {!isTheoryStep && (
+              <button
+                id="session-formulas-button"
+                onClick={() => setShowFormulaSheet(true)}
+                className={`group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
+                  isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
+                }`}
+                title={isPolishSession ? 'Otwórz Leksykon Pojęć' : 'Otwórz Kartę Wzorów'}
               >
-                <Coins className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span className="font-bold text-white tracking-wide">{currentCoins}</span>
-              </div>
-
-              {/* Formulas Sheet Button - widoczny tylko podczas zadań praktycznych */}
-              {!isTheoryStep && (
-                <button
-                  id="session-formulas-button"
-                  onClick={() => setShowFormulaSheet(true)}
-                  className={`group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
-                    isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
-                  }`}
-                  title={isPolishSession ? 'Otwórz Leksykon Pojęć' : 'Otwórz Kartę Wzorów'}
-                >
-                  <BookOpen className={`w-3.5 h-3.5 text-slate-400 transition-colors shrink-0 ${
-                    isPolishSession ? 'group-hover:text-[#F43F5E]' : 'group-hover:text-[#FFB800]'
-                  }`} />
-                  <span className="hidden sm:inline">{isPolishSession ? 'Leksykon' : 'Karta'}</span>
-                </button>
-              )}
-            </div>
+                <BookOpen className={`w-3.5 h-3.5 text-slate-400 transition-colors shrink-0 ${
+                  isPolishSession ? 'group-hover:text-[#F43F5E]' : 'group-hover:text-[#FFB800]'
+                }`} />
+                <span className="hidden sm:inline">{isPolishSession ? 'Leksykon' : 'Karta'}</span>
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -3187,7 +3181,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                 className="rounded-2xl p-4 sm:p-5 bg-gradient-to-b from-[#0F1422] to-[#0A0D16] border border-white/10 hover:border-[#FFB800]/40 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.35)] flex flex-col gap-2.5 group"
                               >
                                 {item.title && (
-                                  <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2">
+                                  <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5 flex-wrap">
                                     <div className="flex items-center gap-2">
                                       <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
                                         {String(fIdx + 1).padStart(2, '0')}
@@ -3196,16 +3190,44 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                         {item.title}
                                       </span>
                                     </div>
+                                    {/* Wskaźnik obecności w oficjalnej Karcie Wzorów CKE */}
+                                    {item.cke_page ? (
+                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 shadow-sm shrink-0">
+                                        <BookOpen className="w-3 h-3 text-emerald-400" />
+                                        <span>Karta CKE: {typeof item.cke_page === 'number' || !String(item.cke_page).startsWith('str') ? `str. ${item.cke_page}` : item.cke_page}</span>
+                                      </span>
+                                    ) : item.in_cke_sheet === true ? (
+                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 shadow-sm shrink-0">
+                                        <BookOpen className="w-3 h-3 text-emerald-400" />
+                                        <span>W Karcie Wzorów CKE</span>
+                                      </span>
+                                    ) : item.in_cke_sheet === false ? (
+                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-amber-500/10 border border-amber-500/30 text-amber-300 shadow-sm shrink-0">
+                                        <AlertTriangle className="w-3 h-3 text-amber-400" />
+                                        <span>Brak w Karcie — zapamiętaj!</span>
+                                      </span>
+                                    ) : null}
                                   </div>
                                 )}
-                                <div className="w-full py-3 px-3 sm:px-4 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center flex items-center justify-center my-1 text-white">
-                                  <MathRenderer content={item.latex} displayMode={true} />
+                                <div className="w-full py-3 px-3 sm:px-4 bg-[#070A10] border border-white/5 rounded-xl overflow-x-auto text-center my-1 text-white scrollbar-thin shadow-inner">
+                                  <div className="inline-block min-w-full text-center">
+                                    <MathRenderer content={item.latex} displayMode={true} />
+                                  </div>
                                 </div>
-                                {item.description && (
+                                {(item.matura_tip || item.description) && (
                                   <div className="mt-1 pt-2.5 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-white/[0.02] -mx-1 px-3 py-2 rounded-xl">
-                                    <Info className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                                    <div className="w-full font-normal">
-                                      {renderMicroContent(item.description)}
+                                    <div className="w-5 h-5 rounded-md bg-amber-500/10 border border-amber-500/25 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                                      <Lightbulb className="w-3.5 h-3.5" />
+                                    </div>
+                                    <div className="w-full font-normal space-y-0.5">
+                                      {item.matura_tip && (
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">
+                                          Patent maturalny CKE
+                                        </span>
+                                      )}
+                                      <div className="text-slate-200">
+                                        {renderMicroContent(item.matura_tip || item.description)}
+                                      </div>
                                     </div>
                                   </div>
                                 )}
@@ -3348,6 +3370,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                           if (!cleanResult) return null;
 
+                          // Strip repetitive textual prefixes so the badge displays the clean, focused formula/result without redundant word wrapping.
+                          const displayResult = isPolishSession || isEnglishSession
+                            ? cleanResult
+                            : cleanResult
+                                .replace(/^(?:ostateczna\s+postać\s+(?:iloczynowa|kanoniczna|ogólna)|ostateczna\s+odpowiedź|odpowiedź\s+końcowa|ostateczny\s+wynik|odpowiedź|wynik)\s*:\s*/i, '')
+                                .trim();
+
                           return (
                             <div className="rounded-xl p-3.5 sm:p-4 bg-emerald-950/40 border border-emerald-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm mt-1">
                               <div className="flex items-center gap-2.5">
@@ -3358,11 +3387,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   {isPolishSession ? 'Wniosek egzaminatora CKE' : isEnglishSession ? 'Wzorcowa odpowiedź CKE' : 'Odpowiedź końcowa CKE'}
                                 </span>
                               </div>
-                              <div className="text-base sm:text-lg font-black text-white bg-slate-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-lg shadow-inner self-stretch sm:self-auto text-center sm:text-right">
+                              <div className="text-base sm:text-lg font-black text-white bg-slate-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-lg shadow-inner self-stretch sm:self-auto text-center sm:text-right shrink-0 whitespace-nowrap">
                                 {isPolishSession || isEnglishSession ? (
-                                  <span>{cleanResult}</span>
+                                  <span>{displayResult}</span>
                                 ) : (
-                                  <MathRenderer content={cleanResult.includes('$') ? cleanResult : `$${cleanResult}$`} />
+                                  <MathRenderer content={displayResult.includes('$') ? displayResult : `$${displayResult}$`} />
                                 )}
                               </div>
                             </div>

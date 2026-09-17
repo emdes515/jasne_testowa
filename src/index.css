@@ -136,6 +136,7 @@ button, a, input, [role="button"] {
   color: #F8FAFC !important;
   font-size: 1.05em;
   text-rendering: geometricPrecision;
+  white-space: nowrap !important;
 }
 
 .katex .mfrac {

@@ -13,54 +13,81 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     formulaBadge: '$D_f = \\langle -4, 5 \\rangle,\\quad ZW_f = \\langle -2, 3 \\rangle$',
     caption: 'Rzut wykresu na oś $OX$ (poziomo) wyznacza dziedzinę $D_f$, a rzut na oś $OY$ (pionowo) wyznacza zbiór wartości $ZW_f$.',
     width: 540,
-    height: 270,
+    height: 280,
+    grid: {
+      xLines: [72, 108, 144, 180, 216, 252, 288, 324, 360, 396, 432, 468],
+      yLines: [27, 59, 91, 123, 155, 187, 219, 251],
+      minX: 45,
+      maxX: 495,
+      minY: 25,
+      maxY: 255,
+      color: 'rgba(148, 163, 184, 0.12)'
+    },
     segments: [
       // Osie OX i OY
-      { from: [30, 150], to: [510, 150], color: '#64748B', strokeWidth: 1.5 },
-      { from: [200, 250], to: [200, 25], color: '#64748B', strokeWidth: 1.5 },
-      // Groty strzałek osi
-      { from: [502, 146], to: [510, 150], color: '#64748B', strokeWidth: 1.5 },
-      { from: [502, 154], to: [510, 150], color: '#64748B', strokeWidth: 1.5 },
-      { from: [196, 33], to: [200, 25], color: '#64748B', strokeWidth: 1.5 },
-      { from: [204, 33], to: [200, 25], color: '#64748B', strokeWidth: 1.5 },
-      // Podświetlenie Df bezpośrednio na osi OX (bez poprzecznych belek przecinających wykres)
-      { from: [72, 150], to: [360, 150], color: '#38BDF8', strokeWidth: 4 },
-      // Podświetlenie ZWf bezpośrednio na osi OY
-      { from: [200, 214], to: [200, 54], color: '#10B981', strokeWidth: 4 },
-      // Cienkie linie rzutowania punktów skrajnych na osie
-      { from: [72, 214], to: [72, 150], color: '#64748B', strokeWidth: 1, dashed: true },
-      { from: [72, 214], to: [200, 214], color: '#64748B', strokeWidth: 1, dashed: true },
-      { from: [360, 54], to: [360, 150], color: '#64748B', strokeWidth: 1, dashed: true },
-      { from: [360, 54], to: [200, 54], color: '#64748B', strokeWidth: 1, dashed: true },
-      { from: [140, 54], to: [200, 54], color: '#64748B', strokeWidth: 1, dashed: true },
-      { from: [250, 214], to: [200, 214], color: '#64748B', strokeWidth: 1, dashed: true }
+      { from: [40, 155], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      { from: [252, 260], to: [252, 20], color: '#64748B', strokeWidth: 1.5 },
+      // Groty strzałek osi OX
+      { from: [492, 151], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      { from: [492, 159], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      // Groty strzałek osi OY
+      { from: [248, 28], to: [252, 20], color: '#64748B', strokeWidth: 1.5 },
+      { from: [256, 28], to: [252, 20], color: '#64748B', strokeWidth: 1.5 },
+      // Podświetlenie Df bezpośrednio na osi OX (108 do 432)
+      { from: [108, 155], to: [432, 155], color: '#38BDF8', strokeWidth: 4.5 },
+      // Podświetlenie ZWf bezpośrednio na osi OY (219 do 59)
+      { from: [252, 219], to: [252, 59], color: '#10B981', strokeWidth: 4.5 },
+      // Cienkie linie rzutowania punktów skrajnych i ekstremów na osie
+      { from: [108, 219], to: [108, 155], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [108, 219], to: [252, 219], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [180, 59], to: [180, 155], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [180, 59], to: [252, 59], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [288, 219], to: [288, 155], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [288, 219], to: [252, 219], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [432, 59], to: [432, 155], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [432, 59], to: [252, 59], color: '#64748B', strokeWidth: 1, dashed: true }
+    ],
+    ticks: [
+      // Ticki OX (Y = 155)
+      { x: 108, y: 155, label: '-4', axis: 'x' },
+      { x: 180, y: 155, label: '-2', axis: 'x' },
+      { x: 216, y: 155, label: '-1', axis: 'x' },
+      { x: 288, y: 155, label: '1', axis: 'x' },
+      { x: 324, y: 155, label: '2', axis: 'x' },
+      { x: 360, y: 155, label: '3', axis: 'x' },
+      { x: 432, y: 155, label: '5', axis: 'x' },
+      // Ticki OY (X = 252)
+      { x: 252, y: 219, label: '-2', axis: 'y' },
+      { x: 252, y: 187, label: '-1', axis: 'y' },
+      { x: 252, y: 123, label: '1', axis: 'y' },
+      { x: 252, y: 91, label: '2', axis: 'y' },
+      { x: 252, y: 59, label: '3', axis: 'y' }
     ],
     curves: [
       {
-        path: 'M 72 214 C 95 100, 115 54, 140 54 C 175 54, 210 214, 250 214 C 290 214, 325 54, 360 54',
+        path: 'M 108 219 C 122 105, 155 59, 180 59 C 208 59, 260 219, 288 219 C 320 219, 395 59, 432 59',
         color: '#FFB800',
         strokeWidth: 3.5,
         glow: true
       }
     ],
     points: [
-      // Punkty skrajne z bezpiecznymi odsunięciami na zewnątrz
-      { x: 72, y: 214, dot: 'filled', color: '#FFB800', label: '(-4, -2)', labelPosition: 'bottom-left' },
-      { x: 140, y: 54, dot: 'filled', color: '#10B981', label: 'maksimum: y = 3', labelPosition: 'top' },
-      { x: 250, y: 214, dot: 'filled', color: '#F43F5E', label: 'minimum: y = -2', labelPosition: 'bottom' },
-      { x: 360, y: 54, dot: 'filled', color: '#FFB800', label: '(5, 3)', labelPosition: 'top-right' },
-      // Granice Df na osi OX
-      { x: 72, y: 150, dot: 'filled', color: '#38BDF8', label: '-4', labelPosition: 'bottom' },
-      { x: 360, y: 150, dot: 'filled', color: '#38BDF8', label: '5', labelPosition: 'bottom' },
-      // Granice ZWf na osi OY
-      { x: 200, y: 214, dot: 'filled', color: '#10B981', label: '-2', labelPosition: 'left' },
-      { x: 200, y: 54, dot: 'filled', color: '#10B981', label: '3', labelPosition: 'left' }
+      // Punkty skrajne wykresu
+      { x: 108, y: 219, dot: 'filled', color: '#FFB800', label: '(-4, -2)', labelPosition: 'bottom-left' },
+      { x: 180, y: 59, dot: 'filled', color: '#10B981', label: 'maksimum: y = 3', labelPosition: 'top' },
+      { x: 288, y: 219, dot: 'filled', color: '#F43F5E', label: 'minimum: y = -2', labelPosition: 'bottom' },
+      { x: 432, y: 59, dot: 'filled', color: '#FFB800', label: '(5, 3)', labelPosition: 'top-right' },
+      // Granice Df na osi OX (kropki podświetlenia)
+      { x: 108, y: 155, dot: 'filled', color: '#38BDF8' },
+      { x: 432, y: 155, dot: 'filled', color: '#38BDF8' },
+      // Granice ZWf na osi OY (kropki podświetlenia)
+      { x: 252, y: 219, dot: 'filled', color: '#10B981' },
+      { x: 252, y: 59, dot: 'filled', color: '#10B981' }
     ],
     labels: [
-      { x: 505, y: 135, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
-      { x: 215, y: 30, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
-      // Etykieta y = f(x) w całkowicie pustym narożniku
-      { x: 450, y: 190, text: 'y = f(x)', color: '#FFB800', fontSize: 13, fontWeight: '700', badge: true }
+      { x: 495, y: 140, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 268, y: 24, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 470, y: 110, text: 'y = f(x)', color: '#FFB800', fontSize: 13, fontWeight: '700', badge: true }
     ],
     metrics: [
       { label: 'Dziedzina (oś OX)', value: '$D_f = \\langle -4, 5 \\rangle$', color: '#38BDF8' },
@@ -77,42 +104,55 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     formulaBadge: '$f(x) = c \\iff \\text{punkty przecięcia z prostą } y = c$',
     caption: 'Liczba rozwiązań równania $f(x)=c$ to liczba punktów wspólnych wykresu funkcji $y=f(x)$ i poziomej prostej $y=c$.',
     width: 540,
-    height: 270,
+    height: 280,
+    grid: {
+      xLines: [72, 108, 144, 180, 216, 252, 288, 324, 360, 396, 432, 468],
+      yLines: [27, 59, 91, 123, 155, 187, 219, 251],
+      minX: 45,
+      maxX: 495,
+      minY: 25,
+      maxY: 255,
+      color: 'rgba(148, 163, 184, 0.12)'
+    },
     segments: [
-      // Osie
-      { from: [30, 160], to: [510, 160], color: '#64748B', strokeWidth: 1.5 },
-      { from: [200, 250], to: [200, 25], color: '#64748B', strokeWidth: 1.5 },
-      // Groty strzałek osi
-      { from: [502, 156], to: [510, 160], color: '#64748B', strokeWidth: 1.5 },
-      { from: [502, 164], to: [510, 160], color: '#64748B', strokeWidth: 1.5 },
-      { from: [196, 33], to: [200, 25], color: '#64748B', strokeWidth: 1.5 },
-      { from: [204, 33], to: [200, 25], color: '#64748B', strokeWidth: 1.5 },
+      // Osie OX i OY
+      { from: [40, 155], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      { from: [252, 260], to: [252, 20], color: '#64748B', strokeWidth: 1.5 },
+      // Groty strzałek osi OX
+      { from: [492, 151], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      { from: [492, 159], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      // Groty strzałek osi OY
+      { from: [248, 28], to: [252, 20], color: '#64748B', strokeWidth: 1.5 },
+      { from: [256, 28], to: [252, 20], color: '#64748B', strokeWidth: 1.5 },
       // Pozioma prosta y = c
-      { from: [30, 95], to: [510, 95], color: '#38BDF8', strokeWidth: 2, dashed: true },
+      { from: [40, 95], to: [500, 95], color: '#38BDF8', strokeWidth: 2, dashed: true },
       // Pionowe linie rzutowania punktów przecięcia na oś OX
-      { from: [105, 95], to: [105, 160], color: '#F43F5E', strokeWidth: 1.5, dashed: true },
-      { from: [215, 95], to: [215, 160], color: '#F43F5E', strokeWidth: 1.5, dashed: true },
-      { from: [375, 95], to: [375, 160], color: '#F43F5E', strokeWidth: 1.5, dashed: true }
+      { from: [135, 95], to: [135, 155], color: '#F43F5E', strokeWidth: 1.5, dashed: true },
+      { from: [225, 95], to: [225, 155], color: '#F43F5E', strokeWidth: 1.5, dashed: true },
+      { from: [385, 95], to: [385, 155], color: '#F43F5E', strokeWidth: 1.5, dashed: true }
+    ],
+    ticks: [
+      { x: 252, y: 95, label: 'c', axis: 'y' }
     ],
     curves: [
       {
-        path: 'M 60 210 C 100 60, 130 50, 160 50 C 200 50, 240 230, 290 230 C 340 230, 390 60, 440 60',
+        path: 'M 90 220 C 120 60, 145 50, 175 50 C 210 50, 245 230, 295 230 C 345 230, 395 60, 445 60',
         color: '#FFB800',
         strokeWidth: 3.5,
         glow: true
       }
     ],
     points: [
-      { x: 105, y: 95, dot: 'filled', color: '#F43F5E', label: 'x₁', labelPosition: 'top-left' },
-      { x: 215, y: 95, dot: 'filled', color: '#F43F5E', label: 'x₂', labelPosition: 'top' },
-      { x: 375, y: 95, dot: 'filled', color: '#F43F5E', label: 'x₃', labelPosition: 'top-right' },
-      { x: 200, y: 95, dot: 'none', label: 'c', labelPosition: 'left' }
+      { x: 135, y: 95, dot: 'filled', color: '#F43F5E', label: 'x₁', labelPosition: 'top-left' },
+      { x: 225, y: 95, dot: 'filled', color: '#F43F5E', label: 'x₂', labelPosition: 'top' },
+      { x: 385, y: 95, dot: 'filled', color: '#F43F5E', label: 'x₃', labelPosition: 'top-right' },
+      { x: 252, y: 95, dot: 'filled', color: '#38BDF8' }
     ],
     labels: [
-      { x: 505, y: 145, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
-      { x: 215, y: 30, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 495, y: 140, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 268, y: 24, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
       { x: 455, y: 80, text: 'prosta y = c', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true },
-      { x: 455, y: 190, text: 'y = f(x)', color: '#FFB800', fontSize: 13, fontWeight: '700', badge: true }
+      { x: 460, y: 195, text: 'y = f(x)', color: '#FFB800', fontSize: 13, fontWeight: '700', badge: true }
     ],
     metrics: [
       { label: 'Badane równanie', value: '$f(x) = c$', color: '#38BDF8' },
@@ -130,27 +170,43 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     caption: 'Wierzchołek $W=(p, q)$ to punkt zwrotny paraboli. Oś symetrii $x = p$ dzieli parabolę na dwie lustrzane części.',
     width: 540,
     height: 280,
+    grid: {
+      xLines: [72, 112, 152, 192, 232, 272, 312, 352, 392, 432, 472],
+      yLines: [27, 59, 91, 123, 155, 187, 219, 251],
+      minX: 45,
+      maxX: 495,
+      minY: 25,
+      maxY: 255,
+      color: 'rgba(148, 163, 184, 0.12)'
+    },
     segments: [
       // Osie układu współrzędnych
-      { from: [40, 165], to: [510, 165], color: '#64748B', strokeWidth: 1.5 },
-      { from: [130, 260], to: [130, 25], color: '#64748B', strokeWidth: 1.5 },
-      // Groty strzałek osi
-      { from: [502, 161], to: [510, 165], color: '#64748B', strokeWidth: 1.5 },
-      { from: [502, 169], to: [510, 165], color: '#64748B', strokeWidth: 1.5 },
-      { from: [126, 33], to: [130, 25], color: '#64748B', strokeWidth: 1.5 },
-      { from: [134, 33], to: [130, 25], color: '#64748B', strokeWidth: 1.5 },
+      { from: [40, 155], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      { from: [152, 260], to: [152, 20], color: '#64748B', strokeWidth: 1.5 },
+      // Groty strzałek osi OX
+      { from: [492, 151], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      { from: [492, 159], to: [500, 155], color: '#64748B', strokeWidth: 1.5 },
+      // Groty strzałek osi OY
+      { from: [148, 28], to: [152, 20], color: '#64748B', strokeWidth: 1.5 },
+      { from: [156, 28], to: [152, 20], color: '#64748B', strokeWidth: 1.5 },
       // Oś symetrii paraboli x = p
-      { from: [290, 260], to: [290, 42], color: '#38BDF8', strokeWidth: 1.75, dashed: true },
+      { from: [292, 260], to: [292, 35], color: '#38BDF8', strokeWidth: 1.75, dashed: true },
       // Wytyczne współrzędnych wierzchołka (rzuty na osie)
-      { from: [130, 215], to: [290, 215], color: '#64748B', strokeWidth: 1, dashed: true },
-      { from: [290, 165], to: [290, 215], color: '#64748B', strokeWidth: 1, dashed: true }
+      { from: [152, 219], to: [292, 219], color: '#64748B', strokeWidth: 1, dashed: true },
+      { from: [292, 155], to: [292, 219], color: '#64748B', strokeWidth: 1, dashed: true }
+    ],
+    ticks: [
+      { x: 212, y: 155, label: 'x₁', axis: 'x' },
+      { x: 372, y: 155, label: 'x₂', axis: 'x' },
+      { x: 292, y: 155, label: 'p', axis: 'x' },
+      { x: 152, y: 219, label: 'q', axis: 'y' }
     ],
     curves: [
       {
         quadratic: {
-          start: [100, 16],
-          control: [290, 414],
-          end: [480, 16]
+          start: [112, 18],
+          control: [292, 420],
+          end: [472, 18]
         },
         color: '#FFB800',
         strokeWidth: 3.5,
@@ -158,18 +214,16 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       }
     ],
     points: [
-      { x: 290, y: 215, dot: 'filled', color: '#10B981', label: 'W = (p, q)', labelPosition: 'bottom' },
-      { x: 130, y: 74, dot: 'filled', color: '#38BDF8', label: '(0, c)', labelPosition: 'left' },
-      { x: 190, y: 165, dot: 'filled', color: '#F43F5E', label: 'x₁', labelPosition: 'top-left' },
-      { x: 390, y: 165, dot: 'filled', color: '#F43F5E', label: 'x₂', labelPosition: 'top-right' },
-      { x: 290, y: 165, dot: 'none', label: 'p', labelPosition: 'top' },
-      { x: 130, y: 215, dot: 'none', label: 'q', labelPosition: 'left' }
+      { x: 292, y: 219, dot: 'filled', color: '#10B981', label: 'W = (p, q)', labelPosition: 'bottom' },
+      { x: 152, y: 75, dot: 'filled', color: '#38BDF8', label: '(0, c)', labelPosition: 'left' },
+      { x: 212, y: 155, dot: 'filled', color: '#F43F5E' },
+      { x: 372, y: 155, dot: 'filled', color: '#F43F5E' }
     ],
     labels: [
-      { x: 505, y: 152, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
-      { x: 145, y: 30, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
-      { x: 290, y: 28, text: 'oś symetrii: x = p', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true },
-      { x: 450, y: 45, text: 'y = f(x)', color: '#FFB800', fontSize: 13, fontWeight: '700', badge: true }
+      { x: 495, y: 140, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 168, y: 24, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 292, y: 24, text: 'oś symetrii: x = p', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true },
+      { x: 455, y: 48, text: 'y = f(x)', color: '#FFB800', fontSize: 13, fontWeight: '700', badge: true }
     ],
     metrics: [
       { label: 'Wierzchołek paraboli', value: '$W = (p, q)$', color: '#10B981' },
@@ -573,11 +627,11 @@ export function enrichTheoryPillWithVisual(pill: any, lessonId: string): any {
     .replace(/\./g, '-');
   const dotToDash = `lesson-${rawId.replace(/^lesson[-_.]?/i, '').replace(/\./g, '-')}`;
   
-  const diagram = pill.diagram 
-    || THEORY_DIAGRAMS[lessonId] 
+  const diagram = THEORY_DIAGRAMS[lessonId] 
     || THEORY_DIAGRAMS[rawId] 
     || THEORY_DIAGRAMS[normId] 
     || THEORY_DIAGRAMS[dotToDash] 
+    || pill.diagram
     || null;
 
   return {

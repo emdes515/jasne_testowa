@@ -533,9 +533,9 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
             return (
               <span 
                 key={index} 
-                className="block my-2 w-full max-w-full flex flex-col items-center justify-center overflow-x-auto overflow-y-hidden py-1.5 px-2 text-center touch-pan-x"
+                className="block my-2 w-full max-w-full overflow-x-auto overflow-y-hidden py-1.5 px-2 text-center touch-pan-x scrollbar-thin"
               >
-                <span className="mx-auto flex flex-col items-center justify-center text-center max-w-full box-border">
+                <span className="inline-block min-w-full text-center">
                   <BlockMath 
                     math={math} 
                     renderError={() => (
@@ -550,7 +550,7 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
           } else if (isInlineMath) {
             const math = cleanLatex(trimmed);
             return (
-              <span key={index} className="inline align-baseline mx-0.5 font-normal">
+              <span key={index} className="inline-block align-baseline mx-0.5 font-normal whitespace-nowrap">
                 <InlineMath 
                   math={math} 
                   renderError={() => (
@@ -596,8 +596,8 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
   if (isPureLatexBlock) {
     const cleanMath = cleanLatex(trimmedForBlockCheck);
     return (
-      <div className={`my-2 w-full max-w-full flex flex-col items-center justify-center overflow-x-auto overflow-y-hidden py-1 px-2 text-center touch-pan-x text-white ${className}`}>
-        <div className="mx-auto flex flex-col items-center justify-center text-center max-w-full box-border">
+      <div className={`my-2 w-full max-w-full overflow-x-auto overflow-y-hidden py-1 px-2 text-center touch-pan-x text-white scrollbar-thin ${className}`}>
+        <div className="inline-block min-w-full text-center">
           <BlockMath 
             math={cleanMath} 
             renderError={() => renderMixedParts(trimmedForBlockCheck, className)}

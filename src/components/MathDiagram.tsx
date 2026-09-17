@@ -10,6 +10,30 @@ export interface DiagramPoint {
   dot?: 'filled' | 'hollow' | 'none';
   color?: string;
   tooltip?: string;
+  noBox?: boolean;
+}
+
+export interface DiagramGrid {
+  xLines?: number[];
+  yLines?: number[];
+  minX?: number;
+  maxX?: number;
+  stepX?: number;
+  minY?: number;
+  maxY?: number;
+  stepY?: number;
+  color?: string;
+  dashed?: boolean;
+  strokeWidth?: number;
+}
+
+export interface DiagramTick {
+  x: number;
+  y: number;
+  label: string;
+  axis: 'x' | 'y';
+  size?: number;
+  color?: string;
 }
 
 export interface DiagramSegment {
@@ -107,6 +131,10 @@ export interface MathDiagramData {
   formulaBadge?: string;
   /** Kafelki metryk i kluczowych parametrów odczytanych z wykresu */
   metrics?: DiagramMetric[];
+  /** Siatka współrzędnych arkusza CKE */
+  grid?: DiagramGrid;
+  /** Podziałki osi i podpisy wartości liczbowych */
+  ticks?: DiagramTick[];
 }
 
 interface MathDiagramProps {
@@ -154,20 +182,20 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
   const height = d.height || 260;
 
   return (
-    <div className={`w-full mx-auto my-2.5 p-4 rounded-2xl bg-[#090D16]/95 border border-slate-800/90 shadow-2xl flex flex-col items-center select-none overflow-hidden relative transition-all duration-200 ${className}`}>
+    <div className={`w-full mx-auto my-2.5 p-4 sm:p-5 rounded-2xl bg-[#090D16]/95 border border-slate-800/90 shadow-2xl flex flex-col items-center select-none overflow-hidden relative transition-all duration-200 ${className}`}>
       {/* Tytuł i Badge z KaTeX */}
       {(d.title || d.formulaBadge) && (
-        <div className="w-full flex items-center justify-between pb-3 mb-2 border-b border-white/5 gap-3 flex-wrap">
+        <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-2 border-b border-white/5 gap-2.5 sm:gap-4">
           {d.title && (
             <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-200">
-              <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0 shadow-sm" />
               <div className="break-words">
                 <MathRenderer content={d.title} />
               </div>
             </div>
           )}
           {d.formulaBadge && (
-            <div className="px-3 py-1 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 font-semibold text-xs sm:text-sm shadow-sm flex items-center shrink-0">
+            <div className="self-start sm:self-auto px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 font-semibold text-xs sm:text-sm shadow-sm flex items-center shrink-0">
               <MathRenderer content={d.formulaBadge} />
             </div>
           )}
@@ -178,7 +206,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
         <svg
           viewBox={`0 0 ${width} ${height}`}
           className="w-full max-w-full h-auto overflow-visible font-sans"
-          style={{ maxHeight: compact ? 220 : 320 }}
+          style={{ maxHeight: compact ? 220 : 340 }}
         >
           <defs>
             <filter id="diagram-glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -188,6 +216,61 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
               <feDropShadow dx="0" dy="0" stdDeviation="4" floodColor="#10B981" floodOpacity="0.6" />
             </filter>
           </defs>
+
+        {/* 0. Siatka współrzędnych CKE (arkusz egzaminacyjny) */}
+        {d.grid && (() => {
+          const gridColor = d.grid.color || 'rgba(148, 163, 184, 0.12)';
+          const strokeWidth = d.grid.strokeWidth || 1;
+          const strokeDash = d.grid.dashed ? '2 2' : 'none';
+
+          const xLines: number[] = d.grid.xLines ? [...d.grid.xLines] : [];
+          if (xLines.length === 0 && d.grid.minX !== undefined && d.grid.maxX !== undefined && d.grid.stepX) {
+            for (let x = d.grid.minX; x <= d.grid.maxX + 0.001; x += d.grid.stepX) {
+              xLines.push(Math.round(x));
+            }
+          }
+
+          const yLines: number[] = d.grid.yLines ? [...d.grid.yLines] : [];
+          if (yLines.length === 0 && d.grid.minY !== undefined && d.grid.maxY !== undefined && d.grid.stepY) {
+            for (let y = d.grid.minY; y <= d.grid.maxY + 0.001; y += d.grid.stepY) {
+              yLines.push(Math.round(y));
+            }
+          }
+
+          const minY = d.grid.minY ?? 25;
+          const maxY = d.grid.maxY ?? (height - 25);
+          const minX = d.grid.minX ?? 25;
+          const maxX = d.grid.maxX ?? (width - 25);
+
+          return (
+            <g className="diagram-grid">
+              {xLines.map((x, idx) => (
+                <line
+                  key={`grid-x-${idx}`}
+                  x1={x}
+                  y1={minY}
+                  x2={x}
+                  y2={maxY}
+                  stroke={gridColor}
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={strokeDash}
+                />
+              ))}
+              {yLines.map((y, idx) => (
+                <line
+                  key={`grid-y-${idx}`}
+                  x1={minX}
+                  y1={y}
+                  x2={maxX}
+                  y2={y}
+                  stroke={gridColor}
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={strokeDash}
+                />
+              ))}
+            </g>
+          );
+        })()}
 
         {/* 1. Krzywe analityczne i gładkie ścieżki Béziera (np. parabole, wykresy funkcji) */}
         {d.curves?.map((curve, idx) => {
@@ -375,6 +458,37 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
           );
         })}
 
+        {/* 5b. Podziałki osi i podpisy wartości (CKE Tick Marks) */}
+        {d.ticks?.map((tick, idx) => {
+          const tickColor = tick.color || '#64748B';
+          const size = tick.size || 3.5;
+          const isX = tick.axis === 'x';
+
+          return (
+            <g key={`tick-${idx}`}>
+              <line
+                x1={isX ? tick.x : tick.x - size}
+                y1={isX ? tick.y - size : tick.y}
+                x2={isX ? tick.x : tick.x + size}
+                y2={isX ? tick.y + size : tick.y}
+                stroke={tickColor}
+                strokeWidth={1.5}
+              />
+              <text
+                x={isX ? tick.x : tick.x - 7}
+                y={isX ? tick.y + 14 : tick.y + 4}
+                fill="#94A3B8"
+                fontSize={11}
+                fontWeight="600"
+                textAnchor={isX ? 'middle' : 'end'}
+                fontFamily="system-ui, -apple-system, sans-serif"
+              >
+                {tick.label}
+              </text>
+            </g>
+          );
+        })}
+
         {/* 6. Punkty i wierzchołki (z plakietkami ochronnymi i hover glow) */}
         {d.points?.map((pt, idx) => {
           const dotColor = pt.color || '#FFB800';
@@ -426,6 +540,22 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
               )}
 
               {pt.label && (() => {
+                if (pt.noBox) {
+                  return (
+                    <text
+                      x={pt.x + ox}
+                      y={pt.y + oy + 4}
+                      fill={isHovered ? '#38BDF8' : (pt.color || '#F8FAFC')}
+                      fontSize={11}
+                      fontWeight="700"
+                      textAnchor={anchor}
+                      style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.85))' }}
+                    >
+                      {pt.label}
+                    </text>
+                  );
+                }
+
                 const lblLen = pt.label.length;
                 const pillW = Math.max(26, lblLen * 8 + 14);
                 const pillH = 20;
@@ -451,7 +581,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
                       x={pt.x + ox}
                       y={pt.y + oy + 4}
                       fill={isHovered ? '#38BDF8' : '#F8FAFC'}
-                      fontSize={12}
+                      fontSize={11}
                       fontWeight="700"
                       textAnchor={anchor}
                     >
@@ -509,11 +639,11 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
 
       {/* Pasek kluczowych parametrów i odczytów (Strict Zoning Architecture) */}
       {d.metrics && d.metrics.length > 0 && (
-        <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 pb-1 border-t border-white/5 mt-1">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 pb-1 border-t border-white/5 mt-2">
           {d.metrics.map((m, idx) => (
             <div
               key={`metric-${idx}`}
-              className="px-3 py-2 rounded-xl bg-[#0F172A]/80 border border-white/10 hover:border-white/20 transition-all flex flex-col gap-1 shadow-sm"
+              className="px-3 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between gap-1.5 shadow-sm min-h-[64px]"
             >
               <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 flex items-center gap-1.5">
                 <span
@@ -532,10 +662,15 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
 
       {/* Podpis z wnioskiem dydaktycznym renderowany w KaTeX */}
       {d.caption && (
-        <div className="mt-2.5 text-center text-xs sm:text-sm text-slate-300 leading-relaxed px-3 max-w-xl flex items-center justify-center gap-1.5 bg-slate-950/40 py-2 rounded-xl border border-white/5 w-full">
-          <span className="text-amber-400 font-bold shrink-0">💡 Wniosek:</span>
-          <div className="text-slate-300">
-            <MathRenderer content={d.caption} />
+        <div className="mt-3 w-full p-3.5 sm:p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/20 text-xs sm:text-sm text-slate-200 flex items-start gap-3 shadow-inner">
+          <span className="text-base sm:text-lg shrink-0 mt-0.5" role="img" aria-label="Wniosek">💡</span>
+          <div className="flex-1 leading-relaxed text-left space-y-1">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
+              Wniosek dydaktyczny
+            </div>
+            <div className="text-slate-200 font-normal">
+              <MathRenderer content={d.caption} />
+            </div>
           </div>
         </div>
       )}
