@@ -7,6 +7,8 @@ export interface PlotSegment {
   endDot?: 'filled' | 'hollow' | 'none';
   color?: string;
   dashed?: boolean;
+  label?: string;
+  labelColor?: string;
 }
 
 export interface PlotLine {
@@ -41,17 +43,29 @@ export interface PlotPoint {
   color?: string;
 }
 
+export interface PlotLabel {
+  x: number;
+  y: number;
+  text: string;
+  color?: string;
+  fontSize?: number;
+  fontWeight?: string;
+}
+
 export interface PlotData {
-  type?: 'PIECEWISE_LINEAR' | 'LINEAR' | 'PARABOLA';
+  type?: 'PIECEWISE_LINEAR' | 'LINEAR' | 'PARABOLA' | 'GEOMETRY';
   xRange?: [number, number];
   yRange?: [number, number];
   gridStep?: number;
+  hideAxes?: boolean;
+  hideGrid?: boolean;
   segments?: PlotSegment[];
   lines?: PlotLine[];
   horizontalLines?: PlotHorizontalLine[];
   parabola?: PlotParabola;
   points?: PlotPoint[];
   axisOfSymmetry?: number;
+  labels?: PlotLabel[];
 }
 
 interface MathPlotProps {
@@ -143,134 +157,140 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
         </defs>
 
         {/* 1. Siatka kratkowa (Grid) */}
-        <g className="grid-lines" stroke="#1E293B" strokeWidth="1" strokeDasharray="none">
-          {xTicks.map((x) => (
-            <line
-              key={`grid-x-${x}`}
-              x1={toSvgX(x)}
-              y1={padding}
-              x2={toSvgX(x)}
-              y2={height - padding}
-            />
-          ))}
-          {yTicks.map((y) => (
-            <line
-              key={`grid-y-${y}`}
-              x1={padding}
-              y1={toSvgY(y)}
-              x2={width - padding}
-              y2={toSvgY(y)}
-            />
-          ))}
-        </g>
+        {!plot.hideGrid && (
+          <g className="grid-lines" stroke="#1E293B" strokeWidth="1" strokeDasharray="none">
+            {xTicks.map((x) => (
+              <line
+                key={`grid-x-${x}`}
+                x1={toSvgX(x)}
+                y1={padding}
+                x2={toSvgX(x)}
+                y2={height - padding}
+              />
+            ))}
+            {yTicks.map((y) => (
+              <line
+                key={`grid-y-${y}`}
+                x1={padding}
+                y1={toSvgY(y)}
+                x2={width - padding}
+                y2={toSvgY(y)}
+              />
+            ))}
+          </g>
+        )}
 
         {/* 2. Osie główne OX i OY */}
-        {/* Oś OX */}
-        <line
-          x1={padding - 10}
-          y1={originY}
-          x2={width - padding + 15}
-          y2={originY}
-          stroke="#94A3B8"
-          strokeWidth="1.75"
-          markerEnd="url(#arrow-x)"
-        />
-        {/* Oś OY */}
-        <line
-          x1={originX}
-          y1={height - padding + 10}
-          x2={originX}
-          y2={padding - 15}
-          stroke="#94A3B8"
-          strokeWidth="1.75"
-          markerEnd="url(#arrow-y)"
-        />
+        {!plot.hideAxes && (
+          <g className="axes-and-ticks">
+            {/* Oś OX */}
+            <line
+              x1={padding - 10}
+              y1={originY}
+              x2={width - padding + 15}
+              y2={originY}
+              stroke="#94A3B8"
+              strokeWidth="1.75"
+              markerEnd="url(#arrow-x)"
+            />
+            {/* Oś OY */}
+            <line
+              x1={originX}
+              y1={height - padding + 10}
+              x2={originX}
+              y2={padding - 15}
+              stroke="#94A3B8"
+              strokeWidth="1.75"
+              markerEnd="url(#arrow-y)"
+            />
 
-        {/* Etykiety osi: X i Y */}
-        <text
-          x={width - padding + 22}
-          y={originY + 4}
-          fill="#CBD5E1"
-          fontSize="12"
-          fontWeight="700"
-          textAnchor="start"
-        >
-          x
-        </text>
-        <text
-          x={originX}
-          y={padding - 20}
-          fill="#CBD5E1"
-          fontSize="12"
-          fontWeight="700"
-          textAnchor="middle"
-        >
-          y
-        </text>
+            {/* Etykiety osi: X i Y */}
+            <text
+              x={width - padding + 22}
+              y={originY + 4}
+              fill="#CBD5E1"
+              fontSize="12"
+              fontWeight="700"
+              textAnchor="start"
+            >
+              x
+            </text>
+            <text
+              x={originX}
+              y={padding - 20}
+              fill="#CBD5E1"
+              fontSize="12"
+              fontWeight="700"
+              textAnchor="middle"
+            >
+              y
+            </text>
 
-        {/* Podziałki liczbowe (Tick numbers) */}
-        {xTicks.map((x) => {
-          if (x === 0) return null;
-          return (
-            <g key={`tick-x-${x}`}>
-              <line
-                x1={toSvgX(x)}
-                y1={originY - 3}
-                x2={toSvgX(x)}
-                y2={originY + 3}
-                stroke="#64748B"
-                strokeWidth="1.5"
-              />
-              <text
-                x={toSvgX(x)}
-                y={originY + 14}
-                fill="#64748B"
-                fontSize="10"
-                fontWeight="500"
-                textAnchor="middle"
-              >
-                {x}
-              </text>
-            </g>
-          );
-        })}
+            {/* Podziałki liczbowe (Tick numbers) */}
+            {xTicks.map((x) => {
+              if (x === 0) return null;
+              return (
+                <g key={`tick-x-${x}`}>
+                  <line
+                    x1={toSvgX(x)}
+                    y1={originY - 3}
+                    x2={toSvgX(x)}
+                    y2={originY + 3}
+                    stroke="#64748B"
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    x={toSvgX(x)}
+                    y={originY + 14}
+                    fill="#64748B"
+                    fontSize="10"
+                    fontWeight="500"
+                    textAnchor="middle"
+                  >
+                    {x}
+                  </text>
+                </g>
+              );
+            })}
 
-        {yTicks.map((y) => {
-          if (y === 0) return null;
-          return (
-            <g key={`tick-y-${y}`}>
-              <line
-                x1={originX - 3}
-                y1={toSvgY(y)}
-                x2={originX + 3}
-                y2={toSvgY(y)}
-                stroke="#64748B"
-                strokeWidth="1.5"
-              />
-              <text
-                x={originX - 7}
-                y={toSvgY(y) + 3.5}
-                fill="#64748B"
-                fontSize="10"
-                fontWeight="500"
-                textAnchor="end"
-              >
-                {y}
-              </text>
-            </g>
-          );
-        })}
+            {yTicks.map((y) => {
+              if (y === 0) return null;
+              return (
+                <g key={`tick-y-${y}`}>
+                  <line
+                    x1={originX - 3}
+                    y1={toSvgY(y)}
+                    x2={originX + 3}
+                    y2={toSvgY(y)}
+                    stroke="#64748B"
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    x={originX - 7}
+                    y={toSvgY(y) + 3.5}
+                    fill="#64748B"
+                    fontSize="10"
+                    fontWeight="500"
+                    textAnchor="end"
+                  >
+                    {y}
+                  </text>
+                </g>
+              );
+            })}
 
-        {/* Punkt (0,0) */}
-        <text
-          x={originX - 7}
-          y={originY + 12}
-          fill="#64748B"
-          fontSize="10"
-          textAnchor="end"
-        >
-          0
-        </text>
+            {/* Punkt (0,0) */}
+            <text
+              x={originX - 7}
+              y={originY + 12}
+              fill="#64748B"
+              fontSize="10"
+              textAnchor="end"
+            >
+              0
+            </text>
+          </g>
+        )}
 
         {/* 3. Poziome linie pomocnicze (np. y = 3) */}
         {plot.horizontalLines?.map((hl, idx) => {
@@ -397,6 +417,41 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
               {seg.endDot === 'hollow' && (
                 <circle cx={sx2} cy={sy2} r="4.5" fill="#090D16" stroke={strokeColor} strokeWidth="2" />
               )}
+              {/* Etykieta odcinka */}
+              {seg.label && (() => {
+                const midX = (sx1 + sx2) / 2;
+                const midY = (sy1 + sy2) / 2;
+                const dx = sx2 - sx1;
+                const dy = sy2 - sy1;
+                const len = Math.hypot(dx, dy) || 1;
+                const ox = (-dy / len) * 14;
+                const oy = (dx / len) * 14;
+                return (
+                  <g key={`seg-lbl-${idx}`}>
+                    <rect
+                      x={midX + ox - 14}
+                      y={midY + oy - 9}
+                      width={28}
+                      height={18}
+                      rx={5}
+                      fill="#090D16"
+                      fillOpacity={0.88}
+                      stroke="#1E293B"
+                      strokeWidth={1}
+                    />
+                    <text
+                      x={midX + ox}
+                      y={midY + oy + 4}
+                      fill={seg.labelColor || strokeColor}
+                      fontSize="11"
+                      fontWeight="700"
+                      textAnchor="middle"
+                    >
+                      {seg.label}
+                    </text>
+                  </g>
+                );
+              })()}
             </g>
           );
         })}
@@ -429,6 +484,22 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
             </g>
           );
         })}
+
+        {/* 9. Etykiety swobodne (np. nazwy prostych k, l, wierzchołków) */}
+        {plot.labels?.map((lbl, idx) => (
+          <text
+            key={`plot-lbl-${idx}`}
+            x={toSvgX(lbl.x)}
+            y={toSvgY(lbl.y)}
+            fill={lbl.color || '#CBD5E1'}
+            fontSize={lbl.fontSize || 12}
+            fontWeight={lbl.fontWeight || '700'}
+            textAnchor="middle"
+            dominantBaseline="central"
+          >
+            {lbl.text}
+          </text>
+        ))}
       </svg>
     </div>
   );

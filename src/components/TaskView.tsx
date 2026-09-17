@@ -40,6 +40,8 @@ import { Badge } from './Badge';
 import { CkeScratchpad } from './CkeScratchpad';
 import { OpenTaskWorkspace } from './OpenTaskWorkspace';
 import { SessionRunner } from './SessionRunner';
+import { MathPlot } from './MathPlot';
+import { MathDiagram } from './MathDiagram';
 import { UserState, MathTaskItem, TaskOption, TaskSolutionStep } from '../types';
 import { deductHeart, getSyncedHearts } from '../lib/heartsManager';
 
@@ -1449,6 +1451,12 @@ export function TaskView({
           <div className="text-white font-bold text-base sm:text-lg leading-snug">
             <MathRenderer content={mathStatement} />
           </div>
+
+          {(activeTask?.diagram || activeTask?.plot) && (
+            <div className="mt-3 flex justify-center">
+              <MathDiagram diagram={activeTask.diagram || activeTask.plot} />
+            </div>
+          )}
 
           {/* Auxiliary Buttons: Brudnopis & Wskazówka */}
           <div className="flex items-center justify-between pt-2 border-t border-white/5">

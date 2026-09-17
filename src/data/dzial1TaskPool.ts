@@ -14,6 +14,7 @@
 import { TaskOption, LessonTheoryPill } from '../types';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { normalizeTask } from './mathTasks';
+import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from './mathVisualRegistry';
 import type { LessonDocument } from '../schema_firestore';
 
 export type TaskDifficultyTier = 'A' | 'B' | 'C';
@@ -52,6 +53,7 @@ export interface PoolTask {
     criterion_2_points: string;
   };
   modelSolutionSteps?: { step_num: number; description: string; latex?: string }[];
+  plot?: any;
 }
 
 export interface LessonFormulaSheet {
@@ -102,16 +104,17 @@ export function getLessonFormulaSheet(lessonId: string): LessonFormulaSheet | nu
   return toFormulaSheet((lesson as any).formulaSheet || (lesson as any).formula_sheet, lesson);
 }
 
-/** Pigułka wiedzy z dokumentu lekcji (wcześniej zwracała zawsze null). */
+/** Pigułka wiedzy z dokumentu lekcji (wzbogacona o schematy wektorowe). */
 export function getLessonTheoryPill(lessonId: string): LessonTheoryPill | null {
   const lesson = curriculumRepository.getCachedLesson(lessonId);
-  return (lesson?.theory_pill as LessonTheoryPill) || null;
+  const raw = (lesson?.theory_pill as LessonTheoryPill) || null;
+  return raw ? enrichTheoryPillWithVisual(raw, lessonId) : null;
 }
 
-/** Pula zadań lekcji z dokumentu lekcji w Firestore. */
+/** Pula zadań lekcji z dokumentu lekcji w Firestore (wzbogacona o wykresy). */
 export function getLessonTaskPool(lessonId: string): PoolTask[] {
   const lesson = curriculumRepository.getCachedLesson(lessonId);
-  return ((lesson?.tasks as unknown as PoolTask[]) || []);
+  return ((lesson?.tasks as unknown as PoolTask[]) || []).map(t => enrichTaskWithVisual(t, lessonId));
 }
 
 export interface SessionTasksDrawResult {
@@ -182,9 +185,9 @@ export function drawSessionTasks(
 
     return {
       lessonId,
-      sessionTasks: mathTasks,
+      sessionTasks: mathTasks.map(t => enrichTaskWithVisual(t, lessonId)),
       formulaSheet,
-      theoryPill: lesson?.theory_pill,
+      theoryPill: lesson?.theory_pill ? enrichTheoryPillWithVisual(lesson.theory_pill, lessonId) : undefined,
       required_correct_tasks: lesson?.required_correct_tasks || 4,
       estimated_time_formatted: lesson?.estimated_time_formatted || '~8 min'
     };
@@ -399,11 +402,11 @@ export async function loadTopicBossExam(topic: any, subjectId: string): Promise<
 
   if (topicId) {
     const lessons = await curriculumRepository.getTopicLessons(topicId, subjectId);
-    tasks = lessons.flatMap(lesson => (lesson.tasks || []).map((task: any) => ({
+    tasks = lessons.flatMap(lesson => (lesson.tasks || []).map((task: any) => enrichTaskWithVisual({
       ...task,
       lessonId: lesson.id,
       lessonTitle: lesson.title
-    })));
+    }, lesson.id)));
   }
 
   return generateTopicBossExam(topic, tasks);

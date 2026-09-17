@@ -44,6 +44,7 @@ import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
 import { AiTutorScanOverlay } from './AiTutorScanOverlay';
 import { MathPlot } from './MathPlot';
+import { MathDiagram } from './MathDiagram';
 import { OutOfHeartsModal } from './OutOfHeartsModal';
 import { ParentSponsorModal } from './ParentSponsorModal';
 import { ProPopup } from './ProPopup';
@@ -171,8 +172,8 @@ function sanitizeExaminerTip(text: string): string {
  * - Upper card: Conceptual definition with stylish left accent border (border-l-4)
  * - Lower cards: Extracted key formulas and operational rules (e.g. Podwyżka/Obniżka)
  */
-function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolean) {
-  if (!rawText) return null;
+function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolean, diagram?: any) {
+  if (!rawText && !diagram) return null;
   let textToParse = '';
   if (typeof rawText === 'string') {
     textToParse = rawText;
@@ -180,11 +181,9 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
     textToParse = rawText.map(item => (typeof item === 'string' ? item : item?.text || item?.description || '')).filter(Boolean).join('\n\n');
   } else if (typeof rawText === 'object') {
     textToParse = rawText.description || rawText.text || JSON.stringify(rawText);
-  } else {
+  } else if (rawText) {
     textToParse = String(rawText);
   }
-
-  if (!textToParse || !textToParse.trim()) return null;
 
   // Split by full stop when followed by capital letters (distinct conceptual sentences)
   const sentences = textToParse
@@ -196,18 +195,13 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
     /podwyżka|obniżka|mnożenie|iloraz|wzór|równanie|zależność|współczynnik|dodawanie/i.test(s) && (s.includes('$') || s.includes('='))
   );
 
-  if (hasFormulaClauses) {
-    const mainDefinition = sentences[0];
-    const formulaClauses = sentences.slice(1);
+  const mainDefinition = hasFormulaClauses ? sentences[0] : textToParse;
+  const formulaClauses = hasFormulaClauses ? sentences.slice(1) : [];
 
-    return (
-      <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-4">
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-          <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
-          <span>Wprowadzenie i definicja</span>
-        </div>
-
-        {/* 1. Definicja pojęciowa z lewym paskiem akcentującym */}
+  const textContent = (
+    <div className="space-y-3.5">
+      {/* 1. Definicja pojęciowa z lewym paskiem akcentującym */}
+      {mainDefinition && (
         <div className={`p-3.5 sm:p-4 rounded-xl border-l-4 ${
           isPolishSession
             ? 'border-rose-500 bg-rose-500/5 text-rose-100'
@@ -220,8 +214,10 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
             {renderMicroContent(mainDefinition)}
           </div>
         </div>
+      )}
 
-        {/* 2. Wyodrębnione kafelki z kluczowymi formułami / operacjami */}
+      {/* 2. Wyodrębnione kafelki z kluczowymi formułami / operacjami */}
+      {formulaClauses.length > 0 && (
         <div className="space-y-2">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
             Kluczowe reguły i zależności
@@ -253,26 +249,43 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
             })}
           </div>
         </div>
+      )}
+    </div>
+  );
+
+  // If diagram exists: generous, full-width visual card with conceptual clarity
+  if (diagram) {
+    return (
+      <div className="rounded-2xl p-4 sm:p-6 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-5">
+        <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-3">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+            <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
+            <span>Wprowadzenie i definicja pojęcia</span>
+          </div>
+          <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 font-semibold tracking-wide flex items-center gap-1.5">
+            📐 Schemat geometryczny
+          </span>
+        </div>
+
+        {/* 1. Definicja i kluczowe reguły operacyjne */}
+        {textContent}
+
+        {/* 2. Dedykowany, przestronny moduł wizualny */}
+        <div className="w-full pt-1">
+          <MathDiagram diagram={diagram} />
+        </div>
       </div>
     );
   }
 
-  // Standardowy elegancki widok z lewym paskiem akcentującym dla pojedynczych definicji
+  // Without diagram: standard elegant card
   return (
-    <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 text-slate-200 text-sm sm:text-base leading-relaxed shadow-sm space-y-3">
+    <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-4">
       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
         <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
         <span>Wprowadzenie i definicja</span>
       </div>
-      <div className={`p-3.5 sm:p-4 rounded-xl border-l-4 ${
-        isPolishSession
-          ? 'border-rose-500 bg-rose-500/5 text-rose-100'
-          : 'border-amber-400 bg-amber-500/5 text-amber-100'
-      } text-sm sm:text-base leading-relaxed`}>
-        <div className="text-slate-200">
-          {renderMicroContent(textToParse)}
-        </div>
-      </div>
+      {textContent}
     </div>
   );
 }
@@ -2972,7 +2985,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         <MathRenderer content={lessonTitleClean || sanitizeLessonHeading(theoryPill?.title || lessonTitle)} />
                       </h1>
                     </div>
-                    {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession)}
+                    {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession, theoryPill?.diagram)}
 
                     {/* STRESZCZENIE FABUŁY I PLAN WYDARZEŃ LEKTURY (DLA LEKTUR MATURALNYCH) */}
                     {(theoryPill as any)?.book_summary && (() => {
@@ -3456,9 +3469,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="text-base sm:text-lg font-medium text-slate-100 leading-relaxed break-words">
                 <MathRenderer content={currentTask?.question || currentTask?.math_statement || currentTask?.content || ''} />
               </div>
-              {currentTask?.plot && (
+              {(currentTask?.diagram || currentTask?.plot) && (
                 <div className="mt-3 flex justify-center">
-                  <MathPlot plot={currentTask.plot} />
+                  <MathDiagram diagram={currentTask.diagram || currentTask.plot} />
                 </div>
               )}
             </div>

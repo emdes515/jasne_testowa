@@ -129,37 +129,55 @@ export default function App() {
   const [isSubjectSheetOpen, setIsSubjectSheetOpen] = useState(false);
   const [profileInitialTab, setProfileInitialTab] = useState<'overview' | 'achievements' | 'perks'>('overview');
   
-  const [userState, setUserState] = useState<UserState>({
-    xp: 0,
-    coins: 0,
-    gems: 0,
-    level: 1,
-    campusRust: 0,
-    lastActive: Date.now(),
-    arenaRating: 1000,
-    arenaWins: 0,
-    masteryTokens: 0,
-    streakDays: 0,
-    streakActiveDates: [],
-    dailyTaskCounts: {},
-    claimedAchievements: {},
-    timeSpentTotalSeconds: 0,
-    weeklyTimeSpentMinutes: 0,
-    lastWeekKey: getCurrentIsoWeekKey(),
-    hearts: 5,
-    maxHearts: 5,
-    isPro: false,
-    lastHeartRegenTimestamp: Date.now(),
-    aiVisionDailyCount: 0,
-    perks: {
-      xpBoostPercent: 0,
-      coinBoostPercent: 0,
-      streakFreezes: 0,
-      arenaShields: 0,
-      arenaTokenBonusPercent: 0,
-      temporaryXpBoostCharges: 0,
-    },
-    maturaAttempts: 0
+  const [userState, setUserState] = useState<UserState>(() => {
+    const defaultState: UserState = {
+      xp: 0,
+      coins: 0,
+      gems: 0,
+      level: 1,
+      campusRust: 0,
+      lastActive: Date.now(),
+      arenaRating: 1000,
+      arenaWins: 0,
+      masteryTokens: 0,
+      streakDays: 0,
+      streakActiveDates: [],
+      dailyTaskCounts: {},
+      claimedAchievements: {},
+      timeSpentTotalSeconds: 0,
+      weeklyTimeSpentMinutes: 0,
+      lastWeekKey: getCurrentIsoWeekKey(),
+      hearts: 5,
+      maxHearts: 5,
+      isPro: false,
+      lastHeartRegenTimestamp: Date.now(),
+      aiVisionDailyCount: 0,
+      perks: {
+        xpBoostPercent: 0,
+        coinBoostPercent: 0,
+        streakFreezes: 0,
+        arenaShields: 0,
+        arenaTokenBonusPercent: 0,
+        temporaryXpBoostCharges: 0,
+      },
+      maturaAttempts: 0
+    };
+
+    try {
+      const cachedAuth = localStorage.getItem('matura_quest_cached_user');
+      const cachedGuest = localStorage.getItem('matura_quest_guest_user');
+      const stored = cachedAuth || cachedGuest;
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        return {
+          ...defaultState,
+          ...parsed,
+          perks: { ...defaultState.perks, ...(parsed.perks || {}) }
+        };
+      }
+    } catch {}
+
+    return defaultState;
   });
 
   useEffect(() => {
@@ -212,42 +230,48 @@ export default function App() {
             ? rawCompletedLessons
             : Object.keys(data.completedLessons || progress.completedLessons || {});
 
-          setUserState(prev => ({
-            ...prev,
-            ...data,
-            xp: stats.xp ?? data.xp ?? prev.xp,
-            coins: stats.coins ?? data.coins ?? prev.coins,
-            gems: stats.gems ?? data.gems ?? prev.gems,
-            level: stats.level ?? data.level ?? prev.level,
-            arenaRating: stats.arenaRating ?? data.arenaRating ?? prev.arenaRating,
-            arenaWins: stats.arenaWins ?? data.arenaWins ?? prev.arenaWins,
-            masteryTokens: stats.masteryTokens ?? data.masteryTokens ?? prev.masteryTokens,
-            streakDays: streak.currentDays ?? data.streakDays ?? prev.streakDays,
-            lastStreakDate: streak.lastActiveDate ?? data.lastStreakDate ?? prev.lastStreakDate,
-            streakActiveDates: streak.streakActiveDates ?? data.streakActiveDates ?? prev.streakActiveDates,
-            dailyTaskCounts: streak.activityHistory ?? data.dailyTaskCounts ?? prev.dailyTaskCounts ?? {},
-            timeSpentTotalSeconds: stats.timeSpentTotalSeconds ?? data.timeSpentTotalSeconds ?? prev.timeSpentTotalSeconds ?? 0,
-            weeklyTimeSpentMinutes: stats.weeklyTimeSpentMinutes ?? data.weeklyTimeSpentMinutes ?? prev.weeklyTimeSpentMinutes ?? 0,
-            lastWeekKey: stats.lastWeekKey ?? data.lastWeekKey ?? prev.lastWeekKey ?? getCurrentIsoWeekKey(),
-            hearts: typeof data.hearts === 'number' ? data.hearts : (prev.hearts ?? 5),
-            maxHearts: typeof data.maxHearts === 'number' ? data.maxHearts : (prev.maxHearts ?? 5),
-            isPro: data.isPro ?? prev.isPro ?? false,
-            lastHeartRegenTimestamp: data.lastHeartRegenTimestamp ?? prev.lastHeartRegenTimestamp ?? Date.now(),
-            aiVisionDailyCount: data.aiVisionDailyCount ?? prev.aiVisionDailyCount ?? 0,
-            lastVisionDate: data.lastVisionDate ?? prev.lastVisionDate,
-            completed_lessons: loadedCompletedLessons,
-            completedLessons: data.completedLessons || progress.completedLessons || prev.completedLessons || {},
-            perks: {
-              xpBoostPercent: 0,
-              coinBoostPercent: 0,
-              streakFreezes: 0,
-              arenaShields: 0,
-              arenaTokenBonusPercent: 0,
-              temporaryXpBoostCharges: 0,
-              ...(data.perks || {})
-            },
-            claimedAchievements: data.claimedAchievements || {}
-          }));
+          setUserState(prev => {
+            const nextState: UserState = {
+              ...prev,
+              ...data,
+              xp: stats.xp ?? data.xp ?? prev.xp,
+              coins: stats.coins ?? data.coins ?? prev.coins,
+              gems: stats.gems ?? data.gems ?? prev.gems,
+              level: stats.level ?? data.level ?? prev.level,
+              arenaRating: stats.arenaRating ?? data.arenaRating ?? prev.arenaRating,
+              arenaWins: stats.arenaWins ?? data.arenaWins ?? prev.arenaWins,
+              masteryTokens: stats.masteryTokens ?? data.masteryTokens ?? prev.masteryTokens,
+              streakDays: streak.currentDays ?? data.streakDays ?? prev.streakDays,
+              lastStreakDate: streak.lastActiveDate ?? data.lastStreakDate ?? prev.lastStreakDate,
+              streakActiveDates: streak.streakActiveDates ?? data.streakActiveDates ?? prev.streakActiveDates,
+              dailyTaskCounts: streak.activityHistory ?? data.dailyTaskCounts ?? prev.dailyTaskCounts ?? {},
+              timeSpentTotalSeconds: stats.timeSpentTotalSeconds ?? data.timeSpentTotalSeconds ?? prev.timeSpentTotalSeconds ?? 0,
+              weeklyTimeSpentMinutes: stats.weeklyTimeSpentMinutes ?? data.weeklyTimeSpentMinutes ?? prev.weeklyTimeSpentMinutes ?? 0,
+              lastWeekKey: stats.lastWeekKey ?? data.lastWeekKey ?? prev.lastWeekKey ?? getCurrentIsoWeekKey(),
+              hearts: typeof data.hearts === 'number' ? data.hearts : (prev.hearts ?? 5),
+              maxHearts: typeof data.maxHearts === 'number' ? data.maxHearts : (prev.maxHearts ?? 5),
+              isPro: data.isPro ?? prev.isPro ?? false,
+              lastHeartRegenTimestamp: data.lastHeartRegenTimestamp ?? prev.lastHeartRegenTimestamp ?? Date.now(),
+              aiVisionDailyCount: data.aiVisionDailyCount ?? prev.aiVisionDailyCount ?? 0,
+              lastVisionDate: data.lastVisionDate ?? prev.lastVisionDate,
+              completed_lessons: loadedCompletedLessons,
+              completedLessons: data.completedLessons || progress.completedLessons || prev.completedLessons || {},
+              perks: {
+                xpBoostPercent: 0,
+                coinBoostPercent: 0,
+                streakFreezes: 0,
+                arenaShields: 0,
+                arenaTokenBonusPercent: 0,
+                temporaryXpBoostCharges: 0,
+                ...(data.perks || {})
+              },
+              claimedAchievements: data.claimedAchievements || {}
+            };
+            try {
+              localStorage.setItem('matura_quest_cached_user', JSON.stringify(nextState));
+            } catch {}
+            return nextState;
+          });
 
           if (!data.hasCompletedOnboarding) {
             setIsNewUser(true);
@@ -340,6 +364,7 @@ export default function App() {
           localStorage.removeItem('matura_quest_completed_tasks');
           localStorage.removeItem('matura_quest_task_stars');
           localStorage.removeItem('matura_quest_lesson_mistakes');
+          localStorage.removeItem('matura_quest_cached_user');
         } catch {}
       }
 
@@ -408,6 +433,9 @@ export default function App() {
 
   const saveUserData = async (newState: UserState) => {
     if (user) {
+      try {
+        localStorage.setItem('matura_quest_cached_user', JSON.stringify(newState));
+      } catch {}
       try {
         const userRef = doc(db, 'users', user.uid);
         const payload = buildFirestoreUserPayload(
@@ -912,10 +940,6 @@ export default function App() {
     return result;
   };
 
-  if (loading) {
-    return <LoadingScreen message="Autoryzacja..." />;
-  }
-
   const handleLoginClick = () => {
     triggerHaptic('light');
     setShowAuthModal(true);
@@ -931,6 +955,16 @@ export default function App() {
 
   return (
     <div className="h-full h-[100dvh] w-full bg-[#0B0E14] text-slate-100 font-sans flex flex-col md:flex-row overflow-hidden selection:bg-blue-500/30">
+      <AnimatePresence>
+        {loading && (
+          <LoadingScreen 
+            key="initial-auth-loading-screen"
+            message="Autoryzacja sesji..." 
+            subtext="Synchronizowanie profilu i postępów"
+          />
+        )}
+      </AnimatePresence>
+
       {/* 1. NAWIGACJA (DLA DESKTOPU I TABLETU: LEWY PANEL BOCZNY; DLA MOBILNYCH: DOLNY DOCK) */}
       {!activeTask && (
         <Navigation currentTab={currentTab} setTab={setCurrentTab} />

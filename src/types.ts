@@ -127,6 +127,7 @@ export interface LessonTheoryPill {
   keyPoints?: string[];
   book_summary?: BookSummary;
   streszczenie?: string;
+  diagram?: any;
 }
 
 export type TabState = 'dashboard' | 'nauka' | 'arena' | 'profile' | 'simulator';
@@ -186,6 +187,8 @@ export interface MathTaskItem {
   xp?: number;
   difficulty?: string;
   time?: string;
+  plot?: any;
+  diagram?: any;
 }
 
 export interface AiTaskEvaluationResult {

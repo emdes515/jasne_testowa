@@ -197,7 +197,8 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
     xp: (task.points || 1) * 10,
     time: `${(task.points || 1) * 2} min`,
     tags: task.tags || [`${task.points || 1} pkt`],
-    lessonId: lesson?.id
+    lessonId: lesson?.id,
+    plot: task.plot || undefined
   };
 }
 

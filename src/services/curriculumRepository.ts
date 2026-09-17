@@ -26,6 +26,7 @@ import {
   SubjectDocument
 } from '../schema_firestore';
 import { normalizeTask } from '../data/mathTasks';
+import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
 
 export const DEFAULT_SUBJECT_ID = 'matematyka-podstawowa';
 
@@ -221,15 +222,18 @@ export const curriculumRepository = {
         const data = snap.data() as LessonDocument;
         const rawTasks = data.tasks || [];
         const normalizedTasks = rawTasks.map((t: any) => 
-          normalizeTask(t, { id: snap.id, title: data.title }, { id: topicId })
+          enrichTaskWithVisual(normalizeTask(t, { id: snap.id, title: data.title }, { id: topicId }))
         );
+
+        const rawTheoryPill = data.theory_pill || { concept_essence: data.title };
+        const enrichedTheoryPill = enrichTheoryPillWithVisual(rawTheoryPill, snap.id);
 
         const lessonDoc: LessonDocument = {
           ...data,
           id: snap.id,
           topic_id: topicId,
           title: data.title || snap.id,
-          theory_pill: data.theory_pill || { concept_essence: data.title },
+          theory_pill: enrichedTheoryPill,
           formulaSheet: (data as any).formulaSheet || (data as any).formula_sheet || null,
           formula_sheet: (data as any).formula_sheet || (data as any).formulaSheet || null,
           tasks: normalizedTasks
