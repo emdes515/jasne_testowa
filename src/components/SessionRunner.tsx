@@ -5386,16 +5386,29 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   Twoja odpowiedź <span className="font-semibold">nie została oceniona</span> i nie stracisz za nią serca.
                   Spróbuj ponownie za moment.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEvaluationUnavailable(false);
-                    triggerHaptic('light');
-                  }}
-                  className="mt-2.5 rounded-xl bg-amber-500/20 px-3 py-1.5 text-xs font-bold text-amber-200 transition active:scale-95"
-                >
-                  Rozumiem, spróbuję ponownie
-                </button>
+                <div className="flex items-center gap-2 mt-2.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEvaluationUnavailable(false);
+                      triggerHaptic('medium');
+                      handleCheckOpenAnswerWithTutor();
+                    }}
+                    className="rounded-xl bg-[#FFB800] hover:bg-amber-400 px-3.5 py-1.5 text-xs font-black text-amber-950 transition active:scale-95 cursor-pointer shadow-md"
+                  >
+                    Ponów sprawdzenie
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEvaluationUnavailable(false);
+                      triggerHaptic('light');
+                    }}
+                    className="rounded-xl bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs font-bold text-slate-300 transition active:scale-95 cursor-pointer"
+                  >
+                    Zamknij
+                  </button>
+                </div>
               </div>
             </div>
           </div>

@@ -2,6 +2,9 @@ import React from 'react';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 
+const CLEAN_LATEX_CACHE_LIMIT = 800;
+const cleanLatexCache = new Map<string, string>();
+
 /**
  * Normalizes LaTeX math strings safely:
  * - Strips outer delimiter dollars ($$ or $) or brackets
@@ -12,6 +15,9 @@ import { InlineMath, BlockMath } from 'react-katex';
  */
 export function cleanLatex(mathStr: string): string {
   if (!mathStr) return '';
+  const cached = cleanLatexCache.get(mathStr);
+  if (cached !== undefined) return cached;
+
   let s = mathStr.trim();
 
   // Fix corrupted form-feed/triangle artifacts and control characters (e.g. \f -> 0x0C, \r -> 0x0D, \b -> 0x08, \t -> 0x09)
@@ -76,6 +82,12 @@ export function cleanLatex(mathStr: string): string {
 
   // Clean empty or redundant double-spaces
   s = s.replace(/\s+/g, ' ').trim();
+
+  if (cleanLatexCache.size >= CLEAN_LATEX_CACHE_LIMIT) {
+    const firstKey = cleanLatexCache.keys().next().value;
+    if (firstKey !== undefined) cleanLatexCache.delete(firstKey);
+  }
+  cleanLatexCache.set(mathStr, s);
 
   return s;
 }

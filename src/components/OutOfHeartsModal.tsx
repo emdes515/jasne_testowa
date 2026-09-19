@@ -144,10 +144,10 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
                 triggerHaptic('medium');
                 onOpenParentSponsor();
               }}
-              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFD54F] hover:brightness-105 active:scale-[0.98] text-slate-950 font-black text-sm transition-all shadow-[0_0_25px_rgba(255,184,0,0.35)] cursor-pointer flex flex-col items-center justify-center gap-0.5 group border-t border-white/40"
+              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFD54F] hover:brightness-105 active:scale-[0.98] text-amber-950 font-black text-sm transition-all shadow-[0_0_25px_rgba(255,184,0,0.35)] cursor-pointer flex flex-col items-center justify-center gap-0.5 group border-t border-white/40"
             >
               <div className="flex items-center gap-2">
-                <Users size={17} className="fill-slate-950" />
+                <Users size={17} className="fill-amber-950 text-amber-950" />
                 <span>Poproś rodzica o PRO (BLIK)</span>
                 <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
               </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { 
   BookOpen, 
   GraduationCap, 
@@ -50,6 +50,158 @@ import { CkeFormulasModal } from './CkeFormulasModal';
 import { MaturaExamReview, MaturaTaskReviewItem, MaturaAiEvaluation } from './MaturaExamReview';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
 
+interface ExamTaskCardProps {
+  task: MaturaTask;
+  currentIndex: number;
+  selectedAnswer?: string;
+  openAnswer?: { text: string; canvasUrl?: string };
+  onSelectClosedAnswer: (optLetter: string) => void;
+  onOpenAnswerChange: (val: string) => void;
+  onOpenCanvasChange: (dataUrl: string) => void;
+  onPrevTask: () => void;
+  onNextTask: () => void;
+  isFirstTask: boolean;
+  isLastTask: boolean;
+}
+
+const ExamTaskCard = React.memo<ExamTaskCardProps>(({
+  task,
+  currentIndex,
+  selectedAnswer,
+  openAnswer,
+  onSelectClosedAnswer,
+  onOpenAnswerChange,
+  onOpenCanvasChange,
+  onPrevTask,
+  onNextTask,
+  isFirstTask,
+  isLastTask
+}) => {
+  return (
+    <div className="p-4 sm:p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl space-y-6">
+      <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
+        <div className="flex items-center gap-2">
+          <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-text-secondary text-xs font-bold">
+            Zadanie {currentIndex + 1}
+          </span>
+          <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/20 text-[#FFB800] text-xs font-bold">
+            {task.points} {task.points === 1 ? 'punkt' : 'punkty'}
+          </span>
+          {task.source && (
+            <span className="text-text-muted text-xs hidden sm:inline">
+              • {task.source}
+            </span>
+          )}
+        </div>
+        <span className="text-xs text-text-muted">
+          {task.section}
+        </span>
+      </div>
+
+      {/* RWD Tablet / Desktop Split-Layout */}
+      {task.isClosed ? (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
+          <div className="lg:col-span-6 space-y-4">
+            <div className="prose prose-invert max-w-none math-render overflow-x-auto py-2 -my-2 text-text-primary text-sm sm:text-base leading-relaxed">
+              <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                {task.content}
+              </Markdown>
+            </div>
+          </div>
+          <div className="lg:col-span-6 grid grid-cols-1 gap-2.5">
+            {task.options?.map((opt, optIdx) => {
+              const optLetter = String.fromCharCode(65 + optIdx);
+              const isSelected = selectedAnswer === optLetter;
+
+              return (
+                <button
+                  key={optIdx}
+                  type="button"
+                  onClick={() => onSelectClosedAnswer(optLetter)}
+                  className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex items-start gap-3 active:scale-[0.99] cursor-pointer ${
+                    isSelected
+                      ? 'bg-[#FFB800]/15 border-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
+                      : 'bg-surface-bg border-surface-border text-text-secondary hover:border-white/20 hover:text-white'
+                  }`}
+                >
+                  <span className={`w-7 h-7 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
+                    isSelected
+                      ? 'bg-[#FFB800] text-black'
+                      : 'bg-white/5 text-text-muted border border-white/10'
+                  }`}>
+                    {optLetter}
+                  </span>
+                  <div className="flex-1 overflow-x-auto text-sm leading-relaxed pt-0.5">
+                    <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                      {opt}
+                    </Markdown>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-4 pt-1">
+          <div className="prose prose-invert max-w-none math-render overflow-x-auto py-2 -my-2 text-text-primary text-sm sm:text-base leading-relaxed">
+            <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+              {task.content}
+            </Markdown>
+          </div>
+
+          <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
+            <div className="flex items-center gap-2">
+              <Sparkles size={16} className="text-[#FFB800]" />
+              <span className="text-xs font-bold text-white">
+                Zadanie otwarte • Asynchroniczna ocena AI
+              </span>
+            </div>
+            <span className="text-[11px] text-text-muted hidden sm:inline">
+              Egzaminator AI ocenia rozwiązanie w tle
+            </span>
+          </div>
+
+          <OpenTaskWorkspace
+            task={task}
+            isEvaluated={false}
+            isCorrect={null}
+            value={openAnswer?.text || ''}
+            onChangeValue={onOpenAnswerChange}
+            savedCanvasDataUrl={openAnswer?.canvasUrl}
+            onSaveCanvasData={onOpenCanvasChange}
+            inputPlaceholder="Wprowadź swoje kroki obliczeniowe lub skorzystaj z brudnopisu..."
+            hideWhiteboard={false}
+            mode="math"
+          />
+        </div>
+      )}
+
+      {/* Nawigacja dolna zadania */}
+      <div className="flex items-center justify-between pt-4 border-t border-surface-border">
+        <button
+          type="button"
+          disabled={isFirstTask}
+          onClick={onPrevTask}
+          className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer"
+        >
+          <ChevronLeft size={16} />
+          <span>Poprzednie</span>
+        </button>
+
+        <button
+          type="button"
+          disabled={isLastTask}
+          onClick={onNextTask}
+          className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer"
+        >
+          <span>Następne</span>
+          <ChevronRight size={16} />
+        </button>
+      </div>
+    </div>
+  );
+});
+
 export interface MaturaSimulatorViewProps {
   onEarnReward?: (xp: number, coins: number, showModal?: boolean) => void;
   userState?: UserState;
@@ -87,6 +239,10 @@ export function MaturaSimulatorView({
   // Modale pomocnicze
   const [isScratchpadOpen, setIsScratchpadOpen] = useState(false);
   const [isFormulasOpen, setIsFormulasOpen] = useState(false);
+
+  // Modale potwierdzenia arkusza (clarify)
+  const [examConfirmModal, setExamConfirmModal] = useState<'finish' | 'exit' | null>(null);
+  const [unansweredCount, setUnansweredCount] = useState(0);
 
   // Bank błędów (localStorage)
   const [mistakesBank, setMistakesBank] = useState<string[]>(() => {
@@ -325,6 +481,32 @@ export function MaturaSimulatorView({
       [taskId]: { text: prev[taskId]?.text || '', canvasUrl: newCanvasUrl }
     }));
   };
+
+  const handleSelectClosedAnswer = useCallback((optLetter: string) => {
+    const currTask = examTasks[examCurrentIndex];
+    if (!currTask) return;
+    setExamAnswers(prev => ({ ...prev, [currTask.id]: optLetter }));
+  }, [examTasks, examCurrentIndex]);
+
+  const handleOpenAnswerChangeCb = useCallback((val: string) => {
+    const currTask = examTasks[examCurrentIndex];
+    if (!currTask) return;
+    handleExamOpenAnswerChange(currTask.id, val);
+  }, [examTasks, examCurrentIndex]);
+
+  const handleOpenCanvasChangeCb = useCallback((dataUrl: string) => {
+    const currTask = examTasks[examCurrentIndex];
+    if (!currTask) return;
+    handleExamOpenCanvasChange(currTask.id, dataUrl);
+  }, [examTasks, examCurrentIndex]);
+
+  const handlePrevTask = useCallback(() => {
+    setExamCurrentIndex(prev => Math.max(0, prev - 1));
+  }, []);
+
+  const handleNextTask = useCallback(() => {
+    setExamCurrentIndex(prev => Math.min(examTasks.length - 1, prev + 1));
+  }, [examTasks.length]);
 
   // Automatyczne sprawdzenie w tle przy opuszczeniu zadania otwartego
   useEffect(() => {
@@ -861,10 +1043,7 @@ export function MaturaSimulatorView({
             <button
               onClick={() => {
                 if (view === 'exam') {
-                  if (confirm('Czy na pewno chcesz przerwać arkusz?')) {
-                    if (timerRef.current) clearInterval(timerRef.current);
-                    setView('hub');
-                  }
+                  setExamConfirmModal('exit');
                 } else if (view === 'topic_detail') {
                   setView('topics_bank');
                 } else {
@@ -1573,25 +1752,26 @@ export function MaturaSimulatorView({
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => {
-                      const unanswered = examTasks.filter(t => !examAnswers[t.id] && examOpenScores[t.id] === undefined).length;
-                      if (unanswered > 0) {
-                        if (confirm(`Masz jeszcze ${unanswered} nieodpowiedzianych pytań. Czy na pewno chcesz oddać arkusz?`)) {
-                          handleFinishExam();
-                        }
-                      } else {
-                        handleFinishExam();
-                      }
+                      const unanswered = examTasks.filter(t => 
+                        !examAnswers[t.id] && 
+                        examOpenScores[t.id] === undefined && 
+                        !examOpenAnswers[t.id]?.text?.trim() && 
+                        (!examOpenAnswers[t.id]?.canvasUrl || examOpenAnswers[t.id]!.canvasUrl!.length < 50)
+                      ).length;
+                      setUnansweredCount(unanswered);
+                      setExamConfirmModal('finish');
                     }}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-xs shadow-md hover:brightness-105 active:scale-[0.98] transition-all"
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-emerald-950 font-black text-xs shadow-md active:scale-[0.98] transition-all cursor-pointer"
                   >
                     Oddaj arkusz
                   </button>
                 </div>
               </div>
 
-              {/* Pasek numerów zadań */}
-              <div className="flex items-center gap-1.5 overflow-x-auto py-1 px-1 -mx-1">
+              {/* Pasek numerów zadań z touch-target min. 40x40px */}
+              <div className="flex items-center gap-1.5 overflow-x-auto py-1.5 px-1 -mx-1 scrollbar-none">
                 {examTasks.map((t, idx) => {
                   const isCurrent = idx === examCurrentIndex;
                   const isAnswered = examAnswers[t.id] !== undefined || examOpenScores[t.id] !== undefined;
@@ -1600,8 +1780,9 @@ export function MaturaSimulatorView({
                   return (
                     <button
                       key={t.id}
+                      type="button"
                       onClick={() => setExamCurrentIndex(idx)}
-                      className={`w-9 h-9 rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all relative ${
+                      className={`min-w-[40px] h-10 px-1 rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all relative cursor-pointer active:scale-95 ${
                         isCurrent
                           ? 'bg-[#FFB800] text-black shadow-[0_0_12px_rgba(255,184,0,0.5)] font-black scale-105'
                           : isAnswered
@@ -1618,7 +1799,7 @@ export function MaturaSimulatorView({
                 })}
               </div>
 
-              {/* Karta pytania */}
+              {/* Karta pytania - wyizolowana i memoizowana przed tickami zegara */}
               {isExamPaused ? (
                 <div className="p-12 rounded-[28px] bg-surface-card border border-surface-border text-center flex flex-col items-center justify-center my-6 shadow-xl">
                   <div className="w-16 h-16 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-4 text-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.15)]">
@@ -1626,6 +1807,7 @@ export function MaturaSimulatorView({
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">Arkusz zapauzowany</h3>
                   <button
+                    type="button"
                     onClick={() => setIsExamPaused(false)}
                     className="px-6 py-3 rounded-2xl bg-[#FFB800] text-black font-black text-sm shadow-lg hover:brightness-105 cursor-pointer active:scale-95 transition-all"
                   >
@@ -1633,120 +1815,19 @@ export function MaturaSimulatorView({
                   </button>
                 </div>
               ) : (
-                <div className="p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl space-y-6">
-                  <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-text-secondary text-xs font-bold">
-                        Zadanie {examCurrentIndex + 1}
-                      </span>
-                      <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/20 text-[#FFB800] text-xs font-bold">
-                        {examTasks[examCurrentIndex].points} {examTasks[examCurrentIndex].points === 1 ? 'punkt' : 'punkty'}
-                      </span>
-                      {examTasks[examCurrentIndex].source && (
-                        <span className="text-text-muted text-xs hidden sm:inline">
-                          • {examTasks[examCurrentIndex].source}
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-xs text-text-muted">
-                      {examTasks[examCurrentIndex].section}
-                    </span>
-                  </div>
-
-                  {renderMathContent(examTasks[examCurrentIndex].content)}
-
-                  {examTasks[examCurrentIndex].isClosed && examTasks[examCurrentIndex].options && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                      {examTasks[examCurrentIndex].options.map((opt, optIdx) => {
-                        const optLetter = String.fromCharCode(65 + optIdx);
-                        const isSelected = examAnswers[examTasks[examCurrentIndex].id] === optLetter;
-
-                        return (
-                          <button
-                            key={optIdx}
-                            onClick={() => {
-                              const currId = examTasks[examCurrentIndex].id;
-                              setExamAnswers(prev => ({ ...prev, [currId]: optLetter }));
-                            }}
-                            className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3 ${
-                              isSelected
-                                ? 'bg-[#FFB800]/15 border-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
-                                : 'bg-surface-bg border-surface-border text-text-secondary hover:border-white/20 hover:text-white'
-                            }`}
-                          >
-                            <span className={`w-7 h-7 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
-                              isSelected
-                                ? 'bg-[#FFB800] text-black'
-                                : 'bg-white/5 text-text-muted border border-white/10'
-                            }`}>
-                              {optLetter}
-                            </span>
-                            <div className="flex-1 overflow-x-auto text-sm leading-relaxed pt-0.5">
-                              <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                {opt}
-                              </Markdown>
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-
-                  {!examTasks[examCurrentIndex].isClosed && (
-                    <div className="space-y-4 pt-1">
-                      <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
-                        <div className="flex items-center gap-2">
-                          <Sparkles size={16} className="text-[#FFB800]" />
-                          <span className="text-xs font-bold text-white">
-                            Zadanie otwarte • Asynchroniczna ocena AI
-                          </span>
-                        </div>
-                        <span className="text-[11px] text-text-muted hidden sm:inline">
-                          Egzaminator AI ocenia rozwiązanie w tle
-                        </span>
-                      </div>
-
-                      <OpenTaskWorkspace
-                        task={examTasks[examCurrentIndex]}
-                        isEvaluated={false}
-                        isCorrect={null}
-                        value={examOpenAnswers[examTasks[examCurrentIndex].id]?.text || ''}
-                        onChangeValue={(val) => {
-                          const currId = examTasks[examCurrentIndex].id;
-                          handleExamOpenAnswerChange(currId, val);
-                        }}
-                        savedCanvasDataUrl={examOpenAnswers[examTasks[examCurrentIndex].id]?.canvasUrl}
-                        onSaveCanvasData={(dataUrl) => {
-                          const currId = examTasks[examCurrentIndex].id;
-                          handleExamOpenCanvasChange(currId, dataUrl);
-                        }}
-                        inputPlaceholder="Wprowadź swoje kroki obliczeniowe lub skorzystaj z brudnopisu..."
-                        hideWhiteboard={false}
-                        mode="math"
-                      />
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between pt-4 border-t border-surface-border">
-                    <button
-                      disabled={examCurrentIndex === 0}
-                      onClick={() => setExamCurrentIndex(prev => Math.max(0, prev - 1))}
-                      className="px-4 py-2.5 rounded-xl border border-surface-border text-xs font-bold text-text-muted hover:text-white disabled:opacity-40 flex items-center gap-1.5"
-                    >
-                      <ChevronLeft size={16} />
-                      <span>Poprzednie</span>
-                    </button>
-
-                    <button
-                      disabled={examCurrentIndex === examTasks.length - 1}
-                      onClick={() => setExamCurrentIndex(prev => Math.min(examTasks.length - 1, prev + 1))}
-                      className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-bold text-white disabled:opacity-40 flex items-center gap-1.5"
-                    >
-                      <span>Następne</span>
-                      <ChevronRight size={16} />
-                    </button>
-                  </div>
-                </div>
+                <ExamTaskCard
+                  task={examTasks[examCurrentIndex]}
+                  currentIndex={examCurrentIndex}
+                  selectedAnswer={examAnswers[examTasks[examCurrentIndex].id]}
+                  openAnswer={examOpenAnswers[examTasks[examCurrentIndex].id]}
+                  onSelectClosedAnswer={handleSelectClosedAnswer}
+                  onOpenAnswerChange={handleOpenAnswerChangeCb}
+                  onOpenCanvasChange={handleOpenCanvasChangeCb}
+                  onPrevTask={handlePrevTask}
+                  onNextTask={handleNextTask}
+                  isFirstTask={examCurrentIndex === 0}
+                  isLastTask={examCurrentIndex === examTasks.length - 1}
+                />
               )}
             </motion.div>
           )}
@@ -2069,6 +2150,67 @@ export function MaturaSimulatorView({
           )}
         </AnimatePresence>
       )}
+
+      {/* MODAL POTWIERDZENIA ODDANIA / PRZERWANIA ARKUSZA (clarify) */}
+      <AnimatePresence>
+        {examConfirmModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="w-full max-w-md p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-2xl space-y-4"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <AlertTriangle size={24} />
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-white">
+                  {examConfirmModal === 'finish' ? 'Oddanie arkusza maturalnego' : 'Przerwanie arkusza'}
+                </h3>
+                <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">
+                  {examConfirmModal === 'finish'
+                    ? unansweredCount > 0
+                      ? `W Twoim arkuszu pozostało jeszcze ${unansweredCount} nieodpowiedzianych pytań. Po oddaniu arkusza nie będzie możliwości powrotu do edycji odpowiedzi.`
+                      : 'Wszystkie zadania w arkuszu zostały wypełnione. Czy chcesz teraz zakończyć egzamin i poznać szczegółową ocenę CKE z analizą Tutora AI?'
+                    : 'Twój postęp w bieżącym arkuszu zostanie przerwany. Czy na pewno chcesz opuścić salę egzaminacyjną i wrócić do menu głównego?'}
+                </p>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setExamConfirmModal(null)}
+                  className="flex-1 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs transition active:scale-[0.98] cursor-pointer"
+                >
+                  {examConfirmModal === 'finish' ? 'Wróć do arkusza' : 'Kontynuuj egzamin'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const action = examConfirmModal;
+                    setExamConfirmModal(null);
+                    if (action === 'finish') {
+                      handleFinishExam();
+                    } else {
+                      if (timerRef.current) clearInterval(timerRef.current);
+                      setView('hub');
+                    }
+                  }}
+                  className={`flex-1 py-3 rounded-xl font-black text-xs transition active:scale-[0.98] cursor-pointer shadow-lg ${
+                    examConfirmModal === 'finish'
+                      ? 'bg-emerald-500 hover:bg-emerald-400 text-emerald-950 shadow-emerald-950/40'
+                      : 'bg-rose-500 hover:bg-rose-400 text-rose-950 shadow-rose-950/40'
+                  }`}
+                >
+                  {examConfirmModal === 'finish' ? 'Oddaj arkusz' : 'Przerwij i wyjdź'}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* MODAL BRUDNOPISU */}
       <ScratchpadModal
