@@ -261,14 +261,14 @@ export const PolishDailyMission: React.FC<PolishDailyMissionProps> = ({
         <button
           type="button"
           onClick={handleStartNextIncomplete}
-          className={`w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-display font-black transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 cursor-pointer shadow-md ${
+          className={`w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs sm:text-sm font-display font-black transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 cursor-pointer shadow-md ${
             isAllDone
               ? 'bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300'
-              : 'bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white shadow-rose-950/40'
+              : 'bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_20px_rgba(244,63,94,0.4)] hover:shadow-[0_0_30px_rgba(244,63,94,0.6)]'
           }`}
         >
           <span>{isAllDone ? 'Powtórz dzisiejszą misję' : 'Rozpocznij misję dnia'}</span>
-          <ArrowRight size={13} strokeWidth={2.5} />
+          <ArrowRight size={14} strokeWidth={2.5} />
         </button>
       </div>
     </div>

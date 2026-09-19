@@ -477,9 +477,9 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
               <button
                 id="claim-arena-ticket-btn"
                 onClick={handleClaimTicket}
-                className="w-full sm:w-auto shrink-0 px-5 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-black font-black text-sm tracking-wide shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto shrink-0 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-display font-black text-sm tracking-wide shadow-[0_0_30px_rgba(16,185,129,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Zap size={16} />
+                <Zap size={16} fill="currentColor" />
                 <span>Odbierz Bilet (+100 Żetonów)</span>
               </button>
             </div>
@@ -625,21 +625,21 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
         <div className="w-full max-w-3xl bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex flex-col gap-1 text-center sm:text-left">
             <span className="text-xs text-text-muted font-mono">Twój stan konta do Sezonu 1:</span>
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-1">
-              <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-xl border border-white/5">
-                <Trophy size={14} className="text-amber-400" />
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-1.5">
+              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-white/10 shadow-sm">
+                <Trophy size={15} className="text-amber-400 shrink-0" />
                 <span className="text-xs text-slate-300 font-bold">ELO:</span>
-                <span className="text-sm font-black text-amber-400 font-display">{userRating}</span>
+                <span className="text-base font-black text-amber-400 font-display tabular-nums tracking-tight">{userRating}</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-xl border border-white/5">
-                <ShieldCheck size={14} className="text-sky-400" />
+              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-white/10 shadow-sm">
+                <ShieldCheck size={15} className="text-sky-400 shrink-0" />
                 <span className="text-xs text-slate-300 font-bold">Tarcze:</span>
-                <span className="text-sm font-black text-sky-400 font-display">{userShields}x</span>
+                <span className="text-base font-black text-sky-400 font-display tabular-nums tracking-tight">{userShields}x</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-xl border border-white/5">
-                <Zap size={14} className="text-emerald-400" />
+              <div className="flex items-center gap-1.5 bg-black/50 px-3.5 py-2 rounded-xl border border-white/10 shadow-sm">
+                <Zap size={15} className="text-emerald-400 shrink-0" />
                 <span className="text-xs text-slate-300 font-bold">Żetony:</span>
-                <span className="text-sm font-black text-emerald-400 font-display">{userTokens}</span>
+                <span className="text-base font-black text-emerald-400 font-display tabular-nums tracking-tight">{userTokens}</span>
               </div>
             </div>
           </div>
@@ -665,11 +665,11 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                     triggerHaptic('light');
                     onNavigate('simulator');
                   }}
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-display font-black text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.35)] active:scale-95"
                 >
-                  <FileText size={15} className="text-emerald-400" />
+                  <FileText size={15} className="text-slate-950" />
                   <span>Arkusz Maturalny</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={14} strokeWidth={2.5} />
                 </button>
               </>
             )}

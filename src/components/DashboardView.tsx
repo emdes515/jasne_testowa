@@ -598,13 +598,19 @@ export function DashboardView({
                 initial={{ y: 15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                className="bg-surface-card border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-sm group"
+                className="bg-surface-card border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-lg group"
                 style={{
-                  borderColor: `${accentColor}35`,
-                  boxShadow: `0 0 24px -6px ${accentColor}18`
+                  borderColor: `${accentColor}40`,
+                  boxShadow: `0 0 35px -8px ${accentColor}25`
                 }}
               >
-                <div className="flex flex-col gap-3">
+                {/* Luminous ambient highlight */}
+                <div 
+                  className="absolute -top-20 -right-20 w-56 h-56 rounded-full pointer-events-none blur-3xl opacity-20 transition-opacity group-hover:opacity-30"
+                  style={{ backgroundColor: accentColor }}
+                />
+
+                <div className="flex flex-col gap-3 relative z-10">
                   {/* Tag działu i nazwa przedmiotu */}
                   <div className="flex items-center gap-2">
                     <span 
@@ -659,7 +665,7 @@ export function DashboardView({
                 </div>
 
                 {/* Stopka karty: postęp i wyrazisty CTA */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pt-4 mt-2 border-t border-surface-border">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pt-4 mt-2 border-t border-surface-border relative z-10">
                   <span className="text-xs sm:text-sm font-medium text-text-secondary">
                     {nextUp ? `${nextUp.completedCount}/${nextUp.totalCount} zadań zaliczonych w tej lekcji` : 'Wszystko zaliczone!'}
                   </span>
@@ -668,11 +674,11 @@ export function DashboardView({
                     id="dashboard-resume-learning-button"
                     type="button"
                     onClick={handleResumeClick}
-                    className="shrink-0 font-display font-black text-xs sm:text-sm py-2.5 px-6 rounded-xl transition-transform duration-100 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap self-stretch sm:self-auto active:translate-y-1"
+                    className="shrink-0 font-display font-black text-xs sm:text-sm py-3 px-6 sm:px-7 rounded-xl transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap self-stretch sm:self-auto hover:brightness-105 active:scale-[0.98]"
                     style={{
                       backgroundColor: accentColor,
                       color: accentColor === '#FFB800' ? '#070A0F' : '#FFFFFF',
-                      boxShadow: accentColor === '#FFB800' ? '0 3px 0 #B37F00' : '0 3px 0 #BE123C'
+                      boxShadow: accentColor === '#FFB800' ? '0 0 25px rgba(255,184,0,0.35)' : '0 0 25px rgba(244,63,94,0.35)'
                     }}
                   >
                     <span>{nextUp ? ((nextUp.completedCount || 0) > 0 ? 'Wznów lekcję' : 'Rozpocznij lekcję') : 'Otwórz mapę'}</span>

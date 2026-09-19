@@ -200,7 +200,7 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
 
           {/* Center Metric */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center select-none">
-            <span className="font-display text-2xl font-bold text-text-primary tracking-tight leading-none">
+            <span className="font-display text-3xl font-black text-text-primary tracking-tight tabular-nums leading-none">
               {animatedPercent}%
             </span>
             <span className="text-[9px] font-bold text-text-muted uppercase tracking-wider mt-1">
@@ -212,7 +212,7 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
         {/* Right Info: Clean Score & Sentence */}
         <div className="min-w-0 flex-1 flex flex-col justify-center">
           <div className="flex items-baseline gap-1.5">
-            <span className="font-display text-3xl font-bold text-text-primary tracking-tight leading-none">
+            <span className="font-display text-3xl sm:text-4xl font-black text-text-primary tracking-tight tabular-nums leading-none">
               {result.predictedPoints}
             </span>
             <span className="text-text-muted font-medium text-sm">

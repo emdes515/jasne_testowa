@@ -175,7 +175,7 @@ export const PolishHeroContinue: React.FC<PolishHeroContinueProps> = ({
           <button
             type="button"
             onClick={handleStart}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-display font-black text-xs sm:text-sm bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white shadow-md shadow-rose-950/40 hover:shadow-rose-900/50 flex items-center justify-center gap-2 cursor-pointer transition active:scale-95"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl font-display font-black text-xs sm:text-sm bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] flex items-center justify-center gap-2 cursor-pointer transition active:scale-95"
           >
             <span>{nextLessonInfo.isReviewMode ? 'Powtórz lekcję' : 'Kontynuuj lekcję'}</span>
             <ArrowRight size={15} strokeWidth={2.5} />

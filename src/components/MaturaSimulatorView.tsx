@@ -1179,29 +1179,29 @@ export function MaturaSimulatorView({
               </div>
 
               {/* FILAR 4: SZYBKI BANER 1 KLIKNIĘCIEM - "PO PROSTU RÓB ZADANIA" */}
-              <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-surface-card to-surface-card border border-[#FFB800]/30 shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/40 flex items-center justify-center shrink-0 text-[#FFB800]">
-                    <Shuffle size={20} />
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-surface-card to-surface-card border border-[#FFB800]/40 shadow-[0_0_30px_rgba(255,184,0,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3.5 min-w-0">
+                  <div className="w-11 h-11 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/40 flex items-center justify-center shrink-0 text-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.2)]">
+                    <Shuffle size={22} />
                   </div>
                   <div className="min-w-0">
-                    <div className="flex items-center gap-1.5 mb-0.5">
-                      <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 px-1.5 py-0.5 rounded border border-[#FFB800]/25">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/15 px-2 py-0.5 rounded border border-[#FFB800]/30">
                         Szybki start
                       </span>
                       <span className="text-[11px] text-text-muted truncate">Zero konfiguracji</span>
                     </div>
-                    <h3 className="font-bold text-white text-sm sm:text-base truncate">
+                    <h3 className="font-display font-black text-white text-base sm:text-lg truncate">
                       🎲 Losowy Trening CKE
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+                <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
                   <select
                     value={randomScope}
                     onChange={e => setRandomScope(e.target.value as any)}
-                    className="flex-1 sm:flex-none bg-surface-bg border border-surface-border text-text-secondary text-xs rounded-xl px-2.5 py-2 outline-none focus:border-[#FFB800]"
+                    className="flex-1 sm:flex-none bg-surface-bg border border-surface-border text-text-secondary text-xs rounded-xl px-3 py-2.5 outline-none focus:border-[#FFB800]"
                   >
                     <option value="unsolved">Tylko nierozwiązane</option>
                     <option value="all">Wszystkie 1006 pytań</option>
@@ -1210,9 +1210,9 @@ export function MaturaSimulatorView({
 
                   <button
                     onClick={() => startRandomTraining(randomScope)}
-                    className="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-[#FFB800] text-black font-extrabold text-xs tracking-wide shadow-md hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
+                    className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-amber-950 font-display font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)] hover:shadow-[0_0_25px_rgba(255,184,0,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
-                    <Zap size={14} fill="black" />
+                    <Zap size={15} fill="currentColor" />
                     <span>Rozpocznij</span>
                   </button>
                 </div>
@@ -1220,30 +1220,36 @@ export function MaturaSimulatorView({
 
               {/* BENTO GRID 2x2: 4 GŁÓWNE FILARY PRZYGOTOWANIA */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {/* FILAR 1: MINI MATURY CKE */}
+                {/* FILAR 1: MINI MATURY CKE (WYRÓŻNIONY FAWORYT) */}
                 <button
                   onClick={() => setView('exam_setup')}
-                  className="group text-left rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-[#FFB800]/50 p-4 sm:p-5 transition-all active:scale-[0.99] shadow-md flex flex-col justify-between cursor-pointer"
+                  className="group text-left rounded-2xl bg-gradient-to-b from-[#FFB800]/[0.07] to-surface-card hover:to-surface-card-hover border border-[#FFB800]/35 hover:border-[#FFB800]/60 p-4 sm:p-5 transition-all active:scale-[0.99] shadow-[0_0_25px_rgba(255,184,0,0.08)] flex flex-col justify-between cursor-pointer relative overflow-hidden"
                 >
-                  <div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFB800]/10 rounded-full blur-2xl pointer-events-none" />
+                  <div className="relative z-10">
                     <div className="flex items-center justify-between mb-2.5">
-                      <div className="w-9 h-9 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/25 flex items-center justify-center">
-                        <Clock className="text-[#FFB800]" size={18} />
+                      <div className="w-10 h-10 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/40 flex items-center justify-center shadow-[0_0_12px_rgba(255,184,0,0.2)]">
+                        <Clock className="text-[#FFB800]" size={19} />
                       </div>
-                      <span className="text-[10px] font-bold text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded-full border border-[#FFB800]/20 whitespace-nowrap">
-                        20–35 min
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-black uppercase tracking-wider text-amber-950 bg-amber-400 px-2 py-0.5 rounded-full whitespace-nowrap shadow-sm">
+                          Polecane
+                        </span>
+                        <span className="text-[10px] font-bold text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded-full border border-[#FFB800]/20 whitespace-nowrap">
+                          20–35 min
+                        </span>
+                      </div>
                     </div>
-                    <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-[#FFB800] transition-colors mb-1">
+                    <h3 className="font-display font-black text-sm sm:text-base text-white group-hover:text-[#FFB800] transition-colors mb-1">
                       ⚡ Mini Matury CKE
                     </h3>
                     <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
                       Ekspresowe arkusze próbne (7 lub 12 zadań) z oficjalnym zegarem. Bez stresu i utraty serc.
                     </p>
                   </div>
-                  <div className="flex items-center text-xs font-bold text-[#FFB800] gap-1 mt-3 group-hover:translate-x-0.5 transition-transform">
+                  <div className="flex items-center text-xs font-black text-[#FFB800] gap-1 mt-3 group-hover:translate-x-0.5 transition-transform relative z-10">
                     <span>Napisz arkusz</span>
-                    <ChevronRight size={13} />
+                    <ChevronRight size={13} strokeWidth={2.5} />
                   </div>
                 </button>
 
