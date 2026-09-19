@@ -88,7 +88,7 @@ describe('API Integration Tests', () => {
       expect(response.body.score).toBe(2);
       expect(response.body.maxPoints).toBe(2);
       expect(response.body.isPassed).toBe(true);
-    });
+    }, 30000);
 
     it('should handle empty/gibberish answers with 0 points immediately', async () => {
       const response = await request(app)

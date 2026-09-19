@@ -906,7 +906,7 @@ export function MaturaSimulatorView({
           </div>
         </div>
 
-        {/* Przyciski pomocnicze: Wzory & Brudnopis */}
+        {/* Przycisk pomocniczy: Karta wzorów CKE */}
         <div className="flex items-center gap-1.5 shrink-0">
           <button
             onClick={() => setIsFormulasOpen(true)}
@@ -915,15 +915,6 @@ export function MaturaSimulatorView({
           >
             <BookOpen size={14} className="text-[#FFB800]" />
             <span className="hidden sm:inline">Wzory CKE</span>
-          </button>
-
-          <button
-            onClick={() => setIsScratchpadOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-surface-card hover:bg-white/10 text-white border border-surface-border text-xs font-bold transition-all shadow-sm cursor-pointer active:scale-95"
-            title="Otwórz brudnopis"
-          >
-            <Pen size={14} className="text-blue-400" />
-            <span className="hidden sm:inline">Brudnopis</span>
           </button>
         </div>
       </div>

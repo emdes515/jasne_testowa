@@ -2,7 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Search, BookOpen, AlertTriangle, Compass, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem } from '../services/ckeCatalogRepository';
+import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem, type CkeFormulaSubItem } from '../services/ckeCatalogRepository';
+import { CKE_FORMULAS_DATA } from '../data/ckeFormulasData';
 import { MathRenderer } from './MathRenderer';
 
 interface CkeFormulasModalProps {
@@ -34,11 +35,55 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
   // Katalog wzorów CKE pochodzi z Firestore (system/ckeFormulas).
   const isCatalogLoaded = useCkeCatalogs();
 
+  // Funkcja pomocnicza do bezpiecznego rozbicia wzoru głównego i własności cząstkowych
+  const resolveFormulaContent = (item: CkeFormulaItem): { mainFormula: string; subFormulas: CkeFormulaSubItem[] } => {
+    if (item.subFormulas && item.subFormulas.length > 0) {
+      return {
+        mainFormula: item.formula,
+        subFormulas: item.subFormulas
+      };
+    }
+
+    // Fallback parser w przypadku starych stringów z nowymi liniami (\n)
+    if (item.formula.includes('\n')) {
+      const lines = item.formula.split('\n').map(l => l.trim()).filter(Boolean);
+      const main = lines[0];
+      const subs: CkeFormulaSubItem[] = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        const colonIdx = line.indexOf(':');
+        if (colonIdx > 0) {
+          subs.push({
+            label: line.slice(0, colonIdx).trim(),
+            formula: line.slice(colonIdx + 1).trim()
+          });
+        } else {
+          subs.push({
+            label: `Własność ${i}`,
+            formula: line
+          });
+        }
+      }
+
+      return {
+        mainFormula: main,
+        subFormulas: subs
+      };
+    }
+
+    return {
+      mainFormula: item.formula,
+      subFormulas: []
+    };
+  };
+
   // Filtered formulas
   const filteredFormulas = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
+    const source = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
 
-    return getCkeFormulas().filter((item: CkeFormulaItem) => {
+    return source.filter((item: CkeFormulaItem) => {
       // Topic match
       if (selectedTopic !== 'all' && item.topicId !== selectedTopic) {
         return false;
@@ -53,8 +98,9 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
       const inKeywords = item.keywords.some(k => k.toLowerCase().includes(query));
       const inGolden = item.goldenRule?.toLowerCase().includes(query) ?? false;
       const inTrap = item.ckeTrap?.toLowerCase().includes(query) ?? false;
+      const inSub = item.subFormulas?.some(s => s.label.toLowerCase().includes(query) || s.formula.toLowerCase().includes(query)) ?? false;
 
-      return inTitle || inFormula || inTopic || inKeywords || inGolden || inTrap;
+      return inTitle || inFormula || inTopic || inKeywords || inGolden || inTrap || inSub;
     });
   }, [searchQuery, selectedTopic, isCatalogLoaded]);
 
@@ -177,65 +223,90 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                 </button>
               </div>
             ) : (
-              filteredFormulas.map(item => (
-                <div
-                  key={item.id}
-                  className="bg-[#121824] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-3 shadow-sm hover:border-[#FFB800]/30 transition-all"
-                >
-                  {/* Top Bar: Title & Topic Badge */}
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-bold text-white text-sm sm:text-base leading-snug">
-                      {item.title}
-                    </h3>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-2 py-0.5 rounded-full shrink-0">
-                      {item.topicName}
-                    </span>
-                  </div>
+              filteredFormulas.map(item => {
+                const { mainFormula, subFormulas } = resolveFormulaContent(item);
 
-                  {/* Formula High-Contrast Display */}
-                  <div className="bg-[#090D14] border border-[#FFB800]/20 rounded-xl p-3.5 sm:p-4 text-center font-mono text-amber-200 font-bold text-sm sm:text-base leading-relaxed tracking-wide shadow-inner overflow-x-auto">
-                    <MathRenderer content={item.formula} displayMode />
-                  </div>
-
-                  {/* Explanation */}
-                  {item.explanation && (
-                    <div className="text-xs text-slate-300 leading-relaxed">
-                      <MathRenderer content={item.explanation} />
+                return (
+                  <div
+                    key={item.id}
+                    className="bg-[#121824] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 shadow-sm hover:border-[#FFB800]/30 transition-all"
+                  >
+                    {/* Top Bar: Title & Topic Badge */}
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-bold text-white text-sm sm:text-base leading-snug">
+                        {item.title}
+                      </h3>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-2 py-0.5 rounded-full shrink-0">
+                        {item.topicName}
+                      </span>
                     </div>
-                  )}
 
-                  {/* Golden Rule & Exam Trap */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                    {item.goldenRule && (
-                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 flex items-start gap-2 text-xs text-amber-200">
-                        <Compass size={15} className="text-amber-400 shrink-0 mt-0.5" />
-                        <div className="flex-1">
-                          <strong className="block text-amber-300 font-bold text-[11px] uppercase tracking-wider mb-0.5">
-                            Złota Zasada Maturalna
-                          </strong>
-                          <div className="leading-relaxed">
-                            <MathRenderer content={item.goldenRule} />
+                    {/* Główny Wzór KaTeX o wysokim kontraście */}
+                    <div className="bg-[#070A11] border border-[#FFB800]/25 rounded-xl p-3 sm:p-4 text-center shadow-[inset_0_2px_12px_rgba(0,0,0,0.6)] overflow-x-auto">
+                      <div className="font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
+                        <MathRenderer content={mainFormula} displayMode />
+                      </div>
+                    </div>
+
+                    {/* Własności i wzory cząstkowe (subFormulas) */}
+                    {subFormulas.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-0.5">
+                        {subFormulas.map((sub, idx) => (
+                          <div
+                            key={idx}
+                            className="bg-[#0B101A] border border-white/5 hover:border-white/15 rounded-xl p-2.5 sm:p-3 flex flex-col justify-between gap-1 transition-all"
+                          >
+                            <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-slate-400">
+                              {sub.label}
+                            </span>
+                            <div className="text-white font-semibold text-xs sm:text-sm overflow-x-auto py-0.5">
+                              <MathRenderer content={sub.formula} />
+                            </div>
                           </div>
-                        </div>
+                        ))}
                       </div>
                     )}
 
-                    {item.ckeTrap && (
-                      <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl p-3 flex items-start gap-2 text-xs text-rose-200">
-                        <AlertTriangle size={15} className="text-rose-400 shrink-0 mt-0.5" />
-                        <div className="flex-1">
-                          <strong className="block text-rose-300 font-bold text-[11px] uppercase tracking-wider mb-0.5">
-                            Typowa Pułapka Egzaminacyjna
-                          </strong>
-                          <div className="leading-relaxed">
-                            <MathRenderer content={item.ckeTrap} />
-                          </div>
-                        </div>
+                    {/* Wyjaśnienie */}
+                    {item.explanation && (
+                      <div className="text-xs text-slate-300 leading-relaxed pt-0.5">
+                        <MathRenderer content={item.explanation} />
                       </div>
                     )}
+
+                    {/* Złota zasada & Pułapka CKE */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                      {item.goldenRule && (
+                        <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 flex items-start gap-2 text-xs text-amber-200">
+                          <Compass size={15} className="text-amber-400 shrink-0 mt-0.5" />
+                          <div className="flex-1 min-w-0">
+                            <strong className="block text-amber-300 font-bold text-[11px] uppercase tracking-wider mb-0.5">
+                              Złota Zasada Maturalna
+                            </strong>
+                            <div className="leading-relaxed">
+                              <MathRenderer content={item.goldenRule} />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {item.ckeTrap && (
+                        <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl p-3 flex items-start gap-2 text-xs text-rose-200">
+                          <AlertTriangle size={15} className="text-rose-400 shrink-0 mt-0.5" />
+                          <div className="flex-1 min-w-0">
+                            <strong className="block text-rose-300 font-bold text-[11px] uppercase tracking-wider mb-0.5">
+                              Typowa Pułapka Egzaminacyjna
+                            </strong>
+                            <div className="leading-relaxed">
+                              <MathRenderer content={item.ckeTrap} />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
 

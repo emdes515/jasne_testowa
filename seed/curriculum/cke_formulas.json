@@ -39,7 +39,17 @@
       "topicId": "potegi-pierwiastki",
       "topicName": "Potęgi i Pierwiastki",
       "title": "Mnożenie i dzielenie potęg o tej samej podstawie",
-      "formula": "a^r · a^s = a^{r+s},       a^r / a^s = a^{r-s}",
+      "formula": "a^r \\cdot a^s = a^{r+s}, \\qquad \\frac{a^r}{a^s} = a^{r-s}",
+      "subFormulas": [
+        {
+          "label": "Iloczyn potęg",
+          "formula": "a^r \\cdot a^s = a^{r+s}"
+        },
+        {
+          "label": "Iloraz potęg",
+          "formula": "\\frac{a^r}{a^s} = a^{r-s}"
+        }
+      ],
       "explanation": "Dla a > 0 oraz dowolnych wykładników r, s.",
       "goldenRule": "Zawsze sprowadzaj liczby do wspólnej podstawy (np. 4 i 8 sprowadzaj do 2: 4=2², 8=2³).",
       "ckeTrap": "2³ · 2⁴ to 2⁷, a NIE 4⁷! Podstawa potęgi się NIE mnoży.",
@@ -49,14 +59,26 @@
         "dzielenie",
         "wykładnik",
         "podstawa"
-      ]
+      ],
+      "cke_page": "str. 2",
+      "pageNumber": 2
     },
     {
       "id": "f-potegi-2",
       "topicId": "potegi-pierwiastki",
       "topicName": "Potęgi i Pierwiastki",
       "title": "Potęgowanie potęgi oraz potęga iloczynu",
-      "formula": "(a^r)^s = a^{r·s},       (a · b)^r = a^r · b^r",
+      "formula": "(a^r)^s = a^{r \\cdot s}, \\qquad (a \\cdot b)^r = a^r \\cdot b^r",
+      "subFormulas": [
+        {
+          "label": "Potęgowanie potęgi",
+          "formula": "(a^r)^s = a^{r \\cdot s}"
+        },
+        {
+          "label": "Potęga iloczynu",
+          "formula": "(a \\cdot b)^r = a^r \\cdot b^r"
+        }
+      ],
       "explanation": "Wykładniki potęg mnożymy przez siebie przy potęgowaniu nawiasu.",
       "goldenRule": "Uważaj na kolejność: (2³)² = 2⁶ = 64.",
       "ckeTrap": "(a + b)² to a² + 2ab + b², a NIE a² + b²!",
@@ -64,14 +86,26 @@
         "potęgowanie",
         "iloczyn",
         "nawias"
-      ]
+      ],
+      "cke_page": "str. 2",
+      "pageNumber": 2
     },
     {
       "id": "f-potegi-3",
       "topicId": "potegi-pierwiastki",
       "topicName": "Potęgi i Pierwiastki",
       "title": "Ujemny i ułamkowy wykładnik potęgi",
-      "formula": "a^{-r} = 1 / a^r,       a^{m/n} = ⁿ√(a^m)",
+      "formula": "a^{-r} = \\frac{1}{a^r}, \\qquad a^{\\frac{m}{n}} = \\sqrt[n]{a^m}",
+      "subFormulas": [
+        {
+          "label": "Ujemny wykładnik (odwrotność)",
+          "formula": "a^{-r} = \\frac{1}{a^r}"
+        },
+        {
+          "label": "Wykładnik ułamkowy (pierwiastek)",
+          "formula": "a^{\\frac{m}{n}} = \\sqrt[n]{a^m}"
+        }
+      ],
       "explanation": "Minus w wykładniku odwraca ułamek do góry dnem. Ułamek w wykładniku zamienia się w pierwiastek stopnia n.",
       "goldenRule": "(a/b)^{-n} = (b/a)^n. Zawsze najpierw pozbądź się minusa, odwracając ułamek.",
       "ckeTrap": "Liczba 4^{-1/2} to 1 / √4 = 1/2, a NIE liczba ujemna -2!",
@@ -80,14 +114,26 @@
         "odwrotność",
         "ułamek",
         "pierwiastek"
-      ]
+      ],
+      "cke_page": "str. 2",
+      "pageNumber": 2
     },
     {
       "id": "f-pierwiastki-1",
       "topicId": "potegi-pierwiastki",
       "topicName": "Potęgi i Pierwiastki",
       "title": "Iloczyn i iloraz pod pierwiastkiem",
-      "formula": "ⁿ√(a · b) = ⁿ√a · ⁿ√b,       ⁿ√(a / b) = ⁿ√a / ⁿ√b",
+      "formula": "\\sqrt[n]{a \\cdot b} = \\sqrt[n]{a} \\cdot \\sqrt[n]{b}, \\qquad \\sqrt[n]{\\frac{a}{b}} = \\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}}",
+      "subFormulas": [
+        {
+          "label": "Iloczyn pod pierwiastkiem",
+          "formula": "\\sqrt[n]{a \\cdot b} = \\sqrt[n]{a} \\cdot \\sqrt[n]{b}"
+        },
+        {
+          "label": "Iloraz pod pierwiastkiem",
+          "formula": "\\sqrt[n]{\\frac{a}{b}} = \\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}}"
+        }
+      ],
       "explanation": "Dla a, b ≥ 0 (gdy n parzyste) lub dowolnych (gdy n nieparzyste).",
       "goldenRule": "Wyłączaj czynniki przed znak pierwiastka (np. √72 = √(36·2) = 6√2).",
       "ckeTrap": "√(9 + 16) to √25 = 5, a NIE √9 + √16 = 3 + 4 = 7!",
@@ -96,14 +142,30 @@
         "iloczyn",
         "iloraz",
         "wyłączanie czynnika"
-      ]
+      ],
+      "cke_page": "str. 2",
+      "pageNumber": 2
     },
     {
       "id": "f-skrocone-1",
       "topicId": "potegi-pierwiastki",
       "topicName": "Potęgi i Pierwiastki",
       "title": "Wzory skróconego mnożenia (stopień 2)",
-      "formula": "(a + b)² = a² + 2ab + b²\n(a - b)² = a² - 2ab + b²\na² - b² = (a - b)(a + b)",
+      "formula": "(a \\pm b)^2 = a^2 \\pm 2ab + b^2, \\qquad a^2 - b^2 = (a - b)(a + b)",
+      "subFormulas": [
+        {
+          "label": "Kwadrat sumy",
+          "formula": "(a + b)^2 = a^2 + 2ab + b^2"
+        },
+        {
+          "label": "Kwadrat różnicy",
+          "formula": "(a - b)^2 = a^2 - 2ab + b^2"
+        },
+        {
+          "label": "Różnica kwadratów",
+          "formula": "a^2 - b^2 = (a - b)(a + b)"
+        }
+      ],
       "explanation": "Kwadrat sumy, kwadrat różnicy oraz różnica kwadratów.",
       "goldenRule": "Różnica kwadratów a² - b² jest kluczem do usuwania niewymierności z mianownika przez mnożenie przez sprzężenie.",
       "ckeTrap": "Częste gubienie podwojonego iloczynu: (x - 3)² = x² - 6x + 9, a NIE x² - 9!",
@@ -111,14 +173,26 @@
         "wzory skróconego mnożenia",
         "kwadrat sumy",
         "różnica kwadratów"
-      ]
+      ],
+      "cke_page": "str. 4",
+      "pageNumber": 4
     },
     {
       "id": "f-log-1",
       "topicId": "logarytmy-procenty",
       "topicName": "Logarytmy i Procenty",
       "title": "Definicja logarytmu",
-      "formula": "log_a(b) = c   <=>   a^c = b   (gdzie a > 0, a ≠ 1, b > 0)",
+      "formula": "\\log_a(b) = c \\iff a^c = b",
+      "subFormulas": [
+        {
+          "label": "Równoważność wykładnicza",
+          "formula": "a^c = b"
+        },
+        {
+          "label": "Założenia dziedziny",
+          "formula": "a > 0, \\; a \\neq 1, \\; b > 0"
+        }
+      ],
       "explanation": "Logarytm to pytanie o wykładnik: „Do jakiej potęgi podnieść podstawę a, aby otrzymać b?”.",
       "goldenRule": "Jeśli log_2(x) = 5, to natychmiast zapisz: x = 2⁵ = 32.",
       "ckeTrap": "Podstawa a musi być dodatnia i różna od 1, a liczba logarytmowana b ściśle dodatnia b > 0 (dziedzina!).",
@@ -127,14 +201,30 @@
         "definicja",
         "podstawa",
         "dziedzina"
-      ]
+      ],
+      "cke_page": "str. 3",
+      "pageNumber": 3
     },
     {
       "id": "f-log-2",
       "topicId": "logarytmy-procenty",
       "topicName": "Logarytmy i Procenty",
       "title": "Działania na logarytmach (suma, różnica, potęga)",
-      "formula": "log_a(x) + log_a(y) = log_a(x · y)\nlog_a(x) - log_a(y) = log_a(x / y)\nk · log_a(x) = log_a(x^k)",
+      "formula": "\\log_a(x \\cdot y) = \\log_a x + \\log_a y",
+      "subFormulas": [
+        {
+          "label": "Suma logarytmów",
+          "formula": "\\log_a x + \\log_a y = \\log_a(x \\cdot y)"
+        },
+        {
+          "label": "Różnica logarytmów",
+          "formula": "\\log_a x - \\log_a y = \\log_a\\left(\\frac{x}{y}\\right)"
+        },
+        {
+          "label": "Logarytm potęgi",
+          "formula": "k \\cdot \\log_a x = \\log_a(x^k)"
+        }
+      ],
       "explanation": "Suma logarytmów o tej samej podstawie to logarytm iloczynu.",
       "goldenRule": "Przed dodaniem logarytmów najpierw wciągnij współczynnik przed logarytmem jako wykładnik potęgi argumentu.",
       "ckeTrap": "log(x + y) to NIE log(x) + log(y)! Suma w argumencie jest nierozbijalna.",
@@ -142,14 +232,26 @@
         "suma logarytmów",
         "różnica logarytmów",
         "wciąganie współczynnika"
-      ]
+      ],
+      "cke_page": "str. 3",
+      "pageNumber": 3
     },
     {
       "id": "f-proc-1",
       "topicId": "logarytmy-procenty",
       "topicName": "Logarytmy i Procenty",
       "title": "Zmiana procentowa i procent składany",
-      "formula": "Zmiana: (A - B) / B · 100%\nKapitał końcowy: K_n = K_0 · (1 + p / (100 · m))^(n · m)",
+      "formula": "K_n = K_0 \\cdot \\left(1 + \\frac{p}{100 \\cdot m}\\right)^{n \\cdot m}",
+      "subFormulas": [
+        {
+          "label": "Kapitał końcowy (procent składany)",
+          "formula": "K_n = K_0 \\cdot \\left(1 + \\frac{p}{100 \\cdot m}\\right)^{n \\cdot m}"
+        },
+        {
+          "label": "Względna zmiana procentowa",
+          "formula": "\\frac{A - B}{B} \\cdot 100\\%"
+        }
+      ],
       "explanation": "m – liczba kapitalizacji w roku, n – liczba lat, p – oprocentowanie roczne w %.",
       "goldenRule": "Baza wyjściowa („od czego liczysz”) ZAWSZE trafia do mianownika ułamka.",
       "ckeTrap": "Obniżka o 20% i podwyżka o 20% NIE przywraca ceny początkowej! Cena końcowa to 100 · 0.8 · 1.2 = 96 (spadek o 4%).",
@@ -158,14 +260,34 @@
         "lokaty",
         "kapitalizacja",
         "procent składany"
-      ]
+      ],
+      "cke_page": "str. 3",
+      "pageNumber": 3
     },
     {
       "id": "f-funkcja-liniowa",
       "topicId": "funkcje-rownania",
       "topicName": "Funkcje i Równania",
       "title": "Funkcja liniowa f(x) = ax + b",
-      "formula": "f(x) = ax + b\nMiejsce zerowe: x_0 = -b / a\nPunkt przecięcia z osią OY: (0, b)\nWarunek równoległości: a_1 = a_2\nWarunek prostopadłości: a_1 · a_2 = -1",
+      "formula": "f(x) = ax + b",
+      "subFormulas": [
+        {
+          "label": "Miejsce zerowe",
+          "formula": "x_0 = -\\frac{b}{a}"
+        },
+        {
+          "label": "Punkt przecięcia z osią OY",
+          "formula": "(0, b)"
+        },
+        {
+          "label": "Warunek równoległości prostych",
+          "formula": "a_1 = a_2"
+        },
+        {
+          "label": "Warunek prostopadłości prostych",
+          "formula": "a_1 \\cdot a_2 = -1"
+        }
+      ],
       "explanation": "a to współczynnik kierunkowy (a = tg α), b to wyraz wolny.",
       "goldenRule": "Dwie proste są prostopadłe, gdy ich współczynniki są przeciwne i odwrotne (np. 2/3 oraz -3/2).",
       "ckeTrap": "Punkt przecięcia z osią OY to (0, b), a z osią OX to (-b/a, 0). Nie myl kolejności współrzędnych!",
@@ -174,14 +296,34 @@
         "współczynnik kierunkowy",
         "prostopadłość",
         "równoległość"
-      ]
+      ],
+      "cke_page": "str. 7",
+      "pageNumber": 7
     },
     {
       "id": "f-funkcja-kwadratowa",
       "topicId": "funkcje-rownania",
       "topicName": "Funkcje i Równania",
       "title": "Funkcja kwadratowa f(x) = ax² + bx + c",
-      "formula": "Δ = b² - 4ac\nWierzchołek W = (p, q), gdzie p = -b / (2a), q = -Δ / (4a)\nPostać kanoniczna: f(x) = a(x - p)² + q\nPostać iloczynowa (dla Δ ≥ 0): f(x) = a(x - x_1)(x - x_2)",
+      "formula": "f(x) = ax^2 + bx + c",
+      "subFormulas": [
+        {
+          "label": "Wyróżnik trójmianu (delta)",
+          "formula": "\\Delta = b^2 - 4ac"
+        },
+        {
+          "label": "Wierzchołek paraboli W = (p, q)",
+          "formula": "p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a}"
+        },
+        {
+          "label": "Postać kanoniczna",
+          "formula": "f(x) = a(x - p)^2 + q"
+        },
+        {
+          "label": "Postać iloczynowa (dla Δ ≥ 0)",
+          "formula": "f(x) = a(x - x_1)(x - x_2)"
+        }
+      ],
       "explanation": "Jeśli a > 0, ramiona paraboli idą w górę (minimum w wierzchołku). Jeśli a < 0, ramiona idą w dół (maksimum).",
       "goldenRule": "Współrzędna p wierzchołka leży dokładnie w połowie między miejscami zerowymi: p = (x_1 + x_2) / 2.",
       "ckeTrap": "Uważaj na znaki w postaci kanonicznej: f(x) = 2(x - 3)² + 5 ma wierzchołek w p = +3, a NIE -3!",
@@ -191,14 +333,30 @@
         "wierzchołek",
         "postać kanoniczna",
         "postać iloczynowa"
-      ]
+      ],
+      "cke_page": "str. 7",
+      "pageNumber": 7
     },
     {
       "id": "f-wzory-vietea",
       "topicId": "funkcje-rownania",
       "topicName": "Funkcje i Równania",
       "title": "Wzory Viète’a dla trójmianu kwadratowego",
-      "formula": "x_1 + x_2 = -b / a\nx_1 · x_2 = c / a",
+      "formula": "x_1 + x_2 = -\\frac{b}{a}, \\qquad x_1 \\cdot x_2 = \\frac{c}{a}",
+      "subFormulas": [
+        {
+          "label": "Suma pierwiastków",
+          "formula": "x_1 + x_2 = -\\frac{b}{a}"
+        },
+        {
+          "label": "Iloczyn pierwiastków",
+          "formula": "x_1 \\cdot x_2 = \\frac{c}{a}"
+        },
+        {
+          "label": "Suma kwadratów pierwiastków",
+          "formula": "x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2"
+        }
+      ],
       "explanation": "Pozwalają badać znaki pierwiastków lub sumy i iloczyny bez bezpośredniego wyliczania x_1 i x_2.",
       "goldenRule": "Przydatna tożsamość: x_1² + x_2² = (x_1 + x_2)² - 2x_1 x_2.",
       "ckeTrap": "Pamiętaj o minusie przy sumie pierwiastków: -b / a!",
@@ -207,14 +365,30 @@
         "wzory vietea",
         "suma pierwiastków",
         "iloczyn pierwiastków"
-      ]
+      ],
+      "cke_page": "str. 7",
+      "pageNumber": 7
     },
     {
       "id": "f-ciag-arytmetyczny",
       "topicId": "ciagi",
       "topicName": "Ciągi Liczbowe",
       "title": "Ciąg arytmetyczny (stała różnica r)",
-      "formula": "Wzór ogólny: a_n = a_1 + (n - 1) · r\nZwiązek sąsiadów: a_n = (a_{n-1} + a_{n+1}) / 2\nSuma n wyrazów: S_n = ((a_1 + a_n) / 2) · n",
+      "formula": "a_n = a_1 + (n - 1)r",
+      "subFormulas": [
+        {
+          "label": "Wzór ogólny n-tego wyrazu",
+          "formula": "a_n = a_1 + (n - 1)r"
+        },
+        {
+          "label": "Związek sąsiednich wyrazów",
+          "formula": "a_n = \\frac{a_{n-1} + a_{n+1}}{2}"
+        },
+        {
+          "label": "Suma n początkowych wyrazów",
+          "formula": "S_n = \\frac{a_1 + a_n}{2} \\cdot n"
+        }
+      ],
       "explanation": "Każdy kolejny wyraz powstaje przez dodanie stałej liczby r: a_{n+1} = a_n + r.",
       "goldenRule": "Trzy liczby (x, y, z) tworzą ciąg arytmetyczny <=> 2y = x + z.",
       "ckeTrap": "We wzorze na a_n mnożymy r przez (n - 1), a NIE przez n!",
@@ -222,14 +396,30 @@
         "ciąg arytmetyczny",
         "różnica ciągu",
         "suma ciągu"
-      ]
+      ],
+      "cke_page": "str. 5",
+      "pageNumber": 5
     },
     {
       "id": "f-ciag-geometryczny",
       "topicId": "ciagi",
       "topicName": "Ciągi Liczbowe",
       "title": "Ciąg geometryczny (stały iloraz q)",
-      "formula": "Wzór ogólny: a_n = a_1 · q^{n-1}\nZwiązek sąsiadów: a_n² = a_{n-1} · a_{n+1}\nSuma n wyrazów (q ≠ 1): S_n = a_1 · (1 - q^n) / (1 - q)",
+      "formula": "a_n = a_1 \\cdot q^{n-1}",
+      "subFormulas": [
+        {
+          "label": "Wzór ogólny n-tego wyrazu",
+          "formula": "a_n = a_1 \\cdot q^{n-1}"
+        },
+        {
+          "label": "Związek sąsiednich wyrazów",
+          "formula": "a_n^2 = a_{n-1} \\cdot a_{n+1}"
+        },
+        {
+          "label": "Suma n początkowych wyrazów (q ≠ 1)",
+          "formula": "S_n = a_1 \\cdot \\frac{1 - q^n}{1 - q}"
+        }
+      ],
       "explanation": "Każdy kolejny wyraz powstaje przez pomnożenie poprzedniego przez stały iloraz q.",
       "goldenRule": "Trzy liczby dodatnie (x, y, z) tworzą ciąg geometryczny <=> y² = x · z.",
       "ckeTrap": "Wykładnik ilorazu to (n - 1): a_4 = a_1 · q³, a NIE a_1 · q⁴!",
@@ -237,14 +427,34 @@
         "ciąg geometryczny",
         "iloraz ciągu",
         "suma geometryczna"
-      ]
+      ],
+      "cke_page": "str. 5",
+      "pageNumber": 5
     },
     {
       "id": "f-trygo-definicje",
       "topicId": "trygonometria",
       "topicName": "Trygonometria",
       "title": "Definicje w trójkącie prostokątnym",
-      "formula": "sin α = a / c (przyprostokątna naprzeciw / przeciwprostokątna)\ncos α = b / c (przyprostokątna przyległa / przeciwprostokątna)\ntg α = a / b = sin α / cos α",
+      "formula": "\\sin \\alpha = \\frac{a}{c}, \\qquad \\cos \\alpha = \\frac{b}{c}, \\qquad \\operatorname{tg} \\alpha = \\frac{a}{b}",
+      "subFormulas": [
+        {
+          "label": "Sinus kąta ostrego",
+          "formula": "\\sin \\alpha = \\frac{a}{c}"
+        },
+        {
+          "label": "Cosinus kąta ostrego",
+          "formula": "\\cos \\alpha = \\frac{b}{c}"
+        },
+        {
+          "label": "Tangens kąta ostrego",
+          "formula": "\\operatorname{tg} \\alpha = \\frac{a}{b} = \\frac{\\sin \\alpha}{\\cos \\alpha}"
+        },
+        {
+          "label": "Jedynka trygonometryczna",
+          "formula": "\\sin^2 \\alpha + \\cos^2 \\alpha = 1"
+        }
+      ],
       "explanation": "Dla kąta ostrego α w trójkącie prostokątnym o przyprostokątnych a, b i przeciwprostokątnej c.",
       "goldenRule": "Jedynka trygonometryczna: sin² α + cos² α = 1.",
       "ckeTrap": "Zawsze sprawdzaj, który kąt jest naprzeciwko danej przyprostokątnej!",
@@ -253,14 +463,30 @@
         "cosinus",
         "tangens",
         "trójkąt prostokątny"
-      ]
+      ],
+      "cke_page": "str. 9",
+      "pageNumber": 9
     },
     {
       "id": "f-trygo-tabelka",
       "topicId": "trygonometria",
       "topicName": "Trygonometria",
       "title": "Tabela wartości kątów 30°, 45°, 60°",
-      "formula": "sin 30° = 1/2,   sin 45° = √2/2,   sin 60° = √3/2\ncos 30° = √3/2,   cos 45° = √2/2,   cos 60° = 1/2\ntg 30° = √3/3,   tg 45° = 1,   tg 60° = √3",
+      "formula": "\\sin 30^\\circ = \\frac{1}{2}, \\quad \\sin 45^\\circ = \\frac{\\sqrt{2}}{2}, \\quad \\sin 60^\\circ = \\frac{\\sqrt{3}}{2}",
+      "subFormulas": [
+        {
+          "label": "Wartości dla kąta 30°",
+          "formula": "\\sin 30^\\circ = \\frac{1}{2}, \\; \\cos 30^\\circ = \\frac{\\sqrt{3}}{2}, \\; \\operatorname{tg} 30^\\circ = \\frac{\\sqrt{3}}{3}"
+        },
+        {
+          "label": "Wartości dla kąta 45°",
+          "formula": "\\sin 45^\\circ = \\frac{\\sqrt{2}}{2}, \\; \\cos 45^\\circ = \\frac{\\sqrt{2}}{2}, \\; \\operatorname{tg} 45^\\circ = 1"
+        },
+        {
+          "label": "Wartości dla kąta 60°",
+          "formula": "\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}, \\; \\cos 60^\\circ = \\frac{1}{2}, \\; \\operatorname{tg} 60^\\circ = \\sqrt{3}"
+        }
+      ],
       "explanation": "Wartości kluczowych kątów ostrych często spotykanych w zadaniach maturalnych.",
       "goldenRule": "Zauważ symetrię: sin 30° = cos 60° = 1/2, oraz sin 60° = cos 30° = √3/2.",
       "ckeTrap": "tg 45° to 1, a NIE √2/2!",
@@ -269,14 +495,16 @@
         "30 stopni",
         "45 stopni",
         "60 stopni"
-      ]
+      ],
+      "cke_page": "str. 9–10",
+      "pageNumber": 10
     },
     {
       "id": "f-trygo-pola",
       "topicId": "trygonometria",
       "topicName": "Trygonometria",
       "title": "Pole trójkąta z sinusem kąta",
-      "formula": "P = 1/2 · a · b · sin γ",
+      "formula": "P = \\frac{1}{2} \\cdot a \\cdot b \\cdot \\sin \\gamma",
       "explanation": "Pole trójkąta równe jest połowie iloczynu długości dwóch boków i sinusa kąta zawartego między nimi.",
       "goldenRule": "Niezastąpione zadanie maturalne: jeśli masz dwa boki i kąt między nimi, nie szukaj wysokości, użyj tego wzoru!",
       "ckeTrap": "Kąt MUSI być zawarty MIĘDZY bokami a i b.",
@@ -284,14 +512,26 @@
         "pole trójkąta",
         "pole z sinusem",
         "sinus kąta"
-      ]
+      ],
+      "cke_page": "str. 10",
+      "pageNumber": 10
     },
     {
       "id": "f-geo-odleglosc",
       "topicId": "geometria",
       "topicName": "Planimetria i Analityczna",
       "title": "Odległość punktów i środek odcinka w układzie współrzędnych",
-      "formula": "Długość |AB| = √[(x_B - x_A)² + (y_B - y_A)²]\nŚrodek S = ((x_A + x_B) / 2,  (y_A + y_B) / 2)",
+      "formula": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}",
+      "subFormulas": [
+        {
+          "label": "Długość odcinka |AB|",
+          "formula": "|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}"
+        },
+        {
+          "label": "Współrzędne środka S = (x_S, y_S)",
+          "formula": "x_S = \\frac{x_A + x_B}{2}, \\quad y_S = \\frac{y_A + y_B}{2}"
+        }
+      ],
       "explanation": "Dla punktów A = (x_A, y_A) oraz B = (x_B, y_B).",
       "goldenRule": "Środek odcinka to średnia arytmetyczna współrzędnych końców.",
       "ckeTrap": "Przy odejmowaniu ujemnych współrzędnych: (x_B - (-3)) zamienia się na (x_B + 3)!",
@@ -299,14 +539,34 @@
         "odległość punktów",
         "środek odcinka",
         "geometria analityczna"
-      ]
+      ],
+      "cke_page": "str. 17",
+      "pageNumber": 17
     },
     {
       "id": "f-geo-trojkat-rownoboczny",
       "topicId": "geometria",
       "topicName": "Planimetria i Analityczna",
       "title": "Trójkąt równoboczny",
-      "formula": "Wysokość: h = (a√3) / 2\nPole: P = (a²√3) / 4\nPromień koła opisanego: R = 2/3 h = (a√3) / 3\nPromień koła wpisanego: r = 1/3 h = (a√3) / 6",
+      "formula": "h = \\frac{a\\sqrt{3}}{2}, \\qquad P = \\frac{a^2\\sqrt{3}}{4}",
+      "subFormulas": [
+        {
+          "label": "Wysokość trójkąta",
+          "formula": "h = \\frac{a\\sqrt{3}}{2}"
+        },
+        {
+          "label": "Pole powierzchni",
+          "formula": "P = \\frac{a^2\\sqrt{3}}{4}"
+        },
+        {
+          "label": "Promień koła opisanego R",
+          "formula": "R = \\frac{2}{3}h = \\frac{a\\sqrt{3}}{3}"
+        },
+        {
+          "label": "Promień koła wpisanego r",
+          "formula": "r = \\frac{1}{3}h = \\frac{a\\sqrt{3}}{6}"
+        }
+      ],
       "explanation": "Dla trójkąta równobocznego o boku długości a.",
       "goldenRule": "Pamiętaj: R = 2r (promień opisanego jest dwukrotnie większy od promienia wpisanego).",
       "ckeTrap": "Nie myl wzoru na wysokość (dzielenie przez 2) ze wzorem na pole (dzielenie przez 4 i a²)!",
@@ -316,14 +576,26 @@
         "pole",
         "koło opisane",
         "koło wpisane"
-      ]
+      ],
+      "cke_page": "str. 11",
+      "pageNumber": 11
     },
     {
       "id": "f-geo-okrag",
       "topicId": "geometria",
       "topicName": "Planimetria i Analityczna",
       "title": "Równanie okręgu o środku S = (a, b) i promieniu r",
-      "formula": "(x - a)² + (y - b)² = r²",
+      "formula": "(x - a)^2 + (y - b)^2 = r^2",
+      "subFormulas": [
+        {
+          "label": "Środek okręgu",
+          "formula": "S = (a, b)"
+        },
+        {
+          "label": "Promień okręgu",
+          "formula": "r > 0"
+        }
+      ],
       "explanation": "Równanie kanoniczne okręgu w układzie współrzędnych.",
       "goldenRule": "Prawa strona to r². Jeśli po prawej stronie masz 25, to promień r = 5, a NIE 25!",
       "ckeTrap": "Uważaj na znaki środka: (x - 2)² + (y + 3)² = 16 ma środek w S = (2, -3)!",
@@ -331,14 +603,30 @@
         "równanie okręgu",
         "środek okręgu",
         "promień okręgu"
-      ]
+      ],
+      "cke_page": "str. 17",
+      "pageNumber": 17
     },
     {
       "id": "f-komb-prawd",
       "topicId": "prawdopodobienstwo",
       "topicName": "Kombinatoryka i Statystyka",
       "title": "Prawdopodobieństwo klasyczne i reguła mnożenia",
-      "formula": "P(A) = |A| / |Ω|\n0 ≤ P(A) ≤ 1\nP(A') = 1 - P(A) (zdarzenie przeciwne)",
+      "formula": "P(A) = \\frac{|A|}{|\\Omega|}",
+      "subFormulas": [
+        {
+          "label": "Klasyczna definicja prawdopodobieństwa",
+          "formula": "P(A) = \\frac{|A|}{|\\Omega|}"
+        },
+        {
+          "label": "Własność prawdopodobieństwa",
+          "formula": "0 \\le P(A) \\le 1"
+        },
+        {
+          "label": "Prawdopodobieństwo zdarzenia przeciwnego",
+          "formula": "P(A') = 1 - P(A)"
+        }
+      ],
       "explanation": "|A| to liczba zdarzeń sprzyjających, |Ω| to liczba wszystkich możliwych jednakowo prawdopodobnych zdarzeń elementarnych.",
       "goldenRule": "Gdy treść mówi „co najmniej jeden raz”, ZAWSZE opłaca się policzyć zdarzenie przeciwne: P(A) = 1 - P(A').",
       "ckeTrap": "Prawdopodobieństwo NIGDY nie może przekroczyć 1 ani być mniejsze od 0!",
@@ -347,14 +635,30 @@
         "omega",
         "zdarzenie przeciwne",
         "drzewo"
-      ]
+      ],
+      "cke_page": "str. 23",
+      "pageNumber": 23
     },
     {
       "id": "f-stat-srednia",
       "topicId": "prawdopodobienstwo",
       "topicName": "Kombinatoryka i Statystyka",
       "title": "Średnia arytmetyczna i mediana",
-      "formula": "Średnia: x̄ = (x_1 + x_2 + ... + x_n) / n\nMediana: wartość środkowa po POSORTOWANIU danych",
+      "formula": "\\bar{x} = \\frac{x_1 + x_2 + \\dots + x_n}{n}",
+      "subFormulas": [
+        {
+          "label": "Średnia arytmetyczna",
+          "formula": "\\bar{x} = \\frac{x_1 + x_2 + \\dots + x_n}{n}"
+        },
+        {
+          "label": "Mediana dla n nieparzystego",
+          "formula": "M = x_{\\frac{n+1}{2}}"
+        },
+        {
+          "label": "Mediana dla n parzystego",
+          "formula": "M = \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2}"
+        }
+      ],
       "explanation": "Jeśli liczba danych n jest nieparzysta, mediana to element środkowy. Jeśli parzysta, to średnia dwóch środkowych.",
       "goldenRule": "ZANIM wyznaczysz medianę, MUSISZ uporządkować liczby rosnąco!",
       "ckeTrap": "Wyznaczenie mediany z nieposortowanego zestawu liczb to najczęstszy błąd maturzystów.",
@@ -363,7 +667,9 @@
         "mediana",
         "statystyka",
         "wartość środkowa"
-      ]
+      ],
+      "cke_page": "str. 26",
+      "pageNumber": 26
     }
   ]
 }

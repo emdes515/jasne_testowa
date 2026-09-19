@@ -15,12 +15,18 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import type { SubjectCkeConfig } from '../types';
 
+export interface CkeFormulaSubItem {
+  label: string;
+  formula: string;
+}
+
 export interface CkeFormulaItem {
   id: string;
   topicId: string;
   topicName: string;
   title: string;
   formula: string;
+  subFormulas?: CkeFormulaSubItem[];
   explanation?: string;
   goldenRule?: string;
   ckeTrap?: string;
