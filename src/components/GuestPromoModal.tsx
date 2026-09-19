@@ -95,7 +95,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
 
             {/* Nagłówek i Obietnica */}
             <div className="text-left mb-3">
-              <h2 className="font-display font-black text-2xl sm:text-[26px] text-white leading-tight">
+              <h2 className="font-display font-black text-2xl sm:text-3xl text-white leading-tight">
                 Zdobądź <span className="text-[#FFB800] underline decoration-[#FFB800]/50">-{promoConfig.discountPercent}%</span> na JASNE PRO
               </h2>
               <p className="text-xs text-slate-300 mt-1 leading-relaxed">

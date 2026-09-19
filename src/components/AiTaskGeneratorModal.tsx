@@ -429,9 +429,9 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                           <div className="flex items-center gap-3">
                             <span className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
                               isSelected && !isEvaluated
-                                ? 'bg-[#FFB800] text-slate-950 border-amber-400'
+                                ? 'bg-[#FFB800] text-amber-950 border-amber-400'
                                 : isEvaluated && isThisCorrect
-                                ? 'bg-emerald-500 text-slate-950 border-emerald-400'
+                                ? 'bg-emerald-500 text-emerald-950 border-emerald-400'
                                 : isEvaluated && isSelected && !isThisCorrect
                                 ? 'bg-rose-500 text-white border-rose-400'
                                 : 'bg-slate-800 border-slate-700 text-slate-300'
@@ -572,7 +572,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                     <button
                       type="button"
                       onClick={() => setGeneratedTask(null)}
-                      className="flex-1 py-3.5 rounded-xl bg-[#FFB800] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                      className="flex-1 py-3.5 rounded-xl bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Cpu size={16} />
                       <span>Wygeneruj kolejne zadanie</span>

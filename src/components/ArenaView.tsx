@@ -302,10 +302,10 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             <div className="absolute h-full w-[1px] bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent pointer-events-none" />
 
             {/* Angle Markers */}
-            <span className="absolute top-2 text-[9px] font-mono text-emerald-400/60 font-bold">000°</span>
-            <span className="absolute right-2 text-[9px] font-mono text-emerald-400/60 font-bold">090°</span>
-            <span className="absolute bottom-2 text-[9px] font-mono text-emerald-400/60 font-bold">180°</span>
-            <span className="absolute left-2 text-[9px] font-mono text-emerald-400/60 font-bold">270°</span>
+            <span className="absolute top-2 text-[10px] font-mono text-emerald-400/60 font-bold">000°</span>
+            <span className="absolute right-2 text-[10px] font-mono text-emerald-400/60 font-bold">090°</span>
+            <span className="absolute bottom-2 text-[10px] font-mono text-emerald-400/60 font-bold">180°</span>
+            <span className="absolute left-2 text-[10px] font-mono text-emerald-400/60 font-bold">270°</span>
 
             {/* Radar Sweep Beam (Conic Gradient rotating 360deg) */}
             <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
@@ -352,9 +352,9 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
             <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-gradient-to-br from-[#064E3B]/80 via-[#022c22]/90 to-[#031510] border-2 border-emerald-400/60 p-1 flex flex-col items-center justify-center shadow-[0_0_35px_rgba(16,185,129,0.5)] group hover:scale-105 transition-transform duration-300">
               <div className="relative flex items-center justify-center">
                 <Swords size={38} className="text-emerald-300 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
-                <Zap size={16} className="text-teal-200 absolute -top-2 -right-2 animate-bounce" />
+                <Zap size={16} className="text-teal-200 absolute -top-2 -right-2 animate-pulse" />
               </div>
-              <span className="text-[9px] font-black uppercase tracking-widest text-emerald-300 mt-1">
+              <span className="text-[10px] font-black uppercase tracking-widest text-emerald-300 mt-1">
                 SEZON 1
               </span>
             </div>
@@ -477,7 +477,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
               <button
                 id="claim-arena-ticket-btn"
                 onClick={handleClaimTicket}
-                className="w-full sm:w-auto shrink-0 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-display font-black text-sm tracking-wide shadow-[0_0_30px_rgba(16,185,129,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto shrink-0 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-emerald-950 font-display font-black text-sm tracking-wide shadow-[0_0_30px_rgba(16,185,129,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Zap size={16} fill="currentColor" />
                 <span>Odbierz Bilet (+100 Żetonów)</span>
@@ -665,9 +665,9 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                     triggerHaptic('light');
                     onNavigate('simulator');
                   }}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-display font-black text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.35)] active:scale-95"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-display font-black text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.35)] active:scale-95"
                 >
-                  <FileText size={15} className="text-slate-950" />
+                  <FileText size={15} className="text-emerald-950" />
                   <span>Arkusz Maturalny</span>
                   <ArrowRight size={14} strokeWidth={2.5} />
                 </button>

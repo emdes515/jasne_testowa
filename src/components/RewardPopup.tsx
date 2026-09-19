@@ -174,7 +174,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
               >
                 <div className="flex items-center gap-1 mb-1">
                   <Star size={13} className="text-blue-400" />
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#8B8D98]">XP</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#8B8D98]">XP</span>
                 </div>
                 <span className="font-display text-xl font-bold text-white">+{reward.xp}</span>
               </motion.div>
@@ -187,7 +187,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
               >
                 <div className="flex items-center gap-1 mb-1">
                   <Coins size={13} className="text-amber-400" />
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#8B8D98]">Monety</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#8B8D98]">Monety</span>
                 </div>
                 <span className="font-display text-xl font-bold text-white">+{reward.coins}</span>
               </motion.div>
@@ -201,7 +201,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
                 >
                   <div className="flex items-center gap-1 mb-1">
                     <Crown size={13} className="text-amber-400" />
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-amber-300">Tokens</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-300">Żetony</span>
                   </div>
                   <span className="font-display text-xl font-bold text-amber-400">+{reward.tokens}</span>
                 </motion.div>

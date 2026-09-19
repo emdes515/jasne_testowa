@@ -203,7 +203,7 @@ export const PredictorWidget: React.FC<PredictorWidgetProps> = ({
             <span className="font-display text-3xl font-black text-text-primary tracking-tight tabular-nums leading-none">
               {animatedPercent}%
             </span>
-            <span className="text-[9px] font-bold text-text-muted uppercase tracking-wider mt-1">
+            <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider mt-1">
               PROGNOZA
             </span>
           </div>

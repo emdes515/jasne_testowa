@@ -467,15 +467,15 @@ export function DashboardView({
                 {m.isCompleted ? (
                   <Check size={15} strokeWidth={3} />
                 ) : m.isTargetToday ? (
-                  <Flame size={14} className="fill-[#F97316]" />
+                  <Flame size={14} className="fill-[#EA580C]" />
                 ) : (
                   <span>{m.dayNumber}</span>
                 )}
               </div>
               <span 
-                className={`text-[9px] sm:text-[10px] font-bold text-center leading-none truncate max-w-full ${
+                className={`text-[10px] font-bold text-center leading-none truncate max-w-full ${
                   m.isCompleted 
-                    ? 'text-[#F97316]' 
+                    ? 'text-[#EA580C]' 
                     : m.isTargetToday 
                     ? 'text-white font-extrabold' 
                     : 'text-text-muted'
@@ -541,7 +541,7 @@ export function DashboardView({
 
                 <div className="flex flex-col text-left">
                   <div className="flex items-center gap-1.5 leading-none">
-                    <span className="font-extrabold text-[12px] sm:text-[13px] tracking-tight">{sub.shortName}</span>
+                    <span className="font-extrabold text-xs sm:text-sm tracking-tight">{sub.shortName}</span>
                     {isActive && (
                       <span 
                         className="w-1.5 h-1.5 rounded-full shrink-0"
@@ -559,7 +559,7 @@ export function DashboardView({
 
           {/* Kafelek kolejnych przedmiotów w przygotowaniu na końcu rzędu */}
           <div className="hidden sm:flex items-center gap-2 text-[11px] text-text-muted bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap">
-            <span className="font-bold text-text-muted uppercase tracking-wider text-[9px]">Wkrótce:</span>
+            <span className="font-bold text-text-muted uppercase tracking-wider text-[10px]">Wkrótce:</span>
             <span className="text-text-secondary font-medium">Biologia</span>
             <span className="text-slate-600">•</span>
             <span className="text-text-secondary font-medium">Chemia</span>
@@ -770,11 +770,11 @@ export function DashboardView({
               >
                 <div className="absolute top-3.5 right-3.5">
                   {totalMistakes > 0 ? (
-                    <span className="text-[9px] font-extrabold text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full flex items-center gap-1 animate-pulse">
+                    <span className="text-[10px] font-extrabold text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full flex items-center gap-1 animate-pulse">
                       <span>{totalMistakes} {totalMistakes === 1 ? 'błąd' : totalMistakes < 5 ? 'błędy' : 'błędów'}</span>
                     </span>
                   ) : (
-                    <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
                       0 błędów
                     </span>
                   )}
@@ -868,7 +868,7 @@ export function DashboardView({
                       <span className="text-[10px] font-extrabold text-primary uppercase tracking-wider">
                         Test Poziomu
                       </span>
-                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
                         CKE
                       </span>
                     </div>
@@ -899,7 +899,7 @@ export function DashboardView({
                       <span className="text-[10px] font-extrabold text-purple-300 uppercase tracking-wider">
                         Generator Zadań AI
                       </span>
-                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">
                         Model CKE
                       </span>
                     </div>
@@ -930,7 +930,7 @@ export function DashboardView({
                       <span className="text-[10px] font-extrabold text-primary uppercase tracking-wider">
                         Bank Błędów
                       </span>
-                      <span className="text-[9px] font-extrabold text-primary bg-primary/15 border border-primary/30 px-1.5 py-0.5 rounded-full">
+                      <span className="text-[10px] font-extrabold text-primary bg-primary/15 border border-primary/30 px-1.5 py-0.5 rounded-full">
                         {totalMistakes} do powtórki
                       </span>
                     </div>

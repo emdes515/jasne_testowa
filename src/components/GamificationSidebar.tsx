@@ -212,12 +212,12 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
                 {m.isCompleted ? (
                   <Check size={14} strokeWidth={3} />
                 ) : m.isTargetToday ? (
-                  <Flame size={14} className="fill-[#F97316]" />
+                  <Flame size={14} className="fill-[#EA580C]" />
                 ) : (
                   <span>{m.dayNumber}</span>
                 )}
               </div>
-              <span className={`text-[9px] font-bold ${m.isCompleted ? 'text-streak-flame' : m.isTargetToday ? 'text-text-primary' : 'text-text-muted'}`}>
+              <span className={`text-[10px] font-bold ${m.isCompleted ? 'text-streak-flame' : m.isTargetToday ? 'text-text-primary' : 'text-text-muted'}`}>
                 {m.shortLabel}
               </span>
             </div>
@@ -372,7 +372,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
             <div>
               <div className="font-display font-bold text-text-primary text-xs flex items-center gap-1.5">
                 <span>Arena 2.0</span>
-                <span className="text-[9px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-500/15 px-1.5 py-0.2 rounded border border-emerald-500/30">
+                <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-500/15 px-1.5 py-0.2 rounded border border-emerald-500/30">
                   Wkrótce
                 </span>
               </div>

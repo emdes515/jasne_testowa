@@ -117,7 +117,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
           </div>
 
           {/* 2. Typografia i Komunikat */}
-          <h2 className="text-2xl sm:text-[26px] font-black text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
             Skończyły Ci się serca!
           </h2>
           <p className="text-xs text-slate-300/90 leading-relaxed mt-1.5 max-w-xs mx-auto">

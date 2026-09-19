@@ -222,7 +222,7 @@ export function OnboardingOverlay({
       badge: 'GRYWALIZACJA',
       icon: Flame,
       desc: 'Rozwiązuj choć 1 zadanie dziennie, by utrzymać płomień serii, zdobywać monety i chronić streak zamrażarkami.',
-      color: '#F97316'
+      color: '#EA580C'
     }
   ];
 

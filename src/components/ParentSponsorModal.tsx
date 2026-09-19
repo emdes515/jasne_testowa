@@ -163,17 +163,17 @@ Dzięki wielkie za pomoc w zdaniu matury! ❤️
               <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <Heart className="w-5 h-5 text-rose-400 fill-rose-400 mb-1" />
                 <span className="text-[11px] font-bold text-white">Nielimitowane serca</span>
-                <span className="text-[9px] text-slate-400">Zero przerw w nauce</span>
+                <span className="text-[10px] text-slate-400">Zero przerw w nauce</span>
               </div>
               <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <Brain className="w-5 h-5 text-[#FFB800] mb-1" />
                 <span className="text-[11px] font-bold text-white">AI Egzaminator CKE</span>
-                <span className="text-[9px] text-slate-400">Ocena tablicy i dowodów</span>
+                <span className="text-[10px] text-slate-400">Ocena tablicy i dowodów</span>
               </div>
               <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <ShieldCheck className="w-5 h-5 text-emerald-400 mb-1" />
                 <span className="text-[11px] font-bold text-white">Tylko 39 zł BLIK</span>
-                <span className="text-[9px] text-slate-400">Bez abonamentu</span>
+                <span className="text-[10px] text-slate-400">Bez abonamentu</span>
               </div>
             </div>
 

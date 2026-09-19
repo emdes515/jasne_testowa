@@ -84,7 +84,7 @@ export function Header({
           <span className="text-base sm:text-lg font-black tracking-wider text-white group-hover:text-[#FFB800] transition-colors leading-none">
             JASNE<span className="text-[#FFB800]">.</span>
           </span>
-          <span className="hidden sm:inline-block text-[9px] font-bold text-slate-400 tracking-wider uppercase mt-0.5">
+          <span className="hidden sm:inline-block text-[10px] font-bold text-slate-400 tracking-wider uppercase mt-0.5">
             Matura staje się prosta
           </span>
         </div>
@@ -291,7 +291,7 @@ export function Header({
             <span className="font-display font-black text-[11px] sm:text-xs text-text-primary leading-tight group-hover:text-primary transition-colors tabular-nums font-mono">
               LVL {state.level}
             </span>
-            <span className="text-[9px] font-bold text-text-muted leading-tight tabular-nums font-mono">
+            <span className="text-[10px] font-bold text-text-muted leading-tight tabular-nums font-mono">
               {currentXpInLevel} XP
             </span>
           </div>

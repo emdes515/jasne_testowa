@@ -65,6 +65,7 @@ colors:
   text-secondary: '#CBD5E1'
   text-muted: '#94A3B8'
   text-subtle: '#64748B'
+  shadow-dark: rgba(0, 0, 0, 0.6)
 typography:
   display-hero:
     fontFamily: Plus Jakarta Sans

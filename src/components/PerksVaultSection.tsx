@@ -129,7 +129,7 @@ export function PerksVaultSection({
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-700/30 border border-blue-400/30 flex items-center justify-center text-blue-400 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
                   <Shield size={26} className="drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full border-2 border-[#141A23]">
+                <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded-full border-2 border-[#141A23]">
                   S1
                 </div>
               </div>
@@ -185,7 +185,7 @@ export function PerksVaultSection({
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-700/30 border border-emerald-400/30 flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                   <ShieldCheck size={26} className="drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 bg-emerald-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full border-2 border-[#141A23]">
+                <div className="absolute -bottom-1 -right-1 bg-emerald-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded-full border-2 border-[#141A23]">
                   S2
                 </div>
               </div>
@@ -236,7 +236,7 @@ export function PerksVaultSection({
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/25 to-yellow-600/30 border border-amber-400/40 flex items-center justify-center text-amber-400 shadow-[0_0_25px_rgba(245,158,11,0.4)] animate-pulse">
                   <Zap size={26} className="drop-shadow-[0_0_10px_rgba(251,191,36,0.9)]" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 bg-amber-500 text-black text-[9px] font-black px-1.5 py-0.5 rounded-full border-2 border-[#141A23]">
+                <div className="absolute -bottom-1 -right-1 bg-amber-500 text-amber-950 text-[10px] font-black px-1.5 py-0.5 rounded-full border-2 border-[#141A23]">
                   S3
                 </div>
               </div>

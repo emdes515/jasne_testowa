@@ -263,8 +263,8 @@ export function AchievementsSection({
                   {/* Title & Desc */}
                   <div className="flex-1 min-w-0 pt-0.5">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <h3 className="font-black text-white text-[15px]">{ach.name}</h3>
-                      <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded-md flex items-center gap-1 border ${
+                      <h3 className="font-black text-white text-sm sm:text-base">{ach.name}</h3>
+                      <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md flex items-center gap-1 border ${
                         item.isFullyCompleted 
                           ? 'bg-amber-400/15 text-amber-300 border-amber-400/30' 
                           : isEarned
@@ -407,7 +407,7 @@ export function AchievementsSection({
                               {isClaimed ? '✓' : t.tier}
                             </div>
                             <div>
-                              <div className="font-bold flex items-center gap-1.5 text-[13px]">
+                              <div className="font-bold flex items-center gap-1.5 text-xs sm:text-sm">
                                 <span>{t.tierName}</span>
                                 <span className="text-[10px] text-[#9CA3AF]">({t.target} {ach.unit})</span>
                               </div>

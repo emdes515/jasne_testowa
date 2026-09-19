@@ -1254,7 +1254,7 @@ export function LearnView({
                                         <div className="min-w-0 text-left">
                                           <div className="text-[11px] font-bold text-amber-200 truncate flex items-center gap-1.5">
                                             <span>{original}</span>
-                                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold uppercase shrink-0">
+                                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold uppercase shrink-0">
                                               W całości
                                             </span>
                                           </div>

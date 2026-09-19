@@ -78,7 +78,7 @@ export function MathToolbar({ onInsertSymbol, onInsertTemplate }: MathToolbarPro
 
       {/* Quick Templates */}
       <div className="flex items-center gap-1.5 overflow-x-auto pt-1 pb-0.5 scrollbar-none">
-        <span className="text-[9px] text-[#8B8D98] uppercase font-bold shrink-0">Szablony:</span>
+        <span className="text-[10px] text-[#8B8D98] uppercase font-bold shrink-0">Szablony:</span>
         {quickTemplates.map((tpl, idx) => (
           <button
             key={idx}

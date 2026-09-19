@@ -54,7 +54,7 @@ export function PromoFloatingPill({
         )}
       </div>
 
-      <div className="flex items-center gap-1 font-mono text-xs sm:text-[13px] font-black tracking-tight whitespace-nowrap tabular-nums">
+      <div className="flex items-center gap-1 font-mono text-xs sm:text-sm font-black tracking-tight whitespace-nowrap tabular-nums">
         <span className={isUrgent ? 'text-rose-100 font-black uppercase text-[10px] sm:text-[11px] tracking-wider' : 'text-[#070A0F] font-black'}>
           {isUrgent ? 'Kończy się!' : '-50% PRO:'}
         </span>

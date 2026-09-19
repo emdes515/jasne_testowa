@@ -176,7 +176,7 @@ export function ProfileView({
             <Trophy size={14} />
             <span>Odznaki</span>
             {claimableCount > 0 && (
-              <span className={`w-4 h-4 text-[9px] font-black rounded-full flex items-center justify-center shadow-sm ${
+              <span className={`w-4 h-4 text-[10px] font-black rounded-full flex items-center justify-center shadow-sm ${
                 activeTab === 'achievements' ? 'bg-[#080B11] text-primary' : 'bg-primary text-[#080B11]'
               }`}>
                 {claimableCount}
@@ -292,12 +292,12 @@ export function ProfileView({
                       title={`${d.date.toLocaleDateString('pl-PL')}: ${d.count} zadań`}
                     >
                       {/* Tooltip on hover */}
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 bg-surface-elevated text-text-primary text-[9px] font-bold py-0.5 px-1.5 rounded-md border border-surface-border pointer-events-none whitespace-nowrap z-20 shadow-lg">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 bg-surface-elevated text-text-primary text-[10px] font-bold py-0.5 px-1.5 rounded-md border border-surface-border pointer-events-none whitespace-nowrap z-20 shadow-lg">
                         {d.count} {d.count === 1 ? 'zadanie' : 'zadań'}
                       </div>
 
                       {hasTasks && (
-                        <span className={`text-[8px] sm:text-[9px] font-bold mb-1 leading-none ${d.isToday ? 'text-[#FFB800]' : 'text-amber-300/80'}`}>
+                        <span className={`text-[10px] font-bold mb-1 leading-none ${d.isToday ? 'text-[#FFB800]' : 'text-amber-300/80'}`}>
                           {d.count}
                         </span>
                       )}
@@ -315,7 +315,7 @@ export function ProfileView({
                       />
 
                       {/* Day Label */}
-                      <span className={`text-[8px] sm:text-[9px] font-bold mt-1.5 leading-none truncate max-w-full ${d.isToday ? 'text-[#FFB800] font-black' : 'text-[#8B8D98]'}`}>
+                      <span className={`text-[10px] font-bold mt-1.5 leading-none truncate max-w-full ${d.isToday ? 'text-[#FFB800] font-black' : 'text-[#8B8D98]'}`}>
                         {d.isToday ? 'Dziś' : d.dayName}
                       </span>
                     </div>

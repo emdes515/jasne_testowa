@@ -80,8 +80,8 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                 <h2 className="text-2xl font-display font-black text-text-primary mb-1.5">
                   Pakiet JASNE. PRO
                 </h2>
-                <p className="text-text-secondary text-[13px] leading-relaxed mb-5">
-                  Gwarancja zdanej matury bez limitów i bez stresu.
+                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed mb-5">
+                  Pełny dostęp do bazy arkuszy CKE, nielimitowanych serc i Tutora AI.
                 </p>
 
                 <div className="w-full space-y-2.5 mb-6 text-left">
@@ -98,7 +98,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                           <Icon size={14} className={feat.color} />
                         </div>
                         <div>
-                          <div className="text-[13px] font-bold text-white">{feat.title}</div>
+                          <div className="text-xs sm:text-sm font-bold text-white">{feat.title}</div>
                           <div className="text-[11px] text-slate-400">{feat.desc}</div>
                         </div>
                       </div>
@@ -114,7 +114,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                       onClose();
                       onOpenParentSponsor();
                     }}
-                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 hover:brightness-110 text-slate-950 font-black text-[14px] transition-all shadow-lg shadow-orange-500/25 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 mb-2.5"
+                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 hover:brightness-110 text-slate-950 font-black text-sm transition-all shadow-lg shadow-orange-500/25 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 mb-2.5"
                   >
                     <Users size={17} className="fill-slate-950" />
                     <span>Poproś rodzica o PRO (BLIK)</span>
@@ -129,7 +129,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                       setShowCodeField(true);
                       setActivationError(null);
                     }}
-                    className="w-full bg-white/10 hover:bg-white/15 text-white font-bold py-3 rounded-xl text-[13px] transition-all border border-white/10 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
+                    className="w-full bg-white/10 hover:bg-white/15 text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition-all border border-white/10 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <KeyRound size={15} className="text-amber-400" />
                     <span>Mam kod aktywacyjny PRO</span>
@@ -155,7 +155,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                       spellCheck={false}
                       inputMode="text"
                       placeholder="JASNE-XXXX-XXXX"
-                      className="w-full rounded-xl bg-black/40 border border-white/10 focus:border-amber-400/60 focus:outline-none px-3.5 py-3 text-center text-[15px] font-black tracking-[0.12em] text-white placeholder:text-slate-600"
+                      className="w-full rounded-xl bg-black/40 border border-white/10 focus:border-amber-400/60 focus:outline-none px-3.5 py-3 text-center text-sm sm:text-base font-black tracking-[0.12em] text-white placeholder:text-slate-600"
                     />
                     {activationError && (
                       <p className="mt-2 text-left text-[11px] font-semibold text-rose-300 leading-relaxed">
@@ -165,7 +165,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                     <button
                       onClick={() => void handleActivate()}
                       disabled={isActivating || code.trim().length < 6}
-                      className="mt-2.5 w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-black text-[13px] transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
+                      className="mt-2.5 w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-black text-xs sm:text-sm transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
                     >
                       {isActivating ? (
                         <>

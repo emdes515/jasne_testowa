@@ -168,7 +168,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
               <span className="text-xl font-black tracking-wider text-text-primary leading-none">
                 JASNE<span className="text-primary">.</span>
               </span>
-              <span className="text-[9px] font-bold text-text-muted tracking-wider uppercase mt-1">
+              <span className="text-[10px] font-bold text-text-muted tracking-wider uppercase mt-1">
                 Matura staje się prosta
               </span>
             </div>
@@ -214,7 +214,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                     {item.label}
                   </span>
                   {isArena && (
-                    <span className="text-[9px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
                       Wkrótce
                     </span>
                   )}
