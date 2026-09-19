@@ -8,6 +8,8 @@ export interface CkeFormulaItem {
   goldenRule?: string;
   ckeTrap?: string;
   keywords: string[];
+  cke_page?: string;
+  pageNumber?: number | string;
 }
 
 export const CKE_FORMULA_TOPICS = [
@@ -32,7 +34,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Dla a > 0 oraz dowolnych wykładników r, s.',
     goldenRule: 'Zawsze sprowadzaj liczby do wspólnej podstawy (np. 4 i 8 sprowadzaj do 2: 4=2², 8=2³).',
     ckeTrap: '2³ · 2⁴ to 2⁷, a NIE 4⁷! Podstawa potęgi się NIE mnoży.',
-    keywords: ['potęga', 'mnożenie', 'dzielenie', 'wykładnik', 'podstawa']
+    keywords: ['potęga', 'mnożenie', 'dzielenie', 'wykładnik', 'podstawa'],
+    cke_page: 'str. 2',
+    pageNumber: 2
   },
   {
     id: 'f-potegi-2',
@@ -43,7 +47,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Wykładniki potęg mnożymy przez siebie przy potęgowaniu nawiasu.',
     goldenRule: 'Uważaj na kolejność: (2³)² = 2⁶ = 64.',
     ckeTrap: '(a + b)² to a² + 2ab + b², a NIE a² + b²!',
-    keywords: ['potęgowanie', 'iloczyn', 'nawias']
+    keywords: ['potęgowanie', 'iloczyn', 'nawias'],
+    cke_page: 'str. 2',
+    pageNumber: 2
   },
   {
     id: 'f-potegi-3',
@@ -54,7 +60,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Minus w wykładniku odwraca ułamek do góry dnem. Ułamek w wykładniku zamienia się w pierwiastek stopnia n.',
     goldenRule: '(a/b)^{-n} = (b/a)^n. Zawsze najpierw pozbądź się minusa, odwracając ułamek.',
     ckeTrap: 'Liczba 4^{-1/2} to 1 / √4 = 1/2, a NIE liczba ujemna -2!',
-    keywords: ['ujemny wykładnik', 'odwrotność', 'ułamek', 'pierwiastek']
+    keywords: ['ujemny wykładnik', 'odwrotność', 'ułamek', 'pierwiastek'],
+    cke_page: 'str. 2',
+    pageNumber: 2
   },
   {
     id: 'f-pierwiastki-1',
@@ -65,7 +73,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Dla a, b ≥ 0 (gdy n parzyste) lub dowolnych (gdy n nieparzyste).',
     goldenRule: 'Wyłączaj czynniki przed znak pierwiastka (np. √72 = √(36·2) = 6√2).',
     ckeTrap: '√(9 + 16) to √25 = 5, a NIE √9 + √16 = 3 + 4 = 7!',
-    keywords: ['pierwiastek', 'iloczyn', 'iloraz', 'wyłączanie czynnika']
+    keywords: ['pierwiastek', 'iloczyn', 'iloraz', 'wyłączanie czynnika'],
+    cke_page: 'str. 2',
+    pageNumber: 2
   },
   {
     id: 'f-skrocone-1',
@@ -76,7 +86,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Kwadrat sumy, kwadrat różnicy oraz różnica kwadratów.',
     goldenRule: 'Różnica kwadratów a² - b² jest kluczem do usuwania niewymierności z mianownika przez mnożenie przez sprzężenie.',
     ckeTrap: 'Częste gubienie podwojonego iloczynu: (x - 3)² = x² - 6x + 9, a NIE x² - 9!',
-    keywords: ['wzory skróconego mnożenia', 'kwadrat sumy', 'różnica kwadratów']
+    keywords: ['wzory skróconego mnożenia', 'kwadrat sumy', 'różnica kwadratów'],
+    cke_page: 'str. 4',
+    pageNumber: 4
   },
 
   // 2. Logarytmy i Procenty
@@ -89,7 +101,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Logarytm to pytanie o wykładnik: „Do jakiej potęgi podnieść podstawę a, aby otrzymać b?”.',
     goldenRule: 'Jeśli log_2(x) = 5, to natychmiast zapisz: x = 2⁵ = 32.',
     ckeTrap: 'Podstawa a musi być dodatnia i różna od 1, a liczba logarytmowana b ściśle dodatnia b > 0 (dziedzina!).',
-    keywords: ['logarytm', 'definicja', 'podstawa', 'dziedzina']
+    keywords: ['logarytm', 'definicja', 'podstawa', 'dziedzina'],
+    cke_page: 'str. 3',
+    pageNumber: 3
   },
   {
     id: 'f-log-2',
@@ -100,7 +114,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Suma logarytmów o tej samej podstawie to logarytm iloczynu.',
     goldenRule: 'Przed dodaniem logarytmów najpierw wciągnij współczynnik przed logarytmem jako wykładnik potęgi argumentu.',
     ckeTrap: 'log(x + y) to NIE log(x) + log(y)! Suma w argumencie jest nierozbijalna.',
-    keywords: ['suma logarytmów', 'różnica logarytmów', 'wciąganie współczynnika']
+    keywords: ['suma logarytmów', 'różnica logarytmów', 'wciąganie współczynnika'],
+    cke_page: 'str. 3',
+    pageNumber: 3
   },
   {
     id: 'f-proc-1',
@@ -111,7 +127,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'm – liczba kapitalizacji w roku, n – liczba lat, p – oprocentowanie roczne w %.',
     goldenRule: 'Baza wyjściowa („od czego liczysz”) ZAWSZE trafia do mianownika ułamka.',
     ckeTrap: 'Obniżka o 20% i podwyżka o 20% NIE przywraca ceny początkowej! Cena końcowa to 100 · 0.8 · 1.2 = 96 (spadek o 4%).',
-    keywords: ['procenty', 'lokaty', 'kapitalizacja', 'procent składany']
+    keywords: ['procenty', 'lokaty', 'kapitalizacja', 'procent składany'],
+    cke_page: 'str. 3',
+    pageNumber: 3
   },
 
   // 3. Funkcje i Równania
@@ -124,7 +142,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'a to współczynnik kierunkowy (a = tg α), b to wyraz wolny.',
     goldenRule: 'Dwie proste są prostopadłe, gdy ich współczynniki są przeciwne i odwrotne (np. 2/3 oraz -3/2).',
     ckeTrap: 'Punkt przecięcia z osią OY to (0, b), a z osią OX to (-b/a, 0). Nie myl kolejności współrzędnych!',
-    keywords: ['funkcja liniowa', 'współczynnik kierunkowy', 'prostopadłość', 'równoległość']
+    keywords: ['funkcja liniowa', 'współczynnik kierunkowy', 'prostopadłość', 'równoległość'],
+    cke_page: 'str. 7',
+    pageNumber: 7
   },
   {
     id: 'f-funkcja-kwadratowa',
@@ -135,7 +155,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Jeśli a > 0, ramiona paraboli idą w górę (minimum w wierzchołku). Jeśli a < 0, ramiona idą w dół (maksimum).',
     goldenRule: 'Współrzędna p wierzchołka leży dokładnie w połowie między miejscami zerowymi: p = (x_1 + x_2) / 2.',
     ckeTrap: 'Uważaj na znaki w postaci kanonicznej: f(x) = 2(x - 3)² + 5 ma wierzchołek w p = +3, a NIE -3!',
-    keywords: ['funkcja kwadratowa', 'delta', 'wierzchołek', 'postać kanoniczna', 'postać iloczynowa']
+    keywords: ['funkcja kwadratowa', 'delta', 'wierzchołek', 'postać kanoniczna', 'postać iloczynowa'],
+    cke_page: 'str. 7',
+    pageNumber: 7
   },
   {
     id: 'f-wzory-vietea',
@@ -146,7 +168,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Pozwalają badać znaki pierwiastków lub sumy i iloczyny bez bezpośredniego wyliczania x_1 i x_2.',
     goldenRule: 'Przydatna tożsamość: x_1² + x_2² = (x_1 + x_2)² - 2x_1 x_2.',
     ckeTrap: 'Pamiętaj o minusie przy sumie pierwiastków: -b / a!',
-    keywords: ['Vieta', 'wzory vietea', 'suma pierwiastków', 'iloczyn pierwiastków']
+    keywords: ['Vieta', 'wzory vietea', 'suma pierwiastków', 'iloczyn pierwiastków'],
+    cke_page: 'str. 7',
+    pageNumber: 7
   },
 
   // 4. Ciągi Liczbowe
@@ -159,7 +183,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Każdy kolejny wyraz powstaje przez dodanie stałej liczby r: a_{n+1} = a_n + r.',
     goldenRule: 'Trzy liczby (x, y, z) tworzą ciąg arytmetyczny <=> 2y = x + z.',
     ckeTrap: 'We wzorze na a_n mnożymy r przez (n - 1), a NIE przez n!',
-    keywords: ['ciąg arytmetyczny', 'różnica ciągu', 'suma ciągu']
+    keywords: ['ciąg arytmetyczny', 'różnica ciągu', 'suma ciągu'],
+    cke_page: 'str. 5',
+    pageNumber: 5
   },
   {
     id: 'f-ciag-geometryczny',
@@ -170,7 +196,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Każdy kolejny wyraz powstaje przez pomnożenie poprzedniego przez stały iloraz q.',
     goldenRule: 'Trzy liczby dodatnie (x, y, z) tworzą ciąg geometryczny <=> y² = x · z.',
     ckeTrap: 'Wykładnik ilorazu to (n - 1): a_4 = a_1 · q³, a NIE a_1 · q⁴!',
-    keywords: ['ciąg geometryczny', 'iloraz ciągu', 'suma geometryczna']
+    keywords: ['ciąg geometryczny', 'iloraz ciągu', 'suma geometryczna'],
+    cke_page: 'str. 5',
+    pageNumber: 5
   },
 
   // 5. Trygonometria
@@ -183,7 +211,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Dla kąta ostrego α w trójkącie prostokątnym o przyprostokątnych a, b i przeciwprostokątnej c.',
     goldenRule: 'Jedynka trygonometryczna: sin² α + cos² α = 1.',
     ckeTrap: 'Zawsze sprawdzaj, który kąt jest naprzeciwko danej przyprostokątnej!',
-    keywords: ['sinus', 'cosinus', 'tangens', 'trójkąt prostokątny']
+    keywords: ['sinus', 'cosinus', 'tangens', 'trójkąt prostokątny'],
+    cke_page: 'str. 9',
+    pageNumber: 9
   },
   {
     id: 'f-trygo-tabelka',
@@ -194,7 +224,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Wartości kluczowych kątów ostrych często spotykanych w zadaniach maturalnych.',
     goldenRule: 'Zauważ symetrię: sin 30° = cos 60° = 1/2, oraz sin 60° = cos 30° = √3/2.',
     ckeTrap: 'tg 45° to 1, a NIE √2/2!',
-    keywords: ['wartości kątów', '30 stopni', '45 stopni', '60 stopni']
+    keywords: ['wartości kątów', '30 stopni', '45 stopni', '60 stopni'],
+    cke_page: 'str. 9–10',
+    pageNumber: 10
   },
   {
     id: 'f-trygo-pola',
@@ -205,7 +237,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Pole trójkąta równe jest połowie iloczynu długości dwóch boków i sinusa kąta zawartego między nimi.',
     goldenRule: 'Niezastąpione zadanie maturalne: jeśli masz dwa boki i kąt między nimi, nie szukaj wysokości, użyj tego wzoru!',
     ckeTrap: 'Kąt MUSI być zawarty MIĘDZY bokami a i b.',
-    keywords: ['pole trójkąta', 'pole z sinusem', 'sinus kąta']
+    keywords: ['pole trójkąta', 'pole z sinusem', 'sinus kąta'],
+    cke_page: 'str. 10',
+    pageNumber: 10
   },
 
   // 6. Planimetria i Geometria Analityczna
@@ -218,7 +252,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Dla punktów A = (x_A, y_A) oraz B = (x_B, y_B).',
     goldenRule: 'Środek odcinka to średnia arytmetyczna współrzędnych końców.',
     ckeTrap: 'Przy odejmowaniu ujemnych współrzędnych: (x_B - (-3)) zamienia się na (x_B + 3)!',
-    keywords: ['odległość punktów', 'środek odcinka', 'geometria analityczna']
+    keywords: ['odległość punktów', 'środek odcinka', 'geometria analityczna'],
+    cke_page: 'str. 17',
+    pageNumber: 17
   },
   {
     id: 'f-geo-trojkat-rownoboczny',
@@ -229,7 +265,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Dla trójkąta równobocznego o boku długości a.',
     goldenRule: 'Pamiętaj: R = 2r (promień opisanego jest dwukrotnie większy od promienia wpisanego).',
     ckeTrap: 'Nie myl wzoru na wysokość (dzielenie przez 2) ze wzorem na pole (dzielenie przez 4 i a²)!',
-    keywords: ['trójkąt równoboczny', 'wysokość', 'pole', 'koło opisane', 'koło wpisane']
+    keywords: ['trójkąt równoboczny', 'wysokość', 'pole', 'koło opisane', 'koło wpisane'],
+    cke_page: 'str. 11',
+    pageNumber: 11
   },
   {
     id: 'f-geo-okrag',
@@ -240,7 +278,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Równanie kanoniczne okręgu w układzie współrzędnych.',
     goldenRule: 'Prawa strona to r². Jeśli po prawej stronie masz 25, to promień r = 5, a NIE 25!',
     ckeTrap: 'Uważaj na znaki środka: (x - 2)² + (y + 3)² = 16 ma środek w S = (2, -3)!',
-    keywords: ['równanie okręgu', 'środek okręgu', 'promień okręgu']
+    keywords: ['równanie okręgu', 'środek okręgu', 'promień okręgu'],
+    cke_page: 'str. 17',
+    pageNumber: 17
   },
 
   // 7. Kombinatoryka i Prawdopodobieństwo
@@ -253,7 +293,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: '|A| to liczba zdarzeń sprzyjających, |Ω| to liczba wszystkich możliwych jednakowo prawdopodobnych zdarzeń elementarnych.',
     goldenRule: 'Gdy treść mówi „co najmniej jeden raz”, ZAWSZE opłaca się policzyć zdarzenie przeciwne: P(A) = 1 - P(A\').',
     ckeTrap: 'Prawdopodobieństwo NIGDY nie może przekroczyć 1 ani być mniejsze od 0!',
-    keywords: ['prawdopodobieństwo', 'omega', 'zdarzenie przeciwne', 'drzewo']
+    keywords: ['prawdopodobieństwo', 'omega', 'zdarzenie przeciwne', 'drzewo'],
+    cke_page: 'str. 23',
+    pageNumber: 23
   },
   {
     id: 'f-stat-srednia',
@@ -264,6 +306,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     explanation: 'Jeśli liczba danych n jest nieparzysta, mediana to element środkowy. Jeśli parzysta, to średnia dwóch środkowych.',
     goldenRule: 'ZANIM wyznaczysz medianę, MUSISZ uporządkować liczby rosnąco!',
     ckeTrap: 'Wyznaczenie mediany z nieposortowanego zestawu liczb to najczęstszy błąd maturzystów.',
-    keywords: ['średnia', 'mediana', 'statystyka', 'wartość środkowa']
+    keywords: ['średnia', 'mediana', 'statystyka', 'wartość środkowa'],
+    cke_page: 'str. 26',
+    pageNumber: 26
   }
 ];

@@ -65,6 +65,12 @@ export function cleanLatex(mathStr: string): string {
   s = s.replace(/!=/g, '\\neq ');
   s = s.replace(/\+-/g, '\\pm ');
 
+  // Normalizacja powszechnych greckich symboli w formułach matematycznych (delta -> \Delta, itp.)
+  s = s.replace(/(?<!\\)\bdelta\b/gi, '\\Delta');
+  s = s.replace(/(?<!\\)\balpha\b/gi, '\\alpha');
+  s = s.replace(/(?<!\\)\bbeta\b/gi, '\\beta');
+  s = s.replace(/(?<!\\)\bgamma\b/gi, '\\gamma');
+
   // Convert slash-notated fractions (e.g. 8/15 -> \frac{8}{15}, (8 \cdot 5)/(15 \cdot 4) -> \frac{8 \cdot 5}{15 \cdot 4})
   s = convertSlashFractions(s);
 
@@ -104,9 +110,18 @@ export function convertSlashFractions(mathStr: string): string {
     return `\\frac{${num.trim()}}{${den.trim()}}`;
   });
 
-  // 5. term / (expr) -> \frac{term}{expr} (e.g. 1/(x-1) -> \frac{1}{x-1})
+  // 5. term / (expr) -> \frac{term}{expr} (e.g. 1/(x-1) -> \frac{1}{x-1}, -b/(2a) -> -\frac{b}{2a})
   s = s.replace(/(^|[\s=+\-(<*·]|\\cdot\s*|\\pm\s*)([+-]?(?!(?:\\frac\b))(?:\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^[\]]*\])*|[a-zA-Z0-9^_{}]+))\s*\/\s*\(([^()]+)\)/g, (_m, pre, num, den) => {
-    return `${pre}\\frac{${num.trim()}}{${den.trim()}}`;
+    let sign = '';
+    let cleanNum = num.trim();
+    if (cleanNum.startsWith('-')) {
+      sign = '-';
+      cleanNum = cleanNum.slice(1).trim();
+    } else if (cleanNum.startsWith('+')) {
+      sign = '+';
+      cleanNum = cleanNum.slice(1).trim();
+    }
+    return `${pre}${sign}\\frac{${cleanNum}}{${den.trim()}}`;
   });
 
   // 6. Simple tokens: term / term -> \frac{term}{term}
@@ -284,6 +299,9 @@ export function autoWrapLatex(rawStr: string): string {
   const mathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
   const hasProseWords = words.some(w => !mathKeywords.has(w.toLowerCase()));
 
+  // Merge prefix equations like "f(x) = $ax^2 + bx + c$" into "$f(x) = ax^2 + bx + c$"
+  s = s.replace(/([a-zA-Z\(\)]+\s*=\s*)\$([^\$]+)\$/g, '$$$1$2$$');
+
   // Case 1: Pure math expression without delimiters (e.g. "(\sqrt{7}-1)^2 + 2\sqrt{7} = 8 \in \mathbb{Z}." or "8/15 · 5/4 = (8 · 5)/(15 · 4) = 40/60 = 2/3.")
   // MUST NOT be prose text with words like "W nawiasie", "Dzielenie", "Krok", etc.!
   if (!hasInlineDelimiters && !hasProseWords && (hasLatexCommands || /[=<>^_+\-*\/·]/.test(s))) {
@@ -296,7 +314,63 @@ export function autoWrapLatex(rawStr: string): string {
     return leadingSpace + `$${cleanLatex(math)}$${punct}` + trailingSpace;
   }
 
-  // Case 2: Prose text with mathematical clauses following colons (e.g. "W nawiasie: 4/6 - 3/6 = 1/6. Dzielenie: 1/6 * 12/5 = 12/30 = 2/5.")
+  // Case 2a: Mathematical equations and clauses in lesson titles or headers following colons
+  // e.g. "Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)"
+  // "Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q"
+  if (s.includes(':')) {
+    s = s.replace(/^([^:\n]+:\s*)(.+)$/s, (match, prefix, rest) => {
+      // If rest already has full math delimiters everywhere, return match
+      if (rest.startsWith('$') && rest.endsWith('$') && !rest.slice(1, -1).includes('$')) {
+        return match;
+      }
+
+      // Check if rest consists of math equations, possibly joined by " i " or " oraz "
+      const clauses = rest.split(/(\s+(?:i|oraz)\s+)/i);
+      const isMathFormula = (clause: string) => {
+        const c = clause.trim();
+        if (!c) return false;
+        if (c.startsWith('$') && c.endsWith('$')) return true;
+        const hasEqualOrComp = /[=<>_]/.test(c);
+        const hasOperators = /[\^+\-*\/]/.test(c);
+        if (!hasEqualOrComp && !hasOperators) return false;
+        // Check for long non-math Polish prose words (4+ chars that are not math keywords)
+        const stripped = c.replace(/\\?[a-zA-Z]+/g, (w) => {
+          const lower = w.toLowerCase().replace(/^\\/, '');
+          if (['delta', 'alpha', 'beta', 'gamma', 'sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'ln', 'lim', 'sqrt'].includes(lower)) {
+            return '';
+          }
+          return w;
+        });
+        const proseWords = stripped.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{4,}/g) || [];
+        return proseWords.length === 0;
+      };
+
+      const allClausesValid = clauses.length > 0 && clauses.every((chunk, idx) => {
+        if (idx % 2 === 1) return true; // Conjunction
+        return isMathFormula(chunk);
+      });
+
+      if (allClausesValid) {
+        const wrapped = clauses.map((chunk, idx) => {
+          if (idx % 2 === 1) return chunk; // " i " or " oraz "
+          const c = chunk.trim();
+          if (c.startsWith('$') && c.endsWith('$')) return c;
+          let punct = '';
+          let core = c;
+          if (core.endsWith('.')) {
+            punct = '.';
+            core = core.slice(0, -1).trim();
+          }
+          return `$${cleanLatex(core)}$${punct}`;
+        }).join('');
+        return `${prefix}${wrapped}`;
+      }
+
+      return match;
+    });
+  }
+
+  // Case 2b: Prose text with mathematical clauses following colons (e.g. "W nawiasie: 4/6 - 3/6 = 1/6. Dzielenie: 1/6 * 12/5 = 12/30 = 2/5.")
   if (!hasInlineDelimiters && hasProseWords) {
     s = s.replace(/([A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\s]+:\s*)([\d\s\+\-\*\/\=\(\)\^\.\,\<\>·]{3,})(?=\.|\;|$|\s+[A-ZĄĆĘŁŃÓŚŹŻ])/g, (match, label, mathExpr) => {
       const trimmedMath = mathExpr.trim();
@@ -316,7 +390,7 @@ export function autoWrapLatex(rawStr: string): string {
   // Case 3: Mixed text where math expressions or scoring criteria contain \commands without $
   if (hasLatexCommands) {
     // 3a. Wrap after colon: "1 pkt za zastosowanie wzoru: 7 - 2\sqrt{7} + 1."
-    if (!hasInlineDelimiters) {
+    if (!s.includes('$') && !s.includes('\\(') && !s.includes('\\[') && !s.includes('\\begin{')) {
       s = s.replace(/(:)(\s*)([^\n]+)$/, (match, colon, space, rest) => {
         let r = rest.trim();
         let punct = '';
@@ -324,7 +398,7 @@ export function autoWrapLatex(rawStr: string): string {
           punct = '.';
           r = r.slice(0, -1).trim();
         }
-        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/i.test(r)) {
+        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/i.test(r) && !r.startsWith('$')) {
           return `${colon}${space}$${r}$${punct}`;
         }
         return match;
@@ -333,7 +407,7 @@ export function autoWrapLatex(rawStr: string): string {
       // 3b. Wrap after "wynik ": "wynik a = 8 \in \mathbb{Z}."
       s = s.replace(/(wynik\s+)([^.,;\n]+)(\.?)/i, (match, prefix, expr, punct) => {
         let r = expr.trim();
-        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźż]/i.test(r)) {
+        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźż]/i.test(r) && !r.startsWith('$')) {
           return `${prefix}$${r}$${punct}`;
         }
         return match;
@@ -420,6 +494,11 @@ export function autoWrapLatex(rawStr: string): string {
       return `${pre}$${cleanLatex(mathExpr)}$`;
     });
 
+    // 4j. Mathematical variable equations and formulas in prose: e.g. "p = -b/(2a)", "q = -delta/(4a)", "y = 50 - x"
+    p = p.replace(/(^|[\s(])([a-zA-Z](?:\([a-zA-Z]\))?\s*=\s*[-+]?(?:\\?[a-zA-Z]+|\d+)(?:\s*[\/\*\+\-]\s*(?:\([^\)]+\)|[a-zA-Z\d\^]+))+)(?=[\s).,;!?]|$)/g, (_m, pre, mathExpr) => {
+      return `${pre}$${cleanLatex(mathExpr)}$`;
+    });
+
     return p;
   }).join('');
 
@@ -434,6 +513,78 @@ interface MathRendererProps {
 }
 
 const MATH_SPLIT_REGEX = /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{cases\}[\s\S]*?\\end\{cases\}|\$[^\$]+?\$|\\\([^\n]*?\\\))/g;
+
+export interface MathToken {
+  type: 'display-math' | 'inline-math' | 'text';
+  raw: string;
+  math?: string;
+  leadingPunct?: string;
+  trailingPunct?: string;
+}
+
+export function parseMixedMathTokens(str: string): MathToken[] {
+  if (!str) return [];
+  const rawParts = str.split(MATH_SPLIT_REGEX);
+  const tokens: MathToken[] = [];
+
+  for (let i = 0; i < rawParts.length; i++) {
+    const part = rawParts[i];
+    if (!part) continue;
+
+    const trimmed = part.trim();
+    const isDisplayMath = 
+      (trimmed.startsWith('$$') && trimmed.endsWith('$$') && trimmed.length >= 4) ||
+      (trimmed.startsWith('\\[') && trimmed.endsWith('\\]') && trimmed.length >= 4) ||
+      (trimmed.startsWith('\\begin{cases}') && trimmed.endsWith('\\end{cases}'));
+
+    const isInlineMath = 
+      (trimmed.startsWith('$') && trimmed.endsWith('$') && trimmed.length >= 2) ||
+      (trimmed.startsWith('\\(') && trimmed.endsWith('\\)') && trimmed.length >= 4);
+
+    if (isDisplayMath) {
+      tokens.push({ type: 'display-math', raw: part, math: cleanLatex(trimmed) });
+    } else if (isInlineMath) {
+      tokens.push({ type: 'inline-math', raw: part, math: cleanLatex(trimmed) });
+    } else {
+      tokens.push({ type: 'text', raw: part });
+    }
+  }
+
+  // Bind punctuation & delimiters to inline-math to avoid orphan dots/commas/brackets on mobile:
+  for (let i = 0; i < tokens.length; i++) {
+    if (tokens[i].type !== 'inline-math') continue;
+
+    // 1. Leading opening bracket: e.g. "($x \ge 0$)" or "[$a, b$]"
+    if (i > 0 && tokens[i - 1].type === 'text') {
+      const prev = tokens[i - 1];
+      const leadMatch = prev.raw.match(/(?:^|\s)(\(|\[)$/);
+      if (leadMatch) {
+        tokens[i].leadingPunct = leadMatch[1];
+        prev.raw = prev.raw.slice(0, prev.raw.length - leadMatch[1].length);
+      }
+    }
+
+    // 2. Trailing punctuation: e.g. "$formula$.", "$formula$,", "$formula$).", "$formula$!"
+    if (i < tokens.length - 1 && tokens[i + 1].type === 'text') {
+      const next = tokens[i + 1];
+      const trailMatch = next.raw.match(/^([.,;:!?]+(?:\s|$)|(?:\)[.,;:!?]*)(?:\s|$)|(?:\][.,;:!?]*)(?:\s|$))/);
+      if (trailMatch) {
+        const punct = trailMatch[1].trimEnd();
+        tokens[i].trailingPunct = punct;
+        next.raw = next.raw.slice(punct.length);
+      } else {
+        const simpleMatch = next.raw.match(/^([.,;:!?]+|\)[.,;:!?]*|\][.,;:!?]*)/);
+        if (simpleMatch) {
+          const punct = simpleMatch[1];
+          tokens[i].trailingPunct = punct;
+          next.raw = next.raw.slice(punct.length);
+        }
+      }
+    }
+  }
+
+  return tokens.filter(t => t.type !== 'text' || t.raw.length > 0);
+}
 
 const MathRendererComponent: React.FC<MathRendererProps> = ({
   content, 
@@ -511,25 +662,16 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
 
   // Funkcja pomocnicza do parsowania tekstu mieszanego z $...$ lub $$...$$
   const renderMixedParts = (str: string, extraClass: string = '') => {
-    // Splits by $$...$$, \[...\], \begin{cases}...\end{cases}, $...$, \(...\)
-    const parts = str.split(MATH_SPLIT_REGEX);
+    const tokens = parseMixedMathTokens(str);
     return (
       <span className={`break-words max-w-full leading-relaxed inline ${extraClass}`}>
-        {parts.map((part, index) => {
-          if (!part) return null;
+        {tokens.map((tok, index) => {
+          if (tok.type === 'text') {
+            return renderFormattedText(tok.raw, `txt-${index}`);
+          }
 
-          const trimmed = part.trim();
-          const isDisplayMath = 
-            (trimmed.startsWith('$$') && trimmed.endsWith('$$') && trimmed.length >= 4) ||
-            (trimmed.startsWith('\\[') && trimmed.endsWith('\\]') && trimmed.length >= 4) ||
-            (trimmed.startsWith('\\begin{cases}') && trimmed.endsWith('\\end{cases}'));
-
-          const isInlineMath = 
-            (trimmed.startsWith('$') && trimmed.endsWith('$') && trimmed.length >= 2) ||
-            (trimmed.startsWith('\\(') && trimmed.endsWith('\\)') && trimmed.length >= 4);
-
-          if (isDisplayMath) {
-            const math = cleanLatex(trimmed);
+          if (tok.type === 'display-math') {
+            const math = tok.math || '';
             return (
               <span 
                 key={index} 
@@ -547,10 +689,16 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
                 </span>
               </span>
             );
-          } else if (isInlineMath) {
-            const math = cleanLatex(trimmed);
+          }
+
+          if (tok.type === 'inline-math') {
+            const math = tok.math || '';
             return (
-              <span key={index} className="inline-block align-baseline mx-0.5 font-normal whitespace-nowrap">
+              <span 
+                key={index} 
+                className="inline-flex items-baseline align-baseline mx-0.5 font-normal whitespace-nowrap max-w-full overflow-x-auto overflow-y-hidden touch-pan-x scrollbar-none"
+              >
+                {tok.leadingPunct && <span className="inline align-baseline">{tok.leadingPunct}</span>}
                 <InlineMath 
                   math={math} 
                   renderError={() => (
@@ -559,11 +707,12 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
                     </span>
                   )}
                 />
+                {tok.trailingPunct && <span className="inline align-baseline">{tok.trailingPunct}</span>}
               </span>
             );
           }
 
-          return renderFormattedText(part, `txt-${index}`);
+          return null;
         })}
       </span>
     );

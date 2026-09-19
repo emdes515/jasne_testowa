@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { cleanLatex, formatMathAnswer, autoWrapLatex, convertSlashFractions } from '../MathRenderer';
+import { cleanLatex, formatMathAnswer, autoWrapLatex, convertSlashFractions, parseMixedMathTokens } from '../MathRenderer';
 
 describe('MathRenderer cleanLatex', () => {
   it('handles empty or falsy inputs', () => {
@@ -166,6 +166,93 @@ describe('autoWrapLatex', () => {
       .toBe('Wyznacz zbiór $B = (-1, 6\\rangle$. Zbadaj jego elementy.');
     expect(autoWrapLatex('Wyznacz zbiór A = \\langle -5, 2) w zadaniu.'))
       .toBe('Wyznacz zbiór $A = \\langle -5, 2)$ w zadaniu.');
+  });
+});
+
+describe('parseMixedMathTokens punctuation binding', () => {
+  it('binds trailing periods directly to inline math to eliminate orphan dots', () => {
+    const input = 'Przychód wynosi $R(x) = 15000$. Wtedy zysk rośnie.';
+    const tokens = parseMixedMathTokens(input);
+
+    expect(tokens).toHaveLength(3);
+    expect(tokens[0]).toEqual({ type: 'text', raw: 'Przychód wynosi ' });
+    expect(tokens[1]).toEqual({
+      type: 'inline-math',
+      raw: '$R(x) = 15000$',
+      math: 'R(x) = 15000',
+      trailingPunct: '.'
+    });
+    expect(tokens[2]).toEqual({ type: 'text', raw: ' Wtedy zysk rośnie.' });
+  });
+
+  it('binds opening brackets and trailing punctuation together for expressions like ($x \\ge 0$).', () => {
+    const input = 'Niech $x$ oznacza liczbę podwyżek ($x \\ge 0$). Wtedy nowa cena to $C(x) = 50 + 2x$, a zysk rośnie.';
+    const tokens = parseMixedMathTokens(input);
+
+    const inequalityToken = tokens.find(t => t.type === 'inline-math' && t.math?.includes('\\ge'));
+    expect(inequalityToken).toBeDefined();
+    expect(inequalityToken?.leadingPunct).toBe('(');
+    expect(inequalityToken?.trailingPunct).toBe(').');
+
+    // Preceding text should not have dangling "("
+    const prevIndex = tokens.indexOf(inequalityToken!);
+    expect(tokens[prevIndex - 1].raw).not.toMatch(/\($/);
+
+    // Following text should not have dangling "). "
+    expect(tokens[prevIndex + 1].raw.trimStart()).toMatch(/^Wtedy nowa cena/);
+  });
+
+  it('binds commas so they do not wrap alone to the next line', () => {
+    const input = 'Dla $x \\in [0, 30)$, funkcja rośnie.';
+    const tokens = parseMixedMathTokens(input);
+
+    const mathToken = tokens.find(t => t.type === 'inline-math');
+    expect(mathToken).toBeDefined();
+    expect(mathToken?.trailingPunct).toBe(',');
+    expect(tokens[tokens.indexOf(mathToken!) + 1].raw.trimStart()).toMatch(/^funkcja rośnie\./);
+  });
+
+  it('correctly distinguishes display-math and does not swallow text', () => {
+    const input = 'Wzór ogólny:\n$$f(x) = ax^2 + bx + c$$\ngdzie $a \\neq 0$.';
+    const tokens = parseMixedMathTokens(input);
+
+    expect(tokens).toHaveLength(4);
+    expect(tokens[0].type).toBe('text');
+    expect(tokens[1].type).toBe('display-math');
+    expect(tokens[2].type).toBe('text');
+    expect(tokens[3].type).toBe('inline-math');
+    expect(tokens[3].trailingPunct).toBe('.');
+  });
+});
+
+describe('Lesson titles and Greek letter math normalization', () => {
+  it('correctly auto-wraps lesson titles containing multiple formulas separated by conjunctions', () => {
+    const title = 'Współrzędne wierzchołka paraboli: p = -b/(2a) i q = -delta/(4a)';
+    const wrapped = autoWrapLatex(title);
+    expect(wrapped).toBe('Współrzędne wierzchołka paraboli: $p = -\\frac{b}{2a}$ i $q = -\\frac{\\Delta}{4a}$');
+  });
+
+  it('correctly auto-wraps quadratic canonical form titles', () => {
+    const title = 'Postać kanoniczna funkcji kwadratowej: f(x) = a(x - p)^2 + q';
+    const wrapped = autoWrapLatex(title);
+    expect(wrapped).toBe('Postać kanoniczna funkcji kwadratowej: $f(x) = a(x - p)^2 + q$');
+  });
+
+  it('normalizes Greek delta in cleanLatex', () => {
+    expect(cleanLatex('q = -delta/(4a)')).toBe('q = -\\frac{\\Delta}{4a}');
+    expect(cleanLatex('\\Delta > 0')).toBe('\\Delta > 0');
+  });
+
+  it('preserves negative sign on fraction numerators in convertSlashFractions', () => {
+    expect(cleanLatex('p = -b/(2a)')).toBe('p = -\\frac{b}{2a}');
+    expect(cleanLatex('x = -1/2')).toBe('x = -\\frac{1}{2}');
+  });
+
+  it('auto-wraps variable equations in continuous prose', () => {
+    const text = 'Szukana wielkość to wierzchołek paraboli p = -b/(2a). Wtedy y = 50 - x.';
+    const wrapped = autoWrapLatex(text);
+    expect(wrapped).toContain('$p = -\\frac{b}{2a}$');
+    expect(wrapped).toContain('$y = 50 - x$');
   });
 });
 

@@ -17,7 +17,7 @@
  *    Subcollection: users/{user_id}/progress/{topic_id} -> Completed lessons, errors, stars, unlocked elements.
  */
 
-import { LessonTheoryPill, UserPerks, UserAiUsageSummary } from './types';
+import { LessonTheoryPill, UserPerks, UserAiUsageSummary, CkeTaskCompletionRecord } from './types';
 import { filterActualTaskIds } from './utils';
 export interface SubjectTopicMetadata {
   id: string; // e.g. "dzial-1"
@@ -31,28 +31,37 @@ export interface SubjectTopicMetadata {
   tasks_count: number;
 }
 
+export interface SubjectPillarItem {
+  id: string;
+  name: string;
+  title?: string;
+  short_title?: string;
+  description?: string;
+  icon?: string;
+  color?: string;
+  pointsGoal?: number;
+  topics_count?: number;
+  topics_range?: [number, number];
+}
+
 export interface SubjectDocument {
   id: string; // e.g. "matematyka-podstawowa"
   key: string; // e.g. "math"
   name: string; // e.g. "Matematyka Podstawowa"
   short_name: string; // e.g. "Matematyka"
-  level: string; // e.g. "Nowa Formuła 2023 (Poziom Podstawowy)"
+  level?: string; // e.g. "Nowa Formuła 2023 (Poziom Podstawowy)"
   icon: string; // e.g. "Calculator"
   color: string; // e.g. "#FFB800"
-  topics_count: number;
-  lessons_count: number;
-  tasks_count: number;
+  topics_count?: number;
+  lessons_count?: number;
+  tasks_count?: number;
   topics_metadata?: SubjectTopicMetadata[];
   /** Filary przedmiotu (język polski: 3 filary). Treść wyłącznie z Firestore. */
-  pillars?: Array<{
-    id: string;
-    name: string;
-    short_title?: string;
-    description?: string;
-    icon?: string;
-    color?: string;
-    topics_count?: number;
-  }>;
+  pillars?: SubjectPillarItem[];
+  formula?: string;
+  description?: string;
+  is_active?: boolean;
+  order?: number;
   updatedAt?: string;
 }
 
@@ -79,6 +88,14 @@ export interface TopicDocument {
   matura_points_range: string;
   importance: string;
   lessons_metadata: LessonMetadataItem[];
+  subject_id?: string;
+  pillar_id?: string;
+  pillar_name?: string;
+  lessons_count?: number;
+  tasks_count?: number;
+  required_books?: any[];
+  book_exam?: any;
+  epoch_exam?: any;
   final_test?: any;
   order?: number;
   updatedAt?: string;
@@ -203,6 +220,7 @@ export interface FirestoreUserDocument {
   aiVisionDailyCount?: number;
   lastVisionDate?: string;
 
+  completedCkeTasks?: Record<string, CkeTaskCompletionRecord>;
   // AI Token Usage Analytics
   aiUsage?: UserAiUsageSummary;
 }

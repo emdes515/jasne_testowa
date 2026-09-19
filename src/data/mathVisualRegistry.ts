@@ -612,7 +612,431 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
 };
 
 // =========================================================================
-// 3. SELF-HEALING ENRICHMENT UTILITIES
+// 3. ARCHETYPY GEOMETRYCZNE, ANALITYCZNE I OPTYMALIZACYJNE DLA ZADAŃ
+// =========================================================================
+
+export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
+  // Lekcja 15.6: Optymalizacja ogrodzenia - Bramy wjazdowe i furtki
+  'lesson-15-6': {
+    type: 'GEOMETRY_2D',
+    title: 'Schemat działki z bramą wjazdową',
+    formulaBadge: '$2x + 2y = L_{\\text{siatki}} + s_{\\text{bramy}}$',
+    caption: 'Ogrodzenie prostokątnej działki o bokach $x \\times y$ z przerwą o szerokości $s_{\\text{bramy}}$ na bramę.',
+    width: 500,
+    height: 260,
+    segments: [
+      { from: [80, 50], to: [80, 210], color: '#38BDF8', strokeWidth: 3, label: 'x' },
+      { from: [80, 50], to: [420, 50], color: '#FFB800', strokeWidth: 3, label: 'y' },
+      { from: [420, 50], to: [420, 210], color: '#38BDF8', strokeWidth: 3, label: 'x' },
+      { from: [80, 210], to: [200, 210], color: '#FFB800', strokeWidth: 3 },
+      { from: [200, 210], to: [300, 210], color: '#F43F5E', strokeWidth: 2, dashed: true, label: 'brama s' },
+      { from: [300, 210], to: [420, 210], color: '#FFB800', strokeWidth: 3 }
+    ],
+    points: [
+      { x: 80, y: 50, dot: 'filled', color: '#38BDF8', label: 'A', labelPosition: 'top-left' },
+      { x: 420, y: 50, dot: 'filled', color: '#FFB800', label: 'B', labelPosition: 'top-right' },
+      { x: 420, y: 210, dot: 'filled', color: '#38BDF8', label: 'C', labelPosition: 'bottom-right' },
+      { x: 80, y: 210, dot: 'filled', color: '#FFB800', label: 'D', labelPosition: 'bottom-left' },
+      { x: 200, y: 210, dot: 'hollow', color: '#F43F5E' },
+      { x: 300, y: 210, dot: 'hollow', color: '#F43F5E' }
+    ],
+    labels: [
+      { x: 250, y: 130, text: 'Działka (pole P = x · y)', color: '#94A3B8', fontSize: 13, anchor: 'middle' },
+      { x: 250, y: 235, text: 'szerokość bramy s (brak siatki)', color: '#F43F5E', fontSize: 11, anchor: 'middle' }
+    ],
+    metrics: [
+      { label: 'Pełny obwód działki', value: '$2x + 2y = L_{\\text{siatki}} + s$', color: '#38BDF8' },
+      { label: 'Funkcja celu (pole)', value: '$P(x) = x \\cdot y$', color: '#FFB800' },
+      { label: 'Dziedzina geometryczna', value: '$x > s \\land y > 0$', color: '#10B981' },
+      { label: 'Optimum CKE', value: '$x_w = -\\frac{b}{2a}$', color: '#F43F5E' }
+    ]
+  },
+
+  // Lekcja 15.4: Działka przylegająca do muru / rzeki
+  'lesson-15-4': {
+    type: 'GEOMETRY_2D',
+    title: 'Działka przylegająca do muru / rzeki',
+    formulaBadge: '$2x + y = L \\implies y = L - 2x$',
+    caption: 'Ogrodzenie prostokątnej działki z 3 stron (mur lub rzeka nie wymagają siatki).',
+    width: 500,
+    height: 250,
+    segments: [
+      { from: [60, 50], to: [440, 50], color: '#64748B', strokeWidth: 5, dashed: true, label: 'Mur / Rzeka (bez siatki)' },
+      { from: [100, 50], to: [100, 200], color: '#38BDF8', strokeWidth: 3, label: 'x' },
+      { from: [100, 200], to: [400, 200], color: '#FFB800', strokeWidth: 3, label: 'y' },
+      { from: [400, 50], to: [400, 200], color: '#38BDF8', strokeWidth: 3, label: 'x' }
+    ],
+    points: [
+      { x: 100, y: 50, dot: 'filled', color: '#64748B' },
+      { x: 400, y: 50, dot: 'filled', color: '#64748B' },
+      { x: 100, y: 200, dot: 'filled', color: '#38BDF8' },
+      { x: 400, y: 200, dot: 'filled', color: '#FFB800' }
+    ],
+    labels: [
+      { x: 250, y: 125, text: 'Pole wybiegu: P(x) = x · (L - 2x)', color: '#94A3B8', fontSize: 13, anchor: 'middle' }
+    ],
+    metrics: [
+      { label: 'Zużycie siatki', value: '$2x + y = L$', color: '#38BDF8' },
+      { label: 'Wyznaczona zmienna', value: '$y = L - 2x$', color: '#FFB800' },
+      { label: 'Dziedzina boków', value: '$x \\in (0, \\frac{L}{2})$', color: '#10B981' },
+      { label: 'Maksymalne pole', value: '$x_{\\max} = \\frac{L}{4}$', color: '#F43F5E' }
+    ]
+  },
+
+  // Lekcja 15.5: Działka z podziałem wewnętrznym (2 kwatery)
+  'lesson-15-5': {
+    type: 'GEOMETRY_2D',
+    title: 'Działka z płotem wewnętrznym (2 kwatery)',
+    formulaBadge: '$3x + 2y = L \\implies y = \\frac{L - 3x}{2}$',
+    caption: 'Ogrodzenie prostokątnego wybiegu podzielonego siatką na dwie kwatery.',
+    width: 500,
+    height: 250,
+    segments: [
+      { from: [80, 50], to: [80, 200], color: '#38BDF8', strokeWidth: 3, label: 'x' },
+      { from: [80, 50], to: [420, 50], color: '#FFB800', strokeWidth: 3, label: 'y' },
+      { from: [420, 50], to: [420, 200], color: '#38BDF8', strokeWidth: 3, label: 'x' },
+      { from: [80, 200], to: [420, 200], color: '#FFB800', strokeWidth: 3, label: 'y' },
+      { from: [250, 50], to: [250, 200], color: '#10B981', strokeWidth: 3, label: 'przegroda x' }
+    ],
+    points: [
+      { x: 80, y: 50, dot: 'filled', color: '#38BDF8' },
+      { x: 420, y: 50, dot: 'filled', color: '#FFB800' },
+      { x: 420, y: 200, dot: 'filled', color: '#38BDF8' },
+      { x: 80, y: 200, dot: 'filled', color: '#FFB800' },
+      { x: 250, y: 50, dot: 'filled', color: '#10B981' },
+      { x: 250, y: 200, dot: 'filled', color: '#10B981' }
+    ],
+    labels: [
+      { x: 165, y: 125, text: 'Kwatera 1', color: '#94A3B8', fontSize: 12, anchor: 'middle' },
+      { x: 335, y: 125, text: 'Kwatera 2', color: '#94A3B8', fontSize: 12, anchor: 'middle' }
+    ],
+    metrics: [
+      { label: 'Zużycie siatki', value: '$3x + 2y = L$', color: '#38BDF8' },
+      { label: 'Wyznaczona zmienna', value: '$y = \\frac{L - 3x}{2}$', color: '#FFB800' },
+      { label: 'Dziedzina', value: '$x \\in (0, \\frac{L}{3})$', color: '#10B981' },
+      { label: 'Pole całkowite', value: '$P(x) = -\\frac{3}{2}x^2 + \\frac{L}{2}x$', color: '#F43F5E' }
+    ]
+  },
+
+  // Lekcja 9.3: Trójkąt prostokątny i Twierdzenie Pitagorasa
+  'lesson-9-3': {
+    type: 'GEOMETRY_2D',
+    title: 'Trójkąt prostokątny: Twierdzenie Pitagorasa',
+    formulaBadge: '$a^2 + b^2 = c^2$',
+    caption: 'W trójkącie prostokątnym suma kwadratów przyprostokątnych równa się kwadratowi przeciwprostokątnej.',
+    width: 500,
+    height: 260,
+    polygons: [
+      { points: [[100, 200], [380, 200], [100, 60]], fill: 'rgba(56, 189, 248, 0.05)', stroke: '#38BDF8', strokeWidth: 2.5 }
+    ],
+    segments: [
+      { from: [100, 200], to: [380, 200], color: '#10B981', strokeWidth: 3, label: 'przyprostokątna a' },
+      { from: [100, 200], to: [100, 60], color: '#FFB800', strokeWidth: 3, label: 'przyprostokątna b' },
+      { from: [100, 60], to: [380, 200], color: '#F43F5E', strokeWidth: 3.5, label: 'przeciwprostokątna c' }
+    ],
+    arcs: [
+      { cx: 100, cy: 200, r: 24, startAngleDeg: 270, endAngleDeg: 360, color: '#38BDF8', showRightAngleDot: true },
+      { cx: 380, cy: 200, r: 35, startAngleDeg: 180, endAngleDeg: 206, color: '#10B981', label: 'α' }
+    ],
+    points: [
+      { x: 100, y: 200, dot: 'filled', color: '#38BDF8', label: 'A (90°)', labelPosition: 'bottom-left' },
+      { x: 380, y: 200, dot: 'filled', color: '#10B981', label: 'B', labelPosition: 'bottom-right' },
+      { x: 100, y: 60, dot: 'filled', color: '#FFB800', label: 'C', labelPosition: 'top-left' }
+    ],
+    metrics: [
+      { label: 'Relacja Pitagorasa', value: '$a^2 + b^2 = c^2$', color: '#F43F5E' },
+      { label: 'Przeciwprostokątna', value: '$c = \\sqrt{a^2 + b^2}$', color: '#10B981' },
+      { label: 'Pole trójkąta', value: '$P = \\frac{a \\cdot b}{2}$', color: '#FFB800' },
+      { label: 'Promień okręgu opisanego', value: '$R = \\frac{c}{2}$', color: '#38BDF8' }
+    ]
+  },
+
+  // Lekcja 9.4: Trójkąt równoboczny
+  'lesson-9-4': {
+    type: 'GEOMETRY_2D',
+    title: 'Trójkąt równoboczny: wysokość h i promienie r, R',
+    formulaBadge: '$h = \\frac{a\\sqrt{3}}{2},\\quad P = \\frac{a^2\\sqrt{3}}{4}$',
+    caption: 'W trójkącie równobocznym wszystkie kąty mają $60^\\circ$, a wysokość $h$ dzieli się w stosunku $2:1$.',
+    width: 500,
+    height: 270,
+    polygons: [
+      { points: [[110, 220], [390, 220], [250, 40]], fill: 'rgba(255, 184, 0, 0.05)', stroke: '#FFB800', strokeWidth: 2.5 }
+    ],
+    segments: [
+      { from: [110, 220], to: [390, 220], color: '#FFB800', strokeWidth: 3, label: 'a' },
+      { from: [110, 220], to: [250, 40], color: '#FFB800', strokeWidth: 3, label: 'a' },
+      { from: [390, 220], to: [250, 40], color: '#FFB800', strokeWidth: 3, label: 'a' },
+      { from: [250, 40], to: [250, 220], color: '#38BDF8', strokeWidth: 2.5, dashed: true, label: 'h' }
+    ],
+    points: [
+      { x: 110, y: 220, dot: 'filled', color: '#FFB800', label: 'A (60°)', labelPosition: 'bottom-left' },
+      { x: 390, y: 220, dot: 'filled', color: '#FFB800', label: 'B (60°)', labelPosition: 'bottom-right' },
+      { x: 250, y: 40, dot: 'filled', color: '#FFB800', label: 'C (60°)', labelPosition: 'top' },
+      { x: 250, y: 160, dot: 'filled', color: '#10B981', label: 'S (środek)', labelPosition: 'right' }
+    ],
+    metrics: [
+      { label: 'Wysokość trójkąta', value: '$h = \\frac{a\\sqrt{3}}{2}$', color: '#38BDF8' },
+      { label: 'Pole trójkąta', value: '$P = \\frac{a^2\\sqrt{3}}{4}$', color: '#FFB800' },
+      { label: 'Promień wpisany r', value: '$r = \\frac{1}{3}h = \\frac{a\\sqrt{3}}{6}$', color: '#10B981' },
+      { label: 'Promień opisany R', value: '$R = \\frac{2}{3}h = \\frac{a\\sqrt{3}}{3}$', color: '#F43F5E' }
+    ]
+  },
+
+  // Lekcja 9.11: Styczna do okręgu
+  'lesson-9-11': {
+    type: 'GEOMETRY_2D',
+    title: 'Styczna do okręgu: Prostopadłość promienia i prostej k',
+    formulaBadge: '$r \\perp k \\implies \\angle OPS = 90^\\circ$',
+    caption: 'Promień okręgu poprowadzony do punktu styczności jest zawsze prostopadły do prostej stycznej.',
+    width: 500,
+    height: 260,
+    circles: [
+      { cx: 220, cy: 120, r: 70, stroke: '#38BDF8', strokeWidth: 2.5, fill: 'rgba(56, 189, 248, 0.05)' }
+    ],
+    segments: [
+      { from: [290, 20], to: [290, 220], color: '#FFB800', strokeWidth: 3, label: 'styczna k' },
+      { from: [220, 120], to: [290, 120], color: '#10B981', strokeWidth: 3, label: 'promień r' }
+    ],
+    arcs: [
+      { cx: 290, cy: 120, r: 20, startAngleDeg: 180, endAngleDeg: 270, color: '#F43F5E', showRightAngleDot: true }
+    ],
+    points: [
+      { x: 220, y: 120, dot: 'filled', color: '#38BDF8', label: 'S (środek)', labelPosition: 'left' },
+      { x: 290, y: 120, dot: 'filled', color: '#F43F5E', label: 'P (punkt styczności)', labelPosition: 'right' }
+    ],
+    metrics: [
+      { label: 'Kąt ze styczną', value: '$90^\\circ$ (kąt prosty)', color: '#F43F5E' },
+      { label: 'Odległość środka', value: '$d(S, k) = r$', color: '#10B981' },
+      { label: 'Punkty wspólne', value: 'dokładnie 1 punkt $P$', color: '#38BDF8' }
+    ]
+  },
+
+  // Lekcja 9.13: Trapez
+  'lesson-9-13': {
+    type: 'GEOMETRY_2D',
+    title: 'Trapez: Podstawy a, b i wysokość h',
+    formulaBadge: '$P = \\frac{a + b}{2} \\cdot h$',
+    caption: 'Pole trapezu to iloczyn średniej arytmetycznej podstaw i wysokości.',
+    width: 500,
+    height: 250,
+    polygons: [
+      { points: [[80, 200], [420, 200], [330, 70], [170, 70]], fill: 'rgba(56, 189, 248, 0.05)', stroke: '#38BDF8', strokeWidth: 2.5 }
+    ],
+    segments: [
+      { from: [80, 200], to: [420, 200], color: '#FFB800', strokeWidth: 3, label: 'podstawa a' },
+      { from: [170, 70], to: [330, 70], color: '#FFB800', strokeWidth: 3, label: 'podstawa b' },
+      { from: [80, 200], to: [170, 70], color: '#38BDF8', strokeWidth: 2.5, label: 'c' },
+      { from: [420, 200], to: [330, 70], color: '#38BDF8', strokeWidth: 2.5, label: 'd' },
+      { from: [170, 70], to: [170, 200], color: '#10B981', strokeWidth: 2.5, dashed: true, label: 'h' }
+    ],
+    arcs: [
+      { cx: 170, cy: 200, r: 18, startAngleDeg: 270, endAngleDeg: 360, color: '#10B981', showRightAngleDot: true }
+    ],
+    points: [
+      { x: 80, y: 200, dot: 'filled', color: '#38BDF8', label: 'A', labelPosition: 'bottom-left' },
+      { x: 420, y: 200, dot: 'filled', color: '#38BDF8', label: 'B', labelPosition: 'bottom-right' },
+      { x: 330, y: 70, dot: 'filled', color: '#38BDF8', label: 'C', labelPosition: 'top-right' },
+      { x: 170, y: 70, dot: 'filled', color: '#38BDF8', label: 'D', labelPosition: 'top-left' }
+    ],
+    metrics: [
+      { label: 'Wzór na pole', value: '$P = \\frac{a+b}{2} \\cdot h$', color: '#FFB800' },
+      { label: 'Linia środkowa', value: '$m = \\frac{a+b}{2}$', color: '#10B981' },
+      { label: 'Odcinek w r-ramiennym', value: '$x = \\frac{a-b}{2}$', color: '#38BDF8' }
+    ]
+  },
+
+  // Lekcja 10.1: Długość odcinka w układzie współrzędnych
+  'lesson-10-1': {
+    type: 'GEOMETRY_2D',
+    title: 'Długość odcinka w układzie współrzędnych',
+    formulaBadge: '$|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$',
+    caption: 'Długość odcinka $AB$ wynika bezpośrednio z twierdzenia Pitagorasa dla przyrostów na osiach.',
+    width: 500,
+    height: 270,
+    grid: { minX: 50, maxX: 450, minY: 30, maxY: 240, stepX: 40, stepY: 30 },
+    segments: [
+      { from: [50, 210], to: [450, 210], color: '#64748B', strokeWidth: 1.5 },
+      { from: [90, 240], to: [90, 30], color: '#64748B', strokeWidth: 1.5 },
+      { from: [130, 180], to: [370, 60], color: '#38BDF8', strokeWidth: 3.5, label: '|AB|' },
+      { from: [130, 180], to: [370, 180], color: '#10B981', strokeWidth: 2, dashed: true, label: 'xB - xA' },
+      { from: [370, 180], to: [370, 60], color: '#FFB800', strokeWidth: 2, dashed: true, label: 'yB - yA' }
+    ],
+    points: [
+      { x: 130, y: 180, dot: 'filled', color: '#38BDF8', label: 'A(xA, yA)', labelPosition: 'bottom-left' },
+      { x: 370, y: 60, dot: 'filled', color: '#38BDF8', label: 'B(xB, yB)', labelPosition: 'top-right' },
+      { x: 370, y: 180, dot: 'hollow', color: '#64748B', label: 'C', labelPosition: 'bottom-right' }
+    ],
+    labels: [
+      { x: 440, y: 200, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 105, y: 35, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' }
+    ],
+    metrics: [
+      { label: 'Długość odcinka', value: '$|AB| = \\sqrt{\\Delta x^2 + \\Delta y^2}$', color: '#38BDF8' },
+      { label: 'Karta CKE', value: 'str. 7 tablic', color: '#10B981' }
+    ]
+  },
+
+  // Lekcja 10.2: Środek odcinka
+  'lesson-10-2': {
+    type: 'GEOMETRY_2D',
+    title: 'Współrzędne środka odcinka S',
+    formulaBadge: '$S = \\left(\\frac{x_A + x_B}{2},\\; \\frac{y_A + y_B}{2}\\right)$',
+    caption: 'Środek odcinka to punkt o współrzędnych będących średnimi arytmetycznymi współrzędnych końców.',
+    width: 500,
+    height: 260,
+    grid: { minX: 50, maxX: 450, minY: 30, maxY: 230, stepX: 40, stepY: 30 },
+    segments: [
+      { from: [50, 200], to: [450, 200], color: '#64748B', strokeWidth: 1.5 },
+      { from: [90, 230], to: [90, 30], color: '#64748B', strokeWidth: 1.5 },
+      { from: [130, 170], to: [250, 110], color: '#38BDF8', strokeWidth: 3, label: '|AS|' },
+      { from: [250, 110], to: [370, 50], color: '#38BDF8', strokeWidth: 3, label: '|SB|' }
+    ],
+    points: [
+      { x: 130, y: 170, dot: 'filled', color: '#38BDF8', label: 'A(xA, yA)', labelPosition: 'bottom-left' },
+      { x: 370, y: 50, dot: 'filled', color: '#38BDF8', label: 'B(xB, yB)', labelPosition: 'top-right' },
+      { x: 250, y: 110, dot: 'filled', color: '#10B981', label: 'S(xS, yS)', labelPosition: 'top-left' }
+    ],
+    labels: [
+      { x: 440, y: 190, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 105, y: 35, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' }
+    ],
+    metrics: [
+      { label: 'Środek xS', value: '$x_S = \\frac{x_A + x_B}{2}$', color: '#10B981' },
+      { label: 'Środek yS', value: '$y_S = \\frac{y_A + y_B}{2}$', color: '#10B981' },
+      { label: 'Wyznaczanie końca', value: '$x_B = 2x_S - x_A$', color: '#FFB800' }
+    ]
+  },
+
+  // Lekcja 10.5: Równanie okręgu w układzie
+  'lesson-10-5': {
+    type: 'GEOMETRY_2D',
+    title: 'Równanie okręgu o środku S(a, b) i promieniu r',
+    formulaBadge: '$(x - a)^2 + (y - b)^2 = r^2$',
+    caption: 'Punkty $P(x, y)$ na okręgu leżą w stałej odległości $r$ od środka $S(a, b)$.',
+    width: 500,
+    height: 270,
+    grid: { minX: 50, maxX: 450, minY: 30, maxY: 240, stepX: 40, stepY: 30 },
+    segments: [
+      { from: [50, 170], to: [450, 170], color: '#64748B', strokeWidth: 1.5 },
+      { from: [150, 240], to: [150, 30], color: '#64748B', strokeWidth: 1.5 },
+      { from: [270, 110], to: [330, 60], color: '#F43F5E', strokeWidth: 3, label: 'r' }
+    ],
+    circles: [
+      { cx: 270, cy: 110, r: 78, stroke: '#FFB800', strokeWidth: 2.5, fill: 'rgba(255, 184, 0, 0.05)' }
+    ],
+    points: [
+      { x: 270, y: 110, dot: 'filled', color: '#FFB800', label: 'S(a, b)', labelPosition: 'bottom' },
+      { x: 330, y: 60, dot: 'filled', color: '#38BDF8', label: 'P(x, y)', labelPosition: 'top-right' }
+    ],
+    labels: [
+      { x: 440, y: 160, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
+      { x: 165, y: 35, text: 'y', color: '#94A3B8', fontSize: 13, fontWeight: '700' }
+    ],
+    metrics: [
+      { label: 'Równanie kanoniczne', value: '$(x - a)^2 + (y - b)^2 = r^2$', color: '#FFB800' },
+      { label: 'Środek okręgu', value: '$S = (a, b)$', color: '#38BDF8' },
+      { label: 'Promień', value: '$r = \\sqrt{r^2}$', color: '#F43F5E' }
+    ]
+  },
+
+  // Lekcja 8.1: Definicje funkcji trygonometrycznych
+  'lesson-8-1': {
+    type: 'TRIGONOMETRY',
+    title: 'Definicje funkcji trygonometrycznych: sin, cos, tg',
+    formulaBadge: '$\\sin\\alpha = \\frac{a}{c},\\quad \\cos\\alpha = \\frac{b}{c},\\quad \\tan\\alpha = \\frac{a}{b}$',
+    caption: 'Stosunki długości boków w trójkącie prostokątnym dla kąta ostrego $\\alpha$.',
+    width: 500,
+    height: 260,
+    polygons: [
+      { points: [[100, 200], [380, 200], [100, 60]], fill: 'rgba(56, 189, 248, 0.05)', stroke: '#38BDF8', strokeWidth: 2.5 }
+    ],
+    segments: [
+      { from: [100, 200], to: [380, 200], color: '#FFB800', strokeWidth: 3, label: 'przyległa b' },
+      { from: [100, 200], to: [100, 60], color: '#10B981', strokeWidth: 3, label: 'naprzeciwległa a' },
+      { from: [100, 60], to: [380, 200], color: '#F43F5E', strokeWidth: 3.5, label: 'przeciwprostokątna c' }
+    ],
+    arcs: [
+      { cx: 100, cy: 200, r: 24, startAngleDeg: 270, endAngleDeg: 360, color: '#38BDF8', showRightAngleDot: true },
+      { cx: 380, cy: 200, r: 35, startAngleDeg: 180, endAngleDeg: 206, color: '#10B981', label: 'α' }
+    ],
+    points: [
+      { x: 100, y: 200, dot: 'filled', color: '#38BDF8', label: 'C (90°)', labelPosition: 'bottom-left' },
+      { x: 380, y: 200, dot: 'filled', color: '#10B981', label: 'A (kąt α)', labelPosition: 'bottom-right' },
+      { x: 100, y: 60, dot: 'filled', color: '#FFB800', label: 'B', labelPosition: 'top-left' }
+    ],
+    metrics: [
+      { label: 'Sinus kąta α', value: '$\\sin\\alpha = \\frac{a}{c}$', color: '#10B981' },
+      { label: 'Cosinus kąta α', value: '$\\cos\\alpha = \\frac{b}{c}$', color: '#FFB800' },
+      { label: 'Tangens kąta α', value: '$\\tan\\alpha = \\frac{a}{b}$', color: '#38BDF8' }
+    ]
+  },
+
+  // Lekcja 11.6: Walec
+  'lesson-11-6': {
+    type: 'STEREOMETRY_3D',
+    title: 'Walec: Przekrój osiowy, promień r i wysokość H',
+    formulaBadge: '$V = \\pi r^2 H,\\quad P_c = 2\\pi r(r + H)$',
+    caption: 'Walec o promieniu podstawy $r$ i wysokości $H$. Przekrój osiowy to prostokąt $2r \\times H$.',
+    width: 500,
+    height: 270,
+    polygons: [
+      { points: [[190, 60], [310, 60], [310, 200], [190, 200]], fill: 'rgba(56, 189, 248, 0.08)', stroke: '#38BDF8', strokeWidth: 2 }
+    ],
+    segments: [
+      { from: [190, 60], to: [190, 200], color: '#FFB800', strokeWidth: 2.5, label: 'H' },
+      { from: [310, 60], to: [310, 200], color: '#FFB800', strokeWidth: 2.5, label: 'H' },
+      { from: [250, 60], to: [250, 200], color: '#F43F5E', strokeWidth: 2, dashed: true, label: 'H' },
+      { from: [250, 200], to: [310, 200], color: '#10B981', strokeWidth: 2.5, label: 'r' }
+    ],
+    circles: [
+      { cx: 250, cy: 60, r: 60, stroke: '#FFB800', strokeWidth: 2, fill: 'rgba(255, 184, 0, 0.05)' }
+    ],
+    points: [
+      { x: 250, y: 60, dot: 'filled', color: '#F43F5E', label: 'O1', labelPosition: 'top' },
+      { x: 250, y: 200, dot: 'filled', color: '#10B981', label: 'O2', labelPosition: 'bottom' }
+    ],
+    metrics: [
+      { label: 'Objętość walca', value: '$V = \\pi r^2 H$', color: '#38BDF8' },
+      { label: 'Pole powierzchni bocznej', value: '$P_b = 2\\pi r H$', color: '#FFB800' },
+      { label: 'Pole całkowite', value: '$P_c = 2\\pi r(r + H)$', color: '#10B981' }
+    ]
+  },
+
+  // Lekcja 11.7: Stożek
+  'lesson-11-7': {
+    type: 'STEREOMETRY_3D',
+    title: 'Stożek: Trójkąt prostokątny r, H, l',
+    formulaBadge: '$r^2 + H^2 = l^2,\\quad V = \\frac{1}{3}\\pi r^2 H$',
+    caption: 'W stożku promień podstawy $r$, wysokość $H$ i tworząca $l$ tworzą trójkąt prostokątny.',
+    width: 500,
+    height: 270,
+    polygons: [
+      { points: [[180, 210], [320, 210], [250, 45]], fill: 'rgba(255, 184, 0, 0.06)', stroke: '#FFB800', strokeWidth: 2 }
+    ],
+    segments: [
+      { from: [180, 210], to: [250, 45], color: '#FFB800', strokeWidth: 2.5, label: 'l' },
+      { from: [320, 210], to: [250, 45], color: '#FFB800', strokeWidth: 2.5, label: 'l' },
+      { from: [250, 45], to: [250, 210], color: '#F43F5E', strokeWidth: 2.5, dashed: true, label: 'H' },
+      { from: [250, 210], to: [320, 210], color: '#10B981', strokeWidth: 3, label: 'r' }
+    ],
+    arcs: [
+      { cx: 250, cy: 210, r: 20, startAngleDeg: 270, endAngleDeg: 360, color: '#F43F5E', showRightAngleDot: true }
+    ],
+    points: [
+      { x: 250, y: 45, dot: 'filled', color: '#FFB800', label: 'S (wierzchołek)', labelPosition: 'top' },
+      { x: 250, y: 210, dot: 'filled', color: '#F43F5E', label: 'O (środek)', labelPosition: 'bottom' },
+      { x: 320, y: 210, dot: 'filled', color: '#10B981', label: 'A', labelPosition: 'bottom-right' }
+    ],
+    metrics: [
+      { label: 'Relacja Pitagorasa', value: '$r^2 + H^2 = l^2$', color: '#F43F5E' },
+      { label: 'Objętość stożka', value: '$V = \\frac{1}{3}\\pi r^2 H$', color: '#38BDF8' },
+      { label: 'Pole boczne', value: '$P_b = \\pi r l$', color: '#FFB800' }
+    ]
+  }
+};
+
+// =========================================================================
+// 4. SELF-HEALING ENRICHMENT UTILITIES
 // =========================================================================
 
 /**
@@ -631,6 +1055,10 @@ export function enrichTheoryPillWithVisual(pill: any, lessonId: string): any {
     || THEORY_DIAGRAMS[rawId] 
     || THEORY_DIAGRAMS[normId] 
     || THEORY_DIAGRAMS[dotToDash] 
+    || GEOMETRIC_ARCHETYPES[lessonId]
+    || GEOMETRIC_ARCHETYPES[rawId]
+    || GEOMETRIC_ARCHETYPES[normId]
+    || GEOMETRIC_ARCHETYPES[dotToDash]
     || pill.diagram
     || null;
 
@@ -649,7 +1077,16 @@ export function enrichTaskWithVisual(task: any, lessonId?: string): any {
   const taskId = String(task.id || '');
   const registered = TASK_VISUALS[taskId];
 
-  if (!task.plot && registered) {
+  if (task.diagram || task.plot) {
+    const visual = task.diagram || task.plot;
+    return {
+      ...task,
+      plot: task.plot || visual,
+      diagram: task.diagram || visual
+    };
+  }
+
+  if (registered) {
     return {
       ...task,
       plot: registered,
@@ -657,12 +1094,37 @@ export function enrichTaskWithVisual(task: any, lessonId?: string): any {
     };
   }
 
-  if (task.plot && !task.diagram) {
+  // Automatyczne dopasowanie schematu geometrycznego na podstawie identyfikatora lekcji
+  const derivedLessonId = lessonId || (() => {
+    const match = taskId.match(/^(?:task-)?([0-9]+-[0-9]+)/i);
+    return match ? `lesson-${match[1]}` : '';
+  })();
+
+  const archetype = GEOMETRIC_ARCHETYPES[derivedLessonId] 
+    || THEORY_DIAGRAMS[derivedLessonId]
+    || (derivedLessonId.includes('lesson-15-6') ? GEOMETRIC_ARCHETYPES['lesson-15-6'] : null)
+    || (derivedLessonId.includes('lesson-15-4') ? GEOMETRIC_ARCHETYPES['lesson-15-4'] : null)
+    || (derivedLessonId.includes('lesson-15-5') ? GEOMETRIC_ARCHETYPES['lesson-15-5'] : null)
+    || (derivedLessonId.includes('lesson-9-3') ? GEOMETRIC_ARCHETYPES['lesson-9-3'] : null)
+    || (derivedLessonId.includes('lesson-9-4') ? GEOMETRIC_ARCHETYPES['lesson-9-4'] : null)
+    || (derivedLessonId.includes('lesson-9-13') ? GEOMETRIC_ARCHETYPES['lesson-9-13'] : null)
+    || (derivedLessonId.includes('lesson-10-1') ? GEOMETRIC_ARCHETYPES['lesson-10-1'] : null)
+    || (derivedLessonId.includes('lesson-10-2') ? GEOMETRIC_ARCHETYPES['lesson-10-2'] : null)
+    || (derivedLessonId.includes('lesson-10-5') ? GEOMETRIC_ARCHETYPES['lesson-10-5'] : null)
+    || (derivedLessonId.includes('lesson-11-1') ? THEORY_DIAGRAMS['lesson-11-1'] : null)
+    || (derivedLessonId.includes('lesson-11-4') ? THEORY_DIAGRAMS['lesson-11-4'] : null)
+    || (derivedLessonId.includes('lesson-11-6') ? GEOMETRIC_ARCHETYPES['lesson-11-6'] : null)
+    || (derivedLessonId.includes('lesson-11-7') ? GEOMETRIC_ARCHETYPES['lesson-11-7'] : null)
+    || (derivedLessonId.includes('lesson-8-1') ? GEOMETRIC_ARCHETYPES['lesson-8-1'] : null);
+
+  if (archetype) {
     return {
       ...task,
-      diagram: task.plot
+      plot: archetype,
+      diagram: archetype
     };
   }
 
   return task;
 }
+

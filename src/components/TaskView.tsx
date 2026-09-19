@@ -1168,45 +1168,45 @@ export function TaskView({
                   </div>
                 ) : currentCard.type === 'example' && currentCard.worked_example ? (
                   /* Card Type: example (Worked example krok po kroku) */
-                  <div className="flex flex-col gap-3 w-full my-auto text-left">
-                    <div className="p-3.5 sm:p-4 rounded-xl bg-[#0F1622] border border-white/10">
+                  <div className="flex flex-col gap-3 w-full my-auto text-left min-w-0 max-w-full overflow-hidden">
+                    <div className="p-3.5 sm:p-4 rounded-xl bg-[#0F1622] border border-white/10 min-w-0 max-w-full overflow-hidden">
                       <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1">
                         Zadanie z arkusza:
                       </span>
-                      <div className="text-xs sm:text-sm font-medium text-white leading-relaxed">
+                      <div className="text-xs sm:text-sm font-medium text-white leading-relaxed min-w-0 max-w-full break-words">
                         <MathRenderer content={currentCard.worked_example.problem} />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       {currentCard.worked_example.step1 && (
-                        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
                           <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             1
                           </span>
-                          <div className="flex-1 leading-relaxed">
+                          <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
                             <MathRenderer content={currentCard.worked_example.step1} />
                           </div>
                         </div>
                       )}
 
                       {currentCard.worked_example.step2 && (
-                        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
                           <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             2
                           </span>
-                          <div className="flex-1 leading-relaxed">
+                          <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
                             <MathRenderer content={currentCard.worked_example.step2} />
                           </div>
                         </div>
                       )}
 
                       {currentCard.worked_example.steps?.map((st) => (
-                        <div key={st.step_num} className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                        <div key={st.step_num} className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
                           <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             {st.step_num}
                           </span>
-                          <div className="flex-1 leading-relaxed">
+                          <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
                             <MathRenderer content={st.explanation} />
                           </div>
                         </div>

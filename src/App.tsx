@@ -462,11 +462,15 @@ export default function App() {
     try {
       localStorage.setItem('matura_quest_onboarding_completed', 'true');
       localStorage.setItem('matura_quest_onboarding_prefs', JSON.stringify(prefs));
+      localStorage.setItem('matura_quest_selected_subject', 'math');
     } catch (e) {}
+
+    // Domyślny przedmiot: Matematyka Podstawowa
+    setSelectedSubjectKey('math');
 
     setShowGuestPrompt(false);
     setIsNewUser(false);
-    setCurrentTab('nauka');
+    setCurrentTab('dashboard');
 
     if (shouldOpenAuth) {
       setTimeout(() => setShowAuthModal(true), 400);
@@ -797,7 +801,9 @@ export default function App() {
     } else {
       setActiveTask(false);
       setActiveTaskData(null);
-      setCurrentTab('nauka');
+      if (currentTab !== 'simulator') {
+        setCurrentTab('nauka');
+      }
       if (isGuest && guestPromoSecondsLeft > 0) {
         setTimeout(() => {
           setShowGuestPromoModal(true);
@@ -806,7 +812,18 @@ export default function App() {
     }
   };
 
-  const handleMaturaReward = (baseXp: number, baseCoins: number) => {
+  const handleCkeTaskComplete = (taskId: string) => {
+    setCompletedTasks(prev => {
+      if (prev.includes(taskId)) return prev;
+      const updated = [...prev, taskId];
+      try {
+        localStorage.setItem("matura_quest_completed_tasks", JSON.stringify(updated));
+      } catch (e) {}
+      return updated;
+    });
+  };
+
+  const handleMaturaReward = (baseXp: number, baseCoins: number, showModal: boolean = false) => {
     setUserState(prev => {
       const xpBoostPct = prev.perks?.xpBoostPercent || 0;
       const xpGained = Math.round(baseXp * (1 + xpBoostPct / 100));
@@ -819,16 +836,18 @@ export default function App() {
       const newLevel = Math.floor(newXp / 1000) + 1;
       const isLevelUp = newLevel > prevLevel;
 
-      const bonusLabels: string[] = [];
-      if (xpBoostPct > 0) bonusLabels.push(`+${xpBoostPct}% XP z Odznak`);
-      if (coinBoostPct > 0) bonusLabels.push(`+${coinBoostPct}% Monet`);
+      if (showModal || isLevelUp) {
+        const bonusLabels: string[] = [];
+        if (xpBoostPct > 0) bonusLabels.push(`+${xpBoostPct}% XP z Odznak`);
+        if (coinBoostPct > 0) bonusLabels.push(`+${coinBoostPct}% Monet`);
 
-      setReward({
-        xp: xpGained,
-        coins: coinsGained,
-        levelUp: isLevelUp ? newLevel : undefined,
-        bonusNote: bonusLabels.length > 0 ? bonusLabels.join(' • ') : undefined
-      });
+        setReward({
+          xp: xpGained,
+          coins: coinsGained,
+          levelUp: isLevelUp ? newLevel : undefined,
+          bonusNote: bonusLabels.length > 0 ? bonusLabels.join(' • ') : undefined
+        });
+      }
 
       const newState = {
         ...prev,
@@ -1155,7 +1174,15 @@ export default function App() {
                   onSheetToggle={setIsSubjectSheetOpen}
                 />
               )}
-              {currentTab === 'simulator' && <MaturaSimulatorView onEarnReward={handleMaturaReward} />}
+              {currentTab === 'simulator' && (
+                <MaturaSimulatorView 
+                  onEarnReward={handleMaturaReward}
+                  userState={userState}
+                  onUpdateUserState={setUserState}
+                  completedTasks={completedTasks}
+                  onCompleteTask={handleCkeTaskComplete}
+                />
+              )}
               {currentTab === 'arena' && (
                 <ArenaView 
                   userState={userState} 

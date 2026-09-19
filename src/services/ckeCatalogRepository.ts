@@ -25,6 +25,8 @@ export interface CkeFormulaItem {
   goldenRule?: string;
   ckeTrap?: string;
   keywords: string[];
+  cke_page?: string;
+  pageNumber?: number | string;
 }
 
 export interface CkeFormulaTopic {

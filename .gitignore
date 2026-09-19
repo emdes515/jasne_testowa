@@ -62,3 +62,14 @@ seed/*.local.json
 .env.local
 .env.*.local
 
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Subagent run directories and request logs
+ORIGINAL_REQUEST.md
+.agents/*
+!.agents/skills/
+
+
+

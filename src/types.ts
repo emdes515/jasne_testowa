@@ -44,6 +44,7 @@ export interface UserState {
   lastHeartRegenTimestamp?: number; // Timestamp (Date.now()) ostatniej regeneracji serca
   aiVisionDailyCount?: number; // Liczba użytych ocen tablicy przez AI w danym dniu
   lastVisionDate?: string; // YYYY-MM-DD ostatniego sprawdzenia AI
+  completedCkeTasks?: Record<string, CkeTaskCompletionRecord>;
   // AI Token Analytics
   aiUsage?: UserAiUsageSummary;
 }
@@ -132,8 +133,131 @@ export interface LessonTheoryPill {
 
 export type TabState = 'dashboard' | 'nauka' | 'arena' | 'profile' | 'simulator';
 
-export type TaskType = 'SINGLE_CHOICE' | 'MULTI_CHOICE' | 'NUMERIC_INPUT' | 'OPEN_PROOF' | 'OPEN_GENERAL' | 'TRUE_FALSE' | 'TWO_PART' | 'theory' | 'OPEN_TASK';
+export type TaskType = 
+  | 'SINGLE_CHOICE' 
+  | 'MULTI_CHOICE' 
+  | 'NUMERIC_INPUT' 
+  | 'OPEN_PROOF' 
+  | 'OPEN_GENERAL' 
+  | 'TRUE_FALSE' 
+  | 'TWO_PART' 
+  | 'theory' 
+  | 'OPEN_TASK'
+  | 'SWIPE_MATCH'
+  | 'ARGUMENT_BUILDER'
+  | 'CARDINAL_DETECTOR'
+  | 'SYNTHESIS_CONDENSER';
 export type CkeTaskType = TaskType;
+
+export interface PolishArgumentBlock {
+  id: string;
+  bookId: string;
+  bookTitle: string;
+  character: string;
+  theme: string;
+  claim: string;
+  evidence: string;
+  contextType: 'FILOZOFICZNY' | 'HISTORYCZNY' | 'LITERACKI' | 'BIOGRAFICZNY' | 'SPOŁECZNY' | 'POLEMICZNY' | 'FILOZOFICZNO-ETYCZNY';
+  contextDescription: string;
+  linkToThesis: string;
+  ckeSafetyRating: '100%_SAFE' | 'TRICKY';
+  unlockedAt?: number;
+}
+
+export interface UserArgumentVault {
+  unlockedBlocks: PolishArgumentBlock[];
+  customBlocks?: PolishArgumentBlock[];
+}
+
+export interface SwipeItem {
+  id: string;
+  statement: string;
+  isCorrect?: boolean;
+  isTrue?: boolean;
+  isCardinalTrap?: boolean;
+  explanation: string;
+  maturaTip?: string;
+  ckeTrap?: string;
+}
+
+export interface SwipeTaskData {
+  cards: SwipeItem[];
+  themeTitle?: string;
+  leftLabel?: string;
+  rightLabel?: string;
+}
+
+export interface CardinalSnippet {
+  id: string;
+  text: string;
+  isCardinalError?: boolean;
+  isCardinal?: boolean;
+  explanation?: string;
+  safeRevision?: string;
+  examinerNote?: string;
+}
+
+export interface CardinalDetectorTaskData {
+  contextTopic?: string;
+  contextBadge?: string;
+  examPrompt?: string;
+  workTitle?: string;
+  snippets: CardinalSnippet[];
+  ckeWarningTip?: string;
+}
+
+export interface ArgumentSlotOption {
+  id: string;
+  text: string;
+  isCorrect?: boolean;
+  isOptimal?: boolean;
+  trapNote?: string;
+}
+
+export interface ArgumentBuilderTaskData {
+  theme?: string;
+  workTitle?: string;
+  character?: string;
+  thesisPrompt?: string;
+  essayTopic?: string;
+  theses?: Array<string | ArgumentSlotOption>;
+  claimOptions?: ArgumentSlotOption[];
+  evidenceOptions: ArgumentSlotOption[];
+  contextOptions: ArgumentSlotOption[];
+  linkOptions: ArgumentSlotOption[];
+  resultingBlock?: PolishArgumentBlock;
+}
+
+export interface SynthesisSourceText {
+  id: string;
+  author: string;
+  workTitle: string;
+  excerpt: string;
+}
+
+export interface SynthesisElementOption {
+  id: string;
+  text: string;
+  isKeySynthesis: boolean; // Prawdziwa synteza obu tekstów
+  isSubjectiveTrap?: boolean; // Pułapka: subiektywna ocena zakazana w CKE
+  isOneSided?: boolean; // Pułapka: dotyczy tylko 1 tekstu zamiast syntezy
+  explanation: string;
+}
+
+export interface SynthesisCondenserTaskData {
+  topic: string; // Zadanie CKE: np. „Na podstawie obu tekstów wyjaśnij...”
+  sourceTexts: SynthesisSourceText[];
+  minWords?: number; // domyślnie 60
+  maxWords?: number; // domyślnie 90
+  availableElements: SynthesisElementOption[];
+  modelAnswer?: string;
+  ckeCriteria?: {
+    contentPoints: number; // 2 pkt
+    cohesionPoints: number; // 1 pkt
+    languagePoints: number; // 1 pkt
+  };
+}
+
 
 export interface TaskOption {
   id: string; // e.g. "A", "B", "C", "D"
@@ -181,14 +305,17 @@ export interface MathTaskItem {
   ai_hint_cost?: number;
   scoring_key?: string;
   points?: number;
-  official_solution_steps: TaskSolutionStep[];
+  official_solution_steps?: TaskSolutionStep[];
   officialKey?: string; // backwards compatibility
   maxPoints?: number;
   xp?: number;
   difficulty?: string;
-  time?: string;
   plot?: any;
   diagram?: any;
+  swipeData?: SwipeTaskData;
+  cardinalData?: CardinalDetectorTaskData;
+  argumentBuilderData?: ArgumentBuilderTaskData;
+  synthesisData?: SynthesisCondenserTaskData;
 }
 
 export interface AiTaskEvaluationResult {
@@ -203,6 +330,31 @@ export interface AiTaskEvaluationResult {
   ckeFeedback: string;
   suggestion?: string;
   hintForNextAttempt?: string;
+}
+
+export interface CkeTaskCompletionRecord {
+  status: 'passed' | 'failed';
+  score: number;
+  solvedAt: string;
+  userAnswer?: string;
+}
+
+export interface MaturaTask {
+  id: string;
+  section: string;
+  topicId?: string;
+  type?: TaskType;
+  content: string;
+  options: string[];
+  correctAnswer: string;
+  points: number;
+  isClosed: boolean;
+  explanation: string;
+  ckeTrap?: string;
+  source?: string;
+  year?: number;
+  session?: string;
+  isCke?: boolean;
 }
 
 // ==========================================

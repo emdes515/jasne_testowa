@@ -16,11 +16,19 @@ import {
   Lock,
   Target,
   Cpu,
-  FileText
+  FileText,
+  Layers
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
 import { UserState, SubjectKey } from '../types';
+import { POLISH_SHOWCASE_LESSONS, PolishLessonShowcase } from '../data/polishVerticalSliceData';
+import { CANONICAL_LEKTURY_LIST, CanonicalLektura } from '../data/polishLekturyData';
+import { POLISH_FALLBACK_TOPICS } from '../data/polishCurriculumFallback';
+import { ArgumentVaultModal } from './polish/ArgumentVaultModal';
+import { PolishDailyMission } from './polish/PolishDailyMission';
+import { argumentVaultService } from '../services/argumentVaultService';
+
 import { getLessonsForTopic } from '../utils/lessonGrouping';
 import { drawSessionTasks } from '../data/dzial1TaskPool';
 import { curriculumRepository } from '../services/curriculumRepository';
@@ -64,6 +72,69 @@ export function DashboardView({
 }: DashboardViewProps) {
   useCkeCatalogs();
   const streakDays = userState?.streakDays || 0;
+  const [isArgumentVaultOpen, setIsArgumentVaultOpen] = useState<boolean>(false);
+  const [polishTopics, setPolishTopics] = useState<any[]>(POLISH_FALLBACK_TOPICS);
+
+  useEffect(() => {
+    let isMounted = true;
+    curriculumRepository.getTopics('jezyk-polski').then(t => {
+      if (isMounted && t && t.length > 0) {
+        setPolishTopics(t);
+      }
+    }).catch(err => {
+      console.warn('[DashboardView] Could not load Polish topics from repository:', err);
+    });
+    return () => { isMounted = false; };
+  }, []);
+
+  const handleStartCanonicalLektura = (showcase: CanonicalLektura | PolishLessonShowcase) => {
+    triggerHaptic('medium');
+    const sessionPayload = {
+      isSession: true,
+      isPolish: true,
+      subjectId: 'jezyk-polski',
+      topicId: (showcase as any).epochId || 'pol-showcase',
+      lessonId: showcase.id,
+      lessonTitle: `${showcase.badge}: ${showcase.title}`,
+      tasks: showcase.tasks,
+      formulaSheet: {
+        title: `Kanon Lektur CKE: ${(showcase as any).bookTitle || showcase.title}`,
+        description: `Kluczowe pojęcia i motywy do wykorzystania na rozprawce`,
+        formulas: ((showcase.theoryPill as any)?.key_concepts || []).map((c: any) => ({
+          name: c.title,
+          formula: c.def,
+          description: `Kluczowe pojęcie: ${c.title}`
+        }))
+      },
+      theoryPill: showcase.theoryPill,
+      required_correct_tasks: showcase.tasks.length,
+      estimated_time_formatted: showcase.estimatedTime
+    };
+
+    onStartTask?.(sessionPayload, showcase.tasks, showcase.title);
+  };
+
+  const handleStartPolishDailyLesson = async (topicId: string, lessonId: string) => {
+    triggerHaptic('medium');
+    const lessonDoc = await curriculumRepository.ensureLessonLoaded(lessonId, topicId, 'jezyk-polski');
+    if (lessonDoc) {
+      const sessionPayload = {
+        isSession: true,
+        isPolish: true,
+        subjectId: 'jezyk-polski',
+        topicId: topicId,
+        lessonId: lessonDoc.id,
+        lessonTitle: lessonDoc.title,
+        tasks: lessonDoc.tasks || [],
+        formulaSheet: (lessonDoc as any).formulaSheet || (lessonDoc as any).leksykon || null,
+        theoryPill: lessonDoc.theory_pill,
+        required_correct_tasks: (lessonDoc.tasks || []).length,
+        estimated_time_formatted: lessonDoc.estimated_time_formatted || '~5 min'
+      };
+      onStartTask?.(sessionPayload, lessonDoc.tasks || [], lessonDoc.title);
+    }
+  };
+
 
   // 1. ZADANIA - Rzeczywista liczba unikalnych, poprawnie rozwiązanych zadań
   const actualCompletedTasks = useMemo(() => {
@@ -504,14 +575,23 @@ export function DashboardView({
         {/* LEWA KOLUMNA: KARTA LEKCJI (HERO), PREDYKTOR, STATYSTYKI */}
         <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
           
-          {/* 1. KARTA BIEŻĄCEGO POSTĘPU / NASTĘPNA LEKCJA (HERO CARD) */}
-          {(() => {
+          {/* DZISIEJSZA MISJA CKE - JEDYNY DEDYKOWANY MODUŁ JĘZYKA POLSKIEGO NA DASHBOARDZIE */}
+          {selectedSubjectKey === 'pol' && (
+            <PolishDailyMission
+              onStartLesson={handleStartPolishDailyLesson}
+              completedTasks={completedTasks}
+              userState={userState}
+            />
+          )}
+
+          {/* 1. KARTA BIEŻĄCEGO POSTĘPU / NASTĘPNA LEKCJA (HERO CARD) - DLA POZOSTAŁYCH PRZEDMIOTÓW */}
+          {selectedSubjectKey !== 'pol' && (() => {
             const activeSub = getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey) || {
               name: 'Matematyka',
               shortName: 'Matematyka',
               accentColor: '#FFB800'
             };
-            const accentColor = activeSub.accentColor || (selectedSubjectKey === 'pol' ? '#F43F5E' : '#FFB800');
+            const accentColor = activeSub.accentColor || '#FFB800';
 
             return (
               <motion.div
@@ -623,10 +703,10 @@ export function DashboardView({
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.1, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
           >
-            <div className="flex items-center mb-2.5 px-0.5">
+            <div className="flex items-center justify-center mb-2.5 px-0.5">
               <div className="flex items-center gap-2">
                 <BarChart3 size={15} className="text-[#FFB800]" />
-                <h3 className="text-sm font-bold text-slate-200">
+                <h3 className="text-sm font-bold text-slate-200 text-center">
                   Twoje postępy
                 </h3>
               </div>
@@ -639,21 +719,21 @@ export function DashboardView({
               {/* KARTA 1: UKOŃCZONE ZADANIA */}
               <motion.div 
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-emerald-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-emerald-500/25 rounded-2xl p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
               >
-                <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
                   <CheckCircle2 size={16} strokeWidth={2.2} />
                 </div>
 
-                <div>
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none">
+                <div className="w-full flex flex-col items-center text-center">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center">
                     {masteredTasksCount}
                   </div>
-                  <div className="mt-1.5 flex flex-col">
-                    <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight">
+                  <div className="mt-1.5 flex flex-col items-center text-center">
+                    <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight text-center">
                       Ukończone zadania
                     </span>
-                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate">
+                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
                       W wybranym programie
                     </span>
                   </div>
@@ -677,15 +757,12 @@ export function DashboardView({
                   }
                 }}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className={`bg-surface-card hover:bg-surface-card-hover border rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group select-none ${
+                className={`bg-surface-card hover:bg-surface-card-hover border rounded-2xl p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group select-none ${
                   onOpenMistakesBank ? 'cursor-pointer hover:border-amber-500/40 hover:shadow-md border-surface-border' : 'cursor-default border-surface-border'
                 }`}
                 title={onOpenMistakesBank ? "Kliknij, aby otworzyć Bank Błędów i sesję rehabilitacyjną" : undefined}
               >
-                <div className="flex items-center justify-between w-full mb-3">
-                  <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform duration-200">
-                    <Zap size={16} strokeWidth={2.2} />
-                  </div>
+                <div className="absolute top-3.5 right-3.5">
                   {totalMistakes > 0 ? (
                     <span className="text-[9px] font-extrabold text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full flex items-center gap-1 animate-pulse">
                       <span>{totalMistakes} {totalMistakes === 1 ? 'błąd' : totalMistakes < 5 ? 'błędy' : 'błędów'}</span>
@@ -697,22 +774,26 @@ export function DashboardView({
                   )}
                 </div>
 
-                <div>
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none">
+                <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
+                  <Zap size={16} strokeWidth={2.2} />
+                </div>
+
+                <div className="w-full flex flex-col items-center text-center">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center">
                     {accuracyPercent}%
                   </div>
-                  <div className="mt-1.5 flex flex-col">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight">
+                  <div className="mt-1.5 flex flex-col items-center text-center">
+                    <div className="flex items-center justify-center gap-1 text-center">
+                      <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight text-center">
                         Skuteczność
                       </span>
                       {onOpenMistakesBank && totalMistakes > 0 && (
                         <span className="text-[10px] text-amber-400 font-bold group-hover:underline">
-                          Bank błędów →
+                          →
                         </span>
                       )}
                     </div>
-                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate">
+                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
                       {totalMistakes > 0 ? `${totalMistakes} do powtórki` : '0 błędów'}
                     </span>
                   </div>
@@ -722,21 +803,21 @@ export function DashboardView({
               {/* KARTA 3: CZAS NAUKI */}
               <motion.div 
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-amber-500/25 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
+                className="bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-amber-500/25 rounded-2xl p-4 flex flex-col items-center text-center justify-between relative overflow-hidden transition-all shadow-sm group cursor-default"
               >
-                <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 mb-3 group-hover:scale-110 transition-transform duration-200 mx-auto">
                   <Clock size={16} strokeWidth={2.2} />
                 </div>
 
-                <div>
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none whitespace-nowrap">
+                <div className="w-full flex flex-col items-center text-center">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none whitespace-nowrap text-center">
                     {studyTimeValue} <span className="text-xs sm:text-sm font-medium text-text-muted">{studyTimeUnit}</span>
                   </div>
-                  <div className="mt-1.5 flex flex-col">
-                    <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight">
+                  <div className="mt-1.5 flex flex-col items-center text-center">
+                    <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight text-center">
                       Czas nauki
                     </span>
-                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate">
+                    <span className="text-[10px] sm:text-[11px] text-text-muted font-normal mt-0.5 truncate text-center">
                       W tym tygodniu
                     </span>
                   </div>
@@ -877,6 +958,13 @@ export function DashboardView({
         onOpenParentSponsor={onOpenParentSponsor}
         onOpenProPopup={onOpenProPopup}
       />
+
+      {/* Skarbiec Argumentów Modal */}
+      <ArgumentVaultModal
+        isOpen={isArgumentVaultOpen}
+        onClose={() => setIsArgumentVaultOpen(false)}
+      />
     </div>
   );
 }
+
