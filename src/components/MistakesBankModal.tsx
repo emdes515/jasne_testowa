@@ -172,7 +172,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                   <button
                     id="mistakes-bank-start-button"
                     onClick={handleStart}
-                    className="w-full py-4 px-6 rounded-2xl font-black text-slate-950 bg-amber-400 hover:bg-amber-300 active:scale-[0.98] transition shadow-[0_0_25px_rgba(245,158,11,0.35)] flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer tracking-wide"
+                    className="w-full py-4 px-6 rounded-2xl font-black text-amber-950 bg-amber-400 hover:bg-amber-300 active:scale-[0.98] transition shadow-[0_0_25px_rgba(245,158,11,0.35)] flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer tracking-wide"
                   >
                     <RotateCcw size={18} className="stroke-[2.5]" />
                     <span>ROZPOCZNIJ REHABILITACJĘ ({count} ZAD.)</span>

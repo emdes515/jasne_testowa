@@ -1749,7 +1749,7 @@ export function OpenTaskWorkspace({
                 >
                   <Plus size={14} className="text-amber-400 group-hover:rotate-90 transition-transform duration-200" />
                   <span>Rozwiń arkusz w dół (+350px)</span>
-                  <ArrowDown size={13} className="text-amber-400 animate-bounce" />
+                  <ArrowDown size={13} className="text-amber-400 group-hover:translate-y-0.5 transition-transform" />
                 </button>
               </div>
             </div>

@@ -129,7 +129,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
                   transition={{ delay: 0.4 }}
                   className="text-center mb-6"
                 >
-                  <h2 className="font-display text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-blue-400 mb-1 uppercase tracking-wider animate-pulse">
+                  <h2 className="font-display text-3xl font-black text-amber-300 mb-1 uppercase tracking-wider drop-shadow-[0_0_20px_rgba(255,184,0,0.4)]">
                     Awans!
                   </h2>
                   <p className="text-blue-200/80 text-xs max-w-[250px] mx-auto">

@@ -74,6 +74,27 @@ html, body {
   --sar: env(safe-area-inset-right, 0px);
 }
 
+::selection {
+  background-color: rgba(255, 184, 0, 0.25);
+  color: #FFB800;
+}
+
+/* Custom Nocturne Luminary scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 184, 0, 0.35);
+}
+
 /* Wymogi identyfikacji JASNE. dla przycisków Solar Amber */
 button[class*="bg-[#FFB800]"],
 button[class*="bg-jasne"],
@@ -241,11 +262,11 @@ button, a, input, [role="button"] {
 /* Stylizacja wyróżnionych ramek wzorów */
 .math-text-wrapper .formula-callout,
 .math-text-wrapper blockquote {
-  border-left: 3px solid #FFB800;
-  background: rgba(255, 184, 0, 0.05);
-  border-radius: 0 0.75rem 0.75rem 0;
-  padding: 0.75rem 1rem;
-  margin: 0.75rem 0;
+  border: 1px solid rgba(255, 184, 0, 0.2);
+  background: rgba(255, 184, 0, 0.04);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1.125rem;
+  margin: 0.875rem 0;
 }
 
 /* Animacja shake dla błędnej odpowiedzi */
@@ -352,7 +373,7 @@ button, a, input, [role="button"] {
   }
   .task-reading-line {
     max-width: 72ch;
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.7;
   }
 }

@@ -505,7 +505,7 @@ export function OnboardingOverlay({
                     let btnStyle = 'bg-white/5 border-white/10 text-white hover:bg-white/10';
                     if (isTaskSolved && isCorrect) {
                       btnStyle =
-                        'bg-emerald-500 border-emerald-400 text-slate-950 shadow-[0_0_25px_rgba(16,185,129,0.7)] scale-[1.02] font-black';
+                        'bg-emerald-500 border-emerald-400 text-emerald-950 shadow-[0_0_25px_rgba(16,185,129,0.7)] scale-[1.02] font-black';
                     } else if (isSelected && !isCorrect) {
                       btnStyle = 'bg-rose-500/20 border-rose-500/50 text-rose-300';
                     }

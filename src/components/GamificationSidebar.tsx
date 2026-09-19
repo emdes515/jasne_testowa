@@ -292,7 +292,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
                     isClaimed
                       ? 'bg-emerald-500 border-emerald-400 text-white'
                       : isClaimable
-                        ? 'bg-gradient-to-br from-amber-400 to-yellow-500 border-white text-black shadow-[0_0_12px_rgba(245,158,11,0.8)] scale-110 animate-bounce cursor-pointer'
+                        ? 'bg-gradient-to-br from-amber-400 to-yellow-500 border-white text-black shadow-[0_0_12px_rgba(245,158,11,0.8)] scale-110 animate-pulse cursor-pointer'
                         : isUnlocked
                           ? 'bg-primary border-white text-black'
                           : 'bg-surface-card border-surface-border text-text-muted'

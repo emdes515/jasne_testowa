@@ -375,7 +375,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
 
           <h1 className="font-display font-black text-2xl sm:text-4xl text-white tracking-tight leading-tight mb-3">
             Szybkie starcia 1v1 na żywo.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+            <span className="text-emerald-400 font-black">
               Dostępne wkrótce!
             </span>
           </h1>

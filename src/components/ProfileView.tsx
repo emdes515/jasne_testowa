@@ -146,16 +146,16 @@ export function ProfileView({
         </div>
 
         {/* Navigation Tabs */}
-        <div className="bg-[#141A23] border border-white/5 p-1 rounded-2xl flex items-center gap-1 mb-6">
+        <div className="bg-surface-card border border-surface-border p-1.5 rounded-2xl flex items-center gap-1.5 mb-6">
           <button
             onClick={() => {
               triggerHaptic('light');
               setActiveTab('overview');
             }}
-            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'overview'
-                ? 'bg-gradient-to-r from-slate-700 to-slate-800 text-white shadow-md'
-                : 'text-[#8B8D98] hover:text-white'
+                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                : 'text-text-muted hover:text-text-primary hover:bg-white/[0.04]'
             }`}
           >
             <User size={14} />
@@ -167,16 +167,18 @@ export function ProfileView({
               triggerHaptic('light');
               setActiveTab('achievements');
             }}
-            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 relative ${
+            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 relative cursor-pointer ${
               activeTab === 'achievements'
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
-                : 'text-[#8B8D98] hover:text-white'
+                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                : 'text-text-muted hover:text-text-primary hover:bg-white/[0.04]'
             }`}
           >
             <Trophy size={14} />
             <span>Odznaki</span>
             {claimableCount > 0 && (
-              <span className="w-4 h-4 bg-amber-400 text-black text-[9px] font-black rounded-full flex items-center justify-center shadow-sm">
+              <span className={`w-4 h-4 text-[9px] font-black rounded-full flex items-center justify-center shadow-sm ${
+                activeTab === 'achievements' ? 'bg-[#080B11] text-primary' : 'bg-primary text-[#080B11]'
+              }`}>
                 {claimableCount}
               </span>
             )}
@@ -187,10 +189,10 @@ export function ProfileView({
               triggerHaptic('light');
               setActiveTab('perks');
             }}
-            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'perks'
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md'
-                : 'text-[#8B8D98] hover:text-white'
+                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                : 'text-text-muted hover:text-text-primary hover:bg-white/[0.04]'
             }`}
           >
             <Zap size={14} />
@@ -218,36 +220,36 @@ export function ProfileView({
         {activeTab === 'overview' && (
           <div className="space-y-6">
             {/* Profile Summary Card */}
-            <div className="bg-[#141A23] border border-white/5 rounded-[24px] p-6 flex flex-col items-center shadow-sm">
-              <div className="w-16 h-16 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+            <div className="bg-surface-card border border-surface-border rounded-2xl p-6 flex flex-col items-center shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-primary/15 border border-primary/30 text-primary flex items-center justify-center mb-4">
                 <User size={28} />
               </div>
               
               <h2 className="font-display text-xl font-bold text-white mb-1">
                 {user ? (user.displayName || 'Uczeń') : 'Gość (Tryb Demo)'}
               </h2>
-              <p className="text-xs text-[#8B8D98]">
+              <p className="text-xs text-text-muted">
                 {user ? user.email : 'Postępy zapisywane lokalnie'}
               </p>
               
               <div className="grid grid-cols-2 sm:grid-cols-4 w-full gap-2 mt-6">
-                <div className="bg-white/5 rounded-xl p-3 flex flex-col items-center">
-                  <span className="text-[10px] text-[#8B8D98] uppercase font-bold tracking-wider mb-1">Poziom</span>
-                  <span className="text-lg font-display font-bold text-white">{userState.level || 1}</span>
+                <div className="bg-surface-bg border border-surface-border rounded-xl p-3 flex flex-col items-center">
+                  <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider mb-1">Poziom</span>
+                  <span className="text-lg font-display font-bold text-white tabular-nums font-mono">{userState.level || 1}</span>
                 </div>
-                <div className="bg-white/5 rounded-xl p-3 flex flex-col items-center">
-                  <span className="text-[10px] text-[#8B8D98] uppercase font-bold tracking-wider mb-1">Zadania</span>
-                  <span className="text-lg font-display font-bold text-blue-400">{filterActualTaskIds(completedTasks).length}</span>
+                <div className="bg-surface-bg border border-surface-border rounded-xl p-3 flex flex-col items-center">
+                  <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider mb-1">Zadania</span>
+                  <span className="text-lg font-display font-bold text-primary tabular-nums font-mono">{filterActualTaskIds(completedTasks).length}</span>
                 </div>
-                <div className="bg-white/5 rounded-xl p-3 flex flex-col items-center">
-                  <span className="text-[10px] text-[#8B8D98] uppercase font-bold tracking-wider mb-1">Seria Dni</span>
-                  <span className="text-lg font-display font-bold text-orange-400 flex items-center gap-1">
-                    <Flame size={16} className="fill-orange-400" /> {streakDays}
+                <div className="bg-surface-bg border border-surface-border rounded-xl p-3 flex flex-col items-center">
+                  <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider mb-1">Seria Dni</span>
+                  <span className="text-lg font-display font-bold text-[#F97316] flex items-center gap-1 tabular-nums font-mono">
+                    <Flame size={16} className="fill-[#F97316]" /> {streakDays}
                   </span>
                 </div>
-                <div className="bg-white/5 rounded-xl p-3 flex flex-col items-center">
-                  <span className="text-[10px] text-[#8B8D98] uppercase font-bold tracking-wider mb-1">ELO Areny</span>
-                  <span className="text-lg font-display font-bold text-amber-400">{userState.arenaRating || 1000}</span>
+                <div className="bg-surface-bg border border-surface-border rounded-xl p-3 flex flex-col items-center">
+                  <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider mb-1">ELO Areny</span>
+                  <span className="text-lg font-display font-bold text-primary tabular-nums font-mono">{userState.arenaRating || 1000}</span>
                 </div>
               </div>
             </div>

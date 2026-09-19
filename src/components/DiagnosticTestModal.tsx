@@ -353,9 +353,9 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                         <div className="flex items-center gap-3">
                           <span className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
                             isSelected && !isAnswerChecked
-                              ? isPolish ? 'bg-rose-500 text-white border-rose-400' : 'bg-[#FFB800] text-slate-950 border-amber-400'
+                              ? isPolish ? 'bg-rose-500 text-white border-rose-400' : 'bg-[#FFB800] text-amber-950 font-black border-amber-400'
                               : isAnswerChecked && isThisCorrect
-                              ? 'bg-emerald-500 text-slate-950 border-emerald-400'
+                              ? 'bg-emerald-500 text-emerald-950 font-black border-emerald-400'
                               : isAnswerChecked && isSelected && !isThisCorrect
                               ? 'bg-rose-500 text-white border-rose-400'
                               : 'bg-slate-800 border-slate-700 text-slate-300'
@@ -398,7 +398,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                       onClick={handleCheckAnswer}
                       className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition shadow-md cursor-pointer ${
                         selectedOption
-                          ? isPolish ? 'bg-rose-500 hover:bg-rose-600 text-white' : 'bg-[#FFB800] hover:bg-amber-400 text-slate-950'
+                          ? isPolish ? 'bg-rose-500 hover:bg-rose-600 text-white' : 'bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed'
                       }`}
                     >
@@ -431,11 +431,11 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   }`}>
                     {isPassing ? '✓ Prognoza powyżej progu 30%' : '✕ Poniżej progu 30%'}
                   </span>
-                  <h4 className="text-3xl sm:text-4xl font-black text-white">
+                  <h4 className="text-3xl sm:text-4xl font-black text-white font-mono tabular-nums">
                     {assessedPercent}%
                   </h4>
                   <p className="text-xs text-slate-400 font-semibold mt-0.5">
-                    Szacowany wynik: {assessedPoints} / 50 pkt ({correctAnswersCount}/{tasks.length} poprawnych)
+                    Szacowany wynik: <span className="font-mono tabular-nums font-bold text-slate-300">{assessedPoints}</span> / 50 pkt ({correctAnswersCount}/{tasks.length} poprawnych)
                   </p>
                 </div>
 
@@ -460,7 +460,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                     className={`w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
                       isPolish
                         ? 'bg-rose-500 hover:bg-rose-600 text-white shadow-rose-950/50'
-                        : 'bg-[#FFB800] hover:bg-amber-400 text-slate-950 shadow-amber-950/50'
+                        : 'bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black shadow-amber-950/50'
                     }`}
                   >
                     <span>Zapisz i zaktualizuj Predyktor</span>

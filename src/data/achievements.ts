@@ -321,8 +321,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: 'Podejmuj próby egzaminacyjne w Symulatorze Matury.',
     category: 'matura',
     iconName: 'GraduationCap',
-    accentColor: 'text-purple-400',
-    bgGradient: 'from-purple-500/20 to-pink-500/20',
+    accentColor: 'text-amber-400',
+    bgGradient: 'from-amber-500/15 to-amber-600/10',
     unit: 'arkuszy',
     getValue: (ctx) => ctx.maturaAttempts,
     tiers: [

@@ -125,7 +125,7 @@ export function Header({
             title={heartsData.isPro ? 'Pakiet PRO: Nielimitowane serca' : `Serca: ${heartsData.hearts}/${heartsData.maxHearts}`}
           >
             <Heart size={14} className={heartsData.hearts > 0 ? "text-rose-500 fill-rose-500" : "text-rose-500"} />
-            <span className="font-display font-black text-xs leading-none">
+            <span className="font-display font-black text-xs leading-none tabular-nums font-mono">
               {heartsData.isPro ? '∞' : heartsData.hearts}
             </span>
           </button>
@@ -237,7 +237,7 @@ export function Header({
           title={`Aktualna seria: ${state.streakDays || 0} dni z rzędu`}
         >
           <Flame size={14} className="text-[#F97316] fill-[#F97316] animate-pulse" />
-          <span className="font-display font-black text-[#F97316] text-xs leading-none">
+          <span className="font-display font-black text-[#F97316] text-xs leading-none tabular-nums font-mono">
             {state.streakDays || 0}
           </span>
         </button>
@@ -248,7 +248,7 @@ export function Header({
           title={`Monety: ${state.coins}`}
         >
           <Coins size={13} className="text-[#FFB800]" />
-          <span className="font-display font-black text-amber-200 text-xs leading-none">
+          <span className="font-display font-black text-amber-200 text-xs leading-none tabular-nums font-mono">
             {state.coins.toLocaleString('pl-PL')}
           </span>
         </div>
@@ -288,10 +288,10 @@ export function Header({
             </div>
           </div>
           <div className="flex flex-col text-left">
-            <span className="font-display font-black text-[11px] sm:text-xs text-text-primary leading-tight group-hover:text-primary transition-colors">
+            <span className="font-display font-black text-[11px] sm:text-xs text-text-primary leading-tight group-hover:text-primary transition-colors tabular-nums font-mono">
               LVL {state.level}
             </span>
-            <span className="text-[9px] font-bold text-text-muted leading-tight">
+            <span className="text-[9px] font-bold text-text-muted leading-tight tabular-nums font-mono">
               {currentXpInLevel} XP
             </span>
           </div>

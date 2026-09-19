@@ -58,7 +58,11 @@ colors:
   alert-crimson: '#F43F5E'
   alert-crimson-bg: rgba(244, 63, 94, 0.12)
   streak-flame: '#EA580C'
+  accent-success: '#10B981'
+  accent-blue: '#38BDF8'
+  accent-purple: '#8B5CF6'
   text-primary: '#F8FAFC'
+  text-secondary: '#CBD5E1'
   text-muted: '#94A3B8'
   text-subtle: '#64748B'
 typography:
@@ -123,6 +127,12 @@ typography:
     fontSize: 11px
     fontWeight: '700'
     lineHeight: 14px
+    letterSpacing: 0.05em
+  label-xs:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 10px
+    fontWeight: '700'
+    lineHeight: 12px
     letterSpacing: 0.05em
   metric-display:
     fontFamily: Plus Jakarta Sans

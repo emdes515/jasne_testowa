@@ -132,7 +132,7 @@ export const ArgumentVaultModal: React.FC<ArgumentVaultModalProps> = ({
               onClick={() => setSelectedFilter('ALL')}
               className={`px-2.5 py-1 rounded-lg font-bold shrink-0 transition-colors ${
                 selectedFilter === 'ALL'
-                  ? 'bg-amber-500 text-slate-950'
+                  ? 'bg-amber-400 text-amber-950 font-black'
                   : 'bg-slate-800 text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -144,7 +144,7 @@ export const ArgumentVaultModal: React.FC<ArgumentVaultModalProps> = ({
                 onClick={() => setSelectedFilter(book)}
                 className={`px-2.5 py-1 rounded-lg font-bold shrink-0 transition-colors ${
                   selectedFilter === book
-                    ? 'bg-amber-500 text-slate-950'
+                    ? 'bg-amber-400 text-amber-950 font-black'
                     : 'bg-slate-800 text-slate-400 hover:text-slate-200'
                 }`}
               >

@@ -210,12 +210,12 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
 
   const textContent = (
     <div className="space-y-3.5">
-      {/* 1. Definicja pojęciowa z lewym paskiem akcentującym */}
+      {/* 1. Definicja pojęciowa z wyważonym obramowaniem */}
       {mainDefinition && (
-        <div className={`p-3.5 sm:p-4 rounded-xl border-l-4 ${
+        <div className={`p-3.5 sm:p-4 rounded-xl border ${
           isPolishSession
-            ? 'border-rose-500 bg-rose-500/5 text-rose-100'
-            : 'border-amber-400 bg-amber-500/5 text-amber-100'
+            ? 'border-rose-500/30 bg-rose-500/5 text-rose-100'
+            : 'border-amber-400/30 bg-amber-500/5 text-amber-100'
         } text-sm sm:text-base leading-relaxed text-slate-200`}>
           {renderMicroContent(mainDefinition)}
         </div>
@@ -2411,7 +2411,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <button
                     id="session-celebration-next-button"
                     onClick={() => handleFinishSession(true)}
-                    className="w-full py-4 px-6 rounded-2xl font-black text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-sm flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
+                    className="w-full py-4 px-6 rounded-2xl font-black text-emerald-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-sm flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
                   >
                     <span>Następna lekcja</span>
                     <ArrowRight className="w-5 h-5 stroke-[2.5]" />
@@ -2429,7 +2429,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-celebration-return-button"
                   onClick={() => handleFinishSession(false)}
-                  className="w-full py-4 px-6 rounded-2xl font-black text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-sm flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
+                  className="w-full py-4 px-6 rounded-2xl font-black text-emerald-950 bg-emerald-400 hover:bg-emerald-300 active:scale-[0.98] transition shadow-sm flex items-center justify-center gap-2 text-base cursor-pointer tracking-wide"
                 >
                   <span>Wróć do mapy lekcji</span>
                   <ArrowRight className="w-5 h-5 stroke-[2.5]" />
@@ -2602,7 +2602,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 title={heartsData.isPro ? 'Pakiet PRO: Nielimitowane serca' : `Serca: ${displayedHeartsCount}/${heartsData.maxHearts}`}
               >
                 {isHeartShaking ? (
-                  <HeartCrack className="w-3.5 h-3.5 text-rose-400 animate-bounce shrink-0" />
+                  <HeartCrack className="w-3.5 h-3.5 text-rose-400 animate-pulse shrink-0" />
                 ) : (
                   <Heart className={`w-3.5 h-3.5 text-rose-500 ${Number(displayedHeartsCount) > 0 || heartsData.isPro ? 'fill-rose-500' : ''} shrink-0`} />
                 )}
@@ -3773,7 +3773,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <Scan size={13} className="text-slate-400" />
                       <span>Odczytany zapis:</span>
                     </span>
-                    <div className="text-slate-200 pl-2.5 border-l-2 border-amber-400/50 py-0.5 font-mono text-xs sm:text-sm">
+                    <div className="text-slate-200 px-3 py-1.5 rounded-lg bg-black/30 border border-amber-400/20 font-mono text-xs sm:text-sm">
                       <MathRenderer content={tutorEvaluation.transcription} />
                     </div>
                   </div>
@@ -4155,7 +4155,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-md'
                                   : 'bg-slate-800 border border-slate-700 text-slate-300 group-hover:border-slate-600'
                                 : isThisTheCorrectAnswer
-                                  ? 'bg-emerald-500 text-slate-950 font-black shadow-md'
+                                  ? 'bg-emerald-500 text-emerald-950 font-black shadow-md'
                                   : isOptSelected
                                     ? 'bg-rose-500 text-white font-black'
                                     : 'bg-slate-800 text-slate-600'
@@ -4251,7 +4251,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               }
                             } else {
                               if (isThisTheCorrectAnswer) {
-                                btnClass += 'bg-emerald-500 text-slate-950 border border-emerald-400 font-black shadow-sm';
+                                btnClass += 'bg-emerald-500 text-emerald-950 border border-emerald-400 font-black shadow-sm';
                               } else if (isOptSelected && !isThisTheCorrectAnswer) {
                                 btnClass += 'bg-rose-500 text-white border border-rose-400';
                               } else {
@@ -4342,7 +4342,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         isSelected && !isEvaluated
                           ? 'bg-[#FFB800] text-[#080B11] border-[#D97706]'
                           : isEvaluated && isOptionCorrect
-                            ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black'
+                            ? 'bg-emerald-500 text-emerald-950 border-emerald-400 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
                               ? 'bg-rose-500 text-white border-rose-400 font-black'
                               : 'bg-slate-800 border-slate-700 text-slate-300'
@@ -4404,7 +4404,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         isSelected && !isEvaluated
                           ? 'bg-[#FFB800] text-[#080B11] border-[#D97706]'
                           : isEvaluated && isOptionCorrect
-                            ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black'
+                            ? 'bg-emerald-500 text-emerald-950 border-emerald-400 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
                               ? 'bg-rose-500 text-white border-rose-400 font-black'
                               : 'bg-slate-800 border-slate-700 text-slate-300'
@@ -4481,7 +4481,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             ? 'bg-[#F43F5E] border-[#E11D48] text-white font-bold'
                             : 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold'
                           : isEvaluated && isOptionCorrect
-                            ? 'bg-emerald-500 border-emerald-400 text-slate-950 font-black'
+                            ? 'bg-emerald-500 border-emerald-400 text-emerald-950 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
                               ? 'bg-rose-500 border-rose-400 text-white font-black'
                               : 'bg-slate-800 border-slate-700 text-slate-300'
@@ -4803,7 +4803,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   onClick={handleNextStep}
                   className={`h-11 sm:h-12 px-5 sm:px-6 rounded-xl font-black text-sm flex items-center justify-center gap-1.5 transition active:scale-[0.98] shadow-lg cursor-pointer shrink-0 ${
                     isCorrect
-                      ? 'bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-sm'
+                      ? 'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-black shadow-sm'
                       : 'bg-rose-500 hover:bg-rose-400 text-white shadow-sm'
                   }`}
                 >

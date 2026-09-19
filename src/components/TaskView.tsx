@@ -927,7 +927,7 @@ export function TaskView({
           <div className="flex flex-col items-center w-full">
             <button 
               onClick={handleContinue}
-              className="w-full h-[52px] bg-primary hover:bg-[#FFC72C] border-b-4 border-primary-hover text-[#070A0F] font-bold text-base px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+              className="w-full h-[52px] bg-primary hover:bg-[#FFC72C] border border-primary-dark/40 text-[#070A0F] font-bold text-base px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
             >
               <span>WRÓĆ DO MAPY NAUKI</span>
               <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
@@ -1002,7 +1002,7 @@ export function TaskView({
         <footer className="shrink-0 w-full p-4 bg-surface-elevated/95 backdrop-blur-md border-t border-surface-border" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           <button 
             onClick={handleStartRetryPhase}
-            className="w-full bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold text-base py-3.5 px-6 rounded-2xl active:translate-y-1 active:border-b-0 transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+            className="w-full bg-[#FFB800] hover:bg-[#FFC72C] border border-[#D97706]/40 text-[#080B11] font-bold text-base py-3.5 px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>Popraw błędy</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -1309,7 +1309,7 @@ export function TaskView({
                 }
               }
             }}
-            className="flex-1 bg-[#FFB800] hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+            className="flex-1 bg-[#FFB800] hover:bg-[#FFC72C] border border-[#D97706]/40 text-[#080B11] font-bold py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:scale-[0.98] shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>
               {!isLastCard 

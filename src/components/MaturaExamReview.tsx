@@ -114,7 +114,7 @@ export function MaturaExamReview({
           {isPassed ? '✓ Egzamin Zdany (>= 30%)' : '✕ Poniżej progu 30%'}
         </span>
 
-        <h2 className="text-3xl sm:text-4xl font-display font-black text-white mb-2 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-display font-black text-white mb-2 tracking-tight tabular-nums font-mono">
           {earnedPoints} / {totalPoints} pkt ({percentage}%)
         </h2>
         <p className="text-text-secondary text-sm max-w-md mx-auto mb-6 leading-relaxed">
@@ -131,7 +131,7 @@ export function MaturaExamReview({
         <div className="grid grid-cols-3 gap-2 bg-[#070A0F]/80 border border-surface-border rounded-2xl p-3 sm:p-4 mb-6 text-left">
           <div>
             <span className="text-[11px] font-bold text-text-muted uppercase tracking-wider block">Czas arkusza</span>
-            <div className="flex items-center gap-1.5 mt-0.5 text-white font-bold text-sm">
+            <div className="flex items-center gap-1.5 mt-0.5 text-white font-bold text-sm tabular-nums font-mono">
               <Clock size={14} className="text-[#FFB800]" />
               <span>{formatTime(timeSpentSeconds)}</span>
             </div>

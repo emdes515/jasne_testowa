@@ -1,5 +1,6 @@
 import React from 'react';
 import { LayoutDashboard, GraduationCap, Swords, FileText, User, Trophy, Flame } from 'lucide-react';
+import { motion } from 'motion/react';
 import { TabState, UserState } from '../types';
 import { triggerHaptic } from '../utils';
 
@@ -47,30 +48,38 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
             const isActive = currentTab === item.id;
             const isArena = item.id === 'arena';
             return (
-              <button 
+              <motion.button 
                 key={item.id}
                 id={`mobile-nav-${item.id}`}
+                whileTap={{ scale: 0.93 }}
                 onClick={() => handleTabChange(item.id)}
-                className={`relative flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-2xl transition-all duration-200 select-none ${
+                className={`relative flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-2xl transition-colors duration-200 select-none ${
                   isActive 
-                    ? isArena
-                      ? 'bg-emerald-400 text-[#080B11] font-black shadow-[0_0_20px_rgba(16,185,129,0.4)] flex-1 active:scale-[0.96]'
-                      : 'bg-[#FFB800] text-[#080B11] font-black shadow-[0_0_20px_rgba(255,184,0,0.4)] flex-1 active:scale-[0.96]' 
-                    : 'text-text-muted hover:text-text-primary hover:bg-white/5 active:scale-[0.94] px-3'
+                    ? 'flex-1' 
+                    : 'text-text-muted hover:text-text-primary px-3'
                 }`}
               >
-                <div className={`relative transition-transform duration-200 ${isActive ? 'scale-105' : ''}`}>
+                {isActive && (
+                  <motion.div
+                    layoutId="mobileNavActivePill"
+                    className={`absolute inset-0 rounded-2xl shadow-[0_0_20px_rgba(255,184,0,0.35)] ${
+                      isArena ? 'bg-emerald-400' : 'bg-[#FFB800]'
+                    }`}
+                    transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                  />
+                )}
+                <div className={`relative z-10 transition-transform duration-200 ${isActive ? 'scale-105' : ''}`}>
                   <Icon size={20} className={isActive ? 'text-[#080B11] stroke-[2.5]' : ''} />
                   {isArena && !isActive && (
                     <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10B981] animate-pulse" />
                   )}
                 </div>
                 {isActive && (
-                  <span className="text-[11px] font-black tracking-wide whitespace-nowrap text-[#080B11] animate-in fade-in duration-200">
+                  <span className="relative z-10 text-[11px] font-black tracking-wide whitespace-nowrap text-[#080B11]">
                     {item.label}
                   </span>
                 )}
-              </button>
+              </motion.button>
             );
           })}
         </div>
@@ -96,9 +105,10 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
             const isActive = currentTab === item.id;
             const isArena = item.id === 'arena';
             return (
-              <button
+              <motion.button
                 key={item.id}
                 id={`rail-nav-${item.id}`}
+                whileTap={{ scale: 0.94 }}
                 onClick={() => {
                   if (item.id === 'profile' && onProfileClick) {
                     onProfileClick();
@@ -124,13 +134,14 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                 <span className="text-[10px] font-bold tracking-tight text-center leading-none truncate max-w-full">
                   {item.label}
                 </span>
-              </button>
+              </motion.button>
             );
           })}
         </div>
 
         {/* Bottom Profile Thumbnail */}
-        <button
+        <motion.button
+          whileTap={{ scale: 0.93 }}
           onClick={onProfileClick}
           className="w-11 h-11 rounded-full bg-gradient-to-br from-[#FFB800]/30 to-[#D97706]/30 border border-[#FFB800]/40 p-0.5 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
           title="Twój profil"
@@ -138,7 +149,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
           <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center text-primary">
             <User size={18} />
           </div>
-        </button>
+        </motion.button>
       </aside>
 
       {/* =========================================================================
@@ -186,9 +197,9 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                   className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-all duration-150 text-left group cursor-pointer ${
                     isActive
                       ? isArena
-                        ? 'bg-emerald-500/10 border-l-2 border-emerald-400 text-emerald-400 font-bold'
-                        : 'bg-primary/10 border-l-2 border-primary text-primary font-bold'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-surface-card/60 font-medium'
+                        ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold shadow-[0_0_15px_rgba(16,185,129,0.12)]'
+                        : 'bg-primary/10 border border-primary/30 text-primary font-bold shadow-[0_0_15px_rgba(255,184,0,0.12)]'
+                      : 'border border-transparent text-text-secondary hover:text-text-primary hover:bg-surface-card/60 font-medium'
                   }`}
                 >
                   <Icon 
@@ -199,7 +210,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                         : 'text-text-muted group-hover:text-text-primary'
                     }`} 
                   />
-                  <span className="text-sm tracking-tight truncate flex-1">
+                  <span className="text-sm tracking-tight truncate flex-1 font-display">
                     {item.label}
                   </span>
                   {isArena && (
@@ -231,7 +242,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                 Poziom {currentLevel}
               </span>
             </div>
-            <span className="text-[10px] font-bold text-text-muted">
+            <span className="text-[10px] font-bold text-text-muted tabular-nums font-mono">
               {xpInLevel} / 1000 XP
             </span>
           </div>

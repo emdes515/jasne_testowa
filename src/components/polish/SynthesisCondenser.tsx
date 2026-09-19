@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   FileText, 
@@ -312,7 +312,7 @@ export const SynthesisCondenser: React.FC<SynthesisCondenserProps> = ({
             {validationResult.success ? (
               <button
                 onClick={() => onComplete(validationResult.points.total, 4)}
-                className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition-transform active:scale-98"
+                className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black text-xs rounded-xl flex items-center justify-center gap-2 transition-transform active:scale-98"
               >
                 <span>Przejdź dalej (+40 XP)</span>
                 <ArrowRight size={14} />

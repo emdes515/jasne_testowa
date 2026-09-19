@@ -281,7 +281,7 @@ export function CkeScratchpad({
           <button
             type="button"
             onClick={handleClose}
-            className="bg-primary hover:bg-[#FFC72C] border-b-2 border-primary-hover text-[#070A0F] font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all shrink-0 cursor-pointer"
+            className="bg-primary hover:bg-[#FFC72C] border border-primary-dark/40 text-[#070A0F] font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all shrink-0 cursor-pointer"
           >
             <ArrowLeft size={17} className="stroke-[3]" />
             <span>← Wróć do zadania</span>
@@ -420,7 +420,7 @@ export function CkeScratchpad({
               >
                 <Plus size={15} className="text-amber-400 group-hover:rotate-90 transition-transform duration-200" />
                 <span>Rozwiń brudnopis w dół (+450px)</span>
-                <ArrowDown size={14} className="text-amber-400 animate-bounce" />
+                <ArrowDown size={14} className="text-amber-400 group-hover:translate-y-0.5 transition-transform" />
               </button>
             </div>
           </div>

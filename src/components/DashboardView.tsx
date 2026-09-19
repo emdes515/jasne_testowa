@@ -598,10 +598,10 @@ export function DashboardView({
                 initial={{ y: 15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                className="bg-surface-card border border-surface-border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-sm group"
+                className="bg-surface-card border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-sm group"
                 style={{
-                  borderLeftColor: accentColor,
-                  borderLeftWidth: '3px'
+                  borderColor: `${accentColor}35`,
+                  boxShadow: `0 0 24px -6px ${accentColor}18`
                 }}
               >
                 <div className="flex flex-col gap-3">
@@ -726,7 +726,7 @@ export function DashboardView({
                 </div>
 
                 <div className="w-full flex flex-col items-center text-center">
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center tabular-nums font-mono">
                     {masteredTasksCount}
                   </div>
                   <div className="mt-1.5 flex flex-col items-center text-center">
@@ -779,7 +779,7 @@ export function DashboardView({
                 </div>
 
                 <div className="w-full flex flex-col items-center text-center">
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none text-center tabular-nums font-mono">
                     {accuracyPercent}%
                   </div>
                   <div className="mt-1.5 flex flex-col items-center text-center">
@@ -810,8 +810,8 @@ export function DashboardView({
                 </div>
 
                 <div className="w-full flex flex-col items-center text-center">
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none whitespace-nowrap text-center">
-                    {studyTimeValue} <span className="text-xs sm:text-sm font-medium text-text-muted">{studyTimeUnit}</span>
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-text-primary tracking-tight leading-none whitespace-nowrap text-center tabular-nums font-mono">
+                    {studyTimeValue} <span className="text-xs sm:text-sm font-medium text-text-muted font-sans">{studyTimeUnit}</span>
                   </div>
                   <div className="mt-1.5 flex flex-col items-center text-center">
                     <span className="text-xs sm:text-sm font-medium text-text-secondary leading-tight text-center">

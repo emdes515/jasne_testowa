@@ -205,7 +205,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
                     onClose();
                     onOpenDiagnostic();
                   }}
-                  className="px-3.5 py-2 rounded-xl bg-[#FFB800] hover:bg-amber-400 active:scale-95 text-slate-950 font-black text-xs shrink-0 cursor-pointer transition-all shadow-md"
+                  className="px-3.5 py-2 rounded-xl bg-[#FFB800] hover:bg-amber-400 active:scale-95 text-amber-950 font-black text-xs shrink-0 cursor-pointer transition-all shadow-md"
                 >
                   Rozpocznij ›
                 </button>
@@ -226,7 +226,7 @@ export const PredictorDetailsModal: React.FC<PredictorDetailsModalProps> = ({
                     onClose();
                     onOpenParentSponsor();
                   }}
-                  className="px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-950 font-black text-xs shrink-0 cursor-pointer transition-all"
+                  className="px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 active:scale-95 text-amber-950 font-black text-xs shrink-0 cursor-pointer transition-all"
                 >
                   BLIK ›
                 </button>

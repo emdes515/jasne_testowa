@@ -1178,7 +1178,7 @@ export function LearnView({
                                   ? 'bg-rose-500/15 text-rose-400 group-hover:bg-rose-500 group-hover:text-white shadow-sm'
                                   : 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-sm'
                                 : isFullyCompleted
-                                  ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950'
+                                  ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-emerald-950'
                                   : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
                             }`}>
                               <ChevronRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
@@ -1271,7 +1271,7 @@ export function LearnView({
                                           triggerHaptic('medium');
                                           handleStartPolishDailyLesson(topic.id, canonical.id);
                                         }}
-                                        className="shrink-0 px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-[10px] shadow-sm transition active:scale-95 cursor-pointer flex items-center gap-1"
+                                        className="shrink-0 px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-amber-950 font-black text-[10px] shadow-sm transition active:scale-95 cursor-pointer flex items-center gap-1"
                                       >
                                         <span>★ Trenuj lekturę</span>
                                         <ChevronRight size={12} strokeWidth={3} />
@@ -1837,7 +1837,7 @@ export function LearnView({
                             className={`w-full py-3.5 sm:py-4 px-6 rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 transition active:scale-[0.99] cursor-pointer shadow-lg ${
                               isBossExamPassed
                                 ? 'bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-emerald-500/40'
-                                : 'bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white shadow-sm'
+                                : 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-amber-400 hover:to-amber-500 text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
                             }`}
                           >
                             <Trophy size={18} />
