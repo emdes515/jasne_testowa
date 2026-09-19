@@ -118,23 +118,32 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                   key={optIdx}
                   type="button"
                   onClick={() => onSelectClosedAnswer(optLetter)}
-                  className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex items-start gap-3 active:scale-[0.99] cursor-pointer ${
+                  className={`group p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex items-center justify-between gap-3.5 active:scale-[0.99] cursor-pointer ${
                     isSelected
-                      ? 'bg-[#FFB800]/15 border-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
-                      : 'bg-surface-bg border-surface-border text-text-secondary hover:border-white/20 hover:text-white'
+                      ? 'bg-[#FFB800]/10 border-[#FFB800] ring-1 ring-[#FFB800]/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
+                      : 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-white'
                   }`}
                 >
-                  <span className={`w-7 h-7 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
-                    isSelected
-                      ? 'bg-[#FFB800] text-black'
-                      : 'bg-white/5 text-text-muted border border-white/10'
+                  <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                    <span className={`w-8 h-8 rounded-xl font-display font-black text-xs flex items-center justify-center shrink-0 border transition-all ${
+                      isSelected
+                        ? 'bg-[#FFB800] text-black border-[#FFB800] shadow-sm'
+                        : 'bg-white/5 text-text-secondary border-white/10'
+                    }`}>
+                      {optLetter}
+                    </span>
+                    <div className={`flex-1 overflow-x-auto text-sm leading-relaxed py-0.5 math-render ${
+                      isSelected ? 'text-white font-medium' : 'text-slate-200'
+                    }`}>
+                      <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                        {opt}
+                      </Markdown>
+                    </div>
+                  </div>
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
+                    isSelected ? 'border-[#FFB800]' : 'border-white/20'
                   }`}>
-                    {optLetter}
-                  </span>
-                  <div className="flex-1 overflow-x-auto text-sm leading-relaxed pt-0.5">
-                    <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                      {opt}
-                    </Markdown>
+                    {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />}
                   </div>
                 </button>
               );
@@ -208,6 +217,7 @@ export interface MaturaSimulatorViewProps {
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
   completedTasks?: string[];
   onCompleteTask?: (taskId: string, points?: number) => void;
+  onActiveSessionChange?: (isActive: boolean) => void;
 }
 
 export function MaturaSimulatorView({
@@ -215,7 +225,8 @@ export function MaturaSimulatorView({
   userState,
   onUpdateUserState,
   completedTasks = [],
-  onCompleteTask
+  onCompleteTask,
+  onActiveSessionChange
 }: MaturaSimulatorViewProps) {
   // Baza wszystkich zadań pobierana przez curriculumRepository (Cache-First z Firestore)
   const [tasks, setTasks] = useState<MaturaTask[]>([]);
@@ -235,6 +246,15 @@ export function MaturaSimulatorView({
   const [view, setView] = useState<
     'hub' | 'exam_setup' | 'full_exams' | 'topics_bank' | 'topic_detail' | 'exam' | 'exam_review' | 'maraton' | 'mistakes'
   >('hub');
+
+  // Powiadomienie rodzica (App.tsx) o wejściu w tryb aktywnego rozwiązywania zadań (wygaszenie dolnego docka nawigacji)
+  useEffect(() => {
+    const isSolvingSession = view === 'maraton' || view === 'exam';
+    onActiveSessionChange?.(isSolvingSession);
+    return () => {
+      onActiveSessionChange?.(false);
+    };
+  }, [view, onActiveSessionChange]);
 
   // Modale pomocnicze
   const [isScratchpadOpen, setIsScratchpadOpen] = useState(false);
@@ -747,6 +767,7 @@ export function MaturaSimulatorView({
   const [maratonTutorEval, setMaratonTutorEval] = useState<MaturaAiEvaluation | null>(null);
   const [maratonHintText, setMaratonHintText] = useState<string | null>(null);
   const [maratonIsHintLoading, setMaratonIsHintLoading] = useState<boolean>(false);
+  const [maratonClosedHintOpen, setMaratonClosedHintOpen] = useState<boolean>(false);
 
   const startMaraton = (taskList: MaturaTask[], startIndex: number = 0) => {
     if (taskList.length === 0) {
@@ -765,6 +786,7 @@ export function MaturaSimulatorView({
     setMaratonTutorEval(null);
     setMaratonHintText(null);
     setMaratonIsHintLoading(false);
+    setMaratonClosedHintOpen(false);
     setView('maraton');
   };
 
@@ -790,11 +812,20 @@ export function MaturaSimulatorView({
 
   const currentMaratonTask = maratonList[maratonIndex] || null;
 
-  // Skróty klawiszowe w Maratonie (A/B/C/D i Enter do zatwierdzenia)
+  // Skróty klawiszowe w Maratonie (A/B/C/D, Enter do zatwierdzenia, Enter/Space/Strzałka do przejścia dalej)
   useEffect(() => {
-    if (view !== 'maraton' || maratonSubmitted || !currentMaratonTask) return;
+    if (view !== 'maraton' || !currentMaratonTask) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+
+      if (maratonSubmitted) {
+        if (e.key === 'Enter' || e.key === 'ArrowRight' || e.key === ' ') {
+          e.preventDefault();
+          handleNextMaratonTask();
+        }
+        return;
+      }
+
       const key = e.key.toUpperCase();
       if (currentMaratonTask.isClosed && ['A', 'B', 'C', 'D'].includes(key)) {
         setMaratonDraftAnswer(key);
@@ -809,7 +840,7 @@ export function MaturaSimulatorView({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [view, maratonSubmitted, maratonDraftAnswer, currentMaratonTask, maratonOpenText, maratonOpenCanvasUrl, maratonIsScanning]);
+  }, [view, maratonSubmitted, maratonDraftAnswer, currentMaratonTask, maratonOpenText, maratonOpenCanvasUrl, maratonIsScanning, maratonIndex, maratonList]);
 
   const handleMaratonAnswer = (optLetter: string) => {
     if (maratonSubmitted || !currentMaratonTask) return;
@@ -1008,6 +1039,7 @@ export function MaturaSimulatorView({
       setMaratonTutorEval(null);
       setMaratonHintText(null);
       setMaratonIsHintLoading(false);
+      setMaratonClosedHintOpen(false);
     } else {
       alert('Świetna robota! Ukończyłeś tę serię zadań.');
       setView('hub');
@@ -1179,7 +1211,7 @@ export function MaturaSimulatorView({
               </div>
 
               {/* FILAR 4: SZYBKI BANER 1 KLIKNIĘCIEM - "PO PROSTU RÓB ZADANIA" */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-surface-card to-surface-card border border-[#FFB800]/40 shadow-[0_0_30px_rgba(255,184,0,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-surface-card to-surface-card border border-[#FFB800]/40 shadow-[0_0_30px_rgba(255,184,0,0.1)] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="flex items-center gap-3.5 min-w-0">
                   <div className="w-11 h-11 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/40 flex items-center justify-center shrink-0 text-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.2)]">
                     <Shuffle size={22} />
@@ -1189,28 +1221,58 @@ export function MaturaSimulatorView({
                       <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/15 px-2 py-0.5 rounded border border-[#FFB800]/30">
                         Szybki start
                       </span>
-                      <span className="text-[11px] text-text-muted truncate">Zero konfiguracji</span>
+                      <span className="text-[11px] text-text-muted truncate">1 kliknięcie do nauki</span>
                     </div>
                     <h3 className="font-display font-black text-white text-base sm:text-lg truncate">
-                      🎲 Losowy Trening CKE
+                      Losowy Trening CKE
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
-                  <select
-                    value={randomScope}
-                    onChange={e => setRandomScope(e.target.value as any)}
-                    className="flex-1 sm:flex-none bg-surface-bg border border-surface-border text-text-secondary text-xs rounded-xl px-3 py-2.5 outline-none focus:border-[#FFB800]"
-                  >
-                    <option value="unsolved">Tylko nierozwiązane</option>
-                    <option value="all">Wszystkie 1006 pytań</option>
-                    <option value="weakest">Mój najsłabszy dział</option>
-                  </select>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0">
+                  {/* Segmented Radio Pills */}
+                  <div className="flex items-center bg-[#070A0F] border border-surface-border p-1 rounded-xl gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setRandomScope('unsolved')}
+                      className={`flex-1 sm:flex-none px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                        randomScope === 'unsolved'
+                          ? 'bg-[#FFB800] text-black shadow-sm'
+                          : 'text-text-secondary hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      <Sparkles size={13} className={randomScope === 'unsolved' ? 'text-black' : 'text-[#FFB800]'} />
+                      <span>Nierozwiązane</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setRandomScope('all')}
+                      className={`flex-1 sm:flex-none px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                        randomScope === 'all'
+                          ? 'bg-[#FFB800] text-black shadow-sm'
+                          : 'text-text-secondary hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      <Layers size={13} className={randomScope === 'all' ? 'text-black' : 'text-blue-400'} />
+                      <span>Wszystkie (1006)</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setRandomScope('weakest')}
+                      className={`flex-1 sm:flex-none px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                        randomScope === 'weakest'
+                          ? 'bg-[#FFB800] text-black shadow-sm'
+                          : 'text-text-secondary hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      <Target size={13} className={randomScope === 'weakest' ? 'text-black' : 'text-rose-400'} />
+                      <span>Najsłabszy dział</span>
+                    </button>
+                  </div>
 
                   <button
                     onClick={() => startRandomTraining(randomScope)}
-                    className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-amber-950 font-display font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)] hover:shadow-[0_0_25px_rgba(255,184,0,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)] hover:shadow-[0_0_25px_rgba(255,184,0,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
                     <Zap size={15} fill="currentColor" />
                     <span>Rozpocznij</span>
@@ -1241,7 +1303,7 @@ export function MaturaSimulatorView({
                       </div>
                     </div>
                     <h3 className="font-display font-black text-sm sm:text-base text-white group-hover:text-[#FFB800] transition-colors mb-1">
-                      ⚡ Mini Matury CKE
+                      Mini Matury CKE
                     </h3>
                     <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
                       Ekspresowe arkusze próbne (7 lub 12 zadań) z oficjalnym zegarem. Bez stresu i utraty serc.
@@ -1268,7 +1330,7 @@ export function MaturaSimulatorView({
                       </span>
                     </div>
                     <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-emerald-400 transition-colors mb-1">
-                      📜 Pełne Arkusze CKE
+                      Pełne Arkusze CKE
                     </h3>
                     <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
                       Oryginalne matury (Maj 2024, Czerwiec, Pokazowy). Tryb z zegarem 180 min lub bezstresowy.
@@ -1295,7 +1357,7 @@ export function MaturaSimulatorView({
                       </span>
                     </div>
                     <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-blue-400 transition-colors mb-1">
-                      📚 Bank Zadań Działami
+                      Bank Zadań Działami
                     </h3>
                     <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
                       Przerób wszystkie zadania CKE z konkretnego działu z indywidualnym paskiem opanowania.
@@ -1335,7 +1397,7 @@ export function MaturaSimulatorView({
                       </span>
                     </div>
                     <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-rose-400 transition-colors mb-1">
-                      🔁 Baza Twoich Błędów
+                      Baza Twoich Błędów
                     </h3>
                     <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
                       Utrwal wiedzę na zadaniach, w których popełniłeś błąd. Skuteczna redukcja pułapek CKE.
@@ -1869,9 +1931,26 @@ export function MaturaSimulatorView({
               className="flex-1 flex flex-col gap-4"
             >
               <div className="flex items-center justify-between p-3.5 rounded-2xl bg-surface-card border border-surface-border">
-                <span className="text-xs font-bold text-text-muted">
-                  Zadanie {maratonIndex + 1} z {maratonList.length}
-                </span>
+                <div className="flex items-center gap-2.5">
+                  <span className="text-xs font-bold text-text-muted">
+                    Zadanie {maratonIndex + 1} z {maratonList.length}
+                  </span>
+
+                  {/* Widoczny przycisk podpowiedzi do zadania */}
+                  <button
+                    type="button"
+                    onClick={() => setMaratonClosedHintOpen(prev => !prev)}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 border ${
+                      maratonClosedHintOpen
+                        ? 'bg-[#FFB800]/20 border-[#FFB800] text-[#FFB800] shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                        : 'bg-white/5 border-white/10 text-text-secondary hover:text-white hover:bg-white/10'
+                    }`}
+                    title="Pokaż wskazówkę do zadania"
+                  >
+                    <Lightbulb size={13} className={maratonClosedHintOpen ? 'text-[#FFB800] fill-[#FFB800]' : 'text-amber-400'} />
+                    <span>Podpowiedź</span>
+                  </button>
+                </div>
 
                 <div className="flex items-center gap-2">
                   <button
@@ -1881,8 +1960,9 @@ export function MaturaSimulatorView({
                       setMaratonSelectedAnswer(null);
                       setMaratonSubmitted(false);
                       setMaratonSelfScore(null);
+                      setMaratonClosedHintOpen(false);
                     }}
-                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-white disabled:opacity-30"
+                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-white disabled:opacity-30 cursor-pointer"
                   >
                     <ChevronLeft size={16} />
                   </button>
@@ -1890,14 +1970,42 @@ export function MaturaSimulatorView({
                   <button
                     disabled={maratonIndex >= maratonList.length - 1}
                     onClick={handleNextMaratonTask}
-                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-white disabled:opacity-30"
+                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-white disabled:opacity-30 cursor-pointer"
                   >
                     <ChevronRight size={16} />
                   </button>
                 </div>
               </div>
 
-              <div className="p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl space-y-6">
+              {/* Rozwijana wskazówka dydaktyczna z KaTeX */}
+              <AnimatePresence>
+                {maratonClosedHintOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs sm:text-sm text-text-primary space-y-1.5 shadow-sm">
+                      <div className="flex items-center gap-2 text-xs font-bold text-[#FFB800] uppercase tracking-wider">
+                        <Lightbulb size={15} />
+                        <span>Wskazówka do zadania</span>
+                      </div>
+                      <div className="text-text-secondary leading-relaxed math-render">
+                        <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                          {currentMaratonTask.ckeTrap
+                            ? currentMaratonTask.ckeTrap.replace(/^(pułapka|błąd)(\s*cke)?:\s*/i, '').trim()
+                            : 'Zwróć uwagę na założenia zadania, definicje pojęć oraz wzory z oficjalnej karty CKE.'}
+                        </Markdown>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <div className={`p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl space-y-6 transition-all ${
+                maratonSubmitted ? 'pb-72' : ''
+              }`}>
                 <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
                   <div className="flex items-center gap-2">
                     <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/25 text-[#FFB800] text-xs font-bold">
@@ -1922,15 +2030,24 @@ export function MaturaSimulatorView({
                           : maratonDraftAnswer === optLetter;
                         const isCorrectAnswer = currentMaratonTask.correctAnswer.trim().toUpperCase() === optLetter;
 
-                        let btnStyle = 'bg-surface-bg border-surface-border text-text-secondary hover:border-white/20 hover:text-white';
+                        let cardStyle = 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-white';
+                        let badgeStyle = 'bg-white/5 border-white/10 text-text-muted';
+                        let radioStyle = 'border-white/20';
+
                         if (maratonSubmitted) {
                           if (isCorrectAnswer) {
-                            btnStyle = 'bg-emerald-500/20 border-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]';
+                            cardStyle = 'bg-emerald-500/10 border-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.2)]';
+                            badgeStyle = 'bg-emerald-500 text-black border-emerald-400 font-black';
+                            radioStyle = 'border-emerald-500 bg-emerald-500 text-black';
                           } else if (isSelected && !isCorrectAnswer) {
-                            btnStyle = 'bg-rose-500/20 border-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.3)]';
+                            cardStyle = 'bg-rose-500/10 border-rose-500 text-white shadow-[0_0_20px_rgba(244,63,94,0.2)]';
+                            badgeStyle = 'bg-rose-500 text-white border-rose-400 font-black';
+                            radioStyle = 'border-rose-500 bg-rose-500 text-white';
                           }
                         } else if (isSelected) {
-                          btnStyle = 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]';
+                          cardStyle = 'bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_20px_rgba(255,184,0,0.15)] ring-1 ring-[#FFB800]/50';
+                          badgeStyle = 'bg-[#FFB800] text-black border-[#FFB800] font-black shadow-sm';
+                          radioStyle = 'border-[#FFB800]';
                         }
 
                         return (
@@ -1942,23 +2059,31 @@ export function MaturaSimulatorView({
                               setMaratonDraftAnswer(optLetter);
                               triggerHaptic('light');
                             }}
-                            className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3 cursor-pointer ${btnStyle}`}
+                            className={`group p-4 rounded-2xl border text-left transition-all duration-200 flex items-center justify-between gap-3.5 cursor-pointer active:scale-[0.99] ${cardStyle}`}
                           >
-                            <span className={`w-7 h-7 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
-                              maratonSubmitted && isCorrectAnswer
-                                ? 'bg-emerald-500 text-black'
-                                : maratonSubmitted && isSelected && !isCorrectAnswer
-                                ? 'bg-rose-500 text-white'
-                                : isSelected
-                                ? 'bg-[#FFB800] text-black'
-                                : 'bg-white/5 text-text-muted border border-white/10'
-                            }`}>
-                              {optLetter}
-                            </span>
-                            <div className="flex-1 overflow-x-auto text-sm leading-relaxed pt-0.5">
-                              <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                {opt}
-                              </Markdown>
+                            <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                              <span className={`w-8 h-8 rounded-xl font-display font-black text-xs flex items-center justify-center shrink-0 border transition-all ${badgeStyle}`}>
+                                {optLetter}
+                              </span>
+                              <div className={`flex-1 overflow-x-auto text-sm leading-relaxed py-0.5 math-render ${
+                                isSelected ? 'text-white font-medium' : 'text-slate-200'
+                              }`}>
+                                <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                  {opt}
+                                </Markdown>
+                              </div>
+                            </div>
+
+                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${radioStyle}`}>
+                              {maratonSubmitted ? (
+                                isCorrectAnswer ? (
+                                  <Check size={12} strokeWidth={3.5} />
+                                ) : isSelected ? (
+                                  <X size={12} strokeWidth={3.5} />
+                                ) : null
+                              ) : isSelected ? (
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />
+                              ) : null}
                             </div>
                           </button>
                         );
@@ -2032,7 +2157,7 @@ export function MaturaSimulatorView({
                           <Lightbulb size={16} />
                           <span>Wskazówka Egzaminatora AI</span>
                         </div>
-                        <div className="text-xs sm:text-sm text-text-primary leading-relaxed">
+                        <div className="text-xs sm:text-sm text-text-primary leading-relaxed math-render">
                           <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
                             {maratonHintText}
                           </Markdown>
@@ -2041,117 +2166,151 @@ export function MaturaSimulatorView({
                     )}
                   </div>
                 )}
+              </div>
 
+              {/* =========================================================================
+                  WYSUWANY OD DOŁU DRAWER OCENY (BOTTOM SHEET)
+                 ========================================================================= */}
+              <AnimatePresence>
                 {maratonSubmitted && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-5 rounded-2xl bg-surface-bg border border-surface-border space-y-4"
+                    key="maraton-feedback-drawer"
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: '100%', opacity: 0 }}
+                    transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+                    className={`fixed bottom-0 left-0 right-0 z-50 border-t-2 backdrop-blur-2xl shadow-[0_-16px_50px_rgba(0,0,0,0.85)] max-h-[85vh] flex flex-col ${
+                      (maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
+                      (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
+                      (maratonSelfScore !== null && maratonSelfScore >= currentMaratonTask.points)
+                        ? 'bg-[#081512]/98 border-emerald-500 shadow-[0_-10px_35px_rgba(16,185,129,0.25)]'
+                        : 'bg-[#180A0F]/98 border-rose-500 shadow-[0_-10px_35px_rgba(244,63,94,0.25)]'
+                    }`}
                   >
-                    <div className="flex items-center gap-2.5">
-                      {(maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
-                       (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
-                       (maratonSelfScore !== null && maratonSelfScore >= currentMaratonTask.points) ? (
-                        <>
-                          <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                            <Check size={18} />
-                          </div>
-                          <div>
-                            <div className="text-sm font-bold text-emerald-400">Świetnie! Poprawna odpowiedź</div>
-                            <div className="text-xs text-text-muted">
-                              {currentMaratonTask.isClosed 
-                                ? '+15 XP • Zadanie zamknięte zaliczone w CKE' 
-                                : `+25 XP • Zdobyto ${maratonTutorEval?.score || currentMaratonTask.points} / ${currentMaratonTask.points} pkt CKE`}
+                    <div className="w-full max-w-4xl mx-auto flex flex-col p-4 sm:p-6 overflow-hidden">
+                      {/* Nagłówek Drawera: Status wyniku + Przycisk Następne zadanie */}
+                      <div className="flex items-center justify-between gap-3 pb-3 border-b border-white/10 shrink-0">
+                        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+                          {((maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
+                           (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
+                           (maratonSelfScore !== null && maratonSelfScore >= currentMaratonTask.points)) ? (
+                            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                              <Check size={20} strokeWidth={3} />
+                            </div>
+                          ) : (
+                            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(244,63,94,0.2)]">
+                              <X size={20} strokeWidth={3} />
+                            </div>
+                          )}
+
+                          <div className="min-w-0 flex-1">
+                            <div className={`font-display font-black text-sm sm:text-base leading-snug whitespace-normal ${
+                              ((maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
+                               (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
+                               (maratonSelfScore !== null && maratonSelfScore >= currentMaratonTask.points))
+                                ? 'text-emerald-400'
+                                : 'text-rose-400'
+                            }`}>
+                              {((maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
+                                (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
+                                (maratonSelfScore !== null && maratonSelfScore >= currentMaratonTask.points))
+                                ? 'Świetnie! Poprawna odpowiedź'
+                                : 'Wymaga poprawy'}
+                            </div>
+                            <div className="text-[11px] sm:text-xs text-text-muted mt-0.5 truncate">
+                              {((maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
+                                (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
+                                (maratonSelfScore !== null && maratonSelfScore >= currentMaratonTask.points))
+                                ? (currentMaratonTask.isClosed ? '+15 XP • Zadanie zaliczone' : `+25 XP • Zdobyto ${maratonTutorEval?.score || currentMaratonTask.points} / ${currentMaratonTask.points} pkt`)
+                                : (currentMaratonTask.isClosed ? `Poprawna odpowiedź: ${currentMaratonTask.correctAnswer}. Dodano do Bazy Błędów.` : `Zdobyto ${maratonTutorEval?.score || 0} / ${currentMaratonTask.points} pkt • Dodano do Bazy Błędów.`)}
                             </div>
                           </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
-                            <X size={18} />
-                          </div>
-                          <div>
-                            <div className="text-sm font-bold text-rose-400">Wymaga poprawy</div>
-                            <div className="text-xs text-text-muted">
-                              {currentMaratonTask.isClosed 
-                                ? `Poprawna odpowiedź: ${currentMaratonTask.correctAnswer}. Zadanie dodano do Bazy Błędów.`
-                                : `Zdobyto ${maratonTutorEval?.score || 0} / ${currentMaratonTask.points} pkt. Zadanie dodano do Bazy Błędów.`}
+                        </div>
+
+                        {/* Przycisk Dalej / Następne zadanie */}
+                        <button
+                          onClick={handleNextMaratonTask}
+                          className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0 whitespace-nowrap"
+                        >
+                          <span className="inline sm:hidden">Dalej</span>
+                          <span className="hidden sm:inline">Następne zadanie</span>
+                          <ChevronRight size={16} strokeWidth={3} />
+                        </button>
+                      </div>
+
+                      {/* Treść Drawera: Pułapka Egzaminacyjna & Oficjalne Rozwiązanie */}
+                      <div className="overflow-y-auto space-y-3 pt-3.5 pr-1 max-h-[50vh]">
+                        {/* Pułapka Egzaminacyjna - z czystym tytułem i KaTeX */}
+                        {currentMaratonTask.ckeTrap && (() => {
+                          const cleanTrap = currentMaratonTask.ckeTrap.replace(/^(pułapka|błąd)(\s*cke)?:\s*/i, '').trim();
+                          return (
+                            <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
+                              <AlertTriangle className="text-amber-400 shrink-0 mt-0.5" size={17} />
+                              <div className="space-y-1 min-w-0 flex-1">
+                                <div className="text-xs font-bold text-amber-300 uppercase tracking-wider">
+                                  Pułapka egzaminacyjna
+                                </div>
+                                <div className="text-xs sm:text-sm text-text-secondary leading-relaxed math-render">
+                                  <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                    {cleanTrap}
+                                  </Markdown>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })()}
+
+                        {/* Oficjalne rozwiązanie - bez "CKE" w tytule */}
+                        {currentMaratonTask.explanation && (
+                          <div className="p-3.5 sm:p-4 rounded-2xl bg-surface-card border border-surface-border space-y-1.5">
+                            <div className="text-xs font-bold text-text-muted uppercase tracking-wider">
+                              Oficjalne rozwiązanie:
+                            </div>
+                            <div className="text-xs sm:text-sm text-text-secondary leading-relaxed math-render overflow-x-auto">
+                              <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                {currentMaratonTask.explanation}
+                              </Markdown>
                             </div>
                           </div>
-                        </>
-                      )}
-                    </div>
+                        )}
 
-                    {/* Szczegółowa ocena Tutora AI w zadaniu otwartym */}
-                    {!currentMaratonTask.isClosed && maratonTutorEval && (
-                      <div className="p-4 rounded-xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-2.5">
-                        <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
-                          <Sparkles size={14} />
-                          <span>Ocena Egzaminatora AI: {maratonTutorEval.score} / {currentMaratonTask.points} pkt</span>
-                        </div>
-                        {maratonTutorEval.mentorComment && (
-                          <div className="text-xs sm:text-sm text-text-primary leading-relaxed">
-                            <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                              {maratonTutorEval.mentorComment}
-                            </Markdown>
+                        {/* Szczegółowa ocena Tutora AI w zadaniu otwartym */}
+                        {!currentMaratonTask.isClosed && maratonTutorEval && (
+                          <div className="p-4 rounded-2xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-2.5">
+                            <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
+                              <Sparkles size={14} />
+                              <span>Ocena Egzaminatora AI: {maratonTutorEval.score} / {currentMaratonTask.points} pkt</span>
+                            </div>
+                            {maratonTutorEval.mentorComment && (
+                              <div className="text-xs sm:text-sm text-text-primary leading-relaxed math-render">
+                                <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                  {maratonTutorEval.mentorComment}
+                                </Markdown>
+                              </div>
+                            )}
+                            {maratonTutorEval.strengths && maratonTutorEval.strengths.length > 0 && (
+                              <div className="space-y-0.5">
+                                <span className="text-[11px] font-bold text-emerald-400">Mocne strony:</span>
+                                <ul className="list-disc list-inside text-xs text-text-secondary">
+                                  {maratonTutorEval.strengths.map((s, idx) => <li key={idx}>{s}</li>)}
+                                </ul>
+                              </div>
+                            )}
+                            {maratonTutorEval.errors && maratonTutorEval.errors.length > 0 && (
+                              <div className="space-y-0.5">
+                                <span className="text-[11px] font-bold text-rose-400">Wskazówki:</span>
+                                <ul className="list-disc list-inside text-xs text-text-secondary">
+                                  {maratonTutorEval.errors.map((e, idx) => <li key={idx}>{e}</li>)}
+                                </ul>
+                              </div>
+                            )}
                           </div>
                         )}
-                        {maratonTutorEval.strengths && maratonTutorEval.strengths.length > 0 && (
-                          <div className="space-y-0.5">
-                            <span className="text-[11px] font-bold text-emerald-400">Mocne strony:</span>
-                            <ul className="list-disc list-inside text-xs text-text-secondary">
-                              {maratonTutorEval.strengths.map((s, idx) => <li key={idx}>{s}</li>)}
-                            </ul>
-                          </div>
-                        )}
-                        {maratonTutorEval.errors && maratonTutorEval.errors.length > 0 && (
-                          <div className="space-y-0.5">
-                            <span className="text-[11px] font-bold text-rose-400">Wskazówki CKE:</span>
-                            <ul className="list-disc list-inside text-xs text-text-secondary">
-                              {maratonTutorEval.errors.map((e, idx) => <li key={idx}>{e}</li>)}
-                            </ul>
-                          </div>
-                        )}
                       </div>
-                    )}
-
-                    {currentMaratonTask.ckeTrap && (
-                      <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-start gap-3">
-                        <AlertTriangle className="text-amber-400 shrink-0 mt-0.5" size={16} />
-                        <div>
-                          <div className="text-[11px] font-bold text-amber-300 uppercase tracking-wider mb-0.5">
-                            Pułapka Egzaminacyjna CKE
-                          </div>
-                          <div className="text-xs text-text-secondary leading-relaxed">
-                            {currentMaratonTask.ckeTrap}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    <div>
-                      <div className="text-xs font-bold text-text-muted uppercase mb-1">
-                        Oficjalne rozwiązanie CKE:
-                      </div>
-                      <div className="text-xs text-text-secondary leading-relaxed math-render">
-                        <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                          {currentMaratonTask.explanation}
-                        </Markdown>
-                      </div>
-                    </div>
-
-                    <div className="pt-2 flex justify-end gap-3">
-                      <button
-                        onClick={handleNextMaratonTask}
-                        className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-[#FFB800] text-black font-black text-xs shadow-md hover:brightness-105 active:scale-[0.98] transition-all flex items-center gap-1.5 cursor-pointer"
-                      >
-                        <span>Następne zadanie CKE</span>
-                        <ChevronRight size={14} />
-                      </button>
                     </div>
                   </motion.div>
                 )}
-              </div>
+              </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>

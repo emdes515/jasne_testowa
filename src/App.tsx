@@ -130,6 +130,15 @@ export default function App() {
     }
   }, [currentTab]);
   const [activeTask, setActiveTask] = useState<boolean>(false);
+  const [isSimulatorSessionActive, setIsSimulatorSessionActive] = useState<boolean>(false);
+
+  // Reset flagi aktywnej sesji symulatora po zmianie zakładki
+  useEffect(() => {
+    if (currentTab !== 'simulator') {
+      setIsSimulatorSessionActive(false);
+    }
+  }, [currentTab]);
+
   const [activeTaskData, setActiveTaskData] = useState<any>(null);
   const [reward, setReward] = useState<{ 
     xp: number; 
@@ -1043,7 +1052,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* 1. NAWIGACJA (DLA DESKTOPU I TABLETU: LEWY PANEL BOCZNY; DLA MOBILNYCH: DOLNY DOCK) */}
-      {!activeTask && (
+      {!activeTask && !(currentTab === 'simulator' && isSimulatorSessionActive) && (
         <Navigation currentTab={currentTab} setTab={setCurrentTab} />
       )}
 
@@ -1181,6 +1190,7 @@ export default function App() {
                   onUpdateUserState={setUserState}
                   completedTasks={completedTasks}
                   onCompleteTask={handleCkeTaskComplete}
+                  onActiveSessionChange={setIsSimulatorSessionActive}
                 />
               )}
               {currentTab === 'arena' && (
