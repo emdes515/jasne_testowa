@@ -30,7 +30,9 @@ import {
   Compass,
   Shuffle,
   BarChart3,
-  CheckSquare
+  CheckSquare,
+  ArrowRight,
+  Lightbulb
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -45,7 +47,8 @@ import { calculateMaturaPrediction } from '../lib/maturaPredictor';
 import { playSuccessSound, playErrorSound, triggerHaptic } from '../utils';
 import { ScratchpadModal } from './ScratchpadModal';
 import { CkeFormulasModal } from './CkeFormulasModal';
-import { MaturaExamReview, MaturaTaskReviewItem } from './MaturaExamReview';
+import { MaturaExamReview, MaturaTaskReviewItem, MaturaAiEvaluation } from './MaturaExamReview';
+import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
 
 export interface MaturaSimulatorViewProps {
   onEarnReward?: (xp: number, coins: number, showModal?: boolean) => void;
@@ -223,6 +226,12 @@ export function MaturaSimulatorView({
   const [examCurrentIndex, setExamCurrentIndex] = useState(0);
   const [examAnswers, setExamAnswers] = useState<Record<string, string>>({});
   const [examOpenScores, setExamOpenScores] = useState<Record<string, number>>({});
+  const [examOpenAnswers, setExamOpenAnswers] = useState<Record<string, { text: string; canvasUrl?: string }>>({});
+  const [examAiEvaluations, setExamAiEvaluations] = useState<Record<string, MaturaAiEvaluation>>({});
+  const pendingBackgroundEvalRef = useRef<Record<string, boolean>>({});
+  const examDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const prevExamIndexRef = useRef<number>(0);
+
   const [flaggedTasks, setFlaggedTasks] = useState<Set<string>>(new Set());
   const [examTimeLeft, setExamTimeLeft] = useState(20 * 60);
   const [examTotalDuration, setExamTotalDuration] = useState(20 * 60);
@@ -237,6 +246,102 @@ export function MaturaSimulatorView({
   const [setupLength, setSetupLength] = useState<7 | 12>(7);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Asynchroniczna ewaluacja w tle przez Tutora AI (BFF Express /api/evaluate-task)
+  const triggerBackgroundEvaluation = async (task: MaturaTask, text: string, canvasUrl?: string) => {
+    const hasText = text.trim().length > 0;
+    const hasCanvas = Boolean(canvasUrl && canvasUrl.length > 50);
+    if (!hasText && !hasCanvas) return;
+
+    const taskId = task.id;
+    if (pendingBackgroundEvalRef.current[taskId]) return;
+    pendingBackgroundEvalRef.current[taskId] = true;
+
+    try {
+      let studentImage: string | undefined = undefined;
+      if (hasCanvas) {
+        try {
+          studentImage = await convertDataUrlToAiOptimized(canvasUrl!);
+        } catch (e) {
+          studentImage = canvasUrl;
+        }
+      }
+
+      const effectiveText = hasText ? text.trim() : '[Rozwiązanie odręczne na tablicy]';
+      const response = await fetch('/api/evaluate-task', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: task.content,
+          officialKey: task.explanation,
+          scoring_key: task.explanation,
+          studentAnswer: effectiveText,
+          studentImage: studentImage || undefined,
+          taskType: 'OPEN_PROOF',
+          isPolish: false,
+          maxPoints: task.points,
+          mode: 'grade'
+        })
+      });
+
+      if (response.ok) {
+        const serverEval = await response.json();
+        if (serverEval && !serverEval.evaluationFailed) {
+          setExamAiEvaluations(prev => ({
+            ...prev,
+            [taskId]: serverEval
+          }));
+          setExamOpenScores(prev => ({
+            ...prev,
+            [taskId]: serverEval.score
+          }));
+        }
+      }
+    } catch (err) {
+      console.warn('[MaturaSimulator] Błąd asynchronicznej ewaluacji zadania w tle:', taskId, err);
+    } finally {
+      pendingBackgroundEvalRef.current[taskId] = false;
+    }
+  };
+
+  const handleExamOpenAnswerChange = (taskId: string, newText: string) => {
+    setExamOpenAnswers(prev => ({
+      ...prev,
+      [taskId]: { text: newText, canvasUrl: prev[taskId]?.canvasUrl }
+    }));
+
+    if (examDebounceTimerRef.current) clearTimeout(examDebounceTimerRef.current);
+    examDebounceTimerRef.current = setTimeout(() => {
+      const task = examTasks.find(t => t.id === taskId);
+      if (task && newText.trim().length > 5) {
+        void triggerBackgroundEvaluation(task, newText, examOpenAnswers[taskId]?.canvasUrl);
+      }
+    }, 2500);
+  };
+
+  const handleExamOpenCanvasChange = (taskId: string, newCanvasUrl: string) => {
+    setExamOpenAnswers(prev => ({
+      ...prev,
+      [taskId]: { text: prev[taskId]?.text || '', canvasUrl: newCanvasUrl }
+    }));
+  };
+
+  // Automatyczne sprawdzenie w tle przy opuszczeniu zadania otwartego
+  useEffect(() => {
+    if (view === 'exam' && examTasks.length > 0) {
+      const prevIdx = prevExamIndexRef.current;
+      if (prevIdx !== examCurrentIndex && prevIdx >= 0 && prevIdx < examTasks.length) {
+        const prevTask = examTasks[prevIdx];
+        if (!prevTask.isClosed) {
+          const ans = examOpenAnswers[prevTask.id];
+          if (ans && (ans.text.trim() || (ans.canvasUrl && ans.canvasUrl.length > 50))) {
+            void triggerBackgroundEvaluation(prevTask, ans.text, ans.canvasUrl);
+          }
+        }
+      }
+      prevExamIndexRef.current = examCurrentIndex;
+    }
+  }, [view, examCurrentIndex, examTasks, examOpenAnswers]);
 
   useEffect(() => {
     if (view === 'exam' && isExamTimed && !isExamPaused) {
@@ -275,8 +380,12 @@ export function MaturaSimulatorView({
     setExamTitle(`Mini Matura • ${sectionChoice === 'Wszystkie działy' ? 'Przekrój Całościowy' : sectionChoice}`);
     setExamTasks(selected);
     setExamCurrentIndex(0);
+    prevExamIndexRef.current = 0;
     setExamAnswers({});
     setExamOpenScores({});
+    setExamOpenAnswers({});
+    setExamAiEvaluations({});
+    pendingBackgroundEvalRef.current = {};
     setFlaggedTasks(new Set());
     setExamTimeLeft(duration);
     setExamTotalDuration(duration);
@@ -295,8 +404,12 @@ export function MaturaSimulatorView({
     setExamTitle(`Oficjalny Arkusz CKE • ${examName}`);
     setExamTasks(sheetTasks);
     setExamCurrentIndex(0);
+    prevExamIndexRef.current = 0;
     setExamAnswers({});
     setExamOpenScores({});
+    setExamOpenAnswers({});
+    setExamAiEvaluations({});
+    pendingBackgroundEvalRef.current = {};
     setFlaggedTasks(new Set());
     setExamTimeLeft(duration);
     setExamTotalDuration(duration);
@@ -317,10 +430,34 @@ export function MaturaSimulatorView({
     const reviews: MaturaTaskReviewItem[] = examTasks.map(t => {
       const userAns = examAnswers[t.id];
       let earned = 0;
+      let aiEval = examAiEvaluations[t.id];
+
       if (t.isClosed) {
         earned = userAns === t.correctAnswer ? t.points : 0;
       } else {
-        earned = examOpenScores[t.id] || 0;
+        const openRecord = examOpenAnswers[t.id];
+        const hasWork = Boolean(openRecord?.text?.trim() || (openRecord?.canvasUrl && openRecord.canvasUrl.length > 50));
+        
+        if (aiEval && typeof aiEval.score === 'number') {
+          earned = aiEval.score;
+        } else if (examOpenScores[t.id] !== undefined) {
+          earned = examOpenScores[t.id];
+        } else if (hasWork) {
+          // Fallback oceny heurystycznej CKE, gdy sieć nie zdążyła zwrócić odpowiedzi
+          earned = (openRecord?.text?.trim()?.length || 0) > 15 ? t.points : (t.points > 1 ? 1 : 0);
+          aiEval = {
+            score: earned,
+            maxPoints: t.points,
+            mentorComment: earned === t.points
+              ? 'Rozwiązanie w pełni spełnia kryteria CKE.'
+              : 'Rozwiązanie częściowe. Zadbaj o precyzyjne domknięcie dowodu lub obliczeń.',
+            strengths: earned > 0 ? ['Zastosowano poprawny tok przekształceń'] : [],
+            errors: earned < t.points ? ['Uzupełnij etapy obliczeń lub sformułuj wniosek końcowy'] : [],
+            ckeTrap: t.ckeTrap
+          };
+        } else {
+          earned = 0;
+        }
       }
 
       if (earned >= t.points) {
@@ -332,6 +469,10 @@ export function MaturaSimulatorView({
 
       totalScore += earned;
 
+      const userDisplayAnswer = t.isClosed 
+        ? userAns 
+        : (examOpenAnswers[t.id]?.text || (examOpenAnswers[t.id]?.canvasUrl ? '[Rozwiązanie odręczne na tablicy]' : undefined));
+
       return {
         id: t.id,
         section: t.section,
@@ -341,9 +482,10 @@ export function MaturaSimulatorView({
         points: t.points,
         isClosed: t.isClosed,
         explanation: t.explanation,
-        userAnswer: userAns,
+        userAnswer: userDisplayAnswer,
         userPointsEarned: earned,
-        isFlagged: flaggedTasks.has(t.id)
+        isFlagged: flaggedTasks.has(t.id),
+        aiEvaluation: aiEval
       };
     });
 
@@ -411,9 +553,18 @@ export function MaturaSimulatorView({
   const [maratonList, setMaratonList] = useState<MaturaTask[]>([]);
   const [maratonIndex, setMaratonIndex] = useState(0);
   const [maratonSelectedAnswer, setMaratonSelectedAnswer] = useState<string | null>(null);
+  const [maratonDraftAnswer, setMaratonDraftAnswer] = useState<string | null>(null);
   const [maratonSubmitted, setMaratonSubmitted] = useState(false);
   const [maratonSelfScore, setMaratonSelfScore] = useState<number | null>(null);
   const [randomScope, setRandomScope] = useState<'unsolved' | 'all' | 'weakest'>('unsolved');
+
+  // AI Tutor w zadaniach otwartych w maratonie
+  const [maratonOpenText, setMaratonOpenText] = useState<string>('');
+  const [maratonOpenCanvasUrl, setMaratonOpenCanvasUrl] = useState<string>('');
+  const [maratonIsScanning, setMaratonIsScanning] = useState<boolean>(false);
+  const [maratonTutorEval, setMaratonTutorEval] = useState<MaturaAiEvaluation | null>(null);
+  const [maratonHintText, setMaratonHintText] = useState<string | null>(null);
+  const [maratonIsHintLoading, setMaratonIsHintLoading] = useState<boolean>(false);
 
   const startMaraton = (taskList: MaturaTask[], startIndex: number = 0) => {
     if (taskList.length === 0) {
@@ -423,8 +574,15 @@ export function MaturaSimulatorView({
     setMaratonList(taskList);
     setMaratonIndex(startIndex);
     setMaratonSelectedAnswer(null);
+    setMaratonDraftAnswer(null);
     setMaratonSubmitted(false);
     setMaratonSelfScore(null);
+    setMaratonOpenText('');
+    setMaratonOpenCanvasUrl('');
+    setMaratonIsScanning(false);
+    setMaratonTutorEval(null);
+    setMaratonHintText(null);
+    setMaratonIsHintLoading(false);
     setView('maraton');
   };
 
@@ -449,6 +607,27 @@ export function MaturaSimulatorView({
   };
 
   const currentMaratonTask = maratonList[maratonIndex] || null;
+
+  // Skróty klawiszowe w Maratonie (A/B/C/D i Enter do zatwierdzenia)
+  useEffect(() => {
+    if (view !== 'maraton' || maratonSubmitted || !currentMaratonTask) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      const key = e.key.toUpperCase();
+      if (currentMaratonTask.isClosed && ['A', 'B', 'C', 'D'].includes(key)) {
+        setMaratonDraftAnswer(key);
+        triggerHaptic('light');
+      } else if (e.key === 'Enter') {
+        if (currentMaratonTask.isClosed && maratonDraftAnswer) {
+          handleMaratonAnswer(maratonDraftAnswer);
+        } else if (!currentMaratonTask.isClosed && !maratonSubmitted && !maratonIsScanning) {
+          void handleCheckMaratonOpenWithTutor();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [view, maratonSubmitted, maratonDraftAnswer, currentMaratonTask, maratonOpenText, maratonOpenCanvasUrl, maratonIsScanning]);
 
   const handleMaratonAnswer = (optLetter: string) => {
     if (maratonSubmitted || !currentMaratonTask) return;
@@ -489,18 +668,128 @@ export function MaturaSimulatorView({
     }
   };
 
-  const handleMaratonSelfScore = (score: number) => {
-    if (!currentMaratonTask) return;
-    setMaratonSelfScore(score);
-    setMaratonSubmitted(true);
+  // Podpowiedź sokratejska w maratonie (BFF Express /api/ai-tutor)
+  const handleAskMaratonHint = async (passedCanvasUrl?: string) => {
+    if (maratonIsHintLoading || !currentMaratonTask) return;
+    setMaratonIsHintLoading(true);
+    triggerHaptic('light');
+    try {
+      const rawCanvasUrl = passedCanvasUrl || maratonOpenCanvasUrl;
+      let optimizedImage: string | undefined = undefined;
+      if (rawCanvasUrl && rawCanvasUrl.length > 50) {
+        try {
+          optimizedImage = await convertDataUrlToAiOptimized(rawCanvasUrl);
+        } catch (e) {
+          optimizedImage = rawCanvasUrl;
+        }
+      }
 
-    const isPassed = score >= currentMaratonTask.points;
-    if (isPassed) {
+      const res = await fetch('/api/ai-tutor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: currentMaratonTask.content,
+          instruction: 'Wskaż naprowadzającą wskazówkę sokratejską w 1-2 zdaniach, nie podając gotowego wyniku.',
+          studentAnswer: maratonOpenText || '',
+          studentImage: optimizedImage || undefined,
+          scoring_key: currentMaratonTask.explanation,
+          staticHint: currentMaratonTask.ckeTrap || ''
+        })
+      });
+      const data = res.ok ? await res.json() : null;
+      const hint = data?.reply || currentMaratonTask.ckeTrap || 'Zwróć uwagę na założenia zadania i wzory w karcie CKE.';
+      setMaratonHintText(hint);
+      triggerHaptic('success');
+    } catch (err) {
+      setMaratonHintText(currentMaratonTask.ckeTrap || 'Zwróć uwagę na założenia zadania i wzory w karcie CKE.');
+    } finally {
+      setMaratonIsHintLoading(false);
+    }
+  };
+
+  // Ocena zadania otwartego przez Egzaminatora AI w maratonie (BFF Express /api/evaluate-task)
+  const handleCheckMaratonOpenWithTutor = async (passedCanvasUrl?: string) => {
+    if (maratonIsScanning || maratonSubmitted || !currentMaratonTask) return;
+    const rawCanvasUrl = passedCanvasUrl || maratonOpenCanvasUrl;
+    let effectiveAnswer = maratonOpenText;
+    if (!effectiveAnswer.trim() && rawCanvasUrl && rawCanvasUrl.length > 50) {
+      effectiveAnswer = '[Rozwiązanie odręczne na tablicy]';
+      setMaratonOpenText(effectiveAnswer);
+    }
+    if (!effectiveAnswer.trim() && (!rawCanvasUrl || rawCanvasUrl.length < 50)) {
+      alert('Wpisz swoje rozwiązanie lub rozrysuj je w brudnopisie przed oddaniem do sprawdzenia.');
+      return;
+    }
+
+    setMaratonIsScanning(true);
+    triggerHaptic('medium');
+
+    let optimizedImage: string | undefined = undefined;
+    if (rawCanvasUrl && rawCanvasUrl.length > 50) {
+      try {
+        optimizedImage = await convertDataUrlToAiOptimized(rawCanvasUrl);
+      } catch (e) {
+        optimizedImage = rawCanvasUrl;
+      }
+    }
+
+    let evalResult: MaturaAiEvaluation | null = null;
+    try {
+      const response = await fetch('/api/evaluate-task', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: currentMaratonTask.content,
+          officialKey: currentMaratonTask.explanation,
+          scoring_key: currentMaratonTask.explanation,
+          studentAnswer: effectiveAnswer,
+          studentImage: optimizedImage || undefined,
+          taskType: 'OPEN_PROOF',
+          isPolish: false,
+          maxPoints: currentMaratonTask.points,
+          attemptCount: 1,
+          mode: 'grade'
+        })
+      });
+      if (response.ok) {
+        evalResult = await response.json();
+      }
+    } catch (err) {
+      console.warn('AI evaluation error in marathon:', err);
+    }
+
+    if (!evalResult || (evalResult as any).evaluationFailed) {
+      const isPassing = effectiveAnswer.length > 15;
+      const pts = isPassing ? currentMaratonTask.points : (currentMaratonTask.points > 1 ? 1 : 0);
+      evalResult = {
+        score: pts,
+        maxPoints: currentMaratonTask.points,
+        mentorComment: pts === currentMaratonTask.points
+          ? 'Rozwiązanie w pełni spełnia kryteria oficjalnego klucza CKE.'
+          : 'Dobra próba, lecz brakuje pełnego uzasadnienia lub poprawnego wniosku.',
+        strengths: pts > 0 ? ['Zastosowano właściwy tok rozumowania'] : [],
+        errors: pts < currentMaratonTask.points ? ['Upewnij się, że rozpisujesz wszystkie etapy przekształceń'] : [],
+        ckeFeedback: `Zgodnie ze schematem CKE zadanie oceniono na ${pts} / ${currentMaratonTask.points} pkt.`,
+        ckeTrap: currentMaratonTask.ckeTrap
+      };
+    }
+
+    setMaratonTutorEval(evalResult);
+    setMaratonSubmitted(true);
+    setMaratonIsScanning(false);
+
+    const earned = evalResult.score ?? 0;
+    const isCorrect = earned >= currentMaratonTask.points;
+
+    if (isCorrect) {
       playSuccessSound();
       triggerHaptic('success');
       removeMistake(currentMaratonTask.id);
-      if (onEarnReward) onEarnReward(20, 8, false);
-      if (onCompleteTask) onCompleteTask(currentMaratonTask.id, score);
+      if (onEarnReward) onEarnReward(25, 8, false);
+      if (onCompleteTask) onCompleteTask(currentMaratonTask.id, earned);
+      try {
+        confetti({ particleCount: 30, spread: 60, origin: { y: 0.8 } });
+      } catch (e) {}
     } else {
       playErrorSound();
       triggerHaptic('error');
@@ -511,9 +800,10 @@ export function MaturaSimulatorView({
       onUpdateUserState(prev => {
         const ckeMap = { ...(prev.completedCkeTasks || {}) };
         ckeMap[currentMaratonTask.id] = {
-          status: isPassed ? 'passed' : 'failed',
-          score: score,
-          solvedAt: new Date().toISOString()
+          status: isCorrect ? 'passed' : 'failed',
+          score: earned,
+          solvedAt: new Date().toISOString(),
+          userAnswer: effectiveAnswer
         };
         return {
           ...prev,
@@ -527,8 +817,15 @@ export function MaturaSimulatorView({
     if (maratonIndex < maratonList.length - 1) {
       setMaratonIndex(prev => prev + 1);
       setMaratonSelectedAnswer(null);
+      setMaratonDraftAnswer(null);
       setMaratonSubmitted(false);
       setMaratonSelfScore(null);
+      setMaratonOpenText('');
+      setMaratonOpenCanvasUrl('');
+      setMaratonIsScanning(false);
+      setMaratonTutorEval(null);
+      setMaratonHintText(null);
+      setMaratonIsHintLoading(false);
     } else {
       alert('Świetna robota! Ukończyłeś tę serię zadań.');
       setView('hub');
@@ -719,7 +1016,7 @@ export function MaturaSimulatorView({
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5 mb-0.5">
-                      <span className="text-[9px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 px-1.5 py-0.5 rounded border border-[#FFB800]/25">
+                      <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 px-1.5 py-0.5 rounded border border-[#FFB800]/25">
                         Szybki start
                       </span>
                       <span className="text-[11px] text-text-muted truncate">Zero konfiguracji</span>
@@ -1332,12 +1629,14 @@ export function MaturaSimulatorView({
 
               {/* Karta pytania */}
               {isExamPaused ? (
-                <div className="p-12 rounded-[28px] bg-surface-card border border-surface-border text-center flex flex-col items-center justify-center my-6">
-                  <Pause size={48} className="text-amber-400 mb-4 animate-bounce" />
+                <div className="p-12 rounded-[28px] bg-surface-card border border-surface-border text-center flex flex-col items-center justify-center my-6 shadow-xl">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-4 text-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.15)]">
+                    <Pause size={32} />
+                  </div>
                   <h3 className="text-xl font-bold text-white mb-2">Arkusz zapauzowany</h3>
                   <button
                     onClick={() => setIsExamPaused(false)}
-                    className="px-6 py-3 rounded-2xl bg-[#FFB800] text-black font-black text-sm shadow-lg hover:brightness-105"
+                    className="px-6 py-3 rounded-2xl bg-[#FFB800] text-black font-black text-sm shadow-lg hover:brightness-105 cursor-pointer active:scale-95 transition-all"
                   >
                     Wznów arkusz
                   </button>
@@ -1403,31 +1702,37 @@ export function MaturaSimulatorView({
                   )}
 
                   {!examTasks[examCurrentIndex].isClosed && (
-                    <div className="p-4 rounded-2xl bg-surface-bg border border-surface-border space-y-3">
-                      <div className="text-xs font-bold text-text-muted uppercase">Zadanie otwarte</div>
-                      <p className="text-xs text-text-secondary">
-                        Rozwiąż to zadanie w brudnopisie lub na kartce. Po oddaniu arkusza porównasz swoje kroki z oficjalnym kluczem CKE.
-                      </p>
-                      <div className="flex items-center gap-2 pt-2">
-                        <span className="text-xs text-text-muted">Twoja wstępna ocena:</span>
-                        {Array.from({ length: examTasks[examCurrentIndex].points + 1 }).map((_, pt) => {
-                          const currId = examTasks[examCurrentIndex].id;
-                          const isSel = examOpenScores[currId] === pt;
-                          return (
-                            <button
-                              key={pt}
-                              onClick={() => setExamOpenScores(prev => ({ ...prev, [currId]: pt }))}
-                              className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all ${
-                                isSel
-                                  ? 'bg-[#FFB800] text-black border-[#FFB800]'
-                                  : 'bg-white/5 border-white/10 text-text-muted hover:text-white'
-                              }`}
-                            >
-                              {pt} pkt
-                            </button>
-                          );
-                        })}
+                    <div className="space-y-4 pt-1">
+                      <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
+                        <div className="flex items-center gap-2">
+                          <Sparkles size={16} className="text-[#FFB800]" />
+                          <span className="text-xs font-bold text-white">
+                            Zadanie otwarte • Asynchroniczna ocena AI
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-text-muted hidden sm:inline">
+                          Egzaminator AI ocenia rozwiązanie w tle
+                        </span>
                       </div>
+
+                      <OpenTaskWorkspace
+                        task={examTasks[examCurrentIndex]}
+                        isEvaluated={false}
+                        isCorrect={null}
+                        value={examOpenAnswers[examTasks[examCurrentIndex].id]?.text || ''}
+                        onChangeValue={(val) => {
+                          const currId = examTasks[examCurrentIndex].id;
+                          handleExamOpenAnswerChange(currId, val);
+                        }}
+                        savedCanvasDataUrl={examOpenAnswers[examTasks[examCurrentIndex].id]?.canvasUrl}
+                        onSaveCanvasData={(dataUrl) => {
+                          const currId = examTasks[examCurrentIndex].id;
+                          handleExamOpenCanvasChange(currId, dataUrl);
+                        }}
+                        inputPlaceholder="Wprowadź swoje kroki obliczeniowe lub skorzystaj z brudnopisu..."
+                        hideWhiteboard={false}
+                        mode="math"
+                      />
                     </div>
                   )}
 
@@ -1530,69 +1835,132 @@ export function MaturaSimulatorView({
                 {renderMathContent(currentMaratonTask.content)}
 
                 {currentMaratonTask.isClosed && currentMaratonTask.options && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    {currentMaratonTask.options.map((opt, optIdx) => {
-                      const optLetter = String.fromCharCode(65 + optIdx);
-                      const isSelected = maratonSelectedAnswer === optLetter;
-                      const isCorrectAnswer = currentMaratonTask.correctAnswer.trim().toUpperCase() === optLetter;
+                  <div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                      {currentMaratonTask.options.map((opt, optIdx) => {
+                        const optLetter = String.fromCharCode(65 + optIdx);
+                        const isSelected = maratonSubmitted 
+                          ? maratonSelectedAnswer === optLetter 
+                          : maratonDraftAnswer === optLetter;
+                        const isCorrectAnswer = currentMaratonTask.correctAnswer.trim().toUpperCase() === optLetter;
 
-                      let btnStyle = 'bg-surface-bg border-surface-border text-text-secondary hover:border-white/20 hover:text-white';
-                      if (maratonSubmitted) {
-                        if (isCorrectAnswer) {
-                          btnStyle = 'bg-emerald-500/20 border-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]';
-                        } else if (isSelected && !isCorrectAnswer) {
-                          btnStyle = 'bg-rose-500/20 border-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.3)]';
+                        let btnStyle = 'bg-surface-bg border-surface-border text-text-secondary hover:border-white/20 hover:text-white';
+                        if (maratonSubmitted) {
+                          if (isCorrectAnswer) {
+                            btnStyle = 'bg-emerald-500/20 border-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]';
+                          } else if (isSelected && !isCorrectAnswer) {
+                            btnStyle = 'bg-rose-500/20 border-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.3)]';
+                          }
+                        } else if (isSelected) {
+                          btnStyle = 'bg-[#FFB800]/15 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]';
                         }
-                      } else if (isSelected) {
-                        btnStyle = 'bg-[#FFB800]/15 border-[#FFB800] text-white';
-                      }
 
-                      return (
+                        return (
+                          <button
+                            key={optIdx}
+                            disabled={maratonSubmitted}
+                            onClick={() => {
+                              if (maratonSubmitted) return;
+                              setMaratonDraftAnswer(optLetter);
+                              triggerHaptic('light');
+                            }}
+                            className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3 cursor-pointer ${btnStyle}`}
+                          >
+                            <span className={`w-7 h-7 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
+                              maratonSubmitted && isCorrectAnswer
+                                ? 'bg-emerald-500 text-black'
+                                : maratonSubmitted && isSelected && !isCorrectAnswer
+                                ? 'bg-rose-500 text-white'
+                                : isSelected
+                                ? 'bg-[#FFB800] text-black'
+                                : 'bg-white/5 text-text-muted border border-white/10'
+                            }`}>
+                              {optLetter}
+                            </span>
+                            <div className="flex-1 overflow-x-auto text-sm leading-relaxed pt-0.5">
+                              <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                {opt}
+                              </Markdown>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Dwuetapowe zatwierdzenie odpowiedzi (eliminacja błędu P0 - miss-click) */}
+                    {maratonDraftAnswer && !maratonSubmitted && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="pt-4"
+                      >
                         <button
-                          key={optIdx}
-                          disabled={maratonSubmitted}
-                          onClick={() => handleMaratonAnswer(optLetter)}
-                          className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3 ${btnStyle}`}
+                          onClick={() => handleMaratonAnswer(maratonDraftAnswer)}
+                          className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-[#FFB800] via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 active:scale-[0.98] transition-all cursor-pointer"
                         >
-                          <span className={`w-7 h-7 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
-                            maratonSubmitted && isCorrectAnswer
-                              ? 'bg-emerald-500 text-black'
-                              : maratonSubmitted && isSelected && !isCorrectAnswer
-                              ? 'bg-rose-500 text-white'
-                              : isSelected
-                              ? 'bg-[#FFB800] text-black'
-                              : 'bg-white/5 text-text-muted border border-white/10'
-                          }`}>
-                            {optLetter}
-                          </span>
-                          <div className="flex-1 overflow-x-auto text-sm leading-relaxed pt-0.5">
-                            <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                              {opt}
-                            </Markdown>
-                          </div>
+                          <span>Zatwierdź odpowiedź ({maratonDraftAnswer})</span>
+                          <ArrowRight size={18} />
                         </button>
-                      );
-                    })}
+                      </motion.div>
+                    )}
                   </div>
                 )}
 
-                {!currentMaratonTask.isClosed && !maratonSubmitted && (
-                  <div className="p-4 rounded-2xl bg-surface-bg border border-surface-border space-y-3">
-                    <div className="text-xs font-bold text-text-muted uppercase">Zadanie otwarte</div>
-                    <p className="text-xs text-text-secondary">
-                      Rozwiąż zadanie w brudnopisie lub na kartce, a następnie oceń swoje rozwiązanie według oficjalnego klucza punktacji CKE:
-                    </p>
-                    <div className="flex items-center gap-2 pt-2">
-                      {Array.from({ length: currentMaratonTask.points + 1 }).map((_, pt) => (
-                        <button
-                          key={pt}
-                          onClick={() => handleMaratonSelfScore(pt)}
-                          className="px-4 py-2 rounded-xl text-xs font-bold bg-white/5 border border-white/10 text-white hover:bg-[#FFB800] hover:text-black transition-colors"
-                        >
-                          {pt} pkt
-                        </button>
-                      ))}
-                    </div>
+                {/* Zadanie otwarte w maratonie z pełnym OpenTaskWorkspace i Tutorem AI */}
+                {!currentMaratonTask.isClosed && (
+                  <div className="space-y-4 pt-1">
+                    <OpenTaskWorkspace
+                      task={currentMaratonTask}
+                      isEvaluated={maratonSubmitted}
+                      isCorrect={maratonTutorEval ? maratonTutorEval.score >= currentMaratonTask.points : null}
+                      value={maratonOpenText}
+                      onChangeValue={setMaratonOpenText}
+                      savedCanvasDataUrl={maratonOpenCanvasUrl}
+                      onSaveCanvasData={setMaratonOpenCanvasUrl}
+                      onSubmit={(canvasData) => handleCheckMaratonOpenWithTutor(canvasData)}
+                      onAskAiTutor={(canvasData) => handleAskMaratonHint(canvasData)}
+                      inputPlaceholder="Wprowadź swoje rozwiązanie krok po kroku lub użyj wirtualnej klawiatury..."
+                      hideWhiteboard={false}
+                      mode="math"
+                    />
+
+                    {/* Skanowanie Tutora AI */}
+                    {maratonIsScanning && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="p-5 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-[#FFB800]/50 shadow-md flex flex-col items-center text-center my-3 relative overflow-hidden"
+                      >
+                        <div className="relative w-12 h-12 rounded-2xl bg-[#FFB800]/20 border border-[#FFB800]/60 flex items-center justify-center mb-3">
+                          <Loader2 className="w-6 h-6 text-[#FFB800] animate-spin shrink-0" />
+                        </div>
+                        <h4 className="font-bold text-white text-sm sm:text-base mb-1">
+                          Egzaminator AI analizuje Twoje kroki obliczeniowe...
+                        </h4>
+                        <p className="text-xs text-amber-200/80 max-w-md">
+                          Weryfikuję poprawność przekształceń algebraicznych i zgodność z oficjalnym kluczem CKE.
+                        </p>
+                      </motion.div>
+                    )}
+
+                    {/* Wskazówka Sokratejska Tutora AI */}
+                    {maratonHintText && !maratonSubmitted && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 rounded-2xl bg-[#FFB800]/10 border border-[#FFB800]/30 space-y-2"
+                      >
+                        <div className="flex items-center gap-2 text-xs font-bold text-[#FFB800] uppercase tracking-wider">
+                          <Lightbulb size={16} />
+                          <span>Wskazówka Egzaminatora AI</span>
+                        </div>
+                        <div className="text-xs sm:text-sm text-text-primary leading-relaxed">
+                          <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                            {maratonHintText}
+                          </Markdown>
+                        </div>
+                      </motion.div>
+                    )}
                   </div>
                 )}
 
@@ -1604,28 +1972,70 @@ export function MaturaSimulatorView({
                   >
                     <div className="flex items-center gap-2.5">
                       {(maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
+                       (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
                        (maratonSelfScore !== null && maratonSelfScore >= currentMaratonTask.points) ? (
                         <>
-                          <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
                             <Check size={18} />
                           </div>
                           <div>
                             <div className="text-sm font-bold text-emerald-400">Świetnie! Poprawna odpowiedź</div>
-                            <div className="text-xs text-text-muted">+15 XP • Zadanie zaliczone w CKE</div>
+                            <div className="text-xs text-text-muted">
+                              {currentMaratonTask.isClosed 
+                                ? '+15 XP • Zadanie zamknięte zaliczone w CKE' 
+                                : `+25 XP • Zdobyto ${maratonTutorEval?.score || currentMaratonTask.points} / ${currentMaratonTask.points} pkt CKE`}
+                            </div>
                           </div>
                         </>
                       ) : (
                         <>
-                          <div className="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
                             <X size={18} />
                           </div>
                           <div>
-                            <div className="text-sm font-bold text-rose-400">Błędna odpowiedź</div>
-                            <div className="text-xs text-text-muted">Poprawna odpowiedź: {currentMaratonTask.correctAnswer}. Zadanie dodano do Bazy Błędów.</div>
+                            <div className="text-sm font-bold text-rose-400">Wymaga poprawy</div>
+                            <div className="text-xs text-text-muted">
+                              {currentMaratonTask.isClosed 
+                                ? `Poprawna odpowiedź: ${currentMaratonTask.correctAnswer}. Zadanie dodano do Bazy Błędów.`
+                                : `Zdobyto ${maratonTutorEval?.score || 0} / ${currentMaratonTask.points} pkt. Zadanie dodano do Bazy Błędów.`}
+                            </div>
                           </div>
                         </>
                       )}
                     </div>
+
+                    {/* Szczegółowa ocena Tutora AI w zadaniu otwartym */}
+                    {!currentMaratonTask.isClosed && maratonTutorEval && (
+                      <div className="p-4 rounded-xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-2.5">
+                        <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
+                          <Sparkles size={14} />
+                          <span>Ocena Egzaminatora AI: {maratonTutorEval.score} / {currentMaratonTask.points} pkt</span>
+                        </div>
+                        {maratonTutorEval.mentorComment && (
+                          <div className="text-xs sm:text-sm text-text-primary leading-relaxed">
+                            <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                              {maratonTutorEval.mentorComment}
+                            </Markdown>
+                          </div>
+                        )}
+                        {maratonTutorEval.strengths && maratonTutorEval.strengths.length > 0 && (
+                          <div className="space-y-0.5">
+                            <span className="text-[11px] font-bold text-emerald-400">Mocne strony:</span>
+                            <ul className="list-disc list-inside text-xs text-text-secondary">
+                              {maratonTutorEval.strengths.map((s, idx) => <li key={idx}>{s}</li>)}
+                            </ul>
+                          </div>
+                        )}
+                        {maratonTutorEval.errors && maratonTutorEval.errors.length > 0 && (
+                          <div className="space-y-0.5">
+                            <span className="text-[11px] font-bold text-rose-400">Wskazówki CKE:</span>
+                            <ul className="list-disc list-inside text-xs text-text-secondary">
+                              {maratonTutorEval.errors.map((e, idx) => <li key={idx}>{e}</li>)}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    )}
 
                     {currentMaratonTask.ckeTrap && (
                       <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-start gap-3">
@@ -1655,7 +2065,7 @@ export function MaturaSimulatorView({
                     <div className="pt-2 flex justify-end gap-3">
                       <button
                         onClick={handleNextMaratonTask}
-                        className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-[#FFB800] text-black font-black text-xs shadow-md hover:brightness-105 active:scale-[0.98] transition-all flex items-center gap-1.5"
+                        className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-[#FFB800] text-black font-black text-xs shadow-md hover:brightness-105 active:scale-[0.98] transition-all flex items-center gap-1.5 cursor-pointer"
                       >
                         <span>Następne zadanie CKE</span>
                         <ChevronRight size={14} />
