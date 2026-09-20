@@ -41,6 +41,7 @@ import { OpenTaskWorkspace } from './OpenTaskWorkspace';
 import { SessionRunner } from './SessionRunner';
 import { MathPlot } from './MathPlot';
 import { MathDiagram } from './MathDiagram';
+import { NumberLineDiagram } from './NumberLineDiagram';
 import { UserState, MathTaskItem, TaskOption, TaskSolutionStep } from '../types';
 import { deductHeart, getSyncedHearts } from '../lib/heartsManager';
 
@@ -397,8 +398,10 @@ export function TaskView({
           id: optId,
           text: optText,
           content_latex: optText,
-          is_correct: isCorr
-        };
+          is_correct: isCorr,
+          numberLine: opt.numberLine,
+          diagram: opt.diagram
+        } as any;
       });
     } else if (activeTask.question) {
       // Fallback: parse lines like "A) $3^3$" from legacy question string
@@ -1336,7 +1339,8 @@ export function TaskView({
   const instructionText = activeTask.instruction || '';
   const mathStatement = activeTask.math_statement || activeTask.question || activeTask.content || '';
 
-  const isShortOptions = normalizedOptions.every(opt => (opt.content_latex || '').length < 35 && !opt.content_latex.includes('\n'));
+  const hasVisualOptions = normalizedOptions.some(opt => Boolean((opt as any).numberLine || (opt as any).diagram));
+  const isShortOptions = !hasVisualOptions && normalizedOptions.every(opt => (opt.content_latex || '').length < 35 && !opt.content_latex.includes('\n'));
 
   return (
     <div className="fixed inset-0 z-50 bg-surface-bg/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
@@ -1434,7 +1438,7 @@ export function TaskView({
             </span>
             <span className="text-white/20">•</span>
             <span className="text-[#38BDF8] font-semibold tracking-wide">
-              {activeTask.source || activeTask.cke_source || 'Matura Maj 2024 • Zadanie 1'}
+              {activeTask.source || activeTask.cke_source || 'Zadanie autorskie'}
             </span>
           </div>
 
@@ -1449,6 +1453,11 @@ export function TaskView({
             <MathRenderer content={mathStatement} />
           </div>
 
+          {activeTask?.numberLine && (
+            <div className="mt-3 flex justify-center">
+              <NumberLineDiagram data={activeTask.numberLine} height={64} maxWidth="360px" />
+            </div>
+          )}
           {(activeTask?.diagram || activeTask?.plot) && (
             <div className="mt-3 flex justify-center">
               <MathDiagram diagram={activeTask.diagram || activeTask.plot} />
@@ -1550,8 +1559,14 @@ export function TaskView({
                   <div className={badgeClasses}>
                     {opt.id}
                   </div>
-                  <div className="flex-1 text-xs sm:text-sm font-bold truncate overflow-x-auto">
-                    <MathRenderer content={opt.content_latex} />
+                  <div className="flex-1 text-xs sm:text-sm font-bold overflow-x-auto">
+                    {(opt as any)?.numberLine ? (
+                      <NumberLineDiagram data={(opt as any).numberLine} />
+                    ) : (opt as any)?.diagram ? (
+                      <MathDiagram diagram={(opt as any).diagram} />
+                    ) : (
+                      <MathRenderer content={opt.content_latex} />
+                    )}
                   </div>
                   {!isEvaluated && (
                     <span className="hidden md:inline-flex items-center text-[10px] font-mono font-bold text-[#8B8D98] bg-[#0F1622] border border-white/10 px-1.5 py-0.5 rounded mr-1">
@@ -1618,8 +1633,14 @@ export function TaskView({
                   <div className={checkboxClasses}>
                     {isSelected ? <Check size={14} /> : opt.id}
                   </div>
-                  <div className="flex-1 text-xs sm:text-sm font-bold leading-snug">
-                    <MathRenderer content={opt.content_latex} />
+                  <div className="flex-1 text-xs sm:text-sm font-bold leading-snug overflow-x-auto">
+                    {(opt as any)?.numberLine ? (
+                      <NumberLineDiagram data={(opt as any).numberLine} />
+                    ) : (opt as any)?.diagram ? (
+                      <MathDiagram diagram={(opt as any).diagram} />
+                    ) : (
+                      <MathRenderer content={opt.content_latex} />
+                    )}
                   </div>
                   {isEvaluated && isOptionCorrect && (
                     <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
@@ -1842,6 +1863,7 @@ export function TaskView({
             onOpenScratchpad={() => setIsScratchpadOpen(true)}
             onSubmit={handleVerifyAnswer}
             onAskAiTutor={taskType === 'OPEN_PROOF' ? handleAskAiTutor : undefined}
+            isAiLoading={isAiLoading}
             hideWhiteboard={taskType === 'NUMERIC_INPUT'}
           />
         )}

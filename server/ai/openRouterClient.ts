@@ -28,29 +28,21 @@ export const callOpenRouter = async (params: CallOpenRouterParams): Promise<Open
 
   const userModel = isVisionNeeded ? getAiModelConfig().openRouterVision : getAiModelConfig().openRouterText;
 
-  // Prioritize fast, ultra-cheap and highly accurate models
+  // Prioritize fast, ultra-cheap and highly accurate models (qwen/qwen3.7-flash as primary)
   const candidateModels = isVisionNeeded
     ? [
         userModel,
-        'inclusionai/ling-3.0-flash-vl:free',
-        'inclusionai/ling-3.0-flash-vl',
+        'qwen/qwen3.7-flash',
         'google/gemma-4-31b-it',
-        'qwen/qwen3-vl-32b-instruct',
         'google/gemma-3-27b-it',
         'google/gemma-3-12b-it',
-        'google/gemma-3-4b-it',
-        'nex-agi/nex-n2.5-pro:free',
       ]
     : [
         userModel,
-        'inclusionai/ling-3.0-flash-vl:free',
-        'inclusionai/ling-3.0-flash-vl',
+        'qwen/qwen3.7-flash',
         'google/gemma-4-31b-it',
         'google/gemma-3-27b-it',
         'google/gemma-3-12b-it',
-        'google/gemma-3-4b-it',
-        'nex-agi/nex-n2.5-mini:free',
-        'liquid/lfm-2.5-2.6b:free',
       ];
 
   const uniqueModels = Array.from(new Set(candidateModels.filter(Boolean))) as string[];
@@ -79,15 +71,20 @@ export const callOpenRouter = async (params: CallOpenRouterParams): Promise<Open
         { role: 'user', content: userContent },
       ],
       temperature: 0.1,
-      max_tokens: 1500,
+      max_tokens: 2200,
       stream: false,
     };
 
-    if (jsonMode && !isVisionNeeded) {
+    // Fast reasoning limit for reasoning models (e.g. Qwen 3.7 Flash) to prevent reasoning exhaustion
+    if (model.includes('qwen') || model.includes('reasoning') || model.includes('flash')) {
+      body.reasoning = { max_tokens: 350 };
+    }
+
+    if (jsonMode) {
       body.response_format = { type: 'json_object' };
     }
 
-    const timeoutMs = isVisionNeeded ? 14000 : 10000;
+    const timeoutMs = isVisionNeeded ? 30000 : 25000;
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {

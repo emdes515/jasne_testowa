@@ -50,14 +50,13 @@ const ckeExamTasksCache = new Map<string, MaturaTask[]>();
 const lessonByIdCache = new Map<string, LessonDocument>();
 const userTopicProgressCache = new Map<string, UserTopicProgressDocument>();
 
-/** 'lesson-1-1' oraz '1.1' opisują tę samą lekcję — ujednolicamy klucz. */
+/** Ujednolica klucze lekcji zachowując przedrostek przedmiotu (np. 'pol-lesson-1-1' -> 'pol-1.1', 'lesson-1-1' -> '1.1') */
 export function normalizeLessonKey(lessonId: string): string {
-  return String(lessonId || '')
-    .replace(/^pol-/, '')
-    .replace(/^lesson-/, '')
-    .replace(/^pol-/, '')
-    .replace(/-/g, '.')
-    .toLowerCase();
+  const str = String(lessonId || '').toLowerCase();
+  if (str.startsWith('pol-')) {
+    return str.replace(/^pol-lesson-/, 'pol-').replace(/-/g, '.');
+  }
+  return str.replace(/^lesson-/, '').replace(/-/g, '.');
 }
 
 function buildCanonicalLessonDoc(canonical: any, topicId?: string): LessonDocument {
@@ -175,8 +174,8 @@ export const curriculumRepository = {
       const subjectTopicsColRef = collection(db, 'subjects', subjectId, 'topics');
       let snapshot = await getDocs(query(subjectTopicsColRef));
 
-      // 2. Fallback do root /topics jeśli hierarchia subjectu jest pusta
-      if (snapshot.empty) {
+      // 2. Fallback do root /topics TYLKO dla matematyki podstawowej (archiwalna kolekcja Firestore)
+      if (snapshot.empty && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math')) {
         const rootTopicsColRef = collection(db, 'topics');
         snapshot = await getDocs(query(rootTopicsColRef));
       }
@@ -220,6 +219,10 @@ export const curriculumRepository = {
 
     if (subjectId === 'jezyk-polski' || subjectId === 'pol') {
       topicsBySubjectCache.set(subjectId, POLISH_FALLBACK_TOPICS);
+      for (const t of POLISH_FALLBACK_TOPICS) {
+        topicByIdCache.set(`${subjectId}/${t.id}`, t);
+        topicByIdCache.set(t.id, t);
+      }
       return POLISH_FALLBACK_TOPICS;
     }
 
@@ -249,8 +252,8 @@ export const curriculumRepository = {
       let topicRef = doc(db, 'subjects', subjectId, 'topics', topicId);
       let snap = await getDoc(topicRef);
 
-      // 2. Fallback do topics/{topicId}
-      if (!snap.exists()) {
+      // 2. Fallback do topics/{topicId} (TYLKO dla matematyki podstawowej)
+      if (!snap.exists() && (subjectId === DEFAULT_SUBJECT_ID || (!topicId.startsWith('pol-') && subjectId !== 'jezyk-polski' && subjectId !== 'pol'))) {
         topicRef = doc(db, 'topics', topicId);
         snap = await getDoc(topicRef);
       }
@@ -329,8 +332,8 @@ export const curriculumRepository = {
       let lessonRef = doc(db, 'subjects', subjectId, 'topics', topicId, 'lessons', lessonId);
       let snap = await getDoc(lessonRef);
 
-      // 2. Fallback do topics/{topicId}/lessons/{lessonId}
-      if (!snap.exists()) {
+      // 2. Fallback do topics/{topicId}/lessons/{lessonId} (TYLKO dla matematyki podstawowej)
+      if (!snap.exists() && (subjectId === DEFAULT_SUBJECT_ID || (!lessonId.startsWith('pol-') && !topicId.startsWith('pol-') && subjectId !== 'jezyk-polski' && subjectId !== 'pol'))) {
         lessonRef = doc(db, 'topics', topicId, 'lessons', lessonId);
         snap = await getDoc(lessonRef);
       }
@@ -360,6 +363,10 @@ export const curriculumRepository = {
         lessonCache.set(fallbackCacheKey, lessonDoc);
         lessonByIdCache.set(lessonDoc.id, lessonDoc);
         lessonByIdCache.set(normalizeLessonKey(lessonDoc.id), lessonDoc);
+        if (subjectId) {
+          lessonByIdCache.set(`${subjectId}:${lessonDoc.id}`, lessonDoc);
+          lessonByIdCache.set(`${subjectId}:${normalizeLessonKey(lessonDoc.id)}`, lessonDoc);
+        }
         return lessonDoc;
       }
     } catch (err) {
@@ -380,6 +387,8 @@ export const curriculumRepository = {
         lessonCache.set(fallbackCacheKey, fallbackLesson);
         lessonByIdCache.set(fallbackLesson.id, fallbackLesson);
         lessonByIdCache.set(normalizeLessonKey(fallbackLesson.id), fallbackLesson);
+        lessonByIdCache.set(`jezyk-polski:${fallbackLesson.id}`, fallbackLesson);
+        lessonByIdCache.set(`jezyk-polski:${normalizeLessonKey(fallbackLesson.id)}`, fallbackLesson);
         return fallbackLesson;
       }
     }
@@ -388,21 +397,36 @@ export const curriculumRepository = {
   },
 
   /**
-   * Zwraca lekcję z pamięci podręcznej po samym lessonId ('lesson-1-1' / '1.1').
+   * Zwraca lekcję z pamięci podręcznej po samym lessonId ('lesson-1-1' / '1.1' / 'pol-lesson-1-1').
    *
    * Używane przez funkcje synchroniczne (losowanie zadań sesji, karta wzorów),
    * które nie mogą wykonać odczytu z sieci. Lekcja MUSI zostać wcześniej pobrana
    * przez getLesson() — robią to widoki przed rozpoczęciem sesji.
    */
-  getCachedLesson(lessonId: string): LessonDocument | null {
+  getCachedLesson(lessonId: string, subjectId?: string): LessonDocument | null {
     if (!lessonId) return null;
+    const isPolish = subjectId === 'jezyk-polski' || subjectId === 'pol' || lessonId.startsWith('pol-');
+
+    // 1. Sprawdź najpierw klucz z jawnym subjectId
+    if (subjectId) {
+      const scoped = lessonByIdCache.get(`${subjectId}:${lessonId}`) || lessonByIdCache.get(`${subjectId}:${normalizeLessonKey(lessonId)}`);
+      if (scoped) return scoped;
+    }
+
+    // 2. Sprawdź bezpośrednio po id lub normalizeLessonKey, ale upewnij się, że nie zwracamy lekcji z innego przedmiotu
     const direct = lessonByIdCache.get(lessonId) || lessonByIdCache.get(normalizeLessonKey(lessonId));
-    if (direct) return direct;
+    if (direct) {
+      const directIsPolish = direct.id.startsWith('pol-') || direct.topic_id?.startsWith('pol-') || Boolean((direct as any).leksykon);
+      if (isPolish && directIsPolish) return direct;
+      if (!isPolish && !directIsPolish) return direct;
+    }
 
     const wanted = normalizeLessonKey(lessonId);
     for (const lesson of lessonCache.values()) {
       if (lesson?.id && normalizeLessonKey(lesson.id) === wanted) {
-        return lesson;
+        const lessonIsPolish = lesson.id.startsWith('pol-') || lesson.topic_id?.startsWith('pol-') || Boolean((lesson as any).leksykon);
+        if (isPolish && lessonIsPolish) return lesson;
+        if (!isPolish && !lessonIsPolish) return lesson;
       }
     }
 
@@ -411,14 +435,16 @@ export const curriculumRepository = {
       const lessonDoc = buildCanonicalLessonDoc(canonical);
       lessonByIdCache.set(canonical.id, lessonDoc);
       lessonByIdCache.set(normalizeLessonKey(canonical.id), lessonDoc);
+      lessonByIdCache.set(`jezyk-polski:${canonical.id}`, lessonDoc);
       return lessonDoc;
     }
 
-    if (lessonId.startsWith('pol-')) {
+    if (isPolish) {
       const fallback = getPolishFallbackLesson(lessonId);
       if (fallback) {
         lessonByIdCache.set(fallback.id, fallback);
         lessonByIdCache.set(normalizeLessonKey(fallback.id), fallback);
+        lessonByIdCache.set(`jezyk-polski:${fallback.id}`, fallback);
         return fallback;
       }
     }
@@ -435,7 +461,7 @@ export const curriculumRepository = {
     topicId?: string,
     subjectId: string = DEFAULT_SUBJECT_ID
   ): Promise<LessonDocument | null> {
-    const cached = this.getCachedLesson(lessonId);
+    const cached = this.getCachedLesson(lessonId, subjectId);
     if (cached) return cached;
     if (!topicId) return null;
     return this.getLesson(topicId, lessonId, subjectId);
@@ -577,6 +603,30 @@ export const curriculumRepository = {
       }
     } catch (err) {
       console.warn(`[curriculumRepository] Błąd pobierania zadań CKE dla ${docId}:`, err);
+    }
+
+    return [];
+  },
+
+  /**
+   * Pobiera konkretny arkusz maturalny z Firestore: exams/{examId}.
+   * Zgodnie z zasadą Cache-First.
+   */
+  async getCkeExamSheet(examId: string): Promise<MaturaTask[]> {
+    if (ckeExamTasksCache.has(examId)) {
+      return ckeExamTasksCache.get(examId)!;
+    }
+
+    try {
+      const snap = await getDoc(doc(db, 'exams', examId));
+      if (snap.exists()) {
+        const data = snap.data() as { tasks?: MaturaTask[] };
+        const tasks = Array.isArray(data.tasks) ? data.tasks : [];
+        ckeExamTasksCache.set(examId, tasks);
+        return tasks;
+      }
+    } catch (err) {
+      console.warn(`[curriculumRepository] Błąd pobierania arkusza CKE ${examId}:`, err);
     }
 
     return [];

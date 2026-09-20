@@ -23,7 +23,10 @@ import {
   Plus,
   ArrowDown,
   ArrowUp,
-  Layers
+  Layers,
+  Sparkles,
+  Loader2,
+  RefreshCw
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
@@ -38,6 +41,8 @@ export interface OpenTaskWorkspaceProps {
   onOpenScratchpad?: () => void;
   onSubmit?: (canvasDataUrl?: string) => void;
   onAskAiTutor?: (canvasDataUrl?: string) => void;
+  onRetry?: () => void;
+  isAiLoading?: boolean;
   inputPlaceholder?: string;
   hideWhiteboard?: boolean;
   mode?: 'math' | 'text';
@@ -313,6 +318,9 @@ export function OpenTaskWorkspace({
   onSaveCanvasData,
   onOpenScratchpad,
   onSubmit,
+  onAskAiTutor,
+  onRetry,
+  isAiLoading = false,
   inputPlaceholder = 'Wpisz wyrażenie matematyczne lub użyj klawiatury...',
   hideWhiteboard = false,
   mode = 'math'
@@ -587,24 +595,46 @@ export function OpenTaskWorkspace({
     saveCanvasState();
   };
 
-  // Zatwierdzenie rozwiązania z tablicy
-  const handleSubmitFromBoard = () => {
-    if (isEvaluated) return;
+  // Zunifikowane zatwierdzenie (działa zarówno dla tekstu z klawiatury, jak i rysunku z tablicy)
+  const handleUnifiedSubmit = () => {
+    if (isEvaluated || isAiLoading) return;
     triggerHaptic('medium');
     const canvas = canvasRef.current;
-    let dataUrl = '';
-    if (canvas) {
-      dataUrl = canvas.toDataURL('image/png');
-      if (onSaveCanvasData) {
-        onSaveCanvasData(dataUrl);
-      }
+    let dataUrl = savedCanvasDataUrl || '';
+    if (canvas && hasCanvasStrokes) {
+      try {
+        dataUrl = canvas.toDataURL('image/png');
+        if (onSaveCanvasData) {
+          onSaveCanvasData(dataUrl);
+        }
+      } catch {}
     }
-    // Jeśli pole tekstowe jest puste, zaznacz obecność odpowiedzi odręcznej
-    if (!value || !value.trim()) {
+    // Jeśli pole tekstowe jest puste, a są pociągnięcia na tablicy, oznacz obecność rozwiązania odręcznego
+    if ((!value || !value.trim()) && hasCanvasStrokes) {
       onChangeValue('[Rozwiązanie odręczne na tablicy]');
     }
     onSubmit?.(dataUrl);
   };
+
+  // Zunifikowana prośba o wskazówkę sokratejską Tutora AI
+  const handleUnifiedAskAiHint = () => {
+    if (isAiLoading) return;
+    triggerHaptic('light');
+    const canvas = canvasRef.current;
+    let dataUrl = savedCanvasDataUrl || '';
+    if (canvas && hasCanvasStrokes) {
+      try {
+        dataUrl = canvas.toDataURL('image/png');
+        if (onSaveCanvasData) {
+          onSaveCanvasData(dataUrl);
+        }
+      } catch {}
+    }
+    onAskAiTutor?.(dataUrl);
+  };
+
+  // Zatwierdzenie rozwiązania z tablicy (wsteczna kompatybilność)
+  const handleSubmitFromBoard = handleUnifiedSubmit;
 
   // --------------------------------------------------------------------------
   // Keyboard Calculator Logic (4 Ergonomic Rows)
@@ -1007,7 +1037,7 @@ export function OpenTaskWorkspace({
               >
                 <span className="flex items-center gap-1.5 text-rose-300">
                   <BookOpen size={13} />
-                  <span>Oficjalny model kompozycji CKE (4 filary sukcesu)</span>
+                  <span>Oficjalny model kompozycji CKE (4 elementy sukcesu)</span>
                 </span>
                 <span className="text-[11px] text-slate-400 flex items-center gap-1">
                   <span>{showStructureGuide ? 'Zwiń' : 'Rozwiń'}</span>
@@ -1755,22 +1785,93 @@ export function OpenTaskWorkspace({
             </div>
           </div>
 
-          {/* PRZYCISK ZATWIERDZENIA Z TABLICY */}
-          <button
-            type="button"
-            id="whiteboard-submit-answer-btn"
-            disabled={isEvaluated || (!hasCanvasStrokes && !value)}
-            onClick={() => {
-              handleSubmitFromBoard();
-              if (isFullscreen) setIsFullscreen(false);
-            }}
-            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.35)] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
-          >
-            <Check size={18} strokeWidth={2.5} />
-            <span>Zatwierdź rozwiązanie z tablicy</span>
-          </button>
         </div>
       </div>
+
+      {/* ================================================================== */}
+      {/* ZUNIFIKOWANY PASEK AKCJI TUTORA AI (WIDOCZNY W KLAWIATURZE I TABLICY) */}
+      {/* ================================================================== */}
+      {onSubmit && (
+        <div className="w-full pt-1">
+          {isEvaluated ? (
+            <div className="flex items-center justify-between gap-3 w-full p-3.5 rounded-2xl bg-[#0E1524] border border-white/10 shadow-lg">
+              <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                {isCorrect ? (
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0">
+                    <CheckCircle2 size={18} />
+                  </div>
+                ) : (
+                  <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0">
+                    <AlertTriangle size={18} />
+                  </div>
+                )}
+                <div className="min-w-0 flex-1">
+                  <span className="text-xs font-bold text-white block truncate">
+                    {isCorrect ? 'Rozwiązanie zaliczone' : 'Wymaga uzupełnienia / poprawy'}
+                  </span>
+                  <span className="text-[11px] text-slate-400 block truncate">
+                    {isCorrect ? 'Odpowiedź spełnia kryteria CKE' : 'Możesz dopracować rozwiązanie i sprawdzić ponownie'}
+                  </span>
+                </div>
+              </div>
+
+              {onRetry && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('light');
+                    onRetry();
+                  }}
+                  className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 shrink-0"
+                >
+                  <RefreshCw size={13} />
+                  <span>Popraw odpowiedź</span>
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="flex items-center gap-2.5 w-full">
+              {onAskAiTutor && (
+                <button
+                  type="button"
+                  disabled={isAiLoading}
+                  onClick={handleUnifiedAskAiHint}
+                  className="px-3.5 sm:px-4 py-3 rounded-xl sm:rounded-2xl bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/30 hover:border-[#FFB800]/60 text-amber-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed shadow-sm active:scale-[0.98] shrink-0"
+                  title="Poproś Tutora AI o sokratejską wskazówkę do zadania"
+                >
+                  {isAiLoading ? (
+                    <Loader2 size={16} className="animate-spin text-amber-400" />
+                  ) : (
+                    <Sparkles size={16} className="text-[#FFB800]" />
+                  )}
+                  <span className="hidden sm:inline">Podpowiedź AI</span>
+                  <span className="inline sm:hidden">Wskazówka</span>
+                </button>
+              )}
+
+              <button
+                type="button"
+                id="whiteboard-submit-answer-btn"
+                disabled={isAiLoading || (!hasCanvasStrokes && (!value || !value.trim()))}
+                onClick={handleUnifiedSubmit}
+                className="flex-1 py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none shrink-0"
+              >
+                {isAiLoading ? (
+                  <>
+                    <Loader2 size={17} className="animate-spin text-white" />
+                    <span>Egzaminator AI sprawdza...</span>
+                  </>
+                ) : (
+                  <>
+                    <Check size={18} strokeWidth={2.5} />
+                    <span>Sprawdź z Tutorem AI</span>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

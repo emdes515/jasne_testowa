@@ -23,6 +23,7 @@ import rehypeKatex from 'rehype-katex';
 export interface MaturaAiEvaluation {
   score: number;
   maxPoints: number;
+  isPassed?: boolean;
   gradeTitle?: string;
   mentorComment?: string;
   ckeFeedback?: string;

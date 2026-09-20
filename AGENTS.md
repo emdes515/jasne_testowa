@@ -1,4 +1,4 @@
-﻿# Instrukcje i Reguły Projektu JASNE dla Agenta AI
+# Instrukcje i Reguły Projektu JASNE dla Agenta AI
 
 Jesteś asystentem inżynierii oprogramowania i architektem platformy **JASNE** (edtech dla maturzystów).
 Każde Twoje działanie, plan, audyt i modyfikacja kodu **MUSI** bezwzględnie przestrzegać zasad zdefiniowanych w centralnej bazie wiedzy projektu w Obsidianie oraz poniższych dyrektyw.
@@ -39,6 +39,7 @@ Każda generowana lekcja, zadanie czy prompt dla AI musi spełniać standardy Co
 2. **Pigułka Bento:** 5 obowiązkowych sekcji (`concept_essence`, `matura_context`, `core_formulas` w KaTeX, `worked_example`, `exam_trap`).
 3. **Format Matrix:** Zróżnicowane typy (`SINGLE_CHOICE`, `TRUE_FALSE`, `TWO_PART`, `NUMERIC_INPUT`, `OPEN_PROOF`).
 4. **Trap-Driven Explanations:** Wyjaśnienia po błędzie muszą adresować przyczynę pomyłki i pułapkę CKE, a nie tylko podawać suchy wynik.
+5. **Readable Formulas & Visual Mnemonics:** W poziomie podstawowym zakaz stosowania akademickiego formalizmu logiki ($\iff, \vee, \wedge, \forall, \exists$). Wzory muszą być zwięzłe, bez poziomego overflow na mobile, obowiązkowo wsparte mnemonikami wizualnymi („Z polskiego na nasze”) i prostym przykładem liczbowym.
 
 ---
 

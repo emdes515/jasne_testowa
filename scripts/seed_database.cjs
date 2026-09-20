@@ -11,6 +11,7 @@
 // UWAGA BEZPIECZEŃSTWO: nie wyłączamy weryfikacji certyfikatów TLS.
 // W środowiskach z własnym CA (proxy firmowe) użyj NODE_EXTRA_CA_CERTS=/ścieżka/ca.pem
 process.env.FIRESTORE_PREFER_REST = 'true';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const fs = require('fs');
 const path = require('path');
 const { GoogleAuth } = require('google-auth-library');
@@ -77,6 +78,37 @@ async function main() {
   let totalBatchesCommitted = 0;
   let totalTopicsWritten = 0;
   let totalLessonsWritten = 0;
+
+  function sanitizeForFirestore(val) {
+    if (val === undefined) return null;
+    if (val === null) return null;
+    if (Array.isArray(val)) {
+      // If array of arrays (e.g. polygon coordinates [[x,y], [x,y]])
+      if (val.length > 0 && Array.isArray(val[0])) {
+        return val.map(sub => {
+          if (Array.isArray(sub)) {
+            return sub.join(',');
+          }
+          return sanitizeForFirestore(sub);
+        }).join(' ');
+      }
+      return val.map(item => sanitizeForFirestore(item));
+    }
+    if (typeof val === 'object') {
+      const res = {};
+      for (const [k, v] of Object.entries(val)) {
+        if (v !== undefined) {
+          res[k] = sanitizeForFirestore(v);
+        }
+      }
+      return res;
+    }
+    return val;
+  }
+
+  function safeSet(docRef, data, options = { merge: true }) {
+    currentBatch.set(docRef, sanitizeForFirestore(data), options);
+  }
 
   async function commitBatchIfNeeded(force = false) {
     if (operationsInBatch > 0 && (operationsInBatch >= BATCH_SIZE_LIMIT || force)) {
@@ -174,7 +206,7 @@ async function main() {
     });
 
     const mathSubjectDocRef = db.collection('subjects').doc('matematyka-podstawowa');
-    currentBatch.set(mathSubjectDocRef, {
+    safeSet(mathSubjectDocRef, {
       id: 'matematyka-podstawowa',
       key: 'math',
       name: 'Matematyka Podstawowa',
@@ -225,14 +257,14 @@ async function main() {
       };
 
       const topicDocRef = mathSubjectDocRef.collection('topics').doc(topicId);
-      currentBatch.set(topicDocRef, topicData, { merge: true });
+      safeSet(topicDocRef, topicData, { merge: true });
       operationsInBatch++;
       totalTopicsWritten++;
       await commitBatchIfNeeded();
 
       for (const lesson of lessons) {
         const lessonDocRef = topicDocRef.collection('lessons').doc(lesson.id);
-        currentBatch.set(lessonDocRef, {
+        safeSet(lessonDocRef, {
           id: lesson.id,
           topic_id: topicId,
           subject_id: 'matematyka-podstawowa',
@@ -286,7 +318,7 @@ async function main() {
     });
 
     const polSubjectDocRef = db.collection('subjects').doc('jezyk-polski');
-    currentBatch.set(polSubjectDocRef, {
+    safeSet(polSubjectDocRef, {
       id: 'jezyk-polski',
       key: 'pol',
       name: 'Język Polski',
@@ -342,7 +374,7 @@ async function main() {
       };
 
       const topicDocRef = polSubjectDocRef.collection('topics').doc(topicId);
-      currentBatch.set(topicDocRef, topicData, { merge: true });
+      safeSet(topicDocRef, topicData, { merge: true });
       operationsInBatch++;
       totalTopicsWritten++;
       await commitBatchIfNeeded();
@@ -358,7 +390,7 @@ async function main() {
           isLeksykon: true
         } : null;
 
-        currentBatch.set(lessonDocRef, {
+        safeSet(lessonDocRef, {
           id: lesson.id,
           topic_id: topicId,
           subject_id: 'jezyk-polski',
@@ -415,7 +447,7 @@ async function main() {
     });
 
     const subjectDocRef = db.collection('subjects').doc(subjectId);
-    currentBatch.set(subjectDocRef, {
+    safeSet(subjectDocRef, {
       id: subjectId,
       key: meta.key || fallbackMeta.key,
       name: meta.name || fallbackMeta.name,
@@ -468,14 +500,14 @@ async function main() {
       };
 
       const topicDocRef = subjectDocRef.collection('topics').doc(topicId);
-      currentBatch.set(topicDocRef, topicData, { merge: true });
+      safeSet(topicDocRef, topicData, { merge: true });
       operationsInBatch++;
       totalTopicsWritten++;
       await commitBatchIfNeeded();
 
       for (const lesson of lessons) {
         const lessonDocRef = topicDocRef.collection('lessons').doc(lesson.id);
-        currentBatch.set(lessonDocRef, {
+        safeSet(lessonDocRef, {
           id: lesson.id,
           topic_id: topicId,
           subject_id: subjectId,
@@ -540,7 +572,7 @@ async function main() {
   const CKE_WEIGHTS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_weights.json');
   if (fs.existsSync(CKE_FORMULAS_PATH)) {
     const ckeFormulas = JSON.parse(fs.readFileSync(CKE_FORMULAS_PATH, 'utf8'));
-    currentBatch.set(db.collection('system').doc('ckeFormulas'), {
+    safeSet(db.collection('system').doc('ckeFormulas'), {
       id: 'ckeFormulas',
       topics: ckeFormulas.topics || [],
       formulas: ckeFormulas.formulas || [],
@@ -554,7 +586,7 @@ async function main() {
   }
   if (fs.existsSync(CKE_WEIGHTS_PATH)) {
     const ckeWeights = JSON.parse(fs.readFileSync(CKE_WEIGHTS_PATH, 'utf8'));
-    currentBatch.set(db.collection('system').doc('ckeSubjectWeights'), {
+    safeSet(db.collection('system').doc('ckeSubjectWeights'), {
       id: 'ckeSubjectWeights',
       subjects: ckeWeights.subjects || {},
       options: ckeWeights.options || [],
@@ -567,13 +599,12 @@ async function main() {
   }
 
   // 6. Egzaminy maturalne (arkusze CKE) -> exams/matura-podstawowa
-  //    Jedyne źródło: seed/curriculum/zadania_matura.json. Aplikacja czyta ten
-  //    dokument z Firestore — w bundlu klienta nie ma żadnych zadań.
+  //    Jedyne źródło: seed/curriculum/zadania_matura.json oraz seed/curriculum/exams/
   const MATURA_TASKS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'zadania_matura.json');
   if (fs.existsSync(MATURA_TASKS_PATH)) {
     const maturaTasks = JSON.parse(fs.readFileSync(MATURA_TASKS_PATH, 'utf8'));
     const sections = Array.from(new Set(maturaTasks.map(t => t.section).filter(Boolean)));
-    currentBatch.set(db.collection('exams').doc('matura-podstawowa'), {
+    safeSet(db.collection('exams').doc('matura-podstawowa'), {
       id: 'matura-podstawowa',
       subject_id: 'matematyka-podstawowa',
       name: 'Matura próbna — Matematyka (poziom podstawowy)',
@@ -583,9 +614,32 @@ async function main() {
       updatedAt: new Date().toISOString()
     }, { merge: true });
     operationsInBatch++;
-    console.log(`✓ Egzaminy: exams/matura-podstawowa (${maturaTasks.length} zadań, ${sections.length} sekcji)`);
+    console.log(`✓ Egzaminy zbiorcze: exams/matura-podstawowa (${maturaTasks.length} zadań, ${sections.length} sekcji)`);
   } else {
     console.warn('[WARN] Brak seed/curriculum/zadania_matura.json — egzaminy pominięte.');
+  }
+
+  // Seeding poszczególnych 6 oficjalnych arkuszy CKE: exams/{examId}
+  const EXAMS_DIR = path.resolve(__dirname, '..', 'seed', 'curriculum', 'exams');
+  if (fs.existsSync(EXAMS_DIR)) {
+    const examFiles = fs.readdirSync(EXAMS_DIR).filter(f => f.endsWith('.json'));
+    for (const file of examFiles) {
+      const examId = path.basename(file, '.json');
+      const examTasks = JSON.parse(fs.readFileSync(path.join(EXAMS_DIR, file), 'utf8'));
+      const examSections = Array.from(new Set(examTasks.map(t => t.section).filter(Boolean)));
+      const examName = examTasks[0]?.examName || `Matura CKE — ${examId}`;
+      safeSet(db.collection('exams').doc(examId), {
+        id: examId,
+        subject_id: 'matematyka-podstawowa',
+        name: examName,
+        sections: examSections,
+        tasks: examTasks,
+        tasks_count: examTasks.length,
+        updatedAt: new Date().toISOString()
+      }, { merge: true });
+      operationsInBatch++;
+      console.log(`✓ Egzamin arkusz: exams/${examId} (${examTasks.length} zadań)`);
+    }
   }
 
   await commitBatchIfNeeded(true);

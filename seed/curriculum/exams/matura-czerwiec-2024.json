@@ -1,0 +1,1403 @@
+[
+  {
+    "id": "matura-czerwiec-2024-zad-1",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  2−1 \\cdot 32\n3\n5\njest równa",
+    "options": [
+      "(−16)",
+      "(−4)",
+      "2",
+      "4"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n \n \n \n \n \n \n \n \n \n \n \n \n                                                \n1 Rozporządzenie Ministra Edukacji i Nauki z dnia 10 czerwca 2022 r. w sprawie wymagań egzaminacyjnych dla \negzaminu maturalnego przeprowadzanego w roku szkolnym 2022/2023 i 2023/2024 (Dz.U. 2022, poz.1246). \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 3 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 1",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-2",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "2",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log3 (3\n2) + log3 (2\n9)  jest równa",
+    "options": [
+      "log3\n31\n18",
+      "log3\n5\n11",
+      "(−1)",
+      "1\n3"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 2",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-3",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "3",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  (2\\sqrt10 + \\sqrt2)\n2\njest równa",
+    "options": [
+      "22",
+      "42",
+      "42 + 4\\sqrt5",
+      "42 + 8\\sqrt5"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nD \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 4 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 3",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-4",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "4",
+    "section": "Dział 14: Statystyka",
+    "topicId": "dzial-14",
+    "type": "SINGLE_CHOICE",
+    "content": "Klient wpłacił do banku na trzyletnią lokatę kwotę w wysokości  K0  zł. Po każdym rocznym\nokresie oszczędzania bank dolicza odsetki w wysokości  6%  od kwoty bieżącego kapitału\nznajdującego się na lokacie – zgodnie z procentem składanym.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPo trzech latach oszczędzania w tym banku kwota na lokacie (bez uwzględniania podatków)\njest równa",
+    "options": [
+      "K0 \\cdot (1,06)3",
+      "K0 \\cdot (1,02)3",
+      "K0 \\cdot (1,03)6",
+      "K0 \\cdot 1,18"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 5 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 4",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-5",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "5",
+    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "topicId": "dzial-2",
+    "type": "OPEN_PROOF",
+    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  𝟓𝒏𝟑 − 𝟓𝒏  jest podzielna przez  𝟑𝟎.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Przekształcamy wyrażenie  5n3 − 5n  do postaci iloczynu \n \n5n3 − 5n = 5n(n2 − 1) = 5n(n − 1)(n + 1)  \n \nJeden z czynników w rozkładzie jest równy  5, więc liczba  5n(n − 1)(n + 1)  jest podzielna \nprzez  5.  Wśród każdych trzech kolejnych liczb całkowitych  n − 1, n, n + 1  co najmniej \njedna jest podzielna przez  2  i dokładnie jedna jest podzielna przez  3.  \nZatem liczba  5n(n − 1)(n + 1)  dzieli się przez  5  oraz przez  2  oraz przez  3. \nPonadto liczby  2,  3,  5  są parami względnie pierwsze. \nZatem liczba  5n3 − 5n = 5n(n2 − 1) = 5n(n − 1)(n + 1)  jest podzielna przez  30. \nTo kończy dowód. \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 6 z 42",
+    "ckeTrap": "Jeżeli zdający sprawdza prawdziwość tezy tylko dla wybranych wartości  n, to otrzymuje  \n0 punktów za całe rozwiązanie.",
+    "source": "Matura Czerwiec 2024 • Zad. 5",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-6",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "6",
+    "section": "Dział 12: Kombinatoryka",
+    "topicId": "dzial-12",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich całkowitych dodatnich rozwiązań nierówności\n3x − 5\n12 < 1\n3\njest równa",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "6"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 6",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-7",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "7",
+    "section": "Dział 5: Funkcja Liniowa i Układy Równań",
+    "topicId": "dzial-5",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkład równań  { x − 2y = 3\n−4x + 8y = −12",
+    "options": [
+      "nie ma rozwiązań.",
+      "ma dokładnie jedno rozwiązanie.",
+      "ma dokładnie dwa rozwiązania.",
+      "ma nieskończenie wiele rozwiązań."
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 7 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 7",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-8",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "8",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  x  różnej od:  (−1),  0  i  1, wartość wyrażenia  2x2\nx2−1 \\cdot x+1\nx\njest równa wartości wyrażenia",
+    "options": [
+      "2x + 2",
+      "2x\nx−1",
+      "2x\nx2−1",
+      "2x3+1\nx3−1"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 8",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-9",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "9",
+    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "topicId": "dzial-2",
+    "type": "NUMERIC_INPUT",
+    "content": "Wielomian  W(x) = ax3 + bx2 + cx + d  jest iloczynem wielomianów  𝐹(x) = (2 − 3x)2\noraz  𝐺(x) = 3x − 2.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak,\naby zdanie było prawdziwe.\nSuma  a + b + c + d  współczynników wielomianu  W  jest równa  ……….  .",
+    "options": [],
+    "correctAnswer": "1",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n1 \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 8 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 9",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-10",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "10",
+    "section": "Dział 3: Równania i Nierówności",
+    "topicId": "dzial-3",
+    "type": "OPEN_CALCULATION",
+    "content": "Rozwiąż równanie\n𝟒𝒙𝟑 − 𝟏𝟐𝒙𝟐 − 𝒙 + 𝟑 = 𝟎\nZapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "Sposób I \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \n4x3 − 12x2 − x + 3 = 0 \n \n4x2(x − 3) − (x − 3) = 0 \n \n(x − 3)(4x2 − 1) = 0 \n \n(x − 3)(2x − 1)(2x + 1) = 0 \n \nx − 3 = 0    lub    2x − 1 = 0    lub    2x + 1 = 0 \n \nx = 3    lub    x = 1\n2    lub    x = −1\n2 \n \nRozwiązaniami równania są liczby:  (−1\n2),  1\n2,  3. \n \nSposób II \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "1. Jeżeli zdający zapisze tylko trzy poprawne rozwiązania równania, to otrzymuje 1 punkt za \ncałe rozwiązanie. \n2. Jeżeli zdający uzyska trzy poprawne pierwiastki wielomianu, lecz traktuje równanie jako \nnierówność (podaje zbiór rozwiązań w postaci przedziału / sumy przedziałów), to \notrzymuje 2 punkty za całe rozwiązanie. \n3. Jeżeli przy przekształcaniu lewej strony równania do postaci iloczynu zdający zapisuje \nczynnik  (x − 3)  z wykładnikiem  2, to może otrzymać co najwyżej 2 punkty za całe \nrozwiązanie (1 punkt za rozwiązanie równania  (x − 3)2 = 0  i 1 punkt za rozwiązanie \nrównania  4x2 − 1 = 0). \n4. Jeżeli zdający zamiast równania  (x − 3)(4x2 − 1) = 0  zapisze  (x − 3) ± (4x2 − 1) = 0, \nale z dalszego rozwiązania wynika, że traktuje lewą stronę równania jak iloczyn i rozwiąże \nzadanie do końca, to może otrzymać co najwyżej 2 punkty za całe rozwiązanie (1 punkt \nza rozwiązanie równania  x − 3 = 0  i 1 punkt za rozwiązanie równania  4x2 − 1 = 0). \n5. Jeżeli zdający przy przekształcaniu równania do postaci  (x − 3)(4x2 − 1) = 0  popełni \nbłąd i zapisze: \n4x2(x + 3) − (x − 3) = 0  \nlub \n4x2(x − 3) + (x − 3) = 0  \nlub \n4x2(x − 3) − (x + 3) = 0  \nlub \nx(4x2 + 1) − 3(4x2 − 1) = 0 \nlub \nx(4x2 − 1) + 3(4x2 − 1) = 0 \nlub \nx(4x2 − 1) − 3(4x2 + 1) = 0 \na następnie  \n5.1. zapisze równanie  (x − 3)(4x2 − 1) = 0  lub poprawną alternatywę  \n(x − 3 = 0  lub  4x2 − 1 = 0) i konsekwentnie rozwiąże zadanie do końca, to \notrzymuje co najwyżej 2 punkty za całe rozwiązanie (1 punkt za rozwiązanie \nrównania  x − 3 = 0  i 1 punkt za rozwiązanie równania  4x2 − 1 = 0). \n5.2. zapisze równanie  (x − 3)(4x2 + 1) = 0  lub błędną alternatywę  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 10 z 42 \n(x − 3 = 0  lub  4x2 + 1 = 0) i zapisze rozwiązanie  x = 3,  \nto otrzymuje 1 punkt za całe rozwiązanie. \n5.3. zapisze równanie  (x + 3)(4x2 − 1) = 0  lub błędną alternatywę  \n(x + 3 = 0  lub  4x2 − 1 = 0) i zapisze oba rozwiązania równania  4x2 − 1 = 0:  \nx = −1\n2  oraz  x = 1\n2  to otrzymuje 1 punkt za całe rozwiązanie. \n5.4. zapisze błędne równanie (w którym jedna ze stron jest równa  0, a druga jest \niloczynem wielomianów stopni dodatnich), inne niż w uwagach 5.2 oraz 5.3, np. \n(x − 3)(x + 3)(4x2 ± 1) = 0  lub błędną alternatywę inną niż w uwagach 5.2 \noraz 5.3, np. (x − 3 = 0  lub  x + 3 = 0  lub  4x2 ± 1 = 0), to otrzymuje \n0 punktów za całe rozwiązanie. \n6. Jeżeli zdający, przekształcając równanie  4x3 − 12x2 − x + 3 = 0, popełni jeden błąd \n(który nie jest błędem znaku) albo dwa błędy znaku i otrzyma równanie trzeciego stopnia, \nktóre ma trzy rozwiązania rzeczywiste, oraz konsekwentnie rozwiąże zadanie do końca, to \notrzymuje 1 punkt za całe rozwiązanie. \n7. Jeżeli zdający dzieli obustronnie równanie  4x2(x − 3) = x − 3  przez dwumian   \n(x − 3)  z podaniem odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = −1\n2  oraz  x = 1\n2, to otrzymuje 2 punkty za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 1 punkt za całe rozwiązanie. \n8. Jeżeli zdający dzieli obustronnie równanie  4x2(x − 3) = x − 3  przez dwumian   \n(x − 3)  bez podania odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = −1\n2  oraz  x = 1\n2, to otrzymuje 1 punkt za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 0 punktów za całe rozwiązanie.",
+    "source": "Matura Czerwiec 2024 • Zad. 10",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-11_1",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "11.1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "NUMERIC_INPUT",
+    "content": "Uzupełnij poniższe zdanie. Wpisz odpowiedni przedział w wykropkowanym miejscu\ntak, aby zdanie było prawdziwe.\nZbiorem wszystkich rozwiązań nierówności  f(x) \\le 2  jest przedział  ………………………  .",
+    "options": [],
+    "correctAnswer": "[0,4]",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n[0,4] \n \nKryteria uwzględniające specyficzne trudności w uczeniu się matematyki \n \nJeśli zdający pomyli porządek liczb na osi liczbowej, np. zapisze zbiór rozwiązań nierówności \nw postaci  [4,0], to otrzymuje 1 punkt.",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 11.1",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-11_2",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "11.2",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "NUMERIC_INPUT",
+    "content": "Na rysunku 2., w kartezjańskim układzie współrzędnych  (x, y), przedstawiono wykres funkcji  g,\npowstałej w wyniku przesunięcia równoległego wykresu funkcji  f  wzdłuż osi  Ox\no  4  jednostki w lewo.\nRysunek 2.\nDokończ zdanie. Wybierz odpowiedź A, B albo C oraz odpowiedź 1. albo 2.\nFunkcje  f  i  g  są powiązane zależnością\nA. g(x) = f(x + 4)\noraz mają takie same\n1. dziedziny.\nB. g(x) = f(x − 4)\n2. zbiory wartości. C. g(x) = f(x) − 4",
+    "options": [],
+    "correctAnswer": "A2",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA2 \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 13 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 11.2",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-12",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "12",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "TRUE_FALSE",
+    "content": "Funkcja  y = f(x)  jest określona za pomocą tabeli\n𝒙 −2 −1 0 1 2\n𝒚 −1 0 1 0 3\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nFunkcja  f  ma dokładnie jedno miejsce zerowe.  P F\nW kartezjańskim układzie współrzędnych  (x, y)  wykres funkcji  f  jest\nsymetryczny względem osi  Oy. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "correctAnswer": "FF",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nFF",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 12",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-13",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "13",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Liczba  2  jest miejscem zerowym funkcji liniowej  f(x) = (3 − m)x + 4.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  m  jest równa",
+    "options": [
+      "0",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 14 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 13",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-14",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "14",
+    "section": "Dział 6: Funkcja Kwadratowa",
+    "topicId": "dzial-6",
+    "type": "OPEN_CALCULATION",
+    "content": "Parabola, która jest wykresem funkcji kwadratowej  f, ma z osiami kartezjańskiego układu\nwspółrzędnych  (x, y)  dokładnie dwa punkty wspólne:  M = (0, 18)  oraz  𝑁 = (3, 0).\nWyznacz wzór funkcji kwadratowej  𝒇. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I  \nPonieważ punkt  𝑁 = (3,0)  jest jedynym punktem wspólnym wykresu funkcji  f  i osi  Ox, \nwięc jest to wierzchołek paraboli będącej wykresem funkcji  f.  \n \nZapisujemy wzór funkcji  f  w postaci kanonicznej: \n \nf(x) = a(x − 3)2,  gdzie  a \\ne 0 \n \nPunkt  M = (0,18)  leży na wykresie funkcji  f, zatem \n \nf(0) = 18 \n \na(0 − 3)2 = 18 \n \n9a = 18 \n \na = 2 \n \nZatem  f(x) = 2(x − 3)2 . \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 14",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-15_1",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "15.1",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "Na jednym z rysunków A–D przedstawiono, w kartezjańskim układzie współrzędnych  (x, y),\nfragment wykresu funkcji  y = f(x).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFragment wykresu funkcji  y = f(x)  przedstawiono na rysunku",
+    "options": [
+      {
+        "id": "A",
+        "text": "Parabola o wierzchołku W = (1, 4) i ramionach skierowanych w dół",
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "Parabola o wierzchołku W = (-1, 4) i ramionach skierowanych w dół, przechodząca przez (0, 3)",
+        "is_correct": true
+      },
+      {
+        "id": "C",
+        "text": "Parabola o wierzchołku W = (-1, -4) i ramionach skierowanych w górę",
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "Parabola o wierzchołku W = (1, -4) i ramionach skierowanych w górę",
+        "is_correct": false
+      }
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 15.1",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-15_2",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "15.2",
+    "section": "Dział 4: Własności Funkcji i Odczytywanie Wykresów",
+    "topicId": "dzial-4",
+    "type": "TRUE_FALSE",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nWykres funkcji  f  przecina oś  Oy  kartezjańskiego układu współrzędnych\n(x, y)  w punkcie o współrzędnych  (0, 4).  P F\nMiejsca zerowe funkcji  f  są równe:  (−3)  oraz  1. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "correctAnswer": "FP",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nFP \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 17 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 15.2",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-16_1",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "16.1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nSuma dziesięciu początkowych kolejnych wyrazów tego ciągu jest równa",
+    "options": [
+      "3",
+      "7",
+      "50",
+      "100"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 16.1",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-16_2",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "16.2",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "TRUE_FALSE",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nCiąg  (an)  jest malejący. P F\nCiąg  (an)  jest geometryczny. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "correctAnswer": "FF",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nFF \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 18 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 16.2",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-17",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "17",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "W ciągu arytmetycznym  (an), określonym dla każdej liczby naturalnej  n \\ge 1, dane są\nwyrazy:  a1 = 7  oraz  a2 = 13.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWyraz  a10  jest równy",
+    "options": [
+      "(−47)",
+      "52",
+      "61",
+      "67"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 17",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-18",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "18",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Trzywyrazowy ciąg  (−1, 2, x)  jest arytmetyczny.\nTrzywyrazowy ciąg  (−1, 2, y)  jest geometryczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczby  x  oraz  y  spełniają warunki",
+    "options": [
+      "x > 0   i   y > 0",
+      "x > 0   i   y < 0",
+      "x < 0   i   y > 0",
+      "x < 0   i   y < 0"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 19 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 18",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-19",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "19",
+    "section": "Dział 8: Trygonometria",
+    "topicId": "dzial-8",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  1 + cos2 27°  jest równa",
+    "options": [
+      "2 − sin2 27°",
+      "sin2 27°",
+      "2 + sin2 27°",
+      "2"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 19",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-20",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "20",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "Podstawy trapezu prostokątnego  ABCD  mają długości:  |AB| = 8  oraz  |CD| = 5.\nWysokość  AD  tego trapezu ma długość  \\sqrt3  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ABC  jest równa",
+    "options": [
+      "15°",
+      "30°",
+      "45°",
+      "60°"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 20 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 20",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trapez prostokątny $ABCD$ o podstawach $|AB| = 8$, $|CD| = 5$ i wysokości $|AD|$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              70,
+              200
+            ],
+            [
+              350,
+              200
+            ],
+            [
+              245,
+              70
+            ],
+            [
+              70,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.08)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 70,
+          "cy": 200,
+          "r": 16,
+          "startAngleDeg": 270,
+          "endAngleDeg": 360,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        },
+        {
+          "cx": 70,
+          "cy": 70,
+          "r": 16,
+          "startAngleDeg": 0,
+          "endAngleDeg": 90,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            245,
+            70
+          ],
+          "to": [
+            245,
+            200
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h = 4"
+        }
+      ],
+      "points": [
+        {
+          "x": 70,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 350,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 245,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 70,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": 210,
+          "y": 222,
+          "text": "|AB| = 8",
+          "color": "#FFB800",
+          "fontSize": 12
+        },
+        {
+          "x": 155,
+          "y": 56,
+          "text": "|CD| = 5",
+          "color": "#FFB800",
+          "fontSize": 12
+        },
+        {
+          "x": 42,
+          "y": 140,
+          "text": "AD",
+          "color": "#FFB800",
+          "fontSize": 12
+        },
+        {
+          "x": 310,
+          "y": 130,
+          "text": "BC",
+          "color": "#FFB800",
+          "fontSize": 12
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-21",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "21",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "Punkty  A,  B  oraz  C  leżą na okręgu o środku w punkcie  S. Długość łuku  AB, na którym\njest oparty kąt wpisany  ACB, jest równa  1\n5  długości okręgu (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ACB  jest równa",
+    "options": [
+      "18°",
+      "30°",
+      "36°",
+      "72°"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 21 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 21",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Okrąg o środku w punkcie $S$ i kąty oparte na łuku $AB$",
+      "width": 440,
+      "height": 260,
+      "circles": [
+        {
+          "cx": 220,
+          "cy": 130,
+          "r": 90,
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.04)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            140,
+            175
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            300,
+            175
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            140,
+            175
+          ],
+          "to": [
+            210,
+            42
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            300,
+            175
+          ],
+          "to": [
+            210,
+            42
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        }
+      ],
+      "points": [
+        {
+          "x": 140,
+          "y": 175,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 300,
+          "y": 175,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 210,
+          "y": 42,
+          "label": "C",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 130,
+          "label": "S",
+          "labelPosition": "bottom",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-22",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "22",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "OPEN_CALCULATION",
+    "content": "Bok kwadratu  ABCD  ma długość równą  12. Punkt  S  jest środkiem boku  BC  tego\nkwadratu. Na odcinku  AS  leży punkt  P  taki, że odcinek  BP  jest prostopadły do odcinka  AS.\nOblicz długość odcinka  𝑩𝑷. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I \nPunkt  S  jest środkiem odcinka  BC, więc  |BS| = 6. \nTrójkąt  ABS  jest prostokątny. Odcinek  BP  jest wysokością trójkąta  ABS  poprowadzoną \nna przeciwprostokątną  AS  (jak na rysunku). \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n A \n B \nC \nD \nS \nP \n12 \n6 \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 22 z 42 \nZ twierdzenia Pitagorasa obliczamy długość odcinka  AS \n \n|AS|2 = 122 + 62 \n \n|AS|2 = 180 \n \n|AS| = \\sqrt180 = 6\\sqrt5 \n \nPonieważ odcinek  BP  jest wysokością trójkąta prostokątnego poprowadzoną na \nprzeciwprostokątną, więc \n \n|BP| =\n|AB| \\cdot |BS|\n|AS| = 12 \\cdot 6\n6\\sqrt5\n= 12\n\\sqrt5\n= 12\\sqrt5\n5  \n  \n \nDługość odcinka  BP  jest równa  12\\sqrt5\n5\n . \n \n \nSposób II \nPunkt  S  jest środkiem odcinka  BC, więc  |BS| = 6. \nTrójkąt  ABS  jest prostokątny. Odcinek  BP  jest wysokością trójkąta  ABS  poprowadzoną \nna przeciwprostokątną  AS  (jak na rysunku). \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nZ twierdzenia Pitagorasa obliczamy długość odcinka  AS \n \n|AS|2 = 122 + 62 \n \n|AS|2 = 180 \n \n|AS| = \\sqrt180 = 6\\sqrt5 \n \nPole trójkąta  ABS  jest równe \nPABS = 1\n2 \\cdot 6\\sqrt5 \\cdot |BP| \n \nPonadto pole trójkąta  ABS  można obliczyć jako połowę iloczynu długości przyprostokątnych \n \nPABS = 1\n2 \\cdot 12 \\cdot 6 = 36 \n \nA \n B \nC \nD \nS \nP \n12 \n6 \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 22",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-23_1",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "23.1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "TRUE_FALSE",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nDo okręgu  𝒪  należy punkt o współrzędnych  (−1, −3). P F\nPromień okręgu  𝒪  jest równy  5. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "correctAnswer": "PF",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nPF",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 23.1",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-23_2",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "23.2",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "Okrąg  𝒦  jest obrazem okręgu  𝒪  w symetrii środkowej względem początku układu\nwspółrzędnych.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg  𝒦  jest określony równaniem",
+    "options": [
+      "(x − 1)2 + (y + 2)2 = 5",
+      "(x + 1)2 + (y + 2)2 = 5",
+      "(x − 1)2 + (y − 2)2 = 5",
+      "(x + 1)2 + (y − 2)2 = 5"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 29 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 23.2",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-24",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "24",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "OPEN_CALCULATION",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są punkty  A = (2, 8)  oraz\nB = (10, 2). Symetralna odcinka  AB  przecina oś  Ox  układu współrzędnych w punkcie  P.\nOblicz współrzędne punktu  𝑷  oraz  długość odcinka  𝑨𝑷. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "Sposób I \nObliczamy współczynnik kierunkowy prostej  AB: \n \naAB = 2 − 8\n10 − 2 = −3\n4 \n \nZatem współczynnik kierunkowy symetralnej  k  odcinka  AB  jest równy \n \nak = 4\n3 \n \nSymetralna  k  przechodzi przez środek  M  odcinka  AB. Obliczamy współrzędne punktu  M: \n \nM = (2 + 10\n2 ,8 + 2\n2 ) = (6,5) \n \nZatem prosta  k  ma równanie postaci \n \ny = 4\n3(x − 6) + 5 \n \ny = 4\n3x − 3 \n \nPunkt  P  jest punktem przecięcia symetralnej  k  z osią  Ox, więc współrzędne  \npunktu  P = (xp,yp)  spełniają równania \n \nyp = 4\n3xp − 3     oraz     yp = 0 \n \nStąd otrzymujemy: \n \n0 = 4\n3xp − 3     oraz     yp = 0 \n \nxp = 9\n4     oraz     yp = 0 \n \nZatem  P = (9\n4,0) \n \nObliczamy długość odcinka  AP: \n \n|AP| = \\sqrt(9\n4 − 2)\n2\n+ (0 − 8)2 = \\sqrt(1\n4)\n2\n+ (−8)2 = \\sqrt 1\n16 + 64 = \\sqrt1025\n16 = 5\\sqrt41\n4  \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 32 z 42 \nSposób II \nPonieważ punkt  P  leży na osi  Ox, więc jego współrzędne są równe  P = (xp,0). \n \nPonieważ  punkt  P  leży na symetralnej odcinka  AB, więc  |AP| = |BP|. \nStąd i ze wzoru na odległość między dwoma punktami otrzymujemy równanie \n \n\\sqrt(xp − 2)\n2\n+ (0 − 8)2 = \\sqrt(xp − 10)\n2\n+ (0 − 2)2 \n \n(xp − 2)\n2\n+ (0 − 8)2 = (xp − 10)\n2\n+ (0 − 2)2 \n \nxp\n2 − 4xp + 4 + 64 = xp\n2 − 20xp + 100 + 4 \n \n16xp = 36 \n \nxp = 9\n4 \n \nZatem  P = (9\n4,0). \n \nObliczamy długość odcinka  AP: \n \n|AP| = \\sqrt(9\n4 − 2)\n2\n+ (0 − 8)2 = \\sqrt(1\n4)\n2\n+ (−8)2 = \\sqrt 1\n16 + 64 = \\sqrt1025\n16 = 5\\sqrt41\n4  \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "1. Jeżeli zdający rozważa punkt  P  leżący na osi  Ox  i w rozwiązaniu popełnia tylko błędy \nrachunkowe, które nie przekreślają poprawności rozumowania, to za całe rozwiązanie \nmoże otrzymać co najwyżej 3 punkty. \n2. Jeżeli zdający rysuje w układzie współrzędnych symetralną odcinka  AB  i odczytuje \nwspółrzędne punktu  P  i zapisuje  P = (9\n4,0)  oraz sprawdzi rachunkowo, że   \n|AP| = |BP|, to za tę część rozwiązania otrzymuje 3 punkty (jeżeli tego sprawdzenia nie \nwykona, to otrzymuje za tę część rozwiązania 2 punkty, a gdy odczyta błędne \nwspółrzędne punktu  P, to otrzymuje 0 punktów). \n3. Jeżeli zdający nie sporządzi rysunku i zapisze tylko  P = (9\n4,0), to otrzymuje 0 punktów; \njeżeli zdający nie sporządzi rysunku, lecz zapisze  P = (9\n4,0)  i dalej kontynuuje \nrozwiązanie, to może otrzymać co najwyżej 1 punkt. \n4. Jeżeli jedynym błędem zdającego jest: \na) zastosowanie niepoprawnego wzoru na współczynnik kierunkowy prostej \nb) zastosowanie niepoprawnego związku między współczynnikami kierunkowymi \nprostych prostopadłych \nc) zastosowanie niepoprawnego wzoru na współrzędne środka odcinka \nd) zastosowanie niepoprawnego warunku prostopadłości wektorów \ne) zastosowanie niepoprawnego wzoru na odległość dwóch punktów \nw kartezjańskim układzie współrzędnych \nf) zastosowanie niepoprawnych własności symetralnej \ng) przyjęcie, że wierzchołek  P  leży poza osią  Ox, \ni rozwiązanie zostanie doprowadzone konsekwentnie do końca, to zdający może otrzymać \n2 punkty za całe rozwiązanie, o ile nie nabył prawa do innej liczby punktów. \nJeżeli zdający popełni więcej niż jeden z wymienionych błędów a)–g), to otrzymuje \n0 punktów za całe rozwiązanie, o ile nie nabył prawa do innej liczby punktów. \n5. Jeżeli zdający rozważa dwa różne położenia punktu  P  na osi  Ox  i nie odrzuca \nniewłaściwego rozwiązania, to otrzymuje co najwyżej 3 punkty. \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "source": "Matura Czerwiec 2024 • Zad. 24",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-25",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "25",
+    "section": "Dział 12: Kombinatoryka",
+    "topicId": "dzial-12",
+    "type": "SINGLE_CHOICE",
+    "content": "Ostrosłup prawidłowy ma  2024  ściany boczne.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich krawędzi tego ostrosłupa jest równa",
+    "options": [
+      "2025",
+      "2026",
+      "4048",
+      "4052"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 25",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-26",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "26",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
+    "type": "SINGLE_CHOICE",
+    "content": "Przekątna ściany sześcianu ma długość  2\\sqrt2.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nObjętość tego sześcianu jest równa",
+    "options": [
+      "8",
+      "24",
+      "16\\sqrt6\n9",
+      "16\\sqrt2"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 35 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 26",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-27",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "27",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
+    "type": "SINGLE_CHOICE",
+    "content": "Podstawą graniastosłupa prawidłowego czworokątnego jest kwadrat o boku długości  4.\nPrzekątna tego graniastosłupa jest nachylona do płaszczyzny podstawy pod kątem  \\alpha  takim,\nże  tg \\alpha = 2  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWysokość tego graniastosłupa jest równa",
+    "options": [
+      "2",
+      "8",
+      "8\\sqrt2",
+      "16\\sqrt2"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 27",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true,
+    "diagram": {
+      "type": "STEREOMETRY_3D",
+      "title": "Graniastosłup prawidłowy czworokątny z przekątną bryły $AC'$ i przekątną podstawy $AC$",
+      "width": 440,
+      "height": 270,
+      "polygons": [
+        {
+          "points": [
+            [
+              160,
+              60
+            ],
+            [
+              280,
+              60
+            ],
+            [
+              330,
+              95
+            ],
+            [
+              210,
+              95
+            ]
+          ],
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.08)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            160,
+            60
+          ],
+          "to": [
+            160,
+            190
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            280,
+            60
+          ],
+          "to": [
+            280,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            330,
+            95
+          ],
+          "to": [
+            330,
+            225
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            210,
+            95
+          ],
+          "to": [
+            210,
+            225
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            210,
+            225
+          ],
+          "to": [
+            330,
+            225
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            330,
+            225
+          ],
+          "to": [
+            280,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            280,
+            190
+          ],
+          "to": [
+            160,
+            190
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            160,
+            190
+          ],
+          "to": [
+            210,
+            225
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            210,
+            225
+          ],
+          "to": [
+            280,
+            190
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "d = 4√2"
+        },
+        {
+          "from": [
+            210,
+            225
+          ],
+          "to": [
+            280,
+            60
+          ],
+          "color": "#10B981",
+          "strokeWidth": 2,
+          "label": "D"
+        }
+      ],
+      "points": [
+        {
+          "x": 210,
+          "y": 225,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 330,
+          "y": 225,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 280,
+          "y": 190,
+          "label": "C",
+          "labelPosition": "right",
+          "dot": "filled"
+        },
+        {
+          "x": 280,
+          "y": 60,
+          "label": "C'",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-28",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "28",
+    "section": "Dział 15: Zadania Optymalizacyjne",
+    "topicId": "dzial-15",
+    "type": "SINGLE_CHOICE",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej.\nNa osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano\nliczbę uczniów, którzy otrzymali daną ocenę.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest\nrówna",
+    "options": [
+      "3",
+      "3,12",
+      "3,5",
+      "4,1(6)"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 36 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 28",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true,
+    "diagram": {
+      "type": "STATISTICS",
+      "title": "Diagram wyników sprawdzianu z matematyki (częstość ocen)",
+      "width": 460,
+      "height": 260,
+      "segments": [
+        {
+          "from": [
+            50,
+            210
+          ],
+          "to": [
+            420,
+            210
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            50,
+            210
+          ],
+          "to": [
+            50,
+            25
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        }
+      ],
+      "ticks": [
+        {
+          "x": 50,
+          "y": 175,
+          "label": "2",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 140,
+          "label": "4",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 105,
+          "label": "6",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 70,
+          "label": "8",
+          "axis": "y"
+        }
+      ],
+      "bars": [
+        {
+          "x": 85,
+          "y": 175,
+          "width": 38,
+          "height": 35,
+          "label": "2",
+          "category": "1"
+        },
+        {
+          "x": 140,
+          "y": 140,
+          "width": 38,
+          "height": 70,
+          "label": "4",
+          "category": "2"
+        },
+        {
+          "x": 195,
+          "y": 70,
+          "width": 38,
+          "height": 140,
+          "label": "8",
+          "category": "3"
+        },
+        {
+          "x": 250,
+          "y": 88,
+          "width": 38,
+          "height": 122,
+          "label": "7",
+          "category": "4"
+        },
+        {
+          "x": 305,
+          "y": 140,
+          "width": 38,
+          "height": 70,
+          "label": "4",
+          "category": "5"
+        },
+        {
+          "x": 360,
+          "y": 192,
+          "width": 38,
+          "height": 18,
+          "label": "1",
+          "category": "6"
+        }
+      ],
+      "labels": [
+        {
+          "x": 425,
+          "y": 215,
+          "text": "ocena",
+          "color": "#94A3B8",
+          "fontSize": 11
+        },
+        {
+          "x": 50,
+          "y": 16,
+          "text": "liczba uczniów",
+          "color": "#94A3B8",
+          "fontSize": 11
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-29",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "29",
+    "section": "Dział 12: Kombinatoryka",
+    "topicId": "dzial-12",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych czterocyfrowych parzystych, w których zapisie dziesiętnym\nwystępują tylko cyfry  2,  4,  7  (np.:  7272,  2222,  7244), jest",
+    "options": [
+      "16",
+      "27",
+      "54",
+      "81"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 29",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-30",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "30",
+    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "topicId": "dzial-13",
+    "type": "SINGLE_CHOICE",
+    "content": "W pudełku znajdują się wyłącznie kule białe i czarne. Kul czarnych jest  18.\nZ tego pudełka w sposób losowy wyciągamy jedną kulę.\nPrawdopodobieństwo zdarzenia polegającego na tym, że wyciągniemy kulę czarną,\njest równe  3\n5\n.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba kul białych w pudełku, przed wyciągnięciem jednej kuli, była równa",
+    "options": [
+      "9",
+      "12",
+      "15",
+      "30"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n \n \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 37 z 42",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 30",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-31",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "31",
+    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "topicId": "dzial-13",
+    "type": "OPEN_CALCULATION",
+    "content": "Doświadczenie losowe polega na dwukrotnym rzucie symetryczną sześcienną kostką do gry,\nktóra na każdej ściance ma inną liczbę oczek – od jednego oczka do sześciu oczek.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że w pierwszym\nrzucie wypadnie większa liczba oczek niż w drugim rzucie. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I \nW tabeli literą  A  zaznaczamy zdarzenia elementarne sprzyjające zdarzeniu  A. \n \n 𝟏 𝟐 𝟑 𝟒 𝟓 𝟔 \n𝟏       \n𝟐 A      \n𝟑 A A     \n𝟒 A A A    \n𝟓 A A A A   \n𝟔 A A A A A  \n \nMoc zbioru  Ω  jest równa  36. \nZdarzeń sprzyjających zdarzeniu  A  jest  15. \nZatem prawdopodobieństwo zdarzenia  A  jest równe  15\n36 = 5\n12\n . \n \n \nSposób II (drzewo stochastyczne) \nRysujemy fragment drzewa stochastycznego rozważanego doświadczenia z uwzględnieniem \nwszystkich istotnych gałęzi. \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nPrawdopodobieństwo zdarzenia  A  jest równe \n \nP(A) = 1\n6 \\cdot 1\n6 + 1\n6 \\cdot 2\n6 + 1\n6 \\cdot 3\n6 + 1\n6 \\cdot 4\n6 + 1\n6 \\cdot 5\n6 = 15\n36 = 5\n12 \n  \n2 \n 3 \n 4 \n 5 \n 6 \n1 \n 1 \n2 \n1 \n2 \n3 \n1 \n2 \n3 \n4 \n1 \n2 \n3 \n4 \n5 \n1\n6 \n2\n6 \n3\n6 \n4\n6 \n5\n6 \n1\n6 \n1\n6 \n1\n6 \n1\n6 \n1\n6 \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 31",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2024-zad-32",
+    "examId": "matura-czerwiec-2024",
+    "examName": "Matura Czerwiec 2024 (Formuła 2023)",
+    "taskNumber": "32",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Właściciel sklepu z zabawkami przeprowadził lokalne badanie rynkowe dotyczące wpływu\nzmiany ceny zestawu klocków na liczbę kupujących ten produkt. Z badania wynika, że\ndzienny przychód  P  ze sprzedaży zestawów klocków, w zależności od kwoty obniżki ceny\nzestawu o  x  zł, wyraża się wzorem\nP(x) = (70 − x)(20 + x)\ngdzie  x  jest liczbą całkowitą spełniającą warunki  x \\ge 0  i  x \\le 60.\nUzupełnij tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną\nspośród oznaczonych literami A–E.\n32.1.\nDzienny przychód ze sprzedaży zestawów klocków będzie największy,\ngdy liczba  x  jest równa\n32.2. Dzienny przychód ze sprzedaży zestawów klocków będzie równy  800  zł,\ngdy liczba  x  jest równa",
+    "options": [
+      "25",
+      "30",
+      "45",
+      "50 E.  60"
+    ],
+    "correctAnswer": "32.1. A",
+    "points": 2,
+    "isClosed": true,
+    "explanation": "wybranie dwóch poprawnych odpowiedzi. \n1 pkt – wybranie jednej poprawnej odpowiedzi. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n32.1. A \n32.2. E \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2024 r. \nStrona 40 z 42 \n Ocena prac osób ze stwierdzoną dyskalkulią \n \nObowiązują zasady oceniania stosowane przy sprawdzaniu prac zdających bez stwierdzonej \ndyskalkulii z dodatkowym uwzględnieniem: \nI. ogólnych zasad oceniania zadań otwartych w przypadku arkuszy osób ze \nstwierdzoną dyskalkulią (punkty 1.–12.); \nII. dodatkowych szczegółowych zasad oceniania zadań otwartych w przypadku arkuszy \nosób ze stwierdzoną dyskalkulią – egzamin maturalny z matematyki, poziom \npodstawowy, termin dodatkowy 2024. \n \n \nI. Ogólne zasady oceniania zadań otwartych w przypadku arkuszy osób ze stwierdzoną \ndyskalkulią \n \n1. Nie należy traktować jako błędy merytoryczne pomyłek, wynikających z: \n• błędnego przepisania \n• przestawienia cyfr \n• zapisania innej cyfry, ale o podobnym wyglądzie \n• przestawienia położenia przecinka \n• przestawienia położenia znaku liczby. \n2. W przypadku błędów, wynikających ze zmiany znaku liczby, należy w każdym zadaniu \noddzielnie przeanalizować, czy zdający opanował inne umiejętności, poza \numiejętnościami rachunkowymi, oceniane w zadaniu. W przypadku opanowania \nbadanych umiejętności zdający powinien otrzymać przynajmniej 1 punkt. \n3. We wszystkich zadaniach otwartych, w których wskazano poprawną metodę \nrozwiązania, części lub całości zadania, zdającemu należy przyznać przynajmniej \n1 punkt, zgodnie z kryteriami do poszczególnych zadań. \n4. Jeśli zdający przedstawia nieprecyzyjne zapisy, na przykład pomija nawiasy lub \nzapisuje nawiasy w niewłaściwych miejscach, ale przeprowadza poprawne \nrozumowanie lub stosuje właściwą strategię, to może otrzymać przynajmniej 1 punkt \nza rozwiązanie zadania. \n5. W przypadku zadania wymagającego wyznaczenia pierwiastków trójmianu \nkwadratowego zdający może otrzymać 1 punkt, jeżeli przedstawi poprawną metodę \nwyznaczania pierwiastków trójmianu kwadratowego, przy podanych w treści zadania \nwartościach liczbowych. \n6. W przypadku zadania wymagającego rozwiązania nierówności kwadratowej zdający \nmoże otrzymać 1 punkt, jeżeli stosuje poprawny algorytm rozwiązywania nierówności \nkwadratowej, przy podanych w treści zadania wartościach liczbowych. \n7. W przypadku zadania wymagającego stosowania własności funkcji kwadratowej \nzdający może otrzymać 1 punkt za wykorzystanie konkretnych własności funkcji \nkwadratowej, istotnych przy poszukiwaniu rozwiązania. \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 41 z 42 \n8. W przypadku zadania wymagającego zastosowania własności ciągów arytmetycznych \nlub geometrycznych zdający może otrzymać 1 punkt, jeżeli przedstawi wykorzystanie \ntakiej własności ciągu, która umożliwia znalezienie rozwiązania zadania. \n9. W przypadku zadania wymagającego analizowania figur geometrycznych na \npłaszczyźnie kartezjańskiej zdający może otrzymać punkty, jeżeli przy poszukiwaniu \nrozwiązania przedstawi poprawne rozumowanie, wykorzystujące własności figur \ngeometrycznych lub zapisze zależności, pozwalające rozwiązać zadanie. \n10. W przypadku zadania z rachunku prawdopodobieństwa zdający może otrzymać \nprzynajmniej 1 punkt, jeśli przy wyznaczaniu liczby zdarzeń elementarnych \nsprzyjających rozważanemu zdarzeniu przyjmuje określoną regularność lub podaje \nprawidłową metodę wyznaczenia tej liczby zdarzeń elementarnych. \n11. W przypadku zadania z geometrii zdający może otrzymać przynajmniej 1 punkt, jeżeli \npodaje poprawną metodę wyznaczenia długości odcinka potrzebnej do znalezienia \nrozwiązania. \n12. W przypadku zadania wymagającego przeprowadzenia dowodu (z zakresu algebry lub \ngeometrii), jeśli w przedstawionym rozwiązaniu zdający powoła się na własność, która \nwyznacza istotny postęp, prowadzący do przeprowadzenia dowodu, to może otrzymać \n1 punkt. \n \n \nII. Dodatkowe szczegółowe zasady oceniania zadań otwartych w przypadku arkuszy osób \nze stwierdzoną dyskalkulią",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2024 • Zad. 32",
+    "year": 2024,
+    "session": "Czerwiec",
+    "isCke": true
+  }
+]

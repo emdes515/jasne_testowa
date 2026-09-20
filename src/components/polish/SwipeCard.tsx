@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'motion/react';
-import { Check, X, Flame, AlertOctagon, HelpCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Check, X, Flame, AlertOctagon, HelpCircle, ArrowRight, ShieldCheck, Lightbulb } from 'lucide-react';
 import { SwipeTaskData, SwipeItem } from '../../types';
 
 interface SwipeCardProps {
@@ -137,8 +137,9 @@ export const SwipeCard: React.FC<SwipeCardProps> = ({
                   {activeExplanation.item.explanation}
                 </div>
                 {activeExplanation.item.maturaTip && (
-                  <p className="text-xs text-amber-300/90 italic bg-amber-950/20 p-2.5 rounded-lg border border-amber-800/30">
-                    💡 Wskazówka CKE: {activeExplanation.item.maturaTip}
+                  <p className="text-xs text-amber-300/90 italic bg-amber-950/20 p-2.5 rounded-lg border border-amber-800/30 flex items-center gap-1.5">
+                    <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0 not-italic" />
+                    <span>Wskazówka CKE: {activeExplanation.item.maturaTip}</span>
                   </p>
                 )}
               </div>

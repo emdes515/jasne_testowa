@@ -32,7 +32,8 @@ import {
   ShieldAlert,
   BookmarkCheck,
   Layers,
-  Scale
+  Scale,
+  XCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -52,11 +53,81 @@ import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorksp
 import { AiTutorScanOverlay } from './AiTutorScanOverlay';
 import { MathPlot } from './MathPlot';
 import { MathDiagram } from './MathDiagram';
+import { NumberLineDiagram } from './NumberLineDiagram';
 import { OutOfHeartsModal } from './OutOfHeartsModal';
 import { ParentSponsorModal } from './ParentSponsorModal';
 import { ProPopup } from './ProPopup';
 import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro, activateProWithCode } from '../lib/heartsManager';
 import { recordAiTokenUsage } from '../services/aiUsageTracker';
+import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
+
+export interface ParsedExamTrap {
+  error?: string;
+  correct?: string;
+  tip?: string;
+  description?: string;
+}
+
+/**
+ * Robust parser for CKE exam trap data, separating typical error, correct approach, and tips without emojis.
+ */
+function parseExamTrap(trapRaw: any): ParsedExamTrap | null {
+  if (!trapRaw) return null;
+
+  // 1. If it's already a structured object
+  if (typeof trapRaw === 'object' && !Array.isArray(trapRaw)) {
+    const errorText = trapRaw.error || trapRaw.typical_mistake || '';
+    const correctText = trapRaw.correct || trapRaw.correction || trapRaw.solution || '';
+    const tipText = trapRaw.matura_tip || trapRaw.tip || '';
+    const descText = trapRaw.description || '';
+
+    const cleanErr = errorText ? String(errorText).replace(/^[❌⚠️\s]*(?:błąd\s*typowy|typowy\s*błąd)[:\s-]*/i, '').trim() : undefined;
+    const cleanCorr = correctText ? String(correctText).replace(/^[✓✔\s]*(?:poprawnie|prawidłowo)[:\s-]*/i, '').trim() : undefined;
+    const cleanTip = tipText ? String(tipText).replace(/^[💡\s]*(?:wskazówka(?:\s*cke)?|rada)[:\s-]*/i, '').trim() : undefined;
+    const cleanDesc = descText ? String(descText).replace(/^[❌⚠️💡✓✔\s]*/, '').trim() : undefined;
+
+    if (cleanErr || cleanCorr || cleanTip || cleanDesc) {
+      return {
+        error: cleanErr,
+        correct: cleanCorr,
+        tip: cleanTip,
+        description: cleanDesc
+      };
+    }
+  }
+
+  // 2. If it's a string, parse out typical error, correct approach, and tips
+  if (typeof trapRaw === 'string') {
+    let text = trapRaw.trim();
+    text = text.replace(/^[❌⚠️\s]+/, '');
+
+    const errorMatch = text.match(/(?:(?:błąd\s*typowy|typowy\s*błąd)[:\s-]*)([\s\S]*?)(?=(?:(?:✓|✔)?\s*(?:poprawnie|prawidłowo)|(?:💡)?\s*wskazówka|$))/i);
+    const correctMatch = text.match(/(?:(?:✓|✔)?\s*(?:poprawnie|prawidłowo)[:\s-]*)([\s\S]*?)(?=(?:(?:💡)?\s*wskazówka|$))/i);
+    const tipMatch = text.match(/(?:(?:💡)?\s*wskazówka(?:\s*cke)?[:\s-]*)([\s\S]*)/i);
+
+    if (errorMatch || correctMatch) {
+      return {
+        error: errorMatch ? errorMatch[1].replace(/^[❌⚠️\s]*/, '').trim() : undefined,
+        correct: correctMatch ? correctMatch[1].replace(/^[✓✔\s]*/, '').trim() : undefined,
+        tip: tipMatch ? tipMatch[1].replace(/^[💡\s]*/, '').trim() : undefined
+      };
+    }
+
+    if (text.includes('➔') || text.includes('->')) {
+      const parts = text.split(/➔|->/);
+      return {
+        error: parts[0]?.replace(/^[❌⚠️\s]*(?:błąd\s*typowy|typowy\s*błąd)?[:\s-]*/i, '').trim(),
+        correct: parts[1]?.replace(/^[✓✔\s]*(?:poprawnie|prawidłowo)?[:\s-]*/i, '').trim()
+      };
+    }
+
+    return {
+      description: text.replace(/^[❌⚠️💡✓✔\s]*/, '').trim()
+    };
+  }
+
+  return null;
+}
 
 /**
  * Helper to render micro-article text containing markdown bold (**bold**) and LaTeX ($...$)
@@ -162,12 +233,17 @@ function renderMicroContent(rawText?: string | any) {
 export function sanitizeExaminerTip(text: string): string {
   if (!text) return '';
   let cleaned = text.trim()
-    .replace(/^(?:wskazówka\s+egzaminatora\s+cke|wskazówka\s+cke|wskazówka)\s*:\s*/i, '')
+    .replace(/^(?:wskazówka\s+egzaminatora\s+cke|wskazówka\s+egzaminatora|wskazówka\s+cke|wskazówka)\s*[:\-–!]\s*/i, '')
+    // Strip case-insensitive CKE / maturalny pseudo-headings up to 70 chars
+    .replace(/^[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż0-9\s$.,()–—\-]{2,70}?\s*(?:CKE|maturaln[a-ząćęłńóśźż]+)\s*(?:dla\s+zadania\s+za\s+\d+\s*pkt)?\s*[:\-–!]\s*/i, '')
+    // Strip common pedagogical pseudo-headings
+    .replace(/^(?:żelazna\s+zasada[a-ząćęłńóśźż\s]*|złota\s+(?:zasada|reguła)[a-ząćęłńóśźż\s]*|kluczowa\s+zasada[a-ząćęłńóśźż\s]*|klucz\s+do[a-ząćęłńóśźż\s]*|algorytm[a-ząćęłńóśźż\s]*|schemat[a-ząćęłńóśźż\s]*|checklista[a-ząćęłńóśźż\s]*|błyskawiczny\s+(?:odczyt|sposób)|błyskawiczne\s+wyznaczanie\s+boków|trik\s+(?:z|na)[a-ząćęłńóśźż\s]*|strategia\s+wyboru\s+narzędzia|trójki\s+pitagorejskie\s+na\s+pamięć|najpopularniejsza\s+cecha\s+na\s+maturze|warunek\s+styczności\s+na\s+maturze|częste\s+przekroje\s+na\s+maturze|praktyczny\s+sposób\s+na\s+równanie\s+prostej|przejście\s+z\s+postaci\s+ogólnej\s+do\s+kierunkowej|skracanie\s+silni|metoda\s+sklejenia|zadania\s+z\s+dodawaniem\s+kul|zestawienie\s+miar\s+w\s+1\s+minutę|przewodnik\s+wyboru\s+metody|kwadrat\s+optymalny|zliczanie\s+odcinków\s+siatki|odejmij\s+bramę\s+na\s+samym\s+początku|pole\s+trójkąta\s+z\s+sumą\s+boków|kluczowy\s+skrót\s+matematyczny|bilans\s+obwodu\s+okna\s+normańskiego|uważaj\s+na\s+(?:treść\s+zadania|potęgi\s+we\s+wzorach|nawias\s+przy\s+odejmowaniu\s+kosztów))\s*[:\-–!]\s*/i, '')
     // Strip uppercase heading prefixes (e.g. "ŻELAZNY SCHEMAT 5 KROKÓW CKE NA 4 PUNKTY:", "OBOWIĄZKOWY KROK 1:", "NIE WYMNAŻAJ NAWIASÓW!")
     .replace(/^[A-ZĄĆĘŁŃÓŚŹŻ0-9\s–—\-]{4,}[:!]\s*/, '')
     .replace(/[Żż]elazny\s+pewniak[^\n:!.]*(?::|!|\.|\b)\s*/gi, '')
     .replace(/\b100%\s+pewniak!?/gi, 'Częsty motyw w arkuszach CKE.')
     .replace(/NIGDY\s+nie\s+daje/g, 'nie daje')
+    .replace(/\bNIGDY\b/g, 'nigdy')
     .replace(/\bZAWSZE\b/g, 'zawsze')
     .replace(/\bDOKŁADNY\b/g, 'dokładny')
     .trim();
@@ -182,8 +258,8 @@ export function sanitizeExaminerTip(text: string): string {
  * - Upper card: Conceptual definition with stylish left accent border (border-l-4)
  * - Lower cards: Extracted key formulas and operational rules (e.g. Podwyżka/Obniżka)
  */
-function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolean, diagram?: any) {
-  if (!rawText && !diagram) return null;
+function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolean, diagram?: any, numberLine?: any) {
+  if (!rawText && !diagram && !numberLine) return null;
   let textToParse = '';
   if (typeof rawText === 'string') {
     textToParse = rawText;
@@ -258,8 +334,8 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
     </div>
   );
 
-  // If diagram exists: generous, full-width visual card with conceptual clarity
-  if (diagram) {
+  // If diagram or numberLine exists: generous, full-width visual card with conceptual clarity
+  if (diagram || numberLine) {
     return (
       <div className="rounded-2xl p-4 sm:p-6 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-5">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-white/5 pb-3">
@@ -271,8 +347,18 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
         {textContent}
 
         {/* 2. Dedykowany, przestronny moduł wizualny */}
-        <div className="w-full pt-1">
-          <MathDiagram diagram={diagram} />
+        <div className="w-full pt-1 flex justify-center">
+          {diagram ? (
+            <MathDiagram diagram={diagram} />
+          ) : numberLine ? (
+            <div className="w-full max-w-lg bg-black/40 border border-white/10 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
+              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider self-start flex items-center gap-1.5">
+                <Target size={13} className="text-amber-400" />
+                <span>Interpretacja na osi liczbowej:</span>
+              </span>
+              <NumberLineDiagram data={numberLine} height={64} maxWidth="400px" />
+            </div>
+          ) : null}
         </div>
       </div>
     );
@@ -297,6 +383,9 @@ interface NormalizedWorkedExample {
   problem: string;
   steps: { num: number | string; label?: string; text: string }[];
   result?: string;
+  numberLine?: any;
+  diagram?: any;
+  plot?: any;
 }
 
 function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
@@ -324,7 +413,10 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
       return {
         problem,
         steps: steps.length > 0 ? steps : [{ num: 1, label: 'Klucz interpretacyjny', text: raw.analysis || quoteText }],
-        result: raw.result || raw.thesis || undefined
+        result: raw.result || raw.thesis || undefined,
+        numberLine: raw.numberLine || raw.number_line,
+        diagram: raw.diagram,
+        plot: raw.plot
       };
     }
     if (raw.text_fragment) {
@@ -339,7 +431,10 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
       return {
         problem,
         steps,
-        result: raw.result || undefined
+        result: raw.result || undefined,
+        numberLine: raw.numberLine || raw.number_line,
+        diagram: raw.diagram,
+        plot: raw.plot
       };
     }
     const steps: { num: number | string; label?: string; text: string }[] = [];
@@ -348,13 +443,17 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
     if (Array.isArray(raw.steps)) {
       raw.steps.forEach((s: any, idx: number) => {
         const text = typeof s === 'string' ? s : (s.explanation || s.text || s.step || String(s));
-        steps.push({ num: s.step_num || idx + 1, text });
+        const label = typeof s === 'object' && s.label ? s.label : undefined;
+        steps.push({ num: s.num || s.step_num || idx + 1, label, text });
       });
     }
     return {
       problem: raw.problem || raw.question || raw.task || raw.text || '',
       steps,
-      result: raw.result || raw.answer || raw.odpowiedz
+      result: raw.result || raw.answer || raw.odpowiedz,
+      numberLine: raw.numberLine || raw.number_line,
+      diagram: raw.diagram,
+      plot: raw.plot
     };
   }
 
@@ -382,12 +481,10 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
       } else if (lower.startsWith('rozwiązanie:') || lower.startsWith('rozwiazanie:')) {
         const content = line.replace(/^(?:rozwiązanie|rozwiazanie):\s*/i, '').trim();
         steps.push({ num: stepCounter++, label: 'Rozwiązanie', text: content });
+      } else if (!problem) {
+        problem = line;
       } else {
-        if (steps.length === 0 && !result) {
-          problem = problem ? `${problem}\n${line}` : line;
-        } else {
-          steps.push({ num: stepCounter++, text: line });
-        }
+        steps.push({ num: stepCounter++, text: line });
       }
     }
 
@@ -405,6 +502,75 @@ function normalizeWorkedExample(raw: any): NormalizedWorkedExample | null {
   return null;
 }
 
+/**
+ * Bezpiecznik dynamiczny: jeśli teoria lekcji nie posiada jawnego worked_example,
+ * syntetyzuje modelową analizę CKE z pierwszego zadania lekcji.
+ */
+function deriveWorkedExampleFromTasks(
+  tasksList?: any[],
+  theory?: any,
+  isPolish?: boolean,
+  isEnglish?: boolean
+): NormalizedWorkedExample | null {
+  if (!tasksList || !tasksList.length) return null;
+  const candidate = tasksList.find((t: any) => t.explanation && (t.question || t.instruction)) || tasksList[0];
+  if (!candidate) return null;
+
+  const rawProblem = (candidate as any).instruction || candidate.question || '';
+  const cleanProblem = String(rawProblem).trim();
+  if (!cleanProblem) return null;
+
+  const steps: { num: number | string; label?: string; text: string }[] = [];
+  const hints = candidate.hints;
+  if (hints?.level_1) {
+    steps.push({
+      num: 1,
+      label: isPolish ? 'Identyfikacja problemu i intencji nadawcy' : 'Krok 1: Analiza polecenia',
+      text: hints.level_1
+    });
+  }
+  if (hints?.level_2) {
+    steps.push({
+      num: steps.length + 1,
+      label: isPolish ? 'Analiza mechanizmu językowego i kryteriów CKE' : 'Krok 2: Tok rozumowania',
+      text: hints.level_2
+    });
+  }
+  if ((candidate as any).explanation) {
+    steps.push({
+      num: steps.length + 1,
+      label: isPolish ? 'Wzorcowe uzasadnienie CKE' : 'Rozwiązanie krok po kroku',
+      text: (candidate as any).explanation
+    });
+  }
+
+  let resultText: string | undefined = undefined;
+  if (candidate.type === 'SINGLE_CHOICE' && candidate.options) {
+    const correctOpt = candidate.options.find((o: any) => o.is_correct || o.isCorrect);
+    if (correctOpt) {
+      resultText = correctOpt.text;
+    }
+  } else if ((candidate as any).correct_answer) {
+    resultText = String((candidate as any).correct_answer);
+  } else if ((candidate as any).explanation) {
+    resultText = (candidate as any).explanation;
+  }
+
+  if (steps.length === 0) {
+    steps.push({
+      num: 1,
+      label: isPolish ? 'Wskazówka analityczna CKE' : 'Krok rozwiązania',
+      text: (candidate as any).explanation || 'Przeanalizuj treść zadania pod kątem kluczowych pojęć z leksykonu.'
+    });
+  }
+
+  return {
+    problem: cleanProblem,
+    steps,
+    result: resultText
+  };
+}
+
 export interface FormattedFormulaItem {
   title?: string;
   latex: string;
@@ -412,6 +578,10 @@ export interface FormattedFormulaItem {
   cke_page?: string | number;
   in_cke_sheet?: boolean;
   matura_tip?: string;
+  mnemonic?: string;
+  example?: string;
+  numberLine?: any;
+  diagram?: any;
 }
 
 /**
@@ -444,15 +614,23 @@ function getCoreFormulas(raw: any): FormattedFormulaItem[] {
       const cke_page = item.cke_page || item.ckePage || item.tablice_str || item.page;
       const in_cke_sheet = item.in_cke_sheet ?? item.inCkeSheet ?? (cke_page ? true : undefined);
       const matura_tip = item.matura_tip || item.maturaTip || item.patent || item.tip;
+      const mnemonic = item.mnemonic || item.mnemonika || item.visual_rule || item.skrot;
+      const example = item.example || item.przyklad || item.mini_example;
+      const numberLine = item.numberLine || item.number_line;
+      const diagram = item.diagram || item.plot;
 
-      if (latex || title || description || matura_tip) {
+      if (latex || title || description || matura_tip || mnemonic || numberLine || diagram) {
         results.push({
           title: title ? String(title).trim() : undefined,
           latex: latex ? String(latex).trim() : (title ? String(title).trim() : ''),
           description: description ? String(description).trim() : undefined,
           cke_page: cke_page ? String(cke_page).trim() : undefined,
           in_cke_sheet: in_cke_sheet,
-          matura_tip: matura_tip ? String(matura_tip).trim() : undefined
+          matura_tip: matura_tip ? String(matura_tip).trim() : undefined,
+          mnemonic: mnemonic ? String(mnemonic).trim() : undefined,
+          example: example ? String(example).trim() : undefined,
+          numberLine,
+          diagram
         });
       }
     }
@@ -505,7 +683,8 @@ export function sanitizeLessonHeading(title?: string): string {
   // Fix "Lekcja 8.1: Lekcja 8.1: ..." -> "Lekcja 8.1: ..."
   cleaned = cleaned.replace(/^(Lekcja\s+\d+[-.]\d+:\s*)(?:Lekcja\s+\d+[-.]\d+:\s*)+/i, '$1');
   // Fix "Sprawdzian:\s*Sprawdzian" -> "Sprawdzian:"
-  cleaned = cleaned.replace(/^Sprawdzian\s*[:.]\s*(?:Sprawdzian\s*[:.]\s*)+/i, 'Sprawdzian: ');
+  // Fix internal codes like "L1.1.1: ..." -> clean title
+  cleaned = cleaned.replace(/^L\d+(?:\.\d+)+\s*[:\-–]?\s*/i, '');
   return cleaned;
 }
 
@@ -531,9 +710,20 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
   const lessonTitle = sanitizeLessonHeading(rawLessonTitle);
 
-  const isPolishSession = Boolean(
+  const isMathExplicit = Boolean(
+    (sessionData as any)?.subjectId === 'matematyka-podstawowa' ||
+    (sessionData as any)?.subjectId === 'matematyka' ||
+    (sessionData as any)?.subjectId === 'math' ||
+    (sessionData as any)?.subjectKey === 'math' ||
+    String(lessonId).match(/^(?:math[-_]?)?lesson-\d+-\d+/) ||
+    String((sessionData as any)?.topicId || '').match(/^(?:math[-_]?)?dzial-\d+/) ||
+    String(lessonId).match(/^\d+\.\d+$/)
+  );
+
+  const isPolishSession = !isMathExplicit && Boolean(
     (sessionData as any)?.isPolish ||
     (sessionData as any)?.subjectId === 'jezyk-polski' ||
+    (sessionData as any)?.subjectKey === 'pol' ||
     String(lessonId).startsWith('pol-') ||
     String((sessionData as any)?.topicId || '').startsWith('pol-') ||
     formulaSheet?.isLeksykon === true ||
@@ -604,21 +794,22 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       }
       if (!normRaw.exam_trap && ((raw as any).cke_trap || (raw as any).ckeTrap)) {
         const ct = (raw as any).cke_trap || (raw as any).ckeTrap;
+        (normRaw as any).cke_trap = ct;
         if (typeof ct === 'string') {
-          normRaw.exam_trap = ct;
+          normRaw.exam_trap = ct.replace(/^[❌⚠️\s]*/, '');
         } else {
           const err = ct.error || ct.typical_mistake || '';
           const corr = ct.correct || ct.correction || ct.solution || '';
-          const tip = ct.matura_tip || ct.tip ? `\n\n💡 Wskazówka CKE: ${ct.matura_tip || ct.tip}` : '';
-          normRaw.exam_trap = `❌ Błąd typowy: ${err}\n\n✓ Poprawnie: ${corr}${tip}`;
+          const tip = ct.matura_tip || ct.tip ? `\n\nWskazówka CKE: ${ct.matura_tip || ct.tip}` : '';
+          normRaw.exam_trap = `Typowy błąd: ${err}\n\nPoprawnie: ${corr}${tip}`;
         }
       }
       if (!normRaw.keyTakeaway && (raw as any).golden_rule) {
         normRaw.keyTakeaway = (raw as any).golden_rule;
       }
-      return normRaw;
+      return enrichTheoryPillWithVisual(normRaw, lessonId);
     }
-    return {
+    return enrichTheoryPillWithVisual({
       title: lessonTitle || `Lekcja ${lessonId}`,
       concept_essence: isPolishSession
         ? 'Zapoznaj się z kluczowymi pojęciami, funkcjami języka i strategiami analizy tekstu.'
@@ -630,7 +821,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       worked_example: undefined,
       exam_trap: formulaSheet?.ckeTrap ? `${formulaSheet.ckeTrap.error} ➔ ${formulaSheet.ckeTrap.correct}` : undefined,
       keyTakeaway: formulaSheet?.goldenRule || (isPolishSession ? 'Uważnie analizuj kontekst fragmentu i intencję nadawcy.' : 'Pamiętaj o dokładnym czytaniu polecenia i weryfikacji założeń zadania.')
-    } as LessonTheoryPill;
+    } as LessonTheoryPill, lessonId);
   }, [sessionData.theoryPill, lessonId, lessonTitle, formulaSheet, isPolishSession]);
 
   // AI Tutor for Open Tasks
@@ -666,7 +857,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const taskAreaRef = React.useRef<HTMLElement>(null);
 
   const isTheoryStep = currentStep === 0;
-  const currentTask = taskQueue[currentQueueIndex] || taskQueue[0] || tasks[0];
+  const rawCurrentTask = taskQueue[currentQueueIndex] || taskQueue[0] || tasks[0];
+  const currentTask = useMemo(() => {
+    if (!rawCurrentTask) return rawCurrentTask;
+    return enrichTaskWithVisual(rawCurrentTask, lessonId);
+  }, [rawCurrentTask, lessonId]);
 
   // Task format classification
   const isSwipeTask = currentTask?.type === 'SWIPE_MATCH';
@@ -918,35 +1113,129 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   }, [activeSeconds]);
 
   const { lessonPillLabel, lessonTitleClean } = useMemo(() => {
-    const raw = lessonTitle || '';
-    const match = raw.match(/^(?:Lekcja\s+)?(\d+\.\d+)\s*[:\-–]?\s*(.*)$/i);
-    if (match) {
+    let raw = lessonTitle || '';
+    raw = raw.replace(/^L\d+(?:\.\d+)+\s*[:\-–]?\s*/i, '').trim();
+
+    // 1. Sprawdź czy numer jest w tytule: np. "Lekcja 1.1: Funkcje..." lub "1.1 Funkcje..."
+    const titleMatch = raw.match(/^(?:Lekcja\s+)?(\d+[.-]\d+)\s*[:\-–]?\s*(.*)$/i);
+    if (titleMatch) {
       return {
-        lessonPillLabel: `LEKCJA ${match[1]}`,
-        lessonTitleClean: match[2].trim() || raw
+        lessonPillLabel: `LEKCJA ${titleMatch[1].replace('-', '.')}`,
+        lessonTitleClean: titleMatch[2].trim() || raw
+      };
+    }
+    // 2. Jeśli nie ma w tytule, wyciągnij z lessonId: np. "pol-lesson-1-1", "lesson-1-1", "1.1"
+    const idMatch = String(lessonId || '').match(/(?:pol[-_]?)?(?:lesson[-_]?)?(\d+)[-_.](\d+)/i);
+    if (idMatch) {
+      return {
+        lessonPillLabel: `LEKCJA ${idMatch[1]}.${idMatch[2]}`,
+        lessonTitleClean: raw
+      };
+    }
+    // 3. Kanon lektur / sprawdzian
+    if (String(lessonId || '').includes('lektura') || (sessionData as any)?.isCanonical) {
+      return {
+        lessonPillLabel: 'LEKTURA CKE',
+        lessonTitleClean: raw
       };
     }
     return {
-      lessonPillLabel: null,
+      lessonPillLabel: 'LEKCJA',
       lessonTitleClean: raw
     };
-  }, [lessonTitle]);
+  }, [lessonTitle, lessonId, sessionData]);
+
+  const moduleBadgeName = useMemo(() => {
+    // 1. Jeśli to matematyka, priorytetowo używaj nazwy działu matematyki
+    if (isMathExplicit) {
+      if ((sessionData as any)?.topicTitle) {
+        return String((sessionData as any).topicTitle).replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '').trim();
+      }
+      if ((sessionData as any)?.topic) {
+        return String((sessionData as any).topic).replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '').trim();
+      }
+      const topicIdStr = String((sessionData as any)?.topicId || (sessionData as any)?.topic_id || '');
+      const lessonIdStr = String(lessonId || '');
+      const mMatch = topicIdStr.match(/dzial[-_]?(\d+)/i) || lessonIdStr.match(/lesson[-_]?(\d+)/i) || lessonIdStr.match(/^(\d+)[.-]/);
+      if (mMatch) {
+        const num = mMatch[1];
+        const mathTopicMap: Record<string, string> = {
+          '1': 'Liczby Rzeczywiste',
+          '2': 'Wyrażenia Algebraiczne',
+          '3': 'Równania i Nierówności',
+          '4': 'Układy Równań',
+          '5': 'Funkcje',
+          '6': 'Ciągi Liczbowe',
+          '7': 'Trygonometria',
+          '8': 'Planimetria',
+          '9': 'Geometria Analityczna',
+          '10': 'Stereometria',
+          '11': 'Kombinatoryka',
+          '12': 'Prawdopodobieństwo',
+          '13': 'Statystyka',
+          '14': 'Optymalizacja',
+          '15': 'Zadania Przekrojowe'
+        };
+        if (mathTopicMap[num]) return mathTopicMap[num];
+      }
+      return 'Liczby Rzeczywiste';
+    }
+
+    // 2. Jeśli to język polski
+    if (isPolishSession) {
+      if ((sessionData as any)?.pillarName) {
+        const rawPillar = String((sessionData as any).pillarName);
+        const clean = rawPillar.replace(/^Filar\s*(?:[IVX\d]+|\d+)\s*[:\-–]?\s*/i, '').trim();
+        if (clean) return clean;
+      }
+      const topicId = String((sessionData as any)?.topicId || (sessionData as any)?.topic_id || '');
+      const lessonIdStr = String(lessonId || '');
+      
+      const topicNumMatch = topicId.match(/(?:dzial|topic)[-_]?(\d+)/i) || lessonIdStr.match(/(?:pol[-_]?)?lesson[-_]?(\d+)/i);
+      const num = topicNumMatch ? parseInt(topicNumMatch[1], 10) : null;
+      
+      if (topicId.includes('pillar-1') || topicId.includes('jezyk') || (num !== null && num >= 1 && num <= 4)) {
+        return 'Język w użyciu';
+      }
+      if (topicId.includes('pillar-2') || topicId.includes('lektur') || (num !== null && num >= 5 && num <= 16)) {
+        return 'Lektury i epoki';
+      }
+      if (topicId.includes('pillar-3') || topicId.includes('wyprac') || (num !== null && num >= 17)) {
+        return 'Wypracowanie';
+      }
+      return 'Lektury i epoki';
+    }
+
+    // 3. Inne przedmioty / fallback
+    if ((sessionData as any)?.pillarName) {
+      const rawPillar = String((sessionData as any).pillarName);
+      const clean = rawPillar.replace(/^Filar\s*(?:[IVX\d]+|\d+)\s*[:\-–]?\s*/i, '').trim();
+      if (clean) return clean;
+    }
+    if ((sessionData as any)?.topicTitle) {
+      return String((sessionData as any).topicTitle).replace(/^Dział\s*\d+\s*[:\-–]?\s*/i, '').trim();
+    }
+    if ((sessionData as any)?.topic) {
+      return String((sessionData as any).topic).replace(/^Dział\s*\d+\s*[:\-–]?\s*/i, '').trim();
+    }
+    return null;
+  }, [sessionData, isPolishSession, isMathExplicit, lessonId]);
 
   // Rozpoznawanie autentycznego źródła zadania i stylu plakietki (CKE vs Autorskie vs Informator)
   const taskSourceBadge = useMemo(() => {
-    const raw = String(currentTask?.source || currentTask?.cke_source || currentTask?.cke_badge || currentTask?.badge || '').trim();
-    
-    // 1. Zadanie autorskie / treningowe
-    if (/autorsk/i.test(raw) || !raw) {
-      return {
-        label: 'Zadanie autorskie',
-        type: 'autorskie' as const,
-        badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
-        dotClass: 'bg-emerald-400'
-      };
-    }
+    // Sprawdzamy wszystkie potencjalne pola źródłowe
+    const allFields = [
+      currentTask?.source,
+      currentTask?.cke_source,
+      currentTask?.cke_badge,
+      currentTask?.badge
+    ].filter(Boolean).map(s => String(s).trim());
 
-    // 2. Informator CKE / Arkusz pokazowy
+    // Szukamy najpierw autentycznego oznaczenia CKE / Matura
+    const ckeCandidate = allFields.find(f => /matura|cke|informator|arkusz/i.test(f) && !/autorsk/i.test(f));
+    const raw = ckeCandidate || allFields[0] || '';
+    
+    // 1. Informator CKE / Arkusz pokazowy
     if (/informator|arkusz\s*pokazowy/i.test(raw)) {
       const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+)/i);
       let label = 'CKE • Informator maturalny';
@@ -964,7 +1253,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       };
     }
 
-    // 3. Oficjalne arkusze CKE
+    // 2. Oficjalne arkusze CKE
     const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+)/i);
     const monthMatch = raw.match(/(maj|czerwiec|sierpi?e[nń]|grudzi?e[nń]|wrzesi?e[nń]|marzec)/i);
     const yearMatch = raw.match(/20\d\d/);
@@ -991,7 +1280,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
 
     // Jeśli raw zawiera "Zad.", zachowaj go z przedrostkiem Matura CKE
-    if (zadMatch) {
+    if (zadMatch && /matura|cke/i.test(raw)) {
       return {
         label: raw.startsWith('CKE') || raw.startsWith('Matura') ? raw : `Matura CKE • Zad. ${zadMatch[1]}`,
         type: 'cke_matura' as const,
@@ -1000,7 +1289,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       };
     }
 
-    // Fallback: jeśli brak konkretnego oznaczenia matury ani numeru, to ćwiczenie autorskie
+    // 3. Fallback: jeśli brak konkretnego oznaczenia matury ani numeru, to ćwiczenie autorskie
     return {
       label: 'Zadanie autorskie',
       type: 'autorskie' as const,
@@ -1085,6 +1374,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         id: optId,
         text,
         content_latex: text,
+        numberLine: (typeof opt === 'object' && opt !== null) ? opt.numberLine : undefined,
+        diagram: (typeof opt === 'object' && opt !== null) ? opt.diagram : undefined,
         is_correct: isExplicitlyCorrect
       };
     });
@@ -2190,6 +2481,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
   };
 
+  // Allow student to retry / refine open task answer without losing their written answer
+  const handleRetryOpenTask = () => {
+    setIsEvaluated(false);
+    setTutorEvaluation(null);
+    setIsCorrect(null);
+    setShowModelSolution(false);
+    triggerHaptic('light');
+  };
+
   // Next step or finish – Mastery Learning (dynamiczny wymóg poprawnych odpowiedzi)
   const handleNextStep = () => {
     if (isTheoryStep) {
@@ -2480,19 +2780,44 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             </button>
 
             {isTheoryStep ? (
-              <div className="flex items-center gap-2 min-w-0">
-                <span className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 ${
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                <span className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold whitespace-nowrap shrink-0 shadow-sm ${
                   isPolishSession
-                    ? 'bg-[#F43F5E]/15 text-[#F43F5E] border border-[#F43F5E]/30 shadow-sm'
-                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30 shadow-sm'
+                    ? 'bg-rose-500/15 text-rose-300 border border-rose-500/35'
+                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/35'
                 }`}>
-                  Pigułka wiedzy
+                  {lessonPillLabel || 'LEKCJA'}
                 </span>
+                {moduleBadgeName && (
+                  <span className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap shrink-0 shadow-sm ${
+                    isPolishSession
+                      ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
+                      : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
+                  }`}>
+                    {moduleBadgeName}
+                  </span>
+                )}
               </div>
             ) : (
-              /* Segmented Progress Bars for Lesson Tasks + Kompaktowy Cel */
+              /* Badges + Segmented Progress Bars for Lesson Tasks + Kompaktowy Cel */
               <div className="flex-1 flex items-center gap-2 sm:gap-3 min-w-0">
-                <div className="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+                <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-mono font-bold whitespace-nowrap shrink-0 shadow-sm ${
+                  isPolishSession
+                    ? 'bg-rose-500/15 text-rose-300 border border-rose-500/35'
+                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/35'
+                }`}>
+                  {lessonPillLabel || 'LEKCJA'}
+                </span>
+                {moduleBadgeName && (
+                  <span className={`hidden sm:inline-flex px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold whitespace-nowrap shrink-0 shadow-sm ${
+                    isPolishSession
+                      ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
+                      : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
+                  }`}>
+                    {moduleBadgeName}
+                  </span>
+                )}
+                <div className="flex items-center gap-1 sm:gap-2 flex-1 min-w-[60px] max-w-[280px]">
                   {Array.from({ length: Math.max(1, targetCorrectAnswers) }).map((_, idx) => {
                     const isDone = idx < correctAnswersCount;
                     const isActive = idx === correctAnswersCount;
@@ -2500,7 +2825,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     return (
                       <div
                         key={idx}
-                        className={`flex-1 h-2.5 sm:h-3 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
+                        className={`flex-1 h-2 sm:h-2.5 rounded-full overflow-hidden relative p-0.5 transition-all duration-300 ${
                           isDone
                             ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-sm'
                             : isActive
@@ -2545,7 +2870,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </div>
 
                 {/* Zwięzły wskaźnik celu w jednej linii z paskiem */}
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] sm:text-xs shrink-0 select-none shadow-inner">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] sm:text-xs shrink-0 select-none shadow-inner">
                   <span className="text-slate-400 font-medium hidden sm:inline">Cel:</span>
                   <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
                     {correctAnswersCount}
@@ -2716,22 +3041,22 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </AnimatePresence>
             </div>
 
-            {/* Wallet Counter Pill */}
+            {/* Wallet Counter Pill - schowany na mobile (<640px) dla pełnej przestrzeni paska zadań */}
             <div 
               id="session-coins-pill"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 text-slate-200 text-xs font-semibold shadow-sm select-none"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 text-slate-200 text-xs font-semibold shadow-sm select-none"
               title={`Stan portfela: ${currentCoins} monet`}
             >
               <Coins className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span className="font-bold text-white tracking-wide">{currentCoins}</span>
             </div>
 
-            {/* Formulas Sheet Button - widoczny tylko podczas zadań praktycznych */}
+            {/* Formulas Sheet Button - widoczny na desktopie / tabletach */}
             {!isTheoryStep && (
               <button
                 id="session-formulas-button"
                 onClick={() => setShowFormulaSheet(true)}
-                className={`group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
+                className={`hidden sm:flex group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
                   isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
                 }`}
                 title={isPolishSession ? 'Otwórz Leksykon Pojęć' : 'Otwórz Kartę Wzorów'}
@@ -2743,12 +3068,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </button>
             )}
 
-            {/* Skarbiec Argumentów Button - widoczny podczas sesji języka polskiego */}
+            {/* Skarbiec Argumentów Button - widoczny na tabletach/desktopie */}
             {isPolishSession && (
               <button
                 id="session-vault-button"
                 onClick={() => setShowArgumentVaultModal(true)}
-                className="group px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 hover:bg-amber-500/25 text-amber-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer"
+                className={`hidden sm:flex group px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 hover:bg-amber-500/25 text-amber-300 hover:text-white text-xs font-semibold items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
+                  isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
+                }`}
                 title="Otwórz Mój Skarbiec Argumentów"
               >
                 <Layers className="w-3.5 h-3.5 text-amber-400 shrink-0" />
@@ -2998,13 +3325,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     { id: 0, title: (theoryPill as any)?.book_summary ? 'Fabuła' : 'Istota', icon: (theoryPill as any)?.book_summary ? BookOpen : Compass },
                     { id: 1, title: 'Pojęcia', icon: BookmarkCheck },
                     { id: 2, title: 'Analiza', icon: FileText },
-                    { id: 3, title: 'Pułapka', icon: ShieldAlert }
+                    { id: 3, title: 'Typowy błąd', icon: ShieldAlert }
                   ]
                 : [
                     { id: 0, title: 'Istota', icon: Compass },
                     { id: 1, title: 'Wzory', icon: Calculator },
                     { id: 2, title: 'Przykład', icon: CheckCircle2 },
-                    { id: 3, title: 'Pułapka', icon: ShieldAlert }
+                    { id: 3, title: 'Typowy błąd', icon: ShieldAlert }
                   ]
               ).map((step) => {
                 const StepIcon = step.icon;
@@ -3070,20 +3397,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'}`} />
                         <span>{isPolishSession ? 'Istota zagadnienia' : 'Istota pojęcia'}</span>
                       </div>
-                      {lessonPillLabel && (
-                        <span className={`px-2.5 py-0.5 rounded-md ${
-                          isPolishSession
-                            ? 'bg-rose-500/15 border border-rose-500/35 text-rose-300'
-                            : 'bg-amber-500/15 border border-amber-500/35 text-amber-300'
-                        } font-mono font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-sm mt-0.5`}>
-                          {lessonPillLabel}
-                        </span>
-                      )}
                       <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight mt-0.5">
                         <MathRenderer content={lessonTitleClean || sanitizeLessonHeading(theoryPill?.title || lessonTitle)} />
                       </h1>
                     </div>
-                    {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession, theoryPill?.diagram)}
+                    {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession, theoryPill?.diagram, (theoryPill as any)?.numberLine)}
 
                     {/* STRESZCZENIE FABUŁY I PLAN WYDARZEŃ LEKTURY (DLA LEKTUR MATURALNYCH) */}
                     {(theoryPill as any)?.book_summary && (() => {
@@ -3117,8 +3435,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           {/* Streszczenie fabuły / Oś akcji */}
                           {bs.plot_overview && (
                             <div className="space-y-1.5">
-                              <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider block">
-                                📖 Zwięzłe streszczenie fabuły
+                              <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider flex items-center gap-1.5">
+                                <BookOpen className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                                <span>Zwięzłe streszczenie fabuły</span>
                               </span>
                               <div className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-black/40 p-3.5 sm:p-4 rounded-xl border border-white/5 whitespace-pre-line shadow-inner">
                                 {renderMicroContent(bs.plot_overview)}
@@ -3129,8 +3448,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           {/* Oś kluczowych wydarzeń */}
                           {bs.key_events && bs.key_events.length > 0 && (
                             <div className="space-y-2 pt-1 border-t border-white/5">
-                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider block">
-                                ⏱️ Kluczowy ciąg wydarzeń (oś dramatyczna)
+                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                                <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                <span>Kluczowy ciąg wydarzeń (oś dramatyczna)</span>
                               </span>
                               <div className="space-y-2 pl-0.5">
                                 {bs.key_events.map((ev: string, evIdx: number) => (
@@ -3148,8 +3468,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           {/* Bohaterowie i relacje */}
                           {bs.characters && bs.characters.length > 0 && (
                             <div className="space-y-2 pt-1 border-t border-white/5">
-                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider block">
-                                👥 Kluczowi bohaterowie i ich role
+                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                                <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                <span>Kluczowi bohaterowie i ich role</span>
                               </span>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                 {bs.characters.map((ch: any, chIdx: number) => (
@@ -3165,8 +3486,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           {/* Kluczowe sceny maturalne */}
                           {bs.key_scenes && bs.key_scenes.length > 0 && (
                             <div className="space-y-2 pt-1 border-t border-white/5">
-                              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">
-                                ⭐ Sceny o fundamentalnym znaczeniu maturalnym
+                              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                                <GraduationCap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                                <span>Sceny o fundamentalnym znaczeniu maturalnym</span>
                               </span>
                               <div className="space-y-2">
                                 {bs.key_scenes.map((sc: any, scIdx: number) => (
@@ -3226,20 +3548,57 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       </div>
 
                       {(() => {
-                        const rawConcepts = 
-                          (formulaSheet?.formulas && formulaSheet.formulas.length > 0 ? formulaSheet.formulas : null) ||
-                          ((theoryPill as any)?.key_concepts && (theoryPill as any).key_concepts.length > 0 ? (theoryPill as any).key_concepts : null) ||
-                          ((theoryPill as any)?.keyConcepts && (theoryPill as any).keyConcepts.length > 0 ? (theoryPill as any).keyConcepts : null) ||
-                          ((theoryPill as any)?.leksykon?.pojęcia && (theoryPill as any).leksykon.pojęcia.length > 0 ? (theoryPill as any).leksykon.pojęcia : null) ||
-                          ((theoryPill as any)?.leksykon && Array.isArray((theoryPill as any).leksykon) && (theoryPill as any).leksykon.length > 0 ? (theoryPill as any).leksykon : null) ||
-                          ((theoryPill as any)?.concepts && (theoryPill as any).concepts.length > 0 ? (theoryPill as any).concepts : null) ||
-                          [];
+                        const epochPassport = (theoryPill as any)?.epoch_passport || (theoryPill as any)?.epochPassport;
+                        const passportConcepts: any[] = [];
+                        if (epochPassport) {
+                          if (Array.isArray(epochPassport.philosophy_trio)) {
+                            passportConcepts.push(...epochPassport.philosophy_trio.map((p: any) => ({
+                              title: p.name || p.title,
+                              def: p.essence || p.description || p.def
+                            })));
+                          }
+                          if (Array.isArray(epochPassport.flagship_topoi)) {
+                            passportConcepts.push(...epochPassport.flagship_topoi.map((t: string) => {
+                              const match = t.match(/^([^()]+)\s*\((.+)\)$/);
+                              if (match) {
+                                return { title: `Topos: ${match[1].trim()}`, def: match[2].trim() };
+                              }
+                              return { title: 'Topos maturalny', def: t };
+                            }));
+                          }
+                        }
+
+                        let rawConcepts: any[] = [];
+                        if (isPolishSession) {
+                          rawConcepts =
+                            ((theoryPill as any)?.leksykon?.pojęcia && (theoryPill as any).leksykon.pojęcia.length > 0 ? (theoryPill as any).leksykon.pojęcia : null) ||
+                            ((theoryPill as any)?.leksykon && Array.isArray((theoryPill as any).leksykon) && (theoryPill as any).leksykon.length > 0 ? (theoryPill as any).leksykon : null) ||
+                            ((theoryPill as any)?.key_concepts && (theoryPill as any).key_concepts.length > 0 ? (theoryPill as any).key_concepts : null) ||
+                            ((theoryPill as any)?.keyConcepts && (theoryPill as any).keyConcepts.length > 0 ? (theoryPill as any).keyConcepts : null) ||
+                            (passportConcepts.length > 0 ? passportConcepts : null) ||
+                            (formulaSheet?.formulas && formulaSheet.formulas.length > 0 ? formulaSheet.formulas : null) ||
+                            ((theoryPill as any)?.concepts && (theoryPill as any).concepts.length > 0 ? (theoryPill as any).concepts : null) ||
+                            [];
+
+                          // Odrzuć ewentualne pozostałości wzorów matematycznych w sesji języka polskiego
+                          rawConcepts = rawConcepts.filter((f: any) => {
+                            const text = `${f.title || f.name || f.term || ''} ${f.latex || f.formula || f.def || f.definition || f.desc || ''}`;
+                            return !/\\(?:frac|sqrt|in|Delta|infty|le|ge)|f\(x\)|\bx\s*\\in\b|przedział[y]? domknięt|oś liczbowa|równani[ae]/i.test(text);
+                          });
+                        } else {
+                          rawConcepts = 
+                            (formulaSheet?.formulas && formulaSheet.formulas.length > 0 ? formulaSheet.formulas : null) ||
+                            ((theoryPill as any)?.key_concepts && (theoryPill as any).key_concepts.length > 0 ? (theoryPill as any).key_concepts : null) ||
+                            ((theoryPill as any)?.keyConcepts && (theoryPill as any).keyConcepts.length > 0 ? (theoryPill as any).keyConcepts : null) ||
+                            ((theoryPill as any)?.concepts && (theoryPill as any).concepts.length > 0 ? (theoryPill as any).concepts : null) ||
+                            [];
+                        }
 
                         return rawConcepts.length > 0 ? (
                           <div className="space-y-2.5 py-1">
                             {rawConcepts.map((f: any, fIdx: number) => {
                               const title = f.title || f.name || f.term || `Pojęcie ${fIdx + 1}`;
-                              const def = f.latex || f.def || f.definition || f.desc || '';
+                              const def = f.def || f.definition || f.desc || f.formula || f.latex || '';
                               return (
                                 <div
                                   key={fIdx}
@@ -3295,78 +3654,117 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         </div>
 
                         {formulas.length > 0 ? (
-                          <div className="space-y-3 py-1">
-                            {formulas.map((item, fIdx) => (
-                              <div
-                                key={fIdx}
-                                className="rounded-2xl p-4 sm:p-5 bg-gradient-to-b from-[#0F1422] to-[#0A0D16] border border-white/10 hover:border-[#FFB800]/40 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.35)] flex flex-col gap-2.5 group"
-                              >
-                                {item.title && (
-                                  <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5 flex-wrap">
-                                    <div className="flex items-center gap-2">
-                                      <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
-                                        {String(fIdx + 1).padStart(2, '0')}
-                                      </span>
-                                      <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
-                                        {item.title}
-                                      </span>
+                          <div className="space-y-3.5 py-1">
+                            {formulas.map((item, fIdx) => {
+                              let unifiedExplanation = (item.description || item.mnemonic || '').trim();
+                              if (item.description && item.mnemonic && item.description.trim() !== item.mnemonic.trim()) {
+                                const desc = item.description.trim();
+                                const mnem = item.mnemonic.trim();
+                                if (!desc.includes(mnem) && !mnem.includes(desc)) {
+                                  unifiedExplanation = `${desc} ${mnem}`;
+                                } else {
+                                  unifiedExplanation = desc.length >= mnem.length ? desc : mnem;
+                                }
+                              }
+
+                              const hasDistinctTip = item.matura_tip && 
+                                !unifiedExplanation.toLowerCase().includes(item.matura_tip.toLowerCase().slice(0, 25));
+
+                              return (
+                                <div
+                                  key={fIdx}
+                                  className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-white/10 hover:border-[#FFB800]/30 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-3 group"
+                                >
+                                  {/* Nagłówek: Numer, Tytuł i Karta wzorów */}
+                                  {item.title && (
+                                    <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5 flex-wrap">
+                                      <div className="flex items-center gap-2">
+                                        <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
+                                          {String(fIdx + 1).padStart(2, '0')}
+                                        </span>
+                                        <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
+                                          {item.title}
+                                        </span>
+                                      </div>
+
+                                      {/* Wskaźnik obecności w oficjalnej karcie wzorów */}
+                                      {item.in_cke_sheet && item.cke_page ? (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 shadow-sm shrink-0">
+                                          <BookOpen className="w-3 h-3 text-emerald-400" />
+                                          <span>Karta wzorów: {typeof item.cke_page === 'number' || !String(item.cke_page).startsWith('str') ? `str. ${item.cke_page}` : item.cke_page}</span>
+                                        </span>
+                                      ) : item.in_cke_sheet ? (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 shadow-sm shrink-0">
+                                          <BookOpen className="w-3 h-3 text-emerald-400" />
+                                          <span>W karcie wzorów</span>
+                                        </span>
+                                      ) : (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold bg-amber-500/10 border border-amber-500/25 text-amber-300 shadow-sm shrink-0">
+                                          <AlertTriangle className="w-3 h-3 text-amber-400" />
+                                          <span>Brak w tablicach. Zapamiętaj.</span>
+                                        </span>
+                                      )}
                                     </div>
-                                    {/* Wskaźnik obecności w oficjalnej karcie wzorów */}
-                                    {item.in_cke_sheet && item.cke_page ? (
-                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 shadow-sm shrink-0">
-                                        <BookOpen className="w-3 h-3 text-emerald-400" />
-                                        <span>Karta wzorów: {typeof item.cke_page === 'number' || !String(item.cke_page).startsWith('str') ? `str. ${item.cke_page}` : item.cke_page}</span>
+                                  )}
+
+                                  {/* Kaseton wzoru KaTeX */}
+                                  {item.latex && (
+                                    <div className="w-full py-3.5 px-4 bg-[#070A0F] border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full">
+                                      <div className="inline-block min-w-full text-center">
+                                        <MathRenderer content={item.latex} displayMode={true} />
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {/* Rysunek poglądowy / diagram do wzoru */}
+                                  {(item as any).numberLine ? (
+                                    <div className="w-full flex justify-center py-2 overflow-x-auto">
+                                      <NumberLineDiagram data={(item as any).numberLine} height={56} maxWidth="320px" />
+                                    </div>
+                                  ) : (item as any).diagram ? (
+                                    <div className="w-full flex justify-center py-2 overflow-x-auto">
+                                      <MathDiagram diagram={(item as any).diagram} compact />
+                                    </div>
+                                  ) : null}
+
+                                  {/* Płynne, naturalne wyjaśnienie bez sztucznych ramek */}
+                                  {unifiedExplanation && (
+                                    <div className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal pt-0.5">
+                                      {renderMicroContent(unifiedExplanation)}
+                                    </div>
+                                  )}
+
+                                  {/* Zwięzły, elegancki pasek przykładu */}
+                                  {item.example && (
+                                    <div className="rounded-xl px-3.5 py-2.5 bg-[#070A0F]/80 border border-white/5 flex items-start gap-2.5 text-xs sm:text-sm text-slate-300 shadow-sm">
+                                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#FFB800] shrink-0 mt-0.5">
+                                        Przykład:
                                       </span>
-                                    ) : item.in_cke_sheet ? (
-                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 shadow-sm shrink-0">
-                                        <BookOpen className="w-3 h-3 text-emerald-400" />
-                                        <span>W karcie wzorów</span>
-                                      </span>
-                                    ) : (
-                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-amber-500/10 border border-amber-500/30 text-amber-300 shadow-sm shrink-0">
-                                        <AlertTriangle className="w-3 h-3 text-amber-400" />
-                                        <span>Brak w tablicach. Zapamiętaj.</span>
-                                      </span>
-                                    )}
-                                  </div>
-                                )}
-                                <div className="w-full py-3 px-3 sm:px-4 bg-[#070A10] border border-white/5 rounded-xl overflow-x-auto text-center my-1 text-white scrollbar-thin shadow-inner">
-                                  <div className="inline-block min-w-full text-center">
-                                    <MathRenderer content={item.latex} displayMode={true} />
-                                  </div>
+                                      <div className="text-slate-200 flex-1 leading-relaxed">
+                                        {renderMicroContent(item.example)}
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {/* Dyskretna uwaga egzaminacyjna CKE */}
+                                  {hasDistinctTip && item.matura_tip && (
+                                    <div className="rounded-xl px-3.5 py-2.5 bg-amber-500/[0.05] border border-amber-500/20 text-xs sm:text-sm text-slate-300 leading-relaxed flex items-start gap-2.5">
+                                      <div className="w-5 h-5 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Lightbulb className="w-3.5 h-3.5" />
+                                      </div>
+                                      <div className="w-full space-y-0.5">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">
+                                          Patent maturalny
+                                        </span>
+                                        <div className="text-slate-200 font-normal">
+                                          {renderMicroContent(sanitizeExaminerTip(item.matura_tip))}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
                                 </div>
-                                {item.description && (
-                                  <div className="mt-1 pt-2.5 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-white/[0.02] -mx-1 px-3 py-2 rounded-xl">
-                                    <div className="w-5 h-5 rounded-md bg-sky-500/10 border border-sky-500/25 text-sky-400 flex items-center justify-center shrink-0 mt-0.5">
-                                      <Info className="w-3.5 h-3.5" />
-                                    </div>
-                                    <div className="w-full font-normal space-y-0.5">
-                                      <span className="text-[10px] font-bold uppercase tracking-wider text-sky-400 block">
-                                        Co oznacza ten wzór
-                                      </span>
-                                      <div className="text-slate-200">
-                                        {renderMicroContent(item.description)}
-                                      </div>
-                                    </div>
-                                  </div>
-                                )}
-                                {item.matura_tip && (
-                                  <div className="mt-1 pt-2.5 border-t border-amber-500/20 text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-amber-500/[0.05] -mx-1 px-3 py-2.5 rounded-xl border border-amber-500/25">
-                                    <div className="w-5 h-5 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-                                      <Lightbulb className="w-3.5 h-3.5" />
-                                    </div>
-                                    <div className="w-full font-normal space-y-0.5">
-                                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">
-                                        Patent maturalny
-                                      </span>
-                                      <div className="text-slate-100 font-medium">
-                                        {renderMicroContent(item.matura_tip)}
-                                      </div>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         ) : (
                           <div className="p-4 rounded-xl bg-slate-950/40 text-center text-slate-400 text-sm">
@@ -3409,14 +3807,93 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         analysis: (theoryPill as any).quote_analysis || (theoryPill as any).analysis,
                         matura_tip: (theoryPill as any).quote_matura_tip || (theoryPill as any).matura_tip
                       } : null)
-                    );
+                    ) || deriveWorkedExampleFromTasks(tasks, theoryPill, isPolishSession, isEnglishSession);
+                    const epochPassport = (theoryPill as any)?.epoch_passport || (theoryPill as any)?.epochPassport;
+                    if (!normExample && epochPassport) {
+                      const dates = epochPassport.dates_framework;
+                      const credo = epochPassport.credo;
+                      return (
+                        <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 flex flex-col gap-4 shadow-sm">
+                          <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm bg-rose-500/15 text-rose-400 border-rose-500/30">
+                                <FileText className="w-4 h-4" />
+                              </div>
+                              <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+                                Ramy kulturowe i credo epoki
+                              </h3>
+                            </div>
+                            <span className="text-[11px] font-bold text-rose-300 bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-full shrink-0">
+                              Kontekst CKE
+                            </span>
+                          </div>
+
+                          {dates && (
+                            <div className="space-y-2">
+                              <span className="text-[11px] font-semibold text-rose-400 uppercase tracking-wider block">
+                                Ramy chronologiczne
+                              </span>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                                {Object.entries(dates).map(([key, val]: [string, any], dIdx) => (
+                                  <div key={dIdx} className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                                    <span className="font-bold text-slate-200 block mb-1">
+                                      {key === 'antiquity' ? 'Antyk grecko-rzymski' : key === 'bible' ? 'Biblia (Stary i Nowy Testament)' : key}:
+                                    </span>
+                                    <span className="text-slate-300 leading-relaxed">{String(val)}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {credo && (
+                            <div className="rounded-xl p-4 bg-amber-500/[0.04] border border-amber-500/30 shadow-[0_2px_12px_rgba(255,184,0,0.05)] flex flex-col gap-1.5">
+                              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block">
+                                Credo i myśl przewodnia epoki
+                              </span>
+                              <div className="text-sm sm:text-base text-amber-100/90 italic font-serif leading-relaxed">
+                                {renderMicroContent(credo)}
+                              </div>
+                            </div>
+                          )}
+
+                          {(theoryPill?.keyTakeaway || (theoryPill as any)?.golden_rule) && (
+                            <div className="rounded-xl p-3.5 bg-emerald-950/30 border border-emerald-500/30 flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                              <div className="text-xs sm:text-sm text-emerald-200 leading-relaxed">
+                                <span className="font-bold text-emerald-300 mr-1.5">Złota reguła na wypracowanie:</span>
+                                {theoryPill?.keyTakeaway || (theoryPill as any)?.golden_rule}
+                              </div>
+                            </div>
+                          )}
+                        </section>
+                      );
+                    }
+
                     if (!normExample) {
                       return (
                         <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-slate-400 text-sm text-center">
-                          {isPolishSession ? 'Zapoznaj się z osią fabularną i pojęciami – zadania skupiają się na analizie motywów i polowaniu na błąd kardynalny!' : isEnglishSession ? 'Brak przykładu dla tej pigułki wiedzy.' : 'Brak przykładu dla tej pigułki wiedzy.'}
+                          {isPolishSession 
+                            ? 'Przeanalizuj pojęcia w Leksykonie i przejdź do zadań praktycznych z czytania ze zrozumieniem i analizy językowej.' 
+                            : isEnglishSession 
+                              ? 'Brak przykładu dla tej pigułki wiedzy.' 
+                              : 'Brak przykładu dla tej pigułki wiedzy.'}
                         </div>
                       );
                     }
+
+                    const polishSectionLabel = (() => {
+                      const match = String(lessonId).match(/^pol-(?:lesson-|dzial-|topic-)?(\d+)/) || 
+                                    String((sessionData as any)?.topicId || '').match(/^pol-(?:dzial-|topic-)?(\d+)/);
+                      const num = match ? parseInt(match[1], 10) : undefined;
+                      if (num && num <= 4) {
+                        return 'Tekst źródłowy i kontekst CKE';
+                      }
+                      if ((theoryPill as any)?.isLektura || (num && num >= 5 && num <= 16)) {
+                        return 'Fragment lektury obowiązkowej & kontekst CKE';
+                      }
+                      return 'Tekst źródłowy i kontekst CKE';
+                    })();
 
                     return (
                       <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 flex flex-col gap-4 shadow-sm">
@@ -3432,7 +3909,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               <FileText className="w-4 h-4" />
                             </div>
                             <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
-                              {isPolishSession ? 'Fragment tekstu i analiza maturalna' : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'Przykład z arkusza krok po kroku'}
+                              {isPolishSession ? (polishSectionLabel.includes('lektury') ? 'Fragment lektury i analiza CKE' : 'Fragment tekstu i analiza maturalna') : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'Przykład z arkusza krok po kroku'}
                             </h3>
                           </div>
                           {normExample.steps.length > 0 && (
@@ -3452,13 +3929,24 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider block ${
                               isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-sky-400' : 'text-[#FFB800]'
                             }`}>
-                              {isPolishSession ? '📜 Kluczowy fragment lektury & kontekst CKE' : isEnglishSession ? 'Treść zadania' : 'Treść zadania'}
+                              {isPolishSession ? polishSectionLabel : isEnglishSession ? 'Treść zadania' : 'Treść zadania'}
                             </span>
                             <div className={`text-sm sm:text-base leading-relaxed min-w-0 max-w-full break-words ${
                               isPolishSession ? 'text-amber-100/90 italic font-serif' : 'text-slate-100 font-medium'
                             }`}>
                               {renderMicroContent(normExample.problem)}
                             </div>
+                          </div>
+                        )}
+
+                        {/* Rysunek / Wykres do przykładu */}
+                        {((normExample as any).diagram || (normExample as any).plot || (normExample as any).numberLine) && (
+                          <div className="w-full flex justify-center py-2 overflow-x-auto">
+                            {(normExample as any).numberLine ? (
+                              <NumberLineDiagram data={(normExample as any).numberLine} height={60} maxWidth="340px" />
+                            ) : (
+                              <MathDiagram diagram={(normExample as any).diagram || (normExample as any).plot} compact />
+                            )}
                           </div>
                         )}
 
@@ -3552,7 +4040,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </motion.div>
               )}
 
-              {/* Zakładka 3: Pułapka egzaminacyjna */}
+              {/* Zakładka 3: Typowy błąd */}
               {theorySubStep === 3 && (
                 <motion.div
                   key="theory-tab-3"
@@ -3562,37 +4050,138 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   transition={{ duration: 0.15 }}
                   className="space-y-4"
                 >
-                  {(theoryPill?.exam_trap || theoryPill?.trapAlert) ? (
-                    <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-amber-500/10 via-amber-950/20 to-slate-900/90 border border-amber-500/40 flex flex-col gap-3 shadow-[0_4px_20px_rgba(245,158,11,0.08)]">
-                      <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
-                        <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                        <span>Pułapka egzaminacyjna CKE</span>
-                      </div>
-                      <div className="text-sm sm:text-base text-amber-100/95 leading-relaxed font-normal">
-                        {renderMicroContent(theoryPill.exam_trap || theoryPill.trapAlert)}
-                      </div>
-                    </section>
-                  ) : (
-                    <section className="rounded-2xl p-5 bg-slate-900/60 border border-slate-800 text-slate-300 text-sm leading-relaxed">
-                      {isPolishSession
-                        ? 'Zwracaj szczególną uwagę na intencję nadawcy i kontekst wypowiedzi – nie oceniaj tekstu wyłącznie na podstawie pojedynczych słów wyrwanych z akapitu.'
-                        : 'Zwracaj szczególną uwagę na dziedzinę wyrażeń i znaki przy redukcji wyrazów podobnych.'}
-                    </section>
-                  )}
+                  {(() => {
+                    const trapData = parseExamTrap((theoryPill as any)?.cke_trap || (theoryPill as any)?.ckeTrap || theoryPill?.exam_trap || theoryPill?.trapAlert || formulaSheet?.ckeTrap);
+                    if (trapData && (trapData.error || trapData.correct || trapData.description)) {
+                      return (
+                        <div className="space-y-3.5">
+                          {/* Karta 1: Typowy błąd */}
+                          {trapData.error && (
+                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-rose-950/30 via-slate-900/90 to-slate-950 border border-rose-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(244,63,94,0.12)]">
+                              <div className="flex items-center justify-between gap-2 border-b border-rose-500/20 pb-2.5">
+                                <div className="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
+                                  <div className="w-6 h-6 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
+                                    <XCircle className="w-3.5 h-3.5 text-rose-400" />
+                                  </div>
+                                  <span>Typowy błąd</span>
+                                </div>
+                                <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/25 px-2 py-0.5 rounded-full">
+                                  Unikaj na maturze
+                                </span>
+                              </div>
+                              <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
+                                {renderMicroContent(trapData.error)}
+                              </div>
+                            </section>
+                          )}
+
+                          {/* Karta 2: Poprawnie */}
+                          {trapData.correct && (
+                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-emerald-950/30 via-slate-900/90 to-slate-950 border border-emerald-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(16,185,129,0.12)]">
+                              <div className="flex items-center justify-between gap-2 border-b border-emerald-500/20 pb-2.5">
+                                <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                                  <div className="w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                                  </div>
+                                  <span>Poprawne podejście</span>
+                                </div>
+                                <span className="text-[10px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 rounded-full">
+                                  Klucz CKE
+                                </span>
+                              </div>
+                              <div className="text-sm sm:text-base text-emerald-100/95 leading-relaxed font-normal">
+                                {renderMicroContent(trapData.correct)}
+                              </div>
+                            </section>
+                          )}
+
+                          {/* Karta Wizualna: Schemat pułapki / oś liczbowa */}
+                          {((trapData as any).numberLine || (theoryPill as any)?.trapNumberLine || (trapData as any).diagram || (theoryPill as any)?.trapDiagram) && (
+                            <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/90 border border-slate-800 flex flex-col gap-2.5 shadow-sm">
+                              <div className="flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-white/5 pb-2.5">
+                                <Target className="w-3.5 h-3.5 text-[#FFB800]" />
+                                <span>Ilustracja pułapki egzaminacyjnej:</span>
+                              </div>
+                              <div className="w-full flex justify-center py-2 overflow-x-auto">
+                                {((trapData as any).numberLine || (theoryPill as any)?.trapNumberLine) ? (
+                                  <NumberLineDiagram data={(trapData as any).numberLine || (theoryPill as any)?.trapNumberLine} height={60} maxWidth="360px" />
+                                ) : (
+                                  <MathDiagram diagram={(trapData as any).diagram || (theoryPill as any)?.trapDiagram} compact />
+                                )}
+                              </div>
+                            </section>
+                          )}
+
+                          {/* Karta 3: Opcjonalna Wskazówka CKE */}
+                          {trapData.tip && (
+                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-slate-950 border border-amber-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(245,158,11,0.12)]">
+                              <div className="flex items-center justify-between gap-2 border-b border-amber-500/20 pb-2.5">
+                                <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                                  <div className="w-6 h-6 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                                    <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
+                                  </div>
+                                  <span>Wskazówka egzaminatora</span>
+                                </div>
+                                <span className="text-[10px] font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/25 px-2 py-0.5 rounded-full">
+                                  CKE Patent
+                                </span>
+                              </div>
+                              <div className="text-sm sm:text-base text-amber-100/95 leading-relaxed font-normal">
+                                {renderMicroContent(sanitizeExaminerTip(trapData.tip))}
+                              </div>
+                            </section>
+                          )}
+
+                          {/* Dodatkowy opis, jeśli występuje bez podziału */}
+                          {trapData.description && !trapData.error && !trapData.correct && (
+                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-rose-950/30 via-slate-900/90 to-slate-950 border border-rose-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(244,63,94,0.12)]">
+                              <div className="flex items-center justify-between gap-2 border-b border-rose-500/20 pb-2.5">
+                                <div className="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
+                                  <div className="w-6 h-6 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
+                                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+                                  </div>
+                                  <span>Typowy błąd</span>
+                                </div>
+                                <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/25 px-2 py-0.5 rounded-full">
+                                  CKE Pułapka
+                                </span>
+                              </div>
+                              <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
+                                {renderMicroContent(trapData.description)}
+                              </div>
+                            </section>
+                          )}
+
+                          {/* Dodatkowy kontekst, jeśli opis występuje obok błędu */}
+                          {trapData.description && (trapData.error || trapData.correct) && (
+                            <section className="rounded-xl p-3.5 bg-slate-950/60 border border-slate-800/80 flex items-start gap-2.5 shadow-sm">
+                              <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                              <div className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                                {renderMicroContent(trapData.description)}
+                              </div>
+                            </section>
+                          )}
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <section className="rounded-2xl p-5 bg-slate-900/60 border border-slate-800 text-slate-300 text-sm leading-relaxed">
+                        {isPolishSession
+                          ? 'Zwracaj szczególną uwagę na intencję nadawcy i kontekst wypowiedzi – nie oceniaj tekstu wyłącznie na podstawie pojedynczych słów wyrwanych z akapitu.'
+                          : 'Zwracaj szczególną uwagę na dziedzinę wyrażeń i znaki przy redukcji wyrazów podobnych.'}
+                      </section>
+                    );
+                  })()}
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         ) : (
           <>
-            {/* Sztywny margines górny + Tytuł lekcji z pastylką i pojedyncza linia metadanych */}
+            {/* Sztywny margines górny + Tytuł lekcji i pojedyncza linia metadanych */}
             <div className="pt-5 pb-3 flex flex-col gap-2 shrink-0">
-              <div className="flex flex-col items-start gap-1.5">
-                {lessonPillLabel && (
-                  <span className="px-2.5 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/35 text-amber-300 font-mono font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-sm">
-                    {lessonPillLabel}
-                  </span>
-                )}
+              <div className="flex flex-col items-start gap-1">
                 <h1 className="text-base sm:text-lg font-bold text-white leading-snug break-words">
                   <MathRenderer content={lessonTitleClean} />
                 </h1>
@@ -3646,15 +4235,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
                     Wybór dwuczęściowy
                   </span>
-                ) : (
-                  (currentTask?.cke_badge || currentTask?.badge) && 
-                  !String(currentTask?.cke_badge || currentTask?.badge).toLowerCase().includes(taskSourceLabel.toLowerCase()) &&
-                  !taskSourceLabel.toLowerCase().includes(String(currentTask?.cke_badge || currentTask?.badge).toLowerCase()) && (
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
-                      {String(currentTask.cke_badge || currentTask.badge).replace(/CKE/gi, '').trim()}
-                    </span>
-                  )
-                )}
+                ) : null}
 
                 {currentTask?.tierLabel && (
                   <span className="text-[11px] text-slate-500 hidden sm:inline">
@@ -3668,6 +4249,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="text-base sm:text-lg font-medium text-slate-100 leading-relaxed break-words">
                 <MathRenderer content={currentTask?.question || currentTask?.math_statement || currentTask?.content || ''} />
               </div>
+              {currentTask?.numberLine && (
+                <div className="mt-3 flex justify-center">
+                  <NumberLineDiagram data={currentTask.numberLine} height={64} maxWidth="360px" />
+                </div>
+              )}
               {(currentTask?.diagram || currentTask?.plot) && (
                 <div className="mt-3 flex justify-center">
                   <MathDiagram diagram={currentTask.diagram || currentTask.plot} />
@@ -3690,7 +4276,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 latestCanvasDataRef.current = dataUrl;
               }}
               onSubmit={(canvasData) => handleCheckOpenAnswerWithTutor(canvasData)}
-              onAskAiTutor={(canvasData) => handleCheckOpenAnswerWithTutor(canvasData)}
+              onAskAiTutor={handleToggleOrBuyHint}
+              onRetry={handleRetryOpenTask}
+              isAiLoading={isTutorScanning || isAiHintLoading}
               inputPlaceholder={isPolishSession 
                 ? "Sformułuj swoją odpowiedź, uzasadnienie lub argument na podstawie załączonego tekstu/lektury..." 
                 : "Zapisz swoje rozwiązanie lub użyj klawiatury..."}
@@ -3967,8 +4555,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   )}
                 </div>
 
-                {/* Direct Action Button to proceed to the next task */}
-                <div className="pt-2 flex justify-end">
+                {/* Direct Action Button to proceed to the next task or retry */}
+                <div className="pt-2 flex items-center justify-end gap-3 flex-wrap">
+                  {!isCorrect && (
+                    <button
+                      type="button"
+                      onClick={handleRetryOpenTask}
+                      className="w-full sm:w-auto px-4 h-12 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 transition active:scale-95 shadow-sm cursor-pointer"
+                    >
+                      <RotateCcw size={16} />
+                      <span>Popraw odpowiedź</span>
+                    </button>
+                  )}
                   <button
                     onClick={handleNextStep}
                     className={`w-full sm:w-auto px-6 h-12 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition active:scale-95 shadow-lg cursor-pointer ${
@@ -4490,7 +5088,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       {optId}
                     </span>
                     <div className="text-sm sm:text-base text-slate-100 font-medium break-words flex-1">
-                      <MathRenderer content={optContent || (typeof option === 'string' ? option : (option?.text || option?.content_latex || ''))} />
+                      {option?.numberLine ? (
+                        <NumberLineDiagram data={option.numberLine} />
+                      ) : option?.diagram ? (
+                        <MathDiagram diagram={option.diagram} />
+                      ) : (
+                        <MathRenderer content={optContent || (typeof option === 'string' ? option : (option?.text || option?.content_latex || ''))} />
+                      )}
                     </div>
                   </div>
 
@@ -4566,7 +5170,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     ? (isPolishSession ? 'Dalej: Pojęcia' : 'Dalej: Wzory')
                     : theorySubStep === 1
                       ? (isPolishSession ? 'Dalej: Analiza' : 'Dalej: Przykład')
-                      : 'Dalej: Pułapka'}
+                      : 'Dalej: Typowy błąd'}
                 </span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
@@ -4844,7 +5448,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <BookOpen size={18} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-base">Wyjaśnienie i Pułapka</h3>
+                    <h3 className="font-bold text-white text-base">Wyjaśnienie i typowy błąd</h3>
                     <div className="text-xs text-slate-400">
                       <MathRenderer content={sanitizeLessonHeading(currentTask?.title) || 'Zadanie maturalne'} />
                     </div>
@@ -4861,12 +5465,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
               {/* Modal Content */}
               <div className="p-4 sm:p-5 overflow-y-auto space-y-4">
-                {/* Pułapka egzaminacyjna (tylko autentyczna pułapka) */}
+                {/* Typowy błąd (tylko autentyczna pułapka) */}
                 {modalExamTrap && (
                   <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-2">
                     <div className="flex items-center gap-1.5 text-amber-400 font-bold text-xs uppercase tracking-wider">
                       <AlertTriangle size={15} />
-                      <span>Pułapka egzaminacyjna</span>
+                      <span>Typowy błąd</span>
                     </div>
                     <div className="text-xs sm:text-sm text-amber-100/90 leading-relaxed break-words overflow-x-auto">
                       <MathRenderer content={modalExamTrap} />
@@ -4875,14 +5479,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
 
                 {/* Schemat wektorowy / Wykres do zadania */}
-                {(currentTask?.diagram || currentTask?.plot) && (
+                {(currentTask?.diagram || currentTask?.plot || currentTask?.numberLine) && (
                   <div className="p-3 sm:p-4 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2 flex flex-col items-center">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider self-start flex items-center gap-1.5">
                       <Target size={14} className="text-[#FFB800]" />
                       <span>Rysunek pomocniczy / Wykres do zadania:</span>
                     </span>
                     <div className="w-full flex justify-center overflow-x-auto py-1">
-                      <MathDiagram diagram={currentTask.diagram || currentTask.plot} compact />
+                      {currentTask?.numberLine ? (
+                        <NumberLineDiagram data={currentTask.numberLine} height={60} maxWidth="360px" />
+                      ) : (
+                        <MathDiagram diagram={currentTask.diagram || currentTask.plot} compact />
+                      )}
                     </div>
                   </div>
                 )}
@@ -5262,21 +5870,23 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
                               {hasRealError && (
                                 <div className="bg-rose-950/30 border border-rose-500/30 rounded-xl p-3">
-                                  <span className="font-bold text-rose-400 text-[11px] uppercase tracking-wider block mb-1">
-                                    ❌ Błąd Typowy
+                                  <span className="font-bold text-rose-400 text-[11px] uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                                    <XCircle className="w-3.5 h-3.5 text-rose-400" />
+                                    <span>Typowy błąd</span>
                                   </span>
                                   <div className="text-rose-200 overflow-x-auto custom-scrollbar py-0.5">
-                                    <MathRenderer content={trap.error} />
+                                    <MathRenderer content={trap.error.replace(/^[❌⚠️\s]*(?:błąd\s*typowy|typowy\s*błąd)[:\s-]*/i, '')} />
                                   </div>
                                 </div>
                               )}
                               {hasRealCorrect && (
                                 <div className="bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-3">
-                                  <span className="font-bold text-emerald-400 text-[11px] uppercase tracking-wider block mb-1">
-                                    ✓ Poprawnie
+                                  <span className="font-bold text-emerald-400 text-[11px] uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                                    <span>Poprawnie</span>
                                   </span>
                                   <div className="text-emerald-200 overflow-x-auto custom-scrollbar py-0.5">
-                                    <MathRenderer content={trap.correct} />
+                                    <MathRenderer content={trap.correct.replace(/^[✓✔\s]*(?:poprawnie|prawidłowo)[:\s-]*/i, '')} />
                                   </div>
                                 </div>
                               )}

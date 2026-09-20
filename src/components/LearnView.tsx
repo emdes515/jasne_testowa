@@ -13,6 +13,7 @@ import { triggerHaptic } from '../utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { MathRenderer } from './MathRenderer';
 import { drawSessionTasks, getLessonFormulaSheet, loadTopicBossExam } from '../data/dzial1TaskPool';
+import { enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { BossExamRunner } from './BossExamRunner';
 import { SubjectKey } from '../types';
@@ -691,12 +692,21 @@ export function LearnView({
       isSession: true,
       isPolish: selectedSubjectKey === 'pol',
       subjectId: subjectFirestoreId,
+      pillarId: selectedSubjectKey === 'pol' ? selectedPillarId : undefined,
+      pillarName: selectedSubjectKey === 'pol'
+        ? (selectedPillarId === 'pillar-1-jezyk-w-uzyciu'
+          ? 'Język w użyciu'
+          : selectedPillarId === 'pillar-2-lektury'
+            ? 'Lektury i epoki'
+            : 'Wypracowanie')
+        : undefined,
+      topicTitle: currentTopic?.title || currentTopic?.name,
       topicId: topicId,
       lessonId: group.id,
       lessonTitle: fullLessonTitle,
       tasks: tasksToRun,
       formulaSheet: lessonFormulaSheet || poolResult.formulaSheet || (selectedSubjectKey === 'pol' ? ((lessonDoc as any)?.formulaSheet || (lessonDoc as any)?.leksykon || null) : getLessonFormulaSheet(group.id)),
-      theoryPill: lessonDoc?.theory_pill || poolResult.theoryPill,
+      theoryPill: enrichTheoryPillWithVisual(lessonDoc?.theory_pill || poolResult.theoryPill, group.id),
       nextLesson: nextLessonPayload,
       allTaskIdsToMarkCompleted: tasks.map((t: any) => t.id),
       required_correct_tasks: group.required_correct_tasks || poolResult.required_correct_tasks || 3,
@@ -910,7 +920,10 @@ export function LearnView({
                           />
                         )}
                         <MessageSquare size={13} className={selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
-                        <span className="truncate relative z-10">Filar I: Język</span>
+                        <span className="truncate relative z-10">
+                          <span className="hidden sm:inline">Język w użyciu</span>
+                          <span className="sm:hidden">Język</span>
+                        </span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
                           selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
                         }`}>
@@ -918,7 +931,7 @@ export function LearnView({
                         </span>
                       </button>
 
-                      {/* Tab 2: Filar II */}
+                      {/* Tab 2: Lektury */}
                       <button
                         onClick={() => {
                           triggerHaptic('light');
@@ -939,7 +952,10 @@ export function LearnView({
                           />
                         )}
                         <BookOpen size={13} className={selectedPillarId === 'pillar-2-lektury' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
-                        <span className="truncate relative z-10">Filar II: Lektury</span>
+                        <span className="truncate relative z-10">
+                          <span className="hidden sm:inline">Lektury i epoki</span>
+                          <span className="sm:hidden">Lektury</span>
+                        </span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
                           selectedPillarId === 'pillar-2-lektury' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
                         }`}>
@@ -947,7 +963,7 @@ export function LearnView({
                         </span>
                       </button>
 
-                      {/* Tab 3: Filar III */}
+                      {/* Tab 3: Wypracowanie */}
                       <button
                         onClick={() => {
                           triggerHaptic('light');
@@ -968,7 +984,7 @@ export function LearnView({
                           />
                         )}
                         <Feather size={13} className={selectedPillarId === 'pillar-3-wypracowanie' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
-                        <span className="truncate relative z-10">Filar III: Wypracowanie</span>
+                        <span className="truncate relative z-10">Wypracowanie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
                           selectedPillarId === 'pillar-3-wypracowanie' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
                         }`}>
@@ -2006,7 +2022,7 @@ export function LearnView({
                           </span>
                         </div>
                         <p className="text-xs text-[#8B8D98] truncate">
-                          17 działów • 2 Filary • 102 lekcje • 28 lektur
+                          22 działy • 3 moduły CKE • 132 lekcje • 28 lektur
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
                           <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">

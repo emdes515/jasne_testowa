@@ -1,0 +1,1147 @@
+[
+  {
+    "id": "matura-sierpien-2024-zad-1",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "1",
+    "section": "Dział 12: Kombinatoryka",
+    "topicId": "dzial-12",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich całkowitych rozwiązań nierówności  |x + 1| < 3  jest równa",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "7"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC \n \n  \n                                                \n1 Rozporządzenie Ministra Edukacji i Nauki z dnia 10 czerwca 2022 r. w sprawie wymagań egzaminacyjnych dla \negzaminu maturalnego przeprowadzanego w roku szkolnym 2022/2023 i 2023/2024 (Dz.U. 2022, poz.1246). \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 3 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 1",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-2",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "2",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  ( 4\n25)\n−0,5\njest równa",
+    "options": [
+      "0,04",
+      "0,8",
+      "2,5",
+      "0,4"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 2",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-3",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "3",
+    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "topicId": "dzial-2",
+    "type": "OPEN_PROOF",
+    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  (𝟐𝒏 + 𝟓)𝟐 + 𝟑  jest podzielna\nprzez  𝟒.\n3.\n0–1–2",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I \nPrzekształcamy równoważnie dane wyrażenie \n \n(2n + 5)2 + 3 = 4n2 + 20n + 25 + 3 = 4n2 + 20n + 28 = 4(n2 + 5n + 7) \n \nPonieważ  n  jest liczbą naturalną, więc  n2 + 5n + 7  jest liczbą naturalną.  \nZatem liczba  (2n + 5)2 + 3 = 4(n2 + 5n + 7)  jest podzielna przez  4. \nTo należało wykazać. \n \n \nSposób II \nPrzekształcamy równoważnie dane wyrażenie \n \n(2n + 5)2 + 3 = (2n + 5)2 − 1 + 4 = (2n + 5 − 1)(2n + 5 + 1) + 4 \n \n= (2n + 4)(2n + 6) + 4 \n \nPonieważ  n  jest liczbą naturalną, więc liczby  2n + 4  oraz  2n + 6  są parzyste. Stąd \nwynika, że iloczyn  (2n + 4)(2n + 6)  jest liczbą podzielną przez  4. \nZatem suma  (2n + 4)(2n + 6) + 4  dwóch liczb podzielnych przez  4  jest podzielna przez  4. \nTo należało wykazać. \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "1. Jeżeli zdający sprawdza prawdziwość tezy tylko dla wybranych wartości  n, to otrzymuje \n0 punktów za całe rozwiązanie. \n2. Jeżeli zdający przyjmuje np.  n = 4k + r, gdzie  k ∈ \\mathbb{N}  i  r  jest resztą z dzielenia liczby  \nn  przez  4  (lub  n = 2k + r, gdzie  k ∈ \\mathbb{N} i  r  jest resztą z dzielenia liczby  n  przez  2), \ni przeprowadzi pełne rozumowanie dla wszystkich przypadków, to otrzymuje 2 punkty.  \nGdy przeprowadzi pełne rozumowanie dla co najmniej połowy przypadków, ale nie \nprzeprowadzi pełnego rozumowania dla wszystkich przypadków, to otrzymuje 1 punkt za \ncałe rozwiązanie. \n3. Jeżeli zdający rozpatruje tylko jeden przypadek  n = 4k, to otrzymuje 0 punktów za całe \nrozwiązanie.",
+    "source": "Matura Sierpień 2024 • Zad. 3",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-4",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "4",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Uzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nPrawdziwe są równości:  ...............  oraz  ...............  .",
+    "options": [
+      "log2 16 + log2 9 = log2 25",
+      "log2 16 + log2 9 = 2 \\cdot log2 5",
+      "log2 16 + log2 9 = log2 144",
+      "log2 16 + log2 9 = log4 144\nE.  log2 16 + log2 9 = 4 + 2 \\cdot log2 3\nF.  log2 16 + log2 9 = 2 \\cdot log4 12"
+    ],
+    "correctAnswer": "CE",
+    "points": 2,
+    "isClosed": true,
+    "explanation": "wybranie dwóch odpowiedzi, z których obie są poprawne. \n1 pkt – wybranie jednej lub dwóch odpowiedzi, z których jedna jest poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nCE",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 4",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-5",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "5",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wszystkich rozwiązań nierówności\n3(6 − x)\n17 \\le 3\njest przedział",
+    "options": [
+      "(−\\infty, −11)",
+      "(−\\infty, −11]",
+      "(−11, +\\infty)",
+      "[−11, +\\infty)"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nD  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 6 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 5",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-6",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "6",
+    "section": "Dział 3: Równania i Nierówności",
+    "topicId": "dzial-3",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie  x(x+5)(2−x)\n2x+4 = 0  w zbiorze liczb rzeczywistych ma dokładnie",
+    "options": [
+      "dwa rozwiązania:  (−5)  oraz  2.",
+      "dwa rozwiązania:  (−5)  oraz  0.",
+      "trzy rozwiązania:  (−5),  0  oraz  2.",
+      "cztery rozwiązania:  (−5),  (−2),  0  oraz  2."
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 6",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-7",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "7",
+    "section": "Dział 3: Równania i Nierówności",
+    "topicId": "dzial-3",
+    "type": "OPEN_CALCULATION",
+    "content": "Rozwiąż równanie\n𝒙𝟑 + 𝟓𝒙𝟐 − 𝟐𝒙 − 𝟏𝟎 = 𝟎\nZapisz obliczenia.\n7.\n0–1–\n2–3",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "Sposób I \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \nx3 + 5x2 − 2x − 10 = 0 \n \nx2(x + 5) − 2(x + 5) = 0 \n \n(x + 5)(x2 − 2) = 0 \n \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "1. Jeżeli zdający zapisze tylko trzy poprawne rozwiązania równania, to otrzymuje 1 punkt za \ncałe rozwiązanie. \n2. Jeżeli zdający uzyska trzy poprawne pierwiastki wielomianu, lecz traktuje równanie jako \nnierówność (podaje zbiór rozwiązań w postaci przedziału / sumy przedziałów), to \notrzymuje 2 punkty za całe rozwiązanie. \n3. Jeżeli przy przekształcaniu lewej strony równania do postaci iloczynu zdający zapisuje \nczynnik  (x + 5)  z wykładnikiem  2, to może otrzymać co najwyżej 2 punkty za całe \nrozwiązanie (1 punkt za rozwiązanie równania  (x + 5)2 = 0  i 1 punkt za rozwiązanie \nrównania  x2 − 2 = 0). \n4. Jeżeli zdający zamiast równania  (x + 5)(x2 − 2) = 0  zapisze  (x + 5) ± (x2 − 2) = 0, \nale z dalszego rozwiązania wynika, że traktuje lewą stronę równania jak iloczyn i rozwiąże \nzadanie do końca, to może otrzymać co najwyżej 2 punkty za całe rozwiązanie (1 punkt \nza rozwiązanie równania  x + 5 = 0  i 1 punkt za rozwiązanie równania  x2 − 2 = 0). \n5. Jeżeli zdający przy przekształcaniu równania do postaci  (x + 5)(x2 − 2) = 0  popełni \nbłąd i zapisze: \nx2(x − 5) − 2(x + 5) = 0  \nlub \nx2(x + 5) + 2(x + 5) = 0  \nlub \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 8 z 37 \nx2(x + 5) − 2(x − 5) = 0  \nlub \nx(x2 + 2) + 5(x2 − 2) = 0 \nlub \nx(x2 − 2) − 5(x2 − 2) = 0 \nlub \nx(x2 − 2) + 5(x2 + 2) = 0 \na następnie: \n5.1. zapisze równanie  (x + 5)(x2 − 2) = 0  lub poprawną alternatywę  \n(x + 5 = 0  lub  x2 − 2 = 0) i konsekwentnie rozwiąże zadanie do końca, to \notrzymuje co najwyżej 2 punkty za całe rozwiązanie (1 punkt za rozwiązanie \nrównania  x + 5 = 0  i 1 punkt za rozwiązanie równania  x2 − 2 = 0). \n5.2. zapisze równanie  (x + 5)(x2 + 2) = 0  lub błędną alternatywę  \n(x + 5 = 0  lub  x2 + 2 = 0) i rozwiąże poprawnie równanie  x + 5 = 0,  \nto otrzymuje 1 punkt za całe rozwiązanie. \n5.3. zapisze równanie  (x − 5)(x2 − 2) = 0  lub błędną alternatywę  \n(x − 5 = 0  lub  x2 − 2 = 0) i rozwiąże poprawnie równanie  x2 − 2 = 0,  \nto otrzymuje 1 punkt za całe rozwiązanie. \n5.4. zapisze błędne równanie (w którym jedna ze stron jest równa  0, a druga jest \niloczynem wielomianów stopni dodatnich), inne niż w uwagach 5.2 oraz 5.3, np.  \n(x − 5)(x + 5)(x2 ± 2) = 0  lub błędną alternatywę inną niż w uwagach 5.2 \noraz 5.3, np. (x − 5 = 0  lub  x + 5 = 0  lub  x2 ± 2 = 0), to otrzymuje \n0 punktów za całe rozwiązanie. \n6. Jeżeli zdający, przekształcając równanie  x3 + 5x2 − 2x − 10 = 0, popełni jeden błąd \n(który nie jest błędem znaku) albo dwa błędy znaku i otrzyma równanie trzeciego stopnia, \nktóre ma trzy rozwiązania rzeczywiste, oraz konsekwentnie rozwiąże zadanie do końca, to \notrzymuje 1 punkt za całe rozwiązanie. \n7. Jeżeli zdający dzieli obustronnie równanie  x2(x + 5) = 2(x + 5)  przez dwumian   \n(x + 5)  z podaniem odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = \\sqrt2  oraz  x = −\\sqrt2, to otrzymuje 2 punkty za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 1 punkt za całe rozwiązanie. \n8. Jeżeli zdający dzieli obustronnie równanie  x2(x + 5) = 2(x + 5)  przez dwumian   \n(x + 5)  bez podania odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = \\sqrt2  oraz  x = −\\sqrt2, to otrzymuje 1 punkt za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 0 punktów za całe rozwiązanie.",
+    "source": "Matura Sierpień 2024 • Zad. 7",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-8",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "8",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "Na rysunku, w kartezjańskim układzie współrzędnych  (x, y), przedstawiono interpretację\ngeometryczną jednego z poniższych układów równań A–D.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
+    "options": [
+      "{ y = x + 2\ny = 2x − 3",
+      "{ y = −x + 2\ny = 2x − 3",
+      "{ y = x + 2\ny = −2x − 3",
+      "{ y = −x + 2\ny = 2x + 3"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 8",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Interpretacja geometryczna układu równań w układzie współrzędnych",
+      "width": 440,
+      "height": 260,
+      "grid": {
+        "minX": 30,
+        "maxX": 410,
+        "stepX": 30,
+        "minY": 25,
+        "maxY": 235,
+        "stepY": 30,
+        "color": "rgba(148, 163, 184, 0.1)"
+      },
+      "ticks": [
+        {
+          "x": 180,
+          "y": 130,
+          "label": "0",
+          "axis": "x"
+        },
+        {
+          "x": 210,
+          "y": 130,
+          "label": "1",
+          "axis": "x"
+        },
+        {
+          "x": 180,
+          "y": 70,
+          "label": "2",
+          "axis": "y"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            20,
+            130
+          ],
+          "to": [
+            420,
+            130
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            180,
+            240
+          ],
+          "to": [
+            180,
+            20
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            90,
+            220
+          ],
+          "to": [
+            330,
+            20
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 2.5
+        },
+        {
+          "from": [
+            90,
+            40
+          ],
+          "to": [
+            310,
+            240
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2.5
+        }
+      ],
+      "points": [
+        {
+          "x": 210,
+          "y": 70,
+          "label": "(1, 2)",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ],
+      "labels": [
+        {
+          "x": 415,
+          "y": 144,
+          "text": "x",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 192,
+          "y": 24,
+          "text": "y",
+          "color": "#94A3B8"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-sierpien-2024-zad-9",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "9",
+    "section": "Dział 4: Własności Funkcji i Odczytywanie Wykresów",
+    "topicId": "dzial-4",
+    "type": "SINGLE_CHOICE",
+    "content": "Funkcja  y = f(x)  jest określona za pomocą tabeli\n𝒙 −6 −4 −2 0 2 4 6\n𝒚 −3 −4 4 1 5 0 2\nUzupełnij poniższą tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź,\nwybraną spośród oznaczonych literami A–E.\n9.1. Największa wartość funkcji  f  jest równa\n9.2. Miejsce zerowe funkcji  f  jest równe",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5 E.  6"
+    ],
+    "correctAnswer": "D",
+    "points": 2,
+    "isClosed": true,
+    "explanation": "dwie poprawne odpowiedzi. \n1 pkt – jedna poprawna odpowiedź. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \nC \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 11 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 9",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-10",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "10",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "NUMERIC_INPUT",
+    "content": "Funkcja liniowa  f  jest określona wzorem  f(x) =\n\\sqrt3\n3 x − 3.\nW kartezjańskim układzie współrzędnych  (x, y)  wykres funkcji  y = f(x)  jest prostą\nnachyloną do osi  Ox  pod kątem ostrym  \\alpha.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak,\naby zdanie było prawdziwe.\nSinus kąta  \\alpha  jest równy ………. .",
+    "options": [],
+    "correctAnswer": "1",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n1\n2",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 10",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-11_1",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "11.1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "TRUE_FALSE",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nFunkcja  f  jest malejąca. P F\nFunkcja  f  nie ma miejsc zerowych.  P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "correctAnswer": "FP",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nFP \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 12 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 11.1",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-11_2",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "11.2",
+    "section": "Dział 4: Własności Funkcji i Odczytywanie Wykresów",
+    "topicId": "dzial-4",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nNajwiększa wartość funkcji  f  jest równa",
+    "options": [
+      "16,8",
+      "15,8",
+      "11,3",
+      "10,3"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 11.2",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-11_3",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "11.3",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest określona wzorem",
+    "options": [
+      "f(x) = 6,5x + 1,03",
+      "f(x) = 1,03x + 10",
+      "f(x) = 10x + 1,03",
+      "f(x) = 1,03x + 6,5"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 13 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 11.3",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-12_1",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "12.1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wartości funkcji  f  jest przedział",
+    "options": [
+      "(−\\infty, −2]",
+      "[1, +\\infty)",
+      "[−1, 3]",
+      "[−2, +\\infty)"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 12.1",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-12_2",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "12.2",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOsią symetrii wykresu funkcji  f  jest prosta o równaniu",
+    "options": [
+      "x = 1",
+      "y = 1",
+      "x = −2",
+      "y = −2"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 14 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 12.2",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-12_3",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "12.3",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest określona wzorem",
+    "options": [
+      "f(x) = 1\n2 (x − 1)2 + 2",
+      "f(x) = 1\n2 (x + 1)2 + 2",
+      "f(x) = 1\n2 (x − 1)2 − 2",
+      "f(x) = 1\n2 (x + 1)2 − 2"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 12.3",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-13",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "13",
+    "section": "Dział 7: Ciągi Liczbowe",
+    "topicId": "dzial-7",
+    "type": "SINGLE_CHOICE",
+    "content": "Ciąg  (an)  jest określony dla każdej liczby naturalnej  n \\ge 1.\nSuma  n  początkowych wyrazów tego ciągu wyraża się wzorem  Sn = n2 + 2n  dla każdej\nliczby naturalnej  n \\ge 1.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTrzeci wyraz ciągu  (an)  jest równy",
+    "options": [
+      "5",
+      "7",
+      "13",
+      "15"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 15 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 13",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-14",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "14",
+    "section": "Dział 7: Ciągi Liczbowe",
+    "topicId": "dzial-7",
+    "type": "SINGLE_CHOICE",
+    "content": "Dany jest ciąg geometryczny  (an)  określony dla każdej liczby naturalnej  n \\ge 1, w którym\na2 = 2  oraz  a5 = 54.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nIloraz ciągu  (an)  jest równy",
+    "options": [
+      "3",
+      "9",
+      "52\n3",
+      "27"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 14",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-15",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "15",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "NUMERIC_INPUT",
+    "content": "Trzywyrazowy ciąg  (2m − 5, 4, 9)  jest arytmetyczny.\nDokończ zdanie. Wybierz odpowiedź A albo B oraz odpowiedź 1., 2. albo 3.\nTen ciąg jest\nrosnący\noraz\n1. m = −1 A.\n2. m = 2\nmalejący B. 3. m = 3",
+    "options": [],
+    "correctAnswer": "A2",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA2 \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 16 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 15",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-16",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "16",
+    "section": "Dział 8: Trygonometria",
+    "topicId": "dzial-8",
+    "type": "SINGLE_CHOICE",
+    "content": "Kąt  \\alpha  jest ostry oraz  cos \\alpha = 24\n25\n.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTangens kąta  \\alpha  jest równy",
+    "options": [
+      "7\n18",
+      "7\n24",
+      "7\n25",
+      "18\n25"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 16",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-17",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "17",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "W trójkącie prostokątnym  ABC  sinus kąta  CAB  jest równy  3\n5\n, a przeciwprostokątna  AB\njest o  8  dłuższa od przyprostokątnej  BC.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość przeciwprostokątnej  AB  tego trójkąta jest równa",
+    "options": [
+      "18",
+      "20",
+      "24",
+      "25"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n \n \n \n \n \n \n \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 17 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 17",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-18",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "18",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "Dany jest trójkąt  ABC, w którym  |AB| = 5,  |AC| = 2  oraz  cos|∡BAC| = 3\n5\n.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość boku  BC  tego trójkąta jest równa",
+    "options": [
+      "\\sqrt17",
+      "\\sqrt23",
+      "\\sqrt35",
+      "\\sqrt41"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 18",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-19",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "19",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Punkty  K,  L  oraz  M  leżą na okręgu o środku w punkcie  S. Miara kąta  KSM  jest równa 160°\n(zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta wpisanego  KLM  jest równa",
+    "options": [
+      "80°",
+      "90°",
+      "100°",
+      "110°"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 18 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 19",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Kąt środkowy $\\angle KSM = 160^\\circ$ i kąt wpisany $\\angle KLM$ w okręgu",
+      "width": 440,
+      "height": 260,
+      "circles": [
+        {
+          "cx": 220,
+          "cy": 130,
+          "r": 90,
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.04)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            135,
+            160
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            305,
+            160
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            135,
+            160
+          ],
+          "to": [
+            220,
+            40
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            305,
+            160
+          ],
+          "to": [
+            220,
+            40
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 220,
+          "cy": 130,
+          "r": 25,
+          "startAngleDeg": 100,
+          "endAngleDeg": 260,
+          "color": "#10B981",
+          "label": "160°"
+        },
+        {
+          "cx": 220,
+          "cy": 40,
+          "r": 25,
+          "startAngleDeg": 125,
+          "endAngleDeg": 235,
+          "color": "#FFB800",
+          "label": "80°"
+        }
+      ],
+      "points": [
+        {
+          "x": 135,
+          "y": 160,
+          "label": "K",
+          "labelPosition": "left",
+          "dot": "filled"
+        },
+        {
+          "x": 305,
+          "y": 160,
+          "label": "M",
+          "labelPosition": "right",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 40,
+          "label": "L",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 130,
+          "label": "S",
+          "labelPosition": "bottom",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-sierpien-2024-zad-20",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "20",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "OPEN_CALCULATION",
+    "content": "Podstawy trapezu prostokątnego  ABCD  mają długości:  |AB| = 12  oraz  |CD| = 6.\nWysokość  AD  tego trapezu ma długość  24. Na odcinku  AD  leży punkt  𝐸  taki, że\n|∡B𝐸A| = |∡C𝐸D|  (zobacz rysunek).\nOblicz długość odcinka  𝑩𝑬. Zapisz obliczenia.\n20.\n0–1–2\nC\nD\n𝐸\n\\cdot\nB\n\\cdot\nA",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I \nTrójkąty  AB𝐸  oraz  DC𝐸  są podobne na podstawie cechy kąt – kąt – kąt podobieństwa \ntrójkątów. Stąd \n \n|A𝐸|\n|AB| = |D𝐸|\n|CD| \n \n|A𝐸|\n12 = 24 − |A𝐸|\n6  \n \n|A𝐸| = 48 − 2|A𝐸| \n \n3|A𝐸| = 48 \n \n|A𝐸| = 16 \n \nKorzystamy z twierdzenia Pitagorasa i obliczamy długość odcinka  B𝐸: \n \n|B𝐸|2 = |AB|2 + |A𝐸|2 \n \n|B𝐸|2 = 122 + 162 \n \n|B𝐸|2 = 400 \n \n|B𝐸| = 20 \n \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 20",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trapez prostokątny $ABCD$ o podstawach $|AB| = 12$ oraz $|CD| = 6$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              60,
+              200
+            ],
+            [
+              380,
+              200
+            ],
+            [
+              220,
+              70
+            ],
+            [
+              60,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.08)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 60,
+          "cy": 200,
+          "r": 16,
+          "startAngleDeg": 270,
+          "endAngleDeg": 360,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        },
+        {
+          "cx": 60,
+          "cy": 70,
+          "r": 16,
+          "startAngleDeg": 0,
+          "endAngleDeg": 90,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            70
+          ],
+          "to": [
+            220,
+            200
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        }
+      ],
+      "points": [
+        {
+          "x": 60,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 60,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": 220,
+          "y": 222,
+          "text": "|AB| = 12",
+          "color": "#FFB800"
+        },
+        {
+          "x": 140,
+          "y": 56,
+          "text": "|CD| = 6",
+          "color": "#FFB800"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-sierpien-2024-zad-21",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "21",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "OPEN_CALCULATION",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  przekątne równoległoboku  ABCD\nprzecinają się w punkcie  S = (9, 11). Bok  AB  tego równoległoboku zawiera się w prostej\no równaniu  y = 1\n2 x − 1, a bok  AD  zawiera się w prostej o równaniu  y = 2x − 4.\nOblicz współrzędne wierzchołka  𝑩. Zapisz obliczenia.\n21.\n0–1–\n2–3–4",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "Sposób I \nPunkt  A  jest punktem wspólnym prostych  AB  i  AD, zatem współrzędne tego punktu są \nrozwiązaniem układu równań \n{ y = 1\n2 x − 1\ny = 2x − 4\n \n \nStąd \n2x − 4 = 1\n2 x − 1 \n \n3\n2 x = 3 \n \nx = 2 \n \ny = 0 \n \nZatem  A = (2, 0). \n \nPunkt  S  jest środkiem odcinka  AC, więc \n \n2 + xc\n2 = 9   oraz  0 + yc\n2 = 11 \n \nxc = 16   oraz   yc = 22 \n \nZatem  C = (16, 22). \n \nProsta  BC  jest równoległa do prostej  AD, zatem współczynnik kierunkowy prostej  BC  jest \nrówny  2. Wyznaczamy równanie prostej  BC: \n \ny = 2(x − 16) + 22 \n \ny = 2x − 10 \n \nPunkt  B  jest punktem wspólnym prostych  AB  i  BC, zatem współrzędne tego punktu są \nrozwiązaniem układu równań \n{ y = 1\n2 x − 1\ny = 2x − 10\n \n \nStąd \n2x − 10 = 1\n2 x − 1 \n \n3\n2 x = 9 \n \nx = 6 \n \ny = 2 \n \nZatem  B = (6, 2).  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 21",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-22",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "22",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  proste  k  oraz  𝑙  są określone równaniami\nk:  y = (3m − 2)x − 2\n𝑙:   y = (2m + 4)x + 2\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nProste  k  oraz  𝑙  są równoległe, gdy liczba  m  jest równa",
+    "options": [
+      "(−6)",
+      "(−2)",
+      "2",
+      "6"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 22",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-23",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "23",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  odcinek o końcach  A = (−4, 7)  oraz\nB = (6, −1)  jest średnicą okręgu  𝒪.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg  𝒪  jest określony równaniem",
+    "options": [
+      "(x − 1)2 + (y − 3)2 = 41",
+      "(x − 5)2 + (y + 4)2 = 41",
+      "(x − 1)2 + (y + 3)2 = 41",
+      "(x − 5)2 + (y − 4)2 = 41"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 26 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 23",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-24",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "24",
+    "section": "Dział 12: Kombinatoryka",
+    "topicId": "dzial-12",
+    "type": "SINGLE_CHOICE",
+    "content": "Liczba wszystkich ścian ostrosłupa prawidłowego jest równa  12.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich wierzchołków tego ostrosłupa jest równa",
+    "options": [
+      "10",
+      "11",
+      "12",
+      "13"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 24",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-25",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "25",
+    "section": "Dział 15: Zadania Optymalizacyjne",
+    "topicId": "dzial-15",
+    "type": "SINGLE_CHOICE",
+    "content": "Długości trzech wychodzących z jednego wierzchołka krawędzi prostopadłościanu są trzema\nkolejnymi liczbami naturalnymi parzystymi. Najdłuższa krawędź tego prostopadłościanu ma\ndługość  10.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole powierzchni całkowitej tego prostopadłościanu jest równe",
+    "options": [
+      "376",
+      "466",
+      "480",
+      "720"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 27 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 25",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-26",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "26",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
+    "type": "SINGLE_CHOICE",
+    "content": "Dany jest prostopadłościan  ABCD𝐸𝐹𝐺𝐻, w którym podstawy  ABCD  i  𝐸𝐹𝐺𝐻  są\nkwadratami o boku długości  6. Przekątna  B𝐻  tego prostopadłościanu tworzy z przekątną\nA𝐻  ściany bocznej  AD𝐻𝐸  kąt o mierze  30°  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPrzekątna  B𝐻  tego prostopadłościanu ma długość równą",
+    "options": [
+      "4\\sqrt3",
+      "6\\sqrt3",
+      "12",
+      "12\\sqrt2"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 26",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-27",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "27",
+    "section": "Dział 12: Kombinatoryka",
+    "topicId": "dzial-12",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych dwucyfrowych, w których zapisie dziesiętnym cyfra dziesiątek\njest o  3  większa od cyfry jedności, jest",
+    "options": [
+      "3",
+      "6",
+      "7",
+      "13"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 28 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 27",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-28",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "28",
+    "section": "Dział 15: Zadania Optymalizacyjne",
+    "topicId": "dzial-15",
+    "type": "SINGLE_CHOICE",
+    "content": "W tabeli zestawiono liczbę punktów uzyskanych przez  32  uczniów pewnej klasy za\nrozwiązanie jednego z zadań testu z matematyki.\nLiczba punktów 0 1 2 3 4 5\nLiczba uczniów 2 2 5 6 11 6\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna liczby punktów uzyskanych za rozwiązanie tego zadania przez\nuczniów tej klasy jest równa",
+    "options": [
+      "2,5",
+      "3,25",
+      "3,31",
+      "4"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 29 z 37",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 28",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-29",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "29",
+    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "topicId": "dzial-13",
+    "type": "OPEN_CALCULATION",
+    "content": "Dane są dwa zbiory:  C = {0, 4, 5, 7, 9}  oraz  D = {1, 2, 3}.\nLosujemy jedną liczbę ze zbioru  C, a następnie losujemy jedną liczbę ze zbioru  D.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że suma\nwylosowanych liczb będzie większa od  𝟗. Zapisz obliczenia.\n29.\n0–1–2",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I \nZdarzeniami elementarnymi są wszystkie uporządkowane pary liczb  (x, y), gdzie   \nx ∈ {0, 4, 5, 7, 9}  oraz  y ∈ {1, 2, 3}. \nLiczbę wszystkich zdarzeń elementarnych obliczamy, korzystając z reguły mnożenia.  \nMoc zbioru  Ω  jest równa  5 \\cdot 3 = 15. \nZdarzeniu  A  sprzyjają następujące zdarzenia elementarne:  (7,3), (9,1), (9,2), (9,3), więc \nmoc zbioru  A  jest równa  4. \nZatem prawdopodobieństwo zdarzenia  A  jest równe  4\n15 . \n \n \nSposób II \nW tabeli literą  A  zaznaczamy zdarzenia elementarne sprzyjające zdarzeniu  A  (pary liczb, \nktórych suma jest liczbą większą od  9).  \n \n 0 4 5 7 9 \n1     A \n2     A \n3    A A \n \nMoc zbioru  Ω  jest równa  15. \nZdarzeń sprzyjających wylosowaniu liczb, których suma jest większa od  9, jest  4. \nZatem prawdopodobieństwo zdarzenia  A  jest równe  4\n15 . \n \n  \nC \nD \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Sierpień 2024 • Zad. 29",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  },
+  {
+    "id": "matura-sierpien-2024-zad-30",
+    "examId": "matura-sierpien-2024",
+    "examName": "Matura Sierpień 2024 (Formuła 2023)",
+    "taskNumber": "30",
+    "section": "Dział 14: Statystyka",
+    "topicId": "dzial-14",
+    "type": "OPEN_CALCULATION",
+    "content": "Suma dwóch nieujemnych liczb rzeczywistych  x  oraz  y  jest równa  12.\nWyznacz  𝒙  oraz  𝒚, dla których wartość wyrażenia  𝟐𝒙𝟐 + 𝒚𝟐  jest najmniejsza.\nOblicz tę najmniejszą wartość. Zapisz obliczenia.\n30.\n0–1–\n2–3\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "Sposób I \nPonieważ  x + y = 12, więc  y = 12 − x. \n \nWyrażenie  2x2 + y2  zapisujemy jako funkcję  f  jednej zmiennej  x. W tym celu \npodstawiamy  y = 12 − x  i otrzymujemy \n \nf(x) = 2x2 + (12 − x)2 = 2x2 + 144 − 24x + x2 = 3x2 − 24x + 144 \n \nWyznaczamy dziedzinę funkcji  f. Z warunków zadania wynika, że \n \nx \\ge 0       i      y \\ge 0 \n \nZatem \n \nx \\ge 0     oraz     12 − x \\ge 0  \n \nx \\ge 0     oraz     x \\le 12 \n \nZmienna  x  może przyjmować wartości z przedziału  [0, 12]. \n \nWykresem funkcji  f  jest fragment paraboli skierowanej ramionami do góry.  \nObliczamy pierwszą współrzędną wierzchołka paraboli: \n \np = − −24\n2 \\cdot 3 = 4 ∈ [0, 12] \n \nZatem funkcja  f  przyjmuje wartość najmniejszą dla argumentu  4. \nWobec tego wartość wyrażenia  2x2 + y2  jest najmniejsza dla  x = 4  oraz  y = 12 − 4 = 8. \n \nObliczamy najmniejszą wartość wyrażenia  2x2 + y2: \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin poprawkowy 2024 r. \nStrona 34 z 37 \n \nf(4) = 3 \\cdot 42 − 24 \\cdot 4 + 144 = 96 \n \nSposób II \nPonieważ  x + y = 12, więc  x = 12 − y. \n \nWartość wyrażenia  2x2 + y2  zapisujemy jako funkcję  f  jednej zmiennej  y. W tym celu \npodstawiamy  x = 12 − y  i otrzymujemy \n \nf(y) = 2(12 − y)2 + y2 = 2(144 − 24y + y2) + y2 = 288 − 48y + 2y2 + y2 \n \nf(y) = 3y2 − 48y + 288 \n \nWyznaczamy dziedzinę funkcji  f. Z warunków zadania wynika, że \n \nx \\ge 0       i      y \\ge 0 \n \nZatem \n \n12 − y \\ge 0     oraz     y \\ge 0  \n \ny \\le 12     oraz     y \\ge 0 \n \nZmienna  y  może przyjmować wartości z przedziału  [0, 12]. \n \nWykresem funkcji  f  jest fragment paraboli skierowanej ramionami do góry.  \nObliczamy pierwszą współrzędną wierzchołka paraboli: \n \np = − −48\n2 \\cdot 3 = 8 ∈ [0, 12] \n \nZatem funkcja  f  przyjmuje wartość najmniejszą dla argumentu  8. \nWobec tego wartość wyrażenia  2x2 + y2  jest najmniejsza dla  y = 8  oraz  x = 12 − 8 = 4. \n \nObliczamy najmniejszą wartość wyrażenia  2x2 + y2: \n \nf(8) = 3 \\cdot 82 − 48 \\cdot 8 + 288 = 96 \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "1. Jeżeli zdający zapisze poprawnie wyrażenie  2x2 + y2  jako funkcję  f  jednej zmiennej \ni otrzyma wartość pierwszej współrzędnej wierzchołka paraboli zawierającej wykres \nfunkcji  f, która leży poza przedziałem  [0, 12], to może otrzymać co najwyżej 1 punkt za \ncałe rozwiązanie (za zapisanie wzoru funkcji jednej zmiennej). \n2. Jeżeli zdający zapisze poprawnie wyrażenie  2x2 + y2  jako funkcję  f  jednej zmiennej, \na następnie obliczy wartości tej funkcji dla pierwszej współrzędnej wierzchołka i dwóch \nargumentów leżących symetrycznie względem pierwszej współrzędnej wierzchołka, i nie \nodwoła się do własności wykresu funkcji kwadratowej, to otrzymuje co najwyżej 2 punkty \nza całe rozwiązanie. \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "source": "Matura Sierpień 2024 • Zad. 30",
+    "year": 2024,
+    "session": "Sierpień",
+    "isCke": true
+  }
+]

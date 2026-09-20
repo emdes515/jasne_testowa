@@ -59,7 +59,7 @@ export const PolishDailyMission: React.FC<PolishDailyMissionProps> = ({
       id: 'task-filar-2',
       pillarId: 'pillar-2-lektury',
       pillarNumber: 2,
-      pillarName: 'Kanon Lektur CKE',
+      pillarName: 'Lektury i epoki',
       pillarBadgeColor: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
       icon: BookOpen,
       title: 'Sofokles „Antygona” – Tragizm i prawo boskie',
@@ -73,7 +73,7 @@ export const PolishDailyMission: React.FC<PolishDailyMissionProps> = ({
       id: 'task-filar-3',
       pillarId: 'pillar-3-wypracowanie',
       pillarNumber: 3,
-      pillarName: 'Warsztat Wypracowania',
+      pillarName: 'Wypracowanie',
       pillarBadgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
       icon: PenTool,
       title: 'Konstrukcja tezy i dobór kontekstu',
@@ -133,12 +133,12 @@ export const PolishDailyMission: React.FC<PolishDailyMissionProps> = ({
               Dzienna Misja CKE
             </span>
             <span className="text-[10px] font-bold text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
-              3 Filary Matury
+              Obszary Matury
             </span>
           </div>
 
           <h2 className="text-base sm:text-lg font-display font-black text-white tracking-tight leading-snug">
-            Dzisiejszy Trening Trzech Filarów
+            Dzisiejszy Trening Egzaminacyjny
           </h2>
           <p className="text-xs text-text-secondary mt-0.5">
             Zrealizuj 3 mikro-treningi CKE, aby utrzymać passę i zdobyć pełną premię dnia.
@@ -202,7 +202,7 @@ export const PolishDailyMission: React.FC<PolishDailyMissionProps> = ({
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap mb-0.5">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      Filar {task.pillarNumber}: {task.pillarName}
+                      {task.pillarName}
                     </span>
                     <span className="text-[10px] font-mono font-bold text-amber-300 bg-amber-500/10 px-1.5 py-0.2 rounded border border-amber-500/20">
                       +{task.xpReward} XP

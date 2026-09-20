@@ -17,7 +17,9 @@ import {
   Target,
   Cpu,
   FileText,
-  Layers
+  Layers,
+  GraduationCap,
+  Sparkles
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
@@ -27,6 +29,7 @@ import { CANONICAL_LEKTURY_LIST, CanonicalLektura } from '../data/polishLekturyD
 import { POLISH_FALLBACK_TOPICS } from '../data/polishCurriculumFallback';
 import { ArgumentVaultModal } from './polish/ArgumentVaultModal';
 import { PolishDailyMission } from './polish/PolishDailyMission';
+import { ExamHubModal } from './ExamHubModal';
 import { argumentVaultService } from '../services/argumentVaultService';
 
 import { getLessonsForTopic } from '../utils/lessonGrouping';
@@ -73,6 +76,7 @@ export function DashboardView({
   useCkeCatalogs();
   const streakDays = userState?.streakDays || 0;
   const [isArgumentVaultOpen, setIsArgumentVaultOpen] = useState<boolean>(false);
+  const [isExamHubOpen, setIsExamHubOpen] = useState<boolean>(false);
   const [polishTopics, setPolishTopics] = useState<any[]>(POLISH_FALLBACK_TOPICS);
 
   useEffect(() => {
@@ -694,6 +698,114 @@ export function DashboardView({
             {renderStreakWidget()}
           </div>
 
+          {/* CENTRUM EGZAMINACYJNE CKE (BENTO TRIGGER CARD) */}
+          <motion.div
+            initial={{ y: 15, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.05, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+            className="bg-surface-card border border-surface-border hover:border-amber-500/40 rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-all duration-200 shadow-md group"
+          >
+            {/* Ambient luminous glow */}
+            <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-amber-500/10 pointer-events-none blur-3xl opacity-30 group-hover:opacity-50 transition-opacity" />
+
+            <div className="flex flex-col gap-4 relative z-10">
+              {/* Header tags */}
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/25">
+                    <GraduationCap size={13} className="text-amber-400" />
+                    Centrum Egzaminacyjne CKE
+                  </span>
+                  <span className="text-xs font-semibold text-text-secondary">
+                    {getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey)?.fullName || (selectedSubjectKey === 'pol' ? 'Język Polski' : 'Matematyka')}
+                  </span>
+                </div>
+                <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full tabular-nums">
+                  {selectedSubjectKey === 'pol' ? '1056 zadań z kluczem' : '1006 zadań z kluczem'}
+                </span>
+              </div>
+
+              {/* Title and subtitle */}
+              <div>
+                <h3 className="font-display font-black text-text-primary text-base sm:text-xl leading-tight">
+                  Oficjalna Baza Zadań i Arkuszy CKE
+                </h3>
+                <p className="text-xs sm:text-sm text-text-secondary font-medium mt-1 leading-relaxed">
+                  Rozwiązuj zadania według wybranej strategii: maraton pytań z bazy CKE, szybki trening egzaminacyjny lub autentyczne arkusze maturalne.
+                </p>
+              </div>
+
+              {/* 3 Interactive Quick-action pills */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('medium');
+                    onNavigate?.('simulator', 'maraton');
+                  }}
+                  className="p-3.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-border hover:border-amber-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider">Tryb 1</span>
+                    <Layers size={14} className="text-amber-400 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </div>
+                  <div className="text-xs sm:text-sm font-bold text-text-primary">Wszystkie zadania</div>
+                  <div className="text-[11px] text-text-muted mt-0.5">Maraton pytań CKE</div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('medium');
+                    onNavigate?.('simulator', 'exam_setup');
+                  }}
+                  className="p-3.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-border hover:border-purple-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider">Tryb 2</span>
+                    <Sparkles size={14} className="text-purple-400 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </div>
+                  <div className="text-xs sm:text-sm font-bold text-text-primary">Mini Matura</div>
+                  <div className="text-[11px] text-text-muted mt-0.5">Szybki test 20–35 min</div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('medium');
+                    onNavigate?.('simulator', 'full_exams');
+                  }}
+                  className="p-3.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-border hover:border-sky-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-extrabold text-sky-400 uppercase tracking-wider">Tryb 3</span>
+                    <FileText size={14} className="text-sky-400 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </div>
+                  <div className="text-xs sm:text-sm font-bold text-text-primary">Pełne Arkusze</div>
+                  <div className="text-[11px] text-text-muted mt-0.5">Maj/Czerwiec 2015–2024</div>
+                </button>
+              </div>
+
+              {/* Main CTA button */}
+              <div className="pt-2 border-t border-surface-border flex items-center justify-between gap-3">
+                <span className="text-xs text-text-secondary font-medium hidden sm:inline">
+                  Wybierz format treningu i zacznij rozwiązywać arkusz
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('medium');
+                    setIsExamHubOpen(true);
+                  }}
+                  className="w-full sm:w-auto font-display font-black text-xs sm:text-sm py-2.5 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-amber-500/20 ml-auto"
+                >
+                  <span>Otwórz Centrum Egzaminacyjne</span>
+                  <ArrowRight size={14} strokeWidth={2.5} />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
           {/* 2. DYNAMICZNY PREDYKTOR WYNIKU MATURALNEGO CKE */}
           <PredictorWidget
             result={maturaPrediction}
@@ -969,6 +1081,14 @@ export function DashboardView({
       <ArgumentVaultModal
         isOpen={isArgumentVaultOpen}
         onClose={() => setIsArgumentVaultOpen(false)}
+      />
+
+      {/* Centrum Egzaminacyjne CKE Modal */}
+      <ExamHubModal
+        isOpen={isExamHubOpen}
+        onClose={() => setIsExamHubOpen(false)}
+        onSelectMode={(mode) => onNavigate?.('simulator', mode)}
+        selectedSubjectKey={selectedSubjectKey}
       />
     </div>
   );

@@ -131,6 +131,7 @@ export default function App() {
   }, [currentTab]);
   const [activeTask, setActiveTask] = useState<boolean>(false);
   const [isSimulatorSessionActive, setIsSimulatorSessionActive] = useState<boolean>(false);
+  const [simulatorInitialView, setSimulatorInitialView] = useState<'hub' | 'exam_setup' | 'full_exams' | 'maraton'>('hub');
 
   // Reset flagi aktywnej sesji symulatora po zmianie zakładki
   useEffect(() => {
@@ -1147,8 +1148,11 @@ export default function App() {
               {currentTab === 'dashboard' && (
                 <DashboardView 
                   onNavigate={(tab, subTab) => {
+                    if (tab === 'simulator' && subTab) {
+                      setSimulatorInitialView(subTab as any);
+                    }
                     setCurrentTab(tab as TabState);
-                    if (subTab) setProfileInitialTab(subTab as any);
+                    if (subTab && tab === 'profil') setProfileInitialTab(subTab as any);
                   }} 
                   userState={userState}
                   completedTasks={completedTasks}
@@ -1185,6 +1189,7 @@ export default function App() {
               )}
               {currentTab === 'simulator' && (
                 <MaturaSimulatorView 
+                  initialView={simulatorInitialView}
                   onEarnReward={handleMaturaReward}
                   userState={userState}
                   onUpdateUserState={setUserState}

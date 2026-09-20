@@ -1,5 +1,6 @@
 import { MathDiagramData } from '../components/MathDiagram';
 import { PlotData } from '../components/MathPlot';
+import { NumberLineData } from '../components/NumberLineDiagram';
 
 // =========================================================================
 // 1. PIGUŁKI WIEDZY - SCHEMATY SVG DO TEORII (KARTY WZORÓW I DEFINICJI)
@@ -1036,59 +1037,382 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
 };
 
 // =========================================================================
-// 4. SELF-HEALING ENRICHMENT UTILITIES
+// =========================================================================
+// 4. REGISTRY OF NUMBER LINES (OSIE LICZBOWE CKE DO ZADAŃ I TEORII)
+// =========================================================================
+
+export const THEORY_NUMBER_LINES: Record<string, NumberLineData> = {
+  // Osie liczbowe dla działów z nierównościami i wartością bezwzględną (np. Dział 1.3, 1.5)
+};
+
+export const TASK_NUMBER_LINES: Record<string, NumberLineData> = {
+  // Zadanie 1: Ile liczb całkowitych należy do przedziału <-4, 3)?
+  'task-1-01-01': {
+    min: -6,
+    max: 5,
+    ticks: [-4, -3, -2, -1, 0, 1, 2, 3],
+    intervals: [{ from: -4, to: 3, fromIncluded: true, toIncluded: false }]
+  },
+  // Zadanie 2: Zbiór liczb rzeczywistych -3 <= x < 5
+  'task-1-01-02': {
+    min: -5,
+    max: 7,
+    ticks: [-3, -1, 0, 2, 5],
+    intervals: [{ from: -3, to: 5, fromIncluded: true, toIncluded: false }]
+  },
+  // Zadanie 3: Liczba 0 w (-1, 1)
+  'task-1-01-03': {
+    min: -3,
+    max: 3,
+    ticks: [-1, 0, 1],
+    intervals: [{ from: -1, to: 1, fromIncluded: false, toIncluded: false }]
+  },
+  // Zadanie 4: Część wspólna <-2, 5) oraz (1, 7>
+  'task-1-01-04': {
+    min: -4,
+    max: 9,
+    ticks: [-2, 1, 5, 7],
+    intervals: [
+      { from: -2, to: 5, fromIncluded: true, toIncluded: false },
+      { from: 1, to: 7, fromIncluded: false, toIncluded: true }
+    ]
+  },
+  // Zadanie 5: Największa całkowita w (-infty, 4.6>
+  'task-1-01-05': {
+    min: 0,
+    max: 6,
+    ticks: [1, 2, 3, 4, 5],
+    intervals: [{ from: null, to: 4.6, toIncluded: true }]
+  },
+  // Zadanie 6: Wskaż liczbę, która NIE NALEŻY do <-3, 2)
+  'task-1-01-06': {
+    min: -5,
+    max: 4,
+    ticks: [-3, -1, 0, 2],
+    intervals: [{ from: -3, to: 2, fromIncluded: true, toIncluded: false }]
+  },
+  // Zadanie 7: Suma (-infty, 2> u <2, +infty)
+  'task-1-01-07': {
+    min: -3,
+    max: 7,
+    ticks: [0, 2, 4],
+    intervals: [
+      { from: null, to: 2, toIncluded: true },
+      { from: 2, to: null, fromIncluded: true }
+    ]
+  },
+  // Zadanie 8: Liczby pierwsze w (2, 12>
+  'task-1-01-08': {
+    min: 0,
+    max: 14,
+    ticks: [2, 3, 5, 7, 11, 12],
+    intervals: [{ from: 2, to: 12, fromIncluded: false, toIncluded: true }]
+  },
+  // Zadanie 9: Dopełnienie <-1, 4)
+  'task-1-01-09': {
+    min: -4,
+    max: 7,
+    ticks: [-1, 0, 4],
+    intervals: [
+      { from: null, to: -1, toIncluded: false },
+      { from: 4, to: null, fromIncluded: true }
+    ]
+  },
+  // Zadanie 10: Suma i iloczyn <-5, 2) oraz (-1, 6>
+  'task-1-01-10': {
+    min: -7,
+    max: 8,
+    ticks: [-5, -1, 2, 6],
+    intervals: [
+      { from: -5, to: 2, fromIncluded: true, toIncluded: false },
+      { from: -1, to: 6, fromIncluded: false, toIncluded: true }
+    ]
+  },
+  // Zadanie 11: Nierówność |x - 1| >= 3
+  'task-1-01-11': {
+    min: -5,
+    max: 7,
+    ticks: [-2, 1, 4],
+    intervals: [
+      { from: null, to: -2, toIncluded: true },
+      { from: 4, to: null, fromIncluded: true }
+    ]
+  },
+  // Zadanie 12: (-infty, 2> u <5, +infty)
+  'task-1-01-12': {
+    min: 0,
+    max: 7,
+    ticks: [2, 5],
+    intervals: [
+      { from: null, to: 2, toIncluded: true },
+      { from: 5, to: null, fromIncluded: true }
+    ]
+  },
+  // Zadanie 13: Całkowite w (2, 7)
+  'task-1-01-13': {
+    min: 0,
+    max: 9,
+    ticks: [2, 3, 4, 5, 6, 7],
+    intervals: [{ from: 2, to: 7, fromIncluded: false, toIncluded: false }]
+  },
+  // Zadanie 14: Część wspólna <-3, 5) i (1, 8>
+  'task-1-01-14': {
+    min: -5,
+    max: 10,
+    ticks: [-3, 1, 5, 8],
+    intervals: [
+      { from: -3, to: 5, fromIncluded: true, toIncluded: false },
+      { from: 1, to: 8, fromIncluded: false, toIncluded: true }
+    ]
+  },
+  // Zadanie 15: Liczby pierwsze w <1, 15)
+  'task-1-01-15': {
+    min: 0,
+    max: 16,
+    ticks: [1, 2, 3, 5, 7, 11, 13, 15],
+    intervals: [{ from: 1, to: 15, fromIncluded: true, toIncluded: false }]
+  },
+  // Zadanie 16: Wyrażenie w (2, 5)
+  'task-1-01-16': {
+    min: 0,
+    max: 7,
+    ticks: [2, 3, 4, 5],
+    intervals: [{ from: 2, to: 5, fromIncluded: false, toIncluded: false }]
+  }
+};
+
+/**
+ * Automatycznie parsuje zapis przedziału z tekstu matematycznego i generuje obiekt NumberLineData.
+ */
+export function autoDeriveTaskNumberLine(text: string): NumberLineData | null {
+  if (!text || typeof text !== 'string') return null;
+
+  // Normalizacja KaTeX / LaTeX
+  const normalized = text
+    .replace(/\\(?:left|right)/g, '')
+    .replace(/\\langle/g, '⟨')
+    .replace(/\\rangle/g, '⟩')
+    .replace(/\\lbrack/g, '[')
+    .replace(/\\rbrack/g, ']')
+    .replace(/\\le(?:q)?/g, '≤')
+    .replace(/\\ge(?:q)?/g, '≥');
+
+  // 1. Sprawdź przedziały obustronne: <a, b>, <a, b), (a, b>, (a, b)
+  const boundedMatch = normalized.match(/([⟨<\[\(])\s*(-?\d+(?:[,\.]\d+)?)\s*[,;]\s*(-?\d+(?:[,\.]\d+)?)\s*([⟩>\]\)])/);
+
+  if (boundedMatch) {
+    const leftBracket = boundedMatch[1];
+    const a = parseFloat(boundedMatch[2].replace(',', '.'));
+    const b = parseFloat(boundedMatch[3].replace(',', '.'));
+    const rightBracket = boundedMatch[4];
+
+    if (!isNaN(a) && !isNaN(b) && a < b) {
+      const fromIncluded = leftBracket === '⟨' || leftBracket === '<' || leftBracket === '[';
+      const toIncluded = rightBracket === '⟩' || rightBracket === '>' || rightBracket === ']';
+      const margin = Math.max(1, Math.round((b - a) * 0.25));
+      const min = Math.floor(a - margin);
+      const max = Math.ceil(b + margin);
+
+      const ticks = [a, b];
+      if (b - a <= 16 && Number.isInteger(a) && Number.isInteger(b)) {
+        for (let x = a; x <= b; x++) {
+          if (!ticks.includes(x)) ticks.push(x);
+        }
+        ticks.sort((x, y) => x - y);
+      }
+
+      return {
+        min,
+        max,
+        ticks,
+        intervals: [{ from: a, to: b, fromIncluded, toIncluded }]
+      };
+    }
+  }
+
+  // 2. Sprawdź nierówności obustronne: a <= x <= b lub a < x <= b itp.
+  const ineqMatch = normalized.match(/(-?\d+(?:[,\.]\d+)?)\s*(≤|<=|<)\s*[a-zA-Z]\s*(≤|<=|<)\s*(-?\d+(?:[,\.]\d+)?)/);
+  if (ineqMatch) {
+    const a = parseFloat(ineqMatch[1].replace(',', '.'));
+    const op1 = ineqMatch[2];
+    const op2 = ineqMatch[3];
+    const b = parseFloat(ineqMatch[4].replace(',', '.'));
+    if (!isNaN(a) && !isNaN(b) && a < b) {
+      const fromIncluded = op1.includes('≤') || op1.includes('<=');
+      const toIncluded = op2.includes('≤') || op2.includes('<=');
+      const margin = Math.max(1, Math.round((b - a) * 0.25));
+      const min = Math.floor(a - margin);
+      const max = Math.ceil(b + margin);
+      const ticks = [a, b];
+      if (b - a <= 16 && Number.isInteger(a) && Number.isInteger(b)) {
+        for (let x = a; x <= b; x++) {
+          if (!ticks.includes(x)) ticks.push(x);
+        }
+        ticks.sort((x, y) => x - y);
+      }
+      return {
+        min,
+        max,
+        ticks,
+        intervals: [{ from: a, to: b, fromIncluded, toIncluded }]
+      };
+    }
+  }
+
+  // 3. Sprawdź promienie do nieskończoności: (-inf, b> lub (-inf, b)
+  const leftInfMatch = normalized.match(/\(-\s*(?:\\infty|infty|nieskończoność)\s*[,;]\s*(-?\d+(?:[,\.]\d+)?)\s*([⟩>\]\)])/i);
+  if (leftInfMatch) {
+    const b = parseFloat(leftInfMatch[1].replace(',', '.'));
+    const toIncluded = leftInfMatch[2] === '⟩' || leftInfMatch[2] === '>' || leftInfMatch[2] === ']';
+    if (!isNaN(b)) {
+      return {
+        min: Math.floor(b - 4),
+        max: Math.ceil(b + 2),
+        ticks: [b - 2, b - 1, b, b + 1],
+        intervals: [{ from: null, to: b, toIncluded }]
+      };
+    }
+  }
+
+  // 4. Sprawdź promienie od liczby do nieskończoności: <a, +inf) lub (a, +inf)
+  const rightInfMatch = normalized.match(/([⟨<\[\(])\s*(-?\d+(?:[,\.]\d+)?)\s*[,;]\s*\+?\s*(?:\\infty|infty|nieskończoność)\s*\)/i);
+  if (rightInfMatch) {
+    const a = parseFloat(rightInfMatch[2].replace(',', '.'));
+    const fromIncluded = rightInfMatch[1] === '⟨' || rightInfMatch[1] === '<' || rightInfMatch[1] === '[';
+    if (!isNaN(a)) {
+      return {
+        min: Math.floor(a - 2),
+        max: Math.ceil(a + 4),
+        ticks: [a - 1, a, a + 1, a + 2],
+        intervals: [{ from: a, to: null, fromIncluded }]
+      };
+    }
+  }
+
+  return null;
+}
+
+// =========================================================================
+// 5. SELF-HEALING ENRICHMENT UTILITIES
 // =========================================================================
 
 /**
- * Automatycznie uzupełnia pigułkę wiedzy o schemat wektorowy SVG,
+ * Automatycznie uzupełnia pigułkę wiedzy o schemat wektorowy SVG i osie liczbowe,
  * jeśli pigułka z bazy lub cache przeglądarki go nie posiada.
  */
 export function enrichTheoryPillWithVisual(pill: any, lessonId: string): any {
   if (!pill) return pill;
   const rawId = String(lessonId || '').toLowerCase().trim();
-  const normId = rawId
-    .replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, 'lesson-')
+  const cleanNumber = rawId
+    .replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?(?:lesson|lekcja|dzial-\d+-lekcja)[-_]?/i, '')
     .replace(/\./g, '-');
+  const normId = cleanNumber.startsWith('lesson-') ? cleanNumber : `lesson-${cleanNumber}`;
   const dotToDash = `lesson-${rawId.replace(/^lesson[-_.]?/i, '').replace(/\./g, '-')}`;
   
-  const diagram = THEORY_DIAGRAMS[lessonId] 
-    || THEORY_DIAGRAMS[rawId] 
-    || THEORY_DIAGRAMS[normId] 
-    || THEORY_DIAGRAMS[dotToDash] 
-    || GEOMETRIC_ARCHETYPES[lessonId]
-    || GEOMETRIC_ARCHETYPES[rawId]
-    || GEOMETRIC_ARCHETYPES[normId]
-    || GEOMETRIC_ARCHETYPES[dotToDash]
-    || pill.diagram
-    || null;
+  const diagram = pill.diagram !== undefined 
+    ? pill.diagram 
+    : (THEORY_DIAGRAMS[lessonId] 
+       || THEORY_DIAGRAMS[rawId] 
+       || THEORY_DIAGRAMS[normId] 
+       || THEORY_DIAGRAMS[dotToDash] 
+       || GEOMETRIC_ARCHETYPES[lessonId]
+       || GEOMETRIC_ARCHETYPES[rawId]
+       || GEOMETRIC_ARCHETYPES[normId]
+       || GEOMETRIC_ARCHETYPES[dotToDash]
+       || null);
 
-  return {
+  const numberLine = pill.numberLine !== undefined
+    ? pill.numberLine
+    : (THEORY_NUMBER_LINES[lessonId]
+       || THEORY_NUMBER_LINES[rawId]
+       || THEORY_NUMBER_LINES[normId]
+       || THEORY_NUMBER_LINES[dotToDash]
+       || null);
+
+  const enriched = {
     ...pill,
-    diagram
+    diagram,
+    numberLine
   };
+
+  // Każda zakładka zachowuje unikalną rolę dydaktyczną:
+  // Tab 0 ma swój diagram koncepcyjny/wykres.
+  // Tab 1 (wzory), Tab 2 (przykład) i Tab 3 (pułapka) używają wyłącznie własnych dedykowanych grafik,
+  // zapobiegając powtarzaniu tego samego schematu na wszystkich ekranach lekcji.
+
+  return enriched;
 }
 
 /**
- * Automatycznie uzupełnia zadanie o wykres lub schemat geometryczny SVG,
- * jeśli zadanie pobrane z Firestore lub lokalnego IndexedDB nie ma pola plot / diagram.
+ * Automatycznie uzupełnia zadanie o wykres, schemat geometryczny SVG lub oś liczbową,
+ * jeśli zadanie pobrane z Firestore lub lokalnego cache nie posiada elementu wizualnego.
  */
 export function enrichTaskWithVisual(task: any, lessonId?: string): any {
   if (!task) return task;
   const taskId = String(task.id || '');
   const registered = TASK_VISUALS[taskId];
+  const registeredNumberLine = TASK_NUMBER_LINES[taskId];
 
-  if (task.diagram || task.plot) {
-    const visual = task.diagram || task.plot;
+  let resolvedTask = { ...task };
+
+  // 1. Obsługa osi liczbowej (numberLine)
+  if (resolvedTask.numberLine === null) {
+    // jawnie wyłączona oś liczbowa (np. zadania czysto algebraiczne)
+  } else if (resolvedTask.numberLine) {
+    // już posiada
+  } else if (registeredNumberLine) {
+    resolvedTask.numberLine = registeredNumberLine;
+  } else {
+    // Spróbuj wydedukować oś liczbową z treści polecenia zadania
+    const taskText = resolvedTask.question || resolvedTask.content || resolvedTask.math_statement || '';
+    const derivedNl = autoDeriveTaskNumberLine(taskText);
+    if (derivedNl) {
+      resolvedTask.numberLine = derivedNl;
+    }
+  }
+
+  // 2. Obsługa wariantów odpowiedzi ABCD, jeśli pytanie pyta o zaznaczenie na osi
+  const isVisualOptionsQuestion = /na którym rysunku|zaznaczono na osi/i.test(
+    resolvedTask.question || resolvedTask.content || resolvedTask.math_statement || ''
+  );
+
+  if (isVisualOptionsQuestion && Array.isArray(resolvedTask.options)) {
+    resolvedTask.options = resolvedTask.options.map((opt: any, optIdx: number) => {
+      if (opt.numberLine || opt.diagram) return opt;
+      const optText = opt.text || opt.content_latex || opt.content || '';
+      const optNl = autoDeriveTaskNumberLine(optText);
+      if (optNl) {
+        return {
+          ...opt,
+          numberLine: optNl
+        };
+      }
+      return opt;
+    });
+  }
+
+  // 3. Obsługa schematów geometrycznych / wykresów (diagram / plot)
+  if (resolvedTask.diagram === null || resolvedTask.plot === null) {
+    // Jawnie wyłączony schemat (np. zadania algebraiczne, rachunkowe, potęgi, logarytmy)
     return {
-      ...task,
-      plot: task.plot || visual,
-      diagram: task.diagram || visual
+      ...resolvedTask,
+      plot: null,
+      diagram: null
+    };
+  }
+
+  if (resolvedTask.diagram || resolvedTask.plot) {
+    const visual = resolvedTask.diagram || resolvedTask.plot;
+    return {
+      ...resolvedTask,
+      plot: resolvedTask.plot || visual,
+      diagram: resolvedTask.diagram || visual
     };
   }
 
   if (registered) {
     return {
-      ...task,
+      ...resolvedTask,
       plot: registered,
       diagram: registered
     };
@@ -1119,12 +1443,12 @@ export function enrichTaskWithVisual(task: any, lessonId?: string): any {
 
   if (archetype) {
     return {
-      ...task,
+      ...resolvedTask,
       plot: archetype,
       diagram: archetype
     };
   }
 
-  return task;
+  return resolvedTask;
 }
 

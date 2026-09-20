@@ -509,7 +509,10 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                     animate={{ opacity: 1, y: 0 }}
                     className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200 leading-relaxed"
                   >
-                    <span className="font-bold block mb-0.5 text-amber-300">💡 Wskazówka Tutora AI:</span>
+                    <span className="font-bold mb-0.5 text-amber-300 flex items-center gap-1.5">
+                      <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>Wskazówka Tutora AI:</span>
+                    </span>
                     <MathRenderer content={aiHint} />
                   </motion.div>
                 )}

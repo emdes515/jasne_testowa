@@ -93,8 +93,8 @@ export function getAiModelConfig(): AiModelConfig {
     hint,
     grade,
     task,
-    openRouterText: readString('OPENROUTER_TEXT_MODEL', readString('OPENROUTER_MODEL', 'google/gemma-4-31b-it')),
-    openRouterVision: readString('OPENROUTER_VISION_MODEL', readString('OPENROUTER_MODEL', 'google/gemma-4-31b-it')),
+    openRouterText: readString('OPENROUTER_TEXT_MODEL', readString('OPENROUTER_MODEL', 'qwen/qwen3.7-flash')),
+    openRouterVision: readString('OPENROUTER_VISION_MODEL', readString('OPENROUTER_MODEL', 'qwen/qwen3.7-flash')),
     geminiCandidates: Array.from(new Set([hint, grade, task, ...(geminiCandidates.length > 0 ? geminiCandidates : defaultGeminiChain)])),
   };
 }

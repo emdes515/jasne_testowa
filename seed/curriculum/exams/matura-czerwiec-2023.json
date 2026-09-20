@@ -1,0 +1,1152 @@
+[
+  {
+    "id": "matura-czerwiec-2023-zad-1",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "1",
+    "section": "Dział 3: Równania i Nierówności",
+    "topicId": "dzial-3",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb całkowitych dodatnich spełniających nierówność  |x + 5| < 15  jest",
+    "options": [
+      "9",
+      "10",
+      "20",
+      "21"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n \n  \n                                                \n1 Rozporządzenie Ministra Edukacji i Nauki z dnia 10 czerwca 2022 r. w sprawie wymagań egzaminacyjnych dla \negzaminu maturalnego przeprowadzanego w roku szkolnym 2022/2023 i 2023/2024 (Dz.U. 2022, poz.1246). \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 3 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 1",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-2",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "2",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej dodatniej liczby rzeczywistej  x  iloczyn  \\sqrtx \\cdot \\sqrtx\n3\n\\cdot \\sqrtx\n6\njest równy",
+    "options": [
+      "x",
+      "\\sqrtx\n10",
+      "\\sqrtx\n18",
+      "x2"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 2",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-3",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "3",
+    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "topicId": "dzial-2",
+    "type": "OPEN_PROOF",
+    "content": "Wykaż, że dla każdej liczby całkowitej  𝒌  reszta z dzielenia liczby  𝟒𝟗𝒌𝟐 + 𝟕𝒌 − 𝟐\nprzez  𝟕  jest równa  𝟓.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Przekształcamy równoważnie dane wyrażenie \n \n49k2 + 7k − 2 = 49k2 + 7k − 7 + 5 = 7 \\cdot (7k2 + k − 1) + 5 \n \nPonieważ  k  jest liczbą całkowitą, więc  7k2 + k − 1  jest liczbą całkowitą. Zatem   \n7 \\cdot (7k2 + k − 1)  jest wielokrotnością liczby  7. Stąd  7 \\cdot (7k2 + k − 1) + 5  przy dzieleniu \nprzez  7  daje resztę  5. To należało pokazać.",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 3",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-4",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "4",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Klient wpłacił do banku  30 000  zł  na lokatę dwuletnią. Po każdym rocznym okresie\noszczędzania bank dolicza odsetki w wysokości  7%  od kwoty bieżącego kapitału\nznajdującego się na lokacie.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPo dwóch latach oszczędzania łączna wartość doliczonych odsetek na tej lokacie (bez\nuwzględniania podatków) jest równa",
+    "options": [
+      "2100  zł",
+      "2247  zł",
+      "4200  zł",
+      "4347  zł"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 4",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-5",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "5",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log2  1\n8 + log2 4  jest równa",
+    "options": [
+      "(−1)",
+      "1\n2",
+      "2",
+      "5"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 5 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 5",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-6",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "6",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  (1 + \\sqrt5)\n2\n− (1 − \\sqrt5)\n2\njest równa",
+    "options": [
+      "0",
+      "(−10)",
+      "4\\sqrt5",
+      "2 + 2\\sqrt5"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 6",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-7",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "7",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  x  różnej od  0  i  2  wyrażenie  x2+x\n(x−2)2 \\cdot x−2\nx   jest równe",
+    "options": [
+      "x2+1\nx−2",
+      "x+1\n2",
+      "x2\n(x−2)2",
+      "x+1\nx−2"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 6 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 7",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-8",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "8",
+    "section": "Dział 3: Równania i Nierówności",
+    "topicId": "dzial-3",
+    "type": "OPEN_CALCULATION",
+    "content": "Rozwiąż nierówność\n𝒙(𝟐𝒙 − 𝟏) < 𝟐𝒙\nZapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I \nPrzekształcamy nierówność równoważnie: \n \nx(2x − 1) < 2x \n \n2x2 − x − 2x < 0 \n \n2x2 − 3x < 0 \n \n2x (x − 3\n2) < 0 \n \nOdczytujemy i zapisujemy pierwiastki trójmianu  2x (x −\n3\n2):  x = 0  lub  x =\n3\n2 . \nPodajemy zbiór rozwiązań nierówności:  (0,\n3\n2)  lub  x ∈ (0,\n3\n2), lub zaznaczamy zbiór \nrozwiązań na osi liczbowej \n \n \n \n \n \n \n \nInny sposób realizacji obliczenia pierwiastków trójmianu: \nPrzekształcamy równoważnie nierówność do postaci  2x2 − 3x < 0, obliczamy wyróżnik  Δ  \ntrójmianu  2x2 − 3x, a następnie pierwiastki tego trójmianu: \n \nΔ = (−3)2 − 4 \\cdot 2 \\cdot 0 = 9 \n \nx = −(−3) − 3\n2 \\cdot 2 = 0    lub    x = −(−3) + 3\n2 \\cdot 2 = 3\n2 \n \nSposób II \nRozpatrujemy trzy przypadki: \na)  x ∈ (−\\infty, 0) \n \nPrzekształcamy nierówność, otrzymując: \n \nx(2x − 1) < 2x   /: x \n \n2x − 1 > 2 \n \nx > 3\n2 \n \nNierówność  x(2x − 1) < 2x  nie ma rozwiązań w zbiorze  (−\\infty, 0). \n \nb)  x = 0 \n \nGdy  x = 0, to otrzymujemy nierówność  0 \\cdot (2 \\cdot 0 − 1) < 2 \\cdot 0, która jest fałszywa. Zatem \nliczba  0  nie jest rozwiązaniem nierówności  x(2x − 1) < 2x. \n \nc)  x ∈ (0, +\\infty) \n \nPrzekształcamy nierówność, otrzymując: \n \n0 \n x \n3\n2 \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 8 z 29 \nx(2x − 1) < 2x   /: x \n \n2x − 1 < 2 \n \nx < 3\n2 \n \nW zbiorze  (0, +\\infty)  rozwiązaniami nierówności  x(2x − 1) < 2x  są wszystkie liczby \nz przedziału  (0,\n3\n2). \nOstatecznie zbiorem wszystkich rozwiązań nierówności  x(2x − 1) < 2x  jest  (0,\n3\n2).",
+    "ckeTrap": "1. Jeżeli zdający, obliczając pierwiastki trójmianu  2x2 − 3x, popełni błąd (ale otrzyma dwa \nróżne pierwiastki) i konsekwentnie do popełnionego błędu zapisze zbiór rozwiązań \nnierówności, to otrzymuje 1 punkt za całe rozwiązanie.  \n2. Jeżeli zdający wyznacza pierwiastki trójmianu kwadratowego w przypadku, gdy błędnie \nobliczony przez zdającego wyróżnik  𝛥  jest ujemny, to otrzymuje 0 punktów za całe \nrozwiązanie. \n3. Jeżeli zdający rozpatruje inny niż podany w zadaniu trójmian kwadratowy, który nie wynika \nz błędu przekształcenia (np.  2x2 − x) i w konsekwencji rozpatruje inną nierówność (np.  \n2x2 − x < 0), to otrzymuje 0 punktów za całe rozwiązanie. \n4. Jeżeli zdający dzieli obie strony nierówności przez  x  (albo  2x) bez stosownego \nzałożenia, to otrzymuje 0 punktów za całe rozwiązanie. \n \nKryteria uwzględniające specyficzne trudności w uczeniu się matematyki \n \nJeśli zdający pomyli porządek liczb na osi liczbowej, np. zapisze zbiór rozwiązań nierówności \nw postaci  (\n3\n2 , 0)  (lub  x ∈ (\n3\n2 , 0) ), to otrzymuje 2 punkty. \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "source": "Matura Czerwiec 2023 • Zad. 8",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-9",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "9",
+    "section": "Dział 3: Równania i Nierówności",
+    "topicId": "dzial-3",
+    "type": "OPEN_CALCULATION",
+    "content": "Rozwiąż równanie\n𝒙𝟑 + 𝟒𝒙𝟐 − 𝟗𝒙 − 𝟑𝟔 = 𝟎\nZapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 3,
+    "isClosed": false,
+    "explanation": "Sposób I \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \nx3 + 4x2 − 9x − 36 = 0 \n \nx2(x + 4) − 9(x + 4) = 0 \n \n(x + 4)(x2 − 9) = 0 \n \n(x + 4)(x + 3)(x − 3) = 0 \n \nx + 4 = 0    lub    x + 3 = 0    lub    x − 3 = 0 \n \nx = −4    lub    x = −3   lub    x = 3 \n \nRozwiązaniami równania są liczby:  (−4), (−3), 3. \n \nSposób II \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \nx3 + 4x2 − 9x − 36 = 0 \n \nx(x2 − 9) + 4(x2 − 9) = 0 \n \n(x2 − 9)(x + 4) = 0 \n \n(x − 3)(x + 3)(x + 4) = 0 \n \nx − 3 = 0    lub    x + 3 = 0    lub    x + 4 = 0 \n \nx = 3    lub    x = −3   lub    x = −4 \n \nRozwiązaniami równania są liczby:  (−4), (−3), 3. \n \nSposób III \nObliczamy  W(3) = 0  i stwierdzamy, że liczba  3  jest pierwiastkiem wielomianu  \nW(x) = x3 + 4x2 − 9x − 36. \n \nZatem wielomian  W  jest podzielny przez dwumian  x − 3. Dzielimy wielomian  W  przez \ndwumian  x − 3  i otrzymujemy  \n \n(x3 + 4x2 − 9x − 36): (x − 3) = x2 + 7x + 12 \n \nZatem  W(x) = (x − 3)(x2 + 7x + 12). \n \nObliczamy pierwiastki trójmianu  x2 + 7x + 12: \n \nΔ = 72 − 4 \\cdot 1 \\cdot 12 = 1 \n \nx = −7 − 1\n2 \\cdot 1 = −4    oraz    x = −7 + 1\n2 \\cdot 1 = −3 \n \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 10 z 29 \nRozwiązaniami równania są liczby:  (−4), (−3), 3. \n \nSposób IV \nObliczamy  W(3) = 0  i stwierdzamy, że liczba  3  jest pierwiastkiem wielomianu  \nW(x) = x3 + 4x2 − 9x − 36. \n \nObliczamy  W(−3) = 0  i stwierdzamy, że liczba  (−3)  jest pierwiastkiem wielomianu  \nW(x) = x3 + 4x2 − 9x − 36. \n \nObliczamy  W(−4) = 0  i stwierdzamy, że liczba  (−4)  jest pierwiastkiem wielomianu  \nW(x) = x3 + 4x2 − 9x − 36. \n \nPonieważ  W  jest wielomianem stopnia trzeciego, więc ma co najwyżej trzy pierwiastki \nrzeczywiste. Oznacza to, że jedynymi rozwiązaniami równania  x3 + 4x2 − 9x − 36 = 0  są \nliczby:  (−4), (−3), 3.",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 9",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-10",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "10",
+    "section": "Dział 3: Równania i Nierówności",
+    "topicId": "dzial-3",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie  (x2−3x)(x+2)\nx2−4 = 0  w zbiorze liczb rzeczywistych ma dokładnie",
+    "options": [
+      "jedno rozwiązanie.",
+      "dwa rozwiązania.",
+      "trzy rozwiązania.",
+      "cztery rozwiązania."
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 11 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 10",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-11",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "11",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nW kartezjańskim układzie współrzędnych  (x, y)  wykresy funkcji liniowych\nf(x) = (2m + 3)x + 5  oraz  g(x) = −x  nie mają punktów wspólnych dla",
+    "options": [
+      "m = −2",
+      "m = −1",
+      "m = 1",
+      "m = 2"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 11",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-12",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "12",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  prosta o równaniu  y = ax + b  przechodzi\nprzez punkty  A = (−3, −1)  oraz  B = (4, 3).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWspółczynnik  a  w równaniu tej prostej jest równy",
+    "options": [
+      "(−4)",
+      "(− 1\n2)",
+      "2",
+      "4\n7"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 12 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 12",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-13_1",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "13.1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Uzupełnij tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną\nspośród oznaczonych literami A–F.\nDziedziną funkcji  f  jest zbiór\nZbiorem wartości funkcji  f  jest zbiór",
+    "options": [
+      "[−3, −1] \\cup [1, 3]",
+      "(−3, 3)",
+      "(−3, −1) \\cup (1, 3)",
+      "[−5, −1] \\cup [1, 5]\nE.  (−5, 5)\nF.  (−5, −1) \\cup (1, 5)"
+    ],
+    "correctAnswer": "FA",
+    "points": 2,
+    "isClosed": true,
+    "explanation": "wybranie dwóch poprawnych odpowiedzi. \n1 pkt – wybranie jednej poprawnej odpowiedzi. \n0 pkt – odpowiedzi niepoprawne albo brak odpowiedzi. \n \nRozwiązanie \nFA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 13.1",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-13_2",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "13.2",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "NUMERIC_INPUT",
+    "content": "Zapisz poniżej zbiór wszystkich rozwiązań nierówności  𝒇(𝒙) < −𝟏.\n................................ ................................ ................................ ................................ .................",
+    "options": [],
+    "correctAnswer": "(−5, −3)",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "rozwiązanie poprawne. \n0 pkt – rozwiązanie niepoprawne albo brak rozwiązania. \n \nKryteria uwzględniające specyficzne trudności w uczeniu się matematyki \n \nJeśli zdający zapisze zbiór rozwiązań nierówności w postaci  (−3, −5), to otrzymuje 1 punkt. \n \n \nRozwiązanie \n(−5, −3) \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 13 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 13.2",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-14",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "14",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "Funkcja kwadratowa  f  jest określona wzorem  f(x) = ax2 + bx + 1, gdzie  a  oraz  b  są\npewnymi liczbami rzeczywistymi, takimi, że  a < 0  i  b > 0. Na jednym z rysunków A–D\nprzedstawiono fragment wykresu tej funkcji w kartezjańskim układzie współrzędnych  (x, y).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFragment wykresu funkcji  f  przedstawiono na rysunku",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ramiona w górę (a > 0), wierzchołek w II ćwiartce (xw < 0, yw > 0)",
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "Ramiona w dół (a < 0), wierzchołek w II ćwiartce (xw < 0, yw > 0)",
+        "is_correct": false
+      },
+      {
+        "id": "C",
+        "text": "Ramiona w górę (a > 0), wierzchołek w I ćwiartce (xw > 0, yw > 0)",
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "Ramiona w dół (a < 0), wierzchołek w I ćwiartce (xw > 0), przecięcie z OY w punkcie (0, 1)",
+        "is_correct": true
+      }
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 14",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-15_1",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "15.1",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "NUMERIC_INPUT",
+    "content": "Chory przyjął jednorazowo lek ℒ w dawce  200  mg.\nOblicz, ile mg leku 𝓛 pozostanie w organizmie chorego po  𝟏𝟐  godzinach od momentu\nprzyjęcia dawki. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "Obliczamy  m(12) = 200 \\cdot (0,6)0,25\\cdot12 = 200 \\cdot (0,6)3 = 43,2  mg. \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 14 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 15.1",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-15_2",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "15.2",
+    "section": "Dział 7: Ciągi Liczbowe",
+    "topicId": "dzial-7",
+    "type": "NUMERIC_INPUT",
+    "content": "Liczby  m(2,5), m(4,5), m(6,5)  w podanej kolejności tworzą ciąg geometryczny.\nOblicz iloraz tego ciągu. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "Obliczamy iloraz  q  ciągu geometrycznego: \n \nq = m(4,5)\nm(2,5) = m0 \\cdot (0,6)0,25\\cdot4,5\nm0 \\cdot (0,6)0,25\\cdot2,5 = (0,6)0,25\\cdot(4,5−2,5) = (0,6)0,5 \n \nInna przykładowa realizacja: \n \nq = m(6,5)\nm(4,5) = m0 \\cdot (0,6)0,25\\cdot6,5\nm0 \\cdot (0,6)0,25\\cdot4,5 = (0,6)1,625\n(0,6)1,125 = (0,6)0,5",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 15.2",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-16",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "16",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Ciąg  (an)  jest określony wzorem  an = n−2\n3   dla każdej liczby naturalnej  n \\ge 1.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wyrazów tego ciągu mniejszych od  10  jest równa",
+    "options": [
+      "28",
+      "31",
+      "32",
+      "27"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 15 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 16",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-17",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "17",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Trzywyrazowy ciąg  (1, 4, a + 5)  jest arytmetyczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  a  jest równa",
+    "options": [
+      "0",
+      "7",
+      "2",
+      "11"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 17",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-18",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "18",
+    "section": "Dział 7: Ciągi Liczbowe",
+    "topicId": "dzial-7",
+    "type": "SINGLE_CHOICE",
+    "content": "Ciąg geometryczny  (an)  jest określony dla każdej liczby naturalnej  n \\ge 1. W tym ciągu\na1 = 3,75  oraz  a2 = −7,5.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nSuma trzech początkowych wyrazów ciągu  (an)  jest równa",
+    "options": [
+      "11,25",
+      "(−18,75)",
+      "15",
+      "(−15)"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 16 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 18",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-19",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "19",
+    "section": "Dział 8: Trygonometria",
+    "topicId": "dzial-8",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdego kąta ostrego  \\alpha  wyrażenie  cos \\alpha − cos \\alpha \\cdot sin2 \\alpha  jest równe",
+    "options": [
+      "cos3 \\alpha",
+      "sin2 \\alpha",
+      "1 − sin2 \\alpha",
+      "cos \\alpha"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 19",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-20",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "20",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "Dany jest trójkąt, którego kąty mają miary  30°, 45°  oraz  105°. Długości boków trójkąta,\nleżących naprzeciwko tych kątów są równe – odpowiednio –  a, b  oraz  c  (zobacz rysunek).\nUzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nPole tego trójkąta poprawnie określają wyrażenia oznaczone literami:\n......................  oraz  ......................  .",
+    "options": [
+      "\\sqrt2\n2 \\cdot a \\cdot c",
+      "1\n4 \\cdot a \\cdot c",
+      "\\sqrt2\n4 \\cdot a \\cdot c",
+      "\\sqrt3\n4 \\cdot b \\cdot c\nE.  1\n2 \\cdot b \\cdot c\nF.  1\n4 \\cdot b \\cdot c"
+    ],
+    "correctAnswer": "CF",
+    "points": 2,
+    "isClosed": true,
+    "explanation": "wybranie dwóch odpowiedzi, z których obie są poprawne: C i F. \n1 pkt – wybranie jednej lub dwóch odpowiedzi, z których jedna jest poprawna: C albo F. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nCF \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 17 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 20",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trójkąt o kątach $30^\\circ, 45^\\circ, 105^\\circ$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              50,
+              200
+            ],
+            [
+              380,
+              200
+            ],
+            [
+              170,
+              80
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.08)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            170,
+            80
+          ],
+          "to": [
+            170,
+            200
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 50,
+          "cy": 200,
+          "r": 35,
+          "startAngleDeg": 315,
+          "endAngleDeg": 360,
+          "color": "#10B981",
+          "label": "45°"
+        },
+        {
+          "cx": 380,
+          "cy": 200,
+          "r": 45,
+          "startAngleDeg": 180,
+          "endAngleDeg": 210,
+          "color": "#10B981",
+          "label": "30°"
+        },
+        {
+          "cx": 170,
+          "cy": 80,
+          "r": 28,
+          "startAngleDeg": 135,
+          "endAngleDeg": 240,
+          "color": "#FFB800",
+          "label": "105°"
+        }
+      ],
+      "points": [
+        {
+          "x": 50,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 170,
+          "y": 80,
+          "label": "C",
+          "labelPosition": "top",
+          "dot": "filled"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-21",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "21",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "Odcinek  AB  jest średnicą okręgu o środku  S. Prosta  k  jest styczna do tego okręgu\nw punkcie  A. Prosta  𝑙  przecina ten okrąg w punktach  B  i  C. Proste  k  i  𝑙  przecinają się\nw punkcie  D, przy czym  |BC| = 4  i  |CD| = 3  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOdległość punktu  A  od prostej  𝑙  jest równa",
+    "options": [
+      "7\n2",
+      "5",
+      "\\sqrt12",
+      "\\sqrt3 + 2"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 21",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-22",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "22",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "TRUE_FALSE",
+    "content": "W trapezie  ABCD  o podstawach  AB  i  CD  przekątne przecinają się w punkcie  𝐸  (zobacz\nrysunek).\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nTrójkąt  AB𝐸  jest podobny do trójkąta  CD𝐸. P F\nPole trójkąta  ACD  jest równe polu trójkąta  BCD. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "correctAnswer": "PP",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nPP \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 18 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 22",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trapez $ABCD$ o podstawach $AB$ i $CD$ z przekątnymi przecinającymi się w punkcie $E$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              60,
+              200
+            ],
+            [
+              380,
+              200
+            ],
+            [
+              280,
+              70
+            ],
+            [
+              140,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            60,
+            200
+          ],
+          "to": [
+            280,
+            70
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            380,
+            200
+          ],
+          "to": [
+            140,
+            70
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        }
+      ],
+      "points": [
+        {
+          "x": 60,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 280,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 140,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        },
+        {
+          "x": 210,
+          "y": 140,
+          "label": "E",
+          "labelPosition": "top",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-23",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "23",
+    "section": "Dział 1: Liczby Rzeczywiste",
+    "topicId": "dzial-1",
+    "type": "SINGLE_CHOICE",
+    "content": "Na łukach  AB  i  CD  okręgu są oparte kąty wpisane  ADB  i  DBC, takie, że  |∡ADB| = 20°\ni  |∡DBC| = 40°  (zobacz rysunek). Cięciwy  AC  i  BD  przecinają się w punkcie  K.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta  DKC  jest równa",
+    "options": [
+      "80°",
+      "60°",
+      "50°",
+      "40°"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 23",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-24",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "24",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "NUMERIC_INPUT",
+    "content": "Pole trójkąta równobocznego  𝑇1  jest równe\n(1,5)2\\cdot\\sqrt3\n4   . Pole trójkąta równobocznego  𝑇2\njest równe\n(4,5)2\\cdot\\sqrt3\n4  .\nDokończ zdanie tak, aby było prawdziwe. Wybierz odpowiedź A albo B oraz jej\nuzasadnienie 1., 2. albo 3.\nTrójkąt  𝑇2  jest podobny do trójkąta  𝑇1  w skali\nA. 3,\nponieważ\n1. każdy z tych trójkątów ma dokładnie trzy osie symetrii.\n2. pole trójkąta  𝑇2  jest  9  razy większe od pola\ntrójkąta  𝑇1 .\nB. 9, 3. bok trójkąta  𝑇2  jest o  3  dłuższy od boku\ntrójkąta  𝑇1 .",
+    "options": [],
+    "correctAnswer": "A2",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA2 \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 19 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 24",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-25",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "25",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
+    "type": "SINGLE_CHOICE",
+    "content": "Pole równoległoboku  ABCD  jest równe  40\\sqrt6. Bok  AD  tego równoległoboku ma\ndługość  10, a kąt  ABC  równoległoboku ma miarę  135°  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość boku  AB  jest równa",
+    "options": [
+      "8\\sqrt3",
+      "8\\sqrt2",
+      "16\\sqrt2",
+      "16\\sqrt3"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 25",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Równoległobok $ABCD$ o boku $|AD| = 10$ i polu $P = 40\\sqrt{6}$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              60,
+              190
+            ],
+            [
+              320,
+              190
+            ],
+            [
+              380,
+              70
+            ],
+            [
+              120,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            120,
+            70
+          ],
+          "to": [
+            120,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 60,
+          "cy": 190,
+          "r": 28,
+          "startAngleDeg": 295,
+          "endAngleDeg": 360,
+          "color": "#10B981",
+          "label": "α"
+        }
+      ],
+      "points": [
+        {
+          "x": 60,
+          "y": 190,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 320,
+          "y": 190,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 120,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": 75,
+          "y": 125,
+          "text": "10",
+          "color": "#FFB800"
+        }
+      ]
+    }
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-26",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "26",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "Funkcja liniowa  f  jest określona wzorem  f(x) = −x + 1. Funkcja  g  jest liniowa.\nW kartezjańskim układzie współrzędnych  (x, y)  wykres funkcji  g  przechodzi przez punkt\nP = (0, −1)  i jest prostopadły do wykresu funkcji  f.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWzorem funkcji  g  jest",
+    "options": [
+      "g(x) = x + 1",
+      "g(x) = −x − 1",
+      "g(x) = −x + 1",
+      "g(x) = x − 1"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 20 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 26",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-27",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "27",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  punkty  A = (−1, 5)  oraz  C = (3, −3)  są\nprzeciwległymi wierzchołkami kwadratu  ABCD.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole kwadratu  ABCD  jest równe",
+    "options": [
+      "8\\sqrt10",
+      "16\\sqrt5",
+      "40",
+      "80"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 27",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-28",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "28",
+    "section": "Dział 10: Geometria Analityczna",
+    "topicId": "dzial-10",
+    "type": "SINGLE_CHOICE",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są punkty  A = (1, 7)  oraz\nP = (3, 1). Punkt  P  dzieli odcinek  AB  tak, że  |AP| ∶ |PB| = 1 ∶ 3.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPunkt  B  ma współrzędne",
+    "options": [
+      "(9, −5)",
+      "(9, −17)",
+      "(7, −11)",
+      "(5, −5)"
+    ],
+    "correctAnswer": "B",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 21 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 28",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-29_1",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "29.1",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
+    "type": "NUMERIC_INPUT",
+    "content": "Uzupełnij zdanie. Wpisz odpowiednią wartość liczbową w wykropkowanym miejscu.\nObjętość tego ostrosłupa jest równa  ................................ .......... .",
+    "options": [],
+    "correctAnswer": "144",
+    "points": 1,
+    "isClosed": false,
+    "explanation": "rozwiązanie poprawne. \n0 pkt – rozwiązanie niepoprawne albo brak rozwiązania. \n \nRozwiązanie \n144",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 29.1",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-29_2",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "29.2",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTangens kąta nachylenia najdłuższej krawędzi bocznej tego ostrosłupa do płaszczyzny\npodstawy jest równy",
+    "options": [
+      "\\sqrt2",
+      "\\sqrt6\n3",
+      "\\sqrt2\n2",
+      "\\sqrt3\n3"
+    ],
+    "correctAnswer": "A",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 22 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 29.2",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-30",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "30",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
+    "type": "SINGLE_CHOICE",
+    "content": "Dany jest graniastosłup prawidłowy sześciokątny  ABCD𝐸𝐹A′B′C′D′𝐸′𝐹′, w którym krawędź\npodstawy ma długość  5. Przekątna  AD′  tego graniastosłupa jest nachylona do płaszczyzny\npodstawy pod kątem  45°  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole ściany bocznej tego graniastosłupa jest równe",
+    "options": [
+      "12,5",
+      "25",
+      "50",
+      "100"
+    ],
+    "correctAnswer": "C",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 30",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-31",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "31",
+    "section": "Dział 12: Kombinatoryka",
+    "topicId": "dzial-12",
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych trzycyfrowych o sumie cyfr równej  3  jest",
+    "options": [
+      "8",
+      "4",
+      "5",
+      "6"
+    ],
+    "correctAnswer": "D",
+    "points": 1,
+    "isClosed": true,
+    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\n Zasady oceniania rozwiązań zadań \nStrona 23 z 29",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 31",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-32",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "32",
+    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "topicId": "dzial-13",
+    "type": "OPEN_CALCULATION",
+    "content": "Ze zbioru ośmiu kolejnych liczb naturalnych – od  1  do  8  – losujemy kolejno bez zwracania\ndwa razy po jednej liczbie.\nNiech  A  oznacza zdarzenie polegające na tym, że suma wylosowanych liczb jest\ndzielnikiem liczby  8.\nOblicz prawdopodobieństwo zdarzenia  𝑨. Zapisz obliczenia.",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 2,
+    "isClosed": false,
+    "explanation": "Sposób I \nZdarzeniami elementarnymi są wszystkie uporządkowane pary liczb  (a, b), gdzie   \na, b ∈ {1, 2, 3, 4, 5, 6, 7, 8}  i  a \\ne b. \n \nLiczba wszystkich zdarzeń elementarnych jest równa  |Ω| = 8 \\cdot 7 = 56. \n \nZdarzeniu  A  sprzyjają następujące zdarzenia elementarne: \n \n(1, 3), (1, 7), (2, 6), (3, 1), (3, 5), (5, 3), (6, 2), (7, 1), \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 24 z 29 \n \nwięc  |A| = 8. \n \nPrawdopodobieństwo zdarzenia  A  jest równe:  P(A) =\n|A|\n|Ω| =\n8\n56 =\n1\n7 . \n \nSposób II \nZdarzeniami elementarnymi są wszystkie uporządkowane pary liczb  (a, b), gdzie   \na, b ∈ {1, 2, 3, 4, 5, 6, 7, 8}  i  a \\ne b. \nJest to model klasyczny. Budujemy tabelę ilustrującą sytuację opisaną w zadaniu. \n \n  I losowanie   \n  1 2 3 4 5 6 7 8 \nII losowanie \n1   +    +  \n2      +   \n3 +    +    \n4         \n5   +      \n 6  +       \n 7 +        \n 8         \n \n \nBiałe pola tabeli odpowiadają zdarzeniom elementarnym. Symbolem  „+”  oznaczono pola \nodpowiadające zdarzeniom elementarnym sprzyjającym zdarzeniu  A. \nWszystkich zdarzeń elementarnych w tym doświadczeniu jest  56. \nLiczba wszystkich zdarzeń elementarnych sprzyjających zdarzeniu  A  jest równa  8. \nStąd  P(A) =\n|A|\n|Ω| = 8\n56 = 1\n7 . \n \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "1. Jeżeli zdający zapisuje tylko liczby  8  oraz  56  i z rozwiązania nie wynika znaczenie tych \nliczb, to otrzymuje 0 punktów za całe rozwiązanie. \n2. Jeżeli zdający sporządzi jedynie tabelę o 64 (lub 56) pustych polach, to otrzymuje \n0 punktów za całe rozwiązanie.",
+    "source": "Matura Czerwiec 2023 • Zad. 32",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  },
+  {
+    "id": "matura-czerwiec-2023-zad-33",
+    "examId": "matura-czerwiec-2023",
+    "examName": "Matura Czerwiec 2023 (Formuła 2023)",
+    "taskNumber": "33",
+    "section": "Dział 14: Statystyka",
+    "topicId": "dzial-14",
+    "type": "OPEN_CALCULATION",
+    "content": "Działka ma kształt trapezu. Podstawy  AB  i  CD  tego trapezu mają długości  |AB| = 400 m\noraz  |CD| = 100 m. Wysokość trapezu jest równa  75 m, a jego kąty  DAB  i  ABC  są\nostre.\nZ działki postanowiono wydzielić plac w kształcie prostokąta z przeznaczeniem na parking.\nDwa z wierzchołków tego prostokąta mają leżeć na podstawie  AB  tego trapezu, a dwa\npozostałe – 𝐸  oraz  𝐹 – na ramionach  AD  i  BC  trapezu (zobacz rysunek).\nWyznacz długości boków prostokąta, dla których powierzchnia wydzielonego placu\nbędzie największa. Wyznacz tę największą powierzchnię.\nZapisz obliczenia.\nWskazówka:\nAby powiązać ze sobą wymiary prostokąta, skorzystaj z tego, że pole trapezu  ABCD  jest\nsumą pól trapezów  AB𝐹𝐸  oraz  𝐸𝐹CD:\nPABCD = PAB𝐹𝐸 + P𝐸𝐹CD\n100 m\nplac przeznaczony na parking\n75 m\n400 m\nB\n𝐸\n𝐹\nA\nD\nC\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "options": [],
+    "correctAnswer": "A",
+    "points": 4,
+    "isClosed": false,
+    "explanation": "Przyjmijmy oznaczenia jak na rysunku. \n \n \n \n \n \n \n \n \n \n \n \n \nZ porównania sumy pól trapezów  AB𝐹𝐸  i  𝐸𝐹CD  otrzymujemy \n \nPABCD = PAB𝐹𝐸 + P𝐸𝐹CD \n \n100 + 400\n2 \\cdot 75 = 400 + y\n2 \\cdot x + 100 + y\n2 \\cdot (75 − x) \n \nStąd otrzymujemy \ny = 400 − 4x \n \nZatem pole  P  placu wyraża się wzorem  P(x) = x \\cdot (400 − 4x)  dla  x ∈ (0,75]. \nKorzystamy z własności funkcji kwadratowej i obliczamy wartość  x, dla którego wyrażenie  \nx(400 − 4x)  osiąga wartość największą: \n \np = x1 + x2\n2 = 0 + 100\n2 = 50 \n \n400 m \n100 m \nA \n B \nC \nD \nx \n75 m \n y \n𝐸 \n 𝐹 \nWięcej arkuszy znajdziesz na stronie: arkusze.pl\nEgzamin maturalny z matematyki na poziomie podstawowym – termin dodatkowy 2023 r. \nStrona 26 z 29 \nPonieważ  50 ∈ (0, 75], więc funkcja  P  osiąga wartość największa dla argumentu  x = 50. \nWtedy  y = 200. Zatem plac o największej powierzchni ma wymiary  50 m x 200 m. \nPowierzchnia placu o największej powierzchni jest równa  50 m \\cdot 200 m = 10 000 m2 . \n  \nWięcej arkuszy znajdziesz na stronie: arkusze.pl",
+    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "source": "Matura Czerwiec 2023 • Zad. 33",
+    "year": 2023,
+    "session": "Czerwiec",
+    "isCke": true
+  }
+]

@@ -41,10 +41,14 @@ Thumbs.db
 
 # Local, machine-specific seed overrides (never the tracked seed/curriculum data)
 seed/*.local.json
+*_backup.json
+seed/**/*_backup.json
 
-# Archives
+# Archives & reference docs
 *.zip
 *.rar
+matemaks_tier_lista.html
+tier-lista-pp.pdf
 
 # One-off temporary scripts / codemods kept in the repository root only.
 # Anchored with a leading slash so nested, legitimate source files with the same

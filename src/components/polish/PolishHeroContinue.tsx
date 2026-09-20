@@ -59,10 +59,10 @@ export const PolishHeroContinue: React.FC<PolishHeroContinueProps> = ({
           );
 
           const pillarName = pillarId === 'pillar-1-jezyk-w-uzyciu'
-            ? 'Filar I: Język w użyciu'
+            ? 'Język w użyciu'
             : pillarId === 'pillar-2-lektury'
-              ? 'Filar II: Kanon Lektur i Epoki'
-              : 'Filar III: Warsztat Wypracowania';
+              ? 'Lektury i epoki'
+              : 'Wypracowanie';
 
           const pillarColor = pillarId === 'pillar-1-jezyk-w-uzyciu'
             ? { text: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/30' }

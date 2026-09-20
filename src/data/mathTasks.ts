@@ -102,6 +102,8 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
       id: optId,
       text: optText,
       content_latex: optText,
+      numberLine: opt.numberLine || undefined,
+      diagram: opt.diagram || undefined,
       is_correct: isOptMarked || (isSingle ? (optId === normCorrect || optId === task.correct_answer) : (task.correct_answers || []).includes(optId))
     };
   });
@@ -198,7 +200,9 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
     time: `${(task.points || 1) * 2} min`,
     tags: task.tags || [`${task.points || 1} pkt`],
     lessonId: lesson?.id,
-    plot: task.plot || undefined
+    numberLine: task.numberLine || undefined,
+    diagram: task.diagram || undefined,
+    plot: task.plot || task.diagram || undefined
   };
 }
 

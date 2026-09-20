@@ -99,21 +99,24 @@ function toFormulaSheet(raw: any, lesson?: LessonDocument | null): LessonFormula
  * Zwraca null, jeśli lekcja nie została jeszcze wczytana.
  */
 export function getLessonFormulaSheet(lessonId: string): LessonFormulaSheet | null {
-  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  const isPol = String(lessonId || '').startsWith('pol-');
+  const lesson = curriculumRepository.getCachedLesson(lessonId, isPol ? 'jezyk-polski' : 'matematyka-podstawowa');
   if (!lesson) return null;
   return toFormulaSheet((lesson as any).formulaSheet || (lesson as any).formula_sheet, lesson);
 }
 
 /** Pigułka wiedzy z dokumentu lekcji (wzbogacona o schematy wektorowe). */
 export function getLessonTheoryPill(lessonId: string): LessonTheoryPill | null {
-  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  const isPol = String(lessonId || '').startsWith('pol-');
+  const lesson = curriculumRepository.getCachedLesson(lessonId, isPol ? 'jezyk-polski' : 'matematyka-podstawowa');
   const raw = (lesson?.theory_pill as LessonTheoryPill) || null;
   return raw ? enrichTheoryPillWithVisual(raw, lessonId) : null;
 }
 
 /** Pula zadań lekcji z dokumentu lekcji w Firestore (wzbogacona o wykresy). */
 export function getLessonTaskPool(lessonId: string): PoolTask[] {
-  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  const isPol = String(lessonId || '').startsWith('pol-');
+  const lesson = curriculumRepository.getCachedLesson(lessonId, isPol ? 'jezyk-polski' : 'matematyka-podstawowa');
   return ((lesson?.tasks as unknown as PoolTask[]) || []).map(t => enrichTaskWithVisual(t, lessonId));
 }
 
@@ -143,7 +146,8 @@ export function drawSessionTasks(
   providedTasks?: any[],
   providedFormulaSheet?: any
 ): SessionTasksDrawResult {
-  const lesson = curriculumRepository.getCachedLesson(lessonId);
+  const isPol = String(lessonId || '').startsWith('pol-');
+  const lesson = curriculumRepository.getCachedLesson(lessonId, isPol ? 'jezyk-polski' : 'matematyka-podstawowa');
   const formulaSheet =
     toFormulaSheet(providedFormulaSheet, lesson) || toFormulaSheet(
       (lesson as any)?.formulaSheet || (lesson as any)?.formula_sheet,

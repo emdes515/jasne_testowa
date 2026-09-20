@@ -49,6 +49,8 @@ import { ScratchpadModal } from './ScratchpadModal';
 import { CkeFormulasModal } from './CkeFormulasModal';
 import { MaturaExamReview, MaturaTaskReviewItem, MaturaAiEvaluation } from './MaturaExamReview';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
+import { MathDiagram } from './MathDiagram';
+import { NumberLineDiagram } from './NumberLineDiagram';
 
 interface ExamTaskCardProps {
   task: MaturaTask;
@@ -107,6 +109,16 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                 {task.content}
               </Markdown>
             </div>
+            {Boolean((task as any).numberLine) && (
+              <div className="mt-3 flex justify-center">
+                <NumberLineDiagram data={(task as any).numberLine} height={64} maxWidth="360px" />
+              </div>
+            )}
+            {Boolean((task as any).diagram || (task as any).plot) && (
+              <div className="mt-3 flex justify-center">
+                <MathDiagram diagram={(task as any).diagram || (task as any).plot} />
+              </div>
+            )}
           </div>
           <div className="lg:col-span-6 grid grid-cols-1 gap-2.5">
             {task.options?.map((opt, optIdx) => {
@@ -135,9 +147,15 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                     <div className={`flex-1 overflow-x-auto text-sm leading-relaxed py-0.5 math-render ${
                       isSelected ? 'text-white font-medium' : 'text-slate-200'
                     }`}>
-                      <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                        {opt}
-                      </Markdown>
+                      {typeof opt === 'object' && (opt as any)?.numberLine ? (
+                        <NumberLineDiagram data={(opt as any).numberLine} />
+                      ) : typeof opt === 'object' && (opt as any)?.diagram ? (
+                        <MathDiagram diagram={(opt as any).diagram} />
+                      ) : (
+                        <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                          {typeof opt === 'object' ? ((opt as any).text || (opt as any).content_latex || '') : opt}
+                        </Markdown>
+                      )}
                     </div>
                   </div>
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
@@ -157,6 +175,16 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
               {task.content}
             </Markdown>
           </div>
+          {Boolean((task as any).numberLine) && (
+            <div className="mt-3 flex justify-center">
+              <NumberLineDiagram data={(task as any).numberLine} height={64} maxWidth="360px" />
+            </div>
+          )}
+          {Boolean((task as any).diagram || (task as any).plot) && (
+            <div className="mt-3 flex justify-center">
+              <MathDiagram diagram={(task as any).diagram || (task as any).plot} />
+            </div>
+          )}
 
           <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
             <div className="flex items-center gap-2">
@@ -165,9 +193,15 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                 Zadanie otwarte • Asynchroniczna ocena AI
               </span>
             </div>
-            <span className="text-[11px] text-text-muted hidden sm:inline">
-              Egzaminator AI ocenia rozwiązanie w tle
-            </span>
+            {(openAnswer?.text?.trim() || (openAnswer?.canvasUrl && openAnswer.canvasUrl.length > 50)) ? (
+              <span className="text-[11px] text-emerald-400 font-bold flex items-center gap-1">
+                ✓ Rozwiązanie zapisane
+              </span>
+            ) : (
+              <span className="text-[11px] text-text-muted hidden sm:inline">
+                Egzaminator AI ocenia rozwiązanie w tle
+              </span>
+            )}
           </div>
 
           <OpenTaskWorkspace
@@ -218,6 +252,7 @@ export interface MaturaSimulatorViewProps {
   completedTasks?: string[];
   onCompleteTask?: (taskId: string, points?: number) => void;
   onActiveSessionChange?: (isActive: boolean) => void;
+  initialView?: 'hub' | 'exam_setup' | 'full_exams' | 'topics_bank' | 'topic_detail' | 'exam' | 'exam_review' | 'maraton' | 'mistakes';
 }
 
 export function MaturaSimulatorView({
@@ -226,7 +261,8 @@ export function MaturaSimulatorView({
   onUpdateUserState,
   completedTasks = [],
   onCompleteTask,
-  onActiveSessionChange
+  onActiveSessionChange,
+  initialView = 'hub'
 }: MaturaSimulatorViewProps) {
   // Baza wszystkich zadań pobierana przez curriculumRepository (Cache-First z Firestore)
   const [tasks, setTasks] = useState<MaturaTask[]>([]);
@@ -245,7 +281,13 @@ export function MaturaSimulatorView({
   // 'mistakes' - Filar 5: Baza Błędów
   const [view, setView] = useState<
     'hub' | 'exam_setup' | 'full_exams' | 'topics_bank' | 'topic_detail' | 'exam' | 'exam_review' | 'maraton' | 'mistakes'
-  >('hub');
+  >(initialView || 'hub');
+
+  useEffect(() => {
+    if (initialView) {
+      setView(initialView);
+    }
+  }, [initialView]);
 
   // Powiadomienie rodzica (App.tsx) o wejściu w tryb aktywnego rozwiązywania zadań (wygaszenie dolnego docka nawigacji)
   useEffect(() => {
@@ -1441,24 +1483,56 @@ export function MaturaSimulatorView({
                 <div className="space-y-3">
                   {[
                     {
+                      examId: 'matura-maj-2024',
                       name: 'Matura Maj 2024',
                       badge: 'Sesja Główna 2024',
-                      desc: 'Oficjalny arkusz z maja 2024 r. Kompletny przekrój nowej formuły.',
-                      filter: (t: MaturaTask) => (t.source || '').includes('Maj 2024')
+                      desc: 'Oficjalny arkusz z maja 2024 r. Kompletny przekrój Formuły 2023.',
+                      filter: (t: MaturaTask) => (t.source || '').includes('Maj 2024') || (t as any).examId === 'matura-maj-2024'
                     },
                     {
+                      examId: 'matura-czerwiec-2024',
                       name: 'Matura Czerwiec 2024',
                       badge: 'Termin Dodatkowy 2024',
-                      desc: 'Oficjalny arkusz czerwcowy z dodatkowego terminu.',
-                      filter: (t: MaturaTask) => (t.source || '').includes('Czerwiec 2024')
+                      desc: 'Oficjalny arkusz czerwcowy z dodatkowego terminu 2024 r.',
+                      filter: (t: MaturaTask) => (t.source || '').includes('Czerwiec 2024') || (t as any).examId === 'matura-czerwiec-2024'
                     },
                     {
+                      examId: 'matura-sierpien-2024',
+                      name: 'Matura Sierpień 2024',
+                      badge: 'Sesja Poprawkowa 2024',
+                      desc: 'Oficjalny arkusz sierpniowy z sesji poprawkowej 2024 r.',
+                      filter: (t: MaturaTask) => (t.source || '').includes('Sierpień 2024') || (t.source || '').includes('Sierpien 2024') || (t as any).examId === 'matura-sierpien-2024'
+                    },
+                    {
+                      examId: 'matura-maj-2023',
+                      name: 'Matura Maj 2023',
+                      badge: 'Sesja Główna 2023',
+                      desc: 'Oficjalny arkusz inaugurujący nową Formułę 2023 z maja 2023 r.',
+                      filter: (t: MaturaTask) => (t.source || '').includes('Maj 2023') || (t as any).examId === 'matura-maj-2023'
+                    },
+                    {
+                      examId: 'matura-czerwiec-2023',
+                      name: 'Matura Czerwiec 2023',
+                      badge: 'Termin Dodatkowy 2023',
+                      desc: 'Oficjalny arkusz czerwcowy z dodatkowego terminu 2023 r.',
+                      filter: (t: MaturaTask) => (t.source || '').includes('Czerwiec 2023') || (t as any).examId === 'matura-czerwiec-2023'
+                    },
+                    {
+                      examId: 'matura-sierpien-2023',
+                      name: 'Matura Sierpień 2023',
+                      badge: 'Sesja Poprawkowa 2023',
+                      desc: 'Oficjalny arkusz sierpniowy z sesji poprawkowej 2023 r.',
+                      filter: (t: MaturaTask) => (t.source || '').includes('Sierpień 2023') || (t.source || '').includes('Sierpien 2023') || (t as any).examId === 'matura-sierpien-2023'
+                    },
+                    {
+                      examId: 'arkusz-pokazowy',
                       name: 'Oficjalny Arkusz Pokazowy CKE',
                       badge: 'Wzorcowy Arkusz CKE',
                       desc: 'Oryginalny arkusz demonstracyjny przygotowany przez ekspertów CKE.',
                       filter: (t: MaturaTask) => (t.source || '').toLowerCase().includes('pokazowy')
                     },
                     {
+                      examId: 'informator-maturalny',
                       name: 'Informator Maturalny CKE (Zestaw)',
                       badge: 'Standard Egzaminacyjny',
                       desc: 'Zbiór zadań z oficjalnego Informatora CKE o egzaminie maturalnym.',
@@ -1468,6 +1542,18 @@ export function MaturaSimulatorView({
                     const sheetTasks = tasks.filter(sheet.filter);
                     const count = sheetTasks.length;
                     const points = sheetTasks.reduce((sum, t) => sum + t.points, 0);
+
+                    const handleStart = async (timed: boolean) => {
+                      let selectedTasks = sheetTasks;
+                      if (selectedTasks.length === 0 && sheet.examId) {
+                        selectedTasks = await curriculumRepository.getCkeExamSheet(sheet.examId);
+                      }
+                      if (selectedTasks.length === 0) {
+                        alert('Brak zadań w wybranym arkuszu!');
+                        return;
+                      }
+                      startFullExam(sheet.name, selectedTasks, timed);
+                    };
 
                     return (
                       <div
@@ -1480,7 +1566,7 @@ export function MaturaSimulatorView({
                               {sheet.badge}
                             </span>
                             <span className="text-xs font-bold text-white">
-                              {count > 0 ? `${count} zadań` : '31 zadań'} • {points > 0 ? `${points} pkt` : '50 pkt'}
+                              {count > 0 ? `${count} zadań` : '35 zadań'} • {points > 0 ? `${points} pkt` : '46 pkt'}
                             </span>
                           </div>
                           <h3 className="font-bold text-base text-white">{sheet.name}</h3>
@@ -1489,15 +1575,17 @@ export function MaturaSimulatorView({
 
                         <div className="flex items-center gap-2 shrink-0">
                           <button
-                            onClick={() => startFullExam(sheet.name, sheetTasks.length ? sheetTasks : tasks.slice(0, 31), false)}
-                            className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs border border-white/10 transition-colors"
+                            type="button"
+                            onClick={() => void handleStart(false)}
+                            className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs border border-white/10 transition-colors cursor-pointer"
                           >
                             Tryb bezstresowy
                           </button>
 
                           <button
-                            onClick={() => startFullExam(sheet.name, sheetTasks.length ? sheetTasks : tasks.slice(0, 31), true)}
-                            className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs shadow-md transition-colors flex items-center gap-1.5"
+                            type="button"
+                            onClick={() => void handleStart(true)}
+                            className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs shadow-md transition-colors flex items-center gap-1.5 cursor-pointer"
                           >
                             <Clock size={13} />
                             <span>Zegar 180 min</span>
@@ -2020,6 +2108,17 @@ export function MaturaSimulatorView({
 
                 {renderMathContent(currentMaratonTask.content)}
 
+                {Boolean((currentMaratonTask as any).numberLine) && (
+                  <div className="mt-3 flex justify-center">
+                    <NumberLineDiagram data={(currentMaratonTask as any).numberLine} height={64} maxWidth="360px" />
+                  </div>
+                )}
+                {Boolean((currentMaratonTask as any).diagram || (currentMaratonTask as any).plot) && (
+                  <div className="mt-3 flex justify-center">
+                    <MathDiagram diagram={(currentMaratonTask as any).diagram || (currentMaratonTask as any).plot} />
+                  </div>
+                )}
+
                 {currentMaratonTask.isClosed && currentMaratonTask.options && (
                   <div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -2068,9 +2167,15 @@ export function MaturaSimulatorView({
                               <div className={`flex-1 overflow-x-auto text-sm leading-relaxed py-0.5 math-render ${
                                 isSelected ? 'text-white font-medium' : 'text-slate-200'
                               }`}>
-                                <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                  {opt}
-                                </Markdown>
+                                {typeof opt === 'object' && (opt as any)?.numberLine ? (
+                                  <NumberLineDiagram data={(opt as any).numberLine} />
+                                ) : typeof opt === 'object' && (opt as any)?.diagram ? (
+                                  <MathDiagram diagram={(opt as any).diagram} />
+                                ) : (
+                                  <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                    {typeof opt === 'object' ? ((opt as any).text || (opt as any).content_latex || '') : opt}
+                                  </Markdown>
+                                )}
                               </div>
                             </div>
 
@@ -2122,6 +2227,12 @@ export function MaturaSimulatorView({
                       onSaveCanvasData={setMaratonOpenCanvasUrl}
                       onSubmit={(canvasData) => handleCheckMaratonOpenWithTutor(canvasData)}
                       onAskAiTutor={(canvasData) => handleAskMaratonHint(canvasData)}
+                      isAiLoading={maratonIsScanning || maratonIsHintLoading}
+                      onRetry={() => {
+                        setMaratonSubmitted(false);
+                        setMaratonTutorEval(null);
+                        setMaratonSelfScore(null);
+                      }}
                       inputPlaceholder="Wprowadź swoje rozwiązanie krok po kroku lub użyj wirtualnej klawiatury..."
                       hideWhiteboard={false}
                       mode="math"
@@ -2151,11 +2262,21 @@ export function MaturaSimulatorView({
                       <motion.div
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="p-4 rounded-2xl bg-[#FFB800]/10 border border-[#FFB800]/30 space-y-2"
+                        className="p-4 rounded-2xl bg-[#FFB800]/10 border border-[#FFB800]/30 space-y-2 relative"
                       >
-                        <div className="flex items-center gap-2 text-xs font-bold text-[#FFB800] uppercase tracking-wider">
-                          <Lightbulb size={16} />
-                          <span>Wskazówka Egzaminatora AI</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-xs font-bold text-[#FFB800] uppercase tracking-wider">
+                            <Lightbulb size={16} />
+                            <span>Wskazówka Egzaminatora AI</span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setMaratonHintText(null)}
+                            className="p-1 rounded-lg text-amber-300/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                            title="Zamknij wskazówkę"
+                          >
+                            <X size={14} />
+                          </button>
                         </div>
                         <div className="text-xs sm:text-sm text-text-primary leading-relaxed math-render">
                           <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
@@ -2227,15 +2348,37 @@ export function MaturaSimulatorView({
                           </div>
                         </div>
 
-                        {/* Przycisk Dalej / Następne zadanie */}
-                        <button
-                          onClick={handleNextMaratonTask}
-                          className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0 whitespace-nowrap"
-                        >
-                          <span className="inline sm:hidden">Dalej</span>
-                          <span className="hidden sm:inline">Następne zadanie</span>
-                          <ChevronRight size={16} strokeWidth={3} />
-                        </button>
+                        {/* Przyciski Akcji Drawera */}
+                        <div className="flex items-center gap-2 shrink-0">
+                          {((!currentMaratonTask.isClosed && maratonTutorEval && maratonTutorEval.score < currentMaratonTask.points) ||
+                            (currentMaratonTask.isClosed && maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() !== maratonSelectedAnswer.trim().toUpperCase())) && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setMaratonSubmitted(false);
+                                setMaratonTutorEval(null);
+                                setMaratonDraftAnswer(null);
+                                setMaratonSelectedAnswer(null);
+                                setMaratonSelfScore(null);
+                                triggerHaptic('light');
+                              }}
+                              className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                              title="Popraw swoje rozwiązanie i sprawdź ponownie"
+                            >
+                              <RotateCcw size={14} />
+                              <span className="hidden sm:inline">Popraw</span>
+                            </button>
+                          )}
+
+                          <button
+                            onClick={handleNextMaratonTask}
+                            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0 whitespace-nowrap"
+                          >
+                            <span className="inline sm:hidden">Dalej</span>
+                            <span className="hidden sm:inline">Następne zadanie</span>
+                            <ChevronRight size={16} strokeWidth={3} />
+                          </button>
+                        </div>
                       </div>
 
                       {/* Treść Drawera: Pułapka Egzaminacyjna & Oficjalne Rozwiązanie */}
@@ -2277,10 +2420,32 @@ export function MaturaSimulatorView({
                         {/* Szczegółowa ocena Tutora AI w zadaniu otwartym */}
                         {!currentMaratonTask.isClosed && maratonTutorEval && (
                           <div className="p-4 rounded-2xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-2.5">
-                            <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
-                              <Sparkles size={14} />
-                              <span>Ocena Egzaminatora AI: {maratonTutorEval.score} / {currentMaratonTask.points} pkt</span>
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
+                                <Sparkles size={14} />
+                                <span>Ocena Egzaminatora AI: {maratonTutorEval.score} / {currentMaratonTask.points} pkt</span>
+                              </div>
+                              {maratonTutorEval.isPassed && (
+                                <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-lg border border-emerald-500/30">
+                                  Zaliczone CKE
+                                </span>
+                              )}
                             </div>
+
+                            {/* Odczytany zapis ucznia (transkrypcja KaTeX) */}
+                            {maratonTutorEval.transcription && (
+                              <div className="p-3 rounded-xl bg-[#070A0F]/80 border border-white/10 space-y-1">
+                                <div className="text-[10px] font-bold text-amber-300/80 uppercase tracking-wider">
+                                  Odczytany zapis ucznia:
+                                </div>
+                                <div className="text-xs text-white font-mono math-render overflow-x-auto">
+                                  <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                    {maratonTutorEval.transcription}
+                                  </Markdown>
+                                </div>
+                              </div>
+                            )}
+
                             {maratonTutorEval.mentorComment && (
                               <div className="text-xs sm:text-sm text-text-primary leading-relaxed math-render">
                                 <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
@@ -2298,7 +2463,7 @@ export function MaturaSimulatorView({
                             )}
                             {maratonTutorEval.errors && maratonTutorEval.errors.length > 0 && (
                               <div className="space-y-0.5">
-                                <span className="text-[11px] font-bold text-rose-400">Wskazówki:</span>
+                                <span className="text-[11px] font-bold text-rose-400">Wskazówki i braki:</span>
                                 <ul className="list-disc list-inside text-xs text-text-secondary">
                                   {maratonTutorEval.errors.map((e, idx) => <li key={idx}>{e}</li>)}
                                 </ul>

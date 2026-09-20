@@ -140,6 +140,9 @@ export const evaluateTaskLogic = async (body: any) => {
       parsedScore: parsed && typeof parsed.score === 'number' ? parsed.score : null,
     });
     if (parsed && typeof parsed.score === 'number') {
+      parsed.score = Math.min(maxPts, Math.max(0, Math.round(parsed.score)));
+      parsed.maxPoints = maxPts;
+      parsed.isPassed = typeof parsed.isPassed === 'boolean' ? parsed.isPassed : (parsed.score >= Math.ceil(maxPts * 0.5));
       if (!parsed.gradeTitle || !parsed.gradeTitle.includes('/')) {
         const detail = parsed.gradeTitle ? ` – ${parsed.gradeTitle}` : (
           parsed.score === maxPts

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
@@ -306,8 +306,9 @@ export const PolishEpochPassportModal: React.FC<PolishEpochPassportModalProps> =
                 </div>
               </div>
 
-              <div className="text-[11px] text-slate-400 italic">
-                💡 Wskazówka: {passport.ckePewniaki.ckeTip}
+              <div className="text-[11px] text-slate-400 italic flex items-center gap-1.5">
+                <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0 not-italic" />
+                <span>Wskazówka: {passport.ckePewniaki.ckeTip}</span>
               </div>
             </div>
           </div>

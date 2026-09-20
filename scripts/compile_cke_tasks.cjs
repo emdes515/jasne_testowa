@@ -136,34 +136,38 @@ function run() {
     let maturaCount = 0;
 
     matura.forEach((task, idx) => {
-      const taskId = task.id ? `matura-${task.id}` : `matura-task-${idx}`;
+      const taskId = task.id ? (task.id.startsWith('matura-') ? task.id : `matura-${task.id}`) : `matura-task-${idx}`;
       if (!seenIds.has(taskId)) {
         seenIds.add(taskId);
         maturaCount++;
 
-        const section = normalizeSection(task.section || 'Stereometria', '');
+        const section = task.section || normalizeSection('', task.topicId);
         const src = task.source || 'CKE • Oficjalny arkusz maturalny';
 
         compiledTasks.push({
           id: taskId,
+          examId: task.examId,
+          examName: task.examName,
+          taskNumber: task.taskNumber,
+          topicId: task.topicId || 'dzial-1',
           section: section,
-          type: task.isClosed ? 'SINGLE_CHOICE' : 'OPEN_GENERAL',
+          type: task.type || (task.isClosed ? 'SINGLE_CHOICE' : 'OPEN_GENERAL'),
           content: task.content || '',
           options: Array.isArray(task.options) ? task.options : [],
           correctAnswer: String(task.correctAnswer || 'A'),
           points: Number(task.points) || 1,
           isClosed: task.isClosed !== undefined ? task.isClosed : true,
           explanation: task.explanation || 'Oficjalny klucz odpowiedzi CKE.',
-          ckeTrap: task.explanation ? `Wymóg CKE: ${task.explanation}` : undefined,
+          ckeTrap: task.ckeTrap || (task.explanation ? `Wymóg CKE: ${task.explanation}` : undefined),
           source: src,
-          year: extractYear(src),
-          session: extractSession(src),
+          year: task.year || extractYear(src),
+          session: task.session || extractSession(src),
           isCke: true
         });
       }
     });
 
-    console.log(`✓ Dołączono ${maturaCount} zadań z dotychczasowego arkusza maturalnego.`);
+    console.log(`✓ Dołączono ${maturaCount} zadań z oficjalnych arkuszy maturalnych.`);
   }
 
   console.log(`\n🎉 ŁĄCZNIE SKONSOLIDOWANO: ${compiledTasks.length} ZADAŃ CKE!`);
