@@ -307,52 +307,18 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
       {/* Dedykowany Hero Formula Box (Wzór Główny – wycentrowany, 16-18px KaTeX ze złotym glow) */}
       {d.formulaBadge && (() => {
         const formulaText = d.formulaBadge.trim();
-        const hasDelimiters = formulaText.includes('$') || formulaText.includes('\\(') || formulaText.includes('\\[');
+        const hasDelimiters = (formulaText.startsWith('$') && formulaText.endsWith('$'))
+          || (formulaText.startsWith('\\(') && formulaText.endsWith('\\)'))
+          || (formulaText.startsWith('\\[') && formulaText.endsWith('\\]'));
         const formattedFormula = hasDelimiters ? formulaText : `$${formulaText}$`;
         return (
-          <div className="w-full flex justify-center items-center my-2.5">
-            <div className="w-full max-w-md px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-amber-500/[0.08] via-amber-500/[0.16] to-amber-500/[0.08] border border-amber-500/35 text-amber-200 font-bold text-base sm:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] flex items-center justify-center text-center">
+          <div className="w-full flex justify-center items-center my-2.5 px-1">
+            <div className="w-full max-w-md px-3 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-amber-500/[0.08] via-amber-500/[0.16] to-amber-500/[0.08] border border-amber-500/35 text-amber-200 font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] flex items-center justify-center text-center overflow-x-auto no-scrollbar">
               <MathRenderer content={formattedFormula} />
             </div>
           </div>
         );
       })()}
-
-      {/* Kafelki reguł / formuł renderowane w czystym HTML i KaTeX (idealna czytelność na mobile) */}
-      {d.cards && d.cards.length > 0 && (
-        <div className={`w-full grid gap-2.5 my-3 ${
-          d.cards.length === 1 ? 'grid-cols-1 max-w-md' : d.cards.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-3'
-        }`}>
-          {d.cards.map((c, idx) => (
-            <div
-              key={`card-${idx}`}
-              className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col gap-1.5 shadow-sm transition-all"
-              style={{ borderLeftColor: c.color || '#FFB800', borderLeftWidth: '3px' }}
-            >
-              {c.badge && (
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                  <MathRenderer content={c.badge} />
-                </span>
-              )}
-              {c.title && (
-                <span className="text-xs font-bold text-slate-200">
-                  <MathRenderer content={c.title} />
-                </span>
-              )}
-              {c.formula && (
-                <div className="py-1 text-sm sm:text-base font-bold text-amber-300 text-center bg-black/30 rounded-lg border border-white/5 my-0.5">
-                  <MathRenderer content={c.formula.includes('$') ? c.formula : `$${c.formula}$`} />
-                </div>
-              )}
-              {c.desc && (
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  <MathRenderer content={c.desc} />
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
 
       {hasSvgContent && (
       <div className="w-full flex justify-center items-center overflow-x-auto py-1">
@@ -838,6 +804,42 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
       </div>
       )}
 
+      {/* Kafelki reguł / formuł renderowane w czystym HTML i KaTeX (idealna czytelność na mobile) */}
+      {d.cards && d.cards.length > 0 && (
+        <div className={`w-full grid gap-2.5 my-3 ${
+          d.cards.length === 1 ? 'grid-cols-1 max-w-md' : d.cards.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-3'
+        }`}>
+          {d.cards.map((c, idx) => (
+            <div
+              key={`card-${idx}`}
+              className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col gap-1.5 shadow-sm transition-all"
+              style={{ borderLeftColor: c.color || '#FFB800', borderLeftWidth: '3px' }}
+            >
+              {c.badge && (
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  <MathRenderer content={c.badge} />
+                </span>
+              )}
+              {c.title && (
+                <span className="text-xs font-bold text-slate-200">
+                  <MathRenderer content={c.title} />
+                </span>
+              )}
+              {c.formula && (
+                <div className="py-1 text-sm sm:text-base font-bold text-amber-300 text-center bg-black/30 rounded-lg border border-white/5 my-0.5">
+                  <MathRenderer content={c.formula.includes('$') ? c.formula : `$${c.formula}$`} />
+                </div>
+              )}
+              {c.desc && (
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  <MathRenderer content={c.desc} />
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Pasek kluczowych parametrów i odczytów (Strict Zoning Architecture) */}
       {d.metrics && d.metrics.length > 0 && (
         <div className={`w-full grid gap-2.5 pt-3 pb-1 border-t border-white/5 mt-2 ${
@@ -866,19 +868,22 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
       )}
 
       {/* Podpis z wnioskiem dydaktycznym renderowany w KaTeX */}
-      {d.caption && (
-        <div className="mt-3 w-full p-3.5 sm:p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/20 text-xs sm:text-sm text-slate-200 flex items-start gap-3 shadow-inner">
-          <Lightbulb className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-          <div className="flex-1 leading-relaxed text-left space-y-1">
-            <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
-              Wniosek dydaktyczny
-            </div>
-            <div className="text-slate-200 font-normal">
-              <MathRenderer content={d.caption} />
+      {d.caption && (() => {
+        const cleanCaption = d.caption.replace(/^(złota reguła cke|wniosek dydaktyczny|pułapka cke|zasada cke|ważna reguła):\s*/i, '');
+        return (
+          <div className="mt-3 w-full p-3.5 sm:p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/20 text-xs sm:text-sm text-slate-200 flex items-start gap-3 shadow-inner">
+            <Lightbulb className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+            <div className="flex-1 leading-relaxed text-left space-y-1">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
+                Wniosek dydaktyczny
+              </div>
+              <div className="text-slate-200 font-normal">
+                <MathRenderer content={cleanCaption} />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 };

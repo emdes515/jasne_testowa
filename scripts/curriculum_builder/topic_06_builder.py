@@ -86,10 +86,10 @@ def build_topic_06():
         core_formulas=[
             {
                 'title': 'Reguła zerowania iloczynu',
-                'latex': 'A \\cdot B = 0 \\iff A = 0 \\quad \\text{lub} \\quad B = 0',
+                'latex': 'A \\cdot B = 0 \\implies A = 0 \\quad \\text{lub} \\quad B = 0',
                 'description': 'Iloczyn jest zerem, gdy co najmniej jeden czynnik jest zerem.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '(x - 2)(x + 5) = 0 \\implies x = 2 \\text{ lub } x = -5',
                 'mnemonic': 'Każdy nawias do zera osobno.',
                 'matura_tip': 'Nie wymnażaj nawiasów, gdy po prawej stronie jest 0!'
@@ -98,8 +98,8 @@ def build_topic_06():
                 'title': 'Czynnik x przed nawiasami',
                 'latex': 'x(ax + b) = 0 \\implies x = 0 \\quad \\text{lub} \\quad ax + b = 0',
                 'description': 'Samotny iks przed nawiasem zawsze daje rozwiązanie x = 0.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '3x(x - 4) = 0 \\implies x = 0 \\text{ lub } x = 4',
                 'mnemonic': 'Samotny iks to darmowe zero.',
                 'matura_tip': 'Nigdy nie dziel równania przez x!'
@@ -196,7 +196,7 @@ def build_topic_06():
                 'latex': 'x^2 - c = 0 \\implies x = \\sqrt{c} \\quad \\text{lub} \\quad x = -\\sqrt{c}',
                 'description': 'Zawsze dwa rozwiązania symetryczne.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 7',
                 'example': 'x^2 - 16 = 0 \\implies x = 4 \\text{ lub } x = -4',
                 'mnemonic': 'Kwadrat z minusem daje dwa pierwiastki.',
                 'matura_tip': 'Nie zgub ujemnego rozwiązania.'
@@ -303,8 +303,8 @@ def build_topic_06():
                 'title': 'Schemat grupowania wyrazów',
                 'latex': 'x^3 - ax^2 - bx + ab = x^2(x - a) - b(x - a) = (x - a)(x^2 - b) = 0',
                 'description': 'Doprowadzenie wielomianu do postaci iloczynowej.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'x^3 - 2x^2 - 9x + 18 = (x - 2)(x - 3)(x + 3) = 0',
                 'mnemonic': 'Para z iksem kwadrat, para ze stałą, wspólny nawias.',
                 'matura_tip': 'Gdy nawiasy w obu parach się różnią, natychmiast sprawdź znaki!'

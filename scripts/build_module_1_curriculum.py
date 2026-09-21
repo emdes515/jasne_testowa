@@ -27,6 +27,7 @@ from scripts.curriculum_builder.topic_07_builder import build_topic_07
 from scripts.curriculum_builder.topic_08_builder import build_topic_08
 from scripts.curriculum_builder.topic_09_builder import build_topic_09
 from scripts.curriculum_builder.topic_10_builder import build_topic_10
+from scripts.sanitize_curriculum_text import sanitize_topic_data
 
 def build_full_curriculum():
     print("=" * 60)
@@ -52,13 +53,14 @@ def build_full_curriculum():
     total_tasks = 0
 
     for idx, (name, builder) in enumerate(builders, start=1):
-        print(f"[{idx}/10] Budowanie: {name}...")
+        print(f"[{idx}/10] Budowanie i sanityzacja KaTeX: {name}...")
         topic_obj = builder()
+        topic_obj = sanitize_topic_data(topic_obj)
         lesson_count = len(topic_obj.get("lessons", []))
         task_count = sum(len(l.get("tasks", [])) for l in topic_obj.get("lessons", []))
         total_lessons += lesson_count
         total_tasks += task_count
-        print(f"       -> {lesson_count} lekcji, {task_count} zadań")
+        print(f"       -> {lesson_count} lekcji, {task_count} zadań (100% KaTeX)")
         topics.append(topic_obj)
 
     print("-" * 60)

@@ -46,7 +46,7 @@ def get_topic_07_visuals(l_idx):
         tab0 = {
             'type': 'INFOGRAPHIC',
             'title': 'Mnożenie "na krzyż": Rozwiązywanie proporcji',
-            'formulaBadge': '\\frac{A}{B} = \\frac{C}{D} \\iff A \\cdot D = B \\cdot C \\quad (B, D \\neq 0)',
+            'formulaBadge': '\\frac{A}{B} = \\frac{C}{D} \\implies A \\cdot D = B \\cdot C \\quad (B, D \\neq 0)',
             'caption': 'Mnożymy wyrażenia po przekątnych. Pamiętaj o BEZWZGLĘDNYM stawianiu nawiasów przy wielomianach!',
             'cards': [
                 {

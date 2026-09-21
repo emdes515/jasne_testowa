@@ -88,8 +88,8 @@ def build_topic_05():
                 'title': 'Dzielenie przez liczbę ujemną',
                 'latex': 'ax < b \\implies x > \\frac{b}{a} \\quad \\text{dla } a < 0',
                 'description': 'Zwrot nierówności zmienia się na przeciwny.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '-2x \\le 6 \\implies x \\ge -3',
                 'mnemonic': 'Minus przy iksie odwraca dzióbek.',
                 'matura_tip': 'Gdy na koniec masz -x, pomnóż przez -1 i natychmiast zmień znak.'
@@ -98,8 +98,8 @@ def build_topic_05():
                 'title': 'Dodawanie i odejmowanie stronami',
                 'latex': 'x + c < d \\implies x < d - c',
                 'description': 'Przenoszenie wyrazów nie wpływa na zwrot nierówności.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'x - 4 > 10 \\implies x > 14',
                 'mnemonic': 'Przenosisz ze zmianą znaku, ale zwrot zostaje ten sam.',
                 'matura_tip': 'Tylko mnożenie i dzielenie przez minus obraca dzióbek.'
@@ -193,20 +193,20 @@ def build_topic_05():
         core_formulas=[
             {
                 'title': 'Zapis przedziałowy nierówności słabej',
-                'latex': 'x \\ge a \\iff x \\in [a, +\\infty)',
+                'latex': 'x \\ge a \\implies x \\in [a, +\\infty)',
                 'description': 'Kółko zamalowane, nawias domknięty przy liczbie a.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'x \\ge -3 \\implies x \\in [-3, +\\infty)',
                 'mnemonic': 'Zamalowane kółko to ostry nawias.',
                 'matura_tip': 'Przy nieskończoności zawsze nawias okrągły.'
             },
             {
                 'title': 'Zapis przedziałowy nierówności ostrej',
-                'latex': 'x < b \\iff x \\in (-\\infty, b)',
+                'latex': 'x < b \\implies x \\in (-\\infty, b)',
                 'description': 'Kółko otwarte, nawias okrągły przy liczbie b.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'x < 5 \\implies x \\in (-\\infty, 5)',
                 'mnemonic': 'Kółko otwarte to okrągły nawias.',
                 'matura_tip': 'Brak kreski pod znakiem oznacza kółko otwarte.'
@@ -300,10 +300,10 @@ def build_topic_05():
         core_formulas=[
             {
                 'title': 'Część wspólna (koniunkcja warunków)',
-                'latex': 'x \\in A \\cap B \\iff (x \\in A \\text{ i } x \\in B)',
+                'latex': 'x \\in A \\cap B \\implies (x \\in A \\text{ oraz } x \\in B)',
                 'description': 'Klamra oznacza przecięcie przedziałów.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'x > 1 \\text{ i } x \\le 5 \\implies x \\in (1, 5]',
                 'mnemonic': 'Klamra to wspólny dach nad dwoma przedziałami.',
                 'matura_tip': 'Zaznacz oba przedziały różnymi kolorami lub kreskowaniem.'

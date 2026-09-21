@@ -89,7 +89,7 @@ def build_topic_03():
                 'latex': '|x| = \\begin{cases} x & \\text{dla } x \\ge 0 \\\\ -x & \\text{dla } x < 0 \\end{cases}',
                 'description': 'Z liczby nieujemnej zostawiamy samą liczbę, z ujemnej bierzemy liczbę przeciwną.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '|-7| = -(-7) = 7, \\quad |5| = 5',
                 'mnemonic': 'Wartość bezwzględna zjada minus.',
                 'matura_tip': 'Wynik z kresek wartości bezwzględnej nigdy nie może być liczbą ujemną.'
@@ -99,7 +99,7 @@ def build_topic_03():
                 'latex': '|x - a| = r \\implies x = a - r \\quad \\text{lub} \\quad x = a + r',
                 'description': 'Dwa rozwiązania symetryczne względem środka a w odległości r.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '|x - 3| = 5 \\implies x = 3 - 5 = -2 \\quad \\text{lub} \\quad x = 3 + 5 = 8',
                 'mnemonic': 'Środek to a, odległość to r: krok w lewo i krok w prawo.',
                 'matura_tip': 'Wzór ma w środku minus. Zapis |x + 2| oznacza |x - (-2)|, czyli środek w -2.'
@@ -164,7 +164,7 @@ def build_topic_03():
                 ('D', 'Środek $a = -2$, promień $r = 6$ (nierówność $|x + 2| < 6$)')
             ],
             correct_id='A',
-            explanation='Środek przedziału to średnia arytmetyczna końców: $a = \\frac{-5 + 1}{2} = -2$. Promień to połowa długości przedziału: $r = \\frac{1 - (-5)}{2} = 3$. Zatem nierówność to $|x - (-2)| < 3 \\iff |x + 2| < 3$.',
+            explanation='Środek przedziału to średnia arytmetyczna końców: $a = \\frac{-5 + 1}{2} = -2$. Promień to połowa długości przedziału: $r = \\frac{1 - (-5)}{2} = 3$. Zatem nierówność to $|x - (-2)| < 3 \\implies |x + 2| < 3$.',
             cke_trap='Długość przedziału to $1 - (-5) = 6$, więc promień to połowa, czyli 3 (nie 6!).'
         ),
         make_tf_task(
@@ -193,20 +193,20 @@ def build_topic_03():
         core_formulas=[
             {
                 'title': 'Nierówność ze znakiem mniejszości (wnętrze)',
-                'latex': '|x - a| < r \\iff a - r < x < a + r',
+                'latex': '|x - a| < r \\implies a - r < x < a + r',
                 'description': 'Zbiór rozwiązań to jeden przedział ograniczony skrajnymi wartościami.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '|x - 2| < 3 \\implies -1 < x < 5 \\implies x \\in (-1, 5)',
                 'mnemonic': 'Dzióbek w stronę wartości bezwzględnej zamyka cię w klatce.',
                 'matura_tip': 'Dla znaku <= nawiasy są domknięte: [a - r, a + r].'
             },
             {
                 'title': 'Nierówność ze znakiem większości (skrzydła zewnętrzne)',
-                'latex': '|x - a| \\ge r \\iff x \\le a - r \\quad \\text{lub} \\quad x \\ge a + r',
+                'latex': '|x - a| \\ge r \\implies x \\le a - r \\quad \\text{lub} \\quad x \\ge a + r',
                 'description': 'Zbiór rozwiązań to suma dwóch przedziałów nieskończonych.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '|x - 1| \\ge 4 \\implies x \\in (-\\infty, -3] \\cup [5, +\\infty)',
                 'mnemonic': 'Dzióbek w stronę liczby wyrzuca cię na zewnątrz.',
                 'matura_tip': 'Pomiędzy przedziałami zawsze stoi znak sumy zbiorów (U), nigdy część wspólna.'
@@ -303,7 +303,7 @@ def build_topic_03():
                 'latex': '\\sqrt{a^2} = |a|',
                 'description': 'Pierwiastek z kwadratu daje wartość bezwzględną z podstawy.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '\\sqrt{(-5)^2} = |-5| = 5, \\quad \\sqrt{x^2} = -x \\text{ dla } x < 0',
                 'mnemonic': 'Kwadrat z pierwiastkiem kasuje się w wartość bezwzględną.',
                 'matura_tip': 'Gdy w zadaniu jest założenie x < 0, to sqrt(x^2) = -x.'
@@ -313,7 +313,7 @@ def build_topic_03():
                 'latex': '|a - b| = \\begin{cases} a - b & \\text{gdy } a \\ge b \\\\ b - a & \\text{gdy } a < b \\end{cases}',
                 'description': 'Gdy odejmujesz większą od mniejszej, odwracasz kolejność odejmowania.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '|2 - \\sqrt{5}| = \\sqrt{5} - 2 \\quad (\\text{bo } \\sqrt{5} \\approx 2{,}24 > 2)',
                 'mnemonic': 'Większa liczba minus mniejsza liczba daje wynik dodatni.',
                 'matura_tip': 'Zawsze podstaw przybliżenie dziesiętne pierwiastka na brudnopisie.'

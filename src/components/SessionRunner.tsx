@@ -226,6 +226,29 @@ function renderMicroContent(rawText?: string | any) {
   );
 }
 
+export function resolveTrueFalseTarget(task: any): 'P' | 'F' {
+  const raw = String(task?.correct_answer || task?.correctAnswer || task?.statements?.[0]?.correct || '').trim().toUpperCase();
+  if (raw.startsWith('P') || raw.startsWith('T') || raw === 'TRUE' || raw === 'PRAWDA') return 'P';
+  if (raw.startsWith('F') || raw === 'FALSE' || raw === 'FAŁSZ') return 'F';
+  if (raw === 'A') {
+    const optA = task?.options?.find((o: any) => o.id === 'A');
+    if (optA && (optA.text?.toUpperCase().includes('FAŁSZ') || optA.text?.toUpperCase().includes('FALSE'))) return 'F';
+    return 'P';
+  }
+  if (raw === 'B') {
+    const optB = task?.options?.find((o: any) => o.id === 'B');
+    if (optB && (optB.text?.toUpperCase().includes('PRAWDA') || optB.text?.toUpperCase().includes('TRUE'))) return 'P';
+    return 'F';
+  }
+  const correctOpt = task?.options?.find((o: any) => o.is_correct);
+  if (correctOpt) {
+    const txt = String(correctOpt.text || correctOpt.id || '').toUpperCase();
+    if (txt.includes('PRAWDA') || txt.includes('TRUE') || txt === 'P' || correctOpt.id === 'A') return 'P';
+    if (txt.includes('FAŁSZ') || txt.includes('FALSE') || txt === 'F' || correctOpt.id === 'B') return 'F';
+  }
+  return 'P';
+}
+
 /**
  * Sanitizes and cleans up examiner tips, replacing sensationalist phrases (e.g. ALL CAPS "ŻELAZNY PEWNIAK")
  * with a professional, mentoring tone.
@@ -1033,6 +1056,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     if (taskAreaRef.current) {
       taskAreaRef.current.scrollTop = 0;
     }
+    const timer = setTimeout(() => {
+      if (taskAreaRef.current) {
+        taskAreaRef.current.scrollTop = 0;
+      }
+    }, 50);
+    return () => clearTimeout(timer);
   }, [currentStep, theorySubStep, currentQueueIndex]);
 
   // Automatyczne płynne przewinięcie do wyników oceny tutora przy zadaniach otwartych
@@ -1148,6 +1177,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const moduleBadgeName = useMemo(() => {
     // 1. Jeśli to matematyka, priorytetowo używaj nazwy działu matematyki
     if (isMathExplicit) {
+      if ((sessionData as any)?.short_title) {
+        return String((sessionData as any).short_title).trim();
+      }
       if ((sessionData as any)?.topicTitle) {
         return String((sessionData as any).topicTitle).replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '').trim();
       }
@@ -1160,25 +1192,25 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       if (mMatch) {
         const num = mMatch[1];
         const mathTopicMap: Record<string, string> = {
-          '1': 'Liczby Rzeczywiste',
-          '2': 'Wyrażenia Algebraiczne',
-          '3': 'Równania i Nierówności',
-          '4': 'Układy Równań',
-          '5': 'Funkcje',
-          '6': 'Ciągi Liczbowe',
-          '7': 'Trygonometria',
-          '8': 'Planimetria',
-          '9': 'Geometria Analityczna',
-          '10': 'Stereometria',
-          '11': 'Kombinatoryka',
-          '12': 'Prawdopodobieństwo',
-          '13': 'Statystyka',
-          '14': 'Optymalizacja',
-          '15': 'Zadania Przekrojowe'
+          '1': 'Potęgi i pierwiastki',
+          '2': 'Logarytmy',
+          '3': 'Wartość bezwzględna',
+          '4': 'Wzory skróconego mnożenia i algebra',
+          '5': 'Nierówności liniowe',
+          '6': 'Równania w postaci iloczynowej',
+          '7': 'Równania i wyrażenia wymierne',
+          '8': 'Nierówności kwadratowe',
+          '9': 'Wykres funkcji i odczyt własności',
+          '10': 'Funkcja liniowa i jej własności',
+          '11': 'Trygonometria',
+          '12': 'Planimetria',
+          '13': 'Geometria analityczna',
+          '14': 'Stereometria',
+          '15': 'Kombinatoryka i prawdopodobieństwo'
         };
         if (mathTopicMap[num]) return mathTopicMap[num];
       }
-      return 'Liczby Rzeczywiste';
+      return 'Potęgi i pierwiastki';
     }
 
     // 2. Jeśli to język polski
@@ -1421,9 +1453,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       if (statements.length > 1) {
         return statements.map((s: any, idx: number) => `${idx + 1}:${s.correct}`).join(', ');
       }
-      const rawTarget = String(currentTask?.correct_answer || currentTask?.correctAnswer || currentTask?.statements?.[0]?.correct || 'P').trim().toUpperCase();
-      const normTarget = (rawTarget.startsWith('P') || rawTarget.startsWith('T') || rawTarget === 'TRUE') ? 'P (Prawda)' : 'F (Fałsz)';
-      return normTarget;
+      const normTarget = resolveTrueFalseTarget(currentTask);
+      return normTarget === 'P' ? 'P (Prawda)' : 'F (Fałsz)';
     }
     if (isTwoPartTask) {
       return String(currentTask?.correctAnswer || currentTask?.correct_answer || '');
@@ -1949,9 +1980,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       } else {
         const userChoice = selectedOption || tfSelections['single'];
         if (!userChoice) return;
-        const rawTarget = String(currentTask?.correct_answer || currentTask?.correctAnswer || currentTask?.statements?.[0]?.correct || 'P').trim().toUpperCase();
-        const normTarget = (rawTarget.startsWith('P') || rawTarget.startsWith('T') || rawTarget === 'TRUE') ? 'P' : 'F';
-        const normUser = (userChoice.startsWith('P') || userChoice.startsWith('T') || userChoice === 'TRUE') ? 'P' : 'F';
+        const normTarget = resolveTrueFalseTarget(currentTask);
+        const normUser = (userChoice.startsWith('P') || userChoice.startsWith('T') || userChoice === 'TRUE' || userChoice === 'A') ? 'P' : 'F';
         correct = normUser === normTarget;
       }
     } else if (isTwoPartTask) {
@@ -2789,11 +2819,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {lessonPillLabel || 'LEKCJA'}
                 </span>
                 {moduleBadgeName && (
-                  <span className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap shrink-0 shadow-sm ${
-                    isPolishSession
-                      ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
-                      : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
-                  }`}>
+                  <span 
+                    title={moduleBadgeName}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-semibold truncate max-w-[125px] xs:max-w-[180px] sm:max-w-xs md:max-w-none shadow-sm ${
+                      isPolishSession
+                        ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
+                        : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
+                    }`}
+                  >
                     {moduleBadgeName}
                   </span>
                 )}
@@ -2883,7 +2916,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           </div>
 
           {/* Prawa strona: Kapsułki gracza (Serca + Monety + ewentualnie Karta wzorów) w jednym rzędzie */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 shrink-0 ml-auto">
             {/* Hearts Indicator Pill with Shockwave Arrival Effect */}
             <div className="relative shrink-0">
               {/* Expanding Shockwave Ring upon Heart Impact */}
@@ -4711,8 +4744,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   ].map((item) => {
                     const userChoice = selectedOption || tfSelections['single'];
                     const isOptSelected = userChoice === item.id;
-                    const rawTarget = String(currentTask?.correct_answer || currentTask?.correctAnswer || currentTask?.statements?.[0]?.correct || 'P').trim().toUpperCase();
-                    const normTarget = (rawTarget.startsWith('P') || rawTarget.startsWith('T') || rawTarget === 'TRUE') ? 'P' : 'F';
+                    const normTarget = resolveTrueFalseTarget(currentTask);
                     const isThisTheCorrectAnswer = normTarget === item.id;
 
                     let cardClass = 'group relative flex flex-col p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left select-none ';

@@ -16,7 +16,7 @@ def get_topic_03_visuals(l_idx):
         # L1.3.1: Definicja geometryczna na osi liczbowej (odległość |x - a|)
         tab0 = make_geometry_diagram(
             title='Wartość bezwzględna: Odległość na osi liczbowej',
-            badge='|x - a| \\le r \\iff x \\in \\langle a - r,\\; a + r \\rangle',
+            badge='|x - a| \\le r \\implies x \\in [a - r,\\; a + r]',
             caption='Wyrażenie |x - a| oznacza odległość liczby x od punktu a na osi liczbowej. Znak minus w środku oznacza środek w punkcie a!',
             segments=[
                 {'from': [40, 120], 'to': [480, 120], 'color': C_SLATE, 'strokeWidth': 2},

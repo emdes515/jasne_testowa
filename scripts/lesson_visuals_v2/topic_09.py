@@ -48,7 +48,7 @@ def get_topic_09_visuals(l_idx):
         # L1.9.2: Odczyt miejsc zerowych f(x) = 0 oraz punktu przecięcia z osią OY
         tab0 = make_plot_diagram(
             title='Miejsca zerowe i punkt przecięcia z osią OY',
-            badge='f(x) = 0 \\iff (x, 0) \\in OX,\\quad (0, b) = (0, f(0)) \\in OY',
+            badge='f(x) = 0 \\implies x \\in OX;\\quad P = (0, f(0)) \\in OY',
             caption='Miejsce zerowe to punkt na poziomej osi OX, gdzie wykres ją przecina. Punkt (0, f(0)) to punkt na pionowej osi OY.',
             curves=[
                 {'path': 'M 80 60 Q 200 240 320 60', 'color': C_PRIMARY, 'strokeWidth': 2.5}
@@ -58,17 +58,15 @@ def get_topic_09_visuals(l_idx):
                 {'from': [200, 30], 'to': [200, 240], 'color': C_SLATE, 'strokeWidth': 2}
             ],
             points=[
-                {'x': 130, 'y': 150, 'color': C_SUCCESS, 'label': 'x₁ = -2'},
-                {'x': 270, 'y': 150, 'color': C_SUCCESS, 'label': 'x₂ = 4'},
-                {'x': 200, 'y': 200, 'color': C_SKY, 'label': '(0, -3)'}
+                {'x': 130, 'y': 150, 'color': C_SUCCESS, 'label': 'x₁ = -2', 'labelPosition': 'top'},
+                {'x': 270, 'y': 150, 'color': C_SUCCESS, 'label': 'x₂ = 4', 'labelPosition': 'top'},
+                {'x': 200, 'y': 200, 'color': C_SKY, 'label': '(0, -3)', 'labelPosition': 'right'}
             ],
             labels=[
-                {'x': 130, 'y': 130, 'text': 'Miejsce zerowe: -2', 'color': C_SUCCESS, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 270, 'y': 130, 'text': 'Miejsce zerowe: 4', 'color': C_SUCCESS, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 260, 'y': 225, 'text': 'Przecięcie z OY: f(0) = -3', 'color': C_SKY, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
+                {'x': 260, 'y': 235, 'text': 'Przecięcie z OY: f(0) = -3', 'color': C_SKY, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
             ],
             metrics=[
-                {'label': 'Miejsca zerowe', 'value': 'Wypisujesz same $x$: $x = -2, x = 4$', 'color': C_SUCCESS},
+                {'label': 'Miejsca zerowe', 'value': 'Podajesz wyłącznie argumenty $x$: $x = -2, x = 4$', 'color': C_SUCCESS},
                 {'label': 'Przecięcie z $OY$', 'value': 'Zawsze dla $x = 0$: punkt $(0, f(0))$', 'color': C_SKY},
                 {'label': 'Puste kółko na $OX$', 'value': 'NIE jest miejscem zerowym!', 'color': C_DANGER}
             ]
@@ -79,7 +77,7 @@ def get_topic_09_visuals(l_idx):
         # L1.9.3: Odczytywanie przedziałów monotoniczności (gdzie rośnie, gdzie maleje)
         tab0 = make_plot_diagram(
             title='Monotoniczność funkcji: Idziemy "pod górkę" i "z górki"',
-            badge='f \\nearrow \\iff x_1 < x_2 \\implies f(x_1) < f(x_2)',
+            badge='f \\nearrow \\implies x_1 < x_2 \\implies f(x_1) < f(x_2)',
             caption='Monotoniczność śledzimy ZAWSZE od lewej do prawej! "Pod górkę" oznacza rosnącą, "z górki" malejącą. Przedziały monotoniczności podajemy DLA ARGUMENTÓW X na osi OX!',
             curves=[
                 {'path': 'M 80 180 L 180 80 L 320 220 L 420 220', 'color': C_PRIMARY, 'strokeWidth': 3}
@@ -108,7 +106,7 @@ def get_topic_09_visuals(l_idx):
         # L1.9.4: Liczba rozwiązań równania f(x) = m (przecinanie poziomą prostą y = m)
         tab0 = make_plot_diagram(
             title='Liczba rozwiązań równania f(x) = m: Pozioma prosta',
-            badge='f(x) = m \\iff \\text{Punkty wspólne wykresu } f \\text{ i prostej } y = m',
+            badge='f(x) = m \\implies \\text{Punkty wspólne wykresu } f \\text{ i prostej } y = m',
             caption='Aby ustalić ile rozwiązań ma równanie f(x) = m, kładziemy linijkę POZIOMO na wysokości y = m i liczymy ile razy linijka przetnie wykres.',
             curves=[
                 {'path': 'M 80 80 Q 180 240 280 80 T 420 220', 'color': C_PRIMARY, 'strokeWidth': 2.5}

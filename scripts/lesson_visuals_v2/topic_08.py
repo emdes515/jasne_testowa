@@ -41,18 +41,18 @@ def get_topic_08_visuals(l_idx):
         # L1.8.2: Szkic paraboli: zwrot ramion (a > 0 uśmiechnięta, a < 0 smutna)
         tab0 = make_plot_diagram(
             title='Szkic paraboli: Znak współczynnika a',
-            badge='a > 0 \\implies \\cup \\quad (\\text{ramiona w górę}),\\quad a < 0 \\implies \\cap \\quad (\\text{ramiona w dół})',
-            caption='O zwrocie ramion paraboli decyduje WYŁĄCZNIE znak współczynnika a stojącego przy x^2! Delta decyduje tylko o punktach przecięcia z osią OX.',
+            badge='\\begin{cases} a > 0 \\implies \\text{ramiona w górę } (\\cup) \\\\[2pt] a < 0 \\implies \\text{ramiona w dół } (\\cap) \\end{cases}',
+            caption='O zwrocie ramion paraboli decyduje WYŁĄCZNIE znak współczynnika $a$ stojącego przy $x^2$! Delta decyduje tylko o liczbie punktów przecięcia z osią $OX$.',
             curves=[
-                {'path': 'M 60 70 Q 150 240 240 70', 'color': C_SUCCESS, 'strokeWidth': 3, 'label': 'a > 0: Uśmiechnięta'},
-                {'path': 'M 280 230 Q 370 60 460 230', 'color': C_DANGER, 'strokeWidth': 3, 'label': 'a < 0: Smutna'}
+                {'path': 'M 60 70 Q 150 240 240 70', 'color': C_SUCCESS, 'strokeWidth': 3},
+                {'path': 'M 280 230 Q 370 60 460 230', 'color': C_DANGER, 'strokeWidth': 3}
             ],
             segments=[
                 {'from': [30, 160], 'to': [490, 160], 'color': C_SLATE, 'strokeWidth': 2}
             ],
             labels=[
-                {'x': 150, 'y': 255, 'text': 'a > 0: "UŚMIECHNIĘTA"', 'color': C_SUCCESS, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 370, 'y': 255, 'text': 'a < 0: "SMUTNA"', 'color': C_DANGER, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
+                {'x': 150, 'y': 255, 'text': 'a > 0: Ramiona w górę (Uśmiechnięta)', 'color': C_SUCCESS, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'},
+                {'x': 370, 'y': 255, 'text': 'a < 0: Ramiona w dół (Smutna)', 'color': C_DANGER, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
             ],
             metrics=[
                 {'label': '$a > 0$', 'value': 'Ramiona w górę: minimum w wierzchołku', 'color': C_SUCCESS},
@@ -66,8 +66,8 @@ def get_topic_08_visuals(l_idx):
         # L1.8.3: Odczytywanie przedziału rozwiązań nierówności (> 0, < 0, ≥ 0, ≤ 0)
         tab0 = make_plot_diagram(
             title='Odczyt stref nierówności: Wartości dodatnie (+) i ujemne (-)',
-            badge='f(x) > 0 \\implies \\text{NAD OSIĄ},\\quad f(x) < 0 \\implies \\text{POD OSIĄ}',
-            caption='Wartości funkcji to wysokość wykresu (y). Nad osią OX funkcja przyjmuje wartości dodatnie, pod osią wartości ujemne.',
+            badge='\\begin{cases} f(x) > 0 \\implies \\text{wykres NAD osią } OX \\; (+) \\\\[2pt] f(x) < 0 \\implies \\text{wykres POD osią } OX \\; (-) \\end{cases}',
+            caption='Wartości funkcji to wysokość wykresu ($y$). Nad osią $OX$ funkcja przyjmuje wartości dodatnie, pod osią wartości ujemne.',
             curves=[
                 {'path': 'M 60 70 Q 200 250 340 70', 'color': C_PRIMARY, 'strokeWidth': 2.5}
             ],

@@ -90,30 +90,30 @@ def build_topic_01():
                 'latex': 'a^m \\cdot a^n = a^{m+n}',
                 'description': 'Podstawa bez zmian, wykładniki dodajemy.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
-                'example': '2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128',
+                'cke_page': 'str. 4',
+                'example': '$2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128$',
                 'mnemonic': 'Mnożenie liczb na dole to dodawanie na górze.',
-                'matura_tip': 'Nie mnóż podstaw ze sobą (2 · 2 to nadal podstawa 2, nie 4!).'
+                'matura_tip': 'Nie mnóż podstaw ze sobą ($2 \\cdot 2$ to nadal podstawa $2$, nie $4$!).'
             },
             {
                 'title': 'Iloraz potęg o tej samej podstawie',
                 'latex': '\\frac{a^m}{a^n} = a^{m-n}',
                 'description': 'Podstawa bez zmian, wykładnik mianownika odejmujemy od licznika.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
-                'example': '\\frac{5^8}{5^6} = 5^{8-6} = 5^2 = 25',
+                'cke_page': 'str. 4',
+                'example': '$\\frac{5^8}{5^6} = 5^{8-6} = 5^2 = 25$',
                 'mnemonic': 'Kreska ułamkowa działa jak minus między wykładnikami.',
-                'matura_tip': 'Odejmuj od góry dół. Gdy na dole jest minus, pamiętaj: m - (-n) = m + n.'
+                'matura_tip': 'Odejmuj od góry dół. Gdy na dole jest minus, pamiętaj: $m - (-n) = m + n$.'
             },
             {
                 'title': 'Potęgowanie potęgi',
                 'latex': '(a^m)^n = a^{m \\cdot n}',
                 'description': 'Nawias oddzielający wykładniki oznacza ich wymnożenie.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
-                'example': '(3^2)^4 = 3^{2 \\cdot 4} = 3^8 = 6561',
+                'cke_page': 'str. 4',
+                'example': '$(3^2)^4 = 3^{2 \\cdot 4} = 3^8 = 6561$',
                 'mnemonic': 'Nawias mnoży wykładniki.',
-                'matura_tip': 'Rozróżniaj (a^2)^3 = a^6 od a^(2^3) = a^8.'
+                'matura_tip': 'Rozróżniaj $(a^2)^3 = a^6$ od $a^{(2^3)} = a^8$.'
             }
         ],
         worked_example={
@@ -193,7 +193,7 @@ def build_topic_01():
                 'latex': '\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b},\\quad \\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}}',
                 'description': 'Pierwiastek z iloczynu to iloczyn pierwiastków (dla a, b >= 0).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '\\sqrt{50} = \\sqrt{25 \\cdot 2} = \\sqrt{25} \\cdot \\sqrt{2} = 5\\sqrt{2}',
                 'mnemonic': 'Szukaj w liczbie pełnych kwadratów: 4, 9, 16, 25, 36, 49...',
                 'matura_tip': 'Zawsze szukaj NAJWIĘKSZEGO kwadratu dzielącego liczbę podpierwiastkową.'
@@ -300,7 +300,7 @@ def build_topic_01():
                 'latex': '\\frac{c}{\\sqrt{a} - b} = \\frac{c(\\sqrt{a} + b)}{a - b^2}',
                 'description': 'Mnożysz przez wyrażenie z przeciwnym znakiem.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3 (wzory skróconego mnożenia)',
+                'cke_page': 'str. 7 (wzory skróconego mnożenia)',
                 'example': '\\frac{2}{\\sqrt{3} - 1} = \\frac{2(\\sqrt{3} + 1)}{3 - 1} = \\frac{2(\\sqrt{3} + 1)}{2} = \\sqrt{3} + 1',
                 'mnemonic': 'Minus zamieniasz na plus (i odwrotnie).',
                 'matura_tip': 'Nie zapomnij podnieść wyrazu wolnego do kwadratu: $b$ staje się $b^2$!'
@@ -389,7 +389,7 @@ def build_topic_01():
                 'latex': 'a^{-n} = \\frac{1}{a^n},\\quad \\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^n',
                 'description': 'Minus w wykładniku odwraca liczbę do góry nogami.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '4^{-2} = \\frac{1}{4^2} = \\frac{1}{16},\\quad \\left(\\frac{2}{3}\\right)^{-3} = \\left(\\frac{3}{2}\\right)^3 = \\frac{27}{8}',
                 'mnemonic': 'Minus na górze wywraca ułamek do góry dnem.',
                 'matura_tip': 'Minus w potędze NIGDY nie daje liczby ujemnej!'
@@ -399,7 +399,7 @@ def build_topic_01():
                 'latex': 'a^{\\frac{m}{n}} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m',
                 'description': 'Mianownik n to stopień pierwiastka, licznik m to potęga.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 2',
+                'cke_page': 'str. 4',
                 'example': '8^{\\frac{2}{3}} = (\\sqrt[3]{8})^2 = 2^2 = 4',
                 'mnemonic': 'Mianownik to korzeń (stopień pierwiastka na dole).',
                 'matura_tip': 'Najpierw pierwiastkuj, potem potęguj – mniejsze liczby to brak błędów!'

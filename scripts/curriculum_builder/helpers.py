@@ -52,10 +52,10 @@ def make_tf_task(task_id, source, question, correct_tf, explanation, cke_trap):
     correct_tf: 'PRAWDA' lub 'FAŁSZ' (lub 'P', 'F')
     """
     is_true = correct_tf in ['PRAWDA', 'P', 'True', True]
-    correct_id = 'A' if is_true else 'B'
+    correct_id = 'P' if is_true else 'F'
     options = [
-        {'id': 'A', 'text': 'PRAWDA', 'content_latex': '\\text{PRAWDA}', 'is_correct': is_true},
-        {'id': 'B', 'text': 'FAŁSZ', 'content_latex': '\\text{FAŁSZ}', 'is_correct': not is_true}
+        {'id': 'P', 'text': 'PRAWDA', 'content_latex': '\\text{PRAWDA}', 'is_correct': is_true},
+        {'id': 'F', 'text': 'FAŁSZ', 'content_latex': '\\text{FAŁSZ}', 'is_correct': not is_true}
     ]
     return {
         'id': task_id,
@@ -173,7 +173,7 @@ def make_lesson(lesson_id, topic_id, title, concept_essence, matura_context, cor
                     'latex': f.get('latex', ''),
                     'description': f.get('description', ''),
                     'in_cke_sheet': f.get('in_cke_sheet', True),
-                    'cke_page': f.get('cke_page', 'str. 2'),
+                    'cke_page': f.get('cke_page') if f.get('cke_page') is not None else ('-' if not f.get('in_cke_sheet', True) else 'str. 4'),
                     'numberLine': f.get('numberLine') or None,
                     'diagram': f.get('diagram') or None
                 } for f in core_formulas

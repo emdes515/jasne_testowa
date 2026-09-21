@@ -89,7 +89,7 @@ def build_topic_08():
                 'latex': '\\Delta = b^2 - 4ac',
                 'description': 'Wartość określająca liczbę pierwiastków trójmianu.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'cke_page': 'str. 7',
                 'example': 'x^2 - 4x + 3 \\implies \\Delta = 16 - 12 = 4',
                 'mnemonic': 'b kwadrat minus 4ac.',
                 'matura_tip': '$b^2$ jest ZAWSZE dodatnie lub zerem (nawet dla ujemnego $b$).'
@@ -99,7 +99,7 @@ def build_topic_08():
                 'latex': 'x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}',
                 'description': 'Miejsca zerowe dla delty dodatniej.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'cke_page': 'str. 7',
                 'example': 'x_1 = \\frac{4 - 2}{2} = 1, \\quad x_2 = \\frac{4 + 2}{2} = 3',
                 'mnemonic': 'Minus b plus/minus pierwiastek z delty przez 2a.',
                 'matura_tip': 'Pamiętaj o podwojonym a w mianowniku (2a).'
@@ -197,7 +197,7 @@ def build_topic_08():
                 'latex': 'a > 0 \\implies \\begin{cases} f(x) < 0 \\implies x \\in (x_1, x_2) \\\\ f(x) > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
                 'description': 'Wartości ujemne są wewnątrz, dodatnie na zewnątrz.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'cke_page': 'str. 8',
                 'example': 'x^2 - 4 \\le 0 \\implies x \\in [-2, 2]',
                 'mnemonic': 'Uśmiechnięta parabola nurkuje pod oś w środku.',
                 'matura_tip': 'Zawsze zaznacz kropki na osi przed podaniem przedziału.'
@@ -207,7 +207,7 @@ def build_topic_08():
                 'latex': 'a < 0 \\implies \\begin{cases} f(x) > 0 \\implies x \\in (x_1, x_2) \\\\ f(x) < 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
                 'description': 'Wartości dodatnie są wewnątrz, ujemne na zewnątrz.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'cke_page': 'str. 8',
                 'example': '-x^2 + 4 > 0 \\implies x \\in (-2, 2)',
                 'mnemonic': 'Smutna parabola unosi się nad oś tylko na czubku.',
                 'matura_tip': 'Możesz też pomnożyć przez -1 i zmienić znak nierówności.'
@@ -303,8 +303,8 @@ def build_topic_08():
                 'title': 'Rozkład dla c = 0',
                 'latex': 'ax^2 + bx = x(ax + b)',
                 'description': 'Miejsca zerowe: x = 0 lub x = -b/a.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '2x^2 - 6x = 2x(x - 3) \\implies x_1 = 0, x_2 = 3',
                 'mnemonic': 'Iks przed nawias załatwia sprawę.',
                 'matura_tip': 'Nie licz delty, gdy c = 0.'
@@ -314,7 +314,7 @@ def build_topic_08():
                 'latex': 'x^2 - c = (x - \\sqrt{c})(x + \\sqrt{c}) \\quad (c > 0)',
                 'description': 'Miejsca zerowe: x = sqrt(c) lub x = -sqrt(c).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'cke_page': 'str. 7',
                 'example': 'x^2 - 25 = (x - 5)(x + 5) \\implies x_1 = -5, x_2 = 5',
                 'mnemonic': 'Różnica kwadratów daje dwa przeciwne pierwiastki.',
                 'matura_tip': 'Nierówność $x^2 + 25 \\le 0$ jest sprzeczna (brak rozwiązań).'
@@ -329,7 +329,7 @@ def build_topic_08():
             ],
             'result': 'x \\in [0, 3]'
         },
-        exam_trap='Typowy błąd: Dzielenie nierówności $x^2 > 4x$ przez $x$ i podanie odpowiedzi $x > 4$.\n\nPoprawnie: Dzielenie przez niewiadomą gubi przedział ujemny! Prawidłowa odpowiedź to $(-\\infty, 0) \\cup (4, +\\infty)$.',
+        exam_trap='Typowy błąd: Dzielenie nierówności przez $x$ i utrata rozwiązania $x = 0$.\n\nPoprawnie: Nigdy nie dziel nierówności przez niewiadomą $x$, bo nie znasz jej znaku! Zawsze wyłączaj przed nawias.',
         visuals=v3,
         tasks=l3_tasks
     )
@@ -341,62 +341,62 @@ def build_topic_08():
     v4 = get_topic_08_visuals(3)
     l4_tasks = [
         make_sc_task(
-            task_id='task-8-1-4-1',
-            source='Rozgrzewka • Parabola nad osią',
-            question='Rozwiązaniem nierówności $x^2 + 2x + 5 > 0$ jest',
+            task_id='task-8-4-1',
+            source='Matura Maj 2021 • Zad. 7',
+            question='Zbiorem rozwiązań nierówności $x^2 + 4 > 0$ jest',
             options_data=[
-                ('A', 'Zbiór wszystkich liczb rzeczywistych $\\mathbb{R}$'),
-                ('B', 'Zbiór pusty $\\emptyset$'),
-                ('C', '$(-5, 1)$'),
-                ('D', '$x > -1$')
+                ('A', '$\\mathbb{R}$ (zbiór liczb rzeczywistych)'),
+                ('B', '$\\emptyset$ (zbiór pusty)'),
+                ('C', '$(-2, 2)$'),
+                ('D', '$(-\\infty, -2) \\cup (2, +\\infty)$')
             ],
             correct_id='A',
-            explanation='$\\Delta = 4 - 20 = -16 < 0$ (brak miejsc zerowych). Współczynnik $a = 1 > 0$ (ramiona w górę). Cała parabola wisi NAD osią $OX$. Zatem każda liczba rzeczywista spełnia warunek $> 0$: $x \\in \\mathbb{R}$.',
-            cke_trap='Ujemna delta nie oznacza braku rozwiązań nierówności! Oznacza brak miejsc zerowych.'
+            explanation='Dla każdego $x \\in \\mathbb{R}$ mamy $x^2 \\ge 0$, więc $x^2 + 4 \\ge 4 > 0$. Nierówność jest spełniona przez każdą liczbę.',
+            cke_trap='Brak miejsc zerowych ($\\Delta < 0$) nie oznacza braku rozwiązań nierówności!'
         ),
         make_sc_task(
-            task_id='task-8-1-4-2',
-            source='Matura Czerwiec 2023 • Zad. 5',
-            question='Zbiorem rozwiązań nierówności $x^2 + 4 \\le 0$ jest',
+            task_id='task-8-4-2',
+            source='Pułapka CKE • Kwadrat mniejszy bądź równy zero',
+            question='Zbiorem rozwiązań nierówności $(x - 3)^2 \\le 0$ jest',
             options_data=[
-                ('A', 'Zbiór pusty $\\emptyset$'),
-                ('B', '$\\{-2, 2\\}$'),
-                ('C', '$[-2, 2]$'),
-                ('D', '$\\mathbb{R}$')
+                ('A', '$\\{3\\}$ (tylko liczba 3)'),
+                ('B', '$\\emptyset$'),
+                ('C', '$\\mathbb{R}$'),
+                ('D', '$(-\\infty, 3]$')
             ],
             correct_id='A',
-            explanation='Dla każdego $x \\in \\mathbb{R}$ mamy $x^2 \\ge 0$, więc $x^2 + 4 \\ge 4$. Wyrażenie nigdy nie jest mniejsze ani równe zero. Brak rozwiązań: $\\emptyset$.',
-            cke_trap='Suma kwadratu i liczby dodatniej nigdy nie schodzi do zera ani poniżej zera.'
+            explanation='Kwadrat liczby rzeczywistej nigdy nie jest ujemny ($(x-3)^2 \\ge 0$). Nierówność $(x-3)^2 \\le 0$ może być spełniona tylko wtedy, gdy $(x-3)^2 = 0$, czyli $x = 3$.',
+            cke_trap='Znak $\\le$ to "mniejsze LUB równe". Równość zachodzi dla $x = 3$.'
         ),
         make_sc_task(
-            task_id='task-8-1-4-3',
-            source='Pułapka CKE • Delta równa zero i ostry znak',
-            question='Rozwiązaniem nierówności $(x - 3)^2 > 0$ jest zbiór',
+            task_id='task-8-4-3',
+            source='Trening CKE • Delta ujemna i ramiona w dół',
+            question='Zbiorem rozwiązań nierówności $-2x^2 + 3x - 5 > 0$ jest',
             options_data=[
-                ('A', '$\\mathbb{R} \\setminus \\{3\\}$'),
+                ('A', '$\\emptyset$'),
                 ('B', '$\\mathbb{R}$'),
-                ('C', '$(3, +\\infty)$'),
-                ('D', 'Zbiór pusty')
+                ('C', '$(-\\infty, 0)$'),
+                ('D', '$(0, +\\infty)$')
             ],
             correct_id='A',
-            explanation='Kwadrat dowolnej liczby jest nieujemny. Dla $x = 3$ otrzymujemy $0^2 = 0$, co NIE spełnia ostrej nierówności $0 > 0$. Dla każdej innej liczby kwadrat jest dodatni. Zbiór to $\\mathbb{R} \\setminus \\{3\\}$.',
-            cke_trap='Punkt $x = 3$ daje wartość 0, która odpada przy ostrym znaku $>$.'
+            explanation='$\\Delta = 9 - 40 = -31 < 0$. Ponieważ $a = -2 < 0$, cała parabola leży pod osią $OX$. Wartości nigdy nie są dodatnie ($> 0$), więc brak rozwiązań.',
+            cke_trap='Gdy $a < 0$ i $\\Delta < 0$, funkcja przyjmuje wyłącznie wartości ujemne.'
         ),
         make_tf_task(
-            task_id='task-8-1-4-4',
-            source='Trening CKE • Parabola pod osią',
-            question='Oceń prawdziwość zdania: Jeśli $\\Delta < 0$ oraz $a < 0$, to dla każdego $x \\in \\mathbb{R}$ zachodzi nierówność $ax^2 + bx + c < 0$.',
+            task_id='task-8-4-4',
+            source='Koncepcja CKE • Kwadrat ostro ujemny',
+            question='Oceń prawdziwość zdania: Nierówność $(x + 5)^2 < 0$ nie posiada rozwiązań w zbiorze liczb rzeczywistych.',
             correct_tf='PRAWDA',
-            explanation='Ramiona w dół ($a < 0$) oraz brak punktów wspólnych z osią ($\\Delta < 0$) oznaczają, że cała parabola znajduje się ściśle pod osią $OX$.',
-            cke_trap='Wykres leży w całości w ujemnych wartościach.'
+            explanation='Kwadrat dowolnej liczby jest nieujemny ($(x+5)^2 \\ge 0$), więc nie może być ostro mniejszy od zera.',
+            cke_trap='Dla $x = -5$ mamy $0 < 0$, co jest fałszem. Nierówność ostra wyklucza zero.'
         ),
         make_numeric_task(
-            task_id='task-8-1-4-5',
-            source='Utrwalenie • Rozwiązanie jednopunktowe',
-            question='Podaj jedyną liczbę rzeczywistą spełniającą nierówność $-(x - 7)^2 \\ge 0$.',
+            task_id='task-8-4-5',
+            source='Utrwalenie • Jedyny punkt rozwiązania',
+            question='Podaj jedyną liczbę spełniającą nierówność $-(x - 7)^2 \\ge 0$.',
             correct_val=7,
-            explanation='$-(x - 7)^2 \\ge 0 \\iff (x - 7)^2 \\le 0$. Kwadrat może być $\\le 0$ tylko wtedy, gdy wynosi dokładnie 0: $x - 7 = 0 \\implies x = 7$.',
-            cke_trap='Nierówność kwadratowa może mieć dokładnie JEDNO rozwiązanie liczbowe.'
+            explanation='Mnożymy przez $-1$: $(x - 7)^2 \\le 0$. Ponieważ kwadrat jest $\\ge 0$, jedyną możliwością jest $(x - 7)^2 = 0 \\implies x = 7$.',
+            cke_trap='Minus przed nawiasem odwraca znak nierówności przy mnożeniu przez $-1$.'
         )
     ]
     l4 = make_lesson(
@@ -411,17 +411,17 @@ def build_topic_08():
                 'latex': '\\Delta < 0, a > 0 \\implies \\begin{cases} ax^2 + bx + c > 0 \\implies x \\in \\mathbb{R} \\\\ ax^2 + bx + c \\le 0 \\implies x \\in \\emptyset \\end{cases}',
                 'description': 'Parabola w całości nad osią pozioma.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'cke_page': 'str. 8',
                 'example': 'x^2 + 1 > 0 \\implies x \\in \\mathbb{R}',
                 'mnemonic': 'Wisi w powietrzu nad osią — zawsze dodatnia.',
                 'matura_tip': 'Nie pisz brak rozwiązań, gdy delta jest ujemna!'
             },
             {
                 'title': 'Delta równa zero (punkt styczności)',
-                'latex': '(x - x_0)^2 \\le 0 \\iff x = x_0',
+                'latex': '(x - x_0)^2 \\le 0 \\implies x = x_0',
                 'description': 'Rozwiązanie jednopunktowe w wierzchołku paraboli.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '(x - 2)^2 \\le 0 \\implies x = 2',
                 'mnemonic': 'Wierzchołek całuje oś w jednym punkcie.',
                 'matura_tip': 'Dla ostrego znaku < zbiór jest pusty.'

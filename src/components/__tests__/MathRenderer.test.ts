@@ -254,5 +254,20 @@ describe('Lesson titles and Greek letter math normalization', () => {
     expect(wrapped).toContain('$p = -\\frac{b}{2a}$');
     expect(wrapped).toContain('$y = 50 - x$');
   });
+
+  it('correctly normalizes LaTeX parentheses and bracket delimiters into math tokens', () => {
+    const text = 'Dla stopnia parzystego wynik jest ZAWSZE nieujemny: \\(\\sqrt{(-3)^2} = |-3| = 3\\), a nie \\(-3\\)!';
+    const wrapped = autoWrapLatex(text);
+    expect(wrapped).not.toContain('\\(');
+    expect(wrapped).not.toContain('\\)');
+    expect(wrapped).toContain('$\\sqrt{(-3)^2} = |-3| = 3$');
+    expect(wrapped).toContain('$-3$');
+
+    const tokens = parseMixedMathTokens(wrapped);
+    const mathTokens = tokens.filter(t => t.type === 'inline-math');
+    expect(mathTokens.length).toBe(2);
+    expect(mathTokens[0].math).toBe('\\sqrt{(-3)^2} = |-3| = 3');
+    expect(mathTokens[1].math).toBe('-3');
+  });
 });
 

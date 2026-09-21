@@ -89,8 +89,8 @@ def build_topic_09():
                 'title': 'Dziedzina z wykresu (oś pozioma)',
                 'latex': 'D_f = [x_{\\min}, x_{\\max}] \\subset OX',
                 'description': 'Rzut poziomy wykresu od skrajnego lewego do skrajnego prawego punktu.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'Wykres od x = -3 do x = 5 \\implies D = [-3, 5]',
                 'mnemonic': 'Iksy to lewo-prawo (szerokość).',
                 'matura_tip': 'Sprawdź, czy na końcach nie ma pustych kółek.'
@@ -99,8 +99,8 @@ def build_topic_09():
                 'title': 'Zbiór wartości z wykresu (oś pionowa)',
                 'latex': 'ZW_f = [y_{\\min}, y_{\\max}] \\subset OY',
                 'description': 'Rzut pionowy wykresu od najniższego do najwyższego punktu.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'Najniżej y = -2, najwyżej y = 4 \\implies ZW = [-2, 4]',
                 'mnemonic': 'Igreki to dół-góra (wysokość).',
                 'matura_tip': 'Nie sugeruj się końcami wykresu, patrz na garby i dołki!'
@@ -189,15 +189,15 @@ def build_topic_09():
         lesson_id='lesson-9-2',
         topic_id=topic_id,
         title='L1.9.2: Miejsca zerowe oraz odczyt wartości funkcji f(x0) = y0',
-        concept_essence='Wykres funkcji to mapa relacji między iksem a igrekiem: 1) Miejsce zerowe — to punkt na osi poziomej $OX$, gdzie wykres przecina oś (lub się od niej odbija). Miejscem zerowym jest sama liczba $x$, np. $x = 3$. 2) Wartość funkcji dla danego argumentu $f(x_0)$ — znajdujesz $x_0$ na osi poziomej, idziesz pionowo do wykresu i odczytujesz wysokość $y$ na osi pionowej. 3) Przecięcie z osią $OY$ — to wartość funkcji dla zera, czyli $f(0)$.',
+        concept_essence='Wykres funkcji to mapa relacji między argumentem $x$ a wartością $y$: 1) Miejsce zerowe — to argument $x$ na osi poziomej $OX$, dla którego wartość funkcji wynosi zero ($f(x) = 0$). Miejscem zerowym jest zawsze sama liczba (argument $x$, np. $x = 3$), a nie para współrzędnych. 2) Wartość funkcji dla danego argumentu $f(x_0)$ — znajdujesz $x_0$ na osi poziomej, przemieszczasz się pionowo do wykresu i odczytujesz wartość $y$ na osi pionowej. 3) Przecięcie z osią $OY$ — to wartość funkcji dla zera, czyli punkt $(0, f(0))$.',
         matura_context='Podstawowe pytanie sprawdzające umiejętność czytania wykresów za 1 pkt.',
         core_formulas=[
             {
                 'title': 'Definicja miejsca zerowego',
-                'latex': 'f(x_0) = 0 \\iff (x_0, 0) \\in \\text{wykres } f',
+                'latex': 'f(x_0) = 0 \\implies (x_0, 0) \\in \\text{wykres } f',
                 'description': 'Punkt leżący dokładnie na osi poziomej OX.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'Punkt (4, 0) na wykresie \\implies x = 4 \\text{ jest miejscem zerowym}',
                 'mnemonic': 'Miejsce zerowe leży na osi OX.',
                 'matura_tip': 'Miejsce zerowe to zawsze iks (liczba), nie punkt (x, 0).'
@@ -222,7 +222,7 @@ def build_topic_09():
             ],
             'result': 'x \\in \\{-4, 3\\}, \\quad f(-2) = 3, \\quad (0, 2)'
         },
-        exam_trap='Typowy błąd: Podawanie miejsca zerowego jako punktu $(3, 0)$ zamiast samej liczby $x = 3$.\n\nPoprawnie: Miejsce zerowe to LICZBA (argument $x = 3$). Punkt $(3, 0)$ to współrzędne punktu przecięcia wykresu z osią.',
+        exam_trap='Typowy błąd CKE: Podawanie miejsca zerowego jako współrzędnych punktu $(3, 0)$ zamiast samej liczby $x = 3$.\n\nZasada Core-4: Miejsce zerowe to zawsze pojedyncza liczba (argument $x = 3$). Punkt $(3, 0)$ to punkt geometryczny przecięcia wykresu z osią na płaszczyźnie, a nie miejsce zerowe.',
         visuals=v2,
         tasks=l2_tasks
     )
@@ -311,8 +311,8 @@ def build_topic_09():
                 'title': 'Funkcja rosnąca w przedziale',
                 'latex': 'x_1 < x_2 \\implies f(x_1) < f(x_2)',
                 'description': 'Większy argument daje większą wartość (wykres idzie w górę).',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 4',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'Wykres wznosi się od x = 1 do x = 4 \\implies \\text{rośnie w } [1, 4]',
                 'mnemonic': 'Idziesz od lewej do prawej pod górę.',
                 'matura_tip': 'Przedział odczytujesz z osi OX.'
@@ -344,79 +344,79 @@ def build_topic_09():
     lessons.append(l3)
 
     # ----------------------------------------------------
-    # Lekcja 9.4: Równania f(x) = m i nierówności z wykresu (L1.9.4)
+    # Lekcja 9.4: Równania f(x) = m oraz nierówności f(x) > 0 (L1.9.4)
     # ----------------------------------------------------
     v4 = get_topic_09_visuals(3)
     l4_tasks = [
         make_sc_task(
-            task_id='task-9-4-1',
-            source='Rozgrzewka • Pozioma prosta y = m',
-            question='Aby wyznaczyć liczbę rozwiązań równania $f(x) = 2$ na podstawie wykresu funkcji $f$, należy',
+            task_id='task-9-1-4-1',
+            source='Matura CKE • Odczyt liczby rozwiązań f(x) = m',
+            question='Równanie $f(x) = 2$ ma dokładnie tyle rozwiązań, w ilu punktach wykres funkcji $f$ przecina się z prostą',
             options_data=[
-                ('A', 'Narysować poziomą prostą na wysokości $y = 2$ i policzyć punkty przecięcia z wykresem'),
-                ('B', 'Narysować pionową prostą dla $x = 2$ i sprawdzić wartość funkcji'),
-                ('C', 'Policzyć miejsca zerowe funkcji'),
-                ('D', 'Sprawdzić, czy punkt $(2, 0)$ leży na wykresie')
+                ('A', 'Poziomą o równaniu $y = 2$'),
+                ('B', 'Pionową o równaniu $x = 2$'),
+                ('C', 'Ukośną o równaniu $y = 2x$'),
+                ('D', 'Punktem $(2, 0)$')
             ],
             correct_id='A',
-            explanation='Równanie $f(x) = m$ oznacza poszukiwanie argumentów $x$, dla których wartość $y$ wynosi $m$. Kładziemy linijkę poziomo na wysokości $y = m$ i liczymy punkty przecięcia.',
-            cke_trap='Narysowanie prostej pionowej to odczyt wartości $f(2)$, a nie rozwiązanie równania $f(x) = 2$!'
+            explanation='Wartość funkcji to współrzędna $y$. Warunek $f(x) = 2$ oznacza szukanie punktów na wykresie o wysokości $y = 2$, czyli przecięcia z poziomą prostą $y = 2$.',
+            cke_trap='Pozioma prosta to $y = \\text{stała}$. Prosta $x = 2$ jest pionowa!'
         ),
         make_sc_task(
-            task_id='task-9-4-2',
-            source='Matura Sierpień 2023 • Zad. 8',
-            question='Na rysunku przedstawiono wykres funkcji $f$. Pozioma prosta $y = -1$ przecina wykres funkcji w trzech różnych punktach. Wynika z tego, że równanie $f(x) = -1$',
+            task_id='task-9-1-4-2',
+            source='Matura Maj 2022 • Zad. 8',
+            question='Na rysunku przedstawiono wykres funkcji $f$. Równanie $f(x) = -1$ ma w przedziale $[-4, 5]$ dokładnie',
             options_data=[
-                ('A', 'Ma dokładnie 3 rozwiązania rzeczywiste'),
-                ('B', 'Ma dokładnie 1 rozwiązanie rzeczywiste'),
-                ('C', 'Ma nieskończenie wiele rozwiązań'),
-                ('D', 'Nie ma rozwiązań')
+                ('A', '3 rozwiązania'),
+                ('B', '2 rozwiązania'),
+                ('C', '1 rozwiązanie'),
+                ('D', '0 rozwiązań')
             ],
             correct_id='A',
-            explanation='Każdy punkt przecięcia prostej poziomej z wykresem funkcji odpowiada jednemu rozwiązaniu równania. Trzy przecięcia oznaczają dokładnie 3 rozwiązania.',
-            cke_trap='Liczba rozwiązań równania $f(x) = m$ to po prostu liczba punktów wspólnych prostej $y = m$ i wykresu.'
+            explanation='Prowadzimy poziomą linię na wysokości $y = -1$. Linia ta przecina wykres funkcji dokładnie w 3 punktach, zatem równanie ma 3 rozwiązania.',
+            cke_trap='Zawsze policz wszystkie przecięcia, uważając na puste kółka na końcach wykresu.'
         ),
         make_sc_task(
-            task_id='task-9-4-3',
-            source='Pułapka CKE • Nierówność f(x) > 0 z wykresu',
-            question='Wykres funkcji $f$ przecina oś $OX$ w punktach $x = -2$ oraz $x = 4$ i między tymi punktami leży nad osią $OX$. Rozwiązaniem nierówności $f(x) > 0$ jest przedział',
+            task_id='task-9-1-4-3',
+            source='Pułapka CKE • Nierówność f(x) <= 0 a kropki',
+            question='Zbiorem rozwiązań nierówności $f(x) > 0$ jest suma przedziałów $(-4, -1) \\cup (2, 5)$. Wtedy zbiorem rozwiązań nierówności $f(x) \\ge 0$ dla tej samej funkcji o dziedzinie $[-4, 5]$ jest',
             options_data=[
-                ('A', '$(-2, 4)$'),
-                ('B', '$[-2, 4]$'),
-                ('C', '$(-\\infty, -2) \\cup (4, +\\infty)$'),
-                ('D', '$[0, 4)$')
+                ('A', '$[-4, -1] \\cup [2, 5]$'),
+                ('B', '$(-4, -1) \\cup (2, 5)$'),
+                ('C', '$[-4, 5]$'),
+                ('D', '$\\emptyset$')
             ],
             correct_id='A',
-            explanation='Nierówność $f(x) > 0$ pyta o iksy, dla których wykres znajduje się ŚCIŚLE NAD osią $OX$. Znak jest ostry, więc punkty przecięcia odpadają: $(-2, 4)$.',
-            cke_trap='Dla ostrej nierówności nawiasy są okrągłe: $(-2, 4)$, a nie domknięte.'
+            explanation='Nierówność nieostra $\\ge 0$ dołącza miejsca zerowe (punkty, w których $f(x) = 0$). Zatem przedziały otwarte domykamy w punktach przecięcia z osią: $[-4, -1] \\cup [2, 5]$.',
+            cke_trap='Znak $\\ge$ włącza miejsca zerowe (nawiasy domknięte).'
         ),
         make_tf_task(
-            task_id='task-9-4-4',
-            source='Trening CKE • Brak rozwiązań równania f(x) = m',
-            question='Oceń prawdziwość zdania: Jeśli zbiorem wartości funkcji jest przedział $[-2, 5]$, to równanie $f(x) = 7$ nie posiada żadnego rozwiązania.',
+            task_id='task-9-1-4-4',
+            source='Trening CKE • Brak przecięcia z prostą poziomą',
+            question='Oceń prawdziwość zdania: Jeśli zbiór wartości funkcji $f$ to $ZW = [-2, 3]$, to równanie $f(x) = 4$ nie ma żadnych rozwiązań.',
             correct_tf='PRAWDA',
-            explanation='Najwyższa wartość funkcji to $y = 5$. Wykres nigdy nie osiąga wysokości $y = 7$, więc prosta $y = 7$ nie ma punktów wspólnych z wykresem.',
-            cke_trap='Równanie $f(x) = m$ ma rozwiązania tylko wtedy, gdy $m \\in ZW_f$.'
+            explanation='Liczba $4$ nie należy do zbioru wartości funkcji (najwyższa wartość to $3$). Pozioma prosta $y = 4$ przebiega nad całym wykresem i go nie przecina.',
+            cke_trap='Wartości spoza zbioru wartości nigdy nie są osiągane przez funkcję.'
         ),
         make_numeric_task(
-            task_id='task-9-4-5',
-            source='Utrwalenie • Liczba przecięć',
-            question='Pozioma prosta $y = 1$ przecina łuk paraboli w dwóch punktach oraz odcinek poziomy w nieskończenie wielu punktach. W innym zadaniu prosta $y = 3$ dotyka wierzchołka paraboli. Ile punktów wspólnych z parabolą ma prosta styczna w wierzchołku?',
-            correct_val=1,
-            explanation='Prosta przechodząca przez wierzchołek paraboli poziomo dotyka jej w dokładnie jednym punkcie (jest do niej styczna).',
-            cke_trap='W wierzchołku prosta pozioma ma dokładnie jeden punkt wspólny z parabolą.'
+            task_id='task-9-1-4-5',
+            source='Utrwalenie • Liczba rozwiązań z wykresu',
+            question='Wykres funkcji $f$ przecina poziomą prostą $y = 0$ w punktach o odciętych $-3$, $1$ oraz $4$. Ile rozwiązań ma równanie $f(x) = 0$?',
+            correct_val=3,
+            explanation='Równanie $f(x) = 0$ to pytanie o miejsca zerowe. Skoro wykres przecina oś $OX$ w 3 punktach, równanie ma dokładnie 3 rozwiązania.',
+            cke_trap='Odcięta to współrzędna $x$. Wykres ma 3 miejsca zerowe.'
         )
     ]
     l4 = make_lesson(
         lesson_id='lesson-9-4',
         topic_id=topic_id,
-        title='L1.9.4: Rozwiązywanie równań f(x) = m i nierówności z wykresu funkcji',
-        concept_essence='Wykres funkcji pozwala natychmiast rozwiązywać równania i nierówności bez liczenia wzorów: 1) Równanie $f(x) = m$ — kładziesz linijkę POZIOMO na wysokości $y = m$. Liczba punktów przecięcia linijki z wykresem to liczba rozwiązań tego równania. Same rozwiązania odczytujesz z osi $OX$ pod punktami przecięcia. 2) Nierówność $f(x) > 0$ — pytasz: gdzie wykres jest NAD osią $OX$? Podajesz odpowiednie przedziały iksów. 3) Nierówność $f(x) \\le 0$ — pytasz: gdzie wykres leży POD osią $OX$ lub na niej?',
+        title='L1.9.4: Równania f(x) = m oraz nierówności f(x) > 0 – odczyt liczby rozwiązań',
+        concept_essence='Analiza równań i nierówności na wykresie: 1) Równanie $f(x) = m$ — kładziesz poziomą linijkę na wysokości $y = m$. Liczba punktów przecięcia linijki z wykresem to LICZBA ROZWIĄZAŃ równania. Jeśli prosta mija wykres — równanie nie ma rozwiązań. 2) Nierówność $f(x) > 0$ — szukasz części wykresu leżących ŚCIŚLE NAD osią $OX$. Rozwiązaniem są przedziały iksów z osi poziomej. 3) Nierówność $f(x) \\le 0$ — szukasz części POD osią $OX$ wraz z miejscami zerowymi.',
         matura_context='Jeden z ulubionych typów zadań CKE w arkuszach majowych i czerwcowych za 1 punkt.',
         core_formulas=[
             {
                 'title': 'Graficzne rozwiązywanie równania f(x) = m',
-                'latex': 'f(x) = m \\iff \\text{punkty przecięcia z poziomą prostą } y = m',
+                'latex': 'f(x) = m \\implies \\text{punkty przecięcia z poziomą prostą } y = m',
                 'description': 'Liczba przecięć równa się liczbie rozwiązań równania.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
@@ -426,7 +426,7 @@ def build_topic_09():
             },
             {
                 'title': 'Graficzne rozwiązywanie nierówności f(x) > 0',
-                'latex': 'f(x) > 0 \\iff \\text{część wykresu leżąca nad osią } OX',
+                'latex': 'f(x) > 0 \\implies \\text{część wykresu leżąca nad osią } OX',
                 'description': 'Odpowiedź to przedziały z osi poziomej OX.',
                 'in_cke_sheet': False,
                 'cke_page': '-',

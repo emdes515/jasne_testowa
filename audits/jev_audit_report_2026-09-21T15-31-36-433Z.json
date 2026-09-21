@@ -1,0 +1,1263 @@
+{
+  "timestamp": "2026-09-21T15:31:36.435Z",
+  "model": "typesafe/jev-1.13",
+  "totalAudited": 20,
+  "totalCostUsd": 0.0009539040000000001,
+  "averageScore": "3.72",
+  "keyStats": {
+    "CORRECT": 20,
+    "AMBIGUOUS": 0,
+    "WRONG_KEY": 0
+  },
+  "trapStats": {
+    "AUTHENTIC_TRAPS": 17,
+    "WEAK_DISTRACTORS": 3
+  },
+  "latexStats": {
+    "CLEAN_LATEX": 20,
+    "LATEX_DEFECTS": 0
+  },
+  "issues": [],
+  "results": [
+    {
+      "taskId": "task-1-1-4",
+      "type": "NUMERIC_INPUT",
+      "topicNum": 1,
+      "lessonNum": 1,
+      "latencyMs": 644,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "AMBIGUOUS": 0,
+            "CORRECT": 1,
+            "WRONG_KEY": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.62,
+            "WEAK_DISTRACTORS": 0.38
+          },
+          "confidence": 0.24
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.94,
+            "LATEX_DEFECTS": 0.06
+          },
+          "confidence": 0.88
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.54,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.42,
+            "4": 0.5700000000000001
+          },
+          "confidence": 0.62
+        }
+      },
+      "usage": {
+        "input_tokens": 1036,
+        "output_tokens": 148,
+        "cost": 0.000043512
+      },
+      "cost": 0.000043512
+    },
+    {
+      "taskId": "task-1-1-2",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 1,
+      "latencyMs": 649,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "AMBIGUOUS": 0,
+            "CORRECT": 1
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.92,
+            "WEAK_DISTRACTORS": 0.08
+          },
+          "confidence": 0.84
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.99,
+            "LATEX_DEFECTS": 0.01
+          },
+          "confidence": 0.97
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.59,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.39,
+            "4": 0.61
+          },
+          "confidence": 0.66
+        }
+      },
+      "usage": {
+        "input_tokens": 1215,
+        "output_tokens": 148,
+        "cost": 0.00005103
+      },
+      "cost": 0.00005103
+    },
+    {
+      "taskId": "task-1-1-1",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 1,
+      "latencyMs": 682,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "AMBIGUOUS": 0,
+            "CORRECT": 1,
+            "WRONG_KEY": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.99,
+            "WEAK_DISTRACTORS": 0.01
+          },
+          "confidence": 0.98
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.01,
+            "CLEAN_LATEX": 0.99
+          },
+          "confidence": 0.97
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.87,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.1,
+            "4": 0.89
+          },
+          "confidence": 0.89
+        }
+      },
+      "usage": {
+        "input_tokens": 1146,
+        "output_tokens": 148,
+        "cost": 0.000048132
+      },
+      "cost": 0.000048132
+    },
+    {
+      "taskId": "task-1-1-3",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 1,
+      "latencyMs": 672,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "CORRECT": 1,
+            "WRONG_KEY": 0,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.94,
+            "WEAK_DISTRACTORS": 0.06
+          },
+          "confidence": 0.88
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.01,
+            "CLEAN_LATEX": 0.99
+          },
+          "confidence": 0.98
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.75,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.22,
+            "4": 0.78
+          },
+          "confidence": 0.79
+        }
+      },
+      "usage": {
+        "input_tokens": 1207,
+        "output_tokens": 148,
+        "cost": 0.000050694
+      },
+      "cost": 0.000050694
+    },
+    {
+      "taskId": "task-1-2-1",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 2,
+      "latencyMs": 306,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "CORRECT": 0.9,
+            "WRONG_KEY": 0,
+            "AMBIGUOUS": 0.1
+          },
+          "confidence": 0.85
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.03,
+            "AUTHENTIC_TRAPS": 0.97
+          },
+          "confidence": 0.94
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.01,
+            "CLEAN_LATEX": 0.99
+          },
+          "confidence": 0.98
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.9,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.08,
+            "4": 0.92
+          },
+          "confidence": 0.92
+        }
+      },
+      "usage": {
+        "input_tokens": 1143,
+        "output_tokens": 148,
+        "cost": 0.000048006
+      },
+      "cost": 0.000048006
+    },
+    {
+      "taskId": "task-1-2-3",
+      "type": "TRUE_FALSE",
+      "topicNum": 1,
+      "lessonNum": 2,
+      "latencyMs": 321,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "CORRECT": 1,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.99,
+            "WEAK_DISTRACTORS": 0.01
+          },
+          "confidence": 0.99
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.95,
+            "LATEX_DEFECTS": 0.05
+          },
+          "confidence": 0.9
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.92,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.06,
+            "4": 0.94
+          },
+          "confidence": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1073,
+        "output_tokens": 148,
+        "cost": 0.000045066
+      },
+      "cost": 0.000045066
+    },
+    {
+      "taskId": "task-1-1-5",
+      "type": "OPEN_TASK",
+      "topicNum": 1,
+      "lessonNum": 1,
+      "latencyMs": 349,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0.05,
+            "AMBIGUOUS": 0.26,
+            "CORRECT": 0.69
+          },
+          "confidence": 0.54
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.19,
+            "AUTHENTIC_TRAPS": 0.81
+          },
+          "confidence": 0.61
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.99,
+            "LATEX_DEFECTS": 0.01
+          },
+          "confidence": 0.97
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.84,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.14,
+            "4": 0.86
+          },
+          "confidence": 0.86
+        }
+      },
+      "usage": {
+        "input_tokens": 1114,
+        "output_tokens": 148,
+        "cost": 0.000046788
+      },
+      "cost": 0.000046788
+    },
+    {
+      "taskId": "task-1-2-2",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 2,
+      "latencyMs": 357,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "CORRECT": 0.98,
+            "AMBIGUOUS": 0.01,
+            "WRONG_KEY": 0.01
+          },
+          "confidence": 0.97
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.99,
+            "WEAK_DISTRACTORS": 0.01
+          },
+          "confidence": 0.98
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.99,
+            "LATEX_DEFECTS": 0.01
+          },
+          "confidence": 0.98
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.89,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.09,
+            "4": 0.91
+          },
+          "confidence": 0.91
+        }
+      },
+      "usage": {
+        "input_tokens": 1182,
+        "output_tokens": 148,
+        "cost": 0.000049644
+      },
+      "cost": 0.000049644
+    },
+    {
+      "taskId": "task-1-2-4",
+      "type": "NUMERIC_INPUT",
+      "topicNum": 1,
+      "lessonNum": 2,
+      "latencyMs": 338,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "CORRECT": 1,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "WEAK_DISTRACTORS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.05,
+            "WEAK_DISTRACTORS": 0.95
+          },
+          "confidence": 0.9
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.99,
+            "LATEX_DEFECTS": 0.01
+          },
+          "confidence": 0.99
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.38,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.04,
+            "3": 0.52,
+            "4": 0.44
+          },
+          "confidence": 0.58
+        }
+      },
+      "usage": {
+        "input_tokens": 995,
+        "output_tokens": 149,
+        "cost": 0.00004179
+      },
+      "cost": 0.00004179
+    },
+    {
+      "taskId": "task-1-3-1",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 3,
+      "latencyMs": 304,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "AMBIGUOUS": 0,
+            "CORRECT": 1,
+            "WRONG_KEY": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.82,
+            "WEAK_DISTRACTORS": 0.18
+          },
+          "confidence": 0.65
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.01,
+            "CLEAN_LATEX": 0.99
+          },
+          "confidence": 0.97
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.59,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.38,
+            "4": 0.61
+          },
+          "confidence": 0.66
+        }
+      },
+      "usage": {
+        "input_tokens": 1114,
+        "output_tokens": 148,
+        "cost": 0.000046788
+      },
+      "cost": 0.000046788
+    },
+    {
+      "taskId": "task-1-3-2",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 3,
+      "latencyMs": 292,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "CORRECT": 1,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.77,
+            "WEAK_DISTRACTORS": 0.23
+          },
+          "confidence": 0.54
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.98,
+            "LATEX_DEFECTS": 0.02
+          },
+          "confidence": 0.96
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.57,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.4,
+            "4": 0.59
+          },
+          "confidence": 0.64
+        }
+      },
+      "usage": {
+        "input_tokens": 1220,
+        "output_tokens": 148,
+        "cost": 0.00005124
+      },
+      "cost": 0.00005124
+    },
+    {
+      "taskId": "task-1-2-5",
+      "type": "NUMERIC_INPUT",
+      "topicNum": 1,
+      "lessonNum": 2,
+      "latencyMs": 385,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "AMBIGUOUS": 0,
+            "WRONG_KEY": 0,
+            "CORRECT": 1
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.94,
+            "WEAK_DISTRACTORS": 0.06
+          },
+          "confidence": 0.88
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.95,
+            "LATEX_DEFECTS": 0.05
+          },
+          "confidence": 0.9
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.89,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.09,
+            "4": 0.91
+          },
+          "confidence": 0.91
+        }
+      },
+      "usage": {
+        "input_tokens": 1127,
+        "output_tokens": 148,
+        "cost": 0.000047334
+      },
+      "cost": 0.000047334
+    },
+    {
+      "taskId": "task-1-3-5",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 3,
+      "latencyMs": 293,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "AMBIGUOUS": 0,
+            "CORRECT": 1
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.11,
+            "AUTHENTIC_TRAPS": 0.89
+          },
+          "confidence": 0.79
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.02,
+            "CLEAN_LATEX": 0.98
+          },
+          "confidence": 0.95
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.8,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.17,
+            "4": 0.83
+          },
+          "confidence": 0.84
+        }
+      },
+      "usage": {
+        "input_tokens": 1227,
+        "output_tokens": 148,
+        "cost": 0.000051534
+      },
+      "cost": 0.000051534
+    },
+    {
+      "taskId": "task-1-3-4",
+      "type": "NUMERIC_INPUT",
+      "topicNum": 1,
+      "lessonNum": 3,
+      "latencyMs": 302,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "CORRECT": 1,
+            "AMBIGUOUS": 0,
+            "WRONG_KEY": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "WEAK_DISTRACTORS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.16,
+            "WEAK_DISTRACTORS": 0.84
+          },
+          "confidence": 0.68
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.98,
+            "LATEX_DEFECTS": 0.02
+          },
+          "confidence": 0.96
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.33,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0.05,
+            "1": 0,
+            "2": 0.03,
+            "3": 0.38,
+            "4": 0.54
+          },
+          "confidence": 0.44
+        }
+      },
+      "usage": {
+        "input_tokens": 1030,
+        "output_tokens": 149,
+        "cost": 0.00004326
+      },
+      "cost": 0.00004326
+    },
+    {
+      "taskId": "task-1-3-3",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 3,
+      "latencyMs": 354,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "AMBIGUOUS": 0,
+            "CORRECT": 1
+          },
+          "confidence": 0.99
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.02,
+            "AUTHENTIC_TRAPS": 0.98
+          },
+          "confidence": 0.96
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.03,
+            "CLEAN_LATEX": 0.97
+          },
+          "confidence": 0.95
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.81,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.16,
+            "4": 0.84
+          },
+          "confidence": 0.84
+        }
+      },
+      "usage": {
+        "input_tokens": 1203,
+        "output_tokens": 148,
+        "cost": 0.000050526
+      },
+      "cost": 0.000050526
+    },
+    {
+      "taskId": "task-1-4-1",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 4,
+      "latencyMs": 298,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "CORRECT": 1,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.05,
+            "AUTHENTIC_TRAPS": 0.95
+          },
+          "confidence": 0.91
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.01,
+            "CLEAN_LATEX": 0.99
+          },
+          "confidence": 0.99
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.86,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.12,
+            "4": 0.88
+          },
+          "confidence": 0.88
+        }
+      },
+      "usage": {
+        "input_tokens": 1116,
+        "output_tokens": 148,
+        "cost": 0.000046872
+      },
+      "cost": 0.000046872
+    },
+    {
+      "taskId": "task-1-4-2",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 4,
+      "latencyMs": 279,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "AMBIGUOUS": 0,
+            "WRONG_KEY": 0,
+            "CORRECT": 1
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.29,
+            "AUTHENTIC_TRAPS": 0.71
+          },
+          "confidence": 0.42
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.93,
+            "LATEX_DEFECTS": 0.07
+          },
+          "confidence": 0.86
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.58,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.39,
+            "4": 0.6
+          },
+          "confidence": 0.65
+        }
+      },
+      "usage": {
+        "input_tokens": 1240,
+        "output_tokens": 148,
+        "cost": 0.00005208
+      },
+      "cost": 0.00005208
+    },
+    {
+      "taskId": "task-1-4-3",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 4,
+      "latencyMs": 286,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "CORRECT": 1,
+            "WRONG_KEY": 0,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.2,
+            "AUTHENTIC_TRAPS": 0.8
+          },
+          "confidence": 0.6
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.01,
+            "CLEAN_LATEX": 0.99
+          },
+          "confidence": 0.98
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.64,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.31,
+            "4": 0.68
+          },
+          "confidence": 0.7
+        }
+      },
+      "usage": {
+        "input_tokens": 1123,
+        "output_tokens": 148,
+        "cost": 0.000047166
+      },
+      "cost": 0.000047166
+    },
+    {
+      "taskId": "task-1-4-5",
+      "type": "SINGLE_CHOICE",
+      "topicNum": 1,
+      "lessonNum": 4,
+      "latencyMs": 269,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "CORRECT": 1,
+            "WRONG_KEY": 0,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "AUTHENTIC_TRAPS",
+          "probabilities": {
+            "WEAK_DISTRACTORS": 0.07,
+            "AUTHENTIC_TRAPS": 0.93
+          },
+          "confidence": 0.85
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "CLEAN_LATEX": 0.99,
+            "LATEX_DEFECTS": 0.01
+          },
+          "confidence": 0.97
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.92,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0.06,
+            "4": 0.94
+          },
+          "confidence": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 1191,
+        "output_tokens": 148,
+        "cost": 0.000050022
+      },
+      "cost": 0.000050022
+    },
+    {
+      "taskId": "task-1-4-4",
+      "type": "NUMERIC_INPUT",
+      "topicNum": 1,
+      "lessonNum": 4,
+      "latencyMs": 297,
+      "answers": {
+        "key_accuracy": {
+          "type": "choice",
+          "choice": "CORRECT",
+          "probabilities": {
+            "WRONG_KEY": 0,
+            "CORRECT": 1,
+            "AMBIGUOUS": 0
+          },
+          "confidence": 1
+        },
+        "cke_trap_alignment": {
+          "type": "choice",
+          "choice": "WEAK_DISTRACTORS",
+          "probabilities": {
+            "AUTHENTIC_TRAPS": 0.39,
+            "WEAK_DISTRACTORS": 0.61
+          },
+          "confidence": 0.22
+        },
+        "latex_hygiene": {
+          "type": "choice",
+          "choice": "CLEAN_LATEX",
+          "probabilities": {
+            "LATEX_DEFECTS": 0.03,
+            "CLEAN_LATEX": 0.97
+          },
+          "confidence": 0.94
+        },
+        "didactic_score": {
+          "type": "score",
+          "score": 3.76,
+          "legend": {
+            "0": "1: Deficient or contains mathematical misconceptions",
+            "1": "2: Minimalist, dry, lacks pedagogical clarity",
+            "2": "3: Standard textbook problem and explanation",
+            "3": "4: Solid matura preparation with clear step-by-step reasoning",
+            "4": "5: Exemplary Core-4 standard: concise, identifies CKE trap, builds deep intuition"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.21,
+            "4": 0.78
+          },
+          "confidence": 0.8
+        }
+      },
+      "usage": {
+        "input_tokens": 1010,
+        "output_tokens": 149,
+        "cost": 0.00004242
+      },
+      "cost": 0.00004242
+    }
+  ]
+}

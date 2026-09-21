@@ -15,7 +15,7 @@ def get_topic_06_visuals(l_idx):
         tab0 = {
             'type': 'INFOGRAPHIC',
             'title': 'Zasada zerowania iloczynu: "Z polskiego na nasze"',
-            'formulaBadge': 'A \\cdot B = 0 \\iff A = 0 \\quad \\lor \\quad B = 0',
+            'formulaBadge': 'A \\cdot B = 0 \\implies A = 0 \\quad \\text{lub} \\quad B = 0',
             'caption': 'Kiedy iloczyn liczb daje zero? Tylko wtedy, gdy CO NAJMNIEJ JEDNA z mnożonych liczb jest równa zero! Nie wymnażaj nawiasów.',
             'cards': [
                 {

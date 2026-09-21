@@ -89,7 +89,7 @@ def build_topic_10():
                 'latex': 'a > 0 \\implies \\text{rosnąca}, \\quad a < 0 \\implies \\text{malejąca}, \\quad a = 0 \\implies \\text{stała}',
                 'description': 'Znak liczby stojącej przy x określa monotoniczność.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 5',
+                'cke_page': 'str. 21',
                 'example': 'y = -2x + 5 \\implies a = -2 < 0 \\implies \\text{funkcja maleje}',
                 'mnemonic': 'Dodatni iks idzie w górę, ujemny iks leci w dół.',
                 'matura_tip': 'Gdy a ma parametr, np. (2m - 4), rozwiązujesz nierówność 2m - 4 < 0.'
@@ -99,7 +99,7 @@ def build_topic_10():
                 'latex': 'P = (0, b) = \\text{punkt przecięcia z osią } OY',
                 'description': 'Wartość b to wysokość przecięcia prostej z osią pionową.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 5',
+                'cke_page': 'str. 21',
                 'example': 'y = 4x - 3 \\implies \\text{przecięcie w punkcie } (0, -3)',
                 'mnemonic': 'b to baza na osi OY.',
                 'matura_tip': 'W punkcie na osi OY pierwsza współrzędna x to zawsze 0.'
@@ -196,7 +196,7 @@ def build_topic_10():
                 'latex': 'a = \\frac{y_B - y_A}{x_B - x_A} \\quad (x_A \\neq x_B)',
                 'description': 'Iloraz różnicy współrzędnych y do różnicy współrzędnych x.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 5',
+                'cke_page': 'str. 22',
                 'example': 'A(1, 2), B(3, 8) \\implies a = \\frac{8 - 2}{3 - 1} = \\frac{6}{2} = 3',
                 'mnemonic': 'Igreki na dachu, iksy w piwnicy.',
                 'matura_tip': 'Zachowaj tę samą kolejność odejmowania w liczniku i mianowniku.'
@@ -205,8 +205,8 @@ def build_topic_10():
                 'title': 'Miejsce zerowe funkcji liniowej',
                 'latex': 'x_0 = -\\frac{b}{a} \\quad (a \\neq 0)',
                 'description': 'Punkt na osi OX, gdzie prosta przecina oś.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 5',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'y = 3x - 12 \\implies x_0 = -\\frac{-12}{3} = 4',
                 'mnemonic': 'Przyrównaj igrek do zera i wyznacz iksa.',
                 'matura_tip': 'Dwa minusy dają plus.'
@@ -221,7 +221,7 @@ def build_topic_10():
             ],
             'result': 'y = 3x - 7, \\quad x_0 = \\frac{7}{3}'
         },
-        exam_trap='Typowy błąd: Zamiana licznika z mianownikiem we wzorze na $a$: pisanie $\\frac{x_B - x_A}{y_B - y_A}$.\n\nPoprawnie: Zawsze powtarzaj sobie: IGREKI NA GÓRZE, IKSY NA DOLE ($a = \\frac{\\Delta y}{\\Delta x}$).',
+        exam_trap='Typowy błąd CKE: Odwrócenie licznika i mianownika we wzorze na współczynnik kierunkowy ($a = \\frac{x_B - x_A}{y_B - y_A}$).\\n\\nZasada Core-4: Zapamiętaj mnemonik "Igreki na dachu, iksy w piwnicy". Współrzędne pionowe $y$ są zawsze na górze w liczniku.',
         visuals=v2,
         tasks=l2_tasks
     )
@@ -234,61 +234,61 @@ def build_topic_10():
     l3_tasks = [
         make_sc_task(
             task_id='task-10-3-1',
-            source='Rozgrzewka • Proste równoległe',
-            question='Proste o równaniach $y = 3x - 4$ oraz $y = (2m + 1)x + 5$ są równoległe, gdy liczba $m$ jest równa',
+            source='Matura Maj 2023 • Zad. 16',
+            question='Prosta $k$ o równaniu $y = (2m - 1)x + 4$ jest równoległa do prostej $l$ o równaniu $y = 5x - 2$, gdy',
             options_data=[
-                ('A', '$1$'),
-                ('B', '$2$'),
-                ('C', '$-1$'),
-                ('D', '$3$')
+                ('A', '$m = 3$'),
+                ('B', '$m = 2$'),
+                ('C', '$m = -2$'),
+                ('D', '$m = \\frac{1}{2}$')
             ],
             correct_id='A',
-            explanation='Warunek równoległości prostych: współczynniki kierunkowe muszą być równe ($a_1 = a_2$). Zatem $2m + 1 = 3 \\implies 2m = 2 \\implies m = 1$.',
-            cke_trap='Proste równoległe mają IDENTYCZNY współczynnik kierunkowy $a$.'
+            explanation='Proste są równoległe, gdy ich współczynniki kierunkowe są równe: $a_1 = a_2$. Mamy $2m - 1 = 5 \\implies 2m = 6 \\implies m = 3$.',
+            cke_trap='Warunek równoległości to $a_1 = a_2$. Nie przyrównuj wyrazów wolnych $b$!'
         ),
         make_sc_task(
             task_id='task-10-3-2',
-            source='Matura Maj 2023 • Zad. 11',
-            question='Prosta $k$ ma równanie $y = -\\frac{2}{3}x + 4$. Prosta $l$ prostopadła do prostej $k$ ma współczynnik kierunkowy równy',
+            source='Matura Czerwiec 2022 • Zad. 17',
+            question='Prosta przechodząca przez punkt $P(0, 3)$ i prostopadła do prostej $y = -\\frac{2}{3}x + 1$ ma równanie',
             options_data=[
-                ('A', '$\\frac{3}{2}$'),
-                ('B', '$-\\frac{3}{2}$'),
-                ('C', '$\\frac{2}{3}$'),
-                ('D', '$-\\frac{2}{3}$')
+                ('A', '$y = \\frac{3}{2}x + 3$'),
+                ('B', '$y = -\\frac{3}{2}x + 3$'),
+                ('C', '$y = \\frac{2}{3}x + 3$'),
+                ('D', '$y = -\\frac{2}{3}x + 3$')
             ],
             correct_id='A',
-            explanation='Warunek prostopadłości prostych: $a_1 \\cdot a_2 = -1$. Współczynnik musi być odwrotny i przeciwny: dla $-\\frac{2}{3}$ liczbą odwrotną i przeciwną jest $+\\frac{3}{2}$.',
-            cke_trap='Pamiętaj o OBU zmianach: odwracasz ułamek do góry nogami i zmieniasz znak na przeciwny!'
+            explanation='Współczynnik prostopadłej to liczba odwrotna i przeciwna: $a_2 = -\\frac{1}{-\\frac{2}{3}} = \\frac{3}{2}$. Skoro przechodzi przez $(0, 3)$, wyraz wolny to $b = 3$. Równanie: $y = \\frac{3}{2}x + 3$.',
+            cke_trap='Pamiętaj o OBU zmianach: zmień znak na plus ORAZ odwróć ułamek na $\\frac{3}{2}$.'
         ),
         make_sc_task(
             task_id='task-10-3-3',
-            source='Pułapka CKE • Prosta prostopadła przechodząca przez punkt',
-            question='Równanie prostej prostopadłej do prostej $y = 2x - 5$ i przechodzącej przez punkt $P(4, 1)$ to',
+            source='Pułapka CKE • Prosta prostopadła do osi',
+            question='Prosta prostopadła do prostej o równaniu $y = -4$ to prosta o równaniu',
             options_data=[
-                ('A', '$y = -\\frac{1}{2}x + 3$'),
-                ('B', '$y = -\\frac{1}{2}x + 1$'),
-                ('C', '$y = 2x - 7$'),
-                ('D', '$y = -2x + 9$')
+                ('A', '$x = 2$ (prosta pionowa)'),
+                ('B', '$y = 4$'),
+                ('C', '$y = \\frac{1}{4}x$'),
+                ('D', '$y = 0$')
             ],
             correct_id='A',
-            explanation='1) $a_2 = -\\frac{1}{2}$.\n2) Wstawiamy punkt $P(4, 1)$: $1 = -\\frac{1}{2} \\cdot 4 + b \\implies 1 = -2 + b \\implies b = 3$.\nProsta ma równanie $y = -\\frac{1}{2}x + 3$.',
-            cke_trap='Nie zapomnij wyliczyć nowego wyrazu wolnego $b$ dla zadanego punktu!'
+            explanation='Prosta $y = -4$ jest pozioma (równoległa do osi $OX$). Prosta do niej prostopadła musi być pionowa, czyli mieć równanie postaci $x = c$.',
+            cke_trap='Dla prostej poziomej $a = 0$, więc wzór $a_1 \\cdot a_2 = -1$ nie ma zastosowania (dzielenie przez 0). Prostopadła to prosta pionowa $x = c$.'
         ),
         make_tf_task(
             task_id='task-10-3-4',
             source='Trening CKE • Iloczyn współczynników',
-            question='Oceń prawdziwość zdania: Proste $y = 4x + 1$ oraz $y = -0{,}25x - 7$ są wzajemnie prostopadłe.',
+            question='Oceń prawdziwość zdania: Jeśli dwie proste są prostopadłe i żadna z nich nie jest pionowa, to iloczyn ich współczynników kierunkowych jest równy $-1$.',
             correct_tf='PRAWDA',
-            explanation='Iloczyn współczynników kierunkowych: $4 \\cdot (-0{,}25) = 4 \\cdot (-\\frac{1}{4}) = -1$. Warunek prostopadłości jest spełniony.',
-            cke_trap='Liczba $-0{,}25$ to w ułamku zwykłym $-\\frac{1}{4}$.'
+            explanation='To podstawowy warunek prostopadłości z karty wzorów CKE: $a_1 \\cdot a_2 = -1$.',
+            cke_trap='Wyjątkiem są proste pionowa i pozioma, dla których $a$ prostej pionowej nie istnieje.'
         ),
         make_numeric_task(
             task_id='task-10-3-5',
-            source='Utrwalenie • Parametr w prostopadłości',
-            question='Dla jakiej wartości $a$ proste $y = ax + 2$ oraz $y = 5x - 3$ są prostopadłe? Wpisz wartość w postaci dziesiętnej (np. -0.2).',
-            correct_val=-0.2,
-            explanation='$a \\cdot 5 = -1 \\implies a = -\\frac{1}{5} = -0{,}2$.',
-            cke_trap='Liczba odwrotna i przeciwna do 5 to $-\\frac{1}{5} = -0{,}2$.'
+            source='Utrwalenie • Wyznaczanie współczynnika',
+            question='Wyznacz współczynnik kierunkowy prostej prostopadłej do prostej $y = 0{,}25x - 8$.',
+            correct_val=-4,
+            explanation='$0{,}25 = \\frac{1}{4}$. Odwrotny i o przeciwnym znaku to $-\\frac{4}{1} = -4$.',
+            cke_trap='Zamień ułamek dziesiętny na zwykły: $0{,}25 = \\frac{1}{4}$, wtedy łatwo go odwrócić.'
         )
     ]
     l3 = make_lesson(
@@ -300,20 +300,20 @@ def build_topic_10():
         core_formulas=[
             {
                 'title': 'Warunek równoległości prostych',
-                'latex': 'k \\parallel l \\iff a_1 = a_2',
+                'latex': 'k \\parallel l \\implies a_1 = a_2',
                 'description': 'Współczynniki kierunkowe są identyczne.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 5',
+                'cke_page': 'str. 21',
                 'example': 'y = 4x + 1 \\parallel y = 4x - 9',
                 'mnemonic': 'Równoległe to równe.',
                 'matura_tip': 'Wyrazy wolne b mogą być dowolne (b₁ != b₂ dla prostych różnych).'
             },
             {
                 'title': 'Warunek prostopadłości prostych',
-                'latex': 'k \\perp l \\iff a_1 \\cdot a_2 = -1 \\iff a_2 = -\\frac{1}{a_1}',
+                'latex': 'k \\perp l \\implies a_1 \\cdot a_2 = -1',
                 'description': 'Współczynnik jest odwrotny i o przeciwnym znaku.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 5',
+                'cke_page': 'str. 22',
                 'example': 'a_1 = \\frac{2}{5} \\implies a_2 = -\\frac{5}{2} = -2{,}5',
                 'mnemonic': 'Do góry nogami i zmień znak.',
                 'matura_tip': 'Dla liczby ujemnej przeciwna jest dodatnia: -3 -> +1/3.'
@@ -328,7 +328,7 @@ def build_topic_10():
             ],
             'result': 'y = \\frac{1}{2}x - 2'
         },
-        exam_trap='Typowy błąd: Zmiana tylko znaku lub tylko odwrócenie ułamka, np. dla $a = 3$ przyjęcie $a_2 = -3$ lub $a_2 = \\frac{1}{3}$.\n\nPoprawnie: Musisz wykonać OBIE operacje naraz: dla $3$ poprawny współczynnik to $-\\frac{1}{3}$.',
+        exam_trap='Typowy błąd: Zmiana tylko znaku lub tylko odwrócenie ułamka, np. dla $a = 3$ przyjęcie $a_2 = -3$ atau $a_2 = \\frac{1}{3}$.\n\nPoprawnie: Musisz wykonać OBIE operacje naraz: dla $3$ poprawny współczynnik to $-\\frac{1}{3}$.',
         visuals=v3,
         tasks=l3_tasks
     )
@@ -341,73 +341,73 @@ def build_topic_10():
     l4_tasks = [
         make_sc_task(
             task_id='task-10-4-1',
-            source='Rozgrzewka • Model kosztu liniowego',
-            question='Opłata za przejazd taksówką wynosi 8 zł opłaty początkowej oraz 3 zł za każdy przejechany kilometr. Wzór opisujący całkowity koszt $K(x)$ przejazdu $x$ kilometrów to',
+            source='Matura Pokazowa CKE • Zadanie z kontekstem realistycznym',
+            question='Koszt przejazdu taksówką składa się z opłaty początkowej 8 zł oraz stawki 3 zł za każdy przejechany kilometr. Funkcja opisująca koszt przejazdu $K$ w zależności od liczby kilometrów $x$ ma wzór',
             options_data=[
                 ('A', '$K(x) = 3x + 8$'),
                 ('B', '$K(x) = 8x + 3$'),
                 ('C', '$K(x) = 11x$'),
-                ('D', '$K(x) = \\frac{x}{3} + 8$')
+                ('D', '$K(x) = 3x - 8$')
             ],
             correct_id='A',
-            explanation='Koszt stały to wyraz wolny $b = 8$. Stawka jednostkowa (za 1 km) to współczynnik kierunkowy $a = 3$. Zatem $K(x) = 3x + 8$.',
-            cke_trap='Liczba stojąca przy $x$ to stawka zmienna za jednostkę (kilometr, godzinę), a wyraz wolny to opłata stała.'
+            explanation='Opłata początkowa to wyraz wolny $b = 8$. Koszt za kilometr to współczynnik kierunkowy $a = 3$. Zatem funkcja kosztu to $K(x) = 3x + 8$.',
+            cke_trap='Stawka zmienna (za km) stoi przy iksie, a opłata stała jest wyrazem wolnym.'
         ),
         make_sc_task(
             task_id='task-10-4-2',
-            source='Matura CKE • Zadanie z kontekstem realistycznym',
-            question='Woda wypływa ze zbiornika w stałym tempie 5 litrów na minutę. Na początku w zbiorniku było 120 litrów wody. Ilość wody $V(t)$ w litrach po upływie $t$ minut opisuje funkcja',
+            source='Matura Maj 2021 • Zad. 9',
+            question='Zbiornik zawierał 120 litrów wody. Woda wypływa z niego ze stałą prędkością 5 litrów na minutę. Po ilu minutach zbiornik będzie całkowicie pusty?',
             options_data=[
-                ('A', '$V(t) = -5t + 120$'),
-                ('B', '$V(t) = 5t + 120$'),
-                ('C', '$V(t) = 120t - 5$'),
-                ('D', '$V(t) = -120t + 5$')
+                ('A', '24 minuty'),
+                ('B', '20 minut'),
+                ('C', '25 minut'),
+                ('D', '12 minut')
             ],
             correct_id='A',
-            explanation='Woda ubywa, więc współczynnik jest ujemny: $a = -5$. Stan początkowy to $b = 120$. Zatem $V(t) = -5t + 120$.',
-            cke_trap='Ubytek (opróżnianie) zawsze oznacza współczynnik kierunkowy ze znakiem MINUS.'
+            explanation='Ilość wody w zbiorniku opisuje funkcja $V(t) = -5t + 120$. Pusty zbiornik oznacza $V(t) = 0 \\implies -5t + 120 = 0 \\implies 5t = 120 \\implies t = 24$.',
+            cke_trap='Gdy ilość maleje, współczynnik kierunkowy jest ujemny ($-5$).'
         ),
         make_sc_task(
             task_id='task-10-4-3',
-            source='Pułapka CKE • Czas do opróżnienia zbiornika',
-            question='Zbiornik z wodą o równaniu $V(t) = -5t + 120$ zostanie całkowicie opróżniony po upływie',
+            source='Pułapka CKE • Odczyt wartości z modelu liniowego',
+            question='Wartość maszyny spada liniowo wg wzoru $W(t) = -2500t + 30000$, gdzie $t$ to wiek w latach. Wartość maszyny po 4 latach wynosi',
             options_data=[
-                ('A', '$24$ minut'),
-                ('B', '$20$ minut'),
-                ('C', '$120$ minut'),
-                ('D', '$600$ minut')
+                ('A', '$20\\,000$ zł'),
+                ('B', '$10\\,000$ zł'),
+                ('C', '$22\\,500$ zł'),
+                ('D', '$15\\,000$ zł')
             ],
             correct_id='A',
-            explanation='Całkowite opróżnienie oznacza, że objętość wynosi $0$: $-5t + 120 = 0 \\implies 5t = 120 \\implies t = 24$ minuty (to po prostu miejsce zerowe funkcji!).',
-            cke_trap='Pytanie o opróżnienie to pytanie o miejsce zerowe funkcji.'
+            explanation='$W(4) = -2500 \\cdot 4 + 30000 = -10000 + 30000 = 20000$ zł.',
+            cke_trap='Pamiętaj o odjęciu spadku wartości od kwoty początkowej 30 000 zł.'
         ),
         make_tf_task(
             task_id='task-10-4-4',
-            source='Trening CKE • Dziedzina w zadaniu praktycznym',
-            question='Oceń prawdziwość zdania: W zadaniach tekstowych z funkcją liniową dziedziną są zazwyczaj tylko liczby nieujemne ($t \\ge 0$ lub $x \\ge 0$).',
+            source='Trening CKE • Znak współczynnika kierunkowego',
+            question='Oceń prawdziwość zdania: Jeśli poziom naładowania baterii telefonu w czasie intensywnego grania spada o stałą wartość co godzinę, to modelujący ten proces współczynnik kierunkowy $a$ jest ujemny.',
             correct_tf='PRAWDA',
-            explanation='Wielkości fizyczne takie jak czas, droga, masa czy liczba sztuk nie mogą być ujemne w realnym świecie, co ogranicza dziedzinę do liczb nieujemnych.',
-            cke_trap='Zawsze uwzględniaj sens fizyczny zadania (np. czas t nie może biec wstecz).'
+            explanation='Spadek wielkości oznacza funkcję malejącą, dla której współczynnik kierunkowy $a$ jest ujemny ($a < 0$).',
+            cke_trap='Spadek wielkości to zawsze minus przy zmiennej czasu.'
         ),
         make_numeric_task(
             task_id='task-10-4-5',
-            source='Utrwalenie • Obliczenie wartości modelu',
-            question='Abonament telefoniczny kosztuje 25 zł miesięcznie, a każdy dodatkowy gigabajt internetu kosztuje 4 zł. Ile zapłaci klient za miesiąc, w którym zużył 10 dodatkowych gigabajtów?',
-            correct_val=65,
-            explanation='Wzór: $K(x) = 4x + 25$. Dla $x = 10$: $K(10) = 4 \\cdot 10 + 25 = 40 + 25 = 65$ zł.',
-            cke_trap='Koszt to $4 \\cdot 10 + 25 = 65$ zł.'
+            source='Utrwalenie • Czas do zera',
+            question='Świeca o początkowej długości 20 cm pali się ze stałą prędkością 2,5 cm na godzinę. Po ilu godzinach świeca spali się całkowicie?',
+            correct_val=8,
+            explanation='$L(t) = -2{,}5t + 20$. Świeca spala się całkowicie, gdy $L(t) = 0 \\implies 2{,}5t = 20 \\implies t = \\frac{20}{2{,}5} = 8$ godzin.',
+            cke_trap='Dzielenie przez 2,5 to mnożenie przez $\\frac{4}{10}$, czyli $20 \\cdot 0{,}4 = 8$ lub $20 : \\frac{5}{2} = 20 \\cdot \\frac{2}{5} = 8$.'
         )
     ]
     l4 = make_lesson(
         lesson_id='lesson-10-4',
         topic_id=topic_id,
-        title='L1.10.4: Zastosowania praktyczne i zadania tekstowe z funkcją liniową',
+        title='L1.10.4: Zastosowania praktyczne funkcji liniowej i zadania z kontekstem realistycznym',
         concept_essence='Funkcja liniowa $y = ax + b$ to podstawowy model ekonomii i fizyki: 1) Wyraz wolny $b$ to WARTOŚĆ STARTOWA (stan początkowy w chwili $t = 0$, opłata stała, abonament, koszt wstępny). 2) Współczynnik kierunkowy $a$ to TEMPO ZMIANY (stawka za kilometr, prędkość, ubytek wody na minutę). Jeśli coś przyrasta — $a > 0$; jeśli ubywa — $a < 0$. 3) Pytanie o wyczerpanie zapasów lub zatrzymanie to po prostu obliczenie MIEJSCA ZEROWEGO ($y = 0$).',
         matura_context='Zadania tekstowe i modelowanie matematyczne za 1–2 punkty w nowej formule matury 2023–2026.',
         core_formulas=[
             {
                 'title': 'Liniowy model kosztu / wielkości',
-                'latex': 'y = ax + b \\iff \\text{Wartość} = (\\text{tempo}) \\cdot x + (\\text{wartość startowa})',
+                'latex': 'y = ax + b \\implies \\text{Wartość} = (\\text{tempo}) \\cdot x + (\\text{wartość startowa})',
                 'description': 'Podstawowy model opisujący procesy o stałej dynamice zmian.',
                 'in_cke_sheet': False,
                 'cke_page': '-',

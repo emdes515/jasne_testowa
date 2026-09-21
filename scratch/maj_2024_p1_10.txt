@@ -1,0 +1,521 @@
+--- PAGE 1 ---
+ 
+ 
+Układ graficzny 
+© CKE 2022 
+ 
+WYPEŁNIA ZDAJĄCY  
+ 
+ KOD PESEL 
+                 
+ 
+Egzamin maturalny Formuła 2023 
+ 
+MATEMATYKA 
+Poziom podstawowy 
+Symbol arkusza 
+MMAP-P0-100-2405 
+DATA: 8 maja 2024 r. 
+GODZINA ROZPOCZĘCIA: 9:00 
+CZAS TRWANIA: 180 minut 
+LICZBA PUNKTÓW DO UZYSKANIA: 46 
+Przed rozpoczęciem pracy z arkuszem egzaminacyjnym 
+1. Sprawdź, czy nauczyciel przekazał Ci właściwy arkusz egzaminacyjny, 
+tj. arkusz we właściwej formule, z właściwego przedmiotu na właściwym 
+poziomie. 
+2. Jeżeli przekazano Ci niewłaściwy arkusz – natychmiast zgłoś to nauczycielowi. 
+Nie rozrywaj banderol.  
+3. Jeżeli przekazano Ci właściwy arkusz – rozerwij banderole po otrzymaniu 
+takiego polecenia od nauczyciela. Zapoznaj się z instrukcją na stronie 2. 
+WYPEŁNIA ZESPÓŁ NADZORUJĄCY 
+Uprawnienia zdającego do: 
+ dostosowania zasad oceniania 
+ 
+ dostosowania w zw. z dyskalkulią 
+ 
+ nieprzenoszenia odpowiedzi na kartę. 
+  
+Miejsce na naklejkę. 
+ 
+Sprawdź, czy kod na naklejce to  
+M-100. 
+ 
+Jeżeli tak – przyklej naklejkę. 
+Jeżeli nie – zgłoś to nauczycielowi. 
+Arkusz zawiera informacje prawnie chronione do momentu rozpoczęcia 
+egzaminu. 
+Arkusz zawiera informacje prawnie chronione 
+do momentu rozpoczęcia egzaminu. 
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 2 ---
+ 
+Strona 2 z 30 
+MMAP-P0_100 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Instrukcja dla zdającego  
+ 
+1. Sprawdź, czy arkusz egzaminacyjny zawiera 30 stron (zadania 1–31).  
+Ewentualny brak zgłoś przewodniczącemu zespołu nadzorującego egzamin. 
+2. Na pierwszej stronie arkusza oraz na karcie odpowiedzi wpisz swój numer PESEL 
+i przyklej naklejkę z kodem.  
+3. Symbol                zamieszczony w nagłówku zadania oznacza, że rozwiązanie zadania 
+zamkniętego musisz przenieść na kartę odpowiedzi. Ocenie podlegają wyłącznie 
+odpowiedzi zaznaczone na karcie odpowiedzi. 
+4. Odpowiedzi do zadań zamkniętych zaznacz na karcie odpowiedzi w części karty 
+przeznaczonej dla zdającego. Zamaluj      pola do tego przeznaczone. Błędne 
+zaznaczenie otocz kółkiem        i zaznacz właściwe.  
+5. Pamiętaj, że pominięcie argumentacji lub istotnych obliczeń w rozwiązaniu zadania 
+otwartego może spowodować, że za to rozwiązanie nie otrzymasz pełnej liczby punktów. 
+6. Rozwiązania zadań i odpowiedzi wpisuj w miejscu na to przeznaczonym. 
+7. Pisz czytelnie i używaj tylko długopisu lub pióra z czarnym tuszem lub atramentem. 
+8. Nie używaj korektora, a błędne zapisy wyraźnie przekreśl. 
+9. Nie wpisuj żadnych znaków w tabelkach przeznaczonych dla egzaminatora.  
+Tabelki umieszczone są na marginesie przy odpowiednich zadaniach. 
+10. Pamiętaj, że zapisy w brudnopisie nie będą oceniane. 
+11. Możesz korzystać z Wybranych wzorów matematycznych, cyrkla i linijki oraz kalkulatora 
+prostego. Upewnij się, czy przekazano Ci broszurę z okładką taką jak widoczna poniżej. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 3 ---
+ 
+Strona 3 z 30 
+MMAP-P0_100 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Zadania egzaminacyjne są wydrukowane 
+na następnych stronach. 
+ 
+ 
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 4 ---
+ 
+Strona 4 z 30 
+MMAP-P0_100 
+Zadanie 1. (0–1)  
+Dana jest nierówność 
+ 
+|𝑥 − 1| ≥ 3 
+ 
+Na którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich liczb 
+rzeczywistych spełniających powyższą nierówność? Wybierz właściwą odpowiedź 
+spośród podanych. 
+ 
+ 
+A.   B.   
+ 
+ 
+ 
+ 
+ 
+ 
+C.   D.   
+ 
+ 
+ 
+ 
+ 
+ 
+Zadanie 2. (0–1) 
+Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych. 
+ 
+Liczba  ( 1
+16)
+8
+⋅ 816  jest równa 
+ 
+A.  224 B.  216 C.  212 D.  28 
+ 
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+−2 
+ 4 
+ 𝑥 
+−2 
+ 4 
+ 𝑥 
+ −2 
+ 4 
+ 𝑥 
+−2 
+ 4 
+ 𝑥 
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 5 ---
+ 
+Strona 5 z 30 
+MMAP-P0_100 
+Zadanie 3. (0–2) 
+Wykaż, że dla każdej liczby naturalnej  𝒏 ≥ 𝟏  liczba  𝒏𝟐 + (𝒏 + 𝟏)𝟐 + (𝒏 + 𝟐)𝟐  przy 
+dzieleniu przez  𝟑  daje resztę  𝟐. 
+ 
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+3. 
+0–1–2 
+ 
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 6 ---
+ 
+Strona 6 z 30 
+MMAP-P0_100 
+Zadanie 4. (0–1) 
+Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych. 
+ 
+Liczba  log√3 9  jest równa 
+ 
+A.  2 B.  3 C.  4 D.  9 
+ 
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+ 
+ 
+Zadanie 5. (0–1) 
+Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych. 
+ 
+Dla każdej liczby rzeczywistej  𝑎  i dla każdej liczby rzeczywistej  𝑏  wartość wyrażenia  
+(2𝑎 + 𝑏)2 − (2𝑎 − 𝑏)2  jest równa wartości wyrażenia 
+ 
+A.  8𝑎2 B.  8𝑎𝑏 C.  −8𝑎𝑏 D.  2𝑏2 
+ 
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 7 ---
+ 
+Strona 7 z 30 
+MMAP-P0_100 
+Zadanie 6. (0–1) 
+Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych. 
+ 
+Zbiorem wszystkich rozwiązań nierówności 
+ 
+1 − 3
+2 𝑥 < 2
+3 − 𝑥 
+ 
+jest przedział 
+ 
+A.  (−∞, − 2
+3)  B.  (−∞, 2
+3) C.  (− 2
+3 , +∞) D.  (2
+3 , +∞) 
+ 
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+ 
+ 
+Zadanie 7. (0–1) 
+Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych. 
+ 
+Równanie  𝑥+1
+(𝑥+2)(𝑥−3) = 0  w zbiorze liczb rzeczywistych 
+ 
+A.  nie ma rozwiązania. 
+ 
+B.  ma dokładnie jedno rozwiązanie:  (−1). 
+ 
+C.  ma dokładnie dwa rozwiązania:  (−2)  oraz  3. 
+ 
+D.  ma dokładnie trzy rozwiązania:  (−1),  (−2)  oraz  3. 
+ 
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 8 ---
+ 
+Strona 8 z 30 
+MMAP-P0_100 
+Zadanie 8. (0–1) 
+Dany jest wielomian  𝑊(𝑥) = 3𝑥3 + 6𝑥2 + 9𝑥. 
+ 
+Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest 
+prawdziwe, albo F – jeśli jest fałszywe. 
+ 
+Wielomian  𝑊  jest iloczynem wielomianów  𝐹(𝑥) = 3𝑥  i  𝐺(𝑥) = 𝑥2 + 2𝑥 + 3. P F 
+Liczba  (−1)  jest rozwiązaniem równania  𝑊(𝑥) = 0. P F 
+ 
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+ 
+ 
+Zadanie 9. (0–3) 
+Rozwiąż równanie 
+ 
+𝒙𝟑 − 𝟐𝒙𝟐 − 𝟑𝒙 + 𝟔 = 𝟎 
+ 
+Zapisz obliczenia. 
+ 
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+9. 
+  0–1–
+2–3 
+ 
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 9 ---
+ 
+Strona 9 z 30 
+MMAP-P0_100 
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+ 
+Więcej arkuszy znajdziesz na stronie: arkusze.pl--- PAGE 10 ---
+ 
+Strona 10 z 30 
+MMAP-P0_100 
+Zadanie 10. (0–1) 
+W październiku 2022 roku założono dwa sady, w których posadzono łącznie  1960  drzew. 
+Po roku stwierdzono, że uschło  5%  drzew w pierwszym sadzie i  10%  drzew w drugim 
+sadzie. Uschnięte drzewa usunięto, a nowych nie dosadzano. 
+Liczba drzew, które pozostały w drugim sadzie, stanowiła  60%  liczby drzew, które 
+pozostały w pierwszym sadzie. 
+Niech  𝑥  oraz  𝑦  oznaczają liczby drzew posadzonych – odpowiednio – w pierwszym 
+i drugim sadzie. 
+ 
+Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych. 
+ 
+Układem równań, którego poprawne rozwiązanie prowadzi do obliczenia liczby  𝑥  drzew 
+posadzonych w pierwszym sadzie oraz liczby  𝑦  drzew posadzonych w drugim sadzie, jest 
+ 
+A.  { 𝑥 + 𝑦 = 1960
+0,6 ⋅ 0,95𝑥 = 0,9𝑦 
+ 
+B.  { 𝑥 + 𝑦 = 1960
+0,95𝑥 = 0,6 ⋅ 0,9𝑦 
+ 
+C.  { 𝑥 + 𝑦 = 1960
+0,05𝑥 = 0,6 ⋅ 0,1𝑦 
+ 
+D.  { 𝑥 + 𝑦 = 1960
+0,4 ⋅ 0,95𝑥 = 0,9𝑦 
+ 
+Brudnopis                            
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+  
+Więcej arkuszy znajdziesz na stronie: arkusze.pl

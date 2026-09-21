@@ -77,6 +77,9 @@ export function cleanLatex(mathStr: string): string {
   s = s.replace(/(?<!\\)\bbeta\b/gi, '\\beta');
   s = s.replace(/(?<!\\)\bgamma\b/gi, '\\gamma');
 
+  // Normalizacja nawiasowych potęg w czystym LaTeX: np. a^(2^3) -> a^{(2^3)} lub x^(n+1) -> x^{n+1}
+  s = s.replace(/\^(\([^\)]+\))/g, (_m, inner) => `^{${inner}}`);
+
   // Convert slash-notated fractions (e.g. 8/15 -> \frac{8}{15}, (8 \cdot 5)/(15 \cdot 4) -> \frac{8 \cdot 5}{15 \cdot 4})
   s = convertSlashFractions(s);
 
@@ -296,8 +299,13 @@ export function autoWrapLatex(rawStr: string): string {
   const trailingSpace = rawStr.match(/\s*$/)?.[0] || '';
   let s = rawStr.trim();
 
+  // Normalize LaTeX parentheses and bracket delimiters \( ... \) -> $ ... $ and \[ ... \] -> $$ ... $$
+  s = s
+    .replace(/\\{1,2}\(([\s\S]*?)\\{1,2}\)/g, '$$$1$$')
+    .replace(/\\{1,2}\[([\s\S]*?)\\{1,2}\]/g, '$$$$$1$$$$');
+
   // If already contains math delimiters everywhere it needs to ($...$ or $$...$$ or \[...\])
-  const hasInlineDelimiters = s.includes('$') || s.includes('\\(') || s.includes('\\[') || s.includes('\\begin{');
+  const hasInlineDelimiters = s.includes('$') || s.includes('\\begin{');
   const hasLatexCommands = /\\[a-zA-Z]+/.test(s);
   // Check if string contains regular prose words (words of 2+ letters that are not math commands/functions)
   const textWithoutLatex = s
@@ -501,6 +509,14 @@ export function autoWrapLatex(rawStr: string): string {
     // 4h. Ensure space after colon before letters (e.g. ":nową" -> ": nową")
     p = p.replace(/:([a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ])/g, ': $1');
 
+    // 4h2. Parenthesized powers and equations with powers: e.g. "(a^2)^3 = a^6", "a^(2^3) = a^8", "(x+1)^2 = x^2 + 2x + 1"
+    p = p.replace(/(^|\s)(\([a-zA-Z\d\^+\-*/·]+\)\^[a-zA-Z\d\^+\-*/()]+(?:\s*=\s*[a-zA-Z\d\^+\-*/()]+)?)(?=[\s).,;!?]|$)/g, (_m, pre, expr) => {
+      return `${pre}$${cleanLatex(expr)}$`;
+    });
+    p = p.replace(/(^|\s)([a-zA-Z\d]+\^\([a-zA-Z\d\^+\-*/()]+\)(?:\s*=\s*[a-zA-Z\d\^+\-*/()]+)?)(?=[\s).,;!?]|$)/g, (_m, pre, expr) => {
+      return `${pre}$${cleanLatex(expr)}$`;
+    });
+
     // 4i. Standalone powers or expressions with ^ outside math delimiters: e.g. "x^2", "(a+b)^2", "a^n", "2^3"
     p = p.replace(/(^|[\s(])([a-zA-Z\d\(\)]+\^[a-zA-Z\d\(\)\{\}\+\-]+(?:\s*[\+\-\*\/=]\s*[a-zA-Z\d\(\)]+\^[a-zA-Z\d\(\)\{\}\+\-]+|\s*[\+\-\*\/=]\s*[a-zA-Z\d]+)*)(?=[\s).,;!?]|$)/g, (_m, pre, mathExpr) => {
       return `${pre}$${cleanLatex(mathExpr)}$`;
@@ -669,8 +685,11 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
     .replace(/(?:\\x0c|\x0c)/g, '')
     .replace(/(?<=[,\s\d\-+])angle(?=[\s\)\],.;$]|\b)/g, '\\rangle');
 
-  // Normalizacja powielonych znaków dolara (np. $$$$ -> $$) bez ucinania spacji na krańcach tekstu
-  const rawContent = sanitizedInput.replace(/\${3,}/g, '$$');
+  // Normalizacja powielonych znaków dolara (np. $$$$ -> $$) oraz konwersja delimiterów \( ... \) i \[ ... \]
+  const rawContent = sanitizedInput
+    .replace(/\\{1,2}\(([\s\S]*?)\\{1,2}\)/g, '$$$1$$')
+    .replace(/\\{1,2}\[([\s\S]*?)\\{1,2}\]/g, '$$$$$1$$$$')
+    .replace(/\${3,}/g, '$$');
 
   // Funkcja pomocnicza do parsowania tekstu mieszanego z $...$ lub $$...$$
   const renderMixedParts = (str: string, extraClass: string = '') => {

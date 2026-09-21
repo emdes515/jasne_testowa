@@ -736,7 +736,7 @@ export function LearnView({
   return (
     <div 
       id="learn-scroll-content"
-      className="flex flex-col min-h-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full overflow-x-hidden relative pb-32 md:pb-12"
+      className="flex flex-col min-h-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full overflow-x-hidden relative pb-6 md:pb-8"
       style={{ 
         WebkitOverflowScrolling: 'touch'
       }}

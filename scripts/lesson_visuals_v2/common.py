@@ -479,7 +479,7 @@ def make_inequality_explainer_diagram(title=None, badge=None, caption=None, metr
         metrics=metrics or def_metrics
     )
 
-def make_infographic_diagram(title, badge, caption, polygons=None, segments=None, points=None, labels=None, metrics=None, width=520, height=270):
+def make_infographic_diagram(title, badge, caption, polygons=None, segments=None, points=None, labels=None, metrics=None, cards=None, width=520, height=270):
     """
     Uniwersalna fabryka infografik anatomicznych SVG (type: 'INFOGRAPHIC').
     Gwarantuje brak siatek współrzędnych i osi kartezjańskich.
@@ -495,163 +495,210 @@ def make_infographic_diagram(title, badge, caption, polygons=None, segments=None
         'segments': segments or [],
         'points': points or [],
         'labels': labels or [],
-        'metrics': metrics or []
+        'metrics': metrics or [],
+        'cards': cards or []
     }
 
-def make_power_anatomy_diagram(title="Anatomia potęgi: Z polskiego na nasze", badge="a^n = \\underbrace{a \\cdot a \\cdot \\dots \\cdot a}_{n\\text{ jednakowych czynników}}", caption="Podstawa a to liczba, którą mnożysz. Wykładnik n to licznik, ile razy bierzesz ją do mnożenia."):
+def make_power_anatomy_diagram(title="Anatomia potęgi: Z polskiego na nasze", badge="a^n = \\underbrace{a \\cdot a \\cdot \\dots \\cdot a}_{n\\text{ czynników}}", caption="Prawa działań na potęgach działają tylko dla jednakowych podstaw. Zawsze sprowadzaj liczby do wspólnej bazy (2, 3 lub 5)."):
     """
-    Infografika anatomiczna dla potęg: duża podstawa, wykładnik ze strzałką i klamra n-czynników.
-    Zero siatek kartezjańskich, brak dublowania wzorów z Tablic CKE!
+    Infografika anatomiczna dla potęg zoptymalizowana pod ekrany mobilne (360x125 px).
+    Czysty SVG o dużych, czytelnych etykietach (14 px) bez mikroskopijnych elementów.
     """
-    width, height = 520, 160
-    polygons = []
+    width, height = 360, 125
     segments = []
     labels = []
 
-    polygons.append({
-        'points': [[20, 20], [500, 20], [500, 140], [20, 140]],
-        'fill': 'rgba(14, 21, 34, 0.95)',
-        'stroke': 'rgba(255, 184, 0, 0.35)',
-        'strokeWidth': 1.5
-    })
+    # Wycentrowany zapis potęgi: a^n
+    labels.append({'x': 180, 'y': 70, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 48, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 208, 'y': 44, 'text': 'n', 'color': C_SKY, 'fontSize': 30, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    # Duży zapis potęgi: aⁿ
-    labels.append({'x': 85, 'y': 88, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 42, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 115, 'y': 62, 'text': 'n', 'color': C_SKY, 'fontSize': 28, 'fontWeight': 'bold', 'anchor': 'middle'})
+    # Wskaźnik z lewej strony do podstawy 'a'
+    segments.append({'from': [35, 70], 'to': [152, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [145, 65], 'to': [152, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [145, 75], 'to': [152, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    labels.append({'x': 90, 'y': 48, 'text': 'PODSTAWA', 'color': C_PRIMARY, 'fontSize': 14, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 90, 'y': 92, 'text': '(mnożona baza)', 'color': C_MUTED, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    # Wskaźnik do wykładnika 'n'
-    segments.append({'from': [115, 46], 'to': [115, 34], 'color': C_SKY, 'strokeWidth': 1.5})
-    segments.append({'from': [115, 34], 'to': [140, 34], 'color': C_SKY, 'strokeWidth': 1.5})
-    labels.append({'x': 148, 'y': 38, 'text': 'WYKŁADNIK (ile razy mnożysz)', 'color': C_SKY, 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'start'})
+    # Wskaźnik z prawej strony do wykładnika 'n'
+    segments.append({'from': [225, 42], 'to': [325, 42], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [232, 37], 'to': [225, 42], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [232, 47], 'to': [225, 42], 'color': C_SKY, 'strokeWidth': 2})
+    labels.append({'x': 275, 'y': 24, 'text': 'WYKŁADNIK', 'color': C_SKY, 'fontSize': 14, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 275, 'y': 64, 'text': '(ile razy: n ∈ ℝ)', 'color': C_MUTED, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    # Wskaźnik do podstawy 'a'
-    segments.append({'from': [85, 96], 'to': [85, 118], 'color': C_PRIMARY, 'strokeWidth': 1.5})
-    segments.append({'from': [85, 118], 'to': [140, 118], 'color': C_PRIMARY, 'strokeWidth': 1.5})
-    labels.append({'x': 148, 'y': 122, 'text': 'PODSTAWA (liczba mnożona przez samą siebie)', 'color': C_PRIMARY, 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'start'})
-
-    # Znak równości i rozwinięcie iloczynowe
-    labels.append({'x': 175, 'y': 80, 'text': '=', 'color': C_TEXT, 'fontSize': 22, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 320, 'y': 80, 'text': 'a · a · a · ... · a', 'color': C_TEXT, 'fontSize': 18, 'fontWeight': 'bold', 'anchor': 'middle'})
-
-    # Klamra dolna pod rozwinięciem iloczynu
-    segments.append({'from': [210, 94], 'to': [430, 94], 'color': C_MUTED, 'strokeWidth': 1.5})
-    segments.append({'from': [210, 90], 'to': [210, 94], 'color': C_MUTED, 'strokeWidth': 1.5})
-    segments.append({'from': [430, 90], 'to': [430, 94], 'color': C_MUTED, 'strokeWidth': 1.5})
-    labels.append({'x': 320, 'y': 108, 'text': 'n jednakowych czynników', 'color': C_MUTED, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
-
-    metrics = [
-        {'label': 'Podstawa ($a$)', 'value': 'Liczba mnożona przez samą siebie', 'color': C_PRIMARY},
-        {'label': 'Wykładnik ($n$)', 'value': 'Ile razy mnożysz ($n \\in \\mathbb{N}^+$)', 'color': C_SKY}
+    cards = [
+        {
+            'badge': 'PRAWDA',
+            'color': C_SUCCESS,
+            'title': 'Potęgowanie to mnożenie',
+            'formula': '2^3 = 2 \\cdot 2 \\cdot 2 = 8',
+            'desc': 'Mnożysz podstawę 2 przez samą siebie dokładnie 3 razy.'
+        },
+        {
+            'badge': 'PUŁAPKA CKE',
+            'color': C_DANGER,
+            'title': 'To NIE jest zwykłe mnożenie!',
+            'formula': '2^3 \\neq 2 \\cdot 3 = 6',
+            'desc': 'Najczęstszy błąd pod presją czasu: mnożenie podstawy przez wykładnik. Pamiętaj: 2³ = 8, a nie 6!'
+        },
+        {
+            'badge': 'ODWRACANIE',
+            'color': C_PRIMARY,
+            'title': 'Wykładnik ujemny odwraca ułamek',
+            'formula': 'a^{-1} = \\frac{1}{a}, \\quad a^{-n} = \\frac{1}{a^n}',
+            'desc': 'Minus w wykładniku NIE tworzy liczby ujemnej! Jego rolą jest przeniesienie liczby do mianownika.'
+        }
     ]
 
     return make_infographic_diagram(
         title=title,
         badge=badge,
         caption=caption,
-        polygons=polygons,
+        polygons=[],
         segments=segments,
         labels=labels,
-        metrics=metrics,
+        metrics=[],
+        cards=cards,
         width=width,
         height=height
     )
 
-def make_root_anatomy_diagram(title="Anatomia pierwiastka: Z polskiego na nasze", badge="\\sqrt[n]{a} = b \\implies b^n = a", caption="Pierwiastkowanie to działanie odwrotne do potęgowania: szukasz b, które do potęgi n daje a."):
-    """Infografika anatomiczna dla pierwiastków. Zero emoji, zero akademickiego żargonu!"""
-    width, height = 520, 160
-    polygons = []
+def make_root_anatomy_diagram(title="Anatomia pierwiastka: Z polskiego na nasze", badge="\\sqrt[n]{a} = b \\quad \\text{bo} \\quad b^n = a", caption="Zawsze sprawdzaj pierwiastek działaniem odwrotnym: podnieś wynik do potęgi stopnia pierwiastka!"):
+    """
+    Infografika anatomiczna dla pierwiastków zoptymalizowana pod ekrany mobilne (360x125 px).
+    Czysty SVG o dużych, czytelnych etykietach bez akademickiego formalizmu logiki (zakaz \\iff).
+    """
+    width, height = 360, 125
     segments = []
     labels = []
 
-    polygons.append({
-        'points': [[20, 20], [500, 20], [500, 140], [20, 140]],
-        'fill': 'rgba(14, 21, 34, 0.95)',
-        'stroke': 'rgba(16, 185, 129, 0.35)',
-        'strokeWidth': 1.5
-    })
+    # Wycentrowany zapis pierwiastka: \sqrt[n]{a}
+    labels.append({'x': 165, 'y': 44, 'text': 'n', 'color': C_SKY, 'fontSize': 22, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 185, 'y': 68, 'text': '√', 'color': C_SUCCESS, 'fontSize': 48, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 215, 'y': 70, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 34, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    labels.append({'x': 70, 'y': 62, 'text': 'n', 'color': C_SKY, 'fontSize': 20, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 105, 'y': 85, 'text': '√', 'color': C_SUCCESS, 'fontSize': 44, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 135, 'y': 80, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 34, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 180, 'y': 80, 'text': '=', 'color': C_TEXT, 'fontSize': 24, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 210, 'y': 80, 'text': 'b', 'color': C_SUCCESS, 'fontSize': 34, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 270, 'y': 80, 'text': 'bo:', 'color': C_MUTED, 'fontSize': 18, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 340, 'y': 80, 'text': 'bⁿ = a', 'color': C_TEXT, 'fontSize': 24, 'fontWeight': 'bold', 'anchor': 'middle'})
+    # Wskaźnik z lewej do stopnia 'n'
+    segments.append({'from': [35, 44], 'to': [150, 44], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [143, 39], 'to': [150, 44], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [143, 49], 'to': [150, 44], 'color': C_SKY, 'strokeWidth': 2})
+    labels.append({'x': 90, 'y': 26, 'text': 'STOPIEŃ (n)', 'color': C_SKY, 'fontSize': 14, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 90, 'y': 64, 'text': '(domyślnie 2: √)', 'color': C_MUTED, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    segments.append({'from': [70, 48], 'to': [70, 36], 'color': C_SKY, 'strokeWidth': 1.5})
-    segments.append({'from': [70, 36], 'to': [95, 36], 'color': C_SKY, 'strokeWidth': 1.5})
-    labels.append({'x': 102, 'y': 40, 'text': 'STOPIEŃ (domyślnie 2)', 'color': C_SKY, 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'start'})
+    # Wskaźnik z prawej do liczby podpierwiastkowej 'a'
+    segments.append({'from': [230, 70], 'to': [330, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [237, 65], 'to': [230, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [237, 75], 'to': [230, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    labels.append({'x': 280, 'y': 48, 'text': 'LICZBA a', 'color': C_PRIMARY, 'fontSize': 14, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 280, 'y': 90, 'text': '(pod pierwiastkiem)', 'color': C_MUTED, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    segments.append({'from': [135, 96], 'to': [135, 118], 'color': C_PRIMARY, 'strokeWidth': 1.5})
-    segments.append({'from': [135, 118], 'to': [160, 118], 'color': C_PRIMARY, 'strokeWidth': 1.5})
-    labels.append({'x': 168, 'y': 122, 'text': 'LICZBA PODPIERWIASTKOWA', 'color': C_PRIMARY, 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'start'})
-
-    metrics = [
-        {'label': 'Stopień pierwiastka ($n$)', 'value': 'Domyślnie $2$ (gdy brak cyfry to $\\sqrt{a}$)', 'color': C_SKY},
-        {'label': 'Kardynalny błąd CKE', 'value': '$\\sqrt{a + b} \\neq \\sqrt{a} + \\sqrt{b}$ (np. $\\sqrt{9+16} = 5$, nie $7$!)', 'color': C_DANGER}
+    cards = [
+        {
+            'badge': 'INTUICJA',
+            'color': C_SUCCESS,
+            'title': 'Działanie odwrotne do potęgi',
+            'formula': '\\sqrt[3]{8} = 2 \\implies 2^3 = 8',
+            'desc': 'Zadajesz sobie pytanie: jaka liczba podniesiona do potęgi n daje liczbę pod pierwiastkiem?'
+        },
+        {
+            'badge': 'STOPIEŃ 2',
+            'color': C_SKY,
+            'title': 'Pierwiastek kwadratowy',
+            'formula': '\\sqrt{9} = \\sqrt[2]{9} = 3',
+            'desc': 'Gdy nad pierwiastkiem nie ma liczby, stopień wynosi 2. Nigdy nie piszemy małej 2 nad zwykłym pierwiastkiem.'
+        },
+        {
+            'badge': 'PUŁAPKA CKE',
+            'color': C_DANGER,
+            'title': 'Pierwiastek z kwadratu',
+            'formula': '\\sqrt{a^2} = |a| \\neq a',
+            'desc': 'Dla stopnia parzystego wynik jest ZAWSZE nieujemny: \\(\\sqrt{(-3)^2} = |-3| = 3\\), a nie \\(-3\\)!'
+        }
     ]
 
     return make_infographic_diagram(
         title=title,
         badge=badge,
         caption=caption,
-        polygons=polygons,
+        polygons=[],
         segments=segments,
         labels=labels,
-        metrics=metrics,
+        metrics=[],
+        cards=cards,
         width=width,
         height=height
     )
 
-def make_logarithm_loop_diagram(title="Definicja logarytmu: Ruch po pętli", badge="\\log_a b = c \\iff a^c = b", caption="Pytanie pomocnicze: Do jakiej potęgi podnieść a, żeby otrzymać b?"):
-    """Infografika anatomiczna pętli logarytmu ze strzałką kierunkową. Zero emoji!"""
-    width, height = 520, 160
-    polygons = []
+def make_logarithm_loop_diagram(title="Definicja logarytmu: Ruch po pętli", badge="\\log_a b = c \\implies a^c = b", caption="Pytanie pomocnicze: Do jakiej potęgi podnieść a, żeby otrzymać b?"):
+    """
+    Infografika anatomiczna pętli logarytmu zoptymalizowana pod ekrany mobilne (360x125 px).
+    Brak symbolu \\iff, wyraźny wektor pętli i duża czytelność na telefonach.
+    """
+    width, height = 360, 125
     segments = []
     labels = []
 
-    polygons.append({
-        'points': [[20, 20], [500, 20], [500, 140], [20, 140]],
-        'fill': 'rgba(14, 21, 34, 0.95)',
-        'stroke': 'rgba(255, 184, 0, 0.35)',
-        'strokeWidth': 1.5
-    })
+    # Zapis logarytmu z lewej: log_a b = c
+    labels.append({'x': 36, 'y': 55, 'text': 'log', 'color': C_TEXT, 'fontSize': 24, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 62, 'y': 68, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 20, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 86, 'y': 55, 'text': 'b', 'color': C_SKY, 'fontSize': 26, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 114, 'y': 55, 'text': '=', 'color': C_TEXT, 'fontSize': 22, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 138, 'y': 55, 'text': 'c', 'color': C_SUCCESS, 'fontSize': 26, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    labels.append({'x': 75, 'y': 75, 'text': 'log', 'color': C_TEXT, 'fontSize': 28, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 115, 'y': 90, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 24, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 150, 'y': 75, 'text': 'b', 'color': C_SKY, 'fontSize': 32, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 195, 'y': 75, 'text': '=', 'color': C_TEXT, 'fontSize': 24, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 230, 'y': 75, 'text': 'c', 'color': C_SUCCESS, 'fontSize': 32, 'fontWeight': 'bold', 'anchor': 'middle'})
+    # Wskaźnik transformacji na postać potęgową
+    segments.append({'from': [160, 55], 'to': [195, 55], 'color': C_MUTED, 'strokeWidth': 2})
+    segments.append({'from': [188, 50], 'to': [195, 55], 'color': C_MUTED, 'strokeWidth': 2})
+    segments.append({'from': [188, 60], 'to': [195, 55], 'color': C_MUTED, 'strokeWidth': 2})
 
-    labels.append({'x': 285, 'y': 75, 'text': 'znaczy:', 'color': C_MUTED, 'fontSize': 16, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 355, 'y': 75, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 32, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 378, 'y': 57, 'text': 'c', 'color': C_SUCCESS, 'fontSize': 22, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 405, 'y': 75, 'text': '=', 'color': C_TEXT, 'fontSize': 24, 'fontWeight': 'bold', 'anchor': 'middle'})
-    labels.append({'x': 435, 'y': 75, 'text': 'b', 'color': C_SKY, 'fontSize': 32, 'fontWeight': 'bold', 'anchor': 'middle'})
+    # Postać potęgowa z prawej: a^c = b
+    labels.append({'x': 230, 'y': 55, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 28, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 252, 'y': 38, 'text': 'c', 'color': C_SUCCESS, 'fontSize': 20, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 282, 'y': 55, 'text': '=', 'color': C_TEXT, 'fontSize': 22, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 310, 'y': 55, 'text': 'b', 'color': C_SKY, 'fontSize': 28, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    # Wektorowa strzałka pętli
-    segments.append({'from': [115, 100], 'to': [230, 100], 'color': C_PRIMARY, 'strokeWidth': 2})
-    segments.append({'from': [230, 100], 'to': [230, 92], 'color': C_PRIMARY, 'strokeWidth': 2})
-    segments.append({'from': [226, 95], 'to': [230, 91], 'color': C_PRIMARY, 'strokeWidth': 2})
-    segments.append({'from': [234, 95], 'to': [230, 91], 'color': C_PRIMARY, 'strokeWidth': 2})
-    labels.append({'x': 260, 'y': 122, 'text': 'RUCH PO PĘTLI: podstawa a do potęgi c daje b', 'color': C_PRIMARY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
+    # Wektorowa strzałka pętli na dole
+    segments.append({'from': [62, 82], 'to': [138, 82], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [138, 82], 'to': [138, 72], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [133, 77], 'to': [138, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [143, 77], 'to': [138, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    labels.append({'x': 100, 'y': 98, 'text': 'RUCH PO PĘTLI: a^c = b', 'color': C_PRIMARY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    metrics = [
-        {'label': 'Dziedzina podstawy ($a$)', 'value': 'Zawsze $a > 0$ oraz $a \\neq 1$', 'color': C_DANGER},
-        {'label': 'Dziedzina liczby ($b$)', 'value': 'Zawsze $b > 0$', 'color': C_SKY}
+    cards = [
+        {
+            'badge': 'ZŁOTA PĘTLA',
+            'color': C_PRIMARY,
+            'title': 'Ruch po okręgu',
+            'formula': '\\log_a b = c \\implies a^c = b',
+            'desc': 'Zaczynasz od podstawy a, idziesz przez znak równości do potęgi c i lądujesz na liczbie b.'
+        },
+        {
+            'badge': 'DOMYŚLNA BAZA 10',
+            'color': C_SKY,
+            'title': 'Logarytm dziesiętny',
+            'formula': '\\log b = \\log_{10} b',
+            'desc': 'Brak zapisanej podstawy oznacza bazę 10, np. \\(\\log 100 = 2\\), bo \\(10^2 = 100\\).'
+        },
+        {
+            'badge': 'PUŁAPKA CKE',
+            'color': C_DANGER,
+            'title': 'Dziedzina logarytmu',
+            'formula': 'a > 0, \\; a \\neq 1, \\; b > 0',
+            'desc': 'Podstawa i liczba logarytmowana muszą być ściśle dodatnie, a podstawa nie może być równa 1!'
+        }
     ]
 
     return make_infographic_diagram(
         title=title,
         badge=badge,
         caption=caption,
-        polygons=polygons,
+        polygons=[],
         segments=segments,
         labels=labels,
-        metrics=metrics,
+        metrics=[],
+        cards=cards,
         width=width,
         height=height
     )
+
 
 def make_algebraic_identity_diagram(title="Wzory skróconego mnożenia: Z polskiego na nasze", badge="(a \\pm b)^2 = a^2 \\pm 2ab + b^2", caption="Kwadrat sumy to nie suma kwadratów! Zawsze pamiętaj o podwójnym iloczynie 2ab."):
     """Infografika dla algebry i wzorów skróconego mnożenia renderowana w czystym HTML/KaTeX."""

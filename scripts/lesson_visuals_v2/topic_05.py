@@ -16,7 +16,7 @@ def get_topic_05_visuals(l_idx):
         tab0 = {
             'type': 'INFOGRAPHIC',
             'title': 'Rozwiązywanie nierówności liniowych: Podział ról',
-            'formulaBadge': 'ax + b < c \\iff ax < c - b',
+            'formulaBadge': 'ax + b < c \\implies ax < c - b',
             'caption': 'Zasada jak w równaniach: wyrażenia z x przenosimy na lewą stronę, liczby na prawą stronę, ZMIENIAJĄC ZNAK przy przenoszeniu.',
             'cards': [
                 {

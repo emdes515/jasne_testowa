@@ -89,7 +89,7 @@ def build_topic_04():
                 'latex': '(a + b)^2 = a^2 + 2ab + b^2',
                 'description': 'Kwadrat pierwszego plus podwojony iloczyn plus kwadrat drugiego.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 7',
                 'example': '(x + 5)^2 = x^2 + 10x + 25',
                 'mnemonic': 'Kwadrat, podwojony iloczyn, kwadrat.',
                 'matura_tip': 'Nie zgub wyrazu 2ab.'
@@ -99,7 +99,7 @@ def build_topic_04():
                 'latex': '(a - b)^2 = a^2 - 2ab + b^2',
                 'description': 'Minus stoi wyłącznie przy podwojonym iloczynie.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 7',
                 'example': '(2x - 3)^2 = 4x^2 - 12x + 9',
                 'mnemonic': 'Ostatni wyraz $+b^2$ jest ZAWSZE ze znakiem plus.',
                 'matura_tip': '$(-b)^2 = +b^2$, więc na końcu trójmianu zawsze jest dodawanie.'
@@ -196,7 +196,7 @@ def build_topic_04():
                 'latex': 'a^2 - b^2 = (a - b)(a + b)',
                 'description': 'Różnica kwadratów rozkłada się na iloczyn różnicy i sumy.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 7',
                 'example': 'x^2 - 9 = (x - 3)(x + 3)',
                 'mnemonic': 'Różnica kwadratów to dwa nawiasy: z minusem i z plusem.',
                 'matura_tip': 'Suma kwadratów $a^2 + b^2$ NIE rozkłada się w liczbach rzeczywistych!'
@@ -206,7 +206,7 @@ def build_topic_04():
                 'latex': '\\frac{c}{\\sqrt{a} - \\sqrt{b}} = \\frac{c(\\sqrt{a} + \\sqrt{b})}{a - b}',
                 'description': 'Mnożymy górę i dół przez mianownik ze zmienionym znakiem.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 7',
                 'example': '\\frac{2}{\\sqrt{3} - 1} = \\frac{2(\\sqrt{3} + 1)}{3 - 1} = \\sqrt{3} + 1',
                 'mnemonic': 'Sprzężenie to ten sam mianownik, ale z przeciwnym znakiem.',
                 'matura_tip': 'Zawsze zapisuj mianownik w nawiasie przed mnożeniem.'
@@ -304,7 +304,7 @@ def build_topic_04():
                 'latex': 'ax + ay = a(x + y)',
                 'description': 'Dzielenie każdego wyrazu przez ten sam wspólny czynnik.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 7',
                 'example': '3x^2 - 6x = 3x(x - 2)',
                 'mnemonic': 'Odwrócenie mnożenia przez nawias.',
                 'matura_tip': 'Sprawdź swój wynik wymnażając nawias z powrotem.'
@@ -314,7 +314,7 @@ def build_topic_04():
                 'latex': 'x^3 - ax^2 - bx + ab = x^2(x - a) - b(x - a) = (x - a)(x^2 - b)',
                 'description': 'Standardowy schemat rozkładu wielomianów 3. stopnia.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 7',
                 'example': 'x^3 - 3x^2 - 4x + 12 = (x - 3)(x - 2)(x + 2)',
                 'mnemonic': 'Dwie drużyny po dwa wyrazy, wspólny nawias na czele.',
                 'matura_tip': 'Uważaj na znak minus przy wyłączaniu z drugiej pary.'

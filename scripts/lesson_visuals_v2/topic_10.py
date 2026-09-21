@@ -15,18 +15,21 @@ def get_topic_10_visuals(l_idx):
         # L1.10.1: Wzór ogólny y = ax + b i znaczenie współczynnika a
         tab0 = make_plot_diagram(
             title='Współczynnik kierunkowy a: Kąt nachylenia i monotoniczność prostej',
-            badge='y = ax + b,\\quad a > 0 \\implies \\nearrow,\\; a < 0 \\implies \\searrow,\\; a = 0 \\implies \\rightarrow',
+            badge='\\begin{cases} a > 0 \\implies \\text{funkcja rosnąca } (\\nearrow) \\\\[3pt] a = 0 \\implies \\text{funkcja stała } (\\rightarrow) \\\\[3pt] a < 0 \\implies \\text{funkcja malejąca } (\\searrow) \\end{cases}',
             caption='Znak współczynnika kierunkowego a decyduje o tym, czy prosta rośnie, maleje, czy jest pozioma (stała).',
             segments=[
                 {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
                 {'from': [250, 30], 'to': [250, 240], 'color': C_SLATE, 'strokeWidth': 2}, # OY
-                {'from': [80, 230], 'to': [400, 70], 'color': C_SUCCESS, 'strokeWidth': 3, 'label': 'a > 0 (rosnąca)'},
-                {'from': [80, 70], 'to': [400, 230], 'color': C_DANGER, 'strokeWidth': 2.5, 'label': 'a < 0 (malejąca)'},
-                {'from': [60, 110], 'to': [440, 110], 'color': C_SKY, 'strokeWidth': 2, 'dashed': True, 'label': 'a = 0 (stała)'}
+                {'from': [80, 230], 'to': [400, 70], 'color': C_SUCCESS, 'strokeWidth': 3}, # Rosnąca
+                {'from': [80, 70], 'to': [400, 230], 'color': C_DANGER, 'strokeWidth': 2.5}, # Malejąca
+                {'from': [60, 110], 'to': [440, 110], 'color': C_SKY, 'strokeWidth': 2, 'dashed': True} # Stała
             ],
             labels=[
-                {'x': 340, 'y': 55, 'text': 'a > 0 (Rosnąca)', 'color': C_SUCCESS, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 340, 'y': 245, 'text': 'a < 0 (Malejąca)', 'color': C_DANGER, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
+                {'x': 390, 'y': 55, 'text': 'a > 0 (Rosnąca)', 'color': C_SUCCESS, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'end'},
+                {'x': 440, 'y': 96, 'text': 'a = 0 (Stała)', 'color': C_SKY, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'end'},
+                {'x': 390, 'y': 245, 'text': 'a < 0 (Malejąca)', 'color': C_DANGER, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'end'},
+                {'x': 468, 'y': 150, 'text': 'X', 'color': C_TEXT, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'start'},
+                {'x': 250, 'y': 18, 'text': 'Y', 'color': C_TEXT, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
             ],
             metrics=[
                 {'label': '$a > 0$', 'value': 'Kąt ostry z osią OX: funkcja rosnąca', 'color': C_SUCCESS},
@@ -92,7 +95,7 @@ def get_topic_10_visuals(l_idx):
         # L1.10.4: Warunek równoległości prostych (a₁ = a₂) w zadaniach CKE
         tab0 = make_plot_diagram(
             title='Warunek równoległości prostych: Identyczny współczynnik kierunkowy',
-            badge='k \\parallel l \\iff a_1 = a_2',
+            badge='k \\parallel l \\implies a_1 = a_2',
             caption='Dwie proste są do siebie równoległe wtedy i tylko wtedy, gdy ich współczynniki kierunkowe a są DOKŁADNIE TAKIE SAME (a_1 = a_2)! Wyrazy wolne b mogą być dowolne.',
             segments=[
                 {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX

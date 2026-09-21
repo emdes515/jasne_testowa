@@ -1112,7 +1112,7 @@ export default function App() {
           className={`flex-1 min-h-0 flex flex-col focus:outline-none ${
             activeTask
               ? 'overflow-hidden p-0'
-              : 'overflow-y-auto overflow-x-hidden overscroll-y-contain touch-pan-y no-scrollbar pb-32 md:pb-8'
+              : 'overflow-y-auto overflow-x-hidden overscroll-y-contain touch-pan-y no-scrollbar pb-24 sm:pb-28 md:pb-8'
           } relative z-10 w-full`} 
           style={{ 
             WebkitOverflowScrolling: 'touch'

@@ -7,6 +7,7 @@ import { originGuard } from './middleware/originGuard';
 import { centralErrorHandler } from './middleware/errorHandler';
 import { createHealthRouter } from './routes/health.routes';
 import { createAiRouter } from './routes/ai.routes';
+import { createJevRouter } from './routes/jev.routes';
 
 export interface CreateAppOptions {
   enableFrontend?: boolean;
@@ -46,6 +47,7 @@ export async function createApp(options?: CreateAppOptions): Promise<{
   // Mount API routers
   app.use('/api', createHealthRouter(apiLimiter));
   app.use('/api', createAiRouter(aiLimiter));
+  app.use('/api', createJevRouter(aiLimiter));
 
   // Twarde 404 dla nieznanych endpointów API — nigdy nie oddajemy SPA w JSON-owym API.
   app.use('/api', (_req: Request, res: Response) => {

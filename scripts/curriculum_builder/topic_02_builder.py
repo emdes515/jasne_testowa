@@ -29,53 +29,67 @@ def build_topic_02():
                 ('D', '$4$')
             ],
             correct_id='B',
-            explanation='Z definicji logarytmu: $\\log_2 32 = c \\iff 2^c = 32$. Ponieważ $2^5 = 32$, wynik to $5$.',
-            cke_trap='Nigdy nie dziel liczby logarytmowanej przez podstawę ($32 : 2 = 16$ to częsty błąd początkujących!).'
+            explanation='Z definicji logarytmu: $\\log_2 32 = c \\implies 2^c = 32$. Ponieważ $2^5 = 32$, wynik to $5$.',
+            cke_trap='Logarytm to pytanie o wykładnik potęgi, a nie iloraz (nie dziel 32 przez 2!).'
         ),
         make_sc_task(
             task_id='task-2-1-2',
-            source='Matura Maj 2024 • Zad. 3',
-            question='Dokończ zdanie. Liczba $\\log_{\\sqrt{2}} 2$ jest równa',
+            source='Matura Czerwiec 2023 • Zad. 2',
+            question='Liczba $\\log_{\\sqrt{3}} 9$ jest równa',
             options_data=[
-                ('A', '$\\frac{1}{2}$'),
+                ('A', '$4$'),
                 ('B', '$2$'),
-                ('C', '$\\sqrt{2}$'),
-                ('D', '$4$')
+                ('C', '$3$'),
+                ('D', '$\\frac{1}{2}$')
             ],
-            correct_id='B',
-            explanation='Pytamy: do jakiej potęgi $c$ podnieść $\\sqrt{2}$, aby otrzymać $2$?\n$$(\\sqrt{2})^c = 2$$\nPonieważ $(\\sqrt{2})^2 = 2$, szukany wykładnik to $c = 2$.',
-            cke_trap='Uważaj na zamianę podstawy z liczbą logarytmowaną: $\\log_2 \\sqrt{2} = \\frac{1}{2}$, ale $\\log_{\\sqrt{2}} 2 = 2$!'
+            correct_id='A',
+            explanation='$(\\sqrt{3})^c = 9 \\implies (3^{1/2})^c = 3^2 \\implies \\frac{1}{2}c = 2 \\implies c = 4$.',
+            cke_trap='Podstawa to $\\sqrt{3}$, więc $(\\sqrt{3})^4 = ((\\sqrt{3})^2)^2 = 3^2 = 9$.'
+        ),
+        make_sc_task(
+            task_id='task-2-1-3',
+            source='Pułapka CKE • Ujemny wynik logarytmu',
+            question='Wartość wyrażenia $\\log_5 \\frac{1}{25}$ wynosi',
+            options_data=[
+                ('A', '$-2$'),
+                ('B', '$2$'),
+                ('C', '$\\frac{1}{2}$'),
+                ('D', '$\\frac{1}{2}$')
+            ],
+            correct_id='A',
+            explanation='$5^c = \\frac{1}{25} = 5^{-2} \\implies c = -2$. Ułamek w liczbie logarytmowanej daje ujemny wykładnik.',
+            cke_trap='Liczba logarytmowana musi być dodatnia, ale wynik logarytmu jak najbardziej może być ujemny!'
         ),
         make_tf_task(
-            task_id='task-2-1-3',
-            source='Pułapka CKE • Warunki istnienia logarytmu',
-            question='Wyrażenie $\\log_3 (-9)$ ma wartość $-2$, ponieważ $3^{-2} = \\frac{1}{9}$.',
-            correct_tf='FAŁSZ',
-            explanation='Liczba logarytmowana musi być ŚCIŚLE DODATNIA ($b > 0$). Liczba ujemna pod logarytmem sprawia, że wyrażenie NIE MA SENSU w zbiorze liczb rzeczywistych. Ponadto $3^{-2} = \\frac{1}{9} \\neq -9$.',
-            cke_trap='Podstawa $a > 0, a \\neq 1$, a liczba logarytmowana $b > 0$ ZAWSZE!'
+            task_id='task-2-1-4',
+            source='Trening CKE • Logarytm z jedynki i podstawy',
+            question='Oceń prawdziwość zdania: Dla każdej dozwolonej podstawy $a > 0, a \\neq 1$ zachodzi $\\log_a 1 = 0$ oraz $\\log_a a = 1$.',
+            correct_tf='PRAWDA',
+            explanation='Ponieważ $a^0 = 1$ oraz $a^1 = a$, te dwie własności są zawsze prawdziwe.',
+            cke_trap='Niezależnie od podstawy, logarytm z liczby 1 wynosi zawsze zero.'
         ),
         make_numeric_task(
-            task_id='task-2-1-4',
-            source='Zadanie utrwalające • Ułamek w liczbie logarytmowanej',
-            question='Oblicz wartość logarytmu $\\log_5 \\frac{1}{25}$. Wpisz wynik jako liczbę całkowitą.',
-            correct_val='-2',
-            explanation='Pytamy: $5^c = \\frac{1}{25}$. Ponieważ $\\frac{1}{25} = \\frac{1}{5^2} = 5^{-2}$, to $c = -2$.',
-            cke_trap='Pamiętaj o znaku minus przy ułamkach: $5^2 = 25$, ale $5^{-2} = \\frac{1}{25}$.'
+            task_id='task-2-1-5',
+            source='Utrwalenie • Logarytm dziesiętny',
+            question='Oblicz wartość logarytmu dziesiętnego $\\log 1000$.',
+            correct_val=3,
+            explanation='Brak podstawy oznacza podstawę 10: $10^c = 1000 = 10^3 \\implies c = 3$.',
+            cke_trap='Zapis $\\log x$ bez dolnego indeksu to logarytm o podstawie 10.'
         )
     ]
     l1 = make_lesson(
         lesson_id='lesson-2-1',
         topic_id=topic_id,
-        title='L1.2.1: Definicja logarytmu i warunki istnienia',
-        concept_essence='Logarytm $\\log_a b$ to nic innego jak ZAGADKA O WYKŁADNIK: "Do jakiej potęgi muszę podnieść podstawę a (tę małą liczbę na dole), aby otrzymać liczbę b (tę dużą w środku)?". Na przykład $\\log_2 8$ to 3, bo $2^3 = 8$. Zawsze sprawdzaj warunki: podstawa a musi być dodatnia i różna od 1 ($a > 0, a \\neq 1$), a liczba logarytmowana b musi być ściśle dodatnia ($b > 0$). Pod logarytmem nie może stać zero ani liczba ujemna!',
-        matura_context='Definicja logarytmu pojawia się w arkuszu maturalnym CKE na pozycji 3 lub 4 za 1 punkt (100% obecności w arkuszach 2022–2026).',
+        title='L1.2.1: Definicja logarytmu log_a(b) = c i pętla logarytmiczna',
+        concept_essence='Logarytm to pytanie o wykładnik potęgi: "Do jakiej potęgi $c$ muszę podnieść podstawę $a$, aby otrzymać liczbę $b$?". Zasada pętli: podstawa $a$ zatacza koło przez znak równości do liczby $c$ i ląduje na $b$ ($a^c = b$). Warunki konieczne (CKE): podstawa $a > 0$ i $a \\neq 1$, liczba logarytmowana $b > 0$.',
+        matura_context='Pewniak za 1 punkt na każdej maturze (zazwyczaj zadanie 2 lub 3).',
         core_formulas=[
             {
                 'title': 'Definicja logarytmu',
-                'latex': '\\log_a b = c \\iff a^c = b',
+                'latex': '\\log_a b = c \\implies a^c = b',
                 'description': 'Logarytm to wykładnik potęgi, do której należy podnieść a, by otrzymać b.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 5',
                 'example': '\\log_3 81 = 4, \\quad \\text{bo } 3^4 = 81',
                 'mnemonic': 'Kółko potęgowania: a podnosisz do wyniku c i lądujesz w b.',
                 'matura_tip': 'Gdy brak podstawy (np. log 100), domyślną podstawą jest 10 (log₁₀ 100 = 2).'
@@ -85,7 +99,7 @@ def build_topic_02():
                 'latex': 'a > 0,\\quad a \\neq 1,\\quad b > 0',
                 'description': 'Założenia konieczne, by logarytm istniał w liczbach rzeczywistych.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 5',
                 'example': '\\log_5 1 = 0, \\quad \\log_a a = 1',
                 'mnemonic': 'Podstawa: dodatnia i nie jeden. Środek: tylko dodatni!',
                 'matura_tip': 'Logarytm z 1 to ZAWSZE 0, niezależnie od podstawy (bo a⁰ = 1).'
@@ -174,7 +188,7 @@ def build_topic_02():
                 'latex': '\\log_a x + \\log_a y = \\log_a(x \\cdot y)',
                 'description': 'Dodawanie logarytmów o tej samej podstawie to logarytm iloczynu.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 5',
                 'example': '\\log_2 6 + \\log_2 \\left(\\frac{4}{3}\\right) = \\log_2\\left(6 \\cdot \\frac{4}{3}\\right) = \\log_2 8 = 3',
                 'mnemonic': 'Plus na zewnątrz to mnożenie w środku.',
                 'matura_tip': 'Podstawa a musi być identyczna w obu składnikach!'
@@ -184,7 +198,7 @@ def build_topic_02():
                 'latex': '\\log_a x - \\log_a y = \\log_a\\left(\\frac{x}{y}\\right)',
                 'description': 'Odejmowanie logarytmów to logarytm ilorazu.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 5',
                 'example': '\\log_5 100 - \\log_5 4 = \\log_5\\left(\\frac{100}{4}\\right) = \\log_5 25 = 2',
                 'mnemonic': 'Minus na zewnątrz to kreska ułamkowa w środku.',
                 'matura_tip': 'Dzielisz pierwszy składnik przez drugi.'
@@ -273,7 +287,7 @@ def build_topic_02():
                 'latex': 'k \\cdot \\log_a x = \\log_a(x^k)',
                 'description': 'Mnożnik przed logarytmem wchodzi jako wykładnik potęgi liczby x.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'cke_page': 'str. 5',
                 'example': '2\\log_3 5 = \\log_3(5^2) = \\log_3 25',
                 'mnemonic': 'Liczba z przodu wskakuje na barana (staje się potęgą).',
                 'matura_tip': 'Zawsze zlikwiduj mnożnik przed zastosowaniem wzoru na sumę/różnicę!'

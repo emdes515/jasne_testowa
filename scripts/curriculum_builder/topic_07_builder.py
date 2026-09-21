@@ -88,8 +88,8 @@ def build_topic_07():
                 'title': 'Warunek istnienia ułamka algebraicznego',
                 'latex': '\\frac{L(x)}{M(x)} \\implies M(x) \\neq 0',
                 'description': 'Mianownik ułamka musi być różny od zera.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '\\frac{1}{x - 3} \\implies x - 3 \\neq 0 \\implies x \\neq 3 \\implies D = \\mathbb{R} \\setminus \\{3\\}',
                 'mnemonic': 'Dół ułamka nigdy nie może być zerem.',
                 'matura_tip': 'Licznikiem nie przejmujesz się przy dziedzinie.'
@@ -98,8 +98,8 @@ def build_topic_07():
                 'title': 'Dziedzina dla mianownika kwadratowego',
                 'latex': 'x^2 - a^2 \\neq 0 \\implies x \\neq a \\quad \\text{oraz} \\quad x \\neq -a',
                 'description': 'Różnica kwadratów w mianowniku wyklucza dwa symetryczne punkty.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': 'x^2 - 4 \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{-2, 2\\}',
                 'mnemonic': 'Kwadrat z minusem wyrzuca dwie liczby.',
                 'matura_tip': 'Dla $x^2 + 4$ mianownik nigdy się nie zeruje, więc $D = \\mathbb{R}$.'
@@ -193,10 +193,10 @@ def build_topic_07():
         core_formulas=[
             {
                 'title': 'Rozwiązywanie równania wymiernego',
-                'latex': '\\frac{L(x)}{M(x)} = 0 \\iff \\begin{cases} L(x) = 0 \\\\ M(x) \\neq 0 \\end{cases}',
+                'latex': '\\frac{L(x)}{M(x)} = 0 \\implies \\begin{cases} L(x) = 0 \\\\ M(x) \\neq 0 \\end{cases}',
                 'description': 'Licznik musi być zerem, a mianownik nie może być zerem.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '\\frac{x - 2}{x + 1} = 0 \\implies x = 2 \\quad (D = \\mathbb{R} \\setminus \\{-1\\})',
                 'mnemonic': 'Licznik do zera, mianownik do kosza (ale po sprawdzeniu dziedziny!).',
                 'matura_tip': 'Zawsze zapisz dziedzinę obok równania.'
@@ -300,10 +300,10 @@ def build_topic_07():
         core_formulas=[
             {
                 'title': 'Mnożenie na krzyż (własność proporcji)',
-                'latex': '\\frac{a}{b} = \\frac{c}{d} \\iff a \\cdot d = b \\cdot c \\quad (b \\neq 0, d \\neq 0)',
+                'latex': '\\frac{a}{b} = \\frac{c}{d} \\implies a \\cdot d = b \\cdot c \\quad (b \\neq 0, d \\neq 0)',
                 'description': 'Iloczyn po przekątnych jest sobie równy.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 3',
+                'in_cke_sheet': False,
+                'cke_page': '-',
                 'example': '\\frac{x}{3} = \\frac{4}{6} \\implies 6x = 12 \\implies x = 2',
                 'mnemonic': 'Mnożenie po przekątnej likwiduje ułamki.',
                 'matura_tip': 'Zawsze otaczaj wielomiany nawiasami.'
