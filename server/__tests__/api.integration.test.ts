@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import type { Express } from 'express';
 import { createApp } from '../app';
@@ -7,6 +7,7 @@ describe('API Integration Tests', () => {
   let app: Express;
 
   beforeAll(async () => {
+    vi.spyOn(globalThis, 'fetch').mockRejectedValue(new Error('AI offline'));
     const created = await createApp({ enableFrontend: false });
     app = created.app;
   });

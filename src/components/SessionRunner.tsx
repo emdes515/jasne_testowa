@@ -2759,14 +2759,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     >
       <div 
         id="session-runner-container"
-        className="w-full h-full h-[100dvh] md:h-[92vh] md:max-h-[920px] md:max-w-2xl bg-[#0B0F19] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between overflow-hidden relative text-white transition-all duration-200"
+        className="w-full h-full h-[100dvh] md:h-[92vh] md:max-h-[920px] md:max-w-3xl lg:max-w-4xl bg-[#0B0F19] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between overflow-hidden relative text-white transition-all duration-200"
       >
       {/* ================= DEDICATED FOCUS SESSION BAR ================= */}
       <header 
         id="session-header"
         className="w-full shrink-0 bg-[#0B0F19] border-b border-white/10 z-20 sticky top-0"
       >
-        <div className="w-full mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 transition-all max-w-2xl">
+        <div className="w-full mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 transition-all max-w-3xl lg:max-w-4xl">
           {/* Lewa strona: Przycisk wyjścia [X] + Etykieta fazy / Pasek postępu z celem */}
           <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0">
             <button
@@ -3306,7 +3306,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       <main 
         id="session-task-area"
         ref={taskAreaRef}
-        className={`w-full mx-auto flex-1 min-h-0 overflow-y-auto overscroll-y-contain touch-pan-y flex flex-col justify-start transition-all max-w-2xl px-4 ${
+        className={`w-full mx-auto flex-1 min-h-0 overflow-y-auto overscroll-y-contain touch-pan-y flex flex-col justify-start transition-all max-w-3xl lg:max-w-4xl px-4 ${
           isTheoryStep 
             ? 'pb-36 sm:pb-36' 
             : isEvaluated ? 'pb-28 sm:pb-32' : 'pb-24 sm:pb-28'
@@ -3317,7 +3317,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         }}
       >
         {isTheoryStep ? (
-          <div id="session-theory-pill-content" className="w-full max-w-2xl mx-auto space-y-4 pt-2">
+          <div id="session-theory-pill-content" className="w-full max-w-3xl lg:max-w-4xl mx-auto space-y-4 pt-2">
             {/* Minimalistyczne zakładki z dolnym akcentem (underline tabs) */}
             <div className="w-full border-b border-white/10 flex items-center justify-between gap-1 sm:gap-2 px-1 pb-px">
               {(isPolishSession
@@ -3734,14 +3734,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                     </div>
                                   )}
 
-                                  {/* Zwięzły, elegancki pasek przykładu */}
+                                  {/* Przykład jako elegancki nagłówek z wycentrowanym wzorem pod spodem */}
                                   {item.example && (
-                                    <div className="rounded-xl px-3.5 py-2.5 bg-[#070A0F]/80 border border-white/5 flex items-start gap-2.5 text-xs sm:text-sm text-slate-300 shadow-sm">
-                                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#FFB800] shrink-0 mt-0.5">
-                                        Przykład:
+                                    <div className="pt-2 border-t border-white/5 space-y-1.5">
+                                      <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block">
+                                        Przykład zastosowania:
                                       </span>
-                                      <div className="text-slate-200 flex-1 leading-relaxed">
-                                        {renderMicroContent(item.example)}
+                                      <div className="w-full py-2.5 px-3 bg-[#070A0F] border border-white/5 rounded-xl text-center">
+                                        <MathRenderer content={item.example} displayMode={true} />
                                       </div>
                                     </div>
                                   )}
@@ -5020,112 +5020,122 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </div>
             </div>
           </motion.div>
-        ) : (
-          /* 4. STANDARD SINGLE CHOICE (A, B, C, D) - ANSWERS ALWAYS VISIBLE */
-          <motion.div 
-            key={`session-options-${currentStep}-${currentTask?.id || ''}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="space-y-3 pt-1"
-          >
-            {(randomizedOptions.length > 0 ? randomizedOptions : (currentTask?.options || [])).map((option: any, optIdx: number) => {
-              const isString = typeof option === 'string';
-              const defaultLetter = String.fromCharCode(65 + optIdx);
-              let optId = defaultLetter;
-              let optContent = '';
+        ) : (() => {
+          const rawOptions = (randomizedOptions.length > 0 ? randomizedOptions : (currentTask?.options || []));
+          const hasLargeDiagram = rawOptions.some((opt: any) => opt?.diagram || opt?.numberLine);
+          const isLongText = rawOptions.some((opt: any) => {
+            const content = typeof opt === 'string' ? opt : (opt?.content_latex || opt?.text || opt?.content || '');
+            return content.length > 80;
+          });
+          const useTwoColumns = rawOptions.length <= 4 && !hasLargeDiagram && !isLongText;
 
-              if (isString) {
-                const letterMatch = option.match(/^([A-D1-4])[\.\)]\s*(.*)$/);
-                optId = letterMatch ? letterMatch[1].toUpperCase() : defaultLetter;
-                optContent = letterMatch ? letterMatch[2].trim() : option;
-              } else {
-                optId = option.id || option.key || option.label || defaultLetter;
-                optContent = option.content_latex || option.text || option.content || '';
-              }
+          return (
+            /* 4. STANDARD SINGLE CHOICE (A, B, C, D) - ANSWERS ALWAYS VISIBLE */
+            <motion.div 
+              key={`session-options-${currentStep}-${currentTask?.id || ''}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
+              className={useTwoColumns ? "grid grid-cols-1 md:grid-cols-2 gap-3 pt-1" : "space-y-3 pt-1"}
+            >
+              {rawOptions.map((option: any, optIdx: number) => {
+                const isString = typeof option === 'string';
+                const defaultLetter = String.fromCharCode(65 + optIdx);
+                let optId = defaultLetter;
+                let optContent = '';
 
-              const isSelected = selectedOption === optId;
-              const isOptionCorrect = Boolean(option.is_correct);
-
-              // Clean high-contrast styles: answers remain 100% visible on screen
-              let borderStyle = 'border-slate-800 hover:border-slate-700 bg-slate-900/50';
-              if (isSelected && !isEvaluated) {
-                borderStyle = isPolishSession
-                  ? 'border-[#F43F5E] bg-[#F43F5E]/15 shadow-sm'
-                  : 'border-[#FFB800] bg-[#FFB800]/15 shadow-sm';
-              } else if (isEvaluated) {
-                if (isOptionCorrect) {
-                  borderStyle = 'border-emerald-500 bg-emerald-950/35 text-emerald-100 shadow-sm';
-                } else if (isSelected && !isOptionCorrect) {
-                  borderStyle = 'border-rose-500/80 bg-rose-950/35 text-rose-100 shadow-sm';
+                if (isString) {
+                  const letterMatch = option.match(/^([A-D1-4])[\.\)]\s*(.*)$/);
+                  optId = letterMatch ? letterMatch[1].toUpperCase() : defaultLetter;
+                  optContent = letterMatch ? letterMatch[2].trim() : option;
                 } else {
-                  borderStyle = 'border-slate-800/50 opacity-40 bg-slate-900/20 text-slate-500';
+                  optId = option.id || option.key || option.label || defaultLetter;
+                  optContent = option.content_latex || option.text || option.content || '';
                 }
-              }
 
-              return (
-                <button
-                  key={option.id || `session-opt-${optIdx}`}
-                  id={`session-option-${optId}`}
-                  onClick={() => handleSelectOption(optId)}
-                  disabled={isEvaluated}
-                  className={`w-full min-h-[58px] p-3 sm:p-4 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all duration-150 ${borderStyle} active:scale-[0.99]`}
-                >
-                  <div className="flex items-center gap-3.5 flex-1 min-w-0">
-                    <span 
-                      className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 border transition-colors ${
-                        isSelected && !isEvaluated
-                          ? isPolishSession
-                            ? 'bg-[#F43F5E] border-[#E11D48] text-white font-bold'
-                            : 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold'
-                          : isEvaluated && isOptionCorrect
-                            ? 'bg-emerald-500 border-emerald-400 text-emerald-950 font-black'
-                            : isEvaluated && isSelected && !isOptionCorrect
-                              ? 'bg-rose-500 border-rose-400 text-white font-black'
-                              : 'bg-slate-800 border-slate-700 text-slate-300'
-                      }`}
-                    >
-                      {optId}
-                    </span>
-                    <div className="text-sm sm:text-base text-slate-100 font-medium break-words flex-1">
-                      {option?.numberLine ? (
-                        <NumberLineDiagram data={option.numberLine} />
-                      ) : option?.diagram ? (
-                        <MathDiagram diagram={option.diagram} />
-                      ) : (
-                        <MathRenderer content={optContent || (typeof option === 'string' ? option : (option?.text || option?.content_latex || ''))} />
-                      )}
+                const isSelected = selectedOption === optId;
+                const isOptionCorrect = Boolean(option.is_correct);
+
+                // Clean high-contrast styles: answers remain 100% visible on screen
+                let borderStyle = 'border-slate-800 hover:border-slate-700 bg-slate-900/50';
+                if (isSelected && !isEvaluated) {
+                  borderStyle = isPolishSession
+                    ? 'border-[#F43F5E] bg-[#F43F5E]/15 shadow-sm'
+                    : 'border-[#FFB800] bg-[#FFB800]/15 shadow-sm';
+                } else if (isEvaluated) {
+                  if (isOptionCorrect) {
+                    borderStyle = 'border-emerald-500 bg-emerald-950/35 text-emerald-100 shadow-sm';
+                  } else if (isSelected && !isOptionCorrect) {
+                    borderStyle = 'border-rose-500/80 bg-rose-950/35 text-rose-100 shadow-sm';
+                  } else {
+                    borderStyle = 'border-slate-800/50 opacity-40 bg-slate-900/20 text-slate-500';
+                  }
+                }
+
+                return (
+                  <button
+                    key={option.id || `session-opt-${optIdx}`}
+                    id={`session-option-${optId}`}
+                    onClick={() => handleSelectOption(optId)}
+                    disabled={isEvaluated}
+                    className={`w-full min-h-[58px] p-3 sm:p-4 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all duration-150 ${borderStyle} active:scale-[0.99]`}
+                  >
+                    <div className="flex items-center gap-3.5 flex-1 min-w-0">
+                      <span 
+                        className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 border transition-colors ${
+                          isSelected && !isEvaluated
+                            ? isPolishSession
+                              ? 'bg-[#F43F5E] border-[#E11D48] text-white font-bold'
+                              : 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold'
+                            : isEvaluated && isOptionCorrect
+                              ? 'bg-emerald-500 border-emerald-400 text-emerald-950 font-black'
+                              : isEvaluated && isSelected && !isOptionCorrect
+                                ? 'bg-rose-500 border-rose-400 text-white font-black'
+                                : 'bg-slate-800 border-slate-700 text-slate-300'
+                        }`}
+                      >
+                        {optId}
+                      </span>
+                      <div className="text-sm sm:text-base text-slate-100 font-medium break-words flex-1">
+                        {option?.numberLine ? (
+                          <NumberLineDiagram data={option.numberLine} />
+                        ) : option?.diagram ? (
+                          <MathDiagram diagram={option.diagram} />
+                        ) : (
+                          <MathRenderer content={optContent || (typeof option === 'string' ? option : (option?.text || option?.content_latex || ''))} />
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Keyboard badge for desktop */}
-                  {!isEvaluated && (
-                    <span className="hidden md:inline-flex items-center text-[11px] font-mono font-bold text-slate-400 bg-slate-800/80 border border-slate-700/60 px-2 py-0.5 rounded shrink-0 mr-1">
-                      {optId}
-                    </span>
-                  )}
+                    {/* Keyboard badge for desktop */}
+                    {!isEvaluated && (
+                      <span className="hidden md:inline-flex items-center text-[11px] font-mono font-bold text-slate-400 bg-slate-800/80 border border-slate-700/60 px-2 py-0.5 rounded shrink-0 mr-1">
+                        {optId}
+                      </span>
+                    )}
 
-                  {/* Selection / Status Icon */}
-                  {isSelected && !isEvaluated && (
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-                      isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
-                    }`}>
-                      <div className={`w-2.5 h-2.5 rounded-full ${
-                        isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
-                      }`} />
-                    </div>
-                  )}
-                  {isEvaluated && isOptionCorrect && (
-                    <Check className="w-5 h-5 text-emerald-400 shrink-0 stroke-[3]" />
-                  )}
-                  {isEvaluated && isSelected && !isOptionCorrect && (
-                    <X className="w-5 h-5 text-rose-400 shrink-0 stroke-[3]" />
-                  )}
-                </button>
-              );
-            })}
-          </motion.div>
-        )}
+                    {/* Selection / Status Icon */}
+                    {isSelected && !isEvaluated && (
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
+                        isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
+                      }`}>
+                        <div className={`w-2.5 h-2.5 rounded-full ${
+                          isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
+                        }`} />
+                      </div>
+                    )}
+                    {isEvaluated && isOptionCorrect && (
+                      <Check className="w-5 h-5 text-emerald-400 shrink-0 stroke-[3]" />
+                    )}
+                    {isEvaluated && isSelected && !isOptionCorrect && (
+                      <X className="w-5 h-5 text-rose-400 shrink-0 stroke-[3]" />
+                    )}
+                  </button>
+                );
+              })}
+            </motion.div>
+          );
+        })()}
           </>
         )}
       </main>
@@ -5136,7 +5146,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           id="session-theory-sticky-cta"
           className="w-full shrink-0 sticky bottom-0 z-30 bg-[#0B0F19]/95 backdrop-blur-md border-t border-slate-800 px-4 py-3"
         >
-          <div className="w-full max-w-2xl mx-auto flex items-center gap-2">
+          <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex items-center gap-2">
             {theorySubStep > 0 && (
               <button
                 type="button"
@@ -5210,7 +5220,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               id="session-check-bar"
               className="w-full bg-[#0B0F19]/95 backdrop-blur-md border-t border-slate-800 px-4 py-3 sm:py-4"
             >
-              <div className="w-full max-w-2xl mx-auto flex flex-col items-center gap-2">
+              <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex flex-col items-center gap-2">
                 <div className="flex items-center gap-3 w-full">
                   {/* Hint Button (Square Left) */}
                   {currentTask && (
@@ -5339,7 +5349,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   : 'bg-[#1C0F14]/95 border-rose-500 shadow-[0_-8px_25px_rgba(244,63,94,0.2)]'
               }`}
             >
-              <div className="w-full max-w-2xl mx-auto flex items-center justify-between gap-3">
+              <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex items-center justify-between gap-3">
                 {/* Status Section (Left) - Bez ucinania tekstu */}
                 <div className="flex items-center gap-3 min-w-0 flex-1">
                   <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 border ${
