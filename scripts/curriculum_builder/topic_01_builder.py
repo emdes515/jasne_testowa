@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_01():
     topic_id = 'dzial-1'
-    topic_title = 'Dział 1.1: Potęgi i pierwiastki'
+    topic_title = 'Potęgi i pierwiastki'
+    topic_number = 1
     lessons = []
 
     # ----------------------------------------------------
@@ -20,21 +21,7 @@ def build_topic_01():
     l1_tasks = [
         make_sc_task(
             task_id='task-1-1-1',
-            source='Rozgrzewka • Prawa działań na potęgach',
-            question='Dokończ zdanie. Iloczyn $3^4 \\cdot 3^5$ jest równy',
-            options_data=[
-                ('A', '$9^9$'),
-                ('B', '$3^{20}$'),
-                ('C', '$3^9$'),
-                ('D', '$9^{20}$')
-            ],
-            correct_id='C',
-            explanation='Stosujemy wzór na iloczyn potęg o tej samej podstawie: $a^m \\cdot a^n = a^{m+n}$. Tutaj podstawa wynosi $3$, więc wykładniki dodajemy: $4 + 5 = 9$. Wynik to $3^9$.',
-            cke_trap='Nigdy nie mnóż podstaw potęg ($3 \\cdot 3 = 9$) ani nie mnóż wykładników ($4 \\cdot 5 = 20$) przy mnożeniu potęg o tej samej podstawie!'
-        ),
-        make_sc_task(
-            task_id='task-1-1-2',
-            source='Matura Maj 2024 • Zad. 2',
+            source='Matura CKE Maj 2024 • Zadanie 2 (1 pkt)',
             question='Dokończ zdanie. Liczba $\\left(\\frac{1}{16}\\right)^8 \\cdot 8^{16}$ jest równa',
             options_data=[
                 ('A', '$2^{24}$'),
@@ -43,46 +30,141 @@ def build_topic_01():
                 ('D', '$2^8$')
             ],
             correct_id='B',
-            explanation='Sprowadzamy obie potęgi do wspólnej podstawy $2$:\n$$\\frac{1}{16} = 2^{-4} \\implies \\left(\\frac{1}{16}\\right)^8 = (2^{-4})^8 = 2^{-32}$$\n$$8 = 2^3 \\implies 8^{16} = (2^3)^{16} = 2^{48}$$\nMnożymy potęgi: $2^{-32} \\cdot 2^{48} = 2^{-32 + 48} = 2^{16}$.',
-            cke_trap='Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki ($2^{-4}$, a nie $2^4$).'
+            explanation='Sprowadzamy obie potęgi do wspólnej podstawy $2$:\n$$\\frac{1}{16} = 2^{-4} \\implies \\left(\\frac{1}{16}\\right)^8 = (2^{-4})^8 = 2^{-32}$$\n$$8 = 2^3 \\implies 8^{16} = (2^3)^{16} = 2^{48}$$\nMnożymy potęgi o tej samej podstawie:\n$$2^{-32} \\cdot 2^{48} = 2^{-32 + 48} = 2^{16}$$',
+            cke_trap='Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki: to $2^{-4}$, a nie $2^4$.'
+        ),
+        make_sc_task(
+            task_id='task-1-1-2',
+            source='Matura CKE Czerwiec 2024 • Zadanie 1 (1 pkt)',
+            question='Dokończ zdanie. Liczba $2^{-1} \\cdot 32^{\\frac{3}{5}}$ jest równa',
+            options_data=[
+                ('A', '$1$'),
+                ('B', '$2$'),
+                ('C', '$3$'),
+                ('D', '$4$')
+            ],
+            correct_id='D',
+            explanation='Sprowadzamy liczbę $32$ do potęgi dwójki: $32 = 2^5$.\nWtedy:\n$$32^{\\frac{3}{5}} = (2^5)^{\\frac{3}{5}} = 2^{5 \\cdot \\frac{3}{5}} = 2^3 = 8$$\nObliczamy iloczyn:\n$$2^{-1} \\cdot 8 = \\frac{1}{2} \\cdot 8 = 4$$\n(lub na wykładnikach: $2^{-1} \\cdot 2^3 = 2^{-1+3} = 2^2 = 4$).',
+            cke_trap='Nie mnóż $2^{-1}$ przez $32$ przed obliczeniem potęgi. Pamiętaj: potęgowanie ma pierwszeństwo przed mnożeniem!'
         ),
         make_sc_task(
             task_id='task-1-1-3',
-            source='Pułapka CKE • Potęgowanie potęgi',
-            question='Wartość wyrażenia $\\frac{(2^3)^4}{2^2 \\cdot 2^5}$ jest równa',
+            source='Matura CKE Sierpień 2024 • Zadanie 2 (1 pkt)',
+            question='Dokończ zdanie. Liczba $\\left(\\frac{4}{25}\\right)^{-0{,}5}$ jest równa',
             options_data=[
-                ('A', '$2^5$'),
-                ('B', '$2^7$'),
-                ('C', '$2^{10}$'),
-                ('D', '$1$')
+                ('A', '$-\\frac{5}{2}$'),
+                ('B', '$-\\frac{2}{5}$'),
+                ('C', '$\\frac{5}{2}$'),
+                ('D', '$\\frac{2}{5}$')
+            ],
+            correct_id='C',
+            explanation='Zapisujemy wykładnik jako ułamek zwykły: $-0{,}5 = -\\frac{1}{2}$.\nMinus w wykładniku odwraca ułamek do góry dnem:\n$$\\left(\\frac{4}{25}\\right)^{-\\frac{1}{2}} = \\left(\\frac{25}{4}\\right)^{\\frac{1}{2}}$$\nWykładnik $\\frac{1}{2}$ oznacza pierwiastek kwadratowy:\n$$\\sqrt{\\frac{25}{4}} = \\frac{\\sqrt{25}}{\\sqrt{4}} = \\frac{5}{2}$$',
+            cke_trap='Minus w wykładniku NIGDY nie daje liczby ujemnej! Odwraca jedynie podstawę ułamka. Dystraktory A i B to klasyczne pułapki CKE.'
+        ),
+        make_sc_task(
+            task_id='task-1-1-4',
+            source='Matura CKE Maj 2025 • Zadanie 2 (1 pkt)',
+            question='Dokończ zdanie. Wartość wyrażenia $\\frac{5^{12} + 5^{13} + 5^{14}}{5^{12}}$ jest równa',
+            options_data=[
+                ('A', '$5^0 + 5^1 + 5^2$'),
+                ('B', '$31$'),
+                ('C', '$5^{27}$'),
+                ('D', '$15$')
+            ],
+            correct_id='B',
+            explanation='W liczniku wyłączamy najmniejszą wspólną potęgę $5^{12}$ przed nawias:\n$$5^{12} + 5^{13} + 5^{14} = 5^{12}(1 + 5^1 + 5^2) = 5^{12}(1 + 5 + 25) = 5^{12} \\cdot 31$$\nDzielimy przez mianownik:\n$$\\frac{5^{12} \\cdot 31}{5^{12}} = 31$$',
+            cke_trap='Nigdy nie dodawaj wykładników przy dodawaniu potęg ($5^{12} + 5^{13} + 5^{14} \\neq 5^{39}$). Przy sumie potęg zawsze wyłączaj najmniejszą potęgę przed nawias!'
+        ),
+        make_sc_task(
+            task_id='task-1-1-5',
+            source='Matura CKE Marzec 2026 • Zadanie 3 (1 pkt)',
+            question='Dokończ zdanie. Wartość wyrażenia $\\frac{3^{10} \\cdot 9^{20}}{27^{15}}$ jest równa',
+            options_data=[
+                ('A', '$3^0$'),
+                ('B', '$3^5$'),
+                ('C', '$3^{10}$'),
+                ('D', '$3^{15}$')
+            ],
+            correct_id='B',
+            explanation='Sprowadzamy wszystkie liczby do potęgi trójki: $9 = 3^2$, $27 = 3^3$.\n$$9^{20} = (3^2)^{20} = 3^{40}, \\quad 27^{15} = (3^3)^{15} = 3^{45}$$\nLicznik: $3^{10} \\cdot 3^{40} = 3^{10+40} = 3^{50}$.\nCałość: $\\frac{3^{50}}{3^{45}} = 3^{50 - 45} = 3^5$.',
+            cke_trap='Pamiętaj o regule potęgowania potęgi: wykładniki się MNOŻY ($2 \\cdot 20 = 40$), a nie dodaje ($2 + 20 = 22$).'
+        ),
+        make_sc_task(
+            task_id='task-1-1-6',
+            source='Matura CKE Czerwiec 2023 • Zadanie 2 (1 pkt)',
+            question='Dokończ zdanie. Dla każdej liczby rzeczywistej dodatniej $x$ wyrażenie $\\sqrt{x} \\cdot \\sqrt[3]{x} \\cdot \\sqrt[6]{x}$ jest równe',
+            options_data=[
+                ('A', '$x$'),
+                ('B', '$x^{\\frac{1}{6}}$'),
+                ('C', '$x^{\\frac{1}{36}}$'),
+                ('D', '$\\sqrt[11]{x}$')
             ],
             correct_id='A',
-            explanation='W liczniku potęgujemy potęgę (wykładniki mnożymy): $(2^3)^4 = 2^{3 \\cdot 4} = 2^{12}$.\nW mianowniku mnożymy potęgi (wykładniki dodajemy): $2^2 \\cdot 2^5 = 2^{2+5} = 2^7$.\nDzielimy potęgi (wykładniki odejmujemy): $\\frac{2^{12}}{2^7} = 2^{12 - 7} = 2^5$.',
-            cke_trap='W potęgowaniu potęgi $(a^m)^n$ wykładniki się MNOŻY ($3 \\cdot 4 = 12$), a nie dodaje ($3 + 4 = 7$).'
+            explanation='Zamieniamy pierwiastki na potęgi o wykładnikach ułamkowych:\n$$\\sqrt{x} = x^{\\frac{1}{2}}, \\quad \\sqrt[3]{x} = x^{\\frac{1}{3}}, \\quad \\sqrt[6]{x} = x^{\\frac{1}{6}}$$\nDodajemy wykładniki do wspólnego mianownika 6:\n$$\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6} = \\frac{3}{6} + \\frac{2}{6} + \\frac{1}{6} = \\frac{6}{6} = 1$$\nOtrzymujemy $x^1 = x$.',
+            cke_trap='Nie mnóż stopni pierwiastków ze sobą ($2 \\cdot 3 \\cdot 6 = 36$). Zamiana pierwiastków na wykładniki ułamkowe sprowadza zadanie do zwykłego dodawania ułamków.'
         ),
-        make_numeric_task(
-            task_id='task-1-1-4',
-            source='Zadanie utrwalające • Redukcja potęg',
-            question='Oblicz wartość wyrażenia $\\frac{5^9 \\cdot 25^2}{125^4}$. Wpisz wynik jako liczbę całkowitą.',
-            correct_val='5',
-            explanation='Sprowadzamy do podstawy 5:\nLicznik: $5^9 \\cdot (5^2)^2 = 5^9 \\cdot 5^4 = 5^{13}$.\nMianownik: $(5^3)^4 = 5^{12}$.\nDzielenie: $5^{13} : 5^{12} = 5^{13 - 12} = 5^1 = 5$.',
-            cke_trap='Pamiętaj, że $25 = 5^2$ oraz $125 = 5^3$.'
+        make_sc_task(
+            task_id='task-1-1-7',
+            source='Matura CKE Sierpień 2026 • Zadanie 2 (1 pkt)',
+            question='Dokończ zdanie. Liczba $\\frac{3^{-1} \\cdot 4^{0{,}5}}{3^{-2} \\cdot 2^{-1}}$ jest równa',
+            options_data=[
+                ('A', '$6$'),
+                ('B', '$12$'),
+                ('C', '$18$'),
+                ('D', '$24$')
+            ],
+            correct_id='B',
+            explanation='Rozdzielamy ułamek na część o podstawie 3 i część o podstawie 2:\n$$\\frac{3^{-1}}{3^{-2}} = 3^{-1 - (-2)} = 3^{-1 + 2} = 3^1 = 3$$\nPonieważ $4^{0{,}5} = \\sqrt{4} = 2 = 2^1$, część z dwójkami wynosi:\n$$\\frac{2^1}{2^{-1}} = 2^{1 - (-1)} = 2^2 = 4$$\nWynik to $3 \\cdot 4 = 12$.',
+            cke_trap='Uważaj na odejmowanie ujemnych wykładników: $m - (-n) = m + n$. Błąd znaku w mianowniku prowadzi do błędnego wyniku.'
+        ),
+        make_sc_task(
+            task_id='task-1-1-8',
+            source='Matura CKE Próbna Grudzień 2023 • Zadanie 1 (1 pkt)',
+            question='Dokończ zdanie. Liczba $(3^{-2{,}4} \\cdot 3^{0{,}4})^{0{,}5}$ jest równa',
+            options_data=[
+                ('A', '$3$'),
+                ('B', '$9$'),
+                ('C', '$\\frac{1}{3}$'),
+                ('D', '$\\frac{1}{9}$')
+            ],
+            correct_id='C',
+            explanation='Wykonujemy najpierw mnożenie wewnątrz nawiasu:\n$$3^{-2{,}4 + 0{,}4} = 3^{-2}$$\nNastępnie potęgujemy potęgę:\n$$(3^{-2})^{0{,}5} = 3^{-2 \\cdot 0{,}5} = 3^{-1} = \\frac{1}{3}$$',
+            cke_trap='Wykładnik $-1$ to odwrotność liczby ($3^{-1} = \\frac{1}{3}$), a nie $-3$ ani $3$.'
+        ),
+        make_sc_task(
+            task_id='task-1-1-9',
+            source='Matura CKE Próbna Grudzień 2022 • Zadanie 1 (1 pkt)',
+            question='Dokończ zdanie. Liczba $(5 \\cdot 5^{0{,}5})^{\\frac{1}{3}}$ jest równa',
+            options_data=[
+                ('A', '$5^{\\frac{1}{6}}$'),
+                ('B', '$5^{\\frac{2}{3}}$'),
+                ('C', '$\\sqrt{5}$'),
+                ('D', '$5$')
+            ],
+            correct_id='C',
+            explanation='Pamiętamy, że $5 = 5^1$. Działanie w nawiasie:\n$$5^1 \\cdot 5^{0{,}5} = 5^{1 + 0{,}5} = 5^{1{,}5} = 5^{\\frac{3}{2}}$$\nPotęgujemy potęgę:\n$$(5^{\\frac{3}{2}})^{\\frac{1}{3}} = 5^{\\frac{3}{2} \\cdot \\frac{1}{3}} = 5^{\\frac{1}{2}} = \\sqrt{5}$$',
+            cke_trap='Liczba 5 ma domyślny wykładnik 1, a nie 0. $5 \\cdot 5^{0{,}5} = 5^{1{,}5}$, a nie $5^{0{,}5}$.'
         ),
         make_open_task(
-            task_id='task-1-1-5',
-            source='Matura CKE • Zadanie dowodowe (2 pkt)',
-            question='Wykaż, że dla każdej liczby całkowitej dodatniej $n$ liczba $3^{n+2} + 3^n$ jest podzielna przez $10$.',
+            task_id='task-1-1-10',
+            source='Informator CKE Formuła 2023 • Zadanie otwarte (2 pkt)',
+            question='Wykaż, że liczba $3^{45} + 9^{22} + 27^{14}$ jest podzielna przez $37$.',
             points=2,
-            scoring_key='1 pkt – wyłączenie wspólnego czynnika $3^n$ przed nawias: $3^n(3^2 + 1)$.\\n2 pkt – pełne uzasadnienie: $3^n \\cdot 10$, co jako iloczyn liczby całkowitej i 10 jest podzielne przez 10.',
-            explanation='Rozpisujemy potęgę $3^{n+2} = 3^n \\cdot 3^2 = 9 \\cdot 3^n$.\nWyłączamy wspólny czynnik $3^n$ przed nawias:\n$$3^{n+2} + 3^n = 3^n(3^2 + 1) = 3^n(9 + 1) = 3^n \\cdot 10$$\nPonieważ liczba $10$ jest jednym z czynników, a $3^n$ dla $n \\in \\mathbb{N}^+$ jest liczbą całkowitą, całe wyrażenie jest podzielne przez $10$. Co kończy dowód.',
-            cke_trap='Nigdy nie sprawdzaj tylko dla $n=1$ i $n=2$! Dowód musi obejmować dowolne $n$ poprzez wyłączenie czynnika przed nawias.'
+            scoring_key='1 pkt – sprowadzenie wszystkich składników do wspólnej podstawy $3$: $3^{45} + 3^{44} + 3^{42}$.\\n2 pkt – wyłączenie $3^{42}$ przed nawias: $3^{42}(3^3 + 3^2 + 1) = 3^{42} \\cdot 37$ i sformułowanie poprawnego wniosku.',
+            explanation='Sprowadzamy wszystkie potęgi do wspólnej podstawy 3:\n$$9^{22} = (3^2)^{22} = 3^{44}, \\quad 27^{14} = (3^3)^{14} = 3^{42}$$\nZapisujemy sumę:\n$$3^{45} + 3^{44} + 3^{42}$$\nWyłączamy najmniejszą potęgę $3^{42}$ przed nawias:\n$$3^{42}(3^3 + 3^2 + 1) = 3^{42}(27 + 9 + 1) = 3^{42} \\cdot 37$$\nPonieważ liczba 37 jest jednym z czynników iloczynu, cała liczba jest podzielna przez 37, co kończy dowód.',
+            cke_trap='Nigdy nie sprawdzaj podzielności kalkulatorem ani nie próbuj liczyć potęgi $3^{45}$! W dowodzie maturalnym kluczem jest wyłączenie najmniejszej potęgi przed nawias, aby wyodrębnić zadany dzielnik.'
         )
     ]
     l1 = make_lesson(
         lesson_id='lesson-1-1',
         topic_id=topic_id,
-        title='L1.1.1: Działania na potęgach o wykładnikach całkowitych i wymiernych',
-        concept_essence='Potęgowanie to skrócony zapis wielokrotnego mnożenia tej samej liczby: zapis $a^n$ oznacza, że liczbę $a$ (podstawę) mnożysz przez samą siebie $n$ razy (wykładnik). Zrozumienie tej definicji daje Ci intuicję do wszystkich praw działań na potęgach: podstawa potęgi jest jak nienaruszalna cegiełka, a operacje wykonujesz wyłącznie na licznikach powtórzeń. Gdy w zadaniu CKE widzisz różne liczby (np. $4$, $8$, $16$), Twoim pierwszym odruchem jest sprowadzenie ich do wspólnej, najprostszej bazy – najczęściej $2$, $3$ lub $5$.',
+        title='Działania na potęgach o wykładnikach całkowitych i wymiernych',
+        concept_essence=(
+            "Potęgowanie to skrócony zapis wielokrotnego mnożenia tej samej liczby: zapis $a^n$ oznacza, że liczbę $a$ (podstawę) mnożysz przez samą siebie $n$ razy (wykładnik).\n\n"
+            "Podstawa potęgi jest jak nienaruszalna cegiełka bazy – podczas dodawania wykładników baza nigdy nie ulega zmianie.\n\n"
+            "Wykładnik to licznik powtórzeń i operacji – wszystkie prawa działań na potęgach wykonujesz wyłącznie na licznikach na górze.\n\n"
+            "Złoty odruch CKE: gdy w zadaniu widzisz różne liczby (np. 4, 8, 16 lub 9, 27), Twoim pierwszym ruchem jest zamiana ich na wspólną bazę: najczęściej 2, 3 lub 5."
+        ),
         matura_context='Zadanie z działań na potęgach pojawia się w 100% arkuszy maturalnych CKE na pozycji 1 lub 2 za 1 punkt. Dodatkowo występuje regularnie w zadaniu otwartym na podzielność za 2 punkty.',
         core_formulas=[
             {
@@ -119,9 +201,9 @@ def build_topic_01():
         worked_example={
             'problem': 'Oblicz wartość wyrażenia $\\frac{2^7 \\cdot 4^3}{8^4}$.',
             'steps': [
-                {'num': 1, 'label': 'Sprowadzenie do wspólnej podstawy', 'text': 'Liczby 4 i 8 zapisujemy jako potęgi dwójki: $4 = 2^2$, $8 = 2^3$. Wtedy $4^3 = (2^2)^3 = 2^6$ oraz $8^4 = (2^3)^4 = 2^{12}$.'},
-                {'num': 2, 'label': 'Działania na wykładnikach w liczniku', 'text': 'Licznik: $2^7 \\cdot 2^6 = 2^{7+6} = 2^{13}$. Wyrażenie przyjmuje postać $\\frac{2^{13}}{2^{12}}$.'},
-                {'num': 3, 'label': 'Ostateczna redukcja i wynik CKE', 'text': 'Dzielimy potęgi: $2^{13} : 2^{12} = 2^{13-12} = 2^1 = 2$.'}
+                {'num': 1, 'label': 'Sprowadzenie do wspólnej podstawy 2', 'text': 'Liczby 4 i 8 zapisujemy jako potęgi dwójki: $4 = 2^2$, $8 = 2^3$. Wtedy $4^3 = (2^2)^3 = 2^6$ oraz $8^4 = (2^3)^4 = 2^{12}$.'},
+                {'num': 2, 'label': 'Działania na wykładnikach w liczniku', 'text': 'W liczniku dodajemy wykładniki: $2^7 \\cdot 2^6 = 2^{7+6} = 2^{13}$. Wyrażenie przyjmuje postać $\\frac{2^{13}}{2^{12}}$.'},
+                {'num': 3, 'label': 'Ostateczna redukcja i wynik CKE', 'text': 'Odejmujemy wykładnik mianownika od licznika: $2^{13} : 2^{12} = 2^{13-12} = 2^1 = 2$.'}
             ],
             'result': '2'
         },
@@ -179,12 +261,26 @@ def build_topic_01():
             correct_val='3',
             explanation='Stosujemy regułę ilorazu pierwiastków tego samego stopnia: $\\frac{\\sqrt[3]{54}}{\\sqrt[3]{2}} = \\sqrt[3]{\\frac{54}{2}} = \\sqrt[3]{27} = 3$.',
             cke_trap='Pamiętaj: $\\sqrt[3]{27} = 3$, ponieważ $3^3 = 27$.'
+        ),
+        make_sc_task(
+            task_id='task-1-2-5',
+            source='Matura CKE • Redukcja pierwiastków',
+            question='Dokończ zdanie. Liczba $2\\sqrt{18} - \\sqrt{32}$ jest równa',
+            options_data=[
+                ('A', '$2\\sqrt{2}$'),
+                ('B', '$\\sqrt{2}$'),
+                ('C', '$-2\\sqrt{14}$'),
+                ('D', '$2$')
+            ],
+            correct_id='A',
+            explanation='Wyłączamy czynnik przed znak pierwiastka z obu składników:\n$$2\\sqrt{18} = 2 \\cdot \\sqrt{9 \\cdot 2} = 2 \\cdot 3\\sqrt{2} = 6\\sqrt{2}$$\n$$\\sqrt{32} = \\sqrt{16 \\cdot 2} = 4\\sqrt{2}$$\nOdejmujemy wyrazy podobne: $6\\sqrt{2} - 4\\sqrt{2} = 2\\sqrt{2}$.',
+            cke_trap='Pamiętaj o pomnożeniu wyciągniętego czynnika $3$ przez stojącą wcześniej dwójkę ($2 \\cdot 3 = 6$, a nie $2 + 3 = 5$).'
         )
     ]
     l2 = make_lesson(
         lesson_id='lesson-1-2',
         topic_id=topic_id,
-        title='L1.1.2: Działania na pierwiastkach i wyłączanie czynnika przed znak pierwiastka',
+        title='Działania na pierwiastkach i wyłączanie czynnika przed znak pierwiastka',
         concept_essence='Pierwiastkowanie to operacja odwrotna do potęgowania: szukasz liczby, która po podniesieniu do danej potęgi daje wartość pod pierwiastkiem. Najważniejsza maturalna umiejętność to wyłączanie czynnika: rozbijasz liczbę podpierwiastkową na iloczyn dwóch liczb, z których jedna jest pełnym kwadratem ($4, 9, 16, 25, 36, 49, 64, 81, 100$). Tę liczbę pierwiastkujesz i wystawiasz przed pierwiastek, a nierozkładalna reszta zostaje w środku. Wyrażenia z tym samym pierwiastkiem (np. $5\\sqrt{3}$ i $2\\sqrt{3}$) redukujesz dokładnie tak jak wyrazy podobne w algebrze ($5x - 2x = 3x$).',
         matura_context='Wyłączanie czynnika przed pierwiastek i redukcja sumy pierwiastków to absolutny pewniak w pierwszych 3 zadaniach arkusza podstawowego za 1 punkt.',
         core_formulas=[
@@ -277,12 +373,26 @@ def build_topic_01():
             correct_val='1',
             explanation='Usuwamy niewymierność z pierwszego ułamka:\n$$\\frac{1(\\sqrt{2} + 1)}{(\\sqrt{2} - 1)(\\sqrt{2} + 1)} = \\frac{\\sqrt{2} + 1}{2 - 1} = \\sqrt{2} + 1$$\nOdejmujemy $\\sqrt{2}$: $(\\sqrt{2} + 1) - \\sqrt{2} = 1$.',
             cke_trap='Pamiętaj, że $(\\sqrt{2})^2 - 1 = 2 - 1 = 1$, więc mianownik całkowicie znika.'
+        ),
+        make_sc_task(
+            task_id='task-1-3-5',
+            source='Matura CKE • Sprzężenie dwumianu',
+            question='Liczba $\\frac{\\sqrt{3} + 1}{\\sqrt{3} - 1}$ po usunięciu niewymierności z mianownika jest równa',
+            options_data=[
+                ('A', '$2 + \\sqrt{3}$'),
+                ('B', '$2 - \\sqrt{3}$'),
+                ('C', '$1 + \\sqrt{3}$'),
+                ('D', '$4 + 2\\sqrt{3}$')
+            ],
+            correct_id='A',
+            explanation='Mnożymy licznik i mianownik przez sprzężenie mianownika $(\\sqrt{3} + 1)$:\n$$\\frac{(\\sqrt{3} + 1)(\\sqrt{3} + 1)}{(\\sqrt{3} - 1)(\\sqrt{3} + 1)} = \\frac{(\\sqrt{3} + 1)^2}{(\\sqrt{3})^2 - 1^2}$$\nRozpisujemy licznik ze wzoru kwadratu sumy: $(\\sqrt{3})^2 + 2\\sqrt{3} + 1 = 3 + 2\\sqrt{3} + 1 = 4 + 2\\sqrt{3}$.\nMianownik: $3 - 1 = 2$.\nDzielimy każdy składnik licznika przez 2: $\\frac{4 + 2\\sqrt{3}}{2} = \\frac{4}{2} + \\frac{2\\sqrt{3}}{2} = 2 + \\sqrt{3}$.',
+            cke_trap='Podnosząc licznik do kwadratu nie zapomnij o podwojonym iloczynie: $(a+b)^2 = a^2 + 2ab + b^2$, a przy skracaniu przez 2 musisz podzielić OBA składniki sumy w liczniku!'
         )
     ]
     l3 = make_lesson(
         lesson_id='lesson-1-3',
         topic_id=topic_id,
-        title='L1.1.3: Usuwanie niewymierności z mianownika',
+        title='Usuwanie niewymierności z mianownika',
         concept_essence='W matematyce i na maturze CKE mianownik ułamka musi być liczbą wymierną (całkowitą). Aby usunąć pierwiastek z dołu, mnożysz ułamek przez jedynkę w sprytnej postaci: 1) Gdy na dole jest pojedynczy pierwiastek (np. $\\frac{b}{\\sqrt{a}}$), mnożysz licznik i mianownik przez $\\frac{\\sqrt{a}}{\\sqrt{a}}$. 2) Gdy na dole jest suma lub różnica (np. $\\frac{c}{\\sqrt{a} - b}$), stosujesz tzw. sprzężenie – mnożysz górę i dół przez to samo wyrażenie z przeciwnym znakiem $(\\sqrt{a} + b)$, co uruchamia wzór na różnicę kwadratów i natychmiast likwiduje pierwiastek.',
         matura_context='Zadanie na usuwanie niewymierności ze sprzężeniem występuje na maturze w arkuszach czerwcowych i poprawkowych za 1 punkt, a także jako krok w zadaniach z geometrii analitycznej i trygonometrii.',
         core_formulas=[
@@ -375,12 +485,26 @@ def build_topic_01():
             correct_val='81',
             explanation='Mianownik 3 zamienia się na pierwiastek sześcienny: $27^{\\frac{4}{3}} = (\\sqrt[3]{27})^4 = 3^4 = 81$.',
             cke_trap='Zawsze najpierw wyciągaj pierwiastek ($\\sqrt[3]{27} = 3$), a dopiero potem potęguj ($3^4 = 81$), żeby uniknąć gigantycznych liczb!'
+        ),
+        make_sc_task(
+            task_id='task-1-4-5',
+            source='Matura CKE • Odwracanie i pierwiastkowanie',
+            question='Dokończ zdanie. Wartość wyrażenia $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}}$ jest równa',
+            options_data=[
+                ('A', '$27$'),
+                ('B', '$\\frac{1}{27}$'),
+                ('C', '$-27$'),
+                ('D', '$81$')
+            ],
+            correct_id='A',
+            explanation='Stosujemy reguły krok po kroku:\n1. Minus w wykładniku odwraca ułamek: $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}} = 9^{\\frac{3}{2}}$.\n2. Mianownik 2 to pierwiastek kwadratowy, a licznik 3 to potęga: $9^{\\frac{3}{2}} = (\\sqrt{9})^3 = 3^3 = 27$.\nWynik to 27.',
+            cke_trap='Zawsze najpierw wyciągaj pierwiastek $\\sqrt{9} = 3$, a dopiero potem podnoś do potęgi $3^3 = 27$. Minus w wykładniku nie tworzy liczby ujemnej!'
         )
     ]
     l4 = make_lesson(
         lesson_id='lesson-1-4',
         topic_id=topic_id,
-        title='L1.1.4: Potęgi o wykładniku ujemnym i ułamkowym w zadaniach maturalnych CKE',
+        title='Potęgi o wykładniku ujemnym i ułamkowym w zadaniach maturalnych CKE',
         concept_essence='Dwa kluczowe mechanizmy do zapamiętania na całe życie: 1) Minus w wykładniku to polecenie odwrócenia liczby: $a^{-n}$ staje się ułamkiem $\\frac{1}{a^n}$. Minus w potędze NIGDY nie tworzy liczby ujemnej – dodatnia podstawa podniesiona do potęgi ujemnej jest nadal ściśle dodatnia! 2) Ułamek w wykładniku to zakamuflowany pierwiastek: mianownik ułamka to zawsze stopień pierwiastka ($a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$). W zadaniach CKE najpierw wyciągaj pierwiastek, by zmniejszyć liczbę, a dopiero potem potęguj.',
         matura_context='Połączenie wykładnika ujemnego i ułamkowego występuje niemal co roku w Zadaniu 1 arkusza CKE (formuła 2023) za 1 punkt.',
         core_formulas=[
@@ -423,6 +547,8 @@ def build_topic_01():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'short_title': 'Potęgi i pierwiastki',
         'importance': 'Pewniak CKE (Tier S+)',
         'matura_points_range': '2–4 pkt',

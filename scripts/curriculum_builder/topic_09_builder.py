@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_09():
     topic_id = 'dzial-9'
-    topic_title = 'Dział 1.9: Odczytywanie informacji z wykresu funkcji'
+    topic_title = 'Odczytywanie informacji z wykresu funkcji'
+    topic_number = 9
     lessons = []
 
     # ----------------------------------------------------
@@ -81,7 +82,7 @@ def build_topic_09():
     l1 = make_lesson(
         lesson_id='lesson-9-1',
         topic_id=topic_id,
-        title='L1.9.1: Dziedzina i zbiór wartości z wykresu funkcji (oś OX vs OY)',
+        title='Dziedzina i zbiór wartości z wykresu funkcji (oś OX vs OY)',
         concept_essence='Odczytywanie dziedziny i zbioru wartości z wykresu to rzutowanie cienia na osie: 1) Dziedzina ($D_f$) — patrzysz na wykres OD LEWEJ DO PRAWEJ i rzutujesz go na oś poziomą $OX$. Pytasz: od jakiego do jakiego iksa istnieje funkcja? 2) Zbiór wartości ($ZW_f$) — patrzysz na wykres OD DOŁU DO GÓRY i rzutujesz go na oś pionową $OY$. Pytasz: od najniższego do najwyższego punktu! 3) Kółka: kółko zamalowane daje nawias ostry $\\langle \\dots \\rangle$ lub $[ \\dots ]$, kółko puste daje nawias okrągły $( \\dots )$.',
         matura_context='Zadanie 9 lub 10 na każdej maturze podstawowej CKE za 1 punkt (100% powtarzalności).',
         core_formulas=[
@@ -188,7 +189,7 @@ def build_topic_09():
     l2 = make_lesson(
         lesson_id='lesson-9-2',
         topic_id=topic_id,
-        title='L1.9.2: Miejsca zerowe oraz odczyt wartości funkcji f(x0) = y0',
+        title='Miejsca zerowe oraz odczyt wartości funkcji f(x0) = y0',
         concept_essence='Wykres funkcji to mapa relacji między argumentem $x$ a wartością $y$: 1) Miejsce zerowe — to argument $x$ na osi poziomej $OX$, dla którego wartość funkcji wynosi zero ($f(x) = 0$). Miejscem zerowym jest zawsze sama liczba (argument $x$, np. $x = 3$), a nie para współrzędnych. 2) Wartość funkcji dla danego argumentu $f(x_0)$ — znajdujesz $x_0$ na osi poziomej, przemieszczasz się pionowo do wykresu i odczytujesz wartość $y$ na osi pionowej. 3) Przecięcie z osią $OY$ — to wartość funkcji dla zera, czyli punkt $(0, f(0))$.',
         matura_context='Podstawowe pytanie sprawdzające umiejętność czytania wykresów za 1 pkt.',
         core_formulas=[
@@ -303,7 +304,7 @@ def build_topic_09():
     l3 = make_lesson(
         lesson_id='lesson-9-3',
         topic_id=topic_id,
-        title='L1.9.3: Monotoniczność i przedziały (rośnie, maleje, stała – oś OX)',
+        title='Monotoniczność i przedziały (rośnie, maleje, stała – oś OX)',
         concept_essence='Badanie monotoniczności z wykresu to śledzenie marszu po linii od lewej do prawej: 1) Jeśli idziesz POD GÓRĘ — funkcja rośnie. 2) Jeśli schodzisz W DÓŁ — funkcja maleje. 3) Jeśli idziesz PO PŁASKIM — funkcja jest stała. ŻELAZNA ZASADA MATURALNA: Przedziały monotoniczności odczytujesz WYŁĄCZNIE z osi poziomej $OX$! Pytasz: w jakich iksach funkcja się wznosi? Iksy podajesz w nawiasach domkniętych, rozdzielone przecinkiem (NIGDY symbolem sumy $\\cup$).',
         matura_context='Regularne zadanie testowe za 1 pkt sprawdzające odporność na pułapkę podawania igreka zamiast iksa.',
         core_formulas=[
@@ -410,7 +411,7 @@ def build_topic_09():
     l4 = make_lesson(
         lesson_id='lesson-9-4',
         topic_id=topic_id,
-        title='L1.9.4: Równania f(x) = m oraz nierówności f(x) > 0 – odczyt liczby rozwiązań',
+        title='Odczytywanie liczby rozwiązań równań i nierówności z wykresu funkcji',
         concept_essence='Analiza równań i nierówności na wykresie: 1) Równanie $f(x) = m$ — kładziesz poziomą linijkę na wysokości $y = m$. Liczba punktów przecięcia linijki z wykresem to LICZBA ROZWIĄZAŃ równania. Jeśli prosta mija wykres — równanie nie ma rozwiązań. 2) Nierówność $f(x) > 0$ — szukasz części wykresu leżących ŚCIŚLE NAD osią $OX$. Rozwiązaniem są przedziały iksów z osi poziomej. 3) Nierówność $f(x) \\le 0$ — szukasz części POD osią $OX$ wraz z miejscami zerowymi.',
         matura_context='Jeden z ulubionych typów zadań CKE w arkuszach majowych i czerwcowych za 1 punkt.',
         core_formulas=[
@@ -453,6 +454,8 @@ def build_topic_09():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S+',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '4 lekcje (~20 min)',

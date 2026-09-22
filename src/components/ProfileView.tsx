@@ -17,7 +17,10 @@ import {
   Swords, 
   Zap,
   ShoppingBag,
-  Target
+  Target,
+  Sun,
+  Moon,
+  Monitor
 } from 'lucide-react';
 import { logout, auth, loginWithGoogle } from '../lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -25,6 +28,7 @@ import { AchievementsSection } from './AchievementsSection';
 import { PerksVaultSection } from './PerksVaultSection';
 import { ShopItem, countTotalClaimable } from '../data/achievements';
 import { triggerHaptic, getLocalDateString, filterActualTaskIds } from '../utils';
+import { useTheme, ThemeMode } from '../services/themeManager';
 
 interface ProfileViewProps {
   userState: UserState;
@@ -52,6 +56,7 @@ export function ProfileView({
   const [user] = useAuthState(auth);
   const [activeTab, setActiveTab] = useState<ProfileTab>(initialTab);
   const streakDays = userState?.streakDays || 0;
+  const { themeMode, setTheme } = useTheme();
 
   const claimableCount = useMemo(() => {
     return countTotalClaimable(
@@ -136,10 +141,10 @@ export function ProfileView({
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}>
         {/* Top Header */}
         <div className="flex items-center justify-between mb-4">
-          <h1 className="font-display text-2xl font-bold text-white">Centrum Gracza</h1>
+          <h1 className="font-display text-2xl font-bold text-text-primary">Centrum Gracza</h1>
           
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+            <span className="text-[11px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
               <Crown size={12} /> {userState.masteryTokens || 0} Żetonów
             </span>
           </div>
@@ -155,7 +160,7 @@ export function ProfileView({
             className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'overview'
                 ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
-                : 'text-text-muted hover:text-text-primary hover:bg-white/[0.04]'
+                : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
             <User size={14} />
@@ -170,7 +175,7 @@ export function ProfileView({
             className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 relative cursor-pointer ${
               activeTab === 'achievements'
                 ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
-                : 'text-text-muted hover:text-text-primary hover:bg-white/[0.04]'
+                : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
             <Trophy size={14} />
@@ -192,7 +197,7 @@ export function ProfileView({
             className={`flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'perks'
                 ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
-                : 'text-text-muted hover:text-text-primary hover:bg-white/[0.04]'
+                : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
             <Zap size={14} />
@@ -225,7 +230,7 @@ export function ProfileView({
                 <User size={28} />
               </div>
               
-              <h2 className="font-display text-xl font-bold text-white mb-1">
+              <h2 className="font-display text-xl font-bold text-text-primary mb-1">
                 {user ? (user.displayName || 'Uczeń') : 'Gość (Tryb Demo)'}
               </h2>
               <p className="text-xs text-text-muted">
@@ -235,7 +240,7 @@ export function ProfileView({
               <div className="grid grid-cols-2 sm:grid-cols-4 w-full gap-2 mt-6">
                 <div className="bg-surface-bg border border-surface-border rounded-xl p-3 flex flex-col items-center">
                   <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider mb-1">Poziom</span>
-                  <span className="text-lg font-display font-bold text-white tabular-nums font-mono">{userState.level || 1}</span>
+                  <span className="text-lg font-display font-bold text-text-primary tabular-nums font-mono">{userState.level || 1}</span>
                 </div>
                 <div className="bg-surface-bg border border-surface-border rounded-xl p-3 flex flex-col items-center">
                   <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider mb-1">Zadania</span>
@@ -254,27 +259,88 @@ export function ProfileView({
               </div>
             </div>
 
+            {/* Motyw Aplikacji (Szybki Wybór: Ciemny / Jasny / System) */}
+            <div className="bg-surface-card border border-surface-border rounded-[24px] p-4 sm:p-5 shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
+                    {themeMode === 'light' ? <Sun size={18} /> : themeMode === 'dark' ? <Moon size={18} /> : <Monitor size={18} />}
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <span className="text-sm font-bold text-text-primary">Motyw Aplikacji</span>
+                    <span className="text-xs text-text-secondary">
+                      {themeMode === 'light' 
+                        ? 'Solar Luminary (Jasny)' 
+                        : themeMode === 'dark' 
+                          ? 'Nocturne Luminary (Ciemny)' 
+                          : 'Automatyczny (Zgodny z systemem)'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center bg-surface-bg border border-surface-border p-1 rounded-xl self-stretch sm:self-auto justify-between sm:justify-start shadow-inner">
+                  {(
+                    [
+                      { id: 'dark' as ThemeMode, label: 'Ciemny', icon: Moon },
+                      { id: 'light' as ThemeMode, label: 'Jasny', icon: Sun },
+                      { id: 'system' as ThemeMode, label: 'System', icon: Monitor },
+                    ] as const
+                  ).map(item => {
+                    const Icon = item.icon;
+                    const isActive = themeMode === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setTheme(item.id);
+                        }}
+                        className={`relative flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors select-none cursor-pointer ${
+                          isActive 
+                            ? 'text-text-primary font-black' 
+                            : 'text-text-muted hover:text-text-primary'
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeThemePill"
+                            className="absolute inset-0 rounded-lg bg-surface-card border border-primary/40 shadow-sm"
+                            transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                          />
+                        )}
+                        <span className="relative z-10 flex items-center gap-1.5">
+                          <Icon size={14} className={isActive ? 'text-primary' : ''} />
+                          <span>{item.label}</span>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
             {/* Dynamic Activity Chart (14 Dni Aktywności) */}
-            <div className="bg-[#141A23] border border-white/5 rounded-[24px] p-5 sm:p-6 overflow-hidden shadow-md">
+            <div className="bg-surface-card border border-surface-border rounded-[24px] p-5 sm:p-6 overflow-hidden shadow-md">
               <div className="flex justify-between items-end mb-4">
                 <div className="flex flex-col">
-                  <span className="text-2xl font-display font-black text-white mb-0.5">
+                  <span className="text-2xl font-display font-black text-text-primary mb-0.5">
                     {filterActualTaskIds(completedTasks).length}
                   </span>
-                  <span className="text-xs text-[#8B8D98]">Rozwiązanych zadań ogółem</span>
+                  <span className="text-xs text-text-secondary">Rozwiązanych zadań ogółem</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-[#FFB800]/10 text-[#FFB800] px-3 py-1.5 rounded-full border border-[#FFB800]/30">
-                  <Flame size={14} className="fill-[#FFB800]" />
+                <div className="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full border border-primary/30">
+                  <Flame size={14} className="fill-primary" />
                   <span className="text-xs font-bold">
                     Dziś: {todayActivityCount} {todayActivityCount === 1 ? 'zadanie' : 'zadań'}
                   </span>
                 </div>
               </div>
 
-              {/* Subtitle / Legend */}
-              <div className="flex items-center justify-between text-[11px] text-[#8B8D98] mb-3 pb-2 border-b border-white/5">
+              {/* Subtitle / Legend - Fixed flex-wrap for mobile */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-text-secondary mb-3 pb-2 border-b border-surface-border">
                 <span>Historia aktywności (ostatnie 14 dni)</span>
-                <span className="text-[#FFB800] font-medium">Bursztynowy = ukończone zadania</span>
+                <span className="text-primary font-medium">Bursztynowy = ukończone zadania</span>
               </div>
               
               {/* 14-Day Bars Container */}
@@ -297,7 +363,7 @@ export function ProfileView({
                       </div>
 
                       {hasTasks && (
-                        <span className={`text-[10px] font-bold mb-1 leading-none ${d.isToday ? 'text-[#FFB800]' : 'text-amber-300/80'}`}>
+                        <span className={`text-[10px] font-bold mb-1 leading-none ${d.isToday ? 'text-primary' : 'text-primary/80'}`}>
                           {d.count}
                         </span>
                       )}
@@ -307,15 +373,15 @@ export function ProfileView({
                         className={`w-full rounded-t-md transition-all duration-300 ${
                           hasTasks
                             ? d.isToday
-                              ? 'bg-gradient-to-t from-amber-600 via-[#FFB800] to-yellow-300 shadow-[0_0_12px_rgba(255,184,0,0.5)] border-t border-white/40'
-                              : 'bg-gradient-to-t from-amber-700/80 to-amber-400 group-hover:to-[#FFB800] shadow-[0_0_8px_rgba(245,158,11,0.3)]'
-                            : 'bg-white/5 group-hover:bg-white/10'
+                              ? 'bg-gradient-to-t from-primary-dark via-primary to-yellow-300 shadow-[0_0_12px_rgba(255,184,0,0.4)] border-t border-white/40'
+                              : 'bg-gradient-to-t from-primary-dark/80 to-primary group-hover:to-primary-hover shadow-[0_0_8px_rgba(245,158,11,0.25)]'
+                            : 'bg-surface-border/40 group-hover:bg-surface-border/70'
                         }`}
                         style={{ height: `${heightPct}%` }}
                       />
 
                       {/* Day Label */}
-                      <span className={`text-[10px] font-bold mt-1.5 leading-none truncate max-w-full ${d.isToday ? 'text-[#FFB800] font-black' : 'text-[#8B8D98]'}`}>
+                      <span className={`text-[10px] font-bold mt-1.5 leading-none truncate max-w-full ${d.isToday ? 'text-primary font-black' : 'text-text-muted'}`}>
                         {d.isToday ? 'Dziś' : d.dayName}
                       </span>
                     </div>
@@ -325,75 +391,76 @@ export function ProfileView({
             </div>
 
             {/* Quick Actions & Settings */}
-            <div className="bg-[#141A23] border border-white/5 rounded-[24px] overflow-hidden shadow-sm">
+            <div className="bg-surface-card border border-surface-border rounded-[24px] overflow-hidden shadow-sm">
+
               {onOpenOnboarding && (
                 <button 
                   onClick={() => {
                     triggerHaptic('light');
                     onOpenOnboarding();
                   }}
-                  className="w-full p-4 flex items-center gap-4 hover:bg-white/5 transition-colors border-b border-white/5 text-left cursor-pointer"
+                  className="w-full p-4 flex items-center gap-4 hover:bg-surface-card-hover transition-colors border-b border-surface-border text-left cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#FFB800]/10 flex items-center justify-center text-[#FFB800] shrink-0 border border-[#FFB800]/20">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
                     <Target size={18} />
                   </div>
                   <div className="flex flex-col items-start flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-white">Twój Cel i Egzamin</span>
-                      <span className="text-[10px] bg-[#FFB800]/15 text-[#FFB800] font-bold px-2 py-0.5 rounded-full border border-[#FFB800]/30">
+                      <span className="text-sm font-bold text-text-primary">Twój Cel i Egzamin</span>
+                      <span className="text-[10px] bg-primary/15 text-primary font-bold px-2 py-0.5 rounded-full border border-primary/30">
                         {userState?.onboardingPreferences?.targetScore ? `${userState.onboardingPreferences.targetScore}%` : 'Ustaw'}
                       </span>
                     </div>
-                    <span className="text-xs text-[#8B8D98] truncate max-w-full">
+                    <span className="text-xs text-text-secondary truncate max-w-full">
                       {userState?.onboardingPreferences 
                         ? `${userState.onboardingPreferences.targetExam === 'matura_2025' ? 'Nowa Formuła 2023' : userState.onboardingPreferences.targetExam === 'poprawka' ? 'Szybka Poprawka' : 'Egzamin Ósmoklasisty'} • ${userState.onboardingPreferences.dailyMinutes} min dziennie`
                         : 'Zmień cel maturalny i czas nauki'}
                     </span>
                   </div>
-                  <ChevronRight size={18} className="text-[#8B8D98] shrink-0" />
+                  <ChevronRight size={18} className="text-text-muted shrink-0" />
                 </button>
               )}
 
               <button 
                 onClick={() => setActiveTab('achievements')}
-                className="w-full p-4 flex items-center gap-4 hover:bg-white/5 transition-colors border-b border-white/5"
+                className="w-full p-4 flex items-center gap-4 hover:bg-surface-card-hover transition-colors border-b border-surface-border cursor-pointer text-left"
               >
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0 border border-amber-500/20">
                   <Trophy size={18} />
                 </div>
                 <div className="flex flex-col items-start flex-1">
-                  <span className="text-sm font-bold text-white">System Odznak</span>
-                  <span className="text-xs text-[#8B8D98]">Odbieraj nagrody za postępy</span>
+                  <span className="text-sm font-bold text-text-primary">System Odznak</span>
+                  <span className="text-xs text-text-secondary">Odbieraj nagrody za postępy</span>
                 </div>
-                <ChevronRight size={18} className="text-[#8B8D98]" />
+                <ChevronRight size={18} className="text-text-muted shrink-0" />
               </button>
 
               <button 
                 onClick={() => setActiveTab('perks')}
-                className="w-full p-4 flex items-center gap-4 hover:bg-white/5 transition-colors border-b border-white/5"
+                className="w-full p-4 flex items-center gap-4 hover:bg-surface-card-hover transition-colors border-b border-surface-border cursor-pointer text-left"
               >
-                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 shrink-0 border border-purple-500/20">
                   <Zap size={18} />
                 </div>
                 <div className="flex flex-col items-start flex-1">
-                  <span className="text-sm font-bold text-white">Skarbiec & Perki</span>
-                  <span className="text-xs text-[#8B8D98]">Zarządzaj bonusami i tarczami</span>
+                  <span className="text-sm font-bold text-text-primary">Skarbiec & Perki</span>
+                  <span className="text-xs text-text-secondary">Zarządzaj bonusami i tarczami</span>
                 </div>
-                <ChevronRight size={18} className="text-[#8B8D98]" />
+                <ChevronRight size={18} className="text-text-muted shrink-0" />
               </button>
 
               <button 
                 onClick={handleAuthAction}
-                className="w-full p-4 flex items-center gap-4 hover:bg-white/5 transition-colors"
+                className="w-full p-4 flex items-center gap-4 hover:bg-surface-card-hover transition-colors cursor-pointer text-left"
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${user ? 'bg-white/5 text-red-400' : 'bg-blue-500/10 text-blue-400'}`}>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${user ? 'bg-alert-crimson/10 text-alert-crimson' : 'bg-blue-500/10 text-blue-500'}`}>
                   {user ? <LogOut size={18} /> : <LogIn size={18} />}
                 </div>
                 <div className="flex flex-col items-start flex-1">
-                  <span className="text-sm font-bold text-white">{user ? 'Wyloguj się' : 'Zaloguj się / Rejestracja'}</span>
-                  <span className="text-xs text-[#8B8D98]">{user ? 'Zakończ sesję' : 'Zapisz serię i postępy w chmurze'}</span>
+                  <span className="text-sm font-bold text-text-primary">{user ? 'Wyloguj się' : 'Zaloguj się / Rejestracja'}</span>
+                  <span className="text-xs text-text-secondary">{user ? 'Zakończ sesję' : 'Zapisz serię i postępy w chmurze'}</span>
                 </div>
-                <ChevronRight size={18} className="text-[#8B8D98]" />
+                <ChevronRight size={18} className="text-text-muted shrink-0" />
               </button>
             </div>
           </div>

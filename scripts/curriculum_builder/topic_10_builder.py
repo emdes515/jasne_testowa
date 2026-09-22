@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_10():
     topic_id = 'dzial-10'
-    topic_title = 'Dział 1.10: Funkcja liniowa i jej własności'
+    topic_title = 'Funkcja liniowa i jej własności'
+    topic_number = 10
     lessons = []
 
     # ----------------------------------------------------
@@ -80,7 +81,7 @@ def build_topic_10():
     l1 = make_lesson(
         lesson_id='lesson-10-1',
         topic_id=topic_id,
-        title='L1.10.1: Wzór kierunkowy y = ax + b, rola współczynnika a i wyrazu wolnego b',
+        title='Wzór kierunkowy prostej, rola współczynnika kierunkowego i wyrazu wolnego',
         concept_essence='Wzór kierunkowy prostej $y = ax + b$ to jedno z najważniejszych narzędzi na maturze: 1) Współczynnik kierunkowy $a$ to bieg prostej (prędkościomierz): jeśli $a > 0$, prosta idzie w górę (rośnie); jeśli $a < 0$, prosta opada w dół (maleje); jeśli $a = 0$, leży poziomo (stała). Ponadto $a = \\operatorname{tg} \\alpha$, gdzie $\\alpha$ to kąt z dodatnią osią $OX$. 2) Wyraz wolny $b$ to kotwica na osi pionowej: prosta ZAWSZE przecina oś $OY$ dokładnie w punkcie $(0, b)$.',
         matura_context='Zadanie z interpretacji znaków $a$ i $b$ lub parametru $m$ występuje w 100% arkuszy CKE (zad. 11 za 1 pkt).',
         core_formulas=[
@@ -187,7 +188,7 @@ def build_topic_10():
     l2 = make_lesson(
         lesson_id='lesson-10-2',
         topic_id=topic_id,
-        title='L1.10.2: Wyznaczanie wzoru prostej przez dwa punkty i miejsce zerowe',
+        title='Wyznaczanie wzoru prostej przez dwa punkty i miejsce zerowe',
         concept_essence='Mając dwa punkty $A(x_A, y_A)$ oraz $B(x_B, y_B)$, wyznaczasz wzór prostej $y = ax + b$ w dwóch prostych krokach: 1) KROK 1: Obliczasz współczynnik kierunkowy jako iloraz przyrostów: $a = \\frac{y_B - y_A}{x_B - x_A}$ (pamiętaj: igreki na górze, iksy na dole!). 2) KROK 2: Wstawiasz obliczone $a$ oraz współrzędne jednego z punktów do wzoru $y = ax + b$ i wyliczasz $b$. 3) Miejsce zerowe to $x_0 = -\\frac{b}{a}$ (punkt, gdzie linia przecina oś poziomą).',
         matura_context='Podstawowa umiejętność w zadaniach za 1 i 2 punkty z geometrii analitycznej i algebry.',
         core_formulas=[
@@ -294,7 +295,7 @@ def build_topic_10():
     l3 = make_lesson(
         lesson_id='lesson-10-3',
         topic_id=topic_id,
-        title='L1.10.3: Warunek równoległości i prostopadłości prostych',
+        title='Warunek równoległości i prostopadłości prostych',
         concept_essence='Wzajemne położenie dwóch prostych na płaszczyźnie zależy wyłącznie od ich współczynników kierunkowych $a_1$ oraz $a_2$: 1) Proste równoległe — mają ten sam kąt nachylenia, więc ich współczynniki są IDENTYCZNE: $a_1 = a_2$. 2) Proste prostopadłe — przecinają się pod kątem $90^\\circ$, a ich iloczyn wynosi minus jeden: $a_1 \\cdot a_2 = -1$. Mnemotechnika: współczynnik prostej prostopadłej to ułamek ODWROTNY I PRZECIWNY (odwracasz do góry nogami i zmieniasz znak).',
         matura_context='Jeden z najczęściej badanych pewniaków maturalnych — zadanie za 1 pkt lub element zadania z geometrii analitycznej za 2–3 pkt.',
         core_formulas=[
@@ -401,7 +402,7 @@ def build_topic_10():
     l4 = make_lesson(
         lesson_id='lesson-10-4',
         topic_id=topic_id,
-        title='L1.10.4: Zastosowania praktyczne funkcji liniowej i zadania z kontekstem realistycznym',
+        title='Zastosowania praktyczne funkcji liniowej i zadania z kontekstem realistycznym',
         concept_essence='Funkcja liniowa $y = ax + b$ to podstawowy model ekonomii i fizyki: 1) Wyraz wolny $b$ to WARTOŚĆ STARTOWA (stan początkowy w chwili $t = 0$, opłata stała, abonament, koszt wstępny). 2) Współczynnik kierunkowy $a$ to TEMPO ZMIANY (stawka za kilometr, prędkość, ubytek wody na minutę). Jeśli coś przyrasta — $a > 0$; jeśli ubywa — $a < 0$. 3) Pytanie o wyczerpanie zapasów lub zatrzymanie to po prostu obliczenie MIEJSCA ZEROWEGO ($y = 0$).',
         matura_context='Zadania tekstowe i modelowanie matematyczne za 1–2 punkty w nowej formule matury 2023–2026.',
         core_formulas=[
@@ -444,6 +445,8 @@ def build_topic_10():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S+',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '4 lekcje (~20 min)',

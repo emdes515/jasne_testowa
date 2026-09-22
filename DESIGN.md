@@ -1,71 +1,71 @@
 ---
-name: Nocturne Luminary EdTech
-colors:
-  surface: '#0f131d'
-  surface-dim: '#0f131d'
-  surface-bright: '#353944'
-  surface-container-lowest: '#0a0e18'
-  surface-container-low: '#171b26'
-  surface-container: '#1c1f2a'
-  surface-container-high: '#262a35'
-  surface-container-highest: '#313540'
-  on-surface: '#dfe2f1'
-  on-surface-variant: '#d5c4ab'
-  inverse-surface: '#dfe2f1'
-  inverse-on-surface: '#2c303b'
-  outline: '#9e8f78'
-  outline-variant: '#514532'
-  surface-tint: '#ffba20'
-  primary: '#ffdca1'
-  on-primary: '#412d00'
-  primary-container: '#ffb800'
-  on-primary-container: '#6b4c00'
-  inverse-primary: '#7c5800'
-  secondary: '#b4c5ff'
-  on-secondary: '#002a78'
-  secondary-container: '#0053db'
-  on-secondary-container: '#cdd7ff'
-  tertiary: '#6cf9bb'
-  on-tertiary: '#003824'
-  tertiary-container: '#4bdca1'
-  on-tertiary-container: '#005d3f'
-  error: '#ffb4ab'
-  on-error: '#690005'
-  error-container: '#93000a'
-  on-error-container: '#ffdad6'
-  primary-fixed: '#ffdea8'
-  primary-fixed-dim: '#ffba20'
-  on-primary-fixed: '#271900'
-  on-primary-fixed-variant: '#5e4200'
-  secondary-fixed: '#dbe1ff'
-  secondary-fixed-dim: '#b4c5ff'
-  on-secondary-fixed: '#00174b'
-  on-secondary-fixed-variant: '#003ea8'
-  tertiary-fixed: '#6ffbbe'
-  tertiary-fixed-dim: '#4edea3'
-  on-tertiary-fixed: '#002113'
-  on-tertiary-fixed-variant: '#005236'
-  background: '#0f131d'
-  on-background: '#dfe2f1'
-  surface-variant: '#313540'
+name: Nocturne Luminary & Solar Luminary Dual-Theme EdTech
+themes:
+  dark: Nocturne Luminary
+  light: Solar Luminary
+colors-dark:
   background-base: '#070A0F'
   surface-card: '#0E1522'
   surface-card-hover: '#141D2E'
+  surface-elevated: '#141D2E'
   surface-border: rgba(255, 255, 255, 0.08)
+  surface-border-hover: rgba(255, 255, 255, 0.16)
   surface-border-active: '#FFB800'
-  accent-amber: '#FFB800'
-  accent-gold-glow: '#F59E0B'
+  primary: '#FFB800'
+  primary-hover: '#FFC72C'
+  primary-glow: rgba(255, 184, 0, 0.25)
+  primary-dark: '#B37F00'
+  text-primary: '#F8FAFC'
+  text-secondary: '#94A3B8'
+  text-muted: '#64748B'
+  text-subtle: '#475569'
+  text-accent: '#FFB800'
   alert-crimson: '#F43F5E'
   alert-crimson-bg: rgba(244, 63, 94, 0.12)
   streak-flame: '#EA580C'
   accent-success: '#10B981'
   accent-blue: '#38BDF8'
   accent-purple: '#8B5CF6'
-  text-primary: '#F8FAFC'
-  text-secondary: '#CBD5E1'
-  text-muted: '#94A3B8'
-  text-subtle: '#64748B'
-  shadow-dark: rgba(0, 0, 0, 0.6)
+colors-light:
+  background-base: '#F8F9FC'
+  surface-card: '#FFFFFF'
+  surface-card-hover: '#F1F5F9'
+  surface-elevated: '#FFFFFF'
+  surface-border: '#E2E8F0'
+  surface-border-hover: '#CBD5E1'
+  surface-border-active: '#D97706'
+  primary: '#D97706'
+  primary-hover: '#B45309'
+  primary-glow: rgba(217, 119, 6, 0.2)
+  primary-dark: '#92400E'
+  text-primary: '#0F172A'
+  text-secondary: '#475569'
+  text-muted: '#64748B'
+  text-subtle: '#94A3B8'
+  text-accent: '#D97706'
+  alert-crimson: '#E11D48'
+  alert-crimson-bg: rgba(225, 29, 72, 0.08)
+  streak-flame: '#EA580C'
+  accent-success: '#059669'
+  accent-blue: '#0284C7'
+  accent-purple: '#7C3AED'
+motion:
+  spring-snappy:
+    type: spring
+    stiffness: 450
+    damping: 32
+  spring-smooth:
+    type: spring
+    stiffness: 300
+    damping: 25
+  spring-bouncy:
+    type: spring
+    stiffness: 400
+    damping: 20
+  duration-micro: 0.15s
+  duration-short: 0.25s
+  duration-medium: 0.35s
+  active-scale: 0.97
 typography:
   display-hero:
     fontFamily: Plus Jakarta Sans
@@ -162,93 +162,65 @@ spacing:
   space-2xl: 3rem
 ---
 
-## Brand & Style
+# Design System: Nocturne Luminary & Solar Luminary EdTech
 
-This design system crafts an immersive, stress-reducing, high-focus learning environment tailored for secondary school students tackling national high-stakes examinations. The brand persona blends motivational gamification with institutional rigor: clear, empathetic, direct, and energizing. "Jasne" (Polish for "clear", "bright", and "obviously") establishes clarity amidst overwhelming academic pressures.
+## 1. Wizja Marki & Filozofia Stylu
 
-The visual style embraces an elevated **Dark Glassmorphism & Cyber-Tactile EdTech** aesthetic:
-- **Atmospheric Depth:** Inky obsidian and deep midnight-navy backdrops (#070A0F, #0B0F19, #0E1522) eliminate eye fatigue during late-night cramming sessions and create a cinematic stage for learning progress.
-- **Luminous Energy Accents:** Radiant amber and gold surges (#FFB800, #F59E0B) represent enlightenment, spark, intellect, and reward loops, while crisp coral-crimson (#F43F5E) provides immediate diagnostic triage for score deficits.
-- **Precision Glass & Boundaries:** Translucent card planes (surfaces with subtle 8% frosted border strokes) layer clean statistics, streak flames, and predictive dials without clutter.
-- **Empowering Gamification:** Compact pill badges, gleaming circular gauges, and tactile interaction surfaces offer a sense of tangible progress and gamified motivation across every step.
+Wizualna tożsamość **JASNE.** wspiera bezstresowe, intensywne i skuteczne przygotowanie maturzysty do egzaminów CKE z matematyki i języka polskiego. Nazwa marki („Jasne!”) reprezentuje olśnienie, klarowność, prostotę i natychmiastowe zrozumienie skomplikowanych koncepcji.
 
-## Colors
+Aplikacja wspiera dwa dopełniające się, dopracowane motywy:
+1. **Nocturne Luminary (Dark Mode):** Głęboki, inky-czarny kosmos (`#070A0F`, `#0E1522`) redukujący zmęczenie oczu podczas wieczornych sesji nauki, z radiantnym bursztynowo-złotym akcentem (`#FFB800`).
+2. **Solar Luminary (Light Mode):** Ciepły, papierowy minimalizm (`#F8F9FC`, czyste karty `#FFFFFF`) z precyzyjnymi ramkami 1px (`#E2E8F0`) i kontrastowo skalibrowanym bursztynem (`#D97706` / `#B45309`), idealny do nauki w świetle dziennym i na zewnątrz.
 
-The color architecture is calibrated for high-legibility dark mode usage:
-- **Primary (`#FFB800`):** The beacon color. Used for primary CTAs, active segmented states, streak high-water marks, and progress milestones. It evokes optimism, mastery, and immediate attention.
-- **Secondary (`#2563EB`):** Used for informational notifications, guest prompts, system banners, and secondary academic domains.
-- **Tertiary (`#10B981`):** Applied to success states, completed diagnostic milestones, passed exam thresholds, and affirmative status indicators.
-- **Neutral (`#0B0F19`):** Forms the structured canvas base. It acts as the anchor between pure pitch-black (#070A0F) and elevated component layers (#0E1522).
+---
 
-### Named Colors & Semantic Function
-- `alert-crimson` (`#F43F5E`) and its muted container `alert-crimson-bg` designate scores falling below passing thresholds (e.g., <30% threshold indicators) and persistent learning error banks.
-- `surface-border` (`rgba(255, 255, 255, 0.08)`) defines discrete card separations on OLED and dark displays without high contrast friction.
-- `text-primary` (`#F8FAFC`) delivers high-contrast readability against dark planes, while `text-muted` (`#94A3B8`) supports hierarchy without distracting the learner.
+## 2. Architektura Barw & Kontrast WCAG
 
-## Typography
+W obu motywach rygorystycznie przestrzegamy standardu WCAG AAA / AA dla tekstu i elementów interaktywnych:
 
-The typographic hierarchy pairs **Plus Jakarta Sans** for structural headers, badges, navigation metrics, and display numbers with **DM Sans** for sustained body reading, explanations, and instructions.
+| Rola Semantyczna | Nocturne Luminary (Dark) | Solar Luminary (Light) | Zastosowanie |
+| :--- | :--- | :--- | :--- |
+| `background-base` | `#070A0F` | `#F8F9FC` | Płótno bazowe całej aplikacji |
+| `surface-card` | `#0E1522` | `#FFFFFF` | Karty lekcji, panele Bento, moduły |
+| `surface-card-hover` | `#141D2E` | `#F1F5F9` | Stan najechania karty |
+| `surface-border` | `rgba(255,255,255,0.08)` | `#E2E8F0` | Subtelne krawędzie 1px |
+| `primary` | `#FFB800` | `#D97706` | Główny kolor akcji, aktywne pastylki |
+| `primary-hover` | `#FFC72C` | `#B45309` | Hover głównego przycisku |
+| `text-primary` | `#F8FAFC` | `#0F172A` | Tytuły, treść pytań, formuły matematyczne |
+| `text-secondary` | `#94A3B8` | `#475569` | Podtytuły, etykiety wyjaśnień |
+| `text-muted` | `#64748B` | `#64748B` | Dyskretne metryki, daty |
+| `alert-crimson` | `#F43F5E` | `#E11D48` | Błędy, pułapki CKE, brak serc |
+| `accent-success` | `#10B981` | `#059669` | Sukces, opanowana lekcja, poprawny wynik |
+| `streak-flame` | `#EA580C` | `#EA580C` | Płomień passy i retencji |
 
-- **Plus Jakarta Sans:** Provides geometry, wide counters, and rounded friendly terminals that lend warmth and modern structure to navigation, statistics, and prompts.
-- **DM Sans:** Delivers neutral, clean reading ease across lesson materials, math descriptions, and options.
-- **Metric Readouts:** Numerical values within gauges (e.g., "14% PROGNOZA", "7/50 pkt") use bold, tightly kerned Plus Jakarta Sans with tabular figures to ensure numbers align during score updates.
-- **Labels and Badges:** Micro-labels (such as pill badges: "NAJPOPULARNIEJSZY", "NOWA FORMUŁA") are uppercase, semi-expanded or tracked out slightly (+0.05em) in `label-sm` for legibility at small sizes.
+---
 
-## Layout & Spacing
+## 3. Typografia & Czytelność
 
-The design system operates on an 8pt layout rhythm built around structured modules:
-- **Mobile (<768px):** Single-column vertical stack with `1rem` outer margin and sticky bottom navigation dock. Interactive cards expand across the available safe width with `1rem` vertical gaps.
-- **Desktop (>=1024px):** Dual or three-tier workspace utilizing a fixed left navigation sidebar (240px width), a wide primary content stage (8-column span), and a dedicated right-hand diagnostic panel (4-column span) accommodating streak progression and exam tools.
-- **Safe Padding & Bottom Insets:** Mobile screens allocate a mandatory 88px bottom padding (`env(safe-area-inset-bottom) + 5rem`) to guarantee zero occlusion by the floating bottom tab bar.
+- **Nagłówki i Metryki:** *Plus Jakarta Sans* (`display-hero`, `headline-xl`, `headline-lg`, `text-metric`). Nowoczesna geometria, szerokie oczka, zoptymalizowana pod polskie znaki diakrytyczne.
+- **Treść i Wyjaśnienia:** *DM Sans* (`body-lg`, `body-md`, `body-sm`). Maksymalna czytelność ciągłego tekstu zadań i teorii.
+- **Liczby i Timery:** Zawsze stylizowane z klasą `font-mono tabular-nums`, zapobiegając drganiom layoutu przy zmianie sekund i punktów XP.
+- **Formuły Matematyczne:** Renderowane przez silnik KaTeX z dynamicznym kolorem tekstu `var(--text-primary)` i ciepłym tłem kasetonów `var(--formula-bg)`.
 
-## Elevation & Depth
+---
 
-Visual hierarchy is maintained through stacked dark tonal layers, glassmorphism, and colored neon glow rings rather than heavy dropshadows:
+## 4. Fizyka Ruchu Cyber-Tactile (Motion Engineering)
 
-- **Layer 0 (Canvas Base):** Deepest background `#070A0F`. Provides zero distraction.
-- **Layer 1 (Card & Module Surfaces):** Backed by `#0E1522` at 90% opacity with `backdrop-filter: blur(12px)`. Outlined with a 1px crisp line of `rgba(255, 255, 255, 0.08)`.
-- **Layer 2 (Interactive Floating Elements & Overlays):** `#141D2E` with 1px border `rgba(255, 255, 255, 0.14)`. Accompanied by a diffused ambient shadow: `0 12px 32px -4px rgba(0, 0, 0, 0.6)`.
-- **Active State Highlights:** Selected cards and key targets receive an active border stroke (`#FFB800`, 1.5px) accompanied by an interior or exterior amber aura (`box-shadow: 0 0 20px -2px rgba(255, 184, 0, 0.25)`).
-- **Metric Glows:** Progress arcs (such as score prediction circles) use localized SVG dropshadow blurs in their respective status hues (`rgba(244, 63, 94, 0.4)` for alert thresholds, `rgba(255, 184, 0, 0.4)` for standard pacing).
+Zgodnie z zasadami wyeliminowania AI Slop, interfejs unika pływających w nieskończoność animacji. Wszystkie mikrointerakcje opierają się na fizyce sprężyny (`spring physics`) z biblioteki `motion/react`:
 
-## Shapes
+1. **Mikrointerakcja Dotykowa:** Wszystkie klikalne kafelki, przyciski i opcje A/B/C/D reagują sprężystym skalowaniem `whileTap={{ scale: 0.97 }}` z natychmiastowym feedbackiem dotykowym (`triggerHaptic`).
+2. **Przełączanie Zakładek:** Pływająca pastylka aktywnej zakładki (zarówno w dolnym docku mobilnym, jak i w bocznej nawigacji oraz w przełącznikach widoków) przemieszcza się płynnie dzięki `layoutId` i sprężynie:
+   ```ts
+   transition: { type: "spring", stiffness: 450, damping: 32 }
+   ```
+3. **Kaskadowy Wlot Kart (Stagger):** Listy zadań i sekcje ładują się z dyskretną kaskadą 30ms i czasem trwania 250ms, dając poczucie lekkości bez spowalniania użytkownika.
+4. **Slide-Up Drawer Sheets:** Ekrany feedbacku i arkusze wysuwają się od dołu ekranu z obsługą gestu przeciągnięcia w dół (drag-to-dismiss).
+5. **Dostępność Ruchowa:** Każda animacja bezwzględnie respektuje regułę `prefers-reduced-motion: reduce`.
 
-The design system implements a rounded shape language (`roundedness: 2` base = 0.5rem / 8px):
-- **Base Cards & Modules:** 16px (`rounded-lg` / `1rem`) corner radius creates soft, contemporary boundaries.
-- **Interactive Buttons & Selection Tiles:** 12px (`0.75rem`) to 16px (`1rem`) to ensure large touch target definition.
-- **Badges, Pills, and Progress Nodes:** 9999px fully circular pill styling for status markers ("NOWA FORMUŁA 2023", "Poniżej progu 30%", subject selectors, streak day dots).
-- **Action Icons:** Encapsulated inside 40px × 40px rounded squares (`rounded-md`, 10px radius) with dark surface fill (`#141D2E`) and amber or yellow iconography.
+---
 
-## Components
+## 5. Rygor Inżynierii Wizualnej: Anti-AI-Slop
 
-### Buttons
-- **Primary Button:** High-contrast solid fill in `#FFB800` with near-black `#070A0F` bold typography (`Plus Jakarta Sans 700`). Full width on mobile flow targets. Includes an inline chevron/arrow icon that translates 2px right on hover. Active scale: `scale(0.98)`.
-- **Secondary / Ghost Button:** Transparent or `#141D2E` background with a subtle border `rgba(255, 255, 255, 0.12)`, white text, and amber icon highlights.
-- **Alert / Action Pills:** `#F43F5E` background or tinted border for risk notifications.
-
-### Selection Cards (Goal & Subject Pickers)
-- Dark glass container (`#0E1522`) framed with a 1px border (`rgba(255, 255, 255, 0.08)`).
-- Left-aligned icon box (`44px` square, rounded-lg, dark charcoal background).
-- Center text block featuring a prominent headline, pill badge, and subtle subtitle.
-- Right indicator: custom radio node (empty circular border in neutral states; filled amber disc with a checkmark when active).
-- Selected state shifts border to `#FFB800` with an amber glow.
-
-### Gauges & Radial Progress
-- Multi-concentric SVG circular charts for score forecasting.
-- Background track uses muted dark slate (`#1E293B`, 4px stroke).
-- Foreground animated stroke utilizes glowing gradient lines: Coral-crimson (`#F43F5E`) for sub-30% alert zones, transition to Gold (`#FFB800`) as the score hits safety benchmarks.
-- Center displays bold fractional and percentage metrics.
-
-### Chips & Badges
-- **Status Badges:** Small pill capsules with `padding: 4px 10px`, `font-size: 11px`, `text-transform: uppercase`, `font-weight: 700`. 
-- Amber variants use transparent gold wash (`rgba(255, 184, 0, 0.15)`) with `#FFB800` text. Alert variants use `rgba(244, 63, 94, 0.15)` with `#F43F5E` text.
-
-### Streak Tracker Bar
-- Compact horizontal module displaying weekly retention days (`D1` through `D7`).
-- Active days are indicated by filled orange/amber pill discs with white checkmarks.
-- Current active day is haloed with an orange flame badge and glow; upcoming days are rendered as subtle bordered circles with muted typography.
-
-### Bottom Navigation Bar (Mobile)
-- Fixed at screen bottom with blurred backdrop (`rgba(11, 15, 25, 0.85)` + `backdrop-filter: blur(16px)`).
-- Selected tab features an amber pill surface container (`#FFB800`) with dark typography and icon.
-- Inactive tabs display muted icons (`#94A3B8`) that illuminate to `#F8FAFC` upon touch.
+- **0% Emojis:** Wszystkie stany opierają się na wektorowych ikonach Lucide (`Sun`, `Moon`, `Monitor`, `CheckCircle2`, `Target`, `GraduationCap`).
+- **Płaskie, precyzyjne granice:** Brak niepotrzebnych rozmytych neonowych obwódek; wyraziste karty o stałym promieniu `rounded-2xl` (`16px`) lub `rounded-[26px]` (dock mobilny).
+- **Zrównoważona gęstość informacji:** 1 kluczowy CTA na ekranie, przejrzysty podział Bento Box.

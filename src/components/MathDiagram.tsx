@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Lightbulb } from 'lucide-react';
+import { Lightbulb, Sparkles } from 'lucide-react';
 import { MathPlot, PlotData } from './MathPlot';
 import { MathRenderer } from './MathRenderer';
+import { MafsPlot } from './mafs/MafsPlot';
+import { MafsInteractiveLab, LabType } from './mafs/MafsInteractiveLab';
 
 export function formatSvgText(raw?: string): string {
   if (!raw) return '';
@@ -30,10 +32,19 @@ export function formatSvgText(raw?: string): string {
     .replace(/\^\{3\}/g, '³')
     .replace(/\^\{n\}/g, 'ⁿ')
     .replace(/\^\{m\}/g, 'ᵐ')
+    .replace(/\^\{c\}/g, 'ᶜ')
+    .replace(/\^\{k\}/g, 'ᵏ')
+    .replace(/\^\{x\}/g, 'ˣ')
     .replace(/\^\{-1\}/g, '⁻¹')
     .replace(/\^2/g, '²')
     .replace(/\^3/g, '³')
     .replace(/\^n/g, 'ⁿ')
+    .replace(/\^c/g, 'ᶜ')
+    .replace(/\^k/g, 'ᵏ')
+    .replace(/\^x/g, 'ˣ')
+    .replace(/\^y/g, 'ʸ')
+    .replace(/\^a/g, 'ᵃ')
+    .replace(/\^b/g, 'ᵇ')
     .replace(/\\mathbb\{N\}\^?\+?/g, 'ℕ⁺')
     .replace(/\\mathbb\{N\}/g, 'ℕ')
     .replace(/\\mathbb\{R\}/g, 'ℝ')
@@ -234,12 +245,17 @@ export interface MathDiagramData {
   grid?: DiagramGrid;
   /** Podziałki osi i podpisy wartości liczbowych */
   ticks?: DiagramTick[];
+  /** Opcjonalne przypisanie do interaktywnego laboratorium Mafs */
+  interactiveLab?: LabType;
 }
 
 interface MathDiagramProps {
   diagram?: MathDiagramData | PlotData;
   className?: string;
   compact?: boolean;
+  borderless?: boolean;
+  interactiveLab?: LabType;
+  engine?: 'mafs' | 'svg';
 }
 
 function polarToCartesian(cx: number, cy: number, r: number, angleInDegrees: number) {
@@ -260,13 +276,24 @@ function describeArc(cx: number, cy: number, r: number, startAngle: number, endA
   ].join(' ');
 }
 
-export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '', compact = false }) => {
+export const MathDiagram: React.FC<MathDiagramProps> = ({
+  diagram,
+  className = '',
+  compact = false,
+  borderless = false,
+  interactiveLab: propsInteractiveLab,
+  engine = 'mafs'
+}) => {
   const [hoveredPointIdx, setHoveredPointIdx] = useState<number | null>(null);
+  const [showMafsLab, setShowMafsLab] = useState<boolean>(false);
 
   if (!diagram) return null;
 
   // Fallback 1: Jeśli obiekt to klasyczny PlotData z MathPlot
   if (!('type' in diagram) || diagram.type === 'PIECEWISE_LINEAR' || diagram.type === 'LINEAR' || diagram.type === 'PARABOLA' || ('xRange' in diagram)) {
+    if (engine === 'mafs') {
+      return <MafsPlot plot={diagram as PlotData} className={className} />;
+    }
     return <MathPlot plot={diagram as PlotData} className={className} />;
   }
 
@@ -274,8 +301,22 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
 
   // Fallback 2: Jeśli type to PLOT
   if (d.type === 'PLOT' && d.plotData) {
+    if (engine === 'mafs') {
+      return <MafsPlot plot={d.plotData} className={className} />;
+    }
     return <MathPlot plot={d.plotData} className={className} />;
   }
+
+  // Automatyczne wykrycie typu laboratorium Mafs dla danego zagadnienia
+  const detectedLab: LabType | undefined = d.interactiveLab || propsInteractiveLab || (() => {
+    const text = `${d.title || ''} ${d.formulaBadge || ''} ${d.caption || ''}`.toLowerCase();
+    if (text.includes('parabol') || text.includes('kwadrat') || text.includes('ax^2') || text.includes('delta')) return 'PARABOLA';
+    if (text.includes('kierunk') || text.includes('liniow') || text.includes('y = ax') || text.includes('prostopadł')) return 'LINEAR';
+    if (text.includes('odczyt') || text.includes('własności funkcji') || (text.includes('wykres') && (text.includes('dziedzin') || text.includes('zw_f')))) return 'GRAPH_INSPECTOR';
+    if (text.includes('bezwzględn') || text.includes('|x')) return 'ABSOLUTE_VALUE';
+    if (text.includes('trygonometr') || text.includes('sin') || text.includes('cos') || text.includes('okrąg jednostkowy')) return 'TRIGONOMETRY';
+    return undefined;
+  })();
 
   const width = d.width || 540;
   const height = d.height || 260;
@@ -293,16 +334,42 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
   );
 
   return (
-    <div className={`w-full mx-auto my-2.5 p-4 sm:p-5 rounded-2xl bg-[#090D16]/95 border border-slate-800/90 shadow-2xl flex flex-col items-center select-none overflow-hidden relative transition-all duration-200 ${className}`}>
-      {/* Tytuł diagramu */}
-      {d.title && (
-        <div className="w-full flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-200 pb-2.5 mb-2 border-b border-white/5">
-          <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0 shadow-sm" />
-          <div className="break-words">
-            <MathRenderer content={d.title} />
-          </div>
+    <div className={borderless 
+      ? `w-full mx-auto my-1 flex flex-col items-center select-none overflow-hidden relative ${className}`
+      : `w-full mx-auto my-2.5 p-4 sm:p-5 rounded-2xl bg-surface-card border border-surface-border shadow-xl flex flex-col items-center select-none overflow-hidden relative transition-all duration-200 ${className}`
+    }>
+      {/* Tytuł diagramu oraz przycisk przełączenia na Mafs Lab */}
+      {(d.title || detectedLab) && (
+        <div className="w-full flex items-center justify-between gap-2 pb-2.5 mb-2 border-b border-surface-border flex-wrap">
+          {d.title ? (
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-text-primary min-w-0">
+              <span className="w-2 h-2 rounded-full bg-primary shrink-0 shadow-sm" />
+              <div className="break-words">
+                <MathRenderer content={d.title} />
+              </div>
+            </div>
+          ) : <div />}
+
+          {detectedLab && (
+            <button
+              type="button"
+              onClick={() => setShowMafsLab(!showMafsLab)}
+              className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/30 text-amber-300 flex items-center gap-1.5 transition-all active:scale-95 shadow-sm ml-auto"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>{showMafsLab ? 'Pokaż schemat CKE' : 'Zbadaj w Mafs'}</span>
+            </button>
+          )}
         </div>
       )}
+
+      {/* Tryb 1: Interaktywne Laboratorium Mafs */}
+      {showMafsLab && detectedLab ? (
+        <div className="w-full my-2 animate-in fade-in duration-200">
+          <MafsInteractiveLab initialLab={detectedLab} onClose={() => setShowMafsLab(false)} />
+        </div>
+      ) : (
+        <>
 
       {/* Dedykowany Hero Formula Box (Wzór Główny – wycentrowany, 16-18px KaTeX ze złotym glow) */}
       {d.formulaBadge && (() => {
@@ -310,11 +377,11 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
         const hasDelimiters = (formulaText.startsWith('$') && formulaText.endsWith('$'))
           || (formulaText.startsWith('\\(') && formulaText.endsWith('\\)'))
           || (formulaText.startsWith('\\[') && formulaText.endsWith('\\]'));
-        const formattedFormula = hasDelimiters ? formulaText : `$${formulaText}$`;
+        const formattedFormula = hasDelimiters ? formulaText : `$$${formulaText}$$`;
         return (
           <div className="w-full flex justify-center items-center my-2.5 px-1">
-            <div className="w-full max-w-md px-3 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-amber-500/[0.08] via-amber-500/[0.16] to-amber-500/[0.08] border border-amber-500/35 text-amber-200 font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] flex items-center justify-center text-center overflow-x-auto no-scrollbar">
-              <MathRenderer content={formattedFormula} />
+            <div className="w-full max-w-md px-3 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-primary/[0.08] via-primary/[0.16] to-primary/[0.08] border border-primary/35 text-text-primary font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] flex items-center justify-center text-center overflow-x-auto no-scrollbar">
+              <MathRenderer content={formattedFormula} displayMode={true} />
             </div>
           </div>
         );
@@ -812,7 +879,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
           {d.cards.map((c, idx) => (
             <div
               key={`card-${idx}`}
-              className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col gap-1.5 shadow-sm transition-all"
+              className={`p-3.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-white/10' : 'bg-slate-900/90 border border-slate-800'} flex flex-col gap-1.5 shadow-sm transition-all`}
               style={{ borderLeftColor: c.color || '#FFB800', borderLeftWidth: '3px' }}
             >
               {c.badge && (
@@ -826,7 +893,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
                 </span>
               )}
               {c.formula && (
-                <div className="py-1 text-sm sm:text-base font-bold text-amber-300 text-center bg-black/30 rounded-lg border border-white/5 my-0.5">
+                <div className="py-1 px-2 text-sm sm:text-base font-bold text-amber-300 text-center bg-black/30 rounded-lg border border-white/5 my-0.5 overflow-x-auto no-scrollbar">
                   <MathRenderer content={c.formula.includes('$') ? c.formula : `$${c.formula}$`} />
                 </div>
               )}
@@ -848,7 +915,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
           {d.metrics.map((m, idx) => (
             <div
               key={`metric-${idx}`}
-              className="px-3 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between gap-1.5 shadow-sm min-h-[64px]"
+              className={`px-3 py-2.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-white/10' : 'bg-slate-900/90 border border-slate-800'} hover:border-slate-700 transition-all flex flex-col justify-between gap-1.5 shadow-sm min-h-[64px]`}
             >
               <div className="flex items-start gap-1.5 min-w-0">
                 <span
@@ -871,7 +938,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
       {d.caption && (() => {
         const cleanCaption = d.caption.replace(/^(złota reguła cke|wniosek dydaktyczny|pułapka cke|zasada cke|ważna reguła):\s*/i, '');
         return (
-          <div className="mt-3 w-full p-3.5 sm:p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/20 text-xs sm:text-sm text-slate-200 flex items-start gap-3 shadow-inner">
+          <div className={`mt-3 w-full p-3.5 sm:p-4 rounded-xl ${borderless ? 'bg-amber-500/[0.04] border border-amber-500/15' : 'bg-amber-500/[0.06] border border-amber-500/20'} text-xs sm:text-sm text-slate-200 flex items-start gap-3 shadow-inner`}>
             <Lightbulb className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <div className="flex-1 leading-relaxed text-left space-y-1">
               <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
@@ -884,6 +951,8 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({ diagram, className = '
           </div>
         );
       })()}
+      </>
+      )}
     </div>
   );
 };

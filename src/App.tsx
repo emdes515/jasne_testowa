@@ -45,6 +45,7 @@ import { checkSystemMetaVersion } from './lib/curriculumSync';
 import { handleFirestoreError, OperationType } from './lib/firestoreErrors';
 import { migrateGuestProgressToUser, hasGuestProgress } from './lib/guestMigration';
 import { normalizeSubjectFirestoreId } from './services/ckeCatalogRepository';
+import { initTheme } from './services/themeManager';
 
 import { LoadingScreen } from './components/Loading';
 
@@ -65,6 +66,10 @@ export default function App() {
   const [showGuestPromoModal, setShowGuestPromoModal] = useState(false);
   const [guestPromoSecondsLeft, setGuestPromoSecondsLeft] = useState<number>(() => getGuestPromoRemainingSeconds(DEFAULT_GUEST_PROMOTION.durationMinutes));
   const [activeAuthPromo, setActiveAuthPromo] = useState<PromotionConfig | null>(null);
+
+  useEffect(() => {
+    return initTheme();
+  }, []);
 
   useEffect(() => {
     let mounted = true;
@@ -1144,81 +1149,90 @@ export default function App() {
               }}
             />
           ) : (
-            <>
-              {currentTab === 'dashboard' && (
-                <DashboardView 
-                  onNavigate={(tab, subTab) => {
-                    if (tab === 'simulator' && subTab) {
-                      setSimulatorInitialView(subTab as any);
-                    }
-                    setCurrentTab(tab as TabState);
-                    if (subTab && tab === 'profil') setProfileInitialTab(subTab as any);
-                  }} 
-                  userState={userState}
-                  completedTasks={completedTasks}
-                  lessonMistakes={lessonMistakes}
-                  taskStars={taskStars}
-                  selectedSubjectKey={selectedSubjectKey}
-                  onSelectSubject={handleSelectSubject}
-                  onStartTask={handleStartTask}
-                  onUpdateUserState={setUserState}
-                  saveUserData={saveUserData}
-                  onOpenParentSponsor={() => setShowParentSponsorModal(true)}
-                  onOpenProPopup={() => setShowProPopup(true)}
-                  onOpenDiagnostic={() => setShowDiagnosticModal(true)}
-                  onOpenAiGenerator={() => setShowAiGeneratorModal(true)}
-                  onOpenMistakesBank={() => setShowMistakesModal(true)}
-                />
-              )}
-              {currentTab === 'nauka' && (
-                <LearnView 
-                  userState={userState}
-                  selectedSubjectKey={selectedSubjectKey}
-                  onSelectSubject={handleSelectSubject}
-                  onStartTask={handleStartTask} 
-                  onCompleteTask={handleCompleteTask}
-                  isGuest={isGuest} 
-                  onLoginRequest={handleLoginClick}
-                  onProRequest={() => setShowProPopup(true)}
-                  completedTasks={completedTasks}
-                  taskStars={taskStars}
-                  lessonMistakes={lessonMistakes}
-                  onBackToDashboard={() => setCurrentTab('dashboard')}
-                  onSheetToggle={setIsSubjectSheetOpen}
-                />
-              )}
-              {currentTab === 'simulator' && (
-                <MaturaSimulatorView 
-                  initialView={simulatorInitialView}
-                  onEarnReward={handleMaturaReward}
-                  userState={userState}
-                  onUpdateUserState={setUserState}
-                  completedTasks={completedTasks}
-                  onCompleteTask={handleCkeTaskComplete}
-                  onActiveSessionChange={setIsSimulatorSessionActive}
-                />
-              )}
-              {currentTab === 'arena' && (
-                <ArenaView 
-                  userState={userState} 
-                  onUpdateUserState={setUserState} 
-                  saveUserData={saveUserData} 
-                  onNavigate={(tab) => setCurrentTab(tab)}
-                />
-              )}
-              {currentTab === 'profile' && (
-                <ProfileView 
-                  userState={userState} 
-                  completedTasks={completedTasks}
-                  onClaimAchievement={handleClaimAchievement}
-                  onBuyShopItem={handleBuyShopItem}
-                  onUseStreakFreeze={handleUseStreakFreeze}
-                  onOpenAuthModal={() => setShowAuthModal(true)}
-                  onOpenOnboarding={() => setShowGuestPrompt(true)}
-                  initialTab={profileInitialTab}
-                />
-              )}
-            </>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={currentTab}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.18, ease: [0.25, 1, 0.5, 1] }}
+                className="flex-1 flex flex-col min-h-0 w-full"
+              >
+                {currentTab === 'dashboard' && (
+                  <DashboardView 
+                    onNavigate={(tab, subTab) => {
+                      if (tab === 'simulator' && subTab) {
+                        setSimulatorInitialView(subTab as any);
+                      }
+                      setCurrentTab(tab as TabState);
+                      if (subTab && tab === 'profil') setProfileInitialTab(subTab as any);
+                    }} 
+                    userState={userState}
+                    completedTasks={completedTasks}
+                    lessonMistakes={lessonMistakes}
+                    taskStars={taskStars}
+                    selectedSubjectKey={selectedSubjectKey}
+                    onSelectSubject={handleSelectSubject}
+                    onStartTask={handleStartTask}
+                    onUpdateUserState={setUserState}
+                    saveUserData={saveUserData}
+                    onOpenParentSponsor={() => setShowParentSponsorModal(true)}
+                    onOpenProPopup={() => setShowProPopup(true)}
+                    onOpenDiagnostic={() => setShowDiagnosticModal(true)}
+                    onOpenAiGenerator={() => setShowAiGeneratorModal(true)}
+                    onOpenMistakesBank={() => setShowMistakesModal(true)}
+                  />
+                )}
+                {currentTab === 'nauka' && (
+                  <LearnView 
+                    userState={userState}
+                    selectedSubjectKey={selectedSubjectKey}
+                    onSelectSubject={handleSelectSubject}
+                    onStartTask={handleStartTask} 
+                    onCompleteTask={handleCompleteTask}
+                    isGuest={isGuest} 
+                    onLoginRequest={handleLoginClick}
+                    onProRequest={() => setShowProPopup(true)}
+                    completedTasks={completedTasks}
+                    taskStars={taskStars}
+                    lessonMistakes={lessonMistakes}
+                    onBackToDashboard={() => setCurrentTab('dashboard')}
+                    onSheetToggle={setIsSubjectSheetOpen}
+                  />
+                )}
+                {currentTab === 'simulator' && (
+                  <MaturaSimulatorView 
+                    initialView={simulatorInitialView}
+                    onEarnReward={handleMaturaReward}
+                    userState={userState}
+                    onUpdateUserState={setUserState}
+                    completedTasks={completedTasks}
+                    onCompleteTask={handleCkeTaskComplete}
+                    onActiveSessionChange={setIsSimulatorSessionActive}
+                  />
+                )}
+                {currentTab === 'arena' && (
+                  <ArenaView 
+                    userState={userState} 
+                    onUpdateUserState={setUserState} 
+                    saveUserData={saveUserData} 
+                    onNavigate={(tab) => setCurrentTab(tab)}
+                  />
+                )}
+                {currentTab === 'profile' && (
+                  <ProfileView 
+                    userState={userState} 
+                    completedTasks={completedTasks}
+                    onClaimAchievement={handleClaimAchievement}
+                    onBuyShopItem={handleBuyShopItem}
+                    onUseStreakFreeze={handleUseStreakFreeze}
+                    onOpenAuthModal={() => setShowAuthModal(true)}
+                    onOpenOnboarding={() => setShowGuestPrompt(true)}
+                    initialTab={profileInitialTab}
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
           )}
         </main>
       </div>

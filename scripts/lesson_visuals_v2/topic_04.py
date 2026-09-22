@@ -15,21 +15,21 @@ def get_topic_04_visuals(l_idx):
         tab0 = {
             'type': 'INFOGRAPHIC',
             'title': 'Wzory skróconego mnożenia: Kwadrat sumy i różnicy',
-            'formulaBadge': '(a \\pm b)^2 = a^2 \\pm 2ab + b^2',
-            'caption': 'Kwadrat dwumianu ZAWSZE daje trójmian z trzema wyrazami. Wyraz środkowy to podwojony iloczyn 2ab, a ostatni wyraz +b^2 jest zawsze dodatni!',
+            'formulaBadge': r'(a \pm b)^2 = a^2 \pm 2ab + b^2',
+            'caption': 'Kwadrat dwumianu ZAWSZE daje trójmian z trzema składnikami. Wyraz środkowy to podwojony iloczyn 2ab, a ostatni wyraz +b^2 jest zawsze dodatni!',
             'cards': [
                 {
                     'badge': 'Formuła 1: Kwadrat sumy',
                     'title': 'Dwa plusy w trójmianie',
-                    'formula': '(a + b)^2 = a^2 + 2ab + b^2',
-                    'desc': 'Przykład CKE: $(2x + 3)^2 = (2x)^2 + 2 \\cdot 2x \\cdot 3 + 3^2 = 4x^2 + 12x + 9$.',
+                    'formula': r'(a + b)^2 = a^2 + 2ab + b^2',
+                    'desc': 'Przykład CKE: $(2x + 3)^2 = 4x^2 + 12x + 9$. Wyraz środkowy to $2 \\cdot 2x \\cdot 3 = 12x$.',
                     'color': C_SKY
                 },
                 {
                     'badge': 'Formuła 2: Kwadrat różnicy',
                     'title': 'Minus tylko przy 2ab, koniec zawsze dodatni',
-                    'formula': '(a - b)^2 = a^2 - 2ab + b^2',
-                    'desc': 'Przykład CKE: $(3x - 1)^2 = (3x)^2 - 2 \\cdot 3x \\cdot 1 + 1^2 = 9x^2 - 6x + 1$.',
+                    'formula': r'(a - b)^2 = a^2 - 2ab + b^2',
+                    'desc': 'Przykład CKE: $(3x - 1)^2 = 9x^2 - 6x + 1$. Ostatni składnik to $(-1)^2 = +1$.',
                     'color': C_PRIMARY
                 }
             ],
@@ -45,21 +45,21 @@ def get_topic_04_visuals(l_idx):
         # L1.4.2: Różnica kwadratów a^2 - b^2 = (a - b)(a + b)
         tab0 = {
             'type': 'INFOGRAPHIC',
-            'title': 'Różnica kwadratów: Błyskawiczny rozkład na nawiasy',
-            'formulaBadge': 'a^2 - b^2 = (a - b)(a + b)',
-            'caption': 'Gdy widzisz odejmowanie dwóch kwadratów, natychmiast zamieniaj je na iloczyn różnicy i sumy tych liczb.',
+            'title': 'Różnica kwadratów: Błyskawiczny rozkład i sprzężenie',
+            'formulaBadge': r'a^2 - b^2 = (a - b)(a + b)',
+            'caption': 'Odejmowanie kwadratów zamieniaj na iloczyn różnicy i sumy. Likwiduje pierwiastki w mianowniku i błyskawicznie faktoryzuje wielomiany.',
             'cards': [
                 {
-                    'badge': 'Zwijanie w liczbę',
+                    'badge': 'Sprzężenie mianownika',
                     'title': 'Likwidacja pierwiastków',
-                    'formula': '(\\sqrt{7} - 2)(\\sqrt{7} + 2) = (\\sqrt{7})^2 - 2^2 = 7 - 4 = 3',
-                    'desc': 'Mnożenie sprzężeń daje liczbę całkowitą bez żadnych pierwiastków.',
+                    'formula': r'(\sqrt{7} - 2)(\sqrt{7} + 2) = 7 - 4 = 3',
+                    'desc': 'Ze wzoru $(a-b)(a+b) = a^2 - b^2$: $(\\sqrt{7})^2 - 2^2 = 7 - 4 = 3$. Mianownik staje się liczbą całkowitą.',
                     'color': C_SUCCESS
                 },
                 {
-                    'badge': 'Rozkładanie wielomianu',
+                    'badge': 'Rozkład wielomianu',
                     'title': 'Szukanie pierwiastków równania',
-                    'formula': '4x^2 - 25 = (2x - 5)(2x + 5)',
+                    'formula': r'4x^2 - 25 = (2x - 5)(2x + 5)',
                     'desc': 'Zauważ, że $4x^2 = (2x)^2$ oraz $25 = 5^2$. Pierwiastki to $x = \\frac{5}{2}$ oraz $x = -\\frac{5}{2}$.',
                     'color': C_PRIMARY
                 }
@@ -73,32 +73,39 @@ def get_topic_04_visuals(l_idx):
         return {'tab0': tab0, 'tab2': None, 'tab3': None}
 
     elif l_num == 3:
-        # L1.4.3: Redukcja wyrazów podobnych i pułapka ze znakiem minus przed nawiasem
+        # L1.4.3: Wyłączanie wspólnego czynnika przed nawias i grupowanie wyrazów
         tab0 = {
             'type': 'INFOGRAPHIC',
-            'title': 'Minus przed nawiasem: Strażnik znaków',
-            'formulaBadge': '-(a - b) = -a + b, \\quad -(2x^2 - 3x + 1) = -2x^2 + 3x - 1',
-            'caption': 'Znak minus stojący bezpośrednio przed nawiasem ZMIENIA ZNAK KAŻDEGO SKŁADNIKA wewnątrz nawiasu na przeciwny!',
+            'title': 'Rozkład wielomianów: Wyłączanie czynnika i grupowanie w pary',
+            'formulaBadge': r'\begin{aligned} ax + ay &= a(x + y) \\ x^2(x - a) - b(x - a) &= (x - a)(x^2 - b) \end{aligned}',
+            'caption': 'Grupowanie wyrazów polega na podziale na dwie drużyny, wyciągnięciu wspólnego czynnika i wyciągnięciu identycznego nawiasu przed całość.',
             'cards': [
                 {
-                    'badge': 'Złota reguła CKE',
-                    'title': 'Nawias pomocniczy po minusie',
-                    'formula': 'A - B = A - [\\text{obliczona zawartość } B]',
-                    'desc': 'Najpierw podnieś do kwadratu w bezpiecznym nawiasie kwadratowym, a w osobnym kroku zmień znaki.',
+                    'badge': 'Krok 1: Wyłączanie czynnika',
+                    'title': 'Wspólny jednomian przed nawias',
+                    'formula': r'6x^3 - 9x^2 = 3x^2(2x - 3)',
+                    'desc': 'Dla liczb 6 i 9 NWD to 3, a dla $x^3$ i $x^2$ wyłączamy najwyższą możliwą potęgę $x^2$.',
+                    'color': C_SKY
+                },
+                {
+                    'badge': 'Krok 2: Grupowanie w pary',
+                    'title': 'Wspólny nawias w obu parach',
+                    'formula': r'x^3 - 2x^2 - 9x + 18 = (x - 2)(x^2 - 9)',
+                    'desc': 'Grupujesz: $x^2(x - 2) - 9(x - 2)$. Wyciągasz wspólny nawias $(x - 2)$ przed nawias z resztą $(x^2 - 9)$.',
                     'color': C_PRIMARY
                 },
                 {
-                    'badge': 'Przykład z arkusza',
-                    'title': 'Redukcja krok po kroku',
-                    'formula': '(x + 2)^2 - (x - 3)^2 = (x^2 + 4x + 4) - [x^2 - 6x + 9] = 10x - 5',
-                    'desc': 'Minus przed drugim nawiasem zmienił $-6x$ na $+6x$ oraz $+9$ na $-9$.',
+                    'badge': 'Krok 3: Różnica kwadratów',
+                    'title': 'Pełny rozkład na czynniki liniowe',
+                    'formula': r'(x - 2)(x^2 - 9) = (x - 2)(x - 3)(x + 3)',
+                    'desc': 'Nawias kwadratowy $(x^2 - 9)$ rozbijasz ze wzoru $a^2 - b^2$ na dwa nawiasy. Pierwiastki to $x \\in \\{-3, 2, 3\\}$.',
                     'color': C_SUCCESS
                 }
             ],
             'metrics': [
-                {'label': 'Reguła znaków', 'value': '$-(-b) = +b$', 'color': C_PRIMARY},
-                {'label': 'Częsty błąd', 'value': 'Zmiana znaku tylko pierwszego składnika', 'color': C_DANGER},
-                {'label': 'Waga na maturze', 'value': 'Zadanie otwarte za 2 pkt lub zamknięte za 1 pkt', 'color': C_SUCCESS}
+                {'label': 'Podział na drużyny', 'value': 'Dwie pary po dwa wyrazy', 'color': C_SKY},
+                {'label': 'PUŁAPKA CKE', 'value': 'Minus z drugiej pary: $-9(x - 2)$!', 'color': C_DANGER},
+                {'label': 'Zadanie za 2 pkt', 'value': 'Żelazny pewniak w części otwartej', 'color': C_SUCCESS}
             ]
         }
         return {'tab0': tab0, 'tab2': None, 'tab3': None}

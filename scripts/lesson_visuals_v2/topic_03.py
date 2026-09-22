@@ -4,8 +4,7 @@ Nocturne Luminary + Core-4 Bento Visuals
 100% Real KaTeX, 0% Emojis, Zero redundant SVG wagons.
 """
 from .common import (
-    C_PRIMARY, C_SUCCESS, C_SKY, C_DANGER, C_PURPLE, C_SLATE, C_MUTED, C_TEXT,
-    make_geometry_diagram
+    C_PRIMARY, C_SUCCESS, C_SKY, C_DANGER, C_PURPLE, C_SLATE, C_MUTED, C_TEXT
 )
 
 def get_topic_03_visuals(l_idx):
@@ -13,92 +12,116 @@ def get_topic_03_visuals(l_idx):
     l_num = l_idx + 1
 
     if l_num == 1:
-        # L1.3.1: Definicja geometryczna na osi liczbowej (odległość |x - a|)
-        tab0 = make_geometry_diagram(
-            title='Wartość bezwzględna: Odległość na osi liczbowej',
-            badge='|x - a| \\le r \\implies x \\in [a - r,\\; a + r]',
-            caption='Wyrażenie |x - a| oznacza odległość liczby x od punktu a na osi liczbowej. Znak minus w środku oznacza środek w punkcie a!',
-            segments=[
-                {'from': [40, 120], 'to': [480, 120], 'color': C_SLATE, 'strokeWidth': 2},
-                {'from': [140, 120], 'to': [380, 120], 'color': C_PRIMARY, 'strokeWidth': 4},
-                {'from': [140, 90], 'to': [260, 90], 'color': C_SKY, 'strokeWidth': 1.5, 'dashed': True},
-                {'from': [260, 90], 'to': [380, 90], 'color': C_SKY, 'strokeWidth': 1.5, 'dashed': True}
-            ],
-            points=[
-                {'x': 140, 'y': 120, 'color': C_PRIMARY, 'label': 'a - r'},
-                {'x': 260, 'y': 120, 'color': C_SUCCESS, 'label': 'środek: a'},
-                {'x': 380, 'y': 120, 'color': C_PRIMARY, 'label': 'a + r'}
-            ],
-            labels=[
-                {'x': 200, 'y': 80, 'text': 'odległość r', 'color': C_SKY, 'fontSize': 12, 'anchor': 'middle'},
-                {'x': 320, 'y': 80, 'text': 'odległość r', 'color': C_SKY, 'fontSize': 12, 'anchor': 'middle'}
-            ],
-            metrics=[
-                {'label': 'Środek $a$', 'value': 'Liczba ze zmienionym znakiem ($|x - 2| \\implies a = 2$)', 'color': C_SUCCESS},
-                {'label': 'Promień $r$', 'value': 'Połowa długości przedziału na osi', 'color': C_SKY},
-                {'label': 'Znak plus: $|x + 3|$', 'value': '$|x - (-3)|$, więc środek to $-3$', 'color': C_DANGER}
-            ]
-        )
-        return {'tab0': tab0, 'tab2': None, 'tab3': None}
-
-    elif l_num == 2:
-        # L1.3.2: Opuszczanie modułu dla liczb z pierwiastkami
+        # L1.3.1: Definicja geometryczna na osi liczbowej (odległość |x - a| = r)
         tab0 = {
             'type': 'INFOGRAPHIC',
-            'title': 'Opuszczanie wartości bezwzględnej: Weryfikacja znaku wnętrza',
-            'formulaBadge': '|A| = \\begin{cases} A & \\text{gdy } A \\ge 0 \\\\ -A & \\text{gdy } A < 0 \\end{cases}',
-            'caption': 'Wartość bezwzględna z wyrażenia ujemnego ZMIENIA WSZYSTKIE ZNAKI wewnątrz modułu na przeciwne, aby wynik był dodatni.',
+            'title': 'Definicja geometryczna wartości bezwzględnej: Odległość na osi',
+            'formulaBadge': r'|x - a| = r \implies x = a - r \quad \text{lub} \quad x = a + r \quad (r \ge 0)',
+            'caption': 'Wartość bezwzględna |x - a| to odległość liczby x od punktu środkowego a. Rozwiązania leżą symetrycznie po obu stronach środka.',
             'cards': [
                 {
-                    'badge': 'Przypadek 1: Wnętrze dodatnie',
-                    'title': 'Zostawiasz bez zmian',
-                    'formula': '|\\sqrt{5} - 2| = \\sqrt{5} - 2',
-                    'desc': 'Ponieważ $\\sqrt{5} \\approx 2{,}23 > 2$, wnętrze jest dodatnie ($>0$). Po prostu zdejmujesz kreski.',
+                    'badge': 'Krok w prawo (+r)',
+                    'title': 'Rozwiązanie po prawej stronie',
+                    'formula': r'x_1 = a + r',
+                    'desc': 'Przesuwamy się od środka $a$ o $r$ jednostek w prawo na osi liczbowej.',
                     'color': C_SUCCESS
                 },
                 {
-                    'badge': 'Przypadek 2: Wnętrze ujemne',
-                    'title': 'Zmieniasz wszystkie znaki!',
-                    'formula': '|\\sqrt{3} - 2| = -(\\sqrt{3} - 2) = 2 - \\sqrt{3}',
-                    'desc': 'Ponieważ $\\sqrt{3} \\approx 1{,}73 < 2$, wnętrze jest ujemne ($<0$). Musisz odwrócić kolejność składników.',
+                    'badge': 'Krok w lewo (-r)',
+                    'title': 'Rozwiązanie po lewej stronie',
+                    'formula': r'x_2 = a - r',
+                    'desc': 'Przesuwamy się od środka $a$ o $r$ jednostek w lewo na osi liczbowej.',
+                    'color': C_SKY
+                },
+                {
+                    'badge': 'PUŁAPKA CKE: Znak plus',
+                    'title': 'Środek leży po stronie ujemnej',
+                    'formula': r'|x + 3| = |x - (-3)| \implies a = -3',
+                    'desc': 'Gdy wewnątrz modułu widzisz dodawanie, środek przedziału ma znak ujemny!',
                     'color': C_DANGER
                 }
             ],
             'metrics': [
-                {'label': 'Szacowanie $\\sqrt{2}$', 'value': '$\\approx 1{,}41$', 'color': C_SKY},
-                {'label': 'Szacowanie $\\sqrt{3}$', 'value': '$\\approx 1{,}73$', 'color': C_PRIMARY},
-                {'label': 'Szacowanie $\\sqrt{5}$', 'value': '$\\approx 2{,}23$', 'color': C_SUCCESS}
+                {'label': 'Środek $a$', 'value': 'Punkt odniesienia ze zmienionym znakiem ($|x - 2| \\implies a = 2$)', 'color': C_SUCCESS},
+                {'label': 'Promień $r$', 'value': 'Dopuszczalna odległość od środka ($r \\ge 0$)', 'color': C_SKY},
+                {'label': 'Prawa strona ujemna', 'value': '$|x - a| = -3 \\implies$ sprzeczność (brak rozwiązań)', 'color': C_DANGER}
+            ]
+        }
+        return {'tab0': tab0, 'tab2': None, 'tab3': None}
+
+    elif l_num == 2:
+        # L1.3.2: Nierówności z wartością bezwzględną i przedziały rozwiązań
+        tab0 = {
+            'type': 'INFOGRAPHIC',
+            'title': 'Nierówności z wartością bezwzględną: Klatka vs Skrzydła',
+            'formulaBadge': r'\begin{aligned} |x - a| < r &\implies x \in (a - r,\; a + r) \\ |x - a| \ge r &\implies x \in (-\infty, a - r] \cup [a + r, +\infty) \end{aligned}',
+            'caption': 'Znak mniejszości uwięzi cię wewnątrz jednego przedziału wokół środka. Znak większości wyrzuca cię na zewnątrz w dwa skrzydła ku nieskończonościom.',
+            'cards': [
+                {
+                    'badge': 'Znak mniejszości (< lub ≤)',
+                    'title': 'Wnętrze przedziału („Klatka”)''',
+                    'formula': r'|x - 2| < 3 \implies x \in (-1,\; 5)',
+                    'desc': 'Punkty leżą blisko środka $a = 2$. Zbiorem rozwiązań jest jeden spójny przedział ograniczony wartościami $2 - 3 = -1$ oraz $2 + 3 = 5$.',
+                    'color': C_SUCCESS
+                },
+                {
+                    'badge': 'Znak większości (> lub ≥)',
+                    'title': 'Dwa skrzydła ku nieskończoności',
+                    'formula': r'|x - 1| \ge 4 \implies x \in (-\infty, -3] \cup [5, +\infty)',
+                    'desc': 'Punkty uciekają daleko od środka $a = 1$. Zbiorem rozwiązań jest suma dwóch przedziałów nieskończonych połączonych znakiem $\\cup$.',
+                    'color': C_PRIMARY
+                },
+                {
+                    'badge': 'PUŁAPKA CKE: Zero i liczby ujemne',
+                    'title': 'Zawsze sprawdzaj sens geometryczny',
+                    'formula': r'|x - 5| < 0 \implies \emptyset, \quad |x - 5| \ge 0 \implies \mathbb{R}',
+                    'desc': 'Wartość bezwzględna nigdy nie jest ujemna. Ostra nierówność $< 0$ nie ma rozwiązań, a nierówność $\\ge 0$ spełnia każda liczba.',
+                    'color': C_DANGER
+                }
+            ],
+            'metrics': [
+                {'label': 'Ostre: $<$ oraz $>$', 'value': 'Kółka otwarte ○, nawiasy okrągłe $( )$', 'color': C_SKY},
+                {'label': 'Słabe: $\\le$ oraz $\\ge$', 'value': 'Kółka zamalowane ●, nawiasy domknięte $[ ]$', 'color': C_SUCCESS},
+                {'label': 'Suma przedziałów $\\cup$', 'value': 'Zawsze łączy skrzydła przy znaku większości', 'color': C_PRIMARY}
             ]
         }
         return {'tab0': tab0, 'tab2': None, 'tab3': None}
 
     elif l_num == 3:
-        # L1.3.3: Proste równania z wartością bezwzględną
+        # L1.3.3: Wartość bezwzględna z wyrażeń i tożsamość pierwiastkowa
         tab0 = {
             'type': 'INFOGRAPHIC',
-            'title': 'Równania z wartością bezwzględną: Dwa przypadki',
-            'formulaBadge': '|x - a| = b \\implies x - a = b \\quad \\text{lub} \\quad x - a = -b \\quad (b \\ge 0)',
-            'caption': 'Równanie z wartością bezwzględną równą liczbie dodatniej ZAWSZE rozpada się na dwa proste równania.',
+            'title': 'Tożsamość pierwiastkowa i opuszczanie wartości bezwzględnej',
+            'formulaBadge': r'\sqrt{a^2} = |a| \quad \text{oraz} \quad |A| = \begin{cases} A & \text{dla } A \ge 0 \\ -A & \text{dla } A < 0 \end{cases}',
+            'caption': 'Pierwiastek parzystego stopnia z definicji NIGDY nie daje wyniku ujemnego. Zdejmując kreski z liczby ujemnej, zmieniasz wszystkie znaki!',
             'cards': [
                 {
-                    'badge': 'Przypadek A',
-                    'title': 'Krok w prawo od środka',
-                    'formula': 'x - a = b \\implies x = a + b',
-                    'desc': 'Rozwiązanie leżące po prawej stronie środka $a$ w odległości $b$.',
-                    'color': C_SKY
+                    'badge': 'Żelazna tożsamość CKE',
+                    'title': 'Pierwiastek z kwadratu to moduł',
+                    'formula': r'\sqrt{a^2} = |a| \implies \sqrt{(-4)^2} = |-4| = 4',
+                    'desc': 'Dla $a < 0$ zachodzi $\\sqrt{a^2} = -a$. Odruchowe pisanie $\\sqrt{a^2} = a$ to najczęstszy błąd na maturze!',
+                    'color': C_SUCCESS
                 },
                 {
-                    'badge': 'Przypadek B',
-                    'title': 'Krok w lewo od środka',
-                    'formula': 'x - a = -b \\implies x = a - b',
-                    'desc': 'Rozwiązanie leżące po lewej stronie środka $a$ w odległości $b$.',
+                    'badge': 'Opuszczanie modułu z pierwiastkiem',
+                    'title': 'Zawsze oszacuj znak wnętrza',
+                    'formula': r'|2 - \sqrt{5}| = \sqrt{5} - 2',
+                    'desc': 'Szacujemy $\\sqrt{5} \\approx 2{,}24 > 2$. Ponieważ wnętrze jest ujemne ($2 - 2{,}24 < 0$), odwracamy kolejność odejmowania.',
+                    'color': C_DANGER
+                },
+                {
+                    'badge': 'Wzór skróconego mnożenia',
+                    'title': 'Zwijanie kwadratu pod pierwiastkiem',
+                    'formula': r'\sqrt{x^2 - 6x + 9} = \sqrt{(x - 3)^2} = |x - 3|',
+                    'desc': 'Zwijasz trójmian do kwadratu różnicy, zamieniasz na wartość bezwzględną i dopiero sprawdzasz założenie (np. $x < 3 \\implies 3 - x$).',
                     'color': C_PRIMARY
                 }
             ],
             'metrics': [
-                {'label': 'Dla $b > 0$', 'value': 'Dwa różne rozwiązania symetryczne!', 'color': C_SUCCESS},
-                {'label': 'Dla $b = 0$', 'value': 'Jedno rozwiązanie: $x = a$', 'color': C_SKY},
-                {'label': 'Dla $b < 0$', 'value': 'Równanie sprzeczne (brak rozwiązań)!', 'color': C_DANGER}
+                {'label': 'Szacowanie $\\sqrt{2}$', 'value': '$\\approx 1{,}41$', 'color': C_SKY},
+                {'label': 'Szacowanie $\\sqrt{3}$', 'value': '$\\approx 1{,}73$', 'color': C_PRIMARY},
+                {'label': 'Szacowanie $\\sqrt{5}$', 'value': '$\\approx 2{,}24$', 'color': C_SUCCESS},
+                {'label': 'Liczba $\\pi$', 'value': '$\\approx 3{,}14$', 'color': C_PURPLE}
             ]
         }
         return {'tab0': tab0, 'tab2': None, 'tab3': None}

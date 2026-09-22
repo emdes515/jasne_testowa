@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_07():
     topic_id = 'dzial-7'
-    topic_title = 'Dział 1.7: Równania i wyrażenia wymierne'
+    topic_title = 'Równania i wyrażenia wymierne'
+    topic_number = 7
     lessons = []
 
     # ----------------------------------------------------
@@ -80,7 +81,7 @@ def build_topic_07():
     l1 = make_lesson(
         lesson_id='lesson-7-1',
         topic_id=topic_id,
-        title='L1.7.1: Dziedzina wyrażenia wymiernego – żelazny warunek mianownik != 0',
+        title='Dziedzina wyrażenia wymiernego – warunek niezerowego mianownika',
         concept_essence='W matematyce nie wolno dzielić przez zero. Dlatego gdy widzisz ułamek algebraiczny, Twoim pierwszym odruchem jest zapisanie warunku: mianownik $\\ne 0$. Wyznaczasz liczby zerujące mianownik i wyrzucasz je ze zbioru liczb rzeczywistych za pomocą ukośnika: $D = \\mathbb{R} \\setminus \\{x_1, x_2\\}$. Pamiętaj: dziedzinę wyznaczasz ZAWSZE na samym początku, zanim cokolwiek skrócić!',
         matura_context='Wyznaczanie dziedziny ułamka algebraicznego to samodzielne zadanie za 1 pkt lub obowiązkowy warunek zaliczenia zadania za 2 pkt.',
         core_formulas=[
@@ -187,7 +188,7 @@ def build_topic_07():
     l2 = make_lesson(
         lesson_id='lesson-7-2',
         topic_id=topic_id,
-        title='L1.7.2: Rozwiązywanie równań L(x)/M(x) = 0 i eliminacja pierwiastków obcych',
+        title='Rozwiązywanie równań wymiernych i eliminacja pierwiastków obcych',
         concept_essence='Równanie w postaci ułamka przyrównanego do zera rozwiązuje się w 3 krokach: 1) KROK 1: Dziedzina — sprawdzasz mianownik $M(x) \\ne 0$ i wykluczasz niebezpieczne liczby. 2) KROK 2: Licznik do zera — ułamek znika, rozwiązujesz $L(x) = 0$ i otrzymujesz kandydatów na pierwiastki. 3) KROK 3: Sito dziedziny — sprawdzasz każdego kandydata. Jeśli którykolwiek zerował mianownik, bezwzględnie go skreślasz (to tzw. pierwiastek obcy!).',
         matura_context='Żelazny pewniak na każdej maturze (Maj 2024 zad. 8, Czerwiec 2023 zad. 6). Zawsze jeden z pierwiastków licznika odpada!',
         core_formulas=[
@@ -294,7 +295,7 @@ def build_topic_07():
     l3 = make_lesson(
         lesson_id='lesson-7-3',
         topic_id=topic_id,
-        title='L1.7.3: Równania wymierne z proporcji i mnożenie na krzyż',
+        title='Równania wymierne z proporcji i mnożenie na krzyż',
         concept_essence='Gdy po lewej i prawej stronie masz po jednym ułamku: $\\frac{A}{B} = \\frac{C}{D}$, najwygodniejszą techniką jest mnożenie na krzyż: $A \\cdot D = B \\cdot C$. Pozbywasz się kresek ułamkowych jednym ruchem! Pamiętaj jednak o żelaznej dyscyplinie: 1) Najpierw dziedzina: $B \\ne 0$ oraz $D \\ne 0$. 2) Składniki wielowyrazowe ZAWSZE bierz w nawiasy: $A \\cdot (D) = B \\cdot (C)$. 3) Po wyznaczeniu wyniku porównaj go z dziedziną.',
         matura_context='Regularnie pojawia się w zadaniach zamkniętych i zadaniach otwartych krótkiej odpowiedzi.',
         core_formulas=[
@@ -337,6 +338,8 @@ def build_topic_07():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S+',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '3 lekcje (~15 min)',

@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_06():
     topic_id = 'dzial-6'
-    topic_title = 'Dział 1.6: Równania w postaci iloczynowej'
+    topic_title = 'Równania w postaci iloczynowej'
+    topic_number = 6
     lessons = []
 
     # ----------------------------------------------------
@@ -80,7 +81,7 @@ def build_topic_06():
     l1 = make_lesson(
         lesson_id='lesson-6-1',
         topic_id=topic_id,
-        title='L1.6.1: Reguła zerowania iloczynu – z polskiego na nasze',
+        title='Reguła zerowania iloczynu – z polskiego na nasze',
         concept_essence='Równanie w postaci iloczynowej to najłatwiejsze punkty na maturze. Zasada jest prosta: jeśli iloczyn kilku czynników daje zero, to przynajmniej jeden z nich musi być zerem. Gdy widzisz nawiasy przyrównane do zera: $(x - a)(x - b) = 0$, NIGDY ich nie wymnażaj! Przyrównaj każdy nawias z osobna do zera i połącz je słowem LUB.',
         matura_context='Pojawia się w 100% arkuszy maturalnych CKE na pozycji zadania 6 lub 7 za 1 punkt.',
         core_formulas=[
@@ -187,7 +188,7 @@ def build_topic_06():
     l2 = make_lesson(
         lesson_id='lesson-6-2',
         topic_id=topic_id,
-        title='L1.6.2: Czynniki kwadratowe rozkładalne vs nierozkładalne w równaniach',
+        title='Czynniki kwadratowe rozkładalne vs nierozkładalne w równaniach',
         concept_essence='Gdy w równaniu iloczynowym pojawia się nawias stopnia drugiego, natychmiast badasz jego znak: 1) Różnica kwadratów $(x^2 - c = 0)$ daje DWA rozwiązania: $x = \\sqrt{c}$ oraz $x = -\\sqrt{c}$. 2) Suma kwadratów $(x^2 + c = 0$, gdzie $c > 0$) to klasyczna pułapka CKE — kwadrat nie może być ujemny, więc taki nawias jest martwy i nie daje żadnego rozwiązania rzeczywistego.',
         matura_context='Ulubiona pułapka egzaminatorów CKE w zadaniach testowych (Maj 2024 zad. 7, Czerwiec 2023 zad. 7).',
         core_formulas=[
@@ -295,7 +296,7 @@ def build_topic_06():
     l3 = make_lesson(
         lesson_id='lesson-6-3',
         topic_id=topic_id,
-        title='L1.6.3: Równania stopnia trzeciego rozwiązywane przez grupowanie wyrazów',
+        title='Równania stopnia trzeciego rozwiązywane przez grupowanie wyrazów',
         concept_essence='Równanie 3. stopnia z 4 wyrazami to żelazny pewniak w zadaniach otwartych za 2 punkty. Schemat jest niezmienny: 1) Dzielisz wyrazy na dwie pary. 2) Z pierwszej wyciągasz $x^2$, z drugiej liczbę (uwaga na minus!). 3) W obu nawiasach powstaje to samo wyrażenie liniowe — wyciągasz je przed nawias główny. 4) Pozostały nawias kwadratowy $(x^2 - c)$ rozkładasz na dwa nawiasy ze wzoru $a^2 - b^2$. 5) Zapisujesz 3 pierwiastki.',
         matura_context='Klasyczne zadanie otwarte za 2 punkty występujące na co drugiej maturze CKE.',
         core_formulas=[
@@ -338,6 +339,8 @@ def build_topic_06():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S+',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '3 lekcje (~15 min)',

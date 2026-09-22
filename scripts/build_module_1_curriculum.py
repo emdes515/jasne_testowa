@@ -36,16 +36,16 @@ def build_full_curriculum():
     print("=" * 60)
 
     builders = [
-        ("Dział 1.1: Potęgi i pierwiastki", build_topic_01),
-        ("Dział 1.2: Logarytmy", build_topic_02),
-        ("Dział 1.3: Wartość bezwzględna", build_topic_03),
-        ("Dział 1.4: Wzory skróconego mnożenia i algebra", build_topic_04),
-        ("Dział 1.5: Nierówności liniowe", build_topic_05),
-        ("Dział 1.6: Równania w postaci iloczynowej", build_topic_06),
-        ("Dział 1.7: Równania i wyrażenia wymierne", build_topic_07),
-        ("Dział 1.8: Nierówności kwadratowe", build_topic_08),
-        ("Dział 1.9: Odczytywanie informacji z wykresu funkcji", build_topic_09),
-        ("Dział 1.10: Funkcja liniowa i jej własności", build_topic_10),
+        ("Potęgi i pierwiastki", build_topic_01),
+        ("Logarytmy", build_topic_02),
+        ("Wartość bezwzględna", build_topic_03),
+        ("Wzory skróconego mnożenia i algebra", build_topic_04),
+        ("Nierówności liniowe", build_topic_05),
+        ("Równania w postaci iloczynowej", build_topic_06),
+        ("Równania i wyrażenia wymierne", build_topic_07),
+        ("Nierówności kwadratowe", build_topic_08),
+        ("Odczytywanie informacji z wykresu funkcji", build_topic_09),
+        ("Funkcja liniowa i jej własności", build_topic_10),
     ]
 
     topics = []

@@ -5,11 +5,13 @@
   "target_score": "30% - 36% (Gwarancja zdania)",
   "total_topics": 10,
   "total_lessons": 34,
-  "total_tasks": 165,
+  "total_tasks": 175,
   "topics": [
     {
       "id": "dzial-1",
-      "title": "Dział 1.1: Potęgi i pierwiastki",
+      "title": "Potęgi i pierwiastki",
+      "topic_number": 1,
+      "order": 1,
       "short_title": "Potęgi i pierwiastki",
       "importance": "Pewniak CKE (Tier S+)",
       "matura_points_range": "2–4 pkt",
@@ -23,7 +25,7 @@
           "required_correct_tasks": 4,
           "theory_pill": {
             "title": "Działania na potęgach o wykładnikach całkowitych i wymiernych",
-            "concept_essence": "Potęgowanie to skrócony zapis wielokrotnego mnożenia tej samej liczby: zapis $a^n$ oznacza, że liczbę $a$ (podstawę) mnożysz przez samą siebie $n$ razy (wykładnik). Zrozumienie tej definicji daje Ci intuicję do wszystkich praw działań na potęgach: podstawa potęgi jest jak nienaruszalna cegiełka, a operacje wykonujesz wyłącznie na licznikach powtórzeń. Gdy w zadaniu CKE widzisz różne liczby (np. $4$, $8$, $16$), Twoim pierwszym odruchem jest sprowadzenie ich do wspólnej, najprostszej bazy – najczęściej $2$, $3$ lub $5$.",
+            "concept_essence": "Potęgowanie to skrócony zapis wielokrotnego mnożenia tej samej liczby: zapis $a^n$ oznacza, że liczbę $a$ (podstawę) mnożysz przez samą siebie $n$ razy (wykładnik).\n\nPodstawa potęgi jest jak nienaruszalna cegiełka bazy – podczas dodawania wykładników baza nigdy nie ulega zmianie.\n\nWykładnik to licznik powtórzeń i operacji – wszystkie prawa działań na potęgach wykonujesz wyłącznie na licznikach na górze.\n\nZłoty odruch CKE: gdy w zadaniu widzisz różne liczby (np. 4, 8, 16 lub 9, 27), Twoim pierwszym ruchem jest zamiana ich na wspólną bazę: najczęściej 2, 3 lub 5.",
             "matura_context": "Zadanie z działań na potęgach pojawia się w 100% arkuszy maturalnych CKE na pozycji 1 lub 2 za 1 punkt. Dodatkowo występuje regularnie w zadaniu otwartym na podzielność za 2 punkty.",
             "core_formulas": [
               {
@@ -62,22 +64,66 @@
               "steps": [
                 {
                   "num": 1,
-                  "label": "Sprowadzenie do wspólnej podstawy",
+                  "label": "Sprowadzenie do wspólnej podstawy 2",
                   "text": "Liczby 4 i 8 zapisujemy jako potęgi dwójki: $4 = 2^2$, $8 = 2^3$. Wtedy $4^3 = (2^2)^3 = 2^6$ oraz $8^4 = (2^3)^4 = 2^{12}$."
                 },
                 {
                   "num": 2,
                   "label": "Działania na wykładnikach w liczniku",
-                  "text": "Licznik: $2^7 \\cdot 2^6 = 2^{7+6} = 2^{13}$. Wyrażenie przyjmuje postać $\\frac{2^{13}}{2^{12}}$."
+                  "text": "W liczniku dodajemy wykładniki: $2^7 \\cdot 2^6 = 2^{7+6} = 2^{13}$. Wyrażenie przyjmuje postać $\\frac{2^{13}}{2^{12}}$."
                 },
                 {
                   "num": 3,
                   "label": "Ostateczna redukcja i wynik CKE",
-                  "text": "Dzielimy potęgi: $2^{13} : 2^{12} = 2^{13-12} = 2^1 = 2$."
+                  "text": "Odejmujemy wykładnik mianownika od licznika: $2^{13} : 2^{12} = 2^{13-12} = 2^1 = 2$."
                 }
               ],
               "result": "2",
-              "diagram": null,
+              "diagram": {
+                "type": "INFOGRAPHIC",
+                "title": "Modelowa redukcja potęg do wspólnej bazy 3",
+                "formulaBadge": "\\frac{3^{10} \\cdot 9^5}{27^6} = \\frac{3^{10} \\cdot (3^2)^5}{(3^3)^6} = \\frac{3^{10} \\cdot 3^{10}}{3^{18}} = \\frac{3^{20}}{3^{18}} = 3^2 = 9",
+                "caption": "Klucz CKE: Zawsze zamieniaj wszystkie liczby (9, 27) na potęgi najmniejszej wspólnej bazy (3). Następnie zastosuj prawa działań na wykładnikach.",
+                "width": 520,
+                "height": 180,
+                "cards": [
+                  {
+                    "badge": "Krok 1",
+                    "title": "Wspólna baza 3",
+                    "desc": "Zamieniasz $9 = 3^2$ oraz $27 = 3^3$.",
+                    "color": "#38BDF8"
+                  },
+                  {
+                    "badge": "Krok 2",
+                    "title": "Potęgowanie potęgi",
+                    "desc": "Mnożysz wykładniki: $(3^2)^5 = 3^{10}$ oraz $(3^3)^6 = 3^{18}$.",
+                    "color": "#FFB800"
+                  },
+                  {
+                    "badge": "Krok 3",
+                    "title": "Iloczyn i iloraz",
+                    "desc": "Licznik: $3^{10+10} = 3^{20}$. Całość: $3^{20-18} = 3^2 = 9$.",
+                    "color": "#10B981"
+                  }
+                ],
+                "metrics": [
+                  {
+                    "label": "Wspólna baza",
+                    "value": "$9 = 3^2, \\; 27 = 3^3$",
+                    "color": "#38BDF8"
+                  },
+                  {
+                    "label": "Licznik",
+                    "value": "$3^{10} \\cdot 3^{10} = 3^{20}$",
+                    "color": "#FFB800"
+                  },
+                  {
+                    "label": "Wynik końcowy",
+                    "value": "$3^{20 - 18} = 3^2 = 9$",
+                    "color": "#10B981"
+                  }
+                ]
+              },
               "numberLine": null
             },
             "exam_trap": "Typowy błąd: Mnożenie podstaw potęg (np. $2^3 \\cdot 2^4 = 4^7$).\n\nPoprawnie: Podstawa potęgi pozostaje BEZ ZMIAN: $2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128$.",
@@ -246,7 +292,31 @@
               ]
             },
             "numberLine": null,
-            "trapDiagram": null,
+            "trapDiagram": {
+              "type": "INFOGRAPHIC",
+              "title": "Pułapka CKE: Mnożenie potęg o tych samych podstawach",
+              "formulaBadge": "2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128 \\quad \\neq \\quad 4^7 \\; \\text{ani} \\; 4^{12}",
+              "caption": "Przy mnożeniu potęg o tej samej podstawie bazy NIE mnożysz przez siebie! Baza 2 pozostaje nienaruszona, dodajesz tylko wykładniki.",
+              "width": 520,
+              "height": 180,
+              "metrics": [
+                {
+                  "label": "BŁĄD: Mnożenie baz",
+                  "value": "$2^3 \\cdot 2^4 \\neq 4^7$",
+                  "color": "#F43F5E"
+                },
+                {
+                  "label": "BŁĄD: Mnożenie wykładników",
+                  "value": "$2^3 \\cdot 2^4 \\neq 2^{12}$",
+                  "color": "#F43F5E"
+                },
+                {
+                  "label": "POPRAWNIE: Baza stała",
+                  "value": "$2^3 \\cdot 2^4 = 2^{3+4} = 2^7$",
+                  "color": "#10B981"
+                }
+              ]
+            },
             "trapNumberLine": null
           },
           "formulaSheet": {
@@ -286,57 +356,8 @@
               "id": "task-1-1-1",
               "type": "SINGLE_CHOICE",
               "points": 1,
-              "source": "Rozgrzewka • Prawa działań na potęgach",
-              "cke_source": "Rozgrzewka • Prawa działań na potęgach",
-              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
-              "question": "Dokończ zdanie. Iloczyn $3^4 \\cdot 3^5$ jest równy",
-              "content": "Dokończ zdanie. Iloczyn $3^4 \\cdot 3^5$ jest równy",
-              "math_statement": "Dokończ zdanie. Iloczyn $3^4 \\cdot 3^5$ jest równy",
-              "options": [
-                {
-                  "id": "A",
-                  "text": "$9^9$",
-                  "content_latex": "$9^9$",
-                  "is_correct": false
-                },
-                {
-                  "id": "B",
-                  "text": "$3^{20}$",
-                  "content_latex": "$3^{20}$",
-                  "is_correct": false
-                },
-                {
-                  "id": "C",
-                  "text": "$3^9$",
-                  "content_latex": "$3^9$",
-                  "is_correct": true
-                },
-                {
-                  "id": "D",
-                  "text": "$9^{20}$",
-                  "content_latex": "$9^{20}$",
-                  "is_correct": false
-                }
-              ],
-              "correct_answer": "C",
-              "correctAnswer": "C",
-              "explanation": "Stosujemy wzór na iloczyn potęg o tej samej podstawie: $a^m \\cdot a^n = a^{m+n}$. Tutaj podstawa wynosi $3$, więc wykładniki dodajemy: $4 + 5 = 9$. Wynik to $3^9$.",
-              "ckeTrap": "Nigdy nie mnóż podstaw potęg ($3 \\cdot 3 = 9$) ani nie mnóż wykładników ($4 \\cdot 5 = 20$) przy mnożeniu potęg o tej samej podstawie!",
-              "cke_trap": "Nigdy nie mnóż podstaw potęg ($3 \\cdot 3 = 9$) ani nie mnóż wykładników ($4 \\cdot 5 = 20$) przy mnożeniu potęg o tej samej podstawie!",
-              "hints": {
-                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
-                "level_2": "Nigdy nie mnóż podstaw potęg ($3 \\cdot 3 = 9$) ani nie mnóż wykładników ($4 \\cdot 5 = 20$) przy mnożeniu potęg o tej samej podstawie!"
-              },
-              "diagram": null,
-              "plot": null,
-              "numberLine": null
-            },
-            {
-              "id": "task-1-1-2",
-              "type": "SINGLE_CHOICE",
-              "points": 1,
-              "source": "Matura Maj 2024 • Zad. 2",
-              "cke_source": "Matura Maj 2024 • Zad. 2",
+              "source": "Matura CKE Maj 2024 • Zadanie 2 (1 pkt)",
+              "cke_source": "Matura CKE Maj 2024 • Zadanie 2 (1 pkt)",
               "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
               "question": "Dokończ zdanie. Liczba $\\left(\\frac{1}{16}\\right)^8 \\cdot 8^{16}$ jest równa",
               "content": "Dokończ zdanie. Liczba $\\left(\\frac{1}{16}\\right)^8 \\cdot 8^{16}$ jest równa",
@@ -369,12 +390,61 @@
               ],
               "correct_answer": "B",
               "correctAnswer": "B",
-              "explanation": "Sprowadzamy obie potęgi do wspólnej podstawy $2$:\n$$\\frac{1}{16} = 2^{-4} \\implies \\left(\\frac{1}{16}\\right)^8 = (2^{-4})^8 = 2^{-32}$$\n$$8 = 2^3 \\implies 8^{16} = (2^3)^{16} = 2^{48}$$\nMnożymy potęgi: $2^{-32} \\cdot 2^{48} = 2^{-32 + 48} = 2^{16}$.",
-              "ckeTrap": "Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki ($2^{-4}$, a nie $2^4$).",
-              "cke_trap": "Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki ($2^{-4}$, a nie $2^4$).",
+              "explanation": "Sprowadzamy obie potęgi do wspólnej podstawy $2$:\n$$\\frac{1}{16} = 2^{-4} \\implies \\left(\\frac{1}{16}\\right)^8 = (2^{-4})^8 = 2^{-32}$$\n$$8 = 2^3 \\implies 8^{16} = (2^3)^{16} = 2^{48}$$\nMnożymy potęgi o tej samej podstawie:\n$$2^{-32} \\cdot 2^{48} = 2^{-32 + 48} = 2^{16}$$",
+              "ckeTrap": "Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki: to $2^{-4}$, a nie $2^4$.",
+              "cke_trap": "Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki: to $2^{-4}$, a nie $2^4$.",
               "hints": {
                 "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
-                "level_2": "Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki ($2^{-4}$, a nie $2^4$)."
+                "level_2": "Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki: to $2^{-4}$, a nie $2^4$."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-1-2",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE Czerwiec 2024 • Zadanie 1 (1 pkt)",
+              "cke_source": "Matura CKE Czerwiec 2024 • Zadanie 1 (1 pkt)",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Liczba $2^{-1} \\cdot 32^{\\frac{3}{5}}$ jest równa",
+              "content": "Dokończ zdanie. Liczba $2^{-1} \\cdot 32^{\\frac{3}{5}}$ jest równa",
+              "math_statement": "Dokończ zdanie. Liczba $2^{-1} \\cdot 32^{\\frac{3}{5}}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$1$",
+                  "content_latex": "$1$",
+                  "is_correct": false
+                },
+                {
+                  "id": "B",
+                  "text": "$2$",
+                  "content_latex": "$2$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$3$",
+                  "content_latex": "$3$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$4$",
+                  "content_latex": "$4$",
+                  "is_correct": true
+                }
+              ],
+              "correct_answer": "D",
+              "correctAnswer": "D",
+              "explanation": "Sprowadzamy liczbę $32$ do potęgi dwójki: $32 = 2^5$.\nWtedy:\n$$32^{\\frac{3}{5}} = (2^5)^{\\frac{3}{5}} = 2^{5 \\cdot \\frac{3}{5}} = 2^3 = 8$$\nObliczamy iloczyn:\n$$2^{-1} \\cdot 8 = \\frac{1}{2} \\cdot 8 = 4$$\n(lub na wykładnikach: $2^{-1} \\cdot 2^3 = 2^{-1+3} = 2^2 = 4$).",
+              "ckeTrap": "Nie mnóż $2^{-1}$ przez $32$ przed obliczeniem potęgi. Pamiętaj: potęgowanie ma pierwszeństwo przed mnożeniem!",
+              "cke_trap": "Nie mnóż $2^{-1}$ przez $32$ przed obliczeniem potęgi. Pamiętaj: potęgowanie ma pierwszeństwo przed mnożeniem!",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Nie mnóż $2^{-1}$ przez $32$ przed obliczeniem potęgi. Pamiętaj: potęgowanie ma pierwszeństwo przed mnożeniem!"
               },
               "diagram": null,
               "plot": null,
@@ -384,46 +454,46 @@
               "id": "task-1-1-3",
               "type": "SINGLE_CHOICE",
               "points": 1,
-              "source": "Pułapka CKE • Potęgowanie potęgi",
-              "cke_source": "Pułapka CKE • Potęgowanie potęgi",
+              "source": "Matura CKE Sierpień 2024 • Zadanie 2 (1 pkt)",
+              "cke_source": "Matura CKE Sierpień 2024 • Zadanie 2 (1 pkt)",
               "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
-              "question": "Wartość wyrażenia $\\frac{(2^3)^4}{2^2 \\cdot 2^5}$ jest równa",
-              "content": "Wartość wyrażenia $\\frac{(2^3)^4}{2^2 \\cdot 2^5}$ jest równa",
-              "math_statement": "Wartość wyrażenia $\\frac{(2^3)^4}{2^2 \\cdot 2^5}$ jest równa",
+              "question": "Dokończ zdanie. Liczba $\\left(\\frac{4}{25}\\right)^{-0{,}5}$ jest równa",
+              "content": "Dokończ zdanie. Liczba $\\left(\\frac{4}{25}\\right)^{-0{,}5}$ jest równa",
+              "math_statement": "Dokończ zdanie. Liczba $\\left(\\frac{4}{25}\\right)^{-0{,}5}$ jest równa",
               "options": [
                 {
                   "id": "A",
-                  "text": "$2^5$",
-                  "content_latex": "$2^5$",
-                  "is_correct": true
+                  "text": "$-\\frac{5}{2}$",
+                  "content_latex": "$-\\frac{5}{2}$",
+                  "is_correct": false
                 },
                 {
                   "id": "B",
-                  "text": "$2^7$",
-                  "content_latex": "$2^7$",
+                  "text": "$-\\frac{2}{5}$",
+                  "content_latex": "$-\\frac{2}{5}$",
                   "is_correct": false
                 },
                 {
                   "id": "C",
-                  "text": "$2^{10}$",
-                  "content_latex": "$2^{10}$",
-                  "is_correct": false
+                  "text": "$\\frac{5}{2}$",
+                  "content_latex": "$\\frac{5}{2}$",
+                  "is_correct": true
                 },
                 {
                   "id": "D",
-                  "text": "$1$",
-                  "content_latex": "$1$",
+                  "text": "$\\frac{2}{5}$",
+                  "content_latex": "$\\frac{2}{5}$",
                   "is_correct": false
                 }
               ],
-              "correct_answer": "A",
-              "correctAnswer": "A",
-              "explanation": "W liczniku potęgujemy potęgę (wykładniki mnożymy): $(2^3)^4 = 2^{3 \\cdot 4} = 2^{12}$.\nW mianowniku mnożymy potęgi (wykładniki dodajemy): $2^2 \\cdot 2^5 = 2^{2+5} = 2^7$.\nDzielimy potęgi (wykładniki odejmujemy): $\\frac{2^{12}}{2^7} = 2^{12 - 7} = 2^5$.",
-              "ckeTrap": "W potęgowaniu potęgi $(a^m)^n$ wykładniki się MNOŻY ($3 \\cdot 4 = 12$), a nie dodaje ($3 + 4 = 7$).",
-              "cke_trap": "W potęgowaniu potęgi $(a^m)^n$ wykładniki się MNOŻY ($3 \\cdot 4 = 12$), a nie dodaje ($3 + 4 = 7$).",
+              "correct_answer": "C",
+              "correctAnswer": "C",
+              "explanation": "Zapisujemy wykładnik jako ułamek zwykły: $-0{,}5 = -\\frac{1}{2}$.\nMinus w wykładniku odwraca ułamek do góry dnem:\n$$\\left(\\frac{4}{25}\\right)^{-\\frac{1}{2}} = \\left(\\frac{25}{4}\\right)^{\\frac{1}{2}}$$\nWykładnik $\\frac{1}{2}$ oznacza pierwiastek kwadratowy:\n$$\\sqrt{\\frac{25}{4}} = \\frac{\\sqrt{25}}{\\sqrt{4}} = \\frac{5}{2}$$",
+              "ckeTrap": "Minus w wykładniku NIGDY nie daje liczby ujemnej! Odwraca jedynie podstawę ułamka. Dystraktory A i B to klasyczne pułapki CKE.",
+              "cke_trap": "Minus w wykładniku NIGDY nie daje liczby ujemnej! Odwraca jedynie podstawę ułamka. Dystraktory A i B to klasyczne pułapki CKE.",
               "hints": {
                 "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
-                "level_2": "W potęgowaniu potęgi $(a^m)^n$ wykładniki się MNOŻY ($3 \\cdot 4 = 12$), a nie dodaje ($3 + 4 = 7$)."
+                "level_2": "Minus w wykładniku NIGDY nie daje liczby ujemnej! Odwraca jedynie podstawę ułamka. Dystraktory A i B to klasyczne pułapki CKE."
               },
               "diagram": null,
               "plot": null,
@@ -431,23 +501,48 @@
             },
             {
               "id": "task-1-1-4",
-              "type": "NUMERIC_INPUT",
+              "type": "SINGLE_CHOICE",
               "points": 1,
-              "source": "Zadanie utrwalające • Redukcja potęg",
-              "cke_source": "Zadanie utrwalające • Redukcja potęg",
-              "instruction": "Wpisz poprawny wynik w pole poniżej.",
-              "question": "Oblicz wartość wyrażenia $\\frac{5^9 \\cdot 25^2}{125^4}$. Wpisz wynik jako liczbę całkowitą.",
-              "content": "Oblicz wartość wyrażenia $\\frac{5^9 \\cdot 25^2}{125^4}$. Wpisz wynik jako liczbę całkowitą.",
-              "math_statement": "Oblicz wartość wyrażenia $\\frac{5^9 \\cdot 25^2}{125^4}$. Wpisz wynik jako liczbę całkowitą.",
-              "numeric_correct_answer": "5",
-              "correct_answer": "5",
-              "correctAnswer": "5",
-              "explanation": "Sprowadzamy do podstawy 5:\nLicznik: $5^9 \\cdot (5^2)^2 = 5^9 \\cdot 5^4 = 5^{13}$.\nMianownik: $(5^3)^4 = 5^{12}$.\nDzielenie: $5^{13} : 5^{12} = 5^{13 - 12} = 5^1 = 5$.",
-              "ckeTrap": "Pamiętaj, że $25 = 5^2$ oraz $125 = 5^3$.",
-              "cke_trap": "Pamiętaj, że $25 = 5^2$ oraz $125 = 5^3$.",
+              "source": "Matura CKE Maj 2025 • Zadanie 2 (1 pkt)",
+              "cke_source": "Matura CKE Maj 2025 • Zadanie 2 (1 pkt)",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Wartość wyrażenia $\\frac{5^{12} + 5^{13} + 5^{14}}{5^{12}}$ jest równa",
+              "content": "Dokończ zdanie. Wartość wyrażenia $\\frac{5^{12} + 5^{13} + 5^{14}}{5^{12}}$ jest równa",
+              "math_statement": "Dokończ zdanie. Wartość wyrażenia $\\frac{5^{12} + 5^{13} + 5^{14}}{5^{12}}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$5^0 + 5^1 + 5^2$",
+                  "content_latex": "$5^0 + 5^1 + 5^2$",
+                  "is_correct": false
+                },
+                {
+                  "id": "B",
+                  "text": "$31$",
+                  "content_latex": "$31$",
+                  "is_correct": true
+                },
+                {
+                  "id": "C",
+                  "text": "$5^{27}$",
+                  "content_latex": "$5^{27}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$15$",
+                  "content_latex": "$15$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "B",
+              "correctAnswer": "B",
+              "explanation": "W liczniku wyłączamy najmniejszą wspólną potęgę $5^{12}$ przed nawias:\n$$5^{12} + 5^{13} + 5^{14} = 5^{12}(1 + 5^1 + 5^2) = 5^{12}(1 + 5 + 25) = 5^{12} \\cdot 31$$\nDzielimy przez mianownik:\n$$\\frac{5^{12} \\cdot 31}{5^{12}} = 31$$",
+              "ckeTrap": "Nigdy nie dodawaj wykładników przy dodawaniu potęg ($5^{12} + 5^{13} + 5^{14} \\neq 5^{39}$). Przy sumie potęg zawsze wyłączaj najmniejszą potęgę przed nawias!",
+              "cke_trap": "Nigdy nie dodawaj wykładników przy dodawaniu potęg ($5^{12} + 5^{13} + 5^{14} \\neq 5^{39}$). Przy sumie potęg zawsze wyłączaj najmniejszą potęgę przed nawias!",
               "hints": {
-                "level_1": "Wykonaj obliczenia krok po kroku i uprość wynik do najprostszej postaci.",
-                "level_2": "Pamiętaj, że $25 = 5^2$ oraz $125 = 5^3$."
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Nigdy nie dodawaj wykładników przy dodawaniu potęg ($5^{12} + 5^{13} + 5^{14} \\neq 5^{39}$). Przy sumie potęg zawsze wyłączaj najmniejszą potęgę przed nawias!"
               },
               "diagram": null,
               "plot": null,
@@ -455,23 +550,268 @@
             },
             {
               "id": "task-1-1-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE Marzec 2026 • Zadanie 3 (1 pkt)",
+              "cke_source": "Matura CKE Marzec 2026 • Zadanie 3 (1 pkt)",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Wartość wyrażenia $\\frac{3^{10} \\cdot 9^{20}}{27^{15}}$ jest równa",
+              "content": "Dokończ zdanie. Wartość wyrażenia $\\frac{3^{10} \\cdot 9^{20}}{27^{15}}$ jest równa",
+              "math_statement": "Dokończ zdanie. Wartość wyrażenia $\\frac{3^{10} \\cdot 9^{20}}{27^{15}}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$3^0$",
+                  "content_latex": "$3^0$",
+                  "is_correct": false
+                },
+                {
+                  "id": "B",
+                  "text": "$3^5$",
+                  "content_latex": "$3^5$",
+                  "is_correct": true
+                },
+                {
+                  "id": "C",
+                  "text": "$3^{10}$",
+                  "content_latex": "$3^{10}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$3^{15}$",
+                  "content_latex": "$3^{15}$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "B",
+              "correctAnswer": "B",
+              "explanation": "Sprowadzamy wszystkie liczby do potęgi trójki: $9 = 3^2$, $27 = 3^3$.\n$$9^{20} = (3^2)^{20} = 3^{40}, \\quad 27^{15} = (3^3)^{15} = 3^{45}$$\nLicznik: $3^{10} \\cdot 3^{40} = 3^{10+40} = 3^{50}$.\nCałość: $\\frac{3^{50}}{3^{45}} = 3^{50 - 45} = 3^5$.",
+              "ckeTrap": "Pamiętaj o regule potęgowania potęgi: wykładniki się MNOŻY ($2 \\cdot 20 = 40$), a nie dodaje ($2 + 20 = 22$).",
+              "cke_trap": "Pamiętaj o regule potęgowania potęgi: wykładniki się MNOŻY ($2 \\cdot 20 = 40$), a nie dodaje ($2 + 20 = 22$).",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Pamiętaj o regule potęgowania potęgi: wykładniki się MNOŻY ($2 \\cdot 20 = 40$), a nie dodaje ($2 + 20 = 22$)."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-1-6",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE Czerwiec 2023 • Zadanie 2 (1 pkt)",
+              "cke_source": "Matura CKE Czerwiec 2023 • Zadanie 2 (1 pkt)",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Dla każdej liczby rzeczywistej dodatniej $x$ wyrażenie $\\sqrt{x} \\cdot \\sqrt[3]{x} \\cdot \\sqrt[6]{x}$ jest równe",
+              "content": "Dokończ zdanie. Dla każdej liczby rzeczywistej dodatniej $x$ wyrażenie $\\sqrt{x} \\cdot \\sqrt[3]{x} \\cdot \\sqrt[6]{x}$ jest równe",
+              "math_statement": "Dokończ zdanie. Dla każdej liczby rzeczywistej dodatniej $x$ wyrażenie $\\sqrt{x} \\cdot \\sqrt[3]{x} \\cdot \\sqrt[6]{x}$ jest równe",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$x$",
+                  "content_latex": "$x$",
+                  "is_correct": true
+                },
+                {
+                  "id": "B",
+                  "text": "$x^{\\frac{1}{6}}$",
+                  "content_latex": "$x^{\\frac{1}{6}}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$x^{\\frac{1}{36}}$",
+                  "content_latex": "$x^{\\frac{1}{36}}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$\\sqrt[11]{x}$",
+                  "content_latex": "$\\sqrt[11]{x}$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "A",
+              "correctAnswer": "A",
+              "explanation": "Zamieniamy pierwiastki na potęgi o wykładnikach ułamkowych:\n$$\\sqrt{x} = x^{\\frac{1}{2}}, \\quad \\sqrt[3]{x} = x^{\\frac{1}{3}}, \\quad \\sqrt[6]{x} = x^{\\frac{1}{6}}$$\nDodajemy wykładniki do wspólnego mianownika 6:\n$$\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6} = \\frac{3}{6} + \\frac{2}{6} + \\frac{1}{6} = \\frac{6}{6} = 1$$\nOtrzymujemy $x^1 = x$.",
+              "ckeTrap": "Nie mnóż stopni pierwiastków ze sobą ($2 \\cdot 3 \\cdot 6 = 36$). Zamiana pierwiastków na wykładniki ułamkowe sprowadza zadanie do zwykłego dodawania ułamków.",
+              "cke_trap": "Nie mnóż stopni pierwiastków ze sobą ($2 \\cdot 3 \\cdot 6 = 36$). Zamiana pierwiastków na wykładniki ułamkowe sprowadza zadanie do zwykłego dodawania ułamków.",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Nie mnóż stopni pierwiastków ze sobą ($2 \\cdot 3 \\cdot 6 = 36$). Zamiana pierwiastków na wykładniki ułamkowe sprowadza zadanie do zwykłego dodawania ułamków."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-1-7",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE Sierpień 2026 • Zadanie 2 (1 pkt)",
+              "cke_source": "Matura CKE Sierpień 2026 • Zadanie 2 (1 pkt)",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Liczba $\\frac{3^{-1} \\cdot 4^{0{,}5}}{3^{-2} \\cdot 2^{-1}}$ jest równa",
+              "content": "Dokończ zdanie. Liczba $\\frac{3^{-1} \\cdot 4^{0{,}5}}{3^{-2} \\cdot 2^{-1}}$ jest równa",
+              "math_statement": "Dokończ zdanie. Liczba $\\frac{3^{-1} \\cdot 4^{0{,}5}}{3^{-2} \\cdot 2^{-1}}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$6$",
+                  "content_latex": "$6$",
+                  "is_correct": false
+                },
+                {
+                  "id": "B",
+                  "text": "$12$",
+                  "content_latex": "$12$",
+                  "is_correct": true
+                },
+                {
+                  "id": "C",
+                  "text": "$18$",
+                  "content_latex": "$18$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$24$",
+                  "content_latex": "$24$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "B",
+              "correctAnswer": "B",
+              "explanation": "Rozdzielamy ułamek na część o podstawie 3 i część o podstawie 2:\n$$\\frac{3^{-1}}{3^{-2}} = 3^{-1 - (-2)} = 3^{-1 + 2} = 3^1 = 3$$\nPonieważ $4^{0{,}5} = \\sqrt{4} = 2 = 2^1$, część z dwójkami wynosi:\n$$\\frac{2^1}{2^{-1}} = 2^{1 - (-1)} = 2^2 = 4$$\nWynik to $3 \\cdot 4 = 12$.",
+              "ckeTrap": "Uważaj na odejmowanie ujemnych wykładników: $m - (-n) = m + n$. Błąd znaku w mianowniku prowadzi do błędnego wyniku.",
+              "cke_trap": "Uważaj na odejmowanie ujemnych wykładników: $m - (-n) = m + n$. Błąd znaku w mianowniku prowadzi do błędnego wyniku.",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Uważaj na odejmowanie ujemnych wykładników: $m - (-n) = m + n$. Błąd znaku w mianowniku prowadzi do błędnego wyniku."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-1-8",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE Próbna Grudzień 2023 • Zadanie 1 (1 pkt)",
+              "cke_source": "Matura CKE Próbna Grudzień 2023 • Zadanie 1 (1 pkt)",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Liczba $(3^{-2{,}4} \\cdot 3^{0{,}4})^{0{,}5}$ jest równa",
+              "content": "Dokończ zdanie. Liczba $(3^{-2{,}4} \\cdot 3^{0{,}4})^{0{,}5}$ jest równa",
+              "math_statement": "Dokończ zdanie. Liczba $(3^{-2{,}4} \\cdot 3^{0{,}4})^{0{,}5}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$3$",
+                  "content_latex": "$3$",
+                  "is_correct": false
+                },
+                {
+                  "id": "B",
+                  "text": "$9$",
+                  "content_latex": "$9$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$\\frac{1}{3}$",
+                  "content_latex": "$\\frac{1}{3}$",
+                  "is_correct": true
+                },
+                {
+                  "id": "D",
+                  "text": "$\\frac{1}{9}$",
+                  "content_latex": "$\\frac{1}{9}$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "C",
+              "correctAnswer": "C",
+              "explanation": "Wykonujemy najpierw mnożenie wewnątrz nawiasu:\n$$3^{-2{,}4 + 0{,}4} = 3^{-2}$$\nNastępnie potęgujemy potęgę:\n$$(3^{-2})^{0{,}5} = 3^{-2 \\cdot 0{,}5} = 3^{-1} = \\frac{1}{3}$$",
+              "ckeTrap": "Wykładnik $-1$ to odwrotność liczby ($3^{-1} = \\frac{1}{3}$), a nie $-3$ ani $3$.",
+              "cke_trap": "Wykładnik $-1$ to odwrotność liczby ($3^{-1} = \\frac{1}{3}$), a nie $-3$ ani $3$.",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Wykładnik $-1$ to odwrotność liczby ($3^{-1} = \\frac{1}{3}$), a nie $-3$ ani $3$."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-1-9",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE Próbna Grudzień 2022 • Zadanie 1 (1 pkt)",
+              "cke_source": "Matura CKE Próbna Grudzień 2022 • Zadanie 1 (1 pkt)",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Liczba $(5 \\cdot 5^{0{,}5})^{\\frac{1}{3}}$ jest równa",
+              "content": "Dokończ zdanie. Liczba $(5 \\cdot 5^{0{,}5})^{\\frac{1}{3}}$ jest równa",
+              "math_statement": "Dokończ zdanie. Liczba $(5 \\cdot 5^{0{,}5})^{\\frac{1}{3}}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$5^{\\frac{1}{6}}$",
+                  "content_latex": "$5^{\\frac{1}{6}}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "B",
+                  "text": "$5^{\\frac{2}{3}}$",
+                  "content_latex": "$5^{\\frac{2}{3}}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$\\sqrt{5}$",
+                  "content_latex": "$\\sqrt{5}$",
+                  "is_correct": true
+                },
+                {
+                  "id": "D",
+                  "text": "$5$",
+                  "content_latex": "$5$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "C",
+              "correctAnswer": "C",
+              "explanation": "Pamiętamy, że $5 = 5^1$. Działanie w nawiasie:\n$$5^1 \\cdot 5^{0{,}5} = 5^{1 + 0{,}5} = 5^{1{,}5} = 5^{\\frac{3}{2}}$$\nPotęgujemy potęgę:\n$$(5^{\\frac{3}{2}})^{\\frac{1}{3}} = 5^{\\frac{3}{2} \\cdot \\frac{1}{3}} = 5^{\\frac{1}{2}} = \\sqrt{5}$$",
+              "ckeTrap": "Liczba 5 ma domyślny wykładnik 1, a nie 0. $5 \\cdot 5^{0{,}5} = 5^{1{,}5}$, a nie $5^{0{,}5}$.",
+              "cke_trap": "Liczba 5 ma domyślny wykładnik 1, a nie 0. $5 \\cdot 5^{0{,}5} = 5^{1{,}5}$, a nie $5^{0{,}5}$.",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Liczba 5 ma domyślny wykładnik 1, a nie 0. $5 \\cdot 5^{0{,}5} = 5^{1{,}5}$, a nie $5^{0{,}5}$."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-1-10",
               "type": "OPEN_TASK",
               "points": 2,
               "maxPoints": 2,
-              "source": "Matura CKE • Zadanie dowodowe (2 pkt)",
-              "cke_source": "Matura CKE • Zadanie dowodowe (2 pkt)",
+              "source": "Informator CKE Formuła 2023 • Zadanie otwarte (2 pkt)",
+              "cke_source": "Informator CKE Formuła 2023 • Zadanie otwarte (2 pkt)",
               "instruction": "Rozwiąż zadanie i zapisz pełny tok rozumowania.",
-              "question": "Wykaż, że dla każdej liczby całkowitej dodatniej $n$ liczba $3^{n+2} + 3^n$ jest podzielna przez $10$.",
-              "content": "Wykaż, że dla każdej liczby całkowitej dodatniej $n$ liczba $3^{n+2} + 3^n$ jest podzielna przez $10$.",
-              "math_statement": "Wykaż, że dla każdej liczby całkowitej dodatniej $n$ liczba $3^{n+2} + 3^n$ jest podzielna przez $10$.",
-              "scoring_key": "1 pkt – wyłączenie wspólnego czynnika $3^n$ przed nawias: $3^n(3^2 + 1)$.\\n2 pkt – pełne uzasadnienie: $3^n \\cdot 10$, co jako iloczyn liczby całkowitej i 10 jest podzielne przez 10.",
-              "officialKey": "1 pkt – wyłączenie wspólnego czynnika $3^n$ przed nawias: $3^n(3^2 + 1)$.\\n2 pkt – pełne uzasadnienie: $3^n \\cdot 10$, co jako iloczyn liczby całkowitej i 10 jest podzielne przez 10.",
-              "explanation": "Rozpisujemy potęgę $3^{n+2} = 3^n \\cdot 3^2 = 9 \\cdot 3^n$.\nWyłączamy wspólny czynnik $3^n$ przed nawias:\n$$3^{n+2} + 3^n = 3^n(3^2 + 1) = 3^n(9 + 1) = 3^n \\cdot 10$$\nPonieważ liczba $10$ jest jednym z czynników, a $3^n$ dla $n \\in \\mathbb{N}^+$ jest liczbą całkowitą, całe wyrażenie jest podzielne przez $10$. Co kończy dowód.",
-              "ckeTrap": "Nigdy nie sprawdzaj tylko dla $n=1$ i $n=2$! Dowód musi obejmować dowolne $n$ poprzez wyłączenie czynnika przed nawias.",
-              "cke_trap": "Nigdy nie sprawdzaj tylko dla $n=1$ i $n=2$! Dowód musi obejmować dowolne $n$ poprzez wyłączenie czynnika przed nawias.",
+              "question": "Wykaż, że liczba $3^{45} + 9^{22} + 27^{14}$ jest podzielna przez $37$.",
+              "content": "Wykaż, że liczba $3^{45} + 9^{22} + 27^{14}$ jest podzielna przez $37$.",
+              "math_statement": "Wykaż, że liczba $3^{45} + 9^{22} + 27^{14}$ jest podzielna przez $37$.",
+              "scoring_key": "1 pkt – sprowadzenie wszystkich składników do wspólnej podstawy $3$: $3^{45} + 3^{44} + 3^{42}$.\\n2 pkt – wyłączenie $3^{42}$ przed nawias: $3^{42}(3^3 + 3^2 + 1) = 3^{42} \\cdot 37$ i sformułowanie poprawnego wniosku.",
+              "officialKey": "1 pkt – sprowadzenie wszystkich składników do wspólnej podstawy $3$: $3^{45} + 3^{44} + 3^{42}$.\\n2 pkt – wyłączenie $3^{42}$ przed nawias: $3^{42}(3^3 + 3^2 + 1) = 3^{42} \\cdot 37$ i sformułowanie poprawnego wniosku.",
+              "explanation": "Sprowadzamy wszystkie potęgi do wspólnej podstawy 3:\n$$9^{22} = (3^2)^{22} = 3^{44}, \\quad 27^{14} = (3^3)^{14} = 3^{42}$$\nZapisujemy sumę:\n$$3^{45} + 3^{44} + 3^{42}$$\nWyłączamy najmniejszą potęgę $3^{42}$ przed nawias:\n$$3^{42}(3^3 + 3^2 + 1) = 3^{42}(27 + 9 + 1) = 3^{42} \\cdot 37$$\nPonieważ liczba 37 jest jednym z czynników iloczynu, cała liczba jest podzielna przez 37, co kończy dowód.",
+              "ckeTrap": "Nigdy nie sprawdzaj podzielności kalkulatorem ani nie próbuj liczyć potęgi $3^{45}$! W dowodzie maturalnym kluczem jest wyłączenie najmniejszej potęgi przed nawias, aby wyodrębnić zadany dzielnik.",
+              "cke_trap": "Nigdy nie sprawdzaj podzielności kalkulatorem ani nie próbuj liczyć potęgi $3^{45}$! W dowodzie maturalnym kluczem jest wyłączenie najmniejszej potęgi przed nawias, aby wyodrębnić zadany dzielnik.",
               "hints": {
                 "level_1": "Wypisz dane, załóż odpowiednie warunki i zapisz kolejne kroki algorytmu.",
-                "level_2": "Nigdy nie sprawdzaj tylko dla $n=1$ i $n=2$! Dowód musi obejmować dowolne $n$ poprzez wyłączenie czynnika przed nawias."
+                "level_2": "Nigdy nie sprawdzaj podzielności kalkulatorem ani nie próbuj liczyć potęgi $3^{45}$! W dowodzie maturalnym kluczem jest wyłączenie najmniejszej potęgi przed nawias, aby wyodrębnić zadany dzielnik."
               },
               "diagram": null,
               "plot": null,
@@ -704,7 +1044,7 @@
                   "color": "#F43F5E",
                   "title": "Pierwiastek z kwadratu",
                   "formula": "\\sqrt{a^2} = |a| \\neq a",
-                  "desc": "Dla stopnia parzystego wynik jest ZAWSZE nieujemny: \\(\\sqrt{(-3)^2} = |-3| = 3\\), a nie \\(-3\\)!"
+                  "desc": "Dla stopnia parzystego wynik jest ZAWSZE nieujemny: $\\sqrt{(-3)^2} = |-3| = 3$, a nie $-3$!"
                 }
               ]
             },
@@ -890,6 +1230,55 @@
               "hints": {
                 "level_1": "Wykonaj obliczenia krok po kroku i uprość wynik do najprostszej postaci.",
                 "level_2": "Pamiętaj: $\\sqrt[3]{27} = 3$, ponieważ $3^3 = 27$."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-2-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE • Redukcja pierwiastków",
+              "cke_source": "Matura CKE • Redukcja pierwiastków",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Liczba $2\\sqrt{18} - \\sqrt{32}$ jest równa",
+              "content": "Dokończ zdanie. Liczba $2\\sqrt{18} - \\sqrt{32}$ jest równa",
+              "math_statement": "Dokończ zdanie. Liczba $2\\sqrt{18} - \\sqrt{32}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$2\\sqrt{2}$",
+                  "content_latex": "$2\\sqrt{2}$",
+                  "is_correct": true
+                },
+                {
+                  "id": "B",
+                  "text": "$\\sqrt{2}$",
+                  "content_latex": "$\\sqrt{2}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$-2\\sqrt{14}$",
+                  "content_latex": "$-2\\sqrt{14}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$2$",
+                  "content_latex": "$2$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "A",
+              "correctAnswer": "A",
+              "explanation": "Wyłączamy czynnik przed znak pierwiastka z obu składników:\n$$2\\sqrt{18} = 2 \\cdot \\sqrt{9 \\cdot 2} = 2 \\cdot 3\\sqrt{2} = 6\\sqrt{2}$$\n$$\\sqrt{32} = \\sqrt{16 \\cdot 2} = 4\\sqrt{2}$$\nOdejmujemy wyrazy podobne: $6\\sqrt{2} - 4\\sqrt{2} = 2\\sqrt{2}$.",
+              "ckeTrap": "Pamiętaj o pomnożeniu wyciągniętego czynnika $3$ przez stojącą wcześniej dwójkę ($2 \\cdot 3 = 6$, a nie $2 + 3 = 5$).",
+              "cke_trap": "Pamiętaj o pomnożeniu wyciągniętego czynnika $3$ przez stojącą wcześniej dwójkę ($2 \\cdot 3 = 6$, a nie $2 + 3 = 5$).",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Pamiętaj o pomnożeniu wyciągniętego czynnika $3$ przez stojącą wcześniej dwójkę ($2 \\cdot 3 = 6$, a nie $2 + 3 = 5$)."
               },
               "diagram": null,
               "plot": null,
@@ -1186,6 +1575,55 @@
               "hints": {
                 "level_1": "Wykonaj obliczenia krok po kroku i uprość wynik do najprostszej postaci.",
                 "level_2": "Pamiętaj, że $(\\sqrt{2})^2 - 1 = 2 - 1 = 1$, więc mianownik całkowicie znika."
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
+            },
+            {
+              "id": "task-1-3-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE • Sprzężenie dwumianu",
+              "cke_source": "Matura CKE • Sprzężenie dwumianu",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Liczba $\\frac{\\sqrt{3} + 1}{\\sqrt{3} - 1}$ po usunięciu niewymierności z mianownika jest równa",
+              "content": "Liczba $\\frac{\\sqrt{3} + 1}{\\sqrt{3} - 1}$ po usunięciu niewymierności z mianownika jest równa",
+              "math_statement": "Liczba $\\frac{\\sqrt{3} + 1}{\\sqrt{3} - 1}$ po usunięciu niewymierności z mianownika jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$2 + \\sqrt{3}$",
+                  "content_latex": "$2 + \\sqrt{3}$",
+                  "is_correct": true
+                },
+                {
+                  "id": "B",
+                  "text": "$2 - \\sqrt{3}$",
+                  "content_latex": "$2 - \\sqrt{3}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$1 + \\sqrt{3}$",
+                  "content_latex": "$1 + \\sqrt{3}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$4 + 2\\sqrt{3}$",
+                  "content_latex": "$4 + 2\\sqrt{3}$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "A",
+              "correctAnswer": "A",
+              "explanation": "Mnożymy licznik i mianownik przez sprzężenie mianownika $(\\sqrt{3} + 1)$:\n$$\\frac{(\\sqrt{3} + 1)(\\sqrt{3} + 1)}{(\\sqrt{3} - 1)(\\sqrt{3} + 1)} = \\frac{(\\sqrt{3} + 1)^2}{(\\sqrt{3})^2 - 1^2}$$\nRozpisujemy licznik ze wzoru kwadratu sumy: $(\\sqrt{3})^2 + 2\\sqrt{3} + 1 = 3 + 2\\sqrt{3} + 1 = 4 + 2\\sqrt{3}$.\nMianownik: $3 - 1 = 2$.\nDzielimy każdy składnik licznika przez 2: $\\frac{4 + 2\\sqrt{3}}{2} = \\frac{4}{2} + \\frac{2\\sqrt{3}}{2} = 2 + \\sqrt{3}$.",
+              "ckeTrap": "Podnosząc licznik do kwadratu nie zapomnij o podwojonym iloczynie: $(a+b)^2 = a^2 + 2ab + b^2$, a przy skracaniu przez 2 musisz podzielić OBA składniki sumy w liczniku!",
+              "cke_trap": "Podnosząc licznik do kwadratu nie zapomnij o podwojonym iloczynie: $(a+b)^2 = a^2 + 2ab + b^2$, a przy skracaniu przez 2 musisz podzielić OBA składniki sumy w liczniku!",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Podnosząc licznik do kwadratu nie zapomnij o podwojonym iloczynie: $(a+b)^2 = a^2 + 2ab + b^2$, a przy skracaniu przez 2 musisz podzielić OBA składniki sumy w liczniku!"
               },
               "diagram": null,
               "plot": null,
@@ -1487,6 +1925,55 @@
               "diagram": null,
               "plot": null,
               "numberLine": null
+            },
+            {
+              "id": "task-1-4-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE • Odwracanie i pierwiastkowanie",
+              "cke_source": "Matura CKE • Odwracanie i pierwiastkowanie",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Dokończ zdanie. Wartość wyrażenia $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}}$ jest równa",
+              "content": "Dokończ zdanie. Wartość wyrażenia $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}}$ jest równa",
+              "math_statement": "Dokończ zdanie. Wartość wyrażenia $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$27$",
+                  "content_latex": "$27$",
+                  "is_correct": true
+                },
+                {
+                  "id": "B",
+                  "text": "$\\frac{1}{27}$",
+                  "content_latex": "$\\frac{1}{27}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$-27$",
+                  "content_latex": "$-27$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$81$",
+                  "content_latex": "$81$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "A",
+              "correctAnswer": "A",
+              "explanation": "Stosujemy reguły krok po kroku:\n1. Minus w wykładniku odwraca ułamek: $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}} = 9^{\\frac{3}{2}}$.\n2. Mianownik 2 to pierwiastek kwadratowy, a licznik 3 to potęga: $9^{\\frac{3}{2}} = (\\sqrt{9})^3 = 3^3 = 27$.\nWynik to 27.",
+              "ckeTrap": "Zawsze najpierw wyciągaj pierwiastek $\\sqrt{9} = 3$, a dopiero potem podnoś do potęgi $3^3 = 27$. Minus w wykładniku nie tworzy liczby ujemnej!",
+              "cke_trap": "Zawsze najpierw wyciągaj pierwiastek $\\sqrt{9} = 3$, a dopiero potem podnoś do potęgi $3^3 = 27$. Minus w wykładniku nie tworzy liczby ujemnej!",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Zawsze najpierw wyciągaj pierwiastek $\\sqrt{9} = 3$, a dopiero potem podnoś do potęgi $3^3 = 27$. Minus w wykładniku nie tworzy liczby ujemnej!"
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
             }
           ]
         }
@@ -1494,7 +1981,9 @@
     },
     {
       "id": "dzial-2",
-      "title": "Dział 1.2: Logarytmy",
+      "title": "Logarytmy",
+      "topic_number": 2,
+      "order": 2,
       "short_title": "Logarytmy",
       "importance": "Pewniak CKE (Tier S+)",
       "matura_points_range": "1–2 pkt",
@@ -1502,13 +1991,13 @@
         {
           "id": "lesson-2-1",
           "topic_id": "dzial-2",
-          "title": "Definicja logarytmu log_a(b) = c i pętla logarytmiczna",
+          "title": "Definicja logarytmu i pętla logarytmiczna",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Definicja logarytmu log_a(b) = c i pętla logarytmiczna",
-            "concept_essence": "Logarytm to pytanie o wykładnik potęgi: \"Do jakiej potęgi $c$ muszę podnieść podstawę $a$, aby otrzymać liczbę $b$?\". Zasada pętli: podstawa $a$ zatacza koło przez znak równości do liczby $c$ i ląduje na $b$ ($a^c = b$). Warunki konieczne (CKE): podstawa $a > 0$ i $a \\neq 1$, liczba logarytmowana $b > 0$.",
+            "title": "Definicja logarytmu i pętla logarytmiczna",
+            "concept_essence": "Logarytm to pytanie o wykładnik potęgi: \"Do jakiej potęgi $c$ muszę podnieść podstawę $a$, aby otrzymać liczbę $b$?\". Zasada pętli: podstawa $a$ zatacza koło przez znak równości do liczby $c$ i ląduje na $b$ ($a^c = b$). Warunki konieczne (CKE): podstawa $a > 0$ i $a \neq 1$, liczba logarytmowana $b > 0$.",
             "matura_context": "Pewniak za 1 punkt na każdej maturze (zazwyczaj zadanie 2 lub 3).",
             "core_formulas": [
               {
@@ -1519,7 +2008,7 @@
                 "cke_page": "str. 5",
                 "example": "$\\log_3 81 = 4, \\quad \\text{bo } 3^4 = 81$",
                 "mnemonic": "Kółko potęgowania: a podnosisz do wyniku c i lądujesz w b.",
-                "matura_tip": "Gdy brak podstawy (np. log 100), domyślną podstawą jest 10 (log₁₀ 100 = 2)."
+                "matura_tip": "Gdy brak podstawy (np. $\\log 100$), domyślną podstawą jest 10 ($\\log_{10} 100 = 2$)."
               },
               {
                 "title": "Warunki istnienia logarytmu",
@@ -1529,7 +2018,7 @@
                 "cke_page": "str. 5",
                 "example": "$\\log_5 1 = 0, \\quad \\log_a a = 1$",
                 "mnemonic": "Podstawa: dodatnia i nie jeden. Środek: tylko dodatni!",
-                "matura_tip": "Logarytm z 1 to ZAWSZE 0, niezależnie od podstawy (bo a⁰ = 1)."
+                "matura_tip": "Logarytm z 1 to ZAWSZE 0, niezależnie od podstawy (bo $a^0 = 1$)."
               }
             ],
             "worked_example": {
@@ -1604,11 +2093,23 @@
                 {
                   "from": [
                     62,
-                    82
+                    78
+                  ],
+                  "to": [
+                    62,
+                    84
+                  ],
+                  "color": "#FFB800",
+                  "strokeWidth": 2
+                },
+                {
+                  "from": [
+                    62,
+                    84
                   ],
                   "to": [
                     138,
-                    82
+                    84
                   ],
                   "color": "#FFB800",
                   "strokeWidth": 2
@@ -1616,11 +2117,11 @@
                 {
                   "from": [
                     138,
-                    82
+                    84
                   ],
                   "to": [
                     138,
-                    72
+                    70
                   ],
                   "color": "#FFB800",
                   "strokeWidth": 2
@@ -1628,11 +2129,11 @@
                 {
                   "from": [
                     133,
-                    77
+                    75
                   ],
                   "to": [
                     138,
-                    70
+                    68
                   ],
                   "color": "#FFB800",
                   "strokeWidth": 2
@@ -1640,13 +2141,73 @@
                 {
                   "from": [
                     143,
-                    77
+                    75
                   ],
                   "to": [
                     138,
-                    70
+                    68
                   ],
                   "color": "#FFB800",
+                  "strokeWidth": 2
+                },
+                {
+                  "from": [
+                    138,
+                    42
+                  ],
+                  "to": [
+                    138,
+                    28
+                  ],
+                  "color": "#38BDF8",
+                  "strokeWidth": 2
+                },
+                {
+                  "from": [
+                    138,
+                    28
+                  ],
+                  "to": [
+                    86,
+                    28
+                  ],
+                  "color": "#38BDF8",
+                  "strokeWidth": 2
+                },
+                {
+                  "from": [
+                    86,
+                    28
+                  ],
+                  "to": [
+                    86,
+                    42
+                  ],
+                  "color": "#38BDF8",
+                  "strokeWidth": 2
+                },
+                {
+                  "from": [
+                    81,
+                    37
+                  ],
+                  "to": [
+                    86,
+                    44
+                  ],
+                  "color": "#38BDF8",
+                  "strokeWidth": 2
+                },
+                {
+                  "from": [
+                    91,
+                    37
+                  ],
+                  "to": [
+                    86,
+                    44
+                  ],
+                  "color": "#38BDF8",
                   "strokeWidth": 2
                 }
               ],
@@ -1698,6 +2259,15 @@
                   "anchor": "middle"
                 },
                 {
+                  "x": 178,
+                  "y": 40,
+                  "text": "PĘTLA",
+                  "color": "#94A3B8",
+                  "fontSize": 9,
+                  "fontWeight": "bold",
+                  "anchor": "middle"
+                },
+                {
                   "x": 230,
                   "y": 55,
                   "text": "a",
@@ -1734,11 +2304,29 @@
                   "anchor": "middle"
                 },
                 {
+                  "x": 270,
+                  "y": 98,
+                  "text": "WYNIK: aᶜ = b",
+                  "color": "#10B981",
+                  "fontSize": 11,
+                  "fontWeight": "bold",
+                  "anchor": "middle"
+                },
+                {
                   "x": 100,
                   "y": 98,
-                  "text": "RUCH PO PĘTLI: a^c = b",
+                  "text": "1. Podnosisz a do potęgi c",
                   "color": "#FFB800",
-                  "fontSize": 11,
+                  "fontSize": 10,
+                  "fontWeight": "bold",
+                  "anchor": "middle"
+                },
+                {
+                  "x": 112,
+                  "y": 17,
+                  "text": "2. Lądujesz na liczbie b",
+                  "color": "#38BDF8",
+                  "fontSize": 10,
                   "fontWeight": "bold",
                   "anchor": "middle"
                 }
@@ -1773,7 +2361,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Definicja logarytmu log_a(b) = c i pętla logarytmiczna",
+            "title": "Definicja logarytmu i pętla logarytmiczna",
             "formulas": [
               {
                 "title": "Definicja logarytmu",
@@ -1925,8 +2513,8 @@
                 },
                 {
                   "id": "D",
-                  "text": "$\\frac{1}{2}$",
-                  "content_latex": "$\\frac{1}{2}$",
+                  "text": "$-\\frac{1}{2}$",
+                  "content_latex": "$-\\frac{1}{2}$",
                   "is_correct": false
                 }
               ],
@@ -2015,7 +2603,7 @@
           "required_correct_tasks": 4,
           "theory_pill": {
             "title": "Wzory na sumę i różnicę logarytmów o tej samej podstawie",
-            "concept_essence": "W zadaniach maturalnych niemal nigdy nie dostaniesz \"ładnych\" logarytmów do policzenia w pamięci (np. $\\log_6 4$ ani $\\log_6 9$ nie dają liczb całkowitych). Kluczem jest połączenie ich w jeden logarytm: DODAWANIE dwóch logarytmów zamienia się w MNOŻENIE ich wnętrz: $\\log_a x + \\log_a y = \\log_a(x \\cdot y)$. ODEJMOWANIE zamienia się w DZIELENIE: $\\log_a x - \\log_a y = \\log_a(x / y)$. Po wymnożeniu lub skróceniu w środku zawsze pojawia się \"magiczna liczba\", która natychmiast ładnie się logarytmuje!",
+            "concept_essence": "W zadaniach maturalnych niemal nigdy nie dostaniesz \"ładnych\" logarytmów do policzenia w pamięci (np. $\\log_6 4$ ani $\\log_6 9$ nie dają liczb całkowitych). Kluczem jest połączenie ich w jeden logarytm: DODAWANIE dwóch logarytmów zamienia się w MNOŻENIE ich wnętrz: $\\log_a x + \\log_a y = \\log_a(x \\cdot y)$. ODEJMOWANIE zamienia się w DZIELENIE: $\\log_a x - \\log_a y = \\log_a\\left(\\frac{x}{y}\\right)$. Po wymnożeniu lub skróceniu w środku zawsze pojawia się \"magiczna liczba\", która natychmiast ładnie się logarytmuje!",
             "matura_context": "Zadanie łączące sumę lub różnicę logarytmów pojawia się w każdym arkuszu maturalnym CKE na pozycji 2–4 za 1 punkt.",
             "core_formulas": [
               {
@@ -2066,21 +2654,21 @@
             "diagram": {
               "type": "INFOGRAPHIC",
               "title": "Suma i różnica logarytmów: Fuzja w jeden logarytm",
-              "formulaBadge": "\\log_a x + \\log_a y = \\log_a(x \\cdot y), \\quad \\log_a x - \\log_a y = \\log_a\\left(\\frac{x}{y}\\right)",
+              "formulaBadge": "\\begin{aligned}\\log_a x + \\log_a y &= \\log_a(x \\cdot y) \\\\ \\log_a x - \\log_a y &= \\log_a\\left(\\frac{x}{y}\\right)\\end{aligned}",
               "caption": "Gdy podstawy są identyczne, dodawanie logarytmów zamienia się w logarytm iloczynu, a odejmowanie w logarytm ilorazu.",
               "cards": [
                 {
                   "badge": "Zasada 1: Suma",
                   "title": "Dodawanie zamienia się w iloczyn",
-                  "formula": "\\log_6 4 + \\log_6 9 = \\log_6(4 \\cdot 9) = \\log_6 36 = 2",
-                  "desc": "Zamiast liczyć osobno, łączysz liczby logarytmowane pod jednym dachem.",
+                  "formula": "\\log_6 4 + \\log_6 9 = \\log_6 36 = 2",
+                  "desc": "Łączysz w iloczyn: $4 \\cdot 9 = 36$, skąd $\\log_6 36 = 2$.",
                   "color": "#38BDF8"
                 },
                 {
                   "badge": "Zasada 2: Różnica",
                   "title": "Odejmowanie zamienia się w iloraz",
-                  "formula": "\\log_2 40 - \\log_2 5 = \\log_2\\left(\\frac{40}{5}\\right) = \\log_2 8 = 3",
-                  "desc": "Odejmowanie logarytmów dzieli liczby logarytmowane przez siebie.",
+                  "formula": "\\log_2 40 - \\log_2 5 = \\log_2 8 = 3",
+                  "desc": "Łączysz w iloraz: $40 : 5 = 8$, skąd $\\log_2 8 = 3$.",
                   "color": "#c084fc"
                 }
               ],
@@ -2092,7 +2680,7 @@
                 },
                 {
                   "label": "Różnica logarytmów",
-                  "value": "$\\log_a(x : y)$",
+                  "value": "$\\log_a\\left(\\frac{x}{y}\\right)$",
                   "color": "#c084fc"
                 },
                 {
@@ -2300,20 +2888,69 @@
               "diagram": null,
               "plot": null,
               "numberLine": null
+            },
+            {
+              "id": "task-2-2-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura CKE • Suma logarytmów z ułamkiem",
+              "cke_source": "Matura CKE • Suma logarytmów z ułamkiem",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Wartość wyrażenia $\\log_2 12 + \\log_2 \\frac{4}{3}$ jest równa",
+              "content": "Wartość wyrażenia $\\log_2 12 + \\log_2 \\frac{4}{3}$ jest równa",
+              "math_statement": "Wartość wyrażenia $\\log_2 12 + \\log_2 \\frac{4}{3}$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$4$",
+                  "content_latex": "$4$",
+                  "is_correct": true
+                },
+                {
+                  "id": "B",
+                  "text": "$\\log_2 \\frac{40}{3}$",
+                  "content_latex": "$\\log_2 \\frac{40}{3}$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$16$",
+                  "content_latex": "$16$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$2$",
+                  "content_latex": "$2$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "A",
+              "correctAnswer": "A",
+              "explanation": "Stosujemy wzór na sumę logarytmów o tej samej podstawie: $\\log_2 12 + \\log_2 \\frac{4}{3} = \\log_2\\left(12 \\cdot \\frac{4}{3}\\right) = \\log_2(4 \\cdot 4) = \\log_2 16 = 4$, ponieważ $2^4 = 16$.",
+              "ckeTrap": "Nigdy nie dodawaj liczb w ułamku ($12 + \\frac{4}{3} = \\frac{40}{3}$) – dodawanie logarytmów zamienia się w mnożenie liczb pod logarytmem!",
+              "cke_trap": "Nigdy nie dodawaj liczb w ułamku ($12 + \\frac{4}{3} = \\frac{40}{3}$) – dodawanie logarytmów zamienia się w mnożenie liczb pod logarytmem!",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Nigdy nie dodawaj liczb w ułamku ($12 + \\frac{4}{3} = \\frac{40}{3}$) – dodawanie logarytmów zamienia się w mnożenie liczb pod logarytmem!"
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
             }
           ]
         },
         {
           "id": "lesson-2-3",
           "topic_id": "dzial-2",
-          "title": "Wzór na potęgę w liczbie logarytmowanej i obliczanie wartości wyrażeń z CKE",
+          "title": "Potęga w liczbie logarytmowanej i wyrażenia z CKE",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Wzór na potęgę w liczbie logarytmowanej i obliczanie wartości wyrażeń z CKE",
-            "concept_essence": "Wzór na \"windę potęgi\" $k \\cdot \\log_a x = \\log_a(x^k)$ działa w dwie strony: 1) Wykładnik potęgi ze środka logarytmu możesz \"zrzucić windą\" na sam początek jako zwykły mnożnik. 2) Mnożnik stojący przed logarytmem możesz \"wciągnąć windą\" na górę jako potęgę liczby x. Na maturze reguła ta jest niezbędna przy sumie i różnicy: NIGDY nie łącz logarytmów w iloczyn lub iloraz, dopóki przed którymś z nich stoi jakakolwiek liczba (np. 2, 3 czy 1/2)! Najpierw wciągasz liczbę do potęgi, dopiero potem łączysz.",
-            "matura_context": "Wyrażenie typu 2·log_a(x) - log_a(y) to ulubiony schemat CKE za 1 punkt (pojawia się naprzemiennie z czystą różnicą logarytmów).",
+            "title": "Potęga w liczbie logarytmowanej i wyrażenia z CKE",
+            "concept_essence": "Wzór na \"windę potęgi\" $k \\cdot \\log_a x = \\log_a(x^k)$ działa w dwie strony: 1) Wykładnik potęgi ze środka logarytmu możesz \"zrzucić windą\" na sam początek jako zwykły mnożnik. 2) Mnożnik stojący przed logarytmem możesz \"wciągnąć windą\" na górę jako potęgę liczby x. Na maturze reguła ta jest niezbędna przy sumie i różnicy: NIGDY nie łącz logarytmów w iloczyn lub iloraz, dopóki przed którymś z nich stoi jakakolwiek liczba (np. 2, 3 czy $\\frac{1}{2}$)! Najpierw wciągasz liczbę do potęgi, dopiero potem łączysz.",
+            "matura_context": "Wyrażenie typu $2\\log_a x - \\log_a y$ to ulubiony schemat CKE za 1 punkt (pojawia się naprzemiennie z czystą różnicą logarytmów).",
             "core_formulas": [
               {
                 "title": "Logarytm potęgi (\"Winda wykładnika\")",
@@ -2349,18 +2986,18 @@
               "diagram": null,
               "numberLine": null
             },
-            "exam_trap": "Typowy błąd: Dzielenie z pozostawieniem współczynnika: $2\\log 10 - \\log 4 = 2\\log(10/4)$.\n\nPoprawnie: Najpierw wciągnij 2 do potęgi: $\\log(10^2) - \\log 4 = \\log(100/4) = \\log 25$.",
+            "exam_trap": "Typowy błąd: Dzielenie z pozostawieniem współczynnika: $2\\log 10 - \\log 4 = 2\\log\\left(\\frac{10}{4}\\right)$.\n\nPoprawnie: Najpierw wciągnij 2 do potęgi: $\\log(10^2) - \\log 4 = \\log\\left(\\frac{100}{4}\\right) = \\log 25$.",
             "diagram": {
               "type": "INFOGRAPHIC",
               "title": "Wciąganie liczby do wykładnika i zmiana podstawy",
-              "formulaBadge": "k \\cdot \\log_a x = \\log_a(x^k), \\quad \\log_a b = \\frac{\\log_c b}{\\log_c a}",
+              "formulaBadge": "\\begin{aligned}k \\cdot \\log_a x &= \\log_a\\left(x^k\\right) \\\\ \\log_a b &= \\frac{\\log_c b}{\\log_c a}\\end{aligned}",
               "caption": "Liczba stojąca PRZED logarytmem wędruje na piętro jako WYKŁADNIK potęgi liczby logarytmowanej.",
               "cards": [
                 {
                   "badge": "Najważniejszy manewr CKE",
                   "title": "Wciągnięcie współczynnika",
-                  "formula": "2\\log_5 10 - \\log_5 4 = \\log_5(10^2) - \\log_5 4 = \\log_5\\left(\\frac{100}{4}\\right) = \\log_5 25 = 2",
-                  "desc": "Najpierw wciągasz liczbę przed logarytmem do środka, a dopiero potem łączysz logarytmy!",
+                  "formula": "2\\log_5 10 - \\log_5 4 = \\log_5 25 = 2",
+                  "desc": "Wciągasz 2 ($10^2 = 100$), a potem dzielisz: $100 : 4 = 25$, więc $\\log_5 25 = 2$.",
                   "color": "#FFB800"
                 },
                 {
@@ -2394,7 +3031,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Wzór na potęgę w liczbie logarytmowanej i obliczanie wartości wyrażeń z CKE",
+            "title": "Potęga w liczbie logarytmowanej i wyrażenia z CKE",
             "formulas": [
               {
                 "title": "Logarytm potęgi (\"Winda wykładnika\")",
@@ -2578,6 +3215,55 @@
               "diagram": null,
               "plot": null,
               "numberLine": null
+            },
+            {
+              "id": "task-2-3-5",
+              "type": "SINGLE_CHOICE",
+              "points": 1,
+              "source": "Matura Sierpień 2023 • Zad. 2",
+              "cke_source": "Matura Sierpień 2023 • Zad. 2",
+              "instruction": "Wybierz właściwą odpowiedź spośród podanych.",
+              "question": "Liczba $2\\log_6 3 + \\log_6 4$ jest równa",
+              "content": "Liczba $2\\log_6 3 + \\log_6 4$ jest równa",
+              "math_statement": "Liczba $2\\log_6 3 + \\log_6 4$ jest równa",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "$2$",
+                  "content_latex": "$2$",
+                  "is_correct": true
+                },
+                {
+                  "id": "B",
+                  "text": "$\\log_6 10$",
+                  "content_latex": "$\\log_6 10$",
+                  "is_correct": false
+                },
+                {
+                  "id": "C",
+                  "text": "$6$",
+                  "content_latex": "$6$",
+                  "is_correct": false
+                },
+                {
+                  "id": "D",
+                  "text": "$\\log_6 24$",
+                  "content_latex": "$\\log_6 24$",
+                  "is_correct": false
+                }
+              ],
+              "correct_answer": "A",
+              "correctAnswer": "A",
+              "explanation": "KROK 1: Wciągamy dwójkę do potęgi liczby logarytmowanej: $2\\log_6 3 = \\log_6(3^2) = \\log_6 9$.\nKROK 2: Dodajemy logarytmy, zamieniając sumę na iloczyn: $\\log_6 9 + \\log_6 4 = \\log_6(9 \\cdot 4) = \\log_6 36$.\nKROK 3: Obliczamy wartość: $\\log_6 36 = 2$, ponieważ $6^2 = 36$.",
+              "ckeTrap": "Częsty błąd to mnożenie $2 \\cdot 3 = 6$ zamiast potęgowania $3^2 = 9$. Mnożnik przed logarytmem wędruje do wykładnika potęgi!",
+              "cke_trap": "Częsty błąd to mnożenie $2 \\cdot 3 = 6$ zamiast potęgowania $3^2 = 9$. Mnożnik przed logarytmem wędruje do wykładnika potęgi!",
+              "hints": {
+                "level_1": "Zastanów się, jaki wzór lub reguła ma tu bezpośrednie zastosowanie.",
+                "level_2": "Częsty błąd to mnożenie $2 \\cdot 3 = 6$ zamiast potęgowania $3^2 = 9$. Mnożnik przed logarytmem wędruje do wykładnika potęgi!"
+              },
+              "diagram": null,
+              "plot": null,
+              "numberLine": null
             }
           ]
         }
@@ -2585,7 +3271,9 @@
     },
     {
       "id": "dzial-3",
-      "title": "Dział 1.3: Wartość bezwzględna",
+      "title": "Wartość bezwzględna",
+      "topic_number": 3,
+      "order": 3,
       "tier": "Tier S",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "3 lekcje (~15 min)",
@@ -2594,13 +3282,13 @@
         {
           "id": "lesson-3-1",
           "topic_id": "dzial-3",
-          "title": "Definicja geometryczna wartości bezwzględnej (|x - a| = r)",
+          "title": "Definicja geometryczna i odległość na osi",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Definicja geometryczna wartości bezwzględnej (|x - a| = r)",
-            "concept_essence": "Wartość bezwzględna to po prostu odległość na osi liczbowej. Gdy widzisz $|x|$, pytasz: jak daleko od zera leży $x$? Ponieważ odległość nie może być ujemna, $|-5| = 5$ oraz $|5| = 5$. Zapis $|x - a| = r$ oznacza: punkty na osi oddalone od liczby $a$ o dokładnie $r$ jednostek. Stawiasz cyrkiel w punkcie $a$ i robisz $r$ kroków w prawo ($a + r$) oraz $r$ kroków w lewo ($a - r$).",
+            "title": "Definicja geometryczna i odległość na osi",
+            "concept_essence": "Wartość bezwzględna to odległość na osi liczbowej. Zapis $|x|$ pyta: jak daleko od zera leży liczba $x$? Ponieważ odległość nie może być ujemna, $|-5| = 5$ oraz $|5| = 5$. Równanie $|x - a| = r$ oznacza: znajdź punkty na osi oddalone od środka $a$ o promień $r$. Wyznaczasz je dwoma krokami: w prawo ($a + r$) oraz w lewo ($a - r$).",
             "matura_context": "Zadanie sprawdzające interpretację geometryczną wartości bezwzględnej pojawia się co roku na maturze podstawowej CKE za 1 punkt (często jako zadanie 1 na arkuszu).",
             "core_formulas": [
               {
@@ -2621,7 +3309,7 @@
                 "cke_page": "str. 4",
                 "example": "$|x - 3| = 5 \\implies x = 3 - 5 = -2 \\quad \\text{lub} \\quad x = 3 + 5 = 8$",
                 "mnemonic": "Środek to a, odległość to r: krok w lewo i krok w prawo.",
-                "matura_tip": "Wzór ma w środku minus. Zapis |x + 2| oznacza |x - (-2)|, czyli środek w -2."
+                "matura_tip": "Wzór ma w środku minus. Zapis $|x + 2|$ oznacza $|x - (-2)|$, czyli środek w $-2$."
               }
             ],
             "worked_example": {
@@ -2635,12 +3323,12 @@
                 {
                   "num": 2,
                   "label": "Krok w prawo od środka",
-                  "text": "Od liczby 2 idziemy o 5 jednostek w prawo: $x_1 = 2 + 5 = 7$."
+                  "text": "Od liczby $2$ idziemy o $5$ jednostek w prawo: $x_1 = 2 + 5 = 7$."
                 },
                 {
                   "num": 3,
                   "label": "Krok w lewo od środka i wynik CKE",
-                  "text": "Od liczby 2 idziemy o 5 jednostek w lewo: $x_2 = 2 - 5 = -3$. Rozwiązaniami są liczby $x = -3$ oraz $x = 7$."
+                  "text": "Od liczby $2$ idziemy o $5$ jednostek w lewo: $x_2 = 2 - 5 = -3$. Rozwiązaniami są liczby $x = -3$ oraz $x = 7$."
                 }
               ],
               "result": "x \\in \\{-3, 7\\}",
@@ -2649,119 +3337,47 @@
             },
             "exam_trap": "Typowy błąd: Przyjmowanie środka o przeciwnym znaku, np. w równaniu $|x + 4| = 3$ uznanie, że środek to $4$.\n\nPoprawnie: $|x + 4| = |x - (-4)|$, więc środkiem jest $-4$. Rozwiązania to $-4 - 3 = -7$ oraz $-4 + 3 = -1$.",
             "diagram": {
-              "type": "GEOMETRY_2D",
-              "title": "Wartość bezwzględna: Odległość na osi liczbowej",
-              "formulaBadge": "|x - a| \\le r \\implies x \\in [a - r,\\; a + r]",
-              "caption": "Wyrażenie |x - a| oznacza odległość liczby x od punktu a na osi liczbowej. Znak minus w środku oznacza środek w punkcie a!",
-              "width": 520,
-              "height": 270,
-              "polygons": [],
-              "segments": [
+              "type": "INFOGRAPHIC",
+              "title": "Definicja geometryczna wartości bezwzględnej: Odległość na osi",
+              "formulaBadge": "|x - a| = r \\implies x = a - r \\quad \\text{lub} \\quad x = a + r \\quad (r \\ge 0)",
+              "caption": "Wartość bezwzględna |x - a| to odległość liczby x od punktu środkowego a. Rozwiązania leżą symetrycznie po obu stronach środka.",
+              "cards": [
                 {
-                  "from": [
-                    40,
-                    120
-                  ],
-                  "to": [
-                    480,
-                    120
-                  ],
-                  "color": "#64748B",
-                  "strokeWidth": 2
+                  "badge": "Krok w prawo (+r)",
+                  "title": "Rozwiązanie po prawej stronie",
+                  "formula": "x_1 = a + r",
+                  "desc": "Przesuwamy się od środka $a$ o $r$ jednostek w prawo na osi liczbowej.",
+                  "color": "#10B981"
                 },
                 {
-                  "from": [
-                    140,
-                    120
-                  ],
-                  "to": [
-                    380,
-                    120
-                  ],
-                  "color": "#FFB800",
-                  "strokeWidth": 4
+                  "badge": "Krok w lewo (-r)",
+                  "title": "Rozwiązanie po lewej stronie",
+                  "formula": "x_2 = a - r",
+                  "desc": "Przesuwamy się od środka $a$ o $r$ jednostek w lewo na osi liczbowej.",
+                  "color": "#38BDF8"
                 },
                 {
-                  "from": [
-                    140,
-                    90
-                  ],
-                  "to": [
-                    260,
-                    90
-                  ],
-                  "color": "#38BDF8",
-                  "strokeWidth": 1.5,
-                  "dashed": true
-                },
-                {
-                  "from": [
-                    260,
-                    90
-                  ],
-                  "to": [
-                    380,
-                    90
-                  ],
-                  "color": "#38BDF8",
-                  "strokeWidth": 1.5,
-                  "dashed": true
-                }
-              ],
-              "points": [
-                {
-                  "x": 140,
-                  "y": 120,
-                  "color": "#FFB800",
-                  "label": "a - r"
-                },
-                {
-                  "x": 260,
-                  "y": 120,
-                  "color": "#10B981",
-                  "label": "środek: a"
-                },
-                {
-                  "x": 380,
-                  "y": 120,
-                  "color": "#FFB800",
-                  "label": "a + r"
-                }
-              ],
-              "arcs": [],
-              "circles": [],
-              "labels": [
-                {
-                  "x": 200,
-                  "y": 80,
-                  "text": "odległość r",
-                  "color": "#38BDF8",
-                  "fontSize": 12,
-                  "anchor": "middle"
-                },
-                {
-                  "x": 320,
-                  "y": 80,
-                  "text": "odległość r",
-                  "color": "#38BDF8",
-                  "fontSize": 12,
-                  "anchor": "middle"
+                  "badge": "PUŁAPKA CKE: Znak plus",
+                  "title": "Środek leży po stronie ujemnej",
+                  "formula": "|x + 3| = |x - (-3)| \\implies a = -3",
+                  "desc": "Gdy wewnątrz modułu widzisz dodawanie, środek przedziału ma znak ujemny!",
+                  "color": "#F43F5E"
                 }
               ],
               "metrics": [
                 {
                   "label": "Środek $a$",
-                  "value": "Liczba ze zmienionym znakiem ($|x - 2| \\implies a = 2$)",
+                  "value": "Punkt odniesienia ze zmienionym znakiem ($|x - 2| \\implies a = 2$)",
                   "color": "#10B981"
                 },
                 {
                   "label": "Promień $r$",
-                  "value": "Połowa długości przedziału na osi",
+                  "value": "Dopuszczalna odległość od środka ($r \\ge 0$)",
                   "color": "#38BDF8"
                 },
                 {
-                  "label": "Znak plus: $|x + 3|$",
-                  "value": "$|x - (-3)|$, więc środek to $-3$",
+                  "label": "Prawa strona ujemna",
+                  "value": "$|x - a| = -3 \\implies$ sprzeczność (brak rozwiązań)",
                   "color": "#F43F5E"
                 }
               ]
@@ -2771,7 +3387,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Definicja geometryczna wartości bezwzględnej (|x - a| = r)",
+            "title": "Definicja geometryczna i odległość na osi",
             "formulas": [
               {
                 "title": "Definicja algebraiczna wartości bezwzględnej",
@@ -3007,13 +3623,13 @@
         {
           "id": "lesson-3-2",
           "topic_id": "dzial-3",
-          "title": "Nierówności z wartością bezwzględną (|x - a| < r oraz |x - a| >= r)",
+          "title": "Nierówności z wartością bezwzględną i przedziały",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Nierówności z wartością bezwzględną (|x - a| < r oraz |x - a| >= r)",
-            "concept_essence": "Nierówność z wartością bezwzględną to pytanie o to, czy punkty leżą BLISKO, czy DALEKO od środka $a$. Znak mniejszości ($|x - a| < r$) oznacza, że odległość jest mała — jesteś uwięziony wewnątrz jednego przedziału wokół środka: $(a - r, a + r)$. Znak większości ($|x - a| > r$) oznacza, że odległość jest duża — uciekasz na zewnątrz w dwa skrzydła ku nieskończonościom: $(-\\infty, a - r) \\cup (a + r, +\\infty)$.",
+            "title": "Nierówności z wartością bezwzględną i przedziały",
+            "concept_essence": "Nierówność z wartością bezwzględną sprawdza, czy punkty leżą BLISKO, czy DALEKO od środka $a$. Znak mniejszości ($|x - a| < r$) oznacza, że odległość jest mała — uczeń jest uwięziony wewnątrz jednego przedziału wokół środka: $(a - r, a + r)$. Znak większości ($|x - a| > r$) oznacza, że odległość jest duża — punkty uciekają na zewnątrz w dwa skrzydła ku nieskończonościom: $(-\\infty, a - r) \\cup (a + r, +\\infty)$.",
             "matura_context": "Jedno z najpewniejszych zadań w arkuszu maturalnym CKE (Maj 2024 zad. 1, Czerwiec 2023 zad. 1).",
             "core_formulas": [
               {
@@ -3024,7 +3640,7 @@
                 "cke_page": "str. 4",
                 "example": "$|x - 2| < 3 \\implies -1 < x < 5 \\implies x \\in (-1, 5)$",
                 "mnemonic": "Dzióbek w stronę wartości bezwzględnej zamyka cię w klatce.",
-                "matura_tip": "Dla znaku <= nawiasy są domknięte: [a - r, a + r]."
+                "matura_tip": "Dla znaku $\\le$ nawiasy są domknięte: $[a - r, a + r]$."
               },
               {
                 "title": "Nierówność ze znakiem większości (skrzydła zewnętrzne)",
@@ -3034,7 +3650,7 @@
                 "cke_page": "str. 4",
                 "example": "$|x - 1| \\ge 4 \\implies x \\in (-\\infty, -3] \\cup [5, +\\infty)$",
                 "mnemonic": "Dzióbek w stronę liczby wyrzuca cię na zewnątrz.",
-                "matura_tip": "Pomiędzy przedziałami zawsze stoi znak sumy zbiorów (U), nigdy część wspólna."
+                "matura_tip": "Pomiędzy przedziałami zawsze stoi znak sumy zbiorów ($\\cup$), nigdy część wspólna ($\\cap$)."
               }
             ],
             "worked_example": {
@@ -3063,40 +3679,47 @@
             "exam_trap": "Typowy błąd: Zapisywanie skrzydeł nierówności $|x - a| > r$ jako jednego bezsensownego ciągu, np. $5 < x < -2$.\n\nPoprawnie: Skrzydła zewnętrzne to dwa OSOBNE warunki połączone słowem LUB: $x < -2$ LUB $x > 5$.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Opuszczanie wartości bezwzględnej: Weryfikacja znaku wnętrza",
-              "formulaBadge": "|A| = \\begin{cases} A & \\text{gdy } A \\ge 0 \\\\ -A & \\text{gdy } A < 0 \\end{cases}",
-              "caption": "Wartość bezwzględna z wyrażenia ujemnego ZMIENIA WSZYSTKIE ZNAKI wewnątrz modułu na przeciwne, aby wynik był dodatni.",
+              "title": "Nierówności z wartością bezwzględną: Klatka vs Skrzydła",
+              "formulaBadge": "\\begin{aligned} |x - a| < r &\\implies x \\in (a - r,\\; a + r) \\\\ |x - a| \\ge r &\\implies x \\in (-\\infty, a - r] \\cup [a + r, +\\infty) \\end{aligned}",
+              "caption": "Znak mniejszości uwięzi cię wewnątrz jednego przedziału wokół środka. Znak większości wyrzuca cię na zewnątrz w dwa skrzydła ku nieskończonościom.",
               "cards": [
                 {
-                  "badge": "Przypadek 1: Wnętrze dodatnie",
-                  "title": "Zostawiasz bez zmian",
-                  "formula": "|\\sqrt{5} - 2| = \\sqrt{5} - 2",
-                  "desc": "Ponieważ $\\sqrt{5} \\approx 2{,}23 > 2$, wnętrze jest dodatnie ($>0$). Po prostu zdejmujesz kreski.",
+                  "badge": "Znak mniejszości (< lub ≤)",
+                  "title": "Wnętrze przedziału („Klatka”)",
+                  "formula": "|x - 2| < 3 \\implies x \\in (-1,\\; 5)",
+                  "desc": "Punkty leżą blisko środka $a = 2$. Zbiorem rozwiązań jest jeden spójny przedział ograniczony wartościami $2 - 3 = -1$ oraz $2 + 3 = 5$.",
                   "color": "#10B981"
                 },
                 {
-                  "badge": "Przypadek 2: Wnętrze ujemne",
-                  "title": "Zmieniasz wszystkie znaki!",
-                  "formula": "|\\sqrt{3} - 2| = -(\\sqrt{3} - 2) = 2 - \\sqrt{3}",
-                  "desc": "Ponieważ $\\sqrt{3} \\approx 1{,}73 < 2$, wnętrze jest ujemne ($<0$). Musisz odwrócić kolejność składników.",
+                  "badge": "Znak większości (> lub ≥)",
+                  "title": "Dwa skrzydła ku nieskończoności",
+                  "formula": "|x - 1| \\ge 4 \\implies x \\in (-\\infty, -3] \\cup [5, +\\infty)",
+                  "desc": "Punkty uciekają daleko od środka $a = 1$. Zbiorem rozwiązań jest suma dwóch przedziałów nieskończonych połączonych znakiem $\\cup$.",
+                  "color": "#FFB800"
+                },
+                {
+                  "badge": "PUŁAPKA CKE: Zero i liczby ujemne",
+                  "title": "Zawsze sprawdzaj sens geometryczny",
+                  "formula": "|x - 5| < 0 \\implies \\emptyset, \\quad |x - 5| \\ge 0 \\implies \\mathbb{R}",
+                  "desc": "Wartość bezwzględna nigdy nie jest ujemna. Ostra nierówność $< 0$ nie ma rozwiązań, a nierówność $\\ge 0$ spełnia każda liczba.",
                   "color": "#F43F5E"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Szacowanie $\\sqrt{2}$",
-                  "value": "$\\approx 1{,}41$",
+                  "label": "Ostre: $<$ oraz $>$",
+                  "value": "Kółka otwarte ○, nawiasy okrągłe $( )$",
                   "color": "#38BDF8"
                 },
                 {
-                  "label": "Szacowanie $\\sqrt{3}$",
-                  "value": "$\\approx 1{,}73$",
-                  "color": "#FFB800"
+                  "label": "Słabe: $\\le$ oraz $\\ge$",
+                  "value": "Kółka zamalowane ●, nawiasy domknięte $[ ]$",
+                  "color": "#10B981"
                 },
                 {
-                  "label": "Szacowanie $\\sqrt{5}$",
-                  "value": "$\\approx 2{,}23$",
-                  "color": "#10B981"
+                  "label": "Suma przedziałów $\\cup$",
+                  "value": "Zawsze łączy skrzydła przy znaku większości",
+                  "color": "#FFB800"
                 }
               ]
             },
@@ -3105,7 +3728,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Nierówności z wartością bezwzględną (|x - a| < r oraz |x - a| >= r)",
+            "title": "Nierówności z wartością bezwzględną i przedziały",
             "formulas": [
               {
                 "title": "Nierówność ze znakiem mniejszości (wnętrze)",
@@ -3341,12 +3964,12 @@
         {
           "id": "lesson-3-3",
           "topic_id": "dzial-3",
-          "title": "Wartość bezwzględna z wyrażeń i tożsamość sqrt(x^2) = |x|",
+          "title": "Wartość bezwzględna z wyrażeń i tożsamość pierwiastkowa",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Wartość bezwzględna z wyrażeń i tożsamość sqrt(x^2) = |x|",
+            "title": "Wartość bezwzględna z wyrażeń i tożsamość pierwiastkowa",
             "concept_essence": "Pierwiastek kwadratowy z definicji NIGDY nie daje wyniku ujemnego. Dlatego najważniejsza tożsamość algebry maturalnej brzmi: $\\sqrt{x^2} = |x|$. Nigdy nie pisz odruchowo $\\sqrt{x^2} = x$ bez wartości bezwzględnej! Gdy opuszczasz kreski z wyrażenia niewymiernego (np. $|1 - \\sqrt{3}|$): najpierw oszacuj wartość wewnątrz. Jeśli wnętrze jest dodatnie — zdejmujesz kreski bez zmian. Jeśli wnętrze jest ujemne — zdejmujesz kreski i zmieniasz wszystkie znaki na przeciwne.",
             "matura_context": "Tożsamość $\\sqrt{a^2} = |a|$ oraz opuszczanie kresek z liczb niewymiernych to stały element zadań za 1 pkt na każdej maturze majowej i czerwcowej.",
             "core_formulas": [
@@ -3358,7 +3981,7 @@
                 "cke_page": "str. 4",
                 "example": "$\\sqrt{(-5)^2} = |-5| = 5, \\quad \\sqrt{x^2} = -x \\text{ dla } x < 0$",
                 "mnemonic": "Kwadrat z pierwiastkiem kasuje się w wartość bezwzględną.",
-                "matura_tip": "Gdy w zadaniu jest założenie $x < 0$, to $\\sqrt{x^2}$ = -x."
+                "matura_tip": "Gdy w zadaniu jest założenie $x < 0$, to $\\sqrt{x^2} = -x$."
               },
               {
                 "title": "Opuszczanie wartości bezwzględnej z różnicy liczb",
@@ -3397,40 +4020,52 @@
             "exam_trap": "Typowy błąd: Pisanie $\\sqrt{(2 - \\sqrt{7})^2} = 2 - \\sqrt{7}$, co daje wynik ujemny z pierwiastka arytmetycznego.\n\nPoprawnie: Zawsze wstaw kreski wartości bezwzględnej $|2 - \\sqrt{7}|$, odwróć kolejność na $\\sqrt{7} - 2$ i dopiero redukuj.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Równania z wartością bezwzględną: Dwa przypadki",
-              "formulaBadge": "|x - a| = b \\implies x - a = b \\quad \\text{lub} \\quad x - a = -b \\quad (b \\ge 0)",
-              "caption": "Równanie z wartością bezwzględną równą liczbie dodatniej ZAWSZE rozpada się na dwa proste równania.",
+              "title": "Tożsamość pierwiastkowa i opuszczanie wartości bezwzględnej",
+              "formulaBadge": "\\sqrt{a^2} = |a| \\quad \\text{oraz} \\quad |A| = \\begin{cases} A & \\text{dla } A \\ge 0 \\\\ -A & \\text{dla } A < 0 \\end{cases}",
+              "caption": "Pierwiastek parzystego stopnia z definicji NIGDY nie daje wyniku ujemnego. Zdejmując kreski z liczby ujemnej, zmieniasz wszystkie znaki!",
               "cards": [
                 {
-                  "badge": "Przypadek A",
-                  "title": "Krok w prawo od środka",
-                  "formula": "x - a = b \\implies x = a + b",
-                  "desc": "Rozwiązanie leżące po prawej stronie środka $a$ w odległości $b$.",
-                  "color": "#38BDF8"
+                  "badge": "Żelazna tożsamość CKE",
+                  "title": "Pierwiastek z kwadratu to moduł",
+                  "formula": "\\sqrt{a^2} = |a| \\implies \\sqrt{(-4)^2} = |-4| = 4",
+                  "desc": "Dla $a < 0$ zachodzi $\\sqrt{a^2} = -a$. Odruchowe pisanie $\\sqrt{a^2} = a$ to najczęstszy błąd na maturze!",
+                  "color": "#10B981"
                 },
                 {
-                  "badge": "Przypadek B",
-                  "title": "Krok w lewo od środka",
-                  "formula": "x - a = -b \\implies x = a - b",
-                  "desc": "Rozwiązanie leżące po lewej stronie środka $a$ w odległości $b$.",
+                  "badge": "Opuszczanie modułu z pierwiastkiem",
+                  "title": "Zawsze oszacuj znak wnętrza",
+                  "formula": "|2 - \\sqrt{5}| = \\sqrt{5} - 2",
+                  "desc": "Szacujemy $\\sqrt{5} \\approx 2{,}24 > 2$. Ponieważ wnętrze jest ujemne ($2 - 2{,}24 < 0$), odwracamy kolejność odejmowania.",
+                  "color": "#F43F5E"
+                },
+                {
+                  "badge": "Wzór skróconego mnożenia",
+                  "title": "Zwijanie kwadratu pod pierwiastkiem",
+                  "formula": "\\sqrt{x^2 - 6x + 9} = \\sqrt{(x - 3)^2} = |x - 3|",
+                  "desc": "Zwijasz trójmian do kwadratu różnicy, zamieniasz na wartość bezwzględną i dopiero sprawdzasz założenie (np. $x < 3 \\implies 3 - x$).",
                   "color": "#FFB800"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Dla $b > 0$",
-                  "value": "Dwa różne rozwiązania symetryczne!",
-                  "color": "#10B981"
-                },
-                {
-                  "label": "Dla $b = 0$",
-                  "value": "Jedno rozwiązanie: $x = a$",
+                  "label": "Szacowanie $\\sqrt{2}$",
+                  "value": "$\\approx 1{,}41$",
                   "color": "#38BDF8"
                 },
                 {
-                  "label": "Dla $b < 0$",
-                  "value": "Równanie sprzeczne (brak rozwiązań)!",
-                  "color": "#F43F5E"
+                  "label": "Szacowanie $\\sqrt{3}$",
+                  "value": "$\\approx 1{,}73$",
+                  "color": "#FFB800"
+                },
+                {
+                  "label": "Szacowanie $\\sqrt{5}$",
+                  "value": "$\\approx 2{,}24$",
+                  "color": "#10B981"
+                },
+                {
+                  "label": "Liczba $\\pi$",
+                  "value": "$\\approx 3{,}14$",
+                  "color": "#c084fc"
                 }
               ]
             },
@@ -3439,7 +4074,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Wartość bezwzględna z wyrażeń i tożsamość sqrt(x^2) = |x|",
+            "title": "Wartość bezwzględna z wyrażeń i tożsamość pierwiastkowa",
             "formulas": [
               {
                 "title": "Żelazna tożsamość pierwiastka kwadratowego",
@@ -3679,7 +4314,9 @@
     },
     {
       "id": "dzial-4",
-      "title": "Dział 1.4: Wzory skróconego mnożenia i algebra",
+      "title": "Wzory skróconego mnożenia i algebra",
+      "topic_number": 4,
+      "order": 4,
       "tier": "Tier S",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "3 lekcje (~15 min)",
@@ -3746,20 +4383,20 @@
               "type": "INFOGRAPHIC",
               "title": "Wzory skróconego mnożenia: Kwadrat sumy i różnicy",
               "formulaBadge": "(a \\pm b)^2 = a^2 \\pm 2ab + b^2",
-              "caption": "Kwadrat dwumianu ZAWSZE daje trójmian z trzema wyrazami. Wyraz środkowy to podwojony iloczyn 2ab, a ostatni wyraz +b^2 jest zawsze dodatni!",
+              "caption": "Kwadrat dwumianu ZAWSZE daje trójmian z trzema składnikami. Wyraz środkowy to podwojony iloczyn 2ab, a ostatni wyraz +b^2 jest zawsze dodatni!",
               "cards": [
                 {
                   "badge": "Formuła 1: Kwadrat sumy",
                   "title": "Dwa plusy w trójmianie",
                   "formula": "(a + b)^2 = a^2 + 2ab + b^2",
-                  "desc": "Przykład CKE: $(2x + 3)^2 = (2x)^2 + 2 \\cdot 2x \\cdot 3 + 3^2 = 4x^2 + 12x + 9$.",
+                  "desc": "Przykład CKE: $(2x + 3)^2 = 4x^2 + 12x + 9$. Wyraz środkowy to $2 \\cdot 2x \\cdot 3 = 12x$.",
                   "color": "#38BDF8"
                 },
                 {
                   "badge": "Formuła 2: Kwadrat różnicy",
                   "title": "Minus tylko przy 2ab, koniec zawsze dodatni",
                   "formula": "(a - b)^2 = a^2 - 2ab + b^2",
-                  "desc": "Przykład CKE: $(3x - 1)^2 = (3x)^2 - 2 \\cdot 3x \\cdot 1 + 1^2 = 9x^2 - 6x + 1$.",
+                  "desc": "Przykład CKE: $(3x - 1)^2 = 9x^2 - 6x + 1$. Ostatni składnik to $(-1)^2 = +1$.",
                   "color": "#FFB800"
                 }
               ],
@@ -4022,12 +4659,12 @@
         {
           "id": "lesson-4-2",
           "topic_id": "dzial-4",
-          "title": "Różnica kwadratów a^2 - b^2 = (a-b)(a+b) i usuwanie niewymierności",
+          "title": "Wzór na różnicę kwadratów i usuwanie niewymierności",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Różnica kwadratów a^2 - b^2 = (a-b)(a+b) i usuwanie niewymierności",
+            "title": "Wzór na różnicę kwadratów i usuwanie niewymierności",
             "concept_essence": "Wzór na różnicę kwadratów $a^2 - b^2 = (a - b)(a + b)$ działa w dwie strony: do likwidacji pierwiastków w mianowniku (mnożenie przez sprzężenie) oraz do zamiany sumy na iloczyn nawiasów. Jest to najszybszy sposób rozwiązywania równań wyższych stopni.",
             "matura_context": "Usuwanie niewymierności z mianownika oraz rozkład różnicy kwadratów to absolutny klasyk matury za 1 punkt.",
             "core_formulas": [
@@ -4078,19 +4715,19 @@
             "exam_trap": "Typowy błąd: Mnożenie mianownika przez samego siebie zamiast przez sprzężenie, np. mnożenie $\\sqrt{3} + 1$ przez $\\sqrt{3}$.\n\nPoprawnie: Zawsze mnóż przez dwumian ze zmienionym znakiem $(\\sqrt{3} - 1)$, by zastosować wzór $a^2 - b^2$.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Różnica kwadratów: Błyskawiczny rozkład na nawiasy",
+              "title": "Różnica kwadratów: Błyskawiczny rozkład i sprzężenie",
               "formulaBadge": "a^2 - b^2 = (a - b)(a + b)",
-              "caption": "Gdy widzisz odejmowanie dwóch kwadratów, natychmiast zamieniaj je na iloczyn różnicy i sumy tych liczb.",
+              "caption": "Odejmowanie kwadratów zamieniaj na iloczyn różnicy i sumy. Likwiduje pierwiastki w mianowniku i błyskawicznie faktoryzuje wielomiany.",
               "cards": [
                 {
-                  "badge": "Zwijanie w liczbę",
+                  "badge": "Sprzężenie mianownika",
                   "title": "Likwidacja pierwiastków",
-                  "formula": "(\\sqrt{7} - 2)(\\sqrt{7} + 2) = (\\sqrt{7})^2 - 2^2 = 7 - 4 = 3",
-                  "desc": "Mnożenie sprzężeń daje liczbę całkowitą bez żadnych pierwiastków.",
+                  "formula": "(\\sqrt{7} - 2)(\\sqrt{7} + 2) = 7 - 4 = 3",
+                  "desc": "Ze wzoru $(a-b)(a+b) = a^2 - b^2$: $(\\sqrt{7})^2 - 2^2 = 7 - 4 = 3$. Mianownik staje się liczbą całkowitą.",
                   "color": "#10B981"
                 },
                 {
-                  "badge": "Rozkładanie wielomianu",
+                  "badge": "Rozkład wielomianu",
                   "title": "Szukanie pierwiastków równania",
                   "formula": "4x^2 - 25 = (2x - 5)(2x + 5)",
                   "desc": "Zauważ, że $4x^2 = (2x)^2$ oraz $25 = 5^2$. Pierwiastki to $x = \\frac{5}{2}$ oraz $x = -\\frac{5}{2}$.",
@@ -4120,7 +4757,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Różnica kwadratów a^2 - b^2 = (a-b)(a+b) i usuwanie niewymierności",
+            "title": "Wzór na różnicę kwadratów i usuwanie niewymierności",
             "formulas": [
               {
                 "title": "Różnica kwadratów",
@@ -4412,39 +5049,46 @@
             "exam_trap": "Typowy błąd: Zgubienie minusa przy wyłączaniu z drugiej pary: $-12x + 4 = -4(3x + 1)$ — nawiasy nie pasują do siebie!\n\nPoprawnie: Zawsze dziel z uwzględnieniem znaku: $(+4) : (-4) = -1$, stąd nawias to $(3x - 1)$.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Minus przed nawiasem: Strażnik znaków",
-              "formulaBadge": "-(a - b) = -a + b, \\quad -(2x^2 - 3x + 1) = -2x^2 + 3x - 1",
-              "caption": "Znak minus stojący bezpośrednio przed nawiasem ZMIENIA ZNAK KAŻDEGO SKŁADNIKA wewnątrz nawiasu na przeciwny!",
+              "title": "Rozkład wielomianów: Wyłączanie czynnika i grupowanie w pary",
+              "formulaBadge": "\\begin{aligned} ax + ay &= a(x + y) \\\\ x^2(x - a) - b(x - a) &= (x - a)(x^2 - b) \\end{aligned}",
+              "caption": "Grupowanie wyrazów polega na podziale na dwie drużyny, wyciągnięciu wspólnego czynnika i wyciągnięciu identycznego nawiasu przed całość.",
               "cards": [
                 {
-                  "badge": "Złota reguła CKE",
-                  "title": "Nawias pomocniczy po minusie",
-                  "formula": "A - B = A - [\\text{obliczona zawartość } B]",
-                  "desc": "Najpierw podnieś do kwadratu w bezpiecznym nawiasie kwadratowym, a w osobnym kroku zmień znaki.",
+                  "badge": "Krok 1: Wyłączanie czynnika",
+                  "title": "Wspólny jednomian przed nawias",
+                  "formula": "6x^3 - 9x^2 = 3x^2(2x - 3)",
+                  "desc": "Dla liczb 6 i 9 NWD to 3, a dla $x^3$ i $x^2$ wyłączamy najwyższą możliwą potęgę $x^2$.",
+                  "color": "#38BDF8"
+                },
+                {
+                  "badge": "Krok 2: Grupowanie w pary",
+                  "title": "Wspólny nawias w obu parach",
+                  "formula": "x^3 - 2x^2 - 9x + 18 = (x - 2)(x^2 - 9)",
+                  "desc": "Grupujesz: $x^2(x - 2) - 9(x - 2)$. Wyciągasz wspólny nawias $(x - 2)$ przed nawias z resztą $(x^2 - 9)$.",
                   "color": "#FFB800"
                 },
                 {
-                  "badge": "Przykład z arkusza",
-                  "title": "Redukcja krok po kroku",
-                  "formula": "(x + 2)^2 - (x - 3)^2 = (x^2 + 4x + 4) - [x^2 - 6x + 9] = 10x - 5",
-                  "desc": "Minus przed drugim nawiasem zmienił $-6x$ na $+6x$ oraz $+9$ na $-9$.",
+                  "badge": "Krok 3: Różnica kwadratów",
+                  "title": "Pełny rozkład na czynniki liniowe",
+                  "formula": "(x - 2)(x^2 - 9) = (x - 2)(x - 3)(x + 3)",
+                  "desc": "Nawias kwadratowy $(x^2 - 9)$ rozbijasz ze wzoru $a^2 - b^2$ na dwa nawiasy. Pierwiastki to $x \\in \\{-3, 2, 3\\}$.",
                   "color": "#10B981"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Reguła znaków",
-                  "value": "$-(-b) = +b$",
-                  "color": "#FFB800"
+                  "label": "Podział na drużyny",
+                  "value": "Dwie pary po dwa wyrazy",
+                  "color": "#38BDF8"
                 },
                 {
-                  "label": "Częsty błąd",
-                  "value": "Zmiana znaku tylko pierwszego składnika",
+                  "label": "PUŁAPKA CKE",
+                  "value": "Minus z drugiej pary: $-9(x - 2)$!",
                   "color": "#F43F5E"
                 },
                 {
-                  "label": "Waga na maturze",
-                  "value": "Zadanie otwarte za 2 pkt lub zamknięte za 1 pkt",
+                  "label": "Zadanie za 2 pkt",
+                  "value": "Żelazny pewniak w części otwartej",
                   "color": "#10B981"
                 }
               ]
@@ -4694,7 +5338,9 @@
     },
     {
       "id": "dzial-5",
-      "title": "Dział 1.5: Nierówności liniowe",
+      "title": "Nierówności liniowe",
+      "topic_number": 5,
+      "order": 5,
       "tier": "Tier S",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "3 lekcje (~15 min)",
@@ -4759,40 +5405,47 @@
             "exam_trap": "Typowy błąd: Pozostawienie znaku $\\ge$ po podzieleniu przez $-3$ (zapis $x \\ge -3$).\n\nPoprawnie: Dzielenie przez liczbę ujemną MUSI odwrócić dzióbek na $x \\le -3$.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Rozwiązywanie nierówności liniowych: Podział ról",
-              "formulaBadge": "ax + b < c \\implies ax < c - b",
-              "caption": "Zasada jak w równaniach: wyrażenia z x przenosimy na lewą stronę, liczby na prawą stronę, ZMIENIAJĄC ZNAK przy przenoszeniu.",
+              "title": "Rozwiązywanie nierówności liniowych i złota reguła zwrotu",
+              "formulaBadge": "-2x < 6 \\quad \\xrightarrow{:\\; (-2)} \\quad x > -3",
+              "caption": "Gdy dzielisz lub mnożysz obie strony nierówności przez liczbę ujemną, ZAWSZE natychmiast odwracasz zwrot nierówności na przeciwny!",
               "cards": [
                 {
-                  "badge": "Krok 1: Lewa strona",
-                  "title": "Niewiadome z x",
-                  "formula": "3x - 5x \\le 4 + 6",
-                  "desc": "Wyrażenia z $x$ wędrują na lewo. Przeniesione $5x$ zmienia znak na $-5x$.",
+                  "badge": "Krok 1: Przenoszenie wyrazów",
+                  "title": "Niewiadome na lewo, liczby na prawo",
+                  "formula": "3x - 5x \\le 4 + 6 \\implies -2x \\le 10",
+                  "desc": "Przechodząc przez znak nierówności, zmieniasz znak wyrazu na przeciwny. Zwrot nierówności pozostaje bez zmian.",
                   "color": "#38BDF8"
                 },
                 {
-                  "badge": "Krok 2: Prawa strona",
-                  "title": "Wyrazy wolne (same liczby)",
-                  "formula": "-2x \\le 10",
-                  "desc": "Liczba $-6$ po przejściu na prawą stronę staje się $+6$, dając sumę $10$.",
-                  "color": "#FFB800"
+                  "badge": "Krok 2: ALARM CKE (Dzielenie przez minus)",
+                  "title": "Zwrot znaku natychmiast się obraca",
+                  "formula": "-2x \\le 10 \\quad \\xrightarrow{:\\; (-2)} \\quad x \\ge -5",
+                  "desc": "Dzielenie przez liczbę ujemną $-2$ odwróciło znak $\\le$ na $\\ge$. Wynikiem jest przedział $[-5, +\\infty)$.",
+                  "color": "#F43F5E"
+                },
+                {
+                  "badge": "Dzielenie przez plus",
+                  "title": "Brak zmiany zwrotu",
+                  "formula": "4x < 12 \\quad \\xrightarrow{:\\; 4} \\quad x < 3",
+                  "desc": "Dzielenie przez liczbę dodatnią $+4$ NIE zmienia zwrotu znaku. Znak $<$ pozostaje znakiem $<$.",
+                  "color": "#10B981"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Przenoszenie",
-                  "value": "Zmienia znak wyrazu na przeciwny",
-                  "color": "#FFB800"
+                  "label": "Dzielenie przez minus",
+                  "value": "Znak $<$ staje się $>$, a $\\le$ staje się $\\ge$",
+                  "color": "#F43F5E"
                 },
                 {
-                  "label": "Redukcja wyrazów",
-                  "value": "Sumujesz $x$-y i liczby oddzielnie",
+                  "label": "Dzielenie przez plus",
+                  "value": "Zwrot znaku BEZ ZMIAN",
                   "color": "#10B981"
                 },
                 {
-                  "label": "Złota zasada",
-                  "value": "Przechodzisz przez znak = zmieniasz znak",
-                  "color": "#38BDF8"
+                  "label": "Waga na maturze",
+                  "value": "Zadanie 3 lub 4 arkusza za 1 pkt",
+                  "color": "#FFB800"
                 }
               ]
             },
@@ -5093,40 +5746,47 @@
             "exam_trap": "Typowy błąd: Użycie nawiasu kwadratowego przy symbolu nieskończoności: $(-\\infty, 5]$.\n\nPoprawnie: Nieskończoność nigdy nie jest liczbą, więc nie można jej domknąć — ZAWSZE pisz $(-\\infty$ lub $+\\infty)$.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Złota reguła nierówności CKE: Odwracanie zwrotu znaku",
-              "formulaBadge": "-2x < 6 \\quad \\xrightarrow{:\\; (-2)} \\quad x > -3",
-              "caption": "Dzielenie lub mnożenie nierówności przez liczbę ujemną ZAWSZE ODWRACA ZWROT ZNAKU NIERÓWNOŚCI NA PRZECIWNY (< na >, \\le na \\ge)!",
+              "title": "Ilustracja na osi liczbowej: Kółka, zwroty i nawiasy",
+              "formulaBadge": "x \\in (-\\infty,\\; a) \\quad \\text{vs} \\quad x \\in [a,\\; +\\infty)",
+              "caption": "Kreska pod znakiem (\\le, \\ge) oznacza kółko zamalowane i nawias domknięty. Znak ostry (<, >) oznacza kółko otwarte i nawias okrągły.",
               "cards": [
                 {
-                  "badge": "Przed dzieleniem",
-                  "title": "Współczynnik przy x jest ujemny",
-                  "formula": "-3x \\le 12",
-                  "desc": "Przeszkadza nam liczba $-3$ stojąca przy $x$. Dzielimy obie strony przez $-3$.",
-                  "color": "#F43F5E"
+                  "badge": "Ostre: < oraz >",
+                  "title": "Kółko otwarte ○, nawias okrągły ( )",
+                  "formula": "x > 3 \\implies x \\in (3,\\; +\\infty)",
+                  "desc": "Liczba $3$ NIE należy do zbioru rozwiązań. Na osi rysujemy niezamalowane kółko w punkcie $3$.",
+                  "color": "#38BDF8"
                 },
                 {
-                  "badge": "Po dzieleniu (ALARM CKE)",
-                  "title": "Znak natychmiast obraca zwrot!",
-                  "formula": "x \\ge -4",
-                  "desc": "Znak $\\le$ zmienił się na $\\ge$, a $12 : (-3) = -4$. Zbiór rozwiązań to $\\langle -4, +\\infty)$.",
+                  "badge": "Słabe: ≤ oraz ≥",
+                  "title": "Kółko zamalowane ●, nawias domknięty [ ]",
+                  "formula": "x \\le -2 \\implies x \\in (-\\infty,\\; -2]",
+                  "desc": "Liczba $-2$ NALEŻY do zbioru rozwiązań. Na osi stawiamy zamalowane kółko i domykamy nawias kwadratowy.",
                   "color": "#10B981"
+                },
+                {
+                  "badge": "Nieskończoność",
+                  "title": "Nawias przy ±∞ ZAWSZE okrągły",
+                  "formula": "(-\\infty,\\; b] \\quad \\text{oraz} \\quad [a,\\; +\\infty)",
+                  "desc": "Nieskończoność nie jest liczbą, więc nigdy nie domykamy przy niej nawiasu kwadratowego!",
+                  "color": "#FFB800"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Dzielenie przez minus",
-                  "value": "Znak $<$ staje się $>$, znak $\\le$ staje się $\\ge$",
-                  "color": "#FFB800"
-                },
-                {
-                  "label": "Dzielenie przez plus",
-                  "value": "Zwrot znaku BEZ ZMIAN",
+                  "label": "Kółko otwarte ○",
+                  "value": "Znak $<$ lub $>$, nawias $( )$",
                   "color": "#38BDF8"
                 },
                 {
-                  "label": "Haczyk CKE",
-                  "value": "Pojawia się w 100% arkuszy maturalnych",
-                  "color": "#F43F5E"
+                  "label": "Kółko zamalowane ●",
+                  "value": "Znak $\\le$ lub $\\ge$, nawias $[ ]$",
+                  "color": "#10B981"
+                },
+                {
+                  "label": "Zwrot w prawo",
+                  "value": "Liczby większe: ku $+\\infty$",
+                  "color": "#FFB800"
                 }
               ]
             },
@@ -5426,396 +6086,48 @@
             },
             "exam_trap": "Typowy błąd: Wskazanie liczby brzegowej przy nierówności ostrej, np. dla $x < 4$ podanie odpowiedzi 4.\n\nPoprawnie: Dla $x < 4$ liczba 4 NIE spełnia nierówności ($4 < 4$ to fałsz). Największą całkowitą jest 3.",
             "diagram": {
-              "type": "GEOMETRY_2D",
-              "title": "Symbole nierówności, kółka i nawiasy: \"Z polskiego na nasze\"",
-              "formulaBadge": ">,\\; <,\\; \\ge,\\; \\le",
-              "caption": "Kreska pod znakiem nierówności (\\ge, \\le) oznacza, że punkt brzegowy NALEŻY do zbioru (kółko zamalowane, nawias ostry \\langle \\rangle).",
-              "width": 520,
-              "height": 270,
-              "polygons": [
+              "type": "INFOGRAPHIC",
+              "title": "Układ nierówności liniowych: Część wspólna i liczby całkowite",
+              "formulaBadge": "\\begin{cases} x \\ge -1 \\\\ x < 4 \\end{cases} \\implies x \\in [-1,\\; 4)",
+              "caption": "Klamra układu oznacza część wspólną (przecięcie zbiorów). Szukamy liczb, które spełniają OBA warunki jednocześnie.",
+              "cards": [
                 {
-                  "points": [
-                    [
-                      24.0,
-                      55
-                    ],
-                    [
-                      131.5,
-                      55
-                    ],
-                    [
-                      131.5,
-                      200
-                    ],
-                    [
-                      24.0,
-                      200
-                    ]
-                  ],
-                  "fill": "rgba(14, 21, 34, 0.95)",
-                  "stroke": "#38BDF8",
-                  "strokeWidth": 1.8
+                  "badge": "Krok 1: Część wspólna",
+                  "title": "Obszar podwójnego kreskowania",
+                  "formula": "[-1, +\\infty) \\cap (-\\infty, 4) = [-1,\\; 4)",
+                  "desc": "Nakładasz oba przedziały na jedną oś liczbową. Zbiorem rozwiązań jest pasmo, na którym leżą oba kolory.",
+                  "color": "#FFB800"
                 },
                 {
-                  "points": [
-                    [
-                      24.0,
-                      55
-                    ],
-                    [
-                      131.5,
-                      55
-                    ],
-                    [
-                      131.5,
-                      101
-                    ],
-                    [
-                      24.0,
-                      101
-                    ]
-                  ],
-                  "fill": "#38BDF818",
-                  "stroke": "#38BDF8",
-                  "strokeWidth": 1
+                  "badge": "Krok 2: Liczby całkowite",
+                  "title": "Wypisywanie liczb ze zbioru",
+                  "formula": "x \\in \\{-1,\\; 0,\\; 1,\\; 2,\\; 3\\} \\implies 5 \\text{ liczb}",
+                  "desc": "Punkt $-1$ należy (zamknięty), a punkt $4$ NIE należy (otwarty). Łącznie jest dokładnie $5$ liczb całkowitych.",
+                  "color": "#10B981"
                 },
                 {
-                  "points": [
-                    [
-                      145.5,
-                      55
-                    ],
-                    [
-                      253.0,
-                      55
-                    ],
-                    [
-                      253.0,
-                      200
-                    ],
-                    [
-                      145.5,
-                      200
-                    ]
-                  ],
-                  "fill": "rgba(14, 21, 34, 0.95)",
-                  "stroke": "#c084fc",
-                  "strokeWidth": 1.8
-                },
-                {
-                  "points": [
-                    [
-                      145.5,
-                      55
-                    ],
-                    [
-                      253.0,
-                      55
-                    ],
-                    [
-                      253.0,
-                      101
-                    ],
-                    [
-                      145.5,
-                      101
-                    ]
-                  ],
-                  "fill": "#c084fc18",
-                  "stroke": "#c084fc",
-                  "strokeWidth": 1
-                },
-                {
-                  "points": [
-                    [
-                      267.0,
-                      55
-                    ],
-                    [
-                      374.5,
-                      55
-                    ],
-                    [
-                      374.5,
-                      200
-                    ],
-                    [
-                      267.0,
-                      200
-                    ]
-                  ],
-                  "fill": "rgba(14, 21, 34, 0.95)",
-                  "stroke": "#10B981",
-                  "strokeWidth": 1.8
-                },
-                {
-                  "points": [
-                    [
-                      267.0,
-                      55
-                    ],
-                    [
-                      374.5,
-                      55
-                    ],
-                    [
-                      374.5,
-                      101
-                    ],
-                    [
-                      267.0,
-                      101
-                    ]
-                  ],
-                  "fill": "#10B98118",
-                  "stroke": "#10B981",
-                  "strokeWidth": 1
-                },
-                {
-                  "points": [
-                    [
-                      388.5,
-                      55
-                    ],
-                    [
-                      496.0,
-                      55
-                    ],
-                    [
-                      496.0,
-                      200
-                    ],
-                    [
-                      388.5,
-                      200
-                    ]
-                  ],
-                  "fill": "rgba(14, 21, 34, 0.95)",
-                  "stroke": "#FFB800",
-                  "strokeWidth": 1.8
-                },
-                {
-                  "points": [
-                    [
-                      388.5,
-                      55
-                    ],
-                    [
-                      496.0,
-                      55
-                    ],
-                    [
-                      496.0,
-                      101
-                    ],
-                    [
-                      388.5,
-                      101
-                    ]
-                  ],
-                  "fill": "#FFB80018",
-                  "stroke": "#FFB800",
-                  "strokeWidth": 1
-                }
-              ],
-              "segments": [],
-              "labels": [
-                {
-                  "x": 77.75,
-                  "y": 78,
-                  "text": ">",
-                  "color": "#38BDF8",
-                  "fontSize": 22,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 77.75,
-                  "y": 115,
-                  "text": "Większe niż",
-                  "color": "#DFE2F1",
-                  "fontSize": 11,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 34.0,
-                  "y": 137,
-                  "text": "○ Kółko otwarte",
-                  "color": "#38BDF8",
-                  "fontSize": 10,
-                  "fontWeight": "bold",
-                  "anchor": "start"
-                },
-                {
-                  "x": 34.0,
-                  "y": 157,
-                  "text": "⟶ W prawo do +∞",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
-                },
-                {
-                  "x": 34.0,
-                  "y": 177,
-                  "text": "Nawias: (a, +∞)",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
-                },
-                {
-                  "x": 199.25,
-                  "y": 78,
-                  "text": "<",
-                  "color": "#c084fc",
-                  "fontSize": 22,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 199.25,
-                  "y": 115,
-                  "text": "Mniejsze niż",
-                  "color": "#DFE2F1",
-                  "fontSize": 11,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 155.5,
-                  "y": 137,
-                  "text": "○ Kółko otwarte",
-                  "color": "#c084fc",
-                  "fontSize": 10,
-                  "fontWeight": "bold",
-                  "anchor": "start"
-                },
-                {
-                  "x": 155.5,
-                  "y": 157,
-                  "text": "⟵ W lewo do -∞",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
-                },
-                {
-                  "x": 155.5,
-                  "y": 177,
-                  "text": "Nawias: (-∞, a)",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
-                },
-                {
-                  "x": 320.75,
-                  "y": 78,
-                  "text": "≥",
-                  "color": "#10B981",
-                  "fontSize": 22,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 320.75,
-                  "y": 115,
-                  "text": "Większe lub równe",
-                  "color": "#DFE2F1",
-                  "fontSize": 11,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 277.0,
-                  "y": 137,
-                  "text": "● Zamalowane!",
-                  "color": "#10B981",
-                  "fontSize": 10,
-                  "fontWeight": "bold",
-                  "anchor": "start"
-                },
-                {
-                  "x": 277.0,
-                  "y": 157,
-                  "text": "⟶ W prawo do +∞",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
-                },
-                {
-                  "x": 277.0,
-                  "y": 177,
-                  "text": "Nawias: [a, +∞)",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
-                },
-                {
-                  "x": 442.25,
-                  "y": 78,
-                  "text": "≤",
-                  "color": "#FFB800",
-                  "fontSize": 22,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 442.25,
-                  "y": 115,
-                  "text": "Mniejsze lub równe",
-                  "color": "#DFE2F1",
-                  "fontSize": 11,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 398.5,
-                  "y": 137,
-                  "text": "● Zamalowane!",
-                  "color": "#FFB800",
-                  "fontSize": 10,
-                  "fontWeight": "bold",
-                  "anchor": "start"
-                },
-                {
-                  "x": 398.5,
-                  "y": 157,
-                  "text": "⟵ W lewo do -∞",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
-                },
-                {
-                  "x": 398.5,
-                  "y": 177,
-                  "text": "Nawias: (-∞, a]",
-                  "color": "#94A3B8",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "anchor": "start"
+                  "badge": "PUŁAPKA CKE: Układ sprzeczny",
+                  "title": "Brak części wspólnej",
+                  "formula": "x < -2 \\quad \\text{i} \\quad x > 3 \\implies \\emptyset",
+                  "desc": "Gdy przedziały biegną w przeciwne strony i nie mają wspólnych punktów, układ nie ma rozwiązań.",
+                  "color": "#F43F5E"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Ostre: > oraz <",
-                  "value": "Kółko otwarte ○, nawias ( )",
+                  "label": "Część wspólna $\\cap$",
+                  "value": "Warunki połączone spójnikiem ORAZ",
+                  "color": "#FFB800"
+                },
+                {
+                  "label": "Liczba zero",
+                  "value": "0 jest liczbą całkowitą!",
                   "color": "#38BDF8"
                 },
                 {
-                  "label": "Słabe: ≥ oraz ≤",
-                  "value": "Kółko zamalowane ●, nawias [ ]",
+                  "label": "Pewniak CKE",
+                  "value": "Zadanie o liczbę rozwiązań całkowitych",
                   "color": "#10B981"
-                },
-                {
-                  "label": "PUŁAPKA CKE: Mnożenie przez ujemną",
-                  "value": "ODWRACA ZWROT ZNAKU! (np. -2x < 6 ⟹ x > -3)",
-                  "color": "#F43F5E"
                 }
               ]
             },
@@ -6064,7 +6376,9 @@
     },
     {
       "id": "dzial-6",
-      "title": "Dział 1.6: Równania w postaci iloczynowej",
+      "title": "Równania w postaci iloczynowej",
+      "topic_number": 6,
+      "order": 6,
       "tier": "Tier S+",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "3 lekcje (~15 min)",
@@ -6465,19 +6779,19 @@
               "type": "INFOGRAPHIC",
               "title": "Równania wielomianowe: Rozbijanie na nawiasy liniowe",
               "formulaBadge": "(x - 3)(2x + 1)(x^2 - 9) = 0",
-              "caption": "Rozkładamy nawiasy wyższego stopnia za pomocą różnicy kwadratów $x^2 - 9 = (x - 3)(x + 3)$ i zliczamy unikalne pierwiastki.",
+              "caption": "Rozkładamy nawiasy wyższego stopnia za pomocą różnicy kwadratów x^2 - 9 = (x - 3)(x + 3) i zliczamy unikalne pierwiastki.",
               "cards": [
                 {
                   "badge": "Różnica kwadratów",
                   "title": "Rozbicie nawiasu kwadratowego",
-                  "formula": "x^2 - 9 = 0 \\implies x = 3 \\quad \\lor \\quad x = -3",
+                  "formula": "x^2 - 9 = 0 \\implies x = 3 \\quad \\text{lub} \\quad x = -3",
                   "desc": "Pamiętaj o dwóch znakach: $x = \\pm 3$.",
                   "color": "#FFB800"
                 },
                 {
                   "badge": "Zliczanie rozwiązań CKE",
                   "title": "Uwaga na pierwiastki wielokrotne!",
-                  "formula": "x \\in \\left\\{-3, -\\frac{1}{2}, 3\\right\\}",
+                  "formula": "x \\in \\left\\{-3,\\; -\\frac{1}{2},\\; 3\\right\\}",
                   "desc": "Liczba $3$ pojawia się dwukrotnie, ale w pytaniu o liczbę różnych rozwiązań liczymy ją tylko raz (3 różne pierwiastki).",
                   "color": "#10B981"
                 }
@@ -6799,19 +7113,19 @@
               "type": "INFOGRAPHIC",
               "title": "Wyłączanie wspólnego czynnika: Odzyskiwanie postaci iloczynowej",
               "formulaBadge": "ax^2 + bx = x(ax + b) = 0",
-              "caption": "Gdy równanie wielomianowe nie ma wyrazu wolnego, natychmiast wyciągamy $x$ (lub $ax$) przed nawias! NIGDY nie dziel przez $x$.",
+              "caption": "Gdy równanie wielomianowe nie ma wyrazu wolnego, natychmiast wyciągamy x przed nawias! NIGDY nie dziel przez x.",
               "cards": [
                 {
                   "badge": "Wyciągnięcie przed nawias",
                   "title": "Rozbicie na iloczyn",
                   "formula": "3x^3 - 12x = 3x(x^2 - 4) = 0",
-                  "desc": "Wyciągasz wspólny czynnik $3x$. W nawiasie powstaje różnica kwadratów.",
+                  "desc": "Wyciągasz wspólny czynnik $3x$. W nawiasie powstaje różnica kwadratów: $3x(x - 2)(x + 2) = 0$.",
                   "color": "#FFB800"
                 },
                 {
                   "badge": "Kardynalny zakaz",
                   "title": "Nigdy nie dziel przez x!",
-                  "formula": "x^2 = 5x \\implies x(x - 5) = 0 \\implies x = 0 \\;\\lor\\; x = 5",
+                  "formula": "x^2 = 5x \\implies x(x - 5) = 0 \\implies x = 0 \\quad \\text{lub} \\quad x = 5",
                   "desc": "Dzieląc obie strony przez $x$, bezpowrotnie tracisz kluczowe rozwiązanie $x = 0$!",
                   "color": "#F43F5E"
                 }
@@ -7079,7 +7393,9 @@
     },
     {
       "id": "dzial-7",
-      "title": "Dział 1.7: Równania i wyrażenia wymierne",
+      "title": "Równania i wyrażenia wymierne",
+      "topic_number": 7,
+      "order": 7,
       "tier": "Tier S+",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "3 lekcje (~15 min)",
@@ -7088,12 +7404,12 @@
         {
           "id": "lesson-7-1",
           "topic_id": "dzial-7",
-          "title": "Dziedzina wyrażenia wymiernego – żelazny warunek mianownik != 0",
+          "title": "Dziedzina wyrażenia wymiernego – warunek niezerowego mianownika",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Dziedzina wyrażenia wymiernego – żelazny warunek mianownik != 0",
+            "title": "Dziedzina wyrażenia wymiernego – warunek niezerowego mianownika",
             "concept_essence": "W matematyce nie wolno dzielić przez zero. Dlatego gdy widzisz ułamek algebraiczny, Twoim pierwszym odruchem jest zapisanie warunku: mianownik $\\ne 0$. Wyznaczasz liczby zerujące mianownik i wyrzucasz je ze zbioru liczb rzeczywistych za pomocą ukośnika: $D = \\mathbb{R} \\setminus \\{x_1, x_2\\}$. Pamiętaj: dziedzinę wyznaczasz ZAWSZE na samym początku, zanim cokolwiek skrócić!",
             "matura_context": "Wyznaczanie dziedziny ułamka algebraicznego to samodzielne zadanie za 1 pkt lub obowiązkowy warunek zaliczenia zadania za 2 pkt.",
             "core_formulas": [
@@ -7158,7 +7474,7 @@
                 {
                   "badge": "Zapis dziedziny CKE",
                   "title": "Zbiór liczb dopuszczalnych",
-                  "formula": "D = \\mathbb{R} \\setminus \\{-4, 4\\}",
+                  "formula": "D = \\mathbb{R} \\setminus \\{-4,\\; 4\\}",
                   "desc": "Dziedziną są wszystkie liczby rzeczywiste z wyjątkiem miejsc zerowych mianownika.",
                   "color": "#10B981"
                 }
@@ -7186,7 +7502,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Dziedzina wyrażenia wymiernego – żelazny warunek mianownik != 0",
+            "title": "Dziedzina wyrażenia wymiernego – warunek niezerowego mianownika",
             "formulas": [
               {
                 "title": "Warunek istnienia ułamka algebraicznego",
@@ -7422,12 +7738,12 @@
         {
           "id": "lesson-7-2",
           "topic_id": "dzial-7",
-          "title": "Rozwiązywanie równań L(x)/M(x) = 0 i eliminacja pierwiastków obcych",
+          "title": "Rozwiązywanie równań wymiernych i eliminacja pierwiastków obcych",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Rozwiązywanie równań L(x)/M(x) = 0 i eliminacja pierwiastków obcych",
+            "title": "Rozwiązywanie równań wymiernych i eliminacja pierwiastków obcych",
             "concept_essence": "Równanie w postaci ułamka przyrównanego do zera rozwiązuje się w 3 krokach: 1) KROK 1: Dziedzina — sprawdzasz mianownik $M(x) \\ne 0$ i wykluczasz niebezpieczne liczby. 2) KROK 2: Licznik do zera — ułamek znika, rozwiązujesz $L(x) = 0$ i otrzymujesz kandydatów na pierwiastki. 3) KROK 3: Sito dziedziny — sprawdzasz każdego kandydata. Jeśli którykolwiek zerował mianownik, bezwzględnie go skreślasz (to tzw. pierwiastek obcy!).",
             "matura_context": "Żelazny pewniak na każdej maturze (Maj 2024 zad. 8, Czerwiec 2023 zad. 6). Zawsze jeden z pierwiastków licznika odpada!",
             "core_formulas": [
@@ -7478,39 +7794,39 @@
             "exam_trap": "Typowy błąd: Podanie obu liczb z licznika jako odpowiedzi bez sprawdzenia mianownika.\n\nPoprawnie: Zawsze podstaw otrzymane wyniki do mianownika. Jeśli mianownik da 0, skreśl ten wynik natychmiast!",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Mnożenie \"na krzyż\": Rozwiązywanie proporcji",
-              "formulaBadge": "\\frac{A}{B} = \\frac{C}{D} \\implies A \\cdot D = B \\cdot C \\quad (B, D \\neq 0)",
-              "caption": "Mnożymy wyrażenia po przekątnych. Pamiętaj o BEZWZGLĘDNYM stawianiu nawiasów przy wielomianach!",
+              "title": "Sitko dziedziny: Odrzucanie pozornych pierwiastków",
+              "formulaBadge": "\\frac{x^2 - 4}{x - 2} = 0 \\implies x = -2 \\quad (x = 2 \\notin D)",
+              "caption": "Ułamek jest równy zero tylko wtedy, gdy licznik jest zerem ORAZ mianownik jest różny od zera!",
               "cards": [
                 {
-                  "badge": "Metoda proporcji",
-                  "title": "Wymnożenie po przekątnych",
-                  "formula": "\\frac{x + 1}{x - 2} = \\frac{3}{1} \\implies 1 \\cdot (x + 1) = 3 \\cdot (x - 2)",
-                  "desc": "Liczbę $3$ zapisujesz jako $\\frac{3}{1}$ i mnożysz po przekątnej.",
-                  "color": "#FFB800"
+                  "badge": "Kandydaci z licznika",
+                  "title": "Zerowanie góry ułamka",
+                  "formula": "x^2 - 4 = 0 \\implies x = 2 \\quad \\text{lub} \\quad x = -2",
+                  "desc": "Licznik wskazuje dwóch potencjalnych kandydatów na rozwiązanie.",
+                  "color": "#38BDF8"
                 },
                 {
-                  "badge": "Równanie liniowe",
-                  "title": "Rozwiązanie i sprawdzenie dziedziny",
-                  "formula": "x + 1 = 3x - 6 \\implies -2x = -7 \\implies x = 3{,}5",
-                  "desc": "Sprawdzasz dziedzinę: $x - 2 \\neq 0 \\implies x \\neq 2$. Ponieważ $3{,}5 \\in D$, jest to poprawne rozwiązanie.",
-                  "color": "#10B981"
+                  "badge": "Sitko dziedziny (ALARM CKE)",
+                  "title": "Odrzucenie pozornego pierwiastka",
+                  "formula": "x - 2 \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{2\\} \\implies x = -2",
+                  "desc": "Liczba $x = 2$ zeruje mianownik, więc natychmiast ją ODRZUCASZ! Jedyne rozwiązanie to $x = -2$.",
+                  "color": "#F43F5E"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Nawiasy",
-                  "value": "Zawsze zapisuj $3 \\cdot (x - 2) = 3x - 6$",
+                  "label": "Pytanie CKE",
+                  "value": "\"Ile rozwiązań ma równanie?\" Odpowiedź: 1",
                   "color": "#FFB800"
                 },
                 {
-                  "label": "Dziedzina",
-                  "value": "Sprawdź czy wynik nie zeruje mianownika",
+                  "label": "Najczęstsza pomyłka",
+                  "value": "Zaznaczenie 2 rozwiązań (strata punktu)",
                   "color": "#F43F5E"
                 },
                 {
-                  "label": "Czas rozwiązania",
-                  "value": "Ok. 1 minuty za 1 punkt",
+                  "label": "Złota zasada",
+                  "value": "Liczba poza dziedziną NIGDY nie jest rozwiązaniem",
                   "color": "#10B981"
                 }
               ]
@@ -7520,7 +7836,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Rozwiązywanie równań L(x)/M(x) = 0 i eliminacja pierwiastków obcych",
+            "title": "Rozwiązywanie równań wymiernych i eliminacja pierwiastków obcych",
             "formulas": [
               {
                 "title": "Rozwiązywanie równania wymiernego",
@@ -7812,39 +8128,39 @@
             "exam_trap": "Typowy błąd: Mnożenie bez nawiasów: $x + 3 \\cdot 2x + 1$ zamiast $(x + 3)(2x + 1)$.\n\nPoprawnie: Kreska ułamkowa działa jak nawias — przy mnożeniu na krzyż ZAWSZE otaczaj liczniki i mianowniki nawiasami.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Sitko dziedziny: Odrzucanie pozornych pierwiastków",
-              "formulaBadge": "\\frac{x^2 - 4}{x - 2} = 0 \\implies x = -2 \\quad (x = 2 \\notin D)",
-              "caption": "Równanie wymierne ma postać ułamka = 0. Licznik musi być zerem, ale rozwiązanie NIE MOŻE zerować mianownika!",
+              "title": "Mnożenie \"na krzyż\": Rozwiązywanie proporcji",
+              "formulaBadge": "\\frac{A}{B} = \\frac{C}{D} \\implies A \\cdot D = B \\cdot C \\quad (B, D \\neq 0)",
+              "caption": "Mnożymy wyrażenia po przekątnych. Pamiętaj o BEZWZGLĘDNYM stawianiu nawiasów przy wielomianach!",
               "cards": [
                 {
-                  "badge": "Kandydaci z licznika",
-                  "title": "Zerowanie góry ułamka",
-                  "formula": "x^2 - 4 = 0 \\implies x = 2 \\quad \\lor \\quad x = -2",
-                  "desc": "Licznik wskazuje dwóch potencjalnych kandydatów na rozwiązanie.",
-                  "color": "#38BDF8"
+                  "badge": "Metoda proporcji",
+                  "title": "Wymnożenie po przekątnych",
+                  "formula": "\\frac{x + 1}{x - 2} = \\frac{3}{1} \\implies 1 \\cdot (x + 1) = 3 \\cdot (x - 2)",
+                  "desc": "Liczbę $3$ zapisujesz jako $\\frac{3}{1}$ i mnożysz po przekątnej.",
+                  "color": "#FFB800"
                 },
                 {
-                  "badge": "Sitko dziedziny (ALARM CKE)",
-                  "title": "Odrzucenie pozornego pierwiastka",
-                  "formula": "x - 2 \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{2\\} \\implies x = -2",
-                  "desc": "Liczba $x = 2$ zeruje mianownik, więc natychmiast ją ODRZUCASZ! Jedyne rozwiązanie to $x = -2$.",
-                  "color": "#F43F5E"
+                  "badge": "Równanie liniowe",
+                  "title": "Rozwiązanie i sprawdzenie dziedziny",
+                  "formula": "x + 1 = 3x - 6 \\implies -2x = -7 \\implies x = 3{,}5",
+                  "desc": "Sprawdzasz dziedzinę: $x - 2 \\neq 0 \\implies x \\neq 2$. Ponieważ $3{,}5 \\in D$, jest to poprawne rozwiązanie.",
+                  "color": "#10B981"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Pytanie CKE",
-                  "value": "\"Ile rozwiązań ma równanie?\" Odpowiedź: 1",
+                  "label": "Nawiasy",
+                  "value": "Zawsze zapisuj $3 \\cdot (x - 2) = 3x - 6$",
                   "color": "#FFB800"
                 },
                 {
-                  "label": "Najczęstsza pomyłka",
-                  "value": "Zaznaczenie 2 rozwiązań (strata punktu)",
+                  "label": "Dziedzina",
+                  "value": "Sprawdź czy wynik nie zeruje mianownika",
                   "color": "#F43F5E"
                 },
                 {
-                  "label": "Złota zasada",
-                  "value": "Liczba poza dziedziną NIGDY nie jest rozwiązaniem",
+                  "label": "Czas rozwiązania",
+                  "value": "Ok. 1 minuty za 1 punkt",
                   "color": "#10B981"
                 }
               ]
@@ -8094,7 +8410,9 @@
     },
     {
       "id": "dzial-8",
-      "title": "Dział 1.8: Nierówności kwadratowe",
+      "title": "Nierówności kwadratowe",
+      "topic_number": 8,
+      "order": 8,
       "tier": "Tier S+",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "4 lekcje (~20 min)",
@@ -8496,12 +8814,12 @@
         {
           "id": "lesson-8-2",
           "topic_id": "dzial-8",
-          "title": "Szkicowanie paraboli i odczytywanie przedziałów (> 0, <= 0)",
+          "title": "Szkicowanie paraboli i odczytywanie przedziałów rozwiązań",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Szkicowanie paraboli i odczytywanie przedziałów (> 0, <= 0)",
+            "title": "Szkicowanie paraboli i odczytywanie przedziałów rozwiązań",
             "concept_essence": "Rozwiązanie nierówności kwadratowej wymaga dyscypliny w 3 krokach: 1) Wyznaczasz miejsca zerowe ($x_1, x_2$). 2) Rysujesz szkic paraboli: jeśli $a > 0$, ramiona idą w górę (uśmiech); jeśli $a < 0$, ramiona idą w dół (smutek). 3) Odczytujesz przedział: gdy pytają o $> 0$, patrzysz na łuki nad osią; gdy pytają o $< 0$, patrzysz pod oś. Nigdy nie zgaduj przedziału bez 2-sekundowego szkicu na osi!",
             "matura_context": "Żelazny pewniak matury podstawowej — zadanie otwarte za 2 punkty lub zadanie testowe za 1 punkt.",
             "core_formulas": [
@@ -8552,9 +8870,9 @@
             "exam_trap": "Typowy błąd: Zgadywanie przedziału bez szkicu i pomylenie wnętrza ze skrzydłami zewnętrznymi.\n\nPoprawnie: Zawsze narysuj poziomą kreskę osi $OX$ i łuk paraboli — to zajmuje 2 sekundy i eliminuje 100% pomyłek.",
             "diagram": {
               "type": "GEOMETRY_2D",
-              "title": "Szkic paraboli: Znak współczynnika a",
-              "formulaBadge": "\\begin{cases} a > 0 \\implies \\text{ramiona w górę } (\\cup) \\\\[2pt] a < 0 \\implies \\text{ramiona w dół } (\\cap) \\end{cases}",
-              "caption": "O zwrocie ramion paraboli decyduje WYŁĄCZNIE znak współczynnika $a$ stojącego przy $x^2$! Delta decyduje tylko o liczbie punktów przecięcia z osią $OX$.",
+              "title": "Szkic paraboli i odczyt stref nierówności (+ oraz -)",
+              "formulaBadge": "\\begin{cases} a > 0 \\implies \\text{ramiona w górę } (\\cup) \\\\ a < 0 \\implies \\text{ramiona w dół } (\\cap) \\end{cases}",
+              "caption": "Kierunek ramion zależy od współczynnika a. Wartości dodatnie (+) leżą NAD osią OX, ujemne (-) POD osią OX.",
               "width": 520,
               "height": 270,
               "grid": {
@@ -8580,11 +8898,11 @@
               "segments": [
                 {
                   "from": [
-                    30,
+                    40,
                     160
                   ],
                   "to": [
-                    490,
+                    440,
                     160
                   ],
                   "color": "#64748B",
@@ -8593,31 +8911,48 @@
               ],
               "curves": [
                 {
-                  "path": "M 60 70 Q 150 240 240 70",
-                  "color": "#10B981",
-                  "strokeWidth": 3
-                },
-                {
-                  "path": "M 280 230 Q 370 60 460 230",
-                  "color": "#F43F5E",
-                  "strokeWidth": 3
+                  "path": "M 60 70 Q 200 250 340 70",
+                  "color": "#FFB800",
+                  "strokeWidth": 2.5
                 }
               ],
-              "points": [],
+              "points": [
+                {
+                  "x": 115,
+                  "y": 160,
+                  "color": "#10B981",
+                  "label": "x₁"
+                },
+                {
+                  "x": 285,
+                  "y": 160,
+                  "color": "#10B981",
+                  "label": "x₂"
+                }
+              ],
               "labels": [
                 {
-                  "x": 150,
-                  "y": 255,
-                  "text": "a > 0: Ramiona w górę (Uśmiechnięta)",
+                  "x": 80,
+                  "y": 120,
+                  "text": "+ (nad osią)",
                   "color": "#10B981",
                   "fontSize": 12,
                   "fontWeight": "bold",
                   "anchor": "middle"
                 },
                 {
-                  "x": 370,
-                  "y": 255,
-                  "text": "a < 0: Ramiona w dół (Smutna)",
+                  "x": 320,
+                  "y": 120,
+                  "text": "+ (nad osią)",
+                  "color": "#10B981",
+                  "fontSize": 12,
+                  "fontWeight": "bold",
+                  "anchor": "middle"
+                },
+                {
+                  "x": 200,
+                  "y": 200,
+                  "text": "- (pod osią)",
                   "color": "#F43F5E",
                   "fontSize": 12,
                   "fontWeight": "bold",
@@ -8630,18 +8965,18 @@
               "circles": [],
               "metrics": [
                 {
-                  "label": "$a > 0$",
-                  "value": "Ramiona w górę: minimum w wierzchołku",
+                  "label": "Nierówność $> 0$",
+                  "value": "Suma przedziałów: $(-\\infty, x_1) \\cup (x_2, +\\infty)$",
                   "color": "#10B981"
                 },
                 {
-                  "label": "$a < 0$",
-                  "value": "Ramiona w dół: maksimum w wierzchołku",
+                  "label": "Nierówność $< 0$",
+                  "value": "Przedział wewnętrzny: $(x_1, x_2)$",
                   "color": "#F43F5E"
                 },
                 {
-                  "label": "Pewniak CKE",
-                  "value": "Kierunek ramion decyduje o przedziale",
+                  "label": "Znak $\\ge$ lub $\\le$",
+                  "value": "Nawiasy domknięte $[ ]$ przy liczbach!",
                   "color": "#FFB800"
                 }
               ]
@@ -8651,7 +8986,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Szkicowanie paraboli i odczytywanie przedziałów (> 0, <= 0)",
+            "title": "Szkicowanie paraboli i odczytywanie przedziałów rozwiązań",
             "formulas": [
               {
                 "title": "Nierówność z ramionami w górę (a > 0)",
@@ -8942,115 +9277,41 @@
             },
             "exam_trap": "Typowy błąd: Dzielenie nierówności przez $x$ i utrata rozwiązania $x = 0$.\n\nPoprawnie: Nigdy nie dziel nierówności przez niewiadomą $x$, bo nie znasz jej znaku! Zawsze wyłączaj przed nawias.",
             "diagram": {
-              "type": "GEOMETRY_2D",
-              "title": "Odczyt stref nierówności: Wartości dodatnie (+) i ujemne (-)",
-              "formulaBadge": "\\begin{cases} f(x) > 0 \\implies \\text{wykres NAD osią } OX \\; (+) \\\\[2pt] f(x) < 0 \\implies \\text{wykres POD osią } OX \\; (-) \\end{cases}",
-              "caption": "Wartości funkcji to wysokość wykresu ($y$). Nad osią $OX$ funkcja przyjmuje wartości dodatnie, pod osią wartości ujemne.",
-              "width": 520,
-              "height": 270,
-              "grid": {
-                "xLines": [
-                  80,
-                  140,
-                  200,
-                  260,
-                  320,
-                  380,
-                  440
-                ],
-                "yLines": [
-                  40,
-                  80,
-                  120,
-                  160,
-                  200,
-                  240
-                ],
-                "color": "rgba(148, 163, 184, 0.10)"
-              },
-              "segments": [
+              "type": "INFOGRAPHIC",
+              "title": "Nierówności kwadratowe niepełne: Błyskawiczna metoda bez delty",
+              "formulaBadge": "x(ax + b) \\ge 0 \\quad \\text{oraz} \\quad x^2 - c \\ge 0 \\implies (x - \\sqrt{c})(x + \\sqrt{c}) \\ge 0",
+              "caption": "Nie trać czasu na deltę, gdy brakuje wyrazu wolnego c lub środkowego b! Zastosuj wyciąganie x lub różnicę kwadratów.",
+              "cards": [
                 {
-                  "from": [
-                    40,
-                    160
-                  ],
-                  "to": [
-                    440,
-                    160
-                  ],
-                  "color": "#64748B",
-                  "strokeWidth": 2
-                }
-              ],
-              "curves": [
-                {
-                  "path": "M 60 70 Q 200 250 340 70",
-                  "color": "#FFB800",
-                  "strokeWidth": 2.5
-                }
-              ],
-              "points": [
-                {
-                  "x": 115,
-                  "y": 160,
-                  "color": "#10B981",
-                  "label": "x₁"
+                  "badge": "Przypadek 1: Brak c (c = 0)",
+                  "title": "Wyciągnij x przed nawias",
+                  "formula": "x^2 - 6x \\ge 0 \\implies x(x - 6) \\ge 0",
+                  "desc": "Miejsca zerowe to natychmiast $x_1 = 0$ oraz $x_2 = 6$. Czas rozwiązania: 10 sekund.",
+                  "color": "#38BDF8"
                 },
                 {
-                  "x": 285,
-                  "y": 160,
-                  "color": "#10B981",
-                  "label": "x₂"
+                  "badge": "Przypadek 2: Brak b (b = 0)",
+                  "title": "Różnica kwadratów",
+                  "formula": "x^2 - 9 < 0 \\implies (x - 3)(x + 3) < 0",
+                  "desc": "Miejsca zerowe to $x_1 = -3$ oraz $x_2 = 3$. Ramiona w górę, więc rozwiązaniem jest przedział $(-3, 3)$.",
+                  "color": "#10B981"
                 }
               ],
-              "labels": [
-                {
-                  "x": 80,
-                  "y": 120,
-                  "text": "+ (nad osią)",
-                  "color": "#10B981",
-                  "fontSize": 12,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 320,
-                  "y": 120,
-                  "text": "+ (nad osią)",
-                  "color": "#10B981",
-                  "fontSize": 12,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                },
-                {
-                  "x": 200,
-                  "y": 200,
-                  "text": "- (pod osią)",
-                  "color": "#F43F5E",
-                  "fontSize": 12,
-                  "fontWeight": "bold",
-                  "anchor": "middle"
-                }
-              ],
-              "ticks": [],
-              "arcs": [],
-              "polygons": [],
-              "circles": [],
               "metrics": [
                 {
-                  "label": "Nierówność $> 0$",
-                  "value": "Suma przedziałów: $(-\\infty, x_1) \\cup (x_2, +\\infty)$",
-                  "color": "#10B981"
+                  "label": "Oszczędność czasu",
+                  "value": "Zrobione w 20 sekund bez liczenia $\\Delta$",
+                  "color": "#FFB800"
                 },
                 {
-                  "label": "Nierówność $< 0$",
-                  "value": "Przedział wewnętrzny: $(x_1, x_2)$",
+                  "label": "Kardynalna pułapka",
+                  "value": "Dla $x^2 - 9 < 0$ rozwiązaniem NIE jest $x < 3$!",
                   "color": "#F43F5E"
                 },
                 {
-                  "label": "Znak $\\ge$ lub $\\le$",
-                  "value": "Nawiasy domknięte $\\langle \\rangle$ przy liczbach!",
-                  "color": "#FFB800"
+                  "label": "Waga w CKE",
+                  "value": "Zadanie za 2 pkt w każdym arkuszu",
+                  "color": "#10B981"
                 }
               ]
             },
@@ -9295,12 +9556,12 @@
         {
           "id": "lesson-8-4",
           "topic_id": "dzial-8",
-          "title": "Nierówności kwadratowe z Delta <= 0 – zbiór pusty vs cały zbiór R",
+          "title": "Nierówności kwadratowe z ujemną deltą – zbiór pusty vs cały zbiór liczb rzeczywistych",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Nierówności kwadratowe z Delta <= 0 – zbiór pusty vs cały zbiór R",
+            "title": "Nierówności kwadratowe z ujemną deltą – zbiór pusty vs cały zbiór liczb rzeczywistych",
             "concept_essence": "Ujemna delta nie oznacza braku rozwiązań nierówności — oznacza jedynie brak miejsc zerowych! Gdy $\\Delta < 0$, parabola nigdy nie dotyka osi $OX$: 1) Jeśli $a > 0$, cały wykres unosi się nad osią $OX$ — wtedy nierówność $f(x) > 0$ spełniają WSZYSTKIE liczby ($x \\in \\mathbb{R}$), a nierówność $f(x) \\le 0$ nie ma rozwiązań ($\\emptyset$). 2) Jeśli $a < 0$, cały wykres wisi pod osią $OX$ — wtedy $f(x) < 0$ spełnia całe $\\mathbb{R}$, a $f(x) \\ge 0$ to zbiór pusty.",
             "matura_context": "Podchwytliwe zadanie testowe CKE za 1 punkt, w którym ponad 40% maturzystów błędnie zaznacza brak rozwiązań.",
             "core_formulas": [
@@ -9351,40 +9612,40 @@
             "exam_trap": "Typowy błąd: Pisanie $x \\in \\emptyset$ przy nierówności $x^2 + 5 > 0$ tylko dlatego, że $\\Delta < 0$.\n\nPoprawnie: Wykres leży w całości NAD osią, więc nierówność jest spełniona dla KAŻDEJ liczby rzeczywistej: $x \\in \\mathbb{R}$.",
             "diagram": {
               "type": "INFOGRAPHIC",
-              "title": "Nierówności kwadratowe niepełne: Błyskawiczna metoda bez delty",
-              "formulaBadge": "ax^2 + bx \\ge 0 \\implies x(ax + b) \\ge 0,\\quad x^2 - c \\ge 0 \\implies (x - \\sqrt{c})(x + \\sqrt{c}) \\ge 0",
-              "caption": "Nie trać czasu na deltę, gdy brakuje wyrazu wolnego c lub środkowego b! Zastosuj wyciąganie x lub różnicę kwadratów.",
+              "title": "Ujemna delta (Δ < 0): Zbiór pusty vs cały zbiór liczb rzeczywistych",
+              "formulaBadge": "\\Delta < 0 \\implies \\begin{cases} ax^2 + bx + c > 0 \\implies x \\in \\mathbb{R} & (a > 0) \\\\ ax^2 + bx + c < 0 \\implies x \\in \\emptyset & (a > 0) \\end{cases}",
+              "caption": "Gdy delta jest ujemna, parabola NIGDY nie dotyka osi OX! Wisi w całości nad osią (dla a > 0) lub leży w całości pod osią (dla a < 0).",
               "cards": [
                 {
-                  "badge": "Przypadek 1: Brak c (c = 0)",
-                  "title": "Wyciągnij x przed nawias",
-                  "formula": "x^2 - 6x \\ge 0 \\implies x(x - 6) \\ge 0",
-                  "desc": "Miejsca zerowe to natychmiast $x = 0$ oraz $x = 6$. Czas: 10 sekund.",
-                  "color": "#38BDF8"
+                  "badge": "a > 0 oraz Δ < 0: Cała nad osią",
+                  "title": "Wykres wisi w całości w strefie dodatniej",
+                  "formula": "x^2 + 2x + 5 > 0 \\implies x \\in \\mathbb{R}",
+                  "desc": "Parabola wisi nad osią $OX$. Każdy punkt ma $y > 0$, więc nierówność jest spełniona dla KAŻDEJ liczby rzeczywistej.",
+                  "color": "#10B981"
                 },
                 {
-                  "badge": "Przypadek 2: Brak b (b = 0)",
-                  "title": "Różnica kwadratów",
-                  "formula": "x^2 - 9 < 0 \\implies (x - 3)(x + 3) < 0",
-                  "desc": "Miejsca zerowe to $x = -3$ oraz $x = 3$. Przedział to $x \\in (-3, 3)$.",
-                  "color": "#10B981"
+                  "badge": "a > 0 oraz Δ < 0: Sprzeczność",
+                  "title": "Brak punktów pod osią",
+                  "formula": "x^2 + 2x + 5 \\le 0 \\implies x \\in \\emptyset",
+                  "desc": "Żaden punkt paraboli nie leży na osi ani pod osią. Nierówność nie ma ani jednego rozwiązania (zbiór pusty $\\emptyset$).",
+                  "color": "#F43F5E"
                 }
               ],
               "metrics": [
                 {
-                  "label": "Oszczędność czasu",
-                  "value": "Zrobione w 20 sekund bez liczenia $\\Delta$",
+                  "label": "Brak miejsc zerowych",
+                  "value": "Wykres nie przecina osi $OX$",
+                  "color": "#38BDF8"
+                },
+                {
+                  "label": "Wynik CKE",
+                  "value": "ZAWSZE $\\mathbb{R}$ albo zbiór pusty $\\emptyset$",
                   "color": "#FFB800"
                 },
                 {
-                  "label": "Kardynalna pułapka",
-                  "value": "Dla $x^2 - 9 < 0$ rozwiązaniem NIE jest $x < 3$!",
+                  "label": "Pułapka maturzysty",
+                  "value": "Pomyłka: $\\Delta < 0$ to nie zawsze brak rozwiązań!",
                   "color": "#F43F5E"
-                },
-                {
-                  "label": "Waga w CKE",
-                  "value": "Zadanie za 2 pkt w każdym arkuszu",
-                  "color": "#10B981"
                 }
               ]
             },
@@ -9393,7 +9654,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Nierówności kwadratowe z Delta <= 0 – zbiór pusty vs cały zbiór R",
+            "title": "Nierówności kwadratowe z ujemną deltą – zbiór pusty vs cały zbiór liczb rzeczywistych",
             "formulas": [
               {
                 "title": "Delta ujemna i ramiona w górę",
@@ -9633,7 +9894,9 @@
     },
     {
       "id": "dzial-9",
-      "title": "Dział 1.9: Odczytywanie informacji z wykresu funkcji",
+      "title": "Odczytywanie informacji z wykresu funkcji",
+      "topic_number": 9,
+      "order": 9,
       "tier": "Tier S+",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "4 lekcje (~20 min)",
@@ -9700,7 +9963,7 @@
               "type": "GEOMETRY_2D",
               "title": "Odczyt dziedziny D (oś pozioma OX) i zbioru wartości ZW (oś pionowa OY)",
               "formulaBadge": "D_f \\subset OX,\\quad ZW_f \\subset OY",
-              "caption": "Dziedzinę odczytujemy \"od lewej do prawej\" na osi OX (rzut poziomy). Zbiór wartości odczytujemy \"od dołu do góry\" na osi OY (rzut pionowy). Kółko zamalowane = nawias domknięty \\langle \\rangle, otwarte = okrągły ( ).",
+              "caption": "Dziedzinę odczytujemy \"od lewej do prawej\" na osi OX (rzut poziomy). Zbiór wartości odczytujemy \"od dołu do góry\" na osi OY (rzut pionowy). Kółko zamalowane = nawias domknięty [ ], otwarte = okrągły ( ).",
               "width": 520,
               "height": 270,
               "grid": {
@@ -9826,7 +10089,7 @@
                 {
                   "x": 250,
                   "y": 175,
-                  "text": "DZIEDZINA D (rzut na OX): ⟨-4, 5⟩",
+                  "text": "DZIEDZINA D (rzut na OX): [-4, 5]",
                   "color": "#38BDF8",
                   "fontSize": 13,
                   "fontWeight": "bold",
@@ -9835,7 +10098,7 @@
                 {
                   "x": 260,
                   "y": 35,
-                  "text": "ZBIÓR WARTOŚCI ZW (rzut na OY): ⟨-1, 3⟩",
+                  "text": "ZBIÓR WARTOŚCI ZW (rzut na OY): [-1, 3]",
                   "color": "#10B981",
                   "fontSize": 13,
                   "fontWeight": "bold",
@@ -9990,7 +10253,7 @@
                 "type": "GEOMETRY_2D",
                 "title": "Odczyt dziedziny D (oś pozioma OX) i zbioru wartości ZW (oś pionowa OY)",
                 "formulaBadge": "D_f \\subset OX,\\quad ZW_f \\subset OY",
-                "caption": "Dziedzinę odczytujemy \"od lewej do prawej\" na osi OX (rzut poziomy). Zbiór wartości odczytujemy \"od dołu do góry\" na osi OY (rzut pionowy). Kółko zamalowane = nawias domknięty \\langle \\rangle, otwarte = okrągły ( ).",
+                "caption": "Dziedzinę odczytujemy \"od lewej do prawej\" na osi OX (rzut poziomy). Zbiór wartości odczytujemy \"od dołu do góry\" na osi OY (rzut pionowy). Kółko zamalowane = nawias domknięty [ ], otwarte = okrągły ( ).",
                 "width": 520,
                 "height": 270,
                 "grid": {
@@ -10116,7 +10379,7 @@
                   {
                     "x": 250,
                     "y": 175,
-                    "text": "DZIEDZINA D (rzut na OX): ⟨-4, 5⟩",
+                    "text": "DZIEDZINA D (rzut na OX): [-4, 5]",
                     "color": "#38BDF8",
                     "fontSize": 13,
                     "fontWeight": "bold",
@@ -10125,7 +10388,7 @@
                   {
                     "x": 260,
                     "y": 35,
-                    "text": "ZBIÓR WARTOŚCI ZW (rzut na OY): ⟨-1, 3⟩",
+                    "text": "ZBIÓR WARTOŚCI ZW (rzut na OY): [-1, 3]",
                     "color": "#10B981",
                     "fontSize": 13,
                     "fontWeight": "bold",
@@ -10158,7 +10421,7 @@
                 "type": "GEOMETRY_2D",
                 "title": "Odczyt dziedziny D (oś pozioma OX) i zbioru wartości ZW (oś pionowa OY)",
                 "formulaBadge": "D_f \\subset OX,\\quad ZW_f \\subset OY",
-                "caption": "Dziedzinę odczytujemy \"od lewej do prawej\" na osi OX (rzut poziomy). Zbiór wartości odczytujemy \"od dołu do góry\" na osi OY (rzut pionowy). Kółko zamalowane = nawias domknięty \\langle \\rangle, otwarte = okrągły ( ).",
+                "caption": "Dziedzinę odczytujemy \"od lewej do prawej\" na osi OX (rzut poziomy). Zbiór wartości odczytujemy \"od dołu do góry\" na osi OY (rzut pionowy). Kółko zamalowane = nawias domknięty [ ], otwarte = okrągły ( ).",
                 "width": 520,
                 "height": 270,
                 "grid": {
@@ -10284,7 +10547,7 @@
                   {
                     "x": 250,
                     "y": 175,
-                    "text": "DZIEDZINA D (rzut na OX): ⟨-4, 5⟩",
+                    "text": "DZIEDZINA D (rzut na OX): [-4, 5]",
                     "color": "#38BDF8",
                     "fontSize": 13,
                     "fontWeight": "bold",
@@ -10293,7 +10556,7 @@
                   {
                     "x": 260,
                     "y": 35,
-                    "text": "ZBIÓR WARTOŚCI ZW (rzut na OY): ⟨-1, 3⟩",
+                    "text": "ZBIÓR WARTOŚCI ZW (rzut na OY): [-1, 3]",
                     "color": "#10B981",
                     "fontSize": 13,
                     "fontWeight": "bold",
@@ -10905,7 +11168,7 @@
             "diagram": {
               "type": "GEOMETRY_2D",
               "title": "Monotoniczność funkcji: Idziemy \"pod górkę\" i \"z górki\"",
-              "formulaBadge": "f \\nearrow \\implies x_1 < x_2 \\implies f(x_1) < f(x_2)",
+              "formulaBadge": "f \\nearrow \\iff x_1 < x_2 \\implies f(x_1) < f(x_2)",
               "caption": "Monotoniczność śledzimy ZAWSZE od lewej do prawej! \"Pod górkę\" oznacza rosnącą, \"z górki\" malejącą. Przedziały monotoniczności podajemy DLA ARGUMENTÓW X na osi OX!",
               "width": 520,
               "height": 270,
@@ -11007,7 +11270,7 @@
                 {
                   "x": 130,
                   "y": 110,
-                  "text": "ROŚNIE (⟨-4, -1⟩)",
+                  "text": "ROŚNIE ([-4, -1])",
                   "color": "#10B981",
                   "fontSize": 11,
                   "fontWeight": "bold",
@@ -11016,7 +11279,7 @@
                 {
                   "x": 250,
                   "y": 135,
-                  "text": "MALEJE (⟨-1, 3⟩)",
+                  "text": "MALEJE ([-1, 3])",
                   "color": "#F43F5E",
                   "fontSize": 11,
                   "fontWeight": "bold",
@@ -11025,7 +11288,7 @@
                 {
                   "x": 370,
                   "y": 200,
-                  "text": "STAŁA (⟨3, 6⟩)",
+                  "text": "STAŁA ([3, 6])",
                   "color": "#38BDF8",
                   "fontSize": 11,
                   "fontWeight": "bold",
@@ -11295,12 +11558,12 @@
         {
           "id": "lesson-9-4",
           "topic_id": "dzial-9",
-          "title": "Równania f(x) = m oraz nierówności f(x) > 0 – odczyt liczby rozwiązań",
+          "title": "Odczytywanie liczby rozwiązań równań i nierówności z wykresu funkcji",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Równania f(x) = m oraz nierówności f(x) > 0 – odczyt liczby rozwiązań",
+            "title": "Odczytywanie liczby rozwiązań równań i nierówności z wykresu funkcji",
             "concept_essence": "Analiza równań i nierówności na wykresie: 1) Równanie $f(x) = m$ — kładziesz poziomą linijkę na wysokości $y = m$. Liczba punktów przecięcia linijki z wykresem to LICZBA ROZWIĄZAŃ równania. Jeśli prosta mija wykres — równanie nie ma rozwiązań. 2) Nierówność $f(x) > 0$ — szukasz części wykresu leżących ŚCIŚLE NAD osią $OX$. Rozwiązaniem są przedziały iksów z osi poziomej. 3) Nierówność $f(x) \\le 0$ — szukasz części POD osią $OX$ wraz z miejscami zerowymi.",
             "matura_context": "Jeden z ulubionych typów zadań CKE w arkuszach majowych i czerwcowych za 1 punkt.",
             "core_formulas": [
@@ -11474,7 +11737,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Równania f(x) = m oraz nierówności f(x) > 0 – odczyt liczby rozwiązań",
+            "title": "Odczytywanie liczby rozwiązań równań i nierówności z wykresu funkcji",
             "formulas": [
               {
                 "title": "Graficzne rozwiązywanie równania f(x) = m",
@@ -11714,7 +11977,9 @@
     },
     {
       "id": "dzial-10",
-      "title": "Dział 1.10: Funkcja liniowa i jej własności",
+      "title": "Funkcja liniowa i jej własności",
+      "topic_number": 10,
+      "order": 10,
       "tier": "Tier S+",
       "badge": "NA 30% • PEWNIAK MATURALNY",
       "estimated_time_formatted": "4 lekcje (~20 min)",
@@ -11723,12 +11988,12 @@
         {
           "id": "lesson-10-1",
           "topic_id": "dzial-10",
-          "title": "Wzór kierunkowy y = ax + b, rola współczynnika a i wyrazu wolnego b",
+          "title": "Wzór kierunkowy prostej, rola współczynnika kierunkowego i wyrazu wolnego",
           "estimated_time_minutes": 5,
           "estimated_time_formatted": "~5 min",
           "required_correct_tasks": 4,
           "theory_pill": {
-            "title": "Wzór kierunkowy y = ax + b, rola współczynnika a i wyrazu wolnego b",
+            "title": "Wzór kierunkowy prostej, rola współczynnika kierunkowego i wyrazu wolnego",
             "concept_essence": "Wzór kierunkowy prostej $y = ax + b$ to jedno z najważniejszych narzędzi na maturze: 1) Współczynnik kierunkowy $a$ to bieg prostej (prędkościomierz): jeśli $a > 0$, prosta idzie w górę (rośnie); jeśli $a < 0$, prosta opada w dół (maleje); jeśli $a = 0$, leży poziomo (stała). Ponadto $a = \\operatorname{tg} \\alpha$, gdzie $\\alpha$ to kąt z dodatnią osią $OX$. 2) Wyraz wolny $b$ to kotwica na osi pionowej: prosta ZAWSZE przecina oś $OY$ dokładnie w punkcie $(0, b)$.",
             "matura_context": "Zadanie z interpretacji znaków $a$ i $b$ lub parametru $m$ występuje w 100% arkuszy CKE (zad. 11 za 1 pkt).",
             "core_formulas": [
@@ -11780,7 +12045,7 @@
             "diagram": {
               "type": "GEOMETRY_2D",
               "title": "Współczynnik kierunkowy a: Kąt nachylenia i monotoniczność prostej",
-              "formulaBadge": "\\begin{cases} a > 0 \\implies \\text{funkcja rosnąca } (\\nearrow) \\\\[3pt] a = 0 \\implies \\text{funkcja stała } (\\rightarrow) \\\\[3pt] a < 0 \\implies \\text{funkcja malejąca } (\\searrow) \\end{cases}",
+              "formulaBadge": "\\begin{cases} a > 0 \\implies \\text{funkcja rosnąca } (\\nearrow) \\\\ a = 0 \\implies \\text{funkcja stała } (\\rightarrow) \\\\ a < 0 \\implies \\text{funkcja malejąca } (\\searrow) \\end{cases}",
               "caption": "Znak współczynnika kierunkowego a decyduje o tym, czy prosta rośnie, maleje, czy jest pozioma (stała).",
               "width": 520,
               "height": 270,
@@ -11943,7 +12208,7 @@
             "trapNumberLine": null
           },
           "formulaSheet": {
-            "title": "Wzór kierunkowy y = ax + b, rola współczynnika a i wyrazu wolnego b",
+            "title": "Wzór kierunkowy prostej, rola współczynnika kierunkowego i wyrazu wolnego",
             "formulas": [
               {
                 "title": "Rola współczynnika kierunkowego a",
@@ -12236,7 +12501,7 @@
             "diagram": {
               "type": "GEOMETRY_2D",
               "title": "Wyraz wolny b: Przecięcie wykresu z pionową osią OY",
-              "formulaBadge": "P = (0, b) = (0, f(0))",
+              "formulaBadge": "P = (0,\\; b) = (0,\\; f(0))",
               "caption": "Podstawiając x = 0 do wzoru y = ax + b, otrzymujemy y = b. Wykres KAŻDEJ funkcji liniowej przecina pionową oś OY dokładnie na wysokości b!",
               "width": 520,
               "height": 270,
@@ -12741,7 +13006,7 @@
               "metrics": [
                 {
                   "label": "Wzór z tablic",
-                  "value": "$x_0 = -\\frac{b}{a}$ (Karta wzorów str. 4)",
+                  "value": "$x_0 = -\\frac{b}{a}$ (Karta wzorów str. 21)",
                   "color": "#10B981"
                 },
                 {

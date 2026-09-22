@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_04():
     topic_id = 'dzial-4'
-    topic_title = 'Dział 1.4: Wzory skróconego mnożenia i algebra'
+    topic_title = 'Wzory skróconego mnożenia i algebra'
+    topic_number = 4
     lessons = []
 
     # ----------------------------------------------------
@@ -80,7 +81,7 @@ def build_topic_04():
     l1 = make_lesson(
         lesson_id='lesson-4-1',
         topic_id=topic_id,
-        title='L1.4.1: Kwadrat sumy i kwadrat różnicy – rozwijanie, zwijanie i wyraz 2ab',
+        title='Kwadrat sumy i kwadrat różnicy – rozwijanie, zwijanie i wyraz 2ab',
         concept_essence='Kwadrat sumy $(a + b)^2$ to pole kwadratu o boku $(a + b)$. Składa się z czterech części: kwadratu o polu $a^2$, dwóch prostokątów o polu $ab$ (stąd $2ab$!) oraz kwadratu o polu $b^2$. Nigdy nie pisz $(a + b)^2 = a^2 + b^2$! Zawsze pamiętaj o mantrze: kwadrat pierwszego, podwojony iloczyn, kwadrat drugiego.',
         matura_context='Podstawa algebry maturalnej — występuje bezpośrednio w zadaniu za 1 pkt oraz jako element składowy w geometrii analitycznej i zadaniach z planimetrii.',
         core_formulas=[
@@ -187,7 +188,7 @@ def build_topic_04():
     l2 = make_lesson(
         lesson_id='lesson-4-2',
         topic_id=topic_id,
-        title='L1.4.2: Różnica kwadratów a^2 - b^2 = (a-b)(a+b) i usuwanie niewymierności',
+        title='Wzór na różnicę kwadratów i usuwanie niewymierności',
         concept_essence='Wzór na różnicę kwadratów $a^2 - b^2 = (a - b)(a + b)$ działa w dwie strony: do likwidacji pierwiastków w mianowniku (mnożenie przez sprzężenie) oraz do zamiany sumy na iloczyn nawiasów. Jest to najszybszy sposób rozwiązywania równań wyższych stopni.',
         matura_context='Usuwanie niewymierności z mianownika oraz rozkład różnicy kwadratów to absolutny klasyk matury za 1 punkt.',
         core_formulas=[
@@ -295,7 +296,7 @@ def build_topic_04():
     l3 = make_lesson(
         lesson_id='lesson-4-3',
         topic_id=topic_id,
-        title='L1.4.3: Wyłączanie wspólnego czynnika przed nawias i grupowanie wyrazów',
+        title='Wyłączanie wspólnego czynnika przed nawias i grupowanie wyrazów',
         concept_essence='Grupowanie wyrazów to technika rozkładania wielomianów 4-wyrazowych na iloczyn nawiasów. Dzielisz wielomian na dwie pary. Z pierwszej wyciągasz $x^2$, z drugiej liczbę (często ujemną!). W obu częściach MUSI pojawić się dokładnie ten sam nawias. Wyciągasz go przed nawias główny, a powstałą różnicę kwadratów rozbijasz na dwa nawiasy liniowe.',
         matura_context='Zadanie otwarte za 2 punkty z rozwiązywania równania trzeciego stopnia metodą grupowania pojawia się regularnie w arkuszach maturalnych.',
         core_formulas=[
@@ -338,6 +339,8 @@ def build_topic_04():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '3 lekcje (~15 min)',

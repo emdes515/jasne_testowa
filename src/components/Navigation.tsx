@@ -42,7 +42,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
         aria-label="Główna nawigacja mobilna"
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 pointer-events-none flex flex-col items-center justify-end pb-[max(12px,env(safe-area-inset-bottom))] px-3 pt-6 bg-gradient-to-t from-surface-bg/95 via-surface-bg/60 to-transparent"
       >
-        <div className="pointer-events-auto flex items-center justify-between gap-1 bg-surface-bg/95 backdrop-blur-[24px] border border-surface-border p-1.5 rounded-[26px] shadow-[0_12px_40px_rgba(0,0,0,0.8),0_0_20px_rgba(255,184,0,0.08)] w-full max-w-sm">
+        <div className="pointer-events-auto flex items-center justify-between gap-1 bg-surface-bg/95 backdrop-blur-[24px] border border-surface-border p-1.5 rounded-[26px] shadow-[0_12px_32px_rgba(0,0,0,0.12),0_0_20px_rgba(255,184,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.8),0_0_20px_rgba(255,184,0,0.08)] w-full max-w-sm">
           {navItems.filter(item => item.id !== 'profile').map(item => {
             const Icon = item.icon;
             const isActive = currentTab === item.id;
@@ -194,12 +194,12 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                       handleTabChange(item.id);
                     }
                   }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-all duration-150 text-left group cursor-pointer ${
+                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-all duration-150 active:scale-[0.98] text-left group cursor-pointer ${
                     isActive
                       ? isArena
-                        ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold shadow-[0_0_15px_rgba(16,185,129,0.12)]'
+                        ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 font-bold shadow-[0_0_15px_rgba(16,185,129,0.12)]'
                         : 'bg-primary/10 border border-primary/30 text-primary font-bold shadow-[0_0_15px_rgba(255,184,0,0.12)]'
-                      : 'border border-transparent text-text-secondary hover:text-text-primary hover:bg-surface-card/60 font-medium'
+                      : 'border border-transparent text-text-secondary hover:text-text-primary hover:bg-surface-card-hover font-medium'
                   }`}
                 >
                   <Icon 

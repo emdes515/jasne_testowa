@@ -1640,7 +1640,7 @@ export function MaturaSimulatorView({
                           </div>
 
                           <h3 className="font-bold text-sm text-white mb-3 group-hover:text-[#FFB800] transition-colors line-clamp-1">
-                            {topic.replace(/^Dział \d+:\s*/, '')}
+                            {topic.replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '')}
                           </h3>
 
                           {/* Mini pasek postępu */}

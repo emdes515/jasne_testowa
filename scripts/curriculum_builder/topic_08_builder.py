@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_08():
     topic_id = 'dzial-8'
-    topic_title = 'Dział 1.8: Nierówności kwadratowe'
+    topic_title = 'Nierówności kwadratowe'
+    topic_number = 8
     lessons = []
 
     # ----------------------------------------------------
@@ -80,7 +81,7 @@ def build_topic_08():
     l1 = make_lesson(
         lesson_id='lesson-8-1',
         topic_id=topic_id,
-        title='L1.8.1: Wyróżnik Delta i miejsca zerowe trójmianu kwadratowego',
+        title='Wyróżnik Delta i miejsca zerowe trójmianu kwadratowego',
         concept_essence='Wyróżnik $\\Delta = b^2 - 4ac$ to radar funkcji kwadratowej. Informuje, ile razy parabola dotyka osi poziomej $OX$: 1) $\\Delta > 0$ — dwa miejsca zerowe: $x_1, x_2$. 2) $\\Delta = 0$ — dokładnie jedno miejsce zerowe: $x_0 = \\frac{-b}{2a}$ (parabola jest styczna do osi w wierzchołku). 3) $\\Delta < 0$ — zero miejsc zerowych (parabola unosi się w całości nad osią lub wisi pod nią).',
         matura_context='Podstawa do każdego zadania z funkcji i nierówności kwadratowej za 1–2 punkty.',
         core_formulas=[
@@ -188,7 +189,7 @@ def build_topic_08():
     l2 = make_lesson(
         lesson_id='lesson-8-2',
         topic_id=topic_id,
-        title='L1.8.2: Szkicowanie paraboli i odczytywanie przedziałów (> 0, <= 0)',
+        title='Szkicowanie paraboli i odczytywanie przedziałów rozwiązań',
         concept_essence='Rozwiązanie nierówności kwadratowej wymaga dyscypliny w 3 krokach: 1) Wyznaczasz miejsca zerowe ($x_1, x_2$). 2) Rysujesz szkic paraboli: jeśli $a > 0$, ramiona idą w górę (uśmiech); jeśli $a < 0$, ramiona idą w dół (smutek). 3) Odczytujesz przedział: gdy pytają o $> 0$, patrzysz na łuki nad osią; gdy pytają o $< 0$, patrzysz pod oś. Nigdy nie zgaduj przedziału bez 2-sekundowego szkicu na osi!',
         matura_context='Żelazny pewniak matury podstawowej — zadanie otwarte za 2 punkty lub zadanie testowe za 1 punkt.',
         core_formulas=[
@@ -295,7 +296,7 @@ def build_topic_08():
     l3 = make_lesson(
         lesson_id='lesson-8-3',
         topic_id=topic_id,
-        title='L1.8.3: Nierówności kwadratowe niepełne – bez liczenia delty',
+        title='Nierówności kwadratowe niepełne – bez liczenia delty',
         concept_essence='Gdy w trójmianie brakuje wyrazu wolnego ($c = 0$) lub wyrazu liniowego ($b = 0$), liczenie delty to strata cennego czasu: 1) Brak $c$ ($ax^2 + bx$): wyłączasz $x$ przed nawias: $x(ax + b)$. Miejsca zerowe to od razu $0$ oraz $-\\frac{b}{a}$. 2) Brak $b$ ($ax^2 - c$): rozkładasz na różnicę kwadratów $(x - \\sqrt{c})(x + \\sqrt{c})$. Miejsca zerowe to liczby przeciwne $\\pm \\sqrt{c}$. Następnie rysujesz parabolę i odczytujesz przedział.',
         matura_context='Bardzo częste zadania testowe sprawdzające sprawność algebraiczną maturzysty.',
         core_formulas=[
@@ -402,7 +403,7 @@ def build_topic_08():
     l4 = make_lesson(
         lesson_id='lesson-8-4',
         topic_id=topic_id,
-        title='L1.8.4: Nierówności kwadratowe z Delta <= 0 – zbiór pusty vs cały zbiór R',
+        title='Nierówności kwadratowe z ujemną deltą – zbiór pusty vs cały zbiór liczb rzeczywistych',
         concept_essence='Ujemna delta nie oznacza braku rozwiązań nierówności — oznacza jedynie brak miejsc zerowych! Gdy $\\Delta < 0$, parabola nigdy nie dotyka osi $OX$: 1) Jeśli $a > 0$, cały wykres unosi się nad osią $OX$ — wtedy nierówność $f(x) > 0$ spełniają WSZYSTKIE liczby ($x \\in \\mathbb{R}$), a nierówność $f(x) \\le 0$ nie ma rozwiązań ($\\emptyset$). 2) Jeśli $a < 0$, cały wykres wisi pod osią $OX$ — wtedy $f(x) < 0$ spełnia całe $\\mathbb{R}$, a $f(x) \\ge 0$ to zbiór pusty.',
         matura_context='Podchwytliwe zadanie testowe CKE za 1 punkt, w którym ponad 40% maturzystów błędnie zaznacza brak rozwiązań.',
         core_formulas=[
@@ -445,6 +446,8 @@ def build_topic_08():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S+',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '4 lekcje (~20 min)',

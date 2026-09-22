@@ -611,7 +611,7 @@ def make_root_anatomy_diagram(title="Anatomia pierwiastka: Z polskiego na nasze"
             'color': C_DANGER,
             'title': 'Pierwiastek z kwadratu',
             'formula': '\\sqrt{a^2} = |a| \\neq a',
-            'desc': 'Dla stopnia parzystego wynik jest ZAWSZE nieujemny: \\(\\sqrt{(-3)^2} = |-3| = 3\\), a nie \\(-3\\)!'
+            'desc': 'Dla stopnia parzystego wynik jest ZAWSZE nieujemny: $\\sqrt{(-3)^2} = |-3| = 3$, a nie $-3$!'
         }
     ]
 
@@ -648,19 +648,30 @@ def make_logarithm_loop_diagram(title="Definicja logarytmu: Ruch po pętli", bad
     segments.append({'from': [160, 55], 'to': [195, 55], 'color': C_MUTED, 'strokeWidth': 2})
     segments.append({'from': [188, 50], 'to': [195, 55], 'color': C_MUTED, 'strokeWidth': 2})
     segments.append({'from': [188, 60], 'to': [195, 55], 'color': C_MUTED, 'strokeWidth': 2})
+    labels.append({'x': 178, 'y': 40, 'text': 'PĘTLA', 'color': C_MUTED, 'fontSize': 9, 'fontWeight': 'bold', 'anchor': 'middle'})
 
     # Postać potęgowa z prawej: a^c = b
     labels.append({'x': 230, 'y': 55, 'text': 'a', 'color': C_PRIMARY, 'fontSize': 28, 'fontWeight': 'bold', 'anchor': 'middle'})
     labels.append({'x': 252, 'y': 38, 'text': 'c', 'color': C_SUCCESS, 'fontSize': 20, 'fontWeight': 'bold', 'anchor': 'middle'})
     labels.append({'x': 282, 'y': 55, 'text': '=', 'color': C_TEXT, 'fontSize': 22, 'fontWeight': 'bold', 'anchor': 'middle'})
     labels.append({'x': 310, 'y': 55, 'text': 'b', 'color': C_SKY, 'fontSize': 28, 'fontWeight': 'bold', 'anchor': 'middle'})
+    labels.append({'x': 270, 'y': 98, 'text': 'WYNIK: aᶜ = b', 'color': C_SUCCESS, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
 
-    # Wektorowa strzałka pętli na dole
-    segments.append({'from': [62, 82], 'to': [138, 82], 'color': C_PRIMARY, 'strokeWidth': 2})
-    segments.append({'from': [138, 82], 'to': [138, 72], 'color': C_PRIMARY, 'strokeWidth': 2})
-    segments.append({'from': [133, 77], 'to': [138, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
-    segments.append({'from': [143, 77], 'to': [138, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
-    labels.append({'x': 100, 'y': 98, 'text': 'RUCH PO PĘTLI: a^c = b', 'color': C_PRIMARY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'})
+    # KROK 1: Wektor pętli dolnej (od podstawy a do wykładnika c)
+    segments.append({'from': [62, 78], 'to': [62, 84], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [62, 84], 'to': [138, 84], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [138, 84], 'to': [138, 70], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [133, 75], 'to': [138, 68], 'color': C_PRIMARY, 'strokeWidth': 2})
+    segments.append({'from': [143, 75], 'to': [138, 68], 'color': C_PRIMARY, 'strokeWidth': 2})
+    labels.append({'x': 100, 'y': 98, 'text': '1. Podnosisz a do potęgi c', 'color': C_PRIMARY, 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'middle'})
+
+    # KROK 2: Wektor pętli górnej (od potęgi c z powrotem do liczby b)
+    segments.append({'from': [138, 42], 'to': [138, 28], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [138, 28], 'to': [86, 28], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [86, 28], 'to': [86, 42], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [81, 37], 'to': [86, 44], 'color': C_SKY, 'strokeWidth': 2})
+    segments.append({'from': [91, 37], 'to': [86, 44], 'color': C_SKY, 'strokeWidth': 2})
+    labels.append({'x': 112, 'y': 17, 'text': '2. Lądujesz na liczbie b', 'color': C_SKY, 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'middle'})
 
     cards = [
         {

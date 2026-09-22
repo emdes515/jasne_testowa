@@ -154,7 +154,7 @@ export {
 function cleanTopicTitle(text: string): string {
   if (!text) return '';
   return text
-    .replace(/^Dział\s+\d+:\s*/i, '')
+    .replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '')
     .replace(/\s*\(Poziom\s+Podstawowy\)/gi, '')
     .replace(/\s*\(Formuła\s+2023\)/gi, '')
     .trim();
@@ -1102,7 +1102,7 @@ export function LearnView({
                         <div className="flex items-center justify-between gap-2 w-full flex-wrap">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-display font-black text-xs text-slate-300 bg-black/40 border border-white/10 px-2.5 py-0.5 rounded-lg tracking-wider">
-                              {formattedNumber}
+                              DZIAŁ {topicNum}
                             </span>
                             
                             {topic.pillar_id === 'pillar-2-lektury' && (
@@ -1390,9 +1390,18 @@ export function LearnView({
                       >
                         <ChevronLeft size={20} />
                       </button>
-                      <h2 className="font-display font-black text-text-primary text-base sm:text-lg leading-tight truncate">
-                        <MathRenderer content={cleanTopicTitle(currentTopic.name || currentTopic.title)} />
-                      </h2>
+                      <div className="min-w-0 flex items-center gap-2">
+                        <span className={`px-2 py-0.5 rounded-lg text-[10px] sm:text-xs font-mono font-black uppercase tracking-wider shrink-0 shadow-sm ${
+                          selectedSubjectKey === 'pol'
+                            ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
+                            : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                        }`}>
+                          DZIAŁ {currentTopic.topic_number || currentTopic.numericId || (currentSubject.topics.findIndex((t: any) => t.id === currentTopic.id) + 1)}
+                        </span>
+                        <h2 className="font-display font-black text-text-primary text-base sm:text-lg leading-tight truncate">
+                          <MathRenderer content={cleanTopicTitle(currentTopic.name || currentTopic.title)} />
+                        </h2>
+                      </div>
                     </div>
 
                     <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-card border border-surface-border text-[11px] font-bold text-text-muted whitespace-nowrap">

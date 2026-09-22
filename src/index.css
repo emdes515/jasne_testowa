@@ -4,51 +4,142 @@
   --font-sans: 'DM Sans', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
 
-  /* Core Surfaces & Backgrounds */
-  --color-surface-bg: #070A0F;
-  --color-background-base: #070A0F;
-  --color-surface-card: #0E1522;
-  --color-surface-card-hover: #141D2E;
-  --color-surface-elevated: #141D2E;
-  --color-surface-border: rgba(255, 255, 255, 0.08);
-  --color-surface-border-hover: rgba(255, 255, 255, 0.16);
-  --color-surface-border-active: #FFB800;
+  /* Core Surfaces & Backgrounds mapped to runtime CSS variables */
+  --color-surface-bg: var(--surface-bg);
+  --color-background-base: var(--surface-bg);
+  --color-surface-card: var(--surface-card);
+  --color-surface-card-hover: var(--surface-card-hover);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-border: var(--surface-border);
+  --color-surface-border-hover: var(--surface-border-hover);
+  --color-surface-border-active: var(--surface-border-active);
 
   /* Brand Primary & Accents */
-  --color-primary: #FFB800;
-  --color-primary-hover: #FFC72C;
-  --color-primary-glow: rgba(255, 184, 0, 0.25);
-  --color-primary-dark: #B37F00;
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-glow: var(--primary-glow);
+  --color-primary-dark: var(--primary-dark);
 
   /* Typography Text Tokens */
-  --color-text-primary: #F8FAFC;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #64748B;
-  --color-text-subtle: #475569;
-  --color-text-accent: #FFB800;
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-text-accent: var(--text-accent);
 
   /* Gamification & Semantic Accents */
-  --color-alert-crimson: #F43F5E;
-  --color-alert-crimson-bg: rgba(244, 63, 94, 0.12);
-  --color-accent-danger: #F43F5E;
+  --color-alert-crimson: var(--alert-crimson);
+  --color-alert-crimson-bg: var(--alert-crimson-bg);
+  --color-accent-danger: var(--alert-crimson);
   --color-streak-flame: #EA580C;
   --color-accent-streak: #FF782D;
-  --color-accent-success: #10B981;
+  --color-accent-success: var(--accent-success);
   --color-accent-arena: #06B6D4;
   --color-accent-ai: #A855F7;
 
   /* Backward Compatibility Aliases */
-  --color-jasne: #FFB800;
-  --color-jasne-hover: #FFC72C;
-  --color-jasne-dark: #D97706;
-  --color-jasne-glow: rgba(255, 184, 0, 0.25);
-  --color-jasne-surface: rgba(255, 184, 0, 0.08);
-  --color-jasne-border: rgba(255, 184, 0, 0.25);
-  --color-jasne-blue: #38BDF8;
+  --color-jasne: var(--primary);
+  --color-jasne-hover: var(--primary-hover);
+  --color-jasne-dark: var(--primary-dark);
+  --color-jasne-glow: var(--primary-glow);
+  --color-jasne-surface: var(--primary-surface);
+  --color-jasne-border: var(--primary-border);
+  --color-jasne-blue: var(--accent-blue);
+}
+
+:root {
+  /* Default: Nocturne Luminary (Dark Mode) */
+  --surface-bg: #070A0F;
+  --surface-card: #0E1522;
+  --surface-card-hover: #141D2E;
+  --surface-elevated: #141D2E;
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-border-hover: rgba(255, 255, 255, 0.16);
+  --surface-border-active: #FFB800;
+
+  --primary: #FFB800;
+  --primary-hover: #FFC72C;
+  --primary-glow: rgba(255, 184, 0, 0.25);
+  --primary-dark: #B37F00;
+  --primary-surface: rgba(255, 184, 0, 0.08);
+  --primary-border: rgba(255, 184, 0, 0.25);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-subtle: #475569;
+  --text-accent: #FFB800;
+
+  --alert-crimson: #F43F5E;
+  --alert-crimson-bg: rgba(244, 63, 94, 0.12);
+  --accent-success: #10B981;
+  --accent-blue: #38BDF8;
+
+  --formula-bg: rgba(255, 184, 0, 0.03);
+  --formula-border: rgba(255, 184, 0, 0.12);
+  --formula-text: #FFFFFF;
+  --formula-shadow: 0 0 10px rgba(255, 184, 0, 0.2);
+
+  --jasne: #FFB800;
+  --jasne-hover: #FFC72C;
+  --jasne-dark: #D97706;
+  --jasne-glow: rgba(255, 184, 0, 0.25);
+  --jasne-surface: rgba(255, 184, 0, 0.08);
+  --jasne-border: rgba(255, 184, 0, 0.25);
+  --jasne-blue: #38BDF8;
+
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+:root[data-theme="light"],
+html.light {
+  /* Solar Luminary (Light Mode) */
+  --surface-bg: #F8F9FC;
+  --surface-card: #FFFFFF;
+  --surface-card-hover: #F1F5F9;
+  --surface-elevated: #FFFFFF;
+  --surface-border: #E2E8F0;
+  --surface-border-hover: #CBD5E1;
+  --surface-border-active: #D97706;
+
+  --primary: #D97706;
+  --primary-hover: #B45309;
+  --primary-glow: rgba(217, 119, 6, 0.2);
+  --primary-dark: #92400E;
+  --primary-surface: rgba(217, 119, 6, 0.08);
+  --primary-border: rgba(217, 119, 6, 0.3);
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+  --text-accent: #D97706;
+
+  --alert-crimson: #E11D48;
+  --alert-crimson-bg: rgba(225, 29, 72, 0.08);
+  --accent-success: #059669;
+  --accent-blue: #0284C7;
+
+  --formula-bg: rgba(217, 119, 6, 0.04);
+  --formula-border: rgba(217, 119, 6, 0.2);
+  --formula-text: #0F172A;
+  --formula-shadow: none;
+
+  --jasne: #D97706;
+  --jasne-hover: #B45309;
+  --jasne-dark: #92400E;
+  --jasne-glow: rgba(217, 119, 6, 0.2);
+  --jasne-surface: rgba(217, 119, 6, 0.08);
+  --jasne-border: rgba(217, 119, 6, 0.3);
+  --jasne-blue: #0284C7;
 }
 
 html, body {
-  background-color: #070A0F;
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -58,28 +149,15 @@ html, body {
   height: 100dvh;
   overscroll-behavior-y: none;
   -webkit-tap-highlight-color: transparent;
-}
-
-:root {
-  --jasne: #FFB800;
-  --jasne-hover: #FFC72C;
-  --jasne-dark: #D97706;
-  --jasne-glow: rgba(255, 184, 0, 0.25);
-  --jasne-surface: rgba(255, 184, 0, 0.08);
-  --jasne-border: rgba(255, 184, 0, 0.25);
-  --jasne-blue: #38BDF8;
-  --sat: env(safe-area-inset-top, 0px);
-  --sab: env(safe-area-inset-bottom, 0px);
-  --sal: env(safe-area-inset-left, 0px);
-  --sar: env(safe-area-inset-right, 0px);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {
-  background-color: rgba(255, 184, 0, 0.25);
-  color: #FFB800;
+  background-color: var(--primary-surface);
+  color: var(--primary);
 }
 
-/* Custom Nocturne Luminary scrollbar */
+/* Custom Luminary scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -88,11 +166,11 @@ html, body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--surface-border);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 184, 0, 0.35);
+  background: var(--surface-border-hover);
 }
 
 /* Wymogi identyfikacji JASNE. dla przycisków Solar Amber */
@@ -103,7 +181,7 @@ a[class*="bg-jasne"],
 .btn-jasne {
   color: #080B11 !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 button, a, input, [role="button"] {
@@ -189,7 +267,7 @@ button, a, input, [role="button"] {
 
 /* KaTeX clarity, line clearance & contrast */
 .katex {
-  color: #F8FAFC !important;
+  color: var(--text-primary) !important;
   font-size: 1.05em;
   text-rendering: geometricPrecision;
   white-space: nowrap !important;
@@ -216,14 +294,14 @@ button, a, input, [role="button"] {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--surface-border);
   border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--surface-border-hover);
 }
 
-/* Stylizacja list numerowanych z neonowymi kapsułkami */
+/* Stylizacja list numerowanych z kapsułkami */
 .math-text-wrapper ol {
   counter-reset: math-step-counter;
   list-style-type: none;
@@ -248,22 +326,22 @@ button, a, input, [role="button"] {
   width: 1.625rem;
   height: 1.625rem;
   border-radius: 9999px;
-  background-color: rgba(255, 184, 0, 0.15);
-  border: 1px solid rgba(255, 184, 0, 0.5);
-  color: #FFB800;
+  background-color: var(--primary-surface);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
   font-weight: 900;
   font-size: 0.75rem;
   margin-right: 0.75rem;
   margin-top: 0.125rem;
   flex-shrink: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* Stylizacja wyróżnionych ramek wzorów */
 .math-text-wrapper .formula-callout,
 .math-text-wrapper blockquote {
-  border: 1px solid rgba(255, 184, 0, 0.2);
-  background: rgba(255, 184, 0, 0.04);
+  border: 1px solid var(--formula-border);
+  background: var(--formula-bg);
   border-radius: 0.75rem;
   padding: 0.875rem 1.125rem;
   margin: 0.875rem 0;
@@ -318,8 +396,8 @@ button, a, input, [role="button"] {
   align-items: center !important;
   margin: 0.5rem auto !important;
   padding: 0.4rem 0.6rem !important;
-  background: rgba(255, 184, 0, 0.03) !important;
-  border: 1px solid rgba(255, 184, 0, 0.12) !important;
+  background: var(--formula-bg) !important;
+  border: 1px solid var(--formula-border) !important;
   border-radius: 0.75rem !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
@@ -336,8 +414,8 @@ button, a, input, [role="button"] {
   text-align: center !important;
   padding: 0 !important;
   font-size: 1.08em !important;
-  color: #FFFFFF !important;
-  text-shadow: 0 0 10px rgba(255, 184, 0, 0.2) !important;
+  color: var(--formula-text) !important;
+  text-shadow: var(--formula-shadow) !important;
   white-space: nowrap !important;
   flex-shrink: 0 !important;
 }
@@ -484,5 +562,37 @@ button, a, input, [role="button"] {
   line-height: 32px;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================================
+   Mafs (Nocturne Luminary Theme Customization)
+   ========================================================================= */
+.MafsView {
+  --mafs-bg: #070A0F;
+  --mafs-fg: #DFE2F1;
+  --mafs-origin-color: #94A3B8;
+  --mafs-line-color: rgba(255, 255, 255, 0.10);
+  --grid-line-subdivision-color: rgba(255, 255, 255, 0.035);
+  --mafs-axis-stroke-width: 1.5px;
+
+  --mafs-yellow: #FFB800;
+  --mafs-blue: #38BDF8;
+  --mafs-green: #10B981;
+  --mafs-red: #F43F5E;
+  --mafs-indigo: #818CF8;
+  --mafs-violet: #C084FC;
+
+  --movable-point-color: #FFB800;
+  border-radius: 1rem;
+}
+
+.MafsView text {
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-variant-numeric: tabular-nums;
+  fill: #DFE2F1;
+}
+
+.MafsView:focus-visible {
+  outline: 2px solid #FFB800;
 }
 

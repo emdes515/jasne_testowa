@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { UserState, SubjectKey } from '../types';
-import { User, Flame, Coins, Zap, X, Heart, Clock, Users } from 'lucide-react';
+import { User, Flame, Coins, Zap, X, Heart, Clock, Users, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
 import { formatPromoSeconds } from '../services/promotionService';
+import { useTheme } from '../services/themeManager';
 
 export interface HeaderProps {
   state: UserState;
@@ -39,6 +40,7 @@ export function Header({
 }: HeaderProps) {
   const [showXpTooltip, setShowXpTooltip] = useState(false);
   const [showHeartsPopup, setShowHeartsPopup] = useState(false);
+  const { resolvedTheme, toggleTheme } = useTheme();
   const currentXpInLevel = state.xp % 1000;
   const xpPercent = Math.min(100, Math.max(0, (currentXpInLevel / 1000) * 100));
 
@@ -81,10 +83,10 @@ export function Header({
           <div className="absolute inset-0 bg-[#FFB800]/20 blur-md rounded-full -z-10 group-hover:bg-[#FFB800]/35 transition-colors" />
         </div>
         <div className="flex flex-col text-left">
-          <span className="text-base sm:text-lg font-black tracking-wider text-white group-hover:text-[#FFB800] transition-colors leading-none">
-            JASNE<span className="text-[#FFB800]">.</span>
+          <span className="text-base sm:text-lg font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
+            JASNE<span className="text-primary">.</span>
           </span>
-          <span className="hidden sm:inline-block text-[10px] font-bold text-slate-400 tracking-wider uppercase mt-0.5">
+          <span className="hidden sm:inline-block text-[10px] font-bold text-text-muted tracking-wider uppercase mt-0.5">
             Matura staje się prosta
           </span>
         </div>
@@ -244,11 +246,11 @@ export function Header({
 
         {/* Wskaźnik 2: Główne Monety */}
         <div 
-          className="flex items-center gap-1 sm:gap-1.5 bg-[#FFB800]/10 border border-[#FFB800]/30 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full shadow-[0_0_12px_rgba(255,184,0,0.12)]"
+          className="flex items-center gap-1 sm:gap-1.5 bg-primary/10 border border-primary/30 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full shadow-[0_0_12px_rgba(255,184,0,0.12)]"
           title={`Monety: ${state.coins}`}
         >
-          <Coins size={13} className="text-[#FFB800]" />
-          <span className="font-display font-black text-amber-200 text-xs leading-none tabular-nums font-mono">
+          <Coins size={13} className="text-primary" />
+          <span className="font-display font-black text-primary text-xs leading-none tabular-nums font-mono">
             {state.coins.toLocaleString('pl-PL')}
           </span>
         </div>
@@ -268,6 +270,25 @@ export function Header({
             <span>Konto Gościa • Zaloguj się</span>
           </button>
         )}
+
+        {/* Przełącznik Motywu (Szybki 1-tap: Jasny / Ciemny) */}
+        <button 
+          id="header-theme-toggle"
+          type="button"
+          onClick={() => {
+            triggerHaptic('light');
+            toggleTheme();
+          }}
+          className="p-1.5 sm:p-2 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-muted hover:text-primary transition-all duration-150 active:scale-90 cursor-pointer shadow-sm flex items-center justify-center"
+          title={resolvedTheme === 'dark' ? 'Przełącz na motyw jasny (Solar Luminary)' : 'Przełącz na motyw ciemny (Nocturne Luminary)'}
+          aria-label={resolvedTheme === 'dark' ? 'Przełącz na motyw jasny' : 'Przełącz na motyw ciemny'}
+        >
+          {resolvedTheme === 'dark' ? (
+            <Sun size={15} className="text-amber-400 hover:rotate-45 transition-transform duration-200" />
+          ) : (
+            <Moon size={15} className="text-amber-600 hover:-rotate-12 transition-transform duration-200" />
+          )}
+        </button>
 
         {/* Wskaźnik 3: Profil & Poziom Gracza */}
         <button 

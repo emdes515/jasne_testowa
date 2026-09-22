@@ -1,20 +1,22 @@
 """
 topic_03_builder.py - Dział 1.3: Wartość bezwzględna (3 lekcje | Tier S)
+Nocturne Luminary + Core-4 Bento + Autentyczne CKE 2023-2026.
 """
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from lesson_visuals_v2.topic_03 import get_topic_03_visuals
-from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_lesson
+from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_lesson
 
 def build_topic_03():
     topic_id = 'dzial-3'
-    topic_title = 'Dział 1.3: Wartość bezwzględna'
+    topic_title = 'Wartość bezwzględna'
+    topic_number = 3
     lessons = []
 
     # ----------------------------------------------------
-    # Lekcja 3.1: Definicja geometryczna wartości bezwzględnej (L1.3.1)
+    # Lekcja 3.1: Definicja geometryczna i odległość na osi (L1.3.1)
     # ----------------------------------------------------
     v1 = get_topic_03_visuals(0)
     l1_tasks = [
@@ -80,8 +82,8 @@ def build_topic_03():
     l1 = make_lesson(
         lesson_id='lesson-3-1',
         topic_id=topic_id,
-        title='L1.3.1: Definicja geometryczna wartości bezwzględnej (|x - a| = r)',
-        concept_essence='Wartość bezwzględna to po prostu odległość na osi liczbowej. Gdy widzisz $|x|$, pytasz: jak daleko od zera leży $x$? Ponieważ odległość nie może być ujemna, $|-5| = 5$ oraz $|5| = 5$. Zapis $|x - a| = r$ oznacza: punkty na osi oddalone od liczby $a$ o dokładnie $r$ jednostek. Stawiasz cyrkiel w punkcie $a$ i robisz $r$ kroków w prawo ($a + r$) oraz $r$ kroków w lewo ($a - r$).',
+        title='Definicja geometryczna i odległość na osi',
+        concept_essence='Wartość bezwzględna to odległość na osi liczbowej. Zapis $|x|$ pyta: jak daleko od zera leży liczba $x$? Ponieważ odległość nie może być ujemna, $|-5| = 5$ oraz $|5| = 5$. Równanie $|x - a| = r$ oznacza: znajdź punkty na osi oddalone od środka $a$ o promień $r$. Wyznaczasz je dwoma krokami: w prawo ($a + r$) oraz w lewo ($a - r$).',
         matura_context='Zadanie sprawdzające interpretację geometryczną wartości bezwzględnej pojawia się co roku na maturze podstawowej CKE za 1 punkt (często jako zadanie 1 na arkuszu).',
         core_formulas=[
             {
@@ -102,15 +104,15 @@ def build_topic_03():
                 'cke_page': 'str. 4',
                 'example': '|x - 3| = 5 \\implies x = 3 - 5 = -2 \\quad \\text{lub} \\quad x = 3 + 5 = 8',
                 'mnemonic': 'Środek to a, odległość to r: krok w lewo i krok w prawo.',
-                'matura_tip': 'Wzór ma w środku minus. Zapis |x + 2| oznacza |x - (-2)|, czyli środek w -2.'
+                'matura_tip': 'Wzór ma w środku minus. Zapis $|x + 2|$ oznacza $|x - (-2)|$, czyli środek w $-2$.'
             }
         ],
         worked_example={
             'problem': 'Rozwiąż równanie $|x - 2| = 5$ korzystając z interpretacji geometrycznej.',
             'steps': [
                 {'num': 1, 'label': 'Odczytanie środka i promienia', 'text': 'W równaniu $|x - a| = r$ odczytujemy środek $a = 2$ oraz promień $r = 5$.'},
-                {'num': 2, 'label': 'Krok w prawo od środka', 'text': 'Od liczby 2 idziemy o 5 jednostek w prawo: $x_1 = 2 + 5 = 7$.'},
-                {'num': 3, 'label': 'Krok w lewo od środka i wynik CKE', 'text': 'Od liczby 2 idziemy o 5 jednostek w lewo: $x_2 = 2 - 5 = -3$. Rozwiązaniami są liczby $x = -3$ oraz $x = 7$.'}
+                {'num': 2, 'label': 'Krok w prawo od środka', 'text': 'Od liczby $2$ idziemy o $5$ jednostek w prawo: $x_1 = 2 + 5 = 7$.'},
+                {'num': 3, 'label': 'Krok w lewo od środka i wynik CKE', 'text': 'Od liczby $2$ idziemy o $5$ jednostek w lewo: $x_2 = 2 - 5 = -3$. Rozwiązaniami są liczby $x = -3$ oraz $x = 7$.'}
             ],
             'result': 'x \\in \\{-3, 7\\}'
         },
@@ -121,7 +123,7 @@ def build_topic_03():
     lessons.append(l1)
 
     # ----------------------------------------------------
-    # Lekcja 3.2: Nierówności z wartością bezwzględną (L1.3.2)
+    # Lekcja 3.2: Nierówności z wartością bezwzględną i przedziały (L1.3.2)
     # ----------------------------------------------------
     v2 = get_topic_03_visuals(1)
     l2_tasks = [
@@ -187,8 +189,8 @@ def build_topic_03():
     l2 = make_lesson(
         lesson_id='lesson-3-2',
         topic_id=topic_id,
-        title='L1.3.2: Nierówności z wartością bezwzględną (|x - a| < r oraz |x - a| >= r)',
-        concept_essence='Nierówność z wartością bezwzględną to pytanie o to, czy punkty leżą BLISKO, czy DALEKO od środka $a$. Znak mniejszości ($|x - a| < r$) oznacza, że odległość jest mała — jesteś uwięziony wewnątrz jednego przedziału wokół środka: $(a - r, a + r)$. Znak większości ($|x - a| > r$) oznacza, że odległość jest duża — uciekasz na zewnątrz w dwa skrzydła ku nieskończonościom: $(-\\infty, a - r) \\cup (a + r, +\\infty)$.',
+        title='Nierówności z wartością bezwzględną i przedziały',
+        concept_essence='Nierówność z wartością bezwzględną sprawdza, czy punkty leżą BLISKO, czy DALEKO od środka $a$. Znak mniejszości ($|x - a| < r$) oznacza, że odległość jest mała — uczeń jest uwięziony wewnątrz jednego przedziału wokół środka: $(a - r, a + r)$. Znak większości ($|x - a| > r$) oznacza, że odległość jest duża — punkty uciekają na zewnątrz w dwa skrzydła ku nieskończonościom: $(-\\infty, a - r) \\cup (a + r, +\\infty)$.',
         matura_context='Jedno z najpewniejszych zadań w arkuszu maturalnym CKE (Maj 2024 zad. 1, Czerwiec 2023 zad. 1).',
         core_formulas=[
             {
@@ -199,7 +201,7 @@ def build_topic_03():
                 'cke_page': 'str. 4',
                 'example': '|x - 2| < 3 \\implies -1 < x < 5 \\implies x \\in (-1, 5)',
                 'mnemonic': 'Dzióbek w stronę wartości bezwzględnej zamyka cię w klatce.',
-                'matura_tip': 'Dla znaku <= nawiasy są domknięte: [a - r, a + r].'
+                'matura_tip': 'Dla znaku $\\le$ nawiasy są domknięte: $[a - r, a + r]$.'
             },
             {
                 'title': 'Nierówność ze znakiem większości (skrzydła zewnętrzne)',
@@ -209,7 +211,7 @@ def build_topic_03():
                 'cke_page': 'str. 4',
                 'example': '|x - 1| \\ge 4 \\implies x \\in (-\\infty, -3] \\cup [5, +\\infty)',
                 'mnemonic': 'Dzióbek w stronę liczby wyrzuca cię na zewnątrz.',
-                'matura_tip': 'Pomiędzy przedziałami zawsze stoi znak sumy zbiorów (U), nigdy część wspólna.'
+                'matura_tip': 'Pomiędzy przedziałami zawsze stoi znak sumy zbiorów ($\\cup$), nigdy część wspólna ($\\cap$).'
             }
         ],
         worked_example={
@@ -228,7 +230,7 @@ def build_topic_03():
     lessons.append(l2)
 
     # ----------------------------------------------------
-    # Lekcja 3.3: Wartość bezwzględna z wyrażeń i tożsamość sqrt(x^2) = |x| (L1.3.3)
+    # Lekcja 3.3: Wartość bezwzględna z wyrażeń i tożsamość pierwiastkowa (L1.3.3)
     # ----------------------------------------------------
     v3 = get_topic_03_visuals(2)
     l3_tasks = [
@@ -294,7 +296,7 @@ def build_topic_03():
     l3 = make_lesson(
         lesson_id='lesson-3-3',
         topic_id=topic_id,
-        title='L1.3.3: Wartość bezwzględna z wyrażeń i tożsamość sqrt(x^2) = |x|',
+        title='Wartość bezwzględna z wyrażeń i tożsamość pierwiastkowa',
         concept_essence='Pierwiastek kwadratowy z definicji NIGDY nie daje wyniku ujemnego. Dlatego najważniejsza tożsamość algebry maturalnej brzmi: $\\sqrt{x^2} = |x|$. Nigdy nie pisz odruchowo $\\sqrt{x^2} = x$ bez wartości bezwzględnej! Gdy opuszczasz kreski z wyrażenia niewymiernego (np. $|1 - \\sqrt{3}|$): najpierw oszacuj wartość wewnątrz. Jeśli wnętrze jest dodatnie — zdejmujesz kreski bez zmian. Jeśli wnętrze jest ujemne — zdejmujesz kreski i zmieniasz wszystkie znaki na przeciwne.',
         matura_context='Tożsamość $\\sqrt{a^2} = |a|$ oraz opuszczanie kresek z liczb niewymiernych to stały element zadań za 1 pkt na każdej maturze majowej i czerwcowej.',
         core_formulas=[
@@ -306,7 +308,7 @@ def build_topic_03():
                 'cke_page': 'str. 4',
                 'example': '\\sqrt{(-5)^2} = |-5| = 5, \\quad \\sqrt{x^2} = -x \\text{ dla } x < 0',
                 'mnemonic': 'Kwadrat z pierwiastkiem kasuje się w wartość bezwzględną.',
-                'matura_tip': 'Gdy w zadaniu jest założenie x < 0, to sqrt(x^2) = -x.'
+                'matura_tip': 'Gdy w zadaniu jest założenie $x < 0$, to $\\sqrt{x^2} = -x$.'
             },
             {
                 'title': 'Opuszczanie wartości bezwzględnej z różnicy liczb',
@@ -337,6 +339,8 @@ def build_topic_03():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '3 lekcje (~15 min)',

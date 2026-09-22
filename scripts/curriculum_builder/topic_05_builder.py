@@ -10,7 +10,8 @@ from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_ta
 
 def build_topic_05():
     topic_id = 'dzial-5'
-    topic_title = 'Dział 1.5: Nierówności liniowe'
+    topic_title = 'Nierówności liniowe'
+    topic_number = 5
     lessons = []
 
     # ----------------------------------------------------
@@ -80,7 +81,7 @@ def build_topic_05():
     l1 = make_lesson(
         lesson_id='lesson-5-1',
         topic_id=topic_id,
-        title='L1.5.1: Rozwiązywanie nierówności liniowych i reguła zmiany zwrotu',
+        title='Rozwiązywanie nierówności liniowych i reguła zmiany zwrotu',
         concept_essence='Rozwiązywanie nierówności liniowej różni się od zwykłego równania tylko JEDNĄ żelazną zasadą: gdy mnożysz lub dzielisz obie strony przez liczbę ujemną, natychmiast odwracasz zwrot nierówności na przeciwny ($<$ staje się $>$, a $\\le$ staje się $\\ge$). Wynika to z faktu, że na osi liczbowej liczby ujemne leżą w odwrotnej kolejności (np. $2 < 5$, ale $-2 > -5$).',
         matura_context='Podstawowe zadanie za 1 punkt występujące na każdej maturze (zadania 3–5 arkusza).',
         core_formulas=[
@@ -187,7 +188,7 @@ def build_topic_05():
     l2 = make_lesson(
         lesson_id='lesson-5-2',
         topic_id=topic_id,
-        title='L1.5.2: Zaznaczanie rozwiązań na osi liczbowej i zapis przedziałowy',
+        title='Zaznaczanie rozwiązań na osi liczbowej i zapis przedziałowy',
         concept_essence='Wizualizacja rozwiązań na osi liczbowej i zapis przedziałowy to podstawa komunikacji na maturze: 1) Kółko zamalowane i nawias ostry $\\langle \\dots \\rangle$ lub $[ \\dots ]$ stosujesz przy nierównościach słabych ($\\le$ lub $\\ge$) — brzeg należy do rozwiązań. 2) Kółko puste i nawias okrągły $( \\dots )$ stosujesz przy nierównościach ostrych ($<$ lub $>$) — brzeg jest wykluczony. 3) Przy nieskończoności ($-\\infty, +\\infty$) nawias jest ZAWSZE okrągły.',
         matura_context='Zadania z dopasowaniem rysunku na osi do nierówności lub zapisu przedziałowego to stały punkt matury za 1 pkt.',
         core_formulas=[
@@ -294,7 +295,7 @@ def build_topic_05():
     l3 = make_lesson(
         lesson_id='lesson-5-1',
         topic_id=topic_id,
-        title='L1.5.3: Układy nierówności liniowych i wyznaczanie liczb całkowitych',
+        title='Układy nierówności liniowych i wyznaczanie liczb całkowitych',
         concept_essence='Układ nierówności spięty klamrą oznacza poszukiwanie części wspólnej (obszaru, w którym oba warunki zachodzą jednocześnie). Rysujesz oba przedziały na jednej osi i wybierasz fragment, gdzie linie się nakładają. Częstym pytaniem CKE jest: podaj największą lub najmniejszą liczbę całkowitą. Pamiętaj: gdy nierówność jest ostra ($x < 4$), liczba 4 odpada — poprawną odpowiedzią jest 3!',
         matura_context='Klasyczne pytanie testowe sprawdzające uważność maturzysty w zadaniu za 1 punkt.',
         core_formulas=[
@@ -339,6 +340,8 @@ def build_topic_05():
     return {
         'id': topic_id,
         'title': topic_title,
+        'topic_number': topic_number,
+        'order': topic_number,
         'tier': 'Tier S',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '3 lekcje (~15 min)',

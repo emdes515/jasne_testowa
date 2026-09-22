@@ -33,7 +33,8 @@ import {
   BookmarkCheck,
   Layers,
   Scale,
-  XCircle
+  XCircle,
+  Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -294,55 +295,93 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
     textToParse = String(rawText);
   }
 
-  // Split by full stop when followed by capital letters (distinct conceptual sentences)
-  const sentences = textToParse
-    .split(/(?<=[.?!])\s+(?=[A-ZĄĆĘŁŃÓŚŹŻ])/)
-    .map(s => s.trim())
-    .filter(Boolean);
+  // Parse lines or sentences
+  const rawParagraphs = textToParse.split(/\n+/).map(p => p.trim()).filter(Boolean);
+  const sentences: string[] = [];
+  
+  if (rawParagraphs.length > 1) {
+    sentences.push(...rawParagraphs);
+  } else {
+    // Split by full stop when followed by capital letters (distinct conceptual thoughts)
+    sentences.push(...textToParse
+      .split(/(?<=[.?!])\s+(?=[A-ZĄĆĘŁŃÓŚŹŻ])/)
+      .map(s => s.trim())
+      .filter(Boolean));
+  }
 
-  const hasFormulaClauses = sentences.length >= 2 && sentences.slice(1).some(s => 
-    /podwyżka|obniżka|mnożenie|iloraz|wzór|równanie|zależność|współczynnik|dodawanie/i.test(s) && (s.includes('$') || s.includes('='))
-  );
+  const leadDefinition = sentences.length > 0 ? sentences[0] : textToParse;
+  const supportingClauses = sentences.slice(1);
 
-  const mainDefinition = hasFormulaClauses ? sentences[0] : textToParse;
-  const formulaClauses = hasFormulaClauses ? sentences.slice(1) : [];
-
-  const textContent = (
-    <div className="space-y-3.5">
-      {/* 1. Definicja pojęciowa z wyważonym obramowaniem */}
-      {mainDefinition && (
-        <div className={`p-3.5 sm:p-4 rounded-xl border ${
+  return (
+    <div className="w-full space-y-4">
+      {/* 1. Wyrazista definicja wprowadzająca (Hero Lead Definition) */}
+      {leadDefinition && (
+        <div className={`p-3.5 sm:p-4 rounded-xl border-l-4 border ${
           isPolishSession
-            ? 'border-rose-500/30 bg-rose-500/5 text-rose-100'
-            : 'border-amber-400/30 bg-amber-500/5 text-amber-100'
-        } text-sm sm:text-base leading-relaxed text-slate-200`}>
-          {renderMicroContent(mainDefinition)}
+            ? 'border-l-rose-500 border-rose-500/20 bg-rose-500/[0.04] text-rose-100'
+            : 'border-l-[#FFB800] border-white/10 bg-white/[0.03] text-slate-200'
+        } text-sm sm:text-base leading-relaxed shadow-sm`}>
+          {renderMicroContent(leadDefinition)}
         </div>
       )}
 
-      {/* 2. Wyodrębnione kafelki z kluczowymi formułami / operacjami */}
-      {formulaClauses.length > 0 && (
-        <div className="space-y-2">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-            Kluczowe reguły i zależności
+      {/* 2. Dedykowany moduł wizualny (diagram bez podwójnych ramek) */}
+      {(diagram || numberLine) && (
+        <div className="w-full flex justify-center py-1">
+          {diagram ? (
+            <MathDiagram diagram={diagram} borderless />
+          ) : numberLine ? (
+            <div className="w-full max-w-lg bg-black/30 border border-white/10 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
+              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider self-start flex items-center gap-1.5">
+                <Target size={13} className="text-amber-400" />
+                <span>Interpretacja na osi liczbowej:</span>
+              </span>
+              <NumberLineDiagram data={numberLine} height={64} maxWidth="400px" />
+            </div>
+          ) : null}
+        </div>
+      )}
+
+      {/* 3. Filary pojęciowe i kluczowe reguły (czytelna siatka zamiast zbitego tekstu) */}
+      {supportingClauses.length > 0 && (
+        <div className="space-y-2 pt-1">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <Sparkles size={13} className={isPolishSession ? 'text-rose-400' : 'text-[#FFB800]'} />
+            <span>Kluczowe filary i odruchy maturalne</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {formulaClauses.map((clause, idx) => {
-              let label = `Reguła ${idx + 1}`;
-              if (/^podwyżka/i.test(clause)) label = 'Podwyżka procentowa';
-              else if (/^obniżka/i.test(clause)) label = 'Obniżka procentowa';
-              else if (/^wzór/i.test(clause)) label = 'Zapis formalny';
-              else if (/^zależność/i.test(clause)) label = 'Zależność';
+          <div className={`grid gap-2.5 ${supportingClauses.length === 1 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'}`}>
+            {supportingClauses.map((clause, idx) => {
+              let label = `Zasada ${idx + 1}`;
+              let dotColor = isPolishSession ? 'bg-rose-400' : 'bg-[#FFB800]';
+              let textColor = isPolishSession ? 'text-rose-400' : 'text-[#FFB800]';
+
+              if (/podstawa/i.test(clause)) {
+                label = 'Podstawa potęgi (baza)';
+                dotColor = 'bg-amber-400';
+                textColor = 'text-amber-400';
+              } else if (/wykładnik/i.test(clause)) {
+                label = 'Wykładnik (licznik operacji)';
+                dotColor = 'bg-cyan-400';
+                textColor = 'text-cyan-400';
+              } else if (/cke|bazy|odruch|odruchem|najprostsz/i.test(clause)) {
+                label = 'Złoty odruch CKE';
+                dotColor = 'bg-emerald-400';
+                textColor = 'text-emerald-400';
+              } else if (/^podwyżka/i.test(clause)) {
+                label = 'Podwyżka procentowa';
+              } else if (/^obniżka/i.test(clause)) {
+                label = 'Obniżka procentowa';
+              } else if (/^wzór/i.test(clause)) {
+                label = 'Zapis formalny';
+              }
 
               return (
                 <div
                   key={idx}
-                  className="p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-white/5 hover:border-white/10 transition-colors flex flex-col gap-1.5 shadow-sm"
+                  className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors flex flex-col gap-1.5 shadow-sm"
                 >
-                  <span className={`text-[11px] font-bold uppercase tracking-wide flex items-center gap-1.5 ${
-                    isPolishSession ? 'text-rose-400' : 'text-amber-400'
-                  }`}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-rose-400' : 'bg-amber-400'}`} />
+                  <span className={`text-[11px] font-bold uppercase tracking-wide flex items-center gap-1.5 ${textColor}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${dotColor}`} />
                     {label}
                   </span>
                   <div className="text-xs sm:text-sm text-slate-200 leading-relaxed">
@@ -354,47 +393,6 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
           </div>
         </div>
       )}
-    </div>
-  );
-
-  // If diagram or numberLine exists: generous, full-width visual card with conceptual clarity
-  if (diagram || numberLine) {
-    return (
-      <div className="rounded-2xl p-4 sm:p-6 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-5">
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-white/5 pb-3">
-          <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
-          <span>Wprowadzenie i definicja</span>
-        </div>
-
-        {/* 1. Definicja i kluczowe reguły operacyjne */}
-        {textContent}
-
-        {/* 2. Dedykowany, przestronny moduł wizualny */}
-        <div className="w-full pt-1 flex justify-center">
-          {diagram ? (
-            <MathDiagram diagram={diagram} />
-          ) : numberLine ? (
-            <div className="w-full max-w-lg bg-black/40 border border-white/10 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
-              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider self-start flex items-center gap-1.5">
-                <Target size={13} className="text-amber-400" />
-                <span>Interpretacja na osi liczbowej:</span>
-              </span>
-              <NumberLineDiagram data={numberLine} height={64} maxWidth="400px" />
-            </div>
-          ) : null}
-        </div>
-      </div>
-    );
-  }
-
-  // Without diagram: standard elegant card
-  return (
-    <div className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 text-slate-200 shadow-sm space-y-4">
-      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-        <Lightbulb className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
-        <span>Wprowadzenie i definicja</span>
-      </div>
-      {textContent}
     </div>
   );
 }
@@ -2810,8 +2808,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             </button>
 
             {isTheoryStep ? (
-              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-                <span className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold whitespace-nowrap shrink-0 shadow-sm ${
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
+                <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-mono font-bold whitespace-nowrap shrink-0 shadow-sm ${
                   isPolishSession
                     ? 'bg-rose-500/15 text-rose-300 border border-rose-500/35'
                     : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/35'
@@ -2821,7 +2819,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {moduleBadgeName && (
                   <span 
                     title={moduleBadgeName}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-semibold truncate max-w-[125px] xs:max-w-[180px] sm:max-w-xs md:max-w-none shadow-sm ${
+                    className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold truncate flex-1 min-w-0 max-w-[200px] xs:max-w-[260px] sm:max-w-xs md:max-w-none shadow-sm ${
                       isPolishSession
                         ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
                         : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
@@ -3680,7 +3678,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   ) : (() => {
                     const formulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
                     return (
-                      <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-3.5">
+                      <section className="w-full flex flex-col gap-3.5">
                         <div className="flex items-center gap-2 text-slate-400 text-xs font-semibold">
                           <BookOpen className="w-4 h-4 text-[#FFB800]" />
                           <span>Zależności i reguły</span>
@@ -3742,7 +3740,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                                   {/* Kaseton wzoru KaTeX */}
                                   {item.latex && (
-                                    <div className="w-full py-3.5 px-4 bg-[#070A0F] border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full">
+                                    <div className="w-full py-3 px-4 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full">
                                       <div className="inline-block min-w-full text-center">
                                         <MathRenderer content={item.latex} displayMode={true} />
                                       </div>
@@ -3756,7 +3754,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                     </div>
                                   ) : (item as any).diagram ? (
                                     <div className="w-full flex justify-center py-2 overflow-x-auto">
-                                      <MathDiagram diagram={(item as any).diagram} compact />
+                                      <MathDiagram diagram={(item as any).diagram} compact borderless />
                                     </div>
                                   ) : null}
 
@@ -3929,8 +3927,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     })();
 
                     return (
-                      <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/80 border border-slate-800 flex flex-col gap-4 shadow-sm">
-                        <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                      <section className="w-full flex flex-col gap-4">
+                        <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
                           <div className="flex items-center gap-2.5">
                             <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm ${
                               isPolishSession 
@@ -3946,7 +3944,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             </h3>
                           </div>
                           {normExample.steps.length > 0 && (
-                            <span className="text-[11px] font-bold text-slate-400 bg-slate-800/80 border border-slate-700/60 px-2.5 py-0.5 rounded-full shrink-0">
+                            <span className="text-[11px] font-bold text-slate-400 bg-white/[0.04] border border-white/10 px-2.5 py-0.5 rounded-full shrink-0">
                               {normExample.steps.length} {normExample.steps.length === 1 ? 'krok' : normExample.steps.length < 5 ? 'kroki' : 'kroków'}
                             </span>
                           )}
@@ -3954,10 +3952,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {/* Treść polecenia / Cytat lektury */}
                         {normExample.problem && (
-                          <div className={`rounded-xl p-4 border flex flex-col gap-1.5 min-w-0 max-w-full overflow-hidden ${
+                          <div className={`rounded-2xl p-4 sm:p-5 border flex flex-col gap-1.5 min-w-0 max-w-full overflow-hidden shadow-sm ${
                             isPolishSession
-                              ? 'bg-amber-500/[0.04] border-amber-500/30 shadow-[0_2px_12px_rgba(255,184,0,0.05)]'
-                              : 'bg-slate-950/60 border border-slate-800'
+                              ? 'bg-amber-500/[0.04] border-amber-500/30'
+                              : 'bg-[#0E1522] border-white/10'
                           }`}>
                             <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider block ${
                               isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-sky-400' : 'text-[#FFB800]'
@@ -3978,7 +3976,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             {(normExample as any).numberLine ? (
                               <NumberLineDiagram data={(normExample as any).numberLine} height={60} maxWidth="340px" />
                             ) : (
-                              <MathDiagram diagram={(normExample as any).diagram || (normExample as any).plot} compact />
+                              <MathDiagram diagram={(normExample as any).diagram || (normExample as any).plot} compact borderless />
                             )}
                           </div>
                         )}
@@ -3991,13 +3989,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           };
 
                           return (
-                            <div className="space-y-3 pt-1">
+                            <div className="space-y-2.5 pt-1">
                               {normExample.steps.map((st, sIdx) => {
                                 const cleanLabel = formatStepLabel(st.label);
                                 return (
                                   <div 
                                     key={sIdx} 
-                                    className="rounded-xl p-3.5 sm:p-4 bg-slate-950/50 border border-slate-800/90 flex flex-col gap-2 transition-all hover:border-slate-700 shadow-sm min-w-0 max-w-full overflow-hidden"
+                                    className="rounded-xl p-3.5 sm:p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 flex flex-col gap-2 transition-all shadow-sm min-w-0 max-w-full overflow-hidden"
                                   >
                                     <div className="flex items-center gap-2.5 flex-wrap">
                                       <span className={`px-2 py-0.5 rounded-md font-mono text-xs font-bold shrink-0 border ${
@@ -4130,16 +4128,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                           {/* Karta Wizualna: Schemat pułapki / oś liczbowa */}
                           {((trapData as any).numberLine || (theoryPill as any)?.trapNumberLine || (trapData as any).diagram || (theoryPill as any)?.trapDiagram) && (
-                            <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/90 border border-slate-800 flex flex-col gap-2.5 shadow-sm">
-                              <div className="flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-white/5 pb-2.5">
+                            <section className="w-full flex flex-col gap-2.5">
+                              <div className="flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-white/5 pb-2">
                                 <Target className="w-3.5 h-3.5 text-[#FFB800]" />
                                 <span>Ilustracja pułapki egzaminacyjnej:</span>
                               </div>
-                              <div className="w-full flex justify-center py-2 overflow-x-auto">
+                              <div className="w-full flex justify-center py-1 overflow-x-auto">
                                 {((trapData as any).numberLine || (theoryPill as any)?.trapNumberLine) ? (
                                   <NumberLineDiagram data={(trapData as any).numberLine || (theoryPill as any)?.trapNumberLine} height={60} maxWidth="360px" />
                                 ) : (
-                                  <MathDiagram diagram={(trapData as any).diagram || (theoryPill as any)?.trapDiagram} compact />
+                                  <MathDiagram diagram={(trapData as any).diagram || (theoryPill as any)?.trapDiagram} compact borderless />
                                 )}
                               </div>
                             </section>

@@ -15,7 +15,7 @@ def get_topic_10_visuals(l_idx):
         # L1.10.1: Wzór ogólny y = ax + b i znaczenie współczynnika a
         tab0 = make_plot_diagram(
             title='Współczynnik kierunkowy a: Kąt nachylenia i monotoniczność prostej',
-            badge='\\begin{cases} a > 0 \\implies \\text{funkcja rosnąca } (\\nearrow) \\\\[3pt] a = 0 \\implies \\text{funkcja stała } (\\rightarrow) \\\\[3pt] a < 0 \\implies \\text{funkcja malejąca } (\\searrow) \\end{cases}',
+            badge=r'\begin{cases} a > 0 \implies \text{funkcja rosnąca } (\nearrow) \\ a = 0 \implies \text{funkcja stała } (\rightarrow) \\ a < 0 \implies \text{funkcja malejąca } (\searrow) \end{cases}',
             caption='Znak współczynnika kierunkowego a decyduje o tym, czy prosta rośnie, maleje, czy jest pozioma (stała).',
             segments=[
                 {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
@@ -43,7 +43,7 @@ def get_topic_10_visuals(l_idx):
         # L1.10.2: Znaczenie wyrazu wolnego b (przecięcie z osią OY w punkcie (0, b))
         tab0 = make_plot_diagram(
             title='Wyraz wolny b: Przecięcie wykresu z pionową osią OY',
-            badge='P = (0, b) = (0, f(0))',
+            badge=r'P = (0,\; b) = (0,\; f(0))',
             caption='Podstawiając x = 0 do wzoru y = ax + b, otrzymujemy y = b. Wykres KAŻDEJ funkcji liniowej przecina pionową oś OY dokładnie na wysokości b!',
             segments=[
                 {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
@@ -69,7 +69,7 @@ def get_topic_10_visuals(l_idx):
         # L1.10.3: Wyznaczanie miejsca zerowego x₀ = -b/a algebraicznie i z rysunku
         tab0 = make_plot_diagram(
             title='Miejsce zerowe funkcji liniowej: x_0 = -b / a',
-            badge='ax + b = 0 \\implies x_0 = -\\frac{b}{a}',
+            badge=r'ax + b = 0 \implies x_0 = -\frac{b}{a}',
             caption='Miejsce zerowe funkcji to punkt przecięcia prostej z osią poziomą OX (wartość y = 0).',
             segments=[
                 {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
@@ -84,7 +84,7 @@ def get_topic_10_visuals(l_idx):
                 {'x': 170, 'y': 180, 'text': 'Miejsce zerowe x₀', 'color': C_SUCCESS, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
             ],
             metrics=[
-                {'label': 'Wzór z tablic', 'value': '$x_0 = -\\frac{b}{a}$ (Karta wzorów str. 4)', 'color': C_SUCCESS},
+                {'label': 'Wzór z tablic', 'value': '$x_0 = -\\frac{b}{a}$ (Karta wzorów str. 21)', 'color': C_SUCCESS},
                 {'label': 'Znak minus', 'value': 'Pamiętaj o minusie przed ułamkiem!', 'color': C_DANGER},
                 {'label': 'Sprawdzenie', 'value': 'Podstaw $x_0$ do wzoru: $a x_0 + b = 0$', 'color': C_SKY}
             ]
@@ -95,7 +95,7 @@ def get_topic_10_visuals(l_idx):
         # L1.10.4: Warunek równoległości prostych (a₁ = a₂) w zadaniach CKE
         tab0 = make_plot_diagram(
             title='Warunek równoległości prostych: Identyczny współczynnik kierunkowy',
-            badge='k \\parallel l \\implies a_1 = a_2',
+            badge=r'k \parallel l \implies a_1 = a_2',
             caption='Dwie proste są do siebie równoległe wtedy i tylko wtedy, gdy ich współczynniki kierunkowe a są DOKŁADNIE TAKIE SAME (a_1 = a_2)! Wyrazy wolne b mogą być dowolne.',
             segments=[
                 {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
