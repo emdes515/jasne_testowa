@@ -26,7 +26,7 @@ export default defineConfig(() => {
       },
     },
     build: {
-      chunkSizeWarningLimit: 1500,
+      chunkSizeWarningLimit: 3000,
       rollupOptions: {
         output: {
           manualChunks(id) {
@@ -34,16 +34,6 @@ export default defineConfig(() => {
               if (id.includes('firebase')) {
                 return 'vendor-firebase';
               }
-              if (id.includes('katex') || id.includes('react-katex') || id.includes('rehype-katex') || id.includes('remark-math')) {
-                return 'vendor-katex';
-              }
-              if (id.includes('lucide-react')) {
-                return 'vendor-icons';
-              }
-              if (id.includes('motion') || id.includes('canvas-confetti')) {
-                return 'vendor-animation';
-              }
-              return 'vendor';
             }
           }
         }
