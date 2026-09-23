@@ -34,7 +34,7 @@ import {
   Layers,
   Scale,
   XCircle,
-  Sparkles
+  Search
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -61,6 +61,121 @@ import { ProPopup } from './ProPopup';
 import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro, activateProWithCode } from '../lib/heartsManager';
 import { recordAiTokenUsage } from '../services/aiUsageTracker';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
+import { getCkeFormulas } from '../services/ckeCatalogRepository';
+import { CKE_FORMULAS_DATA } from '../data/ckeFormulasData';
+
+/**
+ * Wyznacza identyfikator tematu CKE dla danego działu i lekcji.
+ * Obsługuje dwukierunkowo oba standardy: 10 działów kurikulum oraz 15 działów matury CKE.
+ */
+export function resolveCkeTopicForDepartment(
+  departmentBadgeLabel: string,
+  moduleBadgeName?: string | null,
+  lessonTitle?: string | null
+): string | null {
+  const deptNum = (departmentBadgeLabel || '').replace(/\D+/g, '');
+  const modName = (moduleBadgeName || '').toLowerCase().trim();
+  const title = (lessonTitle || '').toLowerCase().trim();
+  const fullText = `${deptNum} ${modName} ${title}`;
+
+  // 1. Dopasowanie po specyficznych słowach kluczowych (priorytet treści)
+  if (fullText.includes('trygonometr') || fullText.includes('sinus') || fullText.includes('cosinus') || fullText.includes('tangens')) {
+    return 'trygonometria';
+  }
+  if (fullText.includes('ciąg') || fullText.includes('ciag') || fullText.includes('arytmetycz') || (fullText.includes('geometrycz') && !fullText.includes('geometr'))) {
+    return 'ciagi';
+  }
+  if (fullText.includes('logarytm') || fullText.includes('procent') || fullText.includes('kapitalizacj')) {
+    return 'logarytmy-procenty';
+  }
+  if (
+    fullText.includes('potęg') || fullText.includes('poteg') ||
+    fullText.includes('pierwiast') ||
+    fullText.includes('skróconego') || fullText.includes('skroconego') ||
+    fullText.includes('wartość bezwzględn') || fullText.includes('wartosc bezwzgledn') ||
+    fullText.includes('liczby rzeczywist')
+  ) {
+    return 'potegi-pierwiastki';
+  }
+  if (
+    fullText.includes('planimetr') ||
+    fullText.includes('stereometr') ||
+    fullText.includes('analitycz') ||
+    fullText.includes('odległość punkt') ||
+    fullText.includes('środek odcink') ||
+    fullText.includes('równanie okręgu') ||
+    fullText.includes('trójkąt równoboczn')
+  ) {
+    return 'geometria';
+  }
+  if (
+    fullText.includes('prawdopodob') ||
+    fullText.includes('kombinatoryk') ||
+    fullText.includes('statystyk') ||
+    fullText.includes('mediana') ||
+    fullText.includes('średnia') || fullText.includes('srednia')
+  ) {
+    return 'prawdopodobienstwo';
+  }
+  if (
+    fullText.includes('kwadrat') ||
+    fullText.includes('parabol') ||
+    fullText.includes('delta') ||
+    fullText.includes('wierzchoł') ||
+    fullText.includes('viète') || fullText.includes('viete') ||
+    fullText.includes('liniow') ||
+    fullText.includes('funkcj') ||
+    fullText.includes('wykres') ||
+    fullText.includes('nierówno') ||
+    fullText.includes('równa') ||
+    fullText.includes('wymiern') ||
+    fullText.includes('iloczynow')
+  ) {
+    return 'funkcje-rownania';
+  }
+
+  // 2. Mapowanie po numerze działu (uwzględniające oba standardy: mikroedukacyjny 1-10 i maturalny CKE 1-15)
+  switch (deptNum) {
+    case '1':
+      return 'potegi-pierwiastki';
+    case '2':
+      return 'logarytmy-procenty';
+    case '3':
+      // Dział 3: Wartość bezwzględna (kurikulum) lub Równania i nierówności (CKE)
+      return modName.includes('równa') || modName.includes('nierówno') ? 'funkcje-rownania' : 'potegi-pierwiastki';
+    case '4':
+      // Dział 4: Wzory skróconego mnożenia (kurikulum) lub Układy równań (CKE)
+      return modName.includes('układ') || modName.includes('równa') ? 'funkcje-rownania' : 'potegi-pierwiastki';
+    case '5':
+      return 'funkcje-rownania'; // Nierówności liniowe / Funkcje i wykresy
+    case '6':
+      return 'funkcje-rownania'; // Równania iloczynowe / Funkcja kwadratowa
+    case '7':
+      // Dział 7: Równania i wyrażenia wymierne (kurikulum) vs Ciągi liczbowe (CKE)
+      return modName.includes('ciąg') || modName.includes('ciag') ? 'ciagi' : 'funkcje-rownania';
+    case '8':
+      // Dział 8: Nierówności kwadratowe (kurikulum) vs Trygonometria (CKE)
+      return modName.includes('trygono') ? 'trygonometria' : 'funkcje-rownania';
+    case '9':
+      // Dział 9: Wykres funkcji (kurikulum) vs Planimetria (CKE)
+      return modName.includes('planimetr') || modName.includes('geometr') ? 'geometria' : 'funkcje-rownania';
+    case '10':
+      // Dział 10: Funkcja liniowa (kurikulum) vs Geometria analityczna (CKE)
+      return modName.includes('geometr') || modName.includes('analitycz') ? 'geometria' : 'funkcje-rownania';
+    case '11':
+      return modName.includes('stereometr') || modName.includes('geometr') ? 'geometria' : 'trygonometria';
+    case '12':
+      return modName.includes('kombin') || modName.includes('prawd') ? 'prawdopodobienstwo' : 'geometria';
+    case '13':
+      return modName.includes('prawd') ? 'prawdopodobienstwo' : 'geometria';
+    case '14':
+      return modName.includes('statyst') ? 'prawdopodobienstwo' : 'geometria';
+    case '15':
+      return modName.includes('optymal') ? 'funkcje-rownania' : 'prawdopodobienstwo';
+    default:
+      return 'funkcje-rownania';
+  }
+}
 
 export interface ParsedExamTrap {
   error?: string;
@@ -82,10 +197,10 @@ function parseExamTrap(trapRaw: any): ParsedExamTrap | null {
     const tipText = trapRaw.matura_tip || trapRaw.tip || '';
     const descText = trapRaw.description || '';
 
-    const cleanErr = errorText ? String(errorText).replace(/^[❌⚠️\s]*(?:błąd\s*typowy|typowy\s*błąd)[:\s-]*/i, '').trim() : undefined;
-    const cleanCorr = correctText ? String(correctText).replace(/^[✓✔\s]*(?:poprawnie|prawidłowo)[:\s-]*/i, '').trim() : undefined;
+    const cleanErr = errorText ? String(errorText).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : undefined;
+    const cleanCorr = correctText ? String(correctText).replace(/^[✓✔\s]*(?:poprawnie|poprawne\s*podejście|prawidłowo|dobre\s*podejście)[:\s-]*/i, '').trim() : undefined;
     const cleanTip = tipText ? String(tipText).replace(/^[💡\s]*(?:wskazówka(?:\s*cke)?|rada)[:\s-]*/i, '').trim() : undefined;
-    const cleanDesc = descText ? String(descText).replace(/^[❌⚠️💡✓✔\s]*/, '').trim() : undefined;
+    const cleanDesc = descText ? String(descText).replace(/^[❌⚠️💡✓✔\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)?[:\s-]*/i, '').trim() : undefined;
 
     if (cleanErr || cleanCorr || cleanTip || cleanDesc) {
       return {
@@ -102,14 +217,14 @@ function parseExamTrap(trapRaw: any): ParsedExamTrap | null {
     let text = trapRaw.trim();
     text = text.replace(/^[❌⚠️\s]+/, '');
 
-    const errorMatch = text.match(/(?:(?:błąd\s*typowy|typowy\s*błąd)[:\s-]*)([\s\S]*?)(?=(?:(?:✓|✔)?\s*(?:poprawnie|prawidłowo)|(?:💡)?\s*wskazówka|$))/i);
-    const correctMatch = text.match(/(?:(?:✓|✔)?\s*(?:poprawnie|prawidłowo)[:\s-]*)([\s\S]*?)(?=(?:(?:💡)?\s*wskazówka|$))/i);
+    const errorMatch = text.match(/(?:(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*)([\s\S]*?)(?=(?:(?:✓|✔)?\s*(?:poprawnie|poprawne\s*podejście|prawidłowo)|(?:💡)?\s*wskazówka|$))/i);
+    const correctMatch = text.match(/(?:(?:✓|✔)?\s*(?:poprawnie|poprawne\s*podejście|prawidłowo)[:\s-]*)([\s\S]*?)(?=(?:(?:💡)?\s*wskazówka|$))/i);
     const tipMatch = text.match(/(?:(?:💡)?\s*wskazówka(?:\s*cke)?[:\s-]*)([\s\S]*)/i);
 
     if (errorMatch || correctMatch) {
       return {
-        error: errorMatch ? errorMatch[1].replace(/^[❌⚠️\s]*/, '').trim() : undefined,
-        correct: correctMatch ? correctMatch[1].replace(/^[✓✔\s]*/, '').trim() : undefined,
+        error: errorMatch ? errorMatch[1].replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)?[:\s-]*/i, '').trim() : undefined,
+        correct: correctMatch ? correctMatch[1].replace(/^[✓✔\s]*(?:poprawnie|poprawne\s*podejście|prawidłowo)?[:\s-]*/i, '').trim() : undefined,
         tip: tipMatch ? tipMatch[1].replace(/^[💡\s]*/, '').trim() : undefined
       };
     }
@@ -117,13 +232,13 @@ function parseExamTrap(trapRaw: any): ParsedExamTrap | null {
     if (text.includes('➔') || text.includes('->')) {
       const parts = text.split(/➔|->/);
       return {
-        error: parts[0]?.replace(/^[❌⚠️\s]*(?:błąd\s*typowy|typowy\s*błąd)?[:\s-]*/i, '').trim(),
-        correct: parts[1]?.replace(/^[✓✔\s]*(?:poprawnie|prawidłowo)?[:\s-]*/i, '').trim()
+        error: parts[0]?.replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)?[:\s-]*/i, '').trim(),
+        correct: parts[1]?.replace(/^[✓✔\s]*(?:poprawnie|poprawne\s*podejście|prawidłowo)?[:\s-]*/i, '').trim()
       };
     }
 
     return {
-      description: text.replace(/^[❌⚠️💡✓✔\s]*/, '').trim()
+      description: text.replace(/^[❌⚠️💡✓✔\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)?[:\s-]*/i, '').trim()
     };
   }
 
@@ -164,6 +279,12 @@ function renderMicroContent(rawText?: string | any) {
   }
 
   if (!textToParse || !textToParse.trim()) return null;
+
+  // Pre-sanitize LaTeX backslash escapes mangled into JSON newlines/tabs
+  textToParse = textToParse
+    .replace(/(?:\n|^)\s*eq(?![a-zA-Z])/g, '\\neq ')
+    .replace(/\n\s*ot(?![a-zA-Z])/g, '\\not ')
+    .replace(/\t\s*imes(?![a-zA-Z])/g, '\\times ');
 
   // Format bullet items into distinct micro-cards if bullet points are present
   const bulletItems = textToParse
@@ -289,24 +410,84 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
     textToParse = rawText;
   } else if (Array.isArray(rawText)) {
     textToParse = rawText.map(item => (typeof item === 'string' ? item : item?.text || item?.description || '')).filter(Boolean).join('\n\n');
-  } else if (typeof rawText === 'object') {
-    textToParse = rawText.description || rawText.text || JSON.stringify(rawText);
+  } else if (typeof rawText === 'object' && rawText !== null) {
+    if (rawText.lead || rawText.pillars || rawText.mental_model) {
+      const parts: string[] = [];
+      if (rawText.lead) parts.push(rawText.lead);
+      if (rawText.pillars && Array.isArray(rawText.pillars)) {
+        parts.push(rawText.pillars.map((p: any) => p.title ? `**${p.title}**: ${p.description || ''}` : (p.description || '')).join('\n\n'));
+      }
+      if (rawText.mental_model) parts.push(`*Model myślowy:* ${rawText.mental_model}`);
+      textToParse = parts.filter(Boolean).join('\n\n');
+    } else {
+      textToParse = rawText.description || rawText.text || '';
+    }
   } else if (rawText) {
     textToParse = String(rawText);
   }
 
-  // Parse lines or sentences
-  const rawParagraphs = textToParse.split(/\n+/).map(p => p.trim()).filter(Boolean);
+  // Pre-sanitize: fix any unintended LaTeX backslash escapes that got mangled into JSON newlines/tabs
+  textToParse = textToParse
+    .replace(/(?:\n|^)\s*eq(?![a-zA-Z])/g, '\\neq ')
+    .replace(/\n\s*ot(?![a-zA-Z])/g, '\\not ')
+    .replace(/\t\s*imes(?![a-zA-Z])/g, '\\times ');
+
+  // Parse lines or sentences, guaranteeing we never break math formulas or formula continuations
+  const rawLines = textToParse.split(/\n+/).map(p => p.trim()).filter(Boolean);
+  const rawParagraphs: string[] = [];
+  for (const line of rawLines) {
+    if (rawParagraphs.length === 0) {
+      rawParagraphs.push(line);
+      continue;
+    }
+    const prev = rawParagraphs[rawParagraphs.length - 1];
+    const prevDollarCount = (prev.match(/\$/g) || []).length;
+    const isInsideMath = prevDollarCount % 2 === 1;
+    const isFormulaContinuation = /^(?:\\?neq\b|eq\b|\\?le\b|\\?ge\b|[=<>+\-*,;]|\p{Ll})/u.test(line) || line.startsWith(')');
+
+    if (isInsideMath || isFormulaContinuation) {
+      rawParagraphs[rawParagraphs.length - 1] += ' ' + line;
+    } else {
+      rawParagraphs.push(line);
+    }
+  }
+
   const sentences: string[] = [];
   
   if (rawParagraphs.length > 1) {
     sentences.push(...rawParagraphs);
-  } else {
-    // Split by full stop when followed by capital letters (distinct conceptual thoughts)
-    sentences.push(...textToParse
-      .split(/(?<=[.?!])\s+(?=[A-ZĄĆĘŁŃÓŚŹŻ])/)
-      .map(s => s.trim())
-      .filter(Boolean));
+  } else if (rawParagraphs.length === 1) {
+    // Split sentences safely without breaking inside math mode ($...$) or common abbreviations
+    const text = rawParagraphs[0];
+    const parts: string[] = [];
+    let current = '';
+    let inMath = false;
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      if (char === '$') {
+        inMath = !inMath;
+        current += char;
+      } else if (!inMath && (char === '.' || char === '!' || char === '?')) {
+        current += char;
+        const rest = text.slice(i + 1);
+        const match = rest.match(/^(\s+)([A-ZĄĆĘŁŃÓŚŹŻ])/);
+        if (match) {
+          const wordBeforeDot = current.slice(-10).toLowerCase();
+          if (!/(?:np|tzn|tzw|itd|itp|dr|prof)\.$/.test(wordBeforeDot)) {
+            parts.push(current.trim());
+            current = '';
+            i += match[1].length;
+          }
+        }
+      } else {
+        current += char;
+      }
+    }
+    if (current.trim()) {
+      parts.push(current.trim());
+    }
+    sentences.push(...parts.filter(Boolean));
   }
 
   const leadDefinition = sentences.length > 0 ? sentences[0] : textToParse;
@@ -329,7 +510,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
       {(diagram || numberLine) && (
         <div className="w-full flex justify-center py-1">
           {diagram ? (
-            <MathDiagram diagram={diagram} borderless />
+            <MathDiagram diagram={diagram} borderless hideTitle={true} />
           ) : numberLine ? (
             <div className="w-full max-w-lg bg-black/30 border border-white/10 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
               <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider self-start flex items-center gap-1.5">
@@ -346,8 +527,8 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
       {supportingClauses.length > 0 && (
         <div className="space-y-2 pt-1">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-            <Sparkles size={13} className={isPolishSession ? 'text-rose-400' : 'text-[#FFB800]'} />
-            <span>Kluczowe filary i odruchy maturalne</span>
+            <GraduationCap size={14} className={isPolishSession ? 'text-rose-400' : 'text-[#FFB800]'} />
+            <span>Kluczowe zasady i własności</span>
           </div>
           <div className={`grid gap-2.5 ${supportingClauses.length === 1 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'}`}>
             {supportingClauses.map((clause, idx) => {
@@ -364,7 +545,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
                 dotColor = 'bg-cyan-400';
                 textColor = 'text-cyan-400';
               } else if (/cke|bazy|odruch|odruchem|najprostsz/i.test(clause)) {
-                label = 'Złoty odruch CKE';
+                label = 'Wskazówka maturalna';
                 dotColor = 'bg-emerald-400';
                 textColor = 'text-emerald-400';
               } else if (/^podwyżka/i.test(clause)) {
@@ -374,6 +555,11 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
               } else if (/^wzór/i.test(clause)) {
                 label = 'Zapis formalny';
               }
+
+              let sanitizedClause = clause
+                .replace(/^eq(?![a-zA-Z])/i, 'a \\neq ')
+                .replace(/^\$eq(?![a-zA-Z])/i, '$a \\neq ')
+                .trim();
 
               return (
                 <div
@@ -385,7 +571,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
                     {label}
                   </span>
                   <div className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                    {renderMicroContent(clause)}
+                    {renderMicroContent(sanitizedClause)}
                   </div>
                 </div>
               );
@@ -693,6 +879,8 @@ export interface SessionRunnerProps {
 export function sanitizeLessonHeading(title?: string): string {
   if (!title) return '';
   let cleaned = title.trim();
+  // Fix "Lekcja dzial-11-lekcja-1: ..." or "dzial-11-lekcja-1: ..." -> "Lekcja 11.1: ..."
+  cleaned = cleaned.replace(/^(?:Lekcja\s+)?(?:dzial[.-]?(\d+)[-_.]lekcja[-_.]?(\d+))\s*[:.]\s*/i, 'Lekcja $1.$2: ');
   // Fix "Lekcja lesson-1-2: ..." -> "Lekcja 1.2: ..."
   cleaned = cleaned.replace(/^Lekcja\s+(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson-(\d+)-(\d+)\s*[:.]\s*/i, 'Lekcja $1.$2: ');
   // Fix "lesson-1-2: ..." -> "Lekcja 1.2: ..."
@@ -770,15 +958,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     currentHearts: number;
     nextHearts: number;
   } | null>(null);
-
-  // Synchronizacja liczby serc z animacją – zmiana dopiero w momencie uderzenia komety w nagłówek
-  const displayedHeartsCount = useMemo(() => {
-    if (heartsData.isPro) return '∞';
-    if (heartFlyAnim?.active && !pillImpactDone) {
-      return heartFlyAnim.currentHearts;
-    }
-    return heartsData.hearts;
-  }, [heartsData, heartFlyAnim, pillImpactDone]);
 
   // Dynamiczny wymóg zaliczenia zadań – odczytywany z obiektu lekcji
   const targetCorrectAnswers = sessionData.required_correct_tasks || (sessionData as any).tasksRequired || 4;
@@ -871,6 +1050,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   // Modals & Drawers
   const [showExitModal, setShowExitModal] = useState<boolean>(false);
   const [showFormulaSheet, setShowFormulaSheet] = useState<boolean>(false);
+  const [formulaSearchQuery, setFormulaSearchQuery] = useState<string>('');
+  const [formulaViewMode, setFormulaViewMode] = useState<'department' | 'all'>('department');
   const [showArgumentVaultModal, setShowArgumentVaultModal] = useState<boolean>(false);
   const [isSessionComplete, setIsSessionComplete] = useState<boolean>(false);
 
@@ -878,6 +1059,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const taskAreaRef = React.useRef<HTMLElement>(null);
 
   const isTheoryStep = currentStep === 0;
+
+  // Synchronizacja liczby serc z animacją – w trybie teorii nielimitowane (∞), zmiana dopiero w momencie uderzenia komety
+  const displayedHeartsCount = useMemo(() => {
+    if (isTheoryStep || heartsData.isPro) return '∞';
+    if (heartFlyAnim?.active && !pillImpactDone) {
+      return heartFlyAnim.currentHearts;
+    }
+    return heartsData.hearts;
+  }, [isTheoryStep, heartsData, heartFlyAnim, pillImpactDone]);
+
   const rawCurrentTask = taskQueue[currentQueueIndex] || taskQueue[0] || tasks[0];
   const currentTask = useMemo(() => {
     if (!rawCurrentTask) return rawCurrentTask;
@@ -1172,6 +1363,26 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     };
   }, [lessonTitle, lessonId, sessionData]);
 
+  const departmentBadgeLabel = useMemo(() => {
+    const topicIdStr = String((sessionData as any)?.topicId || (sessionData as any)?.topic_id || '');
+    const lessonIdStr = String(lessonId || '');
+    const mMatch = topicIdStr.match(/dzial[-_]?(\d+)/i) || lessonIdStr.match(/lesson[-_]?(\d+)/i) || lessonIdStr.match(/^(\d+)[.-]/);
+    if (isMathExplicit || !isPolishSession) {
+      if (mMatch) {
+        return `DZIAŁ ${mMatch[1]}`;
+      }
+      return 'DZIAŁ 1';
+    }
+    if (isPolishSession) {
+      const topicNumMatch = topicIdStr.match(/(?:dzial|topic|pillar)[-_]?(\d+)/i) || lessonIdStr.match(/(?:pol[-_]?)?lesson[-_]?(\d+)/i);
+      if (topicNumMatch) {
+        return `FILAR ${topicNumMatch[1]}`;
+      }
+      return 'FILAR 1';
+    }
+    return 'DZIAŁ 1';
+  }, [sessionData, lessonId, isMathExplicit, isPolishSession]);
+
   const moduleBadgeName = useMemo(() => {
     // 1. Jeśli to matematyka, priorytetowo używaj nazwy działu matematyki
     if (isMathExplicit) {
@@ -1251,27 +1462,165 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return null;
   }, [sessionData, isPolishSession, isMathExplicit, lessonId]);
 
+  // Rozpoznawanie tematu CKE dla danego działu do karty wzorów
+  const matchedCkeTopicId = useMemo(() => {
+    return resolveCkeTopicForDepartment(departmentBadgeLabel, moduleBadgeName, lessonTitleClean || rawLessonTitle);
+  }, [departmentBadgeLabel, moduleBadgeName, lessonTitleClean, rawLessonTitle]);
+
+  // Podręczny zestaw wzorów dla bieżącego działu (Core-4 + CKE)
+  const departmentFormulas = useMemo(() => {
+    const list: Array<{
+      id: string;
+      title: string;
+      latex: string;
+      subFormulas?: { label: string; formula: string }[];
+      description?: string;
+      in_cke_sheet?: boolean;
+      cke_page?: string | number;
+      matura_tip?: string;
+      mnemonic?: string;
+      example?: string;
+    }> = [];
+
+    // 1. Z pigułki wiedzy lekcji (getCoreFormulas)
+    const tpFormulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
+    for (let i = 0; i < tpFormulas.length; i++) {
+      const f = tpFormulas[i];
+      if (f.latex || f.title) {
+        list.push({
+          id: `tp-${i}`,
+          title: f.title || (isPolishSession ? 'Kluczowe pojęcie' : 'Wzór z lekcji'),
+          latex: f.latex,
+          description: f.description,
+          in_cke_sheet: f.in_cke_sheet,
+          cke_page: f.cke_page,
+          matura_tip: f.matura_tip,
+          mnemonic: f.mnemonic,
+          example: f.example
+        });
+      }
+    }
+
+    // 2. Z formulaSheet lekcji (jeśli istnieje)
+    if (formulaSheet?.formulas && Array.isArray(formulaSheet.formulas)) {
+      for (let i = 0; i < formulaSheet.formulas.length; i++) {
+        const f = formulaSheet.formulas[i];
+        const alreadyInList = list.some(item => item.latex && f.latex && item.latex.trim() === f.latex.trim());
+        if (!alreadyInList && (f.latex || f.title)) {
+          list.push({
+            id: `fs-${i}`,
+            title: f.title || 'Wzór maturalny',
+            latex: f.latex,
+            description: (f as any).description,
+            cke_page: (f as any).cke_page,
+            in_cke_sheet: (f as any).in_cke_sheet ?? ((f as any).cke_page ? true : undefined)
+          });
+        }
+      }
+    }
+
+    // 3. Wzbogacenie o oficjalne tablice CKE dla danego działu (jeśli matematyka)
+    if (!isPolishSession && matchedCkeTopicId) {
+      const ckeList = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
+      const matchingCke = [...ckeList.filter(item => item.topicId === matchedCkeTopicId)];
+      const searchContext = `${departmentBadgeLabel} ${moduleBadgeName || ''} ${lessonTitleClean || rawLessonTitle || ''}`.toLowerCase();
+
+      // Sortowanie: wzory najbardziej korespondujące z tematem (np. funkcja kwadratowa w Dziale 8) na samej górze
+      matchingCke.sort((a, b) => {
+        const aTitleMatch = searchContext.includes(a.title.toLowerCase()) ? 3 : 0;
+        const bTitleMatch = searchContext.includes(b.title.toLowerCase()) ? 3 : 0;
+        const aKwMatch = a.keywords.some(k => searchContext.includes(k.toLowerCase())) ? 2 : 0;
+        const bKwMatch = b.keywords.some(k => searchContext.includes(k.toLowerCase())) ? 2 : 0;
+        return (bTitleMatch + bKwMatch) - (aTitleMatch + aKwMatch);
+      });
+
+      for (const item of matchingCke) {
+        const alreadyHas = list.some(l => 
+          (l.title && l.title.toLowerCase() === item.title.toLowerCase()) ||
+          (l.latex && item.formula && l.latex.replace(/\s+/g, '') === item.formula.replace(/\s+/g, ''))
+        );
+        if (!alreadyHas) {
+          list.push({
+            id: item.id,
+            title: item.title,
+            latex: item.formula,
+            subFormulas: item.subFormulas,
+            description: item.explanation,
+            cke_page: item.cke_page,
+            in_cke_sheet: true,
+            matura_tip: item.ckeTrap,
+            mnemonic: item.goldenRule
+          });
+        }
+      }
+    }
+
+    return list;
+  }, [theoryPill, formulaSheet, isPolishSession, matchedCkeTopicId, departmentBadgeLabel, moduleBadgeName, lessonTitleClean, rawLessonTitle]);
+
+  // Filtrowane wzory w drawerze (wspiera wyszukiwanie i przeglądanie wszystkich działów)
+  const drawerFormulas = useMemo(() => {
+    const query = formulaSearchQuery.trim().toLowerCase();
+
+    if (formulaViewMode === 'all' && !isPolishSession) {
+      const ckeList = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
+      return ckeList
+        .filter(item => {
+          if (!query) return true;
+          return (
+            item.title.toLowerCase().includes(query) ||
+            item.formula.toLowerCase().includes(query) ||
+            item.topicName.toLowerCase().includes(query) ||
+            item.keywords.some(k => k.toLowerCase().includes(query)) ||
+            (item.goldenRule?.toLowerCase().includes(query) ?? false) ||
+            (item.ckeTrap?.toLowerCase().includes(query) ?? false)
+          );
+        })
+        .map(item => ({
+          id: item.id,
+          title: item.title,
+          latex: item.formula,
+          subFormulas: item.subFormulas,
+          description: item.explanation,
+          cke_page: item.cke_page,
+          in_cke_sheet: true,
+          matura_tip: item.ckeTrap,
+          mnemonic: item.goldenRule
+        }));
+    }
+
+    if (!query) return departmentFormulas;
+
+    return departmentFormulas.filter(item => {
+      const inTitle = item.title?.toLowerCase().includes(query) ?? false;
+      const inLatex = item.latex?.toLowerCase().includes(query) ?? false;
+      const inDesc = item.description?.toLowerCase().includes(query) ?? false;
+      const inMnem = item.mnemonic?.toLowerCase().includes(query) ?? false;
+      const inTip = item.matura_tip?.toLowerCase().includes(query) ?? false;
+      const inSub = item.subFormulas?.some(s => s.label.toLowerCase().includes(query) || s.formula.toLowerCase().includes(query)) ?? false;
+      return inTitle || inLatex || inDesc || inMnem || inTip || inSub;
+    });
+  }, [departmentFormulas, formulaSearchQuery, formulaViewMode, isPolishSession]);
+
   // Rozpoznawanie autentycznego źródła zadania i stylu plakietki (CKE vs Autorskie vs Informator)
   const taskSourceBadge = useMemo(() => {
-    // Sprawdzamy wszystkie potencjalne pola źródłowe
-    const allFields = [
-      currentTask?.source,
-      currentTask?.cke_source,
-      currentTask?.cke_badge,
-      currentTask?.badge
-    ].filter(Boolean).map(s => String(s).trim());
-
-    // Szukamy najpierw autentycznego oznaczenia CKE / Matura
-    const ckeCandidate = allFields.find(f => /matura|cke|informator|arkusz/i.test(f) && !/autorsk/i.test(f));
-    const raw = ckeCandidate || allFields[0] || '';
+    // Sprawdzamy pole źródłowe z priorytetem dla badge / source_badge
+    const raw = (currentTask?.badge || currentTask?.source_badge || currentTask?.source || currentTask?.cke_source || '').trim();
+    
+    // 0. Zadania treningowe, rozgrzewkowe lub autorskie
+    if (!raw || /trening|rozgrzewka|utrwalen|pułapka|pulapka|wzorzec|autorsk/i.test(raw)) {
+      return {
+        label: 'Trening JASNE • Wzorzec CKE',
+        type: 'autorskie' as const,
+        badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
+        dotClass: 'bg-emerald-400'
+      };
+    }
     
     // 1. Informator CKE / Arkusz pokazowy
     if (/informator|arkusz\s*pokazowy/i.test(raw)) {
-      const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+)/i);
-      let label = 'CKE • Informator maturalny';
-      if (/pokazowy/i.test(raw)) {
-        label = 'CKE • Arkusz pokazowy';
-      }
+      const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+(?:\.\d+)?)/i);
+      let label = /pokazowy/i.test(raw) ? 'Arkusz pokazowy CKE' : 'Informator CKE';
       if (zadMatch) {
         label += ` • Zad. ${zadMatch[1]}`;
       }
@@ -1284,19 +1633,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
 
     // 2. Oficjalne arkusze CKE
-    const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+)/i);
+    const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+(?:\.\d+)?)/i);
     const monthMatch = raw.match(/(maj|czerwiec|sierpi?e[nń]|grudzi?e[nń]|wrzesi?e[nń]|marzec)/i);
     const yearMatch = raw.match(/20\d\d/);
     
     if (monthMatch && yearMatch) {
       const mRaw = monthMatch[1].toLowerCase();
       const monthMap: Record<string, string> = {
-        maj: 'Maj', czerwiec: 'Czerwiec', sierpien: 'Sierpień', 'sierpień': 'Sierpień',
-        grudzien: 'Grudzień', 'grudzień': 'Grudzień', wrzesien: 'Wrzesień', 'wrzesień': 'Wrzesień', marzec: 'Marzec'
+        maj: 'maj', czerwiec: 'czerwiec', sierpien: 'sierpień', 'sierpień': 'sierpień',
+        grudzien: 'grudzień', 'grudzień': 'grudzień', wrzesien: 'wrzesień', 'wrzesień': 'wrzesień', marzec: 'marzec'
       };
-      const mClean = monthMap[mRaw] || mRaw.charAt(0).toUpperCase() + mRaw.slice(1);
-      const isProbna = /próbna|probna|grudz|wrzes/i.test(raw);
-      const prefix = isProbna ? 'Matura Próbna' : 'Matura';
+      const mClean = monthMap[mRaw] || mRaw;
+      const isProbna = /próbna|probna/i.test(raw) && !/grudzi?e[nń]|wrzesi?e[nń]|marzec/i.test(raw);
+      const prefix = isProbna ? 'Matura próbna' : 'Matura';
       let label = `${prefix} ${mClean} ${yearMatch[0]}`;
       if (zadMatch) {
         label += ` • Zad. ${zadMatch[1]}`;
@@ -1309,19 +1658,30 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       };
     }
 
-    // Jeśli raw zawiera "Zad.", zachowaj go z przedrostkiem Matura CKE
+    // Jeśli raw zawiera "Zad.", zachowaj go z przedrostkiem Matura CKE (bez duplikacji CKE)
     if (zadMatch && /matura|cke/i.test(raw)) {
+      const cleanRaw = raw.replace(/\bCKE\s+CKE\b/gi, 'CKE').replace(/\bCKE\s*•\s*CKE\b/gi, 'CKE').trim();
       return {
-        label: raw.startsWith('CKE') || raw.startsWith('Matura') ? raw : `Matura CKE • Zad. ${zadMatch[1]}`,
+        label: cleanRaw.startsWith('CKE') || cleanRaw.startsWith('Matura') ? cleanRaw : `Matura • Zad. ${zadMatch[1]}`,
         type: 'cke_matura' as const,
         badgeClass: 'bg-sky-500/15 border-sky-400/30 text-sky-300',
         dotClass: 'bg-sky-400'
       };
     }
 
-    // 3. Fallback: jeśli brak konkretnego oznaczenia matury ani numeru, to ćwiczenie autorskie
+    // 3. Zadania treningowe, rozgrzewkowe lub autorskie
+    if (/trening|rozgrzewka|utrwalen|pułapka|pulapka|wzorzec|autorsk/i.test(raw)) {
+      return {
+        label: 'Trening JASNE • Wzorzec CKE',
+        type: 'autorskie' as const,
+        badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
+        dotClass: 'bg-emerald-400'
+      };
+    }
+
+    // 4. Fallback: jeśli brak konkretnego oznaczenia matury ani numeru, to Trening JASNE
     return {
-      label: 'Zadanie autorskie',
+      label: 'Trening JASNE • Wzorzec CKE',
       type: 'autorskie' as const,
       badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
       dotClass: 'bg-emerald-400'
@@ -2794,61 +3154,71 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         id="session-header"
         className="w-full shrink-0 bg-[#0B0F19] border-b border-white/10 z-20 sticky top-0"
       >
-        <div className="w-full mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 transition-all max-w-3xl lg:max-w-4xl">
+        <div className="w-full mx-auto px-3 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 transition-all max-w-3xl lg:max-w-4xl">
           {/* Lewa strona: Przycisk wyjścia [X] + Etykieta fazy / Pasek postępu z celem */}
-          <div className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0">
+          <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
             <button
               id="session-exit-button"
               onClick={() => setShowExitModal(true)}
-              className="w-9 h-9 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 shrink-0 flex items-center justify-center cursor-pointer border border-white/5"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 shrink-0 flex items-center justify-center cursor-pointer border border-white/5"
               title="Przerwij sesję"
               aria-label="Przerwij sesję"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             {isTheoryStep ? (
               <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
-                <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-mono font-bold whitespace-nowrap shrink-0 shadow-sm ${
-                  isPolishSession
-                    ? 'bg-rose-500/15 text-rose-300 border border-rose-500/35'
-                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/35'
-                }`}>
-                  {lessonPillLabel || 'LEKCJA'}
-                </span>
-                {moduleBadgeName && (
-                  <span 
-                    title={moduleBadgeName}
-                    className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold truncate flex-1 min-w-0 max-w-[200px] xs:max-w-[260px] sm:max-w-xs md:max-w-none shadow-sm ${
-                      isPolishSession
-                        ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
-                        : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
-                    }`}
-                  >
-                    {moduleBadgeName}
-                  </span>
-                )}
-              </div>
-            ) : (
-              /* Badges + Segmented Progress Bars for Lesson Tasks + Kompaktowy Cel */
-              <div className="flex-1 flex items-center gap-2 sm:gap-3 min-w-0">
-                <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-mono font-bold whitespace-nowrap shrink-0 shadow-sm ${
-                  isPolishSession
-                    ? 'bg-rose-500/15 text-rose-300 border border-rose-500/35'
-                    : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/35'
-                }`}>
-                  {lessonPillLabel || 'LEKCJA'}
-                </span>
-                {moduleBadgeName && (
-                  <span className={`hidden sm:inline-flex px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold whitespace-nowrap shrink-0 shadow-sm ${
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('light');
+                    setShowFormulaSheet(prev => !prev);
+                  }}
+                  title={isPolishSession ? `Leksykon: ${departmentBadgeLabel}` : `Karta wzorów: ${departmentBadgeLabel}`}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-extrabold tracking-wide whitespace-nowrap shrink-0 shadow-sm transition active:scale-95 cursor-pointer ${
+                    isPolishSession
+                      ? 'bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/35'
+                      : 'text-amber-200 bg-amber-500/25 border border-amber-400/50 shadow-sm'
+                  }`}
+                >
+                  {departmentBadgeLabel}
+                </button>
+                <span 
+                  title={moduleBadgeName ? `${lessonPillLabel ? lessonPillLabel.replace('LEKCJA', 'Lekcja') + ': ' : ''}${lessonTitleClean || moduleBadgeName}` : (lessonTitleClean || lessonTitle)}
+                  className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold truncate min-w-0 max-w-[220px] xs:max-w-[260px] sm:max-w-md shadow-sm ${
                     isPolishSession
                       ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
                       : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
-                  }`}>
-                    {moduleBadgeName}
-                  </span>
-                )}
-                <div className="flex items-center gap-1 sm:gap-2 flex-1 min-w-[60px] max-w-[280px]">
+                  }`}
+                >
+                  <span className="font-bold">{lessonPillLabel ? lessonPillLabel.replace('LEKCJA', 'Lekcja') + ': ' : ''}</span>
+                  <span>{lessonTitleClean || moduleBadgeName}</span>
+                </span>
+              </div>
+            ) : (
+              /* Badges + Segmented Progress Bars for Lesson Tasks */
+              <div className="flex-1 flex items-center gap-1.5 sm:gap-2.5 min-w-0 overflow-hidden">
+                <button
+                  id="session-department-badge-button"
+                  type="button"
+                  disabled={!isTheoryStep}
+                  onClick={isTheoryStep ? () => {
+                    triggerHaptic('light');
+                    setShowFormulaSheet(prev => !prev);
+                  } : undefined}
+                  title={departmentBadgeLabel}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-extrabold tracking-wide whitespace-nowrap shrink-0 shadow-sm select-none ${
+                    isTheoryStep ? 'cursor-pointer active:scale-95 transition' : 'cursor-default'
+                  } ${
+                    isPolishSession
+                      ? 'bg-rose-500/15 text-rose-300 border border-rose-500/35'
+                      : 'text-amber-200 bg-amber-500/25 border border-amber-400/50 shadow-sm'
+                  }`}
+                >
+                  {departmentBadgeLabel}
+                </button>
+                <div className="flex items-center gap-1 sm:gap-1.5 flex-1 min-w-[36px] max-w-[110px] xs:max-w-[160px] sm:max-w-[260px]">
                   {Array.from({ length: Math.max(1, targetCorrectAnswers) }).map((_, idx) => {
                     const isDone = idx < correctAnswersCount;
                     const isActive = idx === correctAnswersCount;
@@ -2899,22 +3269,58 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     );
                   })}
                 </div>
-
-                {/* Zwięzły wskaźnik celu w jednej linii z paskiem */}
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] sm:text-xs shrink-0 select-none shadow-inner">
-                  <span className="text-slate-400 font-medium hidden sm:inline">Cel:</span>
-                  <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
-                    {correctAnswersCount}
-                  </span>
-                  <span className="text-slate-600 font-normal">/</span>
-                  <span className="text-slate-400 font-semibold">{targetCorrectAnswers}</span>
-                </span>
               </div>
             )}
           </div>
 
-          {/* Prawa strona: Kapsułki gracza (Serca + Monety + ewentualnie Karta wzorów) w jednym rzędzie */}
-          <div className="flex items-center gap-2 shrink-0 ml-auto">
+          {/* Prawa strona: Kapsułki gracza (Serca + Monety + Wzory) w uporządkowanym kontenerze */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 ml-auto">
+            {/* Przycisk Wzory / Leksykon dla bieżącego działu */}
+            {isTheoryStep ? (
+              <button
+                id="session-formulas-button"
+                type="button"
+                onClick={() => {
+                  triggerHaptic('light');
+                  setShowFormulaSheet(prev => !prev);
+                }}
+                className={`flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-semibold shadow-sm select-none transition-all active:scale-95 cursor-pointer shrink-0 ${
+                  isPolishSession
+                    ? 'bg-rose-500/15 hover:bg-rose-500/25 active:bg-rose-500/30 border-rose-500/35 text-rose-300'
+                    : 'text-amber-200 bg-slate-800/80 border border-amber-500/30 hover:bg-slate-700/80'
+                }`}
+                title={isPolishSession ? 'Leksykon pojęć i zasady (klawisz W)' : `Wzory z tego działu: ${departmentBadgeLabel} (klawisz W)`}
+                aria-label={isPolishSession ? 'Leksykon pojęć' : 'Wzory z tego działu'}
+              >
+                <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden sm:inline font-semibold">
+                  {isPolishSession ? 'Leksykon' : 'Wzory'}
+                </span>
+              </button>
+            ) : (
+              /* Dedykowany, czytelny przycisk wzorów w trakcie zadań */
+              <button
+                id="session-task-formulas-button"
+                type="button"
+                onClick={() => {
+                  triggerHaptic('light');
+                  setShowFormulaSheet(prev => !prev);
+                }}
+                className={`flex items-center justify-center gap-1.5 px-2 py-1 sm:px-2.5 sm:py-1 rounded-lg text-xs font-semibold shrink-0 cursor-pointer shadow-sm active:scale-95 transition-all select-none ${
+                  isPolishSession
+                    ? 'text-rose-200 bg-slate-800/80 border border-rose-500/30 hover:bg-slate-700/80'
+                    : 'text-amber-200 bg-slate-800/80 border border-amber-500/30 hover:bg-slate-700/80'
+                }`}
+                title={isPolishSession ? 'Leksykon pojęć i zasady (klawisz W)' : `Wzory z tego działu: ${departmentBadgeLabel} (klawisz W)`}
+                aria-label={isPolishSession ? 'Leksykon pojęć' : 'Wzory z tego działu'}
+              >
+                <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden sm:inline font-semibold">
+                  {isPolishSession ? 'Leksykon' : 'Wzory'}
+                </span>
+              </button>
+            )}
+
             {/* Hearts Indicator Pill with Shockwave Arrival Effect */}
             <div className="relative shrink-0">
               {/* Expanding Shockwave Ring upon Heart Impact */}
@@ -2941,13 +3347,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     setShowHeartsPopover(prev => !prev);
                   }
                 }}
-                animate={isHeartShaking ? {
+                animate={isHeartShaking && !isTheoryStep ? {
                   x: [0, -6, 6, -5, 5, -2, 2, 0],
                   scale: [1, 1.25, 0.9, 1.1, 1]
                 } : {}}
                 transition={{ duration: 0.6 }}
-                className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold shadow-sm select-none transition-all active:scale-95 cursor-pointer ${
-                  heartsData.isPro
+                className={`relative flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border text-xs font-semibold shadow-sm select-none transition-all active:scale-95 cursor-pointer ${
+                  heartsData.isPro || isTheoryStep
                     ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
                     : isHeartShaking
                       ? 'bg-rose-500/30 border-rose-500 text-rose-300 shadow-sm'
@@ -2955,12 +3361,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         ? 'bg-rose-500/20 border-rose-500/50 text-rose-400 animate-pulse'
                         : 'bg-rose-500/10 border-rose-500/30 text-rose-300 hover:bg-rose-500/20'
                 }`}
-                title={heartsData.isPro ? 'Pakiet PRO: Nielimitowane serca' : `Serca: ${displayedHeartsCount}/${heartsData.maxHearts}`}
+                title={heartsData.isPro || isTheoryStep ? (isTheoryStep ? 'Teoria: Nielimitowane serca' : 'Pakiet PRO: Nielimitowane serca') : `Serca: ${displayedHeartsCount}/${heartsData.maxHearts}`}
               >
-                {isHeartShaking ? (
+                {isHeartShaking && !isTheoryStep ? (
                   <HeartCrack className="w-3.5 h-3.5 text-rose-400 animate-pulse shrink-0" />
                 ) : (
-                  <Heart className={`w-3.5 h-3.5 text-rose-500 ${Number(displayedHeartsCount) > 0 || heartsData.isPro ? 'fill-rose-500' : ''} shrink-0`} />
+                  <Heart className={`w-3.5 h-3.5 text-rose-500 ${Number(displayedHeartsCount) > 0 || heartsData.isPro || isTheoryStep ? 'fill-rose-500' : ''} shrink-0`} />
                 )}
                 <motion.span 
                   key={String(displayedHeartsCount)}
@@ -3072,46 +3478,27 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </AnimatePresence>
             </div>
 
-            {/* Wallet Counter Pill - schowany na mobile (<640px) dla pełnej przestrzeni paska zadań */}
-            <div 
-              id="session-coins-pill"
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 text-slate-200 text-xs font-semibold shadow-sm select-none"
-              title={`Stan portfela: ${currentCoins} monet`}
-            >
-              <Coins className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span className="font-bold text-white tracking-wide">{currentCoins}</span>
-            </div>
-
-            {/* Formulas Sheet Button - widoczny na desktopie / tabletach */}
+            {/* Wskaźniki trybu zadań: Cel i Monety w uporządkowanym kontenerze shrink-0 */}
             {!isTheoryStep && (
-              <button
-                id="session-formulas-button"
-                onClick={() => setShowFormulaSheet(true)}
-                className={`hidden sm:flex group px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
-                  isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
-                }`}
-                title={isPolishSession ? 'Otwórz Leksykon Pojęć' : 'Otwórz Kartę Wzorów'}
-              >
-                <BookOpen className={`w-3.5 h-3.5 text-slate-400 transition-colors shrink-0 ${
-                  isPolishSession ? 'group-hover:text-[#F43F5E]' : 'group-hover:text-[#FFB800]'
-                }`} />
-                <span className="hidden sm:inline">{isPolishSession ? 'Leksykon' : 'Karta'}</span>
-              </button>
-            )}
+              <>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-800/60 border border-slate-700/80 text-[11px] sm:text-xs shrink-0 select-none shadow-sm">
+                  <span className="text-slate-400 font-medium hidden sm:inline">Cel:</span>
+                  <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
+                    {correctAnswersCount}
+                  </span>
+                  <span className="text-slate-600 font-normal">/</span>
+                  <span className="text-slate-400 font-semibold">{targetCorrectAnswers}</span>
+                </span>
 
-            {/* Skarbiec Argumentów Button - widoczny na tabletach/desktopie */}
-            {isPolishSession && (
-              <button
-                id="session-vault-button"
-                onClick={() => setShowArgumentVaultModal(true)}
-                className={`hidden sm:flex group px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 hover:bg-amber-500/25 text-amber-300 hover:text-white text-xs font-semibold items-center gap-1.5 transition active:scale-95 shrink-0 shadow-sm cursor-pointer ${
-                  isPolishSession ? 'hover:border-[#F43F5E]/50' : 'hover:border-[#FFB800]/50'
-                }`}
-                title="Otwórz Mój Skarbiec Argumentów"
-              >
-                <Layers className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span className="hidden sm:inline">Skarbiec</span>
-              </button>
+                <div 
+                  id="session-coins-pill"
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/80 text-slate-200 text-xs font-semibold shadow-sm select-none"
+                  title={`Stan portfela: ${currentCoins} monet`}
+                >
+                  <Coins className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span className="font-bold text-white tracking-wide">{currentCoins}</span>
+                </div>
+              </>
             )}
 
           </div>
@@ -3348,7 +3735,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         }}
       >
         {isTheoryStep ? (
-          <div id="session-theory-pill-content" className="w-full max-w-3xl lg:max-w-4xl mx-auto space-y-4 pt-2">
+          <div id="session-theory-pill-content" className="w-full max-w-3xl lg:max-w-4xl mx-auto space-y-4 pt-3 sm:pt-4">
             {/* Minimalistyczne zakładki z dolnym akcentem (underline tabs) */}
             <div className="w-full border-b border-white/10 flex items-center justify-between gap-1 sm:gap-2 px-1 pb-px">
               {(isPolishSession
@@ -3771,8 +4158,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                       <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block">
                                         Przykład zastosowania:
                                       </span>
-                                      <div className="w-full py-2.5 px-3 bg-[#070A0F] border border-white/5 rounded-xl text-center">
-                                        <MathRenderer content={item.example} displayMode={true} />
+                                      <div className="w-full py-2.5 px-3 bg-[#070A0F] border border-white/5 rounded-xl text-center overflow-x-auto max-w-full">
+                                        <div className="inline-block min-w-full text-center">
+                                          <MathRenderer content={item.example} />
+                                        </div>
                                       </div>
                                     </div>
                                   )}
@@ -3798,8 +4187,59 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             })}
                           </div>
                         ) : (
-                          <div className="p-4 rounded-xl bg-slate-950/40 text-center text-slate-400 text-sm">
-                            W tym temacie nie ma dodatkowych wzorów formalnych – stosuj definicję i podstawowe reguły rachunkowe.
+                          <div className="rounded-2xl p-5 sm:p-6 bg-[#0E1522] border border-amber-500/25 shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-4">
+                            <div className="flex items-start gap-3 pb-3 border-b border-white/10">
+                              <div className="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <AlertTriangle className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <h3 className="text-sm sm:text-base font-bold text-slate-100">
+                                  Brak wzorów w tablicach CKE – decyduje wyłącznie analiza rysunku
+                                </h3>
+                                <p className="text-xs text-amber-300/90 font-medium mt-0.5">
+                                  W tym temacie nie ma wzorów algebraicznych. Sukces na maturze to bezbłędny podział ról między osiami.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                              {/* Karta Osi OX */}
+                              <div className="rounded-xl p-3.5 bg-black/40 border border-sky-500/20 flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                  <span className="px-2 py-0.5 rounded-md bg-sky-500/15 border border-sky-500/30 text-sky-300 text-xs font-mono font-bold">
+                                    OŚ OX (POZIOM)
+                                  </span>
+                                  <span className="text-xs font-semibold text-slate-200">Argumenty $x$</span>
+                                </div>
+                                <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                  <li><span className="font-semibold text-slate-200">Dziedzina $D_f$:</span> szerokość wykresu od lewej do prawej</li>
+                                  <li><span className="font-semibold text-slate-200">Miejsca zerowe:</span> punkty na osi ($y = 0$)</li>
+                                  <li><span className="font-semibold text-slate-200">Monotoniczność:</span> przedziały $x$, gdzie rośnie/maleje</li>
+                                  <li><span className="font-semibold text-slate-200">Nierówności $f(x) &gt; 0$:</span> przedziały $x$ leżące nad osią</li>
+                                </ul>
+                              </div>
+
+                              {/* Karta Osi OY */}
+                              <div className="rounded-xl p-3.5 bg-black/40 border border-emerald-500/20 flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                  <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold">
+                                    OŚ OY (PION)
+                                  </span>
+                                  <span className="text-xs font-semibold text-slate-200">Wartości $y$</span>
+                                </div>
+                                <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                  <li><span className="font-semibold text-slate-200">Zbiór wartości $ZW_f$:</span> wysokość od dołu do góry (min / max)</li>
+                                  <li><span className="font-semibold text-slate-200">Wartość $f(0)$:</span> przecięcie z osią pionową</li>
+                                  <li><span className="font-semibold text-slate-200">Równanie $f(x) = m$:</span> pozioma linijka na wysokości $m$</li>
+                                  <li><span className="font-semibold text-slate-200">Wartości dodatnie:</span> punkty powyżej poziomu $y=0$</li>
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div className="rounded-xl px-3.5 py-2.5 bg-amber-500/[0.07] border border-amber-500/20 text-xs text-slate-300 flex items-center gap-2.5">
+                              <Lightbulb className="w-4 h-4 text-amber-400 shrink-0" />
+                              <span><strong className="text-amber-300">Żelazna zasada CKE:</strong> Przedziały monotoniczności i rozwiązania nierówności odczytujesz ZAWSZE z osi poziomej $OX$!</span>
+                            </div>
                           </div>
                         )}
 
@@ -3952,7 +4392,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {/* Treść polecenia / Cytat lektury */}
                         {normExample.problem && (
-                          <div className={`rounded-2xl p-4 sm:p-5 border flex flex-col gap-1.5 min-w-0 max-w-full overflow-hidden shadow-sm ${
+                          <div className={`rounded-2xl p-4 sm:p-5 border flex flex-col gap-1.5 min-w-0 max-w-full shadow-sm ${
                             isPolishSession
                               ? 'bg-amber-500/[0.04] border-amber-500/30'
                               : 'bg-[#0E1522] border-white/10'
@@ -3995,7 +4435,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                 return (
                                   <div 
                                     key={sIdx} 
-                                    className="rounded-xl p-3.5 sm:p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 flex flex-col gap-2 transition-all shadow-sm min-w-0 max-w-full overflow-hidden"
+                                    className="rounded-xl p-3.5 sm:p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 flex flex-col gap-2 transition-all shadow-sm min-w-0 max-w-full"
                                   >
                                     <div className="flex items-center gap-2.5 flex-wrap">
                                       <span className={`px-2 py-0.5 rounded-md font-mono text-xs font-bold shrink-0 border ${
@@ -4101,7 +4541,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                 </span>
                               </div>
                               <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.error)}
+                                {renderMicroContent(trapData.error ? String(trapData.error).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
                               </div>
                             </section>
                           )}
@@ -4121,7 +4561,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                 </span>
                               </div>
                               <div className="text-sm sm:text-base text-emerald-100/95 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.correct)}
+                                {renderMicroContent(trapData.correct ? String(trapData.correct).replace(/^[✓✔\s]*(?:poprawnie|poprawne\s*podejście|prawidłowo|dobre\s*podejście)[:\s-]*/i, '').trim() : '')}
                               </div>
                             </section>
                           )}
@@ -4178,7 +4618,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                 </span>
                               </div>
                               <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.description)}
+                                {renderMicroContent(trapData.description ? String(trapData.description).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
                               </div>
                             </section>
                           )}
@@ -4188,7 +4628,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             <section className="rounded-xl p-3.5 bg-slate-950/60 border border-slate-800/80 flex items-start gap-2.5 shadow-sm">
                               <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                               <div className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.description)}
+                                {renderMicroContent(trapData.description ? String(trapData.description).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
                               </div>
                             </section>
                           )}
@@ -4220,59 +4660,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               
               {/* Autentyczne, nowoczesne etykiety źródła zadania i punktacji */}
               <div className="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
-                {/* Badge 1: Źródło zadania (CKE vs Autorskie vs Informator) */}
                 <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border font-semibold text-[11px] sm:text-xs shadow-sm ${taskSourceBadge.badgeClass}`}>
                   <span className={`w-1.5 h-1.5 rounded-full shrink-0 shadow-sm ${taskSourceBadge.dotClass}`} />
                   <span>{taskSourceBadge.label}</span>
                 </span>
-
-                {/* Badge 2: Waga punktowa */}
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-400/30 text-amber-300 font-bold text-[11px] sm:text-xs shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-sm" />
                   <span>{taskPointsCount}</span>
                 </span>
-
-                {/* Badge 3: Typ zadania */}
-                {isSwipeTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-rose-500/15 border border-rose-400/30 text-rose-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <Flame size={12} className="text-rose-400 shrink-0" />
-                    <span>Tinder Motywów</span>
-                  </span>
-                ) : isCardinalTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-rose-500/15 border border-rose-400/30 text-rose-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <AlertTriangle size={12} className="text-rose-400 shrink-0" />
-                    <span>Polowanie na Kardynała</span>
-                  </span>
-                ) : isArgumentBuilderTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <Layers size={12} className="text-amber-400 shrink-0" />
-                    <span>Klocki TEEL</span>
-                  </span>
-                ) : isSynthesisTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-rose-500/15 border border-rose-400/30 text-rose-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <Scale size={12} className="text-rose-400 shrink-0" />
-                    <span>Notatka Syntetyzująca CKE</span>
-                  </span>
-                ) : isOpenTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-400/30 text-purple-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <Target size={12} className="text-purple-400 shrink-0" />
-                    <span>Zadanie Otwarte • Tutor AI</span>
-                  </span>
-                ) : isTrueFalseTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
-                    Prawda / Fałsz
-                  </span>
-                ) : isTwoPartTask ? (
-                  <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
-                    Wybór dwuczęściowy
-                  </span>
-                ) : null}
-
-                {currentTask?.tierLabel && (
-                  <span className="text-[11px] text-slate-500 hidden sm:inline">
-                    • {currentTask.tierLabel}
-                  </span>
-                )}
               </div>
             </div>
             {/* Task Question Statement */}
@@ -5779,7 +6174,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-              className="bg-[#0B0F17] border border-white/10 rounded-t-[28px] sm:rounded-3xl w-full max-w-xl max-h-[90vh] sm:max-h-[85vh] flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden"
+              className="bg-[#0B0F17] border border-white/10 rounded-t-[28px] sm:rounded-3xl w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden"
             >
               {/* Mobile Swipe / Drag indicator handle */}
               <div className="w-full flex justify-center pt-2.5 pb-1 sm:hidden">
@@ -5787,90 +6182,200 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </div>
 
               {/* Drawer Header */}
-              <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#111724]/80 shrink-0">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] flex items-center justify-center shrink-0 shadow-sm">
+              <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#111724]/90 shrink-0">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
+                    isPolishSession
+                      ? 'bg-rose-500/15 border border-rose-500/30 text-rose-400'
+                      : 'bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800]'
+                  }`}>
                     <BookOpen className="w-5 h-5" />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-bold text-white text-base sm:text-lg tracking-tight">
-                        {formulaSheet?.isLeksykon ? 'Leksykon Pojęć & Złote Zasady' : 'Karta Wzorów'}
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="font-bold text-white text-base sm:text-lg tracking-tight truncate">
+                        {isPolishSession ? 'Leksykon Pojęć & Złote Zasady' : `Karta Wzorów • ${departmentBadgeLabel}`}
                       </h3>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/25">
+                      <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${
+                        isPolishSession
+                          ? 'bg-rose-500/15 text-rose-300 border border-rose-500/25'
+                          : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/25'
+                      }`}>
                         Formuła 2023
                       </span>
                     </div>
-                    <div className="text-xs text-slate-400 line-clamp-1 mt-0.5">
-                      <MathRenderer content={sanitizeLessonHeading(formulaSheet?.title || lessonTitle)} />
+                    <div className="text-xs text-slate-400 truncate mt-0.5">
+                      <MathRenderer content={sanitizeLessonHeading(moduleBadgeName || formulaSheet?.title || lessonTitle)} />
                     </div>
                   </div>
                 </div>
                 <button
                   id="session-formulas-close-button"
                   onClick={() => setShowFormulaSheet(false)}
-                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer shrink-0"
+                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer shrink-0 ml-2"
                   aria-label="Zamknij"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
+              {/* Search & Topic Tabs (for Math) */}
+              {!isPolishSession && (
+                <div className="px-4 sm:px-5 py-3 bg-[#0B0F17] border-b border-white/5 flex flex-col gap-2.5 shrink-0">
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setFormulaViewMode('department')}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                        formulaViewMode === 'department'
+                          ? 'bg-[#FFB800] text-slate-950 font-bold shadow-sm'
+                          : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                      }`}
+                    >
+                      {departmentBadgeLabel} ({departmentFormulas.length})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormulaViewMode('all')}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                        formulaViewMode === 'all'
+                          ? 'bg-[#FFB800] text-slate-950 font-bold shadow-sm'
+                          : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                      }`}
+                    >
+                      Wszystkie działy CKE
+                    </button>
+                  </div>
+                  <div className="relative w-full">
+                    <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                    <input
+                      type="text"
+                      value={formulaSearchQuery}
+                      onChange={e => setFormulaSearchQuery(e.target.value)}
+                      placeholder={formulaViewMode === 'department' ? `Szukaj we wzorach z ${departmentBadgeLabel}...` : 'Szukaj we wszystkich wzorach CKE (np. delta, potęgi, sinus)...'}
+                      className="w-full bg-[#111724] border border-white/10 focus:border-[#FFB800]/50 rounded-xl pl-8 pr-8 py-1.5 text-xs text-white placeholder-slate-500 outline-none transition"
+                    />
+                    {formulaSearchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setFormulaSearchQuery('')}
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5 cursor-pointer"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+
               {/* Drawer Content */}
               <div className="p-4 sm:p-6 overflow-y-auto space-y-4 custom-scrollbar flex-1 pb-16 sm:pb-8">
-                {/* Core Formula from Theory Pill */}
-                {theoryPill?.coreFormulaLatex && (
-                  <div className="formula-sheet-card bg-gradient-to-br from-[#FFB800]/15 via-[#FFB800]/5 to-transparent border border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 shadow-sm">
-                    <div className="flex items-center gap-1.5 mb-2.5">
-                      <Target className="w-4 h-4 text-[#FFB800]" />
-                      <span className="text-xs font-bold text-[#FFB800] uppercase tracking-wider">
-                        Główny Wzór Lekcji (Pigułka Wiedzy)
-                      </span>
-                    </div>
-                    <div className="bg-[#080C14] border border-[#FFB800]/20 rounded-xl p-3 sm:p-4 overflow-x-auto custom-scrollbar touch-pan-x">
-                      <MathRenderer content={theoryPill.coreFormulaLatex} displayMode={true} />
-                    </div>
-                  </div>
-                )}
-
-                {/* Additional Formulas / Leksykon List */}
-                {formulaSheet?.formulas && formulaSheet.formulas.length > 0 && (
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between pt-1">
+                {/* Formulas List */}
+                {drawerFormulas.length > 0 ? (
+                  <div className="space-y-3.5">
+                    <div className="flex items-center justify-between pt-0.5">
                       <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]"></span>
-                        {formulaSheet?.isLeksykon ? 'Pojęcia Kluczowe i Definicje' : 'Tablice i Tożsamości Maturalne'}
+                        <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-rose-400' : 'bg-[#FFB800]'}`} />
+                        {isPolishSession ? 'Pojęcia Kluczowe i Definicje' : (formulaViewMode === 'department' ? `Wzory i Tożsamości: ${departmentBadgeLabel}` : 'Tablice i Wzory CKE')}
                       </span>
                       <span className="text-[11px] font-medium text-slate-500">
-                        {formulaSheet?.isLeksykon
-                          ? `${formulaSheet.formulas.length} ${formulaSheet.formulas.length === 1 ? 'pojęcie' : formulaSheet.formulas.length < 5 ? 'pojęcia' : 'pojęć'}`
-                          : `${formulaSheet.formulas.length} ${formulaSheet.formulas.length === 1 ? 'wzór' : formulaSheet.formulas.length < 5 ? 'wzory' : 'wzorów'}`}
+                        {isPolishSession
+                          ? `${drawerFormulas.length} ${drawerFormulas.length === 1 ? 'pojęcie' : drawerFormulas.length < 5 ? 'pojęcia' : 'pojęć'}`
+                          : `${drawerFormulas.length} ${drawerFormulas.length === 1 ? 'wzór' : drawerFormulas.length < 5 ? 'wzory' : 'wzorów'}`}
                       </span>
                     </div>
 
-                    {formulaSheet.formulas.map((f, i) => (
+                    {drawerFormulas.map((f, i) => (
                       <div 
-                        key={i} 
-                        className="formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-[#FFB800]/30 rounded-2xl p-4 transition-all duration-200 flex flex-col gap-2.5 shadow-sm"
+                        key={f.id || i} 
+                        className={`formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col gap-3 shadow-sm ${
+                          isPolishSession ? 'hover:border-rose-500/30' : ''
+                        }`}
                       >
-                        <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center justify-between gap-2 flex-wrap">
                           <div className="flex items-center gap-2">
-                            <span className="w-5 h-5 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono font-bold text-slate-400 flex items-center justify-center">
+                            <span className={`w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 ${
+                              isPolishSession 
+                                ? 'bg-rose-500/10 border border-rose-500/25 text-rose-300'
+                                : 'bg-[#FFB800]/10 border border-[#FFB800]/25 text-[#FFB800]'
+                            }`}>
                               {String(i + 1).padStart(2, '0')}
                             </span>
-                            <span className="text-xs sm:text-sm font-semibold text-slate-200">
+                            <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
                               {f.title}
                             </span>
                           </div>
-                          <span className="text-[10px] font-medium text-[#FFB800]/80 bg-[#FFB800]/10 border border-[#FFB800]/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                            {formulaSheet?.isLeksykon ? 'Leksykon' : 'Wzór maturalny'}
-                          </span>
+                          {f.cke_page ? (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 shadow-sm shrink-0">
+                              <BookOpen className="w-3 h-3 text-emerald-400" />
+                              <span>Karta wzorów: {typeof f.cke_page === 'number' || !String(f.cke_page).startsWith('str') ? `str. ${f.cke_page}` : f.cke_page}</span>
+                            </span>
+                          ) : (
+                            <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 ${
+                              isPolishSession
+                                ? 'text-rose-300/80 bg-rose-500/10 border border-rose-500/20'
+                                : 'text-[#FFB800]/80 bg-[#FFB800]/10 border border-[#FFB800]/20'
+                            }`}>
+                              {isPolishSession ? 'Leksykon' : 'Wzór maturalny'}
+                            </span>
+                          )}
                         </div>
-                        <div className="bg-[#080C14] border border-white/5 rounded-xl p-3 sm:p-3.5 overflow-x-auto custom-scrollbar touch-pan-x">
-                          <MathRenderer content={f.latex} displayMode={!formulaSheet?.isLeksykon} />
-                        </div>
+
+                        {f.latex && (
+                          <div className="bg-[#080C14] border border-white/5 rounded-xl p-3 sm:p-4 text-center overflow-x-auto custom-scrollbar touch-pan-x">
+                            <div className="font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
+                              <MathRenderer content={f.latex} displayMode={!isPolishSession} />
+                            </div>
+                          </div>
+                        )}
+
+                        {f.subFormulas && f.subFormulas.length > 0 && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-0.5">
+                            {f.subFormulas.map((sub, sIdx) => (
+                              <div key={sIdx} className="bg-[#0A0E18] border border-white/5 rounded-xl p-2.5 flex flex-col gap-1">
+                                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                                  {sub.label}
+                                </span>
+                                <div className="text-amber-200 text-xs sm:text-sm font-mono overflow-x-auto custom-scrollbar">
+                                  <MathRenderer content={sub.formula} displayMode={!isPolishSession} />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {(f.description || f.mnemonic) && (
+                          <div className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-[#080C14]/40 border border-white/5 rounded-xl p-3">
+                            <MathRenderer content={f.description || f.mnemonic} />
+                          </div>
+                        )}
+
+                        {f.example && (
+                          <div className="text-xs text-slate-400 bg-amber-500/5 border border-amber-500/15 rounded-xl p-2.5 flex items-start gap-2">
+                            <span className="text-amber-400 font-bold uppercase text-[10px] tracking-wider shrink-0 mt-0.5">Przykład:</span>
+                            <div className="text-slate-300 overflow-x-auto custom-scrollbar">
+                              <MathRenderer content={f.example} />
+                            </div>
+                          </div>
+                        )}
+
+                        {f.matura_tip && (
+                          <div className="text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-xl p-2.5 flex items-start gap-2">
+                            <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                            <div>
+                              <span className="font-bold text-amber-300">Wskazówka egzaminatora: </span>
+                              <MathRenderer content={f.matura_tip} />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     ))}
+                  </div>
+                ) : (
+                  <div className="py-10 text-center flex flex-col items-center justify-center">
+                    <BookOpen className="w-10 h-10 text-slate-600 mb-2" />
+                    <p className="text-sm font-semibold text-slate-300">Nie znaleziono pasujących wzorów</p>
+                    <p className="text-xs text-slate-500 mt-1">Zmień zapytanie lub przełącz na wszystkie wzory CKE.</p>
                   </div>
                 )}
 
@@ -5879,7 +6384,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-emerald-950/25 to-[#071612]/60 border border-emerald-500/25 shadow-lg shadow-emerald-950/20 space-y-2">
                     <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-1">
                       <Compass className="w-4 h-4" />
-                      <span>{formulaSheet?.isLeksykon ? 'Złota Zasada Egzaminatora' : 'Złota Strategia Maturalna'}</span>
+                      <span>{isPolishSession ? 'Złota Zasada Egzaminatora' : 'Złota Strategia Maturalna'}</span>
                     </div>
                     <div className="text-emerald-100/90 text-xs sm:text-sm leading-relaxed pl-0.5">
                       <MathRenderer content={theoryPill?.keyTakeaway || formulaSheet?.goldenRule} />

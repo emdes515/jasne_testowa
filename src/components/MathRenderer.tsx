@@ -37,7 +37,9 @@ export function cleanLatex(mathStr: string): string {
     .replace(/(?:\\x09|\x09|\t)\s*au/g, '\\tau')
     .replace(/(?:\\x0a|\x0a|\n)\s*eq/g, '\\neq')
     .replace(/(?:\\x0c|\x0c)/g, '')
-    .replace(/(?<=[,\s\d\-+])angle(?=[\s\)\],.;$]|\b)/g, '\\rangle');
+    .replace(/(?<=[,\s\d\-+])angle(?=[\s\)\],.;$]|\b)/g, '\\rangle')
+    .replace(/⟨/g, '\\langle ')
+    .replace(/⟩/g, '\\rangle ');
 
   // Strip outer delimiters
   if (s.startsWith('$$') && s.endsWith('$$') && s.length >= 4) {
@@ -435,11 +437,15 @@ export function autoWrapLatex(rawStr: string): string {
     }
 
     // 3b2. Wrap mathematical intervals in prose before standalone command wrapping:
-    // e.g. "A = \langle -5, 2)", "B = (-1, 6\rangle)", "\langle 1, 5)"
-    s = s.replace(/(^|[\s(])([A-Z]\s*=\s*(?:\\langle|[(\langle])\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*[,;]\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*(?:\\rangle|[)\rangle]))(?=[\s).,;!?]|$)/g, (_m, pre, expr) => {
+    // e.g. "x \in (-2, 3\rangle", "A = \langle -5, 2)", "B = (-1, 6\rangle)", "\langle 1, 5)", "(-2, 3\rangle"
+    const openDelim = '(?:\\\\langle|[(\\[⟨])';
+    const closeDelim = '(?:\\\\rangle|[)\\]⟩])';
+    const numOrInf = '(?:[-+]?(?:\\\\infty|∞|\\d+(?:\\{,\\}\\d+|[.,]\\d+)?))';
+
+    s = s.replace(new RegExp(`(^|[\\s(])([a-zA-Z]\\s*(?:\\\\in|∈|=)\\s*${openDelim}\\s*${numOrInf}\\s*[,;]\\s*${numOrInf}\\s*${closeDelim})(?=[\\s).,;!?]|$)`, 'g'), (_m, pre, expr) => {
       return `${pre}$${cleanLatex(expr)}$`;
     });
-    s = s.replace(/(^|[\s(])((?:\\langle|[(\langle])\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*[,;]\s*[-+]?\d+(?:\{,\}\d+|[.,]\d+)?\s*(?:\\rangle|[)\rangle]))(?=[\s).,;!?]|$)/g, (_m, pre, expr) => {
+    s = s.replace(new RegExp(`(^|[\\s(])(${openDelim}\\s*${numOrInf}\\s*[,;]\\s*${numOrInf}\\s*${closeDelim})(?=[\\s).,;!?]|$)`, 'g'), (_m, pre, expr) => {
       return `${pre}$${cleanLatex(expr)}$`;
     });
 
@@ -727,7 +733,7 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
             return (
               <span 
                 key={index} 
-                className="inline-flex items-baseline align-baseline mx-0.5 font-normal whitespace-nowrap max-w-full overflow-x-auto overflow-y-hidden touch-pan-x scrollbar-none"
+                className="inline-flex items-baseline align-baseline mx-0.5 px-0.5 py-0.5 font-normal whitespace-nowrap max-w-full overflow-x-auto overflow-y-hidden touch-pan-x scrollbar-none"
               >
                 {tok.leadingPunct && <span className="inline align-baseline">{tok.leadingPunct}</span>}
                 <InlineMath 
@@ -762,10 +768,11 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
   const blockMathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
   const hasProseWordsBlock = blockWords.some(w => !blockMathKeywords.has(w.toLowerCase()));
 
-  // Czysty blok LaTeX: displayMode lub \begin{...} lub $$...$$, lub ciąg z komendami LaTeX
+  // Czysty blok LaTeX: brak słów w języku naturalnym poza \text{} oraz komendy LaTeX lub displayMode
   const hasLatexCommands = /\\[a-zA-Z]+|\{|\}/.test(trimmedForBlockCheck);
   const isPureLatexBlock = 
-    (!hasInlineDelimiters && (displayMode || !hasProseWordsBlock)) &&
+    !hasInlineDelimiters && 
+    !hasProseWordsBlock &&
     (
       displayMode || 
       hasLatexCommands ||

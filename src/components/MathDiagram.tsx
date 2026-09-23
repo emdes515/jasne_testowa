@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lightbulb, Sparkles } from 'lucide-react';
+import { Lightbulb, Compass } from 'lucide-react';
 import { MathPlot, PlotData } from './MathPlot';
 import { MathRenderer } from './MathRenderer';
 import { MafsPlot } from './mafs/MafsPlot';
@@ -74,6 +74,8 @@ export function formatSvgText(raw?: string): string {
     .replace(/\\cap\b/g, '∩')
     .replace(/\\setminus\b/g, '\\')
     .replace(/\\subset\b/g, '⊂')
+    .replace(/\\langle\s*/g, '⟨')
+    .replace(/\s*\\rangle/g, '⟩')
     .replace(/\\sqrt\{([^}]+)\}/g, '√$1')
     .replace(/\\sqrt/g, '√')
     .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2')
@@ -98,6 +100,7 @@ export interface DiagramPoint {
   color?: string;
   tooltip?: string;
   noBox?: boolean;
+  attach?: 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
 }
 
 export interface DiagramGrid {
@@ -256,6 +259,7 @@ interface MathDiagramProps {
   borderless?: boolean;
   interactiveLab?: LabType;
   engine?: 'mafs' | 'svg';
+  hideTitle?: boolean;
 }
 
 function polarToCartesian(cx: number, cy: number, r: number, angleInDegrees: number) {
@@ -282,30 +286,20 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
   compact = false,
   borderless = false,
   interactiveLab: propsInteractiveLab,
-  engine = 'mafs'
+  engine = 'mafs',
+  hideTitle = false
 }) => {
   const [hoveredPointIdx, setHoveredPointIdx] = useState<number | null>(null);
   const [showMafsLab, setShowMafsLab] = useState<boolean>(false);
 
   if (!diagram) return null;
 
-  // Fallback 1: Jeśli obiekt to klasyczny PlotData z MathPlot
+  // Fallback 1: Jeśli obiekt to PlotData (analityczny wykres funkcji) -> zawsze renderuj nowoczesny MafsPlot
   if (!('type' in diagram) || diagram.type === 'PIECEWISE_LINEAR' || diagram.type === 'LINEAR' || diagram.type === 'PARABOLA' || ('xRange' in diagram)) {
-    if (engine === 'mafs') {
-      return <MafsPlot plot={diagram as PlotData} className={className} />;
-    }
-    return <MathPlot plot={diagram as PlotData} className={className} />;
+    return <MafsPlot plot={diagram as PlotData} className={className} />;
   }
 
   const d = diagram as MathDiagramData;
-
-  // Fallback 2: Jeśli type to PLOT
-  if (d.type === 'PLOT' && d.plotData) {
-    if (engine === 'mafs') {
-      return <MafsPlot plot={d.plotData} className={className} />;
-    }
-    return <MathPlot plot={d.plotData} className={className} />;
-  }
 
   // Automatyczne wykrycie typu laboratorium Mafs dla danego zagadnienia
   const detectedLab: LabType | undefined = d.interactiveLab || propsInteractiveLab || (() => {
@@ -335,11 +329,11 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
 
   return (
     <div className={borderless 
-      ? `w-full mx-auto my-1 flex flex-col items-center select-none overflow-hidden relative ${className}`
-      : `w-full mx-auto my-2.5 p-4 sm:p-5 rounded-2xl bg-surface-card border border-surface-border shadow-xl flex flex-col items-center select-none overflow-hidden relative transition-all duration-200 ${className}`
+      ? `w-full mx-auto my-1 flex flex-col items-center select-none overflow-visible relative ${className}`
+      : `w-full mx-auto my-2.5 p-4 sm:p-5 rounded-2xl bg-surface-card border border-surface-border shadow-xl flex flex-col items-center select-none overflow-visible relative transition-all duration-200 ${className}`
     }>
-      {/* Tytuł diagramu oraz przycisk przełączenia na Mafs Lab */}
-      {(d.title || detectedLab) && (
+      {/* Tytuł diagramu oraz przycisk przełączenia na Mafs Lab (wyłącznie gdy engine !== 'svg' oraz !hideTitle) */}
+      {!hideTitle && (d.title || (detectedLab && engine !== 'svg')) && (
         <div className="w-full flex items-center justify-between gap-2 pb-2.5 mb-2 border-b border-surface-border flex-wrap">
           {d.title ? (
             <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-text-primary min-w-0">
@@ -350,13 +344,13 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
             </div>
           ) : <div />}
 
-          {detectedLab && (
+          {detectedLab && engine !== 'svg' && (
             <button
               type="button"
               onClick={() => setShowMafsLab(!showMafsLab)}
               className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/30 text-amber-300 flex items-center gap-1.5 transition-all active:scale-95 shadow-sm ml-auto"
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <Compass className="w-3.5 h-3.5 text-amber-400" />
               <span>{showMafsLab ? 'Pokaż schemat CKE' : 'Zbadaj w Mafs'}</span>
             </button>
           )}
@@ -364,14 +358,14 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
       )}
 
       {/* Tryb 1: Interaktywne Laboratorium Mafs */}
-      {showMafsLab && detectedLab ? (
+      {showMafsLab && detectedLab && engine !== 'svg' ? (
         <div className="w-full my-2 animate-in fade-in duration-200">
           <MafsInteractiveLab initialLab={detectedLab} onClose={() => setShowMafsLab(false)} />
         </div>
       ) : (
         <>
 
-      {/* Dedykowany Hero Formula Box (Wzór Główny – wycentrowany, 16-18px KaTeX ze złotym glow) */}
+      {/* Dedykowany Hero Formula Box (Wzór Główny – wycentrowany, 16-18px KaTeX ze złotym glow, zabezpieczony przed obcięciem z lewej) */}
       {d.formulaBadge && (() => {
         const formulaText = d.formulaBadge.trim();
         const hasDelimiters = (formulaText.startsWith('$') && formulaText.endsWith('$'))
@@ -380,14 +374,21 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
         const formattedFormula = hasDelimiters ? formulaText : `$$${formulaText}$$`;
         return (
           <div className="w-full flex justify-center items-center my-2.5 px-1">
-            <div className="w-full max-w-md px-3 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-primary/[0.08] via-primary/[0.16] to-primary/[0.08] border border-primary/35 text-text-primary font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] flex items-center justify-center text-center overflow-x-auto no-scrollbar">
-              <MathRenderer content={formattedFormula} displayMode={true} />
+            <div className="w-full max-w-full px-4 py-2 sm:py-3 rounded-xl bg-gradient-to-r from-primary/[0.08] via-primary/[0.16] to-primary/[0.08] border border-primary/35 text-text-primary font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] text-center overflow-x-auto">
+              <div className="inline-block min-w-full text-center">
+                <MathRenderer content={formattedFormula} displayMode={true} />
+              </div>
             </div>
           </div>
         );
       })()}
 
-      {hasSvgContent && (
+      {/* Renderowanie MafsPlot (jeśli diagram zawiera definicję analityczną plotData lub plot) */}
+      {(d.plotData || (d as any).plot) ? (
+        <div className="w-full flex justify-center items-center py-1">
+          <MafsPlot plot={(d.plotData || (d as any).plot)} width={compact ? 420 : 520} height={compact ? 220 : 280} />
+        </div>
+      ) : hasSvgContent && (
       <div className="w-full flex justify-center items-center overflow-x-auto py-1">
         <svg
           viewBox={`0 0 ${width} ${height}`}
@@ -660,29 +661,18 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 const pillH = 20;
 
                 return (
-                  <g key={`seg-lbl-${idx}`}>
-                    <rect
-                      x={midX + ox - pillW / 2}
-                      y={midY + oy - pillH / 2}
-                      width={pillW}
-                      height={pillH}
-                      rx={6}
-                      fill="#090D16"
-                      fillOpacity={0.95}
-                      stroke="#334155"
-                      strokeWidth={1}
-                    />
-                    <text
-                      x={midX + ox}
-                      y={midY + oy + 4}
-                      fill={seg.labelColor || strokeColor}
-                      fontSize={12}
-                      fontWeight="700"
-                      textAnchor="middle"
-                    >
-                      {cleanSegLabel}
-                    </text>
-                  </g>
+                  <text
+                    key={`seg-lbl-${idx}`}
+                    x={midX + ox}
+                    y={midY + oy + 4}
+                    fill={seg.labelColor || strokeColor}
+                    fontSize={12}
+                    fontWeight="700"
+                    textAnchor="middle"
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                  >
+                    {cleanSegLabel}
+                  </text>
                 );
               })()}
             </g>
@@ -772,54 +762,20 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
               )}
 
               {pt.label && (() => {
-                if (pt.noBox) {
-                  return (
-                    <text
-                      x={pt.x + ox}
-                      y={pt.y + oy + 4}
-                      fill={isHovered ? '#38BDF8' : (pt.color || '#F8FAFC')}
-                      fontSize={11}
-                      fontWeight="700"
-                      textAnchor={anchor}
-                      style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.85))' }}
-                    >
-                      {cleanPtLabel}
-                    </text>
-                  );
-                }
-
-                const lblLen = cleanPtLabel.length;
-                const pillW = Math.max(26, lblLen * 8 + 14);
-                const pillH = 20;
-                let pillX = pt.x + ox;
-                if (anchor === 'middle') pillX -= pillW / 2;
-                else if (anchor === 'end') pillX -= pillW;
-                const pillY = pt.y + oy - pillH / 2;
-
+                const cleanPtLabel = formatSvgText(pt.label);
                 return (
-                  <g key={`pt-lbl-${idx}`}>
-                    <rect
-                      x={pillX}
-                      y={pillY}
-                      width={pillW}
-                      height={pillH}
-                      rx={6}
-                      fill="#090D16"
-                      fillOpacity={0.96}
-                      stroke={isHovered ? '#38BDF8' : '#334155'}
-                      strokeWidth={isHovered ? 1.5 : 1}
-                    />
-                    <text
-                      x={pt.x + ox}
-                      y={pt.y + oy + 4}
-                      fill={isHovered ? '#38BDF8' : '#F8FAFC'}
-                      fontSize={11}
-                      fontWeight="700"
-                      textAnchor={anchor}
-                    >
-                      {cleanPtLabel}
-                    </text>
-                  </g>
+                  <text
+                    key={`pt-lbl-${idx}`}
+                    x={pt.x + ox}
+                    y={pt.y + oy + 4}
+                    fill={isHovered ? '#38BDF8' : (pt.color || '#F8FAFC')}
+                    fontSize={11}
+                    fontWeight="700"
+                    textAnchor={anchor}
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                  >
+                    {cleanPtLabel}
+                  </text>
                 );
               })()}
             </g>
@@ -829,14 +785,29 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
         {/* 7. Napisy i etykiety swobodne */}
         {d.labels?.map((lbl, idx) => {
           const fontSize = lbl.fontSize || 12;
-          const anchor = lbl.anchor || 'middle';
           const cleanLblText = formatSvgText(lbl.text);
           const textLen = cleanLblText.length;
-          const pillW = textLen * (fontSize * 0.65) + 16;
+          const textEstW = textLen * (fontSize * 0.65);
+          const anchor = lbl.anchor || (lbl.x <= 120 ? 'start' : lbl.x >= (width - 120) ? 'end' : 'middle');
+
+          let effectiveTextX = lbl.x;
+          if (anchor === 'start') {
+            effectiveTextX = Math.max(8, Math.min(width - 8 - textEstW, lbl.x));
+          } else if (anchor === 'end') {
+            effectiveTextX = Math.min(width - 8, Math.max(8 + textEstW, lbl.x));
+          } else {
+            const halfW = textEstW / 2;
+            effectiveTextX = Math.max(8 + halfW, Math.min(width - 8 - halfW, lbl.x));
+          }
+
+          const pillW = textEstW + 16;
           const pillH = fontSize + 10;
-          let pillX = lbl.x;
+          let pillX = effectiveTextX;
           if (anchor === 'middle') pillX -= pillW / 2;
-          else if (anchor === 'end') pillX -= pillW;
+          else if (anchor === 'end') pillX -= (pillW - 8);
+          else pillX -= 8;
+          if (pillX < 4) pillX = 4;
+          if (pillX + pillW > width - 4) pillX = Math.max(4, width - 4 - pillW);
 
           return (
             <g key={`lbl-${idx}`}>
@@ -847,14 +818,13 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                   width={pillW}
                   height={pillH}
                   rx={6}
-                  fill="#090D16"
-                  fillOpacity={0.96}
-                  stroke="#334155"
+                  fill="rgba(255, 184, 0, 0.12)"
+                  stroke="rgba(255, 184, 0, 0.35)"
                   strokeWidth={1}
                 />
               )}
               <text
-                x={lbl.x}
+                x={effectiveTextX}
                 y={lbl.y + 1}
                 fill={lbl.color || '#CBD5E1'}
                 fontSize={fontSize}
@@ -909,24 +879,24 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
 
       {/* Pasek kluczowych parametrów i odczytów (Strict Zoning Architecture) */}
       {d.metrics && d.metrics.length > 0 && (
-        <div className={`w-full grid gap-2.5 pt-3 pb-1 border-t border-white/5 mt-2 ${
-          d.metrics.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 sm:grid-cols-4'
+        <div className={`w-full grid gap-2 pt-3 pb-1 border-t border-white/5 mt-2 ${
+          d.metrics.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 md:grid-cols-4'
         }`}>
           {d.metrics.map((m, idx) => (
             <div
               key={`metric-${idx}`}
-              className={`px-3 py-2.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-white/10' : 'bg-slate-900/90 border border-slate-800'} hover:border-slate-700 transition-all flex flex-col justify-between gap-1.5 shadow-sm min-h-[64px]`}
+              className={`px-3 py-2.5 rounded-xl ${borderless ? 'bg-white/[0.03] border border-white/10' : 'bg-slate-900/90 border border-slate-800'} hover:border-slate-700 transition-all flex flex-col justify-between gap-1 shadow-sm min-h-[60px]`}
             >
               <div className="flex items-start gap-1.5 min-w-0">
                 <span
                   className="w-2 h-2 rounded-full shrink-0 mt-1 shadow-sm"
                   style={{ backgroundColor: m.color || '#38BDF8' }}
                 />
-                <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 leading-snug break-words flex-1">
+                <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 leading-tight break-words flex-1">
                   <MathRenderer content={m.label} />
                 </span>
               </div>
-              <div className="text-xs sm:text-sm font-bold text-slate-100 break-words flex items-center mt-1 leading-snug">
+              <div className="text-xs sm:text-sm font-bold text-slate-100 flex flex-wrap items-center mt-1 leading-snug">
                 <MathRenderer content={m.value} />
               </div>
             </div>
@@ -934,15 +904,15 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
         </div>
       )}
 
-      {/* Podpis z wnioskiem dydaktycznym renderowany w KaTeX */}
+      {/* Podpis z podsumowaniem renderowany w KaTeX */}
       {d.caption && (() => {
-        const cleanCaption = d.caption.replace(/^(złota reguła cke|wniosek dydaktyczny|pułapka cke|zasada cke|ważna reguła):\s*/i, '');
+        const cleanCaption = d.caption.replace(/^(złota reguła cke|wniosek dydaktyczny|podsumowanie|pułapka cke|zasada cke|ważna reguła):\s*/i, '');
         return (
           <div className={`mt-3 w-full p-3.5 sm:p-4 rounded-xl ${borderless ? 'bg-amber-500/[0.04] border border-amber-500/15' : 'bg-amber-500/[0.06] border border-amber-500/20'} text-xs sm:text-sm text-slate-200 flex items-start gap-3 shadow-inner`}>
             <Lightbulb className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <div className="flex-1 leading-relaxed text-left space-y-1">
               <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
-                Wniosek dydaktyczny
+                Podsumowanie
               </div>
               <div className="text-slate-200 font-normal">
                 <MathRenderer content={cleanCaption} />

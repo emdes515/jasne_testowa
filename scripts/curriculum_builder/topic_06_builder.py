@@ -35,7 +35,7 @@ def build_topic_06():
         ),
         make_sc_task(
             task_id='task-6-1-2',
-            source='Matura Maj 2023 • Zad. 7',
+            source='Trening JASNE • Wzorzec CKE',
             question='Liczba różnych rozwiązań rzeczywistych równania $3x(x + 5)(x - 2) = 0$ jest równa',
             options_data=[
                 ('A', '$2$'),
@@ -249,7 +249,7 @@ def build_topic_06():
         ),
         make_sc_task(
             task_id='task-6-3-2',
-            source='Matura Maj 2023 • Zad. 8',
+            source='Trening JASNE • Wzorzec CKE',
             question='Rozwiązaniami równania $x^3 - 3x^2 - 4x + 12 = 0$ są liczby',
             options_data=[
                 ('A', '$-2, 2, 3$'),

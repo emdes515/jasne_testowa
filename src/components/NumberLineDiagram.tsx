@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatSvgText } from './MathDiagram';
 
 export interface NumberLineInterval {
   from?: number | null;        // null oznacza -nieskończoność
@@ -53,8 +54,8 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
 
   // Wymiary SVG
   const svgWidth = 260;
-  const svgHeight = 52;
-  const axisY = 32;
+  const svgHeight = 64;
+  const axisY = 44;
   const beamY = 16;
   const leftX = 14;
   const rightX = 242;
@@ -65,7 +66,7 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
     return leftX + ((clamped - explicitMin) / span) * usableWidth;
   };
 
-  const ckePurpleFill = 'rgba(216, 180, 254, 0.42)'; // CKE lilac
+  const ckePurpleFill = 'rgba(192, 132, 252, 0.16)'; // Delikatne wypełnienie pod daszkiem
   const ckePurpleStroke = '#C084FC';                 // CKE lilac border
   const ckePurpleDot = '#A855F7';                    // Darker lilac dot
 
@@ -77,7 +78,7 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
         className="select-none"
         aria-label="Rysunek osi liczbowej"
       >
-        {/* Definicja strzałki osi */}
+        {/* Definicje strzałek osi oraz dachu */}
         <defs>
           <marker
             id="axis-arrow"
@@ -90,57 +91,122 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
           >
             <path d="M 0 1 L 9 5 L 0 9 z" fill="#94A3B8" />
           </marker>
+          <marker
+            id="roof-arrow-right"
+            viewBox="0 0 10 10"
+            refX="6"
+            refY="5"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill={ckePurpleStroke} />
+          </marker>
+          <marker
+            id="roof-arrow-left"
+            viewBox="0 0 10 10"
+            refX="4"
+            refY="5"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto-start-reverse"
+          >
+            <path d="M 8 1.5 L 0 5 L 8 8.5 z" fill={ckePurpleStroke} />
+          </marker>
         </defs>
 
-        {/* 1. RYSOWANIE ZAKRESÓW / PRZEDZIAŁÓW (WYPEŁNIENIE I BELKI) */}
+        {/* 1. RYSOWANIE ZAKRESÓW / PRZEDZIAŁÓW (SZKOLNE DASZKI W GÓRĘ) */}
         {intervals.map((inv, idx) => {
           const isLeftRay = inv.from === null || inv.from === undefined;
           const isRightRay = inv.to === null || inv.to === undefined;
 
-          const startX = isLeftRay ? leftX + 4 : toX(inv.from!);
-          const endX = isRightRay ? rightX - 6 : toX(inv.to!);
+          // Promień w lewo (-inf, b> lub (-inf, b)
+          if (isLeftRay && !isRightRay) {
+            const endX = toX(inv.to!);
+            const arrowX = leftX + 4;
+            const pathD = `M ${arrowX} ${axisY} L ${arrowX} ${beamY} L ${endX} ${beamY} L ${endX} ${axisY} Z`;
 
+            return (
+              <g key={`interval-left-${idx}`}>
+                {/* Wypełnienie pod daszkiem */}
+                <path d={pathD} fill={ckePurpleFill} stroke="none" />
+                {/* Pionowy słupek od osi w górę do punktu b */}
+                <line x1={endX} y1={axisY} x2={endX} y2={beamY} stroke={ckePurpleStroke} strokeWidth="1.75" />
+                {/* Poziomy dach w lewo ze strzałką */}
+                <line x1={endX} y1={beamY} x2={arrowX} y2={beamY} stroke={ckePurpleStroke} strokeWidth="2" markerEnd="url(#roof-arrow-left)" />
+                {/* Kółko na szczycie słupka */}
+                <circle
+                  cx={endX}
+                  cy={beamY}
+                  r="3.5"
+                  fill={inv.toIncluded ? ckePurpleDot : '#0E1522'}
+                  stroke={ckePurpleStroke}
+                  strokeWidth="1.75"
+                />
+              </g>
+            );
+          }
+
+          // Promień w prawo <a, +inf) lub (a, +inf)
+          if (!isLeftRay && isRightRay) {
+            const startX = toX(inv.from!);
+            const arrowX = rightX - 6;
+            const pathD = `M ${startX} ${axisY} L ${startX} ${beamY} L ${arrowX} ${beamY} L ${arrowX} ${axisY} Z`;
+
+            return (
+              <g key={`interval-right-${idx}`}>
+                {/* Wypełnienie pod daszkiem */}
+                <path d={pathD} fill={ckePurpleFill} stroke="none" />
+                {/* Pionowy słupek od osi w górę od punktu a */}
+                <line x1={startX} y1={axisY} x2={startX} y2={beamY} stroke={ckePurpleStroke} strokeWidth="1.75" />
+                {/* Poziomy dach w prawo ze strzałką */}
+                <line x1={startX} y1={beamY} x2={arrowX} y2={beamY} stroke={ckePurpleStroke} strokeWidth="2" markerEnd="url(#roof-arrow-right)" />
+                {/* Kółko na szczycie słupka */}
+                <circle
+                  cx={startX}
+                  cy={beamY}
+                  r="3.5"
+                  fill={inv.fromIncluded ? ckePurpleDot : '#0E1522'}
+                  stroke={ckePurpleStroke}
+                  strokeWidth="1.75"
+                />
+              </g>
+            );
+          }
+
+          // Przedział obustronny (bramka) <a, b> lub (a, b> itp.
+          const startX = toX(inv.from!);
+          const endX = toX(inv.to!);
           const pathD = `M ${startX} ${axisY} L ${startX} ${beamY} L ${endX} ${beamY} L ${endX} ${axisY} Z`;
 
           return (
-            <g key={`interval-${idx}`}>
-              {/* Wypełnienie pola przedziału pod belką */}
-              <path
-                d={pathD}
-                fill={ckePurpleFill}
-                stroke="none"
-              />
-              {/* Górna belka przedziału */}
-              <line
-                x1={startX}
-                y1={beamY}
-                x2={endX}
-                y2={beamY}
+            <g key={`interval-bounded-${idx}`}>
+              {/* Wypełnienie wewnątrz bramki */}
+              <path d={pathD} fill={ckePurpleFill} stroke="none" />
+              {/* Poziomy dach bramki */}
+              <line x1={startX} y1={beamY} x2={endX} y2={beamY} stroke={ckePurpleStroke} strokeWidth="2" />
+              {/* Pionowy słupek lewy */}
+              <line x1={startX} y1={axisY} x2={startX} y2={beamY} stroke={ckePurpleStroke} strokeWidth="1.75" />
+              {/* Pionowy słupek prawy */}
+              <line x1={endX} y1={axisY} x2={endX} y2={beamY} stroke={ckePurpleStroke} strokeWidth="1.75" />
+              {/* Kółko lewe na szczycie słupka */}
+              <circle
+                cx={startX}
+                cy={beamY}
+                r="3.5"
+                fill={inv.fromIncluded ? ckePurpleDot : '#0E1522'}
                 stroke={ckePurpleStroke}
                 strokeWidth="1.75"
               />
-              {/* Pionowa nóżka z lewej (jeśli nie jest promieniem do -inf) */}
-              {!isLeftRay && (
-                <line
-                  x1={startX}
-                  y1={beamY}
-                  x2={startX}
-                  y2={axisY}
-                  stroke={ckePurpleStroke}
-                  strokeWidth="1.5"
-                />
-              )}
-              {/* Pionowa nóżka z prawej (jeśli nie jest promieniem do +inf) */}
-              {!isRightRay && (
-                <line
-                  x1={endX}
-                  y1={beamY}
-                  x2={endX}
-                  y2={axisY}
-                  stroke={ckePurpleStroke}
-                  strokeWidth="1.5"
-                />
-              )}
+              {/* Kółko prawe na szczycie słupka */}
+              <circle
+                cx={endX}
+                cy={beamY}
+                r="3.5"
+                fill={inv.toIncluded ? ckePurpleDot : '#0E1522'}
+                stroke={ckePurpleStroke}
+                strokeWidth="1.75"
+              />
             </g>
           );
         })}
@@ -159,11 +225,12 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
         {/* Etykieta osi "x" */}
         <text
           x={rightX + 4}
-          y={axisY + 14}
+          y={axisY + 4}
           fontSize="12"
           fill="#94A3B8"
           fontStyle="italic"
           fontFamily="serif"
+          dominantBaseline="middle"
         >
           x
         </text>
@@ -185,46 +252,15 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
               {/* Wartość liczbowa pod osią */}
               <text
                 x={tx}
-                y={axisY + 16}
+                y={axisY + 15}
                 textAnchor="middle"
                 fontSize="12"
                 fill="#E2E8F0"
                 fontWeight="500"
                 fontFamily="sans-serif"
               >
-                {tick.label}
+                {formatSvgText(tick.label)}
               </text>
-            </g>
-          );
-        })}
-
-        {/* 4. PUNKTY KRAŃCOWE PRZEDZIAŁÓW (KÓŁKA ZAMALOWANE VS PUSTE) */}
-        {intervals.map((inv, idx) => {
-          const isLeftRay = inv.from === null || inv.from === undefined;
-          const isRightRay = inv.to === null || inv.to === undefined;
-
-          return (
-            <g key={`dots-${idx}`}>
-              {!isLeftRay && (
-                <circle
-                  cx={toX(inv.from!)}
-                  cy={axisY}
-                  r="3.5"
-                  fill={inv.fromIncluded ? ckePurpleDot : '#0E1522'}
-                  stroke={ckePurpleStroke}
-                  strokeWidth="1.75"
-                />
-              )}
-              {!isRightRay && (
-                <circle
-                  cx={toX(inv.to!)}
-                  cy={axisY}
-                  r="3.5"
-                  fill={inv.toIncluded ? ckePurpleDot : '#0E1522'}
-                  stroke={ckePurpleStroke}
-                  strokeWidth="1.75"
-                />
-              )}
             </g>
           );
         })}

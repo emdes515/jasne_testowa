@@ -178,6 +178,8 @@ export function normalizeTask(task: any, lesson: any, topic: any): any {
       ai_tutor_prompt: `Pomóż uczniowi rozwiązać zadanie maturalne: ${questionContent}`
     },
     hint: task.hint || task.hints?.level_1 || task.hint_1 || 'Zwróć uwagę na kluczowe założenia w poleceniu.',
+    hint_1: task.hint_1 || task.hints?.level_1 || task.hint || 'Zwróć uwagę na kluczowe założenia w poleceniu.',
+    hint_2: task.hint_2 || task.hints?.level_2 || 'Przeanalizuj powiązania logiczne i sformułuj precyzyjny wniosek.',
     hint_cost: task.hint_cost || task.hintCost || (isProof ? 20 : 10),
     ai_hint_enabled: Boolean(task.ai_hint_enabled !== undefined ? task.ai_hint_enabled : (isProof || task.type === 'OPEN_GENERAL' || task.type === 'OPEN_PROOF' || task.type === 'OPEN_TASK')),
     ai_hint_cost: task.ai_hint_cost || task.hint_cost || 20,

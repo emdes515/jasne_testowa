@@ -589,7 +589,18 @@ button, a, input, [role="button"] {
 .MafsView text {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   font-variant-numeric: tabular-nums;
-  fill: #DFE2F1;
+  font-weight: 600;
+  user-select: none;
+}
+
+.MafsView .mafs-shadow {
+  paint-order: stroke fill;
+  stroke: #070A0F;
+  stroke-width: 4px;
+  stroke-opacity: 1;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95));
 }
 
 .MafsView:focus-visible {

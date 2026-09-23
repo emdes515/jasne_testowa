@@ -63,7 +63,7 @@ def build_topic_01():
         ),
         make_sc_task(
             task_id='task-1-1-4',
-            source='Matura CKE Maj 2025 • Zadanie 2 (1 pkt)',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Wartość wyrażenia $\\frac{5^{12} + 5^{13} + 5^{14}}{5^{12}}$ jest równa',
             options_data=[
                 ('A', '$5^0 + 5^1 + 5^2$'),
@@ -75,76 +75,7 @@ def build_topic_01():
             explanation='W liczniku wyłączamy najmniejszą wspólną potęgę $5^{12}$ przed nawias:\n$$5^{12} + 5^{13} + 5^{14} = 5^{12}(1 + 5^1 + 5^2) = 5^{12}(1 + 5 + 25) = 5^{12} \\cdot 31$$\nDzielimy przez mianownik:\n$$\\frac{5^{12} \\cdot 31}{5^{12}} = 31$$',
             cke_trap='Nigdy nie dodawaj wykładników przy dodawaniu potęg ($5^{12} + 5^{13} + 5^{14} \\neq 5^{39}$). Przy sumie potęg zawsze wyłączaj najmniejszą potęgę przed nawias!'
         ),
-        make_sc_task(
-            task_id='task-1-1-5',
-            source='Matura CKE Marzec 2026 • Zadanie 3 (1 pkt)',
-            question='Dokończ zdanie. Wartość wyrażenia $\\frac{3^{10} \\cdot 9^{20}}{27^{15}}$ jest równa',
-            options_data=[
-                ('A', '$3^0$'),
-                ('B', '$3^5$'),
-                ('C', '$3^{10}$'),
-                ('D', '$3^{15}$')
-            ],
-            correct_id='B',
-            explanation='Sprowadzamy wszystkie liczby do potęgi trójki: $9 = 3^2$, $27 = 3^3$.\n$$9^{20} = (3^2)^{20} = 3^{40}, \\quad 27^{15} = (3^3)^{15} = 3^{45}$$\nLicznik: $3^{10} \\cdot 3^{40} = 3^{10+40} = 3^{50}$.\nCałość: $\\frac{3^{50}}{3^{45}} = 3^{50 - 45} = 3^5$.',
-            cke_trap='Pamiętaj o regule potęgowania potęgi: wykładniki się MNOŻY ($2 \\cdot 20 = 40$), a nie dodaje ($2 + 20 = 22$).'
-        ),
-        make_sc_task(
-            task_id='task-1-1-6',
-            source='Matura CKE Czerwiec 2023 • Zadanie 2 (1 pkt)',
-            question='Dokończ zdanie. Dla każdej liczby rzeczywistej dodatniej $x$ wyrażenie $\\sqrt{x} \\cdot \\sqrt[3]{x} \\cdot \\sqrt[6]{x}$ jest równe',
-            options_data=[
-                ('A', '$x$'),
-                ('B', '$x^{\\frac{1}{6}}$'),
-                ('C', '$x^{\\frac{1}{36}}$'),
-                ('D', '$\\sqrt[11]{x}$')
-            ],
-            correct_id='A',
-            explanation='Zamieniamy pierwiastki na potęgi o wykładnikach ułamkowych:\n$$\\sqrt{x} = x^{\\frac{1}{2}}, \\quad \\sqrt[3]{x} = x^{\\frac{1}{3}}, \\quad \\sqrt[6]{x} = x^{\\frac{1}{6}}$$\nDodajemy wykładniki do wspólnego mianownika 6:\n$$\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6} = \\frac{3}{6} + \\frac{2}{6} + \\frac{1}{6} = \\frac{6}{6} = 1$$\nOtrzymujemy $x^1 = x$.',
-            cke_trap='Nie mnóż stopni pierwiastków ze sobą ($2 \\cdot 3 \\cdot 6 = 36$). Zamiana pierwiastków na wykładniki ułamkowe sprowadza zadanie do zwykłego dodawania ułamków.'
-        ),
-        make_sc_task(
-            task_id='task-1-1-7',
-            source='Matura CKE Sierpień 2026 • Zadanie 2 (1 pkt)',
-            question='Dokończ zdanie. Liczba $\\frac{3^{-1} \\cdot 4^{0{,}5}}{3^{-2} \\cdot 2^{-1}}$ jest równa',
-            options_data=[
-                ('A', '$6$'),
-                ('B', '$12$'),
-                ('C', '$18$'),
-                ('D', '$24$')
-            ],
-            correct_id='B',
-            explanation='Rozdzielamy ułamek na część o podstawie 3 i część o podstawie 2:\n$$\\frac{3^{-1}}{3^{-2}} = 3^{-1 - (-2)} = 3^{-1 + 2} = 3^1 = 3$$\nPonieważ $4^{0{,}5} = \\sqrt{4} = 2 = 2^1$, część z dwójkami wynosi:\n$$\\frac{2^1}{2^{-1}} = 2^{1 - (-1)} = 2^2 = 4$$\nWynik to $3 \\cdot 4 = 12$.',
-            cke_trap='Uważaj na odejmowanie ujemnych wykładników: $m - (-n) = m + n$. Błąd znaku w mianowniku prowadzi do błędnego wyniku.'
-        ),
-        make_sc_task(
-            task_id='task-1-1-8',
-            source='Matura CKE Próbna Grudzień 2023 • Zadanie 1 (1 pkt)',
-            question='Dokończ zdanie. Liczba $(3^{-2{,}4} \\cdot 3^{0{,}4})^{0{,}5}$ jest równa',
-            options_data=[
-                ('A', '$3$'),
-                ('B', '$9$'),
-                ('C', '$\\frac{1}{3}$'),
-                ('D', '$\\frac{1}{9}$')
-            ],
-            correct_id='C',
-            explanation='Wykonujemy najpierw mnożenie wewnątrz nawiasu:\n$$3^{-2{,}4 + 0{,}4} = 3^{-2}$$\nNastępnie potęgujemy potęgę:\n$$(3^{-2})^{0{,}5} = 3^{-2 \\cdot 0{,}5} = 3^{-1} = \\frac{1}{3}$$',
-            cke_trap='Wykładnik $-1$ to odwrotność liczby ($3^{-1} = \\frac{1}{3}$), a nie $-3$ ani $3$.'
-        ),
-        make_sc_task(
-            task_id='task-1-1-9',
-            source='Matura CKE Próbna Grudzień 2022 • Zadanie 1 (1 pkt)',
-            question='Dokończ zdanie. Liczba $(5 \\cdot 5^{0{,}5})^{\\frac{1}{3}}$ jest równa',
-            options_data=[
-                ('A', '$5^{\\frac{1}{6}}$'),
-                ('B', '$5^{\\frac{2}{3}}$'),
-                ('C', '$\\sqrt{5}$'),
-                ('D', '$5$')
-            ],
-            correct_id='C',
-            explanation='Pamiętamy, że $5 = 5^1$. Działanie w nawiasie:\n$$5^1 \\cdot 5^{0{,}5} = 5^{1 + 0{,}5} = 5^{1{,}5} = 5^{\\frac{3}{2}}$$\nPotęgujemy potęgę:\n$$(5^{\\frac{3}{2}})^{\\frac{1}{3}} = 5^{\\frac{3}{2} \\cdot \\frac{1}{3}} = 5^{\\frac{1}{2}} = \\sqrt{5}$$',
-            cke_trap='Liczba 5 ma domyślny wykładnik 1, a nie 0. $5 \\cdot 5^{0{,}5} = 5^{1{,}5}$, a nie $5^{0{,}5}$.'
-        ),
+
         make_open_task(
             task_id='task-1-1-10',
             source='Informator CKE Formuła 2023 • Zadanie otwarte (2 pkt)',
@@ -163,7 +94,7 @@ def build_topic_01():
             "Potęgowanie to skrócony zapis wielokrotnego mnożenia tej samej liczby: zapis $a^n$ oznacza, że liczbę $a$ (podstawę) mnożysz przez samą siebie $n$ razy (wykładnik).\n\n"
             "Podstawa potęgi jest jak nienaruszalna cegiełka bazy – podczas dodawania wykładników baza nigdy nie ulega zmianie.\n\n"
             "Wykładnik to licznik powtórzeń i operacji – wszystkie prawa działań na potęgach wykonujesz wyłącznie na licznikach na górze.\n\n"
-            "Złoty odruch CKE: gdy w zadaniu widzisz różne liczby (np. 4, 8, 16 lub 9, 27), Twoim pierwszym ruchem jest zamiana ich na wspólną bazę: najczęściej 2, 3 lub 5."
+            "Wskazówka: gdy w zadaniu widzisz różne liczby (np. 4, 8, 16 lub 9, 27), Twoim pierwszym krokiem jest zamiana ich na wspólną bazę: najczęściej 2, 3 lub 5."
         ),
         matura_context='Zadanie z działań na potęgach pojawia się w 100% arkuszy maturalnych CKE na pozycji 1 lub 2 za 1 punkt. Dodatkowo występuje regularnie w zadaniu otwartym na podzielność za 2 punkty.',
         core_formulas=[
@@ -234,7 +165,7 @@ def build_topic_01():
         ),
         make_sc_task(
             task_id='task-1-2-2',
-            source='Matura Czerwiec 2023 • Zad. 1',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Liczba $\\sqrt{75} - \\sqrt{27}$ jest równa',
             options_data=[
                 ('A', '$\\sqrt{48}$'),
@@ -264,7 +195,7 @@ def build_topic_01():
         ),
         make_sc_task(
             task_id='task-1-2-5',
-            source='Matura CKE • Redukcja pierwiastków',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Liczba $2\\sqrt{18} - \\sqrt{32}$ jest równa',
             options_data=[
                 ('A', '$2\\sqrt{2}$'),
@@ -340,7 +271,7 @@ def build_topic_01():
         ),
         make_sc_task(
             task_id='task-1-3-2',
-            source='Matura Sierpień 2023 • Zad. 1',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Liczba $\\frac{4}{\\sqrt{5} - 1}$ jest równa',
             options_data=[
                 ('A', '$\\sqrt{5} + 1$'),
@@ -376,7 +307,7 @@ def build_topic_01():
         ),
         make_sc_task(
             task_id='task-1-3-5',
-            source='Matura CKE • Sprzężenie dwumianu',
+            source='Trening JASNE • Wzorzec CKE',
             question='Liczba $\\frac{\\sqrt{3} + 1}{\\sqrt{3} - 1}$ po usunięciu niewymierności z mianownika jest równa',
             options_data=[
                 ('A', '$2 + \\sqrt{3}$'),
@@ -417,10 +348,11 @@ def build_topic_01():
             }
         ],
         worked_example={
+            'title': 'Wzorcowe usuwanie niewymierności ze sprzężeniem',
             'problem': 'Usuń niewymierność z mianownika ułamka $\\frac{4}{\\sqrt{5} - 1}$.',
             'steps': [
-                {'num': 1, 'label': 'Dobór sprzężenia', 'text': 'W mianowniku mamy $\\sqrt{5} - 1$, więc mnożymy licznik i mianownik przez $(\\sqrt{5} + 1)$.'},
-                {'num': 2, 'label': 'Różnica kwadratów w mianowniku', 'text': 'Mianownik: $(\\sqrt{5} - 1)(\\sqrt{5} + 1) = (\\sqrt{5})^2 - 1^2 = 5 - 1 = 4$. Licznik: $4(\\sqrt{5} + 1)$.'},
+                {'num': 1, 'label': 'Wyznaczenie sprzężenia mianownika', 'text': 'Sprzężeniem mianownika $\\sqrt{5} - 1$ jest $\\sqrt{5} + 1$. Mnożymy licznik i mianownik.'},
+                {'num': 2, 'label': 'Zastosowanie wzoru skróconego mnożenia', 'text': 'W mianowniku: $(\\sqrt{5} - 1)(\\sqrt{5} + 1) = (\\sqrt{5})^2 - 1^2 = 5 - 1 = 4$.'},
                 {'num': 3, 'label': 'Skrócenie ułamka i wynik CKE', 'text': '$\\frac{4(\\sqrt{5} + 1)}{4} = \\sqrt{5} + 1$.'}
             ],
             'result': '\\sqrt{5} + 1'
@@ -452,7 +384,7 @@ def build_topic_01():
         ),
         make_sc_task(
             task_id='task-1-4-2',
-            source='Matura Maj 2023 • Zad. 1',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Liczba $16^{-0{,}25} \\cdot 64^{\\frac{2}{3}}$ jest równa',
             options_data=[
                 ('A', '$8$'),
@@ -488,7 +420,7 @@ def build_topic_01():
         ),
         make_sc_task(
             task_id='task-1-4-5',
-            source='Matura CKE • Odwracanie i pierwiastkowanie',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Wartość wyrażenia $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}}$ jest równa',
             options_data=[
                 ('A', '$27$'),

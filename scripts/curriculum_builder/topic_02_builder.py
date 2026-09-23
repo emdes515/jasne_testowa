@@ -35,17 +35,17 @@ def build_topic_02():
         ),
         make_sc_task(
             task_id='task-2-1-2',
-            source='Matura Czerwiec 2023 • Zad. 2',
-            question='Liczba $\\log_{\\sqrt{3}} 9$ jest równa',
+            source='Matura maj 2024 • Zad. 4',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba $\\log_{\\sqrt{3}} 9$ jest równa',
             options_data=[
-                ('A', '$4$'),
-                ('B', '$2$'),
-                ('C', '$3$'),
-                ('D', '$\\frac{1}{2}$')
+                ('A', '$2$'),
+                ('B', '$3$'),
+                ('C', '$4$'),
+                ('D', '$9$')
             ],
-            correct_id='A',
-            explanation='$(\\sqrt{3})^c = 9 \\implies (3^{1/2})^c = 3^2 \\implies \\frac{1}{2}c = 2 \\implies c = 4$.',
-            cke_trap='Podstawa to $\\sqrt{3}$, więc $(\\sqrt{3})^4 = ((\\sqrt{3})^2)^2 = 3^2 = 9$.'
+            correct_id='C',
+            explanation='Z definicji logarytmu $\\log_{\\sqrt{3}} 9 = c$, co oznacza, że $(\\sqrt{3})^c = 9$. Sprowadzamy obie strony do wspólnej podstawy $3$:\n$$(\\sqrt{3})^c = (3^{\\frac{1}{2}})^c = 3^{\\frac{c}{2}}, \\quad 9 = 3^2$$\nPrzyrównujemy wykładniki: $\\frac{c}{2} = 2$, co oznacza, że $c = 4$. Zatem $\\log_{\\sqrt{3}} 9 = 4$.',
+            cke_trap='Nie myl pierwiastka w podstawie z dzieleniem $9 : \\sqrt{3}$. Poprawny wynik $4$ wynika z faktu, że $(\\sqrt{3})^4 = 3^2 = 9$.'
         ),
         make_sc_task(
             task_id='task-2-1-3',
@@ -82,7 +82,7 @@ def build_topic_02():
         lesson_id='lesson-2-1',
         topic_id=topic_id,
         title='Definicja logarytmu i pętla logarytmiczna',
-        concept_essence='Logarytm to pytanie o wykładnik potęgi: "Do jakiej potęgi $c$ muszę podnieść podstawę $a$, aby otrzymać liczbę $b$?". Zasada pętli: podstawa $a$ zatacza koło przez znak równości do liczby $c$ i ląduje na $b$ ($a^c = b$). Warunki konieczne (CKE): podstawa $a > 0$ i $a \neq 1$, liczba logarytmowana $b > 0$.',
+        concept_essence='Logarytm to pytanie o wykładnik potęgi: "Do jakiej potęgi $c$ muszę podnieść podstawę $a$, aby otrzymać liczbę $b$?". Zasada pętli: podstawa $a$ zatacza koło przez znak równości do liczby $c$ i ląduje na $b$ ($a^c = b$). Warunki konieczne (CKE): podstawa $a > 0$ i $a \\neq 1$, liczba logarytmowana $b > 0$.',
         matura_context='Pewniak za 1 punkt na każdej maturze (zazwyczaj zadanie 2 lub 3).',
         core_formulas=[
             {
@@ -142,17 +142,17 @@ def build_topic_02():
         ),
         make_sc_task(
             task_id='task-2-2-2',
-            source='Matura Czerwiec 2024 • Zad. 3',
-            question=r'Dokończ zdanie. Liczba $\log_3 18 - \log_3 2$ jest równa',
+            source='Matura maj 2023 • Zad. 4',
+            question=r'Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.' + '\n' + r'Liczba $\log_9 27 + \log_9 3$ jest równa',
             options_data=[
-                ('A', '$2$'),
-                ('B', r'$\log_3 16$'),
-                ('C', '$9$'),
-                ('D', '$1$')
+                ('A', '$81$'),
+                ('B', '$9$'),
+                ('C', '$4$'),
+                ('D', '$2$')
             ],
-            correct_id='A',
-            explanation=r'Różnica logarytmów o tej samej podstawie to logarytm ilorazu: $\log_3 18 - \log_3 2 = \log_3\left(\frac{18}{2}\right) = \log_3 9$. Ponieważ $3^2 = 9$, wynik to $2$.',
-            cke_trap=r'Nie odejmuj liczb logarytmowanych: $18 - 2 = 16$ to typowa pułapka w odpowiedzi B.'
+            correct_id='D',
+            explanation=r'Stosujemy wzór na sumę logarytmów o tej samej podstawie: $\log_a x + \log_a y = \log_a(x \cdot y)$.' + '\n' + r'$$\log_9 27 + \log_9 3 = \log_9(27 \cdot 3) = \log_9 81$$' + '\n' + r'Ponieważ $9^2 = 81$, wartość logarytmu wynosi $2$.',
+            cke_trap=r'Nigdy nie dodawaj liczb logarytmowanych: $27 + 3 = 30$. Dodawanie logarytmów zamienia się w mnożenie liczb pod logarytmem: $27 \cdot 3 = 81$.'
         ),
         make_sc_task(
             task_id='task-2-2-3',
@@ -178,7 +178,7 @@ def build_topic_02():
         ),
         make_sc_task(
             task_id='task-2-2-5',
-            source='Matura CKE • Suma logarytmów z ułamkiem',
+            source='Trening JASNE • Wzorzec CKE',
             question=r'Wartość wyrażenia $\log_2 12 + \log_2 \frac{4}{3}$ jest równa',
             options_data=[
                 ('A', '$4$'),
@@ -255,7 +255,7 @@ def build_topic_02():
         ),
         make_sc_task(
             task_id='task-2-3-2',
-            source='Matura Maj 2023 • Zad. 2',
+            source='Trening JASNE • Wzorzec CKE',
             question=r'Dokończ zdanie. Liczba $2\log_5 10 - \log_5 4$ jest równa',
             options_data=[
                 ('A', '$2$'),
@@ -291,7 +291,7 @@ def build_topic_02():
         ),
         make_sc_task(
             task_id='task-2-3-5',
-            source='Matura Sierpień 2023 • Zad. 2',
+            source='Trening JASNE • Wzorzec CKE',
             question=r'Liczba $2\log_6 3 + \log_6 4$ jest równa',
             options_data=[
                 ('A', '$2$'),

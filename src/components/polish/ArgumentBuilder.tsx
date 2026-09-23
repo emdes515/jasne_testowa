@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Check, Sparkles, Layers, ShieldAlert, BookOpen, BookmarkCheck, ArrowRight } from 'lucide-react';
+import { Check, Layers, ShieldAlert, BookOpen, BookmarkCheck, ArrowRight } from 'lucide-react';
 import { ArgumentBuilderTaskData, PolishArgumentBlock, ArgumentSlotOption } from '../../types';
 import { argumentVaultService } from '../../services/argumentVaultService';
 import confetti from 'canvas-confetti';
@@ -241,7 +241,7 @@ export const ArgumentBuilder: React.FC<ArgumentBuilderProps> = ({
           className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border-2 border-emerald-500/80 shadow-2xl flex flex-col gap-3"
         >
           <div className="flex items-center gap-2 text-emerald-300 font-bold text-base">
-            <Sparkles className="w-5 h-5 text-emerald-400" />
+            <BookmarkCheck className="w-5 h-5 text-emerald-400" />
             <span>KLOCEK DODANY DO TWOJEGO SKARBCA ARGUMENTÓW!</span>
           </div>
           <p className="text-xs text-slate-200 leading-relaxed">

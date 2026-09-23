@@ -5,7 +5,6 @@ import {
   CheckCircle2, 
   AlertTriangle, 
   Layers, 
-  Sparkles, 
   ArrowRight, 
   BookOpen, 
   HelpCircle,
@@ -336,7 +335,7 @@ export const SynthesisCondenser: React.FC<SynthesisCondenserProps> = ({
           disabled={selectedElements.length === 0}
           className="w-full py-3 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm rounded-xl shadow-lg shadow-rose-950/40 flex items-center justify-center gap-2 transition-all active:scale-98"
         >
-          <Sparkles size={16} />
+          <Scale size={16} />
           <span>Oceń notatkę wg kryteriów CKE</span>
         </button>
       )}

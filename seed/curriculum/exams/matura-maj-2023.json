@@ -25,10 +25,10 @@
     "isCke": true,
     "numberLine": {
       "min": -5,
-      "max": 6,
+      "max": 7,
       "ticks": [
         -2,
-        3
+        5
       ],
       "intervals": [
         {
@@ -37,9 +37,9 @@
           "toIncluded": true
         },
         {
-          "from": 3,
+          "from": 5,
           "to": null,
-          "fromIncluded": false
+          "fromIncluded": true
         }
       ]
     }
@@ -259,113 +259,122 @@
     "session": "Maj",
     "isCke": true,
     "diagram": {
-      "type": "GEOMETRY_2D",
-      "title": "Interpretacja geometryczna układu równań w układzie współrzędnych",
-      "width": 440,
-      "height": 260,
-      "grid": {
-        "minX": 30,
-        "maxX": 410,
-        "stepX": 30,
-        "minY": 25,
-        "maxY": 235,
-        "stepY": 30,
-        "color": "rgba(148, 163, 184, 0.1)"
-      },
-      "ticks": [
-        {
-          "x": 160,
-          "y": 130,
-          "label": "0",
-          "axis": "x"
-        },
-        {
-          "x": 220,
-          "y": 130,
-          "label": "2",
-          "axis": "x"
-        },
-        {
-          "x": 160,
-          "y": 100,
-          "label": "1",
-          "axis": "y"
-        }
+      "type": "LINEAR",
+      "xRange": [
+        -3,
+        5
       ],
-      "segments": [
+      "yRange": [
+        -3,
+        5
+      ],
+      "gridStep": 1,
+      "lines": [
         {
-          "from": [
-            20,
-            130
-          ],
-          "to": [
-            420,
-            130
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            160,
-            240
-          ],
-          "to": [
-            160,
-            20
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            100,
-            220
-          ],
-          "to": [
-            280,
-            10
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 2.5,
-          "label": "y = 2x - 3"
-        },
-        {
-          "from": [
-            100,
-            40
-          ],
-          "to": [
-            310,
-            250
-          ],
+          "slope": -1,
+          "intercept": 2,
           "color": "#38BDF8",
-          "strokeWidth": 2.5,
-          "label": "y = -x + 3"
+          "label": "y = -x + 2"
+        },
+        {
+          "slope": 2,
+          "intercept": -1,
+          "color": "#FFB800",
+          "label": "y = 2x - 1"
         }
       ],
       "points": [
         {
-          "x": 220,
-          "y": 100,
-          "label": "(2, 1)",
-          "labelPosition": "top-right",
+          "x": 1,
+          "y": 1,
+          "label": "P(1, 1)",
           "dot": "filled",
-          "color": "#10B981"
-        }
-      ],
-      "labels": [
-        {
-          "x": 415,
-          "y": 144,
-          "text": "x",
-          "color": "#94A3B8"
+          "color": "#10B981",
+          "attach": "ne"
         },
         {
-          "x": 172,
-          "y": 24,
-          "text": "y",
-          "color": "#94A3B8"
+          "x": 0,
+          "y": 2,
+          "label": "(0, 2)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "nw"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "label": "(2, 0)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "se"
+        },
+        {
+          "x": 0,
+          "y": -1,
+          "label": "(0, -1)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        }
+      ]
+    },
+    "plot": {
+      "type": "LINEAR",
+      "xRange": [
+        -3,
+        5
+      ],
+      "yRange": [
+        -3,
+        5
+      ],
+      "gridStep": 1,
+      "lines": [
+        {
+          "slope": -1,
+          "intercept": 2,
+          "color": "#38BDF8",
+          "label": "y = -x + 2"
+        },
+        {
+          "slope": 2,
+          "intercept": -1,
+          "color": "#FFB800",
+          "label": "y = 2x - 1"
+        }
+      ],
+      "points": [
+        {
+          "x": 1,
+          "y": 1,
+          "label": "P(1, 1)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "ne"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "label": "(0, 2)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "nw"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "label": "(2, 0)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "se"
+        },
+        {
+          "x": 0,
+          "y": -1,
+          "label": "(0, -1)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
         }
       ]
     }
@@ -520,90 +529,100 @@
     "session": "Maj",
     "isCke": true,
     "diagram": {
-      "type": "GEOMETRY_2D",
-      "title": "Wykres funkcji kwadratowej $f(x)$ z wierzchołkiem $W = (-2, 9)$",
-      "width": 440,
-      "height": 260,
-      "grid": {
-        "minX": 30,
-        "maxX": 410,
-        "stepX": 25,
-        "minY": 25,
-        "maxY": 235,
-        "stepY": 20,
-        "color": "rgba(148, 163, 184, 0.12)"
+      "type": "PARABOLA",
+      "xRange": [
+        -7,
+        13
+      ],
+      "yRange": [
+        -3,
+        6
+      ],
+      "gridStep": 2,
+      "parabola": {
+        "a": -0.0625,
+        "p": 3,
+        "q": 4,
+        "color": "#FFB800",
+        "domain": [
+          -6.5,
+          12.5
+        ]
       },
-      "segments": [
-        {
-          "from": [
-            20,
-            190
-          ],
-          "to": [
-            420,
-            190
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            245,
-            240
-          ],
-          "to": [
-            245,
-            20
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        }
-      ],
-      "curves": [
-        {
-          "path": "M 100,240 Q 195,-20 290,240",
-          "color": "#FFB800",
-          "strokeWidth": 2.5
-        }
-      ],
+      "axisOfSymmetry": 3,
       "points": [
         {
-          "x": 195,
-          "y": 25,
-          "label": "W(-2, 9)",
-          "labelPosition": "top",
+          "x": -5,
+          "y": 0,
+          "label": "x₁ = -5",
           "dot": "filled",
-          "color": "#10B981"
+          "color": "#FFB800",
+          "attach": "nw"
         },
         {
-          "x": 120,
-          "y": 190,
-          "label": "-5",
-          "labelPosition": "bottom-left",
+          "x": 3,
+          "y": 4,
+          "label": "xw = p = 3",
           "dot": "filled",
-          "color": "#FFB800"
+          "color": "#10B981",
+          "attach": "n"
         },
         {
-          "x": 270,
-          "y": 190,
-          "label": "1",
-          "labelPosition": "bottom-right",
+          "x": 11,
+          "y": 0,
+          "label": "x₂ = 11",
           "dot": "filled",
-          "color": "#FFB800"
+          "color": "#FFB800",
+          "attach": "ne"
         }
+      ]
+    },
+    "plot": {
+      "type": "PARABOLA",
+      "xRange": [
+        -7,
+        13
       ],
-      "labels": [
+      "yRange": [
+        -3,
+        6
+      ],
+      "gridStep": 2,
+      "parabola": {
+        "a": -0.0625,
+        "p": 3,
+        "q": 4,
+        "color": "#FFB800",
+        "domain": [
+          -6.5,
+          12.5
+        ]
+      },
+      "axisOfSymmetry": 3,
+      "points": [
         {
-          "x": 415,
-          "y": 204,
-          "text": "x",
-          "color": "#94A3B8"
+          "x": -5,
+          "y": 0,
+          "label": "x₁ = -5",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "nw"
         },
         {
-          "x": 257,
-          "y": 24,
-          "text": "y",
-          "color": "#94A3B8"
+          "x": 3,
+          "y": 4,
+          "label": "xw = p = 3",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": 11,
+          "y": 0,
+          "label": "x₂ = 11",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "ne"
         }
       ]
     }

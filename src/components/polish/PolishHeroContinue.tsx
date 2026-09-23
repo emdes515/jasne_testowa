@@ -6,7 +6,7 @@ import {
   BookOpen, 
   MessageSquare, 
   PenTool, 
-  Sparkles,
+  RotateCcw,
   Target
 } from 'lucide-react';
 import { triggerHaptic } from '../../utils';
@@ -108,7 +108,7 @@ export const PolishHeroContinue: React.FC<PolishHeroContinueProps> = ({
         pillarId: 'pillar-1-jezyk-w-uzyciu',
         pillarName: 'Tryb Powtórkowy',
         pillarColor: { text: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/30' },
-        PillarIcon: Sparkles,
+        PillarIcon: RotateCcw,
         isReviewMode: true
       };
     }

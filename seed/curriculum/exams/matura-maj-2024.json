@@ -350,134 +350,106 @@
     "session": "Maj",
     "isCke": true,
     "diagram": {
-      "type": "GEOMETRY_2D",
-      "title": "Wykresy funkcji liniowych $f$ oraz $g$ w układzie współrzędnych",
-      "width": 440,
-      "height": 260,
-      "grid": {
-        "minX": 30,
-        "maxX": 410,
-        "stepX": 30,
-        "minY": 25,
-        "maxY": 235,
-        "stepY": 30,
-        "color": "rgba(148, 163, 184, 0.1)"
-      },
-      "ticks": [
-        {
-          "x": 190,
-          "y": 130,
-          "label": "-1",
-          "axis": "x"
-        },
-        {
-          "x": 250,
-          "y": 130,
-          "label": "1",
-          "axis": "x"
-        },
-        {
-          "x": 220,
-          "y": 100,
-          "label": "1",
-          "axis": "y"
-        },
-        {
-          "x": 220,
-          "y": 160,
-          "label": "-1",
-          "axis": "y"
-        }
+      "type": "LINEAR",
+      "xRange": [
+        -3,
+        5
       ],
-      "segments": [
+      "yRange": [
+        -4,
+        6
+      ],
+      "gridStep": 1,
+      "lines": [
         {
-          "from": [
-            20,
-            130
-          ],
-          "to": [
-            420,
-            130
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            220,
-            240
-          ],
-          "to": [
-            220,
-            20
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            70,
-            220
-          ],
-          "to": [
-            370,
-            40
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 2.5,
-          "label": "k: y = ax + b"
-        },
-        {
-          "from": [
-            120,
-            235
-          ],
-          "to": [
-            410,
-            60
-          ],
+          "slope": -1.5,
+          "intercept": 3,
           "color": "#38BDF8",
-          "strokeWidth": 2.5,
-          "label": "l: y = cx + d"
+          "label": "k: y = -3/2 x + 3"
+        },
+        {
+          "slope": -1.5,
+          "intercept": -1,
+          "color": "#FFB800",
+          "label": "l: y = -3/2 x - 1"
         }
       ],
       "points": [
         {
-          "x": 220,
-          "y": 130,
-          "label": "O",
-          "labelPosition": "bottom-left",
-          "dot": "none"
+          "x": 0,
+          "y": 3,
+          "label": "(0, 3)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "ne"
         },
         {
-          "x": 220,
-          "y": 100,
-          "label": "b",
-          "labelPosition": "left",
+          "x": 2,
+          "y": 0,
+          "label": "(2, 0)",
           "dot": "filled",
-          "color": "#FFB800"
+          "color": "#38BDF8",
+          "attach": "ne"
         },
         {
-          "x": 220,
-          "y": 160,
-          "label": "d",
-          "labelPosition": "right",
+          "x": 0,
+          "y": -1,
+          "label": "(0, -1)",
           "dot": "filled",
-          "color": "#38BDF8"
+          "color": "#FFB800",
+          "attach": "sw"
+        }
+      ]
+    },
+    "plot": {
+      "type": "LINEAR",
+      "xRange": [
+        -3,
+        5
+      ],
+      "yRange": [
+        -4,
+        6
+      ],
+      "gridStep": 1,
+      "lines": [
+        {
+          "slope": -1.5,
+          "intercept": 3,
+          "color": "#38BDF8",
+          "label": "k: y = -3/2 x + 3"
+        },
+        {
+          "slope": -1.5,
+          "intercept": -1,
+          "color": "#FFB800",
+          "label": "l: y = -3/2 x - 1"
         }
       ],
-      "labels": [
+      "points": [
         {
-          "x": 415,
-          "y": 144,
-          "text": "x",
-          "color": "#94A3B8"
+          "x": 0,
+          "y": 3,
+          "label": "(0, 3)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "ne"
         },
         {
-          "x": 232,
-          "y": 24,
-          "text": "y",
-          "color": "#94A3B8"
+          "x": 2,
+          "y": 0,
+          "label": "(2, 0)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "ne"
+        },
+        {
+          "x": 0,
+          "y": -1,
+          "label": "(0, -1)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
         }
       ]
     }
@@ -552,150 +524,116 @@
     "session": "Maj",
     "isCke": true,
     "diagram": {
-      "type": "GEOMETRY_2D",
-      "title": "Wykres funkcji kwadratowej $f$ z wierzchołkiem $W = (1, 9)$",
-      "width": 460,
-      "height": 280,
-      "grid": {
-        "minX": 30,
-        "maxX": 430,
-        "stepX": 25,
-        "minY": 25,
-        "maxY": 255,
-        "stepY": 20,
-        "color": "rgba(148, 163, 184, 0.12)"
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
       },
-      "ticks": [
-        {
-          "x": 145,
-          "y": 200,
-          "label": "-2",
-          "axis": "x"
-        },
-        {
-          "x": 195,
-          "y": 200,
-          "label": "0",
-          "axis": "x"
-        },
-        {
-          "x": 220,
-          "y": 200,
-          "label": "1",
-          "axis": "x"
-        },
-        {
-          "x": 295,
-          "y": 200,
-          "label": "4",
-          "axis": "x"
-        },
-        {
-          "x": 195,
-          "y": 40,
-          "label": "8",
-          "axis": "y"
-        }
-      ],
-      "segments": [
-        {
-          "from": [
-            20,
-            200
-          ],
-          "to": [
-            440,
-            200
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            195,
-            260
-          ],
-          "to": [
-            195,
-            20
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            220,
-            250
-          ],
-          "to": [
-            220,
-            30
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.2,
-          "dashed": true
-        }
-      ],
-      "curves": [
-        {
-          "path": "M 120,250 Q 220,-30 320,250",
-          "color": "#FFB800",
-          "strokeWidth": 2.5
-        }
-      ],
+      "axisOfSymmetry": 1,
       "points": [
         {
-          "x": 220,
-          "y": 20,
+          "x": 1,
+          "y": 9,
           "label": "W(1, 9)",
-          "labelPosition": "top",
           "dot": "filled",
-          "color": "#10B981"
+          "color": "#10B981",
+          "attach": "n"
         },
         {
-          "x": 145,
-          "y": 200,
+          "x": -2,
+          "y": 0,
           "label": "(-2, 0)",
-          "labelPosition": "bottom-left",
           "dot": "filled",
-          "color": "#FFB800"
-        },
-        {
-          "x": 295,
-          "y": 200,
-          "label": "(4, 0)",
-          "labelPosition": "bottom-right",
-          "dot": "filled",
-          "color": "#FFB800"
-        },
-        {
-          "x": 195,
-          "y": 40,
-          "label": "(0, 8)",
-          "labelPosition": "left",
-          "dot": "filled",
-          "color": "#38BDF8"
-        }
-      ],
-      "labels": [
-        {
-          "x": 435,
-          "y": 214,
-          "text": "x",
-          "color": "#94A3B8"
-        },
-        {
-          "x": 208,
-          "y": 24,
-          "text": "y",
-          "color": "#94A3B8"
-        },
-        {
-          "x": 330,
-          "y": 240,
-          "text": "y = f(x)",
           "color": "#FFB800",
-          "fontSize": 12
+          "attach": "sw"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "label": "(4, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "se"
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "label": "(0, 8)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "w"
+        }
+      ]
+    },
+    "plot": {
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
+      },
+      "axisOfSymmetry": 1,
+      "points": [
+        {
+          "x": 1,
+          "y": 9,
+          "label": "W(1, 9)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": -2,
+          "y": 0,
+          "label": "(-2, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "label": "(4, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "se"
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "label": "(0, 8)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "w"
         }
       ]
     }
@@ -723,7 +661,105 @@
     "source": "Matura Maj 2024 • Zad. 14.2",
     "year": 2024,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
+      },
+      "axisOfSymmetry": 1,
+      "points": [
+        {
+          "x": 1,
+          "y": 9,
+          "label": "W(1, 9)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": -2,
+          "y": 0,
+          "label": "(-2, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "label": "(4, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "se"
+        }
+      ]
+    },
+    "diagram": {
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
+      },
+      "axisOfSymmetry": 1,
+      "points": [
+        {
+          "x": 1,
+          "y": 9,
+          "label": "W(1, 9)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": -2,
+          "y": 0,
+          "label": "(-2, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "label": "(4, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "se"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2024-zad-14_3",
@@ -748,7 +784,105 @@
     "source": "Matura Maj 2024 • Zad. 14.3",
     "year": 2024,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
+      },
+      "axisOfSymmetry": 1,
+      "points": [
+        {
+          "x": 1,
+          "y": 9,
+          "label": "W(1, 9)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": -1,
+          "y": 5,
+          "label": "(-1, 5)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "w"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "label": "(3, 5)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "e"
+        }
+      ]
+    },
+    "diagram": {
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
+      },
+      "axisOfSymmetry": 1,
+      "points": [
+        {
+          "x": 1,
+          "y": 9,
+          "label": "W(1, 9)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": -1,
+          "y": 5,
+          "label": "(-1, 5)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "w"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "label": "(3, 5)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "e"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2024-zad-14_4",
@@ -789,7 +923,105 @@
     "source": "Matura Maj 2024 • Zad. 14.4",
     "year": 2024,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
+      },
+      "axisOfSymmetry": 1,
+      "points": [
+        {
+          "x": 1,
+          "y": 9,
+          "label": "W(1, 9)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": -2,
+          "y": 0,
+          "label": "(-2, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "label": "(4, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "se"
+        }
+      ]
+    },
+    "diagram": {
+      "type": "PARABOLA",
+      "xRange": [
+        -4,
+        6
+      ],
+      "yRange": [
+        -2,
+        11
+      ],
+      "gridStep": 1,
+      "parabola": {
+        "a": -1,
+        "p": 1,
+        "q": 9,
+        "color": "#FFB800",
+        "domain": [
+          -3.2,
+          5.2
+        ]
+      },
+      "axisOfSymmetry": 1,
+      "points": [
+        {
+          "x": 1,
+          "y": 9,
+          "label": "W(1, 9)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "n"
+        },
+        {
+          "x": -2,
+          "y": 0,
+          "label": "(-2, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "label": "(4, 0)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "se"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2024-zad-15",

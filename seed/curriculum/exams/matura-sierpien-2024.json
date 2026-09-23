@@ -189,111 +189,122 @@
     "session": "Sierpień",
     "isCke": true,
     "diagram": {
-      "type": "GEOMETRY_2D",
-      "title": "Interpretacja geometryczna układu równań w układzie współrzędnych",
-      "width": 440,
-      "height": 260,
-      "grid": {
-        "minX": 30,
-        "maxX": 410,
-        "stepX": 30,
-        "minY": 25,
-        "maxY": 235,
-        "stepY": 30,
-        "color": "rgba(148, 163, 184, 0.1)"
-      },
-      "ticks": [
-        {
-          "x": 180,
-          "y": 130,
-          "label": "0",
-          "axis": "x"
-        },
-        {
-          "x": 210,
-          "y": 130,
-          "label": "1",
-          "axis": "x"
-        },
-        {
-          "x": 180,
-          "y": 70,
-          "label": "2",
-          "axis": "y"
-        }
+      "type": "LINEAR",
+      "xRange": [
+        -2,
+        5
       ],
-      "segments": [
+      "yRange": [
+        -5,
+        4
+      ],
+      "gridStep": 1,
+      "lines": [
         {
-          "from": [
-            20,
-            130
-          ],
-          "to": [
-            420,
-            130
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            180,
-            240
-          ],
-          "to": [
-            180,
-            20
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            90,
-            220
-          ],
-          "to": [
-            330,
-            20
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 2.5
-        },
-        {
-          "from": [
-            90,
-            40
-          ],
-          "to": [
-            310,
-            240
-          ],
+          "slope": -1,
+          "intercept": 2,
           "color": "#38BDF8",
-          "strokeWidth": 2.5
+          "label": "y = -x + 2"
+        },
+        {
+          "slope": 2,
+          "intercept": -3,
+          "color": "#FFB800",
+          "label": "y = 2x - 3"
         }
       ],
       "points": [
         {
-          "x": 210,
-          "y": 70,
-          "label": "(1, 2)",
-          "labelPosition": "top-right",
+          "x": 0,
+          "y": 2,
+          "label": "(0, 2)",
           "dot": "filled",
-          "color": "#10B981"
-        }
-      ],
-      "labels": [
-        {
-          "x": 415,
-          "y": 144,
-          "text": "x",
-          "color": "#94A3B8"
+          "color": "#38BDF8",
+          "attach": "ne"
         },
         {
-          "x": 192,
-          "y": 24,
-          "text": "y",
-          "color": "#94A3B8"
+          "x": 2,
+          "y": 0,
+          "label": "(2, 0)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "ne"
+        },
+        {
+          "x": 0,
+          "y": -3,
+          "label": "(0, -3)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        },
+        {
+          "x": 1.667,
+          "y": 0.333,
+          "label": "(5/3, 1/3)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "ne"
+        }
+      ]
+    },
+    "plot": {
+      "type": "LINEAR",
+      "xRange": [
+        -2,
+        5
+      ],
+      "yRange": [
+        -5,
+        4
+      ],
+      "gridStep": 1,
+      "lines": [
+        {
+          "slope": -1,
+          "intercept": 2,
+          "color": "#38BDF8",
+          "label": "y = -x + 2"
+        },
+        {
+          "slope": 2,
+          "intercept": -3,
+          "color": "#FFB800",
+          "label": "y = 2x - 3"
+        }
+      ],
+      "points": [
+        {
+          "x": 0,
+          "y": 2,
+          "label": "(0, 2)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "ne"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "label": "(2, 0)",
+          "dot": "filled",
+          "color": "#38BDF8",
+          "attach": "ne"
+        },
+        {
+          "x": 0,
+          "y": -3,
+          "label": "(0, -3)",
+          "dot": "filled",
+          "color": "#FFB800",
+          "attach": "sw"
+        },
+        {
+          "x": 1.667,
+          "y": 0.333,
+          "label": "(5/3, 1/3)",
+          "dot": "filled",
+          "color": "#10B981",
+          "attach": "ne"
         }
       ]
     }

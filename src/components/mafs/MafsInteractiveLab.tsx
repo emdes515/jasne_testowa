@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Mafs, Coordinates, Plot, Line, Circle, Text, useMovablePoint } from 'mafs';
-import { AlertTriangle, Sparkles, Move, Eye, Layers, Compass, CheckCircle2 } from 'lucide-react';
+import { AlertTriangle, Move, Eye, Layers, Compass, CheckCircle2 } from 'lucide-react';
 import { MathRenderer } from '../MathRenderer';
 
 export type LabType = 'PARABOLA' | 'LINEAR' | 'GRAPH_INSPECTOR' | 'ABSOLUTE_VALUE' | 'TRIGONOMETRY';
@@ -24,7 +24,7 @@ export const MafsInteractiveLab: React.FC<MafsInteractiveLabProps> = ({
       <div className="px-4 py-3 bg-[#0E1522] border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-2">
           <span className="p-1.5 rounded-lg bg-amber-400/10 text-amber-400">
-            <Sparkles className="w-4 h-4" />
+            <Compass className="w-4 h-4" />
           </span>
           <div>
             <h3 className="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">

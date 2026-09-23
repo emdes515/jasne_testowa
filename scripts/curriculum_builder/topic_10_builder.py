@@ -31,21 +31,46 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Wyraz wolny $b = 7$ to dokładnie rzędna punktu przecięcia wykresu z osią $OY$: $P = (0, b) = (0, 7)$.',
-            cke_trap='Punkt na osi OY ma pierwszą współrzędną równą 0: $(0, 7)$, a nie $(7, 0)$!'
+            cke_trap='Punkt na osi OY ma pierwszą współrzędną równą 0: $(0, 7)$, a nie $(7, 0)$!',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-2, 5],
+                'yRange': [-2, 9],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': -3, 'intercept': 7, 'color': '#38BDF8', 'label': 'f(x) = -3x + 7'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 7, 'label': 'P(0, 7) = (0, b)', 'dot': 'filled', 'color': '#10B981', 'attach': 'e'},
+                    {'x': 2.333, 'y': 0, 'label': 'x₀ = 7/3', 'dot': 'filled', 'color': '#FFB800', 'attach': 'sw'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-1-2',
-            source='Matura Maj 2024 • Zad. 11',
-            question='Funkcja liniowa $f(x) = (2m - 4)x + 3$ jest malejąca dla każdej liczby $m$ spełniającej warunek',
+            source='Matura maj 2024 • Zad. 12',
+            question='Funkcja liniowa $f$ jest określona wzorem $f(x) = (-2k + 3)x + k - 1$, gdzie $k \\in \\mathbb{R}$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja $f$ jest malejąca dla każdej liczby $k$ należącej do przedziału',
             options_data=[
-                ('A', '$m < 2$'),
-                ('B', '$m > 2$'),
-                ('C', '$m < -2$'),
-                ('D', '$m > -2$')
+                ('A', '$(-\\infty, 1)$'),
+                ('B', '$(-\\infty, -\\frac{3}{2})$'),
+                ('C', '$(1, +\\infty)$'),
+                ('D', '$(\\frac{3}{2}, +\\infty)$')
             ],
-            correct_id='A',
-            explanation='Funkcja liniowa $y = ax + b$ jest malejąca wtedy i tylko wtedy, gdy współczynnik kierunkowy jest ujemny: $a < 0$. Mamy $2m - 4 < 0 \\implies 2m < 4 \\implies m < 2$.',
-            cke_trap='O monotoniczności decyduje wyłącznie współczynnik $a$ stojący przy $x$ (wyraz wolny $+3$ nie ma żadnego wpływu).'
+            correct_id='D',
+            explanation='Funkcja liniowa $f(x) = ax + b$ jest malejąca wtedy i tylko wtedy, gdy współczynnik kierunkowy $a$ jest ujemny ($a < 0$).\nWspółczynnik kierunkowy to $a = -2k + 3$. Układamy nierówność:\n$$-2k + 3 < 0$$\n$$-2k < -3$$\nDzielimy obie strony przez $-2$, pamiętając o zmianie zwrotu nierówności:\n$$k > \\frac{-3}{-2} \\implies k > \\frac{3}{2}$$\nZatem funkcja $f$ jest malejąca dla każdej liczby $k \\in \\left(\\frac{3}{2}, +\\infty\\right)$.',
+            cke_trap='O monotoniczności decyduje wyłącznie współczynnik $a = -2k + 3$ stojący przy $x$ (wyraz wolny $k - 1$ nie ma wpływu na to, czy funkcja rośnie czy maleje). Pamiętaj też o odwróceniu zwrotu nierówności przy dzieleniu przez $-2$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-3, 4],
+                'yRange': [-3, 4],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': -1.2, 'intercept': 1, 'color': '#38BDF8', 'label': 'a < 0 (funkcja malejąca)'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 1, 'label': '(0, b)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'ne'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-1-3',
@@ -59,7 +84,19 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Prosta opada w dół $\\implies a < 0$ (funkcja malejąca). Prosta przecina oś $OY$ powyżej zera $\\implies b > 0$.',
-            cke_trap='Wykres opadający to $a < 0$, a punkt przecięcia nad osią to $b > 0$.'
+            cke_trap='Wykres opadający to $a < 0$, a punkt przecięcia nad osią to $b > 0$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-3, 5],
+                'yRange': [-2, 5],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': -0.75, 'intercept': 2, 'color': '#38BDF8', 'label': 'y = ax + b'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 2, 'label': '(0, b), b > 0', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
+                ]
+            }
         ),
         make_tf_task(
             task_id='task-10-1-4',
@@ -67,7 +104,19 @@ def build_topic_10():
             question='Oceń prawdziwość zdania: Jeśli współczynnik kierunkowy $a = 0$, to wykresem funkcji jest prosta równoległa do osi $OX$.',
             correct_tf='PRAWDA',
             explanation='Dla $a = 0$ funkcja przyjmuje postać $y = b$, czyli jest funkcją stałą, której wykresem jest pozioma linia równoległa do osi $OX$.',
-            cke_trap='Dla a = 0 funkcja nie rośnie ani nie maleje — jest stała.'
+            cke_trap='Dla a = 0 funkcja nie rośnie ani nie maleje — jest stała.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-4, 4],
+                'yRange': [-1, 5],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': 0, 'intercept': 3, 'color': '#10B981', 'label': 'y = 3 (a = 0)'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 3, 'label': '(0, 3)', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
+                ]
+            }
         ),
         make_numeric_task(
             task_id='task-10-1-5',
@@ -75,7 +124,19 @@ def build_topic_10():
             question='Prosta $y = ax + b$ przechodzi przez punkt $P(0, -9)$. Podaj wartość wyrazu wolnego $b$.',
             correct_val=-9,
             explanation='Dla punktu $(0, -9)$ mamy $x = 0$, więc $y = a \\cdot 0 + b = b \\implies b = -9$.',
-            cke_trap='Punkt o pierwszej współrzędnej równej 0 bezpośrednio zdradza wartość $b$.'
+            cke_trap='Punkt o pierwszej współrzędnej równej 0 bezpośrednio zdradza wartość $b$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-3, 5],
+                'yRange': [-11, 2],
+                'gridStep': 2,
+                'lines': [
+                    {'slope': 2, 'intercept': -9, 'color': '#38BDF8', 'label': 'y = ax - 9'}
+                ],
+                'points': [
+                    {'x': 0, 'y': -9, 'label': 'P(0, -9) ⟹ b = -9', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'}
+                ]
+            }
         )
     ]
     l1 = make_lesson(
@@ -138,11 +199,24 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Przyrównujemy funkcję do zera: $2x - 6 = 0 \\implies 2x = 6 \\implies x = 3$.',
-            cke_trap='Miejsce zerowe to $x = 3$, a punkt przecięcia z osią $OY$ to $(0, -6)$.'
+            cke_trap='Miejsce zerowe to $x = 3$, a punkt przecięcia z osią $OY$ to $(0, -6)$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-1, 5],
+                'yRange': [-7, 3],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': 2, 'intercept': -6, 'color': '#38BDF8', 'label': 'f(x) = 2x - 6'}
+                ],
+                'points': [
+                    {'x': 3, 'y': 0, 'label': 'x₀ = 3 (miejsce zerowe)', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
+                    {'x': 0, 'y': -6, 'label': '(0, -6)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-2-2',
-            source='Matura Maj 2024 • Zad. 12',
+            source='Trening JASNE • Wzorzec CKE',
             question='Współczynnik kierunkowy $a$ prostej przechodzącej przez punkty $A(1, 3)$ oraz $B(4, 9)$ jest równy',
             options_data=[
                 ('A', '$2$'),
@@ -152,7 +226,24 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Wzór na współczynnik kierunkowy: $a = \\frac{y_B - y_A}{x_B - x_A} = \\frac{9 - 3}{4 - 1} = \\frac{6}{3} = 2$.',
-            cke_trap='Różnicę igreków stawiamy W LICZNIKU, a różnicę iksów w mianowniku: $\\frac{\\Delta y}{\\Delta x}$.'
+            cke_trap='Różnicę igreków stawiamy W LICZNIKU, a różnicę iksów w mianowniku: $\\frac{\\Delta y}{\\Delta x}$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-1, 6],
+                'yRange': [-1, 11],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': 2, 'intercept': 1, 'color': '#38BDF8', 'label': 'y = 2x + 1'}
+                ],
+                'segments': [
+                    {'from': [1, 3], 'to': [4, 3], 'color': 'rgba(255, 184, 0, 0.6)', 'strokeWidth': 1.5, 'dashed': True, 'label': 'Δx = 3'},
+                    {'from': [4, 3], 'to': [4, 9], 'color': 'rgba(16, 185, 129, 0.6)', 'strokeWidth': 1.5, 'dashed': True, 'label': 'Δy = 6'}
+                ],
+                'points': [
+                    {'x': 1, 'y': 3, 'label': 'A(1, 3)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'nw'},
+                    {'x': 4, 'y': 9, 'label': 'B(4, 9)', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-2-3',
@@ -166,7 +257,20 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='$a = \\frac{-3 - 5}{2 - (-2)} = \\frac{-8}{2 + 2} = \\frac{-8}{4} = -2$.',
-            cke_trap='Uważaj na podwójny minus w mianowniku: $2 - (-2) = 4$, a nie 0.'
+            cke_trap='Uważaj na podwójny minus w mianowniku: $2 - (-2) = 4$, a nie 0.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-4, 4],
+                'yRange': [-5, 7],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': -2, 'intercept': 1, 'color': '#38BDF8', 'label': 'y = -2x + 1'}
+                ],
+                'points': [
+                    {'x': -2, 'y': 5, 'label': 'K(-2, 5)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'ne'},
+                    {'x': 2, 'y': -3, 'label': 'L(2, -3)', 'dot': 'filled', 'color': '#10B981', 'attach': 'se'}
+                ]
+            }
         ),
         make_tf_task(
             task_id='task-10-2-4',
@@ -174,7 +278,20 @@ def build_topic_10():
             question='Oceń prawdziwość zdania: Miejsce zerowe funkcji $y = ax + b$ dla $a \\ne 0$ wyraża się wzorem $x_0 = -\\frac{b}{a}$.',
             correct_tf='PRAWDA',
             explanation='$ax + b = 0 \\implies ax = -b \\implies x = -\\frac{b}{a}$. To oficjalny wzór z tablic CKE.',
-            cke_trap='Pamiętaj o minusie przed ułamkiem: $x_0 = -b/a$.'
+            cke_trap='Pamiętaj o minusie przed ułamkiem: $x_0 = -b/a$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-3, 4],
+                'yRange': [-3, 4],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': 1.5, 'intercept': -1.5, 'color': '#38BDF8', 'label': 'y = ax + b'}
+                ],
+                'points': [
+                    {'x': 1, 'y': 0, 'label': 'x₀ = -b/a', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
+                    {'x': 0, 'y': -1.5, 'label': '(0, b)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'}
+                ]
+            }
         ),
         make_numeric_task(
             task_id='task-10-2-5',
@@ -182,7 +299,20 @@ def build_topic_10():
             question='Prosta o współczynniku kierunkowym $a = 3$ przechodzi przez punkt $P(2, 11)$. Oblicz wartość wyrazu wolnego $b$.',
             correct_val=5,
             explanation='Wstawiamy współrzędne do wzoru $y = ax + b$: $11 = 3 \\cdot 2 + b \\implies 11 = 6 + b \\implies b = 5$.',
-            cke_trap='Podstawiasz $x = 2$ oraz $y = 11$, a nie odwrotnie!'
+            cke_trap='Podstawiasz $x = 2$ oraz $y = 11$, a nie odwrotnie!',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-1, 4],
+                'yRange': [2, 13],
+                'gridStep': 2,
+                'lines': [
+                    {'slope': 3, 'intercept': 5, 'color': '#38BDF8', 'label': 'y = 3x + 5'}
+                ],
+                'points': [
+                    {'x': 2, 'y': 11, 'label': 'P(2, 11)', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
+                    {'x': 0, 'y': 5, 'label': '(0, 5)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'}
+                ]
+            }
         )
     ]
     l2 = make_lesson(
@@ -245,11 +375,25 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Proste są równoległe, gdy ich współczynniki kierunkowe są równe: $a_1 = a_2$. Mamy $2m - 1 = 5 \\implies 2m = 6 \\implies m = 3$.',
-            cke_trap='Warunek równoległości to $a_1 = a_2$. Nie przyrównuj wyrazów wolnych $b$!'
+            cke_trap='Warunek równoległości to $a_1 = a_2$. Nie przyrównuj wyrazów wolnych $b$!',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-3, 3],
+                'yRange': [-5, 8],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': 5, 'intercept': 4, 'color': '#38BDF8', 'label': 'k: y = 5x + 4'},
+                    {'slope': 5, 'intercept': -2, 'color': '#FFB800', 'label': 'l: y = 5x - 2'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 4, 'label': '(0, 4)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'w'},
+                    {'x': 0, 'y': -2, 'label': '(0, -2)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-3-2',
-            source='Matura Czerwiec 2022 • Zad. 17',
+            source='Trening JASNE • Wzorzec CKE',
             question='Prosta przechodząca przez punkt $P(0, 3)$ i prostopadła do prostej $y = -\\frac{2}{3}x + 1$ ma równanie',
             options_data=[
                 ('A', '$y = \\frac{3}{2}x + 3$'),
@@ -259,7 +403,20 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Współczynnik prostopadłej to liczba odwrotna i przeciwna: $a_2 = -\\frac{1}{-\\frac{2}{3}} = \\frac{3}{2}$. Skoro przechodzi przez $(0, 3)$, wyraz wolny to $b = 3$. Równanie: $y = \\frac{3}{2}x + 3$.',
-            cke_trap='Pamiętaj o OBU zmianach: zmień znak na plus ORAZ odwróć ułamek na $\\frac{3}{2}$.'
+            cke_trap='Pamiętaj o OBU zmianach: zmień znak na plus ORAZ odwróć ułamek na $\\frac{3}{2}$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-4, 4],
+                'yRange': [-2, 6],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': -0.667, 'intercept': 1, 'color': '#38BDF8', 'label': 'k: y = -2/3 x + 1'},
+                    {'slope': 1.5, 'intercept': 3, 'color': '#FFB800', 'label': 'l: y = 3/2 x + 3 (k ⊥ l)'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 3, 'label': 'P(0, 3)', 'dot': 'filled', 'color': '#10B981', 'attach': 'e'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-3-3',
@@ -273,7 +430,22 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Prosta $y = -4$ jest pozioma (równoległa do osi $OX$). Prosta do niej prostopadła musi być pionowa, czyli mieć równanie postaci $x = c$.',
-            cke_trap='Dla prostej poziomej $a = 0$, więc wzór $a_1 \\cdot a_2 = -1$ nie ma zastosowania (dzielenie przez 0). Prostopadła to prosta pionowa $x = c$.'
+            cke_trap='Dla prostej poziomej $a = 0$, więc wzór $a_1 \\cdot a_2 = -1$ nie ma zastosowania (dzielenie przez 0). Prostopadła to prosta pionowa $x = c$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-2, 6],
+                'yRange': [-6, 1],
+                'gridStep': 1,
+                'horizontalLines': [
+                    {'y': -4, 'color': '#38BDF8'}
+                ],
+                'segments': [
+                    {'from': [2, -6], 'to': [2, 1], 'color': '#FFB800', 'weight': 2.5}
+                ],
+                'points': [
+                    {'x': 2, 'y': -4, 'label': '(2, -4) [90°]', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
+                ]
+            }
         ),
         make_tf_task(
             task_id='task-10-3-4',
@@ -281,7 +453,20 @@ def build_topic_10():
             question='Oceń prawdziwość zdania: Jeśli dwie proste są prostopadłe i żadna z nich nie jest pionowa, to iloczyn ich współczynników kierunkowych jest równy $-1$.',
             correct_tf='PRAWDA',
             explanation='To podstawowy warunek prostopadłości z karty wzorów CKE: $a_1 \\cdot a_2 = -1$.',
-            cke_trap='Wyjątkiem są proste pionowa i pozioma, dla których $a$ prostej pionowej nie istnieje.'
+            cke_trap='Wyjątkiem są proste pionowa i pozioma, dla których $a$ prostej pionowej nie istnieje.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-4, 4],
+                'yRange': [-3, 5],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': 2, 'intercept': 1, 'color': '#38BDF8', 'label': 'k: y = 2x + 1 (a₁ = 2)'},
+                    {'slope': -0.5, 'intercept': 3.5, 'color': '#FFB800', 'label': 'l: y = -0.5x + 3.5 (a₂ = -0.5)'}
+                ],
+                'points': [
+                    {'x': 1, 'y': 3, 'label': 'P(1, 3) [90°: a₁·a₂ = -1]', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
+                ]
+            }
         ),
         make_numeric_task(
             task_id='task-10-3-5',
@@ -289,7 +474,20 @@ def build_topic_10():
             question='Wyznacz współczynnik kierunkowy prostej prostopadłej do prostej $y = 0{,}25x - 8$.',
             correct_val=-4,
             explanation='$0{,}25 = \\frac{1}{4}$. Odwrotny i o przeciwnym znaku to $-\\frac{4}{1} = -4$.',
-            cke_trap='Zamień ułamek dziesiętny na zwykły: $0{,}25 = \\frac{1}{4}$, wtedy łatwo go odwrócić.'
+            cke_trap='Zamień ułamek dziesiętny na zwykły: $0{,}25 = \\frac{1}{4}$, wtedy łatwo go odwrócić.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-3, 3],
+                'yRange': [-3, 3],
+                'gridStep': 1,
+                'lines': [
+                    {'slope': 0.25, 'intercept': 0, 'color': '#38BDF8', 'label': 'k: a₁ = 1/4'},
+                    {'slope': -4, 'intercept': 0, 'color': '#FFB800', 'label': 'l: a₂ = -4 (k ⊥ l)'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 0, 'label': '(0, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
+                ]
+            }
         )
     ]
     l3 = make_lesson(
@@ -342,7 +540,7 @@ def build_topic_10():
     l4_tasks = [
         make_sc_task(
             task_id='task-10-4-1',
-            source='Matura Pokazowa CKE • Zadanie z kontekstem realistycznym',
+            source='Trening JASNE • Wzorzec CKE',
             question='Koszt przejazdu taksówką składa się z opłaty początkowej 8 zł oraz stawki 3 zł za każdy przejechany kilometr. Funkcja opisująca koszt przejazdu $K$ w zależności od liczby kilometrów $x$ ma wzór',
             options_data=[
                 ('A', '$K(x) = 3x + 8$'),
@@ -352,11 +550,24 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Opłata początkowa to wyraz wolny $b = 8$. Koszt za kilometr to współczynnik kierunkowy $a = 3$. Zatem funkcja kosztu to $K(x) = 3x + 8$.',
-            cke_trap='Stawka zmienna (za km) stoi przy iksie, a opłata stała jest wyrazem wolnym.'
+            cke_trap='Stawka zmienna (za km) stoi przy iksie, a opłata stała jest wyrazem wolnym.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-1, 7],
+                'yRange': [0, 28],
+                'gridStep': 5,
+                'lines': [
+                    {'slope': 3, 'intercept': 8, 'color': '#38BDF8', 'label': 'K(x) = 3x + 8'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 8, 'label': 'Start (0, 8 zł)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'},
+                    {'x': 4, 'y': 20, 'label': 'K(4) = 20 zł', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-4-2',
-            source='Matura Maj 2021 • Zad. 9',
+            source='Trening JASNE • Wzorzec CKE',
             question='Zbiornik zawierał 120 litrów wody. Woda wypływa z niego ze stałą prędkością 5 litrów na minutę. Po ilu minutach zbiornik będzie całkowicie pusty?',
             options_data=[
                 ('A', '24 minuty'),
@@ -366,7 +577,20 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='Ilość wody w zbiorniku opisuje funkcja $V(t) = -5t + 120$. Pusty zbiornik oznacza $V(t) = 0 \\implies -5t + 120 = 0 \\implies 5t = 120 \\implies t = 24$.',
-            cke_trap='Gdy ilość maleje, współczynnik kierunkowy jest ujemny ($-5$).'
+            cke_trap='Gdy ilość maleje, współczynnik kierunkowy jest ujemny ($-5$).',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-2, 28],
+                'yRange': [-10, 140],
+                'gridStep': 20,
+                'lines': [
+                    {'slope': -5, 'intercept': 120, 'color': '#38BDF8', 'label': 'V(t) = -5t + 120'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 120, 'label': 'Start (120 l)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'},
+                    {'x': 24, 'y': 0, 'label': 'Pusty: t = 24 min', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-10-4-3',
@@ -380,7 +604,20 @@ def build_topic_10():
             ],
             correct_id='A',
             explanation='$W(4) = -2500 \\cdot 4 + 30000 = -10000 + 30000 = 20000$ zł.',
-            cke_trap='Pamiętaj o odjęciu spadku wartości od kwoty początkowej 30 000 zł.'
+            cke_trap='Pamiętaj o odjęciu spadku wartości od kwoty początkowej 30 000 zł.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-1, 10],
+                'yRange': [0, 35000],
+                'gridStep': 5000,
+                'lines': [
+                    {'slope': -2500, 'intercept': 30000, 'color': '#38BDF8', 'label': 'W(t)'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 30000, 'label': 'W(0) = 30 000 zł', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'},
+                    {'x': 4, 'y': 20000, 'label': 'W(4) = 20 000 zł', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
+                ]
+            }
         ),
         make_tf_task(
             task_id='task-10-4-4',
@@ -388,7 +625,20 @@ def build_topic_10():
             question='Oceń prawdziwość zdania: Jeśli poziom naładowania baterii telefonu w czasie intensywnego grania spada o stałą wartość co godzinę, to modelujący ten proces współczynnik kierunkowy $a$ jest ujemny.',
             correct_tf='PRAWDA',
             explanation='Spadek wielkości oznacza funkcję malejącą, dla której współczynnik kierunkowy $a$ jest ujemny ($a < 0$).',
-            cke_trap='Spadek wielkości to zawsze minus przy zmiennej czasu.'
+            cke_trap='Spadek wielkości to zawsze minus przy zmiennej czasu.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-1, 7],
+                'yRange': [-5, 110],
+                'gridStep': 20,
+                'lines': [
+                    {'slope': -15, 'intercept': 100, 'color': '#F43F5E', 'label': 'B(t) = -15t + 100 (a < 0)'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 100, 'label': 'B(0) = 100%', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'},
+                    {'x': 4, 'y': 40, 'label': 'B(4) = 40%', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'}
+                ]
+            }
         ),
         make_numeric_task(
             task_id='task-10-4-5',
@@ -396,7 +646,20 @@ def build_topic_10():
             question='Świeca o początkowej długości 20 cm pali się ze stałą prędkością 2,5 cm na godzinę. Po ilu godzinach świeca spali się całkowicie?',
             correct_val=8,
             explanation='$L(t) = -2{,}5t + 20$. Świeca spala się całkowicie, gdy $L(t) = 0 \\implies 2{,}5t = 20 \\implies t = \\frac{20}{2{,}5} = 8$ godzin.',
-            cke_trap='Dzielenie przez 2,5 to mnożenie przez $\\frac{4}{10}$, czyli $20 \\cdot 0{,}4 = 8$ lub $20 : \\frac{5}{2} = 20 \\cdot \\frac{2}{5} = 8$.'
+            cke_trap='Dzielenie przez 2,5 to mnożenie przez $\\frac{4}{10}$, czyli $20 \\cdot 0{,}4 = 8$ lub $20 : \\frac{5}{2} = 20 \\cdot \\frac{2}{5} = 8$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-1, 10],
+                'yRange': [-2, 24],
+                'gridStep': 4,
+                'lines': [
+                    {'slope': -2.5, 'intercept': 20, 'color': '#38BDF8', 'label': 'L(t) = -2.5t + 20'}
+                ],
+                'points': [
+                    {'x': 0, 'y': 20, 'label': 'L(0) = 20 cm', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'},
+                    {'x': 8, 'y': 0, 'label': 'Spalona: t = 8 h', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
+                ]
+            }
         )
     ]
     l4 = make_lesson(

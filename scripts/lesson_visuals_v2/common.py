@@ -49,8 +49,8 @@ def make_geometry_diagram(title, badge, caption, polygons=None, segments=None, p
         'metrics': metrics or []
     }
 
-def make_plot_diagram(title, badge, caption, curves=None, segments=None, points=None, labels=None, metrics=None, grid=None, ticks=None, width=520, height=270, arcs=None, polygons=None, circles=None):
-    return {
+def make_plot_diagram(title, badge, caption, curves=None, segments=None, points=None, labels=None, metrics=None, grid=None, ticks=None, width=520, height=270, arcs=None, polygons=None, circles=None, plotData=None):
+    res = {
         'type': 'GEOMETRY_2D',
         'title': title,
         'formulaBadge': badge,
@@ -72,6 +72,9 @@ def make_plot_diagram(title, badge, caption, curves=None, segments=None, points=
         'circles': circles or [],
         'metrics': metrics or []
     }
+    if plotData is not None:
+        res['plotData'] = plotData
+    return res
 
 def make_stereometry_diagram(title, badge, caption, segments=None, polygons=None, points=None, labels=None, metrics=None, width=520, height=270, arcs=None, circles=None):
     return {

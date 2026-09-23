@@ -72,9 +72,9 @@ export const DEFAULT_CKE_SUBJECTS_CONFIG: Record<string, SubjectCkeConfig> = {
       'dzial-8': { topicId: 'dzial-8', name: 'Trygonometria', minPoints: 3, maxPoints: 5, averagePoints: 4, importance: 'HIGH' },
       'dzial-9': { topicId: 'dzial-9', name: 'Planimetria', minPoints: 5, maxPoints: 7, averagePoints: 6, importance: 'CRITICAL_PEWNIAK' },
       'dzial-10': { topicId: 'dzial-10', name: 'Geometria Analityczna', minPoints: 3, maxPoints: 5, averagePoints: 4, importance: 'HIGH' },
-      'dzial-11': { topicId: 'dzial-11', name: 'Stereometria', minPoints: 3, maxPoints: 5, averagePoints: 4, importance: 'MEDIUM' },
-      'dzial-12': { topicId: 'dzial-12', name: 'Kombinatoryka', minPoints: 2, maxPoints: 3, averagePoints: 2, importance: 'MEDIUM' },
-      'dzial-13': { topicId: 'dzial-13', name: 'Prawdopodobieństwo', minPoints: 3, maxPoints: 5, averagePoints: 4, importance: 'HIGH' },
+      'dzial-11': { topicId: 'dzial-11', name: 'Ciągi liczbowe', minPoints: 4, maxPoints: 6, averagePoints: 5, importance: 'CRITICAL_PEWNIAK' },
+      'dzial-12': { topicId: 'dzial-12', name: 'Funkcja kwadratowa', minPoints: 4, maxPoints: 6, averagePoints: 5.5, importance: 'CRITICAL_PEWNIAK' },
+      'dzial-13': { topicId: 'dzial-13', name: 'Przekształcenia wykresów funkcji', minPoints: 2, maxPoints: 4, averagePoints: 3, importance: 'HIGH' },
       'dzial-14': { topicId: 'dzial-14', name: 'Statystyka', minPoints: 2, maxPoints: 3, averagePoints: 2, importance: 'MEDIUM' },
       'dzial-15': { topicId: 'dzial-15', name: 'Optymalizacja', minPoints: 4, maxPoints: 5, averagePoints: 4, importance: 'HIGH' }
     }

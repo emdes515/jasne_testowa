@@ -13,7 +13,7 @@ import {
   BookOpen, 
   AlertCircle,
   AlertTriangle,
-  Sparkles,
+  GraduationCap,
   Award
 } from 'lucide-react';
 import Markdown from 'react-markdown';
@@ -370,7 +370,7 @@ export function MaturaExamReview({
                           {task.aiEvaluation && (
                             <div className="p-4 rounded-xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-3">
                               <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
-                                <Sparkles size={14} />
+                                <GraduationCap size={14} />
                                 <span>Ocena Egzaminatora AI</span>
                               </div>
 

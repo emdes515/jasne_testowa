@@ -32,11 +32,26 @@ def build_topic_03():
             ],
             correct_id='B',
             explanation='Odległość na osi liczymy ze wzoru $|x - y| = |5 - (-3)| = |5 + 3| = |8| = 8$. Odległość jest zawsze nieujemna.',
-            cke_trap='Uważaj na podwójny minus: odejmowanie liczby ujemnej daje dodawanie ($5 - (-3) = 8$, nie $2$).'
+            cke_trap='Uważaj na podwójny minus: odejmowanie liczby ujemnej daje dodawanie ($5 - (-3) = 8$, nie $2$).',
+            plot={
+                'type': 'PLOT',
+                'hideYAxis': True,
+                'xRange': [-5, 7],
+                'yRange': [-1, 2],
+                'gridStep': 1,
+                'segments': [
+                    {'from': [-3, 0.5], 'to': [5, 0.5], 'color': '#FFB800', 'weight': 3}
+                ],
+                'points': [
+                    {'x': -3, 'y': 0, 'label': '-3', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'},
+                    {'x': 5, 'y': 0, 'label': '5', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'},
+                    {'x': 1, 'y': 0.5, 'label': 'd = 8', 'dot': 'none', 'color': '#FFB800', 'attach': 'n'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-3-1-2',
-            source='Matura Maj 2023 • Formuła 2023',
+            source='Trening JASNE • Wzorzec CKE',
             question='Równanie $|x - 3| = 5$ opisuje punkty na osi liczbowej, których odległość od liczby $3$ wynosi $5$. Rozwiązaniami tego równania są liczby',
             options_data=[
                 ('A', '$x = -2$ oraz $x = 8$'),
@@ -46,7 +61,25 @@ def build_topic_03():
             ],
             correct_id='A',
             explanation='Geometrycznie: szukamy liczb w odległości $5$ od $3$. W prawo: $3 + 5 = 8$. W lewo: $3 - 5 = -2$. Sprawdzenie: $|8 - 3| = 5$ oraz $|-2 - 3| = |-5| = 5$.',
-            cke_trap='Nie zapominaj o skoku w lewo: równanie z wartością bezwzględną ma ZAWSZE dwa rozwiązania po obu stronach środka.'
+            cke_trap='Nie zapominaj o skoku w lewo: równanie z wartością bezwzględną ma ZAWSZE dwa rozwiązania po obu stronach środka.',
+            plot={
+                'type': 'PLOT',
+                'hideYAxis': True,
+                'xRange': [-4, 10],
+                'yRange': [-1, 2],
+                'gridStep': 2,
+                'segments': [
+                    {'from': [-2, 0.5], 'to': [3, 0.5], 'color': '#38BDF8', 'weight': 2.5},
+                    {'from': [3, 0.5], 'to': [8, 0.5], 'color': '#38BDF8', 'weight': 2.5}
+                ],
+                'points': [
+                    {'x': 3, 'y': 0, 'label': 'a = 3', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
+                    {'x': -2, 'y': 0, 'label': 'x₁ = -2', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
+                    {'x': 8, 'y': 0, 'label': 'x₂ = 8', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
+                    {'x': 0.5, 'y': 0.5, 'label': 'r = 5', 'dot': 'none', 'color': '#38BDF8', 'attach': 'n'},
+                    {'x': 5.5, 'y': 0.5, 'label': 'r = 5', 'dot': 'none', 'color': '#38BDF8', 'attach': 'n'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-3-1-3',
@@ -60,7 +93,23 @@ def build_topic_03():
             ],
             correct_id='B',
             explanation='Wzór na odległość to $|x - a|$. Znak plus oznacza minus przed liczbą ujemną: $|x + 4| = |x - (-4)|$. Środkiem jest liczba $-4$.',
-            cke_trap='Gdy widzisz plus wewnątrz wartości bezwzględnej, środek leży po stronie ujemnej osi (w punkcie -4, a nie 4).'
+            cke_trap='Gdy widzisz plus wewnątrz wartości bezwzględnej, środek leży po stronie ujemnej osi (w punkcie -4, a nie 4).',
+            plot={
+                'type': 'PLOT',
+                'hideYAxis': True,
+                'xRange': [-13, 5],
+                'yRange': [-1, 2],
+                'gridStep': 2,
+                'segments': [
+                    {'from': [-11, 0.5], 'to': [-4, 0.5], 'color': '#38BDF8', 'weight': 2.5},
+                    {'from': [-4, 0.5], 'to': [3, 0.5], 'color': '#38BDF8', 'weight': 2.5}
+                ],
+                'points': [
+                    {'x': -4, 'y': 0, 'label': 'a = -4', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
+                    {'x': -11, 'y': 0, 'label': 'x₁ = -11', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
+                    {'x': 3, 'y': 0, 'label': 'x₂ = 3', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
+                ]
+            }
         ),
         make_tf_task(
             task_id='task-3-1-4',
@@ -139,35 +188,132 @@ def build_topic_03():
             ],
             correct_id='A',
             explanation='Odległość od zera mniejsza niż 4 oznacza uwięzienie wewnątrz przedziału między -4 a 4: $x \\in (-4, 4)$.',
-            cke_trap='Znak $<$ zamyka zbiór rozwiązań w jednym spójnym przedziale (nie rozbija na dwa skrzydła).'
+            cke_trap='Znak $<$ zamyka zbiór rozwiązań w jednym spójnym przedziale (nie rozbija na dwa skrzydła).',
+            plot={
+                'type': 'PLOT',
+                'hideYAxis': True,
+                'xRange': [-6, 6],
+                'yRange': [-1, 2],
+                'gridStep': 2,
+                'polygons': [
+                    {'points': [[-4, 0], [4, 0], [4, 0.6], [-4, 0.6]], 'color': '#10B981', 'fillOpacity': 0.25}
+                ],
+                'segments': [
+                    {'from': [-4, 0.6], 'to': [4, 0.6], 'color': '#10B981', 'weight': 3}
+                ],
+                'points': [
+                    {'x': -4, 'y': 0, 'label': '-4', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'},
+                    {'x': 0, 'y': 0, 'label': 'środek 0', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
+                    {'x': 4, 'y': 0, 'label': '4', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'}
+                ]
+            }
         ),
         make_sc_task(
             task_id='task-3-2-2',
             source='Matura Maj 2024 • Zad. 1',
-            question='Zbiorem wszystkich rozwiązań nierówności $|x - 1| \\ge 3$ jest',
+            question='Dana jest nierówność\n$$|x - 1| \\ge 3$$\nNa którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich liczb rzeczywistych spełniających powyższą nierówność? Wybierz właściwą odpowiedź spośród podanych.',
             options_data=[
-                ('A', '$[-2, 4]$'),
-                ('B', '$(-\\infty, -2] \\cup [4, +\\infty)$'),
-                ('C', '$(-\\infty, -4] \\cup [2, +\\infty)$'),
-                ('D', '$(-2, 4)$')
+                {
+                    'id': 'A',
+                    'text': '$\\langle -2, 4 \\rangle$',
+                    'content_latex': '$\\langle -2, 4 \\rangle$',
+                    'is_correct': False,
+                    'numberLine': {
+                        'min': -5,
+                        'max': 7,
+                        'ticks': [-2, 4],
+                        'intervals': [{'from': -2, 'to': 4, 'fromIncluded': True, 'toIncluded': True}]
+                    }
+                },
+                {
+                    'id': 'B',
+                    'text': '$(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$',
+                    'content_latex': '$(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$',
+                    'is_correct': True,
+                    'numberLine': {
+                        'min': -5,
+                        'max': 7,
+                        'ticks': [-2, 4],
+                        'intervals': [
+                            {'from': None, 'to': -2, 'toIncluded': True},
+                            {'from': 4, 'to': None, 'fromIncluded': True}
+                        ]
+                    }
+                },
+                {
+                    'id': 'C',
+                    'text': '$(-2, 4)$',
+                    'content_latex': '$(-2, 4)$',
+                    'is_correct': False,
+                    'numberLine': {
+                        'min': -5,
+                        'max': 7,
+                        'ticks': [-2, 4],
+                        'intervals': [{'from': -2, 'to': 4, 'fromIncluded': False, 'toIncluded': False}]
+                    }
+                },
+                {
+                    'id': 'D',
+                    'text': '$(-\\infty, -2) \\cup (4, +\\infty)$',
+                    'content_latex': '$(-\\infty, -2) \\cup (4, +\\infty)$',
+                    'is_correct': False,
+                    'numberLine': {
+                        'min': -5,
+                        'max': 7,
+                        'ticks': [-2, 4],
+                        'intervals': [
+                            {'from': None, 'to': -2, 'toIncluded': False},
+                            {'from': 4, 'to': None, 'fromIncluded': False}
+                        ]
+                    }
+                }
             ],
             correct_id='B',
-            explanation='Środek to 1, dopuszczalna odległość to co najmniej 3. Punkty brzegowe: $1 - 3 = -2$ oraz $1 + 3 = 4$. Znak $\\ge$ oznacza odległość większą lub równą, czyli ucieczkę na zewnątrz: $(-\\infty, -2] \\cup [4, +\\infty)$.',
-            cke_trap='Znak $\\ge$ ZAWSZE daje sumę dwóch rozłącznych przedziałów skierowanych ku nieskończonościom.'
+            explanation='Rozwiązujemy nierówność z wartością bezwzględną: $|x - 1| \\ge 3$, co oznacza $x - 1 \\le -3$ lub $x - 1 \\ge 3$. Otrzymujemy $x \\le -2$ lub $x \\ge 4$. Zbiorem rozwiązań jest suma przedziałów $(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$. Na osi liczbowej zaznaczamy punkty $-2$ oraz $4$ z kółkami zamalowanymi (nierówność nieostra $\\ge$) i promieniami skierowanymi na zewnątrz (Rysunek B).',
+            cke_trap='Znak nierówności $\\ge$ oznacza przedziały zewnętrzne z kółkami zamalowanymi. Puste kółka (Rysunek D) lub przedział wewnętrzny (Rysunek A) to typowe pułapki CKE.'
         ),
         make_sc_task(
             task_id='task-3-2-3',
-            source='Pułapka CKE • Odczyt nierówności z osi',
-            question='Przedział $(-5, 1)$ jest zbiorem rozwiązań pewnej nierówności. Wyznacz jej środek $a$ i promień $r$',
+            source='Matura Maj 2023 • Zad. 1',
+            question='Na osi liczbowej zaznaczono sumę przedziałów.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiór zaznaczony na osi jest zbiorem wszystkich rozwiązań nierówności',
             options_data=[
-                ('A', 'Środek $a = -2$, promień $r = 3$ (nierówność $|x + 2| < 3$)'),
-                ('B', 'Środek $a = 2$, promień $r = 3$ (nierówność $|x - 2| < 3$)'),
-                ('C', 'Środek $a = -3$, promień $r = 2$ (nierówność $|x + 3| < 2$)'),
-                ('D', 'Środek $a = -2$, promień $r = 6$ (nierówność $|x + 2| < 6$)')
+                ('A', '$|x - 3{,}5| \\ge 1{,}5$'),
+                ('B', '$|x - 1{,}5| \\ge 3{,}5$'),
+                ('C', '$|x - 3{,}5| \\le 1{,}5$'),
+                ('D', '$|x - 1{,}5| \\le 3{,}5$')
             ],
-            correct_id='A',
-            explanation='Środek przedziału to średnia arytmetyczna końców: $a = \\frac{-5 + 1}{2} = -2$. Promień to połowa długości przedziału: $r = \\frac{1 - (-5)}{2} = 3$. Zatem nierówność to $|x - (-2)| < 3 \\implies |x + 2| < 3$.',
-            cke_trap='Długość przedziału to $1 - (-5) = 6$, więc promień to połowa, czyli 3 (nie 6!).'
+            correct_id='B',
+            explanation='Zaznaczony na osi zbiór to $(-\\infty, -2] \\cup [5, +\\infty)$. Środek tego zbioru to średnia arytmetyczna punktów brzegowych: $a = \\frac{-2 + 5}{2} = 1{,}5$. Promień (odległość od środka do brzegu) to $r = 5 - 1{,}5 = 3{,}5$. Przedziały są skierowane na zewnątrz z kropkami domkniętymi, co odpowiada nierówności $|x - a| \\ge r$, czyli $|x - 1{,}5| \\ge 3{,}5$.',
+            cke_trap='Nie myl środka z promieniem. Środek to średnia arytmetyczna $1{,}5$, a promień to odległość $3{,}5$. Błędne odwrócenie tych wartości prowadzi do dystraktora A.',
+            number_line={
+                'min': -5,
+                'max': 7,
+                'ticks': [-2, 5],
+                'intervals': [
+                    {'from': None, 'to': -2, 'toIncluded': True},
+                    {'from': 5, 'to': None, 'fromIncluded': True}
+                ]
+            },
+            plot={
+                'type': 'PLOT',
+                'hideYAxis': True,
+                'xRange': [-5, 8],
+                'yRange': [-1, 2],
+                'gridStep': 2,
+                'vectors': [
+                    {'tail': [-2, 0.5], 'tip': [-5, 0.5], 'color': '#10B981', 'weight': 3},
+                    {'tail': [5, 0.5], 'tip': [8, 0.5], 'color': '#10B981', 'weight': 3}
+                ],
+                'segments': [
+                    {'from': [-2, 0], 'to': [-2, 0.5], 'color': '#10B981', 'weight': 2},
+                    {'from': [5, 0], 'to': [5, 0.5], 'color': '#10B981', 'weight': 2}
+                ],
+                'points': [
+                    {'x': -2, 'y': 0, 'label': '-2', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
+                    {'x': 1.5, 'y': 0, 'label': 'środek 1.5', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
+                    {'x': 5, 'y': 0, 'label': '5', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
+                ]
+            }
         ),
         make_tf_task(
             task_id='task-3-2-4',
@@ -183,7 +329,25 @@ def build_topic_03():
             question='Ile liczb całkowitych spełnia nierówność $|x - 2| \\le 3$?',
             correct_val=7,
             explanation='Końce przedziału to $2 - 3 = -1$ oraz $2 + 3 = 5$. Zbiorem rozwiązań jest przedział domknięty $[-1, 5]$. Liczby całkowite to: $-1, 0, 1, 2, 3, 4, 5$ — jest ich dokładnie 7.',
-            cke_trap='Pamiętaj o uwzględnieniu zera oraz obu końców przedziału (nawias domknięty).'
+            cke_trap='Pamiętaj o uwzględnieniu zera oraz obu końców przedziału (nawias domknięty).',
+            plot={
+                'type': 'PLOT',
+                'hideYAxis': True,
+                'xRange': [-3, 7],
+                'yRange': [-1, 2],
+                'gridStep': 1,
+                'polygons': [
+                    {'points': [[-1, 0], [5, 0], [5, 0.6], [-1, 0.6]], 'color': '#10B981', 'fillOpacity': 0.25}
+                ],
+                'segments': [
+                    {'from': [-1, 0.6], 'to': [5, 0.6], 'color': '#10B981', 'weight': 3}
+                ],
+                'points': [
+                    {'x': -1, 'y': 0, 'label': '-1', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
+                    {'x': 2, 'y': 0, 'label': 'środek 2', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
+                    {'x': 5, 'y': 0, 'label': '5', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
+                ]
+            }
         )
     ]
     l2 = make_lesson(
@@ -250,7 +414,7 @@ def build_topic_03():
         ),
         make_sc_task(
             task_id='task-3-3-2',
-            source='Matura Czerwiec 2023 • Zad. 2',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dla dowolnej liczby rzeczywistej $a < 0$ wyrażenie $\\sqrt{a^2} + a$ jest równe',
             options_data=[
                 ('A', '$2a$'),
@@ -260,7 +424,7 @@ def build_topic_03():
             ],
             correct_id='B',
             explanation='Żelazna tożsamość maturalna: $\\sqrt{a^2} = |a|$. Ponieważ z założenia $a < 0$, to $|a| = -a$. Zatem $\\sqrt{a^2} + a = -a + a = 0$.',
-            cke_trap='Odruchowe pisanie $\\sqrt{a^2} = a$ prowadzi do błędnej odpowiedzi $2a$. Pierwiastek arytmetyczny NIGDY nie daje ujemnego wyniku!'
+            cke_trap='Błędne mechaniczne pisanie $\\sqrt{a^2} = a$ prowadzi do błędnej odpowiedzi $2a$. Pierwiastek arytmetyczny NIGDY nie daje ujemnego wyniku!'
         ),
         make_sc_task(
             task_id='task-3-3-3',
@@ -297,7 +461,7 @@ def build_topic_03():
         lesson_id='lesson-3-3',
         topic_id=topic_id,
         title='Wartość bezwzględna z wyrażeń i tożsamość pierwiastkowa',
-        concept_essence='Pierwiastek kwadratowy z definicji NIGDY nie daje wyniku ujemnego. Dlatego najważniejsza tożsamość algebry maturalnej brzmi: $\\sqrt{x^2} = |x|$. Nigdy nie pisz odruchowo $\\sqrt{x^2} = x$ bez wartości bezwzględnej! Gdy opuszczasz kreski z wyrażenia niewymiernego (np. $|1 - \\sqrt{3}|$): najpierw oszacuj wartość wewnątrz. Jeśli wnętrze jest dodatnie — zdejmujesz kreski bez zmian. Jeśli wnętrze jest ujemne — zdejmujesz kreski i zmieniasz wszystkie znaki na przeciwne.',
+        concept_essence='Pierwiastek kwadratowy z definicji NIGDY nie daje wyniku ujemnego. Dlatego najważniejsza tożsamość algebry maturalnej brzmi: $\\sqrt{x^2} = |x|$. Nigdy nie pisz $\\sqrt{x^2} = x$ bez wartości bezwzględnej! Gdy opuszczasz kreski z wyrażenia niewymiernego (np. $|1 - \\sqrt{3}|$): najpierw oszacuj wartość wewnątrz. Jeśli wnętrze jest dodatnie — zdejmujesz kreski bez zmian. Jeśli wnętrze jest ujemne — zdejmujesz kreski i zmieniasz wszystkie znaki na przeciwne.',
         matura_context='Tożsamość $\\sqrt{a^2} = |a|$ oraz opuszczanie kresek z liczb niewymiernych to stały element zadań za 1 pkt na każdej maturze majowej i czerwcowej.',
         core_formulas=[
             {

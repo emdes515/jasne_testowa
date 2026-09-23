@@ -1,7 +1,7 @@
 """
 topic_10.py - Dział 1.10: Funkcja liniowa i jej własności (4 lekcje | Tier S)
-Nocturne Luminary + Core-4 Bento Visuals
-100% Real KaTeX, 0% Emojis, Zero redundant SVG wagons.
+Nocturne Luminary + Core-4 Bento Visuals with Interactive Mafs Engine
+100% Real KaTeX, 0% Emojis, Analytically Verified Coordinates.
 """
 from .common import (
     C_PRIMARY, C_SUCCESS, C_SKY, C_DANGER, C_PURPLE, C_SLATE, C_MUTED, C_TEXT,
@@ -13,24 +13,26 @@ def get_topic_10_visuals(l_idx):
 
     if l_num == 1:
         # L1.10.1: Wzór ogólny y = ax + b i znaczenie współczynnika a
+        plot_data = {
+            'xRange': [-4, 4],
+            'yRange': [-4, 4],
+            'gridStep': 1,
+            'lines': [
+                {'slope': 1.0, 'intercept': 0.0, 'color': C_SUCCESS},  # a > 0
+                {'slope': -1.0, 'intercept': 0.0, 'color': C_DANGER}, # a < 0
+                {'slope': 0.0, 'intercept': 2.0, 'color': C_SKY, 'dashed': True} # a = 0
+            ],
+            'labels': [
+                {'x': 2.2, 'y': 2.6, 'text': 'a > 0 (rosnąca)', 'color': C_SUCCESS, 'attach': 'se'},
+                {'x': 2.2, 'y': -2.6, 'text': 'a < 0 (malejąca)', 'color': C_DANGER, 'attach': 'ne'},
+                {'x': 2.2, 'y': 1.6, 'text': 'a = 0 (stała: y = 2)', 'color': C_SKY, 'attach': 's'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Współczynnik kierunkowy a: Kąt nachylenia i monotoniczność prostej',
             badge=r'\begin{cases} a > 0 \implies \text{funkcja rosnąca } (\nearrow) \\ a = 0 \implies \text{funkcja stała } (\rightarrow) \\ a < 0 \implies \text{funkcja malejąca } (\searrow) \end{cases}',
-            caption='Znak współczynnika kierunkowego a decyduje o tym, czy prosta rośnie, maleje, czy jest pozioma (stała).',
-            segments=[
-                {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
-                {'from': [250, 30], 'to': [250, 240], 'color': C_SLATE, 'strokeWidth': 2}, # OY
-                {'from': [80, 230], 'to': [400, 70], 'color': C_SUCCESS, 'strokeWidth': 3}, # Rosnąca
-                {'from': [80, 70], 'to': [400, 230], 'color': C_DANGER, 'strokeWidth': 2.5}, # Malejąca
-                {'from': [60, 110], 'to': [440, 110], 'color': C_SKY, 'strokeWidth': 2, 'dashed': True} # Stała
-            ],
-            labels=[
-                {'x': 390, 'y': 55, 'text': 'a > 0 (Rosnąca)', 'color': C_SUCCESS, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'end'},
-                {'x': 440, 'y': 96, 'text': 'a = 0 (Stała)', 'color': C_SKY, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'end'},
-                {'x': 390, 'y': 245, 'text': 'a < 0 (Malejąca)', 'color': C_DANGER, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'end'},
-                {'x': 468, 'y': 150, 'text': 'X', 'color': C_TEXT, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'start'},
-                {'x': 250, 'y': 18, 'text': 'Y', 'color': C_TEXT, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
-            ],
+            caption='Znak współczynnika kierunkowego a decyduje o tym, czy prosta rośnie, maleje, czy jest pozioma (stała). Zawsze odczytujemy wykres od lewej do prawej!',
+            plotData=plot_data,
             metrics=[
                 {'label': '$a > 0$', 'value': 'Kąt ostry z osią OX: funkcja rosnąca', 'color': C_SUCCESS},
                 {'label': '$a < 0$', 'value': 'Kąt rozwarty z osią OX: funkcja malejąca', 'color': C_DANGER},
@@ -41,48 +43,55 @@ def get_topic_10_visuals(l_idx):
 
     elif l_num == 2:
         # L1.10.2: Znaczenie wyrazu wolnego b (przecięcie z osią OY w punkcie (0, b))
+        plot_data = {
+            'xRange': [-4, 4],
+            'yRange': [-3, 5],
+            'gridStep': 1,
+            'lines': [
+                {'slope': 1.5, 'intercept': 2.0, 'color': C_PRIMARY}
+            ],
+            'points': [
+                {'x': 0, 'y': 2, 'color': C_PRIMARY, 'label': 'P(0, 2) = (0, b)', 'attach': 'w'}
+            ],
+            'labels': [
+                {'x': 1.2, 'y': 4.2, 'text': 'y = 1.5x + 2', 'color': C_PRIMARY, 'attach': 'se'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Wyraz wolny b: Przecięcie wykresu z pionową osią OY',
             badge=r'P = (0,\; b) = (0,\; f(0))',
             caption='Podstawiając x = 0 do wzoru y = ax + b, otrzymujemy y = b. Wykres KAŻDEJ funkcji liniowej przecina pionową oś OY dokładnie na wysokości b!',
-            segments=[
-                {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
-                {'from': [250, 30], 'to': [250, 240], 'color': C_SLATE, 'strokeWidth': 2}, # OY
-                {'from': [100, 220], 'to': [400, 80], 'color': C_PRIMARY, 'strokeWidth': 3}
-            ],
-            points=[
-                {'x': 250, 'y': 110, 'color': C_PRIMARY, 'label': '(0, b)'}
-            ],
-            labels=[
-                {'x': 280, 'y': 105, 'text': 'Punkt (0, b) na osi OY', 'color': C_PRIMARY, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'start'},
-                {'x': 250, 'y': 190, 'text': 'y = ax + b: b to wysokość przecięcia z OY', 'color': C_TEXT, 'fontSize': 13, 'anchor': 'middle'}
-            ],
+            plotData=plot_data,
             metrics=[
-                {'label': '$b > 0$', 'value': 'Przecięcie NAD osią OX', 'color': C_SUCCESS},
-                {'label': '$b = 0$', 'value': 'Przejście przez początek układu $(0, 0)$', 'color': C_SKY},
-                {'label': '$b < 0$', 'value': 'Przecięcie POD osią OX', 'color': C_DANGER}
+                {'label': '$b > 0$', 'value': 'Przecięcie NAD osią OX: (0, b)', 'color': C_SUCCESS},
+                {'label': '$b = 0$', 'value': 'Przejście przez początek układu (0, 0)', 'color': C_SKY},
+                {'label': '$b < 0$', 'value': 'Przecięcie POD osią OX: (0, b)', 'color': C_DANGER}
             ]
         )
         return {'tab0': tab0, 'tab2': None, 'tab3': None}
 
     elif l_num == 3:
         # L1.10.3: Wyznaczanie miejsca zerowego x₀ = -b/a algebraicznie i z rysunku
+        plot_data = {
+            'xRange': [-3, 5],
+            'yRange': [-5, 4],
+            'gridStep': 1,
+            'lines': [
+                {'slope': 1.5, 'intercept': -3.0, 'color': C_PRIMARY}
+            ],
+            'points': [
+                {'x': 2, 'y': 0, 'color': C_SUCCESS, 'label': 'x_0 = 2 (miejsce zerowe)', 'attach': 'n'},
+                {'x': 0, 'y': -3, 'color': C_SKY, 'label': '(0, -3) = (0, b)', 'attach': 'e'}
+            ],
+            'labels': [
+                {'x': 2.5, 'y': 1.5, 'text': 'f(x) = 1.5x - 3', 'color': C_PRIMARY, 'attach': 'nw'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Miejsce zerowe funkcji liniowej: x_0 = -b / a',
             badge=r'ax + b = 0 \implies x_0 = -\frac{b}{a}',
-            caption='Miejsce zerowe funkcji to punkt przecięcia prostej z osią poziomą OX (wartość y = 0).',
-            segments=[
-                {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
-                {'from': [250, 30], 'to': [250, 240], 'color': C_SLATE, 'strokeWidth': 2}, # OY
-                {'from': [100, 230], 'to': [380, 70], 'color': C_PRIMARY, 'strokeWidth': 3}
-            ],
-            points=[
-                {'x': 170, 'y': 150, 'color': C_SUCCESS, 'label': '(-b/a, 0)'},
-                {'x': 250, 'y': 105, 'color': C_SKY, 'label': '(0, b)'}
-            ],
-            labels=[
-                {'x': 170, 'y': 180, 'text': 'Miejsce zerowe x₀', 'color': C_SUCCESS, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
-            ],
+            caption='Miejsce zerowe funkcji to punkt przecięcia prostej z osią poziomą OX (wartość y = 0). Oś pionową OY prosta przecina w punkcie (0, b).',
+            plotData=plot_data,
             metrics=[
                 {'label': 'Wzór z tablic', 'value': '$x_0 = -\\frac{b}{a}$ (Karta wzorów str. 21)', 'color': C_SUCCESS},
                 {'label': 'Znak minus', 'value': 'Pamiętaj o minusie przed ułamkiem!', 'color': C_DANGER},
@@ -93,21 +102,24 @@ def get_topic_10_visuals(l_idx):
 
     elif l_num == 4:
         # L1.10.4: Warunek równoległości prostych (a₁ = a₂) w zadaniach CKE
+        plot_data = {
+            'xRange': [-4, 4],
+            'yRange': [-5, 5],
+            'gridStep': 1,
+            'lines': [
+                {'slope': 2.0, 'intercept': 1.0, 'color': C_PRIMARY},
+                {'slope': 2.0, 'intercept': -3.0, 'color': C_SUCCESS}
+            ],
+            'labels': [
+                {'x': -1.2, 'y': 1.8, 'text': 'k: y = 2x + 1 (a₁ = 2)', 'color': C_PRIMARY, 'attach': 'nw'},
+                {'x': 1.2, 'y': -3.2, 'text': 'l: y = 2x - 3 (a₂ = 2)', 'color': C_SUCCESS, 'attach': 'se'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Warunek równoległości prostych: Identyczny współczynnik kierunkowy',
             badge=r'k \parallel l \implies a_1 = a_2',
             caption='Dwie proste są do siebie równoległe wtedy i tylko wtedy, gdy ich współczynniki kierunkowe a są DOKŁADNIE TAKIE SAME (a_1 = a_2)! Wyrazy wolne b mogą być dowolne.',
-            segments=[
-                {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2}, # OX
-                {'from': [250, 30], 'to': [250, 240], 'color': C_SLATE, 'strokeWidth': 2}, # OY
-                {'from': [80, 220], 'to': [360, 80], 'color': C_PRIMARY, 'strokeWidth': 3, 'label': 'k: y = 2x + 3'},
-                {'from': [120, 240], 'to': [400, 100], 'color': C_SUCCESS, 'strokeWidth': 3, 'label': 'l: y = 2x - 2'}
-            ],
-            labels=[
-                {'x': 200, 'y': 100, 'text': 'Prosta k: a₁ = 2', 'color': C_PRIMARY, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 340, 'y': 190, 'text': 'Prosta l: a₂ = 2', 'color': C_SUCCESS, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 250, 'y': 255, 'text': 'a₁ = a₂ = 2: proste są RÓWNOLEGŁE', 'color': C_TEXT, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'middle'}
-            ],
+            plotData=plot_data,
             metrics=[
                 {'label': 'Proste równoległe', 'value': '$a_1 = a_2$ (ten sam kąt nachylenia)', 'color': C_SUCCESS},
                 {'label': 'Proste prostopadłe', 'value': '$a_1 \\cdot a_2 = -1$ (przeciwny i odwrotny)', 'color': C_SKY},

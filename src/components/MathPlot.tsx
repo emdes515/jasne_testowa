@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatSvgText } from './MathDiagram';
 
 export interface PlotSegment {
   from: [number, number];
@@ -7,6 +8,8 @@ export interface PlotSegment {
   endDot?: 'filled' | 'hollow' | 'none';
   color?: string;
   dashed?: boolean;
+  strokeWidth?: number;
+  weight?: number;
   label?: string;
   labelColor?: string;
 }
@@ -35,12 +38,22 @@ export interface PlotParabola {
   color?: string;
 }
 
+export interface PlotInequalityRegion {
+  fromX: number;
+  toX: number;
+  condition?: 'above' | 'below';
+  color?: string;
+  fillOpacity?: number;
+}
+
 export interface PlotPoint {
   x: number;
   y: number;
   label?: string;
-  dot?: 'filled' | 'hollow';
+  dot?: 'filled' | 'hollow' | 'none';
   color?: string;
+  attach?: 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
+  size?: number;
 }
 
 export interface PlotLabel {
@@ -50,15 +63,50 @@ export interface PlotLabel {
   color?: string;
   fontSize?: number;
   fontWeight?: string;
+  attach?: 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
+}
+
+export interface PlotPanel {
+  title?: string;
+  subtitle?: string;
+  badge?: string;
+  badgeColor?: string;
+  plot: PlotData;
+}
+
+export interface PlotPolygon {
+  points: [number, number][];
+  color?: string;
+  fillOpacity?: number;
+  weight?: number;
+}
+
+export interface PlotVector {
+  tail: [number, number];
+  tip: [number, number];
+  color?: string;
+  weight?: number;
+  style?: 'solid' | 'dashed';
 }
 
 export interface PlotData {
-  type?: 'PIECEWISE_LINEAR' | 'LINEAR' | 'PARABOLA' | 'GEOMETRY';
+  type?: 'PIECEWISE_LINEAR' | 'LINEAR' | 'PARABOLA' | 'GEOMETRY' | 'CUSTOM_FUNCTION' | 'NUMBER_LINE';
   xRange?: [number, number];
   yRange?: [number, number];
   gridStep?: number;
   hideAxes?: boolean;
+  hideXAxis?: boolean;
+  hideYAxis?: boolean;
+  hideGridLines?: boolean;
+  hideZeroLabel?: boolean;
+  subdivisions?: number | false;
   hideGrid?: boolean;
+  fn?: (x: number) => number;
+  fnColor?: string;
+  fnWeight?: number;
+  inequalityRegions?: PlotInequalityRegion[];
+  polygons?: PlotPolygon[];
+  vectors?: PlotVector[];
   segments?: PlotSegment[];
   lines?: PlotLine[];
   horizontalLines?: PlotHorizontalLine[];
@@ -66,6 +114,7 @@ export interface PlotData {
   points?: PlotPoint[];
   axisOfSymmetry?: number;
   labels?: PlotLabel[];
+  panels?: PlotPanel[];
 }
 
 interface MathPlotProps {
@@ -295,6 +344,8 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
         {/* 3. Poziome linie pomocnicze (np. y = 3) */}
         {plot.horizontalLines?.map((hl, idx) => {
           const sy = toSvgY(hl.y);
+          const formattedHlLabel = formatSvgText(hl.label);
+          const badgeWidth = Math.max(20, formattedHlLabel.length * 6.5 + 8);
           return (
             <g key={`hl-${idx}`}>
               <line
@@ -307,16 +358,29 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
                 strokeDasharray={hl.dashed ? '4 3' : 'none'}
               />
               {hl.label && (
-                <text
-                  x={width - padding - 4}
-                  y={sy - 5}
-                  fill={hl.color || '#38BDF8'}
-                  fontSize="10"
-                  fontWeight="600"
-                  textAnchor="end"
-                >
-                  {hl.label}
-                </text>
+                <g key={`hl-lbl-${idx}`}>
+                  <rect
+                    x={width - padding - badgeWidth}
+                    y={sy - 15}
+                    width={badgeWidth}
+                    height={14}
+                    rx={3.5}
+                    fill="#090D16"
+                    fillOpacity={0.92}
+                    stroke="#1E293B"
+                    strokeWidth={1}
+                  />
+                  <text
+                    x={width - padding - badgeWidth / 2}
+                    y={sy - 4}
+                    fill={hl.color || '#38BDF8'}
+                    fontSize="10"
+                    fontWeight="600"
+                    textAnchor="middle"
+                  >
+                    {formattedHlLabel}
+                  </text>
+                </g>
               )}
             </g>
           );
@@ -344,6 +408,10 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
           const y1 = m * x1 + b;
           const x2 = dMax;
           const y2 = m * x2 + b;
+          const formattedLineLabel = formatSvgText(line.label);
+          const badgeW = Math.max(22, formattedLineLabel.length * 6.8 + 8);
+          const lx = toSvgX(x2) - 4;
+          const ly = toSvgY(y2) - 8;
 
           return (
             <g key={`line-${idx}`}>
@@ -358,16 +426,29 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
                 strokeLinecap="round"
               />
               {line.label && (
-                <text
-                  x={toSvgX(x2) - 4}
-                  y={toSvgY(y2) - 8}
-                  fill={line.color || '#FFB800'}
-                  fontSize="11"
-                  fontWeight="700"
-                  textAnchor="end"
-                >
-                  {line.label}
-                </text>
+                <g key={`line-lbl-${idx}`}>
+                  <rect
+                    x={lx - badgeW}
+                    y={ly - 13}
+                    width={badgeW}
+                    height={16}
+                    rx={4}
+                    fill="#090D16"
+                    fillOpacity={0.92}
+                    stroke="#1E293B"
+                    strokeWidth={1}
+                  />
+                  <text
+                    x={lx - badgeW / 2}
+                    y={ly - 1}
+                    fill={line.color || '#FFB800'}
+                    fontSize="11"
+                    fontWeight="700"
+                    textAnchor="middle"
+                  >
+                    {formattedLineLabel}
+                  </text>
+                </g>
               )}
             </g>
           );
@@ -426,12 +507,14 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
                 const len = Math.hypot(dx, dy) || 1;
                 const ox = (-dy / len) * 14;
                 const oy = (dx / len) * 14;
+                const formattedSegLabel = formatSvgText(seg.label);
+                const badgeW = Math.max(24, formattedSegLabel.length * 6.8 + 10);
                 return (
                   <g key={`seg-lbl-${idx}`}>
                     <rect
-                      x={midX + ox - 14}
+                      x={midX + ox - badgeW / 2}
                       y={midY + oy - 9}
-                      width={28}
+                      width={badgeW}
                       height={18}
                       rx={5}
                       fill="#090D16"
@@ -447,7 +530,7 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
                       fontWeight="700"
                       textAnchor="middle"
                     >
-                      {seg.label}
+                      {formattedSegLabel}
                     </text>
                   </g>
                 );
@@ -456,11 +539,13 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
           );
         })}
 
-        {/* 8. Punkty kluczowe */}
+        {/* 8. Punkty kluczowe (z kontrastowym tłem ochronnym przeciw zlewaniu) */}
         {plot.points?.map((pt, idx) => {
           const px = toSvgX(pt.x);
           const py = toSvgY(pt.y);
           const dotColor = pt.color || '#FFB800';
+          const formattedLabel = formatSvgText(pt.label);
+          const badgeWidth = Math.max(22, formattedLabel.length * 6.8 + 8);
 
           return (
             <g key={`point-${idx}`}>
@@ -470,36 +555,59 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
                 <circle cx={px} cy={py} r="5" fill={dotColor} stroke="#090D16" strokeWidth="1.5" />
               )}
               {pt.label && (
-                <text
-                  x={px}
-                  y={py - 8}
-                  fill="#F8FAFC"
-                  fontSize="10"
-                  fontWeight="600"
-                  textAnchor="middle"
-                >
-                  {pt.label}
-                </text>
+                <g key={`point-lbl-${idx}`}>
+                  <rect
+                    x={px - badgeWidth / 2}
+                    y={py - 20}
+                    width={badgeWidth}
+                    height={15}
+                    rx={3.5}
+                    fill="#090D16"
+                    fillOpacity={0.92}
+                    stroke="#1E293B"
+                    strokeWidth={1}
+                  />
+                  <text
+                    x={px}
+                    y={py - 9}
+                    fill="#F8FAFC"
+                    fontSize="10"
+                    fontWeight="600"
+                    textAnchor="middle"
+                  >
+                    {formattedLabel}
+                  </text>
+                </g>
               )}
             </g>
           );
         })}
 
         {/* 9. Etykiety swobodne (np. nazwy prostych k, l, wierzchołków) */}
-        {plot.labels?.map((lbl, idx) => (
-          <text
-            key={`plot-lbl-${idx}`}
-            x={toSvgX(lbl.x)}
-            y={toSvgY(lbl.y)}
-            fill={lbl.color || '#CBD5E1'}
-            fontSize={lbl.fontSize || 12}
-            fontWeight={lbl.fontWeight || '700'}
-            textAnchor="middle"
-            dominantBaseline="central"
-          >
-            {lbl.text}
-          </text>
-        ))}
+        {plot.labels?.map((lbl, idx) => {
+          const rawX = toSvgX(lbl.x);
+          const rawY = toSvgY(lbl.y);
+          const cleanText = formatSvgText(lbl.text);
+          const fontSize = lbl.fontSize || 12;
+          const textEstW = cleanText.length * (fontSize * 0.62);
+          const anchor = rawX - textEstW / 2 < padding ? 'start' : rawX + textEstW / 2 > width - padding ? 'end' : 'middle';
+          const clampedX = anchor === 'start' ? Math.max(padding, rawX) : anchor === 'end' ? Math.min(width - padding, rawX) : rawX;
+
+          return (
+            <text
+              key={`plot-lbl-${idx}`}
+              x={clampedX}
+              y={rawY}
+              fill={lbl.color || '#CBD5E1'}
+              fontSize={fontSize}
+              fontWeight={lbl.fontWeight || '700'}
+              textAnchor={anchor}
+              dominantBaseline="central"
+            >
+              {cleanText}
+            </text>
+          );
+        })}
       </svg>
     </div>
   );

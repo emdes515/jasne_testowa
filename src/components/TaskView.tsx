@@ -69,6 +69,8 @@ interface TheoryCardItem {
   type?: 'essence' | 'formulas' | 'example' | 'trap' | 'takeaway' | 'default';
   concept_essence?: string;
   matura_context?: string;
+  diagram?: any;
+  numberLine?: any;
   formulas?: string[];
   structuredFormulas?: FormattedFormulaItem[];
   core_formulas?: string;
@@ -130,13 +132,15 @@ function buildTheoryCards(theoryItem: any): TheoryCardItem[] {
     const cards: TheoryCardItem[] = [];
 
     // Card 1: Istota pojęcia & Strategia maturalna (Bento Essence)
-    if (pill.concept_essence || pill.matura_context || pill.intuition || pill.key_takeaway) {
+    if (pill.concept_essence || pill.matura_context || pill.intuition || pill.key_takeaway || pill.diagram || (pill as any).numberLine) {
       cards.push({
         title: pill.title || 'Istota pojęcia & Strategia maturalna',
         badge: 'Fundament Maturalny',
         type: 'essence',
         concept_essence: pill.concept_essence || pill.intuition,
         matura_context: pill.matura_context || pill.key_takeaway,
+        diagram: pill.diagram,
+        numberLine: (pill as any).numberLine,
         content: pill.concept_essence || pill.intuition || pill.key_takeaway
       });
     }
@@ -1107,7 +1111,37 @@ export function TaskView({
                         <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1.5">
                           Istota pojęcia:
                         </span>
-                        <MathRenderer content={currentCard.concept_essence} className="leading-relaxed" />
+                        <MathRenderer
+                          content={
+                            typeof currentCard.concept_essence === 'string'
+                              ? currentCard.concept_essence
+                              : typeof currentCard.concept_essence === 'object' && currentCard.concept_essence !== null
+                                ? [
+                                    (currentCard.concept_essence as any).lead,
+                                    ...(Array.isArray((currentCard.concept_essence as any).pillars)
+                                      ? (currentCard.concept_essence as any).pillars.map((p: any) => p.title ? `**${p.title}**: ${p.description || ''}` : p.description)
+                                      : []),
+                                    (currentCard.concept_essence as any).mental_model ? `*Model myślowy:* ${(currentCard.concept_essence as any).mental_model}` : ''
+                                  ].filter(Boolean).join('\n\n') || (currentCard.concept_essence as any).description || (currentCard.concept_essence as any).text || ''
+                                : String(currentCard.concept_essence || '')
+                          }
+                          className="leading-relaxed"
+                        />
+                      </div>
+                    )}
+                    {(currentCard.diagram || currentCard.numberLine) && (
+                      <div className="w-full flex justify-center my-1">
+                        {currentCard.diagram ? (
+                          <MathDiagram diagram={currentCard.diagram} borderless hideTitle={true} />
+                        ) : currentCard.numberLine ? (
+                          <div className="w-full max-w-lg bg-black/30 border border-white/10 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
+                            <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider self-start flex items-center gap-1.5">
+                              <Target size={13} className="text-amber-400" />
+                              <span>Interpretacja na osi liczbowej:</span>
+                            </span>
+                            <NumberLineDiagram data={currentCard.numberLine} height={64} maxWidth="400px" />
+                          </div>
+                        ) : null}
                       </div>
                     )}
                     {currentCard.matura_context && (
@@ -1429,16 +1463,12 @@ export function TaskView({
         <div className="bg-[#141C28] border border-white/10 rounded-2xl p-4 shadow-lg flex flex-col gap-2.5 shrink-0">
           {/* Authentic Source & Exam Metadata line above question */}
           <div className="flex items-center gap-2 text-[11px] sm:text-xs text-[#8B8D98] flex-wrap pb-1 border-b border-white/5">
-            <span className="font-bold text-amber-400 uppercase tracking-wide">
-              {taskType === 'OPEN_PROOF' ? 'Zadanie Otwarte' : 'Zadanie Maturalne'}
+            <span className="text-[#38BDF8] font-semibold tracking-wide">
+              {activeTask.badge || activeTask.source_badge || activeTask.source || activeTask.cke_source || 'Trening JASNE • Wzorzec CKE'}
             </span>
             <span className="text-white/20">•</span>
             <span className="font-semibold text-white/90">
               {pointsBadge}
-            </span>
-            <span className="text-white/20">•</span>
-            <span className="text-[#38BDF8] font-semibold tracking-wide">
-              {activeTask.source || activeTask.cke_source || 'Zadanie autorskie'}
             </span>
           </div>
 

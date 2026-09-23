@@ -17,7 +17,6 @@ import {
   RotateCcw, 
   Filter, 
   Search, 
-  Sparkles, 
   ChevronRight, 
   ChevronLeft, 
   Flame, 
@@ -51,6 +50,7 @@ import { MaturaExamReview, MaturaTaskReviewItem, MaturaAiEvaluation } from './Ma
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
 import { MathDiagram } from './MathDiagram';
 import { NumberLineDiagram } from './NumberLineDiagram';
+import { enrichTaskWithVisual } from '../data/mathVisualRegistry';
 
 interface ExamTaskCardProps {
   task: MaturaTask;
@@ -67,7 +67,7 @@ interface ExamTaskCardProps {
 }
 
 const ExamTaskCard = React.memo<ExamTaskCardProps>(({
-  task,
+  task: rawTask,
   currentIndex,
   selectedAnswer,
   openAnswer,
@@ -79,6 +79,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
   isFirstTask,
   isLastTask
 }) => {
+  const task = enrichTaskWithVisual(rawTask);
   return (
     <div className="p-4 sm:p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
@@ -188,7 +189,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
 
           <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
             <div className="flex items-center gap-2">
-              <Sparkles size={16} className="text-[#FFB800]" />
+              <GraduationCap size={16} className="text-[#FFB800]" />
               <span className="text-xs font-bold text-white">
                 Zadanie otwarte • Asynchroniczna ocena AI
               </span>
@@ -1283,7 +1284,7 @@ export function MaturaSimulatorView({
                           : 'text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
-                      <Sparkles size={13} className={randomScope === 'unsolved' ? 'text-black' : 'text-[#FFB800]'} />
+                      <Target size={13} className={randomScope === 'unsolved' ? 'text-black' : 'text-[#FFB800]'} />
                       <span>Nierozwiązane</span>
                     </button>
                     <button
@@ -2115,7 +2116,7 @@ export function MaturaSimulatorView({
                 )}
                 {Boolean((currentMaratonTask as any).diagram || (currentMaratonTask as any).plot) && (
                   <div className="mt-3 flex justify-center">
-                    <MathDiagram diagram={(currentMaratonTask as any).diagram || (currentMaratonTask as any).plot} />
+                    <MathDiagram diagram={enrichTaskWithVisual(currentMaratonTask).diagram || enrichTaskWithVisual(currentMaratonTask).plot} />
                   </div>
                 )}
 
@@ -2127,38 +2128,40 @@ export function MaturaSimulatorView({
                         const isSelected = maratonSubmitted 
                           ? maratonSelectedAnswer === optLetter 
                           : maratonDraftAnswer === optLetter;
-                        const isCorrectAnswer = currentMaratonTask.correctAnswer.trim().toUpperCase() === optLetter;
 
+                        const isCorrectOption = optLetter === currentMaratonTask.correctAnswer;
                         let cardStyle = 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-white';
-                        let badgeStyle = 'bg-white/5 border-white/10 text-text-muted';
+                        let badgeStyle = 'bg-white/5 text-text-secondary border-white/10';
                         let radioStyle = 'border-white/20';
 
                         if (maratonSubmitted) {
-                          if (isCorrectAnswer) {
-                            cardStyle = 'bg-emerald-500/10 border-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.2)]';
-                            badgeStyle = 'bg-emerald-500 text-black border-emerald-400 font-black';
+                          if (isCorrectOption) {
+                            cardStyle = 'bg-emerald-500/10 border-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.2)]';
+                            badgeStyle = 'bg-emerald-500 text-black border-emerald-500 font-black';
                             radioStyle = 'border-emerald-500 bg-emerald-500 text-black';
-                          } else if (isSelected && !isCorrectAnswer) {
-                            cardStyle = 'bg-rose-500/10 border-rose-500 text-white shadow-[0_0_20px_rgba(244,63,94,0.2)]';
-                            badgeStyle = 'bg-rose-500 text-white border-rose-400 font-black';
+                          } else if (isSelected) {
+                            cardStyle = 'bg-rose-500/10 border-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.2)]';
+                            badgeStyle = 'bg-rose-500 text-white border-rose-500 font-black';
                             radioStyle = 'border-rose-500 bg-rose-500 text-white';
+                          } else {
+                            cardStyle = 'bg-surface-card/40 border-surface-border/40 text-text-muted opacity-50';
                           }
                         } else if (isSelected) {
-                          cardStyle = 'bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_20px_rgba(255,184,0,0.15)] ring-1 ring-[#FFB800]/50';
-                          badgeStyle = 'bg-[#FFB800] text-black border-[#FFB800] font-black shadow-sm';
+                          cardStyle = 'bg-[#FFB800]/10 border-[#FFB800] ring-1 ring-[#FFB800]/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white';
+                          badgeStyle = 'bg-[#FFB800] text-black border-[#FFB800] shadow-sm';
                           radioStyle = 'border-[#FFB800]';
                         }
 
                         return (
                           <button
                             key={optIdx}
+                            type="button"
                             disabled={maratonSubmitted}
                             onClick={() => {
-                              if (maratonSubmitted) return;
-                              setMaratonDraftAnswer(optLetter);
                               triggerHaptic('light');
+                              setMaratonDraftAnswer(optLetter);
                             }}
-                            className={`group p-4 rounded-2xl border text-left transition-all duration-200 flex items-center justify-between gap-3.5 cursor-pointer active:scale-[0.99] ${cardStyle}`}
+                            className={`group p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex items-center justify-between gap-3.5 active:scale-[0.99] cursor-pointer ${cardStyle}`}
                           >
                             <div className="flex items-center gap-3.5 min-w-0 flex-1">
                               <span className={`w-8 h-8 rounded-xl font-display font-black text-xs flex items-center justify-center shrink-0 border transition-all ${badgeStyle}`}>
@@ -2181,7 +2184,7 @@ export function MaturaSimulatorView({
 
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${radioStyle}`}>
                               {maratonSubmitted ? (
-                                isCorrectAnswer ? (
+                                isCorrectOption ? (
                                   <Check size={12} strokeWidth={3.5} />
                                 ) : isSelected ? (
                                   <X size={12} strokeWidth={3.5} />
@@ -2422,7 +2425,7 @@ export function MaturaSimulatorView({
                           <div className="p-4 rounded-2xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-2.5">
                             <div className="flex items-center justify-between gap-2">
                               <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
-                                <Sparkles size={14} />
+                                <GraduationCap size={14} />
                                 <span>Ocena Egzaminatora AI: {maratonTutorEval.score} / {currentMaratonTask.points} pkt</span>
                               </div>
                               {maratonTutorEval.isPassed && (

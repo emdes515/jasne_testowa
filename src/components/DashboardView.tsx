@@ -18,8 +18,7 @@ import {
   Cpu,
   FileText,
   Layers,
-  GraduationCap,
-  Sparkles
+  GraduationCap
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
@@ -762,7 +761,7 @@ export function DashboardView({
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider">Tryb 2</span>
-                    <Sparkles size={14} className="text-purple-400 group-hover/btn:translate-x-0.5 transition-transform" />
+                    <GraduationCap size={14} className="text-purple-400 group-hover/btn:translate-x-0.5 transition-transform" />
                   </div>
                   <div className="text-xs sm:text-sm font-bold text-text-primary">Mini Matura</div>
                   <div className="text-[11px] text-text-muted mt-0.5">Szybki test 20–35 min</div>

@@ -17,7 +17,6 @@ import {
   Trophy,
   BookOpen,
   Clock,
-  Sparkles,
   Compass,
   Calculator
 } from 'lucide-react';
@@ -404,7 +403,7 @@ export function OnboardingOverlay({
             >
               <div>
                 <div className="mb-1.5 flex items-center gap-2">
-                  <Badge variant="jasne" icon={<Sparkles size={12} />}>
+                  <Badge variant="jasne" icon={<Target size={12} />}>
                     PEWNIAK CKE • ANALIZA WYKRESU
                   </Badge>
                 </div>
@@ -590,7 +589,7 @@ export function OnboardingOverlay({
             >
               <div>
                 <div className="mb-1.5 flex items-center gap-2">
-                  <Badge variant="jasne" icon={<Sparkles size={12} />}>
+                  <Badge variant="jasne" icon={<Compass size={12} />}>
                     EKOSYSTEM MATURALNY JASNE
                   </Badge>
                 </div>

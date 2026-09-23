@@ -1,7 +1,7 @@
 """
 topic_09.py - Dział 1.9: Odczytywanie informacji z wykresu funkcji (4 lekcje | Tier S+)
-Nocturne Luminary + Core-4 Bento Visuals
-100% Real KaTeX, 0% Emojis, Zero redundant SVG wagons.
+Nocturne Luminary + Core-4 Bento Visuals with Interactive Mafs Engine
+100% Real KaTeX, 0% Emojis, Analytically Verified Coordinates.
 """
 from .common import (
     C_PRIMARY, C_SUCCESS, C_SKY, C_DANGER, C_PURPLE, C_SLATE, C_MUTED, C_TEXT,
@@ -13,29 +13,29 @@ def get_topic_09_visuals(l_idx):
 
     if l_num == 1:
         # L1.9.1: Odczyt dziedziny D (oś OX) i zbioru wartości ZW (oś OY)
+        plot_data = {
+            'xRange': [-5, 6],
+            'yRange': [-3, 4],
+            'gridStep': 1,
+            'segments': [
+                {'from': [-4.0, -1.0], 'to': [-1.0, 3.0], 'color': C_PRIMARY, 'startDot': 'solid', 'endDot': 'none', 'weight': 3},
+                {'from': [-1.0, 3.0], 'to': [2.0, 0.0], 'color': C_PRIMARY, 'weight': 3},
+                {'from': [2.0, 0.0], 'to': [5.0, 2.0], 'color': C_PRIMARY, 'startDot': 'none', 'endDot': 'solid', 'weight': 3}
+            ],
+            'points': [
+                {'x': -4.0, 'y': -1.0, 'color': C_PRIMARY, 'label': 'A(-4, -1)', 'attach': 'sw'},
+                {'x': 5.0, 'y': 2.0, 'color': C_PRIMARY, 'label': 'B(5, 2)', 'attach': 'ne'},
+                {'x': -1.0, 'y': 3.0, 'color': C_SUCCESS, 'label': 'max: y = 3', 'attach': 'n'}
+            ],
+            'labels': [
+                {'x': 0.5, 'y': 3.5, 'text': 'Dziedzina D = [-4, 5], Zbiór wartości ZW = [-1, 3]', 'color': C_SUCCESS, 'attach': 'n'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Odczyt dziedziny D (oś pozioma OX) i zbioru wartości ZW (oś pionowa OY)',
             badge=r'D_f \subset OX,\quad ZW_f \subset OY',
             caption='Dziedzinę odczytujemy "od lewej do prawej" na osi OX (rzut poziomy). Zbiór wartości odczytujemy "od dołu do góry" na osi OY (rzut pionowy). Kółko zamalowane = nawias domknięty [ ], otwarte = okrągły ( ).',
-            curves=[
-                {'path': 'M 100 180 Q 180 80 260 140 T 400 60', 'color': C_PRIMARY, 'strokeWidth': 3}
-            ],
-            segments=[
-                {'from': [50, 150], 'to': [450, 150], 'color': C_SLATE, 'strokeWidth': 2}, # Oś OX
-                {'from': [180, 20], 'to': [180, 240], 'color': C_SLATE, 'strokeWidth': 2}, # Oś OY
-                {'from': [100, 180], 'to': [100, 150], 'color': C_SKY, 'strokeWidth': 1.5, 'dashed': True},
-                {'from': [400, 60], 'to': [400, 150], 'color': C_SKY, 'strokeWidth': 1.5, 'dashed': True},
-                {'from': [100, 180], 'to': [180, 180], 'color': C_SUCCESS, 'strokeWidth': 1.5, 'dashed': True},
-                {'from': [400, 60], 'to': [180, 60], 'color': C_SUCCESS, 'strokeWidth': 1.5, 'dashed': True}
-            ],
-            points=[
-                {'x': 100, 'y': 180, 'color': C_PRIMARY, 'label': 'A(-4, -1)'},
-                {'x': 400, 'y': 60, 'color': C_PRIMARY, 'label': 'B(5, 3)'}
-            ],
-            labels=[
-                {'x': 250, 'y': 175, 'text': 'DZIEDZINA D (rzut na OX): [-4, 5]', 'color': C_SKY, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 260, 'y': 35, 'text': 'ZBIÓR WARTOŚCI ZW (rzut na OY): [-1, 3]', 'color': C_SUCCESS, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'middle'}
-            ],
+            plotData=plot_data,
             metrics=[
                 {'label': 'Dziedzina $D$', 'value': 'Oś pozioma $OX$ (od lewej do prawej)', 'color': C_SKY},
                 {'label': 'Zbiór wartości $ZW$', 'value': 'Oś pionowa $OY$ (od dołu do góry)', 'color': C_SUCCESS},
@@ -46,25 +46,30 @@ def get_topic_09_visuals(l_idx):
 
     elif l_num == 2:
         # L1.9.2: Odczyt miejsc zerowych f(x) = 0 oraz punktu przecięcia z osią OY
+        plot_data = {
+            'xRange': [-4, 6],
+            'yRange': [-5, 4],
+            'gridStep': 1,
+            'parabola': {
+                'a': 0.375,
+                'p': 1.0,
+                'q': -3.375,
+                'color': C_PRIMARY
+            },
+            'points': [
+                {'x': -2.0, 'y': 0.0, 'color': C_SUCCESS, 'label': 'x₁ = -2', 'attach': 'nw'},
+                {'x': 4.0, 'y': 0.0, 'color': C_SUCCESS, 'label': 'x₂ = 4', 'attach': 'ne'},
+                {'x': 0.0, 'y': -3.0, 'color': C_SKY, 'label': '(0, -3)', 'attach': 'e'}
+            ],
+            'labels': [
+                {'x': 1.0, 'y': -4.2, 'text': 'Wierzchołek i oś symetrii', 'color': C_MUTED, 'attach': 's'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Miejsca zerowe i punkt przecięcia z osią OY',
             badge=r'f(x) = 0 \implies x \in OX;\quad P = (0, f(0)) \in OY',
             caption='Miejsce zerowe to punkt na poziomej osi OX, gdzie wykres ją przecina. Punkt (0, f(0)) to punkt na pionowej osi OY.',
-            curves=[
-                {'path': 'M 80 60 Q 200 240 320 60', 'color': C_PRIMARY, 'strokeWidth': 2.5}
-            ],
-            segments=[
-                {'from': [50, 150], 'to': [450, 150], 'color': C_SLATE, 'strokeWidth': 2},
-                {'from': [200, 30], 'to': [200, 240], 'color': C_SLATE, 'strokeWidth': 2}
-            ],
-            points=[
-                {'x': 130, 'y': 150, 'color': C_SUCCESS, 'label': 'x₁ = -2', 'labelPosition': 'top'},
-                {'x': 270, 'y': 150, 'color': C_SUCCESS, 'label': 'x₂ = 4', 'labelPosition': 'top'},
-                {'x': 200, 'y': 200, 'color': C_SKY, 'label': '(0, -3)', 'labelPosition': 'right'}
-            ],
-            labels=[
-                {'x': 260, 'y': 235, 'text': 'Przecięcie z OY: f(0) = -3', 'color': C_SKY, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'}
-            ],
+            plotData=plot_data,
             metrics=[
                 {'label': 'Miejsca zerowe', 'value': 'Podajesz wyłącznie argumenty $x$: $x = -2, x = 4$', 'color': C_SUCCESS},
                 {'label': 'Przecięcie z $OY$', 'value': 'Zawsze dla $x = 0$: punkt $(0, f(0))$', 'color': C_SKY},
@@ -75,25 +80,26 @@ def get_topic_09_visuals(l_idx):
 
     elif l_num == 3:
         # L1.9.3: Odczytywanie przedziałów monotoniczności (gdzie rośnie, gdzie maleje)
+        plot_data = {
+            'xRange': [-5, 7],
+            'yRange': [-4, 4],
+            'gridStep': 1,
+            'segments': [
+                {'from': [-4.0, -2.0], 'to': [-1.0, 3.0], 'color': C_SUCCESS, 'weight': 3, 'startDot': 'solid'},
+                {'from': [-1.0, 3.0], 'to': [3.0, -2.0], 'color': C_DANGER, 'weight': 3},
+                {'from': [3.0, -2.0], 'to': [6.0, -2.0], 'color': C_SKY, 'weight': 3, 'endDot': 'solid'}
+            ],
+            'labels': [
+                {'x': -2.5, 'y': 1.2, 'text': 'ROŚNIE: [-4, -1]', 'color': C_SUCCESS, 'attach': 'nw'},
+                {'x': 1.0, 'y': 1.2, 'text': 'MALEJE: [-1, 3]', 'color': C_DANGER, 'attach': 'ne'},
+                {'x': 4.5, 'y': -1.4, 'text': 'STAŁA: [3, 6]', 'color': C_SKY, 'attach': 's'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Monotoniczność funkcji: Idziemy "pod górkę" i "z górki"',
             badge=r'f \nearrow \iff x_1 < x_2 \implies f(x_1) < f(x_2)',
             caption='Monotoniczność śledzimy ZAWSZE od lewej do prawej! "Pod górkę" oznacza rosnącą, "z górki" malejącą. Przedziały monotoniczności podajemy DLA ARGUMENTÓW X na osi OX!',
-            curves=[
-                {'path': 'M 80 180 L 180 80 L 320 220 L 420 220', 'color': C_PRIMARY, 'strokeWidth': 3}
-            ],
-            segments=[
-                {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2},
-                {'from': [80, 180], 'to': [80, 150], 'color': C_MUTED, 'strokeWidth': 1.5, 'dashed': True},
-                {'from': [180, 80], 'to': [180, 150], 'color': C_MUTED, 'strokeWidth': 1.5, 'dashed': True},
-                {'from': [320, 220], 'to': [320, 150], 'color': C_MUTED, 'strokeWidth': 1.5, 'dashed': True},
-                {'from': [420, 220], 'to': [420, 150], 'color': C_MUTED, 'strokeWidth': 1.5, 'dashed': True}
-            ],
-            labels=[
-                {'x': 130, 'y': 110, 'text': 'ROŚNIE ([-4, -1])', 'color': C_SUCCESS, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 250, 'y': 135, 'text': 'MALEJE ([-1, 3])', 'color': C_DANGER, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 370, 'y': 200, 'text': 'STAŁA ([3, 6])', 'color': C_SKY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'}
-            ],
+            plotData=plot_data,
             metrics=[
                 {'label': 'Przedziały', 'value': 'Podajemy ZAWSZE dla osi poziomej $OX$!', 'color': C_PRIMARY},
                 {'label': 'Kierunek analizy', 'value': 'Od lewej do prawej strony wykresu', 'color': C_SUCCESS},
@@ -104,26 +110,34 @@ def get_topic_09_visuals(l_idx):
 
     elif l_num == 4:
         # L1.9.4: Liczba rozwiązań równania f(x) = m (przecinanie poziomą prostą y = m)
+        plot_data = {
+            'xRange': [-5, 5],
+            'yRange': [-3, 4],
+            'gridStep': 1,
+            'segments': [
+                {'from': [-4.0, -2.0], 'to': [-2.0, 3.0], 'color': C_PRIMARY, 'weight': 3, 'startDot': 'solid'},
+                {'from': [-2.0, 3.0], 'to': [0.0, -1.0], 'color': C_PRIMARY, 'weight': 3},
+                {'from': [0.0, -1.0], 'to': [2.0, 3.0], 'color': C_PRIMARY, 'weight': 3},
+                {'from': [2.0, 3.0], 'to': [4.0, -2.0], 'color': C_PRIMARY, 'weight': 3, 'endDot': 'solid'}
+            ],
+            'horizontalLines': [
+                {'y': 1.0, 'color': C_SUCCESS, 'dashed': True}
+            ],
+            'points': [
+                {'x': -2.8, 'y': 1.0, 'color': C_SUCCESS, 'label': 'x₁', 'attach': 'nw'},
+                {'x': -1.0, 'y': 1.0, 'color': C_SUCCESS, 'label': 'x₂', 'attach': 'ne'},
+                {'x': 1.0, 'y': 1.0, 'color': C_SUCCESS, 'label': 'x₃', 'attach': 'nw'},
+                {'x': 2.8, 'y': 1.0, 'color': C_SUCCESS, 'label': 'x₄', 'attach': 'ne'}
+            ],
+            'labels': [
+                {'x': 0.0, 'y': 1.4, 'text': 'y = 1 (dokładnie 4 rozwiązania: x₁, x₂, x₃, x₄)', 'color': C_SUCCESS, 'attach': 's'}
+            ]
+        }
         tab0 = make_plot_diagram(
             title='Liczba rozwiązań równania f(x) = m: Pozioma prosta',
             badge=r'f(x) = m \implies \text{Punkty wspólne wykresu } f \text{ i prostej } y = m',
             caption='Aby ustalić ile rozwiązań ma równanie f(x) = m, kładziemy linijkę POZIOMO na wysokości y = m i liczymy ile razy linijka przetnie wykres.',
-            curves=[
-                {'path': 'M 80 80 Q 180 240 280 80 T 420 220', 'color': C_PRIMARY, 'strokeWidth': 2.5}
-            ],
-            segments=[
-                {'from': [40, 150], 'to': [460, 150], 'color': C_SLATE, 'strokeWidth': 2},
-                {'from': [40, 110], 'to': [460, 110], 'color': C_SUCCESS, 'strokeWidth': 2, 'label': 'y = 2 (3 punkty)'}
-            ],
-            points=[
-                {'x': 105, 'y': 110, 'color': C_SUCCESS},
-                {'x': 255, 'y': 110, 'color': C_SUCCESS},
-                {'x': 350, 'y': 110, 'color': C_SUCCESS}
-            ],
-            labels=[
-                {'x': 250, 'y': 85, 'text': 'Prosta pozioma y = 2 przecina wykres w 3 punktach', 'color': C_SUCCESS, 'fontSize': 12, 'fontWeight': 'bold', 'anchor': 'middle'},
-                {'x': 250, 'y': 180, 'text': 'Równanie f(x) = 2 ma DOKŁADNIE 3 ROZWIĄZANIA', 'color': C_TEXT, 'fontSize': 13, 'fontWeight': 'bold', 'anchor': 'middle'}
-            ],
+            plotData=plot_data,
             metrics=[
                 {'label': 'Prosta $y = m$', 'value': 'Zawsze POZIOMA (stała wysokość)', 'color': C_SUCCESS},
                 {'label': 'Liczba rozwiązań', 'value': 'Liczba punktów przecięcia wykresu z tą prostą', 'color': C_PRIMARY},

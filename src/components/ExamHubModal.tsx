@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, 
   Layers, 
-  Sparkles, 
+  GraduationCap, 
   FileText, 
   ArrowRight, 
   Clock, 
@@ -151,7 +151,7 @@ export function ExamHubModal({
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-2xl bg-purple-500/20 border border-purple-500/40 text-purple-300 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-inner">
-                    <Sparkles className="w-5 h-5" />
+                    <GraduationCap className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 flex-wrap mb-0.5">

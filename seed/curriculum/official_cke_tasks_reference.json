@@ -1,0 +1,6353 @@
+[
+  {
+    "badge": "Matura maj 2023 • Zad. 1",
+    "exam": "Matura maj 2023",
+    "num": "1",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Na osi liczbowej zaznaczono sumę przedziałów.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiór zaznaczony na osi jest zbiorem wszystkich rozwiązań nierówności",
+    "options": [
+      "|x − 3,5| \\ge 1,5",
+      "|x − 1,5| \\ge 3,5",
+      "|x − 3,5| \\le 1,5",
+      "|x − 1,5| \\le 3,5"
+    ],
+    "points": 1,
+    "numberLine": {
+      "min": -5,
+      "max": 7,
+      "ticks": [
+        -2,
+        5
+      ],
+      "intervals": [
+        {
+          "from": null,
+          "to": -2,
+          "toIncluded": true
+        },
+        {
+          "from": 5,
+          "to": null,
+          "fromIncluded": true
+        }
+      ]
+    },
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 2",
+    "exam": "Matura maj 2023",
+    "num": "2",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  \\sqrt− 27\n16\n3\n\\cdot \\sqrt2\n3\njest równa",
+    "options": [
+      "(− 3\n2)",
+      "3\n2",
+      "2\n3",
+      "(− 2\n3)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 3",
+    "exam": "Matura maj 2023",
+    "num": "3",
+    "type": "OPEN_PROOF",
+    "ans": "A",
+    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  (𝟐𝒏 + 𝟏)𝟐 − 𝟏  jest podzielna\nprzez  𝟖.\n3.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 4",
+    "exam": "Matura maj 2023",
+    "num": "4",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log9 27 + log9 3  jest równa",
+    "options": [
+      "81",
+      "9",
+      "4",
+      "2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 5",
+    "exam": "Matura maj 2023",
+    "num": "5",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  a  wyrażenie  (2a − 3)2 − (2a + 3)2  jest równe",
+    "options": [
+      "−24a",
+      "0",
+      "18",
+      "16a2 − 24a"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 6",
+    "exam": "Matura maj 2023",
+    "num": "6",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wszystkich rozwiązań nierówności\n−2(x + 3) \\le 2 − x\n3\njest przedział",
+    "options": [
+      "(−\\infty, −4]",
+      "(−\\infty, 4]",
+      "[−4, \\infty)",
+      "[4, \\infty)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 7",
+    "exam": "Matura maj 2023",
+    "num": "7",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nJednym z rozwiązań równania  \\sqrt3(x2 − 2)(x + 3) = 0  jest liczba",
+    "options": [
+      "3",
+      "2",
+      "\\sqrt3",
+      "\\sqrt2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 8",
+    "exam": "Matura maj 2023",
+    "num": "8",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie\n(x+1)(x−1)2\n(x−1)(x+1)2 = 0  w zbiorze liczb rzeczywistych",
+    "options": [
+      "nie ma rozwiązania.",
+      "ma dokładnie jedno rozwiązanie:  −1.",
+      "ma dokładnie jedno rozwiązanie:  1.",
+      "ma dokładnie dwa rozwiązania:  −1  oraz  1."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 9",
+    "exam": "Matura maj 2023",
+    "num": "9",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Rozwiąż równanie\n𝟑𝒙𝟑 − 𝟐𝒙𝟐 − 𝟏𝟐𝒙 + 𝟖 = 𝟎\nZapisz obliczenia.\n9.\n0–1–\n2–3",
+    "options": [],
+    "points": 3,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 10",
+    "exam": "Matura maj 2023",
+    "num": "10",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Na rysunku przedstawiono interpretację geometryczną w kartezjańskim układzie\nwspółrzędnych  (x, y)  jednego z niżej zapisanych układów równań A–D.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
+    "options": [
+      "{ y = −x + 2\ny = −2x + 1",
+      "{ y = x − 2\ny = −2x − 1",
+      "{ y = x − 2\ny = 2x + 1",
+      "{ y = −x + 2\ny = 2x − 1"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Interpretacja geometryczna układu równań w układzie współrzędnych",
+      "width": 440,
+      "height": 260,
+      "grid": {
+        "minX": 30,
+        "maxX": 410,
+        "stepX": 30,
+        "minY": 25,
+        "maxY": 235,
+        "stepY": 30,
+        "color": "rgba(148, 163, 184, 0.1)"
+      },
+      "ticks": [
+        {
+          "x": 160,
+          "y": 130,
+          "label": "0",
+          "axis": "x"
+        },
+        {
+          "x": 220,
+          "y": 130,
+          "label": "2",
+          "axis": "x"
+        },
+        {
+          "x": 160,
+          "y": 100,
+          "label": "1",
+          "axis": "y"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            20,
+            130
+          ],
+          "to": [
+            420,
+            130
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            160,
+            240
+          ],
+          "to": [
+            160,
+            20
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            100,
+            220
+          ],
+          "to": [
+            280,
+            10
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 2.5,
+          "label": "y = 2x - 3"
+        },
+        {
+          "from": [
+            100,
+            40
+          ],
+          "to": [
+            310,
+            250
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2.5,
+          "label": "y = -x + 3"
+        }
+      ],
+      "points": [
+        {
+          "x": 220,
+          "y": 100,
+          "label": "(2, 1)",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ],
+      "labels": [
+        {
+          "x": 415,
+          "y": 144,
+          "text": "x",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 172,
+          "y": 24,
+          "text": "y",
+          "color": "#94A3B8"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 11",
+    "exam": "Matura maj 2023",
+    "num": "11",
+    "type": "SINGLE_CHOICE",
+    "ans": "CE",
+    "content": "Dany jest prostokąt o bokach długości  a  i  b, gdzie  a > b. Obwód tego prostokąta jest\nrówny  30. Jeden z boków prostokąta jest o  5  krótszy od drugiego.\nUzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nZależności między długościami boków tego prostokąta zapisano w układach równań\noznaczonych literami: ……… oraz ……… .",
+    "options": [
+      "{ 2ab = 30\na − b = 5",
+      "{ 2a + b = 30\na = 5b",
+      "{ 2(a + b) = 30\nb = a − 5",
+      "{ 2a + 2b = 30\nb = 5a\nE.  { 2a + 2b = 30\na − b = 5\nF.  { a + b = 30\na = b + 5"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 12.1",
+    "exam": "Matura maj 2023",
+    "num": "12.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDziedziną funkcji  f  jest zbiór",
+    "options": [
+      "[−6, 5]",
+      "(−6, 5)",
+      "(−3, 5]",
+      "[−3, 5]"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 12.2",
+    "exam": "Matura maj 2023",
+    "num": "12.2",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nNajwiększa wartość funkcji  f  w przedziale  [−4, 1]  jest równa",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 12.3",
+    "exam": "Matura maj 2023",
+    "num": "12.3",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest malejąca w zbiorze",
+    "options": [
+      "[−6, −3)",
+      "[−3, 1]",
+      "(1, 2]",
+      "[2, 5]"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 13",
+    "exam": "Matura maj 2023",
+    "num": "13",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Funkcja liniowa  f  jest określona wzorem\nf(x) = ax + b, gdzie  a  i  b  są pewnymi\nliczbami rzeczywistymi. Na rysunku obok\nprzedstawiono fragment wykresu funkcji  f\nw kartezjańskim układzie współrzędnych  (x, y).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  a  oraz liczba  b  we wzorze funkcji  f  spełniają warunki:",
+    "options": [
+      "a > 0  i  b > 0.",
+      "a > 0  i  b < 0.",
+      "a < 0  i  b > 0.",
+      "a < 0  i  b < 0."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 14",
+    "exam": "Matura maj 2023",
+    "num": "14",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Jednym z miejsc zerowych funkcji kwadratowej  f  jest liczba  (−5). Pierwsza współrzędna\nwierzchołka paraboli, będącej wykresem funkcji  f, jest równa  3.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDrugim miejscem zerowym funkcji  f  jest liczba",
+    "options": [
+      "11",
+      "1",
+      "(−1)",
+      "(−13)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Wykres funkcji kwadratowej $f(x)$ z wierzchołkiem $W = (-2, 9)$",
+      "width": 440,
+      "height": 260,
+      "grid": {
+        "minX": 30,
+        "maxX": 410,
+        "stepX": 25,
+        "minY": 25,
+        "maxY": 235,
+        "stepY": 20,
+        "color": "rgba(148, 163, 184, 0.12)"
+      },
+      "segments": [
+        {
+          "from": [
+            20,
+            190
+          ],
+          "to": [
+            420,
+            190
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            245,
+            240
+          ],
+          "to": [
+            245,
+            20
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        }
+      ],
+      "curves": [
+        {
+          "path": "M 100,240 Q 195,-20 290,240",
+          "color": "#FFB800",
+          "strokeWidth": 2.5
+        }
+      ],
+      "points": [
+        {
+          "x": 195,
+          "y": 25,
+          "label": "W(-2, 9)",
+          "labelPosition": "top",
+          "dot": "filled",
+          "color": "#10B981"
+        },
+        {
+          "x": 120,
+          "y": 190,
+          "label": "-5",
+          "labelPosition": "bottom-left",
+          "dot": "filled",
+          "color": "#FFB800"
+        },
+        {
+          "x": 270,
+          "y": 190,
+          "label": "1",
+          "labelPosition": "bottom-right",
+          "dot": "filled",
+          "color": "#FFB800"
+        }
+      ],
+      "labels": [
+        {
+          "x": 415,
+          "y": 204,
+          "text": "x",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 257,
+          "y": 24,
+          "text": "y",
+          "color": "#94A3B8"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 15",
+    "exam": "Matura maj 2023",
+    "num": "15",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Ciąg  (an)  jest określony wzorem  an = 2n \\cdot (n + 1)  dla każdej liczby naturalnej  n \\ge 1.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWyraz  a4  jest równy",
+    "options": [
+      "64",
+      "40",
+      "48",
+      "80"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 16",
+    "exam": "Matura maj 2023",
+    "num": "16",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Trzywyrazowy ciąg  (27, 9, a − 1)  jest geometryczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  a  jest równa",
+    "options": [
+      "3",
+      "0",
+      "4",
+      "2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 17",
+    "exam": "Matura maj 2023",
+    "num": "17",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Pan Stanisław spłacił pożyczkę w wysokości  8910 zł w osiemnastu ratach. Każda kolejna\nrata była mniejsza od poprzedniej o  30 zł.\nOblicz kwotę pierwszej raty. Zapisz obliczenia.\n17.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 18",
+    "exam": "Matura maj 2023",
+    "num": "18",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  zaznaczono kąt  \\alpha  o wierzchołku\nw punkcie  O = (0, 0). Jedno z ramion tego kąta pokrywa się z dodatnią półosią  Ox,\na drugie przechodzi przez punkt  P = (−3, 1)  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTangens kąta  \\alpha  jest równy",
+    "options": [
+      "1\n\\sqrt10",
+      "(− 3\n\\sqrt10)",
+      "(− 3\n1)",
+      "(− 1\n3)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 19",
+    "exam": "Matura maj 2023",
+    "num": "19",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdego kąta ostrego  \\alpha  wyrażenie  sin4 \\alpha  + sin2 \\alpha  \\cdot cos2 \\alpha  jest równe",
+    "options": [
+      "sin2 \\alpha",
+      "sin6 \\alpha  \\cdot cos2 \\alpha",
+      "sin4 \\alpha + 1",
+      "sin2 \\alpha \\cdot (sin \\alpha + cos \\alpha) \\cdot (sin \\alpha − cos \\alpha)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 20",
+    "exam": "Matura maj 2023",
+    "num": "20",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W rombie o boku długości  6\\sqrt2  kąt rozwarty ma miarę  150°.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nIloczyn długości przekątnych tego rombu jest równy",
+    "options": [
+      "24",
+      "72",
+      "36",
+      "36\\sqrt2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 21",
+    "exam": "Matura maj 2023",
+    "num": "21",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Punkty  A, B, C  leżą na okręgu o środku w punkcie  O.\nKąt  ACO  ma miarę  70°  (zobacz rysunek).\nDokończ zdanie.\nWybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ABC  jest równa",
+    "options": [
+      "10°",
+      "20°",
+      "35°",
+      "40°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Kąt $\\angle ACO = 70^\\circ$ w okręgu o środku $O$",
+      "width": 440,
+      "height": 260,
+      "circles": [
+        {
+          "cx": 220,
+          "cy": 130,
+          "r": 90,
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.04)"
+        }
+      ],
+      "polygons": [
+        {
+          "points": [
+            [
+              140,
+              175
+            ],
+            [
+              300,
+              175
+            ],
+            [
+              195,
+              42
+            ]
+          ],
+          "stroke": "#FFB800",
+          "strokeWidth": 2,
+          "fill": "rgba(255, 184, 0, 0.05)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            140,
+            175
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5,
+          "dashed": true
+        },
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            195,
+            42
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5,
+          "dashed": true
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 195,
+          "cy": 42,
+          "r": 22,
+          "startAngleDeg": 125,
+          "endAngleDeg": 195,
+          "color": "#FFB800",
+          "label": "70°"
+        }
+      ],
+      "points": [
+        {
+          "x": 140,
+          "y": 175,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 300,
+          "y": 175,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 195,
+          "y": 42,
+          "label": "C",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 130,
+          "label": "O",
+          "labelPosition": "bottom",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 22",
+    "exam": "Matura maj 2023",
+    "num": "22",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Trójkąty prostokątne  𝑇1  i  𝑇2  są podobne. Przyprostokątne trójkąta  𝑇1  mają\ndługości  5  i  12. Przeciwprostokątna trójkąta  𝑇2  ma długość  26.\nOblicz pole trójkąta  𝑻𝟐. Zapisz obliczenia.\n22.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 23",
+    "exam": "Matura maj 2023",
+    "num": "23",
+    "type": "NUMERIC_INPUT",
+    "ans": "A2",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są proste  k  oraz  𝑙  o równaniach\nk:   y = 2\n3 x\n𝑙:   y = − 3\n2 x + 13\nDokończ zdanie. Wybierz odpowiedź A albo B oraz odpowiedź 1., 2. albo 3.\nProste  k  oraz  𝑙\nsą prostopadłe\ni przecinają się w punkcie  P  o współrzędnych\n1. (−6, −4) A.\n2. (6, 4)\nnie są\nprostopadłe B. 3. (−6, 4)",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 24",
+    "exam": "Matura maj 2023",
+    "num": "24",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dana jest prosta  k  o równaniu\ny = − 1\n3 x + 2\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nProsta o równaniu  y = ax + b  jest równoległa do prostej  k  i przechodzi przez\npunkt  P = (3, 5), gdy",
+    "options": [
+      "a = 3  i  b = 4.",
+      "a = − 1\n3  i  b = 4.",
+      "a = 3  i  b = −4.",
+      "a = − 1\n3  i  b = 6."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 25",
+    "exam": "Matura maj 2023",
+    "num": "25",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dany jest graniastosłup prawidłowy czworokątny, w którym krawędź podstawy ma\ndługość  15. Przekątna graniastosłupa jest nachylona do płaszczyzny podstawy pod\nkątem  \\alpha  takim, że  cos \\alpha =\n\\sqrt2\n3  .\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość przekątnej tego graniastosłupa jest równa",
+    "options": [
+      "15\\sqrt2",
+      "45",
+      "5\\sqrt2",
+      "10"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 26",
+    "exam": "Matura maj 2023",
+    "num": "26",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Dany jest ostrosłup prawidłowy czworokątny. Wysokość ściany bocznej tego ostrosłupa jest\nnachylona do płaszczyzny podstawy pod kątem  30°  i ma długość równą  6  (zobacz rysunek).\nOblicz objętość i pole powierzchni całkowitej tego ostrosłupa. Zapisz obliczenia.\n30°\n6\n26.\n0–1–\n2–3–4",
+    "options": [],
+    "points": 4,
+    "numberLine": null,
+    "diagram": {
+      "type": "STEREOMETRY_3D",
+      "title": "Ostrosłup prawidłowy czworokątny z wysokością ściany bocznej $h_s$ i kątem nachylenia $\\alpha$",
+      "width": 440,
+      "height": 260,
+      "segments": [
+        {
+          "from": [
+            120,
+            200
+          ],
+          "to": [
+            260,
+            220
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            260,
+            220
+          ],
+          "to": [
+            340,
+            170
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            340,
+            170
+          ],
+          "to": [
+            200,
+            150
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            200,
+            150
+          ],
+          "to": [
+            120,
+            200
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            120,
+            200
+          ],
+          "to": [
+            230,
+            45
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            260,
+            220
+          ],
+          "to": [
+            230,
+            45
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            340,
+            170
+          ],
+          "to": [
+            230,
+            45
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            200,
+            150
+          ],
+          "to": [
+            230,
+            45
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            230,
+            45
+          ],
+          "to": [
+            230,
+            185
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "H"
+        },
+        {
+          "from": [
+            230,
+            45
+          ],
+          "to": [
+            300,
+            195
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75,
+          "label": "hs"
+        },
+        {
+          "from": [
+            230,
+            185
+          ],
+          "to": [
+            300,
+            195
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "a/2"
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 300,
+          "cy": 195,
+          "r": 20,
+          "startAngleDeg": 200,
+          "endAngleDeg": 260,
+          "color": "#FFB800",
+          "label": "α"
+        }
+      ],
+      "points": [
+        {
+          "x": 230,
+          "y": 45,
+          "label": "S",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 120,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 260,
+          "y": 220,
+          "label": "B",
+          "labelPosition": "bottom",
+          "dot": "filled"
+        },
+        {
+          "x": 340,
+          "y": 170,
+          "label": "C",
+          "labelPosition": "right",
+          "dot": "filled"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 27",
+    "exam": "Matura maj 2023",
+    "num": "27",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W pewnym ostrosłupie prawidłowym stosunek liczby  W  wszystkich wierzchołków do\nliczby  K  wszystkich krawędzi jest równy  W\nK = 3\n5 .\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPodstawą tego ostrosłupa jest",
+    "options": [
+      "kwadrat.",
+      "pięciokąt foremny.",
+      "sześciokąt foremny.",
+      "siedmiokąt foremny."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 28",
+    "exam": "Matura maj 2023",
+    "num": "28",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych pięciocyfrowych, w których zapisie dziesiętnym występują tylko\ncyfry  0, 5, 7  (np.  57 075, 55 555), jest",
+    "options": [
+      "53",
+      "2 \\cdot 43",
+      "2 \\cdot 34",
+      "35"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 29",
+    "exam": "Matura maj 2023",
+    "num": "29",
+    "type": "SINGLE_CHOICE",
+    "ans": "Wersja A Wersja B",
+    "content": "Na diagramie poniżej przedstawiono ceny pomidorów w szesnastu wybranych sklepach.\nUzupełnij tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną\nspośród oznaczonych literami A–E.\n29.1. Mediana ceny kilograma pomidorów w tych wybranych sklepach jest\nrówna\n29.2. Średnia cena kilograma pomidorów w tych wybranych sklepach jest\nrówna",
+    "options": [
+      "5,80  zł",
+      "5,73  zł",
+      "5,85  zł",
+      "6,00  zł E.  5,70  zł"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 30",
+    "exam": "Matura maj 2023",
+    "num": "30",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Ze zbioru ośmiu liczb  {2, 3, 4, 5, 6, 7, 8, 9}  losujemy ze zwracaniem kolejno dwa razy po\njednej liczbie.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że iloczyn\nwylosowanych liczb jest podzielny przez  𝟏𝟓. Zapisz obliczenia.\n30.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 31.1",
+    "exam": "Matura maj 2023",
+    "num": "31.1",
+    "type": "TRUE_FALSE",
+    "ans": "FP",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nŁączna liczba klientów obsłużonych w czasie wszystkich analizowanych dni\njest równa  L(30). P F\nW trzecim dniu analizowanego okresu obsłużono  336  klientów. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2023 • Zad. 31.2",
+    "exam": "Matura maj 2023",
+    "num": "31.2",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Którego dnia analizowanego okresu w aptece obsłużono największą liczbę klientów?\nOblicz liczbę klientów obsłużonych tego dnia. Zapisz obliczenia.\n31.2.\n0–1–2\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 1",
+    "exam": "Matura czerwiec 2023",
+    "num": "1",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb całkowitych dodatnich spełniających nierówność  |x + 5| < 15  jest",
+    "options": [
+      "9",
+      "10",
+      "20",
+      "21"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 2",
+    "exam": "Matura czerwiec 2023",
+    "num": "2",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej dodatniej liczby rzeczywistej  x  iloczyn  \\sqrtx \\cdot \\sqrtx\n3\n\\cdot \\sqrtx\n6\njest równy",
+    "options": [
+      "x",
+      "\\sqrtx\n10",
+      "\\sqrtx\n18",
+      "x2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 3",
+    "exam": "Matura czerwiec 2023",
+    "num": "3",
+    "type": "OPEN_PROOF",
+    "ans": "A",
+    "content": "Wykaż, że dla każdej liczby całkowitej  𝒌  reszta z dzielenia liczby  𝟒𝟗𝒌𝟐 + 𝟕𝒌 − 𝟐\nprzez  𝟕  jest równa  𝟓.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 4",
+    "exam": "Matura czerwiec 2023",
+    "num": "4",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Klient wpłacił do banku  30 000  zł  na lokatę dwuletnią. Po każdym rocznym okresie\noszczędzania bank dolicza odsetki w wysokości  7%  od kwoty bieżącego kapitału\nznajdującego się na lokacie.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPo dwóch latach oszczędzania łączna wartość doliczonych odsetek na tej lokacie (bez\nuwzględniania podatków) jest równa",
+    "options": [
+      "2100  zł",
+      "2247  zł",
+      "4200  zł",
+      "4347  zł"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 5",
+    "exam": "Matura czerwiec 2023",
+    "num": "5",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log2  1\n8 + log2 4  jest równa",
+    "options": [
+      "(−1)",
+      "1\n2",
+      "2",
+      "5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 6",
+    "exam": "Matura czerwiec 2023",
+    "num": "6",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  (1 + \\sqrt5)\n2\n− (1 − \\sqrt5)\n2\njest równa",
+    "options": [
+      "0",
+      "(−10)",
+      "4\\sqrt5",
+      "2 + 2\\sqrt5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 7",
+    "exam": "Matura czerwiec 2023",
+    "num": "7",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  x  różnej od  0  i  2  wyrażenie  x2+x\n(x−2)2 \\cdot x−2\nx   jest równe",
+    "options": [
+      "x2+1\nx−2",
+      "x+1\n2",
+      "x2\n(x−2)2",
+      "x+1\nx−2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 8",
+    "exam": "Matura czerwiec 2023",
+    "num": "8",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Rozwiąż nierówność\n𝒙(𝟐𝒙 − 𝟏) < 𝟐𝒙\nZapisz obliczenia.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 9",
+    "exam": "Matura czerwiec 2023",
+    "num": "9",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Rozwiąż równanie\n𝒙𝟑 + 𝟒𝒙𝟐 − 𝟗𝒙 − 𝟑𝟔 = 𝟎\nZapisz obliczenia.",
+    "options": [],
+    "points": 3,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 10",
+    "exam": "Matura czerwiec 2023",
+    "num": "10",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie  (x2−3x)(x+2)\nx2−4 = 0  w zbiorze liczb rzeczywistych ma dokładnie",
+    "options": [
+      "jedno rozwiązanie.",
+      "dwa rozwiązania.",
+      "trzy rozwiązania.",
+      "cztery rozwiązania."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 11",
+    "exam": "Matura czerwiec 2023",
+    "num": "11",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nW kartezjańskim układzie współrzędnych  (x, y)  wykresy funkcji liniowych\nf(x) = (2m + 3)x + 5  oraz  g(x) = −x  nie mają punktów wspólnych dla",
+    "options": [
+      "m = −2",
+      "m = −1",
+      "m = 1",
+      "m = 2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 12",
+    "exam": "Matura czerwiec 2023",
+    "num": "12",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  prosta o równaniu  y = ax + b  przechodzi\nprzez punkty  A = (−3, −1)  oraz  B = (4, 3).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWspółczynnik  a  w równaniu tej prostej jest równy",
+    "options": [
+      "(−4)",
+      "(− 1\n2)",
+      "2",
+      "4\n7"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 13.1",
+    "exam": "Matura czerwiec 2023",
+    "num": "13.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "FA",
+    "content": "Uzupełnij tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną\nspośród oznaczonych literami A–F.\nDziedziną funkcji  f  jest zbiór\nZbiorem wartości funkcji  f  jest zbiór",
+    "options": [
+      "[−3, −1] \\cup [1, 3]",
+      "(−3, 3)",
+      "(−3, −1) \\cup (1, 3)",
+      "[−5, −1] \\cup [1, 5]\nE.  (−5, 5)\nF.  (−5, −1) \\cup (1, 5)"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 13.2",
+    "exam": "Matura czerwiec 2023",
+    "num": "13.2",
+    "type": "NUMERIC_INPUT",
+    "ans": "(−5, −3)",
+    "content": "Zapisz poniżej zbiór wszystkich rozwiązań nierówności  𝒇(𝒙) < −𝟏.\n................................ ................................ ................................ ................................ .................",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 14",
+    "exam": "Matura czerwiec 2023",
+    "num": "14",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Funkcja kwadratowa  f  jest określona wzorem  f(x) = ax2 + bx + 1, gdzie  a  oraz  b  są\npewnymi liczbami rzeczywistymi, takimi, że  a < 0  i  b > 0. Na jednym z rysunków A–D\nprzedstawiono fragment wykresu tej funkcji w kartezjańskim układzie współrzędnych  (x, y).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFragment wykresu funkcji  f  przedstawiono na rysunku",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ramiona w górę (a > 0), wierzchołek w II ćwiartce (xw < 0, yw > 0)",
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "Ramiona w dół (a < 0), wierzchołek w II ćwiartce (xw < 0, yw > 0)",
+        "is_correct": false
+      },
+      {
+        "id": "C",
+        "text": "Ramiona w górę (a > 0), wierzchołek w I ćwiartce (xw > 0, yw > 0)",
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "Ramiona w dół (a < 0), wierzchołek w I ćwiartce (xw > 0), przecięcie z OY w punkcie (0, 1)",
+        "is_correct": true
+      }
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 15.1",
+    "exam": "Matura czerwiec 2023",
+    "num": "15.1",
+    "type": "NUMERIC_INPUT",
+    "ans": "A",
+    "content": "Chory przyjął jednorazowo lek ℒ w dawce  200  mg.\nOblicz, ile mg leku 𝓛 pozostanie w organizmie chorego po  𝟏𝟐  godzinach od momentu\nprzyjęcia dawki. Zapisz obliczenia.",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 15.2",
+    "exam": "Matura czerwiec 2023",
+    "num": "15.2",
+    "type": "NUMERIC_INPUT",
+    "ans": "A",
+    "content": "Liczby  m(2,5), m(4,5), m(6,5)  w podanej kolejności tworzą ciąg geometryczny.\nOblicz iloraz tego ciągu. Zapisz obliczenia.",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 16",
+    "exam": "Matura czerwiec 2023",
+    "num": "16",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Ciąg  (an)  jest określony wzorem  an = n−2\n3   dla każdej liczby naturalnej  n \\ge 1.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wyrazów tego ciągu mniejszych od  10  jest równa",
+    "options": [
+      "28",
+      "31",
+      "32",
+      "27"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 17",
+    "exam": "Matura czerwiec 2023",
+    "num": "17",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Trzywyrazowy ciąg  (1, 4, a + 5)  jest arytmetyczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  a  jest równa",
+    "options": [
+      "0",
+      "7",
+      "2",
+      "11"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 18",
+    "exam": "Matura czerwiec 2023",
+    "num": "18",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Ciąg geometryczny  (an)  jest określony dla każdej liczby naturalnej  n \\ge 1. W tym ciągu\na1 = 3,75  oraz  a2 = −7,5.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nSuma trzech początkowych wyrazów ciągu  (an)  jest równa",
+    "options": [
+      "11,25",
+      "(−18,75)",
+      "15",
+      "(−15)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 19",
+    "exam": "Matura czerwiec 2023",
+    "num": "19",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdego kąta ostrego  \\alpha  wyrażenie  cos \\alpha − cos \\alpha \\cdot sin2 \\alpha  jest równe",
+    "options": [
+      "cos3 \\alpha",
+      "sin2 \\alpha",
+      "1 − sin2 \\alpha",
+      "cos \\alpha"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 20",
+    "exam": "Matura czerwiec 2023",
+    "num": "20",
+    "type": "SINGLE_CHOICE",
+    "ans": "CF",
+    "content": "Dany jest trójkąt, którego kąty mają miary  30°, 45°  oraz  105°. Długości boków trójkąta,\nleżących naprzeciwko tych kątów są równe – odpowiednio –  a, b  oraz  c  (zobacz rysunek).\nUzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nPole tego trójkąta poprawnie określają wyrażenia oznaczone literami:\n......................  oraz  ......................  .",
+    "options": [
+      "\\sqrt2\n2 \\cdot a \\cdot c",
+      "1\n4 \\cdot a \\cdot c",
+      "\\sqrt2\n4 \\cdot a \\cdot c",
+      "\\sqrt3\n4 \\cdot b \\cdot c\nE.  1\n2 \\cdot b \\cdot c\nF.  1\n4 \\cdot b \\cdot c"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trójkąt o kątach $30^\\circ, 45^\\circ, 105^\\circ$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              50,
+              200
+            ],
+            [
+              380,
+              200
+            ],
+            [
+              170,
+              80
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.08)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            170,
+            80
+          ],
+          "to": [
+            170,
+            200
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 50,
+          "cy": 200,
+          "r": 35,
+          "startAngleDeg": 315,
+          "endAngleDeg": 360,
+          "color": "#10B981",
+          "label": "45°"
+        },
+        {
+          "cx": 380,
+          "cy": 200,
+          "r": 45,
+          "startAngleDeg": 180,
+          "endAngleDeg": 210,
+          "color": "#10B981",
+          "label": "30°"
+        },
+        {
+          "cx": 170,
+          "cy": 80,
+          "r": 28,
+          "startAngleDeg": 135,
+          "endAngleDeg": 240,
+          "color": "#FFB800",
+          "label": "105°"
+        }
+      ],
+      "points": [
+        {
+          "x": 50,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 170,
+          "y": 80,
+          "label": "C",
+          "labelPosition": "top",
+          "dot": "filled"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 21",
+    "exam": "Matura czerwiec 2023",
+    "num": "21",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Odcinek  AB  jest średnicą okręgu o środku  S. Prosta  k  jest styczna do tego okręgu\nw punkcie  A. Prosta  𝑙  przecina ten okrąg w punktach  B  i  C. Proste  k  i  𝑙  przecinają się\nw punkcie  D, przy czym  |BC| = 4  i  |CD| = 3  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOdległość punktu  A  od prostej  𝑙  jest równa",
+    "options": [
+      "7\n2",
+      "5",
+      "\\sqrt12",
+      "\\sqrt3 + 2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 22",
+    "exam": "Matura czerwiec 2023",
+    "num": "22",
+    "type": "TRUE_FALSE",
+    "ans": "PP",
+    "content": "W trapezie  ABCD  o podstawach  AB  i  CD  przekątne przecinają się w punkcie  𝐸  (zobacz\nrysunek).\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nTrójkąt  AB𝐸  jest podobny do trójkąta  CD𝐸. P F\nPole trójkąta  ACD  jest równe polu trójkąta  BCD. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trapez $ABCD$ o podstawach $AB$ i $CD$ z przekątnymi przecinającymi się w punkcie $E$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              60,
+              200
+            ],
+            [
+              380,
+              200
+            ],
+            [
+              280,
+              70
+            ],
+            [
+              140,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            60,
+            200
+          ],
+          "to": [
+            280,
+            70
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            380,
+            200
+          ],
+          "to": [
+            140,
+            70
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        }
+      ],
+      "points": [
+        {
+          "x": 60,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 280,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 140,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        },
+        {
+          "x": 210,
+          "y": 140,
+          "label": "E",
+          "labelPosition": "top",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 23",
+    "exam": "Matura czerwiec 2023",
+    "num": "23",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Na łukach  AB  i  CD  okręgu są oparte kąty wpisane  ADB  i  DBC, takie, że  |∡ADB| = 20°\ni  |∡DBC| = 40°  (zobacz rysunek). Cięciwy  AC  i  BD  przecinają się w punkcie  K.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta  DKC  jest równa",
+    "options": [
+      "80°",
+      "60°",
+      "50°",
+      "40°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 24",
+    "exam": "Matura czerwiec 2023",
+    "num": "24",
+    "type": "NUMERIC_INPUT",
+    "ans": "A2",
+    "content": "Pole trójkąta równobocznego  𝑇1  jest równe\n(1,5)2\\cdot\\sqrt3\n4   . Pole trójkąta równobocznego  𝑇2\njest równe\n(4,5)2\\cdot\\sqrt3\n4  .\nDokończ zdanie tak, aby było prawdziwe. Wybierz odpowiedź A albo B oraz jej\nuzasadnienie 1., 2. albo 3.\nTrójkąt  𝑇2  jest podobny do trójkąta  𝑇1  w skali\nA. 3,\nponieważ\n1. każdy z tych trójkątów ma dokładnie trzy osie symetrii.\n2. pole trójkąta  𝑇2  jest  9  razy większe od pola\ntrójkąta  𝑇1 .\nB. 9, 3. bok trójkąta  𝑇2  jest o  3  dłuższy od boku\ntrójkąta  𝑇1 .",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 25",
+    "exam": "Matura czerwiec 2023",
+    "num": "25",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Pole równoległoboku  ABCD  jest równe  40\\sqrt6. Bok  AD  tego równoległoboku ma\ndługość  10, a kąt  ABC  równoległoboku ma miarę  135°  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość boku  AB  jest równa",
+    "options": [
+      "8\\sqrt3",
+      "8\\sqrt2",
+      "16\\sqrt2",
+      "16\\sqrt3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Równoległobok $ABCD$ o boku $|AD| = 10$ i polu $P = 40\\sqrt{6}$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              60,
+              190
+            ],
+            [
+              320,
+              190
+            ],
+            [
+              380,
+              70
+            ],
+            [
+              120,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            120,
+            70
+          ],
+          "to": [
+            120,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 60,
+          "cy": 190,
+          "r": 28,
+          "startAngleDeg": 295,
+          "endAngleDeg": 360,
+          "color": "#10B981",
+          "label": "α"
+        }
+      ],
+      "points": [
+        {
+          "x": 60,
+          "y": 190,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 320,
+          "y": 190,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 120,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": 75,
+          "y": 125,
+          "text": "10",
+          "color": "#FFB800"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 26",
+    "exam": "Matura czerwiec 2023",
+    "num": "26",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Funkcja liniowa  f  jest określona wzorem  f(x) = −x + 1. Funkcja  g  jest liniowa.\nW kartezjańskim układzie współrzędnych  (x, y)  wykres funkcji  g  przechodzi przez punkt\nP = (0, −1)  i jest prostopadły do wykresu funkcji  f.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWzorem funkcji  g  jest",
+    "options": [
+      "g(x) = x + 1",
+      "g(x) = −x − 1",
+      "g(x) = −x + 1",
+      "g(x) = x − 1"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 27",
+    "exam": "Matura czerwiec 2023",
+    "num": "27",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  punkty  A = (−1, 5)  oraz  C = (3, −3)  są\nprzeciwległymi wierzchołkami kwadratu  ABCD.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole kwadratu  ABCD  jest równe",
+    "options": [
+      "8\\sqrt10",
+      "16\\sqrt5",
+      "40",
+      "80"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 28",
+    "exam": "Matura czerwiec 2023",
+    "num": "28",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są punkty  A = (1, 7)  oraz\nP = (3, 1). Punkt  P  dzieli odcinek  AB  tak, że  |AP| ∶ |PB| = 1 ∶ 3.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPunkt  B  ma współrzędne",
+    "options": [
+      "(9, −5)",
+      "(9, −17)",
+      "(7, −11)",
+      "(5, −5)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 29.1",
+    "exam": "Matura czerwiec 2023",
+    "num": "29.1",
+    "type": "NUMERIC_INPUT",
+    "ans": "144",
+    "content": "Uzupełnij zdanie. Wpisz odpowiednią wartość liczbową w wykropkowanym miejscu.\nObjętość tego ostrosłupa jest równa  ................................ .......... .",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 29.2",
+    "exam": "Matura czerwiec 2023",
+    "num": "29.2",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTangens kąta nachylenia najdłuższej krawędzi bocznej tego ostrosłupa do płaszczyzny\npodstawy jest równy",
+    "options": [
+      "\\sqrt2",
+      "\\sqrt6\n3",
+      "\\sqrt2\n2",
+      "\\sqrt3\n3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 30",
+    "exam": "Matura czerwiec 2023",
+    "num": "30",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dany jest graniastosłup prawidłowy sześciokątny  ABCD𝐸𝐹A′B′C′D′𝐸′𝐹′, w którym krawędź\npodstawy ma długość  5. Przekątna  AD′  tego graniastosłupa jest nachylona do płaszczyzny\npodstawy pod kątem  45°  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole ściany bocznej tego graniastosłupa jest równe",
+    "options": [
+      "12,5",
+      "25",
+      "50",
+      "100"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 31",
+    "exam": "Matura czerwiec 2023",
+    "num": "31",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych trzycyfrowych o sumie cyfr równej  3  jest",
+    "options": [
+      "8",
+      "4",
+      "5",
+      "6"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 32",
+    "exam": "Matura czerwiec 2023",
+    "num": "32",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Ze zbioru ośmiu kolejnych liczb naturalnych – od  1  do  8  – losujemy kolejno bez zwracania\ndwa razy po jednej liczbie.\nNiech  A  oznacza zdarzenie polegające na tym, że suma wylosowanych liczb jest\ndzielnikiem liczby  8.\nOblicz prawdopodobieństwo zdarzenia  𝑨. Zapisz obliczenia.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2023 • Zad. 33",
+    "exam": "Matura czerwiec 2023",
+    "num": "33",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Działka ma kształt trapezu. Podstawy  AB  i  CD  tego trapezu mają długości  |AB| = 400 m\noraz  |CD| = 100 m. Wysokość trapezu jest równa  75 m, a jego kąty  DAB  i  ABC  są\nostre.\nZ działki postanowiono wydzielić plac w kształcie prostokąta z przeznaczeniem na parking.\nDwa z wierzchołków tego prostokąta mają leżeć na podstawie  AB  tego trapezu, a dwa\npozostałe – 𝐸  oraz  𝐹 – na ramionach  AD  i  BC  trapezu (zobacz rysunek).\nWyznacz długości boków prostokąta, dla których powierzchnia wydzielonego placu\nbędzie największa. Wyznacz tę największą powierzchnię.\nZapisz obliczenia.\nWskazówka:\nAby powiązać ze sobą wymiary prostokąta, skorzystaj z tego, że pole trapezu  ABCD  jest\nsumą pól trapezów  AB𝐹𝐸  oraz  𝐸𝐹CD:\nPABCD = PAB𝐹𝐸 + P𝐸𝐹CD\n100 m\nplac przeznaczony na parking\n75 m\n400 m\nB\n𝐸\n𝐹\nA\nD\nC\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "options": [],
+    "points": 4,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 1",
+    "exam": "Matura sierpień 2023",
+    "num": "1",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dana jest nierówność\n$$|x - 5| < 2$$\nNa którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich liczb rzeczywistych spełniających powyższą nierówność? Wybierz właściwą odpowiedź spośród podanych.",
+    "options": [
+      {
+        "id": "A",
+        "text": "⟨3, 7⟩",
+        "numberLine": {
+          "min": 0,
+          "max": 10,
+          "ticks": [
+            3,
+            7
+          ],
+          "intervals": [
+            {
+              "from": 3,
+              "to": 7,
+              "fromIncluded": true,
+              "toIncluded": true
+            }
+          ]
+        },
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "(-∞, 3⟩ ∪ ⟨7, +∞)",
+        "numberLine": {
+          "min": 0,
+          "max": 10,
+          "ticks": [
+            3,
+            7
+          ],
+          "intervals": [
+            {
+              "from": null,
+              "to": 3,
+              "toIncluded": true
+            },
+            {
+              "from": 7,
+              "to": null,
+              "fromIncluded": true
+            }
+          ]
+        },
+        "is_correct": false
+      },
+      {
+        "id": "C",
+        "text": "(-∞, 3) ∪ (7, +∞)",
+        "numberLine": {
+          "min": 0,
+          "max": 10,
+          "ticks": [
+            3,
+            7
+          ],
+          "intervals": [
+            {
+              "from": null,
+              "to": 3,
+              "toIncluded": false
+            },
+            {
+              "from": 7,
+              "to": null,
+              "fromIncluded": false
+            }
+          ]
+        },
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "(3, 7)",
+        "numberLine": {
+          "min": 0,
+          "max": 10,
+          "ticks": [
+            3,
+            7
+          ],
+          "intervals": [
+            {
+              "from": 3,
+              "to": 7,
+              "fromIncluded": false,
+              "toIncluded": false
+            }
+          ]
+        },
+        "is_correct": true
+      }
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 2",
+    "exam": "Matura sierpień 2023",
+    "num": "2",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  3\\sqrt45 − \\sqrt20  jest równa",
+    "options": [
+      "(7 \\cdot 5)\n1\n2",
+      "5\n1\n2",
+      "7",
+      "7 \\cdot 5\n1\n2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 3",
+    "exam": "Matura sierpień 2023",
+    "num": "3",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log25 1 − 1\n2 log25 5  jest równa",
+    "options": [
+      "(− 1\n4)",
+      "(− 1\n2)",
+      "1\n4",
+      "1\n2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 4",
+    "exam": "Matura sierpień 2023",
+    "num": "4",
+    "type": "OPEN_PROOF",
+    "ans": "A",
+    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  𝟑𝒏𝟑 + 𝟏𝟖𝒏𝟐 + 𝟏𝟓𝒏  jest\npodzielna przez  𝟔.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 5",
+    "exam": "Matura sierpień 2023",
+    "num": "5",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWartość wyrażenia  3−1\n(− 1\n9\n)\n−2 \\cdot 81  jest równa",
+    "options": [
+      "1\n3",
+      "(− 1\n3)",
+      "3",
+      "(−3)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 6",
+    "exam": "Matura sierpień 2023",
+    "num": "6",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWartość wyrażenia  (2 − \\sqrt3)\n2\n− (\\sqrt3 − 2)\n2\njest równa",
+    "options": [
+      "(−2\\sqrt3)",
+      "0",
+      "6",
+      "8\\sqrt3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 7",
+    "exam": "Matura sierpień 2023",
+    "num": "7",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  x  różnej od  0  wartość wyrażenia  1\n2x − x  jest równa\nwartości wyrażenia",
+    "options": [
+      "1\nx",
+      "1−x\n2x",
+      "1−2x2\n2x",
+      "− 1\n2x"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 8",
+    "exam": "Matura sierpień 2023",
+    "num": "8",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie  (x2−3x)(x2+1)\nx2−25 = 0  w zbiorze liczb rzeczywistych ma dokładnie",
+    "options": [
+      "jedno rozwiązanie.",
+      "dwa rozwiązania.",
+      "trzy rozwiązania.",
+      "cztery rozwiązania."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 9",
+    "exam": "Matura sierpień 2023",
+    "num": "9",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Rozwiąż równanie\n𝟑𝒙𝟑 − 𝟐𝒙𝟐 − 𝟑𝒙 + 𝟐 = 𝟎\nZapisz obliczenia.",
+    "options": [],
+    "points": 3,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 10",
+    "exam": "Matura sierpień 2023",
+    "num": "10",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nW kartezjańskim układzie współrzędnych  (x, y), punkt  (−8, 6)  jest punktem przecięcia\nprostych o równaniach",
+    "options": [
+      "2x + 3y = 2 i −x + y = −14.",
+      "3x + 2y = −12 i 2x + y = 10.",
+      "x + y = −2 i x − 2y = 4.",
+      "x − y = −14 i −2x + y = 22."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 11",
+    "exam": "Matura sierpień 2023",
+    "num": "11",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Miejscem zerowym funkcji liniowej  f  jest liczba  1. Wykres tej funkcji przechodzi przez\npunkt  (−1, 4).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWzór funkcji  f  ma postać",
+    "options": [
+      "f(x) = − 1\n2 x + 1",
+      "f(x) = − 1\n3 x + 1\n3",
+      "f(x) = −2x + 2",
+      "f(x) = −3x + 1"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 12",
+    "exam": "Matura sierpień 2023",
+    "num": "12",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Funkcja  f  jest określona dla każdej liczby rzeczywistej  x  wzorem  f(x) = x−k\nx2+1 , gdzie  k\njest pewną liczbą rzeczywistą. Ta funkcja spełnia warunek  f(1) = 2.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWartość współczynnika  k  we wzorze tej funkcji jest równa",
+    "options": [
+      "(−3)",
+      "3",
+      "(−4)",
+      "4"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 13",
+    "exam": "Matura sierpień 2023",
+    "num": "13",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Funkcja kwadratowa  f  jest określona wzorem  f(x) = (x − 13)2 − 256. Jednym z miejsc\nzerowych tej funkcji jest liczba  (−3).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDrugim miejscem zerowym funkcji  f  jest liczba",
+    "options": [
+      "(−29)",
+      "(−23)",
+      "23",
+      "29"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 14.1",
+    "exam": "Matura sierpień 2023",
+    "num": "14.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest rosnąca w przedziale",
+    "options": [
+      "[−5, 4]",
+      "[5, 7]",
+      "[1, 5]",
+      "[−1, 5]"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 14.2",
+    "exam": "Matura sierpień 2023",
+    "num": "14.2",
+    "type": "NUMERIC_INPUT",
+    "ans": "[−7, −5] \\cup [−4, 2) \\cup (5, 7]",
+    "content": "Zapisz poniżej w postaci sumy przedziałów zbiór wszystkich argumentów, dla których\nfunkcja  𝒇  przyjmuje wartości większe od  𝟏.\n................................ ................................ ................................ ................................ .................",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 14.3",
+    "exam": "Matura sierpień 2023",
+    "num": "14.3",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Funkcja  g  jest określona za pomocą funkcji  f  następująco:  g(x) = f(−x)  dla każdego\nx ∈ [−7, −5] \\cup [−4, 4] \\cup [5, 7]. Na jednym z rysunków  A–D  przedstawiono,\nw kartezjańskim układzie współrzędnych  (x, y), wykres funkcji  y = g(x).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWykres funkcji  y = g(x)  przedstawiono na rysunku",
+    "options": [
+      {
+        "id": "A",
+        "text": "Symetria wykresu funkcji f względem osi OX: y = -f(x)",
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "Symetria wykresu funkcji f względem osi OY: y = f(-x)",
+        "is_correct": true
+      },
+      {
+        "id": "C",
+        "text": "Symetria wykresu funkcji f względem początku układu współrzędnych: y = -f(-x)",
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "Przesunięcie równoległe wykresu funkcji f wzdłuż osi OX",
+        "is_correct": false
+      }
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 15",
+    "exam": "Matura sierpień 2023",
+    "num": "15",
+    "type": "SINGLE_CHOICE",
+    "ans": "AF",
+    "content": "Funkcje  A, B, C, D, 𝐸  oraz  𝐹  są określone dla każdej liczby rzeczywistej  x. Wzory tych\nfunkcji podano poniżej.\nUzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nPrzedział  (−\\infty, 2]  jest zbiorem wartości funkcji   .............   oraz   .............  .",
+    "options": [
+      "A(x) = −(x − 3)2 + 2",
+      "B(x) = x2 + 2",
+      "C(x) = −5(x − 2)2",
+      "D(x) = (x − 2)2\nE.  𝐸(x) = 2x2 − 8x + 10\nF.  𝐹(x) = −2x2 + 4x"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 16",
+    "exam": "Matura sierpień 2023",
+    "num": "16",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Ciąg  (an)  jest określony wzorem  an = (−1)n \\cdot n+1\n2   dla każdej liczby naturalnej  n \\ge 1.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTrzeci wyraz tego ciągu jest równy",
+    "options": [
+      "2",
+      "(−2)",
+      "3",
+      "(−1)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 17",
+    "exam": "Matura sierpień 2023",
+    "num": "17",
+    "type": "TRUE_FALSE",
+    "ans": "FP",
+    "content": "Dany jest ciąg geometryczny  (an), określony dla każdej liczby naturalnej  n \\ge 1. Pierwszy\nwyraz tego ciągu jest równy  128, natomiast iloraz ciągu jest równy  (− 1\n2).\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nWyraz  a2023  jest liczbą ujemną. P F\nRóżnica  a3 − a2  jest równa  96. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 18",
+    "exam": "Matura sierpień 2023",
+    "num": "18",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Ciąg  (3x2 + 5x, x2, 20 − x2)  jest arytmetyczny.\nOblicz  𝒙. Zapisz obliczenia.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 19",
+    "exam": "Matura sierpień 2023",
+    "num": "19",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Kąt  \\alpha  jest ostry i  cos \\alpha = 2\\sqrt6\n7  .\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nSinus kąta  \\alpha  jest równy",
+    "options": [
+      "24\n49",
+      "5\n7",
+      "25\n49",
+      "\\sqrt6\n7"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 20",
+    "exam": "Matura sierpień 2023",
+    "num": "20",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Trapez  𝑇1 , o polu równym  52  i obwodzie  36, jest podobny do trapezu  𝑇2 . Pole trapezu\n𝑇2  jest równe  13.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nObwód trapezu  𝑇2  jest równy",
+    "options": [
+      "18",
+      "9",
+      "169\n9",
+      "52\n3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 21",
+    "exam": "Matura sierpień 2023",
+    "num": "21",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Koło ma promień równy  3.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nObwód wycinka tego koła o kącie środkowym  30°  jest równy",
+    "options": [
+      "3\n4 𝜋",
+      "1\n2 𝜋",
+      "3\n4 𝜋 + 6",
+      "1\n2 𝜋 + 6"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 22",
+    "exam": "Matura sierpień 2023",
+    "num": "22",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W okręgu  𝒪  kąt środkowy  \\beta  oraz kąt wpisany  \\alpha  są oparte na tym samym łuku. Kąt  \\beta\nma miarę o  40°  większą od kąta  \\alpha.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta  \\beta  jest równa",
+    "options": [
+      "40°",
+      "80°",
+      "100°",
+      "120°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 23",
+    "exam": "Matura sierpień 2023",
+    "num": "23",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "W trójkącie  ABC  długość boku  AC  jest równa  3, a długość boku  BC  jest równa  4.\nDwusieczna kąta  ACB  przecina bok  AB  w punkcie  D.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nStosunek  |AD| ∶ |DB|  jest równy",
+    "options": [
+      "4 ∶ 3",
+      "4 ∶ 7",
+      "3 ∶ 4",
+      "3 ∶ 7"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 24",
+    "exam": "Matura sierpień 2023",
+    "num": "24",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Dany jest trapez równoramienny  ABCD, w którym podstawa  CD  ma długość  6, ramię  AD\nma długość  4, a kąty  BAD  oraz  ABC  mają miarę  60°  (zobacz rysunek).\nOblicz pole tego trapezu. Zapisz obliczenia.\nC\nD\n60°\n6\n4\nB\nA\n60°",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trapez równoramienny $ABCD$ o podstawie $|CD| = 6$ i ramionach $|AD| = |BC| = 4$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              60,
+              190
+            ],
+            [
+              380,
+              190
+            ],
+            [
+              280,
+              70
+            ],
+            [
+              160,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.08)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            160,
+            70
+          ],
+          "to": [
+            160,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        },
+        {
+          "from": [
+            280,
+            70
+          ],
+          "to": [
+            280,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 60,
+          "cy": 190,
+          "r": 30,
+          "startAngleDeg": 310,
+          "endAngleDeg": 360,
+          "color": "#10B981",
+          "label": "60°"
+        },
+        {
+          "cx": 380,
+          "cy": 190,
+          "r": 30,
+          "startAngleDeg": 180,
+          "endAngleDeg": 230,
+          "color": "#10B981",
+          "label": "60°"
+        }
+      ],
+      "points": [
+        {
+          "x": 60,
+          "y": 190,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 190,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 280,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 160,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": 220,
+          "y": 55,
+          "text": "|CD| = 6",
+          "color": "#FFB800"
+        },
+        {
+          "x": 95,
+          "y": 125,
+          "text": "4",
+          "color": "#FFB800"
+        },
+        {
+          "x": 340,
+          "y": 125,
+          "text": "4",
+          "color": "#FFB800"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 25",
+    "exam": "Matura sierpień 2023",
+    "num": "25",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są prosta  k  o równaniu\ny = 3\n4 x − 7\n4  oraz punkt  P = (12, −1).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nProsta przechodząca przez punkt  P  i równoległa do prostej  k  ma równanie",
+    "options": [
+      "y = − 3\n4 x + 8",
+      "y = 3\n4 x − 10",
+      "y = 4\n3 x − 17",
+      "y = − 4\n3 x + 15"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 26",
+    "exam": "Matura sierpień 2023",
+    "num": "26",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dany jest okrąg  𝒪  o środku  S = (−1, 2)\ni promieniu  3.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg  𝒪  jest określony równaniem",
+    "options": [
+      "(x − 1)2 + (y + 2)2 = 9",
+      "(x − 1)2 + (y + 2)2 = 3",
+      "(x + 1)2 + (y − 2)2 = 9",
+      "(x + 1)2 + (y − 2)2 = 3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 27",
+    "exam": "Matura sierpień 2023",
+    "num": "27",
+    "type": "NUMERIC_INPUT",
+    "ans": "B2",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  proste o równaniach:\n• y = \\sqrt3x + 6\n• y = −\\sqrt3x + 6\n• y = − 1\n\\sqrt3 x − 2,\nprzecinają się w punktach, które są wierzchołkami trójkąta  KLM.\nDokończ zdanie tak, aby było prawdziwe. Wybierz odpowiedź A albo B oraz jej\nuzasadnienie 1., 2. albo 3.\nTrójkąt  KLM  jest\nA. równoramienny,\nponieważ\n1.\noś  Ox  przechodzi przez jeden z wierzchołków\ntego trójkąta i środek jednego z boków tego\ntrójkąta.\n2. dwie z tych prostych są prostopadłe.\nB. prostokątny,\n3. oś  Oy  zawiera dwusieczną tego trójkąta.",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 28",
+    "exam": "Matura sierpień 2023",
+    "num": "28",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  punkt  A = (−1, −4)  jest wierzchołkiem\nrównoległoboku  ABCD. Punkt  S = (2, 2)  jest środkiem symetrii tego równoległoboku.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość przekątnej  AC  równoległoboku  ABCD  jest równa",
+    "options": [
+      "\\sqrt5",
+      "2\\sqrt5",
+      "3\\sqrt5",
+      "6\\sqrt5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 29.1",
+    "exam": "Matura sierpień 2023",
+    "num": "29.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole powierzchni całkowitej tego graniastosłupa jest równe",
+    "options": [
+      "216 + 18\\sqrt3",
+      "216 + 54\\sqrt3",
+      "216 + 216\\sqrt3",
+      "216 + 108\\sqrt3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 29.2",
+    "exam": "Matura sierpień 2023",
+    "num": "29.2",
+    "type": "NUMERIC_INPUT",
+    "ans": "2",
+    "content": "Oblicz cosinus kąta nachylenia dłuższej przekątnej tego graniastosłupa do\npłaszczyzny podstawy graniastosłupa. Zapisz obliczenia.",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 30",
+    "exam": "Matura sierpień 2023",
+    "num": "30",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych czterocyfrowych, w których zapisie dziesiętnym cyfry się\nnie powtarzają, jest",
+    "options": [
+      "9 \\cdot 10 \\cdot 10 \\cdot 10 \\cdot 10",
+      "9 \\cdot 9 \\cdot 9 \\cdot 9",
+      "10 \\cdot 9 \\cdot 8 \\cdot 7",
+      "9 \\cdot 9 \\cdot 8 \\cdot 7"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 31",
+    "exam": "Matura sierpień 2023",
+    "num": "31",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Ze zbioru pięciu liczb  {1, 2, 3, 4, 5}  losujemy bez zwracania kolejno dwa razy po jednej\nliczbie.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że obie wylosowane\nliczby są nieparzyste. Zapisz obliczenia.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 32",
+    "exam": "Matura sierpień 2023",
+    "num": "32",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Na diagramie przedstawiono rozkład wynagrodzenia brutto wszystkich stu pracowników\npewnej firmy za styczeń 2023 roku.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia wynagrodzenia brutto wszystkich pracowników tej firmy za styczeń 2023 roku jest\nrówna",
+    "options": [
+      "5 690  zł",
+      "5 280  zł",
+      "6 257  zł",
+      "5 900  zł"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2023 • Zad. 33",
+    "exam": "Matura sierpień 2023",
+    "num": "33",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Zakład stolarski produkuje krzesła, które sprzedaje po  196  złotych za sztukę. Właściciel,\nna podstawie analizy rzeczywistych wpływów i wydatków, stwierdził, że:\n• przychód  P  (w złotych) ze sprzedaży  x  krzeseł można opisać funkcją  P(x) = 196x\n• koszt  K  (w złotych) produkcji  x  krzeseł dziennie można opisać funkcją\nK(x) = 4x2 + 4x + 240\nDziennie w zakładzie można wyprodukować co najwyżej  30  krzeseł.\nOblicz, ile krzeseł powinien dziennie sprzedawać zakład, aby zysk ze sprzedaży\nkrzeseł wyprodukowanych przez ten zakład w ciągu jednego dnia był możliwie\nnajwiększy. Oblicz ten największy zysk.\nZapisz obliczenia.\nWskazówka: przyjmij, że zysk jest różnicą przychodu i kosztów.\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "options": [],
+    "points": 4,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 1",
+    "exam": "Matura maj 2024",
+    "num": "1",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dana jest nierówność\n$$|x - 1| \\ge 3$$\nNa którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich liczb rzeczywistych spełniających powyższą nierówność? Wybierz właściwą odpowiedź spośród podanych.",
+    "options": [
+      {
+        "id": "A",
+        "text": "⟨-2, 4⟩",
+        "numberLine": {
+          "min": -5,
+          "max": 7,
+          "ticks": [
+            -2,
+            4
+          ],
+          "intervals": [
+            {
+              "from": -2,
+              "to": 4,
+              "fromIncluded": true,
+              "toIncluded": true
+            }
+          ]
+        },
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "(-∞, -2⟩ ∪ ⟨4, +∞)",
+        "numberLine": {
+          "min": -5,
+          "max": 7,
+          "ticks": [
+            -2,
+            4
+          ],
+          "intervals": [
+            {
+              "from": null,
+              "to": -2,
+              "toIncluded": true
+            },
+            {
+              "from": 4,
+              "to": null,
+              "fromIncluded": true
+            }
+          ]
+        },
+        "is_correct": true
+      },
+      {
+        "id": "C",
+        "text": "(-2, 4)",
+        "numberLine": {
+          "min": -5,
+          "max": 7,
+          "ticks": [
+            -2,
+            4
+          ],
+          "intervals": [
+            {
+              "from": -2,
+              "to": 4,
+              "fromIncluded": false,
+              "toIncluded": false
+            }
+          ]
+        },
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "(-∞, -2) ∪ (4, +∞)",
+        "numberLine": {
+          "min": -5,
+          "max": 7,
+          "ticks": [
+            -2,
+            4
+          ],
+          "intervals": [
+            {
+              "from": null,
+              "to": -2,
+              "toIncluded": false
+            },
+            {
+              "from": 4,
+              "to": null,
+              "fromIncluded": false
+            }
+          ]
+        },
+        "is_correct": false
+      }
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 2",
+    "exam": "Matura maj 2024",
+    "num": "2",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  ( 1\n16)\n8\n\\cdot 816  jest równa",
+    "options": [
+      "224",
+      "216",
+      "212",
+      "28"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 3",
+    "exam": "Matura maj 2024",
+    "num": "3",
+    "type": "OPEN_PROOF",
+    "ans": "A",
+    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  𝒏𝟐 + (𝒏 + 𝟏)𝟐 + (𝒏 + 𝟐)𝟐  przy\ndzieleniu przez  𝟑  daje resztę  𝟐.\n3.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 4",
+    "exam": "Matura maj 2024",
+    "num": "4",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log\\sqrt3 9  jest równa",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "9"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 5",
+    "exam": "Matura maj 2024",
+    "num": "5",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  a  i dla każdej liczby rzeczywistej  b  wartość wyrażenia\n(2a + b)2 − (2a − b)2  jest równa wartości wyrażenia",
+    "options": [
+      "8a2",
+      "8ab",
+      "−8ab",
+      "2b2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 6",
+    "exam": "Matura maj 2024",
+    "num": "6",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wszystkich rozwiązań nierówności\n1 − 3\n2 x < 2\n3 − x\njest przedział",
+    "options": [
+      "(−\\infty, − 2\n3)",
+      "(−\\infty, 2\n3)",
+      "(− 2\n3 , +\\infty)",
+      "(2\n3 , +\\infty)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 7",
+    "exam": "Matura maj 2024",
+    "num": "7",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie  x+1\n(x+2)(x−3) = 0  w zbiorze liczb rzeczywistych",
+    "options": [
+      "nie ma rozwiązania.",
+      "ma dokładnie jedno rozwiązanie:  (−1).",
+      "ma dokładnie dwa rozwiązania:  (−2)  oraz  3.",
+      "ma dokładnie trzy rozwiązania:  (−1),  (−2)  oraz  3."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 8",
+    "exam": "Matura maj 2024",
+    "num": "8",
+    "type": "TRUE_FALSE",
+    "ans": "PF",
+    "content": "Dany jest wielomian  W(x) = 3x3 + 6x2 + 9x.\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nWielomian  W  jest iloczynem wielomianów  𝐹(x) = 3x  i  𝐺(x) = x2 + 2x + 3. P F\nLiczba  (−1)  jest rozwiązaniem równania  W(x) = 0. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 9",
+    "exam": "Matura maj 2024",
+    "num": "9",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Rozwiąż równanie\n𝒙𝟑 − 𝟐𝒙𝟐 − 𝟑𝒙 + 𝟔 = 𝟎\nZapisz obliczenia.\n9.\n0–1–\n2–3",
+    "options": [],
+    "points": 3,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 10",
+    "exam": "Matura maj 2024",
+    "num": "10",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "W październiku 2022 roku założono dwa sady, w których posadzono łącznie  1960  drzew.\nPo roku stwierdzono, że uschło  5%  drzew w pierwszym sadzie i  10%  drzew w drugim\nsadzie. Uschnięte drzewa usunięto, a nowych nie dosadzano.\nLiczba drzew, które pozostały w drugim sadzie, stanowiła  60%  liczby drzew, które\npozostały w pierwszym sadzie.\nNiech  x  oraz  y  oznaczają liczby drzew posadzonych – odpowiednio – w pierwszym\ni drugim sadzie.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego poprawne rozwiązanie prowadzi do obliczenia liczby  x  drzew\nposadzonych w pierwszym sadzie oraz liczby  y  drzew posadzonych w drugim sadzie, jest",
+    "options": [
+      "{ x + y = 1960\n0,6 \\cdot 0,95x = 0,9y",
+      "{ x + y = 1960\n0,95x = 0,6 \\cdot 0,9y",
+      "{ x + y = 1960\n0,05x = 0,6 \\cdot 0,1y",
+      "{ x + y = 1960\n0,4 \\cdot 0,95x = 0,9y"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 11",
+    "exam": "Matura maj 2024",
+    "num": "11",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Na rysunku, w kartezjańskim układzie współrzędnych  (x, y), przedstawiono dwie proste\nrównoległe, które są interpretacją geometryczną jednego z poniższych układów równań A–D.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
+    "options": [
+      "{\ny = − 3\n2 x + 3\ny = − 3\n2 x − 1",
+      "{\ny = 3\n2 x + 3\ny = − 2\n3 x − 1",
+      "{\ny = 3\n2 x + 3\ny = 3\n2 x − 1",
+      "{\ny = − 3\n2 x − 3\ny = 3\n2 x + 1"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Wykresy funkcji liniowych $f$ oraz $g$ w układzie współrzędnych",
+      "width": 440,
+      "height": 260,
+      "grid": {
+        "minX": 30,
+        "maxX": 410,
+        "stepX": 30,
+        "minY": 25,
+        "maxY": 235,
+        "stepY": 30,
+        "color": "rgba(148, 163, 184, 0.1)"
+      },
+      "ticks": [
+        {
+          "x": 190,
+          "y": 130,
+          "label": "-1",
+          "axis": "x"
+        },
+        {
+          "x": 250,
+          "y": 130,
+          "label": "1",
+          "axis": "x"
+        },
+        {
+          "x": 220,
+          "y": 100,
+          "label": "1",
+          "axis": "y"
+        },
+        {
+          "x": 220,
+          "y": 160,
+          "label": "-1",
+          "axis": "y"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            20,
+            130
+          ],
+          "to": [
+            420,
+            130
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            220,
+            240
+          ],
+          "to": [
+            220,
+            20
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            70,
+            220
+          ],
+          "to": [
+            370,
+            40
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 2.5,
+          "label": "k: y = ax + b"
+        },
+        {
+          "from": [
+            120,
+            235
+          ],
+          "to": [
+            410,
+            60
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2.5,
+          "label": "l: y = cx + d"
+        }
+      ],
+      "points": [
+        {
+          "x": 220,
+          "y": 130,
+          "label": "O",
+          "labelPosition": "bottom-left",
+          "dot": "none"
+        },
+        {
+          "x": 220,
+          "y": 100,
+          "label": "b",
+          "labelPosition": "left",
+          "dot": "filled",
+          "color": "#FFB800"
+        },
+        {
+          "x": 220,
+          "y": 160,
+          "label": "d",
+          "labelPosition": "right",
+          "dot": "filled",
+          "color": "#38BDF8"
+        }
+      ],
+      "labels": [
+        {
+          "x": 415,
+          "y": 144,
+          "text": "x",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 232,
+          "y": 24,
+          "text": "y",
+          "color": "#94A3B8"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 12",
+    "exam": "Matura maj 2024",
+    "num": "12",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Funkcja liniowa  f  jest określona wzorem  f(x) = (−2k + 3)x + k − 1, gdzie  k ∈ \\mathbb{R}.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest malejąca dla każdej liczby  k  należącej do przedziału",
+    "options": [
+      "(−\\infty, 1)",
+      "(−\\infty, − 3\n2)",
+      "(1, +\\infty)",
+      "(3\n2 , +\\infty)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 13",
+    "exam": "Matura maj 2024",
+    "num": "13",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Funkcje liniowe  f  oraz  g, określone wzorami  f(x) = 3x + 6  oraz  g(x) = ax + 7, mają\nto samo miejsce zerowe.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWspółczynnik  a  we wzorze funkcji  g  jest równy",
+    "options": [
+      "(− 7\n2)",
+      "(− 2\n7)",
+      "2\n7",
+      "7\n2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 14.1",
+    "exam": "Matura maj 2024",
+    "num": "14.1",
+    "type": "NUMERIC_INPUT",
+    "ans": "[−2,4]",
+    "content": "Uzupełnij poniższe zdanie. Wpisz odpowiedni przedział w wykropkowanym miejscu\ntak, aby zdanie było prawdziwe.\nZbiorem wszystkich rozwiązań nierówności  f(x) \\ge 0  jest przedział  ………………………  .",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Wykres funkcji kwadratowej $f$ z wierzchołkiem $W = (1, 9)$",
+      "width": 460,
+      "height": 280,
+      "grid": {
+        "minX": 30,
+        "maxX": 430,
+        "stepX": 25,
+        "minY": 25,
+        "maxY": 255,
+        "stepY": 20,
+        "color": "rgba(148, 163, 184, 0.12)"
+      },
+      "ticks": [
+        {
+          "x": 145,
+          "y": 200,
+          "label": "-2",
+          "axis": "x"
+        },
+        {
+          "x": 195,
+          "y": 200,
+          "label": "0",
+          "axis": "x"
+        },
+        {
+          "x": 220,
+          "y": 200,
+          "label": "1",
+          "axis": "x"
+        },
+        {
+          "x": 295,
+          "y": 200,
+          "label": "4",
+          "axis": "x"
+        },
+        {
+          "x": 195,
+          "y": 40,
+          "label": "8",
+          "axis": "y"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            20,
+            200
+          ],
+          "to": [
+            440,
+            200
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            195,
+            260
+          ],
+          "to": [
+            195,
+            20
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            220,
+            250
+          ],
+          "to": [
+            220,
+            30
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.2,
+          "dashed": true
+        }
+      ],
+      "curves": [
+        {
+          "path": "M 120,250 Q 220,-30 320,250",
+          "color": "#FFB800",
+          "strokeWidth": 2.5
+        }
+      ],
+      "points": [
+        {
+          "x": 220,
+          "y": 20,
+          "label": "W(1, 9)",
+          "labelPosition": "top",
+          "dot": "filled",
+          "color": "#10B981"
+        },
+        {
+          "x": 145,
+          "y": 200,
+          "label": "(-2, 0)",
+          "labelPosition": "bottom-left",
+          "dot": "filled",
+          "color": "#FFB800"
+        },
+        {
+          "x": 295,
+          "y": 200,
+          "label": "(4, 0)",
+          "labelPosition": "bottom-right",
+          "dot": "filled",
+          "color": "#FFB800"
+        },
+        {
+          "x": 195,
+          "y": 40,
+          "label": "(0, 8)",
+          "labelPosition": "left",
+          "dot": "filled",
+          "color": "#38BDF8"
+        }
+      ],
+      "labels": [
+        {
+          "x": 435,
+          "y": 214,
+          "text": "x",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 208,
+          "y": 24,
+          "text": "y",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 330,
+          "y": 240,
+          "text": "y = f(x)",
+          "color": "#FFB800",
+          "fontSize": 12
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 14.2",
+    "exam": "Matura maj 2024",
+    "num": "14.2",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja kwadratowa  f  jest określona wzorem",
+    "options": [
+      "f(x) = −(x + 1)2 − 9",
+      "f(x) = −(x − 1)2 + 9",
+      "f(x) = −(x − 1)2 − 9",
+      "f(x) = −(x + 1)2 + 9"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 14.3",
+    "exam": "Matura maj 2024",
+    "num": "14.3",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla funkcji  f  prawdziwa jest równość",
+    "options": [
+      "f(−4) = f(6)",
+      "f(−4) = f(5)",
+      "f(−4) = f(4)",
+      "f(−4) = f(7)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 14.4",
+    "exam": "Matura maj 2024",
+    "num": "14.4",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Funkcje kwadratowe  g  oraz  h  są określone za pomocą funkcji  f  (zobacz rysunek na\nstronie 13) następująco:  g(x) = f(x + 3),  h(x) = f(−x).\nNa rysunkach A–F przedstawiono, w kartezjańskim układzie współrzędnych  (x, y),\nfragmenty wykresów różnych funkcji – w tym fragment wykresu funkcji  g  oraz fragment\nwykresu funkcji  h.\nUzupełnij tabelę. Każdej z funkcji  𝒈  oraz  𝒉  przyporządkuj fragment jej wykresu.\nWpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną spośród\noznaczonych literami A–F.\nFragment wykresu funkcji  y = g(x)  przedstawiono na rysunku\nFragment wykresu funkcji  y = h(x)  przedstawiono na rysunku",
+    "options": [
+      {
+        "id": "A",
+        "text": "Wykres g(x): wierzchołek przesunięty o 3 w lewo do W=(0, 2); Wykres h(x): symetria względem OY, W=(-3, 2)",
+        "is_correct": true
+      },
+      {
+        "id": "B",
+        "text": "Wykres g(x): wierzchołek W=(6, 2); Wykres h(x): wierzchołek W=(3, -2)",
+        "is_correct": false
+      },
+      {
+        "id": "C",
+        "text": "Wykres g(x): wierzchołek W=(0, 5); Wykres h(x): wierzchołek W=(-3, -2)",
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "Wykres g(x): wierzchołek W=(3, 5); Wykres h(x): wierzchołek W=(3, 2)",
+        "is_correct": false
+      }
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 15",
+    "exam": "Matura maj 2024",
+    "num": "15",
+    "type": "TRUE_FALSE",
+    "ans": "PF",
+    "content": "Ciąg  (an)  jest określony wzorem  an = (−1)n \\cdot (n − 5)  dla każdej liczby\nnaturalnej  n \\ge 1.\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nPierwszy wyraz ciągu  (an)  jest dwa razy większy od trzeciego wyrazu tego\nciągu. P F\nWszystkie wyrazy ciągu  (an)  są dodatnie. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 16",
+    "exam": "Matura maj 2024",
+    "num": "16",
+    "type": "NUMERIC_INPUT",
+    "ans": "B2",
+    "content": "Trzywyrazowy ciąg  (12, 6, 2m − 1)  jest geometryczny.\nDokończ zdanie. Wybierz odpowiedź A albo B oraz odpowiedź 1., 2. albo 3.\nTen ciąg jest\nrosnący\noraz\n1. m = 1\n2A.\n2. m = 2\nmalejący B. 3. m = 3",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 17",
+    "exam": "Matura maj 2024",
+    "num": "17",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Ciąg arytmetyczny  (an)  jest określony dla każdej liczby naturalnej  n \\ge 1. Trzeci wyraz\ntego ciągu jest równy  (−1), a suma piętnastu początkowych kolejnych wyrazów tego ciągu\njest równa  (−165).\nOblicz różnicę tego ciągu. Zapisz obliczenia.\n17.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 18",
+    "exam": "Matura maj 2024",
+    "num": "18",
+    "type": "SINGLE_CHOICE",
+    "ans": "BF",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  zaznaczono kąt o mierze  \\alpha  taki, że\ntg \\alpha = −3  oraz  90° < \\alpha < 180°  (zobacz rysunek).\nUzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nPrawdziwe są zależności:  .............  oraz  ............  .",
+    "options": [
+      "sin \\alpha < 0",
+      "sin \\alpha \\cdot cos \\alpha < 0",
+      "sin \\alpha \\cdot cos \\alpha > 0",
+      "cos \\alpha > 0\nE.  sin \\alpha = − 1\n3 cos \\alpha  F.  sin \\alpha = −3 cos \\alpha"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Kąt $\\alpha$ o wierzchołku $O=(0,0)$ w układzie kartezjańskim",
+      "width": 420,
+      "height": 260,
+      "grid": {
+        "minX": 30,
+        "maxX": 390,
+        "stepX": 30,
+        "minY": 30,
+        "maxY": 230,
+        "stepY": 30,
+        "color": "rgba(148, 163, 184, 0.12)"
+      },
+      "segments": [
+        {
+          "from": [
+            20,
+            180
+          ],
+          "to": [
+            400,
+            180
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            260,
+            240
+          ],
+          "to": [
+            260,
+            20
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            260,
+            180
+          ],
+          "to": [
+            100,
+            60
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 2.5
+        },
+        {
+          "from": [
+            140,
+            180
+          ],
+          "to": [
+            140,
+            90
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1,
+          "dashed": true
+        },
+        {
+          "from": [
+            260,
+            90
+          ],
+          "to": [
+            140,
+            90
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1,
+          "dashed": true
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 260,
+          "cy": 180,
+          "r": 36,
+          "startAngleDeg": 0,
+          "endAngleDeg": 143,
+          "color": "#10B981",
+          "label": "α"
+        }
+      ],
+      "points": [
+        {
+          "x": 260,
+          "y": 180,
+          "label": "O",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 140,
+          "y": 90,
+          "label": "P(-4, 3)",
+          "labelPosition": "top-left",
+          "dot": "filled",
+          "color": "#FFB800"
+        }
+      ],
+      "ticks": [
+        {
+          "x": 140,
+          "y": 180,
+          "label": "-4",
+          "axis": "x"
+        },
+        {
+          "x": 260,
+          "y": 90,
+          "label": "3",
+          "axis": "y"
+        }
+      ],
+      "labels": [
+        {
+          "x": 395,
+          "y": 194,
+          "text": "x",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 272,
+          "y": 24,
+          "text": "y",
+          "color": "#94A3B8"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 19",
+    "exam": "Matura maj 2024",
+    "num": "19",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  sin3 20° + cos2 20° \\cdot sin 20°  jest równa",
+    "options": [
+      "cos 20°",
+      "sin 20°",
+      "tg 20°",
+      "sin 20° \\cdot cos 20°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 20",
+    "exam": "Matura maj 2024",
+    "num": "20",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dany jest trójkąt  KLM,  w którym  |KM| = a,  |LM| = b  oraz  a \\ne b. Dwusieczna kąta\nKML  przecina bok  KL  w punkcie  𝑁  takim, że  |K𝑁| = c,  |𝑁L| = d  oraz  |M𝑁| = 𝑒\n(zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nW trójkącie  KLM  prawdziwa jest równość",
+    "options": [
+      "a \\cdot b = c \\cdot d",
+      "a \\cdot d = b \\cdot c",
+      "a \\cdot c = b \\cdot d",
+      "a \\cdot b = 𝑒 \\cdot 𝑒"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trójkąt $KLM$ z dwusieczną kąta $KML$ przecinającą bok $KL$ w punkcie $D$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              50,
+              220
+            ],
+            [
+              390,
+              220
+            ],
+            [
+              170,
+              50
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            170,
+            50
+          ],
+          "to": [
+            175,
+            220
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2,
+          "label": "dwusieczna"
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 170,
+          "cy": 50,
+          "r": 28,
+          "startAngleDeg": 125,
+          "endAngleDeg": 148,
+          "color": "#10B981",
+          "label": "•"
+        },
+        {
+          "cx": 170,
+          "cy": 50,
+          "r": 28,
+          "startAngleDeg": 148,
+          "endAngleDeg": 170,
+          "color": "#10B981",
+          "label": "•"
+        }
+      ],
+      "points": [
+        {
+          "x": 50,
+          "y": 220,
+          "label": "K",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 390,
+          "y": 220,
+          "label": "L",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 170,
+          "y": 50,
+          "label": "M",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 175,
+          "y": 220,
+          "label": "D",
+          "labelPosition": "bottom",
+          "dot": "filled",
+          "color": "#38BDF8"
+        }
+      ],
+      "labels": [
+        {
+          "x": 95,
+          "y": 125,
+          "text": "a",
+          "color": "#FFB800",
+          "fontSize": 13
+        },
+        {
+          "x": 290,
+          "y": 125,
+          "text": "b",
+          "color": "#FFB800",
+          "fontSize": 13
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 21",
+    "exam": "Matura maj 2024",
+    "num": "21",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dany jest równoległobok o bokach długości  3  i  4  oraz o kącie między nimi o mierze  120°.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole tego równoległoboku jest równe",
+    "options": [
+      "12",
+      "12\\sqrt3",
+      "6",
+      "6\\sqrt3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 22",
+    "exam": "Matura maj 2024",
+    "num": "22",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "W trójkącie  ABC, wpisanym w okrąg o środku w punkcie  S, kąt  ACB  ma miarę  42°\n(zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  BAS  jest równa",
+    "options": [
+      "42°",
+      "45°",
+      "48°",
+      "69°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Kąt wpisany $\\angle ACB = 42^\\circ$ i kąt środkowy $\\angle ASB$ w okręgu",
+      "width": 440,
+      "height": 260,
+      "circles": [
+        {
+          "cx": 220,
+          "cy": 135,
+          "r": 95,
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.04)"
+        }
+      ],
+      "polygons": [
+        {
+          "points": [
+            [
+              135,
+              175
+            ],
+            [
+              305,
+              175
+            ],
+            [
+              200,
+              42
+            ]
+          ],
+          "stroke": "#FFB800",
+          "strokeWidth": 2,
+          "fill": "rgba(255, 184, 0, 0.05)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            135
+          ],
+          "to": [
+            135,
+            175
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5,
+          "dashed": true
+        },
+        {
+          "from": [
+            220,
+            135
+          ],
+          "to": [
+            305,
+            175
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5,
+          "dashed": true
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 200,
+          "cy": 42,
+          "r": 24,
+          "startAngleDeg": 120,
+          "endAngleDeg": 162,
+          "color": "#FFB800",
+          "label": "42°"
+        },
+        {
+          "cx": 220,
+          "cy": 135,
+          "r": 25,
+          "startAngleDeg": 115,
+          "endAngleDeg": 195,
+          "color": "#10B981",
+          "label": "84°"
+        }
+      ],
+      "points": [
+        {
+          "x": 135,
+          "y": 175,
+          "label": "A",
+          "labelPosition": "left",
+          "dot": "filled"
+        },
+        {
+          "x": 305,
+          "y": 175,
+          "label": "B",
+          "labelPosition": "right",
+          "dot": "filled"
+        },
+        {
+          "x": 200,
+          "y": 42,
+          "label": "C",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 135,
+          "label": "S",
+          "labelPosition": "top",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 23",
+    "exam": "Matura maj 2024",
+    "num": "23",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  proste  k  oraz  𝑙  są określone równaniami\nk:   y = (m + 1)x + 7\n𝑙:   y = −2x + 7\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nProste  k  oraz  𝑙  są prostopadłe, gdy liczba  m  jest równa",
+    "options": [
+      "(− 1\n2)",
+      "1\n2",
+      "(−3)",
+      "1"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 24",
+    "exam": "Matura maj 2024",
+    "num": "24",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dany jest równoległobok  ABCD, w którym\nA = (−2, 6)  oraz  B = (10, 2). Przekątne  AC  oraz  BD  tego równoległoboku przecinają\nsię w punkcie  P = (6, 7).\nOblicz długość boku  𝑩𝑪  tego równoległoboku. Zapisz obliczenia.\n24.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 25.1",
+    "exam": "Matura maj 2024",
+    "num": "25.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole jednej ściany bocznej tego graniastosłupa jest równe",
+    "options": [
+      "36\\sqrt10",
+      "60",
+      "6\\sqrt10",
+      "360"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "STEREOMETRY_3D",
+      "title": "Graniastosłup prawidłowy sześciokątny z dłuższą przekątną podstawy $AD$ i przekątną bryły $AD'$",
+      "width": 460,
+      "height": 280,
+      "polygons": [
+        {
+          "points": [
+            [
+              180,
+              50
+            ],
+            [
+              240,
+              50
+            ],
+            [
+              280,
+              75
+            ],
+            [
+              260,
+              100
+            ],
+            [
+              200,
+              100
+            ],
+            [
+              160,
+              75
+            ]
+          ],
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.1)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            180,
+            50
+          ],
+          "to": [
+            180,
+            180
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            240,
+            50
+          ],
+          "to": [
+            240,
+            180
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            280,
+            75
+          ],
+          "to": [
+            280,
+            205
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            260,
+            100
+          ],
+          "to": [
+            260,
+            230
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            200,
+            100
+          ],
+          "to": [
+            200,
+            230
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            160,
+            75
+          ],
+          "to": [
+            160,
+            205
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            160,
+            205
+          ],
+          "to": [
+            200,
+            230
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            200,
+            230
+          ],
+          "to": [
+            260,
+            230
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            260,
+            230
+          ],
+          "to": [
+            280,
+            205
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            160,
+            205
+          ],
+          "to": [
+            180,
+            180
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            180,
+            180
+          ],
+          "to": [
+            240,
+            180
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            240,
+            180
+          ],
+          "to": [
+            280,
+            205
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            160,
+            205
+          ],
+          "to": [
+            260,
+            230
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "AD"
+        },
+        {
+          "from": [
+            160,
+            205
+          ],
+          "to": [
+            260,
+            100
+          ],
+          "color": "#10B981",
+          "strokeWidth": 2,
+          "label": "AD'"
+        }
+      ],
+      "points": [
+        {
+          "x": 160,
+          "y": 205,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 260,
+          "y": 230,
+          "label": "D",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 260,
+          "y": 100,
+          "label": "D'",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 25.2",
+    "exam": "Matura maj 2024",
+    "num": "25.2",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nKąt nachylenia najdłuższej przekątnej graniastosłupa prawidłowego sześciokątnego do\npłaszczyzny podstawy jest zaznaczony na rysunku",
+    "options": [
+      {
+        "id": "A",
+        "text": "Kąt między krótszą przekątną graniastosłupa a krawędzią boczną",
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "Kąt między najdłuższą przekątną graniastosłupa a krawędzią boczną",
+        "is_correct": false
+      },
+      {
+        "id": "C",
+        "text": "Kąt między krótszą przekątną graniastosłupa a płaszczyzną podstawy",
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "Kąt między najdłuższą przekątną graniastosłupa a dłuższą przekątną podstawy (płaszczyzną podstawy)",
+        "is_correct": true
+      }
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 26",
+    "exam": "Matura maj 2024",
+    "num": "26",
+    "type": "NUMERIC_INPUT",
+    "ans": "4",
+    "content": "Ostrosłup  𝐹1  jest podobny do ostrosłupa  𝐹2.\nObjętość ostrosłupa  𝐹1  jest równa  64.\nObjętość ostrosłupa  𝐹2  jest równa  512.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak,\naby zdanie było prawdziwe.\nStosunek pola powierzchni całkowitej ostrosłupa  𝐹2  do pola powierzchni całkowitej\nostrosłupa  𝐹1  jest równy  ……….  .",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 27",
+    "exam": "Matura maj 2024",
+    "num": "27",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Rozważamy wszystkie kody czterocyfrowe utworzone tylko z cyfr  1,  3,  6,  8, przy czym\nw każdym kodzie każda z tych cyfr występuje dokładnie jeden raz.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich takich kodów jest równa",
+    "options": [
+      "4",
+      "10",
+      "24",
+      "16"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 28",
+    "exam": "Matura maj 2024",
+    "num": "28",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Średnia arytmetyczna trzech liczb:  a,  b,  c, jest równa  9.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna sześciu liczb:  a,  a,  b,  b,  c,  c, jest równa",
+    "options": [
+      "9",
+      "6",
+      "4,5",
+      "18"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 29",
+    "exam": "Matura maj 2024",
+    "num": "29",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej.\nNa osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano\nliczbę uczniów, którzy otrzymali daną ocenę.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMediana ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest równa",
+    "options": [
+      "4,5",
+      "4",
+      "3,5",
+      "3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "STATISTICS",
+      "title": "Wyniki sprawdzianu z matematyki w klasie maturalnej (liczba uczniów vs ocena)",
+      "width": 460,
+      "height": 260,
+      "segments": [
+        {
+          "from": [
+            50,
+            210
+          ],
+          "to": [
+            420,
+            210
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            50,
+            210
+          ],
+          "to": [
+            50,
+            25
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        }
+      ],
+      "ticks": [
+        {
+          "x": 50,
+          "y": 185,
+          "label": "2",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 155,
+          "label": "4",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 125,
+          "label": "6",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 95,
+          "label": "8",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 65,
+          "label": "10",
+          "axis": "y"
+        }
+      ],
+      "bars": [
+        {
+          "x": 80,
+          "y": 195,
+          "width": 38,
+          "height": 15,
+          "label": "1",
+          "category": "1"
+        },
+        {
+          "x": 135,
+          "y": 165,
+          "width": 38,
+          "height": 45,
+          "label": "3",
+          "category": "2"
+        },
+        {
+          "x": 190,
+          "y": 95,
+          "width": 38,
+          "height": 115,
+          "label": "8",
+          "category": "3"
+        },
+        {
+          "x": 245,
+          "y": 65,
+          "width": 38,
+          "height": 145,
+          "label": "10",
+          "category": "4"
+        },
+        {
+          "x": 300,
+          "y": 125,
+          "width": 38,
+          "height": 85,
+          "label": "6",
+          "category": "5"
+        },
+        {
+          "x": 355,
+          "y": 180,
+          "width": 38,
+          "height": 30,
+          "label": "2",
+          "category": "6"
+        }
+      ],
+      "labels": [
+        {
+          "x": 425,
+          "y": 215,
+          "text": "ocena",
+          "color": "#94A3B8",
+          "fontSize": 11
+        },
+        {
+          "x": 50,
+          "y": 16,
+          "text": "liczba uczniów",
+          "color": "#94A3B8",
+          "fontSize": 11
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 30",
+    "exam": "Matura maj 2024",
+    "num": "30",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Dany jest pięcioelementowy zbiór  K = {5, 6, 7, 8, 9}. Wylosowanie każdej liczby z tego\nzbioru jest jednakowo prawdopodobne. Ze zbioru  K  losujemy ze zwracaniem kolejno dwa\nrazy po jednej liczbie i zapisujemy je w kolejności losowania.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że suma\nwylosowanych liczb jest liczbą parzystą. Zapisz obliczenia.\n30.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura maj 2024 • Zad. 31",
+    "exam": "Matura maj 2024",
+    "num": "31",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "W schronisku dla zwierząt, na płaskiej powierzchni, należy zbudować ogrodzenie z siatki\nwydzielające trzy identyczne wybiegi o wspólnych ścianach wewnętrznych.\nPodstawą każdego z tych trzech wybiegów jest prostokąt (jak pokazano na rysunku).\nDo wykonania tego ogrodzenia należy zużyć  36  metrów bieżących siatki.\nSchematyczny rysunek trzech wybiegów (widok z góry).\nLinią przerywaną zaznaczono siatkę.\nOblicz wymiary  𝒙  oraz  𝒚  jednego wybiegu, przy których suma pól podstaw tych\ntrzech wybiegów będzie największa. W obliczeniach pomiń szerokość wejścia na\nkażdy z wybiegów. Zapisz obliczenia.\n31.\n0–1–\n2–3–4\ny\ny\ny\nx\nwybieg 1.\nwybieg 2.\nwybieg 3.\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "options": [],
+    "points": 4,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 1",
+    "exam": "Matura czerwiec 2024",
+    "num": "1",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  2−1 \\cdot 32\n3\n5\njest równa",
+    "options": [
+      "(−16)",
+      "(−4)",
+      "2",
+      "4"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 2",
+    "exam": "Matura czerwiec 2024",
+    "num": "2",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log3 (3\n2) + log3 (2\n9)  jest równa",
+    "options": [
+      "log3\n31\n18",
+      "log3\n5\n11",
+      "(−1)",
+      "1\n3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 3",
+    "exam": "Matura czerwiec 2024",
+    "num": "3",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  (2\\sqrt10 + \\sqrt2)\n2\njest równa",
+    "options": [
+      "22",
+      "42",
+      "42 + 4\\sqrt5",
+      "42 + 8\\sqrt5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 4",
+    "exam": "Matura czerwiec 2024",
+    "num": "4",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Klient wpłacił do banku na trzyletnią lokatę kwotę w wysokości  K0  zł. Po każdym rocznym\nokresie oszczędzania bank dolicza odsetki w wysokości  6%  od kwoty bieżącego kapitału\nznajdującego się na lokacie – zgodnie z procentem składanym.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPo trzech latach oszczędzania w tym banku kwota na lokacie (bez uwzględniania podatków)\njest równa",
+    "options": [
+      "K0 \\cdot (1,06)3",
+      "K0 \\cdot (1,02)3",
+      "K0 \\cdot (1,03)6",
+      "K0 \\cdot 1,18"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 5",
+    "exam": "Matura czerwiec 2024",
+    "num": "5",
+    "type": "OPEN_PROOF",
+    "ans": "A",
+    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  𝟓𝒏𝟑 − 𝟓𝒏  jest podzielna przez  𝟑𝟎.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 6",
+    "exam": "Matura czerwiec 2024",
+    "num": "6",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich całkowitych dodatnich rozwiązań nierówności\n3x − 5\n12 < 1\n3\njest równa",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "6"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 7",
+    "exam": "Matura czerwiec 2024",
+    "num": "7",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkład równań  { x − 2y = 3\n−4x + 8y = −12",
+    "options": [
+      "nie ma rozwiązań.",
+      "ma dokładnie jedno rozwiązanie.",
+      "ma dokładnie dwa rozwiązania.",
+      "ma nieskończenie wiele rozwiązań."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 8",
+    "exam": "Matura czerwiec 2024",
+    "num": "8",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  x  różnej od:  (−1),  0  i  1, wartość wyrażenia  2x2\nx2−1 \\cdot x+1\nx\njest równa wartości wyrażenia",
+    "options": [
+      "2x + 2",
+      "2x\nx−1",
+      "2x\nx2−1",
+      "2x3+1\nx3−1"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 9",
+    "exam": "Matura czerwiec 2024",
+    "num": "9",
+    "type": "NUMERIC_INPUT",
+    "ans": "1",
+    "content": "Wielomian  W(x) = ax3 + bx2 + cx + d  jest iloczynem wielomianów  𝐹(x) = (2 − 3x)2\noraz  𝐺(x) = 3x − 2.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak,\naby zdanie było prawdziwe.\nSuma  a + b + c + d  współczynników wielomianu  W  jest równa  ……….  .",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 10",
+    "exam": "Matura czerwiec 2024",
+    "num": "10",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Rozwiąż równanie\n𝟒𝒙𝟑 − 𝟏𝟐𝒙𝟐 − 𝒙 + 𝟑 = 𝟎\nZapisz obliczenia.",
+    "options": [],
+    "points": 3,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 11.1",
+    "exam": "Matura czerwiec 2024",
+    "num": "11.1",
+    "type": "NUMERIC_INPUT",
+    "ans": "[0,4]",
+    "content": "Uzupełnij poniższe zdanie. Wpisz odpowiedni przedział w wykropkowanym miejscu\ntak, aby zdanie było prawdziwe.\nZbiorem wszystkich rozwiązań nierówności  f(x) \\le 2  jest przedział  ………………………  .",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 11.2",
+    "exam": "Matura czerwiec 2024",
+    "num": "11.2",
+    "type": "NUMERIC_INPUT",
+    "ans": "A2",
+    "content": "Na rysunku 2., w kartezjańskim układzie współrzędnych  (x, y), przedstawiono wykres funkcji  g,\npowstałej w wyniku przesunięcia równoległego wykresu funkcji  f  wzdłuż osi  Ox\no  4  jednostki w lewo.\nRysunek 2.\nDokończ zdanie. Wybierz odpowiedź A, B albo C oraz odpowiedź 1. albo 2.\nFunkcje  f  i  g  są powiązane zależnością\nA. g(x) = f(x + 4)\noraz mają takie same\n1. dziedziny.\nB. g(x) = f(x − 4)\n2. zbiory wartości. C. g(x) = f(x) − 4",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 12",
+    "exam": "Matura czerwiec 2024",
+    "num": "12",
+    "type": "TRUE_FALSE",
+    "ans": "FF",
+    "content": "Funkcja  y = f(x)  jest określona za pomocą tabeli\n𝒙 −2 −1 0 1 2\n𝒚 −1 0 1 0 3\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nFunkcja  f  ma dokładnie jedno miejsce zerowe.  P F\nW kartezjańskim układzie współrzędnych  (x, y)  wykres funkcji  f  jest\nsymetryczny względem osi  Oy. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 13",
+    "exam": "Matura czerwiec 2024",
+    "num": "13",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Liczba  2  jest miejscem zerowym funkcji liniowej  f(x) = (3 − m)x + 4.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  m  jest równa",
+    "options": [
+      "0",
+      "3",
+      "4",
+      "5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 14",
+    "exam": "Matura czerwiec 2024",
+    "num": "14",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Parabola, która jest wykresem funkcji kwadratowej  f, ma z osiami kartezjańskiego układu\nwspółrzędnych  (x, y)  dokładnie dwa punkty wspólne:  M = (0, 18)  oraz  𝑁 = (3, 0).\nWyznacz wzór funkcji kwadratowej  𝒇. Zapisz obliczenia.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 15.1",
+    "exam": "Matura czerwiec 2024",
+    "num": "15.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Na jednym z rysunków A–D przedstawiono, w kartezjańskim układzie współrzędnych  (x, y),\nfragment wykresu funkcji  y = f(x).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFragment wykresu funkcji  y = f(x)  przedstawiono na rysunku",
+    "options": [
+      {
+        "id": "A",
+        "text": "Parabola o wierzchołku W = (1, 4) i ramionach skierowanych w dół",
+        "is_correct": false
+      },
+      {
+        "id": "B",
+        "text": "Parabola o wierzchołku W = (-1, 4) i ramionach skierowanych w dół, przechodząca przez (0, 3)",
+        "is_correct": true
+      },
+      {
+        "id": "C",
+        "text": "Parabola o wierzchołku W = (-1, -4) i ramionach skierowanych w górę",
+        "is_correct": false
+      },
+      {
+        "id": "D",
+        "text": "Parabola o wierzchołku W = (1, -4) i ramionach skierowanych w górę",
+        "is_correct": false
+      }
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 15.2",
+    "exam": "Matura czerwiec 2024",
+    "num": "15.2",
+    "type": "TRUE_FALSE",
+    "ans": "FP",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nWykres funkcji  f  przecina oś  Oy  kartezjańskiego układu współrzędnych\n(x, y)  w punkcie o współrzędnych  (0, 4).  P F\nMiejsca zerowe funkcji  f  są równe:  (−3)  oraz  1. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 16.1",
+    "exam": "Matura czerwiec 2024",
+    "num": "16.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nSuma dziesięciu początkowych kolejnych wyrazów tego ciągu jest równa",
+    "options": [
+      "3",
+      "7",
+      "50",
+      "100"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 16.2",
+    "exam": "Matura czerwiec 2024",
+    "num": "16.2",
+    "type": "TRUE_FALSE",
+    "ans": "FF",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nCiąg  (an)  jest malejący. P F\nCiąg  (an)  jest geometryczny. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 17",
+    "exam": "Matura czerwiec 2024",
+    "num": "17",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "W ciągu arytmetycznym  (an), określonym dla każdej liczby naturalnej  n \\ge 1, dane są\nwyrazy:  a1 = 7  oraz  a2 = 13.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWyraz  a10  jest równy",
+    "options": [
+      "(−47)",
+      "52",
+      "61",
+      "67"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 18",
+    "exam": "Matura czerwiec 2024",
+    "num": "18",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Trzywyrazowy ciąg  (−1, 2, x)  jest arytmetyczny.\nTrzywyrazowy ciąg  (−1, 2, y)  jest geometryczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczby  x  oraz  y  spełniają warunki",
+    "options": [
+      "x > 0   i   y > 0",
+      "x > 0   i   y < 0",
+      "x < 0   i   y > 0",
+      "x < 0   i   y < 0"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 19",
+    "exam": "Matura czerwiec 2024",
+    "num": "19",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  1 + cos2 27°  jest równa",
+    "options": [
+      "2 − sin2 27°",
+      "sin2 27°",
+      "2 + sin2 27°",
+      "2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 20",
+    "exam": "Matura czerwiec 2024",
+    "num": "20",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Podstawy trapezu prostokątnego  ABCD  mają długości:  |AB| = 8  oraz  |CD| = 5.\nWysokość  AD  tego trapezu ma długość  \\sqrt3  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ABC  jest równa",
+    "options": [
+      "15°",
+      "30°",
+      "45°",
+      "60°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trapez prostokątny $ABCD$ o podstawach $|AB| = 8$, $|CD| = 5$ i wysokości $|AD|$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              70,
+              200
+            ],
+            [
+              350,
+              200
+            ],
+            [
+              245,
+              70
+            ],
+            [
+              70,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.08)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 70,
+          "cy": 200,
+          "r": 16,
+          "startAngleDeg": 270,
+          "endAngleDeg": 360,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        },
+        {
+          "cx": 70,
+          "cy": 70,
+          "r": 16,
+          "startAngleDeg": 0,
+          "endAngleDeg": 90,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            245,
+            70
+          ],
+          "to": [
+            245,
+            200
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h = 4"
+        }
+      ],
+      "points": [
+        {
+          "x": 70,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 350,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 245,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 70,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": 210,
+          "y": 222,
+          "text": "|AB| = 8",
+          "color": "#FFB800",
+          "fontSize": 12
+        },
+        {
+          "x": 155,
+          "y": 56,
+          "text": "|CD| = 5",
+          "color": "#FFB800",
+          "fontSize": 12
+        },
+        {
+          "x": 42,
+          "y": 140,
+          "text": "AD",
+          "color": "#FFB800",
+          "fontSize": 12
+        },
+        {
+          "x": 310,
+          "y": 130,
+          "text": "BC",
+          "color": "#FFB800",
+          "fontSize": 12
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 21",
+    "exam": "Matura czerwiec 2024",
+    "num": "21",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Punkty  A,  B  oraz  C  leżą na okręgu o środku w punkcie  S. Długość łuku  AB, na którym\njest oparty kąt wpisany  ACB, jest równa  1\n5  długości okręgu (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ACB  jest równa",
+    "options": [
+      "18°",
+      "30°",
+      "36°",
+      "72°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Okrąg o środku w punkcie $S$ i kąty oparte na łuku $AB$",
+      "width": 440,
+      "height": 260,
+      "circles": [
+        {
+          "cx": 220,
+          "cy": 130,
+          "r": 90,
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.04)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            140,
+            175
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            300,
+            175
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            140,
+            175
+          ],
+          "to": [
+            210,
+            42
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            300,
+            175
+          ],
+          "to": [
+            210,
+            42
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        }
+      ],
+      "points": [
+        {
+          "x": 140,
+          "y": 175,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 300,
+          "y": 175,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 210,
+          "y": 42,
+          "label": "C",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 130,
+          "label": "S",
+          "labelPosition": "bottom",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 22",
+    "exam": "Matura czerwiec 2024",
+    "num": "22",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Bok kwadratu  ABCD  ma długość równą  12. Punkt  S  jest środkiem boku  BC  tego\nkwadratu. Na odcinku  AS  leży punkt  P  taki, że odcinek  BP  jest prostopadły do odcinka  AS.\nOblicz długość odcinka  𝑩𝑷. Zapisz obliczenia.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 23.1",
+    "exam": "Matura czerwiec 2024",
+    "num": "23.1",
+    "type": "TRUE_FALSE",
+    "ans": "PF",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nDo okręgu  𝒪  należy punkt o współrzędnych  (−1, −3). P F\nPromień okręgu  𝒪  jest równy  5. P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 23.2",
+    "exam": "Matura czerwiec 2024",
+    "num": "23.2",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Okrąg  𝒦  jest obrazem okręgu  𝒪  w symetrii środkowej względem początku układu\nwspółrzędnych.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg  𝒦  jest określony równaniem",
+    "options": [
+      "(x − 1)2 + (y + 2)2 = 5",
+      "(x + 1)2 + (y + 2)2 = 5",
+      "(x − 1)2 + (y − 2)2 = 5",
+      "(x + 1)2 + (y − 2)2 = 5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 24",
+    "exam": "Matura czerwiec 2024",
+    "num": "24",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są punkty  A = (2, 8)  oraz\nB = (10, 2). Symetralna odcinka  AB  przecina oś  Ox  układu współrzędnych w punkcie  P.\nOblicz współrzędne punktu  𝑷  oraz  długość odcinka  𝑨𝑷. Zapisz obliczenia.",
+    "options": [],
+    "points": 4,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 25",
+    "exam": "Matura czerwiec 2024",
+    "num": "25",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Ostrosłup prawidłowy ma  2024  ściany boczne.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich krawędzi tego ostrosłupa jest równa",
+    "options": [
+      "2025",
+      "2026",
+      "4048",
+      "4052"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 26",
+    "exam": "Matura czerwiec 2024",
+    "num": "26",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Przekątna ściany sześcianu ma długość  2\\sqrt2.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nObjętość tego sześcianu jest równa",
+    "options": [
+      "8",
+      "24",
+      "16\\sqrt6\n9",
+      "16\\sqrt2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 27",
+    "exam": "Matura czerwiec 2024",
+    "num": "27",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Podstawą graniastosłupa prawidłowego czworokątnego jest kwadrat o boku długości  4.\nPrzekątna tego graniastosłupa jest nachylona do płaszczyzny podstawy pod kątem  \\alpha  takim,\nże  tg \\alpha = 2  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWysokość tego graniastosłupa jest równa",
+    "options": [
+      "2",
+      "8",
+      "8\\sqrt2",
+      "16\\sqrt2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "STEREOMETRY_3D",
+      "title": "Graniastosłup prawidłowy czworokątny z przekątną bryły $AC'$ i przekątną podstawy $AC$",
+      "width": 440,
+      "height": 270,
+      "polygons": [
+        {
+          "points": [
+            [
+              160,
+              60
+            ],
+            [
+              280,
+              60
+            ],
+            [
+              330,
+              95
+            ],
+            [
+              210,
+              95
+            ]
+          ],
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.08)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            160,
+            60
+          ],
+          "to": [
+            160,
+            190
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            280,
+            60
+          ],
+          "to": [
+            280,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            330,
+            95
+          ],
+          "to": [
+            330,
+            225
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            210,
+            95
+          ],
+          "to": [
+            210,
+            225
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            210,
+            225
+          ],
+          "to": [
+            330,
+            225
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            330,
+            225
+          ],
+          "to": [
+            280,
+            190
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            280,
+            190
+          ],
+          "to": [
+            160,
+            190
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            160,
+            190
+          ],
+          "to": [
+            210,
+            225
+          ],
+          "color": "#64748B",
+          "strokeWidth": 1.25,
+          "dashed": true
+        },
+        {
+          "from": [
+            210,
+            225
+          ],
+          "to": [
+            280,
+            190
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "d = 4√2"
+        },
+        {
+          "from": [
+            210,
+            225
+          ],
+          "to": [
+            280,
+            60
+          ],
+          "color": "#10B981",
+          "strokeWidth": 2,
+          "label": "D"
+        }
+      ],
+      "points": [
+        {
+          "x": 210,
+          "y": 225,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 330,
+          "y": 225,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 280,
+          "y": 190,
+          "label": "C",
+          "labelPosition": "right",
+          "dot": "filled"
+        },
+        {
+          "x": 280,
+          "y": 60,
+          "label": "C'",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 28",
+    "exam": "Matura czerwiec 2024",
+    "num": "28",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej.\nNa osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano\nliczbę uczniów, którzy otrzymali daną ocenę.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest\nrówna",
+    "options": [
+      "3",
+      "3,12",
+      "3,5",
+      "4,1(6)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "STATISTICS",
+      "title": "Diagram wyników sprawdzianu z matematyki (częstość ocen)",
+      "width": 460,
+      "height": 260,
+      "segments": [
+        {
+          "from": [
+            50,
+            210
+          ],
+          "to": [
+            420,
+            210
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            50,
+            210
+          ],
+          "to": [
+            50,
+            25
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        }
+      ],
+      "ticks": [
+        {
+          "x": 50,
+          "y": 175,
+          "label": "2",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 140,
+          "label": "4",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 105,
+          "label": "6",
+          "axis": "y"
+        },
+        {
+          "x": 50,
+          "y": 70,
+          "label": "8",
+          "axis": "y"
+        }
+      ],
+      "bars": [
+        {
+          "x": 85,
+          "y": 175,
+          "width": 38,
+          "height": 35,
+          "label": "2",
+          "category": "1"
+        },
+        {
+          "x": 140,
+          "y": 140,
+          "width": 38,
+          "height": 70,
+          "label": "4",
+          "category": "2"
+        },
+        {
+          "x": 195,
+          "y": 70,
+          "width": 38,
+          "height": 140,
+          "label": "8",
+          "category": "3"
+        },
+        {
+          "x": 250,
+          "y": 88,
+          "width": 38,
+          "height": 122,
+          "label": "7",
+          "category": "4"
+        },
+        {
+          "x": 305,
+          "y": 140,
+          "width": 38,
+          "height": 70,
+          "label": "4",
+          "category": "5"
+        },
+        {
+          "x": 360,
+          "y": 192,
+          "width": 38,
+          "height": 18,
+          "label": "1",
+          "category": "6"
+        }
+      ],
+      "labels": [
+        {
+          "x": 425,
+          "y": 215,
+          "text": "ocena",
+          "color": "#94A3B8",
+          "fontSize": 11
+        },
+        {
+          "x": 50,
+          "y": 16,
+          "text": "liczba uczniów",
+          "color": "#94A3B8",
+          "fontSize": 11
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 29",
+    "exam": "Matura czerwiec 2024",
+    "num": "29",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych czterocyfrowych parzystych, w których zapisie dziesiętnym\nwystępują tylko cyfry  2,  4,  7  (np.:  7272,  2222,  7244), jest",
+    "options": [
+      "16",
+      "27",
+      "54",
+      "81"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 30",
+    "exam": "Matura czerwiec 2024",
+    "num": "30",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W pudełku znajdują się wyłącznie kule białe i czarne. Kul czarnych jest  18.\nZ tego pudełka w sposób losowy wyciągamy jedną kulę.\nPrawdopodobieństwo zdarzenia polegającego na tym, że wyciągniemy kulę czarną,\njest równe  3\n5\n.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba kul białych w pudełku, przed wyciągnięciem jednej kuli, była równa",
+    "options": [
+      "9",
+      "12",
+      "15",
+      "30"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 31",
+    "exam": "Matura czerwiec 2024",
+    "num": "31",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Doświadczenie losowe polega na dwukrotnym rzucie symetryczną sześcienną kostką do gry,\nktóra na każdej ściance ma inną liczbę oczek – od jednego oczka do sześciu oczek.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że w pierwszym\nrzucie wypadnie większa liczba oczek niż w drugim rzucie. Zapisz obliczenia.",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura czerwiec 2024 • Zad. 32",
+    "exam": "Matura czerwiec 2024",
+    "num": "32",
+    "type": "SINGLE_CHOICE",
+    "ans": "32.1. A",
+    "content": "Właściciel sklepu z zabawkami przeprowadził lokalne badanie rynkowe dotyczące wpływu\nzmiany ceny zestawu klocków na liczbę kupujących ten produkt. Z badania wynika, że\ndzienny przychód  P  ze sprzedaży zestawów klocków, w zależności od kwoty obniżki ceny\nzestawu o  x  zł, wyraża się wzorem\nP(x) = (70 − x)(20 + x)\ngdzie  x  jest liczbą całkowitą spełniającą warunki  x \\ge 0  i  x \\le 60.\nUzupełnij tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną\nspośród oznaczonych literami A–E.\n32.1.\nDzienny przychód ze sprzedaży zestawów klocków będzie największy,\ngdy liczba  x  jest równa\n32.2. Dzienny przychód ze sprzedaży zestawów klocków będzie równy  800  zł,\ngdy liczba  x  jest równa",
+    "options": [
+      "25",
+      "30",
+      "45",
+      "50 E.  60"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 1",
+    "exam": "Matura sierpień 2024",
+    "num": "1",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich całkowitych rozwiązań nierówności  |x + 1| < 3  jest równa",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "7"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 2",
+    "exam": "Matura sierpień 2024",
+    "num": "2",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  ( 4\n25)\n−0,5\njest równa",
+    "options": [
+      "0,04",
+      "0,8",
+      "2,5",
+      "0,4"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 3",
+    "exam": "Matura sierpień 2024",
+    "num": "3",
+    "type": "OPEN_PROOF",
+    "ans": "A",
+    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  (𝟐𝒏 + 𝟓)𝟐 + 𝟑  jest podzielna\nprzez  𝟒.\n3.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 4",
+    "exam": "Matura sierpień 2024",
+    "num": "4",
+    "type": "SINGLE_CHOICE",
+    "ans": "CE",
+    "content": "Uzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nPrawdziwe są równości:  ...............  oraz  ...............  .",
+    "options": [
+      "log2 16 + log2 9 = log2 25",
+      "log2 16 + log2 9 = 2 \\cdot log2 5",
+      "log2 16 + log2 9 = log2 144",
+      "log2 16 + log2 9 = log4 144\nE.  log2 16 + log2 9 = 4 + 2 \\cdot log2 3\nF.  log2 16 + log2 9 = 2 \\cdot log4 12"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 5",
+    "exam": "Matura sierpień 2024",
+    "num": "5",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wszystkich rozwiązań nierówności\n3(6 − x)\n17 \\le 3\njest przedział",
+    "options": [
+      "(−\\infty, −11)",
+      "(−\\infty, −11]",
+      "(−11, +\\infty)",
+      "[−11, +\\infty)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 6",
+    "exam": "Matura sierpień 2024",
+    "num": "6",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie  x(x+5)(2−x)\n2x+4 = 0  w zbiorze liczb rzeczywistych ma dokładnie",
+    "options": [
+      "dwa rozwiązania:  (−5)  oraz  2.",
+      "dwa rozwiązania:  (−5)  oraz  0.",
+      "trzy rozwiązania:  (−5),  0  oraz  2.",
+      "cztery rozwiązania:  (−5),  (−2),  0  oraz  2."
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 7",
+    "exam": "Matura sierpień 2024",
+    "num": "7",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Rozwiąż równanie\n𝒙𝟑 + 𝟓𝒙𝟐 − 𝟐𝒙 − 𝟏𝟎 = 𝟎\nZapisz obliczenia.\n7.\n0–1–\n2–3",
+    "options": [],
+    "points": 3,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 8",
+    "exam": "Matura sierpień 2024",
+    "num": "8",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Na rysunku, w kartezjańskim układzie współrzędnych  (x, y), przedstawiono interpretację\ngeometryczną jednego z poniższych układów równań A–D.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
+    "options": [
+      "{ y = x + 2\ny = 2x − 3",
+      "{ y = −x + 2\ny = 2x − 3",
+      "{ y = x + 2\ny = −2x − 3",
+      "{ y = −x + 2\ny = 2x + 3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Interpretacja geometryczna układu równań w układzie współrzędnych",
+      "width": 440,
+      "height": 260,
+      "grid": {
+        "minX": 30,
+        "maxX": 410,
+        "stepX": 30,
+        "minY": 25,
+        "maxY": 235,
+        "stepY": 30,
+        "color": "rgba(148, 163, 184, 0.1)"
+      },
+      "ticks": [
+        {
+          "x": 180,
+          "y": 130,
+          "label": "0",
+          "axis": "x"
+        },
+        {
+          "x": 210,
+          "y": 130,
+          "label": "1",
+          "axis": "x"
+        },
+        {
+          "x": 180,
+          "y": 70,
+          "label": "2",
+          "axis": "y"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            20,
+            130
+          ],
+          "to": [
+            420,
+            130
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            180,
+            240
+          ],
+          "to": [
+            180,
+            20
+          ],
+          "color": "#94A3B8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            90,
+            220
+          ],
+          "to": [
+            330,
+            20
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 2.5
+        },
+        {
+          "from": [
+            90,
+            40
+          ],
+          "to": [
+            310,
+            240
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2.5
+        }
+      ],
+      "points": [
+        {
+          "x": 210,
+          "y": 70,
+          "label": "(1, 2)",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ],
+      "labels": [
+        {
+          "x": 415,
+          "y": 144,
+          "text": "x",
+          "color": "#94A3B8"
+        },
+        {
+          "x": 192,
+          "y": 24,
+          "text": "y",
+          "color": "#94A3B8"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 9",
+    "exam": "Matura sierpień 2024",
+    "num": "9",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Funkcja  y = f(x)  jest określona za pomocą tabeli\n𝒙 −6 −4 −2 0 2 4 6\n𝒚 −3 −4 4 1 5 0 2\nUzupełnij poniższą tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź,\nwybraną spośród oznaczonych literami A–E.\n9.1. Największa wartość funkcji  f  jest równa\n9.2. Miejsce zerowe funkcji  f  jest równe",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5 E.  6"
+    ],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 10",
+    "exam": "Matura sierpień 2024",
+    "num": "10",
+    "type": "NUMERIC_INPUT",
+    "ans": "1",
+    "content": "Funkcja liniowa  f  jest określona wzorem  f(x) =\n\\sqrt3\n3 x − 3.\nW kartezjańskim układzie współrzędnych  (x, y)  wykres funkcji  y = f(x)  jest prostą\nnachyloną do osi  Ox  pod kątem ostrym  \\alpha.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak,\naby zdanie było prawdziwe.\nSinus kąta  \\alpha  jest równy ………. .",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 11.1",
+    "exam": "Matura sierpień 2024",
+    "num": "11.1",
+    "type": "TRUE_FALSE",
+    "ans": "FP",
+    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nFunkcja  f  jest malejąca. P F\nFunkcja  f  nie ma miejsc zerowych.  P F",
+    "options": [
+      "PRAWDA",
+      "FAŁSZ"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 11.2",
+    "exam": "Matura sierpień 2024",
+    "num": "11.2",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nNajwiększa wartość funkcji  f  jest równa",
+    "options": [
+      "16,8",
+      "15,8",
+      "11,3",
+      "10,3"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 11.3",
+    "exam": "Matura sierpień 2024",
+    "num": "11.3",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest określona wzorem",
+    "options": [
+      "f(x) = 6,5x + 1,03",
+      "f(x) = 1,03x + 10",
+      "f(x) = 10x + 1,03",
+      "f(x) = 1,03x + 6,5"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 12.1",
+    "exam": "Matura sierpień 2024",
+    "num": "12.1",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wartości funkcji  f  jest przedział",
+    "options": [
+      "(−\\infty, −2]",
+      "[1, +\\infty)",
+      "[−1, 3]",
+      "[−2, +\\infty)"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 12.2",
+    "exam": "Matura sierpień 2024",
+    "num": "12.2",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOsią symetrii wykresu funkcji  f  jest prosta o równaniu",
+    "options": [
+      "x = 1",
+      "y = 1",
+      "x = −2",
+      "y = −2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 12.3",
+    "exam": "Matura sierpień 2024",
+    "num": "12.3",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest określona wzorem",
+    "options": [
+      "f(x) = 1\n2 (x − 1)2 + 2",
+      "f(x) = 1\n2 (x + 1)2 + 2",
+      "f(x) = 1\n2 (x − 1)2 − 2",
+      "f(x) = 1\n2 (x + 1)2 − 2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 13",
+    "exam": "Matura sierpień 2024",
+    "num": "13",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Ciąg  (an)  jest określony dla każdej liczby naturalnej  n \\ge 1.\nSuma  n  początkowych wyrazów tego ciągu wyraża się wzorem  Sn = n2 + 2n  dla każdej\nliczby naturalnej  n \\ge 1.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTrzeci wyraz ciągu  (an)  jest równy",
+    "options": [
+      "5",
+      "7",
+      "13",
+      "15"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 14",
+    "exam": "Matura sierpień 2024",
+    "num": "14",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dany jest ciąg geometryczny  (an)  określony dla każdej liczby naturalnej  n \\ge 1, w którym\na2 = 2  oraz  a5 = 54.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nIloraz ciągu  (an)  jest równy",
+    "options": [
+      "3",
+      "9",
+      "52\n3",
+      "27"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 15",
+    "exam": "Matura sierpień 2024",
+    "num": "15",
+    "type": "NUMERIC_INPUT",
+    "ans": "A2",
+    "content": "Trzywyrazowy ciąg  (2m − 5, 4, 9)  jest arytmetyczny.\nDokończ zdanie. Wybierz odpowiedź A albo B oraz odpowiedź 1., 2. albo 3.\nTen ciąg jest\nrosnący\noraz\n1. m = −1 A.\n2. m = 2\nmalejący B. 3. m = 3",
+    "options": [],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 16",
+    "exam": "Matura sierpień 2024",
+    "num": "16",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "Kąt  \\alpha  jest ostry oraz  cos \\alpha = 24\n25\n.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTangens kąta  \\alpha  jest równy",
+    "options": [
+      "7\n18",
+      "7\n24",
+      "7\n25",
+      "18\n25"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 17",
+    "exam": "Matura sierpień 2024",
+    "num": "17",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W trójkącie prostokątnym  ABC  sinus kąta  CAB  jest równy  3\n5\n, a przeciwprostokątna  AB\njest o  8  dłuższa od przyprostokątnej  BC.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość przeciwprostokątnej  AB  tego trójkąta jest równa",
+    "options": [
+      "18",
+      "20",
+      "24",
+      "25"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 18",
+    "exam": "Matura sierpień 2024",
+    "num": "18",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Dany jest trójkąt  ABC, w którym  |AB| = 5,  |AC| = 2  oraz  cos|∡BAC| = 3\n5\n.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość boku  BC  tego trójkąta jest równa",
+    "options": [
+      "\\sqrt17",
+      "\\sqrt23",
+      "\\sqrt35",
+      "\\sqrt41"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 19",
+    "exam": "Matura sierpień 2024",
+    "num": "19",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Punkty  K,  L  oraz  M  leżą na okręgu o środku w punkcie  S. Miara kąta  KSM  jest równa 160°\n(zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta wpisanego  KLM  jest równa",
+    "options": [
+      "80°",
+      "90°",
+      "100°",
+      "110°"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Kąt środkowy $\\angle KSM = 160^\\circ$ i kąt wpisany $\\angle KLM$ w okręgu",
+      "width": 440,
+      "height": 260,
+      "circles": [
+        {
+          "cx": 220,
+          "cy": 130,
+          "r": 90,
+          "stroke": "#38BDF8",
+          "strokeWidth": 2,
+          "fill": "rgba(56, 189, 248, 0.04)"
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            135,
+            160
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            220,
+            130
+          ],
+          "to": [
+            305,
+            160
+          ],
+          "color": "#10B981",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            135,
+            160
+          ],
+          "to": [
+            220,
+            40
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        },
+        {
+          "from": [
+            305,
+            160
+          ],
+          "to": [
+            220,
+            40
+          ],
+          "color": "#FFB800",
+          "strokeWidth": 1.75
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 220,
+          "cy": 130,
+          "r": 25,
+          "startAngleDeg": 100,
+          "endAngleDeg": 260,
+          "color": "#10B981",
+          "label": "160°"
+        },
+        {
+          "cx": 220,
+          "cy": 40,
+          "r": 25,
+          "startAngleDeg": 125,
+          "endAngleDeg": 235,
+          "color": "#FFB800",
+          "label": "80°"
+        }
+      ],
+      "points": [
+        {
+          "x": 135,
+          "y": 160,
+          "label": "K",
+          "labelPosition": "left",
+          "dot": "filled"
+        },
+        {
+          "x": 305,
+          "y": 160,
+          "label": "M",
+          "labelPosition": "right",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 40,
+          "label": "L",
+          "labelPosition": "top",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 130,
+          "label": "S",
+          "labelPosition": "bottom",
+          "dot": "filled",
+          "color": "#10B981"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 20",
+    "exam": "Matura sierpień 2024",
+    "num": "20",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Podstawy trapezu prostokątnego  ABCD  mają długości:  |AB| = 12  oraz  |CD| = 6.\nWysokość  AD  tego trapezu ma długość  24. Na odcinku  AD  leży punkt  𝐸  taki, że\n|∡B𝐸A| = |∡C𝐸D|  (zobacz rysunek).\nOblicz długość odcinka  𝑩𝑬. Zapisz obliczenia.\n20.\n0–1–2\nC\nD\n𝐸\n\\cdot\nB\n\\cdot\nA",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "title": "Trapez prostokątny $ABCD$ o podstawach $|AB| = 12$ oraz $|CD| = 6$",
+      "width": 440,
+      "height": 260,
+      "polygons": [
+        {
+          "points": [
+            [
+              60,
+              200
+            ],
+            [
+              380,
+              200
+            ],
+            [
+              220,
+              70
+            ],
+            [
+              60,
+              70
+            ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.08)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2
+        }
+      ],
+      "arcs": [
+        {
+          "cx": 60,
+          "cy": 200,
+          "r": 16,
+          "startAngleDeg": 270,
+          "endAngleDeg": 360,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        },
+        {
+          "cx": 60,
+          "cy": 70,
+          "r": 16,
+          "startAngleDeg": 0,
+          "endAngleDeg": 90,
+          "color": "#FFB800",
+          "showRightAngleDot": true
+        }
+      ],
+      "segments": [
+        {
+          "from": [
+            220,
+            70
+          ],
+          "to": [
+            220,
+            200
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 1.5,
+          "dashed": true,
+          "label": "h"
+        }
+      ],
+      "points": [
+        {
+          "x": 60,
+          "y": 200,
+          "label": "A",
+          "labelPosition": "bottom-left",
+          "dot": "filled"
+        },
+        {
+          "x": 380,
+          "y": 200,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled"
+        },
+        {
+          "x": 220,
+          "y": 70,
+          "label": "C",
+          "labelPosition": "top-right",
+          "dot": "filled"
+        },
+        {
+          "x": 60,
+          "y": 70,
+          "label": "D",
+          "labelPosition": "top-left",
+          "dot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": 220,
+          "y": 222,
+          "text": "|AB| = 12",
+          "color": "#FFB800"
+        },
+        {
+          "x": 140,
+          "y": 56,
+          "text": "|CD| = 6",
+          "color": "#FFB800"
+        }
+      ]
+    }
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 21",
+    "exam": "Matura sierpień 2024",
+    "num": "21",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  przekątne równoległoboku  ABCD\nprzecinają się w punkcie  S = (9, 11). Bok  AB  tego równoległoboku zawiera się w prostej\no równaniu  y = 1\n2 x − 1, a bok  AD  zawiera się w prostej o równaniu  y = 2x − 4.\nOblicz współrzędne wierzchołka  𝑩. Zapisz obliczenia.\n21.\n0–1–\n2–3–4",
+    "options": [],
+    "points": 4,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 22",
+    "exam": "Matura sierpień 2024",
+    "num": "22",
+    "type": "SINGLE_CHOICE",
+    "ans": "D",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  proste  k  oraz  𝑙  są określone równaniami\nk:  y = (3m − 2)x − 2\n𝑙:   y = (2m + 4)x + 2\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nProste  k  oraz  𝑙  są równoległe, gdy liczba  m  jest równa",
+    "options": [
+      "(−6)",
+      "(−2)",
+      "2",
+      "6"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 23",
+    "exam": "Matura sierpień 2024",
+    "num": "23",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "W kartezjańskim układzie współrzędnych  (x, y)  odcinek o końcach  A = (−4, 7)  oraz\nB = (6, −1)  jest średnicą okręgu  𝒪.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg  𝒪  jest określony równaniem",
+    "options": [
+      "(x − 1)2 + (y − 3)2 = 41",
+      "(x − 5)2 + (y + 4)2 = 41",
+      "(x − 1)2 + (y + 3)2 = 41",
+      "(x − 5)2 + (y − 4)2 = 41"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 24",
+    "exam": "Matura sierpień 2024",
+    "num": "24",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Liczba wszystkich ścian ostrosłupa prawidłowego jest równa  12.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich wierzchołków tego ostrosłupa jest równa",
+    "options": [
+      "10",
+      "11",
+      "12",
+      "13"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 25",
+    "exam": "Matura sierpień 2024",
+    "num": "25",
+    "type": "SINGLE_CHOICE",
+    "ans": "A",
+    "content": "Długości trzech wychodzących z jednego wierzchołka krawędzi prostopadłościanu są trzema\nkolejnymi liczbami naturalnymi parzystymi. Najdłuższa krawędź tego prostopadłościanu ma\ndługość  10.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole powierzchni całkowitej tego prostopadłościanu jest równe",
+    "options": [
+      "376",
+      "466",
+      "480",
+      "720"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 26",
+    "exam": "Matura sierpień 2024",
+    "num": "26",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dany jest prostopadłościan  ABCD𝐸𝐹𝐺𝐻, w którym podstawy  ABCD  i  𝐸𝐹𝐺𝐻  są\nkwadratami o boku długości  6. Przekątna  B𝐻  tego prostopadłościanu tworzy z przekątną\nA𝐻  ściany bocznej  AD𝐻𝐸  kąt o mierze  30°  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPrzekątna  B𝐻  tego prostopadłościanu ma długość równą",
+    "options": [
+      "4\\sqrt3",
+      "6\\sqrt3",
+      "12",
+      "12\\sqrt2"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 27",
+    "exam": "Matura sierpień 2024",
+    "num": "27",
+    "type": "SINGLE_CHOICE",
+    "ans": "C",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych dwucyfrowych, w których zapisie dziesiętnym cyfra dziesiątek\njest o  3  większa od cyfry jedności, jest",
+    "options": [
+      "3",
+      "6",
+      "7",
+      "13"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 28",
+    "exam": "Matura sierpień 2024",
+    "num": "28",
+    "type": "SINGLE_CHOICE",
+    "ans": "B",
+    "content": "W tabeli zestawiono liczbę punktów uzyskanych przez  32  uczniów pewnej klasy za\nrozwiązanie jednego z zadań testu z matematyki.\nLiczba punktów 0 1 2 3 4 5\nLiczba uczniów 2 2 5 6 11 6\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna liczby punktów uzyskanych za rozwiązanie tego zadania przez\nuczniów tej klasy jest równa",
+    "options": [
+      "2,5",
+      "3,25",
+      "3,31",
+      "4"
+    ],
+    "points": 1,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 29",
+    "exam": "Matura sierpień 2024",
+    "num": "29",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Dane są dwa zbiory:  C = {0, 4, 5, 7, 9}  oraz  D = {1, 2, 3}.\nLosujemy jedną liczbę ze zbioru  C, a następnie losujemy jedną liczbę ze zbioru  D.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że suma\nwylosowanych liczb będzie większa od  𝟗. Zapisz obliczenia.\n29.\n0–1–2",
+    "options": [],
+    "points": 2,
+    "numberLine": null,
+    "diagram": null
+  },
+  {
+    "badge": "Matura sierpień 2024 • Zad. 30",
+    "exam": "Matura sierpień 2024",
+    "num": "30",
+    "type": "OPEN_CALCULATION",
+    "ans": "A",
+    "content": "Suma dwóch nieujemnych liczb rzeczywistych  x  oraz  y  jest równa  12.\nWyznacz  𝒙  oraz  𝒚, dla których wartość wyrażenia  𝟐𝒙𝟐 + 𝒚𝟐  jest najmniejsza.\nOblicz tę najmniejszą wartość. Zapisz obliczenia.\n30.\n0–1–\n2–3\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "options": [],
+    "points": 3,
+    "numberLine": null,
+    "diagram": null
+  }
+]

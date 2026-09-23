@@ -27,11 +27,14 @@ from scripts.curriculum_builder.topic_07_builder import build_topic_07
 from scripts.curriculum_builder.topic_08_builder import build_topic_08
 from scripts.curriculum_builder.topic_09_builder import build_topic_09
 from scripts.curriculum_builder.topic_10_builder import build_topic_10
+from scripts.curriculum_builder.topic_11_builder import build_topic_11
+from scripts.curriculum_builder.topic_12_builder import build_topic_12
+from scripts.curriculum_builder.topic_13_builder import build_topic_13
 from scripts.sanitize_curriculum_text import sanitize_topic_data
 
 def build_full_curriculum():
     print("=" * 60)
-    print("  BUDOWANIE MODUŁU 1: NA 30% - ŻELAZNE PEWNIAKI MATURALNE")
+    print("  BUDOWANIE KURIKULUM MATEMATYKI PODSTAWOWEJ (Działy 1–13)")
     print("  Standard: Core-4 Bento, Nocturne Luminary SVG, Autentyczne CKE")
     print("=" * 60)
 
@@ -46,6 +49,9 @@ def build_full_curriculum():
         ("Nierówności kwadratowe", build_topic_08),
         ("Odczytywanie informacji z wykresu funkcji", build_topic_09),
         ("Funkcja liniowa i jej własności", build_topic_10),
+        ("Ciągi liczbowe", build_topic_11),
+        ("Funkcja kwadratowa", build_topic_12),
+        ("Przekształcenia wykresów funkcji", build_topic_13),
     ]
 
     topics = []
@@ -53,7 +59,7 @@ def build_full_curriculum():
     total_tasks = 0
 
     for idx, (name, builder) in enumerate(builders, start=1):
-        print(f"[{idx}/10] Budowanie i sanityzacja KaTeX: {name}...")
+        print(f"[{idx}/{len(builders)}] Budowanie i sanityzacja KaTeX: {name}...")
         topic_obj = builder()
         topic_obj = sanitize_topic_data(topic_obj)
         lesson_count = len(topic_obj.get("lessons", []))
@@ -67,10 +73,10 @@ def build_full_curriculum():
     print(f"Podsumowanie: {len(topics)} działów, {total_lessons} lekcji, {total_tasks} zadań.")
 
     curriculum = {
-        "module_id": "modul-1-30-procent",
-        "module_title": "MODUŁ 1: NA 30% – ŻELAZNE PEWNIAKI MATURALNE (Tiers S+ i S)",
-        "module_description": "10 kluczowych tematów dających łącznie 15–18 punktów (gwarancja zdania matury). Każda lekcja w metodyce Core-4 Bento z grafikami Nocturne Luminary i autentycznymi zadaniami CKE 2022–2026.",
-        "target_score": "30% - 36% (Gwarancja zdania)",
+        "module_id": "matematyka-podstawowa-pelne",
+        "module_title": "MATEMATYKA PODSTAWOWA (Formuła 2023)",
+        "module_description": f"{len(topics)} kluczowych tematów maturalnych. Każda lekcja w metodyce Core-4 Bento z grafikami Nocturne Luminary, wykresami Mafs i autentycznymi zadaniami CKE 2022–2026.",
+        "target_score": "30% - 60%+ (Gwarancja zdania i wysoki wynik)",
         "total_topics": len(topics),
         "total_lessons": total_lessons,
         "total_tasks": total_tasks,

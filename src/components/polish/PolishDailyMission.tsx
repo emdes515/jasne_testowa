@@ -6,7 +6,6 @@ import {
   BookOpen, 
   MessageSquare, 
   PenTool, 
-  Sparkles,
   ChevronRight,
   Coins
 } from 'lucide-react';
@@ -252,7 +251,7 @@ export const PolishDailyMission: React.FC<PolishDailyMissionProps> = ({
       {/* Dolny pasek: Podsumowanie premii i główny przycisk CTA */}
       <div className="mt-4 pt-3 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 relative z-10">
         <div className="flex items-center gap-2 text-xs text-text-secondary w-full sm:w-auto">
-          <Sparkles size={14} className="text-amber-400 shrink-0" />
+          <Coins size={14} className="text-amber-400 shrink-0" />
           <span className="text-[11px]">
             Nagroda za całość: <strong className="text-amber-300 font-bold">+75 XP</strong>, <strong className="text-amber-300 font-bold">+15 monet</strong> • ochrona streaku
           </span>

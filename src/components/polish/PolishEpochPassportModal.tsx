@@ -8,7 +8,6 @@ import {
   BookOpen, 
   AlertTriangle, 
   Target, 
-  Sparkles,
   Award,
   CheckCircle2
 } from 'lucide-react';
@@ -260,7 +259,7 @@ export const PolishEpochPassportModal: React.FC<PolishEpochPassportModalProps> =
             {/* 2. Toposy i Motywy Literackie */}
             <div>
               <div className="flex items-center gap-2 text-purple-300 font-bold uppercase tracking-wider text-[11px] mb-2.5">
-                <Sparkles size={14} className="text-purple-400" />
+                <Compass size={14} className="text-purple-400" />
                 <span>Kluczowe toposy i motywy do wypracowania:</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">

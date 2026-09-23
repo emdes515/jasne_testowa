@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Copy, Check, ShieldCheck, BookOpen, Layers, Sparkles, Filter } from 'lucide-react';
+import { X, Copy, Check, ShieldCheck, BookOpen, Layers, Filter } from 'lucide-react';
 import { PolishArgumentBlock } from '../../types';
 import { argumentVaultService } from '../../services/argumentVaultService';
 
@@ -227,7 +227,7 @@ export const ArgumentVaultModal: React.FC<ArgumentVaultModalProps> = ({
         {/* Footer */}
         <div className="p-4 border-t border-slate-800 bg-[#0e1626] flex items-center justify-between text-xs text-slate-400">
           <span className="flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
             Argumenty zapisują się automatycznie w Twoim profilu
           </span>
           <button

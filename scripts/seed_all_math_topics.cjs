@@ -58,18 +58,23 @@ async function main() {
   function sanitizeForFirestore(val) {
     if (val === undefined) return null;
     if (Array.isArray(val)) {
-      if (val.some(item => Array.isArray(item))) {
-        return val.map(item => {
-          if (Array.isArray(item)) {
-            if (item.length === 2 && typeof item[0] === 'number' && typeof item[1] === 'number') {
-              return { x: item[0], y: item[1] };
-            }
-            return sanitizeForFirestore(item);
+      return val.map(item => {
+        if (Array.isArray(item)) {
+          if (item.length === 2 && typeof item[0] === 'number' && typeof item[1] === 'number') {
+            return { x: item[0], y: item[1] };
           }
-          return sanitizeForFirestore(item);
-        });
-      }
-      return val.map(sanitizeForFirestore);
+          if (item.length === 2) {
+            return { label: String(item[0]), value: sanitizeForFirestore(item[1]) };
+          }
+          // Generic nested array conversion to object
+          const obj = {};
+          item.forEach((subItem, idx) => {
+            obj[`item_${idx}`] = sanitizeForFirestore(subItem);
+          });
+          return obj;
+        }
+        return sanitizeForFirestore(item);
+      });
     }
     if (val !== null && typeof val === 'object') {
       const res = {};

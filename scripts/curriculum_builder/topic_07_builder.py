@@ -35,7 +35,7 @@ def build_topic_07():
         ),
         make_sc_task(
             task_id='task-7-1-2',
-            source='Matura Maj 2023 • Zad. 6',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dziedziną funkcji $f(x) = \\frac{2x - 1}{(x + 3)(x - 4)}$ jest zbiór',
             options_data=[
                 ('A', '$\\mathbb{R} \\setminus \\{-3, 4\\}$'),
@@ -82,7 +82,7 @@ def build_topic_07():
         lesson_id='lesson-7-1',
         topic_id=topic_id,
         title='Dziedzina wyrażenia wymiernego – warunek niezerowego mianownika',
-        concept_essence='W matematyce nie wolno dzielić przez zero. Dlatego gdy widzisz ułamek algebraiczny, Twoim pierwszym odruchem jest zapisanie warunku: mianownik $\\ne 0$. Wyznaczasz liczby zerujące mianownik i wyrzucasz je ze zbioru liczb rzeczywistych za pomocą ukośnika: $D = \\mathbb{R} \\setminus \\{x_1, x_2\\}$. Pamiętaj: dziedzinę wyznaczasz ZAWSZE na samym początku, zanim cokolwiek skrócić!',
+        concept_essence='W matematyce nie wolno dzielić przez zero. Dlatego gdy widzisz ułamek algebraiczny, Twoim pierwszym krokiem jest zapisanie warunku: mianownik $\\ne 0$. Wyznaczasz liczby zerujące mianownik i wyrzucasz je ze zbioru liczb rzeczywistych za pomocą ukośnika: $D = \\mathbb{R} \\setminus \\{x_1, x_2\\}$. Pamiętaj: dziedzinę wyznaczasz ZAWSZE na samym początku, zanim cokolwiek skrócić!',
         matura_context='Wyznaczanie dziedziny ułamka algebraicznego to samodzielne zadanie za 1 pkt lub obowiązkowy warunek zaliczenia zadania za 2 pkt.',
         core_formulas=[
             {
@@ -142,17 +142,17 @@ def build_topic_07():
         ),
         make_sc_task(
             task_id='task-7-2-2',
-            source='Matura Maj 2024 • Zad. 8',
-            question='Równanie $\\frac{(x - 3)(x + 5)}{x - 3} = 0$ w zbiorze liczb rzeczywistych',
+            source='Matura maj 2024 • Zad. 7',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie $\\frac{x+1}{(x+2)(x-3)} = 0$ w zbiorze liczb rzeczywistych',
             options_data=[
-                ('A', 'Ma dokładnie jedno rozwiązanie: $x = -5$'),
-                ('B', 'Ma dokładnie dwa rozwiązania: $x = 3$ oraz $x = -5$'),
-                ('C', 'Ma dokładnie jedno rozwiązanie: $x = 3$'),
-                ('D', 'Nie ma rozwiązań')
+                ('A', 'nie ma rozwiązania.'),
+                ('B', 'ma dokładnie jedno rozwiązanie: $(-1)$.'),
+                ('C', 'ma dokładnie dwa rozwiązania: $(-2)$ oraz $3$.'),
+                ('D', 'ma dokładnie trzy rozwiązania: $(-1)$, $(-2)$ oraz $3$.')
             ],
-            correct_id='A',
-            explanation='1) Dziedzina: $x - 3 \\ne 0 \\implies x \\ne 3$.\n2) Licznik $= 0$: $x = 3$ lub $x = -5$.\n3) Liczba $x = 3$ jest wykluczona przez mianownik (pierwiastek obcy). Jedynym poprawnym rozwiązaniem jest $x = -5$.',
-            cke_trap='Zaznaczenie obu liczb $3$ i $-5$ to klasyczna pułapka maturalna. Zawsze weryfikuj pierwiastki z dziedziną!'
+            correct_id='B',
+            explanation='KROK 1 (Dziedzina): Mianownik ułamka musi być różny od zera: $(x+2)(x-3) \\neq 0$, co oznacza, że $x \\neq -2$ oraz $x \\neq 3$. Zatem dziedzina to $D = \\mathbb{R} \\setminus \\{-2, 3\\}$.\nKROK 2 (Zerowanie licznika): Ułamek jest równy zero, gdy licznik jest równy zero: $x + 1 = 0 \\implies x = -1$.\nKROK 3 (Weryfikacja z dziedziną): Liczba $-1$ należy do dziedziny ($(-1) \\in D$), więc jest poprawnym i jedynym rozwiązaniem tego równania.',
+            cke_trap='Liczby zerujące mianownik $(-2$ oraz $3)$ NIE MOGĄ być rozwiązaniami równania! Dzielenie przez zero jest wykroczeniem matematycznym. Dystraktory C i D to pułapki na nieuwzględnienie dziedziny.'
         ),
         make_sc_task(
             task_id='task-7-2-3',

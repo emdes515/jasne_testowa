@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mafs, Coordinates, Plot, Line, Circle, Text } from 'mafs';
+import { Mafs, Coordinates, Plot, Line, Circle, Text, Polygon, Vector } from 'mafs';
 import { PlotData } from '../MathPlot';
 
 interface MafsPlotProps {
@@ -20,6 +20,34 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
   const [hoverCoord, setHoverCoord] = useState<[number, number] | null>(null);
 
   if (!plot) return null;
+
+  // Obsługa układu wielopanelowego (np. dwa przypadki a > 0 vs a < 0 w nierównościach)
+  if (plot.panels && plot.panels.length > 0) {
+    return (
+      <div className={`w-full max-w-4xl mx-auto my-3 grid grid-cols-1 md:grid-cols-2 gap-4 select-none ${className}`}>
+        {plot.panels.map((panel, idx) => (
+          <div key={`panel-${idx}`} className="flex flex-col rounded-2xl bg-[#070A0F] border border-white/10 overflow-hidden shadow-2xl p-3">
+            {panel.title && (
+              <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-white/10 mb-2">
+                <span className="text-xs font-bold text-amber-200">{panel.title}</span>
+                {panel.badge && (
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-semibold ${panel.badgeColor || 'bg-amber-500/20 text-amber-300 border border-amber-400/40'}`}>
+                    {panel.badge}
+                  </span>
+                )}
+              </div>
+            )}
+            <MafsPlot plot={panel.plot} height={210} className="w-full !max-w-none !my-0 !border-0 !shadow-none !bg-transparent" interactive={interactive} />
+            {panel.subtitle && (
+              <div className="mt-2 text-center text-xs font-mono font-medium text-slate-300 bg-white/5 py-1.5 px-2 rounded-lg border border-white/5">
+                {panel.subtitle}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   const [xMin, xMax] = plot.xRange || [-5, 5];
   const [yMin, yMax] = plot.yRange || [-5, 5];
@@ -48,28 +76,82 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
             }
           }}
         >
-          {/* 1. Siatka kartezjańska CKE */}
+          {/* 1. Siatka kartezjańska CKE lub Oś Liczbowa */}
           {!plot.hideGrid && (
             <Coordinates.Cartesian
-              subdivisions={gridStep > 1 ? false : 2}
+              subdivisions={plot.subdivisions !== undefined ? plot.subdivisions : (gridStep > 1 ? false : 2)}
               xAxis={
-                plot.hideAxes
+                plot.hideAxes || plot.hideXAxis
                   ? false
                   : {
-                      lines: gridStep,
-                      labels: (x) => (x !== 0 ? x.toString() : '')
+                      lines: plot.hideGridLines ? false : gridStep,
+                      labels: (x) => (plot.hideZeroLabel && x === 0 ? '' : (x !== 0 ? x.toString() : (plot.hideYAxis ? '0' : '')))
                     }
               }
               yAxis={
-                plot.hideAxes
+                plot.hideAxes || plot.hideYAxis
                   ? false
                   : {
-                      lines: gridStep,
+                      lines: plot.hideGridLines ? false : gridStep,
                       labels: (y) => (y !== 0 ? y.toString() : '')
                     }
               }
             />
           )}
+
+          {/* 1b. Gładkie strefy cieniowania nierówności (między wykresem a osią OX) */}
+          {plot.inequalityRegions?.map((reg, idx) => {
+            const steps = 30;
+            const polyPoints: [number, number][] = [];
+            const evalY = (x: number) => {
+              if (plot.parabola) {
+                const p = plot.parabola;
+                return p.a * Math.pow(x - p.p, 2) + p.q;
+              }
+              if (plot.fn) return plot.fn(x);
+              return 0;
+            };
+            for (let s = 0; s <= steps; s++) {
+              const x = reg.fromX + ((reg.toX - reg.fromX) * s) / steps;
+              polyPoints.push([x, evalY(x)]);
+            }
+            polyPoints.push([reg.toX, 0]);
+            polyPoints.push([reg.fromX, 0]);
+
+            const defaultColor = reg.condition === 'above' ? '#10B981' : '#F43F5E';
+            return (
+              <Polygon
+                key={`ineq-${idx}`}
+                points={polyPoints}
+                color={reg.color || defaultColor}
+                fillOpacity={reg.fillOpacity ?? 0.18}
+                weight={0}
+              />
+            );
+          })}
+
+          {/* 1c. Niestandardowe wielokąty i strefy (np. część wspólna układu nierówności) */}
+          {plot.polygons?.map((poly, idx) => (
+            <Polygon
+              key={`poly-${idx}`}
+              points={poly.points}
+              color={poly.color || '#10B981'}
+              fillOpacity={poly.fillOpacity ?? 0.22}
+              weight={poly.weight ?? 0}
+            />
+          ))}
+
+          {/* 1d. Wektory kierunkowe (strzałki promieni i daszków) */}
+          {plot.vectors?.map((vec, idx) => (
+            <Vector
+              key={`vec-${idx}`}
+              tail={vec.tail}
+              tip={vec.tip}
+              color={vec.color || '#38BDF8'}
+              weight={vec.weight || 2.5}
+              style={vec.style || 'solid'}
+            />
+          ))}
 
           {/* 2. Parabola: f(x) = a*(x-p)^2 + q */}
           {plot.parabola && (
@@ -83,13 +165,22 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
             />
           )}
 
+          {/* 2b. Dowolna funkcja matematyczna: f(x) */}
+          {plot.fn && (
+            <Plot.OfX
+              y={plot.fn}
+              color={plot.fnColor || '#FFB800'}
+              weight={plot.fnWeight || 2.75}
+            />
+          )}
+
           {/* 3. Oś symetrii paraboli: x = p */}
           {plot.axisOfSymmetry !== undefined && (
             <Line.Segment
               point1={[plot.axisOfSymmetry, yMin]}
               point2={[plot.axisOfSymmetry, yMax]}
               style="dashed"
-              color="rgba(255, 184, 0, 0.45)"
+              color="rgba(56, 189, 248, 0.6)"
               weight={1.5}
             />
           )}
@@ -110,7 +201,7 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
             <Plot.OfX
               key={`hline-${idx}`}
               y={() => hline.y}
-              color={hline.color || '#F43F5E'}
+              color={hline.color || '#38BDF8'}
               weight={1.75}
               style={hline.dashed ? 'dashed' : 'solid'}
             />
@@ -125,7 +216,7 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
                   point1={seg.from}
                   point2={seg.to}
                   color={segColor}
-                  weight={2.75}
+                  weight={seg.weight || seg.strokeWidth || 2.75}
                   style={seg.dashed ? 'dashed' : 'solid'}
                 />
                 {/* Węzeł początkowy */}
@@ -153,41 +244,94 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
           })}
 
           {/* 7. Punkty kluczowe (wierzchołki, miejsca zerowe) */}
-          {plot.points?.map((pt, idx) => (
-            <React.Fragment key={`pt-${idx}`}>
-              <Circle
-                center={[pt.x, pt.y]}
-                radius={0.18}
-                color={pt.color || '#FFB800'}
-                fillOpacity={pt.dot === 'hollow' ? 0 : 1}
-                weight={2}
-              />
-              {pt.label && (
-                <Text
-                  x={pt.x}
-                  y={pt.y + 0.38}
-                  size={12}
-                  color="#FFFFFF"
-                  attach="s"
-                >
-                  {pt.label}
-                </Text>
-              )}
-            </React.Fragment>
-          ))}
+          {plot.points?.map((pt, idx) => {
+            const attach = pt.attach || (pt.y <= 0 ? 'n' : 's');
+            let dx = 0;
+            let dy = 0;
+            if (attach.includes('w')) dx = -12;
+            else if (attach.includes('e')) dx = 12;
+
+            if (attach.includes('n')) dy = -9;
+            else if (attach.includes('s')) dy = 9;
+            else if (!attach.includes('n') && !attach.includes('s')) dy = -9;
+
+            return (
+              <React.Fragment key={`pt-${idx}`}>
+                <Circle
+                  center={[pt.x, pt.y]}
+                  radius={0.18}
+                  color={pt.color || '#FFB800'}
+                  fillOpacity={pt.dot === 'hollow' ? 0 : 1}
+                  weight={2}
+                />
+                {pt.label && (
+                  <Text
+                    x={pt.x}
+                    y={pt.y}
+                    size={pt.size || 13}
+                    color={pt.color || '#FFFFFF'}
+                    attach={attach}
+                    svgTextProps={{
+                      dx,
+                      dy,
+                      style: {
+                        fontWeight: 700,
+                        letterSpacing: '0.02em',
+                        paintOrder: 'stroke fill',
+                        stroke: '#070A0F',
+                        strokeWidth: 4,
+                        strokeLinejoin: 'round',
+                        strokeLinecap: 'round',
+                        filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95))',
+                        userSelect: 'none',
+                      }
+                    }}
+                  >
+                    {pt.label}
+                  </Text>
+                )}
+              </React.Fragment>
+            );
+          })}
 
           {/* 8. Etykiety tekstowe */}
-          {plot.labels?.map((lbl, idx) => (
-            <Text
-              key={`lbl-${idx}`}
-              x={lbl.x}
-              y={lbl.y}
-              size={lbl.fontSize || 12}
-              color={lbl.color || '#DFE2F1'}
-            >
-              {lbl.text}
-            </Text>
-          ))}
+          {plot.labels?.map((lbl, idx) => {
+            const attach = lbl.attach || 'n';
+            let dx = 0;
+            let dy = 0;
+            if (attach.includes('w')) dx = -8;
+            else if (attach.includes('e')) dx = 8;
+            if (attach.includes('n')) dy = -6;
+            else if (attach.includes('s')) dy = 6;
+
+            return (
+              <Text
+                key={`lbl-${idx}`}
+                x={lbl.x}
+                y={lbl.y}
+                size={lbl.fontSize || 12}
+                color={lbl.color || '#DFE2F1'}
+                attach={attach}
+                svgTextProps={{
+                  dx,
+                  dy,
+                  style: {
+                    fontWeight: 600,
+                    letterSpacing: '0.01em',
+                    paintOrder: 'stroke fill',
+                    stroke: '#070A0F',
+                    strokeWidth: 4,
+                    strokeLinejoin: 'round',
+                    strokeLinecap: 'round',
+                    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95))',
+                    userSelect: 'none',
+                  }
+                }}
+              >
+                {lbl.text}
+              </Text>
+            );
+          })}
         </Mafs>
       </div>
 

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import * as fs from 'fs';
 import * as path from 'path';
-import { sanitizeExaminerTip } from '../SessionRunner';
+import { sanitizeExaminerTip, resolveCkeTopicForDepartment } from '../SessionRunner';
 
 describe('SessionRunner - sanitizeExaminerTip', () => {
   it('returns empty string for null, undefined, or empty string', () => {
@@ -76,6 +76,38 @@ describe('SessionRunner - sanitizeExaminerTip', () => {
   });
 });
 
+describe('SessionRunner - resolveCkeTopicForDepartment', () => {
+  it('correctly maps Dział 8 (Nierówności kwadratowe) to funkcje-rownania', () => {
+    expect(resolveCkeTopicForDepartment('DZIAŁ 8', 'Nierówności kwadratowe', 'Wyróżnik delta')).toBe('funkcje-rownania');
+  });
+
+  it('correctly maps Dział 8 with CKE Trygonometria to trygonometria', () => {
+    expect(resolveCkeTopicForDepartment('DZIAŁ 8', 'Trygonometria', 'Tożsamości trygonometryczne')).toBe('trygonometria');
+  });
+
+  it('correctly maps all 10 microlearning curriculum departments', () => {
+    expect(resolveCkeTopicForDepartment('DZIAŁ 1', 'Potęgi i pierwiastki')).toBe('potegi-pierwiastki');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 2', 'Logarytmy')).toBe('logarytmy-procenty');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 3', 'Wartość bezwzględna')).toBe('potegi-pierwiastki');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 4', 'Wzory skróconego mnożenia i algebra')).toBe('potegi-pierwiastki');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 5', 'Nierówności liniowe')).toBe('funkcje-rownania');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 6', 'Równania w postaci iloczynowej')).toBe('funkcje-rownania');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 7', 'Równania i wyrażenia wymierne')).toBe('funkcje-rownania');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 8', 'Nierówności kwadratowe')).toBe('funkcje-rownania');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 9', 'Wykres funkcji i odczyt własności')).toBe('funkcje-rownania');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 10', 'Funkcja liniowa i jej własności')).toBe('funkcje-rownania');
+  });
+
+  it('correctly maps CKE standard 15 departments', () => {
+    expect(resolveCkeTopicForDepartment('DZIAŁ 7', 'Ciągi Liczbowe')).toBe('ciagi');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 11', 'Trygonometria')).toBe('trygonometria');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 12', 'Planimetria')).toBe('geometria');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 13', 'Geometria Analityczna')).toBe('geometria');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 14', 'Stereometria')).toBe('geometria');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 15', 'Kombinatoryka i statystyka')).toBe('prawdopodobienstwo');
+  });
+});
+
 describe('SessionRunner - UI Label Integrity Check', () => {
   it('does not contain prohibited CKE branding strings in SessionRunner.tsx', () => {
     const filePath = path.resolve(__dirname, '../SessionRunner.tsx');
@@ -103,4 +135,17 @@ describe('SessionRunner - UI Label Integrity Check', () => {
     expect(content).toContain('Karta wzorów:');
     expect(content).toContain('Kryteria oceniania: Warunki formalne');
   });
+
+  it('contains the compact department formulas button, badge button and drawer in SessionRunner.tsx', () => {
+    const filePath = path.resolve(__dirname, '../SessionRunner.tsx');
+    const content = fs.readFileSync(filePath, 'utf8');
+
+    expect(content).toContain('id="session-formulas-button"');
+    expect(content).toContain('id="session-department-badge-button"');
+    expect(content).toContain('id="session-formula-sheet-backdrop"');
+    expect(content).toContain('departmentFormulas');
+    expect(content).toContain('drawerFormulas');
+    expect(content).toContain('matchedCkeTopicId');
+  });
 });
+

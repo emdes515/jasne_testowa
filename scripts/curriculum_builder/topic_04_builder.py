@@ -35,17 +35,17 @@ def build_topic_04():
         ),
         make_sc_task(
             task_id='task-4-1-2',
-            source='Matura Maj 2023 • Zad. 3',
-            question='Dla każdej liczby rzeczywistej $x$ wartość wyrażenia $(x - 4)^2 - (x + 2)^2$ jest równa',
+            source='Matura maj 2024 • Zad. 5',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej $a$ i dla każdej liczby rzeczywistej $b$ wartość wyrażenia $(2a + b)^2 - (2a - b)^2$ jest równa',
             options_data=[
-                ('A', '$-12x + 12$'),
-                ('B', '$-12x + 20$'),
-                ('C', '$-4x + 12$'),
-                ('D', '$12$')
+                ('A', '$8a^2$'),
+                ('B', '$8ab$'),
+                ('C', '$-8ab$'),
+                ('D', '$2b^2$')
             ],
-            correct_id='A',
-            explanation='Rozwijamy oba kwadraty: $(x^2 - 8x + 16) - (x^2 + 4x + 4) = x^2 - 8x + 16 - x^2 - 4x - 4 = -12x + 12$.',
-            cke_trap='Minus przed nawiasem zmienia znak każdego składnika wewnątrz: $-(x^2 + 4x + 4) = -x^2 - 4x - 4$.'
+            correct_id='B',
+            explanation='Rozwijamy oba wyrażenia ze wzorów skróconego mnożenia na kwadrat sumy i kwadrat różnicy:\n$$(2a + b)^2 = 4a^2 + 4ab + b^2$$\n$$(2a - b)^2 = 4a^2 - 4ab + b^2$$\nOdejmujemy drugie wyrażenie od pierwszego:\n$$(4a^2 + 4ab + b^2) - (4a^2 - 4ab + b^2) = 4a^2 + 4ab + b^2 - 4a^2 + 4ab - b^2 = 8ab$$',
+            cke_trap='Minus przed drugim nawiasem zmienia znak każdego składnika wewnątrz: $-(4a^2 - 4ab + b^2) = -4a^2 + 4ab - b^2$. Uważaj, aby nie pominąć podwojonego iloczynu $2 \\cdot 2a \\cdot b = 4ab$.'
         ),
         make_sc_task(
             task_id='task-4-1-3',
@@ -249,7 +249,7 @@ def build_topic_04():
         ),
         make_sc_task(
             task_id='task-4-3-2',
-            source='Matura Maj 2023 • Zad. 8',
+            source='Trening JASNE • Wzorzec CKE',
             question='Wielomian $W(x) = x^3 - 2x^2 - 9x + 18$ po rozłożeniu na czynniki metodą grupowania wyrazów ma postać',
             options_data=[
                 ('A', '$(x - 2)(x - 3)(x + 3)$'),

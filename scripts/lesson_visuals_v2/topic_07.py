@@ -14,7 +14,7 @@ def get_topic_07_visuals(l_idx):
         # L1.7.1: Dziedzina wyrażenia wymiernego – BEZWZGLĘDNY warunek mianownik ≠ 0
         tab0 = {
             'type': 'INFOGRAPHIC',
-            'title': 'Dziedzina wyrażenia wymiernego: Żelazna zasada CKE',
+            'title': 'Dziedzina wyrażenia wymiernego: Ważna reguła',
             'formulaBadge': r'\frac{P(x)}{Q(x)} \implies D: Q(x) \neq 0',
             'caption': 'Pamiętaj: NIE WOLNO DZIELIĆ PRZEZ ZERO! W każdym ułamku algebraicznym mianownik musi być różny od zera.',
             'cards': [

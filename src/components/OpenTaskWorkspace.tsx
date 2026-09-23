@@ -24,7 +24,6 @@ import {
   ArrowDown,
   ArrowUp,
   Layers,
-  Sparkles,
   Loader2,
   RefreshCw
 } from 'lucide-react';
@@ -1842,7 +1841,7 @@ export function OpenTaskWorkspace({
                   {isAiLoading ? (
                     <Loader2 size={16} className="animate-spin text-amber-400" />
                   ) : (
-                    <Sparkles size={16} className="text-[#FFB800]" />
+                    <Lightbulb size={16} className="text-[#FFB800]" />
                   )}
                   <span className="hidden sm:inline">Podpowiedź AI</span>
                   <span className="inline sm:hidden">Wskazówka</span>

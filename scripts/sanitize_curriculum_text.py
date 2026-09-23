@@ -56,6 +56,21 @@ TOPIC_METADATA = {
         'short_title': 'Funkcja liniowa i jej własności',
         'importance': 'Pewniak CKE (Tier S+)',
         'matura_points_range': '2–4 pkt'
+    },
+    'dzial-11': {
+        'short_title': 'Ciągi liczbowe',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '2–4 pkt'
+    },
+    'dzial-12': {
+        'short_title': 'Funkcja kwadratowa',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '2–4 pkt'
+    },
+    'dzial-13': {
+        'short_title': 'Przekształcenia wykresów funkcji',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '1–2 pkt'
     }
 }
 
