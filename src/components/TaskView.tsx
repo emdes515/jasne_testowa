@@ -1483,16 +1483,15 @@ export function TaskView({
             <MathRenderer content={mathStatement} />
           </div>
 
-          {activeTask?.numberLine && (
+          {activeTask?.numberLine ? (
             <div className="mt-3 flex justify-center">
               <NumberLineDiagram data={activeTask.numberLine} height={64} maxWidth="360px" />
             </div>
-          )}
-          {(activeTask?.diagram || activeTask?.plot) && (
+          ) : (activeTask?.diagram || activeTask?.plot) ? (
             <div className="mt-3 flex justify-center">
               <MathDiagram diagram={activeTask.diagram || activeTask.plot} />
             </div>
-          )}
+          ) : null}
 
           {/* Auxiliary Buttons: Brudnopis & Wskazówka */}
           <div className="flex items-center justify-between pt-2 border-t border-white/5">

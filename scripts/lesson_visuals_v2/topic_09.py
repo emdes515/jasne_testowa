@@ -14,8 +14,8 @@ def get_topic_09_visuals(l_idx):
     if l_num == 1:
         # L1.9.1: Odczyt dziedziny D (oś OX) i zbioru wartości ZW (oś OY)
         plot_data = {
-            'xRange': [-5, 6],
-            'yRange': [-3, 4],
+            'xRange': [-6, 7],
+            'yRange': [-3, 5],
             'gridStep': 1,
             'segments': [
                 {'from': [-4.0, -1.0], 'to': [-1.0, 3.0], 'color': C_PRIMARY, 'startDot': 'solid', 'endDot': 'none', 'weight': 3},
@@ -27,9 +27,7 @@ def get_topic_09_visuals(l_idx):
                 {'x': 5.0, 'y': 2.0, 'color': C_PRIMARY, 'label': 'B(5, 2)', 'attach': 'ne'},
                 {'x': -1.0, 'y': 3.0, 'color': C_SUCCESS, 'label': 'max: y = 3', 'attach': 'n'}
             ],
-            'labels': [
-                {'x': 0.5, 'y': 3.5, 'text': 'Dziedzina D = [-4, 5], Zbiór wartości ZW = [-1, 3]', 'color': C_SUCCESS, 'attach': 'n'}
-            ]
+            'labels': []
         }
         tab0 = make_plot_diagram(
             title='Odczyt dziedziny D (oś pozioma OX) i zbioru wartości ZW (oś pionowa OY)',

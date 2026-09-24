@@ -58,8 +58,8 @@ def build_topic_09():
                 ],
                 'points': [
                     {'x': -4, 'y': -1, 'label': '(-4, -1)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'sw'},
-                    {'x': -1, 'y': -2, 'label': 'min: (-1, -2)', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 3, 'y': 4, 'label': 'max: (3, 4)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'},
+                    {'x': -1, 'y': -2, 'label': '(-1, -2)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'},
+                    {'x': 3, 'y': 4, 'label': '(3, 4)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'},
                     {'x': 5, 'y': 3, 'label': '(5, 3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'}
                 ]
             }
@@ -115,19 +115,17 @@ def build_topic_09():
                     {'from': [0, 7], 'to': [2, 7], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True}
                 ],
                 'points': [
-                    {'x': 2, 'y': 7, 'label': 'W(2, 7) ⟹ max y = 7', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 0, 'y': 7, 'label': 'y_max = 7', 'dot': 'filled', 'color': '#10B981', 'attach': 'w'},
-                    {'x': 2, 'y': 0, 'label': 'x = 2', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'}
+                    {'x': 2, 'y': 7, 'label': 'W(2, 7)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'}
                 ]
             }
         ),
         make_numeric_task(
             task_id='task-9-1-5',
-            source='Utrwalenie • Szerokość dziedziny',
-            question='Wykres funkcji jest określony w przedziale $x \\in [-5, 6]$. Oblicz długość tego przedziału.',
-            correct_val=11,
-            explanation='Długość przedziału $[-5, 6]$ to różnica prawego i lewego końca: $6 - (-5) = 6 + 5 = 11$.',
-            cke_trap='Pamiętaj: odejmowanie liczby ujemnej to dodawanie ($6 - (-5) = 11$, nie 1).',
+            source='Utrwalenie • Wartość największa z wykresu',
+            question='Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[-5, 6]$.\n\nNajwiększa wartość funkcji $f$ w tym przedziale jest równa',
+            correct_val=4,
+            explanation='Z wykresu odczytujemy współrzędną $y$ najwyżej położonego punktu: jest to punkt $(0, 4)$, więc największa wartość funkcji wynosi $4$.',
+            cke_trap='Wartość funkcji to współrzędna $y$ najwyższego punktu ($4$), a nie argument $x$ ($0$).',
             plot={
                 'type': 'PIECEWISE_LINEAR',
                 'xRange': [-6, 7],
@@ -139,8 +137,8 @@ def build_topic_09():
                 ],
                 'points': [
                     {'x': -5, 'y': 1, 'label': '(-5, 1)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'nw'},
-                    {'x': 6, 'y': 2, 'label': '(6, 2)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'},
-                    {'x': 0.5, 'y': -0.8, 'label': 'Dziedzina: D = [-5, 6]', 'dot': 'none', 'color': '#FFB800', 'attach': 's'}
+                    {'x': 0, 'y': 4, 'label': '(0, 4)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'},
+                    {'x': 6, 'y': 2, 'label': '(6, 2)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'}
                 ]
             }
         )
@@ -240,9 +238,7 @@ def build_topic_09():
                     {'from': [0, -3], 'to': [2, -3], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True}
                 ],
                 'points': [
-                    {'x': 2, 'y': -3, 'label': 'P(2, -3) ⟹ f(2) = -3', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'se'},
-                    {'x': 2, 'y': 0, 'label': 'x = 2', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 0, 'y': -3, 'label': 'y = -3', 'dot': 'filled', 'color': '#10B981', 'attach': 'w'}
+                    {'x': 2, 'y': -3, 'label': 'P(2, -3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'se'}
                 ]
             }
         ),
@@ -342,13 +338,13 @@ def build_topic_09():
                 'yRange': [-3, 5],
                 'gridStep': 1,
                 'segments': [
-                    {'from': [-3, -2], 'to': [1, 4], 'startDot': 'filled', 'endDot': 'filled', 'color': '#10B981', 'label': 'rośnie'},
-                    {'from': [1, 4], 'to': [5, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#F43F5E', 'label': 'maleje'}
+                    {'from': [-3, -2], 'to': [1, 4], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
+                    {'from': [1, 4], 'to': [5, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#38BDF8'}
                 ],
                 'points': [
-                    {'x': -3, 'y': -2, 'label': '(-3, -2)', 'dot': 'filled', 'color': '#10B981', 'attach': 'sw'},
-                    {'x': 1, 'y': 4, 'label': '(1, 4)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 5, 'y': 0, 'label': '(5, 0)', 'dot': 'filled', 'color': '#F43F5E', 'attach': 'se'}
+                    {'x': -3, 'y': -2, 'label': '(-3, -2)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'},
+                    {'x': 1, 'y': 4, 'label': '(1, 4)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'},
+                    {'x': 5, 'y': 0, 'label': '(5, 0)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'}
                 ]
             }
         ),
@@ -380,21 +376,22 @@ def build_topic_09():
                 'gridStep': 1,
                 'segments': [
                     {'from': [-3, 0], 'to': [-1, 3], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [-1, 3], 'to': [3, 3], 'startDot': 'filled', 'endDot': 'filled', 'color': '#FFB800', 'strokeWidth': 3.5},
+                    {'from': [-1, 3], 'to': [3, 3], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
                     {'from': [3, 3], 'to': [5, 1], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'}
                 ],
                 'points': [
-                    {'x': 1, 'y': 3, 'label': 'odcinek poziomy: f(x) = const = 3', 'dot': 'none', 'color': '#FFB800', 'attach': 'n'}
+                    {'x': -1, 'y': 3, 'label': '(-1, 3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'},
+                    {'x': 3, 'y': 3, 'label': '(3, 3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'}
                 ]
             }
         ),
         make_numeric_task(
             task_id='task-9-3-5',
-            source='Utrwalenie • Maksymalny przedział malejący',
-            question='Wykres funkcji opada w dół na przedziale $x \\in [2, 8]$. Oblicz długość przedziału, w którym ta funkcja maleje.',
-            correct_val=6,
-            explanation='Długość przedziału $[2, 8]$ wynosi $8 - 2 = 6$.',
-            cke_trap='Długość to różnica iksów: $8 - 2 = 6$.',
+            source='Utrwalenie • Wartość najmniejsza z wykresu',
+            question='Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[1, 9]$.\n\nNajmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ jest równa',
+            correct_val=-2,
+            explanation='Z wykresu odczytujemy najniżej położony punkt funkcji: $(8, -2)$. Najmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ wynosi $y = -2$ (dla argumentu $x = 8$).',
+            cke_trap='Wartość funkcji to współrzędna $y$ najniższego punktu ($-2$), a nie argument $x$ ($8$).',
             plot={
                 'type': 'PIECEWISE_LINEAR',
                 'xRange': [0, 10],
@@ -402,13 +399,14 @@ def build_topic_09():
                 'gridStep': 1,
                 'segments': [
                     {'from': [1, 2], 'to': [2, 4], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [2, 4], 'to': [8, -2], 'startDot': 'filled', 'endDot': 'filled', 'color': '#F43F5E', 'strokeWidth': 3.5, 'label': 'funkcja maleje'},
+                    {'from': [2, 4], 'to': [8, -2], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
                     {'from': [8, -2], 'to': [9, 1], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'}
                 ],
                 'points': [
-                    {'x': 2, 'y': 4, 'label': '(2, 4)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 8, 'y': -2, 'label': '(8, -2)', 'dot': 'filled', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 5, 'y': 1.5, 'label': 'maleje na [2, 8]', 'dot': 'none', 'color': '#FFB800', 'attach': 'ne'}
+                    {'x': 1, 'y': 2, 'label': '(1, 2)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'nw'},
+                    {'x': 2, 'y': 4, 'label': '(2, 4)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'},
+                    {'x': 8, 'y': -2, 'label': '(8, -2)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'},
+                    {'x': 9, 'y': 1, 'label': '(9, 1)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'}
                 ]
             }
         )

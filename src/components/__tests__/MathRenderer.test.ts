@@ -271,3 +271,58 @@ describe('Lesson titles and Greek letter math normalization', () => {
   });
 });
 
+describe('Piecewise condition words, compound interval unions, and LaTeX environments', () => {
+  it('normalizes Polish condition words dla and gdy inside piecewise / cases formulas', () => {
+    expect(cleanLatex('\\begin{cases} 2x & dla x > 0 \\\\ -x & dla x \\le 0 \\end{cases}'))
+      .toBe('\\begin{cases} 2x & \\text{dla } x > 0 \\\\ -x & \\text{dla } x \\le 0 \\end{cases}');
+
+    expect(cleanLatex('\\begin{cases} x^2 & gdy x < 1 \\\\ 2x - 1 & gdy x \\ge 1 \\end{cases}'))
+      .toBe('\\begin{cases} x^2 & \\text{gdy } x < 1 \\\\ 2x - 1 & \\text{gdy } x \\ge 1 \\end{cases}');
+
+    expect(cleanLatex('f(x) = 3 \\quad dla x \\in \\mathbb{R}'))
+      .toBe('f(x) = 3 \\quad \\text{dla } x \\in \\mathbb{R}');
+  });
+
+  it('preserves condition words that are already properly wrapped in \\text{}', () => {
+    const input = '\\begin{cases} 2x & \\text{dla } x > 0 \\\\ -x & \\text{dla } x \\le 0 \\end{cases}';
+    expect(cleanLatex(input)).toBe(input);
+  });
+
+  it('normalizes unicode set operations and infinity symbols in cleanLatex', () => {
+    expect(cleanLatex('x ∈ (-∞, 3] ∪ [5, +∞)')).toBe('x \\in (-\\infty, 3] \\cup [5, +\\infty)');
+    expect(cleanLatex('A ∩ B')).toBe('A \\cap B');
+  });
+
+  it('wraps compound interval unions in prose as a single unbroken math token', () => {
+    const text = 'Zbiór rozwiązań nierówności to x \\in (-\\infty, -3] \\cup [5, +\\infty).';
+    const wrapped = autoWrapLatex(text);
+    expect(wrapped).toBe('Zbiór rozwiązań nierówności to $x \\in (-\\infty, -3] \\cup [5, +\\infty)$.');
+
+    const tokens = parseMixedMathTokens(wrapped);
+    const mathTokens = tokens.filter(t => t.type === 'inline-math');
+    expect(mathTokens).toHaveLength(1);
+    expect(mathTokens[0].math).toBe('x \\in (-\\infty, -3] \\cup [5, +\\infty)');
+    expect(mathTokens[0].trailingPunct).toBe('.');
+  });
+
+  it('wraps multi-interval unions with brackets as single math tokens', () => {
+    const text = 'Dziedzina to [-5, -2) \\cup (2, 5].';
+    const wrapped = autoWrapLatex(text);
+    expect(wrapped).toBe('Dziedzina to $[-5, -2) \\cup (2, 5]$.');
+
+    const tokens = parseMixedMathTokens(wrapped);
+    const mathTokens = tokens.filter(t => t.type === 'inline-math');
+    expect(mathTokens).toHaveLength(1);
+    expect(mathTokens[0].math).toBe('[-5, -2) \\cup (2, 5]');
+  });
+
+  it('correctly parses \\begin{aligned} as display-math', () => {
+    const input = '\\begin{aligned} 2x + y &= 10 \\\\ x - y &= 2 \\end{aligned}';
+    const tokens = parseMixedMathTokens(input);
+    expect(tokens).toHaveLength(1);
+    expect(tokens[0].type).toBe('display-math');
+    expect(tokens[0].math).toBe('\\begin{aligned} 2x + y &= 10 \\\\ x - y &= 2 \\end{aligned}');
+  });
+});
+
+

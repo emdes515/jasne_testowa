@@ -32,22 +32,7 @@ def build_topic_03():
             ],
             correct_id='B',
             explanation='Odległość na osi liczymy ze wzoru $|x - y| = |5 - (-3)| = |5 + 3| = |8| = 8$. Odległość jest zawsze nieujemna.',
-            cke_trap='Uważaj na podwójny minus: odejmowanie liczby ujemnej daje dodawanie ($5 - (-3) = 8$, nie $2$).',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-5, 7],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'segments': [
-                    {'from': [-3, 0.5], 'to': [5, 0.5], 'color': '#FFB800', 'weight': 3}
-                ],
-                'points': [
-                    {'x': -3, 'y': 0, 'label': '-3', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'},
-                    {'x': 5, 'y': 0, 'label': '5', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'},
-                    {'x': 1, 'y': 0.5, 'label': 'd = 8', 'dot': 'none', 'color': '#FFB800', 'attach': 'n'}
-                ]
-            }
+            cke_trap='Uważaj na podwójny minus: odejmowanie liczby ujemnej daje dodawanie ($5 - (-3) = 8$, nie $2$).'
         ),
         make_sc_task(
             task_id='task-3-1-2',
@@ -61,25 +46,7 @@ def build_topic_03():
             ],
             correct_id='A',
             explanation='Geometrycznie: szukamy liczb w odległości $5$ od $3$. W prawo: $3 + 5 = 8$. W lewo: $3 - 5 = -2$. Sprawdzenie: $|8 - 3| = 5$ oraz $|-2 - 3| = |-5| = 5$.',
-            cke_trap='Nie zapominaj o skoku w lewo: równanie z wartością bezwzględną ma ZAWSZE dwa rozwiązania po obu stronach środka.',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-4, 10],
-                'yRange': [-1, 2],
-                'gridStep': 2,
-                'segments': [
-                    {'from': [-2, 0.5], 'to': [3, 0.5], 'color': '#38BDF8', 'weight': 2.5},
-                    {'from': [3, 0.5], 'to': [8, 0.5], 'color': '#38BDF8', 'weight': 2.5}
-                ],
-                'points': [
-                    {'x': 3, 'y': 0, 'label': 'a = 3', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
-                    {'x': -2, 'y': 0, 'label': 'x₁ = -2', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 8, 'y': 0, 'label': 'x₂ = 8', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 0.5, 'y': 0.5, 'label': 'r = 5', 'dot': 'none', 'color': '#38BDF8', 'attach': 'n'},
-                    {'x': 5.5, 'y': 0.5, 'label': 'r = 5', 'dot': 'none', 'color': '#38BDF8', 'attach': 'n'}
-                ]
-            }
+            cke_trap='Nie zapominaj o skoku w lewo: równanie z wartością bezwzględną ma ZAWSZE dwa rozwiązania po obu stronach środka.'
         ),
         make_sc_task(
             task_id='task-3-1-3',
@@ -93,23 +60,7 @@ def build_topic_03():
             ],
             correct_id='B',
             explanation='Wzór na odległość to $|x - a|$. Znak plus oznacza minus przed liczbą ujemną: $|x + 4| = |x - (-4)|$. Środkiem jest liczba $-4$.',
-            cke_trap='Gdy widzisz plus wewnątrz wartości bezwzględnej, środek leży po stronie ujemnej osi (w punkcie -4, a nie 4).',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-13, 5],
-                'yRange': [-1, 2],
-                'gridStep': 2,
-                'segments': [
-                    {'from': [-11, 0.5], 'to': [-4, 0.5], 'color': '#38BDF8', 'weight': 2.5},
-                    {'from': [-4, 0.5], 'to': [3, 0.5], 'color': '#38BDF8', 'weight': 2.5}
-                ],
-                'points': [
-                    {'x': -4, 'y': 0, 'label': 'a = -4', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
-                    {'x': -11, 'y': 0, 'label': 'x₁ = -11', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 3, 'y': 0, 'label': 'x₂ = 3', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            cke_trap='Gdy widzisz plus wewnątrz wartości bezwzględnej, środek leży po stronie ujemnej osi (w punkcie -4, a nie 4).'
         ),
         make_tf_task(
             task_id='task-3-1-4',
@@ -188,25 +139,7 @@ def build_topic_03():
             ],
             correct_id='A',
             explanation='Odległość od zera mniejsza niż 4 oznacza uwięzienie wewnątrz przedziału między -4 a 4: $x \\in (-4, 4)$.',
-            cke_trap='Znak $<$ zamyka zbiór rozwiązań w jednym spójnym przedziale (nie rozbija na dwa skrzydła).',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-6, 6],
-                'yRange': [-1, 2],
-                'gridStep': 2,
-                'polygons': [
-                    {'points': [[-4, 0], [4, 0], [4, 0.6], [-4, 0.6]], 'color': '#10B981', 'fillOpacity': 0.25}
-                ],
-                'segments': [
-                    {'from': [-4, 0.6], 'to': [4, 0.6], 'color': '#10B981', 'weight': 3}
-                ],
-                'points': [
-                    {'x': -4, 'y': 0, 'label': '-4', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'},
-                    {'x': 0, 'y': 0, 'label': 'środek 0', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
-                    {'x': 4, 'y': 0, 'label': '4', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            cke_trap='Znak $<$ zamyka zbiór rozwiązań w jednym spójnym przedziale (nie rozbija na dwa skrzydła).'
         ),
         make_sc_task(
             task_id='task-3-2-2',
@@ -293,26 +226,6 @@ def build_topic_03():
                     {'from': None, 'to': -2, 'toIncluded': True},
                     {'from': 5, 'to': None, 'fromIncluded': True}
                 ]
-            },
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-5, 8],
-                'yRange': [-1, 2],
-                'gridStep': 2,
-                'vectors': [
-                    {'tail': [-2, 0.5], 'tip': [-5, 0.5], 'color': '#10B981', 'weight': 3},
-                    {'tail': [5, 0.5], 'tip': [8, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [-2, 0], 'to': [-2, 0.5], 'color': '#10B981', 'weight': 2},
-                    {'from': [5, 0], 'to': [5, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': -2, 'y': 0, 'label': '-2', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 1.5, 'y': 0, 'label': 'środek 1.5', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
-                    {'x': 5, 'y': 0, 'label': '5', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
-                ]
             }
         ),
         make_tf_task(
@@ -329,25 +242,7 @@ def build_topic_03():
             question='Ile liczb całkowitych spełnia nierówność $|x - 2| \\le 3$?',
             correct_val=7,
             explanation='Końce przedziału to $2 - 3 = -1$ oraz $2 + 3 = 5$. Zbiorem rozwiązań jest przedział domknięty $[-1, 5]$. Liczby całkowite to: $-1, 0, 1, 2, 3, 4, 5$ — jest ich dokładnie 7.',
-            cke_trap='Pamiętaj o uwzględnieniu zera oraz obu końców przedziału (nawias domknięty).',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-3, 7],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'polygons': [
-                    {'points': [[-1, 0], [5, 0], [5, 0.6], [-1, 0.6]], 'color': '#10B981', 'fillOpacity': 0.25}
-                ],
-                'segments': [
-                    {'from': [-1, 0.6], 'to': [5, 0.6], 'color': '#10B981', 'weight': 3}
-                ],
-                'points': [
-                    {'x': -1, 'y': 0, 'label': '-1', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 2, 'y': 0, 'label': 'środek 2', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'},
-                    {'x': 5, 'y': 0, 'label': '5', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            cke_trap='Pamiętaj o uwzględnieniu zera oraz obu końców przedziału (nawias domknięty).'
         )
     ]
     l2 = make_lesson(

@@ -53,6 +53,48 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
   const [yMin, yMax] = plot.yRange || [-5, 5];
   const gridStep = plot.gridStep || 1;
 
+  // Bezpieczny margines wokół viewBox, aby punkty brzegowe i etykiety nie były ucinane przez ramkę
+  const xSpan = xMax - xMin;
+  const ySpan = yMax - yMin;
+  const xPad = (plot as any).xPadding ?? Math.max(0.6, xSpan * 0.05);
+  const yPad = (plot as any).yPadding ?? Math.max(0.6, ySpan * 0.07);
+  const viewBoxX: [number, number] = [xMin - xPad, xMax + xPad];
+  const viewBoxY: [number, number] = [yMin - yPad, yMax + yPad];
+
+  // Wyznaczenie funkcji paraboli z postaci kanonicznej (p, q), ogólnej (b, c) lub bezpośrednich współczynników
+  const getParabolaFunction = (): ((x: number) => number) | null => {
+    const p = plot.parabola;
+    if (p) {
+      if (typeof p.p === 'number' && typeof p.q === 'number') {
+        const a = p.a ?? 1;
+        return (x: number) => a * Math.pow(x - p.p!, 2) + p.q!;
+      }
+      if (typeof p.b === 'number' && typeof p.c === 'number') {
+        const a = p.a ?? 1;
+        return (x: number) => a * x * x + p.b! * x + p.c!;
+      }
+      if (typeof p.a === 'number') {
+        const b = (p as any).b ?? 0;
+        const c = (p as any).c ?? 0;
+        return (x: number) => p.a * x * x + b * x + c;
+      }
+    }
+    const plotAny = plot as any;
+    if (typeof plotAny.a === 'number') {
+      if (typeof plotAny.p === 'number' && typeof plotAny.q === 'number') {
+        return (x: number) => plotAny.a * Math.pow(x - plotAny.p, 2) + plotAny.q;
+      }
+      if (typeof plotAny.b === 'number' || typeof plotAny.c === 'number') {
+        const b = plotAny.b ?? 0;
+        const c = plotAny.c ?? 0;
+        return (x: number) => plotAny.a * x * x + b * x + c;
+      }
+    }
+    return null;
+  };
+
+  const parabolaFn = getParabolaFunction();
+
   return (
     <div className={`w-full max-w-lg mx-auto my-3 rounded-2xl bg-[#070A0F] border border-white/10 shadow-2xl overflow-hidden flex flex-col items-center select-none relative ${className}`}>
       {/* Pasek statusu / współrzędne odczytane sondą */}
@@ -64,7 +106,7 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
 
       <div className="w-full flex justify-center items-center overflow-hidden">
         <Mafs
-          viewBox={{ x: [xMin, xMax], y: [yMin, yMax] }}
+          viewBox={{ x: viewBoxX, y: viewBoxY }}
           preserveAspectRatio={false}
           pan={false}
           zoom={false}
@@ -104,10 +146,7 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
             const steps = 30;
             const polyPoints: [number, number][] = [];
             const evalY = (x: number) => {
-              if (plot.parabola) {
-                const p = plot.parabola;
-                return p.a * Math.pow(x - p.p, 2) + p.q;
-              }
+              if (parabolaFn) return parabolaFn(x);
               if (plot.fn) return plot.fn(x);
               return 0;
             };
@@ -153,14 +192,11 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
             />
           ))}
 
-          {/* 2. Parabola: f(x) = a*(x-p)^2 + q */}
-          {plot.parabola && (
+          {/* 2. Parabola: f(x) = a*(x-p)^2 + q lub ax^2 + bx + c */}
+          {parabolaFn && (
             <Plot.OfX
-              y={(x) => {
-                const p = plot.parabola!;
-                return p.a * Math.pow(x - p.p, 2) + p.q;
-              }}
-              color={plot.parabola.color || '#FFB800'}
+              y={parabolaFn}
+              color={plot.parabola?.color || (plot as any).color || '#38BDF8'}
               weight={2.75}
             />
           )}
@@ -245,7 +281,19 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
 
           {/* 7. Punkty kluczowe (wierzchołki, miejsca zerowe) */}
           {plot.points?.map((pt, idx) => {
-            const attach = pt.attach || (pt.y <= 0 ? 'n' : 's');
+            let rawAttach = (pt.attach || '').toLowerCase();
+            if (rawAttach === 'top') rawAttach = 'n';
+            if (rawAttach === 'bottom') rawAttach = 's';
+
+            // Dla punktów leżących na osi OX (y ≈ 0), etykiety skierowane na południe kolidują z podziałką osi (np. x_1 = -2-2).
+            // Domyślnie i bezpiecznie kotwiczymy je na północy ('n')!
+            let attach: any = rawAttach;
+            if (!attach) {
+              attach = Math.abs(pt.y) < 0.1 ? 'n' : (pt.y < 0 ? 'n' : 's');
+            } else if (Math.abs(pt.y) < 0.1 && (attach === 's' || attach === 'se' || attach === 'sw')) {
+              attach = 'n';
+            }
+
             let dx = 0;
             let dy = 0;
             if (attach.includes('w')) dx = -12;
@@ -296,7 +344,14 @@ export const MafsPlot: React.FC<MafsPlotProps> = ({
 
           {/* 8. Etykiety tekstowe */}
           {plot.labels?.map((lbl, idx) => {
-            const attach = lbl.attach || 'n';
+            let rawAttach = (lbl.attach || 'n').toLowerCase();
+            if (rawAttach === 'top') rawAttach = 'n';
+            if (rawAttach === 'bottom') rawAttach = 's';
+            let attach: any = rawAttach;
+            if (Math.abs(lbl.y) < 0.1 && (attach === 's' || attach === 'se' || attach === 'sw')) {
+              attach = 'n';
+            }
+
             let dx = 0;
             let dy = 0;
             if (attach.includes('w')) dx = -8;

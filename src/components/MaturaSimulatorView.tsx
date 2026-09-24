@@ -110,16 +110,15 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                 {task.content}
               </Markdown>
             </div>
-            {Boolean((task as any).numberLine) && (
+            {Boolean((task as any).numberLine) ? (
               <div className="mt-3 flex justify-center">
                 <NumberLineDiagram data={(task as any).numberLine} height={64} maxWidth="360px" />
               </div>
-            )}
-            {Boolean((task as any).diagram || (task as any).plot) && (
+            ) : Boolean((task as any).diagram || (task as any).plot) ? (
               <div className="mt-3 flex justify-center">
                 <MathDiagram diagram={(task as any).diagram || (task as any).plot} />
               </div>
-            )}
+            ) : null}
           </div>
           <div className="lg:col-span-6 grid grid-cols-1 gap-2.5">
             {task.options?.map((opt, optIdx) => {
@@ -176,16 +175,15 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
               {task.content}
             </Markdown>
           </div>
-          {Boolean((task as any).numberLine) && (
+          {Boolean((task as any).numberLine) ? (
             <div className="mt-3 flex justify-center">
               <NumberLineDiagram data={(task as any).numberLine} height={64} maxWidth="360px" />
             </div>
-          )}
-          {Boolean((task as any).diagram || (task as any).plot) && (
+          ) : Boolean((task as any).diagram || (task as any).plot) ? (
             <div className="mt-3 flex justify-center">
               <MathDiagram diagram={(task as any).diagram || (task as any).plot} />
             </div>
-          )}
+          ) : null}
 
           <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
             <div className="flex items-center gap-2">
@@ -2109,16 +2107,15 @@ export function MaturaSimulatorView({
 
                 {renderMathContent(currentMaratonTask.content)}
 
-                {Boolean((currentMaratonTask as any).numberLine) && (
+                {Boolean((currentMaratonTask as any).numberLine) ? (
                   <div className="mt-3 flex justify-center">
                     <NumberLineDiagram data={(currentMaratonTask as any).numberLine} height={64} maxWidth="360px" />
                   </div>
-                )}
-                {Boolean((currentMaratonTask as any).diagram || (currentMaratonTask as any).plot) && (
+                ) : Boolean((currentMaratonTask as any).diagram || (currentMaratonTask as any).plot) ? (
                   <div className="mt-3 flex justify-center">
                     <MathDiagram diagram={enrichTaskWithVisual(currentMaratonTask).diagram || enrichTaskWithVisual(currentMaratonTask).plot} />
                   </div>
-                )}
+                ) : null}
 
                 {currentMaratonTask.isClosed && currentMaratonTask.options && (
                   <div>

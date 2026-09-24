@@ -3390,59 +3390,7 @@
                 "level_2": "Uważaj na podwójny minus: odejmowanie liczby ujemnej daje dodawanie ($5 - (-3) = 8$, nie $2$)."
               },
               "diagram": null,
-              "plot": {
-                "type": "PLOT",
-                "hideYAxis": true,
-                "xRange": [
-                  -5,
-                  7
-                ],
-                "yRange": [
-                  -1,
-                  2
-                ],
-                "gridStep": 1,
-                "segments": [
-                  {
-                    "from": [
-                      -3,
-                      0.5
-                    ],
-                    "to": [
-                      5,
-                      0.5
-                    ],
-                    "color": "#FFB800",
-                    "weight": 3
-                  }
-                ],
-                "points": [
-                  {
-                    "x": -3,
-                    "y": 0,
-                    "label": "-3",
-                    "dot": "filled",
-                    "color": "#38BDF8",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 5,
-                    "y": 0,
-                    "label": "5",
-                    "dot": "filled",
-                    "color": "#38BDF8",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 1,
-                    "y": 0.5,
-                    "label": "d = 8",
-                    "dot": "none",
-                    "color": "#FFB800",
-                    "attach": "n"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -3496,87 +3444,7 @@
                 "level_2": "Nie zapominaj o skoku w lewo: równanie z wartością bezwzględną ma ZAWSZE dwa rozwiązania po obu stronach środka."
               },
               "diagram": null,
-              "plot": {
-                "type": "PLOT",
-                "hideYAxis": true,
-                "xRange": [
-                  -4,
-                  10
-                ],
-                "yRange": [
-                  -1,
-                  2
-                ],
-                "gridStep": 2,
-                "segments": [
-                  {
-                    "from": [
-                      -2,
-                      0.5
-                    ],
-                    "to": [
-                      3,
-                      0.5
-                    ],
-                    "color": "#38BDF8",
-                    "weight": 2.5
-                  },
-                  {
-                    "from": [
-                      3,
-                      0.5
-                    ],
-                    "to": [
-                      8,
-                      0.5
-                    ],
-                    "color": "#38BDF8",
-                    "weight": 2.5
-                  }
-                ],
-                "points": [
-                  {
-                    "x": 3,
-                    "y": 0,
-                    "label": "a = 3",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "s"
-                  },
-                  {
-                    "x": -2,
-                    "y": 0,
-                    "label": "x₁ = -2",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 8,
-                    "y": 0,
-                    "label": "x₂ = 8",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 0.5,
-                    "y": 0.5,
-                    "label": "r = 5",
-                    "dot": "none",
-                    "color": "#38BDF8",
-                    "attach": "n"
-                  },
-                  {
-                    "x": 5.5,
-                    "y": 0.5,
-                    "label": "r = 5",
-                    "dot": "none",
-                    "color": "#38BDF8",
-                    "attach": "n"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -3630,71 +3498,7 @@
                 "level_2": "Gdy widzisz plus wewnątrz wartości bezwzględnej, środek leży po stronie ujemnej osi (w punkcie -4, a nie 4)."
               },
               "diagram": null,
-              "plot": {
-                "type": "PLOT",
-                "hideYAxis": true,
-                "xRange": [
-                  -13,
-                  5
-                ],
-                "yRange": [
-                  -1,
-                  2
-                ],
-                "gridStep": 2,
-                "segments": [
-                  {
-                    "from": [
-                      -11,
-                      0.5
-                    ],
-                    "to": [
-                      -4,
-                      0.5
-                    ],
-                    "color": "#38BDF8",
-                    "weight": 2.5
-                  },
-                  {
-                    "from": [
-                      -4,
-                      0.5
-                    ],
-                    "to": [
-                      3,
-                      0.5
-                    ],
-                    "color": "#38BDF8",
-                    "weight": 2.5
-                  }
-                ],
-                "points": [
-                  {
-                    "x": -4,
-                    "y": 0,
-                    "label": "a = -4",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "s"
-                  },
-                  {
-                    "x": -11,
-                    "y": 0,
-                    "label": "x₁ = -11",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 3,
-                    "y": 0,
-                    "label": "x₂ = 3",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -3952,83 +3756,7 @@
                 "level_2": "Znak $<$ zamyka zbiór rozwiązań w jednym spójnym przedziale (nie rozbija na dwa skrzydła)."
               },
               "diagram": null,
-              "plot": {
-                "type": "PLOT",
-                "hideYAxis": true,
-                "xRange": [
-                  -6,
-                  6
-                ],
-                "yRange": [
-                  -1,
-                  2
-                ],
-                "gridStep": 2,
-                "polygons": [
-                  {
-                    "points": [
-                      [
-                        -4,
-                        0
-                      ],
-                      [
-                        4,
-                        0
-                      ],
-                      [
-                        4,
-                        0.6
-                      ],
-                      [
-                        -4,
-                        0.6
-                      ]
-                    ],
-                    "color": "#10B981",
-                    "fillOpacity": 0.25
-                  }
-                ],
-                "segments": [
-                  {
-                    "from": [
-                      -4,
-                      0.6
-                    ],
-                    "to": [
-                      4,
-                      0.6
-                    ],
-                    "color": "#10B981",
-                    "weight": 3
-                  }
-                ],
-                "points": [
-                  {
-                    "x": -4,
-                    "y": 0,
-                    "label": "-4",
-                    "dot": "hollow",
-                    "color": "#10B981",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 0,
-                    "y": 0,
-                    "label": "środek 0",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 4,
-                    "y": 0,
-                    "label": "4",
-                    "dot": "hollow",
-                    "color": "#10B981",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -4208,97 +3936,7 @@
                 "level_2": "Nie myl środka z promieniem. Środek to średnia arytmetyczna $1{,}5$, a promień to odległość $3{,}5$. Błędne odwrócenie tych wartości prowadzi do dystraktora A."
               },
               "diagram": null,
-              "plot": {
-                "type": "PLOT",
-                "hideYAxis": true,
-                "xRange": [
-                  -5,
-                  8
-                ],
-                "yRange": [
-                  -1,
-                  2
-                ],
-                "gridStep": 2,
-                "vectors": [
-                  {
-                    "tail": [
-                      -2,
-                      0.5
-                    ],
-                    "tip": [
-                      -5,
-                      0.5
-                    ],
-                    "color": "#10B981",
-                    "weight": 3
-                  },
-                  {
-                    "tail": [
-                      5,
-                      0.5
-                    ],
-                    "tip": [
-                      8,
-                      0.5
-                    ],
-                    "color": "#10B981",
-                    "weight": 3
-                  }
-                ],
-                "segments": [
-                  {
-                    "from": [
-                      -2,
-                      0
-                    ],
-                    "to": [
-                      -2,
-                      0.5
-                    ],
-                    "color": "#10B981",
-                    "weight": 2
-                  },
-                  {
-                    "from": [
-                      5,
-                      0
-                    ],
-                    "to": [
-                      5,
-                      0.5
-                    ],
-                    "color": "#10B981",
-                    "weight": 2
-                  }
-                ],
-                "points": [
-                  {
-                    "x": -2,
-                    "y": 0,
-                    "label": "-2",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 1.5,
-                    "y": 0,
-                    "label": "środek 1.5",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 5,
-                    "y": 0,
-                    "label": "5",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": {
                 "min": -5,
                 "max": 7,
@@ -4388,83 +4026,7 @@
                 "level_2": "Pamiętaj o uwzględnieniu zera oraz obu końców przedziału (nawias domknięty)."
               },
               "diagram": null,
-              "plot": {
-                "type": "PLOT",
-                "hideYAxis": true,
-                "xRange": [
-                  -3,
-                  7
-                ],
-                "yRange": [
-                  -1,
-                  2
-                ],
-                "gridStep": 1,
-                "polygons": [
-                  {
-                    "points": [
-                      [
-                        -1,
-                        0
-                      ],
-                      [
-                        5,
-                        0
-                      ],
-                      [
-                        5,
-                        0.6
-                      ],
-                      [
-                        -1,
-                        0.6
-                      ]
-                    ],
-                    "color": "#10B981",
-                    "fillOpacity": 0.25
-                  }
-                ],
-                "segments": [
-                  {
-                    "from": [
-                      -1,
-                      0.6
-                    ],
-                    "to": [
-                      5,
-                      0.6
-                    ],
-                    "color": "#10B981",
-                    "weight": 3
-                  }
-                ],
-                "points": [
-                  {
-                    "x": -1,
-                    "y": 0,
-                    "label": "-1",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 2,
-                    "y": 0,
-                    "label": "środek 2",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "s"
-                  },
-                  {
-                    "x": 5,
-                    "y": 0,
-                    "label": "5",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             }
           ]
@@ -8704,26 +8266,34 @@
             {
               "id": "task-6-3-5",
               "type": "OPEN_TASK",
-              "points": 2,
-              "maxPoints": 2,
-              "badge": "Trening JASNE • Wzorzec CKE",
-              "source_badge": "Trening JASNE • Wzorzec CKE",
-              "source": "Trening JASNE • Wzorzec CKE",
-              "cke_source": "Trening JASNE • Wzorzec CKE",
+              "points": 3,
+              "maxPoints": 3,
+              "badge": "Matura maj 2023 • Zad. 9",
+              "source_badge": "Matura maj 2023 • Zad. 9",
+              "source": "Matura maj 2023 • Zad. 9",
+              "cke_source": "Matura maj 2023 • Zad. 9",
               "instruction": "Rozwiąż zadanie i zapisz pełny tok rozumowania.",
-              "question": "Rozwiąż równanie $2x^3 - 3x^2 - 18x + 27 = 0$. Zapisz pełne rozumowanie.",
-              "content": "Rozwiąż równanie $2x^3 - 3x^2 - 18x + 27 = 0$. Zapisz pełne rozumowanie.",
-              "math_statement": "Rozwiąż równanie $2x^3 - 3x^2 - 18x + 27 = 0$. Zapisz pełne rozumowanie.",
-              "scoring_key": "1 pkt: poprawne pogrupowanie wyrazów i postać (2x - 3)(x^2 - 9) = 0.\n2 pkt: podanie wszystkich trzech rozwiązań: x = 1.5, x = -3, x = 3.",
-              "officialKey": "1 pkt: poprawne pogrupowanie wyrazów i postać (2x - 3)(x^2 - 9) = 0.\n2 pkt: podanie wszystkich trzech rozwiązań: x = 1.5, x = -3, x = 3.",
-              "explanation": "1) Grupujemy w pary: $x^2(2x - 3) - 9(2x - 3) = 0$.\n2) Wyłączamy nawias: $(2x - 3)(x^2 - 9) = 0$.\n3) Rozkładamy różnicę kwadratów: $(2x - 3)(x - 3)(x + 3) = 0$.\n4) Pierwiastki: $2x - 3 = 0 \\text{ czyli } x = 1{,}5$, $x - 3 = 0 \\text{ czyli } x = 3$, $x + 3 = 0 \\text{ czyli } x = -3$. Rozwiązania: $\\{-3, 1{,}5, 3\\}$.",
-              "ckeTrap": "Pamiętaj o wyłączeniu $-9$ z drugiej pary: $(-18x + 27) = -9(2x - 3)$.",
-              "cke_trap": "Pamiętaj o wyłączeniu $-9$ z drugiej pary: $(-18x + 27) = -9(2x - 3)$.",
+              "question": "Rozwiąż równanie\n$$3x^3 - 2x^2 - 12x + 8 = 0$$\nZapisz obliczenia.",
+              "content": "Rozwiąż równanie\n$$3x^3 - 2x^2 - 12x + 8 = 0$$\nZapisz obliczenia.",
+              "math_statement": "Rozwiąż równanie\n$$3x^3 - 2x^2 - 12x + 8 = 0$$\nZapisz obliczenia.",
+              "scoring_key": [
+                "1 pkt: Poprawne pogrupowanie wyrazów wielomianu, np. x^2(3x - 2) - 4(3x - 2) = 0.",
+                "2 pkt: Zapisanie równania w postaci iloczynowej z czynnikami liniowymi: (3x - 2)(x - 2)(x + 2) = 0.",
+                "3 pkt: Podanie wszystkich trzech rozwiązań równania: x = -2, x = 2/3, x = 2."
+              ],
+              "officialKey": [
+                "1 pkt: Poprawne pogrupowanie wyrazów wielomianu, np. x^2(3x - 2) - 4(3x - 2) = 0.",
+                "2 pkt: Zapisanie równania w postaci iloczynowej z czynnikami liniowymi: (3x - 2)(x - 2)(x + 2) = 0.",
+                "3 pkt: Podanie wszystkich trzech rozwiązań równania: x = -2, x = 2/3, x = 2."
+              ],
+              "explanation": "1) Grupujemy wyrazy w pary i wyłączamy wspólne czynniki: $x^2(3x - 2) - 4(3x - 2) = 0$.\n2) Wyłączamy wspólny dwumian $(3x - 2)$: $(3x - 2)(x^2 - 4) = 0$.\n3) Rozkładamy różnicę kwadratów: $(3x - 2)(x - 2)(x + 2) = 0$.\n4) Przyrównujemy każdy czynnik do zera: $3x - 2 = 0$, skąd $x = \\frac{2}{3}$; $x - 2 = 0$, skąd $x = 2$; $x + 2 = 0$, skąd $x = -2$.\nOdpowiedź: Rozwiązaniami równania są liczby $x \\in \\{-2, \\frac{2}{3}, 2\\}$.",
+              "ckeTrap": "Uważaj na znak minus przy wyłączaniu $-4$ z drugiej pary: $-12x + 8 = -4(3x - 2)$.",
+              "cke_trap": "Uważaj na znak minus przy wyłączaniu $-4$ z drugiej pary: $-12x + 8 = -4(3x - 2)$.",
               "hint_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-              "hint_2": "Pamiętaj o wyłączeniu $-9$ z drugiej pary: $(-18x + 27) = -9(2x - 3)$.",
+              "hint_2": "Uważaj na znak minus przy wyłączaniu $-4$ z drugiej pary: $-12x + 8 = -4(3x - 2)$.",
               "hints": {
                 "level_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-                "level_2": "Pamiętaj o wyłączeniu $-9$ z drugiej pary: $(-18x + 27) = -9(2x - 3)$."
+                "level_2": "Uważaj na znak minus przy wyłączaniu $-4$ z drugiej pary: $-12x + 8 = -4(3x - 2)$."
               },
               "diagram": null,
               "plot": null,
@@ -10130,54 +9700,7 @@
                 "level_2": "We wzorze na pierwiastki jest $-b$: dla $b = -2$ mamy $-(-2) = +2$."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -4,
-                  6
-                ],
-                "yRange": [
-                  -10,
-                  5
-                ],
-                "gridStep": 2,
-                "parabola": {
-                  "a": 1,
-                  "p": 1,
-                  "q": -9,
-                  "color": "#38BDF8",
-                  "domain": [
-                    -3.2,
-                    5.2
-                  ]
-                },
-                "points": [
-                  {
-                    "x": -2,
-                    "y": 0,
-                    "label": "x₁ = -2",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "nw"
-                  },
-                  {
-                    "x": 4,
-                    "y": 0,
-                    "label": "x₂ = 4",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "ne"
-                  },
-                  {
-                    "x": 1,
-                    "y": -9,
-                    "label": "W(1, -9)",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -10231,38 +9754,7 @@
                 "level_2": "Iloczyn $-4 \\cdot (-1) \\cdot (-9)$ zawiera trzy minusy, więc daje $-36$, a nie $+36$."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -6,
-                  0
-                ],
-                "yRange": [
-                  -5,
-                  2
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": -1,
-                  "p": -3,
-                  "q": 0,
-                  "color": "#F43F5E",
-                  "domain": [
-                    -5.2,
-                    -0.8
-                  ]
-                },
-                "points": [
-                  {
-                    "x": -3,
-                    "y": 0,
-                    "label": "x₀ = -3 (Δ = 0, styczna)",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "n"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -10333,68 +9825,7 @@
                 "level_2": "Odległość to różnica większego pierwiastka i mniejszego: $x_2 - x_1 = 8$."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -1,
-                  11
-                ],
-                "yRange": [
-                  -18,
-                  6
-                ],
-                "gridStep": 2,
-                "parabola": {
-                  "a": 1,
-                  "p": 5,
-                  "q": -16,
-                  "color": "#38BDF8",
-                  "domain": [
-                    0,
-                    10
-                  ]
-                },
-                "segments": [
-                  {
-                    "from": [
-                      1,
-                      0
-                    ],
-                    "to": [
-                      9,
-                      0
-                    ],
-                    "color": "#10B981",
-                    "weight": 4
-                  }
-                ],
-                "points": [
-                  {
-                    "x": 1,
-                    "y": 0,
-                    "label": "x₁ = 1",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "nw"
-                  },
-                  {
-                    "x": 9,
-                    "y": 0,
-                    "label": "x₂ = 9",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "ne"
-                  },
-                  {
-                    "x": 5,
-                    "y": 0,
-                    "label": "d = 8",
-                    "dot": "none",
-                    "color": "#10B981",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             }
           ]
@@ -10664,54 +10095,7 @@
                 "level_2": "Znak nierówności ($>$) NIE decyduje o ramionach paraboli!"
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -1,
-                  3
-                ],
-                "yRange": [
-                  -3,
-                  2
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": -2,
-                  "p": 1.25,
-                  "q": 0.125,
-                  "color": "#F43F5E",
-                  "domain": [
-                    -0.5,
-                    3
-                  ]
-                },
-                "points": [
-                  {
-                    "x": 1,
-                    "y": 0,
-                    "label": "x₁ = 1",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "sw"
-                  },
-                  {
-                    "x": 1.5,
-                    "y": 0,
-                    "label": "x₂ = 1.5",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "se"
-                  },
-                  {
-                    "x": 1.25,
-                    "y": 0.125,
-                    "label": "a = -2 < 0 (ramiona w dół)",
-                    "dot": "filled",
-                    "color": "#F43F5E",
-                    "attach": "n"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -10765,62 +10149,7 @@
                 "level_2": "Znak $\\le$ daje nawiasy domknięte $[2, 3]$, a nie otwarte $(2, 3)$."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  0,
-                  5
-                ],
-                "yRange": [
-                  -2,
-                  4
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": 1,
-                  "p": 2.5,
-                  "q": -0.25,
-                  "color": "#38BDF8",
-                  "domain": [
-                    0.5,
-                    4.5
-                  ]
-                },
-                "segments": [
-                  {
-                    "from": [
-                      2,
-                      0
-                    ],
-                    "to": [
-                      3,
-                      0
-                    ],
-                    "startDot": "filled",
-                    "endDot": "filled",
-                    "color": "#10B981",
-                    "weight": 4
-                  }
-                ],
-                "points": [
-                  {
-                    "x": 2,
-                    "y": 0,
-                    "label": "x₁ = 2",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "nw"
-                  },
-                  {
-                    "x": 3,
-                    "y": 0,
-                    "label": "x₂ = 3",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "ne"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -10874,70 +10203,7 @@
                 "level_2": "Dla ramion w dół obszar NAD osią to wnętrze między pierwiastkami."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -1,
-                  5
-                ],
-                "yRange": [
-                  -2,
-                  3
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": -1,
-                  "p": 2,
-                  "q": 1,
-                  "color": "#FFB800",
-                  "domain": [
-                    0,
-                    4
-                  ]
-                },
-                "segments": [
-                  {
-                    "from": [
-                      1,
-                      0
-                    ],
-                    "to": [
-                      3,
-                      0
-                    ],
-                    "startDot": "hollow",
-                    "endDot": "hollow",
-                    "color": "#10B981",
-                    "weight": 4
-                  }
-                ],
-                "points": [
-                  {
-                    "x": 1,
-                    "y": 0,
-                    "label": "x₁ = 1 (otwarty)",
-                    "dot": "hollow",
-                    "color": "#10B981",
-                    "attach": "sw"
-                  },
-                  {
-                    "x": 3,
-                    "y": 0,
-                    "label": "x₂ = 3 (otwarty)",
-                    "dot": "hollow",
-                    "color": "#10B981",
-                    "attach": "se"
-                  },
-                  {
-                    "x": 2,
-                    "y": 1,
-                    "label": "W(2, 1)",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "n"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -10987,82 +10253,33 @@
               "type": "OPEN_TASK",
               "points": 2,
               "maxPoints": 2,
-              "badge": "Trening JASNE • Wzorzec CKE",
-              "source_badge": "Trening JASNE • Wzorzec CKE",
-              "source": "Trening JASNE • Wzorzec CKE",
-              "cke_source": "Trening JASNE • Wzorzec CKE",
+              "badge": "Matura czerwiec 2023 • Zad. 8",
+              "source_badge": "Matura czerwiec 2023 • Zad. 8",
+              "source": "Matura czerwiec 2023 • Zad. 8",
+              "cke_source": "Matura czerwiec 2023 • Zad. 8",
               "instruction": "Rozwiąż zadanie i zapisz pełny tok rozumowania.",
-              "question": "Rozwiąż nierówność $3x^2 - 10x + 3 \\le 0$. Zapisz pełne obliczenia.",
-              "content": "Rozwiąż nierówność $3x^2 - 10x + 3 \\le 0$. Zapisz pełne obliczenia.",
-              "math_statement": "Rozwiąż nierówność $3x^2 - 10x + 3 \\le 0$. Zapisz pełne obliczenia.",
-              "scoring_key": "1 pkt: obliczenie delty i miejsc zerowych: x1 = 1/3, x2 = 3.\n2 pkt: poprawny szkic paraboli z ramionami w górę i podanie przedziału domkniętego [1/3, 3].",
-              "officialKey": "1 pkt: obliczenie delty i miejsc zerowych: x1 = 1/3, x2 = 3.\n2 pkt: poprawny szkic paraboli z ramionami w górę i podanie przedziału domkniętego [1/3, 3].",
-              "explanation": "1) $\\Delta = (-10)^2 - 4 \\cdot 3 \\cdot 3 = 100 - 36 = 64$, $\\sqrt{\\Delta} = 8$.\n2) $x_1 = \\frac{10 - 8}{6} = \\frac{1}{3}$, $x_2 = \\frac{10 + 8}{6} = 3$.\n3) Ponieważ $a = 3 > 0$, ramiona paraboli są skierowane w górę. Wartości $\\le 0$ leżą pod osią i na osi w przedziale $[\\frac{1}{3}, 3]$.",
-              "ckeTrap": "Pamiętaj o podzieleniu przez $2a = 6$, a nie samo 2!",
-              "cke_trap": "Pamiętaj o podzieleniu przez $2a = 6$, a nie samo 2!",
+              "question": "Rozwiąż nierówność\n$$x(2x - 1) < 2x$$\nZapisz obliczenia.",
+              "content": "Rozwiąż nierówność\n$$x(2x - 1) < 2x$$\nZapisz obliczenia.",
+              "math_statement": "Rozwiąż nierówność\n$$x(2x - 1) < 2x$$\nZapisz obliczenia.",
+              "scoring_key": [
+                "1 pkt: Zapisanie nierówności w postaci uporządkowanej 2x^2 - 3x < 0 i wyznaczenie miejsc zerowych trójmianu: x1 = 0, x2 = 3/2.",
+                "2 pkt: Poprawny szkic paraboli z ramionami skierowanymi w górę i podanie zbioru rozwiązań w postaci przedziału otwartego: (0, 3/2)."
+              ],
+              "officialKey": [
+                "1 pkt: Zapisanie nierówności w postaci uporządkowanej 2x^2 - 3x < 0 i wyznaczenie miejsc zerowych trójmianu: x1 = 0, x2 = 3/2.",
+                "2 pkt: Poprawny szkic paraboli z ramionami skierowanymi w górę i podanie zbioru rozwiązań w postaci przedziału otwartego: (0, 3/2)."
+              ],
+              "explanation": "Krok 1: Przekształcamy nierówność do postaci uporządkowanej:\n$$x(2x - 1) < 2x \\text{ czyli } 2x^2 - x < 2x \\text{ czyli } 2x^2 - 3x < 0.$$\nKrok 2: Wyznaczamy miejsca zerowe, wyłączając $x$ przed nawias:\n$$x(2x - 3) = 0 \\text{ czyli } x_1 = 0 \\quad \\text{lub} \\quad x_2 = \\frac{3}{2}.$$\nKrok 3: Szkicujemy parabolę o ramionach skierowanych w górę ($a = 2 > 0$). Szukamy wartości mniejszych od zera ($<0$), czyli leżących pod osią $OX$.\nZbiorem rozwiązań jest przedział otwarty: $x \\in (0, \\frac{3}{2})$.",
+              "ckeTrap": "Nigdy nie dziel nierówności przez $x$! Dzielenie przez niewiadomą bez znajomości jej znaku zmienia lub gubi rozwiązania. Zawsze przenoś wszystko na jedną stronę.",
+              "cke_trap": "Nigdy nie dziel nierówności przez $x$! Dzielenie przez niewiadomą bez znajomości jej znaku zmienia lub gubi rozwiązania. Zawsze przenoś wszystko na jedną stronę.",
               "hint_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-              "hint_2": "Pamiętaj o podzieleniu przez $2a = 6$, a nie samo 2!",
+              "hint_2": "Nigdy nie dziel nierówności przez $x$! Dzielenie przez niewiadomą bez znajomości jej znaku zmienia lub gubi rozwiązania. Zawsze przenoś wszystko na jedną stronę.",
               "hints": {
                 "level_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-                "level_2": "Pamiętaj o podzieleniu przez $2a = 6$, a nie samo 2!"
+                "level_2": "Nigdy nie dziel nierówności przez $x$! Dzielenie przez niewiadomą bez znajomości jej znaku zmienia lub gubi rozwiązania. Zawsze przenoś wszystko na jedną stronę."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -1,
-                  4
-                ],
-                "yRange": [
-                  -6,
-                  4
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": 3,
-                  "p": 1.667,
-                  "q": -5.333,
-                  "color": "#38BDF8",
-                  "domain": [
-                    -0.2,
-                    3.5
-                  ]
-                },
-                "segments": [
-                  {
-                    "from": [
-                      0.333,
-                      0
-                    ],
-                    "to": [
-                      3,
-                      0
-                    ],
-                    "startDot": "filled",
-                    "endDot": "filled",
-                    "color": "#10B981",
-                    "weight": 4
-                  }
-                ],
-                "points": [
-                  {
-                    "x": 0.333,
-                    "y": 0,
-                    "label": "x₁ = 1/3",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "nw"
-                  },
-                  {
-                    "x": 3,
-                    "y": 0,
-                    "label": "x₂ = 3",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "ne"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             }
           ]
@@ -11242,76 +10459,7 @@
                 "level_2": "Nigdy nie dziel nierówności przez $x$! Zawsze wyłączaj $x$ przed nawias."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -2,
-                  6
-                ],
-                "yRange": [
-                  -5,
-                  4
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": 1,
-                  "p": 2,
-                  "q": -4,
-                  "color": "#38BDF8",
-                  "domain": [
-                    -1,
-                    5
-                  ]
-                },
-                "segments": [
-                  {
-                    "from": [
-                      -2,
-                      0
-                    ],
-                    "to": [
-                      0,
-                      0
-                    ],
-                    "startDot": "none",
-                    "endDot": "hollow",
-                    "color": "#10B981",
-                    "weight": 4
-                  },
-                  {
-                    "from": [
-                      4,
-                      0
-                    ],
-                    "to": [
-                      6,
-                      0
-                    ],
-                    "startDot": "hollow",
-                    "endDot": "none",
-                    "color": "#10B981",
-                    "weight": 4
-                  }
-                ],
-                "points": [
-                  {
-                    "x": 0,
-                    "y": 0,
-                    "label": "x₁ = 0",
-                    "dot": "hollow",
-                    "color": "#10B981",
-                    "attach": "nw"
-                  },
-                  {
-                    "x": 4,
-                    "y": 0,
-                    "label": "x₂ = 4",
-                    "dot": "hollow",
-                    "color": "#10B981",
-                    "attach": "ne"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -11365,62 +10513,7 @@
                 "level_2": "Równość $x^2 \\le 16$ oznacza odległość od zera co najwyżej 4, czyli $|x| \\le 4$, a więc $[-4, 4]$."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -6,
-                  6
-                ],
-                "yRange": [
-                  -5,
-                  5
-                ],
-                "gridStep": 2,
-                "parabola": {
-                  "a": 0.25,
-                  "p": 0,
-                  "q": -4,
-                  "color": "#38BDF8",
-                  "domain": [
-                    -5.5,
-                    5.5
-                  ]
-                },
-                "segments": [
-                  {
-                    "from": [
-                      -4,
-                      0
-                    ],
-                    "to": [
-                      4,
-                      0
-                    ],
-                    "startDot": "filled",
-                    "endDot": "filled",
-                    "color": "#10B981",
-                    "weight": 4
-                  }
-                ],
-                "points": [
-                  {
-                    "x": -4,
-                    "y": 0,
-                    "label": "x₁ = -4",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "nw"
-                  },
-                  {
-                    "x": 4,
-                    "y": 0,
-                    "label": "x₂ = 4",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "ne"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -11725,54 +10818,7 @@
                 "level_2": "Brak miejsc zerowych ($\\Delta < 0$) nie oznacza braku rozwiązań nierówności!"
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -4,
-                  4
-                ],
-                "yRange": [
-                  -2,
-                  8
-                ],
-                "gridStep": 2,
-                "parabola": {
-                  "a": 1,
-                  "p": 0,
-                  "q": 4,
-                  "color": "#10B981",
-                  "domain": [
-                    -3,
-                    3
-                  ]
-                },
-                "segments": [
-                  {
-                    "from": [
-                      -4,
-                      0
-                    ],
-                    "to": [
-                      4,
-                      0
-                    ],
-                    "startDot": "none",
-                    "endDot": "none",
-                    "color": "#10B981",
-                    "weight": 4
-                  }
-                ],
-                "points": [
-                  {
-                    "x": 0,
-                    "y": 4,
-                    "label": "W(0, 4) > 0: cała parabola nad OX",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "n"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -11826,38 +10872,7 @@
                 "level_2": "Znak $\\le$ to \"mniejsze LUB równe\". Równość zachodzi dla $x = 3$."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  0,
-                  6
-                ],
-                "yRange": [
-                  -2,
-                  5
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": 1,
-                  "p": 3,
-                  "q": 0,
-                  "color": "#FFB800",
-                  "domain": [
-                    1,
-                    5
-                  ]
-                },
-                "points": [
-                  {
-                    "x": 3,
-                    "y": 0,
-                    "label": "W(3, 0): jedyny punkt ≤ 0",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -11911,38 +10926,7 @@
                 "level_2": "Gdy $a < 0$ i $\\Delta < 0$, funkcja przyjmuje wyłącznie wartości ujemne."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -2,
-                  4
-                ],
-                "yRange": [
-                  -7,
-                  2
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": -1,
-                  "p": 1,
-                  "q": -2,
-                  "color": "#F43F5E",
-                  "domain": [
-                    -1.5,
-                    3.5
-                  ]
-                },
-                "points": [
-                  {
-                    "x": 1,
-                    "y": -2,
-                    "label": "W pod osią, a < 0: brak punktów > 0",
-                    "dot": "filled",
-                    "color": "#F43F5E",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -11984,38 +10968,7 @@
                 "level_2": "Dla $x = -5$ mamy $0 < 0$, co jest fałszem. Nierówność ostra wyklucza zero."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  -8,
-                  -2
-                ],
-                "yRange": [
-                  -2,
-                  6
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": 1,
-                  "p": -5,
-                  "q": 0,
-                  "color": "#FFB800",
-                  "domain": [
-                    -7.4,
-                    -2.6
-                  ]
-                },
-                "points": [
-                  {
-                    "x": -5,
-                    "y": 0,
-                    "label": "W(-5, 0): (x+5)² ≥ 0 dla każdego x",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "s"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             },
             {
@@ -12044,38 +10997,7 @@
                 "level_2": "Minus przed nawiasem odwraca znak nierówności przy mnożeniu przez $-1$."
               },
               "diagram": null,
-              "plot": {
-                "type": "PARABOLA",
-                "xRange": [
-                  4,
-                  10
-                ],
-                "yRange": [
-                  -6,
-                  2
-                ],
-                "gridStep": 1,
-                "parabola": {
-                  "a": -1,
-                  "p": 7,
-                  "q": 0,
-                  "color": "#F43F5E",
-                  "domain": [
-                    4.6,
-                    9.4
-                  ]
-                },
-                "points": [
-                  {
-                    "x": 7,
-                    "y": 0,
-                    "label": "W(7, 0): jedyny punkt ≥ 0",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "n"
-                  }
-                ]
-              },
+              "plot": null,
               "numberLine": null
             }
           ]
@@ -12185,12 +11107,12 @@
               ],
               "plotData": {
                 "xRange": [
-                  -5,
-                  6
+                  -6,
+                  7
                 ],
                 "yRange": [
                   -3,
-                  4
+                  5
                 ],
                 "gridStep": 1,
                 "segments": [
@@ -12258,15 +11180,7 @@
                     "attach": "n"
                   }
                 ],
-                "labels": [
-                  {
-                    "x": 0.5,
-                    "y": 3.5,
-                    "text": "Dziedzina D = [-4, 5], Zbiór wartości ZW = [-1, 3]",
-                    "color": "#10B981",
-                    "attach": "n"
-                  }
-                ]
+                "labels": []
               }
             },
             "numberLine": null,
@@ -12447,17 +11361,17 @@
                   {
                     "x": -1,
                     "y": -2,
-                    "label": "min: (-1, -2)",
+                    "label": "(-1, -2)",
                     "dot": "filled",
-                    "color": "#10B981",
+                    "color": "#38BDF8",
                     "attach": "s"
                   },
                   {
                     "x": 3,
                     "y": 4,
-                    "label": "max: (3, 4)",
+                    "label": "(3, 4)",
                     "dot": "filled",
-                    "color": "#FFB800",
+                    "color": "#38BDF8",
                     "attach": "n"
                   },
                   {
@@ -12671,26 +11585,10 @@
                   {
                     "x": 2,
                     "y": 7,
-                    "label": "W(2, 7) ⟹ max y = 7",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "n"
-                  },
-                  {
-                    "x": 0,
-                    "y": 7,
-                    "label": "y_max = 7",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "w"
-                  },
-                  {
-                    "x": 2,
-                    "y": 0,
-                    "label": "x = 2",
+                    "label": "W(2, 7)",
                     "dot": "filled",
                     "color": "#38BDF8",
-                    "attach": "s"
+                    "attach": "n"
                   }
                 ]
               },
@@ -12706,20 +11604,20 @@
               "source": "Trening JASNE • Wzorzec CKE",
               "cke_source": "Trening JASNE • Wzorzec CKE",
               "instruction": "Wpisz poprawny wynik w pole poniżej.",
-              "question": "Wykres funkcji jest określony w przedziale $x \\in [-5, 6]$. Oblicz długość tego przedziału.",
-              "content": "Wykres funkcji jest określony w przedziale $x \\in [-5, 6]$. Oblicz długość tego przedziału.",
-              "math_statement": "Wykres funkcji jest określony w przedziale $x \\in [-5, 6]$. Oblicz długość tego przedziału.",
-              "numeric_correct_answer": 11,
-              "correct_answer": "11",
-              "correctAnswer": "11",
-              "explanation": "Długość przedziału $[-5, 6]$ to różnica prawego i lewego końca: $6 - (-5) = 6 + 5 = 11$.",
-              "ckeTrap": "Pamiętaj: odejmowanie liczby ujemnej to dodawanie ($6 - (-5) = 11$, nie 1).",
-              "cke_trap": "Pamiętaj: odejmowanie liczby ujemnej to dodawanie ($6 - (-5) = 11$, nie 1).",
+              "question": "Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[-5, 6]$.\n\nNajwiększa wartość funkcji $f$ w tym przedziale jest równa",
+              "content": "Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[-5, 6]$.\n\nNajwiększa wartość funkcji $f$ w tym przedziale jest równa",
+              "math_statement": "Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[-5, 6]$.\n\nNajwiększa wartość funkcji $f$ w tym przedziale jest równa",
+              "numeric_correct_answer": 4,
+              "correct_answer": "4",
+              "correctAnswer": "4",
+              "explanation": "Z wykresu odczytujemy współrzędną $y$ najwyżej położonego punktu: jest to punkt $(0, 4)$, więc największa wartość funkcji wynosi $4$.",
+              "ckeTrap": "Wartość funkcji to współrzędna $y$ najwyższego punktu ($4$), a nie argument $x$ ($0$).",
+              "cke_trap": "Wartość funkcji to współrzędna $y$ najwyższego punktu ($4$), a nie argument $x$ ($0$).",
               "hint_1": "Zastosuj odpowiedni wzór z Wybranych Wzorów Matematycznych CKE.",
-              "hint_2": "Pamiętaj: odejmowanie liczby ujemnej to dodawanie ($6 - (-5) = 11$, nie 1).",
+              "hint_2": "Wartość funkcji to współrzędna $y$ najwyższego punktu ($4$), a nie argument $x$ ($0$).",
               "hints": {
                 "level_1": "Zastosuj odpowiedni wzór z Wybranych Wzorów Matematycznych CKE.",
-                "level_2": "Pamiętaj: odejmowanie liczby ujemnej to dodawanie ($6 - (-5) = 11$, nie 1)."
+                "level_2": "Wartość funkcji to współrzędna $y$ najwyższego punktu ($4$), a nie argument $x$ ($0$)."
               },
               "diagram": null,
               "plot": {
@@ -12771,20 +11669,20 @@
                     "attach": "nw"
                   },
                   {
+                    "x": 0,
+                    "y": 4,
+                    "label": "(0, 4)",
+                    "dot": "filled",
+                    "color": "#38BDF8",
+                    "attach": "n"
+                  },
+                  {
                     "x": 6,
                     "y": 2,
                     "label": "(6, 2)",
                     "dot": "filled",
                     "color": "#38BDF8",
                     "attach": "ne"
-                  },
-                  {
-                    "x": 0.5,
-                    "y": -0.8,
-                    "label": "Dziedzina: D = [-5, 6]",
-                    "dot": "none",
-                    "color": "#FFB800",
-                    "attach": "s"
                   }
                 ]
               },
@@ -13184,26 +12082,10 @@
                   {
                     "x": 2,
                     "y": -3,
-                    "label": "P(2, -3) ⟹ f(2) = -3",
+                    "label": "P(2, -3)",
                     "dot": "filled",
                     "color": "#38BDF8",
                     "attach": "se"
-                  },
-                  {
-                    "x": 2,
-                    "y": 0,
-                    "label": "x = 2",
-                    "dot": "filled",
-                    "color": "#FFB800",
-                    "attach": "n"
-                  },
-                  {
-                    "x": 0,
-                    "y": -3,
-                    "label": "y = -3",
-                    "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "w"
                   }
                 ]
               },
@@ -13699,8 +12581,7 @@
                     ],
                     "startDot": "filled",
                     "endDot": "filled",
-                    "color": "#10B981",
-                    "label": "rośnie"
+                    "color": "#38BDF8"
                   },
                   {
                     "from": [
@@ -13713,8 +12594,7 @@
                     ],
                     "startDot": "none",
                     "endDot": "filled",
-                    "color": "#F43F5E",
-                    "label": "maleje"
+                    "color": "#38BDF8"
                   }
                 ],
                 "points": [
@@ -13723,15 +12603,15 @@
                     "y": -2,
                     "label": "(-3, -2)",
                     "dot": "filled",
-                    "color": "#10B981",
-                    "attach": "sw"
+                    "color": "#38BDF8",
+                    "attach": "n"
                   },
                   {
                     "x": 1,
                     "y": 4,
                     "label": "(1, 4)",
                     "dot": "filled",
-                    "color": "#FFB800",
+                    "color": "#38BDF8",
                     "attach": "n"
                   },
                   {
@@ -13739,8 +12619,8 @@
                     "y": 0,
                     "label": "(5, 0)",
                     "dot": "filled",
-                    "color": "#F43F5E",
-                    "attach": "se"
+                    "color": "#38BDF8",
+                    "attach": "ne"
                   }
                 ]
               },
@@ -13875,8 +12755,7 @@
                     ],
                     "startDot": "filled",
                     "endDot": "filled",
-                    "color": "#FFB800",
-                    "strokeWidth": 3.5
+                    "color": "#38BDF8"
                   },
                   {
                     "from": [
@@ -13894,11 +12773,19 @@
                 ],
                 "points": [
                   {
-                    "x": 1,
+                    "x": -1,
                     "y": 3,
-                    "label": "odcinek poziomy: f(x) = const = 3",
-                    "dot": "none",
-                    "color": "#FFB800",
+                    "label": "(-1, 3)",
+                    "dot": "filled",
+                    "color": "#38BDF8",
+                    "attach": "n"
+                  },
+                  {
+                    "x": 3,
+                    "y": 3,
+                    "label": "(3, 3)",
+                    "dot": "filled",
+                    "color": "#38BDF8",
                     "attach": "n"
                   }
                 ]
@@ -13915,20 +12802,20 @@
               "source": "Trening JASNE • Wzorzec CKE",
               "cke_source": "Trening JASNE • Wzorzec CKE",
               "instruction": "Wpisz poprawny wynik w pole poniżej.",
-              "question": "Wykres funkcji opada w dół na przedziale $x \\in [2, 8]$. Oblicz długość przedziału, w którym ta funkcja maleje.",
-              "content": "Wykres funkcji opada w dół na przedziale $x \\in [2, 8]$. Oblicz długość przedziału, w którym ta funkcja maleje.",
-              "math_statement": "Wykres funkcji opada w dół na przedziale $x \\in [2, 8]$. Oblicz długość przedziału, w którym ta funkcja maleje.",
-              "numeric_correct_answer": 6,
-              "correct_answer": "6",
-              "correctAnswer": "6",
-              "explanation": "Długość przedziału $[2, 8]$ wynosi $8 - 2 = 6$.",
-              "ckeTrap": "Długość to różnica iksów: $8 - 2 = 6$.",
-              "cke_trap": "Długość to różnica iksów: $8 - 2 = 6$.",
+              "question": "Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[1, 9]$.\n\nNajmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ jest równa",
+              "content": "Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[1, 9]$.\n\nNajmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ jest równa",
+              "math_statement": "Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[1, 9]$.\n\nNajmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ jest równa",
+              "numeric_correct_answer": -2,
+              "correct_answer": "-2",
+              "correctAnswer": "-2",
+              "explanation": "Z wykresu odczytujemy najniżej położony punkt funkcji: $(8, -2)$. Najmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ wynosi $y = -2$ (dla argumentu $x = 8$).",
+              "ckeTrap": "Wartość funkcji to współrzędna $y$ najniższego punktu ($-2$), a nie argument $x$ ($8$).",
+              "cke_trap": "Wartość funkcji to współrzędna $y$ najniższego punktu ($-2$), a nie argument $x$ ($8$).",
               "hint_1": "Zastosuj odpowiedni wzór z Wybranych Wzorów Matematycznych CKE.",
-              "hint_2": "Długość to różnica iksów: $8 - 2 = 6$.",
+              "hint_2": "Wartość funkcji to współrzędna $y$ najniższego punktu ($-2$), a nie argument $x$ ($8$).",
               "hints": {
                 "level_1": "Zastosuj odpowiedni wzór z Wybranych Wzorów Matematycznych CKE.",
-                "level_2": "Długość to różnica iksów: $8 - 2 = 6$."
+                "level_2": "Wartość funkcji to współrzędna $y$ najniższego punktu ($-2$), a nie argument $x$ ($8$)."
               },
               "diagram": null,
               "plot": {
@@ -13967,9 +12854,7 @@
                     ],
                     "startDot": "filled",
                     "endDot": "filled",
-                    "color": "#F43F5E",
-                    "strokeWidth": 3.5,
-                    "label": "funkcja maleje"
+                    "color": "#38BDF8"
                   },
                   {
                     "from": [
@@ -13987,11 +12872,19 @@
                 ],
                 "points": [
                   {
+                    "x": 1,
+                    "y": 2,
+                    "label": "(1, 2)",
+                    "dot": "filled",
+                    "color": "#38BDF8",
+                    "attach": "nw"
+                  },
+                  {
                     "x": 2,
                     "y": 4,
                     "label": "(2, 4)",
                     "dot": "filled",
-                    "color": "#FFB800",
+                    "color": "#38BDF8",
                     "attach": "n"
                   },
                   {
@@ -13999,15 +12892,15 @@
                     "y": -2,
                     "label": "(8, -2)",
                     "dot": "filled",
-                    "color": "#F43F5E",
+                    "color": "#38BDF8",
                     "attach": "s"
                   },
                   {
-                    "x": 5,
-                    "y": 1.5,
-                    "label": "maleje na [2, 8]",
-                    "dot": "none",
-                    "color": "#FFB800",
+                    "x": 9,
+                    "y": 1,
+                    "label": "(9, 1)",
+                    "dot": "filled",
+                    "color": "#38BDF8",
                     "attach": "ne"
                   }
                 ]
@@ -18602,42 +17495,30 @@
               "type": "OPEN_TASK",
               "points": 2,
               "maxPoints": 2,
-              "badge": "Trening JASNE • Wzorzec CKE",
-              "source_badge": "Trening JASNE • Wzorzec CKE",
-              "source": "Trening JASNE • Wzorzec CKE",
-              "cke_source": "Trening JASNE • Wzorzec CKE",
+              "badge": "Matura maj 2024 • Zad. 17",
+              "source_badge": "Matura maj 2024 • Zad. 17",
+              "source": "Matura maj 2024 • Zad. 17",
+              "cke_source": "Matura maj 2024 • Zad. 17",
               "instruction": "Rozwiąż zadanie i zapisz pełny tok rozumowania.",
-              "question": "Suma $n$ początkowych wyrazów ciągu arytmetycznego $(a_n)$ określona jest wzorem $S_n = 2n^2 + 3n$ dla każdego $n \\ge 1$.\nWyznacz wzór na $n$-ty wyraz tego ciągu ($a_n$) i oblicz jego pierwszy wyraz $a_1$.",
-              "content": "Suma $n$ początkowych wyrazów ciągu arytmetycznego $(a_n)$ określona jest wzorem $S_n = 2n^2 + 3n$ dla każdego $n \\ge 1$.\nWyznacz wzór na $n$-ty wyraz tego ciągu ($a_n$) i oblicz jego pierwszy wyraz $a_1$.",
-              "math_statement": "Suma $n$ początkowych wyrazów ciągu arytmetycznego $(a_n)$ określona jest wzorem $S_n = 2n^2 + 3n$ dla każdego $n \\ge 1$.\nWyznacz wzór na $n$-ty wyraz tego ciągu ($a_n$) i oblicz jego pierwszy wyraz $a_1$.",
+              "question": "Ciąg arytmetyczny $(a_n)$ jest określony dla każdej liczby naturalnej $n \\ge 1$. Trzeci wyraz tego ciągu jest równy $(-1)$, a suma piętnastu początkowych kolejnych wyrazów tego ciągu jest równa $(-165)$.\nOblicz różnicę tego ciągu. Zapisz obliczenia.",
+              "content": "Ciąg arytmetyczny $(a_n)$ jest określony dla każdej liczby naturalnej $n \\ge 1$. Trzeci wyraz tego ciągu jest równy $(-1)$, a suma piętnastu początkowych kolejnych wyrazów tego ciągu jest równa $(-165)$.\nOblicz różnicę tego ciągu. Zapisz obliczenia.",
+              "math_statement": "Ciąg arytmetyczny $(a_n)$ jest określony dla każdej liczby naturalnej $n \\ge 1$. Trzeci wyraz tego ciągu jest równy $(-1)$, a suma piętnastu początkowych kolejnych wyrazów tego ciągu jest równa $(-165)$.\nOblicz różnicę tego ciągu. Zapisz obliczenia.",
               "scoring_key": [
-                [
-                  "1 pkt",
-                  "Obliczenie pierwszego wyrazu $a_1 = S_1 = 5$ lub poprawne rozpisanie $S_{n-1}$."
-                ],
-                [
-                  "2 pkt",
-                  "Poprawne wyznaczenie wzoru ogólnego $a_n = 4n + 1$ z pełnym uzasadnieniem."
-                ]
+                "1 pkt: Zapisanie układu równań z niewiadomymi a1 oraz r, np. a1 + 2r = -1 oraz (2a1 + 14r)/2 * 15 = -165, lub wyznaczenie równania z jedną niewiadomą r.",
+                "2 pkt: Poprawne obliczenie różnicy ciągu: r = -2."
               ],
               "officialKey": [
-                [
-                  "1 pkt",
-                  "Obliczenie pierwszego wyrazu $a_1 = S_1 = 5$ lub poprawne rozpisanie $S_{n-1}$."
-                ],
-                [
-                  "2 pkt",
-                  "Poprawne wyznaczenie wzoru ogólnego $a_n = 4n + 1$ z pełnym uzasadnieniem."
-                ]
+                "1 pkt: Zapisanie układu równań z niewiadomymi a1 oraz r, np. a1 + 2r = -1 oraz (2a1 + 14r)/2 * 15 = -165, lub wyznaczenie równania z jedną niewiadomą r.",
+                "2 pkt: Poprawne obliczenie różnicy ciągu: r = -2."
               ],
-              "explanation": "Krok 1: Pierwszy wyraz ciągu jest równy sumie jednego wyrazu:\n$$a_1 = S_1 = 2(1)^2 + 3(1) = 2 + 3 = 5.$$\nKrok 2: Dla $n \\ge 2$ korzystamy z zależności $a_n = S_n - S_{n-1}$:\n$$S_{n-1} = 2(n-1)^2 + 3(n-1) = 2(n^2 - 2n + 1) + 3n - 3 = 2n^2 - 4n + 2 + 3n - 3 = 2n^2 - n - 1.$$\nKrok 3: Odejmujemy sumy:\n$$a_n = (2n^2 + 3n) - (2n^2 - n - 1) = 2n^2 + 3n - 2n^2 + n + 1 = 4n + 1.$$\nSprawdzenie dla $n = 1$: $a_1 = 4(1) + 1 = 5$, co zgadza się z $S_1$. Zatem $a_n = 4n + 1$.",
-              "ckeTrap": "Nie wolno przyjmować, że $a_n = S_n / n$. Wyraz ogólny to różnica sum: $a_n = S_n - S_{n-1}$.",
-              "cke_trap": "Nie wolno przyjmować, że $a_n = S_n / n$. Wyraz ogólny to różnica sum: $a_n = S_n - S_{n-1}$.",
+              "explanation": "Krok 1: Wykorzystujemy wzór na wyraz ogólny oraz sumę ciągu arytmetycznego:\n$$a_3 = a_1 + 2r = -1$$\n$$S_{15} = \\frac{2a_1 + 14r}{2} \\cdot 15 = (a_1 + 7r) \\cdot 15 = -165$$\nKrok 2: Dzielimy drugie równanie obustronnie przez 15:\n$$a_1 + 7r = -11$$\nKrok 3: Z pierwszego równania wyznaczamy $a_1 = -1 - 2r$ i podstawiamy:\n$$(-1 - 2r) + 7r = -11$$\n$$5r = -10$$\n$$r = -2$$\nOdpowiedź: Różnica ciągu arytmetycznego wynosi $r = -2$.",
+              "ckeTrap": "Pamiętaj o nawiasach przy wyznaczaniu sumy: we wzorze na $S_{15}$ mamy $\\frac{2a_1 + (15-1)r}{2} \\cdot 15$.",
+              "cke_trap": "Pamiętaj o nawiasach przy wyznaczaniu sumy: we wzorze na $S_{15}$ mamy $\\frac{2a_1 + (15-1)r}{2} \\cdot 15$.",
               "hint_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-              "hint_2": "Nie wolno przyjmować, że $a_n = S_n / n$. Wyraz ogólny to różnica sum: $a_n = S_n - S_{n-1}$.",
+              "hint_2": "Pamiętaj o nawiasach przy wyznaczaniu sumy: we wzorze na $S_{15}$ mamy $\\frac{2a_1 + (15-1)r}{2} \\cdot 15$.",
               "hints": {
                 "level_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-                "level_2": "Nie wolno przyjmować, że $a_n = S_n / n$. Wyraz ogólny to różnica sum: $a_n = S_n - S_{n-1}$."
+                "level_2": "Pamiętaj o nawiasach przy wyznaczaniu sumy: we wzorze na $S_{15}$ mamy $\\frac{2a_1 + (15-1)r}{2} \\cdot 15$."
               },
               "diagram": null,
               "plot": null,
@@ -19657,9 +18538,12 @@
                   5
                 ],
                 "gridStep": 2,
-                "a": 1,
-                "b": -2,
-                "c": -8,
+                "parabola": {
+                  "a": 1,
+                  "p": 1,
+                  "q": -9,
+                  "color": "#38BDF8"
+                },
                 "points": [
                   {
                     "x": -2,
@@ -20805,33 +19689,21 @@
               "content": "Wyznacz wartość najmniejszą i wartość największą funkcji kwadratowej $f(x) = 2x^2 - 8x + 3$ w przedziale domkniętym $\\langle -1, 3 \\rangle$. Zapisz pełne obliczenia.",
               "math_statement": "Wyznacz wartość najmniejszą i wartość największą funkcji kwadratowej $f(x) = 2x^2 - 8x + 3$ w przedziale domkniętym $\\langle -1, 3 \\rangle$. Zapisz pełne obliczenia.",
               "scoring_key": [
-                [
-                  "1 pkt",
-                  "Obliczenie $p = 2$, sprawdzenie warunku $2 \\in \\langle -1, 3 \\rangle$ i obliczenie wartości w wierzchołku $f(2) = -5$."
-                ],
-                [
-                  "2 pkt",
-                  "Obliczenie wartości na krańcach $f(-1) = 13, f(3) = -3$ i sformułowanie poprawnej odpowiedzi: $y_{\\min} = -5, y_{\\max} = 13$."
-                ]
+                "1 pkt: Obliczenie p = 2, sprawdzenie warunku 2 nalezy do [-1, 3] i obliczenie wartosci w wierzcholku f(2) = -5.",
+                "2 pkt: Obliczenie wartosci na krancach f(-1) = 13, f(3) = -3 i sformułowanie poprawnej odpowiedzi: wartosc najmniejsza to -5, a najwieksza to 13."
               ],
               "officialKey": [
-                [
-                  "1 pkt",
-                  "Obliczenie $p = 2$, sprawdzenie warunku $2 \\in \\langle -1, 3 \\rangle$ i obliczenie wartości w wierzchołku $f(2) = -5$."
-                ],
-                [
-                  "2 pkt",
-                  "Obliczenie wartości na krańcach $f(-1) = 13, f(3) = -3$ i sformułowanie poprawnej odpowiedzi: $y_{\\min} = -5, y_{\\max} = 13$."
-                ]
+                "1 pkt: Obliczenie p = 2, sprawdzenie warunku 2 nalezy do [-1, 3] i obliczenie wartosci w wierzcholku f(2) = -5.",
+                "2 pkt: Obliczenie wartosci na krancach f(-1) = 13, f(3) = -3 i sformułowanie poprawnej odpowiedzi: wartosc najmniejsza to -5, a najwieksza to 13."
               ],
               "explanation": "Krok 1: Wyznaczamy odciętą wierzchołka paraboli:\n$$p = -\\frac{b}{2a} = -\\frac{-8}{2 \\cdot 2} = \\frac{8}{4} = 2.$$\nSprawdzamy obecność w przedziale: $2 \\in \\langle -1, 3 \\rangle$.\nKrok 2: Ponieważ $a = 2 > 0$, w wierzchołku funkcja osiąga wartość najmniejszą:\n$$f(2) = 2(2)^2 - 8(2) + 3 = 8 - 16 + 3 = -5.$$\nKrok 3: Obliczamy wartości na krańcach przedziału:\n$$f(-1) = 2(-1)^2 - 8(-1) + 3 = 2(1) + 8 + 3 = 13$$\n$$f(3) = 2(3)^2 - 8(3) + 3 = 18 - 24 + 3 = -3.$$\nKrok 4: Zestawienie wyników:\nWartość najmniejsza: $y_{\\min} = -5$ (dla $x = 2$).\nWartość największa: $y_{\\max} = 13$ (dla $x = -1$).",
-              "ckeTrap": "Częsty błąd: Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!",
-              "cke_trap": "Częsty błąd: Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!",
+              "ckeTrap": "Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!",
+              "cke_trap": "Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!",
               "hint_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-              "hint_2": "Częsty błąd: Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!",
+              "hint_2": "Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!",
               "hints": {
                 "level_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-                "level_2": "Częsty błąd: Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!"
+                "level_2": "Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!"
               },
               "diagram": null,
               "plot": null,
@@ -21328,7 +20200,7 @@
                   {
                     "x": 1,
                     "y": 4,
-                    "label": "W(1, 4): Maksimum dla a < 0",
+                    "label": "W(1, 4)",
                     "dot": "filled",
                     "color": "#10B981",
                     "attach": "n"
@@ -21340,52 +20212,36 @@
             {
               "id": "task-12-4-5",
               "type": "OPEN_TASK",
-              "points": 3,
-              "maxPoints": 3,
-              "badge": "Trening JASNE • Wzorzec CKE",
-              "source_badge": "Trening JASNE • Wzorzec CKE",
-              "source": "Trening JASNE • Wzorzec CKE",
-              "cke_source": "Trening JASNE • Wzorzec CKE",
+              "points": 4,
+              "maxPoints": 4,
+              "badge": "Matura sierpień 2023 • Zad. 33",
+              "source_badge": "Matura sierpień 2023 • Zad. 33",
+              "source": "Matura sierpień 2023 • Zad. 33",
+              "cke_source": "Matura sierpień 2023 • Zad. 33",
               "instruction": "Rozwiąż zadanie i zapisz pełny tok rozumowania.",
-              "question": "Ogrodnik dysponuje siatką o długości $60$ metrów i chce ogrodzić prostokątną działkę przylegającą jednym bokiem do ściany murowanego magazynu (ściana magazynu nie wymaga siatki).\nWyznacz wymiary działki, dla których jej pole powierzchni będzie największe, oraz oblicz to największe pole.",
-              "content": "Ogrodnik dysponuje siatką o długości $60$ metrów i chce ogrodzić prostokątną działkę przylegającą jednym bokiem do ściany murowanego magazynu (ściana magazynu nie wymaga siatki).\nWyznacz wymiary działki, dla których jej pole powierzchni będzie największe, oraz oblicz to największe pole.",
-              "math_statement": "Ogrodnik dysponuje siatką o długości $60$ metrów i chce ogrodzić prostokątną działkę przylegającą jednym bokiem do ściany murowanego magazynu (ściana magazynu nie wymaga siatki).\nWyznacz wymiary działki, dla których jej pole powierzchni będzie największe, oraz oblicz to największe pole.",
+              "question": "Zakład stolarski produkuje krzesła, które sprzedaje po 196 złotych za sztukę. Właściciel, na podstawie analizy rzeczywistych wpływów i wydatków, stwierdził, że:\n• przychód $P$ (w złotych) ze sprzedaży $x$ krzeseł można opisać funkcją $P(x) = 196x$\n• koszt $K$ (w złotych) produkcji $x$ krzeseł dziennie można opisać funkcją $K(x) = 4x^2 + 4x + 240$\nDziennie w zakładzie można wyprodukować co najwyżej 30 krzeseł.\nOblicz, ile krzeseł powinien dziennie sprzedawać zakład, aby zysk ze sprzedaży krzeseł wyprodukowanych przez ten zakład w ciągu jednego dnia był możliwie największy. Oblicz ten największy zysk. Zapisz obliczenia.\nWskazówka: przyjmij, że zysk jest różnicą przychodu i kosztów.",
+              "content": "Zakład stolarski produkuje krzesła, które sprzedaje po 196 złotych za sztukę. Właściciel, na podstawie analizy rzeczywistych wpływów i wydatków, stwierdził, że:\n• przychód $P$ (w złotych) ze sprzedaży $x$ krzeseł można opisać funkcją $P(x) = 196x$\n• koszt $K$ (w złotych) produkcji $x$ krzeseł dziennie można opisać funkcją $K(x) = 4x^2 + 4x + 240$\nDziennie w zakładzie można wyprodukować co najwyżej 30 krzeseł.\nOblicz, ile krzeseł powinien dziennie sprzedawać zakład, aby zysk ze sprzedaży krzeseł wyprodukowanych przez ten zakład w ciągu jednego dnia był możliwie największy. Oblicz ten największy zysk. Zapisz obliczenia.\nWskazówka: przyjmij, że zysk jest różnicą przychodu i kosztów.",
+              "math_statement": "Zakład stolarski produkuje krzesła, które sprzedaje po 196 złotych za sztukę. Właściciel, na podstawie analizy rzeczywistych wpływów i wydatków, stwierdził, że:\n• przychód $P$ (w złotych) ze sprzedaży $x$ krzeseł można opisać funkcją $P(x) = 196x$\n• koszt $K$ (w złotych) produkcji $x$ krzeseł dziennie można opisać funkcją $K(x) = 4x^2 + 4x + 240$\nDziennie w zakładzie można wyprodukować co najwyżej 30 krzeseł.\nOblicz, ile krzeseł powinien dziennie sprzedawać zakład, aby zysk ze sprzedaży krzeseł wyprodukowanych przez ten zakład w ciągu jednego dnia był możliwie największy. Oblicz ten największy zysk. Zapisz obliczenia.\nWskazówka: przyjmij, że zysk jest różnicą przychodu i kosztów.",
               "scoring_key": [
-                [
-                  "1 pkt",
-                  "Zapisanie zależności między bokami z uwzględnieniem ściany: $2x + y = 60$ oraz wyznaczenie wzoru pola $P(x) = x(60 - 2x) = -2x^2 + 60x$ wraz z dziedziną $x \\in (0, 30)$."
-                ],
-                [
-                  "2 pkt",
-                  "Obliczenie wymiaru $x = p = -\\frac{60}{2(-2)} = 15$ m, w którym funkcja osiąga maksimum."
-                ],
-                [
-                  "3 pkt",
-                  "Obliczenie drugiego wymiaru $y = 60 - 2(15) = 30$ m oraz maksymalnego pola $P_{\\max} = 15 \\cdot 30 = 450\\ \\text{m}^2$."
-                ]
+                "1 pkt: Zapisanie wzoru funkcji zysku dziennego Z(x) = P(x) - K(x) = -4x^2 + 192x - 240.",
+                "2 pkt: Zapisanie dziedziny funkcji zysku: x nalezy do {1, 2, ..., 30} (lub x w [0, 30]).",
+                "3 pkt: Wyznaczenie liczby krzeseł, dla której zysk jest największy: obliczenie odciętej wierzchołka p = 24.",
+                "4 pkt: Obliczenie największego dziennego zysku: Z(24) = 2064 zł."
               ],
               "officialKey": [
-                [
-                  "1 pkt",
-                  "Zapisanie zależności między bokami z uwzględnieniem ściany: $2x + y = 60$ oraz wyznaczenie wzoru pola $P(x) = x(60 - 2x) = -2x^2 + 60x$ wraz z dziedziną $x \\in (0, 30)$."
-                ],
-                [
-                  "2 pkt",
-                  "Obliczenie wymiaru $x = p = -\\frac{60}{2(-2)} = 15$ m, w którym funkcja osiąga maksimum."
-                ],
-                [
-                  "3 pkt",
-                  "Obliczenie drugiego wymiaru $y = 60 - 2(15) = 30$ m oraz maksymalnego pola $P_{\\max} = 15 \\cdot 30 = 450\\ \\text{m}^2$."
-                ]
+                "1 pkt: Zapisanie wzoru funkcji zysku dziennego Z(x) = P(x) - K(x) = -4x^2 + 192x - 240.",
+                "2 pkt: Zapisanie dziedziny funkcji zysku: x nalezy do {1, 2, ..., 30} (lub x w [0, 30]).",
+                "3 pkt: Wyznaczenie liczby krzeseł, dla której zysk jest największy: obliczenie odciętej wierzchołka p = 24.",
+                "4 pkt: Obliczenie największego dziennego zysku: Z(24) = 2064 zł."
               ],
-              "explanation": "Krok 1: Oznaczmy przez $x$ długość dwóch boków prostopadłych do ściany, a przez $y$ długość boku równoległego do ściany.\nSiatka ma długość 60 m, zatem: $2x + y = 60 \\text{ czyli } y = 60 - 2x$.\nDziedzina: $x > 0$ oraz $60 - 2x > 0 \\text{ czyli } x \\in (0, 30)$.\nKrok 2: Zapisujemy pole powierzchni jako funkcję zmiennej $x$:\n$$P(x) = x \\cdot y = x(60 - 2x) = -2x^2 + 60x.$$\nKrok 3: Ponieważ $a = -2 < 0$, funkcja osiąga maksimum w wierzchołku:\n$$x_{\\max} = p = -\\frac{b}{2a} = -\\frac{60}{2(-2)} = \\frac{60}{4} = 15\\ \\text{m}.$$\nLiczba $15 \\in (0, 30)$, więc spełnia warunki zadania.\nKrok 4: Wyznaczamy drugi wymiar i maksymalne pole:\n$$y = 60 - 2(15) = 60 - 30 = 30\\ \\text{m}.$$\n$$P_{\\max} = 15 \\cdot 30 = 450\\ \\text{m}^2.$$\nOdpowiedź: Wymiary działki to $15$ m na $30$ m, a maksymalne pole wynosi $450\\ \\text{m}^2$.",
-              "ckeTrap": "Uwaga na ścianę budynku: ogrodzenie składa się z trzech boków ($2x + y = 60$), a nie czterech!",
-              "cke_trap": "Uwaga na ścianę budynku: ogrodzenie składa się z trzech boków ($2x + y = 60$), a nie czterech!",
+              "explanation": "Krok 1: Wyznaczamy funkcję zysku dziennego $Z(x)$ jako różnicę przychodu i kosztów:\n$$Z(x) = P(x) - K(x) = 196x - (4x^2 + 4x + 240) = -4x^2 + 192x - 240.$$\nKrok 2: Określamy dziedzinę funkcji $Z$:\nZakład może wyprodukować dziennie co najwyżej 30 krzeseł, zatem $x \\in \\{1, 2, \\dots, 30\\}$ (lub $x \\in \\langle 0, 30 \\rangle$).\nKrok 3: Wyznaczamy liczbę krzeseł dającą największy zysk.\nFunkcja $Z(x)$ jest funkcją kwadratową o współczynniku $a = -4 < 0$ (ramiona paraboli w dół), więc osiąga wartość największą w wierzchołku paraboli:\n$$x = p = -\\frac{b}{2a} = -\\frac{192}{2 \\cdot (-4)} = \\frac{192}{8} = 24.$$\nLiczba 24 należy do dziedziny ($24 \\le 30$).\nKrok 4: Obliczamy największy zysk dla $x = 24$:\n$$Z(24) = -4(24)^2 + 192(24) - 240 = -4 \\cdot 576 + 4608 - 240 = -2304 + 4608 - 240 = 2064\\ \\text{zł}.$$\nOdpowiedź: Zakład powinien sprzedawać 24 krzesła dziennie, a największy zysk wynosi 2064 zł.",
+              "ckeTrap": "Pamiętaj o nawiasie przy odejmowaniu kosztów: $Z(x) = P(x) - (4x^2 + 4x + 240)$. Opuszczenie nawiasu zmieniłoby znaki wyrazów wolnych!",
+              "cke_trap": "Pamiętaj o nawiasie przy odejmowaniu kosztów: $Z(x) = P(x) - (4x^2 + 4x + 240)$. Opuszczenie nawiasu zmieniłoby znaki wyrazów wolnych!",
               "hint_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-              "hint_2": "Uwaga na ścianę budynku: ogrodzenie składa się z trzech boków ($2x + y = 60$), a nie czterech!",
+              "hint_2": "Pamiętaj o nawiasie przy odejmowaniu kosztów: $Z(x) = P(x) - (4x^2 + 4x + 240)$. Opuszczenie nawiasu zmieniłoby znaki wyrazów wolnych!",
               "hints": {
                 "level_1": "Wypisz założenia, zidentyfikuj wzory CKE i określ strategię rozwiązania krok po kroku.",
-                "level_2": "Uwaga na ścianę budynku: ogrodzenie składa się z trzech boków ($2x + y = 60$), a nie czterech!"
+                "level_2": "Pamiętaj o nawiasie przy odejmowaniu kosztów: $Z(x) = P(x) - (4x^2 + 4x + 240)$. Opuszczenie nawiasu zmieniłoby znaki wyrazów wolnych!"
               },
               "diagram": null,
               "plot": null,

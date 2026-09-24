@@ -107,9 +107,12 @@ def build_topic_12():
                 'xRange': [-4, 6],
                 'yRange': [-10, 5],
                 'gridStep': 2,
-                'a': 1,
-                'b': -2,
-                'c': -8,
+                'parabola': {
+                    'a': 1,
+                    'p': 1,
+                    'q': -9,
+                    'color': '#38BDF8'
+                },
                 'points': [
                     {'x': -2, 'y': 0, 'label': 'x₁ = -2', 'dot': 'filled', 'color': '#FFB800', 'attach': 'nw'},
                     {'x': 4, 'y': 0, 'label': 'x₂ = 4', 'dot': 'filled', 'color': '#FFB800', 'attach': 'ne'},
@@ -425,15 +428,15 @@ def build_topic_12():
         ),
         make_open_task(
             task_id='task-12-3-5',
-            source='CKE Maj 2023 • Zadanie otwarte (2 pkt)',
+            source='Trening JASNE • Wzorzec CKE',
             question='Wyznacz wartość najmniejszą i wartość największą funkcji kwadratowej $f(x) = 2x^2 - 8x + 3$ w przedziale domkniętym $\\langle -1, 3 \\rangle$. Zapisz pełne obliczenia.',
             points=2,
             scoring_key=[
-                ('1 pkt', 'Obliczenie $p = 2$, sprawdzenie warunku $2 \\in \\langle -1, 3 \\rangle$ i obliczenie wartości w wierzchołku $f(2) = -5$.'),
-                ('2 pkt', 'Obliczenie wartości na krańcach $f(-1) = 13, f(3) = -3$ i sformułowanie poprawnej odpowiedzi: $y_{\\min} = -5, y_{\\max} = 13$.')
+                '1 pkt: Obliczenie p = 2, sprawdzenie warunku 2 nalezy do [-1, 3] i obliczenie wartosci w wierzcholku f(2) = -5.',
+                '2 pkt: Obliczenie wartosci na krancach f(-1) = 13, f(3) = -3 i sformułowanie poprawnej odpowiedzi: wartosc najmniejsza to -5, a najwieksza to 13.'
             ],
             explanation='Krok 1: Wyznaczamy odciętą wierzchołka paraboli:\n$$p = -\\frac{b}{2a} = -\\frac{-8}{2 \\cdot 2} = \\frac{8}{4} = 2.$$\nSprawdzamy obecność w przedziale: $2 \\in \\langle -1, 3 \\rangle$.\nKrok 2: Ponieważ $a = 2 > 0$, w wierzchołku funkcja osiąga wartość najmniejszą:\n$$f(2) = 2(2)^2 - 8(2) + 3 = 8 - 16 + 3 = -5.$$\nKrok 3: Obliczamy wartości na krańcach przedziału:\n$$f(-1) = 2(-1)^2 - 8(-1) + 3 = 2(1) + 8 + 3 = 13$$\n$$f(3) = 2(3)^2 - 8(3) + 3 = 18 - 24 + 3 = -3.$$\nKrok 4: Zestawienie wyników:\nWartość najmniejsza: $y_{\\min} = -5$ (dla $x = 2$).\nWartość największa: $y_{\\max} = 13$ (dla $x = -1$).',
-            cke_trap='Częsty błąd: Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!'
+            cke_trap='Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!'
         )
     ]
 
@@ -577,22 +580,23 @@ def build_topic_12():
                 'b': 2,
                 'c': 3,
                 'points': [
-                    {'x': 1, 'y': 4, 'label': 'W(1, 4): Maksimum dla a < 0', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
+                    {'x': 1, 'y': 4, 'label': 'W(1, 4)', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
                 ]
             }
         ),
         make_open_task(
             task_id='task-12-4-5',
-            source='CKE Formuła 2023 • Zadanie otwarte (3 pkt)',
-            question='Ogrodnik dysponuje siatką o długości $60$ metrów i chce ogrodzić prostokątną działkę przylegającą jednym bokiem do ściany murowanego magazynu (ściana magazynu nie wymaga siatki).\nWyznacz wymiary działki, dla których jej pole powierzchni będzie największe, oraz oblicz to największe pole.',
-            points=3,
+            source='Matura sierpień 2023 • Zad. 33',
+            question='Zakład stolarski produkuje krzesła, które sprzedaje po 196 złotych za sztukę. Właściciel, na podstawie analizy rzeczywistych wpływów i wydatków, stwierdził, że:\n• przychód $P$ (w złotych) ze sprzedaży $x$ krzeseł można opisać funkcją $P(x) = 196x$\n• koszt $K$ (w złotych) produkcji $x$ krzeseł dziennie można opisać funkcją $K(x) = 4x^2 + 4x + 240$\nDziennie w zakładzie można wyprodukować co najwyżej 30 krzeseł.\nOblicz, ile krzeseł powinien dziennie sprzedawać zakład, aby zysk ze sprzedaży krzeseł wyprodukowanych przez ten zakład w ciągu jednego dnia był możliwie największy. Oblicz ten największy zysk. Zapisz obliczenia.\nWskazówka: przyjmij, że zysk jest różnicą przychodu i kosztów.',
+            points=4,
             scoring_key=[
-                ('1 pkt', 'Zapisanie zależności między bokami z uwzględnieniem ściany: $2x + y = 60$ oraz wyznaczenie wzoru pola $P(x) = x(60 - 2x) = -2x^2 + 60x$ wraz z dziedziną $x \\in (0, 30)$.'),
-                ('2 pkt', 'Obliczenie wymiaru $x = p = -\\frac{60}{2(-2)} = 15$ m, w którym funkcja osiąga maksimum.'),
-                ('3 pkt', 'Obliczenie drugiego wymiaru $y = 60 - 2(15) = 30$ m oraz maksymalnego pola $P_{\\max} = 15 \\cdot 30 = 450\\ \\text{m}^2$.')
+                '1 pkt: Zapisanie wzoru funkcji zysku dziennego Z(x) = P(x) - K(x) = -4x^2 + 192x - 240.',
+                '2 pkt: Zapisanie dziedziny funkcji zysku: x nalezy do {1, 2, ..., 30} (lub x w [0, 30]).',
+                '3 pkt: Wyznaczenie liczby krzeseł, dla której zysk jest największy: obliczenie odciętej wierzchołka p = 24.',
+                '4 pkt: Obliczenie największego dziennego zysku: Z(24) = 2064 zł.'
             ],
-            explanation='Krok 1: Oznaczmy przez $x$ długość dwóch boków prostopadłych do ściany, a przez $y$ długość boku równoległego do ściany.\nSiatka ma długość 60 m, zatem: $2x + y = 60 \\implies y = 60 - 2x$.\nDziedzina: $x > 0$ oraz $60 - 2x > 0 \\implies x \\in (0, 30)$.\nKrok 2: Zapisujemy pole powierzchni jako funkcję zmiennej $x$:\n$$P(x) = x \\cdot y = x(60 - 2x) = -2x^2 + 60x.$$\nKrok 3: Ponieważ $a = -2 < 0$, funkcja osiąga maksimum w wierzchołku:\n$$x_{\\max} = p = -\\frac{b}{2a} = -\\frac{60}{2(-2)} = \\frac{60}{4} = 15\\ \\text{m}.$$\nLiczba $15 \\in (0, 30)$, więc spełnia warunki zadania.\nKrok 4: Wyznaczamy drugi wymiar i maksymalne pole:\n$$y = 60 - 2(15) = 60 - 30 = 30\\ \\text{m}.$$\n$$P_{\\max} = 15 \\cdot 30 = 450\\ \\text{m}^2.$$\nOdpowiedź: Wymiary działki to $15$ m na $30$ m, a maksymalne pole wynosi $450\\ \\text{m}^2$.',
-            cke_trap='Uwaga na ścianę budynku: ogrodzenie składa się z trzech boków ($2x + y = 60$), a nie czterech!'
+            explanation='Krok 1: Wyznaczamy funkcję zysku dziennego $Z(x)$ jako różnicę przychodu i kosztów:\n$$Z(x) = P(x) - K(x) = 196x - (4x^2 + 4x + 240) = -4x^2 + 192x - 240.$$\nKrok 2: Określamy dziedzinę funkcji $Z$:\nZakład może wyprodukować dziennie co najwyżej 30 krzeseł, zatem $x \\in \\{1, 2, \\dots, 30\\}$ (lub $x \\in \\langle 0, 30 \\rangle$).\nKrok 3: Wyznaczamy liczbę krzeseł dającą największy zysk.\nFunkcja $Z(x)$ jest funkcją kwadratową o współczynniku $a = -4 < 0$ (ramiona paraboli w dół), więc osiąga wartość największą w wierzchołku paraboli:\n$$x = p = -\\frac{b}{2a} = -\\frac{192}{2 \\cdot (-4)} = \\frac{192}{8} = 24.$$\nLiczba 24 należy do dziedziny ($24 \\le 30$).\nKrok 4: Obliczamy największy zysk dla $x = 24$:\n$$Z(24) = -4(24)^2 + 192(24) - 240 = -4 \\cdot 576 + 4608 - 240 = -2304 + 4608 - 240 = 2064\\ \\text{zł}.$$\nOdpowiedź: Zakład powinien sprzedawać 24 krzesła dziennie, a największy zysk wynosi 2064 zł.',
+            cke_trap='Pamiętaj o nawiasie przy odejmowaniu kosztów: $Z(x) = P(x) - (4x^2 + 4x + 240)$. Opuszczenie nawiasu zmieniłoby znaki wyrazów wolnych!'
         )
     ]
 

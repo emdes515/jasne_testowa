@@ -5,6 +5,8 @@ import { InlineMath, BlockMath } from 'react-katex';
 const CLEAN_LATEX_CACHE_LIMIT = 800;
 const cleanLatexCache = new Map<string, string>();
 
+export const MATH_SPLIT_REGEX = /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{[a-zA-Z*]+\}[\s\S]*?\\end\{[a-zA-Z*]+\}|\$[^\$]+?\$|\\\([^\n]*?\\\))/g;
+
 /**
  * Normalizes LaTeX math strings safely:
  * - Strips outer delimiter dollars ($$ or $) or brackets
@@ -72,6 +74,16 @@ export function cleanLatex(mathStr: string): string {
   s = s.replace(/=\/=/g, '\\neq ');
   s = s.replace(/!=/g, '\\neq ');
   s = s.replace(/\+-/g, '\\pm ');
+  s = s.replace(/∪/g, ' \\cup ');
+  s = s.replace(/∩/g, ' \\cap ');
+  s = s.replace(/∈/g, ' \\in ');
+  s = s.replace(/∞(?=[a-zA-Z])/g, '\\infty ');
+  s = s.replace(/∞/g, '\\infty');
+
+  // Normalize Polish condition words 'dla' and 'gdy' in piecewise functions / cases
+  s = s.replace(/(&|\\quad|,)\s*(?!(?:\\text\{))(dla|gdy)\b(?:\s+|\\\s+)/g, (_m, pre, word) => {
+    return `${pre} \\text{${word} } `;
+  });
 
   // Normalizacja powszechnych greckich symboli w formułach matematycznych (delta -> \Delta, itp.)
   s = s.replace(/(?<!\\)\bdelta\b/gi, '\\Delta');
@@ -301,6 +313,17 @@ export function autoWrapLatex(rawStr: string): string {
   const trailingSpace = rawStr.match(/\s*$/)?.[0] || '';
   let s = rawStr.trim();
 
+  // If s is already a single complete formula, return intact without running transformations
+  if (
+    (s.startsWith('$$') && s.endsWith('$$') && !s.slice(2, -2).includes('$$')) ||
+    (s.startsWith('$') && s.endsWith('$') && !s.slice(1, -1).includes('$')) ||
+    (s.startsWith('\\[') && s.endsWith('\\]') && !s.slice(2, -2).includes('\\]')) ||
+    (s.startsWith('\\(') && s.endsWith('\\)') && !s.slice(2, -2).includes('\\)')) ||
+    (/^\\begin\{[a-zA-Z*]+\}[\s\S]*\\end\{[a-zA-Z*]+\}$/.test(s))
+  ) {
+    return leadingSpace + s + trailingSpace;
+  }
+
   // Normalize LaTeX parentheses and bracket delimiters \( ... \) -> $ ... $ and \[ ... \] -> $$ ... $$
   s = s
     .replace(/\\{1,2}\(([\s\S]*?)\\{1,2}\)/g, '$$$1$$')
@@ -313,12 +336,17 @@ export function autoWrapLatex(rawStr: string): string {
   const textWithoutLatex = s
     .replace(/\\text\{[^{}]*\}/g, '')
     .replace(/\\mbox\{[^{}]*\}/g, '')
+    .replace(/\\begin\{[a-zA-Z*]+\}/g, '')
+    .replace(/\\end\{[a-zA-Z*]+\}/g, '')
     .replace(/\\[a-zA-Z]+/g, '')
-    .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^]/g, ' ')
+    .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^&]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
   const words = textWithoutLatex.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
-  const mathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
+  const mathKeywords = new Set([
+    'sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt',
+    'cases', 'aligned', 'matrix', 'pmatrix', 'bmatrix', 'text', 'mbox', 'dla'
+  ]);
   const hasProseWords = words.some(w => !mathKeywords.has(w.toLowerCase()));
 
   // Merge prefix equations like "f(x) = $ax^2 + bx + c$" into "$f(x) = ax^2 + bx + c$"
@@ -436,31 +464,65 @@ export function autoWrapLatex(rawStr: string): string {
       });
     }
 
-    // 3b2. Wrap mathematical intervals in prose before standalone command wrapping:
-    // e.g. "x \in (-2, 3\rangle", "A = \langle -5, 2)", "B = (-1, 6\rangle)", "\langle 1, 5)", "(-2, 3\rangle"
-    const openDelim = '(?:\\\\langle|[(\\[⟨])';
-    const closeDelim = '(?:\\\\rangle|[)\\]⟩])';
-    const numOrInf = '(?:[-+]?(?:\\\\infty|∞|\\d+(?:\\{,\\}\\d+|[.,]\\d+)?))';
-
-    s = s.replace(new RegExp(`(^|[\\s(])([a-zA-Z]\\s*(?:\\\\in|∈|=)\\s*${openDelim}\\s*${numOrInf}\\s*[,;]\\s*${numOrInf}\\s*${closeDelim})(?=[\\s).,;!?]|$)`, 'g'), (_m, pre, expr) => {
-      return `${pre}$${cleanLatex(expr)}$`;
-    });
-    s = s.replace(new RegExp(`(^|[\\s(])(${openDelim}\\s*${numOrInf}\\s*[,;]\\s*${numOrInf}\\s*${closeDelim})(?=[\\s).,;!?]|$)`, 'g'), (_m, pre, expr) => {
-      return `${pre}$${cleanLatex(expr)}$`;
-    });
-
-    // 3c. Only on parts outside $...$: wrap standalone \command tokens (e.g. "liczba \sqrt{7}")
-    const parts = s.split(/(\$\$[\s\S]*?\$\$|\$[^\$]+?\$)/g);
+    // 3b2 & 3c: Only process prose parts OUTSIDE math mode ($...$, $$...$$, \begin{...}...\end{...})
+    const parts = s.split(MATH_SPLIT_REGEX);
     s = parts.map(part => {
-      if (part.startsWith('$')) return part;
-      return part.replace(/(?<=\s|^)(\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)(?=[\s.,;!?]|$)/g, '$$$1$$');
+      if (!part) return part;
+      // If it's a protected math chunk, preserve it exactly as is
+      if (
+        part.startsWith('$') || 
+        part.startsWith('\\(') || 
+        part.startsWith('\\[') || 
+        part.startsWith('\\begin{')
+      ) {
+        return part;
+      }
+
+      let p = part;
+      // 3b2. Wrap mathematical intervals and interval unions in prose outside math mode:
+      // e.g. "x \in (-2, 3\rangle", "A = \langle -5, 2)", "x \in (-\infty, -3] \cup [5, +\infty)", "(-2, 3\rangle"
+      const openDelim = '(?:\\\\langle|[(\\[⟨])';
+      const closeDelim = '(?:\\\\rangle|[)\\]⟩])';
+      const numOrInf = '(?:[-+]?\\s*(?:\\\\infty|∞|\\d+(?:\\{,\\}\\d+|[.,]\\d+)?))';
+      const singleInterval = `${openDelim}\\s*${numOrInf}\\s*[,;]\\s*${numOrInf}\\s*${closeDelim}`;
+      const compoundInterval = `${singleInterval}(?:\\s*(?:\\\\cup|\\\\cap|∪|∩)\\s*${singleInterval})*`;
+
+      p = p.replace(new RegExp(`(^|[\\s(])([a-zA-Z]\\s*(?:\\\\in|∈|=)\\s*${compoundInterval})(?=[\\s).,;!?]|$)`, 'g'), (_m, pre, expr) => {
+        return `${pre}$${cleanLatex(expr)}$`;
+      });
+      p = p.split(MATH_SPLIT_REGEX).map(subChunk => {
+        if (!subChunk || subChunk.startsWith('$') || subChunk.startsWith('\\(') || subChunk.startsWith('\\[') || subChunk.startsWith('\\begin{')) {
+          return subChunk;
+        }
+        return subChunk.replace(new RegExp(`(^|[\\s(])(${compoundInterval})(?=[\\s).,;!?]|$)`, 'g'), (_m, pre, expr) => {
+          return `${pre}$${cleanLatex(expr)}$`;
+        });
+      }).join('');
+
+      // 3c. Wrap standalone \command tokens (e.g. "liczba \sqrt{7}"), but never \begin, \end, \left, \right, \langle, \rangle
+      // and ensure it only runs on prose outside newly wrapped $...$
+      p = p.split(MATH_SPLIT_REGEX).map(subChunk => {
+        if (!subChunk || subChunk.startsWith('$') || subChunk.startsWith('\\(') || subChunk.startsWith('\\[') || subChunk.startsWith('\\begin{')) {
+          return subChunk;
+        }
+        return subChunk.replace(/(?<=\s|^)((?!(?:\\begin|\\end|\\left|\\right|\\langle|\\rangle)\b)\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)(?=[\s.,;!?]|$)/g, '$$$1$$');
+      }).join('');
+      return p;
     }).join('');
   }
 
-  // Case 4: Mathematical notation in prose outside $...$ (fractions, inequalities, pi, !=)
-  const proseParts = s.split(/(\$\$[\s\S]*?\$\$|\$[^\$]+?\$)/g);
+  // Case 4: Mathematical notation in prose outside math mode (fractions, inequalities, pi, !=)
+  const proseParts = s.split(MATH_SPLIT_REGEX);
   s = proseParts.map(part => {
-    if (part.startsWith('$')) return part;
+    if (!part) return part;
+    if (
+      part.startsWith('$') || 
+      part.startsWith('\\(') || 
+      part.startsWith('\\[') || 
+      part.startsWith('\\begin{')
+    ) {
+      return part;
+    }
     if (/\d+\/\d+\/\d+/.test(part) || /https?:\/\//.test(part)) return part;
 
     let p = part;
@@ -544,9 +606,8 @@ interface MathRendererProps {
   text?: string | any; // backwards compatibility alias for content
   className?: string;
   displayMode?: boolean;
+  inline?: boolean;
 }
-
-const MATH_SPLIT_REGEX = /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\begin\{cases\}[\s\S]*?\\end\{cases\}|\$[^\$]+?\$|\\\([^\n]*?\\\))/g;
 
 export interface MathToken {
   type: 'display-math' | 'inline-math' | 'text';
@@ -569,7 +630,7 @@ export function parseMixedMathTokens(str: string): MathToken[] {
     const isDisplayMath = 
       (trimmed.startsWith('$$') && trimmed.endsWith('$$') && trimmed.length >= 4) ||
       (trimmed.startsWith('\\[') && trimmed.endsWith('\\]') && trimmed.length >= 4) ||
-      (trimmed.startsWith('\\begin{cases}') && trimmed.endsWith('\\end{cases}'));
+      (/^\\begin\{[a-zA-Z*]+\}[\s\S]*\\end\{[a-zA-Z*]+\}$/.test(trimmed));
 
     const isInlineMath = 
       (trimmed.startsWith('$') && trimmed.endsWith('$') && trimmed.length >= 2) ||
@@ -624,7 +685,8 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
   content, 
   text, 
   className = '',
-  displayMode = false
+  displayMode = false,
+  inline = false
 }) => {
   const input = content ?? text;
   if (input === null || input === undefined) return null;
@@ -757,26 +819,34 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
 
   const trimmedForBlockCheck = rawContent.trim();
   const hasInlineDelimiters = trimmedForBlockCheck.includes('$');
-  // Strip \text{...} blocks, LaTeX commands, and math symbols before checking for non-math prose words
+  // Strip \text{...} blocks, environments, LaTeX commands, and math symbols before checking for non-math prose words
   const textWithoutLatexBlock = trimmedForBlockCheck
     .replace(/\\text\{[^{}]*\}/g, '')
+    .replace(/\\mbox\{[^{}]*\}/g, '')
+    .replace(/\\begin\{[a-zA-Z*]+\}/g, '')
+    .replace(/\\end\{[a-zA-Z*]+\}/g, '')
     .replace(/\\[a-zA-Z]+/g, '')
-    .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^]/g, ' ')
+    .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^&]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
   const blockWords = textWithoutLatexBlock.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
-  const blockMathKeywords = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt']);
+  const blockMathKeywords = new Set([
+    'sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt',
+    'cases', 'aligned', 'matrix', 'pmatrix', 'bmatrix', 'text', 'mbox', 'dla'
+  ]);
   const hasProseWordsBlock = blockWords.some(w => !blockMathKeywords.has(w.toLowerCase()));
 
   // Czysty blok LaTeX: brak słów w języku naturalnym poza \text{} oraz komendy LaTeX lub displayMode
   const hasLatexCommands = /\\[a-zA-Z]+|\{|\}/.test(trimmedForBlockCheck);
   const isPureLatexBlock = 
+    !inline &&
     !hasInlineDelimiters && 
     !hasProseWordsBlock &&
     (
       displayMode || 
       hasLatexCommands ||
       trimmedForBlockCheck.startsWith('\\begin{') || 
+      trimmedForBlockCheck.includes('\\begin{') ||
       (trimmedForBlockCheck.startsWith('$$') && trimmedForBlockCheck.endsWith('$$') && !trimmedForBlockCheck.slice(2, -2).includes('$$'))
     );
 

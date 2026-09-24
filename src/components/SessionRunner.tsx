@@ -4209,13 +4209,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   <span className="px-2 py-0.5 rounded-md bg-sky-500/15 border border-sky-500/30 text-sky-300 text-xs font-mono font-bold">
                                     OŚ OX (POZIOM)
                                   </span>
-                                  <span className="text-xs font-semibold text-slate-200">Argumenty $x$</span>
+                                  <span className="text-xs font-semibold text-slate-200">
+                                    Argumenty <MathRenderer inline text="$x$" />
+                                  </span>
                                 </div>
                                 <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
-                                  <li><span className="font-semibold text-slate-200">Dziedzina $D_f$:</span> szerokość wykresu od lewej do prawej</li>
-                                  <li><span className="font-semibold text-slate-200">Miejsca zerowe:</span> punkty na osi ($y = 0$)</li>
-                                  <li><span className="font-semibold text-slate-200">Monotoniczność:</span> przedziały $x$, gdzie rośnie/maleje</li>
-                                  <li><span className="font-semibold text-slate-200">Nierówności $f(x) &gt; 0$:</span> przedziały $x$ leżące nad osią</li>
+                                  <li><span className="font-semibold text-slate-200">Dziedzina <MathRenderer inline text="$D_f$" />:</span> szerokość wykresu od lewej do prawej</li>
+                                  <li><span className="font-semibold text-slate-200">Miejsca zerowe:</span> punkty na osi (<MathRenderer inline text="$y = 0$" />)</li>
+                                  <li><span className="font-semibold text-slate-200">Monotoniczność:</span> przedziały <MathRenderer inline text="$x$" />, gdzie rośnie/maleje</li>
+                                  <li><span className="font-semibold text-slate-200">Nierówności <MathRenderer inline text="$f(x) > 0$" />:</span> przedziały <MathRenderer inline text="$x$" /> leżące nad osią</li>
                                 </ul>
                               </div>
 
@@ -4225,20 +4227,22 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold">
                                     OŚ OY (PION)
                                   </span>
-                                  <span className="text-xs font-semibold text-slate-200">Wartości $y$</span>
+                                  <span className="text-xs font-semibold text-slate-200">
+                                    Wartości <MathRenderer inline text="$y$" />
+                                  </span>
                                 </div>
                                 <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
-                                  <li><span className="font-semibold text-slate-200">Zbiór wartości $ZW_f$:</span> wysokość od dołu do góry (min / max)</li>
-                                  <li><span className="font-semibold text-slate-200">Wartość $f(0)$:</span> przecięcie z osią pionową</li>
-                                  <li><span className="font-semibold text-slate-200">Równanie $f(x) = m$:</span> pozioma linijka na wysokości $m$</li>
-                                  <li><span className="font-semibold text-slate-200">Wartości dodatnie:</span> punkty powyżej poziomu $y=0$</li>
+                                  <li><span className="font-semibold text-slate-200">Zbiór wartości <MathRenderer inline text="$ZW_f$" />:</span> wysokość od dołu do góry (min / max)</li>
+                                  <li><span className="font-semibold text-slate-200">Wartość <MathRenderer inline text="$f(0)$" />:</span> przecięcie z osią pionową</li>
+                                  <li><span className="font-semibold text-slate-200">Równanie <MathRenderer inline text="$f(x) = m$" />:</span> pozioma linijka na wysokości <MathRenderer inline text="$m$" /></li>
+                                  <li><span className="font-semibold text-slate-200">Wartości dodatnie:</span> punkty powyżej poziomu <MathRenderer inline text="$y = 0$" /></li>
                                 </ul>
                               </div>
                             </div>
 
                             <div className="rounded-xl px-3.5 py-2.5 bg-amber-500/[0.07] border border-amber-500/20 text-xs text-slate-300 flex items-center gap-2.5">
                               <Lightbulb className="w-4 h-4 text-amber-400 shrink-0" />
-                              <span><strong className="text-amber-300">Żelazna zasada CKE:</strong> Przedziały monotoniczności i rozwiązania nierówności odczytujesz ZAWSZE z osi poziomej $OX$!</span>
+                              <span><strong className="text-amber-300">Wskazówka:</strong> Przedziały monotoniczności i rozwiązania nierówności odczytujesz ZAWSZE z osi poziomej <MathRenderer inline text="$OX$" />!</span>
                             </div>
                           </div>
                         )}
@@ -4675,16 +4679,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="text-base sm:text-lg font-medium text-slate-100 leading-relaxed break-words">
                 <MathRenderer content={currentTask?.question || currentTask?.math_statement || currentTask?.content || ''} />
               </div>
-              {currentTask?.numberLine && (
+              {currentTask?.numberLine ? (
                 <div className="mt-3 flex justify-center">
                   <NumberLineDiagram data={currentTask.numberLine} height={64} maxWidth="360px" />
                 </div>
-              )}
-              {(currentTask?.diagram || currentTask?.plot) && (
+              ) : (currentTask?.diagram || currentTask?.plot) ? (
                 <div className="mt-3 flex justify-center">
                   <MathDiagram diagram={currentTask.diagram || currentTask.plot} />
                 </div>
-              )}
+              ) : null}
             </div>
 
         {/* OPEN TASK WORKSPACE (DWA TRYBY: KLAWIATURA VS TABLICA VS POLSKI TEKST) */}

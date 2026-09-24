@@ -270,15 +270,15 @@ def build_topic_11():
         ),
         make_open_task(
             task_id='task-11-2-5',
-            source='CKE Formuła 2023 • Zadanie otwarte (2 pkt)',
-            question='Suma $n$ początkowych wyrazów ciągu arytmetycznego $(a_n)$ określona jest wzorem $S_n = 2n^2 + 3n$ dla każdego $n \\ge 1$.\nWyznacz wzór na $n$-ty wyraz tego ciągu ($a_n$) i oblicz jego pierwszy wyraz $a_1$.',
+            source='Matura maj 2024 • Zad. 17',
+            question='Ciąg arytmetyczny $(a_n)$ jest określony dla każdej liczby naturalnej $n \\ge 1$. Trzeci wyraz tego ciągu jest równy $(-1)$, a suma piętnastu początkowych kolejnych wyrazów tego ciągu jest równa $(-165)$.\nOblicz różnicę tego ciągu. Zapisz obliczenia.',
             points=2,
             scoring_key=[
-                ('1 pkt', 'Obliczenie pierwszego wyrazu $a_1 = S_1 = 5$ lub poprawne rozpisanie $S_{n-1}$.'),
-                ('2 pkt', 'Poprawne wyznaczenie wzoru ogólnego $a_n = 4n + 1$ z pełnym uzasadnieniem.')
+                '1 pkt: Zapisanie układu równań z niewiadomymi a1 oraz r, np. a1 + 2r = -1 oraz (2a1 + 14r)/2 * 15 = -165, lub wyznaczenie równania z jedną niewiadomą r.',
+                '2 pkt: Poprawne obliczenie różnicy ciągu: r = -2.'
             ],
-            explanation='Krok 1: Pierwszy wyraz ciągu jest równy sumie jednego wyrazu:\n$$a_1 = S_1 = 2(1)^2 + 3(1) = 2 + 3 = 5.$$\nKrok 2: Dla $n \\ge 2$ korzystamy z zależności $a_n = S_n - S_{n-1}$:\n$$S_{n-1} = 2(n-1)^2 + 3(n-1) = 2(n^2 - 2n + 1) + 3n - 3 = 2n^2 - 4n + 2 + 3n - 3 = 2n^2 - n - 1.$$\nKrok 3: Odejmujemy sumy:\n$$a_n = (2n^2 + 3n) - (2n^2 - n - 1) = 2n^2 + 3n - 2n^2 + n + 1 = 4n + 1.$$\nSprawdzenie dla $n = 1$: $a_1 = 4(1) + 1 = 5$, co zgadza się z $S_1$. Zatem $a_n = 4n + 1$.',
-            cke_trap='Nie wolno przyjmować, że $a_n = S_n / n$. Wyraz ogólny to różnica sum: $a_n = S_n - S_{n-1}$.'
+            explanation='Krok 1: Wykorzystujemy wzór na wyraz ogólny oraz sumę ciągu arytmetycznego:\n$$a_3 = a_1 + 2r = -1$$\n$$S_{15} = \\frac{2a_1 + 14r}{2} \\cdot 15 = (a_1 + 7r) \\cdot 15 = -165$$\nKrok 2: Dzielimy drugie równanie obustronnie przez 15:\n$$a_1 + 7r = -11$$\nKrok 3: Z pierwszego równania wyznaczamy $a_1 = -1 - 2r$ i podstawiamy:\n$$(-1 - 2r) + 7r = -11$$\n$$5r = -10$$\n$$r = -2$$\nOdpowiedź: Różnica ciągu arytmetycznego wynosi $r = -2$.',
+            cke_trap='Pamiętaj o nawiasach przy wyznaczaniu sumy: we wzorze na $S_{15}$ mamy $\\frac{2a_1 + (15-1)r}{2} \\cdot 15$.'
         )
     ]
 

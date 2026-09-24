@@ -32,8 +32,10 @@ export interface PlotHorizontalLine {
 
 export interface PlotParabola {
   a: number;
-  p: number;
-  q: number;
+  p?: number;
+  q?: number;
+  b?: number;
+  c?: number;
   domain?: [number, number];
   color?: string;
 }
@@ -111,6 +113,13 @@ export interface PlotData {
   lines?: PlotLine[];
   horizontalLines?: PlotHorizontalLine[];
   parabola?: PlotParabola;
+  a?: number;
+  b?: number;
+  c?: number;
+  p?: number;
+  q?: number;
+  xPadding?: number;
+  yPadding?: number;
   points?: PlotPoint[];
   axisOfSymmetry?: number;
   labels?: PlotLabel[];
@@ -153,16 +162,50 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
   const originX = toSvgX(0);
   const originY = toSvgY(0);
 
+  // Wyznaczenie funkcji paraboli z postaci kanonicznej (p, q), ogólnej (b, c) lub bezpośrednich współczynników
+  const getParabolaFunction = (): ((x: number) => number) | null => {
+    const p = plot.parabola;
+    if (p) {
+      if (typeof p.p === 'number' && typeof p.q === 'number') {
+        const a = p.a ?? 1;
+        return (x: number) => a * Math.pow(x - p.p!, 2) + p.q!;
+      }
+      if (typeof p.b === 'number' && typeof p.c === 'number') {
+        const a = p.a ?? 1;
+        return (x: number) => a * x * x + p.b! * x + p.c!;
+      }
+      if (typeof p.a === 'number') {
+        const b = (p as any).b ?? 0;
+        const c = (p as any).c ?? 0;
+        return (x: number) => p.a * x * x + b * x + c;
+      }
+    }
+    const plotAny = plot as any;
+    if (typeof plotAny.a === 'number') {
+      if (typeof plotAny.p === 'number' && typeof plotAny.q === 'number') {
+        return (x: number) => plotAny.a * Math.pow(x - plotAny.p, 2) + plotAny.q;
+      }
+      if (typeof plotAny.b === 'number' || typeof plotAny.c === 'number') {
+        const b = plotAny.b ?? 0;
+        const c = plotAny.c ?? 0;
+        return (x: number) => plotAny.a * x * x + b * x + c;
+      }
+    }
+    return null;
+  };
+
+  const parabolaFn = getParabolaFunction();
+
   // Generowanie punktów dla paraboli
-  const generateParabolaPath = (p: PlotParabola) => {
-    const [pDomainMin, pDomainMax] = p.domain || [xMin, xMax];
-    const steps = 40;
+  const generateParabolaPath = (fn: (x: number) => number, domain?: [number, number]) => {
+    const [pDomainMin, pDomainMax] = domain || [xMin, xMax];
+    const steps = 60;
     const stepSize = (pDomainMax - pDomainMin) / steps;
     const pathCommands: string[] = [];
 
     for (let i = 0; i <= steps; i++) {
       const x = pDomainMin + i * stepSize;
-      const y = p.a * Math.pow(x - p.p, 2) + p.q;
+      const y = fn(x);
       const sx = toSvgX(x);
       const sy = toSvgY(y);
       if (i === 0) {
@@ -455,11 +498,11 @@ export const MathPlot: React.FC<MathPlotProps> = ({ plot, className = '' }) => {
         })}
 
         {/* 6. Parabola (Funkcja kwadratowa) */}
-        {plot.parabola && (
+        {parabolaFn && (
           <path
-            d={generateParabolaPath(plot.parabola)}
+            d={generateParabolaPath(parabolaFn, plot.parabola?.domain)}
             fill="none"
-            stroke={plot.parabola.color || '#FFB800'}
+            stroke={plot.parabola?.color || (plot as any).color || '#FFB800'}
             strokeWidth="2.75"
             strokeLinecap="round"
           />

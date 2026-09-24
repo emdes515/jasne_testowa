@@ -45,25 +45,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='$\\Delta = (-2)^2 - 4 \\cdot 1 \\cdot (-8) = 4 + 32 = 36$, $\\sqrt{\\Delta} = 6$. Wtedy $x_1 = \\frac{2 - 6}{2} = -2$, $x_2 = \\frac{2 + 6}{2} = 4$.',
-            cke_trap='We wzorze na pierwiastki jest $-b$: dla $b = -2$ mamy $-(-2) = +2$.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-4, 6],
-                'yRange': [-10, 5],
-                'gridStep': 2,
-                'parabola': {
-                    'a': 1,
-                    'p': 1,
-                    'q': -9,
-                    'color': '#38BDF8',
-                    'domain': [-3.2, 5.2]
-                },
-                'points': [
-                    {'x': -2, 'y': 0, 'label': 'x₁ = -2', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 4, 'y': 0, 'label': 'x₂ = 4', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'},
-                    {'x': 1, 'y': -9, 'label': 'W(1, -9)', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'}
-                ]
-            }
+            cke_trap='We wzorze na pierwiastki jest $-b$: dla $b = -2$ mamy $-(-2) = +2$.'
         ),
         make_sc_task(
             task_id='task-8-1-3',
@@ -77,23 +59,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='$\\Delta = (-6)^2 - 4 \\cdot (-1) \\cdot (-9) = 36 - 36 = 0$. Trzy minusy dają łączny minus! Funkcja ma jedno miejsce zerowe $x_0 = -3$.',
-            cke_trap='Iloczyn $-4 \\cdot (-1) \\cdot (-9)$ zawiera trzy minusy, więc daje $-36$, a nie $+36$.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-6, 0],
-                'yRange': [-5, 2],
-                'gridStep': 1,
-                'parabola': {
-                    'a': -1,
-                    'p': -3,
-                    'q': 0,
-                    'color': '#F43F5E',
-                    'domain': [-5.2, -0.8]
-                },
-                'points': [
-                    {'x': -3, 'y': 0, 'label': 'x₀ = -3 (Δ = 0, styczna)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'}
-                ]
-            }
+            cke_trap='Iloczyn $-4 \\cdot (-1) \\cdot (-9)$ zawiera trzy minusy, więc daje $-36$, a nie $+36$.'
         ),
         make_tf_task(
             task_id='task-8-1-4',
@@ -109,28 +75,7 @@ def build_topic_08():
             question='Oblicz odległość między miejscami zerowymi funkcji $f(x) = x^2 - 10x + 9$.',
             correct_val=8,
             explanation='$\\Delta = 100 - 36 = 64$, $\\sqrt{\\Delta} = 8$. Pierwiastki to $x_1 = 1$, $x_2 = 9$. Odległość między nimi to $9 - 1 = 8$.',
-            cke_trap='Odległość to różnica większego pierwiastka i mniejszego: $x_2 - x_1 = 8$.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-1, 11],
-                'yRange': [-18, 6],
-                'gridStep': 2,
-                'parabola': {
-                    'a': 1,
-                    'p': 5,
-                    'q': -16,
-                    'color': '#38BDF8',
-                    'domain': [0, 10]
-                },
-                'segments': [
-                    {'from': [1, 0], 'to': [9, 0], 'color': '#10B981', 'weight': 4}
-                ],
-                'points': [
-                    {'x': 1, 'y': 0, 'label': 'x₁ = 1', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 9, 'y': 0, 'label': 'x₂ = 9', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'},
-                    {'x': 5, 'y': 0, 'label': 'd = 8', 'dot': 'none', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            cke_trap='Odległość to różnica większego pierwiastka i mniejszego: $x_2 - x_1 = 8$.'
         )
     ]
     l1 = make_lesson(
@@ -193,25 +138,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='O kierunku ramion decyduje WYŁĄCZNIE znak współczynnika $a$ przy $x^2$. Skoro $a = -2 < 0$, ramiona idą w dół.',
-            cke_trap='Znak nierówności ($>$) NIE decyduje o ramionach paraboli!',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-1, 3],
-                'yRange': [-3, 2],
-                'gridStep': 1,
-                'parabola': {
-                    'a': -2,
-                    'p': 1.25,
-                    'q': 0.125,
-                    'color': '#F43F5E',
-                    'domain': [-0.5, 3]
-                },
-                'points': [
-                    {'x': 1, 'y': 0, 'label': 'x₁ = 1', 'dot': 'filled', 'color': '#FFB800', 'attach': 'sw'},
-                    {'x': 1.5, 'y': 0, 'label': 'x₂ = 1.5', 'dot': 'filled', 'color': '#FFB800', 'attach': 'se'},
-                    {'x': 1.25, 'y': 0.125, 'label': 'a = -2 < 0 (ramiona w dół)', 'dot': 'filled', 'color': '#F43F5E', 'attach': 'n'}
-                ]
-            }
+            cke_trap='Znak nierówności ($>$) NIE decyduje o ramionach paraboli!'
         ),
         make_sc_task(
             task_id='task-8-1-2-2',
@@ -225,27 +152,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='Miejsca zerowe to $2$ i $3$. Współczynnik $a = 1 > 0$ (ramiona w górę). Parabola schodzi pod oś między pierwiastkami. Znak $\\le$ oznacza przedział domknięty: $[2, 3]$.',
-            cke_trap='Znak $\\le$ daje nawiasy domknięte $[2, 3]$, a nie otwarte $(2, 3)$.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [0, 5],
-                'yRange': [-2, 4],
-                'gridStep': 1,
-                'parabola': {
-                    'a': 1,
-                    'p': 2.5,
-                    'q': -0.25,
-                    'color': '#38BDF8',
-                    'domain': [0.5, 4.5]
-                },
-                'segments': [
-                    {'from': [2, 0], 'to': [3, 0], 'startDot': 'filled', 'endDot': 'filled', 'color': '#10B981', 'weight': 4}
-                ],
-                'points': [
-                    {'x': 2, 'y': 0, 'label': 'x₁ = 2', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 3, 'y': 0, 'label': 'x₂ = 3', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
-                ]
-            }
+            cke_trap='Znak $\\le$ daje nawiasy domknięte $[2, 3]$, a nie otwarte $(2, 3)$.'
         ),
         make_sc_task(
             task_id='task-8-1-2-3',
@@ -259,28 +166,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='Miejsca zerowe to $1$ i $3$. Ramiona w dół ($a = -1$). Wykres znajduje się NAD osią $OX$ ($>0$) na brzuszku między 1 a 3: $(1, 3)$.',
-            cke_trap='Dla ramion w dół obszar NAD osią to wnętrze między pierwiastkami.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-1, 5],
-                'yRange': [-2, 3],
-                'gridStep': 1,
-                'parabola': {
-                    'a': -1,
-                    'p': 2,
-                    'q': 1,
-                    'color': '#FFB800',
-                    'domain': [0, 4]
-                },
-                'segments': [
-                    {'from': [1, 0], 'to': [3, 0], 'startDot': 'hollow', 'endDot': 'hollow', 'color': '#10B981', 'weight': 4}
-                ],
-                'points': [
-                    {'x': 1, 'y': 0, 'label': 'x₁ = 1 (otwarty)', 'dot': 'hollow', 'color': '#10B981', 'attach': 'sw'},
-                    {'x': 3, 'y': 0, 'label': 'x₂ = 3 (otwarty)', 'dot': 'hollow', 'color': '#10B981', 'attach': 'se'},
-                    {'x': 2, 'y': 1, 'label': 'W(2, 1)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'}
-                ]
-            }
+            cke_trap='Dla ramion w dół obszar NAD osią to wnętrze między pierwiastkami.'
         ),
         make_tf_task(
             task_id='task-8-1-2-4',
@@ -292,32 +178,15 @@ def build_topic_08():
         ),
         make_open_task(
             task_id='task-8-1-2-5',
-            source='Matura Maj 2023 • Zadanie Otwarte 2 pkt',
-            question='Rozwiąż nierówność $3x^2 - 10x + 3 \\le 0$. Zapisz pełne obliczenia.',
+            source='Matura czerwiec 2023 • Zad. 8',
+            question='Rozwiąż nierówność\n$$x(2x - 1) < 2x$$\nZapisz obliczenia.',
             points=2,
-            scoring_key='1 pkt: obliczenie delty i miejsc zerowych: x1 = 1/3, x2 = 3.\n2 pkt: poprawny szkic paraboli z ramionami w górę i podanie przedziału domkniętego [1/3, 3].',
-            explanation='1) $\\Delta = (-10)^2 - 4 \\cdot 3 \\cdot 3 = 100 - 36 = 64$, $\\sqrt{\\Delta} = 8$.\n2) $x_1 = \\frac{10 - 8}{6} = \\frac{1}{3}$, $x_2 = \\frac{10 + 8}{6} = 3$.\n3) Ponieważ $a = 3 > 0$, ramiona paraboli są skierowane w górę. Wartości $\\le 0$ leżą pod osią i na osi w przedziale $[\\frac{1}{3}, 3]$.',
-            cke_trap='Pamiętaj o podzieleniu przez $2a = 6$, a nie samo 2!',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-1, 4],
-                'yRange': [-6, 4],
-                'gridStep': 1,
-                'parabola': {
-                    'a': 3,
-                    'p': 1.667,
-                    'q': -5.333,
-                    'color': '#38BDF8',
-                    'domain': [-0.2, 3.5]
-                },
-                'segments': [
-                    {'from': [0.333, 0], 'to': [3, 0], 'startDot': 'filled', 'endDot': 'filled', 'color': '#10B981', 'weight': 4}
-                ],
-                'points': [
-                    {'x': 0.333, 'y': 0, 'label': 'x₁ = 1/3', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 3, 'y': 0, 'label': 'x₂ = 3', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
-                ]
-            }
+            scoring_key=[
+                '1 pkt: Zapisanie nierówności w postaci uporządkowanej 2x^2 - 3x < 0 i wyznaczenie miejsc zerowych trójmianu: x1 = 0, x2 = 3/2.',
+                '2 pkt: Poprawny szkic paraboli z ramionami skierowanymi w górę i podanie zbioru rozwiązań w postaci przedziału otwartego: (0, 3/2).'
+            ],
+            explanation='Krok 1: Przekształcamy nierówność do postaci uporządkowanej:\n$$x(2x - 1) < 2x \\implies 2x^2 - x < 2x \\implies 2x^2 - 3x < 0.$$\nKrok 2: Wyznaczamy miejsca zerowe, wyłączając $x$ przed nawias:\n$$x(2x - 3) = 0 \\implies x_1 = 0 \\quad \\text{lub} \\quad x_2 = \\frac{3}{2}.$$\nKrok 3: Szkicujemy parabolę o ramionach skierowanych w górę ($a = 2 > 0$). Szukamy wartości mniejszych od zera ($<0$), czyli leżących pod osią $OX$.\nZbiorem rozwiązań jest przedział otwarty: $x \\in (0, \\frac{3}{2})$.',
+            cke_trap='Nigdy nie dziel nierówności przez $x$! Dzielenie przez niewiadomą bez znajomości jej znaku zmienia lub gubi rozwiązania. Zawsze przenoś wszystko na jedną stronę.'
         )
     ]
     l2 = make_lesson(
@@ -380,28 +249,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='Wyłączamy $x$ przed nawias: $x(x - 4) > 0$. Miejsca zerowe to $0$ i $4$. Ramiona w górę. Znak $>$ daje skrzydła zewnętrzne: $(-\\infty, 0) \\cup (4, +\\infty)$.',
-            cke_trap='Nigdy nie dziel nierówności przez $x$! Zawsze wyłączaj $x$ przed nawias.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-2, 6],
-                'yRange': [-5, 4],
-                'gridStep': 1,
-                'parabola': {
-                    'a': 1,
-                    'p': 2,
-                    'q': -4,
-                    'color': '#38BDF8',
-                    'domain': [-1, 5]
-                },
-                'segments': [
-                    {'from': [-2, 0], 'to': [0, 0], 'startDot': 'none', 'endDot': 'hollow', 'color': '#10B981', 'weight': 4},
-                    {'from': [4, 0], 'to': [6, 0], 'startDot': 'hollow', 'endDot': 'none', 'color': '#10B981', 'weight': 4}
-                ],
-                'points': [
-                    {'x': 0, 'y': 0, 'label': 'x₁ = 0', 'dot': 'hollow', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 4, 'y': 0, 'label': 'x₂ = 4', 'dot': 'hollow', 'color': '#10B981', 'attach': 'ne'}
-                ]
-            }
+            cke_trap='Nigdy nie dziel nierówności przez $x$! Zawsze wyłączaj $x$ przed nawias.'
         ),
         make_sc_task(
             task_id='task-8-1-3-2',
@@ -415,27 +263,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='$(x - 4)(x + 4) \\le 0$. Miejsca zerowe to $-4$ i $4$. Ramiona w górę, obszar pod osią to przedział domknięty $[-4, 4]$.',
-            cke_trap='Równość $x^2 \\le 16$ oznacza odległość od zera co najwyżej 4, czyli $|x| \\le 4$, a więc $[-4, 4]$.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-6, 6],
-                'yRange': [-5, 5],
-                'gridStep': 2,
-                'parabola': {
-                    'a': 0.25,
-                    'p': 0,
-                    'q': -4,
-                    'color': '#38BDF8',
-                    'domain': [-5.5, 5.5]
-                },
-                'segments': [
-                    {'from': [-4, 0], 'to': [4, 0], 'startDot': 'filled', 'endDot': 'filled', 'color': '#10B981', 'weight': 4}
-                ],
-                'points': [
-                    {'x': -4, 'y': 0, 'label': 'x₁ = -4', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 4, 'y': 0, 'label': 'x₂ = 4', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
-                ]
-            }
+            cke_trap='Równość $x^2 \\le 16$ oznacza odległość od zera co najwyżej 4, czyli $|x| \\le 4$, a więc $[-4, 4]$.'
         ),
         make_sc_task(
             task_id='task-8-1-3-3',
@@ -528,26 +356,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='Dla każdego $x \\in \\mathbb{R}$ mamy $x^2 \\ge 0$, więc $x^2 + 4 \\ge 4 > 0$. Nierówność jest spełniona przez każdą liczbę.',
-            cke_trap='Brak miejsc zerowych ($\\Delta < 0$) nie oznacza braku rozwiązań nierówności!',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-4, 4],
-                'yRange': [-2, 8],
-                'gridStep': 2,
-                'parabola': {
-                    'a': 1,
-                    'p': 0,
-                    'q': 4,
-                    'color': '#10B981',
-                    'domain': [-3, 3]
-                },
-                'segments': [
-                    {'from': [-4, 0], 'to': [4, 0], 'startDot': 'none', 'endDot': 'none', 'color': '#10B981', 'weight': 4}
-                ],
-                'points': [
-                    {'x': 0, 'y': 4, 'label': 'W(0, 4) > 0: cała parabola nad OX', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
-                ]
-            }
+            cke_trap='Brak miejsc zerowych ($\\Delta < 0$) nie oznacza braku rozwiązań nierówności!'
         ),
         make_sc_task(
             task_id='task-8-4-2',
@@ -561,23 +370,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='Kwadrat liczby rzeczywistej nigdy nie jest ujemny ($(x-3)^2 \\ge 0$). Nierówność $(x-3)^2 \\le 0$ może być spełniona tylko wtedy, gdy $(x-3)^2 = 0$, czyli $x = 3$.',
-            cke_trap='Znak $\\le$ to "mniejsze LUB równe". Równość zachodzi dla $x = 3$.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [0, 6],
-                'yRange': [-2, 5],
-                'gridStep': 1,
-                'parabola': {
-                    'a': 1,
-                    'p': 3,
-                    'q': 0,
-                    'color': '#FFB800',
-                    'domain': [1, 5]
-                },
-                'points': [
-                    {'x': 3, 'y': 0, 'label': 'W(3, 0): jedyny punkt ≤ 0', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            cke_trap='Znak $\\le$ to "mniejsze LUB równe". Równość zachodzi dla $x = 3$.'
         ),
         make_sc_task(
             task_id='task-8-4-3',
@@ -591,23 +384,7 @@ def build_topic_08():
             ],
             correct_id='A',
             explanation='$\\Delta = 9 - 40 = -31 < 0$. Ponieważ $a = -2 < 0$, cała parabola leży pod osią $OX$. Wartości nigdy nie są dodatnie ($> 0$), więc brak rozwiązań.',
-            cke_trap='Gdy $a < 0$ i $\\Delta < 0$, funkcja przyjmuje wyłącznie wartości ujemne.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-2, 4],
-                'yRange': [-7, 2],
-                'gridStep': 1,
-                'parabola': {
-                    'a': -1,
-                    'p': 1,
-                    'q': -2,
-                    'color': '#F43F5E',
-                    'domain': [-1.5, 3.5]
-                },
-                'points': [
-                    {'x': 1, 'y': -2, 'label': 'W pod osią, a < 0: brak punktów > 0', 'dot': 'filled', 'color': '#F43F5E', 'attach': 's'}
-                ]
-            }
+            cke_trap='Gdy $a < 0$ i $\\Delta < 0$, funkcja przyjmuje wyłącznie wartości ujemne.'
         ),
         make_tf_task(
             task_id='task-8-4-4',
@@ -615,23 +392,7 @@ def build_topic_08():
             question='Oceń prawdziwość zdania: Nierówność $(x + 5)^2 < 0$ nie posiada rozwiązań w zbiorze liczb rzeczywistych.',
             correct_tf='PRAWDA',
             explanation='Kwadrat dowolnej liczby jest nieujemny ($(x+5)^2 \\ge 0$), więc nie może być ostro mniejszy od zera.',
-            cke_trap='Dla $x = -5$ mamy $0 < 0$, co jest fałszem. Nierówność ostra wyklucza zero.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-8, -2],
-                'yRange': [-2, 6],
-                'gridStep': 1,
-                'parabola': {
-                    'a': 1,
-                    'p': -5,
-                    'q': 0,
-                    'color': '#FFB800',
-                    'domain': [-7.4, -2.6]
-                },
-                'points': [
-                    {'x': -5, 'y': 0, 'label': 'W(-5, 0): (x+5)² ≥ 0 dla każdego x', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'}
-                ]
-            }
+            cke_trap='Dla $x = -5$ mamy $0 < 0$, co jest fałszem. Nierówność ostra wyklucza zero.'
         ),
         make_numeric_task(
             task_id='task-8-4-5',
@@ -639,23 +400,7 @@ def build_topic_08():
             question='Podaj jedyną liczbę spełniającą nierówność $-(x - 7)^2 \\ge 0$.',
             correct_val=7,
             explanation='Mnożymy przez $-1$: $(x - 7)^2 \\le 0$. Ponieważ kwadrat jest $\\ge 0$, jedyną możliwością jest $(x - 7)^2 = 0 \\implies x = 7$.',
-            cke_trap='Minus przed nawiasem odwraca znak nierówności przy mnożeniu przez $-1$.',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [4, 10],
-                'yRange': [-6, 2],
-                'gridStep': 1,
-                'parabola': {
-                    'a': -1,
-                    'p': 7,
-                    'q': 0,
-                    'color': '#F43F5E',
-                    'domain': [4.6, 9.4]
-                },
-                'points': [
-                    {'x': 7, 'y': 0, 'label': 'W(7, 0): jedyny punkt ≥ 0', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
-                ]
-            }
+            cke_trap='Minus przed nawiasem odwraca znak nierówności przy mnożeniu przez $-1$.'
         )
     ]
     l4 = make_lesson(

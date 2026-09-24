@@ -285,12 +285,16 @@ def build_topic_06():
         ),
         make_open_task(
             task_id='task-6-3-5',
-            source='Matura Maj 2024 • Zad. Otwarte 2 pkt',
-            question='Rozwiąż równanie $2x^3 - 3x^2 - 18x + 27 = 0$. Zapisz pełne rozumowanie.',
-            points=2,
-            scoring_key='1 pkt: poprawne pogrupowanie wyrazów i postać (2x - 3)(x^2 - 9) = 0.\n2 pkt: podanie wszystkich trzech rozwiązań: x = 1.5, x = -3, x = 3.',
-            explanation='1) Grupujemy w pary: $x^2(2x - 3) - 9(2x - 3) = 0$.\n2) Wyłączamy nawias: $(2x - 3)(x^2 - 9) = 0$.\n3) Rozkładamy różnicę kwadratów: $(2x - 3)(x - 3)(x + 3) = 0$.\n4) Pierwiastki: $2x - 3 = 0 \\implies x = 1{,}5$, $x - 3 = 0 \\implies x = 3$, $x + 3 = 0 \\implies x = -3$. Rozwiązania: $\\{-3, 1{,}5, 3\\}$.',
-            cke_trap='Pamiętaj o wyłączeniu $-9$ z drugiej pary: $(-18x + 27) = -9(2x - 3)$.'
+            source='Matura maj 2023 • Zad. 9',
+            question='Rozwiąż równanie\n$$3x^3 - 2x^2 - 12x + 8 = 0$$\nZapisz obliczenia.',
+            points=3,
+            scoring_key=[
+                '1 pkt: Poprawne pogrupowanie wyrazów wielomianu, np. x^2(3x - 2) - 4(3x - 2) = 0.',
+                '2 pkt: Zapisanie równania w postaci iloczynowej z czynnikami liniowymi: (3x - 2)(x - 2)(x + 2) = 0.',
+                '3 pkt: Podanie wszystkich trzech rozwiązań równania: x = -2, x = 2/3, x = 2.'
+            ],
+            explanation='1) Grupujemy wyrazy w pary i wyłączamy wspólne czynniki: $x^2(3x - 2) - 4(3x - 2) = 0$.\n2) Wyłączamy wspólny dwumian $(3x - 2)$: $(3x - 2)(x^2 - 4) = 0$.\n3) Rozkładamy różnicę kwadratów: $(3x - 2)(x - 2)(x + 2) = 0$.\n4) Przyrównujemy każdy czynnik do zera: $3x - 2 = 0$, skąd $x = \\frac{2}{3}$; $x - 2 = 0$, skąd $x = 2$; $x + 2 = 0$, skąd $x = -2$.\nOdpowiedź: Rozwiązaniami równania są liczby $x \\in \\{-2, \\frac{2}{3}, 2\\}$.',
+            cke_trap='Uważaj na znak minus przy wyłączaniu $-4$ z drugiej pary: $-12x + 8 = -4(3x - 2)$.'
         )
     ]
     l3 = make_lesson(
