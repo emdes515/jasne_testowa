@@ -59,7 +59,7 @@ def get_topic_16_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie kątów i pola trapezu prostokątnego krok po kroku",
-            badge=r"a = 8, \; b = 5, \; \alpha = 45^\circ \implies x = 8 - 5 = 3 \implies h = 3 \implies P = \frac{8 + 5}{2} \cdot 3 = 19{,}5",
+            badge=r"a = 8, \; b = 5, \; \alpha = 45^\circ \longrightarrow x = 8 - 5 = 3 \longrightarrow h = 3 \longrightarrow P = \frac{8 + 5}{2} \cdot 3 = 19{,}5",
             caption="W trapezie prostokątnym opuszczamy wysokość z wierzchołka górnej podstawy, tworząc trójkąt prostokątny.",
             steps=[
                 {'num': 1, 'title': 'Wyznacz odcinek x na dolnej podstawie', 'desc': r'$x = a - b = 8 - 5 = 3$.', 'color': C_SKY},
@@ -123,11 +123,11 @@ def get_topic_16_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie kąta środkowego i wpisanego krok po kroku",
-            badge=r"\beta - \alpha = 40^\circ \implies 2\alpha - \alpha = 40^\circ \implies \alpha = 40^\circ, \quad \beta = 80^\circ",
+            badge=r"\beta - \alpha = 40^\circ \longrightarrow 2\alpha - \alpha = 40^\circ \longrightarrow \alpha = 40^\circ, \quad \beta = 80^\circ",
             caption="Matura sierpień 2023: różnica miar kąta środkowego i wpisanego opartego na tym samym łuku.",
             steps=[
                 {'num': 1, 'title': 'Zastosuj zależność między kątami', 'desc': r'Kąt środkowy to dwukrotność kąta wpisanego: $\beta = 2\alpha$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Podstaw do podanego równania', 'desc': r'$2\alpha - \alpha = 40^\circ \implies \alpha = 40^\circ$.', 'color': C_PRIMARY},
+                {'num': 2, 'title': 'Podstaw do podanego równania', 'desc': r'$2\alpha - \alpha = 40^\circ \longrightarrow \alpha = 40^\circ$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Oblicz miarę kąta środkowego', 'desc': r'$\beta = 2 \cdot 40^\circ = 80^\circ$.', 'color': C_SUCCESS}
             ],
             metrics=[
@@ -179,7 +179,7 @@ def get_topic_16_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie promienia wpisanego i opisanego trójkąta prostokątnego krok po kroku",
-            badge=r"a = 6, \; b = 8 \implies c = 10 \implies R = \frac{10}{2} = 5, \quad r = \frac{6 + 8 - 10}{2} = 2",
+            badge=r"a = 6, \; b = 8 \longrightarrow c = 10 \longrightarrow R = \frac{10}{2} = 5, \quad r = \frac{6 + 8 - 10}{2} = 2",
             caption="W trójkącie prostokątnym o bokach 6, 8, 10 wyznaczamy oba promienie wprost ze wzorów z Karty Wzorów CKE.",
             steps=[
                 {'num': 1, 'title': 'Oblicz przeciwprostokątną z tw. Pitagorasa', 'desc': r'$c = \sqrt{6^2 + 8^2} = \sqrt{100} = 10$.', 'color': C_SKY},

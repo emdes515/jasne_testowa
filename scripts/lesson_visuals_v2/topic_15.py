@@ -50,11 +50,11 @@ def get_topic_15_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie boku i wysokości ze znanego pola krok po kroku",
-            badge=r"P = 16\sqrt{3} \implies \frac{a^2\sqrt{3}}{4} = 16\sqrt{3} \implies a^2 = 64 \implies a = 8, \quad h = \frac{8\sqrt{3}}{2} = 4\sqrt{3}",
+            badge=r"P = 16\sqrt{3} \longrightarrow \frac{a^2\sqrt{3}}{4} = 16\sqrt{3} \longrightarrow a^2 = 64 \longrightarrow a = 8, \quad h = \frac{8\sqrt{3}}{2} = 4\sqrt{3}",
             caption="Podstawiasz dane pole pod wzór z tablic CKE, dzielisz obustronnie przez pierwiastek z 3 i pierwiastkujesz a².",
             steps=[
                 {'num': 1, 'title': 'Przyrównaj wzór do wartości', 'desc': r'$\frac{a^2\sqrt{3}}{4} = 16\sqrt{3}$. Dzielimy obustronnie przez $\sqrt{3}$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Pomnóż przez 4 i wyciągnij pierwiastek', 'desc': r'$a^2 = 16 \cdot 4 = 64 \implies a = 8$.', 'color': C_PRIMARY},
+                {'num': 2, 'title': 'Pomnóż przez 4 i wyciągnij pierwiastek', 'desc': r'$a^2 = 16 \cdot 4 = 64 \longrightarrow a = 8$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Oblicz wysokość', 'desc': r'$h = \frac{8\sqrt{3}}{2} = 4\sqrt{3}$.', 'color': C_SUCCESS}
             ],
             metrics=[
@@ -108,12 +108,12 @@ def get_topic_15_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie brakującej długości z twierdzenia Talesa krok po kroku",
-            badge=r"\frac{x}{6} = \frac{4}{8} \implies 8x = 24 \implies x = 3",
+            badge=r"\frac{x}{6} = \frac{4}{8} \longrightarrow 8x = 24 \longrightarrow x = 3",
             caption="Układasz proporcję 'krótki do długiego' i mnożysz na krzyż.",
             steps=[
                 {'num': 1, 'title': 'Zidentyfikuj odcinki odpowiadające', 'desc': r'Odcinek $x$ odpowiada odcinkowi $4$, a podstawa $6$ odpowiada podstawie $8$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Ułóż proporcję Talesa', 'desc': r'$\frac{x}{6} = \frac{4}{8} = \frac{1}{2}$.', 'color': C_PRIMARY},
-                {'num': 3, 'title': 'Oblicz x mnożąc na krzyż', 'desc': r'$2x = 6 \implies x = 3$.', 'color': C_SUCCESS}
+                {'num': 3, 'title': 'Oblicz x mnożąc na krzyż', 'desc': r'$2x = 6 \longrightarrow x = 3$.', 'color': C_SUCCESS}
             ],
             metrics=[
                 {'label': 'Odcinek lewy', 'value': '$x = 3$', 'color': C_SKY},
@@ -137,7 +137,7 @@ def get_topic_15_visuals(l_idx):
         # L15.3: Cechy podobieństwa trójkątów i skala podobieństwa pól
         tab0 = make_geometry_diagram(
             title="Cechy podobieństwa trójkątów i skala podobieństwa",
-            badge=r"\frac{a_2}{a_1} = k \implies \frac{\text{Obw}_2}{\text{Obw}_1} = k, \quad \frac{P_2}{P_1} = k^2",
+            badge=r"\frac{a_2}{a_1} = k \longrightarrow \frac{\text{Obw}_2}{\text{Obw}_1} = k, \quad \frac{P_2}{P_1} = k^2",
             caption="Dwa trójkąty są podobne, gdy mają równe kąty (cecha KKK) lub proporcjonalne boki. Stosunek ich pól wynosi kwadrat skali podobieństwa!",
             polygons=[
                 {
@@ -167,16 +167,16 @@ def get_topic_15_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Zastosowanie skali podobieństwa do pól krok po kroku",
-            badge=r"k = 2 \implies \frac{P_2}{P_1} = 2^2 = 4 \implies P_2 = 4 \cdot 30 = 120",
+            badge=r"k = 2 \longrightarrow \frac{P_2}{P_1} = 2^2 = 4 \longrightarrow P_2 = 4 \cdot 30 = 120",
             caption="Matura maj 2023: trójkąty prostokątne T1 i T2. Znając boki T1 (5, 12, 13) wyznaczamy pole T1 = 30, stąd k² = 120/30 = 4, czyli k = 2.",
             steps=[
                 {'num': 1, 'title': 'Oblicz pole trójkąta T1', 'desc': r'$P_1 = \frac{1}{2} \cdot 5 \cdot 12 = 30$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Wyznacz kwadrat skali podobieństwa', 'desc': r'$\frac{P_2}{P_1} = \frac{120}{30} = 4 = k^2 \implies k = 2$.', 'color': C_PRIMARY},
+                {'num': 2, 'title': 'Wyznacz kwadrat skali podobieństwa', 'desc': r'$\frac{P_2}{P_1} = \frac{120}{30} = 4 = k^2 \longrightarrow k = 2$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Oblicz boki trójkąta T2', 'desc': r'Boki $T_2$ to: $5 \cdot 2 = 10, \; 12 \cdot 2 = 24, \; 13 \cdot 2 = 26$.', 'color': C_SUCCESS}
             ],
             metrics=[
                 {'label': 'Pole T1', 'value': '$P_1 = 30$', 'color': C_SKY},
-                {'label': 'Skala pól', 'value': r'$k^2 = 4 \implies k = 2$', 'color': C_PRIMARY},
+                {'label': 'Skala pól', 'value': r'$k^2 = 4 \longrightarrow k = 2$', 'color': C_PRIMARY},
                 {'label': 'Przeciwprostokątna T2', 'value': '$c_2 = 26$', 'color': C_SUCCESS}
             ]
         )

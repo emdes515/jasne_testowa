@@ -59,26 +59,26 @@ def get_topic_13_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Przesunięcie punktu i wzoru funkcji o wektor krok po kroku",
-            badge=r"A(2, -3), \; \vec{v} = [-4, 5] \implies g(x) = f(x + 4) + 5, \quad A'(-2, 2)",
+            badge=r"A(2, -3), \; \vec{v} = [-4, 5] \longrightarrow g(x) = f(x + 4) + 5, \quad A'(-2, 2)",
             caption="Wektor [p, q] przesuwa każdy punkt wykresu: x' = x + p, y' = y + q. We wzorze w nawiasie wpisujesz (x - p).",
             steps=[
                 {'num': 1, 'title': 'Zidentyfikuj współrzędne wektora', 'desc': r'$\vec{v} = [p, q] = [-4, 5]$. Przesunięcie o 4 w lewo oraz 5 w górę.', 'color': C_SKY},
                 {'num': 2, 'title': 'Utwórz wzór nowej funkcji', 'desc': r'$g(x) = f(x - (-4)) + 5 = f(x + 4) + 5$. Pamiętaj o zmianie znaku w nawiasie!', 'color': C_PRIMARY},
-                {'num': 3, 'title': 'Przesuń punkt A', 'desc': r'$A\' = (2 + (-4), -3 + 5) = (-2, 2)$. Nowy punkt leży na wykresie funkcji $g$.', 'color': C_SUCCESS}
+                {'num': 3, 'title': 'Przesuń punkt A', 'desc': "$A' = (2 + (-4), -3 + 5) = (-2, 2)$. Nowy punkt leży na wykresie funkcji $g$.", 'color': C_SUCCESS}
             ],
             metrics=[
                 {'label': 'Wektor', 'value': r'$\vec{v} = [-4, 5]$', 'color': C_SKY},
                 {'label': 'Wzór funkcji', 'value': r'$g(x) = f(x + 4) + 5$', 'color': C_PRIMARY},
-                {'label': 'Przesunięty punkt', 'value': r'$A\'(-2, 2)$', 'color': C_SUCCESS}
+                {'label': 'Przesunięty punkt', 'value': "$A'(-2, 2)$", 'color': C_SUCCESS}
             ]
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Zły kierunek przesunięcia poziomego we wzorze f(x + a)",
-            badge=r"g(x) = f(x + 3) \implies \vec{v} = [-3, 0] \text{ (w LEWO)} \neq [+3, 0]",
+            badge=r"g(x) = f(x + 3) \longrightarrow \vec{v} = [-3, 0] \text{ (w LEWO)} \neq [+3, 0]",
             caption="W argumencie funkcji poziome przesunięcie działa Z PRZECIWNYM ZNAKIEM! Wyrażenie f(x + 3) oznacza przesunięcie w lewo, a f(x - 3) w prawo. Za nawiasem znak działa wprost.",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Przesunięcie w prawo dla $f(x + 3)$ (błędna interpretacja)', 'color': C_DANGER},
-                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'$f(x + 3) = f(x - (-3)) \implies p = -3$ (przesunięcie w lewo)', 'color': C_SUCCESS},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'$f(x + 3) = f(x - (-3)) \longrightarrow p = -3$ (przesunięcie w lewo)', 'color': C_SUCCESS},
                 {'label': 'Pionowo (za nawiasem)', 'value': '$+q$ w górę, $-q$ w dół (zgodnie ze znakiem)', 'color': C_PRIMARY}
             ]
         )
@@ -135,9 +135,9 @@ def get_topic_13_visuals(l_idx):
                 {'num': 3, 'title': 'Symetria środkowa względem (0, 0)', 'desc': r'Złożenie obu symetrii: $y = -f(-x)$. Zmiana obu znaków: $(x, y) \to (-x, -y)$, czyli $(-3, 5)$.', 'color': C_SUCCESS}
             ],
             metrics=[
-                {'label': 'Odbicie OX', 'value': r'$-f(x) \implies (x, -y)$', 'color': C_DANGER},
-                {'label': 'Odbicie OY', 'value': r'$f(-x) \implies (-x, y)$', 'color': C_PURPLE},
-                {'label': 'Środek (0, 0)', 'value': r'$-f(-x) \implies (-x, -y)$', 'color': C_SUCCESS}
+                {'label': 'Odbicie OX', 'value': r'$-f(x) \longrightarrow (x, -y)$', 'color': C_DANGER},
+                {'label': 'Odbicie OY', 'value': r'$f(-x) \longrightarrow (-x, y)$', 'color': C_PURPLE},
+                {'label': 'Środek (0, 0)', 'value': r'$-f(-x) \longrightarrow (-x, -y)$', 'color': C_SUCCESS}
             ]
         )
         tab3 = make_comparison_card_diagram(
@@ -146,7 +146,7 @@ def get_topic_13_visuals(l_idx):
             caption="Minus stojący PRZED całą funkcją (-f(x)) odbija wykres góra-dół (względem osi poziomej OX). Minus PRZY SAMYM X (f(-x)) odbija wykres prawo-lewo (względem osi pionowej OY).",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Uznanie $-f(x)$ za odbicie względem osi pionowej $OY$', 'color': C_DANGER},
-                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Minus z przodu $\implies OX$, minus w argumencie $\implies OY$', 'color': C_SUCCESS},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Minus z przodu $\longrightarrow OX$, minus w argumencie $\longrightarrow OY$', 'color': C_SUCCESS},
                 {'label': 'Wpływ na ZW', 'value': r'Symetria $OX$ odwraca zbiór wartości: $\langle a, b \rangle \to \langle -b, -a \rangle$', 'color': C_PRIMARY}
             ]
         )
@@ -184,7 +184,7 @@ def get_topic_13_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie nowej dziedziny i ZW po przekształceniu krok po kroku",
-            badge=r"D_f = [-3, 4], \; ZW_f = [-1, 5], \; g(x) = f(x - 2) + 3 \implies D_g = [-1, 6], \; ZW_g = [2, 8]",
+            badge=r"D_f = [-3, 4], \; ZW_f = [-1, 5], \; g(x) = f(x - 2) + 3 \longrightarrow D_g = [-1, 6], \; ZW_g = [2, 8]",
             caption="Wektor przesunięcia [p, q] dodaje p do krańców dziedziny na osi OX oraz q do krańców zbioru wartości na osi OY.",
             steps=[
                 {'num': 1, 'title': 'Odczytaj wektor przesunięcia', 'desc': r'Ze wzoru $g(x) = f(x - 2) + 3$ odczytujesz: $p = 2$ oraz $q = 3$, czyli $\vec{v} = [2, 3]$.', 'color': C_SKY},
@@ -199,7 +199,7 @@ def get_topic_13_visuals(l_idx):
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Obejmowanie przekształceniem niewłaściwej osi w dziedzinie",
-            badge=r"g(x) = f(x - 2) + 3 \implies D_g = [a + 2, b + 2] \neq [a - 2, b - 2]",
+            badge=r"g(x) = f(x - 2) + 3 \longrightarrow D_g = [a + 2, b + 2] \neq [a - 2, b - 2]",
             caption="Gdy wykres przesuwa się w prawo (x - 2), każdy punkt x przesuwa się o +2! Częstym błędem jest mechaniczne odejmowanie 2 od przedziału dziedziny.",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Odjęcie 2 od krańców dziedziny: $[-3 - 2, 4 - 2] = [-5, 2]$', 'color': C_DANGER},

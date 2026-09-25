@@ -83,3 +83,4 @@ scratch_inspect.mjs
 extract_pdfs.py
 strip_plots.py
 tmp_inject.py
+audit_screenshots/

@@ -58,7 +58,7 @@ def get_topic_18_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie przekątnej prostopadłościanu krok po kroku",
-            badge=r"a = 3, \; b = 4, \; c = 12 \implies d_p = \sqrt{3^2 + 4^2} = 5 \implies D = \sqrt{5^2 + 12^2} = 13",
+            badge=r"a = 3, \; b = 4, \; c = 12 \longrightarrow d_p = \sqrt{3^2 + 4^2} = 5 \longrightarrow D = \sqrt{5^2 + 12^2} = 13",
             caption="Stosujemy dwukrotnie twierdzenie Pitagorasa: najpierw w podstawie (dp = 5), a następnie w trójkącie pionowym z wysokością (D = 13).",
             steps=[
                 {'num': 1, 'title': 'Oblicz przekątną podstawy dp', 'desc': r'$d_p = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$.', 'color': C_SKY},
@@ -107,30 +107,39 @@ def get_topic_18_visuals(l_idx):
                 # Wysokość ściany bocznej SM
                 {'from': [255, 45], 'to': [345, 182], 'color': C_SUCCESS, 'strokeWidth': 2}
             ],
+            arcs=[
+                # Kąt nachylenia krawędzi bocznej α (błękit #38BDF8)
+                {'cx': 320, 'cy': 205, 'r': 22, 'startAngleDeg': 230, 'endAngleDeg': 285, 'color': '#38BDF8', 'label': r'\alpha'},
+                # Kąt nachylenia ściany bocznej β (szmaragd #34D399)
+                {'cx': 345, 'cy': 182, 'r': 20, 'startAngleDeg': 210, 'endAngleDeg': 270, 'color': '#34D399', 'label': r'\beta'}
+            ],
             points=[
                 {'x': 255, 'y': 45, 'color': C_PRIMARY, 'label': 'S (wierzchołek)', 'attach': 'n'},
                 {'x': 255, 'y': 182, 'color': C_DANGER, 'label': 'O (spodek H)', 'attach': 's'},
                 {'x': 345, 'y': 182, 'color': C_SUCCESS, 'label': 'M', 'attach': 'se'}
             ],
             labels=[
+                {'x': 295, 'y': 215, 'text': 'R', 'color': '#38BDF8', 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'middle'},
+                {'x': 300, 'y': 175, 'text': 'kąt krawędzi α', 'color': '#38BDF8', 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'middle'},
+                {'x': 370, 'y': 150, 'text': 'kąt ściany β', 'color': '#34D399', 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'start'},
                 {'x': 240, 'y': 115, 'text': 'wysokość H', 'color': C_DANGER, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'end'},
                 {'x': 310, 'y': 105, 'text': r'wysokość ściany h_b', 'color': C_SUCCESS, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'start'},
                 {'x': 295, 'y': 195, 'text': 'promień r = a/2', 'color': C_SKY, 'fontSize': 10, 'fontWeight': 'bold', 'anchor': 'middle'}
             ],
             metrics=[
-                {'label': 'Objętość ostrosłupa', 'value': r'$V = \frac{1}{3}P_p \cdot H$', 'color': C_PRIMARY},
-                {'label': 'Trójkąt ze ścianą', 'value': r'$H^2 + r^2 = h_b^2$', 'color': C_SUCCESS},
-                {'label': 'Trójkąt z krawędzią', 'value': r'$H^2 + R^2 = b^2$', 'color': C_SKY}
+                {'label': 'Kąt krawędzi α (błękit)', 'value': r'$H^2 + R^2 = b^2$', 'color': '#38BDF8'},
+                {'label': 'Kąt ściany β (szmaragd)', 'value': r'$H^2 + r^2 = h_b^2$', 'color': '#34D399'},
+                {'label': 'Objętość ostrosłupa', 'value': r'$V = \frac{1}{3}P_p \cdot H$', 'color': C_PRIMARY}
             ]
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie wysokości i objętości ostrosłupa prawidłowego czworokątnego krok po kroku",
-            badge=r"a = 6, \; h_b = 5 \implies r = 3 \implies H = \sqrt{5^2 - 3^2} = 4 \implies V = \frac{1}{3} \cdot 36 \cdot 4 = 48",
+            badge=r"a = 6, \; h_b = 5 \longrightarrow r = 3 \longrightarrow H = \sqrt{5^2 - 3^2} = 4 \longrightarrow V = \frac{1}{3} \cdot 36 \cdot 4 = 48",
             caption="W ostrosłupie czworokątnym promień r to połowa boku kwadratu: r = a/2 = 3. Z trójkąta prostokątnego wyznaczamy wysokość H = 4.",
             steps=[
                 {'num': 1, 'title': 'Wyznacz promień r w podstawie', 'desc': r'W kwadracie o boku $a = 6$: $r = \frac{a}{2} = 3$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Oblicz wysokość bryły H', 'desc': r'$H = \sqrt{h_b^2 - r^2} = \sqrt{5^2 - 3^2} = \sqrt{25 - 9} = \sqrt{16} = 4$.', 'color': C_PRIMARY},
-                {'num': 3, 'title': 'Oblicz pole podstawy i objętość', 'desc': r'$P_p = 6^2 = 36 \implies V = \frac{1}{3} \cdot 36 \cdot 4 = 12 \cdot 4 = 48$.', 'color': C_SUCCESS}
+                {'num': 3, 'title': 'Oblicz pole podstawy i objętość', 'desc': r'$P_p = 6^2 = 36 \longrightarrow V = \frac{1}{3} \cdot 36 \cdot 4 = 12 \cdot 4 = 48$.', 'color': C_SUCCESS}
             ],
             metrics=[
                 {'label': 'Promień r', 'value': '$r = 3$', 'color': C_SKY},
@@ -184,7 +193,7 @@ def get_topic_18_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie pola bocznego i objętości stożka krok po kroku",
-            badge=r"r = 3, \; H = 4 \implies l = \sqrt{3^2 + 4^2} = 5 \implies V = \frac{1}{3}\pi \cdot 9 \cdot 4 = 12\pi, \quad P_b = \pi \cdot 3 \cdot 5 = 15\pi",
+            badge=r"r = 3, \; H = 4 \longrightarrow l = \sqrt{3^2 + 4^2} = 5 \longrightarrow V = \frac{1}{3}\pi \cdot 9 \cdot 4 = 12\pi, \quad P_b = \pi \cdot 3 \cdot 5 = 15\pi",
             caption="W przekroju osiowym stożka mamy trójkąt równoramienny o wysokości H i ramieniu l.",
             steps=[
                 {'num': 1, 'title': 'Oblicz tworzącą l z twierdzenia Pitagorasa', 'desc': r'$l = \sqrt{r^2 + H^2} = \sqrt{3^2 + 4^2} = \sqrt{25} = 5$.', 'color': C_SKY},

@@ -44,8 +44,8 @@ def get_topic_11_visuals(l_idx):
             badge=r"a_n = 2n - 15 < 0 \longrightarrow 2n < 15 \longrightarrow n < 7{,}5 \longrightarrow n \in \{1, 2, \dots, 7\}",
             caption="Układasz nierówność an < 0, rozwiązujesz ją i wybierasz liczby naturalne dodatnie n.",
             steps=[
-                {'num': 1, 'title': 'Ułóż nierówność', 'desc': r'Szukamy wyrazów ujemnych: $a_n < 0 \implies 2n - 15 < 0$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Wyznacz ograniczenie na n', 'desc': r'$2n < 15 \implies n < \frac{15}{2} = 7{,}5$.', 'color': C_PRIMARY},
+                {'num': 1, 'title': 'Ułóż nierówność', 'desc': r'Szukamy wyrazów ujemnych: $a_n < 0 \longrightarrow 2n - 15 < 0$.', 'color': C_SKY},
+                {'num': 2, 'title': 'Wyznacz ograniczenie na n', 'desc': r'$2n < 15 \longrightarrow n < \frac{15}{2} = 7{,}5$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Zlicz liczby naturalne dodatnie', 'desc': r'Warunek $n \in \mathbb{N}^+$ spełniają: $n \in \{1, 2, 3, 4, 5, 6, 7\}$. Ciąg ma dokładnie 7 wyrazów ujemnych.', 'color': C_SUCCESS}
             ],
             metrics=[
@@ -56,7 +56,7 @@ def get_topic_11_visuals(l_idx):
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Zapominanie o dziedzinie n ∈ N+ w ciągach",
-            badge=r"n < 7{,}5 \implies 7 \text{ wyrazów} \neq 8 \text{ wyrazów (zakaz wliczania } n = 0!)",
+            badge=r"n < 7{,}5 \longrightarrow 7 \text{ wyrazów} \neq 8 \text{ wyrazów (zakaz wliczania } n = 0!)",
             caption="Wskaźnik n w ciągach to ZAWSZE liczba naturalna DODATNIA (1, 2, 3, ...)! Nigdy nie istnieje wyraz a₀ ani ujemne indeksy.",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD 1', 'value': 'Wliczenie $n = 0$ i podanie 8 wyrazów (0 pkt)', 'color': C_DANGER},
@@ -95,11 +95,11 @@ def get_topic_11_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Trik różnicy indeksów w ciągu arytmetycznym krok po kroku",
-            badge=r"a_3 = 7, \; a_8 = 22 \implies a_8 - a_3 = 5r \implies 15 = 5r \implies r = 3",
+            badge=r"a_3 = 7, \; a_8 = 22 \longrightarrow a_8 - a_3 = 5r \longrightarrow 15 = 5r \longrightarrow r = 3",
             caption="Odejmując wyrazy od siebie, różnica indeksów daje liczbę kroków r bez układania układu równań.",
             steps=[
                 {'num': 1, 'title': 'Zastosuj różnicę indeksów', 'desc': r'$a_8 - a_3 = (8 - 3) \cdot r = 5r$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Podstaw wartości i oblicz r', 'desc': r'$22 - 7 = 5r \implies 15 = 5r \implies r = 3$.', 'color': C_PRIMARY},
+                {'num': 2, 'title': 'Podstaw wartości i oblicz r', 'desc': r'$22 - 7 = 5r \longrightarrow 15 = 5r \longrightarrow r = 3$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Cofnij się do wyrazu a₁', 'desc': r'$a_1 = a_3 - 2r = 7 - 2 \cdot 3 = 1$. Gotowy wzór: $a_n = 1 + (n-1) \cdot 3$.', 'color': C_SUCCESS}
             ],
             metrics=[
@@ -149,11 +149,11 @@ def get_topic_11_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Trik ilorazu indeksów w ciągu geometrycznym krok po kroku",
-            badge=r"a_2 = 6, \; a_5 = 48 \implies \frac{a_5}{a_2} = q^3 \implies 8 = q^3 \implies q = 2",
+            badge=r"a_2 = 6, \; a_5 = 48 \longrightarrow \frac{a_5}{a_2} = q^3 \longrightarrow 8 = q^3 \longrightarrow q = 2",
             caption="Dzieląc wyrazy ciągu geometrycznego, różnica indeksów daje wykładnik potęgi ilorazu q.",
             steps=[
                 {'num': 1, 'title': 'Zastosuj iloraz wyrazów', 'desc': r'$\frac{a_5}{a_2} = \frac{a_1 q^4}{a_1 q} = q^{5 - 2} = q^3$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Podstaw liczby i spierwiastkuj', 'desc': r'$\frac{48}{6} = 8 \implies q^3 = 8 \implies q = 2$.', 'color': C_PRIMARY},
+                {'num': 2, 'title': 'Podstaw liczby i spierwiastkuj', 'desc': r'$\frac{48}{6} = 8 \longrightarrow q^3 = 8 \longrightarrow q = 2$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Wyznacz a₁ i sumę S₄', 'desc': r'$a_1 = \frac{a_2}{q} = \frac{6}{2} = 3$. Suma: $S_4 = 3 \cdot \frac{1 - 2^4}{1 - 2} = 3 \cdot 15 = 45$.', 'color': C_SUCCESS}
             ],
             metrics=[
@@ -164,11 +164,11 @@ def get_topic_11_visuals(l_idx):
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Dwa rozwiązania przy parzystej potędze ilorazu (q² = 9)",
-            badge=r"q^2 = 9 \implies q = 3 \quad \text{lub} \quad q = -3 \quad (\text{dwa różne ciągi!})",
+            badge=r"q^2 = 9 \longrightarrow q = 3 \quad \text{lub} \quad q = -3 \quad (\text{dwa różne ciągi!})",
             caption="Gdy różnica indeksów jest parzysta (np. a₃ / a₁ = q²), równanie ma DWA rozwiązania: q > 0 i q < 0 (ciąg ze zmiennym znakiem), o ile treść zadania nie precyzuje wyrazów dodatnich!",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Zgubienie $q = -3$ gdy w treści brak słów "o wyrazach dodatnich"', 'color': C_DANGER},
-                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'$q^2 = a \implies q = \pm \sqrt{a}$ (sprawdź założenia zadania)', 'color': C_SUCCESS},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'$q^2 = a \longrightarrow q = \pm \sqrt{a}$ (sprawdź założenia zadania)', 'color': C_SUCCESS},
                 {'label': 'Ciąg naprzemienny', 'value': 'Dla $q < 0$ wyrazy mają na przemian znaki $+$ i $-$', 'color': C_PRIMARY}
             ]
         )
@@ -202,10 +202,10 @@ def get_topic_11_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Równanie trzech kolejnych wyrazów krok po kroku",
-            badge=r"(2, \; x, \; 18) \text{ geometryczny} \implies x^2 = 2 \cdot 18 \implies x^2 = 36 \implies x = 6 \quad (x > 0)",
+            badge=r"(2, \; x, \; 18) \text{ geometryczny} \longrightarrow x^2 = 2 \cdot 18 \longrightarrow x^2 = 36 \longrightarrow x = 6 \quad (x > 0)",
             caption="Wypisujesz zależność wyrazu środkowego, rozwiązujesz równanie i weryfikujesz znaki wyrazów.",
             steps=[
-                {'num': 1, 'title': 'Zastosuj wzór na wyraz środkowy', 'desc': r'Ciąg geometryczny: $a_2^2 = a_1 \cdot a_3 \implies x^2 = 2 \cdot 18$.', 'color': C_SKY},
+                {'num': 1, 'title': 'Zastosuj wzór na wyraz środkowy', 'desc': r'Ciąg geometryczny: $a_2^2 = a_1 \cdot a_3 \longrightarrow x^2 = 2 \cdot 18$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Rozwiąż równanie kwadratowe', 'desc': r'$x^2 = 36 \longrightarrow x = 6 \text{ lub } x = -6$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Zweryfikuj warunki zadania', 'desc': r'Jeśli w treści jest "ciąg o wyrazach dodatnich", to $x = 6$. Jeśli nie ma, obie odpowiedzi są poprawne!', 'color': C_SUCCESS}
             ],
@@ -221,7 +221,7 @@ def get_topic_11_visuals(l_idx):
             caption="W ciągu arytmetycznym dodajemy (2y = x + z), w geometrycznym mnożymy (y² = x · z)! Pomylenie tych wzorów to automatyczne 0 pkt w zadaniu otwartym.",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Użycie $2y = x + z$ w zadaniu o ciągu geometrycznym', 'color': C_DANGER},
-                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Arytmetyczny $\implies y = \frac{x+z}{2}$, Geometryczny $\implies y^2 = xz$', 'color': C_SUCCESS},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Arytmetyczny $\longrightarrow y = \frac{x+z}{2}$, Geometryczny $\longrightarrow y^2 = xz$', 'color': C_SUCCESS},
                 {'label': 'Złota zasada CKE', 'value': 'Zawsze sprawdź dwa razy słowo klucz: "arytmetyczny" czy "geometryczny"', 'color': C_PRIMARY}
             ]
         )

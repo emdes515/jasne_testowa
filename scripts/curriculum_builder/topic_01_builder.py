@@ -1,5 +1,6 @@
 """
 topic_01_builder.py - Dział 1.1: Potęgi i pierwiastki (4 lekcje | Tier S+)
+Matryca 5-Task: Baza (SC/TF) -> Pułapka CKE (SC) -> Autentyk CKE (SC) -> Numeryczne (NUMERIC_INPUT) -> Otwarte CKE (OPEN_TASK/OPEN_PROOF)
 """
 import sys
 import os
@@ -19,50 +20,24 @@ def build_topic_01():
     # ----------------------------------------------------
     v1 = get_topic_01_visuals(0)
     l1_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza pojęciowa
         make_sc_task(
             task_id='task-1-1-1',
-            source='Matura CKE Maj 2024 • Zadanie 2 (1 pkt)',
-            question='Dokończ zdanie. Liczba $\\left(\\frac{1}{16}\\right)^8 \\cdot 8^{16}$ jest równa',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Wartość iloczynu $2^3 \\cdot 2^4$ jest równa',
             options_data=[
-                ('A', '$2^{24}$'),
-                ('B', '$2^{16}$'),
-                ('C', '$2^{12}$'),
-                ('D', '$2^8$')
+                ('A', '$2^7$'),
+                ('B', '$2^{12}$'),
+                ('C', '$4^7$'),
+                ('D', '$4^{12}$')
             ],
-            correct_id='B',
-            explanation='Sprowadzamy obie potęgi do wspólnej podstawy $2$:\n$$\\frac{1}{16} = 2^{-4} \\implies \\left(\\frac{1}{16}\\right)^8 = (2^{-4})^8 = 2^{-32}$$\n$$8 = 2^3 \\implies 8^{16} = (2^3)^{16} = 2^{48}$$\nMnożymy potęgi o tej samej podstawie:\n$$2^{-32} \\cdot 2^{48} = 2^{-32 + 48} = 2^{16}$$',
-            cke_trap='Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki: to $2^{-4}$, a nie $2^4$.'
+            correct_id='A',
+            explanation='Stosujemy prawo mnożenia potęg o tej samej podstawie: $a^m \\cdot a^n = a^{m+n}$.\n$$2^3 \\cdot 2^4 = 2^{3+4} = 2^7$$\nPodstawa $2$ pozostaje bez zmian, a wykładniki dodajemy do siebie.',
+            cke_trap='Nigdy nie mnóż podstaw potęg ($2 \\cdot 2 \\neq 4$) ani nie mnóż wykładników przy mnożeniu ($3 \\cdot 4 \\neq 12$).'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka egzaminacyjna
         make_sc_task(
             task_id='task-1-1-2',
-            source='Matura CKE Czerwiec 2024 • Zadanie 1 (1 pkt)',
-            question='Dokończ zdanie. Liczba $2^{-1} \\cdot 32^{\\frac{3}{5}}$ jest równa',
-            options_data=[
-                ('A', '$1$'),
-                ('B', '$2$'),
-                ('C', '$3$'),
-                ('D', '$4$')
-            ],
-            correct_id='D',
-            explanation='Sprowadzamy liczbę $32$ do potęgi dwójki: $32 = 2^5$.\nWtedy:\n$$32^{\\frac{3}{5}} = (2^5)^{\\frac{3}{5}} = 2^{5 \\cdot \\frac{3}{5}} = 2^3 = 8$$\nObliczamy iloczyn:\n$$2^{-1} \\cdot 8 = \\frac{1}{2} \\cdot 8 = 4$$\n(lub na wykładnikach: $2^{-1} \\cdot 2^3 = 2^{-1+3} = 2^2 = 4$).',
-            cke_trap='Nie mnóż $2^{-1}$ przez $32$ przed obliczeniem potęgi. Pamiętaj: potęgowanie ma pierwszeństwo przed mnożeniem!'
-        ),
-        make_sc_task(
-            task_id='task-1-1-3',
-            source='Matura CKE Sierpień 2024 • Zadanie 2 (1 pkt)',
-            question='Dokończ zdanie. Liczba $\\left(\\frac{4}{25}\\right)^{-0{,}5}$ jest równa',
-            options_data=[
-                ('A', '$-\\frac{5}{2}$'),
-                ('B', '$-\\frac{2}{5}$'),
-                ('C', '$\\frac{5}{2}$'),
-                ('D', '$\\frac{2}{5}$')
-            ],
-            correct_id='C',
-            explanation='Zapisujemy wykładnik jako ułamek zwykły: $-0{,}5 = -\\frac{1}{2}$.\nMinus w wykładniku odwraca ułamek do góry dnem:\n$$\\left(\\frac{4}{25}\\right)^{-\\frac{1}{2}} = \\left(\\frac{25}{4}\\right)^{\\frac{1}{2}}$$\nWykładnik $\\frac{1}{2}$ oznacza pierwiastek kwadratowy:\n$$\\sqrt{\\frac{25}{4}} = \\frac{\\sqrt{25}}{\\sqrt{4}} = \\frac{5}{2}$$',
-            cke_trap='Minus w wykładniku NIGDY nie daje liczby ujemnej! Odwraca jedynie podstawę ułamka. Dystraktory A i B to klasyczne pułapki CKE.'
-        ),
-        make_sc_task(
-            task_id='task-1-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Wartość wyrażenia $\\frac{5^{12} + 5^{13} + 5^{14}}{5^{12}}$ jest równa',
             options_data=[
@@ -75,15 +50,39 @@ def build_topic_01():
             explanation='W liczniku wyłączamy najmniejszą wspólną potęgę $5^{12}$ przed nawias:\n$$5^{12} + 5^{13} + 5^{14} = 5^{12}(1 + 5^1 + 5^2) = 5^{12}(1 + 5 + 25) = 5^{12} \\cdot 31$$\nDzielimy przez mianownik:\n$$\\frac{5^{12} \\cdot 31}{5^{12}} = 31$$',
             cke_trap='Nigdy nie dodawaj wykładników przy dodawaniu potęg ($5^{12} + 5^{13} + 5^{14} \\neq 5^{39}$). Przy sumie potęg zawsze wyłączaj najmniejszą potęgę przed nawias!'
         ),
-
+        # Zadanie 3: Autentyk CKE Zamknięty 1:1
+        make_sc_task(
+            task_id='task-1-1-3',
+            source='Matura CKE Maj 2024 • Zadanie 2 (1 pkt)',
+            question='Dokończ zdanie. Liczba $\\left(\\frac{1}{16}\\right)^8 \\cdot 8^{16}$ jest równa',
+            options_data=[
+                ('A', '$2^{24}$'),
+                ('B', '$2^{16}$'),
+                ('C', '$2^{12}$'),
+                ('D', '$2^8$')
+            ],
+            correct_id='B',
+            explanation='Sprowadzamy obie potęgi do wspólnej podstawy $2$:\n$$\\frac{1}{16} = 2^{-4} \\longrightarrow \\left(\\frac{1}{16}\\right)^8 = (2^{-4})^8 = 2^{-32}$$\n$$8 = 2^3 \\longrightarrow 8^{16} = (2^3)^{16} = 2^{48}$$\nMnożymy potęgi o tej samej podstawie:\n$$2^{-32} \\cdot 2^{48} = 2^{-32 + 48} = 2^{16}$$',
+            cke_trap='Uważaj na znak minus przy zamianie ułamka $\\frac{1}{16}$ na potęgę dwójki: to $2^{-4}$, a nie $2^4$.'
+        ),
+        # Zadanie 4: Autentyk CKE Krótka Odpowiedź
+        make_numeric_task(
+            task_id='task-1-1-4',
+            source='Matura CKE Czerwiec 2024 • Zadanie 1 (1 pkt)',
+            question='Oblicz wartość wyrażenia $2^{-1} \\cdot 32^{\\frac{3}{5}}$. Wpisz wynik jako liczbę całkowitą.',
+            correct_val='4',
+            explanation='Sprowadzamy liczbę $32$ do potęgi dwójki: $32 = 2^5$.\nWtedy:\n$$32^{\\frac{3}{5}} = (2^5)^{\\frac{3}{5}} = 2^{5 \\cdot \\frac{3}{5}} = 2^3 = 8$$\nObliczamy iloczyn:\n$$2^{-1} \\cdot 8 = \\frac{1}{2} \\cdot 8 = 4$$',
+            cke_trap='Nie mnóż $2^{-1}$ przez $32$ przed obliczeniem potęgi. Potęgowanie ma pierwszeństwo przed mnożeniem.'
+        ),
+        # Zadanie 5: Zadanie Otwarte z Brudnopisem & Krokami
         make_open_task(
-            task_id='task-1-1-10',
+            task_id='task-1-1-5',
             source='Informator CKE Formuła 2023 • Zadanie otwarte (2 pkt)',
-            question='Wykaż, że liczba $3^{45} + 9^{22} + 27^{14}$ jest podzielna przez $37$.',
+            question='Wykaż, że liczba $3^{45} + 9^{22} + 27^{14}$ jest podzielna przez $37$. Zapisz pełne uzasadnienie.',
             points=2,
-            scoring_key='1 pkt – sprowadzenie wszystkich składników do wspólnej podstawy $3$: $3^{45} + 3^{44} + 3^{42}$.\\n2 pkt – wyłączenie $3^{42}$ przed nawias: $3^{42}(3^3 + 3^2 + 1) = 3^{42} \\cdot 37$ i sformułowanie poprawnego wniosku.',
-            explanation='Sprowadzamy wszystkie potęgi do wspólnej podstawy 3:\n$$9^{22} = (3^2)^{22} = 3^{44}, \\quad 27^{14} = (3^3)^{14} = 3^{42}$$\nZapisujemy sumę:\n$$3^{45} + 3^{44} + 3^{42}$$\nWyłączamy najmniejszą potęgę $3^{42}$ przed nawias:\n$$3^{42}(3^3 + 3^2 + 1) = 3^{42}(27 + 9 + 1) = 3^{42} \\cdot 37$$\nPonieważ liczba 37 jest jednym z czynników iloczynu, cała liczba jest podzielna przez 37, co kończy dowód.',
-            cke_trap='Nigdy nie sprawdzaj podzielności kalkulatorem ani nie próbuj liczyć potęgi $3^{45}$! W dowodzie maturalnym kluczem jest wyłączenie najmniejszej potęgi przed nawias, aby wyodrębnić zadany dzielnik.'
+            scoring_key='1 pkt – sprowadzenie wszystkich składników do wspólnej podstawy $3$: $3^{45} + 3^{44} + 3^{42}$.\\n2 pkt – wyłączenie $3^{42}$ przed nawias: $3^{42}(3^3 + 3^2 + 1) = 3^{42} \\cdot 37$ i sformułowanie poprawnego wniosku o podzielności przez 37.',
+            explanation='Sprowadzamy wszystkie potęgi do wspólnej podstawy 3:\n$$9^{22} = (3^2)^{22} = 3^{44}, \\quad 27^{14} = (3^3)^{14} = 3^{42}$$\nZapisujemy sumę:\n$$3^{45} + 3^{44} + 3^{42}$$\nWyłączamy najmniejszą potęgę $3^{42}$ przed nawias:\n$$3^{42}(3^3 + 3^2 + 1) = 3^{42}(27 + 9 + 1) = 3^{42} \\cdot 37$$\nPonieważ liczba 37 jest jednym z całkowitych czynników iloczynu, cała liczba jest podzielna przez 37, co kończy dowód.',
+            cke_trap='W dowodzie maturalnym kluczem jest wyłączenie najmniejszej potęgi przed nawias, aby wyodrębnić zadany dzielnik.'
         )
     ]
     l1 = make_lesson(
@@ -149,10 +148,11 @@ def build_topic_01():
     # ----------------------------------------------------
     v2 = get_topic_01_visuals(1)
     l2_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza pojęciowa
         make_sc_task(
             task_id='task-1-2-1',
-            source='Rozgrzewka • Wyłączanie czynnika',
-            question='Liczba $\\sqrt{72}$ jest równa',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Liczba $\\sqrt{72}$ po wyłączeniu czynnika przed znak pierwiastka jest równa',
             options_data=[
                 ('A', '$3\\sqrt{8}$'),
                 ('B', '$6\\sqrt{2}$'),
@@ -161,8 +161,9 @@ def build_topic_01():
             ],
             correct_id='B',
             explanation='Rozkładamy 72 na iloczyn największego kwadratu: $72 = 36 \\cdot 2$. Zatem $\\sqrt{72} = \\sqrt{36 \\cdot 2} = \\sqrt{36} \\cdot \\sqrt{2} = 6\\sqrt{2}$.',
-            cke_trap='Choć $72 = 9 \\cdot 8$, to wyciągnięcie $3\\sqrt{8}$ nie jest postacią ostateczną, bo z 8 można jeszcze wyciągnąć 2!'
+            cke_trap='Choć $72 = 9 \\cdot 8$, to wyciągnięcie $3\\sqrt{8}$ nie jest postacią ostateczną, bo z 8 można jeszcze wyciągnąć 2.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka egzaminacyjna
         make_sc_task(
             task_id='task-1-2-2',
             source='Trening JASNE • Wzorzec CKE',
@@ -175,37 +176,41 @@ def build_topic_01():
             ],
             correct_id='B',
             explanation='Wyłączamy czynnik przed znak pierwiastka z obu liczb:\n$$\\sqrt{75} = \\sqrt{25 \\cdot 3} = 5\\sqrt{3}$$\n$$\\sqrt{27} = \\sqrt{9 \\cdot 3} = 3\\sqrt{3}$$\nOdejmujemy: $5\\sqrt{3} - 3\\sqrt{3} = (5 - 3)\\sqrt{3} = 2\\sqrt{3}$.',
-            cke_trap='Nigdy nie odejmuj liczb pod pierwiastkami: $\\sqrt{75} - \\sqrt{27} \\neq \\sqrt{75 - 27} = \\sqrt{48}$!'
+            cke_trap='Nigdy nie odejmuj liczb pod pierwiastkami: $\\sqrt{75} - \\sqrt{27} \\neq \\sqrt{75 - 27} = \\sqrt{48}$.'
         ),
-        make_tf_task(
+        # Zadanie 3: Autentyk CKE Zamknięty 1:1
+        make_sc_task(
             task_id='task-1-2-3',
-            source='Pułapka CKE • Pierwiastek sumy',
-            question='Wartość wyrażenia $\\sqrt{16 + 9}$ jest równa $4 + 3 = 7$.',
-            correct_tf='FAŁSZ',
-            explanation='Pierwiastek sumy NIE jest sumą pierwiastków! Najpierw wykonujemy dodawanie pod pierwiastkiem: $\\sqrt{16 + 9} = \\sqrt{25} = 5$. Zatem zdanie jest fałszywe ($5 \\neq 7$).',
-            cke_trap='Zasada $\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}$ działa WYŁĄCZNIE dla mnożenia i dzielenia, NIGDY dla dodawania i odejmowania!'
+            source='Matura sierpień 2023 • Zad. 2',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba $3\\sqrt{45} - \\sqrt{20}$ jest równa',
+            options_data=[
+                ('A', '$(7 \\cdot 5)^{\\frac{1}{2}}$'),
+                ('B', '$5^{\\frac{1}{2}}$'),
+                ('C', '$7$'),
+                ('D', '$7 \\cdot 5^{\\frac{1}{2}}$')
+            ],
+            correct_id='D',
+            explanation='Wyłączamy czynnik przed znak pierwiastka:\n$$3\\sqrt{45} = 3\\sqrt{9 \\cdot 5} = 3 \\cdot 3\\sqrt{5} = 9\\sqrt{5}$$\n$$\\sqrt{20} = \\sqrt{4 \\cdot 5} = 2\\sqrt{5}$$\nOdejmujemy: $9\\sqrt{5} - 2\\sqrt{5} = 7\\sqrt{5} = 7 \\cdot 5^{\\frac{1}{2}}$.',
+            cke_trap='Pamiętaj, że zapis $5^{\\frac{1}{2}}$ oznacza dokładnie $\\sqrt{5}$. Opcja D to $7\\sqrt{5}$.'
         ),
+        # Zadanie 4: Autentyk CKE Krótka Odpowiedź
         make_numeric_task(
             task_id='task-1-2-4',
-            source='Zadanie utrwalające • Pierwiastki sześcienne',
+            source='Trening JASNE • Wzorzec CKE',
             question='Oblicz wartość wyrażenia $\\frac{\\sqrt[3]{54}}{\\sqrt[3]{2}}$. Wpisz wynik jako liczbę całkowitą.',
             correct_val='3',
             explanation='Stosujemy regułę ilorazu pierwiastków tego samego stopnia: $\\frac{\\sqrt[3]{54}}{\\sqrt[3]{2}} = \\sqrt[3]{\\frac{54}{2}} = \\sqrt[3]{27} = 3$.',
             cke_trap='Pamiętaj: $\\sqrt[3]{27} = 3$, ponieważ $3^3 = 27$.'
         ),
-        make_sc_task(
+        # Zadanie 5: Zadanie Otwarte z Brudnopisem & Krokami
+        make_open_task(
             task_id='task-1-2-5',
             source='Trening JASNE • Wzorzec CKE',
-            question='Dokończ zdanie. Liczba $2\\sqrt{18} - \\sqrt{32}$ jest równa',
-            options_data=[
-                ('A', '$2\\sqrt{2}$'),
-                ('B', '$\\sqrt{2}$'),
-                ('C', '$-2\\sqrt{14}$'),
-                ('D', '$2$')
-            ],
-            correct_id='A',
-            explanation='Wyłączamy czynnik przed znak pierwiastka z obu składników:\n$$2\\sqrt{18} = 2 \\cdot \\sqrt{9 \\cdot 2} = 2 \\cdot 3\\sqrt{2} = 6\\sqrt{2}$$\n$$\\sqrt{32} = \\sqrt{16 \\cdot 2} = 4\\sqrt{2}$$\nOdejmujemy wyrazy podobne: $6\\sqrt{2} - 4\\sqrt{2} = 2\\sqrt{2}$.',
-            cke_trap='Pamiętaj o pomnożeniu wyciągniętego czynnika $3$ przez stojącą wcześniej dwójkę ($2 \\cdot 3 = 6$, a nie $2 + 3 = 5$).'
+            question='Wykaż, że liczba $\\frac{\\sqrt{50} + \\sqrt{72}}{\\sqrt{2}}$ jest liczbą całkowitą równą $11$. Zapisz pełne obliczenia.',
+            points=2,
+            scoring_key='1 pkt – wyłączenie czynników przed pierwiastki: $\\sqrt{50} = 5\\sqrt{2}$ oraz $\\sqrt{72} = 6\\sqrt{2}$ (lub podzielenie każdego składnika w liczniku przez $\\sqrt{2}$).\\n2 pkt – wykonanie redukcji: $\\frac{11\\sqrt{2}}{\\sqrt{2}} = 11$ i sformułowanie wniosku, że $11 \\in \\mathbb{C}$.',
+            explanation='Wyłączamy czynniki przed pierwiastki w liczniku:\n$$\\sqrt{50} = \\sqrt{25 \\cdot 2} = 5\\sqrt{2}$$\n$$\\sqrt{72} = \\sqrt{36 \\cdot 2} = 6\\sqrt{2}$$\nDodajemy wyrazy podobne:\n$$5\\sqrt{2} + 6\\sqrt{2} = 11\\sqrt{2}$$\nDzielimy przez mianownik:\n$$\\frac{11\\sqrt{2}}{\\sqrt{2}} = 11$$\nLiczba 11 jest całkowita, co kończy dowód.',
+            cke_trap='Nie skracaj pojedynczego składnika sumy z mianownikiem bez wyłączenia wspólnego czynnika przed nawias.'
         )
     ]
     l2 = make_lesson(
@@ -255,9 +260,10 @@ def build_topic_01():
     # ----------------------------------------------------
     v3 = get_topic_01_visuals(2)
     l3_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza pojęciowa
         make_sc_task(
             task_id='task-1-3-1',
-            source='Rozgrzewka • Usuwanie pojedynczego pierwiastka',
+            source='Trening JASNE • Wzorzec CKE',
             question='Liczba $\\frac{6}{\\sqrt{3}}$ po usunięciu niewymierności z mianownika jest równa',
             options_data=[
                 ('A', '$2$'),
@@ -269,6 +275,7 @@ def build_topic_01():
             explanation='Mnożymy licznik i mianownik przez $\\sqrt{3}$:\n$$\\frac{6}{\\sqrt{3}} = \\frac{6 \\cdot \\sqrt{3}}{\\sqrt{3} \\cdot \\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$$.',
             cke_trap='Pamiętaj, że $\\sqrt{3} \\cdot \\sqrt{3} = 3$, a nie 9.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka egzaminacyjna
         make_sc_task(
             task_id='task-1-3-2',
             source='Trening JASNE • Wzorzec CKE',
@@ -283,41 +290,39 @@ def build_topic_01():
             explanation='Mnożymy licznik i mianownik przez sprzężenie mianownika $(\\sqrt{5} + 1)$:\n$$\\frac{4(\\sqrt{5} + 1)}{(\\sqrt{5} - 1)(\\sqrt{5} + 1)} = \\frac{4(\\sqrt{5} + 1)}{(\\sqrt{5})^2 - 1^2} = \\frac{4(\\sqrt{5} + 1)}{5 - 1} = \\frac{4(\\sqrt{5} + 1)}{4} = \\sqrt{5} + 1$$.',
             cke_trap='W mianowniku stosujesz wzór skróconego mnożenia $(a-b)(a+b) = a^2 - b^2$, więc $(\\sqrt{5})^2 - 1^2 = 5 - 1 = 4$.'
         ),
+        # Zadanie 3: Autentyk CKE Zamknięty 1:1
         make_sc_task(
             task_id='task-1-3-3',
-            source='Pułapka CKE • Sprzężenie sumy',
-            question='Liczba $\\frac{3}{\\sqrt{7} + 2}$ jest równa',
+            source='Matura czerwiec 2024 • Zad. 1',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba $2^{-1} \\cdot 32^{\\frac{3}{5}}$ jest równa',
             options_data=[
-                ('A', '$\\sqrt{7} - 2$'),
-                ('B', '$\\sqrt{7} + 2$'),
-                ('C', '$\\frac{\\sqrt{7} - 2}{3}$'),
-                ('D', '$\\frac{3\\sqrt{7} - 6}{5}$')
+                ('A', '$-16$'),
+                ('B', '$-4$'),
+                ('C', '$2$'),
+                ('D', '$4$')
             ],
-            correct_id='A',
-            explanation='Sprzężeniem mianownika $\\sqrt{7} + 2$ jest wyrażenie ze ZMIENIONYM znakiem, czyli $\\sqrt{7} - 2$:\n$$\\frac{3(\\sqrt{7} - 2)}{(\\sqrt{7} + 2)(\\sqrt{7} - 2)} = \\frac{3(\\sqrt{7} - 2)}{7 - 4} = \\frac{3(\\sqrt{7} - 2)}{3} = \\sqrt{7} - 2$$.',
-            cke_trap='Mianownik to $(\\sqrt{7})^2 - 2^2 = 7 - 4 = 3$, a nie $7 - 2 = 5$ (pamiętaj o podniesieniu 2 do kwadratu!).'
+            correct_id='D',
+            explanation='Przekształcamy potęgi o podstawie 2:\n$$2^{-1} = \\frac{1}{2}$$\n$$32^{\\frac{3}{5}} = (2^5)^{\\frac{3}{5}} = 2^{5 \\cdot \\frac{3}{5}} = 2^3 = 8$$\nObliczamy iloczyn:\n$$2^{-1} \\cdot 32^{\\frac{3}{5}} = \\frac{1}{2} \\cdot 8 = 4$$\nPoprawna odpowiedź to D.',
+            cke_trap='Pamiętaj, że $2^{-1} = \\frac{1}{2}$ (odwrotność), a nie $-2$. Wykładnik ujemny odwraca liczbę, a nie zmienia jej znak na minus!'
         ),
+        # Zadanie 4: Autentyk CKE Krótka Odpowiedź
         make_numeric_task(
             task_id='task-1-3-4',
-            source='Zadanie utrwalające • Redukcja niewymierności',
-            question='Oblicz wartość wyrażenia $\\frac{1}{\\sqrt{2} - 1} - \\sqrt{2}$. Wpisz wynik.',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Oblicz wartość wyrażenia $\\frac{1}{\\sqrt{2} - 1} - \\sqrt{2}$. Wpisz wynik jako liczbę całkowitą.',
             correct_val='1',
             explanation='Usuwamy niewymierność z pierwszego ułamka:\n$$\\frac{1(\\sqrt{2} + 1)}{(\\sqrt{2} - 1)(\\sqrt{2} + 1)} = \\frac{\\sqrt{2} + 1}{2 - 1} = \\sqrt{2} + 1$$\nOdejmujemy $\\sqrt{2}$: $(\\sqrt{2} + 1) - \\sqrt{2} = 1$.',
             cke_trap='Pamiętaj, że $(\\sqrt{2})^2 - 1 = 2 - 1 = 1$, więc mianownik całkowicie znika.'
         ),
-        make_sc_task(
+        # Zadanie 5: Zadanie Otwarte z Brudnopisem & Krokami
+        make_open_task(
             task_id='task-1-3-5',
             source='Trening JASNE • Wzorzec CKE',
-            question='Liczba $\\frac{\\sqrt{3} + 1}{\\sqrt{3} - 1}$ po usunięciu niewymierności z mianownika jest równa',
-            options_data=[
-                ('A', '$2 + \\sqrt{3}$'),
-                ('B', '$2 - \\sqrt{3}$'),
-                ('C', '$1 + \\sqrt{3}$'),
-                ('D', '$4 + 2\\sqrt{3}$')
-            ],
-            correct_id='A',
-            explanation='Mnożymy licznik i mianownik przez sprzężenie mianownika $(\\sqrt{3} + 1)$:\n$$\\frac{(\\sqrt{3} + 1)(\\sqrt{3} + 1)}{(\\sqrt{3} - 1)(\\sqrt{3} + 1)} = \\frac{(\\sqrt{3} + 1)^2}{(\\sqrt{3})^2 - 1^2}$$\nRozpisujemy licznik ze wzoru kwadratu sumy: $(\\sqrt{3})^2 + 2\\sqrt{3} + 1 = 3 + 2\\sqrt{3} + 1 = 4 + 2\\sqrt{3}$.\nMianownik: $3 - 1 = 2$.\nDzielimy każdy składnik licznika przez 2: $\\frac{4 + 2\\sqrt{3}}{2} = \\frac{4}{2} + \\frac{2\\sqrt{3}}{2} = 2 + \\sqrt{3}$.',
-            cke_trap='Podnosząc licznik do kwadratu nie zapomnij o podwojonym iloczynie: $(a+b)^2 = a^2 + 2ab + b^2$, a przy skracaniu przez 2 musisz podzielić OBA składniki sumy w liczniku!'
+            question='Wykaż, że liczba $\\frac{1}{\\sqrt{3} - \\sqrt{2}} - \\frac{1}{\\sqrt{3} + \\sqrt{2}}$ jest równa $2\\sqrt{2}$. Zapisz pełne uzasadnienie.',
+            points=2,
+            scoring_key='1 pkt – usunięcie niewymierności z obu ułamków przez pomnożenie przez ich sprzężenia: $\\frac{\\sqrt{3}+\\sqrt{2}}{3-2} - \\frac{\\sqrt{3}-\\sqrt{2}}{3-2}$.\\n2 pkt – wykonanie redukcji: $(\\sqrt{3} + \\sqrt{2}) - (\\sqrt{3} - \\sqrt{2}) = \\sqrt{3} + \\sqrt{2} - \\sqrt{3} + \\sqrt{2} = 2\\sqrt{2}$ i sformułowanie wniosku.',
+            explanation='Usuwamy niewymierność z obu mianowników:\n$$\\frac{1}{\\sqrt{3} - \\sqrt{2}} = \\frac{\\sqrt{3} + \\sqrt{2}}{(\\sqrt{3})^2 - (\\sqrt{2})^2} = \\frac{\\sqrt{3} + \\sqrt{2}}{3 - 2} = \\sqrt{3} + \\sqrt{2}$$\n$$\\frac{1}{\\sqrt{3} + \\sqrt{2}} = \\frac{\\sqrt{3} - \\sqrt{2}}{(\\sqrt{3})^2 - (\\sqrt{2})^2} = \\frac{\\sqrt{3} - \\sqrt{2}}{3 - 2} = \\sqrt{3} - \\sqrt{2}$$\nOdejmujemy drugie wyrażenie od pierwszego:\n$$(\\sqrt{3} + \\sqrt{2}) - (\\sqrt{3} - \\sqrt{2}) = \\sqrt{3} + \\sqrt{2} - \\sqrt{3} + \\sqrt{2} = 2\\sqrt{2}$$\nCo kończy dowód.',
+            cke_trap='Pamiętaj o nawiasie przy odejmowaniu drugiego ułamka: minus przed nawiasem zmienia znak każdego składnika wewnątrz.'
         )
     ]
     l3 = make_lesson(
@@ -348,7 +353,6 @@ def build_topic_01():
             }
         ],
         worked_example={
-            'title': 'Wzorcowe usuwanie niewymierności ze sprzężeniem',
             'problem': 'Usuń niewymierność z mianownika ułamka $\\frac{4}{\\sqrt{5} - 1}$.',
             'steps': [
                 {'num': 1, 'label': 'Wyznaczenie sprzężenia mianownika', 'text': 'Sprzężeniem mianownika $\\sqrt{5} - 1$ jest $\\sqrt{5} + 1$. Mnożymy licznik i mianownik.'},
@@ -368,9 +372,10 @@ def build_topic_01():
     # ----------------------------------------------------
     v4 = get_topic_01_visuals(3)
     l4_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza pojęciowa
         make_sc_task(
             task_id='task-1-4-1',
-            source='Rozgrzewka • Wykładnik ujemny',
+            source='Trening JASNE • Wzorzec CKE',
             question='Liczba $\\left(\\frac{2}{3}\\right)^{-2}$ jest równa',
             options_data=[
                 ('A', '$-\\frac{4}{9}$'),
@@ -380,26 +385,13 @@ def build_topic_01():
             ],
             correct_id='B',
             explanation='Minus w wykładniku odwraca ułamek: $\\left(\\frac{2}{3}\\right)^{-2} = \\left(\\frac{3}{2}\\right)^2 = \\frac{3^2}{2^2} = \\frac{9}{4}$.',
-            cke_trap='Minus w wykładniku NIE tworzy liczby ujemnej! On jedynie odwraca ułamek do góry nogami.'
+            cke_trap='Minus w wykładniku nie tworzy liczby ujemnej. On jedynie odwraca ułamek do góry nogami.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka egzaminacyjna
         make_sc_task(
             task_id='task-1-4-2',
             source='Trening JASNE • Wzorzec CKE',
-            question='Dokończ zdanie. Liczba $16^{-0{,}25} \\cdot 64^{\\frac{2}{3}}$ jest równa',
-            options_data=[
-                ('A', '$8$'),
-                ('B', '$16$'),
-                ('C', '$4$'),
-                ('D', '$2$')
-            ],
-            correct_id='A',
-            explanation='Zamieniamy wykładnik dziesiętny na ułamek zwykły: $-0{,}25 = -\\frac{1}{4}$.\nObliczamy pierwszy czynnik: $16^{-\\frac{1}{4}} = \\left(\\frac{1}{16}\\right)^{\\frac{1}{4}} = \\sqrt[4]{\\frac{1}{16}} = \\frac{1}{2}$.\nObliczamy drugi czynnik: $64^{\\frac{2}{3}} = (\\sqrt[3]{64})^2 = 4^2 = 16$.\nMnożymy: $\\frac{1}{2} \\cdot 16 = 8$.',
-            cke_trap='Mianownik wykładnika to ZAWSZE stopień pierwiastka (tutaj $\\sqrt[3]{64} = 4$, a potem do kwadratu $4^2 = 16$).'
-        ),
-        make_sc_task(
-            task_id='task-1-4-3',
-            source='Pułapka CKE • Znak przy wykładniku ujemnym',
-            question='Liczba $3^{-2}$ jest równa',
+            question='Dokończ zdanie. Liczba $3^{-2}$ jest równa',
             options_data=[
                 ('A', '$-6$'),
                 ('B', '$-9$'),
@@ -407,30 +399,42 @@ def build_topic_01():
                 ('D', '$\\frac{1}{6}$')
             ],
             correct_id='C',
-            explanation='Stosujemy regułę $a^{-n} = \\frac{1}{a^n}$. Zatem $3^{-2} = \\frac{1}{3^2} = \\frac{1}{9}$. Wynik jest liczbą dodatnią.',
-            cke_trap='Najczęstszy błąd maturzysty: $3^{-2} = -6$ (pomnożenie podstawy przez wykładnik) lub $3^{-2} = -9$ (przypisanie minusa do potęgi).'
+            explanation='Stosujemy regułę $a^{-n} = \\frac{1}{a^n}$. Zatem $3^{-2} = \\frac{1}{3^2} = \\frac{1}{9}$. Wynik jest ściśle dodatni.',
+            cke_trap='Najczęstszy błąd: $3^{-2} = -6$ (pomnożenie podstawy przez wykładnik) lub $3^{-2} = -9$ (przypisanie minusa do wyniku potęgowania).'
         ),
+        # Zadanie 3: Autentyk CKE Zamknięty 1:1
+        make_sc_task(
+            task_id='task-1-4-3',
+            source='Matura sierpień 2024 • Zad. 2',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba $\\left(\\frac{4}{25}\\right)^{-0{,}5}$ jest równa',
+            options_data=[
+                ('A', '$0{,}04$'),
+                ('B', '$0{,}8$'),
+                ('C', '$2{,}5$'),
+                ('D', '$0{,}4$')
+            ],
+            correct_id='C',
+            explanation='Zapisujemy wykładnik dziesiętny jako ułamek: $-0{,}5 = -\\frac{1}{2}$.\nMinus w wykładniku odwraca ułamek:\n$$\\left(\\frac{4}{25}\\right)^{-\\frac{1}{2}} = \\left(\\frac{25}{4}\\right)^{\\frac{1}{2}}$$\nWykładnik $\\frac{1}{2}$ oznacza pierwiastek kwadratowy:\n$$\\sqrt{\\frac{25}{4}} = \\frac{5}{2} = 2{,}5$$',
+            cke_trap='Minus w wykładniku nie tworzy liczby ujemnej. Dystraktory ujemne są celowo eliminowane z klucza CKE.'
+        ),
+        # Zadanie 4: Autentyk CKE Krótka Odpowiedź
         make_numeric_task(
             task_id='task-1-4-4',
-            source='Zadanie utrwalające • Wykładnik ułamkowy',
+            source='Trening JASNE • Wzorzec CKE',
             question='Oblicz wartość potęgi $27^{\\frac{4}{3}}$. Wpisz wynik jako liczbę całkowitą.',
             correct_val='81',
             explanation='Mianownik 3 zamienia się na pierwiastek sześcienny: $27^{\\frac{4}{3}} = (\\sqrt[3]{27})^4 = 3^4 = 81$.',
-            cke_trap='Zawsze najpierw wyciągaj pierwiastek ($\\sqrt[3]{27} = 3$), a dopiero potem potęguj ($3^4 = 81$), żeby uniknąć gigantycznych liczb!'
+            cke_trap='Zawsze najpierw wyciągaj pierwiastek ($\\sqrt[3]{27} = 3$), a dopiero potem potęguj ($3^4 = 81$).'
         ),
-        make_sc_task(
+        # Zadanie 5: Zadanie Otwarte z Brudnopisem & Krokami
+        make_open_task(
             task_id='task-1-4-5',
             source='Trening JASNE • Wzorzec CKE',
-            question='Dokończ zdanie. Wartość wyrażenia $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}}$ jest równa',
-            options_data=[
-                ('A', '$27$'),
-                ('B', '$\\frac{1}{27}$'),
-                ('C', '$-27$'),
-                ('D', '$81$')
-            ],
-            correct_id='A',
-            explanation='Stosujemy reguły krok po kroku:\n1. Minus w wykładniku odwraca ułamek: $\\left(\\frac{1}{9}\\right)^{-\\frac{3}{2}} = 9^{\\frac{3}{2}}$.\n2. Mianownik 2 to pierwiastek kwadratowy, a licznik 3 to potęga: $9^{\\frac{3}{2}} = (\\sqrt{9})^3 = 3^3 = 27$.\nWynik to 27.',
-            cke_trap='Zawsze najpierw wyciągaj pierwiastek $\\sqrt{9} = 3$, a dopiero potem podnoś do potęgi $3^3 = 27$. Minus w wykładniku nie tworzy liczby ujemnej!'
+            question='Wykaż, że dla każdej liczby rzeczywistej $a > 0$ wartość wyrażenia $\\frac{a^{-2} \\cdot (a^3)^2}{a^5}$ jest równa $\\frac{1}{a}$. Zapisz obliczenia.',
+            points=2,
+            scoring_key='1 pkt – uproszczenie licznika: $a^{-2} \\cdot a^6 = a^{-2+6} = a^4$.\\n2 pkt – wykonanie dzielenia potęg: $\\frac{a^4}{a^5} = a^{4-5} = a^{-1} = \\frac{1}{a}$ i sformułowanie wniosku.',
+            explanation='Upraszczamy licznik ze wzorów na potęgowanie potęgi i mnożenie potęg:\n$$(a^3)^2 = a^{3 \\cdot 2} = a^6$$\n$$a^{-2} \\cdot a^6 = a^{-2+6} = a^4$$\nDzielimy przez mianownik:\n$$\\frac{a^4}{a^5} = a^{4-5} = a^{-1} = \\frac{1}{a}$$\nCo należało wykazać.',
+            cke_trap='Pamiętaj: $a^{-1} = \\frac{1}{a}$. Nie myl wykładnika potęgi ze współczynnikiem liczbowym.'
         )
     ]
     l4 = make_lesson(

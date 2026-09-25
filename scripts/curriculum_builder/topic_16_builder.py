@@ -57,7 +57,7 @@ def build_topic_16():
             ],
             correct_id='A',
             explanation=r'W każdym trapezie suma kątów przy tym samym ramieniu wynosi $180^\circ$:' + '\n' +
-                        r'$$\alpha + 125^\circ = 180^\circ \implies \alpha = 180^\circ - 125^\circ = 55^\circ$$',
+                        r'$$\alpha + 125^\circ = 180^\circ \longrightarrow \alpha = 180^\circ - 125^\circ = 55^\circ$$',
             cke_trap=r'Kąty przy jednym ramieniu trapezu ZAWSZE sumują się do $180^\circ$, niezależnie od tego, czy trapez jest równoramienny, czy dowolny.'
         ),
         make_sc_task(
@@ -79,17 +79,8 @@ def build_topic_16():
                         r'$$a = \sqrt{5^2 + 12^2} = \sqrt{25 + 144} = \sqrt{169} = 13$$',
             cke_trap=r'Nie podstawiaj całych przekątnych do twierdzenia Pitagorasa! Przekątne rombu dzielą się na połowy, więc liczymy z boków 5 i 12.'
         ),
-        make_tf_task(
-            task_id='task-16-1-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'W każdym równoległoboku suma miar dowolnych dwóch sąsiednich kątów wewnętrznych jest równa $180^\circ$.',
-            correct_tf='P',
-            explanation=r'Przeciwległe boki równoległoboku są równoległe. Kąty leżące przy tym samym boku to kąty jednostronne wewnętrzne, których suma wynosi zawsze $180^\circ$. Zdanie jest prawdziwe.',
-            cke_trap=r'Sąsiednie kąty sumują się do 180°, natomiast przeciwległe kąty w równoległoboku mają równe miary.'
-        ),
         make_numeric_task(
-            task_id='task-16-1-5',
+            task_id='task-16-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Podstawy trapezu mają długości $6$ oraz $14$, a jego wysokość wynosi $5$.' + '\n' +
                      r'Oblicz pole tego trapezu. Wpisz wynik w pole poniżej.',
@@ -97,6 +88,21 @@ def build_topic_16():
             explanation=r'Zastosujmy wzór na pole trapezu:' + '\n' +
                         r'$$P = \frac{a + b}{2} \cdot h = \frac{6 + 14}{2} \cdot 5 = \frac{20}{2} \cdot 5 = 10 \cdot 5 = 50$$',
             cke_trap=r'Pamiętaj o dodaniu podstaw przed podzieleniem przez 2: $(6 + 14) / 2 = 10$.'
+        ),
+        make_open_task(
+            task_id='task-16-1-5',
+            source='Matura czerwiec 2023 • Zad. 21',
+            question=r'W trapezie prostokątnym $ABCD$ podstawy mają długości $|AB| = 10$ oraz $|CD| = 6$. Ramię prostopadłe $AD$ ma długość $3$.' + '\n' +
+                     r'Oblicz obwód tego trapezu. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie długości rzutu drugiego ramienia na podstawę: 10 - 6 = 4 oraz obliczenie długości ramienia pochyłego BC z twierdzenia Pitagorasa: |BC| = \sqrt{4^2 + 3^2} = 5.' + '\n' +
+                        r'2 pkt – obliczenie obwodu trapezu: Obw = 10 + 5 + 6 + 3 = 24.',
+            explanation=r'Krok 1: Opuszczamy wysokość $CE$ na dłuższą podstawę $AB$. Wtedy $|AE| = |CD| = 6$, stąd $|EB| = 10 - 6 = 4$.' + '\n' +
+                        r'Krok 2: W trójkącie prostokątnym $CEB$ przyprostokątne to $|CE| = 3$ i $|EB| = 4$. Z twierdzenia Pitagorasa:' + '\n' +
+                        r'$$|BC| = \sqrt{4^2 + 3^2} = \sqrt{16 + 9} = \sqrt{25} = 5$$' + '\n' +
+                        r'Krok 3: Obwód trapezu:' + '\n' +
+                        r'$$\mathrm{Obw} = |AB| + |BC| + |CD| + |DA| = 10 + 5 + 6 + 3 = 24$$',
+            cke_trap=r'Pamiętaj, że obwód to suma wszystkich czterech boków: nie zapomnij dodać ramienia prostopadłego $AD = 3$.'
         )
     ]
     l1 = make_lesson(
@@ -113,16 +119,16 @@ def build_topic_16():
             {
                 'title': 'Pole trapezu',
                 'latex': r'P = \frac{a + b}{2} \cdot h',
-                'description': 'Karta wzorów CKE str. 18. a, b - podstawy, h - wysokość.',
+                'description': 'Karta wzorów CKE str. 19–20. a, b - podstawy, h - wysokość.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 18'
+                'cke_page': 'str. 19–20'
             },
             {
                 'title': 'Pole rombu z przekątnymi',
                 'latex': r'P = \frac{e \cdot f}{2}',
-                'description': 'Karta wzorów CKE str. 18. e, f - długości przekątnych.',
+                'description': 'Karta wzorów CKE str. 19–20. e, f - długości przekątnych.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 18'
+                'cke_page': 'str. 19–20'
             }
         ],
         worked_example={
@@ -161,7 +167,7 @@ def build_topic_16():
             explanation=r'Kąt środkowy oparty na tym samym łuku jest dwukrotnie większy od kąta wpisanego: $\beta = 2\alpha$.' + '\n' +
                         r'Z treści zadania wiemy, że $\beta = \alpha + 40^\circ$.' + '\n' +
                         r'Przyrównujemy:' + '\n' +
-                        r'$$2\alpha = \alpha + 40^\circ \implies \alpha = 40^\circ$$' + '\n' +
+                        r'$$2\alpha = \alpha + 40^\circ \longrightarrow \alpha = 40^\circ$$' + '\n' +
                         r'Stąd miara kąta środkowego $\beta = 2 \cdot 40^\circ = 80^\circ$. Poprawna odpowiedź to B.',
             cke_trap=r'Uważaj, o który kąt pyta zadanie: kąt wpisany $\alpha = 40^\circ$, czy środkowy $\beta = 80^\circ$. Pytanie dotyczy kąta $\beta$.'
         ),
@@ -202,24 +208,29 @@ def build_topic_16():
                         r'Kąt wpisany oparty na średnicy ma miarę równą połowie kąta półpełnego: $\frac{180^\circ}{2} = 90^\circ$.',
             cke_trap=r'Żelazna reguła: każdy trójkąt wpisany w okrąg, którego jeden bok jest średnicą, jest trójkątem PROSTOKĄTNYM.'
         ),
-        make_tf_task(
-            task_id='task-16-2-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Wszystkie kąty wpisane w dany okrąg oparte na tym samym łuku mają równe miary.',
-            correct_tf='P',
-            explanation=r'Każdy kąt wpisany oparty na danym łuku ma miarę równą połowie kąta środkowego opartego na tym łuku.' + '\n' +
-                        r'Ponieważ kąt środkowy jest stały, wszystkie kąty wpisane oparte na tym łuku mają taką samą miarę. Zdanie jest prawdziwe.',
-            cke_trap=r'Własność ta dotyczy kątów opartych na TYM SAMYM łuku. Kąty oparte na łukach dopełniających sumują się do 180°.'
-        ),
         make_numeric_task(
-            task_id='task-16-2-5',
+            task_id='task-16-2-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Kąt środkowy w okręgu ma miarę $130^\circ$. Oblicz miarę kąta wpisanego opartego na tym samym łuku (w stopniach). Wpisz wynik w pole poniżej.',
             correct_val=65,
             explanation=r'Z twierdzenia o kącie wpisanym i środkowym:' + '\n' +
                         r'$$\alpha = \frac{\beta}{2} = \frac{130^\circ}{2} = 65^\circ$$',
             cke_trap=r'Pamiętaj: kąt wpisany jest POŁOWĄ kąta środkowego: $130 / 2 = 65^\circ$.'
+        ),
+        make_open_task(
+            task_id='task-16-2-5',
+            source='Matura maj 2023 • Zad. 22',
+            question=r'Punkty $A$, $B$ i $C$ leżą na okręgu o środku $S$. Miara kąta środkowego $ASB$ jest o $50^\circ$ większa od miary kąta wpisanego $ACB$ opartego na tym samym łuku.' + '\n' +
+                     r'Oblicz miarę kąta środkowego $ASB$. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – zapisanie równania wiążącego miary kątów: 2\alpha = \alpha + 50^\circ lub wyznaczenie miary kąta wpisanego: \alpha = 50^\circ.' + '\n' +
+                        r'2 pkt – obliczenie miary kąta środkowego: \beta = 100^\circ.',
+            explanation=r'Krok 1: Oznaczmy miarę kąta wpisanego $ACB$ jako $\alpha$. Wtedy kąt środkowy $ASB$ oparty na tym samym łuku ma miarę $\beta = 2\alpha$.' + '\n' +
+                        r'Krok 2: Z treści zadania: $\beta = \alpha + 50^\circ$.' + '\n' +
+                        r'Układamy równanie:' + '\n' +
+                        r'$$2\alpha = \alpha + 50^\circ \longrightarrow \alpha = 50^\circ$$' + '\n' +
+                        r'Krok 3: Kąt środkowy wynosi zatem $\beta = 2 \cdot 50^\circ = 100^\circ$.',
+            cke_trap=r'Pamiętaj, że zadanie pyta o kąt środkowy $ASB$ ($100^\circ$), a nie o kąt wpisany $ACB$ ($50^\circ$).'
         )
     ]
     l2 = make_lesson(
@@ -318,26 +329,26 @@ def build_topic_16():
                         r'$$R = \frac{2}{3}h = \frac{2}{3} \cdot 3\sqrt{3} = 2\sqrt{3}$$',
             cke_trap=r'Dla okręgu opisanego bierzemy $\frac{2}{3}h$, a dla wpisanego $\frac{1}{3}h = \sqrt{3}$.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-16-3-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'W każdym trójkącie prostokątnym promień okręgu wpisanego $r$ oraz promień okręgu opisanego $R$ spełniają zależność $r + R = \frac{a + b}{2}$, gdzie $a$ i $b$ to przyprostokątne.',
-            correct_tf='P',
-            explanation=r'Mamy $r = \frac{a + b - c}{2}$ oraz $R = \frac{c}{2}$.' + '\n' +
-                        r'Dodajemy stronami:' + '\n' +
-                        r'$$r + R = \frac{a + b - c}{2} + \frac{c}{2} = \frac{a + b}{2}$$' + '\n' +
-                        r'Zależność jest prawdziwa dla każdego trójkąta prostokątnego.',
-            cke_trap=r'Ta elegancka tożsamość łączy oba promienie trójkąta prostokątnego ze średnią arytmetyczną przyprostokątnych.'
+            question=r'Prosta $k$ jest styczna w punkcie $A$ do okręgu o środku $S$ i promieniu $r = 8$. Punkt $B$ leży na prostej $k$, a odległość punktu $B$ od środka okręgu wynosi $|SB| = 17$.' + '\n' +
+                     r'Oblicz długość odcinka $AB$. Wpisz wynik w pole poniżej.',
+            correct_val=15,
+            explanation=r'Promień poprowadzony do punktu styczności jest prostopadły do stycznej: $SA \perp AB$, zatem trójkąt $SAB$ jest prostokątny z kątem prostym przy wierzchołku $A$.' + '\n' +
+                        r'Z twierdzenia Pitagorasa:' + '\n' +
+                        r'$$|AB|^2 + |SA|^2 = |SB|^2 \longrightarrow |AB|^2 + 8^2 = 17^2$$' + '\n' +
+                        r'$$|AB|^2 + 64 = 289 \longrightarrow |AB|^2 = 225 \longrightarrow |AB| = 15$$',
+            cke_trap=r'Pamiętaj, że przeciwprostokątną jest odcinek łączący środek okręgu z punktem $B$ ($|SB| = 17$), a promień ($r = 8$) to przyprostokątna.'
         ),
         make_open_task(
             task_id='task-16-3-5',
             source='Trening JASNE • Wzorzec CKE',
             question=r'W trójkącie prostokątnym o polu $P = 24$ jedna z przyprostokątnych ma długość $6$. Oblicz promień okręgu wpisanego w ten trójkąt. Zapisz obliczenia.',
             points=2,
-            scoring_key=r'1 pkt - obliczenie drugiej przyprostokątnej b = 8 i przeciwprostokątnej c = 10.' + '\n' +
-                        r'2 pkt - zastosowanie wzoru r = (a + b - c)/2 i podanie wyniku r = 2.',
-            explanation=r'Krok 1: Z wzoru na pole $P = \frac{1}{2}ab \implies 24 = \frac{1}{2} \cdot 6 \cdot b \implies 3b = 24 \implies b = 8$.' + '\n' +
+            scoring_key=r'1 pkt – obliczenie drugiej przyprostokątnej b = 8 i przeciwprostokątnej c = 10.' + '\n' +
+                        r'2 pkt – zastosowanie wzoru r = (a + b - c)/2 i podanie wyniku r = 2.',
+            explanation=r'Krok 1: Z wzoru na pole $P = \frac{1}{2}ab \longrightarrow 24 = \frac{1}{2} \cdot 6 \cdot b \longrightarrow 3b = 24 \longrightarrow b = 8$.' + '\n' +
                         r'Krok 2: Przeciwprostokątna z twierdzenia Pitagorasa: $c = \sqrt{6^2 + 8^2} = 10$.' + '\n' +
                         r'Krok 3: Promień okręgu wpisanego:' + '\n' +
                         r'$$r = \frac{a + b - c}{2} = \frac{6 + 8 - 10}{2} = \frac{4}{2} = 2$$',
@@ -365,9 +376,9 @@ def build_topic_16():
             {
                 'title': 'Promień okręgu opisanego na trójkącie prostokątnym',
                 'latex': r'R = \frac{c}{2}',
-                'description': 'c - przeciwprostokątna trójkąta.',
+                'description': 'Karta wzorów CKE str. 15. R = c/2 (promień to połowa przeciwprostokątnej).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 17'
+                'cke_page': 'str. 15'
             }
         ],
         worked_example={

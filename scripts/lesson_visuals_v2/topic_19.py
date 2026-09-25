@@ -30,7 +30,7 @@ def get_topic_19_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Tworzenie kodów czterocyfrowych ze zbioru 4 cyfr krok po kroku",
-            badge=r"\{1, 3, 6, 8\} \implies \text{z powtórzeniami: } 4 \cdot 4 \cdot 4 \cdot 4 = 4^4 = 256, \quad \text{bez powtórzeń: } 4 \cdot 3 \cdot 2 \cdot 1 = 24",
+            badge=r"\{1, 3, 6, 8\} \longrightarrow \text{z powtórzeniami: } 4 \cdot 4 \cdot 4 \cdot 4 = 4^4 = 256, \quad \text{bez powtórzeń: } 4 \cdot 3 \cdot 2 \cdot 1 = 24",
             caption="Zadanie maturalne CKE maj 2024: rozważamy czterocyfrowe kody utworzone wyłącznie z cyfr ze zbioru czteroelementowego.",
             steps=[
                 {'num': 1, 'title': 'Określ liczbę dostępnych cyfr', 'desc': r'Zbiór $\{1, 3, 6, 8\}$ zawiera dokładnie 4 cyfry (brak zera).', 'color': C_SKY},
@@ -94,7 +94,7 @@ def get_topic_19_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Prawdopodobieństwo wyrzucenia sumy równej 7 krok po kroku",
-            badge=r"A = \{(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\} \implies |A| = 6 \implies P(A) = \frac{6}{36} = \frac{1}{6}",
+            badge=r"A = \{(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\} \longrightarrow |A| = 6 \longrightarrow P(A) = \frac{6}{36} = \frac{1}{6}",
             caption="Wypisujemy wszystkie pary dające daną sumę oczek i dzielimy przez 36.",
             steps=[
                 {'num': 1, 'title': 'Wyznacz moc przestrzeni zdarzeń', 'desc': r'$|\Omega| = 6 \cdot 6 = 36$ par wyników.', 'color': C_SKY},
@@ -123,7 +123,7 @@ def get_topic_19_visuals(l_idx):
         # L19.3: Drzewo stochastyczne i losowanie bez zwracania
         tab0 = make_geometry_diagram(
             title="Drzewo stochastyczne w losowaniu wieloetapowym bez zwracania",
-            badge=r"P(A) = \sum \text{iloczyn prawdopodobieństw wzdłuż gałęzi} \quad | \quad \text{Bez zwracania: } N \longrightarrow N - 1",
+            badge=r"P(A) = P(s_1) + P(s_2) + \dots \quad (\text{suma gałęzi sprzyjających}) \quad | \quad \text{Bez zwracania: } N \longrightarrow N - 1",
             caption="Wzdłuż gałęzi drzewa prawdopodobieństwa MNOŻYMY, a wyniki różnych gałęzi sprzyjających DODAJEMY. Przy losowaniu bez zwracania mianownik maleje o 1.",
             segments=[
                 # Korzeń (100, 140) -> I etap: B(220, 80), C(220, 200)
@@ -157,7 +157,7 @@ def get_topic_19_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Losowanie dwóch kul z urny bez zwracania krok po kroku",
-            badge=r"4 \text{ białe}, \; 6 \text{ czarnych} \implies P(B_1, B_2) = \frac{4}{10} \cdot \frac{3}{9} = \frac{12}{90} = \frac{2}{15}",
+            badge=r"4 \text{ białe}, \; 6 \text{ czarnych} \longrightarrow P(B_1, B_2) = \frac{4}{10} \cdot \frac{3}{9} = \frac{12}{90} = \frac{2}{15}",
             caption="W urnie jest 10 kul. Po wylosowaniu pierwszej białej w urnie zostają 3 białe i łącznie 9 kul.",
             steps=[
                 {'num': 1, 'title': 'Prawdopodobieństwo pierwszej białej', 'desc': r'$P(B_1) = \frac{4}{10}$.', 'color': C_SKY},
@@ -177,7 +177,7 @@ def get_topic_19_visuals(l_idx):
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Zapisanie $\frac{4}{10} \cdot \frac{4}{10}$ dla losowania bez zwracania', 'color': C_DANGER},
                 {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Zawsze zmniejszaj mianownik o 1: $\frac{k}{n} \cdot \frac{k-1}{n-1}$', 'color': C_SUCCESS},
-                {'label': 'Zdarzenie przeciwne', 'value': r'$P(A) = 1 - P(A\')$ gdy w pytaniu jest "co najmniej jeden"', 'color': C_PRIMARY}
+                {'label': 'Zdarzenie przeciwne', 'value': "$P(A) = 1 - P(A')$ gdy w pytaniu jest \"co najmniej jeden\"", 'color': C_PRIMARY}
             ]
         )
         return {'tab0': tab0, 'tab2': tab2, 'tab3': tab3}

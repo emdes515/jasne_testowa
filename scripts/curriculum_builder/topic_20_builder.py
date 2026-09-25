@@ -35,7 +35,7 @@ def build_topic_20():
             ],
             correct_id='A',
             explanation=r'Z definicji średniej arytmetycznej trzech liczb:' + '\n' +
-                        r'$$\frac{a + b + c}{3} = 9 \implies a + b + c = 27$$' + '\n' +
+                        r'$$\frac{a + b + c}{3} = 9 \longrightarrow a + b + c = 27$$' + '\n' +
                         r'Średnia arytmetyczna sześciu liczb $a, a, b, b, c, c$:' + '\n' +
                         r'$$\frac{a + a + b + b + c + c}{6} = \frac{2a + 2b + 2c}{6} = \frac{2(a + b + c)}{6} = \frac{a + b + c}{3} = 9$$' + '\n' +
                         r'Poprawna odpowiedź to A.',
@@ -57,7 +57,7 @@ def build_topic_20():
             explanation=r'Z definicji średniej arytmetycznej:' + '\n' +
                         r'$$\frac{4 + 8 + x + 12}{4} = 9$$' + '\n' +
                         r'Mnożymy obustronnie przez 4:' + '\n' +
-                        r'$$24 + x = 36 \implies x = 36 - 24 = 12$$',
+                        r'$$24 + x = 36 \longrightarrow x = 36 - 24 = 12$$',
             cke_trap=r'Przeliczaj na sumę łączną: 4 liczby o średniej 9 muszą sumować się do $4 \cdot 9 = 36$.'
         ),
         make_sc_task(
@@ -74,21 +74,11 @@ def build_topic_20():
             ],
             correct_id='A',
             explanation=r'Wzór na średnią ważoną:' + '\n' +
-                        r'$$\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i} = \frac{5 \cdot 3 + 3 \cdot 2 + 4 \cdot 1}{3 + 2 + 1} = \frac{15 + 6 + 4}{6} = \frac{25}{6} \approx 4{,}17$$',
+                        r'$$\bar{s} = \frac{w_1 a_1 + w_2 a_2 + \dots + w_n a_n}{w_1 + w_2 + \dots + w_n} = \frac{3 \cdot 5 + 2 \cdot 3 + 1 \cdot 4}{3 + 2 + 1} = \frac{15 + 6 + 4}{6} = \frac{25}{6} \approx 4{,}17$$',
             cke_trap=r'W mianowniku średniej ważonej ZAWSZE stoi suma wag ($3 + 2 + 1 = 6$), a NIE liczba ocen (3)!'
         ),
-        make_tf_task(
-            task_id='task-20-1-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Jeśli do zestawu pięciu liczb o średniej równej $8$ dopiszemy liczbę $8$, to średnia arytmetyczna nowego zestawu nie ulegnie zmianie.',
-            correct_tf='P',
-            explanation=r'Suma pięciu liczb to $5 \cdot 8 = 40$. Po dopisaniu liczby 8 nowa suma to $40 + 8 = 48$, a liczba elementów to 6.' + '\n' +
-                        r'Nowa średnia: $\frac{48}{6} = 8$. Średnia pozostała bez zmian. Zdanie jest prawdziwe.',
-            cke_trap=r'Dopisanie wartości równej aktualnej średniej nigdy nie zmienia średniej całego zestawu.'
-        ),
         make_numeric_task(
-            task_id='task-20-1-5',
+            task_id='task-20-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Średnia arytmetyczna pięciu liczb wynosi $12$. Do tych liczb dopisano liczbę $18$. Oblicz średnią arytmetyczną otrzymanych sześciu liczb. Wpisz wynik w pole poniżej.',
             correct_val=13,
@@ -96,6 +86,22 @@ def build_topic_20():
                         r'Krok 2: Nowa suma wynosi $60 + 18 = 78$.' + '\n' +
                         r'Krok 3: Nowa średnia arytmetyczna: $\bar{x} = \frac{78}{6} = 13$.',
             cke_trap=r'Pamiętaj, że liczba danych wzrosła z 5 do 6, więc dzielimy sumę 78 przez 6, co daje 13.'
+        ),
+        make_open_task(
+            task_id='task-20-1-5',
+            source='Matura maj 2023 • Zad. 28',
+            question=r'Średnia arytmetyczna zestawu czterech liczb: $6, 10, 14, x$ jest równa $x$.' + '\n' +
+                     r'Oblicz liczbę $x$. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – ułożenie równania z definicji średniej arytmetycznej: \frac{30 + x}{4} = x.' + '\n' +
+                        r'2 pkt – poprawne rozwiązanie równania i podanie wartości x = 10.',
+            explanation=r'Krok 1: Z definicji średniej arytmetycznej czterech liczb:' + '\n' +
+                        r'$$\frac{6 + 10 + 14 + x}{4} = x$$' + '\n' +
+                        r'Krok 2: Upraszczamy licznik: $6 + 10 + 14 = 30$, stąd:' + '\n' +
+                        r'$$\frac{30 + x}{4} = x$$' + '\n' +
+                        r'Krok 3: Mnożymy obustronnie przez 4:' + '\n' +
+                        r'$$30 + x = 4x \longrightarrow 3x = 30 \longrightarrow x = 10$$',
+            cke_trap=r'Pamiętaj, że w mianowniku dzielimy przez liczbę wszystkich elementów (4), wliczając niewiadomą $x$.'
         )
     ]
     l1 = make_lesson(
@@ -103,39 +109,39 @@ def build_topic_20():
         topic_id=topic_id,
         title='Średnia arytmetyczna i średnia ważona',
         concept_essence=(
-            "Średnia arytmetyczna to suma wszystkich liczb podzielona przez ich liczbę: $\\bar{x} = \\frac{\\sum x_i}{n}$.\n\n"
-            "Kluczowa tożsamość sumy łącznej: $\\sum x_i = n \\cdot \\bar{x}$.\n\n"
-            "Średnia ważona uwzględnia wagę (istotność) poszczególnych danych: w mianowniku dzielimy przez sumę wag $\\sum w_i$."
+            "Średnia arytmetyczna to suma wszystkich liczb podzielona przez ich liczbę: $\\bar{x} = \\frac{x_1 + x_2 + \\dots + x_n}{n}$.\n\n"
+            "Kluczowa tożsamość sumy łącznej: $\\text{Suma} = n \\cdot \\bar{x}$.\n\n"
+            "Średnia ważona uwzględnia wagę (istotność) poszczególnych danych: w mianowniku dzielimy przez sumę wag: $w_1 + w_2 + \\dots + w_n$."
         ),
         matura_context='Pewniak za 1 pkt. Egzaminatorzy sprawdzają umiejętność przeliczania średniej na sumę łączną lub wyznaczania brakującej danej x.',
         core_formulas=[
             {
                 'title': 'Średnia arytmetyczna',
                 'latex': r'\bar{x} = \frac{x_1 + x_2 + \dots + x_n}{n}',
-                'description': 'Karta wzorów CKE str. 23.',
+                'description': 'Karta wzorów CKE str. 29.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 23'
+                'cke_page': 'str. 29'
             },
             {
                 'title': 'Średnia ważona',
-                'latex': r'\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}',
-                'description': 'Dzielimy przez sumę wag.',
+                'latex': r'\bar{s} = \frac{w_1 a_1 + w_2 a_2 + \dots + w_n a_n}{w_1 + w_2 + \dots + w_n}',
+                'description': 'Karta wzorów CKE str. 29. Dzielimy przez sumę wag.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 23'
+                'cke_page': 'str. 29'
             }
         ],
         worked_example={
             'problem': r'Średnia arytmetyczna liczb $2, 5, 7, x$ wynosi $6$. Wyznacz liczbę $x$.',
             'steps': [
                 r'Krok 1: Wzór na średnią: $\frac{2 + 5 + 7 + x}{4} = 6$.',
-                r'Krok 2: Mnożymy przez 4: $14 + x = 24 \implies x = 10$.'
+                r'Krok 2: Mnożymy przez 4: $14 + x = 24 \longrightarrow x = 10$.'
             ],
             'result': r'x = 10'
         },
         exam_trap=r'Dzielenie przez starą liczbę danych po dodaniu nowego elementu lub dzielenie przez liczbę ocen zamiast sumy wag w średniej ważonej.',
         visuals=v1,
         tasks=l1_tasks,
-        key_takeaway=r'Suma łączna to iloczyn liczności i średniej: $\sum x_i = n \cdot \bar{x}$. W średniej ważonej dzielimy zawsze przez sumę wag $\sum w_i$.'
+        key_takeaway=r'Suma łączna to iloczyn liczności i średniej: $\text{Suma} = n \cdot \bar{x}$. W średniej ważonej dzielimy zawsze przez sumę wag: $w_1 + w_2 + \dots + w_n$.'
     )
     lessons.append(l1)
 
@@ -201,18 +207,8 @@ def build_topic_20():
                         r'$$R = x_{\max} - x_{\min} = 11 - 2 = 9$$',
             cke_trap=r'Rozstęp to różnica $11 - 2 = 9$, a nie sama największa wartość 11.'
         ),
-        make_tf_task(
-            task_id='task-20-2-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Mediana zestawu danych jest zawsze równa jednej z liczb występujących w tym zestawie.',
-            correct_tf='F',
-            explanation=r'Dla parzystej liczby danych mediana jest średnią arytmetyczną dwóch środkowych liczb.' + '\n' +
-                        r'Na przykład dla zestawu $(2, 4)$ mediana to $\frac{2 + 4}{2} = 3$, która nie występuje w zestawie. Zdanie jest fałszywe.',
-            cke_trap=r'Tylko dla nieparzystej liczby danych mediana zawsze jest elementem zestawu.'
-        ),
         make_numeric_task(
-            task_id='task-20-2-5',
+            task_id='task-20-2-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Oblicz medianę zestawu liczb: $12, 4, 7, 9, 15, 2, 8$. Wpisz wynik w pole poniżej.',
             correct_val=8,
@@ -220,6 +216,22 @@ def build_topic_20():
                         r'$$2, 4, 7, 8, 9, 12, 15$$' + '\n' +
                         r'Liczba elementów $n = 7$ (nieparzysta). Środkowym (czwartym) elementem jest $8$. Mediana wynosi $8$.',
             cke_trap=r'Pamiętaj o wcześniejszym uporządkowaniu liczb: 2, 4, 7, 8, 9, 12, 15.'
+        ),
+        make_open_task(
+            task_id='task-20-2-5',
+            source='Matura czerwiec 2024 • Zad. 29',
+            question=r'Dany jest zestaw pięciu liczb: $3, 8, 2, 11, x$. Średnia arytmetyczna tego zestawu jest równa $6$.' + '\n' +
+                     r'Wyznacz liczbę $x$, a następnie uporządkuj wszystkie liczby i oblicz medianę tego zestawu. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – obliczenie wartości x = 6 z równania średniej arytmetycznej: \frac{3 + 8 + 2 + 11 + x}{5} = 6.' + '\n' +
+                        r'2 pkt – uporządkowanie liczb (2, 3, 6, 8, 11) i poprawne wyznaczenie mediany M_e = 6.',
+            explanation=r'Krok 1: Wyznaczamy liczbę $x$ ze wzoru na średnią arytmetyczną:' + '\n' +
+                        r'$$\frac{3 + 8 + 2 + 11 + x}{5} = 6 \longrightarrow \frac{24 + x}{5} = 6 \longrightarrow 24 + x = 30 \longrightarrow x = 6$$' + '\n' +
+                        r'Krok 2: Zapisujemy pełny zestaw liczb i porządkujemy go niemalejąco:' + '\n' +
+                        r'$$2, 3, 6, 8, 11$$' + '\n' +
+                        r'Krok 3: Ponieważ liczba elementów $n = 5$ jest nieparzysta, mediana to środkowy (trzeci) element:' + '\n' +
+                        r'$$M_e = 6$$',
+            cke_trap=r'Przed wyznaczeniem mediany bezwzględnie uporządkuj liczby po wyliczeniu $x$: $2, 3, 6, 8, 11$.'
         )
     ]
     l2 = make_lesson(
@@ -237,9 +249,9 @@ def build_topic_20():
             {
                 'title': 'Mediana (wartość środkowa)',
                 'latex': r'M_e = \frac{x_k + x_{k+1}}{2} \text{ dla parzystych } n = 2k',
-                'description': 'Karta wzorów CKE str. 23. Wymagane wcześniejsze posortowanie danych.',
+                'description': 'Karta wzorów CKE str. 30. Wymagane wcześniejsze posortowanie danych.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 23'
+                'cke_page': 'str. 30'
             }
         ],
         worked_example={
@@ -316,23 +328,24 @@ def build_topic_20():
                         r'Mniejsze odchylenie ($\sigma_A = 0{,}6 < 1{,}4$) oznacza, że wyniki są bardziej zwarte i zbliżone do średniej arytmetycznej.',
             cke_trap=r'Mniejsze odchylenie standardowe oznacza MNIEJSZY rozrzut wyników (większe skupienie wokół średniej).'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-20-3-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Jeśli wszystkie liczby w zestawie danych są takie same, to odchylenie standardowe tego zestawu wynosi $0$.',
-            correct_tf='P',
-            explanation=r'Jeśli wszystkie dane są równe $c$, to średnia wynosi $\bar{x} = c$.' + '\n' +
-                        r'Wtedy każde odchylenie $(x_i - \bar{x}) = c - c = 0$, więc wariancja i odchylenie standardowe wynoszą $0$. Zdanie jest prawdziwe.',
-            cke_trap=r'Odchylenie równe 0 oznacza brak jakiegokolwiek rozrzutu danych.'
+            question=r'Dany jest zestaw czterech liczb: $2, 4, 6, 8$. Oblicz wariancję $\sigma^2$ tego zestawu liczb. Wpisz wynik w pole poniżej.',
+            correct_val=5,
+            explanation=r'Krok 1: Średnia arytmetyczna wynosi:' + '\n' +
+                        r'$$\bar{x} = \frac{2 + 4 + 6 + 8}{4} = \frac{20}{4} = 5$$' + '\n' +
+                        r'Krok 2: Wariancja to średnia kwadratów odchyleń od średniej:' + '\n' +
+                        r'$$\sigma^2 = \frac{(2 - 5)^2 + (4 - 5)^2 + (6 - 5)^2 + (8 - 5)^2}{4} = \frac{9 + 1 + 1 + 9}{4} = \frac{20}{4} = 5$$',
+            cke_trap=r'Pamiętaj: pytanie dotyczy WARIANCJI $\sigma^2 = 5$, a nie odchylenia standardowego ($\sqrt{5}$).'
         ),
         make_open_task(
             task_id='task-20-3-5',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Oblicz odchylenie standardowe zestawu liczb: $2, 2, 8, 8$. Zapisz obliczenia.',
             points=2,
-            scoring_key=r'1 pkt - obliczenie średniej x = 5 i wariancji σ^2 = (9 + 9 + 9 + 9) / 4 = 9.' + '\n' +
-                        r'2 pkt - wyciągnięcie pierwiastka i podanie odchylenia standardowego σ = 3.',
+            scoring_key=r'1 pkt – obliczenie średniej \bar{x} = 5 i wariancji \sigma^2 = \frac{9 + 9 + 9 + 9}{4} = 9.' + '\n' +
+                        r'2 pkt – wyciągnięcie pierwiastka i podanie odchylenia standardowego \sigma = 3.',
             explanation=r'Krok 1: Średnia arytmetyczna: $\bar{x} = \frac{2 + 2 + 8 + 8}{4} = \frac{20}{4} = 5$.' + '\n' +
                         r'Krok 2: Wariancja:' + '\n' +
                         r'$$\sigma^2 = \frac{2 \cdot (2 - 5)^2 + 2 \cdot (8 - 5)^2}{4} = \frac{2 \cdot 9 + 2 \cdot 9}{4} = \frac{36}{4} = 9$$' + '\n' +
@@ -353,10 +366,10 @@ def build_topic_20():
         core_formulas=[
             {
                 'title': 'Wariancja i odchylenie standardowe',
-                'latex': r'\sigma^2 = \frac{\sum (x_i - \bar{x})^2}{n}, \quad \sigma = \sqrt{\sigma^2}',
-                'description': 'Karta wzorów CKE str. 23.',
+                'latex': r'\sigma^2 = \frac{(a_1 - \bar{a})^2 + (a_2 - \bar{a})^2 + \dots + (a_n - \bar{a})^2}{n}, \quad \sigma = \sqrt{\sigma^2}',
+                'description': 'Karta wzorów CKE str. 30.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 23'
+                'cke_page': 'str. 30'
             }
         ],
         worked_example={

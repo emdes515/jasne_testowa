@@ -38,7 +38,7 @@ def build_topic_14():
                         r'Z definicji sinusa kąta w trójkącie prostokątnym:' + '\n' +
                         r'$$\sin(\angle CAB) = \frac{a}{c} = \frac{c - 8}{c} = \frac{3}{5}$$' + '\n' +
                         r'Mnożymy równanie na krzyż:' + '\n' +
-                        r'$$5(c - 8) = 3c \implies 5c - 40 = 3c \implies 2c = 40 \implies c = 20$$' + '\n' +
+                        r'$$5(c - 8) = 3c \longrightarrow 5c - 40 = 3c \longrightarrow 2c = 40 \longrightarrow c = 20$$' + '\n' +
                         r'Przeciwprostokątna $|AB| = 20$. Poprawna odpowiedź to B.',
             cke_trap=r'Pamiętaj, że sinus to stosunek boku leżącego NAPRZECIWKO kąta ($BC$) do przeciwprostokątnej ($AB$). Pomylenie przyprostokątnych dałoby błędne równanie.'
         ),
@@ -82,28 +82,33 @@ def build_topic_14():
                         r'$$\sin\alpha = \frac{a}{c} = \frac{5x}{13x} = \frac{5}{13}$$',
             cke_trap=r'Tangens to stosunek przyprostokątnych $\frac{a}{b}$. Nie myl go z sinusem $\frac{a}{c}$, którego mianownik stanowi zawsze przeciwprostokątna.'
         ),
-        make_tf_task(
-            task_id='task-14-1-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'W każdym trójkącie prostokątnym o kątach ostrych $\alpha$ oraz $\beta$ zachodzi równość $\sin\alpha = \cos\beta$.',
-            correct_tf='P',
-            explanation=r'W trójkącie prostokątnym kąty ostre sumują się do $90^\circ$, czyli $\beta = 90^\circ - \alpha$.' + '\n' +
-                        r'Przyprostokątna leżąca naprzeciw kąta $\alpha$ jest jednocześnie przyprostokątną przyległą do kąta $\beta$.' + '\n' +
-                        r'Stąd $\sin\alpha = \frac{a}{c}$ oraz $\cos\beta = \frac{a}{c}$, więc $\sin\alpha = \cos\beta$. Zdanie jest prawdziwe.',
-            cke_trap=r'Wzory redukcyjne dla kątów dopełniających do 90° zamieniają funkcję na kofunkcję: sinus na cosinus i tangens na cotangens.'
-        ),
         make_numeric_task(
-            task_id='task-14-1-5',
+            task_id='task-14-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'W trójkącie prostokątnym przeciwprostokątna ma długość $c = 15$, a sinus jednego z kątów ostrych wynosi $\sin\alpha = 0{,}6$.' + '\n' +
                      r'Oblicz długość przyprostokątnej leżącej naprzeciw kąta $\alpha$. Wpisz wynik w pole poniżej.',
-            correct_val=9,
+            correct_val='9',
             explanation=r'Z definicji sinusa kąta w trójkącie prostokątnym:' + '\n' +
-                        r'$$\sin\alpha = \frac{a}{c} \implies a = c \cdot \sin\alpha$$' + '\n' +
+                        r'$$\sin\alpha = \frac{a}{c} \longrightarrow a = c \cdot \sin\alpha$$' + '\n' +
                         r'Podstawiamy dane liczbowe:' + '\n' +
                         r'$$a = 15 \cdot 0{,}6 = 9$$',
             cke_trap=r'Upewnij się, że mnożysz przeciwprostokątną przez sinus, a nie dzielisz: $a = c \cdot \sin\alpha$.'
+        ),
+        make_open_task(
+            task_id='task-14-1-5',
+            source='Informator CKE • Zad. 41',
+            question=r'W trójkącie prostokątnym $ABC$ przeciwprostokątna $AB$ ma długość $10$, a cosinus kąta ostrego $CAB$ jest równy $\cos(\angle CAB) = \frac{\sqrt{5}}{5}$.' + '\n' +
+                     r'Oblicz pole trójkąta $ABC$. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – obliczenie długości przyprostokątnych trójkąta: $|AC| = 10 \cdot \frac{\sqrt{5}}{5} = 2\sqrt{5}$ oraz $|BC| = \sqrt{10^2 - (2\sqrt{5})^2} = \sqrt{80} = 4\sqrt{5}$.' + '\n' +
+                        r'2 pkt – poprawne obliczenie pola trójkąta: $P = \frac{1}{2} \cdot 2\sqrt{5} \cdot 4\sqrt{5} = 20$.',
+            explanation=r'Krok 1: Z definicji cosinusa w trójkącie prostokątnym:' + '\n' +
+                        r'$$\cos(\angle CAB) = \frac{|AC|}{|AB|} \longrightarrow |AC| = 10 \cdot \frac{\sqrt{5}}{5} = 2\sqrt{5}$$' + '\n' +
+                        r'Krok 2: Z twierdzenia Pitagorasa wyznaczamy drugą przyprostokątną $|BC|$:' + '\n' +
+                        r'$$|BC| = \sqrt{|AB|^2 - |AC|^2} = \sqrt{100 - 20} = \sqrt{80} = 4\sqrt{5}$$' + '\n' +
+                        r'Krok 3: Obliczamy pole trójkąta prostokątnego:' + '\n' +
+                        r'$$P = \frac{1}{2} \cdot |AC| \cdot |BC| = \frac{1}{2} \cdot 2\sqrt{5} \cdot 4\sqrt{5} = 20.$$',
+            cke_trap=r'Pamiętaj, że przeciwprostokątna to bok $AB = 10$, a przyprostokątna przyległa do kąta to $AC$. Pole to połowa iloczynu przyprostokątnych!'
         )
     ]
     l1 = make_lesson(
@@ -121,9 +126,9 @@ def build_topic_14():
             {
                 'title': 'Definicje funkcji trygonometrycznych',
                 'latex': r'\sin\alpha = \frac{a}{c}, \quad \cos\alpha = \frac{b}{c}, \quad \operatorname{tg}\alpha = \frac{a}{b}',
-                'description': 'Karta wzorów CKE str. 14. a - naprzeciw kąta, b - przy kącie, c - przeciwprostokątna.',
+                'description': 'Karta wzorów CKE str. 10 (lub str. 12 dla tożsamości). a - naprzeciw kąta, b - przy kącie, c - przeciwprostokątna.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 14'
+                'cke_page': 'str. 10'
             }
         ],
         worked_example={
@@ -200,32 +205,37 @@ def build_topic_14():
             ],
             correct_id='A',
             explanation=r'Stosujemy jedynkę trygonometryczną $\sin^2\alpha + \cos^2\alpha = 1$:' + '\n' +
-                        r'$$\left(\frac{\sqrt{5}}{3}\right)^2 + \cos^2\alpha = 1 \implies \frac{5}{9} + \cos^2\alpha = 1$$' + '\n' +
+                        r'$$\left(\frac{\sqrt{5}}{3}\right)^2 + \cos^2\alpha = 1 \longrightarrow \frac{5}{9} + \cos^2\alpha = 1$$' + '\n' +
                         r'$$\cos^2\alpha = 1 - \frac{5}{9} = \frac{4}{9}$$' + '\n' +
                         r'Dla kąta ostrego $\cos\alpha > 0$, więc $\cos\alpha = \sqrt{\frac{4}{9}} = \frac{2}{3}$.',
-            cke_trap=r'Pamiętaj o spierwiastkowaniu wyniku: $\cos^2\alpha = \frac{4}{9} \implies \cos\alpha = \frac{2}{3}$.'
-        ),
-        make_tf_task(
-            task_id='task-14-2-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Wartość wyrażenia $\sin 30^\circ \cdot \cos 60^\circ + \operatorname{tg} 45^\circ$ jest równa $1{,}25$.',
-            correct_tf='P',
-            explanation=r'Odczytujemy z tabeli wartości CKE: $\sin 30^\circ = \frac{1}{2}$, $\cos 60^\circ = \frac{1}{2}$ oraz $\operatorname{tg} 45^\circ = 1$.' + '\n' +
-                        r'Obliczamy wartość:' + '\n' +
-                        r'$$\frac{1}{2} \cdot \frac{1}{2} + 1 = \frac{1}{4} + 1 = 1{,}25$$' + '\n' +
-                        r'Zdanie jest prawdziwe.',
-            cke_trap=r'Pamiętaj o kolejności działań: najpierw mnożenie ($\frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}$), a dopiero potem dodawanie do 1.'
+            cke_trap=r'Pamiętaj o spierwiastkowaniu wyniku: $\cos^2\alpha = \frac{4}{9} \longrightarrow \cos\alpha = \frac{2}{3}$.'
         ),
         make_numeric_task(
-            task_id='task-14-2-5',
+            task_id='task-14-2-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Oblicz wartość wyrażenia $(\sin 45^\circ + \cos 45^\circ)^2$. Wpisz wynik w pole poniżej.',
-            correct_val=2,
+            correct_val='2',
             explanation=r'Wartości to $\sin 45^\circ = \frac{\sqrt{2}}{2}$ oraz $\cos 45^\circ = \frac{\sqrt{2}}{2}$.' + '\n' +
                         r'Suma w nawiasie wynosi $\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} = \sqrt{2}$.' + '\n' +
                         r'Podnosimy do kwadratu: $(\sqrt{2})^2 = 2$.',
             cke_trap=r'Możesz też zastosować wzór skróconego mnożenia: $\sin^2 45^\circ + 2\sin 45^\circ\cos 45^\circ + \cos^2 45^\circ = 1 + 2 \cdot \frac{1}{2} = 2$.'
+        ),
+        make_open_task(
+            task_id='task-14-2-5',
+            source='Matura maj 2023 • Zad. 21',
+            question=r'Kąt $\alpha$ jest ostry oraz $\sin\alpha + \cos\alpha = \frac{7}{5}$.' + '\n' +
+                     r'Oblicz wartość iloczynu $\sin\alpha \cdot \cos\alpha$. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – podniesienie równości $\sin\alpha + \cos\alpha = \frac{7}{5}$ obustronnie do kwadratu i zastosowanie jedynki trygonometrycznej: $1 + 2\sin\alpha\cos\alpha = \frac{49}{25}$.' + '\n' +
+                        r'2 pkt – poprawne wyznaczenie wartości iloczynu: $\sin\alpha\cos\alpha = \frac{12}{25}$.',
+            explanation=r'Krok 1: Podnosimy obustronnie do kwadratu podaną sumę:' + '\n' +
+                        r'$$(\sin\alpha + \cos\alpha)^2 = \left(\frac{7}{5}\right)^2$$' + '\n' +
+                        r'$$\sin^2\alpha + 2\sin\alpha\cos\alpha + \cos^2\alpha = \frac{49}{25}$$' + '\n' +
+                        r'Krok 2: Korzystamy z jedynki trygonometrycznej $\sin^2\alpha + \cos^2\alpha = 1$:' + '\n' +
+                        r'$$1 + 2\sin\alpha\cos\alpha = \frac{49}{25}$$' + '\n' +
+                        r'$$2\sin\alpha\cos\alpha = \frac{49}{25} - 1 = \frac{24}{25}$$' + '\n' +
+                        r'$$\sin\alpha\cos\alpha = \frac{12}{25}.$$',
+            cke_trap=r'Podnosząc sumę do kwadratu, stosujemy wzór skróconego mnożenia: $(\sin\alpha + \cos\alpha)^2 = \sin^2\alpha + 2\sin\alpha\cos\alpha + \cos^2\alpha$, a NIE $\sin^2\alpha + \cos^2\alpha$!'
         )
     ]
     l2 = make_lesson(
@@ -243,16 +253,16 @@ def build_topic_14():
             {
                 'title': 'Jedynka trygonometryczna',
                 'latex': r'\sin^2\alpha + \cos^2\alpha = 1',
-                'description': 'Karta wzorów CKE str. 14.',
+                'description': 'Karta wzorów CKE str. 12. Podstawa tożsamości trygonometrycznych.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 14'
+                'cke_page': 'str. 12'
             },
             {
                 'title': 'Tangens',
                 'latex': r'\operatorname{tg}\alpha = \frac{\sin\alpha}{\cos\alpha}',
-                'description': 'Dla kątów, gdzie cosinus jest różny od zera.',
+                'description': 'Karta wzorów CKE str. 12. Dla kątów, gdzie cosinus jest różny od zera.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 14'
+                'cke_page': 'str. 12'
             }
         ],
         worked_example={
@@ -333,15 +343,16 @@ def build_topic_14():
                         r'$$c^2 = 4^2 + 6^2 - 2 \cdot 4 \cdot 6 \cdot \frac{1}{2} = 16 + 36 - 24 = 28$$',
             cke_trap=r'Pamiętaj, że $\cos 60^\circ = \frac{1}{2}$, co skraca dwójkę z wzoru: $2 \cdot 4 \cdot 6 \cdot \frac{1}{2} = 24$.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-14-3-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Dla każdego kąta rozwartego $\alpha \in (90^\circ, 180^\circ)$ iloczyn $\sin\alpha \cdot \cos\alpha$ jest liczbą ujemną.',
-            correct_tf='P',
-            explanation=r'W drugiej ćwiartce ($90^\circ < \alpha < 180^\circ$) sinus jest dodatni ($\sin\alpha > 0$), a cosinus ujemny ($\cos\alpha < 0$).' + '\n' +
-                        r'Iloczyn liczby dodatniej i ujemnej jest liczbą ujemną. Zdanie jest prawdziwe.',
-            cke_trap=r'Wierszyk maturalny: w pierwszej wszystkie są dodatnie, w drugiej tylko sinus, w trzeciej tangens i cotangens, a w czwartej cosinus.'
+            question=r'W trójkącie boki mają długości $a = 3$ oraz $b = 8$, a kąt między nimi ma miarę $60^\circ$.' + '\n' +
+                     r'Oblicz długość trzeciego boku $c$. Wpisz liczbę całkowitą.',
+            correct_val='7',
+            explanation=r'Z twierdzenia cosinusów:' + '\n' +
+                        r'$$c^2 = a^2 + b^2 - 2ab\cos 60^\circ = 3^2 + 8^2 - 2 \cdot 3 \cdot 8 \cdot \frac{1}{2} = 9 + 64 - 24 = 49$$' + '\n' +
+                        r'Ponieważ $c > 0$, długość boku wynosi $c = \sqrt{49} = 7$.',
+            cke_trap=r'Pamiętaj, że $\cos 60^\circ = \frac{1}{2}$, co redukuje dwójkę z wzoru: $2 \cdot 3 \cdot 8 \cdot \frac{1}{2} = 24$.'
         ),
         make_open_task(
             task_id='task-14-3-5',
@@ -372,16 +383,16 @@ def build_topic_14():
             {
                 'title': 'Twierdzenie cosinusów',
                 'latex': r'c^2 = a^2 + b^2 - 2ab\cos\gamma',
-                'description': 'Karta wzorów CKE str. 15.',
+                'description': 'Karta wzorów CKE str. 12–13 (tabela wartości i wzory redukcyjne).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 15'
+                'cke_page': 'str. 12–13'
             },
             {
                 'title': 'Wzory redukcyjne',
                 'latex': r'\sin(180^\circ - \alpha) = \sin\alpha, \quad \cos(180^\circ - \alpha) = -\cos\alpha',
-                'description': 'Karta wzorów CKE str. 15.',
+                'description': 'Karta wzorów CKE str. 12–13 (tabela wartości i wzory redukcyjne).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 15'
+                'cke_page': 'str. 12–13'
             }
         ],
         worked_example={
@@ -461,21 +472,19 @@ def build_topic_14():
             explanation=r'Podstawiamy dane do wzoru na pole trójkąta:' + '\n' +
                         r'$$P = \frac{1}{2} \cdot 6 \cdot 8 \cdot \sin\gamma = 24\sin\gamma$$' + '\n' +
                         r'Przyrównujemy do podanego pola:' + '\n' +
-                        r'$$24\sin\gamma = 12\sqrt{3} \implies \sin\gamma = \frac{12\sqrt{3}}{24} = \frac{\sqrt{3}}{2}$$' + '\n' +
-                        r'Dla kąta ostrego $\sin\gamma = \frac{\sqrt{3}}{2} \implies \gamma = 60^\circ$.',
+                        r'$$24\sin\gamma = 12\sqrt{3} \longrightarrow \sin\gamma = \frac{12\sqrt{3}}{24} = \frac{\sqrt{3}}{2}$$' + '\n' +
+                        r'Dla kąta ostrego $\sin\gamma = \frac{\sqrt{3}}{2} \longrightarrow \gamma = 60^\circ$.',
             cke_trap=r'Pamiętaj, że $\sin 60^\circ = \frac{\sqrt{3}}{2}$. Nie myl go z $\sin 30^\circ = \frac{1}{2}$.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-14-4-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Dwa trójkąty o takich samych długościach boków $a$ i $b$ mają równe pola, jeśli kąt między tymi bokami w pierwszym trójkącie wynosi $45^\circ$, a w drugim $135^\circ$.',
-            correct_tf='P',
-            explanation=r'Pole pierwszego trójkąta to $P_1 = \frac{1}{2}ab\sin 45^\circ$.' + '\n' +
-                        r'Pole drugiego trójkąta to $P_2 = \frac{1}{2}ab\sin 135^\circ$.' + '\n' +
-                        r'Ze wzoru redukcyjnego: $\sin 135^\circ = \sin(180^\circ - 45^\circ) = \sin 45^\circ$.' + '\n' +
-                        r'Ponieważ wartości sinusów są identyczne, pola obu trójkątów są równe. Zdanie jest prawdziwe.',
-            cke_trap=r'Sinusy kątów dopełniających się do 180° są równe: $\sin(180^\circ - \alpha) = \sin\alpha$. Z tego powodu trójkąty z kątem ostrym i rozwartym o tej samej sumie mają równe pola.'
+            question=r'Boki trójkąta mają długości $8$ i $10$, a kąt zawarty między nimi ma miarę $30^\circ$.' + '\n' +
+                     r'Oblicz pole tego trójkąta. Wpisz samą liczbę całkowitą.',
+            correct_val='20',
+            explanation=r'Stosujemy wzór na pole trójkąta z sinusem kąta:' + '\n' +
+                        r'$$P = \frac{1}{2}ab\sin 30^\circ = \frac{1}{2} \cdot 8 \cdot 10 \cdot \frac{1}{2} = 40 \cdot \frac{1}{2} = 20.$$',
+            cke_trap=r'Pamiętaj o współczynniku $\frac{1}{2}$ z przodu wzoru na pole trójkąta. Pominięcie $\frac{1}{2}$ daje pole równoległoboku (40).'
         ),
         make_open_task(
             task_id='task-14-4-5',
@@ -505,16 +514,16 @@ def build_topic_14():
             {
                 'title': 'Pole trójkąta z sinusem',
                 'latex': r'P = \frac{1}{2}ab\sin\gamma',
-                'description': 'Karta wzorów CKE str. 17.',
+                'description': 'Karta wzorów CKE str. 15 (pole trójkąta z sinusem).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 17'
+                'cke_page': 'str. 15'
             },
             {
                 'title': 'Pole równoległoboku',
                 'latex': r'P = ab\sin\alpha',
-                'description': 'Karta wzorów CKE str. 18.',
+                'description': 'Karta wzorów CKE str. 19–20 (pole równoległoboku i rombu).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 18'
+                'cke_page': 'str. 19–20'
             }
         ],
         worked_example={

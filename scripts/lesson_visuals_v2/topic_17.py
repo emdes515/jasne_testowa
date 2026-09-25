@@ -41,10 +41,10 @@ def get_topic_17_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie długości i środka odcinka krok po kroku",
-            badge=r"A(-4, 7), \; B(2, -1) \implies S = \left(\frac{-4 + 2}{2}, \frac{7 + (-1)}{2}\right) = (-1, 3), \quad |AB| = \sqrt{6^2 + (-8)^2} = 10",
+            badge=r"A(-4, 7), \; B(2, -1) \longrightarrow S = \left(\frac{-4 + 2}{2}, \frac{7 + (-1)}{2}\right) = (-1, 3), \quad |AB| = \sqrt{6^2 + (-8)^2} = 10",
             caption="Zadanie maturalne CKE: podstawiasz współrzędne końców odcinka do wzorów z Karty Wzorów CKE.",
             steps=[
-                {'num': 1, 'title': 'Oblicz współrzędne środka S', 'desc': r'$x_S = \frac{-4 + 2}{2} = -1, \quad y_S = \frac{7 - 1}{2} = 3 \implies S(-1, 3)$.', 'color': C_SKY},
+                {'num': 1, 'title': 'Oblicz współrzędne środka S', 'desc': r'$x_S = \frac{-4 + 2}{2} = -1, \quad y_S = \frac{7 - 1}{2} = 3 \longrightarrow S(-1, 3)$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Oblicz różnice współrzędnych', 'desc': r'$x_B - x_A = 2 - (-4) = 6, \quad y_B - y_A = -1 - 7 = -8$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Oblicz długość |AB|', 'desc': r'$|AB| = \sqrt{6^2 + (-8)^2} = \sqrt{36 + 64} = \sqrt{100} = 10$.', 'color': C_SUCCESS}
             ],
@@ -83,18 +83,18 @@ def get_topic_17_visuals(l_idx):
             ],
             metrics=[
                 {'label': 'Równoległość (||)', 'value': r'$a_1 = a_2$ (ten sam kąt nachylenia)', 'color': C_SKY},
-                {'label': 'Prostopadłość (⊥)', 'value': r'$a_1 \cdot a_2 = -1 \implies a_2 = -\frac{1}{a_1}$', 'color': C_SUCCESS},
+                {'label': 'Prostopadłość (⊥)', 'value': r'$a_1 \cdot a_2 = -1 \longrightarrow a_2 = -\frac{1}{a_1}$', 'color': C_SUCCESS},
                 {'label': 'Wyraz wolny b', 'value': r'Wyznaczamy podstawiając punkt $(x_0, y_0)$', 'color': C_PRIMARY}
             ]
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie prostej prostopadłej przechodzącej przez punkt krok po kroku",
-            badge=r"k: y = 2x - 5, \quad P(3, 4) \implies a_{\perp} = -\frac{1}{2} \implies 4 = -\frac{1}{2} \cdot 3 + b \implies b = 5{,}5",
+            badge=r"k: y = 2x - 5, \quad P(3, 4) \longrightarrow a_{\perp} = -\frac{1}{2} \longrightarrow 4 = -\frac{1}{2} \cdot 3 + b \longrightarrow b = 5{,}5",
             caption="Odwracasz współczynnik kierunkowy ze zmianą znaku, a następnie obliczasz wyraz wolny b podstawiając współrzędne punktu P.",
             steps=[
-                {'num': 1, 'title': 'Wyznacz współczynnik prostopadłej', 'desc': r'$a_1 = 2 \implies a_{\perp} = -\frac{1}{a_1} = -\frac{1}{2}$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Podstaw współrzędne punktu P(3, 4)', 'desc': r'$y = ax + b \implies 4 = -\frac{1}{2} \cdot 3 + b \implies 4 = -1{,}5 + b$.', 'color': C_PRIMARY},
-                {'num': 3, 'title': 'Zapisz ostateczne równanie', 'desc': r'$b = 4 + 1{,}5 = 5{,}5 = \frac{11}{2} \implies y = -\frac{1}{2}x + \frac{11}{2}$.', 'color': C_SUCCESS}
+                {'num': 1, 'title': 'Wyznacz współczynnik prostopadłej', 'desc': r'$a_1 = 2 \longrightarrow a_{\perp} = -\frac{1}{a_1} = -\frac{1}{2}$.', 'color': C_SKY},
+                {'num': 2, 'title': 'Podstaw współrzędne punktu P(3, 4)', 'desc': r'$y = ax + b \longrightarrow 4 = -\frac{1}{2} \cdot 3 + b \longrightarrow 4 = -1{,}5 + b$.', 'color': C_PRIMARY},
+                {'num': 3, 'title': 'Zapisz ostateczne równanie', 'desc': r'$b = 4 + 1{,}5 = 5{,}5 = \frac{11}{2} \longrightarrow y = -\frac{1}{2}x + \frac{11}{2}$.', 'color': C_SUCCESS}
             ],
             metrics=[
                 {'label': 'Oryginalne a', 'value': '$a_1 = 2$', 'color': C_SKY},
@@ -143,12 +143,12 @@ def get_topic_17_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Odczytywanie środka i promienia okręgu krok po kroku",
-            badge=r"(x + 3)^2 + (y - 5)^2 = 16 \implies a = -3, \quad b = 5 \implies S(-3, 5), \quad r = \sqrt{16} = 4",
+            badge=r"(x + 3)^2 + (y - 5)^2 = 16 \longrightarrow a = -3, \quad b = 5 \longrightarrow S(-3, 5), \quad r = \sqrt{16} = 4",
             caption="Wypisujesz środek S odwracając znaki z nawiasów, a promień r wyznaczasz pierwiastkując liczbę po prawej stronie.",
             steps=[
                 {'num': 1, 'title': 'Zidentyfikuj a ze zmiany znaku', 'desc': r'W pierwszym nawiasie jest $(x + 3) = (x - (-3))$, stąd $a = -3$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Zidentyfikuj b ze zmiany znaku', 'desc': r'W drugim nawiasie jest $(y - 5)$, stąd $b = +5$. Środek to $S(-3, 5)$.', 'color': C_PRIMARY},
-                {'num': 3, 'title': 'Oblicz promień r', 'desc': r'Po prawej stronie stoi $r^2 = 16 \implies r = \sqrt{16} = 4$.', 'color': C_SUCCESS}
+                {'num': 3, 'title': 'Oblicz promień r', 'desc': r'Po prawej stronie stoi $r^2 = 16 \longrightarrow r = \sqrt{16} = 4$.', 'color': C_SUCCESS}
             ],
             metrics=[
                 {'label': 'Współrzędna a', 'value': '$a = -3$', 'color': C_SKY},
@@ -158,7 +158,7 @@ def get_topic_17_visuals(l_idx):
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Mylenie r² z r oraz odwracanie znaków współrzędnych środka",
-            badge=r"(x + 2)^2 + (y - 7)^2 = 25 \implies S(-2, 7), \quad r = 5 \neq 25",
+            badge=r"(x + 2)^2 + (y - 7)^2 = 25 \longrightarrow S(-2, 7), \quad r = 5 \neq 25",
             caption="Najczęstsze błędy maturalne: podanie r = 25 zamiast r = 5 oraz przepisanie znaków z nawiasów (2, -7) zamiast ich odwrócenia (-2, 7).",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD 1', 'value': r'Przyjęcie $r = 25$ zamiast wyciągnięcia pierwiastka $\sqrt{25} = 5$', 'color': C_DANGER},

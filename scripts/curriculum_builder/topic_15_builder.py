@@ -37,7 +37,7 @@ def build_topic_15():
             explanation=r'Wzór na pole trójkąta równobocznego o boku $a$:' + '\n' +
                         r'$$P = \frac{a^2\sqrt{3}}{4}$$' + '\n' +
                         r'Przyrównujemy do danej wartości pola:' + '\n' +
-                        r'$$\frac{a^2\sqrt{3}}{4} = 16\sqrt{3} \implies a^2 = 16 \cdot 4 = 64$$' + '\n' +
+                        r'$$\frac{a^2\sqrt{3}}{4} = 16\sqrt{3} \longrightarrow a^2 = 16 \cdot 4 = 64$$' + '\n' +
                         r'Ponieważ $a > 0$, otrzymujemy $a = \sqrt{64} = 8$. Poprawna odpowiedź to B.',
             cke_trap=r'Pamiętaj, że we wzorze na pole w mianowniku stoi 4, a nie 2! Pomnożenie przez 2 dałoby $a^2 = 32$, co jest błędem.'
         ),
@@ -55,7 +55,7 @@ def build_topic_15():
             ],
             correct_id='A',
             explanation=r'Wzór na wysokość trójkąta równobocznego: $h = \frac{a\sqrt{3}}{2}$.' + '\n' +
-                        r'$$\frac{a\sqrt{3}}{2} = 6\sqrt{3} \implies a = 12$$' + '\n' +
+                        r'$$\frac{a\sqrt{3}}{2} = 6\sqrt{3} \longrightarrow a = 12$$' + '\n' +
                         r'Obliczamy pole trójkąta równobocznego:' + '\n' +
                         r'$$P = \frac{a^2\sqrt{3}}{4} = \frac{12^2\sqrt{3}}{4} = \frac{144\sqrt{3}}{4} = 36\sqrt{3}$$',
             cke_trap=r'Nie myl boku z wysokością. Najpierw wyznacz bok $a = 12$, a dopiero potem pole.'
@@ -75,29 +75,37 @@ def build_topic_15():
             correct_id='A',
             explanation=r'W każdym trójkącie suma miar kątów wynosi $180^\circ$.' + '\n' +
                         r'W trójkącie równoramiennym kąty przy podstawie są równe: $\alpha = \beta$.' + '\n' +
-                        r'$$2\alpha + 100^\circ = 180^\circ \implies 2\alpha = 80^\circ \implies \alpha = 40^\circ$$',
+                        r'$$2\alpha + 100^\circ = 180^\circ \longrightarrow 2\alpha = 80^\circ \longrightarrow \alpha = 40^\circ$$',
             cke_trap=r'Uważaj, który kąt podano w treści: kąt MIĘDZY ramionami ($100^\circ$) czy kąt przy podstawie.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-15-1-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'W każdym trójkącie prostokątnym promień okręgu opisanego jest równy połowie długości przeciwprostokątnej.',
-            correct_tf='P',
-            explanation=r'Środek okręgu opisanego na trójkącie prostokątnym leży dokładnie w środku przeciwprostokątnej.' + '\n' +
-                        r'Przeciwprostokątna jest średnicą tego okręgu ($d = 2R$), więc promień $R = \frac{c}{2}$. Zdanie jest prawdziwe.',
-            cke_trap=r'Twierdzenie Talesa o kącie wpisanym opartym na średnicy gwarantuje, że przeciwprostokątna trójkąta prostokątnego jest średnicą okręgu opisanego.'
-        ),
-        make_numeric_task(
-            task_id='task-15-1-5',
-            source='Trening JASNE • Wzorzec CKE',
             question=r'W trójkącie prostokątnym przyprostokątne mają długości $6$ oraz $8$. Oblicz promień okręgu opisanego na tym trójkącie. Wpisz wynik w pole poniżej.',
-            correct_val=5,
+            correct_val='5',
             explanation=r'Z twierdzenia Pitagorasa obliczamy przeciwprostokątną $c$:' + '\n' +
                         r'$$c = \sqrt{6^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10$$' + '\n' +
                         r'Promień okręgu opisanego to połowa przeciwprostokątnej:' + '\n' +
                         r'$$R = \frac{c}{2} = \frac{10}{2} = 5$$',
             cke_trap=r'Nie zapomnij podzielić przeciwprostokątnej przez 2: $R = \frac{c}{2} = 5$. Wynik 10 to średnica, a nie promień!'
+        ),
+        make_open_task(
+            task_id='task-15-1-5',
+            source='Informator CKE • Zad. 43',
+            question=r'W trójkącie równoramiennym $ABC$ podstawa $AB$ ma długość $12$, a ramiona mają długość $|AC| = |BC| = 10$.' + '\n' +
+                     r'Oblicz pole tego trójkąta oraz promień okręgu wpisanego w ten trójkąt. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – obliczenie wysokości opuszczonej na podstawę: $h = \sqrt{10^2 - 6^2} = 8$ oraz pola trójkąta: $P = \frac{1}{2} \cdot 12 \cdot 8 = 48$.' + '\n' +
+                        r'2 pkt – wyznaczenie promienia okręgu wpisanego ze wzoru $P = p \cdot r$: $r = \frac{48}{16} = 3$.',
+            explanation=r'Krok 1: Wysokość $h$ opuszczona na podstawę $AB$ dzieli ją na połowy: $6$ i $6$.' + '\n' +
+                        r'Z twierdzenia Pitagorasa:' + '\n' +
+                        r'$$h = \sqrt{10^2 - 6^2} = \sqrt{100 - 36} = \sqrt{64} = 8$$' + '\n' +
+                        r'Pole trójkąta wynosi:' + '\n' +
+                        r'$$P = \frac{1}{2} \cdot 12 \cdot 8 = 48$$' + '\n' +
+                        r'Krok 2: Połowa obwodu trójkąta wynosi $p = \frac{12 + 10 + 10}{2} = 16$.' + '\n' +
+                        r'Ze wzoru $P = p \cdot r$ wyznaczamy promień okręgu wpisanego:' + '\n' +
+                        r'$$r = \frac{P}{p} = \frac{48}{16} = 3.$$',
+            cke_trap=r'W trójkącie równoramiennym wysokość dzieli podstawę na dwie równe części ($12 / 2 = 6$). Nie używaj całej podstawy $12$ w twierdzeniu Pitagorasa!'
         )
     ]
     l1 = make_lesson(
@@ -114,16 +122,16 @@ def build_topic_15():
             {
                 'title': 'Wysokość trójkąta równobocznego',
                 'latex': r'h = \frac{a\sqrt{3}}{2}',
-                'description': 'Karta wzorów CKE str. 16.',
+                'description': 'Karta wzorów CKE str. 15. a - długość boku trójkąta.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 16'
+                'cke_page': 'str. 15'
             },
             {
                 'title': 'Pole trójkąta równobocznego',
                 'latex': r'P = \frac{a^2\sqrt{3}}{4}',
-                'description': 'Karta wzorów CKE str. 16.',
+                'description': 'Karta wzorów CKE str. 15. Wzór na pole trójkąta równobocznego.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 16'
+                'cke_page': 'str. 15'
             }
         ],
         worked_example={
@@ -163,7 +171,7 @@ def build_topic_15():
             explanation=r'Z twierdzenia Talesa dla odcinków na ramionach kąta:' + '\n' +
                         r'$$\frac{|AD|}{|DB|} = \frac{|AE|}{|EC|}$$' + '\n' +
                         r'Podstawiamy wartości: $\frac{4}{6} = \frac{6}{|EC|}$.' + '\n' +
-                        r'Mnożymy na krzyż: $4 \cdot |EC| = 36 \implies |EC| = 9$.' + '\n' +
+                        r'Mnożymy na krzyż: $4 \cdot |EC| = 36 \longrightarrow |EC| = 9$.' + '\n' +
                         r'Poprawna odpowiedź to A.',
             cke_trap=r'Dla odcinków na ramionach stosunek górnego do dolnego kawałka jest równy: $\frac{4}{6} = \frac{6}{|EC|}$. Nie myl z całym ramieniem.'
         ),
@@ -184,7 +192,7 @@ def build_topic_15():
             explanation=r'Trójkąty $CDE$ i $CAB$ są podobne. Stosunek podstaw odpowiada stosunkowi CAŁYCH boków:' + '\n' +
                         r'$$|CA| = |CD| + |DA| = 3 + 6 = 9$$' + '\n' +
                         r'Układamy proporcję:' + '\n' +
-                        r'$$\frac{|DE|}{|AB|} = \frac{|CD|}{|CA|} \implies \frac{4}{|AB|} = \frac{3}{9} = \frac{1}{3}$$' + '\n' +
+                        r'$$\frac{|DE|}{|AB|} = \frac{|CD|}{|CA|} \longrightarrow \frac{4}{|AB|} = \frac{3}{9} = \frac{1}{3}$$' + '\n' +
                         r'$$|AB| = 4 \cdot 3 = 12$$',
             cke_trap=r'Kluczowa pułapka: proporcja podstaw wymaga CAŁEGO boku $|CA| = 3 + 6 = 9$, a nie tylko dolnego fragmentu $|DA| = 6$! Błąd dałby $|AB| = 8$.'
         ),
@@ -202,31 +210,39 @@ def build_topic_15():
             ],
             correct_id='A',
             explanation=r'Z twierdzenia Talesa:' + '\n' +
-                        r'$$\frac{|OA|}{|AB|} = \frac{|OC|}{|CD|} \implies \frac{2}{x} = \frac{3}{6} = \frac{1}{2}$$' + '\n' +
+                        r'$$\frac{|OA|}{|AB|} = \frac{|OC|}{|CD|} \longrightarrow \frac{2}{x} = \frac{3}{6} = \frac{1}{2}$$' + '\n' +
                         r'$$x = 2 \cdot 2 = 4$$',
             cke_trap=r'Upewnij się, że zachowujesz tę samą kolejność odcinków w obu ułamkach.'
         ),
-        make_tf_task(
-            task_id='task-15-2-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Odcinek łączący środki dwóch ramion dowolnego trójkąta jest równoległy do trzeciego boku i ma długość równą połowie tego boku.',
-            correct_tf='P',
-            explanation=r'Z twierdzenia o linii środkowej trójkąta (wniosek z twierdzenia Talesa):' + '\n' +
-                        r'Skala podobieństwa małego trójkąta do dużego wynosi $k = \frac{1}{2}$. Odcinek jest równoległy do podstawy i ma długość $\frac{1}{2}$ podstawy. Zdanie jest prawdziwe.',
-            cke_trap=r'Linia środkowa trójkąta dzieli jego pole w stosunku $1 : 4$ (pole małego trójkąta to $\frac{1}{4}$ pola dużego).'
-        ),
         make_numeric_task(
-            task_id='task-15-2-5',
+            task_id='task-15-2-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'W trójkącie $ABC$ odcinek równoległy do boku $AB$ o długości $10$ dzieli bok $AC$ w stosunku $2 : 3$ (licząc od wierzchołka $C$).' + '\n' +
                      r'Oblicz długość tego odcinka równoległego. Wpisz wynik w pole poniżej.',
-            correct_val=4,
+            correct_val='4',
             explanation=r'Stosunek $|CD| : |DA| = 2 : 3$. Cały bok $|CA| = 2x + 3x = 5x$.' + '\n' +
                         r'Stosunek małego boku do całego boku wynosi $\frac{2x}{5x} = \frac{2}{5}$.' + '\n' +
                         r'Długość odcinka równoległego $d$:' + '\n' +
-                        r'$$\frac{d}{10} = \frac{2}{5} \implies d = 10 \cdot \frac{2}{5} = 4$$',
+                        r'$$\frac{d}{10} = \frac{2}{5} \longrightarrow d = 10 \cdot \frac{2}{5} = 4$$',
             cke_trap=r'Nie dziel $10$ przez $3$ ani przez $2$! Proporcja wymaga stosunku części do CAŁOŚCI, czyli $\frac{2}{2 + 3} = \frac{2}{5}$.'
+        ),
+        make_open_task(
+            task_id='task-15-2-5',
+            source='Trening JASNE • Wzorzec CKE',
+            question=r'W trójkącie $ABC$ na boku $AC$ wybrano punkt $D$, a na boku $BC$ punkt $E$ tak, że odcinek $DE$ jest równoległy do boku $AB$.' + '\n' +
+                     r'Wiadomo, że $|CD| = 4$, $|DA| = 6$ oraz pole trójkąta $CDE$ wynosi $16$.' + '\n' +
+                     r'Oblicz pole czworokąta $ABED$. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie skali podobieństwa trójkątów $CDE$ i $CAB$: $k = \frac{|CD|}{|CA|} = \frac{4}{10} = \frac{2}{5}$ oraz skali pól: $k^2 = \frac{4}{25}$.' + '\n' +
+                        r'2 pkt – obliczenie pola trójkąta $CAB$: $P_{CAB} = 16 \cdot \frac{25}{4} = 100$ i pola czworokąta: $P_{ABED} = 100 - 16 = 84$.',
+            explanation=r'Krok 1: Ponieważ $DE \parallel AB$, trójkąt $CDE$ jest podobny do trójkąta $CAB$.' + '\n' +
+                  r'Długość całego boku $|CA| = |CD| + |DA| = 4 + 6 = 10$.' + '\n' +
+                  r'Skala podobieństwa trójkąta $CDE$ do $CAB$ wynosi $k = \frac{4}{10} = \frac{2}{5}$.' + '\n' +
+                  r'Krok 2: Stosunek pól trójkątów wynosi $k^2 = \left(\frac{2}{5}\right)^2 = \frac{4}{25}$.' + '\n' +
+                  r'$$P_{CAB} = P_{CDE} \cdot \frac{25}{4} = 16 \cdot \frac{25}{4} = 100$$' + '\n' +
+                  r'Krok 3: Pole czworokąta $ABED$ to różnica pól:' + '\n' +
+                  r'$$P_{ABED} = P_{CAB} - P_{CDE} = 100 - 16 = 84.$$',
+            cke_trap=r'Pamiętaj, że czworokąt $ABED$ to nie trójkąt! Jego pole obliczamy odejmując pole małego trójkąta od pola dużego trójkąta.'
         )
     ]
     l2 = make_lesson(
@@ -243,9 +259,9 @@ def build_topic_15():
             {
                 'title': 'Twierdzenie Talesa',
                 'latex': r'\frac{|AD|}{|AB|} = \frac{|AE|}{|AC|} = \frac{|DE|}{|BC|}',
-                'description': 'Karta wzorów CKE str. 16. Warunek: DE równoległe do BC.',
+                'description': 'Karta wzorów CKE str. 17. Warunek: proste równoległe.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 16'
+                'cke_page': 'str. 17'
             }
         ],
         worked_example={
@@ -333,15 +349,15 @@ def build_topic_15():
                         r'Poprawna odpowiedź to A.',
             cke_trap=r'Nie pomyl skali pól $k^2$ ze skalą liniową $k$. Obwód zmienia się w skali $k = \sqrt{\frac{13}{52}} = \frac{1}{2}$, a nie $\frac{1}{4}$.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-15-3-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Każde dwa dowolne trójkąty prostokątne równoramienne są podobne.',
-            correct_tf='P',
-            explanation=r'W każdym trójkącie prostokątnym równoramiennym miary kątów wynoszą $90^\circ, 45^\circ, 45^\circ$.' + '\n' +
-                        r'Z cechy KKK (kąt-kąt-kąt), jeśli odpowiednie kąty są równe, to figury są podobne. Zdanie jest prawdziwe.',
-            cke_trap=r'Dla cechy KKK wystarczy równość dwóch kątów, bo trzeci kąt wynika z sumy 180°.'
+            question=r'Trójkąt $T_2$ jest podobny do trójkąta $T_1$ w skali $k = 4$. Obwód trójkąta $T_1$ wynosi $15$.' + '\n' +
+                     r'Oblicz obwód trójkąta $T_2$. Wpisz samą liczbę.',
+            correct_val='60',
+            explanation=r'Obwody figur podobnych rosną w skali liniowej $k$:' + '\n' +
+                        r'$$\text{Obw}_2 = k \cdot \text{Obw}_1 = 4 \cdot 15 = 60.$$',
+            cke_trap=r'Obwód to wielkość liniowa, więc mnożymy przez $k = 4$, a nie przez $k^2 = 16$.'
         ),
         make_open_task(
             task_id='task-15-3-5',

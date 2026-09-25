@@ -1,5 +1,6 @@
 """
 topic_09_builder.py - Dział 1.9: Odczytywanie informacji z wykresu funkcji (4 lekcje | Tier S+)
+Żelazna matryca 5-Task: T1 Baza, T2 Pułapka CKE, T3 CKE 1:1, T4 Numeryczne, T5 Otwarte/Dowód z kryteriami.
 """
 import sys
 import os
@@ -19,9 +20,10 @@ def build_topic_09():
     # ----------------------------------------------------
     v1 = get_topic_09_visuals(0)
     l1_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-9-1-1',
-            source='Rozgrzewka • Osie OX i OY',
+            source='Trening JASNE • Wzorzec CKE',
             question='Wskaż poprawne przyporządkowanie pojęć do osi układu współrzędnych:',
             options_data=[
                 ('A', 'Dziedzina to oś pozioma $OX$, a zbiór wartości to oś pionowa $OY$'),
@@ -33,9 +35,39 @@ def build_topic_09():
             explanation='Dziedzina to zbiór wszystkich argumentów $x$ (oś pozioma $OX$, rzut lewo-prawo). Zbiór wartości to zbiór wartości $y$ (oś pionowa $OY$, rzut dół-góra).',
             cke_trap='Nigdy nie myl osi: $D_f \\subset OX$ (poziom), a $ZW_f \\subset OY$ (pion).'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
             task_id='task-9-1-2',
             source='Trening JASNE • Wzorzec CKE',
+            question='Wykres funkcji $g$ zaczyna się w punkcie $(-3, 1)$ kółkiem zamalowanym, a kończy w punkcie $(4, 5)$ kółkiem otwartym (niezamalowanym). Dziedziną funkcji $g$ jest',
+            options_data=[
+                ('A', '$[-3, 4)$'),
+                ('B', '$[-3, 4]$'),
+                ('C', '$(-3, 4)$'),
+                ('D', '$[1, 5)$')
+            ],
+            correct_id='A',
+            explanation='Rzutujemy na oś poziomą $OX$: punkt $-3$ ma kółko zamalowane (nawias domknięty $[$), a punkt $4$ ma kółko otwarte (nawias okrągły $)$). Zatem $D = [-3, 4)$.',
+            cke_trap='Kółko otwarte ZAWSZE wymusza nawias okrągły przy danym krańcu.',
+            plot={
+                'type': 'PIECEWISE_LINEAR',
+                'xRange': [-4, 5],
+                'yRange': [0, 6],
+                'gridStep': 1,
+                'segments': [
+                    {'from': [-3, 1], 'to': [0, 2], 'startDot': 'filled', 'endDot': 'none', 'color': '#38BDF8'},
+                    {'from': [0, 2], 'to': [4, 5], 'startDot': 'none', 'endDot': 'hollow', 'color': '#38BDF8'}
+                ],
+                'points': [
+                    {'x': -3, 'y': 1, 'label': '(-3, 1)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'sw'},
+                    {'x': 4, 'y': 5, 'label': '(4, 5)', 'dot': 'hollow', 'color': '#F43F5E', 'attach': 'ne'}
+                ]
+            }
+        ),
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-9-1-3',
+            source='Informator CKE • Zad. 27',
             question='Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[-4, 5]$. Lewy koniec wykresu to punkt $(-4, -1)$ zamalowany, a prawy to punkt $(5, 3)$ zamalowany. Najniższy punkt wykresu to $(-1, -2)$, a najwyższy to $(3, 4)$. Zbiorem wartości funkcji $f$ jest przedział',
             options_data=[
                 ('A', '$[-2, 4]$'),
@@ -64,66 +96,12 @@ def build_topic_09():
                 ]
             }
         ),
-        make_sc_task(
-            task_id='task-9-1-3',
-            source='Pułapka CKE • Kółko otwarte na krańcu wykresu',
-            question='Wykres funkcji $g$ zaczyna się w punkcie $(-3, 1)$ kółkiem zamalowanym, a kończy w punkcie $(4, 5)$ kółkiem otwartym (niezamalowanym). Dziedziną funkcji $g$ jest',
-            options_data=[
-                ('A', '$[-3, 4)$'),
-                ('B', '$[-3, 4]$'),
-                ('C', '$(-3, 4)$'),
-                ('D', '$[1, 5)$')
-            ],
-            correct_id='A',
-            explanation='Rzutujemy na oś poziomą $OX$: punkt $-3$ ma kółko zamalowane (nawias domknięty $[$), a punkt $4$ ma kółko otwarte (nawias okrągły $)$). Zatem $D = [-3, 4)$.',
-            cke_trap='Kółko otwarte ZAWSZE wymusza nawias okrągły przy danym krańcu.',
-            plot={
-                'type': 'PIECEWISE_LINEAR',
-                'xRange': [-4, 5],
-                'yRange': [0, 6],
-                'gridStep': 1,
-                'segments': [
-                    {'from': [-3, 1], 'to': [0, 2], 'startDot': 'filled', 'endDot': 'none', 'color': '#38BDF8'},
-                    {'from': [0, 2], 'to': [4, 5], 'startDot': 'none', 'endDot': 'hollow', 'color': '#38BDF8'}
-                ],
-                'points': [
-                    {'x': -3, 'y': 1, 'label': '(-3, 1)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'sw'},
-                    {'x': 4, 'y': 5, 'label': '(4, 5)', 'dot': 'hollow', 'color': '#F43F5E', 'attach': 'ne'}
-                ]
-            }
-        ),
-        make_tf_task(
-            task_id='task-9-1-4',
-            source='Trening CKE • Osiąganie wartości skrajnych',
-            question='Oceń prawdziwość zdania: Jeśli najwyższy punkt wykresu funkcji to $(2, 7)$, to największą wartością tej funkcji jest liczba 7.',
-            correct_tf='PRAWDA',
-            explanation='Wartość funkcji to współrzędna $y$. Najwyższy punkt ma współrzędną $y = 7$, więc maksymalna wartość to 7 (dla argumentu $x = 2$).',
-            cke_trap='Wartość to zawsze $y$ (liczba 7), argument to $x$ (liczba 2).',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-2, 6],
-                'yRange': [0, 9],
-                'gridStep': 1,
-                'parabola': {
-                    'a': -1,
-                    'p': 2,
-                    'q': 7,
-                    'color': '#38BDF8'
-                },
-                'segments': [
-                    {'from': [2, 0], 'to': [2, 7], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True},
-                    {'from': [0, 7], 'to': [2, 7], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True}
-                ],
-                'points': [
-                    {'x': 2, 'y': 7, 'label': 'W(2, 7)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'}
-                ]
-            }
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
-            task_id='task-9-1-5',
-            source='Utrwalenie • Wartość największa z wykresu',
+            task_id='task-9-1-4',
+            source='Trening JASNE • Wzorzec CKE',
             question='Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[-5, 6]$.\n\nNajwiększa wartość funkcji $f$ w tym przedziale jest równa',
-            correct_val=4,
+            correct_val='4',
             explanation='Z wykresu odczytujemy współrzędną $y$ najwyżej położonego punktu: jest to punkt $(0, 4)$, więc największa wartość funkcji wynosi $4$.',
             cke_trap='Wartość funkcji to współrzędna $y$ najwyższego punktu ($4$), a nie argument $x$ ($0$).',
             plot={
@@ -141,6 +119,16 @@ def build_topic_09():
                     {'x': 6, 'y': 2, 'label': '(6, 2)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'}
                 ]
             }
+        ),
+        # Zadanie 5: Zadanie otwarte z kryteriami
+        make_open_task(
+            task_id='task-9-1-5',
+            source='Informator CKE • Zad. 28',
+            question='Na rysunku przedstawiono wykres funkcji $f$. Odczytaj z wykresu dziedzinę $D$ oraz zbiór wartości $ZW$ funkcji $f$. Zapisz oba zbiory w postaci przedziałów.',
+            points=2,
+            scoring_key='1 pkt – poprawne odczytanie dziedziny z osi poziomej OX: $D = [-4, 5]$.\\n2 pkt – poprawne odczytanie zbioru wartości z osi pionowej OY: $ZW = [-2, 4]$.',
+            explanation='1) Dziedzina (rzutowanie na oś $OX$ od lewej do prawej):\nWykres rozciąga się od $x = -4$ (punkt zamalowany) do $x = 5$ (punkt zamalowany).\nZatem dziedzina to $D = [-4, 5]$.\n\n2) Zbiór wartości (rzutowanie na oś $OY$ od dołu do góry):\nNajniżej położony punkt wykresu ma rzędną $y = -2$, a najwyżej położony punkt ma rzędną $y = 4$.\nZatem zbiór wartości to $ZW = [-2, 4]$.',
+            cke_trap='Uważaj, aby nie zamienić osi: dziedzinę odczytujemy wyłącznie z osi poziomej OX, a zbiór wartości z pionowej OY.'
         )
     ]
     l1 = make_lesson(
@@ -170,9 +158,10 @@ def build_topic_09():
     # ----------------------------------------------------
     v2 = get_topic_09_visuals(1)
     l2_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-9-2-1',
-            source='Rozgrzewka • Czym jest miejsce zerowe?',
+            source='Trening JASNE • Wzorzec CKE',
             question='Miejscem zerowym funkcji $f$ nazywamy',
             options_data=[
                 ('A', 'Taki argument $x$, dla którego wartość funkcji wynosi $0$ ($f(x) = 0$)'),
@@ -184,9 +173,38 @@ def build_topic_09():
             explanation='Miejsce zerowe to ZAWSZE argument $x$, w którym wykres przecina lub dotyka osi poziomej $OX$ (gdzie $y = 0$).',
             cke_trap='Nie myl miejsca zerowego (przecięcie z osią OX) z punktem przecięcia z osią pionową OY (gdzie $x = 0$).'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
             task_id='task-9-2-2',
             source='Trening JASNE • Wzorzec CKE',
+            question='Z wykresu funkcji odczytano punkt $P(2, -3)$. Wynika z tego, że',
+            options_data=[
+                ('A', '$f(2) = -3$'),
+                ('B', '$f(-3) = 2$'),
+                ('C', 'Miejscem zerowym jest $2$'),
+                ('D', 'Miejscem zerowym jest $-3$')
+            ],
+            correct_id='A',
+            explanation='Punkt $P(x, y)$ oznacza, że dla argumentu $x = 2$ wartość wynosi $y = -3$, czyli $f(2) = -3$.',
+            cke_trap='Kolejność w punkcie to ZAWSZE $(x, y)$, a więc $f(\\text{pierwsza}) = \\text{druga}$.',
+            plot={
+                'type': 'LINEAR',
+                'xRange': [-2, 5],
+                'yRange': [-5, 2],
+                'gridStep': 1,
+                'segments': [
+                    {'from': [2, 0], 'to': [2, -3], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True},
+                    {'from': [0, -3], 'to': [2, -3], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True}
+                ],
+                'points': [
+                    {'x': 2, 'y': -3, 'label': 'P(2, -3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'se'}
+                ]
+            }
+        ),
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-9-2-3',
+            source='Informator CKE • Zad. 29',
             question='Wykres funkcji $f$ przecina oś $OX$ w punktach $(-2, 0)$ oraz $(3, 0)$, a oś $OY$ w punkcie $(0, -6)$. Zbiorem wszystkich miejsc zerowych funkcji $f$ jest',
             options_data=[
                 ('A', '$\\{-2, 3\\}$'),
@@ -215,46 +233,12 @@ def build_topic_09():
                 ]
             }
         ),
-        make_sc_task(
-            task_id='task-9-2-3',
-            source='Pułapka CKE • Wartość f(a) vs rozwiązanie f(x) = a',
-            question='Z wykresu funkcji odczytano punkt $P(2, -3)$. Wynika z tego, że',
-            options_data=[
-                ('A', '$f(2) = -3$'),
-                ('B', '$f(-3) = 2$'),
-                ('C', 'Miejscem zerowym jest $2$'),
-                ('D', 'Miejscem zerowym jest $-3$')
-            ],
-            correct_id='A',
-            explanation='Punkt $P(x, y)$ oznacza, że dla argumentu $x = 2$ wartość wynosi $y = -3$, czyli $f(2) = -3$.',
-            cke_trap='Kolejność w punkcie to ZAWSZE $(x, y)$, a więc $f(\\text{pierwsza}) = \\text{druga}$.',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [-2, 5],
-                'yRange': [-5, 2],
-                'gridStep': 1,
-                'segments': [
-                    {'from': [2, 0], 'to': [2, -3], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True},
-                    {'from': [0, -3], 'to': [2, -3], 'color': 'rgba(148, 163, 184, 0.4)', 'strokeWidth': 1.5, 'dashed': True}
-                ],
-                'points': [
-                    {'x': 2, 'y': -3, 'label': 'P(2, -3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'se'}
-                ]
-            }
-        ),
-        make_tf_task(
-            task_id='task-9-2-4',
-            source='Trening CKE • Liczba miejsc zerowych',
-            question='Oceń prawdziwość zdania: Funkcja może posiadać więcej niż jedno miejsce zerowe, ale co najwyżej jeden punkt przecięcia z osią $OY$.',
-            correct_tf='PRAWDA',
-            explanation='Z definicji funkcji każdemu argumentowi odpowiada dokładnie jedna wartość, więc dla $x = 0$ może istnieć co najwyżej jeden punkt na osi $OY$. Na osi $OX$ wykres może przecinać oś dowolną liczbę razy.',
-            cke_trap='Wykres przecinający oś OY w dwóch miejscach w ogóle nie jest funkcją!'
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
-            task_id='task-9-2-5',
-            source='Utrwalenie • Suma miejsc zerowych',
-            question='Wykres funkcji przecina oś $OX$ w punktach o współrzędnych $x_1 = -4$, $x_2 = 1$, $x_3 = 5$. Oblicz sumę wszystkich miejsc zerowych tej funkcji.',
-            correct_val=2,
+            task_id='task-9-2-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Wykres funkcji przecina oś $OX$ w punktach o współrzędnych $x_1 = -4$, $x_2 = 1$, $x_3 = 5$. Oblicz sumę wszystkich miejsc zerowych tej funkcji. Wpisz wynik w pole poniżej.',
+            correct_val='2',
             explanation='Suma miejsc zerowych wynosi: $(-4) + 1 + 5 = 2$.',
             cke_trap='Dodawaj same iksy: $(-4) + 1 + 5 = 2$.',
             plot={
@@ -276,6 +260,16 @@ def build_topic_09():
                     {'x': 5, 'y': 0, 'label': 'x₃ = 5', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
                 ]
             }
+        ),
+        # Zadanie 5: Zadanie otwarte z kryteriami
+        make_open_task(
+            task_id='task-9-2-5',
+            source='Informator CKE • Zad. 30',
+            question='Dla funkcji $f$ przedstawionej na wykresie: a) wyznacz wszystkie miejsca zerowe, b) odczytaj wartość $f(0)$ (punkt przecięcia z osią $OY$). Zapisz odpowiedzi.',
+            points=2,
+            scoring_key='1 pkt – podanie wszystkich miejsc zerowych odczytanych z osi OX: $x_1 = -2, x_2 = 3$.\\n2 pkt – podanie wartości dla argumentu zero: $f(0) = -6$ (punkt $(0, -6)$).',
+            explanation='1) Miejsca zerowe funkcji to punkty, w których wykres przecina oś $OX$:\nSą to $x_1 = -2$ oraz $x_2 = 3$.\n2) Punkt przecięcia z osią $OY$ ma współrzędne $(0, -6)$, co oznacza, że wartość funkcji dla argumentu $x = 0$ wynosi $f(0) = -6$.',
+            cke_trap='Miejsce zerowe to liczba $x = -2$ oraz $x = 3$. Punkt $(0, -6)$ leży na osi OY i określa wyraz wolny $f(0)$, nie jest miejscem zerowym.'
         )
     ]
     l2 = make_lesson(
@@ -305,9 +299,10 @@ def build_topic_09():
     # ----------------------------------------------------
     v3 = get_topic_09_visuals(2)
     l3_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-9-3-1',
-            source='Rozgrzewka • Z której osi podajemy przedziały monotoniczności?',
+            source='Trening JASNE • Wzorzec CKE',
             question='Przedziały, w których funkcja rośnie, maleje lub jest stała, podajemy ZAWSZE jako przedziały',
             options_data=[
                 ('A', 'Argumentów $x$ (odczytywane z osi poziomej $OX$)'),
@@ -319,9 +314,25 @@ def build_topic_09():
             explanation='Monotoniczność odpowiada na pytanie: DLA JAKICH IKSÓW funkcja idzie w górę lub w dół? Przedziały monotoniczności ZAWSZE odczytujemy z osi poziomej $OX$.',
             cke_trap='Podanie przedziału z osi OY to kardynalny błąd skutkujący 0 punktów na maturze.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
             task_id='task-9-3-2',
             source='Trening JASNE • Wzorzec CKE',
+            question='Funkcja rośnie w przedziale $[-4, -1]$ oraz w przedziale $[2, 5]$. Prawidłowy zapis odpowiedzi na maturze to:',
+            options_data=[
+                ('A', 'Funkcja rośnie w przedziale $[-4, -1]$ oraz w przedziale $[2, 5]$ (zapisujemy ze słowem „oraz” lub przecinkiem)'),
+                ('B', 'Funkcja rośnie w przedziale $[-4, -1] \\cup [2, 5]$ (ze znakiem sumy)'),
+                ('C', 'Funkcja rośnie w przedziale $[-4, 5]$'),
+                ('D', 'Funkcja nie jest nigdzie rosnąca')
+            ],
+            correct_id='A',
+            explanation='Zgodnie ze ścisłymi kryteriami CKE przedziały monotoniczności podaje się OSOBNO, rozdzielone przecinkiem lub słowem „oraz”. Znak sumy zbiorów $(\\cup)$ jest błędem merytorycznym, ponieważ funkcja jako całość nie musi być rosnąca na sumie przedziałów.',
+            cke_trap='Nigdy nie łącz przedziałów monotoniczności symbolem sumy $\\cup$!'
+        ),
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-9-3-3',
+            source='Informator CKE • Zad. 31',
             question='Wykres funkcji idzie w górę od punktu $(-3, -2)$ do punktu $(1, 4)$, a następnie opada od punktu $(1, 4)$ do punktu $(5, 0)$. Funkcja jest rosnąca w przedziale',
             options_data=[
                 ('A', '$[-3, 1]$'),
@@ -348,48 +359,12 @@ def build_topic_09():
                 ]
             }
         ),
-        make_sc_task(
-            task_id='task-9-3-3',
-            source='Pułapka CKE • Znak sumy zbiorów w monotoniczności',
-            question='Funkcja rośnie w przedziale $[-4, -1]$ oraz w przedziale $[2, 5]$. Prawidłowy zapis odpowiedzi na maturze to:',
-            options_data=[
-                ('A', 'Funkcja rośnie w przedziale $[-4, -1]$ oraz w przedziale $[2, 5]$ (zapisujemy ze słowem „oraz” lub przecinkiem)'),
-                ('B', 'Funkcja rośnie w przedziale $[-4, -1] \\cup [2, 5]$ (ze znakiem sumy)'),
-                ('C', 'Funkcja rośnie w przedziale $[-4, 5]$'),
-                ('D', 'Funkcja nie jest nigdzie rosnąca')
-            ],
-            correct_id='A',
-            explanation='Zgodnie ze ścisłymi kryteriami CKE przedziały monotoniczności podaje się OSOBNO, rozdzielone przecinkiem lub słowem „oraz”. Znak sumy zbiorów $(\\cup)$ jest błędem merytorycznym, ponieważ funkcja jako całość nie musi być rosnąca na sumie przedziałów.',
-            cke_trap='Nigdy nie łącz przedziałów monotoniczności symbolem sumy $\\cup$!'
-        ),
-        make_tf_task(
-            task_id='task-9-3-4',
-            source='Trening CKE • Funkcja stała',
-            question='Oceń prawdziwość zdania: Fragment wykresu będący poziomym odcinkiem oznacza, że funkcja w tym przedziale jest stała.',
-            correct_tf='PRAWDA',
-            explanation='Gdy wykres jest poziomy, dla różnych argumentów $x$ wartość funkcji $y$ nie zmienia się (jest stała).',
-            cke_trap='Funkcja stała ma wykres równoległy do osi OX.',
-            plot={
-                'type': 'PIECEWISE_LINEAR',
-                'xRange': [-4, 6],
-                'yRange': [-2, 5],
-                'gridStep': 1,
-                'segments': [
-                    {'from': [-3, 0], 'to': [-1, 3], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [-1, 3], 'to': [3, 3], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [3, 3], 'to': [5, 1], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'}
-                ],
-                'points': [
-                    {'x': -1, 'y': 3, 'label': '(-1, 3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'},
-                    {'x': 3, 'y': 3, 'label': '(3, 3)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'n'}
-                ]
-            }
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
-            task_id='task-9-3-5',
-            source='Utrwalenie • Wartość najmniejsza z wykresu',
+            task_id='task-9-3-4',
+            source='Trening JASNE • Wzorzec CKE',
             question='Na rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $[1, 9]$.\n\nNajmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ jest równa',
-            correct_val=-2,
+            correct_val='-2',
             explanation='Z wykresu odczytujemy najniżej położony punkt funkcji: $(8, -2)$. Najmniejsza wartość funkcji $f$ w przedziale $[1, 9]$ wynosi $y = -2$ (dla argumentu $x = 8$).',
             cke_trap='Wartość funkcji to współrzędna $y$ najniższego punktu ($-2$), a nie argument $x$ ($8$).',
             plot={
@@ -409,6 +384,16 @@ def build_topic_09():
                     {'x': 9, 'y': 1, 'label': '(9, 1)', 'dot': 'filled', 'color': '#38BDF8', 'attach': 'ne'}
                 ]
             }
+        ),
+        # Zadanie 5: Zadanie otwarte z kryteriami
+        make_open_task(
+            task_id='task-9-3-5',
+            source='Informator CKE • Zad. 32',
+            question='Na rysunku przedstawiono wykres funkcji $f$ w przedziale $[-3, 5]$. Wyznacz maksymalne przedziały monotoniczności tej funkcji (w których funkcja rośnie oraz w których funkcja maleje). Zapisz przedziały zgodnie ze standardem maturalnym CKE.',
+            points=2,
+            scoring_key='1 pkt – poprawne wyznaczenie przedziału, w którym funkcja rośnie: $[-3, 1]$.\\n2 pkt – poprawne wyznaczenie przedziału, w którym funkcja maleje: $[1, 5]$ (zapisane oddzielnie, bez symbolu sumy).',
+            explanation='1) Funkcja rośnie w przedziale, w którym wraz ze wzrostem argumentów wartości rosną (wykres idzie pod górę):\nOd punktu $(-3, -2)$ do $(1, 4)$, czyli dla $x \\in [-3, 1]$.\n2) Funkcja maleje w przedziale, w którym wykres opada w dół:\nOd punktu $(1, 4)$ do $(5, 0)$, czyli dla $x \\in [1, 5]$.\nOdpowiedź: Funkcja $f$ rośnie w przedziale $[-3, 1]$ oraz maleje w przedziale $[1, 5]$.',
+            cke_trap='Nigdy nie podawaj wartości $y$ (np. $[-2, 4]$) jako przedziału monotoniczności — przedziały monotoniczności zawsze odczytujemy z osi OX!'
         )
     ]
     l3 = make_lesson(
@@ -438,9 +423,10 @@ def build_topic_09():
     # ----------------------------------------------------
     v4 = get_topic_09_visuals(3)
     l4_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
-            task_id='task-9-1-4-1',
-            source='Matura CKE • Odczyt liczby rozwiązań f(x) = m',
+            task_id='task-9-4-1',
+            source='Trening JASNE • Wzorzec CKE',
             question='Równanie $f(x) = 2$ ma dokładnie tyle rozwiązań, w ilu punktach wykres funkcji $f$ przecina się z prostą',
             options_data=[
                 ('A', 'Poziomą o równaniu $y = 2$'),
@@ -472,9 +458,45 @@ def build_topic_09():
                 ]
             }
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
-            task_id='task-9-1-4-2',
-            source='Matura Maj 2022 • Zad. 8',
+            task_id='task-9-4-2',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Zbiorem rozwiązań nierówności $f(x) > 0$ jest suma przedziałów $(-4, -1) \\cup (2, 5)$. Wtedy zbiorem rozwiązań nierówności $f(x) \\ge 0$ dla tej samej funkcji o dziedzinie $[-4, 5]$ jest',
+            options_data=[
+                ('A', '$[-4, -1] \\cup [2, 5]$'),
+                ('B', '$(-4, -1) \\cup (2, 5)$'),
+                ('C', '$[-4, 5]$'),
+                ('D', '$\\emptyset$')
+            ],
+            correct_id='A',
+            explanation='Nierówność nieostra $\\ge 0$ dołącza miejsca zerowe (punkty, w których $f(x) = 0$). Zatem przedziały otwarte domykamy w punktach przecięcia z osią: $[-4, -1] \\cup [2, 5]$.',
+            cke_trap='Znak $\\ge$ włącza miejsca zerowe (nawiasy domknięte).',
+            plot={
+                'type': 'PIECEWISE_LINEAR',
+                'xRange': [-5, 6],
+                'yRange': [-3, 4],
+                'gridStep': 1,
+                'segments': [
+                    {'from': [-4, 0], 'to': [-2.5, 3], 'startDot': 'filled', 'endDot': 'none', 'color': '#10B981', 'strokeWidth': 3},
+                    {'from': [-2.5, 3], 'to': [-1, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#10B981', 'strokeWidth': 3},
+                    {'from': [-1, 0], 'to': [0.5, -2], 'startDot': 'none', 'endDot': 'none', 'color': '#F43F5E'},
+                    {'from': [0.5, -2], 'to': [2, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#F43F5E'},
+                    {'from': [2, 0], 'to': [3.5, 3], 'startDot': 'none', 'endDot': 'none', 'color': '#10B981', 'strokeWidth': 3},
+                    {'from': [3.5, 3], 'to': [5, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#10B981', 'strokeWidth': 3}
+                ],
+                'points': [
+                    {'x': -4, 'y': 0, 'label': '(-4, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
+                    {'x': -1, 'y': 0, 'label': '(-1, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'},
+                    {'x': 2, 'y': 0, 'label': '(2, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
+                    {'x': 5, 'y': 0, 'label': '(5, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
+                ]
+            }
+        ),
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-9-4-3',
+            source='Informator CKE • Zad. 33',
             question='Na rysunku przedstawiono wykres funkcji $f$. Równanie $f(x) = -1$ ma w przedziale $[-4, 5]$ dokładnie',
             options_data=[
                 ('A', '3 rozwiązania'),
@@ -508,115 +530,43 @@ def build_topic_09():
                 ]
             }
         ),
-        make_sc_task(
-            task_id='task-9-1-4-3',
-            source='Pułapka CKE • Nierówność f(x) <= 0 a kropki',
-            question='Zbiorem rozwiązań nierówności $f(x) > 0$ jest suma przedziałów $(-4, -1) \\cup (2, 5)$. Wtedy zbiorem rozwiązań nierówności $f(x) \\ge 0$ dla tej samej funkcji o dziedzinie $[-4, 5]$ jest',
-            options_data=[
-                ('A', '$[-4, -1] \\cup [2, 5]$'),
-                ('B', '$(-4, -1) \\cup (2, 5)$'),
-                ('C', '$[-4, 5]$'),
-                ('D', '$\\emptyset$')
-            ],
-            correct_id='A',
-            explanation='Nierówność nieostra $\\ge 0$ dołącza miejsca zerowe (punkty, w których $f(x) = 0$). Zatem przedziały otwarte domykamy w punktach przecięcia z osią: $[-4, -1] \\cup [2, 5]$.',
-            cke_trap='Znak $\\ge$ włącza miejsca zerowe (nawiasy domknięte).',
-            plot={
-                'type': 'PIECEWISE_LINEAR',
-                'xRange': [-5, 6],
-                'yRange': [-3, 4],
-                'gridStep': 1,
-                'segments': [
-                    {'from': [-4, 0], 'to': [-2.5, 3], 'startDot': 'filled', 'endDot': 'none', 'color': '#10B981', 'strokeWidth': 3},
-                    {'from': [-2.5, 3], 'to': [-1, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#10B981', 'strokeWidth': 3},
-                    {'from': [-1, 0], 'to': [0.5, -2], 'startDot': 'none', 'endDot': 'none', 'color': '#F43F5E'},
-                    {'from': [0.5, -2], 'to': [2, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#F43F5E'},
-                    {'from': [2, 0], 'to': [3.5, 3], 'startDot': 'none', 'endDot': 'none', 'color': '#10B981', 'strokeWidth': 3},
-                    {'from': [3.5, 3], 'to': [5, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#10B981', 'strokeWidth': 3}
-                ],
-                'points': [
-                    {'x': -4, 'y': 0, 'label': '(-4, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': -1, 'y': 0, 'label': '(-1, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'},
-                    {'x': 2, 'y': 0, 'label': '(2, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 5, 'y': 0, 'label': '(5, 0)', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
-                ]
-            }
-        ),
-        make_tf_task(
-            task_id='task-9-1-4-4',
-            source='Trening CKE • Brak przecięcia z prostą poziomą',
-            question='Oceń prawdziwość zdania: Jeśli zbiór wartości funkcji $f$ to $ZW = [-2, 3]$, to równanie $f(x) = 4$ nie ma żadnych rozwiązań.',
-            correct_tf='PRAWDA',
-            explanation='Liczba $4$ nie należy do zbioru wartości funkcji (najwyższa wartość to $3$). Pozioma prosta $y = 4$ przebiega nad całym wykresem i go nie przecina.',
-            cke_trap='Wartości spoza zbioru wartości nigdy nie są osiągane przez funkcję.',
-            plot={
-                'type': 'PIECEWISE_LINEAR',
-                'xRange': [-5, 6],
-                'yRange': [-3, 5],
-                'gridStep': 1,
-                'segments': [
-                    {'from': [-4, 0], 'to': [-2, 3], 'startDot': 'filled', 'endDot': 'none', 'color': '#38BDF8'},
-                    {'from': [-2, 3], 'to': [1, -2], 'startDot': 'none', 'endDot': 'none', 'color': '#38BDF8'},
-                    {'from': [1, -2], 'to': [3, 2], 'startDot': 'none', 'endDot': 'none', 'color': '#38BDF8'},
-                    {'from': [3, 2], 'to': [5, 0], 'startDot': 'none', 'endDot': 'filled', 'color': '#38BDF8'}
-                ],
-                'horizontalLines': [
-                    {'y': 4, 'dashed': True, 'color': '#F43F5E', 'strokeWidth': 2, 'label': 'prosta y = 4 (brak przecięcia)'},
-                    {'y': 3, 'dashed': True, 'color': 'rgba(148, 163, 184, 0.4)', 'label': 'y_max = 3'},
-                    {'y': -2, 'dashed': True, 'color': 'rgba(148, 163, 184, 0.4)', 'label': 'y_min = -2'}
-                ],
-                'points': [
-                    {'x': -2, 'y': 3, 'label': 'max: y = 3', 'dot': 'filled', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 1, 'y': -2, 'label': 'min: y = -2', 'dot': 'filled', 'color': '#38BDF8', 'attach': 's'},
-                    {'x': 0, 'y': 4, 'label': 'y = 4 (brak rozwiązań)', 'dot': 'none', 'color': '#F43F5E', 'attach': 'n'}
-                ]
-            }
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
-            task_id='task-9-1-4-5',
-            source='Utrwalenie • Liczba rozwiązań z wykresu',
-            question='Wykres funkcji $f$ przecina poziomą prostą $y = 0$ w punktach o odciętych $-3$, $1$ oraz $4$. Ile rozwiązań ma równanie $f(x) = 0$?',
-            correct_val=3,
+            task_id='task-9-4-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Wykres funkcji $f$ przecina poziomą prostą $y = 0$ w punktach o odciętych $-3$, $1$ oraz $4$. Ile rozwiązań ma równanie $f(x) = 0$? Wpisz liczbę w pole poniżej.',
+            correct_val='3',
             explanation='Równanie $f(x) = 0$ to pytanie o miejsca zerowe. Skoro wykres przecina oś $OX$ w 3 punktach, równanie ma dokładnie 3 rozwiązania.',
-            cke_trap='Odcięta to współrzędna $x$. Wykres ma 3 miejsca zerowe.',
-            plot={
-                'type': 'PIECEWISE_LINEAR',
-                'xRange': [-5, 6],
-                'yRange': [-3, 4],
-                'gridStep': 1,
-                'segments': [
-                    {'from': [-4, -2], 'to': [-3, 0], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [-3, 0], 'to': [-1, 3], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [-1, 3], 'to': [1, 0], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [1, 0], 'to': [2.5, -2], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [2.5, -2], 'to': [4, 0], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'},
-                    {'from': [4, 0], 'to': [5, 2], 'startDot': 'filled', 'endDot': 'filled', 'color': '#38BDF8'}
-                ],
-                'points': [
-                    {'x': -3, 'y': 0, 'label': 'x₁ = -3', 'dot': 'filled', 'color': '#10B981', 'attach': 'nw'},
-                    {'x': 1, 'y': 0, 'label': 'x₂ = 1', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'},
-                    {'x': 4, 'y': 0, 'label': 'x₃ = 4', 'dot': 'filled', 'color': '#10B981', 'attach': 'ne'}
-                ]
-            }
+            cke_trap='Liczba rozwiązań to liczba punktów przecięcia wykresu z osią OX.'
+        ),
+        # Zadanie 5: Zadanie otwarte z kryteriami
+        make_open_task(
+            task_id='task-9-4-5',
+            source='Informator CKE • Zad. 34',
+            question='Na rysunku przedstawiono wykres funkcji $f$ w przedziale $[-4, 5]$. Na podstawie wykresu wyznacz: a) zbiór rozwiązań nierówności $f(x) > 0$, b) liczbę rozwiązań równania $f(x) = 2$. Zapisz pełne uzasadnienie.',
+            points=2,
+            scoring_key='1 pkt – poprawne odczytanie zbioru rozwiązań nierówności $f(x) > 0$: $(-4, -1) \\cup (2, 5)$.\\n2 pkt – narysowanie prostej poziomej $y = 2$ i podanie poprawnej liczby rozwiązań równania $f(x) = 2$: dokładnie 3 rozwiązania.',
+            explanation='1) Nierówność $f(x) > 0$ oznacza fragmenty wykresu położone ściśle nad osią $OX$:\nWykres leży nad osią dla $x \\in (-4, -1) \\cup (2, 5)$.\n2) Równanie $f(x) = 2$ oznacza punkty wspólne wykresu z prostą poziomą $y = 2$:\nProsta $y = 2$ przecina wykres w 3 punktach (w gałęzi rosnącej, malejącej i ponownie rosnącej).\nZatem równanie ma dokładnie 3 rozwiązania.',
+            cke_trap='Pamiętaj: dla ostrej nierówności $f(x) > 0$ miejsca zerowe $-4, -1, 2, 5$ są wykluczone (nawiasy okrągłe).'
         )
     ]
     l4 = make_lesson(
         lesson_id='lesson-9-4',
         topic_id=topic_id,
-        title='Odczytywanie liczby rozwiązań równań i nierówności z wykresu funkcji',
-        concept_essence='Analiza równań i nierówności na wykresie: 1) Równanie $f(x) = m$ — kładziesz poziomą linijkę na wysokości $y = m$. Liczba punktów przecięcia linijki z wykresem to LICZBA ROZWIĄZAŃ równania. Jeśli prosta mija wykres — równanie nie ma rozwiązań. 2) Nierówność $f(x) > 0$ — szukasz części wykresu leżących ŚCIŚLE NAD osią $OX$. Rozwiązaniem są przedziały iksów z osi poziomej. 3) Nierówność $f(x) \\le 0$ — szukasz części POD osią $OX$ wraz z miejscami zerowymi.',
-        matura_context='Jeden z ulubionych typów zadań CKE w arkuszach majowych i czerwcowych za 1 punkt.',
+        title='Odczytywanie liczby rozwiązań równania f(x) = m oraz nierówności f(x) > 0',
+        concept_essence='Wykres pozwala natychmiast rozwiązywać równania i nierówności bez liczenia wzorów: 1) Równanie $f(x) = m$ — kładziesz na wykresie poziomą linijkę na wysokości $y = m$ i liczysz punkty przecięcia. Liczba przecięć = liczba rozwiązań równania. 2) Nierówność $f(x) > 0$ — szukasz części wykresu leżącej NAD osią $OX$ i odczytujesz przedział iksów (nawiasy okrągłe). 3) Nierówność $f(x) \\le 0$ — szukasz części wykresu leżącej POD osią $OX$ lub na osi (nawiasy domknięte w miejscach zerowych).',
+        matura_context='Standardowe zadanie testowe za 1 punkt występujące w każdym arkuszu maturalnym CKE.',
         core_formulas=[],
         worked_example={
-            'problem': 'Z wykresu funkcji $f$ odczytaj: a) liczbę rozwiązań równania $f(x) = 1$, b) zbiór rozwiązań nierówności $f(x) \\ge 0$. Wiadomo, że prosta $y = 1$ przecina wykres w 2 punktach, a wykres leży nad osią $OX$ dla $x \\in [-3, 5]$ włącznie z miejscami zerowymi.',
+            'problem': 'Dla jakich wartości parametru $m$ równanie $f(x) = m$ ma dokładnie 2 rozwiązania, jeśli wierzchołek paraboli to $W(2, 4)$, a ramiona idą w dół?',
             'steps': [
-                {'num': 1, 'label': 'Liczba rozwiązań równania f(x) = 1', 'text': 'Rysujemy poziomą prostą na wysokości $y = 1$. Przecina ona wykres w 2 punktach, więc równanie ma dokładnie 2 rozwiązania.'},
-                {'num': 2, 'label': 'Rozwiązanie nierówności f(x) >= 0', 'text': 'Wykres znajduje się nad osią lub na osi dla iksów od $-3$ do $5$.'},
-                {'num': 3, 'label': 'Zapis odpowiedzi CKE', 'text': 'Równanie ma 2 rozwiązania, a zbiór rozwiązań nierówności to $x \\in [-3, 5]$.'}
+                {'num': 1, 'label': 'Analiza wysokości wierzchołka', 'text': 'Wierzchołek ma $y = 4$ — to najwyższy punkt paraboli. Dla $m = 4$ prosta styka się w 1 punkcie.'},
+                {'num': 2, 'label': 'Analiza poniżej wierzchołka', 'text': 'Dla każdego $m < 4$ prosta pozioma przecina oba ramiona paraboli, dając dokładnie 2 punkty.'},
+                {'num': 3, 'label': 'Zapisanie wyniku CKE', 'text': 'Równanie ma 2 rozwiązania dla $m \\in (-\\infty, 4)$.'}
             ],
-            'result': '2 \\text{ rozwiązania}, \\quad x \\in [-3, 5]'
+            'result': 'm \\in (-\\infty, 4)'
         },
-        exam_trap='Typowy błąd: Rysowanie prostej pionowej $x = m$ zamiast poziomej $y = m$ przy równaniu $f(x) = m$.\n\nPoprawnie: $f(x) = m$ pyta o wartość $y = m$, a wartości leżą na osi pionowej, więc linia cięcia jest POZIOMA.',
+        exam_trap='Typowy błąd: Podawanie przedziału iksów zamiast wartości parametru $m$ (który jest rzędną igrek prostej poziomej).\n\nPoprawnie: Parametr $m$ to ZAWSZE wysokość na osi pionowej $OY$!',
         visuals=v4,
         tasks=l4_tasks
     )
@@ -630,6 +580,10 @@ def build_topic_09():
         'tier': 'Tier S+',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '4 lekcje (~20 min)',
-        'description': 'Odczytywanie dziedziny i zbioru wartości, miejsc zerowych, monotoniczności oraz graficzne rozwiązywanie równań i nierówności.',
+        'description': 'Odczytywanie dziedziny, zbioru wartości, miejsc zerowych, monotoniczności oraz liczby rozwiązań równań z wykresu funkcji.',
         'lessons': lessons
     }
+
+if __name__ == '__main__':
+    t = build_topic_09()
+    print(f"Pomyślnie zbudowano {t['title']} ({len(t['lessons'])} lekcje, {sum(len(l['tasks']) for l in t['lessons'])} zadań).")

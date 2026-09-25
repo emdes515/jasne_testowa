@@ -1,5 +1,6 @@
 """
 topic_07_builder.py - Dział 1.7: Równania i wyrażenia wymierne (3 lekcje | Tier S+)
+Żelazna matryca 5-Task: T1 Baza, T2 Pułapka CKE, T3 CKE 1:1, T4 Numeryczne, T5 Otwarte/Dowód z kryteriami.
 """
 import sys
 import os
@@ -19,9 +20,10 @@ def build_topic_07():
     # ----------------------------------------------------
     v1 = get_topic_07_visuals(0)
     l1_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-7-1-1',
-            source='Rozgrzewka • Mianownik różny od zera',
+            source='Trening JASNE • Wzorzec CKE',
             question='Dziedziną wyrażenia $W(x) = \\frac{x + 2}{x - 5}$ jest zbiór',
             options_data=[
                 ('A', '$\\mathbb{R} \\setminus \\{5\\}$'),
@@ -30,26 +32,13 @@ def build_topic_07():
                 ('D', '$\\mathbb{R}$')
             ],
             correct_id='A',
-            explanation='Warunek istnienia ułamka to mianownik różny od zera: $x - 5 \\ne 0 \\implies x \\ne 5$. Licznik nie wpływa na dziedzinę. Zatem $D = \\mathbb{R} \\setminus \\{5\\}$.',
+            explanation='Warunek istnienia ułamka to mianownik różny od zera:\n$$x - 5 \\ne 0 \\longrightarrow x \\ne 5$$\nLicznik nie wpływa na dziedzinę. Zatem $D = \\mathbb{R} \\setminus \\{5\\}$.',
             cke_trap='Licznik ułamka MOŻE być zerem! Do dziedziny interesuje nas wyłącznie mianownik.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
             task_id='task-7-1-2',
             source='Trening JASNE • Wzorzec CKE',
-            question='Dziedziną funkcji $f(x) = \\frac{2x - 1}{(x + 3)(x - 4)}$ jest zbiór',
-            options_data=[
-                ('A', '$\\mathbb{R} \\setminus \\{-3, 4\\}$'),
-                ('B', '$\\mathbb{R} \\setminus \\{3, -4\\}$'),
-                ('C', '$\\mathbb{R} \\setminus \\{\\frac{1}{2}, -3, 4\\}$'),
-                ('D', '$\\mathbb{R} \\setminus \\{-3\\}$')
-            ],
-            correct_id='A',
-            explanation='Mianownik zeruje się dla $x = -3$ oraz $x = 4$. Obie te liczby wykluczamy ze zbioru liczb rzeczywistych: $D = \\mathbb{R} \\setminus \\{-3, 4\\}$.',
-            cke_trap='Uważaj na znaki w nawiasach: $(x + 3) = 0 \\implies x = -3$, a $(x - 4) = 0 \\implies x = 4$.'
-        ),
-        make_sc_task(
-            task_id='task-7-1-3',
-            source='Pułapka CKE • Mianownik z sumą kwadratów',
             question='Dziedziną wyrażenia $G(x) = \\frac{x - 7}{x^2 + 9}$ jest',
             options_data=[
                 ('A', '$\\mathbb{R}$ (wszystkie liczby rzeczywiste)'),
@@ -61,21 +50,39 @@ def build_topic_07():
             explanation='Dla każdego $x \\in \\mathbb{R}$ kwadrat jest nieujemny: $x^2 \\ge 0$, więc $x^2 + 9 \\ge 9 > 0$. Mianownik NIGDY się nie zeruje! Dziedziną jest cały zbiór $\\mathbb{R}$.',
             cke_trap='Nie myl sumy kwadratów $x^2 + 9$ z różnicą kwadratów $x^2 - 9$. Suma kwadratów nigdy nie jest zerem.'
         ),
-        make_tf_task(
-            task_id='task-7-1-4',
-            source='Trening CKE • Kolejność działań',
-            question='Oceń prawdziwość zdania: Dziedzinę wyrażenia wymiernego należy wyznaczyć przed jakimkolwiek skracaniem ułamka.',
-            correct_tf='PRAWDA',
-            explanation='Dziedzina to zbiór liczb, dla których wyrażenie w postaci początkowej ma sens. Skrócenie ułamka przed podaniem dziedziny prowadzi do utraty założeń i błędu merytorycznego.',
-            cke_trap='Np. $\\frac{x-2}{x-2} = 1$, ale dziedziną jest $\\mathbb{R} \\setminus \\{2\\}$, a nie $\\mathbb{R}$.'
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-7-1-3',
+            source='Matura maj 2024 • Zad. 7',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie $\\frac{x+1}{(x+2)(x-3)} = 0$ w zbiorze liczb rzeczywistych',
+            options_data=[
+                ('A', 'nie ma rozwiązania.'),
+                ('B', 'ma dokładnie jedno rozwiązanie: $(-1)$.'),
+                ('C', 'ma dokładnie dwa rozwiązania: $(-2)$ oraz $3$.'),
+                ('D', 'ma dokładnie trzy rozwiązania: $(-1)$, $(-2)$ oraz $3$.')
+            ],
+            correct_id='B',
+            explanation='1) Dziedzina: mianownik $(x + 2)(x - 3) \\ne 0 \\longrightarrow x \\ne -2$ oraz $x \\ne 3$.\n2) Ułamek jest zerem, gdy licznik jest zerem: $x + 1 = 0 \\longrightarrow x = -1$.\n3) Liczba $-1 \\in D$, więc równanie ma dokładnie jedno rozwiązanie: $(-1)$.',
+            cke_trap='Liczby zerujące mianownik ($-2$ i $3$) NIE są rozwiązaniami równania, lecz punktami wykluczonymi z dziedziny!'
         ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
-            task_id='task-7-1-5',
-            source='Utrwalenie • Liczba wykluczonych punktów',
-            question='Ile liczb rzeczywistych nie należy do dziedziny wyrażenia $W(x) = \\frac{x^2 - 1}{(x - 1)(x + 2)(x^2 - 9)}$?',
-            correct_val=4,
-            explanation='Mianownik zeruje się dla: $x = 1$, $x = -2$, $x = 3$, $x = -3$. Jest to łącznie 4 różne liczby.',
+            task_id='task-7-1-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Ile liczb rzeczywistych nie należy do dziedziny wyrażenia $W(x) = \\frac{x^2 - 1}{(x - 1)(x + 2)(x^2 - 9)}$? Wpisz wynik w pole poniżej.',
+            correct_val='4',
+            explanation='Mianownik zeruje się dla:\n1) $x - 1 = 0 \\longrightarrow x = 1$\n2) $x + 2 = 0 \\longrightarrow x = -2$\n3) $x^2 - 9 = 0 \\longrightarrow x = 3$ lub $x = -3$\nJest to łącznie $4$ różne liczby: $\\{-3, -2, 1, 3\\}$.',
             cke_trap='Nawet jeśli licznik $x^2 - 1$ ma wspólny pierwiastek $x = 1$ z mianownikiem, liczba ta MUSI być wykluczona z dziedziny!'
+        ),
+        # Zadanie 5: Zadanie otwarte z kryteriami
+        make_open_task(
+            task_id='task-7-1-5',
+            source='Informator CKE • Zad. 17',
+            question='Wyznacz dziedzinę wyrażenia wymiernego $W(x) = \\frac{2x + 5}{x^3 - 4x}$. Zapisz wszystkie obliczenia i podaj dziedzinę w postaci zbioru.',
+            points=2,
+            scoring_key='1 pkt – zapisanie warunku $x^3 - 4x \\ne 0$ i rozłożenie mianownika na czynniki: $x(x - 2)(x + 2) \\ne 0$.\\n2 pkt – wyznaczenie liczb wykluczonych $x \\ne 0$, $x \\ne 2$, $x \\ne -2$ oraz zapisanie dziedziny: $D = \\mathbb{R} \\setminus \\{-2, 0, 2\\}$.',
+            explanation='1) Zapisujemy warunek istnienia ułamka:\n$$x^3 - 4x \\ne 0$$\n2) Rozkładamy mianownik na czynniki:\n$$x(x^2 - 4) \\ne 0$$\n$$x(x - 2)(x + 2) \\ne 0$$\n3) Mianownik zeruje się dla $x = 0$, $x = 2$, $x = -2$.\n4) Zapisujemy dziedzinę wyrażenia:\n$$D = \\mathbb{R} \\setminus \\{-2, 0, 2\\}$$',
+            cke_trap='Pamiętaj o wyłączeniu $x$ przed nawias — mianownik zeruje się również dla $x = 0$.'
         )
     ]
     l1 = make_lesson(
@@ -110,7 +117,7 @@ def build_topic_07():
             'problem': 'Wyznacz dziedzinę wyrażenia wymiernego $W(x) = \\frac{3x + 1}{x^2 - 16}$.',
             'steps': [
                 {'num': 1, 'label': 'Zapisanie warunku mianownika', 'text': '$x^2 - 16 \\ne 0$.'},
-                {'num': 2, 'label': 'Rozwiązanie równania z mianownika', 'text': '$x^2 = 16 \\implies x = 4$ lub $x = -4$.'},
+                {'num': 2, 'label': 'Rozwiązanie równania z mianownika', 'text': '$x^2 = 16 \\longrightarrow x = 4$ lub $x = -4$.'},
                 {'num': 3, 'label': 'Wykluczenie punktów i wynik CKE', 'text': 'Wyrzucamy liczby $-4$ oraz $4$ ze zbioru liczb rzeczywistych: $D = \\mathbb{R} \\setminus \\{-4, 4\\}$.'}
             ],
             'result': 'D = \\mathbb{R} \\setminus \\{-4, 4\\}'
@@ -122,214 +129,227 @@ def build_topic_07():
     lessons.append(l1)
 
     # ----------------------------------------------------
-    # Lekcja 7.2: Równania L(x)/M(x) = 0 i pierwiastki obce (L1.7.2)
+    # Lekcja 7.2: Rozwiązywanie równań wymiernych (L1.7.2)
     # ----------------------------------------------------
     v2 = get_topic_07_visuals(1)
     l2_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-7-2-1',
-            source='Rozgrzewka • Zerowanie ułamka',
-            question='Równanie $\\frac{x - 3}{x + 4} = 0$ jest spełnione dla',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Rozwiązaniem równania $\\frac{x - 3}{x + 1} = 0$ jest liczba',
             options_data=[
-                ('A', '$x = 3$'),
-                ('B', '$x = -4$'),
-                ('C', '$x = 3$ oraz $x = -4$'),
-                ('D', 'Żadnej liczby rzeczywistej')
-            ],
-            correct_id='A',
-            explanation='1) Dziedzina: $x + 4 \\ne 0 \\implies x \\ne -4$.\n2) Zerowanie licznika: $x - 3 = 0 \\implies x = 3$.\nLiczba 3 należy do dziedziny, więc jest jedynym rozwiązaniem.',
-            cke_trap='Liczba $-4$ zeruje mianownik, więc nie może być rozwiązaniem!'
-        ),
-        make_sc_task(
-            task_id='task-7-2-2',
-            source='Matura maj 2024 • Zad. 7',
-            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie $\\frac{x+1}{(x+2)(x-3)} = 0$ w zbiorze liczb rzeczywistych',
-            options_data=[
-                ('A', 'nie ma rozwiązania.'),
-                ('B', 'ma dokładnie jedno rozwiązanie: $(-1)$.'),
-                ('C', 'ma dokładnie dwa rozwiązania: $(-2)$ oraz $3$.'),
-                ('D', 'ma dokładnie trzy rozwiązania: $(-1)$, $(-2)$ oraz $3$.')
-            ],
-            correct_id='B',
-            explanation='KROK 1 (Dziedzina): Mianownik ułamka musi być różny od zera: $(x+2)(x-3) \\neq 0$, co oznacza, że $x \\neq -2$ oraz $x \\neq 3$. Zatem dziedzina to $D = \\mathbb{R} \\setminus \\{-2, 3\\}$.\nKROK 2 (Zerowanie licznika): Ułamek jest równy zero, gdy licznik jest równy zero: $x + 1 = 0 \\implies x = -1$.\nKROK 3 (Weryfikacja z dziedziną): Liczba $-1$ należy do dziedziny ($(-1) \\in D$), więc jest poprawnym i jedynym rozwiązaniem tego równania.',
-            cke_trap='Liczby zerujące mianownik $(-2$ oraz $3)$ NIE MOGĄ być rozwiązaniami równania! Dzielenie przez zero jest wykroczeniem matematycznym. Dystraktory C i D to pułapki na nieuwzględnienie dziedziny.'
-        ),
-        make_sc_task(
-            task_id='task-7-2-3',
-            source='Pułapka CKE • Wszystkie pierwiastki odpadają',
-            question='Równanie $\\frac{x^2 - 4}{x - 2} = 0$ ma w zbiorze liczb rzeczywistych',
-            options_data=[
-                ('A', 'Dokładnie jedno rozwiązanie: $x = -2$'),
-                ('B', 'Dwa rozwiązania: $x = 2$ oraz $x = -2$'),
-                ('C', 'Jedno rozwiązanie: $x = 2$'),
+                ('A', '$x = -1$'),
+                ('B', '$x = 3$'),
+                ('C', '$x = 3$ oraz $x = -1$'),
                 ('D', 'Brak rozwiązań')
             ],
+            correct_id='B',
+            explanation='Ułamek jest równy zero, gdy licznik równa się zero, a mianownik jest różny od zera: $x - 3 = 0 \\longrightarrow x = 3$. Dziedzina to $x \\ne -1$. Ponieważ $3 \\ne -1$, rozwiązaniem jest $x = 3$.',
+            cke_trap='Liczba $x = -1$ zeruje mianownik, więc nie może być rozwiązaniem!'
+        ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
+        make_sc_task(
+            task_id='task-7-2-2',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Równanie $\\frac{x^2 - 4}{x - 2} = 0$ w zbiorze liczb rzeczywistych',
+            options_data=[
+                ('A', 'ma dwa rozwiązania: $x = 2$ oraz $x = -2$'),
+                ('B', 'nie ma rozwiązań'),
+                ('C', 'ma dokładnie jedno rozwiązanie: $x = -2$'),
+                ('D', 'ma dokładnie jedno rozwiązanie: $x = 2$')
+            ],
+            correct_id='C',
+            explanation='Dziedzina: $x - 2 \\ne 0 \\longrightarrow x \\ne 2$. Licznik zeruje się dla $x^2 = 4 \\longrightarrow x = 2$ lub $x = -2$. Kandydat $x = 2$ odpada ze względu na dziedzinę. Jedynym rozwiązaniem jest $x = -2$.',
+            cke_trap='Zawsze konfrontuj kandydatów z licznika z dziedziną mianownika! Odrzucenie pierwiastka obcego to klucz do punktu.'
+        ),
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-7-2-3',
+            source='Matura maj 2023 • Zad. 8',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie $\\frac{(x+1)(x-1)^2}{(x-1)(x+1)^2} = 0$ w zbiorze liczb rzeczywistych',
+            options_data=[
+                ('A', 'nie ma rozwiązania.'),
+                ('B', 'ma dokładnie jedno rozwiązanie: $-1$.'),
+                ('C', 'ma dokładnie jedno rozwiązanie: $1$.'),
+                ('D', 'ma dokładnie dwa rozwiązania: $-1$ oraz $1$.')
+            ],
             correct_id='A',
-            explanation='Dziedzina: $x \\ne 2$. Licznik: $x^2 - 4 = 0 \\implies x = 2$ (odpada!) lub $x = -2$ (zostaje). Równanie ma 1 rozwiązanie: $x = -2$.',
-            cke_trap='Liczba $2$ zeruje mianownik i odpada, ale $-2$ nie zeruje mianownika i jest poprawnym rozwiązaniem.'
+            explanation='1) Dziedzina: mianownik $(x-1)(x+1)^2 \\ne 0 \\longrightarrow x \\ne 1$ oraz $x \\ne -1$.\n2) Licznik $(x+1)(x-1)^2 = 0 \\longrightarrow x = -1$ lub $x = 1$.\n3) Obie liczby zerujące licznik są wykluczone przez mianownik! Zatem równanie nie ma żadnego rozwiązania rzeczywistego.',
+            cke_trap='Wszystkie pierwiastki licznika okazały się pierwiastkami obcymi. Odpowiedź to: brak rozwiązania.'
         ),
-        make_tf_task(
-            task_id='task-7-2-4',
-            source='Trening CKE • Brak rozwiązań w liczniku',
-            question='Oceń prawdziwość zdania: Równanie $\\frac{x^2 + 1}{x - 3} = 0$ nie posiada żadnych rozwiązań rzeczywistych.',
-            correct_tf='PRAWDA',
-            explanation='Ułamek zeruje się wtedy, gdy licznik jest zerem. Wyrażenie $x^2 + 1$ jest zawsze większe od zera i nigdy nie równa się zero, więc równanie nie ma rozwiązań.',
-            cke_trap='Nawet jeśli mianownik ma sens, brak zer w liczniku oznacza brak rozwiązań całego równania.'
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
+            task_id='task-7-2-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Oblicz jedyne rozwiązanie rzeczywiste równania $\\frac{2x - 6}{x + 4} = 0$. Wpisz wynik w pole poniżej.',
+            correct_val='3',
+            explanation='Dziedzina: $x \\ne -4$.\nPrzyrównujemy licznik do zera: $2x - 6 = 0 \\longrightarrow 2x = 6 \\longrightarrow x = 3$.\nLiczba $3 \\ne -4$, więc rozwiązaniem jest $3$.',
+            cke_trap='Dzielenie przez $2$: $2x = 6 \\implies x = 3$.'
+        ),
+        # Zadanie 5: Zadanie otwarte CKE z kryteriami
+        make_open_task(
             task_id='task-7-2-5',
-            source='Utrwalenie • Suma rozwiązań',
-            question='Oblicz sumę wszystkich rozwiązań rzeczywistych równania $\\frac{(x^2 - 9)(x - 5)}{x + 3} = 0$.',
-            correct_val=8,
-            explanation='Dziedzina: $x \\ne -3$. Licznik zeruje się dla $3, -3, 5$. Liczba $-3$ odpada w dziedzinie. Zostają $3$ oraz $5$. Ich suma wynosi $3 + 5 = 8$.',
-            cke_trap='Gdybyś nie odrzucił $-3$, otrzymałbyś błędną sumę $5$.'
+            source='Informator CKE • Zad. 19',
+            question='Rozwiąż równanie $\\frac{3x - 6}{x - 2} = x + 1$. Zapisz pełne obliczenia z uwzględnieniem dziedziny.',
+            points=2,
+            scoring_key='1 pkt – wyznaczenie dziedziny $D = \\mathbb{R} \\setminus \\{2\\}$ i doprowadzenie równania do postaci kwadratowej: $x^2 - 4x + 4 = 0$ (lub $(x - 2)^2 = 0$).\\n2 pkt – wyznaczenie kandydata $x = 2$, odrzucenie go ze względu na założenie $x \\ne 2$ i sformułowanie poprawnej odpowiedzi: równanie nie ma rozwiązań ($x \\in \\emptyset$).',
+            explanation='1) Dziedzina: mianownik $x - 2 \\ne 0 \\longrightarrow x \\ne 2$, czyli $D = \\mathbb{R} \\setminus \\{2\\}$.\n2) Mnożymy obie strony przez $(x - 2)$:\n$$3x - 6 = (x + 1)(x - 2)$$\n$$3x - 6 = x^2 - 2x + x - 2$$\n$$3x - 6 = x^2 - x - 2$$\n3) Przenosimy na jedną stronę:\n$$x^2 - 4x + 4 = 0$$\n$$(x - 2)^2 = 0 \\longrightarrow x = 2$$\n4) Konfrontacja z dziedziną:\nLiczba $x = 2$ nie należy do dziedziny ($2 \\notin D$).\nZatem równanie nie ma rozwiązań rzeczywistych ($x \\in \\emptyset$).',
+            cke_trap='Bez wyznaczenia dziedziny uczeń poda $x = 2$ i straci punkty. Mianownik dla $x=2$ daje dzielenie przez zero!'
         )
     ]
     l2 = make_lesson(
         lesson_id='lesson-7-2',
         topic_id=topic_id,
         title='Rozwiązywanie równań wymiernych i eliminacja pierwiastków obcych',
-        concept_essence='Równanie w postaci ułamka przyrównanego do zera rozwiązuje się w 3 krokach: 1) KROK 1: Dziedzina — sprawdzasz mianownik $M(x) \\ne 0$ i wykluczasz niebezpieczne liczby. 2) KROK 2: Licznik do zera — ułamek znika, rozwiązujesz $L(x) = 0$ i otrzymujesz kandydatów na pierwiastki. 3) KROK 3: Sito dziedziny — sprawdzasz każdego kandydata. Jeśli którykolwiek zerował mianownik, bezwzględnie go skreślasz (to tzw. pierwiastek obcy!).',
-        matura_context='Żelazny pewniak na każdej maturze (Maj 2024 zad. 8, Czerwiec 2023 zad. 6). Zawsze jeden z pierwiastków licznika odpada!',
+        concept_essence='Ułamek równa się zero tylko wtedy, gdy jego licznik jest zerem. Procedura maturalna ma 3 kroki: 1) Wyznaczasz dziedzinę (mianownik $\\ne 0$). 2) Przyrównujesz licznik do zera i wyznaczasz kandydatów na rozwiązania. 3) Porównujesz otrzymane liczby z dziedziną — jeśli któryś kandydat zeruje mianownik, jest tzw. pierwiastkiem obcym i musisz go bezwzględnie odrzucić!',
+        matura_context='Podchwytliwe zadania zamknięte i otwarte za 1–2 pkt. Egzaminatorzy CKE celowo dobierają licznik tak, by miał wspólny pierwiastek z mianownikiem.',
         core_formulas=[
             {
-                'title': 'Rozwiązywanie równania wymiernego',
+                'title': 'Równanie ułamkowe równe zero',
                 'latex': '\\frac{L(x)}{M(x)} = 0 \\longrightarrow \\begin{cases} L(x) = 0 \\\\ M(x) \\neq 0 \\end{cases}',
                 'description': 'Licznik musi być zerem, a mianownik nie może być zerem.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{x - 2}{x + 1} = 0 \\longrightarrow x = 2 \\quad (D = \\mathbb{R} \\setminus \\{-1\\})',
-                'mnemonic': 'Licznik do zera, mianownik do kosza (ale po sprawdzeniu dziedziny!).',
-                'matura_tip': 'Zawsze zapisz dziedzinę obok równania.'
+                'example': '\\frac{x - 4}{x + 2} = 0 \\longrightarrow x = 4 \\quad (x \\neq -2)',
+                'mnemonic': 'Góra do zera, dół do kosza (ale po sprawdzeniu dziedziny!).',
+                'matura_tip': 'Zawsze zapisuj założenie z mianownika obok równania.'
             },
             {
                 'title': 'Eliminacja pierwiastka obcego',
-                'latex': 'x_k \\notin D \\longrightarrow x_k \\text{ nie jest rozwiązaniem}',
-                'description': 'Liczba zerująca mianownik jest natychmiast odrzucana.',
+                'latex': 'x_0 \\in \\text{rozwiązań } L(x) = 0 \\quad \\text{oraz} \\quad M(x_0) = 0 \\longrightarrow x_0 \\notin D',
+                'description': 'Kandydat zerujący mianownik odpada z ostatecznej odpowiedzi.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{(x-1)(x-2)}{x-1} = 0 \\longrightarrow x = 2 \\quad (x = 1 \\text{ odpada})',
-                'mnemonic': 'Jeśli mianownik mówi nie, pierwiastek wylatuje.',
-                'matura_tip': 'CKE w 99% przypadków podkłada wspólny czynnik w liczniku i mianowniku.'
+                'example': '\\frac{x^2 - 1}{x - 1} = 0 \\longrightarrow x = -1 \\quad (x = 1 \\text{ odpada})',
+                'mnemonic': 'Pierwiastek z mianownika to fałszywy przyjaciel.',
+                'matura_tip': 'Napisz wyraźnie w arkuszu: "x = 2 nie należy do dziedziny".'
             }
         ],
         worked_example={
-            'problem': 'Rozwiąż równanie $\\frac{(x - 4)(x + 2)}{x^2 - 4} = 0$.',
+            'problem': 'Rozwiąż równanie $\\frac{x^2 - 9}{x + 3} = 0$.',
             'steps': [
-                {'num': 1, 'label': 'Wyznaczenie dziedziny', 'text': '$x^2 - 4 \\ne 0 \\implies x \\ne 2$ oraz $x \\ne -2$. Dziedzina: $D = \\mathbb{R} \\setminus \\{-2, 2\\}$.'},
-                {'num': 2, 'label': 'Przyrównanie licznika do zera', 'text': '$(x - 4)(x + 2) = 0 \\implies x = 4$ lub $x = -2$.'},
-                {'num': 3, 'label': 'Weryfikacja z dziedziną i wynik CKE', 'text': 'Kandydat $x = 4 \\in D$ (poprawny). Kandydat $x = -2 \\notin D$ (odpada!). Jedynym rozwiązaniem jest $x = 4$.'}
+                {'num': 1, 'label': 'Założenie z mianownika', 'text': '$x + 3 \\ne 0 \\implies x \\ne -3$. Dziedzina: $D = \\mathbb{R} \\setminus \\{-3\\}$.'},
+                {'num': 2, 'label': 'Przyrównanie licznika do zera', 'text': '$x^2 - 9 = 0 \\implies x = 3$ lub $x = -3$.'},
+                {'num': 3, 'label': 'Sprawdzenie z dziedziną i wynik CKE', 'text': 'Liczba $-3$ odpada, bo $-3 \\notin D$. Jedynym rozwiązaniem jest $x = 3$.'}
             ],
-            'result': 'x = 4'
+            'result': 'x = 3'
         },
-        exam_trap='Typowy błąd: Podanie obu liczb z licznika jako odpowiedzi bez sprawdzenia mianownika.\n\nPoprawnie: Zawsze podstaw otrzymane wyniki do mianownika. Jeśli mianownik da 0, skreśl ten wynik natychmiast!',
+        exam_trap='Typowy błąd: Podanie dwóch rozwiązań $x = 3$ oraz $x = -3$ bez sprawdzenia dziedziny.\n\nPoprawnie: Liczba $-3$ daje $0$ w mianowniku, więc odpada. Rozwiązaniem jest tylko $x = 3$.',
         visuals=v2,
         tasks=l2_tasks
     )
     lessons.append(l2)
 
     # ----------------------------------------------------
-    # Lekcja 7.3: Równania z proporcji (mnożenie na krzyż) (L1.7.3)
+    # Lekcja 7.3: Równania wymierne z proporcji (L1.7.3)
     # ----------------------------------------------------
     v3 = get_topic_07_visuals(2)
     l3_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-7-3-1',
-            source='Rozgrzewka • Prosta proporcja',
-            question='Rozwiązaniem równania $\\frac{x + 1}{2} = \\frac{3}{4}$ jest liczba',
+            source='Trening JASNE • Wzorzec CKE',
+            question=r'Rozwiązaniem równania $\frac{x}{3} = \frac{4}{6}$ jest',
             options_data=[
-                ('A', '$x = \\frac{1}{2}$'),
-                ('B', '$x = 1$'),
-                ('C', '$x = \\frac{5}{2}$'),
-                ('D', '$x = -\\frac{1}{2}$')
+                ('A', '$x = 1$'),
+                ('B', '$x = 2$'),
+                ('C', '$x = 12$'),
+                ('D', '$x = 4$')
             ],
-            correct_id='A',
-            explanation='Mnożymy na krzyż: $4(x + 1) = 2 \\cdot 3 \\implies 4x + 4 = 6 \\implies 4x = 2 \\implies x = \\frac{2}{4} = \\frac{1}{2}$.',
-            cke_trap='Pamiętaj o wymnożeniu CAŁEGO licznika $(x + 1)$ przez 4: $4x + 4$, a nie samo $4x + 1$.'
+            correct_id='B',
+            explanation=r'Mnożymy na krzyż: $6 \cdot x = 3 \cdot 4 \longrightarrow 6x = 12 \longrightarrow x = 2$.',
+            cke_trap='Iloczyn wyrazów skrajnych równa się iloczynowi wyrazów środkowych.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
             task_id='task-7-3-2',
-            source='Matura Maj 2023 • Zad. zbliżone',
-            question='Rozwiązaniem równania $\\frac{2}{x - 1} = \\frac{3}{x + 2}$ jest liczba',
+            source='Trening JASNE • Wzorzec CKE',
+            question='W równaniu $\\frac{x + 1}{2} = \\frac{3}{x - 1}$ mnożenie na krzyż daje równanie',
+            options_data=[
+                ('A', '$(x + 1)(x - 1) = 6$'),
+                ('B', '$x^2 - 1 = 5$'),
+                ('C', '$x + 1 = 6$'),
+                ('D', '$(x + 1) \\cdot 3 = 2(x - 1)$')
+            ],
+            correct_id='A',
+            explanation='Mnożymy po przekątnych: $(x + 1) \\cdot (x - 1) = 2 \\cdot 3 = 6$. Pamiętaj o nawiasach przy wielomianach!',
+            cke_trap='Nigdy nie mnóż bez nawiasów: zapis $x + 1 \\cdot x - 1$ to częsty błąd zapisu.'
+        ),
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-7-3-3',
+            source='Informator CKE • Zad. 18',
+            question='Rozwiązaniem równania $\\frac{x - 1}{x + 2} = \\frac{2}{3}$ w zbiorze liczb rzeczywistych jest liczba',
             options_data=[
                 ('A', '$7$'),
                 ('B', '$-7$'),
                 ('C', '$5$'),
-                ('D', '$-5$')
+                ('D', '$1$')
             ],
             correct_id='A',
-            explanation='1) Dziedzina: $x \\ne 1$ oraz $x \\ne -2$.\n2) Mnożymy na krzyż: $2(x + 2) = 3(x - 1) \\implies 2x + 4 = 3x - 3$.\n3) Przenosimy: $-x = -7 \\implies x = 7$. Liczba 7 należy do dziedziny.',
-            cke_trap='Zawsze zapisz oba wyrażenia w nawiasach: $2(x + 2) = 3(x - 1)$.'
+            explanation='Dziedzina: $x \\ne -2$.\nMnożymy na krzyż:\n$$3(x - 1) = 2(x + 2)$$\n$$3x - 3 = 2x + 4$$\n$$3x - 2x = 4 + 3 \\longrightarrow x = 7$$\nLiczba $7 \\ne -2$, więc spełnia równanie.',
+            cke_trap='Uważaj na wymnożenie obu składników w nawiasie przez liczbę stojącą przed nawiasem: $2(x+2) = 2x + 4$.'
         ),
-        make_sc_task(
-            task_id='task-7-3-3',
-            source='Pułapka CKE • Rozwiązanie odrzucone w proporcji',
-            question='Równanie $\\frac{x - 2}{x + 3} = \\frac{x - 2}{2x + 1}$ dla $x \\ne -3$ oraz $x \\ne -0{,}5$',
-            options_data=[
-                ('A', 'Ma dokładnie jedno rozwiązanie: $x = 2$'),
-                ('B', 'Ma dwa rozwiązania: $x = 2$ oraz $x = -2$'),
-                ('C', 'Ma dwa rozwiązania: $x = 2$ oraz $x = 4$'),
-                ('D', 'Nie ma rozwiązań')
-            ],
-            correct_id='A',
-            explanation='Liczniki są równe: $x - 2 = 0 \\implies x = 2$. Przyrównanie mianowników: $x + 3 = 2x + 1 \\implies x = 2$. Oba przypadki dają to samo rozwiązanie: $x = 2$, które należy do dziedziny.',
-            cke_trap='Ułamek jest spełniony, gdy liczniki są równe zero LUB mianowniki są sobie równe.'
-        ),
-        make_tf_task(
-            task_id='task-7-3-4',
-            source='Trening CKE • Zasada proporcji',
-            question='Oceń prawdziwość zdania: Równanie $\\frac{A}{B} = \\frac{C}{D}$ po wyznaczeniu dziedziny jest równoważne równaniu $A \\cdot D = B \\cdot C$.',
-            correct_tf='PRAWDA',
-            explanation='To fundamentalna własność proporcji: iloczyn wyrazów skrajnych równa się iloczynowi wyrazów środkowych.',
-            cke_trap='Pamiętaj o konieczności wyznaczenia dziedziny ($B \\ne 0$ i $D \\ne 0$) przed mnożeniem.'
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
+            task_id='task-7-3-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Oblicz rozwiązanie równania $\\frac{5}{x + 2} = \\frac{3}{x - 2}$. Wpisz wynik w pole poniżej.',
+            correct_val='8',
+            explanation='Dziedzina: $x \\ne -2$ oraz $x \\ne 2$.\nMnożymy na krzyż:\n$$5(x - 2) = 3(x + 2)$$\n$$5x - 10 = 3x + 6$$\n$$2x = 16 \\longrightarrow x = 8$$\nLiczba $8$ należy do dziedziny.',
+            cke_trap='Pamiętaj o znaku minus przy wymnażaniu: $5 \\cdot (-2) = -10$.'
+        ),
+        # Zadanie 5: Zadanie otwarte CKE z kryteriami
+        make_open_task(
             task_id='task-7-3-5',
-            source='Utrwalenie • Rozwiązanie proporcji',
-            question='Rozwiąż równanie $\\frac{3x - 1}{4} = \\frac{2x + 5}{3}$. Podaj wartość liczby $x$.',
-            correct_val=23,
-            explanation='Mnożymy na krzyż: $3(3x - 1) = 4(2x + 5) \\implies 9x - 3 = 8x + 20 \\implies 9x - 8x = 20 + 3 \\implies x = 23$.',
-            cke_trap='Uważaj na znaki przy wymnażaniu: $3 \\cdot (-1) = -3$ oraz $4 \\cdot 5 = 20$.'
+            source='Informator CKE • Zad. 20',
+            question='Rozwiąż równanie $\\frac{3x - 1}{x + 5} = \\frac{2x - 3}{x + 5}$. Zapisz obliczenia.',
+            points=2,
+            scoring_key='1 pkt – wyznaczenie dziedziny równania $x \\ne -5$ i przyrównanie liczników (lub pomnożenie przez wspólny mianownik): $3x - 1 = 2x - 3$.\\n2 pkt – rozwiązanie równania liniowego $x = -2$, sprawdzenie warunku dziedziny ($-2 \\ne -5$) i zapisanie odpowiedzi $x = -2$.',
+            explanation='1) Dziedzina: mianownik $x + 5 \\ne 0 \\longrightarrow x \\ne -5$, czyli $D = \\mathbb{R} \\setminus \\{-5\\}$.\n2) Mianowniki obu ułamków są identyczne, więc dla $x \\ne -5$ przyrównujemy liczniki:\n$$3x - 1 = 2x - 3$$\n$$3x - 2x = -3 + 1$$\n$$x = -2$$\n3) Sprawdzamy z dziedziną: $-2 \\ne -5$, zatem liczba $-2$ jest poprawnym rozwiązaniem równania.',
+            cke_trap='Gdyby z obliczeń wyszło $x = -5$, równanie nie miałoby rozwiązań, ponieważ $-5$ zeruje mianownik.'
         )
     ]
     l3 = make_lesson(
         lesson_id='lesson-7-3',
         topic_id=topic_id,
         title='Równania wymierne z proporcji i mnożenie na krzyż',
-        concept_essence='Gdy po lewej i prawej stronie masz po jednym ułamku: $\\frac{A}{B} = \\frac{C}{D}$, najwygodniejszą techniką jest mnożenie na krzyż: $A \\cdot D = B \\cdot C$. Pozbywasz się kresek ułamkowych jednym ruchem! Pamiętaj jednak o żelaznej dyscyplinie: 1) Najpierw dziedzina: $B \\ne 0$ oraz $D \\ne 0$. 2) Składniki wielowyrazowe ZAWSZE bierz w nawiasy: $A \\cdot (D) = B \\cdot (C)$. 3) Po wyznaczeniu wyniku porównaj go z dziedziną.',
-        matura_context='Regularnie pojawia się w zadaniach zamkniętych i zadaniach otwartych krótkiej odpowiedzi.',
+        concept_essence='Gdy po obu stronach równania masz po jednym ułamku: $\\frac{A}{B} = \\frac{C}{D}$, najwygodniejszą metodą jest mnożenie po przekątnych (tzw. mnożenie na krzyż): $A \\cdot D = B \\cdot C$. Zanim to zrobisz, ZAWSZE zapisz w nawiasach całe wyrażenia dwumianowe i wyznacz dziedzinę: $B \\ne 0$ oraz $D \\ne 0$. Po wymnożeniu otrzymujesz proste równanie liniowe lub kwadratowe.',
+        matura_context='Podstawowy typ równania wymiernego za 1–2 pkt w każdym arkuszu maturalnym.',
         core_formulas=[
             {
-                'title': 'Mnożenie na krzyż (własność proporcji)',
-                'latex': '\\frac{a}{b} = \\frac{c}{d} \\longrightarrow a \\cdot d = b \\cdot c \\quad (b \\neq 0, d \\neq 0)',
-                'description': 'Iloczyn po przekątnych jest sobie równy.',
+                'title': 'Mnożenie na krzyż (proporcja)',
+                'latex': '\\frac{a}{b} = \\frac{c}{d} \\longrightarrow a \\cdot d = b \\cdot c \\quad (b, d \\neq 0)',
+                'description': 'Iloczyn po jednej przekątnej równa się iloczynowi po drugiej.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{x}{3} = \\frac{4}{6} \\longrightarrow 6x = 12 \\longrightarrow x = 2',
-                'mnemonic': 'Mnożenie po przekątnej likwiduje ułamki.',
-                'matura_tip': 'Zawsze otaczaj wielomiany nawiasami.'
+                'example': '\\frac{x}{2} = \\frac{6}{3} \\longrightarrow 3x = 12 \\longrightarrow x = 4',
+                'mnemonic': 'Przekątne mnożą się na krzyż.',
+                'matura_tip': 'Pamiętaj o nawiasach: $(x+1)(x-2)$, a nie $x+1 \\cdot x-2$.'
             },
             {
-                'title': 'Równanie z liczbą po prawej stronie',
-                'latex': '\\frac{f(x)}{g(x)} = c \\longrightarrow f(x) = c \\cdot g(x) \\quad (g(x) \\neq 0)',
-                'description': 'Liczbę c traktujemy jako ułamek c/1.',
+                'title': 'Dziedzina proporcji',
+                'latex': 'b \\neq 0 \\quad \\text{oraz} \\quad d \\neq 0',
+                'description': 'Oba mianowniki muszą być jednocześnie różne od zera.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{2x - 1}{x + 3} = 1 \\longrightarrow 2x - 1 = x + 3 \\longrightarrow x = 4',
-                'mnemonic': 'Mnożysz obie strony przez mianownik.',
-                'matura_tip': 'Pamiętaj o dziedzinie: x != -3.'
+                'example': '\\frac{1}{x - 1} = \\frac{2}{x + 3} \\longrightarrow x \\neq 1 \\text{ oraz } x \\neq -3',
+                'mnemonic': 'Sprawdź oba doły ułamków.',
+                'matura_tip': 'Nawet banalne mnożenie na krzyż wymaga założeń wstępnych.'
             }
         ],
         worked_example={
-            'problem': 'Rozwiąż równanie $\\frac{x + 3}{x - 2} = \\frac{2x - 1}{2x + 1}$.',
+            'problem': 'Rozwiąż równanie $\\frac{2x - 1}{x + 2} = \\frac{3}{4}$.',
             'steps': [
-                {'num': 1, 'label': 'Wyznaczenie dziedziny', 'text': '$x - 2 \\ne 0 \\implies x \\ne 2$ oraz $2x + 1 \\ne 0 \\implies x \\ne -0{,}5$. Dziedzina: $D = \\mathbb{R} \\setminus \\{-0{,}5, 2\\}$.'},
-                {'num': 2, 'label': 'Mnożenie na krzyż w nawiasach', 'text': '$(x + 3)(2x + 1) = (x - 2)(2x - 1)$.'},
-                {'num': 3, 'label': 'Wymnożenie i redukcja wyrazów podobnych', 'text': '$2x^2 + 7x + 3 = 2x^2 - 5x + 2 \\implies 12x = -1 \\implies x = -\\frac{1}{12}$. Wynik należy do dziedziny.'}
+                {'num': 1, 'label': 'Wyznaczenie dziedziny', 'text': '$x + 2 \\ne 0 \\implies x \\ne -2$. Dziedzina: $D = \\mathbb{R} \\setminus \\{-2\\}$.'},
+                {'num': 2, 'label': 'Mnożenie na krzyż', 'text': '$4 \\cdot (2x - 1) = 3 \\cdot (x + 2) \\implies 8x - 4 = 3x + 6$.'},
+                {'num': 3, 'label': 'Rozwiązanie równania liniowego', 'text': '$8x - 3x = 6 + 4 \\implies 5x = 10 \\implies x = 2$.'},
+                {'num': 4, 'label': 'Sprawdzenie z dziedziną i wynik CKE', 'text': '$2 \\ne -2$, więc rozwiązaniem jest $x = 2$.'}
             ],
-            'result': 'x = -\\frac{1}{12}'
+            'result': 'x = 2'
         },
-        exam_trap='Typowy błąd: Mnożenie bez nawiasów: $x + 3 \\cdot 2x + 1$ zamiast $(x + 3)(2x + 1)$.\n\nPoprawnie: Kreska ułamkowa działa jak nawias — przy mnożeniu na krzyż ZAWSZE otaczaj liczniki i mianowniki nawiasami.',
+        exam_trap='Typowy błąd: Wymnażanie na krzyż bez nawiasów: $4 \\cdot 2x - 1 = 3 \\cdot x + 2$ (brak wymnożenia wyrazów wolnych $-1$ i $+2$).\n\nPoprawnie: Zawsze bierz cały licznik i mianownik w nawias: $4(2x - 1) = 3(x + 2)$.',
         visuals=v3,
         tasks=l3_tasks
     )
@@ -343,6 +363,10 @@ def build_topic_07():
         'tier': 'Tier S+',
         'badge': 'NA 30% • PEWNIAK MATURALNY',
         'estimated_time_formatted': '3 lekcje (~15 min)',
-        'description': 'Wyznaczanie dziedziny ułamków algebraicznych, rozwiązywanie równań wymiernych, eliminacja pierwiastków obcych oraz metoda proporcji.',
+        'description': 'Dziedzina wyrażenia wymiernego, warunek mianownika różnego od zera, eliminacja pierwiastków obcych oraz rozwiązywanie równań z proporcji.',
         'lessons': lessons
     }
+
+if __name__ == '__main__':
+    t = build_topic_07()
+    print(f"Pomyślnie zbudowano {t['title']} ({len(t['lessons'])} lekcje, {sum(len(l['tasks']) for l in t['lessons'])} zadań).")

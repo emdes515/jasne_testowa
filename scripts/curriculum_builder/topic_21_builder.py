@@ -36,7 +36,7 @@ def build_topic_21():
             ],
             correct_id='A',
             explanation=r'Płot tworzą dwa boki o długości $x$ oraz jeden bok o długości $y$.' + '\n' +
-                        r'Równanie długości płotu: $2x + y = 120 \implies y = 120 - 2x$.' + '\n' +
+                        r'Równanie długości płotu: $2x + y = 120 \longrightarrow y = 120 - 2x$.' + '\n' +
                         r'Wzór na pole prostokąta to $P = x \cdot y$.' + '\n' +
                         r'Podstawiamy wyznaczone $y$:' + '\n' +
                         r'$$P(x) = x(120 - 2x) = -2x^2 + 120x$$' + '\n' +
@@ -56,7 +56,7 @@ def build_topic_21():
                 ('D', r'$I(x) = -x^2 + 10x$'),
             ],
             correct_id='A',
-            explanation=r'Mamy $x + y = 20 \implies y = 20 - x$.' + '\n' +
+            explanation=r'Mamy $x + y = 20 \longrightarrow y = 20 - x$.' + '\n' +
                         r'Iloczyn liczb to $I(x) = x \cdot y = x(20 - x) = -x^2 + 20x$.',
             cke_trap=r'Współczynnik przy $x^2$ wynosi $-1$, ponieważ $x \cdot (-x) = -x^2$.'
         ),
@@ -73,27 +73,31 @@ def build_topic_21():
                 ('D', r'$P(a) = a^2 - 40a$'),
             ],
             correct_id='A',
-            explanation=r'Obwód prostokąta: $2a + 2b = 80 \implies a + b = 40 \implies b = 40 - a$.' + '\n' +
+            explanation=r'Obwód prostokąta: $2a + 2b = 80 \longrightarrow a + b = 40 \longrightarrow b = 40 - a$.' + '\n' +
                         r'Wzór na pole: $P(a) = a \cdot b = a(40 - a) = -a^2 + 40a$.',
             cke_trap=r'Obwód to $2a + 2b = 80$, więc suma dwóch boków to połowa obwodu: $a + b = 40$, a nie $80$.'
         ),
-        make_tf_task(
-            task_id='task-21-1-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Wykres funkcji pola $P(x) = -2x^2 + 120x$ jest parabolą z ramionami skierowanymi w dół, co oznacza, że funkcja ta osiąga wartość największą.',
-            correct_tf='P',
-            explanation=r'Współczynnik kierunkowy przy najwyższej potędze to $a = -2 < 0$.' + '\n' +
-                        r'Gdy $a < 0$, ramiona paraboli są skierowane w dół, a wierzchołek paraboli jest punktem, w którym funkcja przyjmuje wartość największą (maksimum). Zdanie jest prawdziwe.',
-            cke_trap=r'Gdy $a < 0$, funkcja kwadratowa osiąga maksimum. Gdy $a > 0$, funkcja osiąga minimum.'
-        ),
         make_numeric_task(
-            task_id='task-21-1-5',
+            task_id='task-21-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Funkcja zysku ze sprzedaży dana jest wzorem $Z(x) = -x^2 + 60x - 100$. Oblicz wartość współczynnika $b$ tej funkcji kwadratowej. Wpisz wynik w pole poniżej.',
             correct_val=60,
             explanation=r'W postaci ogólnej $f(x) = ax^2 + bx + c$ mamy $a = -1$, $b = 60$ oraz $c = -100$. Współczynnik $b = 60$.',
             cke_trap=r'Współczynnik $b$ to liczba stojąca przy zmiennej $x$ w pierwszej potędze.'
+        ),
+        make_open_task(
+            task_id='task-21-1-5',
+            source='Trening JASNE • Wzorzec CKE',
+            question=r'Suma długości dwóch boków prostokąta wynosi $30\text{ cm}$. Wyznacz pole tego prostokąta jako funkcję długości jednego z jego boków $x$.' + '\n' +
+                     r'Zapisz tę funkcję w postaci ogólnej $P(x) = ax^2 + bx$. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie długości drugiego boku prostokąta w zależności od x: y = 30 - x.' + '\n' +
+                        r'2 pkt – zapisanie wzoru funkcji pola w postaci ogólnej: P(x) = -x^2 + 30x.',
+            explanation=r'Krok 1: Oznaczmy boki prostokąta jako $x$ oraz $y$. Suma ich długości to $x + y = 30$, stąd:' + '\n' +
+                        r'$$y = 30 - x$$' + '\n' +
+                        r'Krok 2: Pole prostokąta to iloczyn długości jego boków:' + '\n' +
+                        r'$$P(x) = x \cdot y = x(30 - x) = -x^2 + 30x$$',
+            cke_trap=r'Pamiętaj o wymnożeniu nawiasu do postaci ogólnej: $x(30 - x) = -x^2 + 30x$.'
         )
     ]
     l1 = make_lesson(
@@ -113,13 +117,13 @@ def build_topic_21():
                 'latex': r'P(x) = x \cdot (L - kx) = -kx^2 + Lx',
                 'description': 'Zależność kwadratowa otrzymana z redukcji do jednej zmiennej.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 8'
+                'cke_page': 'str. 7–8'
             }
         ],
         worked_example={
             'problem': r'Obwód prostokąta wynosi $40$. Zapisz wzór na pole prostokąta w zależności od boku $x$.',
             'steps': [
-                r'Krok 1: $2x + 2y = 40 \implies x + y = 20 \implies y = 20 - x$.',
+                r'Krok 1: $2x + 2y = 40 \longrightarrow x + y = 20 \longrightarrow y = 20 - x$.',
                 r'Krok 2: Pole: $P(x) = x \cdot y = x(20 - x) = -x^2 + 20x$.'
             ],
             'result': r'P(x) = -x^2 + 20x'
@@ -151,7 +155,7 @@ def build_topic_21():
             correct_id='A',
             explanation=r'Wymiary geometryczne muszą być liczbami ściśle dodatnimi:' + '\n' +
                         r'1) $x > 0$' + '\n' +
-                        r'2) $y > 0 \implies 120 - 2x > 0 \implies 2x < 120 \implies x < 60$' + '\n' +
+                        r'2) $y > 0 \longrightarrow 120 - 2x > 0 \longrightarrow 2x < 120 \longrightarrow x < 60$' + '\n' +
                         r'Część wspólna obu warunków daje przedział obustronnie otwarty:' + '\n' +
                         r'$$D = (0, 60)$$' + '\n' +
                         r'Poprawna odpowiedź to A.',
@@ -171,7 +175,7 @@ def build_topic_21():
             ],
             correct_id='A',
             explanation=r'Warunki geometryczne na długości boków:' + '\n' +
-                        r'$$x > 0 \quad \text{oraz} \quad 40 - x > 0 \implies x < 40$$' + '\n' +
+                        r'$$x > 0 \quad \text{oraz} \quad 40 - x > 0 \longrightarrow x < 40$$' + '\n' +
                         r'Stąd $x \in (0, 40)$.',
             cke_trap=r'Przedział otwarty: dla $x = 0$ oraz $x = 40$ prostokąt degeneruje się do odcinka, więc nie ma powierzchni.'
         ),
@@ -188,28 +192,36 @@ def build_topic_21():
                 ('D', r'$\langle 0, 9 \rangle$'),
             ],
             correct_id='A',
-            explanation=r'Warunek $x > 0$ oraz $y > 0 \implies 18 - 2x > 0 \implies 2x < 18 \implies x < 9$.' + '\n' +
+            explanation=r'Warunek $x > 0$ oraz $y > 0 \longrightarrow 18 - 2x > 0 \longrightarrow 2x < 18 \longrightarrow x < 9$.' + '\n' +
                         r'Dziedzina to przedział otwarty $x \in (0, 9)$.',
-            cke_trap=r'Podstaw dokładnie warunek $18 - 2x > 0 \implies x < 9$. Dzielenie przez 2 daje 9, a nie 18.'
-        ),
-        make_tf_task(
-            task_id='task-21-2-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'W zadaniu optymalizacyjnym z kontekstem geometrycznym punkt wierzchołkowy $x_w$ musi bezwzględnie należeć do dziedziny $D$, aby stanowił rozwiązanie zadania.',
-            correct_tf='P',
-            explanation=r'Jeśli obliczony wierzchołek paraboli nie należy do dziedziny zadania, to nie może być fizycznym rozwiązaniem problemu.' + '\n' +
-                        r'W kryteriach oceniania CKE sprawdzenie warunku $x_w \in D$ jest obowiązkowym elementem rozwiązania. Zdanie jest prawdziwe.',
-            cke_trap=r'Zawsze dopisz w arkuszu maturalnym: $x_w \in D$ (np. $30 \in (0, 60)$). Brak tego zapisu może skutkować utratą punktu.'
+            cke_trap=r'Podstaw dokładnie warunek $18 - 2x > 0 \longrightarrow x < 9$. Dzielenie przez 2 daje 9, a nie 18.'
         ),
         make_numeric_task(
-            task_id='task-21-2-5',
+            task_id='task-21-2-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Dla boków prostokąta $x$ oraz $y = 50 - 5x$ wyznacz górną granicę dziedziny zmiennej $x$ (wartość, do której dąży otwarty przedział z prawej strony). Wpisz wynik w pole poniżej.',
             correct_val=10,
-            explanation=r'Warunek $y > 0 \implies 50 - 5x > 0 \implies 5x < 50 \implies x < 10$.' + '\n' +
+            explanation=r'Warunek $y > 0 \longrightarrow 50 - 5x > 0 \longrightarrow 5x < 50 \longrightarrow x < 10$.' + '\n' +
                         r'Górna granica dziedziny to 10.',
-            cke_trap=r'Rozwiązujemy prostą nierówność liniową: $50 - 5x > 0 \implies x < 10$.'
+            cke_trap=r'Rozwiązujemy prostą nierówność liniową: $50 - 5x > 0 \longrightarrow x < 10$.'
+        ),
+        make_open_task(
+            task_id='task-21-2-5',
+            source='Matura maj 2024 • Zad. 31',
+            question=r'Ogrodnik dysponuje siatką o długości $60\text{ m}$ i chce ogrodzić prostokątny wybieg podzielony na dwie jednakowe części siatką równoległą do jednego z boków.' + '\n' +
+                     r'Niech $x$ oznacza długość każdego z trzech równoległych odcinków siatki.' + '\n' +
+                     r'Zapisz pole tego wybiegu jako funkcję zmiennej $x$ oraz wyznacz dziedzinę geometryczną tej funkcji. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie wzoru funkcji pola: P(x) = x(30 - 1{,}5x) = -1{,}5x^2 + 30x.' + '\n' +
+                        r'2 pkt – poprawne wyznaczenie dziedziny geometrycznej jako przedziału otwartego: D = (0, 20).',
+            explanation=r'Krok 1: Ogrodzenie składa się z trzech odcinków o długości $x$ oraz dwóch odcinków o długości $y$:' + '\n' +
+                        r'$$3x + 2y = 60 \longrightarrow 2y = 60 - 3x \longrightarrow y = 30 - 1{,}5x$$' + '\n' +
+                        r'Krok 2: Pole powierzchni całego wybiegu:' + '\n' +
+                        r'$$P(x) = x \cdot y = x(30 - 1{,}5x) = -1{,}5x^2 + 30x$$' + '\n' +
+                        r'Krok 3: Wymiary geometryczne muszą być dodatnie:' + '\n' +
+                        r'$$x > 0 \quad \text{oraz} \quad 30 - 1{,}5x > 0 \longrightarrow 1{,}5x < 30 \longrightarrow x < 20$$' + '\n' +
+                        r'Dziedzina funkcji pola to przedział otwarty $D = (0, 20)$.',
+            cke_trap=r'Pamiętaj, że dziedzina w zadaniach geometrycznych musi być przedziałem OTWARTYM: $D = (0, 20)$.'
         )
     ]
     l2 = make_lesson(
@@ -236,7 +248,7 @@ def build_topic_21():
             'problem': r'Wyznacz dziedzinę funkcji $P(x) = x(80 - 4x)$.',
             'steps': [
                 r'Krok 1: Warunek 1: $x > 0$.',
-                r'Krok 2: Warunek 2: $80 - 4x > 0 \implies 4x < 80 \implies x < 20$.',
+                r'Krok 2: Warunek 2: $80 - 4x > 0 \longrightarrow 4x < 80 \longrightarrow x < 20$.',
                 r'Krok 3: Część wspólna: $D = (0, 20)$.'
             ],
             'result': r'D = (0, 20)'
@@ -309,28 +321,29 @@ def build_topic_21():
                         r'$$x_w = -\frac{b}{2a} = -\frac{-80}{2 \cdot 2} = \frac{80}{4} = 20$$',
             cke_trap=r'Dwa minusy dają plus: $-(-80) = +80$, więc $x_w = 20$.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-21-3-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Jeśli funkcja kwadratowa opisująca zysk ze sprzedaży ma ramiona skierowane w dół ($a < 0$), to zysk maksymalny jest równy rzędnej wierzchołka paraboli $q = P(x_w)$.',
-            correct_tf='P',
-            explanation=r'Dla paraboli z ramionami w dół ($a < 0$) najwyższym punktem wykresu jest wierzchołek $W(p, q)$.' + '\n' +
-                        r'Współrzędna $p = x_w$ to punkt, dla którego zysk jest maksymalny, a $q = P(x_w)$ to wartość tego maksymalnego zysku. Zdanie jest prawdziwe.',
-            cke_trap=r'Rozróżniaj: "dla jakiego x" (pytanie o $p = x_w$) od "ile wynosi największa wartość" (pytanie o $q = P(p)$).'
+            question=r'Funkcja pola prostokąta dana jest wzorem $P(x) = -x^2 + 40x$ dla $x \in (0, 40)$.' + '\n' +
+                     r'Oblicz wartość argumentu $x$, dla którego pole to jest największe. Wpisz wynik w pole poniżej.',
+            correct_val=20,
+            explanation=r'Funkcja $P(x) = -x^2 + 40x$ osiąga maksimum w wierzchołku paraboli:' + '\n' +
+                        r'$$x_w = -\frac{b}{2a} = -\frac{40}{2 \cdot (-1)} = \frac{40}{2} = 20$$' + '\n' +
+                        r'Wartość $20$ należy do dziedziny $(0, 40)$.',
+            cke_trap=r'Pamiętaj, że $a = -1$, więc w mianowniku mamy $2 \cdot (-1) = -2$. Minusy się upraszczają: $\frac{-40}{-2} = 20$.'
         ),
         make_open_task(
             task_id='task-21-3-5',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Drut o długości $40\text{ cm}$ zgięto tak, że utworzył ramkę prostokątną. Wyznacz wymiary tego prostokąta, dla których jego pole jest największe, oraz oblicz to największe pole. Zapisz obliczenia.',
             points=4,
-            scoring_key=r'1 pkt - zapisanie funkcji pola P(x) = x(20 - x) = -x^2 + 20x oraz dziedziny D = (0, 20).' + '\n' +
-                        r'2 pkt - uzasadnienie, że funkcja osiąga maksimum w wierzchołku (a = -1 < 0).' + '\n' +
-                        r'3 pkt - obliczenie x_w = 10 oraz sprawdzenie, że 10 należy do dziedziny D.' + '\n' +
-                        r'4 pkt - podanie drugiego wymiaru y = 10 cm (kwadrat) oraz obliczenie maksymalnego pola P = 100 cm^2.',
-            explanation=r'Krok 1: Obwód prostokąta wynosi $2x + 2y = 40 \implies x + y = 20 \implies y = 20 - x$.' + '\n' +
+            scoring_key=r'1 pkt – zapisanie funkcji pola P(x) = x(20 - x) = -x^2 + 20x oraz dziedziny D = (0, 20).' + '\n' +
+                        r'2 pkt – uzasadnienie, że funkcja osiąga maksimum w wierzchołku (a = -1 < 0).' + '\n' +
+                        r'3 pkt – obliczenie x_w = 10 oraz sprawdzenie, że 10 należy do dziedziny D.' + '\n' +
+                        r'4 pkt – podanie drugiego wymiaru y = 10 cm (kwadrat) oraz obliczenie maksymalnego pola P = 100 cm^2.',
+            explanation=r'Krok 1: Obwód prostokąta wynosi $2x + 2y = 40 \longrightarrow x + y = 20 \longrightarrow y = 20 - x$.' + '\n' +
                         r'Wzór funkcji pola: $P(x) = x(20 - x) = -x^2 + 20x$.' + '\n' +
-                        r'Dziedzina: $x > 0$ oraz $20 - x > 0 \implies x \in (0, 20)$.' + '\n' +
+                        r'Dziedzina: $x > 0$ oraz $20 - x > 0 \longrightarrow x \in (0, 20)$.' + '\n' +
                         r'Krok 2: Wykres funkcji $P(x)$ jest parabolą z ramionami skierowanymi w dół ($a = -1 < 0$), stąd funkcja osiąga wartość największą w wierzchołku.' + '\n' +
                         r'Krok 3: Obliczamy odciętą wierzchołka:' + '\n' +
                         r'$$x_w = -\frac{b}{2a} = -\frac{20}{2 \cdot (-1)} = 10$$' + '\n' +
@@ -355,16 +368,16 @@ def build_topic_21():
             {
                 'title': 'Odcięta wierzchołka paraboli',
                 'latex': r'x_w = -\frac{b}{2a}',
-                'description': 'Karta wzorów CKE str. 8.',
+                'description': 'Karta wzorów CKE str. 7–8 (postać ogólna i wierzchołek paraboli).',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 8'
+                'cke_page': 'str. 7–8'
             },
             {
                 'title': 'Wartość optymalna',
                 'latex': r'P_{\max} = P(x_w)',
                 'description': 'Wartość funkcji dla argumentu wierzchołkowego.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 8'
+                'cke_page': 'str. 7–8'
             }
         ],
         worked_example={

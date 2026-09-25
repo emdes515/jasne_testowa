@@ -14,9 +14,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from lesson_visuals_v2.topic_11 import get_topic_11_visuals
 try:
-    from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_lesson
+    from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_open_proof, make_lesson
 except ImportError:
-    from helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_lesson
+    from helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_open_proof, make_lesson
 
 
 def build_topic_11():
@@ -62,36 +62,36 @@ def build_topic_11():
         ),
         make_sc_task(
             task_id='task-11-1-3',
-            source='Trening JASNE • Wyraz równy danej liczbie',
-            question='Ciąg $(a_n)$ jest określony wzorem $a_n = \\frac{2n + 5}{n + 1}$ dla $n \\ge 1$.\nWyraz tego ciągu równy $\\frac{9}{5}$ to',
+            source='Matura maj 2023 • Zad. 15',
+            question='Ciąg $(a_n)$ jest określony wzorem $a_n = 2^n \\cdot (n + 1)$ dla każdej liczby naturalnej $n \\ge 1$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWyraz $a_4$ jest równy',
             options_data=[
-                ('A', 'brak takiego wyrazu ($n \\notin \\mathbb{N}^+$)'),
-                ('B', '$a_2$'),
-                ('C', '$a_3$'),
-                ('D', '$a_4$')
+                ('A', '$64$'),
+                ('B', '$40$'),
+                ('C', '$48$'),
+                ('D', '$80$')
             ],
-            correct_id='A',
-            explanation='Przyrównujemy wzór ogólny do wartości $\\frac{9}{5}$:\n$$\\frac{2n + 5}{n + 1} = \\frac{9}{5}$$\nMnożymy na krzyż (ponieważ $n \\ge 1$, mianownik jest dodatni):\n$$5(2n + 5) = 9(n + 1)$$\n$$10n + 25 = 9n + 9$$\n$$10n - 9n = 9 - 25 \\implies n = -16$$\nOtrzymaliśmy $n = -16$. Z definicji ciągu $n \\in \\{1, 2, 3, \\dots\\}$, więc liczba $-16$ nie należy do dziedziny ciągu. Żaden wyraz tego ciągu nie jest równy $\\frac{9}{5}$.',
-            cke_trap='Zawsze sprawdzaj, czy wyliczone $n$ jest liczbą całkowitą dodatnią ($n \\in \\mathbb{N}^+$)! Ujemne $n$ oznacza brak rozwiązania w ciągach.',
-            plot=None
-        ),
-        make_tf_task(
-            task_id='task-11-1-4',
-            source='Ocena CKE • Monotoniczność ciągu',
-            question='Oceń prawdziwość zdania: Ciąg $(a_n)$ określony wzorem $a_n = 3 - 2n$ dla każdej liczby $n \\ge 1$ jest ciągiem rosnącym.',
-            correct_tf='FAŁSZ',
-            explanation='Różnica kolejnych wyrazów: $a_{n+1} - a_n = [3 - 2(n+1)] - [3 - 2n] = 3 - 2n - 2 - 3 + 2n = -2 < 0$. Ponieważ różnica jest stale ujemna, ciąg jest malejący. Zdanie jest fałszywe.',
-            cke_trap='Współczynnik przy $n$ wynosi $-2 < 0$, co oznacza, że z każdym kolejnym wyrazem wartość maleje o 2.',
+            correct_id='D',
+            explanation='Podstawiamy $n = 4$ do wzoru ogólnego ciągu:\n$$a_4 = 2^4 \\cdot (4 + 1) = 16 \\cdot 5 = 80.$$\nPoprawna odpowiedź to D.',
+            cke_trap='Pamiętaj o kolejności działań: najpierw potęgowanie $2^4 = 16$, potem dodawanie w nawiasie $4 + 1 = 5$, a na końcu mnożenie $16 \\cdot 5 = 80$. Nie mnóż podstawy potęgi przez nawias przed spotęgowaniem!',
             plot=None
         ),
         make_numeric_task(
-            task_id='task-11-1-5',
-            source='Wyzwanie JASNE • Najmniejszy wyraz ciągu kwadratowego',
+            task_id='task-11-1-4',
+            source='Trening JASNE • Wzorzec CKE',
             question='Ciąg $(a_n)$ określony jest wzorem $a_n = n^2 - 6n + 14$ dla każdej liczby naturalnej $n \\ge 1$.\nOblicz najmniejszą wartość wyrazu tego ciągu ($a_{\\min}$). Wpisz samą liczbę będącą wartością tego wyrazu.',
-            correct_val=5,
+            correct_val='5',
             explanation='Traktujemy wzór jako trójmian kwadratowy zmiennej $n$: $f(n) = n^2 - 6n + 14$.\nWspółczynnik przy $n^2$ wynosi $a = 1 > 0$, więc parabola osiąga minimum w wierzchołku:\n$$n_w = -\\frac{b}{2a} = -\\frac{-6}{2 \\cdot 1} = 3$$\nPonieważ $n_w = 3 \\in \\mathbb{N}^+$, najmniejszy wyraz ciągu to dokładnie $a_3$:\n$$a_3 = 3^2 - 6 \\cdot 3 + 14 = 9 - 18 + 14 = 5.$$',
-            cke_trap='Wartość wierzchołka $n=3$ to numer wyrazu, a pytanie dotyczy WARTOŚCI wyrazu ($a_3 = 5$).',
+            cke_trap='Wartość wierzchołka $n=3$ to numer wyrazu, a pytanie dotyczy wartości wyrazu ($a_3 = 5$).',
             plot=None
+        ),
+        make_open_task(
+            task_id='task-11-1-5',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Ciąg $(a_n)$ jest określony wzorem $a_n = \\frac{2n - 15}{3}$ dla każdej liczby naturalnej $n \\ge 1$.\nOblicz, ile wyrazów tego ciągu jest mniejszych od $0$, oraz podaj najmniejszy dodatni wyraz tego ciągu. Zapisz obliczenia.',
+            points=2,
+            scoring_key='1 pkt – rozwiązanie nierówności $a_n < 0 \\longrightarrow 2n - 15 < 0 \\longrightarrow n < 7{,}5$ i wyznaczenie liczby wyrazów ujemnych: 7 wyrazów ($n \\in \\{1, 2, 3, 4, 5, 6, 7\\}$).\\n2 pkt – wyznaczenie najmniejszego dodatniego wyrazu: jest to ósmy wyraz ($n = 8$), $a_8 = \\frac{2 \\cdot 8 - 15}{3} = \\frac{1}{3}$.',
+            explanation='Krok 1: Rozwiązujemy nierówność $a_n < 0$ w dziedzinie $n \\in \\mathbb{N}^+$:\n$$\\frac{2n - 15}{3} < 0 \\longrightarrow 2n - 15 < 0 \\longrightarrow 2n < 15 \\longrightarrow n < 7{,}5$$\nZatem wyrazami ujemnymi są $a_1, a_2, a_3, a_4, a_5, a_6, a_7$. Jest ich dokładnie 7.\nKrok 2: Pierwszym wyrazem dodatnim jest wyraz dla $n = 8$:\n$$a_8 = \\frac{2 \\cdot 8 - 15}{3} = \\frac{16 - 15}{3} = \\frac{1}{3} > 0$$\nJest to najmniejszy dodatni wyraz tego ciągu.',
+            cke_trap='Pamiętaj, że $n$ to numer wyrazu ($n \\in \\mathbb{N}^+$). Wartości wyrazów to $a_n$, a numery to $n$.'
         )
     ]
 
@@ -128,7 +128,7 @@ def build_topic_11():
             'problem': 'Dany jest ciąg o wyrazie ogólnym $a_n = \\frac{2n - 15}{3}$. Ile wyrazów tego ciągu jest mniejszych od 0?',
             'steps': [
                 {'num': 1, 'label': 'Zapisanie nierówności', 'text': 'Szukamy wyrazów mniejszych od 0, czyli rozwiązujemy nierówność: $\\frac{2n - 15}{3} < 0$.'},
-                {'num': 2, 'label': 'Rozwiązanie algebraiczne', 'text': 'Mnożymy obustronnie przez 3: $2n - 15 < 0 \\implies 2n < 15 \\implies n < 7,5$.'},
+                {'num': 2, 'label': 'Rozwiązanie algebraiczne', 'text': 'Mnożymy obustronnie przez 3: $2n - 15 < 0 \\longrightarrow 2n < 15 \\longrightarrow n < 7,5$.'},
                 {'num': 3, 'label': 'Uwzględnienie dziedziny N+', 'text': 'Liczby naturalne spełniające $1 \\le n < 7,5$ to: $n \\in \\{1, 2, 3, 4, 5, 6, 7\\}$. Jest ich dokładnie 7.'}
             ],
             'result': '7 \\text{ wyrazów}'
@@ -155,7 +155,7 @@ def build_topic_11():
                 ('D', '$-4$')
             ],
             correct_id='A',
-            explanation='Korzystamy z zależności między wyrazami ciągu arytmetycznego: odległość indeksów to liczba kroków $r$:\n$$a_7 = a_3 + (7 - 3)r = a_3 + 4r$$\nPodstawiamy wartości:\n$$27 = 11 + 4r$$\n$$16 = 4r \\implies r = 4.$$',
+            explanation='Korzystamy z zależności między wyrazami ciągu arytmetycznego: odległość indeksów to liczba kroków $r$:\n$$a_7 = a_3 + (7 - 3)r = a_3 + 4r$$\nPodstawiamy wartości:\n$$27 = 11 + 4r$$\n$$16 = 4r \\longrightarrow r = 4.$$',
             cke_trap='Różnica wyrazów $a_7 - a_3 = 4r$, ponieważ między 3. a 7. wyrazem wykonujemy 4 kroki różnicy $r$.',
             plot=None
         ),
@@ -170,36 +170,39 @@ def build_topic_11():
                 ('D', '$4$')
             ],
             correct_id='A',
-            explanation='W ciągu arytmetycznym wyraz środkowy jest średnią arytmetyczną wyrazów skrajnych:\n$$2x + 3 = \\frac{(2x - 1) + (4x + 1)}{2}$$\n$$2(2x + 3) = 6x$$\n$$4x + 6 = 6x$$\n$$2x = 6 \\implies x = 3.$$',
+            explanation='W ciągu arytmetycznym wyraz środkowy jest średnią arytmetyczną wyrazów skrajnych:\n$$2x + 3 = \\frac{(2x - 1) + (4x + 1)}{2}$$\n$$2(2x + 3) = 6x$$\n$$4x + 6 = 6x$$\n$$2x = 6 \\longrightarrow x = 3.$$',
             cke_trap='Złota reguła 3 kolejnych wyrazów: $2b = a + c$. Podwójny wyraz środkowy równa się sumie skrajnych!',
             plot=None
         ),
-        make_numeric_task(
+        make_sc_task(
             task_id='task-11-2-3',
-            source='Matura sierpień 2023 • Wzorzec CKE',
-            question='Dany jest ciąg arytmetyczny $(a_n)$ o pierwszym wyrazie $a_1 = 5$ i różnicy $r = 3$.\nOblicz sumę pierwszych dwudziestu wyrazów tego ciągu ($S_{20}$). Wpisz sam wynik liczbowy.',
-            correct_val=670,
-            explanation='Obliczamy dwudziesty wyraz $a_{20}$:\n$$a_{20} = a_1 + (20 - 1)r = 5 + 19 \\cdot 3 = 5 + 57 = 62.$$\nStosujemy wzór na sumę $S_n = \\frac{a_1 + a_n}{2} \\cdot n$ dla $n = 20$:\n$$S_{20} = \\frac{5 + 62}{2} \\cdot 20 = 67 \\cdot 10 = 670.$$',
-            cke_trap='Pamiętaj: we wzorze na $a_n$ występuje $(n-1)r$, czyli dla $a_{20}$ mnożymy różnicę przez 19, a nie przez 20!'
-        ),
-        make_tf_task(
-            task_id='task-11-2-4',
-            source='Ocena CKE • Własności ciągu arytmetycznego',
-            question='Oceń prawdziwość zdania: Jeśli różnica ciągu arytmetycznego wynosi $r = -4$, to ciąg ten jest malejący dla każdej liczby naturalnej $n \\ge 1$.',
-            correct_tf='PRAWDA',
-            explanation='W ciągu arytmetycznym $a_{n+1} - a_n = r$. Skoro $r = -4 < 0$, to każdy kolejny wyraz jest mniejszy od poprzedniego, zatem ciąg jest ściśle malejący.',
-            cke_trap='Znak różnicy $r$ jednoznacznie determinuje monotoniczność ciągu arytmetycznego: $r < 0 \\implies$ malejący.',
+            source='Matura czerwiec 2023 • Zad. 17',
+            question='Trzywyrazowy ciąg $(1, 4, a + 5)$ jest arytmetyczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba $a$ jest równa',
+            options_data=[
+                ('A', '$0$'),
+                ('B', '$7$'),
+                ('C', '$2$'),
+                ('D', '$11$')
+            ],
+            correct_id='C',
+            explanation='Dla trzech kolejnych wyrazów ciągu arytmetycznego wyraz środkowy jest średnią arytmetyczną skrajnych:\n$$4 = \\frac{1 + (a + 5)}{2}$$\n$$8 = a + 6 \\longrightarrow a = 2.$$',
+            cke_trap='W ciągu arytmetycznym $2b = a + c$. Nie myl z ciągiem geometrycznym ($b^2 = ac$).',
             plot=None
+        ),
+        make_numeric_task(
+            task_id='task-11-2-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Dany jest ciąg arytmetyczny $(a_n)$ o pierwszym wyrazie $a_1 = 5$ i różnicy $r = 3$.\nOblicz sumę pierwszych dwudziestu wyrazów tego ciągu ($S_{20}$). Wpisz sam wynik liczbowy.',
+            correct_val='670',
+            explanation='Obliczamy dwudziesty wyraz $a_{20}$:\n$$a_{20} = a_1 + (20 - 1)r = 5 + 19 \\cdot 3 = 5 + 57 = 62.$$\nStosujemy wzór na sumę $S_n = \\frac{a_1 + a_n}{2} \\cdot n$ dla $n = 20$:\n$$S_{20} = \\frac{5 + 62}{2} \\cdot 20 = 67 \\cdot 10 = 670.$$',
+            cke_trap='We wzorze na $a_n$ występuje $(n-1)r$, czyli dla $a_{20}$ mnożymy różnicę przez 19, a nie przez 20!'
         ),
         make_open_task(
             task_id='task-11-2-5',
             source='Matura maj 2024 • Zad. 17',
             question='Ciąg arytmetyczny $(a_n)$ jest określony dla każdej liczby naturalnej $n \\ge 1$. Trzeci wyraz tego ciągu jest równy $(-1)$, a suma piętnastu początkowych kolejnych wyrazów tego ciągu jest równa $(-165)$.\nOblicz różnicę tego ciągu. Zapisz obliczenia.',
             points=2,
-            scoring_key=[
-                '1 pkt: Zapisanie układu równań z niewiadomymi a1 oraz r, np. a1 + 2r = -1 oraz (2a1 + 14r)/2 * 15 = -165, lub wyznaczenie równania z jedną niewiadomą r.',
-                '2 pkt: Poprawne obliczenie różnicy ciągu: r = -2.'
-            ],
+            scoring_key='1 pkt – zapisanie układu równań z niewiadomymi $a_1$ oraz $r$, np. $a_1 + 2r = -1$ oraz $\\frac{2a_1 + 14r}{2} \\cdot 15 = -165$, lub równania z jedną niewiadomą $r$.\\n2 pkt – poprawne obliczenie różnicy ciągu: $r = -2$.',
             explanation='Krok 1: Wykorzystujemy wzór na wyraz ogólny oraz sumę ciągu arytmetycznego:\n$$a_3 = a_1 + 2r = -1$$\n$$S_{15} = \\frac{2a_1 + 14r}{2} \\cdot 15 = (a_1 + 7r) \\cdot 15 = -165$$\nKrok 2: Dzielimy drugie równanie obustronnie przez 15:\n$$a_1 + 7r = -11$$\nKrok 3: Z pierwszego równania wyznaczamy $a_1 = -1 - 2r$ i podstawiamy:\n$$(-1 - 2r) + 7r = -11$$\n$$5r = -10$$\n$$r = -2$$\nOdpowiedź: Różnica ciągu arytmetycznego wynosi $r = -2$.',
             cke_trap='Pamiętaj o nawiasach przy wyznaczaniu sumy: we wzorze na $S_{15}$ mamy $\\frac{2a_1 + (15-1)r}{2} \\cdot 15$.'
         )
@@ -244,7 +247,7 @@ def build_topic_11():
         worked_example={
             'problem': 'W ciągu arytmetycznym $a_2 = 7$ oraz $a_5 = 19$. Wyznacz pierwszy wyraz $a_1$ oraz sumę dziesięciu pierwszych wyrazów $S_{10}$.',
             'steps': [
-                {'num': 1, 'label': 'Wyznaczenie różnicy r', 'text': 'Różnica indeksów: $a_5 - a_2 = 3r \\implies 19 - 7 = 3r \\implies 12 = 3r \\implies r = 4$.'},
+                {'num': 1, 'label': 'Wyznaczenie różnicy r', 'text': 'Różnica indeksów: $a_5 - a_2 = 3r \\longrightarrow 19 - 7 = 3r \\longrightarrow 12 = 3r \\longrightarrow r = 4$.'},
                 {'num': 2, 'label': 'Obliczenie pierwszego wyrazu a1', 'text': 'Cofamy się o jeden krok: $a_1 = a_2 - r = 7 - 4 = 3$.'},
                 {'num': 3, 'label': 'Obliczenie sumy S10', 'text': 'Wyraz $a_{10} = a_1 + 9r = 3 + 9 \\cdot 4 = 39$. Wtedy $S_{10} = \\frac{3 + 39}{2} \\cdot 10 = 21 \\cdot 10 = 210$.'}
             ],
@@ -272,7 +275,7 @@ def build_topic_11():
                 ('D', '$4$')
             ],
             correct_id='A',
-            explanation='W ciągu geometrycznym iloraz wyrazów odpowiada potędze ilorazu $q$ równej różnicy indeksów:\n$$\\frac{a_5}{a_2} = q^{5 - 2} = q^3$$\nPodstawiamy dane liczbowe:\n$$\\frac{48}{6} = q^3 \\implies 8 = q^3 \\implies q = 2.$$',
+            explanation='W ciągu geometrycznym iloraz wyrazów odpowiada potędze ilorazu $q$ równej różnicy indeksów:\n$$\\frac{a_5}{a_2} = q^{5 - 2} = q^3$$\nPodstawiamy dane liczbowe:\n$$\\frac{48}{6} = q^3 \\longrightarrow 8 = q^3 \\longrightarrow q = 2.$$',
             cke_trap='W ciągu geometrycznym indeksy odejmujemy w potędze: $a_5 = a_2 \\cdot q^3$, a nie dodajemy jak w ciągu arytmetycznym!',
             plot=None
         ),
@@ -293,35 +296,35 @@ def build_topic_11():
         ),
         make_sc_task(
             task_id='task-11-3-3',
-            source='Trening JASNE • Suma ciągu geometrycznego',
-            question='Dany jest ciąg geometryczny $(a_n)$ o pierwszym wyrazie $a_1 = 3$ i ilorazie $q = 2$.\nSuma pierwszych sześciu wyrazów tego ciągu ($S_6$) jest równa',
+            source='Matura maj 2023 • Zad. 16',
+            question='Trzywyrazowy ciąg $(27, 9, a - 1)$ jest geometryczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba $a$ jest równa',
             options_data=[
-                ('A', '$189$'),
-                ('B', '$192$'),
-                ('C', '$96$'),
-                ('D', '$381$')
+                ('A', '$3$'),
+                ('B', '$0$'),
+                ('C', '$4$'),
+                ('D', '$2$')
             ],
-            correct_id='A',
-            explanation='Stosujemy wzór na sumę $n$ wyrazów ciągu geometrycznego: $S_n = a_1 \\cdot \\frac{1 - q^n}{1 - q}$ dla $n = 6$:\n$$S_6 = 3 \\cdot \\frac{1 - 2^6}{1 - 2} = 3 \\cdot \\frac{1 - 64}{-1} = 3 \\cdot \\frac{-63}{-1} = 3 \\cdot 63 = 189.$$',
-            cke_trap='Pamiętaj, że $2^6 = 64$. Liczymy $1 - 64 = -63$, a w mianowniku $1 - 2 = -1$. Dwa minusy dają plus!',
-            plot=None
-        ),
-        make_tf_task(
-            task_id='task-11-3-4',
-            source='Ocena CKE • Ciąg geometryczny naprzemienny',
-            question='Oceń prawdziwość zdania: Ciąg geometryczny o pierwszym wyrazie $a_1 = 4$ i ilorazie $q = -\\frac{1}{2}$ jest ciągiem malejącym.',
-            correct_tf='FAŁSZ',
-            explanation='Wyrazy tego ciągu to: $a_1 = 4$, $a_2 = -2$, $a_3 = 1$, $a_4 = -\\frac{1}{2}$. Znaki wyrazów zmieniają się naprzemiennie (ciąg naprzemienny), więc ciąg ten NIE jest monotoniczny (ani rosnący, ani malejący).',
-            cke_trap='Ujemny iloraz $q < 0$ NIE oznacza ciągu malejącego! Ciąg o $q < 0$ w ogóle nie jest monotoniczny.',
+            correct_id='C',
+            explanation='Iloraz ciągu geometrycznego wynosi $q = \\frac{9}{27} = \\frac{1}{3}$.\nTrzeci wyraz to $a - 1 = 9 \\cdot \\frac{1}{3} = 3$.\nStąd $a - 1 = 3 \\longrightarrow a = 4$.',
+            cke_trap='Trzeci wyraz wynosi 3, ale trzecim wyrazem jest $a - 1$, więc $a = 3 + 1 = 4$.',
             plot=None
         ),
         make_numeric_task(
-            task_id='task-11-3-5',
-            source='Zastosowanie CKE • Kapitalizacja i procent składany',
+            task_id='task-11-3-4',
+            source='Trening JASNE • Wzorzec CKE',
             question='Klient wpłacił do banku $10\\ 000$ zł na lokatę 2-letnią z roczną kapitalizacją odsetek i oprocentowaniem $10\\%$ w skali roku.\nOblicz kwotę kapitału zgromadzoną na lokacie po 2 latach (bez uwzględniania podatków). Wpisz samą liczbę w złotych.',
-            correct_val=12100,
-            explanation='Wzór na procent składany: $K_2 = K_0 \\cdot (1 + \\frac{p}{100})^2 = 10\\ 000 \\cdot (1,1)^2 = 10\\ 000 \\cdot 1,21 = 12\\ 100\\ \\text{zł}$.',
+            correct_val='12100',
+            explanation='Wzór na procent składany: $K_2 = K_0 \\cdot (1 + \\frac{p}{100})^2 = 10\\ 000 \\cdot (1{,}1)^2 = 10\\ 000 \\cdot 1{,}21 = 12\\ 100\\ \\text{zł}$.',
             cke_trap='W drugim roku odsetki naliczają się także od odsetek z pierwszego roku (12 100 zł zamiast 12 000 zł).'
+        ),
+        make_open_proof(
+            task_id='task-11-3-5',
+            source='Informator CKE • Zad. 28',
+            question='Trzy liczby dodatnie tworzą ciąg geometryczny. Wykaż, że jeśli suma tych liczb jest równa $26$, a środkowa z nich jest równa $6$, to pierwsza z tych liczb jest równa $2$ lub $18$.',
+            points=2,
+            scoring_key='1 pkt – zastosowanie własności ciągu geometrycznego ($b^2 = ac$) i zapisanie równania kwadratowego z jedną niewiadomą, np. $a^2 - 20a + 36 = 0$.\\n2 pkt – poprawne rozwiązanie równania kwadratowego ($a = 2$ lub $a = 18$) i sformułowanie wniosku końcowego.',
+            explanation='Niech $(a, b, c)$ tworzą ciąg geometryczny o wyrazach dodatnich. Wiemy, że $b = 6$ oraz $a + b + c = 26$.\nStąd $a + 6 + c = 26 \\longrightarrow a + c = 20 \\longrightarrow c = 20 - a$.\nZ własności ciągu geometrycznego: $b^2 = a \\cdot c$:\n$$6^2 = a(20 - a)$$\n$$36 = 20a - a^2$$\n$$a^2 - 20a + 36 = 0$$\n$$\\Delta = (-20)^2 - 4 \\cdot 1 \\cdot 36 = 400 - 144 = 256, \\quad \\sqrt{\\Delta} = 16$$\n$$a_1 = \\frac{20 - 16}{2} = 2, \\quad a_2 = \\frac{20 + 16}{2} = 18$$\nObie liczby prowadzą do ciągów o wyrazach dodatnich: $(2, 6, 18)$ lub $(18, 6, 2)$, co kończy dowód.',
+            cke_trap='Nieuwzględnienie faktu, że obydwa rozwiązania są prawidłowe, gdyż ciąg może być rosnący lub malejący.'
         )
     ]
 
@@ -365,7 +368,7 @@ def build_topic_11():
             'problem': 'Liczby $x - 3,\\ 6,\\ 2x + 6$ tworzą w podanej kolejności ciąg geometryczny o wyrazach dodatnich. Oblicz $x$.',
             'steps': [
                 {'num': 1, 'label': 'Zastosowanie zależności b^2 = a · c', 'text': 'Wyraz środkowy do kwadratu równa się iloczynowi skrajnych: $6^2 = (x - 3)(2x + 6)$.'},
-                {'num': 2, 'label': 'Wymnożenie i uporządkowanie równania', 'text': '$36 = 2x^2 + 6x - 6x - 18 \\implies 36 = 2x^2 - 18 \\implies 2x^2 = 54 \\implies x^2 = 27$.'},
+                {'num': 2, 'label': 'Wymnożenie i uporządkowanie równania', 'text': '$36 = 2x^2 + 6x - 6x - 18 \\longrightarrow 36 = 2x^2 - 18 \\longrightarrow 2x^2 = 54 \\longrightarrow x^2 = 27$.'},
                 {'num': 3, 'label': 'Wyznaczenie x i sprawdzenie założeń', 'text': '$x = \\sqrt{27} = 3\\sqrt{3}$ (odrzucamy ujemny pierwiastek, bo wyrazy mają być dodatnie: $x - 3 = 3\\sqrt{3} - 3 > 0$).'}
             ],
             'result': 'x = 3\\sqrt{3}'
@@ -375,24 +378,6 @@ def build_topic_11():
         tasks=l3_tasks
     )
     lessons.append(l3)
-
-
-    # --- Wstrzyknięte z arkuszy CKE ---
-    # CKE Maj 2023 - Zadanie 17. (2 pkt) - Dowód ciąg geometryczny
-    lessons[2]["tasks"].append(
-        make_open_task(
-            task_id="t11_l03_cke_01",
-            source="CKE Maj 2023 • Zad. 17 (2 pkt)",
-            question="Trzy liczby dodatnie tworzą ciąg geometryczny. Wykaż, że jeśli suma tych liczb jest równa 26, a środkowa z nich jest równa 6, to pierwsza z tych liczb jest równa 2 lub 18.",
-            points=2,
-            scoring_key=[
-                "1 pkt – zastosowanie własności ciągu geometrycznego i zapisanie równania kwadratowego z jedną niewiadomą",
-                "2 pkt – poprawne rozwiązanie równania kwadratowego i sformułowanie poprawnego wniosku"
-            ],
-            explanation="Niech $a, b, c$ tworzą ciąg geometryczny. Wiemy, że $b=6$ i $a+b+c=26$.<br/>Stąd $a+6+c=26 \\implies a+c=20 \\implies c=20-a$.<br/>Z własności ciągu geometrycznego: $b^2 = a \\cdot c$.<br/>$6^2 = a(20-a)$<br/>$36 = 20a - a^2$<br/>$a^2 - 20a + 36 = 0$<br/>$\\Delta = 400 - 144 = 256$, $\\sqrt{\\Delta} = 16$.<br/>$a_1 = \\frac{20-16}{2} = 2$, $a_2 = \\frac{20+16}{2} = 18$.<br/>Obie liczby prowadzą do dodatnich ciągów: (2, 6, 18) lub (18, 6, 2).",
-            cke_trap="Nieuwzględnienie faktu, że obydwie pary rozwiązań są prawidłowe, gdyż w zadaniu nie jest powiedziane, czy ciąg jest rosnący czy malejący."
-        )
-    )
 
     return {
         'id': topic_id,

@@ -3,6 +3,7 @@ import { LayoutDashboard, GraduationCap, Swords, FileText, User, Trophy, Flame }
 import { motion } from 'motion/react';
 import { TabState, UserState } from '../types';
 import { triggerHaptic } from '../utils';
+import { JasneLogo } from './ui/JasneLogo';
 
 interface NavigationProps {
   currentTab: TabState;
@@ -95,9 +96,13 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
         className="hidden md:flex lg:hidden flex-col items-center justify-between w-20 shrink-0 h-screen sticky top-0 bg-surface-bg border-r border-surface-border py-5 z-40 select-none pointer-events-auto"
       >
         {/* Logo Mark */}
-        <div className="flex flex-col items-center gap-1">
-          <img src="/logo.png" alt="JASNE." className="h-10 w-auto object-contain drop-shadow-[0_0_12px_rgba(255,184,0,0.4)]" />
-        </div>
+        <button 
+          onClick={() => handleTabChange('dashboard')}
+          className="flex flex-col items-center gap-1 cursor-pointer group active:scale-95 transition-transform"
+          title="Przejdź do dashboardu"
+        >
+          <JasneLogo variant="icon" size={38} glow={true} className="group-hover:scale-105 transition-transform duration-200" />
+        </button>
 
         {/* Rail Items */}
         <div className="flex flex-col items-center gap-3 w-full px-2">
@@ -163,17 +168,21 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
       >
         <div className="flex flex-col gap-7">
           {/* Oficjalna Identyfikacja JASNE. */}
-          <div className="flex items-center gap-3 px-1">
-            <img src="/logo.png" alt="JASNE." className="h-10 w-auto object-contain drop-shadow-[0_0_12px_rgba(255,184,0,0.4)]" />
+          <button 
+            onClick={() => handleTabChange('dashboard')}
+            className="flex items-center gap-3 px-1 text-left cursor-pointer group active:scale-[0.98] transition-transform"
+            title="Przejdź do pulpitu głównego JASNE."
+          >
+            <JasneLogo variant="icon" size={38} glow={true} className="group-hover:scale-105 transition-transform duration-200" />
             <div className="flex flex-col">
-              <span className="text-xl font-black tracking-wider text-text-primary leading-none">
+              <span className="text-xl font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
                 JASNE<span className="text-primary">.</span>
               </span>
               <span className="text-[10px] font-bold text-text-muted tracking-wider uppercase mt-1">
                 Matura staje się prosta
               </span>
             </div>
-          </div>
+          </button>
 
           {/* Lista zakładek */}
           <nav className="flex flex-col gap-1.5">

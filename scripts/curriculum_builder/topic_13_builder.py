@@ -90,14 +90,14 @@ def build_topic_13():
             source='Trening JASNE • Wzorzec CKE',
             question=r'Wykres funkcji $g(x) = f(x + 2) - 6$ powstał z przesunięcia wykresu funkcji $f$ o wektor $\vec{v}$. Wektor $\vec{v}$ ma współrzędne',
             options_data=[
-                ('A', '$\vec{v} = [2, -6]$'),
-                ('B', '$\vec{v} = [-2, -6]$'),
-                ('C', '$\vec{v} = [-2, 6]$'),
-                ('D', '$\vec{v} = [2, 6]$')
+                ('A', r'$\vec{v} = [2, -6]$'),
+                ('B', r'$\vec{v} = [-2, -6]$'),
+                ('C', r'$\vec{v} = [-2, 6]$'),
+                ('D', r'$\vec{v} = [2, 6]$')
             ],
             correct_id='B',
             explanation=r'Ogólny wzór na przesunięcie to $g(x) = f(x - p) + q$.' + '\n' +
-                        r'Przyrównujemy: $x - p = x + 2 \implies -p = 2 \implies p = -2$.' + '\n' +
+                        r'Przyrównujemy: $x - p = x + 2 \longrightarrow -p = 2 \longrightarrow p = -2$.' + '\n' +
                         r'Druga współrzędna to bezpośrednio liczba za nawiasem: $q = -6$.' + '\n' +
                         r'Zatem wektor przesunięcia to $\vec{v} = [-2, -6]$.',
             cke_trap=r'W nawiasie stoi $+2$, co oznacza przesunięcie o $2$ w LEWO ($p = -2$). Za nawiasem stoi $-6$, co oznacza przesunięcie o $6$ w DÓŁ ($q = -6$).'
@@ -113,17 +113,20 @@ def build_topic_13():
                         r'Suma współrzędnych wynosi $x\' + y\' = 6 + 2 = 8$.',
             cke_trap=r'Dla współrzędnych samego punktu dodajemy wektor bezpośrednio: $x\' = x + p$, $y\' = y + q$ (to we wzorze funkcji występuje minus: $x - p$).'
         ),
-        make_tf_task(
+        make_open_task(
             task_id='task-13-1-5',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Dziedziną funkcji $f$ jest przedział $D_f = \langle -2, 5 \rangle$. Funkcja $g$ jest określona wzorem $g(x) = f(x - 3) + 1$.' + '\n' +
-                     r'Oceń prawdziwość zdania: Dziedziną funkcji $g$ jest przedział $D_g = \langle 1, 8 \rangle$.',
-            correct_tf='PRAWDA',
-            explanation=r'Wzór $g(x) = f(x - 3) + 1$ oznacza przesunięcie wykresu o $3$ jednostki w prawo i $1$ w górę.' + '\n' +
-                        r'Przesunięcie w prawo o $3$ przesuwa każdy punkt dziedziny o $+3$:' + '\n' +
-                        r'$$D_g = \langle -2 + 3, 5 + 3 \rangle = \langle 1, 8 \rangle$$' + '\n' +
-                        r'Przesunięcie pionowe $+1$ wpływa na zbiór wartości, a nie na dziedzinę. Zdanie jest prawdziwe.',
-            cke_trap=r'Pamiętaj: $f(x - 3)$ przesuwa dziedzinę w PRAWO, czyli DODAJEMY $3$ do obu krańców przedziału.'
+            source='Informator CKE • Zad. 38',
+            question=r'Wykres funkcji $f$ o dziedzinie $D_f = \langle -3, 5 \rangle$ i zbiorze wartości $ZW_f = \langle -2, 7 \rangle$ przesunięto o wektor $\vec{v} = [4, -3]$, otrzymując wykres funkcji $g$.' + '\n' +
+                     r'Wyznacz dziedzinę oraz zbiór wartości funkcji $g$. Zapisz uzasadnienie.',
+            points=2,
+            scoring_key=r'1 pkt – poprawne wyznaczenie dziedziny funkcji $g$: $D_g = \langle -3 + 4, 5 + 4 \rangle = \langle 1, 9 \rangle$.' + '\n' +
+                        r'2 pkt – poprawne wyznaczenie zbioru wartości funkcji $g$: $ZW_g = \langle -2 - 3, 7 - 3 \rangle = \langle -5, 4 \rangle$.',
+            explanation=r'Krok 1: Przesunięcie wykresu o wektor $\vec{v} = [p, q] = [4, -3]$ przesuwa wszystkie punkty $(x, y)$ w punkty $(x + 4, y - 3)$.' + '\n' +
+                        r'Krok 2: Dziedzina (oś $OX$) przesuwa się w prawo o 4 jednostki:' + '\n' +
+                        r'$$D_g = \langle -3 + 4, 5 + 4 \rangle = \langle 1, 9 \rangle$$' + '\n' +
+                        r'Krok 3: Zbiór wartości (oś $OY$) przesuwa się w dół o 3 jednostki:' + '\n' +
+                        r'$$ZW_g = \langle -2 - 3, 7 - 3 \rangle = \langle -5, 4 \rangle.$$',
+            cke_trap=r'Wzór funkcji ma postać $g(x) = f(x - 4) - 3$, co oznacza przesunięcie w PRAWO o 4 (dodajemy 4 do dziedziny) i w DÓŁ o 3 (odejmujemy 3 od zbioru wartości).'
         )
     ]
     l1 = make_lesson(
@@ -197,24 +200,13 @@ def build_topic_13():
                 ('D', '$f(x) = -(x + 1)^2 - 4$')
             ],
             correct_id='A',
-            explanation=r'Symetria względem osi $OX$ zmienia znak całego wyrażenia: $g(x) = -f(x) \implies f(x) = -g(x)$.' + '\n' +
+            explanation=r'Symetria względem osi $OX$ zmienia znak całego wyrażenia: $g(x) = -f(x) \longrightarrow f(x) = -g(x)$.' + '\n' +
                         r'Mnożymy cały wzór funkcji $g$ przez $-1$:' + '\n' +
                         r'$$f(x) = -[-(x - 1)^2 + 4] = (x - 1)^2 - 4$$',
             cke_trap=r'Pamiętaj, że minus przed nawiasem zmienia się w plus, ale wyraz wolny $+4$ również zmienia znak na $-4$!'
         ),
-        make_numeric_task(
-            task_id='task-13-2-3',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Punkt $P = (5, -7)$ przekształcono przez symetrię osiową względem osi $OX$, otrzymując punkt $P\' = (x\', y\')$.' + '\n' +
-                     r'Oblicz rzędną $y\'$ punktu $P\'$. Wpisz liczbę całkowitą.',
-            correct_val=7,
-            explanation=r'W symetrii osiowej względem osi $OX$ pierwsza współrzędna $x$ nie zmienia się, a druga współrzędna $y$ zmienia znak na przeciwny:' + '\n' +
-                        r'$$P\' = (x, -y) = (5, -(-7)) = (5, 7)$$' + '\n' +
-                        r'Zatem rzędna wynosi $y\' = 7$.',
-            cke_trap=r'W symetrii względem osi OX odbijamy punkt góra-dół, więc zmienia się wyłącznie współrzędna pionowa $y$.'
-        ),
         make_sc_task(
-            task_id='task-13-2-4',
+            task_id='task-13-2-3',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Punkt $A = (-3, 8)$ leży na wykresie funkcji $y = f(x)$. W symetrii osiowej względem osi $OY$ obrazem punktu $A$ jest punkt $A\'$ o współrzędnych',
             options_data=[
@@ -229,23 +221,29 @@ def build_topic_13():
                         r'$$A\' = (-x, y) = (-(-3), 8) = (3, 8)$$',
             cke_trap=r'Oś OY jest pionowa, więc punkty przeskakują z lewej na prawą stronę (zmienia się znak $x$).'
         ),
-        make_sc_task(
+        make_numeric_task(
+            task_id='task-13-2-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question=r'Punkt $P = (5, -7)$ przekształcono przez symetrię osiową względem osi $OX$, otrzymując punkt $P\' = (x\', y\')$.' + '\n' +
+                     r'Oblicz rzędną $y\'$ punktu $P\'$. Wpisz liczbę całkowitą.',
+            correct_val='7',
+            explanation=r'W symetrii osiowej względem osi $OX$ pierwsza współrzędna $x$ nie zmienia się, a druga współrzędna $y$ zmienia znak na przeciwny:' + '\n' +
+                        r'$$P\' = (x, -y) = (5, -(-7)) = (5, 7)$$' + '\n' +
+                        r'Zatem rzędna wynosi $y\' = 7$.',
+            cke_trap=r'W symetrii względem osi OX odbijamy punkt góra-dół, więc zmienia się wyłącznie współrzędna pionowa $y$.'
+        ),
+        make_open_task(
             task_id='task-13-2-5',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Zbiorem wartości funkcji $f$ jest przedział $ZW_f = \langle -2, 6 \rangle$. Wykres funkcji $g$ określono wzorem $g(x) = -f(x)$.' + '\n' +
-                     r'Zbiorem wartości funkcji $g$ jest przedział',
-            options_data=[
-                ('A', '$\\langle -6, 2 \\rangle$'),
-                ('B', '$\\langle -2, 6 \\rangle$'),
-                ('C', '$\\langle -6, -2 \\rangle$'),
-                ('D', '$\\langle 2, 6 \\rangle$')
-            ],
-            correct_id='A',
-            explanation=r'Funkcja $g(x) = -f(x)$ jest odbiciem wykresu funkcji $f$ względem osi $OX$.' + '\n' +
-                        r'Wszystkie wartości $y$ zostają pomnożone przez $-1$:' + '\n' +
-                        r'Wartość $-2$ przechodzi w $-(-2) = 2$, a wartość $6$ przechodzi w $-6$.' + '\n' +
-                        r'Zapisując przedział od liczby mniejszej do większej, otrzymujemy $ZW_g = \\langle -6, 2 \\rangle$.',
-            cke_trap=r'Przedział zawsze zapisujemy od liczby mniejszej do większej: $\langle -6, 2 \rangle$, a nie $\langle 2, -6 \rangle$!'
+            question=r'Wykres funkcji kwadratowej $f(x) = (x - 2)^2 - 5$ przekształcono przez symetrię osiową względem osi $OX$, otrzymując wykres funkcji $g$.' + '\n' +
+                     r'Wyznacz współrzędne wierzchołka paraboli będącej wykresem funkcji $g$ oraz zapisz wzór funkcji $g$ w postaci ogólnej. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie współrzędnych wierzchołka wykresu funkcji $g$: $W_g = (2, 5)$.' + '\n' +
+                        r'2 pkt – poprawne zapisanie wzoru funkcji $g$ w postaci ogólnej: $g(x) = -x^2 + 4x + 1$.',
+            explanation=r'Krok 1: Wierzchołek paraboli $f$ to $W_f = (2, -5)$. W symetrii osiowej względem osi $OX$ współrzędna $x$ nie ulega zmianie, a współrzędna $y$ zmienia znak na przeciwny: $W_g = (2, 5)$.' + '\n' +
+                        r'Krok 2: Wzór funkcji $g$ to $g(x) = -f(x)$:' + '\n' +
+                        r'$$g(x) = -[(x - 2)^2 - 5] = -(x^2 - 4x + 4 - 5) = -(x^2 - 4x - 1) = -x^2 + 4x + 1.$$',
+            cke_trap=r'Symetria względem osi OX zmienia znak całego wyrażenia: $g(x) = -f(x)$. Pamiętaj o zmianie znaku również wyrazu wolnego!'
         )
     ]
     l2 = make_lesson(
@@ -341,16 +339,16 @@ def build_topic_13():
                         r'$$h(x) = -g(x) = -[f(x - 2) - 1] = -f(x - 2) + 1$$',
             cke_trap=r'Minus z odbicia osi OX zmienia znak KAŻDEGO składnika: $-(-1) = +1$.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-13-3-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Funkcja $f$ jest rosnąca w przedziale $(-\\infty, 2\\rangle$ i malejąca w przedziale $\\langle 2, +\\infty)$. Funkcja $g$ jest określona wzorem $g(x) = -f(x)$.' + '\n' +
-                     r'Oceń prawdziwość zdania: Funkcja $g$ jest malejąca w przedziale $(-\\infty, 2\\rangle$.',
-            correct_tf='PRAWDA',
-            explanation=r'Odbicie symetryczne względem osi $OX$ (czyli pomnożenie przez $-1$) odwraca monotoniczność funkcji:' + '\n' +
-                        r'Tam, gdzie funkcja $f$ rosła, funkcja $-f(x)$ maleje.' + '\n' +
-                        r'Skoro $f$ była rosnąca w $(-\\infty, 2\\rangle$, to $g(x) = -f(x)$ jest malejąca w tym przedziale. Zdanie jest prawdziwe.',
-            cke_trap=r'Symetria względem osi OX odwraca wzrost na spadek i spadek na wzrost, ale nie zmienia argumentów x w przedziale monotoniczności.'
+            question=r'Funkcja $f$ ma miejsce zerowe $x_0 = -6$. Wykres funkcji $g$ określono wzorem $g(x) = f(x - 5)$.' + '\n' +
+                     r'Oblicz miejsce zerowe funkcji $g$. Wpisz liczbę całkowitą.',
+            correct_val='-1',
+            explanation=r'Wzór $g(x) = f(x - 5)$ oznacza przesunięcie wykresu funkcji $f$ o 5 jednostek w prawo.' + '\n' +
+                        r'Zatem miejsce zerowe przesuwa się w prawo o 5 jednostek:' + '\n' +
+                        r'$$x_0\' = -6 + 5 = -1.$$',
+            cke_trap=r'Przesunięcie w prawo (minus w nawiasie) oznacza DODAWANIE 5 do argumentu: $-6 + 5 = -1$, a nie $-6 - 5 = -11$!'
         ),
         make_open_task(
             task_id='task-13-3-5',
@@ -364,7 +362,7 @@ def build_topic_13():
                         r'Podstawiamy do wzoru funkcji $f$:' + '\n' +
                         r'$$g(x) = 2(x + 1) - 4 + 3 = 2x + 2 - 1 = 2x + 1$$' + '\n' +
                         r'Krok 2: Obliczamy miejsce zerowe funkcji $g$:' + '\n' +
-                        r'$$2x + 1 = 0 \implies 2x = -1 \implies x = -\\frac{1}{2}$$' + '\n' +
+                        r'$$2x + 1 = 0 \longrightarrow 2x = -1 \longrightarrow x = -\\frac{1}{2}$$' + '\n' +
                         r'Miejscem zerowym funkcji $g$ jest $x = -\\frac{1}{2}$.',
             cke_trap=r'Pamiętaj o nawiasie przy podstawianiu: $2(x + 1)$ to $2x + 2$, a nie $2x + 1$. Błąd w wymnożeniu zniekształca cały wynik końcowy.'
         )

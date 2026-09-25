@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import * as fs from 'fs';
 import * as path from 'path';
-import { sanitizeExaminerTip, resolveCkeTopicForDepartment } from '../SessionRunner';
+import { sanitizeExaminerTip, resolveCkeTopicForDepartment, isEmergencyFallback } from '../SessionRunner';
 
 describe('SessionRunner - sanitizeExaminerTip', () => {
   it('returns empty string for null, undefined, or empty string', () => {
@@ -101,10 +101,55 @@ describe('SessionRunner - resolveCkeTopicForDepartment', () => {
   it('correctly maps CKE standard 15 departments', () => {
     expect(resolveCkeTopicForDepartment('DZIAŁ 7', 'Ciągi Liczbowe')).toBe('ciagi');
     expect(resolveCkeTopicForDepartment('DZIAŁ 11', 'Trygonometria')).toBe('trygonometria');
-    expect(resolveCkeTopicForDepartment('DZIAŁ 12', 'Planimetria')).toBe('geometria');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 12', 'Planimetria')).toBe('planimetria');
     expect(resolveCkeTopicForDepartment('DZIAŁ 13', 'Geometria Analityczna')).toBe('geometria');
-    expect(resolveCkeTopicForDepartment('DZIAŁ 14', 'Stereometria')).toBe('geometria');
+    expect(resolveCkeTopicForDepartment('DZIAŁ 14', 'Stereometria')).toBe('stereometria');
     expect(resolveCkeTopicForDepartment('DZIAŁ 15', 'Kombinatoryka i statystyka')).toBe('prawdopodobienstwo');
+  });
+});
+
+describe('SessionRunner - isEmergencyFallback', () => {
+  it('identifies null or undefined pill as emergency fallback', () => {
+    expect(isEmergencyFallback(null)).toBe(true);
+    expect(isEmergencyFallback(undefined)).toBe(true);
+    expect(isEmergencyFallback({})).toBe(true);
+  });
+
+  it('identifies pill without concept_essence as emergency fallback', () => {
+    expect(isEmergencyFallback({ title: 'Test' })).toBe(true);
+  });
+
+  it('identifies string fallback placeholder as emergency fallback', () => {
+    expect(isEmergencyFallback({
+      concept_essence: 'Zapoznaj się z kluczowymi pojęciami, własnościami i wzorami dla tej lekcji.'
+    })).toBe(true);
+    expect(isEmergencyFallback({
+      concept_essence: 'Zapoznaj sie z kluczowymi pojęciami.'
+    })).toBe(true);
+  });
+
+  it('identifies genuine string content as NOT emergency fallback', () => {
+    expect(isEmergencyFallback({
+      concept_essence: 'Średnia arytmetyczna to suma liczb podzielona przez ich liczbę.'
+    })).toBe(false);
+  });
+
+  it('handles object concept_essence gracefully without crashing (P0 runtime fix)', () => {
+    expect(isEmergencyFallback({
+      concept_essence: { lead: 'Zapoznaj się z kluczowymi pojęciami...' }
+    })).toBe(true);
+    expect(isEmergencyFallback({
+      concept_essence: { lead: 'Prawdziwa teoria w obiekcie', pillars: [] }
+    })).toBe(false);
+  });
+
+  it('handles array or numeric concept_essence gracefully without crashing', () => {
+    expect(isEmergencyFallback({
+      concept_essence: ['Punkt 1', 'Punkt 2']
+    })).toBe(false);
+    expect(isEmergencyFallback({
+      concept_essence: 12345
+    })).toBe(false);
   });
 });
 

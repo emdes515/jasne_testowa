@@ -44,7 +44,7 @@ def get_topic_12_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Odczytywanie wierzchołka i osi symetrii krok po kroku",
-            badge=r"f(x) = 2(x - 3)^2 - 5 \implies p = 3, \quad q = -5 \implies W(3, -5), \quad \text{oś: } x = 3",
+            badge=r"f(x) = 2(x - 3)^2 - 5 \longrightarrow p = 3, \quad q = -5 \longrightarrow W(3, -5), \quad \text{oś: } x = 3",
             caption="Wypisujesz współrzędne wierzchołka pamiętając o odwróceniu znaku przy p i zachowaniu znaku przy q.",
             steps=[
                 {'num': 1, 'title': 'Zastosuj postać kanoniczną', 'desc': r'Wzór to $y = a(x - p)^2 + q$. Współczynnik $a = 2 > 0$ (ramiona w górę).', 'color': C_SKY},
@@ -59,11 +59,11 @@ def get_topic_12_visuals(l_idx):
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Zły znak współrzędnej p we wzorze kanonicznym",
-            badge=r"f(x) = a(x - 3)^2 + 4 \implies p = +3 \neq -3 \quad \text{oraz} \quad (x + 4)^2 \implies p = -4",
+            badge=r"f(x) = a(x - 3)^2 + 4 \longrightarrow p = +3 \neq -3 \quad \text{oraz} \quad (x + 4)^2 \longrightarrow p = -4",
             caption="We wzorze kanonicznym występuje minus: a(x - p)²! Dlatego znak przy p w nawiasie ZAWSZE zmieniamy na przeciwny. Rzędna q zachowuje znak bez zmian.",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Odczytanie $p = -3$ z nawiasu $(x - 3)^2$', 'color': C_DANGER},
-                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'$(x - 3)^2 \implies p = +3$; $(x + 5)^2 \implies p = -5$', 'color': C_SUCCESS},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'$(x - 3)^2 \longrightarrow p = +3$; $(x + 5)^2 \longrightarrow p = -5$', 'color': C_SUCCESS},
                 {'label': 'Rzędna q', 'value': 'Znak przed wyrazem wolnym pozostaje bez zmian', 'color': C_PRIMARY}
             ]
         )
@@ -104,7 +104,7 @@ def get_topic_12_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie wierzchołka z miejsc zerowych krok po kroku",
-            badge=r"f(x) = -(x - 1)(x - 5) \implies p = \frac{1 + 5}{2} = 3 \implies q = f(3) = 4 \implies W(3, 4)",
+            badge=r"f(x) = -(x - 1)(x - 5) \longrightarrow p = \frac{1 + 5}{2} = 3 \longrightarrow q = f(3) = 4 \longrightarrow W(3, 4)",
             caption="Wierzchołek leży dokładnie pośrodku miejsc zerowych. Rzędną q obliczasz podstawiając p do wzoru.",
             steps=[
                 {'num': 1, 'title': 'Odczytaj pierwiastki x₁ i x₂', 'desc': r'Z postaci iloczynowej: $x_1 = 1$ oraz $x_2 = 5$.', 'color': C_SKY},
@@ -119,7 +119,7 @@ def get_topic_12_visuals(l_idx):
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Szukanie postaci iloczynowej gdy Δ < 0 lub zgubienie a",
-            badge=r"\Delta < 0 \implies \text{brak postaci iloczynowej w } \mathbb{R} \quad \text{oraz} \quad y = a(x - x_1)(x - x_2)",
+            badge=r"\Delta < 0 \longrightarrow \text{brak postaci iloczynowej w } \mathbb{R} \quad \text{oraz} \quad y = a(x - x_1)(x - x_2)",
             caption="Gdy delta jest ujemna, trójmian kwadratowy NIE POSIADA postaci iloczynowej w liczbach rzeczywistych! Nie wymyślaj pierwiastków. Pamiętaj też o współczynniku a przed nawiasami.",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD 1', 'value': r'Zapisywanie postaci iloczynowej przy $\Delta < 0$', 'color': C_DANGER},
@@ -168,7 +168,7 @@ def get_topic_12_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie wartości min/max w przedziale krok po kroku",
-            badge=r"f(x) = x^2 - 4x + 3 \text{ w } [0, 5] \implies p = 2 \in [0, 5] \implies y_{\min} = f(2) = -1, \; y_{\max} = f(5) = 8",
+            badge=r"f(x) = x^2 - 4x + 3 \text{ w } [0, 5] \longrightarrow p = 2 \in [0, 5] \longrightarrow y_{\min} = f(2) = -1, \; y_{\max} = f(5) = 8",
             caption="Sprawdzasz czy p leży w przedziale, a następnie porównujesz wartości w wierzchołku i na obu krańcach.",
             steps=[
                 {'num': 1, 'title': 'Wyznacz p', 'desc': r'$p = -\frac{b}{2a} = -\frac{-4}{2 \cdot 1} = 2$.', 'color': C_SKY},
@@ -183,7 +183,7 @@ def get_topic_12_visuals(l_idx):
         )
         tab3 = make_comparison_card_diagram(
             title="Pułapka CKE: Uwzględnianie wierzchołka leżącego poza przedziałem",
-            badge=r"p \notin \langle a, b \rangle \implies \text{ekstrema leżą WYŁĄCZNIE na krańcach } f(a) \text{ i } f(b)",
+            badge=r"p \notin \langle a, b \rangle \longrightarrow \text{ekstrema leżą WYŁĄCZNIE na krańcach } f(a) \text{ i } f(b)",
             caption="Gdy p leży poza badanym przedziałem, wierzchołek W(p, q) NIE BIERZE UDZIAŁU w wyścigu o min/max! Ekstrema przyjmują wtedy wyłącznie wartości na krańcach przedziału.",
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD', 'value': r'Podanie $q$ jako wartości ekstremalnej gdy $p \notin \langle a, b \rangle$', 'color': C_DANGER},
@@ -227,10 +227,10 @@ def get_topic_12_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Rozwiązanie zadania optymalizacyjnego krok po kroku",
-            badge=r"P(x) = -x^2 + 10x \implies p = -\frac{10}{2(-1)} = 5 \implies P_{\max} = P(5) = 25",
+            badge=r"P(x) = -x^2 + 10x \longrightarrow p = -\frac{10}{2(-1)} = 5 \longrightarrow P_{\max} = P(5) = 25",
             caption="Układasz funkcję jednej zmiennej, wyznaczasz dziedzinę geometryczną i znajdujesz maksimum w wierzchołku p.",
             steps=[
-                {'num': 1, 'title': 'Zapisz funkcję celu i dziedzinę', 'desc': r'Obwód $2x + 2y = 20 \implies y = 10 - x$. Pole: $P(x) = x(10 - x) = -x^2 + 10x$, gdzie $x \in (0, 10)$.', 'color': C_SKY},
+                {'num': 1, 'title': 'Zapisz funkcję celu i dziedzinę', 'desc': r'Obwód $2x + 2y = 20 \longrightarrow y = 10 - x$. Pole: $P(x) = x(10 - x) = -x^2 + 10x$, gdzie $x \in (0, 10)$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Wyznacz optymalny wymiar p', 'desc': r'Funkcja kwadratowa o $a = -1 < 0$ ma maksimum w wierzchołku: $x = p = -\frac{10}{2(-1)} = 5 \in (0, 10)$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Oblicz pole maksymalne', 'desc': r'$y = 10 - 5 = 5$. Maksymalne pole: $P_{\max} = P(5) = -25 + 50 = 25$.', 'color': C_SUCCESS}
             ],

@@ -25,8 +25,12 @@
       "name": "Trygonometria"
     },
     {
+      "id": "planimetria",
+      "name": "Planimetria"
+    },
+    {
       "id": "geometria",
-      "name": "Planimetria i Analityczna"
+      "name": "Geometria Analityczna"
     },
     {
       "id": "stereometria",
@@ -1447,8 +1451,8 @@
         "60 stopni",
         "wzory redukcyjne"
       ],
-      "cke_page": "str. 11",
-      "pageNumber": 11,
+      "cke_page": "str. 12–13",
+      "pageNumber": 12,
       "diagram": {
         "type": "TRIGONOMETRY",
         "title": "Wzory redukcyjne dla kątów rozwartych (II ćwiartka)",
@@ -1756,7 +1760,7 @@
           {
             "x": 260,
             "y": 25,
-            "text": "Wysokość: h = a · sin γ  ⟹  P = 0,5 · b · (a · sin γ)",
+            "text": "Wysokość: h = a · sin γ  ⟶  P = 0,5 · b · (a · sin γ)",
             "color": "#FFDCA1",
             "fontSize": 12,
             "fontWeight": "700",
@@ -1909,8 +1913,8 @@
     },
     {
       "id": "f-geo-trojkat-rownoboczny",
-      "topicId": "geometria",
-      "topicName": "Planimetria i Analityczna",
+      "topicId": "planimetria",
+      "topicName": "Planimetria",
       "title": "Trójkąt równoboczny",
       "formula": "h = \\frac{a\\sqrt{3}}{2}, \\qquad P = \\frac{a^2\\sqrt{3}}{4}",
       "subFormulas": [
@@ -2114,8 +2118,8 @@
         "środek okręgu",
         "promień okręgu"
       ],
-      "cke_page": "str. 22",
-      "pageNumber": 22,
+      "cke_page": "str. 23",
+      "pageNumber": 23,
       "diagram": {
         "type": "GEOMETRY_2D",
         "title": "Równanie okręgu w układzie współrzędnych: (x - a)² + (y - b)² = r²",
@@ -2291,14 +2295,14 @@
     },
     {
       "id": "f-geo-tales",
-      "topicId": "geometria",
-      "topicName": "Planimetria i Analityczna",
+      "topicId": "planimetria",
+      "topicName": "Planimetria",
       "title": "Twierdzenie Talesa i proporcja pól figur podobnych (k²)",
-      "formula": "\\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|}, \\qquad \\frac{P_2}{P_1} = k^2",
+      "formula": "\\begin{gathered} \\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|} \\\\[6pt] \\frac{P_2}{P_1} = k^2 \\end{gathered}",
       "subFormulas": [
         {
           "label": "Twierdzenie Talesa (proporcja ramion)",
-          "formula": "\\frac{|AD|}{|AB|} = \\frac{|DE|}{|BC|} = k"
+          "formula": "\\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|}"
         },
         {
           "label": "Stosunek pól figur podobnych",
@@ -2314,35 +2318,23 @@
         "figury podobne",
         "stosunek pól"
       ],
-      "cke_page": "str. 18",
-      "pageNumber": 18,
+      "cke_page": "str. 17",
+      "pageNumber": 17,
       "diagram": {
         "type": "GEOMETRY_2D",
         "title": "Twierdzenie Talesa i proporcja pól figur podobnych (k²)",
-        "formulaBadge": "$\\frac{|AD|}{|AB|} = \\frac{|DE|}{|BC|} = k, \\quad \\frac{P_{ABC}}{P_{ADE}} = k^2$",
+        "formulaBadge": "$\\begin{gathered} \\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|} \\\\[6pt] \\frac{P_2}{P_1} = k^2 \\end{gathered}$",
         "width": 480,
         "height": 220,
         "segments": [
           {
             "from": [
-              40,
-              180
+              120,
+              35
             ],
             "to": [
-              220,
-              180
-            ],
-            "color": "#38BDF8",
-            "strokeWidth": 2.5
-          },
-          {
-            "from": [
               40,
-              180
-            ],
-            "to": [
-              200,
-              40
+              185
             ],
             "color": "#FFB800",
             "strokeWidth": 2.5
@@ -2350,39 +2342,51 @@
           {
             "from": [
               120,
-              110
+              35
             ],
             "to": [
-              130,
-              180
+              200,
+              185
             ],
-            "color": "#10B981",
-            "strokeWidth": 2,
-            "label": "DE"
+            "color": "#38BDF8",
+            "strokeWidth": 2.5
           },
           {
             "from": [
-              200,
-              40
+              40,
+              185
             ],
             "to": [
-              220,
-              180
+              200,
+              185
             ],
             "color": "#F43F5E",
             "strokeWidth": 2.5,
             "label": "BC"
+          },
+          {
+            "from": [
+              76,
+              118
+            ],
+            "to": [
+              164,
+              118
+            ],
+            "color": "#10B981",
+            "strokeWidth": 2.5,
+            "label": "DE"
           }
         ],
         "polygons": [
           {
-            "points": "270,120 320,120 320,170 270,170",
+            "points": "260,115 310,115 310,165 260,165",
             "fill": "rgba(16, 185, 129, 0.2)",
             "stroke": "#10B981",
             "strokeWidth": 2
           },
           {
-            "points": "340,70 440,70 440,170 340,170",
+            "points": "340,65 440,65 440,165 340,165",
             "fill": "rgba(255, 184, 0, 0.16)",
             "stroke": "#FFB800",
             "strokeWidth": 2
@@ -2390,40 +2394,40 @@
         ],
         "points": [
           {
-            "x": 40,
-            "y": 180,
+            "x": 120,
+            "y": 35,
             "label": "A",
             "color": "#FFDCA1",
+            "dot": "filled",
+            "attach": "n"
+          },
+          {
+            "x": 76,
+            "y": 118,
+            "label": "D",
+            "color": "#FFB800",
+            "dot": "filled",
+            "attach": "w"
+          },
+          {
+            "x": 40,
+            "y": 185,
+            "label": "B",
+            "color": "#FFB800",
             "dot": "filled",
             "attach": "sw"
           },
           {
-            "x": 120,
-            "y": 110,
-            "label": "D",
-            "color": "#FFB800",
-            "dot": "filled",
-            "attach": "nw"
-          },
-          {
-            "x": 200,
-            "y": 40,
-            "label": "B",
-            "color": "#FFB800",
-            "dot": "filled",
-            "attach": "ne"
-          },
-          {
-            "x": 130,
-            "y": 180,
+            "x": 164,
+            "y": 118,
             "label": "E",
             "color": "#38BDF8",
             "dot": "filled",
-            "attach": "s"
+            "attach": "e"
           },
           {
-            "x": 220,
-            "y": 180,
+            "x": 200,
+            "y": 185,
             "label": "C",
             "color": "#38BDF8",
             "dot": "filled",
@@ -2432,8 +2436,8 @@
         ],
         "labels": [
           {
-            "x": 130,
-            "y": 25,
+            "x": 120,
+            "y": 205,
             "text": "Tales: DE || BC",
             "color": "#FFDCA1",
             "fontSize": 12,
@@ -2441,8 +2445,8 @@
             "badge": true
           },
           {
-            "x": 295,
-            "y": 145,
+            "x": 285,
+            "y": 140,
             "text": "P₁ = 1",
             "color": "#10B981",
             "fontSize": 13,
@@ -2450,29 +2454,29 @@
           },
           {
             "x": 390,
-            "y": 120,
+            "y": 115,
             "text": "P₂ = 4 = 2²",
             "color": "#FFDCA1",
             "fontSize": 14,
             "fontWeight": "700"
           },
           {
-            "x": 355,
+            "x": 350,
             "y": 195,
-            "text": "Skala k = 2  ⟹  Stosunek pól k² = 4",
+            "text": "Skala k = 2  ⟶  Stosunek pól k² = 4",
             "color": "#FFB800",
             "fontSize": 11,
             "fontWeight": "700",
             "badge": true
           }
         ],
-        "caption": "Gdy proste są równoległe (DE || BC), odpowiednie odcinki na ramionach są proporcjonalne. Jeśli skala podobieństwa figur wynosi k, to ich pola rosną aż k²-krotnie (dla k=2 pole rośnie 4-krotnie)!"
+        "caption": "Gdy proste są równoległe (DE || BC), odpowiednie odcinki na ramionach są proporcjonalne: |AD|/|AB| = |AE|/|AC| = |DE|/|BC|. Jeśli skala podobieństwa figur wynosi k, to ich pola rosną aż k²-krotnie (dla k=2 pole rośnie 4-krotnie)!"
       }
     },
     {
       "id": "f-geo-katy-okrag",
-      "topicId": "geometria",
-      "topicName": "Planimetria i Analityczna",
+      "topicId": "planimetria",
+      "topicName": "Planimetria",
       "title": "Kąty w okręgu: Środkowy 2α i wpisany α",
       "formula": "\\beta = 2\\alpha, \\qquad \\alpha_{\\text{średnica}} = 90^\\circ",
       "subFormulas": [
@@ -2494,8 +2498,8 @@
         "średnica okręgu",
         "kąty w kole"
       ],
-      "cke_page": "str. 17",
-      "pageNumber": 17,
+      "cke_page": "str. 18",
+      "pageNumber": 18,
       "diagram": {
         "type": "GEOMETRY_2D",
         "title": "Kąty w okręgu: Środkowy 2α i wpisany α na tym samym łuku",
@@ -3510,7 +3514,7 @@
           {
             "x": 240,
             "y": 200,
-            "text": "Zestaw: 2, 3, [5], 8, 12  (n = 5  ⟹  element środkowy)",
+            "text": "Zestaw: 2, 3, [5], 8, 12  (n = 5  ⟶  element środkowy)",
             "color": "#F8FAFC",
             "fontSize": 11
           }

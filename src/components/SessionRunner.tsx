@@ -112,16 +112,26 @@ export function resolveCkeTopicForDepartment(
   ) {
     return 'potegi-pierwiastki';
   }
+  if (fullText.includes('stereometr')) {
+    return 'stereometria';
+  }
   if (
-    fullText.includes('planimetr') ||
-    fullText.includes('stereometr') ||
     fullText.includes('analitycz') ||
+    fullText.includes('kartezjańsk') ||
     fullText.includes('odległość punkt') ||
     fullText.includes('środek odcink') ||
-    fullText.includes('równanie okręgu') ||
-    fullText.includes('trójkąt równoboczn')
+    fullText.includes('równanie okręgu')
   ) {
     return 'geometria';
+  }
+  if (
+    fullText.includes('planimetr') ||
+    fullText.includes('tales') ||
+    fullText.includes('trójkąt równoboczn') ||
+    fullText.includes('podobieństw') ||
+    fullText.includes('cechy podobieństwa')
+  ) {
+    return 'planimetria';
   }
   if (
     fullText.includes('prawdopodob') ||
@@ -149,7 +159,7 @@ export function resolveCkeTopicForDepartment(
     return 'funkcje-rownania';
   }
 
-  // 2. Mapowanie po numerze działu (uwzględniające oba standardy: mikroedukacyjny 1-10 i maturalny CKE 1-15)
+  // 2. Mapowanie po numerze działu (uwzględniające oba standardy: mikroedukacyjny 1-10 i maturalny CKE 1-21)
   switch (deptNum) {
     case '1':
       return 'potegi-pierwiastki';
@@ -173,20 +183,32 @@ export function resolveCkeTopicForDepartment(
       return modName.includes('trygono') ? 'trygonometria' : 'funkcje-rownania';
     case '9':
       // Dział 9: Wykres funkcji (kurikulum) vs Planimetria (CKE)
-      return modName.includes('planimetr') || modName.includes('geometr') ? 'geometria' : 'funkcje-rownania';
+      return modName.includes('planimetr') || modName.includes('geometr') ? 'planimetria' : 'funkcje-rownania';
     case '10':
       // Dział 10: Funkcja liniowa (kurikulum) vs Geometria analityczna (CKE)
       return modName.includes('geometr') || modName.includes('analitycz') ? 'geometria' : 'funkcje-rownania';
     case '11':
-      return modName.includes('stereometr') || modName.includes('geometr') ? 'geometria' : 'trygonometria';
+      return modName.includes('stereometr') || modName.includes('geometr') ? 'stereometria' : 'ciagi';
     case '12':
       return modName.includes('kombin') || modName.includes('prawd') ? 'prawdopodobienstwo' : 'geometria';
     case '13':
       return modName.includes('prawd') ? 'prawdopodobienstwo' : 'geometria';
     case '14':
-      return modName.includes('statyst') ? 'prawdopodobienstwo' : 'geometria';
+      return modName.includes('statyst') ? 'prawdopodobienstwo' : 'trygonometria';
     case '15':
-      return modName.includes('optymal') ? 'funkcje-rownania' : 'prawdopodobienstwo';
+      return modName.includes('optymal') ? 'funkcje-rownania' : 'planimetria';
+    case '16':
+      return 'planimetria';
+    case '17':
+      return 'geometria';
+    case '18':
+      return 'stereometria';
+    case '19':
+      return 'prawdopodobienstwo';
+    case '20':
+      return 'prawdopodobienstwo';
+    case '21':
+      return 'funkcje-rownania';
     default:
       return 'funkcje-rownania';
   }
@@ -930,6 +952,21 @@ export function sanitizeLessonHeading(title?: string): string {
   return cleaned;
 }
 
+// Safe validator for emergency fallback theory pill
+export const isEmergencyFallback = (pill: any): boolean => {
+  if (!pill || !pill.concept_essence) return true;
+  if (typeof pill.concept_essence === 'string') {
+    return pill.concept_essence.includes('Zapoznaj się z kluczowymi') || pill.concept_essence.includes('Zapoznaj sie z kluczowymi');
+  }
+  if (typeof pill.concept_essence === 'object' && pill.concept_essence !== null) {
+    const textVal = pill.concept_essence.text || pill.concept_essence.lead || pill.concept_essence.description || '';
+    if (typeof textVal === 'string') {
+      return textVal.includes('Zapoznaj się z kluczowymi') || textVal.includes('Zapoznaj sie z kluczowymi');
+    }
+  }
+  return false;
+};
+
 export const SessionRunner: React.FC<SessionRunnerProps> = ({
   sessionData,
   userState,
@@ -1024,22 +1061,23 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const lastActivityRef = React.useRef<number>(Date.now());
 
+
   // Theory Pill resolution: provided in payload or fetched from lesson curriculum with resilient fallback
   const [asyncTheoryPill, setAsyncTheoryPill] = useState<any>(() => {
-    if (sessionData?.theoryPill && sessionData.theoryPill.concept_essence && !sessionData.theoryPill.concept_essence.includes('Zapoznaj się z kluczowymi')) {
+    if (sessionData?.theoryPill && !isEmergencyFallback(sessionData.theoryPill)) {
       return enrichTheoryPillWithVisual(sessionData.theoryPill, lessonId);
     }
     const cached = curriculumRepository.getCachedLesson(lessonId, (sessionData as any)?.subjectId);
-    if (cached?.theory_pill && cached.theory_pill.concept_essence && !cached.theory_pill.concept_essence.includes('Zapoznaj się z kluczowymi')) {
+    if (cached?.theory_pill && !isEmergencyFallback(cached.theory_pill)) {
       return enrichTheoryPillWithVisual(cached.theory_pill, lessonId);
     }
     return sessionData?.theoryPill || null;
   });
 
   const theoryPill: LessonTheoryPill = useMemo(() => {
-    const raw = (asyncTheoryPill && asyncTheoryPill.concept_essence && !asyncTheoryPill.concept_essence.includes('Zapoznaj się z kluczowymi'))
+    const raw = (asyncTheoryPill && !isEmergencyFallback(asyncTheoryPill))
       ? asyncTheoryPill
-      : (sessionData.theoryPill && sessionData.theoryPill.concept_essence && !sessionData.theoryPill.concept_essence.includes('Zapoznaj się z kluczowymi'))
+      : (sessionData.theoryPill && !isEmergencyFallback(sessionData.theoryPill))
         ? sessionData.theoryPill
         : (asyncTheoryPill || sessionData.theoryPill || getLessonTheoryPill(lessonId) || curriculumRepository.getCachedLesson(lessonId, (sessionData as any)?.subjectId)?.theory_pill);
 
@@ -1425,7 +1463,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
   const buildCurrentSessionState = (): SavedSessionState => {
     const activePill = theoryPillRef.current || theoryPill;
-    const isDegraded = (p: any) => !p || !p.concept_essence || (typeof p.concept_essence === 'string' && p.concept_essence.includes('Zapoznaj się z kluczowymi'));
+    const isDegraded = (p: any) => isEmergencyFallback(p);
     const resolvedPill = (!isDegraded(activePill))
       ? activePill
       : (!isDegraded(sessionData?.theoryPill) ? sessionData.theoryPill : (activePill || sessionData?.theoryPill));
@@ -1505,10 +1543,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   useEffect(() => {
     let isMounted = true;
     const currentPill = theoryPillRef.current || asyncTheoryPill || sessionData?.theoryPill;
-    const isDegradedOrMissing = !currentPill || 
-      !currentPill.concept_essence || 
-      (typeof currentPill.concept_essence === 'string' && currentPill.concept_essence.includes('Zapoznaj się z kluczowymi')) ||
-      (!currentPill.worked_example && !currentPill.core_formulas?.length);
+    const isDegradedOrMissing = isEmergencyFallback(currentPill) ||
+      (!currentPill?.worked_example && !currentPill?.core_formulas?.length);
 
     if (isDegradedOrMissing || sessionData?.isRestoredSession) {
       const topicId = (sessionData as any)?.topicId;
@@ -1782,6 +1818,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       matura_tip?: string;
       mnemonic?: string;
       example?: string;
+      diagram?: any;
     }> = [];
 
     // 1. Z pigułki wiedzy lekcji (getCoreFormulas)
@@ -1851,7 +1888,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             cke_page: item.cke_page,
             in_cke_sheet: true,
             matura_tip: item.ckeTrap,
-            mnemonic: item.goldenRule
+            mnemonic: item.goldenRule,
+            diagram: (item as any).diagram
           });
         }
       }
@@ -4467,8 +4505,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                                   {/* Kaseton wzoru KaTeX */}
                                   {item.latex && (
-                                    <div className="w-full py-3 px-4 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full">
-                                      <div className="inline-block min-w-full text-center">
+                                    <div className="w-full px-3 py-1.5 sm:py-2.5 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full">
+                                      <div className="inline-block w-fit min-w-full mx-auto text-center">
                                         <MathRenderer content={item.latex} displayMode={true} />
                                       </div>
                                     </div>
@@ -6747,8 +6785,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         </div>
 
                         {f.latex && (
-                          <div className="bg-[#080C14] border border-white/5 rounded-xl p-3 sm:p-4 text-center overflow-x-auto custom-scrollbar touch-pan-x">
-                            <div className="font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
+                          <div className="bg-[#080C14] border border-white/5 rounded-xl px-3 py-1.5 sm:py-2.5 text-center overflow-x-auto custom-scrollbar touch-pan-x max-w-full">
+                            <div className="inline-block w-fit min-w-full mx-auto text-center font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
                               <MathRenderer content={f.latex} displayMode={!isPolishSession} />
                             </div>
                           </div>

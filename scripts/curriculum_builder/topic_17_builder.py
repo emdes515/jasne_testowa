@@ -58,9 +58,9 @@ def build_topic_17():
             correct_id='A',
             explanation=r'Wzór na środek odcinka: $x_S = \frac{x_A + x_B}{2}$ oraz $y_S = \frac{y_A + y_B}{2}$.' + '\n' +
                         r'Wyznaczamy $x_B$:' + '\n' +
-                        r'$$\frac{-4 + x_B}{2} = 2 \implies -4 + x_B = 4 \implies x_B = 8$$' + '\n' +
+                        r'$$\frac{-4 + x_B}{2} = 2 \longrightarrow -4 + x_B = 4 \longrightarrow x_B = 8$$' + '\n' +
                         r'Wyznaczamy $y_B$:' + '\n' +
-                        r'$$\frac{1 + y_B}{2} = -3 \implies 1 + y_B = -6 \implies y_B = -7$$' + '\n' +
+                        r'$$\frac{1 + y_B}{2} = -3 \longrightarrow 1 + y_B = -6 \longrightarrow y_B = -7$$' + '\n' +
                         r'Współrzędne punktu $B$ to $(8, -7)$.',
             cke_trap=r'Punkt S jest ŚRODKIEM, a nie końcem! Obliczenie średniej ze współrzędnych A i S dałoby błędny wynik $(-1, -1)$.'
         ),
@@ -83,25 +83,28 @@ def build_topic_17():
                         r'Zatem $M = (2, 6)$.',
             cke_trap=r'W formule na środek odcinka jest PLUS w liczniku: $\frac{x_A + x_B}{2}$. Nie myl z różnicą przy liczeniu wektora.'
         ),
-        make_tf_task(
-            task_id='task-17-1-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Odległość punktu $P = (-3, 4)$ od początku układu współrzędnych $(0, 0)$ jest równa $5$.',
-            correct_tf='P',
-            explanation=r'Odległość punktu $(x, y)$ od początku układu to $\sqrt{x^2 + y^2}$.' + '\n' +
-                        r'$$\sqrt{(-3)^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$' + '\n' +
-                        r'Zdanie jest prawdziwe.',
-            cke_trap=r'Kwadrat liczby ujemnej to liczba dodatnia: $(-3)^2 = 9$. Wynik pod pierwiastkiem to zawsze suma liczb dodatnich.'
-        ),
         make_numeric_task(
-            task_id='task-17-1-5',
+            task_id='task-17-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Oblicz długość odcinka o końcach $A = (1, 2)$ oraz $B = (4, 6)$. Wpisz wynik w pole poniżej.',
             correct_val=5,
             explanation=r'Różnice współrzędnych: $x_B - x_A = 4 - 1 = 3$, $y_B - y_A = 6 - 2 = 4$.' + '\n' +
                         r'$$|AB| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$',
             cke_trap=r'Klasyczny trójkąt pitagorejski o przyprostokątnych 3 i 4 daje przeciwprostokątną 5.'
+        ),
+        make_open_task(
+            task_id='task-17-1-5',
+            source='Matura czerwiec 2023 • Zad. 24',
+            question=r'Punkty $A = (-3, 1)$ oraz $B = (5, 7)$ są przeciwległymi wierzchołkami prostokąta $ABCD$.' + '\n' +
+                     r'Oblicz współrzędne środka symetrii tego prostokąta oraz długość jego przekątnej $AB$. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie współrzędnych środka symetrii prostokąta: S = (1, 4).' + '\n' +
+                        r'2 pkt – obliczenie długości przekątnej prostokąta: |AB| = 10.',
+            explanation=r'Krok 1: Środek symetrii prostokąta $S$ to punkt przecięcia jego przekątnych, czyli środek odcinka $AB$:' + '\n' +
+                        r'$$S = \left(\frac{-3 + 5}{2}, \frac{1 + 7}{2}\right) = \left(\frac{2}{2}, \frac{8}{2}\right) = (1, 4)$$' + '\n' +
+                        r'Krok 2: Długość przekątnej $AB$ ze wzoru na odległość punktów:' + '\n' +
+                        r'$$|AB| = \sqrt{(5 - (-3))^2 + (7 - 1)^2} = \sqrt{8^2 + 6^2} = \sqrt{64 + 36} = \sqrt{100} = 10$$',
+            cke_trap=r'Pamiętaj, że w formule na środek odcinka współrzędne dodajemy ($\frac{-3 + 5}{2} = 1$), a przy obliczaniu długości odejmujemy ($5 - (-3) = 8$).'
         )
     ]
     l1 = make_lesson(
@@ -118,16 +121,16 @@ def build_topic_17():
             {
                 'title': 'Długość odcinka',
                 'latex': r'|AB| = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}',
-                'description': 'Karta wzorów CKE str. 19.',
+                'description': 'Karta wzorów CKE str. 21. Odległość punktów na płaszczyźnie kartezjańskiej.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 19'
+                'cke_page': 'str. 21'
             },
             {
                 'title': 'Współrzędne środka odcinka',
                 'latex': r'S = \left(\frac{x_A + x_B}{2}, \; \frac{y_A + y_B}{2}\right)',
-                'description': 'Karta wzorów CKE str. 19.',
+                'description': 'Karta wzorów CKE str. 21. Średnia arytmetyczna współrzędnych końców odcinka.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 19'
+                'cke_page': 'str. 21'
             }
         ],
         worked_example={
@@ -203,32 +206,33 @@ def build_topic_17():
             correct_id='B',
             explanation=r'Prosta równoległa do $k$ ma ten sam współczynnik $a = \frac{3}{4}$.' + '\n' +
                         r'Podstawiamy współrzędne punktu $P(12, -1)$ do równania $y = \frac{3}{4}x + b$:' + '\n' +
-                        r'$$-1 = \frac{3}{4} \cdot 12 + b \implies -1 = 9 + b \implies b = -10$$' + '\n' +
+                        r'$$-1 = \frac{3}{4} \cdot 12 + b \longrightarrow -1 = 9 + b \longrightarrow b = -10$$' + '\n' +
                         r'Równanie prostej to $y = \frac{3}{4}x - 10$. Poprawna odpowiedź to B.',
             cke_trap=r'Pamiętaj, aby nie zmieniać współczynnika kierunkowego przy prostej równoległej: $a = \frac{3}{4}$. Zmienia się tylko wyraz wolny $b$.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-17-2-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Proste o równaniach $y = 3x - 1$ oraz $y = -\frac{1}{3}x + 7$ przecinają się pod kątem prostym.',
-            correct_tf='P',
-            explanation=r'Współczynniki kierunkowe to $a_1 = 3$ oraz $a_2 = -\frac{1}{3}$.' + '\n' +
-                        r'Iloczyn współczynników wynosi: $3 \cdot \left(-\frac{1}{3}\right) = -1$.' + '\n' +
-                        r'Ponieważ $a_1 \cdot a_2 = -1$, proste są prostopadłe, czyli przecinają się pod kątem $90^\circ$. Zdanie jest prawdziwe.',
-            cke_trap=r'Iloczyn współczynników równy -1 to konieczny i wystarczający warunek prostopadłości prostych.'
+            source='Matura maj 2024 • Zad. 24',
+            question=r'Prosta $k$ o równaniu $y = (2m - 4)x + 3$ jest prostopadła do prostej $l$ o równaniu $y = -\frac{1}{2}x + 1$.' + '\n' +
+                     r'Oblicz wartość parametru $m$. Wpisz wynik w pole poniżej.',
+            correct_val=3,
+            explanation=r'Warunek prostopadłości dwóch prostych to iloczyn ich współczynników kierunkowych równy $-1$:' + '\n' +
+                        r'$$(2m - 4) \cdot \left(-\frac{1}{2}\right) = -1$$' + '\n' +
+                        r'Mnożymy obustronnie przez $-2$:' + '\n' +
+                        r'$$2m - 4 = 2 \longrightarrow 2m = 6 \longrightarrow m = 3$$',
+            cke_trap=r'Pamiętaj, że warunek prostopadłości to $a_1 \cdot a_2 = -1$. Nie myl z warunkiem równoległości $a_1 = a_2$.'
         ),
         make_open_task(
             task_id='task-17-2-5',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Wyznacz równanie prostej $k$ prostopadłej do prostej $l: y = 2x - 3$ i przechodzącej przez punkt $A = (-2, 5)$. Zapisz obliczenia.',
             points=2,
-            scoring_key=r'1 pkt - wyznaczenie współczynnika kierunkowego a = -1/2.' + '\n' +
-                        r'2 pkt - podstawienie punktu A i zapisanie ostatecznego równania y = -1/2 x + 4.',
+            scoring_key=r'1 pkt – wyznaczenie współczynnika kierunkowego a = -1/2.' + '\n' +
+                        r'2 pkt – podstawienie punktu A i zapisanie ostatecznego równania y = -1/2 x + 4.',
             explanation=r'Krok 1: Wyznaczamy współczynnik prostej prostopadłej:' + '\n' +
                         r'$$a_k = -\frac{1}{a_l} = -\frac{1}{2}$$' + '\n' +
                         r'Krok 2: Podstawiamy współrzędne punktu $A(-2, 5)$ do równania $y = -\frac{1}{2}x + b$:' + '\n' +
-                        r'$$5 = -\frac{1}{2} \cdot (-2) + b \implies 5 = 1 + b \implies b = 4$$' + '\n' +
+                        r'$$5 = -\frac{1}{2} \cdot (-2) + b \longrightarrow 5 = 1 + b \longrightarrow b = 4$$' + '\n' +
                         r'Równanie prostej $k$ to $y = -\frac{1}{2}x + 4$.',
             cke_trap=r'Mnożenie ujemnego współczynnika przez ujemną współrzędną: $-\frac{1}{2} \cdot (-2) = +1$. Błąd znaku na tym etapie daje $b = 6$ zamiast $4$.'
         )
@@ -247,23 +251,23 @@ def build_topic_17():
             {
                 'title': 'Warunek równoległości prostych',
                 'latex': r'a_1 = a_2',
-                'description': 'Karta wzorów CKE str. 19.',
+                'description': 'Karta wzorów CKE str. 22. Proste są równoległe, gdy mają równe współczynniki kierunkowe.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 19'
+                'cke_page': 'str. 22'
             },
             {
                 'title': 'Warunek prostopadłości prostych',
                 'latex': r'a_1 \cdot a_2 = -1',
-                'description': 'Karta wzorów CKE str. 19.',
+                'description': 'Karta wzorów CKE str. 22. Proste są prostopadłe, gdy iloczyn ich współczynników wynosi -1.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 19'
+                'cke_page': 'str. 22'
             }
         ],
         worked_example={
             'problem': r'Wyznacz prostą równoległą do $y = 3x - 1$ przechodzącą przez punkt $P(2, 4)$.',
             'steps': [
                 r'Krok 1: Prosta równoległa ma współczynnik $a = 3$, stąd $y = 3x + b$.',
-                r'Krok 2: Podstawiamy punkt $P(2, 4)$: $4 = 3 \cdot 2 + b \implies 4 = 6 + b \implies b = -2$.',
+                r'Krok 2: Podstawiamy punkt $P(2, 4)$: $4 = 3 \cdot 2 + b \longrightarrow 4 = 6 + b \longrightarrow b = -2$.',
                 r'Krok 3: Równanie prostej: $y = 3x - 2$.'
             ],
             'result': r'y = 3x - 2'
@@ -296,7 +300,7 @@ def build_topic_17():
             explanation=r'Równanie okręgu o środku $S(a, b)$ i promieniu $r$ ma postać:' + '\n' +
                         r'$$(x - a)^2 + (y - b)^2 = r^2$$' + '\n' +
                         r'Dla $a = -1, b = 2$ oraz $r = 3$:' + '\n' +
-                        r'$$(x - (-1))^2 + (y - 2)^2 = 3^2 \implies (x + 1)^2 + (y - 2)^2 = 9$$' + '\n' +
+                        r'$$(x - (-1))^2 + (y - 2)^2 = 3^2 \longrightarrow (x + 1)^2 + (y - 2)^2 = 9$$' + '\n' +
                         r'Poprawna odpowiedź to C.',
             cke_trap=r'Dwie pułapki naraz: współrzędne środka wchodzą do nawiasów ze zmienionym znakiem ($(x + 1)$ dla $a = -1$), a po prawej stronie podnosimy promień do kwadratu ($3^2 = 9$, a nie $3$).'
         ),
@@ -314,7 +318,7 @@ def build_topic_17():
             ],
             correct_id='A',
             explanation=r'Środek okręgu $S(a, b)$ to środek średnicy $AB$:' + '\n' +
-                        r'$$a = \frac{-4 + 6}{2} = \frac{2}{2} = 1, \quad b = \frac{7 + (-1)}{2} = \frac{6}{2} = 3 \implies S = (1, 3)$$' + '\n' +
+                        r'$$a = \frac{-4 + 6}{2} = \frac{2}{2} = 1, \quad b = \frac{7 + (-1)}{2} = \frac{6}{2} = 3 \longrightarrow S = (1, 3)$$' + '\n' +
                         r'Kwadrat promienia to kwadrat odległości $|SA|^2$:' + '\n' +
                         r'$$r^2 = (1 - (-4))^2 + (3 - 7)^2 = 5^2 + (-4)^2 = 25 + 16 = 41$$' + '\n' +
                         r'Równanie okręgu to $(x - 1)^2 + (y - 3)^2 = 41$. Poprawna odpowiedź to A.',
@@ -334,30 +338,33 @@ def build_topic_17():
             ],
             correct_id='A',
             explanation=r'Porównujemy z postacią kanoniczną $(x - a)^2 + (y - b)^2 = r^2$:' + '\n' +
-                        r'$$x - a = x - 4 \implies a = 4$$' + '\n' +
-                        r'$$y - b = y + 6 \implies b = -6$$' + '\n' +
+                        r'$$x - a = x - 4 \longrightarrow a = 4$$' + '\n' +
+                        r'$$y - b = y + 6 \longrightarrow b = -6$$' + '\n' +
                         r'Promień to $r = \sqrt{49} = 7$. Zatem $S = (4, -6)$ oraz $r = 7$.',
             cke_trap=r'Prawa strona to $r^2 = 49$, więc promień to $r = 7$. W nawiasach odwracamy znaki: $-4 \longrightarrow +4$, $+6 \longrightarrow -6$.'
         ),
-        make_tf_task(
-            task_id='task-17-3-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Punkt $P = (3, 4)$ leży na okręgu o równaniu $x^2 + y^2 = 25$.',
-            correct_tf='P',
-            explanation=r'Podstawiamy współrzędne punktu $x = 3$ oraz $y = 4$ do lewej strony równania:' + '\n' +
-                        r'$$3^2 + 4^2 = 9 + 16 = 25$$' + '\n' +
-                        r'Lewa strona jest równa prawej ($25 = 25$), więc punkt $P$ leży na okręgu. Zdanie jest prawdziwe.',
-            cke_trap=r'Aby sprawdzić, czy punkt leży na okręgu, po prostu podstaw jego współrzędne pod x i y.'
-        ),
         make_numeric_task(
-            task_id='task-17-3-5',
+            task_id='task-17-3-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Okrąg o równaniu $(x + 5)^2 + (y - 12)^2 = 100$ ma promień $r$. Oblicz promień $r$. Wpisz wynik w pole poniżej.',
             correct_val=10,
             explanation=r'Prawa strona równania okręgu to $r^2 = 100$.' + '\n' +
                         r'Promień jest liczbą dodatnią: $r = \sqrt{100} = 10$.',
             cke_trap=r'Nie podawaj 100 jako promienia! Prawa strona to kwadrat promienia $r^2$.'
+        ),
+        make_open_task(
+            task_id='task-17-3-5',
+            source='Matura maj 2023 • Zad. 25',
+            question=r'Punkty $A = (-1, 2)$ oraz $B = (5, 10)$ są końcami średnicy okręgu $\mathcal{O}$.' + '\n' +
+                     r'Wyznacz współrzędne środka $S$ oraz promień $r$ tego okręgu. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie współrzędnych środka okręgu: S = (2, 6).' + '\n' +
+                        r'2 pkt – obliczenie promienia okręgu: r = 5.',
+            explanation=r'Krok 1: Środek okręgu $S$ to środek średnicy $AB$:' + '\n' +
+                        r'$$S = \left(\frac{-1 + 5}{2}, \frac{2 + 10}{2}\right) = \left(\frac{4}{2}, \frac{12}{2}\right) = (2, 6)$$' + '\n' +
+                        r'Krok 2: Promień okręgu $r$ to odległość $|SA|$ (lub połowa długości $|AB|$):' + '\n' +
+                        r'$$r = |SA| = \sqrt{(2 - (-1))^2 + (6 - 2)^2} = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$',
+            cke_trap=r'Pamiętaj, że odcinek $AB$ jest ŚREDNICĄ okręgu, więc jego promień to połowa długości $AB$ ($r = \frac{|AB|}{2} = 5$).'
         )
     ]
     l3 = make_lesson(
@@ -374,15 +381,15 @@ def build_topic_17():
             {
                 'title': 'Równanie okręgu w postaci kanonicznej',
                 'latex': r'(x - a)^2 + (y - b)^2 = r^2',
-                'description': 'Karta wzorów CKE str. 19. S(a, b) - środek okręgu, r - promień.',
+                'description': 'Karta wzorów CKE str. 23. S(a, b) - środek okręgu, r - promień.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 19'
+                'cke_page': 'str. 23'
             }
         ],
         worked_example={
             'problem': r'Wyznacz środek i promień okręgu o równaniu $(x + 2)^2 + (y - 7)^2 = 36$.',
             'steps': [
-                r'Krok 1: Odwracamy znaki w nawiasach: $a = -2$, $b = +7 \implies S(-2, 7)$.',
+                r'Krok 1: Odwracamy znaki w nawiasach: $a = -2$, $b = +7 \longrightarrow S(-2, 7)$.',
                 r'Krok 2: Pierwiastkujemy prawą stronę: $r = \sqrt{36} = 6$.'
             ],
             'result': r'S = (-2, 7), \quad r = 6'

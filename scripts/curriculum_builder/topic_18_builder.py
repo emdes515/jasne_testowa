@@ -82,20 +82,8 @@ def build_topic_18():
             cke_trap=r'Przekątna graniastosłupa to $D = \sqrt{a^2 + a^2 + H^2} = \sqrt{2a^2 + H^2}$. Pamiętaj o wyłączeniu czynnika przed pierwiastek.',
             diagram=v1['tab0']
         ),
-        make_tf_task(
-            task_id='task-18-1-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Graniastosłup prawidłowy sześciokątny ma $18$ krawędzi, $12$ wierzchołków oraz $8$ ścian.',
-            correct_tf='P',
-            explanation=r'W graniastosłupie $n$-kątnym dla $n = 6$:' + '\n' +
-                        r'Liczba krawędzi: $K = 3n = 3 \cdot 6 = 18$.' + '\n' +
-                        r'Liczba wierzchołków: $W = 2n = 2 \cdot 6 = 12$.' + '\n' +
-                        r'Liczba ścian: $S = n + 2 = 6 + 2 = 8$. Zdanie jest prawdziwe.',
-            cke_trap=r'Dla każdego graniastosłupa n-kątnego: krawędzie $3n$, wierzchołki $2n$, ściany $n + 2$.'
-        ),
         make_numeric_task(
-            task_id='task-18-1-5',
+            task_id='task-18-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Krawędzie prostopadłościanu mają długości $2, 3$ oraz $6$. Oblicz długość przekątnej tego prostopadłościanu. Wpisz wynik w pole poniżej.',
             correct_val=7,
@@ -103,6 +91,22 @@ def build_topic_18():
                         r'$$D = \sqrt{a^2 + b^2 + c^2} = \sqrt{2^2 + 3^2 + 6^2} = \sqrt{4 + 9 + 36} = \sqrt{49} = 7$$',
             cke_trap=r'Elegancki trójwymiarowy wektor pitagorejski: $\sqrt{4 + 9 + 36} = \sqrt{49} = 7$.',
             diagram=v1['tab0']
+        ),
+        make_open_task(
+            task_id='task-18-1-5',
+            source='Matura maj 2023 • Zad. 26',
+            question=r'W graniastosłupie prawidłowym trójkątnym pole powierzchni bocznej jest równe $72$, a wysokość graniastosłupa wynosi $6$.' + '\n' +
+                     r'Oblicz objętość tego graniastosłupa. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie długości krawędzi podstawy graniastosłupa: a = 4.' + '\n' +
+                        r'2 pkt – obliczenie pola podstawy oraz objętości graniastosłupa: V = 24\sqrt{3}.',
+            explanation=r'Krok 1: Powierzchnia boczna graniastosłupa trójkątnego to 3 przystające prostokąty o wymiarach $a \times H$:' + '\n' +
+                        r'$$P_b = 3 \cdot a \cdot H \longrightarrow 72 = 3 \cdot a \cdot 6 \longrightarrow 18a = 72 \longrightarrow a = 4$$' + '\n' +
+                        r'Krok 2: Podstawą jest trójkąt równoboczny o boku $a = 4$. Obliczamy pole podstawy:' + '\n' +
+                        r'$$P_p = \frac{a^2\sqrt{3}}{4} = \frac{4^2\sqrt{3}}{4} = 4\sqrt{3}$$' + '\n' +
+                        r'Krok 3: Objętość graniastosłupa:' + '\n' +
+                        r'$$V = P_p \cdot H = 4\sqrt{3} \cdot 6 = 24\sqrt{3}$$',
+            cke_trap=r'Pamiętaj, że w graniastosłupie prawidłowym trójkątnym podstawą jest trójkąt równoboczny ($P_p = \frac{a^2\sqrt{3}}{4}$), a ściany boczne są 3.'
         )
     ]
     l1 = make_lesson(
@@ -119,16 +123,16 @@ def build_topic_18():
             {
                 'title': 'Przekątna prostopadłościanu',
                 'latex': r'D = \sqrt{a^2 + b^2 + c^2}',
-                'description': 'Karta wzorów CKE str. 20.',
+                'description': 'Karta wzorów CKE str. 25. a, b, c - długości krawędzi.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 20'
+                'cke_page': 'str. 25'
             },
             {
                 'title': 'Objętość graniastosłupa',
                 'latex': r'V = P_p \cdot H',
-                'description': 'Karta wzorów CKE str. 20. P_p - pole podstawy, H - wysokość.',
+                'description': 'Karta wzorów CKE str. 25. P_p - pole podstawy, H - wysokość.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 20'
+                'cke_page': 'str. 25'
             }
         ],
         worked_example={
@@ -209,23 +213,26 @@ def build_topic_18():
             cke_trap=r'Promień łączący spodek wysokości ze środkiem krawędzi podstawy to POŁOWA boku kwadratu: $r = \frac{a}{2} = 4$.',
             diagram=v2['tab0']
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-18-2-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'W ostrosłupie prawidłowym krawędź boczna $b$ jest zawsze dłuższa od wysokości ściany bocznej $h_b$.',
-            correct_tf='P',
-            explanation=r'W ścianie bocznej (trójkącie równoramiennym) krawędź boczna $b$ jest przeciwprostokątną trójkąta prostokątnego o przyprostokątnych $h_b$ oraz $\frac{a}{2}$.' + '\n' +
-                        r'Przeciwprostokątna jest zawsze najdłuższym bokiem trójkąta prostokątnego, więc $b > h_b$. Zdanie jest prawdziwe.',
-            cke_trap=r'Krawędź boczna $b$ jest przeciwprostokątną zarówno z wysokością ściany ($h_b^2 + (a/2)^2 = b^2$), jak i z promieniem opisanym ($H^2 + R^2 = b^2$).'
+            question=r'Podstawą ostrosłupa prawidłowego czworokątnego jest kwadrat o boku $a = 10$. Wysokość ściany bocznej tego ostrosłupa wynosi $h_b = 13$.' + '\n' +
+                     r'Oblicz wysokość $H$ tego ostrosłupa. Wpisz wynik w pole poniżej.',
+            correct_val=12,
+            explanation=r'W ostrosłupie prawidłowym czworokątnym spodek wysokości jest środkiem kwadratu.' + '\n' +
+                        r'Odległość od środka podstawy do krawędzi podstawy wynosi $r = \frac{a}{2} = \frac{10}{2} = 5$.' + '\n' +
+                        r'Z twierdzenia Pitagorasa dla trójkąta prostokątnego o przyprostokątnych $H, r$ i przeciwprostokątnej $h_b$:' + '\n' +
+                        r'$$H = \sqrt{h_b^2 - r^2} = \sqrt{13^2 - 5^2} = \sqrt{169 - 25} = \sqrt{144} = 12$$',
+            cke_trap=r'Pamiętaj, że odcinek łączący spodek wysokości ze środkiem krawędzi podstawy to połowa boku kwadratu: $r = \frac{a}{2} = 5$.',
+            diagram=v2['tab0']
         ),
         make_open_task(
             task_id='task-18-2-5',
             source='Trening JASNE • Wzorzec CKE',
             question=r'W ostrosłupie prawidłowym czworokątnym krawędź podstawy ma długość $10$, a krawędź boczna ma długość $13$. Oblicz wysokość ściany bocznej $h_b$ tego ostrosłupa. Zapisz obliczenia.',
             points=2,
-            scoring_key=r'1 pkt - wyznaczenie trójkąta prostokątnego w ścianie bocznej o bokach 5, h_b, 13.' + '\n' +
-                        r'2 pkt - poprawne obliczenie h_b = √(169 - 25) = 12.',
+            scoring_key=r'1 pkt – wyznaczenie trójkąta prostokątnego w ścianie bocznej o bokach 5, h_b, 13.' + '\n' +
+                        r'2 pkt – poprawne obliczenie h_b = \sqrt{169 - 25} = 12.',
             explanation=r'Krok 1: W ścianie bocznej wysokość $h_b$ dzieli podstawę na połowy: $\frac{a}{2} = \frac{10}{2} = 5$.' + '\n' +
                         r'Krok 2: Z twierdzenia Pitagorasa w ścianie bocznej:' + '\n' +
                         r'$$h_b^2 + 5^2 = 13^2 \longrightarrow h_b^2 + 25 = 169 \longrightarrow h_b^2 = 144$$' + '\n' +
@@ -249,16 +256,16 @@ def build_topic_18():
             {
                 'title': 'Objętość ostrosłupa',
                 'latex': r'V = \frac{1}{3}P_p \cdot H',
-                'description': 'Karta wzorów CKE str. 20.',
+                'description': 'Karta wzorów CKE str. 25. Objętość ostrosłupa to 1/3 iloczynu pola podstawy i wysokości.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 20'
+                'cke_page': 'str. 25'
             },
             {
                 'title': 'Zależność w ścianie bocznej',
                 'latex': r'H^2 + r^2 = h_b^2',
-                'description': 'r - odległość od środka podstawy do krawędzi podstawy.',
+                'description': 'Karta wzorów CKE str. 25. Trójkąt prostokątny łączący wysokość H, promień r i wysokość ściany h_b.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 20'
+                'cke_page': 'str. 25'
             }
         ],
         worked_example={
@@ -339,19 +346,8 @@ def build_topic_18():
                         r'$$V = \frac{4}{3}\pi R^3 = \frac{4}{3}\pi \cdot 3^3 = \frac{4}{3}\pi \cdot 27 = 36\pi$$',
             cke_trap=r'Dla promienia R = 3 pole powierzchni i objętość kuli mają taką samą wartość liczbową: $36\pi$.'
         ),
-        make_tf_task(
-            task_id='task-18-3-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'W każdym stożku tworząca $l$, promień podstawy $r$ oraz wysokość $H$ spełniają zależność $r^2 + H^2 = l^2$.',
-            correct_tf='P',
-            explanation=r'Przekrój osiowy stożka składa się z dwóch przystających trójkątów prostokątnych o przyprostokątnych $r, H$ i przeciwprostokątnej $l$.' + '\n' +
-                        r'Z twierdzenia Pitagorasa: $r^2 + H^2 = l^2$. Zdanie jest prawdziwe.',
-            cke_trap=r'Tworząca stożka l jest zawsze przeciwprostokątną, więc jest dłuższa zarówno od promienia, jak i od wysokości.',
-            diagram=v3['tab0']
-        ),
         make_numeric_task(
-            task_id='task-18-3-5',
+            task_id='task-18-3-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Stożek ma promień podstawy $r = 3$ oraz tworzącą $l = 5$. Oblicz objętość tego stożka podzieloną przez $\pi$. Wpisz wynik w pole poniżej.',
             correct_val=12,
@@ -359,6 +355,23 @@ def build_topic_18():
                         r'Objętość stożka: $V = \frac{1}{3}\pi r^2 H = \frac{1}{3}\pi \cdot 9 \cdot 4 = 12\pi$.' + '\n' +
                         r'Po podzieleniu przez $\pi$ wynik wynosi 12.',
             cke_trap=r'Nie zapomnij wyznaczyć wysokości H z twierdzenia Pitagorasa ($H = 4$) przed podstawieniem do wzoru na objętość.',
+            diagram=v3['tab0']
+        ),
+        make_open_task(
+            task_id='task-18-3-5',
+            source='Matura czerwiec 2024 • Zad. 27',
+            question=r'Przekrój osiowy walca jest kwadratem o polu równym $36$.' + '\n' +
+                     r'Oblicz pole powierzchni całkowitej oraz objętość tego walca. Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – wyznaczenie promienia podstawy r = 3 oraz wysokości walca H = 6.' + '\n' +
+                        r'2 pkt – obliczenie objętości walca V = 54\pi oraz pola całkowitego P_c = 54\pi.',
+            explanation=r'Krok 1: Przekrój osiowy walca jest prostokątem o bokach $2r$ oraz $H$. Skoro przekrój jest kwadratem o polu $36$:' + '\n' +
+                        r'$$H = 2r = \sqrt{36} = 6 \longrightarrow r = 3$$' + '\n' +
+                        r'Krok 2: Pole powierzchni całkowitej walca:' + '\n' +
+                        r'$$P_c = 2\pi r^2 + 2\pi r H = 2\pi \cdot 3^2 + 2\pi \cdot 3 \cdot 6 = 18\pi + 36\pi = 54\pi$$' + '\n' +
+                        r'Krok 3: Objętość walca:' + '\n' +
+                        r'$$V = \pi r^2 H = \pi \cdot 3^2 \cdot 6 = 54\pi$$',
+            cke_trap=r'Pamiętaj, że bok kwadratu będącego przekrojem osiowym walca to ŚREDNICA podstawy ($2r = 6$), zatem promień wynosi $r = 3$.',
             diagram=v3['tab0']
         )
     ]
@@ -376,23 +389,23 @@ def build_topic_18():
             {
                 'title': 'Objętość walca',
                 'latex': r'V = \pi r^2 H',
-                'description': 'Karta wzorów CKE str. 21.',
+                'description': 'Karta wzorów CKE str. 26. Walec o promieniu r i wysokości H.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 21'
+                'cke_page': 'str. 26'
             },
             {
                 'title': 'Objętość stożka',
                 'latex': r'V = \frac{1}{3}\pi r^2 H',
-                'description': 'Karta wzorów CKE str. 21.',
+                'description': 'Karta wzorów CKE str. 26. Stożek o promieniu r i wysokości H.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 21'
+                'cke_page': 'str. 26'
             },
             {
                 'title': 'Objętość i pole kuli',
                 'latex': r'V = \frac{4}{3}\pi R^3, \quad P = 4\pi R^2',
-                'description': 'Karta wzorów CKE str. 21.',
+                'description': 'Karta wzorów CKE str. 26. Kula o promieniu R.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 21'
+                'cke_page': 'str. 26'
             }
         ],
         worked_example={

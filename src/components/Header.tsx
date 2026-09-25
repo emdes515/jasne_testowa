@@ -6,6 +6,7 @@ import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
 import { formatPromoSeconds } from '../services/promotionService';
 import { useTheme } from '../services/themeManager';
+import { JasneLogo } from './ui/JasneLogo';
 
 export interface HeaderProps {
   state: UserState;
@@ -74,14 +75,7 @@ export function Header({
         title="Przejdź do pulpitu głównego JASNE."
         aria-label="Pulpit główny JASNE."
       >
-        <div className="relative flex items-center justify-center shrink-0">
-          <img 
-            src="/logo.png" 
-            alt="JASNE." 
-            className="h-8 sm:h-9 w-auto object-contain drop-shadow-[0_0_12px_rgba(255,184,0,0.5)] group-hover:scale-105 transition-transform duration-200" 
-          />
-          <div className="absolute inset-0 bg-[#FFB800]/20 blur-md rounded-full -z-10 group-hover:bg-[#FFB800]/35 transition-colors" />
-        </div>
+        <JasneLogo variant="icon" size={32} glow={true} className="group-hover:scale-105 transition-transform duration-200" />
         <div className="flex flex-col text-left">
           <span className="text-base sm:text-lg font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
             JASNE<span className="text-primary">.</span>

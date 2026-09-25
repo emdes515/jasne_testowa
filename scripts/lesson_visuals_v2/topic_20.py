@@ -15,33 +15,33 @@ def get_topic_20_visuals(l_idx):
         # L20.1: Średnia arytmetyczna i średnia ważona
         tab0 = make_statistics_diagram(
             title="Średnia arytmetyczna i suma łączna danych",
-            badge=r"\bar{x} = \frac{\sum x_i}{n} \longrightarrow n \cdot \bar{x} = \sum x_i \quad | \quad \bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}",
-            caption="Kluczowa sztuczka CKE: znajomość średniej pozwala natychmiast wyznaczyć sumę wszystkich liczb: suma = n · średnia.",
+            badge=r"\bar{x} = \frac{x_1 + \dots + x_n}{n} \longrightarrow \text{Suma} = n \cdot \bar{x} \quad | \quad \bar{s} = \frac{w_1 a_1 + \dots + w_n a_n}{w_1 + \dots + w_n}",
+            caption="Kluczowa sztuczka CKE: znajomość średniej pozwala natychmiast wyznaczyć sumę wszystkich liczb: $\\text{suma} = n \\cdot \\bar{x}$.",
             bars=[
-                {'x': 100, 'y': 100, 'width': 50, 'height': 110, 'color': C_SKY, 'label': 'x₁=6'},
-                {'x': 170, 'y': 70, 'width': 50, 'height': 140, 'color': C_SKY, 'label': 'x₂=9'},
-                {'x': 240, 'y': 40, 'width': 50, 'height': 170, 'color': C_SKY, 'label': 'x₃=12'},
-                {'x': 330, 'y': 70, 'width': 60, 'height': 140, 'color': C_PRIMARY, 'label': 'śr = 9'}
+                {'x': 100, 'y': 150, 'width': 50, 'height': 60, 'color': C_SKY, 'label': 'x₁=6'},
+                {'x': 170, 'y': 120, 'width': 50, 'height': 90, 'color': C_SKY, 'label': 'x₂=9'},
+                {'x': 240, 'y': 90, 'width': 50, 'height': 120, 'color': C_SKY, 'label': 'x₃=12'},
+                {'x': 330, 'y': 120, 'width': 60, 'height': 90, 'color': C_PRIMARY, 'label': 'śr = 9'}
             ],
             segments=[
                 {'from': [80, 210], 'to': [440, 210], 'color': C_SLATE, 'strokeWidth': 2},
-                {'from': [80, 70], 'to': [440, 70], 'color': C_PRIMARY, 'strokeWidth': 1.8, 'dashed': True}
+                {'from': [80, 120], 'to': [440, 120], 'color': C_PRIMARY, 'strokeWidth': 1.8, 'dashed': True}
             ],
             labels=[
-                {'x': 260, 'y': 55, 'text': 'poziom średniej arytmetycznej (9)', 'color': C_PRIMARY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'}
+                {'x': 440, 'y': 35, 'text': 'średnia arytmetyczna = 9', 'color': C_PRIMARY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'end', 'badge': True}
             ],
             metrics=[
                 {'label': 'Średnia arytmetyczna', 'value': r'$\bar{x} = \frac{x_1 + \dots + x_n}{n}$', 'color': C_SKY},
                 {'label': 'Suma łączna', 'value': r'$\text{Suma} = n \cdot \bar{x}$', 'color': C_PRIMARY},
-                {'label': 'Średnia ważona', 'value': r'$\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}$', 'color': C_SUCCESS}
+                {'label': 'Średnia ważona', 'value': r'$\bar{s} = \frac{w_1 a_1 + \dots + w_n a_n}{w_1 + \dots + w_n}$', 'color': C_SUCCESS}
             ]
         )
         tab2 = make_step_flow_diagram(
             title="Dodanie nowej liczby do zestawu o znanej średniej krok po kroku",
-            badge=r"n = 3, \; \bar{x} = 9 \implies \text{suma} = 3 \cdot 9 = 27 \implies \text{nowa suma} = 27 + 13 = 40 \implies \bar{x}_{\text{nowa}} = \frac{40}{4} = 10",
+            badge=r"n = 3, \; \bar{x} = 9 \longrightarrow \text{suma} = 3 \cdot 9 = 27 \longrightarrow \text{nowa suma} = 27 + 13 = 40 \longrightarrow \bar{x}_{\text{nowa}} = \frac{40}{4} = 10",
             caption="Zadanie maturalne CKE maj 2024: średnia liczb a, b, c wynosi 9. Oblicz średnią liczb a, b, c, 13.",
             steps=[
-                {'num': 1, 'title': 'Wyznacz sumę pierwszych trzech liczb', 'desc': r'$\frac{a + b + c}{3} = 9 \implies a + b + c = 3 \cdot 9 = 27$.', 'color': C_SKY},
+                {'num': 1, 'title': 'Wyznacz sumę pierwszych trzech liczb', 'desc': r'$\frac{a + b + c}{3} = 9 \longrightarrow a + b + c = 3 \cdot 9 = 27$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Dodaj czwartą liczbę do sumy', 'desc': r'Nowa suma wynosi $27 + 13 = 40$. Liczba elementów wzrosła do $n = 4$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Oblicz nową średnią arytmetyczną', 'desc': r'$\bar{x}_{\text{nowa}} = \frac{40}{4} = 10$.', 'color': C_SUCCESS}
             ],
@@ -58,7 +58,7 @@ def get_topic_20_visuals(l_idx):
             metrics=[
                 {'label': 'KARDYNALNY BŁĄD 1', 'value': r'Pozostawienie starego mianownika $n$ po dodaniu nowych elementów', 'color': C_DANGER},
                 {'label': 'KARDYNALNY BŁĄD 2', 'value': r'Liczenie średniej ze średnich bez uwzględnienia wag liczności grup', 'color': C_DANGER},
-                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Zawsze przeliczaj na sumę bezwzględną: $\sum = n \cdot \bar{x}$', 'color': C_SUCCESS}
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Zawsze przeliczaj na sumę bezwzględną: $\text{Suma} = n \cdot \bar{x}$', 'color': C_SUCCESS}
             ]
         )
         return {'tab0': tab0, 'tab2': tab2, 'tab3': tab3}
@@ -91,7 +91,7 @@ def get_topic_20_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie mediany liczb krok po kroku",
-            badge=r"(7, 2, 9, 3, 5, 8) \longrightarrow (2, 3, 5, 7, 8, 9) \implies M_e = \frac{5 + 7}{2} = 6",
+            badge=r"(7, 2, 9, 3, 5, 8) \longrightarrow (2, 3, 5, 7, 8, 9) \longrightarrow M_e = \frac{5 + 7}{2} = 6",
             caption="Krok bezwzględny: zanim wskażesz środkowe liczby, MUSISZ ustawić zestaw liczb w kolejności rosnącej!",
             steps=[
                 {'num': 1, 'title': 'Uporządkuj liczby niemalejąco', 'desc': r'Zestaw $(7, 2, 9, 3, 5, 8)$ po uporządkowaniu: $2, 3, 5, 7, 8, 9$.', 'color': C_SKY},
@@ -120,30 +120,30 @@ def get_topic_20_visuals(l_idx):
         # L20.3: Odchylenie standardowe i wariancja
         tab0 = make_statistics_diagram(
             title="Wariancja i odchylenie standardowe – miary rozrzutu",
-            badge=r"\sigma^2 = \frac{1}{n}\sum (x_i - \bar{x})^2, \quad \sigma = \sqrt{\sigma^2}",
+            badge=r"\sigma^2 = \frac{(a_1 - \bar{a})^2 + \dots + (a_n - \bar{a})^2}{n}, \quad \sigma = \sqrt{\sigma^2}",
             caption="Wariancja to średnia arytmetyczna kwadratów odchyleń od średniej. Odchylenie standardowe ma to samo miano co badana cecha.",
             bars=[
-                {'x': 120, 'y': 100, 'width': 45, 'height': 110, 'color': C_SKY, 'label': 'x₁=2'},
-                {'x': 180, 'y': 80, 'width': 45, 'height': 130, 'color': C_SKY, 'label': 'x₂=4'},
-                {'x': 240, 'y': 60, 'width': 45, 'height': 150, 'color': C_SKY, 'label': 'x₃=6'},
-                {'x': 300, 'y': 40, 'width': 45, 'height': 170, 'color': C_SKY, 'label': 'x₄=8'}
+                {'x': 120, 'y': 195, 'width': 45, 'height': 30, 'color': C_SKY, 'label': 'x₁=2'},
+                {'x': 180, 'y': 165, 'width': 45, 'height': 60, 'color': C_SKY, 'label': 'x₂=4'},
+                {'x': 240, 'y': 105, 'width': 45, 'height': 120, 'color': C_SKY, 'label': 'x₃=6'},
+                {'x': 300, 'y': 75, 'width': 45, 'height': 150, 'color': C_SKY, 'label': 'x₄=8'}
             ],
             segments=[
-                {'from': [80, 210], 'to': [440, 210], 'color': C_SLATE, 'strokeWidth': 2},
-                {'from': [80, 70], 'to': [440, 70], 'color': C_PRIMARY, 'strokeWidth': 1.8, 'dashed': True}
+                {'from': [80, 225], 'to': [440, 225], 'color': C_SLATE, 'strokeWidth': 2},
+                {'from': [80, 135], 'to': [440, 135], 'color': C_PRIMARY, 'strokeWidth': 1.8, 'dashed': True}
             ],
             labels=[
-                {'x': 260, 'y': 55, 'text': 'średnia = 5', 'color': C_PRIMARY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'middle'}
+                {'x': 440, 'y': 35, 'text': 'średnia arytmetyczna = 5', 'color': C_PRIMARY, 'fontSize': 11, 'fontWeight': 'bold', 'anchor': 'end', 'badge': True}
             ],
             metrics=[
-                {'label': 'Wariancja', 'value': r'$\sigma^2 = \frac{\sum (x_i - \bar{x})^2}{n}$', 'color': C_SKY},
+                {'label': 'Wariancja (CKE)', 'value': r'$\sigma^2 = \frac{(a_1 - \bar{a})^2 + \dots + (a_n - \bar{a})^2}{n}$', 'color': C_SKY},
                 {'label': 'Odchylenie standardowe', 'value': r'$\sigma = \sqrt{\sigma^2}$', 'color': C_PRIMARY},
                 {'label': 'Interpretacja', 'value': r'Mniejsza $\sigma \longrightarrow$ wyniki bardziej skupione wokół średniej', 'color': C_SUCCESS}
             ]
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie odchylenia standardowego krok po kroku",
-            badge=r"(2, 4, 6, 8) \implies \bar{x} = 5 \implies \sigma^2 = \frac{(-3)^2 + (-1)^2 + 1^2 + 3^2}{4} = \frac{20}{4} = 5 \implies \sigma = \sqrt{5}",
+            badge=r"(2, 4, 6, 8) \longrightarrow \bar{x} = 5 \longrightarrow \sigma^2 = \frac{(-3)^2 + (-1)^2 + 1^2 + 3^2}{4} = \frac{20}{4} = 5 \longrightarrow \sigma = \sqrt{5}",
             caption="Wyznaczamy średnią, różnice od średniej, podnosimy je do kwadratu i uśredniamy.",
             steps=[
                 {'num': 1, 'title': 'Oblicz średnią arytmetyczną', 'desc': r'$\bar{x} = \frac{2 + 4 + 6 + 8}{4} = \frac{20}{4} = 5$.', 'color': C_SKY},

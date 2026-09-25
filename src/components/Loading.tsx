@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ReactNode, useId } from 'react';
+import { JasneLogo } from './ui/JasneLogo';
 
 export interface LoadingSpinnerProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -103,12 +104,36 @@ export function LoadingSpinner({
   );
 }
 
+export interface JasneLogoLoaderProps {
+  size?: number;
+  className?: string;
+  glow?: boolean;
+}
+
+export function JasneLogoLoader({
+  size = 56,
+  className = '',
+  glow = true
+}: JasneLogoLoaderProps) {
+  return (
+    <div 
+      role="status"
+      aria-label="Ładowanie..."
+      className={`relative flex items-center justify-center p-3 rounded-3xl bg-white/[0.02] border border-white/5 shadow-[0_0_30px_rgba(255,184,0,0.12)] ${className}`}
+    >
+      <JasneLogo variant="loader" size={size} glow={glow} />
+    </div>
+  );
+}
+
 export function LoadingScreen({ 
   message = "Wczytywanie danych...",
-  subtext
+  subtext,
+  useBrandLogo = true
 }: { 
   message?: string;
   subtext?: string;
+  useBrandLogo?: boolean;
 }) {
   return (
     <motion.div 
@@ -123,9 +148,13 @@ export function LoadingScreen({
       <div className="absolute w-96 h-96 rounded-full bg-amber-500/5 blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center gap-6 px-4">
-        <div className="relative p-3 rounded-full bg-white/[0.02] border border-white/5 shadow-[0_0_30px_rgba(255,184,0,0.08)]">
-          <LoadingSpinner size="lg" />
-        </div>
+        {useBrandLogo ? (
+          <JasneLogoLoader size={60} />
+        ) : (
+          <div className="relative p-3 rounded-full bg-white/[0.02] border border-white/5 shadow-[0_0_30px_rgba(255,184,0,0.08)]">
+            <LoadingSpinner size="lg" />
+          </div>
+        )}
         
         <div className="flex flex-col items-center text-center gap-1.5">
           <motion.div 

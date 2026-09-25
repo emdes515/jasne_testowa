@@ -81,24 +81,31 @@ def build_topic_19():
                         r'$$N = 9 \cdot 5 = 45$$',
             cke_trap=r'Cyfra dziesiątek nie może być zerem (jest 9 opcji, a nie 10). Cyfr parzystych jedności jest 5: 0, 2, 4, 6, 8.'
         ),
-        make_tf_task(
-            task_id='task-19-1-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Liczba wszystkich możliwych wyników trzykrotnego rzutu monetą jest równa $8$.',
-            correct_tf='P',
-            explanation=r'W każdym rzucie monetą mamy $2$ możliwe wyniki (orzeł lub reszka).' + '\n' +
-                        r'W trzech niezależnych rzutach liczba wszystkich ciągów wynosi $2 \cdot 2 \cdot 2 = 2^3 = 8$. Zdanie jest prawdziwe.',
-            cke_trap=r'Wielokrotny rzut monetą to $2^n$ możliwości. Dla 3 rzutów: $2^3 = 8$.'
-        ),
         make_numeric_task(
-            task_id='task-19-1-5',
+            task_id='task-19-1-4',
             source='Trening JASNE • Wzorzec CKE',
             question=r'W menu restauracji są $3$ rodzaje zup, $4$ dania główne i $2$ desery. Ile różnych zestawów obiadowych (zupa + danie + deser) można skomponować? Wpisz wynik w pole poniżej.',
             correct_val=24,
             explanation=r'Z reguły mnożenia:' + '\n' +
                         r'$$N = 3 \cdot 4 \cdot 2 = 24$$',
             cke_trap=r'Niezależne wybory z różnych kategorii zawsze mnożymy: $3 \cdot 4 \cdot 2 = 24$.'
+        ),
+        make_open_task(
+            task_id='task-19-1-5',
+            source='Matura czerwiec 2023 • Zad. 28',
+            question=r'Ile jest wszystkich liczb naturalnych czterocyfrowych, w których cyfra setek jest równa $5$, a cyfra jedności jest parzysta?' + '\n' +
+                     r'Zapisz obliczenia.',
+            points=2,
+            scoring_key=r'1 pkt – określenie liczby możliwości wyboru poszczególnych cyfr (tysiące: 9, setki: 1, dziesiątki: 10, jedności: 5).' + '\n' +
+                        r'2 pkt – zastosowanie reguły mnożenia i obliczenie liczby wszystkich takich liczb: N = 9 \cdot 1 \cdot 10 \cdot 5 = 450.',
+            explanation=r'Krok 1: Analizujemy możliwości dla poszczególnych pozycji czterocyfrowej liczby $abcd$:' + '\n' +
+                        r'- cyfra tysięcy $a \in \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$: $9$ możliwości (zero nie może stać na początku),' + '\n' +
+                        r'- cyfra setek $b = 5$: $1$ możliwość,' + '\n' +
+                        r'- cyfra dziesiątek $c \in \{0, 1, 2, \dots, 9\}$: $10$ możliwości,' + '\n' +
+                        r'- cyfra jedności $d \in \{0, 2, 4, 6, 8\}$: $5$ możliwości (cyfry parzyste).' + '\n' +
+                        r'Krok 2: Z reguły mnożenia obliczamy liczbę wszystkich takich liczb:' + '\n' +
+                        r'$$N = 9 \cdot 1 \cdot 10 \cdot 5 = 450$$',
+            cke_trap=r'Pamiętaj, że cyfra tysięcy nie może być zerem (jest 9 możliwości, a nie 10), natomiast cyfra dziesiątek może być dowolna (10 możliwości).'
         )
     ]
     l1 = make_lesson(
@@ -115,9 +122,9 @@ def build_topic_19():
             {
                 'title': 'Reguła mnożenia',
                 'latex': r'N = n_1 \cdot n_2 \cdot \dots \cdot n_k',
-                'description': 'Karta wzorów CKE str. 22.',
+                'description': 'Karta wzorów CKE str. 26. Całkowita liczba permutacji i wyborów wieloetapowych.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 22'
+                'cke_page': 'str. 26'
             }
         ],
         worked_example={
@@ -198,23 +205,25 @@ def build_topic_19():
                         r'$$P(A) = \frac{3}{36} = \frac{1}{12}$$',
             cke_trap=r'Pamiętaj, że $(5, 6)$ oraz $(6, 5)$ to dwa różne zdarzenia elementarne!'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-19-2-4',
-            source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Jeśli $A$ i $A\'$ są zdarzeniami przeciwnymi, to suma ich prawdopodobieństw $P(A) + P(A\')$ wynosi $1$.',
-            correct_tf='P',
-            explanation=r'Zdarzenie przeciwne obejmuje wszystkie elementy przestrzeni $\Omega$, które nie należą do $A$.' + '\n' +
-                        r'Z własności prawdopodobieństwa: $P(A) + P(A\') = 1 \implies P(A\') = 1 - P(A)$. Zdanie jest prawdziwe.',
-            cke_trap=r'Zdarzenie przeciwne to jedna z najpotężniejszych technik maturalnych: gdy w pytaniu jest "co najmniej jeden", licz przez zdarzenie przeciwne: $1 - P(\text{żaden})$.'
+            source='Matura maj 2023 • Zad. 27',
+            question=r'Ze zbioru liczb naturalnych dwucyfrowych losujemy jedną liczbę.' + '\n' +
+                     r'Oblicz liczbę wszystkich zdarzeń sprzyjających wylosowaniu liczby podzielnej przez $15$. Wpisz wynik w pole poniżej.',
+            correct_val=6,
+            explanation=r'Liczby dwucyfrowe to liczby ze zbioru $\{10, 11, 12, \dots, 99\}$.' + '\n' +
+                        r'Wypisujemy liczby dwucyfrowe podzielne przez $15$:' + '\n' +
+                        r'$$15, 30, 45, 60, 75, 90$$' + '\n' +
+                        r'Jest ich dokładnie $6$.',
+            cke_trap=r'Pamiętaj, że $15 \cdot 1 = 15$ to najmniejsza, a $15 \cdot 6 = 90$ to największa liczba dwucyfrowa podzielna przez 15. Kolejna to $15 \cdot 7 = 105$ (trzycyfrowa).'
         ),
         make_open_task(
             task_id='task-19-2-5',
             source='Trening JASNE • Wzorzec CKE',
             question=r'Rzucamy dwukrotnie symetryczną sześcienną kostką do gry. Oblicz prawdopodobieństwo zdarzenia, że iloczyn wyrzuconych oczek jest liczbą nieparzystą. Zapisz obliczenia.',
             points=2,
-            scoring_key=r'1 pkt - określenie |Omega| = 36 oraz warunku nieparzystości iloczynu (obie kostki nieparzyste).' + '\n' +
-                        r'2 pkt - wyznaczenie |A| = 3 · 3 = 9 i obliczenie P(A) = 9/36 = 1/4.',
+            scoring_key=r'1 pkt – określenie |\Omega| = 36 oraz warunku nieparzystości iloczynu (obie kostki nieparzyste).' + '\n' +
+                        r'2 pkt – wyznaczenie |A| = 3 \cdot 3 = 9 i obliczenie P(A) = \frac{9}{36} = \frac{1}{4}.',
             explanation=r'Krok 1: Przestrzeń zdarzeń $|\Omega| = 6 \cdot 6 = 36$.' + '\n' +
                         r'Krok 2: Iloczyn dwóch liczb jest nieparzysty tylko wtedy, gdy obie mnożone liczby są nieparzyste.' + '\n' +
                         r'Liczby nieparzyste na kostce to $\{1, 3, 5\}$ (3 możliwości).' + '\n' +
@@ -238,16 +247,16 @@ def build_topic_19():
             {
                 'title': 'Klasyczna definicja prawdopodobieństwa',
                 'latex': r'P(A) = \frac{|A|}{|\Omega|}',
-                'description': 'Karta wzorów CKE str. 23.',
+                'description': 'Karta wzorów CKE str. 28. Stosunek liczby zdarzeń sprzyjających do liczby wszystkich zdarzeń elementarnych.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 23'
+                'cke_page': 'str. 28'
             },
             {
                 'title': 'Zdarzenie przeciwne',
                 'latex': r'P(A) = 1 - P(A\')',
-                'description': 'Suma prawdopodobieństw zdarzeń przeciwnych wynosi 1.',
+                'description': 'Karta wzorów CKE str. 27. Suma prawdopodobieństw zdarzeń przeciwnych wynosi 1.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 23'
+                'cke_page': 'str. 27'
             }
         ],
         worked_example={
@@ -334,23 +343,26 @@ def build_topic_19():
                         r'$$P = \frac{1}{2} \cdot \frac{1}{3} = \frac{1}{6}$$',
             cke_trap=r'Dla zdarzeń niezależnych mnożymy prawdopodobieństwa pojedynczych etapów.'
         ),
-        make_tf_task(
+        make_numeric_task(
             task_id='task-19-3-4',
             source='Trening JASNE • Wzorzec CKE',
-            question=r'Oceń prawdziwość poniższego zdania:' + '\n' +
-                     r'Suma prawdopodobieństw na wszystkich gałęziach wychodzących z jednego węzła drzewa stochastycznego jest zawsze równa $1$.',
-            correct_tf='P',
-            explanation=r'W każdym węźle gałęzie wyczerpują wszystkie możliwe wyniki tego etapu doświadczenia.' + '\n' +
-                        r'Suma prawdopodobieństw zdarzeń wyczerpujących przestrzeń wynosi $1$. Zdanie jest prawdziwe.',
-            cke_trap=r'To doskonały test kontrolny przy rysowaniu drzewka: sprawdź, czy ułamki na każdej parze gałęzi sumują się do 1.'
+            question=r'W pojemniku jest $6$ kul białych oraz pewna liczba kul czarnych. Prawdopodobieństwo wylosowania kuli czarnej w pojedynczym losowaniu jest równe $\frac{1}{3}$.' + '\n' +
+                     r'Oblicz, ile kul czarnych znajduje się w tym pojemniku. Wpisz wynik w pole poniżej.',
+            correct_val=3,
+            explanation=r'Niech $n$ oznacza liczbę kul czarnych. Łączna liczba kul w pojemniku to $6 + n$.' + '\n' +
+                        r'Z klasycznej definicji prawdopodobieństwa:' + '\n' +
+                        r'$$P(C) = \frac{n}{6 + n} = \frac{1}{3}$$' + '\n' +
+                        r'Mnożymy na krzyż:' + '\n' +
+                        r'$$3n = 6 + n \longrightarrow 2n = 6 \longrightarrow n = 3$$',
+            cke_trap=r'Pamiętaj, że w mianowniku musi być suma WSZYSTKICH kul w pojemniku ($6 + n$), a nie tylko białe kule.'
         ),
         make_open_task(
             task_id='task-19-3-5',
             source='Trening JASNE • Wzorzec CKE',
             question=r'W urnie znajdują się $4$ kule białe i $2$ kule czarne. Losujemy bez zwracania dwie kule. Oblicz prawdopodobieństwo wylosowania co najmniej jednej kuli czarnej. Zapisz obliczenia.',
             points=2,
-            scoring_key=r'1 pkt - zastosowanie zdarzenia przeciwnego A\' (dwie kule białe) lub rozrysowanie drzewa stochastycznego.' + '\n' +
-                        r'2 pkt - poprawne obliczenie P(A\') = (4/6) · (3/5) = 2/5 i podanie P(A) = 1 - 2/5 = 3/5.',
+            scoring_key=r'1 pkt – zastosowanie zdarzenia przeciwnego A\' (dwie kule białe) lub rozrysowanie drzewa stochastycznego.' + '\n' +
+                        r'2 pkt – poprawne obliczenie P(A\') = \frac{4}{6} \cdot \frac{3}{5} = \frac{2}{5} i podanie P(A) = 1 - \frac{2}{5} = \frac{3}{5}.',
             explanation=r'Krok 1: Korzystamy ze zdarzenia przeciwnego $A\'$: "wylosowano zero kul czarnych", czyli wylosowano dwie kule białe.' + '\n' +
                         r'Krok 2: Prawdopodobieństwo dwóch kul białych bez zwracania:' + '\n' +
                         r'$$P(A\') = \frac{4}{6} \cdot \frac{3}{5} = \frac{12}{30} = \frac{2}{5}$$' + '\n' +
@@ -373,10 +385,10 @@ def build_topic_19():
         core_formulas=[
             {
                 'title': 'Prawdopodobieństwo w drzewie',
-                'latex': r'P(A) = \sum P(\text{ścieżka})',
-                'description': 'Karta wzorów CKE str. 23.',
+                'latex': r'P(A) = P(s_1) + P(s_2) + \dots + P(s_k)',
+                'description': 'Karta wzorów CKE str. 28.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 23'
+                'cke_page': 'str. 28'
             }
         ],
         worked_example={

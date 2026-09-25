@@ -40,7 +40,7 @@ def build_topic_12():
                 ('D', '$(-3, -5)$')
             ],
             correct_id='A',
-            explanation='Postać kanoniczna to $f(x) = a(x - p)^2 + q$, gdzie współrzędne wierzchołka to $W(p, q)$.\nPorównując ze wzorem $f(x) = -2(x - 3)^2 + 5$, odczytujemy:\n$$p = 3, \\quad q = 5 \\implies W = (3, 5).$$',
+            explanation='Postać kanoniczna to $f(x) = a(x - p)^2 + q$, gdzie współrzędne wierzchołka to $W(p, q)$.\nPorównując ze wzorem $f(x) = -2(x - 3)^2 + 5$, odczytujemy:\n$$p = 3, \\quad q = 5 \\longrightarrow W = (3, 5).$$',
             cke_trap='Pułapka znaku: We wzorze jest $(x - p)$, więc w nawiasie $(x - 3)$ liczba $p$ wynosi $+3$, a NIE $-3$!',
             plot={
                 'type': 'PARABOLA',
@@ -60,15 +60,15 @@ def build_topic_12():
         ),
         make_sc_task(
             task_id='task-12-1-2',
-            source='Matura maj 2024 • Wzorzec CKE',
+            source='Trening JASNE • Wzorzec CKE',
             question='Osią symetrii wykresu funkcji kwadratowej $f(x) = x^2 - 6x + 8$ jest prosta o równaniu',
             options_data=[
-                ('A', '$x = 3$'),
-                ('B', '$x = -3$'),
-                ('C', '$y = 3$'),
+                ('A', '$x = -3$'),
+                ('B', '$y = 3$'),
+                ('C', '$x = 3$'),
                 ('D', '$x = 6$')
             ],
-            correct_id='A',
+            correct_id='C',
             explanation='Osią symetrii paraboli jest pionowa prosta przechodząca przez wierzchołek: $x = p$.\nWspółczynniki: $a = 1, b = -6$. Obliczamy odciętą wierzchołka:\n$$p = -\\frac{b}{2a} = -\\frac{-6}{2 \\cdot 1} = \\frac{6}{2} = 3.$$\nZatem osią symetrii jest prosta $x = 3$.',
             cke_trap='Oś symetrii paraboli to prosta pionowa o równaniu $x = p$, a NIE pozioma $y = q$!',
             plot={
@@ -91,50 +91,47 @@ def build_topic_12():
         ),
         make_sc_task(
             task_id='task-12-1-3',
-            source='Matura czerwiec 2023 • Zad. 11',
-            question='Funkcja kwadratowa $f$ ma dwa miejsca zerowe: $x_1 = -2$ oraz $x_2 = 4$. Wykres funkcji $f$ przechodzi przez punkt $P(0, -8)$.\nWzór funkcji $f$ w postaci iloczynowej to',
+            source='Matura maj 2024 • Zad. 14.2',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja kwadratowa $f$ jest określona wzorem',
             options_data=[
-                ('A', '$f(x) = (x + 2)(x - 4)$'),
-                ('B', '$f(x) = -(x + 2)(x - 4)$'),
-                ('C', '$f(x) = 2(x - 2)(x + 4)$'),
-                ('D', '$f(x) = (x - 2)(x + 4)$')
+                ('A', '$f(x) = -(x + 1)^2 - 9$'),
+                ('B', '$f(x) = -(x - 1)^2 + 9$'),
+                ('C', '$f(x) = -(x - 1)^2 - 9$'),
+                ('D', '$f(x) = -(x + 1)^2 + 9$')
             ],
-            correct_id='A',
-            explanation='Postać iloczynowa: $f(x) = a(x - x_1)(x - x_2) = a(x + 2)(x - 4)$.\nPodstawiamy współrzędne punktu $P(0, -8)$:\n$$-8 = a(0 + 2)(0 - 4) \\implies -8 = a(2)(-4) \\implies -8 = -8a \\implies a = 1.$$\nZatem $f(x) = 1 \\cdot (x + 2)(x - 4) = (x + 2)(x - 4)$.',
-            cke_trap='Pamiętaj o współczynniku $a$ przed nawiasami! Postać iloczynowa to $a(x-x_1)(x-x_2)$, nie wolno automatycznie zakładać, że $a=1$ bez sprawdzenia punktu.',
+            correct_id='B',
+            explanation='Postać kanoniczna funkcji kwadratowej ma wzór $f(x) = a(x - p)^2 + q$.\nZ wykresu odczytujemy współrzędne wierzchołka paraboli: $W = (1, 9)$, a ramiona są skierowane w dół, czyli $a = -1$.\nPodstawiając do wzoru, otrzymujemy:\n$$f(x) = -(x - 1)^2 + 9.$$',
+            cke_trap='Uważaj na znaki w postaci kanonicznej: $f(x) = a(x - p)^2 + q$, dla $p = 1$ w nawiasie jest $(x - 1)$, a nie $(x + 1)$!',
             plot={
                 'type': 'PARABOLA',
-                'xRange': [-4, 6],
-                'yRange': [-10, 5],
+                'xRange': [-3, 5],
+                'yRange': [-5, 12],
                 'gridStep': 2,
-                'parabola': {
-                    'a': 1,
-                    'p': 1,
-                    'q': -9,
-                    'color': '#38BDF8'
-                },
+                'a': -1,
+                'b': 2,
+                'c': 8,
                 'points': [
-                    {'x': -2, 'y': 0, 'label': 'x₁ = -2', 'dot': 'filled', 'color': '#FFB800', 'attach': 'nw'},
-                    {'x': 4, 'y': 0, 'label': 'x₂ = 4', 'dot': 'filled', 'color': '#FFB800', 'attach': 'ne'},
-                    {'x': 0, 'y': -8, 'label': 'P(0, -8)', 'dot': 'filled', 'color': '#10B981', 'attach': 'e'}
+                    {'x': 1, 'y': 9, 'label': 'W(1, 9)', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'},
+                    {'x': 0, 'y': 8, 'label': '(0, 8)', 'dot': 'filled', 'color': '#FFB800', 'attach': 'w'}
                 ]
             }
         ),
-        make_tf_task(
-            task_id='task-12-1-4',
-            source='Ocena CKE • Własności współczynnika a paraboli',
-            question='Oceń prawdziwość zdania: Jeśli współczynnik $a$ we wzorze funkcji kwadratowej $f(x) = ax^2 + bx + c$ jest ujemny ($a < 0$), to funkcja ta osiąga wartość największą równą $q$ w wierzchołku paraboli.',
-            correct_tf='PRAWDA',
-            explanation='Dla $a < 0$ ramiona paraboli skierowane są w dół. Oznacza to, że wierzchołek $W(p, q)$ leży w najwyższym punkcie wykresu, więc funkcja osiąga wartość największą (maksimum globalne) równą $q$. Zdanie jest prawdziwe.',
-            cke_trap='Dla $a > 0$ ramiona idą w górę $\\implies$ wartość najmniejsza w wierzchołku. Dla $a < 0$ ramiona idą w dół $\\implies$ wartość największa w wierzchołku.'
-        ),
         make_numeric_task(
-            task_id='task-12-1-5',
-            source='Własność CKE • Środek symetrii pierwiastków',
+            task_id='task-12-1-4',
+            source='Trening JASNE • Wzorzec CKE',
             question='Miejscami zerowymi funkcji kwadratowej są liczby $x_1 = -5$ oraz $x_2 = 11$.\nOblicz pierwszą współrzędną wierzchołka paraboli ($p$). Wpisz samą liczbę.',
-            correct_val=3,
+            correct_val='3',
             explanation='Wierzchołek paraboli leży dokładnie na osi symetrii pośrodku między miejscami zerowymi:\n$$p = \\frac{x_1 + x_2}{2} = \\frac{-5 + 11}{2} = \\frac{6}{2} = 3.$$',
             cke_trap='Odcięta wierzchołka $p$ jest zawsze średnią arytmetyczną miejsc zerowych, bez konieczności znajomości współczynników $a$ i $b$!'
+        ),
+        make_open_task(
+            task_id='task-12-1-5',
+            source='Informator CKE • Zad. 21',
+            question='Wyznacz wzór funkcji kwadratowej $f$ w postaci kanonicznej oraz ogólnej, wiedząc, że wierzchołkiem jej wykresu jest punkt $W(3, -2)$, a do wykresu należy punkt $P(1, 6)$. Zapisz obliczenia.',
+            points=2,
+            scoring_key='1 pkt – zapisanie postaci kanonicznej z wierzchołkiem $f(x) = a(x - 3)^2 - 2$ i wyznaczenie współczynnika $a = 2$.\\n2 pkt – poprawne zapisanie wzoru w postaci ogólnej: $f(x) = 2x^2 - 12x + 16$.',
+            explanation='Krok 1: Korzystamy z postaci kanonicznej $f(x) = a(x - p)^2 + q$. Podstawiamy współrzędne wierzchołka $W(3, -2)$:\n$$f(x) = a(x - 3)^2 - 2$$\nKrok 2: Wyznaczamy współczynnik $a$, podstawiając punkt $P(1, 6)$:\n$$6 = a(1 - 3)^2 - 2 \\longrightarrow 6 = a(-2)^2 - 2 \\longrightarrow 6 = 4a - 2 \\longrightarrow 4a = 8 \\longrightarrow a = 2$$\nPostać kanoniczna to $f(x) = 2(x - 3)^2 - 2$.\nKrok 3: Przekształcamy do postaci ogólnej:\n$$f(x) = 2(x^2 - 6x + 9) - 2 = 2x^2 - 12x + 18 - 2 = 2x^2 - 12x + 16.$$',
+            cke_trap='Pamiętaj o podniesieniu nawiasu do kwadratu ze wzoru skróconego mnożenia: $(x - 3)^2 = x^2 - 6x + 9$, a nie $x^2 + 9$!'
         )
     ]
 
@@ -225,15 +222,15 @@ def build_topic_12():
         ),
         make_sc_task(
             task_id='task-12-2-2',
-            source='Matura maj 2023 • Zad. 10',
+            source='Trening JASNE • Wzorzec CKE',
             question='Funkcja kwadratowa $f$ jest określona wzorem $f(x) = -(x - 1)^2 + 4$.\nFunkcja $f$ jest rosnąca w przedziale',
             options_data=[
-                ('A', '$(-\\infty, 1\\rangle$'),
-                ('B', '$\\langle 1, +\\infty)$'),
+                ('A', '$\\langle 1, +\\infty)$'),
+                ('B', '$(-\\infty, 1\\rangle$'),
                 ('C', '$(-\\infty, 4\\rangle$'),
                 ('D', '$\\langle 4, +\\infty)$')
             ],
-            correct_id='A',
+            correct_id='B',
             explanation='Współczynnik $a = -1 < 0$ (ramiona w dół), a wierzchołek ma odciętą $p = 1$.\nParabola rośnie od $-\\infty$ aż do wierzchołka $x = 1$, a następnie maleje.\nZatem przedziałem, w którym funkcja jest rosnąca, jest $(-\\infty, 1\\rangle$.',
             cke_trap='Przedziały monotoniczności zawsze odczytujemy na osi $OX$ (według liczby $p=1$), a NIE na osi $OY$ (według $q=4$)!',
             plot={
@@ -254,46 +251,34 @@ def build_topic_12():
         ),
         make_sc_task(
             task_id='task-12-2-3',
-            source='Matura sierpień 2024 • Wzorzec CKE',
-            question='Wykres funkcji kwadratowej $f(x) = ax^2 + bx + c$ ma wierzchołek w punkcie $W(2, -3)$ i przecina oś $OY$ w punkcie $(0, 5)$.\nWspółczynnik $c$ oraz współczynnik $a$ są równe',
+            source='Matura czerwiec 2023 • Zad. 14',
+            question='Funkcja kwadratowa $f$ jest określona wzorem $f(x) = ax^2 + bx + 1$, gdzie $a$ oraz $b$ są pewnymi liczbami rzeczywistymi, takimi, że $a < 0$ i $b > 0$. Na jednym z rysunków A–D przedstawiono fragment wykresu tej funkcji w kartezjańskim układzie współrzędnych $(x, y)$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFragment wykresu funkcji $f$ przedstawiono na rysunku',
             options_data=[
-                ('A', '$c = 5, \\quad a = 2$'),
-                ('B', '$c = -3, \\quad a = 2$'),
-                ('C', '$c = 5, \\quad a = 1$'),
-                ('D', '$c = 5, \\quad a = -2$')
+                ('A', 'Ramiona w górę ($a > 0$), wierzchołek w II ćwiartce ($x_w < 0, y_w > 0$)'),
+                ('B', 'Ramiona w dół ($a < 0$), wierzchołek w II ćwiartce ($x_w < 0, y_w > 0$)'),
+                ('C', 'Ramiona w górę ($a > 0$), wierzchołek w I ćwiartce ($x_w > 0, y_w > 0$)'),
+                ('D', 'Ramiona w dół ($a < 0$), wierzchołek w I ćwiartce ($x_w > 0$), przecięcie z OY w punkcie $(0, 1)$')
             ],
-            correct_id='A',
-            explanation='1. Punkt przecięcia z osią $OY$ to $(0, f(0)) = (0, c)$, zatem natychmiast $c = 5$.\n2. Z postaci kanonicznej $f(x) = a(x - 2)^2 - 3$. Podstawiamy punkt $(0, 5)$:\n$$5 = a(0 - 2)^2 - 3 \\implies 5 = 4a - 3 \\implies 8 = 4a \\implies a = 2.$$',
-            cke_trap='Wyraz wolny $c$ to zawsze wartość funkcji w zerze: $c = f(0)$!',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-1, 5],
-                'yRange': [-4, 7],
-                'gridStep': 1,
-                'a': 2,
-                'b': -8,
-                'c': 5,
-                'points': [
-                    {'x': 2, 'y': -3, 'label': 'W(2, -3)', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 0, 'y': 5, 'label': '(0, 5) ⟹ c=5', 'dot': 'filled', 'color': '#FFB800', 'attach': 'e'}
-                ]
-            }
-        ),
-        make_tf_task(
-            task_id='task-12-2-4',
-            source='Ocena CKE • Własności monotoniczności',
-            question='Oceń prawdziwość zdania: Funkcja kwadratowa $f(x) = 2(x - 4)^2 + 1$ jest malejąca w przedziale $(-\\infty, 4\\rangle$ i rosnąca w przedziale $\\langle 4, +\\infty)$.',
-            correct_tf='PRAWDA',
-            explanation='Współczynnik $a = 2 > 0$ (ramiona w górę), odcięta wierzchołka $p = 4$. Wykres opada od lewej strony aż do $x = 4$, a od $x = 4$ w prawo stale rośnie. Zdanie jest prawdziwe.',
-            cke_trap='Dla $a > 0$ kolejność przedziałów to: najpierw maleje do $p$, potem rośnie od $p$.'
+            correct_id='D',
+            explanation='1. Współczynnik $a < 0$, więc ramiona paraboli są skierowane w dół (wykluczamy A i C).\n2. Współrzędna $x_w = -\\frac{b}{2a}$. Ponieważ $b > 0$ i $a < 0$, to $-b < 0$ i $2a < 0$, czyli $x_w = \\frac{-}{-} > 0$. Wierzchołek leży w I ćwiartce ($x_w > 0, y_w > 0$).\n3. Wyraz wolny $c = 1 > 0$, zatem parabola przecina oś $OY$ powyżej osi $OX$ w punkcie $(0, 1)$.\nWarunki te spełnia wyłącznie rysunek D.',
+            cke_trap='Znak odciętej wierzchołka $p = -\\frac{b}{2a}$: gdy $a<0$ i $b>0$, to dzielimy liczbę ujemną przez ujemną, dając wynik dodatni $p > 0$!'
         ),
         make_numeric_task(
-            task_id='task-12-2-5',
-            source='Trening JASNE • Odczytywanie wartości z wierzchołka',
+            task_id='task-12-2-4',
+            source='Trening JASNE • Wzorzec CKE',
             question='Funkcja kwadratowa $f$ osiąga najmniejszą wartość równą $-9$ dla argumentu $x = 2$, a jej wykres przechodzi przez punkt $P(0, -1)$.\nOblicz wartość współczynnika $a$ tej funkcji. Wpisz samą liczbę.',
-            correct_val=2,
-            explanation='Z treści zadania wierzchołkiem jest $W(2, -9)$, więc postać kanoniczna to $f(x) = a(x - 2)^2 - 9$.\nPodstawiamy współrzędne punktu $P(0, -1)$:\n$$-1 = a(0 - 2)^2 - 9 \\implies -1 = 4a - 9 \\implies 4a = 8 \\implies a = 2.$$',
+            correct_val='2',
+            explanation='Z treści zadania wierzchołkiem jest $W(2, -9)$, więc postać kanoniczna to $f(x) = a(x - 2)^2 - 9$.\nPodstawiamy współrzędne punktu $P(0, -1)$:\n$$-1 = a(0 - 2)^2 - 9 \\longrightarrow -1 = 4a - 9 \\longrightarrow 4a = 8 \\longrightarrow a = 2.$$',
             cke_trap='Sformułowanie „osiąga wartość najmniejszą równą $q$ dla argumentu $x = p$” to definicja wierzchołka $W(p, q) = (2, -9)$!'
+        ),
+        make_open_task(
+            task_id='task-12-2-5',
+            source='Matura maj 2024 • Zad. 18',
+            question='Funkcja kwadratowa $f$ jest określona wzorem $f(x) = -(x - 1)^2 + 4$. Wyznacz zbiór wartości tej funkcji oraz przedział, w którym funkcja jest rosnąca. Zapisz uzasadnienie.',
+            points=2,
+            scoring_key='1 pkt – odczytanie współrzędnych wierzchołka $W(1, 4)$ i współczynnika $a = -1 < 0$ oraz wyznaczenie zbioru wartości: $ZW = (-\\infty, 4\\rangle$.\\n2 pkt – poprawne wyznaczenie przedziału, w którym funkcja jest rosnąca: $(-\\infty, 1\\rangle$.',
+            explanation='Krok 1: Wzór $f(x) = -(x - 1)^2 + 4$ podany jest w postaci kanonicznej $f(x) = a(x - p)^2 + q$, skąd $p = 1, q = 4$ oraz $a = -1$.\nKrok 2: Ponieważ $a = -1 < 0$, ramiona paraboli skierowane są w dół, a wierzchołek $W(1, 4)$ jest najwyższym punktem wykresu. Zbiór wartości wynosi $ZW = (-\\infty, 4\\rangle$.\nKrok 3: Parabola rośnie od $-\\infty$ do odciętej wierzchołka $p = 1$, zatem funkcja jest rosnąca w przedziale $(-\\infty, 1\\rangle$.',
+            cke_trap='Współrzędna $p = 1$, a nie $-1$. Przedział monotoniczności określamy dla argumentów $x$ (czyli według liczby $p = 1$), a nie wartości $y$!'
         )
     ]
 
@@ -348,15 +333,15 @@ def build_topic_12():
     l3_tasks = [
         make_sc_task(
             task_id='task-12-3-1',
-            source='Matura maj 2024 • Zad. 9',
+            source='Trening JASNE • Wzorzec CKE',
             question='Wartość najmniejsza funkcji kwadratowej $f(x) = x^2 - 4x + 1$ w przedziale domkniętym $\\langle 0, 5 \\rangle$ jest równa',
             options_data=[
-                ('A', '$-3$'),
-                ('B', '$1$'),
-                ('C', '$6$'),
+                ('A', '$1$'),
+                ('B', '$6$'),
+                ('C', '$-3$'),
                 ('D', '$-4$')
             ],
-            correct_id='A',
+            correct_id='C',
             explanation='Algorytm 3 kroków:\n1. Obliczamy odciętą wierzchołka: $p = -\\frac{-4}{2 \\cdot 1} = 2$.\n2. Sprawdzamy, czy $p \\in \\langle 0, 5 \\rangle$: Tak, $2 \\in \\langle 0, 5 \\rangle$.\n3. Ponieważ $a = 1 > 0$, funkcja osiąga minimum w wierzchołku:\n$$f(2) = 2^2 - 4(2) + 1 = 4 - 8 + 1 = -3.$$\nWartości na krańcach: $f(0) = 1, f(5) = 25 - 20 + 1 = 6$.\nNajmniejsza wartość w przedziale to $-3$.',
             cke_trap='Zawsze sprawdź, czy $p$ wpada do przedziału. Jeśli wpada i $a > 0$, to wartość najmniejsza ZAWSZE wynosi $q = f(p)$!',
             plot={
@@ -380,15 +365,15 @@ def build_topic_12():
         ),
         make_sc_task(
             task_id='task-12-3-2',
-            source='Matura czerwiec 2024 • Wzorzec CKE',
+            source='Trening JASNE • Wzorzec CKE',
             question='Funkcja kwadratowa $f(x) = (x - 1)^2 + 3$ jest rozpatrywana w przedziale $\\langle 3, 6 \\rangle$.\nWskaż wartość najmniejszą tej funkcji w tym przedziale.',
             options_data=[
-                ('A', '$7$'),
-                ('B', '$3$'),
+                ('A', '$3$'),
+                ('B', '$7$'),
                 ('C', '$28$'),
                 ('D', '$4$')
             ],
-            correct_id='A',
+            correct_id='B',
             explanation='1. Wierzchołek paraboli ma współrzędne $W(1, 3)$, czyli $p = 1$.\n2. Sprawdzamy: $p = 1 \\notin \\langle 3, 6 \\rangle$. Wierzchołek leży POZA przedziałem!\n3. Ponieważ $a = 1 > 0$ i cały przedział $\\langle 3, 6 \\rangle$ leży na prawo od wierzchołka ($x \\ge 1$), funkcja w tym przedziale stale rośnie.\nZatem wartość najmniejsza wypada na lewym krańcu $x = 3$:\n$$f(3) = (3 - 1)^2 + 3 = 2^2 + 3 = 4 + 3 = 7.$$',
             cke_trap='Krytyczna pułapka CKE: Wartość $q = 3$ wierzchołka NIE jest wartością w przedziale, bo $x = 1$ nie należy do $\\langle 3, 6 \\rangle$!',
             plot={
@@ -410,33 +395,36 @@ def build_topic_12():
                 ]
             }
         ),
-        make_numeric_task(
+        make_sc_task(
             task_id='task-12-3-3',
+            source='Matura maj 2023 • Zad. 14',
+            question='Jednym z miejsc zerowych funkcji kwadratowej $f$ jest liczba $(-5)$. Pierwsza współrzędna wierzchołka paraboli, będącej wykresem funkcji $f$, jest równa $3$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDrugim miejscem zerowym funkcji $f$ jest liczba',
+            options_data=[
+                ('A', '$11$'),
+                ('B', '$1$'),
+                ('C', '$-1$'),
+                ('D', '$-13$')
+            ],
+            correct_id='A',
+            explanation='Wierzchołek paraboli leży na osi symetrii dokładnie pośrodku między miejscami zerowymi:\n$$p = \\frac{x_1 + x_2}{2}$$\nPodstawiamy dane $x_1 = -5$ oraz $p = 3$:\n$$3 = \\frac{-5 + x_2}{2} \\longrightarrow 6 = -5 + x_2 \\longrightarrow x_2 = 11.$$',
+            cke_trap='Oś symetrii paraboli leży w połowie odległości między miejscami zerowymi: $x_w = \\frac{x_1+x_2}{2}$.'
+        ),
+        make_numeric_task(
+            task_id='task-12-3-4',
             source='Trening CKE • Suma wartości skrajnych',
             question='Funkcja kwadratowa $f(x) = -x^2 + 6x - 5$ osiąga w przedziale $\\langle 1, 4 \\rangle$ wartość najmniejszą $m$ oraz największą $M$.\nOblicz sumę $m + M$. Wpisz samą liczbę.',
-            correct_val=4,
-            explanation='1. $p = -\\frac{6}{2(-1)} = 3$. Ponieważ $3 \\in \\langle 1, 4 \\rangle$, wierzchołek wpada do przedziału.\n2. $a = -1 < 0 \\implies$ w wierzchołku jest maksimum:\n$$M = f(3) = -9 + 18 - 5 = 4.$$\n3. Krańce przedziału:\n$$f(1) = -1 + 6 - 5 = 0$$\n$$f(4) = -16 + 24 - 5 = 3$$\nZatem minimum to $m = 0$.\nSuma: $m + M = 0 + 4 = 4$.',
+            correct_val='4',
+            explanation='1. $p = -\\frac{6}{2(-1)} = 3$. Ponieważ $3 \\in \\langle 1, 4 \\rangle$, wierzchołek wpada do przedziału.\n2. $a = -1 < 0 \\longrightarrow M = f(3) = -9 + 18 - 5 = 4$.\n3. Krańce przedziału:\n$$f(1) = -1 + 6 - 5 = 0$$\n$$f(4) = -16 + 24 - 5 = 3$$\nZatem minimum to $m = 0$, a maksimum to $M = 4$. Suma: $m + M = 0 + 4 = 4$.',
             cke_trap='Wartość najmniejsza $m$ na krańcach to $f(1) = 0$, a największa to wierzchołek $M = 4$. Suma wynosi 4.'
-        ),
-        make_tf_task(
-            task_id='task-12-3-4',
-            source='Ocena CKE • Wierzchołek a przedział domknięty',
-            question='Oceń prawdziwość zdania: Jeśli pierwsza współrzędna wierzchołka paraboli $p$ nie należy do zadanego przedziału domkniętego $\\langle a, b \\rangle$, to wartości najmniejsza i największa funkcji kwadratowej w tym przedziale są osiągane na jego krańcach.',
-            correct_tf='PRAWDA',
-            explanation='Jeśli $p \\notin \\langle a, b \\rangle$, to parabola w całym przedziale $\\langle a, b \\rangle$ jest ściśle monotoniczna (albo rośnie, albo maleje). Funkcja monotoniczna zawsze osiąga swoje ekstrema na krańcach przedziału: w punkcie $a$ oraz w punkcie $b$. Zdanie jest w 100% prawdziwe.',
-            cke_trap='Brak wierzchołka w przedziale upraszcza zadanie: wystarczy policzyć $f(a)$ i $f(b)$!'
         ),
         make_open_task(
             task_id='task-12-3-5',
             source='Trening JASNE • Wzorzec CKE',
             question='Wyznacz wartość najmniejszą i wartość największą funkcji kwadratowej $f(x) = 2x^2 - 8x + 3$ w przedziale domkniętym $\\langle -1, 3 \\rangle$. Zapisz pełne obliczenia.',
             points=2,
-            scoring_key=[
-                '1 pkt: Obliczenie p = 2, sprawdzenie warunku 2 nalezy do [-1, 3] i obliczenie wartosci w wierzcholku f(2) = -5.',
-                '2 pkt: Obliczenie wartosci na krancach f(-1) = 13, f(3) = -3 i sformułowanie poprawnej odpowiedzi: wartosc najmniejsza to -5, a najwieksza to 13.'
-            ],
-            explanation='Krok 1: Wyznaczamy odciętą wierzchołka paraboli:\n$$p = -\\frac{b}{2a} = -\\frac{-8}{2 \\cdot 2} = \\frac{8}{4} = 2.$$\nSprawdzamy obecność w przedziale: $2 \\in \\langle -1, 3 \\rangle$.\nKrok 2: Ponieważ $a = 2 > 0$, w wierzchołku funkcja osiąga wartość najmniejszą:\n$$f(2) = 2(2)^2 - 8(2) + 3 = 8 - 16 + 3 = -5.$$\nKrok 3: Obliczamy wartości na krańcach przedziału:\n$$f(-1) = 2(-1)^2 - 8(-1) + 3 = 2(1) + 8 + 3 = 13$$\n$$f(3) = 2(3)^2 - 8(3) + 3 = 18 - 24 + 3 = -3.$$\nKrok 4: Zestawienie wyników:\nWartość najmniejsza: $y_{\\min} = -5$ (dla $x = 2$).\nWartość największa: $y_{\\max} = 13$ (dla $x = -1$).',
-            cke_trap='Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$. Bez sprawdzenia wierzchołka traci się 1 z 2 punktów!'
+            scoring_key='1 pkt – obliczenie $p = 2$, sprawdzenie warunku $2 \\in \\langle -1, 3 \\rangle$ i obliczenie wartości w wierzchołku $f(2) = -5$.\\n2 pkt – obliczenie wartości na krańcach $f(-1) = 13$, $f(3) = -3$ i sformułowanie poprawnej odpowiedzi: wartość najmniejsza to $-5$, a największa to $13$.',
+            explanation='Krok 1: Wyznaczamy odciętą wierzchołka paraboli:\n$$p = -\\frac{b}{2a} = -\\frac{-8}{2 \\cdot 2} = \\frac{8}{4} = 2.$$\nSprawdzamy obecność w przedziale: $2 \\in \\langle -1, 3 \\rangle$.\nKrok 2: Ponieważ $a = 2 > 0$, w wierzchołku funkcja osiąga wartość najmniejszą:\n$$f(2) = 2(2)^2 - 8(2) + 3 = 8 - 16 + 3 = -5.$$\nKrok 3: Obliczamy wartości na krańcach przedziału:\n$$f(-1) = 2(-1)^2 - 8(-1) + 3 = 2(1) + 8 + 3 = 13$$\n$$f(3) = 2(3)^2 - 8(3) + 3 = 18 - 24 + 3 = -3.$$\nKrok 4: Porównujemy otrzymane wartości: $\\{-5, -3, 13\\}$.\nWartość najmniejsza to $-5$ (dla $x = 2$).\nWartość największa to $13$ (dla $x = -1$).',
+            cke_trap='Porównanie tylko krańców $f(-1)$ i $f(3)$ z pominięciem wierzchołka $f(2)$ skutkuje utratą punktu. Zawsze sprawdź wierzchołek!'
         )
     ]
 
@@ -484,16 +472,16 @@ def build_topic_12():
     l4_tasks = [
         make_sc_task(
             task_id='task-12-4-1',
-            source='Matura maj 2023 • Wzorzec CKE (Zadanie optymalizacyjne)',
+            source='Trening JASNE • Wzorzec CKE',
             question='Rolnik chce ogrodzić prostokątny wybieg siatką o łącznej długości $40$ metrów. Jednym z boków prostokąta jest odcinek o długości $x$.\nWzór funkcji $P(x)$ opisującej pole tego wybiegu w zależności od długości boku $x$ ma postać',
             options_data=[
-                ('A', '$P(x) = -x^2 + 20x$ dla $x \\in (0, 20)$'),
-                ('B', '$P(x) = -x^2 + 40x$ dla $x \\in (0, 40)$'),
-                ('C', '$P(x) = 2x^2 - 40x$ dla $x \\in (0, 20)$'),
-                ('D', '$P(x) = -2x^2 + 20x$ dla $x \\in (0, 10)$')
+                ('A', '$P(x) = -x^2 + 40x$ dla $x \\in (0, 40)$'),
+                ('B', '$P(x) = 2x^2 - 40x$ dla $x \\in (0, 20)$'),
+                ('C', '$P(x) = -2x^2 + 20x$ dla $x \\in (0, 10)$'),
+                ('D', '$P(x) = -x^2 + 20x$ dla $x \\in (0, 20)$')
             ],
-            correct_id='A',
-            explanation='Obwód prostokąta o bokach $x$ oraz $y$ wynosi $2x + 2y = 40 \\implies x + y = 20 \\implies y = 20 - x$.\nPole prostokąta:\n$$P(x) = x \\cdot y = x(20 - x) = -x^2 + 20x.$$\nDziedzina geometryczna: długości boków muszą być dodatnie, czyli $x > 0$ oraz $20 - x > 0 \\implies x \\in (0, 20)$.',
+            correct_id='D',
+            explanation='Obwód prostokąta o bokach $x$ oraz $y$ wynosi $2x + 2y = 40 \\longrightarrow x + y = 20 \\longrightarrow y = 20 - x$.\nPole prostokąta:\n$$P(x) = x \\cdot y = x(20 - x) = -x^2 + 20x.$$\nDziedzina geometryczna: długości boków muszą być dodatnie, czyli $x > 0$ oraz $20 - x > 0 \\longrightarrow x \\in (0, 20)$.',
             cke_trap='Obwód prostokąta to $2x+2y$, więc połowa obwodu to $x+y=20$, a nie 40!',
             plot={
                 'type': 'PARABOLA',
@@ -512,15 +500,15 @@ def build_topic_12():
         ),
         make_sc_task(
             task_id='task-12-4-2',
-            source='Matura czerwiec 2023 • Wzorzec CKE',
+            source='Trening JASNE • Wzorzec CKE',
             question='Funkcja przychodu ze sprzedaży biletów do teatru jest określona wzorem $R(x) = -5x^2 + 200x$, gdzie $x$ oznacza cenę jednego biletu w złotych.\nCena biletu, przy której przychód teatru jest największy, wynosi',
             options_data=[
-                ('A', '$20$ zł'),
-                ('B', '$40$ zł'),
-                ('C', '$200$ zł'),
+                ('A', '$40$ zł'),
+                ('B', '$200$ zł'),
+                ('C', '$20$ zł'),
                 ('D', '$2000$ zł')
             ],
-            correct_id='A',
+            correct_id='C',
             explanation='Funkcja $R(x) = -5x^2 + 200x$ jest parabolą z ramionami skierowanymi w dół ($a = -5 < 0$).\nOsiąga ona maksimum w wierzchołku:\n$$x_{\\max} = p = -\\frac{b}{2a} = -\\frac{200}{2(-5)} = \\frac{200}{10} = 20\\ \\text{zł}.$$',
             cke_trap='Pytanie dotyczy CENY BILETU ($x = 20$), a nie kwoty przychodu ($R(20) = 2000$ zł)!',
             plot={
@@ -541,13 +529,27 @@ def build_topic_12():
                 ]
             }
         ),
-        make_numeric_task(
+        make_sc_task(
             task_id='task-12-4-3',
-            source='Trening CKE • Maksymalne pole wybiegu',
-            question='Dany jest wybieg w kształcie prostokąta o polu $P(x) = -x^2 + 24x$, gdzie $x$ to długość boku w metrach.\nOblicz największe możliwe pole tego wybiegu w $m^2$. Wpisz samą liczbę.',
-            correct_val=144,
+            source='Informator CKE • Zad. 46',
+            question='Pole prostokątnej działki opisuje funkcja $P(x) = -2x^2 + 40x$, gdzie $x$ oznacza długość jednego z boków działki w metrach.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nNajwiększe pole tej działki jest równe',
+            options_data=[
+                ('A', '$100\\text{ m}^2$'),
+                ('B', '$200\\text{ m}^2$'),
+                ('C', '$400\\text{ m}^2$'),
+                ('D', '$10\\text{ m}^2$')
+            ],
+            correct_id='B',
+            explanation='Funkcja $P(x) = -2x^2 + 40x$ osiąga wartość największą w wierzchołku paraboli:\n$$x_w = -\\frac{b}{2a} = -\\frac{40}{2(-2)} = 10\\text{ m}$$\nMaksymalne pole wynosi:\n$$P(10) = -2(10)^2 + 40(10) = -200 + 400 = 200\\text{ m}^2.$$',
+            cke_trap='Długość boku dająca maksimum to $x = 10$, a maksymalne pole to $P(10) = 200\\text{ m}^2$. Nie myl boku z polem!'
+        ),
+        make_numeric_task(
+            task_id='task-12-4-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Dany jest wybieg w kształcie prostokąta o polu $P(x) = -x^2 + 24x$, gdzie $x$ to długość boku w metrach.\nOblicz największe możliwe pole tego wybiegu w metrach kwadratowych. Wpisz samą liczbę.',
+            correct_val='144',
             explanation='Współczynniki: $a = -1, b = 24$. Wierzchołek:\n$$p = -\\frac{24}{2(-1)} = 12\\ \\text{m}.$$\nMaksymalne pole to wartość w wierzchołku:\n$$P_{\\max} = P(12) = -(12)^2 + 24(12) = -144 + 288 = 144\\ \\text{m}^2.$$',
-            cke_trap='Wymiar optymalny to $x=12$, a MAKSYMALNE POLE to $P(12) = 144$. Pytanie dotyczy pola!',
+            cke_trap='Wymiar optymalny to $x=12$, a maksymalne pole to $P(12) = 144$. Pytanie dotyczy pola!',
             plot={
                 'type': 'PARABOLA',
                 'xRange': [0, 26],
@@ -564,37 +566,12 @@ def build_topic_12():
                 ]
             }
         ),
-        make_tf_task(
-            task_id='task-12-4-4',
-            source='Ocena CKE • Warunek maksimum w optymalizacji',
-            question='Oceń prawdziwość zdania: Funkcja kwadratowa $f(x) = ax^2 + bx + c$ może posłużyć do wyznaczenia wartości największej pewnej wielkości tylko wtedy, gdy współczynnik $a$ jest ujemny ($a < 0$).',
-            correct_tf='PRAWDA',
-            explanation='Dla $a > 0$ ramiona paraboli idą w górę ku nieskończoności, więc funkcja nie posiada wartości największej w całej dziedzinie. Wartość największą w wierzchołku funkcja kwadratowa osiąga wyłącznie wtedy, gdy ramiona skierowane są w dół, czyli gdy $a < 0$. Zdanie jest prawdziwe.',
-            cke_trap='Maksimum lokalne/globalne funkcji kwadratowej istnieje tylko przy ramionach skierowanych w dół ($a < 0$).',
-            plot={
-                'type': 'PARABOLA',
-                'xRange': [-2, 4],
-                'yRange': [-2, 5],
-                'gridStep': 1,
-                'a': -1,
-                'b': 2,
-                'c': 3,
-                'points': [
-                    {'x': 1, 'y': 4, 'label': 'W(1, 4)', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
-                ]
-            }
-        ),
         make_open_task(
             task_id='task-12-4-5',
             source='Matura sierpień 2023 • Zad. 33',
             question='Zakład stolarski produkuje krzesła, które sprzedaje po 196 złotych za sztukę. Właściciel, na podstawie analizy rzeczywistych wpływów i wydatków, stwierdził, że:\n• przychód $P$ (w złotych) ze sprzedaży $x$ krzeseł można opisać funkcją $P(x) = 196x$\n• koszt $K$ (w złotych) produkcji $x$ krzeseł dziennie można opisać funkcją $K(x) = 4x^2 + 4x + 240$\nDziennie w zakładzie można wyprodukować co najwyżej 30 krzeseł.\nOblicz, ile krzeseł powinien dziennie sprzedawać zakład, aby zysk ze sprzedaży krzeseł wyprodukowanych przez ten zakład w ciągu jednego dnia był możliwie największy. Oblicz ten największy zysk. Zapisz obliczenia.\nWskazówka: przyjmij, że zysk jest różnicą przychodu i kosztów.',
             points=4,
-            scoring_key=[
-                '1 pkt: Zapisanie wzoru funkcji zysku dziennego Z(x) = P(x) - K(x) = -4x^2 + 192x - 240.',
-                '2 pkt: Zapisanie dziedziny funkcji zysku: x nalezy do {1, 2, ..., 30} (lub x w [0, 30]).',
-                '3 pkt: Wyznaczenie liczby krzeseł, dla której zysk jest największy: obliczenie odciętej wierzchołka p = 24.',
-                '4 pkt: Obliczenie największego dziennego zysku: Z(24) = 2064 zł.'
-            ],
+            scoring_key='1 pkt – zapisanie wzoru funkcji zysku dziennego $Z(x) = P(x) - K(x) = -4x^2 + 192x - 240$.\\n2 pkt – zapisanie dziedziny funkcji zysku: $x \\in \\{1, 2, \\dots, 30\\}$ (lub $x \\in \\langle 0, 30 \\rangle$).\\n3 pkt – wyznaczenie liczby krzeseł, dla której zysk jest największy: obliczenie odciętej wierzchołka $p = 24$.\\n4 pkt – obliczenie największego dziennego zysku: $Z(24) = 2064$ zł.',
             explanation='Krok 1: Wyznaczamy funkcję zysku dziennego $Z(x)$ jako różnicę przychodu i kosztów:\n$$Z(x) = P(x) - K(x) = 196x - (4x^2 + 4x + 240) = -4x^2 + 192x - 240.$$\nKrok 2: Określamy dziedzinę funkcji $Z$:\nZakład może wyprodukować dziennie co najwyżej 30 krzeseł, zatem $x \\in \\{1, 2, \\dots, 30\\}$ (lub $x \\in \\langle 0, 30 \\rangle$).\nKrok 3: Wyznaczamy liczbę krzeseł dającą największy zysk.\nFunkcja $Z(x)$ jest funkcją kwadratową o współczynniku $a = -4 < 0$ (ramiona paraboli w dół), więc osiąga wartość największą w wierzchołku paraboli:\n$$x = p = -\\frac{b}{2a} = -\\frac{192}{2 \\cdot (-4)} = \\frac{192}{8} = 24.$$\nLiczba 24 należy do dziedziny ($24 \\le 30$).\nKrok 4: Obliczamy największy zysk dla $x = 24$:\n$$Z(24) = -4(24)^2 + 192(24) - 240 = -4 \\cdot 576 + 4608 - 240 = -2304 + 4608 - 240 = 2064\\ \\text{zł}.$$\nOdpowiedź: Zakład powinien sprzedawać 24 krzesła dziennie, a największy zysk wynosi 2064 zł.',
             cke_trap='Pamiętaj o nawiasie przy odejmowaniu kosztów: $Z(x) = P(x) - (4x^2 + 4x + 240)$. Opuszczenie nawiasu zmieniłoby znaki wyrazów wolnych!'
         )
@@ -625,7 +602,7 @@ def build_topic_12():
         worked_example={
             'problem': 'Suma dwóch liczb wynosi 20. Jakie to muszą być liczby, aby ich iloczyn był największy?',
             'steps': [
-                {'num': 1, 'label': 'Zapisanie relacji', 'text': 'Niech liczby to $x$ oraz $y$. Wtedy $x + y = 20 \\implies y = 20 - x$.'},
+                {'num': 1, 'label': 'Zapisanie relacji', 'text': 'Niech liczby to $x$ oraz $y$. Wtedy $x + y = 20 \\longrightarrow y = 20 - x$.'},
                 {'num': 2, 'label': 'Funkcja iloczynu', 'text': '$I(x) = x \\cdot y = x(20 - x) = -x^2 + 20x$. Mamy $a = -1 < 0$.'},
                 {'num': 3, 'label': 'Wyznaczenie maksimum w wierzchołku', 'text': '$x = -\\frac{20}{2(-1)} = 10$. Wtedy $y = 20 - 10 = 10$. Maksymalny iloczyn to $10 \\cdot 10 = 100$.'}
             ],
@@ -636,41 +613,6 @@ def build_topic_12():
         tasks=l4_tasks
     )
     lessons.append(l4)
-
-
-
-    # --- Wstrzyknięte z arkuszy CKE ---
-    # CKE Maj 2024 - Zadanie 18. (2 pkt) - Zastosowanie funkcji kwadratowej
-    lessons[2]["tasks"].append(
-        make_open_task(
-            task_id="t12_l03_cke_01",
-            source="CKE Maj 2024 • Zad. 18 (2 pkt)",
-            question="Funkcja kwadratowa $f$ jest określona wzorem $f(x) = -(x - 1)^2 + 4$. Wyznacz zbiór wartości tej funkcji i określ w jakim przedziale funkcja rośnie.",
-            points=2,
-            scoring_key=[
-                "1 pkt – podanie współrzędnych wierzchołka i odczytanie z nich jednej z żądanych własności",
-                "2 pkt – poprawne określenie zarówno zbioru wartości jak i przedziału monotoniczności"
-            ],
-            explanation="1. Wzór $f(x) = -(x - 1)^2 + 4$ ma postać kanoniczną $f(x) = a(x-p)^2 + q$.<br/>2. Otrzymujemy $p = 1, q = 4$, $a = -1$.<br/>3. Ponieważ $a < 0$, parabola ma ramiona skierowane w dół, a wierzchołkiem jest punkt $W(1, 4)$.<br/>4. Zbiór wartości to $y \\in (-\\infty, 4\\rangle$.<br/>5. Funkcja rośnie w przedziale od $-\\infty$ do współrzędnej $x$ wierzchołka, czyli w $(-\\infty, 1\\rangle$.",
-            cke_trap="Złe określenie współrzędnych wierzchołka. Tutaj $p = 1$, a nie $-1$!"
-        )
-    )
-
-    # CKE Sierpień 2023 - Zadanie 11. (2 pkt)
-    lessons[3]["tasks"].append(
-        make_open_task(
-            task_id="t12_l04_cke_01",
-            source="CKE Sierpień 2023 • Zad. 11 (2 pkt)",
-            question="Wyznacz najmniejszą i największą wartość funkcji $f(x) = x^2 - 4x + 3$ w przedziale $\\langle 1, 4\\rangle$. Zapisz obliczenia.",
-            points=2,
-            scoring_key=[
-                "1 pkt – poprawne wyznaczenie współrzędnej p wierzchołka i sprawdzenie przynależności do przedziału",
-                "2 pkt – obliczenie wartości na końcach przedziału i w wierzchołku oraz sformułowanie poprawnej odpowiedzi"
-            ],
-            explanation="1. Współrzędna wierzchołka $p = -\\frac{b}{2a} = -\\frac{-4}{2} = 2$.<br/>2. Sprawdzamy, czy $p \\in \\langle 1, 4\\rangle$. Tak, $2 \\in \\langle 1, 4\\rangle$.<br/>3. Obliczamy wartość funkcji w wierzchołku: $f(2) = 2^2 - 4(2) + 3 = 4 - 8 + 3 = -1$.<br/>4. Obliczamy wartości na końcach przedziału:<br/>$f(1) = 1^2 - 4(1) + 3 = 1 - 4 + 3 = 0$<br/>$f(4) = 4^2 - 4(4) + 3 = 16 - 16 + 3 = 3$<br/>5. Porównujemy wyniki: $\\{-1, 0, 3\\}$.<br/>Wartość najmniejsza wynosi -1, a największa 3.",
-            cke_trap="Częstym błędem jest zapomnienie o sprawdzeniu wartości wierzchołka, gdy należy do podanego przedziału!"
-        )
-    )
 
     return {
         'id': topic_id,

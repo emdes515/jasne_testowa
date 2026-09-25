@@ -277,7 +277,7 @@ def make_numeric_task(task_id, source, question, correct_val, explanation, cke_t
         'explanationNumberLine': explanation_number_line
     }
 
-def make_open_task(task_id, source, question, points, scoring_key, explanation, cke_trap, diagram=None, plot=None, number_line=None, explanation_diagram=None, explanation_plot=None, explanation_number_line=None):
+def make_open_task(task_id, source, question, points, scoring_key, explanation, cke_trap, diagram=None, plot=None, number_line=None, explanation_diagram=None, explanation_plot=None, explanation_number_line=None, task_type='OPEN_TASK'):
     cleaned_trap = clean_cke_trap(cke_trap)
     cleaned_exp = clean_formal_logic(explanation)
     canonical_badge = resolve_badge_and_source(source, question=question)
@@ -287,14 +287,14 @@ def make_open_task(task_id, source, question, points, scoring_key, explanation, 
 
     return {
         'id': task_id,
-        'type': 'OPEN_TASK',
+        'type': task_type,
         'points': points,
         'maxPoints': points,
         'badge': canonical_badge,
         'source_badge': canonical_badge,
         'source': canonical_badge,
         'cke_source': canonical_badge,
-        'instruction': 'Rozwiąż zadanie i zapisz pełny tok rozumowania.',
+        'instruction': 'Rozwiąż zadanie i zapisz pełny tok rozumowania.' if task_type == 'OPEN_TASK' else 'Przeprowadź dowód matematyczny i zapisz pełne uzasadnienie.',
         'question': question,
         'content': question,
         'math_statement': question,
@@ -308,13 +308,32 @@ def make_open_task(task_id, source, question, points, scoring_key, explanation, 
         'hints': {
             'level_1': hint_1,
             'level_2': hint_2
-        },        'diagram': diagram,
+        },
+        'diagram': diagram,
         'plot': plot if plot is not None else diagram,
         'numberLine': number_line,
         'explanationDiagram': explanation_diagram,
         'explanationPlot': explanation_plot,
         'explanationNumberLine': explanation_number_line
     }
+
+def make_open_proof(task_id, source, question, points, scoring_key, explanation, cke_trap, diagram=None, plot=None, number_line=None, explanation_diagram=None, explanation_plot=None, explanation_number_line=None):
+    return make_open_task(
+        task_id=task_id,
+        source=source,
+        question=question,
+        points=points,
+        scoring_key=scoring_key,
+        explanation=explanation,
+        cke_trap=cke_trap,
+        diagram=diagram,
+        plot=plot,
+        number_line=number_line,
+        explanation_diagram=explanation_diagram,
+        explanation_plot=explanation_plot,
+        explanation_number_line=explanation_number_line,
+        task_type='OPEN_PROOF'
+    )
 
 def make_lesson(lesson_id, topic_id, title, concept_essence, matura_context, core_formulas, worked_example, exam_trap, visuals, tasks, key_takeaway=None):
     """

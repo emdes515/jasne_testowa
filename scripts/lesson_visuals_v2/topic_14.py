@@ -57,15 +57,15 @@ def get_topic_14_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie funkcji trygonometrycznych z twierdzenia Pitagorasa krok po kroku",
-            badge=r"a = 3, \quad c = 5 \implies b = \sqrt{5^2 - 3^2} = 4 \implies \sin\alpha = \frac{3}{5}, \quad \cos\alpha = \frac{4}{5}",
+            badge=r"a = 3, \quad c = 5 \longrightarrow b = \sqrt{5^2 - 3^2} = 4 \longrightarrow \sin\alpha = \frac{3}{5}, \quad \cos\alpha = \frac{4}{5}",
             caption="Mając dwa boki trójkąta prostokątnego, trzeci bok zawsze obliczasz z twierdzenia Pitagorasa.",
             steps=[
-                {'num': 1, 'title': 'Zastosuj twierdzenie Pitagorasa', 'desc': r'$a^2 + b^2 = c^2 \implies 3^2 + b^2 = 5^2 \implies 9 + b^2 = 25$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Oblicz brakujący bok b', 'desc': r'$b^2 = 16 \implies b = 4$ (długość boku jest zawsze dodatnia).', 'color': C_PRIMARY},
+                {'num': 1, 'title': 'Zastosuj twierdzenie Pitagorasa', 'desc': r'$a^2 + b^2 = c^2 \longrightarrow 3^2 + b^2 = 5^2 \longrightarrow 9 + b^2 = 25$.', 'color': C_SKY},
+                {'num': 2, 'title': 'Oblicz brakujący bok b', 'desc': r'$b^2 = 16 \longrightarrow b = 4$ (długość boku jest zawsze dodatnia).', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Zapisz wartości funkcji', 'desc': r'$\sin\alpha = \frac{3}{5}, \quad \cos\alpha = \frac{4}{5}, \quad \operatorname{tg}\alpha = \frac{3}{4}$.', 'color': C_SUCCESS}
             ],
             metrics=[
-                {'label': 'Przyprostokątne', 'value': '$a = 3, \; b = 4$', 'color': C_SKY},
+                {'label': 'Przyprostokątne', 'value': r'$a = 3, \; b = 4$', 'color': C_SKY},
                 {'label': 'Przeciwprostokątna', 'value': '$c = 5$', 'color': C_PRIMARY},
                 {'label': 'Tangens alfa', 'value': r'$\operatorname{tg}\alpha = \frac{3}{4}$', 'color': C_SUCCESS}
             ]
@@ -101,10 +101,10 @@ def get_topic_14_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie sinusa z danej wartości cosinusa krok po kroku",
-            badge=r"\cos\alpha = \frac{24}{25} \implies \sin^2\alpha = 1 - \left(\frac{24}{25}\right)^2 = \frac{49}{625} \implies \sin\alpha = \frac{7}{25}",
+            badge=r"\cos\alpha = \frac{24}{25} \longrightarrow \sin^2\alpha = 1 - \left(\frac{24}{25}\right)^2 = \frac{49}{625} \longrightarrow \sin\alpha = \frac{7}{25}",
             caption="Wykorzystujemy tożsamość pitagorejską sin²α + cos²α = 1 i pierwiastkujemy wynik z dodatnim znakiem dla kąta ostrego.",
             steps=[
-                {'num': 1, 'title': 'Podstaw do jedynki trygonometrycznej', 'desc': r'$\sin^2\alpha + \left(\frac{24}{25}\right)^2 = 1 \implies \sin^2\alpha + \frac{576}{625} = 1$.', 'color': C_SKY},
+                {'num': 1, 'title': 'Podstaw do jedynki trygonometrycznej', 'desc': r'$\sin^2\alpha + \left(\frac{24}{25}\right)^2 = 1 \longrightarrow \sin^2\alpha + \frac{576}{625} = 1$.', 'color': C_SKY},
                 {'num': 2, 'title': 'Odejmij ułamek od jedynki', 'desc': r'$\sin^2\alpha = \frac{625}{625} - \frac{576}{625} = \frac{49}{625}$.', 'color': C_PRIMARY},
                 {'num': 3, 'title': 'Wyciągnij pierwiastek', 'desc': r'Dla kąta ostrego $\sin\alpha > 0$, stąd $\sin\alpha = \sqrt{\frac{49}{625}} = \frac{7}{25}$.', 'color': C_SUCCESS}
             ],
@@ -164,7 +164,7 @@ def get_topic_14_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Twierdzenie cosinusów w praktyce krok po kroku",
-            badge=r"a = 5, \; b = 2, \; \cos\gamma = \frac{3}{5} \implies c^2 = 5^2 + 2^2 - 2 \cdot 5 \cdot 2 \cdot \frac{3}{5} = 25 + 4 - 12 = 17 \implies c = \sqrt{17}",
+            badge=r"a = 5, \; b = 2, \; \cos\gamma = \frac{3}{5} \longrightarrow c^2 = 5^2 + 2^2 - 2 \cdot 5 \cdot 2 \cdot \frac{3}{5} = 25 + 4 - 12 = 17 \longrightarrow c = \sqrt{17}",
             caption="Obliczamy trzeci bok trójkąta znając dwa boki i cosinus kąta między nimi (zadanie z matury CKE).",
             steps=[
                 {'num': 1, 'title': 'Zapisz twierdzenie cosinusów', 'desc': r'$c^2 = a^2 + b^2 - 2ab\cos\gamma$.', 'color': C_SKY},
@@ -226,7 +226,7 @@ def get_topic_14_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Obliczanie pola rombu z sinusem kąta krok po kroku",
-            badge=r"a = 6\sqrt{2}, \quad \alpha = 150^\circ \implies P = (6\sqrt{2})^2 \cdot \sin 150^\circ = 72 \cdot \frac{1}{2} = 36",
+            badge=r"a = 6\sqrt{2}, \quad \alpha = 150^\circ \longrightarrow P = (6\sqrt{2})^2 \cdot \sin 150^\circ = 72 \cdot \frac{1}{2} = 36",
             caption="Zadanie maturalne CKE maj 2023: pole rombu o boku a i kącie rozwartym 150 stopni.",
             steps=[
                 {'num': 1, 'title': 'Zastosuj wzór na pole rombu', 'desc': r'$P = a^2 \cdot \sin\alpha$.', 'color': C_SKY},

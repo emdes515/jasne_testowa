@@ -62,6 +62,21 @@ export function formatSvgText(raw?: string): string {
     .replace(/\\infty\b/g, '∞')
     .replace(/\\cdot\b/g, '·')
     .replace(/\\times\b/g, '×')
+    .replace(/\\longrightarrow\b/g, '⟶')
+    .replace(/\\to\b/g, '→')
+    .replace(/\\perp\b/g, '⊥')
+    .replace(/\\parallel\b/g, '∥')
+    .replace(/\\circ\b/g, '°')
+    .replace(/\\deg\b/g, '°')
+    .replace(/\\sigma\b/g, 'σ')
+    .replace(/\\mu\b/g, 'μ')
+    .replace(/\\theta\b/g, 'θ')
+    .replace(/\\phi\b/g, 'φ')
+    .replace(/\\bar\{x\}/g, 'x̄')
+    .replace(/\\bar\{a\}/g, 'ā')
+    .replace(/\\bar\{s\}/g, 's̄')
+    .replace(/\\bar\{y\}/g, 'ȳ')
+    .replace(/\\overline\{([^}]+)\}/g, '$1̄')
     .replace(/\\implies\b/g, '⟹')
     .replace(/\\iff\b/g, '⟺')
     .replace(/\\lor\b/g, 'lub')
@@ -87,6 +102,58 @@ export function formatSvgText(raw?: string): string {
     .replace(/[{}]/g, '')
     .replace(/\$/g, '');
   return res;
+}
+
+export function renderSvgTextContent(raw?: string): React.ReactNode {
+  if (!raw) return '';
+  const cleaned = formatSvgText(raw);
+  if (!cleaned.includes('_')) return cleaned;
+
+  const parts: React.ReactNode[] = [];
+  const regex = /_(?:\{([^}]+)\}|([\p{L}\p{N}]+))/gu;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let isShifted = false;
+  let keyIdx = 0;
+
+  while ((match = regex.exec(cleaned)) !== null) {
+    if (match.index > lastIndex) {
+      const normalChunk = cleaned.substring(lastIndex, match.index);
+      if (isShifted) {
+        parts.push(
+          <tspan key={`norm-${keyIdx++}`} dy="-3">
+            {normalChunk}
+          </tspan>
+        );
+        isShifted = false;
+      } else {
+        parts.push(normalChunk);
+      }
+    }
+    const subText = match[1] || match[2];
+    parts.push(
+      <tspan key={`sub-${keyIdx++}`} dy="3" fontSize="8.5" fontWeight="bold">
+        {subText}
+      </tspan>
+    );
+    isShifted = true;
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < cleaned.length) {
+    const trailingChunk = cleaned.substring(lastIndex);
+    if (isShifted) {
+      parts.push(
+        <tspan key={`norm-${keyIdx++}`} dy="-3">
+          {trailingChunk}
+        </tspan>
+      );
+    } else {
+      parts.push(trailingChunk);
+    }
+  }
+
+  return <>{parts}</>;
 }
 
 export interface DiagramPoint {
@@ -132,6 +199,7 @@ export interface DiagramSegment {
   strokeWidth?: number;
   label?: string;
   labelColor?: string;
+  opacity?: number;
 }
 
 export interface DiagramCurve {
@@ -337,8 +405,8 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
         const formattedFormula = hasDelimiters ? formulaText : `$$${formulaText}$$`;
         return (
           <div className="w-full flex justify-center items-center my-2.5 px-1">
-            <div className="w-full max-w-full px-4 py-2 sm:py-3 rounded-xl bg-gradient-to-r from-primary/[0.08] via-primary/[0.16] to-primary/[0.08] border border-primary/35 text-text-primary font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] text-center overflow-x-auto">
-              <div className="inline-block min-w-full text-center">
+            <div className="w-full max-w-full px-3 py-1.5 sm:py-2.5 rounded-xl bg-gradient-to-r from-primary/[0.08] via-primary/[0.16] to-primary/[0.08] border border-primary/35 text-text-primary font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(255,184,0,0.12)] text-center overflow-x-auto">
+              <div className="inline-block w-fit min-w-full mx-auto text-center">
                 <MathRenderer content={formattedFormula} displayMode={true} />
               </div>
             </div>
@@ -511,32 +579,72 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
               strokeWidth={bar.strokeWidth || 1.75}
               rx={3}
             />
-            {bar.label && (
-              <text
-                x={bar.x + bar.width / 2}
-                y={bar.y - 6}
-                fill="#E2E8F0"
-                fontSize={12}
-                fontWeight="700"
-                textAnchor="middle"
-                fontFamily="sans-serif"
-              >
-                {bar.label}
-              </text>
-            )}
-            {bar.category && (
-              <text
-                x={bar.x + bar.width / 2}
-                y={bar.y + bar.height + 16}
-                fill="#94A3B8"
-                fontSize={12}
-                fontWeight="600"
-                textAnchor="middle"
-                fontFamily="sans-serif"
-              >
-                {bar.category}
-              </text>
-            )}
+            {bar.label && (() => {
+              const cleanBarLabel = formatSvgText(bar.label);
+              const lblLen = cleanBarLabel.replace(/_/g, '').length;
+              const pillW = Math.max(26, lblLen * 8.5 + 10);
+              const pillH = 18;
+              return (
+                <g key={`bar-lbl-group-${idx}`}>
+                  <rect
+                    x={bar.x + bar.width / 2 - pillW / 2}
+                    y={bar.y - 17}
+                    width={pillW}
+                    height={pillH}
+                    rx={4}
+                    fill="#090D16"
+                    fillOpacity={0.92}
+                    stroke="#1E293B"
+                    strokeWidth={1}
+                  />
+                  <text
+                    x={bar.x + bar.width / 2}
+                    y={bar.y - 4}
+                    fill="#E2E8F0"
+                    fontSize={12}
+                    fontWeight="700"
+                    textAnchor="middle"
+                    fontFamily="sans-serif"
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                  >
+                    {renderSvgTextContent(cleanBarLabel)}
+                  </text>
+                </g>
+              );
+            })()}
+            {bar.category && (() => {
+              const cleanCategory = formatSvgText(bar.category);
+              const lblLen = cleanCategory.replace(/_/g, '').length;
+              const pillW = Math.max(26, lblLen * 8 + 8);
+              const pillH = 18;
+              return (
+                <g key={`bar-cat-group-${idx}`}>
+                  <rect
+                    x={bar.x + bar.width / 2 - pillW / 2}
+                    y={bar.y + bar.height + 6}
+                    width={pillW}
+                    height={pillH}
+                    rx={4}
+                    fill="#090D16"
+                    fillOpacity={0.92}
+                    stroke="#1E293B"
+                    strokeWidth={1}
+                  />
+                  <text
+                    x={bar.x + bar.width / 2}
+                    y={bar.y + bar.height + 19}
+                    fill="#94A3B8"
+                    fontSize={12}
+                    fontWeight="600"
+                    textAnchor="middle"
+                    fontFamily="sans-serif"
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                  >
+                    {renderSvgTextContent(cleanCategory)}
+                  </text>
+                </g>
+              );
+            })()}
           </g>
         ))}
 
@@ -582,7 +690,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                     fontWeight="700"
                     textAnchor="middle"
                   >
-                    {formatSvgText(arc.label)}
+                    {renderSvgTextContent(arc.label)}
                   </text>
                 </g>
               )}
@@ -607,7 +715,8 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 y2={y2}
                 stroke={strokeColor}
                 strokeWidth={seg.strokeWidth || 2}
-                strokeDasharray={seg.dashed ? '5 4' : 'none'}
+                strokeDasharray={seg.dashed ? '4 4' : 'none'}
+                opacity={seg.opacity ?? (seg.dashed ? 0.4 : 1)}
                 strokeLinecap="round"
               />
               {seg.label && (() => {
@@ -619,7 +728,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 const ox = (-dy / len) * 16;
                 const oy = (dx / len) * 16;
                 const cleanSegLabel = formatSvgText(seg.label);
-                const lblLen = cleanSegLabel.length;
+                const lblLen = cleanSegLabel.replace(/_/g, '').length;
                 const pillW = Math.max(30, lblLen * 8.5 + 14);
                 const pillH = 20;
 
@@ -646,7 +755,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                       textAnchor="middle"
                       style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
                     >
-                      {cleanSegLabel}
+                      {renderSvgTextContent(cleanSegLabel)}
                     </text>
                   </g>
                 );
@@ -680,7 +789,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 textAnchor={isX ? 'middle' : 'end'}
                 fontFamily="system-ui, -apple-system, sans-serif"
               >
-                {formatSvgText(tick.label)}
+                {renderSvgTextContent(tick.label)}
               </text>
             </g>
           );
@@ -690,18 +799,19 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
         {d.points?.map((pt, idx) => {
           const dotColor = pt.color || '#FFB800';
           const isHovered = hoveredPointIdx === idx;
-          const pos = pt.labelPosition || 'top';
+          const pos = pt.attach || pt.labelPosition || 'top';
           let ox = 0;
           let oy = -14;
           let anchor: 'start' | 'middle' | 'end' = 'middle';
 
-          if (pos === 'bottom') { oy = 18; }
-          else if (pos === 'left') { ox = -14; oy = 0; anchor = 'end'; }
-          else if (pos === 'right') { ox = 14; oy = 0; anchor = 'start'; }
-          else if (pos === 'top-right') { ox = 14; oy = -12; anchor = 'start'; }
-          else if (pos === 'top-left') { ox = -14; oy = -12; anchor = 'end'; }
-          else if (pos === 'bottom-right') { ox = 14; oy = 16; anchor = 'start'; }
-          else if (pos === 'bottom-left') { ox = -14; oy = 16; anchor = 'end'; }
+          if (pos === 'bottom' || pos === 's') { oy = 18; }
+          else if (pos === 'left' || pos === 'w') { ox = -14; oy = 0; anchor = 'end'; }
+          else if (pos === 'right' || pos === 'e') { ox = 14; oy = 0; anchor = 'start'; }
+          else if (pos === 'top-right' || pos === 'ne') { ox = 14; oy = -12; anchor = 'start'; }
+          else if (pos === 'top-left' || pos === 'nw') { ox = -14; oy = -12; anchor = 'end'; }
+          else if (pos === 'bottom-right' || pos === 'se') { ox = 14; oy = 16; anchor = 'start'; }
+          else if (pos === 'bottom-left' || pos === 'sw') { ox = -14; oy = 16; anchor = 'end'; }
+          else if (pos === 'top' || pos === 'n') { ox = 0; oy = -14; anchor = 'middle'; }
 
           const r = isHovered ? 6.5 : 4.5;
           const cleanPtLabel = formatSvgText(pt.label);
@@ -739,7 +849,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
 
               {pt.label && (() => {
                 const cleanPtLabel = formatSvgText(pt.label);
-                const ptLblLen = cleanPtLabel.length;
+                const ptLblLen = cleanPtLabel.replace(/_/g, '').length;
                 const ptPillW = Math.max(18, ptLblLen * 7.5 + 8);
                 const ptPillH = 16;
                 let rectX = pt.x + ox - ptPillW / 2;
@@ -773,7 +883,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                       textAnchor={anchor}
                       style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
                     >
-                      {cleanPtLabel}
+                      {renderSvgTextContent(cleanPtLabel)}
                     </text>
                   </g>
                 );
@@ -786,7 +896,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
         {d.labels?.map((lbl, idx) => {
           const fontSize = lbl.fontSize || 12;
           const cleanLblText = formatSvgText(lbl.text);
-          const textLen = cleanLblText.length;
+          const textLen = cleanLblText.replace(/_/g, '').length;
           const textEstW = textLen * (fontSize * 0.65);
           const anchor = lbl.anchor || (lbl.x <= 40 ? 'start' : lbl.x >= (width - 40) ? 'end' : 'middle');
 
@@ -811,18 +921,17 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
 
           return (
             <g key={`lbl-${idx}`}>
-              {lbl.badge && (
-                <rect
-                  x={pillX}
-                  y={lbl.y - pillH / 2}
-                  width={pillW}
-                  height={pillH}
-                  rx={6}
-                  fill="rgba(255, 184, 0, 0.12)"
-                  stroke="rgba(255, 184, 0, 0.35)"
-                  strokeWidth={1}
-                />
-              )}
+              <rect
+                x={pillX}
+                y={lbl.y - pillH / 2}
+                width={pillW}
+                height={pillH}
+                rx={5}
+                fill={lbl.badge ? "rgba(255, 184, 0, 0.12)" : "#090D16"}
+                fillOpacity={lbl.badge ? 1 : 0.92}
+                stroke={lbl.badge ? "rgba(255, 184, 0, 0.35)" : "#1E293B"}
+                strokeWidth={1}
+              />
               <text
                 x={effectiveTextX}
                 y={lbl.y + 1}
@@ -831,8 +940,9 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 fontWeight={lbl.fontWeight || '700'}
                 textAnchor={anchor}
                 dominantBaseline="central"
+                style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
               >
-                {cleanLblText}
+                {renderSvgTextContent(cleanLblText)}
               </text>
             </g>
           );

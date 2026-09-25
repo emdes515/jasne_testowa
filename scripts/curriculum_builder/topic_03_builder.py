@@ -1,13 +1,13 @@
 """
 topic_03_builder.py - Dział 1.3: Wartość bezwzględna (3 lekcje | Tier S)
-Nocturne Luminary + Core-4 Bento + Autentyczne CKE 2023-2026.
+Matryca 5-Task: Baza (SC/TF) -> Pułapka CKE (SC) -> Autentyk CKE (SC) -> Numeryczne (NUMERIC_INPUT) -> Otwarte CKE (OPEN_TASK/OPEN_PROOF)
 """
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from lesson_visuals_v2.topic_03 import get_topic_03_visuals
-from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_lesson
+from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_open_proof, make_lesson
 
 def build_topic_03():
     topic_id = 'dzial-3'
@@ -20,9 +20,10 @@ def build_topic_03():
     # ----------------------------------------------------
     v1 = get_topic_03_visuals(0)
     l1_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza pojęciowa
         make_sc_task(
             task_id='task-3-1-1',
-            source='Rozgrzewka • Odległość na osi',
+            source='Trening JASNE • Wzorzec CKE',
             question='Odległość na osi liczbowej między liczbami $x = -3$ oraz $y = 5$ jest równa',
             options_data=[
                 ('A', '$2$'),
@@ -34,23 +35,10 @@ def build_topic_03():
             explanation='Odległość na osi liczymy ze wzoru $|x - y| = |5 - (-3)| = |5 + 3| = |8| = 8$. Odległość jest zawsze nieujemna.',
             cke_trap='Uważaj na podwójny minus: odejmowanie liczby ujemnej daje dodawanie ($5 - (-3) = 8$, nie $2$).'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka egzaminacyjna
         make_sc_task(
             task_id='task-3-1-2',
             source='Trening JASNE • Wzorzec CKE',
-            question='Równanie $|x - 3| = 5$ opisuje punkty na osi liczbowej, których odległość od liczby $3$ wynosi $5$. Rozwiązaniami tego równania są liczby',
-            options_data=[
-                ('A', '$x = -2$ oraz $x = 8$'),
-                ('B', '$x = 2$ oraz $x = 8$'),
-                ('C', '$x = -8$ oraz $x = 2$'),
-                ('D', '$x = -5$ oraz $x = 5$')
-            ],
-            correct_id='A',
-            explanation='Geometrycznie: szukamy liczb w odległości $5$ od $3$. W prawo: $3 + 5 = 8$. W lewo: $3 - 5 = -2$. Sprawdzenie: $|8 - 3| = 5$ oraz $|-2 - 3| = |-5| = 5$.',
-            cke_trap='Nie zapominaj o skoku w lewo: równanie z wartością bezwzględną ma ZAWSZE dwa rozwiązania po obu stronach środka.'
-        ),
-        make_sc_task(
-            task_id='task-3-1-3',
-            source='Pułapka CKE • Znak wewnątrz wartości bezwzględnej',
             question='Równanie $|x + 4| = 7$ zapisane w postaci odległości na osi to $|x - (-4)| = 7$. Oznacza to odległość od liczby',
             options_data=[
                 ('A', '$4$ wynoszącą $7$'),
@@ -62,21 +50,39 @@ def build_topic_03():
             explanation='Wzór na odległość to $|x - a|$. Znak plus oznacza minus przed liczbą ujemną: $|x + 4| = |x - (-4)|$. Środkiem jest liczba $-4$.',
             cke_trap='Gdy widzisz plus wewnątrz wartości bezwzględnej, środek leży po stronie ujemnej osi (w punkcie -4, a nie 4).'
         ),
-        make_tf_task(
-            task_id='task-3-1-4',
-            source='Trening CKE • Własności odległości',
-            question='Oceń prawdziwość zdania: Równanie $|x - 2| = -3$ nie posiada żadnych rozwiązań w zbiorze liczb rzeczywistych.',
-            correct_tf='PRAWDA',
-            explanation='Wartość bezwzględna to odległość, a odległość z definicji nigdy nie może być ujemna. Wynik równy -3 oznacza sprzeczność.',
-            cke_trap='Nie próbuj rozwiązywać $x - 2 = -3$ ani $x - 2 = 3$ — najpierw sprawdź prawą stronę! Ujemna prawa strona to natychmiastowy brak rozwiązań.'
+        # Zadanie 3: Autentyk CKE Zamknięty 1:1
+        make_sc_task(
+            task_id='task-3-1-3',
+            source='Matura czerwiec 2023 • Zad. 1',
+            question='Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb całkowitych dodatnich spełniających nierówność $|x + 5| < 15$ jest',
+            options_data=[
+                ('A', '$9$'),
+                ('B', '$10$'),
+                ('C', '$20$'),
+                ('D', '$21$')
+            ],
+            correct_id='A',
+            explanation='Rozwiązujemy nierówność: $-15 < x + 5 < 15 \\longrightarrow -20 < x < 10$. Szukamy liczb całkowitych dodatnich ($x \\ge 1$). Są to liczby: $1, 2, 3, 4, 5, 6, 7, 8, 9$. Jest ich dokładnie 9.',
+            cke_trap='Zwróć uwagę na słowo DODATNICH: liczba 0 ani liczby ujemne nie należą do liczb dodatnich.'
         ),
+        # Zadanie 4: Autentyk CKE Krótka Odpowiedź
         make_numeric_task(
-            task_id='task-3-1-5',
-            source='Utrwalenie • Suma rozwiązań',
-            question='Oblicz sumę wszystkich rozwiązań równania $|x - 7| = 4$.',
-            correct_val=14,
+            task_id='task-3-1-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Oblicz sumę wszystkich rozwiązań równania $|x - 7| = 4$. Wpisz wynik jako liczbę całkowitą.',
+            correct_val='14',
             explanation='Rozwiązaniami są $x_1 = 7 - 4 = 3$ oraz $x_2 = 7 + 4 = 11$. Ich suma to $3 + 11 = 14$. Zauważ regułę: suma rozwiązań to zawsze podwojony środek: $2 \\cdot 7 = 14$.',
             cke_trap='Upewnij się, że dodajesz oba rozwiązania, a nie odejmujesz promień od środka.'
+        ),
+        # Zadanie 5: Zadanie Otwarte z Brudnopisem & Krokami
+        make_open_task(
+            task_id='task-3-1-5',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Rozwiąż równanie z wartością bezwzględną $|2x - 6| = 8$. Zapisz pełne obliczenia i podaj wszystkie rozwiązania.',
+            points=2,
+            scoring_key='1 pkt – rozbicie równania na dwa przypadki: $2x - 6 = 8$ lub $2x - 6 = -8$.\\n2 pkt – poprawne rozwiązanie obu równań liniowych: $x = 7$ oraz $x = -1$.',
+            explanation='Z definicji wartości bezwzględnej równanie rozbija się na dwa przypadki:\n$$2x - 6 = 8 \\quad \\text{lub} \\quad 2x - 6 = -8$$\nRozwiązujemy pierwsze równanie:\n$$2x = 14 \\longrightarrow x = 7$$\nRozwiązujemy drugie równanie:\n$$2x = -2 \\longrightarrow x = -1$$\nOdpowiedź: $x \\in \\{-1, 7\\}$.',
+            cke_trap='Nie zapomnij o minusie po prawej stronie przy drugim przypadku.'
         )
     ]
     l1 = make_lesson(
@@ -127,9 +133,10 @@ def build_topic_03():
     # ----------------------------------------------------
     v2 = get_topic_03_visuals(1)
     l2_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza pojęciowa
         make_sc_task(
             task_id='task-3-2-1',
-            source='Rozgrzewka • Znak mniejszości',
+            source='Trening JASNE • Wzorzec CKE',
             question='Zbiorem wszystkich rozwiązań nierówności $|x| < 4$ jest przedział',
             options_data=[
                 ('A', '$(-4, 4)$'),
@@ -138,34 +145,50 @@ def build_topic_03():
                 ('D', '$(-4, +\\infty)$')
             ],
             correct_id='A',
-            explanation='Odległość od zera mniejsza niż 4 oznacza uwięzienie wewnątrz przedziału między -4 a 4: $x \\in (-4, 4)$.',
-            cke_trap='Znak $<$ zamyka zbiór rozwiązań w jednym spójnym przedziale (nie rozbija na dwa skrzydła).'
+            explanation='Nierówność $|x| < 4$ oznacza odległość od $0$ mniejszą niż $4$, czyli przedział obustronnie otwarty $(-4, 4)$.',
+            cke_trap='Znak mniejszości oznacza jeden spójny przedział wokół zera, a nie sumę skrzydeł zewnętrznych.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka egzaminacyjna
         make_sc_task(
             task_id='task-3-2-2',
-            source='Matura Maj 2024 • Zad. 1',
-            question='Dana jest nierówność\n$$|x - 1| \\ge 3$$\nNa którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich liczb rzeczywistych spełniających powyższą nierówność? Wybierz właściwą odpowiedź spośród podanych.',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Zbiorem wszystkich rozwiązań nierówności $|x - 2| \\le 3$ jest przedział',
+            options_data=[
+                ('A', '$(-1, 5)$'),
+                ('B', '$\\langle -1, 5 \\rangle$'),
+                ('C', '$(-\\infty, -1\\rangle \\cup \\langle 5, +\\infty)$'),
+                ('D', '$\\langle 1, 5 \\rangle$')
+            ],
+            correct_id='B',
+            explanation='Środek przedziału to $2$, a promień to $3$. Wyznaczamy końce: $2 - 3 = -1$ oraz $2 + 3 = 5$. Znak $\\le$ oznacza przedział domknięty: $\\langle -1, 5 \\rangle$.',
+            cke_trap='Nierówność nieostra $\\le$ ZAWSZE oznacza nawiasy domknięte $\\langle -1, 5 \\rangle$. Dystraktor A ma błędne nawiasy okrągłe.'
+        ),
+        # Zadanie 3: Autentyk CKE Zamknięty 1:1
+        make_sc_task(
+            task_id='task-3-2-3',
+            source='Matura maj 2024 • Zad. 1',
+            question='Dana jest nierówność\n$$|x - 1| \\ge 3$$\nNa którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich rozwiązań tej nierówności?',
             options_data=[
                 {
                     'id': 'A',
-                    'text': '$\\langle -2, 4 \\rangle$',
-                    'content_latex': '$\\langle -2, 4 \\rangle$',
+                    'text': 'Przedział domknięty $\\langle -2, 4 \\rangle$',
+                    'content_latex': '\\langle -2, 4 \\rangle',
                     'is_correct': False,
                     'numberLine': {
-                        'min': -5,
-                        'max': 7,
+                        'min': -4,
+                        'max': 6,
                         'ticks': [-2, 4],
                         'intervals': [{'from': -2, 'to': 4, 'fromIncluded': True, 'toIncluded': True}]
                     }
                 },
                 {
                     'id': 'B',
-                    'text': '$(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$',
-                    'content_latex': '$(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$',
+                    'text': 'Suma przedziałów $(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$',
+                    'content_latex': '(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)',
                     'is_correct': True,
                     'numberLine': {
-                        'min': -5,
-                        'max': 7,
+                        'min': -4,
+                        'max': 6,
                         'ticks': [-2, 4],
                         'intervals': [
                             {'from': None, 'to': -2, 'toIncluded': True},
@@ -175,24 +198,27 @@ def build_topic_03():
                 },
                 {
                     'id': 'C',
-                    'text': '$(-2, 4)$',
-                    'content_latex': '$(-2, 4)$',
+                    'text': 'Suma przedziałów $(-\\infty, -4\\rangle \\cup \\langle 2, +\\infty)$',
+                    'content_latex': '(-\\infty, -4\\rangle \\cup \\langle 2, +\\infty)',
                     'is_correct': False,
                     'numberLine': {
-                        'min': -5,
-                        'max': 7,
-                        'ticks': [-2, 4],
-                        'intervals': [{'from': -2, 'to': 4, 'fromIncluded': False, 'toIncluded': False}]
+                        'min': -6,
+                        'max': 4,
+                        'ticks': [-4, 2],
+                        'intervals': [
+                            {'from': None, 'to': -4, 'toIncluded': True},
+                            {'from': 2, 'to': None, 'fromIncluded': True}
+                        ]
                     }
                 },
                 {
                     'id': 'D',
-                    'text': '$(-\\infty, -2) \\cup (4, +\\infty)$',
-                    'content_latex': '$(-\\infty, -2) \\cup (4, +\\infty)$',
+                    'text': 'Suma przedziałów $(-\\infty, -2) \\cup (4, +\\infty)$ z otwartymi kropkami',
+                    'content_latex': '(-\\infty, -2) \\cup (4, +\\infty)',
                     'is_correct': False,
                     'numberLine': {
-                        'min': -5,
-                        'max': 7,
+                        'min': -4,
+                        'max': 6,
                         'ticks': [-2, 4],
                         'intervals': [
                             {'from': None, 'to': -2, 'toIncluded': False},
@@ -202,47 +228,27 @@ def build_topic_03():
                 }
             ],
             correct_id='B',
-            explanation='Rozwiązujemy nierówność z wartością bezwzględną: $|x - 1| \\ge 3$, co oznacza $x - 1 \\le -3$ lub $x - 1 \\ge 3$. Otrzymujemy $x \\le -2$ lub $x \\ge 4$. Zbiorem rozwiązań jest suma przedziałów $(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$. Na osi liczbowej zaznaczamy punkty $-2$ oraz $4$ z kółkami zamalowanymi (nierówność nieostra $\\ge$) i promieniami skierowanymi na zewnątrz (Rysunek B).',
-            cke_trap='Znak nierówności $\\ge$ oznacza przedziały zewnętrzne z kółkami zamalowanymi. Puste kółka (Rysunek D) lub przedział wewnętrzny (Rysunek A) to typowe pułapki CKE.'
+            explanation='Rozwiązujemy nierówność: $|x - 1| \\ge 3$, co oznacza $x - 1 \\le -3$ lub $x - 1 \\ge 3$. Otrzymujemy $x \\le -2$ lub $x \\ge 4$. Zbiorem rozwiązań jest suma przedziałów $(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$ z kółkami zamalowanymi (Rysunek B).',
+            cke_trap='Znak nierówności $\\ge$ oznacza przedziały zewnętrzne z kółkami zamalowanymi.'
         ),
-        make_sc_task(
-            task_id='task-3-2-3',
-            source='Matura Maj 2023 • Zad. 1',
-            question='Na osi liczbowej zaznaczono sumę przedziałów.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiór zaznaczony na osi jest zbiorem wszystkich rozwiązań nierówności',
-            options_data=[
-                ('A', '$|x - 3{,}5| \\ge 1{,}5$'),
-                ('B', '$|x - 1{,}5| \\ge 3{,}5$'),
-                ('C', '$|x - 3{,}5| \\le 1{,}5$'),
-                ('D', '$|x - 1{,}5| \\le 3{,}5$')
-            ],
-            correct_id='B',
-            explanation='Zaznaczony na osi zbiór to $(-\\infty, -2] \\cup [5, +\\infty)$. Środek tego zbioru to średnia arytmetyczna punktów brzegowych: $a = \\frac{-2 + 5}{2} = 1{,}5$. Promień (odległość od środka do brzegu) to $r = 5 - 1{,}5 = 3{,}5$. Przedziały są skierowane na zewnątrz z kropkami domkniętymi, co odpowiada nierówności $|x - a| \\ge r$, czyli $|x - 1{,}5| \\ge 3{,}5$.',
-            cke_trap='Nie myl środka z promieniem. Środek to średnia arytmetyczna $1{,}5$, a promień to odległość $3{,}5$. Błędne odwrócenie tych wartości prowadzi do dystraktora A.',
-            number_line={
-                'min': -5,
-                'max': 7,
-                'ticks': [-2, 5],
-                'intervals': [
-                    {'from': None, 'to': -2, 'toIncluded': True},
-                    {'from': 5, 'to': None, 'fromIncluded': True}
-                ]
-            }
-        ),
-        make_tf_task(
-            task_id='task-3-2-4',
-            source='Trening CKE • Nietypowe nierówności',
-            question='Oceń prawdziwość zdania: Nierówność $|x - 5| < 0$ nie posiada żadnych rozwiązań w zbiorze liczb rzeczywistych.',
-            correct_tf='PRAWDA',
-            explanation='Wartość bezwzględna jest zawsze większa lub równa zero. Nie istnieje żadna liczba, której wartość bezwzględna byłaby mniejsza od zera.',
-            cke_trap='Nierówność $|x - 5| \\le 0$ miałaby jedno rozwiązanie ($x = 5$), ale ostra nierówność $< 0$ nie ma żadnych rozwiązań.'
-        ),
+        # Zadanie 4: Autentyk CKE Krótka Odpowiedź
         make_numeric_task(
-            task_id='task-3-2-5',
-            source='Utrwalenie • Liczby całkowite w przedziale',
-            question='Ile liczb całkowitych spełnia nierówność $|x - 2| \\le 3$?',
-            correct_val=7,
-            explanation='Końce przedziału to $2 - 3 = -1$ oraz $2 + 3 = 5$. Zbiorem rozwiązań jest przedział domknięty $[-1, 5]$. Liczby całkowite to: $-1, 0, 1, 2, 3, 4, 5$ — jest ich dokładnie 7.',
+            task_id='task-3-2-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Ile liczb całkowitych spełnia nierówność $|x - 2| \\le 3$? Wpisz liczbę.',
+            correct_val='7',
+            explanation='Końce przedziału to $2 - 3 = -1$ oraz $2 + 3 = 5$. Zbiorem rozwiązań jest przedział domknięty $\\langle -1, 5 \\rangle$. Liczby całkowite to: $-1, 0, 1, 2, 3, 4, 5$ — jest ich dokładnie 7.',
             cke_trap='Pamiętaj o uwzględnieniu zera oraz obu końców przedziału (nawias domknięty).'
+        ),
+        # Zadanie 5: Zadanie Otwarte z Brudnopisem & Krokami
+        make_open_task(
+            task_id='task-3-2-5',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Rozwiąż nierówność z wartością bezwzględną $|3x - 6| < 9$. Zapisz zbiór rozwiązań w postaci przedziału.',
+            points=2,
+            scoring_key='1 pkt – zapisanie koniunkcji warunków podwójnej nierówności: $-9 < 3x - 6 < 9$.\\n2 pkt – rozwiązanie nierówności: $-3 < 3x < 15 \\longrightarrow -1 < x < 5$, czyli $x \\in (-1, 5)$.',
+            explanation='Rozpisujemy nierówność ze znakiem mniejszości jako nierówność podwójną:\n$$-9 < 3x - 6 < 9$$\nDodajemy 6 do wszystkich stron:\n$$-3 < 3x < 15$$\nDzielimy przez 3:\n$$-1 < x < 5$$\nZbiorem rozwiązań jest przedział otwarty $x \\in (-1, 5)$.',
+            cke_trap='Znak $<$ oznacza przedział otwarty, kropki na osi są puste, nawiasy okrągłe.'
         )
     ]
     l2 = make_lesson(
@@ -260,7 +266,7 @@ def build_topic_03():
                 'cke_page': 'str. 4',
                 'example': '|x - 2| < 3 \\longrightarrow -1 < x < 5 \\longrightarrow x \\in (-1, 5)',
                 'mnemonic': 'Dzióbek w stronę wartości bezwzględnej zamyka cię w klatce.',
-                'matura_tip': 'Dla znaku $\\le$ nawiasy są domknięte: $[a - r, a + r]$.'
+                'matura_tip': 'Dla znaku $\\le$ nawiasy są domknięte: $\\langle a - r, a + r \\rangle$.'
             },
             {
                 'title': 'Nierówność ze znakiem większości (skrzydła zewnętrzne)',
@@ -268,9 +274,9 @@ def build_topic_03():
                 'description': 'Zbiór rozwiązań to suma dwóch przedziałów nieskończonych.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 4',
-                'example': '|x - 1| \\ge 4 \\longrightarrow x \\in (-\\infty, -3] \\cup [5, +\\infty)',
+                'example': '|x - 1| \\ge 4 \\longrightarrow x \\in (-\\infty, -3\\rangle \\cup \\langle 5, +\\infty)',
                 'mnemonic': 'Dzióbek w stronę liczby wyrzuca cię na zewnątrz.',
-                'matura_tip': 'Pomiędzy przedziałami zawsze stoi znak sumy zbiorów ($\\cup$), nigdy część wspólna ($\\cap$).'
+                'matura_tip': 'Pomiędzy przedziałami zawsze stoi znak sumy zbiorów ($\\cup$), nigdy część wspólna.'
             }
         ],
         worked_example={
@@ -278,11 +284,11 @@ def build_topic_03():
             'steps': [
                 {'num': 1, 'label': 'Wyznaczenie środka i promienia', 'text': 'Zapisujemy $|x - (-1)| \\le 4$. Środek to $a = -1$, a dopuszczalna odległość to $r = 4$.'},
                 {'num': 2, 'label': 'Wyznaczenie punktów brzegowych', 'text': 'Lewy brzeg: $-1 - 4 = -5$. Prawy brzeg: $-1 + 4 = 3$.'},
-                {'num': 3, 'label': 'Zapisanie przedziału i wynik CKE', 'text': 'Znak $\\le$ oznacza obszar wewnętrzny wraz z brzegami: $x \\in [-5, 3]$.'}
+                {'num': 3, 'label': 'Zapisanie przedziału i wynik CKE', 'text': 'Znak $\\le$ oznacza obszar wewnętrzny wraz z brzegami: $x \\in \\langle -5, 3 \\rangle$.'}
             ],
-            'result': 'x \\in [-5, 3]'
+            'result': 'x \\in \\langle -5, 3 \\rangle'
         },
-        exam_trap='Typowy błąd: Zapisywanie skrzydeł nierówności $|x - a| > r$ jako jednego bezsensownego ciągu, np. $5 < x < -2$.\n\nPoprawnie: Skrzydła zewnętrzne to dwa OSOBNE warunki połączone słowem LUB: $x < -2$ LUB $x > 5$.',
+        exam_trap='Typowy błąd: Zapisywanie skrzydeł nierówności $|x - a| > r$ jako jednego ciągu, np. $5 < x < -2$.\n\nPoprawnie: Skrzydła zewnętrzne to dwa osobne warunki połączone słowem LUB: $x < -2$ LUB $x > 5$.',
         visuals=v2,
         tasks=l2_tasks
     )
@@ -293,9 +299,10 @@ def build_topic_03():
     # ----------------------------------------------------
     v3 = get_topic_03_visuals(2)
     l3_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza pojęciowa
         make_sc_task(
             task_id='task-3-3-1',
-            source='Rozgrzewka • Opuszczanie kresek wartości bezwzględnej',
+            source='Trening JASNE • Wzorzec CKE',
             question='Liczba $|2 - \\sqrt{5}|$ jest równa',
             options_data=[
                 ('A', '$2 - \\sqrt{5}$'),
@@ -307,6 +314,7 @@ def build_topic_03():
             explanation='Szacujemy $\\sqrt{5} \\approx 2{,}24$. Wyrażenie pod kreskami jest ujemne: $2 - \\sqrt{5} < 0$. Przy opuszczaniu wartości bezwzględnej zmieniamy znaki: $|2 - \\sqrt{5}| = -(2 - \\sqrt{5}) = \\sqrt{5} - 2$.',
             cke_trap='Nigdy nie zdejmuj kresek wartości bezwzględnej bez wcześniejszego oszacowania znaku liczby wewnątrz!'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka egzaminacyjna
         make_sc_task(
             task_id='task-3-3-2',
             source='Trening JASNE • Wzorzec CKE',
@@ -319,37 +327,50 @@ def build_topic_03():
             ],
             correct_id='B',
             explanation='Żelazna tożsamość maturalna: $\\sqrt{a^2} = |a|$. Ponieważ z założenia $a < 0$, to $|a| = -a$. Zatem $\\sqrt{a^2} + a = -a + a = 0$.',
-            cke_trap='Błędne mechaniczne pisanie $\\sqrt{a^2} = a$ prowadzi do błędnej odpowiedzi $2a$. Pierwiastek arytmetyczny NIGDY nie daje ujemnego wyniku!'
+            cke_trap='Błędne mechaniczne pisanie $\\sqrt{a^2} = a$ prowadzi do błędnej odpowiedzi $2a$. Pierwiastek arytmetyczny nigdy nie daje ujemnego wyniku.'
         ),
+        # Zadanie 3: Autentyk CKE Zamknięty 1:1
         make_sc_task(
             task_id='task-3-3-3',
-            source='Pułapka CKE • Kwadrat pod pierwiastkiem',
-            question='Dla liczby $x < 3$ wyrażenie $\\sqrt{x^2 - 6x + 9}$ jest równe',
+            source='Matura maj 2023 • Zad. 1',
+            question='Na osi liczbowej zaznaczono sumę przedziałów.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiór zaznaczony na osi jest zbiorem wszystkich rozwiązań nierówności',
             options_data=[
-                ('A', '$x - 3$'),
-                ('B', '$3 - x$'),
-                ('C', '$x + 3$'),
-                ('D', '$-x - 3$')
+                ('A', '$|x - 3{,}5| \\ge 1{,}5$'),
+                ('B', '$|x - 1{,}5| \\ge 3{,}5$'),
+                ('C', '$|x - 3{,}5| \\le 1{,}5$'),
+                ('D', '$|x - 1{,}5| \\le 3{,}5$')
             ],
             correct_id='B',
-            explanation='Zwijamy pod pierwiastkiem wzór skróconego mnożenia: $\\sqrt{x^2 - 6x + 9} = \\sqrt{(x - 3)^2} = |x - 3|$. Ponieważ $x < 3$, to $x - 3 < 0$, a więc $|x - 3| = -(x - 3) = 3 - x$.',
-            cke_trap='Pamiętaj o dwóch krokach: najpierw zwiń do $|x - 3|$, a potem sprawdź znak na podstawie założenia $x < 3$.'
+            explanation='Zaznaczony na osi zbiór to $(-\\infty, -2\\rangle \\cup \\langle 5, +\\infty)$. Środek tego zbioru to średnia arytmetyczna punktów brzegowych: $a = \\frac{-2 + 5}{2} = 1{,}5$. Promień to $r = 5 - 1{,}5 = 3{,}5$. Przedziały są skierowane na zewnątrz z kropkami domkniętymi, co odpowiada nierówności $|x - a| \\ge r$, czyli $|x - 1{,}5| \\ge 3{,}5$.',
+            cke_trap='Nie myl środka z promieniem. Środek to średnia arytmetyczna $1{,}5$, a promień to odległość $3{,}5$.',
+            number_line={
+                'min': -5,
+                'max': 7,
+                'ticks': [-2, 5],
+                'intervals': [
+                    {'from': None, 'to': -2, 'toIncluded': True},
+                    {'from': 5, 'to': None, 'fromIncluded': True}
+                ]
+            }
         ),
-        make_tf_task(
-            task_id='task-3-3-4',
-            source='Trening CKE • Pierwiastek arytmetyczny',
-            question='Oceń prawdziwość zdania: Dla liczby $x = -4$ wartość wyrażenia $\\sqrt{x^2}$ wynosi $4$.',
-            correct_tf='PRAWDA',
-            explanation='$\\sqrt{(-4)^2} = \\sqrt{16} = 4$. Wynik pierwiastka arytmetycznego jest zawsze nieujemny.',
-            cke_trap='Nie myl $\\sqrt{(-4)^2} = 4$ z $(\\sqrt{-4})^2$, które nie istnieje w liczbach rzeczywistych.'
-        ),
+        # Zadanie 4: Autentyk CKE Krótka Odpowiedź
         make_numeric_task(
-            task_id='task-3-3-5',
-            source='Utrwalenie • Wartość wyrażenia z pi',
+            task_id='task-3-3-4',
+            source='Trening JASNE • Wzorzec CKE',
             question='Oblicz wartość wyrażenia $|3 - \\pi| + |4 - \\pi|$. Wynik podaj jako liczbę całkowitą.',
-            correct_val=1,
+            correct_val='1',
             explanation='Przyjmujemy $\\pi \\approx 3{,}14$. Zatem $3 - \\pi < 0$, co daje $|3 - \\pi| = \\pi - 3$. Z kolei $4 - \\pi > 0$, co daje $|4 - \\pi| = 4 - \\pi$. Suma: $(\\pi - 3) + (4 - \\pi) = 4 - 3 = 1$. Wyrazy z pi zredukowały się do zera.',
             cke_trap='Pamiętaj, że $\\pi$ leży między 3 a 4, więc jeden nawias ma znak ujemny, a drugi dodatni.'
+        ),
+        # Zadanie 5: Zadanie Otwarte z Brudnopisem & Krokami
+        make_open_proof(
+            task_id='task-3-3-5',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Wykaż, że dla każdej liczby rzeczywistej $x \\in (2, 5)$ wartość wyrażenia $|x - 2| - |x - 5|$ jest równa $2x - 7$. Zapisz pełne uzasadnienie.',
+            points=2,
+            scoring_key='1 pkt – poprawne określenie znaków obu wyrażeń pod wartością bezwzględną w przedziale $(2, 5)$: $x - 2 > 0$ oraz $x - 5 < 0$.\\n2 pkt – poprawne opuszczenie modułów: $(x - 2) - [-(x - 5)] = x - 2 + x - 5 = 2x - 7$ i sformułowanie wniosku.',
+            explanation='Dla dowolnego $x \\in (2, 5)$ ustalamy znaki wnętrz modułów:\n1) $x > 2 \\longrightarrow x - 2 > 0$, zatem $|x - 2| = x - 2$.\n2) $x < 5 \\longrightarrow x - 5 < 0$, zatem $|x - 5| = -(x - 5) = 5 - x$.\nPodstawiamy do wyrażenia:\n$$|x - 2| - |x - 5| = (x - 2) - [-(x - 5)] = (x - 2) + (x - 5) = 2x - 7$$\nCo kończy dowód.',
+            cke_trap='Pamiętaj o nawiasie przy opuszczaniu drugiego modułu: minus przed wyrażeniem zmienia znak.'
         )
     ]
     l3 = make_lesson(
@@ -400,9 +421,8 @@ def build_topic_03():
         'title': topic_title,
         'topic_number': topic_number,
         'order': topic_number,
-        'tier': 'Tier S',
-        'badge': 'NA 30% • PEWNIAK MATURALNY',
-        'estimated_time_formatted': '3 lekcje (~15 min)',
-        'description': 'Interpretacja geometryczna wartości bezwzględnej jako odległości na osi liczbowej, rozwiązywanie nierówności oraz żelazna tożsamość pierwiastka kwadratowego.',
+        'short_title': 'Wartość bezwzględna',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '1–2 pkt',
         'lessons': lessons
     }

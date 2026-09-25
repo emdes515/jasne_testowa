@@ -30,7 +30,8 @@ export const CKE_FORMULA_TOPICS = [
   { id: 'funkcje-rownania', name: 'Funkcje i Równania' },
   { id: 'ciagi', name: 'Ciągi Liczbowe' },
   { id: 'trygonometria', name: 'Trygonometria' },
-  { id: 'geometria', name: 'Planimetria i Analityczna' },
+  { id: 'planimetria', name: 'Planimetria' },
+  { id: 'geometria', name: 'Geometria Analityczna' },
   { id: 'stereometria', name: 'Stereometria' },
   { id: 'prawdopodobienstwo', name: 'Kombinatoryka i Statystyka' }
 ];
@@ -563,8 +564,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'Zauważ symetrię: sin 30° = cos 60° = 1/2, oraz sin 60° = cos 30° = √3/2. W II ćwiartce sinus jest dodatni, a cosinus ujemny!',
     ckeTrap: 'tg 45° to 1, a NIE √2/2! Dla kątów rozwartych cosinus jest ZAWSZE ujemny: cos 120° = -cos 60° = -1/2.',
     keywords: ['wartości kątów', '30 stopni', '45 stopni', '60 stopni', 'wzory redukcyjne'],
-    cke_page: 'str. 11',
-    pageNumber: 11,
+    cke_page: 'str. 12–13',
+    pageNumber: 12,
     diagram: {
       type: 'TRIGONOMETRY',
       title: 'Wzory redukcyjne dla kątów rozwartych (II ćwiartka)',
@@ -641,7 +642,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
         { x: 200, y: 160, label: 'D', color: '#F43F5E', dot: 'hollow', attach: 's' }
       ],
       labels: [
-        { x: 260, y: 25, text: 'Wysokość: h = a · sin γ  ⟹  P = 0,5 · b · (a · sin γ)', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 260, y: 25, text: 'Wysokość: h = a · sin γ  ⟶  P = 0,5 · b · (a · sin γ)', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
         { x: 210, y: 195, text: 'Kąt γ MUSI leżeć bezpośrednio między bokami a i b!', color: '#F43F5E', fontSize: 11, fontWeight: '700' }
       ],
       caption: 'Wysokość trójkąta to h = a · sin γ. Podstawiając do klasycznego wzoru P = (b · h)/2 otrzymujemy P = 0,5 · a · b · sin γ. Używaj tego wzoru ZAWSZE, gdy znasz dwa boki i kąt między nimi.'
@@ -691,8 +692,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
   },
   {
     id: 'f-geo-trojkat-rownoboczny',
-    topicId: 'geometria',
-    topicName: 'Planimetria i Analityczna',
+    topicId: 'planimetria',
+    topicName: 'Planimetria',
     title: 'Trójkąt równoboczny',
     formula: 'h = \\frac{a\\sqrt{3}}{2}, \\qquad P = \\frac{a^2\\sqrt{3}}{4}',
     subFormulas: [
@@ -759,8 +760,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'Prawa strona to $r^2$. Jeśli po prawej stronie masz $25$, to promień $r = 5$, a NIE $25$!',
     ckeTrap: 'Uważaj na znaki środka: $(x - 2)^2 + (y + 3)^2 = 16$ ma środek w $S = (2, -3)$!',
     keywords: ['równanie okręgu', 'środek okręgu', 'promień okręgu'],
-    cke_page: 'str. 22',
-    pageNumber: 22,
+    cke_page: 'str. 23',
+    pageNumber: 23,
     diagram: {
       type: 'GEOMETRY_2D',
       title: 'Równanie okręgu w układzie współrzędnych: (x - a)² + (y - b)² = r²',
@@ -802,66 +803,66 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
   },
   {
     id: 'f-geo-tales',
-    topicId: 'geometria',
-    topicName: 'Planimetria i Analityczna',
+    topicId: 'planimetria',
+    topicName: 'Planimetria',
     title: 'Twierdzenie Talesa i proporcja pól figur podobnych (k²)',
-    formula: '\\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|}, \\qquad \\frac{P_2}{P_1} = k^2',
+    formula: '\\begin{gathered} \\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|} \\\\[6pt] \\frac{P_2}{P_1} = k^2 \\end{gathered}',
     subFormulas: [
-      { label: 'Twierdzenie Talesa (proporcja ramion)', formula: '\\frac{|AD|}{|AB|} = \\frac{|DE|}{|BC|} = k' },
+      { label: 'Twierdzenie Talesa (proporcja ramion)', formula: '\\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|}' },
       { label: 'Stosunek pól figur podobnych', formula: '\\frac{P_2}{P_1} = k^2' }
     ],
     explanation: 'Gdy proste są równoległe ($DE \\parallel BC$), odpowiednie odcinki na ramionach są proporcjonalne, a pole rośnie z kwadratem skali $k^2$.',
     goldenRule: 'Jeśli skala podobieństwa figur wynosi $k$, to obwód rośnie $k$-krotnie, a pole aż $k^2$-krotnie!',
     ckeTrap: 'Dla skali $k = 3$ pole jest $9$ razy większe, a NIE $3$ razy większe!',
     keywords: ['Tales', 'proste równoległe', 'figury podobne', 'stosunek pól'],
-    cke_page: 'str. 18',
-    pageNumber: 18,
+    cke_page: 'str. 17',
+    pageNumber: 17,
     diagram: {
       type: 'GEOMETRY_2D',
       title: 'Twierdzenie Talesa i proporcja pól figur podobnych (k²)',
-      formulaBadge: '$\\frac{|AD|}{|AB|} = \\frac{|DE|}{|BC|} = k, \\quad \\frac{P_{ABC}}{P_{ADE}} = k^2$',
+      formulaBadge: '$\\begin{gathered} \\frac{|AD|}{|AB|} = \\frac{|AE|}{|AC|} = \\frac{|DE|}{|BC|} \\\\[6pt] \\frac{P_2}{P_1} = k^2 \\end{gathered}$',
       width: 480,
       height: 220,
       segments: [
-        { from: [40, 180], to: [220, 180], color: '#38BDF8', strokeWidth: 2.5 },
-        { from: [40, 180], to: [200, 40], color: '#FFB800', strokeWidth: 2.5 },
-        { from: [120, 110], to: [130, 180], color: '#10B981', strokeWidth: 2, label: 'DE' },
-        { from: [200, 40], to: [220, 180], color: '#F43F5E', strokeWidth: 2.5, label: 'BC' }
+        { from: [120, 35], to: [40, 185], color: '#FFB800', strokeWidth: 2.5 },
+        { from: [120, 35], to: [200, 185], color: '#38BDF8', strokeWidth: 2.5 },
+        { from: [40, 185], to: [200, 185], color: '#F43F5E', strokeWidth: 2.5, label: 'BC' },
+        { from: [76, 118], to: [164, 118], color: '#10B981', strokeWidth: 2.5, label: 'DE' }
       ],
       polygons: [
         {
-          points: '270,120 320,120 320,170 270,170',
+          points: '260,115 310,115 310,165 260,165',
           fill: 'rgba(16, 185, 129, 0.2)',
           stroke: '#10B981',
           strokeWidth: 2
         },
         {
-          points: '340,70 440,70 440,170 340,170',
+          points: '340,65 440,65 440,165 340,165',
           fill: 'rgba(255, 184, 0, 0.16)',
           stroke: '#FFB800',
           strokeWidth: 2
         }
       ],
       points: [
-        { x: 40, y: 180, label: 'A', color: '#FFDCA1', dot: 'filled', attach: 'sw' },
-        { x: 120, y: 110, label: 'D', color: '#FFB800', dot: 'filled', attach: 'nw' },
-        { x: 200, y: 40, label: 'B', color: '#FFB800', dot: 'filled', attach: 'ne' },
-        { x: 130, y: 180, label: 'E', color: '#38BDF8', dot: 'filled', attach: 's' },
-        { x: 220, y: 180, label: 'C', color: '#38BDF8', dot: 'filled', attach: 'se' }
+        { x: 120, y: 35, label: 'A', color: '#FFDCA1', dot: 'filled', attach: 'n' },
+        { x: 76, y: 118, label: 'D', color: '#FFB800', dot: 'filled', attach: 'w' },
+        { x: 40, y: 185, label: 'B', color: '#FFB800', dot: 'filled', attach: 'sw' },
+        { x: 164, y: 118, label: 'E', color: '#38BDF8', dot: 'filled', attach: 'e' },
+        { x: 200, y: 185, label: 'C', color: '#38BDF8', dot: 'filled', attach: 'se' }
       ],
       labels: [
-        { x: 130, y: 25, text: 'Tales: DE || BC', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
-        { x: 295, y: 145, text: 'P₁ = 1', color: '#10B981', fontSize: 13, fontWeight: '700' },
-        { x: 390, y: 120, text: 'P₂ = 4 = 2²', color: '#FFDCA1', fontSize: 14, fontWeight: '700' },
-        { x: 355, y: 195, text: 'Skala k = 2  ⟹  Stosunek pól k² = 4', color: '#FFB800', fontSize: 11, fontWeight: '700', badge: true }
+        { x: 120, y: 205, text: 'Tales: DE || BC', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 285, y: 140, text: 'P₁ = 1', color: '#10B981', fontSize: 13, fontWeight: '700' },
+        { x: 390, y: 115, text: 'P₂ = 4 = 2²', color: '#FFDCA1', fontSize: 14, fontWeight: '700' },
+        { x: 350, y: 195, text: 'Skala k = 2  ⟶  Stosunek pól k² = 4', color: '#FFB800', fontSize: 11, fontWeight: '700', badge: true }
       ],
-      caption: 'Gdy proste są równoległe (DE || BC), odpowiednie odcinki na ramionach są proporcjonalne. Jeśli skala podobieństwa figur wynosi k, to ich pola rosną aż k²-krotnie (dla k=2 pole rośnie 4-krotnie)!'
+      caption: 'Gdy proste są równoległe (DE || BC), odpowiednie odcinki na ramionach są proporcjonalne: |AD|/|AB| = |AE|/|AC| = |DE|/|BC|. Jeśli skala podobieństwa figur wynosi k, to ich pola rosną aż k²-krotnie (dla k=2 pole rośnie 4-krotnie)!'
     }
   },
   {
     id: 'f-geo-katy-okrag',
-    topicId: 'geometria',
-    topicName: 'Planimetria i Analityczna',
+    topicId: 'planimetria',
+    topicName: 'Planimetria',
     title: 'Kąty w okręgu: Środkowy 2α i wpisany α',
     formula: '\\beta = 2\\alpha, \\qquad \\alpha_{\\text{średnica}} = 90^\\circ',
     subFormulas: [
@@ -872,8 +873,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'Trójkąt wpisany w okrąg, którego jeden bok jest średnicą, jest ZAWSZE prostokątny ($90^\\circ$).',
     ckeTrap: 'Pamiętaj, że kąty muszą być oparte na TYM SAMYM łuku okręgu!',
     keywords: ['kąt środkowy', 'kąt wpisany', 'średnica okręgu', 'kąty w kole'],
-    cke_page: 'str. 17',
-    pageNumber: 17,
+    cke_page: 'str. 18',
+    pageNumber: 18,
     diagram: {
       type: 'GEOMETRY_2D',
       title: 'Kąty w okręgu: Środkowy 2α i wpisany α na tym samym łuku',
@@ -1127,7 +1128,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
         { x: 217, y: 60, text: 'MEDIANA = 5', color: '#10B981', fontSize: 11, fontWeight: '800', badge: true },
         { x: 390, y: 95, text: 'Średnia x̄ = 6', color: '#FFB800', fontSize: 12, fontWeight: '700', badge: true },
         { x: 240, y: 20, text: 'Złota zasada: ZANIM policzysz medianę, ZAWSZE posortuj liczby rosnąco!', color: '#FFDCA1', fontSize: 11, fontWeight: '700', badge: true },
-        { x: 240, y: 200, text: 'Zestaw: 2, 3, [5], 8, 12  (n = 5  ⟹  element środkowy)', color: '#F8FAFC', fontSize: 11 }
+        { x: 240, y: 200, text: 'Zestaw: 2, 3, [5], 8, 12  (n = 5  ⟶  element środkowy)', color: '#F8FAFC', fontSize: 11 }
       ],
       caption: 'Mediana to wartość środkowa w uporządkowanym rosnąco zestawie danych. Średnia arytmetyczna to suma podzielona przez liczbę elementów. Pamiętaj: mediana z nieposortowanych liczb to 0 punktów na maturze!'
     }

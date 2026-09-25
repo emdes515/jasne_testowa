@@ -15,7 +15,7 @@ def get_topic_21_visuals(l_idx):
         # L21.1: Wyznaczanie funkcji jednej zmiennej
         tab0 = make_geometry_diagram(
             title="Działka prostokątna ogrodzona z 3 stron – wyznaczanie funkcji celu",
-            badge=r"2x + y = 120 \implies y = 120 - 2x \implies P(x) = x(120 - 2x) = -2x^2 + 120x",
+            badge=r"2x + y = 120 \longrightarrow y = 120 - 2x \longrightarrow P(x) = x(120 - 2x) = -2x^2 + 120x",
             caption="Wyprowadzamy funkcję jednej zmiennej podstawiając wyznaczoną drugą niewiadomą (y) do wzoru na optymalizowaną wielkość (pole P).",
             polygons=[
                 {
@@ -44,7 +44,7 @@ def get_topic_21_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Wyprowadzanie wzoru funkcji optymalizacyjnej krok po kroku",
-            badge=r"2x + y = 120 \implies y = 120 - 2x \implies P(x) = x \cdot y = -2x^2 + 120x",
+            badge=r"2x + y = 120 \longrightarrow y = 120 - 2x \longrightarrow P(x) = x \cdot y = -2x^2 + 120x",
             caption="Wypisujesz zależność liniową między zmiennymi, wyznaczasz jedną z nich i wstawiasz do iloczynu.",
             steps=[
                 {'num': 1, 'title': 'Zapisz warunek na długość płotu', 'desc': r'Dwa boki $x$ oraz jeden bok $y$: $2x + y = 120$.', 'color': C_SKY},
@@ -73,7 +73,7 @@ def get_topic_21_visuals(l_idx):
         # L21.2: Dziedzina zadania optymalizacyjnego
         tab0 = make_plot_diagram(
             title="Wyznaczanie dziedziny zadania optymalizacyjnego",
-            badge=r"x > 0 \quad \text{oraz} \quad y > 0 \implies 120 - 2x > 0 \implies x < 60 \implies D = (0, 60)",
+            badge=r"x > 0 \quad \text{oraz} \quad y > 0 \longrightarrow 120 - 2x > 0 \longrightarrow x < 60 \longrightarrow D = (0, 60)",
             caption="W geometrii każdy wymiar musi być ściśle dodatni! Dziedzina to część wspólna warunków na wszystkie boki figury.",
             segments=[
                 {'from': [40, 200], 'to': [460, 200], 'color': C_SLATE, 'strokeWidth': 2},
@@ -88,18 +88,18 @@ def get_topic_21_visuals(l_idx):
             ],
             metrics=[
                 {'label': 'Warunek boku x', 'value': '$x > 0$', 'color': C_SKY},
-                {'label': 'Warunek boku y', 'value': '$120 - 2x > 0 \implies x < 60$', 'color': C_PRIMARY},
+                {'label': 'Warunek boku y', 'value': r'$120 - 2x > 0 \longrightarrow x < 60$', 'color': C_PRIMARY},
                 {'label': 'Dziedzina ostateczna', 'value': r'$D = (0, 60)$', 'color': C_SUCCESS}
             ]
         )
         tab2 = make_step_flow_diagram(
             title="Wyznaczanie dziedziny krok po kroku",
-            badge=r"\begin{cases} x > 0 \\ 120 - 2x > 0 \end{cases} \implies \begin{cases} x > 0 \\ x < 60 \end{cases} \implies x \in (0, 60)",
+            badge=r"\begin{cases} x > 0 \\ 120 - 2x > 0 \end{cases} \longrightarrow \begin{cases} x > 0 \\ x < 60 \end{cases} \longrightarrow x \in (0, 60)",
             caption="Na maturze CKE brak wyznaczenia dziedziny kosztuje utratę 1 punktu za całe zadanie optymalizacyjne.",
             steps=[
                 {'num': 1, 'title': 'Zapisz warunek dodatniości boku x', 'desc': r'Długość boku musi być liczbą dodatnią: $x > 0$.', 'color': C_SKY},
-                {'num': 2, 'title': 'Zapisz warunek dodatniości boku y', 'desc': r'$y > 0 \implies 120 - 2x > 0 \implies -2x > -120 \implies x < 60$.', 'color': C_PRIMARY},
-                {'num': 3, 'title': 'Wyznacz część wspólną przedziałów', 'desc': r'$x > 0$ oraz $x < 60 \implies D = (0, 60)$. Przedział jest otwarty.', 'color': C_SUCCESS}
+                {'num': 2, 'title': 'Zapisz warunek dodatniości boku y', 'desc': r'$y > 0 \longrightarrow 120 - 2x > 0 \longrightarrow -2x > -120 \longrightarrow x < 60$.', 'color': C_PRIMARY},
+                {'num': 3, 'title': 'Wyznacz część wspólną przedziałów', 'desc': r'$x > 0$ oraz $x < 60 \longrightarrow D = (0, 60)$. Przedział jest otwarty.', 'color': C_SUCCESS}
             ],
             metrics=[
                 {'label': 'Ograniczenie dolne', 'value': '$x > 0$', 'color': C_SKY},
@@ -123,7 +123,7 @@ def get_topic_21_visuals(l_idx):
         # L21.3: Wyznaczanie wierzchołka paraboli i wartości optymalnej
         tab0 = make_plot_diagram(
             title="Wierzchołek paraboli jako wartość maksymalna funkcji celu",
-            badge=r"P(x) = -2x^2 + 120x \implies x_w = -\frac{b}{2a} = -\frac{120}{2 \cdot (-2)} = 30 \in D \implies P_{\max} = P(30) = 1800",
+            badge=r"P(x) = -2x^2 + 120x \longrightarrow x_w = -\frac{b}{2a} = -\frac{120}{2 \cdot (-2)} = 30 \in D \longrightarrow P_{\max} = P(30) = 1800",
             caption="Współczynnik a = -2 < 0, ramiona paraboli skierowane są w dół, więc funkcja osiąga wartość największą dokładnie w wierzchołku.",
             curves=[
                 {
@@ -153,7 +153,7 @@ def get_topic_21_visuals(l_idx):
         )
         tab2 = make_step_flow_diagram(
             title="Pełne 4-punktowe rozwiązanie zadania optymalizacyjnego CKE",
-            badge=r"P(x) = -2x^2 + 120x, \quad D = (0, 60) \implies x = 30\text{ m}, \quad y = 60\text{ m}, \quad P = 1800\text{ m}^2",
+            badge=r"P(x) = -2x^2 + 120x, \quad D = (0, 60) \longrightarrow x = 30\text{ m}, \quad y = 60\text{ m}, \quad P = 1800\text{ m}^2",
             caption="Kompletny 4-etapowy schemat odpowiedzi zapewniający 100% punktów w kluczu CKE.",
             steps=[
                 {'num': 1, 'title': 'Krok 1: Wzór funkcji celu i dziedzina (1 pkt)', 'desc': r'$P(x) = -2x^2 + 120x$ dla $x \in (0, 60)$.', 'color': C_SKY},

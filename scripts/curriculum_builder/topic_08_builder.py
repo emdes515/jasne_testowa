@@ -1,12 +1,13 @@
 """
 topic_08_builder.py - Dział 1.8: Nierówności kwadratowe (4 lekcje | Tier S+)
+Żelazna matryca 5-Task: T1 Baza, T2 Pułapka CKE, T3 CKE 1:1, T4 Numeryczne, T5 Otwarte/Dowód z kryteriami.
 """
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from lesson_visuals_v2.topic_08 import get_topic_08_visuals
-from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_lesson
+from .helpers import make_sc_task, make_tf_task, make_numeric_task, make_open_task, make_open_proof, make_lesson
 
 def build_topic_08():
     topic_id = 'dzial-8'
@@ -15,285 +16,299 @@ def build_topic_08():
     lessons = []
 
     # ----------------------------------------------------
-    # Lekcja 8.1: Wyróżnik Delta i miejsca zerowe (L1.8.1)
+    # Lekcja 8.1: Wyróżnik Delta i miejsca zerowe trójmianu (L1.8.1)
     # ----------------------------------------------------
     v1 = get_topic_08_visuals(0)
     l1_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-8-1-1',
-            source='Rozgrzewka • Obliczanie Delty',
-            question='Wyróżnik $\\Delta$ trójmianu kwadratowego $y = 2x^2 - 5x + 2$ jest równy',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Wyróżnik $\\Delta$ trójmianu kwadratowego $y = x^2 - 5x + 6$ wynosi',
             options_data=[
-                ('A', '$9$'),
-                ('B', '$-9$'),
-                ('C', '$41$'),
-                ('D', '$1$')
+                ('A', '$1$'),
+                ('B', '$-1$'),
+                ('C', '$49$'),
+                ('D', '$0$')
             ],
             correct_id='A',
-            explanation='$\\Delta = b^2 - 4ac = (-5)^2 - 4 \\cdot 2 \\cdot 2 = 25 - 16 = 9$. Ponieważ $\\Delta > 0$, funkcja ma dwa miejsca zerowe.',
-            cke_trap='Pamiętaj: $(-5)^2 = +25$, a nie $-25$. Kwadrat liczby rzeczywistej jest zawsze dodatni.'
+            explanation='Wzór na deltę to $\\Delta = b^2 - 4ac$. Mamy $a = 1$, $b = -5$, $c = 6$:\n$$\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 6 = 25 - 24 = 1$$',
+            cke_trap='Pamiętaj, że $(-5)^2 = +25$, a nie $-25$. Kwadrat dowolnej liczby jest nieujemny.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
             task_id='task-8-1-2',
             source='Trening JASNE • Wzorzec CKE',
-            question='Miejscami zerowymi funkcji kwadratowej $f(x) = x^2 - 2x - 8$ są liczby',
+            question='Dla równania $2x^2 - 4x + 1 = 0$ wyraz $b^2$ we wzorze na wyróżnik wynosi',
             options_data=[
-                ('A', '$x_1 = -2$ oraz $x_2 = 4$'),
-                ('B', '$x_1 = 2$ oraz $x_2 = -4$'),
-                ('C', '$x_1 = -2$ oraz $x_2 = -4$'),
-                ('D', '$x_1 = 1$ oraz $x_2 = 8$')
+                ('A', '$-16$'),
+                ('B', '$16$'),
+                ('C', '$-8$'),
+                ('D', '$8$')
             ],
-            correct_id='A',
-            explanation='$\\Delta = (-2)^2 - 4 \\cdot 1 \\cdot (-8) = 4 + 32 = 36$, $\\sqrt{\\Delta} = 6$. Wtedy $x_1 = \\frac{2 - 6}{2} = -2$, $x_2 = \\frac{2 + 6}{2} = 4$.',
-            cke_trap='We wzorze na pierwiastki jest $-b$: dla $b = -2$ mamy $-(-2) = +2$.'
+            correct_id='B',
+            explanation='Podnosimy do kwadratu cały współczynnik $b = -4$:\n$$b^2 = (-4)^2 = 16$$',
+            cke_trap='Wpisanie do kalkulatora bez nawiasu $-4^2$ daje $-16$. Zawsze pamiętaj o nawiasie: $(-4)^2 = +16$.'
         ),
+        # Zadanie 3: Autentyk CKE 1:1
         make_sc_task(
             task_id='task-8-1-3',
-            source='Pułapka CKE • Trzy minusy w iloczynie -4ac',
-            question='Dla trójmianu kwadratowego $f(x) = -x^2 - 6x - 9$ wartość $\\Delta$ wynosi',
+            source='Matura sierpień 2023 • Zad. 13',
+            question='Funkcja kwadratowa $f$ jest określona wzorem $f(x) = (x - 13)^2 - 256$. Jednym z miejsc zerowych tej funkcji jest liczba $(-3)$.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDrugim miejscem zerowym funkcji $f$ jest liczba',
             options_data=[
-                ('A', '$0$'),
-                ('B', '$72$'),
-                ('C', '$-72$'),
-                ('D', '$36$')
+                ('A', '$-29$'),
+                ('B', '$-23$'),
+                ('C', '$23$'),
+                ('D', '$29$')
             ],
-            correct_id='A',
-            explanation='$\\Delta = (-6)^2 - 4 \\cdot (-1) \\cdot (-9) = 36 - 36 = 0$. Trzy minusy dają łączny minus! Funkcja ma jedno miejsce zerowe $x_0 = -3$.',
-            cke_trap='Iloczyn $-4 \\cdot (-1) \\cdot (-9)$ zawiera trzy minusy, więc daje $-36$, a nie $+36$.'
+            correct_id='D',
+            explanation='Przyrównujemy funkcję do zera:\n$$(x - 13)^2 - 256 = 0 \\longrightarrow (x - 13)^2 = 256$$\n$$x - 13 = 16 \\quad \\text{lub} \\quad x - 13 = -16$$\n$$x = 29 \\quad \\text{lub} \\quad x = -3$$\nDrugim miejscem zerowym jest liczba $29$.',
+            cke_trap='Można również skorzystać z osi symetrii paraboli: $p = 13$, a odległość od $p$ do $-3$ wynosi $16$, więc drugie miejsce to $13 + 16 = 29$.'
         ),
-        make_tf_task(
-            task_id='task-8-1-4',
-            source='Trening CKE • Znak Delty a liczba pierwiastków',
-            question='Oceń prawdziwość zdania: Jeśli $\\Delta < 0$, to funkcja kwadratowa nie posiada żadnych rzeczywistych miejsc zerowych.',
-            correct_tf='PRAWDA',
-            explanation='Ujemny wyróżnik oznacza brak pierwiastka rzeczywistego z $\\Delta$, a geometrycznie oznacza, że parabola nie przecina osi $OX$.',
-            cke_trap='$\\Delta < 0$ oznacza brak miejsc zerowych, ale nierówność kwadratowa MOŻE mieć rozwiązania (np. cały zbiór $\\mathbb{R}$).'
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
+            task_id='task-8-1-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Oblicz mniejsze miejsce zerowe funkcji kwadratowej $f(x) = x^2 - 2x - 8$. Wpisz wynik w pole poniżej.',
+            correct_val='-2',
+            explanation='$\\Delta = (-2)^2 - 4 \\cdot 1 \\cdot (-8) = 4 + 32 = 36$, $\\sqrt{\\Delta} = 6$.\n$$x_1 = \\frac{2 - 6}{2} = \\frac{-4}{2} = -2$$\n$$x_2 = \\frac{2 + 6}{2} = 4$$\nMniejsze miejsce zerowe to $-2$.',
+            cke_trap='Uwaga na minusy we wzorze: $-b = -(-2) = +2$.'
+        ),
+        # Zadanie 5: Zadanie otwarte z kryteriami
+        make_open_task(
             task_id='task-8-1-5',
-            source='Utrwalenie • Odległość między pierwiastkami',
-            question='Oblicz odległość między miejscami zerowymi funkcji $f(x) = x^2 - 10x + 9$.',
-            correct_val=8,
-            explanation='$\\Delta = 100 - 36 = 64$, $\\sqrt{\\Delta} = 8$. Pierwiastki to $x_1 = 1$, $x_2 = 9$. Odległość między nimi to $9 - 1 = 8$.',
-            cke_trap='Odległość to różnica większego pierwiastka i mniejszego: $x_2 - x_1 = 8$.'
+            source='Informator CKE • Zad. 21',
+            question='Wyznacz miejsca zerowe funkcji kwadratowej $f(x) = 2x^2 - 7x + 3$. Zapisz pełne obliczenia z wyróżnikiem $\\Delta$.',
+            points=2,
+            scoring_key='1 pkt – poprawne obliczenie wyróżnika: $\\Delta = (-7)^2 - 4 \\cdot 2 \\cdot 3 = 49 - 24 = 25$, $\\sqrt{\\Delta} = 5$.\\n2 pkt – poprawne obliczenie obu miejsc zerowych: $x_1 = \\frac{7 - 5}{4} = \\frac{1}{2}$, $x_2 = \\frac{7 + 5}{4} = 3$.',
+            explanation='1) Obliczamy wyróżnik $\\Delta$:\n$$\\Delta = b^2 - 4ac = (-7)^2 - 4 \\cdot 2 \\cdot 3 = 49 - 24 = 25$$\n$$\\sqrt{\\Delta} = \\sqrt{25} = 5$$\n2) Obliczamy miejsca zerowe ze wzorów:\n$$x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a} = \\frac{-(-7) - 5}{2 \\cdot 2} = \\frac{7 - 5}{4} = \\frac{2}{4} = \\frac{1}{2}$$\n$$x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a} = \\frac{-(-7) + 5}{2 \\cdot 2} = \\frac{7 + 5}{4} = \\frac{12}{4} = 3$$\nOdpowiedź: Miejsca zerowe to $x_1 = \\frac{1}{2}$ oraz $x_2 = 3$.',
+            cke_trap='Mianownik to $2a = 2 \\cdot 2 = 4$, a nie $2$. Zapominanie o pomnożeniu przez współczynnik $a$ to częsty błąd.'
         )
     ]
     l1 = make_lesson(
         lesson_id='lesson-8-1',
         topic_id=topic_id,
         title='Wyróżnik Delta i miejsca zerowe trójmianu kwadratowego',
-        concept_essence='Wyróżnik $\\Delta = b^2 - 4ac$ to radar funkcji kwadratowej. Informuje, ile razy parabola dotyka osi poziomej $OX$: 1) $\\Delta > 0$ — dwa miejsca zerowe: $x_1, x_2$. 2) $\\Delta = 0$ — dokładnie jedno miejsce zerowe: $x_0 = \\frac{-b}{2a}$ (parabola jest styczna do osi w wierzchołku). 3) $\\Delta < 0$ — zero miejsc zerowych (parabola unosi się w całości nad osią lub wisi pod nią).',
-        matura_context='Podstawa do każdego zadania z funkcji i nierówności kwadratowej za 1–2 punkty.',
+        concept_essence='Wyróżnik trójmianu kwadratowego $\\Delta = b^2 - 4ac$ to detektor liczby miejsc zerowych: 1) $\\Delta > 0$: dwa różne miejsca zerowe $x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}$, $x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}$. 2) $\\Delta = 0$: jedno podwójne miejsce zerowe $x_0 = -\\frac{b}{2a}$. 3) $\\Delta < 0$: brak miejsc zerowych (parabola nie przecina osi $OX$). Pamiętaj o żelaznej zasadzie: $(-b)^2$ to ZAWSZE liczba dodatnia!',
+        matura_context='Podstawa algebry licealnej — występuje w zadaniach zamkniętych za 1 pkt oraz jako krok 1 każdego zadania otwartego z nierówności kwadratowych.',
         core_formulas=[
             {
                 'title': 'Wyróżnik trójmianu kwadratowego (Delta)',
                 'latex': '\\Delta = b^2 - 4ac',
-                'description': 'Wartość określająca liczbę pierwiastków trójmianu.',
+                'description': 'Liczba określająca liczbę pierwiastków trójmianu.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 7',
-                'example': 'x^2 - 4x + 3 \\longrightarrow \\Delta = 16 - 12 = 4',
-                'mnemonic': 'b kwadrat minus 4ac.',
-                'matura_tip': '$b^2$ jest ZAWSZE dodatnie lub zerem (nawet dla ujemnego $b$).'
+                'cke_page': 'str. 8',
+                'example': 'x^2 - 4x + 3 \\longrightarrow \\Delta = (-4)^2 - 4(1)(3) = 16 - 12 = 4',
+                'mnemonic': 'b do kwadratu odjąć cztery ac.',
+                'matura_tip': 'Gdy b jest ujemne, b^2 jest dodatnie.'
             },
             {
-                'title': 'Wzory na pierwiastki trójmianu',
+                'title': 'Miejsca zerowe dla Delty > 0',
                 'latex': 'x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}, \\quad x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}',
-                'description': 'Miejsca zerowe dla delty dodatniej.',
+                'description': 'Dwa symetryczne punkty przecięcia z osią OX.',
                 'in_cke_sheet': True,
-                'cke_page': 'str. 7',
-                'example': 'x_1 = \\frac{4 - 2}{2} = 1, \\quad x_2 = \\frac{4 + 2}{2} = 3',
-                'mnemonic': 'Minus b plus/minus pierwiastek z delty przez 2a.',
-                'matura_tip': 'Pamiętaj o podwojonym a w mianowniku (2a).'
+                'cke_page': 'str. 8',
+                'example': 'x_{1,2} = \\frac{4 \\pm 2}{2} \\longrightarrow x_1 = 1, x_2 = 3',
+                'mnemonic': 'Minus b plus minus pierwiastek przez dwa a.',
+                'matura_tip': 'Nie zapomnij o 2a w mianowniku, gdy a różne od 1.'
             }
         ],
         worked_example={
-            'problem': 'Wyznacz miejsca zerowe funkcji $f(x) = 2x^2 - 4x - 6$.',
+            'problem': 'Oblicz miejsca zerowe trójmianu $y = 3x^2 - 5x - 2$.',
             'steps': [
-                {'num': 1, 'label': 'Wypisanie współczynników', 'text': '$a = 2, b = -4, c = -6$.'},
-                {'num': 2, 'label': 'Obliczenie delty', 'text': '$\\Delta = (-4)^2 - 4 \\cdot 2 \\cdot (-6) = 16 + 48 = 64$, $\\sqrt{\\Delta} = 8$.'},
-                {'num': 3, 'label': 'Obliczenie pierwiastków i wynik CKE', 'text': '$x_1 = \\frac{4 - 8}{4} = -1$, $x_2 = \\frac{4 + 8}{4} = 3$. Miejsca zerowe to $-1$ oraz $3$.'}
+                {'num': 1, 'label': 'Wypisanie współczynników', 'text': '$a = 3$, $b = -5$, $c = -2$.'},
+                {'num': 2, 'label': 'Obliczenie delty', 'text': '$\\Delta = (-5)^2 - 4 \\cdot 3 \\cdot (-2) = 25 + 24 = 49$, $\\sqrt{\\Delta} = 7$.'},
+                {'num': 3, 'label': 'Zastosowanie wzorów i wynik CKE', 'text': '$x_1 = \\frac{5 - 7}{6} = -\\frac{1}{3}$, $x_2 = \\frac{5 + 7}{6} = 2$.'}
             ],
-            'result': 'x_1 = -1, \\quad x_2 = 3'
+            'result': 'x_1 = -\\frac{1}{3}, \\quad x_2 = 2'
         },
-        exam_trap='Typowy błąd: Błędny znak przy potęgowaniu liczby ujemnej: pisanie $-4^2 = -16$ w delcie.\n\nPoprawnie: Zawsze pisz nawias: $(-4)^2 = +16$. Kwadrat dowolnej liczby rzeczywistej nigdy nie jest ujemny.',
+        exam_trap='Typowy błąd: Błędne znaki przy $b = -5$: napisanie $-5$ zamiast $-(-5) = +5$ we wzorze na $x_{1,2}$.\n\nPoprawnie: Wzór to $-b$, więc liczba ujemna staje się dodatnia: $-(-5) = 5$.',
         visuals=v1,
         tasks=l1_tasks
     )
     lessons.append(l1)
 
     # ----------------------------------------------------
-    # Lekcja 8.2: Szkicowanie paraboli i odczyt przedziałów (L1.8.2)
+    # Lekcja 8.2: Szkicowanie paraboli i odczytywanie przedziałów (L1.8.2)
     # ----------------------------------------------------
     v2 = get_topic_08_visuals(1)
     l2_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
-            task_id='task-8-1-2-1',
-            source='Rozgrzewka • Kierunek ramion paraboli',
-            question='Dla nierówności $-2x^2 + 5x - 3 > 0$ ramiona paraboli są skierowane',
+            task_id='task-8-2-1',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Parabola funkcji $f(x) = x^2 - 6x + 5$ ma miejsca zerowe $1$ oraz $5$, a jej ramiona są skierowane w górę. Zbiorem rozwiązań nierówności $x^2 - 6x + 5 \\le 0$ jest',
             options_data=[
-                ('A', 'W dół, ponieważ współczynnik $a = -2$ jest ujemny'),
-                ('B', 'W górę, ponieważ znak nierówności to $>$'),
-                ('C', 'W górę, ponieważ wyraz $5x$ jest dodatni'),
-                ('D', 'W prawo')
+                ('A', '$[1, 5]$'),
+                ('B', '$(1, 5)$'),
+                ('C', '$(-\\infty, 1] \\cup [5, +\\infty)$'),
+                ('D', '$(-\\infty, 1) \\cup (5, +\\infty)$')
             ],
             correct_id='A',
-            explanation='O kierunku ramion decyduje WYŁĄCZNIE znak współczynnika $a$ przy $x^2$. Skoro $a = -2 < 0$, ramiona idą w dół.',
-            cke_trap='Znak nierówności ($>$) NIE decyduje o ramionach paraboli!'
+            explanation='Wartości $\\le 0$ (pod osią $OX$ i na osi) leżą pomiędzy miejscami zerowymi: $x \\in [1, 5]$. Nierówność nieostra ($\\le$) oznacza nawiasy domknięte.',
+            cke_trap='Nierówność $\\le$ oznacza przedział domknięty (z pierwiastkami włącznie).'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
-            task_id='task-8-1-2-2',
-            source='Matura Maj 2024 • Zad. zbliżone',
-            question='Zbiorem wszystkich rozwiązań nierówności $x^2 - 5x + 6 \\le 0$ jest przedział',
+            task_id='task-8-2-2',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Rozwiązaniem nierówności $(x - 2)(x + 4) < 0$ jest przedział',
             options_data=[
-                ('A', '$[2, 3]$'),
-                ('B', '$(-\\infty, 2] \\cup [3, +\\infty)$'),
-                ('C', '$(-3, -2)$'),
-                ('D', '$[-3, -2]$')
+                ('A', '$[-4, 2]$'),
+                ('B', '$(-4, 2)$'),
+                ('C', '$(-\\infty, -4) \\cup (2, +\\infty)$'),
+                ('D', '$(-\\infty, -2) \\cup (4, +\\infty)$')
+            ],
+            correct_id='B',
+            explanation='Miejsca zerowe to $-4$ oraz $2$. Ramiona paraboli w górę ($a = 1 > 0$). Szukamy wartości ujemnych ($< 0$), czyli wnętrza między pierwiastkami. Nierówność ostra oznacza nawiasy okrągłe: $(-4, 2)$.',
+            cke_trap='Nie myl znaków pierwiastków: $(x - 2) = 0 \\implies x = 2$, a $(x + 4) = 0 \\implies x = -4$.'
+        ),
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-8-2-3',
+            source='Informator CKE • Zad. 22',
+            question='Zbiorem rozwiązań nierówności $(x - 1)(x + 3) > 0$ jest',
+            options_data=[
+                ('A', '$(-\\infty, -3) \\cup (1, +\\infty)$'),
+                ('B', '$(-3, 1)$'),
+                ('C', '$(-\\infty, -1) \\cup (3, +\\infty)$'),
+                ('D', '$[-3, 1]$')
             ],
             correct_id='A',
-            explanation='Miejsca zerowe to $2$ i $3$. Współczynnik $a = 1 > 0$ (ramiona w górę). Parabola schodzi pod oś między pierwiastkami. Znak $\\le$ oznacza przedział domknięty: $[2, 3]$.',
-            cke_trap='Znak $\\le$ daje nawiasy domknięte $[2, 3]$, a nie otwarte $(2, 3)$.'
+            explanation='Miejsca zerowe to $-3$ oraz $1$. Współczynnik $a = 1 > 0$ (ramiona w górę). Wartości dodatnie ($> 0$, nad osią) znajdują się na zewnątrz pierwiastków: $(-\\infty, -3) \\cup (1, +\\infty)$.',
+            cke_trap='Dla znaku $>$ przy ramionach w górę rozwiązaniem są ZAWSZE dwa przedziały zewnętrzne połączone sumą.'
         ),
-        make_sc_task(
-            task_id='task-8-1-2-3',
-            source='Pułapka CKE • Ramiona w dół i wartości dodatnie',
-            question='Zbiorem rozwiązań nierówności $-x^2 + 4x - 3 > 0$ jest',
-            options_data=[
-                ('A', '$(1, 3)$'),
-                ('B', '$(-\\infty, 1) \\cup (3, +\\infty)$'),
-                ('C', '$[1, 3]$'),
-                ('D', 'Zbiór pusty')
-            ],
-            correct_id='A',
-            explanation='Miejsca zerowe to $1$ i $3$. Ramiona w dół ($a = -1$). Wykres znajduje się NAD osią $OX$ ($>0$) na brzuszku między 1 a 3: $(1, 3)$.',
-            cke_trap='Dla ramion w dół obszar NAD osią to wnętrze między pierwiastkami.'
+        # Zadanie 4: Wpisz wynik / Numeryczne
+        make_numeric_task(
+            task_id='task-8-2-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Ile liczb całkowitych należy do zbioru rozwiązań nierówności $(x + 2)(x - 4) \\le 0$? Wpisz wynik w pole poniżej.',
+            correct_val='7',
+            explanation='Zbiorem rozwiązań jest przedział $[-2, 4]$.\nLiczby całkowite w tym przedziale to: $-2, -1, 0, 1, 2, 3, 4$.\nJest ich łącznie $7$.',
+            cke_trap='Pamiętaj o uwzględnieniu zera oraz obu krańców przedziału domkniętego.'
         ),
-        make_tf_task(
-            task_id='task-8-1-2-4',
-            source='Trening CKE • Ostre nierówności',
-            question='Oceń prawdziwość zdania: W nierówności kwadratowej z ostrym znakiem ($>$ lub $<$) zbiór rozwiązań nigdy nie zawiera miejsc zerowych.',
-            correct_tf='PRAWDA',
-            explanation='W miejscach zerowych wartość wynosi dokładnie 0. Ponieważ znak jest ostry ($>0$ lub $<0$), punkty te są wykluczone (nawiasy otwarte).',
-            cke_trap='Nawiasy domknięte stosujemy wyłącznie, gdy jest kreska równości ($\\le$ lub $\\ge$).'
-        ),
+        # Zadanie 5: Zadanie otwarte z kryteriami
         make_open_task(
-            task_id='task-8-1-2-5',
-            source='Matura czerwiec 2023 • Zad. 8',
-            question='Rozwiąż nierówność\n$$x(2x - 1) < 2x$$\nZapisz obliczenia.',
+            task_id='task-8-2-5',
+            source='Informator CKE • Zad. 23',
+            question='Rozwiąż nierówność $x^2 - 2x - 8 \\ge 0$. Zapisz obliczenia.',
             points=2,
-            scoring_key=[
-                '1 pkt: Zapisanie nierówności w postaci uporządkowanej 2x^2 - 3x < 0 i wyznaczenie miejsc zerowych trójmianu: x1 = 0, x2 = 3/2.',
-                '2 pkt: Poprawny szkic paraboli z ramionami skierowanymi w górę i podanie zbioru rozwiązań w postaci przedziału otwartego: (0, 3/2).'
-            ],
-            explanation='Krok 1: Przekształcamy nierówność do postaci uporządkowanej:\n$$x(2x - 1) < 2x \\implies 2x^2 - x < 2x \\implies 2x^2 - 3x < 0.$$\nKrok 2: Wyznaczamy miejsca zerowe, wyłączając $x$ przed nawias:\n$$x(2x - 3) = 0 \\implies x_1 = 0 \\quad \\text{lub} \\quad x_2 = \\frac{3}{2}.$$\nKrok 3: Szkicujemy parabolę o ramionach skierowanych w górę ($a = 2 > 0$). Szukamy wartości mniejszych od zera ($<0$), czyli leżących pod osią $OX$.\nZbiorem rozwiązań jest przedział otwarty: $x \\in (0, \\frac{3}{2})$.',
-            cke_trap='Nigdy nie dziel nierówności przez $x$! Dzielenie przez niewiadomą bez znajomości jej znaku zmienia lub gubi rozwiązania. Zawsze przenoś wszystko na jedną stronę.'
+            scoring_key='1 pkt – obliczenie wyróżnika $\\Delta = 36$ i miejsc zerowych: $x_1 = -2$, $x_2 = 4$.\\n2 pkt – poprawna interpretacja geometryczna (parabola ramionami w górę) i zapisanie rozwiązania: $x \\in (-\\infty, -2] \\cup [4, +\\infty)$.',
+            explanation='1) Wyznaczamy miejsca zerowe trójmianu $x^2 - 2x - 8 = 0$:\n$$\\Delta = (-2)^2 - 4 \\cdot 1 \\cdot (-8) = 4 + 32 = 36$$\n$$\\sqrt{\\Delta} = 6$$\n$$x_1 = \\frac{2 - 6}{2} = -2, \\quad x_2 = \\frac{2 + 6}{2} = 4$$\n2) Ponieważ $a = 1 > 0$, parabola ma ramiona skierowane w górę.\n3) Szukamy wartości $\\ge 0$ (nad osią $OX$ i na osi). Wykres leży nad osią na zewnątrz pierwiastków.\nOdpowiedź: $x \\in (-\\infty, -2] \\cup [4, +\\infty)$.',
+            cke_trap='Nierówność $\\ge$ wymaga nawiasów domkniętych przy liczbach $-2$ oraz $4$.'
         )
     ]
     l2 = make_lesson(
         lesson_id='lesson-8-2',
         topic_id=topic_id,
         title='Szkicowanie paraboli i odczytywanie przedziałów rozwiązań',
-        concept_essence='Rozwiązanie nierówności kwadratowej wymaga dyscypliny w 3 krokach: 1) Wyznaczasz miejsca zerowe ($x_1, x_2$). 2) Rysujesz szkic paraboli: jeśli $a > 0$, ramiona idą w górę (uśmiech); jeśli $a < 0$, ramiona idą w dół (smutek). 3) Odczytujesz przedział: gdy pytają o $> 0$, patrzysz na łuki nad osią; gdy pytają o $< 0$, patrzysz pod oś. Nigdy nie zgaduj przedziału bez 2-sekundowego szkicu na osi!',
-        matura_context='Żelazny pewniak matury podstawowej — zadanie otwarte za 2 punkty lub zadanie testowe za 1 punkt.',
+        concept_essence='Szkic paraboli to niezawodna maszyna do odczytywania nierówności kwadratowych: 1) Wyznaczasz miejsca zerowe $x_1, x_2$. 2) Patrzysz na znak współczynnika $a$: jeśli $a > 0$, ramiona idą w górę (uśmiech); jeśli $a < 0$, ramiona idą w dół (smutek). 3) Znak $>$ lub $\\ge$ oznacza wartości NAD osią $OX$. Znak $<$ lub $\\le$ oznacza wartości POD osią $OX$. 4) Dla $\\le, \\ge$ nawiasy są domknięte; dla $<, >$ nawiasy są okrągłe.',
+        matura_context='Zadanie otwarte za 2 punkty występujące na 100% matur CKE w Formule 2015 i Formule 2023.',
         core_formulas=[
             {
-                'title': 'Nierówność z ramionami w górę (a > 0)',
-                'latex': 'a > 0 \\longrightarrow \\begin{cases} f(x) < 0 \\longrightarrow x \\in (x_1, x_2) \\\\ f(x) > 0 \\longrightarrow x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
-                'description': 'Wartości ujemne są wewnątrz, dodatnie na zewnątrz.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 8',
-                'example': 'x^2 - 4 \\le 0 \\longrightarrow x \\in [-2, 2]',
-                'mnemonic': 'Uśmiechnięta parabola nurkuje pod oś w środku.',
-                'matura_tip': 'Zawsze zaznacz kropki na osi przed podaniem przedziału.'
+                'title': 'Kierunek ramion paraboli',
+                'latex': 'a > 0 \\longrightarrow \\bigcup \\quad (\\text{w górę}), \\quad a < 0 \\longrightarrow \\bigcap \\quad (\\text{w dół})',
+                'description': 'Znak liczby przy x^2 decyduje o kształcie paraboli.',
+                'in_cke_sheet': False,
+                'cke_page': '-',
+                'example': '-2x^2 + 3x \\longrightarrow a = -2 < 0 \\longrightarrow \\text{ramiona w dół}',
+                'mnemonic': 'Dodatni to uśmiech, ujemny to smutek.',
+                'matura_tip': 'Zawsze narysuj szybki szkic osi i paraboli w brudnopisie.'
             },
             {
-                'title': 'Nierówność z ramionami w dół (a < 0)',
-                'latex': 'a < 0 \\longrightarrow \\begin{cases} f(x) > 0 \\longrightarrow x \\in (x_1, x_2) \\\\ f(x) < 0 \\longrightarrow x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
-                'description': 'Wartości dodatnie są wewnątrz, ujemne na zewnątrz.',
-                'in_cke_sheet': True,
-                'cke_page': 'str. 8',
-                'example': '-x^2 + 4 > 0 \\longrightarrow x \\in (-2, 2)',
-                'mnemonic': 'Smutna parabola unosi się nad oś tylko na czubku.',
-                'matura_tip': 'Możesz też pomnożyć przez -1 i zmienić znak nierówności.'
+                'title': 'Odczyt przedziału dla a > 0',
+                'latex': 'f(x) \\le 0 \\longrightarrow x \\in [x_1, x_2], \\quad f(x) \\ge 0 \\longrightarrow x \\in (-\\infty, x_1] \\cup [x_2, +\\infty)',
+                'description': 'Mniejszy od zera to wnętrze, większy to skrzydła zewnętrzne.',
+                'in_cke_sheet': False,
+                'cke_page': '-',
+                'example': 'x^2 - 9 \\le 0 \\longrightarrow x \\in [-3, 3]',
+                'mnemonic': 'Mniejsze to brzuszek pod osią, większe to ramiona nad osią.',
+                'matura_tip': 'Uważaj na nawiasy przy nieskończoności — zawsze okrągłe!'
             }
         ],
         worked_example={
-            'problem': 'Rozwiąż nierówność $2x^2 - 8x \\le 0$.',
+            'problem': 'Rozwiąż nierówność $-x^2 + 5x - 6 \\ge 0$.',
             'steps': [
-                {'num': 1, 'label': 'Miejsca zerowe przez wyłączenie 2x', 'text': '$2x(x - 4) = 0 \\implies x_1 = 0, x_2 = 4$.'},
-                {'num': 2, 'label': 'Kierunek ramion paraboli', 'text': 'Współczynnik $a = 2 > 0$, więc ramiona idą w górę.'},
-                {'num': 3, 'label': 'Odczyt przedziału i wynik CKE', 'text': 'Szukamy wartości $\\le 0$ (pod osią wraz z punktami zerowymi): $x \\in [0, 4]$.'}
+                {'num': 1, 'label': 'Miejsca zerowe', 'text': '$\\Delta = 25 - 24 = 1$. $x_1 = \\frac{-5 - 1}{-2} = 3$, $x_2 = \\frac{-5 + 1}{-2} = 2$.'},
+                {'num': 2, 'label': 'Kierunek ramion', 'text': 'Współczynnik $a = -1 < 0$, więc ramiona paraboli są skierowane w dół.'},
+                {'num': 3, 'label': 'Odczyt przedziału i wynik CKE', 'text': 'Szukamy wartości $\\ge 0$ (nad osią). Dla ramion w dół wykres jest nad osią pomiędzy pierwiastkami: $x \\in [2, 3]$.'}
             ],
-            'result': 'x \\in [0, 4]'
+            'result': 'x \\in [2, 3]'
         },
-        exam_trap='Typowy błąd: Zgadywanie przedziału bez szkicu i pomylenie wnętrza ze skrzydłami zewnętrznymi.\n\nPoprawnie: Zawsze narysuj poziomą kreskę osi $OX$ i łuk paraboli — to zajmuje 2 sekundy i eliminuje 100% pomyłek.',
+        exam_trap='Typowy błąd: Odruchowe zapisywanie sumy przedziałów $(-\\infty, 2] \\cup [3, +\\infty)$ dla znaku $\\ge 0$ bez sprawdzenia znaku $a$.\n\nPoprawnie: Gdy $a < 0$, ramiona idą w dół, więc wartości dodatnie są WEWNĄTRZ między pierwiastkami!',
         visuals=v2,
         tasks=l2_tasks
     )
     lessons.append(l2)
 
     # ----------------------------------------------------
-    # Lekcja 8.3: Nierówności niepełne (bez delty) (L1.8.3)
+    # Lekcja 8.3: Nierówności niepełne (L1.8.3)
     # ----------------------------------------------------
     v3 = get_topic_08_visuals(2)
     l3_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
-            task_id='task-8-1-3-1',
-            source='Rozgrzewka • Brak wyrazu wolnego',
-            question='Zbiorem rozwiązań nierówności $x^2 - 4x > 0$ jest',
+            task_id='task-8-3-1',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Miejscami zerowymi trójmianu w nierówności $x^2 - 4x \\le 0$ są liczby',
             options_data=[
-                ('A', '$(-\\infty, 0) \\cup (4, +\\infty)$'),
-                ('B', '$(0, 4)$'),
-                ('C', '$(-4, 0)$'),
-                ('D', '$[0, 4]$')
+                ('A', '$0$ oraz $4$'),
+                ('B', '$0$ oraz $-4$'),
+                ('C', '$2$ oraz $-2$'),
+                ('D', 'Tylko liczba $4$')
             ],
             correct_id='A',
-            explanation='Wyłączamy $x$ przed nawias: $x(x - 4) > 0$. Miejsca zerowe to $0$ i $4$. Ramiona w górę. Znak $>$ daje skrzydła zewnętrzne: $(-\\infty, 0) \\cup (4, +\\infty)$.',
-            cke_trap='Nigdy nie dziel nierówności przez $x$! Zawsze wyłączaj $x$ przed nawias.'
+            explanation='Wyłączamy $x$ przed nawias: $x(x - 4) = 0 \\longrightarrow x = 0$ lub $x = 4$. Liczenie delty nie jest potrzebne!',
+            cke_trap='Nigdy nie dziel nierówności przez $x$! Wyłącz $x$ przed nawias, aby nie stracić pierwiastka $0$.'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
-            task_id='task-8-1-3-2',
-            source='Matura Maj 2023 • Zad. zbliżone',
-            question='Zbiorem wszystkich rozwiązań nierówności $x^2 - 16 \\le 0$ jest przedział',
-            options_data=[
-                ('A', '$[-4, 4]$'),
-                ('B', '$(-\\infty, -4] \\cup [4, +\\infty)$'),
-                ('C', '$[0, 4]$'),
-                ('D', '$[-16, 16]$')
-            ],
-            correct_id='A',
-            explanation='$(x - 4)(x + 4) \\le 0$. Miejsca zerowe to $-4$ i $4$. Ramiona w górę, obszar pod osią to przedział domknięty $[-4, 4]$.',
-            cke_trap='Równość $x^2 \\le 16$ oznacza odległość od zera co najwyżej 4, czyli $|x| \\le 4$, a więc $[-4, 4]$.'
-        ),
-        make_sc_task(
-            task_id='task-8-1-3-3',
-            source='Pułapka CKE • Dzielenie przez x w nierówności',
-            question='Uczeń rozwiązuje nierówność $x^2 < 9$ i zapisuje $x < 3$. Jaki jest poprawny zbiór rozwiązań?',
+            task_id='task-8-3-2',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Rozwiązaniem nierówności $-x^2 + 9 > 0$ jest przedział',
             options_data=[
                 ('A', '$(-3, 3)$'),
-                ('B', '$(-\\infty, 3)$'),
-                ('C', '$(-\\infty, -3) \\cup (3, +\\infty)$'),
-                ('D', '$[0, 3)$')
+                ('B', '$(-\\infty, -3) \\cup (3, +\\infty)$'),
+                ('C', '$[-3, 3]$'),
+                ('D', '$\\emptyset$')
             ],
             correct_id='A',
-            explanation='Nierówności kwadratowej nie wolno jednostronnie pierwiastkować. $x^2 - 9 < 0 \\implies (x - 3)(x + 3) < 0$. Parabola z ramionami w górę daje przedział $(-3, 3)$.',
-            cke_trap='Liczba $-10$ spełniałaby $x < 3$, ale $(-10)^2 = 100$, co nie jest mniejsze od 9!'
+            explanation='Miejsca zerowe to $3$ oraz $-3$. Współczynnik $a = -1 < 0$ (ramiona w dół). Wartości dodatnie ($> 0$, nad osią) leżą pomiędzy pierwiastkami: $(-3, 3)$.',
+            cke_trap='Minus przy $x^2$ oznacza ramiona w dół, więc wartości dodatnie są W ŚRODKU, nie na zewnątrz.'
         ),
-        make_tf_task(
-            task_id='task-8-1-3-4',
-            source='Trening CKE • Brak wyrazu wolnego c=0',
-            question='Oceń prawdziwość zdania: Gdy w trójmianie kwadratowym $c = 0$, jednym z miejsc zerowych jest zawsze liczba 0.',
-            correct_tf='PRAWDA',
-            explanation='$ax^2 + bx = x(ax + b) = 0$. Przyrównanie $x = 0$ natychmiast daje pierwiastek równy 0.',
-            cke_trap='Wyłączając $x$ przed nawias otrzymujesz $x_1 = 0$ w 100% takich przypadków.'
+        # Zadanie 3: Autentyk CKE 1:1
+        make_sc_task(
+            task_id='task-8-3-3',
+            source='Informator CKE • Zad. 24',
+            question='Zbiorem rozwiązań nierówności $x^2 - 25 \\le 0$ jest przedział',
+            options_data=[
+                ('A', '$[-5, 5]$'),
+                ('B', '$(-5, 5)$'),
+                ('C', '$(-\\infty, -5] \\cup [5, +\\infty)$'),
+                ('D', '$[0, 5]$')
+            ],
+            correct_id='A',
+            explanation='Rozkładamy ze wzoru na różnicę kwadratów: $(x - 5)(x + 5) \\le 0$. Miejsca zerowe to $-5$ oraz $5$. Ramiona w górę ($a = 1 > 0$). Wartości ujemne i zerowe leżą między pierwiastkami: $[-5, 5]$.',
+            cke_trap='Równanie $x^2 = 25$ ma dwa pierwiastki: $5$ oraz $-5$. Nie zapominaj o ujemnym bracie bliźniaku.'
         ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
-            task_id='task-8-1-3-5',
-            source='Utrwalenie • Liczby całkowite',
-            question='Ile liczb całkowitych spełnia nierówność $x^2 - 5x \\le 0$?',
-            correct_val=6,
-            explanation='Miejsca zerowe to 0 i 5. Przedział to $[0, 5]$. Liczby całkowite: $0, 1, 2, 3, 4, 5$ — jest ich dokładnie 6.',
-            cke_trap='Pamiętaj o wliczeniu zera do liczb całkowitych!'
+            task_id='task-8-3-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Wyznacz największą liczbę całkowitą spełniającą nierówność $x^2 - 6x < 0$. Wpisz wynik w pole poniżej.',
+            correct_val='5',
+            explanation='Wyłączamy $x$ przed nawias: $x(x - 6) < 0$. Miejsca zerowe: $0$ oraz $6$. Zbiorem rozwiązań jest przedział otwarty $(0, 6)$.\nNajwiększą liczbą całkowitą w tym przedziale jest $5$.',
+            cke_trap='Dla nierówności ostrej $< 0$ liczba $6$ nie należy do rozwiązań — szukaną liczbą jest $5$.'
+        ),
+        # Zadanie 5: Zadanie otwarte CKE 1:1 z kryteriami
+        make_open_task(
+            task_id='task-8-3-5',
+            source='Matura czerwiec 2023 • Zad. 8',
+            question='Rozwiąż nierówność $x(2x - 1) < 2x$. Zapisz obliczenia.',
+            points=2,
+            scoring_key='1 pkt – uporządkowanie nierówności do postaci kwadratowej: $2x^2 - 3x < 0$ i wyznaczenie miejsc zerowych $x_1 = 0$, $x_2 = \\frac{3}{2}$.\\n2 pkt – prawidłowe odczytanie przedziału dla paraboli skierowanej ramionami w górę: $x \\in \\left(0, \\frac{3}{2}\\right)$.',
+            explanation='1) Wymnażamy nawias i przenosimy wszystkie wyrazy na lewą stronę:\n$$2x^2 - x < 2x$$\n$$2x^2 - 3x < 0$$\n2) Wyznaczamy miejsca zerowe, wyłączając $x$ przed nawias:\n$$x(2x - 3) = 0 \\longrightarrow x = 0 \\quad \\text{lub} \\quad x = \\frac{3}{2}$$\n3) Współczynnik $a = 2 > 0$, więc ramiona paraboli skierowane są w górę.\nWartości ujemne ($< 0$) znajdują się pod osią $OX$, czyli między pierwiastkami.\nOdpowiedź: $x \\in \\left(0, \\frac{3}{2}\\right)$.',
+            cke_trap='Dzielenie obu stron nierówności przez $x$ jest niedopuszczalne, ponieważ nie znamy znaku $x$. Przenosimy na jedną stronę i wyłączamy $x$ przed nawias.'
         )
     ]
     l3 = make_lesson(
@@ -344,9 +359,10 @@ def build_topic_08():
     # ----------------------------------------------------
     v4 = get_topic_08_visuals(3)
     l4_tasks = [
+        # Zadanie 1: Rozgrzewka / Baza
         make_sc_task(
             task_id='task-8-4-1',
-            source='Matura Maj 2021 • Zad. 7',
+            source='Trening JASNE • Wzorzec CKE',
             question='Zbiorem rozwiązań nierówności $x^2 + 4 > 0$ jest',
             options_data=[
                 ('A', '$\\mathbb{R}$ (zbiór liczb rzeczywistych)'),
@@ -355,12 +371,13 @@ def build_topic_08():
                 ('D', '$(-\\infty, -2) \\cup (2, +\\infty)$')
             ],
             correct_id='A',
-            explanation='Dla każdego $x \\in \\mathbb{R}$ mamy $x^2 \\ge 0$, więc $x^2 + 4 \\ge 4 > 0$. Nierówność jest spełniona przez każdą liczbę.',
+            explanation='Dla każdego $x \\in \\mathbb{R}$ mamy $x^2 \\ge 0$, więc $x^2 + 4 \\ge 4 > 0$. Nierówność jest spełniona przez każdą liczbę rzeczywistą.',
             cke_trap='Brak miejsc zerowych ($\\Delta < 0$) nie oznacza braku rozwiązań nierówności!'
         ),
+        # Zadanie 2: Wzorzec CKE / Pułapka
         make_sc_task(
             task_id='task-8-4-2',
-            source='Pułapka CKE • Kwadrat mniejszy bądź równy zero',
+            source='Trening JASNE • Wzorzec CKE',
             question='Zbiorem rozwiązań nierówności $(x - 3)^2 \\le 0$ jest',
             options_data=[
                 ('A', '$\\{3\\}$ (tylko liczba 3)'),
@@ -372,9 +389,10 @@ def build_topic_08():
             explanation='Kwadrat liczby rzeczywistej nigdy nie jest ujemny ($(x-3)^2 \\ge 0$). Nierówność $(x-3)^2 \\le 0$ może być spełniona tylko wtedy, gdy $(x-3)^2 = 0$, czyli $x = 3$.',
             cke_trap='Znak $\\le$ to "mniejsze LUB równe". Równość zachodzi dla $x = 3$.'
         ),
+        # Zadanie 3: Autentyk CKE 1:1
         make_sc_task(
             task_id='task-8-4-3',
-            source='Trening CKE • Delta ujemna i ramiona w dół',
+            source='Informator CKE • Zad. 25',
             question='Zbiorem rozwiązań nierówności $-2x^2 + 3x - 5 > 0$ jest',
             options_data=[
                 ('A', '$\\emptyset$'),
@@ -383,24 +401,27 @@ def build_topic_08():
                 ('D', '$(0, +\\infty)$')
             ],
             correct_id='A',
-            explanation='$\\Delta = 9 - 40 = -31 < 0$. Ponieważ $a = -2 < 0$, cała parabola leży pod osią $OX$. Wartości nigdy nie są dodatnie ($> 0$), więc brak rozwiązań.',
+            explanation='$\\Delta = 9 - 40 = -31 < 0$. Ponieważ $a = -2 < 0$, cała parabola leży pod osią $OX$. Wartości nigdy nie są dodatnie ($> 0$), więc zbiór rozwiązań jest pusty.',
             cke_trap='Gdy $a < 0$ i $\\Delta < 0$, funkcja przyjmuje wyłącznie wartości ujemne.'
         ),
-        make_tf_task(
-            task_id='task-8-4-4',
-            source='Koncepcja CKE • Kwadrat ostro ujemny',
-            question='Oceń prawdziwość zdania: Nierówność $(x + 5)^2 < 0$ nie posiada rozwiązań w zbiorze liczb rzeczywistych.',
-            correct_tf='PRAWDA',
-            explanation='Kwadrat dowolnej liczby jest nieujemny ($(x+5)^2 \\ge 0$), więc nie może być ostro mniejszy od zera.',
-            cke_trap='Dla $x = -5$ mamy $0 < 0$, co jest fałszem. Nierówność ostra wyklucza zero.'
-        ),
+        # Zadanie 4: Wpisz wynik / Numeryczne
         make_numeric_task(
-            task_id='task-8-4-5',
-            source='Utrwalenie • Jedyny punkt rozwiązania',
-            question='Podaj jedyną liczbę spełniającą nierówność $-(x - 7)^2 \\ge 0$.',
-            correct_val=7,
-            explanation='Mnożymy przez $-1$: $(x - 7)^2 \\le 0$. Ponieważ kwadrat jest $\\ge 0$, jedyną możliwością jest $(x - 7)^2 = 0 \\implies x = 7$.',
+            task_id='task-8-4-4',
+            source='Trening JASNE • Wzorzec CKE',
+            question='Podaj jedyną liczbę spełniającą nierówność $-(x - 7)^2 \\ge 0$. Wpisz wynik w pole poniżej.',
+            correct_val='7',
+            explanation='Mnożymy przez $-1$: $(x - 7)^2 \\le 0$. Ponieważ kwadrat liczby rzeczywistej jest zawsze $\\ge 0$, jedyną możliwością jest $(x - 7)^2 = 0 \\longrightarrow x = 7$.',
             cke_trap='Minus przed nawiasem odwraca znak nierówności przy mnożeniu przez $-1$.'
+        ),
+        # Zadanie 5: Zadanie otwarte / Dowód z kryteriami
+        make_open_proof(
+            task_id='task-8-4-5',
+            source='Informator CKE • Zad. 26',
+            question='Wykaż, że nierówność $x^2 - 4x + 5 \\le 0$ nie posiada rozwiązań w zbiorze liczb rzeczywistych. Zapisz pełne uzasadnienie.',
+            points=2,
+            scoring_key='1 pkt – obliczenie wyróżnika: $\\Delta = (-4)^2 - 4 \\cdot 1 \\cdot 5 = 16 - 20 = -4 < 0$ (lub zapisanie w postaci kanonicznej $(x - 2)^2 + 1$).\\n2 pkt – pełne uzasadnienie: ponieważ $a = 1 > 0$ i $\\Delta < 0$, parabola leży w całości nad osią $OX$ i przyjmuje wyłącznie wartości dodatnie, zatem zbiór rozwiązań nierówności $\\le 0$ jest pusty: $x \\in \\emptyset$.',
+            explanation='Sposób 1 (wyróżnik $\\Delta$):\nObliczamy deltę: $\\Delta = (-4)^2 - 4 \\cdot 1 \\cdot 5 = 16 - 20 = -4 < 0$.\nWspółczynnik przy $x^2$ wynosi $a = 1 > 0$, więc ramiona paraboli są skierowane w górę.\nPonieważ $\\Delta < 0$ oraz $a > 0$, parabola leży w całości nad osią $OX$ i dla każdego $x \\in \\mathbb{R}$ zachodzi $x^2 - 4x + 5 > 0$.\nZatem nierówność $x^2 - 4x + 5 \\le 0$ nie ma rozwiązań w $\\mathbb{R}$ ($x \\in \\emptyset$), co kończy dowód.\n\nSposób 2 (postać kanoniczna):\n$$x^2 - 4x + 5 = (x - 2)^2 + 1$$\nPonieważ $(x - 2)^2 \\ge 0$, to $(x - 2)^2 + 1 \\ge 1 > 0$ dla każdego $x \\in \\mathbb{R}$, więc wyrażenie nigdy nie jest $\\le 0$.',
+            cke_trap='Nie wystarczy napisać "delta jest ujemna, więc brak rozwiązań" — trzeba koniecznie podać argument o znaku współczynnika $a = 1 > 0$.'
         )
     ]
     l4 = make_lesson(
@@ -446,41 +467,6 @@ def build_topic_08():
     )
     lessons.append(l4)
 
-
-
-    # --- Wstrzyknięte z arkuszy CKE ---
-    # CKE Maj 2023 - Zadanie 15. (2 pkt)
-    lessons[2]["tasks"].append(
-        make_open_task(
-            task_id="t08_l03_cke_01",
-            source="CKE Maj 2023 • Zad. 15 (2 pkt)",
-            question="Rozwiąż nierówność: $$x^2 - 2x - 8 \\ge 0$$ Zapisz obliczenia.",
-            points=2,
-            scoring_key=[
-                "1 pkt – poprawne wyznaczenie pierwiastków trójmianu kwadratowego",
-                "2 pkt – podanie poprawnego zbioru rozwiązań nierówności (x \\in (-\\infty, -2\\rangle \\cup \\langle 4, +\\infty))"
-            ],
-            explanation="1. Miejsca zerowe: $\\Delta = (-2)^2 - 4 \\cdot 1 \\cdot (-8) = 4 + 32 = 36$.<br/>$\\sqrt{\\Delta} = 6$.<br/>$x_1 = \\frac{2 - 6}{2} = -2$<br/>$x_2 = \\frac{2 + 6}{2} = 4$<br/>2. Parabola skierowana ramionami w górę ($a = 1 > 0$).<br/>3. Wartości $\\ge 0$ (nieujemne) parabola przyjmuje na zewnątrz pierwiastków.<br/>Odp: $x \\in (-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$.",
-            cke_trap="Zły kierunek ramion paraboli, albo brak przedziałów domkniętych (nierówność $\\ge$, więc zbiór domknięty)."
-        )
-    )
-
-    # CKE Informator 2025 - Przykład nierówności z ujemnym a
-    lessons[2]["tasks"].append(
-        make_open_task(
-            task_id="t08_l03_cke_02",
-            source="CKE Informator 2025 • Przykład",
-            question="Rozwiąż nierówność: $$-2x^2 + 5x - 3 \\le 0$$ Zapisz obliczenia.",
-            points=2,
-            scoring_key=[
-                "1 pkt – wyznaczenie miejsc zerowych funkcji",
-                "2 pkt – sformułowanie ostatecznej odpowiedzi w postaci sumy przedziałów domkniętych"
-            ],
-            explanation="1. Miejsca zerowe: $\\Delta = 5^2 - 4 \\cdot (-2) \\cdot (-3) = 25 - 24 = 1$.<br/>$\\sqrt{\\Delta} = 1$.<br/>$x_1 = \\frac{-5 - 1}{2 \\cdot (-2)} = \\frac{-6}{-4} = 1.5$<br/>$x_2 = \\frac{-5 + 1}{-4} = 1$<br/>2. Parabola ramionami w dół ($a = -2 < 0$).<br/>3. Wartości $\\le 0$ są pod osią OX (na zewnątrz).<br/>Odp: $x \\in (-\\infty, 1\\rangle \\cup \\langle \\frac{3}{2}, +\\infty)$.",
-            cke_trap="Minus przy $x^2$ sprawia, że parabola jest skierowana w dół. Odpowiedzią są przedziały zewnętrzne, a nie wewnętrzne!"
-        )
-    )
-
     return {
         'id': topic_id,
         'title': topic_title,
@@ -492,3 +478,7 @@ def build_topic_08():
         'description': 'Wyróżnik Delta, szkicowanie paraboli, odczytywanie przedziałów, nierówności niepełne oraz przypadki z Deltą niedodatnią.',
         'lessons': lessons
     }
+
+if __name__ == '__main__':
+    t = build_topic_08()
+    print(f"Pomyślnie zbudowano {t['title']} ({len(t['lessons'])} lekcje, {sum(len(l['tasks']) for l in t['lessons'])} zadań).")

@@ -61,8 +61,8 @@ describe('CKE 2023 Formula Sheet Verification', () => {
     expect(rownoboczny?.pageNumber).toBe(16);
 
     const okrag = formulasMap.get('f-geo-okrag');
-    expect(okrag?.cke_page).toBe('str. 22');
-    expect(okrag?.pageNumber).toBe(22);
+    expect(okrag?.cke_page).toBe('str. 23');
+    expect(okrag?.pageNumber).toBe(23);
 
     // Prawdopodobieństwo i statystyka
     const prawd = formulasMap.get('f-komb-prawd');

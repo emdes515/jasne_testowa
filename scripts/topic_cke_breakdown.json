@@ -1,0 +1,170 @@
+[
+  {
+    "id": "dzial-1",
+    "title": "Potęgi i pierwiastki",
+    "lessons": 4,
+    "t3_cke": "4/4",
+    "t4_cke": "4/4",
+    "t5_cke": "4/4"
+  },
+  {
+    "id": "dzial-2",
+    "title": "Logarytmy",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-3",
+    "title": "Wartość bezwzględna",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-4",
+    "title": "Wzory skróconego mnożenia i algebra",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-5",
+    "title": "Nierówności liniowe",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-6",
+    "title": "Równania w postaci iloczynowej",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-7",
+    "title": "Równania i wyrażenia wymierne",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-8",
+    "title": "Nierówności kwadratowe",
+    "lessons": 4,
+    "t3_cke": "4/4",
+    "t4_cke": "4/4",
+    "t5_cke": "4/4"
+  },
+  {
+    "id": "dzial-9",
+    "title": "Odczytywanie informacji z wykresu funkcji",
+    "lessons": 4,
+    "t3_cke": "4/4",
+    "t4_cke": "4/4",
+    "t5_cke": "4/4"
+  },
+  {
+    "id": "dzial-10",
+    "title": "Funkcja liniowa i jej własności",
+    "lessons": 4,
+    "t3_cke": "4/4",
+    "t4_cke": "4/4",
+    "t5_cke": "4/4"
+  },
+  {
+    "id": "dzial-11",
+    "title": "Ciągi liczbowe",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-12",
+    "title": "Funkcja kwadratowa",
+    "lessons": 4,
+    "t3_cke": "4/4",
+    "t4_cke": "4/4",
+    "t5_cke": "4/4"
+  },
+  {
+    "id": "dzial-13",
+    "title": "Przekształcenia wykresów funkcji",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-14",
+    "title": "Trygonometria w Trójkącie Prostokątnym i Wzory Redukcyjne",
+    "lessons": 4,
+    "t3_cke": "4/4",
+    "t4_cke": "4/4",
+    "t5_cke": "4/4"
+  },
+  {
+    "id": "dzial-15",
+    "title": "Planimetria – Trójkąty, Cechy Podobieństwa i Twierdzenie Talesa",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-16",
+    "title": "Planimetria – Czworokąty oraz Okrąg i Koło",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-17",
+    "title": "Geometria Analityczna na Płaszczyźnie Kartezjańskiej",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-18",
+    "title": "Stereometria (Geometria Przestrzenna)",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-19",
+    "title": "Kombinatoryka i Rachunek Prawdopodobieństwa",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-20",
+    "title": "Statystyka Opisowa",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  },
+  {
+    "id": "dzial-21",
+    "title": "Zadania Optymalizacyjne z Funkcją Kwadratową",
+    "lessons": 3,
+    "t3_cke": "3/3",
+    "t4_cke": "3/3",
+    "t5_cke": "3/3"
+  }
+]
