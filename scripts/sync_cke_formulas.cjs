@@ -6,8 +6,9 @@ const jsonPath = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_formul
 
 const content = fs.readFileSync(tsPath, 'utf8');
 
-// Strip TypeScript interfaces and types
+// Strip imports, TypeScript interfaces and types
 const cleaned = content
+  .replace(/^import\s+.*?;?\s*$/gm, '')
   .replace(/export interface[\s\S]*?}\n/g, '')
   .replace(/export const CKE_FORMULA_TOPICS =/, 'const topics =')
   .replace(/export const CKE_FORMULAS_DATA: CkeFormulaItem\[\] =/, 'const formulas =');

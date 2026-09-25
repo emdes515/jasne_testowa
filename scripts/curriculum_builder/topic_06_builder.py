@@ -87,21 +87,21 @@ def build_topic_06():
         core_formulas=[
             {
                 'title': 'Reguła zerowania iloczynu',
-                'latex': 'A \\cdot B = 0 \\implies A = 0 \\quad \\text{lub} \\quad B = 0',
+                'latex': 'A \\cdot B = 0 \\longrightarrow A = 0 \\quad \\text{lub} \\quad B = 0',
                 'description': 'Iloczyn jest zerem, gdy co najmniej jeden czynnik jest zerem.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '(x - 2)(x + 5) = 0 \\implies x = 2 \\text{ lub } x = -5',
+                'example': '(x - 2)(x + 5) = 0 \\longrightarrow x = 2 \\text{ lub } x = -5',
                 'mnemonic': 'Każdy nawias do zera osobno.',
                 'matura_tip': 'Nie wymnażaj nawiasów, gdy po prawej stronie jest 0!'
             },
             {
                 'title': 'Czynnik x przed nawiasami',
-                'latex': 'x(ax + b) = 0 \\implies x = 0 \\quad \\text{lub} \\quad ax + b = 0',
+                'latex': 'x(ax + b) = 0 \\longrightarrow x = 0 \\quad \\text{lub} \\quad ax + b = 0',
                 'description': 'Samotny iks przed nawiasem zawsze daje rozwiązanie x = 0.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '3x(x - 4) = 0 \\implies x = 0 \\text{ lub } x = 4',
+                'example': '3x(x - 4) = 0 \\longrightarrow x = 0 \\text{ lub } x = 4',
                 'mnemonic': 'Samotny iks to darmowe zero.',
                 'matura_tip': 'Nigdy nie dziel równania przez x!'
             }
@@ -194,21 +194,21 @@ def build_topic_06():
         core_formulas=[
             {
                 'title': 'Różnica kwadratów w równaniu',
-                'latex': 'x^2 - c = 0 \\implies x = \\sqrt{c} \\quad \\text{lub} \\quad x = -\\sqrt{c}',
+                'latex': 'x^2 - c = 0 \\longrightarrow x = \\sqrt{c} \\quad \\text{lub} \\quad x = -\\sqrt{c}',
                 'description': 'Zawsze dwa rozwiązania symetryczne.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 7',
-                'example': 'x^2 - 16 = 0 \\implies x = 4 \\text{ lub } x = -4',
+                'example': 'x^2 - 16 = 0 \\longrightarrow x = 4 \\text{ lub } x = -4',
                 'mnemonic': 'Kwadrat z minusem daje dwa pierwiastki.',
                 'matura_tip': 'Nie zgub ujemnego rozwiązania.'
             },
             {
                 'title': 'Suma kwadratów (brak rozwiązań)',
-                'latex': 'x^2 + c = 0 \\implies x \\in \\emptyset \\quad (c > 0)',
+                'latex': 'x^2 + c = 0 \\longrightarrow x \\in \\emptyset \\quad (c > 0)',
                 'description': 'Wyrażenie zawsze dodatnie w liczbach rzeczywistych.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x^2 + 9 = 0 \\implies x^2 = -9 \\text{ (sprzeczność)}',
+                'example': 'x^2 + 9 = 0 \\longrightarrow x^2 = -9 \\text{ (sprzeczność)}',
                 'mnemonic': 'Kwadrat z plusem nie daje nic.',
                 'matura_tip': 'Ignoruj ten nawias przy wyznaczaniu pierwiastków.'
             }
@@ -285,16 +285,12 @@ def build_topic_06():
         ),
         make_open_task(
             task_id='task-6-3-5',
-            source='Matura maj 2023 • Zad. 9',
-            question='Rozwiąż równanie\n$$3x^3 - 2x^2 - 12x + 8 = 0$$\nZapisz obliczenia.',
-            points=3,
-            scoring_key=[
-                '1 pkt: Poprawne pogrupowanie wyrazów wielomianu, np. x^2(3x - 2) - 4(3x - 2) = 0.',
-                '2 pkt: Zapisanie równania w postaci iloczynowej z czynnikami liniowymi: (3x - 2)(x - 2)(x + 2) = 0.',
-                '3 pkt: Podanie wszystkich trzech rozwiązań równania: x = -2, x = 2/3, x = 2.'
-            ],
-            explanation='1) Grupujemy wyrazy w pary i wyłączamy wspólne czynniki: $x^2(3x - 2) - 4(3x - 2) = 0$.\n2) Wyłączamy wspólny dwumian $(3x - 2)$: $(3x - 2)(x^2 - 4) = 0$.\n3) Rozkładamy różnicę kwadratów: $(3x - 2)(x - 2)(x + 2) = 0$.\n4) Przyrównujemy każdy czynnik do zera: $3x - 2 = 0$, skąd $x = \\frac{2}{3}$; $x - 2 = 0$, skąd $x = 2$; $x + 2 = 0$, skąd $x = -2$.\nOdpowiedź: Rozwiązaniami równania są liczby $x \\in \\{-2, \\frac{2}{3}, 2\\}$.',
-            cke_trap='Uważaj na znak minus przy wyłączaniu $-4$ z drugiej pary: $-12x + 8 = -4(3x - 2)$.'
+            source='Matura Maj 2024 • Zad. Otwarte 2 pkt',
+            question='Rozwiąż równanie $2x^3 - 3x^2 - 18x + 27 = 0$. Zapisz pełne rozumowanie.',
+            points=2,
+            scoring_key='1 pkt: poprawne pogrupowanie wyrazów i postać (2x - 3)(x^2 - 9) = 0.\n2 pkt: podanie wszystkich trzech rozwiązań: x = 1.5, x = -3, x = 3.',
+            explanation='1) Grupujemy w pary: $x^2(2x - 3) - 9(2x - 3) = 0$.\n2) Wyłączamy nawias: $(2x - 3)(x^2 - 9) = 0$.\n3) Rozkładamy różnicę kwadratów: $(2x - 3)(x - 3)(x + 3) = 0$.\n4) Pierwiastki: $2x - 3 = 0 \\implies x = 1{,}5$, $x - 3 = 0 \\implies x = 3$, $x + 3 = 0 \\implies x = -3$. Rozwiązania: $\\{-3, 1{,}5, 3\\}$.',
+            cke_trap='Pamiętaj o wyłączeniu $-9$ z drugiej pary: $(-18x + 27) = -9(2x - 3)$.'
         )
     ]
     l3 = make_lesson(
@@ -316,11 +312,11 @@ def build_topic_06():
             },
             {
                 'title': 'Zakaz dzielenia przez niewiadomą',
-                'latex': 'x^3 = cx \\implies x(x^2 - c) = 0 \\quad (\\text{NIE: } x^2 = c)',
+                'latex': 'x^3 = cx \\longrightarrow x(x^2 - c) = 0 \\quad (\\text{NIE: } x^2 = c)',
                 'description': 'Przeniesienie na jedną stronę zachowuje pierwiastek x = 0.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x^3 - 4x = 0 \\implies x(x - 2)(x + 2) = 0',
+                'example': 'x^3 - 4x = 0 \\longrightarrow x(x - 2)(x + 2) = 0',
                 'mnemonic': 'Nigdy nie kasuj iksa dzieleniem.',
                 'matura_tip': 'Dzielenie przez x to strata 1 punktu w zadaniu otwartym.'
             }
@@ -339,6 +335,41 @@ def build_topic_06():
         tasks=l3_tasks
     )
     lessons.append(l3)
+
+    
+
+    # --- Wstrzyknięte z arkuszy CKE ---
+    # CKE Maj 2023 - Zadanie 20. (2 pkt) - Równanie wymierne
+    lessons[0]["tasks"].append(
+        make_open_task(
+            task_id="t06_l01_cke_01",
+            source="CKE Maj 2023 • Zad. 20 (2 pkt)",
+            question=r"Rozwiąż równanie $$\frac{3x - 1}{x + 5} = \frac{2x - 3}{x + 5}$$ Zapisz obliczenia.",
+            points=2,
+            scoring_key=[
+                "1 pkt – poprawne wyznaczenie dziedziny równania i doprowadzenie równania do postaci liniowej",
+                "2 pkt – wyznaczenie poprawnego rozwiązania (x = -2)"
+            ],
+            explanation=r"1. Dziedzina mianownika: $x + 5 \neq 0 \implies x \neq -5$.<br/>2. Mianowniki są równe, więc porównujemy liczniki (dla $x \neq -5$):<br/>$3x - 1 = 2x - 3$<br/>$3x - 2x = -3 + 1$<br/>$x = -2$.<br/>3. Ponieważ $-2 \neq -5$, rozwiązaniem jest $x = -2$.",
+            cke_trap="Typowy błąd to zapomnienie o dziedzinie. Zawsze sprawdzaj mianownik przed podaniem odpowiedzi!"
+        )
+    )
+
+    # CKE Czerwiec 2023 - Zadanie 18. (2 pkt) - Równanie wymierne
+    lessons[0]["tasks"].append(
+        make_open_task(
+            task_id="t06_l01_cke_02",
+            source="CKE Czerwiec 2023 • Zad. 18 (2 pkt)",
+            question=r"Rozwiąż równanie $$\frac{3x - 6}{x - 2} = x + 1$$ Zapisz obliczenia.",
+            points=2,
+            scoring_key=[
+                "1 pkt – poprawne wyznaczenie dziedziny i doprowadzenie równania do postaci kwadratowej lub wyłączenie wspólnego czynnika przed nawias z uwzględnieniem dziedziny",
+                "2 pkt – poprawne wyznaczenie zbioru rozwiązań (zbiór pusty)"
+            ],
+            explanation=r"1. Dziedzina mianownika: $x - 2 \neq 0 \implies x \neq 2$.<br/>2. Przekształcenie do postaci wielomianowej dla $x \neq 2$:<br/>$3x - 6 = (x + 1)(x - 2)$<br/>$3x - 6 = x^2 - x - 2$<br/>$x^2 - 4x + 4 = 0$<br/>$(x - 2)^2 = 0 \implies x = 2$.<br/>3. Otrzymane rozwiązanie $x = 2$ nie należy do dziedziny, zatem równanie nie ma rozwiązań.",
+            cke_trap="Otrzymanie wyniku $x=2$ bez sprawdzenia dziedziny to częsty błąd. Mianownik nie może być zerem!"
+        )
+    )
 
     return {
         'id': topic_id,

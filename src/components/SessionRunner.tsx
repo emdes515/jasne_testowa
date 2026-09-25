@@ -34,7 +34,12 @@ import {
   Layers,
   Scale,
   XCircle,
-  Search
+  Search,
+  Filter,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -61,8 +66,17 @@ import { ProPopup } from './ProPopup';
 import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro, activateProWithCode } from '../lib/heartsManager';
 import { recordAiTokenUsage } from '../services/aiUsageTracker';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
-import { getCkeFormulas } from '../services/ckeCatalogRepository';
-import { CKE_FORMULAS_DATA } from '../data/ckeFormulasData';
+import { getCkeFormulas, getCkeFormulaTopics } from '../services/ckeCatalogRepository';
+import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS } from '../data/ckeFormulasData';
+import {
+  saveSessionState,
+  saveSessionStateSync,
+  clearSessionState,
+  saveCanvasDrawing,
+  restoreCanvasDrawing,
+  generateSessionId,
+  SavedSessionState
+} from '../services/sessionRecoveryService';
 
 /**
  * Wyznacza identyfikator tematu CKE dla danego działu i lekcji.
@@ -857,6 +871,24 @@ export interface SessionRunnerProps {
     allTaskIdsToMarkCompleted?: string[];
     required_correct_tasks?: number;
     estimated_time_formatted?: string;
+    sessionId?: string;
+    taskQueue?: any[];
+    currentQueueIndex?: number;
+    currentStep?: number;
+    theorySubStep?: number;
+    selectedOption?: string | null;
+    openAnswerText?: string;
+    openCanvasDataUrl?: string;
+    activeSeconds?: number;
+    sessionMistakesCount?: number;
+    correctAnswersCount?: number;
+    correctlySolvedTaskIds?: string[];
+    numericInput?: string;
+    tfSelections?: Record<string, 'P' | 'F'>;
+    twoPart1?: string | null;
+    twoPart2?: string | null;
+    isRestoredSession?: boolean;
+    [key: string]: any;
   };
   userState?: UserState;
   onCompleteSession: (
@@ -919,6 +951,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
   const lessonTitle = sanitizeLessonHeading(rawLessonTitle);
 
+  // Stable session identifier for real-time recovery
+  const sessionId = useMemo(() => {
+    return sessionData?.sessionId || generateSessionId(lessonId);
+  }, [sessionData?.sessionId, lessonId]);
+
   const isMathExplicit = Boolean(
     (sessionData as any)?.subjectId === 'matematyka-podstawowa' ||
     (sessionData as any)?.subjectId === 'matematyka' ||
@@ -961,9 +998,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
   // Dynamiczny wymóg zaliczenia zadań – odczytywany z obiektu lekcji
   const targetCorrectAnswers = sessionData.required_correct_tasks || (sessionData as any).tasksRequired || 4;
-  const [sessionMistakesCount, setSessionMistakesCount] = useState<number>(0);
+  const [sessionMistakesCount, setSessionMistakesCount] = useState<number>(() => sessionData?.sessionMistakesCount ?? 0);
 
   const [taskQueue, setTaskQueue] = useState<any[]>(() => {
+    if (sessionData?.taskQueue && sessionData.taskQueue.length > 0) return [...sessionData.taskQueue];
+    if (sessionData?.tasks && sessionData.tasks.length > 0 && sessionData?.isRestoredSession) return [...sessionData.tasks];
     if (tasks && tasks.length >= targetCorrectAnswers) return [...tasks];
     const pool = getLessonTaskPool(lessonId);
     if (pool.length > 0) {
@@ -972,15 +1011,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
     return [...tasks];
   });
-  const [currentQueueIndex, setCurrentQueueIndex] = useState<number>(0);
-  const [currentStep, setCurrentStep] = useState<number>(0); // 0: Pigułka wiedzy, 1: Zadania
-  const [theorySubStep, setTheorySubStep] = useState<number>(0); // 0: Istota i Strategia, 1: Wzory / Pojęcia, 2: Przykład / Analiza, 3: Pułapka CKE
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [currentQueueIndex, setCurrentQueueIndex] = useState<number>(() => sessionData?.currentQueueIndex ?? 0);
+  const [currentStep, setCurrentStep] = useState<number>(() => sessionData?.currentStep ?? 0); // 0: Pigułka wiedzy, 1: Zadania
+  const [theorySubStep, setTheorySubStep] = useState<number>(() => sessionData?.theorySubStep ?? 0); // 0: Istota i Strategia, 1: Wzory / Pojęcia, 2: Przykład / Analiza, 3: Pułapka CKE
+  const [selectedOption, setSelectedOption] = useState<string | null>(() => sessionData?.selectedOption ?? null);
   const [isEvaluated, setIsEvaluated] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
   // Active Time Tracking Engine: Tracks active study time with 120s inactivity & visibility auto-pause
-  const [activeSeconds, setActiveSeconds] = useState<number>(0);
+  const [activeSeconds, setActiveSeconds] = useState<number>(() => sessionData?.activeSeconds ?? 0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const lastActivityRef = React.useRef<number>(Date.now());
 
@@ -1025,9 +1064,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   }, [sessionData.theoryPill, lessonId, lessonTitle, formulaSheet, isPolishSession]);
 
   // AI Tutor for Open Tasks
-  const [openAnswerText, setOpenAnswerText] = useState<string>('');
-  const [openCanvasDataUrl, setOpenCanvasDataUrl] = useState<string>('');
-  const latestCanvasDataRef = React.useRef<string>('');
+  const [openAnswerText, setOpenAnswerText] = useState<string>(() => sessionData?.openAnswerText ?? '');
+  const [openCanvasDataUrl, setOpenCanvasDataUrl] = useState<string>(() => sessionData?.openCanvasDataUrl ?? '');
+  const latestCanvasDataRef = React.useRef<string>(sessionData?.openCanvasDataUrl ?? '');
   const [isTutorScanning, setIsTutorScanning] = useState<boolean>(false);
   const [isScanFinished, setIsScanFinished] = useState<boolean>(false);
   const pendingEvalDataRef = React.useRef<any>(null);
@@ -1042,21 +1081,28 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const [showModelSolution, setShowModelSolution] = useState<boolean>(false);
 
   // Statistics: postęp mierzony liczbą poprawnych odpowiedzi (wymóg: 4)
-  const [correctAnswersCount, setCorrectAnswersCount] = useState<number>(0);
-  const [correctlySolvedTaskIds, setCorrectlySolvedTaskIds] = useState<string[]>([]);
-  const [earnedXp, setEarnedXp] = useState<number>(0);
-  const [earnedCoins, setEarnedCoins] = useState<number>(0);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState<number>(() => sessionData?.correctAnswersCount ?? 0);
+  const [correctlySolvedTaskIds, setCorrectlySolvedTaskIds] = useState<string[]>(() => sessionData?.correctlySolvedTaskIds ?? []);
+  const [earnedXp, setEarnedXp] = useState<number>(() => sessionData?.earnedXp ?? 0);
+  const [earnedCoins, setEarnedCoins] = useState<number>(() => sessionData?.earnedCoins ?? 0);
 
   // Modals & Drawers
   const [showExitModal, setShowExitModal] = useState<boolean>(false);
   const [showFormulaSheet, setShowFormulaSheet] = useState<boolean>(false);
   const [formulaSearchQuery, setFormulaSearchQuery] = useState<string>('');
   const [formulaViewMode, setFormulaViewMode] = useState<'department' | 'all'>('department');
+  const [selectedFormulaCkeTopic, setSelectedFormulaCkeTopic] = useState<string>('all');
   const [showArgumentVaultModal, setShowArgumentVaultModal] = useState<boolean>(false);
-  const [isSessionComplete, setIsSessionComplete] = useState<boolean>(false);
+  const [isSessionComplete, setIsSessionComplete] = useState<boolean>(() => Boolean(sessionData?.isSessionComplete || (sessionData?.correctAnswersCount && sessionData.correctAnswersCount >= targetCorrectAnswers)));
+  const [expandedFormulaDiagrams, setExpandedFormulaDiagrams] = useState<Record<string, boolean>>({});
+
+  const toggleFormulaDiagram = (id: string) => {
+    setExpandedFormulaDiagrams(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   // Scroll Container Ref do resetowania pozycji przewijania przy każdym nowym kroku
   const taskAreaRef = React.useRef<HTMLElement>(null);
+  const ckeChipsScrollRef = React.useRef<HTMLDivElement>(null);
 
   const isTheoryStep = currentStep === 0;
 
@@ -1104,13 +1150,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       : (isAiHintTask ? 20 : 10);
 
   // New task format interaction states
-  const [numericInput, setNumericInput] = useState<string>('');
-  const [tfSelections, setTfSelections] = useState<Record<string, 'P' | 'F'>>({});
-  const [twoPart1, setTwoPart1] = useState<string | null>(null);
-  const [twoPart2, setTwoPart2] = useState<string | null>(null);
+  const [numericInput, setNumericInput] = useState<string>(() => sessionData?.numericInput ?? sessionData?.openAnswerText ?? '');
+  const [tfSelections, setTfSelections] = useState<Record<string, 'P' | 'F'>>(() => sessionData?.tfSelections ?? {});
+  const [twoPart1, setTwoPart1] = useState<string | null>(() => sessionData?.twoPart1 ?? null);
+  const [twoPart2, setTwoPart2] = useState<string | null>(() => sessionData?.twoPart2 ?? null);
 
   // Dwutorowy System Wskazówek (Hint Economy)
-  const [unlockedHints, setUnlockedHints] = useState<Record<string, string>>({});
+  const [unlockedHints, setUnlockedHints] = useState<Record<string, string>>(() => sessionData?.unlockedHints ?? {});
   const [isHintExpanded, setIsHintExpanded] = useState<Record<string, boolean>>({});
   const [isHintSheetOpen, setIsHintSheetOpen] = useState<boolean>(false);
   const [isAiHintLoading, setIsAiHintLoading] = useState<boolean>(false);
@@ -1317,6 +1363,169 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     };
   }, [isSessionComplete, isPaused]);
 
+  // ==========================================================================
+  // Session Recovery & Real-Time Auto-Save Engine
+  // ==========================================================================
+  const isClearedRef = React.useRef<boolean>(false);
+  const currentStepRef = React.useRef(currentStep); currentStepRef.current = currentStep;
+  const theorySubStepRef = React.useRef(theorySubStep); theorySubStepRef.current = theorySubStep;
+  const currentQueueIndexRef = React.useRef(currentQueueIndex); currentQueueIndexRef.current = currentQueueIndex;
+  const selectedOptionRef = React.useRef(selectedOption); selectedOptionRef.current = selectedOption;
+  const openAnswerTextRef = React.useRef(openAnswerText); openAnswerTextRef.current = openAnswerText;
+  const numericInputRef = React.useRef(numericInput); numericInputRef.current = numericInput;
+  const tfSelectionsRef = React.useRef(tfSelections); tfSelectionsRef.current = tfSelections;
+  const twoPart1Ref = React.useRef(twoPart1); twoPart1Ref.current = twoPart1;
+  const twoPart2Ref = React.useRef(twoPart2); twoPart2Ref.current = twoPart2;
+  const activeSecondsRef = React.useRef(activeSeconds); activeSecondsRef.current = activeSeconds;
+  const sessionMistakesCountRef = React.useRef(sessionMistakesCount); sessionMistakesCountRef.current = sessionMistakesCount;
+  const correctAnswersCountRef = React.useRef(correctAnswersCount); correctAnswersCountRef.current = correctAnswersCount;
+  const correctlySolvedTaskIdsRef = React.useRef(correctlySolvedTaskIds); correctlySolvedTaskIdsRef.current = correctlySolvedTaskIds;
+  const earnedXpRef = React.useRef(earnedXp); earnedXpRef.current = earnedXp;
+  const earnedCoinsRef = React.useRef(earnedCoins); earnedCoinsRef.current = earnedCoins;
+  const unlockedHintsRef = React.useRef(unlockedHints); unlockedHintsRef.current = unlockedHints;
+  const taskQueueRef = React.useRef(taskQueue); taskQueueRef.current = taskQueue;
+  const isSessionCompleteRef = React.useRef(isSessionComplete); isSessionCompleteRef.current = isSessionComplete;
+  const currentTaskIdRef = React.useRef(currentTask?.id); currentTaskIdRef.current = currentTask?.id;
+
+  // Asynchronously restore canvas drawing for current task from IndexedDB
+  useEffect(() => {
+    const taskId = currentTask?.id;
+    if (!taskId) return;
+    let isMounted = true;
+    restoreCanvasDrawing(sessionId, taskId).then(drawing => {
+      if (isMounted && drawing && (!latestCanvasDataRef.current || latestCanvasDataRef.current.length < 50)) {
+        setOpenCanvasDataUrl(drawing);
+        latestCanvasDataRef.current = drawing;
+      }
+    }).catch(err => {
+      console.warn('[SessionRecovery] Canvas restore error:', err);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [sessionId, currentTask?.id]);
+
+  const buildCurrentSessionState = (): SavedSessionState => ({
+    sessionId,
+    lessonId,
+    lessonTitle: sessionData?.lessonTitle || rawLessonTitle || 'Lekcja',
+    tasks: taskQueueRef.current,
+    currentQueueIndex: currentQueueIndexRef.current,
+    currentStep: currentStepRef.current,
+    theorySubStep: theorySubStepRef.current,
+    selectedOption: selectedOptionRef.current,
+    openAnswerText: openAnswerTextRef.current,
+    activeSeconds: activeSecondsRef.current,
+    sessionMistakesCount: sessionMistakesCountRef.current,
+    correctAnswersCount: correctAnswersCountRef.current,
+    timestamp: Date.now(),
+    required_correct_tasks: targetCorrectAnswers,
+    correctlySolvedTaskIds: correctlySolvedTaskIdsRef.current,
+    numericInput: numericInputRef.current,
+    tfSelections: tfSelectionsRef.current,
+    twoPart1: twoPart1Ref.current,
+    twoPart2: twoPart2Ref.current,
+    earnedXp: earnedXpRef.current,
+    earnedCoins: earnedCoinsRef.current,
+    unlockedHints: unlockedHintsRef.current,
+    isSessionComplete: isSessionCompleteRef.current,
+    subjectId: (sessionData as any)?.subjectId,
+    subjectKey: (sessionData as any)?.subjectKey,
+    isPolish: isPolishSession,
+    topicId: (sessionData as any)?.topicId,
+    formulaSheet,
+    nextLesson,
+    allTaskIdsToMarkCompleted
+  });
+
+  const flushStateSync = () => {
+    if (isClearedRef.current || isSessionCompleteRef.current) return;
+    if (debouncedSaveTimerRef.current) clearTimeout(debouncedSaveTimerRef.current);
+    if (debouncedSaveCanvasTimerRef.current) clearTimeout(debouncedSaveCanvasTimerRef.current);
+    saveSessionStateSync(buildCurrentSessionState());
+    if (latestCanvasDataRef.current && currentTaskIdRef.current) {
+      saveCanvasDrawing(sessionId, currentTaskIdRef.current, latestCanvasDataRef.current).catch(() => {});
+    }
+  };
+
+  const debouncedSaveTimerRef = React.useRef<any>(null);
+  const debouncedSaveCanvasTimerRef = React.useRef<any>(null);
+
+  const triggerDebouncedSave = () => {
+    if (isClearedRef.current || isSessionCompleteRef.current) return;
+    if (debouncedSaveTimerRef.current) clearTimeout(debouncedSaveTimerRef.current);
+    debouncedSaveTimerRef.current = setTimeout(() => {
+      if (isClearedRef.current || isSessionCompleteRef.current) return;
+      saveSessionState(buildCurrentSessionState()).catch(err => {
+        console.warn('[SessionRecovery] Auto-save error:', err);
+      });
+    }, 300);
+  };
+
+  const triggerDebouncedCanvasSave = (tId: string, dataUrl: string) => {
+    if (isClearedRef.current || isSessionCompleteRef.current) return;
+    if (debouncedSaveCanvasTimerRef.current) clearTimeout(debouncedSaveCanvasTimerRef.current);
+    debouncedSaveCanvasTimerRef.current = setTimeout(() => {
+      if (isClearedRef.current || isSessionCompleteRef.current) return;
+      saveCanvasDrawing(sessionId, tId, dataUrl).catch(err => {
+        console.warn('[SessionRecovery] Canvas auto-save error:', err);
+      });
+    }, 300);
+  };
+
+  // Real-time debounced auto-save on state transitions
+  useEffect(() => {
+    if (isClearedRef.current || isSessionComplete) return;
+    triggerDebouncedSave();
+  }, [
+    currentStep,
+    theorySubStep,
+    currentQueueIndex,
+    selectedOption,
+    openAnswerText,
+    numericInput,
+    tfSelections,
+    twoPart1,
+    twoPart2,
+    activeSeconds,
+    sessionMistakesCount,
+    correctAnswersCount,
+    earnedXp,
+    earnedCoins
+  ]);
+
+  // Hook up visibilitychange and beforeunload listeners for immediate synchronous flush
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        flushStateSync();
+      }
+    };
+
+    const handleBeforeUnload = () => {
+      flushStateSync();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      if (debouncedSaveTimerRef.current) clearTimeout(debouncedSaveTimerRef.current);
+      if (debouncedSaveCanvasTimerRef.current) clearTimeout(debouncedSaveCanvasTimerRef.current);
+    };
+  }, [sessionId]);
+
+  const handleSaveCanvasData = (dataUrl: string) => {
+    setOpenCanvasDataUrl(dataUrl);
+    latestCanvasDataRef.current = dataUrl;
+    if (currentTask?.id) {
+      triggerDebouncedCanvasSave(currentTask.id, dataUrl);
+    }
+    triggerDebouncedSave();
+  };
+
   // Humanizacja prezentacji czasu: np. 36 sek lub 1 min 45 s
   const formattedHumanTime = useMemo(() => {
     const m = Math.floor(activeSeconds / 60);
@@ -1390,10 +1599,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         return String((sessionData as any).short_title).trim();
       }
       if ((sessionData as any)?.topicTitle) {
-        return String((sessionData as any).topicTitle).replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '').trim();
+        return String((sessionData as any).topicTitle).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
+      }
+      if ((sessionData as any)?.topicName) {
+        return String((sessionData as any).topicName).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
       }
       if ((sessionData as any)?.topic) {
-        return String((sessionData as any).topic).replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '').trim();
+        return String((sessionData as any).topic).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
       }
       const topicIdStr = String((sessionData as any)?.topicId || (sessionData as any)?.topic_id || '');
       const lessonIdStr = String(lessonId || '');
@@ -1409,13 +1621,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           '6': 'Równania w postaci iloczynowej',
           '7': 'Równania i wyrażenia wymierne',
           '8': 'Nierówności kwadratowe',
-          '9': 'Wykres funkcji i odczyt własności',
+          '9': 'Odczyt z wykresu funkcji',
           '10': 'Funkcja liniowa i jej własności',
-          '11': 'Trygonometria',
-          '12': 'Planimetria',
-          '13': 'Geometria analityczna',
-          '14': 'Stereometria',
-          '15': 'Kombinatoryka i prawdopodobieństwo'
+          '11': 'Ciągi liczbowe',
+          '12': 'Funkcja kwadratowa',
+          '13': 'Przekształcenia wykresów funkcji',
+          '14': 'Trygonometria',
+          '15': 'Planimetria i stereometria'
         };
         if (mathTopicMap[num]) return mathTopicMap[num];
       }
@@ -1454,13 +1666,30 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       if (clean) return clean;
     }
     if ((sessionData as any)?.topicTitle) {
-      return String((sessionData as any).topicTitle).replace(/^Dział\s*\d+\s*[:\-–]?\s*/i, '').trim();
+      return String((sessionData as any).topicTitle).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
+    }
+    if ((sessionData as any)?.topicName) {
+      return String((sessionData as any).topicName).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
     }
     if ((sessionData as any)?.topic) {
-      return String((sessionData as any).topic).replace(/^Dział\s*\d+\s*[:\-–]?\s*/i, '').trim();
+      return String((sessionData as any).topic).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
     }
     return null;
   }, [sessionData, isPolishSession, isMathExplicit, lessonId]);
+
+  // Czytelna nazwa bieżącego działu (np. "Potęgi i pierwiastki" zamiast "DZIAŁ 1")
+  const departmentNameOnly = useMemo(() => {
+    if (moduleBadgeName && moduleBadgeName.trim()) {
+      return moduleBadgeName.trim();
+    }
+    if ((sessionData as any)?.topicTitle) {
+      return String((sessionData as any).topicTitle).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
+    }
+    if ((sessionData as any)?.topicName) {
+      return String((sessionData as any).topicName).replace(/^(?:Dział\s*[\d.]+\s*[:\-–]?\s*|\d+[.:\-–]?\s*)/i, '').trim();
+    }
+    return isPolishSession ? 'Lektury i epoki' : 'Potęgi i pierwiastki';
+  }, [moduleBadgeName, sessionData, isPolishSession]);
 
   // Rozpoznawanie tematu CKE dla danego działu do karty wzorów
   const matchedCkeTopicId = useMemo(() => {
@@ -1558,7 +1787,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return list;
   }, [theoryPill, formulaSheet, isPolishSession, matchedCkeTopicId, departmentBadgeLabel, moduleBadgeName, lessonTitleClean, rawLessonTitle]);
 
-  // Filtrowane wzory w drawerze (wspiera wyszukiwanie i przeglądanie wszystkich działów)
+  // Dostępne tematy CKE do filtrowania w widoku "Wszystkie działy CKE"
+  const availableCkeTopics = useMemo(() => {
+    const fromRepo = getCkeFormulaTopics();
+    return fromRepo.length > 1 ? fromRepo : CKE_FORMULA_TOPICS;
+  }, []);
+
+  // Filtrowane wzory w drawerze (wspiera wyszukiwanie i filtrowanie działów CKE)
   const drawerFormulas = useMemo(() => {
     const query = formulaSearchQuery.trim().toLowerCase();
 
@@ -1566,6 +1801,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       const ckeList = getCkeFormulas().length > 0 ? getCkeFormulas() : CKE_FORMULAS_DATA;
       return ckeList
         .filter(item => {
+          // Filtr działu CKE
+          if (selectedFormulaCkeTopic !== 'all' && item.topicId !== selectedFormulaCkeTopic) {
+            return false;
+          }
           if (!query) return true;
           return (
             item.title.toLowerCase().includes(query) ||
@@ -1585,7 +1824,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           cke_page: item.cke_page,
           in_cke_sheet: true,
           matura_tip: item.ckeTrap,
-          mnemonic: item.goldenRule
+          mnemonic: item.goldenRule,
+          diagram: item.diagram
         }));
     }
 
@@ -1600,7 +1840,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       const inSub = item.subFormulas?.some(s => s.label.toLowerCase().includes(query) || s.formula.toLowerCase().includes(query)) ?? false;
       return inTitle || inLatex || inDesc || inMnem || inTip || inSub;
     });
-  }, [departmentFormulas, formulaSearchQuery, formulaViewMode, isPolishSession]);
+  }, [departmentFormulas, formulaSearchQuery, formulaViewMode, isPolishSession, selectedFormulaCkeTopic]);
 
   // Rozpoznawanie autentycznego źródła zadania i stylu plakietki (CKE vs Autorskie vs Informator)
   const taskSourceBadge = useMemo(() => {
@@ -1858,7 +2098,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   }, [currentTask, formulaSheet, theoryPill]);
 
   // Reset state on step / question change
+  const isFirstStepMountRef = React.useRef(true);
   useEffect(() => {
+    if (isFirstStepMountRef.current) {
+      isFirstStepMountRef.current = false;
+      return;
+    }
     setSelectedOption(null);
     setNumericInput('');
     setTfSelections({});
@@ -1879,7 +2124,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   }, [currentStep, currentQueueIndex]);
 
   // Reset entire session state when lessonId changes (e.g. proceeding to next lesson)
+  const prevLessonIdRef = React.useRef(lessonId);
   useEffect(() => {
+    if (prevLessonIdRef.current === lessonId) {
+      return; // Skip on initial mount! Preserve restored state!
+    }
+    prevLessonIdRef.current = lessonId;
+
     setCurrentStep(0);
     setTheorySubStep(0);
     setCurrentQueueIndex(0);
@@ -2028,6 +2279,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       setIsEvaluated(false);
       setIsCorrect(null);
       setOpenAnswerText('');
+      setOpenCanvasDataUrl('');
+      latestCanvasDataRef.current = '';
       setNumericInput('');
       setTfSelections({});
       setTwoPart1(null);
@@ -2290,8 +2543,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       if (!numericInput.trim()) return;
 
       const parseNumericVal = (raw: string): number => {
-        const s = raw.trim().replace(',', '.');
-        const frac = s.match(/\\frac\{([^}]+)\}\{([^}]+)\}/);
+        const s = raw.trim().replace(/,/g, '.').replace(/[−–]/g, '-').replace(/[\$\s]/g, '');
+        const frac = s.match(/\\frac\{?([^}]+)\}?\{?([^}]+)\}?/);
         if (frac) {
           const n = parseFloat(frac[1]);
           const d = parseFloat(frac[2]);
@@ -2316,17 +2569,24 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         .replace(/\\langle\s*/g, '⟨')
         .replace(/\\rangle\s*/g, '⟩')
         .replace(/\\infty\s*/g, '∞')
-        .replace(/−/g, '-');
+        .replace(/[−–]/g, '-')
+        .replace(/[\$\{\}]/g, '');
 
       const userClean = numericInput.trim();
-      const targetClean = String(currentTask?.correctAnswer || currentTask?.correct_answer || currentTask?.numeric_correct_answer || '').trim();
+      const targetClean = String(
+        currentTask?.correctAnswer || 
+        currentTask?.correct_answer || 
+        currentTask?.numeric_correct_answer || 
+        currentTask?.correct_val ||
+        ''
+      ).trim();
 
       if (normStr(userClean) === normStr(targetClean)) {
         correct = true;
       } else {
         const userNum = parseNumericVal(userClean);
         const targetNum = parseNumericVal(targetClean);
-        if (!isNaN(userNum) && !isNaN(targetNum) && Math.abs(userNum - targetNum) < 1e-6) {
+        if (!isNaN(userNum) && !isNaN(targetNum) && Math.abs(userNum - targetNum) < 1e-5) {
           correct = true;
         }
       }
@@ -2914,6 +3174,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       setIsEvaluated(false);
       setIsCorrect(null);
       setOpenAnswerText('');
+      setOpenCanvasDataUrl('');
+      latestCanvasDataRef.current = '';
       setNumericInput('');
       setTfSelections({});
       setTwoPart1(null);
@@ -2948,6 +3210,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       ...validSolvedTaskIds,
       ...lessonCompletionTags
     ]));
+
+    isClearedRef.current = true;
+    clearSessionState(sessionId).catch(err => {
+      console.warn('[SessionRecovery] Error clearing session on finish:', err);
+    });
 
     onCompleteSession(
       completedIds, 
@@ -3923,7 +4190,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     })()}
                   </section>
 
-                  {(theoryPill?.matura_context || theoryPill?.keyTakeaway) && (
+                  {Boolean(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway || '').trim()) && (
                     <section className={`rounded-2xl p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm border ${
                       isPolishSession
                         ? 'bg-gradient-to-br from-rose-950/30 via-slate-900/80 to-slate-900/90 border-rose-500/30'
@@ -4167,7 +4434,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   )}
 
                                   {/* Dyskretna uwaga egzaminacyjna CKE */}
-                                  {hasDistinctTip && item.matura_tip && (
+                                  {Boolean(hasDistinctTip && sanitizeExaminerTip(item.matura_tip || '').trim()) && (
                                     <div className="rounded-xl px-3.5 py-2.5 bg-amber-500/[0.05] border border-amber-500/20 text-xs sm:text-sm text-slate-300 leading-relaxed flex items-start gap-2.5">
                                       <div className="w-5 h-5 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
                                         <Lightbulb className="w-3.5 h-3.5" />
@@ -4588,7 +4855,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           )}
 
                           {/* Karta 3: Opcjonalna Wskazówka CKE */}
-                          {trapData.tip && (
+                          {Boolean(sanitizeExaminerTip(trapData.tip || '').trim()) && (
                             <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-slate-950 border border-amber-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(245,158,11,0.12)]">
                               <div className="flex items-center justify-between gap-2 border-b border-amber-500/20 pb-2.5">
                                 <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
@@ -4651,6 +4918,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </motion.div>
               )}
             </AnimatePresence>
+            {/* Ochronny margines dolny zapobiegający zasłanianiu wzorów/diagramów przez sticky footer */}
+            <div className="h-16 w-full shrink-0" aria-hidden="true" />
           </div>
         ) : (
           <>
@@ -4700,10 +4969,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               value={openAnswerText}
               onChangeValue={(val) => setOpenAnswerText(val)}
               savedCanvasDataUrl={openCanvasDataUrl}
-              onSaveCanvasData={(dataUrl) => {
-                setOpenCanvasDataUrl(dataUrl);
-                latestCanvasDataRef.current = dataUrl;
-              }}
+              onSaveCanvasData={handleSaveCanvasData}
               onSubmit={(canvasData) => handleCheckOpenAnswerWithTutor(canvasData)}
               onAskAiTutor={handleToggleOrBuyHint}
               onRetry={handleRetryOpenTask}
@@ -4936,7 +5202,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   )}
 
                   {/* Suggestion banner */}
-                  {tutorEvaluation.suggestion && (
+                  {Boolean(tutorEvaluation.suggestion && tutorEvaluation.suggestion.trim()) && (
                     <div className="pt-2.5 border-t border-white/5 flex items-start gap-2.5 text-xs text-emerald-300 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
                       <Lightbulb size={15} className="text-emerald-400 shrink-0 mt-0.5" />
                       <div className="leading-relaxed">
@@ -5572,8 +5838,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       {isTheoryStep && (
         <footer 
           id="session-theory-sticky-cta"
-          className="w-full shrink-0 sticky bottom-0 z-30 bg-[#0B0F19]/95 backdrop-blur-md border-t border-slate-800 px-4 py-3"
+          className="w-full shrink-0 sticky bottom-0 z-30 bg-[#0B0F19]/95 backdrop-blur-md border-t border-slate-800 px-4 py-3 relative"
         >
+          {/* Subtelny gradient maskujący na krawędzi górnej paska CTA */}
+          <div className="absolute -top-6 left-0 right-0 h-6 pointer-events-none bg-gradient-to-t from-[#0B0F19]/95 to-transparent" aria-hidden="true" />
           <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex items-center gap-2">
             {theorySubStep > 0 && (
               <button
@@ -5722,8 +5990,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
-                      <CheckCircle2 className={`w-5 h-5 stroke-[2.2] ${isPolishSession ? 'text-white' : 'text-slate-950'}`} />
-                      <span>{isTutorScanning ? 'ANALIZA W TOKU...' : 'SPRAWDŹ Z TUTOREM AI'}</span>
+                      <GraduationCap className={`w-5 h-5 stroke-[2.2] ${isPolishSession ? 'text-white' : 'text-slate-950'}`} />
+                      <span>{isTutorScanning ? 'AI EGZAMINATOR OCENIA...' : 'OCEŃ Z EGZAMINATOREM AI'}</span>
                     </button>
                   ) : (
                     <button
@@ -5738,7 +6006,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
                       }`}
                     >
-                      <span>SPRAWDŹ</span>
+                      <span>{isNumericTask ? 'SPRAWDŹ ODPOWIEDŹ' : 'SPRAWDŹ'}</span>
                       <span className="hidden md:inline-flex text-[10px] font-mono font-bold opacity-75 bg-black/25 px-1.5 py-0.5 rounded">Enter ↵</span>
                       <Check className="w-5 h-5 stroke-[2.5]" />
                     </button>
@@ -5750,9 +6018,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     {isPolishInteractiveTask
                       ? 'Wykonaj zadanie na powyższej karcie lekturowej'
                       : isOpenTask 
-                        ? (isPolishSession ? 'Naciśnij Enter aby sprawdzić odpowiedź z Tutorem AI' : 'Naciśnij Enter aby sprawdzić dowód z Tutorem AI') 
+                        ? (isPolishSession ? 'Naciśnij Enter aby ocenić odpowiedź z Egzaminatorem AI' : 'Naciśnij Enter aby ocenić dowód z Egzaminatorem AI') 
                         : isNumericTask 
-                          ? 'Wpisz liczbę i naciśnij Enter' 
+                          ? 'Wpisz wynik i naciśnij Enter aby sprawdzić' 
                           : isTrueFalseTask
                             ? 'Oceń wszystkie zdania i naciśnij Enter'
                             : isTwoPartTask
@@ -5917,17 +6185,21 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
 
                 {/* Schemat wektorowy / Wykres do zadania */}
-                {(currentTask?.diagram || currentTask?.plot || currentTask?.numberLine) && (
+                {(currentTask?.explanationPlot || currentTask?.explanationDiagram || currentTask?.explanationNumberLine || currentTask?.diagram || currentTask?.plot || currentTask?.numberLine) && (
                   <div className="p-3 sm:p-4 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2 flex flex-col items-center">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider self-start flex items-center gap-1.5">
                       <Target size={14} className="text-[#FFB800]" />
-                      <span>Rysunek pomocniczy / Wykres do zadania:</span>
+                      <span>
+                        {(currentTask?.explanationPlot || currentTask?.explanationDiagram || currentTask?.explanationNumberLine)
+                          ? 'Wykres wyjaśniający (rozwiązanie CKE):'
+                          : 'Rysunek pomocniczy / Wykres do zadania:'}
+                      </span>
                     </span>
                     <div className="w-full flex justify-center overflow-x-auto py-1">
-                      {currentTask?.numberLine ? (
-                        <NumberLineDiagram data={currentTask.numberLine} height={60} maxWidth="360px" />
+                      {(currentTask?.explanationNumberLine || currentTask?.numberLine) ? (
+                        <NumberLineDiagram data={currentTask?.explanationNumberLine || currentTask?.numberLine} height={60} maxWidth="360px" />
                       ) : (
-                        <MathDiagram diagram={currentTask.diagram || currentTask.plot} compact />
+                        <MathDiagram diagram={currentTask?.explanationDiagram || currentTask?.explanationPlot || currentTask?.diagram || currentTask?.plot} compact />
                       )}
                     </div>
                   </div>
@@ -6149,6 +6421,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-modal-quit-button"
                   onClick={() => {
+                    isClearedRef.current = true;
+                    clearSessionState(sessionId).catch(err => {
+                      console.warn('[SessionRecovery] Error clearing session on cancel:', err);
+                    });
                     setShowExitModal(false);
                     onCancelSession();
                   }}
@@ -6197,7 +6473,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-bold text-white text-base sm:text-lg tracking-tight truncate">
-                        {isPolishSession ? 'Leksykon Pojęć & Złote Zasady' : `Karta Wzorów • ${departmentBadgeLabel}`}
+                        {isPolishSession ? 'Leksykon Pojęć & Złote Zasady' : `Karta Wzorów • ${departmentNameOnly}`}
                       </h3>
                       <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${
                         isPolishSession
@@ -6208,7 +6484,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       </span>
                     </div>
                     <div className="text-xs text-slate-400 truncate mt-0.5">
-                      <MathRenderer content={sanitizeLessonHeading(moduleBadgeName || formulaSheet?.title || lessonTitle)} />
+                      <MathRenderer content={sanitizeLessonHeading(lessonTitleClean || rawLessonTitle || formulaSheet?.title || (isPolishSession ? 'Definicje i motywy literackie' : 'Wybrane wzory matematyczne CKE'))} />
                     </div>
                   </div>
                 </div>
@@ -6225,22 +6501,23 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Search & Topic Tabs (for Math) */}
               {!isPolishSession && (
                 <div className="px-4 sm:px-5 py-3 bg-[#0B0F17] border-b border-white/5 flex flex-col gap-2.5 shrink-0">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
                     <button
                       type="button"
                       onClick={() => setFormulaViewMode('department')}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                         formulaViewMode === 'department'
                           ? 'bg-[#FFB800] text-slate-950 font-bold shadow-sm'
                           : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
                       }`}
+                      title={`${departmentNameOnly} (${departmentFormulas.length})`}
                     >
-                      {departmentBadgeLabel} ({departmentFormulas.length})
+                      {departmentNameOnly} ({departmentFormulas.length})
                     </button>
                     <button
                       type="button"
                       onClick={() => setFormulaViewMode('all')}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                         formulaViewMode === 'all'
                           ? 'bg-[#FFB800] text-slate-950 font-bold shadow-sm'
                           : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
@@ -6255,7 +6532,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       type="text"
                       value={formulaSearchQuery}
                       onChange={e => setFormulaSearchQuery(e.target.value)}
-                      placeholder={formulaViewMode === 'department' ? `Szukaj we wzorach z ${departmentBadgeLabel}...` : 'Szukaj we wszystkich wzorach CKE (np. delta, potęgi, sinus)...'}
+                      placeholder={
+                        formulaViewMode === 'department' 
+                          ? `Szukaj we wzorach z: ${departmentNameOnly}...` 
+                          : 'Szukaj we wszystkich wzorach CKE (np. delta, potęgi, sinus)...'
+                      }
                       className="w-full bg-[#111724] border border-white/10 focus:border-[#FFB800]/50 rounded-xl pl-8 pr-8 py-1.5 text-xs text-white placeholder-slate-500 outline-none transition"
                     />
                     {formulaSearchQuery && (
@@ -6268,6 +6549,65 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       </button>
                     )}
                   </div>
+
+                  {/* Filtr działów CKE (wyświetlany przy przełączeniu na "Wszystkie działy CKE") */}
+                  {formulaViewMode === 'all' && (
+                    <div className="relative flex items-center group/cke-filter w-full">
+                      {/* Przewijanie w lewo dla komputerów */}
+                      <button
+                        type="button"
+                        onClick={() => ckeChipsScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
+                        className="hidden sm:flex absolute left-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition -translate-x-1"
+                        aria-label="Przewiń działy w lewo"
+                        title="Przewiń w lewo"
+                      >
+                        <ChevronLeft size={13} />
+                      </button>
+
+                      <div
+                        ref={ckeChipsScrollRef}
+                        onWheel={(e) => {
+                          if (e.deltaY !== 0) {
+                            e.currentTarget.scrollLeft += e.deltaY;
+                          }
+                        }}
+                        className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-0.5 pb-0.5 px-0.5 sm:px-6 scroll-smooth w-full"
+                      >
+                        <Filter size={13} className="text-slate-500 shrink-0 mr-1 ml-0.5" />
+                        {availableCkeTopics.map(topic => {
+                          const isSelected = selectedFormulaCkeTopic === topic.id;
+                          return (
+                            <button
+                              key={topic.id}
+                              type="button"
+                              onClick={() => {
+                                triggerHaptic('light');
+                                setSelectedFormulaCkeTopic(topic.id);
+                              }}
+                              className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+                                isSelected
+                                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
+                                  : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                              }`}
+                            >
+                              {topic.name}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {/* Przewijanie w prawo dla komputerów */}
+                      <button
+                        type="button"
+                        onClick={() => ckeChipsScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
+                        className="hidden sm:flex absolute right-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition translate-x-1"
+                        aria-label="Przewiń działy w prawo"
+                        title="Przewiń w prawo"
+                      >
+                        <ChevronRight size={13} />
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -6279,7 +6619,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <div className="flex items-center justify-between pt-0.5">
                       <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
                         <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-rose-400' : 'bg-[#FFB800]'}`} />
-                        {isPolishSession ? 'Pojęcia Kluczowe i Definicje' : (formulaViewMode === 'department' ? `Wzory i Tożsamości: ${departmentBadgeLabel}` : 'Tablice i Wzory CKE')}
+                        {isPolishSession
+                          ? 'Pojęcia Kluczowe i Definicje' 
+                          : (formulaViewMode === 'department'
+                              ? `Wzory i Tożsamości: ${departmentNameOnly}` 
+                              : (selectedFormulaCkeTopic !== 'all'
+                                  ? `Wzory CKE: ${availableCkeTopics.find(t => t.id === selectedFormulaCkeTopic)?.name || 'Wybrany dział'}`
+                                  : 'Tablice i Wzory CKE'
+                                )
+                            )
+                        }
                       </span>
                       <span className="text-[11px] font-medium text-slate-500">
                         {isPolishSession
@@ -6362,13 +6711,56 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           </div>
                         )}
 
-                        {f.matura_tip && (
+                        {Boolean(f.matura_tip && f.matura_tip.trim()) && (
                           <div className="text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-xl p-2.5 flex items-start gap-2">
                             <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
                             <div>
                               <span className="font-bold text-amber-300">Wskazówka egzaminatora: </span>
                               <MathRenderer content={f.matura_tip} />
                             </div>
+                          </div>
+                        )}
+
+                        {/* Szkic geometryczny (opcjonalny, rozwijany akordeon) */}
+                        {f.diagram && (
+                          <div className="pt-1">
+                            <button
+                              type="button"
+                              onClick={() => toggleFormulaDiagram(f.id || String(i))}
+                              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 transition-all cursor-pointer shadow-sm"
+                            >
+                              {expandedFormulaDiagrams[f.id || String(i)] ? (
+                                <>
+                                  <EyeOff size={13} className="text-slate-400 shrink-0" />
+                                  <span>Ukryj wizualizację</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Eye size={13} className="text-sky-400 shrink-0" />
+                                  <span>Wizualizacja geometryczna</span>
+                                </>
+                              )}
+                            </button>
+
+                            <AnimatePresence>
+                              {expandedFormulaDiagrams[f.id || String(i)] && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden pt-2.5"
+                                >
+                                  <div className="rounded-xl border border-white/10 bg-[#070A0F] p-3 shadow-inner">
+                                    {'intervals' in f.diagram ? (
+                                      <NumberLineDiagram data={f.diagram as any} height={120} />
+                                    ) : (
+                                      <MathDiagram diagram={f.diagram as any} compact borderless />
+                                    )}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
                           </div>
                         )}
                       </div>

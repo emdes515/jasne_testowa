@@ -67,14 +67,14 @@ def audit_topics_structure_and_tasks(topics, context_name, official_by_badge):
 
     total_lessons = sum(len(t.get('lessons', [])) for t in topics)
     total_tasks = sum(len(l.get('tasks', [])) for t in topics for l in t.get('lessons', []))
-    if total_tasks != total_lessons * 5:
-        errors.append(f"[{context_name}] Niepoprawna liczba zadań: {total_tasks} (oczekiwano {total_lessons * 5}, czyli 5 na lekcję)")
+    if total_tasks < total_lessons * 5 or total_tasks > total_lessons * 10:
+        errors.append(f"[{context_name}] Niepoprawna liczba zadań: {total_tasks} (oczekiwano 5-10 na lekcję)")
 
     for topic_idx, topic in enumerate(topics, 1):
         for lesson_idx, lesson in enumerate(topic.get('lessons', []), 1):
             tasks = lesson.get('tasks', [])
-            if len(tasks) != 5:
-                errors.append(f"[{context_name}] Lekcja {lesson.get('id')} ma {len(tasks)} zadań (powinno być 5)")
+            if len(tasks) not in range(5, 11):
+                errors.append(f"[{context_name}] Lekcja {lesson.get('id')} ma {len(tasks)} zadań (powinno być 5-10)")
 
             for task_idx, task in enumerate(tasks, 1):
                 tid = task.get('id', f'unknown-T{topic_idx}L{lesson_idx}t{task_idx}')

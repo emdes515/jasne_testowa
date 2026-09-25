@@ -94,6 +94,12 @@ export function cleanLatex(mathStr: string): string {
   // Normalizacja nawiasowych potęg w czystym LaTeX: np. a^(2^3) -> a^{(2^3)} lub x^(n+1) -> x^{n+1}
   s = s.replace(/\^(\([^\)]+\))/g, (_m, inner) => `^{${inner}}`);
 
+  // Normalizacja surowych potęg ze skanów OCR (np. 3x2 -> 3x^2, x3 -> x^3)
+  s = s.replace(/(\b\d*[xyt])([2345])(?=[\s=+\-),.;$*·/]|\\[a-zA-Z]+|$)/g, '$1^$2');
+
+  // Normalizacja indeksów ciągów ze skanów OCR (np. an -> a_n, a1 -> a_1, Sn -> S_n)
+  s = s.replace(/(^|[^\w\\])([abS])([1-9]|n|k|m)(?=[\s=+\-),.;$*·/]|\\[a-zA-Z]+|$)/g, '$1$2_$3');
+
   // Convert slash-notated fractions (e.g. 8/15 -> \frac{8}{15}, (8 \cdot 5)/(15 \cdot 4) -> \frac{8 \cdot 5}{15 \cdot 4})
   s = convertSlashFractions(s);
 
@@ -448,7 +454,12 @@ export function autoWrapLatex(rawStr: string): string {
           punct = '.';
           r = r.slice(0, -1).trim();
         }
-        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/i.test(r) && !r.startsWith('$')) {
+        const textWithoutMacros = r.replace(/\\text\{[^{}]*\}/g, '').replace(/\\[a-zA-Z]+/g, ' ');
+        const wordsAfterColon = textWithoutMacros.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
+        const mathKw = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt', 'dla', 'gdy', 'lub', 'oraz']);
+        const hasProseWords = wordsAfterColon.some(w => !mathKw.has(w.toLowerCase()));
+
+        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !hasProseWords && !r.startsWith('$')) {
           return `${colon}${space}$${r}$${punct}`;
         }
         return match;
@@ -457,7 +468,12 @@ export function autoWrapLatex(rawStr: string): string {
       // 3b. Wrap after "wynik ": "wynik a = 8 \in \mathbb{Z}."
       s = s.replace(/(wynik\s+)([^.,;\n]+)(\.?)/i, (match, prefix, expr, punct) => {
         let r = expr.trim();
-        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !/[ąćęłńóśźż]/i.test(r) && !r.startsWith('$')) {
+        const textWithoutMacrosWynik = r.replace(/\\text\{[^{}]*\}/g, '').replace(/\\[a-zA-Z]+/g, ' ');
+        const wordsAfterWynik = textWithoutMacrosWynik.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
+        const mathKw = new Set(['sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt', 'dla', 'gdy', 'lub', 'oraz']);
+        const hasProseWords = wordsAfterWynik.some(w => !mathKw.has(w.toLowerCase()));
+
+        if (/\\[a-zA-Z]+|[=<>^]/.test(r) && !hasProseWords && !r.startsWith('$')) {
           return `${prefix}$${r}$${punct}`;
         }
         return match;
@@ -499,13 +515,18 @@ export function autoWrapLatex(rawStr: string): string {
         });
       }).join('');
 
-      // 3c. Wrap standalone \command tokens (e.g. "liczba \sqrt{7}"), but never \begin, \end, \left, \right, \langle, \rangle
+      // 3c. Wrap standalone \command tokens (e.g. "liczba \sqrt{7}", "(\le, \ge)", "(\Delta)"), but never \begin, \end, \left, \right, \langle, \rangle
       // and ensure it only runs on prose outside newly wrapped $...$
       p = p.split(MATH_SPLIT_REGEX).map(subChunk => {
         if (!subChunk || subChunk.startsWith('$') || subChunk.startsWith('\\(') || subChunk.startsWith('\\[') || subChunk.startsWith('\\begin{')) {
           return subChunk;
         }
-        return subChunk.replace(/(?<=\s|^)((?!(?:\\begin|\\end|\\left|\\right|\\langle|\\rangle)\b)\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)(?=[\s.,;!?]|$)/g, '$$$1$$');
+        let res = subChunk;
+        // Handle relations with LaTeX symbols, e.g. \Delta > 0, \Delta = 0, \Delta < 0
+        res = res.replace(/(?<=[(\s]|^)((?!(?:\\begin|\\end|\\left|\\right)\b)\\[a-zA-Z]+(?:\s*[=<>≤≥]\s*[-+]?\d+))(?=[)\s.,;!?]|$)/g, '$$$1$$');
+        // Handle standalone commands or parenthesized commands like (\le, \ge), (\Delta), \sqrt{7}
+        res = res.replace(/(?<=[(\[{\s<]|^)((?!(?:\\begin|\\end|\\left|\\right|\\langle|\\rangle)\b)\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)(?=[)\]\}\s.,;!?>,]|$)/g, '$$$1$$');
+        return res;
       }).join('');
       return p;
     }).join('');
@@ -594,6 +615,31 @@ export function autoWrapLatex(rawStr: string): string {
     p = p.replace(/(^|[\s(])([a-zA-Z](?:\([a-zA-Z]\))?\s*=\s*[-+]?(?:\\?[a-zA-Z]+|\d+)(?:\s*[\/\*\+\-]\s*(?:\([^\)]+\)|[a-zA-Z\d\^]+))+)(?=[\s).,;!?]|$)/g, (_m, pre, mathExpr) => {
       return `${pre}$${cleanLatex(mathExpr)}$`;
     });
+
+    // 4k. Coordinate points or geometric definitions in prose: e.g. "A = (x_A, y_A)", "B = (x_B, y_B)", "S = (x_S, y_S)", "C = (5, 1)"
+    p = p.replace(/(^|[\s(])([A-Z]\s*=\s*\([a-zA-Z\d\^_{}\\\+\-\*\/\s,;-]+\))(?=[\s).,;!?]|$)/g, (_m, pre, ptExpr) => {
+      return `${pre}$${cleanLatex(ptExpr)}$`;
+    });
+
+    // 4l. Parenthesized algebraic expressions with negatives or variables: e.g. "(x_B - (-3))", "(x_B + 3)", "(x - 2)^2"
+    p = p.split(MATH_SPLIT_REGEX).map(chunk => {
+      if (!chunk || chunk.startsWith('$') || chunk.startsWith('\\(') || chunk.startsWith('\\[') || chunk.startsWith('\\begin{')) {
+        return chunk;
+      }
+      return chunk.replace(/(^|\s)(\([a-zA-Z\d_]+\s*[\+\-]\s*(?:\(-?\d+\)|\d+)\))(?=[\s.,;!?]|$)/g, (_m, pre, parenExpr) => {
+        return `${pre}$${cleanLatex(parenExpr)}$`;
+      });
+    }).join('');
+
+    // 4m. Standalone subscripted variables in prose: e.g. "x_A", "y_B", "x_1", "y_2", "a_n", "a_1", "S_n"
+    p = p.split(MATH_SPLIT_REGEX).map(chunk => {
+      if (!chunk || chunk.startsWith('$') || chunk.startsWith('\\(') || chunk.startsWith('\\[') || chunk.startsWith('\\begin{')) {
+        return chunk;
+      }
+      return chunk.replace(/(^|[\s(])([a-zA-Z]_[a-zA-Z0-9]+)(?=[\s).,;!?]|$)/g, (_m, pre, varExpr) => {
+        return `${pre}$${cleanLatex(varExpr)}$`;
+      });
+    }).join('');
 
     return p;
   }).join('');

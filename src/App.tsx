@@ -18,7 +18,8 @@ import { auth, db, loginWithGoogle } from './lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, LogIn, User } from 'lucide-react';
+import { ArrowRight, LogIn, User, X } from 'lucide-react';
+import { restoreSessionState, clearSessionState } from './services/sessionRecoveryService';
 import { OnboardingOverlay, OnboardingPreferences } from './components/OnboardingOverlay';
 import { ProPopup } from './components/ProPopup';
 import { ParentSponsorModal } from './components/ParentSponsorModal';
@@ -146,6 +147,40 @@ export default function App() {
   }, [currentTab]);
 
   const [activeTaskData, setActiveTaskData] = useState<any>(null);
+  const [showResumedSessionBadge, setShowResumedSessionBadge] = useState<boolean>(false);
+
+  // Session Recovery: Check and restore active interrupted session on startup (< 24h)
+  useEffect(() => {
+    let mounted = true;
+    let badgeTimer: any = null;
+    restoreSessionState().then(restored => {
+      if (!mounted) return;
+      if (restored && restored.tasks && restored.tasks.length > 0) {
+        setActiveTaskData({
+          ...restored,
+          isSession: true,
+          lessonTasks: restored.tasks,
+          isRestoredSession: true
+        });
+        setActiveTask(true);
+        setShowResumedSessionBadge(true);
+        badgeTimer = setTimeout(() => {
+          if (mounted) {
+            setShowResumedSessionBadge(false);
+          }
+        }, 4500);
+      }
+    }).catch(err => {
+      console.warn('[SessionRecovery] Startup recovery check failed:', err);
+    });
+
+    return () => {
+      mounted = false;
+      if (badgeTimer) {
+        clearTimeout(badgeTimer);
+      }
+    };
+  }, []);
   const [reward, setReward] = useState<{ 
     xp: number; 
     coins: number; 
@@ -541,6 +576,10 @@ export default function App() {
       }));
     } catch {}
 
+    if (!task?.isRestoredSession) {
+      clearSessionState().catch(() => {});
+    }
+
     const tasksList = task?.tasks || lessonTasks || task?.lessonTasks || (task ? [task] : []);
     setActiveTaskData({
       ...(task || {}),
@@ -554,6 +593,7 @@ export default function App() {
   };
 
   const handleCancelTask = () => {
+    clearSessionState().catch(() => {});
     setActiveTask(false);
     setActiveTaskData(null);
   };
@@ -805,6 +845,8 @@ export default function App() {
         ...singleDocPayload
       };
     });
+
+    clearSessionState().catch(() => {});
 
     if (nextLesson) {
       handleStartTask(
@@ -1117,7 +1159,7 @@ export default function App() {
           className={`flex-1 min-h-0 flex flex-col focus:outline-none ${
             activeTask
               ? 'overflow-hidden p-0'
-              : 'overflow-y-auto overflow-x-hidden overscroll-y-contain touch-pan-y no-scrollbar pb-24 sm:pb-28 md:pb-8'
+              : 'overflow-y-auto overflow-x-hidden overscroll-y-contain touch-pan-y no-scrollbar'
           } relative z-10 w-full`} 
           style={{ 
             WebkitOverflowScrolling: 'touch'
@@ -1125,7 +1167,7 @@ export default function App() {
         >
           {activeTask ? (
             <SessionRunner 
-              key={activeTaskData?.lessonId || activeTaskData?.id || 'session-runner'}
+              key={activeTaskData?.sessionId || activeTaskData?.lessonId || activeTaskData?.id || 'session-runner'}
               sessionData={activeTaskData?.isSession ? activeTaskData : {
                 isSession: true,
                 lessonId: activeTaskData?.lessonId || activeTaskData?.id || 'single-task',
@@ -1325,6 +1367,29 @@ export default function App() {
         onStartRehabSession={handleStartRehabSession}
         onNavigateToLessons={() => setCurrentTab('nauka')}
       />
+
+      {/* Nocturne Luminary Session Resumed Badge */}
+      <AnimatePresence>
+        {showResumedSessionBadge && (
+          <motion.div
+            initial={{ opacity: 0, y: -24, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -24, scale: 0.95 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed top-[max(1rem,env(safe-area-inset-top,1rem))] left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0E1522]/95 border border-[#FFB800]/40 text-[#FFDCA1] shadow-[0_4px_24px_rgba(255,184,0,0.2)] backdrop-blur-md text-xs sm:text-sm font-medium select-none pointer-events-auto"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FFB800] animate-pulse shadow-[0_0_8px_rgba(255,184,0,0.8)]" />
+            <span>Wznowiono przerwaną sesję</span>
+            <button 
+              onClick={() => setShowResumedSessionBadge(false)}
+              className="ml-1 text-slate-400 hover:text-white transition-colors p-0.5 rounded-full"
+              aria-label="Zamknij powiadomienie"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -164,36 +164,42 @@ export function drawSessionTasks(
 
   if (!isPolish) {
     let mathTasks = [...pool];
-    if (mathTasks.length > 18) {
-      // Wymieszaj i wylosuj 15-18 zadań z zachowaniem reprezentacji zadań otwartych
-      const openTasks = mathTasks.filter((t: any) => 
-        t.type === 'OPEN_PROOF' || t.type === 'OPEN_TASK' || t.type === 'SHORT_ANSWER'
-      );
-      const closedTasks = mathTasks.filter((t: any) => 
-        t.type !== 'OPEN_PROOF' && t.type !== 'OPEN_TASK' && t.type !== 'SHORT_ANSWER'
-      );
+    
+    // Zawsze dokładnie 5 zadań
+    const openTasks = mathTasks.filter((t: any) => 
+      t.type === 'OPEN_PROOF' || t.type === 'OPEN_TASK' || t.type === 'SHORT_ANSWER' || t.type === 'OPEN_CALCULATION'
+    );
+    const closedTasks = mathTasks.filter((t: any) => 
+      t.type !== 'OPEN_PROOF' && t.type !== 'OPEN_TASK' && t.type !== 'SHORT_ANSWER' && t.type !== 'OPEN_CALCULATION'
+    );
 
-      // Cel: 15-18 zadań, w tym 2-4 otwarte
-      const openCount = Math.min(openTasks.length, Math.max(2, Math.min(4, Math.floor(openTasks.length * 0.5))));
-      const closedCount = Math.min(closedTasks.length, 16 - openCount);
-
-      const drawn = [
-        ...shuffle(openTasks).slice(0, openCount),
-        ...shuffle(closedTasks).slice(0, closedCount)
-      ];
-      mathTasks = shuffle(drawn);
-    } else if (mathTasks.length > 0) {
-      // Losowa kolejność przy każdym podejściu do sesji
-      mathTasks = shuffle(mathTasks);
+    let drawnTasks: any[] = [];
+    
+    if (openTasks.length > 0) {
+      // 4 zamknięte i 1 otwarte na końcu
+      const selectedClosed = shuffle(closedTasks).slice(0, 4);
+      const selectedOpen = shuffle(openTasks).slice(0, 1);
+      drawnTasks = [...selectedClosed, ...selectedOpen];
+    } else {
+      // 5 zamkniętych
+      drawnTasks = shuffle(closedTasks).slice(0, 5);
     }
+
+    // Uzupełnienie jeśli w puli było mniej niż 5 zamkniętych
+    if (drawnTasks.length < 5 && pool.length > 0) {
+      const remaining = pool.filter((t: any) => !drawnTasks.some(d => d.id === t.id));
+      drawnTasks.push(...shuffle(remaining).slice(0, 5 - drawnTasks.length));
+    }
+    
+    mathTasks = drawnTasks;
 
     return {
       lessonId,
       sessionTasks: mathTasks.map(t => enrichTaskWithVisual(t, lessonId)),
       formulaSheet,
       theoryPill: lesson?.theory_pill ? enrichTheoryPillWithVisual(lesson.theory_pill, lessonId) : undefined,
-      required_correct_tasks: lesson?.required_correct_tasks || 4,
-      estimated_time_formatted: lesson?.estimated_time_formatted || '~8 min'
+      required_correct_tasks: lesson?.required_correct_tasks || Math.max(1, mathTasks.length - 1),
+      estimated_time_formatted: lesson?.estimated_time_formatted || '~5 min'
     };
   }
 
@@ -292,7 +298,7 @@ export const dzial1TasksPool: PoolTask[] = [];
  * Generuje egzamin działowy z podanych zadań (z Firestore).
  * Gdy zadania nie zostaną przekazane, sięga do pamięci podręcznej repozytorium.
  */
-export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossExamData {
+export function generateTopicBossExam(topic?: any, allTopicTasks?: any[], requestedTaskCount: number = 5): BossExamData {
   const topicId = topic?.id || 'dzial-1';
   const rawTopicName = topic?.name || topic?.title || 'Liczby Rzeczywiste';
   const cleanTitle = String(rawTopicName)
@@ -334,24 +340,25 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
     tasksByLesson.get(lId)!.push(t);
   });
 
+  const targetCount = requestedTaskCount || 5;
   const chosenPool: any[] = [];
   if (tasksByLesson.size > 1) {
     tasksByLesson.forEach((lessonTasks) => {
-      if (chosenPool.length < 10 && lessonTasks.length > 0) chosenPool.push(lessonTasks[0]);
+      if (chosenPool.length < targetCount && lessonTasks.length > 0) chosenPool.push(lessonTasks[0]);
     });
   }
 
-  if (chosenPool.length < 7) {
+  if (chosenPool.length < targetCount) {
     for (const t of practiceTasks) {
       if (!chosenPool.some(cp => cp.id === t.id)) {
         chosenPool.push(t);
-        if (chosenPool.length >= 7) break;
+        if (chosenPool.length >= targetCount) break;
       }
     }
   }
 
   if (chosenPool.length === 0 && pool.length > 0) {
-    chosenPool.push(...pool.slice(0, 7));
+    chosenPool.push(...pool.slice(0, targetCount));
   }
 
   const examTasks: BossExamTask[] = chosenPool.map((chosen, idx) => ({
@@ -359,7 +366,9 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
     lessonId: chosen.lessonId || `${topicId}.${idx + 1}`,
     lessonOrder: idx + 1,
     lessonTitle: chosen.lessonTitle || chosen.title || `Zadanie ${idx + 1}`,
-    topicLabel: chosen.topic || cleanTitle,
+    topicLabel: (chosen.topic && !chosen.topic.startsWith('undefined')) 
+      ? chosen.topic 
+      : (cleanTitle ? `${cleanTitle} • ${chosen.lessonTitle || chosen.title || 'Zadanie'}` : (chosen.lessonTitle || chosen.title || `Zadanie ${idx + 1}`)),
     question: chosen.question || chosen.content || '',
     options: chosen.options || [],
     correct_answer: chosen.correct_answer || chosen.correctAnswer,
@@ -377,7 +386,7 @@ export function generateTopicBossExam(topic?: any, allTopicTasks?: any[]): BossE
     ai_tutor_rubric: chosen.ai_tutor_rubric
   }));
 
-  const totalQuestions = examTasks.length || 7;
+  const totalQuestions = examTasks.length || targetCount;
   const passingScore = Math.max(1, Math.ceil(totalQuestions * 0.7));
 
   return {

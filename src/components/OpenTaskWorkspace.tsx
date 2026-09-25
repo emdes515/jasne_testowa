@@ -25,7 +25,8 @@ import {
   ArrowUp,
   Layers,
   Loader2,
-  RefreshCw
+  RefreshCw,
+  GraduationCap
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 
@@ -325,12 +326,20 @@ export function OpenTaskWorkspace({
   mode = 'math'
 }: OpenTaskWorkspaceProps) {
   // Przełącznik segmentowy (Toggle): 'keyboard' vs 'whiteboard'
-  const [activeTab, setActiveTab] = useState<'keyboard' | 'whiteboard'>('keyboard');
+  const [activeTab, setActiveTab] = useState<'keyboard' | 'whiteboard'>(() => {
+    if (savedCanvasDataUrl && savedCanvasDataUrl.length > 50 && (!value || !value.trim())) {
+      return 'whiteboard';
+    }
+    return 'keyboard';
+  });
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showConnectorStudio, setShowConnectorStudio] = useState<boolean>(true);
   const [activeConnectorTab, setActiveConnectorTab] = useState<string>('thesis');
   const [showStructureGuide, setShowStructureGuide] = useState<boolean>(false);
   const textRef = useRef<HTMLTextAreaElement>(null);
+
+  // Deterministic / Numeric vs Open Proof distinction
+  const isNumeric = hideWhiteboard || task?.type === 'NUMERIC_INPUT' || task?.type === 'NUMERIC' || Boolean(task?.numeric_correct_answer || task?.correct_val !== undefined || task?.correct_answer !== undefined);
 
   // --------------------------------------------------------------------------
   // Whiteboard Canvas State & Logic
@@ -344,6 +353,7 @@ export function OpenTaskWorkspace({
   const [hasCanvasStrokes, setHasCanvasStrokes] = useState<boolean>(Boolean(savedCanvasDataUrl && savedCanvasDataUrl.length > 50));
   const historyRef = useRef<ImageData[]>([]);
   const historyIndexRef = useRef<number>(-1);
+  const lastLoadedCanvasUrlRef = useRef<string>('');
   const [canUndo, setCanUndo] = useState<boolean>(false);
   const [canRedo, setCanRedo] = useState<boolean>(false);
 
@@ -351,6 +361,51 @@ export function OpenTaskWorkspace({
     setCanUndo(historyIndexRef.current > 0);
     setCanRedo(historyIndexRef.current < historyRef.current.length - 1);
   };
+
+  // Synchronize canvas with asynchronously restored savedCanvasDataUrl
+  useEffect(() => {
+    if (!savedCanvasDataUrl || savedCanvasDataUrl.length < 50) return;
+    if (savedCanvasDataUrl === lastLoadedCanvasUrlRef.current) return;
+    if (isDrawing) return;
+
+    lastLoadedCanvasUrlRef.current = savedCanvasDataUrl;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const container = canvasContainerRef.current;
+    const rect = container?.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const width = rect?.width && rect.width > 0 ? rect.width : (canvas.width ? canvas.width / dpr : 360);
+    const height = canvasHeight;
+
+    const img = new Image();
+    img.onload = () => {
+      if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.scale(dpr, dpr);
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+      }
+      ctx.clearRect(0, 0, width, height);
+      ctx.drawImage(img, 0, 0, width, height);
+      setHasCanvasStrokes(true);
+      if (!value || !value.trim()) {
+        setActiveTab('whiteboard');
+      }
+      try {
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        historyRef.current = [imgData];
+        historyIndexRef.current = 0;
+        updateUndoRedoState();
+      } catch {}
+    };
+    img.src = savedCanvasDataUrl;
+  }, [savedCanvasDataUrl, canvasHeight]);
 
   // Rozszerzenie arkusza w dół (+350px)
   const handleExpandCanvas = () => {
@@ -407,7 +462,9 @@ export function OpenTaskWorkspace({
       updateUndoRedoState();
 
       if (onSaveCanvasData) {
-        onSaveCanvasData(canvas.toDataURL('image/png'));
+        const dataUrl = canvas.toDataURL('image/png');
+        lastLoadedCanvasUrlRef.current = dataUrl;
+        onSaveCanvasData(dataUrl);
       }
     } catch {
       // ignore
@@ -554,7 +611,9 @@ export function OpenTaskWorkspace({
     if (prevData) {
       ctx.putImageData(prevData, 0, 0);
       if (onSaveCanvasData) {
-        onSaveCanvasData(canvas.toDataURL('image/png'));
+        const dataUrl = canvas.toDataURL('image/png');
+        lastLoadedCanvasUrlRef.current = dataUrl;
+        onSaveCanvasData(dataUrl);
       }
     }
     updateUndoRedoState();
@@ -574,7 +633,9 @@ export function OpenTaskWorkspace({
     if (nextData) {
       ctx.putImageData(nextData, 0, 0);
       if (onSaveCanvasData) {
-        onSaveCanvasData(canvas.toDataURL('image/png'));
+        const dataUrl = canvas.toDataURL('image/png');
+        lastLoadedCanvasUrlRef.current = dataUrl;
+        onSaveCanvasData(dataUrl);
       }
     }
     updateUndoRedoState();
@@ -1366,7 +1427,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('x')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 italic font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 italic font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Zmienna x"
             >
               x
@@ -1374,7 +1435,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('POW2')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Potęga kwadratowa (x²)"
             >
               x²
@@ -1382,7 +1443,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('POW')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Potęga dowolna (xⁿ)"
             >
               xⁿ
@@ -1390,7 +1451,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('SQRT')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Pierwiastek (√)"
             >
               √
@@ -1398,7 +1459,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('FRAC')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Ułamek zwykły"
             >
               <span className="flex flex-col items-center justify-center leading-none">
@@ -1410,7 +1471,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('(')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Nawias otwierający ("
             >
               (
@@ -1418,7 +1479,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick(')')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Nawias zamykający )"
             >
               )
@@ -1426,7 +1487,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('⟨')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przedział domknięty lewostronnie ⟨"
             >
               ⟨
@@ -1434,7 +1495,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('⟩')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przedział domknięty prawostronnie ⟩"
             >
               ⟩
@@ -1442,7 +1503,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('∞')}
-              className="h-10 sm:h-11 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Nieskończoność (∞)"
             >
               ∞
@@ -1454,28 +1515,28 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('7')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               7
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('8')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               8
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('9')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               9
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('÷')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak dzielenia (÷)"
             >
               ÷
@@ -1483,7 +1544,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('·')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak mnożenia (·)"
             >
               ·
@@ -1491,7 +1552,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('-')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak minus (-)"
             >
               −
@@ -1503,28 +1564,28 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('4')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               4
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('5')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               5
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('6')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               6
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('+')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak plus (+)"
             >
               +
@@ -1532,7 +1593,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick(',')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przecinek dziesiętny (,)"
             >
               ,
@@ -1540,7 +1601,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('=')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak równości (=)"
             >
               =
@@ -1552,35 +1613,35 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('1')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               1
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('2')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               2
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('3')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               3
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('0')}
-              className="h-10 sm:h-11 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-white/10 text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               0
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('BACKSPACE')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-slate-300 hover:text-white font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-slate-300 hover:text-white font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Klawisz kasowania (Backspace)"
             >
               <Delete size={17} />
@@ -1588,7 +1649,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('NEXT')}
-              className="h-10 sm:h-11 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 hover:border-[#FFB800]/50 text-[#FFB800] font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 hover:border-[#FFB800]/50 text-[#FFB800] font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przejdź dalej / Wyjdź z ułamka (→ / Spacja)"
             >
               <ArrowRight size={18} className="stroke-[2.5]" />
@@ -1843,7 +1904,7 @@ export function OpenTaskWorkspace({
                   ) : (
                     <Lightbulb size={16} className="text-[#FFB800]" />
                   )}
-                  <span className="hidden sm:inline">Podpowiedź AI</span>
+                  <span className="hidden sm:inline">Wskazówka Tutora AI</span>
                   <span className="inline sm:hidden">Wskazówka</span>
                 </button>
               )}
@@ -1853,17 +1914,26 @@ export function OpenTaskWorkspace({
                 id="whiteboard-submit-answer-btn"
                 disabled={isAiLoading || (!hasCanvasStrokes && (!value || !value.trim()))}
                 onClick={handleUnifiedSubmit}
-                className="flex-1 py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none shrink-0"
+                className={`flex-1 py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none shrink-0 ${
+                  isNumeric
+                    ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)]'
+                    : 'bg-gradient-to-r from-[#FFB800] via-amber-500 to-amber-600 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.3)]'
+                }`}
               >
                 {isAiLoading ? (
                   <>
-                    <Loader2 size={17} className="animate-spin text-white" />
-                    <span>Egzaminator AI sprawdza...</span>
+                    <Loader2 size={17} className="animate-spin text-current" />
+                    <span>AI Egzaminator ocenia arkusz...</span>
+                  </>
+                ) : isNumeric ? (
+                  <>
+                    <Check size={18} strokeWidth={2.5} />
+                    <span>Sprawdź odpowiedź</span>
                   </>
                 ) : (
                   <>
-                    <Check size={18} strokeWidth={2.5} />
-                    <span>Sprawdź z Tutorem AI</span>
+                    <GraduationCap size={18} strokeWidth={2.2} />
+                    <span>Oceń z Egzaminatorem AI</span>
                   </>
                 )}
               </button>

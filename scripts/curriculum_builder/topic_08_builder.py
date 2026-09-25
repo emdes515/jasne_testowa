@@ -91,7 +91,7 @@ def build_topic_08():
                 'description': 'Wartość określająca liczbę pierwiastków trójmianu.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 7',
-                'example': 'x^2 - 4x + 3 \\implies \\Delta = 16 - 12 = 4',
+                'example': 'x^2 - 4x + 3 \\longrightarrow \\Delta = 16 - 12 = 4',
                 'mnemonic': 'b kwadrat minus 4ac.',
                 'matura_tip': '$b^2$ jest ZAWSZE dodatnie lub zerem (nawet dla ujemnego $b$).'
             },
@@ -198,21 +198,21 @@ def build_topic_08():
         core_formulas=[
             {
                 'title': 'Nierówność z ramionami w górę (a > 0)',
-                'latex': 'a > 0 \\implies \\begin{cases} f(x) < 0 \\implies x \\in (x_1, x_2) \\\\ f(x) > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
+                'latex': 'a > 0 \\longrightarrow \\begin{cases} f(x) < 0 \\longrightarrow x \\in (x_1, x_2) \\\\ f(x) > 0 \\longrightarrow x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
                 'description': 'Wartości ujemne są wewnątrz, dodatnie na zewnątrz.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 8',
-                'example': 'x^2 - 4 \\le 0 \\implies x \\in [-2, 2]',
+                'example': 'x^2 - 4 \\le 0 \\longrightarrow x \\in [-2, 2]',
                 'mnemonic': 'Uśmiechnięta parabola nurkuje pod oś w środku.',
                 'matura_tip': 'Zawsze zaznacz kropki na osi przed podaniem przedziału.'
             },
             {
                 'title': 'Nierówność z ramionami w dół (a < 0)',
-                'latex': 'a < 0 \\implies \\begin{cases} f(x) > 0 \\implies x \\in (x_1, x_2) \\\\ f(x) < 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
+                'latex': 'a < 0 \\longrightarrow \\begin{cases} f(x) > 0 \\longrightarrow x \\in (x_1, x_2) \\\\ f(x) < 0 \\longrightarrow x \\in (-\\infty, x_1) \\cup (x_2, +\\infty) \\end{cases}',
                 'description': 'Wartości dodatnie są wewnątrz, ujemne na zewnątrz.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 8',
-                'example': '-x^2 + 4 > 0 \\implies x \\in (-2, 2)',
+                'example': '-x^2 + 4 > 0 \\longrightarrow x \\in (-2, 2)',
                 'mnemonic': 'Smutna parabola unosi się nad oś tylko na czubku.',
                 'matura_tip': 'Możesz też pomnożyć przez -1 i zmienić znak nierówności.'
             }
@@ -309,7 +309,7 @@ def build_topic_08():
                 'description': 'Miejsca zerowe: x = 0 lub x = -b/a.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '2x^2 - 6x = 2x(x - 3) \\implies x_1 = 0, x_2 = 3',
+                'example': '2x^2 - 6x = 2x(x - 3) \\longrightarrow x_1 = 0, x_2 = 3',
                 'mnemonic': 'Iks przed nawias załatwia sprawę.',
                 'matura_tip': 'Nie licz delty, gdy c = 0.'
             },
@@ -319,7 +319,7 @@ def build_topic_08():
                 'description': 'Miejsca zerowe: x = sqrt(c) lub x = -sqrt(c).',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 7',
-                'example': 'x^2 - 25 = (x - 5)(x + 5) \\implies x_1 = -5, x_2 = 5',
+                'example': 'x^2 - 25 = (x - 5)(x + 5) \\longrightarrow x_1 = -5, x_2 = 5',
                 'mnemonic': 'Różnica kwadratów daje dwa przeciwne pierwiastki.',
                 'matura_tip': 'Nierówność $x^2 + 25 \\le 0$ jest sprzeczna (brak rozwiązań).'
             }
@@ -412,21 +412,21 @@ def build_topic_08():
         core_formulas=[
             {
                 'title': 'Delta ujemna i ramiona w górę',
-                'latex': '\\Delta < 0, a > 0 \\implies \\begin{cases} ax^2 + bx + c > 0 \\implies x \\in \\mathbb{R} \\\\ ax^2 + bx + c \\le 0 \\implies x \\in \\emptyset \\end{cases}',
+                'latex': '\\Delta < 0, a > 0 \\longrightarrow \\begin{cases} ax^2 + bx + c > 0 \\longrightarrow x \\in \\mathbb{R} \\\\ ax^2 + bx + c \\le 0 \\longrightarrow x \\in \\emptyset \\end{cases}',
                 'description': 'Parabola w całości nad osią pozioma.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 8',
-                'example': 'x^2 + 1 > 0 \\implies x \\in \\mathbb{R}',
+                'example': 'x^2 + 1 > 0 \\longrightarrow x \\in \\mathbb{R}',
                 'mnemonic': 'Wisi w powietrzu nad osią — zawsze dodatnia.',
                 'matura_tip': 'Nie pisz brak rozwiązań, gdy delta jest ujemna!'
             },
             {
                 'title': 'Delta równa zero (punkt styczności)',
-                'latex': '(x - x_0)^2 \\le 0 \\implies x = x_0',
+                'latex': '(x - x_0)^2 \\le 0 \\longrightarrow x = x_0',
                 'description': 'Rozwiązanie jednopunktowe w wierzchołku paraboli.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '(x - 2)^2 \\le 0 \\implies x = 2',
+                'example': '(x - 2)^2 \\le 0 \\longrightarrow x = 2',
                 'mnemonic': 'Wierzchołek całuje oś w jednym punkcie.',
                 'matura_tip': 'Dla ostrego znaku < zbiór jest pusty.'
             }
@@ -445,6 +445,41 @@ def build_topic_08():
         tasks=l4_tasks
     )
     lessons.append(l4)
+
+
+
+    # --- Wstrzyknięte z arkuszy CKE ---
+    # CKE Maj 2023 - Zadanie 15. (2 pkt)
+    lessons[2]["tasks"].append(
+        make_open_task(
+            task_id="t08_l03_cke_01",
+            source="CKE Maj 2023 • Zad. 15 (2 pkt)",
+            question="Rozwiąż nierówność: $$x^2 - 2x - 8 \\ge 0$$ Zapisz obliczenia.",
+            points=2,
+            scoring_key=[
+                "1 pkt – poprawne wyznaczenie pierwiastków trójmianu kwadratowego",
+                "2 pkt – podanie poprawnego zbioru rozwiązań nierówności (x \\in (-\\infty, -2\\rangle \\cup \\langle 4, +\\infty))"
+            ],
+            explanation="1. Miejsca zerowe: $\\Delta = (-2)^2 - 4 \\cdot 1 \\cdot (-8) = 4 + 32 = 36$.<br/>$\\sqrt{\\Delta} = 6$.<br/>$x_1 = \\frac{2 - 6}{2} = -2$<br/>$x_2 = \\frac{2 + 6}{2} = 4$<br/>2. Parabola skierowana ramionami w górę ($a = 1 > 0$).<br/>3. Wartości $\\ge 0$ (nieujemne) parabola przyjmuje na zewnątrz pierwiastków.<br/>Odp: $x \\in (-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$.",
+            cke_trap="Zły kierunek ramion paraboli, albo brak przedziałów domkniętych (nierówność $\\ge$, więc zbiór domknięty)."
+        )
+    )
+
+    # CKE Informator 2025 - Przykład nierówności z ujemnym a
+    lessons[2]["tasks"].append(
+        make_open_task(
+            task_id="t08_l03_cke_02",
+            source="CKE Informator 2025 • Przykład",
+            question="Rozwiąż nierówność: $$-2x^2 + 5x - 3 \\le 0$$ Zapisz obliczenia.",
+            points=2,
+            scoring_key=[
+                "1 pkt – wyznaczenie miejsc zerowych funkcji",
+                "2 pkt – sformułowanie ostatecznej odpowiedzi w postaci sumy przedziałów domkniętych"
+            ],
+            explanation="1. Miejsca zerowe: $\\Delta = 5^2 - 4 \\cdot (-2) \\cdot (-3) = 25 - 24 = 1$.<br/>$\\sqrt{\\Delta} = 1$.<br/>$x_1 = \\frac{-5 - 1}{2 \\cdot (-2)} = \\frac{-6}{-4} = 1.5$<br/>$x_2 = \\frac{-5 + 1}{-4} = 1$<br/>2. Parabola ramionami w dół ($a = -2 < 0$).<br/>3. Wartości $\\le 0$ są pod osią OX (na zewnątrz).<br/>Odp: $x \\in (-\\infty, 1\\rangle \\cup \\langle \\frac{3}{2}, +\\infty)$.",
+            cke_trap="Minus przy $x^2$ sprawia, że parabola jest skierowana w dół. Odpowiedzią są przedziały zewnętrzne, a nie wewnętrzne!"
+        )
+    )
 
     return {
         'id': topic_id,

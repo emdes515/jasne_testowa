@@ -34,7 +34,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
         { x: 5, y: 0, dot: 'filled', color: '#10B981', label: 'a + r', attach: 's' }
       ],
       labels: [
-        { x: 2, y: 1.8, text: '|x - a| = r  ⟹  odległość liczby x od punktu a wynosi r', color: '#FFB800', attach: 'n', fontSize: 12 },
+        { x: 2, y: 1.8, text: '|x - a| = r  ->  odległość liczby x od punktu a wynosi r', color: '#FFB800', attach: 'n', fontSize: 12 },
         { x: 0.5, y: 1.05, text: 'odległość r (w lewo)', color: '#38BDF8', attach: 'n', fontSize: 11 },
         { x: 3.5, y: 1.05, text: 'odległość r (w prawo)', color: '#38BDF8', attach: 'n', fontSize: 11 }
       ]
@@ -116,7 +116,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
               { x: 5, y: 0, dot: 'hollow', color: '#38BDF8', label: 'a + r', attach: 's' }
             ],
             labels: [
-              { x: 2, y: 1.25, text: '|x - a| < r  ⟹  x ∈ (a - r, a + r)', color: '#38BDF8', attach: 'n', fontSize: 12 }
+              { x: 2, y: 1.25, text: '|x - a| < r  ->  x ∈ (a - r, a + r)', color: '#38BDF8', attach: 'n', fontSize: 12 }
             ]
           },
           subtitle: 'Kółka otwarte, wnętrze przedziału o promieniu r'
@@ -145,7 +145,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
               { x: 5, y: 0, dot: 'filled', color: '#10B981', label: 'a + r', attach: 's' }
             ],
             labels: [
-              { x: 2, y: 1.25, text: '|x - a| ≥ r  ⟹  x ∈ (-∞, a-r⟩ ∪ ⟨a+r, +∞)', color: '#10B981', attach: 'n', fontSize: 12 }
+              { x: 2, y: 1.25, text: '|x - a| ≥ r  ->  x ∈ (-∞, a-r⟩ ∪ ⟨a+r, +∞)', color: '#10B981', attach: 'n', fontSize: 12 }
             ]
           },
           subtitle: 'Kółka zamalowane, dwa rozbieżne promienie na zewnątrz'
@@ -168,8 +168,8 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       { x: 360, y: 165, dot: 'filled', color: '#10B981', label: 'a + r', labelPosition: 'bottom' }
     ],
     labels: [
-      { x: 45, y: 45, text: '|x - a| < r  ⟹  odległość < r (wnętrze, kółka otwarte)', color: '#38BDF8', fontSize: 12, fontWeight: '700', anchor: 'start' },
-      { x: 45, y: 135, text: '|x - a| ≥ r  ⟹  odległość ≥ r (dwa promienie, kółka domknięte)', color: '#10B981', fontSize: 12, fontWeight: '700', anchor: 'start' },
+      { x: 45, y: 45, text: '|x - a| < r  ->  odległość < r (wnętrze, kółka otwarte)', color: '#38BDF8', fontSize: 12, fontWeight: '700', anchor: 'start' },
+      { x: 45, y: 135, text: '|x - a| ≥ r  ->  odległość ≥ r (dwa promienie, kółka domknięte)', color: '#10B981', fontSize: 12, fontWeight: '700', anchor: 'start' },
       { x: 505, y: 75, text: 'x', color: '#94A3B8', fontSize: 12, fontWeight: '700', anchor: 'start' },
       { x: 505, y: 165, text: 'x', color: '#94A3B8', fontSize: 12, fontWeight: '700', anchor: 'start' }
     ],
@@ -218,7 +218,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
         { x: -3, y: 0, dot: 'filled', color: '#10B981', label: '-3', attach: 's' }
       ],
       labels: [
-        { x: 0, y: 2.05, text: '-2x ≤ 6   ⟹   (: -2)   ⟹   x ≥ -3', color: '#FFB800', attach: 'n', fontSize: 13 },
+        { x: 0, y: 2.05, text: '-2x ≤ 6   ->   (: -2)   ->   x ≥ -3', color: '#FFB800', attach: 'n', fontSize: 13 },
         { x: 0, y: 1.55, text: 'Wskazówka: Dzielenie przez liczbę ujemną odwraca zwrot ( ≤ na ≥ )', color: '#38BDF8', attach: 'n', fontSize: 11 },
         { x: 4.1, y: -0.35, text: 'x', color: '#94A3B8', attach: 's', fontSize: 13 }
       ]
@@ -239,7 +239,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       { x: 200, y: 105, dot: 'filled', color: '#10B981', label: 'x = -3 (domknięte)', labelPosition: 'top' }
     ],
     labels: [
-      { x: 45, y: 40, text: '-2x ≤ 6   ⟹   (: -2)   ⟹   x ≥ -3', color: '#FFB800', fontSize: 13, fontWeight: '700', anchor: 'start' },
+      { x: 45, y: 40, text: '-2x ≤ 6   ->   (: -2)   ->   x ≥ -3', color: '#FFB800', fontSize: 13, fontWeight: '700', anchor: 'start' },
       { x: 45, y: 70, text: 'Wskazówka: Dzielenie przez liczbę ujemną odwraca zwrot ( ≤  na  ≥ )', color: '#38BDF8', fontSize: 11, fontWeight: '600', anchor: 'start' },
       { x: 505, y: 150, text: 'x', color: '#94A3B8', fontSize: 12, fontWeight: '700', anchor: 'start' }
     ],
@@ -287,7 +287,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
               { x: 1, y: 0, dot: 'hollow', color: '#38BDF8', label: 'a', attach: 's' }
             ],
             labels: [
-              { x: 1.5, y: 1.65, text: 'x > a  ⟹  x ∈ (a, +∞)', color: '#38BDF8', attach: 'n', fontSize: 12 }
+              { x: 1.5, y: 1.65, text: 'x > a  ->  x ∈ (a, +∞)', color: '#38BDF8', attach: 'n', fontSize: 12 }
             ]
           },
           subtitle: 'Kółko otwarte i nawias okrągły wykluczają punkt a z rozwiązań'
@@ -318,7 +318,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
               { x: 1, y: 0, dot: 'filled', color: '#10B981', label: 'a', attach: 's' }
             ],
             labels: [
-              { x: 1.5, y: 1.65, text: 'x ≥ a  ⟹  x ∈ ⟨a, +∞)', color: '#10B981', attach: 'n', fontSize: 12 }
+              { x: 1.5, y: 1.65, text: 'x ≥ a  ->  x ∈ ⟨a, +∞)', color: '#10B981', attach: 'n', fontSize: 12 }
             ]
           },
           subtitle: 'Kółko zamalowane i nawias ostry domykają punkt a w rozwiązaniach'
@@ -348,8 +348,8 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       { x: 200, y: 152, dot: 'filled', color: '#10B981', label: 'kółko zamalowane (a ∈)', labelPosition: 'top' }
     ],
     labels: [
-      { x: 45, y: 25, text: 'x > a  ⟹  x ∈ (a, +∞)  [liczba a NIE należy]', color: '#38BDF8', fontSize: 12, fontWeight: '700', anchor: 'start' },
-      { x: 45, y: 125, text: 'x ≥ a  ⟹  x ∈ ⟨a, +∞)  [liczba a NALEŻY]', color: '#10B981', fontSize: 12, fontWeight: '700', anchor: 'start' },
+      { x: 45, y: 25, text: 'x > a  ->  x ∈ (a, +∞)  [liczba a NIE należy]', color: '#38BDF8', fontSize: 12, fontWeight: '700', anchor: 'start' },
+      { x: 45, y: 125, text: 'x ≥ a  ->  x ∈ ⟨a, +∞)  [liczba a NALEŻY]', color: '#10B981', fontSize: 12, fontWeight: '700', anchor: 'start' },
       { x: 505, y: 85, text: 'x', color: '#94A3B8', fontSize: 12, fontWeight: '700', anchor: 'start' },
       { x: 505, y: 185, text: 'x', color: '#94A3B8', fontSize: 12, fontWeight: '700', anchor: 'start' }
     ],
@@ -417,7 +417,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       labels: [
         { x: -1.2, y: 1.3, text: 'Warunek 1: x > -2  [od -2 w prawo]', color: '#38BDF8', attach: 'n', fontSize: 12 },
         { x: 1.2, y: 2.1, text: 'Warunek 2: x ≤ 3  [do 3 w lewo]', color: '#FFB800', attach: 'n', fontSize: 12 },
-        { x: 0.5, y: 2.75, text: 'Część wspólna: x ∈ (-2, 3⟩ ⟹ całkowite: {-1, 0, 1, 2, 3}', color: '#10B981', attach: 'n', fontSize: 13 },
+        { x: 0.5, y: 2.75, text: 'Część wspólna: x ∈ (-2, 3⟩ -> całkowite: {-1, 0, 1, 2, 3}', color: '#10B981', attach: 'n', fontSize: 13 },
         { x: 5.0, y: -0.35, text: 'x', color: '#94A3B8', attach: 's', fontSize: 13 }
       ]
     },
@@ -450,7 +450,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     labels: [
       { x: 45, y: 40, text: 'Warunek 1: x > -2  [od -2 w prawo, kółko otwarte]', color: '#38BDF8', fontSize: 12, fontWeight: '700', anchor: 'start' },
       { x: 45, y: 75, text: 'Warunek 2: x ≤ 3  [do 3 w lewo, kółko zamalowane]', color: '#FFB800', fontSize: 12, fontWeight: '700', anchor: 'start' },
-      { x: 45, y: 250, text: 'Część wspólna: x ∈ (-2, 3⟩  ⟹  całkowite: {-1, 0, 1, 2, 3}', color: '#10B981', fontSize: 12, fontWeight: '700', anchor: 'start' },
+      { x: 45, y: 250, text: 'Część wspólna: x ∈ (-2, 3⟩  ->  całkowite: {-1, 0, 1, 2, 3}', color: '#10B981', fontSize: 12, fontWeight: '700', anchor: 'start' },
       { x: 505, y: 185, text: 'x', color: '#94A3B8', fontSize: 12, fontWeight: '700', anchor: 'start' }
     ],
     metrics: [
@@ -485,7 +485,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       ],
       labels: [
         { x: 0, y: 1.5, text: 'Równanie: (x² - 4)/(x - 2) = 0   |   D = ℝ \\ {2}', color: '#38BDF8', attach: 'n', fontSize: 13 },
-        { x: 2, y: 1.05, text: 'Mianownik x - 2 = 0 ⟹ pierwiastek obcy!', color: '#F43F5E', attach: 'n', fontSize: 11 },
+        { x: 2, y: 1.05, text: 'Mianownik x - 2 = 0 -> pierwiastek obcy!', color: '#F43F5E', attach: 'n', fontSize: 11 },
         { x: 3.8, y: -0.35, text: 'x', color: '#94A3B8', attach: 's', fontSize: 13 }
       ]
     },
@@ -884,7 +884,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
           title: 'Δ < 0 oraz a > 0 (parabola cała NAD osią)',
           badge: 'f(x) > 0 : x ∈ ℝ',
           badgeColor: 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40',
-          subtitle: 'f(x) > 0 ⟹ x ∈ ℝ   |   f(x) ≤ 0 ⟹ ∅',
+          subtitle: 'f(x) > 0 -> x ∈ ℝ   |   f(x) ≤ 0 -> ∅',
           plot: {
             xRange: [-3.5, 5.5],
             yRange: [-2, 5],
@@ -902,7 +902,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
           title: 'Δ < 0 oraz a < 0 (parabola cała POD osią)',
           badge: 'f(x) < 0 : x ∈ ℝ',
           badgeColor: 'bg-rose-500/20 text-rose-300 border border-rose-400/40',
-          subtitle: 'f(x) < 0 ⟹ x ∈ ℝ   |   f(x) ≥ 0 ⟹ ∅',
+          subtitle: 'f(x) < 0 -> x ∈ ℝ   |   f(x) ≥ 0 -> ∅',
           plot: {
             xRange: [-3.5, 5.5],
             yRange: [-5, 2],
@@ -1170,7 +1170,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-10-3': {
     type: 'PLOT',
     title: 'Warunek równoległości i prostopadłości prostych',
-    formulaBadge: '$k \\parallel l \\iff a_1 = a_2,\\quad k \\perp m \\iff a_1 \\cdot a_2 = -1$',
+    formulaBadge: '$k \\parallel l: a_1 = a_2,\\quad k \\perp m: a_1 \\cdot a_2 = -1$',
     caption: 'Proste równoległe mają identyczny współczynnik kierunkowy ($a_1 = a_2$). Proste prostopadłe mają współczynniki przeciwne i odwrotne ($a_1 \\cdot a_2 = -1$).',
     plotData: {
       panels: [
@@ -1221,7 +1221,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     },
     metrics: [
       { label: 'Warunek równoległości', value: '$a_1 = a_2$ (identyczne nachylenie)', color: '#38BDF8' },
-      { label: 'Warunek prostopadłości', value: '$a_1 \\cdot a_2 = -1 \\iff a_2 = -\\frac{1}{a_1}$', color: '#10B981' },
+      { label: 'Warunek prostopadłości', value: '$a_1 \\cdot a_2 = -1 \\longrightarrow a_2 = -\\frac{1}{a_1}$', color: '#10B981' },
       { label: 'Przykład liczb', value: '$a_1 = 2 \\implies a_2 = -\\frac{1}{2}$', color: '#FFB800' },
       { label: 'Rola wyrazu wolnego b', value: 'Wyraz wolny $b$ może być dowolny!', color: '#94A3B8' }
     ]
@@ -1550,7 +1550,7 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
     axisOfSymmetry: 2.5,
     points: [
       { x: 2.5, y: -2.5, label: 'W = (p, q)', dot: 'filled', color: '#38BDF8' },
-      { x: 0, y: 0.625, label: '(0, c), c > 0', dot: 'filled', color: '#10B981' }
+      { x: 0, y: 0.625, label: '(0, c)', dot: 'filled', color: '#10B981' }
     ]
   },
 
@@ -1581,160 +1581,7 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
     ]
   },
 
-  // ----------------------------------------------------
-  // DZIAŁ 8: NIERÓWNOŚCI KWADRATOWE (SZKICE PARABOLI MAFS)
-  // ----------------------------------------------------
-  'task-8-1-2-1': {
-    type: 'PARABOLA',
-    xRange: [-1, 3],
-    yRange: [-3, 2],
-    gridStep: 1,
-    parabola: {
-      a: -2,
-      p: 1.25,
-      q: 0.125,
-      color: '#F43F5E',
-      domain: [-0.5, 3]
-    },
-    points: [
-      { x: 1, y: 0, label: 'x₁ = 1', dot: 'filled', color: '#FFB800', attach: 'sw' },
-      { x: 1.5, y: 0, label: 'x₂ = 1.5', dot: 'filled', color: '#FFB800', attach: 'se' },
-      { x: 1.25, y: 0.125, label: 'a = -2 < 0 (ramiona w dół)', dot: 'filled', color: '#F43F5E', attach: 'n' }
-    ]
-  },
-  'task-8-1-2-2': {
-    type: 'PARABOLA',
-    xRange: [0, 5],
-    yRange: [-2, 4],
-    gridStep: 1,
-    parabola: {
-      a: 1,
-      p: 2.5,
-      q: -0.25,
-      color: '#38BDF8',
-      domain: [0.5, 4.5]
-    },
-    segments: [
-      { from: [2, 0], to: [3, 0], startDot: 'filled', endDot: 'filled', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 2, y: 0, label: 'x₁ = 2', dot: 'filled', color: '#10B981', attach: 'nw' },
-      { x: 3, y: 0, label: 'x₂ = 3', dot: 'filled', color: '#10B981', attach: 'ne' }
-    ]
-  },
-  'task-8-1-2-3': {
-    type: 'PARABOLA',
-    xRange: [-1, 5],
-    yRange: [-2, 3],
-    gridStep: 1,
-    parabola: {
-      a: -1,
-      p: 2,
-      q: 1,
-      color: '#FFB800',
-      domain: [0, 4]
-    },
-    segments: [
-      { from: [1, 0], to: [3, 0], startDot: 'hollow', endDot: 'hollow', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 1, y: 0, label: 'x₁ = 1', dot: 'hollow', color: '#10B981', attach: 'sw' },
-      { x: 3, y: 0, label: 'x₂ = 3', dot: 'hollow', color: '#10B981', attach: 'se' },
-      { x: 2, y: 1, label: 'W(2, 1)', dot: 'filled', color: '#FFB800', attach: 'n' }
-    ]
-  },
-  'task-8-1-3-1': {
-    type: 'PARABOLA',
-    xRange: [-2, 6],
-    yRange: [-5, 4],
-    gridStep: 1,
-    parabola: {
-      a: 1,
-      p: 2,
-      q: -4,
-      color: '#38BDF8',
-      domain: [-1, 5]
-    },
-    segments: [
-      { from: [-2, 0], to: [0, 0], startDot: 'none', endDot: 'hollow', color: '#10B981', weight: 4 },
-      { from: [4, 0], to: [6, 0], startDot: 'hollow', endDot: 'none', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 0, y: 0, label: 'x₁ = 0', dot: 'hollow', color: '#10B981', attach: 'nw' },
-      { x: 4, y: 0, label: 'x₂ = 4', dot: 'hollow', color: '#10B981', attach: 'ne' }
-    ]
-  },
-  'task-8-1-3-2': {
-    type: 'PARABOLA',
-    xRange: [-6, 6],
-    yRange: [-5, 5],
-    gridStep: 2,
-    parabola: {
-      a: 0.25,
-      p: 0,
-      q: -4,
-      color: '#38BDF8',
-      domain: [-5.5, 5.5]
-    },
-    segments: [
-      { from: [-4, 0], to: [4, 0], startDot: 'filled', endDot: 'filled', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: -4, y: 0, label: 'x₁ = -4', dot: 'filled', color: '#10B981', attach: 'nw' },
-      { x: 4, y: 0, label: 'x₂ = 4', dot: 'filled', color: '#10B981', attach: 'ne' }
-    ]
-  },
-  'task-8-4-1': {
-    type: 'PARABOLA',
-    xRange: [-4, 4],
-    yRange: [-2, 8],
-    gridStep: 2,
-    parabola: {
-      a: 1,
-      p: 0,
-      q: 4,
-      color: '#10B981',
-      domain: [-3, 3]
-    },
-    segments: [
-      { from: [-4, 0], to: [4, 0], startDot: 'none', endDot: 'none', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 0, y: 4, label: 'W(0, 4) > 0: cała parabola nad OX', dot: 'filled', color: '#10B981', attach: 'n' }
-    ]
-  },
-  'task-8-4-2': {
-    type: 'PARABOLA',
-    xRange: [0, 6],
-    yRange: [-2, 5],
-    gridStep: 1,
-    parabola: {
-      a: 1,
-      p: 3,
-      q: 0,
-      color: '#FFB800',
-      domain: [1, 5]
-    },
-    points: [
-      { x: 3, y: 0, label: 'W(3, 0): jedyny punkt ≤ 0', dot: 'filled', color: '#10B981', attach: 's' }
-    ]
-  },
-  'task-8-4-3': {
-    type: 'PARABOLA',
-    xRange: [-2, 4],
-    yRange: [-7, 2],
-    gridStep: 1,
-    parabola: {
-      a: -1,
-      p: 1,
-      q: -2,
-      color: '#F43F5E',
-      domain: [-1.5, 3.5]
-    },
-    points: [
-      { x: 1, y: -2, label: 'W pod osią, a < 0: brak punktów > 0', dot: 'filled', color: '#F43F5E', attach: 's' }
-    ]
-  },
+
 
   // ----------------------------------------------------
   // DZIAŁ 9: WŁASNOŚCI FUNKCJI (WYKRESY MAFS)
@@ -1751,8 +1598,8 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
     ],
     points: [
       { x: -4, y: -1, label: '(-4, -1)', dot: 'filled', color: '#38BDF8', attach: 'sw' },
-      { x: -1, y: -2, label: 'min: (-1, -2)', dot: 'filled', color: '#10B981', attach: 's' },
-      { x: 3, y: 4, label: 'max: (3, 4)', dot: 'filled', color: '#FFB800', attach: 'n' },
+      { x: -1, y: -2, label: '(-1, -2)', dot: 'filled', color: '#10B981', attach: 's' },
+      { x: 3, y: 4, label: '(3, 4)', dot: 'filled', color: '#FFB800', attach: 'n' },
       { x: 5, y: 3, label: '(5, 3)', dot: 'filled', color: '#38BDF8', attach: 'ne' }
     ]
   },
@@ -1766,8 +1613,8 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
       { from: [1, 2], to: [4, 5], startDot: 'none', endDot: 'hollow', color: '#38BDF8' }
     ],
     points: [
-      { x: -3, y: 1, label: '(-3, 1) zamalowany', dot: 'filled', color: '#10B981', attach: 'sw' },
-      { x: 4, y: 5, label: '(4, 5) otwarty', dot: 'hollow', color: '#F43F5E', attach: 'ne' }
+      { x: -3, y: 1, label: '(-3, 1)', dot: 'filled', color: '#10B981', attach: 'sw' },
+      { x: 4, y: 5, label: '(4, 5)', dot: 'hollow', color: '#F43F5E', attach: 'ne' }
     ]
   },
   'task-9-2-2': {
@@ -1798,9 +1645,7 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
       { from: [0, -3], to: [2, -3], color: 'rgba(148, 163, 184, 0.4)', strokeWidth: 1.5, dashed: true }
     ],
     points: [
-      { x: 2, y: -3, label: 'P(2, -3) ⟹ f(2) = -3', dot: 'filled', color: '#38BDF8', attach: 'se' },
-      { x: 2, y: 0, label: 'x = 2', dot: 'filled', color: '#FFB800', attach: 'n' },
-      { x: 0, y: -3, label: 'y = -3', dot: 'filled', color: '#10B981', attach: 'w' }
+      { x: 2, y: -3, label: 'P(2, -3)', dot: 'filled', color: '#38BDF8', attach: 'se' }
     ]
   },
   'task-9-3-2': {
@@ -1814,7 +1659,7 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
     ],
     points: [
       { x: -3, y: -2, label: '(-3, -2)', dot: 'filled', color: '#10B981', attach: 'sw' },
-      { x: 1, y: 4, label: 'max: (1, 4)', dot: 'filled', color: '#FFB800', attach: 'n' },
+      { x: 1, y: 4, label: '(1, 4)', dot: 'filled', color: '#FFB800', attach: 'n' },
       { x: 5, y: 0, label: '(5, 0)', dot: 'filled', color: '#F43F5E', attach: 'se' }
     ]
   },
@@ -1829,7 +1674,7 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
       { from: [3, 3], to: [5, 1], startDot: 'filled', endDot: 'filled', color: '#38BDF8' }
     ],
     points: [
-      { x: 1, y: 3, label: 'odcinek poziomy: f(x) = const = 3', dot: 'none', color: '#FFB800', attach: 'n' }
+      { x: 1, y: 3, label: 'y = 3', dot: 'none', color: '#FFB800', attach: 'n' }
     ]
   },
   'task-9-1-4-2': {
@@ -1874,19 +1719,6 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
   // ----------------------------------------------------
   // DZIAŁ 10: FUNKCJA LINIOWA (WYKRESY PROSTYCH MAFS)
   // ----------------------------------------------------
-  'task-10-1-1': {
-    type: 'LINEAR',
-    xRange: [-2, 5],
-    yRange: [-2, 9],
-    gridStep: 1,
-    lines: [
-      { slope: -3, intercept: 7, color: '#38BDF8', label: 'f(x) = -3x + 7' }
-    ],
-    points: [
-      { x: 0, y: 7, label: 'P(0, 7) = (0, b)', dot: 'filled', color: '#10B981', attach: 'e' },
-      { x: 2.333, y: 0, label: 'x₀ = 7/3', dot: 'filled', color: '#FFB800', attach: 'sw' }
-    ]
-  },
   'task-10-1-3': {
     type: 'LINEAR',
     xRange: [-3, 5],
@@ -1896,64 +1728,7 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
       { slope: -0.75, intercept: 2, color: '#38BDF8', label: 'y = ax + b' }
     ],
     points: [
-      { x: 0, y: 2, label: '(0, b), b > 0', dot: 'filled', color: '#10B981', attach: 'ne' }
-    ]
-  },
-  'task-10-2-2': {
-    type: 'LINEAR',
-    xRange: [-1, 6],
-    yRange: [-1, 11],
-    gridStep: 1,
-    lines: [
-      { slope: 2, intercept: 1, color: '#38BDF8', label: 'y = 2x + 1' }
-    ],
-    segments: [
-      { from: [1, 3], to: [4, 3], color: 'rgba(255, 184, 0, 0.6)', strokeWidth: 1.5, dashed: true, label: 'Δx = 3' },
-      { from: [4, 3], to: [4, 9], color: 'rgba(16, 185, 129, 0.6)', strokeWidth: 1.5, dashed: true, label: 'Δy = 6' }
-    ],
-    points: [
-      { x: 1, y: 3, label: 'A(1, 3)', dot: 'filled', color: '#FFB800', attach: 'nw' },
-      { x: 4, y: 9, label: 'B(4, 9)', dot: 'filled', color: '#10B981', attach: 'nw' }
-    ]
-  },
-  'task-10-2-3': {
-    type: 'LINEAR',
-    xRange: [-4, 4],
-    yRange: [-5, 7],
-    gridStep: 1,
-    lines: [
-      { slope: -2, intercept: 1, color: '#38BDF8', label: 'y = -2x + 1' }
-    ],
-    points: [
-      { x: -2, y: 5, label: 'K(-2, 5)', dot: 'filled', color: '#FFB800', attach: 'ne' },
-      { x: 2, y: -3, label: 'L(2, -3)', dot: 'filled', color: '#10B981', attach: 'se' }
-    ]
-  },
-  'task-10-3-1': {
-    type: 'LINEAR',
-    xRange: [-3, 3],
-    yRange: [-5, 8],
-    gridStep: 1,
-    lines: [
-      { slope: 5, intercept: 4, color: '#38BDF8', label: 'k: y = 5x + 4' },
-      { slope: 5, intercept: -2, color: '#FFB800', label: 'l: y = 5x - 2' }
-    ],
-    points: [
-      { x: 0, y: 4, label: '(0, 4)', dot: 'filled', color: '#38BDF8', attach: 'w' },
-      { x: 0, y: -2, label: '(0, -2)', dot: 'filled', color: '#FFB800', attach: 'e' }
-    ]
-  },
-  'task-10-3-2': {
-    type: 'LINEAR',
-    xRange: [-4, 4],
-    yRange: [-2, 6],
-    gridStep: 1,
-    lines: [
-      { slope: -0.667, intercept: 1, color: '#38BDF8', label: 'k: y = -2/3 x + 1' },
-      { slope: 1.5, intercept: 3, color: '#FFB800', label: 'l: y = 3/2 x + 3 (k ⊥ l)' }
-    ],
-    points: [
-      { x: 0, y: 3, label: 'P(0, 3)', dot: 'filled', color: '#10B981', attach: 'e' }
+      { x: 0, y: 2, label: '(0, b)', dot: 'filled', color: '#10B981', attach: 'ne' }
     ]
   },
 
@@ -2539,6 +2314,241 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
 };
 
 // =========================================================================
+// 3B. EXPLANATION VISUALS (WYKRESY POMOCNICZE POKAZYWANE WYŁĄCZNIE PO ODPOWIEDZI)
+// =========================================================================
+
+export const EXPLANATION_VISUALS: Record<string, PlotData | MathDiagramData> = {
+  // ----------------------------------------------------
+  // DZIAŁ 8: NIERÓWNOŚCI KWADRATOWE (WYKRESY WYJAŚNIAJĄCE)
+  // ----------------------------------------------------
+  'task-8-1-2-1': {
+    type: 'PARABOLA',
+    xRange: [-1, 3],
+    yRange: [-3, 2],
+    gridStep: 1,
+    parabola: {
+      a: -2,
+      p: 1.25,
+      q: 0.125,
+      color: '#F43F5E',
+      domain: [-0.5, 3]
+    },
+    points: [
+      { x: 1, y: 0, label: 'x₁ = 1', dot: 'filled', color: '#FFB800', attach: 'sw' },
+      { x: 1.5, y: 0, label: 'x₂ = 1.5', dot: 'filled', color: '#FFB800', attach: 'se' },
+      { x: 1.25, y: 0.125, label: 'W(p, q)', dot: 'filled', color: '#F43F5E', attach: 'n' }
+    ]
+  },
+  'task-8-1-2-2': {
+    type: 'PARABOLA',
+    xRange: [0, 5],
+    yRange: [-2, 4],
+    gridStep: 1,
+    parabola: {
+      a: 1,
+      p: 2.5,
+      q: -0.25,
+      color: '#38BDF8',
+      domain: [0.5, 4.5]
+    },
+    segments: [
+      { from: [2, 0], to: [3, 0], startDot: 'filled', endDot: 'filled', color: '#10B981', weight: 4 }
+    ],
+    points: [
+      { x: 2, y: 0, label: 'x₁ = 2', dot: 'filled', color: '#10B981', attach: 'nw' },
+      { x: 3, y: 0, label: 'x₂ = 3', dot: 'filled', color: '#10B981', attach: 'ne' }
+    ]
+  },
+  'task-8-1-2-3': {
+    type: 'PARABOLA',
+    xRange: [-1, 5],
+    yRange: [-2, 3],
+    gridStep: 1,
+    parabola: {
+      a: -1,
+      p: 2,
+      q: 1,
+      color: '#FFB800',
+      domain: [0, 4]
+    },
+    segments: [
+      { from: [1, 0], to: [3, 0], startDot: 'hollow', endDot: 'hollow', color: '#10B981', weight: 4 }
+    ],
+    points: [
+      { x: 1, y: 0, label: 'x₁ = 1', dot: 'hollow', color: '#10B981', attach: 'sw' },
+      { x: 3, y: 0, label: 'x₂ = 3', dot: 'hollow', color: '#10B981', attach: 'se' },
+      { x: 2, y: 1, label: 'W(2, 1)', dot: 'filled', color: '#FFB800', attach: 'n' }
+    ]
+  },
+  'task-8-1-3-1': {
+    type: 'PARABOLA',
+    xRange: [-2, 6],
+    yRange: [-5, 4],
+    gridStep: 1,
+    parabola: {
+      a: 1,
+      p: 2,
+      q: -4,
+      color: '#38BDF8',
+      domain: [-1, 5]
+    },
+    segments: [
+      { from: [-2, 0], to: [0, 0], startDot: 'none', endDot: 'hollow', color: '#10B981', weight: 4 },
+      { from: [4, 0], to: [6, 0], startDot: 'hollow', endDot: 'none', color: '#10B981', weight: 4 }
+    ],
+    points: [
+      { x: 0, y: 0, label: 'x₁ = 0', dot: 'hollow', color: '#10B981', attach: 'nw' },
+      { x: 4, y: 0, label: 'x₂ = 4', dot: 'hollow', color: '#10B981', attach: 'ne' }
+    ]
+  },
+  'task-8-1-3-2': {
+    type: 'PARABOLA',
+    xRange: [-6, 6],
+    yRange: [-5, 5],
+    gridStep: 2,
+    parabola: {
+      a: 0.25,
+      p: 0,
+      q: -4,
+      color: '#38BDF8',
+      domain: [-5.5, 5.5]
+    },
+    segments: [
+      { from: [-4, 0], to: [4, 0], startDot: 'filled', endDot: 'filled', color: '#10B981', weight: 4 }
+    ],
+    points: [
+      { x: -4, y: 0, label: 'x₁ = -4', dot: 'filled', color: '#10B981', attach: 'nw' },
+      { x: 4, y: 0, label: 'x₂ = 4', dot: 'filled', color: '#10B981', attach: 'ne' }
+    ]
+  },
+  'task-8-4-1': {
+    type: 'PARABOLA',
+    xRange: [-4, 4],
+    yRange: [-2, 8],
+    gridStep: 2,
+    parabola: {
+      a: 1,
+      p: 0,
+      q: 4,
+      color: '#10B981',
+      domain: [-3, 3]
+    },
+    segments: [
+      { from: [-4, 0], to: [4, 0], startDot: 'none', endDot: 'none', color: '#10B981', weight: 4 }
+    ],
+    points: [
+      { x: 0, y: 4, label: 'W(0, 4)', dot: 'filled', color: '#10B981', attach: 'n' }
+    ]
+  },
+  'task-8-4-2': {
+    type: 'PARABOLA',
+    xRange: [0, 6],
+    yRange: [-2, 5],
+    gridStep: 1,
+    parabola: {
+      a: 1,
+      p: 3,
+      q: 0,
+      color: '#FFB800',
+      domain: [1, 5]
+    },
+    points: [
+      { x: 3, y: 0, label: 'W(3, 0)', dot: 'filled', color: '#10B981', attach: 's' }
+    ]
+  },
+  'task-8-4-3': {
+    type: 'PARABOLA',
+    xRange: [-2, 4],
+    yRange: [-7, 2],
+    gridStep: 1,
+    parabola: {
+      a: -1,
+      p: 1,
+      q: -2,
+      color: '#F43F5E',
+      domain: [-1.5, 3.5]
+    },
+    points: [
+      { x: 1, y: -2, label: 'W(1, -2)', dot: 'filled', color: '#F43F5E', attach: 's' }
+    ]
+  },
+
+  // ----------------------------------------------------
+  // DZIAŁ 10: FUNKCJA LINIOWA (WYKRESY WYJAŚNIAJĄCE)
+  // ----------------------------------------------------
+  'task-10-1-1': {
+    type: 'LINEAR',
+    xRange: [-2, 5],
+    yRange: [-2, 9],
+    gridStep: 1,
+    lines: [
+      { slope: -3, intercept: 7, color: '#38BDF8', label: 'f(x) = -3x + 7' }
+    ],
+    points: [
+      { x: 0, y: 7, label: 'P(0, 7)', dot: 'filled', color: '#10B981', attach: 'e' },
+      { x: 2.333, y: 0, label: 'x₀', dot: 'filled', color: '#FFB800', attach: 'sw' }
+    ]
+  },
+  'task-10-2-2': {
+    type: 'LINEAR',
+    xRange: [-1, 6],
+    yRange: [-1, 11],
+    gridStep: 1,
+    lines: [
+      { slope: 2, intercept: 1, color: '#38BDF8', label: 'y = 2x + 1' }
+    ],
+    segments: [
+      { from: [1, 3], to: [4, 3], color: 'rgba(255, 184, 0, 0.6)', strokeWidth: 1.5, dashed: true, label: 'Δx = 3' },
+      { from: [4, 3], to: [4, 9], color: 'rgba(16, 185, 129, 0.6)', strokeWidth: 1.5, dashed: true, label: 'Δy = 6' }
+    ],
+    points: [
+      { x: 1, y: 3, label: 'A(1, 3)', dot: 'filled', color: '#FFB800', attach: 'nw' },
+      { x: 4, y: 9, label: 'B(4, 9)', dot: 'filled', color: '#10B981', attach: 'nw' }
+    ]
+  },
+  'task-10-2-3': {
+    type: 'LINEAR',
+    xRange: [-4, 4],
+    yRange: [-5, 7],
+    gridStep: 1,
+    lines: [
+      { slope: -2, intercept: 1, color: '#38BDF8', label: 'y = -2x + 1' }
+    ],
+    points: [
+      { x: -2, y: 5, label: 'K(-2, 5)', dot: 'filled', color: '#FFB800', attach: 'ne' },
+      { x: 2, y: -3, label: 'L(2, -3)', dot: 'filled', color: '#10B981', attach: 'se' }
+    ]
+  },
+  'task-10-3-1': {
+    type: 'LINEAR',
+    xRange: [-3, 3],
+    yRange: [-5, 8],
+    gridStep: 1,
+    lines: [
+      { slope: 5, intercept: 4, color: '#38BDF8', label: 'k: y = 5x + 4' },
+      { slope: 5, intercept: -2, color: '#FFB800', label: 'l: y = 5x - 2' }
+    ],
+    points: [
+      { x: 0, y: 4, label: '(0, 4)', dot: 'filled', color: '#38BDF8', attach: 'w' },
+      { x: 0, y: -2, label: '(0, -2)', dot: 'filled', color: '#FFB800', attach: 'e' }
+    ]
+  },
+  'task-10-3-2': {
+    type: 'LINEAR',
+    xRange: [-4, 4],
+    yRange: [-2, 6],
+    gridStep: 1,
+    lines: [
+      { slope: -0.667, intercept: 1, color: '#38BDF8', label: 'k: y = -2/3 x + 1' },
+      { slope: 1.5, intercept: 3, color: '#FFB800', label: 'l: y = 3/2 x + 3 (k ⊥ l)' }
+    ],
+    points: [
+      { x: 0, y: 3, label: 'P(0, 3)', dot: 'filled', color: '#10B981', attach: 'e' }
+    ]
+  }
+};
+
+// =========================================================================
 // =========================================================================
 // 4. REGISTRY OF NUMBER LINES (OSIE LICZBOWE CKE DO ZADAŃ I TEORII)
 // =========================================================================
@@ -2962,8 +2972,25 @@ export function enrichTaskWithVisual(task: any, lessonId?: string): any {
   const taskId = String(task.id || '');
   const registered = TASK_VISUALS[taskId];
   const registeredNumberLine = TASK_NUMBER_LINES[taskId];
+  const registeredExplanation = EXPLANATION_VISUALS[taskId];
 
   let resolvedTask = { ...task };
+
+  // 0. Obsługa wykresów wyjaśniających (explanationPlot / explanationDiagram)
+  if (!resolvedTask.explanationPlot && registeredExplanation) {
+    resolvedTask.explanationPlot = registeredExplanation;
+    resolvedTask.explanationDiagram = registeredExplanation;
+  }
+
+  // Zadania z bazy EXPLANATION_VISUALS to zadania czysto analityczne / obliczeniowe -
+  // nie mogą mieć wykresu w treści pytania (zero spoilerów przed rozwiązaniem)!
+  if (registeredExplanation) {
+    return {
+      ...resolvedTask,
+      plot: null,
+      diagram: null
+    };
+  }
 
   // 1. Obsługa osi liczbowej (numberLine)
   if (resolvedTask.numberLine === null) {

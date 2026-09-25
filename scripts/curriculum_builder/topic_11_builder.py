@@ -58,26 +58,7 @@ def build_topic_11():
             correct_id='A',
             explanation='Szukamy wyrazów ujemnych, czyli rozwiązujemy nierówność $a_n < 0$ w dziedzinie $n \\in \\mathbb{N}^+$:\n$$n^2 - 10n + 9 < 0$$\nObliczamy deltę i pierwiastki trójmianu:\n$$\\Delta = (-10)^2 - 4 \\cdot 1 \\cdot 9 = 100 - 36 = 64, \\quad \\sqrt{\\Delta} = 8$$\n$$n_1 = \\frac{10 - 8}{2} = 1, \\quad n_2 = \\frac{10 + 8}{2} = 9$$\nParabola ma ramiona skierowane w górę ($a = 1 > 0$), więc wartości ujemne leżą ściśle między pierwiastkami: $n \\in (1, 9)$.\nWybieramy numery naturalne ze zbioru $\\{2, 3, 4, 5, 6, 7, 8\\}$. Jest ich dokładnie $7$.',
             cke_trap='Krańce $n=1$ oraz $n=9$ dają $a_1 = 0$ oraz $a_9 = 0$. Liczba zero NIE jest ujemna, dlatego przedział jest otwarty $(1, 9)$ i nie wliczamy 1 ani 9!',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [0, 10],
-                'yRange': [-18, 4],
-                'gridStep': 2,
-                'points': [
-                    {'x': 1, 'y': 0, 'label': 'a₁=0', 'color': '#94A3B8', 'attach': 'n'},
-                    {'x': 2, 'y': -7, 'label': 'a₂', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 3, 'y': -12, 'label': 'a₃', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 4, 'y': -15, 'label': 'a₄', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 5, 'y': -16, 'label': 'a₅=-16 (min)', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 6, 'y': -15, 'label': 'a₆', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 7, 'y': -12, 'label': 'a₇', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 8, 'y': -7, 'label': 'a₈', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 9, 'y': 0, 'label': 'a₉=0', 'color': '#94A3B8', 'attach': 'n'}
-                ],
-                'labels': [
-                    {'x': 5.0, 'y': 2.0, 'text': '7 ujemnych wyrazów: n ∈ {2, 3, 4, 5, 6, 7, 8}', 'color': '#F43F5E', 'attach': 'n'}
-                ]
-            }
+            plot=None
         ),
         make_sc_task(
             task_id='task-11-1-3',
@@ -101,21 +82,7 @@ def build_topic_11():
             correct_tf='FAŁSZ',
             explanation='Różnica kolejnych wyrazów: $a_{n+1} - a_n = [3 - 2(n+1)] - [3 - 2n] = 3 - 2n - 2 - 3 + 2n = -2 < 0$. Ponieważ różnica jest stale ujemna, ciąg jest malejący. Zdanie jest fałszywe.',
             cke_trap='Współczynnik przy $n$ wynosi $-2 < 0$, co oznacza, że z każdym kolejnym wyrazem wartość maleje o 2.',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [0, 5],
-                'yRange': [-6, 3],
-                'gridStep': 1,
-                'points': [
-                    {'x': 1, 'y': 1, 'label': 'a₁=1', 'color': '#38BDF8', 'attach': 'n'},
-                    {'x': 2, 'y': -1, 'label': 'a₂=-1', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 3, 'y': -3, 'label': 'a₃=-3', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 4, 'y': -5, 'label': 'a₄=-5', 'color': '#F43F5E', 'attach': 's'}
-                ],
-                'labels': [
-                    {'x': 2.5, 'y': 2.2, 'text': 'Wartości maleją co krok o 2: ciąg malejący', 'color': '#F43F5E', 'attach': 'n'}
-                ]
-            }
+            plot=None
         ),
         make_numeric_task(
             task_id='task-11-1-5',
@@ -124,22 +91,7 @@ def build_topic_11():
             correct_val=5,
             explanation='Traktujemy wzór jako trójmian kwadratowy zmiennej $n$: $f(n) = n^2 - 6n + 14$.\nWspółczynnik przy $n^2$ wynosi $a = 1 > 0$, więc parabola osiąga minimum w wierzchołku:\n$$n_w = -\\frac{b}{2a} = -\\frac{-6}{2 \\cdot 1} = 3$$\nPonieważ $n_w = 3 \\in \\mathbb{N}^+$, najmniejszy wyraz ciągu to dokładnie $a_3$:\n$$a_3 = 3^2 - 6 \\cdot 3 + 14 = 9 - 18 + 14 = 5.$$',
             cke_trap='Wartość wierzchołka $n=3$ to numer wyrazu, a pytanie dotyczy WARTOŚCI wyrazu ($a_3 = 5$).',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [0, 6],
-                'yRange': [2, 11],
-                'gridStep': 1,
-                'points': [
-                    {'x': 1, 'y': 9, 'label': 'a₁=9', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 2, 'y': 6, 'label': 'a₂=6', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 3, 'y': 5, 'label': 'a₃=5 (min)', 'color': '#10B981', 'attach': 's'},
-                    {'x': 4, 'y': 6, 'label': 'a₄=6', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 5, 'y': 9, 'label': 'a₅=9', 'color': '#FFB800', 'attach': 'n'}
-                ],
-                'labels': [
-                    {'x': 3.0, 'y': 3.5, 'text': 'Wierzchołek dla n=3: min wyraz to a₃ = 5', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            plot=None
         )
     ]
 
@@ -166,7 +118,7 @@ def build_topic_11():
             },
             {
                 'title': 'Badanie monotoniczności ciągu',
-                'latex': 'a_{n+1} - a_n > 0 \\implies \\text{rosnący}, \\quad a_{n+1} - a_n < 0 \\implies \\text{malejący}',
+                'latex': 'a_{n+1} - a_n > 0 \\longrightarrow \\text{rosnący}, \\quad a_{n+1} - a_n < 0 \\longrightarrow \\text{malejący}',
                 'description': 'Znak różnicy kolejnego i poprzedniego wyrazu decyduje o kierunku zmian.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 9'
@@ -205,22 +157,7 @@ def build_topic_11():
             correct_id='A',
             explanation='Korzystamy z zależności między wyrazami ciągu arytmetycznego: odległość indeksów to liczba kroków $r$:\n$$a_7 = a_3 + (7 - 3)r = a_3 + 4r$$\nPodstawiamy wartości:\n$$27 = 11 + 4r$$\n$$16 = 4r \\implies r = 4.$$',
             cke_trap='Różnica wyrazów $a_7 - a_3 = 4r$, ponieważ między 3. a 7. wyrazem wykonujemy 4 kroki różnicy $r$.',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [2, 8],
-                'yRange': [8, 30],
-                'gridStep': 4,
-                'points': [
-                    {'x': 3, 'y': 11, 'label': 'a₃=11', 'color': '#38BDF8', 'attach': 'n'},
-                    {'x': 4, 'y': 15, 'label': 'a₄=15', 'color': '#94A3B8', 'attach': 'n'},
-                    {'x': 5, 'y': 19, 'label': 'a₅=19', 'color': '#94A3B8', 'attach': 'n'},
-                    {'x': 6, 'y': 23, 'label': 'a₆=23', 'color': '#94A3B8', 'attach': 'n'},
-                    {'x': 7, 'y': 27, 'label': 'a₇=27', 'color': '#10B981', 'attach': 'n'}
-                ],
-                'labels': [
-                    {'x': 5.0, 'y': 10.0, 'text': '4 kroki różnicy r = 4: a₇ = a₃ + 4r', 'color': '#38BDF8', 'attach': 's'}
-                ]
-            }
+            plot=None
         ),
         make_sc_task(
             task_id='task-11-2-2',
@@ -252,21 +189,7 @@ def build_topic_11():
             correct_tf='PRAWDA',
             explanation='W ciągu arytmetycznym $a_{n+1} - a_n = r$. Skoro $r = -4 < 0$, to każdy kolejny wyraz jest mniejszy od poprzedniego, zatem ciąg jest ściśle malejący.',
             cke_trap='Znak różnicy $r$ jednoznacznie determinuje monotoniczność ciągu arytmetycznego: $r < 0 \\implies$ malejący.',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [0, 5],
-                'yRange': [-4, 12],
-                'gridStep': 2,
-                'points': [
-                    {'x': 1, 'y': 10, 'label': 'a₁=10', 'color': '#38BDF8', 'attach': 'n'},
-                    {'x': 2, 'y': 6, 'label': 'a₂=6', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 3, 'y': 2, 'label': 'a₃=2', 'color': '#FFB800', 'attach': 'n'},
-                    {'x': 4, 'y': -2, 'label': 'a₄=-2', 'color': '#F43F5E', 'attach': 's'}
-                ],
-                'labels': [
-                    {'x': 2.5, 'y': 11.2, 'text': 'Różnica r = -4 < 0: ciąg maleje o 4 z każdym krokiem', 'color': '#F43F5E', 'attach': 's'}
-                ]
-            }
+            plot=None
         ),
         make_open_task(
             task_id='task-11-2-5',
@@ -351,21 +274,7 @@ def build_topic_11():
             correct_id='A',
             explanation='W ciągu geometrycznym iloraz wyrazów odpowiada potędze ilorazu $q$ równej różnicy indeksów:\n$$\\frac{a_5}{a_2} = q^{5 - 2} = q^3$$\nPodstawiamy dane liczbowe:\n$$\\frac{48}{6} = q^3 \\implies 8 = q^3 \\implies q = 2.$$',
             cke_trap='W ciągu geometrycznym indeksy odejmujemy w potędze: $a_5 = a_2 \\cdot q^3$, a nie dodajemy jak w ciągu arytmetycznym!',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [1, 6],
-                'yRange': [0, 52],
-                'gridStep': 10,
-                'points': [
-                    {'x': 2, 'y': 6, 'label': 'a₂=6', 'color': '#38BDF8', 'attach': 'n'},
-                    {'x': 3, 'y': 12, 'label': 'a₃=12', 'color': '#94A3B8', 'attach': 'n'},
-                    {'x': 4, 'y': 24, 'label': 'a₄=24', 'color': '#94A3B8', 'attach': 'n'},
-                    {'x': 5, 'y': 48, 'label': 'a₅=48', 'color': '#10B981', 'attach': 'n'}
-                ],
-                'labels': [
-                    {'x': 3.5, 'y': 46.0, 'text': '3 kroki ilorazu q = 2: a₅ = a₂ · q³', 'color': '#10B981', 'attach': 'nw'}
-                ]
-            }
+            plot=None
         ),
         make_sc_task(
             task_id='task-11-3-2',
@@ -404,21 +313,7 @@ def build_topic_11():
             correct_tf='FAŁSZ',
             explanation='Wyrazy tego ciągu to: $a_1 = 4$, $a_2 = -2$, $a_3 = 1$, $a_4 = -\\frac{1}{2}$. Znaki wyrazów zmieniają się naprzemiennie (ciąg naprzemienny), więc ciąg ten NIE jest monotoniczny (ani rosnący, ani malejący).',
             cke_trap='Ujemny iloraz $q < 0$ NIE oznacza ciągu malejącego! Ciąg o $q < 0$ w ogóle nie jest monotoniczny.',
-            plot={
-                'type': 'LINEAR',
-                'xRange': [0, 5],
-                'yRange': [-3, 5],
-                'gridStep': 1,
-                'points': [
-                    {'x': 1, 'y': 4, 'label': 'a₁=4', 'color': '#10B981', 'attach': 'n'},
-                    {'x': 2, 'y': -2, 'label': 'a₂=-2', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 3, 'y': 1, 'label': 'a₃=1', 'color': '#10B981', 'attach': 'n'},
-                    {'x': 4, 'y': -0.5, 'label': 'a₄=-0.5', 'color': '#F43F5E', 'attach': 's'}
-                ],
-                'labels': [
-                    {'x': 2.5, 'y': 4.5, 'text': 'Znaki skaczą (+, -, +, -): brak monotoniczności', 'color': '#FFB800', 'attach': 's'}
-                ]
-            }
+            plot=None
         ),
         make_numeric_task(
             task_id='task-11-3-5',
@@ -480,6 +375,24 @@ def build_topic_11():
         tasks=l3_tasks
     )
     lessons.append(l3)
+
+
+    # --- Wstrzyknięte z arkuszy CKE ---
+    # CKE Maj 2023 - Zadanie 17. (2 pkt) - Dowód ciąg geometryczny
+    lessons[2]["tasks"].append(
+        make_open_task(
+            task_id="t11_l03_cke_01",
+            source="CKE Maj 2023 • Zad. 17 (2 pkt)",
+            question="Trzy liczby dodatnie tworzą ciąg geometryczny. Wykaż, że jeśli suma tych liczb jest równa 26, a środkowa z nich jest równa 6, to pierwsza z tych liczb jest równa 2 lub 18.",
+            points=2,
+            scoring_key=[
+                "1 pkt – zastosowanie własności ciągu geometrycznego i zapisanie równania kwadratowego z jedną niewiadomą",
+                "2 pkt – poprawne rozwiązanie równania kwadratowego i sformułowanie poprawnego wniosku"
+            ],
+            explanation="Niech $a, b, c$ tworzą ciąg geometryczny. Wiemy, że $b=6$ i $a+b+c=26$.<br/>Stąd $a+6+c=26 \\implies a+c=20 \\implies c=20-a$.<br/>Z własności ciągu geometrycznego: $b^2 = a \\cdot c$.<br/>$6^2 = a(20-a)$<br/>$36 = 20a - a^2$<br/>$a^2 - 20a + 36 = 0$<br/>$\\Delta = 400 - 144 = 256$, $\\sqrt{\\Delta} = 16$.<br/>$a_1 = \\frac{20-16}{2} = 2$, $a_2 = \\frac{20+16}{2} = 18$.<br/>Obie liczby prowadzą do dodatnich ciągów: (2, 6, 18) lub (18, 6, 2).",
+            cke_trap="Nieuwzględnienie faktu, że obydwie pary rozwiązań są prawidłowe, gdyż w zadaniu nie jest powiedziane, czy ciąg jest rosnący czy malejący."
+        )
+    )
 
     return {
         'id': topic_id,

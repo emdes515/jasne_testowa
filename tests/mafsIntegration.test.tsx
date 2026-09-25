@@ -1,11 +1,9 @@
 // @vitest-environment happy-dom
 import React from 'react';
 import { describe, it, expect, beforeAll, afterEach } from 'vitest';
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
-import { MafsPlot } from '../src/components/mafs/MafsPlot';
-import { MafsInteractiveLab } from '../src/components/mafs/MafsInteractiveLab';
+import { render, screen, cleanup } from '@testing-library/react';
+import { MathPlot, MafsPlot, PlotData } from '../src/components/MathPlot';
 import { MathDiagram } from '../src/components/MathDiagram';
-import { PlotData } from '../src/components/MathPlot';
 
 beforeAll(() => {
   if (typeof window !== 'undefined' && !window.ResizeObserver) {
@@ -21,8 +19,8 @@ afterEach(() => {
   cleanup();
 });
 
-describe('Mafs Integration & Mathematical Visualizations', () => {
-  describe('MafsPlot Component', () => {
+describe('Native MathPlot & Pure Vector SVG Visualizations', () => {
+  describe('MathPlot Component', () => {
     it('renders parabola correctly in Cartesian coordinates', () => {
       const plot: PlotData = {
         type: 'PARABOLA',
@@ -40,8 +38,8 @@ describe('Mafs Integration & Mathematical Visualizations', () => {
         ]
       };
 
-      const { container } = render(<MafsPlot plot={plot} width={360} />);
-      expect(container.querySelector('.MafsView')).toBeDefined();
+      const { container } = render(<MathPlot plot={plot} width={360} />);
+      expect(container.querySelector('svg')).toBeDefined();
       expect(container.textContent).toContain('W(2,-3)');
       expect(container.textContent).toContain('Wektorowy układ współrzędnych CKE');
     });
@@ -61,8 +59,8 @@ describe('Mafs Integration & Mathematical Visualizations', () => {
         ]
       };
 
-      const { container } = render(<MafsPlot plot={plot} width={360} />);
-      expect(container.querySelector('.MafsView')).toBeDefined();
+      const { container } = render(<MathPlot plot={plot} width={360} />);
+      expect(container.querySelector('svg')).toBeDefined();
       expect(container.textContent).toContain('A(-5,0)');
       expect(container.textContent).toContain('B(-2,3)');
     });
@@ -80,82 +78,82 @@ describe('Mafs Integration & Mathematical Visualizations', () => {
         ]
       };
 
-      const { container } = render(<MafsPlot plot={plot} width={360} />);
-      expect(container.querySelector('.MafsView')).toBeDefined();
+      const { container } = render(<MathPlot plot={plot} width={360} />);
+      expect(container.querySelector('svg')).toBeDefined();
       expect(container.textContent).toContain('x0=0.5');
     });
+
+    it('renders multi-panel comparison plots', () => {
+      const plot: PlotData = {
+        panels: [
+          {
+            title: 'Panel 1: a > 0',
+            badge: 'Rosnąca',
+            plot: {
+              xRange: [-3, 3],
+              yRange: [-3, 3],
+              lines: [{ slope: 1, intercept: 0 }]
+            }
+          },
+          {
+            title: 'Panel 2: a < 0',
+            badge: 'Malejąca',
+            plot: {
+              xRange: [-3, 3],
+              yRange: [-3, 3],
+              lines: [{ slope: -1, intercept: 0 }]
+            }
+          }
+        ]
+      };
+
+      const { container } = render(<MathPlot plot={plot} />);
+      expect(screen.getByText('Panel 1: a > 0')).toBeDefined();
+      expect(screen.getByText('Panel 2: a < 0')).toBeDefined();
+      expect(screen.getByText('Rosnąca')).toBeDefined();
+      expect(screen.getByText('Malejąca')).toBeDefined();
+    });
+
+    it('renders inequality shaded regions without errors', () => {
+      const plot: PlotData = {
+        type: 'PARABOLA',
+        xRange: [-4, 4],
+        yRange: [-5, 5],
+        parabola: { a: 1, p: 0, q: -4 },
+        inequalityRegions: [
+          { fromX: -4, toX: -2, condition: 'above', color: '#10B981' },
+          { fromX: 2, toX: 4, condition: 'above', color: '#10B981' }
+        ]
+      };
+
+      const { container } = render(<MathPlot plot={plot} />);
+      const polygons = container.querySelectorAll('polygon');
+      expect(polygons.length).toBeGreaterThanOrEqual(2);
+    });
+
+    it('renders backwards-compatible MafsPlot export', () => {
+      const plot: PlotData = {
+        type: 'LINEAR',
+        lines: [{ slope: 1, intercept: 0 }]
+      };
+      const { container } = render(<MafsPlot plot={plot} />);
+      expect(container.querySelector('svg')).toBeDefined();
+    });
   });
 
-  describe('MafsInteractiveLab Component', () => {
-    it('renders ParabolaLab with vertex and inequality controls', () => {
-      const { container } = render(<MafsInteractiveLab initialLab="PARABOLA" />);
-      expect(screen.getByText('Laboratorium Matematyczne Mafs')).toBeDefined();
-      expect(screen.getByText('Parabola & Nierówności')).toBeDefined();
-      expect(container.textContent).toContain('Postać kanoniczna & wierzchołek');
-      expect(container.textContent).toContain('W = (1, -4)');
-      expect(screen.getByText('f(x) ≥ 0 (nad osią)')).toBeDefined();
-      expect(screen.getByText('f(x) ≤ 0 (pod osią)')).toBeDefined();
-    });
-
-    it('renders LinearFunctionLab and toggles perpendicular line', () => {
-      const { container } = render(<MafsInteractiveLab initialLab="LINEAR" />);
-      expect(screen.getByText('Funkcja Liniowa')).toBeDefined();
-      expect(container.textContent).toContain('Równanie prostej y = ax + b');
-      expect(container.textContent).toContain('Współczynnik kierunkowy');
-
-      const perpCheckbox = screen.getByRole('checkbox');
-      expect(perpCheckbox).toBeDefined();
-      fireEvent.click(perpCheckbox);
-      expect(container.textContent).toContain('a₁ · a₂ = -1');
-    });
-
-    it('renders GraphInspectorLab with probe and filters', () => {
-      const { container } = render(<MafsInteractiveLab initialLab="GRAPH_INSPECTOR" />);
-      expect(screen.getByText('Sonda Wykresu CKE')).toBeDefined();
-      expect(container.textContent).toContain('Odczyt wartości f(x)');
-      expect(container.textContent).toContain('D_f =');
-      expect(container.textContent).toContain('Miejsca zerowe f(x) = 0');
-
-      const domainBtn = screen.getByText('Dziedzina D_f (oś OX)');
-      fireEvent.click(domainBtn);
-      expect(domainBtn).toBeDefined();
-    });
-
-    it('renders AbsoluteValueLab and updates radius', () => {
-      const { container } = render(<MafsInteractiveLab initialLab="ABSOLUTE_VALUE" />);
-      expect(screen.getByText('Wartość Bezwzględna')).toBeDefined();
-      expect(container.textContent).toContain('Interpretacja geometryczna odległości');
-      expect(container.textContent).toContain('Środek');
-      expect(container.textContent).toContain('Promień');
-    });
-
-    it('renders TrigonometryCircleLab with angle presets and Pythagorean identity', () => {
-      const { container } = render(<MafsInteractiveLab initialLab="TRIGONOMETRY" />);
-      expect(screen.getByText('Trygonometria (Okrąg)')).toBeDefined();
-      expect(container.textContent).toContain('Kąt α:');
-      expect(container.textContent).toContain('cos α (poziom)');
-      expect(container.textContent).toContain('sin α (pion)');
-      expect(container.textContent).toContain('sin²α + cos²α = 1');
-
-      // Test kliknięcia w preset kąta 60 stopni
-      const btn60 = screen.getByText('60°');
-      fireEvent.click(btn60);
-      expect(container.textContent).toContain('60°');
-    });
-  });
-
-  describe('MathDiagram with Mafs Integration', () => {
-    it('automatically defaults PlotData to MafsPlot', () => {
+  describe('MathDiagram with Native SVG Integration', () => {
+    it('automatically defaults PlotData to MathPlot', () => {
       const plot: PlotData = {
         type: 'PARABOLA',
         parabola: { a: 1, p: 0, q: 0 }
       };
 
       const { container } = render(<MathDiagram diagram={plot} />);
-      expect(container.querySelector('.MafsView')).toBeDefined();
+      expect(container.querySelector('svg')).toBeDefined();
+      expect(container.textContent).toContain('Wektorowy układ współrzędnych CKE');
     });
 
-    it('shows "Zbadaj w Mafs" button when topic relates to quadratic function', () => {
+    it('does NOT show "Zbadaj w Mafs" button (Mafs lab pop-up completely removed)', () => {
       const diagram = {
         type: 'INFOGRAPHIC' as const,
         title: 'Własności paraboli i wyróżnik delta',
@@ -164,18 +162,9 @@ describe('Mafs Integration & Mathematical Visualizations', () => {
         height: 120
       };
 
-      const { container } = render(<MathDiagram diagram={diagram} />);
-      const mafsToggle = screen.getByText('Zbadaj w Mafs');
-      expect(mafsToggle).toBeDefined();
-
-      // Kliknięcie przełącza na laboratorium Mafs
-      fireEvent.click(mafsToggle);
-      expect(screen.getByText('Laboratorium Matematyczne Mafs')).toBeDefined();
-      expect(screen.getByText('Pokaż schemat CKE')).toBeDefined();
-
-      // Powtórne kliknięcie wraca do schematu CKE
-      fireEvent.click(screen.getByText('Pokaż schemat CKE'));
-      expect(screen.getByText('Zbadaj w Mafs')).toBeDefined();
+      render(<MathDiagram diagram={diagram} />);
+      expect(screen.queryByText('Zbadaj w Mafs')).toBeNull();
+      expect(screen.queryByText('Laboratorium Matematyczne Mafs')).toBeNull();
     });
   });
 });

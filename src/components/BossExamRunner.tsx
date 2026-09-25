@@ -351,7 +351,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                         )}
                         <div className="truncate">
                           <span className="font-bold text-white block truncate">
-                            Zadanie {idx + 1}: {t.topicLabel}
+                            Zadanie {idx + 1}: {t.topicLabel?.replace(/^undefined\s*•\s*/i, '') || t.lessonTitle || `Zadanie ${idx + 1}`}
                           </span>
                           {!isOk && t.correct_answer && (
                             <span className="text-[11px] text-rose-300 flex items-center gap-1">
@@ -449,14 +449,14 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                Sprawdzian Działu 1
+                {examData.title ? examData.title.toUpperCase() : 'SPRAWDZIAN DZIAŁU'}
               </span>
               <span className="text-xs text-slate-400">
                 Pytanie {currentIndex + 1} z {examData.totalQuestions}
               </span>
             </div>
             <h2 className="text-xs sm:text-sm font-bold text-slate-200">
-              {currentTask.topicLabel}
+              {currentTask.topicLabel?.replace(/^undefined\s*•\s*/i, '') || currentTask.lessonTitle || 'Zadanie sprawdzianu'}
             </h2>
           </div>
         </div>

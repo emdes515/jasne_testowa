@@ -75,5 +75,11 @@ ORIGINAL_REQUEST.md
 .agents/*
 !.agents/skills/
 
-
-
+# Local screenshots and text scratchpad files
+screenshot_*.png
+test_bottom_crop.png
+*.txt
+scratch_inspect.mjs
+extract_pdfs.py
+strip_plots.py
+tmp_inject.py

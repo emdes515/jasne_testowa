@@ -14,6 +14,9 @@ import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import type { SubjectCkeConfig } from '../types';
+import type { MathDiagramData } from '../components/MathDiagram';
+import type { PlotData } from '../components/MathPlot';
+import type { NumberLineData } from '../components/NumberLineDiagram';
 
 export interface CkeFormulaSubItem {
   label: string;
@@ -33,6 +36,7 @@ export interface CkeFormulaItem {
   keywords: string[];
   cke_page?: string;
   pageNumber?: number | string;
+  diagram?: MathDiagramData | PlotData | NumberLineData;
 }
 
 export interface CkeFormulaTopic {

@@ -32,22 +32,7 @@ def build_topic_05():
             correct_id='B',
             explanation='Dzielimy obie strony przez $-3$. Pamiętamy o żelaznej regule: dzielenie przez liczbę ujemną ODWRACA zwrot nierówności: $x > \\frac{12}{-3} \\implies x > -4$.',
             cke_trap='Zapomnienie o zmianie znaku nierówności to najczęstszy błąd maturzystów.',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-6, 2],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [-4, 0.5], 'tip': [2, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [-4, 0], 'to': [-4, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': -4, 'y': 0, 'label': '-4 (otwarte: >)', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': -6, 'max': 2, 'ticks': [-4], 'labels': [-4], 'intervals': [{'from': -4, 'to': None, 'fromIncluded': False}]}
         ),
         make_sc_task(
             task_id='task-5-1-2',
@@ -62,22 +47,7 @@ def build_topic_05():
             correct_id='D',
             explanation='Mnożymy obie strony nierówności przez wspólny mianownik $6$:\n$$6 \\cdot \\left(1 - \\frac{3}{2}x\\right) < 6 \\cdot \\left(\\frac{2}{3} - x\\right)$$\n$$6 - 9x < 4 - 6x$$\nPrzenosimy wyrażenia z $x$ na lewą stronę, a liczby na prawą:\n$$-9x + 6x < 4 - 6$$\n$$-3x < -2$$\nDzielimy obie strony przez $-3$, pamiętając o bezwzględnej zmianie zwrotu nierówności:\n$$x > \\frac{-2}{-3} \\implies x > \\frac{2}{3}$$\nZbiorem rozwiązań jest przedział $\\left(\\frac{2}{3}, +\\infty\\right)$.',
             cke_trap='Dzieląc obie strony nierówności przez liczbę ujemną $-3$, musisz zmienić zwrot nierówności z $<$ na $>$. Brak zmiany zwrotu prowadzi do błędnego przedziału w opcji B.',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-2, 4],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [0.667, 0.5], 'tip': [4, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [0.667, 0], 'to': [0.667, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': 0.667, 'y': 0, 'label': '2/3', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': -2, 'max': 4, 'ticks': [0.667], 'labelMap': {0.667: '\\frac{2}{3}'}, 'intervals': [{'from': 0.667, 'to': None, 'fromIncluded': False}]}
         ),
         make_sc_task(
             task_id='task-5-1-3',
@@ -108,22 +78,7 @@ def build_topic_05():
             correct_val=2,
             explanation='$-2x \\le 1 - 5 \\implies -2x \\le -4 \\implies x \\ge 2$. Zbiorem rozwiązań jest $[2, +\\infty)$. Najmniejszą liczbą całkowitą w tym zbiorze jest 2.',
             cke_trap='Nierówność jest słaba ($\\le$), więc liczba 2 należy do rozwiązań i jest szukanym minimum.',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-1, 6],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [2, 0.5], 'tip': [6, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [2, 0], 'to': [2, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': 2, 'y': 0, 'label': 'min = 2 [zamknięte]', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': -1, 'max': 6, 'ticks': [2], 'labels': [2], 'intervals': [{'from': 2, 'to': None, 'fromIncluded': True}]}
         )
     ]
     l1 = make_lesson(
@@ -134,22 +89,22 @@ def build_topic_05():
         matura_context='Podstawowe zadanie za 1 punkt występujące na każdej maturze (zadania 3–5 arkusza).',
         core_formulas=[
             {
-                'title': 'Dzielenie przez liczbę ujemną',
-                'latex': 'ax < b \\implies x > \\frac{b}{a} \\quad \\text{dla } a < 0',
-                'description': 'Zwrot nierówności zmienia się na przeciwny.',
+                'title': 'Reguła zmiany zwrotu (dzielenie przez minus)',
+                'latex': '-2x < 6 \\quad \\xrightarrow{:\\; (-2)} \\quad x > -3',
+                'description': 'Gdy dzielisz lub mnożysz obie strony przez liczbę ujemną, ZAWSZE odwracasz zwrot nierówności.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '-2x \\le 6 \\implies x \\ge -3',
+                'example': '-2x \\le 6 \\quad \\xrightarrow{:\\; (-2)} \\quad x \\ge -3',
                 'mnemonic': 'Minus przy iksie odwraca dzióbek.',
                 'matura_tip': 'Gdy na koniec masz -x, pomnóż przez -1 i natychmiast zmień znak.'
             },
             {
-                'title': 'Dodawanie i odejmowanie stronami',
-                'latex': 'x + c < d \\implies x < d - c',
+                'title': 'Przenoszenie wyrazów stronami',
+                'latex': '3x - 5 \\le 10 \\quad \\longrightarrow \\quad 3x \\le 10 + 5',
                 'description': 'Przenoszenie wyrazów nie wpływa na zwrot nierówności.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x - 4 > 10 \\implies x > 14',
+                'example': 'x - 4 > 10 \\quad \\longrightarrow \\quad x > 14',
                 'mnemonic': 'Przenosisz ze zmianą znaku, ale zwrot zostaje ten sam.',
                 'matura_tip': 'Tylko mnożenie i dzielenie przez minus obraca dzióbek.'
             }
@@ -187,22 +142,7 @@ def build_topic_05():
             correct_id='A',
             explanation='Znak ostrej nierówności ($>$) oznacza kółko otwarte (punkt 4 nie należy do rozwiązań). Liczby większe leżą na prawo ku $+\\infty$.',
             cke_trap='Kółko zamalowane stosujemy TYLKO dla znaków $\\le$ lub $\\ge$.',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [1, 8],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [4, 0.5], 'tip': [8, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [4, 0], 'to': [4, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': 4, 'y': 0, 'label': '4 (otwarte: >)', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': 1, 'max': 8, 'ticks': [4], 'labels': [4], 'intervals': [{'from': 4, 'to': None, 'fromIncluded': False}]}
         ),
         make_sc_task(
             task_id='task-5-2-2',
@@ -217,28 +157,7 @@ def build_topic_05():
             correct_id='A',
             explanation='$2x + 6 \\ge 0 \\implies 2x \\ge -6 \\implies x \\ge -3$. Kółko zamalowane odpowiada słabej nierówności ($\\ge$).',
             cke_trap='Nierówność ostra $2x + 6 > 0$ dałaby kółko otwarte i przedział $(-3, +\\infty)$.',
-            number_line={
-                'min': -6,
-                'max': 3,
-                'ticks': [-3],
-                'intervals': [{'from': -3, 'to': None, 'fromIncluded': True}]
-            },
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-5, 3],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [-3, 0.5], 'tip': [3, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [-3, 0], 'to': [-3, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': -3, 'y': 0, 'label': '-3 (zamknięte: ≥)', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': -5, 'max': 3, 'ticks': [-3], 'labels': [-3], 'intervals': [{'from': -3, 'to': None, 'fromIncluded': True}]}
         ),
         make_sc_task(
             task_id='task-5-2-3',
@@ -253,22 +172,7 @@ def build_topic_05():
             correct_id='A',
             explanation='Przy nieskończonościach ($-\\infty, +\\infty$) nawias jest ZAWSZE okrągły. Przy liczbie 7 jest nawias ostry, bo nierówność jest słaba ($\\le$).',
             cke_trap='Nigdy nie stawiaj nawiasu domkniętego $[$ ani $]$ przy nieskończoności!',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [2, 9],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [7, 0.5], 'tip': [2, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [7, 0], 'to': [7, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': 7, 'y': 0, 'label': '7 (zamknięte: ≤)', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': 2, 'max': 9, 'ticks': [7], 'labels': [7], 'intervals': [{'from': None, 'to': 7, 'toIncluded': True}]}
         ),
         make_tf_task(
             task_id='task-5-2-4',
@@ -295,22 +199,21 @@ def build_topic_05():
         matura_context='Zadania z dopasowaniem rysunku na osi do nierówności lub zapisu przedziałowego to stały punkt matury za 1 pkt.',
         core_formulas=[
             {
-                'title': 'Zapis przedziałowy nierówności słabej',
-                'latex': 'x \\ge a \\implies x \\in [a, +\\infty)',
+                'latex': 'x \\ge a \\longrightarrow x \\in [a, +\\infty)',
                 'description': 'Kółko zamalowane, nawias domknięty przy liczbie a.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x \\ge -3 \\implies x \\in [-3, +\\infty)',
+                'example': 'x \\ge -3 \\longrightarrow x \\in [-3, +\\infty)',
                 'mnemonic': 'Zamalowane kółko to ostry nawias.',
                 'matura_tip': 'Przy nieskończoności zawsze nawias okrągły.'
             },
             {
-                'title': 'Zapis przedziałowy nierówności ostrej',
-                'latex': 'x < b \\implies x \\in (-\\infty, b)',
+                'title': 'Nierówność ostra (kółko puste)',
+                'latex': 'x < 5 \\quad \\longrightarrow \\quad x \\in (-\\infty, 5)',
                 'description': 'Kółko otwarte, nawias okrągły przy liczbie b.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x < 5 \\implies x \\in (-\\infty, 5)',
+                'example': 'x < 5 \\longrightarrow x \\in (-\\infty, 5)',
                 'mnemonic': 'Kółko otwarte to okrągły nawias.',
                 'matura_tip': 'Brak kreski pod znakiem oznacza kółko otwarte.'
             }
@@ -348,23 +251,7 @@ def build_topic_05():
             correct_id='A',
             explanation='Szukamy liczb, które spełniają jednocześnie $x \\ge 1$ oraz $x < 4$. Jest to przedział $[1, 4)$ (lewostronnie domknięty, prawostronnie otwarty).',
             cke_trap='Zwróć uwagę na nawiasy: przy 1 jest domknięty $[$, a przy 4 otwarty $)$.',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-1, 6],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'polygons': [
-                    {'points': [[1, 0], [4, 0], [4, 0.6], [1, 0.6]], 'color': '#10B981', 'fillOpacity': 0.25}
-                ],
-                'segments': [
-                    {'from': [1, 0.6], 'to': [4, 0.6], 'color': '#10B981', 'weight': 3}
-                ],
-                'points': [
-                    {'x': 1, 'y': 0, 'label': '1 [zamknięty]', 'dot': 'filled', 'color': '#10B981', 'attach': 's'},
-                    {'x': 4, 'y': 0, 'label': '4 (otwarty)', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': -1, 'max': 6, 'ticks': [1, 4], 'labels': [1, 4], 'intervals': [{'from': 1, 'to': 4, 'fromIncluded': True, 'toIncluded': False}]}
         ),
         make_sc_task(
             task_id='task-5-3-2',
@@ -379,23 +266,7 @@ def build_topic_05():
             correct_id='A',
             explanation='Mnożymy przez 3: $x + 6 > 3x \\implies -2x > -6 \\implies x < 3$. Nierówność jest ostra ($x < 3$), więc liczba 3 nie spełnia nierówności. Największą liczbą całkowitą mniejszą od 3 jest 2.',
             cke_trap='Dla nierówności ostrej $x < 3$ odpowiedź to 2 (nigdy 3!).',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-1, 5],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [3, 0.5], 'tip': [-1, 0.5], 'color': '#10B981', 'weight': 3}
-                ],
-                'segments': [
-                    {'from': [3, 0], 'to': [3, 0.5], 'color': '#10B981', 'weight': 2}
-                ],
-                'points': [
-                    {'x': 3, 'y': 0, 'label': '3 (otwarte)', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'},
-                    {'x': 2, 'y': 0, 'label': 'max całk. = 2', 'dot': 'filled', 'color': '#FFB800', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': -1, 'max': 5, 'ticks': [2, 3], 'labels': [2, 3], 'intervals': [{'from': None, 'to': 3, 'toIncluded': False}]}
         ),
         make_sc_task(
             task_id='task-5-3-3',
@@ -410,25 +281,7 @@ def build_topic_05():
             correct_id='A',
             explanation='Klamra oznacza, że oba warunki muszą być spełnione jednocześnie. Nie istnieje żadna liczba, która jest jednocześnie większa od 5 i mniejsza od 2. Układ jest sprzeczny.',
             cke_trap='Nie myl klamry (część wspólna) ze spójnikiem LUB (suma przedziałów).',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [0, 7],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'vectors': [
-                    {'tail': [2, 0.5], 'tip': [0, 0.5], 'color': '#F43F5E', 'weight': 2.5},
-                    {'tail': [5, 0.5], 'tip': [7, 0.5], 'color': '#38BDF8', 'weight': 2.5}
-                ],
-                'segments': [
-                    {'from': [2, 0], 'to': [2, 0.5], 'color': '#F43F5E', 'weight': 1.5},
-                    {'from': [5, 0], 'to': [5, 0.5], 'color': '#38BDF8', 'weight': 1.5}
-                ],
-                'points': [
-                    {'x': 2, 'y': 0, 'label': 'x < 2', 'dot': 'hollow', 'color': '#F43F5E', 'attach': 's'},
-                    {'x': 5, 'y': 0, 'label': 'x > 5', 'dot': 'hollow', 'color': '#38BDF8', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': 0, 'max': 7, 'ticks': [2, 5], 'labels': [2, 5], 'intervals': [{'from': None, 'to': 2, 'toIncluded': False}, {'from': 5, 'to': None, 'fromIncluded': False}]}
         ),
         make_tf_task(
             task_id='task-5-3-4',
@@ -445,23 +298,7 @@ def build_topic_05():
             correct_val=7,
             explanation='Zbiorem rozwiązań jest przedział $(-4, 3]$. Liczby całkowite to: $-3, -2, -1, 0, 1, 2, 3$. Jest ich dokładnie 7.',
             cke_trap='Liczba -4 nie wchodzi (nawias okrągły), liczba 3 wchodzi (nawias ostry).',
-            plot={
-                'type': 'PLOT',
-                'hideYAxis': True,
-                'xRange': [-5, 5],
-                'yRange': [-1, 2],
-                'gridStep': 1,
-                'polygons': [
-                    {'points': [[-4, 0], [3, 0], [3, 0.6], [-4, 0.6]], 'color': '#10B981', 'fillOpacity': 0.25}
-                ],
-                'segments': [
-                    {'from': [-4, 0.6], 'to': [3, 0.6], 'color': '#10B981', 'weight': 3}
-                ],
-                'points': [
-                    {'x': -4, 'y': 0, 'label': '-4 (otwarty)', 'dot': 'hollow', 'color': '#10B981', 'attach': 's'},
-                    {'x': 3, 'y': 0, 'label': '3 [zamknięty]', 'dot': 'filled', 'color': '#10B981', 'attach': 's'}
-                ]
-            }
+            explanation_number_line={'min': -5, 'max': 5, 'ticks': [-4, 3], 'labels': [-4, 3], 'intervals': [{'from': -4, 'to': 3, 'fromIncluded': False, 'toIncluded': True}]}
         )
     ]
     l3 = make_lesson(
@@ -472,22 +309,21 @@ def build_topic_05():
         matura_context='Klasyczne pytanie testowe sprawdzające uważność maturzysty w zadaniu za 1 punkt.',
         core_formulas=[
             {
-                'title': 'Część wspólna (koniunkcja warunków)',
-                'latex': 'x \\in A \\cap B \\implies (x \\in A \\text{ oraz } x \\in B)',
+                'latex': 'x \\in A \\cap B \\longrightarrow (x \\in A \\text{ oraz } x \\in B)',
                 'description': 'Klamra oznacza przecięcie przedziałów.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x > 1 \\text{ i } x \\le 5 \\implies x \\in (1, 5]',
+                'example': 'x > 1 \\text{ i } x \\le 5 \\longrightarrow x \\in (1, 5]',
                 'mnemonic': 'Klamra to wspólny dach nad dwoma przedziałami.',
                 'matura_tip': 'Zaznacz oba przedziały różnymi kolorami lub kreskowaniem.'
             },
             {
-                'title': 'Wyznaczanie liczb całkowitych',
-                'latex': 'x < k \\implies \\max \\{x \\in \\mathbb{C}\\} = k - 1 \\quad (k \\in \\mathbb{C})',
+                'title': 'Liczby całkowite z przedziału',
+                'latex': 'x < 7 \\quad \\longrightarrow \\quad \\text{największa całkowita to } 6',
                 'description': 'Dla nierówności ostrej cofamy się o 1 do wnętrza przedziału.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x < 7 \\implies \\text{największa całkowita to } 6',
+                'example': 'x < 7 \\longrightarrow \\text{największa całkowita to } 6',
                 'mnemonic': 'Ostra nierówność wyrzuca brzeg za burtę.',
                 'matura_tip': 'Uważaj przy liczbach ujemnych: dla x > -5 najmniejsza całkowita to -4.'
             }

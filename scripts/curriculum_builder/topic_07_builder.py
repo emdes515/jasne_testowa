@@ -87,21 +87,21 @@ def build_topic_07():
         core_formulas=[
             {
                 'title': 'Warunek istnienia ułamka algebraicznego',
-                'latex': '\\frac{L(x)}{M(x)} \\implies M(x) \\neq 0',
+                'latex': '\\frac{L(x)}{M(x)} \\longrightarrow M(x) \\neq 0',
                 'description': 'Mianownik ułamka musi być różny od zera.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{1}{x - 3} \\implies x - 3 \\neq 0 \\implies x \\neq 3 \\implies D = \\mathbb{R} \\setminus \\{3\\}',
+                'example': '\\frac{1}{x - 3} \\longrightarrow x - 3 \\neq 0 \\longrightarrow x \\neq 3 \\longrightarrow D = \\mathbb{R} \\setminus \\{3\\}',
                 'mnemonic': 'Dół ułamka nigdy nie może być zerem.',
                 'matura_tip': 'Licznikiem nie przejmujesz się przy dziedzinie.'
             },
             {
                 'title': 'Dziedzina dla mianownika kwadratowego',
-                'latex': 'x^2 - a^2 \\neq 0 \\implies x \\neq a \\quad \\text{oraz} \\quad x \\neq -a',
+                'latex': 'x^2 - a^2 \\neq 0 \\longrightarrow x \\neq a \\quad \\text{oraz} \\quad x \\neq -a',
                 'description': 'Różnica kwadratów w mianowniku wyklucza dwa symetryczne punkty.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'x^2 - 4 \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{-2, 2\\}',
+                'example': 'x^2 - 4 \\neq 0 \\longrightarrow D = \\mathbb{R} \\setminus \\{-2, 2\\}',
                 'mnemonic': 'Kwadrat z minusem wyrzuca dwie liczby.',
                 'matura_tip': 'Dla $x^2 + 4$ mianownik nigdy się nie zeruje, więc $D = \\mathbb{R}$.'
             }
@@ -194,21 +194,21 @@ def build_topic_07():
         core_formulas=[
             {
                 'title': 'Rozwiązywanie równania wymiernego',
-                'latex': '\\frac{L(x)}{M(x)} = 0 \\implies \\begin{cases} L(x) = 0 \\\\ M(x) \\neq 0 \\end{cases}',
+                'latex': '\\frac{L(x)}{M(x)} = 0 \\longrightarrow \\begin{cases} L(x) = 0 \\\\ M(x) \\neq 0 \\end{cases}',
                 'description': 'Licznik musi być zerem, a mianownik nie może być zerem.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{x - 2}{x + 1} = 0 \\implies x = 2 \\quad (D = \\mathbb{R} \\setminus \\{-1\\})',
+                'example': '\\frac{x - 2}{x + 1} = 0 \\longrightarrow x = 2 \\quad (D = \\mathbb{R} \\setminus \\{-1\\})',
                 'mnemonic': 'Licznik do zera, mianownik do kosza (ale po sprawdzeniu dziedziny!).',
                 'matura_tip': 'Zawsze zapisz dziedzinę obok równania.'
             },
             {
                 'title': 'Eliminacja pierwiastka obcego',
-                'latex': 'x_k \\notin D \\implies x_k \\text{ nie jest rozwiązaniem}',
+                'latex': 'x_k \\notin D \\longrightarrow x_k \\text{ nie jest rozwiązaniem}',
                 'description': 'Liczba zerująca mianownik jest natychmiast odrzucana.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{(x-1)(x-2)}{x-1} = 0 \\implies x = 2 \\quad (x = 1 \\text{ odpada})',
+                'example': '\\frac{(x-1)(x-2)}{x-1} = 0 \\longrightarrow x = 2 \\quad (x = 1 \\text{ odpada})',
                 'mnemonic': 'Jeśli mianownik mówi nie, pierwiastek wylatuje.',
                 'matura_tip': 'CKE w 99% przypadków podkłada wspólny czynnik w liczniku i mianowniku.'
             }
@@ -301,21 +301,21 @@ def build_topic_07():
         core_formulas=[
             {
                 'title': 'Mnożenie na krzyż (własność proporcji)',
-                'latex': '\\frac{a}{b} = \\frac{c}{d} \\implies a \\cdot d = b \\cdot c \\quad (b \\neq 0, d \\neq 0)',
+                'latex': '\\frac{a}{b} = \\frac{c}{d} \\longrightarrow a \\cdot d = b \\cdot c \\quad (b \\neq 0, d \\neq 0)',
                 'description': 'Iloczyn po przekątnych jest sobie równy.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{x}{3} = \\frac{4}{6} \\implies 6x = 12 \\implies x = 2',
+                'example': '\\frac{x}{3} = \\frac{4}{6} \\longrightarrow 6x = 12 \\longrightarrow x = 2',
                 'mnemonic': 'Mnożenie po przekątnej likwiduje ułamki.',
                 'matura_tip': 'Zawsze otaczaj wielomiany nawiasami.'
             },
             {
                 'title': 'Równanie z liczbą po prawej stronie',
-                'latex': '\\frac{f(x)}{g(x)} = c \\implies f(x) = c \\cdot g(x) \\quad (g(x) \\neq 0)',
+                'latex': '\\frac{f(x)}{g(x)} = c \\longrightarrow f(x) = c \\cdot g(x) \\quad (g(x) \\neq 0)',
                 'description': 'Liczbę c traktujemy jako ułamek c/1.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': '\\frac{2x - 1}{x + 3} = 1 \\implies 2x - 1 = x + 3 \\implies x = 4',
+                'example': '\\frac{2x - 1}{x + 3} = 1 \\longrightarrow 2x - 1 = x + 3 \\longrightarrow x = 4',
                 'mnemonic': 'Mnożysz obie strony przez mianownik.',
                 'matura_tip': 'Pamiętaj o dziedzinie: x != -3.'
             }

@@ -98,11 +98,11 @@ def build_topic_03():
             },
             {
                 'title': 'Odległość na osi liczbowej',
-                'latex': '|x - a| = r \\implies x = a - r \\quad \\text{lub} \\quad x = a + r',
+                'latex': '|x - a| = r \\longrightarrow x = a - r \\quad \\text{lub} \\quad x = a + r',
                 'description': 'Dwa rozwiązania symetryczne względem środka a w odległości r.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 4',
-                'example': '|x - 3| = 5 \\implies x = 3 - 5 = -2 \\quad \\text{lub} \\quad x = 3 + 5 = 8',
+                'example': '|x - 3| = 5 \\longrightarrow x = 3 - 5 = -2 \\quad \\text{lub} \\quad x = 3 + 5 = 8',
                 'mnemonic': 'Środek to a, odległość to r: krok w lewo i krok w prawo.',
                 'matura_tip': 'Wzór ma w środku minus. Zapis $|x + 2|$ oznacza $|x - (-2)|$, czyli środek w $-2$.'
             }
@@ -254,21 +254,21 @@ def build_topic_03():
         core_formulas=[
             {
                 'title': 'Nierówność ze znakiem mniejszości (wnętrze)',
-                'latex': '|x - a| < r \\implies a - r < x < a + r',
+                'latex': '|x - a| < r \\longrightarrow a - r < x < a + r',
                 'description': 'Zbiór rozwiązań to jeden przedział ograniczony skrajnymi wartościami.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 4',
-                'example': '|x - 2| < 3 \\implies -1 < x < 5 \\implies x \\in (-1, 5)',
+                'example': '|x - 2| < 3 \\longrightarrow -1 < x < 5 \\longrightarrow x \\in (-1, 5)',
                 'mnemonic': 'Dzióbek w stronę wartości bezwzględnej zamyka cię w klatce.',
                 'matura_tip': 'Dla znaku $\\le$ nawiasy są domknięte: $[a - r, a + r]$.'
             },
             {
                 'title': 'Nierówność ze znakiem większości (skrzydła zewnętrzne)',
-                'latex': '|x - a| \\ge r \\implies x \\le a - r \\quad \\text{lub} \\quad x \\ge a + r',
+                'latex': '|x - a| \\ge r \\longrightarrow x \\le a - r \\quad \\text{lub} \\quad x \\ge a + r',
                 'description': 'Zbiór rozwiązań to suma dwóch przedziałów nieskończonych.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 4',
-                'example': '|x - 1| \\ge 4 \\implies x \\in (-\\infty, -3] \\cup [5, +\\infty)',
+                'example': '|x - 1| \\ge 4 \\longrightarrow x \\in (-\\infty, -3] \\cup [5, +\\infty)',
                 'mnemonic': 'Dzióbek w stronę liczby wyrzuca cię na zewnątrz.',
                 'matura_tip': 'Pomiędzy przedziałami zawsze stoi znak sumy zbiorów ($\\cup$), nigdy część wspólna ($\\cap$).'
             }

@@ -5,7 +5,7 @@ Nocturne Luminary + Core-4 Bento Visuals with Interactive Mafs Engine
 """
 from .common import (
     C_PRIMARY, C_SUCCESS, C_SKY, C_DANGER, C_PURPLE, C_SLATE, C_MUTED, C_TEXT,
-    make_plot_diagram
+    make_plot_diagram, make_step_flow_diagram, make_comparison_card_diagram
 )
 
 def get_topic_12_visuals(l_idx):
@@ -37,12 +37,37 @@ def get_topic_12_visuals(l_idx):
             caption='Liczba p przesuwa parabolę w poziomie (oś symetrii x = p), a q wyznacza jej ekstremum na osi pionowej OY.',
             plotData=plot_data,
             metrics=[
-                {'label': 'Odcięta wierzchołka', 'value': '$p = -\\frac{b}{2a}$ (oś symetrii)', 'color': C_SKY},
-                {'label': 'Rzędna wierzchołka', 'value': '$q = f(p) = -\\frac{\\Delta}{4a}$', 'color': C_SUCCESS},
-                {'label': 'Pułapka znaku', 'value': '$y = a(x - 3)^2 + 4 \\implies p = +3$', 'color': C_DANGER}
+                {'label': 'Odcięta wierzchołka', 'value': r'$p = -\frac{b}{2a}$ (oś symetrii)', 'color': C_SKY},
+                {'label': 'Rzędna wierzchołka', 'value': r'$q = f(p) = -\frac{\Delta}{4a}$', 'color': C_SUCCESS},
+                {'label': 'Pułapka znaku', 'value': r'$y = a(x - 3)^2 + 4 \longrightarrow p = +3$', 'color': C_DANGER}
             ]
         )
-        return {'tab0': tab0, 'tab2': None, 'tab3': None}
+        tab2 = make_step_flow_diagram(
+            title="Odczytywanie wierzchołka i osi symetrii krok po kroku",
+            badge=r"f(x) = 2(x - 3)^2 - 5 \implies p = 3, \quad q = -5 \implies W(3, -5), \quad \text{oś: } x = 3",
+            caption="Wypisujesz współrzędne wierzchołka pamiętając o odwróceniu znaku przy p i zachowaniu znaku przy q.",
+            steps=[
+                {'num': 1, 'title': 'Zastosuj postać kanoniczną', 'desc': r'Wzór to $y = a(x - p)^2 + q$. Współczynnik $a = 2 > 0$ (ramiona w górę).', 'color': C_SKY},
+                {'num': 2, 'title': 'Odczytaj p i q', 'desc': r'W nawiasie stoi $(x - 3)$, stąd $p = +3$. Wyraz wolny to $q = -5$.', 'color': C_PRIMARY},
+                {'num': 3, 'title': 'Zapisz wierzchołek i oś symetrii', 'desc': r'Wierzchołek: $W(3, -5)$. Pionowa oś symetrii paraboli to prosta $x = 3$.', 'color': C_SUCCESS}
+            ],
+            metrics=[
+                {'label': 'Odcięta p', 'value': '$p = 3$', 'color': C_SKY},
+                {'label': 'Rzędna q', 'value': '$q = -5$', 'color': C_PRIMARY},
+                {'label': 'Wierzchołek W', 'value': '$W(3, -5)$', 'color': C_SUCCESS}
+            ]
+        )
+        tab3 = make_comparison_card_diagram(
+            title="Pułapka CKE: Zły znak współrzędnej p we wzorze kanonicznym",
+            badge=r"f(x) = a(x - 3)^2 + 4 \implies p = +3 \neq -3 \quad \text{oraz} \quad (x + 4)^2 \implies p = -4",
+            caption="We wzorze kanonicznym występuje minus: a(x - p)²! Dlatego znak przy p w nawiasie ZAWSZE zmieniamy na przeciwny. Rzędna q zachowuje znak bez zmian.",
+            metrics=[
+                {'label': 'KARDYNALNY BŁĄD', 'value': r'Odczytanie $p = -3$ z nawiasu $(x - 3)^2$', 'color': C_DANGER},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'$(x - 3)^2 \implies p = +3$; $(x + 5)^2 \implies p = -5$', 'color': C_SUCCESS},
+                {'label': 'Rzędna q', 'value': 'Znak przed wyrazem wolnym pozostaje bez zmian', 'color': C_PRIMARY}
+            ]
+        )
+        return {'tab0': tab0, 'tab2': tab2, 'tab3': tab3}
 
     elif l_num == 2:
         # L12.2: Postać iloczynowa y = a(x - x₁)(x - x₂) i symetria pierwiastków
@@ -72,12 +97,37 @@ def get_topic_12_visuals(l_idx):
             caption='Odcięta wierzchołka p leży DOKŁADNIE w połowie odległości między miejscami zerowymi x₁ i x₂.',
             plotData=plot_data,
             metrics=[
-                {'label': 'Warunek istnienia', 'value': '$\\Delta \\ge 0$ (dla $\\Delta < 0$ brak postaci iloczynowej)', 'color': C_DANGER},
-                {'label': 'Środek pierwiastków', 'value': '$p = \\frac{x_1 + x_2}{2}$', 'color': C_SKY},
+                {'label': 'Warunek istnienia', 'value': r'$\Delta \ge 0$ (dla $\Delta < 0$ brak postaci iloczynowej)', 'color': C_DANGER},
+                {'label': 'Środek pierwiastków', 'value': r'$p = \frac{x_1 + x_2}{2}$', 'color': C_SKY},
                 {'label': 'Oś symetrii', 'value': '$x = p$', 'color': C_SUCCESS}
             ]
         )
-        return {'tab0': tab0, 'tab2': None, 'tab3': None}
+        tab2 = make_step_flow_diagram(
+            title="Wyznaczanie wierzchołka z miejsc zerowych krok po kroku",
+            badge=r"f(x) = -(x - 1)(x - 5) \implies p = \frac{1 + 5}{2} = 3 \implies q = f(3) = 4 \implies W(3, 4)",
+            caption="Wierzchołek leży dokładnie pośrodku miejsc zerowych. Rzędną q obliczasz podstawiając p do wzoru.",
+            steps=[
+                {'num': 1, 'title': 'Odczytaj pierwiastki x₁ i x₂', 'desc': r'Z postaci iloczynowej: $x_1 = 1$ oraz $x_2 = 5$.', 'color': C_SKY},
+                {'num': 2, 'title': 'Oblicz środek symetrii p', 'desc': r'$p = \frac{x_1 + x_2}{2} = \frac{1 + 5}{2} = 3$.', 'color': C_PRIMARY},
+                {'num': 3, 'title': 'Oblicz rzędną q', 'desc': r'$q = f(p) = -(3 - 1)(3 - 5) = -(2)(-2) = 4$. Wierzchołek to $W(3, 4)$.', 'color': C_SUCCESS}
+            ],
+            metrics=[
+                {'label': 'Miejsca zerowe', 'value': r'$x_1 = 1,\; x_2 = 5$', 'color': C_SKY},
+                {'label': 'Środek symetrii', 'value': '$p = 3$', 'color': C_PRIMARY},
+                {'label': 'Wierzchołek', 'value': '$W(3, 4)$', 'color': C_SUCCESS}
+            ]
+        )
+        tab3 = make_comparison_card_diagram(
+            title="Pułapka CKE: Szukanie postaci iloczynowej gdy Δ < 0 lub zgubienie a",
+            badge=r"\Delta < 0 \implies \text{brak postaci iloczynowej w } \mathbb{R} \quad \text{oraz} \quad y = a(x - x_1)(x - x_2)",
+            caption="Gdy delta jest ujemna, trójmian kwadratowy NIE POSIADA postaci iloczynowej w liczbach rzeczywistych! Nie wymyślaj pierwiastków. Pamiętaj też o współczynniku a przed nawiasami.",
+            metrics=[
+                {'label': 'KARDYNALNY BŁĄD 1', 'value': r'Zapisywanie postaci iloczynowej przy $\Delta < 0$', 'color': C_DANGER},
+                {'label': 'KARDYNALNY BŁĄD 2', 'value': r'Zgubienie współczynnika $a$ (np. $a = -1$ z postaci ogólnej)', 'color': C_DANGER},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Zawsze sprawdź czy $\Delta \ge 0$, zanim szukasz postaci iloczynowej', 'color': C_SUCCESS}
+            ]
+        )
+        return {'tab0': tab0, 'tab2': tab2, 'tab3': tab3}
 
     elif l_num == 3:
         # L12.3: Zbiór wartości i wartość min/max w przedziale domkniętym ⟨a, b⟩
@@ -111,14 +161,39 @@ def get_topic_12_visuals(l_idx):
             caption='Wierzchołek W(p, q) bierzemy pod uwagę TYLKO wtedy, gdy jego odcięta p wpada do przedziału ⟨a, b⟩!',
             plotData=plot_data,
             metrics=[
-                {'label': 'Krok 1: Wierzchołek', 'value': 'Czy $p \\in \\langle a, b \\rangle$?', 'color': C_SKY},
-                {'label': 'Krok 2: Wartości', 'value': 'Porównaj $f(a), f(b)$ oraz $f(p)$', 'color': C_PRIMARY},
-                {'label': 'Zbiór wartości ZW', 'value': 'Dla $a > 0$: $\\langle q, +\\infty)$, dla $a < 0$: $(-\\infty, q\\rangle$', 'color': C_SUCCESS}
+                {'label': 'Krok 1: Wierzchołek', 'value': r'Czy $p \in \langle a, b \rangle$?', 'color': C_SKY},
+                {'label': 'Krok 2: Wartości', 'value': r'Porównaj $f(a), f(b)$ oraz $f(p)$', 'color': C_PRIMARY},
+                {'label': 'Zbiór wartości ZW', 'value': r'Dla $a > 0$: $\langle q, +\infty)$, dla $a < 0$: $(-\infty, q\rangle$', 'color': C_SUCCESS}
             ]
         )
-        return {'tab0': tab0, 'tab2': None, 'tab3': None}
+        tab2 = make_step_flow_diagram(
+            title="Wyznaczanie wartości min/max w przedziale krok po kroku",
+            badge=r"f(x) = x^2 - 4x + 3 \text{ w } [0, 5] \implies p = 2 \in [0, 5] \implies y_{\min} = f(2) = -1, \; y_{\max} = f(5) = 8",
+            caption="Sprawdzasz czy p leży w przedziale, a następnie porównujesz wartości w wierzchołku i na obu krańcach.",
+            steps=[
+                {'num': 1, 'title': 'Wyznacz p', 'desc': r'$p = -\frac{b}{2a} = -\frac{-4}{2 \cdot 1} = 2$.', 'color': C_SKY},
+                {'num': 2, 'title': 'Weryfikacja przynależności p', 'desc': r'Liczba $p = 2 \in [0, 5]$, więc wierzchołek bierzemy pod uwagę (osiąga tu minimum dla $a > 0$).', 'color': C_PRIMARY},
+                {'num': 3, 'title': 'Oblicz wartości i porównaj', 'desc': r'$f(2) = 4 - 8 + 3 = -1$; $f(0) = 3$; $f(5) = 25 - 20 + 3 = 8$. Zatem $y_{\min} = -1$, $y_{\max} = 8$.', 'color': C_SUCCESS}
+            ],
+            metrics=[
+                {'label': 'Wierzchołek w przedziale', 'value': r'$p = 2 \in [0, 5]$', 'color': C_SKY},
+                {'label': 'Wartość minimalna', 'value': r'$y_{\min} = -1$', 'color': C_SUCCESS},
+                {'label': 'Wartość maksymalna', 'value': r'$y_{\max} = 8$', 'color': C_PRIMARY}
+            ]
+        )
+        tab3 = make_comparison_card_diagram(
+            title="Pułapka CKE: Uwzględnianie wierzchołka leżącego poza przedziałem",
+            badge=r"p \notin \langle a, b \rangle \implies \text{ekstrema leżą WYŁĄCZNIE na krańcach } f(a) \text{ i } f(b)",
+            caption="Gdy p leży poza badanym przedziałem, wierzchołek W(p, q) NIE BIERZE UDZIAŁU w wyścigu o min/max! Ekstrema przyjmują wtedy wyłącznie wartości na krańcach przedziału.",
+            metrics=[
+                {'label': 'KARDYNALNY BŁĄD', 'value': r'Podanie $q$ jako wartości ekstremalnej gdy $p \notin \langle a, b \rangle$', 'color': C_DANGER},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Zawsze sprawdź: czy $p \in \langle a, b \rangle$?', 'color': C_SUCCESS},
+                {'label': 'Gdy p poza przedziałem', 'value': 'Obliczasz tylko f(a) oraz f(b) i wybierasz mniejszą/większą', 'color': C_PRIMARY}
+            ]
+        )
+        return {'tab0': tab0, 'tab2': tab2, 'tab3': tab3}
 
-    else:
+    elif l_num == 4:
         # L12.4: Zadania optymalizacyjne (Maksimum w wierzchołku paraboli dla a < 0)
         plot_data = {
             'xRange': [-1, 7],
@@ -146,8 +221,35 @@ def get_topic_12_visuals(l_idx):
             plotData=plot_data,
             metrics=[
                 {'label': 'Warunek maksimum', 'value': 'Współczynnik $a < 0$ (ramiona w dół)', 'color': C_DANGER},
-                {'label': 'Optymalny wymiar', 'value': '$x = p = -\\frac{b}{2a}$ (zawsze w dziedzinie)', 'color': C_SKY},
-                {'label': 'Wartość maksymalna', 'value': '$P_{\\max} = q = P(p)$', 'color': C_SUCCESS}
+                {'label': 'Optymalny wymiar', 'value': r'$x = p = -\frac{b}{2a}$ (zawsze w dziedzinie)', 'color': C_SKY},
+                {'label': 'Wartość maksymalna', 'value': r'$P_{\max} = q = P(p)$', 'color': C_SUCCESS}
             ]
         )
-        return {'tab0': tab0, 'tab2': None, 'tab3': None}
+        tab2 = make_step_flow_diagram(
+            title="Rozwiązanie zadania optymalizacyjnego krok po kroku",
+            badge=r"P(x) = -x^2 + 10x \implies p = -\frac{10}{2(-1)} = 5 \implies P_{\max} = P(5) = 25",
+            caption="Układasz funkcję jednej zmiennej, wyznaczasz dziedzinę geometryczną i znajdujesz maksimum w wierzchołku p.",
+            steps=[
+                {'num': 1, 'title': 'Zapisz funkcję celu i dziedzinę', 'desc': r'Obwód $2x + 2y = 20 \implies y = 10 - x$. Pole: $P(x) = x(10 - x) = -x^2 + 10x$, gdzie $x \in (0, 10)$.', 'color': C_SKY},
+                {'num': 2, 'title': 'Wyznacz optymalny wymiar p', 'desc': r'Funkcja kwadratowa o $a = -1 < 0$ ma maksimum w wierzchołku: $x = p = -\frac{10}{2(-1)} = 5 \in (0, 10)$.', 'color': C_PRIMARY},
+                {'num': 3, 'title': 'Oblicz pole maksymalne', 'desc': r'$y = 10 - 5 = 5$. Maksymalne pole: $P_{\max} = P(5) = -25 + 50 = 25$.', 'color': C_SUCCESS}
+            ],
+            metrics=[
+                {'label': 'Funkcja pola', 'value': r'$P(x) = -x^2 + 10x$', 'color': C_SKY},
+                {'label': 'Optymalny bok', 'value': '$x = 5$', 'color': C_PRIMARY},
+                {'label': 'Maksymalne pole', 'value': r'$P_{\max} = 25$', 'color': C_SUCCESS}
+            ]
+        )
+        tab3 = make_comparison_card_diagram(
+            title="Pułapka CKE: Mylenie optymalnego boku x z wartością maksymalną P",
+            badge=r"x_{\text{opt}} = p = -\frac{b}{2a} \neq P_{\max} = q = P(p)",
+            caption="W zadaniach optymalizacyjnych CKE uważnie czytaj pytanie: czy pytają o WYMIAR (np. długość boku x), czy o WARTOŚĆ MAKSYMALNĄ (np. największe pole P)?",
+            metrics=[
+                {'label': 'KARDYNALNY BŁĄD 1', 'value': r'Podanie $x = 5$ gdy pytanie brzmiało "oblicz największe pole"', 'color': C_DANGER},
+                {'label': 'KARDYNALNY BŁĄD 2', 'value': 'Pominięcie dziedziny geometrycznej $x > 0$ i $y > 0$', 'color': C_DANGER},
+                {'label': 'POPRAWNY ODRUCH CKE', 'value': r'Wymiar to $x = p$, a pole maksymalne to $P_{\max} = q$', 'color': C_SUCCESS}
+            ]
+        )
+        return {'tab0': tab0, 'tab2': tab2, 'tab3': tab3}
+
+    return {'tab0': None, 'tab2': None, 'tab3': None}

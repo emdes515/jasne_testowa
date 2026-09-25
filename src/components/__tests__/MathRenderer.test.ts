@@ -325,4 +325,36 @@ describe('Piecewise condition words, compound interval unions, and LaTeX environ
   });
 });
 
+describe('Parenthesized LaTeX commands and standalone mathematical relations in prose', () => {
+  it('correctly auto-wraps parenthesized LaTeX commands like (\\le, \\ge)', () => {
+    const input = 'Kreska pod znakiem (\\le, \\ge) oznacza kółko zamalowane.';
+    const wrapped = autoWrapLatex(input);
+    expect(wrapped).toContain('$\\le$');
+    expect(wrapped).toContain('$\\ge$');
+
+    const tokens = parseMixedMathTokens(wrapped);
+    const mathTokens = tokens.filter(t => t.type === 'inline-math');
+    expect(mathTokens.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it('correctly auto-wraps parenthesized Greek delta (\\Delta) and relations like \\Delta > 0', () => {
+    const input = 'Wyróżnik (\\Delta) decyduje: \\Delta > 0 oznacza dwa pierwiastki.';
+    const wrapped = autoWrapLatex(input);
+    expect(wrapped).toContain('$\\Delta$');
+    expect(wrapped).toContain('$\\Delta > 0$');
+  });
+
+  it('correctly auto-wraps coordinate point definitions and subscripted algebraic terms in prose', () => {
+    const input1 = 'Dla punktów A = (x_A, y_A) oraz B = (x_B, y_B).';
+    const wrapped1 = autoWrapLatex(input1);
+    expect(wrapped1).toContain('$A = (x_A, y_A)$');
+    expect(wrapped1).toContain('$B = (x_B, y_B)$');
+
+    const input2 = 'Przy odejmowaniu ujemnych współrzędnych: (x_B - (-3)) zamienia się na (x_B + 3)!';
+    const wrapped2 = autoWrapLatex(input2);
+    expect(wrapped2).toContain('$(x_B - (-3))$');
+    expect(wrapped2).toContain('$(x_B + 3)$');
+  });
+});
+
 

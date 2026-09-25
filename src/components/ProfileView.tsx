@@ -137,7 +137,7 @@ export function ProfileView({
   };
 
   return (
-    <div className="flex flex-col p-4 sm:p-6 pt-6 pb-6 sm:pb-8 max-w-xl mx-auto w-full">
+    <div className="flex flex-col p-4 sm:p-6 pt-6 pb-28 sm:pb-32 md:pb-8 max-w-xl mx-auto w-full">
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}>
         {/* Top Header */}
         <div className="flex items-center justify-between mb-4">

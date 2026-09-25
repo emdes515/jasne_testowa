@@ -13,6 +13,7 @@ export interface CreateAppOptions {
   enableFrontend?: boolean;
   apiLimiter?: RateLimiter;
   aiLimiter?: RateLimiter;
+  httpServer?: import('http').Server;
 }
 
 export async function createApp(options?: CreateAppOptions): Promise<{
@@ -58,7 +59,10 @@ export async function createApp(options?: CreateAppOptions): Promise<{
   if (options?.enableFrontend !== false) {
     if (!config.isProduction) {
       const vite = await createViteServer({
-        server: { middlewareMode: true },
+        server: { 
+          middlewareMode: true,
+          ...(options?.httpServer ? { hmr: { server: options.httpServer } } : {}),
+        },
         appType: 'spa',
       });
       app.use(vite.middlewares);

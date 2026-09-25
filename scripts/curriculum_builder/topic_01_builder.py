@@ -66,7 +66,7 @@ def build_topic_01():
             source='Trening JASNE • Wzorzec CKE',
             question='Dokończ zdanie. Wartość wyrażenia $\\frac{5^{12} + 5^{13} + 5^{14}}{5^{12}}$ jest równa',
             options_data=[
-                ('A', '$5^0 + 5^1 + 5^2$'),
+                ('A', '$5^1 + 5^2$'),
                 ('B', '$31$'),
                 ('C', '$5^{27}$'),
                 ('D', '$15$')

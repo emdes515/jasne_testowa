@@ -1,10 +1,13 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Search, BookOpen, AlertTriangle, Compass, Filter } from 'lucide-react';
+import { X, Search, BookOpen, AlertTriangle, Compass, Eye, EyeOff, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem, type CkeFormulaSubItem } from '../services/ckeCatalogRepository';
 import { CKE_FORMULAS_DATA } from '../data/ckeFormulasData';
 import { MathRenderer } from './MathRenderer';
+import { MathPlot } from './MathPlot';
+import { MathDiagram } from './MathDiagram';
+import { NumberLineDiagram } from './NumberLineDiagram';
 
 interface CkeFormulasModalProps {
   isOpen: boolean;
@@ -19,6 +22,12 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState(initialTopicId);
+  const [expandedDiagrams, setExpandedDiagrams] = useState<Record<string, boolean>>({});
+  const chipsScrollRef = useRef<HTMLDivElement>(null);
+
+  const toggleDiagram = (id: string) => {
+    setExpandedDiagrams(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   // Close on Escape key
   useEffect(() => {
@@ -172,24 +181,54 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
             </div>
 
             {/* Topic Filter Chips */}
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 -mb-1">
-              <Filter size={13} className="text-slate-500 shrink-0 mr-1" />
-              {getCkeFormulaTopics().map(topic => {
-                const isSelected = selectedTopic === topic.id;
-                return (
-                  <button
-                    key={topic.id}
-                    onClick={() => setSelectedTopic(topic.id)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                      isSelected
-                        ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.4)]'
-                        : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
-                    }`}
-                  >
-                    {topic.name}
-                  </button>
-                );
-              })}
+            <div className="relative flex items-center group/cke-modal-filter w-full">
+              <button
+                type="button"
+                onClick={() => chipsScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
+                className="hidden sm:flex absolute left-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition -translate-x-1"
+                aria-label="Przewiń działy w lewo"
+                title="Przewiń w lewo"
+              >
+                <ChevronLeft size={13} />
+              </button>
+
+              <div 
+                ref={chipsScrollRef}
+                onWheel={(e) => {
+                  if (e.deltaY !== 0) {
+                    e.currentTarget.scrollLeft += e.deltaY;
+                  }
+                }}
+                className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 -mb-1 px-0.5 sm:px-6 scroll-smooth w-full"
+              >
+                <Filter size={13} className="text-slate-500 shrink-0 mr-1 ml-0.5" />
+                {getCkeFormulaTopics().map(topic => {
+                  const isSelected = selectedTopic === topic.id;
+                  return (
+                    <button
+                      key={topic.id}
+                      onClick={() => setSelectedTopic(topic.id)}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+                        isSelected
+                          ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.4)]'
+                          : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                      }`}
+                    >
+                      {topic.name}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => chipsScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
+                className="hidden sm:flex absolute right-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition translate-x-1"
+                aria-label="Przewiń działy w prawo"
+                title="Przewiń w prawo"
+              >
+                <ChevronRight size={13} />
+              </button>
             </div>
           </div>
 
@@ -304,6 +343,49 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                         </div>
                       )}
                     </div>
+
+                    {/* Szkic geometryczny (opcjonalny, rozwijany akordeon) */}
+                    {item.diagram && (
+                      <div className="pt-1">
+                        <button
+                          type="button"
+                          onClick={() => toggleDiagram(item.id)}
+                          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 transition-all cursor-pointer shadow-sm"
+                        >
+                          {expandedDiagrams[item.id] ? (
+                            <>
+                              <EyeOff size={13} className="text-slate-400 shrink-0" />
+                              <span>Ukryj wizualizację</span>
+                            </>
+                          ) : (
+                            <>
+                              <Eye size={13} className="text-sky-400 shrink-0" />
+                              <span>Wizualizacja geometryczna</span>
+                            </>
+                          )}
+                        </button>
+
+                        <AnimatePresence>
+                          {expandedDiagrams[item.id] && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden pt-2.5"
+                            >
+                              <div className="rounded-xl border border-white/10 bg-[#070A0F] p-3 shadow-inner">
+                                {'intervals' in item.diagram ? (
+                                  <NumberLineDiagram data={item.diagram as any} height={120} />
+                                ) : (
+                                  <MathDiagram diagram={item.diagram as any} compact borderless />
+                                )}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )}
                   </div>
                 );
               })

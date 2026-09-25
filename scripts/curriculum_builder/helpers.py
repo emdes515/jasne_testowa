@@ -115,7 +115,7 @@ def resolve_badge_and_source(raw_source, question=None, correct_answer=None):
             
     return 'Trening JASNE • Wzorzec CKE'
 
-def make_sc_task(task_id, source, question, options_data, correct_id, explanation, cke_trap, diagram=None, number_line=None, plot=None):
+def make_sc_task(task_id, source, question, options_data, correct_id, explanation, cke_trap, diagram=None, number_line=None, plot=None, explanation_diagram=None, explanation_plot=None, explanation_number_line=None):
     """
     options_data: lista krotek [('A', '$2^{16}$'), ('B', '$2^8$'), ...]
     lub słowników [{'id': 'A', 'text': '...'}]
@@ -164,14 +164,28 @@ def make_sc_task(task_id, source, question, options_data, correct_id, explanatio
         'hints': {
             'level_1': hint_1,
             'level_2': hint_2
-        },
-        'diagram': diagram,
+        },        'diagram': diagram,
         'plot': plot if plot is not None else diagram,
-        'numberLine': number_line
+        'numberLine': number_line,
+        'explanationDiagram': explanation_diagram,
+        'explanationPlot': explanation_plot,
+        'explanationNumberLine': explanation_number_line
     }
+    
+    if plot:
+        task['plot'] = plot
+    if number_line:
+        task['numberLine'] = number_line
+    if explanation_diagram:
+        task['explanationDiagram'] = explanation_diagram
+    if explanation_plot:
+        task['explanationPlot'] = explanation_plot
+    if explanation_number_line:
+        task['explanationNumberLine'] = explanation_number_line
     return task
 
-def make_tf_task(task_id, source, question, correct_tf, explanation, cke_trap, diagram=None, plot=None, number_line=None):
+
+def make_tf_task(task_id, source, question, correct_tf, explanation, cke_trap, diagram=None, plot=None, number_line=None, explanation_diagram=None, explanation_plot=None, explanation_number_line=None):
     """
     correct_tf: 'PRAWDA' lub 'FAŁSZ' (lub 'P', 'F')
     """
@@ -213,13 +227,15 @@ def make_tf_task(task_id, source, question, correct_tf, explanation, cke_trap, d
         'hints': {
             'level_1': hint_1,
             'level_2': hint_2
-        },
-        'diagram': diagram,
+        },        'diagram': diagram,
         'plot': plot if plot is not None else diagram,
-        'numberLine': number_line
+        'numberLine': number_line,
+        'explanationDiagram': explanation_diagram,
+        'explanationPlot': explanation_plot,
+        'explanationNumberLine': explanation_number_line
     }
 
-def make_numeric_task(task_id, source, question, correct_val, explanation, cke_trap, diagram=None, plot=None, number_line=None):
+def make_numeric_task(task_id, source, question, correct_val, explanation, cke_trap, diagram=None, plot=None, number_line=None, explanation_diagram=None, explanation_plot=None, explanation_number_line=None):
     cleaned_trap = clean_cke_trap(cke_trap)
     cleaned_exp = clean_formal_logic(explanation)
     canonical_badge = resolve_badge_and_source(source, question=question, correct_answer=correct_val)
@@ -251,13 +267,15 @@ def make_numeric_task(task_id, source, question, correct_val, explanation, cke_t
         'hints': {
             'level_1': hint_1,
             'level_2': hint_2
-        },
-        'diagram': diagram,
+        },        'diagram': diagram,
         'plot': plot if plot is not None else diagram,
-        'numberLine': number_line
+        'numberLine': number_line,
+        'explanationDiagram': explanation_diagram,
+        'explanationPlot': explanation_plot,
+        'explanationNumberLine': explanation_number_line
     }
 
-def make_open_task(task_id, source, question, points, scoring_key, explanation, cke_trap, diagram=None, plot=None, number_line=None):
+def make_open_task(task_id, source, question, points, scoring_key, explanation, cke_trap, diagram=None, plot=None, number_line=None, explanation_diagram=None, explanation_plot=None, explanation_number_line=None):
     cleaned_trap = clean_cke_trap(cke_trap)
     cleaned_exp = clean_formal_logic(explanation)
     canonical_badge = resolve_badge_and_source(source, question=question)
@@ -288,10 +306,12 @@ def make_open_task(task_id, source, question, points, scoring_key, explanation, 
         'hints': {
             'level_1': hint_1,
             'level_2': hint_2
-        },
-        'diagram': diagram,
+        },        'diagram': diagram,
         'plot': plot if plot is not None else diagram,
-        'numberLine': number_line
+        'numberLine': number_line,
+        'explanationDiagram': explanation_diagram,
+        'explanationPlot': explanation_plot,
+        'explanationNumberLine': explanation_number_line
     }
 
 def make_lesson(lesson_id, topic_id, title, concept_essence, matura_context, core_formulas, worked_example, exam_trap, visuals, tasks):

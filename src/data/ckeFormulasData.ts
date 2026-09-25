@@ -1,3 +1,7 @@
+import type { MathDiagramData } from '../components/MathDiagram';
+import type { PlotData } from '../components/MathPlot';
+import type { NumberLineData } from '../components/NumberLineDiagram';
+
 export interface CkeFormulaSubItem {
   label: string;
   formula: string;
@@ -16,6 +20,7 @@ export interface CkeFormulaItem {
   keywords: string[];
   cke_page?: string;
   pageNumber?: number | string;
+  diagram?: MathDiagramData | PlotData | NumberLineData;
 }
 
 export const CKE_FORMULA_TOPICS = [
@@ -42,8 +47,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Iloraz potęg', formula: '\\frac{a^r}{a^s} = a^{r-s}' }
     ],
     explanation: 'Dla a > 0 oraz dowolnych wykładników r, s.',
-    goldenRule: 'Zawsze sprowadzaj liczby do wspólnej podstawy (np. 4 i 8 sprowadzaj do 2: 4=2², 8=2³).',
-    ckeTrap: '2³ · 2⁴ to 2⁷, a NIE 4⁷! Podstawa potęgi się NIE mnoży.',
+    goldenRule: 'Zawsze sprowadzaj liczby do wspólnej podstawy (np. $4$ i $8$ sprowadzaj do $2$: $4 = 2^2, 8 = 2^3$).',
+    ckeTrap: '$2^3 \\cdot 2^4 = 2^7$, a NIE $4^7$! Podstawa potęgi się NIE mnoży.',
     keywords: ['potęga', 'mnożenie', 'dzielenie', 'wykładnik', 'podstawa'],
     cke_page: 'str. 4',
     pageNumber: 4
@@ -59,8 +64,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Potęga iloczynu', formula: '(a \\cdot b)^r = a^r \\cdot b^r' }
     ],
     explanation: 'Wykładniki potęg mnożymy przez siebie przy potęgowaniu nawiasu.',
-    goldenRule: 'Uważaj na kolejność: (2³)² = 2⁶ = 64.',
-    ckeTrap: '(a + b)² to a² + 2ab + b², a NIE a² + b²!',
+    goldenRule: 'Uważaj na kolejność: $(2^3)^2 = 2^6 = 64$.',
+    ckeTrap: '$(a + b)^2 = a^2 + 2ab + b^2$, a NIE $a^2 + b^2$!',
     keywords: ['potęgowanie', 'iloczyn', 'nawias'],
     cke_page: 'str. 4',
     pageNumber: 4
@@ -75,9 +80,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Ujemny wykładnik (odwrotność)', formula: 'a^{-r} = \\frac{1}{a^r}' },
       { label: 'Wykładnik ułamkowy (pierwiastek)', formula: 'a^{\\frac{m}{n}} = \\sqrt[n]{a^m}' }
     ],
-    explanation: 'Minus w wykładniku odwraca ułamek do góry dnem. Ułamek w wykładniku zamienia się w pierwiastek stopnia n.',
-    goldenRule: '(a/b)^{-n} = (b/a)^n. Zawsze najpierw pozbądź się minusa, odwracając ułamek.',
-    ckeTrap: 'Liczba 4^{-1/2} to 1 / √4 = 1/2, a NIE liczba ujemna -2!',
+    explanation: 'Minus w wykładniku odwraca ułamek do góry dnem. Ułamek w wykładniku zamienia się w pierwiastek stopnia $n$.',
+    goldenRule: '$(a/b)^{-n} = (b/a)^n$. Zawsze najpierw pozbądź się minusa, odwracając ułamek.',
+    ckeTrap: 'Liczba $4^{-1/2} = \\frac{1}{\\sqrt{4}} = \\frac{1}{2}$, a NIE liczba ujemna $-2$!',
     keywords: ['ujemny wykładnik', 'odwrotność', 'ułamek', 'pierwiastek'],
     cke_page: 'str. 4',
     pageNumber: 4
@@ -92,9 +97,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Iloczyn pod pierwiastkiem', formula: '\\sqrt[n]{a \\cdot b} = \\sqrt[n]{a} \\cdot \\sqrt[n]{b}' },
       { label: 'Iloraz pod pierwiastkiem', formula: '\\sqrt[n]{\\frac{a}{b}} = \\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}}' }
     ],
-    explanation: 'Dla a, b ≥ 0 (gdy n parzyste) lub dowolnych (gdy n nieparzyste).',
-    goldenRule: 'Wyłączaj czynniki przed znak pierwiastka (np. √72 = √(36·2) = 6√2).',
-    ckeTrap: '√(9 + 16) to √25 = 5, a NIE √9 + √16 = 3 + 4 = 7!',
+    explanation: 'Dla $a, b \\ge 0$ (gdy $n$ parzyste) lub dowolnych (gdy $n$ nieparzyste).',
+    goldenRule: 'Wyłączaj czynniki przed znak pierwiastka (np. $\\sqrt{72} = \\sqrt{36 \\cdot 2} = 6\\sqrt{2}$).',
+    ckeTrap: '$\\sqrt{9 + 16} = \\sqrt{25} = 5$, a NIE $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$!',
     keywords: ['pierwiastek', 'iloczyn', 'iloraz', 'wyłączanie czynnika'],
     cke_page: 'str. 4',
     pageNumber: 4
@@ -111,11 +116,54 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Różnica kwadratów', formula: 'a^2 - b^2 = (a - b)(a + b)' }
     ],
     explanation: 'Kwadrat sumy, kwadrat różnicy oraz różnica kwadratów.',
-    goldenRule: 'Różnica kwadratów a² - b² jest kluczem do usuwania niewymierności z mianownika przez mnożenie przez sprzężenie.',
-    ckeTrap: 'Częste gubienie podwojonego iloczynu: (x - 3)² = x² - 6x + 9, a NIE x² - 9!',
+    goldenRule: 'Różnica kwadratów $a^2 - b^2$ jest kluczem do usuwania niewymierności z mianownika przez mnożenie przez sprzężenie.',
+    ckeTrap: 'Częste gubienie podwojonego iloczynu: $(x - 3)^2 = x^2 - 6x + 9$, a NIE $x^2 - 9$!',
     keywords: ['wzory skróconego mnożenia', 'kwadrat sumy', 'różnica kwadratów'],
     cke_page: 'str. 7',
-    pageNumber: 7
+    pageNumber: 7,
+    diagram: {
+      type: 'GEOMETRY_2D',
+      title: 'Geometryczna interpretacja kwadratu sumy: (a + b)² = a² + 2ab + b²',
+      width: 440,
+      height: 220,
+      polygons: [
+        {
+          points: '140,25 240,25 240,125 140,125',
+          fill: 'rgba(255, 184, 0, 0.16)',
+          stroke: '#FFB800',
+          strokeWidth: 2
+        },
+        {
+          points: '240,25 295,25 295,125 240,125',
+          fill: 'rgba(56, 189, 248, 0.12)',
+          stroke: '#38BDF8',
+          strokeWidth: 1.5
+        },
+        {
+          points: '140,125 240,125 240,180 140,180',
+          fill: 'rgba(56, 189, 248, 0.12)',
+          stroke: '#38BDF8',
+          strokeWidth: 1.5
+        },
+        {
+          points: '240,125 295,125 295,180 240,180',
+          fill: 'rgba(16, 185, 129, 0.16)',
+          stroke: '#10B981',
+          strokeWidth: 2
+        }
+      ],
+      labels: [
+        { x: 190, y: 75, text: 'a²', color: '#FFDCA1', fontSize: 16, fontWeight: '700' },
+        { x: 267, y: 75, text: 'ab', color: '#38BDF8', fontSize: 14, fontWeight: '700' },
+        { x: 190, y: 152, text: 'ab', color: '#38BDF8', fontSize: 14, fontWeight: '700' },
+        { x: 267, y: 152, text: 'b²', color: '#10B981', fontSize: 15, fontWeight: '700' },
+        { x: 190, y: 14, text: 'a', color: '#FFDCA1', fontSize: 13, fontWeight: '600' },
+        { x: 267, y: 14, text: 'b', color: '#38BDF8', fontSize: 13, fontWeight: '600' },
+        { x: 122, y: 75, text: 'a', color: '#FFDCA1', fontSize: 13, fontWeight: '600' },
+        { x: 122, y: 152, text: 'b', color: '#38BDF8', fontSize: 13, fontWeight: '600' },
+        { x: 218, y: 204, text: 'Pole całkowite = a² + 2ab + b²', color: '#FFDCA1', fontSize: 13, fontWeight: '700', badge: true }
+      ]
+    }
   },
 
   // 2. Logarytmy i Procenty
@@ -129,9 +177,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Równoważność wykładnicza', formula: 'a^c = b' },
       { label: 'Założenia dziedziny', formula: 'a > 0, \\; a \\neq 1, \\; b > 0' }
     ],
-    explanation: 'Logarytm to pytanie o wykładnik: „Do jakiej potęgi podnieść podstawę a, aby otrzymać b?”.',
-    goldenRule: 'Jeśli log_2(x) = 5, to natychmiast zapisz: x = 2⁵ = 32.',
-    ckeTrap: 'Podstawa a musi być dodatnia i różna od 1, a liczba logarytmowana b ściśle dodatnia b > 0 (dziedzina!).',
+    explanation: 'Logarytm to pytanie o wykładnik: „Do jakiej potęgi podnieść podstawę $a$, aby otrzymać $b$?”.',
+    goldenRule: 'Jeśli $\\log_2(x) = 5$, to natychmiast zapisz: $x = 2^5 = 32$.',
+    ckeTrap: 'Podstawa $a$ musi być dodatnia i różna od $1$ ($a > 0, a \\neq 1$), a liczba logarytmowana $b$ ściśle dodatnia: $b > 0$ (dziedzina!).',
     keywords: ['logarytm', 'definicja', 'podstawa', 'dziedzina'],
     cke_page: 'str. 5',
     pageNumber: 5
@@ -149,7 +197,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ],
     explanation: 'Suma logarytmów o tej samej podstawie to logarytm iloczynu.',
     goldenRule: 'Przed dodaniem logarytmów najpierw wciągnij współczynnik przed logarytmem jako wykładnik potęgi argumentu.',
-    ckeTrap: 'log(x + y) to NIE log(x) + log(y)! Suma w argumencie jest nierozbijalna.',
+    ckeTrap: '$\\log(x + y)$ to NIE $\\log(x) + \\log(y)$! Suma w argumencie jest nierozbijalna.',
     keywords: ['suma logarytmów', 'różnica logarytmów', 'wciąganie współczynnika'],
     cke_page: 'str. 5',
     pageNumber: 5
@@ -164,9 +212,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Kapitał końcowy (procent składany)', formula: 'K_n = K_0 \\cdot \\left(1 + \\frac{p}{100 \\cdot m}\\right)^{n \\cdot m}' },
       { label: 'Względna zmiana procentowa', formula: '\\frac{A - B}{B} \\cdot 100\\%' }
     ],
-    explanation: 'm – liczba kapitalizacji w roku, n – liczba lat, p – oprocentowanie roczne w %.',
+    explanation: '$m$ – liczba kapitalizacji w roku, $n$ – liczba lat, $p$ – oprocentowanie roczne w $\%$.',
     goldenRule: 'Baza wyjściowa („od czego liczysz”) ZAWSZE trafia do mianownika ułamka.',
-    ckeTrap: 'Obniżka o 20% i podwyżka o 20% NIE przywraca ceny początkowej! Cena końcowa to 100 · 0.8 · 1.2 = 96 (spadek o 4%).',
+    ckeTrap: 'Obniżka o $20\\%$ i podwyżka o $20\\%$ NIE przywraca ceny początkowej! Cena końcowa to $100 \\cdot 0{,}8 \\cdot 1{,}2 = 96$ (spadek o $4\\%$).',
     keywords: ['procenty', 'lokaty', 'kapitalizacja', 'procent składany'],
     cke_page: 'str. 10',
     pageNumber: 10
@@ -185,12 +233,50 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Warunek równoległości prostych', formula: 'a_1 = a_2' },
       { label: 'Warunek prostopadłości prostych', formula: 'a_1 \\cdot a_2 = -1' }
     ],
-    explanation: 'a to współczynnik kierunkowy (a = tg α), b to wyraz wolny.',
-    goldenRule: 'Dwie proste są prostopadłe, gdy ich współczynniki są przeciwne i odwrotne (np. 2/3 oraz -3/2).',
-    ckeTrap: 'Punkt przecięcia z osią OY to (0, b), a z osią OX to (-b/a, 0). Nie myl kolejności współrzędnych!',
+    explanation: '$a$ to współczynnik kierunkowy ($a = \\operatorname{tg} \\alpha$), $b$ to wyraz wolny.',
+    goldenRule: 'Dwie proste są prostopadłe, gdy ich współczynniki są przeciwne i odwrotne (np. $\\frac{2}{3}$ oraz $-\\frac{3}{2}$).',
+    ckeTrap: 'Punkt przecięcia z osią $OY$ to $(0, b)$, a z osią $OX$ to $(-\\frac{b}{a}, 0)$. Nie myl kolejności współrzędnych!',
     keywords: ['funkcja liniowa', 'współczynnik kierunkowy', 'prostopadłość', 'równoległość'],
     cke_page: 'str. 21–22',
-    pageNumber: 21
+    pageNumber: 21,
+    diagram: {
+      type: 'PLOT',
+      plotData: {
+        panels: [
+          {
+            title: 'Proste równoległe (a₁ = a₂)',
+            badge: 'k || l',
+            badgeColor: '#38BDF8',
+            plot: {
+              xRange: [-3, 3],
+              yRange: [-3, 3],
+              gridStep: 1,
+              lines: [
+                { slope: 1, intercept: 1, color: '#FFB800', label: 'k: y = x + 1' },
+                { slope: 1, intercept: -1, color: '#38BDF8', label: 'l: y = x - 1' }
+              ]
+            }
+          },
+          {
+            title: 'Proste prostopadłe (a₁ · a₂ = -1)',
+            badge: 'k ⊥ m',
+            badgeColor: '#F43F5E',
+            plot: {
+              xRange: [-3, 3],
+              yRange: [-3, 3],
+              gridStep: 1,
+              lines: [
+                { slope: 1, intercept: 0, color: '#FFB800', label: 'k: y = x' },
+                { slope: -1, intercept: 1, color: '#F43F5E', label: 'm: y = -x + 1' }
+              ],
+              points: [
+                { x: 0.5, y: 0.5, label: '90°', dot: 'filled', color: '#10B981', attach: 'ne' }
+              ]
+            }
+          }
+        ]
+      }
+    }
   },
   {
     id: 'f-funkcja-kwadratowa',
@@ -204,12 +290,29 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Postać kanoniczna', formula: 'f(x) = a(x - p)^2 + q' },
       { label: 'Postać iloczynowa (dla Δ ≥ 0)', formula: 'f(x) = a(x - x_1)(x - x_2)' }
     ],
-    explanation: 'Jeśli a > 0, ramiona paraboli idą w górę (minimum w wierzchołku). Jeśli a < 0, ramiona idą w dół (maksimum).',
-    goldenRule: 'Współrzędna p wierzchołka leży dokładnie w połowie między miejscami zerowymi: p = (x_1 + x_2) / 2.',
-    ckeTrap: 'Uważaj na znaki w postaci kanonicznej: f(x) = 2(x - 3)² + 5 ma wierzchołek w p = +3, a NIE -3!',
+    explanation: 'Jeśli $a > 0$, ramiona paraboli idą w górę (minimum w wierzchołku). Jeśli $a < 0$, ramiona idą w dół (maksimum).',
+    goldenRule: 'Współrzędna $p$ wierzchołka leży dokładnie w połowie między miejscami zerowymi: $p = \\frac{x_1 + x_2}{2}$.',
+    ckeTrap: 'Uważaj na znaki w postaci kanonicznej: $f(x) = 2(x - 3)^2 + 5$ ma wierzchołek w $p = +3$, a NIE $-3$!',
     keywords: ['funkcja kwadratowa', 'delta', 'wierzchołek', 'postać kanoniczna', 'postać iloczynowa'],
     cke_page: 'str. 7–8',
-    pageNumber: 7
+    pageNumber: 7,
+    diagram: {
+      type: 'PARABOLA',
+      xRange: [-1, 5],
+      yRange: [-2, 5],
+      gridStep: 1,
+      parabola: { a: 1, p: 2, q: -1, color: '#FFB800' },
+      axisOfSymmetry: 2,
+      points: [
+        { x: 2, y: -1, label: 'W = (p, q) = (2, -1)', dot: 'filled', color: '#38BDF8', attach: 's' },
+        { x: 1, y: 0, label: 'x₁ = 1', dot: 'filled', color: '#10B981', attach: 'nw' },
+        { x: 3, y: 0, label: 'x₂ = 3', dot: 'filled', color: '#10B981', attach: 'ne' },
+        { x: 0, y: 3, label: '(0, c) = (0, 3)', dot: 'filled', color: '#F59E0B', attach: 'w' }
+      ],
+      labels: [
+        { x: 2, y: 4.3, text: 'oś symetrii x = p = 2', color: '#38BDF8', attach: 'n' }
+      ]
+    }
   },
   {
     id: 'f-wzory-vietea',
@@ -222,9 +325,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Iloczyn pierwiastków', formula: 'x_1 \\cdot x_2 = \\frac{c}{a}' },
       { label: 'Suma kwadratów pierwiastków', formula: 'x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2' }
     ],
-    explanation: 'Pozwalają badać znaki pierwiastków lub sumy i iloczyny bez bezpośredniego wyliczania x_1 i x_2.',
-    goldenRule: 'Przydatna tożsamość: x_1² + x_2² = (x_1 + x_2)² - 2x_1 x_2.',
-    ckeTrap: 'Pamiętaj o minusie przy sumie pierwiastków: -b / a!',
+    explanation: 'Pozwalają badać znaki pierwiastków lub sumy i iloczyny bez bezpośredniego wyliczania $x_1$ i $x_2$.',
+    goldenRule: 'Przydatna tożsamość: $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2$.',
+    ckeTrap: 'Pamiętaj o minusie przy sumie pierwiastków: $-\\frac{b}{a}$!',
     keywords: ['Vieta', 'wzory vietea', 'suma pierwiastków', 'iloczyn pierwiastków'],
     cke_page: 'str. 8',
     pageNumber: 8
@@ -242,9 +345,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Związek sąsiednich wyrazów', formula: 'a_n = \\frac{a_{n-1} + a_{n+1}}{2}' },
       { label: 'Suma n początkowych wyrazów', formula: 'S_n = \\frac{a_1 + a_n}{2} \\cdot n' }
     ],
-    explanation: 'Każdy kolejny wyraz powstaje przez dodanie stałej liczby r: a_{n+1} = a_n + r.',
-    goldenRule: 'Trzy liczby (x, y, z) tworzą ciąg arytmetyczny, gdy 2y = x + z.',
-    ckeTrap: 'We wzorze na a_n mnożymy r przez (n - 1), a NIE przez n!',
+    explanation: 'Każdy kolejny wyraz powstaje przez dodanie stałej różnicy $r$: $a_{n+1} = a_n + r$.',
+    goldenRule: 'Trzy liczby $(x, y, z)$ tworzą ciąg arytmetyczny, gdy $2y = x + z$.',
+    ckeTrap: 'We wzorze na $a_n$ mnożymy $r$ przez $(n - 1)$, a NIE przez $n$!',
     keywords: ['ciąg arytmetyczny', 'różnica ciągu', 'suma ciągu'],
     cke_page: 'str. 9',
     pageNumber: 9
@@ -260,9 +363,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Związek sąsiednich wyrazów', formula: 'a_n^2 = a_{n-1} \\cdot a_{n+1}' },
       { label: 'Suma n początkowych wyrazów (q ≠ 1)', formula: 'S_n = a_1 \\cdot \\frac{1 - q^n}{1 - q}' }
     ],
-    explanation: 'Każdy kolejny wyraz powstaje przez pomnożenie poprzedniego przez stały iloraz q.',
-    goldenRule: 'Trzy liczby dodatnie (x, y, z) tworzą ciąg geometryczny, gdy y² = x · z.',
-    ckeTrap: 'Wykładnik ilorazu to (n - 1): a_4 = a_1 · q³, a NIE a_1 · q⁴!',
+    explanation: 'Każdy kolejny wyraz powstaje przez pomnożenie poprzedniego przez stały iloraz $q$: $a_{n+1} = a_n \\cdot q$.',
+    goldenRule: 'Trzy liczby dodatnie $(x, y, z)$ tworzą ciąg geometryczny, gdy $y^2 = x \\cdot z$.',
+    ckeTrap: 'Wykładnik ilorazu to $(n - 1)$: $a_4 = a_1 \\cdot q^3$, a NIE $a_1 \\cdot q^4$!',
     keywords: ['ciąg geometryczny', 'iloraz ciągu', 'suma geometryczna'],
     cke_page: 'str. 10',
     pageNumber: 10
@@ -286,7 +389,41 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'Zawsze sprawdzaj, który kąt jest naprzeciwko danej przyprostokątnej!',
     keywords: ['sinus', 'cosinus', 'tangens', 'trójkąt prostokątny'],
     cke_page: 'str. 10',
-    pageNumber: 10
+    pageNumber: 10,
+    diagram: {
+      type: 'TRIGONOMETRY',
+      title: 'Trójkąt prostokątny i definicje funkcji trygonometrycznych',
+      width: 500,
+      height: 210,
+      polygons: [
+        {
+          points: '178,160 178,148 190,148 190,160',
+          fill: 'rgba(255, 255, 255, 0.08)',
+          stroke: '#64748B',
+          strokeWidth: 1.5
+        }
+      ],
+      segments: [
+        { from: [40, 160], to: [190, 160], color: '#38BDF8', strokeWidth: 2.5, label: 'b' },
+        { from: [190, 160], to: [190, 45], color: '#F43F5E', strokeWidth: 2.5, label: 'a' },
+        { from: [40, 160], to: [190, 45], color: '#FFB800', strokeWidth: 2.5, label: 'c' }
+      ],
+      points: [
+        { x: 40, y: 160, label: 'A', dot: 'filled', color: '#38BDF8', attach: 'sw' },
+        { x: 190, y: 160, label: 'C', dot: 'filled', color: '#64748B', attach: 'se' },
+        { x: 190, y: 45, label: 'B', dot: 'filled', color: '#F43F5E', attach: 'ne' },
+        { x: 184, y: 154, dot: 'filled', color: '#94A3B8' }
+      ],
+      arcs: [
+        { cx: 40, cy: 160, r: 35, startAngleDeg: 55, endAngleDeg: 90, color: '#10B981', label: 'α' }
+      ],
+      labels: [
+        { x: 270, y: 48, text: 'sin α = a / c', color: '#F43F5E', fontSize: 13, fontWeight: '700', badge: true, anchor: 'start' },
+        { x: 270, y: 88, text: 'cos α = b / c', color: '#38BDF8', fontSize: 13, fontWeight: '700', badge: true, anchor: 'start' },
+        { x: 270, y: 128, text: 'tg α = a / b', color: '#FFDCA1', fontSize: 13, fontWeight: '700', badge: true, anchor: 'start' },
+        { x: 270, y: 168, text: 'a² + b² = c²', color: '#10B981', fontSize: 13, fontWeight: '700', badge: true, anchor: 'start' }
+      ]
+    }
   },
   {
     id: 'f-trygo-tabelka',
@@ -331,12 +468,35 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Długość odcinka |AB|', formula: '|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}' },
       { label: 'Współrzędne środka S = (x_S, y_S)', formula: 'x_S = \\frac{x_A + x_B}{2}, \\quad y_S = \\frac{y_A + y_B}{2}' }
     ],
-    explanation: 'Dla punktów A = (x_A, y_A) oraz B = (x_B, y_B).',
-    goldenRule: 'Środek odcinka to średnia arytmetyczna współrzędnych końców.',
-    ckeTrap: 'Przy odejmowaniu ujemnych współrzędnych: (x_B - (-3)) zamienia się na (x_B + 3)!',
+    explanation: 'Dla punktów $A = (x_A, y_A)$ oraz $B = (x_B, y_B)$.',
+    goldenRule: 'Środek odcinka to średnia arytmetyczna współrzędnych końców: $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.',
+    ckeTrap: 'Przy odejmowaniu ujemnych współrzędnych: $(x_B - (-3))$ zamienia się na $(x_B + 3)$!',
     keywords: ['odległość punktów', 'środek odcinka', 'geometria analityczna'],
     cke_page: 'str. 21',
-    pageNumber: 21
+    pageNumber: 21,
+    diagram: {
+      type: 'PLOT',
+      plotData: {
+        xRange: [0, 7],
+        yRange: [0, 6],
+        gridStep: 1,
+        segments: [
+          { from: [1, 1], to: [5, 4], color: '#FFB800', strokeWidth: 3 },
+          { from: [1, 1], to: [5, 1], color: '#38BDF8', dashed: true, strokeWidth: 1.5, label: 'Δx = 4' },
+          { from: [5, 1], to: [5, 4], color: '#F43F5E', dashed: true, strokeWidth: 1.5, label: 'Δy = 3' }
+        ],
+        points: [
+          { x: 1, y: 1, label: 'A(1; 1)', dot: 'filled', color: '#FFB800', attach: 'sw' },
+          { x: 5, y: 4, label: 'B(5; 4)', dot: 'filled', color: '#FFB800', attach: 'ne' },
+          { x: 3, y: 2.5, label: 'S(3; 2.5) [środek]', dot: 'filled', color: '#10B981', attach: 'nw' },
+          { x: 5, y: 1, label: 'C(5; 1)', dot: 'hollow', color: '#64748B', attach: 'se' }
+        ],
+        labels: [
+          { x: 1.8, y: 2.4, text: '|AB| = 5', color: '#FFB800', attach: 'nw' },
+          { x: 3.5, y: 5.4, text: '|AB|² = 4² + 3² = 25  (Pitagoras)', color: '#FFDCA1', attach: 'n' }
+        ]
+      }
+    }
   },
   {
     id: 'f-geo-trojkat-rownoboczny',
@@ -350,9 +510,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Promień koła opisanego R', formula: 'R = \\frac{2}{3}h = \\frac{a\\sqrt{3}}{3}' },
       { label: 'Promień koła wpisanego r', formula: 'r = \\frac{1}{3}h = \\frac{a\\sqrt{3}}{6}' }
     ],
-    explanation: 'Dla trójkąta równobocznego o boku długości a.',
-    goldenRule: 'Pamiętaj: R = 2r (promień opisanego jest dwukrotnie większy od promienia wpisanego).',
-    ckeTrap: 'Nie myl wzoru na wysokość (dzielenie przez 2) ze wzorem na pole (dzielenie przez 4 i a²)!',
+    explanation: 'Dla trójkąta równobocznego o boku długości $a$.',
+    goldenRule: 'Pamiętaj: $R = 2r$ (promień koła opisanego jest dwukrotnie większy od promienia wpisanego).',
+    ckeTrap: 'Nie myl wzoru na wysokość (dzielenie przez $2$) ze wzorem na pole (dzielenie przez $4$ i $a^2$)!',
     keywords: ['trójkąt równoboczny', 'wysokość', 'pole', 'koło opisane', 'koło wpisane'],
     cke_page: 'str. 16',
     pageNumber: 16
@@ -368,11 +528,47 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Promień okręgu', formula: 'r > 0' }
     ],
     explanation: 'Równanie kanoniczne okręgu w układzie współrzędnych.',
-    goldenRule: 'Prawa strona to r². Jeśli po prawej stronie masz 25, to promień r = 5, a NIE 25!',
-    ckeTrap: 'Uważaj na znaki środka: (x - 2)² + (y + 3)² = 16 ma środek w S = (2, -3)!',
+    goldenRule: 'Prawa strona to $r^2$. Jeśli po prawej stronie masz $25$, to promień $r = 5$, a NIE $25$!',
+    ckeTrap: 'Uważaj na znaki środka: $(x - 2)^2 + (y + 3)^2 = 16$ ma środek w $S = (2, -3)$!',
     keywords: ['równanie okręgu', 'środek okręgu', 'promień okręgu'],
     cke_page: 'str. 22',
-    pageNumber: 22
+    pageNumber: 22,
+    diagram: {
+      type: 'GEOMETRY_2D',
+      title: 'Równanie okręgu w układzie współrzędnych: (x - a)² + (y - b)² = r²',
+      width: 440,
+      height: 220,
+      circles: [
+        {
+          cx: 190,
+          cy: 110,
+          r: 65,
+          fill: 'rgba(56, 189, 248, 0.08)',
+          stroke: '#38BDF8',
+          strokeWidth: 2
+        }
+      ],
+      segments: [
+        { from: [30, 185], to: [370, 185], color: '#475569', strokeWidth: 1.5 },
+        { from: [55, 25], to: [55, 200], color: '#475569', strokeWidth: 1.5 },
+        { from: [190, 110], to: [243, 73], color: '#FFB800', strokeWidth: 2.5, label: 'r' },
+        { from: [190, 110], to: [243, 110], color: '#38BDF8', dashed: true, strokeWidth: 1.5, label: 'x - a' },
+        { from: [243, 110], to: [243, 73], color: '#F43F5E', dashed: true, strokeWidth: 1.5, label: 'y - b' },
+        { from: [190, 110], to: [190, 185], color: '#334155', dashed: true, strokeWidth: 1 },
+        { from: [55, 110], to: [190, 110], color: '#334155', dashed: true, strokeWidth: 1 }
+      ],
+      points: [
+        { x: 190, y: 110, label: 'S(a, b)', dot: 'filled', color: '#10B981', attach: 'sw' },
+        { x: 243, y: 73, label: 'P(x, y)', dot: 'filled', color: '#FFB800', attach: 'ne' },
+        { x: 190, y: 185, label: 'a', dot: 'hollow', color: '#94A3B8', attach: 's' },
+        { x: 55, y: 110, label: 'b', dot: 'hollow', color: '#94A3B8', attach: 'w' }
+      ],
+      labels: [
+        { x: 365, y: 180, text: 'X', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 55, y: 15, text: 'Y', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 280, y: 35, text: '(x - a)² + (y - b)² = r²', color: '#FFDCA1', fontSize: 13, fontWeight: '700', badge: true }
+      ]
+    }
   },
 
   // 7. Kombinatoryka i Prawdopodobieństwo
@@ -387,9 +583,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Własność prawdopodobieństwa', formula: '0 \\le P(A) \\le 1' },
       { label: 'Prawdopodobieństwo zdarzenia przeciwnego', formula: 'P(A\') = 1 - P(A)' }
     ],
-    explanation: '|A| to liczba zdarzeń sprzyjających, |Ω| to liczba wszystkich możliwych jednakowo prawdopodobnych zdarzeń elementarnych.',
-    goldenRule: 'Gdy treść mówi „co najmniej jeden raz”, ZAWSZE opłaca się policzyć zdarzenie przeciwne: P(A) = 1 - P(A\').',
-    ckeTrap: 'Prawdopodobieństwo NIGDY nie może przekroczyć 1 ani być mniejsze od 0!',
+    explanation: '$|A|$ to liczba zdarzeń sprzyjających, $|\\Omega|$ to liczba wszystkich możliwych jednakowo prawdopodobnych zdarzeń elementarnych.',
+    goldenRule: 'Gdy treść mówi „co najmniej jeden raz”, ZAWSZE opłaca się policzyć zdarzenie przeciwne: $P(A) = 1 - P(A\').$',
+    ckeTrap: 'Prawdopodobieństwo NIGDY nie może przekroczyć $1$ ani być mniejsze od $0$!',
     keywords: ['prawdopodobieństwo', 'omega', 'zdarzenie przeciwne', 'drzewo'],
     cke_page: 'str. 28',
     pageNumber: 28
@@ -405,7 +601,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       { label: 'Mediana dla n nieparzystego', formula: 'M = x_{\\frac{n+1}{2}}' },
       { label: 'Mediana dla n parzystego', formula: 'M = \\frac{x_{\\frac{n}{2}} + x_{\\frac{n}{2}+1}}{2}' }
     ],
-    explanation: 'Jeśli liczba danych n jest nieparzysta, mediana to element środkowy. Jeśli parzysta, to średnia dwóch środkowych.',
+    explanation: 'Jeśli liczba danych $n$ jest nieparzysta, mediana to element środkowy. Jeśli parzysta, to średnia dwóch środkowych.',
     goldenRule: 'ZANIM wyznaczysz medianę, MUSISZ uporządkować liczby rosnąco!',
     ckeTrap: 'Wyznaczenie mediany z nieposortowanego zestawu liczb to najczęstszy błąd maturzystów.',
     keywords: ['średnia', 'mediana', 'statystyka', 'wartość środkowa'],

@@ -75,7 +75,7 @@ def build_full_curriculum():
     curriculum = {
         "module_id": "matematyka-podstawowa-pelne",
         "module_title": "MATEMATYKA PODSTAWOWA (Formuła 2023)",
-        "module_description": f"{len(topics)} kluczowych tematów maturalnych. Każda lekcja w metodyce Core-4 Bento z grafikami Nocturne Luminary, wykresami Mafs i autentycznymi zadaniami CKE 2022–2026.",
+        "module_description": f"{len(topics)} kluczowych tematów maturalnych. Każda lekcja w metodyce Core-4 Bento z grafikami Nocturne Luminary, czystymi wykresami wektorowymi SVG i autentycznymi zadaniami CKE 2022–2026.",
         "target_score": "30% - 60%+ (Gwarancja zdania i wysoki wynik)",
         "total_topics": len(topics),
         "total_lessons": total_lessons,

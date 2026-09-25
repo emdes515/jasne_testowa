@@ -472,7 +472,7 @@ def make_inequality_explainer_diagram(title=None, badge=None, caption=None, metr
     def_metrics = [
         {'label': 'Ostre: > oraz <', 'value': 'Kółko otwarte ○, nawias ( )', 'color': C_SKY},
         {'label': 'Słabe: ≥ oraz ≤', 'value': 'Kółko zamalowane ●, nawias [ ]', 'color': C_SUCCESS},
-        {'label': 'PUŁAPKA CKE: Mnożenie przez ujemną', 'value': 'ODWRACA ZWROT ZNAKU! (np. -2x < 6 ⟹ x > -3)', 'color': C_DANGER}
+        {'label': 'PUŁAPKA CKE: Mnożenie przez ujemną', 'value': 'ODWRACA ZWROT ZNAKU! (np. -2x < 6 -> x > -3)', 'color': C_DANGER}
     ]
     return make_symbol_card_grid_diagram(
         title=title or 'Symbole nierówności: Z polskiego na nasze',
@@ -569,7 +569,7 @@ def make_power_anatomy_diagram(title="Anatomia potęgi: Z polskiego na nasze", b
 def make_root_anatomy_diagram(title="Anatomia pierwiastka: Z polskiego na nasze", badge="\\sqrt[n]{a} = b \\quad \\text{bo} \\quad b^n = a", caption="Zawsze sprawdzaj pierwiastek działaniem odwrotnym: podnieś wynik do potęgi stopnia pierwiastka!"):
     """
     Infografika anatomiczna dla pierwiastków zoptymalizowana pod ekrany mobilne (360x125 px).
-    Czysty SVG o dużych, czytelnych etykietach bez akademickiego formalizmu logiki (zakaz \\iff).
+    Czysty SVG o dużych, czytelnych etykietach bez akademickiego formalizmu logiki (zakaz \\longleftrightarrow).
     """
     width, height = 360, 125
     segments = []
@@ -599,7 +599,7 @@ def make_root_anatomy_diagram(title="Anatomia pierwiastka: Z polskiego na nasze"
             'badge': 'INTUICJA',
             'color': C_SUCCESS,
             'title': 'Działanie odwrotne do potęgi',
-            'formula': '\\sqrt[3]{8} = 2 \\implies 2^3 = 8',
+            'formula': '\\sqrt[3]{8} = 2 \\longrightarrow 2^3 = 8',
             'desc': 'Zadajesz sobie pytanie: jaka liczba podniesiona do potęgi n daje liczbę pod pierwiastkiem?'
         },
         {
@@ -631,10 +631,10 @@ def make_root_anatomy_diagram(title="Anatomia pierwiastka: Z polskiego na nasze"
         height=height
     )
 
-def make_logarithm_loop_diagram(title="Definicja logarytmu: Ruch po pętli", badge="\\log_a b = c \\implies a^c = b", caption="Pytanie pomocnicze: Do jakiej potęgi podnieść a, żeby otrzymać b?"):
+def make_logarithm_loop_diagram(title="Definicja logarytmu: Ruch po pętli", badge="\\log_a b = c \\longrightarrow a^c = b", caption="Pytanie pomocnicze: Do jakiej potęgi podnieść a, żeby otrzymać b?"):
     """
     Infografika anatomiczna pętli logarytmu zoptymalizowana pod ekrany mobilne (360x125 px).
-    Brak symbolu \\iff, wyraźny wektor pętli i duża czytelność na telefonach.
+    Brak symbolu \\longleftrightarrow, wyraźny wektor pętli i duża czytelność na telefonach.
     """
     width, height = 360, 125
     segments = []
@@ -681,7 +681,7 @@ def make_logarithm_loop_diagram(title="Definicja logarytmu: Ruch po pętli", bad
             'badge': 'ZŁOTA PĘTLA',
             'color': C_PRIMARY,
             'title': 'Ruch po okręgu',
-            'formula': '\\log_a b = c \\implies a^c = b',
+            'formula': '\\log_a b = c \\longrightarrow a^c = b',
             'desc': 'Zaczynasz od podstawy a, idziesz przez znak równości do potęgi c i lądujesz na liczbie b.'
         },
         {

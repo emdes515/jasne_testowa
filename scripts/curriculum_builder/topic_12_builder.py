@@ -313,7 +313,7 @@ def build_topic_12():
         core_formulas=[
             {
                 'title': 'Zbiór wartości funkcji kwadratowej',
-                'latex': 'a > 0 \\implies ZW = \\langle q, +\\infty), \\quad a < 0 \\implies ZW = (-\\infty, q\\rangle',
+                'latex': 'a > 0 \\longrightarrow ZW = \\langle q, +\\infty), \\quad a < 0 \\longrightarrow ZW = (-\\infty, q\\rangle',
                 'description': 'Zbiór wartości określony przez rzędną wierzchołka q.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 7'
@@ -616,7 +616,7 @@ def build_topic_12():
         core_formulas=[
             {
                 'title': 'Maksimum funkcji kwadratowej w optymalizacji',
-                'latex': 'P(x) = ax^2 + bx + c \\quad (a < 0) \\implies x_{\\max} = -\\frac{b}{2a}',
+                'latex': 'P(x) = ax^2 + bx + c \\quad (a < 0) \\longrightarrow x_{\\max} = -\\frac{b}{2a}',
                 'description': 'Punkt wierzchołka p wyznacza optymalny wymiar dający największą wartość.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 7'
@@ -636,6 +636,41 @@ def build_topic_12():
         tasks=l4_tasks
     )
     lessons.append(l4)
+
+
+
+    # --- Wstrzyknięte z arkuszy CKE ---
+    # CKE Maj 2024 - Zadanie 18. (2 pkt) - Zastosowanie funkcji kwadratowej
+    lessons[2]["tasks"].append(
+        make_open_task(
+            task_id="t12_l03_cke_01",
+            source="CKE Maj 2024 • Zad. 18 (2 pkt)",
+            question="Funkcja kwadratowa $f$ jest określona wzorem $f(x) = -(x - 1)^2 + 4$. Wyznacz zbiór wartości tej funkcji i określ w jakim przedziale funkcja rośnie.",
+            points=2,
+            scoring_key=[
+                "1 pkt – podanie współrzędnych wierzchołka i odczytanie z nich jednej z żądanych własności",
+                "2 pkt – poprawne określenie zarówno zbioru wartości jak i przedziału monotoniczności"
+            ],
+            explanation="1. Wzór $f(x) = -(x - 1)^2 + 4$ ma postać kanoniczną $f(x) = a(x-p)^2 + q$.<br/>2. Otrzymujemy $p = 1, q = 4$, $a = -1$.<br/>3. Ponieważ $a < 0$, parabola ma ramiona skierowane w dół, a wierzchołkiem jest punkt $W(1, 4)$.<br/>4. Zbiór wartości to $y \\in (-\\infty, 4\\rangle$.<br/>5. Funkcja rośnie w przedziale od $-\\infty$ do współrzędnej $x$ wierzchołka, czyli w $(-\\infty, 1\\rangle$.",
+            cke_trap="Złe określenie współrzędnych wierzchołka. Tutaj $p = 1$, a nie $-1$!"
+        )
+    )
+
+    # CKE Sierpień 2023 - Zadanie 11. (2 pkt)
+    lessons[3]["tasks"].append(
+        make_open_task(
+            task_id="t12_l04_cke_01",
+            source="CKE Sierpień 2023 • Zad. 11 (2 pkt)",
+            question="Wyznacz najmniejszą i największą wartość funkcji $f(x) = x^2 - 4x + 3$ w przedziale $\\langle 1, 4\\rangle$. Zapisz obliczenia.",
+            points=2,
+            scoring_key=[
+                "1 pkt – poprawne wyznaczenie współrzędnej p wierzchołka i sprawdzenie przynależności do przedziału",
+                "2 pkt – obliczenie wartości na końcach przedziału i w wierzchołku oraz sformułowanie poprawnej odpowiedzi"
+            ],
+            explanation="1. Współrzędna wierzchołka $p = -\\frac{b}{2a} = -\\frac{-4}{2} = 2$.<br/>2. Sprawdzamy, czy $p \\in \\langle 1, 4\\rangle$. Tak, $2 \\in \\langle 1, 4\\rangle$.<br/>3. Obliczamy wartość funkcji w wierzchołku: $f(2) = 2^2 - 4(2) + 3 = 4 - 8 + 3 = -1$.<br/>4. Obliczamy wartości na końcach przedziału:<br/>$f(1) = 1^2 - 4(1) + 3 = 1 - 4 + 3 = 0$<br/>$f(4) = 4^2 - 4(4) + 3 = 16 - 16 + 3 = 3$<br/>5. Porównujemy wyniki: $\\{-1, 0, 3\\}$.<br/>Wartość najmniejsza wynosi -1, a największa 3.",
+            cke_trap="Częstym błędem jest zapomnienie o sprawdzeniu wartości wierzchołka, gdy należy do podanego przedziału!"
+        )
+    )
 
     return {
         'id': topic_id,

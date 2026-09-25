@@ -10,11 +10,15 @@ import { createApp } from './server/app';
 // drogę do ataku man-in-the-middle na wszystkie wychodzące połączenia HTTPS.
 // Jeśli lokalne proxy firmowe wymaga własnego CA, użyj NODE_EXTRA_CA_CERTS.
 
-async function startServer(): Promise<void> {
-  const { app } = await createApp();
-  const PORT = config.port;
+import http from 'http';
 
-  const server = app.listen(PORT, '0.0.0.0', () => {
+async function startServer(): Promise<void> {
+  const PORT = config.port;
+  const server = http.createServer();
+  const { app } = await createApp({ httpServer: server });
+  server.on('request', app);
+
+  server.listen(PORT, '0.0.0.0', () => {
     logger.info('server_started', {
       url: `http://localhost:${PORT}`,
       environment: config.nodeEnv,

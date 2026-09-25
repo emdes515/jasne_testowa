@@ -2031,7 +2031,19 @@ export function TaskView({
                   <div className="text-xs text-white/90 leading-relaxed overflow-x-auto">
                     <MathRenderer content={solutionSteps[0]?.content || activeTask.explanation || 'Poprawna odpowiedź.'} />
                   </div>
-                </div>
+                
+                  {/* Explanation Visuals */}
+                  {((activeTask as any)?.explanationNumberLine || (activeTask as any)?.explanationDiagram || (activeTask as any)?.explanationPlot) && (
+                    <div className="mt-3 flex justify-center w-full">
+                      {(activeTask as any)?.explanationNumberLine ? (
+                        <NumberLineDiagram data={(activeTask as any).explanationNumberLine} height={64} maxWidth="400px" />
+                      ) : (activeTask as any)?.explanationDiagram || (activeTask as any)?.explanationPlot ? (
+                        <MathDiagram diagram={(activeTask as any).explanationDiagram || (activeTask as any).explanationPlot} borderless />
+                      ) : null}
+                    </div>
+                  )}
+                  </div>
+
 
                 <AnimatePresence>
                   {showSolutionSteps && solutionSteps.length > 1 && (

@@ -1,4 +1,4 @@
-"""
+﻿"""
 topic_10_builder.py - Dział 1.10: Funkcja liniowa i jej własności (4 lekcje | Tier S+)
 """
 import sys
@@ -148,11 +148,11 @@ def build_topic_10():
         core_formulas=[
             {
                 'title': 'Rola współczynnika kierunkowego a',
-                'latex': 'a > 0 \\implies \\text{rosnąca}, \\quad a < 0 \\implies \\text{malejąca}, \\quad a = 0 \\implies \\text{stała}',
+                'latex': 'a > 0 \\longrightarrow \\text{rosnąca}, \\quad a < 0 \\longrightarrow \\text{malejąca}, \\quad a = 0 \\longrightarrow \\text{stała}',
                 'description': 'Znak liczby stojącej przy x określa monotoniczność.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 21',
-                'example': 'y = -2x + 5 \\implies a = -2 < 0 \\implies \\text{funkcja maleje}',
+                'example': 'y = -2x + 5 \\longrightarrow a = -2 < 0 \\longrightarrow \\text{funkcja maleje}',
                 'mnemonic': 'Dodatni iks idzie w górę, ujemny iks leci w dół.',
                 'matura_tip': 'Gdy a ma parametr, np. (2m - 4), rozwiązujesz nierówność 2m - 4 < 0.'
             },
@@ -162,7 +162,7 @@ def build_topic_10():
                 'description': 'Wartość b to wysokość przecięcia prostej z osią pionową.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 21',
-                'example': 'y = 4x - 3 \\implies \\text{przecięcie w punkcie } (0, -3)',
+                'example': 'y = 4x - 3 \\longrightarrow \\text{przecięcie w punkcie } (0, -3)',
                 'mnemonic': 'b to baza na osi OY.',
                 'matura_tip': 'W punkcie na osi OY pierwsza współrzędna x to zawsze 0.'
             }
@@ -328,7 +328,7 @@ def build_topic_10():
                 'description': 'Iloraz różnicy współrzędnych y do różnicy współrzędnych x.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 22',
-                'example': 'A(1, 2), B(3, 8) \\implies a = \\frac{8 - 2}{3 - 1} = \\frac{6}{2} = 3',
+                'example': 'A(1, 2), B(3, 8) \\longrightarrow a = \\frac{8 - 2}{3 - 1} = \\frac{6}{2} = 3',
                 'mnemonic': 'Igreki na dachu, iksy w piwnicy.',
                 'matura_tip': 'Zachowaj tę samą kolejność odejmowania w liczniku i mianowniku.'
             },
@@ -338,7 +338,7 @@ def build_topic_10():
                 'description': 'Punkt na osi OX, gdzie prosta przecina oś.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'y = 3x - 12 \\implies x_0 = -\\frac{-12}{3} = 4',
+                'example': 'y = 3x - 12 \\longrightarrow x_0 = -\\frac{-12}{3} = 4',
                 'mnemonic': 'Przyrównaj igrek do zera i wyznacz iksa.',
                 'matura_tip': 'Dwa minusy dają plus.'
             }
@@ -461,7 +461,7 @@ def build_topic_10():
                 'gridStep': 1,
                 'lines': [
                     {'slope': 2, 'intercept': 1, 'color': '#38BDF8', 'label': 'k: y = 2x + 1 (a₁ = 2)'},
-                    {'slope': -0.5, 'intercept': 3.5, 'color': '#FFB800', 'label': 'l: y = -0.5x + 3.5 (a₂ = -0.5)'}
+                    {'slope': -0.5, 'intercept': 3.5, 'color': '#FFB800', 'label': 'l: y = -1/2 x + 7/2'}
                 ],
                 'points': [
                     {'x': 1, 'y': 3, 'label': 'P(1, 3) [90°: a₁·a₂ = -1]', 'dot': 'filled', 'color': '#10B981', 'attach': 'n'}
@@ -499,7 +499,7 @@ def build_topic_10():
         core_formulas=[
             {
                 'title': 'Warunek równoległości prostych',
-                'latex': 'k \\parallel l \\implies a_1 = a_2',
+                'latex': 'k \\parallel l \\longrightarrow a_1 = a_2',
                 'description': 'Współczynniki kierunkowe są identyczne.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 21',
@@ -509,11 +509,11 @@ def build_topic_10():
             },
             {
                 'title': 'Warunek prostopadłości prostych',
-                'latex': 'k \\perp l \\implies a_1 \\cdot a_2 = -1',
+                'latex': 'k \\perp l \\longrightarrow a_1 \\cdot a_2 = -1',
                 'description': 'Współczynnik jest odwrotny i o przeciwnym znaku.',
                 'in_cke_sheet': True,
                 'cke_page': 'str. 22',
-                'example': 'a_1 = \\frac{2}{5} \\implies a_2 = -\\frac{5}{2} = -2{,}5',
+                'example': 'a_1 = \\frac{2}{5} \\longrightarrow a_2 = -\\frac{5}{2} = -2{,}5',
                 'mnemonic': 'Do góry nogami i zmień znak.',
                 'matura_tip': 'Dla liczby ujemnej przeciwna jest dodatnia: -3 -> +1/3.'
             }
@@ -671,21 +671,21 @@ def build_topic_10():
         core_formulas=[
             {
                 'title': 'Liniowy model kosztu / wielkości',
-                'latex': 'y = ax + b \\implies \\text{Wartość} = (\\text{tempo}) \\cdot x + (\\text{wartość startowa})',
+                'latex': 'y = ax + b \\longrightarrow \\text{Wartość} = (\\text{tempo}) \\cdot x + (\\text{wartość startowa})',
                 'description': 'Podstawowy model opisujący procesy o stałej dynamice zmian.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'K(x) = 3x + 10 \\implies \\text{opłata startowa 10 zł, 3 zł za sztukę}',
+                'example': 'K(x) = 3x + 10 \\longrightarrow \\text{opłata startowa 10 zł, 3 zł za sztukę}',
                 'mnemonic': 'b to start, a to tempo.',
                 'matura_tip': 'Gdy wielkość maleje, postaw minus przed współczynnikiem a.'
             },
             {
                 'title': 'Czas do wyczerpania (miejsce zerowe)',
-                'latex': 'y = 0 \\implies t = -\\frac{b}{a}',
+                'latex': 'y = 0 \\longrightarrow t = -\\frac{b}{a}',
                 'description': 'Moment, w którym stan zasobu spada do zera.',
                 'in_cke_sheet': False,
                 'cke_page': '-',
-                'example': 'V(t) = -4t + 100 = 0 \\implies t = 25',
+                'example': 'V(t) = -4t + 100 = 0 \\longrightarrow t = 25',
                 'mnemonic': 'Koniec zapasów to zrównanie funkcji z zerem.',
                 'matura_tip': 'Wynik czasu musi być dodatni.'
             }

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Lightbulb, Compass } from 'lucide-react';
+import { Lightbulb } from 'lucide-react';
 import { MathPlot, PlotData } from './MathPlot';
 import { MathRenderer } from './MathRenderer';
-import { MafsPlot } from './mafs/MafsPlot';
-import { MafsInteractiveLab, LabType } from './mafs/MafsInteractiveLab';
 
 export function formatSvgText(raw?: string): string {
   if (!raw) return '';
@@ -248,8 +246,8 @@ export interface MathDiagramData {
   grid?: DiagramGrid;
   /** Podziałki osi i podpisy wartości liczbowych */
   ticks?: DiagramTick[];
-  /** Opcjonalne przypisanie do interaktywnego laboratorium Mafs */
-  interactiveLab?: LabType;
+  /** Opcjonalne przypisanie do interaktywnego laboratorium */
+  interactiveLab?: any;
 }
 
 interface MathDiagramProps {
@@ -257,7 +255,7 @@ interface MathDiagramProps {
   className?: string;
   compact?: boolean;
   borderless?: boolean;
-  interactiveLab?: LabType;
+  interactiveLab?: any;
   engine?: 'mafs' | 'svg';
   hideTitle?: boolean;
 }
@@ -285,32 +283,18 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
   className = '',
   compact = false,
   borderless = false,
-  interactiveLab: propsInteractiveLab,
-  engine = 'mafs',
   hideTitle = false
 }) => {
   const [hoveredPointIdx, setHoveredPointIdx] = useState<number | null>(null);
-  const [showMafsLab, setShowMafsLab] = useState<boolean>(false);
 
   if (!diagram) return null;
 
-  // Fallback 1: Jeśli obiekt to PlotData (analityczny wykres funkcji) -> zawsze renderuj nowoczesny MafsPlot
+  // Fallback 1: Jeśli obiekt to PlotData (analityczny wykres funkcji) -> zawsze renderuj nowoczesny MathPlot SVG
   if (!('type' in diagram) || diagram.type === 'PIECEWISE_LINEAR' || diagram.type === 'LINEAR' || diagram.type === 'PARABOLA' || ('xRange' in diagram)) {
-    return <MafsPlot plot={diagram as PlotData} className={className} />;
+    return <MathPlot plot={diagram as PlotData} className={className} />;
   }
 
   const d = diagram as MathDiagramData;
-
-  // Automatyczne wykrycie typu laboratorium Mafs dla danego zagadnienia
-  const detectedLab: LabType | undefined = d.interactiveLab || propsInteractiveLab || (() => {
-    const text = `${d.title || ''} ${d.formulaBadge || ''} ${d.caption || ''}`.toLowerCase();
-    if (text.includes('parabol') || text.includes('kwadrat') || text.includes('ax^2') || text.includes('delta')) return 'PARABOLA';
-    if (text.includes('kierunk') || text.includes('liniow') || text.includes('y = ax') || text.includes('prostopadł')) return 'LINEAR';
-    if (text.includes('odczyt') || text.includes('własności funkcji') || (text.includes('wykres') && (text.includes('dziedzin') || text.includes('zw_f')))) return 'GRAPH_INSPECTOR';
-    if (text.includes('bezwzględn') || text.includes('|x')) return 'ABSOLUTE_VALUE';
-    if (text.includes('trygonometr') || text.includes('sin') || text.includes('cos') || text.includes('okrąg jednostkowy')) return 'TRIGONOMETRY';
-    return undefined;
-  })();
 
   const width = d.width || 540;
   const height = d.height || 260;
@@ -332,38 +316,17 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
       ? `w-full mx-auto my-1 flex flex-col items-center select-none overflow-visible relative ${className}`
       : `w-full mx-auto my-2.5 p-4 sm:p-5 rounded-2xl bg-surface-card border border-surface-border shadow-xl flex flex-col items-center select-none overflow-visible relative transition-all duration-200 ${className}`
     }>
-      {/* Tytuł diagramu oraz przycisk przełączenia na Mafs Lab (wyłącznie gdy engine !== 'svg' oraz !hideTitle) */}
-      {!hideTitle && (d.title || (detectedLab && engine !== 'svg')) && (
+      {/* Tytuł diagramu */}
+      {!hideTitle && d.title && (
         <div className="w-full flex items-center justify-between gap-2 pb-2.5 mb-2 border-b border-surface-border flex-wrap">
-          {d.title ? (
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-text-primary min-w-0">
-              <span className="w-2 h-2 rounded-full bg-primary shrink-0 shadow-sm" />
-              <div className="break-words">
-                <MathRenderer content={d.title} />
-              </div>
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-text-primary min-w-0">
+            <span className="w-2 h-2 rounded-full bg-primary shrink-0 shadow-sm" />
+            <div className="break-words">
+              <MathRenderer content={d.title} />
             </div>
-          ) : <div />}
-
-          {detectedLab && engine !== 'svg' && (
-            <button
-              type="button"
-              onClick={() => setShowMafsLab(!showMafsLab)}
-              className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/30 text-amber-300 flex items-center gap-1.5 transition-all active:scale-95 shadow-sm ml-auto"
-            >
-              <Compass className="w-3.5 h-3.5 text-amber-400" />
-              <span>{showMafsLab ? 'Pokaż schemat CKE' : 'Zbadaj w Mafs'}</span>
-            </button>
-          )}
+          </div>
         </div>
       )}
-
-      {/* Tryb 1: Interaktywne Laboratorium Mafs */}
-      {showMafsLab && detectedLab && engine !== 'svg' ? (
-        <div className="w-full my-2 animate-in fade-in duration-200">
-          <MafsInteractiveLab initialLab={detectedLab} onClose={() => setShowMafsLab(false)} />
-        </div>
-      ) : (
-        <>
 
       {/* Dedykowany Hero Formula Box (Wzór Główny – wycentrowany, 16-18px KaTeX ze złotym glow, zabezpieczony przed obcięciem z lewej) */}
       {d.formulaBadge && (() => {
@@ -383,10 +346,10 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
         );
       })()}
 
-      {/* Renderowanie MafsPlot (jeśli diagram zawiera definicję analityczną plotData lub plot) */}
+      {/* Renderowanie MathPlot (jeśli diagram zawiera definicję analityczną plotData lub plot) */}
       {(d.plotData || (d as any).plot) ? (
         <div className="w-full flex justify-center items-center py-1">
-          <MafsPlot plot={(d.plotData || (d as any).plot)} width={compact ? 420 : 520} height={compact ? 220 : 280} />
+          <MathPlot plot={(d.plotData || (d as any).plot)} width={compact ? 420 : 520} height={compact ? 220 : 280} />
         </div>
       ) : hasSvgContent && (
       <div className="w-full flex justify-center items-center overflow-x-auto py-1">
@@ -788,7 +751,7 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
           const cleanLblText = formatSvgText(lbl.text);
           const textLen = cleanLblText.length;
           const textEstW = textLen * (fontSize * 0.65);
-          const anchor = lbl.anchor || (lbl.x <= 120 ? 'start' : lbl.x >= (width - 120) ? 'end' : 'middle');
+          const anchor = lbl.anchor || (lbl.x <= 40 ? 'start' : lbl.x >= (width - 40) ? 'end' : 'middle');
 
           let effectiveTextX = lbl.x;
           if (anchor === 'start') {
@@ -921,8 +884,6 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
           </div>
         );
       })()}
-      </>
-      )}
     </div>
   );
 };

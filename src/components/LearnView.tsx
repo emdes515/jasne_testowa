@@ -381,7 +381,7 @@ export function LearnView({
   // Stopniowo renderuje działy partiami (batch), aby odciążyć DOM i wątek renderowania,
   // zachowując natychmiastową dostępność aktywnego działu użytkownika.
   // =========================================================================
-  const TOPICS_BATCH_SIZE = 6;
+  const TOPICS_BATCH_SIZE = 24;
   const [visibleTopicsCount, setVisibleTopicsCount] = useState<number>(TOPICS_BATCH_SIZE);
   const [isLoadingMoreTopics, setIsLoadingMoreTopics] = useState<boolean>(false);
   const topicSentinelRef = useRef<HTMLDivElement | null>(null);
@@ -736,10 +736,7 @@ export function LearnView({
   return (
     <div 
       id="learn-scroll-content"
-      className="flex flex-col min-h-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full overflow-x-hidden relative pb-6 md:pb-8"
-      style={{ 
-        WebkitOverflowScrolling: 'touch'
-      }}
+      className="flex flex-col min-h-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto w-full relative"
     >
       
       {/* =========================================================================
@@ -1045,7 +1042,7 @@ export function LearnView({
               )}
               
               {/* Lista Działów z marginesem pod dolną nawigację */}
-              <div className="flex-1 px-4 sm:px-6 pt-3 pb-36 sm:pb-40 relative max-w-3xl mx-auto w-full">
+              <div className="flex-1 px-4 sm:px-6 pt-3 pb-28 sm:pb-32 md:pb-12 relative max-w-3xl mx-auto w-full">
                 <div className="space-y-3.5 relative z-10">
 
                   {visibleTopics.map((topic: any, idx: number) => {
@@ -1439,7 +1436,7 @@ export function LearnView({
               </header>
               
               {/* Inteligentny Akordeon Lekcji z bezpiecznym paddingiem na dole */}
-              <div className="flex-1 px-4 sm:px-5 pt-3 pb-36 sm:pb-40 space-y-3.5 max-w-3xl mx-auto w-full">
+              <div className="flex-1 px-4 sm:px-5 pt-3 pb-28 sm:pb-32 md:pb-12 space-y-3.5 max-w-3xl mx-auto w-full">
                 {/* Pasek Postępu Działu - Minimalistyczny, 6-milimetrowy pasek w kolorze szmaragdowym/turkusowym */}
                 {(() => {
                   const completedLessonsCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, userState)).length;
@@ -1747,131 +1744,6 @@ export function LearnView({
                         </div>
                       );
                     })}
-
-                    {/* ================= AUTOMATYCZNY SPRAWDZIAN DZIAŁU / LEKTURY (BOSS EXAM) ================= */}
-                    {(() => {
-                      if (!currentTopic) return null;
-                      const isMath = selectedSubjectKey === 'math';
-                      const topicIdUpper = String(currentTopic.id || 'dzial-1').toUpperCase();
-                      const cleanTitle = cleanTopicTitle(currentTopic.name);
-
-                      // Egzamin działowy pobiera zadania z Firestore (1 odczyt na lekcję,
-                      // potem z pamięci podręcznej) — w bundlu nie ma żadnych zadań.
-                      const openExam = async () => {
-                        triggerHaptic('medium');
-                        setIsBossExamLoading(true);
-                        try {
-                          const data = await loadTopicBossExam(currentTopic, subjectFirestoreId);
-                          setBossExamData(data);
-                          setIsBossExamOpen(true);
-                        } catch (err) {
-                          console.warn('[LearnView] Nie udało się wczytać sprawdzianu działu:', err);
-                        } finally {
-                          setIsBossExamLoading(false);
-                        }
-                      };
-                      const defaultTotalQuestions = lessonsForCurrentTopic.length > 0 ? Math.min(10, Math.max(5, lessonsForCurrentTopic.length)) : 7;
-                      const examData = currentTopic.final_test || currentTopic.epoch_exam || currentTopic.book_exam || {
-                        id: `BOSS-EXAM-${topicIdUpper}`,
-                        title: `SPRAWDZIAN: ${cleanTitle.toUpperCase()}`,
-                        subtitle: `${defaultTotalQuestions} kluczowych zadań maturalnych z działu • Limit: 20 minut • Próg zaliczenia: 70%`,
-                        totalQuestions: defaultTotalQuestions,
-                        timeLimitMinutes: 20,
-                        rewardXp: 150,
-                        badgeTitle: `MISTRZ: ${cleanTitle.toUpperCase()}`
-                      };
-
-                      const examId = examData.id || `BOSS-EXAM-${topicIdUpper}`;
-                      const isBossExamPassed = completedTasks.includes(examId) || 
-                                               completedTasks.includes(`BOSS-EXAM-${currentTopic.id}`) ||
-                                               completedTasks.includes(`BOSS-EXAM-${topicIdUpper}`) ||
-                                               completedTasks.includes(`SPRAWDZIAN-${currentTopic.id}`) ||
-                                               completedTasks.includes(`SPRAWDZIAN-${topicIdUpper}`) ||
-                                               (currentTopic.id === 'dzial-1' && (completedTasks.includes('BOSS-EXAM-DZIAL-1') || completedTasks.includes('SPRAWDZIAN-DZIAL-1')));
-
-                      const completedCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, userState)).length;
-                      const allDone = lessonsForCurrentTopic.length > 0 && completedCount === lessonsForCurrentTopic.length;
-
-                      return (
-                        <div 
-                          id={`boss-exam-${currentTopic.id}-card`}
-                          className={`rounded-3xl border-2 p-5 sm:p-6 flex flex-col gap-4 transition-all duration-300 mt-6 relative overflow-hidden ${
-                            isBossExamPassed
-                              ? 'bg-gradient-to-br from-[#101A14] via-[#0D1612] to-[#0A110E] border-emerald-500/50 shadow-md shadow-black/20'
-                              : allDone
-                                ? 'bg-gradient-to-br from-[#1A152C] via-[#141024] to-[#0D0B18] border-purple-500/60 shadow-md shadow-black/20'
-                                : 'bg-gradient-to-br from-[#161724] via-[#11121C] to-[#0B0C14] border-white/15'
-                          }`}
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-start gap-3.5">
-                              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border ${
-                                isBossExamPassed
-                                  ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-sm'
-                                  : allDone
-                                    ? 'bg-purple-500/20 border-purple-500/50 text-purple-300 shadow-sm'
-                                    : 'bg-amber-500/15 border-amber-500/30 text-amber-400'
-                              }`}>
-                                <Trophy size={24} className="stroke-[2.2]" />
-                              </div>
-
-                              <div>
-                                <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-purple-300">
-                                    {currentTopic.pillar_name ? currentTopic.pillar_name : `Zwieńczenie Działu ${(selectedTopicIndex ?? 0) + 1}`}
-                                  </span>
-                                  {isBossExamPassed && (
-                                    <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300">
-                                      ✓ {examData.badgeTitle || 'ZALICZONY'}
-                                    </span>
-                                  )}
-                                </div>
-                                <h3 className="font-display font-extrabold text-white text-lg sm:text-xl">
-                                  <MathRenderer content={examData.title || `SPRAWDZIAN: ${cleanTopicTitle(currentTopic.name).toUpperCase()}`} />
-                                </h3>
-                                <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
-                                  {examData.subtitle || `${examData.totalQuestions || 8} pytań maturalnych • Limit: ${examData.timeLimitMinutes || 20} minut`}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Metadane sprawdzianu */}
-                          <div className="grid grid-cols-3 gap-2 py-1 text-center">
-                            <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
-                              <span className="text-[10px] text-slate-400 font-semibold block uppercase">Liczba Zadań</span>
-                              <span className="text-sm font-extrabold text-white">{examData.totalQuestions || 8} pytań</span>
-                            </div>
-                            <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
-                              <span className="text-[10px] text-slate-400 font-semibold block uppercase">Limit Czasu</span>
-                              <span className="text-sm font-extrabold text-[#FFB800]">{examData.timeLimitMinutes || 20} minut</span>
-                            </div>
-                            <div className="bg-black/30 border border-white/5 rounded-xl p-2.5">
-                              <span className="text-[10px] text-slate-400 font-semibold block uppercase">Nagroda</span>
-                              <span className="text-sm font-extrabold text-amber-400">+{examData.rewardXp || 150} XP + Trofeum</span>
-                            </div>
-                          </div>
-
-                          {/* Przycisk akcji sprawdzianu */}
-                          <button
-                            id="start-boss-exam-btn"
-                            onClick={() => {
-                              void openExam();
-                            }}
-                            disabled={isBossExamLoading}
-                            className={`w-full py-3.5 sm:py-4 px-6 rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 transition active:scale-[0.99] cursor-pointer shadow-lg ${
-                              isBossExamPassed
-                                ? 'bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-emerald-500/40'
-                                : 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-amber-400 hover:to-amber-500 text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.35)]'
-                            }`}
-                          >
-                            <Trophy size={18} />
-                            <span>{isBossExamLoading ? 'WCZYTUJĘ ZADANIA...' : (isBossExamPassed ? 'POWTÓRZ SPRAWDZIAN DZIAŁU' : 'ROZPOCZNIJ SPRAWDZIAN DZIAŁU')}</span>
-                            <ArrowRight size={18} strokeWidth={2.5} />
-                          </button>
-                        </div>
-                      );
-                    })()}
                   </>
                 )}
               </div>

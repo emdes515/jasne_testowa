@@ -496,7 +496,7 @@ export function DashboardView({
   return (
     <div 
       id="dashboard-scroll-content"
-      className="flex flex-col p-4 sm:p-6 lg:p-8 pt-5 pb-6 sm:pb-8 max-w-6xl xl:max-w-7xl mx-auto w-full"
+      className="flex flex-col p-4 sm:p-6 lg:p-8 pt-5 pb-28 sm:pb-32 md:pb-8 max-w-6xl xl:max-w-7xl mx-auto w-full"
     >
       {/* 0. PASEK WYBORU PRZEDMIOTU (SEGMENTED CONTROL, CYBER-TACTILE) */}
       <div className="w-full shrink-0 mb-6 select-none flex justify-center">
