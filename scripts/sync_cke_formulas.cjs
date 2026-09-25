@@ -6,12 +6,15 @@ const jsonPath = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_formul
 
 const content = fs.readFileSync(tsPath, 'utf8');
 
-// Strip imports, TypeScript interfaces and types
-const cleaned = content
-  .replace(/^import\s+.*?;?\s*$/gm, '')
-  .replace(/export interface[\s\S]*?}\n/g, '')
-  .replace(/export const CKE_FORMULA_TOPICS =/, 'const topics =')
-  .replace(/export const CKE_FORMULAS_DATA: CkeFormulaItem\[\] =/, 'const formulas =');
+// Extract everything from CKE_FORMULA_TOPICS onwards
+const startIndex = content.indexOf('export const CKE_FORMULA_TOPICS');
+if (startIndex === -1) {
+  throw new Error('Could not find CKE_FORMULA_TOPICS in ckeFormulasData.ts');
+}
+
+const cleaned = content.substring(startIndex)
+  .replace(/export const CKE_FORMULA_TOPICS\s*=\s*/, 'const topics = ')
+  .replace(/export const CKE_FORMULAS_DATA:\s*CkeFormulaItem\[\]\s*=\s*/, 'const formulas = ');
 
 const runner = new Function(cleaned + '\nreturn { topics, formulas };');
 const { topics, formulas } = runner();
