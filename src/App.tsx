@@ -126,7 +126,21 @@ export default function App() {
   useEffect(() => {
     checkSystemMetaVersion().catch(err => console.info("Curriculum meta check:", err));
   }, []);
-  const [currentTab, setCurrentTab] = useState<TabState>('dashboard');
+  const [currentTab, setCurrentTab] = useState<TabState>(() => {
+    try {
+      const saved = localStorage.getItem('jasne_active_tab_v1');
+      if (saved && ['dashboard', 'learn', 'nauka', 'simulator', 'arena', 'profil', 'profile'].includes(saved)) {
+        return (saved === 'nauka' ? 'learn' : saved === 'profile' ? 'profil' : saved) as TabState;
+      }
+    } catch {}
+    return 'dashboard';
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('jasne_active_tab_v1', currentTab);
+    } catch {}
+  }, [currentTab]);
 
   // Reset scroll position to top when navigating between tabs
   useEffect(() => {
@@ -158,6 +172,7 @@ export default function App() {
       if (restored && restored.tasks && restored.tasks.length > 0) {
         setActiveTaskData({
           ...restored,
+          originTab: restored.originTab || 'learn',
           isSession: true,
           lessonTasks: restored.tasks,
           isRestoredSession: true
@@ -583,6 +598,7 @@ export default function App() {
     const tasksList = task?.tasks || lessonTasks || task?.lessonTasks || (task ? [task] : []);
     setActiveTaskData({
       ...(task || {}),
+      originTab: task?.originTab || currentTab,
       isSession: true,
       tasks: tasksList,
       lessonTasks: tasksList,
@@ -595,6 +611,9 @@ export default function App() {
   const handleCancelTask = () => {
     clearSessionState().catch(() => {});
     setActiveTask(false);
+    const rawOrigin = (activeTaskData?.originTab as string) || 'learn';
+    const origin = (rawOrigin === 'nauka' ? 'learn' : rawOrigin === 'profile' ? 'profil' : rawOrigin) as TabState;
+    setCurrentTab(origin);
     setActiveTaskData(null);
   };
 
@@ -857,10 +876,10 @@ export default function App() {
       );
     } else {
       setActiveTask(false);
+      const rawOrigin = (activeTaskData?.originTab as string) || 'learn';
+      const origin = (rawOrigin === 'nauka' ? 'learn' : rawOrigin === 'profile' ? 'profil' : rawOrigin) as TabState;
+      setCurrentTab(origin);
       setActiveTaskData(null);
-      if (currentTab !== 'simulator') {
-        setCurrentTab('nauka');
-      }
       if (isGuest && guestPromoSecondsLeft > 0) {
         setTimeout(() => {
           setShowGuestPromoModal(true);
@@ -1225,7 +1244,7 @@ export default function App() {
                     onOpenMistakesBank={() => setShowMistakesModal(true)}
                   />
                 )}
-                {currentTab === 'nauka' && (
+                {(currentTab === 'nauka' || (currentTab as string) === 'learn') && (
                   <LearnView 
                     userState={userState}
                     selectedSubjectKey={selectedSubjectKey}
@@ -1261,7 +1280,7 @@ export default function App() {
                     onNavigate={(tab) => setCurrentTab(tab)}
                   />
                 )}
-                {currentTab === 'profile' && (
+                {(currentTab === 'profile' || (currentTab as string) === 'profil') && (
                   <ProfileView 
                     userState={userState} 
                     completedTasks={completedTasks}

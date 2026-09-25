@@ -35,14 +35,16 @@ def clean_cke_trap(trap_text):
 def clean_formal_logic(text):
     if not text or not isinstance(text, str):
         return text
-    # Replace formal logic with friendly Polish words
+    # Replace formal logic with friendly Polish words or process arrows (\longrightarrow)
     s = text
-    s = s.replace(r'\iff', ' co oznacza, że ')
-    s = s.replace(r'\implies', r' \text{ czyli } ')
-    s = s.replace(r'\land', r' \text{ oraz } ')
-    s = s.replace(r'\lor', r' \text{ lub } ')
-    s = s.replace(r'\forall', r' \text{dla każdego } ')
-    s = s.replace(r'\exists', r' \text{istnieje } ')
+    s = re.sub(r'\\iff\b', r'\\longrightarrow ', s)
+    s = re.sub(r'\\implies\b', r'\\longrightarrow ', s)
+    s = re.sub(r'\\land\b', r'\\text{ oraz }', s)
+    s = re.sub(r'\\wedge\b', r'\\text{ oraz }', s)
+    s = re.sub(r'\\lor\b', r'\\text{ lub }', s)
+    s = re.sub(r'\\vee\b', r'\\text{ lub }', s)
+    s = re.sub(r'\\forall\b', r'\\text{dla każdego }', s)
+    s = re.sub(r'\\exists\b', r'\\text{istnieje }', s)
     # Clean redundant spaces
     s = re.sub(r'  +', ' ', s)
     return s
@@ -314,12 +316,41 @@ def make_open_task(task_id, source, question, points, scoring_key, explanation, 
         'explanationNumberLine': explanation_number_line
     }
 
-def make_lesson(lesson_id, topic_id, title, concept_essence, matura_context, core_formulas, worked_example, exam_trap, visuals, tasks):
+def make_lesson(lesson_id, topic_id, title, concept_essence, matura_context, core_formulas, worked_example, exam_trap, visuals, tasks, key_takeaway=None):
     """
     Kompiluje obiekt lekcji spełniający standard Core-4 Bento + Nocturne Luminary.
     Czysty tytuł bez wewnętrznych kodów bazodanowych (np. "L1.1.1:").
     """
     clean_title = re.sub(r'^L\d+(?:\.\d+)+\s*[:\-–]?\s*', '', title).strip()
+
+    # Normalize worked_example steps to unified structure (num, step_num, label, text, explanation)
+    norm_steps = []
+    raw_steps = worked_example.get('steps', []) if worked_example else []
+    for idx, s in enumerate(raw_steps):
+        if isinstance(s, dict):
+            num = s.get('num') or s.get('step_num') or (idx + 1)
+            label = s.get('label') or f"Krok {num}"
+            text = clean_formal_logic(s.get('text') or s.get('explanation') or '')
+            norm_steps.append({
+                'num': num,
+                'step_num': num,
+                'label': label,
+                'text': text,
+                'explanation': text
+            })
+        else:
+            text = clean_formal_logic(str(s))
+            norm_steps.append({
+                'num': idx + 1,
+                'step_num': idx + 1,
+                'label': f'Krok {idx + 1}',
+                'text': text,
+                'explanation': text
+            })
+
+    # Golden rule: keyTakeaway
+    resolved_key_takeaway = key_takeaway if key_takeaway else f"Złota reguła CKE: Zawsze sprawdzaj założenia zadania i wzory w Wybranych Wzorach Matematycznych CKE."
+
     return {
         'id': lesson_id,
         'topic_id': topic_id,
@@ -329,17 +360,19 @@ def make_lesson(lesson_id, topic_id, title, concept_essence, matura_context, cor
         'required_correct_tasks': 4,
         'theory_pill': {
             'title': clean_title,
-            'concept_essence': concept_essence,
-            'matura_context': matura_context,
+            'concept_essence': clean_formal_logic(concept_essence),
+            'matura_context': clean_formal_logic(matura_context),
             'core_formulas': core_formulas,
             'worked_example': {
-                'problem': worked_example['problem'],
-                'steps': worked_example['steps'],
-                'result': worked_example.get('result', ''),
+                'problem': clean_formal_logic(worked_example['problem']) if worked_example else '',
+                'steps': norm_steps,
+                'result': clean_formal_logic(worked_example.get('result', '')) if worked_example else '',
                 'diagram': visuals.get('tab2'),
                 'numberLine': visuals.get('numberLine') or None
             },
-            'exam_trap': clean_cke_trap(exam_trap),
+            'exam_trap': clean_cke_trap(clean_formal_logic(exam_trap)),
+            'keyTakeaway': clean_formal_logic(resolved_key_takeaway),
+            'golden_rule': clean_formal_logic(resolved_key_takeaway),
             'diagram': visuals.get('tab0'),
             'numberLine': visuals.get('numberLine') or None,
             'trapDiagram': visuals.get('tab3'),
@@ -350,8 +383,8 @@ def make_lesson(lesson_id, topic_id, title, concept_essence, matura_context, cor
             'formulas': [
                 {
                     'title': f.get('title', ''),
-                    'latex': f.get('latex', ''),
-                    'description': f.get('description', ''),
+                    'latex': clean_formal_logic(f.get('latex', '')),
+                    'description': clean_formal_logic(f.get('description', '')),
                     'in_cke_sheet': f.get('in_cke_sheet', True),
                     'cke_page': f.get('cke_page') if f.get('cke_page') is not None else ('-' if not f.get('in_cke_sheet', True) else 'str. 4'),
                     'numberLine': f.get('numberLine') or None,

@@ -48,9 +48,18 @@ from scripts.curriculum_builder.topic_07_builder import build_topic_07
 from scripts.curriculum_builder.topic_08_builder import build_topic_08
 from scripts.curriculum_builder.topic_09_builder import build_topic_09
 from scripts.curriculum_builder.topic_10_builder import build_topic_10
+from scripts.sanitize_curriculum_text import sanitize_topic_data
 from scripts.curriculum_builder.topic_11_builder import build_topic_11
 from scripts.curriculum_builder.topic_12_builder import build_topic_12
 from scripts.curriculum_builder.topic_13_builder import build_topic_13
+from scripts.curriculum_builder.topic_14_builder import build_topic_14
+from scripts.curriculum_builder.topic_15_builder import build_topic_15
+from scripts.curriculum_builder.topic_16_builder import build_topic_16
+from scripts.curriculum_builder.topic_17_builder import build_topic_17
+from scripts.curriculum_builder.topic_18_builder import build_topic_18
+from scripts.curriculum_builder.topic_19_builder import build_topic_19
+from scripts.curriculum_builder.topic_20_builder import build_topic_20
+from scripts.curriculum_builder.topic_21_builder import build_topic_21
 
 FORBIDDEN_FORMAT_WORDS = ['prawda', 'fałsz', 'otwarte', 'zamknięte', 'jednokrotny', 'wielokrotny', 'wpisz liczbę']
 FORBIDDEN_LOGIC_SYMBOLS = [r'\iff', r'\implies', r'\land', r'\lor', r'\forall', r'\exists']
@@ -71,7 +80,26 @@ def audit_topics_structure_and_tasks(topics, context_name, official_by_badge):
         errors.append(f"[{context_name}] Niepoprawna liczba zadań: {total_tasks} (oczekiwano 5-10 na lekcję)")
 
     for topic_idx, topic in enumerate(topics, 1):
+        tid = topic.get('id', f'topic-{topic_idx}')
+        if not topic.get('short_title'):
+            errors.append(f"[{context_name}:{tid}] Brak short_title w temacie")
+        if not topic.get('importance'):
+            errors.append(f"[{context_name}:{tid}] Brak importance w temacie")
+        if not topic.get('matura_points_range'):
+            errors.append(f"[{context_name}:{tid}] Brak matura_points_range w temacie")
+
         for lesson_idx, lesson in enumerate(topic.get('lessons', []), 1):
+            lid = lesson.get('id', f'lesson-{lesson_idx}')
+            pill = lesson.get('theory_pill', {})
+            if not pill.get('keyTakeaway') and not pill.get('golden_rule'):
+                errors.append(f"[{context_name}:{tid}/{lid}] Brak keyTakeaway w pigułce Bento!")
+
+            # Check logic symbols across lesson theory and diagrams
+            lesson_str = json.dumps(lesson, ensure_ascii=False)
+            for sym in FORBIDDEN_LOGIC_SYMBOLS:
+                if sym in lesson_str:
+                    errors.append(f"[{context_name}:{tid}/{lid}] Lekcja zawiera zakazany symbol logiki formalnej '{sym}'")
+
             tasks = lesson.get('tasks', [])
             if len(tasks) not in range(5, 11):
                 errors.append(f"[{context_name}] Lekcja {lesson.get('id')} ma {len(tasks)} zadań (powinno być 5-10)")
@@ -135,6 +163,12 @@ def audit_topics_structure_and_tasks(topics, context_name, official_by_badge):
                     training_count += 1
                 else:
                     errors.append(f"[{context_name}:{tid}] Nieznana odznaka zadania: '{badge_clean}'")
+
+                # Duplicate options check
+                if task.get('type') == 'SINGLE_CHOICE':
+                    opt_texts = [str(o.get('text', '')).strip() for o in task.get('options', [])]
+                    if len(set(opt_texts)) != len(opt_texts):
+                        errors.append(f"[{context_name}:{tid}] SINGLE_CHOICE posiada zduplikowane opcje odpowiedzi: {opt_texts}")
 
                 # cke_trap
                 trap = task.get('cke_trap') or task.get('ckeTrap', '')
@@ -211,11 +245,13 @@ def run_audit():
         build_topic_01, build_topic_02, build_topic_03, build_topic_04,
         build_topic_05, build_topic_06, build_topic_07, build_topic_08,
         build_topic_09, build_topic_10, build_topic_11, build_topic_12,
-        build_topic_13
+        build_topic_13, build_topic_14, build_topic_15, build_topic_16,
+        build_topic_17, build_topic_18, build_topic_19, build_topic_20,
+        build_topic_21
     ]
     built_topics = []
     for b_fn in builder_funcs:
-        built_topics.append(b_fn())
+        built_topics.append(sanitize_topic_data(b_fn()))
 
     py_errors, py_stats = audit_topics_structure_and_tasks(
         built_topics,

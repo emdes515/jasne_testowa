@@ -13,9 +13,10 @@ interface NavigationProps {
 
 export function Navigation({ currentTab, setTab, userState, onProfileClick }: NavigationProps) {
   const handleTabChange = (tab: TabState) => {
-    if (tab !== currentTab) {
+    const normalized = (tab === 'nauka' ? 'learn' : tab === 'profile' ? 'profil' : tab) as TabState;
+    if (normalized !== currentTab) {
       triggerHaptic('light');
-      setTab(tab);
+      setTab(normalized);
     }
   };
 
@@ -45,7 +46,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
         <div className="pointer-events-auto flex items-center justify-between gap-1 bg-[#0E1522]/90 backdrop-blur-[24px] border border-white/10 p-1.5 rounded-[26px] shadow-[0_12px_32px_rgba(0,0,0,0.35),0_0_20px_rgba(255,184,0,0.08)] w-full max-w-sm">
           {navItems.filter(item => item.id !== 'profile').map(item => {
             const Icon = item.icon;
-            const isActive = currentTab === item.id;
+            const isActive = currentTab === item.id || (item.id === 'nauka' && (currentTab as string) === 'learn') || (item.id === 'profile' && (currentTab as string) === 'profil');
             const isArena = item.id === 'arena';
             return (
               <motion.button 
@@ -102,7 +103,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
         <div className="flex flex-col items-center gap-3 w-full px-2">
           {navItems.map(item => {
             const Icon = item.icon;
-            const isActive = currentTab === item.id;
+            const isActive = currentTab === item.id || (item.id === 'nauka' && ((currentTab as string) === 'learn' || (currentTab as string) === 'nauka')) || (item.id === 'profile' && ((currentTab as string) === 'profil' || (currentTab as string) === 'profile'));
             const isArena = item.id === 'arena';
             return (
               <motion.button
@@ -181,7 +182,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
             </span>
             {navItems.map(item => {
               const Icon = item.icon;
-              const isActive = currentTab === item.id;
+              const isActive = currentTab === item.id || (item.id === 'nauka' && (currentTab as string) === 'learn') || (item.id === 'profile' && (currentTab as string) === 'profil');
               const isArena = item.id === 'arena';
               return (
                 <button

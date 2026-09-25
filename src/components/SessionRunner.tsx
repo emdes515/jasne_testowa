@@ -54,6 +54,7 @@ import { ArgumentVaultModal } from './polish/ArgumentVaultModal';
 
 import { UserState, LessonTheoryPill } from '../types';
 import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTaskPool } from '../data/dzial1TaskPool';
+import { curriculumRepository } from '../services/curriculumRepository';
 import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
 import { AiTutorScanOverlay } from './AiTutorScanOverlay';
@@ -1024,8 +1025,24 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const lastActivityRef = React.useRef<number>(Date.now());
 
   // Theory Pill resolution: provided in payload or fetched from lesson curriculum with resilient fallback
+  const [asyncTheoryPill, setAsyncTheoryPill] = useState<any>(() => {
+    if (sessionData?.theoryPill && sessionData.theoryPill.concept_essence && !sessionData.theoryPill.concept_essence.includes('Zapoznaj się z kluczowymi')) {
+      return enrichTheoryPillWithVisual(sessionData.theoryPill, lessonId);
+    }
+    const cached = curriculumRepository.getCachedLesson(lessonId, (sessionData as any)?.subjectId);
+    if (cached?.theory_pill && cached.theory_pill.concept_essence && !cached.theory_pill.concept_essence.includes('Zapoznaj się z kluczowymi')) {
+      return enrichTheoryPillWithVisual(cached.theory_pill, lessonId);
+    }
+    return sessionData?.theoryPill || null;
+  });
+
   const theoryPill: LessonTheoryPill = useMemo(() => {
-    const raw = sessionData.theoryPill || getLessonTheoryPill(lessonId);
+    const raw = (asyncTheoryPill && asyncTheoryPill.concept_essence && !asyncTheoryPill.concept_essence.includes('Zapoznaj się z kluczowymi'))
+      ? asyncTheoryPill
+      : (sessionData.theoryPill && sessionData.theoryPill.concept_essence && !sessionData.theoryPill.concept_essence.includes('Zapoznaj się z kluczowymi'))
+        ? sessionData.theoryPill
+        : (asyncTheoryPill || sessionData.theoryPill || getLessonTheoryPill(lessonId) || curriculumRepository.getCachedLesson(lessonId, (sessionData as any)?.subjectId)?.theory_pill);
+
     if (raw) {
       const normRaw = { ...raw };
       if (!normRaw.worked_example && (raw as any).workedExample) {
@@ -1061,7 +1078,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       exam_trap: formulaSheet?.ckeTrap ? `${formulaSheet.ckeTrap.error} ➔ ${formulaSheet.ckeTrap.correct}` : undefined,
       keyTakeaway: formulaSheet?.goldenRule || (isPolishSession ? 'Uważnie analizuj kontekst fragmentu i intencję nadawcy.' : 'Pamiętaj o dokładnym czytaniu polecenia i weryfikacji założeń zadania.')
     } as LessonTheoryPill, lessonId);
-  }, [sessionData.theoryPill, lessonId, lessonTitle, formulaSheet, isPolishSession]);
+  }, [asyncTheoryPill, sessionData.theoryPill, lessonId, lessonTitle, formulaSheet, isPolishSession]);
 
   // AI Tutor for Open Tasks
   const [openAnswerText, setOpenAnswerText] = useState<string>(() => sessionData?.openAnswerText ?? '');
@@ -1386,6 +1403,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const taskQueueRef = React.useRef(taskQueue); taskQueueRef.current = taskQueue;
   const isSessionCompleteRef = React.useRef(isSessionComplete); isSessionCompleteRef.current = isSessionComplete;
   const currentTaskIdRef = React.useRef(currentTask?.id); currentTaskIdRef.current = currentTask?.id;
+  const theoryPillRef = React.useRef<LessonTheoryPill>(theoryPill); theoryPillRef.current = theoryPill;
 
   // Asynchronously restore canvas drawing for current task from IndexedDB
   useEffect(() => {
@@ -1405,10 +1423,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     };
   }, [sessionId, currentTask?.id]);
 
-  const buildCurrentSessionState = (): SavedSessionState => ({
-    sessionId,
-    lessonId,
-    lessonTitle: sessionData?.lessonTitle || rawLessonTitle || 'Lekcja',
+  const buildCurrentSessionState = (): SavedSessionState => {
+    const activePill = theoryPillRef.current || theoryPill;
+    const isDegraded = (p: any) => !p || !p.concept_essence || (typeof p.concept_essence === 'string' && p.concept_essence.includes('Zapoznaj się z kluczowymi'));
+    const resolvedPill = (!isDegraded(activePill))
+      ? activePill
+      : (!isDegraded(sessionData?.theoryPill) ? sessionData.theoryPill : (activePill || sessionData?.theoryPill));
+
+    return {
+      sessionId,
+      lessonId,
+      lessonTitle: sessionData?.lessonTitle || rawLessonTitle || 'Lekcja',
+      theoryPill: resolvedPill,
+      originTab: (sessionData as any)?.originTab || 'learn',
     tasks: taskQueueRef.current,
     currentQueueIndex: currentQueueIndexRef.current,
     currentStep: currentStepRef.current,
@@ -1436,7 +1463,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     formulaSheet,
     nextLesson,
     allTaskIdsToMarkCompleted
-  });
+    };
+  };
 
   const flushStateSync = () => {
     if (isClearedRef.current || isSessionCompleteRef.current) return;
@@ -1473,6 +1501,50 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }, 300);
   };
 
+  // Asynchronous recovery for theory pill if missing, degraded, or in restored session
+  useEffect(() => {
+    let isMounted = true;
+    const currentPill = theoryPillRef.current || asyncTheoryPill || sessionData?.theoryPill;
+    const isDegradedOrMissing = !currentPill || 
+      !currentPill.concept_essence || 
+      (typeof currentPill.concept_essence === 'string' && currentPill.concept_essence.includes('Zapoznaj się z kluczowymi')) ||
+      (!currentPill.worked_example && !currentPill.core_formulas?.length);
+
+    if (isDegradedOrMissing || sessionData?.isRestoredSession) {
+      const topicId = (sessionData as any)?.topicId;
+      const subjectId = (sessionData as any)?.subjectId || ((sessionData as any)?.isPolish || isPolishSession ? 'jezyk-polski' : undefined);
+      curriculumRepository.ensureLessonLoaded(lessonId, topicId, subjectId)
+        .then(lessonDoc => {
+          if (!isMounted || !lessonDoc) return;
+          const recoveredPill = lessonDoc.theory_pill;
+          if (recoveredPill) {
+            const enriched = enrichTheoryPillWithVisual(recoveredPill, lessonId);
+            theoryPillRef.current = enriched;
+            setAsyncTheoryPill(enriched);
+
+            // Immediately persist authoritative recovered pill to avoid race conditions or reload losses
+            if (!isClearedRef.current && !isSessionCompleteRef.current) {
+              try {
+                saveSessionStateSync({
+                  ...buildCurrentSessionState(),
+                  theoryPill: enriched
+                });
+              } catch (e) {
+                console.warn('[SessionRecovery] Failed immediate sync save of recovered pill:', e);
+              }
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('[SessionRunner] Failed to asynchronously ensure lesson loaded for theoryPill:', err);
+        });
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [lessonId, sessionData?.isRestoredSession, isPolishSession]);
+
   // Real-time debounced auto-save on state transitions
   useEffect(() => {
     if (isClearedRef.current || isSessionComplete) return;
@@ -1491,7 +1563,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     sessionMistakesCount,
     correctAnswersCount,
     earnedXp,
-    earnedCoins
+    earnedCoins,
+    asyncTheoryPill
   ]);
 
   // Hook up visibilitychange and beforeunload listeners for immediate synchronous flush

@@ -258,6 +258,7 @@ export function LearnView({
     const sessionPayload = {
       isSession: true,
       isPolish: true,
+      originTab: 'learn',
       subjectId: 'jezyk-polski',
       topicId: 'pol-showcase',
       lessonId: showcase.id,
@@ -312,6 +313,12 @@ export function LearnView({
       onSelectSubject(key);
     }
   };
+
+  useEffect(() => {
+    if (propSubjectKey && propSubjectKey !== internalSubjectKey) {
+      setInternalSubjectKey(propSubjectKey);
+    }
+  }, [propSubjectKey]);
 
   // Screen view state
   const [viewState, setViewState] = useState<ViewState>(() => {
@@ -690,6 +697,7 @@ export function LearnView({
 
     const sessionPayload = {
       isSession: true,
+      originTab: 'learn',
       isPolish: selectedSubjectKey === 'pol',
       subjectId: subjectFirestoreId,
       pillarId: selectedSubjectKey === 'pol' ? selectedPillarId : undefined,

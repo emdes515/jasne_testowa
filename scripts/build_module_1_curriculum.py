@@ -30,11 +30,19 @@ from scripts.curriculum_builder.topic_10_builder import build_topic_10
 from scripts.curriculum_builder.topic_11_builder import build_topic_11
 from scripts.curriculum_builder.topic_12_builder import build_topic_12
 from scripts.curriculum_builder.topic_13_builder import build_topic_13
+from scripts.curriculum_builder.topic_14_builder import build_topic_14
+from scripts.curriculum_builder.topic_15_builder import build_topic_15
+from scripts.curriculum_builder.topic_16_builder import build_topic_16
+from scripts.curriculum_builder.topic_17_builder import build_topic_17
+from scripts.curriculum_builder.topic_18_builder import build_topic_18
+from scripts.curriculum_builder.topic_19_builder import build_topic_19
+from scripts.curriculum_builder.topic_20_builder import build_topic_20
+from scripts.curriculum_builder.topic_21_builder import build_topic_21
 from scripts.sanitize_curriculum_text import sanitize_topic_data
 
 def build_full_curriculum():
     print("=" * 60)
-    print("  BUDOWANIE KURIKULUM MATEMATYKI PODSTAWOWEJ (Działy 1–13)")
+    print("  BUDOWANIE KURIKULUM MATEMATYKI PODSTAWOWEJ (Działy 1–21)")
     print("  Standard: Core-4 Bento, Nocturne Luminary SVG, Autentyczne CKE")
     print("=" * 60)
 
@@ -52,6 +60,14 @@ def build_full_curriculum():
         ("Ciągi liczbowe", build_topic_11),
         ("Funkcja kwadratowa", build_topic_12),
         ("Przekształcenia wykresów funkcji", build_topic_13),
+        ("Trygonometria w Trójkącie Prostokątnym i Wzory Redukcyjne", build_topic_14),
+        ("Planimetria – Trójkąty, Cechy Podobieństwa i Twierdzenie Talesa", build_topic_15),
+        ("Planimetria – Czworokąty oraz Okrąg i Koło", build_topic_16),
+        ("Geometria Analityczna na Płaszczyźnie Kartezjańskiej", build_topic_17),
+        ("Stereometria (Geometria Przestrzenna)", build_topic_18),
+        ("Kombinatoryka i Rachunek Prawdopodobieństwa", build_topic_19),
+        ("Statystyka Opisowa", build_topic_20),
+        ("Zadania Optymalizacyjne z Funkcją Kwadratową", build_topic_21),
     ]
 
     topics = []

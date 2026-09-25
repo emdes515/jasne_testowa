@@ -33,6 +33,8 @@ export interface SavedSessionState {
   correctAnswersCount: number;
   timestamp: number;
   // Extended state fields for complete session continuity
+  theoryPill?: any;
+  originTab?: string;
   required_correct_tasks?: number;
   correctlySolvedTaskIds?: string[];
   numericInput?: string;

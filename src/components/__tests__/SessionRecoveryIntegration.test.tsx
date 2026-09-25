@@ -4,9 +4,11 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, act, cleanup } from '@testing-library/react';
 import { OpenTaskWorkspace } from '../OpenTaskWorkspace';
 import { SessionRunner } from '../SessionRunner';
+import App from '../../App';
+import { curriculumRepository } from '../../services/curriculumRepository';
 import { __resetDatabaseConnectionForTests, SESSION_STORAGE_KEY } from '../../services/sessionRecoveryService';
 
-// Mock dependencies for SessionRunner
+// Mock dependencies for SessionRunner and App
 vi.mock('../../lib/firebase', () => ({
   auth: { currentUser: null },
   db: {}
@@ -14,6 +16,15 @@ vi.mock('../../lib/firebase', () => ({
 
 vi.mock('canvas-confetti', () => ({
   default: vi.fn()
+}));
+
+vi.mock('react-firebase-hooks/auth', () => ({
+  useAuthState: () => [null, false, null]
+}));
+
+vi.mock('../../lib/curriculumSync', () => ({
+  checkSystemMetaVersion: vi.fn().mockResolvedValue({ upToDate: true, serverVersion: '2.0.0' }),
+  APP_CURRICULUM_VERSION: '2.0.0'
 }));
 
 describe('Session Recovery Component Integration', () => {
@@ -176,5 +187,162 @@ describe('Session Recovery Component Integration', () => {
       expect(parsed.theorySubStep).toBe(2);
       expect(parsed.currentStep).toBe(0);
     });
+
+    it('restores genuine theoryPill and does not degrade to emergency fallback text when resuming at step 0', async () => {
+      const genuineTheoryPill = {
+        title: 'Lekcja 1.1: Potęgi i pierwiastki',
+        concept_essence: 'Potęgi o wykładniku wymiernym to uogólnienie potęgowania na ułamki.',
+        matura_context: 'Pewniak maturalny CKE za 1 punkt.',
+        core_formulas: [
+          { name: 'Definicja', formula: 'a^{m/n} = \\sqrt[n]{a^m}', description: 'Przejście z potęgi na pierwiastek' }
+        ],
+        worked_example: {
+          problem: 'Oblicz 8^{2/3}',
+          steps: ['(\\sqrt[3]{8})^2', '2^2 = 4'],
+          result: '4'
+        },
+        exam_trap: 'Uwaga na ujemne podstawy!',
+        diagram: {
+          type: 'cartesian',
+          points: [{ x: 1, y: 2, label: 'A' }]
+        }
+      };
+
+      const restoredSession = {
+        sessionId: 'sess_bento_restore_test',
+        lessonId: '1.1',
+        lessonTitle: 'Lekcja 1.1: Potęgi i pierwiastki',
+        tasks: mockTasks,
+        taskQueue: mockTasks,
+        currentQueueIndex: 0,
+        currentStep: 0, // theory mode
+        theorySubStep: 0,
+        theoryPill: genuineTheoryPill,
+        originTab: 'nauka',
+        selectedOption: null,
+        openAnswerText: '',
+        activeSeconds: 15,
+        sessionMistakesCount: 0,
+        correctAnswersCount: 0,
+        isRestoredSession: true
+      };
+
+      render(
+        <SessionRunner
+          sessionData={restoredSession as any}
+          userState={{ coins: 100, hearts: 5, xp: 50, streakDays: 3, isPro: false } as any}
+          onCompleteSession={vi.fn()}
+          onCancelSession={vi.fn()}
+        />
+      );
+
+      // Verify that genuine theory content is rendered
+      expect(screen.getByText(/Potęgi o wykładniku wymiernym to uogólnienie/)).toBeDefined();
+
+      // Verify that the generic emergency fallback is NOT rendered
+      expect(screen.queryByText(/Zapoznaj się z kluczowymi pojęciami, własnościami i wzorami/)).toBeNull();
+
+      // Fast-forward debounce timer (300ms)
+      await act(async () => {
+        await new Promise(r => setTimeout(r, 350));
+      });
+
+      // Verify that auto-saved session preserved the theoryPill and originTab
+      const stored = localStorage.getItem(SESSION_STORAGE_KEY);
+      expect(stored).toBeTruthy();
+      const parsed = JSON.parse(stored!);
+      expect(parsed.theoryPill).toBeDefined();
+      expect(parsed.theoryPill.concept_essence).toBe('Potęgi o wykładniku wymiernym to uogólnienie potęgowania na ułamki.');
+      expect(parsed.originTab).toBe('nauka');
+    });
+
+    it('asynchronously re-fetches theory pill when session is restored with degraded placeholder text', async () => {
+      const genuineDoc = {
+        id: '1.1',
+        topic_id: 'dzial-1',
+        title: 'Lekcja 1.1: Potęgi i pierwiastki',
+        theory_pill: {
+          concept_essence: 'Potęgi o wykładniku wymiernym to uogólnienie potęgowania na ułamki.',
+          matura_context: 'Pewniak CKE w arkuszu',
+          core_formulas: [{ name: 'Potęga', formula: 'a^n' }],
+          worked_example: { problem: 'Oblicz', steps: ['Krok 1'], result: '4' },
+          exam_trap: 'Uwaga na zero!',
+          diagram: { type: 'cartesian', points: [] }
+        },
+        tasks: mockTasks
+      };
+      const ensureSpy = vi.spyOn(curriculumRepository, 'ensureLessonLoaded').mockResolvedValue(genuineDoc as any);
+
+      // Degraded session with emergency string
+      const degradedSession = {
+        sessionId: 'sess_degraded_test_99',
+        lessonId: '1.1',
+        lessonTitle: 'Lekcja 1.1: Potęgi i pierwiastki',
+        tasks: mockTasks,
+        taskQueue: mockTasks,
+        currentQueueIndex: 0,
+        currentStep: 0,
+        theorySubStep: 0,
+        theoryPill: {
+          concept_essence: 'Zapoznaj się z kluczowymi pojęciami, własnościami i wzorami dla tej lekcji.'
+        },
+        originTab: 'learn',
+        isRestoredSession: true
+      };
+
+      render(
+        <SessionRunner
+          sessionData={degradedSession as any}
+          userState={{ coins: 100, hearts: 5, xp: 50, streakDays: 3, isPro: false } as any}
+          onCompleteSession={vi.fn()}
+          onCancelSession={vi.fn()}
+        />
+      );
+
+      // Allow async ensureLessonLoaded to resolve and state to settle
+      await act(async () => {
+        await new Promise(r => setTimeout(r, 400));
+      });
+
+      expect(ensureSpy).toHaveBeenCalled();
+      expect(screen.getByText(/Potęgi o wykładniku wymiernym to uogólnienie/)).toBeDefined();
+
+      // Auto-save must be triggered with originTab and recovered non-degraded theoryPill
+      const stored = localStorage.getItem(SESSION_STORAGE_KEY);
+      expect(stored).toBeTruthy();
+      const parsed = JSON.parse(stored!);
+      expect(parsed.originTab).toBe('learn');
+      expect(parsed.theoryPill).toBeDefined();
+      expect(parsed.theoryPill.concept_essence).toBe('Potęgi o wykładniku wymiernym to uogólnienie potęgowania na ułamki.');
+    });
+  });
+
+  describe('Tab & context persistence across refreshes', () => {
+    it('restores active tab correctly when App mounts with saved tab in localStorage', async () => {
+      // 1. Test 'learn' tab restoration
+      localStorage.setItem('jasne_active_tab_v1', 'learn');
+      const { unmount } = render(<App />);
+      expect(document.getElementById('learn-scroll-content')).not.toBeNull();
+      unmount();
+
+      // 2. Test 'arena' tab restoration
+      localStorage.setItem('jasne_active_tab_v1', 'arena');
+      const { unmount: unmountArena } = render(<App />);
+      expect(screen.getAllByText(/Arena/i).length).toBeGreaterThan(0);
+      unmountArena();
+
+      // 3. Test 'simulator' tab restoration
+      localStorage.setItem('jasne_active_tab_v1', 'simulator');
+      const { unmount: unmountSim } = render(<App />);
+      expect(screen.getAllByText(/Symulator/i).length).toBeGreaterThan(0);
+      unmountSim();
+
+      // 4. Test fallback to 'dashboard' when no saved tab
+      localStorage.removeItem('jasne_active_tab_v1');
+      const { unmount: unmountDash } = render(<App />);
+      expect(screen.getAllByText(/Główny panel|Dashboard/i).length).toBeGreaterThan(0);
+      unmountDash();
+    });
   });
 });
+

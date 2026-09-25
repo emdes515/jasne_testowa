@@ -94,6 +94,7 @@ export function DashboardView({
     triggerHaptic('medium');
     const sessionPayload = {
       isSession: true,
+      originTab: 'dashboard',
       isPolish: true,
       subjectId: 'jezyk-polski',
       topicId: (showcase as any).epochId || 'pol-showcase',
@@ -123,6 +124,7 @@ export function DashboardView({
     if (lessonDoc) {
       const sessionPayload = {
         isSession: true,
+        originTab: 'dashboard',
         isPolish: true,
         subjectId: 'jezyk-polski',
         topicId: topicId,
@@ -404,6 +406,7 @@ export function DashboardView({
 
     const sessionPayload = {
       isSession: true,
+      originTab: 'dashboard',
       isPolish: selectedSubjectKey === 'pol',
       subjectId: subjectFirestoreId,
       topicId,

@@ -13,6 +13,7 @@
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { getFromCurriculumStorage, saveToCurriculumStorage } from './curriculumRepository';
 import type { SubjectCkeConfig } from '../types';
 import type { MathDiagramData } from '../components/MathDiagram';
 import type { PlotData } from '../components/MathPlot';
@@ -290,48 +291,79 @@ export function didCkeCatalogLoadFail(): boolean {
   return loadFailed;
 }
 
-/** Idempotentne wczytanie katalogów CKE z Firestore (2 odczyty, potem cache). */
+/** Idempotentne wczytanie katalogów CKE z Firestore (0 odczytów przy cache w localStorage/SDK). */
 export async function ensureCkeCatalogsLoaded(): Promise<void> {
   if (isLoaded) return;
-  if (loadPromise) return loadPromise;
 
-  loadPromise = (async () => {
-    try {
-      const [formulasSnap, weightsSnap] = await Promise.all([
-        getDoc(doc(db, 'system', 'ckeFormulas')),
-        getDoc(doc(db, 'system', 'ckeSubjectWeights'))
-      ]);
+  // 1. Sprawdź trwały cache w localStorage (Zero-cost across F5)
+  const cachedFormulas = getFromCurriculumStorage<{ formulas?: CkeFormulaItem[]; topics?: CkeFormulaTopic[] }>('jasne_cke_formulas_v1');
+  const cachedWeights = getFromCurriculumStorage<{ subjects?: Record<string, SubjectCkeConfig>; options?: CkeSubjectOption[] }>('jasne_cke_weights_v1');
 
-      if (formulasSnap.exists()) {
-        const data = formulasSnap.data() as { formulas?: CkeFormulaItem[]; topics?: CkeFormulaTopic[] };
-        formulas = Array.isArray(data.formulas) ? data.formulas : [];
-        formulaTopics = Array.isArray(data.topics) ? data.topics : [];
-      }
-
-      if (weightsSnap.exists()) {
-        const data = weightsSnap.data() as { subjects?: Record<string, SubjectCkeConfig>; options?: CkeSubjectOption[] };
-        if (data.subjects && typeof data.subjects === 'object' && Object.keys(data.subjects).length > 0) {
-          subjectsConfig = { ...DEFAULT_CKE_SUBJECTS_CONFIG, ...data.subjects };
-        }
-        if (Array.isArray(data.options) && data.options.length > 0) {
-          subjectOptions = data.options;
-        } else if (!subjectOptions || subjectOptions.length === 0) {
-          subjectOptions = [ ...DEFAULT_CKE_SUBJECT_OPTIONS ];
-        }
-      }
-
-      isLoaded = formulas.length > 0 || subjectOptions.length > 0;
-      loadFailed = !isLoaded;
-    } catch (err) {
-      loadFailed = true;
-      console.warn('[ckeCatalogRepository] Nie udało się wczytać katalogów CKE:', err);
-    } finally {
-      loadPromise = null;
-      emit();
+  if (cachedFormulas?.data && cachedWeights?.data) {
+    if (Array.isArray(cachedFormulas.data.formulas)) {
+      formulas = cachedFormulas.data.formulas;
     }
-  })();
+    if (Array.isArray(cachedFormulas.data.topics)) {
+      formulaTopics = cachedFormulas.data.topics;
+    }
+    if (cachedWeights.data.subjects && typeof cachedWeights.data.subjects === 'object') {
+      subjectsConfig = { ...DEFAULT_CKE_SUBJECTS_CONFIG, ...cachedWeights.data.subjects };
+    }
+    if (Array.isArray(cachedWeights.data.options) && cachedWeights.data.options.length > 0) {
+      subjectOptions = cachedWeights.data.options;
+    }
+    isLoaded = formulas.length > 0 || subjectOptions.length > 0;
+    if (isLoaded) {
+      emit();
+      const isTestEnv = typeof process !== 'undefined' && (process.env.NODE_ENV === 'test' || typeof (process.env as any).VITEST !== 'undefined');
+      if ((cachedFormulas.isStale || cachedWeights.isStale) && !isTestEnv) {
+        _fetchCkeCatalogsFromFirestore().catch(() => {});
+      }
+      return;
+    }
+  }
 
+  if (loadPromise) return loadPromise;
+  loadPromise = _fetchCkeCatalogsFromFirestore();
   return loadPromise;
+}
+
+async function _fetchCkeCatalogsFromFirestore(): Promise<void> {
+  try {
+    const [formulasSnap, weightsSnap] = await Promise.all([
+      getDoc(doc(db, 'system', 'ckeFormulas')),
+      getDoc(doc(db, 'system', 'ckeSubjectWeights'))
+    ]);
+
+    if (formulasSnap.exists()) {
+      const data = formulasSnap.data() as { formulas?: CkeFormulaItem[]; topics?: CkeFormulaTopic[] };
+      formulas = Array.isArray(data.formulas) ? data.formulas : [];
+      formulaTopics = Array.isArray(data.topics) ? data.topics : [];
+      saveToCurriculumStorage('jasne_cke_formulas_v1', data);
+    }
+
+    if (weightsSnap.exists()) {
+      const data = weightsSnap.data() as { subjects?: Record<string, SubjectCkeConfig>; options?: CkeSubjectOption[] };
+      if (data.subjects && typeof data.subjects === 'object' && Object.keys(data.subjects).length > 0) {
+        subjectsConfig = { ...DEFAULT_CKE_SUBJECTS_CONFIG, ...data.subjects };
+      }
+      if (Array.isArray(data.options) && data.options.length > 0) {
+        subjectOptions = data.options;
+      } else if (!subjectOptions || subjectOptions.length === 0) {
+        subjectOptions = [ ...DEFAULT_CKE_SUBJECT_OPTIONS ];
+      }
+      saveToCurriculumStorage('jasne_cke_weights_v1', data);
+    }
+
+    isLoaded = formulas.length > 0 || subjectOptions.length > 0;
+    loadFailed = !isLoaded;
+  } catch (err) {
+    loadFailed = true;
+    console.warn('[ckeCatalogRepository] Nie udało się wczytać katalogów CKE:', err);
+  } finally {
+    loadPromise = null;
+    emit();
+  }
 }
 
 /**

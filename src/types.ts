@@ -131,7 +131,7 @@ export interface LessonTheoryPill {
   diagram?: any;
 }
 
-export type TabState = 'dashboard' | 'nauka' | 'arena' | 'profile' | 'simulator';
+export type TabState = 'dashboard' | 'nauka' | 'arena' | 'profile' | 'simulator' | 'learn' | 'profil';
 
 export type TaskType = 
   | 'SINGLE_CHOICE' 

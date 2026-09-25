@@ -382,4 +382,67 @@ describe('sessionRecoveryService', () => {
     await clearSessionState(sessionId);
     expect(await restoreCanvasDrawing(sessionId, taskId)).toBeNull();
   });
+
+  it('11. preserves full theoryPill with formulas, examples, traps and vector diagram losslessly across save and restore', async () => {
+    const stateWithTheoryPill: SavedSessionState = {
+      ...sampleState,
+      currentStep: 0,
+      theorySubStep: 1,
+      originTab: 'learn',
+      theoryPill: {
+        concept_essence: 'Potęgi o wykładniku wymiernym to uogólnienie potęgowania.',
+        matura_context: 'Pewniak maturalny CKE za 1 pkt.',
+        core_formulas: [
+          { name: 'Definicja', formula: 'a^{\\frac{m}{n}} = \\sqrt[n]{a^m}', description: 'Zamiana potęgi na pierwiastek' }
+        ],
+        worked_example: {
+          problem: 'Oblicz wartość wyrażenia $8^{\\frac{2}{3}}$',
+          steps: [
+            'Zastosuj wzór: $8^{\\frac{2}{3}} = (\\sqrt[3]{8})^2$',
+            'Pierwiastek sześcienny z 8 to 2: $2^2 = 4$'
+          ],
+          result: '4'
+        },
+        exam_trap: 'Pamiętaj o założeniu $a > 0$ dla potęg o wykładniku wymiernym!',
+        diagram: {
+          type: 'cartesian',
+          points: [{ x: 1, y: 2, label: 'P(1,2)' }],
+          segments: [{ x1: 0, y1: 0, x2: 1, y2: 2, color: '#FFB800' }]
+        }
+      }
+    };
+
+    await saveSessionState(stateWithTheoryPill);
+
+    const restored = await restoreSessionState();
+    expect(restored).not.toBeNull();
+    expect(restored?.originTab).toBe('learn');
+    expect(restored?.theoryPill).toBeDefined();
+    expect(restored?.theoryPill.concept_essence).toBe('Potęgi o wykładniku wymiernym to uogólnienie potęgowania.');
+    expect(restored?.theoryPill.matura_context).toBe('Pewniak maturalny CKE za 1 pkt.');
+    expect(restored?.theoryPill.core_formulas).toHaveLength(1);
+    expect(restored?.theoryPill.core_formulas[0].formula).toBe('a^{\\frac{m}{n}} = \\sqrt[n]{a^m}');
+    expect(restored?.theoryPill.worked_example.result).toBe('4');
+    expect(restored?.theoryPill.exam_trap).toContain('Pamiętaj o założeniu');
+    expect(restored?.theoryPill.diagram).toEqual({
+      type: 'cartesian',
+      points: [{ x: 1, y: 2, label: 'P(1,2)' }],
+      segments: [{ x1: 0, y1: 0, x2: 1, y2: 2, color: '#FFB800' }]
+    });
+  });
+
+  it('12. preserves originTab in saveSessionStateSync for synchronous beforeunload handling', () => {
+    const stateWithOrigin: SavedSessionState = {
+      ...sampleState,
+      originTab: 'arena'
+    };
+
+    saveSessionStateSync(stateWithOrigin);
+
+    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+    expect(raw).toBeTruthy();
+    const parsed = JSON.parse(raw!);
+    expect(parsed.originTab).toBe('arena');
+  });
 });
+

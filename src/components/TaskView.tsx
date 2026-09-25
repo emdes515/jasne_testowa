@@ -1238,16 +1238,21 @@ export function TaskView({
                         </div>
                       )}
 
-                      {currentCard.worked_example.steps?.map((st) => (
-                        <div key={st.step_num} className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
-                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                            {st.step_num}
-                          </span>
-                          <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
-                            <MathRenderer content={st.explanation} />
+                      {currentCard.worked_example.steps?.map((st: any, idx: number) => {
+                        const stepNum = st?.step_num || st?.num || (idx + 1);
+                        const stepContent = st?.explanation || st?.text || (typeof st === 'string' ? st : '');
+                        return (
+                          <div key={stepNum} className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
+                            <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                              {stepNum}
+                            </span>
+                            <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
+                              {st?.label && <span className="block text-[11px] font-bold text-[#FFB800] mb-0.5">{st.label}</span>}
+                              <MathRenderer content={stepContent} />
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
 
                     {currentCard.worked_example.result && (

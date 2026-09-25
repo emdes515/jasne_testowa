@@ -71,8 +71,70 @@ TOPIC_METADATA = {
         'short_title': 'Przekształcenia wykresów funkcji',
         'importance': 'Pewniak CKE (Tier S)',
         'matura_points_range': '1–2 pkt'
+    },
+    'dzial-14': {
+        'short_title': 'Trygonometria',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '2–4 pkt'
+    },
+    'dzial-15': {
+        'short_title': 'Planimetria – trójkąty i Tales',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '2–4 pkt'
+    },
+    'dzial-16': {
+        'short_title': 'Planimetria – czworokąty i okręgi',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '2–4 pkt'
+    },
+    'dzial-17': {
+        'short_title': 'Geometria analityczna',
+        'importance': 'Pewniak CKE (Tier S+)',
+        'matura_points_range': '3–5 pkt'
+    },
+    'dzial-18': {
+        'short_title': 'Stereometria',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '2–4 pkt'
+    },
+    'dzial-19': {
+        'short_title': 'Kombinatoryka i prawdopodobieństwo',
+        'importance': 'Pewniak CKE (Tier S+)',
+        'matura_points_range': '3–5 pkt'
+    },
+    'dzial-20': {
+        'short_title': 'Statystyka opisowa',
+        'importance': 'Pewniak CKE (Tier S)',
+        'matura_points_range': '1–3 pkt'
+    },
+    'dzial-21': {
+        'short_title': 'Zadania optymalizacyjne',
+        'importance': 'Pewniak CKE (Tier S+)',
+        'matura_points_range': '4 pkt'
     }
 }
+
+def clean_formal_logic_all(s):
+    if not isinstance(s, str):
+        return s
+    s = re.sub(r'\\iff\b', r'\\longrightarrow ', s)
+    s = re.sub(r'\\implies\b', r'\\longrightarrow ', s)
+    s = re.sub(r'\\land\b', r'\\text{ oraz }', s)
+    s = re.sub(r'\\wedge\b', r'\\text{ oraz }', s)
+    s = re.sub(r'\\lor\b', r'\\text{ lub }', s)
+    s = re.sub(r'\\vee\b', r'\\text{ lub }', s)
+    s = re.sub(r'\\forall\b', r'\\text{dla każdego }', s)
+    s = re.sub(r'\\exists\b', r'\\text{istnieje }', s)
+    return s
+
+def sanitize_recursively(obj):
+    if isinstance(obj, str):
+        return clean_formal_logic_all(obj)
+    elif isinstance(obj, dict):
+        return {k: sanitize_recursively(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [sanitize_recursively(x) for x in obj]
+    return obj
 
 def clean_math_string(s):
     """
@@ -81,6 +143,7 @@ def clean_math_string(s):
     if not s:
         return ''
     s = s.strip()
+    s = clean_formal_logic_all(s)
     s = re.sub(r'>=', r'\\ge ', s)
     s = re.sub(r'<=', r'\\le ', s)
     s = re.sub(r'!=', r'\\neq ', s)
@@ -197,9 +260,12 @@ def sanitize_topic_data(topic):
             if isinstance(we, dict):
                 if 'problem' in we:
                     we['problem'] = sanitize_math_in_prose(we['problem'])
-                for step in we.get('steps', []):
-                    if 'text' in step:
+                steps_list = we.get('steps', [])
+                for idx, step in enumerate(steps_list):
+                    if isinstance(step, dict) and 'text' in step:
                         step['text'] = sanitize_math_in_prose(step['text'])
+                    elif isinstance(step, str):
+                        steps_list[idx] = sanitize_math_in_prose(step)
 
         # formulaSheet
         fs = lesson.get('formulaSheet', {})
@@ -229,4 +295,5 @@ def sanitize_topic_data(topic):
                 if isinstance(opt, dict) and 'text' in opt:
                     opt['text'] = sanitize_math_in_prose(opt['text'])
 
+    topic = sanitize_recursively(topic)
     return topic
