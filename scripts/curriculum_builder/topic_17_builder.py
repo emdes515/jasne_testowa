@@ -163,11 +163,11 @@ def build_topic_17():
                 ('D', r'$a = -\frac{1}{3}$ oraz $b = 6$')
             ],
             correct_id='D',
-            explanation=r'Dwie proste są równoległe wtedy i tylko wtedy, gdy mają równe współczynniki kierunkowe:' + '\n' +
+            explanation=r'Dwie proste są równoległe dokładnie wtedy, gdy mają równe współczynniki kierunkowe:' + '\n' +
                         r'$$a = a_k = -\frac{1}{3}$$' + '\n' +
                         r'Równanie nowej prostej przyjmuje postać $y = -\frac{1}{3}x + b$.' + '\n' +
                         r'Podstawiamy współrzędne punktu $P = (3, 5)$:' + '\n' +
-                        r'$$5 = -\frac{1}{3} \cdot 3 + b \implies 5 = -1 + b \implies b = 6$$' + '\n' +
+                        r'$$5 = -\frac{1}{3} \cdot 3 + b \longrightarrow 5 = -1 + b \longrightarrow b = 6$$' + '\n' +
                         r'Zatem $a = -\frac{1}{3}$ oraz $b = 6$. Poprawna odpowiedź to D.',
             cke_trap=r'Proste równoległe mają DOKŁADNIE TEN SAM współczynnik kierunkowy: $a = -\frac{1}{3}$. Współczynnik $b$ obliczamy podstawiając punkt.'
         ),

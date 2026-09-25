@@ -36,7 +36,7 @@ def build_topic_18():
             correct_id='A',
             explanation=r'Ściana sześcianu jest kwadratem o boku $a$.' + '\n' +
                         r'Długość przekątnej kwadratu to $d = a\sqrt{2}$.' + '\n' +
-                        r'$$a\sqrt{2} = 2\sqrt{2} \implies a = 2$$' + '\n' +
+                        r'$$a\sqrt{2} = 2\sqrt{2} \longrightarrow a = 2$$' + '\n' +
                         r'Objętość sześcianu wynosi:' + '\n' +
                         r'$$V = a^3 = 2^3 = 8$$' + '\n' +
                         r'Poprawna odpowiedź to A.',
@@ -60,7 +60,8 @@ def build_topic_18():
                         r'$$P_c = 2(ab + bc + ac) = 2(6 \cdot 8 + 8 \cdot 10 + 6 \cdot 10)$$' + '\n' +
                         r'$$P_c = 2(48 + 80 + 60) = 2 \cdot 188 = 376$$' + '\n' +
                         r'Poprawna odpowiedź to A.',
-            cke_trap=r'Uważaj na treść: liczby PARZYSTE ($6, 8, 10$), a nie kolejne naturalne ($8, 9, 10$).'
+            cke_trap=r'Uważaj na treść: liczby PARZYSTE ($6, 8, 10$), a nie kolejne naturalne ($8, 9, 10$).',
+            diagram=v1['tab0']
         ),
         make_sc_task(
             task_id='task-18-1-3',
@@ -78,7 +79,8 @@ def build_topic_18():
             explanation=r'Podstawą jest kwadrat o boku $a = 4$. Przekątna podstawy to $d_p = a\sqrt{2} = 4\sqrt{2}$.' + '\n' +
                         r'Z twierdzenia Pitagorasa dla trójkąta prostokątnego o bokach $d_p, H, D$:' + '\n' +
                         r'$$D = \sqrt{d_p^2 + H^2} = \sqrt{(4\sqrt{2})^2 + 6^2} = \sqrt{32 + 36} = \sqrt{68} = \sqrt{4 \cdot 17} = 2\sqrt{17}$$',
-            cke_trap=r'Przekątna graniastosłupa to $D = \sqrt{a^2 + a^2 + H^2} = \sqrt{2a^2 + H^2}$. Pamiętaj o wyłączeniu czynnika przed pierwiastek.'
+            cke_trap=r'Przekątna graniastosłupa to $D = \sqrt{a^2 + a^2 + H^2} = \sqrt{2a^2 + H^2}$. Pamiętaj o wyłączeniu czynnika przed pierwiastek.',
+            diagram=v1['tab0']
         ),
         make_tf_task(
             task_id='task-18-1-4',
@@ -99,7 +101,8 @@ def build_topic_18():
             correct_val=7,
             explanation=r'Wzór na przekątną prostopadłościanu:' + '\n' +
                         r'$$D = \sqrt{a^2 + b^2 + c^2} = \sqrt{2^2 + 3^2 + 6^2} = \sqrt{4 + 9 + 36} = \sqrt{49} = 7$$',
-            cke_trap=r'Elegancki trójwymiarowy wektor pitagorejski: $\sqrt{4 + 9 + 36} = \sqrt{49} = 7$.'
+            cke_trap=r'Elegancki trójwymiarowy wektor pitagorejski: $\sqrt{4 + 9 + 36} = \sqrt{49} = 7$.',
+            diagram=v1['tab0']
         )
     ]
     l1 = make_lesson(
@@ -184,7 +187,8 @@ def build_topic_18():
             explanation=r'Pole podstawy wynosi $P_p = a^2 = 6^2 = 36$.' + '\n' +
                         r'Wzór na objętość ostrosłupa:' + '\n' +
                         r'$$V = \frac{1}{3}P_p \cdot H = \frac{1}{3} \cdot 36 \cdot 4 = 12 \cdot 4 = 48$$',
-            cke_trap=r'Koniecznie pamiętaj o współczynniku $\frac{1}{3}$! Brak $\frac{1}{3}$ daje objętość graniastosłupa (144).'
+            cke_trap=r'Koniecznie pamiętaj o współczynniku $\frac{1}{3}$! Brak $\frac{1}{3}$ daje objętość graniastosłupa (144).',
+            diagram=v2['tab0']
         ),
         make_sc_task(
             task_id='task-18-2-3',
@@ -202,7 +206,8 @@ def build_topic_18():
             explanation=r'W ostrosłupie prawidłowym czworokątnym wysokość $H$, promień $r = \frac{a}{2}$ oraz wysokość ściany $h_b$ tworzą trójkąt prostokątny:' + '\n' +
                         r'$$r = \frac{8}{2} = 4$$' + '\n' +
                         r'$$H = \sqrt{h_b^2 - r^2} = \sqrt{5^2 - 4^2} = \sqrt{25 - 16} = \sqrt{9} = 3$$',
-            cke_trap=r'Promień łączący spodek wysokości ze środkiem krawędzi podstawy to POŁOWA boku kwadratu: $r = \frac{a}{2} = 4$.'
+            cke_trap=r'Promień łączący spodek wysokości ze środkiem krawędzi podstawy to POŁOWA boku kwadratu: $r = \frac{a}{2} = 4$.',
+            diagram=v2['tab0']
         ),
         make_tf_task(
             task_id='task-18-2-4',
@@ -223,9 +228,10 @@ def build_topic_18():
                         r'2 pkt - poprawne obliczenie h_b = √(169 - 25) = 12.',
             explanation=r'Krok 1: W ścianie bocznej wysokość $h_b$ dzieli podstawę na połowy: $\frac{a}{2} = \frac{10}{2} = 5$.' + '\n' +
                         r'Krok 2: Z twierdzenia Pitagorasa w ścianie bocznej:' + '\n' +
-                        r'$$h_b^2 + 5^2 = 13^2 \implies h_b^2 + 25 = 169 \implies h_b^2 = 144$$' + '\n' +
+                        r'$$h_b^2 + 5^2 = 13^2 \longrightarrow h_b^2 + 25 = 169 \longrightarrow h_b^2 = 144$$' + '\n' +
                         r'Krok 3: Obliczamy $h_b = \sqrt{144} = 12$.',
-            cke_trap=r'Zastosuj twierdzenie Pitagorasa w ŚCIANIE BOCZNEJ, a nie w przekroju osiowym. Boki to $5, h_b, 13$.'
+            cke_trap=r'Zastosuj twierdzenie Pitagorasa w ŚCIANIE BOCZNEJ, a nie w przekroju osiowym. Boki to $5, h_b, 13$.',
+            diagram=v2['tab0']
         )
     ]
     l2 = make_lesson(
@@ -288,13 +294,14 @@ def build_topic_18():
                 ('D', r'$32\pi$')
             ],
             correct_id='A',
-            explanation=r'Przekrój osiowy ma podstawę $2r = 8 \implies r = 4$ oraz tworzącą $l = 8$.' + '\n' +
+            explanation=r'Przekrój osiowy ma podstawę $2r = 8 \longrightarrow r = 4$ oraz tworzącą $l = 8$.' + '\n' +
                         r'Wysokość stożka $H$ to wysokość trójkąta równobocznego:' + '\n' +
                         r'$$H = \frac{8\sqrt{3}}{2} = 4\sqrt{3}$$' + '\n' +
                         r'Objętość stożka wynosi:' + '\n' +
                         r'$$V = \frac{1}{3}\pi r^2 H = \frac{1}{3}\pi \cdot 4^2 \cdot 4\sqrt{3} = \frac{1}{3}\pi \cdot 16 \cdot 4\sqrt{3} = \frac{64\sqrt{3}}{3}\pi$$' + '\n' +
                         r'Poprawna odpowiedź to A.',
-            cke_trap=r'Średnica podstawy to bok trójkąta ($2r = 8$), stąd promień to $r = 4$, a nie $8$.'
+            cke_trap=r'Średnica podstawy to bok trójkąta ($2r = 8$), stąd promień to $r = 4$, a nie $8$.',
+            diagram=v3['tab0']
         ),
         make_sc_task(
             task_id='task-18-3-2',
@@ -327,7 +334,7 @@ def build_topic_18():
                 ('D', r'$72\pi$'),
             ],
             correct_id='A',
-            explanation=r'Wzór na pole kuli: $P = 4\pi R^2 = 36\pi \implies 4R^2 = 36 \implies R^2 = 9 \implies R = 3$.' + '\n' +
+            explanation=r'Wzór na pole kuli: $P = 4\pi R^2 = 36\pi \longrightarrow 4R^2 = 36 \longrightarrow R^2 = 9 \longrightarrow R = 3$.' + '\n' +
                         r'Objętość kuli:' + '\n' +
                         r'$$V = \frac{4}{3}\pi R^3 = \frac{4}{3}\pi \cdot 3^3 = \frac{4}{3}\pi \cdot 27 = 36\pi$$',
             cke_trap=r'Dla promienia R = 3 pole powierzchni i objętość kuli mają taką samą wartość liczbową: $36\pi$.'
@@ -340,7 +347,8 @@ def build_topic_18():
             correct_tf='P',
             explanation=r'Przekrój osiowy stożka składa się z dwóch przystających trójkątów prostokątnych o przyprostokątnych $r, H$ i przeciwprostokątnej $l$.' + '\n' +
                         r'Z twierdzenia Pitagorasa: $r^2 + H^2 = l^2$. Zdanie jest prawdziwe.',
-            cke_trap=r'Tworząca stożka l jest zawsze przeciwprostokątną, więc jest dłuższa zarówno od promienia, jak i od wysokości.'
+            cke_trap=r'Tworząca stożka l jest zawsze przeciwprostokątną, więc jest dłuższa zarówno od promienia, jak i od wysokości.',
+            diagram=v3['tab0']
         ),
         make_numeric_task(
             task_id='task-18-3-5',
@@ -350,7 +358,8 @@ def build_topic_18():
             explanation=r'Z twierdzenia Pitagorasa wysokość stożka wynosi: $H = \sqrt{5^2 - 3^2} = 4$.' + '\n' +
                         r'Objętość stożka: $V = \frac{1}{3}\pi r^2 H = \frac{1}{3}\pi \cdot 9 \cdot 4 = 12\pi$.' + '\n' +
                         r'Po podzieleniu przez $\pi$ wynik wynosi 12.',
-            cke_trap=r'Nie zapomnij wyznaczyć wysokości H z twierdzenia Pitagorasa ($H = 4$) przed podstawieniem do wzoru na objętość.'
+            cke_trap=r'Nie zapomnij wyznaczyć wysokości H z twierdzenia Pitagorasa ($H = 4$) przed podstawieniem do wzoru na objętość.',
+            diagram=v3['tab0']
         )
     ]
     l3 = make_lesson(

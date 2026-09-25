@@ -3526,14 +3526,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </button>
                 <span 
                   title={moduleBadgeName ? `${lessonPillLabel ? lessonPillLabel.replace('LEKCJA', 'Lekcja') + ': ' : ''}${lessonTitleClean || moduleBadgeName}` : (lessonTitleClean || lessonTitle)}
-                  className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold truncate min-w-0 max-w-[220px] xs:max-w-[260px] sm:max-w-md shadow-sm ${
+                  className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold truncate flex-1 min-w-0 max-w-full sm:max-w-md shadow-sm ${
                     isPolishSession
                       ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
                       : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
                   }`}
                 >
-                  <span className="font-bold">{lessonPillLabel ? lessonPillLabel.replace('LEKCJA', 'Lekcja') + ': ' : ''}</span>
-                  <span>{lessonTitleClean || moduleBadgeName}</span>
+                  <span className="font-bold shrink-0">{lessonPillLabel ? lessonPillLabel.replace('LEKCJA', 'Lekcja') + ': ' : ''}</span>
+                  <span className="truncate">{lessonTitleClean || moduleBadgeName}</span>
                 </span>
               </div>
             ) : (

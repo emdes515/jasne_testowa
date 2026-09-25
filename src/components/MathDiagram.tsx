@@ -624,18 +624,31 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 const pillH = 20;
 
                 return (
-                  <text
-                    key={`seg-lbl-${idx}`}
-                    x={midX + ox}
-                    y={midY + oy + 4}
-                    fill={seg.labelColor || strokeColor}
-                    fontSize={12}
-                    fontWeight="700"
-                    textAnchor="middle"
-                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
-                  >
-                    {cleanSegLabel}
-                  </text>
+                  <g key={`seg-lbl-group-${idx}`}>
+                    <rect
+                      x={midX + ox - pillW / 2}
+                      y={midY + oy - pillH / 2 + 2}
+                      width={pillW}
+                      height={pillH}
+                      rx={5}
+                      fill="#090D16"
+                      fillOpacity={0.92}
+                      stroke="#1E293B"
+                      strokeWidth={1}
+                    />
+                    <text
+                      key={`seg-lbl-${idx}`}
+                      x={midX + ox}
+                      y={midY + oy + 4}
+                      fill={seg.labelColor || strokeColor}
+                      fontSize={12}
+                      fontWeight="700"
+                      textAnchor="middle"
+                      style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                    >
+                      {cleanSegLabel}
+                    </text>
+                  </g>
                 );
               })()}
             </g>
@@ -726,19 +739,43 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
 
               {pt.label && (() => {
                 const cleanPtLabel = formatSvgText(pt.label);
+                const ptLblLen = cleanPtLabel.length;
+                const ptPillW = Math.max(18, ptLblLen * 7.5 + 8);
+                const ptPillH = 16;
+                let rectX = pt.x + ox - ptPillW / 2;
+                if (anchor === 'start') {
+                  rectX = pt.x + ox - 2;
+                } else if (anchor === 'end') {
+                  rectX = pt.x + ox - ptPillW + 2;
+                }
+                const rectY = pt.y + oy - ptPillH / 2 + 1;
+
                 return (
-                  <text
-                    key={`pt-lbl-${idx}`}
-                    x={pt.x + ox}
-                    y={pt.y + oy + 4}
-                    fill={isHovered ? '#38BDF8' : (pt.color || '#F8FAFC')}
-                    fontSize={11}
-                    fontWeight="700"
-                    textAnchor={anchor}
-                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
-                  >
-                    {cleanPtLabel}
-                  </text>
+                  <g key={`pt-lbl-group-${idx}`}>
+                    <rect
+                      x={rectX}
+                      y={rectY}
+                      width={ptPillW}
+                      height={ptPillH}
+                      rx={4}
+                      fill="#090D16"
+                      fillOpacity={0.92}
+                      stroke="#1E293B"
+                      strokeWidth={1}
+                    />
+                    <text
+                      key={`pt-lbl-${idx}`}
+                      x={pt.x + ox}
+                      y={pt.y + oy + 4}
+                      fill={isHovered ? '#38BDF8' : (pt.color || '#F8FAFC')}
+                      fontSize={11}
+                      fontWeight="700"
+                      textAnchor={anchor}
+                      style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                    >
+                      {cleanPtLabel}
+                    </text>
+                  </g>
                 );
               })()}
             </g>

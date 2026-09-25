@@ -117,7 +117,7 @@ export function Header({
               triggerHaptic('light');
               setShowHeartsPopup(prev => !prev);
             }}
-            className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-sm border ${
+            className={`flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-2.5 min-h-[44px] min-w-[44px] rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-sm border ${
               heartsData.isPro
                 ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
                 : heartsData.hearts <= 1
@@ -235,7 +235,7 @@ export function Header({
             triggerHaptic('light');
             if (onProfileClick) onProfileClick();
           }}
-          className="flex items-center gap-1 sm:gap-1.5 bg-[#F97316]/10 hover:bg-[#F97316]/20 border border-[#F97316]/30 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-[0_0_12px_rgba(249,115,22,0.12)]"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 bg-[#F97316]/10 hover:bg-[#F97316]/20 border border-[#F97316]/30 px-2.5 sm:px-2.5 min-h-[44px] min-w-[44px] rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-[0_0_12px_rgba(249,115,22,0.12)]"
           title={`Aktualna seria: ${state.streakDays || 0} dni z rzędu`}
         >
           <Flame size={14} className="text-[#F97316] fill-[#F97316] animate-pulse" />
@@ -246,7 +246,7 @@ export function Header({
 
         {/* Wskaźnik 2: Główne Monety */}
         <div 
-          className="flex items-center gap-1 sm:gap-1.5 bg-primary/10 border border-primary/30 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full shadow-[0_0_12px_rgba(255,184,0,0.12)]"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 bg-primary/10 border border-primary/30 px-2.5 sm:px-2.5 min-h-[44px] rounded-full shadow-[0_0_12px_rgba(255,184,0,0.12)]"
           title={`Monety: ${state.coins}`}
         >
           <Coins size={13} className="text-primary" />
@@ -279,7 +279,7 @@ export function Header({
             triggerHaptic('light');
             toggleTheme();
           }}
-          className="p-1.5 sm:p-2 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-muted hover:text-primary transition-all duration-150 active:scale-90 cursor-pointer shadow-sm flex items-center justify-center"
+          className="min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-muted hover:text-primary transition-all duration-150 active:scale-90 cursor-pointer shadow-sm flex items-center justify-center"
           title={resolvedTheme === 'dark' ? 'Przełącz na motyw jasny (Solar Luminary)' : 'Przełącz na motyw ciemny (Nocturne Luminary)'}
           aria-label={resolvedTheme === 'dark' ? 'Przełącz na motyw jasny' : 'Przełącz na motyw ciemny'}
         >

@@ -1390,7 +1390,7 @@ export function LearnView({
                       <button 
                         id="lessons-back-button"
                         onClick={handleBack}
-                        className="w-9 h-9 rounded-xl bg-surface-card border border-surface-border flex items-center justify-center text-text-primary hover:bg-surface-card-hover transition-colors shadow-sm shrink-0 cursor-pointer active:scale-95"
+                        className="min-w-[44px] min-h-[44px] w-11 h-11 rounded-xl bg-surface-card border border-surface-border flex items-center justify-center text-text-primary hover:bg-surface-card-hover transition-colors shadow-sm shrink-0 cursor-pointer active:scale-95"
                         aria-label="Wróć do listy działów"
                       >
                         <ChevronLeft size={20} />

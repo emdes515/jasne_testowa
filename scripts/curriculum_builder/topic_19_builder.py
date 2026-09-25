@@ -216,7 +216,7 @@ def build_topic_19():
             scoring_key=r'1 pkt - określenie |Omega| = 36 oraz warunku nieparzystości iloczynu (obie kostki nieparzyste).' + '\n' +
                         r'2 pkt - wyznaczenie |A| = 3 · 3 = 9 i obliczenie P(A) = 9/36 = 1/4.',
             explanation=r'Krok 1: Przestrzeń zdarzeń $|\Omega| = 6 \cdot 6 = 36$.' + '\n' +
-                        r'Krok 2: Iloczyn dwóch liczb jest nieparzysty wtedy i tylko wtedy, gdy OBIE liczby są nieparzyste.' + '\n' +
+                        r'Krok 2: Iloczyn dwóch liczb jest nieparzysty tylko wtedy, gdy obie mnożone liczby są nieparzyste.' + '\n' +
                         r'Liczby nieparzyste na kostce to $\{1, 3, 5\}$ (3 możliwości).' + '\n' +
                         r'Zatem sprzyjających par jest $|A| = 3 \cdot 3 = 9$.' + '\n' +
                         r'Krok 3: Obliczamy prawdopodobieństwo:' + '\n' +
