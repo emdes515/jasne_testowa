@@ -125,52 +125,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'Częste gubienie podwojonego iloczynu: $(x - 3)^2 = x^2 - 6x + 9$, a NIE $x^2 - 9$!',
     keywords: ['wzory skróconego mnożenia', 'kwadrat sumy', 'różnica kwadratów'],
     cke_page: 'str. 7',
-    pageNumber: 7,
-    diagram: {
-      type: 'GEOMETRY_2D',
-      title: 'Geometryczny dowód kwadratu sumy: (a + b)² = a² + 2ab + b²',
-      formulaBadge: '$(a + b)^2 = a^2 + 2ab + b^2$',
-      width: 460,
-      height: 225,
-      polygons: [
-        {
-          points: '130,25 240,25 240,135 130,135',
-          fill: 'rgba(255, 184, 0, 0.16)',
-          stroke: '#FFB800',
-          strokeWidth: 2
-        },
-        {
-          points: '240,25 295,25 295,135 240,135',
-          fill: 'rgba(56, 189, 248, 0.14)',
-          stroke: '#38BDF8',
-          strokeWidth: 1.5
-        },
-        {
-          points: '130,135 240,135 240,190 130,190',
-          fill: 'rgba(56, 189, 248, 0.14)',
-          stroke: '#38BDF8',
-          strokeWidth: 1.5
-        },
-        {
-          points: '240,135 295,135 295,190 240,190',
-          fill: 'rgba(16, 185, 129, 0.18)',
-          stroke: '#10B981',
-          strokeWidth: 2
-        }
-      ],
-      labels: [
-        { x: 185, y: 80, text: 'a²', color: '#FFDCA1', fontSize: 18, fontWeight: '700' },
-        { x: 267, y: 80, text: 'ab', color: '#38BDF8', fontSize: 15, fontWeight: '700' },
-        { x: 185, y: 162, text: 'ab', color: '#38BDF8', fontSize: 15, fontWeight: '700' },
-        { x: 267, y: 162, text: 'b²', color: '#10B981', fontSize: 16, fontWeight: '700' },
-        { x: 185, y: 14, text: 'a', color: '#FFDCA1', fontSize: 13, fontWeight: '600' },
-        { x: 267, y: 14, text: 'b', color: '#38BDF8', fontSize: 13, fontWeight: '600' },
-        { x: 112, y: 80, text: 'a', color: '#FFDCA1', fontSize: 13, fontWeight: '600' },
-        { x: 112, y: 162, text: 'b', color: '#38BDF8', fontSize: 13, fontWeight: '600' },
-        { x: 212, y: 212, text: 'Pole całkowite = a² + 2ab + b²', color: '#FFDCA1', fontSize: 13, fontWeight: '700', badge: true }
-      ],
-      caption: 'Pole kwadratu o boku (a + b) składa się z 4 części: a², dwóch prostokątów ab i b². Zauważ: wyraz 2ab bierze się z dwóch jednakowych prostokątów ab!'
-    }
+    pageNumber: 7
   },
 
   // 2. Logarytmy i Procenty
@@ -179,7 +134,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     topicId: 'logarytmy-procenty',
     topicName: 'Logarytmy i Procenty',
     title: 'Definicja logarytmu i pętla wykładnicza',
-    formula: '\\log_a(b) = c \\implies a^c = b',
+    formula: '\\log_a(b) = c \\longrightarrow a^c = b',
     subFormulas: [
       { label: 'Równoważność wykładnicza', formula: 'a^c = b' },
       { label: 'Założenia dziedziny', formula: 'a > 0, \\; a \\neq 1, \\; b > 0' }
@@ -189,46 +144,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'Podstawa $a$ MUSI być dodatnia i różna od $1$, a liczba logarytmowana $b$ MUSI być ściśle dodatnia ($b > 0$).',
     keywords: ['definicja logarytmu', 'pętla logarytmiczna', 'dziedzina logarytmu'],
     cke_page: 'str. 5',
-    pageNumber: 5,
-    diagram: {
-      type: 'INFOGRAPHIC',
-      title: 'Pętla Logarytmiczna: Z polskiego na nasze',
-      formulaBadge: '$\\log_a(b) = c \\longrightarrow a^c = b$',
-      width: 480,
-      height: 210,
-      polygons: [
-        {
-          points: '30,35 240,35 240,175 30,175',
-          fill: 'rgba(14, 21, 34, 0.7)',
-          stroke: '#334155',
-          strokeWidth: 1.5
-        },
-        {
-          points: '260,35 450,35 450,175 260,175',
-          fill: 'rgba(14, 21, 34, 0.7)',
-          stroke: '#334155',
-          strokeWidth: 1.5
-        }
-      ],
-      segments: [
-        { from: [100, 130], to: [160, 65], color: '#FFB800', strokeWidth: 2, dashed: true },
-        { from: [160, 65], to: [210, 105], color: '#38BDF8', strokeWidth: 2, dashed: true }
-      ],
-      labels: [
-        { x: 135, y: 55, text: 'Pętla wykładnicza', color: '#FFDCA1', fontSize: 13, fontWeight: '700' },
-        { x: 70, y: 105, text: 'log', color: '#94A3B8', fontSize: 20, fontWeight: '700' },
-        { x: 98, y: 128, text: 'a', color: '#FFB800', fontSize: 18, fontWeight: '800' },
-        { x: 135, y: 105, text: '( b )', color: '#10B981', fontSize: 20, fontWeight: '800' },
-        { x: 180, y: 105, text: '=', color: '#94A3B8', fontSize: 20 },
-        { x: 210, y: 105, text: 'c', color: '#38BDF8', fontSize: 20, fontWeight: '800' },
-        { x: 135, y: 158, text: 'a podniesione do potęgi c daje b', color: '#FFDCA1', fontSize: 11, badge: true },
-        { x: 355, y: 55, text: 'Przykłady z arkuszy CKE', color: '#38BDF8', fontSize: 13, fontWeight: '700' },
-        { x: 355, y: 95, text: 'log₂ 8 = 3, bo 2³ = 8', color: '#F8FAFC', fontSize: 14, fontWeight: '700', badge: true },
-        { x: 355, y: 130, text: 'log₃ 81 = 4, bo 3⁴ = 81', color: '#FFDCA1', fontSize: 12, fontWeight: '600' },
-        { x: 355, y: 158, text: 'log₅ √5 = 0,5, bo 5⁰·⁵ = √5', color: '#10B981', fontSize: 12, fontWeight: '600' }
-      ],
-      caption: 'Logarytm to pytanie o wykładnik potęgi: „Do jakiej potęgi podnieść podstawę a, aby otrzymać b?”. Podstawa a podniesiona do wyniku c ZAWSZE daje liczbę logarytmowaną b.'
-    }
+    pageNumber: 5
   },
   {
     id: 'f-log-2',
@@ -286,42 +202,35 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     cke_page: 'str. 21–22',
     pageNumber: 21,
     diagram: {
-      type: 'PLOT',
-      plotData: {
-        panels: [
-          {
-            title: 'Proste równoległe (a₁ = a₂)',
-            badge: 'k || l',
-            badgeColor: '#38BDF8',
-            plot: {
-              xRange: [-3, 3],
-              yRange: [-3, 3],
-              gridStep: 1,
-              lines: [
-                { slope: 1, intercept: 1, color: '#FFB800', label: 'k: y = x + 1' },
-                { slope: 1, intercept: -1, color: '#38BDF8', label: 'l: y = x - 1' }
-              ]
-            }
-          },
-          {
-            title: 'Proste prostopadłe (a₁ · a₂ = -1)',
-            badge: 'k ⊥ m',
-            badgeColor: '#F43F5E',
-            plot: {
-              xRange: [-3, 3],
-              yRange: [-3, 3],
-              gridStep: 1,
-              lines: [
-                { slope: 1, intercept: 0, color: '#FFB800', label: 'k: y = x' },
-                { slope: -1, intercept: 1, color: '#F43F5E', label: 'm: y = -x + 1' }
-              ],
-              points: [
-                { x: 0.5, y: 0.5, label: '90°', dot: 'filled', color: '#10B981', attach: 'ne' }
-              ]
-            }
-          }
-        ]
-      }
+      type: 'GEOMETRY_2D',
+      title: 'Prosta w układzie współrzędnych: y = ax + b, współczynnik a = tg α i punkt (0, b)',
+      formulaBadge: '$y = ax + b, \\quad a = \\operatorname{tg}\\alpha, \\quad (0, b)$',
+      width: 480,
+      height: 220,
+      segments: [
+        { from: [30, 160], to: [420, 160], color: '#475569', strokeWidth: 1.5 },
+        { from: [140, 20], to: [140, 200], color: '#475569', strokeWidth: 1.5 },
+        { from: [40, 195], to: [320, 25], color: '#FFB800', strokeWidth: 2.5 },
+        { from: [100, 160], to: [170, 160], color: '#64748B', strokeWidth: 1.2, dashed: true }
+      ],
+      arcs: [
+        { cx: 100, cy: 160, r: 35, startAngleDeg: 59, endAngleDeg: 90, color: '#10B981', label: 'α' }
+      ],
+      points: [
+        { x: 140, y: 135, label: '(0, b)', color: '#38BDF8', dot: 'filled', attach: 'e' },
+        { x: 100, y: 160, label: '(-b/a, 0)', color: '#FFB800', dot: 'filled', attach: 'sw' },
+        { x: 140, y: 160, label: 'O', color: '#64748B', dot: 'none', attach: 'sw' }
+      ],
+      labels: [
+        { x: 415, y: 155, text: 'X', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 145, y: 20, text: 'Y', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 260, y: 35, text: 'y = ax + b', color: '#FFB800', fontSize: 13, fontWeight: '700', badge: true },
+        { x: 385, y: 55, text: 'a = tg α', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 95, text: 'Przecięcie OY: (0, b)', color: '#38BDF8', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 135, text: 'Równoległość: a₁ = a₂', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 175, text: 'Prostopadłość: a₁ · a₂ = -1', color: '#F43F5E', fontSize: 12, fontWeight: '700', badge: true }
+      ],
+      caption: 'Współczynnik kierunkowy a jest tangensem kąta nachylenia prostej do dodatniej półosi OX (a = tg α). Wyraz wolny b wyznacza punkt przecięcia z osią OY: (0, b). Dwie proste są równoległe, gdy a₁ = a₂, i prostopadłe, gdy a₁ · a₂ = -1.'
     }
   },
   {
@@ -343,21 +252,44 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     cke_page: 'str. 7–8',
     pageNumber: 7,
     diagram: {
-      type: 'PARABOLA',
-      xRange: [-1, 5],
-      yRange: [-2, 5],
-      gridStep: 1,
-      parabola: { a: 1, p: 2, q: -1, color: '#FFB800' },
-      axisOfSymmetry: 2,
+      type: 'GEOMETRY_2D',
+      title: 'Funkcja kwadratowa: Parabola, wierzchołek W(p, q), oś symetrii i miejsca zerowe',
+      formulaBadge: '$f(x) = ax^2 + bx + c, \\quad W = (p, q), \\quad p = -\\frac{b}{2a}, \\quad q = -\\frac{\\Delta}{4a}$',
+      width: 480,
+      height: 220,
+      segments: [
+        { from: [30, 140], to: [420, 140], color: '#475569', strokeWidth: 1.5 },
+        { from: [80, 20], to: [80, 200], color: '#475569', strokeWidth: 1.5 },
+        { from: [185, 25], to: [185, 195], color: '#38BDF8', strokeWidth: 1.5, dashed: true },
+        { from: [185, 175], to: [185, 140], color: '#64748B', strokeWidth: 1.2, dashed: true },
+        { from: [185, 175], to: [80, 175], color: '#64748B', strokeWidth: 1.2, dashed: true }
+      ],
+      curves: [
+        {
+          quadratic: { start: [65, 45], control: [185, 305], end: [305, 45] },
+          color: '#FFB800',
+          strokeWidth: 2.5
+        }
+      ],
       points: [
-        { x: 2, y: -1, label: 'W = (p, q) = (2, -1)', dot: 'filled', color: '#38BDF8', attach: 's' },
-        { x: 1, y: 0, label: 'x₁ = 1', dot: 'filled', color: '#10B981', attach: 'nw' },
-        { x: 3, y: 0, label: 'x₂ = 3', dot: 'filled', color: '#10B981', attach: 'ne' },
-        { x: 0, y: 3, label: '(0, c) = (0, 3)', dot: 'filled', color: '#F59E0B', attach: 'w' }
+        { x: 185, y: 175, label: 'W(p, q)', color: '#38BDF8', dot: 'filled', attach: 's' },
+        { x: 123, y: 140, label: 'x₁', color: '#10B981', dot: 'filled', attach: 'nw' },
+        { x: 247, y: 140, label: 'x₂', color: '#10B981', dot: 'filled', attach: 'ne' },
+        { x: 80, y: 68, label: '(0, c)', color: '#FFB800', dot: 'filled', attach: 'w' },
+        { x: 185, y: 140, label: 'p', color: '#38BDF8', dot: 'hollow', attach: 'n' },
+        { x: 80, y: 175, label: 'q', color: '#38BDF8', dot: 'hollow', attach: 'w' },
+        { x: 80, y: 140, label: 'O', color: '#64748B', dot: 'none', attach: 'sw' }
       ],
       labels: [
-        { x: 2, y: 4.3, text: 'oś symetrii x = p = 2', color: '#38BDF8', attach: 'n' }
-      ]
+        { x: 415, y: 135, text: 'X', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 85, y: 20, text: 'Y', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 185, y: 20, text: 'oś x = p', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true },
+        { x: 385, y: 55, text: 'W = (p, q)', color: '#38BDF8', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 95, text: 'p = -b / (2a)', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 135, text: 'q = -Δ / (4a)', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 175, text: 'oś: p = (x₁ + x₂) / 2', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true }
+      ],
+      caption: 'Wykresem funkcji kwadratowej jest parabola. Oś symetrii paraboli x = p przechodzi przez wierzchołek W(p, q) i dzieli odległość między miejscami zerowymi dokładnie na pół: p = (x₁ + x₂)/2. Współrzędna q = f(p) wyznacza najmniejszą (dla a > 0) lub największą (dla a < 0) wartość funkcji.'
     }
   },
   {
@@ -396,43 +328,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'We wzorze na $a_n$ mnożymy $r$ przez $(n - 1)$, a NIE przez $n$!',
     keywords: ['ciąg arytmetyczny', 'różnica ciągu', 'suma ciągu'],
     cke_page: 'str. 9',
-    pageNumber: 9,
-    diagram: {
-      type: 'INFOGRAPHIC',
-      title: 'Ciąg arytmetyczny: Stały krok r i własność sąsiadów',
-      formulaBadge: '$a_n = a_1 + (n - 1)r, \\quad a_n = \\frac{a_{n-1} + a_{n+1}}{2}$',
-      width: 480,
-      height: 220,
-      segments: [
-        { from: [40, 180], to: [440, 180], color: '#475569', strokeWidth: 1.5 },
-        { from: [80, 150], to: [400, 30], color: '#38BDF8', strokeWidth: 2, dashed: true },
-        { from: [80, 150], to: [80, 180], color: '#334155', dashed: true, strokeWidth: 1 },
-        { from: [160, 120], to: [160, 180], color: '#334155', dashed: true, strokeWidth: 1 },
-        { from: [240, 90], to: [240, 180], color: '#334155', dashed: true, strokeWidth: 1 },
-        { from: [320, 60], to: [320, 180], color: '#334155', dashed: true, strokeWidth: 1 },
-        { from: [400, 30], to: [400, 180], color: '#334155', dashed: true, strokeWidth: 1 }
-      ],
-      points: [
-        { x: 80, y: 150, label: 'a₁', color: '#FFB800', dot: 'filled', attach: 'w' },
-        { x: 160, y: 120, label: 'a₂', color: '#FFB800', dot: 'filled', attach: 'w' },
-        { x: 240, y: 90, label: 'a₃', color: '#10B981', dot: 'filled', attach: 'nw' },
-        { x: 320, y: 60, label: 'a₄', color: '#FFB800', dot: 'filled', attach: 'w' },
-        { x: 400, y: 30, label: 'a₅', color: '#FFB800', dot: 'filled', attach: 'ne' }
-      ],
-      labels: [
-        { x: 120, y: 130, text: '+r', color: '#FFDCA1', fontSize: 13, fontWeight: '700' },
-        { x: 200, y: 100, text: '+r', color: '#FFDCA1', fontSize: 13, fontWeight: '700' },
-        { x: 280, y: 70, text: '+r', color: '#FFDCA1', fontSize: 13, fontWeight: '700' },
-        { x: 360, y: 40, text: '+r', color: '#FFDCA1', fontSize: 13, fontWeight: '700' },
-        { x: 80, y: 195, text: 'n=1', color: '#94A3B8', fontSize: 11 },
-        { x: 160, y: 195, text: 'n=2', color: '#94A3B8', fontSize: 11 },
-        { x: 240, y: 195, text: 'n=3', color: '#10B981', fontSize: 11, fontWeight: '700' },
-        { x: 320, y: 195, text: 'n=4', color: '#94A3B8', fontSize: 11 },
-        { x: 400, y: 195, text: 'n=5', color: '#94A3B8', fontSize: 11 },
-        { x: 240, y: 20, text: 'Środek symetrii: a₃ = (a₂ + a₄) / 2', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true }
-      ],
-      caption: 'Ciąg arytmetyczny to dyskretna funkcja liniowa o stałym skoku r. Każdy wyraz (od drugiego) jest średnią arytmetyczną swoich sąsiadów: aₙ = (aₙ₋₁ + aₙ₊₁)/2.'
-    }
+    pageNumber: 9
   },
   {
     id: 'f-ciag-geometryczny',
@@ -450,46 +346,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'Wykładnik ilorazu to $(n - 1)$: $a_4 = a_1 \\cdot q^3$, a NIE $a_1 \\cdot q^4$!',
     keywords: ['ciąg geometryczny', 'iloraz ciągu', 'suma geometryczna'],
     cke_page: 'str. 10',
-    pageNumber: 10,
-    diagram: {
-      type: 'INFOGRAPHIC',
-      title: 'Ciąg geometryczny: Iloraz q i zależność kwadratowa',
-      formulaBadge: '$a_n = a_1 \\cdot q^{n - 1}, \\quad a_n^2 = a_{n-1} \\cdot a_{n+1}$',
-      width: 480,
-      height: 220,
-      segments: [
-        { from: [40, 180], to: [440, 180], color: '#475569', strokeWidth: 1.5 },
-        { from: [80, 160], to: [80, 180], color: '#334155', dashed: true, strokeWidth: 1 },
-        { from: [160, 140], to: [160, 180], color: '#334155', dashed: true, strokeWidth: 1 },
-        { from: [240, 100], to: [240, 180], color: '#334155', dashed: true, strokeWidth: 1 },
-        { from: [320, 45], to: [320, 180], color: '#334155', dashed: true, strokeWidth: 1 }
-      ],
-      curves: [
-        {
-          path: 'M 80 160 Q 200 135 320 45',
-          color: '#F43F5E',
-          strokeWidth: 2,
-          dashed: true
-        }
-      ],
-      points: [
-        { x: 80, y: 160, label: 'a₁ = 2', color: '#FFB800', dot: 'filled', attach: 'w' },
-        { x: 160, y: 140, label: 'a₂ = 6', color: '#FFB800', dot: 'filled', attach: 'w' },
-        { x: 240, y: 100, label: 'a₃ = 18', color: '#10B981', dot: 'filled', attach: 'nw' },
-        { x: 320, y: 45, label: 'a₄ = 54', color: '#38BDF8', dot: 'filled', attach: 'w' }
-      ],
-      labels: [
-        { x: 120, y: 145, text: '· q', color: '#FFDCA1', fontSize: 12, fontWeight: '700' },
-        { x: 200, y: 115, text: '· q', color: '#FFDCA1', fontSize: 12, fontWeight: '700' },
-        { x: 280, y: 65, text: '· q', color: '#FFDCA1', fontSize: 12, fontWeight: '700' },
-        { x: 80, y: 195, text: 'n=1', color: '#94A3B8', fontSize: 11 },
-        { x: 160, y: 195, text: 'n=2', color: '#94A3B8', fontSize: 11 },
-        { x: 240, y: 195, text: 'n=3', color: '#10B981', fontSize: 11, fontWeight: '700' },
-        { x: 320, y: 195, text: 'n=4', color: '#94A3B8', fontSize: 11 },
-        { x: 240, y: 20, text: 'Własność: a₃² = a₂ · a₄  (18² = 6 · 54 = 324)', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true }
-      ],
-      caption: 'Ciąg geometryczny rośnie lub maleje wykładniczo przez stałe mnożenie przez iloraz q. Każdy wyraz podniesiony do kwadratu jest iloczynem sąsiadów: aₙ² = aₙ₋₁ · aₙ₊₁. Pamiętaj: wykładnik to (n - 1)!'
-    }
+    pageNumber: 10
   },
 
   // 5. Trygonometria
@@ -565,48 +422,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'tg 45° to 1, a NIE √2/2! Dla kątów rozwartych cosinus jest ZAWSZE ujemny: cos 120° = -cos 60° = -1/2.',
     keywords: ['wartości kątów', '30 stopni', '45 stopni', '60 stopni', 'wzory redukcyjne'],
     cke_page: 'str. 12–13',
-    pageNumber: 12,
-    diagram: {
-      type: 'TRIGONOMETRY',
-      title: 'Wzory redukcyjne dla kątów rozwartych (II ćwiartka)',
-      formulaBadge: '$\\sin(180^\\circ - \\alpha) = \\sin\\alpha, \\quad \\cos(180^\\circ - \\alpha) = -\\cos\\alpha$',
-      width: 480,
-      height: 230,
-      circles: [
-        {
-          cx: 240,
-          cy: 120,
-          r: 80,
-          stroke: '#475569',
-          strokeWidth: 1.5,
-          fill: 'rgba(56, 189, 248, 0.05)'
-        }
-      ],
-      segments: [
-        { from: [80, 120], to: [400, 120], color: '#475569', strokeWidth: 1.5 },
-        { from: [240, 20], to: [240, 210], color: '#475569', strokeWidth: 1.5 },
-        { from: [240, 120], to: [309, 80], color: '#FFB800', strokeWidth: 2.5 },
-        { from: [240, 120], to: [171, 80], color: '#38BDF8', strokeWidth: 2.5 },
-        { from: [171, 80], to: [309, 80], color: '#10B981', strokeWidth: 2, dashed: true },
-        { from: [309, 80], to: [309, 120], color: '#FFB800', dashed: true, strokeWidth: 1.5 },
-        { from: [171, 80], to: [171, 120], color: '#F43F5E', dashed: true, strokeWidth: 1.5 }
-      ],
-      arcs: [
-        { cx: 240, cy: 120, r: 35, startAngleDeg: 0, endAngleDeg: 30, color: '#FFB800', label: 'α' },
-        { cx: 240, cy: 120, r: 48, startAngleDeg: 0, endAngleDeg: 150, color: '#38BDF8', label: '180° - α' }
-      ],
-      points: [
-        { x: 309, y: 80, label: 'P₁(cos α, sin α)', color: '#FFB800', dot: 'filled', attach: 'ne' },
-        { x: 171, y: 80, label: 'P₂(-cos α, sin α)', color: '#38BDF8', dot: 'filled', attach: 'nw' },
-        { x: 240, y: 80, label: 'y = sin α > 0', color: '#10B981', dot: 'hollow', attach: 'n' },
-        { x: 309, y: 120, label: '+cos α', color: '#FFB800', dot: 'hollow', attach: 's' },
-        { x: 171, y: 120, label: '-cos α', color: '#F43F5E', dot: 'hollow', attach: 's' }
-      ],
-      labels: [
-        { x: 240, y: 20, text: 'W II ćwiartce: sin(180° - α) = sin α  |  cos(180° - α) = -cos α', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true }
-      ],
-      caption: 'W II ćwiartce współrzędna y punktu na okręgu jednostkowym jest dodatnia i równa sin α. Współrzędna x jest ujemna i równa -cos α. Dlatego sinus kąta rozwartego jest dodatni, a cosinus ujemny!'
-    }
+    pageNumber: 12
   },
   {
     id: 'f-trygo-pola',
@@ -667,27 +483,45 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     cke_page: 'str. 21',
     pageNumber: 21,
     diagram: {
-      type: 'PLOT',
-      plotData: {
-        xRange: [0, 7],
-        yRange: [0, 6],
-        gridStep: 1,
-        segments: [
-          { from: [1, 1], to: [5, 4], color: '#FFB800', strokeWidth: 3 },
-          { from: [1, 1], to: [5, 1], color: '#38BDF8', dashed: true, strokeWidth: 1.5, label: 'Δx = 4' },
-          { from: [5, 1], to: [5, 4], color: '#F43F5E', dashed: true, strokeWidth: 1.5, label: 'Δy = 3' }
-        ],
-        points: [
-          { x: 1, y: 1, label: 'A(1; 1)', dot: 'filled', color: '#FFB800', attach: 'sw' },
-          { x: 5, y: 4, label: 'B(5; 4)', dot: 'filled', color: '#FFB800', attach: 'ne' },
-          { x: 3, y: 2.5, label: 'S(3; 2.5) [środek]', dot: 'filled', color: '#10B981', attach: 'nw' },
-          { x: 5, y: 1, label: 'C(5; 1)', dot: 'hollow', color: '#64748B', attach: 'se' }
-        ],
-        labels: [
-          { x: 1.8, y: 2.4, text: '|AB| = 5', color: '#FFB800', attach: 'nw' },
-          { x: 3.5, y: 5.4, text: '|AB|² = 4² + 3² = 25  (Pitagoras)', color: '#FFDCA1', attach: 'n' }
-        ]
-      }
+      type: 'GEOMETRY_2D',
+      title: 'Odległość punktów i współrzędne środka odcinka w układzie współrzędnych',
+      formulaBadge: '$|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}, \\quad S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$',
+      width: 480,
+      height: 220,
+      segments: [
+        { from: [30, 165], to: [420, 165], color: '#475569', strokeWidth: 1.5 },
+        { from: [80, 20], to: [80, 195], color: '#475569', strokeWidth: 1.5 },
+        { from: [130, 125], to: [280, 45], color: '#FFB800', strokeWidth: 2.5 },
+        { from: [130, 125], to: [280, 125], color: '#38BDF8', dashed: true, strokeWidth: 1.5, label: 'x_B - x_A' },
+        { from: [280, 125], to: [280, 45], color: '#F43F5E', dashed: true, strokeWidth: 1.5, label: 'y_B - y_A' },
+        { from: [130, 125], to: [130, 165], color: '#64748B', dashed: true, strokeWidth: 1.2 },
+        { from: [205, 85], to: [205, 165], color: '#10B981', dashed: true, strokeWidth: 1.2 },
+        { from: [280, 125], to: [280, 165], color: '#64748B', dashed: true, strokeWidth: 1.2 },
+        { from: [130, 125], to: [80, 125], color: '#64748B', dashed: true, strokeWidth: 1.2 },
+        { from: [205, 85], to: [80, 85], color: '#10B981', dashed: true, strokeWidth: 1.2 },
+        { from: [280, 45], to: [80, 45], color: '#64748B', dashed: true, strokeWidth: 1.2 }
+      ],
+      points: [
+        { x: 130, y: 125, label: 'A(x_A, y_A)', color: '#FFB800', dot: 'filled', attach: 'nw' },
+        { x: 280, y: 45, label: 'B(x_B, y_B)', color: '#FFB800', dot: 'filled', attach: 'ne' },
+        { x: 205, y: 85, label: 'S(x_S, y_S)', color: '#10B981', dot: 'filled', attach: 'nw' },
+        { x: 80, y: 165, label: 'O', color: '#64748B', dot: 'none', attach: 'sw' }
+      ],
+      labels: [
+        { x: 415, y: 160, text: 'X', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 85, y: 20, text: 'Y', color: '#64748B', fontSize: 12, fontWeight: '700' },
+        { x: 130, y: 182, text: 'x_A', color: '#94A3B8', fontSize: 11, fontWeight: '600' },
+        { x: 205, y: 182, text: 'x_S', color: '#10B981', fontSize: 11, fontWeight: '700' },
+        { x: 280, y: 182, text: 'x_B', color: '#94A3B8', fontSize: 11, fontWeight: '600' },
+        { x: 62, y: 125, text: 'y_A', color: '#94A3B8', fontSize: 11, fontWeight: '600' },
+        { x: 62, y: 85, text: 'y_S', color: '#10B981', fontSize: 11, fontWeight: '700' },
+        { x: 62, y: 45, text: 'y_B', color: '#94A3B8', fontSize: 11, fontWeight: '600' },
+        { x: 385, y: 55, text: '|AB| = √[(x_B - x_A)² + (y_B - y_A)²]', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 95, text: 'x_S = (x_A + x_B) / 2', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 135, text: 'y_S = (y_A + y_B) / 2', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 385, y: 175, text: 'Δx = x_B - x_A,  Δy = y_B - y_A', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true }
+      ],
+      caption: 'Długość odcinka |AB| wynika bezpośrednio z twierdzenia Pitagorasa w trójkącie o przyprostokątnych |x_B - x_A| i |y_B - y_A|. Współrzędne środka S to średnie arytmetyczne odpowiednich współrzędnych końców odcinka.'
     }
   },
   {
@@ -713,35 +547,35 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       title: 'Trójkąt równoboczny: Wysokość h, koło opisane R i wpisane r',
       formulaBadge: '$h = \\frac{a\\sqrt{3}}{2}, \\quad P = \\frac{a^2\\sqrt{3}}{4}, \\quad R = 2r = \\frac{2}{3}h$',
       width: 460,
-      height: 225,
+      height: 230,
       polygons: [
         {
-          points: '220,30 110,185 330,185',
+          points: '210,32 120,164 300,164',
           fill: 'rgba(255, 184, 0, 0.08)',
           stroke: '#FFB800',
           strokeWidth: 2.5
         }
       ],
       circles: [
-        { cx: 220, cy: 133, r: 52, stroke: '#10B981', strokeWidth: 1.5, fill: 'rgba(16, 185, 129, 0.08)' },
-        { cx: 220, cy: 133, r: 104, stroke: '#38BDF8', strokeWidth: 1.2, dashed: true, fill: 'none' }
+        { cx: 210, cy: 120, r: 44, stroke: '#10B981', strokeWidth: 1.5, fill: 'rgba(16, 185, 129, 0.08)' },
+        { cx: 210, cy: 120, r: 88, stroke: '#38BDF8', strokeWidth: 1.2, dashed: true, fill: 'none' }
       ],
       segments: [
-        { from: [220, 30], to: [220, 185], color: '#F43F5E', strokeWidth: 2 },
-        { from: [220, 30], to: [220, 133], color: '#38BDF8', strokeWidth: 3, label: 'R' },
-        { from: [220, 133], to: [220, 185], color: '#10B981', strokeWidth: 3, label: 'r' }
+        { from: [210, 32], to: [210, 164], color: '#F43F5E', strokeWidth: 2 },
+        { from: [210, 32], to: [210, 120], color: '#38BDF8', strokeWidth: 3, label: 'R' },
+        { from: [210, 120], to: [210, 164], color: '#10B981', strokeWidth: 3, label: 'r' }
       ],
       points: [
-        { x: 220, y: 30, label: 'C', color: '#FFB800', dot: 'filled', attach: 'n' },
-        { x: 110, y: 185, label: 'A', color: '#FFB800', dot: 'filled', attach: 'sw' },
-        { x: 330, y: 185, label: 'B', color: '#FFB800', dot: 'filled', attach: 'se' },
-        { x: 220, y: 133, label: 'S', color: '#FFDCA1', dot: 'filled', attach: 'e' }
+        { x: 210, y: 32, label: 'C', color: '#FFB800', dot: 'filled', attach: 'n' },
+        { x: 120, y: 164, label: 'A', color: '#FFB800', dot: 'filled', attach: 'sw' },
+        { x: 300, y: 164, label: 'B', color: '#FFB800', dot: 'filled', attach: 'se' },
+        { x: 210, y: 120, label: 'S', color: '#FFDCA1', dot: 'filled', attach: 'e' }
       ],
       labels: [
-        { x: 385, y: 65, text: 'R = a√3 / 3', color: '#38BDF8', fontSize: 13, fontWeight: '700', badge: true },
-        { x: 385, y: 105, text: 'r = a√3 / 6', color: '#10B981', fontSize: 13, fontWeight: '700', badge: true },
-        { x: 385, y: 145, text: 'R = 2r = ⅔h', color: '#FFDCA1', fontSize: 14, fontWeight: '800', badge: true },
-        { x: 220, y: 205, text: 'h = a√3 / 2', color: '#F43F5E', fontSize: 12, fontWeight: '700' }
+        { x: 385, y: 60, text: 'R = a√3 / 3', color: '#38BDF8', fontSize: 13, fontWeight: '700', badge: true },
+        { x: 385, y: 100, text: 'r = a√3 / 6', color: '#10B981', fontSize: 13, fontWeight: '700', badge: true },
+        { x: 385, y: 140, text: 'R = 2r = ⅔h', color: '#FFDCA1', fontSize: 14, fontWeight: '800', badge: true },
+        { x: 210, y: 188, text: 'h = a√3 / 2', color: '#F43F5E', fontSize: 12, fontWeight: '700' }
       ],
       caption: 'W trójkącie równobocznym środek koła wpisanego i opisanego to ten sam punkt. Dzieli on wysokość h w stosunku 2 : 1. Stąd promień koła opisanego R jest zawsze dwukrotnie większy od promienia wpisanego r: R = 2r.'
     }
@@ -824,9 +658,9 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       width: 480,
       height: 220,
       segments: [
-        { from: [120, 35], to: [40, 185], color: '#FFB800', strokeWidth: 2.5 },
-        { from: [120, 35], to: [200, 185], color: '#38BDF8', strokeWidth: 2.5 },
-        { from: [40, 185], to: [200, 185], color: '#F43F5E', strokeWidth: 2.5, label: 'BC' },
+        { from: [120, 42], to: [40, 180], color: '#FFB800', strokeWidth: 2.5 },
+        { from: [120, 42], to: [200, 180], color: '#38BDF8', strokeWidth: 2.5 },
+        { from: [40, 180], to: [200, 180], color: '#F43F5E', strokeWidth: 2.5 },
         { from: [76, 118], to: [164, 118], color: '#10B981', strokeWidth: 2.5, label: 'DE' }
       ],
       polygons: [
@@ -844,14 +678,15 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
         }
       ],
       points: [
-        { x: 120, y: 35, label: 'A', color: '#FFDCA1', dot: 'filled', attach: 'n' },
+        { x: 120, y: 42, label: 'A', color: '#FFDCA1', dot: 'filled', attach: 'n' },
         { x: 76, y: 118, label: 'D', color: '#FFB800', dot: 'filled', attach: 'w' },
-        { x: 40, y: 185, label: 'B', color: '#FFB800', dot: 'filled', attach: 'sw' },
+        { x: 40, y: 180, label: 'B', color: '#FFB800', dot: 'filled', attach: 'sw' },
         { x: 164, y: 118, label: 'E', color: '#38BDF8', dot: 'filled', attach: 'e' },
-        { x: 200, y: 185, label: 'C', color: '#38BDF8', dot: 'filled', attach: 'se' }
+        { x: 200, y: 180, label: 'C', color: '#38BDF8', dot: 'filled', attach: 'se' }
       ],
       labels: [
-        { x: 120, y: 205, text: 'Tales: DE || BC', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 120, y: 20, text: 'Tales: DE || BC', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 120, y: 198, text: 'BC', color: '#F43F5E', fontSize: 12, fontWeight: '700' },
         { x: 285, y: 140, text: 'P₁ = 1', color: '#10B981', fontSize: 13, fontWeight: '700' },
         { x: 390, y: 115, text: 'P₂ = 4 = 2²', color: '#FFDCA1', fontSize: 14, fontWeight: '700' },
         { x: 350, y: 195, text: 'Skala k = 2  ⟶  Stosunek pól k² = 4', color: '#FFB800', fontSize: 11, fontWeight: '700', badge: true }
@@ -880,36 +715,36 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       title: 'Kąty w okręgu: Środkowy 2α i wpisany α na tym samym łuku',
       formulaBadge: '$\\beta = 2\\alpha, \\quad \\text{Kąt wpisany oparty na średnicy} = 90^\\circ$',
       width: 480,
-      height: 225,
+      height: 235,
       circles: [
         {
-          cx: 240,
-          cy: 115,
-          r: 85,
+          cx: 230,
+          cy: 125,
+          r: 80,
           fill: 'rgba(56, 189, 248, 0.06)',
           stroke: '#38BDF8',
           strokeWidth: 2
         }
       ],
       segments: [
-        { from: [175, 175], to: [240, 115], color: '#FFB800', strokeWidth: 2.5 },
-        { from: [305, 175], to: [240, 115], color: '#FFB800', strokeWidth: 2.5 },
-        { from: [175, 175], to: [210, 32], color: '#10B981', strokeWidth: 2 },
-        { from: [305, 175], to: [210, 32], color: '#10B981', strokeWidth: 2 },
-        { from: [155, 115], to: [325, 115], color: '#475569', strokeWidth: 1.5, dashed: true }
+        { from: [165, 180], to: [230, 125], color: '#FFB800', strokeWidth: 2.5 },
+        { from: [295, 180], to: [230, 125], color: '#FFB800', strokeWidth: 2.5 },
+        { from: [165, 180], to: [200, 48], color: '#10B981', strokeWidth: 2 },
+        { from: [295, 180], to: [200, 48], color: '#10B981', strokeWidth: 2 },
+        { from: [150, 125], to: [310, 125], color: '#475569', strokeWidth: 1.5, dashed: true }
       ],
       arcs: [
-        { cx: 240, cy: 115, r: 28, startAngleDeg: 45, endAngleDeg: 135, color: '#FFB800', label: '2α' },
-        { cx: 210, cy: 32, r: 26, startAngleDeg: 60, endAngleDeg: 110, color: '#10B981', label: 'α' }
+        { cx: 230, cy: 125, r: 28, startAngleDeg: 45, endAngleDeg: 135, color: '#FFB800', label: '2α' },
+        { cx: 200, cy: 48, r: 26, startAngleDeg: 60, endAngleDeg: 110, color: '#10B981', label: 'α' }
       ],
       points: [
-        { x: 240, y: 115, label: 'O (środek)', color: '#FFB800', dot: 'filled', attach: 'n' },
-        { x: 175, y: 175, label: 'A', color: '#38BDF8', dot: 'filled', attach: 'sw' },
-        { x: 305, y: 175, label: 'B', color: '#38BDF8', dot: 'filled', attach: 'se' },
-        { x: 210, y: 32, label: 'C (wpisany)', color: '#10B981', dot: 'filled', attach: 'nw' }
+        { x: 230, y: 125, label: 'O (środek)', color: '#FFB800', dot: 'filled', attach: 'n' },
+        { x: 165, y: 180, label: 'A', color: '#38BDF8', dot: 'filled', attach: 'sw' },
+        { x: 295, y: 180, label: 'B', color: '#38BDF8', dot: 'filled', attach: 'se' },
+        { x: 200, y: 48, label: 'C (wpisany)', color: '#10B981', dot: 'filled', attach: 'nw' }
       ],
       labels: [
-        { x: 240, y: 200, text: 'Wspólny łuk AB', color: '#38BDF8', fontSize: 11, fontWeight: '700' },
+        { x: 230, y: 205, text: 'Wspólny łuk AB', color: '#38BDF8', fontSize: 11, fontWeight: '700' },
         { x: 390, y: 80, text: 'Kąt środkowy = 2α', color: '#FFB800', fontSize: 12, fontWeight: '700', badge: true },
         { x: 390, y: 120, text: 'Kąt wpisany = α', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true },
         { x: 390, y: 160, text: 'Na średnicy = 90°', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true }
@@ -919,6 +754,74 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
   },
 
   // 7. Stereometria
+  {
+    id: 'f-stereo-prostopadloscian',
+    topicId: 'stereometria',
+    topicName: 'Stereometria',
+    title: 'Graniastosłupy i prostopadłościan: Przekątna d i kąt nachylenia',
+    formula: 'V = P_p \\cdot h, \\qquad d = \\sqrt{a^2 + b^2 + c^2}, \\qquad P_c = 2(ab + bc + ca)',
+    subFormulas: [
+      { label: 'Objętość prostopadłościanu', formula: 'V = a \\cdot b \\cdot c' },
+      { label: 'Pole powierzchni całkowitej', formula: 'P_c = 2(ab + bc + ca)' },
+      { label: 'Przekątna podstawy', formula: 'd_p = \\sqrt{a^2 + b^2}' },
+      { label: 'Przekątna prostopadłościanu', formula: 'd = \\sqrt{a^2 + b^2 + c^2}' },
+      { label: 'Kąt nachylenia przekątnej bryły', formula: '\\cos\\alpha = \\frac{d_p}{d}, \\quad \\operatorname{tg}\\alpha = \\frac{c}{d_p}' }
+    ],
+    explanation: 'Dla prostopadłościanu o krawędziach a, b, c przekątna podstawy to $d_p = \\sqrt{a^2 + b^2}$, a przekątna bryły to $d = \\sqrt{d_p^2 + c^2} = \\sqrt{a^2 + b^2 + c^2}$.',
+    goldenRule: 'Kąt nachylenia przekątnej prostopadłościanu do płaszczyzny podstawy (α) leży między przekątną bryły (d) a przekątną podstawy (dp). Trójkąt o bokach dp, c, d jest ZAWSZE prostokątny!',
+    ckeTrap: 'Nigdy nie myl przekątnej ściany bocznej z przekątną prostopadłościanu (bryły). Przekątna bryły łączy dwa najbardziej oddalone wierzchołki i przechodzi przez wnętrze.',
+    keywords: ['prostopadłościan', 'graniastosłup', 'przekątna prostopadłościanu', 'kąt nachylenia', 'objętość'],
+    cke_page: 'str. 24–25',
+    pageNumber: 24,
+    diagram: {
+      type: 'STEREOMETRY_3D',
+      title: 'Prostopadłościan 2.5D: Przekątna bryły d, przekątna podstawy d_p i kąt nachylenia α',
+      formulaBadge: '$d = \\sqrt{a^2 + b^2 + c^2}, \\quad d_p = \\sqrt{a^2 + b^2}, \\quad \\operatorname{tg}\\alpha = \\frac{c}{d_p}$',
+      width: 480,
+      height: 235,
+      polygons: [
+        {
+          points: '60,180 220,180 300,130 140,130',
+          fill: 'rgba(56, 189, 248, 0.06)',
+          stroke: '#38BDF8',
+          strokeWidth: 1.5,
+          dashed: true
+        }
+      ],
+      segments: [
+        { from: [60, 180], to: [220, 180], color: '#FFB800', strokeWidth: 2, label: 'a' },
+        { from: [220, 180], to: [300, 130], color: '#FFB800', strokeWidth: 2, label: 'b' },
+        { from: [300, 130], to: [140, 130], color: '#64748B', strokeWidth: 1.5, dashed: true },
+        { from: [140, 130], to: [60, 180], color: '#64748B', strokeWidth: 1.5, dashed: true },
+        { from: [60, 180], to: [60, 90], color: '#FFB800', strokeWidth: 2 },
+        { from: [220, 180], to: [220, 90], color: '#FFB800', strokeWidth: 2 },
+        { from: [300, 130], to: [300, 45], color: '#F43F5E', strokeWidth: 2.5, label: 'c' },
+        { from: [140, 130], to: [140, 45], color: '#64748B', strokeWidth: 1.5, dashed: true },
+        { from: [60, 90], to: [220, 90], color: '#FFB800', strokeWidth: 2 },
+        { from: [220, 90], to: [300, 45], color: '#FFB800', strokeWidth: 2 },
+        { from: [300, 45], to: [140, 45], color: '#FFB800', strokeWidth: 2 },
+        { from: [140, 45], to: [60, 90], color: '#FFB800', strokeWidth: 2 },
+        { from: [60, 180], to: [300, 130], color: '#10B981', strokeWidth: 2, dashed: true, label: 'd_p' },
+        { from: [60, 180], to: [300, 45], color: '#38BDF8', strokeWidth: 2.5, label: 'd' }
+      ],
+      arcs: [
+        { cx: 60, cy: 180, r: 42, startAngleDeg: 60, endAngleDeg: 78, color: '#10B981', label: 'α' }
+      ],
+      points: [
+        { x: 60, y: 180, label: 'A', color: '#FFDCA1', dot: 'filled', attach: 'sw' },
+        { x: 220, y: 180, label: 'B', color: '#FFDCA1', dot: 'filled', attach: 'se' },
+        { x: 300, y: 130, label: 'C', color: '#FFDCA1', dot: 'filled', attach: 'e' },
+        { x: 300, y: 45, label: 'G', color: '#38BDF8', dot: 'filled', attach: 'ne' }
+      ],
+      labels: [
+        { x: 380, y: 55, text: 'd = √(a² + b² + c²)', color: '#38BDF8', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 380, y: 95, text: 'd_p = √(a² + b²)', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 380, y: 135, text: 'tg α = c / d_p', color: '#FFDCA1', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 380, y: 175, text: 'V = a · b · c', color: '#FFB800', fontSize: 12, fontWeight: '700', badge: true }
+      ],
+      caption: 'Przekątna podstawy dp = √(a² + b²) wraz z krawędzią pionową c tworzy trójkąt prostokątny, którego przeciwprostokątną jest przekątna prostopadłościanu d = √(a² + b² + c²). Kąt nachylenia α leży w płaszczyźnie tego trójkąta prostokątnego.'
+    }
+  },
   {
     id: 'f-stereo-ostroslup',
     topicId: 'stereometria',
@@ -941,39 +844,39 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       title: 'Ostrosłup prawidłowy 2.5D: Kąt krawędzi (α) vs kąt ściany bocznej (β)',
       formulaBadge: '$\\operatorname{tg}\\alpha = \\frac{H}{\\frac{1}{2}d}, \\quad \\operatorname{tg}\\beta = \\frac{H}{\\frac{1}{2}a}, \\quad V = \\frac{1}{3}P_p \\cdot H$',
       width: 480,
-      height: 235,
+      height: 245,
       polygons: [
         {
-          points: '80,180 240,210 380,170 240,30',
+          points: '80,190 240,220 380,180 240,42',
           fill: 'rgba(255, 184, 0, 0.05)',
           stroke: '#FFB800',
           strokeWidth: 2
         }
       ],
       segments: [
-        { from: [80, 180], to: [240, 210], color: '#FFB800', strokeWidth: 2 },
-        { from: [240, 210], to: [380, 170], color: '#FFB800', strokeWidth: 2 },
-        { from: [380, 170], to: [220, 140], color: '#FFB800', strokeWidth: 1.5, dashed: true },
-        { from: [80, 180], to: [220, 140], color: '#FFB800', strokeWidth: 1.5, dashed: true },
-        { from: [240, 30], to: [80, 180], color: '#FFB800', strokeWidth: 2, label: 'b' },
-        { from: [240, 30], to: [240, 210], color: '#FFB800', strokeWidth: 2 },
-        { from: [240, 30], to: [380, 170], color: '#FFB800', strokeWidth: 2 },
-        { from: [240, 30], to: [220, 140], color: '#FFB800', strokeWidth: 1.5, dashed: true },
-        { from: [240, 30], to: [230, 175], color: '#38BDF8', strokeWidth: 2.5, label: 'H' },
-        { from: [80, 180], to: [380, 170], color: '#64748B', strokeWidth: 1.2, dashed: true },
-        { from: [240, 30], to: [310, 190], color: '#F43F5E', strokeWidth: 2, label: 'h_b' },
-        { from: [230, 175], to: [310, 190], color: '#10B981', strokeWidth: 2, dashed: true, label: 'a/2' }
+        { from: [80, 190], to: [240, 220], color: '#FFB800', strokeWidth: 2 },
+        { from: [240, 220], to: [380, 180], color: '#FFB800', strokeWidth: 2 },
+        { from: [380, 180], to: [220, 150], color: '#FFB800', strokeWidth: 1.5, dashed: true },
+        { from: [80, 190], to: [220, 150], color: '#FFB800', strokeWidth: 1.5, dashed: true },
+        { from: [240, 42], to: [80, 190], color: '#FFB800', strokeWidth: 2, label: 'b' },
+        { from: [240, 42], to: [240, 220], color: '#FFB800', strokeWidth: 2 },
+        { from: [240, 42], to: [380, 180], color: '#FFB800', strokeWidth: 2 },
+        { from: [240, 42], to: [220, 150], color: '#FFB800', strokeWidth: 1.5, dashed: true },
+        { from: [240, 42], to: [230, 185], color: '#38BDF8', strokeWidth: 2.5, label: 'H' },
+        { from: [80, 190], to: [380, 180], color: '#64748B', strokeWidth: 1.2, dashed: true },
+        { from: [240, 42], to: [310, 200], color: '#F43F5E', strokeWidth: 2, label: 'h_b' },
+        { from: [230, 185], to: [310, 200], color: '#10B981', strokeWidth: 2, dashed: true, label: 'a/2' }
       ],
       points: [
-        { x: 240, y: 30, label: 'S (wierzchołek)', color: '#FFB800', dot: 'filled', attach: 'n' },
-        { x: 230, y: 175, label: 'O (spodek H)', color: '#38BDF8', dot: 'filled', attach: 'w' },
-        { x: 310, y: 190, label: 'M (środek boku)', color: '#10B981', dot: 'filled', attach: 'se' },
-        { x: 80, y: 180, label: 'A', color: '#FFDCA1', dot: 'filled', attach: 'sw' }
+        { x: 240, y: 42, label: 'S (wierzchołek)', color: '#FFB800', dot: 'filled', attach: 'n' },
+        { x: 230, y: 185, label: 'O (spodek H)', color: '#38BDF8', dot: 'filled', attach: 'w' },
+        { x: 310, y: 200, label: 'M (środek boku)', color: '#10B981', dot: 'filled', attach: 'se' },
+        { x: 80, y: 190, label: 'A', color: '#FFDCA1', dot: 'filled', attach: 'sw' }
       ],
       labels: [
-        { x: 140, y: 165, text: 'kąt α (krawędź)', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true },
-        { x: 285, y: 140, text: 'kąt β (ściana)', color: '#F43F5E', fontSize: 11, fontWeight: '700', badge: true },
-        { x: 370, y: 60, text: 'H ⊥ podstawa', color: '#38BDF8', fontSize: 12, fontWeight: '700', badge: true }
+        { x: 140, y: 175, text: 'kąt α (krawędź)', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true },
+        { x: 285, y: 150, text: 'kąt β (ściana)', color: '#F43F5E', fontSize: 11, fontWeight: '700', badge: true },
+        { x: 370, y: 65, text: 'H ⊥ podstawa', color: '#38BDF8', fontSize: 12, fontWeight: '700', badge: true }
       ],
       caption: 'Nie myl kątów! Kąt nachylenia krawędzi bocznej (α) leży w trójkącie z połową przekątnej podstawy (d/2). Kąt nachylenia ściany bocznej (β) leży w trójkącie z wysokością ściany bocznej (hb) i połową boku podstawy (a/2).'
     }
@@ -1001,37 +904,37 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
       title: 'Bryły obrotowe: Przekrój osiowy stożka i walca',
       formulaBadge: '$V_{\\text{stożek}} = \\frac{1}{3}\\pi r^2 H, \\quad r^2 + H^2 = l^2, \\quad V_{\\text{walec}} = \\pi r^2 H$',
       width: 480,
-      height: 230,
+      height: 235,
       polygons: [
         {
-          points: '60,180 180,180 120,50',
+          points: '60,185 180,185 120,56',
           fill: 'rgba(56, 189, 248, 0.12)',
           stroke: '#38BDF8',
           strokeWidth: 2
         },
         {
-          points: '290,50 410,50 410,180 290,180',
+          points: '290,56 410,56 410,185 290,185',
           fill: 'rgba(255, 184, 0, 0.12)',
           stroke: '#FFB800',
           strokeWidth: 2
         }
       ],
       segments: [
-        { from: [120, 50], to: [120, 180], color: '#F43F5E', strokeWidth: 2, label: 'H' },
+        { from: [120, 56], to: [120, 185], color: '#F43F5E', strokeWidth: 2, label: 'H' },
         { from: [120, 180], to: [180, 180], color: '#10B981', strokeWidth: 2.5, label: 'r' },
-        { from: [120, 50], to: [180, 180], color: '#38BDF8', strokeWidth: 2.5, label: 'l' },
-        { from: [350, 50], to: [350, 180], color: '#F43F5E', strokeWidth: 1.5, dashed: true, label: 'H' },
-        { from: [290, 180], to: [410, 180], color: '#FFB800', strokeWidth: 2.5, label: '2r' }
+        { from: [120, 56], to: [180, 180], color: '#38BDF8', strokeWidth: 2.5, label: 'l' },
+        { from: [350, 56], to: [350, 185], color: '#F43F5E', strokeWidth: 1.5, dashed: true, label: 'H' },
+        { from: [290, 185], to: [410, 185], color: '#FFB800', strokeWidth: 2.5, label: '2r' }
       ],
       points: [
-        { x: 120, y: 50, label: 'Wierzchołek stożka', color: '#38BDF8', dot: 'filled', attach: 'n' },
-        { x: 120, y: 180, label: 'O (środek)', color: '#10B981', dot: 'filled', attach: 's' }
+        { x: 120, y: 56, label: 'Wierzchołek stożka', color: '#38BDF8', dot: 'filled', attach: 'n' },
+        { x: 120, y: 185, label: 'O (środek)', color: '#10B981', dot: 'filled', attach: 's' }
       ],
       labels: [
-        { x: 120, y: 25, text: 'Stożek: r² + H² = l²', color: '#38BDF8', fontSize: 12, fontWeight: '700', badge: true },
-        { x: 350, y: 25, text: 'Walec: Przekrój 2r · H', color: '#FFB800', fontSize: 12, fontWeight: '700', badge: true },
-        { x: 120, y: 205, text: 'Przekrój: trójkąt 2r × l × l', color: '#94A3B8', fontSize: 11 },
-        { x: 350, y: 205, text: 'Przekrój: prostokąt 2r × H', color: '#94A3B8', fontSize: 11 }
+        { x: 120, y: 28, text: 'Stożek: r² + H² = l²', color: '#38BDF8', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 350, y: 28, text: 'Walec: Przekrój 2r · H', color: '#FFB800', fontSize: 12, fontWeight: '700', badge: true },
+        { x: 120, y: 212, text: 'Przekrój: trójkąt 2r × l × l', color: '#94A3B8', fontSize: 11 },
+        { x: 350, y: 212, text: 'Przekrój: prostokąt 2r × H', color: '#94A3B8', fontSize: 11 }
       ],
       caption: 'Przekrój osiowy stożka to trójkąt równoramienny o podstawie 2r i ramionach l. Trójkąt prostokątny (r, H, l) daje zależność r² + H² = l² (Pitagoras!). Przekrój osiowy walca to prostokąt o wymiarach 2r na H.'
     }
@@ -1054,41 +957,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'Prawdopodobieństwo NIGDY nie może przekroczyć $1$ ani być mniejsze od $0$!',
     keywords: ['prawdopodobieństwo', 'omega', 'zdarzenie przeciwne', 'drzewo'],
     cke_page: 'str. 28',
-    pageNumber: 28,
-    diagram: {
-      type: 'STATISTICS',
-      title: 'Drzewo stochastyczne i siatka przestrzeni zdarzeń (2 kostki: |Ω| = 36)',
-      formulaBadge: '$P(A) = \\frac{|A|}{|\\Omega|}, \\quad P(A \\cap B) = P(A) \\cdot P(B|A)$',
-      width: 480,
-      height: 230,
-      segments: [
-        { from: [40, 110], to: [120, 60], color: '#38BDF8', strokeWidth: 2, label: 'p₁' },
-        { from: [40, 110], to: [120, 160], color: '#FFB800', strokeWidth: 2, label: 'p₂' },
-        { from: [120, 60], to: [200, 35], color: '#10B981', strokeWidth: 2, label: 'p₁₁' },
-        { from: [120, 60], to: [200, 85], color: '#64748B', strokeWidth: 1.5 },
-        { from: [120, 160], to: [200, 135], color: '#64748B', strokeWidth: 1.5 },
-        { from: [120, 160], to: [200, 185], color: '#10B981', strokeWidth: 2, label: 'p₂₂' },
-        { from: [280, 45], to: [440, 45], color: '#475569', strokeWidth: 1.5 },
-        { from: [280, 185], to: [440, 185], color: '#475569', strokeWidth: 1.5 },
-        { from: [280, 45], to: [280, 185], color: '#475569', strokeWidth: 1.5 },
-        { from: [440, 45], to: [440, 185], color: '#475569', strokeWidth: 1.5 }
-      ],
-      points: [
-        { x: 40, y: 110, label: 'Start', color: '#FFDCA1', dot: 'filled', attach: 'w' },
-        { x: 120, y: 60, label: 'Etap 1', color: '#38BDF8', dot: 'filled', attach: 'nw' },
-        { x: 120, y: 160, label: 'Etap 1', color: '#FFB800', dot: 'filled', attach: 'sw' },
-        { x: 200, y: 35, label: 'Sukces: p₁ · p₁₁', color: '#10B981', dot: 'filled', attach: 'ne' }
-      ],
-      labels: [
-        { x: 110, y: 20, text: 'Drzewo: Mnożenie wzdłuż gałęzi', color: '#38BDF8', fontSize: 11, fontWeight: '700', badge: true },
-        { x: 360, y: 20, text: '2 kostki: |Ω| = 6 · 6 = 36', color: '#FFDCA1', fontSize: 11, fontWeight: '700', badge: true },
-        { x: 360, y: 80, text: 'Tabela 6 × 6 wyników', color: '#94A3B8', fontSize: 13, fontWeight: '600' },
-        { x: 360, y: 115, text: 'Suma = 7: 6 par sprzyjających', color: '#10B981', fontSize: 12, fontWeight: '700', badge: true },
-        { x: 360, y: 150, text: 'P(suma=7) = 6/36 = 1/6', color: '#FFB800', fontSize: 13, fontWeight: '800' },
-        { x: 240, y: 215, text: 'Wzdłuż gałęzi MNOŻYSZ, różne gałęzie DODAJESZ!', color: '#FFDCA1', fontSize: 11, fontWeight: '700' }
-      ],
-      caption: 'W drzewie stochastycznym prawdopodobieństwa kolejnych etapów wzdłuż jednej ścieżki MNOŻYMY. Wyniki ze sprzyjających ścieżek DODAJEMY. Dla dwóch kostek tabela 6 × 6 daje zawsze |Ω| = 36.'
-    }
+    pageNumber: 28
   },
   {
     id: 'f-stat-srednia',
@@ -1106,31 +975,6 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     ckeTrap: 'Wyznaczenie mediany z nieposortowanego zestawu liczb to najczęstszy błąd maturzystów.',
     keywords: ['średnia', 'mediana', 'statystyka', 'wartość środkowa'],
     cke_page: 'str. 29',
-    pageNumber: 29,
-    diagram: {
-      type: 'STATISTICS',
-      title: 'Statystyka opisowa: Średnia arytmetyczna vs Mediana (uporządkowanie!)',
-      formulaBadge: '$\\bar{x} = \\frac{x_1 + x_2 + \\dots + x_n}{n}, \\quad M = \\text{wartość środkowa (posortowana!)}$',
-      width: 480,
-      height: 210,
-      bars: [
-        { x: 60, y: 140, width: 35, height: 40, fill: 'rgba(100, 116, 139, 0.4)', stroke: '#64748B', label: '2' },
-        { x: 130, y: 120, width: 35, height: 60, fill: 'rgba(100, 116, 139, 0.4)', stroke: '#64748B', label: '3' },
-        { x: 200, y: 80, width: 35, height: 100, fill: 'rgba(16, 185, 129, 0.4)', stroke: '#10B981', label: '5' },
-        { x: 270, y: 40, width: 35, height: 140, fill: 'rgba(100, 116, 139, 0.4)', stroke: '#64748B', label: '8' },
-        { x: 340, y: 20, width: 35, height: 160, fill: 'rgba(100, 116, 139, 0.4)', stroke: '#64748B', label: '12' }
-      ],
-      segments: [
-        { from: [40, 180], to: [440, 180], color: '#475569', strokeWidth: 1.5 },
-        { from: [40, 95], to: [440, 95], color: '#FFB800', strokeWidth: 2, dashed: true }
-      ],
-      labels: [
-        { x: 217, y: 60, text: 'MEDIANA = 5', color: '#10B981', fontSize: 11, fontWeight: '800', badge: true },
-        { x: 390, y: 95, text: 'Średnia x̄ = 6', color: '#FFB800', fontSize: 12, fontWeight: '700', badge: true },
-        { x: 240, y: 20, text: 'Złota zasada: ZANIM policzysz medianę, ZAWSZE posortuj liczby rosnąco!', color: '#FFDCA1', fontSize: 11, fontWeight: '700', badge: true },
-        { x: 240, y: 200, text: 'Zestaw: 2, 3, [5], 8, 12  (n = 5  ⟶  element środkowy)', color: '#F8FAFC', fontSize: 11 }
-      ],
-      caption: 'Mediana to wartość środkowa w uporządkowanym rosnąco zestawie danych. Średnia arytmetyczna to suma podzielona przez liczbę elementów. Pamiętaj: mediana z nieposortowanych liczb to 0 punktów na maturze!'
-    }
+    pageNumber: 29
   }
 ];

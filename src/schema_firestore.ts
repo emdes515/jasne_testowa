@@ -17,7 +17,7 @@
  *    Subcollection: users/{user_id}/progress/{topic_id} -> Completed lessons, errors, stars, unlocked elements.
  */
 
-import { LessonTheoryPill, UserPerks, UserAiUsageSummary, CkeTaskCompletionRecord } from './types';
+import { LessonTheoryPill, UserPerks, UserAiUsageSummary, CkeTaskCompletionRecord, SubjectId } from './types';
 import { filterActualTaskIds } from './utils';
 export interface SubjectTopicMetadata {
   id: string; // e.g. "dzial-1"
@@ -221,6 +221,15 @@ export interface FirestoreUserDocument {
   lastVisionDate?: string;
 
   completedCkeTasks?: Record<string, CkeTaskCompletionRecord>;
+  // Subject & Polish module progression
+  currentSubject?: SubjectId;
+  completedLessonsPolish?: string[];
+  completedTasksPolish?: string[];
+  polishStats?: {
+    totalPoints: number;
+    completedCount: number;
+    lastLessonId?: string;
+  };
   // AI Token Usage Analytics
   aiUsage?: UserAiUsageSummary;
 }
@@ -402,6 +411,10 @@ export function buildFirestoreUserPayload(
       ...Object.keys(completedLessons || {})
     ])),
     completedLessons: completedLessons || {},
+    currentSubject: userState.currentSubject || 'matematyka',
+    completedLessonsPolish: userState.completedLessonsPolish || [],
+    completedTasksPolish: userState.completedTasksPolish || [],
+    polishStats: userState.polishStats || undefined,
     aiUsage: userState.aiUsage || undefined
   };
 

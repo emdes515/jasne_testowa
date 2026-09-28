@@ -64,6 +64,11 @@ describe('CKE 2023 Formula Sheet Verification', () => {
     expect(okrag?.cke_page).toBe('str. 23');
     expect(okrag?.pageNumber).toBe(23);
 
+    // Stereometria
+    const prostopadloscian = formulasMap.get('f-stereo-prostopadloscian');
+    expect(prostopadloscian?.cke_page).toBe('str. 24–25');
+    expect(prostopadloscian?.pageNumber).toBe(24);
+
     // Prawdopodobieństwo i statystyka
     const prawd = formulasMap.get('f-komb-prawd');
     expect(prawd?.cke_page).toBe('str. 28');
@@ -72,6 +77,65 @@ describe('CKE 2023 Formula Sheet Verification', () => {
     const srednia = formulasMap.get('f-stat-srednia');
     expect(srednia?.cke_page).toBe('str. 29');
     expect(srednia?.pageNumber).toBe(29);
+  });
+
+  it('enforces authentic CKE 2023 diagram rules: exactly 12 authentic geometry diagrams, none for algebraic topics', () => {
+    const algebraicIds = [
+      'f-skrocone-1',
+      'f-log-1',
+      'f-ciag-arytmetyczny',
+      'f-ciag-geometryczny',
+      'f-trygo-tabelka',
+      'f-komb-prawd',
+      'f-stat-srednia',
+      'f-potegi-1',
+      'f-pierwiastki-1',
+      'f-proc-1',
+    ];
+
+    const formulasMap = new Map(CKE_FORMULAS_DATA.map(f => [f.id, f]));
+    for (const id of algebraicIds) {
+      const f = formulasMap.get(id);
+      expect(f).toBeDefined();
+      expect(f?.diagram, `Algebraic formula ${id} must not have a diagram`).toBeUndefined();
+    }
+
+    const authenticGeometricIds = [
+      'f-funkcja-kwadratowa',
+      'f-funkcja-liniowa',
+      'f-trygo-definicje',
+      'f-trygo-pola',
+      'f-geo-trojkat-rownoboczny',
+      'f-geo-tales',
+      'f-geo-katy-okrag',
+      'f-geo-odleglosc',
+      'f-geo-okrag',
+      'f-stereo-prostopadloscian',
+      'f-stereo-ostroslup',
+      'f-stereo-bryly',
+    ];
+
+    for (const id of authenticGeometricIds) {
+      const f = formulasMap.get(id);
+      expect(f).toBeDefined();
+      expect(f?.diagram, `Geometric formula ${id} must have an authentic CKE diagram`).toBeDefined();
+    }
+
+    const allWithDiagrams = CKE_FORMULAS_DATA.filter(f => f.diagram !== undefined);
+    expect(allWithDiagrams.length).toBe(12);
+  });
+
+  it('seed/curriculum/cke_formulas.json is synchronized with CKE_FORMULAS_DATA', () => {
+    const jsonPath = path.resolve(process.cwd(), 'seed', 'curriculum', 'cke_formulas.json');
+    expect(fs.existsSync(jsonPath)).toBe(true);
+
+    const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+    expect(data.formulas).toBeDefined();
+    expect(data.formulas.length).toBe(CKE_FORMULAS_DATA.length);
+    expect(data.topics.length).toBe(10);
+
+    const jsonDiagrams = data.formulas.filter((f: any) => f.diagram !== undefined);
+    expect(jsonDiagrams.length).toBe(12);
   });
 
   it('No formula in CKE_FORMULAS_DATA contains forbidden \\iff symbol', () => {
@@ -126,4 +190,50 @@ describe('CKE 2023 Formula Sheet Verification', () => {
     expect('Pułapka CKE: Minus'.replace(regex, '')).toBe('Minus');
     expect('Normalny tekst bez prefixu'.replace(regex, '')).toBe('Normalny tekst bez prefixu');
   });
+
+  it('All 12 geometric diagrams satisfy strict safe margins, bounds and metadata requirements', () => {
+    const diagrams = CKE_FORMULAS_DATA
+      .filter(f => f.diagram)
+      .map(f => ({ id: f.id, diagram: f.diagram as any }));
+
+    expect(diagrams.length).toBe(12);
+
+    for (const { id, diagram: d } of diagrams) {
+      // Must have title, formulaBadge, and caption
+      expect(d.title, `${id} missing title`).toBeTruthy();
+      expect(d.formulaBadge, `${id} missing formulaBadge`).toBeTruthy();
+      expect(d.caption, `${id} missing caption`).toBeTruthy();
+      expect(d.width, `${id} invalid width`).toBeGreaterThanOrEqual(400);
+      expect(d.height, `${id} invalid height`).toBeGreaterThanOrEqual(180);
+
+      // Points margin check
+      if (d.points) {
+        for (const p of d.points) {
+          expect(p.x, `${id} point ${p.label} x < 15`).toBeGreaterThanOrEqual(15);
+          expect(p.x, `${id} point ${p.label} x > width - 15`).toBeLessThanOrEqual(d.width - 15);
+          expect(p.y, `${id} point ${p.label} y < 15`).toBeGreaterThanOrEqual(15);
+          expect(p.y, `${id} point ${p.label} y > height - 15`).toBeLessThanOrEqual(d.height - 15);
+        }
+      }
+
+      // Labels margin check
+      if (d.labels) {
+        for (const l of d.labels) {
+          expect(l.y, `${id} label "${l.text}" y < 15`).toBeGreaterThanOrEqual(15);
+          expect(l.y, `${id} label "${l.text}" y > height - 12`).toBeLessThanOrEqual(d.height - 12);
+        }
+      }
+
+      // Circles containment check
+      if (d.circles) {
+        for (const c of d.circles) {
+          expect(c.cx - c.r, `${id} circle overflows left`).toBeGreaterThanOrEqual(0);
+          expect(c.cx + c.r, `${id} circle overflows right`).toBeLessThanOrEqual(d.width);
+          expect(c.cy - c.r, `${id} circle overflows top`).toBeGreaterThanOrEqual(0);
+          expect(c.cy + c.r, `${id} circle overflows bottom`).toBeLessThanOrEqual(d.height);
+        }
+      }
+    }
+  });
 });
+

@@ -1469,7 +1469,7 @@ export function TaskView({
           {/* Authentic Source & Exam Metadata line above question */}
           <div className="flex items-center gap-2 text-[11px] sm:text-xs text-[#8B8D98] flex-wrap pb-1 border-b border-white/5">
             <span className="text-[#38BDF8] font-semibold tracking-wide">
-              {activeTask.badge || activeTask.source_badge || activeTask.source || activeTask.cke_source || 'Trening JASNE • Wzorzec CKE'}
+              {activeTask.badge || activeTask.source_badge || activeTask.source || activeTask.cke_source || 'Trening JASNE • Baza CKE'}
             </span>
             <span className="text-white/20">•</span>
             <span className="font-semibold text-white/90">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MathRenderer } from './MathRenderer';
-import { formatSvgText } from './MathDiagram';
+import { formatSvgText, renderSvgTextContent } from './MathDiagram';
 
 export interface PlotSegment {
   from: [number, number];
@@ -803,7 +803,8 @@ export const MathPlot: React.FC<MathPlotProps> = ({
             const py = toSvgY(pt.y);
             const dotColor = pt.color || '#FFB800';
             const formattedLabel = formatSvgText(pt.label);
-            const badgeWidth = Math.max(22, formattedLabel.length * 6.8 + 8);
+            const ptLabelLen = formattedLabel.replace(/_/g, '').length;
+            const badgeWidth = Math.max(22, ptLabelLen * 7.2 + 10);
 
             // Zabezpieczenie przed nakładaniem się na oś OX
             let rawAttach = (pt.attach || '').toLowerCase();
@@ -851,12 +852,12 @@ export const MathPlot: React.FC<MathPlotProps> = ({
                   <g key={`point-lbl-${idx}`}>
                     <rect
                       x={px + ox - badgeWidth / 2}
-                      y={py + oy - 7.5}
+                      y={py + oy - 8.5}
                       width={badgeWidth}
-                      height={15}
-                      rx={3.5}
-                      fill="#070A0F"
-                      fillOpacity={0.92}
+                      height={17}
+                      rx={4}
+                      fill="#090D16"
+                      fillOpacity={0.94}
                       stroke="#1E293B"
                       strokeWidth={1}
                     />
@@ -869,7 +870,7 @@ export const MathPlot: React.FC<MathPlotProps> = ({
                       textAnchor="middle"
                       style={haloStyle}
                     >
-                      {formattedLabel}
+                      {renderSvgTextContent(formattedLabel)}
                     </text>
                   </g>
                 )}
@@ -896,20 +897,40 @@ export const MathPlot: React.FC<MathPlotProps> = ({
             const finalY = rawY + dy;
             const anchor = attach.includes('w') ? 'end' : attach.includes('e') ? 'start' : 'middle';
 
+            const textLen = cleanText.replace(/_/g, '').length;
+            const textEstW = textLen * (fontSize * 0.65);
+            const pillW = textEstW + 14;
+            const pillH = fontSize + 8;
+            let pillX = finalX;
+            if (anchor === 'middle') pillX -= pillW / 2;
+            else if (anchor === 'end') pillX -= pillW;
+
             return (
-              <text
-                key={`plot-lbl-${idx}`}
-                x={finalX}
-                y={finalY}
-                fill={lbl.color || '#CBD5E1'}
-                fontSize={fontSize}
-                fontWeight={lbl.fontWeight || '700'}
-                textAnchor={anchor}
-                dominantBaseline="central"
-                style={haloStyle}
-              >
-                {cleanText}
-              </text>
+              <g key={`plot-lbl-${idx}`}>
+                <rect
+                  x={pillX}
+                  y={finalY - pillH / 2}
+                  width={pillW}
+                  height={pillH}
+                  rx={4}
+                  fill="#090D16"
+                  fillOpacity={0.94}
+                  stroke="#1E293B"
+                  strokeWidth={1}
+                />
+                <text
+                  x={finalX}
+                  y={finalY}
+                  fill={lbl.color || '#CBD5E1'}
+                  fontSize={fontSize}
+                  fontWeight={lbl.fontWeight || '700'}
+                  textAnchor={anchor}
+                  dominantBaseline="central"
+                  style={haloStyle}
+                >
+                  {renderSvgTextContent(cleanText)}
+                </text>
+              </g>
             );
           })}
         </svg>

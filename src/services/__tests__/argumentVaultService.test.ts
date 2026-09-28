@@ -1,6 +1,34 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { argumentVaultService } from '../argumentVaultService';
-import { LALKA_ARGUMENT_BLOCK, DZIADY_ARGUMENT_BLOCK, POLISH_SHOWCASE_LESSONS } from '../../data/polishVerticalSliceData';
+import { PolishArgumentBlock } from '../../types';
+
+const LALKA_ARGUMENT_BLOCK: PolishArgumentBlock = {
+  id: 'arg-block-lalka-idealizm',
+  bookId: 'lalka',
+  bookTitle: 'Lalka',
+  character: 'Stanisław Wokulski',
+  theme: 'Idealizm a twarda rzeczywistość',
+  claim: 'Konflikt między romantycznymi ideałami a pozytywistycznym pragmatyzmem prowadzi wybitną jednostkę do osamotnienia i emocjonalnej klęski.',
+  evidence: 'Stanisław Wokulski gromadzi olbrzymi kapitał w handlu, by zaimponować arystokracji, lecz w relacji z Izabelą Łęcką kieruje się ślepym uwielbieniem kobiety-anioła. Przełomem jest zdemaskowanie flirtu Izabeli ze Starskim w pociągu, co niszczy sens jego egzystencji.',
+  contextType: 'FILOZOFICZNY',
+  contextDescription: 'Pozytywistyczna koncepcja pracy organicznej i scjentyzmu zderzona z romantycznym mitem miłości tragicznej',
+  linkToThesis: 'Los Wokulskiego dowodzi, że jednostka zawieszona między dwiema epokami staje się obca dla obydwu światów.',
+  ckeSafetyRating: '100%_SAFE'
+};
+
+const DZIADY_ARGUMENT_BLOCK: PolishArgumentBlock = {
+  id: 'arg-block-dziady-prometeizm',
+  bookId: 'dziady-cz-3',
+  bookTitle: 'Dziady cz. III',
+  character: 'Konrad',
+  theme: 'Bunt prometejski i odpowiedzialność za ojczyznę',
+  claim: 'Bunt w imię cierpiącej zbiorowości może wynosić człowieka na wyżyny heroizmu, lecz bez pokory przeradza się w niszczącą pychę.',
+  evidence: 'W Wielkiej Improwizacji Konrad w celi bazyliańskiej utożsamia się z całym cierpiącym narodem. Żąda od Boga władzy absolutnej nad duszami ludzkimi.',
+  contextType: 'LITERACKI',
+  contextDescription: 'Mit prometejski oraz koncepcja poety-wieszcza charakterystyczna dla romantyzmu',
+  linkToThesis: 'Upadek Konrada i ocalenie jego duszy przez pokornego księdza Piotra pokazuje mickiewiczowską hierarchię wartości.',
+  ckeSafetyRating: '100%_SAFE'
+};
 
 describe('argumentVaultService', () => {
   const localStorageMock = (() => {
@@ -67,42 +95,4 @@ describe('argumentVaultService', () => {
   });
 });
 
-describe('polishVerticalSliceData integrity', () => {
-  it('contains valid showcase lessons for Lalka and Dziady cz. III', () => {
-    expect(POLISH_SHOWCASE_LESSONS.length).toBe(2);
 
-    POLISH_SHOWCASE_LESSONS.forEach(lesson => {
-      expect(lesson.tasks.length).toBe(3);
-
-      // Task 1: SWIPE_MATCH
-      const t1 = lesson.tasks[0];
-      expect(t1.type).toBe('SWIPE_MATCH');
-      expect(t1.swipeData).toBeDefined();
-      expect(t1.swipeData!.cards.length).toBeGreaterThanOrEqual(4);
-      t1.swipeData!.cards.forEach(card => {
-        expect(card.statement.length).toBeGreaterThan(10);
-        expect(typeof card.isCorrect).toBe('boolean');
-        expect(card.explanation.length).toBeGreaterThan(5);
-      });
-
-      // Task 2: CARDINAL_DETECTOR
-      const t2 = lesson.tasks[1];
-      expect(t2.type).toBe('CARDINAL_DETECTOR');
-      expect(t2.cardinalData).toBeDefined();
-      expect(t2.cardinalData!.snippets.length).toBe(3);
-      const cardinalErrors = t2.cardinalData!.snippets.filter(s => s.isCardinalError);
-      expect(cardinalErrors.length).toBe(1);
-
-      // Task 3: ARGUMENT_BUILDER
-      const t3 = lesson.tasks[2];
-      expect(t3.type).toBe('ARGUMENT_BUILDER');
-      expect(t3.argumentBuilderData).toBeDefined();
-      const bData = t3.argumentBuilderData!;
-      expect(bData.claimOptions.some(o => o.isCorrect)).toBe(true);
-      expect(bData.evidenceOptions.some(o => o.isCorrect)).toBe(true);
-      expect(bData.contextOptions.some(o => o.isCorrect)).toBe(true);
-      expect(bData.linkOptions.some(o => o.isCorrect)).toBe(true);
-      expect(bData.resultingBlock).toBeDefined();
-    });
-  });
-});

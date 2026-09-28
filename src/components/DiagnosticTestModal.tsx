@@ -52,7 +52,7 @@ const MATH_DIAGNOSTIC_TASKS: DiagnosticTask[] = [
       { id: 'C', text: '$x = 0$', isCorrect: false },
       { id: 'D', text: '$x = -3$', isCorrect: false }
     ],
-    explanation: 'Ułamek jest równy zero, gdy licznik wynosi zero i mianownik jest różny od zera: $x - 3 = 0 \\implies x = 3$ (oraz $x \\neq -2$).',
+    explanation: 'Ułamek jest równy zero, gdy licznik wynosi zero i mianownik jest różny od zera: $x - 3 = 0 \longrightarrow x = 3$ (oraz $x \neq -2$).',
     weight: 1
   },
   {
@@ -67,7 +67,7 @@ const MATH_DIAGNOSTIC_TASKS: DiagnosticTask[] = [
       { id: 'C', text: '$a = -\\frac{1}{2}$', isCorrect: true },
       { id: 'D', text: '$a = \\frac{1}{2}$', isCorrect: false }
     ],
-    explanation: 'Dwie proste są prostopadłe, gdy iloczyn ich współczynników wynosi $-1$: $a_1 \\cdot a_2 = -1 \\implies 2 \\cdot a_2 = -1 \\implies a_2 = -\\frac{1}{2}$.',
+    explanation: 'Dwie proste są prostopadłe, gdy iloczyn ich współczynników wynosi $-1$: $a_1 \\cdot a_2 = -1 \longrightarrow 2 \\cdot a_2 = -1 \longrightarrow a_2 = -\\frac{1}{2}$.',
     weight: 1
   }
 ];

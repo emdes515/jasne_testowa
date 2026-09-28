@@ -44,10 +44,21 @@ export interface UserState {
   lastHeartRegenTimestamp?: number; // Timestamp (Date.now()) ostatniej regeneracji serca
   aiVisionDailyCount?: number; // Liczba użytych ocen tablicy przez AI w danym dniu
   lastVisionDate?: string; // YYYY-MM-DD ostatniego sprawdzenia AI
+  // Subject & Polish module progression
+  currentSubject?: SubjectId;
+  completedLessonsPolish?: string[];
+  completedTasksPolish?: string[];
+  polishStats?: {
+    totalPoints: number;
+    completedCount: number;
+    lastLessonId?: string;
+  };
   completedCkeTasks?: Record<string, CkeTaskCompletionRecord>;
   // AI Token Analytics
   aiUsage?: UserAiUsageSummary;
 }
+
+export type SubjectId = 'matematyka' | 'polski' | 'angielski' | 'biologia';
 
 export interface AiTokenUsageData {
   promptTokens: number;

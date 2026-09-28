@@ -11,7 +11,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-3-1': {
     type: 'PLOT',
     title: 'Interpretacja geometryczna wartości bezwzględnej: $|x - a| = r$',
-    formulaBadge: '$|x - a| = r \\implies x = a - r \\quad \\text{lub} \\quad x = a + r$',
+    formulaBadge: '$|x - a| = r \\longrightarrow x = a - r \\quad \\text{lub} \\quad x = a + r$',
     caption: 'Wartość bezwzględna $|x - a|$ to odległość liczby $x$ od punktu środkowego $a$. Odmierzamy promień $r$ symetrycznie w lewo i w prawo.',
     width: 540,
     height: 240,
@@ -83,7 +83,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       { label: 'Środek na osi', value: '$a$', color: '#FFB800' },
       { label: 'Promień / Odległość', value: '$r \\ge 0$', color: '#38BDF8' },
       { label: 'Rozwiązania równania', value: '$x_1 = a - r,\\; x_2 = a + r$', color: '#10B981' },
-      { label: 'Pułapka znaku CKE', value: '$|x + 3| = r \\implies a = -3$', color: '#F43F5E' }
+      { label: 'Pułapka znaku CKE', value: '$|x + 3| = r \\longrightarrow a = -3$', color: '#F43F5E' }
     ]
   },
 
@@ -91,7 +91,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-3-2': {
     type: 'PLOT',
     title: 'Nierówność z wartością bezwzględną: $|x - a| < r$ vs $|x - a| \\ge r$',
-    formulaBadge: '$|x - a| < r \\implies x \\in (a - r, a + r) \\quad \\text{vs} \\quad |x - a| \\ge r \\implies x \\in (-\\infty, a-r\\rangle \\cup \\langle a+r, +\\infty)$',
+    formulaBadge: '$|x - a| < r \\longrightarrow x \\in (a - r, a + r) \\quad \\text{vs} \\quad |x - a| \\ge r \\longrightarrow x \\in (-\\infty, a-r\\rangle \\cup \\langle a+r, +\\infty)$',
     caption: 'Wartość bezwzględna $|x - a|$ to geometryczna odległość liczby $x$ od punktu środkowego $a$. Znak $<$ oznacza wnętrze przedziału, a znak $\\ge$ oznacza dwa rozbieżne promienie na zewnątrz.',
     width: 540,
     height: 250,
@@ -245,7 +245,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     ],
     metrics: [
       { label: 'Początkowa nierówność', value: '$-2x \\le 6$', color: '#FFB800' },
-      { label: 'Dzielenie przez (-2)', value: '$\\div (-2) \\implies$ zmiana zwrotu', color: '#F43F5E' },
+      { label: 'Dzielenie przez (-2)', value: '$\\div (-2) \\longrightarrow$ zmiana zwrotu', color: '#F43F5E' },
       { label: 'Zbiór rozwiązań', value: '$x \\in \\langle -3, +\\infty)$', color: '#10B981' },
       { label: 'Ważna reguła', value: 'Minus przy $x$ odwraca zwrot nierówności!', color: '#38BDF8' }
     ]
@@ -255,7 +255,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-5-2': {
     type: 'PLOT',
     title: 'Kółko otwarte vs kółko zamalowane na osi liczbowej',
-    formulaBadge: '$x > a \\implies x \\in (a, +\\infty) \\quad \\text{vs} \\quad x \\ge a \\implies x \\in [a, +\\infty)$',
+    formulaBadge: '$x > a \\longrightarrow x \\in (a, +\\infty) \\quad \\text{vs} \\quad x \\ge a \\longrightarrow x \\in [a, +\\infty)$',
     caption: 'Nierówności ostre ($<, >$) oznaczają kółko otwarte i nawias okrągły. Nierówności nieostre ($\\le, \\ge$) to kółko zamalowane i nawias ostry (domknięty).',
     width: 540,
     height: 250,
@@ -357,7 +357,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       { label: 'Nierówność ostra ($<, >$)', value: 'Kółko OTWARTE $\\circ$, nawias okrągły $( \\; )$', color: '#38BDF8' },
       { label: 'Nierówność nieostra ($\\le, \\ge$)', value: 'Kółko ZAMALOWANE $\\bullet$, nawias ostry $\\langle \\; \\rangle$', color: '#10B981' },
       { label: 'Nieskończoność ($-\\infty, +\\infty$)', value: 'Zawsze nawias OKRĄGŁY!', color: '#FFB800' },
-      { label: 'Mnożenie przez minus', value: 'Zmień zwrot: $-2x < 6 \\implies x > -3$', color: '#F43F5E' }
+      { label: 'Mnożenie przez minus', value: 'Zmień zwrot: $-2x < 6 \\longrightarrow x > -3$', color: '#F43F5E' }
     ]
   },
 
@@ -365,7 +365,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-5-3': {
     type: 'PLOT',
     title: 'Układ nierówności: część wspólna i liczby całkowite w przedziale',
-    formulaBadge: '$\\begin{cases} x > -2 \\\\ x \\le 3 \\end{cases} \\implies x \\in (-2, 3\\rangle \\implies x \\in \\{-1, 0, 1, 2, 3\\}$',
+    formulaBadge: '$\\begin{cases} x > -2 \\\\ x \\le 3 \\end{cases} \\longrightarrow x \\in (-2, 3\\rangle \\longrightarrow x \\in \\{-1, 0, 1, 2, 3\\}$',
     caption: 'Klamra układu oznacza poszukiwanie części wspólnej (przecięcia obu przedziałów). Następnie zliczamy liczby całkowite leżące wewnątrz przedziału.',
     width: 540,
     height: 280,
@@ -465,7 +465,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-7-2': {
     type: 'PLOT',
     title: 'Sito Dziedziny: Eliminacja pierwiastków obcych w równaniach wymiernych',
-    formulaBadge: '$\\frac{P(x)}{Q(x)} = 0 \\implies P(x) = 0 \\quad \\text{oraz} \\quad Q(x) \\neq 0$',
+    formulaBadge: '$\\frac{P(x)}{Q(x)} = 0 \\longrightarrow P(x) = 0 \\quad \\text{oraz} \\quad Q(x) \\neq 0$',
     caption: 'Zawsze najpierw wyznacz dziedzinę ($Q(x) \\neq 0$). Liczba zerująca mianownik nie może być rozwiązaniem, nawet jeśli zeruje licznik!',
     width: 540,
     height: 240,
@@ -512,8 +512,8 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       { x: 270, y: 55, text: 'Równanie: (x² - 4)/(x - 2) = 0   |   D = ℝ \\ {2}', color: '#38BDF8', fontSize: 13, fontWeight: '700', anchor: 'middle' }
     ],
     metrics: [
-      { label: 'Warunek dziedziny', value: '$x - 2 \\neq 0 \\implies D = \\mathbb{R} \\setminus \\{2\\}$', color: '#F43F5E' },
-      { label: 'Pierwiastki licznika', value: '$x^2 - 4 = 0 \\implies x = 2 \\quad \\text{lub} \\quad x = -2$', color: '#38BDF8' },
+      { label: 'Warunek dziedziny', value: '$x - 2 \\neq 0 \\longrightarrow D = \\mathbb{R} \\setminus \\{2\\}$', color: '#F43F5E' },
+      { label: 'Pierwiastki licznika', value: '$x^2 - 4 = 0 \\longrightarrow x = 2 \\quad \\text{lub} \\quad x = -2$', color: '#38BDF8' },
       { label: 'Pierwiastek obcy (pułapka CKE)', value: '$x = 2 \\notin D$ (odrzucony)', color: '#F43F5E' },
       { label: 'Jedyne poprawne rozwiązanie', value: '$x = -2$', color: '#10B981' }
     ]
@@ -607,7 +607,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'legacy-lesson-4-5': {
     type: 'GEOMETRY_2D',
     title: 'Rozwiązywanie równania $f(x) = c$',
-    formulaBadge: '$f(x) = c \\implies \\text{punkty przecięcia z prostą } y = c$',
+    formulaBadge: '$f(x) = c \\longrightarrow \\text{punkty przecięcia z prostą } y = c$',
     caption: 'Liczba rozwiązań równania $f(x)=c$ to liczba punktów wspólnych wykresu funkcji $y=f(x)$ i poziomej prostej $y=c$.',
     width: 540,
     height: 280,
@@ -743,7 +743,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-8-1': {
     type: 'PLOT',
     title: 'Wyróżnik $\\Delta$ i miejsca zerowe paraboli ($a > 0$)',
-    formulaBadge: '$\\Delta = b^2 - 4ac,\\quad x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$',
+    formulaBadge: '$\\Delta = b^2 - 4ac,\\quad x_{1{,}2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$',
     caption: 'Gdy $\\Delta > 0$, parabola przecina oś $OX$ w dwóch punktach $x_1$ i $x_2$. Wierzchołek $W=(p, q)$ leży symetrycznie pomiędzy pierwiastkami.',
     points: [
       { x: 185, y: 140, dot: 'filled', color: '#10B981', label: 'x₁', labelPosition: 'bottom-left' },
@@ -767,7 +767,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     },
     metrics: [
       { label: 'Wyróżnik trójmianu', value: '$\\Delta = b^2 - 4ac$', color: '#38BDF8' },
-      { label: 'Dwa pierwiastki (Δ > 0)', value: '$x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$', color: '#10B981' },
+      { label: 'Dwa pierwiastki (Δ > 0)', value: '$x_{1{,}2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$', color: '#10B981' },
       { label: 'Wierzchołek p', value: '$p = -\\frac{b}{2a} = \\frac{x_1 + x_2}{2}$', color: '#FFB800' },
       { label: 'Wierzchołek q', value: '$q = -\\frac{\\Delta}{4a}$', color: '#F43F5E' }
     ]
@@ -777,7 +777,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-8-2': {
     type: 'PLOT',
     title: 'Rozwiązywanie nierówności kwadratowej: $f(x) > 0$ vs $f(x) < 0$',
-    formulaBadge: '$f(x) > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, +\\infty),\\quad f(x) < 0 \\implies x \\in (x_1, x_2)$',
+    formulaBadge: '$f(x) > 0 \\longrightarrow x \\in (-\\infty, x_1) \\cup (x_2, +\\infty),\\quad f(x) < 0 \\longrightarrow x \\in (x_1, x_2)$',
     caption: 'Gdy ramiona paraboli są skierowane w górę ($a > 0$), wartości dodatnie leżą NAD osią $OX$ (zielone strefy), a ujemne POD osią $OX$ (czerwona strefa).',
     points: [
       { x: 185, y: 140, dot: 'filled', color: '#10B981', label: 'x₁', labelPosition: 'top-left' },
@@ -865,8 +865,8 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       ]
     },
     metrics: [
-      { label: 'Gdy brak c (c = 0)', value: '$x(ax + b) = 0 \\implies x_1 = 0,\\; x_2 = -\\frac{b}{a}$', color: '#38BDF8' },
-      { label: 'Gdy brak b (b = 0)', value: '$x^2 - c = 0 \\implies x_{1,2} = \\pm \\sqrt{c}$', color: '#FFB800' },
+      { label: 'Gdy brak c (c = 0)', value: '$x(ax + b) = 0 \\longrightarrow x_1 = 0,\\; x_2 = -\\frac{b}{a}$', color: '#38BDF8' },
+      { label: 'Gdy brak b (b = 0)', value: '$x^2 - c = 0 \\longrightarrow x_{1{,}2} = \\pm \\sqrt{c}$', color: '#FFB800' },
       { label: 'Wskazówka', value: 'Zero liczenia delty — oszczędzasz 2 minuty!', color: '#10B981' },
       { label: 'Pułapka znaku', value: '$x^2 + 9 \\le 0$ to zbiór pusty $\\emptyset$', color: '#F43F5E' }
     ]
@@ -876,7 +876,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-8-4': {
     type: 'PLOT',
     title: 'Delta ujemna ($\\Delta < 0$): brak miejsc zerowych vs zbiór rozwiązań',
-    formulaBadge: '$\\Delta < 0 \\implies \\text{brak przecięć z } OX \\implies f(x) > 0 \\text{ dla } x \\in \\mathbb{R} \\quad \\text{lub} \\quad \\emptyset$',
+    formulaBadge: '$\\Delta < 0 \\longrightarrow \\text{brak przecięć z } OX \\longrightarrow f(x) > 0 \\text{ dla } x \\in \\mathbb{R} \\quad \\text{lub} \\quad \\emptyset$',
     caption: 'Ujemna delta to NIE brak rozwiązań nierówności! Wykres w całości unosi się nad osią ($a > 0$) lub wisi pod nią ($a < 0$). Rozwiązaniem jest $\\mathbb{R}$ lub zbiór pusty $\\emptyset$.',
     plotData: {
       panels: [
@@ -979,7 +979,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-9-2': {
     type: 'PLOT',
     title: 'Miejsca zerowe oraz odczyt wartości $f(x)$ z wykresu',
-    formulaBadge: '$f(x) = 0 \\implies x \\in OX;\\quad P = (0, f(0)) \\in OY$',
+    formulaBadge: '$f(x) = 0 \\longrightarrow x \\in OX;\\quad P = (0, f(0)) \\in OY$',
     caption: 'Miejsca zerowe to punkty przecięcia wykresu z poziomą osią $OX$ ($y = 0$). Punkt $(0, f(0))$ to przecięcie z pionową osią $OY$ ($x = 0$).',
     plotData: {
       xRange: [-4, 5],
@@ -1007,7 +1007,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     },
     metrics: [
       { label: 'Miejsca zerowe', value: '$x_1 = -2,\\; x_2 = 3$ (sam argument $x$!)', color: '#10B981' },
-      { label: 'Przecięcie z osią $OY$', value: '$(0, -3) \\implies f(0) = -3$', color: '#38BDF8' },
+      { label: 'Przecięcie z osią $OY$', value: '$(0, -3) \\longrightarrow f(0) = -3$', color: '#38BDF8' },
       { label: 'Odczyt wartości $f(2)$', value: '$f(2) = -2{,}5$', color: '#FFB800' },
       { label: 'Częsty błąd CKE', value: 'Miejsce zerowe to $x$, a nie punkt $(x, 0)$!', color: '#F43F5E' }
     ]
@@ -1062,7 +1062,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-9-4': {
     type: 'PLOT',
     title: 'Rozwiązywanie równania $f(x) = c$',
-    formulaBadge: '$f(x) = c \\implies \\text{punkty przecięcia z prostą } y = c$',
+    formulaBadge: '$f(x) = c \\longrightarrow \\text{punkty przecięcia z prostą } y = c$',
     caption: 'Liczba rozwiązań równania $f(x)=c$ to liczba punktów wspólnych wykresu funkcji $y=f(x)$ i poziomej prostej $y=c$.',
     plotData: {
       xRange: [-4.5, 4.5],
@@ -1122,7 +1122,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
       ]
     },
     metrics: [
-      { label: 'Współczynnik kierunkowy a', value: '$a > 0 \\implies$ rosnąca', color: '#FFB800' },
+      { label: 'Współczynnik kierunkowy a', value: '$a > 0 \\longrightarrow$ rosnąca', color: '#FFB800' },
       { label: 'Wyraz wolny b', value: '$(0, b) = (0; 1{,}5)$', color: '#10B981' },
       { label: 'Miejsce zerowe', value: '$x_0 = -\\frac{b}{a} = -2$', color: '#38BDF8' }
     ]
@@ -1222,7 +1222,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
     metrics: [
       { label: 'Warunek równoległości', value: '$a_1 = a_2$ (identyczne nachylenie)', color: '#38BDF8' },
       { label: 'Warunek prostopadłości', value: '$a_1 \\cdot a_2 = -1 \\longrightarrow a_2 = -\\frac{1}{a_1}$', color: '#10B981' },
-      { label: 'Przykład liczb', value: '$a_1 = 2 \\implies a_2 = -\\frac{1}{2}$', color: '#FFB800' },
+      { label: 'Przykład liczb', value: '$a_1 = 2 \\longrightarrow a_2 = -\\frac{1}{2}$', color: '#FFB800' },
       { label: 'Rola wyrazu wolnego b', value: 'Wyraz wolny $b$ może być dowolny!', color: '#94A3B8' }
     ]
   },
@@ -1231,7 +1231,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-10-4': {
     type: 'PLOT',
     title: 'Własności funkcji liniowej: Znaki $a$ i $b$ a ćwiartki układu',
-    formulaBadge: '$y = ax + b \\implies \\text{przebieg przez ćwiartki I, II, III, IV}$',
+    formulaBadge: '$y = ax + b \\longrightarrow \\text{przebieg przez ćwiartki I, II, III, IV}$',
     caption: 'Znak współczynnika $a$ decyduje o kierunku (rosnąca/malejąca), a znak $b$ o wysokości przecięcia z osią $OY$. Razem determinują one ćwiartki, przez które przechodzi prosta.',
     plotData: {
       panels: [
@@ -1337,7 +1337,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'geo-archetype-inscribed-angles': {
     type: 'GEOMETRY_2D',
     title: 'Kąty w okręgu oparte na tym samym łuku $AB$',
-    formulaBadge: '$\\beta = 2\\alpha \\implies \\alpha = \\frac{1}{2}\\beta$',
+    formulaBadge: '$\\beta = 2\\alpha \\longrightarrow \\alpha = \\frac{1}{2}\\beta$',
     caption: 'Kąt środkowy $\\beta$ ma wierzchołek w środku okręgu $O$ i jest 2 razy większy od kąta wpisanego $\\alpha$ opartego na tym samym łuku.',
     width: 540,
     height: 280,
@@ -1375,7 +1375,7 @@ export const THEORY_DIAGRAMS: Record<string, MathDiagramData> = {
   'lesson-9-6': {
     type: 'GEOMETRY_2D',
     title: 'Twierdzenie Talesa: proporcje odcinków',
-    formulaBadge: '$\\frac{a}{b} = \\frac{c}{d} \\implies a \\cdot d = b \\cdot c$',
+    formulaBadge: '$\\frac{a}{b} = \\frac{c}{d} \\longrightarrow a \\cdot d = b \\cdot c$',
     caption: 'Proste równoległe $k \\parallel l$ przecinające ramiona kąta wyznaczają na nich odcinki proporcjonalne.',
     width: 540,
     height: 270,
@@ -1559,7 +1559,7 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
     type: 'GEOMETRY_2D',
     title: 'Twierdzenie Talesa: wyznaczanie $x$',
     caption: 'Proste $k$ i $l$ są równoległe ($k \\parallel l$). Z proporcji Talesa wyznaczamy szukaną długość $x = 6$.',
-    formulaBadge: '$\\frac{4}{x} = \\frac{6}{9} \\implies 6x = 36 \\implies x = 6$',
+    formulaBadge: '$\\frac{4}{x} = \\frac{6}{9} \\longrightarrow 6x = 36 \\longrightarrow x = 6$',
     width: 540,
     height: 270,
     segments: [
@@ -1584,25 +1584,8 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
 
 
   // ----------------------------------------------------
-  // DZIAŁ 9: WŁASNOŚCI FUNKCJI (WYKRESY MAFS)
+  // DZIAŁ 9: WŁASNOŚCI FUNKCJI (WYKRESY MAFS DO ZADAŃ Z ODCZYTEM)
   // ----------------------------------------------------
-  'task-9-1-2': {
-    type: 'PIECEWISE_LINEAR',
-    xRange: [-5, 6],
-    yRange: [-3, 5],
-    gridStep: 1,
-    segments: [
-      { from: [-4, -1], to: [-1, -2], startDot: 'filled', endDot: 'filled', color: '#38BDF8' },
-      { from: [-1, -2], to: [3, 4], startDot: 'none', endDot: 'filled', color: '#38BDF8' },
-      { from: [3, 4], to: [5, 3], startDot: 'none', endDot: 'filled', color: '#38BDF8' }
-    ],
-    points: [
-      { x: -4, y: -1, label: '(-4, -1)', dot: 'filled', color: '#38BDF8', attach: 'sw' },
-      { x: -1, y: -2, label: '(-1, -2)', dot: 'filled', color: '#10B981', attach: 's' },
-      { x: 3, y: 4, label: '(3, 4)', dot: 'filled', color: '#FFB800', attach: 'n' },
-      { x: 5, y: 3, label: '(5, 3)', dot: 'filled', color: '#38BDF8', attach: 'ne' }
-    ]
-  },
   'task-9-1-3': {
     type: 'PIECEWISE_LINEAR',
     xRange: [-5, 6],
@@ -1615,52 +1598,6 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
     points: [
       { x: -3, y: 1, label: '(-3, 1)', dot: 'filled', color: '#10B981', attach: 'sw' },
       { x: 4, y: 5, label: '(4, 5)', dot: 'hollow', color: '#F43F5E', attach: 'ne' }
-    ]
-  },
-  'task-9-2-2': {
-    type: 'PARABOLA',
-    xRange: [-4, 5],
-    yRange: [-7, 2],
-    gridStep: 1,
-    parabola: {
-      a: 1,
-      p: 0.5,
-      q: -6.25,
-      color: '#38BDF8',
-      domain: [-3.5, 4.5]
-    },
-    points: [
-      { x: -2, y: 0, label: '(-2, 0)', dot: 'filled', color: '#10B981', attach: 'nw' },
-      { x: 3, y: 0, label: '(3, 0)', dot: 'filled', color: '#10B981', attach: 'ne' },
-      { x: 0, y: -6, label: '(0, -6)', dot: 'filled', color: '#FFB800', attach: 'e' }
-    ]
-  },
-  'task-9-2-3': {
-    type: 'LINEAR',
-    xRange: [-2, 5],
-    yRange: [-5, 2],
-    gridStep: 1,
-    segments: [
-      { from: [2, 0], to: [2, -3], color: 'rgba(148, 163, 184, 0.4)', strokeWidth: 1.5, dashed: true },
-      { from: [0, -3], to: [2, -3], color: 'rgba(148, 163, 184, 0.4)', strokeWidth: 1.5, dashed: true }
-    ],
-    points: [
-      { x: 2, y: -3, label: 'P(2, -3)', dot: 'filled', color: '#38BDF8', attach: 'se' }
-    ]
-  },
-  'task-9-3-2': {
-    type: 'PIECEWISE_LINEAR',
-    xRange: [-4, 6],
-    yRange: [-3, 5],
-    gridStep: 1,
-    segments: [
-      { from: [-3, -2], to: [1, 4], startDot: 'filled', endDot: 'filled', color: '#10B981', strokeWidth: 3.5 },
-      { from: [1, 4], to: [5, 0], startDot: 'none', endDot: 'filled', color: '#F43F5E', strokeWidth: 3.5 }
-    ],
-    points: [
-      { x: -3, y: -2, label: '(-3, -2)', dot: 'filled', color: '#10B981', attach: 'sw' },
-      { x: 1, y: 4, label: '(1, 4)', dot: 'filled', color: '#FFB800', attach: 'n' },
-      { x: 5, y: 0, label: '(5, 0)', dot: 'filled', color: '#F43F5E', attach: 'se' }
     ]
   },
   'task-9-3-4': {
@@ -1716,21 +1653,6 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
     ]
   },
 
-  // ----------------------------------------------------
-  // DZIAŁ 10: FUNKCJA LINIOWA (WYKRESY PROSTYCH MAFS)
-  // ----------------------------------------------------
-  'task-10-1-3': {
-    type: 'LINEAR',
-    xRange: [-3, 5],
-    yRange: [-2, 5],
-    gridStep: 1,
-    lines: [
-      { slope: -0.75, intercept: 2, color: '#38BDF8', label: 'y = ax + b' }
-    ],
-    points: [
-      { x: 0, y: 2, label: '(0, b)', dot: 'filled', color: '#10B981', attach: 'ne' }
-    ]
-  },
 
   // ----------------------------------------------------
   // OFICJALNE ARKUSZE CKE (ZADANIA Z WYKRESAMI MAFS)
@@ -1934,7 +1856,7 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
   'lesson-15-4': {
     type: 'GEOMETRY_2D',
     title: 'Działka przylegająca do muru / rzeki',
-    formulaBadge: '$2x + y = L \\implies y = L - 2x$',
+    formulaBadge: '$2x + y = L \\longrightarrow y = L - 2x$',
     caption: 'Ogrodzenie prostokątnej działki z 3 stron (mur lub rzeka nie wymagają siatki).',
     width: 500,
     height: 250,
@@ -1965,7 +1887,7 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
   'lesson-15-5': {
     type: 'GEOMETRY_2D',
     title: 'Działka z płotem wewnętrznym (2 kwatery)',
-    formulaBadge: '$3x + 2y = L \\implies y = \\frac{L - 3x}{2}$',
+    formulaBadge: '$3x + 2y = L \\longrightarrow y = \\frac{L - 3x}{2}$',
     caption: 'Ogrodzenie prostokątnego wybiegu podzielonego siatką na dwie kwatery.',
     width: 500,
     height: 250,
@@ -2064,7 +1986,7 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
   'lesson-9-11': {
     type: 'GEOMETRY_2D',
     title: 'Styczna do okręgu: Prostopadłość promienia i prostej k',
-    formulaBadge: '$r \\perp k \\implies \\angle OPS = 90^\\circ$',
+    formulaBadge: '$r \\perp k \\longrightarrow \\angle OPS = 90^\\circ$',
     caption: 'Promień okręgu poprowadzony do punktu styczności jest zawsze prostopadły do prostej stycznej.',
     width: 500,
     height: 260,
@@ -2136,12 +2058,12 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
       { from: [50, 210], to: [450, 210], color: '#64748B', strokeWidth: 1.5 },
       { from: [90, 240], to: [90, 30], color: '#64748B', strokeWidth: 1.5 },
       { from: [130, 180], to: [370, 60], color: '#38BDF8', strokeWidth: 3.5, label: '|AB|' },
-      { from: [130, 180], to: [370, 180], color: '#10B981', strokeWidth: 2, dashed: true, label: 'xB - xA' },
-      { from: [370, 180], to: [370, 60], color: '#FFB800', strokeWidth: 2, dashed: true, label: 'yB - yA' }
+      { from: [130, 180], to: [370, 180], color: '#10B981', strokeWidth: 2, dashed: true, label: '$x_B - x_A$' },
+      { from: [370, 180], to: [370, 60], color: '#FFB800', strokeWidth: 2, dashed: true, label: '$y_B - y_A$' }
     ],
     points: [
-      { x: 130, y: 180, dot: 'filled', color: '#38BDF8', label: 'A(xA, yA)', labelPosition: 'bottom-left' },
-      { x: 370, y: 60, dot: 'filled', color: '#38BDF8', label: 'B(xB, yB)', labelPosition: 'top-right' },
+      { x: 130, y: 180, dot: 'filled', color: '#38BDF8', label: '$A(x_A, y_A)$', labelPosition: 'bottom-left' },
+      { x: 370, y: 60, dot: 'filled', color: '#38BDF8', label: '$B(x_B, y_B)$', labelPosition: 'top-right' },
       { x: 370, y: 180, dot: 'hollow', color: '#64748B', label: 'C', labelPosition: 'bottom-right' }
     ],
     labels: [
@@ -2170,9 +2092,9 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
       { from: [250, 110], to: [370, 50], color: '#38BDF8', strokeWidth: 3, label: '|SB|' }
     ],
     points: [
-      { x: 130, y: 170, dot: 'filled', color: '#38BDF8', label: 'A(xA, yA)', labelPosition: 'bottom-left' },
-      { x: 370, y: 50, dot: 'filled', color: '#38BDF8', label: 'B(xB, yB)', labelPosition: 'top-right' },
-      { x: 250, y: 110, dot: 'filled', color: '#10B981', label: 'S(xS, yS)', labelPosition: 'top-left' }
+      { x: 130, y: 170, dot: 'filled', color: '#38BDF8', label: '$A(x_A, y_A)$', labelPosition: 'bottom-left' },
+      { x: 370, y: 50, dot: 'filled', color: '#38BDF8', label: '$B(x_B, y_B)$', labelPosition: 'top-right' },
+      { x: 250, y: 110, dot: 'filled', color: '#10B981', label: '$S(x_S, y_S)$', labelPosition: 'top-left' }
     ],
     labels: [
       { x: 440, y: 190, text: 'x', color: '#94A3B8', fontSize: 13, fontWeight: '700' },
@@ -2317,236 +2239,8 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
 // 3B. EXPLANATION VISUALS (WYKRESY POMOCNICZE POKAZYWANE WYŁĄCZNIE PO ODPOWIEDZI)
 // =========================================================================
 
-export const EXPLANATION_VISUALS: Record<string, PlotData | MathDiagramData> = {
-  // ----------------------------------------------------
-  // DZIAŁ 8: NIERÓWNOŚCI KWADRATOWE (WYKRESY WYJAŚNIAJĄCE)
-  // ----------------------------------------------------
-  'task-8-1-2-1': {
-    type: 'PARABOLA',
-    xRange: [-1, 3],
-    yRange: [-3, 2],
-    gridStep: 1,
-    parabola: {
-      a: -2,
-      p: 1.25,
-      q: 0.125,
-      color: '#F43F5E',
-      domain: [-0.5, 3]
-    },
-    points: [
-      { x: 1, y: 0, label: 'x₁ = 1', dot: 'filled', color: '#FFB800', attach: 'sw' },
-      { x: 1.5, y: 0, label: 'x₂ = 1.5', dot: 'filled', color: '#FFB800', attach: 'se' },
-      { x: 1.25, y: 0.125, label: 'W(p, q)', dot: 'filled', color: '#F43F5E', attach: 'n' }
-    ]
-  },
-  'task-8-1-2-2': {
-    type: 'PARABOLA',
-    xRange: [0, 5],
-    yRange: [-2, 4],
-    gridStep: 1,
-    parabola: {
-      a: 1,
-      p: 2.5,
-      q: -0.25,
-      color: '#38BDF8',
-      domain: [0.5, 4.5]
-    },
-    segments: [
-      { from: [2, 0], to: [3, 0], startDot: 'filled', endDot: 'filled', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 2, y: 0, label: 'x₁ = 2', dot: 'filled', color: '#10B981', attach: 'nw' },
-      { x: 3, y: 0, label: 'x₂ = 3', dot: 'filled', color: '#10B981', attach: 'ne' }
-    ]
-  },
-  'task-8-1-2-3': {
-    type: 'PARABOLA',
-    xRange: [-1, 5],
-    yRange: [-2, 3],
-    gridStep: 1,
-    parabola: {
-      a: -1,
-      p: 2,
-      q: 1,
-      color: '#FFB800',
-      domain: [0, 4]
-    },
-    segments: [
-      { from: [1, 0], to: [3, 0], startDot: 'hollow', endDot: 'hollow', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 1, y: 0, label: 'x₁ = 1', dot: 'hollow', color: '#10B981', attach: 'sw' },
-      { x: 3, y: 0, label: 'x₂ = 3', dot: 'hollow', color: '#10B981', attach: 'se' },
-      { x: 2, y: 1, label: 'W(2, 1)', dot: 'filled', color: '#FFB800', attach: 'n' }
-    ]
-  },
-  'task-8-1-3-1': {
-    type: 'PARABOLA',
-    xRange: [-2, 6],
-    yRange: [-5, 4],
-    gridStep: 1,
-    parabola: {
-      a: 1,
-      p: 2,
-      q: -4,
-      color: '#38BDF8',
-      domain: [-1, 5]
-    },
-    segments: [
-      { from: [-2, 0], to: [0, 0], startDot: 'none', endDot: 'hollow', color: '#10B981', weight: 4 },
-      { from: [4, 0], to: [6, 0], startDot: 'hollow', endDot: 'none', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 0, y: 0, label: 'x₁ = 0', dot: 'hollow', color: '#10B981', attach: 'nw' },
-      { x: 4, y: 0, label: 'x₂ = 4', dot: 'hollow', color: '#10B981', attach: 'ne' }
-    ]
-  },
-  'task-8-1-3-2': {
-    type: 'PARABOLA',
-    xRange: [-6, 6],
-    yRange: [-5, 5],
-    gridStep: 2,
-    parabola: {
-      a: 0.25,
-      p: 0,
-      q: -4,
-      color: '#38BDF8',
-      domain: [-5.5, 5.5]
-    },
-    segments: [
-      { from: [-4, 0], to: [4, 0], startDot: 'filled', endDot: 'filled', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: -4, y: 0, label: 'x₁ = -4', dot: 'filled', color: '#10B981', attach: 'nw' },
-      { x: 4, y: 0, label: 'x₂ = 4', dot: 'filled', color: '#10B981', attach: 'ne' }
-    ]
-  },
-  'task-8-4-1': {
-    type: 'PARABOLA',
-    xRange: [-4, 4],
-    yRange: [-2, 8],
-    gridStep: 2,
-    parabola: {
-      a: 1,
-      p: 0,
-      q: 4,
-      color: '#10B981',
-      domain: [-3, 3]
-    },
-    segments: [
-      { from: [-4, 0], to: [4, 0], startDot: 'none', endDot: 'none', color: '#10B981', weight: 4 }
-    ],
-    points: [
-      { x: 0, y: 4, label: 'W(0, 4)', dot: 'filled', color: '#10B981', attach: 'n' }
-    ]
-  },
-  'task-8-4-2': {
-    type: 'PARABOLA',
-    xRange: [0, 6],
-    yRange: [-2, 5],
-    gridStep: 1,
-    parabola: {
-      a: 1,
-      p: 3,
-      q: 0,
-      color: '#FFB800',
-      domain: [1, 5]
-    },
-    points: [
-      { x: 3, y: 0, label: 'W(3, 0)', dot: 'filled', color: '#10B981', attach: 's' }
-    ]
-  },
-  'task-8-4-3': {
-    type: 'PARABOLA',
-    xRange: [-2, 4],
-    yRange: [-7, 2],
-    gridStep: 1,
-    parabola: {
-      a: -1,
-      p: 1,
-      q: -2,
-      color: '#F43F5E',
-      domain: [-1.5, 3.5]
-    },
-    points: [
-      { x: 1, y: -2, label: 'W(1, -2)', dot: 'filled', color: '#F43F5E', attach: 's' }
-    ]
-  },
+export const EXPLANATION_VISUALS: Record<string, PlotData | MathDiagramData> = {};
 
-  // ----------------------------------------------------
-  // DZIAŁ 10: FUNKCJA LINIOWA (WYKRESY WYJAŚNIAJĄCE)
-  // ----------------------------------------------------
-  'task-10-1-1': {
-    type: 'LINEAR',
-    xRange: [-2, 5],
-    yRange: [-2, 9],
-    gridStep: 1,
-    lines: [
-      { slope: -3, intercept: 7, color: '#38BDF8', label: 'f(x) = -3x + 7' }
-    ],
-    points: [
-      { x: 0, y: 7, label: 'P(0, 7)', dot: 'filled', color: '#10B981', attach: 'e' },
-      { x: 2.333, y: 0, label: 'x₀', dot: 'filled', color: '#FFB800', attach: 'sw' }
-    ]
-  },
-  'task-10-2-2': {
-    type: 'LINEAR',
-    xRange: [-1, 6],
-    yRange: [-1, 11],
-    gridStep: 1,
-    lines: [
-      { slope: 2, intercept: 1, color: '#38BDF8', label: 'y = 2x + 1' }
-    ],
-    segments: [
-      { from: [1, 3], to: [4, 3], color: 'rgba(255, 184, 0, 0.6)', strokeWidth: 1.5, dashed: true, label: 'Δx = 3' },
-      { from: [4, 3], to: [4, 9], color: 'rgba(16, 185, 129, 0.6)', strokeWidth: 1.5, dashed: true, label: 'Δy = 6' }
-    ],
-    points: [
-      { x: 1, y: 3, label: 'A(1, 3)', dot: 'filled', color: '#FFB800', attach: 'nw' },
-      { x: 4, y: 9, label: 'B(4, 9)', dot: 'filled', color: '#10B981', attach: 'nw' }
-    ]
-  },
-  'task-10-2-3': {
-    type: 'LINEAR',
-    xRange: [-4, 4],
-    yRange: [-5, 7],
-    gridStep: 1,
-    lines: [
-      { slope: -2, intercept: 1, color: '#38BDF8', label: 'y = -2x + 1' }
-    ],
-    points: [
-      { x: -2, y: 5, label: 'K(-2, 5)', dot: 'filled', color: '#FFB800', attach: 'ne' },
-      { x: 2, y: -3, label: 'L(2, -3)', dot: 'filled', color: '#10B981', attach: 'se' }
-    ]
-  },
-  'task-10-3-1': {
-    type: 'LINEAR',
-    xRange: [-3, 3],
-    yRange: [-5, 8],
-    gridStep: 1,
-    lines: [
-      { slope: 5, intercept: 4, color: '#38BDF8', label: 'k: y = 5x + 4' },
-      { slope: 5, intercept: -2, color: '#FFB800', label: 'l: y = 5x - 2' }
-    ],
-    points: [
-      { x: 0, y: 4, label: '(0, 4)', dot: 'filled', color: '#38BDF8', attach: 'w' },
-      { x: 0, y: -2, label: '(0, -2)', dot: 'filled', color: '#FFB800', attach: 'e' }
-    ]
-  },
-  'task-10-3-2': {
-    type: 'LINEAR',
-    xRange: [-4, 4],
-    yRange: [-2, 6],
-    gridStep: 1,
-    lines: [
-      { slope: -0.667, intercept: 1, color: '#38BDF8', label: 'k: y = -2/3 x + 1' },
-      { slope: 1.5, intercept: 3, color: '#FFB800', label: 'l: y = 3/2 x + 3 (k ⊥ l)' }
-    ],
-    points: [
-      { x: 0, y: 3, label: 'P(0, 3)', dot: 'filled', color: '#10B981', attach: 'e' }
-    ]
-  }
-};
 
 // =========================================================================
 // =========================================================================
@@ -3028,21 +2722,21 @@ export function enrichTaskWithVisual(task: any, lessonId?: string): any {
   }
 
   // 3. Obsługa schematów geometrycznych / wykresów (diagram / plot)
-  if (resolvedTask.diagram === null || resolvedTask.plot === null) {
-    // Jawnie wyłączony schemat (np. zadania algebraiczne, rachunkowe, potęgi, logarytmy)
-    return {
-      ...resolvedTask,
-      plot: null,
-      diagram: null
-    };
-  }
-
   if (resolvedTask.diagram || resolvedTask.plot) {
     const visual = resolvedTask.diagram || resolvedTask.plot;
     return {
       ...resolvedTask,
       plot: resolvedTask.plot || visual,
       diagram: resolvedTask.diagram || visual
+    };
+  }
+
+  if (resolvedTask.diagram === null || resolvedTask.plot === null) {
+    // Jawnie wyłączony schemat (np. zadania algebraiczne, rachunkowe, potęgi, logarytmy)
+    return {
+      ...resolvedTask,
+      plot: null,
+      diagram: null
     };
   }
 
@@ -3060,16 +2754,10 @@ export function enrichTaskWithVisual(task: any, lessonId?: string): any {
     return match ? `lesson-${match[1]}` : '';
   })();
 
-  // Nowe działy kurikulum (1–13+) nie dziedziczą starych archetypów trójkątów ani stereometrii
-  const isExemptFromOldArchetypes = /^(?:task-)?([1-9]|1[0-9])-/i.test(taskId) || /^lesson-([1-9]|1[0-9])-/i.test(derivedLessonId);
+  // Wszystkie zadania są zwolnione z auto-iniekcji starych archetypów (rysunek jest obecny wyłącznie, gdy jawnie przypisany w zadaniu)
+  const isExemptFromOldArchetypes = true;
 
-  const archetype = isExemptFromOldArchetypes
-    ? null
-    : (GEOMETRIC_ARCHETYPES[derivedLessonId] 
-       || THEORY_DIAGRAMS[derivedLessonId]
-       || (derivedLessonId.includes('lesson-15-6') ? GEOMETRIC_ARCHETYPES['lesson-15-6'] : null)
-       || (derivedLessonId.includes('lesson-15-4') ? GEOMETRIC_ARCHETYPES['lesson-15-4'] : null)
-       || (derivedLessonId.includes('lesson-15-5') ? GEOMETRIC_ARCHETYPES['lesson-15-5'] : null));
+  const archetype = null;
 
   if (archetype) {
     return {

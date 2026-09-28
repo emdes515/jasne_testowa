@@ -579,72 +579,34 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
               strokeWidth={bar.strokeWidth || 1.75}
               rx={3}
             />
-            {bar.label && (() => {
-              const cleanBarLabel = formatSvgText(bar.label);
-              const lblLen = cleanBarLabel.replace(/_/g, '').length;
-              const pillW = Math.max(26, lblLen * 8.5 + 10);
-              const pillH = 18;
-              return (
-                <g key={`bar-lbl-group-${idx}`}>
-                  <rect
-                    x={bar.x + bar.width / 2 - pillW / 2}
-                    y={bar.y - 17}
-                    width={pillW}
-                    height={pillH}
-                    rx={4}
-                    fill="#090D16"
-                    fillOpacity={0.92}
-                    stroke="#1E293B"
-                    strokeWidth={1}
-                  />
-                  <text
-                    x={bar.x + bar.width / 2}
-                    y={bar.y - 4}
-                    fill="#E2E8F0"
-                    fontSize={12}
-                    fontWeight="700"
-                    textAnchor="middle"
-                    fontFamily="sans-serif"
-                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
-                  >
-                    {renderSvgTextContent(cleanBarLabel)}
-                  </text>
-                </g>
-              );
-            })()}
-            {bar.category && (() => {
-              const cleanCategory = formatSvgText(bar.category);
-              const lblLen = cleanCategory.replace(/_/g, '').length;
-              const pillW = Math.max(26, lblLen * 8 + 8);
-              const pillH = 18;
-              return (
-                <g key={`bar-cat-group-${idx}`}>
-                  <rect
-                    x={bar.x + bar.width / 2 - pillW / 2}
-                    y={bar.y + bar.height + 6}
-                    width={pillW}
-                    height={pillH}
-                    rx={4}
-                    fill="#090D16"
-                    fillOpacity={0.92}
-                    stroke="#1E293B"
-                    strokeWidth={1}
-                  />
-                  <text
-                    x={bar.x + bar.width / 2}
-                    y={bar.y + bar.height + 19}
-                    fill="#94A3B8"
-                    fontSize={12}
-                    fontWeight="600"
-                    textAnchor="middle"
-                    fontFamily="sans-serif"
-                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
-                  >
-                    {renderSvgTextContent(cleanCategory)}
-                  </text>
-                </g>
-              );
-            })()}
+            {bar.label && (
+              <text
+                x={bar.x + bar.width / 2}
+                y={bar.y - 6}
+                fill="#E2E8F0"
+                fontSize={12}
+                fontWeight="700"
+                textAnchor="middle"
+                fontFamily="sans-serif"
+                style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+              >
+                {renderSvgTextContent(formatSvgText(bar.label))}
+              </text>
+            )}
+            {bar.category && (
+              <text
+                x={bar.x + bar.width / 2}
+                y={bar.y + bar.height + 16}
+                fill="#94A3B8"
+                fontSize={12}
+                fontWeight="600"
+                textAnchor="middle"
+                fontFamily="sans-serif"
+                style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+              >
+                {renderSvgTextContent(formatSvgText(bar.category))}
+              </text>
+            )}
           </g>
         ))}
 
@@ -670,29 +632,17 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 />
               )}
               {arc.label && (
-                <g>
-                  <rect
-                    x={labelPos.x - 12}
-                    y={labelPos.y - 8}
-                    width={24}
-                    height={18}
-                    rx={5}
-                    fill="#090D16"
-                    fillOpacity={0.92}
-                    stroke="#1E293B"
-                    strokeWidth={1}
-                  />
-                  <text
-                    x={labelPos.x}
-                    y={labelPos.y + 4}
-                    fill={arc.color || '#10B981'}
-                    fontSize={12}
-                    fontWeight="700"
-                    textAnchor="middle"
-                  >
-                    {renderSvgTextContent(arc.label)}
-                  </text>
-                </g>
+                <text
+                  x={labelPos.x}
+                  y={labelPos.y + 4}
+                  fill={arc.color || '#10B981'}
+                  fontSize={12}
+                  fontWeight="700"
+                  textAnchor="middle"
+                  style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                >
+                  {renderSvgTextContent(arc.label)}
+                </text>
               )}
             </g>
           );
@@ -733,31 +683,18 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 const pillH = 20;
 
                 return (
-                  <g key={`seg-lbl-group-${idx}`}>
-                    <rect
-                      x={midX + ox - pillW / 2}
-                      y={midY + oy - pillH / 2 + 2}
-                      width={pillW}
-                      height={pillH}
-                      rx={5}
-                      fill="#090D16"
-                      fillOpacity={0.92}
-                      stroke="#1E293B"
-                      strokeWidth={1}
-                    />
-                    <text
-                      key={`seg-lbl-${idx}`}
-                      x={midX + ox}
-                      y={midY + oy + 4}
-                      fill={seg.labelColor || strokeColor}
-                      fontSize={12}
-                      fontWeight="700"
-                      textAnchor="middle"
-                      style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
-                    >
-                      {renderSvgTextContent(cleanSegLabel)}
-                    </text>
-                  </g>
+                  <text
+                    key={`seg-lbl-${idx}`}
+                    x={midX + ox}
+                    y={midY + oy + 4}
+                    fill={seg.labelColor || strokeColor}
+                    fontSize={12}
+                    fontWeight="700"
+                    textAnchor="middle"
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                  >
+                    {renderSvgTextContent(cleanSegLabel)}
+                  </text>
                 );
               })()}
             </g>
@@ -861,31 +798,18 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
                 const rectY = pt.y + oy - ptPillH / 2 + 1;
 
                 return (
-                  <g key={`pt-lbl-group-${idx}`}>
-                    <rect
-                      x={rectX}
-                      y={rectY}
-                      width={ptPillW}
-                      height={ptPillH}
-                      rx={4}
-                      fill="#090D16"
-                      fillOpacity={0.92}
-                      stroke="#1E293B"
-                      strokeWidth={1}
-                    />
-                    <text
-                      key={`pt-lbl-${idx}`}
-                      x={pt.x + ox}
-                      y={pt.y + oy + 4}
-                      fill={isHovered ? '#38BDF8' : (pt.color || '#F8FAFC')}
-                      fontSize={11}
-                      fontWeight="700"
-                      textAnchor={anchor}
-                      style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
-                    >
-                      {renderSvgTextContent(cleanPtLabel)}
-                    </text>
-                  </g>
+                  <text
+                    key={`pt-lbl-${idx}`}
+                    x={pt.x + ox}
+                    y={pt.y + oy + 4}
+                    fill={isHovered ? '#38BDF8' : (pt.color || '#F8FAFC')}
+                    fontSize={11}
+                    fontWeight="700"
+                    textAnchor={anchor}
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                  >
+                    {renderSvgTextContent(cleanPtLabel)}
+                  </text>
                 );
               })()}
             </g>
@@ -921,17 +845,18 @@ export const MathDiagram: React.FC<MathDiagramProps> = ({
 
           return (
             <g key={`lbl-${idx}`}>
-              <rect
-                x={pillX}
-                y={lbl.y - pillH / 2}
-                width={pillW}
-                height={pillH}
-                rx={5}
-                fill={lbl.badge ? "rgba(255, 184, 0, 0.12)" : "#090D16"}
-                fillOpacity={lbl.badge ? 1 : 0.92}
-                stroke={lbl.badge ? "rgba(255, 184, 0, 0.35)" : "#1E293B"}
-                strokeWidth={1}
-              />
+              {Boolean(lbl.badge) && (
+                <rect
+                  x={pillX}
+                  y={lbl.y - pillH / 2}
+                  width={pillW}
+                  height={pillH}
+                  rx={6}
+                  fill="rgba(255, 184, 0, 0.12)"
+                  stroke="rgba(255, 184, 0, 0.35)"
+                  strokeWidth={1}
+                />
+              )}
               <text
                 x={effectiveTextX}
                 y={lbl.y + 1}

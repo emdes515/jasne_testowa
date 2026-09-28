@@ -44,11 +44,11 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
 
   // Wymiary SVG
   const svgWidth = 320;
-  const svgHeight = 80;
-  const axisY = 60;
-  const beamY = 25; // How high above the axis the intervals are
-  const leftX = 15;
-  const rightX = 305;
+  const svgHeight = 90;
+  const axisY = 52;
+  const beamY = 20; // How high above the axis the intervals are
+  const leftX = 16;
+  const rightX = 296;
   const usableWidth = rightX - leftX;
 
   const toX = (val: number) => {
@@ -64,11 +64,11 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
   const getIntervalColor = (idx: number) => idx > 0 ? amberColor : primaryColor;
 
   return (
-    <div className={`inline-flex items-center justify-center max-w-full overflow-hidden ${className}`}>
+    <div className={`inline-flex items-center justify-center max-w-full ${className}`}>
       <svg
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        style={{ width: '100%', height: `${height}px`, maxWidth: maxWidth || '360px' }}
-        className="select-none"
+        style={{ width: '100%', height: height ? `${height}px` : 'auto', maxHeight: '100px', maxWidth: maxWidth || '360px' }}
+        className="overflow-visible select-none"
         aria-label="Rysunek osi liczbowej"
       >
         <defs>
@@ -158,7 +158,7 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
 
         {/* 2. OŚ GŁÓWNA */}
         <line x1={leftX} y1={axisY} x2={rightX} y2={axisY} stroke="#94A3B8" strokeWidth="1.5" markerEnd="url(#axis-arrow)" />
-        <text x={rightX + 4} y={axisY + 4} fontSize="14" fill="#94A3B8" fontStyle="italic" fontFamily="serif" dominantBaseline="middle">x</text>
+        <text x={rightX + 6} y={axisY + 3} fontSize="14" fill="#94A3B8" fontStyle="italic" fontFamily="serif" dominantBaseline="middle">x</text>
 
         {/* 3. PODZIAŁKA I ETYKIETY (Tylko wskazane) */}
         {ticks.map((tick, idx) => {
@@ -172,13 +172,22 @@ export const NumberLineDiagram: React.FC<NumberLineDiagramProps> = ({
               <line x1={tx} y1={axisY - 4} x2={tx} y2={axisY + 4} stroke="#64748B" strokeWidth="1.5" />
               {showLabel && (
                 hasMath ? (
-                  <foreignObject x={tx - 20} y={axisY + 8} width="40" height="30">
+                  <foreignObject x={tx - 24} y={axisY + 8} width="48" height="28">
                     <div className="w-full h-full flex items-center justify-center text-slate-200 text-sm font-semibold select-none">
                       <MathRenderer content={`$${customLabel}$`} inline />
                     </div>
                   </foreignObject>
                 ) : (
-                  <text x={tx} y={axisY + 22} textAnchor="middle" fontSize="14" fill="#E2E8F0" fontWeight="600" fontFamily="sans-serif">
+                  <text
+                    x={tx}
+                    y={axisY + 20}
+                    textAnchor="middle"
+                    fontSize="13"
+                    fill="#E2E8F0"
+                    fontWeight="600"
+                    fontFamily="system-ui, -apple-system, sans-serif"
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.95))' }}
+                  >
                     {customLabel || tick}
                   </text>
                 )

@@ -20,7 +20,7 @@ export function cleanLatex(mathStr: string): string {
   const cached = cleanLatexCache.get(mathStr);
   if (cached !== undefined) return cached;
 
-  let s = mathStr.trim();
+  let s = mathStr.normalize('NFC').trim();
 
   // Fix corrupted form-feed/triangle artifacts and control characters (e.g. \f -> 0x0C, \r -> 0x0D, \b -> 0x08, \t -> 0x09)
   s = s
@@ -782,6 +782,7 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
 
   // Fix Form Feed / triangle artifacts across the entire rawInput before splitting by $
   const sanitizedInput = rawInput
+    .normalize('NFC')
     .replace(/(?:\\x0c|\x0c|\f|\\?▲|\u25B2)\s*rac/g, '\\frac')
     .replace(/(?:\\x0d|\x0d|\r)\s*angle/g, '\\rangle')
     .replace(/(?:\\x0d|\x0d|\r)\s*ight/g, '\\right')

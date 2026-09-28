@@ -48,6 +48,7 @@ import { ScratchpadModal } from './ScratchpadModal';
 import { CkeFormulasModal } from './CkeFormulasModal';
 import { MaturaExamReview, MaturaTaskReviewItem, MaturaAiEvaluation } from './MaturaExamReview';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
+import { PolishExamSimulator } from './polish/PolishExamSimulator';
 import { MathDiagram } from './MathDiagram';
 import { NumberLineDiagram } from './NumberLineDiagram';
 import { enrichTaskWithVisual } from '../data/mathVisualRegistry';
@@ -252,6 +253,7 @@ export interface MaturaSimulatorViewProps {
   onCompleteTask?: (taskId: string, points?: number) => void;
   onActiveSessionChange?: (isActive: boolean) => void;
   initialView?: 'hub' | 'exam_setup' | 'full_exams' | 'topics_bank' | 'topic_detail' | 'exam' | 'exam_review' | 'maraton' | 'mistakes';
+  currentSubject?: 'matematyka' | 'polski';
 }
 
 export function MaturaSimulatorView({
@@ -261,8 +263,35 @@ export function MaturaSimulatorView({
   completedTasks = [],
   onCompleteTask,
   onActiveSessionChange,
-  initialView = 'hub'
+  initialView = 'hub',
+  currentSubject
 }: MaturaSimulatorViewProps) {
+  // Przełącznik przedmiotu w symulatorze matury
+  const [examSubject, setExamSubject] = useState<'matematyka' | 'polski'>(() => (
+    currentSubject === 'polski' || userState?.currentSubject === 'polski' ? 'polski' : 'matematyka'
+  ));
+
+  const handleFinishPolishExam = (score: number, maxScore: number) => {
+    const pct = Math.round((score / Math.max(maxScore, 1)) * 100);
+    const earnedXp = Math.max(100, Math.round(pct * 2.5));
+    const earnedCoins = Math.max(20, Math.round(pct * 0.5));
+    onEarnReward?.(earnedXp, earnedCoins, true);
+    if (onUpdateUserState) {
+      onUpdateUserState(prev => ({
+        ...prev,
+        xp: (prev.xp || 0) + earnedXp,
+        coins: (prev.coins || 0) + earnedCoins,
+        maturaAttempts: (prev.maturaAttempts || 0) + 1,
+        maturaBestScore: Math.max(prev.maturaBestScore || 0, pct),
+        polishStats: {
+          totalPoints: (prev.polishStats?.totalPoints || 0) + score,
+          completedCount: (prev.polishStats?.completedCount || 0) + 1,
+          lastLessonId: prev.polishStats?.lastLessonId
+        }
+      }));
+    }
+  };
+
   // Baza wszystkich zadań pobierana przez curriculumRepository (Cache-First z Firestore)
   const [tasks, setTasks] = useState<MaturaTask[]>([]);
   const [loading, setLoading] = useState(true);
@@ -1146,6 +1175,32 @@ export function MaturaSimulatorView({
               <span className="shrink-0 px-2 py-0.5 rounded-full bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800] text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
                 Formuła 2023
               </span>
+              {view === 'hub' && (
+                <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5">
+                  <button
+                    type="button"
+                    onClick={() => setExamSubject('matematyka')}
+                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
+                      examSubject === 'matematyka'
+                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                        : 'text-text-muted hover:text-white'
+                    }`}
+                  >
+                    📐 Matematyka (180m)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setExamSubject('polski')}
+                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
+                      examSubject === 'polski'
+                        ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                        : 'text-text-muted hover:text-white'
+                    }`}
+                  >
+                    🇵🇱 Polski (240m)
+                  </button>
+                </div>
+              )}
             </div>
             {view !== 'hub' && (
               <p className="text-text-secondary text-xs sm:text-sm truncate mt-0.5">
@@ -1196,6 +1251,12 @@ export function MaturaSimulatorView({
               VIEW: HUB (GŁÓWNY PULPIT BENTO Z 4 FILARAMI)
              ========================================================================= */}
           {view === 'hub' && (
+            examSubject === 'polski' ? (
+              <PolishExamSimulator
+                onExit={() => setExamSubject('matematyka')}
+                onFinishExam={handleFinishPolishExam}
+              />
+            ) : (
             <motion.div
               key="hub"
               initial={{ opacity: 0, y: 10 }}
@@ -1451,6 +1512,7 @@ export function MaturaSimulatorView({
                 </button>
               </div>
             </motion.div>
+            )
           )}
 
           {/* =========================================================================

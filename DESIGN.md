@@ -221,6 +221,36 @@ Zgodnie z zasadami wyeliminowania AI Slop, interfejs unika pływających w niesk
 
 ## 5. Rygor Inżynierii Wizualnej: Anti-AI-Slop
 
-- **0% Emojis:** Wszystkie stany opierają się na wektorowych ikonach Lucide (`Sun`, `Moon`, `Monitor`, `CheckCircle2`, `Target`, `GraduationCap`).
+- **0% Emojis w UI:** Wszystkie stany i ikony opierają się na wektorowych ikonach Lucide (`Sun`, `Moon`, `Calculator`, `BookOpen`, `Target`, `GraduationCap`). Emotikony flag dopuszczalne wyłącznie jako kontekstowe znaczniki językowe.
 - **Płaskie, precyzyjne granice:** Brak niepotrzebnych rozmytych neonowych obwódek; wyraziste karty o stałym promieniu `rounded-2xl` (`16px`) lub `rounded-[26px]` (dock mobilny).
 - **Zrównoważona gęstość informacji:** 1 kluczowy CTA na ekranie, przejrzysty podział Bento Box.
+
+---
+
+## 6. Wieloprzedmiotowość & Identyfikacja Przedmiotów (Subject Design Tokens)
+
+Platforma wspiera naukę wielu przedmiotów maturalnych w ramach jednego ekosystemu ze wspólną ekonomią nawykową (jeden licznik `streakDays`, wspólne Serca i Monety). Każdy przedmiot posiada zdefiniowaną semantyczną tożsamość wizualną:
+
+| Przedmiot | Identyfikator | Ikona | Akcent Główny | Gradient Badge | Tło Pastylki / Poświaty | Zastosowanie |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Język Polski** | `polski` | `BookOpen` | Karmin / Róża `#F43F5E` (`rose-500`) | `from-rose-500 to-amber-500` | `rgba(244, 63, 94, 0.08)` / `border-rose-500/30` | Lektury z gwiazdką, epoki, notatka syntetyzująca, arkusz polskiego |
+| **Matematyka** | `matematyka` | `Calculator` | Bursztyn / Złoto `#FFB800` (`amber-500`) | `from-amber-500 to-orange-500` | `rgba(255, 184, 0, 0.08)` / `border-amber-500/30` | 21 działów matmy, Karta Wzorów CKE, wykresy SVG, arkusz matmy |
+| **Język Angielski** *(Wkrótce)* | `angielski` | `Globe` | Błękit / Cyjan `#0EA5E9` (`sky-500`) | `from-blue-500 to-cyan-500` | `rgba(14, 165, 233, 0.08)` / `border-sky-500/30` | Czytanie ze zrozumieniem, gramatyka, Use of English |
+| **Biologia** *(W planach)* | `biologia` | `Dna` | Szmaragd `#10B981` (`emerald-500`) | `from-emerald-500 to-teal-500` | `rgba(16, 185, 129, 0.08)` / `border-emerald-500/30` | Doświadczenia, schematy, genetyka |
+
+### Zasady Integracji UI w Headerze i Dashboardzie:
+1. **Centralny Selektor Przedmiotu:** Pigułka na środku nagłówka umożliwia błyskawiczne przełączanie między aktywnymi przedmiotami (`polski` / `matematyka`) oraz otwarcie `SubjectLobbyModal`.
+2. **Dynamiczny Dashboard:** Główny nagłówek, cel dzienny i ogień streaku są stałe, natomiast moduły postępów, kafelki szybkiego startu i powtórki dostosowują się do wybranego przedmiotu.
+3. **Harmonizacja Komponentów:** Wszelkie widoki przedmiotowe (`PolishStudyHub`, `LearnView`, symulatory) bezwzględnie korzystają ze wspólnych tokenów `surface-card`, `surface-card-hover` i `border-surface-border`.
+
+---
+
+## 7. Branding & Dźwiękowy System Mikro-Gratyfikacji
+
+1. **Wzorzec Tła Marki (`BrandBackgroundPattern`):**
+   - Subtelny wzorzec SVG w tle (`opacity-[0.20]` dark / `opacity-[0.14]` light, `z-0 pointer-events-none`).
+   - Naprzemiennie rozmieszczony trójwymiarowy wektor żarówki JASNE oraz monogram `J.` w bursztynowym odcieniu `#FFB800`.
+   - Zapewnia głębię wizualną bez rozpraszania uwagi ucznia.
+2. **Syntetyczne Audio Web Audio API (`playAudioTone`):**
+   - Mikro-feedback dźwiękowy generowany proceduralnie przez Web Audio API (częstotliwości 523–784 Hz dla sukcesu, fala piłokształtna dla błędu, cichy klik 800 Hz).
+   - Zero zależności od zewnętrznych plików `.mp3` – natychmiastowe odtwarzanie bez opóźnień sieciowych, idealnie zsynchronizowane z wibracją haptyczną (`triggerHaptic`).

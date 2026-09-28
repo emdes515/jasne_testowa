@@ -18,18 +18,15 @@ import {
   Cpu,
   FileText,
   Layers,
-  GraduationCap
+  GraduationCap,
+  PenTool
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
 import { UserState, SubjectKey } from '../types';
-import { POLISH_SHOWCASE_LESSONS, PolishLessonShowcase } from '../data/polishVerticalSliceData';
-import { CANONICAL_LEKTURY_LIST, CanonicalLektura } from '../data/polishLekturyData';
-import { POLISH_FALLBACK_TOPICS } from '../data/polishCurriculumFallback';
-import { ArgumentVaultModal } from './polish/ArgumentVaultModal';
-import { PolishDailyMission } from './polish/PolishDailyMission';
 import { ExamHubModal } from './ExamHubModal';
-import { argumentVaultService } from '../services/argumentVaultService';
+import { POLISH_EPOCHS, POLISH_LESSONS } from '../data/polish';
+import { MATURA_LEKTURY } from '../data/maturaLektury';
 
 import { getLessonsForTopic } from '../utils/lessonGrouping';
 import { drawSessionTasks } from '../data/dzial1TaskPool';
@@ -74,9 +71,8 @@ export function DashboardView({
 }: DashboardViewProps) {
   useCkeCatalogs();
   const streakDays = userState?.streakDays || 0;
-  const [isArgumentVaultOpen, setIsArgumentVaultOpen] = useState<boolean>(false);
   const [isExamHubOpen, setIsExamHubOpen] = useState<boolean>(false);
-  const [polishTopics, setPolishTopics] = useState<any[]>(POLISH_FALLBACK_TOPICS);
+  const [polishTopics, setPolishTopics] = useState<any[]>([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -90,55 +86,6 @@ export function DashboardView({
     return () => { isMounted = false; };
   }, []);
 
-  const handleStartCanonicalLektura = (showcase: CanonicalLektura | PolishLessonShowcase) => {
-    triggerHaptic('medium');
-    const sessionPayload = {
-      isSession: true,
-      originTab: 'dashboard',
-      isPolish: true,
-      subjectId: 'jezyk-polski',
-      topicId: (showcase as any).epochId || 'pol-showcase',
-      lessonId: showcase.id,
-      lessonTitle: `${showcase.badge}: ${showcase.title}`,
-      tasks: showcase.tasks,
-      formulaSheet: {
-        title: `Kanon Lektur CKE: ${(showcase as any).bookTitle || showcase.title}`,
-        description: `Kluczowe pojęcia i motywy do wykorzystania na rozprawce`,
-        formulas: ((showcase.theoryPill as any)?.key_concepts || []).map((c: any) => ({
-          name: c.title,
-          formula: c.def,
-          description: `Kluczowe pojęcie: ${c.title}`
-        }))
-      },
-      theoryPill: showcase.theoryPill,
-      required_correct_tasks: showcase.tasks.length,
-      estimated_time_formatted: showcase.estimatedTime
-    };
-
-    onStartTask?.(sessionPayload, showcase.tasks, showcase.title);
-  };
-
-  const handleStartPolishDailyLesson = async (topicId: string, lessonId: string) => {
-    triggerHaptic('medium');
-    const lessonDoc = await curriculumRepository.ensureLessonLoaded(lessonId, topicId, 'jezyk-polski');
-    if (lessonDoc) {
-      const sessionPayload = {
-        isSession: true,
-        originTab: 'dashboard',
-        isPolish: true,
-        subjectId: 'jezyk-polski',
-        topicId: topicId,
-        lessonId: lessonDoc.id,
-        lessonTitle: lessonDoc.title,
-        tasks: lessonDoc.tasks || [],
-        formulaSheet: (lessonDoc as any).formulaSheet || (lessonDoc as any).leksykon || null,
-        theoryPill: lessonDoc.theory_pill,
-        required_correct_tasks: (lessonDoc.tasks || []).length,
-        estimated_time_formatted: lessonDoc.estimated_time_formatted || '~5 min'
-      };
-      onStartTask?.(sessionPayload, lessonDoc.tasks || [], lessonDoc.title);
-    }
-  };
 
 
   // 1. ZADANIA - Rzeczywista liczba unikalnych, poprawnie rozwiązanych zadań
@@ -580,17 +527,210 @@ export function DashboardView({
         {/* LEWA KOLUMNA: KARTA LEKCJI (HERO), PREDYKTOR, STATYSTYKI */}
         <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
           
-          {/* DZISIEJSZA MISJA CKE - JEDYNY DEDYKOWANY MODUŁ JĘZYKA POLSKIEGO NA DASHBOARDZIE */}
-          {selectedSubjectKey === 'pol' && (
-            <PolishDailyMission
-              onStartLesson={handleStartPolishDailyLesson}
-              completedTasks={completedTasks}
-              userState={userState}
-            />
+          {/* DEDYKOWANY MODUŁ JĘZYKA POLSKIEGO NA DASHBOARDZIE */}
+          {(selectedSubjectKey === 'pol' || userState?.currentSubject === 'polski') && (
+            <motion.div
+              initial={{ y: 15, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+              className="flex flex-col gap-4"
+            >
+              {/* Hero Card Język Polski */}
+              <div className="bg-surface-card border border-rose-500/30 rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-lg group">
+                <div className="absolute -top-20 -right-20 w-56 h-56 rounded-full pointer-events-none blur-3xl opacity-20 bg-rose-500 transition-opacity group-hover:opacity-30" />
+                <div className="flex flex-col gap-3 relative z-10">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider">
+                      🇵🇱 JĘZYK POLSKI CKE
+                    </span>
+                    <span className="text-xs font-semibold text-text-secondary">
+                      Formuła 2023 • Poziom Podstawowy
+                    </span>
+                  </div>
+
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold font-display text-text-primary">
+                      Centrum Nauki Języka Polskiego
+                    </h2>
+                    <p className="text-sm text-text-secondary mt-1">
+                      Opanuj Język w użyciu, Test historycznoliteracki, Lektury z gwiazdką i Wypracowanie CKE.
+                    </p>
+                  </div>
+
+                  {/* Statystyki modułu */}
+                  <div className="grid grid-cols-3 gap-2.5 my-1">
+                    <div className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border text-center">
+                      <div className="text-lg font-bold text-rose-400 font-display">11</div>
+                      <div className="text-[11px] text-text-secondary font-medium">Epok literackich</div>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border text-center">
+                      <div className="text-lg font-bold text-amber-400 font-display">{MATURA_LEKTURY.length}</div>
+                      <div className="text-[11px] text-text-secondary font-medium">Lektur z gwiazdką</div>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border text-center">
+                      <div className="text-lg font-bold text-emerald-400 font-display">
+                        {userState?.completedLessonsPolish?.length || 0}
+                      </div>
+                      <div className="text-[11px] text-text-secondary font-medium">Zaliczonych lekcji</div>
+                    </div>
+                  </div>
+
+                  {/* Akcje */}
+                  <div className="flex items-center gap-3 pt-2 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={() => onNavigate?.('learn')}
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold text-sm shadow-md transition active:scale-95 cursor-pointer flex items-center gap-2"
+                    >
+                      <BookOpen size={16} />
+                      <span>Otwórz Polish Study Hub</span>
+                      <ArrowRight size={14} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onNavigate?.('simulator')}
+                      className="px-4 py-2.5 rounded-xl bg-surface-card-hover border border-surface-border hover:border-rose-500/40 text-text-primary font-bold text-sm transition active:scale-95 cursor-pointer flex items-center gap-2"
+                    >
+                      <Clock size={16} className="text-rose-400" />
+                      <span>Próbna Matura (240 min)</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* 1. Karta Wznowienia Lekcji (Resume Polish Lesson) */}
+              {(() => {
+                const completedSet = new Set((userState?.completedLessonsPolish || []).map((id) => id.replace(/^lesson-/, '')));
+                const lastLessonId = userState?.polishStats?.lastLessonId;
+                const resumeLesson = (lastLessonId ? POLISH_LESSONS.find((l) => l.id === lastLessonId) : null)
+                  || POLISH_LESSONS.find((l) => !completedSet.has(l.id))
+                  || POLISH_LESSONS[0];
+
+                return (
+                  <div className="p-4 sm:p-5 rounded-2xl bg-surface-card border border-rose-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 uppercase tracking-wider">
+                          {completedSet.has(resumeLesson.id) ? 'Powtórka lekcji' : 'Następna lekcja'}
+                        </span>
+                        <span className="text-xs text-text-secondary">Lekcja {resumeLesson.number} • 45 min</span>
+                      </div>
+                      <h3 className="font-bold text-base text-text-primary">{resumeLesson.title}</h3>
+                      <p className="text-xs text-text-secondary line-clamp-1">{resumeLesson.subtitle}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => onNavigate?.('learn', resumeLesson.id)}
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold text-xs shadow-md transition active:scale-95 cursor-pointer flex items-center gap-2 shrink-0 self-start sm:self-auto"
+                    >
+                      <Play size={14} fill="currentColor" />
+                      <span>Wznów lekcję</span>
+                    </button>
+                  </div>
+                );
+              })()}
+
+              {/* 2. Trenażer Notatki Syntetyzującej (60–90 słów) */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-surface-card border border-surface-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 uppercase tracking-wider border border-amber-500/30">
+                      Zeszyt 1 CKE • 4 pkt
+                    </span>
+                    <span className="text-xs text-text-secondary">Rygor objętości: 60–90 wyrazów</span>
+                  </div>
+                  <h3 className="font-bold text-base text-text-primary">Trenażer Notatki Syntetyzującej</h3>
+                  <p className="text-xs text-text-secondary">
+                    Opanuj zwięzłą syntezę dwóch tekstów nieliterackich bez oceniania i pułapek subiektywizmu.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => onNavigate?.('learn', 'synthesis')}
+                  className="px-4 py-2.5 rounded-xl bg-surface-card-hover border border-surface-border hover:border-amber-500/40 text-text-primary hover:text-amber-300 font-bold text-xs transition active:scale-95 cursor-pointer flex items-center gap-2 shrink-0 self-start sm:self-auto"
+                >
+                  <PenTool size={14} className="text-amber-400" />
+                  <span>Trenuj notatkę</span>
+                  <ArrowRight size={13} />
+                </button>
+              </div>
+
+              {/* 3. Epoki Literackie CKE */}
+              <div className="bg-surface-card border border-surface-border rounded-2xl p-4 sm:p-5 space-y-3 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-bold text-text-primary flex items-center gap-2">
+                    <Layers size={16} className="text-rose-400" />
+                    <span>Epoki Literackie CKE (11 Epok)</span>
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate?.('learn')}
+                    className="text-xs text-rose-400 hover:text-rose-300 font-semibold cursor-pointer"
+                  >
+                    Baza zadań →
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+                  {POLISH_EPOCHS.map((epoch) => (
+                    <button
+                      key={epoch}
+                      type="button"
+                      onClick={() => onNavigate?.('learn', `epoch:${epoch}`)}
+                      className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border hover:border-rose-500/40 text-left transition-all cursor-pointer group"
+                    >
+                      <span className="text-xs font-bold text-text-primary group-hover:text-rose-400 transition-colors line-clamp-1">
+                        {epoch}
+                      </span>
+                      <span className="text-[10px] text-text-secondary mt-0.5 block">
+                        Formuła 2023
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 4. Lektury z gwiazdką CKE podgląd */}
+              <div className="bg-surface-card border border-surface-border rounded-2xl p-4 sm:p-5 shadow-sm">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-bold text-text-primary flex items-center gap-2">
+                    <span className="text-amber-400">★</span>
+                    <span>Lektury Obowiązkowe CKE (Zagrożenie Kardynalne)</span>
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate?.('learn')}
+                    className="text-xs text-rose-400 hover:text-rose-300 font-semibold cursor-pointer"
+                  >
+                    Zobacz wszystkie →
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {MATURA_LEKTURY.slice(0, 4).map((lek) => (
+                    <div
+                      key={lek.id}
+                      className="p-3 rounded-xl bg-surface-card-hover border border-surface-border hover:border-rose-500/30 transition-colors"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="font-bold text-sm text-text-primary">{lek.title}</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-300 font-bold border border-amber-500/20">
+                          {lek.epoch}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-text-secondary line-clamp-2 mb-2">
+                        {lek.summary}
+                      </p>
+                      <div className="text-[10px] text-amber-400/90 font-medium truncate">
+                        ⚠️ {lek.cardinalWarning}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           )}
 
           {/* 1. KARTA BIEŻĄCEGO POSTĘPU / NASTĘPNA LEKCJA (HERO CARD) - DLA POZOSTAŁYCH PRZEDMIOTÓW */}
-          {selectedSubjectKey !== 'pol' && (() => {
+          {(selectedSubjectKey !== 'pol' && userState?.currentSubject !== 'polski') && (() => {
             const activeSub = getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey) || {
               name: 'Matematyka',
               shortName: 'Matematyka',
@@ -1078,11 +1218,6 @@ export function DashboardView({
         onOpenProPopup={onOpenProPopup}
       />
 
-      {/* Skarbiec Argumentów Modal */}
-      <ArgumentVaultModal
-        isOpen={isArgumentVaultOpen}
-        onClose={() => setIsArgumentVaultOpen(false)}
-      />
 
       {/* Centrum Egzaminacyjne CKE Modal */}
       <ExamHubModal

@@ -28,13 +28,6 @@ import {
 import { MaturaTask } from '../types';
 import { normalizeTask } from '../data/mathTasks';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
-import { findCanonicalLektura } from '../data/polishLekturyData';
-import { 
-  POLISH_PILLARS, 
-  POLISH_FALLBACK_TOPICS, 
-  getPolishFallbackLesson, 
-  getPolishFallbackTopic 
-} from '../data/polishCurriculumFallback';
 
 export const DEFAULT_SUBJECT_ID = 'matematyka-podstawowa';
 
@@ -152,25 +145,7 @@ export function getLessonKeyVariants(lessonId: string): string[] {
   return Array.from(variants).filter(Boolean);
 }
 
-function buildCanonicalLessonDoc(canonical: any, topicId?: string): LessonDocument {
-  return {
-    id: canonical.id,
-    topic_id: topicId || canonical.epochId,
-    title: canonical.title,
-    theory_pill: canonical.theoryPill as any,
-    formulaSheet: {
-      title: `Kanon Lektur CKE: ${canonical.bookTitle}`,
-      description: `Kluczowe pojęcia i motywy do wykorzystania na rozprawce`,
-      formulas: (canonical.theoryPill.key_concepts || []).map((c: any) => ({
-        name: c.title,
-        formula: c.def,
-        description: `Kluczowe pojęcie: ${c.title}`
-      }))
-    } as any,
-    formula_sheet: null,
-    tasks: canonical.tasks
-  };
-}
+
 
 export const curriculumRepository = {
   /**
@@ -201,7 +176,7 @@ export const curriculumRepository = {
           description: 'Przygotowanie do matury podstawowej z języka polskiego CKE Formuła 2023',
           icon: 'BookOpen',
           color: '#F43F5E',
-          pillars: POLISH_PILLARS,
+          pillars: [],
           is_active: true,
           order: 2
         }
@@ -248,7 +223,7 @@ export const curriculumRepository = {
         description: 'Przygotowanie do matury podstawowej z języka polskiego CKE Formuła 2023',
         icon: 'BookOpen',
         color: '#F43F5E',
-        pillars: POLISH_PILLARS,
+        pillars: [],
         is_active: true,
         order: 2
       };
@@ -282,16 +257,6 @@ export const curriculumRepository = {
         this._fetchTopicsFromFirestore(subjectId).catch(() => {});
       }
       return topicsList;
-    }
-
-    if (isTestEnv && (subjectId === 'jezyk-polski' || subjectId === 'pol')) {
-      topicsBySubjectCache.set(subjectId, POLISH_FALLBACK_TOPICS);
-      for (const t of POLISH_FALLBACK_TOPICS) {
-        topicByIdCache.set(`${subjectId}/${t.id}`, t);
-        topicByIdCache.set(t.id, t);
-      }
-      saveToCurriculumStorage(storageKey, POLISH_FALLBACK_TOPICS);
-      return POLISH_FALLBACK_TOPICS;
     }
 
     return this._fetchTopicsFromFirestore(subjectId);
@@ -348,15 +313,6 @@ export const curriculumRepository = {
       console.warn(`[curriculumRepository] Failed to fetch topics for subject ${subjectId}:`, err);
     }
 
-    if (subjectId === 'jezyk-polski' || subjectId === 'pol') {
-      topicsBySubjectCache.set(subjectId, POLISH_FALLBACK_TOPICS);
-      for (const t of POLISH_FALLBACK_TOPICS) {
-        topicByIdCache.set(`${subjectId}/${t.id}`, t);
-        topicByIdCache.set(t.id, t);
-      }
-      return POLISH_FALLBACK_TOPICS;
-    }
-
     return topicsBySubjectCache.get(subjectId) || [];
   },
 
@@ -381,15 +337,6 @@ export const curriculumRepository = {
         topicByIdCache.set(cacheKey, found);
         topicByIdCache.set(topicId, found);
         return found;
-      }
-    }
-
-    if (isTestEnv && (subjectId === 'jezyk-polski' || subjectId === 'pol' || topicId.startsWith('pol-'))) {
-      const fallbackTopic = getPolishFallbackTopic(topicId);
-      if (fallbackTopic) {
-        topicByIdCache.set(cacheKey, fallbackTopic);
-        topicByIdCache.set(topicId, fallbackTopic);
-        return fallbackTopic;
       }
     }
 
@@ -422,15 +369,6 @@ export const curriculumRepository = {
       console.warn(`[curriculumRepository] Error fetching topic ${topicId}:`, err);
     }
 
-    if (subjectId === 'jezyk-polski' || subjectId === 'pol' || topicId.startsWith('pol-')) {
-      const fallbackTopic = getPolishFallbackTopic(topicId);
-      if (fallbackTopic) {
-        topicByIdCache.set(cacheKey, fallbackTopic);
-        topicByIdCache.set(topicId, fallbackTopic);
-        return fallbackTopic;
-      }
-    }
-
     return null;
   },
 
@@ -451,16 +389,6 @@ export const curriculumRepository = {
       if (lessonCache.has(k2)) return lessonCache.get(k2)!;
     }
 
-    // 0. Sprawdź czy to kanoniczna lektura z bazy Filaru II języka polskiego
-    const canonical = findCanonicalLektura(lessonId) || findCanonicalLektura(topicId);
-    if (canonical && (subjectId === 'jezyk-polski' || subjectId === 'pol' || lessonId.startsWith('pol-') || topicId.startsWith('pol-'))) {
-      const lessonDoc = buildCanonicalLessonDoc(canonical, topicId);
-      for (const v of variants) {
-        lessonCache.set(`${subjectId}/${topicId}/${v}`, lessonDoc);
-        lessonByIdCache.set(v, lessonDoc);
-      }
-      return lessonDoc;
-    }
 
     // 2. RAM & LocalStorage check via getCachedLesson (Zero-cost across F5)
     const cachedFast = this.getCachedLesson(lessonId, subjectId);
@@ -492,25 +420,12 @@ export const curriculumRepository = {
       }
     }
 
-    if (isTestEnv && (subjectId === 'jezyk-polski' || subjectId === 'pol' || lessonId.startsWith('pol-') || topicId?.startsWith('pol-'))) {
-      const fallbackLesson = getPolishFallbackLesson(lessonId);
-      if (fallbackLesson) {
-        for (const v of variants) {
-          lessonCache.set(`${subjectId}/${topicId}/${v}`, fallbackLesson);
-          lessonByIdCache.set(v, fallbackLesson);
-        }
-        saveToCurriculumStorage(`jasne_curriculum_lesson_${subjectId}_${topicId}_${lessonId}_v1`, fallbackLesson);
-        return fallbackLesson;
-      }
-    }
-
     return this._fetchLessonFromFirestore(topicId, lessonId, subjectId);
   },
 
   async _fetchLessonFromFirestore(topicId: string, lessonId: string, subjectId: string = DEFAULT_SUBJECT_ID): Promise<LessonDocument | null> {
     const variants = getLessonKeyVariants(lessonId);
     const storageKey = `jasne_curriculum_lesson_${subjectId}_${topicId}_${lessonId}_v1`;
-    const canonical = findCanonicalLektura(lessonId) || findCanonicalLektura(topicId);
 
     try {
       // 1. Sprawdź subjects/{subjectId}/topics/{topicId}/lessons/{v}
@@ -572,26 +487,6 @@ export const curriculumRepository = {
       }
     } catch (err) {
       console.warn(`[curriculumRepository] Error fetching lesson ${subjectId}/${topicId}/${lessonId}:`, err);
-      if (canonical) {
-        return buildCanonicalLessonDoc(canonical, topicId);
-      }
-    }
-
-    if (canonical) {
-      return buildCanonicalLessonDoc(canonical, topicId);
-    }
-
-    if (subjectId === 'jezyk-polski' || subjectId === 'pol' || lessonId.startsWith('pol-') || topicId?.startsWith('pol-')) {
-      const fallbackLesson = getPolishFallbackLesson(lessonId);
-      if (fallbackLesson) {
-        for (const v of variants) {
-          lessonCache.set(`${subjectId}/${topicId}/${v}`, fallbackLesson);
-          lessonCache.set(`${topicId}/${v}`, fallbackLesson);
-          lessonByIdCache.set(v, fallbackLesson);
-          lessonByIdCache.set(`jezyk-polski:${v}`, fallbackLesson);
-        }
-        return fallbackLesson;
-      }
     }
 
     return null;
@@ -672,27 +567,6 @@ export const curriculumRepository = {
       } catch {}
     }
 
-    const canonical = findCanonicalLektura(lessonId);
-    if (canonical) {
-      const lessonDoc = buildCanonicalLessonDoc(canonical);
-      for (const v of variants) {
-        lessonByIdCache.set(v, lessonDoc);
-        lessonByIdCache.set(`jezyk-polski:${v}`, lessonDoc);
-      }
-      return lessonDoc;
-    }
-
-    if (isPolish) {
-      const fallback = getPolishFallbackLesson(lessonId);
-      if (fallback) {
-        for (const v of variants) {
-          lessonByIdCache.set(v, fallback);
-          lessonByIdCache.set(`jezyk-polski:${v}`, fallback);
-        }
-        return fallback;
-      }
-    }
-
     return null;
   },
 
@@ -771,9 +645,6 @@ export const curriculumRepository = {
    * Filary przedmiotu (język polski). Treść pochodzi z dokumentu subjects/{id}.
    */
   async getSubjectPillars(subjectId: string = DEFAULT_SUBJECT_ID): Promise<any[]> {
-    if (subjectId === 'jezyk-polski' || subjectId === 'pol') {
-      return POLISH_PILLARS;
-    }
     const subject = await this.getSubject(subjectId);
     if (subject?.pillars && subject.pillars.length > 0) {
       return subject.pillars;

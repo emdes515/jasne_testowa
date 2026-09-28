@@ -46,11 +46,6 @@ import confetti from 'canvas-confetti';
 import { playSuccessSound, playErrorSound, triggerHaptic, isActualTaskId } from '../utils';
 import { MathRenderer, formatMathAnswer } from './MathRenderer';
 import { Badge } from './Badge';
-import { SwipeCard } from './polish/SwipeCard';
-import { CardinalDetector } from './polish/CardinalDetector';
-import { ArgumentBuilder } from './polish/ArgumentBuilder';
-import { SynthesisCondenser } from './polish/SynthesisCondenser';
-import { ArgumentVaultModal } from './polish/ArgumentVaultModal';
 
 import { UserState, LessonTheoryPill } from '../types';
 import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTaskPool } from '../data/dzial1TaskPool';
@@ -573,14 +568,36 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
               let dotColor = isPolishSession ? 'bg-rose-400' : 'bg-[#FFB800]';
               let textColor = isPolishSession ? 'text-rose-400' : 'text-[#FFB800]';
 
-              if (/podstawa/i.test(clause)) {
-                label = 'Podstawa potęgi (baza)';
-                dotColor = 'bg-amber-400';
-                textColor = 'text-amber-400';
-              } else if (/wykładnik/i.test(clause)) {
-                label = 'Wykładnik (licznik operacji)';
+              const isLogarithm = /logarytm|\\log|\blog\b/i.test(textToParse) || /logarytm|\\log|\blog\b/i.test(clause);
+
+              if (/liczba\s+logarytmowana/i.test(clause)) {
+                label = 'Liczba logarytmowana';
                 dotColor = 'bg-cyan-400';
                 textColor = 'text-cyan-400';
+              } else if (/podstawa/i.test(clause)) {
+                if (isLogarithm) {
+                  label = 'Podstawa logarytmu';
+                  dotColor = 'bg-amber-400';
+                  textColor = 'text-amber-400';
+                } else {
+                  label = 'Podstawa potęgi (baza)';
+                  dotColor = 'bg-amber-400';
+                  textColor = 'text-amber-400';
+                }
+              } else if (/wykładnik/i.test(clause)) {
+                if (isLogarithm) {
+                  label = 'Wartość logarytmu (wykładnik)';
+                  dotColor = 'bg-emerald-400';
+                  textColor = 'text-emerald-400';
+                } else {
+                  label = 'Wykładnik (licznik operacji)';
+                  dotColor = 'bg-cyan-400';
+                  textColor = 'text-cyan-400';
+                }
+              } else if (/wartość\s+logarytmu/i.test(clause)) {
+                label = 'Wartość logarytmu';
+                dotColor = 'bg-emerald-400';
+                textColor = 'text-emerald-400';
               } else if (/cke|bazy|odruch|odruchem|najprostsz/i.test(clause)) {
                 label = 'Wskazówka maturalna';
                 dotColor = 'bg-emerald-400';
@@ -1147,13 +1164,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const [formulaSearchQuery, setFormulaSearchQuery] = useState<string>('');
   const [formulaViewMode, setFormulaViewMode] = useState<'department' | 'all'>('department');
   const [selectedFormulaCkeTopic, setSelectedFormulaCkeTopic] = useState<string>('all');
-  const [showArgumentVaultModal, setShowArgumentVaultModal] = useState<boolean>(false);
   const [isSessionComplete, setIsSessionComplete] = useState<boolean>(() => Boolean(sessionData?.isSessionComplete || (sessionData?.correctAnswersCount && sessionData.correctAnswersCount >= targetCorrectAnswers)));
-  const [expandedFormulaDiagrams, setExpandedFormulaDiagrams] = useState<Record<string, boolean>>({});
-
-  const toggleFormulaDiagram = (id: string) => {
-    setExpandedFormulaDiagrams(prev => ({ ...prev, [id]: !prev[id] }));
-  };
 
   // Scroll Container Ref do resetowania pozycji przewijania przy każdym nowym kroku
   const taskAreaRef = React.useRef<HTMLElement>(null);
@@ -1177,11 +1188,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   }, [rawCurrentTask, lessonId]);
 
   // Task format classification
-  const isSwipeTask = currentTask?.type === 'SWIPE_MATCH';
-  const isCardinalTask = currentTask?.type === 'CARDINAL_DETECTOR';
-  const isArgumentBuilderTask = currentTask?.type === 'ARGUMENT_BUILDER';
-  const isSynthesisTask = currentTask?.type === 'SYNTHESIS_CONDENSER';
-  const isPolishInteractiveTask = Boolean(isSwipeTask || isCardinalTask || isArgumentBuilderTask || isSynthesisTask);
+  const isSwipeTask = false;
+  const isCardinalTask = false;
+  const isArgumentBuilderTask = false;
+  const isSynthesisTask = false;
+  const isPolishInteractiveTask = false;
 
   const isNumericTask = currentTask?.type === 'NUMERIC_INPUT';
   const isTrueFalseTask = currentTask?.type === 'TRUE_FALSE';
@@ -1958,36 +1969,22 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     // Sprawdzamy pole źródłowe z priorytetem dla badge / source_badge
     const raw = (currentTask?.badge || currentTask?.source_badge || currentTask?.source || currentTask?.cke_source || '').trim();
     
-    // 0. Zadania treningowe, rozgrzewkowe lub autorskie
-    if (!raw || /trening|rozgrzewka|utrwalen|pułapka|pulapka|wzorzec|autorsk/i.test(raw)) {
+    if (!raw) {
       return {
-        label: 'Trening JASNE • Wzorzec CKE',
+        label: 'Trening JASNE • Baza CKE',
         type: 'autorskie' as const,
         badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
         dotClass: 'bg-emerald-400'
       };
     }
-    
-    // 1. Informator CKE / Arkusz pokazowy
-    if (/informator|arkusz\s*pokazowy/i.test(raw)) {
-      const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+(?:\.\d+)?)/i);
-      let label = /pokazowy/i.test(raw) ? 'Arkusz pokazowy CKE' : 'Informator CKE';
-      if (zadMatch) {
-        label += ` • Zad. ${zadMatch[1]}`;
-      }
-      return {
-        label,
-        type: 'informator' as const,
-        badgeClass: 'bg-amber-500/15 border-amber-400/30 text-amber-300',
-        dotClass: 'bg-amber-400'
-      };
-    }
 
-    // 2. Oficjalne arkusze CKE
     const zadMatch = raw.match(/zad(?:anie)?\.?\s*(\d+(?:\.\d+)?)/i);
     const monthMatch = raw.match(/(maj|czerwiec|sierpi?e[nń]|grudzi?e[nń]|wrzesi?e[nń]|marzec)/i);
     const yearMatch = raw.match(/20\d\d/);
-    
+    const isInformatorOrPokazowy = /informator|arkusz\s*pokazowy/i.test(raw);
+    const hasMaturaKeywords = /matura|cke/i.test(raw);
+
+    // 1. Oficjalne arkusze CKE z określoną sesją i rokiem
     if (monthMatch && yearMatch) {
       const mRaw = monthMatch[1].toLowerCase();
       const monthMap: Record<string, string> = {
@@ -1995,7 +1992,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         grudzien: 'grudzień', 'grudzień': 'grudzień', wrzesien: 'wrzesień', 'wrzesień': 'wrzesień', marzec: 'marzec'
       };
       const mClean = monthMap[mRaw] || mRaw;
-      const isProbna = /próbna|probna/i.test(raw) && !/grudzi?e[nń]|wrzesi?e[nń]|marzec/i.test(raw);
+      const isProbna = /próbna|probna/i.test(raw);
       const prefix = isProbna ? 'Matura próbna' : 'Matura';
       let label = `${prefix} ${mClean} ${yearMatch[0]}`;
       if (zadMatch) {
@@ -2009,8 +2006,35 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       };
     }
 
-    // Jeśli raw zawiera "Zad.", zachowaj go z przedrostkiem Matura CKE (bez duplikacji CKE)
-    if (zadMatch && /matura|cke/i.test(raw)) {
+    // 2. Informator CKE / Arkusz pokazowy
+    if (isInformatorOrPokazowy) {
+      let label = /pokazowy/i.test(raw) ? 'Arkusz pokazowy CKE' : 'Informator CKE';
+      if (zadMatch) {
+        label += ` • Zad. ${zadMatch[1]}`;
+      }
+      return {
+        label,
+        type: 'cke_matura' as const,
+        badgeClass: 'bg-sky-500/15 border-sky-400/30 text-sky-300',
+        dotClass: 'bg-sky-400'
+      };
+    }
+
+    // 3. Matura CKE z rokiem lub numerem zadania
+    if (yearMatch && (hasMaturaKeywords || /202[3-6]/.test(raw))) {
+      let label = `Matura ${yearMatch[0]}`;
+      if (zadMatch) {
+        label += ` • Zad. ${zadMatch[1]}`;
+      }
+      return {
+        label,
+        type: 'cke_matura' as const,
+        badgeClass: 'bg-sky-500/15 border-sky-400/30 text-sky-300',
+        dotClass: 'bg-sky-400'
+      };
+    }
+
+    if (zadMatch && hasMaturaKeywords) {
       const cleanRaw = raw.replace(/\bCKE\s+CKE\b/gi, 'CKE').replace(/\bCKE\s*•\s*CKE\b/gi, 'CKE').trim();
       return {
         label: cleanRaw.startsWith('CKE') || cleanRaw.startsWith('Matura') ? cleanRaw : `Matura • Zad. ${zadMatch[1]}`,
@@ -2020,19 +2044,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       };
     }
 
-    // 3. Zadania treningowe, rozgrzewkowe lub autorskie
-    if (/trening|rozgrzewka|utrwalen|pułapka|pulapka|wzorzec|autorsk/i.test(raw)) {
-      return {
-        label: 'Trening JASNE • Wzorzec CKE',
-        type: 'autorskie' as const,
-        badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
-        dotClass: 'bg-emerald-400'
-      };
-    }
-
-    // 4. Fallback: jeśli brak konkretnego oznaczenia matury ani numeru, to Trening JASNE
+    // 4. Zadania treningowe, rozgrzewkowe lub autorskie
     return {
-      label: 'Trening JASNE • Wzorzec CKE',
+      label: 'Trening JASNE • Baza CKE',
       type: 'autorskie' as const,
       badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
       dotClass: 'bg-emerald-400'
@@ -4186,16 +4200,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   <section className="flex flex-col gap-2.5">
-                    <div className="flex flex-col items-start gap-1.5">
-                      <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${
+                    <div className="flex flex-col items-start gap-1">
+                      <div className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${
                         isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
                       }`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'}`} />
-                        <span>{isPolishSession ? 'Istota zagadnienia' : 'Istota pojęcia'}</span>
+                        <span>{isPolishSession ? 'ESENCJA ZAGADNIENIA CKE' : 'ESENCJA POJĘCIA CKE'}</span>
                       </div>
-                      <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight mt-0.5">
-                        <MathRenderer content={lessonTitleClean || sanitizeLessonHeading(theoryPill?.title || lessonTitle)} />
-                      </h1>
                     </div>
                     {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession, theoryPill?.diagram, (theoryPill as any)?.numberLine)}
 
@@ -4444,9 +4455,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     const formulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
                     return (
                       <section className="w-full flex flex-col gap-3.5">
-                        <div className="flex items-center gap-2 text-slate-400 text-xs font-semibold">
-                          <BookOpen className="w-4 h-4 text-[#FFB800]" />
-                          <span>Zależności i reguły</span>
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+                          <span>WYBRANE WZORY MATEMATYCZNE CKE</span>
                         </div>
 
                         {formulas.length > 0 ? (
@@ -4761,8 +4772,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             }`}>
                               <FileText className="w-4 h-4" />
                             </div>
-                            <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
-                              {isPolishSession ? (polishSectionLabel.includes('lektury') ? 'Fragment lektury i analiza CKE' : 'Fragment tekstu i analiza maturalna') : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'Przykład z arkusza krok po kroku'}
+                            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                              {isPolishSession ? (polishSectionLabel.includes('lektury') ? 'Fragment lektury i analiza CKE' : 'Fragment tekstu i analiza maturalna') : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'WZORCOWE ROZWIĄZANIE KROK PO KROKU'}
                             </h3>
                           </div>
                           {normExample.steps.length > 0 && (
@@ -4916,7 +4927,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   <div className="w-6 h-6 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
                                     <XCircle className="w-3.5 h-3.5 text-rose-400" />
                                   </div>
-                                  <span>Typowy błąd</span>
+                                  <span>PUŁAPKA EGZAMINACYJNA CKE</span>
                                 </div>
                                 <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/25 px-2 py-0.5 rounded-full">
                                   Unikaj na maturze
@@ -4993,7 +5004,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   <div className="w-6 h-6 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
                                     <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
                                   </div>
-                                  <span>Typowy błąd</span>
+                                  <span>PUŁAPKA EGZAMINACYJNA CKE</span>
                                 </div>
                                 <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/25 px-2 py-0.5 rounded-full">
                                   CKE Pułapka
@@ -5034,25 +5045,22 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           </div>
         ) : (
           <>
-            {/* Sztywny margines górny + Tytuł lekcji i pojedyncza linia metadanych */}
-            <div className="pt-5 pb-3 flex flex-col gap-2 shrink-0">
-              <div className="flex flex-col items-start gap-1">
-                <h1 className="text-base sm:text-lg font-bold text-white leading-snug break-words">
-                  <MathRenderer content={lessonTitleClean} />
-                </h1>
-              </div>
-              
-              {/* Autentyczne, nowoczesne etykiety źródła zadania i punktacji */}
-              <div className="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border font-semibold text-[11px] sm:text-xs shadow-sm ${taskSourceBadge.badgeClass}`}>
+            {/* Sztywny margines górny: pojedyncza linia metadanych zadania bez powtórzonego tytułu lekcji */}
+            <div className="pt-4 pb-2.5 flex items-center justify-between gap-2 shrink-0 flex-wrap">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs sm:text-sm font-bold text-slate-200">
+                  Zadanie {currentQueueIndex + 1} z {tasks?.length || targetCorrectAnswers || 5}
+                </span>
+                <span className="text-slate-600 hidden sm:inline">•</span>
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg border font-semibold text-[11px] sm:text-xs shadow-sm ${taskSourceBadge.badgeClass}`}>
                   <span className={`w-1.5 h-1.5 rounded-full shrink-0 shadow-sm ${taskSourceBadge.dotClass}`} />
                   <span>{taskSourceBadge.label}</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-400/30 text-amber-300 font-bold text-[11px] sm:text-xs shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-sm" />
-                  <span>{taskPointsCount}</span>
-                </span>
               </div>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-amber-500/15 border border-amber-400/30 text-amber-300 font-bold text-[11px] sm:text-xs shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-sm" />
+                <span>{taskPointsCount}</span>
+              </span>
             </div>
             {/* Task Question Statement */}
             <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-sm">
@@ -5388,82 +5396,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </motion.div>
             )}
           </div>
-        ) : isSwipeTask && currentTask?.swipeData ? (
-          /* POLISH TASK: SWIPE CARD (TINDER MOTYWÓW) */
-          <motion.div
-            key={`session-swipe-${currentStep}-${currentTask?.id || ''}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            className="w-full pt-1"
-          >
-            <SwipeCard
-              data={currentTask.swipeData}
-              onMistake={(isCardinal) => {
-                handleMistakeDeduction(isCardinal ? 2 : 1);
-              }}
-              onComplete={() => {
-                handlePolishTaskComplete(currentTask?.id, 25, 5);
-              }}
-            />
-          </motion.div>
-        ) : isCardinalTask && currentTask?.cardinalData ? (
-          /* POLISH TASK: CARDINAL DETECTOR (POLOWANIE NA KARDYNAŁA) */
-          <motion.div
-            key={`session-cardinal-${currentStep}-${currentTask?.id || ''}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            className="w-full pt-1"
-          >
-            <CardinalDetector
-              data={currentTask.cardinalData}
-              onMistake={(isCardinalPenalty) => {
-                handleMistakeDeduction(isCardinalPenalty ? 2 : 1);
-              }}
-              onComplete={() => {
-                handlePolishTaskComplete(currentTask?.id, 40, 8);
-              }}
-            />
-          </motion.div>
-        ) : isArgumentBuilderTask && currentTask?.argumentBuilderData ? (
-          /* POLISH TASK: ARGUMENT BUILDER (KLOCKI TEEL) */
-          <motion.div
-            key={`session-builder-${currentStep}-${currentTask?.id || ''}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            className="w-full pt-1"
-          >
-            <ArgumentBuilder
-              data={currentTask.argumentBuilderData}
-              onMistake={() => {
-                handleMistakeDeduction(1);
-              }}
-              onComplete={() => {
-                handlePolishTaskComplete(currentTask?.id, 50, 10);
-              }}
-            />
-          </motion.div>
-        ) : isSynthesisTask && currentTask?.synthesisData ? (
-          /* POLISH TASK: SYNTHESIS CONDENSER (NOTATKA SYNTETYZUJĄCA CKE) */
-          <motion.div
-            key={`session-synthesis-${currentStep}-${currentTask?.id || ''}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            className="w-full pt-1"
-          >
-            <SynthesisCondenser
-              data={currentTask.synthesisData}
-              onMistake={() => {
-                handleMistakeDeduction(1);
-              }}
-              onComplete={(score) => {
-                handlePolishTaskComplete(currentTask?.id, score * 12, 6);
-              }}
-            />
-          </motion.div>
         ) : isNumericTask ? (
           /* 1. NUMERIC INPUT FORMAT (Dedykowana klawiatura matematyczna, bez opcji tablicy) */
           <motion.div
@@ -6078,17 +6010,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     </button>
                   )}
 
-                  {/* Main Action Button (Check / AI Tutor / Skarbiec) */}
-                  {isPolishInteractiveTask ? (
-                    <button
-                      id="session-vault-footer-button"
-                      onClick={() => setShowArgumentVaultModal(true)}
-                      className="flex-1 h-14 px-6 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 shadow-sm active:scale-[0.99] cursor-pointer"
-                    >
-                      <Layers className="w-5 h-5 text-amber-400" />
-                      <span>SKARBIEC ARGUMENTÓW</span>
-                    </button>
-                  ) : isOpenTask ? (
+                  {/* Main Action Button (Check / AI Tutor) */}
+                  {isOpenTask ? (
                     <button
                       id="session-check-tutor-button"
                       onClick={() => handleCheckOpenAnswerWithTutor()}
@@ -6296,21 +6219,17 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
 
                 {/* Schemat wektorowy / Wykres do zadania */}
-                {(currentTask?.explanationPlot || currentTask?.explanationDiagram || currentTask?.explanationNumberLine || currentTask?.diagram || currentTask?.plot || currentTask?.numberLine) && (
+                {(currentTask?.explanationPlot || currentTask?.explanationDiagram || currentTask?.explanationNumberLine) && (
                   <div className="p-3 sm:p-4 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2 flex flex-col items-center">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider self-start flex items-center gap-1.5">
                       <Target size={14} className="text-[#FFB800]" />
-                      <span>
-                        {(currentTask?.explanationPlot || currentTask?.explanationDiagram || currentTask?.explanationNumberLine)
-                          ? 'Wykres wyjaśniający (rozwiązanie CKE):'
-                          : 'Rysunek pomocniczy / Wykres do zadania:'}
-                      </span>
+                      <span>Wykres wyjaśniający (rozwiązanie CKE):</span>
                     </span>
                     <div className="w-full flex justify-center overflow-x-auto py-1">
-                      {(currentTask?.explanationNumberLine || currentTask?.numberLine) ? (
-                        <NumberLineDiagram data={currentTask?.explanationNumberLine || currentTask?.numberLine} height={60} maxWidth="360px" />
+                      {currentTask?.explanationNumberLine ? (
+                        <NumberLineDiagram data={currentTask.explanationNumberLine} height={60} maxWidth="360px" />
                       ) : (
-                        <MathDiagram diagram={currentTask?.explanationDiagram || currentTask?.explanationPlot || currentTask?.diagram || currentTask?.plot} compact />
+                        <MathDiagram diagram={currentTask?.explanationDiagram || currentTask?.explanationPlot} compact />
                       )}
                     </div>
                   </div>
@@ -6832,46 +6751,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           </div>
                         )}
 
-                        {/* Szkic geometryczny (opcjonalny, rozwijany akordeon) */}
+                        {/* Szkic geometryczny (opcjonalny, bezpośrednie renderowanie CKE) */}
                         {f.diagram && (
-                          <div className="pt-1">
-                            <button
-                              type="button"
-                              onClick={() => toggleFormulaDiagram(f.id || String(i))}
-                              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 transition-all cursor-pointer shadow-sm"
-                            >
-                              {expandedFormulaDiagrams[f.id || String(i)] ? (
-                                <>
-                                  <EyeOff size={13} className="text-slate-400 shrink-0" />
-                                  <span>Ukryj wizualizację</span>
-                                </>
+                          <div className="pt-2">
+                            <div className="rounded-xl border border-white/10 bg-[#070A0F] p-2.5 sm:p-3 shadow-inner overflow-hidden">
+                              {'intervals' in f.diagram ? (
+                                <NumberLineDiagram data={f.diagram as any} height={120} />
                               ) : (
-                                <>
-                                  <Eye size={13} className="text-sky-400 shrink-0" />
-                                  <span>Wizualizacja geometryczna</span>
-                                </>
+                                <MathDiagram diagram={f.diagram as any} compact borderless />
                               )}
-                            </button>
-
-                            <AnimatePresence>
-                              {expandedFormulaDiagrams[f.id || String(i)] && (
-                                <motion.div
-                                  initial={{ opacity: 0, height: 0 }}
-                                  animate={{ opacity: 1, height: 'auto' }}
-                                  exit={{ opacity: 0, height: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="overflow-hidden pt-2.5"
-                                >
-                                  <div className="rounded-xl border border-white/10 bg-[#070A0F] p-3 shadow-inner">
-                                    {'intervals' in f.diagram ? (
-                                      <NumberLineDiagram data={f.diagram as any} height={120} />
-                                    ) : (
-                                      <MathDiagram diagram={f.diagram as any} compact borderless />
-                                    )}
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
+                            </div>
                           </div>
                         )}
                       </div>
@@ -7017,12 +6906,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           }
         }}
         onActivatePro={handleActivatePro}
-      />
-
-      {/* Skarbiec Argumentów (Matura CKE 2026) */}
-      <ArgumentVaultModal
-        isOpen={showArgumentVaultModal}
-        onClose={() => setShowArgumentVaultModal(false)}
       />
 
 

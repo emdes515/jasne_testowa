@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Search, BookOpen, AlertTriangle, Compass, Eye, EyeOff, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, Search, BookOpen, AlertTriangle, Compass, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem, type CkeFormulaSubItem } from '../services/ckeCatalogRepository';
-import { CKE_FORMULAS_DATA } from '../data/ckeFormulasData';
+import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS } from '../data/ckeFormulasData';
 import { MathRenderer } from './MathRenderer';
 import { MathPlot } from './MathPlot';
 import { MathDiagram } from './MathDiagram';
@@ -22,12 +22,15 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState(initialTopicId);
-  const [expandedDiagrams, setExpandedDiagrams] = useState<Record<string, boolean>>({});
   const chipsScrollRef = useRef<HTMLDivElement>(null);
 
-  const toggleDiagram = (id: string) => {
-    setExpandedDiagrams(prev => ({ ...prev, [id]: !prev[id] }));
-  };
+  // Katalog wzorów CKE pochodzi z Firestore (system/ckeFormulas).
+  const isCatalogLoaded = useCkeCatalogs();
+
+  const availableTopics = useMemo(() => {
+    const remote = getCkeFormulaTopics();
+    return remote.length > 1 ? remote : CKE_FORMULA_TOPICS;
+  }, [isCatalogLoaded]);
 
   // Close on Escape key
   useEffect(() => {
@@ -40,9 +43,6 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
-
-  // Katalog wzorów CKE pochodzi z Firestore (system/ckeFormulas).
-  const isCatalogLoaded = useCkeCatalogs();
 
   // Funkcja pomocnicza do bezpiecznego rozbicia wzoru głównego i własności cząstkowych
   const resolveFormulaContent = (item: CkeFormulaItem): { mainFormula: string; subFormulas: CkeFormulaSubItem[] } => {
@@ -202,7 +202,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                 className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 -mb-1 px-0.5 sm:px-6 scroll-smooth w-full"
               >
                 <Filter size={13} className="text-slate-500 shrink-0 mr-1 ml-0.5" />
-                {getCkeFormulaTopics().map(topic => {
+                {availableTopics.map(topic => {
                   const isSelected = selectedTopic === topic.id;
                   return (
                     <button
@@ -238,7 +238,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
             className="flex-1 overflow-y-auto p-4 space-y-3.5"
             style={{ paddingBottom: 'max(24px, env(safe-area-inset-bottom, 24px))' }}
           >
-            {!isCatalogLoaded ? (
+            {!isCatalogLoaded && getCkeFormulas().length === 0 && CKE_FORMULAS_DATA.length === 0 ? (
               <div className="py-12 text-center flex flex-col items-center justify-center">
                 <div className="w-8 h-8 rounded-full border-2 border-[#FFB800]/30 border-t-[#FFB800] animate-spin mb-3" />
                 <p className="text-sm font-semibold text-slate-300">Wczytuję oficjalne wzory CKE…</p>
@@ -344,46 +344,16 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                       )}
                     </div>
 
-                    {/* Szkic geometryczny (opcjonalny, rozwijany akordeon) */}
+                    {/* Szkic geometryczny (opcjonalny, bezpośrednie renderowanie CKE) */}
                     {item.diagram && (
-                      <div className="pt-1">
-                        <button
-                          type="button"
-                          onClick={() => toggleDiagram(item.id)}
-                          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 transition-all cursor-pointer shadow-sm"
-                        >
-                          {expandedDiagrams[item.id] ? (
-                            <>
-                              <EyeOff size={13} className="text-slate-400 shrink-0" />
-                              <span>Ukryj wizualizację</span>
-                            </>
+                      <div className="pt-2">
+                        <div className="rounded-xl border border-white/10 bg-[#070A0F] p-2.5 sm:p-3 shadow-inner overflow-hidden">
+                          {'intervals' in item.diagram ? (
+                            <NumberLineDiagram data={item.diagram as any} height={120} />
                           ) : (
-                            <>
-                              <Eye size={13} className="text-sky-400 shrink-0" />
-                              <span>Wizualizacja geometryczna</span>
-                            </>
+                            <MathDiagram diagram={item.diagram as any} compact borderless />
                           )}
-                        </button>
-
-                        <AnimatePresence>
-                          {expandedDiagrams[item.id] && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="overflow-hidden pt-2.5"
-                            >
-                              <div className="rounded-xl border border-white/10 bg-[#070A0F] p-3 shadow-inner">
-                                {'intervals' in item.diagram ? (
-                                  <NumberLineDiagram data={item.diagram as any} height={120} />
-                                ) : (
-                                  <MathDiagram diagram={item.diagram as any} compact borderless />
-                                )}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                        </div>
                       </div>
                     )}
                   </div>

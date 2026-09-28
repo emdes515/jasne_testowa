@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { UserState, SubjectKey } from '../types';
-import { User, Flame, Coins, Zap, X, Heart, Clock, Users, Sun, Moon } from 'lucide-react';
+import { UserState, SubjectKey, SubjectId } from '../types';
+import { User, Flame, Coins, Zap, X, Heart, Clock, Users, Sun, Moon, LayoutGrid, BookOpen, Edit3 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
@@ -15,6 +15,11 @@ export interface HeaderProps {
   currentTab?: string;
   selectedSubjectKey?: SubjectKey;
   onSelectSubject?: (key: SubjectKey) => void;
+  currentSubject?: SubjectId;
+  onSelectSubjectId?: (subjectId: SubjectId) => void;
+  onOpenLobby?: () => void;
+  onOpenFormulas?: () => void;
+  onOpenScratchpad?: () => void;
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
@@ -31,6 +36,11 @@ export function Header({
   currentTab,
   selectedSubjectKey,
   onSelectSubject,
+  currentSubject,
+  onSelectSubjectId,
+  onOpenLobby,
+  onOpenFormulas,
+  onOpenScratchpad,
   onOpenParentSponsor,
   onOpenProPopup,
   onUpdateUserState,
@@ -86,17 +96,93 @@ export function Header({
         </div>
       </button>
 
-      {/* Indykator aktywnego przedmiotu */}
-      {selectedSubjectKey && (
-        <div className={`hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black tracking-wide border shadow-sm ${
-          selectedSubjectKey === 'pol'
-            ? 'bg-rose-500/10 text-rose-300 border-rose-500/30'
-            : 'bg-amber-500/10 text-amber-300 border-amber-500/30'
-        }`}>
-          <span className={`w-2 h-2 rounded-full ${selectedSubjectKey === 'pol' ? 'bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.6)]' : 'bg-amber-400 shadow-[0_0_8px_rgba(255,184,0,0.6)]'} animate-pulse`} />
-          <span>{selectedSubjectKey === 'pol' ? 'Język Polski CKE' : 'Matematyka CKE'}</span>
+      {/* CENTRUM: Selektor przedmiotu + Przycisk Lobby */}
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        {/* Przełącznik przedmiotu */}
+        <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5 shadow-inner">
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              onSelectSubject?.('math');
+              onSelectSubjectId?.('matematyka');
+            }}
+            className={`flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+              (currentSubject === 'matematyka' || selectedSubjectKey === 'math' || (!currentSubject && !selectedSubjectKey))
+                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
+                : 'text-text-muted hover:text-text-primary'
+            }`}
+          >
+            <span>📐</span>
+            <span className="hidden xs:inline sm:inline">Matematyka</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              onSelectSubject?.('pol');
+              onSelectSubjectId?.('polski');
+            }}
+            className={`flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+              (currentSubject === 'polski' || selectedSubjectKey === 'pol')
+                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm'
+                : 'text-text-muted hover:text-text-primary'
+            }`}
+          >
+            <span>🇵🇱</span>
+            <span className="hidden xs:inline sm:inline">Polski</span>
+          </button>
         </div>
-      )}
+
+        {/* Przycisk Lobby */}
+        {onOpenLobby && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('medium');
+              onOpenLobby();
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-secondary hover:text-primary text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-sm active:scale-95"
+            title="Lobby wyboru przedmiotów"
+          >
+            <LayoutGrid size={13} className="text-primary" />
+            <span className="hidden sm:inline">Lobby</span>
+          </button>
+        )}
+
+        {/* Tablice Wzorów CKE */}
+        {onOpenFormulas && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              onOpenFormulas();
+            }}
+            className="hidden md:flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-secondary hover:text-primary text-[11px] font-bold transition-all cursor-pointer"
+            title="Tablice Wzorów CKE"
+          >
+            <BookOpen size={13} className="text-primary" />
+            <span>Wzory</span>
+          </button>
+        )}
+
+        {/* Brudnopis */}
+        {onOpenScratchpad && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              onOpenScratchpad();
+            }}
+            className="hidden md:flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-secondary hover:text-primary text-[11px] font-bold transition-all cursor-pointer"
+            title="Otwórz brudnopis"
+          >
+            <Edit3 size={13} className="text-primary" />
+            <span>Brudnopis</span>
+          </button>
+        )}
+      </div>
 
       {/* Spacer na desktopie */}
       <div className="hidden lg:block w-4" />

@@ -18,12 +18,6 @@ import { curriculumRepository } from '../services/curriculumRepository';
 import { BossExamRunner } from './BossExamRunner';
 import { SubjectKey } from '../types';
 import { normalizeSubjectFirestoreId } from '../services/ckeCatalogRepository';
-import { POLISH_SHOWCASE_LESSONS, PolishLessonShowcase } from '../data/polishVerticalSliceData';
-import { findCanonicalLektura, getLekturaByTopic } from '../data/polishLekturyData';
-import { ArgumentVaultModal } from './polish/ArgumentVaultModal';
-import { PolishHeroContinue } from './polish/PolishHeroContinue';
-import { PolishEpochPassportModal } from './polish/PolishEpochPassportModal';
-import { argumentVaultService } from '../services/argumentVaultService';
 
 
 const mathIcons = [
@@ -251,27 +245,7 @@ export function LearnView({
   const [isBossExamOpen, setIsBossExamOpen] = useState<boolean>(false);
   const [bossExamData, setBossExamData] = useState<any>(null);
   const [isBossExamLoading, setIsBossExamLoading] = useState<boolean>(false);
-  const [isArgumentVaultOpen, setIsArgumentVaultOpen] = useState<boolean>(false);
 
-  const handleStartPolishShowcase = (showcase: PolishLessonShowcase) => {
-    triggerHaptic('medium');
-    const sessionPayload = {
-      isSession: true,
-      isPolish: true,
-      originTab: 'learn',
-      subjectId: 'jezyk-polski',
-      topicId: 'pol-showcase',
-      lessonId: showcase.id,
-      lessonTitle: `${showcase.badge}: ${showcase.title}`,
-      tasks: showcase.tasks,
-      formulaSheet: null,
-      theoryPill: showcase.theoryPill,
-      required_correct_tasks: showcase.tasks.length,
-      estimated_time_formatted: showcase.estimatedTime
-    };
-
-    onStartTask?.(sessionPayload, showcase.tasks, showcase.title);
-  };
 
 
   const getLessonMistakes = (lessonGroupId: string) => {
@@ -420,7 +394,7 @@ export function LearnView({
     } catch(e) {}
     return 'pillar-1-jezyk-w-uzyciu';
   });
-  const [passportEpochId, setPassportEpochId] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (selectedSubjectKey === 'pol') {
@@ -885,19 +859,7 @@ export function LearnView({
                 </div>
               )}
 
-              {/* Polish Hero Continue Card (Język Polski CKE) */}
-              {selectedSubjectKey === 'pol' && (
-                <div className="px-3 sm:px-6 pt-3 pb-1">
-                  <div className="max-w-3xl mx-auto w-full">
-                    <PolishHeroContinue 
-                      topics={polishTopicsList}
-                      completedTasks={completedTasks}
-                      userState={userState}
-                      onStartLesson={handleStartPolishDailyLesson}
-                    />
-                  </div>
-                </div>
-              )}
+
 
               {/* Pillar Switcher Segmented Control (Język Polski: Filar I vs Filar II vs Filar III) */}
               {selectedSubjectKey === 'pol' && (
@@ -1016,35 +978,6 @@ export function LearnView({
                       </span>
                     </div>
 
-                    {selectedPillarId === 'pillar-2-lektury' && (
-                      <div className="mt-2 flex items-center justify-between p-2.5 rounded-xl bg-[#0e1626] border border-amber-500/30 gap-2">
-                        <div className="flex items-center gap-2 min-w-0">
-                          <div className="w-7 h-7 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0">
-                            <Layers className="w-4 h-4" />
-                          </div>
-                          <div className="min-w-0">
-                            <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                              <span className="truncate">Baza Gotowych Argumentów CKE</span>
-                              <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono font-bold shrink-0">
-                                {argumentVaultService.getUnlockedBlocks().length} / 7 argumentów CKE
-                              </span>
-                            </div>
-                            <p className="text-[10px] text-slate-400 truncate hidden sm:block">
-                              Zaliczaj lekcje kanoniczne <span className="text-amber-300 font-semibold">★ Kanon CKE</span>, aby odblokować gotowe argumenty do wypracowania.
-                            </p>
-                          </div>
-                        </div>
-                        <button
-                          onClick={() => {
-                            triggerHaptic('light');
-                            setIsArgumentVaultOpen(true);
-                          }}
-                          className="px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-bold text-xs shrink-0 transition active:scale-95 cursor-pointer"
-                        >
-                          Otwórz Bazę Argumentów
-                        </button>
-                      </div>
-                    )}
                   </div>
                 </div>
               )}
@@ -1110,20 +1043,6 @@ export function LearnView({
                               DZIAŁ {topicNum}
                             </span>
                             
-                            {topic.pillar_id === 'pillar-2-lektury' && (
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  triggerHaptic('light');
-                                  setPassportEpochId(topic.id.replace('pol-', ''));
-                                }}
-                                className="inline-flex items-center gap-1.5 text-[10px] font-bold text-purple-300 bg-purple-500/15 hover:bg-purple-500/25 border border-purple-500/30 px-2.5 py-0.5 rounded-lg transition-colors cursor-pointer"
-                              >
-                                <Compass size={11} className="text-purple-400" />
-                                <span>Paszport Epoki</span>
-                              </button>
-                            )}
 
                             {isLocked ? (
                               <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-white/5 border border-white/5 px-2.5 py-0.5 rounded-full">
@@ -1248,80 +1167,7 @@ export function LearnView({
                         </div>
 
                         {/* Wiersz 4: Lektury w danym dziale / epoce (Filar II) */}
-                        {topic.required_books && topic.required_books.length > 0 && (() => {
-                          const canonicalBooks: { original: string; canonical: any }[] = [];
-                          const otherBooks: string[] = [];
-                          topic.required_books.forEach((book: string) => {
-                            const canon = findCanonicalLektura(book);
-                            if (canon && !canonicalBooks.some(c => c.canonical.id === canon.id)) {
-                              canonicalBooks.push({ original: book, canonical: canon });
-                            } else {
-                              otherBooks.push(book);
-                            }
-                          });
 
-                          return (
-                            <div className="pt-2.5 border-t border-white/5 w-full flex flex-col gap-2">
-                              {/* 1. Lektury obowiązkowe w całości (Kanon CKE z gwiazdką) */}
-                              {canonicalBooks.length > 0 && (
-                                <div className="flex flex-col gap-1.5">
-                                  {canonicalBooks.map(({ original, canonical }) => (
-                                    <div
-                                      key={canonical.id}
-                                      className="flex items-center justify-between gap-2 p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:border-amber-500/50 transition-colors"
-                                    >
-                                      <div className="flex items-center gap-2 min-w-0">
-                                        <span className="text-amber-400 text-xs font-black shrink-0">★</span>
-                                        <div className="min-w-0 text-left">
-                                          <div className="text-[11px] font-bold text-amber-200 truncate flex items-center gap-1.5">
-                                            <span>{original}</span>
-                                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold uppercase shrink-0">
-                                              W całości
-                                            </span>
-                                          </div>
-                                          <div className="text-[10px] text-slate-400 truncate">
-                                            Motyw: {canonical.keyTheme || canonical.heroCharacter}
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      <button
-                                        type="button"
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          triggerHaptic('medium');
-                                          handleStartPolishDailyLesson(topic.id, canonical.id);
-                                        }}
-                                        className="shrink-0 px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-amber-950 font-black text-[10px] shadow-sm transition active:scale-95 cursor-pointer flex items-center gap-1"
-                                      >
-                                        <span>★ Trenuj lekturę</span>
-                                        <ChevronRight size={12} strokeWidth={3} />
-                                      </button>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-
-                              {/* 2. Pozostałe utwory i fragmenty z epoki */}
-                              {otherBooks.length > 0 && (
-                                <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                                  <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mr-1">
-                                    Utwory i fragmenty:
-                                  </span>
-                                  {otherBooks.map((book: string, bIdx: number) => (
-                                    <span
-                                      key={bIdx}
-                                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium bg-white/5 text-slate-300 border border-white/10"
-                                    >
-                                      <BookOpen size={10} className="text-slate-400 shrink-0" />
-                                      <span className="truncate max-w-[200px] sm:max-w-[260px]">{book}</span>
-                                    </span>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })()}
                       </button>
                     );
                   })}
@@ -1620,11 +1466,6 @@ export function LearnView({
                                   <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider bg-[#080B10] px-2 py-0.5 rounded-full border border-white/5">
                                     {group.badge}
                                   </span>
-                                  {selectedSubjectKey === 'pol' && findCanonicalLektura(group.id) && (
-                                    <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-amber-300 bg-amber-500/15 border border-amber-500/40 px-2 py-0.5 rounded-full shadow-sm">
-                                      ★ KANON CKE
-                                    </span>
-                                  )}
                                   {isCompleted && (
                                     <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-emerald-300 bg-emerald-500/15 border border-emerald-500/40 px-2.5 py-0.5 rounded-full shadow-sm">
                                       ✓ ZALICZONA
@@ -2192,20 +2033,6 @@ export function LearnView({
         document.body
       )}
 
-      {/* Skarbiec Argumentów Modal */}
-      <ArgumentVaultModal
-        isOpen={isArgumentVaultOpen}
-        onClose={() => setIsArgumentVaultOpen(false)}
-      />
-
-      {/* Paszport Epoki Modal */}
-      {passportEpochId && (
-        <PolishEpochPassportModal
-          epochId={passportEpochId}
-          isOpen={Boolean(passportEpochId)}
-          onClose={() => setPassportEpochId(null)}
-        />
-      )}
 
     </div>
   );

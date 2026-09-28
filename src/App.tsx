@@ -47,6 +47,13 @@ import { handleFirestoreError, OperationType } from './lib/firestoreErrors';
 import { migrateGuestProgressToUser, hasGuestProgress } from './lib/guestMigration';
 import { normalizeSubjectFirestoreId } from './services/ckeCatalogRepository';
 import { initTheme } from './services/themeManager';
+import { BrandBackgroundPattern } from './components/BrandBackgroundPattern';
+import { SubjectLobbyModal } from './components/SubjectLobbyModal';
+import { PolishStudyHub } from './components/polish/PolishStudyHub';
+import { CkeFormulasModal } from './components/CkeFormulasModal';
+import { ScratchpadModal } from './components/ScratchpadModal';
+import { SubjectId } from './types';
+import { PolishPartNumber, PolishEpoch, PolishTaskType } from './types/maturaTypes';
 
 import { LoadingScreen } from './components/Loading';
 
@@ -224,21 +231,69 @@ export default function App() {
       return () => clearTimeout(timeout);
     }
   }, [isGuest, guestPromoSecondsLeft, showGuestPrompt, isNewUser]);
+  const [currentSubject, setCurrentSubject] = useState<SubjectId>(() => {
+    try {
+      const stored = localStorage.getItem('matura_quest_current_subject');
+      if (stored === 'polski' || stored === 'matematyka' || stored === 'angielski' || stored === 'biologia') {
+        return stored as SubjectId;
+      }
+      const legacy = localStorage.getItem('matura_quest_selected_subject');
+      if (legacy === 'pol') return 'polski';
+    } catch {}
+    return 'matematyka';
+  });
+
   const [selectedSubjectKey, setSelectedSubjectKey] = useState<'math' | 'pol'>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_selected_subject');
       if (stored === 'math' || stored === 'pol') return stored;
+      const cur = localStorage.getItem('matura_quest_current_subject');
+      if (cur === 'polski') return 'pol';
     } catch {}
     return 'math';
   });
 
   const handleSelectSubject = (key: 'math' | 'pol') => {
     setSelectedSubjectKey(key);
+    const subId: SubjectId = key === 'pol' ? 'polski' : 'matematyka';
+    setCurrentSubject(subId);
     try {
       localStorage.setItem('matura_quest_selected_subject', key);
+      localStorage.setItem('matura_quest_current_subject', subId);
       window.dispatchEvent(new Event('storage'));
     } catch {}
+    setUserState(prev => ({
+      ...prev,
+      currentSubject: subId
+    }));
   };
+
+  const handleSelectSubjectId = (subId: SubjectId) => {
+    setCurrentSubject(subId);
+    const subKey: 'math' | 'pol' = subId === 'polski' ? 'pol' : 'math';
+    setSelectedSubjectKey(subKey);
+    try {
+      localStorage.setItem('matura_quest_current_subject', subId);
+      localStorage.setItem('matura_quest_selected_subject', subKey);
+      window.dispatchEvent(new Event('storage'));
+    } catch {}
+    setUserState(prev => ({
+      ...prev,
+      currentSubject: subId
+    }));
+  };
+
+  const [showSubjectLobbyModal, setShowSubjectLobbyModal] = useState(false);
+  const [showFormulasModal, setShowFormulasModal] = useState(false);
+  const [showScratchpadModal, setShowScratchpadModal] = useState(false);
+
+  const [polishHubInitialMode, setPolishHubInitialMode] = useState<'lessons' | 'task_browser'>('lessons');
+  const [polishHubInitialLessonId, setPolishHubInitialLessonId] = useState<string | null>(null);
+  const [polishHubInitialFilter, setPolishHubInitialFilter] = useState<{
+    part?: PolishPartNumber | 'all';
+    epoch?: PolishEpoch | 'all';
+    type?: PolishTaskType | 'all';
+  } | undefined>(undefined);
 
   const [isSubjectSheetOpen, setIsSubjectSheetOpen] = useState(false);
   const [profileInitialTab, setProfileInitialTab] = useState<'overview' | 'achievements' | 'perks'>('overview');
@@ -274,7 +329,11 @@ export default function App() {
         arenaTokenBonusPercent: 0,
         temporaryXpBoostCharges: 0,
       },
-      maturaAttempts: 0
+      maturaAttempts: 0,
+      currentSubject: 'matematyka',
+      completedLessonsPolish: [],
+      completedTasksPolish: [],
+      polishStats: { totalPoints: 0, completedCount: 0 }
     };
 
     try {
@@ -939,6 +998,68 @@ export default function App() {
     });
   };
 
+  const handlePolishLessonComplete = (lessonId: string, pointsEarned: number) => {
+    const cleanId = lessonId.replace(/^lesson-/, '');
+    const xpReward = Math.max(50, pointsEarned * 8);
+    const coinsReward = Math.max(15, Math.round(pointsEarned * 1.5));
+    handleMaturaReward(xpReward, coinsReward, true);
+
+    setUserState(prev => {
+      const prevCompleted = prev.completedLessonsPolish || [];
+      const updatedCompleted = prevCompleted.includes(cleanId) ? prevCompleted : [...prevCompleted, cleanId];
+      const nextPolishStats = {
+        totalPoints: (prev.polishStats?.totalPoints || 0) + pointsEarned,
+        completedCount: updatedCompleted.length,
+        lastLessonId: cleanId
+      };
+      const streakResult = calculateStreakOnTaskCompletion(prev.streakDays, prev.lastStreakDate);
+      const newState: UserState = {
+        ...prev,
+        completedLessonsPolish: updatedCompleted,
+        polishStats: nextPolishStats,
+        streakDays: streakResult.newStreakDays,
+        lastStreakDate: streakResult.newLastStreakDate,
+        streakActiveDates: streakResult.newStreakActiveDates,
+        lastActive: Date.now()
+      };
+      saveUserData(newState);
+      return newState;
+    });
+  };
+
+  const handlePolishTaskComplete = (taskId: string, pointsEarned: number) => {
+    if (taskId.startsWith('lesson-')) {
+      handlePolishLessonComplete(taskId, pointsEarned);
+      return;
+    }
+
+    const xpReward = Math.max(20, pointsEarned * 5);
+    const coinsReward = Math.max(5, pointsEarned);
+    handleMaturaReward(xpReward, coinsReward, true);
+
+    setUserState(prev => {
+      const prevCompleted = prev.completedTasksPolish || [];
+      const updatedCompleted = prevCompleted.includes(taskId) ? prevCompleted : [...prevCompleted, taskId];
+      const nextPolishStats = {
+        totalPoints: (prev.polishStats?.totalPoints || 0) + pointsEarned,
+        completedCount: prev.completedLessonsPolish?.length || 0,
+        lastLessonId: prev.polishStats?.lastLessonId
+      };
+      const streakResult = calculateStreakOnTaskCompletion(prev.streakDays, prev.lastStreakDate);
+      const newState: UserState = {
+        ...prev,
+        completedTasksPolish: updatedCompleted,
+        polishStats: nextPolishStats,
+        streakDays: streakResult.newStreakDays,
+        lastStreakDate: streakResult.newLastStreakDate,
+        streakActiveDates: streakResult.newStreakActiveDates,
+        lastActive: Date.now()
+      };
+      saveUserData(newState);
+      return newState;
+    });
+  };
+
   const handleClaimAchievement = (achievementId: string, tierNumber: number) => {
     const ach = ACHIEVEMENTS.find(a => a.id === achievementId);
     if (!ach) return;
@@ -1107,7 +1228,8 @@ export default function App() {
   );
 
   return (
-    <div className="h-full h-[100dvh] w-full bg-surface-bg text-text-primary font-sans flex flex-col md:flex-row overflow-hidden selection:bg-primary/20">
+    <div className="h-full h-[100dvh] w-full bg-surface-bg text-text-primary font-sans flex flex-col md:flex-row overflow-hidden selection:bg-primary/20 relative">
+      <BrandBackgroundPattern />
       <AnimatePresence>
         {loading && (
           <LoadingScreen 
@@ -1130,6 +1252,11 @@ export default function App() {
             state={userState} 
             selectedSubjectKey={selectedSubjectKey}
             onSelectSubject={handleSelectSubject}
+            currentSubject={currentSubject}
+            onSelectSubjectId={handleSelectSubjectId}
+            onOpenLobby={() => setShowSubjectLobbyModal(true)}
+            onOpenFormulas={() => setShowFormulasModal(true)}
+            onOpenScratchpad={() => setShowScratchpadModal(true)}
             onProfileClick={() => setCurrentTab('profile')} 
             onLogoClick={() => {
               triggerHaptic('medium');
@@ -1225,6 +1352,30 @@ export default function App() {
                       if (tab === 'simulator' && subTab) {
                         setSimulatorInitialView(subTab as any);
                       }
+                      if (tab === 'nauka' || (tab as string) === 'learn') {
+                        if (subTab === 'synthesis') {
+                          setPolishHubInitialMode('task_browser');
+                          setPolishHubInitialLessonId(null);
+                          setPolishHubInitialFilter({ type: 'synthesis_note' });
+                        } else if (subTab?.startsWith('epoch:')) {
+                          const epochName = subTab.replace('epoch:', '') as PolishEpoch;
+                          setPolishHubInitialMode('task_browser');
+                          setPolishHubInitialLessonId(null);
+                          setPolishHubInitialFilter({ epoch: epochName });
+                        } else if (subTab === 'task_browser') {
+                          setPolishHubInitialMode('task_browser');
+                          setPolishHubInitialLessonId(null);
+                          setPolishHubInitialFilter(undefined);
+                        } else if (subTab?.startsWith('lekcja-') || subTab?.startsWith('lesson-')) {
+                          setPolishHubInitialMode('lessons');
+                          setPolishHubInitialLessonId(subTab);
+                          setPolishHubInitialFilter(undefined);
+                        } else {
+                          setPolishHubInitialMode('lessons');
+                          setPolishHubInitialLessonId(null);
+                          setPolishHubInitialFilter(undefined);
+                        }
+                      }
                       setCurrentTab(tab as TabState);
                       if (subTab && tab === 'profil') setProfileInitialTab(subTab as any);
                     }} 
@@ -1245,21 +1396,33 @@ export default function App() {
                   />
                 )}
                 {(currentTab === 'nauka' || (currentTab as string) === 'learn') && (
-                  <LearnView 
-                    userState={userState}
-                    selectedSubjectKey={selectedSubjectKey}
-                    onSelectSubject={handleSelectSubject}
-                    onStartTask={handleStartTask} 
-                    onCompleteTask={handleCompleteTask}
-                    isGuest={isGuest} 
-                    onLoginRequest={handleLoginClick}
-                    onProRequest={() => setShowProPopup(true)}
-                    completedTasks={completedTasks}
-                    taskStars={taskStars}
-                    lessonMistakes={lessonMistakes}
-                    onBackToDashboard={() => setCurrentTab('dashboard')}
-                    onSheetToggle={setIsSubjectSheetOpen}
-                  />
+                  (currentSubject === 'polski' || selectedSubjectKey === 'pol') ? (
+                    <PolishStudyHub
+                      onCompleteTask={handlePolishTaskComplete}
+                      onCompleteLesson={handlePolishLessonComplete}
+                      completedLessonIds={userState.completedLessonsPolish}
+                      completedTaskIds={userState.completedTasksPolish}
+                      initialMode={polishHubInitialMode}
+                      initialActiveLessonId={polishHubInitialLessonId}
+                      initialTaskFilter={polishHubInitialFilter}
+                    />
+                  ) : (
+                    <LearnView 
+                      userState={userState}
+                      selectedSubjectKey={selectedSubjectKey}
+                      onSelectSubject={handleSelectSubject}
+                      onStartTask={handleStartTask} 
+                      onCompleteTask={handleCompleteTask}
+                      isGuest={isGuest} 
+                      onLoginRequest={handleLoginClick}
+                      onProRequest={() => setShowProPopup(true)}
+                      completedTasks={completedTasks}
+                      taskStars={taskStars}
+                      lessonMistakes={lessonMistakes}
+                      onBackToDashboard={() => setCurrentTab('dashboard')}
+                      onSheetToggle={setIsSubjectSheetOpen}
+                    />
+                  )
                 )}
                 {currentTab === 'simulator' && (
                   <MaturaSimulatorView 
@@ -1270,6 +1433,7 @@ export default function App() {
                     completedTasks={completedTasks}
                     onCompleteTask={handleCkeTaskComplete}
                     onActiveSessionChange={setIsSimulatorSessionActive}
+                    currentSubject={currentSubject === 'polski' || selectedSubjectKey === 'pol' ? 'polski' : 'matematyka'}
                   />
                 )}
                 {currentTab === 'arena' && (
@@ -1385,6 +1549,26 @@ export default function App() {
         onClose={() => setShowMistakesModal(false)}
         onStartRehabSession={handleStartRehabSession}
         onNavigateToLessons={() => setCurrentTab('nauka')}
+      />
+
+      <SubjectLobbyModal
+        isOpen={showSubjectLobbyModal}
+        onClose={() => setShowSubjectLobbyModal(false)}
+        currentSubject={currentSubject}
+        onSelectSubject={(subId) => {
+          handleSelectSubjectId(subId);
+          setShowSubjectLobbyModal(false);
+        }}
+        polishStats={{ total: 1056, epochs: 11, lektury: 10 }}
+        mathStats={{ total: 1006, topics: 15 }}
+      />
+      <CkeFormulasModal
+        isOpen={showFormulasModal}
+        onClose={() => setShowFormulasModal(false)}
+      />
+      <ScratchpadModal
+        isOpen={showScratchpadModal}
+        onClose={() => setShowScratchpadModal(false)}
       />
 
       {/* Nocturne Luminary Session Resumed Badge */}
