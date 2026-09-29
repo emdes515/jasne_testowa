@@ -291,8 +291,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
           isCorrect: true,
           message:
             newAttempts === 1
-              ? `✅ Znakomicie! Poprawna odpowiedź z oficjalnego klucza CKE (+${earned} pkt).`
-              : `✅ Poprawna odpowiedź w 2. próbie (+${earned} pkt).`,
+              ? `Znakomicie! Poprawna odpowiedź z oficjalnego klucza CKE (+${earned} pkt).`
+              : `Poprawna odpowiedź w 2. próbie (+${earned} pkt).`,
         },
       });
       setShowExplanation(true);
@@ -311,7 +311,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
           feedback: {
             isCorrect: false,
             message:
-              '❌ Niestety to nie jest poprawna odpowiedź. Masz jeszcze 1 próbę (za 50% punktów) lub możesz odsłonić klucz CKE.',
+              'Niestety to nie jest poprawna odpowiedź. Masz jeszcze 1 próbę (za 50% punktów) lub możesz odsłonić klucz CKE.',
           },
         });
       } else {
@@ -321,7 +321,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
           pointsAwarded: 0,
           feedback: {
             isCorrect: false,
-            message: '❌ Błędna odpowiedź w 2. próbie (0 pkt). Zapoznaj się z poniższym wyjaśnieniem i oficjalnym kluczem CKE.',
+            message: 'Błędna odpowiedź w 2. próbie (0 pkt). Zapoznaj się z poniższym wyjaśnieniem i oficjalnym kluczem CKE.',
           },
         });
         setShowExplanation(true);
@@ -367,7 +367,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
         pointsAwarded: earned,
         feedback: {
           isCorrect: true,
-          message: `✅ Bezbłędna ocena wszystkich stwierdzeń! Przyznano ${earned}/${currentTask.points} pkt CKE.`,
+          message: `Bezbłędna ocena wszystkich stwierdzeń! Przyznano ${earned}/${currentTask.points} pkt CKE.`,
         },
       });
       setShowExplanation(true);
@@ -385,7 +385,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
           attempts: newAttempts,
           feedback: {
             isCorrect: false,
-            message: `⚠️ Poprawnie oceniono ${correctCount} z ${statements.length} zdań. Możesz poprawić odpowiedzi w 2. próbie lub odsłonić klucz CKE.`,
+            message: `Poprawnie oceniono ${correctCount} z ${statements.length} zdań. Możesz poprawić odpowiedzi w 2. próbie lub odsłonić klucz CKE.`,
           },
         });
       } else {
@@ -441,11 +441,11 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
     let message = '';
     if (words < 60) {
-      message = `⚠️ Liczba słów (${words}) jest poniżej bezwzględnego progu CKE (60–90 słów) – utrata punktu za kompozycję.`;
+      message = `Liczba słów (${words}) jest poniżej bezwzględnego progu CKE (60–90 słów) – utrata punktu za kompozycję.`;
     } else if (words > 90) {
-      message = `⚠️ Przekroczono limit słów (${words} > 90) – utrata punktu za kompozycję i formę.`;
+      message = `Przekroczono limit słów (${words} > 90) – utrata punktu za kompozycję i formę.`;
     } else {
-      message = `✅ Liczba słów (${words}) idealnie mieści się w wyznaczonym oknie 60–90 wyrazów!`;
+      message = `Liczba słów (${words}) idealnie mieści się w wyznaczonym oknie 60–90 wyrazów!`;
     }
 
     updateCurrentAnswer({
@@ -503,8 +503,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
         isCorrect: earned === currentTask.points,
         message:
           earned === currentTask.points
-            ? `✅ Twoja odpowiedź spełnia kryteria egzaminatora CKE (${earned}/${currentTask.points} pkt).`
-            : `⚠️ Częściowa zgodność z kluczem CKE (${earned}/${currentTask.points} pkt). Porównaj swoją wersję ze wzorcem poniżej.`,
+            ? `Twoja odpowiedź spełnia kryteria egzaminatora CKE (${earned}/${currentTask.points} pkt).`
+            : `Częściowa zgodność z kluczem CKE (${earned}/${currentTask.points} pkt). Porównaj swoją wersję ze wzorcem poniżej.`,
       },
     });
 
@@ -583,7 +583,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             }`}
           >
             <GraduationCap className="w-4 h-4" />
-            <span>🎓 Kurs Lekcyjny (24 lekcje po 45 min)</span>
+            <span>Kurs Lekcyjny (24 lekcje po 45 min)</span>
             <span className="px-1.5 py-0.2 rounded text-[10px] bg-surface-bg/40 text-black font-extrabold uppercase">
               Rekomendowane
             </span>
@@ -598,7 +598,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             }`}
           >
             <Search className="w-4 h-4" />
-            <span>🔍 Wyszukiwarka Zadań CKE ({ALL_POLISH_TASKS.length})</span>
+            <span>Wyszukiwarka Zadań CKE ({ALL_POLISH_TASKS.length})</span>
           </button>
         </div>
 
@@ -630,9 +630,9 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                 </h1>
                 <p className="text-xs sm:text-sm text-text-secondary mt-2 max-w-3xl leading-relaxed">
                   Każda sesja to standardowa jednostka lekcyjna (45 min):{' '}
-                  <strong className="text-amber-300">Wstęp teoretyczny z patentami CKE (~12 min)</strong>{' '}
-                  ➔ <strong className="text-rose-300">Praktyka na autentycznych zadaniach CKE (~25 min)</strong>{' '}
-                  ➔ <strong className="text-emerald-300">Podsumowanie i eliminacja błędów kardynalnych (~8 min)</strong>.
+                  <strong className="text-amber-300">Wstęp teoretyczny z patentami CKE (~12 min)</strong> •{' '}
+                  <strong className="text-rose-300">Praktyka na autentycznych zadaniach CKE (~25 min)</strong> •{' '}
+                  <strong className="text-emerald-300">Podsumowanie i eliminacja błędów kardynalnych (~8 min)</strong>.
                 </p>
               </div>
 
@@ -1384,10 +1384,10 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         <div className="flex items-center justify-between pt-2">
                           <div className="text-[11px] text-text-secondary">
                             {synthesisWordCount < 60
-                              ? `⚠️ Brakuje jeszcze ${60 - synthesisWordCount} słów do dolnego progu CKE.`
+                              ? `Brakuje jeszcze ${60 - synthesisWordCount} słów do dolnego progu CKE.`
                               : synthesisWordCount <= 90
-                              ? '✔️ Długość tekstu idealnie spełnia kryterium CKE (60–90).'
-                              : `⚠️ Przekroczono limit o ${synthesisWordCount - 90} słów.`}
+                              ? 'Długość tekstu idealnie spełnia kryterium CKE (60–90).'
+                              : `Przekroczono limit o ${synthesisWordCount - 90} słów.`}
                           </div>
                           <button
                             onClick={handleSubmitSynthesis}

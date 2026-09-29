@@ -8,12 +8,14 @@ interface PromoFloatingPillProps {
   secondsLeft: number;
   onClick: () => void;
   isVisible?: boolean;
+  variant?: 'floating' | 'bottom-inline';
 }
 
 export function PromoFloatingPill({
   secondsLeft,
   onClick,
-  isVisible = true
+  isVisible = true,
+  variant = 'floating'
 }: PromoFloatingPillProps) {
   if (!isVisible || secondsLeft <= 0) return null;
 
@@ -24,17 +26,21 @@ export function PromoFloatingPill({
     onClick();
   };
 
+  const positionClasses = variant === 'bottom-inline'
+    ? 'relative z-20 mx-auto my-2 w-fit'
+    : 'fixed top-26 right-3 sm:top-24 sm:right-6 z-40';
+
   return (
     <motion.button
       type="button"
       id="promo-floating-pill"
-      initial={{ opacity: 0, scale: 0.88, y: -10 }}
+      initial={{ opacity: 0, scale: 0.88, y: variant === 'bottom-inline' ? 10 : -10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.88, y: -10 }}
+      exit={{ opacity: 0, scale: 0.88, y: variant === 'bottom-inline' ? 10 : -10 }}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
-      className={`fixed top-26 right-3 sm:top-24 sm:right-6 z-40 h-10 sm:h-11 flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full transition-all cursor-pointer select-none ${
+      className={`${positionClasses} h-10 sm:h-11 flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full transition-all cursor-pointer select-none ${
         isUrgent
           ? 'bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 text-white border border-rose-300/80 shadow-[0_4px_0_#9F1239,0_8px_25px_rgba(244,63,94,0.5)] active:translate-y-1 active:shadow-[0_1px_0_#9F1239]'
           : 'bg-gradient-to-r from-[#FFB800] via-[#FFA000] to-[#FF8C00] text-[#070A0F] border border-amber-200/90 shadow-[0_4px_0_#B37F00,0_8px_25px_rgba(255,184,0,0.45)] active:translate-y-1 active:shadow-[0_1px_0_#B37F00]'

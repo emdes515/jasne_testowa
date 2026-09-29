@@ -661,51 +661,51 @@
               "diagram": {
                 "type": "INFOGRAPHIC",
                 "title": "Wyłączanie czynnika przed pierwiastek i redukcja",
-                "formulaBadge": "\\sqrt{75} = \\sqrt{25 \\cdot 3} = \\sqrt{25} \\cdot \\sqrt{3} = 5\\sqrt{3}",
-                "caption": "Rozbijasz liczbę pod pierwiastkiem na iloczyn, w którym jeden składnik to kwadrat liczby całkowitej (4, 9, 16, 25, 36, 49...).",
+                "formulaBadge": "\\sqrt{108} - \\sqrt{48} = 6\\sqrt{3} - 4\\sqrt{3} = 2\\sqrt{3}",
+                "caption": "Rozbijasz liczby pod pierwiastkami na iloczyny z pełnymi kwadratami (36 i 16), pierwiastkujesz je i redukujesz wyrazy podobne.",
                 "width": 520,
                 "height": 180,
                 "cards": [
                   {
                     "badge": "Krok 1",
-                    "title": "Szukasz kwadratu",
-                    "desc": "Liczba $75$ dzieli się przez $25$ ($25 \\cdot 3$).",
+                    "title": "Rozkład 108",
+                    "desc": "$108 = 36 \\cdot 3$, czyli $\\sqrt{108} = 6\\sqrt{3}$",
                     "color": "#38BDF8"
                   },
                   {
                     "badge": "Krok 2",
-                    "title": "Pierwiastkujesz kwadrat",
-                    "desc": "Pierwiastek z $\\sqrt{25}$ daje czyste $5$.",
+                    "title": "Rozkład 48",
+                    "desc": "$48 = 16 \\cdot 3$, czyli $\\sqrt{48} = 4\\sqrt{3}$",
                     "color": "#FFB800"
                   },
                   {
                     "badge": "Krok 3",
-                    "title": "Zapis końcowy",
-                    "desc": "Wyciągasz $5$ przed pierwiastek: $5\\sqrt{3}$.",
+                    "title": "Redukcja",
+                    "desc": "$6\\sqrt{3} - 4\\sqrt{3} = 2\\sqrt{3}$",
                     "color": "#10B981"
                   }
                 ],
                 "metrics": [
                   {
-                    "label": "Czynnik kwadratowy",
-                    "value": "$75 = 25 \\cdot 3$",
+                    "label": "Pierwszy składnik",
+                    "value": "$\\sqrt{108} = 6\\sqrt{3}$",
                     "color": "#38BDF8"
                   },
                   {
-                    "label": "Wyłączenie",
-                    "value": "$\\sqrt{25} = 5$",
+                    "label": "Drugi składnik",
+                    "value": "$\\sqrt{48} = 4\\sqrt{3}$",
                     "color": "#FFB800"
                   },
                   {
-                    "label": "Postać kanoniczna",
-                    "value": "$5\\sqrt{3}$",
+                    "label": "Wynik końcowy",
+                    "value": "$2\\sqrt{3}$",
                     "color": "#10B981"
                   }
                 ]
               },
               "numberLine": null
             },
-            "exam_trap": "Odejmowanie liczb pod pierwiastkami: $\\sqrt{75} - \\sqrt{27} = \\sqrt{48}$.\n\nPoprawnie: Najpierw wyłącz czynniki przed pierwiastki: $5\\sqrt{3} - 3\\sqrt{3} = 2\\sqrt{3}$.",
+            "exam_trap": "Błąd: Odejmowanie liczb pod wspólnym pierwiastkiem: $\\sqrt{108} - \\sqrt{48} = \\sqrt{108 - 48} = \\sqrt{60}$.\n\nPoprawnie: Nigdy nie odejmujemy liczb pod pierwiastkiem! Najpierw wyłącz czynniki: $6\\sqrt{3} - 4\\sqrt{3} = 2\\sqrt{3}$.",
             "keyTakeaway": "Złota reguła CKE: Zawsze sprawdzaj założenia zadania i wzory w Wybranych Wzorach Matematycznych CKE.",
             "golden_rule": "Złota reguła CKE: Zawsze sprawdzaj założenia zadania i wzory w Wybranych Wzorach Matematycznych CKE.",
             "diagram": {
@@ -884,25 +884,25 @@
             "numberLine": null,
             "trapDiagram": {
               "type": "INFOGRAPHIC",
-              "title": "Pułapka CKE: Rozbijanie sumy pod pierwiastkiem",
-              "formulaBadge": "\\sqrt{a^2 + b^2} \\neq a + b \\quad \\text{oraz} \\quad \\sqrt{a - b} \\neq \\sqrt{a} - \\sqrt{b}",
-              "caption": "Pierwiastkować wolno WYŁĄCZNIE mnożenie i dzielenie! Nigdy nie rozbijaj sumy ani różnicy pod pierwiastkiem.",
+              "title": "Pułapka CKE: Odejmowanie liczb pod wspólnym pierwiastkiem",
+              "formulaBadge": "\\sqrt{108} - \\sqrt{48} \\neq \\sqrt{108 - 48} = \\sqrt{60}",
+              "caption": "NIGDY nie odejmuj ani nie dodawaj liczb pod wspólnym pierwiastkiem! Wolno rozbijać WYŁĄCZNIE mnożenie i dzielenie ($\\sqrt{a - b} \\neq \\sqrt{a} - \\sqrt{b}$).",
               "width": 520,
               "height": 180,
               "metrics": [
                 {
                   "label": "KARDYNALNY BŁĄD",
-                  "value": "$\\sqrt{9 + 16} \\neq 3 + 4 = 7$",
+                  "value": "$\\sqrt{108} - \\sqrt{48} = \\sqrt{60}$",
                   "color": "#F43F5E"
                 },
                 {
                   "label": "POPRAWNA KOLEJNOŚĆ",
-                  "value": "$\\sqrt{9 + 16} = \\sqrt{25} = 5$",
+                  "value": "$6\\sqrt{3} - 4\\sqrt{3} = 2\\sqrt{3}$",
                   "color": "#10B981"
                 },
                 {
-                  "label": "Dozwolone działanie",
-                  "value": "$\\sqrt{a \\cdot b} = \\sqrt{a} \\cdot \\sqrt{b}$ (tylko mnożenie!)",
+                  "label": "Kluczowa zasada",
+                  "value": "$\\sqrt{a - b} \\neq \\sqrt{a} - \\sqrt{b}$ (brak rozbicia!)",
                   "color": "#FFB800"
                 }
               ]

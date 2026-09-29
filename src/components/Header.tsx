@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { UserState, SubjectKey, SubjectId } from '../types';
-import { User, Flame, Coins, Zap, X, Heart, Clock, Users, Sun, Moon, LayoutGrid, BookOpen, Edit3 } from 'lucide-react';
+import { User, Flame, Coins, Zap, X, Heart, Clock, Users, Sun, Moon, LayoutGrid, BookOpen, Edit3, Calculator } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
@@ -81,13 +81,13 @@ export function Header({
           triggerHaptic('medium');
           if (onLogoClick) onLogoClick();
         }}
-        className="lg:hidden flex items-center gap-2 group cursor-pointer select-none active:scale-95 transition-all text-left py-1 px-1 -ml-1 rounded-xl hover:bg-white/[0.04] shrink-0"
+        className="lg:hidden flex items-center gap-1.5 sm:gap-2 group cursor-pointer select-none active:scale-95 transition-all text-left py-1 px-1 -ml-1 rounded-xl hover:bg-white/[0.04] min-w-0 shrink"
         title="Przejdź do pulpitu głównego JASNE."
         aria-label="Pulpit główny JASNE."
       >
-        <JasneLogo variant="icon" size={32} glow={true} className="group-hover:scale-105 transition-transform duration-200" />
-        <div className="flex flex-col text-left">
-          <span className="text-base sm:text-lg font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
+        <JasneLogo variant="icon" size={28} glow={true} className="group-hover:scale-105 transition-transform duration-200 shrink-0" />
+        <div className="flex flex-col text-left min-w-0">
+          <span className="text-sm sm:text-base font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
             JASNE<span className="text-primary">.</span>
           </span>
           <span className="hidden sm:inline-block text-[10px] font-bold text-text-muted tracking-wider uppercase mt-0.5">
@@ -97,7 +97,7 @@ export function Header({
       </button>
 
       {/* CENTRUM: Selektor przedmiotu + Przycisk Lobby */}
-      <div className="flex items-center gap-1.5 sm:gap-2">
+      <div className="flex items-center gap-1 sm:gap-1.5 min-w-0 shrink">
         {/* Przełącznik przedmiotu */}
         <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5 shadow-inner">
           <button
@@ -107,13 +107,13 @@ export function Header({
               onSelectSubject?.('math');
               onSelectSubjectId?.('matematyka');
             }}
-            className={`flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
               (currentSubject === 'matematyka' || selectedSubjectKey === 'math' || (!currentSubject && !selectedSubjectKey))
                 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
                 : 'text-text-muted hover:text-text-primary'
             }`}
           >
-            <span>📐</span>
+            <Calculator size={13} className="shrink-0 text-amber-400" />
             <span className="hidden xs:inline sm:inline">Matematyka</span>
           </button>
 
@@ -124,13 +124,13 @@ export function Header({
               onSelectSubject?.('pol');
               onSelectSubjectId?.('polski');
             }}
-            className={`flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
               (currentSubject === 'polski' || selectedSubjectKey === 'pol')
                 ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm'
                 : 'text-text-muted hover:text-text-primary'
             }`}
           >
-            <span>🇵🇱</span>
+            <BookOpen size={13} className="shrink-0 text-rose-400" />
             <span className="hidden xs:inline sm:inline">Polski</span>
           </button>
         </div>
@@ -351,7 +351,7 @@ export function Header({
           </button>
         )}
 
-        {/* Przełącznik Motywu (Szybki 1-tap: Jasny / Ciemny) */}
+        {/* Przełącznik Motywu (Szybki 1-tap na desktopie, na mobile w profilu) */}
         <button 
           id="header-theme-toggle"
           type="button"
@@ -359,7 +359,7 @@ export function Header({
             triggerHaptic('light');
             toggleTheme();
           }}
-          className="min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-muted hover:text-primary transition-all duration-150 active:scale-90 cursor-pointer shadow-sm flex items-center justify-center"
+          className="hidden sm:flex min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-muted hover:text-primary transition-all duration-150 active:scale-90 cursor-pointer shadow-sm items-center justify-center shrink-0"
           title={resolvedTheme === 'dark' ? 'Przełącz na motyw jasny (Solar Luminary)' : 'Przełącz na motyw ciemny (Nocturne Luminary)'}
           aria-label={resolvedTheme === 'dark' ? 'Przełącz na motyw jasny' : 'Przełącz na motyw ciemny'}
         >
@@ -379,7 +379,7 @@ export function Header({
           }}
           onMouseEnter={() => setShowXpTooltip(true)}
           onMouseLeave={() => setShowXpTooltip(false)}
-          className="flex items-center gap-2 pl-1 pr-2 sm:pr-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm"
+          className="flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1 sm:pr-2.5 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm shrink-0"
           title="Twój profil i postęp XP"
         >
           {/* Avatar z subtelnym bursztynowym obwodem */}
@@ -388,7 +388,7 @@ export function Header({
               <User size={13} className="text-primary" />
             </div>
           </div>
-          <div className="flex flex-col text-left">
+          <div className="hidden sm:flex flex-col text-left">
             <span className="font-display font-black text-[11px] sm:text-xs text-text-primary leading-tight group-hover:text-primary transition-colors tabular-nums font-mono">
               LVL {state.level}
             </span>

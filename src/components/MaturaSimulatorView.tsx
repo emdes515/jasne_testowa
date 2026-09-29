@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { 
   BookOpen, 
+  Calculator,
   GraduationCap, 
   Target, 
   ArrowLeft, 
@@ -1180,24 +1181,26 @@ export function MaturaSimulatorView({
                   <button
                     type="button"
                     onClick={() => setExamSubject('matematyka')}
-                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
+                    className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
                       examSubject === 'matematyka'
                         ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
                         : 'text-text-muted hover:text-white'
                     }`}
                   >
-                    📐 Matematyka (180m)
+                    <Calculator size={13} className="shrink-0 text-amber-400" />
+                    <span>Matematyka (180m)</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setExamSubject('polski')}
-                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
+                    className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
                       examSubject === 'polski'
                         ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
                         : 'text-text-muted hover:text-white'
                     }`}
                   >
-                    🇵🇱 Polski (240m)
+                    <BookOpen size={13} className="shrink-0 text-rose-400" />
+                    <span>Polski (240m)</span>
                   </button>
                 </div>
               )}
@@ -1987,33 +1990,37 @@ export function MaturaSimulatorView({
                 </div>
               </div>
 
-              {/* Pasek numerów zadań z touch-target min. 40x40px */}
-              <div className="flex items-center gap-1.5 overflow-x-auto py-1.5 px-1 -mx-1 scrollbar-none">
-                {examTasks.map((t, idx) => {
-                  const isCurrent = idx === examCurrentIndex;
-                  const isAnswered = examAnswers[t.id] !== undefined || examOpenScores[t.id] !== undefined;
-                  const isFlagged = flaggedTasks.has(t.id);
+              {/* Pasek numerów zadań z touch-target min. 40x40px oraz bocznymi wskaźnikami wygaszającymi scroll */}
+              <div className="relative group">
+                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-[#070A0F] to-transparent pointer-events-none z-10 opacity-80" aria-hidden="true" />
+                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-[#070A0F] to-transparent pointer-events-none z-10 opacity-80" aria-hidden="true" />
+                <div className="flex items-center gap-1.5 overflow-x-auto py-1.5 px-2 -mx-1 scrollbar-none">
+                  {examTasks.map((t, idx) => {
+                    const isCurrent = idx === examCurrentIndex;
+                    const isAnswered = examAnswers[t.id] !== undefined || examOpenScores[t.id] !== undefined;
+                    const isFlagged = flaggedTasks.has(t.id);
 
-                  return (
-                    <button
-                      key={t.id}
-                      type="button"
-                      onClick={() => setExamCurrentIndex(idx)}
-                      className={`min-w-[40px] h-10 px-1 rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all relative cursor-pointer active:scale-95 ${
-                        isCurrent
-                          ? 'bg-[#FFB800] text-black shadow-[0_0_12px_rgba(255,184,0,0.5)] font-black scale-105'
-                          : isAnswered
-                          ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300'
-                          : 'bg-surface-card border border-surface-border text-text-muted hover:text-white'
-                      }`}
-                    >
-                      {idx + 1}
-                      {isFlagged && (
-                        <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]" />
-                      )}
-                    </button>
-                  );
-                })}
+                    return (
+                      <button
+                        key={t.id}
+                        type="button"
+                        onClick={() => setExamCurrentIndex(idx)}
+                        className={`min-w-[40px] h-10 px-1 rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all relative cursor-pointer active:scale-95 ${
+                          isCurrent
+                            ? 'bg-[#FFB800] text-black shadow-[0_0_12px_rgba(255,184,0,0.5)] font-black scale-105'
+                            : isAnswered
+                            ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300'
+                            : 'bg-surface-card border border-surface-border text-text-muted hover:text-white'
+                        }`}
+                      >
+                        {idx + 1}
+                        {isFlagged && (
+                          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Karta pytania - wyizolowana i memoizowana przed tickami zegara */}

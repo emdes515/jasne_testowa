@@ -983,7 +983,7 @@ export function LearnView({
               )}
               
               {/* Lista Działów z marginesem pod dolną nawigację */}
-              <div className="flex-1 px-4 sm:px-6 pt-3 pb-28 sm:pb-32 md:pb-12 relative max-w-3xl mx-auto w-full">
+              <div className="flex-1 px-4 sm:px-6 pt-3 pb-36 md:pb-12 relative max-w-3xl mx-auto w-full">
                 <div className="space-y-3.5 relative z-10">
 
                   {visibleTopics.map((topic: any, idx: number) => {
@@ -1290,7 +1290,7 @@ export function LearnView({
               </header>
               
               {/* Inteligentny Akordeon Lekcji z bezpiecznym paddingiem na dole */}
-              <div className="flex-1 px-4 sm:px-5 pt-3 pb-28 sm:pb-32 md:pb-12 space-y-3.5 max-w-3xl mx-auto w-full">
+              <div className="flex-1 px-4 sm:px-5 pt-3 pb-36 md:pb-12 space-y-3.5 max-w-3xl mx-auto w-full">
                 {/* Pasek Postępu Działu - Minimalistyczny, 6-milimetrowy pasek w kolorze szmaragdowym/turkusowym */}
                 {(() => {
                   const completedLessonsCount = lessonsForCurrentTopic.filter(g => isLessonCompleted(g, completedTasks, userState)).length;

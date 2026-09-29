@@ -59,6 +59,7 @@ import { NumberLineDiagram } from './NumberLineDiagram';
 import { OutOfHeartsModal } from './OutOfHeartsModal';
 import { ParentSponsorModal } from './ParentSponsorModal';
 import { ProPopup } from './ProPopup';
+import { PromoFloatingPill } from './PromoFloatingPill';
 import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro, activateProWithCode } from '../lib/heartsManager';
 import { recordAiTokenUsage } from '../services/aiUsageTracker';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
@@ -946,6 +947,8 @@ export interface SessionRunnerProps {
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
+  guestPromoSecondsLeft?: number;
+  onOpenGuestPromo?: () => void;
 }
 
 export function sanitizeLessonHeading(title?: string): string {
@@ -993,7 +996,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   onDeductHeart,
   onOpenParentSponsor,
   onOpenProPopup,
-  onUpdateUserState
+  onUpdateUserState,
+  guestPromoSecondsLeft,
+  onOpenGuestPromo
 }) => {
   const {
     lessonId = '1.1',
@@ -3762,8 +3767,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
                 <motion.span 
                   key={String(displayedHeartsCount)}
-                  initial={{ scale: 1.45, color: '#f43f5e' }}
-                  animate={{ scale: 1, color: 'inherit' }}
+                  initial={{ scale: 1.45 }}
+                  animate={{ scale: 1 }}
                   transition={{ type: 'spring', stiffness: 450, damping: 15 }}
                   className="font-bold tracking-wide leading-none inline-block"
                 >
@@ -4200,12 +4205,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   <section className="flex flex-col gap-2.5">
-                    <div className="flex flex-col items-start gap-1">
-                      <div className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${
-                        isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
-                      }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'}`} />
-                        <span>{isPolishSession ? 'ESENCJA ZAGADNIENIA CKE' : 'ESENCJA POJĘCIA CKE'}</span>
+                    <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                      <div className="flex items-center gap-2.5">
+                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 ${
+                          isPolishSession
+                            ? 'bg-rose-500/15 text-rose-400 border-rose-500/30'
+                            : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
+                        }`}>
+                          <Lightbulb className="w-4 h-4" />
+                        </div>
+                        <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                          {isPolishSession ? 'ESENCJA ZAGADNIENIA CKE' : 'ESENCJA POJĘCIA CKE'}
+                        </h3>
                       </div>
                     </div>
                     {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession, theoryPill?.diagram, (theoryPill as any)?.numberLine)}
@@ -4455,9 +4466,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     const formulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
                     return (
                       <section className="w-full flex flex-col gap-3.5">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
-                          <span>WYBRANE WZORY MATEMATYCZNE CKE</span>
+                        <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 bg-amber-500/15 text-[#FFB800] border-amber-500/30">
+                              <BookOpen className="w-4 h-4" />
+                            </div>
+                            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                              WYBRANE WZORY MATEMATYCZNE CKE
+                            </h3>
+                          </div>
                         </div>
 
                         {formulas.length > 0 ? (
@@ -4516,7 +4533,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                                   {/* Kaseton wzoru KaTeX */}
                                   {item.latex && (
-                                    <div className="w-full px-3 py-1.5 sm:py-2.5 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full">
+                                    <div 
+                                      className="w-full px-3 py-1.5 sm:py-2.5 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full"
+                                      style={{ WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)', maskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
+                                    >
                                       <div className="inline-block w-fit min-w-full mx-auto text-center">
                                         <MathRenderer content={item.latex} displayMode={true} />
                                       </div>
@@ -4763,7 +4783,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <section className="w-full flex flex-col gap-4">
                         <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
                           <div className="flex items-center gap-2.5">
-                            <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm ${
+                            <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 ${
                               isPolishSession 
                                 ? 'bg-rose-500/15 text-rose-400 border-rose-500/30' 
                                 : isEnglishSession 
@@ -4773,12 +4793,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               <FileText className="w-4 h-4" />
                             </div>
                             <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
-                              {isPolishSession ? (polishSectionLabel.includes('lektury') ? 'Fragment lektury i analiza CKE' : 'Fragment tekstu i analiza maturalna') : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'WZORCOWE ROZWIĄZANIE KROK PO KROKU'}
+                              {isPolishSession ? (polishSectionLabel.includes('lektury') ? 'Fragment lektury i analiza CKE' : 'Fragment tekstu i analiza maturalna') : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'WZORCOWE ROZWIĄZANIE KROK PO KROKU CKE'}
                             </h3>
                           </div>
                           {normExample.steps.length > 0 && (
-                            <span className="text-[11px] font-bold text-slate-400 bg-white/[0.04] border border-white/10 px-2.5 py-0.5 rounded-full shrink-0">
-                              {normExample.steps.length} {normExample.steps.length === 1 ? 'krok' : normExample.steps.length < 5 ? 'kroki' : 'kroków'}
+                            <span className="text-[11px] font-bold text-slate-400 bg-white/[0.04] border border-white/10 px-2.5 py-0.5 rounded-full shrink-0 uppercase">
+                              {normExample.steps.length} {normExample.steps.length === 1 ? 'KROK' : normExample.steps.length < 5 ? 'KROKI' : 'KROKÓW'}
                             </span>
                           )}
                         </div>
@@ -4914,58 +4934,59 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   transition={{ duration: 0.15 }}
                   className="space-y-4"
                 >
-                  {(() => {
-                    const trapData = parseExamTrap((theoryPill as any)?.cke_trap || (theoryPill as any)?.ckeTrap || theoryPill?.exam_trap || theoryPill?.trapAlert || formulaSheet?.ckeTrap);
-                    if (trapData && (trapData.error || trapData.correct || trapData.description)) {
-                      return (
-                        <div className="space-y-3.5">
-                          {/* Karta 1: Typowy błąd */}
-                          {trapData.error && (
-                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-rose-950/30 via-slate-900/90 to-slate-950 border border-rose-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(244,63,94,0.12)]">
-                              <div className="flex items-center justify-between gap-2 border-b border-rose-500/20 pb-2.5">
-                                <div className="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
-                                  <div className="w-6 h-6 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
-                                    <XCircle className="w-3.5 h-3.5 text-rose-400" />
-                                  </div>
-                                  <span>PUŁAPKA EGZAMINACYJNA CKE</span>
-                                </div>
-                                <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/25 px-2 py-0.5 rounded-full">
-                                  Unikaj na maturze
-                                </span>
-                              </div>
-                              <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.error ? String(trapData.error).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
-                              </div>
-                            </section>
-                          )}
+                  <section className="w-full flex flex-col gap-3.5">
+                    <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm bg-rose-500/15 text-rose-400 border-rose-500/30 shrink-0">
+                          <ShieldAlert className="w-4 h-4" />
+                        </div>
+                        <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                          PUŁAPKA EGZAMINACYJNA CKE
+                        </h3>
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-rose-300 bg-rose-500/10 border border-rose-500/25 px-2.5 py-0.5 rounded-full shrink-0">
+                        UNIKAJ NA MATURZE
+                      </span>
+                    </div>
 
-                          {/* Karta 2: Poprawnie */}
-                          {trapData.correct && (
-                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-emerald-950/30 via-slate-900/90 to-slate-950 border border-emerald-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(16,185,129,0.12)]">
-                              <div className="flex items-center justify-between gap-2 border-b border-emerald-500/20 pb-2.5">
-                                <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                                  <div className="w-6 h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                                  </div>
-                                  <span>Poprawne podejście</span>
+                    {(() => {
+                      const trapData = parseExamTrap((theoryPill as any)?.cke_trap || (theoryPill as any)?.ckeTrap || theoryPill?.exam_trap || theoryPill?.trapAlert || formulaSheet?.ckeTrap);
+                      if (trapData && (trapData.error || trapData.correct || trapData.description)) {
+                        return (
+                          <div className="space-y-3.5">
+                            {/* Karta 1: Typowy błąd */}
+                            {trapData.error && (
+                              <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-rose-950/30 via-slate-900/90 to-slate-950 border border-rose-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(244,63,94,0.12)]">
+                                <div className="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider border-b border-rose-500/20 pb-2.5">
+                                  <XCircle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                                  <span>Częsty błąd maturzystów</span>
                                 </div>
-                                <span className="text-[10px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 rounded-full">
-                                  Klucz CKE
-                                </span>
+                                <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
+                                  {renderMicroContent(trapData.error ? String(trapData.error).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
+                                </div>
                               </div>
-                              <div className="text-sm sm:text-base text-emerald-100/95 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.correct ? String(trapData.correct).replace(/^[✓✔\s]*(?:poprawnie|poprawne\s*podejście|prawidłowo|dobre\s*podejście)[:\s-]*/i, '').trim() : '')}
-                              </div>
-                            </section>
-                          )}
+                            )}
 
-                          {/* Karta Wizualna: Schemat pułapki / oś liczbowa */}
-                          {((trapData as any).numberLine || (theoryPill as any)?.trapNumberLine || (trapData as any).diagram || (theoryPill as any)?.trapDiagram) && (
-                            <section className="w-full flex flex-col gap-2.5">
-                              <div className="flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-white/5 pb-2">
-                                <Target className="w-3.5 h-3.5 text-[#FFB800]" />
-                                <span>Ilustracja pułapki egzaminacyjnej:</span>
+                            {/* Karta 2: Poprawnie */}
+                            {trapData.correct && (
+                              <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-emerald-950/30 via-slate-900/90 to-slate-950 border border-emerald-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(16,185,129,0.12)]">
+                                <div className="flex items-center justify-between gap-2 border-b border-emerald-500/20 pb-2.5">
+                                  <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                                    <span>Poprawne podejście</span>
+                                  </div>
+                                  <span className="text-[10px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 rounded-full">
+                                    Klucz CKE
+                                  </span>
+                                </div>
+                                <div className="text-sm sm:text-base text-emerald-100/95 leading-relaxed font-normal">
+                                  {renderMicroContent(trapData.correct ? String(trapData.correct).replace(/^[✓✔\s]*(?:poprawnie|poprawne\s*podejście|prawidłowo|dobre\s*podejście)[:\s-]*/i, '').trim() : '')}
+                                </div>
                               </div>
+                            )}
+
+                            {/* Karta Wizualna: Schemat pułapki / oś liczbowa - BEZ zbędnego nagłówka "Ilustracja pułapki egzaminacyjnej:" */}
+                            {((trapData as any).numberLine || (theoryPill as any)?.trapNumberLine || (trapData as any).diagram || (theoryPill as any)?.trapDiagram) && (
                               <div className="w-full flex justify-center py-1 overflow-x-auto">
                                 {((trapData as any).numberLine || (theoryPill as any)?.trapNumberLine) ? (
                                   <NumberLineDiagram data={(trapData as any).numberLine || (theoryPill as any)?.trapNumberLine} height={60} maxWidth="360px" />
@@ -4973,70 +4994,57 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   <MathDiagram diagram={(trapData as any).diagram || (theoryPill as any)?.trapDiagram} compact borderless />
                                 )}
                               </div>
-                            </section>
-                          )}
+                            )}
 
-                          {/* Karta 3: Opcjonalna Wskazówka CKE */}
-                          {Boolean(sanitizeExaminerTip(trapData.tip || '').trim()) && (
-                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-slate-950 border border-amber-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(245,158,11,0.12)]">
-                              <div className="flex items-center justify-between gap-2 border-b border-amber-500/20 pb-2.5">
-                                <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
-                                  <div className="w-6 h-6 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
-                                    <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
+                            {/* Karta 3: Opcjonalna Wskazówka CKE */}
+                            {Boolean(sanitizeExaminerTip(trapData.tip || '').trim()) && (
+                              <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-slate-950 border border-amber-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(245,158,11,0.12)]">
+                                <div className="flex items-center justify-between gap-2 border-b border-amber-500/20 pb-2.5">
+                                  <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                                    <GraduationCap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                                    <span>Wskazówka egzaminatora</span>
                                   </div>
-                                  <span>Wskazówka egzaminatora</span>
+                                  <span className="text-[10px] font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/25 px-2 py-0.5 rounded-full">
+                                    CKE Patent
+                                  </span>
                                 </div>
-                                <span className="text-[10px] font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/25 px-2 py-0.5 rounded-full">
-                                  CKE Patent
-                                </span>
-                              </div>
-                              <div className="text-sm sm:text-base text-amber-100/95 leading-relaxed font-normal">
-                                {renderMicroContent(sanitizeExaminerTip(trapData.tip))}
-                              </div>
-                            </section>
-                          )}
-
-                          {/* Dodatkowy opis, jeśli występuje bez podziału */}
-                          {trapData.description && !trapData.error && !trapData.correct && (
-                            <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-rose-950/30 via-slate-900/90 to-slate-950 border border-rose-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(244,63,94,0.12)]">
-                              <div className="flex items-center justify-between gap-2 border-b border-rose-500/20 pb-2.5">
-                                <div className="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
-                                  <div className="w-6 h-6 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
-                                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
-                                  </div>
-                                  <span>PUŁAPKA EGZAMINACYJNA CKE</span>
+                                <div className="text-sm sm:text-base text-amber-100/95 leading-relaxed font-normal">
+                                  {renderMicroContent(sanitizeExaminerTip(trapData.tip))}
                                 </div>
-                                <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/25 px-2 py-0.5 rounded-full">
-                                  CKE Pułapka
-                                </span>
                               </div>
-                              <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.description ? String(trapData.description).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
-                              </div>
-                            </section>
-                          )}
+                            )}
 
-                          {/* Dodatkowy kontekst, jeśli opis występuje obok błędu */}
-                          {trapData.description && (trapData.error || trapData.correct) && (
-                            <section className="rounded-xl p-3.5 bg-slate-950/60 border border-slate-800/80 flex items-start gap-2.5 shadow-sm">
-                              <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                              <div className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                                {renderMicroContent(trapData.description ? String(trapData.description).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
+                            {/* Dodatkowy opis, jeśli występuje bez podziału */}
+                            {trapData.description && !trapData.error && !trapData.correct && (
+                              <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-rose-950/30 via-slate-900/90 to-slate-950 border border-rose-500/35 flex flex-col gap-2.5 shadow-[0_4px_20px_rgba(244,63,94,0.12)]">
+                                <div className="text-sm sm:text-base text-rose-100/95 leading-relaxed font-normal">
+                                  {renderMicroContent(trapData.description ? String(trapData.description).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
+                                </div>
                               </div>
-                            </section>
-                          )}
+                            )}
+
+                            {/* Dodatkowy kontekst, jeśli opis występuje obok błędu */}
+                            {trapData.description && (trapData.error || trapData.correct) && (
+                              <div className="rounded-xl p-3.5 bg-slate-950/60 border border-slate-800/80 flex items-start gap-2.5 shadow-sm">
+                                <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                                <div className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                                  {renderMicroContent(trapData.description ? String(trapData.description).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : '')}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div className="rounded-2xl p-5 bg-slate-900/60 border border-slate-800 text-slate-300 text-sm leading-relaxed">
+                          {isPolishSession
+                            ? 'Zwracaj szczególną uwagę na intencję nadawcy i kontekst wypowiedzi – nie oceniaj tekstu wyłącznie na podstawie pojedynczych słów wyrwanych z akapitu.'
+                            : 'Zwracaj szczególną uwagę na dziedzinę wyrażeń i znaki przy redukcji wyrazów podobnych.'}
                         </div>
                       );
-                    }
-
-                    return (
-                      <section className="rounded-2xl p-5 bg-slate-900/60 border border-slate-800 text-slate-300 text-sm leading-relaxed">
-                        {isPolishSession
-                          ? 'Zwracaj szczególną uwagę na intencję nadawcy i kontekst wypowiedzi – nie oceniaj tekstu wyłącznie na podstawie pojedynczych słów wyrwanych z akapitu.'
-                          : 'Zwracaj szczególną uwagę na dziedzinę wyrażeń i znaki przy redukcji wyrazów podobnych.'}
-                      </section>
-                    );
-                  })()}
+                    })()}
+                  </section>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -5457,7 +5465,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       if (isOptSelected) {
                         cardClass += 'bg-[#FFB800]/10 border-[#FFB800] shadow-sm ring-2 ring-[#FFB800]/20';
                       } else {
-                        cardClass += 'bg-slate-900/60 hover:bg-slate-900/90 border-slate-800 hover:border-slate-700 text-slate-200';
+                        cardClass += 'bg-[#0E1522]/90 hover:bg-[#141D2E] border-white/[0.06] hover:border-white/[0.14] text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)]';
                       }
                     } else {
                       if (isThisTheCorrectAnswer) {
@@ -5465,7 +5473,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       } else if (isOptSelected && !isThisTheCorrectAnswer) {
                         cardClass += 'bg-rose-950/30 border-rose-500 text-rose-200 shadow-sm';
                       } else {
-                        cardClass += 'bg-slate-900/30 border-slate-800/60 opacity-40 cursor-not-allowed';
+                        cardClass += 'bg-[#0E1522]/40 border-white/[0.03] opacity-40 cursor-not-allowed';
                       }
                     }
 
@@ -5488,12 +5496,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               !isEvaluated
                                 ? isOptSelected
                                   ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-md'
-                                  : 'bg-slate-800 border border-slate-700 text-slate-300 group-hover:border-slate-600'
+                                  : 'bg-[#141D2E] border border-white/[0.08] text-slate-300 group-hover:border-white/[0.16]'
                                 : isThisTheCorrectAnswer
                                   ? 'bg-emerald-500 text-emerald-950 font-black shadow-md'
                                   : isOptSelected
                                     ? 'bg-rose-500 text-white font-black'
-                                    : 'bg-slate-800 text-slate-600'
+                                    : 'bg-[#141D2E]/40 border border-white/[0.04] text-slate-600'
                             }`}>
                               {item.id}
                             </span>
@@ -5560,11 +5568,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             ? isStatementCorrect
                               ? 'bg-emerald-950/20 border-emerald-500/40'
                               : 'bg-rose-950/20 border-rose-500/40'
-                            : 'bg-slate-900/50 border-slate-800'
+                            : 'bg-[#0E1522]/90 border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)]'
                         } flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
                       >
                         <div className="flex items-start gap-2.5 flex-1 min-w-0">
-                          <span className="shrink-0 w-6 h-6 rounded-lg bg-slate-800 border border-slate-700 text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
+                          <span className="shrink-0 w-6 h-6 rounded-lg bg-[#141D2E] border border-white/[0.08] text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
                             {idx + 1}
                           </span>
                           <div className="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed break-words flex-1">
@@ -5582,7 +5590,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               if (isOptSelected) {
                                 btnClass += 'bg-[#FFB800] text-[#080B11] border border-[#D97706] shadow-sm';
                               } else {
-                                btnClass += 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700';
+                                btnClass += 'bg-[#141D2E] hover:bg-[#1A2438] text-slate-300 border border-white/[0.08]';
                               }
                             } else {
                               if (isThisTheCorrectAnswer) {
@@ -5590,7 +5598,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               } else if (isOptSelected && !isThisTheCorrectAnswer) {
                                 btnClass += 'bg-rose-500 text-white border border-rose-400';
                               } else {
-                                btnClass += 'bg-slate-900/40 border-slate-800 text-slate-600 opacity-40 cursor-not-allowed';
+                                btnClass += 'bg-[#0E1522]/40 border-white/[0.03] text-slate-600 opacity-40 cursor-not-allowed';
                               }
                             }
 
@@ -5634,7 +5642,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             className="w-full my-auto space-y-4 py-2"
           >
             {/* Część 1 */}
-            <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2.5">
+            <div className="p-4 rounded-2xl bg-[#0E1522]/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
               <div className="text-xs sm:text-sm font-semibold text-[#FFB800] flex items-center gap-1.5">
                 <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">1</span>
                 <span>{currentTask?.part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
@@ -5646,18 +5654,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   const target1 = (currentTask?.correctAnswer || currentTask?.correct_answer || '')[0];
                   const isOptionCorrect = optId === target1;
 
-                  let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm ';
+                  let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm cursor-pointer ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-sm'
-                      : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-200';
+                      ? 'bg-[#FFB800]/[0.08] border-[#FFB800] text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                      : 'bg-[#141D2E]/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] text-slate-200';
                   } else {
                     if (isOptionCorrect) {
                       btnClass += 'bg-emerald-950/30 border-emerald-500 text-emerald-200';
                     } else if (isSelected && !isOptionCorrect) {
                       btnClass += 'bg-rose-950/30 border-rose-500 text-rose-200';
                     } else {
-                      btnClass += 'bg-slate-950/40 border-slate-800/40 opacity-40 text-slate-500';
+                      btnClass += 'bg-[#0E1522]/40 border-white/[0.03] opacity-40 text-slate-500';
                     }
                   }
 
@@ -5680,7 +5688,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             ? 'bg-emerald-500 text-emerald-950 border-emerald-400 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
                               ? 'bg-rose-500 text-white border-rose-400 font-black'
-                              : 'bg-slate-800 border-slate-700 text-slate-300'
+                              : 'bg-[#141D2E] border-white/[0.08] text-slate-300'
                       }`}>
                         {optId}
                       </span>
@@ -5696,7 +5704,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             </div>
 
             {/* Część 2 */}
-            <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2.5">
+            <div className="p-4 rounded-2xl bg-[#0E1522]/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
               <div className="text-xs sm:text-sm font-semibold text-[#FFB800] flex items-center gap-1.5">
                 <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">2</span>
                 <span>{currentTask?.part_2?.prompt || 'Wybierz drugą część zdania / uzasadnienie:'}</span>
@@ -5708,18 +5716,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   const target2 = (currentTask?.correctAnswer || currentTask?.correct_answer || '')[1];
                   const isOptionCorrect = optId === target2;
 
-                  let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm ';
+                  let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm cursor-pointer ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/15 border-[#FFB800] text-amber-100 shadow-sm'
-                      : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-200';
+                      ? 'bg-[#FFB800]/[0.08] border-[#FFB800] text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                      : 'bg-[#141D2E]/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] text-slate-200';
                   } else {
                     if (isOptionCorrect) {
                       btnClass += 'bg-emerald-950/30 border-emerald-500 text-emerald-200';
                     } else if (isSelected && !isOptionCorrect) {
                       btnClass += 'bg-rose-950/30 border-rose-500 text-rose-200';
                     } else {
-                      btnClass += 'bg-slate-950/40 border-slate-800/40 opacity-40 text-slate-500';
+                      btnClass += 'bg-[#0E1522]/40 border-white/[0.03] opacity-40 text-slate-500';
                     }
                   }
 
@@ -5742,7 +5750,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             ? 'bg-emerald-500 text-emerald-950 border-emerald-400 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
                               ? 'bg-rose-500 text-white border-rose-400 font-black'
-                              : 'bg-slate-800 border-slate-700 text-slate-300'
+                              : 'bg-[#141D2E] border-white/[0.08] text-slate-300'
                       }`}>
                         {optId}
                       </span>
@@ -5793,47 +5801,53 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 const isSelected = selectedOption === optId;
                 const isOptionCorrect = Boolean(option.is_correct);
 
-                // Clean high-contrast styles: answers remain 100% visible on screen
-                let borderStyle = 'border-slate-800 hover:border-slate-700 bg-slate-900/50';
+                // Craftsmanship Nocturne Luminary styles (Linear / Brilliant grade)
+                let cardStyle = 'bg-[#0E1522]/90 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] shadow-[0_4px_20px_rgba(0,0,0,0.25)] text-slate-100';
                 if (isSelected && !isEvaluated) {
-                  borderStyle = isPolishSession
-                    ? 'border-[#F43F5E] bg-[#F43F5E]/15 shadow-sm'
-                    : 'border-[#FFB800] bg-[#FFB800]/15 shadow-sm';
+                  cardStyle = isPolishSession
+                    ? 'bg-[#F43F5E]/[0.08] border-[#F43F5E] shadow-[0_0_20px_rgba(244,63,94,0.18)] text-white'
+                    : 'bg-[#FFB800]/[0.08] border-[#FFB800] shadow-[0_0_20px_rgba(255,184,0,0.18)] text-white';
                 } else if (isEvaluated) {
                   if (isOptionCorrect) {
-                    borderStyle = 'border-emerald-500 bg-emerald-950/35 text-emerald-100 shadow-sm';
+                    cardStyle = 'border-emerald-500 bg-emerald-950/40 text-emerald-100 shadow-[0_0_20px_rgba(16,185,129,0.2)]';
                   } else if (isSelected && !isOptionCorrect) {
-                    borderStyle = 'border-rose-500/80 bg-rose-950/35 text-rose-100 shadow-sm';
+                    cardStyle = 'border-rose-500 bg-rose-950/40 text-rose-100 shadow-[0_0_20px_rgba(244,63,94,0.2)]';
                   } else {
-                    borderStyle = 'border-slate-800/50 opacity-40 bg-slate-900/20 text-slate-500';
+                    cardStyle = 'border-white/[0.03] opacity-40 bg-[#0E1522]/40 text-slate-500';
                   }
                 }
 
                 return (
-                  <button
+                  <motion.button
                     key={option.id || `session-opt-${optIdx}`}
                     id={`session-option-${optId}`}
                     onClick={() => handleSelectOption(optId)}
                     disabled={isEvaluated}
-                    className={`w-full min-h-[58px] p-3 sm:p-4 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all duration-150 ${borderStyle} active:scale-[0.99]`}
+                    whileHover={!isEvaluated ? { scale: 1.008 } : undefined}
+                    whileTap={!isEvaluated ? { scale: 0.985 } : undefined}
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                    className={`relative w-full min-h-[58px] p-3 sm:p-4 rounded-2xl border text-left flex items-center justify-between gap-3 transition-colors duration-150 overflow-hidden cursor-pointer select-none ${cardStyle}`}
                   >
+                    {/* Subtelny refleks Apple-style na górnej krawędzi */}
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+
                     <div className="flex items-center gap-3.5 flex-1 min-w-0">
                       <span 
                         className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 border transition-colors ${
                           isSelected && !isEvaluated
                             ? isPolishSession
-                              ? 'bg-[#F43F5E] border-[#E11D48] text-white font-bold'
-                              : 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold'
+                              ? 'bg-[#F43F5E] border-[#E11D48] text-white font-bold shadow-[0_0_10px_rgba(244,63,94,0.5)]'
+                              : 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold shadow-[0_0_10px_rgba(255,184,0,0.5)]'
                             : isEvaluated && isOptionCorrect
                               ? 'bg-emerald-500 border-emerald-400 text-emerald-950 font-black'
                               : isEvaluated && isSelected && !isOptionCorrect
                                 ? 'bg-rose-500 border-rose-400 text-white font-black'
-                                : 'bg-slate-800 border-slate-700 text-slate-300'
+                                : 'bg-[#141D2E] border-white/[0.08] text-slate-300'
                         }`}
                       >
                         {optId}
                       </span>
-                      <div className="text-sm sm:text-base text-slate-100 font-medium break-words flex-1">
+                      <div className="text-sm sm:text-base font-medium break-words flex-1">
                         {option?.numberLine ? (
                           <NumberLineDiagram data={option.numberLine} />
                         ) : option?.diagram ? (
@@ -5846,7 +5860,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                     {/* Keyboard badge for desktop */}
                     {!isEvaluated && (
-                      <span className="hidden md:inline-flex items-center text-[11px] font-mono font-bold text-slate-400 bg-slate-800/80 border border-slate-700/60 px-2 py-0.5 rounded shrink-0 mr-1">
+                      <span className="hidden md:inline-flex items-center text-[11px] font-mono font-bold text-slate-400 bg-[#141D2E] border border-white/[0.08] px-2 py-0.5 rounded shrink-0 mr-1">
                         {optId}
                       </span>
                     )}
@@ -5867,7 +5881,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     {isEvaluated && isSelected && !isOptionCorrect && (
                       <X className="w-5 h-5 text-rose-400 shrink-0 stroke-[3]" />
                     )}
-                  </button>
+                  </motion.button>
                 );
               })}
             </motion.div>
@@ -5875,16 +5889,27 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         })()}
           </>
         )}
+
+        {/* Baner promocyjny -50% PRO w dolnej strefie sesji nauki (pod opcjami w przewijalnym kontenerze) */}
+        {guestPromoSecondsLeft && guestPromoSecondsLeft > 0 && onOpenGuestPromo && (
+          <div className="pt-6 pb-6 flex justify-center w-full">
+            <PromoFloatingPill
+              secondsLeft={guestPromoSecondsLeft}
+              onClick={onOpenGuestPromo}
+              variant="bottom-inline"
+            />
+          </div>
+        )}
       </main>
 
       {/* ================= STICKY BOTTOM CTA FOR THEORY STEP ================= */}
       {isTheoryStep && (
         <footer 
           id="session-theory-sticky-cta"
-          className="w-full shrink-0 sticky bottom-0 z-30 bg-[#0B0F19]/95 backdrop-blur-md border-t border-slate-800 px-4 py-3 relative"
+          className="w-full shrink-0 sticky bottom-0 z-30 bg-[#070A0F]/95 backdrop-blur-md border-t border-white/[0.06] px-4 py-3 relative"
         >
           {/* Subtelny gradient maskujący na krawędzi górnej paska CTA */}
-          <div className="absolute -top-6 left-0 right-0 h-6 pointer-events-none bg-gradient-to-t from-[#0B0F19]/95 to-transparent" aria-hidden="true" />
+          <div className="absolute -top-6 left-0 right-0 h-6 pointer-events-none bg-gradient-to-t from-[#070A0F]/95 to-transparent" aria-hidden="true" />
           <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex items-center gap-2">
             {theorySubStep > 0 && (
               <button
@@ -5893,7 +5918,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   triggerHaptic('light');
                   setTheorySubStep(prev => Math.max(0, prev - 1));
                 }}
-                className="h-[48px] px-4 rounded-xl font-semibold text-slate-300 bg-slate-900 hover:bg-slate-800 border border-slate-800 flex items-center justify-center gap-1.5 text-sm shrink-0 cursor-pointer active:scale-95 transition"
+                className="h-[48px] px-4 rounded-xl font-semibold text-slate-300 bg-[#0E1522] hover:bg-[#141D2E] border border-white/[0.08] flex items-center justify-center gap-1.5 text-sm shrink-0 cursor-pointer active:scale-95 transition"
                 aria-label="Wróć do poprzedniej karty"
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -5957,7 +5982,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             /* Normal Action Bar */
             <div 
               id="session-check-bar"
-              className="w-full bg-[#0B0F19]/95 backdrop-blur-md border-t border-slate-800 px-4 py-3 sm:py-4"
+              className="w-full bg-[#070A0F]/95 backdrop-blur-md border-t border-white/[0.06] px-4 py-3 sm:py-4"
             >
               <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex flex-col items-center gap-2">
                 <div className="flex items-center gap-3 w-full">
@@ -5973,7 +5998,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ? 'border-amber-400/60 bg-amber-500/20 hover:bg-amber-500/30 shadow-sm'
                           : currentCoins >= currentTaskHintCost
                             ? 'border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20'
-                            : 'border-slate-800 bg-slate-900/60 opacity-50 cursor-not-allowed'
+                            : 'border-white/[0.06] bg-[#0E1522]/60 opacity-50 cursor-not-allowed'
                       }`}
                       title={
                         isHintUnlocked
@@ -6021,7 +6046,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ? isPolishSession
                             ? 'bg-gradient-to-r from-[#F43F5E] to-rose-600 hover:from-[#FB7185] hover:to-rose-500 text-white shadow-sm active:scale-[0.99] cursor-pointer'
                             : 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-sm active:scale-[0.99] cursor-pointer'
-                          : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
+                          : 'bg-[#141D2E]/60 text-slate-500 cursor-not-allowed border border-white/[0.06]'
                       }`}
                     >
                       <GraduationCap className={`w-5 h-5 stroke-[2.2] ${isPolishSession ? 'text-white' : 'text-slate-950'}`} />
@@ -6037,7 +6062,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ? isPolishSession
                             ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm active:scale-[0.99]'
                             : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm active:scale-[0.99]'
-                          : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
+                          : 'bg-[#141D2E]/60 text-slate-500 cursor-not-allowed border border-white/[0.06]'
                       }`}
                     >
                       <span>{isNumericTask ? 'SPRAWDŹ ODPOWIEDŹ' : 'SPRAWDŹ'}</span>
@@ -6179,10 +6204,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 60, opacity: 0 }}
               transition={{ type: 'spring', damping: 26, stiffness: 300 }}
-              className="w-full sm:max-w-xl max-h-[85vh] bg-[#0B0F19] border-t sm:border border-slate-800 rounded-t-3xl sm:rounded-3xl flex flex-col shadow-2xl overflow-hidden"
+              className="w-full sm:max-w-xl max-h-[85vh] bg-[#0E1522] border-t sm:border border-white/[0.08] rounded-t-3xl sm:rounded-3xl flex flex-col shadow-2xl overflow-hidden"
             >
+              {/* Wskaźnik Gestu (Drag Handle) na Mobile */}
+              <div className="w-10 h-1 rounded-full bg-white/20 mx-auto my-2 sm:hidden shrink-0" aria-hidden="true" />
+
               {/* Modal Header */}
-              <div className="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/60 shrink-0">
+              <div className="p-4 sm:p-5 border-b border-white/[0.06] flex items-center justify-between bg-[#070A0F]/60 shrink-0">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-[#FFB800]">
                     <BookOpen size={18} />
@@ -6704,7 +6732,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         </div>
 
                         {f.latex && (
-                          <div className="bg-[#080C14] border border-white/5 rounded-xl px-3 py-1.5 sm:py-2.5 text-center overflow-x-auto custom-scrollbar touch-pan-x max-w-full">
+                          <div 
+                            className="bg-[#080C14] border border-white/5 rounded-xl px-3 py-1.5 sm:py-2.5 text-center overflow-x-auto custom-scrollbar touch-pan-x max-w-full"
+                            style={{ WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)', maskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
+                          >
                             <div className="inline-block w-fit min-w-full mx-auto text-center font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
                               <MathRenderer content={f.latex} displayMode={!isPolishSession} />
                             </div>

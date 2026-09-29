@@ -1283,7 +1283,7 @@ export default function App() {
           />
         )}
 
-        {/* Powiększona Złota Pływająca Pastylka Promocji -50% PRO (top-26 right-3) */}
+        {/* Powiększona Złota Pływająca Pastylka Promocji -50% PRO (top-26 right-3 dla widoków głównych) */}
         <PromoFloatingPill
           secondsLeft={guestPromoSecondsLeft}
           onClick={() => {
@@ -1295,18 +1295,19 @@ export default function App() {
             !showGuestPromoModal && 
             !showAuthModal && 
             !showGuestPrompt && 
-            !isNewUser
+            !isNewUser &&
+            !activeTask
           }
         />
         
         <main 
           id="main-scroll-container"
           tabIndex={-1}
-          className={`flex-1 min-h-0 flex flex-col focus:outline-none ${
+          className={`relative w-full flex-1 min-w-0 min-h-0 flex flex-col focus:outline-none ${
             activeTask
               ? 'overflow-hidden p-0'
               : 'overflow-y-auto overflow-x-hidden overscroll-y-contain touch-pan-y no-scrollbar'
-          } relative z-10 w-full`} 
+          }`} 
           style={{ 
             WebkitOverflowScrolling: 'touch'
           }}
@@ -1322,6 +1323,17 @@ export default function App() {
                 ...activeTaskData
               }} 
               userState={userState} 
+              guestPromoSecondsLeft={
+                isGuest && 
+                guestPromoSecondsLeft > 0 && 
+                !showGuestPromoModal && 
+                !showAuthModal && 
+                !showGuestPrompt && 
+                !isNewUser
+                  ? guestPromoSecondsLeft
+                  : undefined
+              }
+              onOpenGuestPromo={() => setShowGuestPromoModal(true)}
               onCompleteSession={handleCompleteTask} 
               onCancelSession={handleCancelTask}
               onDeductCoins={handleDeductCoins}
