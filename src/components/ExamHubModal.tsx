@@ -35,10 +35,11 @@ export function ExamHubModal({
   if (!isOpen) return null;
 
   const isPolish = selectedSubjectKey === 'pol';
+  const isEnglish = selectedSubjectKey === 'eng';
 
   const handleModeClick = (mode: 'maraton' | 'exam_setup' | 'full_exams') => {
     triggerHaptic('medium');
-    onSelectMode(mode);
+    onSelectMode(isPolish ? ('hub' as any) : mode);
     onClose();
   };
 
@@ -64,12 +65,8 @@ export function ExamHubModal({
           <div className="p-4 sm:p-6 pb-3 sm:pb-4 border-b border-white/5 flex items-start justify-between gap-3 bg-gradient-to-b from-[#111726]/70 to-transparent shrink-0">
             <div>
               <div className="flex items-center gap-2 flex-wrap mb-1.5">
-                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                  isPolish 
-                    ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30' 
-                    : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
-                }`}>
-                  {isPolish ? 'Język Polski • Egzamin CKE' : 'Matematyka • Egzamin CKE'}
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                  {isPolish ? 'Język Polski • Egzamin CKE' : isEnglish ? 'Język Angielski • Egzamin CKE' : 'Matematyka • Egzamin CKE'}
                 </span>
                 <span className="text-[10px] font-medium text-slate-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
                   Formuła 2023
@@ -110,7 +107,7 @@ export function ExamHubModal({
                   <div>
                     <div className="flex items-center gap-2 flex-wrap mb-0.5">
                       <span className="text-[10px] font-bold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-md uppercase tracking-wider font-mono">
-                        {isPolish ? '1056 zadań z bazy' : `${totalTasksCount} oficjalnych zadań`}
+                        {isPolish ? '1056 zadań z bazy' : isEnglish ? '720 zadań z bazy' : `${totalTasksCount} oficjalnych zadań`}
                       </span>
                       <span className="text-[10px] text-slate-400 font-medium">
                         Trening ciągły
@@ -202,7 +199,7 @@ export function ExamHubModal({
                   <div>
                     <div className="flex items-center gap-2 flex-wrap mb-0.5">
                       <span className="text-[10px] font-bold text-sky-300 bg-sky-500/15 border border-sky-500/30 px-2 py-0.5 rounded-md uppercase tracking-wider font-mono">
-                        180 min • {isPolish ? '60 pkt' : '50 pkt'}
+                        {isEnglish ? '120 min • 60 pkt' : isPolish ? '180 min • 60 pkt' : '180 min • 50 pkt'}
                       </span>
                       <span className="text-[10px] text-slate-400 font-medium">
                         Oficjalne arkusze CKE

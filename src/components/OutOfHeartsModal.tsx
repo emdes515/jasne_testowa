@@ -20,6 +20,7 @@ interface OutOfHeartsModalProps {
   onRefillWithCoins: () => void;
   onOpenParentSponsor: () => void;
   onOpenProPopup: () => void;
+  onOpenBlikModal?: () => void;
   coins: number;
   initialTimeToNextRegenMs?: number;
 }
@@ -30,6 +31,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
   onRefillWithCoins,
   onOpenParentSponsor,
   onOpenProPopup,
+  onOpenBlikModal,
   coins,
   initialTimeToNextRegenMs = 30 * 60 * 1000
 }) => {
@@ -183,9 +185,24 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
             </button>
 
             {!canAffordCoins && (
-              <p className="text-[11px] text-slate-500 text-center">
-                Masz {coins} monet (brakuje {HEARTS_REFILL_COIN_COST - coins} do natychmiastowego napełnienia).
-              </p>
+              <div className="flex flex-col gap-2 w-full my-1">
+                <p className="text-[11px] text-slate-500 text-center">
+                  Masz {coins} monet (brakuje {HEARTS_REFILL_COIN_COST - coins} do natychmiastowego napełnienia).
+                </p>
+                {onOpenBlikModal && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      triggerHaptic('medium');
+                      onOpenBlikModal();
+                    }}
+                    className="w-full py-2.5 px-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm active:scale-[0.98]"
+                  >
+                    <Coins size={14} className="text-amber-400" />
+                    <span>Doładuj monety przez BLIK (od 5 zł)</span>
+                  </button>
+                )}
+              </div>
             )}
 
             {/* Opcja 3: PRO DLA CIEBIE */}

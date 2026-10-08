@@ -1,10 +1,33 @@
+export type DailyChallengeId = 'warmup' | 'sniper' | 'maintenance';
+
+export interface DailyChallenge {
+  id: DailyChallengeId;
+  title: string;
+  description: string;
+  target: number;
+  current: number;
+  rewardCoins: number;
+  rewardXp?: number;
+  isCompleted: boolean;
+  isClaimed: boolean;
+}
+
+export interface BlikCoinPack {
+  id: string;
+  name: string;
+  tagline: string;
+  coins: number;
+  pricePln: number;
+  popular?: boolean;
+}
+
 export interface UserPerks {
   xpBoostPercent: number; // e.g. 15 = +15% XP from tasks and matura
   coinBoostPercent: number; // e.g. 10 = +10% coins
-  streakFreezes: number; // count of streak freezes (protects streak & rust)
-  arenaShields: number; // count of ELO loss protection shields in Arena
+  streakFreezes: number; // count of streak freezes (protects streak & rust, max 2)
+  arenaShields: number; // count of ELO loss protection shields in Arena (max 3)
   arenaTokenBonusPercent: number; // extra tokens on Arena win
-  temporaryXpBoostCharges?: number; // 2x XP for next N tasks
+  temporaryXpBoostCharges?: number; // 2x XP for next N tasks / sessions
 }
 
 export interface UserState {
@@ -18,7 +41,10 @@ export interface UserState {
   lastStreakDate?: string; // YYYY-MM-DD of last completed task
   streakActiveDates?: string[]; // Array of YYYY-MM-DD strings for completed days
   dailyTaskCounts?: Record<string, number>; // YYYY-MM-DD -> tasks completed count
-  dailyQuestsClaimed?: Record<string, number[]>; // YYYY-MM-DD -> array of claimed tier IDs [1, 2, 3]
+  dailyQuestsClaimed?: Record<string, number[]>; // Legacy: YYYY-MM-DD -> array of claimed tier IDs [1, 2, 3]
+  dailyChallengesClaimed?: Record<string, DailyChallengeId[]>; // YYYY-MM-DD -> array of claimed challenge IDs
+  dailyChallengesState?: Record<string, { tasksCount?: number; perfectLesson?: boolean; reviewOrArenaDone?: boolean }>; // YYYY-MM-DD -> daily progress
+  lastProCoinDropDate?: string; // YYYY-MM-DD ostatniego odbioru Złotego Zrzutu PRO (+30 monet za 1. lekcję)
   maturaAttempts?: number; // Finished matura exam attempts
   maturaBestScore?: number; // Best score percentage in matura
   level: number;
@@ -39,6 +65,7 @@ export interface UserState {
   completedLessons?: Record<string, any>; // Record of lesson progression metadata
   // Hearts & PRO Sponsorship fields
   isPro?: boolean; // Czy użytkownik ma aktywny pakiet PRO (nielimitowane serca, AI Vision)
+  isDev?: boolean; // Czy aktywny jest pełny tryb deweloperski (odblokowane wszystkie funkcje, moduły i zasoby)
   hearts?: number; // Bieżąca liczba serc (0 do 5, domyślnie 5)
   maxHearts?: number; // Maksymalna liczba serc (domyślnie 5)
   lastHeartRegenTimestamp?: number; // Timestamp (Date.now()) ostatniej regeneracji serca
@@ -48,6 +75,13 @@ export interface UserState {
   currentSubject?: SubjectId;
   completedLessonsPolish?: string[];
   completedTasksPolish?: string[];
+  completedLessonsEnglish?: string[];
+  completedTasksEnglish?: string[];
+  englishStats?: {
+    totalPoints: number;
+    completedCount: number;
+    lastLessonId?: string;
+  };
   polishStats?: {
     totalPoints: number;
     completedCount: number;
@@ -121,6 +155,60 @@ export interface FormattedFormulaItem {
   description?: string;
 }
 
+export interface PolishBentoConcept {
+  id?: string;
+  name: string;
+  tag: string;
+  simpleDefinition: string;
+  contextExample: string;
+  ckeTrap: string;
+}
+
+export interface PolishTheoryData {
+  lessonNumber?: number;
+  module?: string;
+  epoch?: string;
+  lektura?: string;
+  subtitle?: string;
+  lead?: string;
+  objectives?: string[];
+  theoryPoints?: { title: string; content?: string; explanation?: string; example?: string }[];
+  bentoConcepts?: PolishBentoConcept[];
+  ckeExaminerTips?: string[];
+  cardinalWarning?: string;
+  gatekeeper?: {
+    question: string;
+    options: string[];
+    correctIndex: number;
+    explanation: string;
+    hint?: string;
+  };
+  goldenRules?: string[];
+  reflection?: string;
+}
+
+export interface MathAlgorithmStep {
+  stepNumber: number;
+  title: string;
+  description: string;
+  tip?: string;
+}
+
+export interface MathWorkedExample {
+  title: string;
+  points?: '1 pkt' | '2 pkt' | string;
+  problem: string;
+  solution: string;
+  keyInsight?: string;
+}
+
+export interface MathTrapDetail {
+  fail: string;
+  win: string;
+  explanation: string;
+  ckeTip?: string;
+}
+
 export interface LessonTheoryPill {
   lessonId?: string;
   title?: string;
@@ -129,8 +217,12 @@ export interface LessonTheoryPill {
   core_formulas?: string | string[] | any;
   formula_notes?: string;
   coreFormulaLatex?: string;
-  worked_example?: string | WorkedExample | any;
+  plain_polish?: string;
+  algorithm_steps?: MathAlgorithmStep[];
+  worked_example?: string | WorkedExample | MathWorkedExample | any;
+  worked_examples?: (string | WorkedExample | MathWorkedExample | any)[];
   exam_trap?: string;
+  trap_details?: MathTrapDetail;
   intuition?: string;
   keyTakeaway?: string;
   trapAlert?: string;
@@ -140,6 +232,10 @@ export interface LessonTheoryPill {
   book_summary?: BookSummary;
   streszczenie?: string;
   diagram?: any;
+  numberLine?: any;
+  reading_time_minutes?: number;
+  polishTheory?: PolishTheoryData;
+  bentoConcepts?: PolishBentoConcept[];
 }
 
 export type TabState = 'dashboard' | 'nauka' | 'arena' | 'profile' | 'simulator' | 'learn' | 'profil';
@@ -150,6 +246,7 @@ export type TaskType =
   | 'NUMERIC_INPUT' 
   | 'OPEN_PROOF' 
   | 'OPEN_GENERAL' 
+  | 'OPEN_CALCULATION'
   | 'TRUE_FALSE' 
   | 'TWO_PART' 
   | 'theory' 
@@ -366,6 +463,8 @@ export interface MaturaTask {
   year?: number;
   session?: string;
   isCke?: boolean;
+  diagram?: any;
+  plot?: any;
 }
 
 // ==========================================

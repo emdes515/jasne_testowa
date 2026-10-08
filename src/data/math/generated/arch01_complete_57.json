@@ -1,0 +1,1028 @@
+[
+  {
+    "id": "task_math_form23_arch01_001",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o tej samej podstawie",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $2^{\\frac{7}{3}} \\cdot 2^{\\frac{2}{3}}$ jest równa",
+    "options": [
+      "$2^3$",
+      "$2^{\\frac{14}{9}}$",
+      "$4^3$",
+      "$2^{\\frac{5}{3}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Stosujemy wzór na iloczyn potęg o tych samych podstawach: $a^r \\cdot a^s = a^{r+s}$.\n$$2^{\\frac{7}{3}} \\cdot 2^{\\frac{2}{3}} = 2^{\\frac{7}{3} + \\frac{2}{3}} = 2^{\\frac{9}{3}} = 2^3 = 8$$\n\n**Pułapka CKE:** Opcja B ($2^{\\frac{14}{9}}$) wynika z błędnego mnożenia wykładników zamiast ich dodawania, a opcja C ($4^3$) z nieuprawnionego mnożenia podstaw ($2 \\cdot 2 = 4$).",
+    "matura_tip": "Tablice CKE str. 3: Gdy mnożysz potęgi o tej samej podstawie, podstawa zostaje BEZ ZMIAN, a wykładniki dodajesz."
+  },
+  {
+    "id": "task_math_form23_arch01_002",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o tej samej podstawie",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{3^{\\frac{11}{4}}}{3^{\\frac{3}{4}}}$ jest równa",
+    "options": [
+      "$3^{\\frac{33}{16}}$",
+      "$9$",
+      "$3^{\\frac{7}{2}}$",
+      "$1$"
+    ],
+    "correct_answer": "B",
+    "explanation": "Stosujemy wzór na iloraz potęg o tych samych podstawach: $\\frac{a^r}{a^s} = a^{r-s}$.\n$$\\frac{3^{\\frac{11}{4}}}{3^{\\frac{3}{4}}} = 3^{\\frac{11}{4} - \\frac{3}{4}} = 3^{\\frac{8}{4}} = 3^2 = 9$$\n\n**Pułapka CKE:** Wykładniki odejmujemy, otrzymując czysty wykładnik całkowity 2, a $3^2 = 9$.",
+    "matura_tip": "Kreska ułamkowa to dzielenie: przy wspólnej podstawie wykładnik mianownika ZAWSZE odejmujesz od wykładnika licznika."
+  },
+  {
+    "id": "task_math_form23_arch01_003",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęgowanie potęgi o wykładniku ujemnym",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(5^{-\\frac{2}{3}}\\right)^{-3}$ jest równa",
+    "options": [
+      "$5^{-\\frac{11}{3}}$",
+      "$\\frac{1}{25}$",
+      "$25$",
+      "$5^{\\frac{5}{3}}$"
+    ],
+    "correct_answer": "C",
+    "explanation": "Stosujemy wzór na potęgowanie potęgi: $(a^r)^s = a^{r \\cdot s}$.\n$$\\left(5^{-\\frac{2}{3}}\\right)^{-3} = 5^{\\left(-\\frac{2}{3}\\right) \\cdot (-3)} = 5^{\\frac{6}{3}} = 5^2 = 25$$\n\n**Pułapka CKE:** Iloczyn dwóch liczb ujemnych daje liczbę dodatnią $+2$. Wybór opcji B oznacza zapomnienie, że minus razy minus daje plus.",
+    "matura_tip": "Tablice CKE str. 3: Przy potędze potęgi mnożysz wykładniki. Dwa minusy dają plus!"
+  },
+  {
+    "id": "task_math_form23_arch01_004",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Pierwiastek zapisany w postaci potęgi",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sqrt[3]{4} \\cdot 2^{\\frac{4}{3}}$ jest równa",
+    "options": [
+      "$2$",
+      "$4$",
+      "$8$",
+      "$2^{\\frac{4}{9}}$"
+    ],
+    "correct_answer": "B",
+    "explanation": "Sprowadzamy czynniki do wspólnej podstawy $2$:\n$$\\sqrt[3]{4} = \\sqrt[3]{2^2} = 2^{\\frac{2}{3}}$$\nMnożymy potęgi o tej samej podstawie:\n$$2^{\\frac{2}{3}} \\cdot 2^{\\frac{4}{3}} = 2^{\\frac{2}{3} + \\frac{4}{3}} = 2^{\\frac{6}{3}} = 2^2 = 4$$\n\n**Pułapka CKE:** Należy najpierw zamienić liczbę 4 na potęgę dwójki $2^2$, a dopiero potem zsumować ułamki.",
+    "matura_tip": "Złota zasada CKE: Gdy w zadaniu występują różne podstawy (np. 4 i 2), ZAWSZE sprowadź je do najmniejszej wspólnej bazy pierwszej."
+  },
+  {
+    "id": "task_math_form23_arch01_005",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Działania na potęgach z ułamkiem zwykłym",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{8}\\right)^{-\\frac{2}{3}}$ jest równa",
+    "options": [
+      "$\\frac{1}{4}$",
+      "$4$",
+      "$-4$",
+      "$16$"
+    ],
+    "correct_answer": "B",
+    "explanation": "Ujemny wykładnik odwraca ułamek:\n$$\\left(\\frac{1}{8}\\right)^{-\\frac{2}{3}} = 8^{\\frac{2}{3}}$$\nZapisujemy $8$ jako $2^3$:\n$$8^{\\frac{2}{3}} = (2^3)^{\\frac{2}{3}} = 2^{3 \\cdot \\frac{2}{3}} = 2^2 = 4$$\n\n**Pułapka CKE:** Wykładnik ujemny nigdy nie zmienia znaku samej liczby na minus (opcja C jest zawsze błędna).",
+    "matura_tip": "Minus w wykładniku to 'odwracarka' ułamka: $\\left(\\frac{a}{b}\\right)^{-n} = \\left(\\frac{b}{a}\\right)^n$."
+  },
+  {
+    "id": "task_math_form23_arch01_006",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawie 3",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $3^{\\frac{5}{2}} \\cdot 3^{\\frac{1}{2}}$ jest równa",
+    "options": [
+      "$3^3$",
+      "$3^{\\frac{5}{4}}$",
+      "$9^3$",
+      "$3^{\\frac{6}{4}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Dodajemy wykładniki przy wspólnej podstawie $3$: $\\frac{5}{2} + \\frac{1}{2} = \\frac{6}{2} = 3$. Wynik to $3^3 = 27$.\n\n**Pułapka CKE:** Opcja B to wynik mnożenia ułamków zamiast dodawania, a C to błędne mnożenie podstaw $3 \\cdot 3 = 9$.",
+    "matura_tip": "Tablice CKE str. 3: Mnożenie potęg o tej samej podstawie = dodawanie wykładników ($a^r \\cdot a^s = a^{r+s}$)."
+  },
+  {
+    "id": "task_math_form23_arch01_007",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawie 5",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $5^{\\frac{4}{3}} \\cdot 5^{\\frac{5}{3}}$ jest równa",
+    "options": [
+      "$5^{\\frac{20}{9}}$",
+      "$5^3$",
+      "$25^3$",
+      "$5^{\\frac{1}{3}}$"
+    ],
+    "correct_answer": "B",
+    "explanation": "Mnożymy potęgi o tej samej podstawie $5$: $\\frac{4}{3} + \\frac{5}{3} = \\frac{9}{3} = 3$. Otrzymujemy $5^3 = 125$.\n\n**Pułapka CKE:** Uważaj na nieuprawnione mnożenie podstaw ($5 \\cdot 5 = 25$, opcja C).",
+    "matura_tip": "Podstawa potęgi pozostaje nienaruszona, dodajesz tylko liczniki ułamków o tym samym mianowniku."
+  },
+  {
+    "id": "task_math_form23_arch01_008",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawie 7",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $7^{\\frac{3}{5}} \\cdot 7^{\\frac{7}{5}}$ jest równa",
+    "options": [
+      "$7^2$",
+      "$7^{\\frac{21}{25}}$",
+      "$49^2$",
+      "$7^{\\frac{4}{5}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Dodajemy wykładniki: $\\frac{3}{5} + \\frac{7}{5} = \\frac{10}{5} = 2$. Wynik to $7^2 = 49$.\n\n**Pułapka CKE:** Opcja B wynika z fałszywego wymnożenia ułamków $\\frac{3}{5} \\cdot \\frac{7}{5}$.",
+    "matura_tip": "Zawsze najpierw dodaj ułamki w wykładniku i skróć powstały ułamek: $\\frac{10}{5} = 2$."
+  },
+  {
+    "id": "task_math_form23_arch01_009",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg z ujemnym wykładnikiem",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $2^{\\frac{11}{4}} \\cdot 2^{-\\frac{3}{4}}$ jest równa",
+    "options": [
+      "$2^{\\frac{8}{8}}$",
+      "$4$",
+      "$2^{-\\frac{33}{16}}$",
+      "$2^{\\frac{7}{2}}$"
+    ],
+    "correct_answer": "B",
+    "explanation": "Dodajemy wykładniki z uwzględnieniem znaku: $\\frac{11}{4} + \\left(-\\frac{3}{4}\\right) = \\frac{11 - 3}{4} = \\frac{8}{4} = 2$. Mamy $2^2 = 4$.\n\n**Pułapka CKE:** Pamiętaj, że dodanie liczby ujemnej to po prostu odejmowanie: $\\frac{11}{4} - \\frac{3}{4} = 2$.",
+    "matura_tip": "Gdy w iloczynie pojawia się minus w wykładniku, traktuj go jak zwykłe odejmowanie w liczniku."
+  },
+  {
+    "id": "task_math_form23_arch01_010",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawie 6",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $6^{\\frac{5}{3}} \\cdot 6^{\\frac{1}{3}}$ jest równa",
+    "options": [
+      "$36$",
+      "$6^{\\frac{5}{9}}$",
+      "$6^{\\frac{4}{3}}$",
+      "$216$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Dodajemy wykładniki: $\\frac{5}{3} + \\frac{1}{3} = \\frac{6}{3} = 2$. Mamy $6^2 = 36$.\n\n**Pułapka CKE:** Błędne podniesienie do potęgi trzeciej zamiast drugiej dałoby 216 (opcja D).",
+    "matura_tip": "Ułamek $\\frac{6}{3}$ skraca się do $2$, a $6^2 = 36$."
+  },
+  {
+    "id": "task_math_form23_arch01_011",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn trzech czynników potęgowych",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $2^{\\frac{1}{2}} \\cdot 2^{\\frac{1}{3}} \\cdot 2^{\\frac{1}{6}}$ jest równa",
+    "options": [
+      "$2$",
+      "$2^{\\frac{1}{36}}$",
+      "$8$",
+      "$2^{\\frac{3}{11}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Sprowadzamy wykładniki do wspólnego mianownika $6$:\n$$\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6} = \\frac{3}{6} + \\frac{2}{6} + \\frac{1}{6} = \\frac{6}{6} = 1$$\nZatem $2^1 = 2$.\n\n**Pułapka CKE:** Przy ułamkach o różnych mianownikach najpierw sprowadź je do wspólnego mianownika, nie dodawaj mianowników!",
+    "matura_tip": "Wykładniki wymierne sumuje się dokładnie tak samo jak zwykłe ułamki ze szkoły podstawowej."
+  },
+  {
+    "id": "task_math_form23_arch01_012",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawie 10",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $10^{\\frac{7}{4}} \\cdot 10^{\\frac{5}{4}}$ jest równa",
+    "options": [
+      "$1000$",
+      "$100$",
+      "$10^{\\frac{35}{16}}$",
+      "$10000$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Dodajemy wykładniki: $\\frac{7}{4} + \\frac{5}{4} = \\frac{12}{4} = 3$. Mamy $10^3 = 1000$.\n\n**Pułapka CKE:** Wykładnik 3 przy podstawie 10 oznacza 3 zera, czyli 1000, a nie 100 (opcja B).",
+    "matura_tip": "Potęga $10^k$ to jedynka i dokładnie $k$ zer."
+  },
+  {
+    "id": "task_math_form23_arch01_013",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawie 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{2^{\\frac{13}{3}}}{2^{\\frac{4}{3}}}$ jest równa",
+    "options": [
+      "$8$",
+      "$2^{\\frac{17}{3}}$",
+      "$4$",
+      "$2^{\\frac{52}{9}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odejmujemy wykładniki: $\\frac{13}{3} - \\frac{4}{3} = \\frac{9}{3} = 3$. Otrzymujemy $2^3 = 8$.\n\n**Pułapka CKE:** Opcja B powstaje przez dodanie wykładników zamiast ich odjęcia.",
+    "matura_tip": "Kreska ułamkowa to odejmowanie wykładników: licznik minus mianownik."
+  },
+  {
+    "id": "task_math_form23_arch01_014",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawie 4",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{4^{\\frac{7}{2}}}{4^{\\frac{3}{2}}}$ jest równa",
+    "options": [
+      "$16$",
+      "$4^{\\frac{5}{2}}$",
+      "$4^{\\frac{21}{4}}$",
+      "$64$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odejmujemy wykładniki: $\\frac{7}{2} - \\frac{3}{2} = \\frac{4}{2} = 2$. Otrzymujemy $4^2 = 16$.\n\n**Pułapka CKE:** $\\frac{4}{2} = 2$, a $4^2 = 16$. Wybór 64 (opcja D) to podniesienie do potęgi 3.",
+    "matura_tip": "Tablice CKE str. 3: $\\frac{a^r}{a^s} = a^{r-s}$."
+  },
+  {
+    "id": "task_math_form23_arch01_015",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawie 5 z ujemnym wykładnikiem w mianowniku",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{5^{\\frac{4}{3}}}{5^{-\\frac{2}{3}}}$ jest równa",
+    "options": [
+      "$25$",
+      "$5^{\\frac{2}{3}}$",
+      "$1$",
+      "$5^{-\\frac{8}{9}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odejmujemy wykładnik mianownika: $\\frac{4}{3} - \\left(-\\frac{2}{3}\\right) = \\frac{4}{3} + \\frac{2}{3} = \\frac{6}{3} = 2$. Otrzymujemy $5^2 = 25$.\n\n**Pułapka CKE:** Minus w mianowniku po odjęciu zamienia się w plus! Odjęcie bez zmiany znaku daje błędną opcję B ($5^{\\frac{2}{3}}$).",
+    "matura_tip": "Pamiętaj: odejmowanie liczby ujemnej to dodawanie! $\\frac{4}{3} - (-\\frac{2}{3}) = \\frac{4}{3} + \\frac{2}{3}$."
+  },
+  {
+    "id": "task_math_form23_arch01_016",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawie 3 dający wykładnik 1",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{3^{\\frac{8}{5}}}{3^{\\frac{3}{5}}}$ jest równa",
+    "options": [
+      "$3$",
+      "$1$",
+      "$3^{\\frac{11}{5}}$",
+      "$9$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odejmujemy wykładniki: $\\frac{8}{5} - \\frac{3}{5} = \\frac{5}{5} = 1$. Zatem $3^1 = 3$.\n\n**Pułapka CKE:** Wykładnik 1 oznacza samą podstawę ($3^1 = 3$), a nie 1 (opcja B).",
+    "matura_tip": "Każda liczba do potęgi 1 jest równa samej sobie: $a^1 = a$."
+  },
+  {
+    "id": "task_math_form23_arch01_017",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Dzielenie potęg z różnymi mianownikami wykładników",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{2^{\\frac{5}{2}}}{2^{\\frac{1}{2}}}$ jest równa",
+    "options": [
+      "$4$",
+      "$2$",
+      "$2^{\\frac{5}{4}}$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odejmujemy wykładniki: $\\frac{5}{2} - \\frac{1}{2} = \\frac{4}{2} = 2$. Otrzymujemy $2^2 = 4$.\n\n**Pułapka CKE:** $\\frac{4}{2} = 2$, a $2^2 = 4$, a nie 2 (opcja B).",
+    "matura_tip": "Uważaj na różnicę między wartością wykładnika (tutaj 2) a ostateczną wartością potęgi ($2^2 = 4$)."
+  },
+  {
+    "id": "task_math_form23_arch01_018",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg dający wykładnik ujemny",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{7^{\\frac{1}{4}}}{7^{\\frac{9}{4}}}$ jest równa",
+    "options": [
+      "$\\frac{1}{49}$",
+      "$49$",
+      "$-49$",
+      "$7^2$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odejmujemy wykładniki: $\\frac{1}{4} - \\frac{9}{4} = -\\frac{8}{4} = -2$. Otrzymujemy $7^{-2} = \\frac{1}{7^2} = \\frac{1}{49}$.\n\n**Pułapka CKE:** Ujemny wykładnik oznacza ułamek $\\frac{1}{49}$, a nie liczbę ujemną $-49$ (opcja C).",
+    "matura_tip": "Minus w wykładniku nie tworzy liczby ujemnej – tworzy ułamek z jedynką w liczniku: $a^{-n} = \\frac{1}{a^n}$."
+  },
+  {
+    "id": "task_math_form23_arch01_019",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęgowanie potęgi o podstawie 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(2^{\\frac{3}{4}}\\right)^4$ jest równa",
+    "options": [
+      "$8$",
+      "$2^{\\frac{7}{4}}$",
+      "$16$",
+      "$2^{\\frac{12}{16}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Mnożymy wykładniki: $\\frac{3}{4} \\cdot 4 = 3$. Otrzymujemy $2^3 = 8$.\n\n**Pułapka CKE:** Przy potędze potęgi mnożymy wykładniki, a nie dodajemy (opcja B wynika z $\\frac{3}{4} + 4$).",
+    "matura_tip": "Mnożenie ułamka przez jego mianownik po prostu usuwa ułamek: $\\frac{3}{4} \\cdot 4 = 3$."
+  },
+  {
+    "id": "task_math_form23_arch01_020",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęgowanie potęgi o podstawie 3 z dwoma minusami",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(3^{-\\frac{1}{2}}\\right)^{-4}$ jest równa",
+    "options": [
+      "$9$",
+      "$\\frac{1}{9}$",
+      "$-9$",
+      "$3^{-\\frac{9}{2}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Mnożymy wykładniki: $\\left(-\\frac{1}{2}\\right) \\cdot (-4) = +2$. Mamy $3^2 = 9$.\n\n**Pułapka CKE:** Dwa minusy dają plus! Wynikiem jest $+2$, a nie $-2$ (co dałoby opcję B).",
+    "matura_tip": "Iloczyn dwóch ujemnych wykładników ZAWSZE daje wykładnik dodatni."
+  },
+  {
+    "id": "task_math_form23_arch01_021",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęgowanie potęgi o podstawie 4",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(4^{\\frac{1}{3}}\\right)^6$ jest równa",
+    "options": [
+      "$16$",
+      "$4$",
+      "$4^{\\frac{19}{3}}$",
+      "$64$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Mnożymy wykładniki: $\\frac{1}{3} \\cdot 6 = 2$. Otrzymujemy $4^2 = 16$.\n\n**Pułapka CKE:** $\\frac{6}{3} = 2$, a $4^2 = 16$.",
+    "matura_tip": "Tablice CKE str. 3: $(a^r)^s = a^{r \\cdot s}$."
+  },
+  {
+    "id": "task_math_form23_arch01_022",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęgowanie potęgi o podstawie 10 dające wynik 100",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(10^{\\frac{2}{5}}\\right)^5$ jest równa",
+    "options": [
+      "$100$",
+      "$10$",
+      "$10^{\\frac{27}{5}}$",
+      "$1000$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Mnożymy wykładniki: $\\frac{2}{5} \\cdot 5 = 2$. Mamy $10^2 = 100$.\n\n**Pułapka CKE:** Piątka w liczniku i mianowniku się redukuje, zostaje czyste 2 w wykładniku.",
+    "matura_tip": "Skracaj ułamki na krzyż przed podnoszeniem do potęgi!"
+  },
+  {
+    "id": "task_math_form23_arch01_023",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęgowanie potęgi z wykładnikiem ułamkowym",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(2^6\\right)^{\\frac{1}{2}}$ jest równa",
+    "options": [
+      "$8$",
+      "$64$",
+      "$2$",
+      "$4$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Mnożymy wykładniki: $6 \\cdot \\frac{1}{2} = 3$. Mamy $2^3 = 8$.\n\n**Pułapka CKE:** Wykładnik $\\frac{1}{2}$ to pierwiastek kwadratowy: $\\sqrt{2^6} = \\sqrt{64} = 8$.",
+    "matura_tip": "Wykładnik $\\frac{1}{2}$ oznacza po prostu wyciągnięcie pierwiastka kwadratowego."
+  },
+  {
+    "id": "task_math_form23_arch01_024",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęgowanie potęgi o podstawie 5 z wynikiem całkowitym",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(5^{\\frac{3}{2}}\\right)^2$ jest równa",
+    "options": [
+      "$125$",
+      "$25$",
+      "$5^{\\frac{7}{2}}$",
+      "$625$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Mnożymy wykładniki: $\\frac{3}{2} \\cdot 2 = 3$. Mamy $5^3 = 125$.\n\n**Pułapka CKE:** Pamiętaj, że $5^3 = 5 \\cdot 5 \\cdot 5 = 125$, a nie 25 (które jest równe $5^2$).",
+    "matura_tip": "Kwadrat i dwójka w mianowniku wykładnika wzajemnie się znoszą."
+  },
+  {
+    "id": "task_math_form23_arch01_025",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn pierwiastka i potęgi o podstawie 3",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sqrt{3} \\cdot 3^{\\frac{3}{2}}$ jest równa",
+    "options": [
+      "$9$",
+      "$3$",
+      "$3^{\\frac{3}{4}}$",
+      "$27$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zapisujemy pierwiastek kwadratowy jako potęgę: $\\sqrt{3} = 3^{\\frac{1}{2}}$.\nDodajemy wykładniki: $\\frac{1}{2} + \\frac{3}{2} = \\frac{4}{2} = 2$. Otrzymujemy $3^2 = 9$.\n\n**Pułapka CKE:** Pamiętaj, że stopień pierwiastka kwadratowego to 2, więc $\\sqrt{a} = a^{\\frac{1}{2}}$.",
+    "matura_tip": "Niewidoczny stopień pierwiastka $\\sqrt{x}$ to ZAWSZE 2 w mianowniku wykładnika: $x^{\\frac{1}{2}}$."
+  },
+  {
+    "id": "task_math_form23_arch01_026",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn pierwiastka sześciennego i potęgi",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sqrt[3]{2} \\cdot 2^{\\frac{5}{3}}$ jest równa",
+    "options": [
+      "$4$",
+      "$2$",
+      "$2^{\\frac{5}{9}}$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy $\\sqrt[3]{2} = 2^{\\frac{1}{3}}$.\nDodajemy wykładniki: $\\frac{1}{3} + \\frac{5}{3} = \\frac{6}{3} = 2$. Otrzymujemy $2^2 = 4$.\n\n**Pułapka CKE:** $\\frac{6}{3} = 2$, a $2^2 = 4$, a nie 2.",
+    "matura_tip": "Tablice CKE str. 3: $\\sqrt[n]{a} = a^{\\frac{1}{n}}$."
+  },
+  {
+    "id": "task_math_form23_arch01_027",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Pierwiastek w mianowniku ułamka",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{5^{\\frac{5}{2}}}{\\sqrt{5}}$ jest równa",
+    "options": [
+      "$25$",
+      "$5$",
+      "$5^2$",
+      "$125$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy mianownik: $\\sqrt{5} = 5^{\\frac{1}{2}}$.\nOdejmujemy wykładniki: $\\frac{5}{2} - \\frac{1}{2} = \\frac{4}{2} = 2$. Otrzymujemy $5^2 = 25$.\n\n**Pułapka CKE:** Opcja A i C to to samo matematycznie, ale w CKE klucz podaje obliczoną wartość liczbową 25.",
+    "matura_tip": "Kreska ułamkowa z pierwiastkiem w mianowniku oznacza odjęcie $\\frac{1}{2}$ od wykładnika licznika."
+  },
+  {
+    "id": "task_math_form23_arch01_028",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Pierwiastek czwartego stopnia i potęga",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sqrt[4]{3} \\cdot 3^{\\frac{7}{4}}$ jest równa",
+    "options": [
+      "$9$",
+      "$3$",
+      "$3^{\\frac{7}{16}}$",
+      "$27$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy $\\sqrt[4]{3} = 3^{\\frac{1}{4}}$.\nDodajemy wykładniki: $\\frac{1}{4} + \\frac{7}{4} = \\frac{8}{4} = 2$. Mamy $3^2 = 9$.\n\n**Pułapka CKE:** Dodanie liczników $\\frac{1+7}{4} = 2$. Ostatecznie $3^2 = 9$.",
+    "matura_tip": "Pierwiastek stopnia $n$ zamienia się na potęgę o mianowniku $n$."
+  },
+  {
+    "id": "task_math_form23_arch01_029",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn pierwiastka z potęgi o podstawie 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sqrt[3]{2^5} \\cdot 2^{\\frac{1}{3}}$ jest równa",
+    "options": [
+      "$4$",
+      "$2$",
+      "$8$",
+      "$2^{\\frac{5}{9}}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zapisujemy $\\sqrt[3]{2^5} = 2^{\\frac{5}{3}}$.\nDodajemy wykładniki: $\\frac{5}{3} + \\frac{1}{3} = \\frac{6}{3} = 2$. Mamy $2^2 = 4$.\n\n**Pułapka CKE:** Wykładnik potęgi pod pierwiastkiem idzie do licznika, a stopień pierwiastka do mianownika!",
+    "matura_tip": "Mnemotechnika CKE: 'Co na górze to na daszku (licznik), co pod ziemią to w korzeniu (mianownik)'."
+  },
+  {
+    "id": "task_math_form23_arch01_030",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Dzielenie potęgi przez pierwiastek sześcienny",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{2^{\\frac{7}{3}}}{\\sqrt[3]{2}}$ jest równa",
+    "options": [
+      "$4$",
+      "$2$",
+      "$2^{\\frac{8}{3}}$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy $\\sqrt[3]{2} = 2^{\\frac{1}{3}}$.\nOdejmujemy wykładniki: $\\frac{7}{3} - \\frac{1}{3} = \\frac{6}{3} = 2$. Otrzymujemy $2^2 = 4$.\n\n**Pułapka CKE:** Opcja C powstaje przez dodanie wykładnika mianownika zamiast jego odjęcia.",
+    "matura_tip": "Dzielenie przez pierwiastek to odejmowanie ułamka $\\frac{1}{n}$ w wykładniku."
+  },
+  {
+    "id": "task_math_form23_arch01_031",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga ułamka 1/27 z ujemnym wykładnikiem",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{27}\\right)^{-\\frac{2}{3}}$ jest równa",
+    "options": [
+      "$9$",
+      "$\\frac{1}{9}$",
+      "$3$",
+      "$-9$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Ujemny wykładnik odwraca ułamek: $\\left(\\frac{1}{27}\\right)^{-\\frac{2}{3}} = 27^{\\frac{2}{3}}$.\nRozpisujemy $27 = 3^3$:\n$$27^{\\frac{2}{3}} = (3^3)^{\\frac{2}{3}} = 3^{3 \\cdot \\frac{2}{3}} = 3^2 = 9$$\n\n**Pułapka CKE:** Minus w wykładniku nie tworzy liczby ujemnej (opcja D jest zawsze fałszywa).",
+    "matura_tip": "Minus w wykładniku 'odwraca' ułamek do góry nogami: $(1/27) \\to 27$."
+  },
+  {
+    "id": "task_math_form23_arch01_032",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga ułamka 1/16 z ujemnym wykładnikiem",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{16}\\right)^{-\\frac{3}{4}}$ jest równa",
+    "options": [
+      "$8$",
+      "$\\frac{1}{8}$",
+      "$4$",
+      "$-8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odwracamy ułamek: $16^{\\frac{3}{4}}$.\nRozpisujemy $16 = 2^4$:\n$$(2^4)^{\\frac{3}{4}} = 2^3 = 8$$\n\n**Pułapka CKE:** Po odwróceniu ułamka wykładnik traci minus i staje się dodatni!",
+    "matura_tip": "Najpierw zlikwiduj minus przez odwrócenie liczby, a dopiero potem potęguj."
+  },
+  {
+    "id": "task_math_form23_arch01_033",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga ułamka 1/4 z ujemnym wykładnikiem",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{4}\\right)^{-\\frac{5}{2}}$ jest równa",
+    "options": [
+      "$32$",
+      "$\\frac{1}{32}$",
+      "$16$",
+      "$-32$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odwracamy ułamek: $4^{\\frac{5}{2}}$.\nRozpisujemy $4 = 2^2$:\n$$(2^2)^{\\frac{5}{2}} = 2^{2 \\cdot \\frac{5}{2}} = 2^5 = 32$$\n\n**Pułapka CKE:** Uważaj na potęgi dwójki: $2^5 = 32$, nie 16.",
+    "matura_tip": "Zapamiętaj potęgi dwójki: $2^1=2, 2^2=4, 2^3=8, 2^4=16, 2^5=32$."
+  },
+  {
+    "id": "task_math_form23_arch01_034",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga ułamka 1/32 z ujemnym wykładnikiem",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{32}\\right)^{-\\frac{2}{5}}$ jest równa",
+    "options": [
+      "$4$",
+      "$\\frac{1}{4}$",
+      "$2$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odwracamy ułamek: $32^{\\frac{2}{5}}$.\nZapisujemy $32 = 2^5$:\n$$(2^5)^{\\frac{2}{5}} = 2^2 = 4$$\n\n**Pułapka CKE:** Piątki się skracają, zostaje $2^2 = 4$.",
+    "matura_tip": "Mianownik wykładnika 5 idealnie skraca się z potęgą $2^5 = 32$."
+  },
+  {
+    "id": "task_math_form23_arch01_035",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga ułamka 1/81 z ujemnym wykładnikiem",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{81}\\right)^{-\\frac{1}{4}}$ jest równa",
+    "options": [
+      "$3$",
+      "$\\frac{1}{3}$",
+      "$9$",
+      "$-3$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odwracamy ułamek: $81^{\\frac{1}{4}}$.\nRozpisujemy $81 = 3^4$:\n$$(3^4)^{\\frac{1}{4}} = 3^1 = 3$$\n\n**Pułapka CKE:** Wykładnik $\\frac{1}{4}$ oznacza pierwiastek czwartego stopnia: $\\sqrt[4]{81} = 3$.",
+    "matura_tip": "Ponieważ $3^4 = 81$, to $81^{\\frac{1}{4}} = 3$."
+  },
+  {
+    "id": "task_math_form23_arch01_036",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga ułamka 1/125 z ujemnym wykładnikiem",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{125}\\right)^{-\\frac{2}{3}}$ jest równa",
+    "options": [
+      "$25$",
+      "$\\frac{1}{25}$",
+      "$5$",
+      "$125$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Odwracamy ułamek: $125^{\\frac{2}{3}}$.\nZapisujemy $125 = 5^3$:\n$$(5^3)^{\\frac{2}{3}} = 5^2 = 25$$\n\n**Pułapka CKE:** Skracamy trójki, otrzymując $5^2 = 25$, a nie $5$ (opcja C).",
+    "matura_tip": "Gdy widzisz 125, natychmiast zamień je na $5^3$."
+  },
+  {
+    "id": "task_math_form23_arch01_037",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawach 4 i 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $4^2 \\cdot 2^{-1}$ jest równa",
+    "options": [
+      "$8$",
+      "$16$",
+      "$2$",
+      "$4$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Sprowadzamy $4$ do podstawy $2$: $4^2 = (2^2)^2 = 2^4$.\nWykonujemy mnożenie: $2^4 \\cdot 2^{-1} = 2^{4 - 1} = 2^3 = 8$.\n\n**Pułapka CKE:** Nie wolno mnożyć podstaw $4 \\cdot 2 = 8$ przed ujednoliceniem wykładników.",
+    "matura_tip": "Zawsze sprowadzaj do najmniejszej możliwej podstawy (tutaj: 2)."
+  },
+  {
+    "id": "task_math_form23_arch01_038",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawach 8 i 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{8^{\\frac{4}{3}}}{2^2}$ jest równa",
+    "options": [
+      "$4$",
+      "$2$",
+      "$8$",
+      "$1$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy $8 = 2^3$:\n$$8^{\\frac{4}{3}} = (2^3)^{\\frac{4}{3}} = 2^4 = 16$$\nDzielimy przez mianownik: $\\frac{16}{2^2} = \\frac{16}{4} = 4$.\n\n**Pułapka CKE:** $2^{4-2} = 2^2 = 4$.",
+    "matura_tip": "Zamiana $8 = 2^3$ natychmiast skraca trójkę w ułamku $\\frac{4}{3}$."
+  },
+  {
+    "id": "task_math_form23_arch01_039",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawach 16 i 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $16^{\\frac{1}{2}} \\cdot 2^{-1}$ jest równa",
+    "options": [
+      "$2$",
+      "$4$",
+      "$1$",
+      "$\\frac{1}{2}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Obliczamy $16^{\\frac{1}{2}} = \\sqrt{16} = 4$.\nMnożymy: $4 \\cdot 2^{-1} = 4 \\cdot \\frac{1}{2} = 2$.\n\n**Pułapka CKE:** $16^{\\frac{1}{2}}$ to pierwiastek kwadratowy z 16, czyli 4.",
+    "matura_tip": "Wykładnik $\\frac{1}{2}$ to po prostu pierwiastek kwadratowy: $16^{\\frac{1}{2}} = \\sqrt{16} = 4$."
+  },
+  {
+    "id": "task_math_form23_arch01_040",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawach 32 i 4",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{32^{\\frac{3}{5}}}{4}$ jest równa",
+    "options": [
+      "$2$",
+      "$4$",
+      "$1$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy $32 = 2^5$:\n$$32^{\\frac{3}{5}} = (2^5)^{\\frac{3}{5}} = 2^3 = 8$$\nDzielimy przez $4$: $\\frac{8}{4} = 2$.\n\n**Pułapka CKE:** Licznik to 8, a mianownik to 4, więc wynik to $8/4 = 2$.",
+    "matura_tip": "Gdy masz 32 i 4, wspólną bazą jest 2 ($32=2^5, 4=2^2$)."
+  },
+  {
+    "id": "task_math_form23_arch01_041",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawach 64 i 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $64^{\\frac{1}{3}} \\cdot 2^{-1}$ jest równa",
+    "options": [
+      "$2$",
+      "$4$",
+      "$1$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Obliczamy $64^{\\frac{1}{3}} = \\sqrt[3]{64} = 4$.\nMnożymy: $4 \\cdot 2^{-1} = 4 \\cdot \\frac{1}{2} = 2$.\n\n**Pułapka CKE:** $\\sqrt[3]{64} = 4$, ponieważ $4^3 = 64$.",
+    "matura_tip": "Zapamiętaj: $4^3 = 64$, stąd pierwiastek sześcienny z 64 to 4."
+  },
+  {
+    "id": "task_math_form23_arch01_042",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga potęgi z bazą 8",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(8^{\\frac{2}{3}}\\right)^{-1}$ jest równa",
+    "options": [
+      "$\\frac{1}{4}$",
+      "$4$",
+      "$-4$",
+      "$\\frac{1}{2}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Najpierw wnętrze nawiasu: $8^{\\frac{2}{3}} = (2^3)^{\\frac{2}{3}} = 2^2 = 4$.\nNastępnie potęga zewnętrzna: $4^{-1} = \\frac{1}{4}$.\n\n**Pułapka CKE:** Wykładnik ujemny $-1$ odwraca liczbę 4 do postaci ułamka $\\frac{1}{4}$.",
+    "matura_tip": "Najpierw uprość wyrażenie wewnątrz nawiasu, a ujemny wykładnik zastosuj na samym końcu."
+  },
+  {
+    "id": "task_math_form23_arch01_043",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawach 9 i 3",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $9^{\\frac{3}{2}} \\cdot 3^{-2}$ jest równa",
+    "options": [
+      "$3$",
+      "$9$",
+      "$1$",
+      "$27$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Sprowadzamy $9$ do potęgi trójki: $9^{\\frac{3}{2}} = (3^2)^{\\frac{3}{2}} = 3^3 = 27$.\nMnożymy: $3^3 \\cdot 3^{-2} = 3^{3 - 2} = 3^1 = 3$.\n\n**Pułapka CKE:** $3^1 = 3$, a nie 1 (opcja C).",
+    "matura_tip": "Zamiana $9 = 3^2$ to standardowy krok w zadaniach CKE z podstawą 3."
+  },
+  {
+    "id": "task_math_form23_arch01_044",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawach 27 i 9",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{27^{\\frac{2}{3}}}{9^{\\frac{1}{2}}}$ jest równa",
+    "options": [
+      "$3$",
+      "$9$",
+      "$1$",
+      "$27$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Licznik: $27^{\\frac{2}{3}} = (3^3)^{\\frac{2}{3}} = 3^2 = 9$.\nMianownik: $9^{\\frac{1}{2}} = \\sqrt{9} = 3$.\nDzielimy: $\\frac{9}{3} = 3$.\n\n**Pułapka CKE:** Licznik to 9, mianownik to 3. Iloraz wynosi 3.",
+    "matura_tip": "Sprowadź zarówno licznik jak i mianownik do wspólnej bazy 3."
+  },
+  {
+    "id": "task_math_form23_arch01_045",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawach 81 i 3",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $81^{\\frac{3}{4}} \\cdot 3^{-1}$ jest równa",
+    "options": [
+      "$9$",
+      "$3$",
+      "$27$",
+      "$1$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Sprowadzamy $81 = 3^4$:\n$$81^{\\frac{3}{4}} = (3^4)^{\\frac{3}{4}} = 3^3 = 27$$\nMnożymy: $27 \\cdot 3^{-1} = 27 \\cdot \\frac{1}{3} = 9$.\n\n**Pułapka CKE:** $27 / 3 = 9$, a nie 3.",
+    "matura_tip": "Gdy widzisz 81 z mianownikiem 4, pamiętaj, że $81 = 3^4$."
+  },
+  {
+    "id": "task_math_form23_arch01_046",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawach 81 i 27",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{81^{\\frac{1}{2}}}{27^{\\frac{1}{3}}}$ jest równa",
+    "options": [
+      "$3$",
+      "$9$",
+      "$1$",
+      "$\\frac{1}{3}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Licznik: $81^{\\frac{1}{2}} = \\sqrt{81} = 9$.\nMianownik: $27^{\\frac{1}{3}} = \\sqrt[3]{27} = 3$.\nDzielenie daje $\\frac{9}{3} = 3$.\n\n**Pułapka CKE:** $\\sqrt{81} = 9$ oraz $\\sqrt[3]{27} = 3$. Iloraz to dokładnie 3.",
+    "matura_tip": "Rozbij zadanie na proste pierwiastki: kwadratowy w liczniku, sześcienny w mianowniku."
+  },
+  {
+    "id": "task_math_form23_arch01_047",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga o ujemnym wykładniku z podstawą 9",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $9^{-\\frac{1}{2}} \\cdot 27^{\\frac{1}{3}}$ jest równa",
+    "options": [
+      "$1$",
+      "$3$",
+      "$\\frac{1}{3}$",
+      "$9$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Pierwszy czynnik: $9^{-\\frac{1}{2}} = \\frac{1}{\\sqrt{9}} = \\frac{1}{3}$.\nDrugi czynnik: $27^{\\frac{1}{3}} = \\sqrt[3]{27} = 3$.\nMnożenie: $\\frac{1}{3} \\cdot 3 = 1$.\n\n**Pułapka CKE:** Liczby odwrotne pomnożone przez siebie dają dokładnie 1.",
+    "matura_tip": "Iloczyn liczby i jej odwrotności jest zawsze równy 1: $\\frac{1}{a} \\cdot a = 1$."
+  },
+  {
+    "id": "task_math_form23_arch01_048",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga iloczynu z podstawą 3",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(3^{\\frac{1}{2}} \\cdot 9^{\\frac{1}{4}}\\right)^2$ jest równa",
+    "options": [
+      "$9$",
+      "$3$",
+      "$27$",
+      "$1$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy $9^{\\frac{1}{4}} = (3^2)^{\\frac{1}{4}} = 3^{\\frac{2}{4}} = 3^{\\frac{1}{2}}$.\nWnętrze nawiasu: $3^{\\frac{1}{2}} \\cdot 3^{\\frac{1}{2}} = 3^1 = 3$.\nPodnosimy do kwadratu: $3^2 = 9$.\n\n**Pułapka CKE:** Najpierw uprość środek nawiasu, a dopiero potem podnieś do kwadratu.",
+    "matura_tip": "Wyrażenie $3^{1/2} \\cdot 3^{1/2} = 3^1$. Kwadrat z 3 to 9."
+  },
+  {
+    "id": "task_math_form23_arch01_049",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloczyn potęg o podstawach 25 i 5",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $25^{\\frac{3}{2}} \\cdot 5^{-2}$ jest równa",
+    "options": [
+      "$5$",
+      "$25$",
+      "$1$",
+      "$125$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy $25 = 5^2$:\n$$25^{\\frac{3}{2}} = (5^2)^{\\frac{3}{2}} = 5^3 = 125$$\nMnożymy: $5^3 \\cdot 5^{-2} = 5^{3-2} = 5^1 = 5$.\n\n**Pułapka CKE:** Wykładnik to $3 - 2 = 1$, więc $5^1 = 5$.",
+    "matura_tip": "Zamiana $25 = 5^2$ redukuje dwójkę w mianowniku wykładnika."
+  },
+  {
+    "id": "task_math_form23_arch01_050",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawach 125 i 5",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{125^{\\frac{2}{3}}}{5}$ jest równa",
+    "options": [
+      "$5$",
+      "$25$",
+      "$1$",
+      "$125$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Licznik: $125^{\\frac{2}{3}} = (5^3)^{\\frac{2}{3}} = 5^2 = 25$.\nDzielimy przez mianownik: $\\frac{25}{5} = 5$.\n\n**Pułapka CKE:** $125^{\\frac{2}{3}} = 25$, a po podzieleniu przez 5 otrzymujemy 5.",
+    "matura_tip": "Pamiętaj: $\\sqrt[3]{125} = 5$, a do kwadratu to 25."
+  },
+  {
+    "id": "task_math_form23_arch01_051",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Iloraz potęg o podstawach 125 i 25",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\frac{125^{\\frac{4}{3}}}{25^{\\frac{3}{2}}}$ jest równa",
+    "options": [
+      "$5$",
+      "$25$",
+      "$1$",
+      "$\\frac{1}{5}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Sprowadzamy do podstawy 5:\nLicznik: $(5^3)^{\\frac{4}{3}} = 5^4 = 625$.\nMianownik: $(5^2)^{\\frac{3}{2}} = 5^3 = 125$.\nDzielimy: $\\frac{5^4}{5^3} = 5^{4-3} = 5^1 = 5$.\n\n**Pułapka CKE:** Odejmujemy wykładniki: $4 - 3 = 1$. Wynik to $5^1 = 5$.",
+    "matura_tip": "Gdy masz 125 i 25, obie liczby zamień na potęgi piątki ($5^3$ oraz $5^2$)."
+  },
+  {
+    "id": "task_math_form23_arch01_052",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga z ułamkiem dziesiętnym 0.2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $(0{,}2)^{-2} \\cdot 5^{-1}$ jest równa",
+    "options": [
+      "$5$",
+      "$25$",
+      "$1$",
+      "$\\frac{1}{5}$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Zamieniamy ułamek dziesiętny na zwykły: $0{,}2 = \\frac{1}{5}$.\nMamy: $\\left(\\frac{1}{5}\\right)^{-2} = 5^2 = 25$.\nMnożymy: $25 \\cdot 5^{-1} = 25 \\cdot \\frac{1}{5} = 5$.\n\n**Pułapka CKE:** $0{,}2 = 1/5$, a do potęgi $-2$ daje $5^2 = 25$.",
+    "matura_tip": "W zadaniach z potęgami zawsze zamieniaj ułamki dziesiętne na ułamki zwykłe ($0{,}2 = 1/5, 0{,}5 = 1/2, 0{,}25 = 1/4$)."
+  },
+  {
+    "id": "task_math_form23_arch01_053",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Potęga potęgi o podstawie 25",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(25^{-\\frac{1}{4}}\\right)^{-2}$ jest równa",
+    "options": [
+      "$5$",
+      "$25$",
+      "$\\frac{1}{5}$",
+      "$125$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Mnożymy wykładniki: $\\left(-\\frac{1}{4}\\right) \\cdot (-2) = +\\frac{2}{4} = \\frac{1}{2}$.\nMamy $25^{\\frac{1}{2}} = \\sqrt{25} = 5$.\n\n**Pułapka CKE:** Dwa minusy dają plus! $\\sqrt{25} = 5$.",
+    "matura_tip": "Iloczyn wykładników: $(-1/4) \\cdot (-2) = +1/2$, a wykładnik $1/2$ to pierwiastek kwadratowy."
+  },
+  {
+    "id": "task_math_form23_arch01_054",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Złożone wyrażenie z potęgami dwójki",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWartość wyrażenia $\\frac{\\left(2^3\\right)^2 \\cdot 2^{-2}}{2^2}$ jest równa",
+    "options": [
+      "$4$",
+      "$8$",
+      "$2$",
+      "$16$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Upraszczamy licznik:\n$(2^3)^2 = 2^6$, więc licznik to $2^6 \\cdot 2^{-2} = 2^{6 - 2} = 2^4 = 16$.\nMianownik: $2^2 = 4$.\nDzielimy: $\\frac{16}{4} = 4$.\nMożna też na wykładnikach: $6 - 2 - 2 = 2$, stąd $2^2 = 4$.\n\n**Pułapka CKE:** Nie pomyl $(2^3)^2 = 2^6$ z $2^5$ (dodanie zamiast mnożenia wykładników).",
+    "matura_tip": "Tablice CKE str. 3: $(a^r)^s = a^{r \\cdot s}$. Wykładniki mnożymy!"
+  },
+  {
+    "id": "task_math_form23_arch01_055",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Złożone wyrażenie z potęgami trójki",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWartość wyrażenia $\\frac{3^5 \\cdot \\left(3^{-1}\\right)^2}{3^2}$ jest równa",
+    "options": [
+      "$3$",
+      "$9$",
+      "$1$",
+      "$27$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Obliczamy wykładnik łączny:\nLicznik: $3^5 \\cdot 3^{-2} = 3^{5 - 2} = 3^3$.\nDzielimy przez mianownik: $\\frac{3^3}{3^2} = 3^{3 - 2} = 3^1 = 3$.\n\n**Pułapka CKE:** Wykładnik wynosi $5 - 2 - 2 = 1$, zatem wynik to $3^1 = 3$.",
+    "matura_tip": "Zredukuj wszystkie operacje do jednego działania na wykładnikach: $5 + (-2) - 2 = 1$."
+  },
+  {
+    "id": "task_math_form23_arch01_056",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Złożone wyrażenie z pierwiastkiem i potęgą ułamkową",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWartość wyrażenia $\\frac{\\sqrt{2} \\cdot 2^{\\frac{5}{2}}}{2^2}$ jest równa",
+    "options": [
+      "$2$",
+      "$4$",
+      "$1$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Licznik: $\\sqrt{2} = 2^{\\frac{1}{2}}$, stąd $2^{\\frac{1}{2}} \\cdot 2^{\\frac{5}{2}} = 2^{\\frac{6}{2}} = 2^3 = 8$.\nDzielimy przez mianownik: $\\frac{2^3}{2^2} = 2^{3-2} = 2^1 = 2$.\n\n**Pułapka CKE:** Licznik to 8, mianownik to 4, więc $8/4 = 2$.",
+    "matura_tip": "Pierwiastek $\\sqrt{2}$ zamień na $2^{1/2}$, a suma wykładników w liczniku da czystą liczbę 3."
+  },
+  {
+    "id": "task_math_form23_arch01_057",
+    "archetypeCode": "ARCH-01",
+    "category": "Liczby i wyrażenia",
+    "title": "Złożone wyrażenie ze sprowadzaniem do podstawy 2",
+    "points": 1,
+    "type": "SINGLE_CHOICE",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWartość wyrażenia $\\frac{4^3 \\cdot 8^{-1}}{2^2}$ jest równa",
+    "options": [
+      "$2$",
+      "$4$",
+      "$1$",
+      "$8$"
+    ],
+    "correct_answer": "A",
+    "explanation": "Sprowadzamy wszystkie czynniki do podstawy 2:\n$4^3 = (2^2)^3 = 2^6$\n$8^{-1} = (2^3)^{-1} = 2^{-3}$\nLicznik: $2^6 \\cdot 2^{-3} = 2^3 = 8$.\nMianownik: $2^2 = 4$.\nOstatecznie: $\\frac{8}{4} = 2$ (lub $2^{3-2} = 2^1 = 2$).\n\n**Pułapka CKE:** Zadanie łączy trzy różne podstawy (4, 8, 2). Sprowadzenie do wspólnej bazy 2 eliminuje wszelkie błędy.",
+    "matura_tip": "Złota reguła CKE: Gdy w jednym ułamku widzisz liczby 4, 8, 16 i 2, natychmiast zamień je na potęgi dwójki: $4=2^2, 8=2^3$."
+  }
+]

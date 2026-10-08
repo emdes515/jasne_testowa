@@ -36,6 +36,14 @@ export interface MatchingPair {
   right: string;
 }
 
+export interface TaskVisualAsset {
+  imageUrl: string;            // Bezpośredni link do pliku graficznego (.jpg, .png, .webp, .svg)
+  imageCaption: string;        // Oficjalny podpis: Autor, „Tytuł dzieła” (rok powstania)
+  imageAlt: string;            // Krótki opis dostępności dla czytników ekranu
+  fallbackDescription: string; // Szczegółowa analiza wizualna na wypadek braku grafiki
+  sourceDomain: string;        // Pochodzenie i status licencyjny, np. "Wikimedia Commons (Public Domain)"
+}
+
 export interface PolishTask {
   id: string;
   part: PolishPartNumber;
@@ -53,20 +61,29 @@ export interface PolishTask {
     author?: string;
     sourceTitle?: string;
     text: string;
+    paragraphs?: Array<{ number: number; text: string }>;
   };
   passage2?: {
     author?: string;
     sourceTitle?: string;
     text: string;
+    paragraphs?: Array<{ number: number; text: string }>;
   };
   imageUrl?: string;
   imageCaption?: string;
+  imageAlt?: string;
+  fallbackDescription?: string;
+  image?: TaskVisualAsset;
 
   // Warianty odpowiedzi zależne od typu
   options?: string[]; // dla single_choice
   correctOptionIndex?: number; // dla single_choice (0, 1, 2, 3)
   trueFalseStatements?: TrueFalseStatement[]; // dla true_false
   matchingPairs?: MatchingPair[]; // dla matching
+  distractors?: string[]; // niepasujące odpowiedzi (dystraktory) do zadań dopasowania
+  distractor?: string; // pojedynczy dystraktor do zadań dopasowania
+  granularType?: string; // szczegółowy typ CKE (T1-T18)
+  hintCke?: string; // wskazówka merytoryczna egzaminatora CKE (koło ratunkowe)
 
   // Kryteria i odpowiedzi otwarte
   correctAnswerText?: string;
@@ -87,7 +104,7 @@ export interface PolishTask {
     mandatoryStarBooks: string[];
     secondaryBooks: string[];
     suggestedContexts: {
-      type: 'historyczny' | 'filozoficzny' | 'biograficzny' | 'kulturowy';
+      type: 'historyczny' | 'filozoficzny' | 'biograficzny' | 'kulturowy' | 'historycznoliteracki' | 'literacki' | 'filozoficzno-egzystencjalny' | string;
       description: string;
     }[];
     cardinalErrorWarning: string;
@@ -111,4 +128,25 @@ export interface PolishTopicSummary {
   completedCount: number;
   weightPercent: number; // udział w maturze
   description: string;
+}
+
+export interface PolishArgumentBlock {
+  id: string;
+  book_id: string;
+  book_title: string;
+  character: string;
+  theme: string;           // np. "Władza", "Miłość niszcząca", "Bunt"
+  claim: string;           // Teza cząstkowa
+  evidence: string;        // Sytuacja fabularna
+  context_type: 'BIOGRAPHICAL' | 'HISTORICAL' | 'PHILOSOPHICAL' | 'LITERARY';
+  context_description: string;
+  punchline: string;
+  cke_safety_rating: '100%_SAFE' | 'TRICKY';
+}
+
+export interface UserArgumentVault {
+  userId: string;
+  unlockedBlocks: PolishArgumentBlock[];
+  savedCustomBlocks: PolishArgumentBlock[];
+  coveragePercent: number; // np. 82% pokrycia motywów maturalnych CKE
 }

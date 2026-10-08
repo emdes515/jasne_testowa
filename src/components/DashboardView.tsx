@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { triggerHaptic, getMilestoneStreakDays, filterActualTaskIds } from '../utils';
-import { UserState, SubjectKey } from '../types';
+import { UserState, SubjectKey, DailyChallengeId } from '../types';
 import { ExamHubModal } from './ExamHubModal';
 import { POLISH_EPOCHS, POLISH_LESSONS } from '../data/polish';
 import { MATURA_LEKTURY } from '../data/maturaLektury';
@@ -35,6 +35,7 @@ import { PredictorWidget } from './PredictorWidget';
 import { PredictorDetailsModal } from './PredictorDetailsModal';
 import { calculateMaturaPrediction } from '../lib/maturaPredictor';
 import { getCkeAvailableSubjects, normalizeSubjectFirestoreId, useCkeCatalogs } from '../services/ckeCatalogRepository';
+import { DailyChallengesWidget } from './DailyChallengesWidget';
 
 interface DashboardViewProps {
   onNavigate?: (tab: string, subTab?: string) => void;
@@ -52,6 +53,7 @@ interface DashboardViewProps {
   onOpenDiagnostic?: () => void;
   onOpenAiGenerator?: () => void;
   onOpenMistakesBank?: () => void;
+  onClaimDailyChallenge?: (challengeId: DailyChallengeId, rewardCoins: number) => void;
 }
 
 export function DashboardView({ 
@@ -67,7 +69,8 @@ export function DashboardView({
   onOpenProPopup,
   onOpenDiagnostic,
   onOpenAiGenerator,
-  onOpenMistakesBank
+  onOpenMistakesBank,
+  onClaimDailyChallenge
 }: DashboardViewProps) {
   useCkeCatalogs();
   const streakDays = userState?.streakDays || 0;
@@ -314,9 +317,14 @@ export function DashboardView({
       return;
     }
 
+    // Dla języka polskiego: otwórz dedykowany gamingowy widok lekcji PolishLessonView
+    if (selectedSubjectKey === 'pol') {
+      onNavigate?.('nauka', nextUp.groupId);
+      return;
+    }
+
     const defaultTopicId = (() => {
       switch (selectedSubjectKey) {
-        case 'pol': return 'pol-dzial-1';
         case 'eng': return 'eng-dzial-1';
         case 'math-roz': return 'mat-roz-dzial-1';
         case 'eng-roz': return 'eng-roz-dzial-1';
@@ -347,14 +355,17 @@ export function DashboardView({
       : (tasks.length > 0 ? tasks : localTasks);
 
     if (!tasksToRun || tasksToRun.length === 0) {
-      onNavigate?.('nauka');
+      onNavigate?.('nauka', nextUp.groupId);
       return;
     }
 
+    const isEng = selectedSubjectKey === 'eng';
     const sessionPayload = {
       isSession: true,
       originTab: 'dashboard',
-      isPolish: selectedSubjectKey === 'pol',
+      isPolish: false,
+      isEnglish: isEng,
+      subjectKey: selectedSubjectKey,
       subjectId: subjectFirestoreId,
       topicId,
       lessonId: nextUp.groupId,
@@ -362,7 +373,7 @@ export function DashboardView({
       tasks: tasksToRun,
       firstTask: tasksToRun[0],
       allTasks: tasks,
-      formulaSheet: lessonFormulaSheet || poolResult.formulaSheet || (selectedSubjectKey === 'pol' ? (lessonDoc as any)?.leksykon || ((nextUp as any).incompleteLesson as any)?.leksykon || null : null),
+      formulaSheet: lessonFormulaSheet || poolResult.formulaSheet || null,
       theoryPill: lessonDoc?.theory_pill || poolResult.theoryPill || ((nextUp as any).incompleteLesson as any)?.theory_pill,
       allTaskIdsToMarkCompleted: tasks.map((t: any) => t.id),
       required_correct_tasks: (nextUp as any).incompleteLesson?.required_correct_tasks || poolResult.required_correct_tasks || 3,
@@ -372,7 +383,7 @@ export function DashboardView({
     if (onStartTask) {
       onStartTask(sessionPayload, tasksToRun, sessionPayload.lessonTitle);
     } else {
-      onNavigate?.('nauka');
+      onNavigate?.('nauka', nextUp.groupId);
     }
   };
 
@@ -403,17 +414,17 @@ export function DashboardView({
       </div>
 
       {/* 7-dniowa ścieżka serii z wysokim kontrastem */}
-      <div className="grid grid-cols-7 gap-1.5 sm:gap-2 relative z-10 pt-3 border-t border-surface-border">
+      <div className="grid grid-cols-7 gap-1 xs:gap-1.5 sm:gap-2 relative z-10 pt-3 border-t border-surface-border">
         {streakMilestones.map((m) => {
           return (
             <div key={m.dayNumber} className="flex flex-col items-center gap-1">
               <div 
-                className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-xs font-black transition-all duration-200 relative ${
+                className={`w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-[11px] sm:text-xs font-black transition-all duration-200 relative ${
                   m.isCompleted
                     ? 'bg-[#F97316] text-white shadow-sm border border-[#F97316]'
                     : m.isTargetToday
                     ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/10 shadow-sm'
-                    : 'bg-surface-bg border border-surface-border text-slate-400'
+                    : 'bg-surface-elevated/80 border border-white/10 text-slate-400'
                 }`}
                 title={m.fullLabel}
               >
@@ -467,18 +478,26 @@ export function DashboardView({
                   triggerHaptic('light');
                   handleSelectSubject(sub.key);
                 }}
-                className={`group relative flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-150 border cursor-pointer shrink-0 whitespace-nowrap min-h-[42px] ${
+                className={`group relative flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-bold border cursor-pointer shrink-0 whitespace-nowrap min-h-[42px] transition-colors ${
                   isActive
-                    ? 'bg-surface-card-hover border-primary/40 text-text-primary shadow-sm'
+                    ? 'border-transparent text-text-primary shadow-sm'
                     : 'border-transparent text-text-muted hover:text-text-secondary hover:bg-white/[0.04]'
                 }`}
-                style={isActive ? {
-                  borderColor: `${accentColor}50`,
-                  backgroundColor: `${accentColor}12`
-                } : undefined}
               >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeDashboardSubjectPill"
+                    className="absolute inset-0 rounded-xl pointer-events-none"
+                    style={{
+                      border: `1px solid ${accentColor}55`,
+                      backgroundColor: `${accentColor}18`,
+                      boxShadow: `0 0 16px -2px ${accentColor}28`
+                    }}
+                    transition={{ type: 'spring', stiffness: 440, damping: 32 }}
+                  />
+                )}
                 <div 
-                  className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                  className={`relative z-10 w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                     isActive
                       ? 'text-white'
                       : 'bg-white/5 text-text-muted group-hover:text-text-primary'
@@ -491,7 +510,7 @@ export function DashboardView({
                   <SubIcon size={13} />
                 </div>
 
-                <div className="flex flex-col text-left">
+                <div className="relative z-10 flex flex-col text-left">
                   <div className="flex items-center gap-1.5 leading-none">
                     <span className="font-extrabold text-xs sm:text-sm tracking-tight">{sub.shortName}</span>
                     {isActive && (
@@ -527,223 +546,23 @@ export function DashboardView({
         {/* LEWA KOLUMNA: KARTA LEKCJI (HERO), PREDYKTOR, STATYSTYKI */}
         <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
           
-          {/* DEDYKOWANY MODUŁ JĘZYKA POLSKIEGO NA DASHBOARDZIE */}
-          {(selectedSubjectKey === 'pol' || userState?.currentSubject === 'polski') && (
-            <motion.div
-              initial={{ y: 15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-              className="flex flex-col gap-4"
-            >
-              {/* Hero Card Język Polski */}
-              <div className="bg-surface-card border border-rose-500/30 rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-lg group">
-                <div className="absolute -top-20 -right-20 w-56 h-56 rounded-full pointer-events-none blur-3xl opacity-20 bg-rose-500 transition-opacity group-hover:opacity-30" />
-                <div className="flex flex-col gap-3 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider">
-                      🇵🇱 JĘZYK POLSKI CKE
-                    </span>
-                    <span className="text-xs font-semibold text-text-secondary">
-                      Formuła 2023 • Poziom Podstawowy
-                    </span>
-                  </div>
-
-                  <div>
-                    <h2 className="text-xl sm:text-2xl font-bold font-display text-text-primary">
-                      Centrum Nauki Języka Polskiego
-                    </h2>
-                    <p className="text-sm text-text-secondary mt-1">
-                      Opanuj Język w użyciu, Test historycznoliteracki, Lektury z gwiazdką i Wypracowanie CKE.
-                    </p>
-                  </div>
-
-                  {/* Statystyki modułu */}
-                  <div className="grid grid-cols-3 gap-2.5 my-1">
-                    <div className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border text-center">
-                      <div className="text-lg font-bold text-rose-400 font-display">11</div>
-                      <div className="text-[11px] text-text-secondary font-medium">Epok literackich</div>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border text-center">
-                      <div className="text-lg font-bold text-amber-400 font-display">{MATURA_LEKTURY.length}</div>
-                      <div className="text-[11px] text-text-secondary font-medium">Lektur z gwiazdką</div>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border text-center">
-                      <div className="text-lg font-bold text-emerald-400 font-display">
-                        {userState?.completedLessonsPolish?.length || 0}
-                      </div>
-                      <div className="text-[11px] text-text-secondary font-medium">Zaliczonych lekcji</div>
-                    </div>
-                  </div>
-
-                  {/* Akcje */}
-                  <div className="flex items-center gap-3 pt-2 flex-wrap">
-                    <button
-                      type="button"
-                      onClick={() => onNavigate?.('learn')}
-                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold text-sm shadow-md transition active:scale-95 cursor-pointer flex items-center gap-2"
-                    >
-                      <BookOpen size={16} />
-                      <span>Otwórz Polish Study Hub</span>
-                      <ArrowRight size={14} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => onNavigate?.('simulator')}
-                      className="px-4 py-2.5 rounded-xl bg-surface-card-hover border border-surface-border hover:border-rose-500/40 text-text-primary font-bold text-sm transition active:scale-95 cursor-pointer flex items-center gap-2"
-                    >
-                      <Clock size={16} className="text-rose-400" />
-                      <span>Próbna Matura (240 min)</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1. Karta Wznowienia Lekcji (Resume Polish Lesson) */}
-              {(() => {
-                const completedSet = new Set((userState?.completedLessonsPolish || []).map((id) => id.replace(/^lesson-/, '')));
-                const lastLessonId = userState?.polishStats?.lastLessonId;
-                const resumeLesson = (lastLessonId ? POLISH_LESSONS.find((l) => l.id === lastLessonId) : null)
-                  || POLISH_LESSONS.find((l) => !completedSet.has(l.id))
-                  || POLISH_LESSONS[0];
-
-                return (
-                  <div className="p-4 sm:p-5 rounded-2xl bg-surface-card border border-rose-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 uppercase tracking-wider">
-                          {completedSet.has(resumeLesson.id) ? 'Powtórka lekcji' : 'Następna lekcja'}
-                        </span>
-                        <span className="text-xs text-text-secondary">Lekcja {resumeLesson.number} • 45 min</span>
-                      </div>
-                      <h3 className="font-bold text-base text-text-primary">{resumeLesson.title}</h3>
-                      <p className="text-xs text-text-secondary line-clamp-1">{resumeLesson.subtitle}</p>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => onNavigate?.('learn', resumeLesson.id)}
-                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold text-xs shadow-md transition active:scale-95 cursor-pointer flex items-center gap-2 shrink-0 self-start sm:self-auto"
-                    >
-                      <Play size={14} fill="currentColor" />
-                      <span>Wznów lekcję</span>
-                    </button>
-                  </div>
-                );
-              })()}
-
-              {/* 2. Trenażer Notatki Syntetyzującej (60–90 słów) */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-surface-card border border-surface-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 uppercase tracking-wider border border-amber-500/30">
-                      Zeszyt 1 CKE • 4 pkt
-                    </span>
-                    <span className="text-xs text-text-secondary">Rygor objętości: 60–90 wyrazów</span>
-                  </div>
-                  <h3 className="font-bold text-base text-text-primary">Trenażer Notatki Syntetyzującej</h3>
-                  <p className="text-xs text-text-secondary">
-                    Opanuj zwięzłą syntezę dwóch tekstów nieliterackich bez oceniania i pułapek subiektywizmu.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => onNavigate?.('learn', 'synthesis')}
-                  className="px-4 py-2.5 rounded-xl bg-surface-card-hover border border-surface-border hover:border-amber-500/40 text-text-primary hover:text-amber-300 font-bold text-xs transition active:scale-95 cursor-pointer flex items-center gap-2 shrink-0 self-start sm:self-auto"
-                >
-                  <PenTool size={14} className="text-amber-400" />
-                  <span>Trenuj notatkę</span>
-                  <ArrowRight size={13} />
-                </button>
-              </div>
-
-              {/* 3. Epoki Literackie CKE */}
-              <div className="bg-surface-card border border-surface-border rounded-2xl p-4 sm:p-5 space-y-3 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-bold text-text-primary flex items-center gap-2">
-                    <Layers size={16} className="text-rose-400" />
-                    <span>Epoki Literackie CKE (11 Epok)</span>
-                  </h3>
-                  <button
-                    type="button"
-                    onClick={() => onNavigate?.('learn')}
-                    className="text-xs text-rose-400 hover:text-rose-300 font-semibold cursor-pointer"
-                  >
-                    Baza zadań →
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-                  {POLISH_EPOCHS.map((epoch) => (
-                    <button
-                      key={epoch}
-                      type="button"
-                      onClick={() => onNavigate?.('learn', `epoch:${epoch}`)}
-                      className="p-2.5 rounded-xl bg-surface-card-hover border border-surface-border hover:border-rose-500/40 text-left transition-all cursor-pointer group"
-                    >
-                      <span className="text-xs font-bold text-text-primary group-hover:text-rose-400 transition-colors line-clamp-1">
-                        {epoch}
-                      </span>
-                      <span className="text-[10px] text-text-secondary mt-0.5 block">
-                        Formuła 2023
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* 4. Lektury z gwiazdką CKE podgląd */}
-              <div className="bg-surface-card border border-surface-border rounded-2xl p-4 sm:p-5 shadow-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-sm font-bold text-text-primary flex items-center gap-2">
-                    <span className="text-amber-400">★</span>
-                    <span>Lektury Obowiązkowe CKE (Zagrożenie Kardynalne)</span>
-                  </h3>
-                  <button
-                    type="button"
-                    onClick={() => onNavigate?.('learn')}
-                    className="text-xs text-rose-400 hover:text-rose-300 font-semibold cursor-pointer"
-                  >
-                    Zobacz wszystkie →
-                  </button>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {MATURA_LEKTURY.slice(0, 4).map((lek) => (
-                    <div
-                      key={lek.id}
-                      className="p-3 rounded-xl bg-surface-card-hover border border-surface-border hover:border-rose-500/30 transition-colors"
-                    >
-                      <div className="flex items-start justify-between gap-1 mb-1">
-                        <span className="font-bold text-sm text-text-primary">{lek.title}</span>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-300 font-bold border border-amber-500/20">
-                          {lek.epoch}
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-text-secondary line-clamp-2 mb-2">
-                        {lek.summary}
-                      </p>
-                      <div className="text-[10px] text-amber-400/90 font-medium truncate">
-                        ⚠️ {lek.cardinalWarning}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* 1. KARTA BIEŻĄCEGO POSTĘPU / NASTĘPNA LEKCJA (HERO CARD) - DLA POZOSTAŁYCH PRZEDMIOTÓW */}
-          {(selectedSubjectKey !== 'pol' && userState?.currentSubject !== 'polski') && (() => {
+          {/* 1. KARTA BIEŻĄCEGO POSTĘPU / NASTĘPNA LEKCJA (HERO CARD) - UNIWERSALNA DLA WSZYSTKICH PRZEDMIOTÓW */}
+          {(() => {
             const activeSub = getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey) || {
               name: 'Matematyka',
               shortName: 'Matematyka',
               accentColor: '#FFB800'
             };
-            const accentColor = activeSub.accentColor || '#FFB800';
+            const accentColor = (activeSub as any).accentColor || '#FFB800';
 
             return (
               <motion.div
-                initial={{ y: 15, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                className="bg-surface-card border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-lg group"
+                key={`hero-${selectedSubjectKey}`}
+                initial={{ y: 8, opacity: 0, filter: 'blur(4px)' }}
+                animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                onClick={handleResumeClick}
+                className="bg-surface-card border rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-colors shadow-lg group cursor-pointer"
                 style={{
                   borderColor: `${accentColor}40`,
                   boxShadow: `0 0 35px -8px ${accentColor}25`
@@ -844,7 +663,16 @@ export function DashboardView({
             initial={{ y: 15, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.05, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="bg-surface-card border border-surface-border hover:border-amber-500/40 rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-all duration-200 shadow-md group"
+            onClick={(e) => {
+              if ((e.target as HTMLElement).closest('button')) return;
+              triggerHaptic('medium');
+              if (selectedSubjectKey === 'pol') {
+                onNavigate?.('simulator', 'hub');
+              } else {
+                setIsExamHubOpen(true);
+              }
+            }}
+            className="bg-surface-card border border-surface-border hover:border-amber-500/40 rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-all duration-200 shadow-md group cursor-pointer"
           >
             {/* Ambient luminous glow */}
             <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-amber-500/10 pointer-events-none blur-3xl opacity-30 group-hover:opacity-50 transition-opacity" />
@@ -858,11 +686,11 @@ export function DashboardView({
                     Centrum Egzaminacyjne CKE
                   </span>
                   <span className="text-xs font-semibold text-text-secondary">
-                    {getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey)?.fullName || (selectedSubjectKey === 'pol' ? 'Język Polski' : 'Matematyka')}
+                    {getCkeAvailableSubjects().find(s => s.key === selectedSubjectKey)?.fullName || (selectedSubjectKey === 'pol' ? 'Język Polski' : selectedSubjectKey === 'eng' ? 'Język Angielski' : 'Matematyka')}
                   </span>
                 </div>
                 <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full tabular-nums">
-                  {selectedSubjectKey === 'pol' ? '1056 zadań z kluczem' : '1006 zadań z kluczem'}
+                  {selectedSubjectKey === 'pol' ? '1056 zadań z kluczem' : selectedSubjectKey === 'eng' ? '780 zadań z kluczem' : '1006 zadań z kluczem'}
                 </span>
               </div>
 
@@ -882,65 +710,97 @@ export function DashboardView({
                   type="button"
                   onClick={() => {
                     triggerHaptic('medium');
-                    onNavigate?.('simulator', 'maraton');
+                    if (selectedSubjectKey === 'pol') {
+                      onNavigate?.('simulator', 'hub');
+                    } else {
+                      onNavigate?.('simulator', 'maraton');
+                    }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-border hover:border-amber-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-amber-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider">Tryb 1</span>
                     <Layers size={14} className="text-amber-400 group-hover/btn:translate-x-0.5 transition-transform" />
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-text-primary">Wszystkie zadania</div>
-                  <div className="text-[11px] text-text-muted mt-0.5">Maraton pytań CKE</div>
+                  <div className="text-xs sm:text-sm font-bold text-text-primary">
+                    {selectedSubjectKey === 'pol' ? 'Zeszyt 1: Test' : 'Wszystkie zadania'}
+                  </div>
+                  <div className="text-[11px] text-text-muted mt-0.5">
+                    {selectedSubjectKey === 'pol' ? '18 zadań z czytelnią CKE' : 'Maraton pytań CKE'}
+                  </div>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => {
                     triggerHaptic('medium');
-                    onNavigate?.('simulator', 'exam_setup');
+                    if (selectedSubjectKey === 'pol') {
+                      onNavigate?.('simulator', 'hub');
+                    } else {
+                      onNavigate?.('simulator', 'exam_setup');
+                    }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-border hover:border-purple-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-purple-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider">Tryb 2</span>
                     <GraduationCap size={14} className="text-purple-400 group-hover/btn:translate-x-0.5 transition-transform" />
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-text-primary">Mini Matura</div>
-                  <div className="text-[11px] text-text-muted mt-0.5">Szybki test 20–35 min</div>
+                  <div className="text-xs sm:text-sm font-bold text-text-primary">
+                    {selectedSubjectKey === 'pol' ? 'Zeszyt 2: Wypracowanie' : 'Mini Matura'}
+                  </div>
+                  <div className="text-[11px] text-text-muted mt-0.5">
+                    {selectedSubjectKey === 'pol' ? 'Wybór tematu • Konspekt' : 'Szybki test 20–35 min'}
+                  </div>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => {
                     triggerHaptic('medium');
-                    onNavigate?.('simulator', 'full_exams');
+                    if (selectedSubjectKey === 'pol') {
+                      onNavigate?.('simulator', 'hub');
+                    } else {
+                      onNavigate?.('simulator', 'full_exams');
+                    }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-border hover:border-sky-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-sky-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-sky-400 uppercase tracking-wider">Tryb 3</span>
                     <FileText size={14} className="text-sky-400 group-hover/btn:translate-x-0.5 transition-transform" />
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-text-primary">Pełne Arkusze</div>
-                  <div className="text-[11px] text-text-muted mt-0.5">Maj/Czerwiec 2015–2024</div>
+                  <div className="text-xs sm:text-sm font-bold text-text-primary">
+                    {selectedSubjectKey === 'pol' ? 'Pełny Egzamin (240m)' : 'Pełne Arkusze'}
+                  </div>
+                  <div className="text-[11px] text-text-muted mt-0.5">
+                    {selectedSubjectKey === 'pol' ? 'Test + Wypracowanie • 60 pkt' : 'Maj/Czerwiec 2015–2024'}
+                  </div>
                 </button>
               </div>
 
               {/* Main CTA button */}
               <div className="pt-2 border-t border-surface-border flex items-center justify-between gap-3">
                 <span className="text-xs text-text-secondary font-medium hidden sm:inline">
-                  Wybierz format treningu i zacznij rozwiązywać arkusz
+                  {selectedSubjectKey === 'pol'
+                    ? 'Napisz oficjalną maturę z języka polskiego Formuła 2023'
+                    : 'Wybierz format treningu i zacznij rozwiązywać arkusz'}
                 </span>
                 <button
                   type="button"
                   onClick={() => {
                     triggerHaptic('medium');
-                    setIsExamHubOpen(true);
+                    if (selectedSubjectKey === 'pol') {
+                      onNavigate?.('simulator', 'hub');
+                    } else {
+                      setIsExamHubOpen(true);
+                    }
                   }}
                   className="w-full sm:w-auto font-display font-black text-xs sm:text-sm py-2.5 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-amber-500/20 ml-auto"
                 >
-                  <span>Otwórz Centrum Egzaminacyjne</span>
+                  <span>
+                    {selectedSubjectKey === 'pol' ? 'Otwórz Arkusz Maturalny' : 'Otwórz Centrum Egzaminacyjne'}
+                  </span>
                   <ArrowRight size={14} strokeWidth={2.5} />
                 </button>
               </div>
@@ -1093,6 +953,14 @@ export function DashboardView({
           <div className="hidden lg:block">
             {renderStreakWidget()}
           </div>
+
+          {/* WYZWANIA DNIA (DAILY CHALLENGES) */}
+          <DailyChallengesWidget
+            userState={userState}
+            onClaimChallenge={onClaimDailyChallenge}
+            onNavigate={onNavigate}
+            onOpenMistakesBank={onOpenMistakesBank}
+          />
 
           {/* SZYBKIE AKCJE AI & DIAGNOSTYKA */}
           <div className="flex flex-col gap-2.5">

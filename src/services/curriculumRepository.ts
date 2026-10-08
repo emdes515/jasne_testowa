@@ -28,6 +28,9 @@ import {
 import { MaturaTask } from '../types';
 import { normalizeTask } from '../data/mathTasks';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
+import { POLISH_CURRICULUM_TOPICS, getPolishLessonDocument } from '../data/polishCurriculumData';
+import { ENGLISH_CURRICULUM_TOPICS, ENGLISH_PILLARS, getEnglishLessonDocument } from '../data/englishCurriculumData';
+import { MATH_CURRICULUM_TOPICS, getMathLessonDocument } from '../data/mathCurriculumData';
 
 export const DEFAULT_SUBJECT_ID = 'matematyka-podstawowa';
 
@@ -228,6 +231,23 @@ export const curriculumRepository = {
         order: 2
       };
     }
+    if (subjectId === 'jezyk-angielski' || subjectId === 'eng') {
+      const existing = subjectsCache?.find(s => s.id === subjectId || s.key === subjectId);
+      if (existing) return existing;
+      return {
+        id: 'jezyk-angielski',
+        key: 'eng',
+        name: 'Język Angielski (Formuła 2023)',
+        short_name: 'Angielski',
+        formula: '2023',
+        description: 'Przygotowanie do matury podstawowej z języka angielskiego CKE Formuła 2023',
+        icon: 'Globe',
+        color: '#10B981',
+        pillars: ENGLISH_PILLARS,
+        is_active: true,
+        order: 3
+      };
+    }
     const subjects = await this.getSubjects();
     return subjects.find(s => s.id === subjectId || s.key === subjectId) || null;
   },
@@ -238,6 +258,42 @@ export const curriculumRepository = {
    * Reads from RAM cache -> localStorage persistent cache -> Firestore.
    */
   async getTopics(subjectId: string = DEFAULT_SUBJECT_ID): Promise<TopicDocument[]> {
+    // 0. Język Polski - 17 Działów CKE Formuła 2023
+    if (subjectId === 'jezyk-polski' || subjectId === 'pol') {
+      if (!topicsBySubjectCache.has(subjectId)) {
+        topicsBySubjectCache.set(subjectId, POLISH_CURRICULUM_TOPICS);
+        for (const t of POLISH_CURRICULUM_TOPICS) {
+          topicByIdCache.set(`${subjectId}/${t.id}`, t);
+          topicByIdCache.set(t.id, t);
+        }
+      }
+      return topicsBySubjectCache.get(subjectId)!;
+    }
+
+    // 0.1. Język Angielski - 15 Działów CKE Formuła 2023
+    if (subjectId === 'jezyk-angielski' || subjectId === 'eng') {
+      if (!topicsBySubjectCache.has(subjectId)) {
+        topicsBySubjectCache.set(subjectId, ENGLISH_CURRICULUM_TOPICS);
+        for (const t of ENGLISH_CURRICULUM_TOPICS) {
+          topicByIdCache.set(`${subjectId}/${t.id}`, t);
+          topicByIdCache.set(t.id, t);
+        }
+      }
+      return topicsBySubjectCache.get(subjectId)!;
+    }
+
+    // 0.2. Matematyka Podstawowa - 15 Działów CKE Formuła 2023
+    if (!isTestEnv && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'matematyka' || subjectId === 'math')) {
+      if (!topicsBySubjectCache.has(subjectId)) {
+        topicsBySubjectCache.set(subjectId, MATH_CURRICULUM_TOPICS);
+        for (const t of MATH_CURRICULUM_TOPICS) {
+          topicByIdCache.set(`${subjectId}/${t.id}`, t);
+          topicByIdCache.set(t.id, t);
+        }
+      }
+      return topicsBySubjectCache.get(subjectId)!;
+    }
+
     // 1. In-memory RAM cache
     if (topicsBySubjectCache.has(subjectId)) {
       return topicsBySubjectCache.get(subjectId)!;
@@ -297,6 +353,13 @@ export const curriculumRepository = {
         const dedupedMap = new Map<number, TopicDocument>();
         for (const t of topicsList) {
           const num = t.numericId || 1;
+          // Zapewnij, że tematy z Firestore mają pełne metadane lekcji z MATH_CURRICULUM_TOPICS jeśli ich brakuje
+          if ((!t.lessons_metadata || t.lessons_metadata.length === 0) && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math')) {
+            const fallbackTopic = MATH_CURRICULUM_TOPICS.find(m => m.id === t.id || m.numericId === num);
+            if (fallbackTopic?.lessons_metadata) {
+              t.lessons_metadata = fallbackTopic.lessons_metadata;
+            }
+          }
           const existing = dedupedMap.get(num);
           if (!existing) {
             dedupedMap.set(num, t);
@@ -313,6 +376,17 @@ export const curriculumRepository = {
       console.warn(`[curriculumRepository] Failed to fetch topics for subject ${subjectId}:`, err);
     }
 
+    // 3. Fallback do wbudowanego kurikulum matematyki Core-4 (Offline-First / Zero latency)
+    if (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math') {
+      topicsBySubjectCache.set(subjectId, MATH_CURRICULUM_TOPICS);
+      for (const t of MATH_CURRICULUM_TOPICS) {
+        topicByIdCache.set(`${subjectId}/${t.id}`, t);
+        topicByIdCache.set(t.id, t);
+      }
+      saveToCurriculumStorage(storageKey, MATH_CURRICULUM_TOPICS);
+      return MATH_CURRICULUM_TOPICS;
+    }
+
     return topicsBySubjectCache.get(subjectId) || [];
   },
 
@@ -327,6 +401,36 @@ export const curriculumRepository = {
     }
     if (topicByIdCache.has(topicId)) {
       return topicByIdCache.get(topicId)!;
+    }
+
+    // Język Polski topic resolution
+    if (subjectId === 'jezyk-polski' || subjectId === 'pol' || topicId.startsWith('pol-')) {
+      const found = POLISH_CURRICULUM_TOPICS.find(t => t.id === topicId || t.name === topicId || t.title === topicId);
+      if (found) {
+        topicByIdCache.set(cacheKey, found);
+        topicByIdCache.set(topicId, found);
+        return found;
+      }
+    }
+
+    // Język Angielski topic resolution
+    if (subjectId === 'jezyk-angielski' || subjectId === 'eng' || topicId.startsWith('eng-')) {
+      const found = ENGLISH_CURRICULUM_TOPICS.find(t => t.id === topicId || t.name === topicId || t.title === topicId);
+      if (found) {
+        topicByIdCache.set(cacheKey, found);
+        topicByIdCache.set(topicId, found);
+        return found;
+      }
+    }
+
+    // Matematyka Podstawowa topic resolution
+    if (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math' || topicId.startsWith('dzial-')) {
+      const found = MATH_CURRICULUM_TOPICS.find(t => t.id === topicId || t.name === topicId || t.title === topicId || t.numericId === parseInt(topicId.replace(/\D/g, '') || '0', 10));
+      if (found) {
+        topicByIdCache.set(cacheKey, found);
+        topicByIdCache.set(topicId, found);
+        return found;
+      }
     }
 
     // Check if topics list was cached in localStorage
@@ -389,6 +493,49 @@ export const curriculumRepository = {
       if (lessonCache.has(k2)) return lessonCache.get(k2)!;
     }
 
+
+    // 1.5. Język Polski lesson resolution
+    if (subjectId === 'jezyk-polski' || subjectId === 'pol' || lessonId.startsWith('pol-') || topicId.startsWith('pol-') || lessonId.startsWith('lekcja-')) {
+      const polDoc = getPolishLessonDocument(topicId, lessonId);
+      if (polDoc) {
+        for (const v of variants) {
+          lessonCache.set(`${subjectId}/${topicId}/${v}`, polDoc);
+          lessonCache.set(`${topicId}/${v}`, polDoc);
+          lessonByIdCache.set(v, polDoc);
+          if (subjectId) lessonByIdCache.set(`${subjectId}:${v}`, polDoc);
+        }
+        return polDoc;
+      }
+    }
+
+    // 1.6. Język Angielski lesson resolution
+    if (subjectId === 'jezyk-angielski' || subjectId === 'eng' || lessonId.startsWith('eng-') || topicId.startsWith('eng-')) {
+      const engDoc = getEnglishLessonDocument(lessonId, topicId);
+      if (engDoc) {
+        for (const v of variants) {
+          lessonCache.set(`${subjectId}/${topicId}/${v}`, engDoc);
+          lessonCache.set(`${topicId}/${v}`, engDoc);
+          lessonByIdCache.set(v, engDoc);
+          if (subjectId) lessonByIdCache.set(`${subjectId}:${v}`, engDoc);
+        }
+        return engDoc;
+      }
+    }
+
+    // 1.7. Matematyka lesson resolution
+    if (!isTestEnv && (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'matematyka' || subjectId === 'math' || topicId.startsWith('dzial-') || lessonId.startsWith('math-') || lessonId.match(/^\d+\.\d+$/))) {
+      const mathDoc = getMathLessonDocument(topicId, lessonId);
+      if (mathDoc) {
+        const allDocVariants = Array.from(new Set([...variants, ...getLessonKeyVariants(mathDoc.id)]));
+        for (const v of allDocVariants) {
+          lessonCache.set(`${subjectId}/${topicId}/${v}`, mathDoc);
+          lessonCache.set(`${topicId}/${v}`, mathDoc);
+          lessonByIdCache.set(v, mathDoc);
+          if (subjectId) lessonByIdCache.set(`${subjectId}:${v}`, mathDoc);
+        }
+        return mathDoc;
+      }
+    }
 
     // 2. RAM & LocalStorage check via getCachedLesson (Zero-cost across F5)
     const cachedFast = this.getCachedLesson(lessonId, subjectId);
@@ -498,6 +645,12 @@ export const curriculumRepository = {
    */
   getCachedLesson(lessonId: string, subjectId?: string): LessonDocument | null {
     if (!lessonId) return null;
+    const isEnglish = subjectId === 'jezyk-angielski' || subjectId === 'eng' || lessonId.startsWith('eng-');
+    if (isEnglish) {
+      const engDoc = getEnglishLessonDocument(lessonId);
+      if (engDoc) return engDoc;
+    }
+
     const isPolish = subjectId === 'jezyk-polski' || subjectId === 'pol' || lessonId.startsWith('pol-');
     const variants = getLessonKeyVariants(lessonId);
 
@@ -580,6 +733,16 @@ export const curriculumRepository = {
     topicId?: string,
     subjectId: string = DEFAULT_SUBJECT_ID
   ): Promise<LessonDocument | null> {
+    if (subjectId === 'jezyk-polski' || subjectId === 'pol' || lessonId.startsWith('pol-') || (topicId && topicId.startsWith('pol-')) || lessonId.startsWith('lekcja-')) {
+      const polDoc = getPolishLessonDocument(topicId, lessonId);
+      if (polDoc) return polDoc;
+    }
+
+    if (subjectId === 'jezyk-angielski' || subjectId === 'eng' || lessonId.startsWith('eng-') || (topicId && topicId.startsWith('eng-'))) {
+      const engDoc = getEnglishLessonDocument(lessonId, topicId);
+      if (engDoc) return engDoc;
+    }
+
     const cached = this.getCachedLesson(lessonId, subjectId);
     if (cached) return cached;
 

@@ -1,0 +1,512 @@
+{
+  "generatedAt": "2026-09-29T13:13:48.063Z",
+  "formula": "Formuła 2023 (Nowa Matura)",
+  "subject": "Język angielski",
+  "level": "Poziom podstawowy",
+  "sessions": [
+    {
+      "name": "Informatory CKE Formuła 2023",
+      "folder": "Informatory_i_Wymagania",
+      "files": [
+        {
+          "name": "Informator_EM2023_jezyk_angielski.pdf",
+          "sizeBytes": 9536094,
+          "sizeFormatted": "9.09 MB",
+          "type": "informator",
+          "desc": "Oficjalny informator maturalny CKE o egzaminie z języka angielskiego od roku szkolnego 2022/2023",
+          "sourceUrl": "https://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/Informatory/Informator_EM2023_jezyk_angielski.pdf"
+        },
+        {
+          "name": "Informator_EM_2024_angielski.pdf",
+          "sizeBytes": 8089404,
+          "sizeFormatted": "7.71 MB",
+          "type": "informator",
+          "desc": "Informator maturalny CKE z języka angielskiego na rok 2024",
+          "sourceUrl": "https://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/Informatory/2024/Informator_EM_2024_angielski.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Arkusz Pokazowy CKE (Marzec 2022)",
+      "folder": "2022_Materialy_Wstepne\\2022_03_pokazowa",
+      "files": [
+        {
+          "name": "angielski-2022-marzec-pokazowa-podstawowa.pdf",
+          "sizeBytes": 332890,
+          "sizeFormatted": "325.09 KB",
+          "type": "arkusz",
+          "desc": "Arkusz pokazowy CKE marzec 2022 (poziom podstawowy, Formuła 2023)",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/pokazowe/angielski/MJAP-P0-100-2203.pdf"
+        },
+        {
+          "name": "angielski-2022-marzec-pokazowa-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 120349,
+          "sizeFormatted": "117.53 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań do arkusza pokazowego marzec 2022",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/pokazowe/angielski/MJAP-P0-100-200-400-660-Q00-2203-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2022-marzec-pokazowa-podstawowa-zasady.pdf",
+          "sizeBytes": 357633,
+          "sizeFormatted": "349.25 KB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania rozwiązań zadań arkusza pokazowego marzec 2022",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/pokazowe/angielski/MJAP-P0-100-200-400-660-Q00-2203-zasady.pdf"
+        },
+        {
+          "name": "angielski-2022-marzec-pokazowa-podstawowa-nagrania.mp3",
+          "sizeBytes": 20164188,
+          "sizeFormatted": "19.23 MB",
+          "type": "audio",
+          "desc": "Plik audio do zadań ze słuchu arkusza pokazowego marzec 2022",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/pokazowe/angielski/MJAP-P0-100-2203.mp3"
+        }
+      ]
+    },
+    {
+      "name": "Diagnoza Maturalna CKE (Wrzesień 2022)",
+      "folder": "2022_Materialy_Wstepne\\2022_09_probna",
+      "files": [
+        {
+          "name": "angielski-2022-wrzesien-probna-podstawowa.pdf",
+          "sizeBytes": 571961,
+          "sizeFormatted": "558.56 KB",
+          "type": "arkusz",
+          "desc": "Arkusz diagnostyczny CKE wrzesień 2022 (poziom podstawowy)",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2022-wrzesien-probna-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2022-wrzesien-probna-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 187266,
+          "sizeFormatted": "182.88 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań diagnozy wrzesień 2022",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2022-wrzesien-probna-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2022-wrzesien-probna-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 406274,
+          "sizeFormatted": "396.75 KB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania diagnozy wrzesień 2022",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2022-wrzesien-probna-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Próbna Matura CKE (Grudzień 2022)",
+      "folder": "2022_Materialy_Wstepne\\2022_12_probna",
+      "files": [
+        {
+          "name": "angielski-2022-grudzien-probna-podstawowa.pdf",
+          "sizeBytes": 498276,
+          "sizeFormatted": "486.6 KB",
+          "type": "arkusz",
+          "desc": "Arkusz próbny CKE grudzień 2022",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2022-grudzien-probna-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2022-grudzien-probna-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 206230,
+          "sizeFormatted": "201.4 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań do matury próbnej grudzień 2022",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2022-grudzien-probna-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2022-grudzien-probna-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 455983,
+          "sizeFormatted": "445.3 KB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania do matury próbnej grudzień 2022",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2022-grudzien-probna-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Matura Maj 2023 (Sesja Główna)",
+      "folder": "2023\\2023_05_maj",
+      "files": [
+        {
+          "name": "angielski-2023-maj-matura-podstawowa.pdf",
+          "sizeBytes": 1311415,
+          "sizeFormatted": "1.25 MB",
+          "type": "arkusz",
+          "desc": "Oficjalny arkusz egzaminacyjny matury maj 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-maj-matura-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2023-maj-matura-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 215542,
+          "sizeFormatted": "210.49 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury maj 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-maj-matura-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2023-maj-matura-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 518125,
+          "sizeFormatted": "505.98 KB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania / klucz matury maj 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-maj-matura-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Matura Czerwiec 2023 (Termin Dodatkowy)",
+      "folder": "2023\\2023_06_czerwiec",
+      "files": [
+        {
+          "name": "angielski-2023-czerwiec-matura-podstawowa.pdf",
+          "sizeBytes": 814493,
+          "sizeFormatted": "795.4 KB",
+          "type": "arkusz",
+          "desc": "Arkusz egzaminacyjny matury czerwiec 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-czerwiec-matura-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2023-czerwiec-matura-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 211891,
+          "sizeFormatted": "206.92 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury czerwiec 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-czerwiec-matura-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2023-czerwiec-matura-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 426514,
+          "sizeFormatted": "416.52 KB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury czerwiec 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-czerwiec-matura-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Matura Sierpień 2023 (Sesja Poprawkowa)",
+      "folder": "2023\\2023_08_sierpien_poprawkowa",
+      "files": [
+        {
+          "name": "angielski-2023-sierpien-poprawkowa-podstawowa.pdf",
+          "sizeBytes": 659178,
+          "sizeFormatted": "643.73 KB",
+          "type": "arkusz",
+          "desc": "Arkusz egzaminacyjny matury poprawkowej sierpień 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-sierpien-poprawkowa-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2023-sierpien-poprawkowa-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 193163,
+          "sizeFormatted": "188.64 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury poprawkowej sierpień 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-sierpien-poprawkowa-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2023-sierpien-poprawkowa-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1125516,
+          "sizeFormatted": "1.07 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury poprawkowej sierpień 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-sierpien-poprawkowa-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Próbna Matura Diagnostyczna CKE (Grudzień 2023)",
+      "folder": "2023\\2023_12_probna",
+      "files": [
+        {
+          "name": "angielski-2023-grudzien-probna-podstawowa.pdf",
+          "sizeBytes": 1909772,
+          "sizeFormatted": "1.82 MB",
+          "type": "arkusz",
+          "desc": "Arkusz diagnostyczny CKE grudzień 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-grudzien-probna-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2023-grudzien-probna-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 864353,
+          "sizeFormatted": "844.09 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań diagnozy grudzień 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-grudzien-probna-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2023-grudzien-probna-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1092080,
+          "sizeFormatted": "1.04 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania diagnozy grudzień 2023",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2023-grudzien-probna-podstawowa-odpowiedzi.pdf"
+        },
+        {
+          "name": "angielski-2023-grudzien-probna-podstawowa-nagrania.mp3",
+          "sizeBytes": 21023763,
+          "sizeFormatted": "20.05 MB",
+          "type": "audio",
+          "desc": "Plik audio do zadań ze słuchu grudzień 2023",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/diagnostyczne_12_23/angielski/MJAP-P0-100-2312.mp3"
+        }
+      ]
+    },
+    {
+      "name": "Matura Maj 2024 (Sesja Główna)",
+      "folder": "2024\\2024_05_maj",
+      "files": [
+        {
+          "name": "angielski-2024-maj-matura-podstawowa.pdf",
+          "sizeBytes": 2237394,
+          "sizeFormatted": "2.13 MB",
+          "type": "arkusz",
+          "desc": "Oficjalny arkusz egzaminacyjny matury maj 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-maj-matura-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2024-maj-matura-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 899368,
+          "sizeFormatted": "878.29 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury maj 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-maj-matura-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2024-maj-matura-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1714337,
+          "sizeFormatted": "1.63 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury maj 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-maj-matura-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Matura Czerwiec 2024 (Termin Dodatkowy)",
+      "folder": "2024\\2024_06_czerwiec",
+      "files": [
+        {
+          "name": "angielski-2024-czerwiec-matura-podstawowa.pdf",
+          "sizeBytes": 1758586,
+          "sizeFormatted": "1.68 MB",
+          "type": "arkusz",
+          "desc": "Arkusz egzaminacyjny matury czerwiec 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-czerwiec-matura-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2024-czerwiec-matura-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 900894,
+          "sizeFormatted": "879.78 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury czerwiec 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-czerwiec-matura-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2024-czerwiec-matura-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1571951,
+          "sizeFormatted": "1.5 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury czerwiec 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-czerwiec-matura-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Matura Sierpień 2024 (Sesja Poprawkowa)",
+      "folder": "2024\\2024_08_sierpien_poprawkowa",
+      "files": [
+        {
+          "name": "angielski-2024-sierpien-poprawkowa-podstawowa.pdf",
+          "sizeBytes": 2456597,
+          "sizeFormatted": "2.34 MB",
+          "type": "arkusz",
+          "desc": "Arkusz egzaminacyjny matury poprawkowej sierpień 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-sierpien-poprawkowa-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2024-sierpien-poprawkowa-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 880210,
+          "sizeFormatted": "859.58 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury poprawkowej sierpień 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-sierpien-poprawkowa-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2024-sierpien-poprawkowa-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1633948,
+          "sizeFormatted": "1.56 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury poprawkowej sierpień 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-sierpien-poprawkowa-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Próbna Matura Diagnostyczna CKE (Grudzień 2024)",
+      "folder": "2024\\2024_12_probna",
+      "files": [
+        {
+          "name": "angielski-2024-grudzien-probna-podstawowa.pdf",
+          "sizeBytes": 1724741,
+          "sizeFormatted": "1.64 MB",
+          "type": "arkusz",
+          "desc": "Arkusz diagnostyczny CKE grudzień 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-grudzien-probna-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2024-grudzien-probna-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 903169,
+          "sizeFormatted": "882 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań diagnozy grudzień 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-grudzien-probna-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2024-grudzien-probna-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1883570,
+          "sizeFormatted": "1.8 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania diagnozy grudzień 2024",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2024-grudzien-probna-podstawowa-odpowiedzi.pdf"
+        },
+        {
+          "name": "angielski-2024-grudzien-probna-podstawowa-nagrania.mp3",
+          "sizeBytes": 19731298,
+          "sizeFormatted": "18.82 MB",
+          "type": "audio",
+          "desc": "Plik audio do zadań ze słuchu grudzień 2024",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2015/Probny/2024/Jezyk_angielski/poziom_podstawowy/MJA-P-100-2412.mp3"
+        }
+      ]
+    },
+    {
+      "name": "Matura Maj 2025 (Sesja Główna)",
+      "folder": "2025\\2025_05_maj",
+      "files": [
+        {
+          "name": "angielski-2025-maj-matura-podstawowa.pdf",
+          "sizeBytes": 1808215,
+          "sizeFormatted": "1.72 MB",
+          "type": "arkusz",
+          "desc": "Oficjalny arkusz egzaminacyjny matury maj 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-maj-matura-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2025-maj-matura-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 875404,
+          "sizeFormatted": "854.89 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury maj 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-maj-matura-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2025-maj-matura-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1872933,
+          "sizeFormatted": "1.79 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury maj 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-maj-matura-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Matura Czerwiec 2025 (Termin Dodatkowy)",
+      "folder": "2025\\2025_06_czerwiec",
+      "files": [
+        {
+          "name": "angielski-2025-czerwiec-matura-podstawowa.pdf",
+          "sizeBytes": 1969948,
+          "sizeFormatted": "1.88 MB",
+          "type": "arkusz",
+          "desc": "Arkusz egzaminacyjny matury czerwiec 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-czerwiec-matura-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2025-czerwiec-matura-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 917871,
+          "sizeFormatted": "896.36 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury czerwiec 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-czerwiec-matura-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2025-czerwiec-matura-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1967115,
+          "sizeFormatted": "1.88 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury czerwiec 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-czerwiec-matura-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Matura Sierpień 2025 (Sesja Poprawkowa)",
+      "folder": "2025\\2025_08_sierpien_poprawkowa",
+      "files": [
+        {
+          "name": "angielski-2025-sierpien-poprawkowa-podstawowa.pdf",
+          "sizeBytes": 1895056,
+          "sizeFormatted": "1.81 MB",
+          "type": "arkusz",
+          "desc": "Arkusz egzaminacyjny matury poprawkowej sierpień 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-sierpien-poprawkowa-podstawowa.pdf"
+        },
+        {
+          "name": "angielski-2025-sierpien-poprawkowa-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 1272415,
+          "sizeFormatted": "1.21 MB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań matury poprawkowej sierpień 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-sierpien-poprawkowa-podstawowa-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2025-sierpien-poprawkowa-podstawowa-odpowiedzi.pdf",
+          "sizeBytes": 1709208,
+          "sizeFormatted": "1.63 MB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania matury poprawkowej sierpień 2025",
+          "sourceUrl": "https://arkusze.pl/maturalne/jezyk-angielski-2025-sierpien-poprawkowa-podstawowa-odpowiedzi.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Próbny Egzamin Maturalny CKE (Marzec 2026)",
+      "folder": "2026_Probne\\2026_03_probna",
+      "files": [
+        {
+          "name": "angielski-2026-marzec-probna-podstawowa.pdf",
+          "sizeBytes": 395527,
+          "sizeFormatted": "386.26 KB",
+          "type": "arkusz",
+          "desc": "Arkusz egzaminacyjny próbnej matury CKE marzec 2026",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/probny_egzamin/2026_marzec/Jezyk_angielski/MJAP-P0-100-A-2601-arkusz.pdf"
+        },
+        {
+          "name": "angielski-2026-marzec-probna-podstawowa-transkrypcja.pdf",
+          "sizeBytes": 462475,
+          "sizeFormatted": "451.64 KB",
+          "type": "transkrypcja",
+          "desc": "Transkrypcja nagrań próbnej matury marzec 2026",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/probny_egzamin/2026_marzec/Jezyk_angielski/MJAP-P0-100-2601-transkrypcja.pdf"
+        },
+        {
+          "name": "angielski-2026-marzec-probna-podstawowa-zasady.pdf",
+          "sizeBytes": 450342,
+          "sizeFormatted": "439.79 KB",
+          "type": "odpowiedzi",
+          "desc": "Zasady oceniania próbnej matury marzec 2026",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/probny_egzamin/2026_marzec/Jezyk_angielski/MJAP-P0-100-2601-zasady.pdf"
+        },
+        {
+          "name": "angielski-2026-marzec-probna-podstawowa-nagrania.mp3",
+          "sizeBytes": 23145296,
+          "sizeFormatted": "22.07 MB",
+          "type": "audio",
+          "desc": "Plik audio do zadań ze słuchu marzec 2026",
+          "sourceUrl": "http://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2023/materialy_dodatkowe/probny_egzamin/2026_marzec/Jezyk_angielski/MJAP-P-100-2601.mp3"
+        }
+      ]
+    }
+  ]
+}

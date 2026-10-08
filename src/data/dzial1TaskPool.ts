@@ -146,8 +146,10 @@ export function drawSessionTasks(
   providedTasks?: any[],
   providedFormulaSheet?: any
 ): SessionTasksDrawResult {
+  const isEng = String(lessonId || '').startsWith('eng-');
   const isPol = String(lessonId || '').startsWith('pol-');
-  const lesson = curriculumRepository.getCachedLesson(lessonId, isPol ? 'jezyk-polski' : 'matematyka-podstawowa');
+  const subjectId = isEng ? 'jezyk-angielski' : isPol ? 'jezyk-polski' : 'matematyka-podstawowa';
+  const lesson = curriculumRepository.getCachedLesson(lessonId, subjectId);
   const formulaSheet =
     toFormulaSheet(providedFormulaSheet, lesson) || toFormulaSheet(
       (lesson as any)?.formulaSheet || (lesson as any)?.formula_sheet,
@@ -156,6 +158,18 @@ export function drawSessionTasks(
 
   const provided = Array.isArray(providedTasks) && providedTasks.length > 0 ? providedTasks : null;
   const pool: any[] = provided || ((lesson?.tasks as any[]) || []);
+
+  if (isEng) {
+    const sessionTasks = pool.length > 0 ? pool.slice(0, 5) : [];
+    return {
+      lessonId,
+      sessionTasks,
+      formulaSheet: null,
+      theoryPill: lesson?.theory_pill,
+      required_correct_tasks: lesson?.required_correct_tasks || Math.min(3, sessionTasks.length),
+      estimated_time_formatted: lesson?.estimated_time_formatted || '~5 min'
+    };
+  }
 
   const isPolish =
     lessonId.startsWith('pol-') ||

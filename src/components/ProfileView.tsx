@@ -20,12 +20,14 @@ import {
   Target,
   Sun,
   Moon,
-  Monitor
+  Monitor,
+  Terminal
 } from 'lucide-react';
 import { logout, auth, loginWithGoogle } from '../lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { AchievementsSection } from './AchievementsSection';
 import { PerksVaultSection } from './PerksVaultSection';
+import { JasneLogo } from './ui/JasneLogo';
 import { ShopItem, countTotalClaimable } from '../data/achievements';
 import { triggerHaptic, getLocalDateString, filterActualTaskIds } from '../utils';
 import { useTheme, ThemeMode } from '../services/themeManager';
@@ -38,6 +40,8 @@ interface ProfileViewProps {
   onUseStreakFreeze?: () => void;
   onOpenAuthModal?: () => void;
   onOpenOnboarding?: () => void;
+  onOpenDevHub?: () => void;
+  onOpenBlikModal?: () => void;
   initialTab?: 'overview' | 'achievements' | 'perks';
 }
 
@@ -51,6 +55,8 @@ export function ProfileView({
   onUseStreakFreeze,
   onOpenAuthModal,
   onOpenOnboarding,
+  onOpenDevHub,
+  onOpenBlikModal,
   initialTab = 'overview'
 }: ProfileViewProps) {
   const [user] = useAuthState(auth);
@@ -219,6 +225,7 @@ export function ProfileView({
             userState={userState}
             onBuyItem={onBuyShopItem}
             onUseStreakFreeze={onUseStreakFreeze}
+            onOpenBlikModal={onOpenBlikModal}
           />
         )}
 
@@ -393,6 +400,34 @@ export function ProfileView({
             {/* Quick Actions & Settings */}
             <div className="bg-surface-card border border-surface-border rounded-[24px] overflow-hidden shadow-sm">
 
+              {onOpenDevHub && (
+                <button 
+                  onClick={() => {
+                    triggerHaptic('medium');
+                    onOpenDevHub();
+                  }}
+                  className="w-full p-4 flex items-center gap-4 hover:bg-emerald-500/10 transition-colors border-b border-surface-border text-left cursor-pointer group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 shrink-0 border border-emerald-500/30 group-hover:scale-105 transition-transform">
+                    <Terminal size={18} />
+                  </div>
+                  <div className="flex flex-col items-start flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                        Panel Deweloperski (Super-Admin)
+                      </span>
+                      <span className="text-[10px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">
+                        {userState?.isDev ? '● AKTYWNY' : 'DEV'}
+                      </span>
+                    </div>
+                    <span className="text-xs text-text-secondary truncate max-w-full">
+                      Nielimitowane serca, PRO, 225 lekcji, 99 999 monet, teleport
+                    </span>
+                  </div>
+                  <ChevronRight size={18} className="text-text-muted group-hover:text-emerald-400 shrink-0 transition-colors" />
+                </button>
+              )}
+
               {onOpenOnboarding && (
                 <button 
                   onClick={() => {
@@ -462,6 +497,14 @@ export function ProfileView({
                 </div>
                 <ChevronRight size={18} className="text-text-muted shrink-0" />
               </button>
+            </div>
+
+            {/* Brand Footer */}
+            <div className="mt-8 pt-6 border-t border-surface-border flex flex-col items-center justify-center gap-2 opacity-75">
+              <JasneLogo variant="horizontal" size={26} glow={false} />
+              <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider">
+                Matura staje się prosta • CKE 2025
+              </span>
             </div>
           </div>
         )}

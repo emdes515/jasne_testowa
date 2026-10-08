@@ -1,0 +1,69 @@
+{
+  "info": {
+    "title": "Baza 800 Zadań z Języka Polskiego - Matura Formuła 2023 (CKE)",
+    "totalTasks": 800,
+    "breakdown": {
+      "part1_jezyk_w_uzyciu": 280,
+      "part2_test_historyczny": 460,
+      "part3_wypracowanie": 60
+    },
+    "granularMatrix": {
+      "T1_prawda_falsz_nieliteracki": 50,
+      "T2_wyjasnienie_metafory_sensu": 50,
+      "T3_funkcje_jezykowe": 40,
+      "T4_srodki_retoryczne_stylistyczne": 45,
+      "T5_konfrontacja_stanowisk": 45,
+      "T6_notatka_syntetyzujaca": 50,
+      "T7_ocena_postawy_bohatera": 90,
+      "T8_analiza_fragmentu_symboliki": 90,
+      "T9_ikonografia_dzielo_sztuki": 45,
+      "T10_prawda_falsz_lektura": 55,
+      "T11_tabela_syntetyczna_dopasowanie": 50,
+      "T12_topos_pojecie_epoki": 45,
+      "T13_cechy_pradu_epoki": 45,
+      "T14_zestawienie_komparatystyczne": 40,
+      "T15_formulowanie_tezy": 15,
+      "T16_dobor_lektury_argumentacja": 15,
+      "T17_dobor_kontekstu": 15,
+      "T18_konspekt_rozprawki": 15
+    },
+    "lekturyDistribution": {
+      "Lalka (Bolesław Prus)": 45,
+      "Dziady cz. III (Adam Mickiewicz)": 40,
+      "Wesele (Stanisław Wyspiański)": 35,
+      "Kordian (Juliusz Słowacki)": 30,
+      "Przedwiośnie (Stefan Żeromski)": 25,
+      "Pan Tadeusz (Adam Mickiewicz)": 25,
+      "Dżuma (Albert Camus)": 25,
+      "Rok 1984 (George Orwell)": 25,
+      "Zbrodnia i kara (Fiodor Dostojewski)": 25,
+      "Antyk i Biblia": 25,
+      "Średniowiecze (Bogurodzica, Rozmowa Polikarpa)": 15,
+      "Renesans (Jan Kochanowski)": 20,
+      "Makbet (William Szekspir)": 15,
+      "Tango (Sławomir Mrożek)": 15,
+      "Literatura wojny i łagrów (Inny świat, Borowski, Krall)": 20,
+      "Wiedza ogólnoepokowa, toposy i komparatystyka": 100
+    }
+  },
+  "modules": [
+    {
+      "module": "Część I: Język polski w użyciu",
+      "tasksCount": 280,
+      "sourceFiles": ["part1_jezyk_w_uzyciu.ts"],
+      "idRange": "POL_P1_T1_001 - POL_P1_T6_050"
+    },
+    {
+      "module": "Część II: Test historycznoliteracki",
+      "tasksCount": 460,
+      "sourceFiles": ["part2_test_historyczny.ts"],
+      "idRange": "POL_P2_T7_001 - POL_P2_T14_040"
+    },
+    {
+      "module": "Część III: Warsztat wypracowania",
+      "tasksCount": 60,
+      "sourceFiles": ["part3_wypracowanie.ts"],
+      "idRange": "POL_P3_T15_001 - POL_P3_T18_015"
+    }
+  ]
+}

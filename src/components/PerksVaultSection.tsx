@@ -21,12 +21,14 @@ interface PerksVaultSectionProps {
   userState: UserState;
   onBuyItem: (item: ShopItem, currency: 'tokens' | 'coins') => boolean;
   onUseStreakFreeze?: () => void;
+  onOpenBlikModal?: () => void;
 }
 
 export function PerksVaultSection({
   userState,
   onBuyItem,
-  onUseStreakFreeze
+  onUseStreakFreeze,
+  onOpenBlikModal
 }: PerksVaultSectionProps) {
   const [purchaseSuccess, setPurchaseSuccess] = useState<string | null>(null);
   const [purchaseError, setPurchaseError] = useState<string | null>(null);
@@ -45,6 +47,21 @@ export function PerksVaultSection({
 
   const handlePurchase = (item: ShopItem, currency: 'tokens' | 'coins') => {
     setPurchaseError(null);
+
+    if (item.effectType === 'streakFreeze' && (perks.streakFreezes || 0) >= 2) {
+      triggerHaptic('warning');
+      setPurchaseError('Osiągnięto maksymalny limit Tarczy Serii (2 sztuki w ekwipunku).');
+      setTimeout(() => setPurchaseError(null), 3500);
+      return;
+    }
+
+    if (item.effectType === 'arenaShield' && (perks.arenaShields || 0) >= 3) {
+      triggerHaptic('warning');
+      setPurchaseError('Osiągnięto maksymalny limit Tarcz Areny (3 sztuki w ekwipunku).');
+      setTimeout(() => setPurchaseError(null), 3500);
+      return;
+    }
+
     const success = onBuyItem(item, currency);
     if (success) {
       triggerHaptic('success');
@@ -104,7 +121,21 @@ export function PerksVaultSection({
             <span className="text-2xl font-display font-black text-white leading-tight">
               {coins.toLocaleString('pl-PL')}
             </span>
-            <span className="text-[10px] text-[#8B8D98] mt-1">Z zadań i matury</span>
+            <div className="flex items-center justify-between mt-1">
+              <span className="text-[10px] text-[#8B8D98]">Z zadań i matury</span>
+              {onOpenBlikModal && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic('light');
+                    onOpenBlikModal();
+                  }}
+                  className="text-[10px] font-black text-amber-400 hover:text-amber-300 flex items-center gap-1 cursor-pointer bg-amber-500/10 hover:bg-amber-500/20 px-2 py-0.5 rounded-md border border-amber-500/30 transition-all"
+                >
+                  <Coins size={10} /> + Doładuj BLIK
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

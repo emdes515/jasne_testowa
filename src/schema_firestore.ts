@@ -36,6 +36,7 @@ export interface SubjectPillarItem {
   name: string;
   title?: string;
   short_title?: string;
+  short_name?: string;
   description?: string;
   icon?: string;
   color?: string;

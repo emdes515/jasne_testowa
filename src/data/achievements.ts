@@ -1,4 +1,4 @@
-import { UserPerks } from '../types';
+import { UserPerks, BlikCoinPack } from '../types';
 
 export type AchievementCategory = 'tasks' | 'arena' | 'matura' | 'streak' | 'levels';
 
@@ -537,7 +537,7 @@ export const SHOP_ITEMS: ShopItem[] = [
   {
     id: 'streak_freeze',
     name: 'Tarcza Serii (Streak Freeze)',
-    description: 'Chroni Twój licznik dni nauki przed przerwaniem i natychmiast usuwa rdzę (Campus Rust).',
+    description: 'Chroni Twój licznik dni nauki przed przerwaniem i natychmiast usuwa rdzę (Campus Rust). (Maks. 2 w ekwipunku).',
     icon: 'Shield',
     tokenPrice: 35,
     coinPrice: 200,
@@ -548,24 +548,24 @@ export const SHOP_ITEMS: ShopItem[] = [
   {
     id: 'arena_shield',
     name: 'Tarcza ELO Areny',
-    description: 'Chroni przed utratą -15 punktów ELO przy kolejnej porażce w pojedynku 1v1 na Arenie.',
+    description: 'Chroni przed utratą -15 punktów ELO przy kolejnej porażce w pojedynku 1v1 na Arenie. (Maks. 3 w ekwipunku).',
     icon: 'ShieldCheck',
     tokenPrice: 50,
-    coinPrice: 350,
+    coinPrice: 300,
     category: 'shield',
     effectType: 'arenaShield',
     amount: 1
   },
   {
     id: 'xp_double',
-    name: 'Doładowanie 2x XP (3 zadania)',
-    description: 'Podwaja zdobywane punkty doświadczenia z kolejnych 3 rozwiązanych zadań.',
+    name: 'Doładowanie 2x XP (Cała Sesja)',
+    description: 'Podwaja zdobywane punkty doświadczenia (XP) z całej kolejnej rozwiązanej lekcji.',
     icon: 'Zap',
     tokenPrice: 40,
-    coinPrice: 250,
+    coinPrice: 150,
     category: 'boost',
     effectType: 'xpDouble',
-    amount: 3
+    amount: 1
   },
   {
     id: 'champion_avatar',
@@ -577,5 +577,32 @@ export const SHOP_ITEMS: ShopItem[] = [
     category: 'boost',
     effectType: 'coinBooster',
     amount: 1
+  }
+];
+
+export const BLIK_COIN_PACKS: BlikCoinPack[] = [
+  {
+    id: 'blik_250',
+    name: 'Pakiet Ratunkowy',
+    tagline: 'Ratuje serię lub uzupełnia serca',
+    coins: 250,
+    pricePln: 5,
+    popular: false
+  },
+  {
+    id: 'blik_700',
+    name: 'Pakiet Pilnego Ucznia',
+    tagline: 'Zapas tarcz, boostery i podpowiedzi',
+    coins: 700,
+    pricePln: 12,
+    popular: true
+  },
+  {
+    id: 'blik_1500',
+    name: 'Pakiet Mistrzowski',
+    tagline: 'Maksymalny komfort i prestiż',
+    coins: 1500,
+    pricePln: 20,
+    popular: false
   }
 ];

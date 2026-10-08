@@ -6,6 +6,9 @@ export const MAX_HEARTS = 5;
 export const REGEN_INTERVAL_MS = 30 * 60 * 1000; // 30 minut na 1 serce
 export const HEARTS_REFILL_COIN_COST = 150; // 150 monet za pełne odnowienie
 export const DAILY_FREE_AI_VISION_LIMIT = 3; // 3 darmowe skany tablicy AI dziennie dla darmowych kont
+export const AI_VISION_EXTRA_SCAN_COIN_COST = 30; // 30 monet za dodatkowy skan tablicy AI po wyczerpaniu limitu 3 darmowych
+export const PRO_WELCOME_COINS_GRANT = 300; // 300 monet jednorazowo przy aktywacji/odnowieniu PRO
+export const PRO_DAILY_DROP_COINS = 30; // 30 monet dziennie w ramach Złotego Zrzutu PRO po min. 1 lekcji
 
 export interface SyncedHeartsResult {
   userState: UserState;
@@ -223,6 +226,7 @@ export function activatePro(userState: UserState): UserState {
   return {
     ...userState,
     isPro: true,
+    coins: (userState.coins || 0) + PRO_WELCOME_COINS_GRANT,
     hearts: MAX_HEARTS,
     maxHearts: MAX_HEARTS,
     lastHeartRegenTimestamp: Date.now()
@@ -289,20 +293,47 @@ export async function activateProWithCode(code: string): Promise<ProActivationRe
 /**
  * Sprawdza dzienny limit użycia oceny AI Vision dla tablicy odręcznej
  */
-export function canUseAiVision(userState: UserState): { allowed: boolean; remainingDaily: number; isPro: boolean } {
+export function canUseAiVision(userState: UserState): { 
+  allowed: boolean; 
+  remainingDaily: number; 
+  isPro: boolean; 
+  canBuyWithCoins: boolean; 
+  coinCost: number; 
+} {
   if (userState.isPro) {
-    return { allowed: true, remainingDaily: Infinity, isPro: true };
+    return { allowed: true, remainingDaily: Infinity, isPro: true, canBuyWithCoins: false, coinCost: 0 };
   }
 
   const todayStr = new Date().toISOString().split('T')[0];
   const lastDate = userState.lastVisionDate || '';
   const currentDailyCount = (lastDate === todayStr) ? (userState.aiVisionDailyCount || 0) : 0;
   const remaining = Math.max(0, DAILY_FREE_AI_VISION_LIMIT - currentDailyCount);
+  const coins = userState.coins || 0;
 
   return {
     allowed: remaining > 0,
     remainingDaily: remaining,
-    isPro: false
+    isPro: false,
+    canBuyWithCoins: remaining === 0 && coins >= AI_VISION_EXTRA_SCAN_COIN_COST,
+    coinCost: remaining === 0 ? AI_VISION_EXTRA_SCAN_COIN_COST : 0
+  };
+}
+
+/**
+ * Dokupuje dodatkowy skan AI Vision za monety po wyczerpaniu limitu darmowych
+ */
+export function purchaseExtraAiVisionScan(userState: UserState): { success: boolean; updatedState: UserState } {
+  if (userState.isPro) return { success: true, updatedState: userState };
+  const coins = userState.coins || 0;
+  if (coins < AI_VISION_EXTRA_SCAN_COIN_COST) {
+    return { success: false, updatedState: userState };
+  }
+  return {
+    success: true,
+    updatedState: {
+      ...userState,
+      coins: coins - AI_VISION_EXTRA_SCAN_COIN_COST
+    }
   };
 }
 

@@ -348,12 +348,12 @@ export function autoWrapLatex(rawStr: string): string {
     .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^&]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  const words = textWithoutLatex.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
+  const words: string[] = textWithoutLatex.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
   const mathKeywords = new Set([
     'sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt',
     'cases', 'aligned', 'matrix', 'pmatrix', 'bmatrix', 'text', 'mbox', 'dla'
   ]);
-  const hasProseWords = words.some(w => !mathKeywords.has(w.toLowerCase()));
+  const hasProseWords = words.some((w: string) => !mathKeywords.has(w.toLowerCase()));
 
   // Merge prefix equations like "f(x) = $ax^2 + bx + c$" into "$f(x) = ax^2 + bx + c$"
   s = s.replace(/([a-zA-Z\(\)]+\s*=\s*)\$([^\$]+)\$/g, '$$$1$2$$');
@@ -876,12 +876,12 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
     .replace(/[{}\[\]\(\)<>=+\-*\/\\:,;!|_^&]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  const blockWords = textWithoutLatexBlock.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
+  const blockWords: string[] = textWithoutLatexBlock.match(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,}/g) || [];
   const blockMathKeywords = new Set([
     'sin', 'cos', 'tan', 'ctg', 'tg', 'log', 'lim', 'ln', 'max', 'min', 'det', 'mod', 'pi', 'dx', 'dy', 'dt',
     'cases', 'aligned', 'matrix', 'pmatrix', 'bmatrix', 'text', 'mbox', 'dla'
   ]);
-  const hasProseWordsBlock = blockWords.some(w => !blockMathKeywords.has(w.toLowerCase()));
+  const hasProseWordsBlock = blockWords.some((w: string) => !blockMathKeywords.has(w.toLowerCase()));
 
   // Czysty blok LaTeX: brak słów w języku naturalnym poza \text{} oraz komendy LaTeX lub displayMode
   const hasLatexCommands = /\\[a-zA-Z]+|\{|\}/.test(trimmedForBlockCheck);

@@ -28,7 +28,7 @@ export function PromoFloatingPill({
 
   const positionClasses = variant === 'bottom-inline'
     ? 'relative z-20 mx-auto my-2 w-fit'
-    : 'fixed top-26 right-3 sm:top-24 sm:right-6 z-40';
+    : 'fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] right-3 sm:bottom-auto sm:top-24 sm:right-6 z-40';
 
   return (
     <motion.button

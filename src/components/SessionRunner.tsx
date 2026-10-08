@@ -39,7 +39,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Eye,
-  EyeOff
+  EyeOff,
+  Headphones,
+  ChevronDown,
+  Key
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -52,6 +55,7 @@ import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTas
 import { curriculumRepository } from '../services/curriculumRepository';
 import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
+import { WritingWorkspace } from './writing/WritingWorkspace';
 import { AiTutorScanOverlay } from './AiTutorScanOverlay';
 import { MathPlot } from './MathPlot';
 import { MathDiagram } from './MathDiagram';
@@ -65,6 +69,12 @@ import { recordAiTokenUsage } from '../services/aiUsageTracker';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
 import { getCkeFormulas, getCkeFormulaTopics } from '../services/ckeCatalogRepository';
 import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS } from '../data/ckeFormulasData';
+import { getPolishLessonDocument } from '../data/polishCurriculumData';
+import { getPolishBookSummary } from '../data/polish/polishBookSummaries';
+import { getPolishBentoConceptsForLesson } from '../data/polish/polishBentoConcepts';
+import { EnglishConceptFormatter } from './english/EnglishConceptFormatter';
+import { getDuetDataForLesson } from '../data/english/englishDuetData';
+import { MaturalnyDuetGame } from './english/MaturalnyDuetGame';
 import {
   saveSessionState,
   saveSessionStateSync,
@@ -225,10 +235,10 @@ function parseExamTrap(trapRaw: any): ParsedExamTrap | null {
 
   // 1. If it's already a structured object
   if (typeof trapRaw === 'object' && !Array.isArray(trapRaw)) {
-    const errorText = trapRaw.error || trapRaw.typical_mistake || '';
-    const correctText = trapRaw.correct || trapRaw.correction || trapRaw.solution || '';
-    const tipText = trapRaw.matura_tip || trapRaw.tip || '';
-    const descText = trapRaw.description || '';
+    const errorText = trapRaw.fail || trapRaw.error || trapRaw.typical_mistake || '';
+    const correctText = trapRaw.win || trapRaw.correct || trapRaw.correction || trapRaw.solution || '';
+    const tipText = trapRaw.ckeTip || trapRaw.matura_tip || trapRaw.tip || '';
+    const descText = trapRaw.description || trapRaw.explanation || '';
 
     const cleanErr = errorText ? String(errorText).replace(/^[❌⚠️\s]*(?:typowy\s*błąd(?:\s*cke)?|błąd\s*typowy|błąd)[:\s-]*/i, '').trim() : undefined;
     const cleanCorr = correctText ? String(correctText).replace(/^[✓✔\s]*(?:poprawnie|poprawne\s*podejście|prawidłowo|dobre\s*podejście)[:\s-]*/i, '').trim() : undefined;
@@ -530,11 +540,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
     <div className="w-full space-y-4">
       {/* 1. Wyrazista definicja wprowadzająca (Hero Lead Definition) */}
       {leadDefinition && (
-        <div className={`p-3.5 sm:p-4 rounded-xl border-l-4 border ${
-          isPolishSession
-            ? 'border-l-rose-500 border-rose-500/20 bg-rose-500/[0.04] text-rose-100'
-            : 'border-l-[#FFB800] border-white/10 bg-white/[0.03] text-slate-200'
-        } text-sm sm:text-base leading-relaxed shadow-sm`}>
+        <div className="p-3.5 sm:p-4 rounded-xl border-l-4 border border-l-[#FFB800] border-white/10 bg-white/[0.03] text-slate-200 text-sm sm:text-base leading-relaxed shadow-sm">
           {renderMicroContent(leadDefinition)}
         </div>
       )}
@@ -560,14 +566,14 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
       {supportingClauses.length > 0 && (
         <div className="space-y-2 pt-1">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-            <GraduationCap size={14} className={isPolishSession ? 'text-rose-400' : 'text-[#FFB800]'} />
+            <GraduationCap size={14} className="text-[#FFB800]" />
             <span>Kluczowe zasady i własności</span>
           </div>
           <div className={`grid gap-2.5 ${supportingClauses.length === 1 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'}`}>
             {supportingClauses.map((clause, idx) => {
               let label = `Zasada ${idx + 1}`;
-              let dotColor = isPolishSession ? 'bg-rose-400' : 'bg-[#FFB800]';
-              let textColor = isPolishSession ? 'text-rose-400' : 'text-[#FFB800]';
+              let dotColor = 'bg-[#FFB800]';
+              let textColor = 'text-[#FFB800]';
 
               const isLogarithm = /logarytm|\\log|\blog\b/i.test(textToParse) || /logarytm|\\log|\blog\b/i.test(clause);
 
@@ -946,6 +952,7 @@ export interface SessionRunnerProps {
   onDeductHeart?: () => { wasDeducted: boolean; isOutOfHearts: boolean };
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
+  onOpenBlikModal?: () => void;
   onUpdateUserState?: (updater: (prev: UserState) => UserState) => void;
   guestPromoSecondsLeft?: number;
   onOpenGuestPromo?: () => void;
@@ -996,6 +1003,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   onDeductHeart,
   onOpenParentSponsor,
   onOpenProPopup,
+  onOpenBlikModal,
   onUpdateUserState,
   guestPromoSecondsLeft,
   onOpenGuestPromo
@@ -1016,7 +1024,27 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return sessionData?.sessionId || generateSessionId(lessonId);
   }, [sessionData?.sessionId, lessonId]);
 
-  const isMathExplicit = Boolean(
+  const isEnglishSession = Boolean(
+    (sessionData as any)?.isEnglish ||
+    (sessionData as any)?.subjectId === 'jezyk-angielski' ||
+    (sessionData as any)?.subjectId === 'angielski' ||
+    (sessionData as any)?.subjectKey === 'eng' ||
+    String(lessonId).startsWith('eng-') ||
+    String((sessionData as any)?.topicId || '').startsWith('eng-')
+  );
+
+  const isPolishSession = !isEnglishSession && Boolean(
+    (sessionData as any)?.isPolish ||
+    (sessionData as any)?.subjectId === 'jezyk-polski' ||
+    (sessionData as any)?.subjectId === 'polski' ||
+    (sessionData as any)?.subjectKey === 'pol' ||
+    String(lessonId).startsWith('pol-') ||
+    String((sessionData as any)?.topicId || '').startsWith('pol-') ||
+    formulaSheet?.isLeksykon === true ||
+    (sessionData as any)?.theoryPill?.leksykon
+  );
+
+  const isMathExplicit = !isEnglishSession && !isPolishSession && Boolean(
     (sessionData as any)?.subjectId === 'matematyka-podstawowa' ||
     (sessionData as any)?.subjectId === 'matematyka' ||
     (sessionData as any)?.subjectId === 'math' ||
@@ -1024,16 +1052,6 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     String(lessonId).match(/^(?:math[-_]?)?lesson-\d+-\d+/) ||
     String((sessionData as any)?.topicId || '').match(/^(?:math[-_]?)?dzial-\d+/) ||
     String(lessonId).match(/^\d+\.\d+$/)
-  );
-
-  const isPolishSession = !isMathExplicit && Boolean(
-    (sessionData as any)?.isPolish ||
-    (sessionData as any)?.subjectId === 'jezyk-polski' ||
-    (sessionData as any)?.subjectKey === 'pol' ||
-    String(lessonId).startsWith('pol-') ||
-    String((sessionData as any)?.topicId || '').startsWith('pol-') ||
-    formulaSheet?.isLeksykon === true ||
-    (sessionData as any)?.theoryPill?.leksykon
   );
 
   // Serca i ochrona PRO
@@ -1078,6 +1096,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   const [isEvaluated, setIsEvaluated] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
+  // Stan interaktywnego mini-wyzwania bramkowego w zakładce Istota (Active Recall dla j. polskiego)
+  const [gatekeeperSelected, setGatekeeperSelected] = useState<Record<string, number>>({});
+  const [gatekeeperShowHint, setGatekeeperShowHint] = useState<Record<string, boolean>>({});
+  const [expandedTraps, setExpandedTraps] = useState<Record<string, boolean>>({});
+
   // Active Time Tracking Engine: Tracks active study time with 120s inactivity & visibility auto-pause
   const [activeSeconds, setActiveSeconds] = useState<number>(() => sessionData?.activeSeconds ?? 0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
@@ -1093,6 +1116,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     if (cached?.theory_pill && !isEmergencyFallback(cached.theory_pill)) {
       return enrichTheoryPillWithVisual(cached.theory_pill, lessonId);
     }
+    if (isPolishSession) {
+      const polDoc = getPolishLessonDocument((sessionData as any)?.topicId, lessonId);
+      if (polDoc?.theory_pill) {
+        return polDoc.theory_pill;
+      }
+    }
     return sessionData?.theoryPill || null;
   });
 
@@ -1101,10 +1130,24 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       ? asyncTheoryPill
       : (sessionData.theoryPill && !isEmergencyFallback(sessionData.theoryPill))
         ? sessionData.theoryPill
-        : (asyncTheoryPill || sessionData.theoryPill || getLessonTheoryPill(lessonId) || curriculumRepository.getCachedLesson(lessonId, (sessionData as any)?.subjectId)?.theory_pill);
+        : (asyncTheoryPill || sessionData.theoryPill || (isPolishSession ? getPolishLessonDocument((sessionData as any)?.topicId, lessonId)?.theory_pill : null) || getLessonTheoryPill(lessonId) || curriculumRepository.getCachedLesson(lessonId, (sessionData as any)?.subjectId)?.theory_pill);
 
     if (raw) {
       const normRaw = { ...raw };
+      if (isPolishSession) {
+        if (!normRaw.polishTheory) {
+          const polDoc = getPolishLessonDocument((sessionData as any)?.topicId, lessonId);
+          if (polDoc?.theory_pill?.polishTheory) {
+            normRaw.polishTheory = polDoc.theory_pill.polishTheory;
+          }
+        }
+        if (!(normRaw as any).book_summary) {
+          const bs = getPolishBookSummary(lessonTitle + ' ' + (normRaw.title || '') + ' ' + ((normRaw as any).lektura || (normRaw.polishTheory as any)?.lektura || ''));
+          if (bs) {
+            (normRaw as any).book_summary = bs;
+          }
+        }
+      }
       if (!normRaw.worked_example && (raw as any).workedExample) {
         normRaw.worked_example = (raw as any).workedExample;
       }
@@ -1209,9 +1252,30 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     currentTask?.type === 'OPEN' ||
     currentTask?.type === 'OPEN_SHORT' ||
     currentTask?.type === 'OPEN_SYNTHESIS' ||
-    currentTask?.type === 'SHORT_ANSWER'
+    currentTask?.type === 'SHORT_ANSWER' ||
+    currentTask?.type === 'ESSAY' ||
+    currentTask?.pillarId === 'pillar-writing'
   ) && !isNumericTask && !isTrueFalseTask && !isTwoPartTask && !isPolishInteractiveTask;
   const isSingleChoice = !isOpenTask && !isNumericTask && !isTrueFalseTask && !isTwoPartTask && !isPolishInteractiveTask;
+
+  const isEnglishWriting = isEnglishSession && (
+    currentTask?.type === 'OPEN_TASK' ||
+    currentTask?.pillarId === 'pillar-writing' ||
+    String(currentTask?.id).startsWith('eng_wri_') ||
+    (currentTask?.points || 0) >= 10 ||
+    /e-mail|blog|list|wpis|forum|wypowiedź pisemna|task 12|zadanie 12/i.test(currentTask?.question || '')
+  );
+  const isPolishEssay = isPolishSession && (
+    (currentTask?.points || 0) >= 30 ||
+    currentTask?.type === 'ESSAY' ||
+    /wypracowan|rozprawk/i.test(currentTask?.question || '')
+  );
+  const isPolishSynthesis = isPolishSession && (
+    (currentTask?.points || 0) === 4 ||
+    /notatk[ai]|syntez/i.test(currentTask?.question || '') ||
+    String(currentTask?.id).includes('synt')
+  );
+  const isRichWritingTask = isOpenTask && (isEnglishWriting || isPolishEssay || isPolishSynthesis);
 
   const isAiHintTask = Boolean(isOpenTask || currentTask?.ai_hint_enabled);
   const currentTaskHintCost = typeof currentTask?.hint_cost === 'number'
@@ -2860,18 +2924,22 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     }
 
     try {
-      const response = await fetch('/api/evaluate-task', {
+      const evalEndpoint = isEnglishSession ? '/api/english-eval' : '/api/evaluate-task';
+      const response = await fetch(evalEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          taskId: currentTask?.id,
           question: currentTask?.question || currentTask?.math_statement,
-          contextText: currentTask?.passage_text || currentTask?.context_text || '',
+          contextText: currentTask?.passage_text || currentTask?.context_text || currentTask?.contextText || '',
           officialKey: currentTask?.officialKey || currentTask?.explanation,
           scoring_key: currentTask?.scoring_key || currentTask?.officialKey || currentTask?.explanation,
           studentAnswer: effectiveAnswer,
           studentImage: optimizedImagePayload || undefined,
-          taskType: isPolishSession ? (isEssay ? 'ESSAY' : (currentTask?.type || 'OPEN_TASK')) : 'OPEN_PROOF',
+          taskType: isEnglishSession ? (currentTask?.type || 'OPEN_TASK') : (isPolishSession ? (isEssay ? 'ESSAY' : (currentTask?.type || 'OPEN_TASK')) : 'OPEN_PROOF'),
           isPolish: isPolishSession,
+          isEnglish: isEnglishSession,
+          subjectId: isEnglishSession ? 'jezyk-angielski' : (isPolishSession ? 'jezyk-polski' : undefined),
           maxPoints: targetPts,
           ai_tutor_rubric: currentTask?.ai_tutor_rubric,
           attemptCount: 1,
@@ -3237,7 +3305,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       playErrorSound();
       setEarnedXp(prev => prev + 3);
       setSessionMistakesCount(prev => prev + 1);
-      handleMistakeDeduction();
+      if (!isRichWritingTask && evalData?.wasDeducted !== false) {
+        handleMistakeDeduction();
+      }
       if (currentTask?.id) addMistakeToBank(currentTask.id);
 
       // Re-queue open task
@@ -3318,7 +3388,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   // Final finish - Always marks lesson completed and returns to learning map or routes to next lesson
   const handleFinishSession = (goToNextLesson = false) => {
     const finalEarnedXp = Math.max(40, earnedXp + 20);
-    const finalEarnedCoins = Math.max(15, earnedCoins + 6);
+    const isPerfect = sessionMistakesCount === 0;
+    const perfectCoinsBonus = isPerfect ? 5 : 0;
+    const finalEarnedCoins = Math.max(15, earnedCoins + 8 + perfectCoinsBonus);
 
     const stars = 3;
 
@@ -3360,7 +3432,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   // Render Celebration Screen - Unified 150ms fade-in, zero CLS/stagger jitter
   if (isSessionComplete) {
     const calculatedXp = Math.max(35, earnedXp + 20);
-    const calculatedCoins = Math.max(12, earnedCoins + 6);
+    const isPerfect = sessionMistakesCount === 0;
+    const perfectCoinsBonus = isPerfect ? 5 : 0;
+    const calculatedCoins = Math.max(15, earnedCoins + 8 + perfectCoinsBonus);
     const streakDays = (userState?.streakDays || 0) + 1;
     const cleanLessonNumber = lessonId.replace('lesson-', '').replace('-', '.');
 
@@ -3441,7 +3515,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <Coins className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">+{calculatedCoins}</span>
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Monet</span>
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">
+                  {isPerfect ? 'Monet (+5 Czysta)' : 'Monet'}
+                </span>
               </div>
 
               <div className="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center min-h-[90px] shadow-sm">
@@ -3540,11 +3616,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   return (
     <div 
       id="session-runner-modal"
-      className="fixed inset-0 z-50 bg-[#070A0F] flex items-center justify-center p-0 md:p-6 lg:p-8"
+      className="fixed inset-0 z-50 bg-[#070A0F] flex flex-col w-full h-full overflow-hidden p-0 m-0 select-none"
     >
       <div 
         id="session-runner-container"
-        className="w-full h-full h-[100dvh] md:h-[92vh] md:max-h-[920px] md:max-w-3xl lg:max-w-4xl bg-[#0B0F19] md:rounded-[32px] md:border md:border-white/10 md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-between overflow-hidden relative text-white transition-all duration-200"
+        className="w-full h-full flex flex-col justify-between overflow-hidden relative text-white bg-[#070A0F] rounded-none border-0 shadow-none transition-all duration-200"
       >
       {/* ================= DEDICATED FOCUS SESSION BAR ================= */}
       <header 
@@ -3569,14 +3645,17 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   type="button"
                   onClick={() => {
+                    if (isEnglishSession) return;
                     triggerHaptic('light');
                     setShowFormulaSheet(prev => !prev);
                   }}
-                  title={isPolishSession ? `Leksykon: ${departmentBadgeLabel}` : `Karta wzorów: ${departmentBadgeLabel}`}
+                  title={isPolishSession ? `Leksykon: ${departmentBadgeLabel}` : isEnglishSession ? `Dział CKE: ${departmentBadgeLabel}` : `Karta wzorów: ${departmentBadgeLabel}`}
                   className={`px-2.5 py-1 rounded-lg text-xs font-mono font-extrabold tracking-wide whitespace-nowrap shrink-0 shadow-sm transition active:scale-95 cursor-pointer ${
                     isPolishSession
                       ? 'bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/35'
-                      : 'text-amber-200 bg-amber-500/25 border border-amber-400/50 shadow-sm'
+                      : isEnglishSession
+                        ? 'text-emerald-200 bg-emerald-500/20 border border-emerald-400/40 shadow-sm'
+                        : 'text-amber-200 bg-amber-500/25 border border-amber-400/50 shadow-sm'
                   }`}
                 >
                   {departmentBadgeLabel}
@@ -3586,7 +3665,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs font-semibold truncate flex-1 min-w-0 max-w-full sm:max-w-md shadow-sm ${
                     isPolishSession
                       ? 'bg-rose-950/40 text-rose-200/90 border border-rose-500/25'
-                      : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
+                      : isEnglishSession
+                        ? 'bg-emerald-950/40 text-emerald-200/90 border border-emerald-500/25'
+                        : 'bg-amber-950/40 text-amber-200/90 border border-amber-500/25'
                   }`}
                 >
                   <span className="font-bold shrink-0">{lessonPillLabel ? lessonPillLabel.replace('LEKCJA', 'Lekcja') + ': ' : ''}</span>
@@ -3672,8 +3753,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
           {/* Prawa strona: Kapsułki gracza (Serca + Monety + Wzory) w uporządkowanym kontenerze */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 ml-auto">
-            {/* Przycisk Wzory / Leksykon dla bieżącego działu */}
-            {isTheoryStep ? (
+            {/* Przycisk Wzory / Leksykon dla bieżącego działu (ukryty dla języka angielskiego) */}
+            {!isEnglishSession && (isTheoryStep ? (
               <button
                 id="session-formulas-button"
                 type="button"
@@ -3716,7 +3797,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {isPolishSession ? 'Leksykon' : 'Wzory'}
                 </span>
               </button>
-            )}
+            ))}
 
             {/* Hearts Indicator Pill with Shockwave Arrival Effect */}
             <div className="relative shrink-0">
@@ -4137,17 +4218,23 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             <div className="w-full border-b border-white/10 flex items-center justify-between gap-1 sm:gap-2 px-1 pb-px">
               {(isPolishSession
                 ? [
-                    { id: 0, title: (theoryPill as any)?.book_summary ? 'Fabuła' : 'Istota', icon: (theoryPill as any)?.book_summary ? BookOpen : Compass },
+                    { id: 0, title: (theoryPill as any)?.book_summary ? 'Lektura' : 'W pigułce', icon: (theoryPill as any)?.book_summary ? BookOpen : Compass },
                     { id: 1, title: 'Pojęcia', icon: BookmarkCheck },
                     { id: 2, title: 'Analiza', icon: FileText },
                     { id: 3, title: 'Typowy błąd', icon: ShieldAlert }
                   ]
-                : [
-                    { id: 0, title: 'Istota', icon: Compass },
-                    { id: 1, title: 'Wzory', icon: Calculator },
-                    { id: 2, title: 'Przykład', icon: CheckCircle2 },
-                    { id: 3, title: 'Typowy błąd', icon: ShieldAlert }
-                  ]
+                : isEnglishSession
+                  ? [
+                      { id: 0, title: 'Pewniaki', icon: Key },
+                      { id: 1, title: 'Przykłady', icon: CheckCircle2 },
+                      { id: 2, title: 'Pułapka CKE', icon: ShieldAlert }
+                    ]
+                  : [
+                      { id: 0, title: 'W pigułce', icon: Compass },
+                      { id: 1, title: 'Wzory', icon: Calculator },
+                      { id: 2, title: 'Przykład', icon: CheckCircle2 },
+                      { id: 3, title: 'Typowy błąd', icon: ShieldAlert }
+                    ]
               ).map((step) => {
                 const StepIcon = step.icon;
                 const isActive = theorySubStep === step.id;
@@ -4160,11 +4247,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       triggerHaptic('light');
                       setTheorySubStep(step.id);
                     }}
-                    className={`relative py-2.5 px-2 sm:px-3 flex items-center justify-center gap-1.5 text-xs sm:text-sm font-medium cursor-pointer transition-colors duration-150 flex-1 outline-none focus:outline-none focus-visible:ring-1 focus-visible:ring-rose-500/40 rounded-lg ${
+                    className={`relative py-2.5 px-2 sm:px-3 flex items-center justify-center gap-1.5 text-xs sm:text-sm font-medium cursor-pointer transition-colors duration-150 flex-1 outline-none focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/40 rounded-lg ${
                       isActive
-                        ? isPolishSession
-                          ? 'text-rose-300 font-bold'
-                          : 'text-amber-400 font-bold'
+                        ? 'text-amber-400 font-bold'
                         : isDone
                           ? 'text-slate-300 hover:text-white'
                           : 'text-slate-400 hover:text-slate-200'
@@ -4173,7 +4258,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   >
                     <StepIcon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 transition-colors ${
                       isActive 
-                        ? isPolishSession ? 'text-rose-400' : 'text-amber-400' 
+                        ? 'text-amber-400' 
                         : isDone 
                           ? 'text-emerald-400/80' 
                           : 'text-slate-500'
@@ -4182,9 +4267,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     {isActive && (
                       <motion.div
                         layoutId="activeTheoryTabUnderline"
-                        className={`absolute -bottom-px left-0 right-0 h-0.5 rounded-full ${
-                          isPolishSession ? 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]' : 'bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)]'
-                        }`}
+                        className="absolute -bottom-px left-0 right-0 h-0.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)]"
                         transition={{ type: 'spring', stiffness: 450, damping: 35 }}
                       />
                     )}
@@ -4204,147 +4287,602 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   transition={{ duration: 0.15 }}
                   className="space-y-4"
                 >
-                  <section className="flex flex-col gap-2.5">
-                    <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
-                      <div className="flex items-center gap-2.5">
-                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 ${
-                          isPolishSession
-                            ? 'bg-rose-500/15 text-rose-400 border-rose-500/30'
-                            : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
-                        }`}>
-                          <Lightbulb className="w-4 h-4" />
-                        </div>
-                        <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
-                          {isPolishSession ? 'ESENCJA ZAGADNIENIA CKE' : 'ESENCJA POJĘCIA CKE'}
-                        </h3>
-                      </div>
-                    </div>
-                    {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession, theoryPill?.diagram, (theoryPill as any)?.numberLine)}
+                  {isPolishSession ? (() => {
+                    const polishTheory = theoryPill?.polishTheory || getPolishLessonDocument((sessionData as any)?.topicId, lessonId)?.theory_pill?.polishTheory;
+                    const bookSummary = (theoryPill as any)?.book_summary || getPolishBookSummary(lessonTitle + ' ' + (theoryPill?.title || '') + ' ' + (polishTheory?.lektura || ''));
+                    const leadText = polishTheory?.lead || theoryPill?.concept_essence || theoryPill?.intuition || '';
+                    const gatekeeper = polishTheory?.gatekeeper;
+                    const gatekeeperAns = gatekeeperSelected[lessonId];
+                    const isGatekeeperAnswered = typeof gatekeeperAns === 'number';
+                    const isGatekeeperCorrect = isGatekeeperAnswered && gatekeeperAns === gatekeeper?.correctIndex;
+                    const showHint = Boolean(gatekeeperShowHint[lessonId]);
 
-                    {/* STRESZCZENIE FABUŁY I PLAN WYDARZEŃ LEKTURY (DLA LEKTUR MATURALNYCH) */}
-                    {(theoryPill as any)?.book_summary && (() => {
-                      const bs = (theoryPill as any).book_summary;
-                      return (
-                        <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#1C1217] via-[#161218] to-[#101726] border border-rose-500/30 shadow-[0_4px_24px_rgba(244,63,94,0.15)] flex flex-col gap-4">
-                          {/* Nagłówek lektury */}
-                          <div className="flex items-center justify-between gap-2 border-b border-rose-500/20 pb-3 flex-wrap">
-                            <div className="flex items-center gap-2.5">
-                              <div className="w-8 h-8 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0 shadow-sm">
-                                <BookOpen size={16} />
-                              </div>
-                              <div>
-                                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-rose-300 block">
-                                  Przewodnik po lekturze i motywach
-                                </span>
-                                {bs.title && (
-                                  <h3 className="text-sm sm:text-base font-black text-white">
-                                    {bs.title} {bs.author ? `• ${bs.author}` : ''}
-                                  </h3>
-                                )}
-                              </div>
-                            </div>
-                            {bs.genre && (
-                              <span className="text-[10px] font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-full">
-                                {bs.genre}
+                    return (
+                      <div className="space-y-4">
+                        {/* 1. HERO HEADER: Moduł, Epoka, Lektura i Esencja Zagadnienia CKE */}
+                        <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#101726] via-[#0E1522] to-[#141D2E] border border-amber-500/25 shadow-[0_4px_24px_rgba(255,184,0,0.08)] flex flex-col gap-3.5">
+                          {/* Etykiety i metadane */}
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 shadow-sm">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                              {polishTheory?.module || 'Język polski CKE'}
+                            </span>
+                            {polishTheory?.epoch && (
+                              <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-white/10 flex items-center gap-1.5">
+                                <Feather size={12} className="text-amber-400" />
+                                {polishTheory.epoch}
+                              </span>
+                            )}
+                            {(polishTheory?.lektura || bookSummary?.title) && (
+                              <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/25 flex items-center gap-1.5">
+                                <BookOpen size={12} className="text-rose-400" />
+                                {polishTheory?.lektura || bookSummary?.title}
                               </span>
                             )}
                           </div>
 
-                          {/* Streszczenie fabuły / Oś akcji */}
-                          {bs.plot_overview && (
-                            <div className="space-y-1.5">
-                              <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider flex items-center gap-1.5">
-                                <BookOpen className="w-3.5 h-3.5 text-rose-400 shrink-0" />
-                                <span>Zwięzłe streszczenie fabuły</span>
+                          {/* Tytuł lekcji & Podtytuł */}
+                          <div className="flex flex-col gap-1">
+                            <h2 className="text-base sm:text-xl font-black text-white tracking-tight leading-snug">
+                              {theoryPill?.title || lessonTitle}
+                            </h2>
+                            {polishTheory?.subtitle && (
+                              <p className="text-xs sm:text-sm font-medium text-amber-300/80">
+                                {polishTheory.subtitle}
+                              </p>
+                            )}
+                          </div>
+
+                          {/* Esencja / Główna definicja */}
+                          {leadText && (
+                            <div className="p-3.5 sm:p-4 rounded-xl border-l-4 border-l-[#FFB800] border border-white/10 bg-black/40 text-slate-200 text-xs sm:text-sm leading-relaxed shadow-inner">
+                              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
+                                Wprowadzenie & Sens Zagadnienia:
                               </span>
-                              <div className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-black/40 p-3.5 sm:p-4 rounded-xl border border-white/5 whitespace-pre-line shadow-inner">
-                                {renderMicroContent(bs.plot_overview)}
-                              </div>
+                              {renderMicroContent(leadText)}
                             </div>
                           )}
+                        </section>
 
-                          {/* Oś kluczowych wydarzeń */}
-                          {bs.key_events && bs.key_events.length > 0 && (
-                            <div className="space-y-2 pt-1 border-t border-white/5">
-                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                                <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                                <span>Kluczowy ciąg wydarzeń (oś dramatyczna)</span>
+                        {/* 2. CHECKLISTA KOMPETENCJI CKE (Standard wymagań egzaminacyjnych) */}
+                        {polishTheory?.objectives && polishTheory.objectives.length > 0 && (
+                          <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-3">
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                              <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                              <span>Weryfikowane umiejętności CKE (Standard wymagań)</span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-0.5">
+                              {polishTheory.objectives.map((obj, oIdx) => (
+                                <div
+                                  key={oIdx}
+                                  className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-slate-950/60 border border-emerald-500/15 text-xs sm:text-sm text-slate-200 shadow-sm"
+                                >
+                                  <span className="w-5 h-5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                                    <Check size={12} strokeWidth={3} />
+                                  </span>
+                                  <span className="leading-snug flex-1">{renderMicroContent(obj)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </section>
+                        )}
+
+                        {/* 3. GŁÓWNE FILARY WIEDZY CKE (Bento Grid) */}
+                        {polishTheory?.theoryPoints && polishTheory.theoryPoints.length > 0 && (
+                          <section className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-amber-500/20 flex flex-col gap-3.5">
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                                <BookmarkCheck size={16} className="text-[#FFB800] shrink-0" />
+                                <span>Główne filary wiedzy CKE</span>
+                              </div>
+                              <span className="text-[10px] font-medium text-amber-300/80 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
+                                {polishTheory.theoryPoints.length} kluczowe aspekty
                               </span>
-                              <div className="space-y-2 pl-0.5">
-                                {bs.key_events.map((ev: string, evIdx: number) => (
-                                  <div key={evIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                                    <span className="w-5 h-5 rounded-full bg-rose-500/15 border border-rose-500/30 text-[10px] font-mono font-bold text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
-                                      {evIdx + 1}
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                              {polishTheory.theoryPoints.map((point, pIdx) => (
+                                <div
+                                  key={pIdx}
+                                  className="rounded-xl p-3.5 sm:p-4 bg-slate-950/70 border border-white/10 flex flex-col gap-2 hover:border-amber-500/30 transition-colors shadow-sm"
+                                >
+                                  <div className="flex items-center gap-2 border-b border-white/5 pb-2">
+                                    <span className="w-6 h-6 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-mono text-xs font-bold flex items-center justify-center shrink-0">
+                                      {String(pIdx + 1).padStart(2, '0')}
                                     </span>
-                                    <span className="leading-relaxed flex-1">{renderMicroContent(ev)}</span>
+                                    <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight flex-1">
+                                      {point.title}
+                                    </h4>
                                   </div>
-                                ))}
-                              </div>
+                                  <div className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    {renderMicroContent(point.explanation || point.content)}
+                                  </div>
+                                  {point.example && (
+                                    <div className="mt-1 p-2.5 rounded-lg bg-amber-500/5 border border-amber-500/20 text-xs text-amber-200/90 leading-relaxed flex flex-col gap-0.5">
+                                      <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1">
+                                        <Zap size={11} className="text-amber-400" />
+                                        Przykład maturalny:
+                                      </span>
+                                      <span>{renderMicroContent(point.example)}</span>
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
                             </div>
-                          )}
+                          </section>
+                        )}
 
-                          {/* Bohaterowie i relacje */}
-                          {bs.characters && bs.characters.length > 0 && (
-                            <div className="space-y-2 pt-1 border-t border-white/5">
-                              <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                                <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                                <span>Kluczowi bohaterowie i ich role</span>
-                              </span>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                {bs.characters.map((ch: any, chIdx: number) => (
-                                  <div key={chIdx} className="p-2.5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col gap-0.5">
-                                    <span className="text-xs font-bold text-rose-300">{ch.name}</span>
-                                    <span className="text-[11px] text-slate-400 leading-snug">{ch.role}</span>
-                                  </div>
-                                ))}
+                        {/* 4. PRZEWODNIK PO LEKTURZE MATURALNEJ (DLA LEKTUR) */}
+                        {bookSummary && (
+                          <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#151D2C] via-[#0E1522] to-[#101726] border border-amber-500/30 shadow-[0_4px_24px_rgba(255,184,0,0.12)] flex flex-col gap-4">
+                            {/* Nagłówek lektury */}
+                            <div className="flex items-center justify-between gap-2 border-b border-amber-500/20 pb-3 flex-wrap">
+                              <div className="flex items-center gap-2.5">
+                                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0 shadow-sm">
+                                  <BookOpen size={16} />
+                                </div>
+                                <div>
+                                  <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block">
+                                    Przewodnik po lekturze i motywach CKE
+                                  </span>
+                                  {bookSummary.title && (
+                                    <h3 className="text-sm sm:text-base font-black text-white">
+                                      {bookSummary.title} {bookSummary.author ? `• ${bookSummary.author}` : ''}
+                                    </h3>
+                                  )}
+                                </div>
                               </div>
+                              {bookSummary.genre && (
+                                <span className="text-[10px] font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full">
+                                  {bookSummary.genre}
+                                </span>
+                              )}
                             </div>
-                          )}
 
-                          {/* Kluczowe sceny maturalne */}
-                          {bs.key_scenes && bs.key_scenes.length > 0 && (
-                            <div className="space-y-2 pt-1 border-t border-white/5">
-                              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-                                <GraduationCap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                                <span>Sceny o fundamentalnym znaczeniu maturalnym</span>
-                              </span>
-                              <div className="space-y-2">
-                                {bs.key_scenes.map((sc: any, scIdx: number) => (
-                                  <div key={scIdx} className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-xs leading-relaxed">
-                                    <span className="font-bold text-amber-300 block mb-0.5">{sc.scene}</span>
-                                    <span className="text-slate-300">{sc.significance}</span>
+                            {/* Streszczenie fabuły */}
+                            {bookSummary.plot_overview && (
+                              <div className="space-y-1.5">
+                                <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                                  <BookOpen className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                                  <span>Zwięzłe streszczenie fabuły</span>
+                                </span>
+                                <div className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-black/40 p-3.5 sm:p-4 rounded-xl border border-white/5 whitespace-pre-line shadow-inner">
+                                  {renderMicroContent(bookSummary.plot_overview)}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Oś kluczowych wydarzeń */}
+                            {bookSummary.key_events && bookSummary.key_events.length > 0 && (
+                              <div className="space-y-2 pt-1 border-t border-white/5">
+                                <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                                  <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                  <span>Kluczowy ciąg wydarzeń (oś dramatyczna)</span>
+                                </span>
+                                <div className="space-y-2 pl-0.5">
+                                  {bookSummary.key_events.map((ev: string, evIdx: number) => (
+                                    <div key={evIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                                      <span className="w-5 h-5 rounded-full bg-rose-500/15 border border-rose-500/30 text-[10px] font-mono font-bold text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+                                        {evIdx + 1}
+                                      </span>
+                                      <span className="leading-relaxed flex-1">{renderMicroContent(ev)}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Bohaterowie i relacje */}
+                            {bookSummary.characters && bookSummary.characters.length > 0 && (
+                              <div className="space-y-2 pt-1 border-t border-white/5">
+                                <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                                  <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                  <span>Kluczowi bohaterowie i ich role</span>
+                                </span>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                  {bookSummary.characters.map((ch: any, chIdx: number) => (
+                                    <div key={chIdx} className="p-2.5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col gap-0.5">
+                                      <span className="text-xs font-bold text-rose-300">{ch.name}</span>
+                                      <span className="text-[11px] text-slate-400 leading-snug">{ch.role}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Kluczowe sceny maturalne */}
+                            {bookSummary.key_scenes && bookSummary.key_scenes.length > 0 && (
+                              <div className="space-y-2 pt-1 border-t border-white/5">
+                                <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                                  <GraduationCap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                                  <span>Sceny o fundamentalnym znaczeniu maturalnym</span>
+                                </span>
+                                <div className="space-y-2">
+                                  {bookSummary.key_scenes.map((sc: any, scIdx: number) => (
+                                    <div key={scIdx} className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-xs leading-relaxed">
+                                      <span className="font-bold text-amber-300 block mb-0.5">{sc.scene}</span>
+                                      <span className="text-slate-300">{sc.significance}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* 5. OSTRZEŻENIE PRZED BŁĘDEM KARDYNALNYM (0/35 PKT) */}
+                        {(polishTheory?.cardinalWarning || (bookSummary?.cardinal_mistakes && bookSummary.cardinal_mistakes.length > 0)) && (
+                          <section className="rounded-2xl p-4 sm:p-5 bg-rose-500/10 border border-rose-500/30 flex flex-col gap-2.5 shadow-sm">
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-400">
+                              <ShieldAlert size={16} className="text-rose-400 shrink-0" />
+                              <span>Uwaga: Błąd kardynalny na maturze (0/35 pkt)</span>
+                            </div>
+                            <p className="text-xs text-rose-300/90 leading-relaxed">
+                              Błąd rzeczowy skutkuje jedynie utratą 1 punktu w teście, lecz <strong>błąd kardynalny</strong> (całkowite wypaczenie sensu lub fabuły lektury obowiązkowej) powoduje <strong>natychmiastowe wyzerowanie całego wypracowania</strong>.
+                            </p>
+                            {polishTheory?.cardinalWarning && (
+                              <div className="p-3 rounded-xl bg-slate-950/70 border border-rose-500/20 text-xs sm:text-sm text-slate-200">
+                                {renderMicroContent(polishTheory.cardinalWarning)}
+                              </div>
+                            )}
+                            {bookSummary?.cardinal_mistakes && bookSummary.cardinal_mistakes.length > 0 && (
+                              <div className="space-y-1.5 pt-1">
+                                {bookSummary.cardinal_mistakes.map((cm: string, cmIdx: number) => (
+                                  <div key={cmIdx} className="p-2.5 rounded-lg bg-rose-950/40 border border-rose-500/20 text-xs text-rose-200 flex items-start gap-2">
+                                    <XCircle size={14} className="text-rose-400 shrink-0 mt-0.5" />
+                                    <span>{renderMicroContent(cm)}</span>
                                   </div>
                                 ))}
                               </div>
+                            )}
+                          </section>
+                        )}
+
+                        {/* 6. PATENTY I WSKAZÓWKI EGZAMINATORA CKE */}
+                        {((polishTheory?.ckeExaminerTips && polishTheory.ckeExaminerTips.length > 0) || theoryPill?.matura_context) && (
+                          <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)] flex flex-col gap-3">
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                              <GraduationCap size={16} className="text-[#FFB800] shrink-0" />
+                              <span>Patenty i wskazówki egzaminatora CKE</span>
                             </div>
-                          )}
+                            <div className="space-y-2">
+                              {(polishTheory?.ckeExaminerTips && polishTheory.ckeExaminerTips.length > 0) ? (
+                                polishTheory.ckeExaminerTips.map((tip, tIdx) => (
+                                  <div key={tIdx} className="p-3 rounded-xl bg-black/40 border border-amber-500/15 text-xs sm:text-sm text-slate-200 leading-relaxed flex items-start gap-2.5">
+                                    <span className="w-5 h-5 rounded-full bg-amber-500/15 border border-amber-500/30 text-[10px] font-mono font-bold text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                                      {tIdx + 1}
+                                    </span>
+                                    <span className="flex-1">{renderMicroContent(tip)}</span>
+                                  </div>
+                                ))
+                              ) : (
+                                <div className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                                  {renderMicroContent(sanitizeExaminerTip(theoryPill?.matura_context || ''))}
+                                </div>
+                              )}
+                            </div>
+                          </section>
+                        )}
+
+                        {/* 7. MINI-WYZWANIE BRAMKOWE (ACTIVE RECALL) */}
+                        {gatekeeper && (
+                          <section className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.08)] flex flex-col gap-3.5">
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                                <Target size={16} className="text-[#FFB800] shrink-0" />
+                                <span>Sprawdź zrozumienie (Mini-wyzwanie bramkowe)</span>
+                              </div>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
+                                Active Recall
+                              </span>
+                            </div>
+
+                            <p className="text-xs sm:text-sm font-semibold text-white leading-relaxed">
+                              {renderMicroContent(gatekeeper.question)}
+                            </p>
+
+                            {/* Opcje odpowiedzi */}
+                            <div className="grid grid-cols-1 gap-2 pt-1">
+                              {gatekeeper.options.map((opt, optIdx) => {
+                                const isSelected = gatekeeperAns === optIdx;
+                                const isThisCorrect = optIdx === gatekeeper.correctIndex;
+                                const showResult = isGatekeeperAnswered;
+
+                                let btnStyle = 'bg-slate-950/60 border-white/10 hover:border-amber-500/40 text-slate-200';
+                                if (showResult) {
+                                  if (isThisCorrect) {
+                                    btnStyle = 'bg-emerald-500/15 border-emerald-500/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.2)]';
+                                  } else if (isSelected) {
+                                    btnStyle = 'bg-rose-500/15 border-rose-500/50 text-rose-200';
+                                  } else {
+                                    btnStyle = 'bg-slate-950/40 border-white/5 text-slate-400 opacity-60';
+                                  }
+                                }
+
+                                return (
+                                  <button
+                                    key={optIdx}
+                                    type="button"
+                                    onClick={() => {
+                                      if (isGatekeeperAnswered) return;
+                                      triggerHaptic('light');
+                                      setGatekeeperSelected(prev => ({ ...prev, [lessonId]: optIdx }));
+                                      if (optIdx === gatekeeper.correctIndex) {
+                                        playSuccessSound();
+                                        confetti({ particleCount: 30, spread: 60, origin: { y: 0.8 } });
+                                        triggerHaptic('success');
+                                      } else {
+                                        playErrorSound();
+                                        triggerHaptic('error');
+                                      }
+                                    }}
+                                    className={`w-full text-left p-3 rounded-xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 ${btnStyle} cursor-pointer`}
+                                  >
+                                    <div className="flex items-center gap-2.5 flex-1">
+                                      <span className="w-5 h-5 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">
+                                        {String.fromCharCode(65 + optIdx)}
+                                      </span>
+                                      <span className="leading-snug">{renderMicroContent(opt)}</span>
+                                    </div>
+                                    {showResult && isThisCorrect && (
+                                      <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                                    )}
+                                    {showResult && isSelected && !isThisCorrect && (
+                                      <XCircle size={16} className="text-rose-400 shrink-0" />
+                                    )}
+                                  </button>
+                                );
+                              })}
+                            </div>
+
+                            {/* Informacja zwrotna po odpowiedzi */}
+                            {isGatekeeperAnswered && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className={`p-3.5 rounded-xl border text-xs sm:text-sm leading-relaxed flex flex-col gap-1 ${
+                                  isGatekeeperCorrect
+                                    ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200'
+                                    : 'bg-rose-500/10 border-rose-500/30 text-rose-200'
+                                }`}
+                              >
+                                <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px]">
+                                  {isGatekeeperCorrect ? (
+                                    <>
+                                      <CheckCircle2 size={14} className="text-emerald-400" />
+                                      <span className="text-emerald-300">Świetnie! Prawidłowa odpowiedź</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <AlertTriangle size={14} className="text-rose-400" />
+                                      <span className="text-rose-300">Niedokładnie – sprawdź wyjaśnienie:</span>
+                                    </>
+                                  )}
+                                </div>
+                                <p className="text-slate-200">{renderMicroContent(gatekeeper.explanation)}</p>
+                              </motion.div>
+                            )}
+
+                            {/* Przełącznik podpowiedzi */}
+                            {gatekeeper.hint && (
+                              <div className="pt-1">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    triggerHaptic('light');
+                                    setGatekeeperShowHint(prev => ({ ...prev, [lessonId]: !prev[lessonId] }));
+                                  }}
+                                  className="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 transition-colors cursor-pointer"
+                                >
+                                  <Lightbulb size={13} className="text-amber-400" />
+                                  <span>{showHint ? 'Ukryj wskazówkę' : 'Pokaż wskazówkę do pytania'}</span>
+                                </button>
+                                {showHint && (
+                                  <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 leading-relaxed"
+                                  >
+                                    {renderMicroContent(gatekeeper.hint)}
+                                  </motion.div>
+                                )}
+                              </div>
+                            )}
+                          </section>
+                        )}
+
+                        {/* 8. ZŁOTA REGUŁA MATURALNA */}
+                        {((polishTheory?.goldenRules && polishTheory.goldenRules.length > 0) || theoryPill?.keyTakeaway) && (
+                          <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-amber-500/10 via-[#0E1522] to-amber-500/10 border border-amber-500/40 shadow-[0_4px_20px_rgba(255,184,0,0.1)] flex items-start gap-3">
+                            <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                              <Award size={16} />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-400">
+                                Złota zasada maturalna („Z polskiego na nasze”)
+                              </span>
+                              <p className="text-xs sm:text-sm font-semibold text-white leading-relaxed">
+                                {renderMicroContent(polishTheory?.goldenRules?.[0] || theoryPill?.keyTakeaway || '')}
+                              </p>
+                            </div>
+                          </section>
+                        )}
+                      </div>
+                    );
+                  })() : isEnglishSession ? (() => {
+                    const pewniakData = getDuetDataForLesson(lessonId);
+                    return (
+                      <div className="space-y-4">
+                        {/* 1. HERO HEADER: Etykiety i tytuł */}
+                        <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#151D2C] via-[#0E1522] to-[#0A0F1A] border border-[#FFB800]/30 shadow-[0_4px_24px_rgba(255,184,0,0.08)] flex flex-col gap-3">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/15 text-[#FFDCA1] border border-[#FFB800]/30 flex items-center gap-1.5 shadow-sm">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+                              Język angielski CKE
+                            </span>
+                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
+                              <Flame size={12} className="text-amber-400" />
+                              {pewniakData.ckeFrequency}
+                            </span>
+                            <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-white/10">
+                              Poziom B1+ (Formuła 2023)
+                            </span>
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <h2 className="text-base sm:text-xl font-black text-white tracking-tight leading-snug">
+                              {theoryPill?.title || lessonTitle}
+                            </h2>
+                            <p className="text-xs sm:text-sm font-medium text-[#FFDCA1]/90">
+                              Pewniaki maturalne, schematy form gramatycznych i kluczowe reguły CKE
+                            </p>
+                          </div>
+                        </section>
+
+                        {/* 2. SFORMATOWANE ZASADY I WZORCE (DUŻE, CZYTELNE KARTY RPG) */}
+                        <EnglishConceptFormatter content={theoryPill?.concept_essence || ''} />
+
+                        {/* 3. KONTRAST CKE: DO vs DON'T (STANDARD VS TYPOWY BŁĄD) */}
+                        {pewniakData.doVsDont && (
+                          <section className="rounded-2xl border-2 border-slate-700/80 bg-[#0B101D] p-4 sm:p-5 shadow-xl space-y-3">
+                            <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-2 flex-wrap">
+                              <div className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-amber-400" />
+                                <span className="text-xs font-black uppercase text-slate-300 tracking-wider">
+                                   KONTRAST CKE • STANDARD VS TYPOWY BŁĄD
+                                </span>
+                              </div>
+                              <span className="text-[10px] font-bold text-amber-300/80 uppercase">
+                                Różnica między 100% a 0 pkt
+                              </span>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 pt-1">
+                              <div className="rounded-xl p-3.5 sm:p-4 bg-emerald-950/30 border border-emerald-500/50 flex flex-col justify-between gap-2">
+                                <div>
+                                  <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-black uppercase mb-1">
+                                    <Check className="w-4 h-4 stroke-[3]" />
+                                    <span>TAK NA MATURZE (DO)</span>
+                                  </div>
+                                  <p className="text-sm font-bold text-white font-mono bg-black/40 p-2.5 rounded-lg border border-emerald-500/20">
+                                    {pewniakData.doVsDont.doText}
+                                  </p>
+                                </div>
+                                <p className="text-xs text-emerald-200/90 leading-relaxed font-medium">
+                                  {pewniakData.doVsDont.doExplanation}
+                                </p>
+                              </div>
+
+                              <div className="rounded-xl p-3.5 sm:p-4 bg-rose-950/30 border border-rose-500/50 flex flex-col justify-between gap-2">
+                                <div>
+                                  <div className="flex items-center gap-1.5 text-rose-400 text-xs font-black uppercase mb-1">
+                                    <XCircle className="w-4 h-4 stroke-[3]" />
+                                    <span>UNIKAJ TEGO (DON'T)</span>
+                                  </div>
+                                  <p className="text-sm font-bold text-rose-200 line-through font-mono bg-black/40 p-2.5 rounded-lg border border-rose-500/20">
+                                    {pewniakData.doVsDont.dontText}
+                                  </p>
+                                </div>
+                                <p className="text-xs text-rose-200/90 leading-relaxed font-medium">
+                                  {pewniakData.doVsDont.dontExplanation}
+                                </p>
+                              </div>
+                            </div>
+                          </section>
+                        )}
+
+                        {/* 4. WSKAZÓWKA EGZAMINATORA */}
+                        {Boolean(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway || '').trim()) && (
+                          <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm border bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)]">
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                              <GraduationCap className="w-4 h-4 shrink-0 text-[#FFB800]" />
+                              <span>Wskazówka egzaminatora</span>
+                            </div>
+                            <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                              {renderMicroContent(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway))}
+                            </div>
+                          </section>
+                        )}
+
+                        {/* 5. ROZGRZEWKA PEWNIAKA: MATURALNY DUET */}
+                        <div className="pt-1">
+                          <MaturalnyDuetGame lessonId={lessonId} />
                         </div>
-                      );
-                    })()}
-                  </section>
+                      </div>
+                    );
+                  })() : (
+                    /* Domyślny widok matematyki */
+                    <>
+                      <section className="flex flex-col gap-2.5">
+                        <div className="flex flex-col items-start gap-1">
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+                            <span>ESENCJA POJĘCIA CKE</span>
+                          </div>
+                        </div>
+                        {renderConceptEssenceCard(theoryPill?.concept_essence || theoryPill?.intuition, isPolishSession, theoryPill?.diagram, (theoryPill as any)?.numberLine)}
+                      </section>
 
-                  {Boolean(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway || '').trim()) && (
-                    <section className={`rounded-2xl p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm border ${
-                      isPolishSession
-                        ? 'bg-gradient-to-br from-rose-950/30 via-slate-900/80 to-slate-900/90 border-rose-500/30'
-                        : 'bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)]'
-                    }`}>
-                      <div className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${
-                        isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'
-                      }`}>
-                        <GraduationCap className={`w-4 h-4 shrink-0 ${isPolishSession ? 'text-[#F43F5E]' : 'text-[#FFB800]'}`} />
-                        <span>Wskazówka egzaminatora</span>
-                      </div>
-                      <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-                        {renderMicroContent(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway))}
-                      </div>
-                    </section>
+                      {theoryPill?.plain_polish && (
+                        <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-2 border bg-[#1A1811] border-[#FFB800]/25 shadow-sm">
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300">
+                            <BookOpen className="w-4 h-4 text-[#FFB800]" />
+                            <span>Z polskiego na nasze (Intuicja bez żargonu)</span>
+                          </div>
+                          <div className="text-sm sm:text-base text-amber-100/90 leading-relaxed font-medium">
+                            <MathRenderer content={theoryPill.plain_polish} />
+                          </div>
+                        </section>
+                      )}
+
+                      {theoryPill?.algorithm_steps && theoryPill.algorithm_steps.length > 0 && (
+                        <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-3 border bg-[#121B2C] border-white/10 shadow-sm">
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                            <Zap className="w-4 h-4 text-[#FFB800]" />
+                            <span>Algorytm postępowania CKE (Krok po kroku)</span>
+                          </div>
+                          <div className="space-y-2.5">
+                            {theoryPill.algorithm_steps.map((st: any, sIdx: number) => (
+                              <div key={sIdx} className="p-3.5 rounded-xl bg-[#090D15] border border-white/5 flex items-start gap-3">
+                                <span className="w-6 h-6 rounded-lg bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                                  {st.stepNumber || sIdx + 1}
+                                </span>
+                                <div className="min-w-0 flex-1 space-y-0.5">
+                                  <h4 className="text-xs font-bold text-white">{st.title}</h4>
+                                  <p className="text-xs text-slate-300 leading-relaxed">
+                                    <MathRenderer content={st.description} />
+                                  </p>
+                                  {st.tip && (
+                                    <div className="text-[11px] text-[#FFB800] font-medium pt-0.5">
+                                      <span>💡 Wskazówka: </span>
+                                      <MathRenderer content={st.tip} />
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+                      )}
+
+                      {Boolean(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway || '').trim()) && (
+                        <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm border bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)]">
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                            <GraduationCap className="w-4 h-4 shrink-0 text-[#FFB800]" />
+                            <span>Wskazówka egzaminatora</span>
+                          </div>
+                          <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                            {renderMicroContent(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway))}
+                          </div>
+                        </section>
+                      )}
+                    </>
                   )}
                 </motion.div>
               )}
 
-              {/* Zakładka 1: Wzory / Leksykon Pojęć */}
-              {theorySubStep === 1 && (
+              {/* Zakładka 1: Wzory / Leksykon Pojęć (wyłączona dla języka angielskiego) */}
+              {!isEnglishSession && theorySubStep === 1 && (
                 <motion.div
                   key="theory-tab-1"
                   initial={{ opacity: 0, y: 8 }}
@@ -4353,86 +4891,139 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   transition={{ duration: 0.15 }}
                   className="space-y-4"
                 >
-                  {isPolishSession ? (
-                    <section className="rounded-2xl p-4 sm:p-5 bg-slate-900/70 border border-slate-800 flex flex-col gap-3.5">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-rose-300 text-xs font-semibold uppercase tracking-wider">
-                          <BookOpen className="w-4 h-4 text-[#F43F5E]" />
-                          <span>Kluczowe pojęcia i leksykon</span>
+                  {isPolishSession ? (() => {
+                    const polishTheory = theoryPill?.polishTheory || getPolishLessonDocument((sessionData as any)?.topicId, lessonId)?.theory_pill?.polishTheory;
+                    const rawBento = 
+                      (theoryPill?.bentoConcepts && theoryPill.bentoConcepts.length > 0 ? theoryPill.bentoConcepts : null) ||
+                      (polishTheory?.bentoConcepts && polishTheory.bentoConcepts.length > 0 ? polishTheory.bentoConcepts : null) ||
+                      getPolishBentoConceptsForLesson(lessonId);
+
+                    const bentoConcepts = rawBento && rawBento.length > 0 ? rawBento : [];
+                    const keyPoints = theoryPill?.key_points || (theoryPill as any)?.keyPoints || polishTheory?.theoryPoints?.map((tp: any) => `${tp.title}: ${tp.content || tp.explanation || ''}`) || [];
+
+                    return (
+                      <div className="space-y-4">
+                        {/* Nagłówek sekcji leksykonu Bento */}
+                        <div className="flex items-center justify-between px-1">
+                          <div className="flex items-center gap-2 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+                            <BookmarkCheck className="w-4 h-4 text-[#FFB800]" />
+                            <span>Kluczowe pojęcia maturalne (Bento CKE)</span>
+                          </div>
+                          <span className="text-[10px] font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                            <Award className="w-3 h-3 text-amber-400" />
+                            {bentoConcepts.length} {bentoConcepts.length === 1 ? 'pojęcie' : bentoConcepts.length < 5 ? 'pojęcia' : 'pojęć'}
+                          </span>
                         </div>
-                        <span className="text-[10px] font-medium text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-full">
-                          Leksykon pojęć
-                        </span>
-                      </div>
 
-                      {(() => {
-                        const epochPassport = (theoryPill as any)?.epoch_passport || (theoryPill as any)?.epochPassport;
-                        const passportConcepts: any[] = [];
-                        if (epochPassport) {
-                          if (Array.isArray(epochPassport.philosophy_trio)) {
-                            passportConcepts.push(...epochPassport.philosophy_trio.map((p: any) => ({
-                              title: p.name || p.title,
-                              def: p.essence || p.description || p.def
-                            })));
-                          }
-                          if (Array.isArray(epochPassport.flagship_topoi)) {
-                            passportConcepts.push(...epochPassport.flagship_topoi.map((t: string) => {
-                              const match = t.match(/^([^()]+)\s*\((.+)\)$/);
-                              if (match) {
-                                return { title: `Topos: ${match[1].trim()}`, def: match[2].trim() };
+                        {/* Bento Grid Kart Pojęć */}
+                        {bentoConcepts.length > 0 ? (
+                          <div className="grid grid-cols-1 gap-3.5 sm:gap-4">
+                            {bentoConcepts.map((concept: any, cIdx: number) => {
+                              const conceptId = concept.id || `bento-c-${cIdx}`;
+                              const isTrapOpen = expandedTraps[conceptId] ?? true;
+
+                              // Wybór koloru taga CKE (delikatne, stonowane akcenty w trybie ciemnym)
+                              const tagLower = (concept.tag || '').toLowerCase();
+                              let tagStyle = 'bg-amber-500/10 text-amber-300/90 border-amber-500/20';
+                              if (tagLower.includes('gwiazdk')) {
+                                tagStyle = 'bg-amber-500/15 text-amber-300 border-amber-500/30';
+                              } else if (tagLower.includes('pewniak') || tagLower.includes('klucz')) {
+                                tagStyle = 'bg-emerald-500/10 text-emerald-300/90 border-emerald-500/20';
+                              } else if (tagLower.includes('topos') || tagLower.includes('archetyp')) {
+                                tagStyle = 'bg-sky-500/10 text-sky-300/90 border-sky-500/20';
+                              } else if (tagLower.includes('pułapka') || tagLower.includes('kryterium')) {
+                                tagStyle = 'bg-rose-500/10 text-rose-300/90 border-rose-500/20';
                               }
-                              return { title: 'Topos maturalny', def: t };
-                            }));
-                          }
-                        }
 
-                        let rawConcepts: any[] = [];
-                        if (isPolishSession) {
-                          rawConcepts =
-                            ((theoryPill as any)?.leksykon?.pojęcia && (theoryPill as any).leksykon.pojęcia.length > 0 ? (theoryPill as any).leksykon.pojęcia : null) ||
-                            ((theoryPill as any)?.leksykon && Array.isArray((theoryPill as any).leksykon) && (theoryPill as any).leksykon.length > 0 ? (theoryPill as any).leksykon : null) ||
-                            ((theoryPill as any)?.key_concepts && (theoryPill as any).key_concepts.length > 0 ? (theoryPill as any).key_concepts : null) ||
-                            ((theoryPill as any)?.keyConcepts && (theoryPill as any).keyConcepts.length > 0 ? (theoryPill as any).keyConcepts : null) ||
-                            (passportConcepts.length > 0 ? passportConcepts : null) ||
-                            (formulaSheet?.formulas && formulaSheet.formulas.length > 0 ? formulaSheet.formulas : null) ||
-                            ((theoryPill as any)?.concepts && (theoryPill as any).concepts.length > 0 ? (theoryPill as any).concepts : null) ||
-                            [];
-
-                          // Odrzuć ewentualne pozostałości wzorów matematycznych w sesji języka polskiego
-                          rawConcepts = rawConcepts.filter((f: any) => {
-                            const text = `${f.title || f.name || f.term || ''} ${f.latex || f.formula || f.def || f.definition || f.desc || ''}`;
-                            return !/\\(?:frac|sqrt|in|Delta|infty|le|ge)|f\(x\)|\bx\s*\\in\b|przedział[y]? domknięt|oś liczbowa|równani[ae]/i.test(text);
-                          });
-                        } else {
-                          rawConcepts = 
-                            (formulaSheet?.formulas && formulaSheet.formulas.length > 0 ? formulaSheet.formulas : null) ||
-                            ((theoryPill as any)?.key_concepts && (theoryPill as any).key_concepts.length > 0 ? (theoryPill as any).key_concepts : null) ||
-                            ((theoryPill as any)?.keyConcepts && (theoryPill as any).keyConcepts.length > 0 ? (theoryPill as any).keyConcepts : null) ||
-                            ((theoryPill as any)?.concepts && (theoryPill as any).concepts.length > 0 ? (theoryPill as any).concepts : null) ||
-                            [];
-                        }
-
-                        return rawConcepts.length > 0 ? (
-                          <div className="space-y-2.5 py-1">
-                            {rawConcepts.map((f: any, fIdx: number) => {
-                              const title = f.title || f.name || f.term || `Pojęcie ${fIdx + 1}`;
-                              const def = f.def || f.definition || f.desc || f.formula || f.latex || '';
                               return (
                                 <div
-                                  key={fIdx}
-                                  className="rounded-xl p-3.5 sm:p-4 bg-slate-950/60 border border-slate-800/80 shadow-sm flex flex-col gap-1.5"
+                                  key={conceptId}
+                                  className="rounded-2xl p-4 sm:p-5 bg-[#0B101D] dark:bg-[#0B101D] border border-slate-800/80 shadow-md flex flex-col gap-3.5 hover:border-amber-500/25 transition-all duration-200"
                                 >
-                                  <div className="flex items-center gap-2">
-                                    <span className="w-5 h-5 rounded-md bg-rose-500/10 border border-rose-500/25 text-[10px] font-mono font-bold text-rose-400 flex items-center justify-center shrink-0">
-                                      {String(fIdx + 1).padStart(2, '0')}
-                                    </span>
-                                    <span className="text-xs sm:text-sm font-bold text-white">
-                                      {title}
-                                    </span>
+                                  {/* Karta Bento: Nagłówek i Ranga */}
+                                  <div className="flex items-start justify-between gap-3">
+                                    <div className="flex items-center gap-2.5">
+                                      <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold text-xs flex items-center justify-center shrink-0">
+                                        {String(cIdx + 1).padStart(2, '0')}
+                                      </span>
+                                      <h4 className="text-sm sm:text-base font-bold text-white tracking-wide">
+                                        {concept.name}
+                                      </h4>
+                                    </div>
+                                    {concept.tag && (
+                                      <span className={`text-[10px] sm:text-[11px] font-semibold tracking-wider px-2.5 py-0.5 rounded-full border shrink-0 ${tagStyle}`}>
+                                        {concept.tag}
+                                      </span>
+                                    )}
                                   </div>
-                                  {def && (
-                                    <div className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-7">
-                                      {renderMicroContent(def)}
+
+                                  {/* Filar 1: Definicja "Z polskiego na nasze" */}
+                                  {concept.simpleDefinition && (
+                                    <div className="space-y-1 pl-1">
+                                      <div className="text-[11px] font-bold text-amber-300/90 uppercase tracking-wider flex items-center gap-1.5">
+                                        <Lightbulb className="w-3.5 h-3.5 text-amber-400/90" />
+                                        <span>Z polskiego na nasze:</span>
+                                      </div>
+                                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal pl-5">
+                                        {renderMicroContent(concept.simpleDefinition)}
+                                      </p>
+                                    </div>
+                                  )}
+
+                                  {/* Filar 2: Konkretny przykład z lektury / tekstu */}
+                                  {concept.contextExample && (
+                                    <div className="p-3 sm:p-3.5 rounded-xl bg-sky-950/15 border border-sky-900/30 space-y-1">
+                                      <div className="text-[10px] sm:text-[11px] font-bold text-sky-400/90 uppercase tracking-wider flex items-center gap-1.5">
+                                        <BookOpen className="w-3.5 h-3.5 text-sky-400/80 shrink-0" />
+                                        <span>W lekturze / arkuszu maturalnym:</span>
+                                      </div>
+                                      <p className="text-xs sm:text-sm text-sky-200/80 leading-relaxed pl-5">
+                                        {renderMicroContent(concept.contextExample)}
+                                      </p>
+                                    </div>
+                                  )}
+
+                                  {/* Filar 3: Pułapka CKE (rozwijana / akcentowana) */}
+                                  {concept.ckeTrap && (
+                                    <div className="rounded-xl border border-rose-900/30 bg-rose-950/15 overflow-hidden transition-all duration-200">
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          triggerHaptic('light');
+                                          setExpandedTraps(prev => ({
+                                            ...prev,
+                                            [conceptId]: !isTrapOpen
+                                          }));
+                                        }}
+                                        className="w-full p-2.5 sm:p-3 flex items-center justify-between gap-2 text-left cursor-pointer hover:bg-rose-950/30 transition-colors"
+                                      >
+                                        <div className="flex items-center gap-2">
+                                          <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-400/80 shrink-0" />
+                                          <span className="text-[11px] sm:text-xs font-bold text-rose-300/90 uppercase tracking-wider">
+                                            Pułapka CKE i typowy błąd
+                                          </span>
+                                        </div>
+                                        <div className="flex items-center gap-1 text-[10px] text-rose-400/70 font-medium">
+                                          <span>{isTrapOpen ? 'Zwiń' : 'Rozwiń'}</span>
+                                          <ChevronDown className={`w-3.5 h-3.5 text-rose-400/80 transition-transform duration-200 ${isTrapOpen ? 'rotate-180' : ''}`} />
+                                        </div>
+                                      </button>
+                                      
+                                      <AnimatePresence initial={false}>
+                                        {isTrapOpen && (
+                                          <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.15 }}
+                                            className="px-3 pb-3 sm:px-3.5 sm:pb-3.5 pt-0 text-xs sm:text-sm text-rose-200/80 leading-relaxed border-t border-rose-950/40"
+                                          >
+                                            <p className="pt-2">
+                                              {renderMicroContent(concept.ckeTrap)}
+                                            </p>
+                                          </motion.div>
+                                        )}
+                                      </AnimatePresence>
                                     </div>
                                   )}
                                 </div>
@@ -4440,29 +5031,31 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             })}
                           </div>
                         ) : (
-                          <div className="p-4 rounded-xl bg-slate-950/40 text-center text-slate-400 text-sm">
+                          <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-center text-slate-400 text-sm">
                             Zapoznaj się z kluczowymi motywami i kontekstami zdefiniowanymi w arkuszu egzaminacyjnym.
                           </div>
-                        );
-                      })()}
+                        )}
 
-                      {(theoryPill?.key_points || (theoryPill as any)?.keyPoints) && (
-                        <div className="mt-1 text-xs sm:text-sm text-slate-300 border-t border-slate-800/80 pt-3 space-y-2">
-                          <span className="text-[11px] font-semibold text-rose-400 uppercase tracking-wider block">
-                            {isPolishSession ? 'Kluczowe konteksty i motywy do zapamiętania' : 'Wskaźniki językowe do zapamiętania'}
-                          </span>
-                          <ul className="space-y-1.5 pl-1">
-                            {(theoryPill.key_points || (theoryPill as any).keyPoints).map((kp: string, kIdx: number) => (
-                              <li key={kIdx} className="flex items-start gap-2 text-slate-300">
-                                <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0" />
-                                <span>{renderMicroContent(kp)}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </section>
-                  ) : (() => {
+                        {/* Dolny moduł: Wskaźniki do zapamiętania */}
+                        {keyPoints && keyPoints.length > 0 && (
+                          <div className="rounded-2xl p-4 sm:p-5 bg-slate-950/60 border border-slate-800/80 space-y-2.5">
+                            <span className="text-[11px] font-semibold text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                              <Target className="w-3.5 h-3.5 text-amber-400" />
+                              <span>Wskaźniki egzaminatora CKE do zapamiętania</span>
+                            </span>
+                            <ul className="space-y-2 pl-1">
+                              {keyPoints.slice(0, 4).map((kp: string, kIdx: number) => (
+                                <li key={kIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+                                  <span className="leading-relaxed">{renderMicroContent(kp)}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })() : (() => {
                     const formulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
                     return (
                       <section className="w-full flex flex-col gap-3.5">
@@ -4670,8 +5263,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </motion.div>
               )}
 
-              {/* Zakładka 2: Przykład / Analiza tekstu */}
-              {theorySubStep === 2 && (
+              {/* Zakładka Przykłady / Analiza tekstu: Substep 1 dla Angielskiego, Substep 2 dla Mat/Pol */}
+              {((isEnglishSession && theorySubStep === 1) || (!isEnglishSession && theorySubStep === 2)) && (
                 <motion.div
                   key="theory-tab-2"
                   initial={{ opacity: 0, y: 8 }}
@@ -4681,19 +5274,30 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   {(() => {
-                    const isEnglishSession = Boolean((sessionData as any)?.isEnglish || (sessionData as any)?.subjectId === 'jezyk-angielski' || currentTask?.subject === 'eng');
-                    const normExample = normalizeWorkedExample(
-                      theoryPill?.worked_example || 
-                      ((theoryPill as any)?.quote ? {
-                        quote: (theoryPill as any).quote,
-                        title: (theoryPill as any).quote_title,
-                        context: (theoryPill as any).quote_context || (theoryPill as any).context,
-                        analysis: (theoryPill as any).quote_analysis || (theoryPill as any).analysis,
-                        matura_tip: (theoryPill as any).quote_matura_tip || (theoryPill as any).matura_tip
-                      } : null)
-                    ) || deriveWorkedExampleFromTasks(tasks, theoryPill, isPolishSession, isEnglishSession);
+                    const rawExamplesList: any[] = (Array.isArray(theoryPill?.worked_examples) && theoryPill.worked_examples.length > 0)
+                      ? theoryPill.worked_examples
+                      : (theoryPill?.worked_example ? [theoryPill.worked_example] : []);
+
+                    let normExamples = rawExamplesList
+                      .map((rawEx: any) => normalizeWorkedExample(
+                        rawEx || 
+                        ((theoryPill as any)?.quote ? {
+                          quote: (theoryPill as any).quote,
+                          title: (theoryPill as any).quote_title,
+                          context: (theoryPill as any).quote_context || (theoryPill as any).context,
+                          analysis: (theoryPill as any).quote_analysis || (theoryPill as any).analysis,
+                          matura_tip: (theoryPill as any).quote_matura_tip || (theoryPill as any).matura_tip
+                        } : null)
+                      ))
+                      .filter((ex): ex is NormalizedWorkedExample => Boolean(ex));
+
+                    if (normExamples.length === 0) {
+                      const derived = deriveWorkedExampleFromTasks(tasks, theoryPill, isPolishSession, isEnglishSession);
+                      if (derived) normExamples = [derived];
+                    }
+
                     const epochPassport = (theoryPill as any)?.epoch_passport || (theoryPill as any)?.epochPassport;
-                    if (!normExample && epochPassport) {
+                    if (normExamples.length === 0 && epochPassport) {
                       const dates = epochPassport.dates_framework;
                       const credo = epochPassport.credo;
                       return (
@@ -4754,7 +5358,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       );
                     }
 
-                    if (!normExample) {
+                    if (normExamples.length === 0) {
                       return (
                         <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-slate-400 text-sm text-center">
                           {isPolishSession 
@@ -4780,104 +5384,17 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     })();
 
                     return (
-                      <section className="w-full flex flex-col gap-4">
-                        <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
-                          <div className="flex items-center gap-2.5">
-                            <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 ${
-                              isPolishSession 
-                                ? 'bg-rose-500/15 text-rose-400 border-rose-500/30' 
-                                : isEnglishSession 
-                                  ? 'bg-sky-500/15 text-sky-400 border-sky-500/30' 
-                                  : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
-                            }`}>
-                              <FileText className="w-4 h-4" />
-                            </div>
-                            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
-                              {isPolishSession ? (polishSectionLabel.includes('lektury') ? 'Fragment lektury i analiza CKE' : 'Fragment tekstu i analiza maturalna') : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'WZORCOWE ROZWIĄZANIE KROK PO KROKU CKE'}
-                            </h3>
-                          </div>
-                          {normExample.steps.length > 0 && (
-                            <span className="text-[11px] font-bold text-slate-400 bg-white/[0.04] border border-white/10 px-2.5 py-0.5 rounded-full shrink-0 uppercase">
-                              {normExample.steps.length} {normExample.steps.length === 1 ? 'KROK' : normExample.steps.length < 5 ? 'KROKI' : 'KROKÓW'}
-                            </span>
-                          )}
-                        </div>
+                      <section className="w-full flex flex-col gap-5">
+                        {normExamples.map((normExample, exIdx) => {
+                          const rawItem = rawExamplesList[exIdx];
+                          const customTitle = rawItem?.title || (normExamples.length > 1
+                            ? (isEnglishSession ? `Przykład ${exIdx + 1} z ${normExamples.length}` : `Zadanie przykładowe ${exIdx + 1}`)
+                            : null);
 
-                        {/* Treść polecenia / Cytat lektury */}
-                        {normExample.problem && (
-                          <div className={`rounded-2xl p-4 sm:p-5 border flex flex-col gap-1.5 min-w-0 max-w-full shadow-sm ${
-                            isPolishSession
-                              ? 'bg-amber-500/[0.04] border-amber-500/30'
-                              : 'bg-[#0E1522] border-white/10'
-                          }`}>
-                            <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider block ${
-                              isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-sky-400' : 'text-[#FFB800]'
-                            }`}>
-                              {isPolishSession ? polishSectionLabel : isEnglishSession ? 'Treść zadania' : 'Treść zadania'}
-                            </span>
-                            <div className={`text-sm sm:text-base leading-relaxed min-w-0 max-w-full break-words ${
-                              isPolishSession ? 'text-amber-100/90 italic font-serif' : 'text-slate-100 font-medium'
-                            }`}>
-                              {renderMicroContent(normExample.problem)}
-                            </div>
-                          </div>
-                        )}
+                          const sectionTitle = customTitle || (isPolishSession
+                            ? (polishSectionLabel.includes('lektury') ? 'Fragment lektury i analiza CKE' : 'Fragment tekstu i analiza maturalna')
+                            : isEnglishSession ? 'Zadanie maturalne z modelowym rozwiązaniem' : 'WZORCOWE ROZWIĄZANIE KROK PO KROKU');
 
-                        {/* Rysunek / Wykres do przykładu */}
-                        {((normExample as any).diagram || (normExample as any).plot || (normExample as any).numberLine) && (
-                          <div className="w-full flex justify-center py-2 overflow-x-auto">
-                            {(normExample as any).numberLine ? (
-                              <NumberLineDiagram data={(normExample as any).numberLine} height={60} maxWidth="340px" />
-                            ) : (
-                              <MathDiagram diagram={(normExample as any).diagram || (normExample as any).plot} compact borderless />
-                            )}
-                          </div>
-                        )}
-
-                        {/* Lista kroków rozwiązania */}
-                        {normExample.steps.length > 0 && (() => {
-                          const formatStepLabel = (label?: string) => {
-                            if (!label) return '';
-                            return label.replace(/^(?:krok|step)\s*\d+[:.\-\s]*/i, '').trim();
-                          };
-
-                          return (
-                            <div className="space-y-2.5 pt-1">
-                              {normExample.steps.map((st, sIdx) => {
-                                const cleanLabel = formatStepLabel(st.label);
-                                return (
-                                  <div 
-                                    key={sIdx} 
-                                    className="rounded-xl p-3.5 sm:p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 flex flex-col gap-2 transition-all shadow-sm min-w-0 max-w-full"
-                                  >
-                                    <div className="flex items-center gap-2.5 flex-wrap">
-                                      <span className={`px-2 py-0.5 rounded-md font-mono text-xs font-bold shrink-0 border ${
-                                        isPolishSession 
-                                          ? 'bg-rose-500/15 text-rose-300 border-rose-500/30' 
-                                          : isEnglishSession 
-                                            ? 'bg-sky-500/15 text-sky-300 border-sky-500/30' 
-                                            : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
-                                      }`}>
-                                        Krok {st.num}
-                                      </span>
-                                      {cleanLabel && (
-                                        <span className="text-xs sm:text-sm font-bold text-white tracking-tight">
-                                          {cleanLabel}
-                                        </span>
-                                      )}
-                                    </div>
-                                    <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal min-w-0 max-w-full break-words">
-                                      {renderMicroContent(st.text)}
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        })()}
-
-                        {/* Wynik / Odpowiedź końcowa */}
-                        {(() => {
                           const steps = normExample.steps || [];
                           const rawResult = typeof normExample.result === 'string' ? normExample.result.trim() : (normExample.result ? String(normExample.result).trim() : '');
                           const cleanResult = rawResult || (() => {
@@ -4889,43 +5406,163 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             return null;
                           })();
 
-                          if (!cleanResult) return null;
-
-                          // Strip repetitive textual prefixes so the badge displays the clean, focused formula/result without redundant word wrapping.
-                          const displayResult = isPolishSession || isEnglishSession
-                            ? cleanResult
-                            : cleanResult
-                                .replace(/^(?:(?:ostateczna\s+)?postać\s+(?:iloczynowa|kanoniczna|ogólna)|ostateczna\s+odpowiedź|odpowiedź\s+końcowa|ostateczny\s+wynik|odpowiedź|wynik)\s*:\s*/i, '')
-                                .trim();
+                          const displayResult = cleanResult
+                            ? (isPolishSession || isEnglishSession
+                                ? cleanResult
+                                : cleanResult
+                                    .replace(/^(?:(?:ostateczna\s+)?postać\s+(?:iloczynowa|kanoniczna|ogólna)|ostateczna\s+odpowiedź|odpowiedź\s+końcowa|ostateczny\s+wynik|odpowiedź|wynik)\s*:\s*/i, '')
+                                    .trim())
+                            : null;
 
                           return (
-                            <div className="rounded-xl p-3.5 sm:p-4 bg-emerald-950/40 border border-emerald-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm mt-1 min-w-0 max-w-full">
-                              <div className="flex items-center gap-2.5 shrink-0">
-                                <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
-                                  <CheckCircle2 className="w-4 h-4" />
+                            <div 
+                              key={exIdx} 
+                              className={`rounded-2xl p-4 sm:p-5 border flex flex-col gap-4 shadow-sm ${
+                                isEnglishSession
+                                  ? 'bg-[#0E1726]/60 border-emerald-500/25'
+                                  : 'bg-[#0E1522]/80 border-white/10'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                                <div className="flex items-center gap-2.5">
+                                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm ${
+                                    isPolishSession 
+                                      ? 'bg-rose-500/15 text-rose-400 border-rose-500/30' 
+                                      : isEnglishSession 
+                                        ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' 
+                                        : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
+                                  }`}>
+                                    <FileText className="w-4 h-4" />
+                                  </div>
+                                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                                    {sectionTitle}
+                                  </h3>
                                 </div>
-                                <span className="text-xs font-bold text-emerald-300 uppercase tracking-wider block">
-                                  {isPolishSession ? 'Wniosek egzaminatora' : isEnglishSession ? 'Wzorcowa odpowiedź' : 'Odpowiedź końcowa'}
-                                </span>
-                              </div>
-                              <div className="text-base sm:text-lg font-black text-white bg-slate-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-lg shadow-inner self-stretch sm:self-auto text-center sm:text-right min-w-0 max-w-full break-words overflow-x-auto touch-pan-x">
-                                {isPolishSession || isEnglishSession ? (
-                                  <span>{displayResult}</span>
-                                ) : (
-                                  <MathRenderer content={displayResult} />
+                                {normExample.steps.length > 0 && (
+                                  <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full shrink-0 border ${
+                                    isEnglishSession
+                                      ? 'text-emerald-300 bg-emerald-500/10 border-emerald-500/25'
+                                      : 'text-slate-400 bg-white/[0.04] border-white/10'
+                                  }`}>
+                                    {normExample.steps.length} {normExample.steps.length === 1 ? 'krok' : normExample.steps.length < 5 ? 'kroki' : 'kroków'}
+                                  </span>
                                 )}
                               </div>
+
+                              {/* Treść polecenia / Cytat lektury */}
+                              {normExample.problem && (
+                                <div className={`rounded-xl p-4 sm:p-4.5 border flex flex-col gap-1.5 min-w-0 max-w-full shadow-sm ${
+                                  isPolishSession
+                                    ? 'bg-amber-500/[0.04] border-amber-500/30'
+                                    : isEnglishSession
+                                      ? 'bg-[#0E1522] border-[#FFB800]/25'
+                                      : 'bg-[#0E1522] border-white/10'
+                                }`}>
+                                  <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider block ${
+                                    isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-[#FFDCA1]' : 'text-[#FFB800]'
+                                  }`}>
+                                    {isPolishSession ? polishSectionLabel : 'Treść zadania'}
+                                  </span>
+                                  <div className={`text-sm sm:text-base leading-relaxed min-w-0 max-w-full break-words ${
+                                    isPolishSession ? 'text-amber-100/90 italic font-serif' : 'text-slate-100 font-medium'
+                                  }`}>
+                                    {renderMicroContent(normExample.problem)}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Rysunek / Wykres do przykładu */}
+                              {((normExample as any).diagram || (normExample as any).plot || (normExample as any).numberLine) && (
+                                <div className="w-full flex justify-center py-2 overflow-x-auto">
+                                  {(normExample as any).numberLine ? (
+                                    <NumberLineDiagram data={(normExample as any).numberLine} height={60} maxWidth="340px" />
+                                  ) : (
+                                    <MathDiagram diagram={(normExample as any).diagram || (normExample as any).plot} compact borderless />
+                                  )}
+                                </div>
+                              )}
+
+                              {/* Lista kroków rozwiązania */}
+                              {normExample.steps.length > 0 && (() => {
+                                const formatStepLabel = (label?: string) => {
+                                  if (!label) return '';
+                                  return label.replace(/^(?:krok|step)\s*\d+[:.\-\s]*/i, '').trim();
+                                };
+
+                                return (
+                                  <div className="space-y-2.5 pt-1">
+                                    {normExample.steps.map((st, sIdx) => {
+                                      const cleanLabel = formatStepLabel(st.label);
+                                      return (
+                                        <div 
+                                          key={sIdx} 
+                                          className="rounded-xl p-3.5 sm:p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 flex flex-col gap-2 transition-all shadow-sm min-w-0 max-w-full"
+                                        >
+                                          <div className="flex items-center gap-2.5 flex-wrap">
+                                            <span className={`px-2 py-0.5 rounded-md font-mono text-xs font-bold shrink-0 border ${
+                                              isPolishSession 
+                                                ? 'bg-rose-500/15 text-rose-300 border-rose-500/30' 
+                                                : isEnglishSession 
+                                                  ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' 
+                                                  : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
+                                            }`}>
+                                              Krok {st.num}
+                                            </span>
+                                            {cleanLabel && (
+                                              <span className="text-xs sm:text-sm font-bold text-white tracking-tight">
+                                                {cleanLabel}
+                                              </span>
+                                            )}
+                                          </div>
+                                          <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal min-w-0 max-w-full break-words">
+                                            {renderMicroContent(st.text)}
+                                          </div>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                );
+                              })()}
+
+                              {/* Wynik / Odpowiedź końcowa */}
+                              {displayResult && (
+                                <div className="rounded-xl p-3.5 sm:p-4 bg-emerald-950/40 border border-emerald-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm mt-1 min-w-0 max-w-full">
+                                  <div className="flex items-center gap-2.5 shrink-0">
+                                    <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                                      <CheckCircle2 className="w-4 h-4" />
+                                    </div>
+                                    <span className="text-xs font-bold text-emerald-300 uppercase tracking-wider block">
+                                      {isPolishSession ? 'Wniosek egzaminatora' : isEnglishSession ? 'Wzorcowa odpowiedź' : 'Odpowiedź końcowa'}
+                                    </span>
+                                  </div>
+                                  <div className="text-base sm:text-lg font-black text-white bg-slate-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-lg shadow-inner self-stretch sm:self-auto text-center sm:text-right min-w-0 max-w-full break-words overflow-x-auto touch-pan-x">
+                                    {isPolishSession || isEnglishSession ? (
+                                      <span>{displayResult}</span>
+                                    ) : (
+                                      <MathRenderer content={displayResult} />
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Wskazówka egzaminatora do przykładu */}
+                              {Boolean(rawItem?.matura_tip) && (
+                                <div className="rounded-xl px-3.5 py-2.5 bg-emerald-500/10 border border-emerald-500/25 text-xs text-emerald-200 flex items-center gap-2.5">
+                                  <Lightbulb className="w-4 h-4 text-emerald-400 shrink-0" />
+                                  <span><strong className="text-emerald-300">Wskazówka CKE:</strong> {renderMicroContent(rawItem.matura_tip)}</span>
+                                </div>
+                              )}
                             </div>
                           );
-                        })()}
+                        })}
                       </section>
                     );
                   })()}
                 </motion.div>
               )}
 
-              {/* Zakładka 3: Typowy błąd */}
-              {theorySubStep === 3 && (
+              {/* Zakładka Pułapka CKE / Typowy błąd: Substep 2 dla Angielskiego, Substep 3 dla Mat/Pol */}
+              {((isEnglishSession && theorySubStep === 2) || (!isEnglishSession && theorySubStep === 3)) && (
                 <motion.div
                   key="theory-tab-3"
                   initial={{ opacity: 0, y: 8 }}
@@ -4950,7 +5587,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     </div>
 
                     {(() => {
-                      const trapData = parseExamTrap((theoryPill as any)?.cke_trap || (theoryPill as any)?.ckeTrap || theoryPill?.exam_trap || theoryPill?.trapAlert || formulaSheet?.ckeTrap);
+                      const trapData = parseExamTrap(theoryPill?.trap_details || (theoryPill as any)?.cke_trap || (theoryPill as any)?.ckeTrap || theoryPill?.exam_trap || theoryPill?.trapAlert || formulaSheet?.ckeTrap);
                       if (trapData && (trapData.error || trapData.correct || trapData.description)) {
                         return (
                           <div className="space-y-3.5">
@@ -5070,26 +5707,155 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <span>{taskPointsCount}</span>
               </span>
             </div>
-            {/* Task Question Statement */}
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-sm">
-              <div className="text-base sm:text-lg font-medium text-slate-100 leading-relaxed break-words">
-                <MathRenderer content={currentTask?.question || currentTask?.math_statement || currentTask?.content || ''} />
-              </div>
-              {currentTask?.numberLine ? (
-                <div className="mt-3 flex justify-center">
-                  <NumberLineDiagram data={currentTask.numberLine} height={64} maxWidth="360px" />
-                </div>
-              ) : (currentTask?.diagram || currentTask?.plot) ? (
-                <div className="mt-3 flex justify-center">
-                  <MathDiagram diagram={currentTask.diagram || currentTask.plot} />
-                </div>
-              ) : null}
-            </div>
 
-        {/* OPEN TASK WORKSPACE (DWA TRYBY: KLAWIATURA VS TABLICA VS POLSKI TEKST) */}
+            {/* Reading Passages, Audio & Iconography */}
+            {(currentTask?.passage || currentTask?.passage2 || currentTask?.image || currentTask?.imageUrl || currentTask?.audio_url || currentTask?.audioUrl) && (
+              <div className="space-y-3 mb-3">
+                {(currentTask?.audio_url || currentTask?.audioUrl) && (
+                  <div className="rounded-2xl border border-sky-500/30 bg-gradient-to-b from-[#0F1E2E] to-[#0A1420] p-4 flex flex-col gap-2.5 shadow-sm">
+                    <div className="flex items-center justify-between gap-2 pb-1 border-b border-sky-500/20">
+                      <div className="flex items-center gap-2">
+                        <Headphones size={16} className="text-sky-400 shrink-0" />
+                        <span className="text-xs font-bold text-sky-300 uppercase tracking-wider">
+                          Nagranie CKE • Rozumienie ze słuchu
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-sky-400/80 font-mono">
+                        Oficjalne audio CKE
+                      </span>
+                    </div>
+                    <audio 
+                      controls 
+                      src={currentTask.audio_url || currentTask.audioUrl} 
+                      className="w-full h-10 rounded-lg accent-sky-500" 
+                      preload="metadata"
+                    >
+                      Twoja przeglądarka nie obsługuje odtwarzacza audio.
+                    </audio>
+                  </div>
+                )}
+
+                {currentTask?.passage && (
+                  <div className="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#151D2C] to-[#0E1522] p-4 sm:p-5 shadow-sm space-y-2.5">
+                    <div className="flex items-center justify-between gap-2 pb-2 border-b border-amber-500/20">
+                      <div className="flex items-center gap-2">
+                        <BookOpen size={16} className="text-amber-400 shrink-0" />
+                        <span className="text-xs font-bold text-amber-300 uppercase tracking-wider">
+                          Tekst źródłowy {currentTask?.passage2 ? '1' : ''}
+                        </span>
+                      </div>
+                      {(currentTask.passage.author || currentTask.passage.sourceTitle) && (
+                        <span className="text-xs text-slate-400 italic">
+                          {currentTask.passage.author ? `${currentTask.passage.author}, ` : ''}
+                          {currentTask.passage.sourceTitle ? `„${currentTask.passage.sourceTitle}”` : ''}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-h-72 overflow-y-auto pr-2 space-y-2 border-l-2 border-amber-500/40 pl-3">
+                      {currentTask.passage.paragraphs && currentTask.passage.paragraphs.length > 0 ? (
+                        currentTask.passage.paragraphs.map((p: any, idx: number) => (
+                          <p key={idx} className="text-slate-300">
+                            <span className="text-[11px] font-bold text-amber-400 mr-1.5 select-none">[{p.number || idx + 1}]</span>
+                            {p.text}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="text-slate-300 whitespace-pre-line">{currentTask.passage.text}</p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {currentTask?.passage2 && (
+                  <div className="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#1B1611] to-[#14100D] p-4 sm:p-5 shadow-sm space-y-2.5">
+                    <div className="flex items-center justify-between gap-2 pb-2 border-b border-amber-500/20">
+                      <div className="flex items-center gap-2">
+                        <BookOpen size={16} className="text-amber-400 shrink-0" />
+                        <span className="text-xs font-bold text-amber-300 uppercase tracking-wider">
+                          Tekst źródłowy 2
+                        </span>
+                      </div>
+                      {(currentTask.passage2.author || currentTask.passage2.sourceTitle) && (
+                        <span className="text-xs text-slate-400 italic">
+                          {currentTask.passage2.author ? `${currentTask.passage2.author}, ` : ''}
+                          {currentTask.passage2.sourceTitle ? `„${currentTask.passage2.sourceTitle}”` : ''}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-h-72 overflow-y-auto pr-2 space-y-2 border-l-2 border-amber-500/40 pl-3">
+                      {currentTask.passage2.paragraphs && currentTask.passage2.paragraphs.length > 0 ? (
+                        currentTask.passage2.paragraphs.map((p: any, idx: number) => (
+                          <p key={idx} className="text-slate-300">
+                            <span className="text-[11px] font-bold text-amber-400 mr-1.5 select-none">[{p.number || idx + 1}]</span>
+                            {p.text}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="text-slate-300 whitespace-pre-line">{currentTask.passage2.text}</p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {(currentTask?.image || currentTask?.imageUrl) && (
+                  <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4 flex flex-col items-center gap-2">
+                    <img 
+                      src={currentTask.image?.imageUrl || currentTask.imageUrl} 
+                      alt={currentTask.image?.imageAlt || currentTask.imageCaption || 'Materiał ikonograficzny'}
+                      className="max-h-64 rounded-xl object-contain border border-white/10"
+                    />
+                    {(currentTask.image?.imageCaption || currentTask.imageCaption) && (
+                      <span className="text-xs text-slate-400 text-center italic">
+                        {currentTask.image?.imageCaption || currentTask.imageCaption}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Task Question Statement - hide for rich writing tasks because WritingWorkspace contains the full CKE prompt & context */}
+            {!isRichWritingTask && (
+              <div className={`bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-sm ${isPolishSession ? 'min-h-[88px] sm:min-h-[96px] flex flex-col justify-center' : ''}`}>
+                <div className="text-base sm:text-lg font-medium text-slate-100 leading-relaxed break-words">
+                  <MathRenderer content={currentTask?.question || currentTask?.math_statement || currentTask?.content || ''} />
+                </div>
+                {currentTask?.numberLine ? (
+                  <div className="mt-3 flex justify-center">
+                    <NumberLineDiagram data={currentTask.numberLine} height={64} maxWidth="360px" />
+                  </div>
+                ) : (currentTask?.diagram || currentTask?.plot) ? (
+                  <div className="mt-3 flex justify-center">
+                    <MathDiagram diagram={currentTask.diagram || currentTask.plot} />
+                  </div>
+                ) : null}
+              </div>
+            )}
+
+        {/* OPEN TASK WORKSPACE (DWA TRYBY: KLAWIATURA VS TABLICA VS POLSKI TEKST VS PISANIE CKE) */}
         {isOpenTask ? (
           <div className="space-y-4 pt-1">
-            <OpenTaskWorkspace
+            {isRichWritingTask ? (
+              <WritingWorkspace
+                taskId={String(currentTask?.id || '')}
+                taskTitle={currentTask?.title}
+                taskQuestion={currentTask?.question || currentTask?.math_statement || ''}
+                contextText={currentTask?.passage_text || currentTask?.context_text || currentTask?.contextText}
+                maxPoints={currentTask?.points || (isPolishEssay ? 35 : isPolishSynthesis ? 4 : 12)}
+                subject={isEnglishSession ? 'angielski' : isPolishSession ? 'polski' : 'matematyka'}
+                studentText={openAnswerText}
+                onChangeText={(val) => setOpenAnswerText(val)}
+                onEvaluate={() => handleCheckOpenAnswerWithTutor()}
+                isEvaluating={isTutorScanning}
+                isPro={getSyncedHearts(userState).isPro}
+                onOpenProModal={() => setShowProPopup(true)}
+                evaluation={tutorEvaluation}
+                onResetEvaluation={handleRetryOpenTask}
+                onContinue={handleNextStep}
+              />
+            ) : (
+              <>
+                <OpenTaskWorkspace
               task={currentTask}
               isEvaluated={isEvaluated}
               isCorrect={isCorrect}
@@ -5103,9 +5869,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               isAiLoading={isTutorScanning || isAiHintLoading}
               inputPlaceholder={isPolishSession 
                 ? "Sformułuj swoją odpowiedź, uzasadnienie lub argument na podstawie załączonego tekstu/lektury..." 
-                : "Zapisz swoje rozwiązanie lub użyj klawiatury..."}
-              hideWhiteboard={isPolishSession}
-              mode={isPolishSession ? 'text' : 'math'}
+                : isEnglishSession
+                  ? "Napisz swoją wypowiedź po angielsku (np. e-mail lub wpis na blogu, 80-130 słów)..."
+                  : "Zapisz swoje rozwiązanie lub użyj klawiatury..."}
+              hideWhiteboard={isPolishSession || isEnglishSession}
+              mode={(isPolishSession || isEnglishSession) ? 'text' : 'math'}
             />
 
             {/* AI Tutor Scanning State (pulsujący gradient bursztynowy) */}
@@ -5403,7 +6171,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 </div>
               </motion.div>
             )}
-          </div>
+          </>
+        )}
+      </div>
         ) : isNumericTask ? (
           /* 1. NUMERIC INPUT FORMAT (Dedykowana klawiatura matematyczna, bez opcji tablicy) */
           <motion.div
@@ -5441,7 +6211,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="w-full my-auto space-y-3 py-2"
+            className="w-full space-y-3 pt-1"
           >
             {(!currentTask?.statements || currentTask.statements.length <= 1) ? (
               <div className="space-y-3">
@@ -5460,7 +6230,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     const normTarget = resolveTrueFalseTarget(currentTask);
                     const isThisTheCorrectAnswer = normTarget === item.id;
 
-                    let cardClass = 'group relative flex flex-col p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left select-none ';
+                    let cardClass = 'group relative flex flex-col p-3.5 sm:p-4 rounded-2xl border transition-all duration-200 cursor-pointer text-left select-none min-h-[64px] sm:min-h-[72px] justify-center ';
                     if (!isEvaluated) {
                       if (isOptSelected) {
                         cardClass += 'bg-[#FFB800]/10 border-[#FFB800] shadow-sm ring-2 ring-[#FFB800]/20';
@@ -5518,12 +6288,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             )}
                             {/* Glowing Active Radio Dot when selected */}
                             {isOptSelected && !isEvaluated && (
-                              <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-                                isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
-                              }`}>
-                                <div className={`w-2.5 h-2.5 rounded-full ${
-                                  isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
-                                } shadow-[0_0_8px_${isPolishSession ? '#F43F5E' : '#FFB800'}]`} />
+                              <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-[#FFB800]/20">
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800] shadow-[0_0_8px_#FFB800]" />
                               </div>
                             )}
                             {isEvaluated && isThisTheCorrectAnswer && (
@@ -5639,7 +6405,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="w-full my-auto space-y-4 py-2"
+            className="w-full space-y-4 pt-1"
           >
             {/* Część 1 */}
             <div className="p-4 rounded-2xl bg-[#0E1522]/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
@@ -5647,7 +6413,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">1</span>
                 <span>{currentTask?.part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {(currentTask?.part_1?.options || []).map((opt: any, optIdx: number) => {
                   const optId = opt.id || opt.key || opt.label || String.fromCharCode(65 + optIdx);
                   const isSelected = twoPart1 === optId;
@@ -5709,7 +6475,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">2</span>
                 <span>{currentTask?.part_2?.prompt || 'Wybierz drugą część zdania / uzasadnienie:'}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {(currentTask?.part_2?.options || []).map((opt: any, optIdx: number) => {
                   const optId = opt.id || opt.key || opt.label || String(optIdx + 1);
                   const isSelected = twoPart2 === optId;
@@ -5772,7 +6538,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             const content = typeof opt === 'string' ? opt : (opt?.content_latex || opt?.text || opt?.content || '');
             return content.length > 80;
           });
-          const useTwoColumns = rawOptions.length <= 4 && !hasLargeDiagram && !isLongText;
+          const useTwoColumns = !isPolishSession && rawOptions.length <= 4 && !hasLargeDiagram && !isLongText;
 
           return (
             /* 4. STANDARD SINGLE CHOICE (A, B, C, D) - ANSWERS ALWAYS VISIBLE */
@@ -5867,12 +6633,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                     {/* Selection / Status Icon */}
                     {isSelected && !isEvaluated && (
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-                        isPolishSession ? 'bg-[#F43F5E]/20' : 'bg-[#FFB800]/20'
-                      }`}>
-                        <div className={`w-2.5 h-2.5 rounded-full ${
-                          isPolishSession ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
-                        }`} />
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-[#FFB800]/20">
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />
                       </div>
                     )}
                     {isEvaluated && isOptionCorrect && (
@@ -5926,25 +6688,23 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </button>
             )}
 
-            {theorySubStep < 3 ? (
+            {theorySubStep < (isEnglishSession ? 2 : 3) ? (
               <button
                 type="button"
                 onClick={() => {
                   triggerHaptic('light');
-                  setTheorySubStep(prev => Math.min(3, prev + 1));
+                  setTheorySubStep(prev => Math.min(isEnglishSession ? 2 : 3, prev + 1));
                 }}
-                className={`flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
-                  isPolishSession
-                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm'
-                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
-                }`}
+                className="flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
               >
                 <span>
-                  {theorySubStep === 0 
-                    ? (isPolishSession ? 'Dalej: Pojęcia' : 'Dalej: Wzory')
-                    : theorySubStep === 1
-                      ? (isPolishSession ? 'Dalej: Analiza' : 'Dalej: Przykład')
-                      : 'Dalej: Typowy błąd'}
+                  {isEnglishSession
+                    ? (theorySubStep === 0 ? 'Dalej: Przykłady' : 'Dalej: Pułapka CKE')
+                    : theorySubStep === 0 
+                      ? (isPolishSession ? 'Dalej: Pojęcia' : 'Dalej: Wzory')
+                      : theorySubStep === 1
+                        ? (isPolishSession ? 'Dalej: Analiza' : 'Dalej: Przykład')
+                        : 'Dalej: Typowy błąd'}
                 </span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
@@ -5957,11 +6717,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   playSuccessSound();
                   setCurrentStep(1);
                 }}
-                className={`flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide ${
-                  isPolishSession
-                    ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm'
-                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
-                }`}
+                className="flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
               >
                 <span>Przejdź do zadań</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -6275,6 +7031,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   </div>
                 )}
 
+                {/* Transkrypcja nagrania dla zadań ze słuchu */}
+                {currentTask?.transcript_snippet && (
+                  <div className="p-4 rounded-2xl bg-sky-950/30 border border-sky-500/30 space-y-1.5">
+                    <span className="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1.5">
+                      <Headphones size={14} />
+                      Transkrypcja nagrania CKE (kluczowy fragment):
+                    </span>
+                    <p className="text-xs sm:text-sm text-slate-200 italic leading-relaxed pl-2 border-l-2 border-sky-400/50">
+                      "{currentTask.transcript_snippet}"
+                    </p>
+                  </div>
+                )}
+
                 {/* Schemat oceniania CKE dla zadań otwartych */}
                 {isOpenTask && (currentTask?.scoring_key || currentTask?.official_solution_steps) && (
                   <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 space-y-2.5">
@@ -6521,11 +7290,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Drawer Header */}
               <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#111724]/90 shrink-0">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
-                    isPolishSession
-                      ? 'bg-rose-500/15 border border-rose-500/30 text-rose-400'
-                      : 'bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800]'
-                  }`}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800]">
                     <BookOpen className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
@@ -6533,11 +7298,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <h3 className="font-bold text-white text-base sm:text-lg tracking-tight truncate">
                         {isPolishSession ? 'Leksykon Pojęć & Złote Zasady' : `Karta Wzorów • ${departmentNameOnly}`}
                       </h3>
-                      <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${
-                        isPolishSession
-                          ? 'bg-rose-500/15 text-rose-300 border border-rose-500/25'
-                          : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/25'
-                      }`}>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/25">
                         Formuła 2023
                       </span>
                     </div>
@@ -6676,7 +7437,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between pt-0.5">
                       <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                        <span className={`w-1.5 h-1.5 rounded-full ${isPolishSession ? 'bg-rose-400' : 'bg-[#FFB800]'}`} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
                         {isPolishSession
                           ? 'Pojęcia Kluczowe i Definicje' 
                           : (formulaViewMode === 'department'
@@ -6698,17 +7459,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     {drawerFormulas.map((f, i) => (
                       <div 
                         key={f.id || i} 
-                        className={`formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col gap-3 shadow-sm ${
-                          isPolishSession ? 'hover:border-rose-500/30' : ''
-                        }`}
+                        className="formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col gap-3 shadow-sm"
                       >
                         <div className="flex items-center justify-between gap-2 flex-wrap">
                           <div className="flex items-center gap-2">
-                            <span className={`w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 ${
-                              isPolishSession 
-                                ? 'bg-rose-500/10 border border-rose-500/25 text-rose-300'
-                                : 'bg-[#FFB800]/10 border border-[#FFB800]/25 text-[#FFB800]'
-                            }`}>
+                            <span className="w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#FFB800]/10 border border-[#FFB800]/25 text-[#FFB800]">
                               {String(i + 1).padStart(2, '0')}
                             </span>
                             <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
@@ -6721,11 +7476,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               <span>Karta wzorów: {typeof f.cke_page === 'number' || !String(f.cke_page).startsWith('str') ? `str. ${f.cke_page}` : f.cke_page}</span>
                             </span>
                           ) : (
-                            <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 ${
-                              isPolishSession
-                                ? 'text-rose-300/80 bg-rose-500/10 border border-rose-500/20'
-                                : 'text-[#FFB800]/80 bg-[#FFB800]/10 border border-[#FFB800]/20'
-                            }`}>
+                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 text-[#FFB800]/80 bg-[#FFB800]/10 border border-[#FFB800]/20">
                               {isPolishSession ? 'Leksykon' : 'Wzór maturalny'}
                             </span>
                           )}
@@ -6915,6 +7666,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           }
         }}
         coins={userState?.coins ?? currentCoins}
+        onOpenBlikModal={() => {
+          setShowOutOfHeartsModal(false);
+          onOpenBlikModal?.();
+        }}
         initialTimeToNextRegenMs={heartsData.timeToNextRegenMs}
       />
 

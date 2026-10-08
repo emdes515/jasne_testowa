@@ -1164,3 +1164,190 @@ export function getLessonById(id: string): PolishLesson | undefined {
 export function getLessonsByModule(moduleName: string): PolishLesson[] {
   return POLISH_LESSONS.filter((l) => l.module === moduleName);
 }
+
+export interface PolishSection {
+  id: string;
+  numericId: number;
+  title: string;
+  short_title: string;
+  pillarName: string;
+  icon: string;
+  points_range: string;
+  description: string;
+  lessonIds: string[];
+}
+
+export const POLISH_SECTIONS: PolishSection[] = [
+  {
+    id: "pol-dzial-1",
+    numericId: 1,
+    title: "Dział 1: Język polski w użyciu & Czytanie krytyczne",
+    short_title: "Język w użyciu",
+    pillarName: "Część 1 CKE • Zeszyt 1",
+    icon: "FileText",
+    points_range: "10 pkt",
+    description: "Analiza tekstu nieliterackiego, fakty i opinie, manipulacja semantyczna, słowa-klucze i tabela Prawda/Fałsz.",
+    lessonIds: ["lekcja-1", "lekcja-2", "lekcja-3"]
+  },
+  {
+    id: "pol-dzial-2",
+    numericId: 2,
+    title: "Dział 2: Notatka syntetyzująca CKE (Klucz do 4 pkt)",
+    short_title: "Notatka syntetyzująca",
+    pillarName: "Część 1 CKE • Zeszyt 1",
+    icon: "PenTool",
+    points_range: "4 pkt",
+    description: "Zasady notatki syntetyzującej, twardy limit 60–90 słów, synteza dwóch tekstów i eliminacja opinii własnej.",
+    lessonIds: ["lekcja-4", "lekcja-5"]
+  },
+  {
+    id: "pol-dzial-3",
+    numericId: 3,
+    title: "Dział 3: Środki stylistyczne, retoryka i funkcje języka",
+    short_title: "Retoryka i styl",
+    pillarName: "Część 1 CKE • Zeszyt 1",
+    icon: "Zap",
+    points_range: "4–6 pkt",
+    description: "Funkcja impresywna, ekspresywna, poznawcza, perswazyjna, ironia, pytania retoryczne i figury słowne.",
+    lessonIds: ["lekcja-2"]
+  },
+  {
+    id: "pol-dzial-4",
+    numericId: 4,
+    title: "Dział 4: Starożytność i Biblia – Fundamenty kultury",
+    short_title: "Antyk i Biblia",
+    pillarName: "Test historycznoliteracki",
+    icon: "BookOpen",
+    points_range: "4–6 pkt",
+    description: "Księga Hioba, Kohelet, Apokalipsa św. Jana, mitologia grecka, Iliada, Antygona Sofoklesa i toposy antyczne.",
+    lessonIds: ["lekcja-6"]
+  },
+  {
+    id: "pol-dzial-5",
+    numericId: 5,
+    title: "Dział 5: Średniowiecze – Teocentryzm, asceza i etos rycerski",
+    short_title: "Średniowiecze",
+    pillarName: "Test historycznoliteracki",
+    icon: "Shield",
+    points_range: "3–5 pkt",
+    description: "Bogurodzica, Lament świętokrzyski, Legenda o św. Aleksym, Rozmowa Mistrza Polikarpa i Pieśń o Rolandzie.",
+    lessonIds: ["lekcja-7"]
+  },
+  {
+    id: "pol-dzial-6",
+    numericId: 6,
+    title: "Dział 6: Renesans – Humanizm i harmonia świata",
+    short_title: "Renesans",
+    pillarName: "Test historycznoliteracki",
+    icon: "Award",
+    points_range: "4–6 pkt",
+    description: "Jan Kochanowski (Pieśni, Treny, Odprawa posłów greckich), humanizm, stoicyzm, epikureizm i kryzys światopoglądowy.",
+    lessonIds: ["lekcja-8"]
+  },
+  {
+    id: "pol-dzial-7",
+    numericId: 7,
+    title: "Dział 7: Barok – Niepokój egzystencjalny i koncept",
+    short_title: "Barok",
+    pillarName: "Test historycznoliteracki",
+    icon: "Layers",
+    points_range: "3–5 pkt",
+    description: "Daniel Naborowski (Krótkość żywota), Jan Andrzej Morsztyn (Do trupa), vanitas, konceptyzm i sarmatyzm (Pasek).",
+    lessonIds: ["lekcja-9"]
+  },
+  {
+    id: "pol-dzial-8",
+    numericId: 8,
+    title: "Dział 8: Oświecenie – Rozum, dydaktyzm i krytyka wad",
+    short_title: "Oświecenie",
+    pillarName: "Test historycznoliteracki",
+    icon: "Lightbulb",
+    points_range: "3–4 pkt",
+    description: "Ignacy Krasicki (Bajki, Satyry, Hymn do miłości ojczyzny), racjonalizm, krytyka sarmatyzmu i teatr stanisławowski.",
+    lessonIds: ["lekcja-9"]
+  },
+  {
+    id: "pol-dzial-9",
+    numericId: 9,
+    title: "Dział 9: Romantyzm – Mesjanizm, walka i mistycyzm",
+    short_title: "Romantyzm",
+    pillarName: "Test historycznoliteracki",
+    icon: "Flame",
+    points_range: "8–12 pkt",
+    description: "Adam Mickiewicz (Dziady cz. III, Konrad Wallenrod, Pan Tadeusz), Juliusz Słowacki (Kordian) i Cyprian Kamil Norwid.",
+    lessonIds: ["lekcja-10", "lekcja-11"]
+  },
+  {
+    id: "pol-dzial-10",
+    numericId: 10,
+    title: "Dział 10: Pozytywizm – Praca organiczna i realizm",
+    short_title: "Pozytywizm",
+    pillarName: "Test historycznoliteracki",
+    icon: "Award",
+    points_range: "8–12 pkt",
+    description: "Lalka Bolesława Prusa (Wokulski, Rzecki, Łęcka), praca organiczna i u podstaw, Gloria victis oraz Zbrodnia i kara.",
+    lessonIds: ["lekcja-12", "lekcja-13"]
+  },
+  {
+    id: "pol-dzial-11",
+    numericId: 11,
+    title: "Dział 11: Młoda Polska – Wesele Wyspiańskiego i modernizm",
+    short_title: "Młoda Polska",
+    pillarName: "Test historycznoliteracki",
+    icon: "Zap",
+    points_range: "7–10 pkt",
+    description: "Wesele Stanisława Wyspiańskiego, chocholi taniec, bronowicka chata, dekadentyzm, poezja Tetmajera i Kasprowicza.",
+    lessonIds: ["lekcja-14"]
+  },
+  {
+    id: "pol-dzial-12",
+    numericId: 12,
+    title: "Dział 12: Dwudziestolecie międzywojenne – Awangarda i rozczarowanie",
+    short_title: "Dwudziestolecie międzywojenne",
+    pillarName: "Test historycznoliteracki",
+    icon: "Compass",
+    points_range: "6–8 pkt",
+    description: "Przedwiośnie Stefana Żeromskiego (szklane domy, Cezary Baryka), Schulz (Sklepy cynamonowe) i Gombrowicz (Ferdydurke).",
+    lessonIds: ["lekcja-15"]
+  },
+  {
+    id: "pol-dzial-13",
+    numericId: 13,
+    title: "Dział 13: Literatura wojenna i okupacyjna – Odczłowieczenie i heroizm",
+    short_title: "Literatura wojenna i okupacyjna",
+    pillarName: "Test historycznoliteracki",
+    icon: "Shield",
+    points_range: "6–8 pkt",
+    description: "Opowiadania Tadeusza Borowskiego, Inny świat Gustawa Herlinga-Grudzińskiego oraz Zdążyć przed Panem Bogiem Hanny Krall.",
+    lessonIds: ["lekcja-16", "lekcja-17"]
+  },
+  {
+    id: "pol-dzial-14",
+    numericId: 14,
+    title: "Dział 14: Literatura współczesna – Moralność i groteska",
+    short_title: "Współczesność",
+    pillarName: "Test historycznoliteracki",
+    icon: "Users",
+    points_range: "4–6 pkt",
+    description: "Tango Sławomira Mrożka, Dżuma Alberta Camusa, Rok 1984 George'a Orwella, poezja Szymborskiej, Różewicza i Herberta.",
+    lessonIds: ["lekcja-18"]
+  },
+  {
+    id: "pol-dzial-15",
+    numericId: 15,
+    title: "Dział 15: Warsztat Wypracowania Maturalnego (35 pkt)",
+    short_title: "Warsztat wypracowania",
+    pillarName: "Część 2 CKE • Zeszyt 2",
+    icon: "PenTool",
+    points_range: "35 pkt",
+    description: "Struktura rozprawki problemowej, kompozycja tezy, dobór lektur z gwiazdką, konteksty i eliminacja błędu kardynalnego.",
+    lessonIds: ["lekcja-19", "lekcja-20", "lekcja-21", "lekcja-22", "lekcja-23", "lekcja-24"]
+  }
+];
+
+export function getPolishLessonsBySection(sectionId: string): PolishLesson[] {
+  const section = POLISH_SECTIONS.find(s => s.id === sectionId);
+  if (!section) return [];
+  return POLISH_LESSONS.filter(l => section.lessonIds.includes(l.id));
+}
+

@@ -32,7 +32,8 @@ import {
   BarChart3,
   CheckSquare,
   ArrowRight,
-  Lightbulb
+  Lightbulb,
+  Languages
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -43,13 +44,22 @@ import 'katex/dist/katex.min.css';
 
 import { MaturaTask, UserState, CkeTaskCompletionRecord } from '../types';
 import { curriculumRepository } from '../services/curriculumRepository';
+import { 
+  generateFullMaturaExam, 
+  generateMiniMaturaExam, 
+  FLAGSHIP_JASNE_EXAMS, 
+  getAll1500MaturaTasks 
+} from '../services/maturaExamGenerator';
 import { calculateMaturaPrediction } from '../lib/maturaPredictor';
 import { playSuccessSound, playErrorSound, triggerHaptic } from '../utils';
 import { ScratchpadModal } from './ScratchpadModal';
 import { CkeFormulasModal } from './CkeFormulasModal';
 import { MaturaExamReview, MaturaTaskReviewItem, MaturaAiEvaluation } from './MaturaExamReview';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
+import { WritingWorkspace } from './writing/WritingWorkspace';
 import { PolishExamSimulator } from './polish/PolishExamSimulator';
+import { ALL_ENGLISH_TASKS } from '../data/english/allEnglishTasks';
+import { ALL_POLISH_TASKS } from '../data/polish';
 import { MathDiagram } from './MathDiagram';
 import { NumberLineDiagram } from './NumberLineDiagram';
 import { enrichTaskWithVisual } from '../data/mathVisualRegistry';
@@ -57,8 +67,13 @@ import { enrichTaskWithVisual } from '../data/mathVisualRegistry';
 interface ExamTaskCardProps {
   task: MaturaTask;
   currentIndex: number;
+  examSubject?: 'matematyka' | 'polski' | 'angielski';
   selectedAnswer?: string;
   openAnswer?: { text: string; canvasUrl?: string };
+  aiEvaluation?: any;
+  isEvaluatingAi?: boolean;
+  onTriggerAiEvaluation?: () => void;
+  onResetAiEvaluation?: () => void;
   onSelectClosedAnswer: (optLetter: string) => void;
   onOpenAnswerChange: (val: string) => void;
   onOpenCanvasChange: (dataUrl: string) => void;
@@ -71,8 +86,13 @@ interface ExamTaskCardProps {
 const ExamTaskCard = React.memo<ExamTaskCardProps>(({
   task: rawTask,
   currentIndex,
+  examSubject,
   selectedAnswer,
   openAnswer,
+  aiEvaluation,
+  isEvaluatingAi,
+  onTriggerAiEvaluation,
+  onResetAiEvaluation,
   onSelectClosedAnswer,
   onOpenAnswerChange,
   onOpenCanvasChange,
@@ -82,6 +102,20 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
   isLastTask
 }) => {
   const task = enrichTaskWithVisual(rawTask);
+  const isEnglishWriting = Boolean(
+    (examSubject === 'angielski' || String(task.id).startsWith('eng_') || String(task.id).startsWith('ang_')) &&
+    (task.points >= 10 ||
+    /e-mail|blog|list|wpis|forum|wypowiedź pisemna|task 12|zadanie 12/i.test(task.content || '') ||
+    String(task.id).startsWith('eng_wri_'))
+  );
+  const isPolishWriting = Boolean(
+    (examSubject === 'polski' || String(task.id).startsWith('pol_') || String(task.id).startsWith('pl_')) &&
+    (task.points >= 30 ||
+    /notatk[ai]|syntez|wypracowan|rozprawk/i.test(task.content || '') ||
+    String(task.id).includes('synt') ||
+    String(task.id).includes('wyp'))
+  );
+  const isWriting = isEnglishWriting || isPolishWriting;
   return (
     <div className="p-4 sm:p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
@@ -205,18 +239,36 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
             )}
           </div>
 
-          <OpenTaskWorkspace
-            task={task}
-            isEvaluated={false}
-            isCorrect={null}
-            value={openAnswer?.text || ''}
-            onChangeValue={onOpenAnswerChange}
-            savedCanvasDataUrl={openAnswer?.canvasUrl}
-            onSaveCanvasData={onOpenCanvasChange}
-            inputPlaceholder="Wprowadź swoje kroki obliczeniowe lub skorzystaj z brudnopisu..."
-            hideWhiteboard={false}
-            mode="math"
-          />
+          {isWriting ? (
+            <WritingWorkspace
+              taskId={String(task.id)}
+              taskTitle={task.content.length > 80 ? task.content.substring(0, 80) + '...' : task.content}
+              taskQuestion={task.content}
+              contextText={(task as any).contextText || (task as any).context_text}
+              maxPoints={task.points || (isEnglishWriting ? 12 : 35)}
+              subject={isEnglishWriting ? 'angielski' : 'polski'}
+              studentText={openAnswer?.text || ''}
+              onChangeText={onOpenAnswerChange}
+              onEvaluate={onTriggerAiEvaluation || (() => {})}
+              isEvaluating={Boolean(isEvaluatingAi)}
+              isPro={true}
+              evaluation={aiEvaluation || null}
+              onResetEvaluation={onResetAiEvaluation}
+            />
+          ) : (
+            <OpenTaskWorkspace
+              task={task}
+              isEvaluated={false}
+              isCorrect={null}
+              value={openAnswer?.text || ''}
+              onChangeValue={onOpenAnswerChange}
+              savedCanvasDataUrl={openAnswer?.canvasUrl}
+              onSaveCanvasData={onOpenCanvasChange}
+              inputPlaceholder="Wprowadź swoje kroki obliczeniowe lub skorzystaj z brudnopisu..."
+              hideWhiteboard={false}
+              mode="math"
+            />
+          )}
         </div>
       )}
 
@@ -254,7 +306,9 @@ export interface MaturaSimulatorViewProps {
   onCompleteTask?: (taskId: string, points?: number) => void;
   onActiveSessionChange?: (isActive: boolean) => void;
   initialView?: 'hub' | 'exam_setup' | 'full_exams' | 'topics_bank' | 'topic_detail' | 'exam' | 'exam_review' | 'maraton' | 'mistakes';
-  currentSubject?: 'matematyka' | 'polski';
+  currentSubject?: 'matematyka' | 'polski' | 'angielski';
+  onSelectSubject?: (subject: 'matematyka' | 'polski' | 'angielski') => void;
+  onNavigateBack?: () => void;
 }
 
 export function MaturaSimulatorView({
@@ -265,17 +319,34 @@ export function MaturaSimulatorView({
   onCompleteTask,
   onActiveSessionChange,
   initialView = 'hub',
-  currentSubject
+  currentSubject,
+  onSelectSubject,
+  onNavigateBack
 }: MaturaSimulatorViewProps) {
   // Przełącznik przedmiotu w symulatorze matury
-  const [examSubject, setExamSubject] = useState<'matematyka' | 'polski'>(() => (
-    currentSubject === 'polski' || userState?.currentSubject === 'polski' ? 'polski' : 'matematyka'
-  ));
+  const [examSubject, setExamSubject] = useState<'matematyka' | 'polski' | 'angielski'>(() => {
+    if (currentSubject === 'polski' || userState?.currentSubject === 'polski') return 'polski';
+    if (currentSubject === 'angielski' || userState?.currentSubject === 'angielski') return 'angielski';
+    return 'matematyka';
+  });
+
+  // Reaktywna synchronizacja przedmiotu z paska górnego
+  useEffect(() => {
+    const target = (currentSubject === 'polski' || userState?.currentSubject === 'polski')
+      ? 'polski'
+      : (currentSubject === 'angielski' || userState?.currentSubject === 'angielski')
+        ? 'angielski'
+        : 'matematyka';
+    if (target !== examSubject) {
+      setExamSubject(target);
+      setView('hub');
+    }
+  }, [currentSubject, userState?.currentSubject, examSubject]);
 
   const handleFinishPolishExam = (score: number, maxScore: number) => {
     const pct = Math.round((score / Math.max(maxScore, 1)) * 100);
     const earnedXp = Math.max(100, Math.round(pct * 2.5));
-    const earnedCoins = Math.max(20, Math.round(pct * 0.5));
+    const earnedCoins = pct < 30 ? 30 : Math.round(30 + (pct / 100) * 120);
     onEarnReward?.(earnedXp, earnedCoins, true);
     if (onUpdateUserState) {
       onUpdateUserState(prev => ({
@@ -318,14 +389,17 @@ export function MaturaSimulatorView({
     }
   }, [initialView]);
 
+  // Stan uruchomienia pełnego arkusza języka polskiego (Zeszyt 1 + 2)
+  const [isPolishFullExamActive, setIsPolishFullExamActive] = useState(false);
+
   // Powiadomienie rodzica (App.tsx) o wejściu w tryb aktywnego rozwiązywania zadań (wygaszenie dolnego docka nawigacji)
   useEffect(() => {
-    const isSolvingSession = view === 'maraton' || view === 'exam';
+    const isSolvingSession = (examSubject === 'polski' && isPolishFullExamActive) || view === 'maraton' || view === 'exam';
     onActiveSessionChange?.(isSolvingSession);
     return () => {
       onActiveSessionChange?.(false);
     };
-  }, [view, onActiveSessionChange]);
+  }, [view, examSubject, isPolishFullExamActive, onActiveSessionChange]);
 
   // Modale pomocnicze
   const [isScratchpadOpen, setIsScratchpadOpen] = useState(false);
@@ -368,7 +442,7 @@ export function MaturaSimulatorView({
     }
   };
 
-  // Ładowanie zadań Cache-First z Firestore
+  // Ładowanie zadań Cache-First z Firestore z natychmiastowym fallbackiem na bazę 1500 zadań JASNE
   useEffect(() => {
     let isMounted = true;
     const load = async () => {
@@ -378,15 +452,15 @@ export function MaturaSimulatorView({
         const loadedTasks = await curriculumRepository.getCkeExamTasks('matematyka-podstawowa');
         if (!isMounted) return;
         if (!loadedTasks || loadedTasks.length === 0) {
-          setLoadError('Baza arkuszy CKE nie została jeszcze wgrana do bazy chmurowej.');
-          setTasks([]);
+          // Natychmiastowy lokalny fallback na bazę 1500 zadań Formuła 2023
+          setTasks(getAll1500MaturaTasks());
         } else {
           setTasks(loadedTasks);
         }
       } catch (err) {
-        console.warn('[MaturaSimulatorView] Błąd wczytywania zadań:', err);
+        console.warn('[MaturaSimulatorView] Błąd wczytywania zadań, aktywacja bazy 1500 zadań:', err);
         if (isMounted) {
-          setLoadError('Nie udało się połączyć z bazą zadań CKE.');
+          setTasks(getAll1500MaturaTasks());
         }
       } finally {
         if (isMounted) setLoading(false);
@@ -396,7 +470,7 @@ export function MaturaSimulatorView({
     return () => { isMounted = false; };
   }, []);
 
-  // Lista 15 kanonicznych działów CKE
+  // Lista 15 kanonicznych działów CKE dla Matematyki
   const CANONICAL_TOPICS = useMemo(() => [
     'Dział 1: Liczby Rzeczywiste',
     'Dział 2: Wyrażenia Algebraiczne i Wielomiany',
@@ -415,6 +489,111 @@ export function MaturaSimulatorView({
     'Dział 15: Zadania Optymalizacyjne'
   ], []);
 
+  // Lista 15 działów CKE dla Języka Angielskiego
+  const ENGLISH_TOPICS = useMemo(() => [
+    'Dział 1: Czasy gramatyczne i aspekty w narracji i dialogu',
+    'Dział 2: Konstrukcje czasownikowe: Gerund, Infinitive i Modals',
+    'Dział 3: Zdania warunkowe (Conditionals) i mowa zależna',
+    'Dział 4: Strona bierna i konstrukcje sprawcze (Causatives)',
+    'Dział 5: Inwersja stylistyczna i zaawansowane transformacje zdań',
+    'Dział 6: Rozumienie ze słuchu: intencje, kontekst i selekcja informacji',
+    'Dział 7: Rozumienie ze słuchu: odróżnianie faktów od opinii',
+    'Dział 8: Rozumienie tekstów pisanych: artykuły publicystyczne i eseje',
+    'Dział 9: Rozumienie tekstów pisanych: teksty narracyjne i wywiady',
+    'Dział 10: Znajomość środków językowych: dobieranie i luki leksykalne',
+    'Dział 11: Znajomość środków językowych: parafrazy i słowotwórstwo',
+    'Dział 12: Wypowiedź pisemna: e-mail formalny i list motywacyjny',
+    'Dział 13: Wypowiedź pisemna: rozprawka za i przeciw (Pros & Cons)',
+    'Dział 14: Wypowiedź pisemna: artykuł publicystyczny z tezą',
+    'Dział 15: Funkcje językowe: mediacja, reakcje w dialogu i negocjacje'
+  ], []);
+
+  // Lista 15 działów CKE dla Języka Polskiego
+  const POLISH_TOPICS = useMemo(() => [
+    'Dział 1: Starożytność i Biblia – fundamenty kultury europejskiej',
+    'Dział 2: Średniowiecze – teocentryzm, etos rycerski i motywy eschatologiczne',
+    'Dział 3: Renesans – antropocentryzm, humanizm i harmonia świata',
+    'Dział 4: Barok – vanitas, sarmatyzm i metafizyka niepokoju',
+    'Dział 5: Oświecenie – racjonalizm, dydaktyzm i krytyka społeczna',
+    'Dział 6: Romantyzm – mesjanizm, prometeizm i dramat narodowy',
+    'Dział 7: Pozytywizm – praca organiczna, scjentyzm i realizm krytyczny',
+    'Dział 8: Młoda Polska – dekadentyzm, chłopomania i symbolizm narodowy',
+    'Dział 9: Dwudziestolecie międzywojenne – awangarda, katastrofizm i diagnoza państwa',
+    'Dział 10: Literatura wojny i okupacji – literatura lagrowa, łagrowa i apokalipsa spełniona',
+    'Dział 11: Literatura współczesna – totalitaryzm, emigracja i kondycja człowieka',
+    'Dział 12: Język polski w użyciu: czytanie krytyczne i analiza dyskursu',
+    'Dział 13: Język polski w użyciu: retoryka, manipulacja i argumentacja',
+    'Dział 14: Notatka syntetyzująca: kompresja sensu i łączenie stanowisk',
+    'Dział 15: Wypracowanie maturalne: teza, konteksty i kompozycja argumentacyjna'
+  ], []);
+
+  const currentTopics = useMemo(() => {
+    if (examSubject === 'angielski') return ENGLISH_TOPICS;
+    if (examSubject === 'polski') return POLISH_TOPICS;
+    return CANONICAL_TOPICS;
+  }, [examSubject, CANONICAL_TOPICS, ENGLISH_TOPICS, POLISH_TOPICS]);
+
+  // Zadania dla aktywnego przedmiotu w symulatorze
+  const currentSubjectTasks = useMemo<MaturaTask[]>(() => {
+    if (examSubject === 'angielski') {
+      return ALL_ENGLISH_TASKS.map(t => {
+        let optLetter = t.correctAnswer;
+        if (t.options && t.options.length > 0) {
+          const idx = t.options.findIndex(o => o === t.correctAnswer || (t.optionsDetailed && t.optionsDetailed.find(od => od.is_correct)?.text === o));
+          if (idx !== -1) {
+            optLetter = String.fromCharCode(65 + idx);
+          }
+        }
+        return {
+          id: t.id,
+          content: t.contextText ? `### ${t.title}\n\n${t.contextText}\n\n**${t.question}**` : `### ${t.title}\n\n**${t.question}**`,
+          options: t.options || [],
+          correctAnswer: optLetter,
+          explanation: t.explanation || '',
+          ckeTrap: t.ckeTrap || '',
+          section: t.sectionTitle || 'Język Angielski',
+          points: t.points || 1,
+          isClosed: t.type === 'SINGLE_CHOICE' || t.type === 'TRUE_FALSE',
+          source: t.source || 'CKE Język Angielski (Formuła 2023)'
+        };
+      });
+    }
+    if (examSubject === 'polski') {
+      return ALL_POLISH_TASKS.map((t: any) => {
+        const closed = t.taskType === 'single_choice' || t.taskType === 'true_false' || t.type === 'SINGLE_CHOICE' || t.type === 'TRUE_FALSE';
+        let optLetter = 'A';
+        const rawOpts = t.options || [];
+        const optsStrings = rawOpts.map((o: any) => typeof o === 'string' ? o : o.text || '');
+        if (t.correctOptionIndex !== undefined) {
+          optLetter = String.fromCharCode(65 + t.correctOptionIndex);
+        } else if (t.correctAnswer !== undefined) {
+          if (typeof t.correctAnswer === 'number') {
+            optLetter = String.fromCharCode(65 + t.correctAnswer);
+          } else {
+            optLetter = String(t.correctAnswer);
+          }
+        } else if (t.correctAnswerText) {
+          optLetter = t.correctAnswerText;
+        }
+        return {
+          id: t.id,
+          content: `### ${t.title || 'Zadanie'}\n\n${t.question || t.instruction || t.content || ''}`,
+          options: optsStrings,
+          correctAnswer: optLetter,
+          explanation: t.explanation || t.modelAnswer || '',
+          ckeTrap: t.ckeTrap || t.hintCke || '',
+          section: t.epoch || t.partName || t.section || 'Język Polski',
+          points: t.points || 1,
+          isClosed: closed,
+          source: t.sourceYear || t.source || 'CKE Język Polski (Formuła 2023)'
+        };
+      });
+    }
+    return tasks;
+  }, [examSubject, tasks]);
+
+  const effectiveTasks = currentSubjectTasks;
+
   // Rekordy ukończenia zadań z UserState
   const completedCkeRecords = useMemo<Record<string, CkeTaskCompletionRecord>>(() => {
     return userState?.completedCkeTasks || {};
@@ -432,10 +611,10 @@ export function MaturaSimulatorView({
   };
 
   const completedCkeCount = useMemo(() => {
-    return tasks.filter(t => isTaskPassed(t.id)).length;
-  }, [tasks, completedCkeRecords, completedTasks]);
+    return effectiveTasks.filter(t => isTaskPassed(t.id)).length;
+  }, [effectiveTasks, completedCkeRecords, completedTasks]);
 
-  const completionPct = tasks.length > 0 ? Math.round((completedCkeCount / tasks.length) * 100) : 0;
+  const completionPct = effectiveTasks.length > 0 ? Math.round((completedCkeCount / effectiveTasks.length) * 100) : 0;
 
   // Matura Predictor
   const maturaPrediction = useMemo(() => {
@@ -450,9 +629,9 @@ export function MaturaSimulatorView({
   // Znajdź najsłabszy dział (z najniższym % zdanych zadań)
   const weakestSection = useMemo(() => {
     let minPct = 101;
-    let weakest = CANONICAL_TOPICS[0];
-    CANONICAL_TOPICS.forEach(topic => {
-      const topicTasks = tasks.filter(t => t.section === topic);
+    let weakest = currentTopics[0];
+    currentTopics.forEach(topic => {
+      const topicTasks = effectiveTasks.filter(t => t.section === topic);
       if (topicTasks.length > 0) {
         const passed = topicTasks.filter(t => isTaskPassed(t.id)).length;
         const pct = Math.round((passed / topicTasks.length) * 100);
@@ -463,7 +642,7 @@ export function MaturaSimulatorView({
       }
     });
     return weakest;
-  }, [tasks, CANONICAL_TOPICS, completedCkeRecords, completedTasks]);
+  }, [effectiveTasks, currentTopics, completedCkeRecords, completedTasks]);
 
   // =========================================================================
   // RUNNER ARKUSZA (Zarówno Mini Matura, jak i Pełny Arkusz CKE)
@@ -488,9 +667,9 @@ export function MaturaSimulatorView({
   const [examReviewItems, setExamReviewItems] = useState<MaturaTaskReviewItem[]>([]);
   const [earnedReward, setEarnedReward] = useState<{ xp: number; coins: number } | null>(null);
 
-  // Konfigurator Mini Matury
+  // Konfigurator Mini Matury (18 zadań = 25 pkt standard 1/2 arkusza, 12 zadań = 15 pkt ekspres)
   const [setupSection, setSetupSection] = useState('Wszystkie działy');
-  const [setupLength, setSetupLength] = useState<7 | 12>(7);
+  const [setupLength, setSetupLength] = useState<11 | 12 | 17 | 18 | 7>(18);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -514,18 +693,24 @@ export function MaturaSimulatorView({
         }
       }
 
+      const isEnglishTask = examSubject === 'angielski' || Boolean((task as any).subCriteria || (task as any).pillar === 'writing' || String(task.id).startsWith('eng-') || String(task.id).startsWith('ang-') || String(task.id).startsWith('eng_'));
+      const isPolishTask = examSubject === 'polski' || String(task.id).startsWith('pol_') || String(task.id).startsWith('pl_');
+
       const effectiveText = hasText ? text.trim() : '[Rozwiązanie odręczne na tablicy]';
       const response = await fetch('/api/evaluate-task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          id: task.id,
           question: task.content,
+          contextText: (task as any).contextText || (task as any).context_text,
           officialKey: task.explanation,
           scoring_key: task.explanation,
           studentAnswer: effectiveText,
           studentImage: studentImage || undefined,
-          taskType: 'OPEN_PROOF',
-          isPolish: false,
+          taskType: (task as any).type || (isEnglishTask ? 'ENGLISH_WRITING' : isPolishTask ? (task.points >= 30 ? 'ESSAY' : 'OPEN_POLISH') : 'OPEN_PROOF'),
+          isPolish: isPolishTask,
+          isEnglish: isEnglishTask,
           maxPoints: task.points,
           mode: 'grade'
         })
@@ -560,7 +745,13 @@ export function MaturaSimulatorView({
     if (examDebounceTimerRef.current) clearTimeout(examDebounceTimerRef.current);
     examDebounceTimerRef.current = setTimeout(() => {
       const task = examTasks.find(t => t.id === taskId);
-      if (task && newText.trim().length > 5) {
+      const isWritingTask = task && Boolean(
+        (task.points >= 10 && (examSubject === 'angielski' || String(task.id).startsWith('eng_') || String(task.id).startsWith('ang_'))) ||
+        /e-mail|blog|list|wpis|forum|wypowiedź pisemna|task 12|zadanie 12/i.test(task.content || '') ||
+        String(task.id).startsWith('eng_wri_') ||
+        (task.points >= 30 || /notatk[ai]|syntez|wypracowan|rozprawk/i.test(task.content || ''))
+      );
+      if (task && !isWritingTask && newText.trim().length > 5) {
         void triggerBackgroundEvaluation(task, newText, examOpenAnswers[taskId]?.canvasUrl);
       }
     }, 2500);
@@ -636,22 +827,94 @@ export function MaturaSimulatorView({
     };
   }, [view, isExamTimed, isExamPaused, examTasks, examAnswers, examOpenScores]);
 
-  // Uruchomienie Mini Matury
-  const startMiniExam = (sectionChoice: string = setupSection, count: number = setupLength) => {
-    let pool = tasks;
-    if (sectionChoice !== 'Wszystkie działy') {
-      pool = pool.filter(t => t.section === sectionChoice);
-    }
-    if (pool.length === 0) {
-      alert('Brak zadań spełniających kryteria!');
-      return;
+  // Uruchomienie egzaminu z języka angielskiego
+  const startEnglishExam = (variant: 'express' | 'mini' | 'full', sectionChoice?: string) => {
+    let pool = currentSubjectTasks;
+    if (sectionChoice && sectionChoice !== 'Wszystkie działy') {
+      const filtered = pool.filter(t => t.section === sectionChoice);
+      if (filtered.length > 0) pool = filtered;
     }
     const shuffled = [...pool].sort(() => 0.5 - Math.random());
+    const count = variant === 'express' ? 15 : variant === 'mini' ? 25 : 45;
+    const duration = (variant === 'express' ? 20 : variant === 'mini' ? 35 : 120) * 60;
     const selected = shuffled.slice(0, Math.min(count, shuffled.length));
-    const duration = count === 7 ? 20 * 60 : 35 * 60;
 
-    setExamTitle(`Mini Matura • ${sectionChoice === 'Wszystkie działy' ? 'Przekrój Całościowy' : sectionChoice}`);
+    setExamTitle(
+      variant === 'express'
+        ? `Matura Ekspresowa • Język Angielski (20 min)`
+        : variant === 'mini'
+        ? `Mini Matura Standardowa • Język Angielski (35 min)`
+        : `Oficjalny Pełny Arkusz CKE • Język Angielski (120 min)`
+    );
     setExamTasks(selected);
+    setExamCurrentIndex(0);
+    prevExamIndexRef.current = 0;
+    setExamAnswers({});
+    setExamOpenScores({});
+    setExamOpenAnswers({});
+    setExamAiEvaluations({});
+    pendingBackgroundEvalRef.current = {};
+    setFlaggedTasks(new Set());
+    setExamTimeLeft(duration);
+    setExamTotalDuration(duration);
+    setIsExamTimed(true);
+    setIsExamPaused(false);
+    setView('exam');
+  };
+
+  // Uruchomienie egzaminu z języka polskiego
+  const startPolishExam = (variant: 'express' | 'mini' | 'full', sectionChoice?: string) => {
+    if (variant === 'full') {
+      setIsPolishFullExamActive(true);
+      return;
+    }
+    let pool = currentSubjectTasks;
+    if (sectionChoice && sectionChoice !== 'Wszystkie działy') {
+      const filtered = pool.filter(t => t.section === sectionChoice);
+      if (filtered.length > 0) pool = filtered;
+    }
+    const shuffled = [...pool].sort(() => 0.5 - Math.random());
+    const count = variant === 'express' ? 10 : 18;
+    const duration = (variant === 'express' ? 20 : 45) * 60;
+    const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+
+    setExamTitle(
+      variant === 'express'
+        ? `Matura Ekspresowa • Język Polski (20 min)`
+        : `Mini Matura CKE • Język Polski (45 min)`
+    );
+    setExamTasks(selected);
+    setExamCurrentIndex(0);
+    prevExamIndexRef.current = 0;
+    setExamAnswers({});
+    setExamOpenScores({});
+    setExamOpenAnswers({});
+    setExamAiEvaluations({});
+    pendingBackgroundEvalRef.current = {};
+    setFlaggedTasks(new Set());
+    setExamTimeLeft(duration);
+    setExamTotalDuration(duration);
+    setIsExamTimed(true);
+    setIsExamPaused(false);
+    setView('exam');
+  };
+
+  // Uruchomienie Mini Matury CKE z precyzyjną dystrybucją punktów (15 pkt / 25 pkt)
+  const startMiniExam = (sectionChoice: string = setupSection, count: number = setupLength) => {
+    const isExpress = count === 11 || count === 7 || count === 12;
+    if (examSubject === 'angielski') {
+      startEnglishExam(isExpress ? 'express' : 'mini', sectionChoice);
+      return;
+    }
+    if (examSubject === 'polski') {
+      startPolishExam(isExpress ? 'express' : 'mini', sectionChoice);
+      return;
+    }
+    const miniSheet = generateMiniMaturaExam(isExpress ? 'express' : 'standard', sectionChoice);
+    const duration = miniSheet.durationMinutes * 60;
+
+    setExamTitle(miniSheet.name);
+    setExamTasks(miniSheet.tasks);
     setExamCurrentIndex(0);
     prevExamIndexRef.current = 0;
     setExamAnswers({});
@@ -798,7 +1061,7 @@ export function MaturaSimulatorView({
     }
 
     const xp = 60 + totalScore * 15;
-    const coins = 20 + totalScore * 5;
+    const coins = Math.min(60, Math.max(25, 20 + totalScore * 2));
     setEarnedReward({ xp, coins });
     if (onEarnReward) onEarnReward(xp, coins, true);
 
@@ -1120,8 +1383,8 @@ export function MaturaSimulatorView({
   // Wybrany dział do podglądu (Filar 3)
   const [selectedTopicName, setSelectedTopicName] = useState<string>(CANONICAL_TOPICS[0]);
   const topicTasks = useMemo(() => {
-    return tasks.filter(t => t.section === selectedTopicName);
-  }, [tasks, selectedTopicName]);
+    return effectiveTasks.filter(t => t.section === selectedTopicName);
+  }, [effectiveTasks, selectedTopicName]);
 
   const formatTimer = (secs: number) => {
     const m = Math.floor(secs / 60);
@@ -1138,14 +1401,16 @@ export function MaturaSimulatorView({
   );
 
   return (
-    <div className="flex flex-col p-3.5 sm:p-6 pb-40 sm:pb-24 max-w-4xl mx-auto w-full relative">
+    <div className={`flex flex-col p-3.5 sm:p-6 pb-40 sm:pb-24 ${(examSubject === 'polski' || examSubject === 'angielski') ? 'max-w-7xl' : 'max-w-4xl'} mx-auto w-full relative`}>
       {/* GŁÓWNY PASEK NAWIGACJI */}
       <div className="flex items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-3">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          {view !== 'hub' && (
+          {(view !== 'hub' || examSubject === 'polski' || examSubject === 'angielski') && (
             <button
               onClick={() => {
-                if (view === 'exam') {
+                if (examSubject === 'polski' || examSubject === 'angielski') {
+                  onNavigateBack?.();
+                } else if (view === 'exam') {
                   setExamConfirmModal('exit');
                 } else if (view === 'topic_detail') {
                   setView('topics_bank');
@@ -1163,49 +1428,124 @@ export function MaturaSimulatorView({
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
               <h1 className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight truncate">
-                {view === 'hub' && 'Symulator CKE'}
-                {view === 'exam_setup' && 'Mini Matura CKE'}
-                {view === 'full_exams' && 'Pełne Arkusze CKE'}
-                {view === 'topics_bank' && 'Bank 15 Działów'}
-                {view === 'topic_detail' && selectedTopicName}
-                {view === 'exam' && examTitle}
-                {view === 'exam_review' && 'Wyniki Arkusza'}
-                {view === 'maraton' && 'Trening Zadań CKE'}
-                {view === 'mistakes' && 'Baza Błędów CKE'}
+                {examSubject === 'polski' ? (
+                  'Symulator CKE • Język Polski'
+                ) : examSubject === 'angielski' ? (
+                  'Symulator CKE • Język Angielski'
+                ) : (
+                  <>
+                    {view === 'hub' && 'Symulator CKE'}
+                    {view === 'exam_setup' && 'Mini Matura CKE'}
+                    {view === 'full_exams' && 'Pełne Arkusze CKE'}
+                    {view === 'topics_bank' && 'Bank 15 Działów'}
+                    {view === 'topic_detail' && selectedTopicName}
+                    {view === 'exam' && examTitle}
+                    {view === 'exam_review' && 'Wyniki Arkusza'}
+                    {view === 'maraton' && 'Trening Zadań CKE'}
+                    {view === 'mistakes' && 'Baza Błędów CKE'}
+                  </>
+                )}
               </h1>
               <span className="shrink-0 px-2 py-0.5 rounded-full bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800] text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
                 Formuła 2023
               </span>
               {view === 'hub' && (
-                <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5">
+                <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5 relative">
                   <button
                     type="button"
-                    onClick={() => setExamSubject('matematyka')}
-                    className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
+                    onClick={() => {
+                      setExamSubject('matematyka');
+                      onSelectSubject?.('matematyka');
+                    }}
+                    className={`relative px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'matematyka'
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                        ? 'text-amber-300'
                         : 'text-text-muted hover:text-white'
                     }`}
                   >
-                    <Calculator size={13} className="shrink-0 text-amber-400" />
-                    <span>Matematyka (180m)</span>
+                    {examSubject === 'matematyka' && (
+                      <motion.div
+                        layoutId="activeSimulatorSubjectPill"
+                        className="absolute inset-0 rounded-full bg-amber-500/20 border border-amber-500/40 pointer-events-none"
+                        transition={{ type: 'spring', stiffness: 440, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+                      <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2 11.5l3 4 4.5-12.5h12.5" />
+                        <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
+                      </svg>
+                    </span>
+                    <span className="relative z-10">Matematyka (180m)</span>
                   </button>
                   <button
                     type="button"
-                    onClick={() => setExamSubject('polski')}
-                    className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer ${
+                    onClick={() => {
+                      setExamSubject('polski');
+                      onSelectSubject?.('polski');
+                    }}
+                    className={`relative px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'polski'
-                        ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                        ? 'text-amber-300'
                         : 'text-text-muted hover:text-white'
                     }`}
                   >
-                    <BookOpen size={13} className="shrink-0 text-rose-400" />
-                    <span>Polski (240m)</span>
+                    {examSubject === 'polski' && (
+                      <motion.div
+                        layoutId="activeSimulatorSubjectPill"
+                        className="absolute inset-0 rounded-full bg-amber-500/20 border border-amber-500/40 pointer-events-none"
+                        transition={{ type: 'spring', stiffness: 440, damping: 32 }}
+                      />
+                    )}
+                    <span
+                      className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+                      style={{
+                        fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
+                      }}
+                    >
+                      P
+                    </span>
+                    <span className="relative z-10">Polski (240m)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setExamSubject('angielski');
+                      onSelectSubject?.('angielski');
+                    }}
+                    className={`relative px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1.5 ${
+                      examSubject === 'angielski'
+                        ? 'text-amber-300'
+                        : 'text-text-muted hover:text-white'
+                    }`}
+                  >
+                    {examSubject === 'angielski' && (
+                      <motion.div
+                        layoutId="activeSimulatorSubjectPill"
+                        className="absolute inset-0 rounded-full bg-amber-500/20 border border-amber-500/40 pointer-events-none"
+                        transition={{ type: 'spring', stiffness: 440, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+                      <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
+                        {/* Przekątne - podkład krzyża św. Andrzeja */}
+                        <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
+                        {/* Przekątne - linie krzyża św. Patryka */}
+                        <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />
+                        {/* Ciemna szczelina oddzielająca przekątne od krzyża głównego */}
+                        <path d="M9 0V13M0 6.5H18" stroke="#070A0F" strokeWidth="4.6" />
+                        {/* Obwódka krzyża św. Jerzego */}
+                        <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="3.6" strokeOpacity="0.4" />
+                        {/* Główny krzyż św. Jerzego */}
+                        <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="1.8" />
+                      </svg>
+                    </span>
+                    <span className="relative z-10">Angielski (120m)</span>
                   </button>
                 </div>
               )}
             </div>
-            {view !== 'hub' && (
+            {view !== 'hub' && examSubject === 'matematyka' && (
               <p className="text-text-secondary text-xs sm:text-sm truncate mt-0.5">
                 {view === 'full_exams' && 'Autentyczne kompletne arkusze egzaminacyjne CKE (31 zadań • 50 pkt)'}
                 {view === 'topics_bank' && 'Komplet 15 oficjalnych działów z indywidualnymi postępami'}
@@ -1217,19 +1557,29 @@ export function MaturaSimulatorView({
         </div>
 
         {/* Przycisk pomocniczy: Karta wzorów CKE */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          <button
-            onClick={() => setIsFormulasOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-surface-card hover:bg-white/10 text-white border border-surface-border text-xs font-bold transition-all shadow-sm cursor-pointer active:scale-95"
-            title="Karta wzorów CKE"
-          >
-            <BookOpen size={14} className="text-[#FFB800]" />
-            <span className="hidden sm:inline">Wzory CKE</span>
-          </button>
-        </div>
+        {examSubject === 'matematyka' && (
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
+              onClick={() => setIsFormulasOpen(true)}
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-surface-card hover:bg-white/10 text-white border border-surface-border text-xs font-bold transition-all shadow-sm cursor-pointer active:scale-95"
+              title="Karta wzorów CKE"
+            >
+              <BookOpen size={14} className="text-[#FFB800]" />
+              <span className="hidden sm:inline">Wzory CKE</span>
+            </button>
+          </div>
+        )}
       </div>
 
-      {loading ? (
+      {examSubject === 'polski' && isPolishFullExamActive ? (
+        <PolishExamSimulator
+          onExit={() => setIsPolishFullExamActive(false)}
+          onFinishExam={(score, maxScore) => {
+            handleFinishPolishExam(score, maxScore);
+            setIsPolishFullExamActive(false);
+          }}
+        />
+      ) : loading && examSubject === 'matematyka' && tasks.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center py-20">
           <Loader2 className="w-10 h-10 text-[#FFB800] animate-spin mb-4" />
           <p className="text-text-secondary text-sm font-medium">Wczytywanie 1006 oficjalnych zadań CKE...</p>
@@ -1254,17 +1604,12 @@ export function MaturaSimulatorView({
               VIEW: HUB (GŁÓWNY PULPIT BENTO Z 4 FILARAMI)
              ========================================================================= */}
           {view === 'hub' && (
-            examSubject === 'polski' ? (
-              <PolishExamSimulator
-                onExit={() => setExamSubject('matematyka')}
-                onFinishExam={handleFinishPolishExam}
-              />
-            ) : (
             <motion.div
-              key="hub"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              key={`hub-${examSubject}`}
+              initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
+              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className="flex-1 flex flex-col gap-3.5 sm:gap-5"
             >
               {/* HERO CARD ZE STATYSTYKAMI POSTĘPU BAZY CKE */}
@@ -1385,137 +1730,238 @@ export function MaturaSimulatorView({
                 </div>
               </div>
 
-              {/* BENTO GRID 2x2: 4 GŁÓWNE FILARY PRZYGOTOWANIA */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {/* FILAR 1: MINI MATURY CKE (WYRÓŻNIONY FAWORYT) */}
-                <button
-                  onClick={() => setView('exam_setup')}
-                  className="group text-left rounded-2xl bg-gradient-to-b from-[#FFB800]/[0.07] to-surface-card hover:to-surface-card-hover border border-[#FFB800]/35 hover:border-[#FFB800]/60 p-4 sm:p-5 transition-all active:scale-[0.99] shadow-[0_0_25px_rgba(255,184,0,0.08)] flex flex-col justify-between cursor-pointer relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFB800]/10 rounded-full blur-2xl pointer-events-none" />
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className="w-10 h-10 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/40 flex items-center justify-center shadow-[0_0_12px_rgba(255,184,0,0.2)]">
-                        <Clock className="text-[#FFB800]" size={19} />
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] font-black uppercase tracking-wider text-amber-950 bg-amber-400 px-2 py-0.5 rounded-full whitespace-nowrap shadow-sm">
-                          Polecane
-                        </span>
-                        <span className="text-[10px] font-bold text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded-full border border-[#FFB800]/20 whitespace-nowrap">
-                          20–35 min
-                        </span>
-                      </div>
-                    </div>
-                    <h3 className="font-display font-black text-sm sm:text-base text-white group-hover:text-[#FFB800] transition-colors mb-1">
-                      Mini Matury CKE
-                    </h3>
-                    <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
-                      Ekspresowe arkusze próbne (7 lub 12 zadań) z oficjalnym zegarem. Bez stresu i utraty serc.
-                    </p>
+              {/* TRZY GŁÓWNE FORMATY ARKUSZY CKE */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse" />
+                    <h2 className="text-xs sm:text-sm font-display font-black text-white uppercase tracking-wider">
+                      Trzy Formaty Arkuszy CKE
+                    </h2>
                   </div>
-                  <div className="flex items-center text-xs font-black text-[#FFB800] gap-1 mt-3 group-hover:translate-x-0.5 transition-transform relative z-10">
-                    <span>Napisz arkusz</span>
-                    <ChevronRight size={13} strokeWidth={2.5} />
-                  </div>
-                </button>
+                  <span className="text-[10px] sm:text-[11px] text-text-muted font-medium">
+                    Oficjalne reżimy czasowe • Formuła 2023
+                  </span>
+                </div>
 
-                {/* FILAR 2: PEŁNE OFICJALNE ARKUSZE CKE */}
-                <button
-                  onClick={() => setView('full_exams')}
-                  className="group text-left rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-emerald-500/50 p-4 sm:p-5 transition-all active:scale-[0.99] shadow-md flex flex-col justify-between cursor-pointer"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center">
-                        <FileText className="text-emerald-400" size={18} />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+                  {/* FORMAT 1: MATURY EKSPRESOWE (20 MIN) */}
+                  <div className="group rounded-2xl bg-gradient-to-b from-amber-500/[0.08] to-surface-card hover:to-surface-card-hover border border-amber-500/35 hover:border-amber-400/60 p-4 sm:p-5 transition-all shadow-[0_0_20px_rgba(255,184,0,0.06)] flex flex-col justify-between relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-28 h-28 bg-amber-500/10 rounded-full blur-xl pointer-events-none" />
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shadow-[0_0_12px_rgba(245,158,11,0.25)]">
+                          <Zap size={20} fill="currentColor" />
+                        </div>
+                        <span className="text-[10px] font-mono font-black uppercase tracking-wider text-amber-950 bg-amber-400 px-2 py-0.5 rounded-full shadow-sm">
+                          20 MIN • {examSubject === 'angielski' ? '15 ZADAŃ' : examSubject === 'polski' ? '10 ZADAŃ' : '12 ZADAŃ'}
+                        </span>
                       </div>
-                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 whitespace-nowrap">
-                        31 zadań • 50 pkt
-                      </span>
+                      <h3 className="font-display font-black text-base sm:text-lg text-white group-hover:text-amber-300 transition-colors mb-1.5">
+                        Matury Ekspresowe
+                      </h3>
+                      <p className="text-text-muted text-xs leading-relaxed mb-4">
+                        Błyskawiczny 20-minutowy trening formy maturalnej z oficjalnym zegarem. Zróżnicowane zadania sprawdzające refleks egzaminacyjny.
+                      </p>
                     </div>
-                    <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-emerald-400 transition-colors mb-1">
-                      Pełne Arkusze CKE
-                    </h3>
-                    <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
-                      Oryginalne matury (Maj 2024, Czerwiec, Pokazowy). Tryb z zegarem 180 min lub bezstresowy.
-                    </p>
-                  </div>
-                  <div className="flex items-center text-xs font-bold text-emerald-400 gap-1 mt-3 group-hover:translate-x-0.5 transition-transform">
-                    <span>Wybierz arkusz</span>
-                    <ChevronRight size={13} />
-                  </div>
-                </button>
 
-                {/* FILAR 3: BANK ZADAŃ PODZIELONY NA DZIAŁY */}
+                    <div className="space-y-2 relative z-10 pt-2 border-t border-surface-border">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (examSubject === 'angielski') startEnglishExam('express');
+                          else if (examSubject === 'polski') startPolishExam('express');
+                          else startMiniExam('Wszystkie działy', 12);
+                        }}
+                        className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                      >
+                        <Play size={13} fill="currentColor" />
+                        <span>Napisz ekspres (20 min)</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSetupLength(12);
+                          setView('exam_setup');
+                        }}
+                        className="w-full py-1.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-text-secondary hover:text-white font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                      >
+                        <span>Wybierz konkretny dział</span>
+                        <ChevronRight size={12} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* FORMAT 2: MINI MATURY CKE (35–45 MIN) */}
+                  <div className="group rounded-2xl bg-gradient-to-b from-purple-500/[0.08] to-surface-card hover:to-surface-card-hover border border-purple-500/35 hover:border-purple-400/60 p-4 sm:p-5 transition-all shadow-[0_0_20px_rgba(168,85,247,0.06)] flex flex-col justify-between relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-28 h-28 bg-purple-500/10 rounded-full blur-xl pointer-events-none" />
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 shadow-[0_0_12px_rgba(168,85,247,0.25)]">
+                          <GraduationCap size={20} />
+                        </div>
+                        <span className="text-[10px] font-mono font-black uppercase tracking-wider text-purple-300 bg-purple-500/15 border border-purple-500/30 px-2 py-0.5 rounded-full">
+                          {examSubject === 'polski' ? '45 MIN • ZESZYT 1' : '35 MIN • 1/2 ARKUSZA'}
+                        </span>
+                      </div>
+                      <h3 className="font-display font-black text-base sm:text-lg text-white group-hover:text-purple-300 transition-colors mb-1.5">
+                        Mini Matury CKE
+                      </h3>
+                      <p className="text-text-muted text-xs leading-relaxed mb-4">
+                        Dokładnie połowa oficjalnego arkusza maturalnego. Zbalansowany zestaw pytań z pełną symulacją punktacji i kryteriami CKE.
+                      </p>
+                    </div>
+
+                    <div className="space-y-2 relative z-10 pt-2 border-t border-surface-border">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (examSubject === 'angielski') startEnglishExam('mini');
+                          else if (examSubject === 'polski') startPolishExam('mini');
+                          else startMiniExam('Wszystkie działy', 18);
+                        }}
+                        className="w-full py-2.5 px-3 rounded-xl bg-purple-500 hover:bg-purple-400 text-white font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                      >
+                        <Play size={13} fill="currentColor" />
+                        <span>Napisz mini maturę ({examSubject === 'polski' ? '45 min' : '35 min'})</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSetupLength(18);
+                          setView('exam_setup');
+                        }}
+                        className="w-full py-1.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-text-secondary hover:text-white font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                      >
+                        <span>Wybierz konkretny dział</span>
+                        <ChevronRight size={12} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* FORMAT 3: PEŁNE OFICJALNE ARKUSZE CKE */}
+                  <div className="group rounded-2xl bg-gradient-to-b from-emerald-500/[0.08] to-surface-card hover:to-surface-card-hover border border-emerald-500/35 hover:border-emerald-400/60 p-4 sm:p-5 transition-all shadow-[0_0_20px_rgba(16,185,129,0.06)] flex flex-col justify-between relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/10 rounded-full blur-xl pointer-events-none" />
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.25)]">
+                          <FileText size={20} />
+                        </div>
+                        <span className="text-[10px] font-mono font-black uppercase tracking-wider text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                          {examSubject === 'angielski' ? '120 MIN • 60 PKT' : examSubject === 'polski' ? '240 MIN • 60 PKT' : '180 MIN • 50 PKT'}
+                        </span>
+                      </div>
+                      <h3 className="font-display font-black text-base sm:text-lg text-white group-hover:text-emerald-300 transition-colors mb-1.5">
+                        Matury Pełne (Oficjalne CKE)
+                      </h3>
+                      <p className="text-text-muted text-xs leading-relaxed mb-4">
+                        Kompletne, oficjalne arkusze CKE z lat ubiegłych (Maj 2024, Czerwiec 2024, Maj 2023) oraz wzorcowe symulacje JASNE 2025.
+                      </p>
+                    </div>
+
+                    <div className="space-y-2 relative z-10 pt-2 border-t border-surface-border">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (examSubject === 'angielski') startEnglishExam('full');
+                          else if (examSubject === 'polski') setIsPolishFullExamActive(true);
+                          else setView('full_exams');
+                        }}
+                        className="w-full py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                      >
+                        <Clock size={13} />
+                        <span>Wybierz arkusz CKE →</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (examSubject === 'angielski') {
+                            startEnglishExam('full');
+                          } else if (examSubject === 'polski') {
+                            setIsPolishFullExamActive(true);
+                          } else {
+                            const maj2024 = effectiveTasks.filter((t: MaturaTask) => (t.source || '').includes('Maj 2024') || (t as any).examId === 'matura-maj-2024');
+                            if (maj2024.length > 0) {
+                              startFullExam('Matura Maj 2024', maj2024, true);
+                            } else {
+                              setView('full_exams');
+                            }
+                          }
+                        }}
+                        className="w-full py-1.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-text-secondary hover:text-white font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                      >
+                        <span>Szybki start: Maj 2024 (Sesja Główna)</span>
+                        <ChevronRight size={12} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* DODATKOWE NARZĘDZIA TRENINGOWE */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-1">
+                {/* BANK ZADAŃ DZIAŁAMI */}
                 <button
+                  type="button"
                   onClick={() => setView('topics_bank')}
-                  className="group text-left rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-blue-500/50 p-4 sm:p-5 transition-all active:scale-[0.99] shadow-md flex flex-col justify-between cursor-pointer"
+                  className="group text-left rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-blue-500/50 p-4 transition-all active:scale-[0.99] shadow-md flex items-center justify-between cursor-pointer"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center">
-                        <Layers className="text-blue-400" size={18} />
-                      </div>
-                      <span className="text-[10px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20 whitespace-nowrap">
-                        15 działów CKE
-                      </span>
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center shrink-0 text-blue-400">
+                      <Layers size={18} />
                     </div>
-                    <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-blue-400 transition-colors mb-1">
-                      Bank Zadań Działami
-                    </h3>
-                    <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
-                      Przerób wszystkie zadania CKE z konkretnego działu z indywidualnym paskiem opanowania.
-                    </p>
+                    <div>
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="text-[10px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">
+                          {currentTopics.length} Działów CKE
+                        </span>
+                      </div>
+                      <h4 className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">
+                        Bank Zadań Działami
+                      </h4>
+                      <p className="text-text-muted text-[11px]">
+                        Przeglądaj i trenuj autentyczne zadania z wybranego działu
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-center text-xs font-bold text-blue-400 gap-1 mt-3 group-hover:translate-x-0.5 transition-transform">
-                    <span>Przeglądaj działy</span>
-                    <ChevronRight size={13} />
-                  </div>
+                  <ChevronRight size={16} className="text-blue-400 group-hover:translate-x-1 transition-transform" />
                 </button>
 
-                {/* FILAR 4: BAZA BŁĘDÓW I POWTÓRKI */}
+                {/* BAZA BŁĘDÓW */}
                 <button
+                  type="button"
                   onClick={() => {
-                    const errorTasks = tasks.filter(t => mistakesBank.includes(t.id));
+                    const errorTasks = effectiveTasks.filter(t => mistakesBank.includes(t.id));
                     if (errorTasks.length === 0) {
                       alert('Świetnie! Nie masz obecnie żadnych zadań w Bazie Błędów.');
                       return;
                     }
                     startMaraton(errorTasks, 0);
                   }}
-                  className={`group text-left rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border p-4 sm:p-5 transition-all active:scale-[0.99] shadow-md flex flex-col justify-between cursor-pointer ${
-                    mistakesBank.length > 0 ? 'hover:border-rose-500/50' : 'opacity-80'
-                  }`}
+                  className="group text-left rounded-2xl bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-rose-500/50 p-4 transition-all active:scale-[0.99] shadow-md flex items-center justify-between cursor-pointer"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${
-                        mistakesBank.length > 0 ? 'bg-rose-500/10 border border-rose-500/25' : 'bg-white/5 border border-white/10'
-                      }`}>
-                        <RotateCcw className={mistakesBank.length > 0 ? 'text-rose-400' : 'text-text-muted'} size={18} />
-                      </div>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border whitespace-nowrap ${
-                        mistakesBank.length > 0 ? 'text-rose-400 bg-rose-500/10 border-rose-500/20' : 'text-text-muted bg-white/5 border-white/10'
-                      }`}>
-                        {mistakesBank.length} do powtórki
-                      </span>
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center shrink-0 text-rose-400">
+                      <RotateCcw size={18} />
                     </div>
-                    <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-rose-400 transition-colors mb-1">
-                      Baza Twoich Błędów
-                    </h3>
-                    <p className="text-text-muted text-xs leading-relaxed line-clamp-2">
-                      Utrwal wiedzę na zadaniach, w których popełniłeś błąd. Skuteczna redukcja pułapek CKE.
-                    </p>
+                    <div>
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-full border border-rose-500/20">
+                          {mistakesBank.length} do powtórki
+                        </span>
+                      </div>
+                      <h4 className="font-bold text-sm text-white group-hover:text-rose-400 transition-colors">
+                        Baza Twoich Błędów
+                      </h4>
+                      <p className="text-text-muted text-[11px]">
+                        Powtórz zadania, w których popełniłeś pomyłkę
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-center text-xs font-bold text-rose-400 gap-1 mt-3 group-hover:translate-x-0.5 transition-transform">
-                    <span>Przetrenuj błędy</span>
-                    <ChevronRight size={13} />
-                  </div>
+                  <ChevronRight size={16} className="text-rose-400 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </motion.div>
-            )
           )}
 
           {/* =========================================================================
@@ -1543,9 +1989,17 @@ export function MaturaSimulatorView({
                   Autentyczne zestawy maturalne z lat ubiegłych. Możesz pisać z oficjalnym zegarem 180 minut lub w trybie bezstresowym.
                 </p>
 
-                {/* Lista gotowych arkuszy rocznikowych */}
+                {/* Lista gotowych arkuszy rocznikowych i autorskich symulacji */}
                 <div className="space-y-3">
                   {[
+                    ...FLAGSHIP_JASNE_EXAMS.map(flagship => ({
+                      examId: flagship.id,
+                      name: flagship.name,
+                      badge: 'Symulacja CKE 2025',
+                      desc: flagship.desc,
+                      directTasks: flagship.tasks,
+                      filter: () => false
+                    })),
                     {
                       examId: 'matura-maj-2024',
                       name: 'Matura Maj 2024',
@@ -1602,10 +2056,10 @@ export function MaturaSimulatorView({
                       desc: 'Zbiór zadań z oficjalnego Informatora CKE o egzaminie maturalnym.',
                       filter: (t: MaturaTask) => (t.source || '').toLowerCase().includes('informator')
                     }
-                  ].map((sheet, sIdx) => {
-                    const sheetTasks = tasks.filter(sheet.filter);
-                    const count = sheetTasks.length;
-                    const points = sheetTasks.reduce((sum, t) => sum + t.points, 0);
+                  ].map((sheet: any, sIdx) => {
+                    const sheetTasks: MaturaTask[] = sheet.directTasks || tasks.filter(sheet.filter);
+                    const count = sheetTasks.length || 35;
+                    const points = sheetTasks.length > 0 ? sheetTasks.reduce((sum, t) => sum + t.points, 0) : 46;
 
                     const handleStart = async (timed: boolean) => {
                       let selectedTasks = sheetTasks;
@@ -1613,8 +2067,8 @@ export function MaturaSimulatorView({
                         selectedTasks = await curriculumRepository.getCkeExamSheet(sheet.examId);
                       }
                       if (selectedTasks.length === 0) {
-                        alert('Brak zadań w wybranym arkuszu!');
-                        return;
+                        const generated = generateFullMaturaExam(sheet.examId || sheet.name, sheet.name);
+                        selectedTasks = generated.tasks;
                       }
                       startFullExam(sheet.name, selectedTasks, timed);
                     };
@@ -1683,8 +2137,8 @@ export function MaturaSimulatorView({
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {CANONICAL_TOPICS.map((topic, idx) => {
-                    const topicAll = tasks.filter(t => t.section === topic);
+                  {currentTopics.map((topic, idx) => {
+                    const topicAll = effectiveTasks.filter(t => t.section === topic);
                     const topicPassed = topicAll.filter(t => isTaskPassed(t.id)).length;
                     const pct = topicAll.length > 0 ? Math.round((topicPassed / topicAll.length) * 100) : 0;
 
@@ -1855,7 +2309,7 @@ export function MaturaSimulatorView({
                       className="w-full bg-surface-bg border border-surface-border rounded-xl px-4 py-3 text-white text-sm focus:border-[#FFB800] outline-none"
                     >
                       <option value="Wszystkie działy">Wszystkie działy (Przekrój Maturalny)</option>
-                      {CANONICAL_TOPICS.map(s => (
+                      {currentTopics.map(s => (
                         <option key={s} value={s}>{s}</option>
                       ))}
                     </select>
@@ -1868,9 +2322,9 @@ export function MaturaSimulatorView({
                     <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
-                        onClick={() => setSetupLength(7)}
+                        onClick={() => setSetupLength(12)}
                         className={`p-4 rounded-2xl border text-left transition-all ${
-                          setupLength === 7
+                          setupLength === 12 || setupLength === 11 || setupLength === 7
                             ? 'bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
                             : 'bg-surface-bg border-surface-border text-text-muted hover:text-white'
                         }`}
@@ -1879,14 +2333,14 @@ export function MaturaSimulatorView({
                           <span className="font-bold text-sm">Ekspresowy</span>
                           <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-1.5 py-0.5 rounded w-fit">20 MIN</span>
                         </div>
-                        <p className="text-xs text-text-secondary">7 zadań • Przekrój CKE</p>
+                        <p className="text-xs text-text-secondary">12 zadań • 15 punktów • Próg zdawalności 30%</p>
                       </button>
 
                       <button
                         type="button"
-                        onClick={() => setSetupLength(12)}
+                        onClick={() => setSetupLength(18)}
                         className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all ${
-                          setupLength === 12
+                          setupLength === 18 || setupLength === 17
                             ? 'bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
                             : 'bg-surface-bg border-surface-border text-text-muted hover:text-white'
                         }`}
@@ -1895,7 +2349,7 @@ export function MaturaSimulatorView({
                           <span className="font-bold text-sm">Standardowy</span>
                           <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-1.5 py-0.5 rounded w-fit">35 MIN</span>
                         </div>
-                        <p className="text-xs text-text-secondary">12 zadań • 1/2 arkusza</p>
+                        <p className="text-xs text-text-secondary">18 zadań • 25 punktów • Dokładnie 1/2 arkusza</p>
                       </button>
                     </div>
                   </div>
@@ -2042,8 +2496,19 @@ export function MaturaSimulatorView({
                 <ExamTaskCard
                   task={examTasks[examCurrentIndex]}
                   currentIndex={examCurrentIndex}
+                  examSubject={examSubject}
                   selectedAnswer={examAnswers[examTasks[examCurrentIndex].id]}
                   openAnswer={examOpenAnswers[examTasks[examCurrentIndex].id]}
+                  aiEvaluation={examAiEvaluations[examTasks[examCurrentIndex].id]}
+                  isEvaluatingAi={Boolean(pendingBackgroundEvalRef.current[examTasks[examCurrentIndex].id])}
+                  onTriggerAiEvaluation={() => {
+                    const curr = examTasks[examCurrentIndex];
+                    if (curr) void triggerBackgroundEvaluation(curr, examOpenAnswers[curr.id]?.text || '', examOpenAnswers[curr.id]?.canvasUrl);
+                  }}
+                  onResetAiEvaluation={() => {
+                    const curr = examTasks[examCurrentIndex];
+                    if (curr) setExamAiEvaluations(prev => { const c = { ...prev }; delete c[curr.id]; return c; });
+                  }}
                   onSelectClosedAnswer={handleSelectClosedAnswer}
                   onOpenAnswerChange={handleOpenAnswerChangeCb}
                   onOpenCanvasChange={handleOpenCanvasChangeCb}

@@ -49,6 +49,17 @@ const DEFAULT_POLISH_TOPICS = [
   'Rozprawka maturalna – formułowanie tezy i dobór kontekstów'
 ];
 
+const DEFAULT_ENGLISH_TOPICS = [
+  'Czasy gramatyczne: Present Perfect vs Past Simple',
+  'Okresy warunkowe (Conditionals 0, 1, 2)',
+  'Strona bierna (Passive Voice) w praktyce maturalnej',
+  'Mowa zależna (Reported Speech) i następstwo czasów',
+  'Czasowniki modalne i modalne w przeszłości',
+  'Transformacje ze słowem-kluczem (Key Word Transformation)',
+  'Środki językowe: słowotwórstwo (Word Formation)',
+  'Wypowiedź pisemna: e-mail lub wpis na blogu (100-150 słów)'
+];
+
 export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
   isOpen,
   onClose,
@@ -57,7 +68,8 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
   onStartCustomTask
 }) => {
   const isPolish = currentSubjectKey === 'pol';
-  const defaultTopics = isPolish ? DEFAULT_POLISH_TOPICS : DEFAULT_MATH_TOPICS;
+  const isEnglish = currentSubjectKey === 'eng';
+  const defaultTopics = isPolish ? DEFAULT_POLISH_TOPICS : isEnglish ? DEFAULT_ENGLISH_TOPICS : DEFAULT_MATH_TOPICS;
 
   const [selectedTopic, setSelectedTopic] = useState<string>(defaultTopics[0]);
   const [taskType, setTaskType] = useState<'SINGLE_CHOICE' | 'NUMERIC_INPUT' | 'OPEN_PROOF'>('SINGLE_CHOICE');
@@ -95,7 +107,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          subject: isPolish ? 'jezyk-polski' : 'matematyka',
+          subject: isPolish ? 'jezyk-polski' : isEnglish ? 'jezyk-angielski' : 'matematyka',
           topic: selectedTopic,
           taskType,
           difficulty
@@ -270,7 +282,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                   </span>
                 </h3>
                 <p className="text-[11px] text-slate-400">
-                  {isPolish ? 'Język Polski' : 'Matematyka'} • Zadania z kluczem i kryteriami CKE
+                  {isPolish ? 'Język Polski' : isEnglish ? 'Język Angielski' : 'Matematyka'} • Zadania z kluczem i kryteriami CKE
                 </p>
               </div>
             </div>

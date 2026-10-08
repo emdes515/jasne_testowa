@@ -13,6 +13,7 @@ import {
   Zap
 } from 'lucide-react';
 import { LoadingSpinner } from './Loading';
+import { JasneLogo } from './ui/JasneLogo';
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
@@ -196,8 +197,8 @@ export function AuthModal({ isOpen, onClose, onSuccess, promoContext }: AuthModa
 
         {/* Modal Header */}
         <div className="flex flex-col items-center text-center mb-5">
-          <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary mb-3 shadow-sm">
-            <ShieldCheck size={24} />
+          <div className="mb-2">
+            <JasneLogo variant="icon" size={44} glow={true} />
           </div>
           <h2 className="font-display font-black text-xl text-text-primary">
             {mode === 'login' ? 'Witaj ponownie!' : 'Dołącz do Kampusu JASNE'}

@@ -28,7 +28,7 @@ export const SubjectLobbyModal: React.FC<SubjectLobbyModalProps> = ({
       icon: BookOpen,
       badge: 'Formuła 2023 CKE',
       color: 'from-rose-500 to-amber-500',
-      activeColor: 'border-rose-500 bg-rose-500/10 text-rose-400',
+      activeColor: 'border-amber-500 bg-amber-500/10 text-amber-300',
       description: 'Zeszyt 1 (Język w użyciu + Test historycznoliteracki) oraz Zeszyt 2 (Wypracowanie i notatka syntetyzująca).',
       stats: polishStats?.total
         ? `${polishStats.total}+ zadań • ${polishStats.epochs || 11} epok • Lektury z gwiazdką`
@@ -64,16 +64,17 @@ export const SubjectLobbyModal: React.FC<SubjectLobbyModalProps> = ({
       id: 'angielski' as SubjectId,
       name: 'Język Angielski',
       icon: Globe,
-      badge: 'Wkrótce',
-      color: 'from-blue-500 to-cyan-500',
-      activeColor: 'border-blue-500 bg-blue-500/10 text-blue-400',
+      badge: 'Formuła 2023 CKE',
+      color: 'from-amber-500 to-orange-500',
+      activeColor: 'border-amber-500 bg-amber-500/10 text-amber-300',
       description: 'Czytanie ze zrozumieniem, znajomość środków językowych (Use of English) oraz wypowiedź pisemna (e-mail, wpis na blog).',
-      stats: 'Baza w przygotowaniu',
-      available: false,
+      stats: '15 działów • 4 filary CKE • 60 pkt',
+      available: true,
       features: [
         'Reading comprehension & Listening',
         'Gramatyka i transformacje zdań',
-        'Kreator wypowiedzi pisemnych'
+        'Kreator wypowiedzi pisemnych',
+        'Zadania z kluczem odpowiedzi CKE'
       ]
     },
     {

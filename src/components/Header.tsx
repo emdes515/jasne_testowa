@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { UserState, SubjectKey, SubjectId } from '../types';
-import { User, Flame, Coins, Zap, X, Heart, Clock, Users, Sun, Moon, LayoutGrid, BookOpen, Edit3, Calculator } from 'lucide-react';
+import { User, Flame, Coins, Zap, X, Heart, Clock, Users, Sun, Moon, LayoutGrid, BookOpen, Edit3, Calculator, Terminal, ChevronDown, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
@@ -19,6 +19,7 @@ export interface HeaderProps {
   onSelectSubjectId?: (subjectId: SubjectId) => void;
   onOpenLobby?: () => void;
   onOpenFormulas?: () => void;
+  onOpenDictionary?: () => void;
   onOpenScratchpad?: () => void;
   onOpenParentSponsor?: () => void;
   onOpenProPopup?: () => void;
@@ -27,6 +28,8 @@ export interface HeaderProps {
   onLoginClick?: () => void;
   guestPromoSecondsLeft?: number;
   onOpenGuestPromo?: () => void;
+  onOpenDevHub?: () => void;
+  onOpenBlikModal?: () => void;
 }
 
 export function Header({ 
@@ -40,6 +43,7 @@ export function Header({
   onSelectSubjectId,
   onOpenLobby,
   onOpenFormulas,
+  onOpenDictionary,
   onOpenScratchpad,
   onOpenParentSponsor,
   onOpenProPopup,
@@ -47,13 +51,33 @@ export function Header({
   isGuest,
   onLoginClick,
   guestPromoSecondsLeft,
-  onOpenGuestPromo
+  onOpenGuestPromo,
+  onOpenDevHub,
+  onOpenBlikModal
 }: HeaderProps) {
   const [showXpTooltip, setShowXpTooltip] = useState(false);
   const [showHeartsPopup, setShowHeartsPopup] = useState(false);
+  const [isMobileSubjectSheetOpen, setIsMobileSubjectSheetOpen] = useState(false);
   const { resolvedTheme, toggleTheme } = useTheme();
   const currentXpInLevel = state.xp % 1000;
   const xpPercent = Math.min(100, Math.max(0, (currentXpInLevel / 1000) * 100));
+
+  const isMathActive = currentSubject === 'matematyka' || selectedSubjectKey === 'math' || (!currentSubject && !selectedSubjectKey);
+  const isPolActive = currentSubject === 'polski' || selectedSubjectKey === 'pol';
+  const isEngActive = currentSubject === 'angielski' || selectedSubjectKey === 'eng';
+
+  const activeSubjectInfo = isEngActive
+    ? { key: 'eng' as SubjectKey, id: 'angielski' as SubjectId, label: 'Język Angielski', shortLabel: 'Angielski', examTag: 'Formuła 2023 • Poziom Podstawowy', accentColor: '#38BDF8' }
+    : isPolActive
+      ? { key: 'pol' as SubjectKey, id: 'polski' as SubjectId, label: 'Język Polski', shortLabel: 'Polski', examTag: 'Formuła 2023 • Epoki & Lektury', accentColor: '#F43F5E' }
+      : { key: 'math' as SubjectKey, id: 'matematyka' as SubjectId, label: 'Matematyka', shortLabel: 'Matematyka', examTag: 'Formuła 2023 • 15 Działów CKE', accentColor: '#FFB800' };
+
+  const handleSelectMobileSubject = (key: SubjectKey, id: SubjectId) => {
+    triggerHaptic('medium');
+    onSelectSubject?.(key);
+    onSelectSubjectId?.(id);
+    setIsMobileSubjectSheetOpen(false);
+  };
 
   const heartsData = getSyncedHearts(state);
 
@@ -81,13 +105,13 @@ export function Header({
           triggerHaptic('medium');
           if (onLogoClick) onLogoClick();
         }}
-        className="lg:hidden flex items-center gap-1.5 sm:gap-2 group cursor-pointer select-none active:scale-95 transition-all text-left py-1 px-1 -ml-1 rounded-xl hover:bg-white/[0.04] min-w-0 shrink"
+        className="lg:hidden flex items-center gap-1 sm:gap-2 group cursor-pointer select-none active:scale-95 transition-all text-left py-1 px-1 -ml-1 rounded-xl hover:bg-white/[0.04] shrink-0"
         title="Przejdź do pulpitu głównego JASNE."
         aria-label="Pulpit główny JASNE."
       >
-        <JasneLogo variant="icon" size={28} glow={true} className="group-hover:scale-105 transition-transform duration-200 shrink-0" />
+        <JasneLogo variant="icon" size={24} glow={true} className="group-hover:scale-105 transition-transform duration-200 shrink-0" />
         <div className="flex flex-col text-left min-w-0">
-          <span className="text-sm sm:text-base font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
+          <span className="text-xs sm:text-base font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
             JASNE<span className="text-primary">.</span>
           </span>
           <span className="hidden sm:inline-block text-[10px] font-bold text-text-muted tracking-wider uppercase mt-0.5">
@@ -98,8 +122,50 @@ export function Header({
 
       {/* CENTRUM: Selektor przedmiotu + Przycisk Lobby */}
       <div className="flex items-center gap-1 sm:gap-1.5 min-w-0 shrink">
-        {/* Przełącznik przedmiotu */}
-        <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5 shadow-inner">
+        {/* MOBILNY KOMPAKTOWY PRZEŁĄCZNIK PRZEDMIOTU (< 640px) */}
+        <div className="sm:hidden relative shrink-0">
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              setIsMobileSubjectSheetOpen(true);
+            }}
+            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full bg-surface-card border border-primary/40 text-text-primary text-xs font-bold transition-all active:scale-95 shadow-xs shrink-0"
+          >
+            {isMathActive ? (
+              <span className="w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+                <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 11.5l3 4 4.5-12.5h12.5" />
+                  <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
+                </svg>
+              </span>
+            ) : isPolActive ? (
+              <span
+                className="w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+                style={{
+                  fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
+                }}
+              >
+                P
+              </span>
+            ) : (
+              <span className="w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+                <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
+                  <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
+                  <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />
+                  <path d="M9 0V13M0 6.5H18" stroke="#070A0F" strokeWidth="4.6" />
+                  <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="3.6" strokeOpacity="0.4" />
+                  <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="1.8" />
+                </svg>
+              </span>
+            )}
+            <span className="text-amber-200 font-extrabold text-[11px] truncate max-w-[70px] xs:max-w-[95px]">{activeSubjectInfo.shortLabel}</span>
+            <ChevronDown size={11} className="text-text-muted shrink-0" />
+          </button>
+        </div>
+
+        {/* DESKTOP PEŁNY PRZEŁĄCZNIK PRZEDMIOTÓW (>= 640px) */}
+        <div className="hidden sm:flex relative items-center bg-surface-card border border-surface-border rounded-full p-0.5 shadow-inner">
           <button
             type="button"
             onClick={() => {
@@ -107,14 +173,27 @@ export function Header({
               onSelectSubject?.('math');
               onSelectSubjectId?.('matematyka');
             }}
-            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+            className={`relative z-10 flex items-center gap-1.5 px-2 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-colors duration-200 cursor-pointer ${
               (currentSubject === 'matematyka' || selectedSubjectKey === 'math' || (!currentSubject && !selectedSubjectKey))
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
+                ? 'text-amber-200 font-extrabold'
                 : 'text-text-muted hover:text-text-primary'
             }`}
           >
-            <Calculator size={13} className="shrink-0 text-amber-400" />
-            <span className="hidden xs:inline sm:inline">Matematyka</span>
+            {(currentSubject === 'matematyka' || selectedSubjectKey === 'math' || (!currentSubject && !selectedSubjectKey)) && (
+              <motion.div
+                layoutId="activeHeaderSubjectIndicator"
+                className="absolute inset-0 rounded-full bg-amber-500/20 border border-amber-500/40 shadow-[0_0_12px_rgba(255,184,0,0.25)] pointer-events-none"
+                transition={{ type: 'spring', stiffness: 440, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+              <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 11.5l3 4 4.5-12.5h12.5" />
+                <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
+              </svg>
+            </span>
+            <span className="relative z-10 hidden sm:inline">Matematyka</span>
+            <span className="relative z-10 hidden xs:inline sm:hidden">Mat</span>
           </button>
 
           <button
@@ -124,14 +203,67 @@ export function Header({
               onSelectSubject?.('pol');
               onSelectSubjectId?.('polski');
             }}
-            className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+            className={`relative z-10 flex items-center gap-1.5 px-2 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-colors duration-200 cursor-pointer ${
               (currentSubject === 'polski' || selectedSubjectKey === 'pol')
-                ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 shadow-sm'
+                ? 'text-amber-200 font-extrabold'
                 : 'text-text-muted hover:text-text-primary'
             }`}
           >
-            <BookOpen size={13} className="shrink-0 text-rose-400" />
-            <span className="hidden xs:inline sm:inline">Polski</span>
+            {(currentSubject === 'polski' || selectedSubjectKey === 'pol') && (
+              <motion.div
+                layoutId="activeHeaderSubjectIndicator"
+                className="absolute inset-0 rounded-full bg-amber-500/20 border border-amber-500/40 shadow-[0_0_12px_rgba(255,184,0,0.25)] pointer-events-none"
+                transition={{ type: 'spring', stiffness: 440, damping: 30 }}
+              />
+            )}
+            <span
+              className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+              style={{
+                fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
+              }}
+            >
+              P
+            </span>
+            <span className="relative z-10 hidden sm:inline">Polski</span>
+            <span className="relative z-10 hidden xs:inline sm:hidden">Pol</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              onSelectSubject?.('eng');
+              onSelectSubjectId?.('angielski');
+            }}
+            className={`relative z-10 flex items-center gap-1.5 px-2 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition-colors duration-200 cursor-pointer ${
+              (currentSubject === 'angielski' || selectedSubjectKey === 'eng')
+                ? 'text-amber-200 font-extrabold'
+                : 'text-text-muted hover:text-text-primary'
+            }`}
+          >
+            {(currentSubject === 'angielski' || selectedSubjectKey === 'eng') && (
+              <motion.div
+                layoutId="activeHeaderSubjectIndicator"
+                className="absolute inset-0 rounded-full bg-amber-500/20 border border-amber-500/40 shadow-[0_0_12px_rgba(255,184,0,0.25)] pointer-events-none"
+                transition={{ type: 'spring', stiffness: 440, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+              <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
+                {/* Przekątne - podkład krzyża św. Andrzeja */}
+                <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
+                {/* Przekątne - linie krzyża św. Patryka */}
+                <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />
+                {/* Ciemna szczelina oddzielająca przekątne od krzyża głównego */}
+                <path d="M9 0V13M0 6.5H18" stroke="#070A0F" strokeWidth="4.6" />
+                {/* Obwódka krzyża św. Jerzego */}
+                <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="3.6" strokeOpacity="0.4" />
+                {/* Główny krzyż św. Jerzego */}
+                <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="1.8" />
+              </svg>
+            </span>
+            <span className="relative z-10 hidden sm:inline">Angielski</span>
+            <span className="relative z-10 hidden xs:inline sm:hidden">Ang</span>
           </button>
         </div>
 
@@ -143,7 +275,7 @@ export function Header({
               triggerHaptic('medium');
               onOpenLobby();
             }}
-            className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-secondary hover:text-primary text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-sm active:scale-95"
+            className="hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-secondary hover:text-primary text-[11px] sm:text-xs font-bold transition-all cursor-pointer shadow-sm active:scale-95"
             title="Lobby wyboru przedmiotów"
           >
             <LayoutGrid size={13} className="text-primary" />
@@ -151,8 +283,8 @@ export function Header({
           </button>
         )}
 
-        {/* Tablice Wzorów CKE */}
-        {onOpenFormulas && (
+        {/* Tablice Wzorów CKE - TYLKO DLA MATEMATYKI */}
+        {(currentSubject === 'matematyka' || selectedSubjectKey === 'math' || (!currentSubject && !selectedSubjectKey)) && onOpenFormulas && (
           <button
             type="button"
             onClick={() => {
@@ -160,10 +292,26 @@ export function Header({
               onOpenFormulas();
             }}
             className="hidden md:flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-secondary hover:text-primary text-[11px] font-bold transition-all cursor-pointer"
-            title="Tablice Wzorów CKE"
+            title="Tablice Wzorów CKE (Matematyka)"
           >
             <BookOpen size={13} className="text-primary" />
             <span>Wzory</span>
+          </button>
+        )}
+
+        {/* Słownik Maturalny CKE - TYLKO DLA ANGIELSKIEGO */}
+        {(currentSubject === 'angielski' || selectedSubjectKey === 'eng') && onOpenDictionary && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              onOpenDictionary();
+            }}
+            className="hidden md:flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 text-text-secondary hover:text-primary text-[11px] font-bold transition-all cursor-pointer"
+            title="Oficjalny Słownik Maturalny CKE (Język Angielski)"
+          >
+            <BookOpen size={13} className="text-primary" />
+            <span>Słownik</span>
           </button>
         )}
 
@@ -189,15 +337,66 @@ export function Header({
 
       {/* PRAWA STRONA: Skarbiec i Profil gracza */}
       <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-        {/* Wskaźnik Serc (Hearts Engine) */}
-        <div className="relative">
+        {/* MOBILNA ZINTEGROWANA PIGUŁKA GAMIFIKACJI (< 640px) */}
+        <div className="sm:hidden flex items-center bg-surface-card border border-white/10 rounded-full px-1.5 py-0.5 shadow-sm text-xs font-mono font-bold shrink-0">
+          {/* Serca */}
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              setShowHeartsPopup(prev => !prev);
+            }}
+            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-rose-400 active:scale-95 transition"
+            title={`Serca: ${heartsData.hearts}/${heartsData.maxHearts}`}
+          >
+            <Heart size={12} className={heartsData.hearts > 0 ? "text-rose-500 fill-rose-500" : "text-rose-500"} />
+            <span className="text-[11px] leading-none font-black">{heartsData.isPro ? '∞' : heartsData.hearts}</span>
+          </button>
+
+          <span className="text-white/15 text-[10px] select-none">•</span>
+
+          {/* Streak */}
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('light');
+              if (onProfileClick) onProfileClick();
+            }}
+            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[#F97316] active:scale-95 transition"
+            title={`Passa: ${state.streakDays || 0} dni`}
+          >
+            <Flame size={12} className="text-[#F97316] fill-[#F97316]" />
+            <span className="text-[11px] leading-none font-black">{state.streakDays || 0}</span>
+          </button>
+
+          <span className="text-white/15 text-[10px] select-none">•</span>
+
+          {/* Monety */}
+          <button
+            type="button"
+            onClick={() => {
+              if (onOpenBlikModal) {
+                triggerHaptic('light');
+                onOpenBlikModal();
+              }
+            }}
+            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-primary active:scale-95 transition"
+            title={`Monety: ${state.coins}`}
+          >
+            <Coins size={12} className="text-primary" />
+            <span className="text-[11px] leading-none font-black">{state.coins}</span>
+          </button>
+        </div>
+
+        {/* Wskaźnik Serc (Desktop >= 640px) */}
+        <div className="relative hidden sm:block">
           <button 
             id="header-hearts-button"
             onClick={() => {
               triggerHaptic('light');
               setShowHeartsPopup(prev => !prev);
             }}
-            className={`flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-2.5 min-h-[44px] min-w-[44px] rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-sm border ${
+            className={`hidden sm:flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-2.5 min-h-[44px] min-w-[44px] rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-sm border ${
               heartsData.isPro
                 ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
                 : heartsData.hearts <= 1
@@ -309,13 +508,13 @@ export function Header({
           </AnimatePresence>
         </div>
 
-        {/* Wskaźnik 1: Płomień Passy */}
+        {/* Wskaźnik 1: Płomień Passy (Desktop >= 640px) */}
         <button 
           onClick={() => {
             triggerHaptic('light');
             if (onProfileClick) onProfileClick();
           }}
-          className="flex items-center justify-center gap-1 sm:gap-1.5 bg-[#F97316]/10 hover:bg-[#F97316]/20 border border-[#F97316]/30 px-2.5 sm:px-2.5 min-h-[44px] min-w-[44px] rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-[0_0_12px_rgba(249,115,22,0.12)]"
+          className="hidden sm:flex items-center justify-center gap-1 sm:gap-1.5 bg-[#F97316]/10 hover:bg-[#F97316]/20 border border-[#F97316]/30 px-2.5 sm:px-2.5 min-h-[44px] min-w-[44px] rounded-full transition-all duration-150 active:scale-95 cursor-pointer shadow-[0_0_12px_rgba(249,115,22,0.12)]"
           title={`Aktualna seria: ${state.streakDays || 0} dni z rzędu`}
         >
           <Flame size={14} className="text-[#F97316] fill-[#F97316] animate-pulse" />
@@ -324,16 +523,23 @@ export function Header({
           </span>
         </button>
 
-        {/* Wskaźnik 2: Główne Monety */}
-        <div 
-          className="flex items-center justify-center gap-1 sm:gap-1.5 bg-primary/10 border border-primary/30 px-2.5 sm:px-2.5 min-h-[44px] rounded-full shadow-[0_0_12px_rgba(255,184,0,0.12)]"
-          title={`Monety: ${state.coins}`}
+        {/* Wskaźnik 2: Główne Monety (Desktop >= 640px) */}
+        <button 
+          type="button"
+          onClick={() => {
+            if (onOpenBlikModal) {
+              triggerHaptic('light');
+              onOpenBlikModal();
+            }
+          }}
+          className="hidden sm:flex items-center justify-center gap-1 sm:gap-1.5 bg-primary/10 hover:bg-primary/20 border border-primary/30 px-2.5 sm:px-2.5 min-h-[44px] rounded-full shadow-[0_0_12px_rgba(255,184,0,0.12)] cursor-pointer transition active:scale-95"
+          title={`Monety: ${state.coins} • Kliknij, aby doładować`}
         >
           <Coins size={13} className="text-primary" />
           <span className="font-display font-black text-primary text-xs leading-none tabular-nums font-mono">
             {state.coins.toLocaleString('pl-PL')}
           </span>
-        </div>
+        </button>
 
         {/* Wskaźnik Gościa (widoczny tylko na desktopie, gdy jest dużo miejsca) */}
         {isGuest && (
@@ -379,13 +585,13 @@ export function Header({
           }}
           onMouseEnter={() => setShowXpTooltip(true)}
           onMouseLeave={() => setShowXpTooltip(false)}
-          className="flex items-center gap-1.5 sm:gap-2 p-1 sm:pl-1 sm:pr-2.5 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm shrink-0"
+          className="flex items-center gap-1.5 sm:gap-2 p-0.5 sm:p-1 sm:pl-1 sm:pr-2.5 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm shrink-0"
           title="Twój profil i postęp XP"
         >
           {/* Avatar z subtelnym bursztynowym obwodem */}
-          <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-[#FFB800] to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
+          <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-[#FFB800] to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
             <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center">
-              <User size={13} className="text-primary" />
+              <User size={12} className="text-primary sm:w-[13px] sm:h-[13px]" />
             </div>
           </div>
           <div className="hidden sm:flex flex-col text-left">
@@ -397,6 +603,23 @@ export function Header({
             </span>
           </div>
         </button>
+
+        {/* Przycisk Panelu Deweloperskiego (DEV) */}
+        {onOpenDevHub && (
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic('medium');
+              onOpenDevHub();
+            }}
+            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 text-[10px] sm:text-xs font-black shadow-[0_0_12px_rgba(16,185,129,0.25)] transition-all cursor-pointer active:scale-95 shrink-0"
+            title="Panel Deweloperski (Pełny Dostęp do Wszystkich Zasobów)"
+            aria-label="Panel Deweloperski"
+          >
+            <Terminal size={11} className="text-emerald-400 animate-pulse sm:w-[13px] sm:h-[13px]" />
+            <span className="font-mono tracking-wider font-black">DEV</span>
+          </button>
+        )}
       </div>
 
       {/* Dyskretny, ambientowy pasek postępu XP wbudowany w dolną krawędź nagłówka */}
@@ -452,6 +675,152 @@ export function Header({
               </p>
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      {/* Mobilny BottomSheet wyboru przedmiotu */}
+      <AnimatePresence>
+        {isMobileSubjectSheetOpen && (
+          <div className="fixed inset-0 z-50 flex items-end sm:hidden">
+            {/* Tło przyciemnione */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsMobileSubjectSheetOpen(false)}
+              className="fixed inset-0 bg-black/75 backdrop-blur-sm"
+            />
+            {/* Arkusz wysuwany z dołu */}
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 350 }}
+              className="relative z-10 w-full bg-[#0E1522] border-t border-white/10 rounded-t-3xl p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl space-y-3.5"
+            >
+              {/* Uchwyt do przeciągania */}
+              <div className="w-10 h-1 bg-white/20 rounded-full mx-auto -mt-1 mb-1" />
+              
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-extrabold text-white">Wybierz Przedmiot Maturalny</h3>
+                  <p className="text-[11px] text-text-muted">Formuła 2023 • Poziom Podstawowy CKE</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsMobileSubjectSheetOpen(false)}
+                  className="p-1.5 rounded-full bg-white/5 text-text-muted hover:text-white"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              {/* Lista przedmiotów */}
+              <div className="space-y-2 pt-1">
+                {/* 1. Matematyka */}
+                <button
+                  type="button"
+                  onClick={() => handleSelectMobileSubject('math', 'matematyka')}
+                  className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
+                    isMathActive
+                      ? 'bg-amber-500/15 border-amber-500/50 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-xl bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 shadow-xs">
+                      <svg className="w-4 h-3.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2 11.5l3 4 4.5-12.5h12.5" />
+                        <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
+                      </svg>
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-extrabold text-sm text-white">Matematyka</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">180 min</span>
+                      </div>
+                      <span className="text-[11px] text-text-muted">15 działów • 75 lekcji • 1006 zadań CKE</span>
+                    </div>
+                  </div>
+                  {isMathActive && (
+                    <div className="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-300">
+                      <Check size={12} strokeWidth={3} />
+                    </div>
+                  )}
+                </button>
+
+                {/* 2. Język Polski */}
+                <button
+                  type="button"
+                  onClick={() => handleSelectMobileSubject('pol', 'polski')}
+                  className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
+                    isPolActive
+                      ? 'bg-rose-500/15 border-rose-500/50 shadow-[0_0_15px_rgba(244,63,94,0.15)]'
+                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="w-8 h-8 rounded-xl bg-[#070A0F] border border-rose-500 inline-flex items-center justify-center shrink-0 text-base font-bold italic text-rose-400 shadow-xs"
+                      style={{
+                        fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
+                      }}
+                    >
+                      P
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-extrabold text-sm text-white">Język Polski</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300">240 min</span>
+                      </div>
+                      <span className="text-[11px] text-text-muted">Epoki literackie • Lektury obowiązkowe • Matura ustna</span>
+                    </div>
+                  </div>
+                  {isPolActive && (
+                    <div className="w-5 h-5 rounded-full bg-rose-500/20 border border-rose-500/50 flex items-center justify-center text-rose-300">
+                      <Check size={12} strokeWidth={3} />
+                    </div>
+                  )}
+                </button>
+
+                {/* 3. Język Angielski */}
+                <button
+                  type="button"
+                  onClick={() => handleSelectMobileSubject('eng', 'angielski')}
+                  className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
+                    isEngActive
+                      ? 'bg-sky-500/15 border-sky-500/50 shadow-[0_0_15px_rgba(56,189,248,0.15)]'
+                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-xl bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                      <svg className="w-5 h-3.5 block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
+                        <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
+                        <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />
+                        <path d="M9 0V13M0 6.5H18" stroke="#070A0F" strokeWidth="4.6" />
+                        <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="3.6" strokeOpacity="0.4" />
+                        <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="1.8" />
+                      </svg>
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-extrabold text-sm text-white">Język Angielski</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300">120 min</span>
+                      </div>
+                      <span className="text-[11px] text-text-muted">Gramatyka CKE • Środki językowe • Słownictwo</span>
+                    </div>
+                  </div>
+                  {isEngActive && (
+                    <div className="w-5 h-5 rounded-full bg-sky-500/20 border border-sky-500/50 flex items-center justify-center text-sky-300">
+                      <Check size={12} strokeWidth={3} />
+                    </div>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </header>

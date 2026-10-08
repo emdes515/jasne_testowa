@@ -120,6 +120,54 @@ const POLISH_DIAGNOSTIC_TASKS: DiagnosticTask[] = [
   }
 ];
 
+const ENGLISH_DIAGNOSTIC_TASKS: DiagnosticTask[] = [
+  {
+    id: 'diag-eng-1',
+    topic: 'Gramatyka: Czasy gramatyczne',
+    domain: 'Use of English',
+    question: 'Choose the correct form: *By the time we arrived at the cinema, the movie ______.*',
+    instruction: 'Wybierz poprawną odpowiedź uzupełniającą zdanie.',
+    options: [
+      { id: 'A', text: 'already started', isCorrect: false },
+      { id: 'B', text: 'had already started', isCorrect: true },
+      { id: 'C', text: 'has already started', isCorrect: false },
+      { id: 'D', text: 'was already starting', isCorrect: false }
+    ],
+    explanation: 'Czynność wcześniejsza niż inna czynność w przeszłości (Past Simple: *arrived*) wymaga użycia czasu Past Perfect (*had started*).',
+    weight: 1
+  },
+  {
+    id: 'diag-eng-2',
+    topic: 'Okresy warunkowe (Conditionals)',
+    domain: 'Struktury gramatyczne CKE',
+    question: 'Complete the sentence: *If I had known about the test, I ______ harder.*',
+    instruction: 'Wybierz poprawną odpowiedź.',
+    options: [
+      { id: 'A', text: 'would study', isCorrect: false },
+      { id: 'B', text: 'would have studied', isCorrect: true },
+      { id: 'C', text: 'will study', isCorrect: false },
+      { id: 'D', text: 'had studied', isCorrect: false }
+    ],
+    explanation: 'Trzeci okres warunkowy (Third Conditional) odnosi się do przeszłości: *If + Past Perfect, would + have + III forma*.',
+    weight: 1
+  },
+  {
+    id: 'diag-eng-3',
+    topic: 'Czasowniki frazowe i kolokacje',
+    domain: 'Środki językowe',
+    question: 'Choose the correct preposition: *I am really looking forward ______ meeting you.*',
+    instruction: 'Wybierz właściwy przyimek.',
+    options: [
+      { id: 'A', text: 'to', isCorrect: true },
+      { id: 'B', text: 'for', isCorrect: false },
+      { id: 'C', text: 'at', isCorrect: false },
+      { id: 'D', text: 'with', isCorrect: false }
+    ],
+    explanation: 'Zwrot *look forward to* łączy się z przyimkiem *to* oraz rzeczownikiem lub czasownikiem z końcówką -ing (*gerund*).',
+    weight: 1
+  }
+];
+
 interface DiagnosticTestModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -137,7 +185,8 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
 }) => {
   const handleFinalComplete = onComplete || onCompleteDiagnostic || (() => {});
   const isPolish = subjectKey === 'pol';
-  const tasks = isPolish ? POLISH_DIAGNOSTIC_TASKS : MATH_DIAGNOSTIC_TASKS;
+  const isEnglish = subjectKey === 'eng';
+  const tasks = isPolish ? POLISH_DIAGNOSTIC_TASKS : isEnglish ? ENGLISH_DIAGNOSTIC_TASKS : MATH_DIAGNOSTIC_TASKS;
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -246,9 +295,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
           {/* Header */}
           <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
             <div className="flex items-center gap-2.5">
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center ${
-                isPolish ? 'bg-rose-500/20 text-rose-400' : 'bg-amber-500/20 text-amber-400'
-              }`}>
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center bg-amber-500/20 text-amber-400">
                 <Target size={18} />
               </div>
               <div>
@@ -256,7 +303,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   Test Diagnostyczny Poziomu
                 </h3>
                 <p className="text-[11px] text-slate-400">
-                  {isPolish ? 'Język Polski' : 'Matematyka'} • Kalibracja Predyktora CKE
+                  {isPolish ? 'Język Polski' : subjectKey === 'eng' ? 'Język Angielski' : 'Matematyka'} • Kalibracja Predyktora CKE
                 </p>
               </div>
             </div>
@@ -328,9 +375,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                     let btnClass = 'w-full p-3.5 rounded-xl border text-left flex items-center justify-between gap-3 transition-all text-xs sm:text-sm font-medium cursor-pointer ';
                     if (!isAnswerChecked) {
                       btnClass += isSelected
-                        ? isPolish
-                          ? 'bg-rose-500/15 border-rose-500 text-rose-100 shadow-[0_0_15px_rgba(244,63,94,0.25)]'
-                          : 'bg-amber-500/15 border-amber-500 text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.25)]'
+                        ? 'bg-amber-500/15 border-amber-500 text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.25)]'
                         : 'bg-slate-900/60 hover:bg-slate-900/90 border-slate-800 text-slate-200';
                     } else {
                       if (isThisCorrect) {
@@ -353,7 +398,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                         <div className="flex items-center gap-3">
                           <span className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
                             isSelected && !isAnswerChecked
-                              ? isPolish ? 'bg-rose-500 text-white border-rose-400' : 'bg-[#FFB800] text-amber-950 font-black border-amber-400'
+                              ? 'bg-[#FFB800] text-amber-950 font-black border-amber-400'
                               : isAnswerChecked && isThisCorrect
                               ? 'bg-emerald-500 text-emerald-950 font-black border-emerald-400'
                               : isAnswerChecked && isSelected && !isThisCorrect
@@ -398,7 +443,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                       onClick={handleCheckAnswer}
                       className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition shadow-md cursor-pointer ${
                         selectedOption
-                          ? isPolish ? 'bg-rose-500 hover:bg-rose-600 text-white' : 'bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black'
+                          ? 'bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black'
                           : 'bg-slate-800 text-slate-500 cursor-not-allowed'
                       }`}
                     >
@@ -457,11 +502,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                   <button
                     type="button"
                     onClick={handleApplyResult}
-                    className={`w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
-                      isPolish
-                        ? 'bg-rose-500 hover:bg-rose-600 text-white shadow-rose-950/50'
-                        : 'bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black shadow-amber-950/50'
-                    }`}
+                    className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black shadow-amber-950/50"
                   >
                     <span>Zapisz i zaktualizuj Predyktor</span>
                     <ArrowRight size={16} />

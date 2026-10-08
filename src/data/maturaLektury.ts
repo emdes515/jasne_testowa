@@ -134,5 +134,125 @@ export const MATURA_LEKTURY: LekturaCard[] = [
       { title: 'Polonez i koncert Jankiela', meaning: 'Harmonia narodu i artystyczne przypomnienie najważniejszych kart z historii Polski (Konstytucja 3 Maja, Targowica, rzeź Pragi, Dąbrowski).' }
     ],
     cardinalWarning: 'BŁĄD KARDYNALNY CKE: Jacek Soplica NIE BYŁ zdrajcą ojczyzny na usługach Moskali! Choć Moskale uznali go za stronnika po zabójstwie Stolnika, Jacek odrzucił ich honory i majątek, udał się na emigrację i całe życie pokutował jako emisariusz Ksiądz Robak.'
+  },
+  {
+    id: 'antygona',
+    title: 'Antygona',
+    author: 'Sofokles',
+    epoch: 'Starożytność i Biblia',
+    genre: 'Tragedia antyczna',
+    isGwiazdka: true,
+    summary: 'Dramat zderzenia praw boskich (nakaz pochówku brata Polinika) z prawem stanowionym przez władcę Teb, Kreona, prowadzący do nieuchronnej katastrofy rodu Labdakidów.',
+    keyMotifs: ['Konflikt tragiczny', 'Prawo boskie a ludzkie', 'Władza i tyrania', 'Przeznaczenie i fatum (hamartia)', 'Miłość siostrzana'],
+    mainCharacters: [
+      { name: 'Antygona', description: 'Córka Edypa, bezkompromisowa i wierna religijnemu obowiązkowi pochowania zwłok brata Polinika.' },
+      { name: 'Kreon', description: 'Władca Teb, stawiający autorytet państwa i litery prawa ponad więzy krwi i tradycję religijną.' },
+      { name: 'Hajmon', description: 'Syn Kreona i narzeczony Antygony; bezskutecznie apeluje do ojca o rozsądek, po czym odbiera sobie życie.' }
+    ],
+    keyScenes: [
+      { title: 'Agon Antygony i Kreona', meaning: 'Starcie dwóch równorzędnych racji moralnych: Antygona głosi „Współkochać przyszłam, nie współnienawidzić”, Kreon broni stabilności ładu państwowego.' },
+      { title: 'Proroctwo Tejrezjasza i spóźniona skrucha Kreona', meaning: 'Ślepy wróżbita obwieszcza gniew bogów; Kreon ulega, lecz Antygona zdążyła już powiesić się w grobowcu.' }
+    ],
+    cardinalWarning: 'BŁĄD KARDYNALNY CKE: Kreon NIE rozkazał ściąć Antygony mieczem! Kazał zamurować ją żywcem w skalnej grocie. Ponadto Kreon w finale nie ginie – zostaje sam z ciałem syna i żony Eurydyki jako złamany władca.'
+  },
+  {
+    id: 'makbet',
+    title: 'Makbet',
+    author: 'William Szekspir',
+    epoch: 'Renesans',
+    genre: 'Tragedia szekspirowska',
+    isGwiazdka: true,
+    summary: 'Upadek moralny szlachetnego wodza szkockiego, który pod wpływem przepowiedni czarownic i ambicji żony wkracza na drogę krwawych morderstw i obłędu tyranii.',
+    keyMotifs: ['Żądza władzy i pycha', 'Wyrzuty sumienia i psychomachia', 'Rola przepowiedni a wolna wola', 'Wina i kara', 'Zło jako siła niszcząca'],
+    mainCharacters: [
+      { name: 'Makbet', description: 'Wódz armii szkockiej, który po zamordowaniu króla Dunkana staje się bezwzględnym tyranem dręczonym halucynacjami.' },
+      { name: 'Lady Makbet', description: 'Inspiratorka pierwszej zbrodni, która tłumi sumienie, lecz ostatecznie popada w lunatyzm i samobójczy obłęd.' },
+      { name: 'Banko', description: 'Przyjaciel Makbeta, którego duch pojawia się na uczcie jako symbol niegasnącego poczucia winy mordercy.' }
+    ],
+    keyScenes: [
+      { title: 'Królobójstwo Dunkana i motyw krwi na rękach', meaning: 'Przekroczenie granicy moralnej; Lady Makbet i Makbet odkrywają, że „cały ocean Neptuna nie zmyje tej krwi”.' },
+      { title: 'Scena lunatyzmu Lady Makbet', meaning: 'Nieświadome próby zmycia wyimaginowanej plamy krwi („Precz, przeklęta plamo!”) ukazujące nieuchronną klęskę psychiczną zbrodniarza.' }
+    ],
+    cardinalWarning: 'BŁĄD KARDYNALNY CKE: Makbet NIE został zabity przez żadnego ze zwykłych żołnierzy, lecz przez Makdufa, który „nie zrodził się z niewiasty” (przyszedł na świat przez cesarskie cięcie), co spełniło dwuznaczną przepowiednię czarownic!'
+  },
+  {
+    id: 'zbrodnia-i-kara',
+    title: 'Zbrodnia i kara',
+    author: 'Fiodor Dostojewski',
+    epoch: 'Pozytywizm',
+    genre: 'Powieść psychologiczna / polifoniczna',
+    isGwiazdka: true,
+    summary: 'Historia Rodiona Raskolnikowa, który motywowany teorią o ludziach niezwykłych dokonuje morderstwa lichwiarki, a następnie przechodzi mękę psychiczną i duchowe zmartwychwstanie dzięki wierze i miłości Soni.',
+    keyMotifs: ['Teoria nadludzi', 'Wina, sumienie i odkupienie', 'Miłość ofiarna i chrześcijańska wiara', 'Miasto grzechu (Petersburg)', 'Psychologia zbrodni'],
+    mainCharacters: [
+      { name: 'Rodion Raskolnikow', description: 'Ubogi student prawa, autor artykułu o prawie „jednostek niezwykłych” do przekraczania barier moralnych.' },
+      { name: 'Sonia Marmieładowa', description: 'Czysta duchowo dziewczyna zmuszona do prostytucji dla ratowania głodującej rodziny; uosobienie miłosierdzia i ewangelicznej miłości.' },
+      { name: 'Porfiry Pietrowicz', description: 'Błyskotliwy sędzia śledczy, który prowadzi psychologiczną grę z mordercą, nakłaniając go do dobrowolnego przyznania się do winy.' }
+    ],
+    keyScenes: [
+      { title: 'Wspólne czytanie Ewangelii o wskrzeszeniu Łazarza', meaning: 'Przełom duchowy w sercu Raskolnikowa; zapowiedź jego własnego zmartwychwstania moralnego na syberyjskiej katordze.' },
+      { title: 'Morderstwo Alony Iwanowny i Lizawiety', meaning: 'Raskolnikow zabija lichwiarkę siekierą, lecz zmuszony jest zabić także niewinną, ciężarną Lizawietę, co natychmiast kompromituje jego teorię „szlachetnej zbrodni”.' }
+    ],
+    cardinalWarning: 'BŁĄD KARDYNALNY CKE: Raskolnikow zamordował DWIE kobiety – lichwiarkę Alonę Iwanownę oraz jej upośledzoną, niewinną siostrę Lizawietę! Nie pisz, że zabił tylko lichwiarkę. Pamiętaj też, że Raskolnikow sam oddał się w ręce policji za namową Soni.'
+  },
+  {
+    id: 'dzuma',
+    title: 'Dżuma',
+    author: 'Albert Camus',
+    epoch: 'Współczesność',
+    genre: 'Powieść-parabola',
+    isGwiazdka: true,
+    summary: 'Kronika epidemii dżumy w algierskim Oranie będąca uniwersalną parabolą o walce człowieka ze złem metafizycznym i totalitaryzmem poprzez postawę solidarności i codziennego heroizmu.',
+    keyMotifs: ['Parabola zła i totalitaryzmu', 'Laicka świętość i przyzwoitość', 'Solidarność w cierpieniu', 'Absurd istnienia', 'Bunt przeciw złu'],
+    mainCharacters: [
+      { name: 'Bernard Rieux', description: 'Lekarz i kronikarz wydarzeń; uważa walkę z dżumą za kwestię zwykłej ludzkiej przyzwoitości bez patosu i mistycyzmu.' },
+      { name: 'Jean Tarrou', description: 'Przyjaciel Rieux, syn prokuratora; dąży do bycia „świętym bez Boga” i organizuje ochotnicze formacje sanitarne.' },
+      { name: 'Joseph Grand', description: 'Skromny urzędnik niestrudzenie prowadzący statystyki ofiar epidemii i piszący w nieskończoność pierwsze zdanie powieści.' }
+    ],
+    keyScenes: [
+      { title: 'Śmierć małego synka sędziego Othona', meaning: 'Cierpienie niewinnego dziecka wstrząsa ojcem Paneloux i doktorem Rieux, unaoczniając brak teologicznego usprawiedliwienia dla cierpienia.' },
+      { title: 'Finałowe ostrzeżenie doktora Rieux', meaning: 'Bakcyl dżumy nigdy nie umiera, lecz może uśpić się w meblach i bieliznie, by kiedyś znów obudzić swe szczury i posłać je na śmierć ku przestrodze ludzi.' }
+    ],
+    cardinalWarning: 'BŁĄD KARDYNALNY CKE: Dżuma w powieści Camusa NIE JEST wyłącznie opisem medycznej zarazy – to powieść-parabola symbolizująca totalitaryzm (brunatną zarazę faszyzmu/nazizmu) oraz niezawinione zło w świecie!'
+  },
+  {
+    id: 'rok-1984',
+    title: 'Rok 1984',
+    author: 'George Orwell',
+    epoch: 'Współczesność',
+    genre: 'Dystopia / antyutopia polityczna',
+    isGwiazdka: true,
+    summary: 'Mroczny obraz totalitarnego superpaństwa Oceanii pod rządami Wielkiego Brata i Partii Angsocu, gdzie prywatność, prawda historyczna i miłość zostają zniszczone przez terror i nowomowę.',
+    keyMotifs: ['Totalitaryzm i inwigilacja', 'Nowomowa i manipulacja prawdą', 'Dwójmyślenie (doublethink)', 'Miłość jako zakazany bunt', 'Zdrada i złamanie człowieka'],
+    mainCharacters: [
+      { name: 'Winston Smith', description: 'Pracownik Ministerstwa Prawdy zajmujący się fałszowaniem archiwalnych gazet; podejmuje zakazany bunt przeciw Partii.' },
+      { name: 'Julia', description: 'Młoda buntowniczka z Departamentu Literatury, kochanka Winstona, buntująca się przeciw rygorom Partii poprzez erotykę.' },
+      { name: 'O’Brien', description: 'Cyniczny członek Wewnętrznej Partii, który zwodzi Winstona pozorem spisku, a potem poddaje go torturom w Ministerstwie Miłości.' }
+    ],
+    keyScenes: [
+      { title: 'Pokój 101 w Ministerstwie Miłości', meaning: 'Winston zostaje skonfrontowany ze swym największym fobiicznym lękiem (szczury) i krzyczy: „Zróbcie to Julii! Nie mnie!”, dokonując ostatecznej zdrady.' },
+      { title: 'Ostatnie zdanie powieści', meaning: 'Złamany Winston siedzi w kawiarni „Pod Kasztanem” i płacząc z miłości do dyktatora, uświadamia sobie: „Kochał Wielkiego Brata”. Triumf totalitaryzmu nad duchem.' }
+    ],
+    cardinalWarning: 'BŁĄD KARDYNALNY CKE: Winston Smith w finale NIE zwycięża z systemem ani nie ginie w heroicznym powstaniu! Zostaje złamany psychicznie w Pokoju 101, zdradza Julię i zaczyna szczerze kochać Wielkiego Brata!'
+  },
+  {
+    id: 'tango',
+    title: 'Tango',
+    author: 'Sławomir Mrożek',
+    epoch: 'Współczesność',
+    genre: 'Dramat absurdu / groteska',
+    isGwiazdka: true,
+    summary: 'Groteskowa walka młodego Artura o przywrócenie zasad i tradycji w zdemoralizowanej, anarchicznej rodzinie artystów, która kończy się jego śmiercią i przejęciem władzy przez prymitywnego chama Edka.',
+    keyMotifs: ['Kryzys wartości i anarchia', 'Bunt młodego przeciw wolności ojców', 'Groteska i teatr absurdu', 'Dyktatura brutalnej siły (cham)', 'Taniec jako symbol upadku'],
+    mainCharacters: [
+      { name: 'Artur', description: 'Młody student medycyny i filozofii, który pragnie zmusić rodzinę do ślubu i powrotu do norm, wierząc w zbawczą moc Formy.' },
+      { name: 'Stomil i Eleonora', description: 'Rodzice Artura, starzy awangardziści celebrujący całkowity brak norm i swobodę obyczajową.' },
+      { name: 'Edek', description: 'Prymityw, lokaj i kochanek Eleonory, uosobienie chamstwa i fizycznej przemocy, który zabija Artura ciosem w kark.' }
+    ],
+    keyScenes: [
+      { title: 'Planowany ślub Artura z Alą', meaning: 'Próba wskrzeszenia tradycyjnego rytuału jako lekarstwa na anarchię, która sypie się z powodu braku autentycznej wiary i zdrady Ali.' },
+      { title: 'Finałowe tango „La Cumparsita”', meaning: 'Edek zakłada marynarkę zabitego Artura i tańczy tango ze starym Eugeniuszem. Przerażająca metafora przejęcia władzy przez prymitywną, brutalną dyktaturę.' }
+    ],
+    cardinalWarning: 'BŁĄD KARDYNALNY CKE: Artur w „Tangu” NIE buntuje się przeciwko skostniałym normom społecznym, lecz ODWROTNIE – buntuje się przeciwko BRAKOWI norm i obyczajowej anarchii stworzonej przez jego awangardowych rodziców!'
   }
 ];

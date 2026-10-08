@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   Clock,
   BookOpen,
@@ -7,21 +7,24 @@ import {
   AlertTriangle,
   Flag,
   RotateCcw,
+  Zap,
   Layers,
   FileText,
   ChevronRight,
   ChevronLeft,
-  ArrowLeft,
   Send,
   Eye,
   XCircle,
   HelpCircle,
-  Bookmark
+  Bookmark,
+  ArrowLeft
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PolishTask } from '../../types/maturaTypes';
 import { generateMockExam } from '../../data/polish';
-import { playAudioTone } from '../../utils';
+import { TaskVisualAssetCard } from './TaskVisualAssetCard';
+import { recordMistake } from '../../data/mistakesManager';
+import { PartOneReadingRoom } from './PartOneReadingRoom';
 
 interface PolishExamSimulatorProps {
   onFinishExam?: (score: number, maxScore: number) => void;
@@ -41,9 +44,39 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
   // Stan symulatora
   const [activeBooklet, setActiveBooklet] = useState<1 | 2>(1); // 1 = Zeszyt 1 (Test), 2 = Zeszyt 2 (Wypracowanie)
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
+  const [part1PreReadingActive, setPart1PreReadingActive] = useState<boolean>(true);
   const [secondsRemaining, setSecondsRemaining] = useState(240 * 60); // 240 minut
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+
+  const navigatorScrollRef = useRef<HTMLDivElement>(null);
+  const taskContainerRef = useRef<HTMLDivElement>(null);
+
+  const goToTask = (index: number) => {
+    if (index < 0 || index >= allExamTasks.length) return;
+    setPart1PreReadingActive(false);
+    setCurrentTaskIndex(index);
+    if (taskContainerRef.current) {
+      const rect = taskContainerRef.current.getBoundingClientRect();
+      if (rect.top < 60 || rect.top > 350) {
+        taskContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  // Automatyczne płynne centrowanie aktywnego elementu wewnątrz poziomego paska nawigatora (bez poruszania stroną!)
+  useEffect(() => {
+    if (!navigatorScrollRef.current) return;
+    const activeEl = navigatorScrollRef.current.querySelector<HTMLElement>('[data-active="true"]');
+    if (activeEl) {
+      const container = navigatorScrollRef.current;
+      const targetLeft = activeEl.offsetLeft - (container.clientWidth - activeEl.clientWidth) / 2;
+      container.scrollTo({
+        left: Math.max(0, targetLeft),
+        behavior: 'smooth'
+      });
+    }
+  }, [currentTaskIndex, part1PreReadingActive, activeBooklet]);
 
   // Odpowiedzi w Zeszycie 1
   const [userSingleChoice, setUserSingleChoice] = useState<Record<string, number>>({});
@@ -90,6 +123,15 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
   }, [userEssayText]);
 
   const currentTask = allExamTasks[currentTaskIndex];
+  const isPartOne = currentTask?.part === 1;
+
+  // Stan przełącznika mobilnego dla Części 1 (Zadanie vs Czytelnia CKE)
+  const [mobilePart1Tab, setMobilePart1Tab] = useState<'task' | 'text'>('task');
+
+  // Reset mobilnej zakładki do zadania po zmianie pytania
+  useEffect(() => {
+    setMobilePart1Tab('task');
+  }, [currentTaskIndex]);
 
   const handleToggleFlag = (taskId: string) => {
     setFlaggedTasks((prev) => ({ ...prev, [taskId]: !prev[taskId] }));
@@ -158,46 +200,295 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
   const handleFinishExam = () => {
     setIsFinished(true);
-    const result = examResult;
-    const isSuccess = result ? result.passed : true;
-    playAudioTone(isSuccess ? 'success' : 'error');
-    try {
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    } catch {}
-    if (onFinishExam && result) {
-      onFinishExam(result.total, 60);
+    confetti({
+      particleCount: 80,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+
+    // Automatyczna rejestracja wszystkich popełnionych błędów w Zeszycie Błędów
+    allExamTasks.forEach((t) => {
+      let isMistake = false;
+      let wrongAns: any = null;
+
+      if (t.taskType === 'single_choice') {
+        const choice = userSingleChoice[t.id];
+        if (choice !== t.correctOptionIndex) {
+          isMistake = true;
+          wrongAns = choice !== undefined ? choice : 'Brak odpowiedzi';
+        }
+      } else if (t.taskType === 'true_false' && t.trueFalseStatements) {
+        const answers = userTfAnswers[t.id] || {};
+        const isAllCorrect = t.trueFalseStatements.every(
+          (st, idx) => answers[idx] === st.isTrue
+        );
+        if (!isAllCorrect) {
+          isMistake = true;
+          wrongAns = answers;
+        }
+      } else if (t.taskType === 'short_open') {
+        const ans = userOpenAnswers[t.id] || '';
+        if (ans.trim().length <= 10) {
+          isMistake = true;
+          wrongAns = ans || 'Brak odpowiedzi';
+        }
+      }
+
+      if (isMistake) {
+        recordMistake({
+          taskId: t.id,
+          subject: 'polski',
+          topicOrEpoch: t.epoch || t.partName,
+          title: t.title,
+          question: t.question,
+          taskType: t.taskType,
+          points: t.points,
+          options: t.options,
+          correctAnswer:
+            t.correctOptionIndex !== undefined
+              ? t.correctOptionIndex
+              : t.trueFalseStatements?.map((s) => s.isTrue) || t.correctAnswerText || 'Klucz CKE',
+          userWrongAnswer: wrongAns,
+          explanation: t.explanation,
+          ckeKeyCriteria: t.ckeKeyCriteria,
+          visualAsset: t.image,
+          passage: t.passage,
+          passage2: t.passage2,
+          trueFalseStatements: t.trueFalseStatements,
+          matchingPairs: t.matchingPairs,
+          distractor: t.distractor
+        });
+      }
+    });
+
+    if (onFinishExam && examResult) {
+      onFinishExam(examResult.total, 60);
     }
+  };
+
+  const renderTaskCard = (showSnippetPassage: boolean) => {
+    if (!currentTask) return null;
+    const noteWordCount = (userOpenAnswers[currentTask.id] || '').trim().split(/\s+/).filter(Boolean).length;
+
+    return (
+      <div key={currentTask.id || currentTaskIndex} className="space-y-6 animate-pageTransition">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-mono font-bold border border-amber-500/20">
+              Zadanie {currentTaskIndex + 1} / {allExamTasks.length}
+            </span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">
+              Część {currentTask.part}: {currentTask.partName}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => handleToggleFlag(currentTask.id)}
+              className={`p-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                flaggedTasks[currentTask.id]
+                  ? 'bg-amber-500/20 border-amber-500 text-amber-600 dark:text-amber-400'
+                  : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+            >
+              <Flag className="w-3.5 h-3.5" />
+              {flaggedTasks[currentTask.id] ? 'Oflagowane' : 'Oznacz'}
+            </button>
+            <span className="font-mono text-xs px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20">
+              {currentTask.points} pkt
+            </span>
+          </div>
+        </div>
+
+        {/* Tekst źródłowy (tylko w Części 2, bo w Części 1 jest w Czytelni CKE obok) */}
+        {showSnippetPassage && currentTask.passage && (
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300 leading-relaxed italic border-l-2 border-amber-500">
+            <div className="font-semibold text-slate-900 dark:text-slate-200 not-italic mb-1">
+              {currentTask.passage.author} – {currentTask.passage.sourceTitle}
+            </div>
+            {currentTask.passage.text}
+          </div>
+        )}
+
+        {/* Ikonografia / Materiał Wizualny */}
+        <TaskVisualAssetCard task={currentTask} />
+
+        {/* Treść pytania */}
+        <div className="text-sm font-semibold text-slate-900 dark:text-white leading-relaxed">
+          {currentTask.question}
+        </div>
+
+        {/* Formularz odpowiedzi */}
+        {currentTask.taskType === 'single_choice' && currentTask.options && (
+          <div className="space-y-2">
+            {currentTask.options.map((opt, optIdx) => (
+              <button
+                key={optIdx}
+                onClick={() =>
+                  setUserSingleChoice({ ...userSingleChoice, [currentTask.id]: optIdx })
+                }
+                className={`w-full text-left p-3.5 rounded-xl border text-xs transition-all cursor-pointer ${
+                  userSingleChoice[currentTask.id] === optIdx
+                    ? 'border-amber-500 bg-amber-500/10 text-slate-900 dark:text-white font-medium ring-1 ring-amber-500/30'
+                    : 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850'
+                }`}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {currentTask.taskType === 'true_false' && currentTask.trueFalseStatements && (
+          <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+            <table className="w-full text-xs">
+              <thead className="bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
+                <tr>
+                  <th className="py-2.5 px-4 text-left font-semibold">Stwierdzenie</th>
+                  <th className="py-2.5 px-3 text-center font-semibold w-24">Wybór</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+                {currentTask.trueFalseStatements.map((st, i) => {
+                  const taskAnswers = userTfAnswers[currentTask.id] || {};
+                  return (
+                    <tr key={i} className="bg-white dark:bg-slate-900/40">
+                      <td className="py-3 px-4 text-slate-700 dark:text-slate-300">{st.statement}</td>
+                      <td className="py-3 px-3 text-center">
+                        <div className="inline-flex gap-1">
+                          <button
+                            onClick={() =>
+                              setUserTfAnswers({
+                                ...userTfAnswers,
+                                [currentTask.id]: { ...taskAnswers, [i]: true }
+                              })
+                            }
+                            className={`px-2.5 py-1 rounded text-xs font-bold cursor-pointer transition-colors ${
+                              taskAnswers[i] === true
+                                ? 'bg-amber-500 text-slate-950'
+                                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                            }`}
+                          >
+                            P
+                          </button>
+                          <button
+                            onClick={() =>
+                              setUserTfAnswers({
+                                ...userTfAnswers,
+                                [currentTask.id]: { ...taskAnswers, [i]: false }
+                              })
+                            }
+                            className={`px-2.5 py-1 rounded text-xs font-bold cursor-pointer transition-colors ${
+                              taskAnswers[i] === false
+                                ? 'bg-amber-500 text-slate-950'
+                                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                            }`}
+                          >
+                            F
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {(currentTask.taskType === 'short_open' || currentTask.taskType === 'synthesis_note') && (
+          <div className="space-y-2">
+            <textarea
+              rows={currentTask.taskType === 'synthesis_note' ? 7 : 5}
+              value={userOpenAnswers[currentTask.id] || ''}
+              onChange={(e) =>
+                setUserOpenAnswers({ ...userOpenAnswers, [currentTask.id]: e.target.value })
+              }
+              placeholder={
+                currentTask.taskType === 'synthesis_note'
+                  ? 'Wpisz notatkę syntetyzującą (60–90 słów na podstawie obu tekstów źródłowych)...'
+                  : 'Wpisz swoją odpowiedź...'
+              }
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 leading-relaxed font-sans"
+            />
+            {currentTask.taskType === 'synthesis_note' && (
+              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1">
+                <span>Rygor CKE: 60–90 słów (synteza obu stanowisk)</span>
+                <span
+                  className={`font-mono font-bold ${
+                    noteWordCount >= 60 && noteWordCount <= 90
+                      ? 'text-emerald-600 dark:text-emerald-400'
+                      : noteWordCount > 90
+                      ? 'text-rose-600 dark:text-rose-400'
+                      : 'text-amber-600 dark:text-amber-400'
+                  }`}
+                >
+                  {noteWordCount} / 60–90 słów
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Paginacja Poprzednie / Następne */}
+        <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800">
+          <button
+            disabled={currentTaskIndex === 0}
+            onClick={() => goToTask(currentTaskIndex - 1)}
+            className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold flex items-center gap-1.5 disabled:opacity-30 cursor-pointer transition-colors"
+          >
+            <ChevronLeft className="w-4 h-4" /> Poprzednie
+          </button>
+
+          {currentTaskIndex < allExamTasks.length - 1 ? (
+            <button
+              onClick={() => goToTask(currentTaskIndex + 1)}
+              className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-colors"
+            >
+              Następne <ChevronRight className="w-4 h-4" />
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setActiveBooklet(2);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="px-5 py-2 rounded-xl bg-rose-500 hover:bg-rose-400 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer transition-colors"
+            >
+              Przejdź do Zeszytu 2 (Wypracowanie) <ChevronRight className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+      </div>
+    );
   };
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 pb-12">
       {/* Pasek Górny Symulatora CKE */}
-      <div className="bg-surface-card border border-surface-border rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-sm dark:shadow-xl">
         <div className="flex items-center gap-3">
           {onExit && (
             <button
+              type="button"
               onClick={onExit}
-              className="p-2 rounded-xl bg-surface-card-hover text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-              title="Wróć do wyboru arkuszy"
+              className="p-2 sm:p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition cursor-pointer active:scale-95 shrink-0"
+              title="Wróć do pulpitu"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft size={16} />
             </button>
           )}
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white shadow-md">
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-base sm:text-lg font-bold text-text-primary flex items-center gap-2">
+            <h1 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               Oficjalny Symulator Maturalny Formuła 2023
-              <span className="text-xs px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-normal border border-rose-500/30">
+              <span className="text-xs px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-300 font-normal border border-rose-500/20 dark:border-rose-500/30">
                 240 min • 60 pkt
               </span>
             </h1>
-            <p className="text-xs text-text-secondary">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Egzamin maturalny z języka polskiego (poziom podstawowy)
             </p>
           </div>
@@ -205,17 +496,14 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
         {/* Zegar & Przyciski Sterujące */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-bg border border-surface-border font-mono text-sm font-bold text-amber-400 shadow-inner">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 font-mono text-sm font-bold text-amber-600 dark:text-amber-400 shadow-inner">
             <Clock className="w-4 h-4 text-amber-500 animate-pulse" />
             <span>{formatTime(secondsRemaining)}</span>
           </div>
 
           <button
-            onClick={() => {
-              playAudioTone('click');
-              setIsTimerPaused(!isTimerPaused);
-            }}
-            className="px-3 py-2 rounded-xl bg-surface-card-hover hover:bg-surface-border text-text-secondary hover:text-text-primary text-xs font-semibold transition-colors cursor-pointer"
+            onClick={() => setIsTimerPaused(!isTimerPaused)}
+            className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-colors cursor-pointer"
           >
             {isTimerPaused ? 'Wznów' : 'Pauza'}
           </button>
@@ -223,7 +511,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           {!isFinished && (
             <button
               onClick={handleFinishExam}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-surface-bg text-xs font-bold shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
             >
               Zakończ arkusz
             </button>
@@ -234,43 +522,37 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
       {/* Przełącznik Zeszytów Egzaminacyjnych (Zeszyt 1 vs Zeszyt 2) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
-          onClick={() => {
-            playAudioTone('click');
-            setActiveBooklet(1);
-          }}
+          onClick={() => setActiveBooklet(1)}
           className={`p-4 rounded-xl border text-left transition-all flex items-center justify-between cursor-pointer ${
             activeBooklet === 1
-              ? 'border-amber-500/80 bg-amber-500/10 text-text-primary shadow-md'
-              : 'border-surface-border bg-surface-card/60 text-text-secondary hover:text-text-primary hover:bg-surface-card-hover'
+              ? 'border-amber-500/80 bg-amber-500/10 text-slate-900 dark:text-white shadow-md'
+              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850'
           }`}
         >
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Zeszyt 1</span>
-            <div className="text-sm font-bold text-text-primary mt-0.5">Test: Język w użyciu & Epoki</div>
-            <div className="text-xs text-text-secondary mt-1">Zadania 1–{allExamTasks.length} • Pula: 25 punktów</div>
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Zeszyt 1</span>
+            <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Test: Język w użyciu & Epoki</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Zadania 1–{allExamTasks.length} • Pula: 25 punktów</div>
           </div>
-          <span className="text-xs font-mono px-2.5 py-1 rounded bg-surface-card-hover text-amber-400 font-bold border border-surface-border">
+          <span className="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20">
             25 pkt
           </span>
         </button>
 
         <button
-          onClick={() => {
-            playAudioTone('click');
-            setActiveBooklet(2);
-          }}
+          onClick={() => setActiveBooklet(2)}
           className={`p-4 rounded-xl border text-left transition-all flex items-center justify-between cursor-pointer ${
             activeBooklet === 2
-              ? 'border-rose-500/80 bg-rose-500/10 text-text-primary shadow-md'
-              : 'border-surface-border bg-surface-card/60 text-text-secondary hover:text-text-primary hover:bg-surface-card-hover'
+              ? 'border-rose-500/80 bg-rose-500/10 text-slate-900 dark:text-white shadow-md'
+              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850'
           }`}
         >
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Zeszyt 2</span>
-            <div className="text-sm font-bold text-text-primary mt-0.5">Wypracowanie maturalne</div>
-            <div className="text-xs text-text-secondary mt-1">Wybór tematu • Min. 300 słów lub konspekt</div>
+            <span className="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">Zeszyt 2</span>
+            <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Wypracowanie maturalne</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Wybór tematu • Min. 300 słów lub konspekt</div>
           </div>
-          <span className="text-xs font-mono px-2.5 py-1 rounded bg-surface-card-hover text-rose-400 font-bold border border-surface-border">
+          <span className="text-xs font-mono px-2.5 py-1 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold border border-rose-500/20">
             35 pkt
           </span>
         </button>
@@ -278,16 +560,60 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
       {/* Widok Zeszytu 1 (Test 25 pkt) */}
       {activeBooklet === 1 && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Boczny Indeks Zadań Testu */}
-          <div className="lg:col-span-3 bg-surface-card border border-surface-border rounded-2xl p-4 space-y-3">
-            <div className="text-xs font-bold text-text-secondary uppercase tracking-wider">
-              Nawigator Zeszytu 1
+        <div key="booklet-1" className="space-y-6 animate-pageTransition">
+          {/* Nawigator Zeszytu 1 - STAŁA POZYCJA U GÓRY DLA WSZYSTKICH 18 ZADAŃ */}
+          <div className="bg-white dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 space-y-3 shadow-sm sticky top-3 z-20 backdrop-blur-md">
+            <div className="flex items-center justify-between gap-3 h-6">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider shrink-0">
+                  Nawigator Zeszytu 1
+                </span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                  • {isPartOne ? 'Część 1: Język polski w użyciu (Zadania 1–6)' : 'Część 2: Test historycznoliteracki (Zadania 7–18)'}
+                </span>
+              </div>
+              <div className="flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400 shrink-0">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded bg-emerald-500/20 border border-emerald-500/50" />
+                  <span className="hidden sm:inline">Rozwiązane</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded bg-amber-400" />
+                  <span className="hidden sm:inline">Oflagowane</span>
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-2">
+            <div ref={navigatorScrollRef} className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none no-scrollbar">
+              <button
+                key="pre-reading-tab"
+                type="button"
+                data-active={part1PreReadingActive ? 'true' : undefined}
+                onClick={() => {
+                  if (!isPartOne) {
+                    setCurrentTaskIndex(0);
+                  }
+                  setPart1PreReadingActive(true);
+                  if (taskContainerRef.current) {
+                    const rect = taskContainerRef.current.getBoundingClientRect();
+                    if (rect.top < 60 || rect.top > 350) {
+                      taskContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                }}
+                className={`shrink-0 h-10 px-3.5 rounded-xl border text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer select-none ${
+                  part1PreReadingActive
+                    ? 'border-amber-500 bg-amber-500 text-slate-950 shadow-md ring-1 ring-amber-400 font-black'
+                    : 'border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20'
+                }`}
+                title="Otwórz pełną czytelnię tekstów źródłowych CKE"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>📖 Teksty CKE</span>
+              </button>
+
               {allExamTasks.map((t, i) => {
-                const isSelected = i === currentTaskIndex;
+                const isSelected = !part1PreReadingActive && i === currentTaskIndex;
                 const isFlagged = flaggedTasks[t.id];
                 const isAnswered =
                   userSingleChoice[t.id] !== undefined ||
@@ -295,219 +621,100 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                   userTfAnswers[t.id] !== undefined;
 
                 return (
-                  <button
-                    key={t.id}
-                    onClick={() => {
-                      playAudioTone('click');
-                      setCurrentTaskIndex(i);
-                    }}
-                    className={`relative p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center cursor-pointer ${
-                      isSelected
-                        ? 'border-amber-500 bg-amber-500 text-surface-bg shadow-md'
-                        : isAnswered
-                        ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-400'
-                        : 'border-surface-border bg-surface-bg text-text-secondary hover:bg-surface-card-hover'
-                    }`}
-                  >
-                    <span>{i + 1}</span>
-                    {isFlagged && (
-                      <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 ring-2 ring-surface-card" />
+                  <React.Fragment key={t.id}>
+                    {i === 6 && (
+                      <div className="h-6 w-px bg-slate-300 dark:bg-slate-700 mx-1 shrink-0" title="Część 2: Test historycznoliteracki" />
                     )}
-                  </button>
+                    <button
+                      type="button"
+                      data-active={isSelected ? 'true' : undefined}
+                      onClick={() => goToTask(i)}
+                      className={`relative shrink-0 min-w-[40px] h-10 px-1 rounded-xl border text-xs font-bold transition-colors flex items-center justify-center cursor-pointer select-none active:scale-95 ${
+                        isSelected
+                          ? 'border-amber-500 bg-amber-500 text-slate-950 shadow-md ring-1 ring-amber-400 font-black'
+                          : isAnswered
+                          ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+                          : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      }`}
+                    >
+                      <span>{i + 1}</span>
+                      {isFlagged && (
+                        <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]" />
+                      )}
+                    </button>
+                  </React.Fragment>
                 );
               })}
             </div>
-
-            <div className="pt-3 border-t border-surface-border text-[11px] text-text-secondary space-y-1.5">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded bg-emerald-500/20 border border-emerald-500/50" />
-                <span>Rozwiązane</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded bg-amber-400" />
-                <span>Oflagowane do sprawdzenia</span>
-              </div>
-            </div>
           </div>
 
-          {/* Karta Aktywnego Zadania */}
-          <div className="lg:col-span-9 bg-surface-card border border-surface-border rounded-2xl p-6 shadow-xl space-y-6">
-            {currentTask && (
+          {/* Główna zawartość zadania */}
+          <div ref={taskContainerRef} className="scroll-mt-32 min-h-[560px]">
+            {isPartOne ? (
               <>
-                <div className="flex items-center justify-between border-b border-surface-border pb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-1 rounded bg-surface-card-hover text-amber-400 text-xs font-mono font-bold border border-surface-border">
-                      Zadanie {currentTaskIndex + 1} / {allExamTasks.length}
-                    </span>
-                    <span className="text-xs text-text-secondary">
-                      Część {currentTask.part}: {currentTask.partName}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => handleToggleFlag(currentTask.id)}
-                      className={`p-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
-                        flaggedTasks[currentTask.id]
-                          ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                          : 'bg-surface-card-hover border-surface-border text-text-secondary hover:text-text-primary'
-                      }`}
-                    >
-                      <Flag className="w-3.5 h-3.5" />
-                      {flaggedTasks[currentTask.id] ? 'Oflagowane' : 'Oznacz'}
-                    </button>
-                    <span className="font-mono text-xs px-2.5 py-1 rounded bg-surface-card-hover text-amber-400 font-bold border border-surface-border">
-                      {currentTask.points} pkt
-                    </span>
-                  </div>
-                </div>
-
-                {/* Tekst źródłowy */}
-                {currentTask.passage && (
-                  <div className="p-4 rounded-xl bg-surface-bg border border-surface-border text-xs text-text-secondary leading-relaxed italic border-l-2 border-amber-500">
-                    <div className="font-semibold text-text-primary not-italic mb-1">
-                      {currentTask.passage.author} – {currentTask.passage.sourceTitle}
-                    </div>
-                    {currentTask.passage.text}
-                  </div>
-                )}
-
-                {/* Treść pytania */}
-                <div className="text-sm font-semibold text-text-primary leading-relaxed">
-                  {currentTask.question}
-                </div>
-
-                {/* Formularz odpowiedzi */}
-                {currentTask.taskType === 'single_choice' && currentTask.options && (
-                  <div className="space-y-2">
-                    {currentTask.options.map((opt, optIdx) => (
+                {part1PreReadingActive ? (
+                  <PartOneReadingRoom
+                    task={currentTask}
+                    isPreReadingView={true}
+                    onStartTasks={() => goToTask(currentTaskIndex)}
+                    currentTaskNumber={currentTaskIndex + 1}
+                  />
+                ) : (
+                  <>
+                    {/* Przełącznik mobilny: Zadanie <-> Teksty źródłowe CKE */}
+                    <div className="lg:hidden flex rounded-xl bg-slate-100 dark:bg-slate-950 p-1 border border-slate-200 dark:border-slate-800 text-xs font-semibold mb-4">
                       <button
-                        key={optIdx}
-                        onClick={() => {
-                          playAudioTone('click');
-                          setUserSingleChoice({ ...userSingleChoice, [currentTask.id]: optIdx });
-                        }}
-                        className={`w-full text-left p-3.5 rounded-xl border text-xs transition-all cursor-pointer ${
-                          userSingleChoice[currentTask.id] === optIdx
-                            ? 'border-amber-500 bg-amber-500/10 text-text-primary font-medium'
-                            : 'border-surface-border bg-surface-bg/60 text-text-secondary hover:bg-surface-card-hover hover:text-text-primary'
+                        type="button"
+                        onClick={() => setMobilePart1Tab('task')}
+                        className={`flex-1 py-2 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                          mobilePart1Tab === 'task'
+                            ? 'bg-amber-500 text-slate-950 font-bold shadow'
+                            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                         }`}
                       >
-                        {opt}
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>Zadanie {currentTaskIndex + 1}</span>
                       </button>
-                    ))}
-                  </div>
+                      <button
+                        type="button"
+                        onClick={() => setMobilePart1Tab('text')}
+                        className={`flex-1 py-2 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                          mobilePart1Tab === 'text'
+                            ? 'bg-amber-500 text-slate-950 font-bold shadow'
+                            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                        }`}
+                      >
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>Teksty CKE (Czytelnia)</span>
+                      </button>
+                    </div>
+
+                    {/* Split-Screen: Zadanie (7 kolumn) + Czytelnia CKE (5 kolumn) */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                      <div
+                        className={`lg:col-span-7 ${
+                          mobilePart1Tab === 'task' ? 'block' : 'hidden lg:block'
+                        } bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm dark:shadow-xl space-y-6`}
+                      >
+                        {renderTaskCard(false)}
+                      </div>
+
+                      <div
+                        className={`lg:col-span-5 ${
+                          mobilePart1Tab === 'text' ? 'block' : 'hidden lg:block'
+                        } sticky top-24 self-start`}
+                      >
+                        <PartOneReadingRoom task={currentTask} />
+                      </div>
+                    </div>
+                  </>
                 )}
-
-                {currentTask.taskType === 'true_false' && currentTask.trueFalseStatements && (
-                  <div className="border border-surface-border rounded-xl overflow-hidden">
-                    <table className="w-full text-xs">
-                      <thead className="bg-surface-bg text-text-secondary border-b border-surface-border">
-                        <tr>
-                          <th className="py-2.5 px-4 text-left font-semibold">Stwierdzenie</th>
-                          <th className="py-2.5 px-3 text-center font-semibold w-24">Wybór</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-surface-border">
-                        {currentTask.trueFalseStatements.map((st, i) => {
-                          const taskAnswers = userTfAnswers[currentTask.id] || {};
-                          return (
-                            <tr key={i} className="bg-surface-card/40">
-                              <td className="py-3 px-4 text-text-secondary">{st.statement}</td>
-                              <td className="py-3 px-3 text-center">
-                                <div className="inline-flex gap-1">
-                                  <button
-                                    onClick={() => {
-                                      playAudioTone('click');
-                                      setUserTfAnswers({
-                                        ...userTfAnswers,
-                                        [currentTask.id]: { ...taskAnswers, [i]: true }
-                                      });
-                                    }}
-                                    className={`px-2.5 py-1 rounded text-xs font-bold cursor-pointer ${
-                                      taskAnswers[i] === true
-                                        ? 'bg-amber-500 text-surface-bg'
-                                        : 'bg-surface-card-hover text-text-secondary hover:text-text-primary'
-                                    }`}
-                                  >
-                                    P
-                                  </button>
-                                  <button
-                                    onClick={() => {
-                                      playAudioTone('click');
-                                      setUserTfAnswers({
-                                        ...userTfAnswers,
-                                        [currentTask.id]: { ...taskAnswers, [i]: false }
-                                      });
-                                    }}
-                                    className={`px-2.5 py-1 rounded text-xs font-bold cursor-pointer ${
-                                      taskAnswers[i] === false
-                                        ? 'bg-amber-500 text-surface-bg'
-                                        : 'bg-surface-card-hover text-text-secondary hover:text-text-primary'
-                                    }`}
-                                  >
-                                    F
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-
-                {(currentTask.taskType === 'short_open' || currentTask.taskType === 'synthesis_note') && (
-                  <div className="space-y-2">
-                    <textarea
-                      rows={5}
-                      value={userOpenAnswers[currentTask.id] || ''}
-                      onChange={(e) =>
-                        setUserOpenAnswers({ ...userOpenAnswers, [currentTask.id]: e.target.value })
-                      }
-                      placeholder="Wpisz swoją odpowiedź..."
-                      className="w-full bg-surface-bg border border-surface-border rounded-xl p-3.5 text-xs text-text-primary placeholder-text-muted focus:outline-none focus:border-amber-500 leading-relaxed"
-                    />
-                  </div>
-                )}
-
-                {/* Paginacja Poprzednie / Następne */}
-                <div className="flex items-center justify-between pt-4 border-t border-surface-border">
-                  <button
-                    disabled={currentTaskIndex === 0}
-                    onClick={() => {
-                      playAudioTone('click');
-                      setCurrentTaskIndex((prev) => prev - 1);
-                    }}
-                    className="px-4 py-2 rounded-xl bg-surface-card-hover text-text-secondary hover:text-text-primary text-xs font-semibold flex items-center gap-1.5 disabled:opacity-30 cursor-pointer"
-                  >
-                    <ChevronLeft className="w-4 h-4" /> Poprzednie
-                  </button>
-
-                  {currentTaskIndex < allExamTasks.length - 1 ? (
-                    <button
-                      onClick={() => {
-                        playAudioTone('click');
-                        setCurrentTaskIndex((prev) => prev + 1);
-                      }}
-                      className="px-5 py-2 rounded-xl bg-amber-500 text-surface-bg text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer hover:bg-amber-400 transition-colors"
-                    >
-                      Następne <ChevronRight className="w-4 h-4" />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        playAudioTone('click');
-                        setActiveBooklet(2);
-                      }}
-                      className="px-5 py-2 rounded-xl bg-rose-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md cursor-pointer hover:bg-rose-400 transition-colors"
-                    >
-                      Przejdź do Zeszytu 2 (Wypracowanie) <ChevronRight className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
               </>
+            ) : (
+              /* Układ dla Części 2 (Test historycznoliteracki) - stała szeroka karta, brak skakania nawigatora! */
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm dark:shadow-xl space-y-6">
+                {renderTaskCard(true)}
+              </div>
             )}
           </div>
         </div>
@@ -515,39 +722,33 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
       {/* Widok Zeszytu 2 (Wypracowanie 35 pkt) */}
       {activeBooklet === 2 && (
-        <div className="bg-surface-card border border-surface-border rounded-2xl p-6 shadow-xl space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-surface-border pb-4">
+        <div key="booklet-2" className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm dark:shadow-xl space-y-6 animate-pageTransition">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
             <div>
-              <span className="text-xs font-bold text-rose-400 uppercase tracking-wider">
+              <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">
                 Zeszyt 2 • Wypracowanie problemowe (35 pkt)
               </span>
-              <h2 className="text-lg font-bold text-text-primary mt-1">Wybór Tematu i Strategia Pracy</h2>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white mt-1">Wybór Tematu i Strategia Pracy</h2>
             </div>
 
             {/* Przełącznik Trybu: Konspekt vs Pełny Tekst */}
-            <div className="flex items-center gap-1 p-1 rounded-xl bg-surface-bg border border-surface-border">
+            <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
               <button
-                onClick={() => {
-                  playAudioTone('click');
-                  setEssayMode('blueprint');
-                }}
+                onClick={() => setEssayMode('blueprint')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   essayMode === 'blueprint'
                     ? 'bg-rose-500 text-white shadow'
-                    : 'text-text-secondary hover:text-text-primary'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Szybki Konspekt Interaktywny
               </button>
               <button
-                onClick={() => {
-                  playAudioTone('click');
-                  setEssayMode('fulltext');
-                }}
+                onClick={() => setEssayMode('fulltext')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   essayMode === 'fulltext'
                     ? 'bg-rose-500 text-white shadow'
-                    : 'text-text-secondary hover:text-text-primary'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Napisz pełne wypracowanie (300+ słów)
@@ -558,35 +759,29 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           {/* Karta Wyboru Tematu 1 lub 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <button
-              onClick={() => {
-                playAudioTone('click');
-                setEssayThemeChoice(1);
-              }}
+              onClick={() => setEssayThemeChoice(1)}
               className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                 essayThemeChoice === 1
-                  ? 'border-rose-500 bg-rose-500/10 text-text-primary ring-1 ring-rose-500/40'
-                  : 'border-surface-border bg-surface-bg/60 text-text-secondary hover:bg-surface-card-hover'
+                  ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-white ring-1 ring-rose-500/40'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
               }`}
             >
-              <span className="text-xs font-bold text-rose-400">Temat 1 (CKE Maj 2024)</span>
-              <div className="text-sm font-semibold text-text-primary mt-1">
+              <span className="text-xs font-bold text-rose-600 dark:text-rose-400">Temat 1 (CKE Maj 2024)</span>
+              <div className="text-sm font-semibold text-slate-900 dark:text-white mt-1">
                 Bunt i jego konsekwencje dla człowieka.
               </div>
             </button>
 
             <button
-              onClick={() => {
-                playAudioTone('click');
-                setEssayThemeChoice(2);
-              }}
+              onClick={() => setEssayThemeChoice(2)}
               className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                 essayThemeChoice === 2
-                  ? 'border-rose-500 bg-rose-500/10 text-text-primary ring-1 ring-rose-500/40'
-                  : 'border-surface-border bg-surface-bg/60 text-text-secondary hover:bg-surface-card-hover'
+                  ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-white ring-1 ring-rose-500/40'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
               }`}
             >
-              <span className="text-xs font-bold text-rose-400">Temat 2 (CKE Maj 2024)</span>
-              <div className="text-sm font-semibold text-text-primary mt-1">
+              <span className="text-xs font-bold text-rose-600 dark:text-rose-400">Temat 2 (CKE Maj 2024)</span>
+              <div className="text-sm font-semibold text-slate-900 dark:text-white mt-1">
                 Jak relacja z drugą osobą kształtuje człowieka?
               </div>
             </button>
@@ -594,15 +789,15 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
           {/* Tryb 1: Interaktywny Konspekt (Szybka strategia) */}
           {essayMode === 'blueprint' && (
-            <div className="space-y-5 bg-surface-bg p-5 rounded-xl border border-surface-border">
-              <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Award className="w-4 h-4" />
+            <div className="space-y-5 bg-slate-50 dark:bg-slate-950 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Zap className="w-4 h-4" />
                 Interaktywny Architekt Rozprawki
               </div>
 
               {/* Wybór Tezy */}
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-text-secondary">Krok 1: Wybierz stanowisko (tezę):</label>
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Krok 1: Wybierz stanowisko (tezę):</label>
                 <div className="space-y-2">
                   {[
                     'Bunt definiuje godność człowieka, lecz jego cena bywa tragiczna dla jednostki.',
@@ -610,14 +805,11 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                   ].map((th, i) => (
                     <button
                       key={i}
-                      onClick={() => {
-                        playAudioTone('click');
-                        setSelectedThesisIndex(i);
-                      }}
+                      onClick={() => setSelectedThesisIndex(i)}
                       className={`w-full text-left p-3 rounded-lg border text-xs transition-all cursor-pointer ${
                         selectedThesisIndex === i
-                          ? 'border-emerald-500 bg-emerald-500/15 text-text-primary font-medium'
-                          : 'border-surface-border bg-surface-card text-text-secondary hover:bg-surface-card-hover'
+                          ? 'border-emerald-500 bg-emerald-500/15 text-emerald-950 dark:text-white font-medium'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
                       }`}
                     >
                       {th}
@@ -628,7 +820,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
               {/* Wybór Lektury Obowiązkowej z Gwiazdką */}
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-text-secondary">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                   Krok 2: Dobierz lekturę obowiązkową z gwiazdką (*):
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -636,14 +828,11 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                     (book) => (
                       <button
                         key={book}
-                        onClick={() => {
-                          playAudioTone('click');
-                          setSelectedStarBook(book);
-                        }}
+                        onClick={() => setSelectedStarBook(book)}
                         className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                           selectedStarBook === book
-                            ? 'border-rose-500 bg-rose-500/15 text-rose-200'
-                            : 'border-surface-border bg-surface-card text-text-secondary hover:bg-surface-card-hover'
+                            ? 'border-rose-500 bg-rose-500/15 text-rose-800 dark:text-rose-200'
+                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
                         }`}
                       >
                         {book}
@@ -655,7 +844,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
               {/* Wybór Kontekstu */}
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-text-secondary">Krok 3: Wybierz kontekst:</label>
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Krok 3: Wybierz kontekst:</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {[
                     'Kontekst filozoficzny: Egzystencjalizm Camusa (człowiek zbuntowany)',
@@ -663,14 +852,11 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                   ].map((ctx) => (
                     <button
                       key={ctx}
-                      onClick={() => {
-                        playAudioTone('click');
-                        setSelectedContext(ctx);
-                      }}
+                      onClick={() => setSelectedContext(ctx)}
                       className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                         selectedContext === ctx
-                          ? 'border-amber-500 bg-amber-500/15 text-amber-200'
-                          : 'border-surface-border bg-surface-card text-text-secondary hover:bg-surface-card-hover'
+                          ? 'border-amber-500 bg-amber-500/15 text-amber-800 dark:text-amber-200'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
                       }`}
                     >
                       {ctx}
@@ -679,7 +865,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center justify-between">
+              <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs flex items-center justify-between">
                 <span>Twój konspekt spełnia wszystkie formalne wymogi CKE!</span>
                 <span className="font-mono font-bold">+33 / 35 pkt</span>
               </div>
@@ -696,7 +882,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer ${
                       essayTab === 'czystopis'
                         ? 'bg-rose-500 text-white'
-                        : 'bg-surface-card-hover text-text-secondary'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     Czystopis (właściwa praca)
@@ -706,7 +892,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer ${
                       essayTab === 'brudnopis'
                         ? 'bg-rose-500 text-white'
-                        : 'bg-surface-card-hover text-text-secondary'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     Brudnopis (notatki / szkic)
@@ -714,12 +900,12 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-text-secondary">Licznik słów:</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Licznik słów:</span>
                   <span
                     className={`font-mono px-2.5 py-1 rounded text-xs font-bold ${
                       essayWordCount >= 300
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
-                        : 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
+                        ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/40'
+                        : 'bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40'
                     }`}
                   >
                     {essayWordCount} / 300 słów
@@ -733,7 +919,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                   value={userEssayText}
                   onChange={(e) => setUserEssayText(e.target.value)}
                   placeholder="Napisz wypracowanie problemowe. Pamiętaj o: tezie, odwołaniu do lektury obowiązkowej z gwiazdką, innym utworze literackim oraz kontekstach..."
-                  className="w-full bg-surface-bg border border-surface-border rounded-xl p-4 text-xs text-text-primary placeholder-text-muted focus:outline-none focus:border-rose-500 leading-relaxed font-sans"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-4 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-rose-500 leading-relaxed font-sans"
                 />
               ) : (
                 <textarea
@@ -741,7 +927,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                   value={brudnopisText}
                   onChange={(e) => setBrudnopisText(e.target.value)}
                   placeholder="Brudnopis na konspekt, wypisanie cytatów i planu pracy (treść w brudnopisie nie podlega ocenie egzaminatora)..."
-                  className="w-full bg-surface-bg/80 border border-dashed border-surface-border rounded-xl p-4 text-xs text-text-secondary placeholder-text-muted focus:outline-none focus:border-amber-500 leading-relaxed font-mono"
+                  className="w-full bg-slate-50/80 dark:bg-slate-950/80 border border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-4 text-xs text-slate-800 dark:text-slate-300 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 leading-relaxed font-mono"
                 />
               )}
             </div>
@@ -751,47 +937,59 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
 
       {/* Raport Końcowy Egzaminu (Wyniki) */}
       {isFinished && examResult && (
-        <div className="bg-surface-card border-2 border-emerald-500/50 rounded-2xl p-6 shadow-2xl space-y-6 animate-fadeIn">
+        <div className="bg-white dark:bg-slate-900 border-2 border-emerald-500/50 rounded-2xl p-6 shadow-2xl space-y-6 animate-fadeIn">
           <div className="text-center space-y-2">
-            <div className="inline-flex p-3 rounded-full bg-emerald-500/20 text-emerald-400 mb-1">
+            <div className="inline-flex p-3 rounded-full bg-emerald-500/20 text-emerald-500 mb-1">
               <Award className="w-8 h-8" />
             </div>
-            <h2 className="text-2xl font-black text-text-primary">Wynik Symulacji Egzaminacyjnej CKE</h2>
-            <p className="text-xs text-text-secondary">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">Wynik Symulacji Egzaminacyjnej CKE</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Formuła 2023 • Próg zdawalności: 30% (18 punktów)
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center">
-            <div className="p-4 rounded-xl bg-surface-bg border border-surface-border">
-              <div className="text-xs text-text-secondary">Część 1: Język w użyciu</div>
-              <div className="text-xl font-bold text-amber-400 mt-1">{examResult.part1Score} / 10 pkt</div>
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <div className="text-xs text-slate-500 dark:text-slate-400">Część 1: Język w użyciu</div>
+              <div className="text-xl font-bold text-amber-600 dark:text-amber-400 mt-1">{examResult.part1Score} / 10 pkt</div>
             </div>
-            <div className="p-4 rounded-xl bg-surface-bg border border-surface-border">
-              <div className="text-xs text-text-secondary">Część 2: Test hist.-lit.</div>
-              <div className="text-xl font-bold text-indigo-400 mt-1">{examResult.part2Score} / 15 pkt</div>
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <div className="text-xs text-slate-500 dark:text-slate-400">Część 2: Test hist.-lit.</div>
+              <div className="text-xl font-bold text-indigo-600 dark:text-indigo-400 mt-1">{examResult.part2Score} / 15 pkt</div>
             </div>
-            <div className="p-4 rounded-xl bg-surface-bg border border-surface-border">
-              <div className="text-xs text-text-secondary">Część 3: Wypracowanie</div>
-              <div className="text-xl font-bold text-rose-400 mt-1">{examResult.part3Score} / 35 pkt</div>
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <div className="text-xs text-slate-500 dark:text-slate-400">Część 3: Wypracowanie</div>
+              <div className="text-xl font-bold text-rose-600 dark:text-rose-400 mt-1">{examResult.part3Score} / 35 pkt</div>
             </div>
-            <div className="p-4 rounded-xl bg-surface-card-hover border border-emerald-500/40">
-              <div className="text-xs text-emerald-300 font-semibold">Wynik Całkowity</div>
-              <div className="text-2xl font-black text-text-primary mt-1">
+            <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-50 dark:from-emerald-950/60 to-white dark:to-slate-900 border border-emerald-500/40">
+              <div className="text-xs text-emerald-700 dark:text-emerald-300 font-semibold">Wynik Całkowity</div>
+              <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
                 {examResult.total} / 60 pkt ({examResult.percent}%)
               </div>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-surface-bg border border-surface-border text-xs space-y-2 text-text-secondary">
-            <div className="font-bold text-text-primary flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-2 text-slate-700 dark:text-slate-300">
+            <div className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
               <span>Status egzaminu: {examResult.passed ? 'ZDANY (Gratulacje!)' : 'NIEZDANY'}</span>
             </div>
-            <p className="text-text-secondary leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               Twój wynik mieści się w standardzie centylowym Formuły 2023. Pamiętaj o regularnym powtarzaniu lektur o 100% występowalności (Lalka, Dziady cz. III) oraz pilnowaniu limitu 60–90 słów w notatce syntetyzującej.
             </p>
           </div>
+
+          {onExit && (
+            <div className="pt-2 flex justify-center">
+              <button
+                type="button"
+                onClick={onExit}
+                className="px-6 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold text-xs hover:opacity-90 transition cursor-pointer shadow-md"
+              >
+                Wróć do pulpitu
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

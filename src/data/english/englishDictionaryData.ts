@@ -1,0 +1,773 @@
+/**
+ * englishDictionaryData.ts
+ * 
+ * Oficjalny Słownik Maturalny CKE (Język Angielski Poziom Podstawowy & Rozszerzony - Formuła 2023)
+ * Zawiera 14 wymaganych obszarów tematycznych CKE + Phrasal Verbs & Spójniki Egzaminacyjne (Linking Words).
+ */
+
+export interface EnglishDictionaryWord {
+  id: string;
+  word: string;
+  partOfSpeech: 'noun' | 'verb' | 'adjective' | 'adverb' | 'phrase' | 'phrasal_verb' | 'connector';
+  phonetic: string;
+  translation: string;
+  category: EnglishVocabCategory;
+  level: 'A2' | 'B1' | 'B2';
+  exampleEn: string;
+  examplePl: string;
+  collocations?: string[];
+  ckeTip?: string;
+}
+
+export type EnglishVocabCategory =
+  | 'Człowiek'
+  | 'Miejsce zamieszkania'
+  | 'Edukacja'
+  | 'Praca'
+  | 'Życie prywatne'
+  | 'Żywienie'
+  | 'Zakupy i usługi'
+  | 'Podróżowanie'
+  | 'Kultura'
+  | 'Sport'
+  | 'Zdrowie'
+  | 'Nauka i technologia'
+  | 'Świat przyrody'
+  | 'Państwo i społeczeństwo'
+  | 'Phrasal Verbs'
+  | 'Linking Words';
+
+export const ENGLISH_VOCAB_CATEGORIES: { id: EnglishVocabCategory; label: string; icon: string }[] = [
+  { id: 'Człowiek', label: '1. Człowiek', icon: 'User' },
+  { id: 'Miejsce zamieszkania', label: '2. Miejsce zamieszkania', icon: 'Home' },
+  { id: 'Edukacja', label: '3. Edukacja & Szkoła', icon: 'GraduationCap' },
+  { id: 'Praca', label: '4. Praca & Kariera', icon: 'Briefcase' },
+  { id: 'Życie prywatne', label: '5. Życie prywatne', icon: 'Heart' },
+  { id: 'Żywienie', label: '6. Żywienie & Kuchnia', icon: 'Utensils' },
+  { id: 'Zakupy i usługi', label: '7. Zakupy i usługi', icon: 'ShoppingBag' },
+  { id: 'Podróżowanie', label: '8. Podróże & Turystyka', icon: 'Plane' },
+  { id: 'Kultura', label: '9. Kultura & Media', icon: 'Film' },
+  { id: 'Sport', label: '10. Sport & Rekreacja', icon: 'Activity' },
+  { id: 'Zdrowie', label: '11. Zdrowie & Ciało', icon: 'HeartPulse' },
+  { id: 'Nauka i technologia', label: '12. Nauka i technologia', icon: 'Cpu' },
+  { id: 'Świat przyrody', label: '13. Świat przyrody', icon: 'Trees' },
+  { id: 'Państwo i społeczeństwo', label: '14. Państwo i społeczeństwo', icon: 'Landmark' },
+  { id: 'Phrasal Verbs', label: 'Pewniaki: Czasowniki złożone', icon: 'Zap' },
+  { id: 'Linking Words', label: 'Spójniki & Zwroty do maila CKE', icon: 'Link' },
+];
+
+export const ENGLISH_DICTIONARY: EnglishDictionaryWord[] = [
+  // 1. CZŁOWIEK
+  {
+    id: 'dict-1',
+    word: 'reliable',
+    partOfSpeech: 'adjective',
+    phonetic: '/rɪˈlaɪ.ə.bəl/',
+    translation: 'niezawodny, godny zaufania',
+    category: 'Człowiek',
+    level: 'B1',
+    exampleEn: 'She is a reliable friend who always keeps her promises.',
+    examplePl: 'Ona jest niezawodną przyjaciółką, która zawsze dotrzymuje obietnic.',
+    collocations: ['reliable friend', 'reliable information', 'highly reliable'],
+    ckeTip: 'Częste w zadaniach wielokrotnego wyboru (synonim: dependable).'
+  },
+  {
+    id: 'dict-2',
+    word: 'stubborn',
+    partOfSpeech: 'adjective',
+    phonetic: '/ˈstʌb.ən/',
+    translation: 'uparty, nieustępliwy',
+    category: 'Człowiek',
+    level: 'B1',
+    exampleEn: 'He was too stubborn to admit that he had made an error.',
+    examplePl: 'Był zbyt uparty, aby przyznać, że popełnił błąd.',
+    collocations: ['stubborn attitude', 'refuse stubbornly'],
+    ckeTip: 'Pułapka CKE: nie myl z confident (pewny siebie).'
+  },
+  {
+    id: 'dict-3',
+    word: 'appearance',
+    partOfSpeech: 'noun',
+    phonetic: '/əˈpɪə.rəns/',
+    translation: 'wygląd zewnętrzny, pojawienie się',
+    category: 'Człowiek',
+    level: 'A2',
+    exampleEn: 'You should not judge people solely by their appearance.',
+    examplePl: 'Nie powinieneś oceniać ludzi wyłącznie po ich wyglądzie.',
+    collocations: ['physical appearance', 'make an appearance'],
+    ckeTip: 'Kluczowe słowo do opisu postaci w e-mailu maturalnym.'
+  },
+  {
+    id: 'dict-4',
+    word: 'generous',
+    partOfSpeech: 'adjective',
+    phonetic: '/ˈdʒen.ər.əs/',
+    translation: 'wspaniałomyślny, hojny',
+    category: 'Człowiek',
+    level: 'B1',
+    exampleEn: 'It was very generous of him to offer to pay for everyone.',
+    examplePl: 'To było bardzo hojne z jego strony, że zaoferował zapłacenie za wszystkich.',
+    collocations: ['generous offer', 'generous donation'],
+  },
+  {
+    id: 'dict-5',
+    word: 'anxious',
+    partOfSpeech: 'adjective',
+    phonetic: '/ˈæŋk.ʃəs/',
+    translation: 'zaniepokojony, spięty, niespokojny',
+    category: 'Człowiek',
+    level: 'B1',
+    exampleEn: 'Many teenagers feel anxious before taking their final exams.',
+    examplePl: 'Wielu nastolatków czuje niepokój przed zdawaniem egzaminów końcowych.',
+    collocations: ['feel anxious about', 'anxious look'],
+    ckeTip: 'Pamiętaj o przyimku: anxious ABOUT something.'
+  },
+
+  // 2. MIEJSCE ZAMIESZKANIA
+  {
+    id: 'dict-6',
+    word: 'accommodation',
+    partOfSpeech: 'noun',
+    phonetic: '/əˌkɒm.əˈdeɪ.ʃən/',
+    translation: 'zakwaterowanie, nocleg',
+    category: 'Miejsce zamieszkania',
+    level: 'B1',
+    exampleEn: 'The student accommodation is located close to the university campus.',
+    examplePl: 'Zakwaterowanie studenckie znajduje się blisko kampusu uniwersyteckiego.',
+    collocations: ['temporary accommodation', 'book accommodation'],
+    ckeTip: 'Rzeczownik niepoliczalny! Nie mówimy "an accommodation", tylko "some accommodation".'
+  },
+  {
+    id: 'dict-7',
+    word: 'suburbs',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈsʌb.ɜːbz/',
+    translation: 'przedmieścia',
+    category: 'Miejsce zamieszkania',
+    level: 'B1',
+    exampleEn: 'They decided to move to the quiet suburbs to raise their children.',
+    examplePl: 'Zdecydowali się przeprowadzić na ciche przedmieścia, by wychowywać dzieci.',
+    collocations: ['in the suburbs', 'leafy suburbs'],
+    ckeTip: 'Przyimek: IN the suburbs, ale ON the outskirts.'
+  },
+  {
+    id: 'dict-8',
+    word: 'spacious',
+    partOfSpeech: 'adjective',
+    phonetic: '/ˈspeɪ.ʃəs/',
+    translation: 'przestronny, pojemny',
+    category: 'Miejsce zamieszkania',
+    level: 'B1',
+    exampleEn: 'The flat features a bright and spacious living room.',
+    examplePl: 'Mieszkanie posiada jasny i przestronny salon.',
+    collocations: ['spacious apartment', 'spacious interior'],
+  },
+  {
+    id: 'dict-9',
+    word: 'refurbish',
+    partOfSpeech: 'verb',
+    phonetic: '/ˌriːˈfɜː.bɪʃ/',
+    translation: 'odnowić, wyremontować',
+    category: 'Miejsce zamieszkania',
+    level: 'B2',
+    exampleEn: 'The old cottage was completely refurbished last summer.',
+    examplePl: 'Stary domek wiejski został całkowicie odnowiony zeszłego lata.',
+    collocations: ['newly refurbished', 'refurbish a building'],
+  },
+
+  // 3. EDUKACJA
+  {
+    id: 'dict-10',
+    word: 'compulsory',
+    partOfSpeech: 'adjective',
+    phonetic: '/kəmˈpʌl.sər.i/',
+    translation: 'obowiązkowy (z mocy prawa/szkoły)',
+    category: 'Edukacja',
+    level: 'B1',
+    exampleEn: 'Mathematics and Polish are compulsory subjects at the Matura exam.',
+    examplePl: 'Matematyka i język polski to przedmioty obowiązkowe na maturze.',
+    collocations: ['compulsory education', 'compulsory subject'],
+    ckeTip: 'Przeciwieństwo: optional (dobrowolny).'
+  },
+  {
+    id: 'dict-11',
+    word: 'curriculum',
+    partOfSpeech: 'noun',
+    phonetic: '/kəˈrɪk.jə.ləm/',
+    translation: 'podstawa programowa, program nauczania',
+    category: 'Edukacja',
+    level: 'B2',
+    exampleEn: 'The new national curriculum focuses on practical thinking skills.',
+    examplePl: 'Nowy program nauczania skupia się na umiejętnościach praktycznego myślenia.',
+    collocations: ['school curriculum', 'core curriculum'],
+  },
+  {
+    id: 'dict-12',
+    word: 'revise',
+    partOfSpeech: 'verb',
+    phonetic: '/rɪˈvaɪz/',
+    translation: 'powtarzać materiał (do sprawdzianu)',
+    category: 'Edukacja',
+    level: 'A2',
+    exampleEn: 'I need to revise my grammar notes before tomorrow’s mock test.',
+    examplePl: 'Muszę powtórzyć notatki z gramatyki przed jutrzejszą próbną maturą.',
+    collocations: ['revise for an exam', 'revise the material'],
+    ckeTip: 'W UK angielskim: revise for exam. W US angielskim częściej: review / study.'
+  },
+  {
+    id: 'dict-13',
+    word: 'scholarship',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈskɒl.ə.ʃɪp/',
+    translation: 'stypendium naukowe/sportowe',
+    category: 'Edukacja',
+    level: 'B1',
+    exampleEn: 'Due to her outstanding grades, she was awarded an academic scholarship.',
+    examplePl: 'Dzięki wybitnym ocenom przyznano jej stypendium naukowe.',
+    collocations: ['win a scholarship', 'apply for a scholarship'],
+  },
+
+  // 4. PRACA
+  {
+    id: 'dict-14',
+    word: 'qualifications',
+    partOfSpeech: 'noun',
+    phonetic: '/ˌkwɒl.ɪ.fɪˈkeɪ.ʃənz/',
+    translation: 'kwalifikacje, uprawnienia zawodowe',
+    category: 'Praca',
+    level: 'B1',
+    exampleEn: 'Candidates must possess relevant educational qualifications.',
+    examplePl: 'Kandydaci muszą posiadać odpowiednie kwalifikacje edukacyjne.',
+    collocations: ['formal qualifications', 'acquire qualifications'],
+  },
+  {
+    id: 'dict-15',
+    word: 'applicant',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈæp.lɪ.kənt/',
+    translation: 'osoba ubiegająca się o pracę, kandydat',
+    category: 'Praca',
+    level: 'B1',
+    exampleEn: 'Over fifty applicants submitted their CVs for the marketing post.',
+    examplePl: 'Ponad pięćdziesięciu kandydatów złożyło swoje CV na stanowisko w marketingu.',
+    collocations: ['successful applicant', 'job applicant'],
+  },
+  {
+    id: 'dict-16',
+    word: 'overtime',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈəʊ.və.taɪm/',
+    translation: 'nadgodziny',
+    category: 'Praca',
+    level: 'A2',
+    exampleEn: 'During the high season, hospital nurses frequently work overtime.',
+    examplePl: 'W szczycie sezonu pielęgniarki szpitalne często pracują po godzinach.',
+    collocations: ['work overtime', 'paid overtime'],
+  },
+  {
+    id: 'dict-17',
+    word: 'promising',
+    partOfSpeech: 'adjective',
+    phonetic: '/ˈprɒm.ɪ.sɪŋ/',
+    translation: 'dobrze rokujący, obiecujący',
+    category: 'Praca',
+    level: 'B1',
+    exampleEn: 'The young programmer had a very promising career ahead of him.',
+    examplePl: 'Młody programista miał przed sobą bardzo obiecującą karierę.',
+    collocations: ['promising start', 'promising young talent'],
+  },
+
+  // 5. ŻYCIE PRYWATNE
+  {
+    id: 'dict-18',
+    word: 'acquaintance',
+    partOfSpeech: 'noun',
+    phonetic: '/əˈkweɪn.təns/',
+    translation: 'znajomy (mniej bliski niż przyjaciel)',
+    category: 'Życie prywatne',
+    level: 'B2',
+    exampleEn: 'He is not a close friend of mine, just a casual acquaintance.',
+    examplePl: 'On nie jest moim bliskim przyjacielem, tylko zwykłym znajomym.',
+    collocations: ['make sb’s acquaintance', 'casual acquaintance'],
+    ckeTip: 'Typowy dystraktor w zadaniach z rozumienia tekstu.'
+  },
+  {
+    id: 'dict-19',
+    word: 'get along with',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/ɡet əˈlɒŋ wɪð/',
+    translation: 'mieć dobre relacje z, dogadywać się',
+    category: 'Życie prywatne',
+    level: 'B1',
+    exampleEn: 'Do you get along well with your older siblings?',
+    examplePl: 'Czy dogadujesz się dobrze ze swoim starszym rodzeństwem?',
+    collocations: ['get along fine with', 'get along with classmates'],
+  },
+  {
+    id: 'dict-20',
+    word: 'celebration',
+    partOfSpeech: 'noun',
+    phonetic: '/ˌsel.əˈbreɪ.ʃən/',
+    translation: 'uroczystość, świętowanie',
+    category: 'Życie prywatne',
+    level: 'A2',
+    exampleEn: 'The family organized a surprise celebration for grandpa’s 80th birthday.',
+    examplePl: 'Rodzina zorganizowała uroczystość-niespodziankę na 80. urodziny dziadka.',
+    collocations: ['hold a celebration', 'anniversary celebration'],
+  },
+
+  // 6. ŻYWIENIE
+  {
+    id: 'dict-21',
+    word: 'nutritious',
+    partOfSpeech: 'adjective',
+    phonetic: '/njuːˈtrɪʃ.əs/',
+    translation: 'pożywny, bogaty w składniki odżywcze',
+    category: 'Żywienie',
+    level: 'B1',
+    exampleEn: 'A balanced diet should consist of nutritious, unprocessed meals.',
+    examplePl: 'Zbilansowana dieta powinna składać się z pożywnych, nieprzetworzonych posiłków.',
+    collocations: ['nutritious breakfast', 'highly nutritious'],
+  },
+  {
+    id: 'dict-22',
+    word: 'ingredients',
+    partOfSpeech: 'noun',
+    phonetic: '/ɪnˈɡriː.di.ənts/',
+    translation: 'składniki (potrawy)',
+    category: 'Żywienie',
+    level: 'A2',
+    exampleEn: 'Fresh basil and ripe tomatoes are the main ingredients of Italian sauce.',
+    examplePl: 'Świeża bazylia i dojrzałe pomidory to główne składniki włoskiego sosu.',
+    collocations: ['key ingredients', 'natural ingredients'],
+  },
+  {
+    id: 'dict-23',
+    word: 'cut down on',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/kʌt daʊn ɒn/',
+    translation: 'ograniczyć spożycie (np. cukru, soli)',
+    category: 'Żywienie',
+    level: 'B1',
+    exampleEn: 'My doctor advised me to cut down on sugar and processed fats.',
+    examplePl: 'Lekarz poradził mi, abym ograniczył cukier i przetłuszczone potrawy.',
+    collocations: ['cut down on sweets', 'cut down on caffeine'],
+    ckeTip: 'Często pojawia się w gramatykalizacji i transformacjach zdań!'
+  },
+
+  // 7. ZAKUPY I USŁUGI
+  {
+    id: 'dict-24',
+    word: 'refund',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈriː.fʌnd/',
+    translation: 'zwrot pieniędzy',
+    category: 'Zakupy i usługi',
+    level: 'A2',
+    exampleEn: 'If the device is faulty, you are entitled to a full refund.',
+    examplePl: 'Jeśli urządzenie jest wadliwe, przysługuje ci pełen zwrot pieniędzy.',
+    collocations: ['ask for a refund', 'get a full refund'],
+    ckeTip: 'Niezbędne do pisania listu z reklamacją na maturze rozszerzonej/podstawowej.'
+  },
+  {
+    id: 'dict-25',
+    word: 'receipt',
+    partOfSpeech: 'noun',
+    phonetic: '/rɪˈsiːt/',
+    translation: 'paragon, dowód zakupu',
+    category: 'Zakupy i usługi',
+    level: 'A2',
+    exampleEn: 'Please keep your cash receipt in case you want to exchange the shirt.',
+    examplePl: 'Proszę zachować paragon na wypadek, gdyby chciał pan wymienić koszulę.',
+    collocations: ['keep the receipt', 'show a receipt'],
+    ckeTip: 'Wymowa: litera "p" jest niema! Mówimy /rɪˈsiːt/.'
+  },
+  {
+    id: 'dict-26',
+    word: 'bargain',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈbɑː.ɡɪn/',
+    translation: 'okazja cenowa, tani zakup',
+    category: 'Zakupy i usługi',
+    level: 'B1',
+    exampleEn: 'At only twenty pounds, this winter coat was a real bargain.',
+    examplePl: 'Za jedyne dwadzieścia funtów ten płaszcz zimowy był prawdziwą okazją.',
+    collocations: ['hunt for bargains', 'real bargain'],
+  },
+
+  // 8. PODRÓŻOWANIE I TURYSTYKA
+  {
+    id: 'dict-27',
+    word: 'delayed',
+    partOfSpeech: 'adjective',
+    phonetic: '/dɪˈleɪd/',
+    translation: 'opóźniony (np. pociąg, lot)',
+    category: 'Podróżowanie',
+    level: 'A2',
+    exampleEn: 'Our flight to London was delayed by three hours due to heavy fog.',
+    examplePl: 'Nasz lot do Londynu był opóźniony o trzy godziny z powodu gęstej mgły.',
+    collocations: ['severely delayed', 'flight is delayed'],
+  },
+  {
+    id: 'dict-28',
+    word: 'destination',
+    partOfSpeech: 'noun',
+    phonetic: '/ˌdes.tɪˈneɪ.ʃən/',
+    translation: 'cel podróży, destynacja',
+    category: 'Podróżowanie',
+    level: 'B1',
+    exampleEn: 'Spain remains the top holiday destination for European travelers.',
+    examplePl: 'Hiszpania pozostaje czołowym celem wakacyjnym dla europejskich podróżników.',
+    collocations: ['final destination', 'popular tourist destination'],
+  },
+  {
+    id: 'dict-29',
+    word: 'set off',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/set ɒf/',
+    translation: 'wyruszyć w drogę',
+    category: 'Podróżowanie',
+    level: 'B1',
+    exampleEn: 'We packed our rucksacks and set off early in the morning.',
+    examplePl: 'Spakowaliśmy plecaki i wyruszyliśmy wczesnym rankiem.',
+    collocations: ['set off on a journey', 'set off early'],
+  },
+
+  // 9. KULTURA
+  {
+    id: 'dict-30',
+    word: 'masterpiece',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈmɑː.stə.piːs/',
+    translation: 'arcydzieło',
+    category: 'Kultura',
+    level: 'B1',
+    exampleEn: 'Da Vinci’s Mona Lisa is widely regarded as an artistic masterpiece.',
+    examplePl: 'Mona Lisa Leonarda da Vinci jest powszechnie uznawana za arcydzieło sztuki.',
+    collocations: ['literary masterpiece', 'cinematic masterpiece'],
+  },
+  {
+    id: 'dict-31',
+    word: 'audience',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈɔː.di.əns/',
+    translation: 'publiczność, widownia',
+    category: 'Kultura',
+    level: 'A2',
+    exampleEn: 'The entire audience stood up and applauded the young actors.',
+    examplePl: 'Cała widownia wstała i oklaskiwała młodych aktorów.',
+    collocations: ['target audience', 'enthusiastic audience'],
+  },
+  {
+    id: 'dict-32',
+    word: 'plot',
+    partOfSpeech: 'noun',
+    phonetic: '/plɒt/',
+    translation: 'fabuła filmu lub książki',
+    category: 'Kultura',
+    level: 'B1',
+    exampleEn: 'The thriller had a gripping plot with several unexpected twists.',
+    examplePl: 'Ten dreszczowiec miał wciągającą fabułę z kilkoma nieoczekiwanymi zwrotami akcji.',
+    collocations: ['plot twist', 'gripping plot'],
+    ckeTip: 'Bardzo przydatne przy recenzji lub polecaniu książki w wypowiedzi pisemnej.'
+  },
+
+  // 10. SPORT
+  {
+    id: 'dict-33',
+    word: 'referee',
+    partOfSpeech: 'noun',
+    phonetic: '/ˌref.əˈriː/',
+    translation: 'sędzia sportowy (na boisku, np. piłki nożnej)',
+    category: 'Sport',
+    level: 'B1',
+    exampleEn: 'The referee blew his whistle and awarded a penalty kick.',
+    examplePl: 'Sędzia zagwizdał i podyktował rzut karny.',
+    collocations: ['match referee', 'referee decision'],
+    ckeTip: 'W tenisie sędzia to umpire, a w sądzie judge. CKE lubi to rozróżniać!'
+  },
+  {
+    id: 'dict-34',
+    word: 'spectator',
+    partOfSpeech: 'noun',
+    phonetic: '/spekˈteɪ.tər/',
+    translation: 'widz sportowy (na stadionie)',
+    category: 'Sport',
+    level: 'B1',
+    exampleEn: 'Thousands of spectators cheered when their team scored the winning goal.',
+    examplePl: 'Tysiące widzów wiwatowało, gdy ich drużyna strzeliła zwycięskiego gola.',
+    collocations: ['sports spectators', 'stadium filled with spectators'],
+  },
+  {
+    id: 'dict-35',
+    word: 'give up',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/ɡɪv ʌp/',
+    translation: 'poddać się, zrezygnować',
+    category: 'Sport',
+    level: 'A2',
+    exampleEn: 'Even when she was trailing behind, the runner refused to give up.',
+    examplePl: 'Nawet gdy zostawała w tyle, biegaczka odmówiła poddania się.',
+    collocations: ['never give up', 'give up easily'],
+  },
+
+  // 11. ZDROWIE
+  {
+    id: 'dict-36',
+    word: 'prescription',
+    partOfSpeech: 'noun',
+    phonetic: '/prɪˈskrɪp.ʃən/',
+    translation: 'recepta lekarska',
+    category: 'Zdrowie',
+    level: 'B1',
+    exampleEn: 'Antibiotics are strong drugs that can only be obtained on prescription.',
+    examplePl: 'Antybiotyki to silne leki, które można otrzymać wyłącznie na receptę.',
+    collocations: ['write a prescription', 'fill a prescription'],
+    ckeTip: 'Nie myl z recipe (przepis kulinarny)!'
+  },
+  {
+    id: 'dict-37',
+    word: 'recover from',
+    partOfSpeech: 'verb',
+    phonetic: '/rɪˈkʌv.ər frɒm/',
+    translation: 'wyzdrowieć z, dojść do siebie po',
+    category: 'Zdrowie',
+    level: 'B1',
+    exampleEn: 'It took her nearly two weeks to fully recover from the flu.',
+    examplePl: 'Zajęło jej prawie dwa tygodnie, aby w pełni wyzdrowieć z grypy.',
+    collocations: ['recover from an illness', 'make a speedy recovery'],
+  },
+  {
+    id: 'dict-38',
+    word: 'sore throat',
+    partOfSpeech: 'phrase',
+    phonetic: '/sɔː θrəʊt/',
+    translation: 'ból gardła',
+    category: 'Zdrowie',
+    level: 'A2',
+    exampleEn: 'He woke up with a high temperature and a very sore throat.',
+    examplePl: 'Obudził się z wysoką gorączką i bardzo bolącym gardłem.',
+    collocations: ['have a sore throat', 'sore throat lozenges'],
+  },
+
+  // 12. NAUKA I TECHNOLOGIA
+  {
+    id: 'dict-39',
+    word: 'breakthrough',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈbreɪk.θruː/',
+    translation: 'przełom naukowy, doniosłe odkrycie',
+    category: 'Nauka i technologia',
+    level: 'B2',
+    exampleEn: 'Scientists announced a major medical breakthrough in cancer treatment.',
+    examplePl: 'Naukowcy ogłosili doniosły przełom medyczny w leczeniu nowotworów.',
+    collocations: ['scientific breakthrough', 'major breakthrough'],
+  },
+  {
+    id: 'dict-40',
+    word: 'artificial intelligence',
+    partOfSpeech: 'noun',
+    phonetic: '/ˌɑː.tɪ.fɪʃ.əl ɪnˈtel.ɪ.dʒəns/',
+    translation: 'sztuczna inteligencja (AI)',
+    category: 'Nauka i technologia',
+    level: 'B1',
+    exampleEn: 'Artificial intelligence is changing the way software is developed.',
+    examplePl: 'Sztuczna inteligencja zmienia sposób, w jaki tworzone jest oprogramowanie.',
+    collocations: ['powered by AI', 'develop artificial intelligence'],
+  },
+  {
+    id: 'dict-41',
+    word: 'convenient',
+    partOfSpeech: 'adjective',
+    phonetic: '/kənˈviː.ni.ənt/',
+    translation: 'dogodny, wygodny w użyciu',
+    category: 'Nauka i technologia',
+    level: 'B1',
+    exampleEn: 'Smartphone payment apps make online shopping fast and convenient.',
+    examplePl: 'Aplikacje płatnicze na smartfony czynią zakupy internetowe szybkimi i wygodnymi.',
+    collocations: ['convenient way', 'convenient tool'],
+    ckeTip: 'Używaj w argumentacji w rozprawce i e-mailu!'
+  },
+
+  // 13. ŚWIAT PRZYRODY
+  {
+    id: 'dict-42',
+    word: 'endangered species',
+    partOfSpeech: 'phrase',
+    phonetic: '/ɪnˈdeɪn.dʒəd ˈspiː.ʃiːz/',
+    translation: 'gatunki zagrożone wyginięciem',
+    category: 'Świat przyrody',
+    level: 'B1',
+    exampleEn: 'National parks provide vital sanctuaries for endangered species.',
+    examplePl: 'Parki narodowe zapewniają niezbędne schronienie dla gatunków zagrożonych wyginięciem.',
+    collocations: ['protect endangered species', 'list of endangered species'],
+  },
+  {
+    id: 'dict-43',
+    word: 'pollution',
+    partOfSpeech: 'noun',
+    phonetic: '/pəˈluː.ʃən/',
+    translation: 'zanieczyszczenie środowiska',
+    category: 'Świat przyrody',
+    level: 'A2',
+    exampleEn: 'Reducing plastic pollution requires collective global action.',
+    examplePl: 'Zmniejszenie zanieczyszczenia plastikiem wymaga wspólnych globalnych działań.',
+    collocations: ['air pollution', 'water pollution', 'tackle pollution'],
+  },
+  {
+    id: 'dict-44',
+    word: 'global warming',
+    partOfSpeech: 'noun',
+    phonetic: '/ˌɡləʊ.bəl ˈwɔː.mɪŋ/',
+    translation: 'globalne ocieplenie',
+    category: 'Świat przyrody',
+    level: 'B1',
+    exampleEn: 'Global warming leads to severe weather events and rising sea levels.',
+    examplePl: 'Globalne ocieplenie prowadzi do gwałtownych zjawisk pogodowych i podnoszenia się poziomu mórz.',
+    collocations: ['combat global warming', 'effects of global warming'],
+  },
+
+  // 14. PAŃSTWO I SPOŁECZEŃSTWO
+  {
+    id: 'dict-45',
+    word: 'citizen',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈsɪt.ɪ.zən/',
+    translation: 'obywatel',
+    category: 'Państwo i społeczeństwo',
+    level: 'B1',
+    exampleEn: 'Every adult citizen has the constitutional right to cast a vote.',
+    examplePl: 'Każdy pełnoletni obywatel ma konstytucyjne prawo oddać głos.',
+    collocations: ['law-abiding citizen', 'fellow citizens'],
+  },
+  {
+    id: 'dict-46',
+    word: 'volunteer',
+    partOfSpeech: 'noun',
+    phonetic: '/ˌvɒl.ənˈtɪər/',
+    translation: 'wolontariusz, pracować społecznie',
+    category: 'Państwo i społeczeństwo',
+    level: 'A2',
+    exampleEn: 'Local volunteers collected food donations for families in need.',
+    examplePl: 'Lokalni wolontariusze zebrali dary żywnościowe dla potrzebujących rodzin.',
+    collocations: ['work as a volunteer', 'volunteer organization'],
+  },
+  {
+    id: 'dict-47',
+    word: 'charity',
+    partOfSpeech: 'noun',
+    phonetic: '/ˈtʃær.ə.ti/',
+    translation: 'organizacja charytatywna, dobroczynność',
+    category: 'Państwo i społeczeństwo',
+    level: 'A2',
+    exampleEn: 'All proceeds from this school festival will be donated to charity.',
+    examplePl: 'Cały dochód z tego festiwalu szkolnego zostanie przekazany na cele charytatywne.',
+    collocations: ['raise money for charity', 'charity event'],
+  },
+
+  // PHRASAL VERBS (PEWNIAKI MATURALNE CKE)
+  {
+    id: 'dict-48',
+    word: 'carry out',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/ˈkær.i aʊt/',
+    translation: 'przeprowadzić (np. badanie, eksperyment, ankietę)',
+    category: 'Phrasal Verbs',
+    level: 'B1',
+    exampleEn: 'The team will carry out a comprehensive survey next week.',
+    examplePl: 'Zespół przeprowadzi kompleksową ankietę w przyszłym tygodniu.',
+    collocations: ['carry out research', 'carry out an experiment', 'carry out an order'],
+    ckeTip: 'Żelazny pewniak w zadaniach z lukami!'
+  },
+  {
+    id: 'dict-49',
+    word: 'look forward to',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/lʊk ˈfɔː.wəd tuː/',
+    translation: 'nie móc się doczekać, wyczekiwać z niecierpliwością',
+    category: 'Phrasal Verbs',
+    level: 'A2',
+    exampleEn: 'I am really looking forward to hearing from you soon.',
+    examplePl: 'Z niecierpliwością czekam na szybką odpowiedź od ciebie.',
+    collocations: ['look forward to meeting you', 'look forward to seeing'],
+    ckeTip: 'ZŁOTA PUŁAPKA CKE: Po "look forward to" ZAWSZE występuje czasownik z końcówką -ING!'
+  },
+  {
+    id: 'dict-50',
+    word: 'turn down',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/tɜːn daʊn/',
+    translation: 'odrzucić ofertę / ściszyć dźwięk',
+    category: 'Phrasal Verbs',
+    level: 'B1',
+    exampleEn: 'She turned down the job offer because the commute was too exhausting.',
+    examplePl: 'Odrzuciła ofertę pracy, ponieważ dojazdy były zbyt wyczerpujące.',
+    collocations: ['turn down an offer', 'turn down the music'],
+  },
+  {
+    id: 'dict-51',
+    word: 'come up with',
+    partOfSpeech: 'phrasal_verb',
+    phonetic: '/kʌm ʌp wɪð/',
+    translation: 'wpaść na pomysł, wymyślić rozwiązanie',
+    category: 'Phrasal Verbs',
+    level: 'B1',
+    exampleEn: 'We urgently need to come up with a realistic strategy.',
+    examplePl: 'Pilnie musimy wpaść na realistyczną strategię.',
+    collocations: ['come up with an idea', 'come up with a solution'],
+  },
+
+  // LINKING WORDS (SPÓJNIKI I ŁĄCZNIKI LOGICZNE CKE)
+  {
+    id: 'dict-52',
+    word: 'however',
+    partOfSpeech: 'connector',
+    phonetic: '/haʊˈev.ər/',
+    translation: 'jednakże, aczkolwiek',
+    category: 'Linking Words',
+    level: 'A2',
+    exampleEn: 'He trained hard; however, he did not win the gold medal.',
+    examplePl: 'Trenował ciężko; jednakże nie zdobył złotego medalu.',
+    collocations: ['however, ...', 'on the other hand'],
+    ckeTip: 'Stawiaj przecinek po "However" na początku zdania!'
+  },
+  {
+    id: 'dict-53',
+    word: 'furthermore',
+    partOfSpeech: 'connector',
+    phonetic: '/ˌfɜː.ðəˈmɔː/',
+    translation: 'co więcej, ponadto',
+    category: 'Linking Words',
+    level: 'B1',
+    exampleEn: 'The apartment is cheap; furthermore, it is located right by the tube station.',
+    examplePl: 'Mieszkanie jest tanie; co więcej, znajduje się tuż obok stacji metra.',
+    collocations: ['furthermore, it should be noted', 'moreover'],
+    ckeTip: 'Podnosi punktację za bogactwo językowe w wypracowaniu CKE.'
+  },
+  {
+    id: 'dict-54',
+    word: 'in spite of / despite',
+    partOfSpeech: 'connector',
+    phonetic: '/ɪn spaɪt əv / dɪˈspaɪt/',
+    translation: 'pomimo, mimo',
+    category: 'Linking Words',
+    level: 'B1',
+    exampleEn: 'Despite the pouring rain, the outdoor concert was not cancelled.',
+    examplePl: 'Pomimo ulewnego deszczu koncert na świeżym powietrzu nie został odwołany.',
+    collocations: ['in spite of the fact that', 'despite difficulties'],
+    ckeTip: 'PUŁAPKA: "despite" NIE łączy się z "of"! Poprawnie: despite the rain LUB in spite of the rain.'
+  },
+  {
+    id: 'dict-55',
+    word: 'on the one hand / on the other hand',
+    partOfSpeech: 'connector',
+    phonetic: '/ɒn ðə wʌn hænd/',
+    translation: 'z jednej strony / z drugiej strony',
+    category: 'Linking Words',
+    level: 'B1',
+    exampleEn: 'On the one hand it saves time, but on the other hand it is costly.',
+    examplePl: 'Z jednej strony oszczędza to czas, ale z drugiej strony jest kosztowne.',
+    collocations: ['present both sides', 'balanced argument'],
+    ckeTip: 'Niezbędne do rozprawki typu "za i przeciw" (for and against essay).'
+  }
+];

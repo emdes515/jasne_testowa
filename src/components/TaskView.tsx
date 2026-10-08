@@ -134,7 +134,7 @@ function buildTheoryCards(theoryItem: any): TheoryCardItem[] {
     // Card 1: Istota pojęcia & Strategia maturalna (Bento Essence)
     if (pill.concept_essence || pill.matura_context || pill.intuition || pill.key_takeaway || pill.diagram || (pill as any).numberLine) {
       cards.push({
-        title: pill.title || 'Istota pojęcia & Strategia maturalna',
+        title: pill.title || 'W pigułce & Strategia maturalna',
         badge: 'Fundament Maturalny',
         type: 'essence',
         concept_essence: pill.concept_essence || pill.intuition,
@@ -1109,7 +1109,7 @@ export function TaskView({
                     {currentCard.concept_essence && (
                       <div className="p-4 sm:p-5 rounded-2xl bg-[#0F1622] border border-white/10 text-white/95 text-sm sm:text-base leading-relaxed break-words">
                         <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1.5">
-                          Istota pojęcia:
+                          W pigułce:
                         </span>
                         <MathRenderer
                           content={

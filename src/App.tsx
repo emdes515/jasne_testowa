@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { UserState, TabState, UserPerks } from './types';
+import { UserState, TabState, UserPerks, BlikCoinPack, DailyChallengeId } from './types';
 import { DashboardView } from './components/DashboardView';
 import { LearnView } from './components/LearnView';
 import { ArenaView } from './components/ArenaView';
@@ -14,6 +14,7 @@ import { Navigation } from './components/Navigation';
 import { Header } from './components/Header';
 import { SessionRunner } from './components/SessionRunner';
 import { RewardPopup } from './components/RewardPopup';
+import { BlikCoinModal } from './components/BlikCoinModal';
 import { auth, db, loginWithGoogle } from './lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
@@ -50,9 +51,13 @@ import { initTheme } from './services/themeManager';
 import { BrandBackgroundPattern } from './components/BrandBackgroundPattern';
 import { SubjectLobbyModal } from './components/SubjectLobbyModal';
 import { PolishStudyHub } from './components/polish/PolishStudyHub';
+import { EnglishStudyHub } from './components/english';
 import { CkeFormulasModal } from './components/CkeFormulasModal';
+import { EnglishDictionaryModal } from './components/english/EnglishDictionaryModal';
 import { ScratchpadModal } from './components/ScratchpadModal';
-import { SubjectId } from './types';
+import { DevHubModal } from './components/DevHubModal';
+import { applyFullDeveloperAccess, isDevModeActive, getAllDevTaskIds } from './services/devService';
+import { SubjectId, SubjectKey } from './types';
 import { PolishPartNumber, PolishEpoch, PolishTaskType } from './types/maturaTypes';
 
 import { LoadingScreen } from './components/Loading';
@@ -101,6 +106,9 @@ export default function App() {
 
   const [completedTasks, setCompletedTasks] = useState<string[]>(() => {
     try {
+      if (isDevModeActive()) {
+        return getAllDevTaskIds();
+      }
       const stored = localStorage.getItem('matura_quest_completed_tasks');
       if (!stored) return [];
       const parsed = JSON.parse(stored);
@@ -109,11 +117,16 @@ export default function App() {
         ? parsed.filter(id => typeof id === 'string' && (id.startsWith('LESSON-') || isActualTaskId(id))) 
         : [];
     } catch {
-      return [];
+      return isDevModeActive() ? getAllDevTaskIds() : [];
     }
   });
   const [taskStars, setTaskStars] = useState<Record<string, number>>(() => {
     try {
+      if (isDevModeActive()) {
+        const stars: Record<string, number> = {};
+        getAllDevTaskIds().forEach(id => { stars[id] = 3; });
+        return stars;
+      }
       const stored = localStorage.getItem('matura_quest_task_stars');
       return stored ? JSON.parse(stored) : {};
     } catch {
@@ -220,6 +233,20 @@ export default function App() {
   const [showDiagnosticModal, setShowDiagnosticModal] = useState(false);
   const [showAiGeneratorModal, setShowAiGeneratorModal] = useState(false);
   const [showMistakesModal, setShowMistakesModal] = useState(false);
+  const [showDevModal, setShowDevModal] = useState(false);
+  const [showBlikCoinModal, setShowBlikCoinModal] = useState(false);
+
+  // Globalny skrót klawiszowy do Panelu Deweloperskiego: Ctrl + Shift + D
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
+        e.preventDefault();
+        setShowDevModal(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     // Pokazuj po 1.2s od wejścia tylko jeśli użytkownik nie przechodzi akurat onboarding
@@ -243,19 +270,20 @@ export default function App() {
     return 'matematyka';
   });
 
-  const [selectedSubjectKey, setSelectedSubjectKey] = useState<'math' | 'pol'>(() => {
+  const [selectedSubjectKey, setSelectedSubjectKey] = useState<SubjectKey>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_selected_subject');
-      if (stored === 'math' || stored === 'pol') return stored;
+      if (stored && ['math', 'pol', 'eng', 'math-roz', 'eng-roz'].includes(stored)) return stored as SubjectKey;
       const cur = localStorage.getItem('matura_quest_current_subject');
       if (cur === 'polski') return 'pol';
+      if (cur === 'angielski') return 'eng';
     } catch {}
     return 'math';
   });
 
-  const handleSelectSubject = (key: 'math' | 'pol') => {
+  const handleSelectSubject = (key: SubjectKey) => {
     setSelectedSubjectKey(key);
-    const subId: SubjectId = key === 'pol' ? 'polski' : 'matematyka';
+    const subId: SubjectId = key === 'pol' ? 'polski' : key === 'eng' ? 'angielski' : 'matematyka';
     setCurrentSubject(subId);
     try {
       localStorage.setItem('matura_quest_selected_subject', key);
@@ -270,7 +298,7 @@ export default function App() {
 
   const handleSelectSubjectId = (subId: SubjectId) => {
     setCurrentSubject(subId);
-    const subKey: 'math' | 'pol' = subId === 'polski' ? 'pol' : 'math';
+    const subKey: SubjectKey = subId === 'polski' ? 'pol' : subId === 'angielski' ? 'eng' : 'math';
     setSelectedSubjectKey(subKey);
     try {
       localStorage.setItem('matura_quest_current_subject', subId);
@@ -285,6 +313,7 @@ export default function App() {
 
   const [showSubjectLobbyModal, setShowSubjectLobbyModal] = useState(false);
   const [showFormulasModal, setShowFormulasModal] = useState(false);
+  const [showEnglishDictionaryModal, setShowEnglishDictionaryModal] = useState(false);
   const [showScratchpadModal, setShowScratchpadModal] = useState(false);
 
   const [polishHubInitialMode, setPolishHubInitialMode] = useState<'lessons' | 'task_browser'>('lessons');
@@ -295,8 +324,12 @@ export default function App() {
     type?: PolishTaskType | 'all';
   } | undefined>(undefined);
 
+  const [englishHubInitialMode, setEnglishHubInitialMode] = useState<'lessons' | 'task_browser'>('lessons');
+  const [englishHubInitialLessonId, setEnglishHubInitialLessonId] = useState<string | null>(null);
+
   const [isSubjectSheetOpen, setIsSubjectSheetOpen] = useState(false);
   const [profileInitialTab, setProfileInitialTab] = useState<'overview' | 'achievements' | 'perks'>('overview');
+  const [showPolishStudyHub, setShowPolishStudyHub] = useState<boolean>(false);
   
   const [userState, setUserState] = useState<UserState>(() => {
     const defaultState: UserState = {
@@ -340,17 +373,19 @@ export default function App() {
       const cachedAuth = localStorage.getItem('matura_quest_cached_user');
       const cachedGuest = localStorage.getItem('matura_quest_guest_user');
       const stored = cachedAuth || cachedGuest;
+      let state = defaultState;
       if (stored) {
         const parsed = JSON.parse(stored);
-        return {
+        state = {
           ...defaultState,
           ...parsed,
           perks: { ...defaultState.perks, ...(parsed.perks || {}) }
         };
       }
+      return applyFullDeveloperAccess(state);
     } catch {}
 
-    return defaultState;
+    return applyFullDeveloperAccess(defaultState);
   });
 
   useEffect(() => {
@@ -390,12 +425,20 @@ export default function App() {
             .filter((id: any) => typeof id === 'string' && (id.startsWith('LESSON-') || isActualTaskId(id)));
           const loadedStars = progress.taskStars || data.taskStars || {};
           
-          setCompletedTasks(loadedCompleted);
-          setTaskStars(loadedStars);
-          try {
-            localStorage.setItem("matura_quest_completed_tasks", JSON.stringify(loadedCompleted));
-            localStorage.setItem("matura_quest_task_stars", JSON.stringify(loadedStars));
-          } catch {}
+          if (isDevModeActive()) {
+            const devTasks = getAllDevTaskIds();
+            setCompletedTasks(devTasks);
+            const stars: Record<string, number> = {};
+            devTasks.forEach(id => { stars[id] = 3; });
+            setTaskStars(stars);
+          } else {
+            setCompletedTasks(loadedCompleted);
+            setTaskStars(loadedStars);
+            try {
+              localStorage.setItem("matura_quest_completed_tasks", JSON.stringify(loadedCompleted));
+              localStorage.setItem("matura_quest_task_stars", JSON.stringify(loadedStars));
+            } catch {}
+          }
 
           // Populate completed_lessons list
           const rawCompletedLessons = data.completed_lessons || progress.completedLessons || [];
@@ -404,7 +447,7 @@ export default function App() {
             : Object.keys(data.completedLessons || progress.completedLessons || {});
 
           setUserState(prev => {
-            const nextState: UserState = {
+            let nextState: UserState = {
               ...prev,
               ...data,
               xp: stats.xp ?? data.xp ?? prev.xp,
@@ -440,13 +483,18 @@ export default function App() {
               },
               claimedAchievements: data.claimedAchievements || {}
             };
+
+            if (isDevModeActive() || prev.isDev) {
+              nextState = applyFullDeveloperAccess(nextState);
+            }
+
             try {
               localStorage.setItem('matura_quest_cached_user', JSON.stringify(nextState));
             } catch {}
             return nextState;
           });
 
-          if (!data.hasCompletedOnboarding) {
+          if (!data.hasCompletedOnboarding && !isDevModeActive()) {
             setIsNewUser(true);
           }
         } else {
@@ -502,7 +550,7 @@ export default function App() {
       } else {
         setUserState({
           xp: 0,
-          coins: 50,
+          coins: 30,
           gems: 5,
           level: 1,
           campusRust: 0,
@@ -571,7 +619,7 @@ export default function App() {
     const updatedState: UserState = {
       ...userState,
       xp: (userState.xp || 0) + 15,
-      coins: (userState.coins || 0) + 20,
+      coins: (userState.coins || 0) + 10,
       streakDays: Math.max(1, userState.streakDays || 1),
       lastStreakDate: todayStr,
       streakActiveDates: updatedStreakDates,
@@ -606,7 +654,7 @@ export default function App() {
     } else {
       setReward({
         xp: 15,
-        coins: 20,
+        coins: 10,
         title: 'Plan Nauki Uruchomiony!',
         bonusNote: 'Dzień 1 Serii rozpalony! Powodzenia w Dziale 1.'
       });
@@ -654,9 +702,17 @@ export default function App() {
       clearSessionState().catch(() => {});
     }
 
-    const tasksList = task?.tasks || lessonTasks || task?.lessonTasks || (task ? [task] : []);
+    const isEng = Boolean(task?.isEnglish || (selectedSubjectKey === 'eng') || task?.subjectId === 'jezyk-angielski' || task?.subjectKey === 'eng');
+    const isPol = !isEng && Boolean(task?.isPolish || (selectedSubjectKey === 'pol') || task?.subjectId === 'jezyk-polski' || task?.subjectKey === 'pol');
+
+    const tasksList = lessonTasks || task?.tasks || task?.lessonTasks || (task ? [task] : []);
+
     setActiveTaskData({
       ...(task || {}),
+      isEnglish: isEng,
+      isPolish: isPol,
+      subjectKey: task?.subjectKey || selectedSubjectKey,
+      subjectId: task?.subjectId || (isEng ? 'jezyk-angielski' : isPol ? 'jezyk-polski' : 'matematyka-podstawowa'),
       originTab: task?.originTab || currentTab,
       isSession: true,
       tasks: tasksList,
@@ -681,6 +737,7 @@ export default function App() {
     const sessionPayload = {
       isSession: true,
       isPolish: selectedSubjectKey === 'pol',
+      isEnglish: selectedSubjectKey === 'eng',
       subjectId: normalizeSubjectFirestoreId(selectedSubjectKey),
       topicId: 'rehab-mistakes',
       lessonId: 'rehab',
@@ -696,20 +753,21 @@ export default function App() {
   };
 
   const handleCompleteDiagnostic = (assessedPercent: number, correctCount: number, _totalCount: number) => {
+    const diagCoins = Math.min(50, Math.max(30, 25 + correctCount * 3));
     setUserState(prev => {
       const next: UserState = {
         ...prev,
         maturaBestScore: Math.max(prev.maturaBestScore || 0, assessedPercent),
         maturaAttempts: Math.max(1, (prev.maturaAttempts || 0) + 1),
         xp: (prev.xp || 0) + correctCount * 25 + 50,
-        coins: (prev.coins || 0) + correctCount * 15 + 30,
+        coins: (prev.coins || 0) + diagCoins,
       };
       saveUserData(next);
       return next;
     });
     setReward({
       xp: correctCount * 25 + 50,
-      coins: correctCount * 15 + 30,
+      coins: diagCoins,
       title: 'Diagnoza Poziomu Zakończona!',
       description: `Twój wynik to ${assessedPercent}%. Twój Predyktor Maturalny został zaktualizowany!`
     });
@@ -808,6 +866,25 @@ export default function App() {
       const coinBoostPct = prev.perks?.coinBoostPercent || 0;
       const coinsGained = Math.round(earnedCoins * (1 + coinBoostPct / 100));
 
+      // Dzienna liczba rozwiązanych zadań zwiększa się WYŁĄCZNIE o faktycznie poprawnie rozwiązane zadania
+      const newlySolvedCount = validSolvedTaskIds.length;
+
+      // Złoty Zrzut PRO: +30 monet dziennie po ukończeniu min. 1 lekcji
+      const isProDailyDropEligible = Boolean(prev.isPro && prev.lastProCoinDropDate !== todayStr);
+      const proCoinsGained = isProDailyDropEligible ? 30 : 0;
+
+      // Wyzwania Dnia: aktualizacja liczby zadań i flagi Czystej Lekcji
+      const isPerfect = (mistakesCount || 0) === 0;
+      const currentDailyChallengeState = prev.dailyChallengesState?.[todayStr] || {};
+      const updatedDailyChallengeState = {
+        ...(prev.dailyChallengesState || {}),
+        [todayStr]: {
+          tasksCount: ((prev.dailyTaskCounts || {})[todayStr] || 0) + newlySolvedCount,
+          perfectLesson: Boolean(currentDailyChallengeState.perfectLesson || isPerfect),
+          reviewOrArenaDone: Boolean(currentDailyChallengeState.reviewOrArenaDone || false)
+        }
+      };
+
       const newXp = prev.xp + xpGained;
       const newLevel = Math.floor(newXp / 1000) + 1;
 
@@ -820,9 +897,6 @@ export default function App() {
         prev.lastStreakDate,
         prev.streakActiveDates || []
       );
-
-      // Dzienna liczba rozwiązanych zadań zwiększa się WYŁĄCZNIE o faktycznie poprawnie rozwiązane zadania
-      const newlySolvedCount = validSolvedTaskIds.length;
       const updatedDailyCounts = {
         ...(prev.dailyTaskCounts || {}),
         [todayStr]: ((prev.dailyTaskCounts || {})[todayStr] || 0) + newlySolvedCount
@@ -867,7 +941,9 @@ export default function App() {
       const newState: UserState = {
         ...prev,
         xp: newXp,
-        coins: prev.coins + coinsGained,
+        coins: prev.coins + coinsGained + proCoinsGained,
+        lastProCoinDropDate: isProDailyDropEligible ? todayStr : prev.lastProCoinDropDate,
+        dailyChallengesState: updatedDailyChallengeState,
         level: newLevel,
         streakDays: streakCalc.newStreakDays,
         lastStreakDate: streakCalc.newLastStreakDate,
@@ -1027,6 +1103,31 @@ export default function App() {
     });
   };
 
+  const handleEnglishLessonComplete = (lessonId: string, pointsEarned: number) => {
+    const cleanId = lessonId.replace(/^eng-lesson-/, 'eng-');
+    const xpReward = Math.max(50, pointsEarned * 8);
+    const coinsReward = Math.max(15, Math.round(pointsEarned * 1.5));
+    handleMaturaReward(xpReward, coinsReward, true);
+
+    setUserState(prev => {
+      const prevCompleted = prev.completedLessonsEnglish || [];
+      const updatedCompleted = prevCompleted.includes(lessonId) 
+        ? prevCompleted 
+        : [...prevCompleted, lessonId, cleanId];
+      const streakResult = calculateStreakOnTaskCompletion(prev.streakDays, prev.lastStreakDate);
+      const newState: UserState = {
+        ...prev,
+        completedLessonsEnglish: updatedCompleted,
+        streakDays: streakResult.newStreakDays,
+        lastStreakDate: streakResult.newLastStreakDate,
+        streakActiveDates: streakResult.newStreakActiveDates,
+        lastActive: Date.now()
+      };
+      saveUserData(newState);
+      return newState;
+    });
+  };
+
   const handlePolishTaskComplete = (taskId: string, pointsEarned: number) => {
     if (taskId.startsWith('lesson-')) {
       handlePolishLessonComplete(taskId, pointsEarned);
@@ -1125,6 +1226,14 @@ export default function App() {
   const handleBuyShopItem = (item: ShopItem, currency: 'tokens' | 'coins'): boolean => {
     let success = false;
     setUserState(prev => {
+      // Egzekwowanie limitów ekwipunku: Streak Freeze (max 2), Tarcze Areny (max 3)
+      if (item.effectType === 'streakFreeze' && (prev.perks?.streakFreezes || 0) >= 2) {
+        return prev;
+      }
+      if (item.effectType === 'arenaShield' && (prev.perks?.arenaShields || 0) >= 3) {
+        return prev;
+      }
+
       if (currency === 'tokens') {
         if ((prev.masteryTokens || 0) < item.tokenPrice) return prev;
       } else {
@@ -1156,6 +1265,40 @@ export default function App() {
       return newState;
     });
     return success;
+  };
+
+  const handleClaimDailyChallenge = (challengeId: DailyChallengeId, rewardCoins: number) => {
+    const todayStr = getTodayDateString();
+    setUserState(prev => {
+      const alreadyClaimed = prev.dailyChallengesClaimed?.[todayStr] || [];
+      if (alreadyClaimed.includes(challengeId)) return prev;
+
+      const updatedClaimed = {
+        ...(prev.dailyChallengesClaimed || {}),
+        [todayStr]: [...alreadyClaimed, challengeId]
+      };
+
+      const newState: UserState = {
+        ...prev,
+        coins: (prev.coins || 0) + rewardCoins,
+        dailyChallengesClaimed: updatedClaimed
+      };
+
+      saveUserData(newState);
+      return newState;
+    });
+  };
+
+  const handleBuyBlikCoins = (pack: BlikCoinPack): boolean => {
+    setUserState(prev => {
+      const newState: UserState = {
+        ...prev,
+        coins: (prev.coins || 0) + pack.coins
+      };
+      saveUserData(newState);
+      return newState;
+    });
+    return true;
   };
 
   const handleUseStreakFreeze = () => {
@@ -1256,6 +1399,7 @@ export default function App() {
             onSelectSubjectId={handleSelectSubjectId}
             onOpenLobby={() => setShowSubjectLobbyModal(true)}
             onOpenFormulas={() => setShowFormulasModal(true)}
+            onOpenDictionary={() => setShowEnglishDictionaryModal(true)}
             onOpenScratchpad={() => setShowScratchpadModal(true)}
             onProfileClick={() => setCurrentTab('profile')} 
             onLogoClick={() => {
@@ -1273,6 +1417,8 @@ export default function App() {
             onLoginClick={handleLoginClick}
             guestPromoSecondsLeft={isGuest ? guestPromoSecondsLeft : 0}
             onOpenGuestPromo={() => setShowGuestPromoModal(true)}
+            onOpenDevHub={() => setShowDevModal(true)}
+            onOpenBlikModal={() => setShowBlikCoinModal(true)}
             onUpdateUserState={(updater) => {
               setUserState(prev => {
                 const next = updater(prev);
@@ -1340,6 +1486,7 @@ export default function App() {
               onDeductHeart={handleDeductHeart}
               onOpenParentSponsor={() => setShowParentSponsorModal(true)}
               onOpenProPopup={() => setShowProPopup(true)}
+              onOpenBlikModal={() => setShowBlikCoinModal(true)}
               onUpdateUserState={(updater) => {
                 setUserState(prev => {
                   const next = updater(prev);
@@ -1361,31 +1508,44 @@ export default function App() {
                 {currentTab === 'dashboard' && (
                   <DashboardView 
                     onNavigate={(tab, subTab) => {
-                      if (tab === 'simulator' && subTab) {
-                        setSimulatorInitialView(subTab as any);
+                      if (tab === 'simulator') {
+                        if (selectedSubjectKey === 'pol' || currentSubject === 'polski') {
+                          setSimulatorInitialView('hub');
+                        } else if (subTab) {
+                          setSimulatorInitialView(subTab as any);
+                        } else {
+                          setSimulatorInitialView('hub');
+                        }
                       }
                       if (tab === 'nauka' || (tab as string) === 'learn') {
                         if (subTab === 'synthesis') {
                           setPolishHubInitialMode('task_browser');
                           setPolishHubInitialLessonId(null);
                           setPolishHubInitialFilter({ type: 'synthesis_note' });
+                          setShowPolishStudyHub(true);
                         } else if (subTab?.startsWith('epoch:')) {
                           const epochName = subTab.replace('epoch:', '') as PolishEpoch;
                           setPolishHubInitialMode('task_browser');
                           setPolishHubInitialLessonId(null);
                           setPolishHubInitialFilter({ epoch: epochName });
+                          setShowPolishStudyHub(true);
                         } else if (subTab === 'task_browser') {
                           setPolishHubInitialMode('task_browser');
                           setPolishHubInitialLessonId(null);
                           setPolishHubInitialFilter(undefined);
-                        } else if (subTab?.startsWith('lekcja-') || subTab?.startsWith('lesson-')) {
+                          setShowPolishStudyHub(true);
+                        } else if (subTab?.startsWith('eng-')) {
+                          setEnglishHubInitialMode('lessons');
+                          setEnglishHubInitialLessonId(subTab);
+                          setSelectedSubjectKey('eng');
+                        } else if (subTab?.startsWith('pol-') || subTab?.startsWith('lekcja-') || subTab?.startsWith('lesson-')) {
                           setPolishHubInitialMode('lessons');
                           setPolishHubInitialLessonId(subTab);
                           setPolishHubInitialFilter(undefined);
+                          setShowPolishStudyHub(false);
+                          setSelectedSubjectKey('pol');
                         } else {
-                          setPolishHubInitialMode('lessons');
-                          setPolishHubInitialLessonId(null);
-                          setPolishHubInitialFilter(undefined);
+                          setShowPolishStudyHub(false);
                         }
                       }
                       setCurrentTab(tab as TabState);
@@ -1405,36 +1565,54 @@ export default function App() {
                     onOpenDiagnostic={() => setShowDiagnosticModal(true)}
                     onOpenAiGenerator={() => setShowAiGeneratorModal(true)}
                     onOpenMistakesBank={() => setShowMistakesModal(true)}
+                    onClaimDailyChallenge={handleClaimDailyChallenge}
                   />
                 )}
                 {(currentTab === 'nauka' || (currentTab as string) === 'learn') && (
-                  (currentSubject === 'polski' || selectedSubjectKey === 'pol') ? (
-                    <PolishStudyHub
-                      onCompleteTask={handlePolishTaskComplete}
-                      onCompleteLesson={handlePolishLessonComplete}
-                      completedLessonIds={userState.completedLessonsPolish}
-                      completedTaskIds={userState.completedTasksPolish}
-                      initialMode={polishHubInitialMode}
-                      initialActiveLessonId={polishHubInitialLessonId}
-                      initialTaskFilter={polishHubInitialFilter}
-                    />
-                  ) : (
-                    <LearnView 
-                      userState={userState}
-                      selectedSubjectKey={selectedSubjectKey}
-                      onSelectSubject={handleSelectSubject}
-                      onStartTask={handleStartTask} 
-                      onCompleteTask={handleCompleteTask}
-                      isGuest={isGuest} 
-                      onLoginRequest={handleLoginClick}
-                      onProRequest={() => setShowProPopup(true)}
-                      completedTasks={completedTasks}
-                      taskStars={taskStars}
-                      lessonMistakes={lessonMistakes}
-                      onBackToDashboard={() => setCurrentTab('dashboard')}
-                      onSheetToggle={setIsSubjectSheetOpen}
-                    />
-                  )
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`study-hub-${selectedSubjectKey || 'math'}`}
+                      initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                      exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
+                      transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                      className="w-full flex-1 flex flex-col"
+                    >
+                      {selectedSubjectKey === 'pol' || (showPolishStudyHub && selectedSubjectKey !== 'eng') ? (
+                        <PolishStudyHub
+                          userState={userState}
+                          onDeductCoins={handleDeductCoins}
+                          onCompleteTask={handlePolishTaskComplete}
+                          onCompleteLesson={handlePolishLessonComplete}
+                          completedLessonIds={userState.completedLessonsPolish}
+                          completedTaskIds={userState.completedTasksPolish}
+                          initialMode={polishHubInitialMode}
+                          initialActiveLessonId={polishHubInitialLessonId}
+                          initialTaskFilter={polishHubInitialFilter}
+                          onClose={() => {
+                            setShowPolishStudyHub(false);
+                            setCurrentTab('dashboard');
+                          }}
+                        />
+                      ) : (
+                        <LearnView 
+                          userState={userState}
+                          selectedSubjectKey={selectedSubjectKey}
+                          onSelectSubject={handleSelectSubject}
+                          onStartTask={handleStartTask} 
+                          onCompleteTask={handleCompleteTask}
+                          isGuest={isGuest} 
+                          onLoginRequest={handleLoginClick}
+                          onProRequest={() => setShowProPopup(true)}
+                          completedTasks={completedTasks}
+                          taskStars={taskStars}
+                          lessonMistakes={lessonMistakes}
+                          onBackToDashboard={() => setCurrentTab('dashboard')}
+                          onSheetToggle={setIsSubjectSheetOpen}
+                        />
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
                 )}
                 {currentTab === 'simulator' && (
                   <MaturaSimulatorView 
@@ -1445,7 +1623,20 @@ export default function App() {
                     completedTasks={completedTasks}
                     onCompleteTask={handleCkeTaskComplete}
                     onActiveSessionChange={setIsSimulatorSessionActive}
-                    currentSubject={currentSubject === 'polski' || selectedSubjectKey === 'pol' ? 'polski' : 'matematyka'}
+                    currentSubject={currentSubject === 'polski' || selectedSubjectKey === 'pol' ? 'polski' : currentSubject === 'angielski' || selectedSubjectKey === 'eng' ? 'angielski' : 'matematyka'}
+                    onSelectSubject={(subj) => {
+                      if (subj === 'polski') {
+                        handleSelectSubject('pol');
+                        handleSelectSubjectId('polski');
+                      } else if (subj === 'angielski') {
+                        handleSelectSubject('eng');
+                        handleSelectSubjectId('angielski');
+                      } else {
+                        handleSelectSubject('math');
+                        handleSelectSubjectId('matematyka');
+                      }
+                    }}
+                    onNavigateBack={() => setCurrentTab('dashboard')}
                   />
                 )}
                 {currentTab === 'arena' && (
@@ -1465,6 +1656,8 @@ export default function App() {
                     onUseStreakFreeze={handleUseStreakFreeze}
                     onOpenAuthModal={() => setShowAuthModal(true)}
                     onOpenOnboarding={() => setShowGuestPrompt(true)}
+                    onOpenDevHub={() => setShowDevModal(true)}
+                    onOpenBlikModal={() => setShowBlikCoinModal(true)}
                     initialTab={profileInitialTab}
                   />
                 )}
@@ -1542,6 +1735,7 @@ export default function App() {
           const customSession = {
             isSession: true,
             isPolish: selectedSubjectKey === 'pol',
+            isEnglish: selectedSubjectKey === 'eng',
             subjectId: normalizeSubjectFirestoreId(selectedSubjectKey),
             topicId: 'custom-ai-task',
             lessonId: 'ai-gen',
@@ -1562,6 +1756,12 @@ export default function App() {
         onStartRehabSession={handleStartRehabSession}
         onNavigateToLessons={() => setCurrentTab('nauka')}
       />
+      <BlikCoinModal
+        isOpen={showBlikCoinModal}
+        onClose={() => setShowBlikCoinModal(false)}
+        onBuyCoins={handleBuyBlikCoins}
+        userCoins={userState.coins || 0}
+      />
 
       <SubjectLobbyModal
         isOpen={showSubjectLobbyModal}
@@ -1578,9 +1778,31 @@ export default function App() {
         isOpen={showFormulasModal}
         onClose={() => setShowFormulasModal(false)}
       />
+      <EnglishDictionaryModal
+        isOpen={showEnglishDictionaryModal}
+        onClose={() => setShowEnglishDictionaryModal(false)}
+      />
       <ScratchpadModal
         isOpen={showScratchpadModal}
         onClose={() => setShowScratchpadModal(false)}
+      />
+      <DevHubModal
+        isOpen={showDevModal}
+        onClose={() => setShowDevModal(false)}
+        userState={userState}
+        onUpdateUserState={(updater) => {
+          setUserState(prev => {
+            const next = updater(prev);
+            saveUserData(next);
+            return next;
+          });
+        }}
+        onNavigate={(tab, subTab) => {
+          setCurrentTab(tab);
+          if (subTab && tab === 'profil') setProfileInitialTab(subTab as any);
+        }}
+        onSelectSubject={handleSelectSubject}
+        onSelectSubjectId={handleSelectSubjectId}
       />
 
       {/* Nocturne Luminary Session Resumed Badge */}

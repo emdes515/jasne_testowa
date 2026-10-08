@@ -6,6 +6,8 @@ export type PolishModuleType =
 export interface LessonTheoryPoint {
   title: string;
   content: string;
+  explanation?: string;
+  example?: string;
 }
 
 export interface GatekeeperQuestion {
@@ -30,6 +32,15 @@ export interface LessonSummary {
   reflection: string;
 }
 
+export interface PolishBentoConcept {
+  id?: string;
+  name: string;
+  tag: string;
+  simpleDefinition: string;
+  contextExample: string;
+  ckeTrap: string;
+}
+
 export interface PolishLesson {
   id: string;
   number: number;
@@ -40,6 +51,8 @@ export interface PolishLesson {
   lektura?: string;
   durationMinutes: number; // 45 min
   introduction: LessonIntroduction;
+  concepts?: PolishBentoConcept[];
   taskIds: string[];
   summary: LessonSummary;
 }
+

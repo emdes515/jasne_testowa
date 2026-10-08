@@ -40,6 +40,8 @@ interface PolishLessonViewProps {
   onBack: () => void;
   onNextLesson?: (nextLessonId: string) => void;
   onCompleteLesson?: (lessonId: string, pointsEarned: number) => void;
+  userState?: any;
+  onDeductCoins?: (amount: number) => boolean;
 }
 
 export type LessonStage = 'intro' | 'practice' | 'summary';

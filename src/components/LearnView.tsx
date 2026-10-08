@@ -7,7 +7,8 @@ import {
   Hash, Binary, EqualNot, TrendingUp, Activity, 
   ListOrdered, TriangleRight, CircleDot, Map as MapIcon, Box, PieChart, Clock, Trophy,
   GraduationCap, MessageSquare, Flame, Feather, ShieldAlert, Sun, Moon, Scale, Shield,
-  Bookmark, Music, AlertTriangle, Eye, Compass, GitCommit, AlertOctagon
+  Bookmark, Music, AlertTriangle, Eye, Compass, GitCommit, AlertOctagon,
+  Headphones, Link, Send, ListChecks
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 import { motion, AnimatePresence } from 'motion/react';
@@ -18,6 +19,12 @@ import { curriculumRepository } from '../services/curriculumRepository';
 import { BossExamRunner } from './BossExamRunner';
 import { SubjectKey } from '../types';
 import { normalizeSubjectFirestoreId } from '../services/ckeCatalogRepository';
+import { MATH_CURRICULUM_TOPICS } from '../data/mathCurriculumData';
+import { POLISH_CURRICULUM_TOPICS } from '../data/polishCurriculumData';
+import { ENGLISH_CURRICULUM_TOPICS } from '../data/englishCurriculumData';
+import { EnglishDictionaryModal } from './english/EnglishDictionaryModal';
+import { MaturalnyDuetGame } from './english/MaturalnyDuetGame';
+import { MathTheoryModal } from './math/MathTheoryModal';
 
 
 const mathIcons = [
@@ -38,7 +45,7 @@ const mathIcons = [
   Trophy
 ];
 
-const polishIconMap: Record<string, any> = {
+const subjectIconMap: Record<string, any> = {
   MessageSquare,
   BookOpen,
   PenTool,
@@ -58,18 +65,28 @@ const polishIconMap: Record<string, any> = {
   AlertOctagon,
   Trophy,
   Layers,
-  GraduationCap
+  GraduationCap,
+  Headphones,
+  Link,
+  Send,
+  ListChecks,
+  Clock,
+  Zap,
+  Award
 };
 
 function getTopicIcon(subjectKey: string, topicIndex: number, DefaultIcon: any, topic?: any) {
-  if (topic?.icon && polishIconMap[topic.icon]) {
-    return polishIconMap[topic.icon];
+  if (topic?.icon && subjectIconMap[topic.icon]) {
+    return subjectIconMap[topic.icon];
   }
   if (subjectKey === 'math' && topicIndex < mathIcons.length) {
     return mathIcons[topicIndex];
   }
   if (subjectKey === 'pol') {
     return BookOpen;
+  }
+  if (subjectKey === 'eng') {
+    return Globe;
   }
   return DefaultIcon;
 }
@@ -103,20 +120,12 @@ export function formatLessonsNoun(count: number): string {
  * Oparty na zasadach ergonomii wizualnej (Cognitive Load Theory) oraz subtelnej mikrointerakcji:
  * Stały, czytelny punkt odniesienia + łagodna fala sonaru o 2.5s interwale.
  */
-export function ActiveBadge({ label = 'W TOKU', isRose = false }: { label?: string; isRose?: boolean }) {
+export function ActiveBadge({ label = 'W TOKU' }: { label?: string; isRose?: boolean }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none ${
-      isRose
-        ? 'text-[#F43F5E] bg-[#F43F5E]/10 border border-[#F43F5E]/30 shadow-sm'
-        : 'text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-sm'
-    }`}>
+    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-sm">
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
-        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] ${
-          isRose ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
-        }`} />
-        <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${
-          isRose ? 'bg-[#F43F5E]' : 'bg-[#FFB800]'
-        }`} />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] bg-[#FFB800]" />
+        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFB800]" />
       </span>
       <span>{label}</span>
     </span>
@@ -185,8 +194,8 @@ const initialDataBySubject: Record<string, any> = {
     shortName: 'Angielski',
     level: 'Podstawa • B1/B2',
     icon: Globe,
-    color: 'text-emerald-400',
-    accentColor: '#10B981',
+    color: 'text-[#FFB800]',
+    accentColor: '#FFB800',
     topics: []
   },
   'math-roz': {
@@ -245,6 +254,31 @@ export function LearnView({
   const [isBossExamOpen, setIsBossExamOpen] = useState<boolean>(false);
   const [bossExamData, setBossExamData] = useState<any>(null);
   const [isBossExamLoading, setIsBossExamLoading] = useState<boolean>(false);
+  const [showEnglishDictionary, setShowEnglishDictionary] = useState<boolean>(false);
+  const [previewTheoryModalData, setPreviewTheoryModalData] = useState<{
+    isOpen: boolean;
+    lessonTitle: string;
+    lessonBadge: string;
+    theoryPill: any;
+    topicTitle: string;
+    onStartSession: () => void;
+  } | null>(null);
+
+  const handleOpenTheoryModal = async (group: LessonGroup, nextLessonPayload?: any) => {
+    triggerHaptic('light');
+    const topicId = currentTopic?.id || 'dzial-1';
+    const lessonDoc = await curriculumRepository.getLesson(topicId, group.id, subjectFirestoreId);
+    const rawTheoryPill = lessonDoc?.theory_pill || (group as any).theory_pill;
+    const enrichedPill = enrichTheoryPillWithVisual(rawTheoryPill, group.id);
+    setPreviewTheoryModalData({
+      isOpen: true,
+      lessonTitle: cleanLessonTitle(group.name),
+      lessonBadge: group.badge,
+      theoryPill: enrichedPill,
+      topicTitle: cleanTopicTitle(currentTopic?.name || currentTopic?.title),
+      onStartSession: () => handleStartLessonSession(group, nextLessonPayload)
+    });
+  };
 
 
 
@@ -377,24 +411,33 @@ export function LearnView({
     }));
   }, [viewState, selectedSubjectKey, selectedTopicIndex]);
 
-  const [mathTopicsList, setMathTopicsList] = useState<any[]>([]);
-  const [polishTopicsList, setPolishTopicsList] = useState<any[]>([]);
+  const [mathTopicsList, setMathTopicsList] = useState<any[]>(() => MATH_CURRICULUM_TOPICS);
+  const [polishTopicsList, setPolishTopicsList] = useState<any[]>(() => POLISH_CURRICULUM_TOPICS);
   const [polishPillarsList, setPolishPillarsList] = useState<any[]>([]);
-  const [engTopicsList, setEngTopicsList] = useState<any[]>([]);
+  const [engTopicsList, setEngTopicsList] = useState<any[]>(() => ENGLISH_CURRICULUM_TOPICS);
+  const [engPillarsList, setEngPillarsList] = useState<any[]>([]);
   const [mathRozTopicsList, setMathRozTopicsList] = useState<any[]>([]);
   const [engRozTopicsList, setEngRozTopicsList] = useState<any[]>([]);
-  const [isLoadingTopics, setIsLoadingTopics] = useState<boolean>(true);
+  const [isLoadingTopics, setIsLoadingTopics] = useState<boolean>(false);
   const [topicsLoadError, setTopicsLoadError] = useState<string | null>(null);
   const [selectedPillarId, setSelectedPillarId] = useState<string>(() => {
     try {
       const stored = localStorage.getItem('matura_quest_selected_polish_pillar');
-      if (stored && (stored === 'pillar-1-jezyk-w-uzyciu' || stored === 'pillar-2-lektury' || stored === 'pillar-3-wypracowanie')) {
+      if (stored && (stored === 'all' || stored === 'pillar-1-jezyk-w-uzyciu' || stored === 'pillar-2-lektury' || stored === 'pillar-3-wypracowanie')) {
         return stored;
       }
     } catch(e) {}
-    return 'pillar-1-jezyk-w-uzyciu';
+    return 'all';
   });
-
+  const [selectedEnglishPillarId, setSelectedEnglishPillarId] = useState<string>(() => {
+    try {
+      const stored = localStorage.getItem('matura_quest_selected_english_pillar');
+      if (stored && ['all', 'pillar-use-of-english', 'pillar-listening', 'pillar-reading', 'pillar-writing'].includes(stored)) {
+        return stored;
+      }
+    } catch(e) {}
+    return 'all';
+  });
 
   useEffect(() => {
     if (selectedSubjectKey === 'pol') {
@@ -405,17 +448,26 @@ export function LearnView({
   }, [selectedPillarId, selectedSubjectKey]);
 
   useEffect(() => {
+    if (selectedSubjectKey === 'eng') {
+      try {
+        localStorage.setItem('matura_quest_selected_english_pillar', selectedEnglishPillarId);
+      } catch(e) {}
+    }
+  }, [selectedEnglishPillarId, selectedSubjectKey]);
+
+  useEffect(() => {
     let isMounted = true;
     setIsLoadingTopics(true);
     setTopicsLoadError(null);
 
     const loadCurriculum = async () => {
       try {
-        const [mathLoaded, polishLoaded, pillars, engLoaded, mathRozLoaded, engRozLoaded] = await Promise.all([
+        const [mathLoaded, polishLoaded, pillars, engLoaded, engPillars, mathRozLoaded, engRozLoaded] = await Promise.all([
           curriculumRepository.getTopics('matematyka-podstawowa'),
           curriculumRepository.getTopics('jezyk-polski'),
           curriculumRepository.getSubjectPillars('jezyk-polski'),
           curriculumRepository.getTopics('jezyk-angielski'),
+          curriculumRepository.getSubjectPillars('jezyk-angielski'),
           curriculumRepository.getTopics('matematyka-rozszerzona'),
           curriculumRepository.getTopics('jezyk-angielski-rozszerzony')
         ]);
@@ -425,7 +477,7 @@ export function LearnView({
         const polishTopicsFiltered = (polishLoaded || [])
           .filter((t: any) => {
             const num = typeof t.numericId === 'number' ? t.numericId : parseInt(String(t.id).replace(/\D/g, '') || '1', 10);
-            return num >= 1 && num <= 20;
+            return num >= 1;
           })
           .sort((a: any, b: any) => (a.numericId || 0) - (b.numericId || 0));
 
@@ -433,6 +485,7 @@ export function LearnView({
         setPolishTopicsList(polishTopicsFiltered);
         setPolishPillarsList(Array.isArray(pillars) ? pillars : []);
         setEngTopicsList(engLoaded || []);
+        setEngPillarsList(Array.isArray(engPillars) ? engPillars : []);
         setMathRozTopicsList(mathRozLoaded || []);
         setEngRozTopicsList(engRozLoaded || []);
 
@@ -466,7 +519,8 @@ export function LearnView({
     },
     eng: {
       ...initialDataBySubject.eng,
-      topics: engTopicsList
+      topics: engTopicsList,
+      pillars: engPillarsList
     },
     'math-roz': {
       ...initialDataBySubject['math-roz'],
@@ -598,8 +652,10 @@ export function LearnView({
   }, 0);
   const engRozProgressPercent = totalEngRozLessons > 0 ? Math.round((completedEngRozLessons / totalEngRozLessons) * 100) : 0;
 
+  const isDevOrPro = Boolean(userState?.isDev || userState?.isPro);
+
   const handleSelectTopic = (index: number, locked: boolean = false) => {
-    if (locked) {
+    if (locked && !isDevOrPro) {
       triggerHaptic('error');
       setLockedToastMessage('Ukończ poprzedni dział, aby odblokować ten materiał');
       setShowLockedToast(true);
@@ -637,7 +693,7 @@ export function LearnView({
   };
 
   const handleLessonHeaderClick = (group: LessonGroup, isUnlocked: boolean) => {
-    if (!isUnlocked) {
+    if (!isUnlocked && !isDevOrPro) {
       triggerHaptic('error');
       setLockedToastMessage('Ukończ poprzednią lekcję, aby odblokować ten materiał');
       setShowLockedToast(true);
@@ -673,15 +729,26 @@ export function LearnView({
       isSession: true,
       originTab: 'learn',
       isPolish: selectedSubjectKey === 'pol',
+      isEnglish: selectedSubjectKey === 'eng',
       subjectId: subjectFirestoreId,
-      pillarId: selectedSubjectKey === 'pol' ? selectedPillarId : undefined,
+      pillarId: selectedSubjectKey === 'pol' 
+        ? selectedPillarId 
+        : (selectedSubjectKey === 'eng' ? (currentTopic?.pillar_id || selectedEnglishPillarId) : undefined),
       pillarName: selectedSubjectKey === 'pol'
         ? (selectedPillarId === 'pillar-1-jezyk-w-uzyciu'
           ? 'Język w użyciu'
           : selectedPillarId === 'pillar-2-lektury'
             ? 'Lektury i epoki'
             : 'Wypracowanie')
-        : undefined,
+        : (selectedSubjectKey === 'eng'
+          ? (currentTopic?.pillar_name || (selectedEnglishPillarId === 'pillar-use-of-english'
+            ? 'Środki Językowe'
+            : selectedEnglishPillarId === 'pillar-listening'
+              ? 'Rozumienie ze Słuchu'
+              : selectedEnglishPillarId === 'pillar-reading'
+                ? 'Czytanie Tekstów'
+                : 'Warsztat Pisania'))
+          : undefined),
       topicTitle: currentTopic?.title || currentTopic?.name,
       topicId: topicId,
       lessonId: group.id,
@@ -712,6 +779,31 @@ export function LearnView({
         estimated_time_formatted: lessonDoc.estimated_time_formatted || '~5 min'
       };
       handleStartLessonSession(group, undefined, topicId);
+    }
+  };
+
+  const handleStartBossExam = async () => {
+    if (!currentTopic) return;
+    triggerHaptic('medium');
+    setIsBossExamLoading(true);
+    try {
+      let examData;
+      if (selectedSubjectKey === 'pol') {
+        const { loadPolishTopicBossExam } = await import('../data/polishCurriculumData');
+        examData = loadPolishTopicBossExam(currentTopic.id, currentTopic.title || currentTopic.name);
+      } else if (selectedSubjectKey === 'eng') {
+        const { loadEnglishTopicBossExam } = await import('../data/englishCurriculumData');
+        examData = loadEnglishTopicBossExam(currentTopic.id, currentTopic.title || currentTopic.name);
+      } else {
+        const { loadMathTopicBossExam } = await import('../data/mathCurriculumData');
+        examData = loadMathTopicBossExam(currentTopic.id, currentTopic.title || currentTopic.name);
+      }
+      setBossExamData(examData);
+      setIsBossExamOpen(true);
+    } catch (err) {
+      console.error('[LearnView] Błąd wczytywania Boss Exam:', err);
+    } finally {
+      setIsBossExamLoading(false);
     }
   };
 
@@ -759,7 +851,9 @@ export function LearnView({
           });
           const topicsMatchingFilter = (selectedSubjectKey === 'pol' && selectedPillarId !== 'all')
             ? dedupedTopics.filter((t: any) => t.pillar_id === selectedPillarId)
-            : dedupedTopics;
+            : (selectedSubjectKey === 'eng' && selectedEnglishPillarId !== 'all')
+              ? dedupedTopics.filter((t: any) => t.pillar_id === selectedEnglishPillarId)
+              : dedupedTopics;
 
           const completedTopicsCount = topicsMatchingFilter.filter((t: any) => {
             const lessons = getLessonsForTopic(t);
@@ -786,11 +880,11 @@ export function LearnView({
 
           return (
             <motion.div 
-              key={`topics-${selectedSubjectKey}-${selectedPillarId}`}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.2 }}
+              key={`topics-${selectedSubjectKey}-${selectedSubjectKey === 'pol' ? selectedPillarId : selectedEnglishPillarId}`}
+              initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
+              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className="flex-1 flex flex-col w-full"
             >
               {/* Sub-header wyboru przedmiotu i postępu działów */}
@@ -820,9 +914,26 @@ export function LearnView({
                     <ChevronDown size={13} className="text-text-muted group-hover:text-primary transition-colors shrink-0" />
                   </button>
 
-                  <div className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card border border-surface-border text-[11px] font-bold text-text-muted whitespace-nowrap shadow-sm">
-                    <span className="text-emerald-400 font-black">{completedTopicsCount}/{totalTopicsCount}</span>
-                    <span>{selectedSubjectKey === 'pol' ? (selectedPillarId === 'pillar-2-lektury' ? 'epok' : selectedPillarId === 'pillar-3-wypracowanie' ? 'modułów' : 'działów') : 'działów'}</span>
+                  <div className="flex items-center gap-2 shrink-0">
+                    {selectedSubjectKey === 'eng' && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setShowEnglishDictionary(true);
+                        }}
+                        className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card hover:bg-surface-card-hover border border-[#FFB800]/30 hover:border-[#FFB800]/60 text-[#FFDCA1] text-[11px] sm:text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+                        title="Otwórz oficjalny Słownik Maturalny CKE"
+                      >
+                        <BookOpen size={13} className="text-[#FFB800]" />
+                        <span>Słownik CKE</span>
+                      </button>
+                    )}
+
+                    <div className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card border border-surface-border text-[11px] font-bold text-text-muted whitespace-nowrap shadow-sm">
+                      <span className="text-emerald-400 font-black">{completedTopicsCount}/{totalTopicsCount}</span>
+                      <span>{selectedSubjectKey === 'pol' ? (selectedPillarId === 'pillar-2-lektury' ? 'epok' : selectedPillarId === 'pillar-3-wypracowanie' ? 'modułów' : 'działów') : (selectedSubjectKey === 'eng' ? 'modułów' : 'działów')}</span>
+                    </div>
                   </div>
                 </div>
               </header>
@@ -865,7 +976,36 @@ export function LearnView({
               {selectedSubjectKey === 'pol' && (
                 <div className="px-3 sm:px-6 py-2 sticky top-[49px] bg-surface-bg/95 backdrop-blur-xl z-19 border-b border-surface-border shadow-sm">
                   <div className="max-w-3xl mx-auto w-full">
-                    <div className="grid grid-cols-3 p-1 rounded-xl bg-[#101726] border border-white/10 relative gap-1">
+                    <div className="grid grid-cols-4 p-1 rounded-xl bg-[#101726] border border-white/10 relative gap-1">
+                      {/* Tab 0: Wszystkie działy */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedPillarId('all');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedPillarId === 'all'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedPillarId === 'all' && (
+                          <motion.div
+                            layoutId="activePolishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
+                          />
+                        )}
+                        <Layers size={13} className={selectedPillarId === 'all' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Wszystkie</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedPillarId === 'all' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          {polishTopicsList.length || 28}
+                        </span>
+                      </button>
+
                       {/* Tab 1: Filar I */}
                       <button
                         onClick={() => {
@@ -873,7 +1013,7 @@ export function LearnView({
                           setSelectedPillarId('pillar-1-jezyk-w-uzyciu');
                           setVisibleTopicsCount(TOPICS_BATCH_SIZE);
                         }}
-                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedPillarId === 'pillar-1-jezyk-w-uzyciu'
                             ? 'text-white'
                             : 'text-slate-400 hover:text-slate-200'
@@ -883,18 +1023,18 @@ export function LearnView({
                           <motion.div
                             layoutId="activePolishPillarTab"
                             transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-sm"
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
                           />
                         )}
-                        <MessageSquare size={13} className={selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <MessageSquare size={13} className={selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">
                           <span className="hidden sm:inline">Język w użyciu</span>
                           <span className="sm:hidden">Język</span>
                         </span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
+                          selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
                         }`}>
-                          4 działy
+                          {polishTopicsList.filter(t => t.pillar_id === 'pillar-1-jezyk-w-uzyciu').length || 7}
                         </span>
                       </button>
 
@@ -905,7 +1045,7 @@ export function LearnView({
                           setSelectedPillarId('pillar-2-lektury');
                           setVisibleTopicsCount(TOPICS_BATCH_SIZE);
                         }}
-                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedPillarId === 'pillar-2-lektury'
                             ? 'text-white'
                             : 'text-slate-400 hover:text-slate-200'
@@ -915,18 +1055,18 @@ export function LearnView({
                           <motion.div
                             layoutId="activePolishPillarTab"
                             transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-sm"
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
                           />
                         )}
-                        <BookOpen size={13} className={selectedPillarId === 'pillar-2-lektury' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <BookOpen size={13} className={selectedPillarId === 'pillar-2-lektury' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">
                           <span className="hidden sm:inline">Lektury i epoki</span>
                           <span className="sm:hidden">Lektury</span>
                         </span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedPillarId === 'pillar-2-lektury' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
+                          selectedPillarId === 'pillar-2-lektury' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
                         }`}>
-                          12 epok
+                          {polishTopicsList.filter(t => t.pillar_id === 'pillar-2-lektury').length || 20}
                         </span>
                       </button>
 
@@ -937,7 +1077,7 @@ export function LearnView({
                           setSelectedPillarId('pillar-3-wypracowanie');
                           setVisibleTopicsCount(TOPICS_BATCH_SIZE);
                         }}
-                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedPillarId === 'pillar-3-wypracowanie'
                             ? 'text-white'
                             : 'text-slate-400 hover:text-slate-200'
@@ -947,15 +1087,15 @@ export function LearnView({
                           <motion.div
                             layoutId="activePolishPillarTab"
                             transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-rose-500/25 to-rose-600/20 border border-rose-500/40 shadow-sm"
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
                           />
                         )}
-                        <Feather size={13} className={selectedPillarId === 'pillar-3-wypracowanie' ? 'text-rose-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <Feather size={13} className={selectedPillarId === 'pillar-3-wypracowanie' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">Wypracowanie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedPillarId === 'pillar-3-wypracowanie' ? 'bg-rose-500/20 text-rose-300' : 'bg-white/5 text-slate-500'
+                          selectedPillarId === 'pillar-3-wypracowanie' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
                         }`}>
-                          35 pkt
+                          {polishTopicsList.filter(t => t.pillar_id === 'pillar-3-wypracowanie').length || 1}
                         </span>
                       </button>
                     </div>
@@ -969,19 +1109,202 @@ export function LearnView({
                             ? '• Arkusz 1, cz. 2: Kanon lektur z gwiazdką i test historycznoliteracki (15 pkt)'
                             : '• Arkusz 2: Warsztat wypracowania maturalnego CKE (35 pkt)'}
                       </span>
-                      <span className="text-[10px] text-rose-400 font-semibold shrink-0 ml-2">
+                      <span className="text-[10px] text-amber-400 font-semibold shrink-0 ml-2">
                         {selectedPillarId === 'pillar-1-jezyk-w-uzyciu' 
-                          ? 'Działy 1–4 • 10 pkt CKE' 
+                          ? 'Działy 1–7 • 10 pkt CKE' 
                           : selectedPillarId === 'pillar-2-lektury'
-                            ? 'Działy 5–16 • 15 pkt CKE'
-                            : 'Działy 17–20 • 35 pkt CKE'}
+                            ? 'Działy 8–27 • 15 pkt CKE'
+                            : 'Dział 28 • 35 pkt CKE'}
                       </span>
                     </div>
 
                   </div>
                 </div>
               )}
-              
+
+              {/* Pillar Switcher Segmented Control (Język Angielski: 4 Filary Kompetencyjne CKE) */}
+              {selectedSubjectKey === 'eng' && (
+                <div className="px-3 sm:px-6 py-2 sticky top-[49px] bg-surface-bg/95 backdrop-blur-xl z-19 border-b border-surface-border shadow-sm">
+                  <div className="max-w-3xl mx-auto w-full">
+                    <div className="grid grid-cols-5 p-1 rounded-xl bg-[#101726] border border-white/10 relative gap-1">
+                      {/* Tab 0: Wszystkie działy */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedEnglishPillarId('all');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedEnglishPillarId === 'all'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedEnglishPillarId === 'all' && (
+                          <motion.div
+                            layoutId="activeEnglishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
+                          />
+                        )}
+                        <Layers size={13} className={selectedEnglishPillarId === 'all' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Wszystkie</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedEnglishPillarId === 'all' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          15
+                        </span>
+                      </button>
+
+                      {/* Tab 1: Filar I - Środki Językowe */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedEnglishPillarId('pillar-use-of-english');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedEnglishPillarId === 'pillar-use-of-english'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedEnglishPillarId === 'pillar-use-of-english' && (
+                          <motion.div
+                            layoutId="activeEnglishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
+                          />
+                        )}
+                        <Zap size={13} className={selectedEnglishPillarId === 'pillar-use-of-english' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">
+                          <span className="hidden sm:inline">Środki językowe</span>
+                          <span className="sm:hidden">Środki</span>
+                        </span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedEnglishPillarId === 'pillar-use-of-english' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          5
+                        </span>
+                      </button>
+
+                      {/* Tab 2: Filar II - Słuchanie */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedEnglishPillarId('pillar-listening');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedEnglishPillarId === 'pillar-listening'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedEnglishPillarId === 'pillar-listening' && (
+                          <motion.div
+                            layoutId="activeEnglishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
+                          />
+                        )}
+                        <Headphones size={13} className={selectedEnglishPillarId === 'pillar-listening' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Słuchanie</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedEnglishPillarId === 'pillar-listening' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          3
+                        </span>
+                      </button>
+
+                      {/* Tab 3: Filar III - Czytanie */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedEnglishPillarId('pillar-reading');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedEnglishPillarId === 'pillar-reading'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedEnglishPillarId === 'pillar-reading' && (
+                          <motion.div
+                            layoutId="activeEnglishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
+                          />
+                        )}
+                        <BookOpen size={13} className={selectedEnglishPillarId === 'pillar-reading' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Czytanie</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedEnglishPillarId === 'pillar-reading' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          3
+                        </span>
+                      </button>
+
+                      {/* Tab 4: Filar IV - Pisanie */}
+                      <button
+                        onClick={() => {
+                          triggerHaptic('light');
+                          setSelectedEnglishPillarId('pillar-writing');
+                          setVisibleTopicsCount(TOPICS_BATCH_SIZE);
+                        }}
+                        className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
+                          selectedEnglishPillarId === 'pillar-writing'
+                            ? 'text-white'
+                            : 'text-slate-400 hover:text-slate-200'
+                        }`}
+                      >
+                        {selectedEnglishPillarId === 'pillar-writing' && (
+                          <motion.div
+                            layoutId="activeEnglishPillarTab"
+                            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                            className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/25 to-amber-600/20 border border-amber-500/40 shadow-sm"
+                          />
+                        )}
+                        <PenTool size={13} className={selectedEnglishPillarId === 'pillar-writing' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
+                        <span className="truncate relative z-10">Pisanie</span>
+                        <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
+                          selectedEnglishPillarId === 'pillar-writing' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                        }`}>
+                          4
+                        </span>
+                      </button>
+                    </div>
+
+                    {/* Sub-description ribbon for active pillar */}
+                    <div className="mt-1.5 flex items-center justify-between text-[11px] text-slate-400 px-1">
+                      <span className="truncate">
+                        {selectedEnglishPillarId === 'pillar-use-of-english'
+                          ? '• Zadania 8–11: Gramatyka, transformacje zdań, luki i słowotwórstwo (13 pkt)'
+                          : selectedEnglishPillarId === 'pillar-listening'
+                            ? '• Zadania 1–3: Rozumienie ze słuchu, wyłapywanie intencji i kontekstu (15 pkt)'
+                            : selectedEnglishPillarId === 'pillar-reading'
+                              ? '• Zadania 4–7: Dobieranie nagłówków, luki spójnościowe i teksty wieloźródłowe (20 pkt)'
+                              : selectedEnglishPillarId === 'pillar-writing'
+                                ? '• Zadanie 12: Wypowiedź pisemna – e-mail lub wpis na blogu 80–130 słów (12 pkt)'
+                                : '• 4 Filary Egzaminacyjne CKE: Use of English, Listening, Reading, Writing (60 pkt)'}
+                      </span>
+                      <span className="text-[10px] text-amber-400 font-semibold shrink-0 ml-2">
+                        {selectedEnglishPillarId === 'pillar-use-of-english' 
+                          ? 'Działy 1–5 • 13 pkt CKE' 
+                          : selectedEnglishPillarId === 'pillar-listening'
+                            ? 'Działy 6–8 • 15 pkt CKE'
+                            : selectedEnglishPillarId === 'pillar-reading'
+                              ? 'Działy 9–11 • 20 pkt CKE'
+                              : selectedEnglishPillarId === 'pillar-writing'
+                                ? 'Działy 12–15 • 12 pkt CKE'
+                                : 'Działy 1–15 • 60 pkt CKE'}
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+              )}
               {/* Lista Działów z marginesem pod dolną nawigację */}
               <div className="flex-1 px-4 sm:px-6 pt-3 pb-36 md:pb-12 relative max-w-3xl mx-auto w-full">
                 <div className="space-y-3.5 relative z-10">
@@ -992,22 +1315,23 @@ export function LearnView({
                     const isUnlocked = true;
                     const isLocked = false;
 
+                    const isDev = Boolean(userState?.isDev || userState?.isPro);
                     const allTopicTasks = topic.tasks || [];
-                    const completedTopicTasks = allTopicTasks.filter((t: any) => completedTasks.includes(t.id));
+                    const completedTopicTasks = isDev ? allTopicTasks : allTopicTasks.filter((t: any) => completedTasks.includes(t.id));
                     const topicLessons = getLessonsForTopic(topic);
                     const topicLessonsCount = topicLessons.length;
-                    const completedTopicLessonsCount = topicLessons.filter(l => isLessonCompleted(l, completedTasks, userState)).length;
+                    const completedTopicLessonsCount = isDev ? topicLessonsCount : topicLessons.filter(l => isLessonCompleted(l, completedTasks, userState)).length;
 
-                    const isFullyCompleted = topicLessonsCount > 0
+                    const isFullyCompleted = isDev || (topicLessonsCount > 0
                       ? (completedTopicLessonsCount === topicLessonsCount)
-                      : (allTopicTasks.length > 0 && completedTopicTasks.length === allTopicTasks.length);
-                    const isBeaconTopic = (idx === currentActiveIdx) && !isFullyCompleted;
+                      : (allTopicTasks.length > 0 && completedTopicTasks.length === allTopicTasks.length));
+                    const isBeaconTopic = !isDev && (idx === currentActiveIdx) && !isFullyCompleted;
 
-                    const progressPercent = topicLessonsCount > 0 
+                    const progressPercent = isDev ? 100 : (topicLessonsCount > 0 
                       ? Math.round((completedTopicLessonsCount / topicLessonsCount) * 100)
                       : allTopicTasks.length > 0 
                         ? Math.round((completedTopicTasks.length / allTopicTasks.length) * 100) 
-                        : 0;
+                        : 0);
 
                     const cleanName = cleanTopicTitle(topic.name || topic.title);
                     const topicNum = topic.numericId || (idx + 1);
@@ -1061,11 +1385,7 @@ export function LearnView({
 
                           <div className="flex items-center gap-2">
                             {topic.matura_points_range && (
-                              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md hidden sm:inline-block ${
-                                selectedSubjectKey === 'pol'
-                                  ? 'text-rose-300 bg-rose-500/10 border border-rose-500/20'
-                                  : 'text-amber-400/90 bg-amber-400/10 border border-amber-400/20'
-                              }`}>
+                              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md hidden sm:inline-block text-amber-400/90 bg-amber-400/10 border border-amber-400/20">
                                 {topic.matura_points_range}
                               </span>
                             )}
@@ -1080,9 +1400,7 @@ export function LearnView({
                           <div className="flex items-center gap-3 min-w-0 flex-1">
                             <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
                               isBeaconTopic
-                                ? selectedSubjectKey === 'pol'
-                                  ? 'bg-rose-500/15 border-rose-500/40 text-rose-400'
-                                  : 'bg-[#FFB800]/15 border-[#FFB800]/40 text-[#FFB800]'
+                                ? 'bg-[#FFB800]/15 border-[#FFB800]/40 text-[#FFB800]'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400'
                                   : 'bg-white/5 border-white/10 text-slate-300 group-hover:text-white group-hover:border-white/20'
@@ -1093,9 +1411,7 @@ export function LearnView({
                               <h2 className={`font-display font-black text-base sm:text-lg leading-snug break-words transition-colors ${
                                 isLocked 
                                   ? 'text-slate-400' 
-                                  : selectedSubjectKey === 'pol' 
-                                    ? 'text-white group-hover:text-rose-400' 
-                                    : 'text-white group-hover:text-[#FFB800]'
+                                  : 'text-white group-hover:text-[#FFB800]'
                               }`}>
                                 <MathRenderer content={cleanName} />
                               </h2>
@@ -1114,9 +1430,7 @@ export function LearnView({
                           {!isLocked && (
                             <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
                               isBeaconTopic
-                                ? selectedSubjectKey === 'pol'
-                                  ? 'bg-rose-500/15 text-rose-400 group-hover:bg-rose-500 group-hover:text-white shadow-sm'
-                                  : 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-sm'
+                                ? 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-sm'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-emerald-950'
                                   : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
@@ -1141,7 +1455,7 @@ export function LearnView({
                                 isFullyCompleted 
                                   ? "text-emerald-400 font-bold" 
                                   : isBeaconTopic 
-                                    ? selectedSubjectKey === 'pol' ? "text-rose-400 font-bold" : "text-[#FFB800] font-bold" 
+                                    ? "text-[#FFB800] font-bold" 
                                     : "text-slate-300 font-bold"
                               }>
                                 {progressPercent}%
@@ -1156,9 +1470,7 @@ export function LearnView({
                                   : isFullyCompleted
                                     ? 'bg-emerald-400 shadow-sm'
                                     : isBeaconTopic 
-                                      ? selectedSubjectKey === 'pol'
-                                        ? 'bg-rose-500 shadow-sm'
-                                        : 'bg-[#FFB800] shadow-sm' 
+                                      ? 'bg-[#FFB800] shadow-sm' 
                                       : 'bg-white/30'
                               }`} 
                               style={{ width: `${isLocked ? 0 : progressPercent}%` }} 
@@ -1255,15 +1567,32 @@ export function LearnView({
                       </div>
                     </div>
 
-                    <div className="shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-card border border-surface-border text-[11px] font-bold text-text-muted whitespace-nowrap">
-                      {totalLessonsCount > 0 ? (
-                        <>
-                          <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-black' : 'text-emerald-400 font-black'}>{completedLessonsCount}/{totalLessonsCount}</span>
-                          <span>{formatLessonsNoun(totalLessonsCount)}</span>
-                        </>
-                      ) : (
-                        <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-semibold' : 'text-primary font-semibold'}>W opracowaniu</span>
+                    <div className="shrink-0 flex items-center gap-2">
+                      {selectedSubjectKey === 'eng' && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            triggerHaptic('light');
+                            setShowEnglishDictionary(true);
+                          }}
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-[#FFB800]/30 hover:border-[#FFB800]/60 text-[#FFDCA1] text-[11px] font-bold transition-all shadow-xs cursor-pointer active:scale-95"
+                          title="Otwórz oficjalny Słownik Maturalny CKE"
+                        >
+                          <BookOpen size={12} className="text-[#FFB800]" />
+                          <span>Słownik</span>
+                        </button>
                       )}
+
+                      <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-card border border-surface-border text-[11px] font-bold text-text-muted whitespace-nowrap">
+                        {totalLessonsCount > 0 ? (
+                          <>
+                            <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-black' : 'text-emerald-400 font-black'}>{completedLessonsCount}/{totalLessonsCount}</span>
+                            <span>{formatLessonsNoun(totalLessonsCount)}</span>
+                          </>
+                        ) : (
+                          <span className={selectedSubjectKey === 'pol' ? 'text-rose-400 font-semibold' : 'text-primary font-semibold'}>W opracowaniu</span>
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -1322,6 +1651,16 @@ export function LearnView({
                     </div>
                   );
                 })()}
+
+                {/* Rozgrzewka Pewniaka: Maturalny Duet (Język Angielski) */}
+                {selectedSubjectKey === 'eng' && currentTopic && lessonsForCurrentTopic.length > 0 && (
+                  <div className="mb-2">
+                    <MaturalnyDuetGame
+                      lessonId={lessonsForCurrentTopic[0]?.id || currentTopic.id}
+                      topicId={currentTopic.id}
+                    />
+                  </div>
+                )}
 
                 {lessonsForCurrentTopic.length === 0 ? (
                   <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-[#141A23]/70 border border-white/10 rounded-3xl mt-4 sm:mt-6 max-w-md mx-auto shadow-xl">
@@ -1428,9 +1767,7 @@ export function LearnView({
                             isCompleted
                               ? 'border-emerald-500/30 bg-[#0E1524] shadow-[0_4px_20px_rgba(16,185,129,0.06)]'
                               : isCurrentActiveLesson
-                                ? selectedSubjectKey === 'pol'
-                                  ? 'border-2 border-rose-500 bg-gradient-to-b from-[#201318] to-[#120B0E] shadow-sm ring-1 ring-rose-500/40'
-                                  : 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-sm ring-1 ring-[#FFB800]/40'
+                                ? 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-sm ring-1 ring-[#FFB800]/40'
                                 : !isUnlocked
                                   ? 'border-white/5 bg-[#0A0E17]/60 opacity-60'
                                   : 'border-white/10 bg-[#101726]'
@@ -1444,9 +1781,7 @@ export function LearnView({
                                 isCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-sm'
                                   : isCurrentActiveLesson
-                                    ? selectedSubjectKey === 'pol'
-                                      ? 'bg-rose-500/20 border border-rose-500 text-rose-400 shadow-sm'
-                                      : 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-sm'
+                                    ? 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-sm'
                                     : !isUnlocked
                                       ? 'bg-white/5 border-white/10 text-slate-500'
                                       : 'bg-white/5 border-white/10 text-slate-300'
@@ -1472,7 +1807,7 @@ export function LearnView({
                                     </span>
                                   )}
                                   {isCurrentActiveLesson && (
-                                    <ActiveBadge label="AKTUALNA LEKCJA" isRose={selectedSubjectKey === 'pol'} />
+                                    <ActiveBadge label="AKTUALNA LEKCJA" />
                                   )}
                                   {!isUnlocked && (
                                     <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase text-slate-500 bg-white/5 border border-white/5 px-2 py-0.5 rounded-full">
@@ -1557,7 +1892,7 @@ export function LearnView({
                           </div>
 
                           {/* Dolna część karty: 3 Stany przycisków */}
-                          <div className="pt-1">
+                          <div className="pt-1 flex flex-col sm:flex-row gap-2">
                             {!isUnlocked ? (
                               <div className="w-full py-2.5 px-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center gap-2 text-xs text-slate-500 cursor-not-allowed select-none">
                                 <Lock size={13} />
@@ -1565,34 +1900,118 @@ export function LearnView({
                                   Odblokuje się po zaliczeniu {getLockRequirementLabel(prevGroup)}
                                 </span>
                               </div>
-                            ) : isCompleted ? (
-                              <button
-                                id={`repeat-lesson-btn-${group.id}`}
-                                onClick={() => handleStartLessonSession(group, nextLessonPayload)}
-                                className="w-full py-2.5 px-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-slate-200 hover:text-emerald-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-[0.99] cursor-pointer"
-                              >
-                                <RefreshCw size={14} className="stroke-[2.5] text-emerald-400" />
-                                <span>POWTÓRZ LEKCJĘ</span>
-                              </button>
                             ) : (
-                              <button
-                                id={`start-lesson-btn-${group.id}`}
-                                onClick={() => handleStartLessonSession(group, nextLessonPayload)}
-                                className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 active:scale-[0.98] transition cursor-pointer ${
-                                  selectedSubjectKey === 'pol'
-                                    ? 'bg-rose-500 hover:bg-rose-400 text-white shadow-sm'
-                                    : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm'
-                                }`}
-                              >
-                                <Play size={16} fill={selectedSubjectKey === 'pol' ? '#FFFFFF' : '#080B11'} strokeWidth={0} />
-                                <span>ROZPOCZNIJ LEKCJĘ</span>
-                                <ArrowRight size={16} strokeWidth={3} />
-                              </button>
+                              <>
+                                <button
+                                  type="button"
+                                  onClick={() => handleOpenTheoryModal(group, nextLessonPayload)}
+                                  className="w-full sm:w-auto py-2.5 px-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#FFB800]/40 text-slate-200 hover:text-[#FFB800] font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-[0.98] cursor-pointer shrink-0"
+                                >
+                                  <Compass size={14} className="text-[#FFB800]" />
+                                  <span>Pigułka (~3-4 min)</span>
+                                </button>
+
+                                {isCompleted ? (
+                                  <button
+                                    id={`repeat-lesson-btn-${group.id}`}
+                                    onClick={() => handleStartLessonSession(group, nextLessonPayload)}
+                                    className="flex-1 py-2.5 px-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-slate-200 hover:text-emerald-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-[0.99] cursor-pointer"
+                                  >
+                                    <RefreshCw size={14} className="stroke-[2.5] text-emerald-400" />
+                                    <span>POWTÓRZ LEKCJĘ</span>
+                                  </button>
+                                ) : (
+                                  <button
+                                    id={`start-lesson-btn-${group.id}`}
+                                    onClick={() => handleStartLessonSession(group, nextLessonPayload)}
+                                    className="flex-1 py-3 px-5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition cursor-pointer bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
+                                  >
+                                    <Play size={15} fill="#080B11" strokeWidth={0} />
+                                    <span>ROZPOCZNIJ LEKCJĘ</span>
+                                    <ArrowRight size={15} strokeWidth={3} />
+                                  </button>
+                                )}
+                              </>
                             )}
                           </div>
                         </div>
                       );
                     })}
+
+                    {/* WALKA Z BOSSEM DZIAŁU / SPRAWDZIAN CKE */}
+                    {currentTopic && (
+                      <div 
+                        id={`boss-fight-card-${currentTopic.id}`}
+                        className="rounded-2xl border-2 transition-all p-5 sm:p-6 flex flex-col gap-4 relative overflow-hidden mt-3 border-[#FFB800]/60 bg-gradient-to-b from-[#1C1811] via-[#14151C] to-[#0E121A] shadow-[0_8px_32px_rgba(255,184,0,0.12)]"
+                      >
+                        {/* Ambient glow accent */}
+                        <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none bg-[#FFB800]/10" />
+
+                        <div className="flex items-start justify-between gap-3 relative z-10">
+                          <div className="flex items-start gap-3.5 min-w-0 flex-1">
+                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border shadow-md bg-[#FFB800]/20 border-[#FFB800]/50 text-[#FFB800]">
+                              <Trophy size={26} className="animate-pulse" />
+                            </div>
+
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border shadow-sm text-[#FFB800] bg-[#FFB800]/20 border-[#FFB800]/40">
+                                  WALKA Z BOSSEM DZIAŁU
+                                </span>
+                                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+                                  <Clock size={10} />
+                                  <span>15 min • 5 zadań CKE</span>
+                                </span>
+                              </div>
+
+                              <h3 className="font-display font-black text-lg sm:text-xl text-white leading-tight">
+                                Sprawdzian: {cleanTopicTitle(currentTopic.name || currentTopic.title)}
+                              </h3>
+                              <p className="text-xs sm:text-sm text-slate-300 mt-1">
+                                Ostateczne starcie z materiałem tego działu. Zmierz się z zestawem maturalnym CKE, zdobądź min. 70% i zgarnij odznakę Mistrza!
+                              </p>
+
+                              {/* Nagrody za pokonanie bossa */}
+                              <div className="flex items-center gap-2 mt-3 flex-wrap">
+                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/25 px-2 py-0.5 rounded-lg">
+                                  <Zap size={11} className="fill-[#FFB800]" />
+                                  <span>+200 XP</span>
+                                </span>
+                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-300 bg-amber-500/10 border border-amber-500/25 px-2 py-0.5 rounded-lg">
+                                  <span>🪙 +100 Monet</span>
+                                </span>
+                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-300 bg-purple-500/10 border border-purple-500/25 px-2 py-0.5 rounded-lg">
+                                  <Award size={11} />
+                                  <span>Tytuł Mistrza Działu</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="pt-2 relative z-10">
+                          <button
+                            id={`start-boss-fight-btn-${currentTopic.id}`}
+                            disabled={isBossExamLoading}
+                            onClick={handleStartBossExam}
+                            className="w-full py-3.5 px-6 rounded-xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 active:scale-[0.98] transition cursor-pointer shadow-lg disabled:opacity-50 bg-gradient-to-r from-[#FFB800] to-[#FFA000] hover:from-[#FFC72C] hover:to-[#FFB800] text-[#080B11] shadow-[#FFB800]/25"
+                          >
+                            {isBossExamLoading ? (
+                              <>
+                                <Loader2 size={18} className="animate-spin" />
+                                <span>PRZYGOTOWYWANIE ARKUSZA...</span>
+                              </>
+                            ) : (
+                              <>
+                                <Flame size={18} className="animate-bounce" />
+                                <span>WALCZ Z BOSSEM (SPRAWDZIAN)</span>
+                                <ArrowRight size={18} strokeWidth={3} />
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </>
                 )}
               </div>
@@ -1795,12 +2214,12 @@ export function LearnView({
                     }}
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'eng'
-                        ? 'border-emerald-500 bg-gradient-to-br from-[#10281F] to-[#0A1A14] ring-1 ring-emerald-500/30 shadow-sm'
+                        ? 'border-[#FFB800] bg-gradient-to-br from-[#1C1811] to-[#0E1420] ring-1 ring-[#FFB800]/30 shadow-sm'
                         : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0 shadow-sm">
+                      <div className="w-12 h-12 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFDCA1] flex items-center justify-center shrink-0 shadow-sm">
                         <Globe size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -1808,25 +2227,25 @@ export function LearnView({
                           <span className="font-display font-black text-white text-base">
                             Język Angielski
                           </span>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                            <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-[#FFDCA1] border border-[#FFB800]/20">
+                            <span className="w-1 h-1 rounded-full bg-[#FFB800]" />
                             Podstawa • B1/B2
                           </span>
                         </div>
                         <p className="text-xs text-[#8B8D98] truncate">
-                          10 działów • 23 lekcje • 184 zadania
+                          15 działów • 45 lekcji • 1500 zadań CKE
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
                           <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
-                                engProgressPercent > 0 ? 'bg-emerald-400' : 'bg-transparent'
+                                engProgressPercent > 0 ? 'bg-[#FFB800]' : 'bg-transparent'
                               }`}
                               style={{ width: `${engProgressPercent}%` }}
                             />
                           </div>
                           <span className={`text-[11px] font-bold shrink-0 ${
-                            engProgressPercent > 0 ? 'text-emerald-400' : 'text-slate-500'
+                            engProgressPercent > 0 ? 'text-[#FFB800]' : 'text-slate-500'
                           }`}>
                             {engProgressPercent}%
                           </span>
@@ -1838,7 +2257,7 @@ export function LearnView({
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-                        className="w-6 h-6 rounded-full bg-emerald-500 text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
+                        className="w-6 h-6 rounded-full bg-[#FFB800] text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
                       >
                         <Check size={14} strokeWidth={3} />
                       </motion.div>
@@ -2033,6 +2452,30 @@ export function LearnView({
         document.body
       )}
 
+      {/* =========================================================================
+          SŁOWNIK MATURALNY CKE (JĘZYK ANGIELSKI)
+         ========================================================================= */}
+      {showEnglishDictionary && (
+        <EnglishDictionaryModal
+          isOpen={showEnglishDictionary}
+          onClose={() => setShowEnglishDictionary(false)}
+        />
+      )}
+
+      {/* =========================================================================
+          ROZBUDOWANY MODAL TEORII MATEMATYKI W PIGUŁCE (~3-4 MIN)
+         ========================================================================= */}
+      {previewTheoryModalData?.isOpen && (
+        <MathTheoryModal
+          isOpen={previewTheoryModalData.isOpen}
+          onClose={() => setPreviewTheoryModalData(null)}
+          onStartSession={previewTheoryModalData.onStartSession}
+          lessonTitle={previewTheoryModalData.lessonTitle}
+          lessonBadge={previewTheoryModalData.lessonBadge}
+          theoryPill={previewTheoryModalData.theoryPill}
+          topicTitle={previewTheoryModalData.topicTitle}
+        />
+      )}
 
     </div>
   );

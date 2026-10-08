@@ -63,5 +63,20 @@ export const createAiRouter = (aiLimiter: RateLimiter): Router => {
     }
   });
 
+  // Dedicated English Writing & Task Evaluation Endpoint (CKE Formuła 2023)
+  router.post('/english-eval', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const rawBody = isRecord(req.body) ? req.body : {};
+      const body = sanitizeAiBody({
+        ...rawBody,
+        isEnglish: true,
+        subjectId: 'jezyk-angielski'
+      }, 'grade');
+      return res.json(await gradeWithFallback(body));
+    } catch (error) {
+      return failRoute(res, next, error, 'Nie udało się ocenić wypowiedzi z języka angielskiego.');
+    }
+  });
+
   return router;
 };
