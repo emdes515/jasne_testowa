@@ -11,7 +11,7 @@ export const createAiRouter = (aiLimiter: RateLimiter): Router => {
   const router = Router();
 
   // AI Task Generator Endpoint
-  router.post('/generate-task', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+  router.post(['/generate-task', '/ai/generate-task'], aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
       const body = sanitizeAiBody(req.body, 'task');
       const task = await generateTaskLogic(body);
@@ -22,7 +22,7 @@ export const createAiRouter = (aiLimiter: RateLimiter): Router => {
   });
 
   // AI Tutor Universal Endpoint (supports both 'hint' and 'grade' modes)
-  router.post('/ai-tutor', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+  router.post(['/ai-tutor', '/ai/ai-tutor'], aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
       const requestedMode = isRecord(req.body) ? req.body.mode : undefined;
       const mode = oneOf(requestedMode, ['hint', 'grade'] as const, 'hint');
@@ -38,7 +38,7 @@ export const createAiRouter = (aiLimiter: RateLimiter): Router => {
   });
 
   // Dedicated AI Hint endpoint alias
-  router.post('/hint', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+  router.post(['/hint', '/ai/hint'], aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
       const body = sanitizeAiBody(req.body, 'hint');
       return res.json(await hintWithFallback(body));
@@ -48,7 +48,7 @@ export const createAiRouter = (aiLimiter: RateLimiter): Router => {
   });
 
   // Strict Matura Task Evaluation Endpoint
-  router.post('/evaluate-task', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+  router.post(['/evaluate-task', '/ai/evaluate-task'], aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
       const requestedMode = isRecord(req.body) ? req.body.mode : undefined;
       const mode = oneOf(requestedMode, ['hint', 'grade'] as const, 'grade');
@@ -64,7 +64,7 @@ export const createAiRouter = (aiLimiter: RateLimiter): Router => {
   });
 
   // Dedicated English Writing & Task Evaluation Endpoint (CKE Formuła 2023)
-  router.post('/english-eval', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+  router.post(['/english-eval', '/ai/english-eval'], aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
       const rawBody = isRecord(req.body) ? req.body : {};
       const body = sanitizeAiBody({

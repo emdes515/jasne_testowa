@@ -32,7 +32,7 @@ export const originGuard = (req: Request, res: Response, next: NextFunction): vo
     next();
     return;
   }
-  const host = req.headers.host;
+  const host = (req.headers['x-forwarded-host'] as string) || req.headers.host;
   if (host) {
     try {
       if (new URL(origin).host === host) {
@@ -43,6 +43,16 @@ export const originGuard = (req: Request, res: Response, next: NextFunction): vo
       // nieprawidłowy Origin traktujemy jak obcy
     }
   }
+
+  // Wdrożenia produkcyjne i podglądowe w chmurze Vercel
+  try {
+    const originHostname = new URL(origin).hostname;
+    if (originHostname.endsWith('.vercel.app')) {
+      next();
+      return;
+    }
+  } catch {}
+
   logger.warn('forbidden_origin', { origin, host, path: req.path });
   res.status(403).json({ error: 'Żądanie z niedozwolonego origin.', code: 'forbidden_origin' });
 };

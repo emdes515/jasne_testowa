@@ -1128,6 +1128,39 @@ export default function App() {
     });
   };
 
+  const handleEnglishTaskComplete = (taskId: string, pointsEarned: number) => {
+    if (taskId.startsWith('eng-lesson-') || taskId.startsWith('lesson-')) {
+      handleEnglishLessonComplete(taskId, pointsEarned);
+      return;
+    }
+
+    const xpReward = Math.max(20, pointsEarned * 5);
+    const coinsReward = Math.max(5, pointsEarned);
+    handleMaturaReward(xpReward, coinsReward, true);
+
+    setUserState(prev => {
+      const prevCompleted = prev.completedTasksEnglish || [];
+      const updatedCompleted = prevCompleted.includes(taskId) ? prevCompleted : [...prevCompleted, taskId];
+      const nextEnglishStats = {
+        totalPoints: (prev.englishStats?.totalPoints || 0) + pointsEarned,
+        completedCount: prev.completedLessonsEnglish?.length || 0,
+        lastLessonId: prev.englishStats?.lastLessonId
+      };
+      const streakResult = calculateStreakOnTaskCompletion(prev.streakDays, prev.lastStreakDate);
+      const newState: UserState = {
+        ...prev,
+        completedTasksEnglish: updatedCompleted,
+        englishStats: nextEnglishStats,
+        streakDays: streakResult.newStreakDays,
+        lastStreakDate: streakResult.newLastStreakDate,
+        streakActiveDates: streakResult.newStreakActiveDates,
+        lastActive: Date.now()
+      };
+      saveUserData(newState);
+      return newState;
+    });
+  };
+
   const handlePolishTaskComplete = (taskId: string, pointsEarned: number) => {
     if (taskId.startsWith('lesson-')) {
       handlePolishLessonComplete(taskId, pointsEarned);
@@ -1591,6 +1624,20 @@ export default function App() {
                           initialTaskFilter={polishHubInitialFilter}
                           onClose={() => {
                             setShowPolishStudyHub(false);
+                            setCurrentTab('dashboard');
+                          }}
+                        />
+                      ) : selectedSubjectKey === 'eng' ? (
+                        <EnglishStudyHub
+                          userState={userState}
+                          onCompleteTask={handleEnglishTaskComplete}
+                          onCompleteLesson={handleEnglishLessonComplete}
+                          completedLessonIds={userState.completedLessonsEnglish || userState.completed_lessons}
+                          completedTaskIds={userState.completedTasksEnglish || completedTasks}
+                          initialMode={englishHubInitialMode}
+                          initialActiveLessonId={englishHubInitialLessonId}
+                          onStartTask={handleStartTask}
+                          onClose={() => {
                             setCurrentTab('dashboard');
                           }}
                         />
