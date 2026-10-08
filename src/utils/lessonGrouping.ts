@@ -80,6 +80,7 @@ export function isLessonCompleted(
   userState?: any
 ): boolean {
   if (!group) return false;
+  if (userState?.isDev || userState?.isPro) return true;
   const cleanId = group.id.replace(/^(?:pol|eng|mat-roz|math-roz|eng-roz)?[-_]?lesson[-_]?/i, '');
   const dotId = cleanId.replace('-', '.');
   const dashId = `lesson-${dotId.replace('.', '-')}`;
@@ -89,6 +90,8 @@ export function isLessonCompleted(
   const engRozDashId = `eng-roz-lesson-${dotId.replace('.', '-')}`;
 
   const userCompletedLessons: string[] = userState?.completed_lessons || [];
+  const userCompletedPolish: string[] = userState?.completedLessonsPolish || [];
+  const userCompletedEnglish: string[] = userState?.completedLessonsEnglish || [];
   const userCompletedMap = userState?.completedLessons || userState?.progress?.completedLessons || {};
 
   if (
@@ -97,6 +100,16 @@ export function isLessonCompleted(
     userCompletedLessons.includes(dotId) ||
     userCompletedLessons.includes(dashId) ||
     userCompletedLessons.includes(polDashId) ||
+    userCompletedPolish.includes(group.id) ||
+    userCompletedPolish.includes(cleanId) ||
+    userCompletedPolish.includes(dotId) ||
+    userCompletedPolish.includes(dashId) ||
+    userCompletedPolish.includes(polDashId) ||
+    userCompletedEnglish.includes(group.id) ||
+    userCompletedEnglish.includes(cleanId) ||
+    userCompletedEnglish.includes(dotId) ||
+    userCompletedEnglish.includes(dashId) ||
+    userCompletedEnglish.includes(engDashId) ||
     userCompletedLessons.includes(engDashId) ||
     userCompletedLessons.includes(matRozDashId) ||
     userCompletedLessons.includes(engRozDashId) ||

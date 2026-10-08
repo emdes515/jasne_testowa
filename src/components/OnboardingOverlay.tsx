@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { triggerHaptic, playSuccessSound } from '../utils';
 import { Badge } from './Badge';
+import { JasneLogo } from './ui/JasneLogo';
 
 export interface OnboardingPreferences {
   targetExam: 'matura_2025' | 'poprawka' | 'e8';
@@ -262,9 +263,10 @@ export function OnboardingOverlay({
             </button>
           ) : (
             <div className="flex items-center gap-2">
-              <Badge variant="jasne" icon={<Calculator size={13} />}>
-                MATEMATYKA PODSTAWOWA
-              </Badge>
+              <JasneLogo variant="icon" size={24} glow={true} />
+              <span className="font-black text-sm tracking-wider text-white">
+                JASNE<span className="text-[#FFB800]">.</span>
+              </span>
             </div>
           )}
         </div>

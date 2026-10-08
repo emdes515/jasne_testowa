@@ -636,6 +636,25 @@ export const curriculumRepository = {
       console.warn(`[curriculumRepository] Error fetching lesson ${subjectId}/${topicId}/${lessonId}:`, err);
     }
 
+    // Fallback do wbudowanego kurikulum matematyki Core-4
+    if (subjectId === DEFAULT_SUBJECT_ID || subjectId === 'matematyka-podstawowa' || subjectId === 'math' || topicId.startsWith('dzial-') || lessonId.startsWith('math-') || lessonId.match(/^\d+\.\d+$/)) {
+      const mathDoc = getMathLessonDocument(topicId, lessonId);
+      if (mathDoc) {
+        const allDocVariants = Array.from(new Set([...variants, ...getLessonKeyVariants(mathDoc.id)]));
+        for (const v of allDocVariants) {
+          lessonCache.set(`${subjectId}/${topicId}/${v}`, mathDoc);
+          lessonCache.set(`${topicId}/${v}`, mathDoc);
+          lessonByIdCache.set(v, mathDoc);
+          if (subjectId) {
+            lessonByIdCache.set(`${subjectId}:${v}`, mathDoc);
+          }
+          saveToCurriculumStorage(`jasne_curriculum_lesson_${subjectId}_${v}_v1`, mathDoc);
+          saveToCurriculumStorage(`jasne_curriculum_lesson_${subjectId}_${topicId}_${v}_v1`, mathDoc);
+        }
+        return mathDoc;
+      }
+    }
+
     return null;
   },
 

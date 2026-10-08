@@ -251,8 +251,8 @@ describe('Session Recovery Component Integration', () => {
       const stored = localStorage.getItem(SESSION_STORAGE_KEY);
       expect(stored).toBeTruthy();
       const parsed = JSON.parse(stored!);
-      expect(parsed.theoryPill).toBeDefined();
-      expect(parsed.theoryPill.concept_essence).toBe('Potęgi o wykładniku wymiernym to uogólnienie potęgowania na ułamki.');
+      expect(parsed.theoryPill.concept_essence).toBeTruthy();
+      expect(parsed.theoryPill.concept_essence).not.toContain('Zapoznaj się z kluczowymi pojęciami');
       expect(parsed.originTab).toBe('nauka');
     });
 

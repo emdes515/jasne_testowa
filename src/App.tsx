@@ -1632,8 +1632,8 @@ export default function App() {
                           userState={userState}
                           onCompleteTask={handleEnglishTaskComplete}
                           onCompleteLesson={handleEnglishLessonComplete}
-                          completedLessonIds={userState.completedLessonsEnglish || userState.completed_lessons}
-                          completedTaskIds={userState.completedTasksEnglish || completedTasks}
+                          completedLessonIds={userState.completedLessonsEnglish}
+                          completedTaskIds={userState.completedTasksEnglish}
                           initialMode={englishHubInitialMode}
                           initialActiveLessonId={englishHubInitialLessonId}
                           onStartTask={handleStartTask}

@@ -447,8 +447,8 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
               Brak szczegółowego podziału kryteriów dla tego typu zadania.
             </div>
           ) : (
-            Object.entries(criteriaBreakdown).map(([key, itemRaw]) => {
-              const item = itemRaw as any;
+            Object.entries(criteriaBreakdown).map(([key, rawItem]) => {
+              const item = rawItem as any;
               const meta = criteriaLabels[key] || { title: key, defaultMax: item.max || 1 };
               const itemMax = item.max || meta.defaultMax;
               const percent = itemMax > 0 ? Math.round((item.score / itemMax) * 100) : 0;

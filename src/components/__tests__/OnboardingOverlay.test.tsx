@@ -36,7 +36,7 @@ describe('OnboardingOverlay Component', () => {
   it('renders Step 1 with default mathematics badge and 4 matura goals', () => {
     render(<OnboardingOverlay onClose={vi.fn()} />);
 
-    expect(screen.getByText('MATEMATYKA PODSTAWOWA')).toBeDefined();
+    expect(screen.getByText(/TWÓJ CEL MATURALNY • FORMUŁA 2023/i)).toBeDefined();
     expect(screen.getByText('W co celujesz na maturze z matematyki?')).toBeDefined();
     expect(screen.getByText('70%+ • Solidny wynik')).toBeDefined();
     expect(screen.getByText('30%+ • Zdać na luzie')).toBeDefined();

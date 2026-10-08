@@ -26,12 +26,12 @@ describe('Polish Module Integration & Data Integrity', () => {
   });
 
   describe('1. CKE 2023 Curriculum Data Integrity', () => {
-    it('should verify all 24 Polish lessons exist and meet Core-4 / CKE structure', () => {
-      expect(POLISH_LESSONS.length).toBe(24);
+    it('should verify all Polish lessons exist and meet Core-4 / CKE structure', () => {
+      expect(POLISH_LESSONS.length).toBe(75);
       
       POLISH_LESSONS.forEach((lesson, index) => {
         expect(lesson.number).toBe(index + 1);
-        expect(lesson.id).toMatch(/^lekcja-\d+$/);
+        expect(lesson.id).toMatch(/^(lekcja-\d+|pol-lesson-[\w-]+)$/);
         expect(lesson.title).toBeTruthy();
         expect(lesson.durationMinutes).toBe(45);
         expect(lesson.introduction).toBeDefined();

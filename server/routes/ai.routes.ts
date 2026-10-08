@@ -11,7 +11,7 @@ export const createAiRouter = (aiLimiter: RateLimiter): Router => {
   const router = Router();
 
   // AI Task Generator Endpoint
-  router.post(['/generate-task', '/ai/generate-task'], aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
+  router.post('/generate-task', aiLimiter.middleware, async (req: Request, res: Response, next: NextFunction) => {
     try {
       const body = sanitizeAiBody(req.body, 'task');
       const task = await generateTaskLogic(body);

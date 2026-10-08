@@ -1,0 +1,1296 @@
+{
+  "ARCH-01": [
+    {
+      "id": "task_math_form23_arch01_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $2^{\\frac{7}{3}} \\cdot 2^{\\frac{2}{3}}$ jest równa",
+      "options": [
+        "$2^3$",
+        "$2^{\\frac{14}{9}}$",
+        "$4^3$",
+        "$2^{\\frac{5}{3}}$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Identyfikujemy własność potęg z oficjalnych tablic (Tablice CKE str. 3: $a^r \\cdot a^s = a^{r+s}$ lub $(a^r)^s = a^{r \\cdot s}$).\n\n**Krok 2:** Wykonujemy działania na wykładnikach potęg:\nStosujemy wzór na iloczyn potęg o tych samych podstawach: $a^r \\cdot a^s = a^{r+s}$.\n$$2^{\\frac{7}{3}"
+    },
+    {
+      "id": "task_math_form23_arch01_028",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sqrt[4]{3} \\cdot 3^{\\frac{7}{4}}$ jest równa",
+      "options": [
+        "$27$",
+        "$9$",
+        "$3^{\\frac{7}{16}}$",
+        "$3$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Identyfikujemy własność potęg z oficjalnych tablic (Tablice CKE str. 3: $a^r \\cdot a^s = a^{r+s}$ lub $(a^r)^s = a^{r \\cdot s}$).\n\n**Krok 2:** Wykonujemy działania na wykładnikach potęg:\nZamieniamy $\\sqrt[4]{3} = 3^{\\frac{1}{4}}$.\nDodajemy wykładniki: $\\frac{1}{4} + \\frac{7}{4} = \\frac{8"
+    },
+    {
+      "id": "task_math_form23_arch01_054",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWartość wyrażenia $\\frac{\\left(2^3\\right)^2 \\cdot 2^{-2}}{2^2}$ jest równa",
+      "options": [
+        "$4$",
+        "$2$",
+        "$16$",
+        "$8$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Identyfikujemy własność potęg z oficjalnych tablic (Tablice CKE str. 3: $a^r \\cdot a^s = a^{r+s}$ lub $(a^r)^s = a^{r \\cdot s}$).\n\n**Krok 2:** Wykonujemy działania na wykładnikach potęg:\nUpraszczamy licznik:\n$(2^3)^2 = 2^6$, więc licznik to $2^6 \\cdot 2^{-2} = 2^{6 - 2} = 2^4 = 16$.\nMian"
+    }
+  ],
+  "ARCH-02": [
+    {
+      "id": "task_math_form23_arch02_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\log_{2} 8 - \\log_{2} 2$ jest równa",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$\\log_{2} 6$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na różnicę logarytmów o tej samej podstawie (Wybrane wzory matematyczne CKE str. 4):\n$$\\log_a x - \\log_a y = \\log_a \\left(\\frac{x}{y}\\right)$$\n\n**Krok 2:** Stosujemy wzór dla podstawy $a = 2$:\n$$\\log_{2} 8 - \\log_{2} 2 = \\log_{2} \\left(\\frac{8}{2}\\right) = \\log_{2} 4$$\n"
+    },
+    {
+      "id": "task_math_form23_arch02_028",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\log_{5} 5 + \\log_{5} 25$ jest równa",
+      "options": [
+        "$4$",
+        "$3$",
+        "$125$",
+        "$\\log_{5} 30$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Korzystamy ze wzoru na sumę logarytmów o tej samej podstawie (Tablice CKE str. 4):\n$$\\log_a x + \\log_a y = \\log_a (x \\cdot y)$$\n\n**Krok 2:** Zastępujemy sumę logarytmem iloczynu:\n$$\\log_{5} 5 + \\log_{5} 25 = \\log_{5} (5 \\cdot 25) = \\log_{5} 125$$\n\n**Krok 3:** Obliczamy wartość logarytmu,"
+    },
+    {
+      "id": "task_math_form23_arch02_054",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\log_{\\frac{1}{3}} 81$ jest równa",
+      "options": [
+        "$\\frac{1}{81}$",
+        "$-4$",
+        "$4$",
+        "$-\\frac{1}{4}$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy definicję logarytmu $\\log_a b = c \\iff a^c = b$.\n\n**Krok 2:** Podstawiamy podstawę $a = \\frac{1}{3} = 3^{-1}$ oraz liczbę logarytmowaną $b = 81 = 3^{4}$:\n$$\\left(\\frac{1}{3}\\right)^c = 81 \\implies (3^{-1})^c = 3^{4} \\implies 3^{-c} = 3^{4}$$\n\n**Krok 3:** Przyrównujemy wykład"
+    }
+  ],
+  "ARCH-03": [
+    {
+      "id": "task_math_form23_arch03_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności $|x + 4| \\le 3$ jest przedział",
+      "options": [
+        "$(-\\infty, -3\\rangle \\cup \\langle 3, +\\infty)$",
+        "$\\langle -7, -1 \\rangle$",
+        "$(-\\infty, -7\\rangle \\cup \\langle -1, +\\infty)$",
+        "$\\langle -3, 3 \\rangle$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Korzystamy z interpretacji geometrycznej wartości bezwzględnej: $|x - a|$ to odległość liczby $x$ od punktu $a$ na osi liczbowej.\nDla wyrażenia $|x + 4|$ punktem centralnym jest $a = -4$, a maksymalną odległością jest $r = 3$.\n\n**Krok 2:** Wyznaczamy punkty brzegowe oddalone o $r = 3$ od"
+    },
+    {
+      "id": "task_math_form23_arch03_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności $|x - 1| \\le 2$ jest przedział",
+      "options": [
+        "$\\langle -1, 3 \\rangle$",
+        "$(-\\infty, -2\\rangle \\cup \\langle 2, +\\infty)$",
+        "$(-\\infty, -1\\rangle \\cup \\langle 3, +\\infty)$",
+        "$\\langle -2, 2 \\rangle$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Korzystamy z interpretacji geometrycznej wartości bezwzględnej: $|x - a|$ to odległość liczby $x$ od punktu $a$ na osi liczbowej.\nDla wyrażenia $|x - 1|$ punktem centralnym jest $a = 1$, a maksymalną odległością jest $r = 2$.\n\n**Krok 2:** Wyznaczamy punkty brzegowe oddalone o $r = 2$ od "
+    },
+    {
+      "id": "task_math_form23_arch03_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności $|x - 4| \\ge 5$ jest przedział",
+      "options": [
+        "$\\langle -1, 9 \\rangle$",
+        "$(-\\infty, -5\\rangle \\cup \\langle 5, +\\infty)$",
+        "$\\langle -5, 5 \\rangle$",
+        "$(-\\infty, -1\\rangle \\cup \\langle 9, +\\infty)$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Korzystamy z interpretacji geometrycznej wartości bezwzględnej: $|x - a|$ to odległość liczby $x$ od punktu $a$ na osi liczbowej.\nDla wyrażenia $|x - 4|$ punktem centralnym jest $a = 4$, a maksymalną odległością jest $r = 5$.\n\n**Krok 2:** Wyznaczamy punkty brzegowe oddalone o $r = 5$ od "
+    }
+  ],
+  "ARCH-04": [
+    {
+      "id": "task_math_form23_arch04_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nCena towaru wynosiła $200$ zł. Cenę tę obniżono najpierw o $20\\%$, a następnie nową cenę obniżono o kolejne $30\\%$. Po obu tych obniżkach cena towaru wynosi",
+      "options": [
+        "$160$ zł",
+        "$100$ zł",
+        "$112$ zł",
+        "$137$ zł"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Obliczamy cenę towaru po pierwszej obniżce o $20\\%$:\n$$C_1 = 200 \\cdot \\left(1 - \\frac{20}{100}\\right) = 200 \\cdot 0.8 = 160\\text{ zł}$$\n\n**Krok 2:** Obliczamy cenę końcową po drugiej obniżce o $30\\%$ (od kwoty $160$ zł):\n$$C_2 = 160 \\cdot \\left(1 - \\frac{30}{100}\\right) = 160 \\cdot 0.7 "
+    },
+    {
+      "id": "task_math_form23_arch04_015",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nCena towaru wynosiła $100$ zł. Cenę tę obniżono najpierw o $30\\%$, a następnie nową cenę obniżono o kolejne $20\\%$. Po obu tych obniżkach cena towaru wynosi",
+      "options": [
+        "$50$ zł",
+        "$56$ zł",
+        "$70$ zł",
+        "$81$ zł"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Obliczamy cenę towaru po pierwszej obniżce o $30\\%$:\n$$C_1 = 100 \\cdot \\left(1 - \\frac{30}{100}\\right) = 100 \\cdot 0.7 = 70\\text{ zł}$$\n\n**Krok 2:** Obliczamy cenę końcową po drugiej obniżce o $20\\%$ (od kwoty $70$ zł):\n$$C_2 = 70 \\cdot \\left(1 - \\frac{20}{100}\\right) = 70 \\cdot 0.8 = 56"
+    },
+    {
+      "id": "task_math_form23_arch04_029",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nCena towaru wynosiła $500$ zł. Cenę tę obniżono najpierw o $20\\%$, a następnie nową cenę obniżono o kolejne $10\\%$. Po obu tych obniżkach cena towaru wynosi",
+      "options": [
+        "$350$ zł",
+        "$360$ zł",
+        "$385$ zł",
+        "$400$ zł"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Obliczamy cenę towaru po pierwszej obniżce o $20\\%$:\n$$C_1 = 500 \\cdot \\left(1 - \\frac{20}{100}\\right) = 500 \\cdot 0.8 = 400\\text{ zł}$$\n\n**Krok 2:** Obliczamy cenę końcową po drugiej obniżce o $10\\%$ (od kwoty $400$ zł):\n$$C_2 = 400 \\cdot \\left(1 - \\frac{10}{100}\\right) = 400 \\cdot 0.9 "
+    }
+  ],
+  "ARCH-05": [
+    {
+      "id": "task_math_form23_arch05_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $27$ jest przybliżeniem z nadmiarem liczby dokładnej $25$. Błąd względny tego przybliżenia jest równy",
+      "options": [
+        "$2\\%$",
+        "$7.4\\%$",
+        "$8\\%$",
+        "$16\\%$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy błąd bezwzględny przybliżenia ze wzoru $\\Delta = |x - a|$, gdzie $x = 25$ to wartość dokładna, a $a = 27$ to wartość przybliżona:\n$$\\Delta = |25 - 27| = |-2| = 2$$\n\n**Krok 2:** Stosujemy wzór na błąd względny przybliżenia (Tablice CKE str. 2):\n$$\\delta = \\frac{\\Delta}{x} \\cdot"
+    },
+    {
+      "id": "task_math_form23_arch05_008",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $54$ jest przybliżeniem z nadmiarem liczby dokładnej $50$. Błąd względny tego przybliżenia jest równy",
+      "options": [
+        "$8\\%$",
+        "$16\\%$",
+        "$7.4\\%$",
+        "$4\\%$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy błąd bezwzględny przybliżenia ze wzoru $\\Delta = |x - a|$, gdzie $x = 50$ to wartość dokładna, a $a = 54$ to wartość przybliżona:\n$$\\Delta = |50 - 54| = |-4| = 4$$\n\n**Krok 2:** Stosujemy wzór na błąd względny przybliżenia (Tablice CKE str. 2):\n$$\\delta = \\frac{\\Delta}{x} \\cdot"
+    },
+    {
+      "id": "task_math_form23_arch05_014",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $84$ jest przybliżeniem z nadmiarem liczby dokładnej $80$. Błąd względny tego przybliżenia jest równy",
+      "options": [
+        "$5\\%$",
+        "$4.8\\%$",
+        "$4\\%$",
+        "$10\\%$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy błąd bezwzględny przybliżenia ze wzoru $\\Delta = |x - a|$, gdzie $x = 80$ to wartość dokładna, a $a = 84$ to wartość przybliżona:\n$$\\Delta = |80 - 84| = |-4| = 4$$\n\n**Krok 2:** Stosujemy wzór na błąd względny przybliżenia (Tablice CKE str. 2):\n$$\\delta = \\frac{\\Delta}{x} \\cdot"
+    }
+  ],
+  "ARCH-06": [
+    {
+      "id": "task_math_form23_arch06_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla każdej liczby rzeczywistej $x$ wyrażenie $(x + 3)^2 - (x - 3)^2$ jest równe",
+      "options": [
+        "$0$",
+        "$6x$",
+        "$12x$",
+        "$2x^2 + 18$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Rozpisujemy oba nawiasy za pomocą wzorów skróconego mnożenia (Tablice CKE str. 3):\n$$(x + 3)^2 = x^2 + 2 \\cdot x \\cdot 3 + 3^2 = x^2 + 6x + 9$$\n$$(x - 3)^2 = x^2 - 2 \\cdot x \\cdot 3 + 3^2 = x^2 - 6x + 9$$\n\n**Krok 2:** Odejmujemy wyrażenia, pamiętając o zmianie znaków w całym drugim nawia"
+    },
+    {
+      "id": "task_math_form23_arch06_024",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla każdej liczby rzeczywistej $x$ wyrażenie $(x + 2)^2 - (x - 2)^2$ jest równe",
+      "options": [
+        "$4x$",
+        "$0$",
+        "$8x$",
+        "$2x^2 + 8$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Rozpisujemy oba nawiasy za pomocą wzorów skróconego mnożenia (Tablice CKE str. 3):\n$$(x + 2)^2 = x^2 + 2 \\cdot x \\cdot 2 + 2^2 = x^2 + 4x + 4$$\n$$(x - 2)^2 = x^2 - 2 \\cdot x \\cdot 2 + 2^2 = x^2 - 4x + 4$$\n\n**Krok 2:** Odejmujemy wyrażenia, pamiętając o zmianie znaków w całym drugim nawia"
+    },
+    {
+      "id": "task_math_form23_arch06_046",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla każdej liczby rzeczywistej $x$ wyrażenie $(x + 6)^2 - (x - 6)^2$ jest równe",
+      "options": [
+        "$0$",
+        "$2x^2 + 72$",
+        "$12x$",
+        "$24x$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Rozpisujemy oba nawiasy za pomocą wzorów skróconego mnożenia (Tablice CKE str. 3):\n$$(x + 6)^2 = x^2 + 2 \\cdot x \\cdot 6 + 6^2 = x^2 + 12x + 36$$\n$$(x - 6)^2 = x^2 - 2 \\cdot x \\cdot 6 + 6^2 = x^2 - 12x + 36$$\n\n**Krok 2:** Odejmujemy wyrażenia, pamiętając o zmianie znaków w całym drugim n"
+    }
+  ],
+  "ARCH-07": [
+    {
+      "id": "task_math_form23_arch07_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba wszystkich rozwiązań rzeczywistych równania $\\frac{(x - 2)(x + 3)}{x - 7} = 0$ jest równa",
+      "options": [
+        "$1$",
+        "$0$",
+        "$2$",
+        "$3$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy dziedzinę równania wymiernego (mianownik musi być różny od zera):\n$$x - 7 \\neq 0 \\implies x \\neq 7 \\implies D = \\mathbb{R} \\setminus \\{7\\}$$\n\n**Krok 2:** Przyrównujemy licznik ułamka do zera:\n$$(x - 2)(x + 3) = 0 \\implies x = 2 \\quad \\text{lub} \\quad x = -3$$\n\n**Krok 3:** Spra"
+    },
+    {
+      "id": "task_math_form23_arch07_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba wszystkich rozwiązań rzeczywistych równania $\\frac{(x - 2)(x + 2)}{x - 7} = 0$ jest równa",
+      "options": [
+        "$0$",
+        "$2$",
+        "$3$",
+        "$1$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy dziedzinę równania wymiernego (mianownik musi być różny od zera):\n$$x - 7 \\neq 0 \\implies x \\neq 7 \\implies D = \\mathbb{R} \\setminus \\{7\\}$$\n\n**Krok 2:** Przyrównujemy licznik ułamka do zera:\n$$(x - 2)(x + 2) = 0 \\implies x = 2 \\quad \\text{lub} \\quad x = -2$$\n\n**Krok 3:** Spra"
+    },
+    {
+      "id": "task_math_form23_arch07_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba wszystkich rozwiązań rzeczywistych równania $\\frac{(x - 1)(x + 5)}{x - 1} = 0$ jest równa",
+      "options": [
+        "$3$",
+        "$1$",
+        "$2$",
+        "$0$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy dziedzinę równania wymiernego (mianownik musi być różny od zera):\n$$x - 1 \\neq 0 \\implies x \\neq 1 \\implies D = \\mathbb{R} \\setminus \\{1\\}$$\n\n**Krok 2:** Przyrównujemy licznik ułamka do zera:\n$$(x - 1)(x + 5) = 0 \\implies x = 1 \\quad \\text{lub} \\quad x = -5$$\n\n**Krok 3:** Spra"
+    }
+  ],
+  "ARCH-08": [
+    {
+      "id": "task_math_form23_arch08_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności $x^2 - x - 6 < 0$ jest przedział",
+      "options": [
+        "$(-2, 3)$",
+        "$(-\\infty, -2) \\cup (3, +\\infty)$",
+        "$(-\\infty, 3)$",
+        "$(-2, +\\infty)$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy miejsca zerowe trójmianu kwadratowego $x^2 - x - 6 = 0$:\n$$x_1 = -2, \\quad x_2 = 3$$\n\n**Krok 2:** Analizujemy znak współczynnika przy $x^2$: $a = 1 > 0$, co oznacza, że ramiona paraboli są skierowane w górę.\n\n**Krok 3:** Odczytujemy przedział rozwiązań dla nierówności $< 0$:\nW"
+    },
+    {
+      "id": "task_math_form23_arch08_028",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności $x^2 - 4x - 5 > 0$ jest przedział",
+      "options": [
+        "$(-1, +\\infty)$",
+        "$(-\\infty, 5)$",
+        "$(-1, 5)$",
+        "$(-\\infty, -1) \\cup (5, +\\infty)$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy miejsca zerowe trójmianu kwadratowego $x^2 - 4x - 5 = 0$:\n$$x_1 = -1, \\quad x_2 = 5$$\n\n**Krok 2:** Analizujemy znak współczynnika przy $x^2$: $a = 1 > 0$, co oznacza, że ramiona paraboli są skierowane w górę.\n\n**Krok 3:** Odczytujemy przedział rozwiązań dla nierówności $> 0$:\n"
+    },
+    {
+      "id": "task_math_form23_arch08_054",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności $x^2 - 3x - 18 > 0$ jest przedział",
+      "options": [
+        "$(-\\infty, 6)$",
+        "$(-\\infty, -3) \\cup (6, +\\infty)$",
+        "$(-3, +\\infty)$",
+        "$(-3, 6)$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy miejsca zerowe trójmianu kwadratowego $x^2 - 3x - 18 = 0$:\n$$x_1 = -3, \\quad x_2 = 6$$\n\n**Krok 2:** Analizujemy znak współczynnika przy $x^2$: $a = 1 > 0$, co oznacza, że ramiona paraboli są skierowane w górę.\n\n**Krok 3:** Odczytujemy przedział rozwiązań dla nierówności $> 0$:"
+    }
+  ],
+  "ARCH-09": [
+    {
+      "id": "task_math_form23_arch09_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^3 - 2x^2 - 9x + 18 = 0$ w zbiorze liczb rzeczywistych",
+      "options": [
+        "ma dokładnie trzy rozwiązania: $x = 2, x = 3, x = -3$",
+        "ma dokładnie dwa rozwiązania: $x = 2, x = 3$",
+        "ma dokładnie jedno rozwiązanie: $x = 2$",
+        "nie ma rozwiązań rzeczywistych"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Stosujemy metodę grupowania wyrazów dla wielomianu stopnia trzeciego:\n$$(x^3 - 2x^2) - (9x - 18) = 0$$\n$$x^2(x - 2) - 9(x - 2) = 0$$\n\n**Krok 2:** Wyłączamy wspólny czynnik $(x - 2)$ przed nawias:\n$$(x - 2)(x^2 - 9) = 0$$\n\n**Krok 3:** Rozkładamy czynnik kwadratowy za pomocą wzoru na różni"
+    },
+    {
+      "id": "task_math_form23_arch09_021",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^3 - 2x^2 - 9x + 18 = 0$ w zbiorze liczb rzeczywistych",
+      "options": [
+        "ma dokładnie jedno rozwiązanie: $x = 2$",
+        "ma dokładnie trzy rozwiązania: $x = 2, x = 3, x = -3$",
+        "ma dokładnie dwa rozwiązania: $x = 2, x = 3$",
+        "nie ma rozwiązań rzeczywistych"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Stosujemy metodę grupowania wyrazów dla wielomianu stopnia trzeciego:\n$$(x^3 - 2x^2) - (9x - 18) = 0$$\n$$x^2(x - 2) - 9(x - 2) = 0$$\n\n**Krok 2:** Wyłączamy wspólny czynnik $(x - 2)$ przed nawias:\n$$(x - 2)(x^2 - 9) = 0$$\n\n**Krok 3:** Rozkładamy czynnik kwadratowy za pomocą wzoru na różni"
+    },
+    {
+      "id": "task_math_form23_arch09_040",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $x^3 - 1x^2 - 4x + 4 = 0$ w zbiorze liczb rzeczywistych",
+      "options": [
+        "ma dokładnie dwa rozwiązania: $x = 1, x = 2$",
+        "ma dokładnie jedno rozwiązanie: $x = 1$",
+        "ma dokładnie trzy rozwiązania: $x = 1, x = 2, x = -2$",
+        "nie ma rozwiązań rzeczywistych"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Stosujemy metodę grupowania wyrazów dla wielomianu stopnia trzeciego:\n$$(x^3 - 1x^2) - (4x - 4) = 0$$\n$$x^2(x - 1) - 4(x - 1) = 0$$\n\n**Krok 2:** Wyłączamy wspólny czynnik $(x - 1)$ przed nawias:\n$$(x - 1)(x^2 - 4) = 0$$\n\n**Krok 3:** Rozkładamy czynnik kwadratowy za pomocą wzoru na różnic"
+    }
+  ],
+  "ARCH-10": [
+    {
+      "id": "task_math_form23_arch10_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nNa rysunku przedstawiono wykres funkcji $f$ o punktach krańcowych $(-4, -3)$ oraz $(4, 0)$. Dziedziną funkcji $f$ jest zbiór",
+      "options": [
+        "$(-4, 4)$",
+        "$\\langle -4, 4 \\rangle$",
+        "$\\langle -3, 3 \\rangle$",
+        "$\\langle -4, 0 \\rangle$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przypominamy definicję: dziedzina funkcji to zbiór wszystkich argumentów $x$, dla których funkcja jest określona (rzut wykresu na oś poziomą $OX$).\n\n**Krok 2:** Odczytujemy z osi $OX$ skrajny lewy oraz skrajny prawy punkt wykresu:\n- Wykres rozpoczyna się w punkcie o odciętej $x = -4$ (za"
+    },
+    {
+      "id": "task_math_form23_arch10_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nNa rysunku przedstawiono wykres funkcji $f$ o punktach krańcowych $(-4, -3)$ oraz $(4, 0)$. Dziedziną funkcji $f$ jest zbiór",
+      "options": [
+        "$\\langle -4, 4 \\rangle$",
+        "$(-4, 4)$",
+        "$\\langle -4, 0 \\rangle$",
+        "$\\langle -3, 3 \\rangle$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przypominamy definicję: dziedzina funkcji to zbiór wszystkich argumentów $x$, dla których funkcja jest określona (rzut wykresu na oś poziomą $OX$).\n\n**Krok 2:** Odczytujemy z osi $OX$ skrajny lewy oraz skrajny prawy punkt wykresu:\n- Wykres rozpoczyna się w punkcie o odciętej $x = -4$ (za"
+    },
+    {
+      "id": "task_math_form23_arch10_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nNa rysunku przedstawiono wykres funkcji $f$ określonej w przedziale $\\langle -3, 3 \\rangle$, której najniższy punkt ma współrzędne $(-3, -2)$, a najwyższy punkt ma współrzędne $(0, 2)$.\nZbiorem wartości funkcji $f$ jest przedział",
+      "options": [
+        "$\\langle 0, 2 \\rangle$",
+        "$\\langle -2, 2 \\rangle$",
+        "$(-2, 2)$",
+        "$\\langle -3, 3 \\rangle$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przypominamy definicję: zbiór wartości funkcji $y = f(x)$ to rzut całego wykresu na pionową oś $OY$.\n\n**Krok 2:** Odczytujemy z wykresu najmniejszą oraz największą wartość funkcji:\n- Najniższy punkt wykresu ma rzędną $y_{\\min} = -2$.\n- Najwyższy punkt wykresu ma rzędną $y_{\\max} = 2$.\n\n*"
+    }
+  ],
+  "ARCH-11": [
+    {
+      "id": "task_math_form23_arch11_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWykres funkcji $g$ otrzymano przez przesunięcie wykresu funkcji $f(x) = x^2$ o wektor $\\vec{u} = [2, -3]$. Wzór funkcji $g$ ma postać",
+      "options": [
+        "$g(x) = (x + 2)^2 + 3$",
+        "$g(x) = (x - 2)^2 - 3$",
+        "$g(x) = (x - 2)^2 + 3$",
+        "$g(x) = (x + 2)^2 - 3$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy regułę przesunięcia wykresu funkcji $f(x)$ o wektor $\\vec{u} = [p, q]$ (Tablice CKE str. 7):\n$$g(x) = f(x - p) + q$$\n\n**Krok 2:** Podstawiamy współrzędne wektora $p = 2$ oraz $q = -3$ do wzoru funkcji bazowej $f(x) = x^2$:\n$$g(x) = (x - 2)^2 + (-3)$$\n\n**Krok 3:** Upraszczamy"
+    },
+    {
+      "id": "task_math_form23_arch11_015",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWykres funkcji $g$ otrzymano przez przesunięcie wykresu funkcji $f(x) = x^2$ o wektor $\\vec{u} = [4, -5]$. Wzór funkcji $g$ ma postać",
+      "options": [
+        "$g(x) = (x - 4)^2 - 5$",
+        "$g(x) = (x - 4)^2 + 5$",
+        "$g(x) = (x + 4)^2 + 5$",
+        "$g(x) = (x + 4)^2 - 5$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy regułę przesunięcia wykresu funkcji $f(x)$ o wektor $\\vec{u} = [p, q]$ (Tablice CKE str. 7):\n$$g(x) = f(x - p) + q$$\n\n**Krok 2:** Podstawiamy współrzędne wektora $p = 4$ oraz $q = -5$ do wzoru funkcji bazowej $f(x) = x^2$:\n$$g(x) = (x - 4)^2 + (-5)$$\n\n**Krok 3:** Upraszczamy"
+    },
+    {
+      "id": "task_math_form23_arch11_029",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWykres funkcji $g$ otrzymano przez przesunięcie wykresu funkcji $f(x) = x^2$ o wektor $\\vec{u} = [2, -3]$. Wzór funkcji $g$ ma postać",
+      "options": [
+        "$g(x) = (x + 2)^2 + 3$",
+        "$g(x) = (x - 2)^2 - 3$",
+        "$g(x) = (x + 2)^2 - 3$",
+        "$g(x) = (x - 2)^2 + 3$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy regułę przesunięcia wykresu funkcji $f(x)$ o wektor $\\vec{u} = [p, q]$ (Tablice CKE str. 7):\n$$g(x) = f(x - p) + q$$\n\n**Krok 2:** Podstawiamy współrzędne wektora $p = 2$ oraz $q = -3$ do wzoru funkcji bazowej $f(x) = x^2$:\n$$g(x) = (x - 2)^2 + (-3)$$\n\n**Krok 3:** Upraszczamy"
+    }
+  ],
+  "ARCH-12": [
+    {
+      "id": "task_math_form23_arch12_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWierzchołkiem paraboli będącej wykresem funkcji kwadratowej $f(x) = 2(x + 3)^2 - 1$ jest punkt $W$ o współrzędnych",
+      "options": [
+        "$(3, 1)$",
+        "$(-3, 1)$",
+        "$(-3, -1)$",
+        "$(3, -1)$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy postać kanoniczną funkcji kwadratowej (Tablice CKE str. 8):\n$$f(x) = a(x - p)^2 + q$$\ngdzie punkt $W = (p, q)$ jest wierzchołkiem paraboli.\n\n**Krok 2:** Odczytujemy współrzędną $p$ z wnętrza nawiasu $(x + 3)$. Ponieważ we wzorze mamy $(x - p)$, współrzędna $p$ ma znak przeci"
+    },
+    {
+      "id": "task_math_form23_arch12_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWierzchołkiem paraboli będącej wykresem funkcji kwadratowej $f(x) = 2(x + 3)^2 - 1$ jest punkt $W$ o współrzędnych",
+      "options": [
+        "$(3, 1)$",
+        "$(-3, -1)$",
+        "$(3, -1)$",
+        "$(-3, 1)$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy postać kanoniczną funkcji kwadratowej (Tablice CKE str. 8):\n$$f(x) = a(x - p)^2 + q$$\ngdzie punkt $W = (p, q)$ jest wierzchołkiem paraboli.\n\n**Krok 2:** Odczytujemy współrzędną $p$ z wnętrza nawiasu $(x + 3)$. Ponieważ we wzorze mamy $(x - p)$, współrzędna $p$ ma znak przeci"
+    },
+    {
+      "id": "task_math_form23_arch12_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWierzchołkiem paraboli będącej wykresem funkcji kwadratowej $f(x) = (x + 4)^2 - 2$ jest punkt $W$ o współrzędnych",
+      "options": [
+        "$(-4, 2)$",
+        "$(-4, -2)$",
+        "$(4, -2)$",
+        "$(4, 2)$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy postać kanoniczną funkcji kwadratowej (Tablice CKE str. 8):\n$$f(x) = a(x - p)^2 + q$$\ngdzie punkt $W = (p, q)$ jest wierzchołkiem paraboli.\n\n**Krok 2:** Odczytujemy współrzędną $p$ z wnętrza nawiasu $(x + 4)$. Ponieważ we wzorze mamy $(x - p)$, współrzędna $p$ ma znak przeci"
+    }
+  ],
+  "ARCH-13": [
+    {
+      "id": "task_math_form23_arch13_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nProsta o równaniu $y = 3x + 3$ jest prostopadła do prostej o równaniu",
+      "options": [
+        "$y = 3x + 2$",
+        "$y = \\frac{1}{3}x + 2$",
+        "$y = -\\frac{1}{3}x + 2$",
+        "$y = -3x + 2$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy warunek prostopadłości prostych o współczynnikach kierunkowych $a_1$ i $a_2$ (Tablice CKE str. 6):\n$$a_1 \\cdot a_2 = -1 \\iff a_2 = -\\frac{1}{a_1}$$\n\n**Krok 2:** Odczytujemy współczynnik kierunkowy pierwszej prostej: $a_1 = 3$.\n\n**Krok 3:** Obliczamy współczynnik kierunkowy p"
+    },
+    {
+      "id": "task_math_form23_arch13_028",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nProste o równaniach $y = (3m - 1)x + 3$ oraz $y = 11x - 1$ są równoległe, gdy liczba $m$ jest równa",
+      "options": [
+        "$0$",
+        "$5$",
+        "$4$",
+        "$-4$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy warunek równoległości dwóch prostych (Tablice CKE str. 6): proste są równoległe wtedy i tylko wtedy, gdy ich współczynniki kierunkowe są równe ($a_1 = a_2$).\n\n**Krok 2:** Przyrównujemy współczynniki kierunkowe stojące przy zmiennej $x$:\n$$3m - 1 = 11$$\n\n**Krok 3:** Rozwiązuj"
+    },
+    {
+      "id": "task_math_form23_arch13_054",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nProste o równaniach $y = (2m - 1)x + 5$ oraz $y = 9x - 3$ są równoległe, gdy liczba $m$ jest równa",
+      "options": [
+        "$0$",
+        "$5$",
+        "$-5$",
+        "$6$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy warunek równoległości dwóch prostych (Tablice CKE str. 6): proste są równoległe wtedy i tylko wtedy, gdy ich współczynniki kierunkowe są równe ($a_1 = a_2$).\n\n**Krok 2:** Przyrównujemy współczynniki kierunkowe stojące przy zmiennej $x$:\n$$2m - 1 = 9$$\n\n**Krok 3:** Rozwiązuje"
+    }
+  ],
+  "ARCH-14": [
+    {
+      "id": "task_math_form23_arch14_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczby $4$, $x$, $10$ w podanej kolejności tworzą ciąg arytmetyczny. Liczba $x$ jest równa",
+      "options": [
+        "$8$",
+        "$10$",
+        "$7$",
+        "$6$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy własność trzech kolejnych wyrazów ciągu arytmetycznego (Tablice CKE str. 5):\n$$a_n = \\frac{a_{n-1} + a_{n+1}}{2} \\iff 2a_n = a_{n-1} + a_{n+1}$$\nWyraz środkowy jest średnią arytmetyczną wyrazów sąsiednich.\n\n**Krok 2:** Podstawiamy liczby $a_1 = 4$ oraz $a_3 = 10$:\n$$x = \\fra"
+    },
+    {
+      "id": "task_math_form23_arch14_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczby $4$, $x$, $8$ w podanej kolejności tworzą ciąg arytmetyczny. Liczba $x$ jest równa",
+      "options": [
+        "$7$",
+        "$6$",
+        "$8$",
+        "$4$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy własność trzech kolejnych wyrazów ciągu arytmetycznego (Tablice CKE str. 5):\n$$a_n = \\frac{a_{n-1} + a_{n+1}}{2} \\iff 2a_n = a_{n-1} + a_{n+1}$$\nWyraz środkowy jest średnią arytmetyczną wyrazów sąsiednich.\n\n**Krok 2:** Podstawiamy liczby $a_1 = 4$ oraz $a_3 = 8$:\n$$x = \\frac"
+    },
+    {
+      "id": "task_math_form23_arch14_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW ciągu arytmetycznym $(a_n)$ określonym dla każdej liczby naturalnej $n \\ge 1$ dane są: wyraz $a_1 = 8$ oraz różnica $r = 6$. Wtedy wyraz $a_{8}$ jest równy",
+      "options": [
+        "$44$",
+        "$56$",
+        "$49$",
+        "$50$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór ogólny na $n$-ty wyraz ciągu arytmetycznego (Tablice CKE str. 5):\n$$a_n = a_1 + (n - 1)r$$\n\n**Krok 2:** Podstawiamy dane: $a_1 = 8$, $r = 6$ oraz $n = 8$:\n$$a_{8} = 8 + (8 - 1) \\cdot 6 = 8 + 7 \\cdot 6$$\n\n**Krok 3:** Wykonujemy obliczenia:\n$$a_{8} = 8 + 42 = 50$$\n\n**Puła"
+    }
+  ],
+  "ARCH-15": [
+    {
+      "id": "task_math_form23_arch15_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW ciągu arytmetycznym $(a_n)$ określonym dla $n \\ge 1$ dane są: $a_1 = 2$ oraz $a_{11} = 32$. Suma pierwszych $11$ wyrazów tego ciągu $S_{11}$ jest równa",
+      "options": [
+        "$185$",
+        "$374$",
+        "$201$",
+        "$187$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na sumę $n$ początkowych wyrazów ciągu arytmetycznego (Tablice CKE str. 5):\n$$S_n = \\frac{a_1 + a_n}{2} \\cdot n$$\n\n**Krok 2:** Podstawiamy wartości $a_1 = 2$, $a_{11} = 32$ oraz $n = 11$:\n$$S_{11} = \\frac{2 + 32}{2} \\cdot 11 = \\frac{34}{2} \\cdot 11$$\n\n**Krok 3:** Wykonu"
+    },
+    {
+      "id": "task_math_form23_arch15_015",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW ciągu arytmetycznym $(a_n)$ określonym dla $n \\ge 1$ dane są: $a_1 = 1$ oraz $a_{10} = 46$. Suma pierwszych $10$ wyrazów tego ciągu $S_{10}$ jest równa",
+      "options": [
+        "$234$",
+        "$249$",
+        "$470$",
+        "$235$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na sumę $n$ początkowych wyrazów ciągu arytmetycznego (Tablice CKE str. 5):\n$$S_n = \\frac{a_1 + a_n}{2} \\cdot n$$\n\n**Krok 2:** Podstawiamy wartości $a_1 = 1$, $a_{10} = 46$ oraz $n = 10$:\n$$S_{10} = \\frac{1 + 46}{2} \\cdot 10 = \\frac{47}{2} \\cdot 10$$\n\n**Krok 3:** Wykonu"
+    },
+    {
+      "id": "task_math_form23_arch15_029",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW ciągu arytmetycznym $(a_n)$ określonym dla $n \\ge 1$ dane są: $a_1 = 5$ oraz $a_{14} = 44$. Suma pierwszych $14$ wyrazów tego ciągu $S_{14}$ jest równa",
+      "options": [
+        "$338$",
+        "$357$",
+        "$343$",
+        "$686$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na sumę $n$ początkowych wyrazów ciągu arytmetycznego (Tablice CKE str. 5):\n$$S_n = \\frac{a_1 + a_n}{2} \\cdot n$$\n\n**Krok 2:** Podstawiamy wartości $a_1 = 5$, $a_{14} = 44$ oraz $n = 14$:\n$$S_{14} = \\frac{5 + 44}{2} \\cdot 14 = \\frac{49}{2} \\cdot 14$$\n\n**Krok 3:** Wykonu"
+    }
+  ],
+  "ARCH-16": [
+    {
+      "id": "task_math_form23_arch16_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDodatnie liczby $2$, $x$, $18$ w podanej kolejności tworzą ciąg geometryczny. Liczba $x$ jest równa",
+      "options": [
+        "$9$",
+        "$10$",
+        "$6$",
+        "$12$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy własność trzech kolejnych wyrazów ciągu geometrycznego (Tablice CKE str. 5):\n$$b^2 = a \\cdot c$$\nKwadrat wyrazu środkowego jest równy iloczynowi wyrazów skrajnych.\n\n**Krok 2:** Podstawiamy $a = 2$ oraz $c = 18$:\n$$x^2 = 2 \\cdot 18 = 36$$\n\n**Krok 3:** Pierwiastkujemy obie str"
+    },
+    {
+      "id": "task_math_form23_arch16_034",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW ciągu geometrycznym $(a_n)$ o wyrazach dodatnich dane są: $a_2 = 8$ oraz $a_3 = 32$. Iloraz $q$ tego ciągu jest równy",
+      "options": [
+        "$6$",
+        "$\\frac{1}{4}$",
+        "$4$",
+        "$24$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy definicję ilorazu ciągu geometrycznego (Tablice CKE str. 5):\n$$q = \\frac{a_{n+1}}{a_n}$$\n\n**Krok 2:** Podstawiamy wyrazy $a_3 = 32$ oraz $a_2 = 8$:\n$$q = \\frac{a_3}{a_2} = \\frac{32}{8}$$\n\n**Krok 3:** Dzielimy liczby:\n$$q = 4$$\n\n**Pułapka CKE:** Opcja B ($24$) to różnica wyra"
+    },
+    {
+      "id": "task_math_form23_arch16_067",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDodatnie liczby $4$, $x$, $36$ w podanej kolejności tworzą ciąg geometryczny. Liczba $x$ jest równa",
+      "options": [
+        "$12$",
+        "$20$",
+        "$15$",
+        "$24$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy własność trzech kolejnych wyrazów ciągu geometrycznego (Tablice CKE str. 5):\n$$b^2 = a \\cdot c$$\nKwadrat wyrazu środkowego jest równy iloczynowi wyrazów skrajnych.\n\n**Krok 2:** Podstawiamy $a = 4$ oraz $c = 36$:\n$$x^2 = 4 \\cdot 36 = 144$$\n\n**Krok 3:** Pierwiastkujemy obie st"
+    }
+  ],
+  "ARCH-17": [
+    {
+      "id": "task_math_form23_arch17_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nKąt $\\alpha$ jest kątem ostrym oraz $\\sin\\alpha = \\frac{4}{5}$. Wtedy $\\cos\\alpha$ jest równy",
+      "options": [
+        "$\\frac{1}{5}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{4}{3}$",
+        "$1 - \\frac{4}{5}$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy tożsamość trygonometryczną zwaną jedynką trygonometryczną (Tablice CKE str. 9):\n$$\\sin^2\\alpha + \\cos^2\\alpha = 1 \\implies \\cos^2\\alpha = 1 - \\sin^2\\alpha$$\n\n**Krok 2:** Podstawiamy daną wartość $\\sin\\alpha = \\frac{4}{5}$:\n$$\\cos^2\\alpha = 1 - \\left(\\frac{4}{5}\\right)^2 = 1 "
+    },
+    {
+      "id": "task_math_form23_arch17_028",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nKąt $\\alpha$ jest kątem ostrym oraz $\\sin\\alpha = \\frac{8}{17}$ i $\\cos\\alpha = \\frac{15}{17}$. Wtedy $\\operatorname{tg}\\alpha$ jest równy",
+      "options": [
+        "$1$",
+        "$\\frac{8}{17}$",
+        "$\\frac{8}{15}$",
+        "$\\frac{15}{8}$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy definicję tangensa za pomocą funkcji sinus i cosinus (Tablice CKE str. 9):\n$$\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}$$\n\n**Krok 2:** Podstawiamy wartości ułamkowe:\n$$\\operatorname{tg}\\alpha = \\frac{\\frac{8}{17}}{\\frac{15}{17}} = \\frac{8}{17} \\cdot \\frac{17}{15"
+    },
+    {
+      "id": "task_math_form23_arch17_054",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nKąt $\\alpha$ jest kątem ostrym oraz $\\sin\\alpha = \\frac{3}{5}$ i $\\cos\\alpha = \\frac{4}{5}$. Wtedy $\\operatorname{tg}\\alpha$ jest równy",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{3}$",
+        "$\\frac{3}{5}$",
+        "$1$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy definicję tangensa za pomocą funkcji sinus i cosinus (Tablice CKE str. 9):\n$$\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}$$\n\n**Krok 2:** Podstawiamy wartości ułamkowe:\n$$\\operatorname{tg}\\alpha = \\frac{\\frac{3}{5}}{\\frac{4}{5}} = \\frac{3}{5} \\cdot \\frac{5}{4}$$\n\n*"
+    }
+  ],
+  "ARCH-18": [
+    {
+      "id": "task_math_form23_arch18_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW trójkącie prostokątnym przyprostokątne mają długości $8$ i $6$, a przeciwprostokątna ma długość $10$. Jeśli $\\alpha$ jest kątem leżącym naprzeciwko przyprostokątnej o długości $8$, to $\\sin\\alpha$ jest równy",
+      "options": [
+        "$\\frac{4}{5}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{3}$",
+        "$\\frac{3}{5}$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy definicję sinusa w trójkącie prostokątnym (Tablice CKE str. 9): sinus kąta ostrego $\\alpha$ to stosunek długości przyprostokątnej leżącej naprzeciwko tego kąta ($a$) do długości przeciwprostokątnej ($c$):\n$$\\sin\\alpha = \\frac{a}{c}$$\n\n**Krok 2:** Identyfikujemy boki w trójką"
+    },
+    {
+      "id": "task_math_form23_arch18_021",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW trójkącie prostokątnym przyprostokątne mają długości $24$ i $10$, a przeciwprostokątna ma długość $26$. Jeśli $\\alpha$ jest kątem leżącym naprzeciwko przyprostokątnej o długości $24$, to $\\sin\\alpha$ jest równy",
+      "options": [
+        "$\\frac{5}{12}$",
+        "$\\frac{12}{5}$",
+        "$\\frac{5}{13}$",
+        "$\\frac{12}{13}$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy definicję sinusa w trójkącie prostokątnym (Tablice CKE str. 9): sinus kąta ostrego $\\alpha$ to stosunek długości przyprostokątnej leżącej naprzeciwko tego kąta ($a$) do długości przeciwprostokątnej ($c$):\n$$\\sin\\alpha = \\frac{a}{c}$$\n\n**Krok 2:** Identyfikujemy boki w trójką"
+    },
+    {
+      "id": "task_math_form23_arch18_040",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW trójkącie prostokątnym przyprostokątne mają długości $16$ i $30$, a przeciwprostokątna ma długość $34$. Jeśli $\\alpha$ jest kątem leżącym naprzeciwko przyprostokątnej o długości $16$, to $\\sin\\alpha$ jest równy",
+      "options": [
+        "$\\frac{15}{17}$",
+        "$\\frac{8}{17}$",
+        "$\\frac{8}{15}$",
+        "$\\frac{15}{8}$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy definicję sinusa w trójkącie prostokątnym (Tablice CKE str. 9): sinus kąta ostrego $\\alpha$ to stosunek długości przyprostokątnej leżącej naprzeciwko tego kąta ($a$) do długości przeciwprostokątnej ($c$):\n$$\\sin\\alpha = \\frac{a}{c}$$\n\n**Krok 2:** Identyfikujemy boki w trójką"
+    }
+  ],
+  "ARCH-19": [
+    {
+      "id": "task_math_form23_arch19_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nKąt wpisany w okrąg o mierze $22^\\circ$ jest oparty na tym samym łuku co kąt środkowy $\\beta$. Miara kąta $\\beta$ jest równa",
+      "options": [
+        "$44^\\circ$",
+        "$158^\\circ$",
+        "$22^\\circ$",
+        "$11^\\circ$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie o kątach w okręgu opartych na tym samym łuku (Tablice CKE str. 10):\nMiara kąta środkowego jest dwa razy większa od miary kąta wpisanego opartego na tym samym łuku:\n$$\\beta = 2 \\cdot \\alpha$$\n\n**Krok 2:** Podstawiamy daną miarę kąta wpisanego $\\alpha = 22^\\circ$:\n"
+    },
+    {
+      "id": "task_math_form23_arch19_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nKąt wpisany w okrąg o mierze $26^\\circ$ jest oparty na tym samym łuku co kąt środkowy $\\beta$. Miara kąta $\\beta$ jest równa",
+      "options": [
+        "$52^\\circ$",
+        "$26^\\circ$",
+        "$13^\\circ$",
+        "$154^\\circ$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie o kątach w okręgu opartych na tym samym łuku (Tablice CKE str. 10):\nMiara kąta środkowego jest dwa razy większa od miary kąta wpisanego opartego na tym samym łuku:\n$$\\beta = 2 \\cdot \\alpha$$\n\n**Krok 2:** Podstawiamy daną miarę kąta wpisanego $\\alpha = 26^\\circ$:\n"
+    },
+    {
+      "id": "task_math_form23_arch19_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nKąt środkowy oparty na pewnym łuku okręgu ma miarę $56^\\circ$. Miara kąta wpisanego $\\alpha$ opartego na tym samym łuku jest równa",
+      "options": [
+        "$56^\\circ$",
+        "$112^\\circ$",
+        "$90^\\circ$",
+        "$28^\\circ$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie o kącie wpisanym i środkowym (Tablice CKE str. 10):\nKąt wpisany jest dwa razy mniejszy od kąta środkowego opartego na tym samym łuku:\n$$\\alpha = \\frac{\\beta}{2}$$\n\n**Krok 2:** Podstawiamy miarę kąta środkowego $\\beta = 56^\\circ$:\n$$\\alpha = \\frac{56^\\circ}{2}$$\n\n"
+    }
+  ],
+  "ARCH-20": [
+    {
+      "id": "task_math_form23_arch20_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPrzyprostokątne trójkąta prostokątnego mają długości $5$ oraz $12$. Długość przeciwprostokątnej $c$ tego trójkąta jest równa",
+      "options": [
+        "$18$",
+        "$26$",
+        "$13$",
+        "$17$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie Pitagorasa dla trójkąta prostokątnego o przyprostokątnych $a, b$ i przeciwprostokątnej $c$ (Tablice CKE str. 9):\n$$a^2 + b^2 = c^2$$\n\n**Krok 2:** Podstawiamy długości przyprostokątnych $a = 5$ oraz $b = 12$:\n$$c^2 = 5^2 + 12^2 = 25 + 144 = 169$$\n\n**Krok 3:** Pier"
+    },
+    {
+      "id": "task_math_form23_arch20_031",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPrzyprostokątne trójkąta prostokątnego mają długości $12$ oraz $16$. Długość przeciwprostokątnej $c$ tego trójkąta jest równa",
+      "options": [
+        "$28$",
+        "$20$",
+        "$40$",
+        "$17$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie Pitagorasa dla trójkąta prostokątnego o przyprostokątnych $a, b$ i przeciwprostokątnej $c$ (Tablice CKE str. 9):\n$$a^2 + b^2 = c^2$$\n\n**Krok 2:** Podstawiamy długości przyprostokątnych $a = 12$ oraz $b = 16$:\n$$c^2 = 12^2 + 16^2 = 144 + 256 = 400$$\n\n**Krok 3:** P"
+    },
+    {
+      "id": "task_math_form23_arch20_061",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPrzyprostokątne trójkąta prostokątnego mają długości $9$ oraz $12$. Długość przeciwprostokątnej $c$ tego trójkąta jest równa",
+      "options": [
+        "$21$",
+        "$30$",
+        "$13$",
+        "$15$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie Pitagorasa dla trójkąta prostokątnego o przyprostokątnych $a, b$ i przeciwprostokątnej $c$ (Tablice CKE str. 9):\n$$a^2 + b^2 = c^2$$\n\n**Krok 2:** Podstawiamy długości przyprostokątnych $a = 9$ oraz $b = 12$:\n$$c^2 = 9^2 + 12^2 = 81 + 144 = 225$$\n\n**Krok 3:** Pier"
+    }
+  ],
+  "ARCH-21": [
+    {
+      "id": "task_math_form23_arch21_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nTrójkąt $T_2$ jest podobny do trójkąta $T_1$ w skali $k = 3$. Pole trójkąta $T_1$ jest równe $6$. Pole trójkąta $T_2$ jest równe",
+      "options": [
+        "$108$",
+        "$18$",
+        "$54$",
+        "$15$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie o polach figur podobnych (Tablice CKE str. 9):\nStosunek pól dwóch figur podobnych jest równy KWADRATOWI skali podobieństwa:\n$$\\frac{P_{T_2}}{P_{T_1}} = k^2$$\n\n**Krok 2:** Obliczamy kwadrat skali podobieństwa dla $k = 3$:\n$$k^2 = 3^2 = 9$$\n\n**Krok 3:** Wyznaczamy "
+    },
+    {
+      "id": "task_math_form23_arch21_021",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nTrójkąt $T_2$ jest podobny do trójkąta $T_1$ w skali $k = 3$. Pole trójkąta $T_1$ jest równe $4$. Pole trójkąta $T_2$ jest równe",
+      "options": [
+        "$12$",
+        "$13$",
+        "$36$",
+        "$72$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie o polach figur podobnych (Tablice CKE str. 9):\nStosunek pól dwóch figur podobnych jest równy KWADRATOWI skali podobieństwa:\n$$\\frac{P_{T_2}}{P_{T_1}} = k^2$$\n\n**Krok 2:** Obliczamy kwadrat skali podobieństwa dla $k = 3$:\n$$k^2 = 3^2 = 9$$\n\n**Krok 3:** Wyznaczamy "
+    },
+    {
+      "id": "task_math_form23_arch21_040",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nTrójkąt $T_2$ jest podobny do trójkąta $T_1$ w skali $k = 2$. Pole trójkąta $T_1$ jest równe $14$. Pole trójkąta $T_2$ jest równe",
+      "options": [
+        "$28$",
+        "$18$",
+        "$56$",
+        "$112$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy twierdzenie o polach figur podobnych (Tablice CKE str. 9):\nStosunek pól dwóch figur podobnych jest równy KWADRATOWI skali podobieństwa:\n$$\\frac{P_{T_2}}{P_{T_1}} = k^2$$\n\n**Krok 2:** Obliczamy kwadrat skali podobieństwa dla $k = 2$:\n$$k^2 = 2^2 = 4$$\n\n**Krok 3:** Wyznaczamy "
+    }
+  ],
+  "ARCH-22": [
+    {
+      "id": "task_math_form23_arch22_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW trójkącie prostokątnym przeciwprostokątna ma długość $8$. Promień okręgu opisanego na tym trójkącie jest równy",
+      "options": [
+        "$16$",
+        "$4$",
+        "$8$",
+        "$6$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy własność okręgu opisanego na trójkącie prostokątnym (Tablice CKE str. 10):\nŚrodek okręgu opisanego na trójkącie prostokątnym leży dokładnie w środku przeciwprostokątnej, która jest średnicą tego okręgu ($2R = c$).\n\n**Krok 2:** Zapisujemy wzór na promień $R$:\n$$R = \\frac{c}{2"
+    },
+    {
+      "id": "task_math_form23_arch22_021",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW trójkącie prostokątnym przeciwprostokątna ma długość $24$. Promień okręgu opisanego na tym trójkącie jest równy",
+      "options": [
+        "$14$",
+        "$12$",
+        "$24$",
+        "$48$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy własność okręgu opisanego na trójkącie prostokątnym (Tablice CKE str. 10):\nŚrodek okręgu opisanego na trójkącie prostokątnym leży dokładnie w środku przeciwprostokątnej, która jest średnicą tego okręgu ($2R = c$).\n\n**Krok 2:** Zapisujemy wzór na promień $R$:\n$$R = \\frac{c}{2"
+    },
+    {
+      "id": "task_math_form23_arch22_040",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW trójkącie prostokątnym przeciwprostokątna ma długość $14$. Promień okręgu opisanego na tym trójkącie jest równy",
+      "options": [
+        "$28$",
+        "$14$",
+        "$9$",
+        "$7$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy własność okręgu opisanego na trójkącie prostokątnym (Tablice CKE str. 10):\nŚrodek okręgu opisanego na trójkącie prostokątnym leży dokładnie w środku przeciwprostokątnej, która jest średnicą tego okręgu ($2R = c$).\n\n**Krok 2:** Zapisujemy wzór na promień $R$:\n$$R = \\frac{c}{2"
+    }
+  ],
+  "ARCH-23": [
+    {
+      "id": "task_math_form23_arch23_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ dane są punkty $A = (2, -2)$ oraz $B = (6, 6)$. Środkiem odcinka $AB$ jest punkt $S$ o współrzędnych",
+      "options": [
+        "$(4, 8)$",
+        "$(4, 2)$",
+        "$(4, 0)$",
+        "$(5, 2)$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na współrzędne środka odcinka $AB$ (Tablice CKE str. 11):\n$$S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$$\n\n**Krok 2:** Obliczamy pierwszą współrzędną $x_S$ jako średnią arytmetyczną odciętych:\n$$x_S = \\frac{2 + 6}{2} = \\frac{8}{2} = 4$$\n\n**Krok 3:** Oblicz"
+    },
+    {
+      "id": "task_math_form23_arch23_021",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ dane są punkty $A = (4, -2)$ oraz $B = (8, 4)$. Środkiem odcinka $AB$ jest punkt $S$ o współrzędnych",
+      "options": [
+        "$(7, 1)$",
+        "$(4, 6)$",
+        "$(6, 1)$",
+        "$(6, -1)$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na współrzędne środka odcinka $AB$ (Tablice CKE str. 11):\n$$S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$$\n\n**Krok 2:** Obliczamy pierwszą współrzędną $x_S$ jako średnią arytmetyczną odciętych:\n$$x_S = \\frac{4 + 8}{2} = \\frac{12}{2} = 6$$\n\n**Krok 3:** Oblic"
+    },
+    {
+      "id": "task_math_form23_arch23_040",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ dane są punkty $A = (5, -1)$ oraz $B = (7, 7)$. Środkiem odcinka $AB$ jest punkt $S$ o współrzędnych",
+      "options": [
+        "$(7, 3)$",
+        "$(6, 1)$",
+        "$(2, 8)$",
+        "$(6, 3)$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na współrzędne środka odcinka $AB$ (Tablice CKE str. 11):\n$$S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$$\n\n**Krok 2:** Obliczamy pierwszą współrzędną $x_S$ jako średnią arytmetyczną odciętych:\n$$x_S = \\frac{5 + 7}{2} = \\frac{12}{2} = 6$$\n\n**Krok 3:** Oblic"
+    }
+  ],
+  "ARCH-24": [
+    {
+      "id": "task_math_form23_arch24_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ prosta przechodząca przez punkty $A = (2, 6)$ oraz $B = (4, 10)$ ma równanie",
+      "options": [
+        "$y = -2x + 2$",
+        "$y = 3x + 2$",
+        "$y = 2x + 5$",
+        "$y = 2x + 2$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Obliczamy współczynnik kierunkowy prostej $a$ ze wzoru (Tablice CKE str. 11):\n$$a = \\frac{y_B - y_A}{x_B - x_A} = \\frac{10 - 6}{4 - 2} = \\frac{4}{2} = 2$$\n\n**Krok 2:** Wyznaczamy wyraz wolny $b$, wstawiając współrzędne punktu $A = (2, 6)$ do równania kierunkowego $y = ax + b$:\n$$6 = 2 \\c"
+    },
+    {
+      "id": "task_math_form23_arch24_034",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ prosta przechodząca przez punkty $A = (2, 9)$ oraz $B = (4, 15)$ ma równanie",
+      "options": [
+        "$y = 3x + 6$",
+        "$y = -3x + 3$",
+        "$y = 3x + 3$",
+        "$y = 4x + 3$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Obliczamy współczynnik kierunkowy prostej $a$ ze wzoru (Tablice CKE str. 11):\n$$a = \\frac{y_B - y_A}{x_B - x_A} = \\frac{15 - 9}{4 - 2} = \\frac{6}{2} = 3$$\n\n**Krok 2:** Wyznaczamy wyraz wolny $b$, wstawiając współrzędne punktu $A = (2, 9)$ do równania kierunkowego $y = ax + b$:\n$$9 = 3 \\c"
+    },
+    {
+      "id": "task_math_form23_arch24_067",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ prosta przechodząca przez punkty $A = (2, 12)$ oraz $B = (4, 20)$ ma równanie",
+      "options": [
+        "$y = -4x + 4$",
+        "$y = 4x + 7$",
+        "$y = 5x + 4$",
+        "$y = 4x + 4$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Obliczamy współczynnik kierunkowy prostej $a$ ze wzoru (Tablice CKE str. 11):\n$$a = \\frac{y_B - y_A}{x_B - x_A} = \\frac{20 - 12}{4 - 2} = \\frac{8}{2} = 4$$\n\n**Krok 2:** Wyznaczamy wyraz wolny $b$, wstawiając współrzędne punktu $A = (2, 12)$ do równania kierunkowego $y = ax + b$:\n$$12 = 4"
+    }
+  ],
+  "ARCH-25": [
+    {
+      "id": "task_math_form23_arch25_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ dany jest okrąg o równaniu $(x + 3)^2 + (y + 1)^2 = 9$. Środek $S$ i promień $r$ tego okręgu to",
+      "options": [
+        "$S = (-3, -1)$ oraz $r = 9$",
+        "$S = (-3, -1)$ oraz $r = 3$",
+        "$S = (3, 1)$ oraz $r = 3$",
+        "$S = (3, 1)$ oraz $r = 9$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy postać kanoniczną równania okręgu (Tablice CKE str. 11):\n$$(x - a)^2 + (y - b)^2 = r^2$$\ngdzie $S = (a, b)$ to współrzędne środka okręgu, a $r > 0$ to jego promień.\n\n**Krok 2:** Odczytujemy współrzędne środka $S = (a, b)$ ze zmianą znaków:\n- Z wyrażenia $(x + 3)$ otrzymujemy"
+    },
+    {
+      "id": "task_math_form23_arch25_021",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ dany jest okrąg o równaniu $(x - 2)^2 + (y - 2)^2 = 9$. Środek $S$ i promień $r$ tego okręgu to",
+      "options": [
+        "$S = (2, 2)$ oraz $r = 9$",
+        "$S = (2, 2)$ oraz $r = 3$",
+        "$S = (-2, -2)$ oraz $r = 3$",
+        "$S = (-2, -2)$ oraz $r = 9$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy postać kanoniczną równania okręgu (Tablice CKE str. 11):\n$$(x - a)^2 + (y - b)^2 = r^2$$\ngdzie $S = (a, b)$ to współrzędne środka okręgu, a $r > 0$ to jego promień.\n\n**Krok 2:** Odczytujemy współrzędne środka $S = (a, b)$ ze zmianą znaków:\n- Z wyrażenia $(x - 2)$ otrzymujemy"
+    },
+    {
+      "id": "task_math_form23_arch25_040",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW kartezjańskim układzie współrzędnych $(x, y)$ dany jest okrąg o równaniu $(x + 4)^2 + (y - 3)^2 = 4$. Środek $S$ i promień $r$ tego okręgu to",
+      "options": [
+        "$S = (4, -3)$ oraz $r = 2$",
+        "$S = (4, -3)$ oraz $r = 4$",
+        "$S = (-4, 3)$ oraz $r = 2$",
+        "$S = (-4, 3)$ oraz $r = 4$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy postać kanoniczną równania okręgu (Tablice CKE str. 11):\n$$(x - a)^2 + (y - b)^2 = r^2$$\ngdzie $S = (a, b)$ to współrzędne środka okręgu, a $r > 0$ to jego promień.\n\n**Krok 2:** Odczytujemy współrzędne środka $S = (a, b)$ ze zmianą znaków:\n- Z wyrażenia $(x + 4)$ otrzymujemy"
+    }
+  ],
+  "ARCH-26": [
+    {
+      "id": "task_math_form23_arch26_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW graniastosłupie prawidłowym czworokątnym krawędź podstawy ma długość $3$, a wysokość graniastosłupa jest równa $4$. Objętość tego graniastosłupa jest równa",
+      "options": [
+        "$36$",
+        "$12$",
+        "$72$",
+        "$51$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Podstawą graniastosłupa prawidłowego czworokątnego jest kwadrat o boku $a = 3$. Obliczamy pole podstawy (Tablice CKE str. 13):\n$$P_p = a^2 = 3^2 = 9$$\n\n**Krok 2:** Przywołujemy wzór na objętość graniastosłupa $V = P_p \\cdot H$ i podstawiamy wysokość $H = 4$:\n$$V = 9 \\cdot 4$$\n\n**Krok 3:*"
+    },
+    {
+      "id": "task_math_form23_arch26_028",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW graniastosłupie prawidłowym czworokątnym krawędź podstawy ma długość $5$, a wysokość graniastosłupa jest równa $3$. Pole powierzchni całkowitej tego graniastosłupa jest równe",
+      "options": [
+        "$60$",
+        "$110$",
+        "$130$",
+        "$85$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Pole powierzchni całkowitej graniastosłupa to suma pól dwóch podstaw i czterech ścian bocznych:\n$$P_c = 2P_p + P_b$$\n\n**Krok 2:** Obliczamy pole obu podstaw (kwadraty o boku $a = 5$) oraz pole powierzchni bocznej:\n$$2P_p = 2 \\cdot 5^2 = 2 \\cdot 25 = 50$$\n$$P_b = 4 \\cdot (a \\cdot H) = 4 \\"
+    },
+    {
+      "id": "task_math_form23_arch26_054",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW graniastosłupie prawidłowym czworokątnym krawędź podstawy ma długość $6$, a wysokość graniastosłupa jest równa $5$. Pole powierzchni całkowitej tego graniastosłupa jest równe",
+      "options": [
+        "$120$",
+        "$212$",
+        "$192$",
+        "$156$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Pole powierzchni całkowitej graniastosłupa to suma pól dwóch podstaw i czterech ścian bocznych:\n$$P_c = 2P_p + P_b$$\n\n**Krok 2:** Obliczamy pole obu podstaw (kwadraty o boku $a = 6$) oraz pole powierzchni bocznej:\n$$2P_p = 2 \\cdot 6^2 = 2 \\cdot 36 = 72$$\n$$P_b = 4 \\cdot (a \\cdot H) = 4 \\"
+    }
+  ],
+  "ARCH-27": [
+    {
+      "id": "task_math_form23_arch27_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPodstawą ostrosłupa prawidłowego czworokątnego jest kwadrat o boku $a = 8$, a wysokość tego ostrosłupa jest równa $H = 3$. Objętość tego ostrosłupa jest równa",
+      "options": [
+        "$64$",
+        "$128$",
+        "$192$",
+        "$78$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Podstawą ostrosłupa jest kwadrat o boku $a = 8$. Obliczamy pole podstawy (Tablice CKE str. 13):\n$$P_p = a^2 = 8^2 = 64$$\n\n**Krok 2:** Przywołujemy wzór na objętość ostrosłupa:\n$$V = \\frac{1}{3} P_p \\cdot H$$\n\n**Krok 3:** Podstawiamy $P_p = 64$ oraz $H = 3$:\n$$V = \\frac{1}{3} \\cdot 64 \\cd"
+    },
+    {
+      "id": "task_math_form23_arch27_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPodstawą ostrosłupa prawidłowego czworokątnego jest kwadrat o boku $a = 8$, a wysokość tego ostrosłupa jest równa $H = 3$. Objętość tego ostrosłupa jest równa",
+      "options": [
+        "$192$",
+        "$128$",
+        "$64$",
+        "$78$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Podstawą ostrosłupa jest kwadrat o boku $a = 8$. Obliczamy pole podstawy (Tablice CKE str. 13):\n$$P_p = a^2 = 8^2 = 64$$\n\n**Krok 2:** Przywołujemy wzór na objętość ostrosłupa:\n$$V = \\frac{1}{3} P_p \\cdot H$$\n\n**Krok 3:** Podstawiamy $P_p = 64$ oraz $H = 3$:\n$$V = \\frac{1}{3} \\cdot 64 \\cd"
+    },
+    {
+      "id": "task_math_form23_arch27_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPodstawą ostrosłupa prawidłowego czworokątnego jest kwadrat o boku $a = 6$, a wysokość tego ostrosłupa jest równa $H = 4$. Objętość tego ostrosłupa jest równa",
+      "options": [
+        "$144$",
+        "$96$",
+        "$62$",
+        "$48$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Podstawą ostrosłupa jest kwadrat o boku $a = 6$. Obliczamy pole podstawy (Tablice CKE str. 13):\n$$P_p = a^2 = 6^2 = 36$$\n\n**Krok 2:** Przywołujemy wzór na objętość ostrosłupa:\n$$V = \\frac{1}{3} P_p \\cdot H$$\n\n**Krok 3:** Podstawiamy $P_p = 36$ oraz $H = 4$:\n$$V = \\frac{1}{3} \\cdot 36 \\cd"
+    }
+  ],
+  "ARCH-28": [
+    {
+      "id": "task_math_form23_arch28_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPromień podstawy stożka jest równy $r = 3$, a jego wysokość wynosi $h = 6$. Objętość tego stożka jest równa",
+      "options": [
+        "$13\\pi$",
+        "$18\\pi$",
+        "$28\\pi$",
+        "$54\\pi$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na objętość stożka (Tablice CKE str. 14):\n$$V = \\frac{1}{3} \\pi r^2 h$$\n\n**Krok 2:** Podstawiamy $r = 3$ oraz $h = 6$:\n$$V = \\frac{1}{3} \\cdot \\pi \\cdot 3^2 \\cdot 6 = \\frac{1}{3} \\cdot \\pi \\cdot 9 \\cdot 6$$\n\n**Krok 3:** Skracamy ułamek $\\frac{1}{3}$ z wysokością $6$:\n$$"
+    },
+    {
+      "id": "task_math_form23_arch28_021",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPromień podstawy walca jest równy $r = 3$, a jego wysokość wynosi $h = 4$. Objętość tego walca jest równa",
+      "options": [
+        "$12\\pi$",
+        "$72\\pi$",
+        "$36\\pi$",
+        "$24\\pi$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na objętość walca (Tablice CKE str. 14):\n$$V = \\pi r^2 h$$\n\n**Krok 2:** Podstawiamy promień podstawy $r = 3$ oraz wysokość $h = 4$:\n$$V = \\pi \\cdot 3^2 \\cdot 4 = \\pi \\cdot 9 \\cdot 4$$\n\n**Krok 3:** Wykonujemy mnożenie:\n$$V = 36\\pi$$\n\n**Pułapka CKE:** Opcja B to objętość "
+    },
+    {
+      "id": "task_math_form23_arch28_040",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPromień podstawy stożka jest równy $r = 2$, a jego wysokość wynosi $h = 6$. Objętość tego stożka jest równa",
+      "options": [
+        "$12\\pi$",
+        "$18\\pi$",
+        "$24\\pi$",
+        "$8\\pi$"
+      ],
+      "correct_answer": "D",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Przywołujemy wzór na objętość stożka (Tablice CKE str. 14):\n$$V = \\frac{1}{3} \\pi r^2 h$$\n\n**Krok 2:** Podstawiamy $r = 2$ oraz $h = 6$:\n$$V = \\frac{1}{3} \\cdot \\pi \\cdot 2^2 \\cdot 6 = \\frac{1}{3} \\cdot \\pi \\cdot 4 \\cdot 6$$\n\n**Krok 3:** Skracamy ułamek $\\frac{1}{3}$ z wysokością $6$:\n$$"
+    }
+  ],
+  "ARCH-29": [
+    {
+      "id": "task_math_form23_arch29_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nIle jest wszystkich liczb naturalnych trzycyfrowych, których cyfry należą do zbioru $\\{1, 2, 3, \\dots, 6\\}$ (cyfry mogą się powtarzać)?",
+      "options": [
+        "$216$",
+        "$18$",
+        "$120$",
+        "$210$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Analizujemy liczbę pozycji w liczbie trzycyfrowej (setki, dziesiątki, jedności) oraz zbiór dostępnych cyfr o mocy $n = 6$.\n\n**Krok 2:** Stosujemy regułę mnożenia (Tablice CKE str. 16), pamiętając, że cyfry MOGĄ się powtarzać:\n- Na pozycji setek możemy umieścić dowolną z $6$ cyfr,\n- Na po"
+    },
+    {
+      "id": "task_math_form23_arch29_028",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nCzterocyfrowy kod PIN tworzymy z cyfr ze zbioru $\\{1, 2, 3, \\dots, 6\\}$ tak, że żadna cyfra w kodzie się nie powtarza. Liczba wszystkich takich kodów jest równa",
+      "options": [
+        "$1296$",
+        "$360$",
+        "$180$",
+        "$24$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Analizujemy liczbę pozycji w kodzie 4-cyfrowym oraz warunek: cyfry NIE mogą się powtarzać.\n\n**Krok 2:** Na każde kolejne miejsce możemy wybrać o jedną cyfrę mniej niż na poprzednie:\n- 1. cyfra: $6$ możliwości,\n- 2. cyfra: $5$ możliwości,\n- 3. cyfra: $4$ możliwości,\n- 4. cyfra: $3$ możliw"
+    },
+    {
+      "id": "task_math_form23_arch29_054",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nCzterocyfrowy kod PIN tworzymy z cyfr ze zbioru $\\{1, 2, 3, \\dots, 8\\}$ tak, że żadna cyfra w kodzie się nie powtarza. Liczba wszystkich takich kodów jest równa",
+      "options": [
+        "$4096$",
+        "$1680$",
+        "$32$",
+        "$840$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Analizujemy liczbę pozycji w kodzie 4-cyfrowym oraz warunek: cyfry NIE mogą się powtarzać.\n\n**Krok 2:** Na każde kolejne miejsce możemy wybrać o jedną cyfrę mniej niż na poprzednie:\n- 1. cyfra: $8$ możliwości,\n- 2. cyfra: $7$ możliwości,\n- 3. cyfra: $6$ możliwości,\n- 4. cyfra: $5$ możliw"
+    }
+  ],
+  "ARCH-30": [
+    {
+      "id": "task_math_form23_arch30_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRzucamy dwa razy symetryczną sześcienną kostką do gry. Prawdopodobieństwo zdarzenia $A$ polegającego na tym, że suma wyrzuconych oczek jest równa $5$, wynosi",
+      "options": [
+        "$\\frac{1}{9}$",
+        "$\\frac{1}{11}$",
+        "$\\frac{5}{36}$",
+        "$\\frac{4}{12}$"
+      ],
+      "correct_answer": "A",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy moc przestrzeni zdarzeń elementarnych $\\Omega$ dla dwukrotnego rzutu kostką sześcienną:\n$$|\\Omega| = 6 \\cdot 6 = 36$$\n\n**Krok 2:** Wyznaczamy liczbę zdarzeń sprzyjających zdarzeniu $A$ (suma oczek równa $5$):\nSprzyjających par wyników $(d_1, d_2)$ jest dokładnie $4$. Zatem $|A"
+    },
+    {
+      "id": "task_math_form23_arch30_032",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRzucamy dwa razy symetryczną sześcienną kostką do gry. Prawdopodobieństwo zdarzenia $A$ polegającego na tym, że suma wyrzuconych oczek jest równa $4$, wynosi",
+      "options": [
+        "$\\frac{4}{36}$",
+        "$\\frac{1}{14}$",
+        "$\\frac{1}{12}$",
+        "$\\frac{3}{12}$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy moc przestrzeni zdarzeń elementarnych $\\Omega$ dla dwukrotnego rzutu kostką sześcienną:\n$$|\\Omega| = 6 \\cdot 6 = 36$$\n\n**Krok 2:** Wyznaczamy liczbę zdarzeń sprzyjających zdarzeniu $A$ (suma oczek równa $4$):\nSprzyjających par wyników $(d_1, d_2)$ jest dokładnie $3$. Zatem $|A"
+    },
+    {
+      "id": "task_math_form23_arch30_062",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRzucamy dwa razy symetryczną sześcienną kostką do gry. Prawdopodobieństwo zdarzenia $A$ polegającego na tym, że suma wyrzuconych oczek jest równa $10$, wynosi",
+      "options": [
+        "$\\frac{4}{36}$",
+        "$\\frac{1}{12}$",
+        "$\\frac{3}{12}$",
+        "$\\frac{1}{14}$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Wyznaczamy moc przestrzeni zdarzeń elementarnych $\\Omega$ dla dwukrotnego rzutu kostką sześcienną:\n$$|\\Omega| = 6 \\cdot 6 = 36$$\n\n**Krok 2:** Wyznaczamy liczbę zdarzeń sprzyjających zdarzeniu $A$ (suma oczek równa $10$):\nSprzyjających par wyników $(d_1, d_2)$ jest dokładnie $3$. Zatem $|"
+    }
+  ],
+  "ARCH-31": [
+    {
+      "id": "task_math_form23_arch31_001",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMediana zestawu siedmiu danych liczb: $8, 3, 10, 5, 12, 6, 9$ jest równa",
+      "options": [
+        "$5$",
+        "$6$",
+        "$8$",
+        "$9$"
+      ],
+      "correct_answer": "C",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Aby wyznaczyć medianę, ZAWSZE najpierw porządkujemy zestaw danych w kolejności niemalejącej:\n$$3 \\le 5 \\le 6 \\le 8 \\le 9 \\le 10 \\le 12$$\n\n**Krok 2:** Zliczamy liczbę danych: $n = 7$ (liczba nieparzysta).\n\n**Krok 3:** Mediana to wartość środkowego wyrazu (na pozycji $\\frac{n+1}{2} = \\frac"
+    },
+    {
+      "id": "task_math_form23_arch31_025",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMediana zestawu siedmiu danych liczb: $8, 3, 10, 5, 12, 6, 9$ jest równa",
+      "options": [
+        "$9$",
+        "$8$",
+        "$6$",
+        "$5$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Aby wyznaczyć medianę, ZAWSZE najpierw porządkujemy zestaw danych w kolejności niemalejącej:\n$$3 \\le 5 \\le 6 \\le 8 \\le 9 \\le 10 \\le 12$$\n\n**Krok 2:** Zliczamy liczbę danych: $n = 7$ (liczba nieparzysta).\n\n**Krok 3:** Mediana to wartość środkowego wyrazu (na pozycji $\\frac{n+1}{2} = \\frac"
+    },
+    {
+      "id": "task_math_form23_arch31_048",
+      "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nŚrednia arytmetyczna zestawu pięciu liczb: $2, 4, 6, 7, x$ jest równa $8$. Liczba $x$ jest równa",
+      "options": [
+        "$8$",
+        "$21$",
+        "$23$",
+        "$20$"
+      ],
+      "correct_answer": "B",
+      "type": "SINGLE_CHOICE",
+      "explanation": "**Krok 1:** Zapisujemy definicję średniej arytmetycznej dla 5 liczb (Tablice CKE str. 17):\n$$\\bar{x} = \\frac{2 + 4 + 6 + 7 + x}{5} = 8$$\n\n**Krok 2:** Obliczamy sumę znanych liczb:\n$$19 + x = 5 \\cdot 8 = 40$$\n\n**Krok 3:** Wyznaczamy niewiadomą $x$:\n$$x = 40 - 19 = 21$$\n\n**Pułapka CKE:** Pamiętaj o po"
+    }
+  ],
+  "ARCH-32": [
+    {
+      "id": "task_math_form23_arch32_001",
+      "content": "Właściciel działki rekreacyjnej chce ogrodzić siatką o łącznej długości $44\\text{ m}$ prostokątny plac zabaw dla dzieci.\nWyznacz wymiary tego prostokąta tak, aby jego pole powierzchni było największe, oraz oblicz to największe pole. Podaj wartość maksymalnego pola w metrach kwadratowych.",
+      "correct_answer": "121",
+      "type": "NUMERIC_INPUT",
+      "explanation": "**Krok 1: Modelowanie matematyczne.**\nNiech $x > 0$ oraz $y > 0$ oznaczają długości boków prostokątnego placu zabaw.\nObwód prostokąta wynosi $2x + 2y = 44$, stąd:\n$$x + y = 22 \\implies y = 22 - x$$\n\n**Krok 2: Wyznaczenie dziedziny geometrycznej.**\nPonieważ długości boków muszą być ściśle dodatnie:\n$"
+    },
+    {
+      "id": "task_math_form23_arch32_028",
+      "content": "Właściciel działki rekreacyjnej chce ogrodzić siatką o łącznej długości $152\\text{ m}$ prostokątny plac zabaw dla dzieci.\nWyznacz wymiary tego prostokąta tak, aby jego pole powierzchni było największe, oraz oblicz to największe pole. Podaj wartość maksymalnego pola w metrach kwadratowych.",
+      "correct_answer": "1444",
+      "type": "NUMERIC_INPUT",
+      "explanation": "**Krok 1: Modelowanie matematyczne.**\nNiech $x > 0$ oraz $y > 0$ oznaczają długości boków prostokątnego placu zabaw.\nObwód prostokąta wynosi $2x + 2y = 152$, stąd:\n$$x + y = 76 \\implies y = 76 - x$$\n\n**Krok 2: Wyznaczenie dziedziny geometrycznej.**\nPonieważ długości boków muszą być ściśle dodatnie:\n"
+    },
+    {
+      "id": "task_math_form23_arch32_054",
+      "content": "Właściciel działki rekreacyjnej chce ogrodzić siatką o łącznej długości $256\\text{ m}$ prostokątny plac zabaw dla dzieci.\nWyznacz wymiary tego prostokąta tak, aby jego pole powierzchni było największe, oraz oblicz to największe pole. Podaj wartość maksymalnego pola w metrach kwadratowych.",
+      "correct_answer": "4096",
+      "type": "NUMERIC_INPUT",
+      "explanation": "**Krok 1: Modelowanie matematyczne.**\nNiech $x > 0$ oraz $y > 0$ oznaczają długości boków prostokątnego placu zabaw.\nObwód prostokąta wynosi $2x + 2y = 256$, stąd:\n$$x + y = 128 \\implies y = 128 - x$$\n\n**Krok 2: Wyznaczenie dziedziny geometrycznej.**\nPonieważ długości boków muszą być ściśle dodatnie"
+    }
+  ]
+}

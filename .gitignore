@@ -47,6 +47,11 @@ seed/**/*_backup.json
 # Archives & reference docs
 *.zip
 *.rar
+*.pdf
+*.mp3
+baza_cke_matematyka/
+matura_angielski_podstawowy/
+scripts/temp/
 matemaks_tier_lista.html
 tier-lista-pp.pdf
 
@@ -84,3 +89,4 @@ extract_pdfs.py
 strip_plots.py
 tmp_inject.py
 audit_screenshots/
+wypchnij_na_github.bat

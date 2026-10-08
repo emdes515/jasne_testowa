@@ -407,7 +407,7 @@ export function DevHubModal({
                     <Calculator size={16} />
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-white">Matematyka: 21 Działów</h5>
+                    <h5 className="font-bold text-xs text-white">Matematyka: 15 Działów</h5>
                     <p className="text-[10px] text-text-muted">Przejdź do kursu matematyki</p>
                   </div>
                 </button>

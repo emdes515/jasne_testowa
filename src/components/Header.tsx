@@ -70,7 +70,7 @@ export function Header({
     ? { key: 'eng' as SubjectKey, id: 'angielski' as SubjectId, label: 'Język Angielski', shortLabel: 'Angielski', examTag: 'Formuła 2023 • Poziom Podstawowy', accentColor: '#38BDF8' }
     : isPolActive
       ? { key: 'pol' as SubjectKey, id: 'polski' as SubjectId, label: 'Język Polski', shortLabel: 'Polski', examTag: 'Formuła 2023 • Epoki & Lektury', accentColor: '#F43F5E' }
-      : { key: 'math' as SubjectKey, id: 'matematyka' as SubjectId, label: 'Matematyka', shortLabel: 'Matematyka', examTag: 'Formuła 2023 • 21 Działów CKE', accentColor: '#FFB800' };
+      : { key: 'math' as SubjectKey, id: 'matematyka' as SubjectId, label: 'Matematyka', shortLabel: 'Matematyka', examTag: 'Formuła 2023 • 15 Działów CKE', accentColor: '#FFB800' };
 
   const handleSelectMobileSubject = (key: SubjectKey, id: SubjectId) => {
     triggerHaptic('medium');
@@ -740,7 +740,7 @@ export function Header({
                         <span className="font-extrabold text-sm text-white">Matematyka</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">180 min</span>
                       </div>
-                      <span className="text-[11px] text-text-muted">21 działów • 75 lekcji • 1006 zadań CKE</span>
+                      <span className="text-[11px] text-text-muted">15 działów • 75 lekcji • 1006 zadań CKE</span>
                     </div>
                   </div>
                   {isMathActive && (

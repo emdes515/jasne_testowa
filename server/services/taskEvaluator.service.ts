@@ -5,10 +5,12 @@ import { geminiChain, getGenAI, Type } from '../ai/geminiClient';
 import { callOpenRouter } from '../ai/openRouterClient';
 import {
   buildEnglishEvaluationPrompt,
+  buildEnglishWriting12EvaluationPrompt,
   buildEssay35EvaluationPrompt,
   buildEvaluationUserPrompt,
   buildMathEvaluationPrompt,
   buildPolishEvaluationPrompt,
+  buildPolishSynthesisEvaluationPrompt,
 } from '../prompts/evaluation.prompt';
 import { evaluateFallback } from './fallbackEvaluator.service';
 
@@ -17,6 +19,7 @@ import { evaluateFallback } from './fallbackEvaluator.service';
  */
 export const evaluateTaskLogic = async (body: any) => {
   const {
+    taskId = body.id || '',
     question,
     contextText,
     subQuestions,
@@ -98,12 +101,27 @@ export const evaluateTaskLogic = async (body: any) => {
   }
 
   const isEssay35 = isPolishTask && (maxPts >= 30 || taskType === 'ESSAY');
+  const isSynthesisNote = isPolishTask && (
+    maxPts === 4 ||
+    /notatk[ai]|syntez/i.test(question || '') ||
+    (taskId && String(taskId).includes('synt'))
+  );
+  const isEnglishWriting12 = isEnglishTask && (
+    maxPts >= 10 ||
+    /e-mail|blog|list|wpis|forum|wypowiedź pisemna|task 12|zadanie 12/i.test(question || '') ||
+    (taskId && String(taskId).startsWith('eng_wri_'))
+  );
+  const isWritingTask = isEssay35 || isSynthesisNote || isEnglishWriting12;
 
   let systemPrompt = '';
-  if (isEnglishTask) {
+  if (isEnglishWriting12) {
+    systemPrompt = buildEnglishWriting12EvaluationPrompt();
+  } else if (isEnglishTask) {
     systemPrompt = buildEnglishEvaluationPrompt(maxPts);
   } else if (isEssay35) {
     systemPrompt = buildEssay35EvaluationPrompt();
+  } else if (isSynthesisNote) {
+    systemPrompt = buildPolishSynthesisEvaluationPrompt();
   } else if (isPolishTask) {
     systemPrompt = buildPolishEvaluationPrompt(maxPts);
   } else {
@@ -123,6 +141,51 @@ export const evaluateTaskLogic = async (body: any) => {
     hasImage,
   });
 
+  const finalizeResult = (parsedObj: any, usageData: any) => {
+    if (!parsedObj || typeof parsedObj.score !== 'number') return null;
+    parsedObj.score = Math.min(maxPts, Math.max(0, Math.round(parsedObj.score)));
+    parsedObj.maxPoints = maxPts;
+    parsedObj.isPassed = typeof parsedObj.isPassed === 'boolean'
+      ? parsedObj.isPassed
+      : (parsedObj.score >= Math.ceil(maxPts * 0.3));
+
+    if (!parsedObj.gradeTitle || !parsedObj.gradeTitle.includes('/')) {
+      const detail = parsedObj.gradeTitle ? ` – ${parsedObj.gradeTitle}` : (
+        parsedObj.score === maxPts
+          ? ' – Kompletne i bezbłędne rozwiązanie'
+          : parsedObj.score > 0
+            ? ' – Zasadniczy postęp'
+            : ' – Brak poprawnego toku rozwiązania'
+      );
+      parsedObj.gradeTitle = `${parsedObj.score} / ${maxPts} PKT${detail}`;
+    }
+
+    if (!Array.isArray(parsedObj.strengths)) parsedObj.strengths = [];
+    if (!Array.isArray(parsedObj.errors)) parsedObj.errors = [];
+    if (!Array.isArray(parsedObj.annotatedSentences)) parsedObj.annotatedSentences = [];
+
+    if (isWritingTask) {
+      const countedWords = cleanAnswer ? cleanAnswer.trim().split(/\s+/).filter(Boolean).length : 0;
+      if (!parsedObj.wordCountStats || typeof parsedObj.wordCountStats.totalWords !== 'number') {
+        const minReq = maxPts >= 30 ? 300 : (maxPts === 4 ? 60 : 80);
+        const maxRec = maxPts === 4 ? 90 : (maxPts >= 30 ? undefined : 130);
+        let status: 'OPTIMAL' | 'TOO_SHORT' | 'TOO_LONG' = 'OPTIMAL';
+        if (countedWords < minReq) status = 'TOO_SHORT';
+        else if (maxRec && countedWords > maxRec) status = 'TOO_LONG';
+
+        parsedObj.wordCountStats = {
+          totalWords: countedWords,
+          minRequired: minReq,
+          maxRecommended: maxRec,
+          status,
+        };
+      }
+    }
+
+    parsedObj.usage = usageData;
+    return parsedObj;
+  };
+
   // 1. Try OpenRouter
   const openRouterReply = await callOpenRouter({
     systemPrompt,
@@ -139,22 +202,9 @@ export const evaluateTaskLogic = async (body: any) => {
       snippet: openRouterReply.content.slice(0, 150),
       parsedScore: parsed && typeof parsed.score === 'number' ? parsed.score : null,
     });
-    if (parsed && typeof parsed.score === 'number') {
-      parsed.score = Math.min(maxPts, Math.max(0, Math.round(parsed.score)));
-      parsed.maxPoints = maxPts;
-      parsed.isPassed = typeof parsed.isPassed === 'boolean' ? parsed.isPassed : (parsed.score >= Math.ceil(maxPts * 0.5));
-      if (!parsed.gradeTitle || !parsed.gradeTitle.includes('/')) {
-        const detail = parsed.gradeTitle ? ` – ${parsed.gradeTitle}` : (
-          parsed.score === maxPts
-            ? ' – Kompletne i bezbłędne rozwiązanie'
-            : parsed.score > 0
-              ? ' – Zasadniczy postęp'
-              : ' – Brak poprawnego toku rozwiązania'
-        );
-        parsed.gradeTitle = `${parsed.score} / ${maxPts} PKT${detail}`;
-      }
-      parsed.usage = openRouterReply.usage;
-      return parsed;
+    const finalized = finalizeResult(parsed, openRouterReply.usage);
+    if (finalized) {
+      return finalized;
     }
   }
 
@@ -174,61 +224,6 @@ export const evaluateTaskLogic = async (body: any) => {
 
     const evaluationConfig = {
       responseMimeType: 'application/json',
-      responseSchema: {
-        type: Type.OBJECT,
-        properties: {
-          score: { type: Type.NUMBER, description: 'Uzyskana liczba punktów (0 do maxPoints)' },
-          maxPoints: { type: Type.NUMBER, description: 'Maksymalna liczba punktów' },
-          isPassed: { type: Type.BOOLEAN, description: 'True jeśli score >= połowa maxPoints' },
-          gradeTitle: { type: Type.STRING, description: 'Tytuł oceny np. 2/2 PKT – Maksimum' },
-          summary: { type: Type.STRING, description: 'Krótkie podsumowanie oceny' },
-          mentorComment: { type: Type.STRING, description: 'Krótki, mentorski komentarz egzaminatora' },
-          strengths: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Lista poprawnych elementów w odpowiedzi' },
-          errors: { type: Type.ARRAY, items: { type: Type.STRING }, description: 'Lista brakujących elementów lub błędów' },
-          ckeFeedback: { type: Type.STRING, description: 'Komentarz egzaminatora maturalnego' },
-          suggestion: { type: Type.STRING, description: 'Instrukcja/porada dla ucznia' },
-          hintForNextAttempt: { type: Type.STRING, description: 'Wskazówka naprowadzająca' },
-          criteriaBreakdown: {
-            type: Type.OBJECT,
-            description: 'Szczegółowa ocena 4 kryteriów CKE dla wypracowania',
-            properties: {
-              formal: {
-                type: Type.OBJECT,
-                properties: {
-                  score: { type: Type.NUMBER },
-                  max: { type: Type.NUMBER },
-                  comment: { type: Type.STRING },
-                },
-              },
-              literary_cultural: {
-                type: Type.OBJECT,
-                properties: {
-                  score: { type: Type.NUMBER },
-                  max: { type: Type.NUMBER },
-                  comment: { type: Type.STRING },
-                },
-              },
-              composition: {
-                type: Type.OBJECT,
-                properties: {
-                  score: { type: Type.NUMBER },
-                  max: { type: Type.NUMBER },
-                  comment: { type: Type.STRING },
-                },
-              },
-              language_style: {
-                type: Type.OBJECT,
-                properties: {
-                  score: { type: Type.NUMBER },
-                  max: { type: Type.NUMBER },
-                  comment: { type: Type.STRING },
-                },
-              },
-            },
-          },
-        },
-        required: ['score', 'maxPoints', 'isPassed', 'gradeTitle', 'summary', 'mentorComment', 'strengths', 'errors', 'ckeFeedback', 'suggestion', 'hintForNextAttempt'],
-      },
     };
 
     try {
@@ -260,27 +255,16 @@ export const evaluateTaskLogic = async (body: any) => {
             return null;
           }
         })();
-        if (parsed && typeof parsed.score === 'number') {
-          if (!parsed.gradeTitle || !parsed.gradeTitle.includes('/')) {
-            const detail = parsed.gradeTitle ? ` – ${parsed.gradeTitle}` : (
-              parsed.score === maxPts
-                ? ' – Kompletne i bezbłędne rozwiązanie'
-                : parsed.score > 0
-                  ? ' – Zasadniczy postęp'
-                  : ' – Brak poprawnego toku rozwiązania'
-            );
-            parsed.gradeTitle = `${parsed.score} / ${maxPts} PKT${detail}`;
-          }
-          if (response.usageMetadata) {
-            parsed.usage = {
-              promptTokens: response.usageMetadata.promptTokenCount || 0,
-              completionTokens: response.usageMetadata.candidatesTokenCount || 0,
-              totalTokens: response.usageMetadata.totalTokenCount || 0,
-              model: usedModel || aiModels.grade,
-              estimatedCostUsd: 0,
-            };
-          }
-          return parsed;
+        const usageData = response.usageMetadata ? {
+          promptTokens: response.usageMetadata.promptTokenCount || 0,
+          completionTokens: response.usageMetadata.candidatesTokenCount || 0,
+          totalTokens: response.usageMetadata.totalTokenCount || 0,
+          model: usedModel || aiModels.grade,
+          estimatedCostUsd: 0,
+        } : undefined;
+        const finalized = finalizeResult(parsed, usageData);
+        if (finalized) {
+          return finalized;
         }
       }
     } catch (err) {

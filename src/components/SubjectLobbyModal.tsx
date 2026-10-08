@@ -50,8 +50,8 @@ export const SubjectLobbyModal: React.FC<SubjectLobbyModalProps> = ({
       activeColor: 'border-amber-500 bg-amber-500/10 text-amber-400',
       description: 'Kompletna baza zadań, oficjalne karty wzorów CKE, wbudowany kalkulator oraz symulator egzaminu.',
       stats: mathStats?.total
-        ? `${mathStats.total} zadań • ${mathStats.topics || 21} działów • Karty Wzorów`
-        : '1006 zadań • 21 działów • Karty Wzorów',
+        ? `${mathStats.total} zadań • ${mathStats.topics || 15} działów • Karty Wzorów`
+        : '1006 zadań • 15 działów • Karty Wzorów',
       available: true,
       features: [
         'Zadania zamknięte i kodowane',

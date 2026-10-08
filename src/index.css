@@ -50,11 +50,11 @@
 :root {
   /* Default: Nocturne Luminary (Dark Mode) */
   --surface-bg: #070A0F;
-  --surface-card: #0E1522;
-  --surface-card-hover: #141D2E;
-  --surface-elevated: #141D2E;
-  --surface-border: rgba(255, 255, 255, 0.08);
-  --surface-border-hover: rgba(255, 255, 255, 0.16);
+  --surface-card: #0F1726;
+  --surface-card-hover: #152238;
+  --surface-elevated: #152238;
+  --surface-border: rgba(255, 255, 255, 0.12);
+  --surface-border-hover: rgba(255, 255, 255, 0.22);
   --surface-border-active: #FFB800;
 
   --primary: #FFB800;
@@ -383,12 +383,57 @@ button, a, input, [role="button"] {
   100% { transform: scale(0.95); opacity: 0; }
 }
 
-.animate-beacon-ping {
-  animation: beacon-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+/* Smooth crossfade and blur-dissolve for subject transitions */
+@keyframes subject-crossfade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
 }
 
+.animate-subject-switch {
+  animation: subject-crossfade 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
 
-/* Stylizacja dla Display Math w KaTeX – bezpieczne wyśrodkowanie bez obcinania lewej strony */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pageTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-pageTransition {
+  animation: pageTransition 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Animacja shake dla błędnej odpowiedzi */
 .math-text-wrapper .katex-display,
 .katex-display {
   display: flex !important;
@@ -605,5 +650,50 @@ button, a, input, [role="button"] {
 
 .MafsView:focus-visible {
   outline: 2px solid #FFB800;
+}
+
+/* =========================================================================
+   MOBILE FIRST UTILITIES (JASNE Mobile Engine)
+   ========================================================================= */
+.pb-mobile-safe {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.pt-mobile-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.tap-highlight-transparent {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-scroll-cue {
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+@media (max-width: 640px) {
+  /* Zabezpieczenie przed h-scrollem na małych ekranach */
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Poprawa dotykowego feedbacku */
+  button, a {
+    touch-action: manipulation;
+  }
+
+  /* Wyrazistsze obramowania i podbita głębia kart na mobile, aby zapobiec zlewaniu się */
+  .bg-surface-card {
+    border-color: rgba(255, 255, 255, 0.13);
+    box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Wyraźniejsze separatory list i kafelków na małych ekranach */
+  .border-surface-border {
+    border-color: rgba(255, 255, 255, 0.13);
+  }
 }
 
