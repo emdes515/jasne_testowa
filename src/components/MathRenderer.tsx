@@ -380,6 +380,13 @@ export function autoWrapLatex(rawStr: string): string {
         return match;
       }
 
+      // Tekst po dwukropku ma już własne ograniczniki $...$ (np. „Bez powtórzeń: $n$, $n - 1$, …” albo wzór
+      // z dwukropkiem w środku: „$56 : 2 = 28$”). Autor zaznaczył wzory sam – ponowne owijanie rozjeżdża pary
+      // znaków $ i uczeń widzi surowy LaTeX.
+      if (rest.includes('$') || prefix.includes('$')) {
+        return match;
+      }
+
       // Check if rest consists of math equations, possibly joined by " i " or " oraz "
       const clauses = rest.split(/(\s+(?:i|oraz)\s+)/i);
       const isMathFormula = (clause: string) => {

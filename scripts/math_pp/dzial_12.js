@@ -1,6 +1,6 @@
 import { T, mc, num, pf, pill, m, need } from './lib.js';
 
-const TIP_MUL = 'Karta wzorów, str. 26: reguła mnożenia – jeśli pierwszą czynność można wykonać na $n_1$ sposobów, a drugą na $n_2$ sposobów, to obie na $n_1 \\cdot n_2$ sposobów.';
+const TIP_MUL = 'Reguła mnożenia (nie ma jej w karcie wzorów – trzeba ją znać): jeśli pierwszą czynność można wykonać na $n_1$ sposobów, a drugą na $n_2$ sposobów, to obie na $n_1 \\cdot n_2$ sposobów.';
 /** „prowadzą 3 drogi” / „prowadzi 5 dróg” */
 const roads = (n) => (n === 1 ? 'prowadzi $1$ droga' : n < 5 ? `prowadzą $${n}$ drogi` : `prowadzi $${n}$ dróg`);
 const NOM = { 2: 'dwucyfrowe', 3: 'trzycyfrowe', 4: 'czterocyfrowe' };
@@ -37,7 +37,7 @@ const mulCodes = (r) => {
     q: T`Kod składa się z $${k}$ ${what}. Liczba wszystkich takich kodów jest równa`,
     ok: m(n ** k),
     val: n ** k,
-    bad: uniqNums(n ** k, [n * k, k ** n, n ** (k - 1), n ** (k + 1) > 200000 ? n ** k + n : n ** (k + 1), fact(Math.min(n, 7)), n * (n - 1)]),
+    bad: uniqNums(n ** k, [n * k, k ** n > 200000 ? n * n * (k - 1) : k ** n,n ** (k - 1), n ** (k + 1) > 200000 ? n ** k + n : n ** (k + 1), fact(Math.min(n, 7)), n * (n - 1)]),
     steps: [T`Kod ma $${k}$ pozycji i każdą z nich wybieramy niezależnie na $${n}$ sposobów.`, T`$${prodStr(Array(k).fill(n))} = ${n}^{${k}} = ${n ** k}$.`],
     trap: T`To $${n}^{${k}}$, a nie $${k}^{${n}}$ ani $${n} \cdot ${k}$. Podstawą potęgi jest liczba możliwości na jednej pozycji, a wykładnikiem – liczba pozycji.`,
     tip: TIP_MUL
@@ -402,7 +402,7 @@ const pairsDiagonals = (r) => {
     bad: uniqNums(v, [n * (n - 3), (n * (n - 1)) / 2, n * (n - 1), 2 * n, v + n, n - 3]),
     steps: [T`Z każdego wierzchołka wychodzi $${n} - 3 = ${n - 3}$ przekątnych (nie łączymy go z sobą ani z dwoma sąsiadami).`, T`$${n} \cdot ${n - 3} = ${n * (n - 3)}$, ale każdą przekątną policzyliśmy z obu końców: $${n * (n - 3)} : 2 = ${v}$.`],
     trap: T`Boki wielokąta nie są przekątnymi. Liczba $\frac{n(n-1)}{2} = ${(n * (n - 1)) / 2}$ to wszystkie odcinki łączące wierzchołki – razem z bokami.`,
-    tip: 'Karta wzorów, str. 14: liczba przekątnych $n$-kąta wypukłego to $\\frac{n(n-3)}{2}$.'
+    tip: 'Tego wzoru nie ma w karcie – warto go zapamiętać: liczba przekątnych $n$-kąta wypukłego to $\\frac{n(n-3)}{2}$.'
   });
 };
 const complementDigit = (r) => {
@@ -475,7 +475,7 @@ export default {
   color: '#FACC15',
   matura_points_range: '1–3 pkt',
   importance: 'HIGH',
-  cke_formula_page: 'str. 26',
+  cke_formula_page: 'str. 26–27',
   lessons: [
     {
       title: 'Reguła mnożenia',
@@ -490,7 +490,7 @@ export default {
           ['Pomnóż', T`$10 \cdot 10 \cdot 10 = 1000$.`, 'Etapy następują po sobie – mnożenie.']
         ],
         formulas: [
-          ['Reguła mnożenia', T`n_1 \cdot n_2 \cdot \ldots \cdot n_k`, 26],
+          ['Reguła mnożenia', T`n_1 \cdot n_2 \cdot \ldots \cdot n_k`],
           ['Z powtórzeniami', T`\underbrace{n \cdot n \cdot \ldots \cdot n}_{k} = n^k`],
           ['Rzuty monetą i kostką', T`2^n \quad \text{oraz} \quad 6^n`]
         ],
@@ -521,7 +521,7 @@ export default {
         ],
         formulas: [
           ['Reguła dodawania', T`n_1 + n_2 \quad \text{(przypadki rozłączne)}`],
-          ['Reguła mnożenia', T`n_1 \cdot n_2 \quad \text{(kolejne etapy)}`, 26]
+          ['Reguła mnożenia', T`n_1 \cdot n_2 \quad \text{(kolejne etapy)}`]
         ],
         examples: [
           ['Trasa bezpośrednia lub przez miasto', '1 pkt', T`Z A do C prowadzą $2$ drogi bezpośrednie. Można też jechać przez B: z A do B są $3$ drogi, z B do C – $4$. Ile jest tras?`, T`1. Przez B: $3 \cdot 4 = 12$.` + '\n' + T`2. Razem: $2 + 12 = 14$.`, 'Bezpośrednio ALBO przez B.'],
@@ -611,7 +611,7 @@ export default {
         ],
         formulas: [
           ['Liczba par', T`\frac{n(n-1)}{2}`],
-          ['Przekątne n-kąta', T`\frac{n(n-3)}{2}`, 14],
+          ['Przekątne n-kąta', T`\frac{n(n-3)}{2}`],
           ['Dopełnienie', T`\text{co najmniej jeden} = \text{wszystkie} - \text{ani jeden}`]
         ],
         examples: [

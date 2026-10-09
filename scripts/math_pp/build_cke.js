@@ -9,13 +9,14 @@
 //   src/data/math/allMathTasks.ts                       (AUTHENTIC_CKE_TASKS)
 //   seed/curriculum/exams/<examId>.json
 //   seed/curriculum/zadania_matura.json
-//   seed/curriculum/cke_tasks_matematyka.json           (część „matura-*”)
+//   seed/curriculum/cke_tasks_matematyka.json           (wyłącznie zadania z arkuszy)
 //   seed/curriculum/official_cke_tasks_reference.json
 //
 // Format zadania w transkrypcji:
 //   n     – numer zadania w arkuszu ('7', '14.2'),
 //   pts   – liczba punktów, t – numer działu JASNE (1–15),
-//   k     – rodzaj: SC (jedna z A–D), PF (dwa zdania prawda/fałsz), AB (A/B + uzasadnienie 1–3),
+//   k     – rodzaj: SC (jedna z A–D), PF (stwierdzenia prawda/fałsz), AB (zakończenie A/B/C + uzasadnienie 1/2/3),
+//           PARTS (tabela: każdemu zdaniu jedna odpowiedź z listy),
 //           MULTI (dwie odpowiedzi z A–F), FILL (uzupełnij), NUM (uzupełnij liczbą), OPEN, PROOF,
 //   q     – treść (LaTeX w $...$), o – opcje, a – odpowiedź (jak w kluczu CKE, wersja A),
 //   s     – kroki rozwiązania, trap – typowy błąd, fig – { diagram | plot | numberLine }, optNL – osie liczbowe opcji.
@@ -57,6 +58,7 @@ function convert(exam, t) {
   if (!SECTION[t.t]) fail(`${id}: zły dział ${t.t}`);
   if (!Array.isArray(t.s) || !t.s.length) fail(`${id}: brak kroków rozwiązania`);
   let type, content = t.q, options, correct, answerLine, officialKey = t.a;
+  const extra = {};
 
   if (t.k === 'SC') {
     type = 'SINGLE_CHOICE';
@@ -65,23 +67,44 @@ function convert(exam, t) {
     options = t.o; correct = t.a;
     answerLine = `Prawidłowa odpowiedź: **${t.a}**.`;
   } else if (t.k === 'PF') {
-    type = 'SINGLE_CHOICE';
-    if (t.st?.length !== 2 || !/^[PF]{2}$/.test(t.a)) fail(`${id}: PF wymaga 2 zdań i klucza typu PF`);
-    content = `${t.q}\n\nOceń prawdziwość poniższych stwierdzeń.\n\n**1.** ${t.st[0]}\n\n**2.** ${t.st[1]}`;
-    options = ['1. – prawda, 2. – prawda', '1. – prawda, 2. – fałsz', '1. – fałsz, 2. – prawda', '1. – fałsz, 2. – fałsz'];
-    correct = LETTERS[['PP', 'PF', 'FP', 'FF'].indexOf(t.a)];
-    answerLine = `Prawidłowa odpowiedź: **${correct}** (w arkuszu CKE: ${t.a.split('').join(', ')}).`;
+    // Dwa (lub więcej) stwierdzenia oceniane jako prawda/fałsz – format natywny, klucz jak w arkuszu („PF”)
+    type = 'TRUE_FALSE';
+    if (!(t.st?.length >= 2) || !new RegExp(`^[PF]{${t.st?.length}}$`).test(t.a)) fail(`${id}: PF wymaga stwierdzeń i klucza typu PF`);
+    content = `${t.q}\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.`;
+    extra.statements = t.st.map((text, i) => ({ id: String(i + 1), text, correct: t.a[i] }));
+    t.st.forEach((x) => lint(id, 'stwierdzenie', x));
+    correct = t.a;
+    answerLine = `Prawidłowa odpowiedź: ${t.a.split('').map((c, i) => `**${i + 1} – ${c}**`).join(', ')}.`;
   } else if (t.k === 'AB') {
-    type = 'SINGLE_CHOICE';
-    if (t.ab?.length !== 2 || t.r?.length !== 3 || !/^[AB][123]$/.test(t.a)) fail(`${id}: AB wymaga 2 zakończeń, 3 uzasadnień i klucza typu B2`);
-    options = t.ab.flatMap((x) => t.r.map((y) => `${x}, ${t.join || 'ponieważ'} ${y}`));
-    correct = LETTERS['AB'.indexOf(t.a[0]) * 3 + Number(t.a[1]) - 1];
-    answerLine = `Prawidłowa odpowiedź: **${correct}** (w arkuszu CKE: ${t.a[0]}${t.a[1]}).`;
+    // „Wybierz odpowiedź A albo B oraz odpowiedź 1., 2. albo 3.” – dwie części, punkt tylko za całość
+    type = 'TWO_PART';
+    if (!(t.ab?.length >= 2) || !(t.r?.length >= 2) || !/^[A-C][1-3]$/.test(t.a)) fail(`${id}: AB wymaga zakończeń, uzasadnień i klucza typu B2`);
+    if ('ABC'.indexOf(t.a[0]) >= t.ab.length || Number(t.a[1]) > t.r.length) fail(`${id}: klucz ${t.a} poza zakresem`);
+    extra.parts = [
+      { prompt: '', options: t.ab.map((text, i) => ({ id: LETTERS[i], text })) },
+      { prompt: t.join || 'ponieważ', options: t.r.map((text, i) => ({ id: String(i + 1), text })) }
+    ];
+    [...t.ab, ...t.r].forEach((x) => lint(id, 'część odpowiedzi', x));
+    correct = t.a;
+    answerLine = `Prawidłowa odpowiedź: **${t.a}** (${t.ab['ABC'.indexOf(t.a[0])]}, ${t.join || 'ponieważ'} ${t.r[Number(t.a[1]) - 1]}).`;
+  } else if (t.k === 'PARTS') {
+    // Tabela: każdemu zdaniu przypisuje się jedną odpowiedź ze wspólnej listy; punkt za każdą poprawną pozycję
+    type = 'TWO_PART';
+    if (!(t.parts?.length >= 2) || !(t.choices?.length >= 3) || !new RegExp(`^[A-F]{${t.parts?.length}}$`).test(t.a)) fail(`${id}: PARTS wymaga zdań, listy odpowiedzi i klucza z liter`);
+    if (t.pts !== t.parts?.length) fail(`${id}: PARTS – liczba punktów musi być równa liczbie zdań`);
+    extra.parts = t.parts.map((prompt) => ({ prompt, options: t.choices.map((text, i) => ({ id: LETTERS[i], text })) }));
+    extra.partScoring = 'per_part';
+    [...t.parts, ...t.choices].forEach((x) => lint(id, 'część odpowiedzi', x));
+    correct = t.a;
+    answerLine = `Prawidłowa odpowiedź: ${t.a.split('').map((c, i) => `**${i + 1} – ${c}** (${t.choices[LETTERS.indexOf(c)]})`).join(', ')}.`;
+    officialKey = null;
   } else if (t.k === 'MULTI') {
-    type = 'OPEN_CALCULATION';
-    if (!(t.o?.length >= 5) || !/^[A-F]{2}$/.test(t.a)) fail(`${id}: MULTI wymaga listy A–F i klucza z dwóch liter`);
-    content = `${t.q}\n\n${t.o.map((x, i) => `**${LETTERS[i]}.** ${x}`).join('\n\n')}`;
-    correct = `${t.a[0]} i ${t.a[1]}`;
+    // „Wybierz dwie właściwe odpowiedzi spośród A–F” – 2 pkt za obie, 1 pkt za jedną poprawną
+    type = 'MULTI_CHOICE';
+    if (!(t.o?.length >= 5) || !/^[A-F]{2}$/.test(t.a) || t.a[0] >= t.a[1]) fail(`${id}: MULTI wymaga listy A–F i klucza z dwóch liter w kolejności alfabetycznej`);
+    options = t.o;
+    extra.multiSelect = 2;
+    correct = t.a;
     answerLine = `Prawidłowe odpowiedzi: **${t.a[0]}** oraz **${t.a[1]}**.`;
   } else if (t.k === 'NUM') {
     type = 'NUMERIC_INPUT';
@@ -103,7 +126,7 @@ function convert(exam, t) {
   if (!ref) fail(`${id}: brak zadania o tym id w dotychczasowej bazie (official_keys.json)`);
   else {
     if (ref.points !== t.pts) fail(`${id}: punkty ${t.pts} ≠ ${ref.points} w bazie`);
-    if (['SC', 'PF', 'AB', 'MULTI'].includes(t.k) && /^[A-F]{1,2}\d?$/.test(ref.key) && ref.key !== t.a) fail(`${id}: klucz ${t.a} ≠ oficjalny ${ref.key}`);
+    if (['SC', 'PF', 'AB', 'MULTI'].includes(t.k) && /^([A-F]{1,2}\d?|[PF]{2})$/.test(ref.key) && ref.key !== t.a) fail(`${id}: klucz ${t.a} ≠ oficjalny ${ref.key}`);
   }
 
   const explanation = [steps(t.s), t.trap ? `**Pułapka CKE:** ${t.trap}` : null, answerLine].filter(Boolean).join('\n\n');
@@ -111,11 +134,12 @@ function convert(exam, t) {
   lint(id, 'treść', content); lint(id, 'wyjaśnienie', explanation); lint(id, 'wskazówka', tip); lint(id, 'odpowiedź', correct);
   (options || []).forEach((o) => lint(id, 'opcja', o));
   if (options && new Set(options).size !== options.length) fail(`${id}: powtórzone opcje`);
+  if (t.optFig && t.optFig.length !== (options || []).length) fail(`${id}: optFig musi mieć tyle rysunków, ile jest opcji`);
 
   const fig = t.fig || {};
   return {
     id, n: t.n, type, content, options, correct, explanation, tip, sectionTitle, officialKey,
-    topicId: `dzial-${t.t}`, points: t.pts, isClosed: type === 'SINGLE_CHOICE', optNL: t.optNL,
+    topicId: `dzial-${t.t}`, points: t.pts, isClosed: ['SINGLE_CHOICE', 'TRUE_FALSE', 'TWO_PART', 'MULTI_CHOICE'].includes(type), optNL: t.optNL, optFig: t.optFig, extra,
     diagram: fig.diagram, plot: fig.plot, numberLine: fig.numberLine, adapted: t.adapted
   };
 }
@@ -155,7 +179,8 @@ const mathTask = ({ exam }, t) => ({
   taskNumber: t.n,
   type: t.type,
   content: t.content,
-  ...(t.options ? { options: t.options.map((text, i) => ({ id: LETTERS[i], text, is_correct: LETTERS[i] === t.correct, ...(t.optNL ? { numberLine: t.optNL[i] } : {}) })) } : {}),
+  ...(t.options ? { options: t.options.map((text, i) => ({ id: LETTERS[i], text, is_correct: t.correct.includes(LETTERS[i]), ...(t.optNL ? { numberLine: t.optNL[i] } : {}), ...(t.optFig ? { diagram: t.optFig[i] } : {}) })) } : {}),
+  ...t.extra,
   correct_answer: t.correct,
   explanation: t.explanation,
   matura_tip: t.tip,
@@ -175,7 +200,8 @@ const seedTask = ({ exam }, t) => ({
   topicId: t.topicId,
   type: t.type,
   content: t.content,
-  options: t.options ? (t.optNL ? t.options.map((text, i) => ({ id: LETTERS[i], text, numberLine: t.optNL[i], is_correct: LETTERS[i] === t.correct })) : t.options) : [],
+  options: t.options ? (t.optNL || t.optFig ? t.options.map((text, i) => ({ id: LETTERS[i], text, ...(t.optNL ? { numberLine: t.optNL[i] } : {}), ...(t.optFig ? { diagram: t.optFig[i] } : {}), is_correct: t.correct.includes(LETTERS[i]) })) : t.options) : [],
+  ...t.extra,
   correctAnswer: t.correct,
   points: t.points,
   isClosed: t.isClosed,
@@ -225,7 +251,13 @@ const replaceIn = (list, make, keyOf) => {
   return out;
 };
 writeJson('seed/curriculum/zadania_matura.json', replaceIn(readJson('seed/curriculum/zadania_matura.json'), seedTask, (x) => examIdOf(x.id)));
-writeJson('seed/curriculum/cke_tasks_matematyka.json', replaceIn(readJson('seed/curriculum/cke_tasks_matematyka.json'), seedTask, (x) => (String(x.id).startsWith('matura-') ? examIdOf(x.id) : '')));
+// cke_tasks_matematyka.json: wyłącznie autentyczne zadania z arkuszy. Wcześniej plik zawierał też 830 zadań
+// treningowych błędnie oznaczonych jako „CKE • Informator maturalny” / „CKE • Arkusz pokazowy” (isCke: true),
+// w tym z błędnymi kluczami – nie są to zadania CKE, więc nie mogą tu figurować.
+writeJson(
+  'seed/curriculum/cke_tasks_matematyka.json',
+  replaceIn(readJson('seed/curriculum/cke_tasks_matematyka.json'), seedTask, (x) => (String(x.id).startsWith('matura-') ? examIdOf(x.id) : '')).filter((x) => String(x.id).startsWith('matura-'))
+);
 const refToExam = new Map(exams.map((e) => [e.exam.refLabel.toLowerCase(), e.exam.examId]));
 writeJson('seed/curriculum/official_cke_tasks_reference.json', replaceIn(readJson('seed/curriculum/official_cke_tasks_reference.json'), refTask, (x) => refToExam.get(String(x.exam).toLowerCase()) || ''));
 

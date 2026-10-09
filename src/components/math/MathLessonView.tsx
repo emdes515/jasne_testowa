@@ -11,6 +11,10 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { MathRenderer } from '../MathRenderer';
+import { MathDiagram } from '../MathDiagram';
+import { NumberLineDiagram } from '../NumberLineDiagram';
+import { StructuredAnswerInput } from './StructuredAnswerInput';
+import { getStructuredKind, gradeStructuredAnswer, isStructuredAnswerComplete } from '../../lib/structuredAnswer';
 import { MathLessonDefinition } from '../../data/mathCurriculumData';
 import { triggerHaptic, playSuccessSound } from '../../utils';
 
@@ -45,10 +49,28 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
   const currentTask = tasks[currentTaskIndex];
   const theory = lesson.theory_pill;
 
+  // Lekcja zawiera trzy formaty zadań: wybór ABCD, prawda/fałsz dla stwierdzeń oraz wynik liczbowy
+  const isNumericTask = currentTask?.type === 'NUMERIC_INPUT';
+  const isStructuredTask = Boolean(getStructuredKind(currentTask));
+  const parseNumber = (raw: string) => Number(String(raw).trim().replace(/\s+/g, '').replace(',', '.'));
+  const canCheck = isStructuredTask
+    ? isStructuredAnswerComplete(currentTask, selectedOption)
+    : isNumericTask
+      ? String(selectedOption || '').trim() !== '' && !Number.isNaN(parseNumber(selectedOption || ''))
+      : Boolean(selectedOption);
+
+  const isCurrentAnswerCorrect = (): boolean => {
+    if (!currentTask || !selectedOption) return false;
+    const key = String(currentTask.correctAnswer || currentTask.correct_answer || '');
+    if (isStructuredTask) return gradeStructuredAnswer(currentTask, selectedOption) >= (currentTask.points || 1);
+    if (isNumericTask) return Math.abs(parseNumber(selectedOption) - parseNumber(key)) < 1e-6;
+    return selectedOption === key;
+  };
+
   const handleCheckAnswer = () => {
-    if (!selectedOption || !currentTask) return;
+    if (!canCheck || !currentTask) return;
     setIsAnswerChecked(true);
-    const isCorrect = selectedOption === (currentTask.correctAnswer || currentTask.correct_answer);
+    const isCorrect = isCurrentAnswerCorrect();
     if (isCorrect) {
       triggerHaptic('success');
       playSuccessSound();
@@ -157,7 +179,49 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                 <MathRenderer content={currentTask.question || currentTask.content || ''} />
               </div>
 
-              {currentTask.options && currentTask.options.length > 0 && (
+              {Boolean(currentTask.numberLine) && (
+                <div className="flex justify-center"><NumberLineDiagram data={currentTask.numberLine} /></div>
+              )}
+              {Boolean(currentTask.diagram || currentTask.plot) && (
+                <div className="flex justify-center"><MathDiagram diagram={currentTask.diagram || currentTask.plot} /></div>
+              )}
+
+              {isStructuredTask && (
+                <div className="pt-2">
+                  <StructuredAnswerInput
+                    task={currentTask}
+                    value={selectedOption}
+                    onChange={(value) => { triggerHaptic('light'); setSelectedOption(value); }}
+                    reveal={isAnswerChecked}
+                  />
+                </div>
+              )}
+
+              {isNumericTask && (
+                <div className="pt-2 space-y-2">
+                  <input
+                    type="text"
+                    inputMode="decimal"
+                    disabled={isAnswerChecked}
+                    value={selectedOption || ''}
+                    onChange={(e) => setSelectedOption(e.target.value)}
+                    placeholder="Wpisz wynik, np. 12 albo 3,5"
+                    aria-label="Wynik liczbowy"
+                    className={`w-full px-4 py-3 rounded-xl bg-[#070a0f] border text-base text-white outline-none transition-all ${
+                      isAnswerChecked
+                        ? (isCurrentAnswerCorrect() ? 'border-emerald-500' : 'border-[#f43f5e]')
+                        : 'border-white/15 focus:border-[#ffb800]'
+                    }`}
+                  />
+                  {isAnswerChecked && (
+                    <p className="text-xs sm:text-sm text-slate-300">
+                      Prawidłowy wynik: <span className="font-bold text-emerald-300">{String(currentTask.correctAnswer || currentTask.correct_answer)}</span>
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {!isStructuredTask && !isNumericTask && currentTask.options && currentTask.options.length > 0 && (
                 <div className="space-y-2.5 pt-2">
                   {currentTask.options.map((opt: any, idx: number) => {
                     const optId = typeof opt === 'string' ? String.fromCharCode(65 + idx) : (opt.id || String.fromCharCode(65 + idx));
@@ -211,7 +275,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
 
             {!isAnswerChecked ? (
               <button
-                disabled={!selectedOption}
+                disabled={!canCheck}
                 onClick={handleCheckAnswer}
                 className="w-full py-3.5 rounded-xl font-black text-sm bg-gradient-to-r from-[#FFB800] to-[#FFA000] text-black disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
               >

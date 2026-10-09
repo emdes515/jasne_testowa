@@ -3,7 +3,10 @@ import { T, mc, num, pf, pill, fr, par, quad, lin, xm, iv, m, need } from './lib
 const TIP_QUAD = 'Karta wzorów, str. 8: postać kanoniczna $f(x) = a(x - p)^2 + q$, gdzie $p = -\\frac{b}{2a}$, $q = -\\frac{\\Delta}{4a}$; wierzchołek $W = (p, q)$.';
 const cf = (a) => (a === 1 ? '' : a === -1 ? '-' : `${a}`);
 const canon = (a, p, q) => `${cf(a)}(${xm(p)})^2${q === 0 ? '' : ` ${q > 0 ? '+' : '-'} ${Math.abs(q)}`}`;
-const fact = (a, x1, x2) => `${cf(a)}(${xm(x1)})(${xm(x2)})`;
+const fact = (a, x1, x2) =>
+  x1 === 0 || x2 === 0
+    ? (x1 === 0 && x2 === 0 ? `${cf(a)}x^2` : `${cf(a)}x(${xm(x1 === 0 ? x2 : x1)})`)
+    : `${cf(a)}(${xm(x1)})(${xm(x2)})`;
 const P = (x, y) => m(`(${x}, ${y})`);
 const fx = (s) => m(`f(x) = ${s}`);
 
@@ -510,12 +513,12 @@ export default {
         pl: T`Miejsca zerowe to punkty, w których parabola przebija oś poziomą. Postać iloczynowa ma je wypisane w nawiasach – tylko ze zmienionym znakiem: nawias $(x - 3)$ zeruje się dla $x = 3$, a nawias $(x + 5)$ dla $x = -5$.`,
         steps: [
           ['Z postaci iloczynowej – odczytaj', T`$f(x) = 2(x - 3)(x + 5)$: miejsca zerowe to $3$ i $-5$.`, 'Liczba przed nawiasami nie ma wpływu.'],
-          ['Z postaci ogólnej – delta', T`$x^2 - 2x - 15 = 0$: $\Delta = 4 + 60 = 64$, $x_1 = -3$, $x_2 = 5$.`, 'Wzory w karcie na str. 7.'],
+          ['Z postaci ogólnej – delta', T`$x^2 - 2x - 15 = 0$: $\Delta = 4 + 60 = 64$, $x_1 = -3$, $x_2 = 5$.`, 'Wzory w karcie na str. 7–8.'],
           ['Zapisz postać iloczynową', T`$f(x) = (x + 3)(x - 5)$.`, T`Nawias to $x$ minus miejsce zerowe.`]
         ],
         formulas: [
           ['Wyróżnik', T`\Delta = b^2 - 4ac`, 7],
-          ['Miejsca zerowe', T`x_{1} = \frac{-b - \sqrt{\Delta}}{2a}, \quad x_{2} = \frac{-b + \sqrt{\Delta}}{2a}`, 7],
+          ['Miejsca zerowe', T`x_{1} = \frac{-b - \sqrt{\Delta}}{2a}, \quad x_{2} = \frac{-b + \sqrt{\Delta}}{2a}`, 8],
           ['Postać iloczynowa', T`f(x) = a(x - x_1)(x - x_2)`, 8]
         ],
         examples: [

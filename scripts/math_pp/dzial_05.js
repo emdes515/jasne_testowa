@@ -124,7 +124,7 @@ const linFromTwoPoints = (r) => {
       T`Wzór: $f(x) = ${lin(a, b)}$.`
     ],
     trap: T`We wzorze na $a$ w liczniku i mianowniku odejmujesz współrzędne w tej samej kolejności punktów.`,
-    tip: 'Karta wzorów, str. 22: współczynnik kierunkowy prostej przez dwa punkty to $a = \\frac{y_2 - y_1}{x_2 - x_1}$.'
+    tip: 'Karta wzorów, str. 21: współczynnik kierunkowy prostej przez dwa punkty to $a = \\frac{y_2 - y_1}{x_2 - x_1}$.'
   });
 };
 const linSlope = (r) => {
@@ -141,7 +141,7 @@ const linSlope = (r) => {
     bad: [m(fr(dx, dy)), m(fr(-dy, dx)), m(fr(-dx, dy)), m(fr(y1 + dy + y1 || 1, x1 + dx + x1 || 1))],
     steps: [T`$a = \frac{y_B - y_A}{x_B - x_A} = \frac{${y1 + dy} - ${par(y1)}}{${x1 + dx} - ${par(x1)}}$.`, T`Po obliczeniu różnic: $a = ${fr(dy, dx)}$.`],
     trap: T`W liczniku stoi różnica drugich współrzędnych ($y$), a w mianowniku pierwszych ($x$) – nie odwrotnie.`,
-    tip: 'Karta wzorów, str. 22: współczynnik kierunkowy prostej przez dwa punkty to $a = \\frac{y_2 - y_1}{x_2 - x_1}$.'
+    tip: 'Karta wzorów, str. 21: współczynnik kierunkowy prostej przez dwa punkty to $a = \\frac{y_2 - y_1}{x_2 - x_1}$.'
   });
 };
 const linFromZeroAndPoint = (r) => {
@@ -524,7 +524,7 @@ export default {
           ['Zapisz wzór i sprawdź', T`$f(x) = 3x - 1$. Kontrola: $f(3) = 8$ – zgadza się.`, 'Drugi punkt służy do sprawdzenia.']
         ],
         formulas: [
-          ['Współczynnik kierunkowy', T`a = \frac{y_2 - y_1}{x_2 - x_1}`, 22],
+          ['Współczynnik kierunkowy', T`a = \frac{y_2 - y_1}{x_2 - x_1}`, 21],
           ['Wyraz wolny', T`b = y_1 - a \cdot x_1`],
           ['Wykresy równoległe', T`a_1 = a_2`, 22]
         ],

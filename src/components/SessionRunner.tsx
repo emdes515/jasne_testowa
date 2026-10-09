@@ -52,6 +52,7 @@ import { Badge } from './Badge';
 
 import { UserState, LessonTheoryPill } from '../types';
 import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTaskPool } from '../data/dzial1TaskPool';
+import { pickRetryTask, nextQueueIndex } from '../lib/sessionQueue';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
@@ -1229,6 +1230,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return heartsData.hearts;
   }, [isTheoryStep, heartsData, heartFlyAnim, pillImpactDone]);
 
+  // Bieżąca wartość isEvaluated dostępna także dla handlerów z poprzedniego renderu (patrz handleNextStep)
+  const isEvaluatedLiveRef = React.useRef(false);
+  isEvaluatedLiveRef.current = isEvaluated;
   const rawCurrentTask = taskQueue[currentQueueIndex] || taskQueue[0] || tasks[0];
   const currentTask = useMemo(() => {
     if (!rawCurrentTask) return rawCurrentTask;
@@ -2040,7 +2044,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     
     if (!raw) {
       return {
-        label: 'Trening JASNE • Baza CKE',
+        label: 'Trening JASNE • w stylu CKE',
         type: 'autorskie' as const,
         badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
         dotClass: 'bg-emerald-400'
@@ -2115,7 +2119,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
     // 4. Zadania treningowe, rozgrzewkowe lub autorskie
     return {
-      label: 'Trening JASNE • Baza CKE',
+      label: 'Trening JASNE • w stylu CKE',
       type: 'autorskie' as const,
       badgeClass: 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300',
       dotClass: 'bg-emerald-400'
@@ -2840,16 +2844,26 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       // Zasada Mastery Learning: błędna odpowiedź nie przesuwa paska postępu,
       // a zadanie (lub inne wylosowane z tej samej lekcji) trafia na koniec kolejki
       const lessonPool = getLessonTaskPool(lessonId);
-      const usedIds = taskQueue.map((t: any) => t.id);
-      const unusedInPool = lessonPool.filter((t: any) => !usedIds.includes(t.id));
-      if (unusedInPool.length > 0) {
-        const nextPoolTask = unusedInPool[0];
+      // Najpierw zadanie z puli, którego nie było w kolejce; gdy pula jest wyczerpana – zadanie jeszcze
+      // nierozwiązane poprawnie, inne niż bieżące (logika i testy: src/lib/sessionQueue.ts).
+      const retryCandidate: any = pickRetryTask(lessonPool as any[], taskQueue, currentTask?.id, correctlySolvedTaskIds);
+      if (retryCandidate) {
+        const nextPoolTask = retryCandidate;
+        // Dane merytoryczne powtórki (treść, klucz, rysunek, podpowiedzi) pochodzą wyłącznie z nowego zadania puli.
+        // Z poprzedniego zadania zostają tylko pola sesji – inaczej powtórka dziedziczyłaby np. cudzy rysunek albo jednostkę.
+        const isMathLesson = !/^(pol|eng)-/.test(String(lessonId || ''));
+        const {
+          diagram: _d, plot: _p, numberLine: _n, visual: _v, statements: _s, part_1: _p1, part_2: _p2,
+          options: _o, unit: _u, tolerance: _t, hints: _h, matura_tip: _m, input_placeholder: _ip,
+          ...sessionFields
+        } = (currentTask || {}) as any;
         const formattedTask = {
-          ...currentTask,
+          ...sessionFields,
+          ...(isMathLesson ? nextPoolTask : {}),
           id: nextPoolTask.id,
           type: nextPoolTask.type || currentTask.type,
-          title: `Zadanie powtórkowe • ${nextPoolTask.tierLabel}`,
-          instruction: nextPoolTask.instruction || 'Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.',
+          title: `Zadanie powtórkowe${nextPoolTask.tierLabel ? ` • ${nextPoolTask.tierLabel}` : ''}`,
+          instruction: nextPoolTask.instruction || (isMathLesson ? undefined : 'Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.'),
           math_statement: nextPoolTask.question,
           question: nextPoolTask.question,
           options: nextPoolTask.options || [],
@@ -2862,7 +2876,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           part_2: nextPoolTask.part_2,
           explanation: nextPoolTask.explanation,
           officialKey: nextPoolTask.officialKey || nextPoolTask.explanation,
-          hints: {
+          hints: nextPoolTask.hints || {
             level_1: nextPoolTask.hint_1,
             level_2: nextPoolTask.hint_2
           },
@@ -3368,8 +3382,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         });
       } catch (e) {}
     } else {
-      // Przejdź do kolejnego zadania z kolejki
-      setCurrentQueueIndex(prev => prev + 1);
+      // Ponowne stuknięcie „Dalej” (przycisk znika dopiero po animacji) nie może przeskoczyć zadania:
+      // przechodzimy dalej tylko z zadania, które zostało już sprawdzone.
+      if (!isEvaluatedLiveRef.current) return;
+      isEvaluatedLiveRef.current = false;
+      // Przejdź do kolejnego zadania z kolejki – nigdy poza jej koniec (inaczej wyświetlałoby się w kółko pierwsze zadanie)
+      setCurrentQueueIndex(prev => nextQueueIndex(prev, taskQueueRef.current.length));
       setSelectedOption(null);
       setIsEvaluated(false);
       setIsCorrect(null);
@@ -3436,7 +3454,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     const perfectCoinsBonus = isPerfect ? 5 : 0;
     const calculatedCoins = Math.max(15, earnedCoins + 8 + perfectCoinsBonus);
     const streakDays = (userState?.streakDays || 0) + 1;
-    const cleanLessonNumber = lessonId.replace('lesson-', '').replace('-', '.');
+    // np. "math-lesson-9-2" → "9.2" (wcześniej uczeń widział techniczne "math.9-2")
+    const lessonNumberMatch = String(lessonId).match(/(\d+)-(\d+)$/);
+    const cleanLessonNumber = lessonNumberMatch
+      ? `${lessonNumberMatch[1]}.${lessonNumberMatch[2]}`
+      : lessonId.replace('lesson-', '').replace('-', '.');
 
     const accuracyPct = sessionMistakesCount === 0 
       ? 100 
@@ -5401,7 +5423,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             if (steps.length > 0) {
                               const lastText = steps[steps.length - 1]?.text || '';
                               const eqMatch = lastText.match(/=\s*([^=.,;]+)[.,;]?\s*$/);
-                              if (eqMatch) return eqMatch[1].trim();
+                              if (eqMatch) {
+                                const piece = eqMatch[1].trim();
+                                // Wycinek z kroku zapisanego w KaTeX-ie może zgubić otwierający lub zamykający znak $ –
+                                // domykamy go, żeby wynik nie wyświetlił się jako surowy LaTeX.
+                                const dollars = (piece.match(/\$/g) || []).length;
+                                if (dollars % 2 === 1) return piece.endsWith('$') ? `$${piece}` : `${piece}$`;
+                                return piece;
+                              }
                             }
                             return null;
                           })();
@@ -5694,7 +5723,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             <div className="pt-4 pb-2.5 flex items-center justify-between gap-2 shrink-0 flex-wrap">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-xs sm:text-sm font-bold text-slate-200">
-                  Zadanie {currentQueueIndex + 1} z {tasks?.length || targetCorrectAnswers || 5}
+                  Zadanie {currentQueueIndex + 1} z {Math.max(taskQueue.length, currentQueueIndex + 1) || tasks?.length || targetCorrectAnswers || 5}
                 </span>
                 <span className="text-slate-600 hidden sm:inline">•</span>
                 <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg border font-semibold text-[11px] sm:text-xs shadow-sm ${taskSourceBadge.badgeClass}`}>

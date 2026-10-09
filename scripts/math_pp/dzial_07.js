@@ -203,7 +203,7 @@ const arWordProblem = (r) => {
   const v = a1 + (n - 1) * rr;
   return num({
     title: 'Ciąg arytmetyczny w zadaniu praktycznym',
-    q: T`W pierwszym rzędzie sali widowiskowej jest $${a1}$ miejsc, a w każdym następnym rzędzie o $${rr}$ ${rr < 5 ? 'miejsca' : 'miejsc'} więcej niż w poprzednim. Ile miejsc jest w rzędzie $${n}$.? Wpisz liczbę.`,
+    q: T`W pierwszym rzędzie sali widowiskowej jest $${a1}$ miejsc, a w każdym następnym rzędzie o $${rr}$ ${rr < 5 ? 'miejsca' : 'miejsc'} więcej niż w poprzednim. Ile miejsc jest w rzędzie numer $${n}$? Wpisz liczbę.`,
     ans: v,
     steps: [T`Liczby miejsc w kolejnych rzędach tworzą ciąg arytmetyczny: $a_1 = ${a1}$, $r = ${rr}$.`, T`$a_{${n}} = ${a1} + ${n - 1} \cdot ${rr} = ${v}$.`],
     trap: T`Od pierwszego do $${n}$. rzędu jest $${n - 1}$ „przeskoków”, więc $${rr}$ dodajemy $${n - 1}$ razy, a nie $${n}$.`,

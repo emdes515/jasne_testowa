@@ -1819,7 +1819,7 @@ export default function App() {
           setShowSubjectLobbyModal(false);
         }}
         polishStats={{ total: 1056, epochs: 11, lektury: 10 }}
-        mathStats={{ total: 1006, topics: 15 }}
+        mathStats={{ total: 1500, topics: 15 }}
       />
       <CkeFormulasModal
         isOpen={showFormulasModal}

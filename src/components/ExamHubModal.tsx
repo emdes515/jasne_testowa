@@ -30,7 +30,7 @@ export function ExamHubModal({
   onClose,
   onSelectMode,
   selectedSubjectKey = 'math',
-  totalTasksCount = 1006
+  totalTasksCount = 211
 }: ExamHubModalProps) {
   if (!isOpen) return null;
 

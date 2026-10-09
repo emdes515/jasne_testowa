@@ -11,6 +11,15 @@ import { generateStereometryAndStats } from './generators/stereometry_stats.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// SKRYPT WYCOFANY. Ten generator tworzył zadania z błędami (m.in. nierozwiązywalne równania wielomianowe,
+// błędne klucze, powtórzenia treści) i nie wiązał zadań z lekcjami. Bazę 1500 zadań oraz 75 pigułek teorii
+// buduje teraz `node scripts/math_pp/build.js`. Uruchomienie tego pliku nadpisałoby zweryfikowane dane,
+// dlatego kończymy od razu (ucieczka awaryjna: --force-legacy).
+if (!process.argv.includes('--force-legacy')) {
+  console.error('Skrypt wycofany. Użyj: node scripts/math_pp/build.js');
+  process.exit(1);
+}
+
 console.log('🚀 Rozpoczynam pełną syntezę i rygorystyczny audyt bazy 1500 zadań...');
 
 const targetQuotas = {

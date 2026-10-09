@@ -435,7 +435,7 @@ const tabPercent = (r) => {
   const v = (cnt * 100) / d.n;
   return mc({
     title: 'Procent z zestawienia danych',
-    q: T`${d.text} Jaki procent wszystkich ${d.who} stanowią te, dla których ${d.unit} jest równa co najmniej $${d.vals[k]}$?`,
+    q: T`${d.text} W przypadku jakiego procentu wszystkich ${d.who} ${d.unit} jest równa co najmniej $${d.vals[k]}$?`,
     ask: true,
     ok: m(`${v}\\%`),
     val: v,

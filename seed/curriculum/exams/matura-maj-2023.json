@@ -4,28 +4,28 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "1",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Na osi liczbowej zaznaczono sumę przedziałów.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiór zaznaczony na osi jest zbiorem wszystkich rozwiązań nierówności",
+    "content": "Na osi liczbowej zaznaczono sumę przedziałów $(-\\infty, -2 \\rangle \\cup \\langle 5, +\\infty)$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiór zaznaczony na osi jest zbiorem wszystkich rozwiązań nierówności",
     "options": [
-      "|x − 3,5| \\ge 1,5",
-      "|x − 1,5| \\ge 3,5",
-      "|x − 3,5| \\le 1,5",
-      "|x − 1,5| \\le 3,5"
+      "$|x - 3{,}5| \\ge 1{,}5$",
+      "$|x - 1{,}5| \\ge 3{,}5$",
+      "$|x - 3{,}5| \\le 1{,}5$",
+      "$|x - 1{,}5| \\le 3{,}5$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB D \n \n  \n                                                \n1 Rozporządzenie Ministra Edukacji i Nauki z dnia 10 czerwca 2022 r. w sprawie wymagań egzaminacyjnych dla \negzaminu maturalnego przeprowadzanego w roku szkolnym 2022/2023 i 2023/2024 (Dz.U. 2022, poz.1246).",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Zaznaczono dwa promienie „na zewnątrz” – to rozwiązanie nierówności typu $|x - a| \\ge r$.\n\n**Krok 2:** Liczba $a$ to środek między $-2$ i $5$: $a = \\frac{-2 + 5}{2} = 1{,}5$.\n\n**Krok 3:** Liczba $r$ to odległość od środka do każdego z końców: $r = 5 - 1{,}5 = 3{,}5$. Nierówność: $|x - 1{,}5| \\ge 3{,}5$.\n\n**Pułapka CKE:** W nierówności $|x - a| \\ge r$ liczba $a$ to ŚRODEK, a $r$ to PROMIEŃ. Zamiana ról ($a = 3{,}5$, $r = 1{,}5$) daje odpowiedź A.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "W nierówności $|x - a| \\ge r$ liczba $a$ to ŚRODEK, a $r$ to PROMIEŃ. Zamiana ról ($a = 3{,}5$, $r = 1{,}5$) daje odpowiedź A.",
     "source": "Matura Maj 2023 • Zad. 1",
     "year": 2023,
     "session": "Maj",
     "isCke": true,
     "numberLine": {
-      "min": -5,
-      "max": 7,
+      "min": -6,
+      "max": 9,
       "ticks": [
         -2,
         5
@@ -49,21 +49,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "2",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  \\sqrt− 27\n16\n3\n\\cdot \\sqrt2\n3\njest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sqrt[3]{-\\frac{27}{16}} \\cdot \\sqrt[3]{2}$ jest równa",
     "options": [
-      "(− 3\n2)",
-      "3\n2",
-      "2\n3",
-      "(− 2\n3)"
+      "$\\left(-\\frac{3}{2}\\right)$",
+      "$\\frac{3}{2}$",
+      "$\\frac{2}{3}$",
+      "$\\left(-\\frac{2}{3}\\right)$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Iloczyn pierwiastków tego samego stopnia to pierwiastek z iloczynu: $\\sqrt[3]{-\\frac{27}{16} \\cdot 2} = \\sqrt[3]{-\\frac{27}{8}}$.\n\n**Krok 2:** $\\sqrt[3]{-\\frac{27}{8}} = -\\frac{3}{2}$, bo $\\left(-\\frac{3}{2}\\right)^3 = -\\frac{27}{8}$.\n\n**Pułapka CKE:** Pierwiastek stopnia NIEPARZYSTEGO z liczby ujemnej istnieje i jest ujemny. Zgubienie minusa daje odpowiedź $\\frac{3}{2}$.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Pierwiastek stopnia NIEPARZYSTEGO z liczby ujemnej istnieje i jest ujemny. Zgubienie minusa daje odpowiedź $\\frac{3}{2}$.",
     "source": "Matura Maj 2023 • Zad. 2",
     "year": 2023,
     "session": "Maj",
@@ -74,16 +74,16 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "3",
-    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "section": "Dział 2: Wyrażenia algebraiczne",
     "topicId": "dzial-2",
     "type": "OPEN_PROOF",
-    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  (𝟐𝒏 + 𝟏)𝟐 − 𝟏  jest podzielna\nprzez  𝟖.\n3.\n0–1–2",
+    "content": "Wykaż, że dla każdej liczby naturalnej $n \\ge 1$ liczba $(2n + 1)^2 - 1$ jest podzielna przez $8$.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$(2n + 1)^2 - 1 = 4n(n + 1)$, a iloczyn $n(n + 1)$ dwóch kolejnych liczb naturalnych jest parzysty, więc cała liczba jest podzielna przez $4 \\cdot 2 = 8$.",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nKorzystając z wzoru skróconego mnożenia, zapisujemy liczbę  (2n + 1)2 − 1  w postaci \n \n(2n + 1)2 − 1 = 4n2 + 4n + 1 − 1 = 4n(n + 1) \n \nPonieważ liczby  n  oraz  n + 1  są kolejnymi liczbami naturalnymi, to jedna z nich jest liczbą \nparzystą, zatem iloczyn  n(n + 1)  jest  liczbą parzystą, więc iloczyn  4n(n + 1)  jest \npodzielny przez  8. To należało wykazać. \n \nSposób II  \nKorzystając z wzoru skróconego mnożenia, zapisujemy liczbę  (2n + 1)2 − 1  w postaci",
-    "ckeTrap": "1. Jeżeli zdający sprawdza prawdziwość tezy tylko dla wybranych wartości  n, to otrzymuje \n0 punktów za całe rozwiązanie. \n2. Jeżeli zdający przyjmuje np.  n = 8k + r, gdzie  k ∈ \\mathbb{N} i  r  jest resztą z dzielenia liczby  n  \nprzez  8, i przeprowadzi poprawne rozumowanie dla co najmniej połowy przypadków, ale \nnie przeprowadzi pełnego rozumowania dla wszystkich przypadków, to otrzymuje 1 punkt \nza całe rozwiązanie. \n3. Jeżeli zdający rozpatruje przypadki  n = 2𝑙  oraz  n = 2𝑙 + 1  (gdzie  𝑙 ∈ \\mathbb{N}) i przekształca \nwyrażenie  (2n + 1)2 − 1  do postaci, odpowiednio,  8𝑙(2𝑙 + 1)  oraz  2𝑙2 + 3𝑙 + 1, ale \nnie zapisze, że  8𝑙(2𝑙 + 1)  oraz  2𝑙2 + 3𝑙 + 1  są liczbami naturalnymi/całkowitymi, to \notrzymuje 1 punkt za całe rozwiązanie.",
+    "explanation": "**Krok 1:** Rozwijamy kwadrat: $(2n + 1)^2 - 1 = 4n^2 + 4n + 1 - 1 = 4n^2 + 4n = 4n(n + 1)$.\n\n**Krok 2:** Liczby $n$ oraz $n + 1$ to dwie kolejne liczby naturalne – jedna z nich jest parzysta, więc $n(n + 1) = 2k$ dla pewnej liczby całkowitej $k$.\n\n**Krok 3:** Zatem $(2n + 1)^2 - 1 = 4 \\cdot 2k = 8k$, czyli liczba jest podzielna przez $8$.\n\n**Pułapka CKE:** Wyłączenie czwórki daje tylko podzielność przez $4$. Brakującą dwójkę „dostarcza” iloczyn dwóch kolejnych liczb – i to trzeba napisać wprost.\n\n**Wniosek:** $(2n + 1)^2 - 1 = 4n(n + 1)$, a iloczyn $n(n + 1)$ dwóch kolejnych liczb naturalnych jest parzysty, więc cała liczba jest podzielna przez $4 \\cdot 2 = 8$.",
+    "ckeTrap": "Wyłączenie czwórki daje tylko podzielność przez $4$. Brakującą dwójkę „dostarcza” iloczyn dwóch kolejnych liczb – i to trzeba napisać wprost.",
     "source": "Matura Maj 2023 • Zad. 3",
     "year": 2023,
     "session": "Maj",
@@ -94,21 +94,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "4",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log9 27 + log9 3  jest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\log_9 27 + \\log_9 3$ jest równa",
     "options": [
-      "81",
-      "9",
-      "4",
-      "2"
+      "$81$",
+      "$9$",
+      "$4$",
+      "$2$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nWersja A Wersja B \nD C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Suma logarytmów to logarytm iloczynu: $\\log_9 (27 \\cdot 3) = \\log_9 81$.\n\n**Krok 2:** $9^2 = 81$, więc $\\log_9 81 = 2$.\n\n**Pułapka CKE:** $81$ to liczba logarytmowana, a nie wartość logarytmu. Logarytm odpowiada na pytanie: „do jakiej potęgi podnieść $9$, żeby dostać $81$?”.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Karta wzorów, str. 5: $\\log_a x + \\log_a y = \\log_a (x \\cdot y)$.",
     "source": "Matura Maj 2023 • Zad. 4",
     "year": 2023,
     "session": "Maj",
@@ -119,21 +119,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "5",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 2: Wyrażenia algebraiczne",
+    "topicId": "dzial-2",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  a  wyrażenie  (2a − 3)2 − (2a + 3)2  jest równe",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla każdej liczby rzeczywistej $a$ wyrażenie $(2a - 3)^2 - (2a + 3)^2$ jest równe",
     "options": [
-      "−24a",
-      "0",
-      "18",
-      "16a2 − 24a"
+      "$-24a$",
+      "$0$",
+      "$18$",
+      "$16a^2 - 24a$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nWersja A Wersja B \nA B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** $(2a - 3)^2 = 4a^2 - 12a + 9$ oraz $(2a + 3)^2 = 4a^2 + 12a + 9$.\n\n**Krok 2:** Odejmujemy: $4a^2 - 12a + 9 - 4a^2 - 12a - 9 = -24a$.\n\n**Pułapka CKE:** Minus przed drugim nawiasem zmienia znaki wszystkich jego składników. Kwadraty i dziewiątki się skracają, ale wyrazy $-12a$ i $-12a$ się DODAJĄ.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Minus przed drugim nawiasem zmienia znaki wszystkich jego składników. Kwadraty i dziewiątki się skracają, ale wyrazy $-12a$ i $-12a$ się DODAJĄ.",
     "source": "Matura Maj 2023 • Zad. 5",
     "year": 2023,
     "session": "Maj",
@@ -144,21 +144,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "6",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 3: Równania i nierówności",
+    "topicId": "dzial-3",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wszystkich rozwiązań nierówności\n−2(x + 3) \\le 2 − x\n3\njest przedział",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności\n$$-2(x + 3) \\le \\frac{2 - x}{3}$$\njest przedział",
     "options": [
-      "(−\\infty, −4]",
-      "(−\\infty, 4]",
-      "[−4, \\infty)",
-      "[4, \\infty)"
+      "$(-\\infty, -4 \\rangle$",
+      "$(-\\infty, 4 \\rangle$",
+      "$\\langle -4, +\\infty)$",
+      "$\\langle 4, +\\infty)$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nWersja A Wersja B \nC A",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Mnożymy obie strony przez $3$: $-6(x + 3) \\le 2 - x$, czyli $-6x - 18 \\le 2 - x$.\n\n**Krok 2:** Przenosimy wyrazy: $-5x \\le 20$.\n\n**Krok 3:** Dzielimy przez $-5$ i odwracamy znak nierówności: $x \\ge -4$.\n\n**Pułapka CKE:** Dzielenie przez liczbę ujemną odwraca znak nierówności. Bez tego wyszłoby $x \\le -4$, czyli odpowiedź A.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Dzielenie przez liczbę ujemną odwraca znak nierówności. Bez tego wyszłoby $x \\le -4$, czyli odpowiedź A.",
     "source": "Matura Maj 2023 • Zad. 6",
     "year": 2023,
     "session": "Maj",
@@ -169,21 +169,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "7",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 3: Równania i nierówności",
+    "topicId": "dzial-3",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nJednym z rozwiązań równania  \\sqrt3(x2 − 2)(x + 3) = 0  jest liczba",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nJednym z rozwiązań równania $\\sqrt{3}(x^2 - 2)(x + 3) = 0$ jest liczba",
     "options": [
-      "3",
-      "2",
-      "\\sqrt3",
-      "\\sqrt2"
+      "$3$",
+      "$2$",
+      "$\\sqrt{3}$",
+      "$\\sqrt{2}$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Iloczyn jest równy zero, gdy któryś z czynników jest równy zero. Czynnik $\\sqrt{3}$ jest stałą różną od zera.\n\n**Krok 2:** $x^2 - 2 = 0$ daje $x = \\sqrt{2}$ lub $x = -\\sqrt{2}$, a $x + 3 = 0$ daje $x = -3$.\n\n**Krok 3:** Spośród podanych liczb rozwiązaniem jest $\\sqrt{2}$.\n\n**Pułapka CKE:** $\\sqrt{3}$ to stały czynnik, a nie rozwiązanie. Z nawiasu $(x + 3)$ wychodzi $-3$, a nie $3$.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "$\\sqrt{3}$ to stały czynnik, a nie rozwiązanie. Z nawiasu $(x + 3)$ wychodzi $-3$, a nie $3$.",
     "source": "Matura Maj 2023 • Zad. 7",
     "year": 2023,
     "session": "Maj",
@@ -194,21 +194,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "8",
-    "section": "Dział 3: Równania i Nierówności",
+    "section": "Dział 3: Równania i nierówności",
     "topicId": "dzial-3",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie\n(x+1)(x−1)2\n(x−1)(x+1)2 = 0  w zbiorze liczb rzeczywistych",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $\\frac{(x + 1)(x - 1)^2}{(x - 1)(x + 1)^2} = 0$ w zbiorze liczb rzeczywistych",
     "options": [
       "nie ma rozwiązania.",
-      "ma dokładnie jedno rozwiązanie:  −1.",
-      "ma dokładnie jedno rozwiązanie:  1.",
-      "ma dokładnie dwa rozwiązania:  −1  oraz  1."
+      "ma dokładnie jedno rozwiązanie: $-1$.",
+      "ma dokładnie jedno rozwiązanie: $1$.",
+      "ma dokładnie dwa rozwiązania: $-1$ oraz $1$."
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA A",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Dziedzina: mianownik różny od zera, czyli $x \\ne 1$ i $x \\ne -1$.\n\n**Krok 2:** Licznik jest równy zero dla $x = -1$ lub $x = 1$.\n\n**Krok 3:** Obie te liczby są wykluczone z dziedziny, więc równanie nie ma rozwiązań.\n\n**Pułapka CKE:** Zanim skrócisz ułamek, wyznacz dziedzinę. „Kandydaci” $-1$ i $1$ zerują także mianownik, więc odpadają.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Zanim skrócisz ułamek, wyznacz dziedzinę. „Kandydaci” $-1$ i $1$ zerują także mianownik, więc odpadają.",
     "source": "Matura Maj 2023 • Zad. 8",
     "year": 2023,
     "session": "Maj",
@@ -219,16 +219,16 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "9",
-    "section": "Dział 3: Równania i Nierówności",
+    "section": "Dział 3: Równania i nierówności",
     "topicId": "dzial-3",
     "type": "OPEN_CALCULATION",
-    "content": "Rozwiąż równanie\n𝟑𝒙𝟑 − 𝟐𝒙𝟐 − 𝟏𝟐𝒙 + 𝟖 = 𝟎\nZapisz obliczenia.\n9.\n0–1–\n2–3",
+    "content": "Rozwiąż równanie\n$$3x^3 - 2x^2 - 12x + 8 = 0$$\nZapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$x = \\frac{2}{3}$ lub $x = -2$ lub $x = 2$.",
     "points": 3,
     "isClosed": false,
-    "explanation": "Sposób I \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \n3x3 − 2x2 − 12x + 8 = 0 \n \nx2(3x − 2) − 4(3x − 2) = 0 \n \n(3x − 2)(x2 − 4) = 0 \n \n(3x − 2)(x − 2)(x + 2) = 0 \n \n3x − 2 = 0    lub    x − 2 = 0    lub    x + 2 = 0 \n \nx = 2\n3     lub    x = 2   lub    x = −2 \n \nRozwiązaniami równania są liczby:  (−2), 2\n3 , 2. \n \nSposób II \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \n3x3 − 2x2 − 12x + 8 = 0 \n \n3x(x2 − 4) − 2(x2 − 4) = 0 \n \n(3x − 2)(x2 − 4) = 0 \n \n(3x − 2)(x − 2)(x + 2) = 0 \n \n3x − 2 = 0    lub    x − 2 = 0    lub    x + 2 = 0 \n \nx = 2\n3     lub    x = 2   lub    x = −2 \n \nRozwiązaniami równania są liczby:  (−2), 2\n3 , 2. \n \nSposób III \nObliczamy  W(2) = 0  i stwierdzamy, że liczba  2  jest pierwiastkiem wielomianu  \nW(x) = 3x3 − 2x2 − 12x + 8. \n \nZatem wielomian  W  jest podzielny przez dwumian  x − 2. Dzielimy wielomian  W  przez \ndwumian  x − 2  i otrzymujemy  \n \n(3x3 − 2x2 − 12x + 8): (x − 2) = 3x2 + 4x − 4 \n \nZatem  W(x) = (x − 2)(3x2 + 4x − 4). \n \nObliczamy pierwiastki trójmianu  3x2 + 4x − 4: \n \nΔ = 42 − 4 \\cdot 3 \\cdot (−4) = 64 \n \nx = −4 − 8\n2 \\cdot 3 = −2    oraz    x = −4 + 8\n2 \\cdot 3 = 2\n3 \n \nRozwiązaniami równania są liczby:  (−2), 2\n3 , 2. \n \nSposób IV \nObliczamy  W(2) = 0  i stwierdzamy, że liczba  2  jest pierwiastkiem wielomianu  \nW(x) = 3x3 − 2x2 − 12x + 8. \n \nObliczamy  W(−2) = 0  i stwierdzamy, że liczba  (−2)  jest pierwiastkiem wielomianu  \nW(x) = 3x3 − 2x2 − 12x + 8. \n \nObliczamy  W (2\n3) = 0  i stwierdzamy, że liczba  2\n3  jest pierwiastkiem wielomianu  \nW(x) = 3x3 − 2x2 − 12x + 8. \n \nPonieważ  W  jest wielomianem stopnia trzeciego, więc ma co najwyżej trzy pierwiastki \nrzeczywiste. Oznacza to, że jedynymi rozwiązaniami równania  3x3 − 2x2 − 12x + 8 = 0  \nsą liczby:  (−2), 2\n3 , 2.",
-    "ckeTrap": "1. Jeżeli zdający uzyska trzy poprawne pierwiastki wielomianu, lecz traktuje równanie jako \nnierówność (podaje zbiór rozwiązań w postaci przedziału/ sumy przedziałów), to otrzymuje \n2 punkty za całe rozwiązanie. \n2. Jeżeli zdający przy przekształcaniu lewej strony równania do postaci iloczynu zapisuje \nczynnik  (3x − 2)  z wykładnikiem  2, to może otrzymać co najwyżej 2 punkty za całe \nrozwiązanie.",
+    "explanation": "**Krok 1:** Grupujemy wyrazy: $x^2(3x - 2) - 4(3x - 2) = 0$.\n\n**Krok 2:** $(3x - 2)(x^2 - 4) = 0$, czyli $(3x - 2)(x - 2)(x + 2) = 0$.\n\n**Krok 3:** $x = \\frac{2}{3}$ lub $x = 2$ lub $x = -2$.\n\n**Pułapka CKE:** Przy grupowaniu: $-12x + 8 = -4(3x - 2)$. Błąd znaku w drugim nawiasie uniemożliwia wyłączenie wspólnego czynnika.\n\n**Odpowiedź:** $x = \\frac{2}{3}$ lub $x = -2$ lub $x = 2$.",
+    "ckeTrap": "Przy grupowaniu: $-12x + 8 = -4(3x - 2)$. Błąd znaku w drugim nawiasie uniemożliwia wyłączenie wspólnego czynnika.",
     "source": "Matura Maj 2023 • Zad. 9",
     "year": 2023,
     "session": "Maj",
@@ -239,89 +239,28 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "10",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
+    "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "Na rysunku przedstawiono interpretację geometryczną w kartezjańskim układzie\nwspółrzędnych  (x, y)  jednego z niżej zapisanych układów równań A–D.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
+    "content": "Na rysunku przedstawiono interpretację geometryczną w kartezjańskim układzie współrzędnych $(x, y)$ jednego z niżej zapisanych układów równań A–D.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
     "options": [
-      "{ y = −x + 2\ny = −2x + 1",
-      "{ y = x − 2\ny = −2x − 1",
-      "{ y = x − 2\ny = 2x + 1",
-      "{ y = −x + 2\ny = 2x − 1"
+      "$\\begin{cases} y = -x + 2 \\\\ y = -2x + 1 \\end{cases}$",
+      "$\\begin{cases} y = x - 2 \\\\ y = -2x - 1 \\end{cases}$",
+      "$\\begin{cases} y = x - 2 \\\\ y = 2x + 1 \\end{cases}$",
+      "$\\begin{cases} y = -x + 2 \\\\ y = 2x - 1 \\end{cases}$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Prosta opadająca przecina oś $Oy$ w punkcie $(0, 2)$ i oś $Ox$ w punkcie $(2, 0)$: $y = -x + 2$.\n\n**Krok 2:** Prosta rosnąca przecina oś $Oy$ w punkcie $(0, -1)$ i przechodzi przez punkt $(1, 1)$: $y = 2x - 1$.\n\n**Krok 3:** Sprawdzenie: proste przecinają się w punkcie $(1, 1)$ – spełnia on oba równania układu D.\n\n**Pułapka CKE:** Jedna prosta rośnie, druga opada – współczynniki kierunkowe muszą mieć różne znaki. To od razu eliminuje układy A i C.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Jedna prosta rośnie, druga opada – współczynniki kierunkowe muszą mieć różne znaki. To od razu eliminuje układy A i C.",
     "source": "Matura Maj 2023 • Zad. 10",
     "year": 2023,
     "session": "Maj",
     "isCke": true,
-    "diagram": {
-      "type": "LINEAR",
-      "xRange": [
-        -3,
-        5
-      ],
-      "yRange": [
-        -3,
-        5
-      ],
-      "gridStep": 1,
-      "lines": [
-        {
-          "slope": -1,
-          "intercept": 2,
-          "color": "#38BDF8",
-          "label": "y = -x + 2"
-        },
-        {
-          "slope": 2,
-          "intercept": -1,
-          "color": "#FFB800",
-          "label": "y = 2x - 1"
-        }
-      ],
-      "points": [
-        {
-          "x": 1,
-          "y": 1,
-          "label": "P(1, 1)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "ne"
-        },
-        {
-          "x": 0,
-          "y": 2,
-          "label": "(0, 2)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "nw"
-        },
-        {
-          "x": 2,
-          "y": 0,
-          "label": "(2, 0)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "se"
-        },
-        {
-          "x": 0,
-          "y": -1,
-          "label": "(0, -1)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
-        }
-      ]
-    },
     "plot": {
-      "type": "LINEAR",
       "xRange": [
-        -3,
+        -5,
         5
       ],
       "yRange": [
@@ -329,52 +268,15 @@
         5
       ],
       "gridStep": 1,
+      "type": "LINEAR",
       "lines": [
         {
           "slope": -1,
-          "intercept": 2,
-          "color": "#38BDF8",
-          "label": "y = -x + 2"
+          "intercept": 2
         },
         {
           "slope": 2,
-          "intercept": -1,
-          "color": "#FFB800",
-          "label": "y = 2x - 1"
-        }
-      ],
-      "points": [
-        {
-          "x": 1,
-          "y": 1,
-          "label": "P(1, 1)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "ne"
-        },
-        {
-          "x": 0,
-          "y": 2,
-          "label": "(0, 2)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "nw"
-        },
-        {
-          "x": 2,
-          "y": 0,
-          "label": "(2, 0)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "se"
-        },
-        {
-          "x": 0,
-          "y": -1,
-          "label": "(0, -1)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
+          "intercept": -1
         }
       ]
     }
@@ -384,21 +286,24 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "11",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
-    "type": "SINGLE_CHOICE",
-    "content": "Dany jest prostokąt o bokach długości  a  i  b, gdzie  a > b. Obwód tego prostokąta jest\nrówny  30. Jeden z boków prostokąta jest o  5  krótszy od drugiego.\nUzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nZależności między długościami boków tego prostokąta zapisano w układach równań\noznaczonych literami: ……… oraz ……… .",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
+    "topicId": "dzial-5",
+    "type": "MULTI_CHOICE",
+    "content": "Dany jest prostokąt o bokach długości $a$ i $b$, gdzie $a > b$. Obwód tego prostokąta jest równy $30$. Jeden z boków prostokąta jest o $5$ krótszy od drugiego.\n\nWybierz dwie właściwe odpowiedzi spośród oznaczonych literami A–F. Zależności między długościami boków tego prostokąta zapisano w układach równań oznaczonych literami:",
     "options": [
-      "{ 2ab = 30\na − b = 5",
-      "{ 2a + b = 30\na = 5b",
-      "{ 2(a + b) = 30\nb = a − 5",
-      "{ 2a + 2b = 30\nb = 5a\nE.  { 2a + 2b = 30\na − b = 5\nF.  { a + b = 30\na = b + 5"
+      "$\\begin{cases} 2ab = 30 \\\\ a - b = 5 \\end{cases}$",
+      "$\\begin{cases} 2a + b = 30 \\\\ a = 5b \\end{cases}$",
+      "$\\begin{cases} 2(a + b) = 30 \\\\ b = a - 5 \\end{cases}$",
+      "$\\begin{cases} 2a + 2b = 30 \\\\ b = 5a \\end{cases}$",
+      "$\\begin{cases} 2a + 2b = 30 \\\\ a - b = 5 \\end{cases}$",
+      "$\\begin{cases} a + b = 30 \\\\ a = b + 5 \\end{cases}$"
     ],
+    "multiSelect": 2,
     "correctAnswer": "CE",
     "points": 2,
     "isClosed": true,
-    "explanation": "wybranie dwóch odpowiedzi, z których obie są poprawne. \n1 pkt – wybranie jednej lub dwóch odpowiedzi, z których jedna jest poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nCE AD",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Obwód prostokąta: $2a + 2b = 30$, co można też zapisać jako $2(a + b) = 30$.\n\n**Krok 2:** Krótszy bok $b$ jest o $5$ krótszy od $a$: $b = a - 5$, czyli równoważnie $a - b = 5$.\n\n**Krok 3:** Oba warunki naraz zawierają układy C i E. W pozostałych jest błąd: iloczyn zamiast sumy (A), „$5$ razy” zamiast „o $5$” (B, D) albo suma boków zamiast obwodu (F).\n\n**Pułapka CKE:** „O $5$ krótszy” to odejmowanie ($b = a - 5$), a „$5$ razy krótszy” to dzielenie. Obwód to $2a + 2b$, a nie $a + b$.\n\nPrawidłowe odpowiedzi: **C** oraz **E**.",
+    "ckeTrap": "„O $5$ krótszy” to odejmowanie ($b = a - 5$), a „$5$ razy krótszy” to dzielenie. Obwód to $2a + 2b$, a nie $a + b$.",
     "source": "Matura Maj 2023 • Zad. 11",
     "year": 2023,
     "session": "Maj",
@@ -409,244 +314,350 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "12.1",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 4: Funkcje i ich własności",
+    "topicId": "dzial-4",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDziedziną funkcji  f  jest zbiór",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ narysowano wykres funkcji $y = f(x)$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDziedziną funkcji $f$ jest zbiór",
     "options": [
-      "[−6, 5]",
-      "(−6, 5)",
-      "(−3, 5]",
-      "[−3, 5]"
+      "$\\langle -6, 5 \\rangle$",
+      "$(-6, 5)$",
+      "$(-3, 5 \\rangle$",
+      "$\\langle -3, 5 \\rangle$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Dziedzinę odczytujemy z osi $Ox$: to wszystkie argumenty, nad którymi lub pod którymi jest jakiś punkt wykresu.\n\n**Krok 2:** Wykres zaczyna się w punkcie o pierwszej współrzędnej $-6$ (kółko zamalowane) i kończy w punkcie o pierwszej współrzędnej $5$ (kółko zamalowane).\n\n**Krok 3:** Dla $x = -3$ i $x = 1$ pusta kropka jednego fragmentu jest „uzupełniona” zamalowaną kropką innego fragmentu. Zatem $D_f = \\langle -6, 5 \\rangle$.\n\n**Pułapka CKE:** Puste kółka w punktach $(-3, 2)$ i $(1, 5)$ nie tworzą dziur w dziedzinie – dla $x = -3$ i $x = 1$ funkcja ma wartości na innym fragmencie wykresu.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Puste kółka w punktach $(-3, 2)$ i $(1, 5)$ nie tworzą dziur w dziedzinie – dla $x = -3$ i $x = 1$ funkcja ma wartości na innym fragmencie wykresu.",
     "source": "Matura Maj 2023 • Zad. 12.1",
     "year": 2023,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "xRange": [
+        -6,
+        5
+      ],
+      "yRange": [
+        -3,
+        5
+      ],
+      "gridStep": 1,
+      "type": "PIECEWISE_LINEAR",
+      "segments": [
+        {
+          "from": [
+            -6,
+            2
+          ],
+          "to": [
+            -3,
+            2
+          ],
+          "startDot": "filled",
+          "endDot": "hollow"
+        },
+        {
+          "from": [
+            -3,
+            -3
+          ],
+          "to": [
+            1,
+            1
+          ],
+          "startDot": "filled",
+          "endDot": "filled"
+        },
+        {
+          "from": [
+            1,
+            5
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "startDot": "hollow",
+          "endDot": "none"
+        },
+        {
+          "from": [
+            2,
+            5
+          ],
+          "to": [
+            5,
+            3
+          ],
+          "startDot": "none",
+          "endDot": "filled"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2023-zad-12_2",
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "12.2",
-    "section": "Dział 4: Własności Funkcji i Odczytywanie Wykresów",
+    "section": "Dział 4: Funkcje i ich własności",
     "topicId": "dzial-4",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nNajwiększa wartość funkcji  f  w przedziale  [−4, 1]  jest równa",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ narysowano wykres funkcji $y = f(x)$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nNajwiększa wartość funkcji $f$ w przedziale $\\langle -4, 1 \\rangle$ jest równa",
     "options": [
-      "0",
-      "1",
-      "2",
-      "5"
+      "$0$",
+      "$1$",
+      "$2$",
+      "$5$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Dla $x \\in \\langle -4, -3)$ wykres jest poziomym odcinkiem na wysokości $2$, więc $f(x) = 2$.\n\n**Krok 2:** Dla $x \\in \\langle -3, 1 \\rangle$ wartości rosną od $-3$ do $1$.\n\n**Krok 3:** Największa wartość w całym przedziale $\\langle -4, 1 \\rangle$ to $2$.\n\n**Pułapka CKE:** Wartość $5$ funkcja przyjmuje dopiero dla $x > 1$ (pusta kropka w $(1, 5)$), więc w przedziale $\\langle -4, 1 \\rangle$ się nie liczy. Z kolei $1 = f(1)$ jest mniejsze od $2$.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Wartość $5$ funkcja przyjmuje dopiero dla $x > 1$ (pusta kropka w $(1, 5)$), więc w przedziale $\\langle -4, 1 \\rangle$ się nie liczy. Z kolei $1 = f(1)$ jest mniejsze od $2$.",
     "source": "Matura Maj 2023 • Zad. 12.2",
     "year": 2023,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "xRange": [
+        -6,
+        5
+      ],
+      "yRange": [
+        -3,
+        5
+      ],
+      "gridStep": 1,
+      "type": "PIECEWISE_LINEAR",
+      "segments": [
+        {
+          "from": [
+            -6,
+            2
+          ],
+          "to": [
+            -3,
+            2
+          ],
+          "startDot": "filled",
+          "endDot": "hollow"
+        },
+        {
+          "from": [
+            -3,
+            -3
+          ],
+          "to": [
+            1,
+            1
+          ],
+          "startDot": "filled",
+          "endDot": "filled"
+        },
+        {
+          "from": [
+            1,
+            5
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "startDot": "hollow",
+          "endDot": "none"
+        },
+        {
+          "from": [
+            2,
+            5
+          ],
+          "to": [
+            5,
+            3
+          ],
+          "startDot": "none",
+          "endDot": "filled"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2023-zad-12_3",
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "12.3",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 4: Funkcje i ich własności",
+    "topicId": "dzial-4",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest malejąca w zbiorze",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ narysowano wykres funkcji $y = f(x)$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nFunkcja $f$ jest malejąca w zbiorze",
     "options": [
-      "[−6, −3)",
-      "[−3, 1]",
-      "(1, 2]",
-      "[2, 5]"
+      "$\\langle -6, -3)$",
+      "$\\langle -3, 1 \\rangle$",
+      "$(1, 2 \\rangle$",
+      "$\\langle 2, 5 \\rangle$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Funkcja jest malejąca tam, gdzie wykres „opada” przy przesuwaniu się w prawo.\n\n**Krok 2:** W $\\langle -6, -3)$ i w $(1, 2 \\rangle$ wykres jest poziomy (funkcja stała), w $\\langle -3, 1 \\rangle$ – rośnie.\n\n**Krok 3:** Wykres opada tylko dla $x \\in \\langle 2, 5 \\rangle$ (od wartości $5$ do $3$).\n\n**Pułapka CKE:** Funkcja stała (poziomy odcinek) nie jest ani rosnąca, ani malejąca.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Funkcja stała (poziomy odcinek) nie jest ani rosnąca, ani malejąca.",
     "source": "Matura Maj 2023 • Zad. 12.3",
     "year": 2023,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "xRange": [
+        -6,
+        5
+      ],
+      "yRange": [
+        -3,
+        5
+      ],
+      "gridStep": 1,
+      "type": "PIECEWISE_LINEAR",
+      "segments": [
+        {
+          "from": [
+            -6,
+            2
+          ],
+          "to": [
+            -3,
+            2
+          ],
+          "startDot": "filled",
+          "endDot": "hollow"
+        },
+        {
+          "from": [
+            -3,
+            -3
+          ],
+          "to": [
+            1,
+            1
+          ],
+          "startDot": "filled",
+          "endDot": "filled"
+        },
+        {
+          "from": [
+            1,
+            5
+          ],
+          "to": [
+            2,
+            5
+          ],
+          "startDot": "hollow",
+          "endDot": "none"
+        },
+        {
+          "from": [
+            2,
+            5
+          ],
+          "to": [
+            5,
+            3
+          ],
+          "startDot": "none",
+          "endDot": "filled"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2023-zad-13",
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "13",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
+    "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "Funkcja liniowa  f  jest określona wzorem\nf(x) = ax + b, gdzie  a  i  b  są pewnymi\nliczbami rzeczywistymi. Na rysunku obok\nprzedstawiono fragment wykresu funkcji  f\nw kartezjańskim układzie współrzędnych  (x, y).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  a  oraz liczba  b  we wzorze funkcji  f  spełniają warunki:",
+    "content": "Funkcja liniowa $f$ jest określona wzorem $f(x) = ax + b$, gdzie $a$ i $b$ są pewnymi liczbami rzeczywistymi. Na rysunku przedstawiono fragment wykresu funkcji $f$ w kartezjańskim układzie współrzędnych $(x, y)$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $a$ oraz liczba $b$ we wzorze funkcji $f$ spełniają warunki:",
     "options": [
-      "a > 0  i  b > 0.",
-      "a > 0  i  b < 0.",
-      "a < 0  i  b > 0.",
-      "a < 0  i  b < 0."
+      "$a > 0$ i $b > 0$.",
+      "$a > 0$ i $b < 0$.",
+      "$a < 0$ i $b > 0$.",
+      "$a < 0$ i $b < 0$."
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Wykres „opada” – funkcja jest malejąca, więc współczynnik kierunkowy jest ujemny: $a < 0$.\n\n**Krok 2:** Wykres przecina oś $Oy$ powyżej zera (między $0$ a $1$), więc $b = f(0) > 0$.\n\n**Pułapka CKE:** Liczba $b$ to punkt przecięcia z osią $Oy$, a nie z osią $Ox$. Tu wykres przecina oś $Oy$ nad początkiem układu.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Liczba $b$ to punkt przecięcia z osią $Oy$, a nie z osią $Ox$. Tu wykres przecina oś $Oy$ nad początkiem układu.",
     "source": "Matura Maj 2023 • Zad. 13",
     "year": 2023,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "xRange": [
+        -2,
+        2
+      ],
+      "yRange": [
+        -2,
+        2
+      ],
+      "gridStep": 1,
+      "type": "LINEAR",
+      "lines": [
+        {
+          "slope": -2.5,
+          "intercept": 0.5
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2023-zad-14",
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "14",
-    "section": "Dział 6: Funkcja Kwadratowa",
+    "section": "Dział 6: Funkcja kwadratowa",
     "topicId": "dzial-6",
     "type": "SINGLE_CHOICE",
-    "content": "Jednym z miejsc zerowych funkcji kwadratowej  f  jest liczba  (−5). Pierwsza współrzędna\nwierzchołka paraboli, będącej wykresem funkcji  f, jest równa  3.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDrugim miejscem zerowym funkcji  f  jest liczba",
+    "content": "Jednym z miejsc zerowych funkcji kwadratowej $f$ jest liczba $(-5)$. Pierwsza współrzędna wierzchołka paraboli, będącej wykresem funkcji $f$, jest równa $3$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDrugim miejscem zerowym funkcji $f$ jest liczba",
     "options": [
-      "11",
-      "1",
-      "(−1)",
-      "(−13)"
+      "$11$",
+      "$1$",
+      "$(-1)$",
+      "$(-13)$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Miejsca zerowe paraboli leżą symetrycznie względem osi symetrii $x = 3$, więc $\\frac{x_1 + x_2}{2} = 3$.\n\n**Krok 2:** $\\frac{-5 + x_2}{2} = 3$, czyli $-5 + x_2 = 6$.\n\n**Krok 3:** $x_2 = 11$.\n\n**Pułapka CKE:** Od $-5$ do osi symetrii jest $8$ jednostek, więc drugie miejsce zerowe leży $8$ jednostek na PRAWO od $3$. Odpowiedź $-13$ to odłożenie tej odległości w złą stronę.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Karta wzorów, str. 8: $p = -\\frac{b}{2a}$ oraz $x_1 + x_2 = -\\frac{b}{a}$, stąd $p = \\frac{x_1 + x_2}{2}$.",
     "source": "Matura Maj 2023 • Zad. 14",
     "year": 2023,
     "session": "Maj",
-    "isCke": true,
-    "diagram": {
-      "type": "PARABOLA",
-      "xRange": [
-        -7,
-        13
-      ],
-      "yRange": [
-        -3,
-        6
-      ],
-      "gridStep": 2,
-      "parabola": {
-        "a": -0.0625,
-        "p": 3,
-        "q": 4,
-        "color": "#FFB800",
-        "domain": [
-          -6.5,
-          12.5
-        ]
-      },
-      "axisOfSymmetry": 3,
-      "points": [
-        {
-          "x": -5,
-          "y": 0,
-          "label": "x₁ = -5",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "nw"
-        },
-        {
-          "x": 3,
-          "y": 4,
-          "label": "xw = p = 3",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": 11,
-          "y": 0,
-          "label": "x₂ = 11",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "ne"
-        }
-      ]
-    },
-    "plot": {
-      "type": "PARABOLA",
-      "xRange": [
-        -7,
-        13
-      ],
-      "yRange": [
-        -3,
-        6
-      ],
-      "gridStep": 2,
-      "parabola": {
-        "a": -0.0625,
-        "p": 3,
-        "q": 4,
-        "color": "#FFB800",
-        "domain": [
-          -6.5,
-          12.5
-        ]
-      },
-      "axisOfSymmetry": 3,
-      "points": [
-        {
-          "x": -5,
-          "y": 0,
-          "label": "x₁ = -5",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "nw"
-        },
-        {
-          "x": 3,
-          "y": 4,
-          "label": "xw = p = 3",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": 11,
-          "y": 0,
-          "label": "x₂ = 11",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "ne"
-        }
-      ]
-    }
+    "isCke": true
   },
   {
     "id": "matura-maj-2023-zad-15",
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "15",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
     "type": "SINGLE_CHOICE",
-    "content": "Ciąg  (an)  jest określony wzorem  an = 2n \\cdot (n + 1)  dla każdej liczby naturalnej  n \\ge 1.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWyraz  a4  jest równy",
+    "content": "Ciąg $(a_n)$ jest określony wzorem $a_n = 2^n \\cdot (n + 1)$ dla każdej liczby naturalnej $n \\ge 1$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWyraz $a_4$ jest równy",
     "options": [
-      "64",
-      "40",
-      "48",
-      "80"
+      "$64$",
+      "$40$",
+      "$48$",
+      "$80$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Podstawiamy $n = 4$: $a_4 = 2^4 \\cdot (4 + 1)$.\n\n**Krok 2:** $2^4 = 16$, więc $a_4 = 16 \\cdot 5 = 80$.\n\n**Pułapka CKE:** $2^4 = 16$, a nie $8$ ($2 \\cdot 4$). Potęgowanie to nie mnożenie przez wykładnik.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "$2^4 = 16$, a nie $8$ ($2 \\cdot 4$). Potęgowanie to nie mnożenie przez wykładnik.",
     "source": "Matura Maj 2023 • Zad. 15",
     "year": 2023,
     "session": "Maj",
@@ -657,21 +668,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "16",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
     "type": "SINGLE_CHOICE",
-    "content": "Trzywyrazowy ciąg  (27, 9, a − 1)  jest geometryczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  a  jest równa",
+    "content": "Trzywyrazowy ciąg $(27, 9, a - 1)$ jest geometryczny.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $a$ jest równa",
     "options": [
-      "3",
-      "0",
-      "4",
-      "2"
+      "$3$",
+      "$0$",
+      "$4$",
+      "$2$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Iloraz ciągu: $q = \\frac{9}{27} = \\frac{1}{3}$.\n\n**Krok 2:** Trzeci wyraz: $9 \\cdot \\frac{1}{3} = 3$, więc $a - 1 = 3$.\n\n**Krok 3:** $a = 4$.\n\n**Pułapka CKE:** $3$ to trzeci WYRAZ ciągu, a pytają o liczbę $a$. Trzeba jeszcze rozwiązać równanie $a - 1 = 3$.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "$3$ to trzeci WYRAZ ciągu, a pytają o liczbę $a$. Trzeba jeszcze rozwiązać równanie $a - 1 = 3$.",
     "source": "Matura Maj 2023 • Zad. 16",
     "year": 2023,
     "session": "Maj",
@@ -682,16 +693,16 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "17",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
     "type": "OPEN_CALCULATION",
-    "content": "Pan Stanisław spłacił pożyczkę w wysokości  8910 zł w osiemnastu ratach. Każda kolejna\nrata była mniejsza od poprzedniej o  30 zł.\nOblicz kwotę pierwszej raty. Zapisz obliczenia.\n17.\n0–1–2",
+    "content": "Pan Stanisław spłacił pożyczkę w wysokości $8910$ zł w osiemnastu ratach. Każda kolejna rata była mniejsza od poprzedniej o $30$ zł.\n\nOblicz kwotę pierwszej raty. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "Pierwsza rata była równa $750$ zł.",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nKolejne raty tworzą ciąg arytmetyczny, w którym  S18 = 8910  i  r = −30. Korzystamy ze \nwzoru na sumę  n  początkowych wyrazów ciągu arytmetycznego i otrzymujemy równanie \n \n2a1 + 17 \\cdot (−30)\n2 \\cdot 18 = 8910 \n \nPrzekształcając to równanie równoważnie, otrzymujemy \n \n9(2a1 − 510) = 8910 \n \n2a1 − 510 = 990 \n \na1 = 750 \n \nPierwsza rata była równa  750 zł. \n \nSposób II \nPrzyjmujemy, że kolejne (licząc od końca) raty tworzą ciąg arytmetyczny, w którym   \nS18 = 8910  i  r = 30. Korzystamy ze wzoru na sumę  n  początkowych wyrazów ciągu \narytmetycznego i otrzymujemy równanie",
-    "ckeTrap": "1. Jeżeli zdający myli ciąg arytmetyczny z geometrycznym, to otrzymuje 0 punktów za całe \nrozwiązanie, o ile nie nabył prawa do innej liczby punktów. \n2. Jeżeli zdający zapisze tylko  750 zł, to otrzymuje 1 punkt za całe rozwiązanie. \n3. Jeżeli zdający rozważa ciąg arytmetyczny o różnicy  r = 30, obliczy  a1 = 240  i nie \ninterpretuje  a1  jako ostatniej raty, to może otrzymać co najwyżej 1 punkt za całe \nrozwiązanie. \n4. Jeżeli zdający błędnie interpretuje liczbę  8910  jako wyraz ciągu rat, to otrzymuje \n0 punktów za całe rozwiązanie.",
+    "explanation": "**Krok 1:** Kolejne raty tworzą ciąg arytmetyczny o różnicy $r = -30$, a suma osiemnastu rat to $S_{18} = 8910$.\n\n**Krok 2:** $S_{18} = \\frac{2a_1 + 17 \\cdot (-30)}{2} \\cdot 18 = 9(2a_1 - 510)$.\n\n**Krok 3:** $9(2a_1 - 510) = 8910$, więc $2a_1 - 510 = 990$, $2a_1 = 1500$ i $a_1 = 750$.\n\n**Pułapka CKE:** Raty MALEJĄ, więc różnica ciągu jest ujemna: $r = -30$. Podstawienie $r = 30$ daje pierwszą ratę $240$ zł – najmniejszą zamiast największej.\n\n**Odpowiedź:** Pierwsza rata była równa $750$ zł.",
+    "ckeTrap": "Karta wzorów, str. 9: $S_n = \\frac{2a_1 + (n - 1)r}{2} \\cdot n$.",
     "source": "Matura Maj 2023 • Zad. 17",
     "year": 2023,
     "session": "Maj",
@@ -702,25 +713,75 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "18",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
+    "section": "Dział 8: Trygonometria",
+    "topicId": "dzial-8",
     "type": "SINGLE_CHOICE",
-    "content": "W kartezjańskim układzie współrzędnych  (x, y)  zaznaczono kąt  \\alpha  o wierzchołku\nw punkcie  O = (0, 0). Jedno z ramion tego kąta pokrywa się z dodatnią półosią  Ox,\na drugie przechodzi przez punkt  P = (−3, 1)  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nTangens kąta  \\alpha  jest równy",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ zaznaczono kąt $\\alpha$ o wierzchołku w punkcie $O = (0, 0)$. Jedno z ramion tego kąta pokrywa się z dodatnią półosią $Ox$, a drugie przechodzi przez punkt $P = (-3, 1)$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nTangens kąta $\\alpha$ jest równy",
     "options": [
-      "1\n\\sqrt10",
-      "(− 3\n\\sqrt10)",
-      "(− 3\n1)",
-      "(− 1\n3)"
+      "$\\frac{1}{\\sqrt{10}}$",
+      "$\\left(-\\frac{3}{\\sqrt{10}}\\right)$",
+      "$\\left(-\\frac{3}{1}\\right)$",
+      "$\\left(-\\frac{1}{3}\\right)$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Dla kąta w układzie współrzędnych, którego ramię końcowe przechodzi przez punkt $P = (x, y)$: $\\operatorname{tg} \\alpha = \\frac{y}{x}$.\n\n**Krok 2:** $\\operatorname{tg} \\alpha = \\frac{1}{-3} = -\\frac{1}{3}$.\n\n**Pułapka CKE:** Tangens to $\\frac{y}{x}$, a nie $\\frac{x}{y}$. Liczby z $\\sqrt{10}$ w mianowniku to sinus i cosinus tego kąta ($r = \\sqrt{10}$).\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Karta wzorów, str. 11: $\\sin \\alpha = \\frac{y}{r}$, $\\cos \\alpha = \\frac{x}{r}$, $\\operatorname{tg} \\alpha = \\frac{y}{x}$.",
     "source": "Matura Maj 2023 • Zad. 18",
     "year": 2023,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "xRange": [
+        -3,
+        3
+      ],
+      "yRange": [
+        -1,
+        2
+      ],
+      "gridStep": 1,
+      "type": "PIECEWISE_LINEAR",
+      "segments": [
+        {
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            0,
+            0
+          ],
+          "startDot": "none",
+          "endDot": "none"
+        },
+        {
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            -3,
+            1
+          ],
+          "startDot": "none",
+          "endDot": "filled"
+        }
+      ],
+      "labels": [
+        {
+          "x": -2.4,
+          "y": 1.5,
+          "text": "P = (−3, 1)"
+        },
+        {
+          "x": 0.4,
+          "y": 0.4,
+          "text": "α"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2023-zad-19",
@@ -730,18 +791,18 @@
     "section": "Dział 8: Trygonometria",
     "topicId": "dzial-8",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdego kąta ostrego  \\alpha  wyrażenie  sin4 \\alpha  + sin2 \\alpha  \\cdot cos2 \\alpha  jest równe",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla każdego kąta ostrego $\\alpha$ wyrażenie $\\sin^4 \\alpha + \\sin^2 \\alpha \\cdot \\cos^2 \\alpha$ jest równe",
     "options": [
-      "sin2 \\alpha",
-      "sin6 \\alpha  \\cdot cos2 \\alpha",
-      "sin4 \\alpha + 1",
-      "sin2 \\alpha \\cdot (sin \\alpha + cos \\alpha) \\cdot (sin \\alpha − cos \\alpha)"
+      "$\\sin^2 \\alpha$",
+      "$\\sin^6 \\alpha \\cdot \\cos^2 \\alpha$",
+      "$\\sin^4 \\alpha + 1$",
+      "$\\sin^2 \\alpha \\cdot (\\sin \\alpha + \\cos \\alpha) \\cdot (\\sin \\alpha - \\cos \\alpha)$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Wyłączamy $\\sin^2 \\alpha$ przed nawias: $\\sin^2 \\alpha \\cdot \\left(\\sin^2 \\alpha + \\cos^2 \\alpha\\right)$.\n\n**Krok 2:** Z jedynki trygonometrycznej nawias jest równy $1$, więc wyrażenie jest równe $\\sin^2 \\alpha$.\n\n**Pułapka CKE:** Odpowiedź D to rozkład wyrażenia $\\sin^4\\alpha - \\sin^2\\alpha\\cos^2\\alpha$ (z MINUSEM). Tutaj jest plus, więc w nawiasie pojawia się jedynka trygonometryczna.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Odpowiedź D to rozkład wyrażenia $\\sin^4\\alpha - \\sin^2\\alpha\\cos^2\\alpha$ (z MINUSEM). Tutaj jest plus, więc w nawiasie pojawia się jedynka trygonometryczna.",
     "source": "Matura Maj 2023 • Zad. 19",
     "year": 2023,
     "session": "Maj",
@@ -755,18 +816,18 @@
     "section": "Dział 9: Planimetria",
     "topicId": "dzial-9",
     "type": "SINGLE_CHOICE",
-    "content": "W rombie o boku długości  6\\sqrt2  kąt rozwarty ma miarę  150°.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nIloczyn długości przekątnych tego rombu jest równy",
+    "content": "W rombie o boku długości $6\\sqrt{2}$ kąt rozwarty ma miarę $150^\\circ$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nIloczyn długości przekątnych tego rombu jest równy",
     "options": [
-      "24",
-      "72",
-      "36",
-      "36\\sqrt2"
+      "$24$",
+      "$72$",
+      "$36$",
+      "$36\\sqrt{2}$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Pole rombu o boku $a$ i kącie $\\alpha$: $P = a^2 \\sin \\alpha = \\left(6\\sqrt{2}\\right)^2 \\cdot \\sin 150^\\circ = 72 \\cdot \\frac{1}{2} = 36$.\n\n**Krok 2:** Pole rombu to także połowa iloczynu przekątnych: $P = \\frac{d_1 \\cdot d_2}{2}$.\n\n**Krok 3:** $\\frac{d_1 \\cdot d_2}{2} = 36$, więc $d_1 \\cdot d_2 = 72$.\n\n**Pułapka CKE:** $36$ to POLE rombu. Iloczyn przekątnych jest dwa razy większy, bo $P = \\frac{d_1 d_2}{2}$.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Karta wzorów, str. 20: pole rombu $P = a^2 \\sin \\alpha = \\frac{1}{2} d_1 d_2$. Pamiętaj: $\\sin 150^\\circ = \\sin 30^\\circ = \\frac{1}{2}$.",
     "source": "Matura Maj 2023 • Zad. 20",
     "year": 2023,
     "session": "Maj",
@@ -777,129 +838,144 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "21",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
     "type": "SINGLE_CHOICE",
-    "content": "Punkty  A, B, C  leżą na okręgu o środku w punkcie  O.\nKąt  ACO  ma miarę  70°  (zobacz rysunek).\nDokończ zdanie.\nWybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ABC  jest równa",
+    "content": "Punkty $A$, $B$, $C$ leżą na okręgu o środku w punkcie $O$. Kąt $ACO$ ma miarę $70^\\circ$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMiara kąta ostrego $ABC$ jest równa",
     "options": [
-      "10°",
-      "20°",
-      "35°",
-      "40°"
+      "$10^\\circ$",
+      "$20^\\circ$",
+      "$35^\\circ$",
+      "$40^\\circ$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Trójkąt $AOC$ jest równoramienny ($|OA| = |OC|$ – promienie), więc kąty przy podstawie $AC$ są równe: $|\\sphericalangle OAC| = |\\sphericalangle ACO| = 70^\\circ$.\n\n**Krok 2:** Kąt środkowy: $|\\sphericalangle AOC| = 180^\\circ - 2 \\cdot 70^\\circ = 40^\\circ$.\n\n**Krok 3:** Kąt wpisany $ABC$ jest oparty na tym samym łuku $AC$, więc ma miarę $\\frac{40^\\circ}{2} = 20^\\circ$.\n\n**Pułapka CKE:** $40^\\circ$ to kąt ŚRODKOWY $AOC$. Kąt wpisany $ABC$ jest od niego dwa razy mniejszy.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Karta wzorów, str. 18: kąt wpisany jest połową kąta środkowego opartego na tym samym łuku.",
     "source": "Matura Maj 2023 • Zad. 21",
     "year": 2023,
     "session": "Maj",
     "isCke": true,
     "diagram": {
       "type": "GEOMETRY_2D",
-      "title": "Kąt $\\angle ACO = 70^\\circ$ w okręgu o środku $O$",
-      "width": 440,
-      "height": 260,
-      "circles": [
-        {
-          "cx": 220,
-          "cy": 130,
-          "r": 90,
-          "stroke": "#38BDF8",
-          "strokeWidth": 2,
-          "fill": "rgba(56, 189, 248, 0.04)"
-        }
-      ],
-      "polygons": [
-        {
-          "points": [
-            [
-              140,
-              175
-            ],
-            [
-              300,
-              175
-            ],
-            [
-              195,
-              42
-            ]
-          ],
-          "stroke": "#FFB800",
-          "strokeWidth": 2,
-          "fill": "rgba(255, 184, 0, 0.05)"
-        }
-      ],
+      "width": 400,
+      "height": 222,
       "segments": [
         {
           "from": [
-            220,
-            130
+            200,
+            111
           ],
           "to": [
-            140,
-            175
+            180.1,
+            185.4
           ],
-          "color": "#10B981",
-          "strokeWidth": 1.5,
-          "dashed": true
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         },
         {
           "from": [
-            220,
-            130
+            200,
+            111
           ],
           "to": [
-            195,
-            42
+            232.6,
+            180.8
           ],
-          "color": "#10B981",
-          "strokeWidth": 1.5,
-          "dashed": true
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            180.1,
+            185.4
+          ],
+          "to": [
+            232.6,
+            180.8
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            180.1,
+            185.4
+          ],
+          "to": [
+            263.1,
+            66.8
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            263.1,
+            66.8
+          ],
+          "to": [
+            232.6,
+            180.8
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         }
       ],
-      "arcs": [
+      "circles": [
         {
-          "cx": 195,
-          "cy": 42,
-          "r": 22,
-          "startAngleDeg": 125,
-          "endAngleDeg": 195,
-          "color": "#FFB800",
-          "label": "70°"
+          "cx": 200,
+          "cy": 111,
+          "r": 77,
+          "fill": "none",
+          "stroke": "#dfe2f1",
+          "strokeWidth": 2
         }
       ],
       "points": [
         {
-          "x": 140,
-          "y": 175,
+          "x": 200,
+          "y": 111,
+          "label": "O",
+          "labelPosition": "top-left",
+          "dot": "filled",
+          "noBox": true
+        },
+        {
+          "x": 180.1,
+          "y": 185.4,
           "label": "A",
           "labelPosition": "bottom-left",
-          "dot": "filled"
-        },
-        {
-          "x": 300,
-          "y": 175,
-          "label": "B",
-          "labelPosition": "bottom-right",
-          "dot": "filled"
-        },
-        {
-          "x": 195,
-          "y": 42,
-          "label": "C",
-          "labelPosition": "top",
-          "dot": "filled"
-        },
-        {
-          "x": 220,
-          "y": 130,
-          "label": "O",
-          "labelPosition": "bottom",
           "dot": "filled",
-          "color": "#10B981"
+          "noBox": true
+        },
+        {
+          "x": 232.6,
+          "y": 180.8,
+          "label": "C",
+          "labelPosition": "bottom-right",
+          "dot": "filled",
+          "noBox": true
+        },
+        {
+          "x": 263.1,
+          "y": 66.8,
+          "label": "B",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "noBox": true
+        }
+      ],
+      "labels": [
+        {
+          "x": 216.9,
+          "y": 166.4,
+          "text": "70°",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
         }
       ]
     }
@@ -912,13 +988,13 @@
     "section": "Dział 9: Planimetria",
     "topicId": "dzial-9",
     "type": "OPEN_CALCULATION",
-    "content": "Trójkąty prostokątne  𝑇1  i  𝑇2  są podobne. Przyprostokątne trójkąta  𝑇1  mają\ndługości  5  i  12. Przeciwprostokątna trójkąta  𝑇2  ma długość  26.\nOblicz pole trójkąta  𝑻𝟐. Zapisz obliczenia.\n22.\n0–1–2",
+    "content": "Trójkąty prostokątne $T_1$ i $T_2$ są podobne. Przyprostokątne trójkąta $T_1$ mają długości $5$ i $12$. Przeciwprostokątna trójkąta $T_2$ ma długość $26$.\n\nOblicz pole trójkąta $T_2$. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$P_{T_2} = 120$",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I  \nDługości przyprostokątnych trójkątów  𝑇1  i  𝑇2  oznaczymy odpowiednio jako:  a1, b1  oraz  \na2, b2 . Z podobieństwa trójkątów  𝑇1  i  𝑇2  wynika, że stosunki odpowiednich boków są \nrówne: \n \na2\nb2\n= a1\nb1\n    gdzie   a1 = 12,   b1 = 5 \n \nZatem \n \na2\nb2\n= 12\n5    więc    b2 = 5\n12 a2 \n \nZ twierdzenia Pitagorasa dla trójkąta  𝑇2  mamy: \n \na2\n2 + b2\n2 = 262 \n \na2\n2 + ( 5\n12)\n2\na2\n2 = 262 \n \n169\n144 a2\n2 = 262 \n \na2 = \\sqrt144\n169 \\cdot 26 = 24 \n \nZatem  b2 = 5\n12 \\cdot 24 = 10. \nObliczamy pole trójkąta  𝑇2: \n \nP2 = 1\n2 \\cdot a2 \\cdot b2 = 1\n2 \\cdot 24 \\cdot 10 = 120 \n \nSposób II \nOznaczamy wierzchołki trójkąta  𝑇1  przez  A, B, C, gdzie  BC  jest przeciwprostokątną tego \ntrójkąta, |AB| = 12  i  |AC| = 5. Oznaczamy wierzchołki trójkąta  𝑇2  przez  D, 𝐸, 𝐹, gdzie  \n𝐸𝐹  jest przeciwprostokątną tego trójkąta. \n \nZ twierdzenia Pitagorasa dla trójkąta  𝑇1  mamy \n \n|AB|2 + |AC|2 = |BC|2 \n \n122 + 52 = |BC|2 \n \n|BC|2 = 169 \n \n|BC| = 13 \n \nObliczamy skalę podobieństwa trójkąta  𝑇2  do trójkąta  𝑇1: \n \nk = |𝐸𝐹|\n|BC| = 26\n13 = 2 \n \nObliczamy długości przyprostokątnych trójkąta  𝑇2: \n \n|D𝐸| = 2 \\cdot |AB| = 2 \\cdot 12 = 24 \n \n|D𝐹| = 2 \\cdot |AC| = 2 \\cdot 5 = 10 \n \nObliczamy pole trójkąta  𝑇2: \n \nP2 = 1\n2 \\cdot |D𝐸| \\cdot |D𝐹| = 1\n2 \\cdot 24 \\cdot 10 = 120 \n  \nD \n𝐸 \n𝐹 \n26 \n5 \n12 \nA \nB \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Przeciwprostokątna trójkąta $T_1$: $\\sqrt{5^2 + 12^2} = \\sqrt{169} = 13$.\n\n**Krok 2:** Skala podobieństwa trójkąta $T_2$ do $T_1$: $k = \\frac{26}{13} = 2$.\n\n**Krok 3:** Pole trójkąta $T_1$: $\\frac{1}{2} \\cdot 5 \\cdot 12 = 30$. Pola figur podobnych pozostają w stosunku $k^2$, więc $P_{T_2} = 4 \\cdot 30 = 120$.\n\n**Pułapka CKE:** Pole rośnie jak KWADRAT skali: $2^2 = 4$ razy, a nie $2$ razy. Odpowiedź $60$ to typowy błąd.\n\n**Odpowiedź:** $P_{T_2} = 120$",
+    "ckeTrap": "Pole rośnie jak KWADRAT skali: $2^2 = 4$ razy, a nie $2$ razy. Odpowiedź $60$ to typowy błąd.",
     "source": "Matura Maj 2023 • Zad. 22",
     "year": 2023,
     "session": "Maj",
@@ -929,16 +1005,48 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "23",
-    "section": "Dział 10: Geometria Analityczna",
+    "section": "Dział 10: Geometria analityczna",
     "topicId": "dzial-10",
-    "type": "NUMERIC_INPUT",
-    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są proste  k  oraz  𝑙  o równaniach\nk:   y = 2\n3 x\n𝑙:   y = − 3\n2 x + 13\nDokończ zdanie. Wybierz odpowiedź A albo B oraz odpowiedź 1., 2. albo 3.\nProste  k  oraz  𝑙\nsą prostopadłe\ni przecinają się w punkcie  P  o współrzędnych\n1. (−6, −4) A.\n2. (6, 4)\nnie są\nprostopadłe B. 3. (−6, 4)",
+    "type": "TWO_PART",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dane są proste $k$ oraz $l$ o równaniach\n$$k\\colon\\ y = \\frac{2}{3}x$$\n$$l\\colon\\ y = -\\frac{3}{2}x + 13$$\nDokończ zdanie. Wybierz właściwe zakończenie.\n\nProste $k$ oraz $l$",
     "options": [],
+    "parts": [
+      {
+        "prompt": "",
+        "options": [
+          {
+            "id": "A",
+            "text": "są prostopadłe"
+          },
+          {
+            "id": "B",
+            "text": "nie są prostopadłe"
+          }
+        ]
+      },
+      {
+        "prompt": "i przecinają się w punkcie $P$ o współrzędnych",
+        "options": [
+          {
+            "id": "1",
+            "text": "$(-6, -4)$"
+          },
+          {
+            "id": "2",
+            "text": "$(6, 4)$"
+          },
+          {
+            "id": "3",
+            "text": "$(-6, 4)$"
+          }
+        ]
+      }
+    ],
     "correctAnswer": "A2",
     "points": 1,
-    "isClosed": false,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA2 A3",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "isClosed": true,
+    "explanation": "**Krok 1:** Iloczyn współczynników kierunkowych: $\\frac{2}{3} \\cdot \\left(-\\frac{3}{2}\\right) = -1$, więc proste są prostopadłe.\n\n**Krok 2:** Punkt przecięcia: $\\frac{2}{3}x = -\\frac{3}{2}x + 13$. Mnożymy przez $6$: $4x = -9x + 78$, stąd $13x = 78$ i $x = 6$.\n\n**Krok 3:** $y = \\frac{2}{3} \\cdot 6 = 4$, czyli $P = (6, 4)$.\n\n**Pułapka CKE:** Warunek prostopadłości to iloczyn współczynników kierunkowych równy $-1$ (liczby „odwrotne i przeciwne”), a nie ich równość.\n\nPrawidłowa odpowiedź: **A2** (są prostopadłe, i przecinają się w punkcie $P$ o współrzędnych $(6, 4)$).",
+    "ckeTrap": "Karta wzorów, str. 22: proste są prostopadłe, gdy $a_1 \\cdot a_2 = -1$.",
     "source": "Matura Maj 2023 • Zad. 23",
     "year": 2023,
     "session": "Maj",
@@ -949,21 +1057,21 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "24",
-    "section": "Dział 10: Geometria Analityczna",
+    "section": "Dział 10: Geometria analityczna",
     "topicId": "dzial-10",
     "type": "SINGLE_CHOICE",
-    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dana jest prosta  k  o równaniu\ny = − 1\n3 x + 2\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nProsta o równaniu  y = ax + b  jest równoległa do prostej  k  i przechodzi przez\npunkt  P = (3, 5), gdy",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dana jest prosta $k$ o równaniu\n$$y = -\\frac{1}{3}x + 2$$\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nProsta o równaniu $y = ax + b$ jest równoległa do prostej $k$ i przechodzi przez punkt $P = (3, 5)$, gdy",
     "options": [
-      "a = 3  i  b = 4.",
-      "a = − 1\n3  i  b = 4.",
-      "a = 3  i  b = −4.",
-      "a = − 1\n3  i  b = 6."
+      "$a = 3$ i $b = 4$.",
+      "$a = -\\frac{1}{3}$ i $b = 4$.",
+      "$a = 3$ i $b = -4$.",
+      "$a = -\\frac{1}{3}$ i $b = 6$."
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Proste równoległe mają równe współczynniki kierunkowe: $a = -\\frac{1}{3}$.\n\n**Krok 2:** Prosta przechodzi przez $P = (3, 5)$: $5 = -\\frac{1}{3} \\cdot 3 + b$, czyli $5 = -1 + b$.\n\n**Krok 3:** $b = 6$.\n\n**Pułapka CKE:** $a = 3$ to współczynnik prostej PROSTOPADŁEJ do $k$. Przy wyznaczaniu $b$: $5 = -1 + b$ daje $b = 6$, a nie $4$.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "$a = 3$ to współczynnik prostej PROSTOPADŁEJ do $k$. Przy wyznaczaniu $b$: $5 = -1 + b$ daje $b = 6$, a nie $4$.",
     "source": "Matura Maj 2023 • Zad. 24",
     "year": 2023,
     "session": "Maj",
@@ -977,18 +1085,18 @@
     "section": "Dział 11: Stereometria",
     "topicId": "dzial-11",
     "type": "SINGLE_CHOICE",
-    "content": "Dany jest graniastosłup prawidłowy czworokątny, w którym krawędź podstawy ma\ndługość  15. Przekątna graniastosłupa jest nachylona do płaszczyzny podstawy pod\nkątem  \\alpha  takim, że  cos \\alpha =\n\\sqrt2\n3  .\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDługość przekątnej tego graniastosłupa jest równa",
+    "content": "Dany jest graniastosłup prawidłowy czworokątny, w którym krawędź podstawy ma długość $15$. Przekątna graniastosłupa jest nachylona do płaszczyzny podstawy pod kątem $\\alpha$ takim, że $\\cos \\alpha = \\frac{\\sqrt{2}}{3}$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDługość przekątnej tego graniastosłupa jest równa",
     "options": [
-      "15\\sqrt2",
-      "45",
-      "5\\sqrt2",
-      "10"
+      "$15\\sqrt{2}$",
+      "$45$",
+      "$5\\sqrt{2}$",
+      "$10$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Kąt $\\alpha$ to kąt między przekątną graniastosłupa $D$ a przekątną podstawy $d$. Podstawa jest kwadratem o boku $15$, więc $d = 15\\sqrt{2}$.\n\n**Krok 2:** W trójkącie prostokątnym: $\\cos \\alpha = \\frac{d}{D}$, czyli $\\frac{\\sqrt{2}}{3} = \\frac{15\\sqrt{2}}{D}$.\n\n**Krok 3:** $D = \\frac{15\\sqrt{2} \\cdot 3}{\\sqrt{2}} = 45$.\n\n**Pułapka CKE:** $15\\sqrt{2}$ to przekątna PODSTAWY. Przekątna graniastosłupa jest przeciwprostokątną trójkąta i musi być od niej dłuższa.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "$15\\sqrt{2}$ to przekątna PODSTAWY. Przekątna graniastosłupa jest przeciwprostokątną trójkąta i musi być od niej dłuższa.",
     "source": "Matura Maj 2023 • Zad. 25",
     "year": 2023,
     "session": "Maj",
@@ -999,209 +1107,20 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "26",
-    "section": "Dział 15: Zadania Optymalizacyjne",
-    "topicId": "dzial-15",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
     "type": "OPEN_CALCULATION",
-    "content": "Dany jest ostrosłup prawidłowy czworokątny. Wysokość ściany bocznej tego ostrosłupa jest\nnachylona do płaszczyzny podstawy pod kątem  30°  i ma długość równą  6  (zobacz rysunek).\nOblicz objętość i pole powierzchni całkowitej tego ostrosłupa. Zapisz obliczenia.\n30°\n6\n26.\n0–1–\n2–3–4",
+    "content": "Dany jest ostrosłup prawidłowy czworokątny. Wysokość ściany bocznej tego ostrosłupa jest nachylona do płaszczyzny podstawy pod kątem $30^\\circ$ i ma długość równą $6$.\n\nOblicz objętość i pole powierzchni całkowitej tego ostrosłupa. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$V = 108$, $P_c = 108 + 72\\sqrt{3}$",
     "points": 4,
     "isClosed": false,
-    "explanation": "Przyjmujemy oznaczenia jak na rysunku: \na – długość krawędzi podstawy, \n𝐻 – wysokość ostrosłupa. \n \nZauważamy, że  a > 0  i  𝐻 > 0. \n \nPonieważ  O  jest punktem przecięcia \nprzekątnych kwadratu, to  |O𝐸| = 1\n2  a. \n \nW trójkącie prostokątnym  SO𝐸  mamy \n \nsin 30° =\n|SO|\n|S𝐸| = 𝐻\n6 \n \nZatem \n \n𝐻 = 6 \\cdot sin 30° = 6 \\cdot 1\n2 = 3 \n \nPonadto \n \ncos 30° =\n|O𝐸|\n|S𝐸| =\n1\n2 a\n6 = a\n12 \n \nStąd \n \na = 12 \\cdot cos 30° = 12 \\cdot \\sqrt3\n2 = 6\\sqrt3 \n30° \n6 \n𝐻 \n1\n2 a \nS \n𝐸 \nO \n30° \n6 \n𝐻 \na \nS \n𝐸 \nO \nD \nB \nA \nC",
-    "ckeTrap": "1. Jeżeli zdający przyjmuje w rozwiązaniu, że trójkąt  𝐸SO  lub  BSD, lub jedna ze ścian \nbocznych ostrosłupa jest trójkątem równobocznym i wykorzystuje to do obliczenia długości \nkrawędzi podstawy, to otrzymuje 0 punktów za całe rozwiązanie (o ile nie nabył prawa do \nuzyskania 1 punktu za obliczenie wysokości ostrosłupa).  \n2. Jeżeli jedynym błędem zdającego jest: \na) zastosowanie niepoprawnej definicji jednej funkcji trygonometrycznej  \nb) błędne zastosowanie twierdzenia Pitagorasa \nc) zastosowanie niepoprawnej tożsamości  \\sqrtx2 + y2 = x + y \nd) przyjęcie, że wysokość ostrosłupa jest równa  3\\sqrt3  i  |O𝐸| = 3, \ni rozwiązanie zostanie doprowadzone konsekwentnie do końca, to zdający może otrzymać \n2 punkty za całe rozwiązanie. \nJeżeli zdający popełni więcej niż jeden z wymienionych błędów a)–d), to otrzymuje \n0 punktów za całe rozwiązanie.",
+    "explanation": "**Krok 1:** Wysokość ostrosłupa $H$, połowa krawędzi podstawy $\\frac{a}{2}$ i wysokość ściany bocznej $h = 6$ tworzą trójkąt prostokątny z kątem $30^\\circ$ przy podstawie.\n\n**Krok 2:** $H = 6 \\cdot \\sin 30^\\circ = 3$ oraz $\\frac{a}{2} = 6 \\cdot \\cos 30^\\circ = 3\\sqrt{3}$, więc $a = 6\\sqrt{3}$.\n\n**Krok 3:** Pole podstawy: $a^2 = 108$. Objętość: $V = \\frac{1}{3} \\cdot 108 \\cdot 3 = 108$.\n\n**Krok 4:** Pole powierzchni bocznej: $4 \\cdot \\frac{1}{2} \\cdot 6\\sqrt{3} \\cdot 6 = 72\\sqrt{3}$. Pole całkowite: $P_c = 108 + 72\\sqrt{3}$.\n\n**Pułapka CKE:** Kąt $30^\\circ$ jest między wysokością ŚCIANY BOCZNEJ a podstawą – w trójkącie pojawia się połowa krawędzi podstawy ($\\frac{a}{2}$), a nie połowa przekątnej.\n\n**Odpowiedź:** $V = 108$, $P_c = 108 + 72\\sqrt{3}$",
+    "ckeTrap": "Karta wzorów, str. 25: objętość ostrosłupa $V = \\frac{1}{3} P_p \\cdot H$.",
     "source": "Matura Maj 2023 • Zad. 26",
     "year": 2023,
     "session": "Maj",
-    "isCke": true,
-    "diagram": {
-      "type": "STEREOMETRY_3D",
-      "title": "Ostrosłup prawidłowy czworokątny z wysokością ściany bocznej $h_s$ i kątem nachylenia $\\alpha$",
-      "width": 440,
-      "height": 260,
-      "segments": [
-        {
-          "from": [
-            120,
-            200
-          ],
-          "to": [
-            260,
-            220
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            260,
-            220
-          ],
-          "to": [
-            340,
-            170
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            340,
-            170
-          ],
-          "to": [
-            200,
-            150
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            200,
-            150
-          ],
-          "to": [
-            120,
-            200
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            120,
-            200
-          ],
-          "to": [
-            230,
-            45
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            260,
-            220
-          ],
-          "to": [
-            230,
-            45
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            340,
-            170
-          ],
-          "to": [
-            230,
-            45
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            200,
-            150
-          ],
-          "to": [
-            230,
-            45
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            230,
-            45
-          ],
-          "to": [
-            230,
-            185
-          ],
-          "color": "#10B981",
-          "strokeWidth": 1.5,
-          "dashed": true,
-          "label": "H"
-        },
-        {
-          "from": [
-            230,
-            45
-          ],
-          "to": [
-            300,
-            195
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 1.75,
-          "label": "hs"
-        },
-        {
-          "from": [
-            230,
-            185
-          ],
-          "to": [
-            300,
-            195
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 1.5,
-          "dashed": true,
-          "label": "a/2"
-        }
-      ],
-      "arcs": [
-        {
-          "cx": 300,
-          "cy": 195,
-          "r": 20,
-          "startAngleDeg": 200,
-          "endAngleDeg": 260,
-          "color": "#FFB800",
-          "label": "α"
-        }
-      ],
-      "points": [
-        {
-          "x": 230,
-          "y": 45,
-          "label": "S",
-          "labelPosition": "top",
-          "dot": "filled"
-        },
-        {
-          "x": 120,
-          "y": 200,
-          "label": "A",
-          "labelPosition": "bottom-left",
-          "dot": "filled"
-        },
-        {
-          "x": 260,
-          "y": 220,
-          "label": "B",
-          "labelPosition": "bottom",
-          "dot": "filled"
-        },
-        {
-          "x": 340,
-          "y": 170,
-          "label": "C",
-          "labelPosition": "right",
-          "dot": "filled"
-        }
-      ]
-    }
+    "isCke": true
   },
   {
     "id": "matura-maj-2023-zad-27",
@@ -1211,7 +1130,7 @@
     "section": "Dział 11: Stereometria",
     "topicId": "dzial-11",
     "type": "SINGLE_CHOICE",
-    "content": "W pewnym ostrosłupie prawidłowym stosunek liczby  W  wszystkich wierzchołków do\nliczby  K  wszystkich krawędzi jest równy  W\nK = 3\n5 .\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPodstawą tego ostrosłupa jest",
+    "content": "W pewnym ostrosłupie prawidłowym stosunek liczby $W$ wszystkich wierzchołków do liczby $K$ wszystkich krawędzi jest równy $\\frac{W}{K} = \\frac{3}{5}$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPodstawą tego ostrosłupa jest",
     "options": [
       "kwadrat.",
       "pięciokąt foremny.",
@@ -1221,8 +1140,8 @@
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Jeśli podstawą jest $n$-kąt, to ostrosłup ma $W = n + 1$ wierzchołków i $K = 2n$ krawędzi.\n\n**Krok 2:** $\\frac{n + 1}{2n} = \\frac{3}{5}$, czyli $5(n + 1) = 6n$.\n\n**Krok 3:** $n = 5$ – podstawą jest pięciokąt foremny.\n\n**Pułapka CKE:** Ostrosłup ma o jeden wierzchołek więcej niż podstawa ($n + 1$), a krawędzi dwa razy tyle, ile boków podstawy ($2n$).\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Ostrosłup ma o jeden wierzchołek więcej niż podstawa ($n + 1$), a krawędzi dwa razy tyle, ile boków podstawy ($2n$).",
     "source": "Matura Maj 2023 • Zad. 27",
     "year": 2023,
     "session": "Maj",
@@ -1236,18 +1155,18 @@
     "section": "Dział 12: Kombinatoryka",
     "topicId": "dzial-12",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych pięciocyfrowych, w których zapisie dziesiętnym występują tylko\ncyfry  0, 5, 7  (np.  57 075, 55 555), jest",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWszystkich liczb naturalnych pięciocyfrowych, w których zapisie dziesiętnym występują tylko cyfry $0$, $5$, $7$ (np. $57\\,075$, $55\\,555$), jest",
     "options": [
-      "53",
-      "2 \\cdot 43",
-      "2 \\cdot 34",
-      "35"
+      "$5^3$",
+      "$2 \\cdot 4^3$",
+      "$2 \\cdot 3^4$",
+      "$3^5$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC A",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Pierwsza cyfra liczby pięciocyfrowej nie może być zerem: do wyboru $5$ lub $7$ – dwie możliwości.\n\n**Krok 2:** Każda z czterech pozostałych cyfr może być dowolną z trzech: $0$, $5$, $7$.\n\n**Krok 3:** Z reguły mnożenia: $2 \\cdot 3 \\cdot 3 \\cdot 3 \\cdot 3 = 2 \\cdot 3^4$.\n\n**Pułapka CKE:** $3^5$ zawiera także „liczby” zaczynające się od zera, które nie są pięciocyfrowe. Zero wykluczamy tylko na PIERWSZYM miejscu.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "$3^5$ zawiera także „liczby” zaczynające się od zera, które nie są pięciocyfrowe. Zero wykluczamy tylko na PIERWSZYM miejscu.",
     "source": "Matura Maj 2023 • Zad. 28",
     "year": 2023,
     "session": "Maj",
@@ -1260,39 +1179,331 @@
     "taskNumber": "29",
     "section": "Dział 14: Statystyka",
     "topicId": "dzial-14",
-    "type": "SINGLE_CHOICE",
-    "content": "Na diagramie poniżej przedstawiono ceny pomidorów w szesnastu wybranych sklepach.\nUzupełnij tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną\nspośród oznaczonych literami A–E.\n29.1. Mediana ceny kilograma pomidorów w tych wybranych sklepach jest\nrówna\n29.2. Średnia cena kilograma pomidorów w tych wybranych sklepach jest\nrówna",
-    "options": [
-      "5,80  zł",
-      "5,73  zł",
-      "5,85  zł",
-      "6,00  zł E.  5,70  zł"
+    "type": "TWO_PART",
+    "content": "Na diagramie przedstawiono ceny pomidorów w szesnastu wybranych sklepach.\n\nUzupełnij każde zdanie. Wybierz właściwą odpowiedź spośród oznaczonych literami A–E.",
+    "options": [],
+    "parts": [
+      {
+        "prompt": "Mediana ceny kilograma pomidorów w tych wybranych sklepach jest równa",
+        "options": [
+          {
+            "id": "A",
+            "text": "$5{,}80$ zł"
+          },
+          {
+            "id": "B",
+            "text": "$5{,}73$ zł"
+          },
+          {
+            "id": "C",
+            "text": "$5{,}85$ zł"
+          },
+          {
+            "id": "D",
+            "text": "$6{,}00$ zł"
+          },
+          {
+            "id": "E",
+            "text": "$5{,}70$ zł"
+          }
+        ]
+      },
+      {
+        "prompt": "Średnia cena kilograma pomidorów w tych wybranych sklepach jest równa",
+        "options": [
+          {
+            "id": "A",
+            "text": "$5{,}80$ zł"
+          },
+          {
+            "id": "B",
+            "text": "$5{,}73$ zł"
+          },
+          {
+            "id": "C",
+            "text": "$5{,}85$ zł"
+          },
+          {
+            "id": "D",
+            "text": "$6{,}00$ zł"
+          },
+          {
+            "id": "E",
+            "text": "$5{,}70$ zł"
+          }
+        ]
+      }
     ],
-    "correctAnswer": "Wersja A Wersja B",
+    "partScoring": "per_part",
+    "correctAnswer": "CA",
     "points": 2,
     "isClosed": true,
-    "explanation": "wybranie dwóch poprawnych odpowiedzi. \n1 pkt – wybranie jednej poprawnej odpowiedzi. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \n29.1. C 29.1. B \n29.2. A 29.2. E",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Sklepów jest $16$, więc mediana to średnia arytmetyczna cen stojących na miejscach $8$ i $9$ w uporządkowanym zestawie. Narastająco: miejsca $1$–$2$ to $5{,}05$, miejsca $3$–$6$ to $5{,}60$, miejsca $7$–$8$ to $5{,}70$, miejsca $9$–$13$ to $6{,}00$.\n\n**Krok 2:** Mediana: $\\frac{5{,}70 + 6{,}00}{2} = 5{,}85$ zł – odpowiedź C.\n\n**Krok 3:** Średnia: $\\frac{2 \\cdot 5{,}05 + 4 \\cdot 5{,}60 + 2 \\cdot 5{,}70 + 5 \\cdot 6{,}00 + 3 \\cdot 6{,}30}{16} = \\frac{10{,}10 + 22{,}40 + 11{,}40 + 30{,}00 + 18{,}90}{16} = \\frac{92{,}80}{16} = 5{,}80$ zł – odpowiedź A.\n\n**Pułapka CKE:** Mediana to nie „środkowa cena na osi” ($5{,}70$ zł) – trzeba uwzględnić liczbę sklepów. Przy parzystej liczbie danych bierzemy średnią dwóch środkowych wartości.\n\nPrawidłowa odpowiedź: **1 – C** ($5{,}85$ zł), **2 – A** ($5{,}80$ zł).",
+    "ckeTrap": "Karta wzorów, str. 29–30: średnia ważona i mediana.",
     "source": "Matura Maj 2023 • Zad. 29",
     "year": 2023,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "diagram": {
+      "type": "STATISTICS",
+      "width": 400,
+      "height": 260,
+      "segments": [
+        {
+          "from": [
+            40,
+            168.4
+          ],
+          "to": [
+            388,
+            168.4
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            134.8
+          ],
+          "to": [
+            388,
+            134.8
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            101.2
+          ],
+          "to": [
+            388,
+            101.2
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            67.6
+          ],
+          "to": [
+            388,
+            67.6
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            34
+          ],
+          "to": [
+            388,
+            34
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            202
+          ],
+          "to": [
+            388,
+            202
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5
+        },
+        {
+          "from": [
+            40,
+            28
+          ],
+          "to": [
+            40,
+            202
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5
+        }
+      ],
+      "bars": [
+        {
+          "x": 56.8,
+          "y": 134.8,
+          "width": 36,
+          "height": 67.2,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "2"
+        },
+        {
+          "x": 126.4,
+          "y": 67.6,
+          "width": 36,
+          "height": 134.4,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "4"
+        },
+        {
+          "x": 196,
+          "y": 134.8,
+          "width": 36,
+          "height": 67.2,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "2"
+        },
+        {
+          "x": 265.6,
+          "y": 34,
+          "width": 36,
+          "height": 168,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "5"
+        },
+        {
+          "x": 335.2,
+          "y": 101.2,
+          "width": 36,
+          "height": 100.8,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "3"
+        }
+      ],
+      "labels": [
+        {
+          "x": 75,
+          "y": 220,
+          "text": "5,05",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 144,
+          "y": 220,
+          "text": "5,60",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 214,
+          "y": 220,
+          "text": "5,70",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 284,
+          "y": 220,
+          "text": "6,00",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 353,
+          "y": 220,
+          "text": "6,30",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 32,
+          "y": 206,
+          "text": "0",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 172.4,
+          "text": "1",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 138.8,
+          "text": "2",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 105.2,
+          "text": "3",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 71.6,
+          "text": "4",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 38,
+          "text": "5",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 214,
+          "y": 250,
+          "text": "cena za 1 kg pomidorów (w zł)",
+          "color": "#94a3b8",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 10,
+          "y": 14,
+          "text": "liczba sklepów",
+          "color": "#94a3b8",
+          "fontSize": 12,
+          "anchor": "start"
+        }
+      ]
+    }
   },
   {
     "id": "matura-maj-2023-zad-30",
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "30",
-    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "section": "Dział 13: Rachunek prawdopodobieństwa",
     "topicId": "dzial-13",
     "type": "OPEN_CALCULATION",
-    "content": "Ze zbioru ośmiu liczb  {2, 3, 4, 5, 6, 7, 8, 9}  losujemy ze zwracaniem kolejno dwa razy po\njednej liczbie.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że iloczyn\nwylosowanych liczb jest podzielny przez  𝟏𝟓. Zapisz obliczenia.\n30.\n0–1–2",
+    "content": "Ze zbioru ośmiu liczb $\\{2, 3, 4, 5, 6, 7, 8, 9\\}$ losujemy ze zwracaniem kolejno dwa razy po jednej liczbie.\n\nOblicz prawdopodobieństwo zdarzenia $A$ polegającego na tym, że iloczyn wylosowanych liczb jest podzielny przez $15$. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$P(A) = \\frac{6}{64} = \\frac{3}{32}$",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nZbiór wszystkich zdarzeń elementarnych obrazuje tabela  8 × 8, co oznacza, że moc zbioru  \nΩ  jest równa  64. \n \nW tabeli zaznaczamy iloczyny podzielne przez  15. \n \n 2 3 4 5 6 7 8 9 \n2         \n3    ×     \n4         \n5  ×   ×   × \n6    ×     \n7         \n8         \n9    ×     \n \nZdarzeń sprzyjających wylosowaniu liczb, których iloczyn jest podzielny przez  15, jest  6. \nZatem prawdopodobieństwo zdarzenia polegającego na wylosowaniu liczb, których iloczyn \njest podzielny przez  15, jest równe  6\n64 . \n \nSposób II (drzewo stochastyczne) \nRysujemy fragment drzewa stochastycznego rozważanego doświadczenia z uwzględnieniem \nwszystkich istotnych gałęzi. \nOznaczamy przez  A  zdarzenie polegające na tym, że iloczyn wylosowanych liczb jest \npodzielny przez  15. \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nPrawdopodobieństwo zdarzenia  A  jest równe \n \nP(A) = 1\n8 \\cdot 1\n8  +  1\n8 \\cdot 1\n8  +  1\n8 \\cdot 1\n8 +  1\n8 \\cdot 1\n8 +  1\n8 \\cdot 1\n8 +  1\n8 \\cdot 1\n8 = 6\n64 \n  \n1\n8 \n1\n8 \n1\n8 \n1\n8 \n5 \n 3 \n 6 \n 9 \n 5 \n 5 \n3 \n 5 \n 6 \n 9 \n1\n8 \n1\n8 \n1\n8 \n1\n8 \n1\n8 \n1\n8",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Losujemy dwa razy ze zwracaniem z ośmiu liczb: $|\\Omega| = 8 \\cdot 8 = 64$.\n\n**Krok 2:** Iloczyn jest podzielny przez $15 = 3 \\cdot 5$, gdy jedna z liczb jest podzielna przez $5$ (w zbiorze tylko $5$), a druga przez $3$ (w zbiorze: $3$, $6$, $9$).\n\n**Krok 3:** Sprzyjające pary: $(5, 3)$, $(5, 6)$, $(5, 9)$, $(3, 5)$, $(6, 5)$, $(9, 5)$. Zatem $|A| = 6$ i $P(A) = \\frac{6}{64} = \\frac{3}{32}$.\n\n**Pułapka CKE:** Kolejność losowania ma znaczenie: $(5, 3)$ i $(3, 5)$ to dwa RÓŻNE wyniki. Policzenie tylko trzech par daje dwa razy za mały wynik.\n\n**Odpowiedź:** $P(A) = \\frac{6}{64} = \\frac{3}{32}$",
+    "ckeTrap": "Kolejność losowania ma znaczenie: $(5, 3)$ i $(3, 5)$ to dwa RÓŻNE wyniki. Policzenie tylko trzech par daje dwa razy za mały wynik.",
     "source": "Matura Maj 2023 • Zad. 30",
     "year": 2023,
     "session": "Maj",
@@ -1303,19 +1514,28 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "31.1",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 6: Funkcja kwadratowa",
+    "topicId": "dzial-6",
     "type": "TRUE_FALSE",
-    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nŁączna liczba klientów obsłużonych w czasie wszystkich analizowanych dni\njest równa  L(30). P F\nW trzecim dniu analizowanego okresu obsłużono  336  klientów. P F",
-    "options": [
-      "PRAWDA",
-      "FAŁSZ"
+    "content": "Właściciel pewnej apteki przeanalizował dane dotyczące liczby obsługiwanych klientów z $30$ kolejnych dni. Przyjmijmy, że liczbę $L$ obsługiwanych klientów $n$-tego dnia opisuje funkcja\n$$L(n) = -n^2 + 22n + 279$$\ngdzie $n$ jest liczbą naturalną spełniającą warunki $n \\ge 1$ i $n \\le 30$.\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+    "options": [],
+    "statements": [
+      {
+        "id": "1",
+        "text": "Łączna liczba klientów obsłużonych w czasie wszystkich analizowanych dni jest równa $L(30)$.",
+        "correct": "F"
+      },
+      {
+        "id": "2",
+        "text": "W trzecim dniu analizowanego okresu obsłużono $336$ klientów.",
+        "correct": "P"
+      }
     ],
     "correctAnswer": "FP",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nFP FP",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** $L(30)$ to liczba klientów obsłużonych tylko TRZYDZIESTEGO dnia, a nie suma ze wszystkich dni – stwierdzenie 1 jest fałszywe.\n\n**Krok 2:** $L(3) = -3^2 + 22 \\cdot 3 + 279 = -9 + 66 + 279 = 336$ – stwierdzenie 2 jest prawdziwe.\n\n**Pułapka CKE:** Wartość funkcji $L(n)$ opisuje pojedynczy dzień o numerze $n$. Łączna liczba klientów to suma $L(1) + L(2) + \\ldots + L(30)$. Uwaga też na zapis: $-3^2 = -9$.\n\nPrawidłowa odpowiedź: **1 – F**, **2 – P**.",
+    "ckeTrap": "Wartość funkcji $L(n)$ opisuje pojedynczy dzień o numerze $n$. Łączna liczba klientów to suma $L(1) + L(2) + \\ldots + L(30)$. Uwaga też na zapis: $-3^2 = -9$.",
     "source": "Matura Maj 2023 • Zad. 31.1",
     "year": 2023,
     "session": "Maj",
@@ -1326,16 +1546,16 @@
     "examId": "matura-maj-2023",
     "examName": "Matura Maj 2023 (Formuła 2023)",
     "taskNumber": "31.2",
-    "section": "Dział 14: Statystyka",
-    "topicId": "dzial-14",
+    "section": "Dział 15: Optymalizacja",
+    "topicId": "dzial-15",
     "type": "OPEN_CALCULATION",
-    "content": "Którego dnia analizowanego okresu w aptece obsłużono największą liczbę klientów?\nOblicz liczbę klientów obsłużonych tego dnia. Zapisz obliczenia.\n31.2.\n0–1–2\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "content": "Właściciel pewnej apteki przeanalizował dane dotyczące liczby obsługiwanych klientów z $30$ kolejnych dni. Przyjmijmy, że liczbę $L$ obsługiwanych klientów $n$-tego dnia opisuje funkcja\n$$L(n) = -n^2 + 22n + 279$$\ngdzie $n$ jest liczbą naturalną spełniającą warunki $n \\ge 1$ i $n \\le 30$.\n\nKtórego dnia analizowanego okresu w aptece obsłużono największą liczbę klientów? Oblicz liczbę klientów obsłużonych tego dnia. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "Najwięcej klientów obsłużono jedenastego dnia: $400$ osób.",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nWykresem funkcji  L(n) = −n2 + 22n + 279, gdzie  n  jest liczbą naturalną z przedziału  \n[1, 30], jest zbiór punktów leżących na paraboli o ramionach skierowanych w dół. \nPrzekształcamy wzór funkcji  L  do postaci kanonicznej:",
-    "ckeTrap": "1. Jeżeli zdający błędnie oblicza pierwszą współrzędną wierzchołka paraboli, \ni konsekwentnie do popełnionego błędu oblicza drugą współrzędną, to może otrzymać \n1 punkt za całe rozwiązanie (o ile pierwsza współrzędna jest liczbą należącą do \ndziedziny). \n2. Jeżeli zdający nie zapisze, że  11  należy do dziedziny funkcji  L, to może otrzymać \n2 punkty za całe rozwiązanie. \n3. Jeżeli zdający oblicza największą wartość funkcji  L, korzystając z rachunku \nróżniczkowego, i nie zapisze przedziałów monotoniczności funkcji, to może otrzymać \n2 punkty za całe rozwiązanie (gdy wyznaczy pochodną funkcji  L(x)  określoną dla   \nx ∈ [1, 30], obliczy miejsce zerowe pochodnej funkcji  L(x)  i wartość funkcji  L  w tym \npunkcie). \n4. Jeżeli zdający oblicza  L(11) = 400  i  L(11 − k) = L(11 + k), gdzie  k \\ne 0, i wskaże \nwartość największą, to może otrzymać 2 punkty za całe rozwiązanie. \n5. Jeżeli zdający zapisze tylko  L(11) = 400, to otrzymuje 1 punkt.",
+    "explanation": "**Krok 1:** Wykresem funkcji $L(n) = -n^2 + 22n + 279$ jest parabola o ramionach skierowanych w dół, więc największą wartość funkcja przyjmuje w wierzchołku.\n\n**Krok 2:** Pierwsza współrzędna wierzchołka: $n = -\\frac{22}{2 \\cdot (-1)} = 11$. Jest to liczba naturalna z przedziału od $1$ do $30$.\n\n**Krok 3:** $L(11) = -121 + 242 + 279 = 400$.\n\n**Pułapka CKE:** Trzeba sprawdzić, czy wierzchołek „trafia” w liczbę naturalną z dziedziny ($1 \\le n \\le 30$). Tu $n = 11$ spełnia oba warunki, więc można ją przyjąć bez dodatkowych porównań.\n\n**Odpowiedź:** Najwięcej klientów obsłużono jedenastego dnia: $400$ osób.",
+    "ckeTrap": "Karta wzorów, str. 8: $p = -\\frac{b}{2a}$, $q = f(p)$.",
     "source": "Matura Maj 2023 • Zad. 31.2",
     "year": 2023,
     "session": "Maj",

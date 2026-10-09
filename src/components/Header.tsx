@@ -740,7 +740,7 @@ export function Header({
                         <span className="font-extrabold text-sm text-white">Matematyka</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">180 min</span>
                       </div>
-                      <span className="text-[11px] text-text-muted">15 działów • 75 lekcji • 1006 zadań CKE</span>
+                      <span className="text-[11px] text-text-muted">15 działów • 75 lekcji • 1500 zadań</span>
                     </div>
                   </div>
                   {isMathActive && (

@@ -31,6 +31,7 @@ import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVi
 import { POLISH_CURRICULUM_TOPICS, getPolishLessonDocument } from '../data/polishCurriculumData';
 import { ENGLISH_CURRICULUM_TOPICS, ENGLISH_PILLARS, getEnglishLessonDocument } from '../data/englishCurriculumData';
 import { MATH_CURRICULUM_TOPICS, getMathLessonDocument } from '../data/mathCurriculumData';
+import { getBundledCkeExamTasks, getBundledCkeExamSheet } from '../data/math/ckeExamTasks';
 
 export const DEFAULT_SUBJECT_ID = 'matematyka-podstawowa';
 
@@ -929,6 +930,16 @@ export const curriculumRepository = {
       return ckeExamTasksCache.get(docId)!;
     }
 
+    // Matematyka podstawowa: arkusze CKE są wbudowane w aplikację (zweryfikowane transkrypcje,
+    // 0 odczytów z Firestore) – tak samo jak kurikulum matematyki w getTopics/getLesson.
+    if (docId === 'matura-podstawowa') {
+      const bundled = getBundledCkeExamTasks();
+      if (bundled.length > 0) {
+        ckeExamTasksCache.set(docId, bundled);
+        return bundled;
+      }
+    }
+
     try {
       const snap = await getDoc(doc(db, 'exams', docId));
       if (snap.exists()) {
@@ -951,6 +962,13 @@ export const curriculumRepository = {
   async getCkeExamSheet(examId: string): Promise<MaturaTask[]> {
     if (ckeExamTasksCache.has(examId)) {
       return ckeExamTasksCache.get(examId)!;
+    }
+
+    // Arkusze matematyki z paczki aplikacji mają pierwszeństwo przed dokumentem w Firestore
+    const bundledSheet = getBundledCkeExamSheet(examId);
+    if (bundledSheet.length > 0) {
+      ckeExamTasksCache.set(examId, bundledSheet);
+      return bundledSheet;
     }
 
     try {

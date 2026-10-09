@@ -11,6 +11,15 @@
 const fs = require('fs');
 const path = require('path');
 
+// SKRYPT WYCOFANY. Kompilator oznaczał zadania treningowe z curriculum_matematyka.json jako
+// „CKE • Informator maturalny” / „CKE • Arkusz pokazowy” (isCke: true), choć nie pochodzą z materiałów CKE,
+// a część miała błędny klucz. Pliki z zadaniami CKE buduje teraz `node scripts/math_pp/build_cke.js`
+// z transkrypcji arkuszy w scripts/math_pp/cke/ (ucieczka awaryjna: --force-legacy).
+if (!process.argv.includes('--force-legacy')) {
+  console.error('Skrypt wycofany. Użyj: node scripts/math_pp/build_cke.js');
+  process.exit(1);
+}
+
 const CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka.json');
 const MATURA_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'zadania_matura.json');
 const OUTPUT_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_tasks_matematyka.json');

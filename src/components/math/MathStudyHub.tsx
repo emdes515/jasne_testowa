@@ -38,7 +38,9 @@ import { NumberLineDiagram } from '../NumberLineDiagram';
 import { CkeFormulasModal } from '../CkeFormulasModal';
 import { MATH_SECTIONS, MathSection, MathTask, MathTaskType } from '../../types/mathTypes';
 import { ALL_MATH_TASKS } from '../../data/math/allMathTasks';
-import { MATH_TOPIC_BLUEPRINTS, ALL_MATH_LESSONS, getMathLessonDocument } from '../../data/mathCurriculumData';
+import { MATH_TOPIC_BLUEPRINTS, ALL_MATH_LESSONS, MATH_LESSON_SESSION_SIZE, getMathLessonDocument, getMathLessonSessionTasks } from '../../data/mathCurriculumData';
+import { StructuredAnswerInput } from './StructuredAnswerInput';
+import { describeAnswerKey, getStructuredKind, gradeStructuredAnswer, isStructuredAnswerComplete } from '../../lib/structuredAnswer';
 import { MathLessonView, MathLessonDefinitionData } from './MathLessonView';
 import { triggerHaptic } from '../../utils';
 
@@ -163,9 +165,9 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
       }
       // Filter by closed vs open
       if (selectedTypeFilter === 'closed') {
-        if (task.type !== 'SINGLE_CHOICE' && task.type !== 'TRUE_FALSE') return false;
+        if (!['SINGLE_CHOICE', 'TRUE_FALSE', 'TWO_PART', 'MULTI_CHOICE'].includes(task.type)) return false;
       } else if (selectedTypeFilter === 'open') {
-        if (task.type === 'SINGLE_CHOICE' || task.type === 'TRUE_FALSE') return false;
+        if (['SINGLE_CHOICE', 'TRUE_FALSE', 'TWO_PART', 'MULTI_CHOICE'].includes(task.type)) return false;
       }
       // Filter by search query
       if (searchQuery.trim()) {
@@ -243,6 +245,38 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
         } catch {}
         if (onCompleteTask) {
           onCompleteTask(taskId, 1);
+        }
+      }
+    }
+  };
+
+  // Formaty CKE inne niż ABCD: wybór zapisujemy jako szkic, sprawdzamy dopiero po kliknięciu „Sprawdź”
+  const handleStructuredDraft = (taskId: string, value: string) => {
+    setAnswerStates(prev => {
+      const current = prev[taskId] || { selectedOptionId: null, numericAnswer: '', isSubmitted: false, isCorrect: null, showExplanation: false, attempts: 0 };
+      if (current.isSubmitted) return prev;
+      return { ...prev, [taskId]: { ...current, selectedOptionId: value } };
+    });
+  };
+
+  const handleCheckStructured = (task: MathTask) => {
+    const current = answerStates[task.id];
+    if (!current || current.isSubmitted || !isStructuredAnswerComplete(task, current.selectedOptionId)) return;
+    const isCorrect = gradeStructuredAnswer(task, current.selectedOptionId) >= task.points;
+    setAnswerStates(prev => ({
+      ...prev,
+      [task.id]: { ...current, isSubmitted: true, isCorrect, showExplanation: true, attempts: current.attempts + 1 }
+    }));
+    if (isCorrect) {
+      confetti({ particleCount: 40, spread: 60, origin: { y: 0.8 }, colors: ['#ffdca1', '#ffb800', '#10b981', '#ffffff'] });
+      if (!completedTaskIds.includes(task.id)) {
+        const next = [...completedTaskIds, task.id];
+        setCompletedTaskIds(next);
+        try {
+          localStorage.setItem('jasne_completed_math_tasks', JSON.stringify(next));
+        } catch {}
+        if (onCompleteTask) {
+          onCompleteTask(task.id, 1);
         }
       }
     }
@@ -390,7 +424,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
     const fullLessonData: MathLessonDefinitionData = {
       ...lessonMeta,
       theory_pill: lessonDoc?.theory_pill || lessonMeta.theory_pill,
-      tasks: lessonDoc?.tasks || []
+      tasks: getMathLessonSessionTasks(activeLessonId)
     };
 
     return (
@@ -524,7 +558,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                   Ścieżka Opanowania Podstawy Programowej CKE
                 </h2>
                 <p className="text-xs text-[#94a3b8] mt-1">
-                  Wstęp teoretyczny z patentami CKE • Praktyka na autentycznych zadaniach CKE • Podsumowanie i eliminacja błędów kardynalnych.
+                  Wstęp teoretyczny z patentami CKE • Praktyka na zadaniach w stylu CKE • Podsumowanie i eliminacja błędów kardynalnych.
                 </p>
               </div>
 
@@ -611,9 +645,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                 {/* Siatka Kart Lekcji */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {filteredLessons.map((lesson) => {
-                    const isCompleted = isDev || (Array.isArray(completedLessonIds) ? completedLessonIds.includes(lesson.id) : !!(completedLessonIds as any)?.[lesson.id]);
-                    const lessonDoc = getMathLessonDocument(lesson.topicId, lesson.id);
-                    const taskCount = lessonDoc?.tasks?.length || 5;
+                    const isCompleted = isDev || (Array.isArray(completedLessonIds) ? completedLessonIds.includes(lesson.id) : !!(completedLessonIds as any)?.[lesson.id]);
+                    const taskCount = MATH_LESSON_SESSION_SIZE;
 
                     return (
                       <div
@@ -641,11 +674,6 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               <span className="px-2 py-0.5 rounded-lg text-[11px] font-medium bg-[#070a0f] text-[#dfe2f1] border border-[#141d2e]">
                                 {lesson.topicShortTitle || lesson.topicTitle}
                               </span>
-                              {lesson.archetypeCode && (
-                                <span className="px-2 py-0.5 rounded-lg text-[11px] font-mono bg-[#070a0f] text-[#ffb800] border border-[#141d2e]">
-                                  {lesson.archetypeCode}
-                                </span>
-                              )}
                             </div>
                           </div>
 
@@ -674,7 +702,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 2
                               </span>
                               <span>
-                                <strong>Praktyka:</strong> Zadania CKE ({taskCount} zadań maturalnych)
+                                <strong>Praktyka:</strong> {taskCount} zadań w stylu CKE (losowane z puli 20)
                               </span>
                             </div>
                             <div className="flex items-center gap-2 text-[#dfe2f1]">
@@ -1412,7 +1440,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 {task.sourceYear || 'CKE'}
                               </span>
                               <span className="text-[#94a3b8] font-medium">
-                                {task.type === 'SINGLE_CHOICE' ? 'Zamknięte (ABCD)' : 'Otwarte'}
+                                {task.type === 'SINGLE_CHOICE' ? 'Zamknięte (ABCD)' : ['SINGLE_CHOICE', 'TRUE_FALSE', 'TWO_PART', 'MULTI_CHOICE'].includes(task.type) ? 'Zamknięte' : 'Otwarte'}
                               </span>
                             </div>
                             <span className="font-bold text-[#ffdca1]">
@@ -1425,6 +1453,30 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           </div>
 
                           {/* Options if closed */}
+                          {getStructuredKind(task) && (
+                            <div className="mt-4 space-y-3">
+                              <StructuredAnswerInput
+                                task={task}
+                                value={answerState.selectedOptionId}
+                                onChange={(value) => handleStructuredDraft(task.id, value)}
+                                reveal={answerState.isSubmitted}
+                              />
+                              {!answerState.isSubmitted ? (
+                                <button
+                                  type="button"
+                                  disabled={!isStructuredAnswerComplete(task, answerState.selectedOptionId)}
+                                  onClick={() => handleCheckStructured(task)}
+                                  className="w-full py-3 rounded-xl bg-[#ffb800] text-black font-black text-sm disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
+                                >
+                                  Sprawdź odpowiedź
+                                </button>
+                              ) : (
+                                <p className="text-xs text-[#94a3b8]">
+                                  Wynik: {gradeStructuredAnswer(task, answerState.selectedOptionId)} / {task.points} pkt • poprawna odpowiedź: {describeAnswerKey(task)}
+                                </p>
+                              )}
+                            </div>
+                          )}
                           {task.type === 'SINGLE_CHOICE' && task.options && (
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                               {task.options.map((opt) => {
@@ -1688,7 +1740,42 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                         </div>
                       )}
 
+                      {task.options?.some(o => o.diagram) && (
+                        <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {task.options.filter(o => o.diagram).map(o => (
+                            <div key={o.id} className="p-2 rounded-lg bg-[#070a0f] border border-[#141d2e]">
+                              <span className="text-xs font-bold text-[#ffdca1]">Rysunek {o.id}</span>
+                              <MathDiagram diagram={o.diagram} />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
                       {/* Interactive Answer Area (INLINE) */}
+                      {getStructuredKind(task) && (
+                        <div className="mt-4 space-y-3">
+                          <StructuredAnswerInput
+                            task={task}
+                            value={state.selectedOptionId}
+                            onChange={(value) => handleStructuredDraft(task.id, value)}
+                            reveal={state.isSubmitted}
+                          />
+                          {!state.isSubmitted ? (
+                            <button
+                              type="button"
+                              disabled={!isStructuredAnswerComplete(task, state.selectedOptionId)}
+                              onClick={() => handleCheckStructured(task)}
+                              className="w-full py-3 rounded-xl bg-[#ffb800] text-black font-black text-sm disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
+                            >
+                              Sprawdź odpowiedź
+                            </button>
+                          ) : (
+                            <p className="text-xs text-[#94a3b8]">
+                              Wynik: {gradeStructuredAnswer(task, state.selectedOptionId)} / {task.points} pkt • poprawna odpowiedź: {describeAnswerKey(task)}
+                            </p>
+                          )}
+                        </div>
+                      )}
                       {task.type === 'SINGLE_CHOICE' && task.options && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
                           {task.options.map((opt) => {

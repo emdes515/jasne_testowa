@@ -1,6 +1,6 @@
 import { T, mc, num, pf, pill, fr, par, poly, quad, lin, xm, iv, m, need, gcd, isSquare, sq } from './lib.js';
 
-const TIP_DELTA = 'Karta wzorów, str. 7: $\\Delta = b^2 - 4ac$, $x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}$, $x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}$.';
+const TIP_DELTA = 'Karta wzorów, str. 7–8: $\\Delta = b^2 - 4ac$, $x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}$, $x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}$.';
 const pair = (a, b) => (a <= b ? `$${a}$ oraz $${b}$` : `$${b}$ oraz $${a}$`);
 const COUNT = ['nie ma rozwiązań', 'ma dokładnie jedno rozwiązanie', 'ma dokładnie dwa rozwiązania', 'ma dokładnie trzy rozwiązania'];
 const halfLine = (s, op) => ({ '<': iv.lo(s), '\\le': iv.lc(s), '>': iv.ro(s), '\\ge': iv.rc(s) }[op]);
@@ -171,7 +171,7 @@ const quadCount = (r) => {
       D < 0 ? T`$\Delta < 0$, więc równanie nie ma rozwiązań rzeczywistych.` : D === 0 ? T`$\Delta = 0$, więc równanie ma dokładnie jedno rozwiązanie: $x_0 = ${fr(-b, 2 * a)}$.` : T`$\Delta > 0$, więc równanie ma dwa różne rozwiązania.`
     ],
     trap: T`Iloczyn $4ac$ odejmujemy razem ze znakiem: gdy $a$ i $c$ mają różne znaki, $-4ac$ jest dodatnie.`,
-    tip: 'Karta wzorów, str. 7: $\\Delta > 0$ – dwa rozwiązania, $\\Delta = 0$ – jedno, $\\Delta < 0$ – brak.'
+    tip: 'Karta wzorów, str. 8: $\\Delta > 0$ – dwa rozwiązania, $\\Delta = 0$ – jedno, $\\Delta < 0$ – brak.'
   });
 };
 const quadIncomplete = (r) => {
@@ -620,8 +620,8 @@ export default {
         ],
         formulas: [
           ['Wyróżnik', T`\Delta = b^2 - 4ac`, 7],
-          ['Rozwiązania', T`x_1 = \frac{-b - \sqrt{\Delta}}{2a}, \quad x_2 = \frac{-b + \sqrt{\Delta}}{2a}`, 7],
-          ['Jedno rozwiązanie', T`\Delta = 0: \quad x_0 = -\frac{b}{2a}`, 7]
+          ['Rozwiązania', T`x_1 = \frac{-b - \sqrt{\Delta}}{2a}, \quad x_2 = \frac{-b + \sqrt{\Delta}}{2a}`, 8],
+          ['Jedno rozwiązanie', T`\Delta = 0: \quad x_0 = -\frac{b}{2a}`, 8]
         ],
         examples: [
           ['Pełne równanie', '1 pkt', T`Rozwiąż równanie $2x^2 - 3x - 2 = 0$.`, T`1. $a = 2$, $b = -3$, $c = -2$.` + '\n' + T`2. $\Delta = 9 + 16 = 25$, $\sqrt{\Delta} = 5$.` + '\n' + T`3. $x_1 = \frac{3 - 5}{4} = -\frac{1}{2}$, $x_2 = \frac{3 + 5}{4} = 2$.`, T`$-4ac = -4 \cdot 2 \cdot (-2) = +16$.`],
@@ -631,7 +631,7 @@ export default {
         fail: T`$x^2 = 4x$, dzielimy przez $x$: $x = 4$.`,
         win: T`$x^2 - 4x = 0$, $x(x - 4) = 0$, więc $x = 0$ lub $x = 4$.`,
         why: 'Dzielić wolno tylko przez liczbę różną od zera, a nie wiemy, czy x nie jest zerem – właśnie to sprawdzamy.',
-        ckeTip: 'Wzory na deltę i pierwiastki są w karcie wzorów na str. 7. Sprawdź wynik, podstawiając rozwiązanie do równania.',
+        ckeTip: 'Wzory na deltę i pierwiastki są w karcie wzorów na str. 7–8. Sprawdź wynik, podstawiając rozwiązanie do równania.',
         points: [T`$\Delta > 0$: dwa rozwiązania, $\Delta = 0$: jedno, $\Delta < 0$: brak.`, T`$x^2 = k^2$ ma dwa rozwiązania: $k$ i $-k$.`, T`Równanie bez wyrazu wolnego: wyłącz $x$ przed nawias.`]
       }),
       gens: [quadRoots, quadCount, quadIncomplete, quadRootsOp, quadSquareForm]

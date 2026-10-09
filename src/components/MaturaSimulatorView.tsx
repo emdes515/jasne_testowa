@@ -63,6 +63,8 @@ import { ALL_POLISH_TASKS } from '../data/polish';
 import { MathDiagram } from './MathDiagram';
 import { NumberLineDiagram } from './NumberLineDiagram';
 import { enrichTaskWithVisual } from '../data/mathVisualRegistry';
+import { StructuredAnswerInput } from './math/StructuredAnswerInput';
+import { describeAnswerKey, describeStructuredAnswer, getStructuredKind, gradeStructuredAnswer, isStructuredAnswerComplete } from '../lib/structuredAnswer';
 
 interface ExamTaskCardProps {
   task: MaturaTask;
@@ -121,7 +123,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
       <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
         <div className="flex items-center gap-2">
           <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-text-secondary text-xs font-bold">
-            Zadanie {currentIndex + 1}
+            Zadanie {(task as any).taskNumber || currentIndex + 1}
           </span>
           <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/20 text-[#FFB800] text-xs font-bold">
             {task.points} {task.points === 1 ? 'punkt' : 'punkty'}
@@ -157,7 +159,10 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
             ) : null}
           </div>
           <div className="lg:col-span-6 grid grid-cols-1 gap-2.5">
-            {task.options?.map((opt, optIdx) => {
+            {getStructuredKind(task) && (
+              <StructuredAnswerInput task={task} value={selectedAnswer} onChange={onSelectClosedAnswer} />
+            )}
+            {!getStructuredKind(task) && task.options?.map((opt, optIdx) => {
               const optLetter = String.fromCharCode(65 + optIdx);
               const isSelected = selectedAnswer === optLetter;
 
@@ -186,7 +191,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                       {typeof opt === 'object' && (opt as any)?.numberLine ? (
                         <NumberLineDiagram data={(opt as any).numberLine} />
                       ) : typeof opt === 'object' && (opt as any)?.diagram ? (
-                        <MathDiagram diagram={(opt as any).diagram} />
+                        <MathDiagram diagram={(opt as any).diagram} borderless />
                       ) : (
                         <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
                           {typeof opt === 'object' ? ((opt as any).text || (opt as any).content_latex || '') : opt}
@@ -937,7 +942,8 @@ export function MaturaSimulatorView({
       return;
     }
     const duration = 180 * 60; // 3 godziny
-    setExamTitle(`Oficjalny Arkusz CKE • ${examName}`);
+    // Arkusze próbne JASNE są generowane z banku zadań – nie podpisujemy ich jako oficjalnych CKE
+    setExamTitle(sheetTasks.every(t => t.isCke) ? `Oficjalny Arkusz CKE • ${examName}` : examName);
     setExamTasks(sheetTasks);
     setExamCurrentIndex(0);
     prevExamIndexRef.current = 0;
@@ -969,7 +975,8 @@ export function MaturaSimulatorView({
       let aiEval = examAiEvaluations[t.id];
 
       if (t.isClosed) {
-        earned = userAns === t.correctAnswer ? t.points : 0;
+        // Formaty CKE inne niż ABCD mają własne zasady punktacji (w tym punkty cząstkowe)
+        earned = getStructuredKind(t) ? gradeStructuredAnswer(t, userAns) : (userAns === t.correctAnswer ? t.points : 0);
       } else {
         const openRecord = examOpenAnswers[t.id];
         const hasWork = Boolean(openRecord?.text?.trim() || (openRecord?.canvasUrl && openRecord.canvasUrl.length > 50));
@@ -1005,8 +1012,9 @@ export function MaturaSimulatorView({
 
       totalScore += earned;
 
-      const userDisplayAnswer = t.isClosed 
-        ? userAns 
+      const structured = Boolean(getStructuredKind(t));
+      const userDisplayAnswer = t.isClosed
+        ? (structured && userAns ? describeStructuredAnswer(t, userAns) : userAns)
         : (examOpenAnswers[t.id]?.text || (examOpenAnswers[t.id]?.canvasUrl ? '[Rozwiązanie odręczne na tablicy]' : undefined));
 
       return {
@@ -1014,7 +1022,7 @@ export function MaturaSimulatorView({
         section: t.section,
         content: t.content,
         options: t.options,
-        correctAnswer: t.correctAnswer,
+        correctAnswer: structured ? describeAnswerKey(t) : t.correctAnswer,
         points: t.points,
         isClosed: t.isClosed,
         explanation: t.explanation,
@@ -1161,11 +1169,11 @@ export function MaturaSimulatorView({
       }
 
       const key = e.key.toUpperCase();
-      if (currentMaratonTask.isClosed && ['A', 'B', 'C', 'D'].includes(key)) {
+      if (currentMaratonTask.isClosed && !getStructuredKind(currentMaratonTask) && ['A', 'B', 'C', 'D'].includes(key)) {
         setMaratonDraftAnswer(key);
         triggerHaptic('light');
       } else if (e.key === 'Enter') {
-        if (currentMaratonTask.isClosed && maratonDraftAnswer) {
+        if (currentMaratonTask.isClosed && maratonDraftAnswer && isStructuredAnswerComplete(currentMaratonTask, maratonDraftAnswer)) {
           handleMaratonAnswer(maratonDraftAnswer);
         } else if (!currentMaratonTask.isClosed && !maratonSubmitted && !maratonIsScanning) {
           void handleCheckMaratonOpenWithTutor();
@@ -1181,7 +1189,10 @@ export function MaturaSimulatorView({
     setMaratonSelectedAnswer(optLetter);
     setMaratonSubmitted(true);
 
-    const isCorrect = currentMaratonTask.correctAnswer.trim().toUpperCase() === optLetter.trim().toUpperCase();
+    const earnedPoints = getStructuredKind(currentMaratonTask)
+      ? gradeStructuredAnswer(currentMaratonTask, optLetter)
+      : (currentMaratonTask.correctAnswer.trim().toUpperCase() === optLetter.trim().toUpperCase() ? currentMaratonTask.points : 0);
+    const isCorrect = earnedPoints >= currentMaratonTask.points;
 
     if (isCorrect) {
       playSuccessSound();
@@ -1203,7 +1214,7 @@ export function MaturaSimulatorView({
         const ckeMap = { ...(prev.completedCkeTasks || {}) };
         ckeMap[currentMaratonTask.id] = {
           status: isCorrect ? 'passed' : 'failed',
-          score: isCorrect ? currentMaratonTask.points : 0,
+          score: earnedPoints,
           solvedAt: new Date().toISOString(),
           userAnswer: optLetter
         };
@@ -1547,7 +1558,7 @@ export function MaturaSimulatorView({
             </div>
             {view !== 'hub' && examSubject === 'matematyka' && (
               <p className="text-text-secondary text-xs sm:text-sm truncate mt-0.5">
-                {view === 'full_exams' && 'Autentyczne kompletne arkusze egzaminacyjne CKE (31 zadań • 50 pkt)'}
+                {view === 'full_exams' && '6 autentycznych arkuszy CKE 2023–2024 (46 pkt) i 3 arkusze próbne JASNE (50 pkt)'}
                 {view === 'topics_bank' && 'Komplet 15 oficjalnych działów z indywidualnymi postępami'}
                 {view === 'exam' && `Zadanie ${examCurrentIndex + 1} z ${examTasks.length}`}
                 {view === 'maraton' && `Zadanie ${maratonIndex + 1} z ${maratonList.length}`}
@@ -1582,7 +1593,7 @@ export function MaturaSimulatorView({
       ) : loading && examSubject === 'matematyka' && tasks.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center py-20">
           <Loader2 className="w-10 h-10 text-[#FFB800] animate-spin mb-4" />
-          <p className="text-text-secondary text-sm font-medium">Wczytywanie 1006 oficjalnych zadań CKE...</p>
+          <p className="text-text-secondary text-sm font-medium">Wczytywanie zadań z arkuszy CKE...</p>
         </div>
       ) : loadError ? (
         <div className="flex-1 flex flex-col items-center justify-center py-16 px-6 text-center">
@@ -1704,7 +1715,7 @@ export function MaturaSimulatorView({
                       }`}
                     >
                       <Layers size={13} className={randomScope === 'all' ? 'text-black' : 'text-blue-400'} />
-                      <span>Wszystkie (1006)</span>
+                      <span>Wszystkie ({tasks.length})</span>
                     </button>
                     <button
                       type="button"
@@ -1848,14 +1859,16 @@ export function MaturaSimulatorView({
                           <FileText size={20} />
                         </div>
                         <span className="text-[10px] font-mono font-black uppercase tracking-wider text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                          {examSubject === 'angielski' ? '120 MIN • 60 PKT' : examSubject === 'polski' ? '240 MIN • 60 PKT' : '180 MIN • 50 PKT'}
+                          {examSubject === 'angielski' ? '120 MIN • 60 PKT' : examSubject === 'polski' ? '240 MIN • 60 PKT' : '180 MIN • 46–50 PKT'}
                         </span>
                       </div>
                       <h3 className="font-display font-black text-base sm:text-lg text-white group-hover:text-emerald-300 transition-colors mb-1.5">
                         Matury Pełne (Oficjalne CKE)
                       </h3>
                       <p className="text-text-muted text-xs leading-relaxed mb-4">
-                        Kompletne, oficjalne arkusze CKE z lat ubiegłych (Maj 2024, Czerwiec 2024, Maj 2023) oraz wzorcowe symulacje JASNE 2025.
+                        {examSubject === 'matematyka'
+                          ? 'Sześć kompletnych arkuszy CKE z lat 2023–2024 (maj, czerwiec, sierpień) oraz trzy arkusze próbne JASNE w układzie matury 2025.'
+                          : 'Kompletne, oficjalne arkusze CKE z lat ubiegłych oraz wzorcowe symulacje JASNE 2025.'}
                       </p>
                     </div>
 
@@ -1983,10 +1996,10 @@ export function MaturaSimulatorView({
                   <span className="text-xs text-text-muted">• Formuła 2023 (Podstawa)</span>
                 </div>
                 <h2 className="text-xl font-bold text-white mb-1">
-                  Wybierz pełny arkusz CKE do rozwiązania
+                  Wybierz pełny arkusz do rozwiązania
                 </h2>
                 <p className="text-text-secondary text-xs sm:text-sm mb-6">
-                  Autentyczne zestawy maturalne z lat ubiegłych. Możesz pisać z oficjalnym zegarem 180 minut lub w trybie bezstresowym.
+                  Autentyczne zestawy CKE z lat ubiegłych i arkusze próbne JASNE. Możesz pisać z oficjalnym zegarem 180 minut lub w trybie bezstresowym.
                 </p>
 
                 {/* Lista gotowych arkuszy rocznikowych i autorskich symulacji */}
@@ -2056,7 +2069,11 @@ export function MaturaSimulatorView({
                       desc: 'Zbiór zadań z oficjalnego Informatora CKE o egzaminie maturalnym.',
                       filter: (t: MaturaTask) => (t.source || '').toLowerCase().includes('informator')
                     }
-                  ].map((sheet: any, sIdx) => {
+                  ]
+                    // Pokazujemy tylko arkusze, dla których faktycznie mamy zadania – pod nazwą oficjalnego
+                    // arkusza CKE nie może uruchomić się zestaw generowany.
+                    .filter((sheet: any) => Boolean(sheet.directTasks) || tasks.some(sheet.filter))
+                    .map((sheet: any, sIdx) => {
                     const sheetTasks: MaturaTask[] = sheet.directTasks || tasks.filter(sheet.filter);
                     const count = sheetTasks.length || 35;
                     const points = sheetTasks.length > 0 ? sheetTasks.reduce((sum, t) => sum + t.points, 0) : 46;
@@ -2651,7 +2668,33 @@ export function MaturaSimulatorView({
                   </div>
                 ) : null}
 
-                {currentMaratonTask.isClosed && currentMaratonTask.options && (
+                {currentMaratonTask.isClosed && getStructuredKind(currentMaratonTask) && (
+                  <div className="pt-2 space-y-4">
+                    <StructuredAnswerInput
+                      task={currentMaratonTask}
+                      value={maratonSubmitted ? maratonSelectedAnswer : maratonDraftAnswer}
+                      onChange={setMaratonDraftAnswer}
+                      reveal={maratonSubmitted}
+                    />
+                    {!maratonSubmitted && (
+                      <button
+                        disabled={!isStructuredAnswerComplete(currentMaratonTask, maratonDraftAnswer)}
+                        onClick={() => maratonDraftAnswer && handleMaratonAnswer(maratonDraftAnswer)}
+                        className="w-full py-3.5 px-5 rounded-2xl bg-[#ffb800] text-black font-black text-sm flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
+                      >
+                        <span>Zatwierdź odpowiedź</span>
+                        <ArrowRight size={18} />
+                      </button>
+                    )}
+                    {maratonSubmitted && (
+                      <p className="text-xs text-text-secondary">
+                        Wynik: {gradeStructuredAnswer(currentMaratonTask, maratonSelectedAnswer)} / {currentMaratonTask.points} pkt • poprawna odpowiedź: {describeAnswerKey(currentMaratonTask)}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {currentMaratonTask.isClosed && !getStructuredKind(currentMaratonTask) && currentMaratonTask.options && (
                   <div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                       {currentMaratonTask.options.map((opt, optIdx) => {
@@ -2704,7 +2747,7 @@ export function MaturaSimulatorView({
                                 {typeof opt === 'object' && (opt as any)?.numberLine ? (
                                   <NumberLineDiagram data={(opt as any).numberLine} />
                                 ) : typeof opt === 'object' && (opt as any)?.diagram ? (
-                                  <MathDiagram diagram={(opt as any).diagram} />
+                                  <MathDiagram diagram={(opt as any).diagram} borderless />
                                 ) : (
                                   <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
                                     {typeof opt === 'object' ? ((opt as any).text || (opt as any).content_latex || '') : opt}

@@ -4,14 +4,14 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "1",
-    "section": "Dział 3: Równania i Nierówności",
-    "topicId": "dzial-3",
+    "section": "Dział 1: Liczby rzeczywiste",
+    "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
     "content": "Dana jest nierówność\n$$|x - 1| \\ge 3$$\nNa którym rysunku poprawnie zaznaczono na osi liczbowej zbiór wszystkich liczb rzeczywistych spełniających powyższą nierówność? Wybierz właściwą odpowiedź spośród podanych.",
     "options": [
       {
         "id": "A",
-        "text": "⟨-2, 4⟩",
+        "text": "$\\langle -2, 4 \\rangle$",
         "numberLine": {
           "min": -5,
           "max": 7,
@@ -32,7 +32,7 @@
       },
       {
         "id": "B",
-        "text": "(-∞, -2⟩ ∪ ⟨4, +∞)",
+        "text": "$(-\\infty, -2 \\rangle \\cup \\langle 4, +\\infty)$",
         "numberLine": {
           "min": -5,
           "max": 7,
@@ -57,7 +57,7 @@
       },
       {
         "id": "C",
-        "text": "(-2, 4)",
+        "text": "$(-2, 4)$",
         "numberLine": {
           "min": -5,
           "max": 7,
@@ -78,7 +78,7 @@
       },
       {
         "id": "D",
-        "text": "(-∞, -2) ∪ (4, +∞)",
+        "text": "$(-\\infty, -2) \\cup (4, +\\infty)$",
         "numberLine": {
           "min": -5,
           "max": 7,
@@ -105,8 +105,8 @@
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "Rozwiązujemy nierówność z wartością bezwzględną: $|x - 1| \\ge 3 \\iff x - 1 \\le -3 \\lor x - 1 \\ge 3 \\iff x \\le -2 \\lor x \\ge 4$.\nZbiorem rozwiązań jest suma przedziałów $(-\\infty, -2\\rangle \\cup \\langle 4, +\\infty)$.\nNa osi liczbowej zaznaczamy punkty $-2$ oraz $4$ z kółkami zamalowanymi (nierówność nieostra $\\ge$) i promieniami skierowanymi na zewnątrz (Rysunek B).",
-    "ckeTrap": "Znak nierówności $\\ge$ oznacza przedziały zewnętrzne z kółkami zamalowanymi. Puste kółka (Rysunek D) lub przedział wewnętrzny (Rysunek A) to typowe pułapki CKE.",
+    "explanation": "**Krok 1:** $|x - 1|$ to odległość liczby $x$ od liczby $1$ na osi liczbowej. Szukamy liczb odległych od $1$ o co najmniej $3$.\n\n**Krok 2:** Odkładamy $3$ w lewo i w prawo od $1$: $1 - 3 = -2$ oraz $1 + 3 = 4$. Warunek spełniają liczby $x \\le -2$ lub $x \\ge 4$.\n\n**Krok 3:** Nierówność jest nieostra ($\\ge$), więc końce $-2$ i $4$ należą do zbioru – kółka są zamalowane.\n\n**Pułapka CKE:** Znak $\\ge$ przy wartości bezwzględnej oznacza „na zewnątrz” (dwa promienie), a nie odcinek między $-2$ i $4$. Odcinek byłby rozwiązaniem nierówności $|x - 1| \\le 3$.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Znak $\\ge$ przy wartości bezwzględnej oznacza „na zewnątrz” (dwa promienie), a nie odcinek między $-2$ i $4$. Odcinek byłby rozwiązaniem nierówności $|x - 1| \\le 3$.",
     "source": "Matura Maj 2024 • Zad. 1",
     "year": 2024,
     "session": "Maj",
@@ -117,21 +117,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "2",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  ( 1\n16)\n8\n\\cdot 816  jest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(\\frac{1}{16}\\right)^{8} \\cdot 8^{16}$ jest równa",
     "options": [
-      "224",
-      "216",
-      "212",
-      "28"
+      "$2^{24}$",
+      "$2^{16}$",
+      "$2^{12}$",
+      "$2^{8}$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Sprowadzamy obie potęgi do podstawy $2$: $\\frac{1}{16} = 2^{-4}$ oraz $8 = 2^{3}$.\n\n**Krok 2:** $\\left(2^{-4}\\right)^{8} = 2^{-32}$ oraz $\\left(2^{3}\\right)^{16} = 2^{48}$.\n\n**Krok 3:** $2^{-32} \\cdot 2^{48} = 2^{-32 + 48} = 2^{16}$.\n\n**Pułapka CKE:** Przy potęgowaniu potęgi wykładniki się mnoży ($-4 \\cdot 8$ i $3 \\cdot 16$), a dopiero przy mnożeniu potęg o tej samej podstawie – dodaje.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Przy potęgowaniu potęgi wykładniki się mnoży ($-4 \\cdot 8$ i $3 \\cdot 16$), a dopiero przy mnożeniu potęg o tej samej podstawie – dodaje.",
     "source": "Matura Maj 2024 • Zad. 2",
     "year": 2024,
     "session": "Maj",
@@ -142,16 +142,16 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "3",
-    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "section": "Dział 2: Wyrażenia algebraiczne",
     "topicId": "dzial-2",
     "type": "OPEN_PROOF",
-    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  𝒏𝟐 + (𝒏 + 𝟏)𝟐 + (𝒏 + 𝟐)𝟐  przy\ndzieleniu przez  𝟑  daje resztę  𝟐.\n3.\n0–1–2",
+    "content": "Wykaż, że dla każdej liczby naturalnej $n \\ge 1$ liczba $n^2 + (n + 1)^2 + (n + 2)^2$ przy dzieleniu przez $3$ daje resztę $2$.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$n^2 + (n + 1)^2 + (n + 2)^2 = 3(n^2 + 2n + 1) + 2$, a liczba $n^2 + 2n + 1$ jest całkowita, więc reszta z dzielenia przez $3$ jest równa $2$.",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nPrzekształcamy równoważnie dane wyrażenie \n \nn2 + (n + 1)2 + (n + 2)2 = n2 + n2 + 2n + 1 + n2 + 4n + 4 \n \n= 3n2 + 6n + 5 = 3 \\cdot (n2 + 2n + 1) + 2 \n \nPonieważ  n  jest liczbą naturalną, więc  n2 + 2n + 1  jest liczbą naturalną.  \nZatem  3 \\cdot (n2 + 2n + 1)  jest wielokrotnością liczby  3.  \nStąd  3 \\cdot (n2 + 2n + 1) + 2  przy dzieleniu przez  3  daje resztę  2.  \nTo należało wykazać.  \n \n \nSposób II \nLiczby  n,  n + 1,  n + 2  to trzy kolejne liczby naturalne, więc dokładnie jedna z nich jest \npodzielna przez  3, a dwie pozostałe nie są podzielne przez  3. \nKwadrat liczby podzielnej przez  3  jest również podzielny przez  3. \nKwadrat liczby niepodzielnej przez  3  daje przy dzieleniu przez  3  resztę  1.",
-    "ckeTrap": "1. Jeżeli zdający sprawdza prawdziwość tezy tylko dla wybranych wartości  n, to otrzymuje \n0 punktów za całe rozwiązanie. \n2. Jeżeli zdający przyjmuje np.  n = 3k + r, gdzie  k ∈ \\mathbb{N}  i  r  jest resztą z dzielenia liczby  \nn  przez  3  (lub  n = 2k + r, gdzie  k ∈ \\mathbb{N} i  r  jest resztą z dzielenia liczby  n  przez  2), \ni przeprowadzi pełne rozumowanie dla wszystkich przypadków, to otrzymuje 2 punkty.  \nGdy przeprowadzi pełne rozumowanie dla co najmniej połowy przypadków, ale nie \nprzeprowadzi pełnego rozumowania dla wszystkich przypadków, to otrzymuje 1 punkt za \ncałe rozwiązanie. \n3. Jeżeli zdający rozpatruje tylko jeden przypadek  n = 3k + 2, to otrzymuje 0 punktów za \ncałe rozwiązanie.",
+    "explanation": "**Krok 1:** Rozwijamy kwadraty: $n^2 + (n^2 + 2n + 1) + (n^2 + 4n + 4) = 3n^2 + 6n + 5$.\n\n**Krok 2:** Wyłączamy trójkę tak, by została reszta mniejsza od $3$: $3n^2 + 6n + 5 = 3n^2 + 6n + 3 + 2 = 3(n^2 + 2n + 1) + 2$.\n\n**Krok 3:** Liczba $k = n^2 + 2n + 1$ jest całkowita, więc dana liczba ma postać $3k + 2$, czyli przy dzieleniu przez $3$ daje resztę $2$.\n\n**Pułapka CKE:** Sprawdzenie kilku wartości $n$ to nie dowód. Trzeba zapisać liczbę w postaci $3k + 2$ i dopisać, że $k$ jest liczbą całkowitą.\n\n**Wniosek:** $n^2 + (n + 1)^2 + (n + 2)^2 = 3(n^2 + 2n + 1) + 2$, a liczba $n^2 + 2n + 1$ jest całkowita, więc reszta z dzielenia przez $3$ jest równa $2$.",
+    "ckeTrap": "Sprawdzenie kilku wartości $n$ to nie dowód. Trzeba zapisać liczbę w postaci $3k + 2$ i dopisać, że $k$ jest liczbą całkowitą.",
     "source": "Matura Maj 2024 • Zad. 3",
     "year": 2024,
     "session": "Maj",
@@ -162,21 +162,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "4",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log\\sqrt3 9  jest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\log_{\\sqrt{3}} 9$ jest równa",
     "options": [
-      "2",
-      "3",
-      "4",
-      "9"
+      "$2$",
+      "$3$",
+      "$4$",
+      "$9$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nWersja A Wersja B \nC B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Szukamy wykładnika $x$, dla którego $\\left(\\sqrt{3}\\right)^{x} = 9$.\n\n**Krok 2:** $\\sqrt{3} = 3^{\\frac{1}{2}}$ oraz $9 = 3^{2}$, więc $3^{\\frac{x}{2}} = 3^{2}$.\n\n**Krok 3:** $\\frac{x}{2} = 2$, czyli $x = 4$.\n\n**Pułapka CKE:** Podstawą logarytmu jest $\\sqrt{3}$, a nie $3$. Odpowiedź $2$ to wartość $\\log_{3} 9$.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Podstawą logarytmu jest $\\sqrt{3}$, a nie $3$. Odpowiedź $2$ to wartość $\\log_{3} 9$.",
     "source": "Matura Maj 2024 • Zad. 4",
     "year": 2024,
     "session": "Maj",
@@ -187,21 +187,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "5",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 2: Wyrażenia algebraiczne",
+    "topicId": "dzial-2",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  a  i dla każdej liczby rzeczywistej  b  wartość wyrażenia\n(2a + b)2 − (2a − b)2  jest równa wartości wyrażenia",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla każdej liczby rzeczywistej $a$ i dla każdej liczby rzeczywistej $b$ wartość wyrażenia $(2a + b)^2 - (2a - b)^2$ jest równa wartości wyrażenia",
     "options": [
-      "8a2",
-      "8ab",
-      "−8ab",
-      "2b2"
+      "$8a^2$",
+      "$8ab$",
+      "$-8ab$",
+      "$2b^2$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nWersja A Wersja B \nB D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** $(2a + b)^2 = 4a^2 + 4ab + b^2$ oraz $(2a - b)^2 = 4a^2 - 4ab + b^2$.\n\n**Krok 2:** Odejmujemy, zmieniając znaki w drugim nawiasie: $4a^2 + 4ab + b^2 - 4a^2 + 4ab - b^2 = 8ab$.\n\n**Pułapka CKE:** Minus przed nawiasem zmienia znak KAŻDEGO składnika: $-(-4ab) = +4ab$. Stąd wynik $8ab$, a nie $0$.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Minus przed nawiasem zmienia znak KAŻDEGO składnika: $-(-4ab) = +4ab$. Stąd wynik $8ab$, a nie $0$.",
     "source": "Matura Maj 2024 • Zad. 5",
     "year": 2024,
     "session": "Maj",
@@ -212,21 +212,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "6",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 3: Równania i nierówności",
+    "topicId": "dzial-3",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nZbiorem wszystkich rozwiązań nierówności\n1 − 3\n2 x < 2\n3 − x\njest przedział",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nZbiorem wszystkich rozwiązań nierówności\n$$1 - \\frac{3}{2}x < \\frac{2}{3} - x$$\njest przedział",
     "options": [
-      "(−\\infty, − 2\n3)",
-      "(−\\infty, 2\n3)",
-      "(− 2\n3 , +\\infty)",
-      "(2\n3 , +\\infty)"
+      "$\\left(-\\infty, -\\frac{2}{3}\\right)$",
+      "$\\left(-\\infty, \\frac{2}{3}\\right)$",
+      "$\\left(-\\frac{2}{3}, +\\infty\\right)$",
+      "$\\left(\\frac{2}{3}, +\\infty\\right)$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nWersja A Wersja B \nD D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Mnożymy obie strony przez $6$ (liczba dodatnia – znak nierówności zostaje): $6 - 9x < 4 - 6x$.\n\n**Krok 2:** Przenosimy wyrazy: $-9x + 6x < 4 - 6$, czyli $-3x < -2$.\n\n**Krok 3:** Dzielimy przez $-3$ i odwracamy znak nierówności: $x > \\frac{2}{3}$.\n\n**Pułapka CKE:** Dzielenie przez liczbę ujemną odwraca znak nierówności. Kto o tym zapomni, wybierze przedział $\\left(-\\infty, \\frac{2}{3}\\right)$.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Dzielenie przez liczbę ujemną odwraca znak nierówności. Kto o tym zapomni, wybierze przedział $\\left(-\\infty, \\frac{2}{3}\\right)$.",
     "source": "Matura Maj 2024 • Zad. 6",
     "year": 2024,
     "session": "Maj",
@@ -237,21 +237,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "7",
-    "section": "Dział 3: Równania i Nierówności",
+    "section": "Dział 3: Równania i nierówności",
     "topicId": "dzial-3",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nRównanie  x+1\n(x+2)(x−3) = 0  w zbiorze liczb rzeczywistych",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nRównanie $\\frac{x + 1}{(x + 2)(x - 3)} = 0$ w zbiorze liczb rzeczywistych",
     "options": [
       "nie ma rozwiązania.",
-      "ma dokładnie jedno rozwiązanie:  (−1).",
-      "ma dokładnie dwa rozwiązania:  (−2)  oraz  3.",
-      "ma dokładnie trzy rozwiązania:  (−1),  (−2)  oraz  3."
+      "ma dokładnie jedno rozwiązanie: $(-1)$.",
+      "ma dokładnie dwa rozwiązania: $(-2)$ oraz $3$.",
+      "ma dokładnie trzy rozwiązania: $(-1)$, $(-2)$ oraz $3$."
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Dziedzina: mianownik musi być różny od zera, więc $x \\ne -2$ i $x \\ne 3$.\n\n**Krok 2:** Ułamek jest równy zero, gdy licznik jest równy zero: $x + 1 = 0$, czyli $x = -1$.\n\n**Krok 3:** Liczba $-1$ należy do dziedziny, więc jest jedynym rozwiązaniem.\n\n**Pułapka CKE:** Liczby $-2$ i $3$ zerują MIANOWNIK – to nie rozwiązania, tylko liczby wykluczone z dziedziny.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Liczby $-2$ i $3$ zerują MIANOWNIK – to nie rozwiązania, tylko liczby wykluczone z dziedziny.",
     "source": "Matura Maj 2024 • Zad. 7",
     "year": 2024,
     "session": "Maj",
@@ -262,19 +262,28 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "8",
-    "section": "Dział 3: Równania i Nierówności",
-    "topicId": "dzial-3",
+    "section": "Dział 2: Wyrażenia algebraiczne",
+    "topicId": "dzial-2",
     "type": "TRUE_FALSE",
-    "content": "Dany jest wielomian  W(x) = 3x3 + 6x2 + 9x.\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nWielomian  W  jest iloczynem wielomianów  𝐹(x) = 3x  i  𝐺(x) = x2 + 2x + 3. P F\nLiczba  (−1)  jest rozwiązaniem równania  W(x) = 0. P F",
-    "options": [
-      "PRAWDA",
-      "FAŁSZ"
+    "content": "Dany jest wielomian $W(x) = 3x^3 + 6x^2 + 9x$.\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+    "options": [],
+    "statements": [
+      {
+        "id": "1",
+        "text": "Wielomian $W$ jest iloczynem wielomianów $F(x) = 3x$ i $G(x) = x^2 + 2x + 3$.",
+        "correct": "P"
+      },
+      {
+        "id": "2",
+        "text": "Liczba $(-1)$ jest rozwiązaniem równania $W(x) = 0$.",
+        "correct": "F"
+      }
     ],
     "correctAnswer": "PF",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nPF FP",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Stwierdzenie 1: $3x \\cdot (x^2 + 2x + 3) = 3x^3 + 6x^2 + 9x = W(x)$ – prawda.\n\n**Krok 2:** Stwierdzenie 2: $W(-1) = 3 \\cdot (-1) + 6 \\cdot 1 + 9 \\cdot (-1) = -3 + 6 - 9 = -6 \\ne 0$ – fałsz.\n\n**Pułapka CKE:** $(-1)^3 = -1$, ale $(-1)^2 = 1$. Pomyłka w znaku potęgi liczby ujemnej to najczęstsza przyczyna błędu w drugim stwierdzeniu.\n\nPrawidłowa odpowiedź: **1 – P**, **2 – F**.",
+    "ckeTrap": "$(-1)^3 = -1$, ale $(-1)^2 = 1$. Pomyłka w znaku potęgi liczby ujemnej to najczęstsza przyczyna błędu w drugim stwierdzeniu.",
     "source": "Matura Maj 2024 • Zad. 8",
     "year": 2024,
     "session": "Maj",
@@ -285,16 +294,16 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "9",
-    "section": "Dział 3: Równania i Nierówności",
+    "section": "Dział 3: Równania i nierówności",
     "topicId": "dzial-3",
     "type": "OPEN_CALCULATION",
-    "content": "Rozwiąż równanie\n𝒙𝟑 − 𝟐𝒙𝟐 − 𝟑𝒙 + 𝟔 = 𝟎\nZapisz obliczenia.\n9.\n0–1–\n2–3",
+    "content": "Rozwiąż równanie\n$$x^3 - 2x^2 - 3x + 6 = 0$$\nZapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$x = 2$ lub $x = -\\sqrt{3}$ lub $x = \\sqrt{3}$.",
     "points": 3,
     "isClosed": false,
-    "explanation": "Sposób I \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \nx3 − 2x2 − 3x + 6 = 0 \n \nx2(x − 2) − 3(x − 2) = 0 \n \n(x − 2)(x2 − 3) = 0 \n \n(x − 2)(x − \\sqrt3)(x + \\sqrt3) = 0 \n \nx − 2 = 0    lub    x − \\sqrt3 = 0    lub    x + \\sqrt3 = 0 \n \nx = 2    lub    x = \\sqrt3    lub    x = −\\sqrt3 \n \nRozwiązaniami równania są liczby:  (−\\sqrt3),  \\sqrt3,  2. \n \n \nSposób II \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \nx3 − 2x2 − 3x + 6 = 0 \n \nx(x2 − 3) − 2(x2 − 3) = 0 \n \n(x − 2)(x2 − 3) = 0",
-    "ckeTrap": "1. Jeżeli zdający zapisze tylko trzy poprawne rozwiązania równania, to otrzymuje 1 punkt za \ncałe rozwiązanie. \n2. Jeżeli zdający uzyska trzy poprawne pierwiastki wielomianu, lecz traktuje równanie jako \nnierówność (podaje zbiór rozwiązań w postaci przedziału / sumy przedziałów), to \notrzymuje 2 punkty za całe rozwiązanie. \n3. Jeżeli przy przekształcaniu lewej strony równania do postaci iloczynu zdający zapisuje \nczynnik  (x − 2)  z wykładnikiem  2, to może otrzymać co najwyżej 2 punkty za całe \nrozwiązanie (1 punkt za rozwiązanie równania  (x − 2)2 = 0  i 1 punkt za rozwiązanie \nrównania  x2 − 3 = 0). \n4. Jeżeli zdający zamiast równania  (x − 2)(x2 − 3) = 0  zapisze  (x − 2) ± (x2 − 3) = 0, \nale z dalszego rozwiązania wynika, że traktuje lewą stronę równania jak iloczyn i rozwiąże \nzadanie do końca, to może otrzymać co najwyżej 2 punkty za całe rozwiązanie (1 punkt \nza rozwiązanie równania  x − 2 = 0  i 1 punkt za rozwiązanie równania  x2 − 3 = 0). \n5. Jeżeli zdający przy przekształcaniu równania do postaci  (x − 2)(x2 − 3) = 0  popełni \nbłąd i zapisze: \nx2(x + 2) − 3(x − 2) = 0  \nlub \nx2(x − 2) + 3(x − 2) = 0  \nlub \nx2(x − 2) − 3(x + 2) = 0  \nlub \nx(x2 + 3) − 2(x2 − 3) = 0 \nlub \nx(x2 − 3) + 2(x2 − 3) = 0 \nlub \nx(x2 − 3) − 2(x2 + 3) = 0 \na następnie:  \n5.1. zapisze równanie  (x − 2)(x2 − 3) = 0  lub poprawną alternatywę  \n(x − 2 = 0  lub  x2 − 3 = 0) i konsekwentnie rozwiąże zadanie do końca, to \notrzymuje co najwyżej 2 punkty za całe rozwiązanie (1 punkt za rozwiązanie \nrównania  x − 2 = 0  i 1 punkt za rozwiązanie równania  x2 − 3 = 0). \n5.2. zapisze równanie  (x − 2)(x2 + 3) = 0  lub błędną alternatywę  \n(x − 2 = 0  lub  x2 + 3 = 0) i zapisze rozwiązanie  x = 2, to otrzymuje 1 punkt \nza całe rozwiązanie. \n5.3. zapisze równanie  (x + 2)(x2 − 3) = 0  lub błędną alternatywę  \n(x + 2 = 0  lub  x2 − 3 = 0) i zapisze oba rozwiązania równania  x2 − 3 = 0:  \nx = −\\sqrt3  oraz  x = \\sqrt3, to otrzymuje 1 punkt za całe rozwiązanie. \n5.4. zapisze błędne równanie (w którym jedna ze stron jest równa  0, a druga jest \niloczynem wielomianów stopni dodatnich), inne niż w uwagach 5.2 oraz 5.3, np.  \n(x − 2)(x + 2)(x2 ± 3) = 0  lub błędną alternatywę inną niż w uwagach 5.2 \noraz 5.3, np. (x − 2 = 0  lub  x + 2 = 0  lub  x2 ± 3 = 0), to otrzymuje \n0 punktów za całe rozwiązanie. \n6. Jeżeli zdający, przekształcając równanie  x3 − 2x2 − 3x + 6 = 0, popełni jeden błąd \n(który nie jest błędem znaku) albo dwa błędy znaku i otrzyma równanie trzeciego stopnia, \nktóre ma trzy rozwiązania rzeczywiste, oraz konsekwentnie rozwiąże zadanie do końca, to \notrzymuje 1 punkt za całe rozwiązanie. \n7. Jeżeli zdający dzieli obustronnie równanie  x2(x − 2) = 3(x − 2)  przez dwumian   \n(x − 2)  z podaniem odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = \\sqrt3  oraz  x = −\\sqrt3, to otrzymuje 2 punkty za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 1 punkt za całe rozwiązanie. \n8. Jeżeli zdający dzieli obustronnie równanie  x2(x − 2) = 3(x − 2)  przez dwumian   \n(x − 2)  bez podania odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = \\sqrt3  oraz  x = −\\sqrt3, to otrzymuje 1 punkt za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 0 punktów za całe rozwiązanie.",
+    "explanation": "**Krok 1:** Grupujemy wyrazy parami: $x^2(x - 2) - 3(x - 2) = 0$.\n\n**Krok 2:** Wyłączamy wspólny czynnik: $(x - 2)(x^2 - 3) = 0$.\n\n**Krok 3:** Iloczyn jest równy zero, gdy $x - 2 = 0$ lub $x^2 - 3 = 0$. Stąd $x = 2$ lub $x = \\sqrt{3}$ lub $x = -\\sqrt{3}$.\n\n**Pułapka CKE:** Równanie $x^2 = 3$ ma DWA rozwiązania: $\\sqrt{3}$ i $-\\sqrt{3}$. Pominięcie ujemnego kosztuje punkt.\n\n**Odpowiedź:** $x = 2$ lub $x = -\\sqrt{3}$ lub $x = \\sqrt{3}$.",
+    "ckeTrap": "Równanie $x^2 = 3$ ma DWA rozwiązania: $\\sqrt{3}$ i $-\\sqrt{3}$. Pominięcie ujemnego kosztuje punkt.",
     "source": "Matura Maj 2024 • Zad. 9",
     "year": 2024,
     "session": "Maj",
@@ -305,21 +314,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "10",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
+    "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "W październiku 2022 roku założono dwa sady, w których posadzono łącznie  1960  drzew.\nPo roku stwierdzono, że uschło  5%  drzew w pierwszym sadzie i  10%  drzew w drugim\nsadzie. Uschnięte drzewa usunięto, a nowych nie dosadzano.\nLiczba drzew, które pozostały w drugim sadzie, stanowiła  60%  liczby drzew, które\npozostały w pierwszym sadzie.\nNiech  x  oraz  y  oznaczają liczby drzew posadzonych – odpowiednio – w pierwszym\ni drugim sadzie.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego poprawne rozwiązanie prowadzi do obliczenia liczby  x  drzew\nposadzonych w pierwszym sadzie oraz liczby  y  drzew posadzonych w drugim sadzie, jest",
+    "content": "W październiku 2022 roku założono dwa sady, w których posadzono łącznie $1960$ drzew. Po roku stwierdzono, że uschło $5\\%$ drzew w pierwszym sadzie i $10\\%$ drzew w drugim sadzie. Uschnięte drzewa usunięto, a nowych nie dosadzano. Liczba drzew, które pozostały w drugim sadzie, stanowiła $60\\%$ liczby drzew, które pozostały w pierwszym sadzie. Niech $x$ oraz $y$ oznaczają liczby drzew posadzonych – odpowiednio – w pierwszym i drugim sadzie.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nUkładem równań, którego poprawne rozwiązanie prowadzi do obliczenia liczby $x$ drzew posadzonych w pierwszym sadzie oraz liczby $y$ drzew posadzonych w drugim sadzie, jest",
     "options": [
-      "{ x + y = 1960\n0,6 \\cdot 0,95x = 0,9y",
-      "{ x + y = 1960\n0,95x = 0,6 \\cdot 0,9y",
-      "{ x + y = 1960\n0,05x = 0,6 \\cdot 0,1y",
-      "{ x + y = 1960\n0,4 \\cdot 0,95x = 0,9y"
+      "$\\begin{cases} x + y = 1960 \\\\ 0{,}6 \\cdot 0{,}95x = 0{,}9y \\end{cases}$",
+      "$\\begin{cases} x + y = 1960 \\\\ 0{,}95x = 0{,}6 \\cdot 0{,}9y \\end{cases}$",
+      "$\\begin{cases} x + y = 1960 \\\\ 0{,}05x = 0{,}6 \\cdot 0{,}1y \\end{cases}$",
+      "$\\begin{cases} x + y = 1960 \\\\ 0{,}4 \\cdot 0{,}95x = 0{,}9y \\end{cases}$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Łącznie posadzono $1960$ drzew: $x + y = 1960$.\n\n**Krok 2:** Po roku w pierwszym sadzie zostało $95\\%$ drzew, czyli $0{,}95x$, a w drugim $90\\%$, czyli $0{,}9y$.\n\n**Krok 3:** Drzewa z drugiego sadu to $60\\%$ drzew z pierwszego: $0{,}9y = 0{,}6 \\cdot 0{,}95x$.\n\n**Pułapka CKE:** W zadaniu mowa o drzewach, które POZOSTAŁY ($95\\%$ i $90\\%$), a nie o tych, które uschły ($5\\%$ i $10\\%$). Trzeba też uważnie przeczytać, która liczba stanowi $60\\%$ której.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "W zadaniu mowa o drzewach, które POZOSTAŁY ($95\\%$ i $90\\%$), a nie o tych, które uschły ($5\\%$ i $10\\%$). Trzeba też uważnie przeczytać, która liczba stanowi $60\\%$ której.",
     "source": "Matura Maj 2024 • Zad. 10",
     "year": 2024,
     "session": "Maj",
@@ -330,126 +339,44 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "11",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
+    "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "Na rysunku, w kartezjańskim układzie współrzędnych  (x, y), przedstawiono dwie proste\nrównoległe, które są interpretacją geometryczną jednego z poniższych układów równań A–D.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
+    "content": "Na rysunku, w kartezjańskim układzie współrzędnych $(x, y)$, przedstawiono dwie proste równoległe, które są interpretacją geometryczną jednego z poniższych układów równań A–D.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nUkładem równań, którego interpretację geometryczną przedstawiono na rysunku, jest",
     "options": [
-      "{\ny = − 3\n2 x + 3\ny = − 3\n2 x − 1",
-      "{\ny = 3\n2 x + 3\ny = − 2\n3 x − 1",
-      "{\ny = 3\n2 x + 3\ny = 3\n2 x − 1",
-      "{\ny = − 3\n2 x − 3\ny = 3\n2 x + 1"
+      "$\\begin{cases} y = -\\frac{3}{2}x + 3 \\\\ y = -\\frac{3}{2}x - 1 \\end{cases}$",
+      "$\\begin{cases} y = \\frac{3}{2}x + 3 \\\\ y = -\\frac{2}{3}x - 1 \\end{cases}$",
+      "$\\begin{cases} y = \\frac{3}{2}x + 3 \\\\ y = \\frac{3}{2}x - 1 \\end{cases}$",
+      "$\\begin{cases} y = -\\frac{3}{2}x - 3 \\\\ y = \\frac{3}{2}x + 1 \\end{cases}$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Proste równoległe mają ten sam współczynnik kierunkowy – odpadają układy B i D.\n\n**Krok 2:** Obie proste „opadają” (funkcje malejące), więc współczynnik kierunkowy jest ujemny – odpada układ C.\n\n**Krok 3:** Sprawdzenie: proste przecinają oś $Oy$ w punktach $(0, 3)$ i $(0, -1)$, co zgadza się z wyrazami wolnymi w układzie A.\n\n**Pułapka CKE:** Równoległość to RÓWNE współczynniki kierunkowe. Para $\\frac{3}{2}$ i $-\\frac{2}{3}$ z układu B oznacza proste prostopadłe.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Równoległość to RÓWNE współczynniki kierunkowe. Para $\\frac{3}{2}$ i $-\\frac{2}{3}$ z układu B oznacza proste prostopadłe.",
     "source": "Matura Maj 2024 • Zad. 11",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
-    "diagram": {
-      "type": "LINEAR",
-      "xRange": [
-        -3,
-        5
-      ],
-      "yRange": [
-        -4,
-        6
-      ],
-      "gridStep": 1,
-      "lines": [
-        {
-          "slope": -1.5,
-          "intercept": 3,
-          "color": "#38BDF8",
-          "label": "k: y = -3/2 x + 3"
-        },
-        {
-          "slope": -1.5,
-          "intercept": -1,
-          "color": "#FFB800",
-          "label": "l: y = -3/2 x - 1"
-        }
-      ],
-      "points": [
-        {
-          "x": 0,
-          "y": 3,
-          "label": "(0, 3)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "ne"
-        },
-        {
-          "x": 2,
-          "y": 0,
-          "label": "(2, 0)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "ne"
-        },
-        {
-          "x": 0,
-          "y": -1,
-          "label": "(0, -1)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
-        }
-      ]
-    },
     "plot": {
-      "type": "LINEAR",
       "xRange": [
-        -3,
-        5
-      ],
-      "yRange": [
-        -4,
+        -5,
         6
       ],
+      "yRange": [
+        -5,
+        7
+      ],
       "gridStep": 1,
+      "type": "LINEAR",
       "lines": [
         {
           "slope": -1.5,
-          "intercept": 3,
-          "color": "#38BDF8",
-          "label": "k: y = -3/2 x + 3"
+          "intercept": 3
         },
         {
           "slope": -1.5,
-          "intercept": -1,
-          "color": "#FFB800",
-          "label": "l: y = -3/2 x - 1"
-        }
-      ],
-      "points": [
-        {
-          "x": 0,
-          "y": 3,
-          "label": "(0, 3)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "ne"
-        },
-        {
-          "x": 2,
-          "y": 0,
-          "label": "(2, 0)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "ne"
-        },
-        {
-          "x": 0,
-          "y": -1,
-          "label": "(0, -1)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
+          "intercept": -1
         }
       ]
     }
@@ -459,21 +386,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "12",
-    "section": "Dział 5: Funkcja Liniowa i Układy Równań",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
     "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "Funkcja liniowa  f  jest określona wzorem  f(x) = (−2k + 3)x + k − 1, gdzie  k ∈ \\mathbb{R}.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja  f  jest malejąca dla każdej liczby  k  należącej do przedziału",
+    "content": "Funkcja liniowa $f$ jest określona wzorem $f(x) = (-2k + 3)x + k - 1$, gdzie $k \\in \\mathbb{R}$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nFunkcja $f$ jest malejąca dla każdej liczby $k$ należącej do przedziału",
     "options": [
-      "(−\\infty, 1)",
-      "(−\\infty, − 3\n2)",
-      "(1, +\\infty)",
-      "(3\n2 , +\\infty)"
+      "$(-\\infty, 1)$",
+      "$\\left(-\\infty, -\\frac{3}{2}\\right)$",
+      "$(1, +\\infty)$",
+      "$\\left(\\frac{3}{2}, +\\infty\\right)$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Funkcja liniowa jest malejąca, gdy jej współczynnik kierunkowy jest ujemny: $-2k + 3 < 0$.\n\n**Krok 2:** $-2k < -3$. Dzielimy przez $-2$ i odwracamy znak: $k > \\frac{3}{2}$.\n\n**Pułapka CKE:** O monotoniczności decyduje współczynnik przy $x$, czyli $-2k + 3$, a nie wyraz wolny $k - 1$.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "O monotoniczności decyduje współczynnik przy $x$, czyli $-2k + 3$, a nie wyraz wolny $k - 1$.",
     "source": "Matura Maj 2024 • Zad. 12",
     "year": 2024,
     "session": "Maj",
@@ -484,21 +411,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "13",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
+    "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "Funkcje liniowe  f  oraz  g, określone wzorami  f(x) = 3x + 6  oraz  g(x) = ax + 7, mają\nto samo miejsce zerowe.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWspółczynnik  a  we wzorze funkcji  g  jest równy",
+    "content": "Funkcje liniowe $f$ oraz $g$, określone wzorami $f(x) = 3x + 6$ oraz $g(x) = ax + 7$, mają to samo miejsce zerowe.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWspółczynnik $a$ we wzorze funkcji $g$ jest równy",
     "options": [
-      "(− 7\n2)",
-      "(− 2\n7)",
-      "2\n7",
-      "7\n2"
+      "$\\left(-\\frac{7}{2}\\right)$",
+      "$\\left(-\\frac{2}{7}\\right)$",
+      "$\\frac{2}{7}$",
+      "$\\frac{7}{2}$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD A",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Miejsce zerowe funkcji $f$: $3x + 6 = 0$, czyli $x = -2$.\n\n**Krok 2:** Liczba $-2$ jest też miejscem zerowym funkcji $g$: $a \\cdot (-2) + 7 = 0$.\n\n**Krok 3:** $-2a = -7$, czyli $a = \\frac{7}{2}$.\n\n**Pułapka CKE:** Miejsce zerowe to argument $x = -2$, a nie wartość $6$. Do wzoru funkcji $g$ podstawiamy $x = -2$.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Miejsce zerowe to argument $x = -2$, a nie wartość $6$. Do wzoru funkcji $g$ podstawiamy $x = -2$.",
     "source": "Matura Maj 2024 • Zad. 13",
     "year": 2024,
     "session": "Maj",
@@ -509,133 +436,36 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "14.1",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
-    "type": "NUMERIC_INPUT",
-    "content": "Uzupełnij poniższe zdanie. Wpisz odpowiedni przedział w wykropkowanym miejscu\ntak, aby zdanie było prawdziwe.\nZbiorem wszystkich rozwiązań nierówności  f(x) \\ge 0  jest przedział  ………………………  .",
+    "section": "Dział 6: Funkcja kwadratowa",
+    "topicId": "dzial-6",
+    "type": "OPEN_CALCULATION",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono fragment paraboli, która jest wykresem funkcji kwadratowej $f$ (zobacz rysunek). Wierzchołek tej paraboli oraz punkty przecięcia paraboli z osiami układu współrzędnych mają obie współrzędne całkowite.\n\nUzupełnij zdanie. Wpisz odpowiedni przedział tak, aby zdanie było prawdziwe.\n\nZbiorem wszystkich rozwiązań nierówności $f(x) \\ge 0$ jest przedział …",
     "options": [],
-    "correctAnswer": "[−2,4]",
+    "correctAnswer": "$\\langle -2, 4 \\rangle$",
     "points": 1,
     "isClosed": false,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n[−2,4] \n \nKryteria uwzględniające specyficzne trudności w uczeniu się matematyki \n \nJeśli zdający pomyli porządek liczb na osi liczbowej, np. zapisze zbiór rozwiązań nierówności \nw postaci  [4,−2], to otrzymuje 1 punkt.",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Z wykresu odczytujemy miejsca zerowe funkcji: $x = -2$ oraz $x = 4$.\n\n**Krok 2:** $f(x) \\ge 0$ tam, gdzie wykres leży na osi $Ox$ lub nad nią – czyli między miejscami zerowymi.\n\n**Krok 3:** Nierówność jest nieostra, więc końce należą do zbioru: $x \\in \\langle -2, 4 \\rangle$.\n\n**Pułapka CKE:** Przy nierówności nieostrej ($\\ge$) miejsca zerowe należą do rozwiązania – przedział jest domknięty.\n\n**Odpowiedź:** $\\langle -2, 4 \\rangle$",
+    "ckeTrap": "Przy nierówności nieostrej ($\\ge$) miejsca zerowe należą do rozwiązania – przedział jest domknięty.",
     "source": "Matura Maj 2024 • Zad. 14.1",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
-    "diagram": {
-      "type": "PARABOLA",
-      "xRange": [
-        -4,
-        6
-      ],
-      "yRange": [
-        -2,
-        11
-      ],
-      "gridStep": 1,
-      "parabola": {
-        "a": -1,
-        "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
-        {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": -2,
-          "y": 0,
-          "label": "(-2, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
-        },
-        {
-          "x": 4,
-          "y": 0,
-          "label": "(4, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "se"
-        },
-        {
-          "x": 0,
-          "y": 8,
-          "label": "(0, 8)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "w"
-        }
-      ]
-    },
     "plot": {
-      "type": "PARABOLA",
       "xRange": [
-        -4,
-        6
+        -7,
+        7
       ],
       "yRange": [
-        -2,
-        11
+        -6,
+        10
       ],
       "gridStep": 1,
+      "type": "PARABOLA",
       "parabola": {
         "a": -1,
         "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
-        {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": -2,
-          "y": 0,
-          "label": "(-2, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
-        },
-        {
-          "x": 4,
-          "y": 0,
-          "label": "(4, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "se"
-        },
-        {
-          "x": 0,
-          "y": 8,
-          "label": "(0, 8)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "w"
-        }
-      ]
+        "q": 9
+      }
     }
   },
   {
@@ -643,122 +473,41 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "14.2",
-    "section": "Dział 6: Funkcja Kwadratowa",
+    "section": "Dział 6: Funkcja kwadratowa",
     "topicId": "dzial-6",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFunkcja kwadratowa  f  jest określona wzorem",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono fragment paraboli, która jest wykresem funkcji kwadratowej $f$ (zobacz rysunek). Wierzchołek tej paraboli oraz punkty przecięcia paraboli z osiami układu współrzędnych mają obie współrzędne całkowite.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nFunkcja kwadratowa $f$ jest określona wzorem",
     "options": [
-      "f(x) = −(x + 1)2 − 9",
-      "f(x) = −(x − 1)2 + 9",
-      "f(x) = −(x − 1)2 − 9",
-      "f(x) = −(x + 1)2 + 9"
+      "$f(x) = -(x + 1)^2 - 9$",
+      "$f(x) = -(x - 1)^2 + 9$",
+      "$f(x) = -(x - 1)^2 - 9$",
+      "$f(x) = -(x + 1)^2 + 9$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB A",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Z wykresu: wierzchołek paraboli to $W = (1, 9)$, a ramiona są skierowane w dół.\n\n**Krok 2:** Postać kanoniczna: $f(x) = a(x - p)^2 + q$ dla $p = 1$, $q = 9$, czyli $f(x) = a(x - 1)^2 + 9$ z $a < 0$.\n\n**Krok 3:** Sprawdzenie dla $a = -1$: $f(4) = -(3)^2 + 9 = 0$ – zgadza się z miejscem zerowym $x = 4$.\n\n**Pułapka CKE:** We wzorze $a(x - p)^2 + q$ przy $p$ stoi MINUS: wierzchołek o pierwszej współrzędnej $1$ daje nawias $(x - 1)$, a nie $(x + 1)$.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "We wzorze $a(x - p)^2 + q$ przy $p$ stoi MINUS: wierzchołek o pierwszej współrzędnej $1$ daje nawias $(x - 1)$, a nie $(x + 1)$.",
     "source": "Matura Maj 2024 • Zad. 14.2",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
     "plot": {
-      "type": "PARABOLA",
       "xRange": [
-        -4,
-        6
+        -7,
+        7
       ],
       "yRange": [
-        -2,
-        11
+        -6,
+        10
       ],
       "gridStep": 1,
+      "type": "PARABOLA",
       "parabola": {
         "a": -1,
         "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
-        {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": -2,
-          "y": 0,
-          "label": "(-2, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
-        },
-        {
-          "x": 4,
-          "y": 0,
-          "label": "(4, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "se"
-        }
-      ]
-    },
-    "diagram": {
-      "type": "PARABOLA",
-      "xRange": [
-        -4,
-        6
-      ],
-      "yRange": [
-        -2,
-        11
-      ],
-      "gridStep": 1,
-      "parabola": {
-        "a": -1,
-        "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
-        {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": -2,
-          "y": 0,
-          "label": "(-2, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
-        },
-        {
-          "x": 4,
-          "y": 0,
-          "label": "(4, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "se"
-        }
-      ]
+        "q": 9
+      }
     }
   },
   {
@@ -766,122 +515,41 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "14.3",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 6: Funkcja kwadratowa",
+    "topicId": "dzial-6",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla funkcji  f  prawdziwa jest równość",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono fragment paraboli, która jest wykresem funkcji kwadratowej $f$ (zobacz rysunek). Wierzchołek tej paraboli oraz punkty przecięcia paraboli z osiami układu współrzędnych mają obie współrzędne całkowite.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla funkcji $f$ prawdziwa jest równość",
     "options": [
-      "f(−4) = f(6)",
-      "f(−4) = f(5)",
-      "f(−4) = f(4)",
-      "f(−4) = f(7)"
+      "$f(-4) = f(6)$",
+      "$f(-4) = f(5)$",
+      "$f(-4) = f(4)$",
+      "$f(-4) = f(7)$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Osią symetrii paraboli jest prosta $x = 1$ (przechodzi przez wierzchołek).\n\n**Krok 2:** Argument $-4$ leży o $5$ jednostek na lewo od osi symetrii. Tę samą wartość funkcja przyjmuje $5$ jednostek na prawo od osi: $1 + 5 = 6$.\n\n**Krok 3:** Zatem $f(-4) = f(6)$.\n\n**Pułapka CKE:** Oś symetrii to $x = 1$, a nie $x = 0$. Dlatego „lustrzanym odbiciem” argumentu $-4$ jest $6$, a nie $4$.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Oś symetrii to $x = 1$, a nie $x = 0$. Dlatego „lustrzanym odbiciem” argumentu $-4$ jest $6$, a nie $4$.",
     "source": "Matura Maj 2024 • Zad. 14.3",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
     "plot": {
-      "type": "PARABOLA",
       "xRange": [
-        -4,
-        6
+        -7,
+        7
       ],
       "yRange": [
-        -2,
-        11
+        -6,
+        10
       ],
       "gridStep": 1,
+      "type": "PARABOLA",
       "parabola": {
         "a": -1,
         "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
-        {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": -1,
-          "y": 5,
-          "label": "(-1, 5)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "w"
-        },
-        {
-          "x": 3,
-          "y": 5,
-          "label": "(3, 5)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "e"
-        }
-      ]
-    },
-    "diagram": {
-      "type": "PARABOLA",
-      "xRange": [
-        -4,
-        6
-      ],
-      "yRange": [
-        -2,
-        11
-      ],
-      "gridStep": 1,
-      "parabola": {
-        "a": -1,
-        "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
-        {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
-        },
-        {
-          "x": -1,
-          "y": 5,
-          "label": "(-1, 5)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "w"
-        },
-        {
-          "x": 3,
-          "y": 5,
-          "label": "(3, 5)",
-          "dot": "filled",
-          "color": "#38BDF8",
-          "attach": "e"
-        }
-      ]
+        "q": 9
+      }
     }
   },
   {
@@ -889,136 +557,222 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "14.4",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
-    "type": "SINGLE_CHOICE",
-    "content": "Funkcje kwadratowe  g  oraz  h  są określone za pomocą funkcji  f  (zobacz rysunek na\nstronie 13) następująco:  g(x) = f(x + 3),  h(x) = f(−x).\nNa rysunkach A–F przedstawiono, w kartezjańskim układzie współrzędnych  (x, y),\nfragmenty wykresów różnych funkcji – w tym fragment wykresu funkcji  g  oraz fragment\nwykresu funkcji  h.\nUzupełnij tabelę. Każdej z funkcji  𝒈  oraz  𝒉  przyporządkuj fragment jej wykresu.\nWpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną spośród\noznaczonych literami A–F.\nFragment wykresu funkcji  y = g(x)  przedstawiono na rysunku\nFragment wykresu funkcji  y = h(x)  przedstawiono na rysunku",
-    "options": [
+    "section": "Dział 4: Funkcje i ich własności",
+    "topicId": "dzial-4",
+    "type": "TWO_PART",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono fragment paraboli, która jest wykresem funkcji kwadratowej $f$ (zobacz rysunek). Wierzchołek tej paraboli oraz punkty przecięcia paraboli z osiami układu współrzędnych mają obie współrzędne całkowite.\n\nFunkcje kwadratowe $g$ oraz $h$ są określone za pomocą funkcji $f$ następująco: $g(x) = f(x + 3)$, $h(x) = f(-x)$. Na rysunkach A–F przedstawiono, w kartezjańskim układzie współrzędnych $(x, y)$, fragmenty wykresów różnych funkcji – w tym fragment wykresu funkcji $g$ oraz fragment wykresu funkcji $h$.\n\nKażdej z funkcji $g$ oraz $h$ przyporządkuj fragment jej wykresu. Wybierz odpowiedzi spośród oznaczonych literami A–F.",
+    "options": [],
+    "parts": [
       {
-        "id": "A",
-        "text": "Wykres g(x): wierzchołek przesunięty o 3 w lewo do W=(0, 2); Wykres h(x): symetria względem OY, W=(-3, 2)",
-        "is_correct": true
+        "prompt": "Fragment wykresu funkcji $y = g(x)$ przedstawiono na rysunku",
+        "options": [
+          {
+            "id": "A",
+            "text": "rysunek A"
+          },
+          {
+            "id": "B",
+            "text": "rysunek B"
+          },
+          {
+            "id": "C",
+            "text": "rysunek C"
+          },
+          {
+            "id": "D",
+            "text": "rysunek D"
+          },
+          {
+            "id": "E",
+            "text": "rysunek E"
+          },
+          {
+            "id": "F",
+            "text": "rysunek F"
+          }
+        ]
       },
       {
-        "id": "B",
-        "text": "Wykres g(x): wierzchołek W=(6, 2); Wykres h(x): wierzchołek W=(3, -2)",
-        "is_correct": false
-      },
-      {
-        "id": "C",
-        "text": "Wykres g(x): wierzchołek W=(0, 5); Wykres h(x): wierzchołek W=(-3, -2)",
-        "is_correct": false
-      },
-      {
-        "id": "D",
-        "text": "Wykres g(x): wierzchołek W=(3, 5); Wykres h(x): wierzchołek W=(3, 2)",
-        "is_correct": false
+        "prompt": "Fragment wykresu funkcji $y = h(x)$ przedstawiono na rysunku",
+        "options": [
+          {
+            "id": "A",
+            "text": "rysunek A"
+          },
+          {
+            "id": "B",
+            "text": "rysunek B"
+          },
+          {
+            "id": "C",
+            "text": "rysunek C"
+          },
+          {
+            "id": "D",
+            "text": "rysunek D"
+          },
+          {
+            "id": "E",
+            "text": "rysunek E"
+          },
+          {
+            "id": "F",
+            "text": "rysunek F"
+          }
+        ]
       }
     ],
-    "correctAnswer": "A",
+    "partScoring": "per_part",
+    "correctAnswer": "AE",
     "points": 2,
     "isClosed": true,
-    "explanation": "dwie poprawne odpowiedzi. \n1 pkt – jedna poprawna odpowiedź. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA A \nE E",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** $g(x) = f(x + 3)$ to wykres funkcji $f$ przesunięty o $3$ jednostki W LEWO. Wierzchołek $(1, 9)$ przechodzi na $(-2, 9)$, miejsca zerowe $-2$ i $4$ na $-5$ i $1$ – to rysunek A.\n\n**Krok 2:** $h(x) = f(-x)$ to wykres funkcji $f$ odbity symetrycznie względem osi $Oy$. Wierzchołek $(1, 9)$ przechodzi na $(-1, 9)$, miejsca zerowe na $2$ i $-4$ – to rysunek E.\n\n**Pułapka CKE:** $f(x + 3)$ przesuwa wykres w LEWO, a nie w prawo. Rysunek B (wierzchołek w $(4, 9)$ byłby dla $f(x - 3)$) to typowa pułapka.\n\nPrawidłowa odpowiedź: **1 – A** (rysunek A), **2 – E** (rysunek E).",
+    "ckeTrap": "Uwaga: od 2025 r. wymagania egzaminacyjne obejmują tylko przesunięcia $y = f(x - a)$ i $y = f(x) + b$; symetria $y = f(-x)$ już nie obowiązuje.",
     "source": "Matura Maj 2024 • Zad. 14.4",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
     "plot": {
-      "type": "PARABOLA",
-      "xRange": [
-        -4,
-        6
-      ],
-      "yRange": [
-        -2,
-        11
-      ],
-      "gridStep": 1,
-      "parabola": {
-        "a": -1,
-        "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
+      "panels": [
         {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
+          "title": "Wykres funkcji f",
+          "plot": {
+            "xRange": [
+              -7,
+              7
+            ],
+            "yRange": [
+              -6,
+              10
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": -1,
+              "p": 1,
+              "q": 9
+            }
+          }
         },
         {
-          "x": -2,
-          "y": 0,
-          "label": "(-2, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
+          "title": "A",
+          "plot": {
+            "xRange": [
+              -7,
+              3
+            ],
+            "yRange": [
+              -6,
+              10
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": -1,
+              "p": -2,
+              "q": 9
+            }
+          }
         },
         {
-          "x": 4,
-          "y": 0,
-          "label": "(4, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "se"
-        }
-      ]
-    },
-    "diagram": {
-      "type": "PARABOLA",
-      "xRange": [
-        -4,
-        6
-      ],
-      "yRange": [
-        -2,
-        11
-      ],
-      "gridStep": 1,
-      "parabola": {
-        "a": -1,
-        "p": 1,
-        "q": 9,
-        "color": "#FFB800",
-        "domain": [
-          -3.2,
-          5.2
-        ]
-      },
-      "axisOfSymmetry": 1,
-      "points": [
-        {
-          "x": 1,
-          "y": 9,
-          "label": "W(1, 9)",
-          "dot": "filled",
-          "color": "#10B981",
-          "attach": "n"
+          "title": "B",
+          "plot": {
+            "xRange": [
+              -3,
+              7
+            ],
+            "yRange": [
+              -6,
+              10
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": -1,
+              "p": 3,
+              "q": 9
+            }
+          }
         },
         {
-          "x": -2,
-          "y": 0,
-          "label": "(-2, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "sw"
+          "title": "C",
+          "plot": {
+            "xRange": [
+              -4,
+              6
+            ],
+            "yRange": [
+              -8,
+              8
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": -1,
+              "p": 1,
+              "q": 6
+            }
+          }
         },
         {
-          "x": 4,
-          "y": 0,
-          "label": "(4, 0)",
-          "dot": "filled",
-          "color": "#FFB800",
-          "attach": "se"
+          "title": "D",
+          "plot": {
+            "xRange": [
+              -4,
+              6
+            ],
+            "yRange": [
+              -10,
+              6
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": 1,
+              "p": 1,
+              "q": -9
+            }
+          }
+        },
+        {
+          "title": "E",
+          "plot": {
+            "xRange": [
+              -6,
+              4
+            ],
+            "yRange": [
+              -6,
+              10
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": -1,
+              "p": -1,
+              "q": 9
+            }
+          }
+        },
+        {
+          "title": "F",
+          "plot": {
+            "xRange": [
+              -6,
+              4
+            ],
+            "yRange": [
+              -10,
+              6
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": 1,
+              "p": -1,
+              "q": -9
+            }
+          }
         }
       ]
     }
@@ -1028,19 +782,28 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "15",
-    "section": "Dział 7: Ciągi Liczbowe",
+    "section": "Dział 7: Ciągi liczbowe",
     "topicId": "dzial-7",
     "type": "TRUE_FALSE",
-    "content": "Ciąg  (an)  jest określony wzorem  an = (−1)n \\cdot (n − 5)  dla każdej liczby\nnaturalnej  n \\ge 1.\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nPierwszy wyraz ciągu  (an)  jest dwa razy większy od trzeciego wyrazu tego\nciągu. P F\nWszystkie wyrazy ciągu  (an)  są dodatnie. P F",
-    "options": [
-      "PRAWDA",
-      "FAŁSZ"
+    "content": "Ciąg $(a_n)$ jest określony wzorem $a_n = (-1)^n \\cdot (n - 5)$ dla każdej liczby naturalnej $n \\ge 1$.\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+    "options": [],
+    "statements": [
+      {
+        "id": "1",
+        "text": "Pierwszy wyraz ciągu $(a_n)$ jest dwa razy większy od trzeciego wyrazu tego ciągu.",
+        "correct": "P"
+      },
+      {
+        "id": "2",
+        "text": "Wszystkie wyrazy ciągu $(a_n)$ są dodatnie.",
+        "correct": "F"
+      }
     ],
     "correctAnswer": "PF",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nPF PF",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** $a_1 = (-1)^1 \\cdot (1 - 5) = (-1) \\cdot (-4) = 4$ oraz $a_3 = (-1)^3 \\cdot (3 - 5) = (-1) \\cdot (-2) = 2$. Ponieważ $4 = 2 \\cdot 2$, stwierdzenie 1 jest prawdziwe.\n\n**Krok 2:** $a_2 = (-1)^2 \\cdot (2 - 5) = -3 < 0$ (także $a_5 = 0$), więc nie wszystkie wyrazy są dodatnie – stwierdzenie 2 jest fałszywe.\n\n**Pułapka CKE:** Czynnik $(-1)^n$ zmienia znak co drugi wyraz. Żeby obalić zdanie „wszystkie wyrazy są dodatnie”, wystarczy jeden kontrprzykład, np. $a_2 = -3$.\n\nPrawidłowa odpowiedź: **1 – P**, **2 – F**.",
+    "ckeTrap": "Czynnik $(-1)^n$ zmienia znak co drugi wyraz. Żeby obalić zdanie „wszystkie wyrazy są dodatnie”, wystarczy jeden kontrprzykład, np. $a_2 = -3$.",
     "source": "Matura Maj 2024 • Zad. 15",
     "year": 2024,
     "session": "Maj",
@@ -1051,16 +814,48 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "16",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
-    "type": "NUMERIC_INPUT",
-    "content": "Trzywyrazowy ciąg  (12, 6, 2m − 1)  jest geometryczny.\nDokończ zdanie. Wybierz odpowiedź A albo B oraz odpowiedź 1., 2. albo 3.\nTen ciąg jest\nrosnący\noraz\n1. m = 1\n2A.\n2. m = 2\nmalejący B. 3. m = 3",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
+    "type": "TWO_PART",
+    "content": "Trzywyrazowy ciąg $(12, 6, 2m - 1)$ jest geometryczny.\n\nDokończ zdanie. Wybierz właściwe zakończenie.\n\nTen ciąg jest",
     "options": [],
+    "parts": [
+      {
+        "prompt": "",
+        "options": [
+          {
+            "id": "A",
+            "text": "rosnący"
+          },
+          {
+            "id": "B",
+            "text": "malejący"
+          }
+        ]
+      },
+      {
+        "prompt": "oraz",
+        "options": [
+          {
+            "id": "1",
+            "text": "$m = \\frac{1}{2}$"
+          },
+          {
+            "id": "2",
+            "text": "$m = 2$"
+          },
+          {
+            "id": "3",
+            "text": "$m = 3$"
+          }
+        ]
+      }
+    ],
     "correctAnswer": "B2",
     "points": 1,
-    "isClosed": false,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB2 A2",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "isClosed": true,
+    "explanation": "**Krok 1:** Iloraz ciągu: $q = \\frac{6}{12} = \\frac{1}{2}$.\n\n**Krok 2:** Trzeci wyraz: $6 \\cdot \\frac{1}{2} = 3$, więc $2m - 1 = 3$, czyli $m = 2$.\n\n**Krok 3:** Wyrazy $12, 6, 3$ są coraz mniejsze – ciąg jest malejący.\n\n**Pułapka CKE:** Liczba $\\frac{1}{2}$ to iloraz ciągu, a nie wartość $m$. Trzeba jeszcze rozwiązać równanie $2m - 1 = 3$.\n\nPrawidłowa odpowiedź: **B2** (malejący, oraz $m = 2$).",
+    "ckeTrap": "Liczba $\\frac{1}{2}$ to iloraz ciągu, a nie wartość $m$. Trzeba jeszcze rozwiązać równanie $2m - 1 = 3$.",
     "source": "Matura Maj 2024 • Zad. 16",
     "year": 2024,
     "session": "Maj",
@@ -1071,16 +866,16 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "17",
-    "section": "Dział 7: Ciągi Liczbowe",
+    "section": "Dział 7: Ciągi liczbowe",
     "topicId": "dzial-7",
     "type": "OPEN_CALCULATION",
-    "content": "Ciąg arytmetyczny  (an)  jest określony dla każdej liczby naturalnej  n \\ge 1. Trzeci wyraz\ntego ciągu jest równy  (−1), a suma piętnastu początkowych kolejnych wyrazów tego ciągu\njest równa  (−165).\nOblicz różnicę tego ciągu. Zapisz obliczenia.\n17.\n0–1–2",
+    "content": "Ciąg arytmetyczny $(a_n)$ jest określony dla każdej liczby naturalnej $n \\ge 1$. Trzeci wyraz tego ciągu jest równy $(-1)$, a suma piętnastu początkowych kolejnych wyrazów tego ciągu jest równa $(-165)$.\n\nOblicz różnicę tego ciągu. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$r = -2$",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nKorzystamy ze wzorów na  n-ty wyraz i sumę  n  początkowych wyrazów ciągu \narytmetycznego i otrzymujemy układ równań \n \n{\n−1 = a1 + 2r\n−165 = 2a1 + 14r\n2 \\cdot 15\n \n \nPrzekształcając ten układ równoważnie, otrzymujemy \n \n{\n−1 = a1 + 2r\n−11 = a1 + 7r\n \n \nOdejmując stronami równania układu, otrzymujemy \n \n10 = −5r \n \nr = −2 \n \nRóżnica ciągu jest równa  (−2). \n \n \nSposób II \nSuma kolejnych piętnastu początkowych wyrazów ciągu arytmetycznego jest równa (−165), \nzatem \n \na1 + a2 + a3 + … + a15 = −165 \n \n(a3 − 2r) + (a3 − r) + a3 + (a3 + r) + (a3 + 2r) + … + (a3 + 12r) = −165 \n \n15a3 + (−2r − r + 0 + r + 2r + 3r + … + 12r) = −165 \n \ngdzie  a3 = −1, a suma piętnastu liczb  (−2r − r + 0 + r + 2r + 3r + … + 12r)  jest \nrówna \n \n−2r + 12r\n2 \\cdot 15 = 75r \n \nZatem \n \n15 \\cdot (−1) + 75r = −165 \n \n75r = −150 \n \nr = −2 \n \nRóżnica ciągu jest równa  (−2). \n \n \nSposób III \nSuma kolejnych piętnastu początkowych wyrazów ciągu arytmetycznego jest równa (−165), \nzatem \n \na1 + a15\n2 \\cdot 15 = −165 \n \na1 + a15 = −22 \n \n(a3 − 2r) + (a3 + 12r) = −22 \n \n2a3 + 10r = −22 \n \nStąd i z tego, że  a3 = −1, otrzymujemy \n \n2 \\cdot (−1) + 10r = −22 \n \nZatem \n \n10r = −20 \n \nr = −2 \n \nRóżnica ciągu jest równa  (−2). \n \n \nSposób IV \nSuma kolejnych piętnastu początkowych wyrazów ciągu arytmetycznego jest równa (−165), \nzatem \n \na1 + a2 + a3 + … + a15 = −165 \n \n(a8 − 7r) + (a8 − 6r) + … + a8 + … + (a8 + 6r) + (a8 + 7r) = −165 \n \n15a8 = −165 \n \na8 = −165\n15 = −11",
-    "ckeTrap": "1. Jeżeli zdający myli ciąg arytmetyczny z geometrycznym, to otrzymuje 0 punktów za całe \nrozwiązanie, o ile nie nabył prawa do innej liczby punktów. \n2. Jeżeli zdający zapisze tylko  r = −2, to otrzymuje 1 punkt za całe rozwiązanie. \n3. Jeżeli zdający błędnie interpretuje liczbę  (−165)  jako piętnasty wyraz ciągu, to \notrzymuje 0 punktów za całe rozwiązanie.",
+    "explanation": "**Krok 1:** $a_3 = a_1 + 2r = -1$.\n\n**Krok 2:** $S_{15} = \\frac{2a_1 + 14r}{2} \\cdot 15 = 15(a_1 + 7r) = -165$, więc $a_1 + 7r = -11$.\n\n**Krok 3:** Odejmujemy równania stronami: $(a_1 + 7r) - (a_1 + 2r) = -11 - (-1)$, czyli $5r = -10$ i $r = -2$.\n\n**Pułapka CKE:** We wzorze na sumę jest $(n - 1)r$, czyli dla $n = 15$ mamy $14r$, a nie $15r$.\n\n**Odpowiedź:** $r = -2$",
+    "ckeTrap": "Karta wzorów, str. 9: $S_n = \\frac{2a_1 + (n - 1)r}{2} \\cdot n$.",
     "source": "Matura Maj 2024 • Zad. 17",
     "year": 2024,
     "session": "Maj",
@@ -1091,157 +886,58 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "18",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
-    "type": "SINGLE_CHOICE",
-    "content": "W kartezjańskim układzie współrzędnych  (x, y)  zaznaczono kąt o mierze  \\alpha  taki, że\ntg \\alpha = −3  oraz  90° < \\alpha < 180°  (zobacz rysunek).\nUzupełnij zdanie. Wybierz dwie właściwe odpowiedzi spośród oznaczonych literami\nA–F i wpisz te litery w wykropkowanych miejscach.\nPrawdziwe są zależności:  .............  oraz  ............  .",
+    "section": "Dział 8: Trygonometria",
+    "topicId": "dzial-8",
+    "type": "MULTI_CHOICE",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ zaznaczono kąt o mierze $\\alpha$ taki, że $\\operatorname{tg} \\alpha = -3$ oraz $90^\\circ < \\alpha < 180^\\circ$ (zobacz rysunek: ramię końcowe kąta przechodzi przez punkt $(-1, 3)$).\n\nWybierz dwie właściwe odpowiedzi spośród oznaczonych literami A–F. Prawdziwe są zależności:",
     "options": [
-      "sin \\alpha < 0",
-      "sin \\alpha \\cdot cos \\alpha < 0",
-      "sin \\alpha \\cdot cos \\alpha > 0",
-      "cos \\alpha > 0\nE.  sin \\alpha = − 1\n3 cos \\alpha  F.  sin \\alpha = −3 cos \\alpha"
+      "$\\sin \\alpha < 0$",
+      "$\\sin \\alpha \\cdot \\cos \\alpha < 0$",
+      "$\\sin \\alpha \\cdot \\cos \\alpha > 0$",
+      "$\\cos \\alpha > 0$",
+      "$\\sin \\alpha = -\\frac{1}{3} \\cos \\alpha$",
+      "$\\sin \\alpha = -3 \\cos \\alpha$"
     ],
+    "multiSelect": 2,
     "correctAnswer": "BF",
     "points": 2,
     "isClosed": true,
-    "explanation": "wybranie dwóch odpowiedzi, z których obie są poprawne. \n1 pkt – wybranie jednej lub dwóch odpowiedzi, z których jedna jest poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nBF CF",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Dla kąta rozwartego ($90^\\circ < \\alpha < 180^\\circ$) mamy $\\sin \\alpha > 0$ oraz $\\cos \\alpha < 0$. Odpadają A i D.\n\n**Krok 2:** Iloczyn liczby dodatniej i ujemnej jest ujemny: $\\sin \\alpha \\cdot \\cos \\alpha < 0$ – zależność B jest prawdziwa, C fałszywa.\n\n**Krok 3:** $\\operatorname{tg} \\alpha = \\frac{\\sin \\alpha}{\\cos \\alpha} = -3$, więc $\\sin \\alpha = -3 \\cos \\alpha$ – zależność F jest prawdziwa, E fałszywa.\n\n**Pułapka CKE:** W drugiej ćwiartce sinus jest dodatni, a cosinus ujemny. Z $\\operatorname{tg} \\alpha = -3$ wynika $\\sin \\alpha = -3\\cos \\alpha$, a nie $\\cos \\alpha = -3 \\sin \\alpha$.\n\nPrawidłowe odpowiedzi: **B** oraz **F**.",
+    "ckeTrap": "W drugiej ćwiartce sinus jest dodatni, a cosinus ujemny. Z $\\operatorname{tg} \\alpha = -3$ wynika $\\sin \\alpha = -3\\cos \\alpha$, a nie $\\cos \\alpha = -3 \\sin \\alpha$.",
     "source": "Matura Maj 2024 • Zad. 18",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
-    "diagram": {
-      "type": "GEOMETRY_2D",
-      "title": "Kąt $\\alpha$ o wierzchołku $O=(0,0)$ w układzie kartezjańskim",
-      "width": 420,
-      "height": 260,
-      "grid": {
-        "minX": 30,
-        "maxX": 390,
-        "stepX": 30,
-        "minY": 30,
-        "maxY": 230,
-        "stepY": 30,
-        "color": "rgba(148, 163, 184, 0.12)"
-      },
+    "plot": {
+      "xRange": [
+        -3,
+        3
+      ],
+      "yRange": [
+        -1,
+        4
+      ],
+      "gridStep": 1,
+      "type": "PIECEWISE_LINEAR",
       "segments": [
         {
           "from": [
-            20,
-            180
+            0,
+            0
           ],
           "to": [
-            400,
-            180
+            -1,
+            3
           ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            260,
-            240
-          ],
-          "to": [
-            260,
-            20
-          ],
-          "color": "#94A3B8",
-          "strokeWidth": 1.5
-        },
-        {
-          "from": [
-            260,
-            180
-          ],
-          "to": [
-            100,
-            60
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 2.5
-        },
-        {
-          "from": [
-            140,
-            180
-          ],
-          "to": [
-            140,
-            90
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1,
-          "dashed": true
-        },
-        {
-          "from": [
-            260,
-            90
-          ],
-          "to": [
-            140,
-            90
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1,
-          "dashed": true
-        }
-      ],
-      "arcs": [
-        {
-          "cx": 260,
-          "cy": 180,
-          "r": 36,
-          "startAngleDeg": 0,
-          "endAngleDeg": 143,
-          "color": "#10B981",
-          "label": "α"
-        }
-      ],
-      "points": [
-        {
-          "x": 260,
-          "y": 180,
-          "label": "O",
-          "labelPosition": "bottom-right",
-          "dot": "filled"
-        },
-        {
-          "x": 140,
-          "y": 90,
-          "label": "P(-4, 3)",
-          "labelPosition": "top-left",
-          "dot": "filled",
-          "color": "#FFB800"
-        }
-      ],
-      "ticks": [
-        {
-          "x": 140,
-          "y": 180,
-          "label": "-4",
-          "axis": "x"
-        },
-        {
-          "x": 260,
-          "y": 90,
-          "label": "3",
-          "axis": "y"
+          "startDot": "none",
+          "endDot": "filled"
         }
       ],
       "labels": [
         {
-          "x": 395,
-          "y": 194,
-          "text": "x",
-          "color": "#94A3B8"
-        },
-        {
-          "x": 272,
-          "y": 24,
-          "text": "y",
-          "color": "#94A3B8"
+          "x": 0.5,
+          "y": 0.6,
+          "text": "α"
         }
       ]
     }
@@ -1254,18 +950,18 @@
     "section": "Dział 8: Trygonometria",
     "topicId": "dzial-8",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  sin3 20° + cos2 20° \\cdot sin 20°  jest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\sin^3 20^\\circ + \\cos^2 20^\\circ \\cdot \\sin 20^\\circ$ jest równa",
     "options": [
-      "cos 20°",
-      "sin 20°",
-      "tg 20°",
-      "sin 20° \\cdot cos 20°"
+      "$\\cos 20^\\circ$",
+      "$\\sin 20^\\circ$",
+      "$\\operatorname{tg} 20^\\circ$",
+      "$\\sin 20^\\circ \\cdot \\cos 20^\\circ$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB A",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Wyłączamy $\\sin 20^\\circ$ przed nawias: $\\sin 20^\\circ \\cdot \\left(\\sin^2 20^\\circ + \\cos^2 20^\\circ\\right)$.\n\n**Krok 2:** Z jedynki trygonometrycznej nawias jest równy $1$, więc wynik to $\\sin 20^\\circ$.\n\n**Pułapka CKE:** Nie trzeba (i nie da się dokładnie) liczyć $\\sin 20^\\circ$. Kluczem jest zauważenie wspólnego czynnika i jedynki trygonometrycznej.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Karta wzorów, str. 12: $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$.",
     "source": "Matura Maj 2024 • Zad. 19",
     "year": 2024,
     "session": "Maj",
@@ -1279,128 +975,155 @@
     "section": "Dział 9: Planimetria",
     "topicId": "dzial-9",
     "type": "SINGLE_CHOICE",
-    "content": "Dany jest trójkąt  KLM,  w którym  |KM| = a,  |LM| = b  oraz  a \\ne b. Dwusieczna kąta\nKML  przecina bok  KL  w punkcie  𝑁  takim, że  |K𝑁| = c,  |𝑁L| = d  oraz  |M𝑁| = 𝑒\n(zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nW trójkącie  KLM  prawdziwa jest równość",
+    "content": "Dany jest trójkąt $KLM$, w którym $|KM| = a$, $|LM| = b$ oraz $a \\ne b$. Dwusieczna kąta $KML$ przecina bok $KL$ w punkcie $N$ takim, że $|KN| = c$, $|NL| = d$ oraz $|MN| = e$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nW trójkącie $KLM$ prawdziwa jest równość",
     "options": [
-      "a \\cdot b = c \\cdot d",
-      "a \\cdot d = b \\cdot c",
-      "a \\cdot c = b \\cdot d",
-      "a \\cdot b = 𝑒 \\cdot 𝑒"
+      "$a \\cdot b = c \\cdot d$",
+      "$a \\cdot d = b \\cdot c$",
+      "$a \\cdot c = b \\cdot d$",
+      "$a \\cdot b = e \\cdot e$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nB B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Twierdzenie o dwusiecznej: dwusieczna kąta trójkąta dzieli przeciwległy bok w stosunku długości boków przyległych do tego kąta: $\\frac{|KN|}{|NL|} = \\frac{|KM|}{|LM|}$.\n\n**Krok 2:** Podstawiamy oznaczenia: $\\frac{c}{d} = \\frac{a}{b}$.\n\n**Krok 3:** Mnożymy „na krzyż”: $a \\cdot d = b \\cdot c$.\n\n**Pułapka CKE:** Odcinek $c$ leży przy boku $a$, a odcinek $d$ przy boku $b$ – proporcja to $\\frac{c}{d} = \\frac{a}{b}$, a nie $\\frac{c}{d} = \\frac{b}{a}$.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Odcinek $c$ leży przy boku $a$, a odcinek $d$ przy boku $b$ – proporcja to $\\frac{c}{d} = \\frac{a}{b}$, a nie $\\frac{c}{d} = \\frac{b}{a}$.",
     "source": "Matura Maj 2024 • Zad. 20",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
     "diagram": {
       "type": "GEOMETRY_2D",
-      "title": "Trójkąt $KLM$ z dwusieczną kąta $KML$ przecinającą bok $KL$ w punkcie $D$",
-      "width": 440,
-      "height": 260,
-      "polygons": [
-        {
-          "points": [
-            [
-              50,
-              220
-            ],
-            [
-              390,
-              220
-            ],
-            [
-              170,
-              50
-            ]
-          ],
-          "fill": "rgba(255, 184, 0, 0.06)",
-          "stroke": "#FFB800",
-          "strokeWidth": 2
-        }
-      ],
+      "width": 400,
+      "height": 222,
       "segments": [
         {
           "from": [
-            170,
-            50
+            56.3,
+            173.6
           ],
           "to": [
-            175,
-            220
+            343.7,
+            173.6
           ],
-          "color": "#38BDF8",
-          "strokeWidth": 2,
-          "label": "dwusieczna"
-        }
-      ],
-      "arcs": [
-        {
-          "cx": 170,
-          "cy": 50,
-          "r": 28,
-          "startAngleDeg": 125,
-          "endAngleDeg": 148,
-          "color": "#10B981",
-          "label": "•"
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         },
         {
-          "cx": 170,
-          "cy": 50,
-          "r": 28,
-          "startAngleDeg": 148,
-          "endAngleDeg": 170,
-          "color": "#10B981",
-          "label": "•"
+          "from": [
+            343.7,
+            173.6
+          ],
+          "to": [
+            163,
+            34
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            163,
+            34
+          ],
+          "to": [
+            56.3,
+            173.6
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            163,
+            34
+          ],
+          "to": [
+            181.1,
+            173.6
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         }
       ],
       "points": [
         {
-          "x": 50,
-          "y": 220,
+          "x": 56.3,
+          "y": 173.6,
           "label": "K",
           "labelPosition": "bottom-left",
-          "dot": "filled"
+          "dot": "filled",
+          "noBox": true
         },
         {
-          "x": 390,
-          "y": 220,
+          "x": 343.7,
+          "y": 173.6,
           "label": "L",
           "labelPosition": "bottom-right",
-          "dot": "filled"
+          "dot": "filled",
+          "noBox": true
         },
         {
-          "x": 170,
-          "y": 50,
+          "x": 163,
+          "y": 34,
           "label": "M",
           "labelPosition": "top",
-          "dot": "filled"
+          "dot": "filled",
+          "noBox": true
         },
         {
-          "x": 175,
-          "y": 220,
-          "label": "D",
+          "x": 181.1,
+          "y": 173.6,
+          "label": "N",
           "labelPosition": "bottom",
           "dot": "filled",
-          "color": "#38BDF8"
+          "noBox": true
         }
       ],
       "labels": [
         {
-          "x": 95,
-          "y": 125,
+          "x": 97.3,
+          "y": 93.5,
           "text": "a",
-          "color": "#FFB800",
-          "fontSize": 13
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
         },
         {
-          "x": 290,
-          "y": 125,
+          "x": 267.8,
+          "y": 93.5,
           "text": "b",
-          "color": "#FFB800",
-          "fontSize": 13
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 117.9,
+          "y": 188,
+          "text": "c",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 261.6,
+          "y": 188,
+          "text": "d",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 183.6,
+          "y": 107.9,
+          "text": "e",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
         }
       ]
     }
@@ -1413,18 +1136,18 @@
     "section": "Dział 9: Planimetria",
     "topicId": "dzial-9",
     "type": "SINGLE_CHOICE",
-    "content": "Dany jest równoległobok o bokach długości  3  i  4  oraz o kącie między nimi o mierze  120°.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole tego równoległoboku jest równe",
+    "content": "Dany jest równoległobok o bokach długości $3$ i $4$ oraz o kącie między nimi o mierze $120^\\circ$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPole tego równoległoboku jest równe",
     "options": [
-      "12",
-      "12\\sqrt3",
-      "6",
-      "6\\sqrt3"
+      "$12$",
+      "$12\\sqrt{3}$",
+      "$6$",
+      "$6\\sqrt{3}$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Pole równoległoboku o bokach $a$, $b$ i kącie $\\alpha$ między nimi: $P = a \\cdot b \\cdot \\sin \\alpha$.\n\n**Krok 2:** $\\sin 120^\\circ = \\sin(180^\\circ - 60^\\circ) = \\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$.\n\n**Krok 3:** $P = 3 \\cdot 4 \\cdot \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}$.\n\n**Pułapka CKE:** Wzór $\\frac{1}{2}ab\\sin\\alpha$ dotyczy trójkąta. Dla równoległoboku nie ma połowy – ale tutaj $\\sin 120^\\circ = \\frac{\\sqrt{3}}{2}$ „dokłada” własną dwójkę w mianowniku.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Karta wzorów, str. 19: pole równoległoboku $P = a \\cdot b \\cdot \\sin \\alpha$.",
     "source": "Matura Maj 2024 • Zad. 21",
     "year": 2024,
     "session": "Maj",
@@ -1438,135 +1161,141 @@
     "section": "Dział 9: Planimetria",
     "topicId": "dzial-9",
     "type": "SINGLE_CHOICE",
-    "content": "W trójkącie  ABC, wpisanym w okrąg o środku w punkcie  S, kąt  ACB  ma miarę  42°\n(zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  BAS  jest równa",
+    "content": "W trójkącie $ABC$, wpisanym w okrąg o środku w punkcie $S$, kąt $ACB$ ma miarę $42^\\circ$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMiara kąta ostrego $BAS$ jest równa",
     "options": [
-      "42°",
-      "45°",
-      "48°",
-      "69°"
+      "$42^\\circ$",
+      "$45^\\circ$",
+      "$48^\\circ$",
+      "$69^\\circ$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Kąt wpisany $ACB$ i kąt środkowy $ASB$ są oparte na tym samym łuku $AB$, więc $|\\sphericalangle ASB| = 2 \\cdot 42^\\circ = 84^\\circ$.\n\n**Krok 2:** Trójkąt $ABS$ jest równoramienny ($|SA| = |SB|$ – promienie), więc kąty przy podstawie $AB$ są równe.\n\n**Krok 3:** $|\\sphericalangle BAS| = \\frac{180^\\circ - 84^\\circ}{2} = 48^\\circ$.\n\n**Pułapka CKE:** Kąt środkowy jest DWA razy większy od wpisanego opartego na tym samym łuku. Odpowiedź $42^\\circ$ to przepisanie danych bez żadnego rozumowania.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Karta wzorów, str. 18: kąt środkowy jest dwa razy większy od kąta wpisanego opartego na tym samym łuku.",
     "source": "Matura Maj 2024 • Zad. 22",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
     "diagram": {
       "type": "GEOMETRY_2D",
-      "title": "Kąt wpisany $\\angle ACB = 42^\\circ$ i kąt środkowy $\\angle ASB$ w okręgu",
-      "width": 440,
-      "height": 260,
-      "circles": [
-        {
-          "cx": 220,
-          "cy": 135,
-          "r": 95,
-          "stroke": "#38BDF8",
-          "strokeWidth": 2,
-          "fill": "rgba(56, 189, 248, 0.04)"
-        }
-      ],
-      "polygons": [
-        {
-          "points": [
-            [
-              135,
-              175
-            ],
-            [
-              305,
-              175
-            ],
-            [
-              200,
-              42
-            ]
-          ],
-          "stroke": "#FFB800",
-          "strokeWidth": 2,
-          "fill": "rgba(255, 184, 0, 0.05)"
-        }
-      ],
+      "width": 400,
+      "height": 222,
       "segments": [
         {
           "from": [
-            220,
-            135
+            125.6,
+            130.9
           ],
           "to": [
-            135,
-            175
+            212,
+            187.1
           ],
-          "color": "#10B981",
-          "strokeWidth": 1.5,
-          "dashed": true
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         },
         {
           "from": [
-            220,
-            135
+            212,
+            187.1
           ],
           "to": [
-            305,
-            175
+            150.5,
+            52
           ],
-          "color": "#10B981",
-          "strokeWidth": 1.5,
-          "dashed": true
-        }
-      ],
-      "arcs": [
-        {
-          "cx": 200,
-          "cy": 42,
-          "r": 24,
-          "startAngleDeg": 120,
-          "endAngleDeg": 162,
-          "color": "#FFB800",
-          "label": "42°"
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         },
         {
-          "cx": 220,
-          "cy": 135,
-          "r": 25,
-          "startAngleDeg": 115,
-          "endAngleDeg": 195,
-          "color": "#10B981",
-          "label": "84°"
+          "from": [
+            150.5,
+            52
+          ],
+          "to": [
+            125.6,
+            130.9
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            125.6,
+            130.9
+          ],
+          "to": [
+            200,
+            111
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            200,
+            111
+          ],
+          "to": [
+            212,
+            187.1
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        }
+      ],
+      "circles": [
+        {
+          "cx": 200,
+          "cy": 111,
+          "r": 77,
+          "fill": "none",
+          "stroke": "#dfe2f1",
+          "strokeWidth": 2
         }
       ],
       "points": [
         {
-          "x": 135,
-          "y": 175,
+          "x": 200,
+          "y": 111,
+          "label": "S",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "noBox": true
+        },
+        {
+          "x": 125.6,
+          "y": 130.9,
           "label": "A",
           "labelPosition": "left",
-          "dot": "filled"
-        },
-        {
-          "x": 305,
-          "y": 175,
-          "label": "B",
-          "labelPosition": "right",
-          "dot": "filled"
-        },
-        {
-          "x": 200,
-          "y": 42,
-          "label": "C",
-          "labelPosition": "top",
-          "dot": "filled"
-        },
-        {
-          "x": 220,
-          "y": 135,
-          "label": "S",
-          "labelPosition": "top",
           "dot": "filled",
-          "color": "#10B981"
+          "noBox": true
+        },
+        {
+          "x": 212,
+          "y": 187.1,
+          "label": "B",
+          "labelPosition": "bottom-right",
+          "dot": "filled",
+          "noBox": true
+        },
+        {
+          "x": 150.5,
+          "y": 52,
+          "label": "C",
+          "labelPosition": "top-left",
+          "dot": "filled",
+          "noBox": true
+        }
+      ],
+      "labels": [
+        {
+          "x": 160,
+          "y": 78.7,
+          "text": "42°",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
         }
       ]
     }
@@ -1576,21 +1305,21 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "23",
-    "section": "Dział 10: Geometria Analityczna",
+    "section": "Dział 10: Geometria analityczna",
     "topicId": "dzial-10",
     "type": "SINGLE_CHOICE",
-    "content": "W kartezjańskim układzie współrzędnych  (x, y)  proste  k  oraz  𝑙  są określone równaniami\nk:   y = (m + 1)x + 7\n𝑙:   y = −2x + 7\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nProste  k  oraz  𝑙  są prostopadłe, gdy liczba  m  jest równa",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ proste $k$ oraz $l$ są określone równaniami\n$$k\\colon\\ y = (m + 1)x + 7$$\n$$l\\colon\\ y = -2x + 7$$\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nProste $k$ oraz $l$ są prostopadłe, gdy liczba $m$ jest równa",
     "options": [
-      "(− 1\n2)",
-      "1\n2",
-      "(−3)",
-      "1"
+      "$\\left(-\\frac{1}{2}\\right)$",
+      "$\\frac{1}{2}$",
+      "$(-3)$",
+      "$1$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Proste są prostopadłe, gdy iloczyn ich współczynników kierunkowych jest równy $-1$: $(m + 1) \\cdot (-2) = -1$.\n\n**Krok 2:** $m + 1 = \\frac{1}{2}$, czyli $m = -\\frac{1}{2}$.\n\n**Pułapka CKE:** Odpowiedź $m = -3$ daje $m + 1 = -2$, czyli proste RÓWNOLEGŁE (tu nawet pokrywające się), a nie prostopadłe.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Karta wzorów, str. 22: proste $y = a_1x + b_1$ i $y = a_2x + b_2$ są prostopadłe, gdy $a_1 \\cdot a_2 = -1$.",
     "source": "Matura Maj 2024 • Zad. 23",
     "year": 2024,
     "session": "Maj",
@@ -1601,16 +1330,16 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "24",
-    "section": "Dział 10: Geometria Analityczna",
+    "section": "Dział 10: Geometria analityczna",
     "topicId": "dzial-10",
     "type": "OPEN_CALCULATION",
-    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dany jest równoległobok  ABCD, w którym\nA = (−2, 6)  oraz  B = (10, 2). Przekątne  AC  oraz  BD  tego równoległoboku przecinają\nsię w punkcie  P = (6, 7).\nOblicz długość boku  𝑩𝑪  tego równoległoboku. Zapisz obliczenia.\n24.\n0–1–2",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dany jest równoległobok $ABCD$, w którym $A = (-2, 6)$ oraz $B = (10, 2)$. Przekątne $AC$ oraz $BD$ tego równoległoboku przecinają się w punkcie $P = (6, 7)$.\n\nOblicz długość boku $BC$ tego równoległoboku. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$|BC| = 2\\sqrt{13}$",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nPunkt  P  jest środkiem przekątnej  AC. Ze wzoru na współrzędne środka odcinka \notrzymujemy \n \n−2 + xc\n2 = 6    oraz    6 + yc\n2 = 7 \nZatem  C = (14,8). \n \nObliczamy długość odcinka  BC: \n \n|BC| = \\sqrt(14 − 10)2 + (8 − 2)2 = \\sqrt16 + 36 = \\sqrt52 = 2\\sqrt13 \n \n \nSposób II \nPunkt  P  jest środkiem przekątnej  BD. Ze wzoru na współrzędne środka odcinka \notrzymujemy \n \n10 + xd\n2 = 6    oraz    2 + yd\n2 = 7 \n \nZatem  D = (2,12). \n \nObliczamy długość odcinka  BC: \n \n|BC| = |AD| = \\sqrt(2 + 2)2 + (12 − 6)2 = \\sqrt16 + 36 = \\sqrt52 = 2\\sqrt13 \n \n \nSposób III \nObliczamy współrzędne punktu  S  środka odcinka  AB: \n \nS = (−2 + 10\n2 ,6 + 2\n2 ) \n \nS = (4,4) \n \nObliczamy długość odcinka  BC: \n \n|BC| = 2|PS| = 2\\sqrt(4 − 6)2 + (4 − 7)2 = 2\\sqrt4 + 9 = 2\\sqrt13",
-    "ckeTrap": "1. Jeżeli zdający korzysta z punktów kratowych oraz błędnie zaznaczy w układzie \nwspółrzędnych co najmniej jeden z punktów  A, B, C, P  i na tej podstawie oblicza długość \nodcinka  BC, to otrzymuje 0 punktów za całe rozwiązanie (o ile nie nabył praw do innej \npunktacji). \n2. Jeżeli zdający korzysta z punktów kratowych oraz poprawnie zaznaczy w układzie \nwspółrzędnych punkty  A, B, C, P, lecz błędnie odczyta współrzędne jednego z tych \npunktów, i na tej podstawie oblicza długość odcinka  BC, to otrzymuje 1 punkt za całe \nrozwiązanie. \n3. Jeżeli zdający obliczy długość odcinka  BC, korzystając z przybliżonych wartości funkcji \ntrygonometrycznych, to może otrzymać co najwyżej 1 punkt za całe rozwiązanie.",
+    "explanation": "**Krok 1:** Przekątne równoległoboku dzielą się na połowy, więc $P$ jest środkiem odcinka $AC$: $\\frac{-2 + x_C}{2} = 6$ oraz $\\frac{6 + y_C}{2} = 7$.\n\n**Krok 2:** Stąd $x_C = 14$, $y_C = 8$, czyli $C = (14, 8)$.\n\n**Krok 3:** $|BC| = \\sqrt{(14 - 10)^2 + (8 - 2)^2} = \\sqrt{16 + 36} = \\sqrt{52} = 2\\sqrt{13}$.\n\n**Pułapka CKE:** Punkt $P$ jest środkiem przekątnej $AC$ (a nie boku). Z niego wyznaczamy wierzchołek $C$, a dopiero potem długość $|BC|$.\n\n**Odpowiedź:** $|BC| = 2\\sqrt{13}$",
+    "ckeTrap": "Karta wzorów, str. 21: środek odcinka i długość odcinka w układzie współrzędnych.",
     "source": "Matura Maj 2024 • Zad. 24",
     "year": 2024,
     "session": "Maj",
@@ -1624,261 +1353,22 @@
     "section": "Dział 11: Stereometria",
     "topicId": "dzial-11",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPole jednej ściany bocznej tego graniastosłupa jest równe",
+    "content": "Wysokość graniastosłupa prawidłowego sześciokątnego jest równa $6$. Pole podstawy tego graniastosłupa jest równe $15\\sqrt{3}$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPole jednej ściany bocznej tego graniastosłupa jest równe",
     "options": [
-      "36\\sqrt10",
-      "60",
-      "6\\sqrt10",
-      "360"
+      "$36\\sqrt{10}$",
+      "$60$",
+      "$6\\sqrt{10}$",
+      "$360$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC A",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Podstawą jest sześciokąt foremny o boku $a$, złożony z $6$ trójkątów równobocznych: $P_p = 6 \\cdot \\frac{a^2\\sqrt{3}}{4} = \\frac{3a^2\\sqrt{3}}{2}$.\n\n**Krok 2:** $\\frac{3a^2\\sqrt{3}}{2} = 15\\sqrt{3}$, więc $a^2 = 10$ i $a = \\sqrt{10}$.\n\n**Krok 3:** Ściana boczna jest prostokątem o bokach $a$ i $6$: $P = 6\\sqrt{10}$.\n\n**Pułapka CKE:** Pytają o JEDNĄ ścianę boczną. Liczba $36\\sqrt{10}$ to pole wszystkich sześciu ścian bocznych.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Karta wzorów, str. 15: pole trójkąta równobocznego o boku $a$ to $\\frac{a^2\\sqrt{3}}{4}$.",
     "source": "Matura Maj 2024 • Zad. 25.1",
     "year": 2024,
     "session": "Maj",
-    "isCke": true,
-    "diagram": {
-      "type": "STEREOMETRY_3D",
-      "title": "Graniastosłup prawidłowy sześciokątny z dłuższą przekątną podstawy $AD$ i przekątną bryły $AD'$",
-      "width": 460,
-      "height": 280,
-      "polygons": [
-        {
-          "points": [
-            [
-              180,
-              50
-            ],
-            [
-              240,
-              50
-            ],
-            [
-              280,
-              75
-            ],
-            [
-              260,
-              100
-            ],
-            [
-              200,
-              100
-            ],
-            [
-              160,
-              75
-            ]
-          ],
-          "stroke": "#38BDF8",
-          "strokeWidth": 2,
-          "fill": "rgba(56, 189, 248, 0.1)"
-        }
-      ],
-      "segments": [
-        {
-          "from": [
-            180,
-            50
-          ],
-          "to": [
-            180,
-            180
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            240,
-            50
-          ],
-          "to": [
-            240,
-            180
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            280,
-            75
-          ],
-          "to": [
-            280,
-            205
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            260,
-            100
-          ],
-          "to": [
-            260,
-            230
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            200,
-            100
-          ],
-          "to": [
-            200,
-            230
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            160,
-            75
-          ],
-          "to": [
-            160,
-            205
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            160,
-            205
-          ],
-          "to": [
-            200,
-            230
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            200,
-            230
-          ],
-          "to": [
-            260,
-            230
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            260,
-            230
-          ],
-          "to": [
-            280,
-            205
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            160,
-            205
-          ],
-          "to": [
-            180,
-            180
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            180,
-            180
-          ],
-          "to": [
-            240,
-            180
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            240,
-            180
-          ],
-          "to": [
-            280,
-            205
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            160,
-            205
-          ],
-          "to": [
-            260,
-            230
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 1.5,
-          "dashed": true,
-          "label": "AD"
-        },
-        {
-          "from": [
-            160,
-            205
-          ],
-          "to": [
-            260,
-            100
-          ],
-          "color": "#10B981",
-          "strokeWidth": 2,
-          "label": "AD'"
-        }
-      ],
-      "points": [
-        {
-          "x": 160,
-          "y": 205,
-          "label": "A",
-          "labelPosition": "bottom-left",
-          "dot": "filled"
-        },
-        {
-          "x": 260,
-          "y": 230,
-          "label": "D",
-          "labelPosition": "bottom-right",
-          "dot": "filled"
-        },
-        {
-          "x": 260,
-          "y": 100,
-          "label": "D'",
-          "labelPosition": "top-right",
-          "dot": "filled",
-          "color": "#10B981"
-        }
-      ]
-    }
+    "isCke": true
   },
   {
     "id": "matura-maj-2024-zad-25_2",
@@ -1888,34 +1378,1046 @@
     "section": "Dział 11: Stereometria",
     "topicId": "dzial-11",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nKąt nachylenia najdłuższej przekątnej graniastosłupa prawidłowego sześciokątnego do\npłaszczyzny podstawy jest zaznaczony na rysunku",
+    "content": "Wysokość graniastosłupa prawidłowego sześciokątnego jest równa $6$. Pole podstawy tego graniastosłupa jest równe $15\\sqrt{3}$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nKąt nachylenia najdłuższej przekątnej graniastosłupa prawidłowego sześciokątnego do płaszczyzny podstawy jest zaznaczony na rysunku",
     "options": [
       {
         "id": "A",
-        "text": "Kąt między krótszą przekątną graniastosłupa a krawędzią boczną",
+        "text": "Rysunek A",
+        "diagram": {
+          "type": "GEOMETRY_2D",
+          "width": 400,
+          "height": 459,
+          "segments": [
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                278.2,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                356.4,
+                354.6
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                121.8,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                174.8
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                174.8
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                104.4
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                34
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                34
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                104.4
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                278.2,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                121.8,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                43.6,
+                354.6
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                43.6,
+                354.6
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            }
+          ],
+          "points": []
+        },
         "is_correct": false
       },
       {
         "id": "B",
-        "text": "Kąt między najdłuższą przekątną graniastosłupa a krawędzią boczną",
+        "text": "Rysunek B",
+        "diagram": {
+          "type": "GEOMETRY_2D",
+          "width": 400,
+          "height": 459,
+          "segments": [
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                278.2,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                356.4,
+                354.6
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                121.8,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                174.8
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                174.8
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                104.4
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                34
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                34
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                104.4
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                278.2,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                121.8,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                43.6,
+                354.6
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                356.4,
+                354.6
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            }
+          ],
+          "points": []
+        },
         "is_correct": false
       },
       {
         "id": "C",
-        "text": "Kąt między krótszą przekątną graniastosłupa a płaszczyzną podstawy",
+        "text": "Rysunek C",
+        "diagram": {
+          "type": "GEOMETRY_2D",
+          "width": 400,
+          "height": 459,
+          "segments": [
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                278.2,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                356.4,
+                354.6
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                121.8,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                174.8
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                174.8
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                104.4
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                34
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                34
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                104.4
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                278.2,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                121.8,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                43.6,
+                354.6
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                121.8,
+                425
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            }
+          ],
+          "points": []
+        },
         "is_correct": false
       },
       {
         "id": "D",
-        "text": "Kąt między najdłuższą przekątną graniastosłupa a dłuższą przekątną podstawy (płaszczyzną podstawy)",
+        "text": "Rysunek D",
+        "diagram": {
+          "type": "GEOMETRY_2D",
+          "width": 400,
+          "height": 459,
+          "segments": [
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                278.2,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                356.4,
+                354.6
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                121.8,
+                425
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                425
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                354.6
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                174.8
+              ],
+              "to": [
+                278.2,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                174.8
+              ],
+              "to": [
+                356.4,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                104.4
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                278.2,
+                34
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                121.8,
+                34
+              ],
+              "to": [
+                43.6,
+                104.4
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                43.6,
+                104.4
+              ],
+              "to": [
+                121.8,
+                174.8
+              ],
+              "color": "#dfe2f1",
+              "strokeWidth": 2
+            },
+            {
+              "from": [
+                356.4,
+                354.6
+              ],
+              "to": [
+                278.2,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                121.8,
+                284.2
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                43.6,
+                354.6
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                278.2,
+                284.2
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                284.2
+              ],
+              "to": [
+                121.8,
+                34
+              ],
+              "color": "#94a3b8",
+              "strokeWidth": 1.5,
+              "dashed": true
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                278.2,
+                34
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            },
+            {
+              "from": [
+                121.8,
+                425
+              ],
+              "to": [
+                278.2,
+                284.2
+              ],
+              "color": "#ffb800",
+              "strokeWidth": 3
+            }
+          ],
+          "points": []
+        },
         "is_correct": true
       }
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nD D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Najdłuższa przekątna graniastosłupa łączy wierzchołek dolnej podstawy z wierzchołkiem górnej podstawy leżącym nad wierzchołkiem „naprzeciwko” – czyli nad końcem najdłuższej przekątnej podstawy.\n\n**Krok 2:** Kąt nachylenia odcinka do płaszczyzny to kąt między tym odcinkiem a jego rzutem prostokątnym na tę płaszczyznę. Rzutem najdłuższej przekątnej graniastosłupa na podstawę jest najdłuższa przekątna podstawy (ta, która przechodzi przez środek sześciokąta).\n\n**Krok 3:** Tylko na rysunku D zaznaczono kąt między najdłuższą przekątną graniastosłupa a najdłuższą przekątną podstawy wychodzącą z tego samego wierzchołka. Na rysunkach A i C drugie ramię kąta nie jest rzutem przekątnej, a na rysunku B zaznaczona przekątna graniastosłupa nie jest najdłuższa.\n\n**Pułapka CKE:** Kąt mierzymy do RZUTU przekątnej na podstawę (najdłuższej przekątnej podstawy), a nie do krawędzi podstawy ani do krótszej przekątnej podstawy.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Kąt mierzymy do RZUTU przekątnej na podstawę (najdłuższej przekątnej podstawy), a nie do krawędzi podstawy ani do krótszej przekątnej podstawy.",
     "source": "Matura Maj 2024 • Zad. 25.2",
     "year": 2024,
     "session": "Maj",
@@ -1929,13 +2431,13 @@
     "section": "Dział 11: Stereometria",
     "topicId": "dzial-11",
     "type": "NUMERIC_INPUT",
-    "content": "Ostrosłup  𝐹1  jest podobny do ostrosłupa  𝐹2.\nObjętość ostrosłupa  𝐹1  jest równa  64.\nObjętość ostrosłupa  𝐹2  jest równa  512.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak,\naby zdanie było prawdziwe.\nStosunek pola powierzchni całkowitej ostrosłupa  𝐹2  do pola powierzchni całkowitej\nostrosłupa  𝐹1  jest równy  ……….  .",
+    "content": "Ostrosłup $F_1$ jest podobny do ostrosłupa $F_2$. Objętość ostrosłupa $F_1$ jest równa $64$. Objętość ostrosłupa $F_2$ jest równa $512$.\n\nUzupełnij zdanie. Wpisz odpowiednią liczbę tak, aby zdanie było prawdziwe.\n\nStosunek pola powierzchni całkowitej ostrosłupa $F_2$ do pola powierzchni całkowitej ostrosłupa $F_1$ jest równy …",
     "options": [],
     "correctAnswer": "4",
     "points": 1,
     "isClosed": false,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n4",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Stosunek objętości brył podobnych to sześcian skali podobieństwa: $k^3 = \\frac{512}{64} = 8$, więc $k = 2$.\n\n**Krok 2:** Stosunek pól powierzchni to kwadrat skali: $k^2 = 4$.\n\n**Pułapka CKE:** Objętości skalują się jak $k^3$, pola jak $k^2$. Odpowiedź $8$ to stosunek objętości, a $2$ – sama skala.\n\nPrawidłowa odpowiedź: **4**.",
+    "ckeTrap": "Objętości skalują się jak $k^3$, pola jak $k^2$. Odpowiedź $8$ to stosunek objętości, a $2$ – sama skala.",
     "source": "Matura Maj 2024 • Zad. 26",
     "year": 2024,
     "session": "Maj",
@@ -1949,18 +2451,18 @@
     "section": "Dział 12: Kombinatoryka",
     "topicId": "dzial-12",
     "type": "SINGLE_CHOICE",
-    "content": "Rozważamy wszystkie kody czterocyfrowe utworzone tylko z cyfr  1,  3,  6,  8, przy czym\nw każdym kodzie każda z tych cyfr występuje dokładnie jeden raz.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich takich kodów jest równa",
+    "content": "Rozważamy wszystkie kody czterocyfrowe utworzone tylko z cyfr $1$, $3$, $6$, $8$, przy czym w każdym kodzie każda z tych cyfr występuje dokładnie jeden raz.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba wszystkich takich kodów jest równa",
     "options": [
-      "4",
-      "10",
-      "24",
-      "16"
+      "$4$",
+      "$10$",
+      "$24$",
+      "$16$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC D",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Na pierwszym miejscu kodu może stać każda z $4$ cyfr, na drugim – każda z $3$ pozostałych, na trzecim – jedna z $2$, na czwartym – ostatnia.\n\n**Krok 2:** Z reguły mnożenia: $4 \\cdot 3 \\cdot 2 \\cdot 1 = 24$.\n\n**Pułapka CKE:** Cyfry nie mogą się powtarzać, więc liczba możliwości maleje na kolejnych miejscach. $4 \\cdot 4 = 16$ ani $4 + 3 + 2 + 1 = 10$ to nie jest reguła mnożenia.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Cyfry nie mogą się powtarzać, więc liczba możliwości maleje na kolejnych miejscach. $4 \\cdot 4 = 16$ ani $4 + 3 + 2 + 1 = 10$ to nie jest reguła mnożenia.",
     "source": "Matura Maj 2024 • Zad. 27",
     "year": 2024,
     "session": "Maj",
@@ -1974,18 +2476,18 @@
     "section": "Dział 14: Statystyka",
     "topicId": "dzial-14",
     "type": "SINGLE_CHOICE",
-    "content": "Średnia arytmetyczna trzech liczb:  a,  b,  c, jest równa  9.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna sześciu liczb:  a,  a,  b,  b,  c,  c, jest równa",
+    "content": "Średnia arytmetyczna trzech liczb: $a$, $b$, $c$, jest równa $9$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nŚrednia arytmetyczna sześciu liczb: $a$, $a$, $b$, $b$, $c$, $c$, jest równa",
     "options": [
-      "9",
-      "6",
-      "4,5",
-      "18"
+      "$9$",
+      "$6$",
+      "$4{,}5$",
+      "$18$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nA C",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Z pierwszej średniej: $\\frac{a + b + c}{3} = 9$, więc $a + b + c = 27$.\n\n**Krok 2:** Suma sześciu liczb: $2a + 2b + 2c = 2 \\cdot 27 = 54$.\n\n**Krok 3:** Średnia: $\\frac{54}{6} = 9$.\n\n**Pułapka CKE:** Podwojenie każdej liczby w zestawie podwaja jednocześnie sumę i liczbę składników – średnia się nie zmienia.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Podwojenie każdej liczby w zestawie podwaja jednocześnie sumę i liczbę składników – średnia się nie zmienia.",
     "source": "Matura Maj 2024 • Zad. 28",
     "year": 2024,
     "session": "Maj",
@@ -1996,152 +2498,323 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "29",
-    "section": "Dział 15: Zadania Optymalizacyjne",
-    "topicId": "dzial-15",
+    "section": "Dział 14: Statystyka",
+    "topicId": "dzial-14",
     "type": "SINGLE_CHOICE",
-    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej.\nNa osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano\nliczbę uczniów, którzy otrzymali daną ocenę.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMediana ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest równa",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej. Na osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano liczbę uczniów, którzy otrzymali daną ocenę.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMediana ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest równa",
     "options": [
-      "4,5",
-      "4",
-      "3,5",
-      "3"
+      "$4{,}5$",
+      "$4$",
+      "$3{,}5$",
+      "$3$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nWersja A Wersja B \nC B",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Liczba uczniów: $2 + 7 + 4 + 3 + 6 + 4 = 26$ – liczba parzysta, więc mediana to średnia arytmetyczna ocen stojących na miejscach $13$ i $14$ w uporządkowanym zestawie.\n\n**Krok 2:** Liczymy narastająco: oceny $1$ i $2$ to pozycje $1$–$9$, oceny $3$ to pozycje $10$–$13$, oceny $4$ to pozycje $14$–$16$.\n\n**Krok 3:** Trzynasta ocena to $3$, czternasta to $4$. Mediana: $\\frac{3 + 4}{2} = 3{,}5$.\n\n**Pułapka CKE:** Mediana to nie „środkowa ocena na osi” (między $3$ a $4$ z listy $1$–$6$) – trzeba uwzględnić, ilu uczniów dostało każdą ocenę.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Mediana to nie „środkowa ocena na osi” (między $3$ a $4$ z listy $1$–$6$) – trzeba uwzględnić, ilu uczniów dostało każdą ocenę.",
     "source": "Matura Maj 2024 • Zad. 29",
     "year": 2024,
     "session": "Maj",
     "isCke": true,
     "diagram": {
       "type": "STATISTICS",
-      "title": "Wyniki sprawdzianu z matematyki w klasie maturalnej (liczba uczniów vs ocena)",
-      "width": 460,
+      "width": 400,
       "height": 260,
       "segments": [
         {
           "from": [
-            50,
-            210
+            40,
+            178
           ],
           "to": [
-            420,
-            210
+            388,
+            178
           ],
-          "color": "#94A3B8",
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            154
+          ],
+          "to": [
+            388,
+            154
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            130
+          ],
+          "to": [
+            388,
+            130
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            106
+          ],
+          "to": [
+            388,
+            106
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            82
+          ],
+          "to": [
+            388,
+            82
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            58
+          ],
+          "to": [
+            388,
+            58
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            34
+          ],
+          "to": [
+            388,
+            34
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            202
+          ],
+          "to": [
+            388,
+            202
+          ],
+          "color": "#94a3b8",
           "strokeWidth": 1.5
         },
         {
           "from": [
-            50,
-            210
+            40,
+            28
           ],
           "to": [
-            50,
-            25
+            40,
+            202
           ],
-          "color": "#94A3B8",
+          "color": "#94a3b8",
           "strokeWidth": 1.5
-        }
-      ],
-      "ticks": [
-        {
-          "x": 50,
-          "y": 185,
-          "label": "2",
-          "axis": "y"
-        },
-        {
-          "x": 50,
-          "y": 155,
-          "label": "4",
-          "axis": "y"
-        },
-        {
-          "x": 50,
-          "y": 125,
-          "label": "6",
-          "axis": "y"
-        },
-        {
-          "x": 50,
-          "y": 95,
-          "label": "8",
-          "axis": "y"
-        },
-        {
-          "x": 50,
-          "y": 65,
-          "label": "10",
-          "axis": "y"
         }
       ],
       "bars": [
         {
-          "x": 80,
-          "y": 195,
-          "width": 38,
-          "height": 15,
-          "label": "1",
-          "category": "1"
+          "x": 53.1,
+          "y": 154,
+          "width": 31.900000000000002,
+          "height": 48,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "2"
         },
         {
-          "x": 135,
-          "y": 165,
-          "width": 38,
-          "height": 45,
-          "label": "3",
-          "category": "2"
+          "x": 111.1,
+          "y": 34,
+          "width": 31.900000000000002,
+          "height": 168,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "7"
         },
         {
-          "x": 190,
-          "y": 95,
-          "width": 38,
-          "height": 115,
-          "label": "8",
-          "category": "3"
+          "x": 169.1,
+          "y": 106,
+          "width": 31.900000000000002,
+          "height": 96,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "4"
         },
         {
-          "x": 245,
-          "y": 65,
-          "width": 38,
-          "height": 145,
-          "label": "10",
-          "category": "4"
+          "x": 227.1,
+          "y": 130,
+          "width": 31.900000000000002,
+          "height": 72,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "3"
         },
         {
-          "x": 300,
-          "y": 125,
-          "width": 38,
-          "height": 85,
-          "label": "6",
-          "category": "5"
+          "x": 285.1,
+          "y": 58,
+          "width": 31.900000000000002,
+          "height": 144,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "6"
         },
         {
-          "x": 355,
-          "y": 180,
-          "width": 38,
-          "height": 30,
-          "label": "2",
-          "category": "6"
+          "x": 343.1,
+          "y": 106,
+          "width": 31.900000000000002,
+          "height": 96,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "4"
         }
       ],
       "labels": [
         {
-          "x": 425,
-          "y": 215,
-          "text": "ocena",
-          "color": "#94A3B8",
-          "fontSize": 11
+          "x": 69,
+          "y": 220,
+          "text": "1",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
         },
         {
-          "x": 50,
-          "y": 16,
+          "x": 127,
+          "y": 220,
+          "text": "2",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 185,
+          "y": 220,
+          "text": "3",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 243,
+          "y": 220,
+          "text": "4",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 301,
+          "y": 220,
+          "text": "5",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 359,
+          "y": 220,
+          "text": "6",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 32,
+          "y": 206,
+          "text": "0",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 182,
+          "text": "1",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 158,
+          "text": "2",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 134,
+          "text": "3",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 110,
+          "text": "4",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 86,
+          "text": "5",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 62,
+          "text": "6",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 38,
+          "text": "7",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 214,
+          "y": 250,
+          "text": "ocena",
+          "color": "#94a3b8",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 10,
+          "y": 14,
           "text": "liczba uczniów",
-          "color": "#94A3B8",
-          "fontSize": 11
+          "color": "#94a3b8",
+          "fontSize": 12,
+          "anchor": "start"
         }
       ]
     }
@@ -2151,16 +2824,16 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "30",
-    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "section": "Dział 13: Rachunek prawdopodobieństwa",
     "topicId": "dzial-13",
     "type": "OPEN_CALCULATION",
-    "content": "Dany jest pięcioelementowy zbiór  K = {5, 6, 7, 8, 9}. Wylosowanie każdej liczby z tego\nzbioru jest jednakowo prawdopodobne. Ze zbioru  K  losujemy ze zwracaniem kolejno dwa\nrazy po jednej liczbie i zapisujemy je w kolejności losowania.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że suma\nwylosowanych liczb jest liczbą parzystą. Zapisz obliczenia.\n30.\n0–1–2",
+    "content": "Dany jest pięcioelementowy zbiór $K = \\{5, 6, 7, 8, 9\\}$. Wylosowanie każdej liczby z tego zbioru jest jednakowo prawdopodobne. Ze zbioru $K$ losujemy ze zwracaniem kolejno dwa razy po jednej liczbie i zapisujemy je w kolejności losowania.\n\nOblicz prawdopodobieństwo zdarzenia $A$ polegającego na tym, że suma wylosowanych liczb jest liczbą parzystą. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$P(A) = \\frac{13}{25}$",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nZdarzeniami elementarnymi są wszystkie uporządkowane pary liczb  (x,y), gdzie   \nx,y ∈ {5,6,7,8,9}. \nLiczbę wszystkich zdarzeń elementarnych obliczamy, korzystając z reguły mnożenia.  \nMoc zbioru  Ω  jest równa  5 \\cdot 5 = 25. \nLiczbę wszystkich zdarzeń elementarnych sprzyjających zdarzeniu  A  obliczamy, \nkorzystając z reguły mnożenia i reguły dodawania. Suma dwóch liczb naturalnych jest liczbą \nparzystą, gdy sumujemy dwie liczby parzyste lub dwie liczby nieparzyste. Stąd moc zbioru  A  \njest równa  3 \\cdot 3 + 2 \\cdot 2 = 13. \nZatem prawdopodobieństwo zdarzenia  A  jest równe  13\n25 . \n \n \nSposób II \nW tabeli literą  A  zaznaczamy zdarzenia elementarne sprzyjające zdarzeniu  A  (pary liczb, \nktórych suma jest liczbą parzystą).  \n \n 5 6 7 8 9 \n5 A  A  A \n6  A  A  \n7 A  A  A \n8  A  A  \n9 A  A  A \n \nMoc zbioru  Ω  jest równa  25. \nZdarzeń sprzyjających wylosowaniu liczb, których suma jest parzysta, jest  13. \nZatem prawdopodobieństwo zdarzenia  A  jest równe  13\n25 . \n  \nSposób III (drzewo stochastyczne) \nRysujemy drzewo stochastyczne rozważanego doświadczenia. \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nPrawdopodobieństwo zdarzenia  A  jest równe  \n \nP(A) = 2\n5 \\cdot 2\n5 + 3\n5 \\cdot 3\n5 = 13\n25",
-    "ckeTrap": "1. Jeżeli zdający zapisuje tylko liczby  13  lub  25  i z rozwiązania nie wynika znaczenie tych \nliczb, to otrzymuje 0 punktów za całe rozwiązanie. \n2. Jeżeli zdający rozważa losowanie bez zwracania, to otrzymuje 0 punktów.",
+    "explanation": "**Krok 1:** Losujemy dwa razy ze zwracaniem z $5$ liczb: $|\\Omega| = 5 \\cdot 5 = 25$.\n\n**Krok 2:** Suma jest parzysta, gdy obie liczby są nieparzyste albo obie parzyste. Nieparzyste: $5, 7, 9$ (trzy), parzyste: $6, 8$ (dwie).\n\n**Krok 3:** $|A| = 3 \\cdot 3 + 2 \\cdot 2 = 13$, więc $P(A) = \\frac{13}{25}$.\n\n**Pułapka CKE:** Losowanie jest ZE zwracaniem i z uwzględnieniem kolejności, więc par jest $25$ (a nie $20$ ani $10$), a pary typu $(5, 5)$ też się liczą.\n\n**Odpowiedź:** $P(A) = \\frac{13}{25}$",
+    "ckeTrap": "Losowanie jest ZE zwracaniem i z uwzględnieniem kolejności, więc par jest $25$ (a nie $20$ ani $10$), a pary typu $(5, 5)$ też się liczą.",
     "source": "Matura Maj 2024 • Zad. 30",
     "year": 2024,
     "session": "Maj",
@@ -2171,19 +2844,170 @@
     "examId": "matura-maj-2024",
     "examName": "Matura Maj 2024 (Formuła 2023)",
     "taskNumber": "31",
-    "section": "Dział 15: Zadania Optymalizacyjne",
+    "section": "Dział 15: Optymalizacja",
     "topicId": "dzial-15",
     "type": "OPEN_CALCULATION",
-    "content": "W schronisku dla zwierząt, na płaskiej powierzchni, należy zbudować ogrodzenie z siatki\nwydzielające trzy identyczne wybiegi o wspólnych ścianach wewnętrznych.\nPodstawą każdego z tych trzech wybiegów jest prostokąt (jak pokazano na rysunku).\nDo wykonania tego ogrodzenia należy zużyć  36  metrów bieżących siatki.\nSchematyczny rysunek trzech wybiegów (widok z góry).\nLinią przerywaną zaznaczono siatkę.\nOblicz wymiary  𝒙  oraz  𝒚  jednego wybiegu, przy których suma pól podstaw tych\ntrzech wybiegów będzie największa. W obliczeniach pomiń szerokość wejścia na\nkażdy z wybiegów. Zapisz obliczenia.\n31.\n0–1–\n2–3–4\ny\ny\ny\nx\nwybieg 1.\nwybieg 2.\nwybieg 3.\nBRUDNOPIS (nie podlega ocenie)\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023\nMATEMATYKA\nPoziom podstawowy\nFormuła 2023",
+    "content": "W schronisku dla zwierząt, na płaskiej powierzchni, należy zbudować ogrodzenie z siatki wydzielające trzy identyczne wybiegi o wspólnych ścianach wewnętrznych. Podstawą każdego z tych trzech wybiegów jest prostokąt (jak pokazano na rysunku – widok z góry, linią przerywaną zaznaczono siatkę). Do wykonania tego ogrodzenia należy zużyć $36$ metrów bieżących siatki.\n\nOblicz wymiary $x$ oraz $y$ jednego wybiegu, przy których suma pól podstaw tych trzech wybiegów będzie największa. W obliczeniach pomiń szerokość wejścia na każdy z wybiegów. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$x = 4{,}5$ m oraz $y = 3$ m.",
     "points": 4,
     "isClosed": false,
-    "explanation": "Sposób I \nPrzyjmijmy oznaczenia jak na rysunku w zadaniu. Długość siatki użytej do wykonania \nogrodzenia – po uwzględnieniu warunków zadania – można zapisać równaniem \n \n4x + 6y = 36 \n \nStąd wyznaczamy  y:  y = 6 − 2\n3x. \n \nZ warunków zadania wynika, że \n \nx > 0       i       y > 0 \n \nNiech  P  oznacza sumę pól podstaw trzech wybiegów.  \nSuma pól podstaw trzech wybiegów jest równa polu prostokąta o bokach długości  x  oraz  3y. \nZatem \n \nP = 3xy  \n \nSumę pól podstaw trzech wybiegów zapisujemy jako funkcję jednej zmiennej  x. W tym celu \npodstawiamy  y = 6 − 2\n3x  i otrzymujemy \n \nP(x) = 3x (6 − 2\n3x) = −2x2 + 18x \n \nWyznaczamy dziedzinę funkcji  P. Wykorzystamy związek między wymiarami  x  i  y  oraz \nwykorzystamy warunki, jakie te wymiary spełniają \n \ny = 6 − 2\n3x > 0  oraz  x > 0 \n \nZatem \n \nx < 9  oraz  x > 0 \n \nZmienna  x  może przyjmować wartości z przedziału  (0,9). \n \nWykresem funkcji  P  jest fragment paraboli skierowanej ramionami do dołu. Obliczamy \npierwszą współrzędną wierzchołka paraboli: \n \np = − 18\n2 \\cdot (−2) = 4,5 ∈ (0,9) \n \nZatem funkcja  P  przyjmuje wartość największą dla argumentu  4,5. \n \nObliczamy drugi wymiar, dla którego suma pól podstaw trzech wybiegów jest największa \n \ny = 6 − 2\n3 \\cdot 4,5 = 3 \n \nSuma pól podstaw trzech wybiegów jest największa, gdy:  x = 4,5 m  oraz  y = 3 m. \n \n  \nSposób II \nPrzyjmijmy oznaczenia jak na rysunku w zadaniu. Długość siatki użytej do wykonania \nogrodzenia – po uwzględnieniu warunków zadania – można zapisać równaniem \n \n4x + 6y = 36 \n \nStąd wyznaczamy  x:  x = 9 − 3\n2y. \n \nZ warunków zadania wynika, że \n \nx > 0       i       y > 0 \n \nNiech  P  oznacza sumę pól podstaw trzech wybiegów.  \nSuma pól podstaw trzech wybiegów jest równa polu prostokąta o bokach długości  x  oraz  3y. \nZatem \n \nP = 3xy  \n \nSumę pól podstaw trzech wybiegów zapisujemy jako funkcję jednej zmiennej  y. W tym celu \npodstawiamy  x = 9 − 3\n2y  i otrzymujemy \n \nP(y) = 3(9 − 3\n2y)y = −9\n2y(y − 6) \n \nWyznaczamy dziedzinę funkcji  P. Wykorzystamy związek między wymiarami  x  i  y  oraz \nwykorzystamy warunki, jakie te wymiary spełniają \n \nx = 9 − 3\n2y > 0  oraz  y > 0 \n \nZatem \n \ny < 6  oraz  y > 0 \n \nZmienna  y  może przyjmować wartości z przedziału  (0,6). \n \nWykresem funkcji  P  jest fragment paraboli skierowanej ramionami do dołu. Pierwsza \nwspółrzędna wierzchołka paraboli jest średnią arytmetyczną pierwiastków równania: \n \n−9\n2y(y − 6) = 0 \n \nZatem pierwsza współrzędna wierzchołka paraboli jest równa \n \np = 0 + 6\n2 = 3 ∈ (0,6) \n \nZatem funkcja  P  przyjmuje wartość największą dla argumentu  3. \n \nObliczamy drugi wymiar, dla którego suma pól podstaw trzech wybiegów jest największa:  \n \nx = 9 − 3\n2 \\cdot 3 = 4,5 \n \nSuma pól podstaw trzech wybiegów jest największa, gdy:  x = 4,5 m  oraz  y = 3 m.",
-    "ckeTrap": "1. Jeżeli zdający przyjmie  P = kxy, gdzie  k > 0  i  k \\ne 1, i  k \\ne 3, ale nie zapisze, że dla \nprzyjętej wartości współczynnika  k  pole  P  osiąga wartość największą wtedy i tylko \nwtedy, gdy największą wartość osiąga iloczyn  xy, to może otrzymać co najwyżej \n3 punkty (za zapisanie warunku początkowego, za obliczenie wymiaru  x  oraz obliczenie \nwymiaru  y  adekwatnie do obranego sposobu rozwiązania). \n2. Jeżeli zdający zapisze błędną zależność między wymiarami jednego wybiegu a całkowitą \ndługością siatki, ale jest ona postaci  ax + by = 36, gdzie  a,b ∈ {2,3,4,5,6}, i rozwiąże \nzadanie konsekwentnie do końca, to może otrzymać co najwyżej 3 punkty za całe \nrozwiązanie (za konsekwentne: wyznaczenie wzoru funkcji pola, obliczenie wymiaru  x  \noraz obliczenie wymiaru  y, adekwatnie do obranego sposobu rozwiązania). \n3. Jeżeli zdający zapisze poprawnie warunek początkowy  4x + 6y = 36, a następnie sumę \npól trzech prostokątów (lub pole jednego prostokąta) jako funkcję  P  jednej zmiennej \ni otrzyma wartość pierwszej współrzędnej wierzchołka paraboli zawierającej wykres \nfunkcji  P, która leży poza właściwą dziedziną funkcji  P, to może otrzymać co najwyżej \n2 punkty za całe rozwiązanie (za zapisanie warunku początkowego i wzoru na sumę pól \nlub pole jednego prostokąta). \nJeżeli natomiast zdający zapisze błędny warunek początkowy, ale taki jak wymieniony \nw uwadze 2., a następnie konsekwentnie do tego warunku wyznaczy sumę pól trzech \nprostokątów (lub pole jednego prostokąta) jako funkcję  P  jednej zmiennej i otrzyma \nwartość pierwszej współrzędnej wierzchołka paraboli zawierającej wykres funkcji  P, która \nleży poza dziedziną odpowiadającą wyznaczonej przez zdającego funkcji  P, to może \notrzymać co najwyżej 1 punkt za całe rozwiązanie (za wyznaczenie wzoru funkcji  P). \n4. Jeżeli zdający zapisze sumę pól trzech prostokątów (lub pole jednego prostokąta) jako \nfunkcję  P  jednej zmiennej, a następnie obliczy wartości tej funkcji dla pierwszej \nwspółrzędnej wierzchołka i dwóch argumentów leżących symetrycznie względem \npierwszej współrzędnej wierzchołka, i nie odwoła się do własności wykresu funkcji \nkwadratowej, to otrzymuje co najwyżej 3 punkty za całe rozwiązanie. \n5. Jeżeli zdający nie zapisze sumy pól trzech prostokątów (lub jednego prostokąta) jako \nfunkcji jednej zmiennej, a jedynie oblicza wartości pola dla wybranych par liczb  x  oraz  y  \ni na tej podstawie wskazuje największą wartość pola, to za całe rozwiązanie otrzymuje \n0 punktów, o ile nie nabył prawa do innej liczby punktów. \n6. Jeżeli zdający oblicza największą wartość funkcji  P, korzystając z rachunku \nróżniczkowego, i nie uzasadni, że w punkcie będącym miejscem zerowym pochodnej \nfunkcji  P  jest największa wartość funkcji  P, to może otrzymać co najwyżej 3 punkty za \ncałe rozwiązanie. \n Za poprawne uzasadnienie, że w punkcie będącym miejscem zerowym pochodnej \nfunkcji  P  jest największa wartość funkcji  P, można uznać sytuację, gdy zdający bada \nznak pochodnej (np. szkicując wykres funkcji, która w ten sam sposób jak pochodna \nzmienia znak, i zaznaczając na rysunku, np. znakami „+” i „-”, znak pochodnej)  oraz: \n– opisuje (słownie lub graficznie - np. przy użyciu strzałek) monotoniczność funkcji  P   \n LUB \n– zapisuje, że dla wyznaczonego miejsca zerowego pochodnej, funkcja  P  ma maksimum \nlokalne i jest to jednocześnie jej największa wartość, \n LUB \n– zapisuje, że dla wyznaczonego miejsca zerowego pochodnej, funkcja  P  ma maksimum \nlokalne i jest to jedyne ekstremum tej funkcji.",
+    "explanation": "**Krok 1:** Liczymy siatkę: cztery ściany długości $x$ (dwie zewnętrzne i dwie wspólne) oraz dwa boki długości $3y$. Zatem $4x + 6y = 36$, skąd $y = 6 - \\frac{2}{3}x$.\n\n**Krok 2:** Suma pól: $P(x) = 3 \\cdot x \\cdot y = 3x\\left(6 - \\frac{2}{3}x\\right) = -2x^2 + 18x$. Dziedzina: $x > 0$ i $y > 0$, czyli $x \\in (0, 9)$.\n\n**Krok 3:** Ramiona paraboli są skierowane w dół, więc wartość największa jest w wierzchołku: $x = -\\frac{18}{2 \\cdot (-2)} = 4{,}5$. Liczba ta należy do dziedziny.\n\n**Krok 4:** $y = 6 - \\frac{2}{3} \\cdot 4{,}5 = 3$. Wymiary jednego wybiegu: $x = 4{,}5$ m, $y = 3$ m (suma pól: $40{,}5$ m²).\n\n**Pułapka CKE:** Ściany wewnętrzne są wspólne: odcinków długości $x$ jest $4$, a nie $6$. Błędne równanie $6x + 6y = 36$ odbiera wszystkie punkty za dalszą część.\n\n**Odpowiedź:** $x = 4{,}5$ m oraz $y = 3$ m.",
+    "ckeTrap": "Schemat za 4 pkt: zależność między $x$ i $y$, funkcja pola jednej zmiennej, dziedzina, wierzchołek paraboli i odpowiedź.",
     "source": "Matura Maj 2024 • Zad. 31",
     "year": 2024,
     "session": "Maj",
-    "isCke": true
+    "isCke": true,
+    "diagram": {
+      "type": "GEOMETRY_2D",
+      "width": 400,
+      "height": 222,
+      "segments": [
+        {
+          "from": [
+            69.1,
+            188
+          ],
+          "to": [
+            346.3,
+            188
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5,
+          "dashed": true
+        },
+        {
+          "from": [
+            346.3,
+            188
+          ],
+          "to": [
+            346.3,
+            49.4
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5,
+          "dashed": true
+        },
+        {
+          "from": [
+            346.3,
+            49.4
+          ],
+          "to": [
+            69.1,
+            49.4
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5,
+          "dashed": true
+        },
+        {
+          "from": [
+            69.1,
+            49.4
+          ],
+          "to": [
+            69.1,
+            188
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5,
+          "dashed": true
+        },
+        {
+          "from": [
+            161.5,
+            188
+          ],
+          "to": [
+            161.5,
+            49.4
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5,
+          "dashed": true
+        },
+        {
+          "from": [
+            253.9,
+            188
+          ],
+          "to": [
+            253.9,
+            49.4
+          ],
+          "color": "#94a3b8",
+          "strokeWidth": 1.5,
+          "dashed": true
+        }
+      ],
+      "points": [],
+      "labels": [
+        {
+          "x": 115.3,
+          "y": 34,
+          "text": "y",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 207.7,
+          "y": 34,
+          "text": "y",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 300.1,
+          "y": 34,
+          "text": "y",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 53.7,
+          "y": 118.7,
+          "text": "x",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 115.3,
+          "y": 118.7,
+          "text": "wybieg 1.",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 207.7,
+          "y": 118.7,
+          "text": "wybieg 2.",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        },
+        {
+          "x": 300.1,
+          "y": 118.7,
+          "text": "wybieg 3.",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
+        }
+      ]
+    }
   }
 ]

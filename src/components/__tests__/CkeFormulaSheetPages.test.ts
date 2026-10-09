@@ -37,14 +37,14 @@ describe('CKE 2023 Formula Sheet Verification', () => {
     expect(kwadratowa?.cke_page).toBe('str. 7–8');
     expect(kwadratowa?.pageNumber).toBe(7);
 
-    // Ciągi arytmetyczne i geometryczne - Strona 9-10 z 34
+    // Ciągi arytmetyczne i geometryczne - Strona 9 z 34 (na str. 10 jest już tylko procent składany)
     const arytmetyczny = formulasMap.get('f-ciag-arytmetyczny');
     expect(arytmetyczny?.cke_page).toBe('str. 9');
     expect(arytmetyczny?.pageNumber).toBe(9);
 
     const geometryczny = formulasMap.get('f-ciag-geometryczny');
-    expect(geometryczny?.cke_page).toBe('str. 10');
-    expect(geometryczny?.pageNumber).toBe(10);
+    expect(geometryczny?.cke_page).toBe('str. 9');
+    expect(geometryczny?.pageNumber).toBe(9);
 
     // Trygonometria - Strona 10-15 z 34
     const trygoDef = formulasMap.get('f-trygo-definicje');
@@ -57,8 +57,8 @@ describe('CKE 2023 Formula Sheet Verification', () => {
 
     // Planimetria i analityczna
     const rownoboczny = formulasMap.get('f-geo-trojkat-rownoboczny');
-    expect(rownoboczny?.cke_page).toBe('str. 16');
-    expect(rownoboczny?.pageNumber).toBe(16);
+    expect(rownoboczny?.cke_page).toBe('str. 15');
+    expect(rownoboczny?.pageNumber).toBe(15);
 
     const okrag = formulasMap.get('f-geo-okrag');
     expect(okrag?.cke_page).toBe('str. 23');
@@ -69,13 +69,18 @@ describe('CKE 2023 Formula Sheet Verification', () => {
     expect(prostopadloscian?.cke_page).toBe('str. 24–25');
     expect(prostopadloscian?.pageNumber).toBe(24);
 
-    // Prawdopodobieństwo i statystyka
+    // Stożek i kula są na str. 26, walec na str. 25
+    const bryly = formulasMap.get('f-stereo-bryly');
+    expect(bryly?.cke_page).toBe('str. 25–26');
+    expect(bryly?.pageNumber).toBe(25);
+
+    // Prawdopodobieństwo (klasyczna definicja: str. 27) i statystyka (średnie: str. 29, mediana: str. 30)
     const prawd = formulasMap.get('f-komb-prawd');
-    expect(prawd?.cke_page).toBe('str. 28');
-    expect(prawd?.pageNumber).toBe(28);
+    expect(prawd?.cke_page).toBe('str. 27');
+    expect(prawd?.pageNumber).toBe(27);
 
     const srednia = formulasMap.get('f-stat-srednia');
-    expect(srednia?.cke_page).toBe('str. 29');
+    expect(srednia?.cke_page).toBe('str. 29–30');
     expect(srednia?.pageNumber).toBe(29);
   });
 
