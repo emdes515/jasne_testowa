@@ -34,6 +34,8 @@ function lintText(id, text, where) {
   if (dollars % 2 !== 0) fail(`${id}: nieparzysta liczba $ (${where})`);
   const checks = [
     [/undefined|NaN|Infinity|\[object/, 'śmieci JS'],
+    [/\\\\[a-zA-Z]/, 'podwójny backslash przed poleceniem LaTeX'],
+    [/(?<![\d,}])1\\sqrt/, 'współczynnik 1 przed pierwiastkiem'],
     [/\+\s*-|-\s*-\s*\d|\+\s*\+/, 'podwójny znak'],
     [/(?<![\d,{}])\b1(x|n|a|y)\b(?!\w)/, 'współczynnik 1 przed zmienną'],
     [/\d\.\d/, 'kropka dziesiętna zamiast przecinka'],
@@ -80,8 +82,9 @@ for (const t of topics) {
         if (e instanceof Retry) continue;
         throw new Error(`${lessonKey} gen#${g}: ${e.message}`);
       }
-      if (!raw || seen.has(raw.q)) continue;
-      seen.add(raw.q);
+      const uniqKey = raw.q + (raw.diagram ? JSON.stringify(raw.diagram) : '');
+      if (!raw || seen.has(uniqKey)) continue;
+      seen.add(uniqKey);
       perGen[g]++;
       const n = lessonTasks.length + 1;
       const task = finalize(
@@ -126,6 +129,20 @@ for (const t of topics) {
     for (const k of ['concept_essence', 'matura_context', 'plain_polish', 'exam_trap']) if (!pl[k] || pl[k].length < 30) fail(`${lessonKey}: brak ${k}`);
     if (!pl.core_formulas.length) fail(`${lessonKey}: brak core_formulas`);
     if (!pl.worked_examples.length) fail(`${lessonKey}: brak worked_examples`);
+    // SessionRunner czyta kroki z pola `steps`, a MathStudyHub – z `worked_example.solution`:
+    // uzupełniamy oba warianty, żeby żaden widok nie musiał „dorabiać” przykładu z zadań lekcji.
+    pl.worked_examples = pl.worked_examples.map((ex) => ({
+      ...ex,
+      steps:
+        ex.steps ||
+        String(ex.solution || '')
+          .split('\n')
+          .map((line) => line.trim())
+          .filter(Boolean)
+          .map((line, i) => ({ num: i + 1, text: line.replace(/^\d+[.)]\s*/, '') }))
+    }));
+    for (const ex of pl.worked_examples) if (!ex.problem || !ex.steps.length) fail(`${lessonKey}: przykład bez treści lub kroków`);
+    pl.worked_example = pl.worked_examples[0];
 
     allTasks.push(...lessonTasks);
     bpLessons.push({
@@ -172,8 +189,9 @@ const contents = new Set();
 for (const task of allTasks) {
   if (ids.has(task.id)) fail(`duplikat id ${task.id}`);
   ids.add(task.id);
-  if (contents.has(task.content)) fail(`duplikat treści ${task.id}`);
-  contents.add(task.content);
+  const ck = task.content + (task.diagram ? JSON.stringify(task.diagram) : '');
+  if (contents.has(ck)) fail(`duplikat treści ${task.id}`);
+  contents.add(ck);
 }
 const dist = { A: 0, B: 0, C: 0, D: 0 };
 allTasks.filter((x) => x.type === 'SINGLE_CHOICE').forEach((x) => dist[x.correct_answer]++);

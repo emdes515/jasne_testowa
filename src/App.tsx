@@ -1404,7 +1404,7 @@ export default function App() {
   );
 
   return (
-    <div className="h-full h-[100dvh] w-full bg-surface-bg text-text-primary font-sans flex flex-col md:flex-row overflow-hidden selection:bg-primary/20 relative">
+    <div className="h-full h-[100dvh] w-full bg-transparent text-text-primary font-sans flex flex-col md:flex-row overflow-hidden selection:bg-primary/20 relative">
       <BrandBackgroundPattern />
       <AnimatePresence>
         {loading && (

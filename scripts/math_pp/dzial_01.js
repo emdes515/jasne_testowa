@@ -150,7 +150,7 @@ const rootCombine = (r) => {
     val: K * Math.sqrt(p),
     bad: [
       m(sq(minus ? Math.abs(c1 * c1 * A - c2 * c2 * B) || p : c1 * c1 * A + c2 * c2 * B)),
-      m(`${minus ? c1 * m1 + c2 * m2 : Math.abs(c1 * m1 - c2 * m2) || K + 1}\\sqrt{${p}}`),
+      m(`${minus ? c1 * m1 + c2 * m2 : Math.max(Math.abs(c1 * m1 - c2 * m2), 2) === K ? K + 2 : Math.max(Math.abs(c1 * m1 - c2 * m2), 2)}\\sqrt{${p}}`),
       m(`${K}\\sqrt{${2 * p}}`),
       m(`${K * p}`),
       m(`${K + 1}\\sqrt{${p}}`)

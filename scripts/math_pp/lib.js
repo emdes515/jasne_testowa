@@ -200,7 +200,7 @@ function tex(s0) {
 export function evalTex(str) {
   let s = String(str).trim();
   // „$540$ zł”, „$12$ cm” – liczba z krótką jednostką
-  const unit = s.match(/^\$([^$]+)\$\s*([a-ząćęłńóśźż]{1,4}(\^[23])?)$/);
+  const unit = s.match(/^\$([^$]+)\$\s*([a-ząćęłńóśźż]{1,4}(\^[23]|[²³])?)$/);
   if (unit) s = unit[1];
   s = s.replace(/^\$|\$$/g, '');
   if (s.includes('$')) return null;
@@ -392,7 +392,7 @@ export function plotPolyline(pts, { leftClosed = true, rightClosed = true } = {}
     caption: 'Każda kratka ma bok długości 1.',
     plotData: {
       type: 'PIECEWISE_LINEAR',
-      xRange: [Math.min(...xs) - 1, Math.max(...xs) + 1],
+      xRange: [Math.min(...xs, 0) - 1, Math.max(...xs, 0) + 1],
       yRange: [Math.min(...ys, 0) - 1, Math.max(...ys, 0) + 1],
       gridStep: 1,
       segments,
