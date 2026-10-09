@@ -101,7 +101,7 @@ const powMixedBases = (r) => {
     bad: [m(e > 0 ? fr(1, b ** e) : b ** -e), m(b ** p), m(b ** (p + j)), m(b ** Math.abs(e) * b)],
     steps: [
       T`Sprowadzamy do podstawy $${b}$: $${b ** i} = ${b}^{${i}}$, więc $${b ** i}^{${fr(p, i)}} = ${pw(b, p)}$.`,
-      T`Mnożymy potęgi o tej samej podstawie: $${b}^{${p}} \cdot ${b}^{-${j}} = ${b}^{${e}} = ${e > 0 ? b ** e : fr(1, b ** -e)}$.`
+      T`Mnożymy potęgi o tej samej podstawie: $${pw(b, p)} \cdot ${b}^{-${j}} = ${b}^{${e}} = ${e > 0 ? b ** e : fr(1, b ** -e)}$.`
     ],
     trap: T`Najpierw wspólna podstawa, dopiero potem działania na wykładnikach. Dodawanie wykładników przy różnych podstawach jest błędem.`,
     tip: TIP_POW

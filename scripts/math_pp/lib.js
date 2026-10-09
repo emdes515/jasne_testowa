@@ -286,7 +286,7 @@ export function pf(o) {
     kind: 'mc',
     fixedOrder: true,
     title: o.title,
-    q: `${o.q}\n\nOceń prawdziwość poniższych stwierdzeń.\n\n**1.** ${o.s1[0]}\n\n**2.** ${o.s2[0]}`,
+    q: `${o.q ? o.q + '\n\n' : ''}Oceń prawdziwość poniższych stwierdzeń.\n\n**1.** ${o.s1[0]}\n\n**2.** ${o.s2[0]}`,
     opts: [code, ...all.filter((x) => x !== code)].map(
       (c) => `1. – ${c[0] === 'P' ? 'prawda' : 'fałsz'}, 2. – ${c[1] === 'P' ? 'prawda' : 'fałsz'}`
     ),
