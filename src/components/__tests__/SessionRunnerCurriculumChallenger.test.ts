@@ -49,9 +49,9 @@ describe('Milestone M1 Challenger 2 - Empirical Curriculum & Sanitization Audit'
   const allLessons: Lesson[] = [];
   curriculumData.topics.forEach(t => (t.lessons || []).forEach(l => allLessons.push(l)));
 
-  it('verifies curriculum dataset contains valid topics and lessons', () => {
-    expect(curriculumData.topics.length).toBeGreaterThanOrEqual(15);
-    expect(allLessons.length).toBeGreaterThanOrEqual(69);
+  it('verifies curriculum dataset contains exactly 21 topics and 69 lessons', () => {
+    expect(curriculumData.topics.length).toBe(21);
+    expect(allLessons.length).toBe(69);
   });
 
   describe('Verification of the 9 known uppercase-headed lessons', () => {

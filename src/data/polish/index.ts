@@ -82,3 +82,10 @@ export function generateMockExam(): {
 export * from './polishLessonsData';
 export * from './polishBookSummaries';
 export * from './polishBentoConcepts';
+export {
+  ALL_POLISH_TASKS_800,
+  getTasksForLesson,
+  resetLessonTasks,
+  shuffleTaskOptions,
+  getTargetCounts
+} from '../tasks_polski';
