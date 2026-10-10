@@ -301,6 +301,11 @@ export const gradeWithFallback = async (body: Record<string, unknown>) => {
 
   try {
     const result = await evaluateTaskLogic(body);
+    // Model nie odpowiedział (timeout / pusta odpowiedź) i wynik pochodzi z rubryki słów kluczowych:
+    // to nie jest ocena egzaminatora AI, więc klient musi o tym wiedzieć.
+    if (result?.usage?.model === 'rubric-fallback') {
+      return { ...result, evaluationFailed: true, provider: 'rubric-fallback' };
+    }
     return { ...result, provider: 'ai' };
   } catch (error) {
     logger.warn('ai_grade_failed', {

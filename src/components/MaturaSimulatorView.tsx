@@ -1319,19 +1319,11 @@ export function MaturaSimulatorView({
     }
 
     if (!evalResult || (evalResult as any).evaluationFailed) {
-      const isPassing = effectiveAnswer.length > 15;
-      const pts = isPassing ? currentMaratonTask.points : (currentMaratonTask.points > 1 ? 1 : 0);
-      evalResult = {
-        score: pts,
-        maxPoints: currentMaratonTask.points,
-        mentorComment: pts === currentMaratonTask.points
-          ? 'Rozwiązanie w pełni spełnia kryteria oficjalnego klucza CKE.'
-          : 'Dobra próba, lecz brakuje pełnego uzasadnienia lub poprawnego wniosku.',
-        strengths: pts > 0 ? ['Zastosowano właściwy tok rozumowania'] : [],
-        errors: pts < currentMaratonTask.points ? ['Upewnij się, że rozpisujesz wszystkie etapy przekształceń'] : [],
-        ckeFeedback: `Zgodnie ze schematem CKE zadanie oceniono na ${pts} / ${currentMaratonTask.points} pkt.`,
-        ckeTrap: currentMaratonTask.ckeTrap
-      };
+      // Egzaminator AI nie odpowiedział: nie zgadujemy oceny (wcześniej punkty zależały od długości tekstu).
+      // Odpowiedź zostaje w polu, uczeń może wysłać ją ponownie.
+      setMaratonIsScanning(false);
+      showToast('Nie udało się teraz sprawdzić rozwiązania. Spróbuj ponownie za chwilę – Twoja odpowiedź została zachowana.', 'warning');
+      return;
     }
 
     setMaratonTutorEval(evalResult);
