@@ -1029,7 +1029,9 @@ export function MaturaSimulatorView({
         userAnswer: userDisplayAnswer,
         userPointsEarned: earned,
         isFlagged: flaggedTasks.has(t.id),
-        aiEvaluation: aiEval
+        aiEvaluation: aiEval,
+        sourceTask: t,
+        rawUserAnswer: t.isClosed ? userAns : undefined
       };
     });
 
