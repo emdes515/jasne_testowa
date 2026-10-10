@@ -329,7 +329,7 @@ export function CkeScratchpad({
                 <button
                   type="button"
                   onClick={handleScrollToTop}
-                  className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg text-slate-300 hover:text-text-strong hover:bg-veil-strong transition-colors cursor-pointer"
                   title="Przewiń na górę brudnopisu"
                 >
                   <ArrowUp size={14} />
@@ -337,7 +337,7 @@ export function CkeScratchpad({
                 <button
                   type="button"
                   onClick={handleScrollToBottom}
-                  className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg text-slate-300 hover:text-text-strong hover:bg-veil-strong transition-colors cursor-pointer"
                   title="Przewiń na dół brudnopisu"
                 >
                   <ArrowDown size={14} />
@@ -348,7 +348,7 @@ export function CkeScratchpad({
             <button
               type="button"
               onClick={handleExpandCanvas}
-              className="px-2.5 py-1.5 rounded-xl text-text-accent hover:text-amber-300 bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-primary/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
+              className="px-2.5 py-1.5 rounded-xl text-text-accent hover:text-amber-300 bg-jasne/10 hover:bg-jasne/20 border border-primary/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
               title="Dodaj 450px miejsca na obliczenia w dół"
             >
               <Plus size={14} />
@@ -359,7 +359,7 @@ export function CkeScratchpad({
             <button
               type="button"
               onClick={handleUndo}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#141C28] hover:bg-white/10 text-white/90 hover:text-white border border-white/10 transition-colors flex items-center gap-1 text-xs font-bold active:scale-95 cursor-pointer"
+              className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#141C28] hover:bg-veil-strong text-white/90 hover:text-white border border-hairline transition-colors flex items-center gap-1 text-xs font-bold active:scale-95 cursor-pointer"
               title="Cofnij ostatnie pociągnięcie"
             >
               <Undo2 size={15} />

@@ -53,7 +53,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
         {/* Soft centered ambient glow behind the card */}
         <div
           className={`absolute w-96 h-96 rounded-full blur-[120px] transition-colors duration-500 pointer-events-none ${
-            isCompleted ? 'bg-emerald-500/20' : 'bg-[#FFB800]/15'
+            isCompleted ? 'bg-emerald-500/20' : 'bg-jasne/15'
           }`}
         />
 
@@ -63,14 +63,14 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: -8 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="relative max-w-md w-full bg-[#0E1524]/95 border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/70 flex flex-col items-center text-center overflow-hidden"
+          className="relative max-w-md w-full bg-[#0E1524]/95 border border-hairline rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/70 flex flex-col items-center text-center overflow-hidden"
         >
           {/* Subtle top border highlight */}
           <div
             className={`absolute top-0 inset-x-0 h-0.5 transition-colors duration-500 ${
               isCompleted
                 ? 'bg-gradient-to-r from-transparent via-emerald-400 to-transparent'
-                : 'bg-gradient-to-r from-transparent via-[#FFB800]/60 to-transparent'
+                : 'bg-gradient-to-r from-transparent via-primary/60 to-transparent'
             }`}
           />
 
@@ -78,7 +78,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
           {onCancel && (
             <button
               onClick={onCancel}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition border border-white/10 cursor-pointer"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition border border-hairline cursor-pointer"
               title="Anuluj sprawdzanie (Esc)"
             >
               <X size={16} />
@@ -105,7 +105,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
               className={`w-16 h-16 sm:w-18 sm:h-18 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl ${
                 isCompleted
                   ? 'bg-emerald-500/15 border border-emerald-400/50 text-emerald-400 shadow-emerald-500/20'
-                  : 'bg-[#FFB800]/15 border border-primary/40 text-text-accent shadow-[#FFB800]/20'
+                  : 'bg-jasne/15 border border-primary/40 text-text-accent shadow-[#FFB800]/20'
               }`}
             >
               {isCompleted ? (
@@ -123,12 +123,12 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
             className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 mt-2 mb-3 ${
               isCompleted
                 ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-300'
-                : 'bg-[#FFB800]/10 border border-primary/25 text-text-accent'
+                : 'bg-jasne/10 border border-primary/25 text-text-accent'
             }`}
           >
             <span
               className={`w-1.5 h-1.5 rounded-full ${
-                isCompleted ? 'bg-emerald-400' : 'bg-[#FFB800] animate-pulse'
+                isCompleted ? 'bg-emerald-400' : 'bg-jasne animate-pulse'
               }`}
             />
             <span>{isCompleted ? 'Weryfikacja zakończona' : 'Tutor AI • CKE Formuła 2025'}</span>
@@ -138,7 +138,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
           <div className="h-16 flex flex-col justify-center mb-4">
             <h3
               className={`text-lg sm:text-xl font-bold transition-colors duration-300 leading-snug ${
-                isCompleted ? 'text-emerald-300' : 'text-white'
+                isCompleted ? 'text-emerald-300' : 'text-text-strong'
               }`}
             >
               {isCompleted ? 'Rozwiązanie sprawdzone!' : 'Sprawdzam Twoje rozwiązanie...'}
@@ -172,7 +172,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
                     duration: 1.5,
                     ease: 'easeInOut'
                   }}
-                  className="w-1/2 h-full bg-gradient-to-r from-transparent via-[#FFB800] to-transparent rounded-full shadow-[0_0_8px_rgba(255,184,0,0.8)]"
+                  className="w-1/2 h-full bg-gradient-to-r from-transparent via-primary to-transparent rounded-full shadow-[0_0_8px_rgba(255,184,0,0.8)]"
                 />
               )}
             </div>

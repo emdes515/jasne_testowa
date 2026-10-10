@@ -228,7 +228,13 @@ html.light :is(
 ).text-white,
 html.light :is(
   ${solidList}
-) .text-white {
+) .text-white,
+html.light :is(
+  ${solidList}
+).text-text-strong,
+html.light :is(
+  ${solidList}
+) .text-text-strong {
   color: #fff;
 }
 `;

@@ -43,7 +43,7 @@ export function PromoFloatingPill({
       className={`${positionClasses} h-10 sm:h-11 flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full transition-all cursor-pointer select-none ${
         isUrgent
           ? 'bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 text-white border border-rose-300/80 shadow-[0_4px_0_#9F1239,0_8px_25px_rgba(244,63,94,0.5)] active:translate-y-1 active:shadow-[0_1px_0_#9F1239]'
-          : 'bg-gradient-to-r from-[#FFB800] via-[#FFA000] to-[#FF8C00] text-[#070A0F] border border-amber-200/90 shadow-[0_4px_0_#B37F00,0_8px_25px_rgba(255,184,0,0.45)] active:translate-y-1 active:shadow-[0_1px_0_#B37F00]'
+          : 'bg-gradient-to-r from-primary via-[#FFA000] to-[#FF8C00] text-[#070A0F] border border-amber-200/90 shadow-[0_4px_0_#B37F00,0_8px_25px_rgba(255,184,0,0.45)] active:translate-y-1 active:shadow-[0_1px_0_#B37F00]'
       }`}
       title={isUrgent ? 'Twoja zniżka -50% zaraz wygaśnie! Kliknij, aby odebrać.' : 'Kliknij, aby odebrać 50% zniżki na JASNE PRO'}
       aria-label="Odbierz zniżkę -50% na pakiet PRO"
@@ -69,7 +69,7 @@ export function PromoFloatingPill({
       {/* Na telefonie pigułka jest kompaktowa (ikona + rabat), żeby nie zasłaniać treści */}
       <div className={`${variant === 'bottom-inline' ? 'flex' : 'hidden sm:flex'} items-center justify-center pl-1.5 border-l text-[10px] sm:text-[11px] font-black uppercase tracking-wider ${
         isUrgent 
-          ? 'border-white/30 text-white' 
+          ? 'border-white/30 text-text-strong' 
           : 'border-black/20 text-[#070A0F]'
       }`}>
         <span>Odbierz</span>

@@ -76,7 +76,7 @@ export const TaskVisualAssetCard: React.FC<TaskVisualAssetCardProps> = ({ task, 
             <button
               type="button"
               onClick={() => setIsZoomed(true)}
-              className="absolute top-4 right-4 p-2 rounded-lg bg-white/90 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-slate-700/60 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer shadow-xs"
+              className="absolute top-4 right-4 p-2 rounded-lg bg-white/90 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-text-strong border border-slate-200 dark:border-slate-700/60 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer shadow-xs"
               title="Powiększ obraz"
             >
               <ZoomIn className="w-4 h-4" />
@@ -143,7 +143,7 @@ export const TaskVisualAssetCard: React.FC<TaskVisualAssetCardProps> = ({ task, 
             <button
               type="button"
               onClick={() => setIsZoomed(false)}
-              className="absolute -top-10 right-0 p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-white transition-colors border border-slate-700 cursor-pointer"
+              className="absolute -top-10 right-0 p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-text-strong transition-colors border border-slate-700 cursor-pointer"
               title="Zamknij podgląd"
             >
               <X className="w-5 h-5" />

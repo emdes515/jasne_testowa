@@ -96,12 +96,12 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-surface-bg text-[#dfe2f1] font-sans pb-24">
+    <div className="min-h-screen bg-surface-bg text-text-soft font-sans pb-24">
       {/* Top Header */}
-      <header className="sticky top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-hairline px-4 py-3 flex items-center justify-between">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors cursor-pointer"
+          className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-text-strong transition-colors cursor-pointer"
         >
           <ArrowLeft size={16} />
           <span>Powrót do kursu</span>
@@ -110,7 +110,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
           <span className="text-[10px] font-bold text-text-accent tracking-wider uppercase block">
             {lesson.badge || 'Lekcja matematyki'}
           </span>
-          <span className="text-xs sm:text-sm font-black text-white truncate max-w-xs block">
+          <span className="text-xs sm:text-sm font-black text-text-strong truncate max-w-xs block">
             {lesson.title}
           </span>
         </div>
@@ -120,10 +120,10 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
       <main className="max-w-3xl mx-auto px-4 py-6">
         {currentStep === 'theory' && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-white/10 space-y-4">
+            <div className="p-5 sm:p-6 rounded-2xl bg-surface-panel border border-hairline space-y-4">
               <div className="flex items-center gap-2 text-text-accent">
                 <BookOpen size={20} />
-                <h2 className="text-base sm:text-lg font-black text-white">Istota pojęcia w pigułce</h2>
+                <h2 className="text-base sm:text-lg font-black text-text-strong">Istota pojęcia w pigułce</h2>
               </div>
               {theory?.concept_essence && (
                 <div className="text-sm sm:text-base text-slate-200 leading-relaxed">
@@ -155,7 +155,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                 triggerHaptic('medium');
                 setCurrentStep('practice');
               }}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-[#FFB800] to-[#FFA000] text-black font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-[#FFA000] text-black font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
             >
               <span>Przejdź do zadań treningowych ({tasks.length})</span>
               <ChevronRight size={18} />
@@ -171,11 +171,11 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
               <span className="text-text-accent">{correctCount} poprawnych</span>
             </div>
 
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-white/10 space-y-4">
+            <div className="p-5 sm:p-6 rounded-2xl bg-surface-panel border border-hairline space-y-4">
               <span className="text-[10px] font-bold text-text-accent uppercase tracking-wider block">
                 Zadanie maturalne
               </span>
-              <div className="text-sm sm:text-base text-white leading-relaxed">
+              <div className="text-sm sm:text-base text-text-strong leading-relaxed">
                 <MathRenderer content={currentTask.question || currentTask.content || ''} />
               </div>
 
@@ -207,7 +207,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                     onChange={(e) => setSelectedOption(e.target.value)}
                     placeholder="Wpisz wynik, np. 12 albo 3,5"
                     aria-label="Wynik liczbowy"
-                    className={`w-full px-4 py-3 rounded-xl bg-surface-bg border text-base text-white outline-none transition-all ${
+                    className={`w-full px-4 py-3 rounded-xl bg-surface-bg border text-base text-text-strong outline-none transition-all ${
                       isAnswerChecked
                         ? (isCurrentAnswerCorrect() ? 'border-emerald-500' : 'border-[#f43f5e]')
                         : 'border-white/15 focus:border-primary'
@@ -229,7 +229,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                     const isSelected = selectedOption === optId;
                     const isCorrectAnswer = optId === (currentTask.correctAnswer || currentTask.correct_answer);
 
-                    let btnStyle = 'border-white/10 bg-white/[0.03] text-slate-200 hover:bg-white/[0.06]';
+                    let btnStyle = 'border-hairline bg-white/[0.03] text-slate-200 hover:bg-white/[0.06]';
                     if (isAnswerChecked) {
                       if (isCorrectAnswer) {
                         btnStyle = 'border-emerald-500 bg-emerald-500/20 text-emerald-300 font-bold';
@@ -237,7 +237,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                         btnStyle = 'border-rose-500 bg-rose-500/20 text-rose-300';
                       }
                     } else if (isSelected) {
-                      btnStyle = 'border-primary bg-[#FFB800]/15 text-[#FFDCA1] font-bold';
+                      btnStyle = 'border-primary bg-jasne/15 text-accent-soft font-bold';
                     }
 
                     return (
@@ -266,7 +266,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
               )}
 
               {isAnswerChecked && currentTask.explanation && (
-                <div className="p-4 rounded-xl bg-black/40 border border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed mt-4">
+                <div className="p-4 rounded-xl bg-black/40 border border-hairline text-xs sm:text-sm text-slate-300 leading-relaxed mt-4">
                   <span className="font-bold text-text-accent block mb-1">Wyjaśnienie:</span>
                   <MathRenderer content={currentTask.explanation} />
                 </div>
@@ -277,7 +277,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
               <button
                 disabled={!canCheck}
                 onClick={handleCheckAnswer}
-                className="w-full py-3.5 rounded-xl font-black text-sm bg-gradient-to-r from-[#FFB800] to-[#FFA000] text-black disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
+                className="w-full py-3.5 rounded-xl font-black text-sm bg-gradient-to-r from-primary to-[#FFA000] text-black disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer"
               >
                 Sprawdź odpowiedź
               </button>
@@ -299,14 +299,14 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
               <Award size={40} />
             </div>
             <div>
-              <h2 className="text-2xl font-black text-white">Świetna robota!</h2>
+              <h2 className="text-2xl font-black text-text-strong">Świetna robota!</h2>
               <p className="text-sm text-slate-400 mt-1">
                 Lekcja ukończona: {correctCount} / {tasks.length} poprawnych odpowiedzi
               </p>
             </div>
             <button
               onClick={onBack}
-              className="py-3.5 px-8 rounded-xl bg-gradient-to-r from-[#FFB800] to-[#FFA000] text-black font-black text-sm hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer shadow-lg"
+              className="py-3.5 px-8 rounded-xl bg-gradient-to-r from-primary to-[#FFA000] text-black font-black text-sm hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer shadow-lg"
             >
               Wróć do mapy nauki
             </button>

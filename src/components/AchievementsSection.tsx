@@ -100,14 +100,14 @@ export function AchievementsSection({
   return (
     <div className="flex flex-col gap-5">
       {/* Overview Banner */}
-      <div className="bg-[#141A23] border border-white/5 rounded-[24px] p-5 relative shadow-lg">
+      <div className="bg-[#141A23] border border-hairline-soft rounded-[24px] p-5 relative shadow-lg">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-surface-elevated border border-primary/30 flex items-center justify-center shadow-[0_0_15px_rgba(255,184,0,0.2)]">
               <Trophy size={24} className="text-primary" />
             </div>
             <div>
-              <h2 className="text-base font-display font-black text-white leading-tight">Centrum Gracza & Odznaki</h2>
+              <h2 className="text-base font-display font-black text-text-strong leading-tight">Centrum Gracza & Odznaki</h2>
               <span className="text-xs text-[#9CA3AF]">
                 {totalTiersUnlocked} z {totalTiersCount} rang odblokowanych
               </span>
@@ -137,7 +137,7 @@ export function AchievementsSection({
               {Math.round((totalTiersUnlocked / Math.max(1, totalTiersCount)) * 100)}%
             </span>
           </div>
-          <div className="w-full h-2 bg-white/5 rounded-full shadow-inner">
+          <div className="w-full h-2 bg-veil rounded-full shadow-inner">
             <motion.div
               className="h-full rounded-full bg-gradient-to-r from-[#3B82F6] to-[#00D2FF] shadow-[0_0_10px_rgba(0,210,255,0.5)]"
               initial={{ width: 0 }}
@@ -155,7 +155,7 @@ export function AchievementsSection({
           className={`shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
             selectedCategory === 'all'
               ? 'bg-[#D1D5DB] text-black border-[#D1D5DB] shadow-md'
-              : 'bg-[#141A23] text-[#9CA3AF] border-white/5 hover:text-white hover:bg-white/5'
+              : 'bg-[#141A23] text-[#9CA3AF] border-hairline-soft hover:text-white hover:bg-veil'
           }`}
         >
           Wszystkie ({achievementsWithProgress.length})
@@ -180,7 +180,7 @@ export function AchievementsSection({
           className={`shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
             selectedCategory === 'tasks'
               ? 'bg-blue-600 text-white border-blue-500 shadow-md'
-              : 'bg-[#141A23] text-[#9CA3AF] border-white/5 hover:text-white hover:bg-white/5'
+              : 'bg-[#141A23] text-[#9CA3AF] border-hairline-soft hover:text-white hover:bg-veil'
           }`}
         >
           Zadania Maturalne
@@ -191,7 +191,7 @@ export function AchievementsSection({
           className={`shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
             selectedCategory === 'arena'
               ? 'bg-red-600 text-white border-red-500 shadow-md'
-              : 'bg-[#141A23] text-[#9CA3AF] border-white/5 hover:text-white hover:bg-white/5'
+              : 'bg-[#141A23] text-[#9CA3AF] border-hairline-soft hover:text-white hover:bg-veil'
           }`}
         >
           Arena 1v1
@@ -202,7 +202,7 @@ export function AchievementsSection({
           className={`shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
             selectedCategory === 'streak'
               ? 'bg-orange-600 text-white border-orange-500 shadow-md'
-              : 'bg-[#141A23] text-[#9CA3AF] border-white/5 hover:text-white hover:bg-white/5'
+              : 'bg-[#141A23] text-[#9CA3AF] border-hairline-soft hover:text-white hover:bg-veil'
           }`}
         >
           Wytrwałość
@@ -213,7 +213,7 @@ export function AchievementsSection({
           className={`shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
             selectedCategory === 'matura'
               ? 'bg-purple-600 text-white border-purple-500 shadow-md'
-              : 'bg-[#141A23] text-[#9CA3AF] border-white/5 hover:text-white hover:bg-white/5'
+              : 'bg-[#141A23] text-[#9CA3AF] border-hairline-soft hover:text-white hover:bg-veil'
           }`}
         >
           Symulator
@@ -242,7 +242,7 @@ export function AchievementsSection({
                   ? 'border-[#10B981]/60 shadow-[0_0_20px_rgba(16,185,129,0.15)] bg-[#10B981]/[0.03]' 
                   : isEarned
                   ? 'border-amber-500/30 bg-[#141A23] shadow-[0_4px_20px_rgba(245,158,11,0.08)]'
-                  : 'border-white/5 bg-[#0D121B] opacity-65 grayscale'
+                  : 'border-hairline-soft bg-[#0D121B] opacity-65 grayscale'
               }`}
             >
               <div className="p-5">
@@ -263,7 +263,7 @@ export function AchievementsSection({
                   {/* Title & Desc */}
                   <div className="flex-1 min-w-0 pt-0.5">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <h3 className="font-black text-white text-sm sm:text-base">{ach.name}</h3>
+                      <h3 className="font-black text-text-strong text-sm sm:text-base">{ach.name}</h3>
                       <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md flex items-center gap-1 border ${
                         item.isFullyCompleted 
                           ? 'bg-amber-400/15 text-amber-300 border-amber-400/30' 
@@ -271,7 +271,7 @@ export function AchievementsSection({
                           ? 'bg-amber-500/15 text-amber-400 border-amber-500/30' 
                           : item.canClaim
                           ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
-                          : 'bg-white/5 text-[#8B8D98] border-white/5'
+                          : 'bg-veil text-[#8B8D98] border-hairline-soft'
                       }`}>
                         {item.isFullyCompleted 
                            ? 'Mistrz ★ (Zdobyta ✓)' 
@@ -286,7 +286,7 @@ export function AchievementsSection({
                   {/* Expand Toggle */}
                   <button 
                     onClick={() => setExpandedAchievementId(isExpanded ? null : ach.id)}
-                    className="p-1.5 rounded-lg text-[#9CA3AF] hover:text-white hover:bg-white/5 transition-colors shrink-0"
+                    className="p-1.5 rounded-lg text-[#9CA3AF] hover:text-text-strong hover:bg-veil transition-colors shrink-0"
                   >
                     {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                   </button>
@@ -294,10 +294,10 @@ export function AchievementsSection({
 
                 {/* Condition row for unearned achievements */}
                 {isLocked && nextTier && (
-                  <div className="mt-2.5 py-2 px-3 bg-white/[0.03] rounded-xl border border-white/5 flex items-center justify-between text-[11px]">
+                  <div className="mt-2.5 py-2 px-3 bg-white/[0.03] rounded-xl border border-hairline-soft flex items-center justify-between text-[11px]">
                     <div className="flex items-center gap-1.5 text-white/80">
                       <Lock size={12} className="text-amber-400/70" />
-                      <span>Warunek: <strong className="text-white font-bold">{nextTier.target} {ach.unit}</strong></span>
+                      <span>Warunek: <strong className="text-text-strong font-bold">{nextTier.target} {ach.unit}</strong></span>
                     </div>
                     <span className="text-[10px] font-bold text-[#8B8D98]">
                       Postęp: {item.currentValue} / {nextTier.target}
@@ -310,7 +310,7 @@ export function AchievementsSection({
                   <div className="mt-4">
                     <div className="flex justify-between items-center text-[11px] mb-2">
                       <span className="text-[#9CA3AF]">
-                        Ranga {nextTier.tier}: <strong className="text-white font-bold">{nextTier.tierName}</strong>
+                        Ranga {nextTier.tier}: <strong className="text-text-strong font-bold">{nextTier.tierName}</strong>
                       </span>
                       <span className="font-mono font-bold text-[#D1D5DB]">
                         {item.currentValue} / {nextTier.target} {ach.unit}
@@ -358,7 +358,7 @@ export function AchievementsSection({
                 )}
                 
                 {item.isFullyCompleted && (
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/5">
+                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-hairline-soft">
                     <div className="flex items-center gap-2 text-[12px] text-[#10B981] font-black">
                       <CheckCircle2 size={16} />
                       Wszystkie rangi zdobyte
@@ -393,7 +393,7 @@ export function AchievementsSection({
                               ? 'bg-[#10B981]/[0.05] border-[#10B981]/20 text-white' 
                               : isNext
                               ? 'bg-[#3B82F6]/[0.05] border-[#3B82F6]/30 text-white'
-                              : 'bg-white/[0.02] border-white/5 text-[#9CA3AF] opacity-60'
+                              : 'bg-white/[0.02] border-hairline-soft text-[#9CA3AF] opacity-60'
                           }`}
                         >
                           <div className="flex items-center gap-3">
@@ -402,7 +402,7 @@ export function AchievementsSection({
                                 ? 'bg-[#10B981]/20 text-[#10B981]' 
                                 : isNext
                                 ? 'bg-[#3B82F6]/20 text-[#00D2FF]'
-                                : 'bg-white/5 text-white/40'
+                                : 'bg-veil text-white/40'
                             }`}>
                               {isClaimed ? '✓' : t.tier}
                             </div>

@@ -348,16 +348,16 @@ function renderMicroContent(rawText?: string | any) {
           return (
             <div
               key={idx}
-              className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-[#0E1522]/90 border border-white/10 hover:border-amber-500/30 transition-all shadow-sm group"
+              className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-surface-panel/90 border border-hairline hover:border-amber-500/30 transition-all shadow-sm group"
             >
-              <span className="w-2 h-2 rounded-full bg-[#FFB800] shadow-[0_0_8px_rgba(255,184,0,0.6)] shrink-0 mt-2" />
+              <span className="w-2 h-2 rounded-full bg-jasne shadow-[0_0_8px_rgba(255,184,0,0.6)] shrink-0 mt-2" />
               <div className="flex-1 text-slate-200 text-sm sm:text-base leading-relaxed break-words font-normal">
                 {parts.map((part, pIdx) => {
                   if (!part) return null;
                   if (part.startsWith('**') && part.endsWith('**')) {
                     const boldText = part.slice(2, -2);
                     return (
-                      <strong key={pIdx} className="font-bold text-white tracking-wide mr-1">
+                      <strong key={pIdx} className="font-bold text-text-strong tracking-wide mr-1">
                         <MathRenderer content={boldText} />
                       </strong>
                     );
@@ -382,7 +382,7 @@ function renderMicroContent(rawText?: string | any) {
         if (part.startsWith('**') && part.endsWith('**')) {
           const boldText = part.slice(2, -2);
           return (
-            <strong key={index} className="font-bold text-white mr-1">
+            <strong key={index} className="font-bold text-text-strong mr-1">
               <MathRenderer content={boldText} />
             </strong>
           );
@@ -542,7 +542,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
     <div className="w-full space-y-4">
       {/* 1. Wyrazista definicja wprowadzająca (Hero Lead Definition) */}
       {leadDefinition && (
-        <div className="p-3.5 sm:p-4 rounded-xl border-l-4 border border-l-[#FFB800] border-white/10 bg-white/[0.03] text-slate-200 text-sm sm:text-base leading-relaxed shadow-sm">
+        <div className="p-3.5 sm:p-4 rounded-xl border-l-4 border border-l-[#FFB800] border-hairline bg-white/[0.03] text-slate-200 text-sm sm:text-base leading-relaxed shadow-sm">
           {renderMicroContent(leadDefinition)}
         </div>
       )}
@@ -553,7 +553,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
           {diagram ? (
             <MathDiagram diagram={diagram} borderless hideTitle={true} />
           ) : numberLine ? (
-            <div className="w-full max-w-lg bg-black/30 border border-white/10 p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
+            <div className="w-full max-w-lg bg-black/30 border border-hairline p-3 sm:p-4 rounded-2xl flex flex-col items-center gap-2">
               <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider self-start flex items-center gap-1.5">
                 <Target size={13} className="text-amber-400" />
                 <span>Interpretacja na osi liczbowej:</span>
@@ -574,7 +574,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
           <div className={`grid gap-2.5 ${supportingClauses.length === 1 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'}`}>
             {supportingClauses.map((clause, idx) => {
               let label = `Zasada ${idx + 1}`;
-              let dotColor = 'bg-[#FFB800]';
+              let dotColor = 'bg-jasne';
               let textColor = 'text-text-accent';
 
               const isLogarithm = /logarytm|\\log|\blog\b/i.test(textToParse) || /logarytm|\\log|\blog\b/i.test(clause);
@@ -627,7 +627,7 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
               return (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors flex flex-col gap-1.5 shadow-sm"
+                  className="p-3.5 rounded-xl bg-white/[0.02] border border-hairline-soft hover:border-hairline transition-colors flex flex-col gap-1.5 shadow-sm"
                 >
                   <span className={`text-[11px] font-bold uppercase tracking-wide flex items-center gap-1.5 ${textColor}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${dotColor}`} />
@@ -3483,9 +3483,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return (
       <div 
         id="session-celebration-screen"
-        className="fixed inset-0 z-50 bg-surface-bg/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 text-white select-none overflow-y-auto"
+        className="fixed inset-0 z-50 bg-surface-bg/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 text-text-strong select-none overflow-y-auto"
       >
-        <div className="w-full max-w-md mx-auto bg-[#0B0F19] rounded-3xl border border-white/10 flex flex-col items-center justify-center p-4 sm:p-6 text-white select-none relative shadow-2xl my-auto">
+        <div className="w-full max-w-md mx-auto bg-[#0B0F19] rounded-3xl border border-hairline flex flex-col items-center justify-center p-4 sm:p-6 text-white select-none relative shadow-2xl my-auto">
           <div className="w-full flex flex-col items-center justify-center text-center">
             
             {/* 1. Profesjonalny puchar Lucide Trophy w złotym okręgu sukcesu */}
@@ -3509,7 +3509,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-text-strong mb-2"
             >
               Lekcja {cleanLessonNumber} ukończona!
             </motion.h1>
@@ -3535,10 +3535,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               className="w-full grid grid-cols-2 gap-3 sm:gap-4 mb-5"
             >
               <div className="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center min-h-[90px] shadow-sm">
-                <div className="w-7 h-7 rounded-xl bg-[#FFB800]/15 border border-primary/30 flex items-center justify-center mb-1 text-text-accent">
+                <div className="w-7 h-7 rounded-xl bg-jasne/15 border border-primary/30 flex items-center justify-center mb-1 text-text-accent">
                   <Zap className="w-3.5 h-3.5 fill-[#FFB800] text-text-accent" />
                 </div>
-                <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">+{calculatedXp}</span>
+                <span className="text-xl sm:text-2xl font-bold text-text-strong tracking-tight leading-tight">+{calculatedXp}</span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">XP</span>
               </div>
 
@@ -3546,7 +3546,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <div className="w-7 h-7 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mb-1 text-amber-400">
                   <Coins className="w-3.5 h-3.5" />
                 </div>
-                <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">+{calculatedCoins}</span>
+                <span className="text-xl sm:text-2xl font-bold text-text-strong tracking-tight leading-tight">+{calculatedCoins}</span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">
                   {isPerfect ? 'Monet (+5 Czysta)' : 'Monet'}
                 </span>
@@ -3556,7 +3556,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <div className="w-7 h-7 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center mb-1 text-orange-400">
                   <Flame className="w-3.5 h-3.5" />
                 </div>
-                <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
+                <span className="text-xl sm:text-2xl font-bold text-text-strong tracking-tight leading-tight">
                   {streakDays === 1 ? '1 dzień' : `${streakDays} dni`}
                 </span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Seria</span>
@@ -3566,7 +3566,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <div className="w-7 h-7 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-1 text-emerald-400">
                   <Clock className="w-3.5 h-3.5" />
                 </div>
-                <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">{formattedHumanTime}</span>
+                <span className="text-xl sm:text-2xl font-bold text-text-strong tracking-tight leading-tight">{formattedHumanTime}</span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Czas</span>
               </div>
             </motion.div>
@@ -3613,7 +3613,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <button
                     id="session-celebration-return-button"
                     onClick={() => handleFinishSession(false)}
-                    className="w-full py-3 px-6 rounded-2xl font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer"
+                    className="w-full py-3 px-6 rounded-2xl font-semibold text-slate-300 hover:text-text-strong bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer"
                   >
                     <span>Wróć do mapy lekcji</span>
                   </button>
@@ -3652,12 +3652,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     >
       <div 
         id="session-runner-container"
-        className="w-full h-full flex flex-col justify-between overflow-hidden relative text-white bg-surface-bg rounded-none border-0 shadow-none transition-all duration-200"
+        className="w-full h-full flex flex-col justify-between overflow-hidden relative text-text-strong bg-surface-bg rounded-none border-0 shadow-none transition-all duration-200"
       >
       {/* ================= DEDICATED FOCUS SESSION BAR ================= */}
       <header 
         id="session-header"
-        className="w-full shrink-0 bg-[#0B0F19] border-b border-white/10 z-20 sticky top-0"
+        className="w-full shrink-0 bg-[#0B0F19] border-b border-hairline z-20 sticky top-0"
       >
         <div className="w-full mx-auto px-3 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 transition-all max-w-3xl lg:max-w-4xl">
           {/* Lewa strona: Przycisk wyjścia [X] + Etykieta fazy / Pasek postępu z celem */}
@@ -3665,7 +3665,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             <button
               id="session-exit-button"
               onClick={() => setShowExitModal(true)}
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 shrink-0 flex items-center justify-center cursor-pointer border border-white/5"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl text-slate-400 hover:text-text-strong hover:bg-slate-800 transition active:scale-95 shrink-0 flex items-center justify-center cursor-pointer border border-hairline-soft"
               title="Przerwij sesję"
               aria-label="Przerwij sesję"
             >
@@ -3741,7 +3741,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-sm'
                             : isActive
                               ? 'bg-amber-950/50 border border-primary shadow-sm ring-1 ring-primary/50'
-                              : 'bg-slate-900/90 border border-white/10 shadow-inner'
+                              : 'bg-slate-900/90 border border-hairline shadow-inner'
                         }`}
                       >
                         <motion.div
@@ -3759,7 +3759,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             isDone
                               ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 shadow-sm'
                               : isActive
-                                ? 'bg-gradient-to-r from-[#FF8800] via-[#FFB800] to-[#FFE082] shadow-sm animate-pulse'
+                                ? 'bg-gradient-to-r from-[#FF8800] via-primary to-[#FFE082] shadow-sm animate-pulse'
                                 : 'bg-transparent'
                           }`}
                         >
@@ -3906,7 +3906,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
                           <Heart size={16} className="text-rose-500 fill-rose-500" />
-                          <span className="font-bold text-white text-sm">Twoje serca</span>
+                          <span className="font-bold text-text-strong text-sm">Twoje serca</span>
                         </div>
                         <span className="text-xs font-mono font-bold text-slate-300">
                           {heartsData.isPro ? 'Nielimitowane' : `${heartsData.hearts} / ${heartsData.maxHearts}`}
@@ -3914,7 +3914,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       </div>
 
                       {/* 5 Serc Wizualnie */}
-                      <div className="flex items-center justify-center gap-2 py-2 mb-3 bg-slate-900/60 rounded-xl border border-white/5">
+                      <div className="flex items-center justify-center gap-2 py-2 mb-3 bg-slate-900/60 rounded-xl border border-hairline-soft">
                         {Array.from({ length: heartsData.maxHearts }).map((_, idx) => {
                           const hasHeart = idx < heartsData.hearts || heartsData.isPro;
                           return (
@@ -3933,7 +3933,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                       {/* Timer regeneracji */}
                       {!heartsData.isPro && heartsData.hearts < heartsData.maxHearts && (
-                        <div className="flex items-center justify-between text-xs text-slate-400 mb-3 bg-slate-950/40 p-2.5 rounded-lg border border-white/5">
+                        <div className="flex items-center justify-between text-xs text-slate-400 mb-3 bg-slate-950/40 p-2.5 rounded-lg border border-hairline-soft">
                           <div className="flex items-center gap-1.5">
                             <Clock size={13} className="text-text-accent" />
                             <span>Kolejne serce za:</span>
@@ -3993,7 +3993,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-800/60 border border-slate-700/80 text-[11px] sm:text-xs shrink-0 select-none shadow-sm">
                   <span className="text-slate-400 font-medium hidden sm:inline">Cel:</span>
-                  <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-text-accent font-black") : "text-white font-bold"}>
+                  <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-text-accent font-black") : "text-text-strong font-bold"}>
                     {correctAnswersCount}
                   </span>
                   <span className="text-slate-600 font-normal">/</span>
@@ -4006,7 +4006,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   title={`Stan portfela: ${currentCoins} monet`}
                 >
                   <Coins className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  <span className="font-bold text-white tracking-wide">{currentCoins}</span>
+                  <span className="font-bold text-text-strong tracking-wide">{currentCoins}</span>
                 </div>
               </>
             )}
@@ -4063,7 +4063,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     return (
                       <div
                         key={idx}
-                        className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center bg-slate-950/80 border border-white/10 shadow-inner overflow-hidden"
+                        className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center bg-slate-950/80 border border-hairline shadow-inner overflow-hidden"
                       >
                         {/* Empty Vessel Bed (Always present underneath - subtle gray outline) */}
                         <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7 absolute pointer-events-none" fill="none">
@@ -4247,7 +4247,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
         {isTheoryStep ? (
           <div id="session-theory-pill-content" className="w-full max-w-3xl lg:max-w-4xl mx-auto space-y-4 pt-3 sm:pt-4">
             {/* Minimalistyczne zakładki z dolnym akcentem (underline tabs) */}
-            <div className="w-full border-b border-white/10 flex items-center justify-between gap-1 sm:gap-2 px-1 pb-px">
+            <div className="w-full border-b border-hairline flex items-center justify-between gap-1 sm:gap-2 px-1 pb-px">
               {(isPolishSession
                 ? [
                     { id: 0, title: (theoryPill as any)?.book_summary ? 'Lektura' : 'W pigułce', icon: (theoryPill as any)?.book_summary ? BookOpen : Compass },
@@ -4283,7 +4283,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       isActive
                         ? 'text-amber-400 font-bold'
                         : isDone
-                          ? 'text-slate-300 hover:text-white'
+                          ? 'text-slate-300 hover:text-text-strong'
                           : 'text-slate-400 hover:text-slate-200'
                     }`}
                     aria-label={`Przejdź do zakładki: ${step.title}`}
@@ -4340,7 +4340,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               {polishTheory?.module || 'Język polski CKE'}
                             </span>
                             {polishTheory?.epoch && (
-                              <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-white/10 flex items-center gap-1.5">
+                              <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-hairline flex items-center gap-1.5">
                                 <Feather size={12} className="text-amber-400" />
                                 {polishTheory.epoch}
                               </span>
@@ -4355,7 +4355,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                           {/* Tytuł lekcji & Podtytuł */}
                           <div className="flex flex-col gap-1">
-                            <h2 className="text-base sm:text-xl font-black text-white tracking-tight leading-snug">
+                            <h2 className="text-base sm:text-xl font-black text-text-strong tracking-tight leading-snug">
                               {theoryPill?.title || lessonTitle}
                             </h2>
                             {polishTheory?.subtitle && (
@@ -4367,7 +4367,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                           {/* Esencja / Główna definicja */}
                           {leadText && (
-                            <div className="p-3.5 sm:p-4 rounded-xl border-l-4 border-l-[#FFB800] border border-white/10 bg-black/40 text-slate-200 text-xs sm:text-sm leading-relaxed shadow-inner">
+                            <div className="p-3.5 sm:p-4 rounded-xl border-l-4 border-l-[#FFB800] border border-hairline bg-black/40 text-slate-200 text-xs sm:text-sm leading-relaxed shadow-inner">
                               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block mb-1">
                                 Wprowadzenie & Sens Zagadnienia:
                               </span>
@@ -4401,7 +4401,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {/* 3. GŁÓWNE FILARY WIEDZY CKE (Bento Grid) */}
                         {polishTheory?.theoryPoints && polishTheory.theoryPoints.length > 0 && (
-                          <section className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-amber-500/20 flex flex-col gap-3.5">
+                          <section className="rounded-2xl p-4 sm:p-5 bg-surface-panel border border-amber-500/20 flex flex-col gap-3.5">
                             <div className="flex items-center justify-between gap-2 flex-wrap">
                               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
                                 <BookmarkCheck size={16} className="text-text-accent shrink-0" />
@@ -4416,13 +4416,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               {polishTheory.theoryPoints.map((point, pIdx) => (
                                 <div
                                   key={pIdx}
-                                  className="rounded-xl p-3.5 sm:p-4 bg-slate-950/70 border border-white/10 flex flex-col gap-2 hover:border-amber-500/30 transition-colors shadow-sm"
+                                  className="rounded-xl p-3.5 sm:p-4 bg-slate-950/70 border border-hairline flex flex-col gap-2 hover:border-amber-500/30 transition-colors shadow-sm"
                                 >
-                                  <div className="flex items-center gap-2 border-b border-white/5 pb-2">
+                                  <div className="flex items-center gap-2 border-b border-hairline-soft pb-2">
                                     <span className="w-6 h-6 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-mono text-xs font-bold flex items-center justify-center shrink-0">
                                       {String(pIdx + 1).padStart(2, '0')}
                                     </span>
-                                    <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight flex-1">
+                                    <h4 className="text-xs sm:text-sm font-bold text-text-strong tracking-tight flex-1">
                                       {point.title}
                                     </h4>
                                   </div>
@@ -4458,7 +4458,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                     Przewodnik po lekturze i motywach CKE
                                   </span>
                                   {bookSummary.title && (
-                                    <h3 className="text-sm sm:text-base font-black text-white">
+                                    <h3 className="text-sm sm:text-base font-black text-text-strong">
                                       {bookSummary.title} {bookSummary.author ? `• ${bookSummary.author}` : ''}
                                     </h3>
                                   )}
@@ -4478,7 +4478,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   <BookOpen className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                                   <span>Zwięzłe streszczenie fabuły</span>
                                 </span>
-                                <div className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-black/40 p-3.5 sm:p-4 rounded-xl border border-white/5 whitespace-pre-line shadow-inner">
+                                <div className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-black/40 p-3.5 sm:p-4 rounded-xl border border-hairline-soft whitespace-pre-line shadow-inner">
                                   {renderMicroContent(bookSummary.plot_overview)}
                                 </div>
                               </div>
@@ -4486,7 +4486,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                             {/* Oś kluczowych wydarzeń */}
                             {bookSummary.key_events && bookSummary.key_events.length > 0 && (
-                              <div className="space-y-2 pt-1 border-t border-white/5">
+                              <div className="space-y-2 pt-1 border-t border-hairline-soft">
                                 <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
                                   <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                   <span>Kluczowy ciąg wydarzeń (oś dramatyczna)</span>
@@ -4506,14 +4506,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                             {/* Bohaterowie i relacje */}
                             {bookSummary.characters && bookSummary.characters.length > 0 && (
-                              <div className="space-y-2 pt-1 border-t border-white/5">
+                              <div className="space-y-2 pt-1 border-t border-hairline-soft">
                                 <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
                                   <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                                   <span>Kluczowi bohaterowie i ich role</span>
                                 </span>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                   {bookSummary.characters.map((ch: any, chIdx: number) => (
-                                    <div key={chIdx} className="p-2.5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col gap-0.5">
+                                    <div key={chIdx} className="p-2.5 rounded-xl bg-slate-950/60 border border-hairline-soft flex flex-col gap-0.5">
                                       <span className="text-xs font-bold text-rose-300">{ch.name}</span>
                                       <span className="text-[11px] text-slate-400 leading-snug">{ch.role}</span>
                                     </div>
@@ -4524,7 +4524,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                             {/* Kluczowe sceny maturalne */}
                             {bookSummary.key_scenes && bookSummary.key_scenes.length > 0 && (
-                              <div className="space-y-2 pt-1 border-t border-white/5">
+                              <div className="space-y-2 pt-1 border-t border-hairline-soft">
                                 <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
                                   <GraduationCap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                                   <span>Sceny o fundamentalnym znaczeniu maturalnym</span>
@@ -4598,7 +4598,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {/* 7. MINI-WYZWANIE BRAMKOWE (ACTIVE RECALL) */}
                         {gatekeeper && (
-                          <section className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.08)] flex flex-col gap-3.5">
+                          <section className="rounded-2xl p-4 sm:p-5 bg-surface-panel border border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.08)] flex flex-col gap-3.5">
                             <div className="flex items-center justify-between gap-2 flex-wrap">
                               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
                                 <Target size={16} className="text-text-accent shrink-0" />
@@ -4609,7 +4609,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               </span>
                             </div>
 
-                            <p className="text-xs sm:text-sm font-semibold text-white leading-relaxed">
+                            <p className="text-xs sm:text-sm font-semibold text-text-strong leading-relaxed">
                               {renderMicroContent(gatekeeper.question)}
                             </p>
 
@@ -4620,14 +4620,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                 const isThisCorrect = optIdx === gatekeeper.correctIndex;
                                 const showResult = isGatekeeperAnswered;
 
-                                let btnStyle = 'bg-slate-950/60 border-white/10 hover:border-amber-500/40 text-slate-200';
+                                let btnStyle = 'bg-slate-950/60 border-hairline hover:border-amber-500/40 text-slate-200';
                                 if (showResult) {
                                   if (isThisCorrect) {
                                     btnStyle = 'bg-emerald-500/15 border-emerald-500/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.2)]';
                                   } else if (isSelected) {
                                     btnStyle = 'bg-rose-500/15 border-rose-500/50 text-rose-200';
                                   } else {
-                                    btnStyle = 'bg-slate-950/40 border-white/5 text-slate-400 opacity-60';
+                                    btnStyle = 'bg-slate-950/40 border-hairline-soft text-slate-400 opacity-60';
                                   }
                                 }
 
@@ -4651,7 +4651,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                     className={`w-full text-left p-3 rounded-xl border transition-all text-xs sm:text-sm flex items-center justify-between gap-3 ${btnStyle} cursor-pointer`}
                                   >
                                     <div className="flex items-center gap-2.5 flex-1">
-                                      <span className="w-5 h-5 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">
+                                      <span className="w-5 h-5 rounded-md bg-veil border border-hairline text-[10px] font-mono font-bold flex items-center justify-center shrink-0">
                                         {String.fromCharCode(65 + optIdx)}
                                       </span>
                                       <span className="leading-snug">{renderMicroContent(opt)}</span>
@@ -4733,7 +4733,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-400">
                                 Złota zasada maturalna („Z polskiego na nasze”)
                               </span>
-                              <p className="text-xs sm:text-sm font-semibold text-white leading-relaxed">
+                              <p className="text-xs sm:text-sm font-semibold text-text-strong leading-relaxed">
                                 {renderMicroContent(polishTheory?.goldenRules?.[0] || theoryPill?.keyTakeaway || '')}
                               </p>
                             </div>
@@ -4748,24 +4748,24 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {/* 1. HERO HEADER: Etykiety i tytuł */}
                         <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#151D2C] via-[#0E1522] to-[#0A0F1A] border border-primary/30 shadow-[0_4px_24px_rgba(255,184,0,0.08)] flex flex-col gap-3">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/15 text-[#FFDCA1] border border-primary/30 flex items-center gap-1.5 shadow-sm">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-jasne/15 text-accent-soft border border-primary/30 flex items-center gap-1.5 shadow-sm">
+                              <span className="w-1.5 h-1.5 rounded-full bg-jasne" />
                               Język angielski CKE
                             </span>
                             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
                               <Flame size={12} className="text-amber-400" />
                               {pewniakData.ckeFrequency}
                             </span>
-                            <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-white/10">
+                            <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-hairline">
                               Poziom B1+ (Formuła 2023)
                             </span>
                           </div>
 
                           <div className="flex flex-col gap-1">
-                            <h2 className="text-base sm:text-xl font-black text-white tracking-tight leading-snug">
+                            <h2 className="text-base sm:text-xl font-black text-text-strong tracking-tight leading-snug">
                               {theoryPill?.title || lessonTitle}
                             </h2>
-                            <p className="text-xs sm:text-sm font-medium text-[#FFDCA1]/90">
+                            <p className="text-xs sm:text-sm font-medium text-accent-soft/90">
                               Pewniaki maturalne, schematy form gramatycznych i kluczowe reguły CKE
                             </p>
                           </div>
@@ -4777,7 +4777,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {/* 3. KONTRAST CKE: DO vs DON'T (STANDARD VS TYPOWY BŁĄD) */}
                         {pewniakData.doVsDont && (
                           <section className="rounded-2xl border-2 border-slate-700/80 bg-[#0B101D] p-4 sm:p-5 shadow-xl space-y-3">
-                            <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-2 flex-wrap">
+                            <div className="flex items-center justify-between gap-2 border-b border-hairline pb-2 flex-wrap">
                               <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-amber-400" />
                                 <span className="text-xs font-black uppercase text-slate-300 tracking-wider">
@@ -4848,7 +4848,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <section className="flex flex-col gap-2.5">
                         <div className="flex flex-col items-start gap-1">
                           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-jasne" />
                             <span>ESENCJA POJĘCIA CKE</span>
                           </div>
                         </div>
@@ -4868,19 +4868,19 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       )}
 
                       {theoryPill?.algorithm_steps && theoryPill.algorithm_steps.length > 0 && (
-                        <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-3 border bg-[#121B2C] border-white/10 shadow-sm">
+                        <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-3 border bg-[#121B2C] border-hairline shadow-sm">
                           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
                             <Zap className="w-4 h-4 text-text-accent" />
                             <span>Algorytm postępowania CKE (Krok po kroku)</span>
                           </div>
                           <div className="space-y-2.5">
                             {theoryPill.algorithm_steps.map((st: any, sIdx: number) => (
-                              <div key={sIdx} className="p-3.5 rounded-xl bg-[#090D15] border border-white/5 flex items-start gap-3">
-                                <span className="w-6 h-6 rounded-lg bg-[#FFB800]/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                              <div key={sIdx} className="p-3.5 rounded-xl bg-[#090D15] border border-hairline-soft flex items-start gap-3">
+                                <span className="w-6 h-6 rounded-lg bg-jasne/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                                   {st.stepNumber || sIdx + 1}
                                 </span>
                                 <div className="min-w-0 flex-1 space-y-0.5">
-                                  <h4 className="text-xs font-bold text-white">{st.title}</h4>
+                                  <h4 className="text-xs font-bold text-text-strong">{st.title}</h4>
                                   <p className="text-xs text-slate-300 leading-relaxed">
                                     <MathRenderer content={st.description} />
                                   </p>
@@ -4978,7 +4978,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                       <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold text-xs flex items-center justify-center shrink-0">
                                         {String(cIdx + 1).padStart(2, '0')}
                                       </span>
-                                      <h4 className="text-sm sm:text-base font-bold text-white tracking-wide">
+                                      <h4 className="text-sm sm:text-base font-bold text-text-strong tracking-wide">
                                         {concept.name}
                                       </h4>
                                     </div>
@@ -5091,12 +5091,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     const formulas = getCoreFormulas(theoryPill?.core_formulas || theoryPill?.coreFormulaLatex);
                     return (
                       <section className="w-full flex flex-col gap-3.5">
-                        <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                        <div className="flex items-center justify-between gap-2 border-b border-hairline-soft pb-2.5">
                           <div className="flex items-center gap-2.5">
                             <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 bg-amber-500/15 text-text-accent border-amber-500/30">
                               <BookOpen className="w-4 h-4" />
                             </div>
-                            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-strong">
                               WYBRANE WZORY MATEMATYCZNE CKE
                             </h3>
                           </div>
@@ -5122,13 +5122,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               return (
                                 <div
                                   key={fIdx}
-                                  className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-white/10 hover:border-primary/30 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-3 group"
+                                  className="rounded-2xl p-4 sm:p-5 bg-surface-panel border border-hairline hover:border-primary/30 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-3 group"
                                 >
                                   {/* Nagłówek: Numer, Tytuł i Karta wzorów */}
                                   {item.title && (
-                                    <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5 flex-wrap">
+                                    <div className="flex items-center justify-between gap-2 border-b border-hairline-soft pb-2.5 flex-wrap">
                                       <div className="flex items-center gap-2">
-                                        <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-primary/25 text-[10px] font-mono font-bold text-text-accent flex items-center justify-center shrink-0">
+                                        <span className="w-5 h-5 rounded-md bg-jasne/10 border border-primary/25 text-[10px] font-mono font-bold text-text-accent flex items-center justify-center shrink-0">
                                           {String(fIdx + 1).padStart(2, '0')}
                                         </span>
                                         <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
@@ -5159,7 +5159,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   {/* Kaseton wzoru KaTeX */}
                                   {item.latex && (
                                     <div 
-                                      className="w-full px-3 py-1.5 sm:py-2.5 bg-black/40 border border-white/5 rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full"
+                                      className="w-full px-3 py-1.5 sm:py-2.5 bg-black/40 border border-hairline-soft rounded-xl overflow-x-auto text-center text-white scrollbar-thin shadow-inner max-w-full"
                                       style={{ WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)', maskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
                                     >
                                       <div className="inline-block w-fit min-w-full mx-auto text-center">
@@ -5188,11 +5188,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                                   {/* Przykład jako elegancki nagłówek z wycentrowanym wzorem pod spodem */}
                                   {item.example && (
-                                    <div className="pt-2 border-t border-white/5 space-y-1.5">
+                                    <div className="pt-2 border-t border-hairline-soft space-y-1.5">
                                       <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block">
                                         Przykład zastosowania:
                                       </span>
-                                      <div className="w-full py-2.5 px-3 bg-surface-bg border border-white/5 rounded-xl text-center overflow-x-auto max-w-full">
+                                      <div className="w-full py-2.5 px-3 bg-surface-bg border border-hairline-soft rounded-xl text-center overflow-x-auto max-w-full">
                                         <div className="inline-block min-w-full text-center">
                                           <MathRenderer content={item.example} />
                                         </div>
@@ -5221,8 +5221,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             })}
                           </div>
                         ) : (
-                          <div className="rounded-2xl p-5 sm:p-6 bg-[#0E1522] border border-amber-500/25 shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-4">
-                            <div className="flex items-start gap-3 pb-3 border-b border-white/10">
+                          <div className="rounded-2xl p-5 sm:p-6 bg-surface-panel border border-amber-500/25 shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-4">
+                            <div className="flex items-start gap-3 pb-3 border-b border-hairline">
                               <div className="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
                                 <AlertTriangle className="w-4 h-4" />
                               </div>
@@ -5339,7 +5339,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm bg-rose-500/15 text-rose-400 border-rose-500/30">
                                 <FileText className="w-4 h-4" />
                               </div>
-                              <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+                              <h3 className="text-sm sm:text-base font-bold text-text-strong tracking-tight">
                                 Ramy kulturowe i credo epoki
                               </h3>
                             </div>
@@ -5459,10 +5459,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               className={`rounded-2xl p-4 sm:p-5 border flex flex-col gap-4 shadow-sm ${
                                 isEnglishSession
                                   ? 'bg-[#0E1726]/60 border-emerald-500/25'
-                                  : 'bg-[#0E1522]/80 border-white/10'
+                                  : 'bg-surface-panel/80 border-hairline'
                               }`}
                             >
-                              <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                              <div className="flex items-center justify-between gap-2 border-b border-hairline-soft pb-2.5">
                                 <div className="flex items-center gap-2.5">
                                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm ${
                                     isPolishSession 
@@ -5473,7 +5473,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   }`}>
                                     <FileText className="w-4 h-4" />
                                   </div>
-                                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-strong">
                                     {sectionTitle}
                                   </h3>
                                 </div>
@@ -5481,7 +5481,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full shrink-0 border ${
                                     isEnglishSession
                                       ? 'text-emerald-300 bg-emerald-500/10 border-emerald-500/25'
-                                      : 'text-slate-400 bg-white/[0.04] border-white/10'
+                                      : 'text-slate-400 bg-white/[0.04] border-hairline'
                                   }`}>
                                     {normExample.steps.length} {normExample.steps.length === 1 ? 'krok' : normExample.steps.length < 5 ? 'kroki' : 'kroków'}
                                   </span>
@@ -5494,11 +5494,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   isPolishSession
                                     ? 'bg-amber-500/[0.04] border-amber-500/30'
                                     : isEnglishSession
-                                      ? 'bg-[#0E1522] border-primary/25'
-                                      : 'bg-[#0E1522] border-white/10'
+                                      ? 'bg-surface-panel border-primary/25'
+                                      : 'bg-surface-panel border-hairline'
                                 }`}>
                                   <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider block ${
-                                    isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-[#FFDCA1]' : 'text-text-accent'
+                                    isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-accent-soft' : 'text-text-accent'
                                   }`}>
                                     {isPolishSession ? polishSectionLabel : 'Treść zadania'}
                                   </span>
@@ -5535,7 +5535,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                       return (
                                         <div 
                                           key={sIdx} 
-                                          className="rounded-xl p-3.5 sm:p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 flex flex-col gap-2 transition-all shadow-sm min-w-0 max-w-full"
+                                          className="rounded-xl p-3.5 sm:p-4 bg-white/[0.02] border border-hairline-soft hover:border-hairline flex flex-col gap-2 transition-all shadow-sm min-w-0 max-w-full"
                                         >
                                           <div className="flex items-center gap-2.5 flex-wrap">
                                             <span className={`px-2 py-0.5 rounded-md font-mono text-xs font-bold shrink-0 border ${
@@ -5548,7 +5548,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                               Krok {st.num}
                                             </span>
                                             {cleanLabel && (
-                                              <span className="text-xs sm:text-sm font-bold text-white tracking-tight">
+                                              <span className="text-xs sm:text-sm font-bold text-text-strong tracking-tight">
                                                 {cleanLabel}
                                               </span>
                                             )}
@@ -5574,7 +5574,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                       {isPolishSession ? 'Wniosek egzaminatora' : isEnglishSession ? 'Wzorcowa odpowiedź' : 'Odpowiedź końcowa'}
                                     </span>
                                   </div>
-                                  <div className="text-base sm:text-lg font-black text-white bg-slate-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-lg shadow-inner self-stretch sm:self-auto text-center sm:text-right min-w-0 max-w-full break-words overflow-x-auto touch-pan-x">
+                                  <div className="text-base sm:text-lg font-black text-text-strong bg-slate-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-lg shadow-inner self-stretch sm:self-auto text-center sm:text-right min-w-0 max-w-full break-words overflow-x-auto touch-pan-x">
                                     {isPolishSession || isEnglishSession ? (
                                       <span>{displayResult}</span>
                                     ) : (
@@ -5611,12 +5611,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   className="space-y-4"
                 >
                   <section className="w-full flex flex-col gap-3.5">
-                    <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                    <div className="flex items-center justify-between gap-2 border-b border-hairline-soft pb-2.5">
                       <div className="flex items-center gap-2.5">
                         <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm bg-rose-500/15 text-rose-400 border-rose-500/30 shrink-0">
                           <ShieldAlert className="w-4 h-4" />
                         </div>
-                        <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
+                        <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-text-strong">
                           PUŁAPKA EGZAMINACYJNA CKE
                         </h3>
                       </div>
@@ -5837,11 +5837,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
 
                 {(currentTask?.image || currentTask?.imageUrl) && (
-                  <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4 flex flex-col items-center gap-2">
+                  <div className="rounded-2xl border border-hairline bg-slate-900/60 p-4 flex flex-col items-center gap-2">
                     <img 
                       src={currentTask.image?.imageUrl || currentTask.imageUrl} 
                       alt={currentTask.image?.imageAlt || currentTask.imageCaption || 'Materiał ikonograficzny'}
-                      className="max-h-64 rounded-xl object-contain border border-white/10"
+                      className="max-h-64 rounded-xl object-contain border border-hairline"
                     />
                     {(currentTask.image?.imageCaption || currentTask.imageCaption) && (
                       <span className="text-xs text-slate-400 text-center italic">
@@ -5922,11 +5922,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 animate={{ opacity: 1, scale: 1 }}
                 className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-primary/50 shadow-md shadow-black/20 flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
               >
-                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB800]/30 to-amber-600/40 border border-primary/60 flex items-center justify-center mb-3 shadow-sm">
+                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/30 to-amber-600/40 border border-primary/60 flex items-center justify-center mb-3 shadow-sm">
                   <Loader2 className="w-7 h-7 text-text-accent animate-spin shrink-0" />
                   <div className="absolute inset-0 rounded-2xl border border-primary/40 animate-ping opacity-25" />
                 </div>
-                <h4 className="font-bold text-white text-base sm:text-lg mb-1">
+                <h4 className="font-bold text-text-strong text-base sm:text-lg mb-1">
                   Egzaminator AI analizuje Twoje rozwiązanie...
                 </h4>
                 <p className="text-xs sm:text-sm text-amber-200/90 max-w-md">
@@ -5944,16 +5944,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="rounded-3xl bg-[#0E1524] border border-white/10 p-5 sm:p-6 shadow-2xl shadow-black/50 space-y-4"
+                className="rounded-3xl bg-[#0E1524] border border-hairline p-5 sm:p-6 shadow-2xl shadow-black/50 space-y-4"
               >
                 {/* Header: Egzaminator CKE + Score Badge */}
-                <div className="flex items-center justify-between gap-3 flex-wrap pb-3 border-b border-white/5">
+                <div className="flex items-center justify-between gap-3 flex-wrap pb-3 border-b border-hairline-soft">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#FFB800]/15 border border-primary/30 flex items-center justify-center text-text-accent shadow-sm">
+                    <div className="w-10 h-10 rounded-2xl bg-jasne/15 border border-primary/30 flex items-center justify-center text-text-accent shadow-sm">
                       <GraduationCap size={20} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-base leading-tight">
+                      <h4 className="font-bold text-text-strong text-base leading-tight">
                         Ocena Egzaminatora CKE
                       </h4>
                       <span className="text-xs text-slate-400">
@@ -6004,14 +6004,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         <Feather size={14} className="text-rose-400" />
                         <span>Karta Oceny CKE (4 Oficjalne Kryteria Egzaminacyjne):</span>
                       </span>
-                      <span className="font-mono text-white font-black text-xs sm:text-sm">
+                      <span className="font-mono text-text-strong font-black text-xs sm:text-sm">
                         {tutorEvaluation.score} / 35 PKT
                       </span>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                       {tutorEvaluation.criteriaBreakdown.formal && (
-                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-hairline-soft flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
                             <span>I. Warunki formalne</span>
                             <span className="font-mono text-emerald-400 font-bold">
@@ -6025,7 +6025,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       )}
 
                       {tutorEvaluation.criteriaBreakdown.literary_cultural && (
-                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-hairline-soft flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
                             <span>II. Lektura i konteksty</span>
                             <span className="font-mono text-rose-400 font-bold">
@@ -6039,7 +6039,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       )}
 
                       {tutorEvaluation.criteriaBreakdown.composition && (
-                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-hairline-soft flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
                             <span>III. Kompozycja tekstu</span>
                             <span className="font-mono text-amber-400 font-bold">
@@ -6053,7 +6053,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       )}
 
                       {tutorEvaluation.criteriaBreakdown.language_style && (
-                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col gap-1">
+                        <div className="p-2.5 rounded-xl bg-slate-950/70 border border-hairline-soft flex flex-col gap-1">
                           <div className="flex items-center justify-between font-semibold text-slate-300">
                             <span>IV. Język i styl</span>
                             <span className="font-mono text-sky-400 font-bold">
@@ -6070,7 +6070,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 )}
 
                 {/* Unified, Clean Feedback Section */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/70 border border-white/5 space-y-3.5">
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/70 border border-hairline-soft space-y-3.5">
                   {/* Commentary */}
                   <div className="space-y-1.5">
                     <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5 tracking-wide">
@@ -6086,7 +6086,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   {tutorEvaluation.ckeFeedback && 
                    tutorEvaluation.ckeFeedback !== tutorEvaluation.mentorComment && 
                    !tutorEvaluation.mentorComment?.includes(tutorEvaluation.ckeFeedback) && (
-                    <div className="pt-2.5 border-t border-white/5 space-y-1">
+                    <div className="pt-2.5 border-t border-hairline-soft space-y-1">
                       <div className="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
                         <ShieldCheck size={13} className="text-text-accent" />
                         <span>Kryteria punktacji CKE:</span>
@@ -6099,7 +6099,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                   {/* Strengths */}
                   {tutorEvaluation.strengths && tutorEvaluation.strengths.length > 0 && (
-                    <div className="pt-2.5 border-t border-white/5 space-y-1.5">
+                    <div className="pt-2.5 border-t border-hairline-soft space-y-1.5">
                       <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wide block">
                         {isPolishSession ? 'Mocne strony Twojej odpowiedzi:' : 'Zrealizowane etapy rozwiązania:'}
                       </span>
@@ -6118,7 +6118,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                   {/* Errors / Recommendations */}
                   {tutorEvaluation.errors && tutorEvaluation.errors.length > 0 && (
-                    <div className="pt-2.5 border-t border-white/5 space-y-1.5">
+                    <div className="pt-2.5 border-t border-hairline-soft space-y-1.5">
                       <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wide block">
                         Wskazówki do arkusza maturalnego:
                       </span>
@@ -6137,7 +6137,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                   {/* Suggestion banner */}
                   {Boolean(tutorEvaluation.suggestion && tutorEvaluation.suggestion.trim()) && (
-                    <div className="pt-2.5 border-t border-white/5 flex items-start gap-2.5 text-xs text-emerald-300 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
+                    <div className="pt-2.5 border-t border-hairline-soft flex items-start gap-2.5 text-xs text-emerald-300 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
                       <Lightbulb size={15} className="text-emerald-400 shrink-0 mt-0.5" />
                       <div className="leading-relaxed">
                         <span className="font-bold text-emerald-300">Wskazówka egzaminatora: </span>
@@ -6163,11 +6163,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     </span>
                   </button>
                   {showModelSolution && (
-                    <div className="p-4 pt-0 border-t border-white/5 text-xs sm:text-sm text-slate-200 space-y-2.5 max-h-64 overflow-y-auto">
+                    <div className="p-4 pt-0 border-t border-hairline-soft text-xs sm:text-sm text-slate-200 space-y-2.5 max-h-64 overflow-y-auto">
                       {currentTask?.modelSolutionSteps && currentTask.modelSolutionSteps.length > 0 ? (
                         <div className="space-y-2 pt-3">
                           {currentTask.modelSolutionSteps.map((step: any, sIdx: number) => (
-                            <div key={sIdx} className="p-3 rounded-xl bg-slate-950/70 border border-white/5">
+                            <div key={sIdx} className="p-3 rounded-xl bg-slate-950/70 border border-hairline-soft">
                               <span className="text-xs font-bold text-text-accent block mb-1">
                                 Krok {step.step_num}: {step.description}
                               </span>
@@ -6176,7 +6176,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ))}
                         </div>
                       ) : (
-                        <div className="p-3 rounded-xl bg-slate-950/70 border border-white/5 pt-3 mt-3">
+                        <div className="p-3 rounded-xl bg-slate-950/70 border border-hairline-soft pt-3 mt-3">
                           <MathRenderer content={currentTask?.officialKey || currentTask?.explanation || ''} />
                         </div>
                       )}
@@ -6272,9 +6272,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     let cardClass = 'group relative flex flex-col p-3.5 sm:p-4 rounded-2xl border transition-all duration-200 cursor-pointer text-left select-none min-h-[64px] sm:min-h-[72px] justify-center ';
                     if (!isEvaluated) {
                       if (isOptSelected) {
-                        cardClass += 'bg-[#FFB800]/10 border-primary shadow-sm ring-2 ring-primary/20';
+                        cardClass += 'bg-jasne/10 border-primary shadow-sm ring-2 ring-primary/20';
                       } else {
-                        cardClass += 'bg-[#0E1522]/90 hover:bg-[#141D2E] border-white/[0.06] hover:border-white/[0.14] text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)]';
+                        cardClass += 'bg-surface-panel/90 hover:bg-surface-card-hover border-white/[0.06] hover:border-white/[0.14] text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)]';
                       }
                     } else {
                       if (isThisTheCorrectAnswer) {
@@ -6282,7 +6282,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       } else if (isOptSelected && !isThisTheCorrectAnswer) {
                         cardClass += 'bg-rose-950/30 border-rose-500 text-rose-200 shadow-sm';
                       } else {
-                        cardClass += 'bg-[#0E1522]/40 border-white/[0.03] opacity-40 cursor-not-allowed';
+                        cardClass += 'bg-surface-panel/40 border-white/[0.03] opacity-40 cursor-not-allowed';
                       }
                     }
 
@@ -6304,31 +6304,31 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             <span className={`w-8 h-8 rounded-xl font-black text-sm flex items-center justify-center transition-all ${
                               !isEvaluated
                                 ? isOptSelected
-                                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-md'
-                                  : 'bg-[#141D2E] border border-white/[0.08] text-slate-300 group-hover:border-white/[0.16]'
+                                  ? 'bg-jasne text-[#080B11] font-bold shadow-md'
+                                  : 'bg-surface-card-hover border border-white/[0.08] text-slate-300 group-hover:border-white/[0.16]'
                                 : isThisTheCorrectAnswer
                                   ? 'bg-emerald-500 text-emerald-950 font-black shadow-md'
                                   : isOptSelected
                                     ? 'bg-rose-500 text-white font-black'
-                                    : 'bg-[#141D2E]/40 border border-white/[0.04] text-slate-600'
+                                    : 'bg-surface-card-hover/40 border border-white/[0.04] text-slate-600'
                             }`}>
                               {item.id}
                             </span>
-                            <span className="font-bold text-base sm:text-lg tracking-wide text-white">
+                            <span className="font-bold text-base sm:text-lg tracking-wide text-text-strong">
                               {item.label}
                             </span>
                           </div>
 
                           <div className="flex items-center gap-2">
                             {!isEvaluated && (
-                              <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400">
+                              <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded bg-veil border border-hairline text-slate-400">
                                 {item.shortcut}
                               </span>
                             )}
                             {/* Glowing Active Radio Dot when selected */}
                             {isOptSelected && !isEvaluated && (
-                              <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-[#FFB800]/20">
-                                <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800] shadow-[0_0_8px_#FFB800]" />
+                              <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-jasne/20">
+                                <div className="w-2.5 h-2.5 rounded-full bg-jasne shadow-[0_0_8px_#FFB800]" />
                               </div>
                             )}
                             {isEvaluated && isThisTheCorrectAnswer && (
@@ -6373,11 +6373,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             ? isStatementCorrect
                               ? 'bg-emerald-950/20 border-emerald-500/40'
                               : 'bg-rose-950/20 border-rose-500/40'
-                            : 'bg-[#0E1522]/90 border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)]'
+                            : 'bg-surface-panel/90 border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)]'
                         } flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
                       >
                         <div className="flex items-start gap-2.5 flex-1 min-w-0">
-                          <span className="shrink-0 w-6 h-6 rounded-lg bg-[#141D2E] border border-white/[0.08] text-text-accent font-bold text-xs flex items-center justify-center mt-0.5">
+                          <span className="shrink-0 w-6 h-6 rounded-lg bg-surface-card-hover border border-white/[0.08] text-text-accent font-bold text-xs flex items-center justify-center mt-0.5">
                             {idx + 1}
                           </span>
                           <div className="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed break-words flex-1">
@@ -6393,9 +6393,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             let btnClass = 'w-11 h-10 rounded-xl font-bold text-sm flex items-center justify-center transition-all cursor-pointer ';
                             if (!isEvaluated) {
                               if (isOptSelected) {
-                                btnClass += 'bg-[#FFB800] text-[#080B11] border border-[#D97706] shadow-sm';
+                                btnClass += 'bg-jasne text-[#080B11] border border-[#D97706] shadow-sm';
                               } else {
-                                btnClass += 'bg-[#141D2E] hover:bg-[#1A2438] text-slate-300 border border-white/[0.08]';
+                                btnClass += 'bg-surface-card-hover hover:bg-[#1A2438] text-slate-300 border border-white/[0.08]';
                               }
                             } else {
                               if (isThisTheCorrectAnswer) {
@@ -6403,7 +6403,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               } else if (isOptSelected && !isThisTheCorrectAnswer) {
                                 btnClass += 'bg-rose-500 text-white border border-rose-400';
                               } else {
-                                btnClass += 'bg-[#0E1522]/40 border-white/[0.03] text-slate-600 opacity-40 cursor-not-allowed';
+                                btnClass += 'bg-surface-panel/40 border-white/[0.03] text-slate-600 opacity-40 cursor-not-allowed';
                               }
                             }
 
@@ -6447,9 +6447,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             className="w-full space-y-4 pt-1"
           >
             {/* Część 1 */}
-            <div className="p-4 rounded-2xl bg-[#0E1522]/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
+            <div className="p-4 rounded-2xl bg-surface-panel/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
               <div className="text-xs sm:text-sm font-semibold text-text-accent flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-text-accent text-xs flex items-center justify-center font-bold">1</span>
+                <span className="w-5 h-5 rounded-full bg-jasne/20 text-text-accent text-xs flex items-center justify-center font-bold">1</span>
                 <span>{currentTask?.part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -6462,15 +6462,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm cursor-pointer ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/[0.08] border-primary text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
-                      : 'bg-[#141D2E]/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] text-slate-200';
+                      ? 'bg-jasne/[0.08] border-primary text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                      : 'bg-surface-card-hover/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-surface-card-hover text-slate-200';
                   } else {
                     if (isOptionCorrect) {
                       btnClass += 'bg-emerald-950/30 border-emerald-500 text-emerald-200';
                     } else if (isSelected && !isOptionCorrect) {
                       btnClass += 'bg-rose-950/30 border-rose-500 text-rose-200';
                     } else {
-                      btnClass += 'bg-[#0E1522]/40 border-white/[0.03] opacity-40 text-slate-500';
+                      btnClass += 'bg-surface-panel/40 border-white/[0.03] opacity-40 text-slate-500';
                     }
                   }
 
@@ -6488,12 +6488,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     >
                       <span className={`font-bold text-xs px-2 py-0.5 rounded border transition-colors ${
                         isSelected && !isEvaluated
-                          ? 'bg-[#FFB800] text-[#080B11] border-[#D97706]'
+                          ? 'bg-jasne text-[#080B11] border-[#D97706]'
                           : isEvaluated && isOptionCorrect
                             ? 'bg-emerald-500 text-emerald-950 border-emerald-400 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
                               ? 'bg-rose-500 text-white border-rose-400 font-black'
-                              : 'bg-[#141D2E] border-white/[0.08] text-slate-300'
+                              : 'bg-surface-card-hover border-white/[0.08] text-slate-300'
                       }`}>
                         {optId}
                       </span>
@@ -6509,9 +6509,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             </div>
 
             {/* Część 2 */}
-            <div className="p-4 rounded-2xl bg-[#0E1522]/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
+            <div className="p-4 rounded-2xl bg-surface-panel/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
               <div className="text-xs sm:text-sm font-semibold text-text-accent flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-text-accent text-xs flex items-center justify-center font-bold">2</span>
+                <span className="w-5 h-5 rounded-full bg-jasne/20 text-text-accent text-xs flex items-center justify-center font-bold">2</span>
                 <span>{currentTask?.part_2?.prompt || 'Wybierz drugą część zdania / uzasadnienie:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -6524,15 +6524,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm cursor-pointer ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/[0.08] border-primary text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
-                      : 'bg-[#141D2E]/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] text-slate-200';
+                      ? 'bg-jasne/[0.08] border-primary text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                      : 'bg-surface-card-hover/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-surface-card-hover text-slate-200';
                   } else {
                     if (isOptionCorrect) {
                       btnClass += 'bg-emerald-950/30 border-emerald-500 text-emerald-200';
                     } else if (isSelected && !isOptionCorrect) {
                       btnClass += 'bg-rose-950/30 border-rose-500 text-rose-200';
                     } else {
-                      btnClass += 'bg-[#0E1522]/40 border-white/[0.03] opacity-40 text-slate-500';
+                      btnClass += 'bg-surface-panel/40 border-white/[0.03] opacity-40 text-slate-500';
                     }
                   }
 
@@ -6550,12 +6550,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     >
                       <span className={`font-bold text-xs px-2 py-0.5 rounded border transition-colors ${
                         isSelected && !isEvaluated
-                          ? 'bg-[#FFB800] text-[#080B11] border-[#D97706]'
+                          ? 'bg-jasne text-[#080B11] border-[#D97706]'
                           : isEvaluated && isOptionCorrect
                             ? 'bg-emerald-500 text-emerald-950 border-emerald-400 font-black'
                             : isEvaluated && isSelected && !isOptionCorrect
                               ? 'bg-rose-500 text-white border-rose-400 font-black'
-                              : 'bg-[#141D2E] border-white/[0.08] text-slate-300'
+                              : 'bg-surface-card-hover border-white/[0.08] text-slate-300'
                       }`}>
                         {optId}
                       </span>
@@ -6607,18 +6607,18 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 const isOptionCorrect = Boolean(option.is_correct);
 
                 // Craftsmanship Nocturne Luminary styles (Linear / Brilliant grade)
-                let cardStyle = 'bg-[#0E1522]/90 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] shadow-[0_4px_20px_rgba(0,0,0,0.25)] text-slate-100';
+                let cardStyle = 'bg-surface-panel/90 border-white/[0.06] hover:border-white/[0.14] hover:bg-surface-card-hover shadow-[0_4px_20px_rgba(0,0,0,0.25)] text-slate-100';
                 if (isSelected && !isEvaluated) {
                   cardStyle = isPolishSession
                     ? 'bg-[#F43F5E]/[0.08] border-[#F43F5E] shadow-[0_0_20px_rgba(244,63,94,0.18)] text-white'
-                    : 'bg-[#FFB800]/[0.08] border-primary shadow-[0_0_20px_rgba(255,184,0,0.18)] text-white';
+                    : 'bg-jasne/[0.08] border-primary shadow-[0_0_20px_rgba(255,184,0,0.18)] text-white';
                 } else if (isEvaluated) {
                   if (isOptionCorrect) {
                     cardStyle = 'border-emerald-500 bg-emerald-950/40 text-emerald-100 shadow-[0_0_20px_rgba(16,185,129,0.2)]';
                   } else if (isSelected && !isOptionCorrect) {
                     cardStyle = 'border-rose-500 bg-rose-950/40 text-rose-100 shadow-[0_0_20px_rgba(244,63,94,0.2)]';
                   } else {
-                    cardStyle = 'border-white/[0.03] opacity-40 bg-[#0E1522]/40 text-slate-500';
+                    cardStyle = 'border-white/[0.03] opacity-40 bg-surface-panel/40 text-slate-500';
                   }
                 }
 
@@ -6642,12 +6642,12 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           isSelected && !isEvaluated
                             ? isPolishSession
                               ? 'bg-[#F43F5E] border-[#E11D48] text-white font-bold shadow-[0_0_10px_rgba(244,63,94,0.5)]'
-                              : 'bg-[#FFB800] border-[#D97706] text-[#080B11] font-bold shadow-[0_0_10px_rgba(255,184,0,0.5)]'
+                              : 'bg-jasne border-[#D97706] text-[#080B11] font-bold shadow-[0_0_10px_rgba(255,184,0,0.5)]'
                             : isEvaluated && isOptionCorrect
                               ? 'bg-emerald-500 border-emerald-400 text-emerald-950 font-black'
                               : isEvaluated && isSelected && !isOptionCorrect
                                 ? 'bg-rose-500 border-rose-400 text-white font-black'
-                                : 'bg-[#141D2E] border-white/[0.08] text-slate-300'
+                                : 'bg-surface-card-hover border-white/[0.08] text-slate-300'
                         }`}
                       >
                         {optId}
@@ -6665,15 +6665,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                     {/* Keyboard badge for desktop */}
                     {!isEvaluated && (
-                      <span className="hidden md:inline-flex items-center text-[11px] font-mono font-bold text-slate-400 bg-[#141D2E] border border-white/[0.08] px-2 py-0.5 rounded shrink-0 mr-1">
+                      <span className="hidden md:inline-flex items-center text-[11px] font-mono font-bold text-slate-400 bg-surface-card-hover border border-white/[0.08] px-2 py-0.5 rounded shrink-0 mr-1">
                         {optId}
                       </span>
                     )}
 
                     {/* Selection / Status Icon */}
                     {isSelected && !isEvaluated && (
-                      <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-[#FFB800]/20">
-                        <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-jasne/20">
+                        <div className="w-2.5 h-2.5 rounded-full bg-jasne" />
                       </div>
                     )}
                     {isEvaluated && isOptionCorrect && (
@@ -6711,7 +6711,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   triggerHaptic('light');
                   setTheorySubStep(prev => Math.max(0, prev - 1));
                 }}
-                className="h-[48px] px-4 rounded-xl font-semibold text-slate-300 bg-[#0E1522] hover:bg-[#141D2E] border border-white/[0.08] flex items-center justify-center gap-1.5 text-sm shrink-0 cursor-pointer active:scale-95 transition"
+                className="h-[48px] px-4 rounded-xl font-semibold text-slate-300 bg-surface-panel hover:bg-surface-card-hover border border-white/[0.08] flex items-center justify-center gap-1.5 text-sm shrink-0 cursor-pointer active:scale-95 transition"
                 aria-label="Wróć do poprzedniej karty"
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -6726,7 +6726,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   triggerHaptic('light');
                   setTheorySubStep(prev => Math.min(isEnglishSession ? 2 : 3, prev + 1));
                 }}
-                className="flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
+                className="flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide bg-jasne hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
               >
                 <span>
                   {isEnglishSession
@@ -6748,7 +6748,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   playSuccessSound();
                   setCurrentStep(1);
                 }}
-                className="flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
+                className="flex-1 h-[50px] px-4 rounded-xl font-bold active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm cursor-pointer tracking-wide bg-jasne hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
               >
                 <span>Przejdź do zadań</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -6785,7 +6785,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ? 'border-amber-400/60 bg-amber-500/20 hover:bg-amber-500/30 shadow-sm'
                           : currentCoins >= currentTaskHintCost
                             ? 'border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20'
-                            : 'border-white/[0.06] bg-[#0E1522]/60 opacity-50 cursor-not-allowed'
+                            : 'border-white/[0.06] bg-surface-panel/60 opacity-50 cursor-not-allowed'
                       }`}
                       title={
                         isHintUnlocked
@@ -6832,11 +6832,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         (openAnswerText.trim() || openCanvasDataUrl.length > 50) && !isTutorScanning
                           ? isPolishSession
                             ? 'bg-gradient-to-r from-[#F43F5E] to-rose-600 hover:from-[#FB7185] hover:to-rose-500 text-white shadow-sm active:scale-[0.99] cursor-pointer'
-                            : 'bg-gradient-to-r from-[#FFB800] to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-sm active:scale-[0.99] cursor-pointer'
-                          : 'bg-[#141D2E]/60 text-slate-500 cursor-not-allowed border border-white/[0.06]'
+                            : 'bg-gradient-to-r from-primary to-amber-500 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-sm active:scale-[0.99] cursor-pointer'
+                          : 'bg-surface-card-hover/60 text-slate-500 cursor-not-allowed border border-white/[0.06]'
                       }`}
                     >
-                      <GraduationCap className={`w-5 h-5 stroke-[2.2] ${isPolishSession ? 'text-white' : 'text-slate-950'}`} />
+                      <GraduationCap className={`w-5 h-5 stroke-[2.2] ${isPolishSession ? 'text-text-strong' : 'text-slate-950'}`} />
                       <span>{isTutorScanning ? 'AI EGZAMINATOR OCENIA...' : 'OCEŃ Z EGZAMINATOREM AI'}</span>
                     </button>
                   ) : (
@@ -6848,8 +6848,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         isReadyToCheck
                           ? isPolishSession
                             ? 'bg-[#F43F5E] hover:bg-[#FB7185] text-white shadow-sm active:scale-[0.99]'
-                            : 'bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm active:scale-[0.99]'
-                          : 'bg-[#141D2E]/60 text-slate-500 cursor-not-allowed border border-white/[0.06]'
+                            : 'bg-jasne hover:bg-[#FFC72C] text-[#080B11] shadow-sm active:scale-[0.99]'
+                          : 'bg-surface-card-hover/60 text-slate-500 cursor-not-allowed border border-white/[0.06]'
                       }`}
                     >
                       <span>{isNumericTask ? 'SPRAWDŹ ODPOWIEDŹ' : 'SPRAWDŹ'}</span>
@@ -6934,7 +6934,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               )}
                             </span>
                           ) : (
-                            <span className="font-bold text-white font-mono bg-white/10 px-1.5 py-0.5 rounded inline-flex items-center">
+                            <span className="font-bold text-text-strong font-mono bg-veil-strong px-1.5 py-0.5 rounded inline-flex items-center">
                               <MathRenderer content={rawLabel} />
                             </span>
                           )}
@@ -6945,7 +6945,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <button
                       type="button"
                       onClick={() => setShowExplanation(prev => !prev)}
-                      className="tap-44 mt-1.5 px-2.5 py-1 -ml-0.5 rounded-lg bg-[#FFB800]/10 border border-primary/30 text-xs font-bold text-text-accent hover:bg-[#FFB800]/20 flex items-center gap-1 cursor-pointer transition whitespace-nowrap w-fit"
+                      className="tap-44 mt-1.5 px-2.5 py-1 -ml-0.5 rounded-lg bg-jasne/10 border border-primary/30 text-xs font-bold text-text-accent hover:bg-jasne/20 flex items-center gap-1 cursor-pointer transition whitespace-nowrap w-fit"
                     >
                       <BookOpen size={13} />
                       <span>Zobacz wyjaśnienie {showExplanation ? '▴' : '▾'}</span>
@@ -6991,7 +6991,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 60, opacity: 0 }}
               transition={{ type: 'spring', damping: 26, stiffness: 300 }}
-              className="w-full sm:max-w-xl max-h-[85vh] bg-[#0E1522] border-t sm:border border-white/[0.08] rounded-t-3xl sm:rounded-3xl flex flex-col shadow-2xl overflow-hidden"
+              className="w-full sm:max-w-xl max-h-[85vh] bg-surface-panel border-t sm:border border-white/[0.08] rounded-t-3xl sm:rounded-3xl flex flex-col shadow-2xl overflow-hidden"
             >
               {/* Wskaźnik Gestu (Drag Handle) na Mobile */}
               <div className="w-10 h-1 rounded-full bg-white/20 mx-auto my-2 sm:hidden shrink-0" aria-hidden="true" />
@@ -6999,11 +6999,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Modal Header */}
               <div className="p-4 sm:p-5 border-b border-white/[0.06] flex items-center justify-between bg-surface-bg/60 shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#FFB800]/10 border border-primary/20 flex items-center justify-center text-text-accent">
+                  <div className="w-8 h-8 rounded-lg bg-jasne/10 border border-primary/20 flex items-center justify-center text-text-accent">
                     <BookOpen size={18} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-base">Wyjaśnienie i typowy błąd</h3>
+                    <h3 className="font-bold text-text-strong text-base">Wyjaśnienie i typowy błąd</h3>
                     <div className="text-xs text-slate-400">
                       <MathRenderer content={sanitizeLessonHeading(currentTask?.title) || 'Zadanie maturalne'} />
                     </div>
@@ -7012,7 +7012,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowExplanation(false)}
-                  className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+                  className="p-2 rounded-xl text-slate-400 hover:text-text-strong hover:bg-slate-800 transition cursor-pointer"
                 >
                   <X size={20} />
                 </button>
@@ -7144,7 +7144,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowExplanation(false)}
-                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-slate-800 hover:bg-slate-700 text-white transition cursor-pointer"
+                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-slate-800 hover:bg-slate-700 text-text-strong transition cursor-pointer"
                 >
                   Zamknij wyjaśnienie
                 </button>
@@ -7175,13 +7175,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <div className="flex items-center gap-2.5">
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${
                     isAiHintTask 
-                      ? 'bg-[#FFB800]/10 border border-primary/30 text-text-accent' 
+                      ? 'bg-jasne/10 border border-primary/30 text-text-accent' 
                       : 'bg-amber-500/10 border border-amber-500/30 text-amber-400'
                   }`}>
                     <Lightbulb size={18} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-base">
+                    <h3 className="font-bold text-text-strong text-base">
                       {isAiHintTask ? 'Wskazówka Egzaminatora AI' : 'Podpowiedź do zadania'}
                     </h3>
                     <p className="text-xs text-slate-400">
@@ -7193,7 +7193,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   type="button"
                   id="session-hint-close-button"
                   onClick={() => setIsHintSheetOpen(false)}
-                  className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+                  className="p-2 rounded-xl text-slate-400 hover:text-text-strong hover:bg-slate-800 transition cursor-pointer"
                   aria-label="Zamknij podpowiedź"
                 >
                   <X size={20} />
@@ -7236,7 +7236,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   type="button"
                   id="session-hint-dismiss-button"
                   onClick={() => setIsHintSheetOpen(false)}
-                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-slate-800 hover:bg-slate-700 text-white transition cursor-pointer"
+                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-slate-800 hover:bg-slate-700 text-text-strong transition cursor-pointer"
                 >
                   Rozumiem, wracam do zadania
                 </button>
@@ -7264,7 +7264,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mx-auto mb-4">
                 <AlertTriangle className="w-6 h-6 text-rose-400" />
               </div>
-              <h2 className="text-lg font-bold text-white mb-2">Przerwać sesję?</h2>
+              <h2 className="text-lg font-bold text-text-strong mb-2">Przerwać sesję?</h2>
               <p className="text-sm text-slate-400 mb-6 leading-relaxed">
                 Postęp z tej sesji nie zostanie zapisany w Twoim profilu. Czy na pewno chcesz wyjść do menu?
               </p>
@@ -7272,7 +7272,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-modal-stay-button"
                   onClick={() => setShowExitModal(false)}
-                  className="w-full py-3.5 px-4 rounded-xl font-bold bg-[#FFB800] text-[#080B11] hover:bg-[#FFC72C] transition shadow-sm"
+                  className="w-full py-3.5 px-4 rounded-xl font-bold bg-jasne text-[#080B11] hover:bg-[#FFC72C] transition shadow-sm"
                 >
                   WRÓĆ DO SESJI
                 </button>
@@ -7311,7 +7311,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-              className="bg-[#0B0F17] border border-white/10 rounded-t-[28px] sm:rounded-3xl w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden"
+              className="bg-[#0B0F17] border border-hairline rounded-t-[28px] sm:rounded-3xl w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden"
             >
               {/* Mobile Swipe / Drag indicator handle */}
               <div className="w-full flex justify-center pt-2.5 pb-1 sm:hidden">
@@ -7319,17 +7319,17 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </div>
 
               {/* Drawer Header */}
-              <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#111724]/90 shrink-0">
+              <div className="p-4 sm:p-5 border-b border-hairline flex items-center justify-between bg-[#111724]/90 shrink-0">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm bg-[#FFB800]/15 border border-primary/30 text-text-accent">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm bg-jasne/15 border border-primary/30 text-text-accent">
                     <BookOpen className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="font-bold text-white text-base sm:text-lg tracking-tight truncate">
+                      <h3 className="font-bold text-text-strong text-base sm:text-lg tracking-tight truncate">
                         {isPolishSession ? 'Leksykon Pojęć & Złote Zasady' : `Karta Wzorów • ${departmentNameOnly}`}
                       </h3>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 bg-[#FFB800]/15 text-text-accent border border-primary/25">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 bg-jasne/15 text-text-accent border border-primary/25">
                         Formuła 2023
                       </span>
                     </div>
@@ -7341,7 +7341,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <button
                   id="session-formulas-close-button"
                   onClick={() => setShowFormulaSheet(false)}
-                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer shrink-0 ml-2"
+                  className="w-9 h-9 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition cursor-pointer shrink-0 ml-2"
                   aria-label="Zamknij"
                 >
                   <X className="w-4 h-4" />
@@ -7350,15 +7350,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
               {/* Search & Topic Tabs (for Math) */}
               {!isPolishSession && (
-                <div className="px-4 sm:px-5 py-3 bg-[#0B0F17] border-b border-white/5 flex flex-col gap-2.5 shrink-0">
+                <div className="px-4 sm:px-5 py-3 bg-[#0B0F17] border-b border-hairline-soft flex flex-col gap-2.5 shrink-0">
                   <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
                     <button
                       type="button"
                       onClick={() => setFormulaViewMode('department')}
                       className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                         formulaViewMode === 'department'
-                          ? 'bg-[#FFB800] text-slate-950 font-bold shadow-sm'
-                          : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                          ? 'bg-jasne text-slate-950 font-bold shadow-sm'
+                          : 'bg-veil hover:bg-veil-strong text-slate-300 border border-hairline-soft'
                       }`}
                       title={`${departmentNameOnly} (${departmentFormulas.length})`}
                     >
@@ -7369,8 +7369,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       onClick={() => setFormulaViewMode('all')}
                       className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                         formulaViewMode === 'all'
-                          ? 'bg-[#FFB800] text-slate-950 font-bold shadow-sm'
-                          : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                          ? 'bg-jasne text-slate-950 font-bold shadow-sm'
+                          : 'bg-veil hover:bg-veil-strong text-slate-300 border border-hairline-soft'
                       }`}
                     >
                       Wszystkie działy CKE
@@ -7387,13 +7387,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ? `Szukaj we wzorach z: ${departmentNameOnly}...` 
                           : 'Szukaj we wszystkich wzorach CKE (np. delta, potęgi, sinus)...'
                       }
-                      className="w-full bg-[#111724] border border-white/10 focus:border-primary/50 rounded-xl pl-8 pr-8 py-1.5 text-xs text-white placeholder-slate-500 outline-none transition"
+                      className="w-full bg-[#111724] border border-hairline focus:border-primary/50 rounded-xl pl-8 pr-8 py-1.5 text-xs text-white placeholder-slate-500 outline-none transition"
                     />
                     {formulaSearchQuery && (
                       <button
                         type="button"
                         onClick={() => setFormulaSearchQuery('')}
-                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5 cursor-pointer"
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-text-strong p-0.5 cursor-pointer"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -7407,7 +7407,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <button
                         type="button"
                         onClick={() => ckeChipsScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
-                        className="hidden sm:flex absolute left-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition -translate-x-1"
+                        className="hidden sm:flex absolute left-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-surface-panel/95 border border-white/20 text-slate-300 hover:text-text-strong hover:bg-veil-strong shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition -translate-x-1"
                         aria-label="Przewiń działy w lewo"
                         title="Przewiń w lewo"
                       >
@@ -7436,8 +7436,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               }}
                               className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
                                 isSelected
-                                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
-                                  : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5'
+                                  ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
+                                  : 'bg-veil hover:bg-veil-strong text-slate-300 border border-hairline-soft'
                               }`}
                             >
                               {topic.name}
@@ -7450,7 +7450,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <button
                         type="button"
                         onClick={() => ckeChipsScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
-                        className="hidden sm:flex absolute right-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-[#0E1522]/95 border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition translate-x-1"
+                        className="hidden sm:flex absolute right-0 z-10 w-6 h-6 items-center justify-center rounded-full bg-surface-panel/95 border border-white/20 text-slate-300 hover:text-text-strong hover:bg-veil-strong shadow-[0_2px_8px_rgba(0,0,0,0.5)] cursor-pointer transition translate-x-1"
                         aria-label="Przewiń działy w prawo"
                         title="Przewiń w prawo"
                       >
@@ -7468,7 +7468,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   <div className="space-y-3.5">
                     <div className="flex items-center justify-between pt-0.5">
                       <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-jasne" />
                         {isPolishSession
                           ? 'Pojęcia Kluczowe i Definicje' 
                           : (formulaViewMode === 'department'
@@ -7490,11 +7490,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     {drawerFormulas.map((f, i) => (
                       <div 
                         key={f.id || i} 
-                        className="formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-primary/30 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col gap-3 shadow-sm"
+                        className="formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-hairline-soft hover:border-primary/30 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col gap-3 shadow-sm"
                       >
                         <div className="flex items-center justify-between gap-2 flex-wrap">
                           <div className="flex items-center gap-2">
-                            <span className="w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#FFB800]/10 border border-primary/25 text-text-accent">
+                            <span className="w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-jasne/10 border border-primary/25 text-text-accent">
                               {String(i + 1).padStart(2, '0')}
                             </span>
                             <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
@@ -7507,7 +7507,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               <span>Karta wzorów: {typeof f.cke_page === 'number' || !String(f.cke_page).startsWith('str') ? `str. ${f.cke_page}` : f.cke_page}</span>
                             </span>
                           ) : (
-                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 text-text-accent/80 bg-[#FFB800]/10 border border-primary/20">
+                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 text-text-accent/80 bg-jasne/10 border border-primary/20">
                               {isPolishSession ? 'Leksykon' : 'Wzór maturalny'}
                             </span>
                           )}
@@ -7515,7 +7515,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {f.latex && (
                           <div 
-                            className="bg-[#080C14] border border-white/5 rounded-xl px-3 py-1.5 sm:py-2.5 text-center overflow-x-auto custom-scrollbar touch-pan-x max-w-full"
+                            className="bg-[#080C14] border border-hairline-soft rounded-xl px-3 py-1.5 sm:py-2.5 text-center overflow-x-auto custom-scrollbar touch-pan-x max-w-full"
                             style={{ WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)', maskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
                           >
                             <div className="inline-block w-fit min-w-full mx-auto text-center font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
@@ -7527,7 +7527,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {f.subFormulas && f.subFormulas.length > 0 && (
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-0.5">
                             {f.subFormulas.map((sub, sIdx) => (
-                              <div key={sIdx} className="bg-[#0A0E18] border border-white/5 rounded-xl p-2.5 flex flex-col gap-1">
+                              <div key={sIdx} className="bg-[#0A0E18] border border-hairline-soft rounded-xl p-2.5 flex flex-col gap-1">
                                 <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
                                   {sub.label}
                                 </span>
@@ -7540,7 +7540,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         )}
 
                         {(f.description || f.mnemonic) && (
-                          <div className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-[#080C14]/40 border border-white/5 rounded-xl p-3">
+                          <div className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-[#080C14]/40 border border-hairline-soft rounded-xl p-3">
                             <MathRenderer content={f.description || f.mnemonic} />
                           </div>
                         )}
@@ -7567,7 +7567,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {/* Szkic geometryczny (opcjonalny, bezpośrednie renderowanie CKE) */}
                         {f.diagram && (
                           <div className="pt-2">
-                            <div className="rounded-xl border border-white/10 bg-surface-bg p-2.5 sm:p-3 shadow-inner overflow-hidden">
+                            <div className="rounded-xl border border-hairline bg-surface-bg p-2.5 sm:p-3 shadow-inner overflow-hidden">
                               {'intervals' in f.diagram ? (
                                 <NumberLineDiagram data={f.diagram as any} height={120} />
                               ) : (
@@ -7646,7 +7646,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             </div>
                           )}
                           {trap.description && (
-                            <div className="text-slate-300 text-xs sm:text-xs leading-relaxed bg-black/40 border border-white/5 rounded-xl p-3">
+                            <div className="text-slate-300 text-xs sm:text-xs leading-relaxed bg-black/40 border border-hairline-soft rounded-xl p-3">
                               <MathRenderer content={trap.description} />
                             </div>
                           )}
@@ -7658,14 +7658,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               </div>
 
               {/* Drawer Footer */}
-              <div className="p-4 sm:p-5 border-t border-white/10 bg-[#0B0F17]/95 backdrop-blur-md flex items-center justify-between shrink-0">
+              <div className="p-4 sm:p-5 border-t border-hairline bg-[#0B0F17]/95 backdrop-blur-md flex items-center justify-between shrink-0">
                 <span className="text-xs text-slate-500 hidden sm:inline">
                   Naciśnij Esc lub kliknij w tło, aby zamknąć
                 </span>
                 <button
                   id="session-formulas-close-drawer-button"
                   onClick={() => setShowFormulaSheet(false)}
-                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-[#FF8800] to-[#FFB800] hover:from-[#FFA000] hover:to-[#FFC833] text-slate-950 shadow-sm hover:shadow-md active:scale-98 transition cursor-pointer"
+                  className="w-full sm:w-auto py-2.5 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-[#FF8800] to-primary hover:from-[#FFA000] hover:to-[#FFC833] text-slate-950 shadow-sm hover:shadow-md active:scale-98 transition cursor-pointer"
                 >
                   Wróć do rozwiązywania zadania
                 </button>
@@ -7755,7 +7755,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       triggerHaptic('medium');
                       handleCheckOpenAnswerWithTutor();
                     }}
-                    className="rounded-xl bg-[#FFB800] hover:bg-amber-400 px-3.5 py-1.5 text-xs font-black text-amber-950 transition active:scale-95 cursor-pointer shadow-md"
+                    className="rounded-xl bg-jasne hover:bg-amber-400 px-3.5 py-1.5 text-xs font-black text-amber-950 transition active:scale-95 cursor-pointer shadow-md"
                   >
                     Ponów sprawdzenie
                   </button>
@@ -7765,7 +7765,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       setEvaluationUnavailable(false);
                       triggerHaptic('light');
                     }}
-                    className="rounded-xl bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs font-bold text-slate-300 transition active:scale-95 cursor-pointer"
+                    className="rounded-xl bg-veil hover:bg-veil-strong px-3 py-1.5 text-xs font-bold text-slate-300 transition active:scale-95 cursor-pointer"
                   >
                     Zamknij
                   </button>

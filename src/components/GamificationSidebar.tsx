@@ -191,7 +191,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
             </p>
           </div>
           <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#F97316] to-[#C2410C] flex items-center justify-center shadow-[0_0_16px_rgba(249,115,22,0.4)] border border-white/20 shrink-0">
-            <Flame size={22} className="text-white fill-white animate-pulse" />
+            <Flame size={22} className="text-text-strong fill-white animate-pulse" />
           </div>
         </div>
 
@@ -205,7 +205,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
                     ? 'bg-[#F97316] text-white shadow-[0_0_10px_rgba(249,115,22,0.5)] border border-white/20' 
                     : m.isTargetToday
                       ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/15 animate-pulse'
-                      : 'bg-white/5 border border-surface-border text-text-muted'
+                      : 'bg-veil border border-surface-border text-text-muted'
                 }`}
                 title={m.fullLabel}
               >
@@ -268,7 +268,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         <div className="relative w-full my-3 px-2">
           <div className="w-full bg-surface-bg h-2 rounded-full overflow-hidden border border-surface-border">
             <div 
-              className="h-full bg-gradient-to-r from-[#D97706] via-[#FFB800] to-amber-400 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
+              className="h-full bg-gradient-to-r from-[#D97706] via-primary to-amber-400 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
               style={{ width: `${Math.min(100, Math.round((currentProgress / 5) * 100))}%` }}
             />
           </div>
@@ -346,7 +346,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
 
         <button
           onClick={() => onNavigate?.('simulator')}
-          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-surface-border hover:border-primary/30 transition-all text-left group cursor-pointer"
+          className="w-full flex items-center justify-between p-3 rounded-2xl bg-veil hover:bg-veil-strong border border-surface-border hover:border-primary/30 transition-all text-left group cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center border border-purple-500/30 group-hover:scale-105 transition-transform">
@@ -363,7 +363,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         <button
           id="gamification-sidebar-arena-btn"
           onClick={() => onNavigate?.('arena')}
-          className="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-emerald-500/10 border border-surface-border hover:border-emerald-500/30 transition-all text-left group cursor-pointer"
+          className="w-full flex items-center justify-between p-3 rounded-2xl bg-veil hover:bg-emerald-500/10 border border-surface-border hover:border-emerald-500/30 transition-all text-left group cursor-pointer"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center border border-emerald-500/30 group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(16,185,129,0.3)] transition-all">

@@ -488,7 +488,7 @@ export function Header({
                         className={`w-full py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-between transition ${
                           state.coins >= HEARTS_REFILL_COIN_COST
                             ? 'bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-emerald-300 cursor-pointer'
-                            : 'bg-white/5 border border-white/5 text-slate-500 cursor-not-allowed opacity-75'
+                            : 'bg-veil border border-hairline-soft text-slate-500 cursor-not-allowed opacity-75'
                         }`}
                       >
                         <span>Uzupełnij do pełna</span>
@@ -505,7 +505,7 @@ export function Header({
                           setShowHeartsPopup(false);
                           onOpenParentSponsor();
                         }}
-                        className="w-full py-2.5 px-3 rounded-xl text-xs font-black bg-gradient-to-r from-[#FF8800] to-[#FFB800] hover:brightness-110 text-slate-950 flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md shadow-amber-500/20"
+                        className="w-full py-2.5 px-3 rounded-xl text-xs font-black bg-gradient-to-r from-[#FF8800] to-primary hover:brightness-110 text-slate-950 flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md shadow-amber-500/20"
                       >
                         <Users size={14} className="fill-slate-950" />
                         <span>Poproś rodzica o PRO (BLIK)</span>
@@ -602,7 +602,7 @@ export function Header({
           title="Twój profil i postęp XP"
         >
           {/* Avatar z subtelnym bursztynowym obwodem */}
-          <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-[#FFB800] to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
+          <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-primary to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
             <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center">
               <User size={12} className="text-primary sm:w-[13px] sm:h-[13px]" />
             </div>
@@ -642,7 +642,7 @@ export function Header({
         title={`Postęp poziomu: ${currentXpInLevel}/1000 XP (${Math.round(xpPercent)}%)`}
       >
         <div 
-          className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] transition-all duration-700 shadow-[0_0_8px_rgba(255,184,0,0.7)]"
+          className="h-full bg-gradient-to-r from-[#D97706] to-primary transition-all duration-700 shadow-[0_0_8px_rgba(255,184,0,0.7)]"
           style={{ width: `${xpPercent}%` }}
         />
       </div>
@@ -679,7 +679,7 @@ export function Header({
               </div>
               <div className="w-full h-1.5 bg-surface-bg rounded-full overflow-hidden mb-2">
                 <div 
-                  className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] rounded-full shadow-[0_0_8px_#FFB800]" 
+                  className="h-full bg-gradient-to-r from-[#D97706] to-primary rounded-full shadow-[0_0_8px_#FFB800]" 
                   style={{ width: `${xpPercent}%` }}
                 />
               </div>
@@ -710,20 +710,20 @@ export function Header({
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 350 }}
-              className="relative z-10 w-full bg-[#0E1522] border-t border-white/10 rounded-t-3xl p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl space-y-3.5"
+              className="relative z-10 w-full bg-surface-panel border-t border-hairline rounded-t-3xl p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl space-y-3.5"
             >
               {/* Uchwyt do przeciągania */}
               <div className="w-10 h-1 bg-white/20 rounded-full mx-auto -mt-1 mb-1" />
               
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-extrabold text-white">Wybierz Przedmiot Maturalny</h3>
+                  <h3 className="text-sm font-extrabold text-text-strong">Wybierz Przedmiot Maturalny</h3>
                   <p className="text-[11px] text-text-muted">Formuła 2023 • Poziom Podstawowy CKE</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsMobileSubjectSheetOpen(false)}
-                  className="p-1.5 rounded-full bg-white/5 text-text-muted hover:text-white"
+                  className="p-1.5 rounded-full bg-veil text-text-muted hover:text-text-strong"
                 >
                   <X size={16} />
                 </button>
@@ -738,7 +738,7 @@ export function Header({
                   className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
                     isMathActive
                       ? 'bg-amber-500/15 border-amber-500/50 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
-                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                      : 'bg-white/[0.03] border-hairline-soft hover:bg-white/[0.06]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -750,7 +750,7 @@ export function Header({
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-white">Matematyka</span>
+                        <span className="font-extrabold text-sm text-text-strong">Matematyka</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">180 min</span>
                       </div>
                       <span className="text-[11px] text-text-muted">15 działów • 75 lekcji • 1500 zadań</span>
@@ -770,7 +770,7 @@ export function Header({
                   className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
                     isPolActive
                       ? 'bg-rose-500/15 border-rose-500/50 shadow-[0_0_15px_rgba(244,63,94,0.15)]'
-                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                      : 'bg-white/[0.03] border-hairline-soft hover:bg-white/[0.06]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -784,7 +784,7 @@ export function Header({
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-white">Język Polski</span>
+                        <span className="font-extrabold text-sm text-text-strong">Język Polski</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300">240 min</span>
                       </div>
                       <span className="text-[11px] text-text-muted">Epoki literackie • Lektury obowiązkowe • Matura ustna</span>
@@ -804,7 +804,7 @@ export function Header({
                   className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer ${
                     isEngActive
                       ? 'bg-sky-500/15 border-sky-500/50 shadow-[0_0_15px_rgba(56,189,248,0.15)]'
-                      : 'bg-white/[0.03] border-white/5 hover:bg-white/[0.06]'
+                      : 'bg-white/[0.03] border-hairline-soft hover:bg-white/[0.06]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -819,7 +819,7 @@ export function Header({
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-white">Język Angielski</span>
+                        <span className="font-extrabold text-sm text-text-strong">Język Angielski</span>
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300">120 min</span>
                       </div>
                       <span className="text-[11px] text-text-muted">Gramatyka CKE • Środki językowe • Słownictwo</span>

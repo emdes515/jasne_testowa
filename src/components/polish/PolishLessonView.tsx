@@ -485,7 +485,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
           <div className="flex items-center gap-3">
             <button
               onClick={onBack}
-              className="p-2 rounded-xl bg-surface-card-hover hover:bg-surface-card-hover text-text-secondary hover:text-white transition-colors"
+              className="p-2 rounded-xl bg-surface-card-hover hover:bg-surface-card-hover text-text-secondary hover:text-text-strong transition-colors"
               title="Powrót do spisu lekcji"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -504,7 +504,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                   </span>
                 )}
               </div>
-              <h1 className="text-lg sm:text-xl font-bold text-white tracking-tight mt-1">
+              <h1 className="text-lg sm:text-xl font-bold text-text-strong tracking-tight mt-1">
                 {lesson.title}
               </h1>
               <p className="text-xs text-text-secondary">{lesson.subtitle}</p>
@@ -664,7 +664,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
 
             {/* Kompendium Wiedzy (Punkty Teoretyczne) */}
             <div className="space-y-4 pt-2">
-              <div className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <div className="text-sm font-bold text-text-strong uppercase tracking-wider flex items-center gap-2">
                 <BookOpen className="w-4 h-4 text-amber-400" />
                 Kompendium wiedzy maturalnej:
               </div>
@@ -742,7 +742,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                   Zgodnie z zasadą pełnego przygotowania maturalnego, nie możesz przejść do zadań praktycznych bez zrozumienia kluczowej pułapki CKE z tego działu.
                 </p>
 
-                <div className="p-4 rounded-xl bg-surface-bg border border-surface-border text-xs sm:text-sm font-semibold text-white leading-relaxed">
+                <div className="p-4 rounded-xl bg-surface-bg border border-surface-border text-xs sm:text-sm font-semibold text-text-strong leading-relaxed">
                   {lesson.introduction.gatekeeper.question}
                 </div>
 
@@ -760,7 +760,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                         style = 'border-rose-500 bg-rose-500/15 text-rose-300';
                       }
                     } else if (isSelected) {
-                      style = 'border-amber-500 bg-amber-500/15 text-white shadow-sm';
+                      style = 'border-amber-500 bg-amber-500/15 text-text-strong shadow-sm';
                     }
 
                     return (
@@ -875,7 +875,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                         }}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex flex-col gap-1 ${
                           isCurrent
-                            ? 'border-amber-500 bg-amber-500/10 text-white shadow-sm'
+                            ? 'border-amber-500 bg-amber-500/10 text-text-strong shadow-sm'
                             : 'border-surface-border bg-surface-bg/60 text-text-secondary hover:bg-surface-card-hover'
                         }`}
                       >
@@ -966,7 +966,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                             </span>
                           )}
                         </div>
-                        <h2 className="text-base font-bold text-white">
+                        <h2 className="text-base font-bold text-text-strong">
                           Zadanie {activeTaskIndex + 1}: {currentTask.title}
                         </h2>
                       </div>
@@ -1023,7 +1023,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                     )}
 
                     {/* Treść Polecenia */}
-                    <div className="text-sm font-semibold text-white leading-relaxed">
+                    <div className="text-sm font-semibold text-text-strong leading-relaxed">
                       {currentTask.question}
                     </div>
 
@@ -1045,7 +1045,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                                 style = 'border-rose-500 bg-rose-500/15 text-rose-300';
                               }
                             } else if (isSelected) {
-                              style = 'border-amber-500 bg-amber-500/15 text-white';
+                              style = 'border-amber-500 bg-amber-500/15 text-text-strong';
                             }
 
                             return (
@@ -1103,7 +1103,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                                   setShowExplanation(true);
                                   setShowCkeKey(true);
                                 }}
-                                className="px-3 py-1.5 rounded-lg bg-surface-card-hover text-text-secondary hover:text-white text-xs"
+                                className="px-3 py-1.5 rounded-lg bg-surface-card-hover text-text-secondary hover:text-text-strong text-xs"
                               >
                                 Odsłoń klucz CKE (0 pkt)
                               </button>
@@ -1166,7 +1166,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                                           className={`px-2.5 py-1 rounded text-xs font-bold transition-all ${
                                             currentVal === true
                                               ? 'bg-amber-500 text-black font-bold'
-                                              : 'bg-surface-card-hover text-text-secondary hover:text-white'
+                                              : 'bg-surface-card-hover text-text-secondary hover:text-text-strong'
                                           }`}
                                         >
                                           P
@@ -1186,7 +1186,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                                           className={`px-2.5 py-1 rounded text-xs font-bold transition-all ${
                                             currentVal === false
                                               ? 'bg-amber-500 text-black font-bold'
-                                              : 'bg-surface-card-hover text-text-secondary hover:text-white'
+                                              : 'bg-surface-card-hover text-text-secondary hover:text-text-strong'
                                           }`}
                                         >
                                           F
@@ -1251,7 +1251,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                           }
                           disabled={currentAnswerState.isSubmitted}
                           placeholder="Wpisz syntetyczne zestawienie obu tekstów (60–90 słów). Wskaż stanowisko autora 1, autora 2 oraz syntezę..."
-                          className="w-full bg-surface-bg border border-surface-border rounded-xl p-3.5 text-xs text-white placeholder-text-muted focus:outline-none focus:border-amber-500 leading-relaxed font-sans"
+                          className="w-full bg-surface-bg border border-surface-border rounded-xl p-3.5 text-xs text-text-strong placeholder-text-muted focus:outline-none focus:border-amber-500 leading-relaxed font-sans"
                         />
 
                         {!currentAnswerState.isSubmitted && (
@@ -1282,7 +1282,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                                 <Target className="w-4 h-4" />
                                 Oficjalna Matryca Oceny Notatki CKE
                               </span>
-                              <span className="text-sm font-mono text-white">
+                              <span className="text-sm font-mono text-text-strong">
                                 {currentAnswerState.feedback.partialScore.total} / 4 pkt
                               </span>
                             </div>
@@ -1290,7 +1290,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
                               <div className="p-3 rounded-lg bg-surface-card border border-surface-border">
                                 <div className="text-[11px] text-text-secondary">1. Treść i synteza:</div>
-                                <div className="text-sm font-bold text-white mt-0.5">
+                                <div className="text-sm font-bold text-text-strong mt-0.5">
                                   {currentAnswerState.feedback.partialScore.content} / 2 pkt
                                 </div>
                                 <div className="text-[10px] text-text-secondary mt-1">
@@ -1300,7 +1300,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
 
                               <div className="p-3 rounded-lg bg-surface-card border border-surface-border">
                                 <div className="text-[11px] text-text-secondary">2. Kompozycja:</div>
-                                <div className="text-sm font-bold text-white mt-0.5">
+                                <div className="text-sm font-bold text-text-strong mt-0.5">
                                   {currentAnswerState.feedback.partialScore.composition} / 1 pkt
                                 </div>
                                 <div className="text-[10px] text-text-secondary mt-1">
@@ -1310,7 +1310,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
 
                               <div className="p-3 rounded-lg bg-surface-card border border-surface-border">
                                 <div className="text-[11px] text-text-secondary">3. Język i styl:</div>
-                                <div className="text-sm font-bold text-white mt-0.5">
+                                <div className="text-sm font-bold text-text-strong mt-0.5">
                                   {currentAnswerState.feedback.partialScore.language} / 1 pkt
                                 </div>
                                 <div className="text-[10px] text-text-secondary mt-1">
@@ -1341,7 +1341,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                           }
                           disabled={currentAnswerState.isSubmitted}
                           placeholder="Sformułuj precyzyjną odpowiedź własnymi słowami..."
-                          className="w-full bg-surface-bg border border-surface-border rounded-xl p-3 text-xs text-white placeholder-text-muted focus:outline-none focus:border-amber-500 leading-relaxed"
+                          className="w-full bg-surface-bg border border-surface-border rounded-xl p-3 text-xs text-text-strong placeholder-text-muted focus:outline-none focus:border-amber-500 leading-relaxed"
                         />
 
                         {!currentAnswerState.isSubmitted && (
@@ -1474,7 +1474,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                               setShowExplanation(nextAns?.isSubmitted || false);
                               setShowCkeKey(nextAns?.isSubmitted || false);
                             }}
-                            className="px-4 py-2 rounded-xl bg-surface-card-hover hover:bg-surface-card-hover text-white text-xs font-semibold flex items-center gap-1"
+                            className="px-4 py-2 rounded-xl bg-surface-card-hover hover:bg-surface-card-hover text-text-strong text-xs font-semibold flex items-center gap-1"
                           >
                             Następne zadanie
                             <ChevronRight className="w-4 h-4" />
@@ -1544,7 +1544,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
                     {/* Wyjaśnienie merytoryczne */}
                     {showExplanation && currentAnswerState.isSubmitted && (
                       <div className="p-4 rounded-xl bg-surface-card-hover/40 border border-surface-border/60 text-xs text-text-secondary space-y-1 animate-fadeIn">
-                        <span className="font-semibold text-white">
+                        <span className="font-semibold text-text-strong">
                           Wyjaśnienie i kontekst merytoryczny:
                         </span>
                         <p className="leading-relaxed">{currentTask.explanation}</p>
@@ -1568,7 +1568,7 @@ export const PolishLessonView: React.FC<PolishLessonViewProps> = ({
               <span className="px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                 Podsumowanie lekcji
               </span>
-              <h2 className="text-xl font-bold text-white mt-1">
+              <h2 className="text-xl font-bold text-text-strong mt-1">
                 Kluczowe Wnioski & Utrwalenie Wiedzy
               </h2>
             </div>

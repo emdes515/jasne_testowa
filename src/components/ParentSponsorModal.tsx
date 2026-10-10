@@ -117,14 +117,14 @@ Dzięki wielkie za pomoc w zdaniu matury!
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-          className="relative w-full max-w-lg bg-[#0B0F17] border border-white/10 rounded-[28px] shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col my-auto"
+          className="relative w-full max-w-lg bg-[#0B0F17] border border-hairline rounded-[28px] shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col my-auto"
         >
           {/* Ambient Glow */}
-          <div className="absolute top-0 right-1/4 w-48 h-48 bg-[#FFB800]/15 blur-3xl rounded-full pointer-events-none -translate-y-1/2" />
+          <div className="absolute top-0 right-1/4 w-48 h-48 bg-jasne/15 blur-3xl rounded-full pointer-events-none -translate-y-1/2" />
           <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-emerald-500/10 blur-3xl rounded-full pointer-events-none translate-y-1/2" />
 
           {/* Modal Header */}
-          <div className="p-5 sm:p-6 border-b border-white/10 flex items-start justify-between bg-[#111724]/80 relative z-10 shrink-0">
+          <div className="p-5 sm:p-6 border-b border-hairline flex items-start justify-between bg-[#111724]/80 relative z-10 shrink-0">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 p-[1px] shadow-lg shadow-amber-500/20 shrink-0">
                 <div className="w-full h-full bg-[#0B0F17] rounded-2xl flex items-center justify-center">
@@ -133,7 +133,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-lg sm:text-xl font-black text-white tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-black text-text-strong tracking-tight">
                     Poproś rodzica o PRO
                   </h3>
                   <span className="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 whitespace-nowrap">
@@ -149,7 +149,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
             <button
               id="parent-sponsor-close-button"
               onClick={onClose}
-              className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer shrink-0"
+              className="w-9 h-9 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition cursor-pointer shrink-0"
               aria-label="Zamknij"
             >
               <X size={18} />
@@ -160,25 +160,25 @@ Dzięki wielkie za pomoc w zdaniu matury!
           <div className="p-5 sm:p-6 space-y-4 overflow-y-auto max-h-[72vh] custom-scrollbar relative z-10">
             {/* Value Proposition Pills */}
             <div className="grid grid-cols-3 gap-2 text-center">
-              <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
+              <div className="bg-[#111726]/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <Heart className="w-5 h-5 text-rose-400 fill-rose-400 mb-1" />
-                <span className="text-[11px] font-bold text-white">Nielimitowane serca</span>
+                <span className="text-[11px] font-bold text-text-strong">Nielimitowane serca</span>
                 <span className="text-[10px] text-slate-400">Zero przerw w nauce</span>
               </div>
-              <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
+              <div className="bg-[#111726]/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <Brain className="w-5 h-5 text-text-accent mb-1" />
-                <span className="text-[11px] font-bold text-white">AI Egzaminator CKE</span>
+                <span className="text-[11px] font-bold text-text-strong">AI Egzaminator CKE</span>
                 <span className="text-[10px] text-slate-400">Ocena tablicy i dowodów</span>
               </div>
-              <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
+              <div className="bg-[#111726]/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <ShieldCheck className="w-5 h-5 text-emerald-400 mb-1" />
-                <span className="text-[11px] font-bold text-white">29 zł / mies.</span>
+                <span className="text-[11px] font-bold text-text-strong">29 zł / mies.</span>
                 <span className="text-[10px] text-slate-400">Płatność BLIK</span>
               </div>
             </div>
 
             {/* Student Name Input */}
-            <div className="bg-[#111726]/60 border border-white/5 rounded-2xl p-3 sm:p-3.5 space-y-1.5">
+            <div className="bg-[#111726]/60 border border-hairline-soft rounded-2xl p-3 sm:p-3.5 space-y-1.5">
               <label className="text-xs font-semibold text-slate-300 block">
                 Twoje imię (do podpisu w wiadomości):
               </label>
@@ -187,7 +187,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
                 value={customName}
                 onChange={(e) => setCustomName(e.target.value)}
                 placeholder="np. Mateusz, Julia..."
-                className="w-full bg-[#080C14] border border-white/10 focus:border-primary/60 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition"
+                className="w-full bg-[#080C14] border border-hairline focus:border-primary/60 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition"
               />
             </div>
 
@@ -206,7 +206,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
                 </button>
               </div>
 
-              <div className="p-3.5 sm:p-4 rounded-2xl bg-[#080C14] border border-white/10 text-xs text-slate-300 font-sans leading-relaxed whitespace-pre-wrap select-all">
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-[#080C14] border border-hairline text-xs text-slate-300 font-sans leading-relaxed whitespace-pre-wrap select-all">
                 {sponsorMessage}
               </div>
             </div>
@@ -236,7 +236,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
               className={`w-full py-3.5 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer ${
                 copied 
                   ? 'bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)]'
-                  : 'bg-white/10 hover:bg-white/15 text-white border border-white/10'
+                  : 'bg-veil-strong hover:bg-white/15 text-text-strong border border-hairline'
               }`}
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
@@ -245,7 +245,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
           </div>
 
           {/* Modal Footer: aktywacja kodem po opłaceniu BLIK-iem */}
-          <div className="p-4 sm:p-5 border-t border-white/10 bg-[#111724]/90 flex flex-col gap-3 shrink-0">
+          <div className="p-4 sm:p-5 border-t border-hairline bg-[#111724]/90 flex flex-col gap-3 shrink-0">
             <div className="flex items-center gap-2 text-[11px] text-slate-400">
               <ShieldCheck size={14} className="text-emerald-400 shrink-0" />
               <span>Płatność BLIK realizuje rodzic. Kod aktywacyjny przychodzi w potwierdzeniu zakupu.</span>
@@ -267,7 +267,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
                 autoCapitalize="characters"
                 spellCheck={false}
                 placeholder="JASNE-XXXX-XXXX"
-                className="flex-1 bg-[#080C14] border border-white/10 focus:border-primary/60 rounded-xl px-3.5 py-2.5 text-center text-sm font-black tracking-[0.12em] text-white placeholder:text-slate-600 outline-none transition"
+                className="flex-1 bg-[#080C14] border border-hairline focus:border-primary/60 rounded-xl px-3.5 py-2.5 text-center text-sm font-black tracking-[0.12em] text-white placeholder:text-slate-600 outline-none transition"
               />
               <button
                 id="activate-pro-with-code-button"

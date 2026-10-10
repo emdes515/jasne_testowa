@@ -179,7 +179,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
           </div>
 
           <div>
-            <h4 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
+            <h4 className="text-base sm:text-xl font-bold text-slate-900 dark:text-text-strong tracking-tight leading-snug">
               {passage.sourceTitle ? `„${passage.sourceTitle}”` : 'Tekst nieliteracki'}
             </h4>
             <p className="text-xs sm:text-sm font-semibold text-amber-600 dark:text-amber-400/90 mt-0.5">
@@ -230,7 +230,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 className={`${fontClasses[fontSize]} text-justify leading-relaxed transition-all duration-300 relative ${
                   isTarget
                     ? colorClasses.highlighted
-                    : 'hover:text-slate-950 dark:hover:text-white'
+                    : 'hover:text-slate-950 dark:hover:text-text-strong'
                 }`}
               >
                 <span
@@ -271,7 +271,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                   Część I: Język polski w użyciu • Etap 1/2
                 </span>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-text-strong tracking-tight">
                   Zapoznaj się z tekstami przed rozpoczęciem zadań
                 </h2>
               </div>
@@ -319,7 +319,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
               className={`px-3 py-2 rounded-xl transition-all cursor-pointer ${
                 tab === 'p1'
                   ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
-                  : 'bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800'
+                  : 'bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong border border-slate-200 dark:border-slate-800'
               }`}
             >
               Tekst 1: {passage1.author}
@@ -331,7 +331,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 className={`px-3 py-2 rounded-xl transition-all cursor-pointer ${
                   tab === 'p2'
                     ? 'bg-rose-500 text-white font-bold shadow-md'
-                    : 'bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800'
+                    : 'bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong border border-slate-200 dark:border-slate-800'
                 }`}
               >
                 Tekst 2: {passage2.author}
@@ -344,7 +344,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 className={`px-3 py-2 rounded-xl transition-all cursor-pointer ${
                   tab === 'both'
                     ? 'bg-indigo-600 text-white font-bold shadow-md'
-                    : 'bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800'
+                    : 'bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong border border-slate-200 dark:border-slate-800'
                 }`}
               >
                 Widok Porównawczy (Oba teksty)
@@ -361,7 +361,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 className={`px-2.5 py-1 rounded-lg font-serif transition-all cursor-pointer ${
                   fontFamily === 'serif'
                     ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
                 title="Czcionka szeryfowa (tradycyjny druk CKE)"
               >
@@ -373,7 +373,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 className={`px-2.5 py-1 rounded-lg font-sans transition-all cursor-pointer ${
                   fontFamily === 'sans'
                     ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
                 title="Czcionka bezszeryfowa"
               >
@@ -386,7 +386,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 type="button"
                 onClick={() => setFontSize('sm')}
                 className={`px-2 py-1 rounded-lg transition-all cursor-pointer ${
-                  fontSize === 'sm' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  fontSize === 'sm' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 A-
@@ -395,7 +395,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 type="button"
                 onClick={() => setFontSize('base')}
                 className={`px-2 py-1 rounded-lg transition-all cursor-pointer ${
-                  fontSize === 'base' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  fontSize === 'base' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 A
@@ -404,7 +404,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 type="button"
                 onClick={() => setFontSize('lg')}
                 className={`px-2 py-1 rounded-lg transition-all cursor-pointer ${
-                  fontSize === 'lg' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  fontSize === 'lg' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 A+
@@ -461,7 +461,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
               <BookOpen className="w-4 h-4 text-amber-500 dark:text-amber-400" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide flex items-center gap-1.5">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-text-strong tracking-wide flex items-center gap-1.5">
                 <span>Czytelnia Tekstów CKE</span>
                 <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300 font-mono">
                   Pełny tekst
@@ -488,7 +488,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 type="button"
                 onClick={() => setFontSize('sm')}
                 className={`px-2 py-0.5 rounded font-medium transition-all cursor-pointer ${
-                  fontSize === 'sm' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  fontSize === 'sm' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 A-
@@ -497,7 +497,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 type="button"
                 onClick={() => setFontSize('base')}
                 className={`px-2 py-0.5 rounded font-medium transition-all cursor-pointer ${
-                  fontSize === 'base' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  fontSize === 'base' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 A
@@ -506,7 +506,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
                 type="button"
                 onClick={() => setFontSize('lg')}
                 className={`px-2 py-0.5 rounded font-medium transition-all cursor-pointer ${
-                  fontSize === 'lg' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  fontSize === 'lg' ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-text-strong'
                 }`}
               >
                 A+
@@ -581,7 +581,7 @@ export const PartOneReadingRoom: React.FC<PartOneReadingRoomProps> = ({
             <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-amber-500 dark:text-amber-400" />
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Pełna Czytelnia Tekstów CKE</h3>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-text-strong">Pełna Czytelnia Tekstów CKE</h3>
               </div>
               <button
                 type="button"

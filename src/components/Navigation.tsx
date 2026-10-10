@@ -44,7 +44,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
         aria-label="Główna nawigacja mobilna"
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 pointer-events-none flex justify-center pb-[max(12px,env(safe-area-inset-bottom))] px-3"
       >
-        <div className="pointer-events-auto flex items-center justify-between gap-1 bg-[#0E1522]/90 backdrop-blur-[24px] border border-white/10 p-1.5 rounded-[26px] shadow-[0_12px_32px_rgba(0,0,0,0.35),0_0_20px_rgba(255,184,0,0.08)] w-full max-w-sm">
+        <div className="pointer-events-auto flex items-center justify-between gap-1 bg-surface-panel/90 backdrop-blur-[24px] border border-hairline p-1.5 rounded-[26px] shadow-[0_12px_32px_rgba(0,0,0,0.35),0_0_20px_rgba(255,184,0,0.08)] w-full max-w-sm">
           {navItems.filter(item => item.id !== 'profile').map(item => {
             const Icon = item.icon;
             const isActive = currentTab === item.id || (item.id === 'nauka' && (currentTab as string) === 'learn') || (item.id === 'profile' && (currentTab as string) === 'profil');
@@ -67,7 +67,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                   <motion.div
                     layoutId="mobileNavActivePill"
                     className={`absolute inset-0 rounded-2xl shadow-[0_0_20px_rgba(255,184,0,0.35)] ${
-                      isArena ? 'bg-emerald-400' : 'bg-[#FFB800]'
+                      isArena ? 'bg-emerald-400' : 'bg-jasne'
                     }`}
                     transition={{ type: "spring", stiffness: 450, damping: 32 }}
                   />
@@ -128,8 +128,8 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                   isActive
                     ? isArena
                       ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 shadow-[0_0_16px_rgba(16,185,129,0.2)]'
-                      : 'bg-[#FFB800]/15 text-text-accent border border-primary/40 shadow-[0_0_16px_rgba(255,184,0,0.15)]'
-                    : 'text-[#8B8D98] hover:text-white hover:bg-white/5'
+                      : 'bg-jasne/15 text-text-accent border border-primary/40 shadow-[0_0_16px_rgba(255,184,0,0.15)]'
+                    : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
                 }`}
                 title={item.label}
               >
@@ -151,7 +151,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
         <motion.button
           whileTap={{ scale: 0.93 }}
           onClick={onProfileClick}
-          className="w-11 h-11 rounded-full bg-gradient-to-br from-[#FFB800]/30 to-[#D97706]/30 border border-primary/40 p-0.5 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+          className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/30 to-[#D97706]/30 border border-primary/40 p-0.5 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
           title="Twój profil"
         >
           <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center text-primary">
@@ -260,7 +260,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
           </div>
           <div className="w-full h-1.5 bg-surface-bg rounded-full overflow-hidden border border-surface-border">
             <div 
-              className="h-full bg-gradient-to-r from-[#D97706] to-[#FFB800] rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-[#D97706] to-primary rounded-full transition-all duration-500"
               style={{ width: `${xpPct}%` }}
             />
           </div>

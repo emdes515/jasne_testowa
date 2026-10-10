@@ -184,12 +184,12 @@ export function AuthModal({ isOpen, onClose, onSuccess, promoContext }: AuthModa
         className="relative w-full max-w-md bg-surface-card border-t sm:border border-surface-border rounded-t-[32px] sm:rounded-3xl p-6 sm:p-7 shadow-2xl overflow-y-auto max-h-[92vh] z-10"
       >
         {/* Subtle Cyber Amber Accent Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-[#FFB800] to-[#F59E0B]" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-primary to-[#F59E0B]" />
 
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-text-muted hover:text-text-primary p-2 rounded-xl hover:bg-white/5 transition-colors z-20 cursor-pointer"
+          className="absolute top-4 right-4 text-text-muted hover:text-text-primary p-2 rounded-xl hover:bg-veil transition-colors z-20 cursor-pointer"
           aria-label="Zamknij"
         >
           <X size={18} />

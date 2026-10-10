@@ -91,7 +91,7 @@ export function SmartMathKeyboard({
       });
     } catch {
       // Fallback: simple text with cursor
-      return `<div class="font-mono text-white text-base">${escapeHtml(before)}<span class="text-[#00E5FF] font-black animate-pulse">|</span>${escapeHtml(after)}</div>`;
+      return `<div class="font-mono text-text-strong text-base">${escapeHtml(before)}<span class="text-[#00E5FF] font-black animate-pulse">|</span>${escapeHtml(after)}</div>`;
     }
   }, [value, cursorPos, cursorVisible]);
 
@@ -195,7 +195,7 @@ export function SmartMathKeyboard({
       <div
         ref={previewRef}
         onClick={() => setCursorPos(value.length)}
-        className="w-full min-h-[96px] max-h-[140px] bg-[#0B0F17] border-2 border-white/10 hover:border-[#00E5FF]/40 focus-within:border-[#00E5FF] rounded-[22px] p-4 flex flex-col justify-center items-center relative overflow-x-auto overflow-y-hidden shadow-inner transition-colors cursor-text mb-3"
+        className="w-full min-h-[96px] max-h-[140px] bg-[#0B0F17] border-2 border-hairline hover:border-[#00E5FF]/40 focus-within:border-[#00E5FF] rounded-[22px] p-4 flex flex-col justify-center items-center relative overflow-x-auto overflow-y-hidden shadow-inner transition-colors cursor-text mb-3"
       >
         {/* Top subtle badge & quick clear */}
         <div className="w-full flex items-center justify-between text-[11px] font-bold text-[#8B8D98] mb-1">
@@ -209,7 +209,7 @@ export function SmartMathKeyboard({
                 e.stopPropagation();
                 handleClear();
               }}
-              className="px-2 py-0.5 rounded-lg bg-white/5 hover:bg-rose-500/20 text-[#8B8D98] hover:text-rose-400 text-[10px] uppercase tracking-wider transition-colors"
+              className="px-2 py-0.5 rounded-lg bg-veil hover:bg-rose-500/20 text-[#8B8D98] hover:text-rose-400 text-[10px] uppercase tracking-wider transition-colors"
             >
               Wyczyść
             </button>
@@ -218,7 +218,7 @@ export function SmartMathKeyboard({
 
         {/* KaTeX Live Render Output */}
         <div
-          className="w-full text-center text-white text-lg sm:text-xl font-medium tracking-wide overflow-x-auto no-scrollbar py-1"
+          className="w-full text-center text-text-strong text-lg sm:text-xl font-medium tracking-wide overflow-x-auto no-scrollbar py-1"
           dangerouslySetInnerHTML={{ __html: getRenderedHtml() }}
         />
       </div>
@@ -226,14 +226,14 @@ export function SmartMathKeyboard({
       {/* ------------------------------------------------------------- */}
       {/* THUMB-OPTIMIZED SMART MATH KEYBOARD (Height ~260px)           */}
       {/* ------------------------------------------------------------- */}
-      <div className="w-full bg-[#0B0F17] border border-white/10 rounded-[24px] p-2.5 shadow-2xl flex flex-col gap-2">
+      <div className="w-full bg-[#0B0F17] border border-hairline rounded-[24px] p-2.5 shadow-2xl flex flex-col gap-2">
         {/* TOP DEDICATED CKE SYMBOL STRIP */}
         <div className="grid grid-cols-6 gap-1.5">
           {/* Fraction a/b */}
           <button
             type="button"
             onClick={() => insertToken('\\frac{}{}', 6)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-black text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-black text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Ułamek zwykły"
           >
             <span className="flex flex-col items-center leading-none text-xs">
@@ -247,7 +247,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('\\sqrt{}', 6)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Pierwiastek"
           >
             √x
@@ -257,7 +257,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('^{2}', 4)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Kwadrat"
           >
             x²
@@ -267,7 +267,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('^{}', 2)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Potęga do wykładnika"
           >
             xⁿ
@@ -277,7 +277,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('()', 1)}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Nawiasy"
           >
             ( )
@@ -287,7 +287,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('\\pi ')}
-            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-serif font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
+            className="min-h-[44px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-serif font-bold text-sm flex items-center justify-center transition-transform active:bg-[#00E5FF]/20 shadow-sm"
             title="Liczba Pi"
           >
             π
@@ -300,35 +300,35 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('x')}
-            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-black text-base italic flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-hairline rounded-xl text-[#00E5FF] font-black text-base italic flex items-center justify-center transition-transform"
           >
             x
           </button>
           <button
             type="button"
             onClick={() => insertToken('y')}
-            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-black text-base italic flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-hairline rounded-xl text-[#00E5FF] font-black text-base italic flex items-center justify-center transition-transform"
           >
             y
           </button>
           <button
             type="button"
             onClick={() => insertToken('7')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             7
           </button>
           <button
             type="button"
             onClick={() => insertToken('8')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             8
           </button>
           <button
             type="button"
             onClick={() => insertToken('9')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             9
           </button>
@@ -350,42 +350,42 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken(' + ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
           >
             +
           </button>
           <button
             type="button"
             onClick={() => insertToken(' - ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
           >
             -
           </button>
           <button
             type="button"
             onClick={() => insertToken('4')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             4
           </button>
           <button
             type="button"
             onClick={() => insertToken('5')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             5
           </button>
           <button
             type="button"
             onClick={() => insertToken('6')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             6
           </button>
           <button
             type="button"
             onClick={() => insertToken(' \\cdot ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
             title="Mnożenie"
           >
             ·
@@ -395,14 +395,14 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken(' = ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-[#00E5FF] font-bold text-lg flex items-center justify-center transition-transform"
           >
             =
           </button>
           <button
             type="button"
             onClick={() => insertToken('\\le ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
             title="Mniejsze lub równe"
           >
             ≤
@@ -410,28 +410,28 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('1')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             1
           </button>
           <button
             type="button"
             onClick={() => insertToken('2')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             2
           </button>
           <button
             type="button"
             onClick={() => insertToken('3')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             3
           </button>
           <button
             type="button"
             onClick={() => insertToken('\\ge ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
             title="Większe lub równe"
           >
             ≥
@@ -441,21 +441,21 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken(' < ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
           >
             &lt;
           </button>
           <button
             type="button"
             onClick={() => insertToken(' > ')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/10 rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline rounded-xl text-white font-bold text-sm flex items-center justify-center transition-transform"
           >
             &gt;
           </button>
           <button
             type="button"
             onClick={() => insertToken('0')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
           >
             0
           </button>
@@ -463,7 +463,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={() => insertToken('{,}')}
-            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-white/5 rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#161F2E] hover:bg-[#1E2B3E] active:scale-92 border border-hairline-soft rounded-xl text-white font-bold text-lg flex items-center justify-center transition-transform"
             title="Przecinek dziesiętny"
           >
             ,
@@ -472,7 +472,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={moveCursorLeft}
-            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#8B8D98] hover:text-white font-bold flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-hairline rounded-xl text-[#8B8D98] hover:text-white font-bold flex items-center justify-center transition-transform"
             title="Kursor w lewo"
           >
             <ArrowLeft size={16} />
@@ -481,7 +481,7 @@ export function SmartMathKeyboard({
           <button
             type="button"
             onClick={moveCursorRight}
-            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-white/10 rounded-xl text-[#8B8D98] hover:text-white font-bold flex items-center justify-center transition-transform"
+            className="min-h-[46px] bg-[#1B2433] hover:bg-[#223145] active:scale-92 border border-hairline rounded-xl text-[#8B8D98] hover:text-white font-bold flex items-center justify-center transition-transform"
             title="Kursor w prawo"
           >
             <ArrowRight size={16} />

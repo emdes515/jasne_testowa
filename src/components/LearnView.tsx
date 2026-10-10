@@ -123,10 +123,10 @@ export function formatLessonsNoun(count: number): string {
  */
 export function ActiveBadge({ label = 'W TOKU' }: { label?: string; isRose?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-text-accent bg-[#FFB800]/10 border border-primary/30 shadow-sm">
+    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-text-accent bg-jasne/10 border border-primary/30 shadow-sm">
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] bg-[#FFB800]" />
-        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFB800]" />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] bg-jasne" />
+        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-jasne" />
       </span>
       <span>{label}</span>
     </span>
@@ -923,7 +923,7 @@ export function LearnView({
                           triggerHaptic('light');
                           setShowEnglishDictionary(true);
                         }}
-                        className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card hover:bg-surface-card-hover border border-primary/30 hover:border-primary/60 text-[#FFDCA1] text-[11px] sm:text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+                        className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card hover:bg-surface-card-hover border border-primary/30 hover:border-primary/60 text-accent-soft text-[11px] sm:text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
                         title="Otwórz oficjalny Słownik Maturalny CKE"
                       >
                         <BookOpen size={13} className="text-text-accent" />
@@ -977,7 +977,7 @@ export function LearnView({
               {selectedSubjectKey === 'pol' && (
                 <div className="px-3 sm:px-6 py-2 sticky top-[49px] bg-surface-bg/95 backdrop-blur-xl z-19 border-b border-surface-border shadow-sm">
                   <div className="max-w-3xl mx-auto w-full">
-                    <div className="grid grid-cols-4 p-1 rounded-xl bg-[#101726] border border-white/10 relative gap-1">
+                    <div className="grid grid-cols-4 p-1 rounded-xl bg-[#101726] border border-hairline relative gap-1">
                       {/* Tab 0: Wszystkie działy */}
                       <button
                         onClick={() => {
@@ -987,7 +987,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedPillarId === 'all'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1001,7 +1001,7 @@ export function LearnView({
                         <Layers size={13} className={selectedPillarId === 'all' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">Wszystkie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedPillarId === 'all' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedPillarId === 'all' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           {polishTopicsList.length || 28}
                         </span>
@@ -1016,7 +1016,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedPillarId === 'pillar-1-jezyk-w-uzyciu'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1033,7 +1033,7 @@ export function LearnView({
                           <span className="sm:hidden">Język</span>
                         </span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedPillarId === 'pillar-1-jezyk-w-uzyciu' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           {polishTopicsList.filter(t => t.pillar_id === 'pillar-1-jezyk-w-uzyciu').length || 7}
                         </span>
@@ -1048,7 +1048,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedPillarId === 'pillar-2-lektury'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1065,7 +1065,7 @@ export function LearnView({
                           <span className="sm:hidden">Lektury</span>
                         </span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedPillarId === 'pillar-2-lektury' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedPillarId === 'pillar-2-lektury' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           {polishTopicsList.filter(t => t.pillar_id === 'pillar-2-lektury').length || 20}
                         </span>
@@ -1080,7 +1080,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-2 py-2 px-1 sm:px-2 rounded-lg text-[11px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedPillarId === 'pillar-3-wypracowanie'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1094,7 +1094,7 @@ export function LearnView({
                         <Feather size={13} className={selectedPillarId === 'pillar-3-wypracowanie' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">Wypracowanie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedPillarId === 'pillar-3-wypracowanie' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedPillarId === 'pillar-3-wypracowanie' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           {polishTopicsList.filter(t => t.pillar_id === 'pillar-3-wypracowanie').length || 1}
                         </span>
@@ -1127,7 +1127,7 @@ export function LearnView({
               {selectedSubjectKey === 'eng' && (
                 <div className="px-3 sm:px-6 py-2 sticky top-[49px] bg-surface-bg/95 backdrop-blur-xl z-19 border-b border-surface-border shadow-sm">
                   <div className="max-w-3xl mx-auto w-full">
-                    <div className="grid grid-cols-5 p-1 rounded-xl bg-[#101726] border border-white/10 relative gap-1">
+                    <div className="grid grid-cols-5 p-1 rounded-xl bg-[#101726] border border-hairline relative gap-1">
                       {/* Tab 0: Wszystkie działy */}
                       <button
                         onClick={() => {
@@ -1137,7 +1137,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedEnglishPillarId === 'all'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1151,7 +1151,7 @@ export function LearnView({
                         <Layers size={13} className={selectedEnglishPillarId === 'all' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">Wszystkie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedEnglishPillarId === 'all' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedEnglishPillarId === 'all' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           15
                         </span>
@@ -1166,7 +1166,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedEnglishPillarId === 'pillar-use-of-english'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1183,7 +1183,7 @@ export function LearnView({
                           <span className="sm:hidden">Środki</span>
                         </span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedEnglishPillarId === 'pillar-use-of-english' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedEnglishPillarId === 'pillar-use-of-english' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           5
                         </span>
@@ -1198,7 +1198,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedEnglishPillarId === 'pillar-listening'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1212,7 +1212,7 @@ export function LearnView({
                         <Headphones size={13} className={selectedEnglishPillarId === 'pillar-listening' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">Słuchanie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedEnglishPillarId === 'pillar-listening' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedEnglishPillarId === 'pillar-listening' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           3
                         </span>
@@ -1227,7 +1227,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedEnglishPillarId === 'pillar-reading'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1241,7 +1241,7 @@ export function LearnView({
                         <BookOpen size={13} className={selectedEnglishPillarId === 'pillar-reading' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">Czytanie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedEnglishPillarId === 'pillar-reading' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedEnglishPillarId === 'pillar-reading' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           3
                         </span>
@@ -1256,7 +1256,7 @@ export function LearnView({
                         }}
                         className={`relative z-10 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 sm:px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors cursor-pointer ${
                           selectedEnglishPillarId === 'pillar-writing'
-                            ? 'text-white'
+                            ? 'text-text-strong'
                             : 'text-slate-400 hover:text-slate-200'
                         }`}
                       >
@@ -1270,7 +1270,7 @@ export function LearnView({
                         <PenTool size={13} className={selectedEnglishPillarId === 'pillar-writing' ? 'text-amber-400 shrink-0 relative z-10' : 'text-slate-500 shrink-0 relative z-10'} />
                         <span className="truncate relative z-10">Pisanie</span>
                         <span className={`hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0 relative z-10 ${
-                          selectedEnglishPillarId === 'pillar-writing' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-slate-500'
+                          selectedEnglishPillarId === 'pillar-writing' ? 'bg-amber-500/20 text-amber-300' : 'bg-veil text-slate-500'
                         }`}>
                           4
                         </span>
@@ -1357,20 +1357,20 @@ export function LearnView({
                             : isFullyCompleted
                               ? 'bg-[#0E1524] border-emerald-500/30 hover:border-emerald-500/50 shadow-sm'
                               : isLocked
-                                ? 'bg-[#0B0F17]/60 border-white/5 opacity-60 hover:opacity-75'
-                                : 'bg-[#101726] border-white/10 hover:border-white/20 shadow-sm'
+                                ? 'bg-[#0B0F17]/60 border-hairline-soft opacity-60 hover:opacity-75'
+                                : 'bg-[#101726] border-hairline hover:border-white/20 shadow-sm'
                         }`}
                       >
                         {/* Wiersz 1 (Góra): Numer działu (np. "01") + Paszport Epoki / Status po lewej, Liczba lekcji po prawej */}
                         <div className="flex items-center justify-between gap-2 w-full flex-wrap">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-display font-black text-xs text-slate-300 bg-black/40 border border-white/10 px-2.5 py-0.5 rounded-lg tracking-wider">
+                            <span className="font-display font-black text-xs text-slate-300 bg-black/40 border border-hairline px-2.5 py-0.5 rounded-lg tracking-wider">
                               DZIAŁ {topicNum}
                             </span>
                             
 
                             {isLocked ? (
-                              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-white/5 border border-white/5 px-2.5 py-0.5 rounded-full">
+                              <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-veil border border-hairline-soft px-2.5 py-0.5 rounded-full">
                                 <Lock size={10} className="text-slate-400" />
                                 <span>ZABLOKOWANY</span>
                               </span>
@@ -1401,10 +1401,10 @@ export function LearnView({
                           <div className="flex items-center gap-3 min-w-0 flex-1">
                             <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
                               isBeaconTopic
-                                ? 'bg-[#FFB800]/15 border-primary/40 text-text-accent'
+                                ? 'bg-jasne/15 border-primary/40 text-text-accent'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400'
-                                  : 'bg-white/5 border-white/10 text-slate-300 group-hover:text-white group-hover:border-white/20'
+                                  : 'bg-veil border-hairline text-slate-300 group-hover:text-text-strong group-hover:border-white/20'
                             }`}>
                               <TopicIcon size={18} />
                             </div>
@@ -1412,7 +1412,7 @@ export function LearnView({
                               <h2 className={`font-display font-black text-base sm:text-lg leading-snug break-words transition-colors ${
                                 isLocked 
                                   ? 'text-slate-400' 
-                                  : 'text-white group-hover:text-text-accent'
+                                  : 'text-text-strong group-hover:text-text-accent'
                               }`}>
                                 <MathRenderer content={cleanName} />
                               </h2>
@@ -1431,10 +1431,10 @@ export function LearnView({
                           {!isLocked && (
                             <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
                               isBeaconTopic
-                                ? 'bg-[#FFB800]/15 text-text-accent group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-sm'
+                                ? 'bg-jasne/15 text-text-accent group-hover:bg-jasne group-hover:text-[#080B11] shadow-sm'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-emerald-950'
-                                  : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
+                                  : 'bg-veil text-slate-400 group-hover:bg-veil-strong group-hover:text-text-strong'
                             }`}>
                               <ChevronRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                             </div>
@@ -1471,7 +1471,7 @@ export function LearnView({
                                   : isFullyCompleted
                                     ? 'bg-emerald-400 shadow-sm'
                                     : isBeaconTopic 
-                                      ? 'bg-[#FFB800] shadow-sm' 
+                                      ? 'bg-jasne shadow-sm' 
                                       : 'bg-white/30'
                               }`} 
                               style={{ width: `${isLocked ? 0 : progressPercent}%` }} 
@@ -1492,7 +1492,7 @@ export function LearnView({
                     ref={topicSentinelRef}
                     className="pt-6 pb-2 flex flex-col items-center justify-center relative z-10 gap-2.5"
                   >
-                    <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141A23]/90 border border-white/10 text-xs text-[#8B8D98] backdrop-blur-md shadow-lg">
+                    <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141A23]/90 border border-hairline text-xs text-[#8B8D98] backdrop-blur-md shadow-lg">
                       <Loader2 size={13} className="animate-spin text-text-accent" />
                       <span>Doczytywanie kolejnych działów ({visibleTopics.length} z {totalTopicsCount})...</span>
                     </div>
@@ -1513,7 +1513,7 @@ export function LearnView({
                 {!hasMoreTopics && (
                   <div className="flex flex-col items-center justify-center mt-8 mb-4 relative z-10 text-center">
                     <div className="w-14 h-14 bg-gradient-to-br from-[#F59E0B] to-[#D97706] rounded-2xl flex items-center justify-center shadow-sm border border-[#FFFBEB]/30 mb-2">
-                      <Trophy size={28} className="text-white drop-shadow-md" />
+                      <Trophy size={28} className="text-text-strong drop-shadow-md" />
                     </div>
                     <p className="text-xs font-black uppercase text-amber-400 tracking-wider">Matura zdana na 100%</p>
                     <p className="text-[11px] text-[#6B7280] mt-0.5">Ukończ wszystkie działy, aby zdobyć trofeum</p>
@@ -1576,7 +1576,7 @@ export function LearnView({
                             triggerHaptic('light');
                             setShowEnglishDictionary(true);
                           }}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-primary/30 hover:border-primary/60 text-[#FFDCA1] text-[11px] font-bold transition-all shadow-xs cursor-pointer active:scale-95"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-primary/30 hover:border-primary/60 text-accent-soft text-[11px] font-bold transition-all shadow-xs cursor-pointer active:scale-95"
                           title="Otwórz oficjalny Słownik Maturalny CKE"
                         >
                           <BookOpen size={12} className="text-text-accent" />
@@ -1628,23 +1628,23 @@ export function LearnView({
                   const progressPct = totalLessonsCount > 0 ? Math.round((completedLessonsCount / totalLessonsCount) * 100) : 0;
 
                   return (
-                    <div className="bg-[#101724] border border-white/10 rounded-2xl p-4 shadow-sm flex flex-col gap-2.5 mb-1">
+                    <div className="bg-[#101724] border border-hairline rounded-2xl p-4 shadow-sm flex flex-col gap-2.5 mb-1">
                       <div className="flex items-center justify-between text-xs sm:text-sm">
                         <span className="text-slate-300 font-semibold flex items-center gap-2">
                           <GraduationCap className={`w-4 h-4 ${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-text-accent'}`} />
                           <span>Postęp Działu {(selectedTopicIndex ?? 0) + 1}:</span>
                         </span>
-                        <span className="font-bold text-white">
+                        <span className="font-bold text-text-strong">
                           <span className={`${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-emerald-400'} font-extrabold`}>{completedLessonsCount}/{totalLessonsCount}</span> {formatLessonsNoun(totalLessonsCount)} ukończonych ({progressPct}%)
                         </span>
                       </div>
                       {/* Minimalistyczny 6-milimetrowy (h-2) pasek postępu */}
-                      <div className="w-full h-2 rounded-full bg-slate-950 overflow-hidden border border-white/10">
+                      <div className="w-full h-2 rounded-full bg-slate-950 overflow-hidden border border-hairline">
                         <div 
                           className={`h-full transition-all duration-500 rounded-full ${
                             selectedSubjectKey === 'pol'
                               ? 'bg-gradient-to-r from-rose-600 to-rose-400 shadow-sm'
-                              : 'bg-gradient-to-r from-[#D97706] to-[#FFB800] shadow-sm'
+                              : 'bg-gradient-to-r from-[#D97706] to-primary shadow-sm'
                           }`}
                           style={{ width: `${progressPct}%` }}
                         />
@@ -1664,14 +1664,14 @@ export function LearnView({
                 )}
 
                 {lessonsForCurrentTopic.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-[#141A23]/70 border border-white/10 rounded-3xl mt-4 sm:mt-6 max-w-md mx-auto shadow-xl">
-                    <div className="w-16 h-16 rounded-2xl bg-[#FFB800]/15 border border-primary/30 flex items-center justify-center text-text-accent mb-4 shadow-sm">
+                  <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-[#141A23]/70 border border-hairline rounded-3xl mt-4 sm:mt-6 max-w-md mx-auto shadow-xl">
+                    <div className="w-16 h-16 rounded-2xl bg-jasne/15 border border-primary/30 flex items-center justify-center text-text-accent mb-4 shadow-sm">
                       <Clock size={28} />
                     </div>
-                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-text-accent bg-[#FFB800]/10 border border-primary/25 px-3 py-1 rounded-full mb-3">
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-text-accent bg-jasne/10 border border-primary/25 px-3 py-1 rounded-full mb-3">
                       W opracowaniu • Dostępne wkrótce
                     </span>
-                    <h3 className="text-lg sm:text-xl font-display font-black text-white mb-2">
+                    <h3 className="text-lg sm:text-xl font-display font-black text-text-strong mb-2">
                       <MathRenderer content={cleanTopicTitle(currentTopic.name)} />
                     </h3>
                     <p className="text-xs sm:text-sm text-[#8B8D98] leading-relaxed mb-4 max-w-xs">
@@ -1694,14 +1694,14 @@ export function LearnView({
                           setSelectedTopicIndex(0);
                           setViewState('lessons');
                         }}
-                        className="w-full py-3.5 px-5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm active:scale-98 transition-all cursor-pointer"
+                        className="w-full py-3.5 px-5 rounded-xl bg-jasne hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm active:scale-98 transition-all cursor-pointer"
                       >
                         <span>Przejdź do Działu 1 (Liczby Rzeczywiste)</span>
                         <ArrowRight size={16} strokeWidth={3} />
                       </button>
                       <button
                         onClick={handleBack}
-                        className="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs flex items-center justify-center gap-2 border border-white/10 active:scale-98 transition-all cursor-pointer"
+                        className="w-full py-3 px-4 rounded-xl bg-veil hover:bg-veil-strong text-text-strong font-semibold text-xs flex items-center justify-center gap-2 border border-hairline active:scale-98 transition-all cursor-pointer"
                       >
                         <span>Wróć do listy działów</span>
                       </button>
@@ -1770,8 +1770,8 @@ export function LearnView({
                               : isCurrentActiveLesson
                                 ? 'border-2 border-primary bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-sm ring-1 ring-primary/40'
                                 : !isUnlocked
-                                  ? 'border-white/5 bg-[#0A0E17]/60 opacity-60'
-                                  : 'border-white/10 bg-[#101726]'
+                                  ? 'border-hairline-soft bg-[#0A0E17]/60 opacity-60'
+                                  : 'border-hairline bg-[#101726]'
                           }`}
                         >
                           {/* Górna część karty */}
@@ -1782,10 +1782,10 @@ export function LearnView({
                                 isCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-sm'
                                   : isCurrentActiveLesson
-                                    ? 'bg-[#FFB800]/20 border border-primary text-text-accent shadow-sm'
+                                    ? 'bg-jasne/20 border border-primary text-text-accent shadow-sm'
                                     : !isUnlocked
-                                      ? 'bg-white/5 border-white/10 text-slate-500'
-                                      : 'bg-white/5 border-white/10 text-slate-300'
+                                      ? 'bg-veil border-hairline text-slate-500'
+                                      : 'bg-veil border-hairline text-slate-300'
                               }`}>
                                 {isCompleted ? (
                                   <CheckCircle2 size={22} className="stroke-[2.5]" />
@@ -1799,7 +1799,7 @@ export function LearnView({
                               {/* Tytuł i metadane */}
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider bg-[#080B10] px-2 py-0.5 rounded-full border border-white/5">
+                                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider bg-[#080B10] px-2 py-0.5 rounded-full border border-hairline-soft">
                                     {group.badge}
                                   </span>
                                   {isCompleted && (
@@ -1811,14 +1811,14 @@ export function LearnView({
                                     <ActiveBadge label="AKTUALNA LEKCJA" />
                                   )}
                                   {!isUnlocked && (
-                                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase text-slate-500 bg-white/5 border border-white/5 px-2 py-0.5 rounded-full">
+                                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase text-slate-500 bg-veil border border-hairline-soft px-2 py-0.5 rounded-full">
                                       ZABLOKOWANA
                                     </span>
                                   )}
                                 </div>
 
                                 <h3 className={`font-display font-bold text-base sm:text-lg leading-snug break-words ${
-                                  isUnlocked ? 'text-white' : 'text-slate-400'
+                                  isUnlocked ? 'text-text-strong' : 'text-slate-400'
                                 }`}>
                                   <MathRenderer content={group.name} />
                                 </h3>
@@ -1860,7 +1860,7 @@ export function LearnView({
                                             <span>{formatLessonDuration(group)}</span>
                                           </span>
                                           <span>•</span>
-                                          <span className="text-white font-medium">Wymóg: {reqTasks} {taskNoun}</span>
+                                          <span className="text-text-strong font-medium">Wymóg: {reqTasks} {taskNoun}</span>
                                           <span>•</span>
                                           <span className="text-slate-400">Pewniaki maturalne</span>
                                         </>
@@ -1895,7 +1895,7 @@ export function LearnView({
                           {/* Dolna część karty: 3 Stany przycisków */}
                           <div className="pt-1 flex flex-col sm:flex-row gap-2">
                             {!isUnlocked ? (
-                              <div className="w-full py-2.5 px-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center gap-2 text-xs text-slate-500 cursor-not-allowed select-none">
+                              <div className="w-full py-2.5 px-3 rounded-xl bg-white/[0.02] border border-hairline-soft flex items-center justify-center gap-2 text-xs text-slate-500 cursor-not-allowed select-none">
                                 <Lock size={13} />
                                 <span>
                                   Odblokuje się po zaliczeniu {getLockRequirementLabel(prevGroup)}
@@ -1906,7 +1906,7 @@ export function LearnView({
                                 <button
                                   type="button"
                                   onClick={() => handleOpenTheoryModal(group, nextLessonPayload)}
-                                  className="w-full sm:w-auto py-2.5 px-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-primary/40 text-slate-200 hover:text-text-accent font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-[0.98] cursor-pointer shrink-0"
+                                  className="w-full sm:w-auto py-2.5 px-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-hairline hover:border-primary/40 text-slate-200 hover:text-text-accent font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-[0.98] cursor-pointer shrink-0"
                                 >
                                   <Compass size={14} className="text-text-accent" />
                                   <span>Pigułka (~3-4 min)</span>
@@ -1916,7 +1916,7 @@ export function LearnView({
                                   <button
                                     id={`repeat-lesson-btn-${group.id}`}
                                     onClick={() => handleStartLessonSession(group, nextLessonPayload)}
-                                    className="flex-1 py-2.5 px-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-slate-200 hover:text-emerald-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-[0.99] cursor-pointer"
+                                    className="flex-1 py-2.5 px-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-hairline hover:border-emerald-500/40 text-slate-200 hover:text-emerald-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-[0.99] cursor-pointer"
                                   >
                                     <RefreshCw size={14} className="stroke-[2.5] text-emerald-400" />
                                     <span>POWTÓRZ LEKCJĘ</span>
@@ -1925,7 +1925,7 @@ export function LearnView({
                                   <button
                                     id={`start-lesson-btn-${group.id}`}
                                     onClick={() => handleStartLessonSession(group, nextLessonPayload)}
-                                    className="flex-1 py-3 px-5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition cursor-pointer bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
+                                    className="flex-1 py-3 px-5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition cursor-pointer bg-jasne hover:bg-[#FFC72C] text-[#080B11] shadow-sm"
                                   >
                                     <Play size={15} fill="#080B11" strokeWidth={0} />
                                     <span>ROZPOCZNIJ LEKCJĘ</span>
@@ -1946,26 +1946,26 @@ export function LearnView({
                         className="rounded-2xl border-2 transition-all p-5 sm:p-6 flex flex-col gap-4 relative overflow-hidden mt-3 border-primary/60 bg-gradient-to-b from-[#1C1811] via-[#14151C] to-[#0E121A] shadow-[0_8px_32px_rgba(255,184,0,0.12)]"
                       >
                         {/* Ambient glow accent */}
-                        <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none bg-[#FFB800]/10" />
+                        <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none bg-jasne/10" />
 
                         <div className="flex items-start justify-between gap-3 relative z-10">
                           <div className="flex items-start gap-3.5 min-w-0 flex-1">
-                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border shadow-md bg-[#FFB800]/20 border-primary/50 text-text-accent">
+                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border shadow-md bg-jasne/20 border-primary/50 text-text-accent">
                               <Trophy size={26} className="animate-pulse" />
                             </div>
 
                             <div className="min-w-0 flex-1">
                               <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border shadow-sm text-text-accent bg-[#FFB800]/20 border-primary/40">
+                                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border shadow-sm text-text-accent bg-jasne/20 border-primary/40">
                                   WALKA Z BOSSEM DZIAŁU
                                 </span>
-                                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+                                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-veil border border-hairline px-2 py-0.5 rounded-full">
                                   <Clock size={10} />
                                   <span>15 min • 5 zadań CKE</span>
                                 </span>
                               </div>
 
-                              <h3 className="font-display font-black text-lg sm:text-xl text-white leading-tight">
+                              <h3 className="font-display font-black text-lg sm:text-xl text-text-strong leading-tight">
                                 Sprawdzian: {cleanTopicTitle(currentTopic.name || currentTopic.title)}
                               </h3>
                               <p className="text-xs sm:text-sm text-slate-300 mt-1">
@@ -1974,7 +1974,7 @@ export function LearnView({
 
                               {/* Nagrody za pokonanie bossa */}
                               <div className="flex items-center gap-2 mt-3 flex-wrap">
-                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-text-accent bg-[#FFB800]/10 border border-primary/25 px-2 py-0.5 rounded-lg">
+                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-text-accent bg-jasne/10 border border-primary/25 px-2 py-0.5 rounded-lg">
                                   <Zap size={11} className="fill-[#FFB800]" />
                                   <span>+200 XP</span>
                                 </span>
@@ -1996,7 +1996,7 @@ export function LearnView({
                             id={`start-boss-fight-btn-${currentTopic.id}`}
                             disabled={isBossExamLoading}
                             onClick={handleStartBossExam}
-                            className="w-full py-3.5 px-6 rounded-xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 active:scale-[0.98] transition cursor-pointer shadow-lg disabled:opacity-50 bg-gradient-to-r from-[#FFB800] to-[#FFA000] hover:from-[#FFC72C] hover:to-[#FFB800] text-[#080B11] shadow-[#FFB800]/25"
+                            className="w-full py-3.5 px-6 rounded-xl font-black text-sm sm:text-base flex items-center justify-center gap-2.5 active:scale-[0.98] transition cursor-pointer shadow-lg disabled:opacity-50 bg-gradient-to-r from-primary to-[#FFA000] hover:from-[#FFC72C] hover:to-primary text-[#080B11] shadow-[#FFB800]/25"
                           >
                             {isBossExamLoading ? (
                               <>
@@ -2053,7 +2053,7 @@ export function LearnView({
                 animate={isDesktop ? { opacity: 1, scale: 1, y: 0 } : { y: 0 }}
                 exit={isDesktop ? { opacity: 0, scale: 0.96, y: 0 } : { y: '100%' }}
                 transition={isDesktop ? { duration: 0.2, ease: [0.16, 1, 0.3, 1] } : { type: 'spring', damping: 26, stiffness: 280 }}
-                className="relative z-[125] w-full max-w-lg md:max-w-[800px] mx-auto bg-[#0E131C] border-t md:border border-white/10 rounded-t-3xl md:rounded-3xl p-5 sm:p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.9)] flex flex-col gap-4 max-h-[85vh] md:max-h-[90vh] overflow-y-auto"
+                className="relative z-[125] w-full max-w-lg md:max-w-[800px] mx-auto bg-[#0E131C] border-t md:border border-hairline rounded-t-3xl md:rounded-3xl p-5 sm:p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.9)] flex flex-col gap-4 max-h-[85vh] md:max-h-[90vh] overflow-y-auto"
                 style={{ paddingBottom: isDesktop ? '1.5rem' : 'max(24px, env(safe-area-inset-bottom, 24px))' }}
               >
                 {/* Grab handle (tylko na mobile) */}
@@ -2063,14 +2063,14 @@ export function LearnView({
                 />
 
                 {/* 1. Nagłówek (Header): "Wybierz przedmiot nauki", brak podtytułu, więcej światła */}
-                <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/5">
-                  <h3 className="font-display font-black text-white text-lg sm:text-xl tracking-tight">
+                <div className="flex items-center justify-between pb-3 mb-2 border-b border-hairline-soft">
+                  <h3 className="font-display font-black text-text-strong text-lg sm:text-xl tracking-tight">
                     Wybierz przedmiot nauki
                   </h3>
                   <button
                     id="subject-sheet-close-btn"
                     onClick={() => openSubjectSheet(false)}
-                    className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#9CA3AF] hover:text-white transition-colors cursor-pointer"
+                    className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-[#9CA3AF] hover:text-text-strong transition-colors cursor-pointer"
                     aria-label="Zamknij"
                   >
                     <X size={18} />
@@ -2093,7 +2093,7 @@ export function LearnView({
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'math'
                         ? 'border-primary bg-gradient-to-br from-[#151D2C] via-[#111724] to-[#0E1420] ring-1 ring-primary/40 shadow-sm'
-                        : 'border-white/10 bg-[#101726] hover:border-white/20 hover:bg-[#141C2C]'
+                        : 'border-hairline bg-[#101726] hover:border-white/20 hover:bg-[#141C2C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
@@ -2102,11 +2102,11 @@ export function LearnView({
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className="font-display font-black text-white text-base">
+                          <span className="font-display font-black text-text-strong text-base">
                             Matematyka
                           </span>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-text-accent border border-primary/20">
-                            <span className="w-1 h-1 rounded-full bg-[#FFB800]" />
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-jasne/10 text-text-accent border border-primary/20">
+                            <span className="w-1 h-1 rounded-full bg-jasne" />
                             Nowa Formuła 2023
                           </span>
                         </div>
@@ -2117,7 +2117,7 @@ export function LearnView({
                           <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
-                                mathProgressPercent > 0 ? 'bg-[#FFB800]' : 'bg-transparent'
+                                mathProgressPercent > 0 ? 'bg-jasne' : 'bg-transparent'
                               }`}
                               style={{ width: `${mathProgressPercent}%` }}
                             />
@@ -2135,7 +2135,7 @@ export function LearnView({
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-                        className="w-6 h-6 rounded-full bg-[#FFB800] text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
+                        className="w-6 h-6 rounded-full bg-jasne text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
                       >
                         <Check size={14} strokeWidth={3} />
                       </motion.div>
@@ -2155,16 +2155,16 @@ export function LearnView({
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'pol'
                         ? 'border-rose-500 bg-gradient-to-br from-[#2D161F] to-[#1C1217] ring-1 ring-rose-500/30 shadow-sm'
-                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                        : 'border-hairline bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-rose-400 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-veil border border-hairline text-rose-400 flex items-center justify-center shrink-0">
                         <BookOpen size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className="font-display font-black text-white text-base">
+                          <span className="font-display font-black text-text-strong text-base">
                             Język Polski
                           </span>
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20">
@@ -2217,20 +2217,20 @@ export function LearnView({
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'eng'
                         ? 'border-primary bg-gradient-to-br from-[#1C1811] to-[#0E1420] ring-1 ring-primary/30 shadow-sm'
-                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                        : 'border-hairline bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-[#FFB800]/15 border border-primary/30 text-[#FFDCA1] flex items-center justify-center shrink-0 shadow-sm">
+                      <div className="w-12 h-12 rounded-xl bg-jasne/15 border border-primary/30 text-accent-soft flex items-center justify-center shrink-0 shadow-sm">
                         <Globe size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className="font-display font-black text-white text-base">
+                          <span className="font-display font-black text-text-strong text-base">
                             Język Angielski
                           </span>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-[#FFDCA1] border border-primary/20">
-                            <span className="w-1 h-1 rounded-full bg-[#FFB800]" />
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-jasne/10 text-accent-soft border border-primary/20">
+                            <span className="w-1 h-1 rounded-full bg-jasne" />
                             Podstawa • B1/B2
                           </span>
                         </div>
@@ -2241,7 +2241,7 @@ export function LearnView({
                           <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">
                             <div 
                               className={`h-full rounded-full transition-all duration-300 ${
-                                engProgressPercent > 0 ? 'bg-[#FFB800]' : 'bg-transparent'
+                                engProgressPercent > 0 ? 'bg-jasne' : 'bg-transparent'
                               }`}
                               style={{ width: `${engProgressPercent}%` }}
                             />
@@ -2259,7 +2259,7 @@ export function LearnView({
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-                        className="w-6 h-6 rounded-full bg-[#FFB800] text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
+                        className="w-6 h-6 rounded-full bg-jasne text-[#080B11] font-bold flex items-center justify-center shrink-0 shadow-sm"
                       >
                         <Check size={14} strokeWidth={3} />
                       </motion.div>
@@ -2279,7 +2279,7 @@ export function LearnView({
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'math-roz'
                         ? 'border-sky-400 bg-gradient-to-br from-[#0E2034] to-[#0A1524] ring-1 ring-sky-400/30 shadow-sm'
-                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                        : 'border-hairline bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
@@ -2288,7 +2288,7 @@ export function LearnView({
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className="font-display font-black text-white text-base">
+                          <span className="font-display font-black text-text-strong text-base">
                             Matematyka Rozszerzona
                           </span>
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20">
@@ -2341,7 +2341,7 @@ export function LearnView({
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'eng-roz'
                         ? 'border-purple-400 bg-gradient-to-br from-[#241233] to-[#160B20] ring-1 ring-purple-400/30 shadow-sm'
-                        : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
+                        : 'border-hairline bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
@@ -2350,7 +2350,7 @@ export function LearnView({
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className="font-display font-black text-white text-base">
+                          <span className="font-display font-black text-text-strong text-base">
                             Język Angielski Rozszerzony
                           </span>
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
@@ -2383,7 +2383,7 @@ export function LearnView({
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-                        className="w-6 h-6 rounded-full bg-purple-400 text-white font-bold flex items-center justify-center shrink-0 shadow-sm"
+                        className="w-6 h-6 rounded-full bg-purple-400 text-text-strong font-bold flex items-center justify-center shrink-0 shadow-sm"
                       >
                         <Check size={14} strokeWidth={3} />
                       </motion.div>
@@ -2391,9 +2391,9 @@ export function LearnView({
                   </div>
 
                   {/* 6. Przedmioty w przygotowaniu */}
-                  <div className="p-4 rounded-2xl border border-white/5 bg-[#10141C]/50 flex items-center justify-between gap-4">
+                  <div className="p-4 rounded-2xl border border-hairline-soft bg-[#10141C]/50 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-veil border border-hairline text-slate-500 flex items-center justify-center shrink-0">
                         <BookOpen size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -2401,7 +2401,7 @@ export function LearnView({
                           <span className="font-display font-bold text-white/70 text-base">
                             Kolejne przedmioty
                           </span>
-                          <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-veil border border-hairline px-2 py-0.5 rounded-full">
                             <Lock size={10} className="text-slate-400" />
                             <span>Wkrótce</span>
                           </span>

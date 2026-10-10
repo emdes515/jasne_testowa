@@ -48,10 +48,10 @@ import { triggerHaptic } from '../../utils';
 
 export function ActiveBadge({ label = 'W TOKU' }: { label?: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-text-accent bg-[#FFB800]/10 border border-primary/30 shadow-sm">
+    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-text-accent bg-jasne/10 border border-primary/30 shadow-sm">
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] bg-[#FFB800]" />
-        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFB800]" />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] bg-jasne" />
+        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-jasne" />
       </span>
       <span>{label}</span>
     </span>
@@ -455,15 +455,15 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-surface-bg text-[#dfe2f1] font-sans pb-28 sm:pb-24">
+    <div className="min-h-screen bg-surface-bg text-text-soft font-sans pb-28 sm:pb-24">
       {/* Top Bar / Hub Header */}
-      <header className="relative sm:sticky sm:top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-[#141d2e] px-3.5 py-2.5 sm:px-6 sm:py-3">
+      <header className="relative sm:sticky sm:top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-surface-line px-3.5 py-2.5 sm:px-6 sm:py-3">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
           <div className="flex items-center gap-2.5 min-w-0">
             {onClose && (
               <button
                 onClick={onClose}
-                className="p-1.5 rounded-lg bg-[#0e1522] hover:bg-[#141d2e] text-text-secondary hover:text-[#ffdca1] transition-colors shrink-0 cursor-pointer"
+                className="p-1.5 rounded-lg bg-surface-panel hover:bg-surface-card-hover text-text-secondary hover:text-accent-soft transition-colors shrink-0 cursor-pointer"
                 title="Wróć"
               >
                 ←
@@ -471,11 +471,11 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
             )}
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 shrink-0">
+                <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded bg-primary/10 text-accent-soft border border-primary/20 shrink-0">
                   Formuła 2023
                 </span>
-                <h1 className="text-base sm:text-xl font-bold tracking-tight text-white flex items-center gap-1.5 truncate">
-                  <Calculator className="w-4 h-4 sm:w-5 sm:h-5 text-[#ffdca1] shrink-0" />
+                <h1 className="text-base sm:text-xl font-bold tracking-tight text-text-strong flex items-center gap-1.5 truncate">
+                  <Calculator className="w-4 h-4 sm:w-5 sm:h-5 text-accent-soft shrink-0" />
                   <span>Matematyka CKE</span>
                 </h1>
               </div>
@@ -489,7 +489,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
           <div className="flex items-center gap-1.5 sm:gap-4 shrink-0">
             <button
               onClick={() => handleOpenFormulas()}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#0e1522] hover:bg-[#141d2e] border border-primary/30 text-[#ffdca1] text-xs font-medium transition-all shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-surface-panel hover:bg-surface-card-hover border border-primary/30 text-accent-soft text-xs font-medium transition-all shadow-sm cursor-pointer"
               title="Otwórz oficjalną kartę wzorów CKE"
             >
               <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-accent" />
@@ -498,11 +498,11 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
             </button>
 
             {userState && (
-              <div className="hidden sm:flex items-center gap-2 sm:gap-3 bg-[#0e1522] px-2.5 sm:px-3 py-1.5 rounded-lg border border-[#141d2e] text-[11px] sm:text-xs">
+              <div className="hidden sm:flex items-center gap-2 sm:gap-3 bg-surface-panel px-2.5 sm:px-3 py-1.5 rounded-lg border border-surface-line text-[11px] sm:text-xs">
                 <span className="flex items-center gap-1 text-rose-400 font-semibold" title="Serca">
                   <Heart size={12} className="fill-current" aria-hidden="true" /> {userState.hearts ?? 5}
                 </span>
-                <span className="flex items-center gap-1 text-[#ffdca1] font-semibold" title="Monety">
+                <span className="flex items-center gap-1 text-accent-soft font-semibold" title="Monety">
                   <Coins size={12} aria-hidden="true" /> {userState.coins ?? 0}
                 </span>
                 <span className="flex items-center gap-1 text-orange-400 font-semibold" title="Dni streaku">
@@ -514,13 +514,13 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
         </div>
 
         {/* Mode Switcher Tabs */}
-        <div className="max-w-7xl mx-auto mt-2.5 flex border-b border-[#141d2e] overflow-x-auto scrollbar-none">
+        <div className="max-w-7xl mx-auto mt-2.5 flex border-b border-surface-line overflow-x-auto scrollbar-none">
           <button
             onClick={() => setHubMode('lessons')}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'lessons'
-                ? 'border-[#ffdca1] text-[#ffdca1] bg-[#ffb800]/5'
-                : 'border-transparent text-text-secondary hover:text-[#dfe2f1]'
+                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -530,8 +530,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
             onClick={() => setHubMode('task_browser')}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'task_browser'
-                ? 'border-[#ffdca1] text-[#ffdca1] bg-[#ffb800]/5'
-                : 'border-transparent text-text-secondary hover:text-[#dfe2f1]'
+                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
             <Target className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -548,15 +548,15 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
         {hubMode === 'lessons' && !expandedSectionId && (
           <div className="space-y-6 animate-fadeIn">
             {/* Baner Tytułowy Kursu */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#0e1522] p-4 sm:p-5 rounded-xl border border-[#141d2e]">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-surface-panel p-4 sm:p-5 rounded-xl border border-surface-line">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="px-2.5 py-0.5 rounded-lg bg-[#ffb800]/10 border border-primary/20 text-[#ffdca1] text-xs font-bold">
+                  <span className="px-2.5 py-0.5 rounded-lg bg-primary/10 border border-primary/20 text-accent-soft text-xs font-bold">
                     Kompletny Kurs Maturalny CKE
                   </span>
                   <span className="text-xs text-text-secondary">15 Działów • 75 Lekcji Profilowanych (15–45 min)</span>
                 </div>
-                <h2 className="text-base sm:text-lg font-bold text-white">
+                <h2 className="text-base sm:text-lg font-bold text-text-strong">
                   Ścieżka Opanowania Podstawy Programowej CKE
                 </h2>
                 <p className="text-xs text-text-secondary mt-1">
@@ -567,19 +567,19 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
               <div className="flex flex-col sm:items-end gap-2.5 shrink-0">
                 <div className="text-left sm:text-right">
                   <span className="text-xs text-text-secondary">Ukończone lekcje:</span>
-                  <div className="text-sm font-bold text-[#ffdca1]">
+                  <div className="text-sm font-bold text-accent-soft">
                     {isDev ? ALL_MATH_LESSONS.length : (Array.isArray(completedLessonIds) ? completedLessonIds.length : Object.keys(completedLessonIds || {}).length)} / {ALL_MATH_LESSONS.length} lekcji CKE
                   </div>
                 </div>
 
                 {/* Przełącznik widoku: Siatka lekcji vs Roadmapa Działów */}
-                <div className="flex items-center gap-1 bg-surface-bg p-1 rounded-xl border border-[#141d2e]">
+                <div className="flex items-center gap-1 bg-surface-bg p-1 rounded-xl border border-surface-line">
                   <button
                     onClick={() => setCourseViewMode('lessons_grid')}
                     className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                       courseViewMode === 'lessons_grid'
-                        ? 'bg-[#ffb800]/20 text-[#ffdca1] border border-primary/30 shadow-xs'
-                        : 'text-text-secondary hover:text-[#dfe2f1]'
+                        ? 'bg-primary/20 text-accent-soft border border-primary/30 shadow-xs'
+                        : 'text-text-secondary hover:text-text-soft'
                     }`}
                   >
                     Siatka lekcji ({filteredLessons.length})
@@ -588,8 +588,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     onClick={() => setCourseViewMode('sections_roadmap')}
                     className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                       courseViewMode === 'sections_roadmap'
-                        ? 'bg-[#ffb800]/20 text-[#ffdca1] border border-primary/30 shadow-xs'
-                        : 'text-text-secondary hover:text-[#dfe2f1]'
+                        ? 'bg-primary/20 text-accent-soft border border-primary/30 shadow-xs'
+                        : 'text-text-secondary hover:text-text-soft'
                     }`}
                   >
                     Działy CKE (15)
@@ -608,8 +608,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       onClick={() => setSelectedLessonSection('all')}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                         selectedLessonSection === 'all'
-                          ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] font-bold shadow-sm'
-                          : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] hover:border-[#1e293b]'
+                          ? 'bg-primary/15 border border-primary/40 text-accent-soft font-bold shadow-sm'
+                          : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
                       }`}
                     >
                       Wszystkie działy ({ALL_MATH_LESSONS.length})
@@ -622,8 +622,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           onClick={() => setSelectedLessonSection(sec.id)}
                           className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                             selectedLessonSection === sec.id
-                              ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] font-bold shadow-sm'
-                              : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] hover:border-[#1e293b]'
+                              ? 'bg-primary/15 border border-primary/40 text-accent-soft font-bold shadow-sm'
+                              : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
                           }`}
                         >
                           {sec.numericId}. {sec.short_title} ({count})
@@ -639,7 +639,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       placeholder="Szukaj lekcji, działu, pojęcia..."
                       value={lessonSearchQuery}
                       onChange={(e) => setLessonSearchQuery(e.target.value)}
-                      className="w-full bg-surface-bg border border-[#141d2e] rounded-xl pl-9 pr-3 py-1.5 text-xs text-[#dfe2f1] placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] shadow-sm"
+                      className="w-full bg-surface-bg border border-surface-line rounded-xl pl-9 pr-3 py-1.5 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] shadow-sm"
                     />
                   </div>
                 </div>
@@ -653,27 +653,27 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     return (
                       <div
                         key={lesson.id}
-                        className={`p-5 rounded-xl border transition-all flex flex-col justify-between gap-4 bg-[#0e1522] ${
+                        className={`p-5 rounded-xl border transition-all flex flex-col justify-between gap-4 bg-surface-panel ${
                           isCompleted
                             ? 'border-emerald-500/40 ring-1 ring-emerald-500/20'
-                            : 'border-[#141d2e] hover:border-[#1e293b] hover:bg-[#121b2b]'
+                            : 'border-surface-line hover:border-[#1e293b] hover:bg-[#121b2b]'
                         }`}
                       >
                         <div className="space-y-3">
                           {/* Górny pasek tagów */}
                           <div className="flex flex-wrap items-center justify-between gap-2">
                             <div className="flex items-center gap-2">
-                              <span className="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20">
+                              <span className="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-primary/10 text-accent-soft border border-primary/20">
                                 {lesson.badge || `Lekcja ${lesson.order}`}
                               </span>
-                              <span className="px-2 py-0.5 rounded-lg text-xs font-semibold bg-surface-bg text-text-secondary border border-[#141d2e] flex items-center gap-1">
+                              <span className="px-2 py-0.5 rounded-lg text-xs font-semibold bg-surface-bg text-text-secondary border border-surface-line flex items-center gap-1">
                                 <Clock className="w-3 h-3 text-text-accent" />
                                 {lesson.estimated_time_formatted || '~5 min'}
                               </span>
                             </div>
 
                             <div className="flex items-center gap-1.5">
-                              <span className="px-2 py-0.5 rounded-lg text-[11px] font-medium bg-surface-bg text-[#dfe2f1] border border-[#141d2e]">
+                              <span className="px-2 py-0.5 rounded-lg text-[11px] font-medium bg-surface-bg text-text-soft border border-surface-line">
                                 {lesson.topicShortTitle || lesson.topicTitle}
                               </span>
                             </div>
@@ -681,7 +681,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
 
                           {/* Tytuł i Podtytuł */}
                           <div>
-                            <h3 className="text-base font-bold text-white tracking-tight leading-snug">
+                            <h3 className="text-base font-bold text-text-strong tracking-tight leading-snug">
                               {lesson.title}
                             </h3>
                             <p className="text-xs text-text-secondary mt-1 leading-relaxed">
@@ -690,16 +690,16 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           </div>
 
                           {/* Przegląd 3-stopniowej sesji */}
-                          <div className="bg-surface-bg/60 rounded-xl p-3 border border-[#141d2e] space-y-1.5 text-[11px]">
-                            <div className="flex items-center gap-2 text-[#dfe2f1]">
-                              <span className="w-4 h-4 rounded-full bg-[#ffb800]/20 text-[#ffdca1] flex items-center justify-center text-[10px] font-bold shrink-0">
+                          <div className="bg-surface-bg/60 rounded-xl p-3 border border-surface-line space-y-1.5 text-[11px]">
+                            <div className="flex items-center gap-2 text-text-soft">
+                              <span className="w-4 h-4 rounded-full bg-primary/20 text-accent-soft flex items-center justify-center text-[10px] font-bold shrink-0">
                                 1
                               </span>
                               <span className="truncate">
                                 <strong>Wstęp:</strong> {(lesson.theory_pill?.concept_essence || '').slice(0, 75)}...
                               </span>
                             </div>
-                            <div className="flex items-center gap-2 text-[#dfe2f1]">
+                            <div className="flex items-center gap-2 text-text-soft">
                               <span className="w-4 h-4 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-[10px] font-bold shrink-0">
                                 2
                               </span>
@@ -707,7 +707,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 <strong>Praktyka:</strong> {taskCount} zadań w stylu CKE (losowane z puli 20)
                               </span>
                             </div>
-                            <div className="flex items-center gap-2 text-[#dfe2f1]">
+                            <div className="flex items-center gap-2 text-text-soft">
                               <span className="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px] font-bold shrink-0">
                                 3
                               </span>
@@ -719,7 +719,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                         </div>
 
                         {/* Dolny pasek akcji */}
-                        <div className="flex items-center justify-between pt-2 border-t border-[#141d2e]">
+                        <div className="flex items-center justify-between pt-2 border-t border-surface-line">
                           <div className="text-xs">
                             {isCompleted ? (
                               <span className="text-emerald-400 font-bold flex items-center gap-1.5">
@@ -735,7 +735,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               setActiveLessonId(lesson.id);
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
-                            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#ffb800] hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 transition-all cursor-pointer"
+                            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 transition-all cursor-pointer"
                           >
                             <span>Rozpocznij lekcję</span>
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -792,8 +792,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                   return (
                     <div
                       key={sec.id}
-                      className={`bg-[#0e1522] border rounded-xl p-3.5 sm:p-5 shadow-sm flex flex-col justify-between transition-all duration-200 group/card min-w-0 overflow-hidden ${
-                        isExpanded ? 'border-primary/40' : 'border-[#141d2e] hover:border-[#1e293b]'
+                      className={`bg-surface-panel border rounded-xl p-3.5 sm:p-5 shadow-sm flex flex-col justify-between transition-all duration-200 group/card min-w-0 overflow-hidden ${
+                        isExpanded ? 'border-primary/40' : 'border-surface-line hover:border-[#1e293b]'
                       }`}
                     >
                       <div className="min-w-0">
@@ -803,25 +803,25 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           className="flex items-center justify-between gap-2 min-w-0 cursor-pointer sm:cursor-default select-none pb-1"
                         >
                           <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] shrink-0 group-hover/card:scale-105 transition-transform">
-                              <Calculator className="w-4 h-4 sm:w-5 sm:h-5 text-[#ffdca1]" />
+                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-accent-soft shrink-0 group-hover/card:scale-105 transition-transform">
+                              <Calculator className="w-4 h-4 sm:w-5 sm:h-5 text-accent-soft" />
                             </div>
                             <div className="min-w-0 flex-1">
                               <div className="flex items-center gap-1.5 flex-wrap">
-                                <span className="text-[10px] font-bold uppercase text-[#ffdca1] bg-[#ffb800]/10 px-2 py-0.5 rounded-md border border-primary/20 shrink-0">
+                                <span className="text-[10px] font-bold uppercase text-accent-soft bg-primary/10 px-2 py-0.5 rounded-md border border-primary/20 shrink-0">
                                   Dział {sec.numericId}
                                 </span>
                                 <span className="text-[10px] text-text-secondary font-medium truncate max-w-[120px]">
                                   Formuła 2023
                                 </span>
                               </div>
-                              <h4 className="text-xs sm:text-sm font-bold text-white leading-tight mt-1 truncate">
+                              <h4 className="text-xs sm:text-sm font-bold text-text-strong leading-tight mt-1 truncate">
                                 {sec.short_title}
                               </h4>
                             </div>
                           </div>
                           <div className="flex items-center gap-1.5 shrink-0">
-                            <span className="text-[10px] sm:text-[11px] font-bold text-[#ffdca1] px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#ffb800]/10 border border-primary/20 rounded-lg">
+                            <span className="text-[10px] sm:text-[11px] font-bold text-accent-soft px-2 py-0.5 sm:px-2.5 sm:py-1 bg-primary/10 border border-primary/20 rounded-lg">
                               {sec.points_range}
                             </span>
                             <span className={`sm:hidden p-1 rounded-md text-text-muted transition-transform duration-200 ${isExpanded ? 'rotate-180 text-primary' : ''}`}>
@@ -832,16 +832,16 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
 
                         {/* Mini pasek postępu gdy zwinięte na mobile */}
                         {!isExpanded && (
-                          <div className="sm:hidden mt-2 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-text-secondary">
-                            <span>Postęp: <strong className="text-[#ffdca1]">{completedLessonsCount}/{sectionLessons.length || 5}</strong></span>
+                          <div className="sm:hidden mt-2 pt-2 border-t border-hairline-soft flex items-center justify-between text-[11px] text-text-secondary">
+                            <span>Postęp: <strong className="text-accent-soft">{completedLessonsCount}/{sectionLessons.length || 5}</strong></span>
                             <div className="flex items-center gap-2">
-                              <div className="w-16 h-1.5 bg-surface-bg rounded-full overflow-hidden border border-[#141d2e]">
+                              <div className="w-16 h-1.5 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                                 <div
-                                  className="h-full bg-gradient-to-r from-[#ea580c] to-[#ffb800] rounded-full"
+                                  className="h-full bg-gradient-to-r from-[#ea580c] to-primary rounded-full"
                                   style={{ width: `${progressPct}%` }}
                                 />
                               </div>
-                              <span className="text-[10px] text-[#ffdca1] font-bold">{progressPct}%</span>
+                              <span className="text-[10px] text-accent-soft font-bold">{progressPct}%</span>
                             </div>
                           </div>
                         )}
@@ -853,10 +853,10 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           </p>
 
                           {/* ŚCIEŻKA 5 MIKROLEKCJI (MINI ROADMAP) */}
-                          <div className="space-y-1.5 my-3 p-3 rounded-xl bg-surface-bg border border-[#141d2e] min-w-0">
+                          <div className="space-y-1.5 my-3 p-3 rounded-xl bg-surface-bg border border-surface-line min-w-0">
                             <div className="flex items-center justify-between text-[10px] font-bold text-text-secondary uppercase tracking-wider mb-1 min-w-0">
                               <span className="truncate">Ścieżka mikrolekcji Core-4:</span>
-                              <span className="text-[#ffdca1] font-mono shrink-0 ml-1">{completedLessonsCount}/{sectionLessons.length || 5}</span>
+                              <span className="text-accent-soft font-mono shrink-0 ml-1">{completedLessonsCount}/{sectionLessons.length || 5}</span>
                             </div>
                             {sectionLessons.map((l, lIdx) => {
                               const isLComp = isDev || (Array.isArray(completedLessonIds)
@@ -866,11 +866,11 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 <div key={l.id} className="flex items-center justify-between text-xs py-0.5 gap-2 min-w-0">
                                   <div className="flex items-center gap-2 min-w-0 flex-1">
                                     <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 ${
-                                      isLComp ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300' : 'bg-[#0e1522] text-text-secondary border border-[#141d2e]'
+                                      isLComp ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300' : 'bg-surface-panel text-text-secondary border border-surface-line'
                                     }`}>
                                       {isLComp ? '✓' : `${sec.numericId}.${lIdx + 1}`}
                                     </span>
-                                    <span className={`truncate text-xs min-w-0 flex-1 ${isLComp ? 'text-text-secondary line-through' : 'text-[#dfe2f1] font-medium'}`}>
+                                    <span className={`truncate text-xs min-w-0 flex-1 ${isLComp ? 'text-text-secondary line-through' : 'text-text-soft font-medium'}`}>
                                       {l.short_title || l.title}
                                     </span>
                                   </div>
@@ -884,13 +884,13 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           <div className="space-y-1.5 mb-4 min-w-0">
                             <div className="flex items-center justify-between text-xs min-w-0 gap-2">
                               <span className="text-text-secondary font-medium truncate">Postęp działu:</span>
-                              <span className="font-bold text-[#ffdca1] shrink-0">
+                              <span className="font-bold text-accent-soft shrink-0">
                                 {completedLessonsCount} / {sectionLessons.length || 5} lekcji ({progressPct}%)
                               </span>
                             </div>
-                            <div className="w-full h-2 bg-surface-bg rounded-full overflow-hidden border border-[#141d2e]">
+                            <div className="w-full h-2 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                               <div
-                                className="h-full bg-gradient-to-r from-[#ea580c] to-[#ffb800] transition-all duration-300 rounded-full"
+                                className="h-full bg-gradient-to-r from-[#ea580c] to-primary transition-all duration-300 rounded-full"
                                 style={{ width: `${progressPct}%` }}
                               />
                             </div>
@@ -899,13 +899,13 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       </div>
 
                       {/* PRZYCISKI AKCJI KARTY */}
-                      <div className={`${isExpanded ? 'block' : 'hidden sm:block'} space-y-2 pt-2 border-t border-[#141d2e] min-w-0`}>
+                      <div className={`${isExpanded ? 'block' : 'hidden sm:block'} space-y-2 pt-2 border-t border-surface-line min-w-0`}>
                         <button
                           onClick={() => {
                             setExpandedSectionId(sec.id);
                             setSectionInnerTab('lessons');
                           }}
-                          className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#ffb800] hover:brightness-110 text-[#070a0f] text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
+                          className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
                         >
                           <Play className="w-3.5 h-3.5 fill-[#070a0f] shrink-0" />
                           <span className="truncate">Otwórz dział i 5 lekcji</span>
@@ -918,7 +918,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           setHubMode('task_browser');
                           setTaskPage(1);
                         }}
-                        className="w-full py-2 rounded-xl bg-surface-bg hover:bg-[#141d2e] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] text-xs font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer min-w-0"
+                        className="w-full py-2 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line text-text-secondary hover:text-text-soft text-xs font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer min-w-0"
                       >
                         <Target className="w-3.5 h-3.5 text-text-accent shrink-0" />
                         <span className="truncate">Przeglądaj wszystkie {sectionTasks.length} zadań CKE</span>
@@ -955,9 +955,9 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
               <div className="flex items-center justify-between">
                 <button
                   onClick={() => setExpandedSectionId(null)}
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0e1522] border border-[#141d2e] text-xs font-semibold text-text-secondary hover:text-[#dfe2f1] hover:bg-[#141d2e] transition-colors cursor-pointer"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface-panel border border-surface-line text-xs font-semibold text-text-secondary hover:text-text-soft hover:bg-surface-card-hover transition-colors cursor-pointer"
                 >
-                  <ArrowLeft className="w-4 h-4 text-[#ffdca1]" />
+                  <ArrowLeft className="w-4 h-4 text-accent-soft" />
                   Wróć do wszystkich 15 działów
                 </button>
 
@@ -966,8 +966,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     onClick={() => setSectionInnerTab('lessons')}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
                       sectionInnerTab === 'lessons'
-                        ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] shadow-sm'
-                        : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
+                        ? 'bg-primary/15 border border-primary/40 text-accent-soft shadow-sm'
+                        : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft'
                     }`}
                   >
                     5 Lekcji Core-4
@@ -976,8 +976,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     onClick={() => setSectionInnerTab('tasks')}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
                       sectionInnerTab === 'tasks'
-                        ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] shadow-sm'
-                        : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
+                        ? 'bg-primary/15 border border-primary/40 text-accent-soft shadow-sm'
+                        : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft'
                     }`}
                   >
                     Baza Zadań Działu ({sectionTasks.length})
@@ -986,22 +986,22 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
               </div>
 
               {/* BANER DZIAŁU */}
-              <div className="bg-[#0e1522] border border-[#141d2e] rounded-xl p-5 sm:p-6 shadow-sm">
+              <div className="bg-surface-panel border border-surface-line rounded-xl p-5 sm:p-6 shadow-sm">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] shrink-0">
-                      <Calculator className="w-6 h-6 text-[#ffdca1]" />
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-accent-soft shrink-0">
+                      <Calculator className="w-6 h-6 text-accent-soft" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="px-2.5 py-0.5 rounded-md bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 text-xs font-bold">
+                        <span className="px-2.5 py-0.5 rounded-md bg-primary/10 text-accent-soft border border-primary/20 text-xs font-bold">
                           Dział {currentSection.numericId}
                         </span>
                         <span className="text-xs font-semibold text-text-secondary">
                           Formuła 2023
                         </span>
                       </div>
-                      <h2 className="text-lg sm:text-xl font-bold text-white">
+                      <h2 className="text-lg sm:text-xl font-bold text-text-strong">
                         {currentSection.title}
                       </h2>
                       <p className="text-xs text-text-secondary mt-1 max-w-2xl leading-relaxed">
@@ -1011,7 +1011,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                   </div>
 
                   <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-2">
-                    <span className="px-3 py-1.5 rounded-xl bg-surface-bg border border-[#141d2e] text-xs font-bold text-[#ffdca1]">
+                    <span className="px-3 py-1.5 rounded-xl bg-surface-bg border border-surface-line text-xs font-bold text-accent-soft">
                       Waga CKE: {currentSection.points_range}
                     </span>
                     <button
@@ -1041,19 +1041,19 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     const progressPct = isDev ? 100 : (totalLessonsCount > 0 ? Math.round((completedLessonsCount / totalLessonsCount) * 100) : 0);
 
                     return (
-                      <div className="bg-[#0e1522] border border-[#141d2e] rounded-xl p-4 sm:p-5 shadow-sm flex flex-col gap-2.5 mb-2">
+                      <div className="bg-surface-panel border border-surface-line rounded-xl p-4 sm:p-5 shadow-sm flex flex-col gap-2.5 mb-2">
                         <div className="flex items-center justify-between text-xs sm:text-sm">
-                          <span className="text-[#dfe2f1] font-semibold flex items-center gap-2">
+                          <span className="text-text-soft font-semibold flex items-center gap-2">
                             <GraduationCap className="w-4 h-4 text-text-accent" />
                             <span>Postęp Działu {currentSection.numericId}:</span>
                           </span>
-                          <span className="font-bold text-white">
-                            <span className="text-[#ffdca1] font-extrabold">{completedLessonsCount}/{totalLessonsCount}</span> lekcji zaliczonych ({progressPct}%)
+                          <span className="font-bold text-text-strong">
+                            <span className="text-accent-soft font-extrabold">{completedLessonsCount}/{totalLessonsCount}</span> lekcji zaliczonych ({progressPct}%)
                           </span>
                         </div>
-                        <div className="w-full h-2 rounded-full bg-surface-bg overflow-hidden border border-[#141d2e]">
+                        <div className="w-full h-2 rounded-full bg-surface-bg overflow-hidden border border-surface-line">
                           <div
-                            className="h-full bg-gradient-to-r from-[#ea580c] to-[#ffb800] shadow-sm transition-all duration-500 rounded-full"
+                            className="h-full bg-gradient-to-r from-[#ea580c] to-primary shadow-sm transition-all duration-500 rounded-full"
                             style={{ width: `${progressPct}%` }}
                           />
                         </div>
@@ -1062,7 +1062,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                   })()}
 
                   <div className="flex items-center justify-between px-1">
-                    <h3 className="text-xs sm:text-sm font-bold text-[#dfe2f1] uppercase tracking-wider flex items-center gap-2">
+                    <h3 className="text-xs sm:text-sm font-bold text-text-soft uppercase tracking-wider flex items-center gap-2">
                       <BookOpen className="w-4 h-4 text-text-accent" />
                       <span>Program Mikrolekcji Core-4 (5 lekcji)</span>
                     </h3>
@@ -1092,8 +1092,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             isLessonCompleted
                               ? 'border-emerald-500/30 bg-emerald-950/10'
                               : isCurrentActiveLesson
-                                ? 'border-[#ffdca1] bg-[#0e1522] ring-1 ring-[#ffdca1]/30'
-                                : 'border-[#141d2e] bg-[#0e1522]'
+                                ? 'border-[#ffdca1] bg-surface-panel ring-1 ring-[#ffdca1]/30'
+                                : 'border-surface-line bg-surface-panel'
                           }`}
                         >
                           {/* GÓRNA CZĘŚĆ KARTY LEKCJI */}
@@ -1104,8 +1104,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 isLessonCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
                                   : isCurrentActiveLesson
-                                    ? 'bg-[#ffb800]/15 border border-[#ffdca1] text-[#ffdca1]'
-                                    : 'bg-surface-bg border-[#141d2e] text-text-secondary'
+                                    ? 'bg-primary/15 border border-[#ffdca1] text-accent-soft'
+                                    : 'bg-surface-bg border-surface-line text-text-secondary'
                               }`}>
                                 {isLessonCompleted ? (
                                   <CheckCircle2 size={20} className="stroke-[2.5]" />
@@ -1119,7 +1119,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               {/* TYTUŁ I METADANE LEKCJI */}
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-2 mb-1 flex-wrap min-w-0">
-                                  <span className="text-[10px] font-bold uppercase text-text-secondary tracking-wider bg-surface-bg px-2 py-0.5 rounded-full border border-[#141d2e] shrink-0">
+                                  <span className="text-[10px] font-bold uppercase text-text-secondary tracking-wider bg-surface-bg px-2 py-0.5 rounded-full border border-surface-line shrink-0">
                                     LEKCJA {currentSection.numericId}.{idx + 1}
                                   </span>
                                   {isLessonCompleted && (
@@ -1132,7 +1132,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                   )}
                                 </div>
 
-                                <h4 className="font-bold text-base sm:text-lg text-white leading-snug break-words">
+                                <h4 className="font-bold text-base sm:text-lg text-text-strong leading-snug break-words">
                                   {lesson.title}
                                 </h4>
                                 <p className="text-xs text-text-secondary mt-1 leading-relaxed break-words">
@@ -1140,16 +1140,16 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 </p>
 
                                 <div className="flex items-center gap-2.5 mt-2 text-xs text-text-secondary flex-wrap min-w-0">
-                                  <span className="flex items-center gap-1 text-[#dfe2f1] font-medium">
+                                  <span className="flex items-center gap-1 text-text-soft font-medium">
                                     <Clock className="w-3.5 h-3.5 text-text-accent shrink-0" />
                                     <span>{lesson.estimated_time_formatted || '~5 min'}</span>
                                   </span>
                                   <span>•</span>
-                                  <span className="text-white font-medium">
+                                  <span className="text-text-strong font-medium">
                                     Wymóg: Zadania CKE
                                   </span>
                                   <span>•</span>
-                                  <span className="text-[#ffdca1] font-medium flex items-center gap-1">
+                                  <span className="text-accent-soft font-medium flex items-center gap-1">
                                     <Star className="w-3 h-3 text-text-accent shrink-0" />
                                     Pewniaki CKE
                                   </span>
@@ -1163,8 +1163,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 onClick={() => setExpandedLessonPillId(isPillOpen ? null : lesson.id)}
                                 className={`px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer min-w-0 flex-1 sm:flex-none text-center ${
                                   isPillOpen
-                                    ? 'bg-[#ffb800]/15 border-[#ffdca1] text-[#ffdca1] shadow-sm'
-                                    : 'bg-surface-bg hover:bg-[#141d2e] border-[#141d2e] text-[#dfe2f1] hover:text-white'
+                                    ? 'bg-primary/15 border-[#ffdca1] text-accent-soft shadow-sm'
+                                    : 'bg-surface-bg hover:bg-surface-card-hover border-surface-line text-text-soft hover:text-text-strong'
                                 }`}
                               >
                                 <Lightbulb className="w-4 h-4 text-text-accent shrink-0" />
@@ -1175,15 +1175,15 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               {isLessonCompleted ? (
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-[#141d2e] border border-[#141d2e] hover:border-[#ffdca1]/40 text-[#dfe2f1] hover:text-[#ffdca1] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
+                                  className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line hover:border-[#ffdca1]/40 text-text-soft hover:text-accent-soft font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
                                 >
-                                  <RotateCcw size={15} className="stroke-[2.5] text-[#ffdca1] shrink-0" />
+                                  <RotateCcw size={15} className="stroke-[2.5] text-accent-soft shrink-0" />
                                   <span>POWTÓRZ MISJĘ</span>
                                 </button>
                               ) : (
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-[#ea580c] to-[#ffb800] hover:brightness-110 text-[#070a0f] shadow-sm min-w-0 flex-1 sm:flex-none text-center"
+                                  className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] shadow-sm min-w-0 flex-1 sm:flex-none text-center"
                                 >
                                   <Play size={15} fill="#070a0f" strokeWidth={0} className="shrink-0" />
                                   <span>ROZPOCZNIJ LEKCJĘ</span>
@@ -1195,69 +1195,69 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
 
                           {/* ROZWIJANA PIGUŁKA BENTO W STYLU GAME HUD */}
                           {isPillOpen && (
-                            <div className="mt-3 pt-5 border-t border-[#141d2e] space-y-6 animate-fadeIn min-w-0 overflow-hidden">
+                            <div className="mt-3 pt-5 border-t border-surface-line space-y-6 animate-fadeIn min-w-0 overflow-hidden">
                               {/* NAGŁÓWEK BENTO HUD */}
-                              <div className="flex items-center justify-between p-4 rounded-xl bg-surface-bg border border-[#141d2e] shadow-sm min-w-0 gap-2">
+                              <div className="flex items-center justify-between p-4 rounded-xl bg-surface-bg border border-surface-line shadow-sm min-w-0 gap-2">
                                 <div className="flex items-center gap-3 min-w-0">
-                                  <div className="w-9 h-9 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] font-bold shrink-0">
-                                    <BookOpen className="w-5 h-5 text-[#ffdca1]" />
+                                  <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-accent-soft font-bold shrink-0">
+                                    <BookOpen className="w-5 h-5 text-accent-soft" />
                                   </div>
                                   <div className="min-w-0">
-                                    <span className="text-[10px] font-bold uppercase text-[#ffdca1] tracking-wider block truncate">
+                                    <span className="text-[10px] font-bold uppercase text-accent-soft tracking-wider block truncate">
                                       BENTO CORE-4 • ZESTAW WIEDZY
                                     </span>
-                                    <h3 className="text-sm sm:text-base font-bold text-white truncate">
+                                    <h3 className="text-sm sm:text-base font-bold text-text-strong truncate">
                                       Pigułka Wiedzy Bento & Strategia CKE
                                     </h3>
                                   </div>
                                 </div>
-                                <span className="text-xs font-mono font-bold text-[#ffdca1] bg-[#ffb800]/10 border border-primary/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
+                                <span className="text-xs font-mono font-bold text-accent-soft bg-primary/10 border border-primary/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
                                   FORMUŁA 2023
                                 </span>
                               </div>
 
                               {/* SEKCJA 1: PEWNIAKI MATURALNE & WZORY */}
                               <div className="p-4 sm:p-5 md:p-6 rounded-xl bg-surface-bg border border-primary/30 space-y-5 shadow-sm min-w-0 overflow-hidden">
-                                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#141d2e] min-w-0">
+                                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-surface-line min-w-0">
                                   <div className="flex items-center gap-3 min-w-0">
-                                    <div className="w-10 h-10 rounded-xl bg-[#ffb800]/10 border border-primary/30 flex items-center justify-center text-[#ffdca1] shrink-0">
-                                      <Star className="w-5 h-5 text-[#ffdca1]" />
+                                    <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-accent-soft shrink-0">
+                                      <Star className="w-5 h-5 text-accent-soft" />
                                     </div>
                                     <div className="min-w-0">
                                       <div className="flex items-center gap-2 flex-wrap">
-                                        <span className="text-[10px] font-bold uppercase text-[#ffdca1] tracking-wider">
+                                        <span className="text-[10px] font-bold uppercase text-accent-soft tracking-wider">
                                           PEWNIAKI MATURALNE
                                         </span>
-                                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 tracking-wider shrink-0">
+                                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-accent-soft border border-primary/20 tracking-wider shrink-0">
                                           100% CKE STANDARD
                                         </span>
                                       </div>
-                                      <h4 className="text-base sm:text-lg font-bold text-white break-words">
+                                      <h4 className="text-base sm:text-lg font-bold text-text-strong break-words">
                                         Istota Konceptu & Żelazne Wzory
                                       </h4>
                                     </div>
                                   </div>
-                                  <span className="text-xs font-mono font-bold text-[#ffdca1] bg-[#ffb800]/10 border border-primary/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
+                                  <span className="text-xs font-mono font-bold text-accent-soft bg-primary/10 border border-primary/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
                                     PUNKTOWANIE CKE
                                   </span>
                                 </div>
 
-                                <div className="text-sm sm:text-base text-[#dfe2f1] leading-relaxed break-words">
+                                <div className="text-sm sm:text-base text-text-soft leading-relaxed break-words">
                                   <MathRenderer content={lesson.theory_pill.concept_essence} />
                                 </div>
 
                                 {/* Formuły KaTeX */}
                                 {lesson.theory_pill.core_formulas && lesson.theory_pill.core_formulas.length > 0 && (
                                   <div className="space-y-2 pt-2">
-                                    <div className="text-xs font-bold uppercase tracking-wider text-[#ffdca1] flex items-center gap-1.5">
+                                    <div className="text-xs font-bold uppercase tracking-wider text-accent-soft flex items-center gap-1.5">
                                       <Compass className="w-3.5 h-3.5 text-text-accent" />
                                       <span>Kluczowe Wzory Egzaminacyjne (Karta CKE):</span>
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                       {lesson.theory_pill.core_formulas.map((f: any, fIdx: number) => (
-                                        <div key={fIdx} className="p-3 rounded-xl bg-[#0e1522] border border-[#141d2e] space-y-1">
+                                        <div key={fIdx} className="p-3 rounded-xl bg-surface-panel border border-surface-line space-y-1">
                                           <div className="text-[11px] font-semibold text-text-secondary">{f.name}</div>
-                                          <div className="text-sm font-mono text-[#ffdca1] bg-surface-bg p-2 rounded-lg border border-[#141d2e]">
+                                          <div className="text-sm font-mono text-accent-soft bg-surface-bg p-2 rounded-lg border border-surface-line">
                                             <MathRenderer content={`$$${f.formula}$$`} />
                                           </div>
                                         </div>
@@ -1269,11 +1269,11 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 {/* Key Points */}
                                 {lesson.theory_pill.key_points && lesson.theory_pill.key_points.length > 0 && (
                                   <div className="pt-2">
-                                    <div className="p-4 rounded-xl bg-[#0e1522] border border-[#141d2e] space-y-2">
-                                      <div className="text-xs font-bold uppercase text-[#ffdca1] tracking-wider">
+                                    <div className="p-4 rounded-xl bg-surface-panel border border-surface-line space-y-2">
+                                      <div className="text-xs font-bold uppercase text-accent-soft tracking-wider">
                                         Z polskiego na nasze (Kluczowe Zasady):
                                       </div>
-                                      <ul className="space-y-1.5 text-xs text-[#dfe2f1]">
+                                      <ul className="space-y-1.5 text-xs text-text-soft">
                                         {lesson.theory_pill.key_points.map((pt: string, ptIdx: number) => (
                                           <li key={ptIdx} className="flex items-start gap-2">
                                             <span className="text-text-accent shrink-0 font-bold">•</span>
@@ -1317,44 +1317,44 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               {lesson.theory_pill.worked_example && (
                                 <div className="space-y-4 min-w-0">
                                   <div className="flex items-center gap-3 px-1 min-w-0">
-                                    <div className="w-9 h-9 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] shrink-0">
+                                    <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-accent-soft shrink-0">
                                       <Target className="w-5 h-5" />
                                     </div>
                                     <div className="min-w-0">
-                                      <span className="text-[10px] font-bold uppercase text-[#ffdca1] tracking-wider block truncate">
+                                      <span className="text-[10px] font-bold uppercase text-accent-soft tracking-wider block truncate">
                                         MISJE MODELOWE
                                       </span>
-                                      <h4 className="text-base sm:text-lg font-bold text-white truncate">
+                                      <h4 className="text-base sm:text-lg font-bold text-text-strong truncate">
                                         Modelowe Zadanie CKE Krok po Kroku
                                       </h4>
                                     </div>
                                   </div>
 
-                                  <div className="p-4 sm:p-5 rounded-xl bg-surface-bg border border-[#141d2e] space-y-4 shadow-sm min-w-0 overflow-hidden">
+                                  <div className="p-4 sm:p-5 rounded-xl bg-surface-bg border border-surface-line space-y-4 shadow-sm min-w-0 overflow-hidden">
                                     <div className="space-y-3.5 min-w-0">
                                       <div className="flex items-center justify-between gap-2 min-w-0">
-                                        <span className="text-xs sm:text-sm font-bold text-[#ffdca1] bg-[#ffb800]/10 border border-primary/20 px-3 py-1 rounded-xl truncate">
+                                        <span className="text-xs sm:text-sm font-bold text-accent-soft bg-primary/10 border border-primary/20 px-3 py-1 rounded-xl truncate">
                                           Zadanie Wzorcowe CKE
                                         </span>
                                         <span className="text-[11px] font-mono text-text-secondary font-bold shrink-0">ARKUSZ CKE</span>
                                       </div>
 
-                                      <div className="p-4 rounded-xl bg-[#0e1522] border border-[#141d2e] text-sm text-[#dfe2f1] font-medium leading-relaxed break-words">
+                                      <div className="p-4 rounded-xl bg-surface-panel border border-surface-line text-sm text-text-soft font-medium leading-relaxed break-words">
                                         <MathRenderer content={lesson.theory_pill.worked_example.problem} />
                                       </div>
 
-                                      <div className="p-3.5 rounded-xl bg-[#0e1522] border border-[#141d2e] space-y-2">
-                                        <div className="text-xs font-bold text-[#ffdca1] uppercase tracking-wide">
+                                      <div className="p-3.5 rounded-xl bg-surface-panel border border-surface-line space-y-2">
+                                        <div className="text-xs font-bold text-accent-soft uppercase tracking-wide">
                                           Rozwiązanie i algorytm myślenia:
                                         </div>
-                                        <div className="text-xs sm:text-sm text-[#dfe2f1] leading-relaxed break-words">
+                                        <div className="text-xs sm:text-sm text-text-soft leading-relaxed break-words">
                                           <MathRenderer content={lesson.theory_pill.worked_example.solution} />
                                         </div>
                                       </div>
                                     </div>
 
                                     {lesson.theory_pill.worked_example.keyInsight && (
-                                      <div className="p-3.5 rounded-xl bg-[#0e1522] border border-[#141d2e] text-[#ffdca1] text-xs sm:text-sm flex items-start gap-2.5 min-w-0">
+                                      <div className="p-3.5 rounded-xl bg-surface-panel border border-surface-line text-accent-soft text-xs sm:text-sm flex items-start gap-2.5 min-w-0">
                                         <Lightbulb className="w-4 h-4 text-text-accent shrink-0 mt-0.5" />
                                         <span className="leading-relaxed break-words flex-1">
                                           <strong>Wskazówka Egzaminatora:</strong> <MathRenderer content={lesson.theory_pill.worked_example.keyInsight} />
@@ -1369,7 +1369,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               <div className="pt-3 min-w-0">
                                 <div className="flex flex-col lg:flex-row items-center justify-between gap-4 p-4 sm:p-5 md:p-6 rounded-xl bg-gradient-to-r from-[#141d2e] to-[#0e1522] border border-primary/30 min-w-0 overflow-hidden">
                                   <div className="space-y-1 text-center lg:text-left min-w-0 flex-1">
-                                    <div className="text-sm sm:text-base font-bold text-white flex items-center justify-center lg:justify-start gap-2 flex-wrap">
+                                    <div className="text-sm sm:text-base font-bold text-text-strong flex items-center justify-center lg:justify-start gap-2 flex-wrap">
                                       <Trophy className="w-5 h-5 text-text-accent shrink-0" />
                                       <span className="break-words">Zasady opanowane? Ruszaj do walki o punkty!</span>
                                     </div>
@@ -1379,7 +1379,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                   </div>
                                   <button
                                     onClick={() => handleStartLessonDirect(lesson)}
-                                    className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#ffb800] hover:brightness-110 text-[#070a0f] font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
+                                    className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
                                   >
                                     <Play className="w-4 h-4 fill-[#070a0f] shrink-0" />
                                     <span className="whitespace-normal sm:whitespace-nowrap">ROZPOCZNIJ MISJĘ</span>
@@ -1400,7 +1400,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
               {sectionInnerTab === 'tasks' && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between px-1">
-                    <h3 className="text-sm font-bold text-[#dfe2f1] uppercase tracking-wider">
+                    <h3 className="text-sm font-bold text-text-soft uppercase tracking-wider">
                       Zadania CKE z Działu {currentSection.numericId} ({sectionTasks.length} zadań)
                     </h3>
                     <button
@@ -1409,7 +1409,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                         setHubMode('task_browser');
                         setTaskPage(1);
                       }}
-                      className="text-xs text-[#ffdca1] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
+                      className="text-xs text-accent-soft hover:underline flex items-center gap-1 font-semibold cursor-pointer"
                     >
                       Otwórz w pełnej przeglądarce zadań →
                     </button>
@@ -1430,27 +1430,27 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       return (
                         <div
                           key={task.id}
-                          className={`p-4 sm:p-5 rounded-xl border bg-[#0e1522] space-y-4 transition-all ${
+                          className={`p-4 sm:p-5 rounded-xl border bg-surface-panel space-y-4 transition-all ${
                             isCompleted
                               ? 'border-emerald-500/40 bg-emerald-950/10'
-                              : 'border-[#141d2e] hover:border-[#1e293b]'
+                              : 'border-surface-line hover:border-[#1e293b]'
                           }`}
                         >
                           <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
                             <div className="flex items-center gap-2">
-                              <span className="px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] font-bold border border-primary/20">
+                              <span className="px-2 py-0.5 rounded bg-primary/10 text-accent-soft font-bold border border-primary/20">
                                 {task.sourceYear || 'CKE'}
                               </span>
                               <span className="text-text-secondary font-medium">
                                 {task.type === 'SINGLE_CHOICE' ? 'Zamknięte (ABCD)' : ['SINGLE_CHOICE', 'TRUE_FALSE', 'TWO_PART', 'MULTI_CHOICE'].includes(task.type) ? 'Zamknięte' : 'Otwarte'}
                               </span>
                             </div>
-                            <span className="font-bold text-[#ffdca1]">
+                            <span className="font-bold text-accent-soft">
                               {task.points} {task.points === 1 ? 'pkt' : 'punkty'}
                             </span>
                           </div>
 
-                          <div className="text-sm text-white leading-relaxed">
+                          <div className="text-sm text-text-strong leading-relaxed">
                             <MathRenderer content={task.content} />
                           </div>
 
@@ -1468,7 +1468,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                   type="button"
                                   disabled={!isStructuredAnswerComplete(task, answerState.selectedOptionId)}
                                   onClick={() => handleCheckStructured(task)}
-                                  className="w-full py-3 rounded-xl bg-[#ffb800] text-black font-black text-sm disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
+                                  className="w-full py-3 rounded-xl bg-primary text-black font-black text-sm disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
                                 >
                                   Sprawdź odpowiedź
                                 </button>
@@ -1494,13 +1494,13 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                           ? 'bg-emerald-950/40 border-emerald-500/50 text-emerald-200'
                                           : isSelected
                                             ? 'bg-rose-950/40 border-rose-500/50 text-rose-200'
-                                            : 'bg-surface-bg border-[#141d2e] text-text-secondary'
+                                            : 'bg-surface-bg border-surface-line text-text-secondary'
                                         : isSelected
-                                          ? 'bg-[#ffb800]/15 border-[#ffdca1] text-[#ffdca1]'
-                                          : 'bg-surface-bg hover:bg-[#141d2e] border-[#141d2e] text-[#dfe2f1]'
+                                          ? 'bg-primary/15 border-[#ffdca1] text-accent-soft'
+                                          : 'bg-surface-bg hover:bg-surface-card-hover border-surface-line text-text-soft'
                                     }`}
                                   >
-                                    <span className="w-5 h-5 rounded-md border border-[#141d2e] bg-[#0e1522] flex items-center justify-center text-xs font-bold shrink-0">
+                                    <span className="w-5 h-5 rounded-md border border-surface-line bg-surface-panel flex items-center justify-center text-xs font-bold shrink-0">
                                       {opt.id}
                                     </span>
                                     <span className="flex-1"><MathRenderer content={opt.text} /></span>
@@ -1511,12 +1511,12 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           )}
 
                           {/* Actions */}
-                          <div className="flex items-center justify-between pt-2 border-t border-[#141d2e]">
+                          <div className="flex items-center justify-between pt-2 border-t border-surface-line">
                             {!answerState.isSubmitted ? (
                               <button
                                 onClick={() => handleSubmitAnswer(task.id)}
                                 disabled={task.type === 'SINGLE_CHOICE' && !answerState.selectedOptionId}
-                                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#ffb800] text-[#070a0f] text-xs font-bold disabled:opacity-40 transition-all cursor-pointer"
+                                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary text-[#070a0f] text-xs font-bold disabled:opacity-40 transition-all cursor-pointer"
                               >
                                 Sprawdź odpowiedź
                               </button>
@@ -1530,7 +1530,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 </span>
                                 <button
                                   onClick={() => handleResetTask(task.id)}
-                                  className="text-xs text-text-secondary hover:text-white underline ml-2"
+                                  className="text-xs text-text-secondary hover:text-text-strong underline ml-2"
                                 >
                                   Spróbuj ponownie
                                 </button>
@@ -1540,7 +1540,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             {answerState.isSubmitted && task.explanation && (
                               <button
                                 onClick={() => handleToggleExplanation(task.id)}
-                                className="text-xs text-[#ffdca1] hover:underline flex items-center gap-1"
+                                className="text-xs text-accent-soft hover:underline flex items-center gap-1"
                               >
                                 {answerState.showExplanation ? 'Ukryj wyjaśnienie' : 'Pokaż wyjaśnienie CKE'}
                               </button>
@@ -1549,8 +1549,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
 
                           {/* Explanation */}
                           {answerState.showExplanation && task.explanation && (
-                            <div className="p-3.5 rounded-xl bg-surface-bg border border-primary/30 text-xs text-[#dfe2f1] space-y-1.5 animate-fadeIn">
-                              <div className="font-bold text-[#ffdca1] flex items-center gap-1.5">
+                            <div className="p-3.5 rounded-xl bg-surface-bg border border-primary/30 text-xs text-text-soft space-y-1.5 animate-fadeIn">
+                              <div className="font-bold text-accent-soft flex items-center gap-1.5">
                                 <Lightbulb className="w-4 h-4 text-text-accent" />
                                 <span>Wyjaśnienie krok po kroku:</span>
                               </div>
@@ -1573,11 +1573,11 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
         {hubMode === 'task_browser' && (
           <div className="space-y-6">
             {/* Filter Controls Bar */}
-            <div className="bg-[#0e1522] p-4 rounded-xl border border-[#141d2e] flex flex-col md:flex-row items-center justify-between gap-3">
+            <div className="bg-surface-panel p-4 rounded-xl border border-surface-line flex flex-col md:flex-row items-center justify-between gap-3">
               {/* Section Dropdown */}
               <div className="w-full md:w-auto flex-1 flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2 w-full sm:w-auto">
-                  <Filter className="w-4 h-4 text-[#ffdca1]" />
+                  <Filter className="w-4 h-4 text-accent-soft" />
                   <span className="text-xs text-text-secondary whitespace-nowrap">Dział:</span>
                   <select
                     value={selectedSectionFilter}
@@ -1585,7 +1585,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       setSelectedSectionFilter(e.target.value);
                       setTaskPage(1);
                     }}
-                    className="flex-1 sm:w-60 bg-surface-bg border border-[#141d2e] rounded-lg px-3 py-1.5 text-xs text-[#dfe2f1] focus:outline-none focus:border-primary"
+                    className="flex-1 sm:w-60 bg-surface-bg border border-surface-line rounded-lg px-3 py-1.5 text-xs text-text-soft focus:outline-none focus:border-primary"
                   >
                     <option value="all">Wszystkie 15 działów</option>
                     {MATH_SECTIONS.map(s => (
@@ -1597,13 +1597,13 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                 </div>
 
                 {/* Task Type Filter: Wszystkie / Zamknięte / Otwarte */}
-                <div className="flex items-center gap-1 bg-surface-bg p-1 rounded-lg border border-[#141d2e]">
+                <div className="flex items-center gap-1 bg-surface-bg p-1 rounded-lg border border-surface-line">
                   <button
                     onClick={() => { setSelectedTypeFilter('all'); setTaskPage(1); }}
                     className={`px-3 py-1 text-xs rounded-md transition-colors ${
                       selectedTypeFilter === 'all'
-                        ? 'bg-[#ffb800]/20 text-[#ffdca1] font-semibold'
-                        : 'text-text-secondary hover:text-white'
+                        ? 'bg-primary/20 text-accent-soft font-semibold'
+                        : 'text-text-secondary hover:text-text-strong'
                     }`}
                   >
                     Wszystkie
@@ -1612,8 +1612,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     onClick={() => { setSelectedTypeFilter('closed'); setTaskPage(1); }}
                     className={`px-3 py-1 text-xs rounded-md transition-colors ${
                       selectedTypeFilter === 'closed'
-                        ? 'bg-[#ffb800]/20 text-[#ffdca1] font-semibold'
-                        : 'text-text-secondary hover:text-white'
+                        ? 'bg-primary/20 text-accent-soft font-semibold'
+                        : 'text-text-secondary hover:text-text-strong'
                     }`}
                   >
                     Zamknięte (ABCD)
@@ -1622,8 +1622,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     onClick={() => { setSelectedTypeFilter('open'); setTaskPage(1); }}
                     className={`px-3 py-1 text-xs rounded-md transition-colors ${
                       selectedTypeFilter === 'open'
-                        ? 'bg-[#ffb800]/20 text-[#ffdca1] font-semibold'
-                        : 'text-text-secondary hover:text-white'
+                        ? 'bg-primary/20 text-accent-soft font-semibold'
+                        : 'text-text-secondary hover:text-text-strong'
                     }`}
                   >
                     Otwarte / Kodowane
@@ -1642,7 +1642,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     setSearchQuery(e.target.value);
                     setTaskPage(1);
                   }}
-                  className="w-full bg-surface-bg border border-[#141d2e] rounded-lg pl-9 pr-3 py-1.5 text-xs text-[#dfe2f1] placeholder-[#64748b] focus:outline-none focus:border-primary"
+                  className="w-full bg-surface-bg border border-surface-line rounded-lg pl-9 pr-3 py-1.5 text-xs text-text-soft placeholder-[#64748b] focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
@@ -1650,7 +1650,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
             {/* Results count indicator */}
             <div className="flex items-center justify-between text-xs text-text-secondary px-1">
               <span>
-                Znaleziono <strong className="text-white">{filteredTasks.length}</strong> zadań maturalnych
+                Znaleziono <strong className="text-text-strong">{filteredTasks.length}</strong> zadań maturalnych
               </span>
               <span>
                 Strona {taskPage} z {totalPages}
@@ -1659,9 +1659,9 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
 
             {/* Tasks List */}
             {displayedTasks.length === 0 ? (
-              <div className="text-center py-16 bg-[#0e1522] rounded-xl border border-[#141d2e]">
+              <div className="text-center py-16 bg-surface-panel rounded-xl border border-surface-line">
                 <HelpCircle className="w-10 h-10 text-text-muted mx-auto mb-2" />
-                <h3 className="text-sm font-semibold text-white">Brak zadań spełniających kryteria</h3>
+                <h3 className="text-sm font-semibold text-text-strong">Brak zadań spełniających kryteria</h3>
                 <p className="text-xs text-text-secondary mt-1">Zmień filtry lub wyczyść wyszukiwaną frazę.</p>
               </div>
             ) : (
@@ -1681,21 +1681,21 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                   return (
                     <article
                       key={task.id}
-                      className={`bg-[#0e1522] rounded-xl border p-5 transition-all ${
+                      className={`bg-surface-panel rounded-xl border p-5 transition-all ${
                         state.isSubmitted && state.isCorrect
                           ? 'border-emerald-500/40 shadow-sm shadow-emerald-500/10'
                           : state.isSubmitted && !state.isCorrect
                           ? 'border-rose-500/40 shadow-sm shadow-rose-500/10'
-                          : 'border-[#141d2e] hover:border-[#1e293b]'
+                          : 'border-surface-line hover:border-[#1e293b]'
                       }`}
                     >
                       {/* Task Header */}
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-[#141d2e]">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2 border-b border-surface-line">
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded bg-[#ffb800]/10 border border-primary/20 text-[11px] font-semibold text-[#ffdca1]">
+                          <span className="px-2 py-0.5 rounded bg-primary/10 border border-primary/20 text-[11px] font-semibold text-accent-soft">
                             {task.sourceYear || 'Matura CKE'}
                           </span>
-                          <span className="text-xs font-semibold text-white">
+                          <span className="text-xs font-semibold text-text-strong">
                             Zadanie {task.taskNumber || ''}
                           </span>
                           <span className="text-xs text-text-secondary">
@@ -1704,7 +1704,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                         </div>
 
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-medium px-2 py-0.5 rounded bg-surface-bg text-text-secondary border border-[#141d2e]">
+                          <span className="text-xs font-medium px-2 py-0.5 rounded bg-surface-bg text-text-secondary border border-surface-line">
                             {task.points} {task.points === 1 ? 'punkt' : 'punkty'}
                           </span>
                           {isDone && (
@@ -1716,26 +1716,26 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       </div>
 
                       {/* Task Content */}
-                      <div className="text-sm text-[#dfe2f1] leading-relaxed mb-4">
+                      <div className="text-sm text-text-soft leading-relaxed mb-4">
                         <MathRenderer content={task.content} />
                       </div>
 
                       {/* Visual diagrams / plots if available */}
                       {Boolean((task as any).diagram || (task as any).plot) && (
-                        <div className="mb-4 flex justify-center p-3 rounded-xl bg-surface-bg border border-[#141d2e]">
+                        <div className="mb-4 flex justify-center p-3 rounded-xl bg-surface-bg border border-surface-line">
                           <MathDiagram diagram={(task as any).diagram || (task as any).plot} />
                         </div>
                       )}
 
                       {/* Visual diagrams if available */}
                       {task.options?.some(o => o.numberLine) && (
-                        <div className="mb-4 p-2 rounded-lg bg-surface-bg border border-[#141d2e]">
+                        <div className="mb-4 p-2 rounded-lg bg-surface-bg border border-surface-line">
                           <span className="text-[10px] text-text-secondary font-semibold uppercase block mb-1">
                             Oś liczbowa:
                           </span>
                           {task.options.filter(o => o.numberLine).map(o => (
                             <div key={o.id} className="my-1">
-                              <span className="text-xs font-bold text-[#ffdca1] mr-2">Opcja {o.id}:</span>
+                              <span className="text-xs font-bold text-accent-soft mr-2">Opcja {o.id}:</span>
                               <NumberLineDiagram {...o.numberLine} />
                             </div>
                           ))}
@@ -1745,8 +1745,8 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       {task.options?.some(o => o.diagram) && (
                         <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {task.options.filter(o => o.diagram).map(o => (
-                            <div key={o.id} className="p-2 rounded-lg bg-surface-bg border border-[#141d2e]">
-                              <span className="text-xs font-bold text-[#ffdca1]">Rysunek {o.id}</span>
+                            <div key={o.id} className="p-2 rounded-lg bg-surface-bg border border-surface-line">
+                              <span className="text-xs font-bold text-accent-soft">Rysunek {o.id}</span>
                               <MathDiagram diagram={o.diagram} />
                             </div>
                           ))}
@@ -1767,7 +1767,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               type="button"
                               disabled={!isStructuredAnswerComplete(task, state.selectedOptionId)}
                               onClick={() => handleCheckStructured(task)}
-                              className="w-full py-3 rounded-xl bg-[#ffb800] text-black font-black text-sm disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
+                              className="w-full py-3 rounded-xl bg-primary text-black font-black text-sm disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
                             >
                               Sprawdź odpowiedź
                             </button>
@@ -1784,7 +1784,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             const isSelected = state.selectedOptionId === opt.id;
                             const isCorrectOpt = opt.id.toUpperCase() === (task.correct_answer || 'A').toUpperCase();
 
-                            let btnStyle = 'bg-surface-bg border-[#141d2e] text-[#dfe2f1] hover:border-primary/50 hover:bg-[#121b2b]';
+                            let btnStyle = 'bg-surface-bg border-surface-line text-text-soft hover:border-primary/50 hover:bg-[#121b2b]';
                             if (state.isSubmitted) {
                               if (isSelected) {
                                 btnStyle = state.isCorrect
@@ -1802,7 +1802,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 onClick={() => handleSelectOption(task.id, opt.id, task.correct_answer)}
                                 className={`flex items-start gap-2.5 p-3 rounded-lg border text-left text-xs transition-all ${btnStyle}`}
                               >
-                                <span className="w-5 h-5 rounded flex items-center justify-center bg-[#0e1522] border border-[#141d2e] font-bold text-[11px] shrink-0 text-[#ffdca1]">
+                                <span className="w-5 h-5 rounded flex items-center justify-center bg-surface-panel border border-surface-line font-bold text-[11px] shrink-0 text-accent-soft">
                                   {opt.id}
                                 </span>
                                 <div className="flex-1">
@@ -1840,12 +1840,12 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             onKeyDown={(e) => {
                               if (e.key === 'Enter') handleCheckNumeric(task.id, task.correct_answer);
                             }}
-                            className="bg-surface-bg border border-[#141d2e] rounded-lg px-3 py-2 text-xs text-white placeholder-[#64748b] focus:outline-none focus:border-primary w-60"
+                            className="bg-surface-bg border border-surface-line rounded-lg px-3 py-2 text-xs text-text-strong placeholder-[#64748b] focus:outline-none focus:border-primary w-60"
                           />
                           <button
                             onClick={() => handleCheckNumeric(task.id, task.correct_answer)}
                             disabled={state.isSubmitted && Boolean(state.isCorrect)}
-                            className="px-4 py-2 rounded-lg bg-[#ffb800] text-black font-semibold text-xs hover:bg-[#ffdca1] transition-colors"
+                            className="px-4 py-2 rounded-lg bg-primary text-black font-semibold text-xs hover:bg-[#ffdca1] transition-colors"
                           >
                             Sprawdź
                           </button>
@@ -1872,7 +1872,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 }
                               }));
                             }}
-                            className="px-3.5 py-1.5 rounded-lg bg-surface-bg hover:bg-[#141d2e] border border-[#141d2e] text-xs font-medium text-[#ffdca1] flex items-center gap-1.5 transition-colors"
+                            className="px-3.5 py-1.5 rounded-lg bg-surface-bg hover:bg-surface-card-hover border border-surface-line text-xs font-medium text-accent-soft flex items-center gap-1.5 transition-colors"
                           >
                             <FileText className="w-3.5 h-3.5 text-text-accent" />
                             {state.showExplanation ? 'Ukryj schemat oceniania CKE' : 'Pokaż schemat oceniania i pełny dowód CKE'}
@@ -1884,7 +1884,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       {state.showExplanation && (
                         <div className="mt-4 p-3.5 rounded-lg bg-surface-bg border border-primary/20 space-y-2">
                           <div className="flex items-center justify-between text-xs font-semibold">
-                            <span className="flex items-center gap-1.5 text-[#ffdca1]">
+                            <span className="flex items-center gap-1.5 text-accent-soft">
                               <AlertTriangle className="w-3.5 h-3.5 text-text-accent" />
                               Wskazówka Egzaminatora CKE
                             </span>
@@ -1893,13 +1893,13 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             </span>
                           </div>
 
-                          <div className="text-xs text-[#dfe2f1] leading-relaxed">
+                          <div className="text-xs text-text-soft leading-relaxed">
                             <MathRenderer content={task.matura_tip || task.explanation || 'Pamiętaj o dokładnym przeanalizowaniu dziedziny wyrażenia i warunków zadania.'} />
                           </div>
 
                           {task.explanation && task.explanation !== task.matura_tip && (
-                            <div className="pt-2 border-t border-[#141d2e] text-[11px] text-text-secondary">
-                              <strong className="text-[#dfe2f1]">Wyjaśnienie:</strong>{' '}
+                            <div className="pt-2 border-t border-surface-line text-[11px] text-text-secondary">
+                              <strong className="text-text-soft">Wyjaśnienie:</strong>{' '}
                               <MathRenderer content={task.explanation} />
                             </div>
                           )}
@@ -1915,7 +1915,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     <button
                       onClick={() => setTaskPage(p => Math.max(1, p - 1))}
                       disabled={taskPage === 1}
-                      className="px-3 py-1.5 rounded bg-[#0e1522] border border-[#141d2e] text-xs text-[#dfe2f1] disabled:opacity-40 hover:bg-[#141d2e]"
+                      className="px-3 py-1.5 rounded bg-surface-panel border border-surface-line text-xs text-text-soft disabled:opacity-40 hover:bg-surface-card-hover"
                     >
                       ← Poprzednia
                     </button>
@@ -1925,7 +1925,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     <button
                       onClick={() => setTaskPage(p => Math.min(totalPages, p + 1))}
                       disabled={taskPage === totalPages}
-                      className="px-3 py-1.5 rounded bg-[#0e1522] border border-[#141d2e] text-xs text-[#dfe2f1] disabled:opacity-40 hover:bg-[#141d2e]"
+                      className="px-3 py-1.5 rounded bg-surface-panel border border-surface-line text-xs text-text-soft disabled:opacity-40 hover:bg-surface-card-hover"
                     >
                       Następna →
                     </button>

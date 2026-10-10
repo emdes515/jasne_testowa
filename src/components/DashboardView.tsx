@@ -424,7 +424,7 @@ export function DashboardView({
                     ? 'bg-[#F97316] text-white shadow-sm border border-[#F97316]'
                     : m.isTargetToday
                     ? 'border-2 border-dashed border-[#F97316] text-[#F97316] bg-[#F97316]/10 shadow-sm'
-                    : 'bg-surface-elevated/80 border border-white/10 text-slate-400'
+                    : 'bg-surface-elevated/80 border border-hairline text-slate-400'
                 }`}
                 title={m.fullLabel}
               >
@@ -441,7 +441,7 @@ export function DashboardView({
                   m.isCompleted 
                     ? 'text-[#EA580C]' 
                     : m.isTargetToday 
-                    ? 'text-white font-extrabold' 
+                    ? 'text-text-strong font-extrabold' 
                     : 'text-text-muted'
                 }`}
               >
@@ -499,8 +499,8 @@ export function DashboardView({
                 <div 
                   className={`relative z-10 w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                     isActive
-                      ? 'text-white'
-                      : 'bg-white/5 text-text-muted group-hover:text-text-primary'
+                      ? 'text-text-strong'
+                      : 'bg-veil text-text-muted group-hover:text-text-primary'
                   }`}
                   style={isActive ? {
                     backgroundColor: accentColor,
@@ -529,7 +529,7 @@ export function DashboardView({
           })}
 
           {/* Kafelek kolejnych przedmiotów w przygotowaniu na końcu rzędu */}
-          <div className="hidden sm:flex items-center gap-2 text-[11px] text-text-muted bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap">
+          <div className="hidden sm:flex items-center gap-2 text-[11px] text-text-muted bg-white/[0.02] border border-hairline-soft px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap">
             <span className="font-bold text-text-muted uppercase tracking-wider text-[10px]">Wkrótce:</span>
             <span className="text-text-secondary font-medium">Biologia</span>
             <span className="text-slate-600">•</span>
@@ -717,7 +717,7 @@ export function DashboardView({
                       onNavigate?.('simulator', 'maraton');
                     }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-amber-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-hairline hover:border-amber-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-amber-400 uppercase tracking-wider">Tryb 1</span>
@@ -741,7 +741,7 @@ export function DashboardView({
                       onNavigate?.('simulator', 'exam_setup');
                     }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-purple-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-hairline hover:border-purple-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider">Tryb 2</span>
@@ -765,7 +765,7 @@ export function DashboardView({
                       onNavigate?.('simulator', 'full_exams');
                     }
                   }}
-                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-white/10 hover:border-sky-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
+                  className="p-3.5 rounded-xl bg-surface-elevated/80 hover:bg-surface-card-hover border border-hairline hover:border-sky-500/40 text-left transition-all group/btn cursor-pointer flex flex-col justify-between shadow-xs"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-extrabold text-sky-400 uppercase tracking-wider">Tryb 3</span>

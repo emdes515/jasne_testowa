@@ -119,10 +119,10 @@ export function MaturaExamReview({
     >
       {/* Top Banner Card - Nocturne Luminary */}
       <div className="bg-surface-card border border-primary/20 rounded-[28px] p-6 sm:p-8 text-center relative overflow-hidden shadow-xl">
-        <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#FFB800]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-12 -right-12 w-48 h-48 bg-jasne/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="w-16 h-16 bg-gradient-to-tr from-[#FFB800]/20 to-amber-600/20 border border-primary/40 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+        <div className="w-16 h-16 bg-gradient-to-tr from-primary/20 to-amber-600/20 border border-primary/40 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
           <Trophy className="text-text-accent" size={32} />
         </div>
 
@@ -134,7 +134,7 @@ export function MaturaExamReview({
           {isPassed ? '✓ Egzamin Zdany (>= 30%)' : '✕ Poniżej progu 30%'}
         </span>
 
-        <h2 className="text-3xl sm:text-4xl font-display font-black text-white mb-2 tracking-tight tabular-nums font-mono">
+        <h2 className="text-3xl sm:text-4xl font-display font-black text-text-strong mb-2 tracking-tight tabular-nums font-mono">
           {earnedPoints} / {totalPoints} pkt ({percentage}%)
         </h2>
         <p className="text-text-secondary text-sm max-w-md mx-auto mb-6 leading-relaxed">
@@ -151,7 +151,7 @@ export function MaturaExamReview({
         <div className="grid grid-cols-3 gap-2 bg-surface-bg/80 border border-surface-border rounded-2xl p-3 sm:p-4 mb-6 text-left">
           <div>
             <span className="text-[11px] font-bold text-text-muted uppercase tracking-wider block">Czas arkusza</span>
-            <div className="flex items-center gap-1.5 mt-0.5 text-white font-bold text-sm tabular-nums font-mono">
+            <div className="flex items-center gap-1.5 mt-0.5 text-text-strong font-bold text-sm tabular-nums font-mono">
               <Clock size={14} className="text-text-accent" />
               <span>{formatTime(timeSpentSeconds)}</span>
             </div>
@@ -159,7 +159,7 @@ export function MaturaExamReview({
 
           <div>
             <span className="text-[11px] font-bold text-text-muted uppercase tracking-wider block">Błędy do powtórki</span>
-            <div className="flex items-center gap-1.5 mt-0.5 text-white font-bold text-sm">
+            <div className="flex items-center gap-1.5 mt-0.5 text-text-strong font-bold text-sm">
               <AlertCircle size={14} className={mistakes.length > 0 ? 'text-amber-400' : 'text-emerald-400'} />
               <span>{mistakes.length} zad.</span>
             </div>
@@ -179,7 +179,7 @@ export function MaturaExamReview({
           {mistakes.length > 0 && (
             <button
               onClick={() => onRetryMistakes(mistakes)}
-              className="flex-1 py-3.5 px-4 bg-gradient-to-r from-[#FFB800] via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-black rounded-xl font-extrabold flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/20 active:scale-[0.98] cursor-pointer"
+              className="flex-1 py-3.5 px-4 bg-gradient-to-r from-primary via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-black rounded-xl font-extrabold flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/20 active:scale-[0.98] cursor-pointer"
             >
               <RotateCcw size={16} />
               <span>Przećwicz tylko błędy ({mistakes.length})</span>
@@ -188,7 +188,7 @@ export function MaturaExamReview({
 
           <button
             onClick={onBackToMenu}
-            className="flex-1 py-3.5 px-4 bg-white/5 hover:bg-white/10 text-white border border-surface-border rounded-xl font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-[0.98]"
+            className="flex-1 py-3.5 px-4 bg-veil hover:bg-veil-strong text-text-strong border border-surface-border rounded-xl font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer active:scale-[0.98]"
           >
             <ArrowLeft size={16} />
             <span>Wróć do menu</span>
@@ -199,7 +199,7 @@ export function MaturaExamReview({
       {/* Review Section */}
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
+          <h3 className="text-lg font-bold text-text-strong flex items-center gap-2">
             <BookOpen size={18} className="text-text-accent" />
             Szczegółowy przegląd zadań
           </h3>
@@ -209,7 +209,7 @@ export function MaturaExamReview({
             <button
               onClick={() => setFilter('all')}
               className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
-                filter === 'all' ? 'bg-[#FFB800] text-black shadow-sm' : 'text-text-muted hover:text-white'
+                filter === 'all' ? 'bg-jasne text-black shadow-sm' : 'text-text-muted hover:text-white'
               }`}
             >
               Wszystkie ({tasks.length})
@@ -217,7 +217,7 @@ export function MaturaExamReview({
             <button
               onClick={() => setFilter('mistakes')}
               className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
-                filter === 'mistakes' ? 'bg-[#FFB800] text-black shadow-sm' : 'text-text-muted hover:text-white'
+                filter === 'mistakes' ? 'bg-jasne text-black shadow-sm' : 'text-text-muted hover:text-white'
               }`}
             >
               Błędne ({mistakes.length})
@@ -262,10 +262,10 @@ export function MaturaExamReview({
 
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-white font-bold text-sm">
+                        <span className="text-text-strong font-bold text-sm">
                           Zadanie {task.sourceTask?.taskNumber || originalIndex}
                         </span>
-                        <span className="text-[11px] text-text-muted bg-white/5 px-2 py-0.5 rounded-md border border-white/10">
+                        <span className="text-[11px] text-text-muted bg-veil px-2 py-0.5 rounded-md border border-hairline">
                           {task.section}
                         </span>
                       </div>
@@ -344,9 +344,9 @@ export function MaturaExamReview({
 
                             let itemStyle = 'bg-surface-card border-surface-border text-text-secondary';
                             if (isCorrectPick) {
-                              itemStyle = 'bg-emerald-500/10 border-emerald-500/40 text-white';
+                              itemStyle = 'bg-emerald-500/10 border-emerald-500/40 text-text-strong';
                             } else if (isUserPick && !isCorrectPick) {
-                              itemStyle = 'bg-rose-500/10 border-rose-500/40 text-white';
+                              itemStyle = 'bg-rose-500/10 border-rose-500/40 text-text-strong';
                             }
 
                             return (
@@ -360,7 +360,7 @@ export function MaturaExamReview({
                                       ? 'bg-emerald-500 text-black'
                                       : isUserPick
                                       ? 'bg-rose-500 text-white'
-                                      : 'bg-white/5 text-text-muted'
+                                      : 'bg-veil text-text-muted'
                                   }`}>
                                     {optLetter}
                                   </span>
@@ -397,7 +397,7 @@ export function MaturaExamReview({
                               </span>
                             </div>
                             {task.userAnswer ? (
-                              <div className="p-3 rounded-lg bg-surface-bg border border-white/5">
+                              <div className="p-3 rounded-lg bg-surface-bg border border-hairline-soft">
                                 {renderMathContent(task.userAnswer)}
                               </div>
                             ) : (
@@ -409,7 +409,7 @@ export function MaturaExamReview({
 
                           {/* Karta Oceny Tutora AI */}
                           {task.aiEvaluation && (
-                            <div className="p-4 rounded-xl bg-[#FFB800]/5 border border-primary/25 space-y-3">
+                            <div className="p-4 rounded-xl bg-jasne/5 border border-primary/25 space-y-3">
                               <div className="flex items-center gap-2 text-xs font-black text-text-accent uppercase tracking-wider">
                                 <GraduationCap size={14} />
                                 <span>Ocena Egzaminatora AI</span>

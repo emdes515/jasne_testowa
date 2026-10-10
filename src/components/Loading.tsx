@@ -119,7 +119,7 @@ export function JasneLogoLoader({
     <div 
       role="status"
       aria-label="Ładowanie..."
-      className={`relative flex items-center justify-center p-3 rounded-3xl bg-white/[0.02] border border-white/5 shadow-[0_0_30px_rgba(255,184,0,0.12)] ${className}`}
+      className={`relative flex items-center justify-center p-3 rounded-3xl bg-white/[0.02] border border-hairline-soft shadow-[0_0_30px_rgba(255,184,0,0.12)] ${className}`}
     >
       <JasneLogo variant="loader" size={size} glow={glow} />
     </div>
@@ -144,14 +144,14 @@ export function LoadingScreen({
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#0A0E18]"
     >
       {/* Ethereal ambient warm glow */}
-      <div className="absolute w-72 h-72 rounded-full bg-[#FFB800]/10 blur-[80px] pointer-events-none" />
+      <div className="absolute w-72 h-72 rounded-full bg-jasne/10 blur-[80px] pointer-events-none" />
       <div className="absolute w-96 h-96 rounded-full bg-amber-500/5 blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center gap-6 px-4">
         {useBrandLogo ? (
           <JasneLogoLoader size={60} />
         ) : (
-          <div className="relative p-3 rounded-full bg-white/[0.02] border border-white/5 shadow-[0_0_30px_rgba(255,184,0,0.08)]">
+          <div className="relative p-3 rounded-full bg-white/[0.02] border border-hairline-soft shadow-[0_0_30px_rgba(255,184,0,0.08)]">
             <LoadingSpinner size="lg" />
           </div>
         )}
@@ -196,7 +196,7 @@ export function AsyncContent({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-[#0A0E18]/70 backdrop-blur-md rounded-[28px] border border-white/5"
+            className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-[#0A0E18]/70 backdrop-blur-md rounded-[28px] border border-hairline-soft"
           >
             <LoadingSpinner size="md" />
             {fallbackMessage && (

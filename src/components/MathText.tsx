@@ -153,7 +153,7 @@ function renderTextChunk(chunk: string, keyPrefix: string): React.ReactNode {
             {parts.map((p, pIdx) => {
               if (p.startsWith('**') && p.endsWith('**')) {
                 return (
-                  <strong key={`${keyPrefix}-b-${pIdx}`} className="font-bold text-white">
+                  <strong key={`${keyPrefix}-b-${pIdx}`} className="font-bold text-text-strong">
                     {p.slice(2, -2)}
                   </strong>
                 );

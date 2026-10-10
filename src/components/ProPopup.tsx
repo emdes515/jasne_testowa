@@ -65,7 +65,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
               
               <button 
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-text-muted hover:text-text-primary transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-veil hover:bg-veil-strong text-text-muted hover:text-text-primary transition-colors cursor-pointer"
               >
                 <X size={16} />
               </button>
@@ -93,12 +93,12 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                   ].map((feat, i) => {
                     const Icon = feat.icon;
                     return (
-                      <div key={i} className="flex items-start gap-3 bg-white/[0.03] border border-white/5 rounded-xl p-2.5">
-                        <div className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center shrink-0 mt-0.5">
+                      <div key={i} className="flex items-start gap-3 bg-white/[0.03] border border-hairline-soft rounded-xl p-2.5">
+                        <div className="w-6 h-6 rounded-lg bg-veil flex items-center justify-center shrink-0 mt-0.5">
                           <Icon size={14} className={feat.color} />
                         </div>
                         <div>
-                          <div className="text-xs sm:text-sm font-bold text-white">{feat.title}</div>
+                          <div className="text-xs sm:text-sm font-bold text-text-strong">{feat.title}</div>
                           <div className="text-[11px] text-slate-400">{feat.desc}</div>
                         </div>
                       </div>
@@ -129,7 +129,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                       setShowCodeField(true);
                       setActivationError(null);
                     }}
-                    className="w-full bg-white/10 hover:bg-white/15 text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition-all border border-white/10 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
+                    className="w-full bg-veil-strong hover:bg-white/15 text-text-strong font-bold py-3 rounded-xl text-xs sm:text-sm transition-all border border-hairline active:scale-[0.98] cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <KeyRound size={15} className="text-amber-400" />
                     <span>Mam kod aktywacyjny PRO</span>
@@ -155,7 +155,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                       spellCheck={false}
                       inputMode="text"
                       placeholder="JASNE-XXXX-XXXX"
-                      className="w-full rounded-xl bg-black/40 border border-white/10 focus:border-amber-400/60 focus:outline-none px-3.5 py-3 text-center text-sm sm:text-base font-black tracking-[0.12em] text-white placeholder:text-slate-600"
+                      className="w-full rounded-xl bg-black/40 border border-hairline focus:border-amber-400/60 focus:outline-none px-3.5 py-3 text-center text-sm sm:text-base font-black tracking-[0.12em] text-white placeholder:text-slate-600"
                     />
                     {activationError && (
                       <p className="mt-2 text-left text-[11px] font-semibold text-rose-300 leading-relaxed">
@@ -184,7 +184,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
 
                 <button 
                   onClick={onClose}
-                  className="mt-3 text-[#8B8D98] hover:text-white text-[12px] font-medium transition-colors cursor-pointer"
+                  className="mt-3 text-[#8B8D98] hover:text-text-strong text-[12px] font-medium transition-colors cursor-pointer"
                 >
                   Może później
                 </button>

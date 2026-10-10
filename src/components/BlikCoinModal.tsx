@@ -88,7 +88,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.94, y: 15 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-md bg-[#0B0F19] border border-white/10 rounded-[32px] p-6 shadow-2xl flex flex-col overflow-hidden text-white"
+          className="relative w-full max-w-md bg-[#0B0F19] border border-hairline rounded-[32px] p-6 shadow-2xl flex flex-col overflow-hidden text-white"
         >
           {/* Ambient Lighting */}
           <div className="absolute -top-20 -right-20 w-44 h-44 bg-amber-500/15 blur-3xl rounded-full pointer-events-none" />
@@ -98,7 +98,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
           <button
             onClick={onClose}
             disabled={isProcessing}
-            className="tap-44 absolute top-3 right-3 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer border border-white/5"
+            className="tap-44 absolute top-3 right-3 w-9 h-9 rounded-full bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition cursor-pointer border border-hairline-soft"
             aria-label="Zamknij"
           >
             <X size={16} />
@@ -110,7 +110,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
               <Coins size={22} />
             </div>
             <div>
-              <h2 className="font-display font-black text-lg text-white leading-tight flex items-center gap-2">
+              <h2 className="font-display font-black text-lg text-text-strong leading-tight flex items-center gap-2">
                 Doładuj Monety Kampusu
               </h2>
               <p className="text-xs text-slate-400">
@@ -125,7 +125,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
               <div className="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center text-emerald-400 mb-3 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                 <Check size={32} strokeWidth={3} />
               </div>
-              <h3 className="font-display font-black text-xl text-white mb-1">
+              <h3 className="font-display font-black text-xl text-text-strong mb-1">
                 +{selectedPack.coins} Monet dodane!
               </h3>
               <p className="text-xs text-emerald-400 font-medium">
@@ -150,7 +150,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
                         className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 relative overflow-hidden ${
                           isSelected
                             ? 'bg-amber-500/15 border-amber-400/60 shadow-md shadow-amber-500/10'
-                            : 'bg-white/[0.03] border-white/5 hover:border-white/15'
+                            : 'bg-white/[0.03] border-hairline-soft hover:border-white/15'
                         }`}
                       >
                         {pack.popular && (
@@ -161,13 +161,13 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
 
                         <div className="flex items-center gap-3 min-w-0">
                           <div className={`w-9 h-9 shrink-0 rounded-xl flex items-center justify-center font-bold text-sm ${
-                            isSelected ? 'bg-amber-400 text-slate-950' : 'bg-white/5 text-amber-400'
+                            isSelected ? 'bg-amber-400 text-slate-950' : 'bg-veil text-amber-400'
                           }`}>
                             <Coins size={18} />
                           </div>
                           <div className="min-w-0">
                             <div className="flex items-baseline gap-x-2 flex-wrap">
-                              <span className="font-display font-extrabold text-sm text-white">
+                              <span className="font-display font-extrabold text-sm text-text-strong">
                                 {pack.name}
                               </span>
                               <span className="text-xs font-mono font-bold text-amber-300 whitespace-nowrap">
@@ -181,7 +181,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
                         </div>
 
                         <div className="text-right shrink-0">
-                          <span className="font-display font-black text-base text-white whitespace-nowrap tabular-nums">
+                          <span className="font-display font-black text-base text-text-strong whitespace-nowrap tabular-nums">
                             {pack.pricePln} zł
                           </span>
                         </div>
@@ -208,7 +208,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
                     value={blikCode}
                     onChange={(e) => setBlikCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                     placeholder="123 456"
-                    className="w-full bg-slate-900/90 border border-white/10 rounded-xl px-4 py-3 text-center font-mono font-black text-xl text-amber-300 placeholder:text-slate-600 focus:outline-none focus:border-amber-400 tracking-[0.25em]"
+                    className="w-full bg-slate-900/90 border border-hairline rounded-xl px-4 py-3 text-center font-mono font-black text-xl text-amber-300 placeholder:text-slate-600 focus:outline-none focus:border-amber-400 tracking-[0.25em]"
                   />
                 </div>
 

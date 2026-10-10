@@ -366,7 +366,7 @@ export function Whiteboard({
       {/* ------------------------------------------------------------- */}
       <div
         ref={containerRef}
-        className={`relative w-full rounded-[24px] border border-white/10 shadow-2xl overflow-hidden transition-all duration-200 ${
+        className={`relative w-full rounded-[24px] border border-hairline shadow-2xl overflow-hidden transition-all duration-200 ${
           isExpanded ? 'fixed inset-3 z-50 rounded-[28px]' : ''
         }`}
         style={{
@@ -380,8 +380,8 @@ export function Whiteboard({
       >
         {/* Top Floating Badge with Mode / Fullscreen Toggle */}
         <div className="absolute top-3 left-3 right-3 z-20 flex items-center justify-between pointer-events-none">
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-[#8B8D98] pointer-events-auto shadow-md">
-            <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse" />
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B0F17]/80 backdrop-blur-md border border-hairline text-[11px] font-bold text-[#8B8D98] pointer-events-auto shadow-md">
+            <span className="w-2 h-2 rounded-full bg-jasne animate-pulse" />
             <span>Brudnopis</span>
           </div>
 
@@ -389,7 +389,7 @@ export function Whiteboard({
             <button
               type="button"
               onClick={toggleExpand}
-              className="p-2 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md hover:bg-[#161F2E] text-[#8B8D98] hover:text-white border border-white/10 transition-colors shadow-md"
+              className="p-2 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md hover:bg-[#161F2E] text-[#8B8D98] hover:text-white border border-hairline transition-colors shadow-md"
               title={isExpanded ? 'Zwiń tablicę' : 'Pełny ekran'}
             >
               {isExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
@@ -414,7 +414,7 @@ export function Whiteboard({
         {/* ------------------------------------------------------------- */}
         {/* FLOATING CANVAS TOOLBAR (Ergonomic Pill)                      */}
         {/* ------------------------------------------------------------- */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1.5 rounded-full bg-[#0B0F17]/90 backdrop-blur-md border border-white/10 shadow-2xl">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1.5 rounded-full bg-[#0B0F17]/90 backdrop-blur-md border border-hairline shadow-2xl">
           {/* Pen Tool */}
           <button
             type="button"
@@ -424,8 +424,8 @@ export function Whiteboard({
             }}
             className={`p-2.5 rounded-full transition-all flex items-center justify-center ${
               tool === 'pen'
-                ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-[0_0_15px_rgba(255,184,0,0.4)]'
-                : 'text-[#8B8D98] hover:text-white hover:bg-white/5'
+                ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_15px_rgba(255,184,0,0.4)]'
+                : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
             }`}
             title="Długopis (3px)"
           >
@@ -458,7 +458,7 @@ export function Whiteboard({
             className={`p-2.5 rounded-full transition-all flex items-center justify-center ${
               tool === 'highlighter'
                 ? 'bg-amber-400 text-black font-black shadow-[0_0_15px_rgba(250,204,21,0.4)]'
-                : 'text-[#8B8D98] hover:text-white hover:bg-white/5'
+                : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
             }`}
             title="Zakreślacz neonowy"
           >
@@ -475,14 +475,14 @@ export function Whiteboard({
             className={`p-2.5 rounded-full transition-all flex items-center justify-center ${
               tool === 'eraser'
                 ? 'bg-rose-500 text-white font-black shadow-[0_0_15px_rgba(244,63,94,0.4)]'
-                : 'text-[#8B8D98] hover:text-white hover:bg-white/5'
+                : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
             }`}
             title="Gumka precyzyjna"
           >
             <Eraser size={17} />
           </button>
 
-          <div className="w-[1px] h-5 bg-white/10 mx-0.5" />
+          <div className="w-[1px] h-5 bg-veil-strong mx-0.5" />
 
           {/* Undo */}
           <button
@@ -490,7 +490,7 @@ export function Whiteboard({
             disabled={!canUndo}
             onClick={handleUndo}
             className={`p-2 rounded-full transition-colors ${
-              canUndo ? 'text-white hover:bg-white/10 active:scale-90' : 'text-[#8B8D98]/40 cursor-not-allowed'
+              canUndo ? 'text-text-strong hover:bg-veil-strong active:scale-90' : 'text-[#8B8D98]/40 cursor-not-allowed'
             }`}
             title="Cofnij"
           >
@@ -503,7 +503,7 @@ export function Whiteboard({
             disabled={!canRedo}
             onClick={handleRedo}
             className={`p-2 rounded-full transition-colors ${
-              canRedo ? 'text-white hover:bg-white/10 active:scale-90' : 'text-[#8B8D98]/40 cursor-not-allowed'
+              canRedo ? 'text-text-strong hover:bg-veil-strong active:scale-90' : 'text-[#8B8D98]/40 cursor-not-allowed'
             }`}
             title="Ponów"
           >
@@ -523,7 +523,7 @@ export function Whiteboard({
               <button
                 type="button"
                 onClick={() => setShowClearConfirm(false)}
-                className="px-2 py-1 bg-white/10 text-[#8B8D98] hover:text-white text-xs font-bold rounded-full"
+                className="px-2 py-1 bg-veil-strong text-[#8B8D98] hover:text-text-strong text-xs font-bold rounded-full"
               >
                 ✕
               </button>
@@ -547,9 +547,9 @@ export function Whiteboard({
       {/* ------------------------------------------------------------- */}
       {/* FINAL ANSWER INPUT UNDER CANVAS (Wprowadzanie wyniku z tablicy) */}
       {/* ------------------------------------------------------------- */}
-      <div className="mt-3 bg-[#0B0F17] border border-white/10 rounded-[22px] p-3.5 sm:p-4 shadow-xl flex flex-col gap-2.5">
+      <div className="mt-3 bg-[#0B0F17] border border-hairline rounded-[22px] p-3.5 sm:p-4 shadow-xl flex flex-col gap-2.5">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-black uppercase tracking-wider text-white flex items-center gap-1.5">
+          <label className="text-xs font-black uppercase tracking-wider text-text-strong flex items-center gap-1.5">
             <Target size={14} className="text-text-accent" />
             <span>Twój wynik końcowy:</span>
           </label>
@@ -563,13 +563,13 @@ export function Whiteboard({
             }}
             className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full border transition-all ${
               solutionOnCanvas
-                ? 'bg-[#FFB800]/15 text-text-accent border-primary/40 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
-                : 'bg-white/5 text-[#8B8D98] border-white/10 hover:border-white/20'
+                ? 'bg-jasne/15 text-text-accent border-primary/40 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                : 'bg-veil text-[#8B8D98] border-hairline hover:border-white/20'
             }`}
           >
             <div
               className={`w-3.5 h-3.5 rounded flex items-center justify-center border transition-colors ${
-                solutionOnCanvas ? 'bg-[#FFB800] border-primary text-[#080B11]' : 'border-[#8B8D98]'
+                solutionOnCanvas ? 'bg-jasne border-primary text-[#080B11]' : 'border-[#8B8D98]'
               }`}
             >
               {solutionOnCanvas && <Check size={11} strokeWidth={3} />}
@@ -593,7 +593,7 @@ export function Whiteboard({
             className={`w-full bg-[#161F2E] text-white px-3.5 py-2.5 rounded-xl border outline-none text-sm font-mono transition-colors ${
               solutionOnCanvas
                 ? 'opacity-60 border-transparent cursor-not-allowed italic text-emerald-400'
-                : 'border-white/10 focus:border-primary/50'
+                : 'border-hairline focus:border-primary/50'
             }`}
           />
         </div>

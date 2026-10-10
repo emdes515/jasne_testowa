@@ -415,7 +415,7 @@ export function ProfileView({
                   </div>
                   <div className="flex flex-col items-start flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                      <span className="text-sm font-bold text-text-strong group-hover:text-emerald-300 transition-colors">
                         Panel Deweloperski (Super-Admin)
                       </span>
                       <span className="text-[10px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">

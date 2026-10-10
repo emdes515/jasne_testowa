@@ -395,7 +395,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   triggerHaptic('light');
                   setIsDemoActive(false);
                 }}
-                className="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-bold transition cursor-pointer"
+                className="px-3 py-1.5 rounded-xl bg-veil hover:bg-veil-strong text-slate-300 font-bold transition cursor-pointer"
               >
                 Wróć do edytora
               </button>
@@ -444,7 +444,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
         </div>
 
         {taskTitle && (
-          <h2 className="text-lg sm:text-xl font-black text-white font-display">
+          <h2 className="text-lg sm:text-xl font-black text-text-strong font-display">
             {taskTitle}
           </h2>
         )}
@@ -463,7 +463,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
         {isEnglishWriting && bulletPoints.length > 0 && (
           <div className="pt-3 border-t border-surface-border/60 space-y-2">
             <div className="flex items-center justify-between text-xs text-text-muted">
-              <span className="font-bold text-white flex items-center gap-1.5">
+              <span className="font-bold text-text-strong flex items-center gap-1.5">
                 <CheckSquare size={14} className="text-primary" />
                 Matryca 4 podpunktów CKE (odhaczaj w trakcie pisania):
               </span>
@@ -481,7 +481,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     className={`flex items-start gap-2.5 p-2.5 rounded-xl border text-left text-xs transition cursor-pointer active:scale-98 ${
                       isChecked
                         ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200'
-                        : 'bg-surface-card-hover border-surface-border text-text-secondary hover:text-white'
+                        : 'bg-surface-card-hover border-surface-border text-text-secondary hover:text-text-strong'
                     }`}
                   >
                     <span className="mt-0.5 text-primary shrink-0">
@@ -532,7 +532,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-bold transition cursor-pointer shrink-0 ${
               showPhraseBank
                 ? 'bg-primary/20 border-primary text-primary'
-                : 'bg-surface-elevated border-surface-border text-text-secondary hover:text-white'
+                : 'bg-surface-elevated border-surface-border text-text-secondary hover:text-text-strong'
             }`}
           >
             <BookMarked size={14} />
@@ -553,7 +553,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition whitespace-nowrap cursor-pointer ${
                     activePhraseCategory === cat.id
                       ? 'bg-primary text-[#070A0F]'
-                      : 'bg-surface-elevated text-text-secondary hover:text-white'
+                      : 'bg-surface-elevated text-text-secondary hover:text-text-strong'
                   }`}
                 >
                   {cat.title}
@@ -600,7 +600,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   ? "Wpisz swoje wypracowanie maturalne (min. 300 słów). Zadbaj o wstęp z tezą, akapity argumentacyjne z lekturą obowiązkową i kontekstem oraz syntezę na koniec."
                   : "Napisz zwięzłą notatkę syntetyzującą (60–90 słów) przedstawiającą wspólny problem i stanowiska obu autorów."
             }
-            className="w-full min-h-[260px] sm:min-h-[320px] p-4 sm:p-5 rounded-2xl bg-surface-bg/90 border border-surface-border focus:border-primary/60 focus:ring-2 focus:ring-primary/20 text-white placeholder-text-muted font-sans text-sm sm:text-base leading-relaxed resize-y transition shadow-inner outline-none select-text"
+            className="w-full min-h-[260px] sm:min-h-[320px] p-4 sm:p-5 rounded-2xl bg-surface-bg/90 border border-surface-border focus:border-primary/60 focus:ring-2 focus:ring-primary/20 text-text-strong placeholder-text-muted font-sans text-sm sm:text-base leading-relaxed resize-y transition shadow-inner outline-none select-text"
           />
 
           {isSavedLocally && (
@@ -658,7 +658,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     triggerHaptic('light');
                     setIsDemoActive(true);
                   }}
-                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/40 text-xs font-bold text-text-secondary hover:text-white transition cursor-pointer"
+                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl bg-veil hover:bg-veil-strong border border-hairline hover:border-primary/40 text-xs font-bold text-text-secondary hover:text-text-strong transition cursor-pointer"
                   title="Zobacz przykładowy oficjalny raport egzaminatora CKE"
                 >
                   <Eye size={14} className="text-primary" />

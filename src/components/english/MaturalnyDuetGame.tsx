@@ -129,26 +129,26 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
   }
 
   return (
-    <div className={`rounded-2xl border border-primary/30 bg-[#0e1522] p-4 sm:p-5 md:p-6 shadow-xl space-y-4 relative overflow-hidden min-w-0 ${className}`}>
+    <div className={`rounded-2xl border border-primary/30 bg-surface-panel p-4 sm:p-5 md:p-6 shadow-xl space-y-4 relative overflow-hidden min-w-0 ${className}`}>
       {/* Glow accent */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#ffb800]/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
 
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#141d2e] relative z-10 min-w-0">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-surface-line relative z-10 min-w-0">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-10 h-10 rounded-xl bg-[#ffb800]/10 border border-primary/30 flex items-center justify-center text-[#ffdca1] shrink-0 shadow-sm">
+          <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-accent-soft shrink-0 shadow-sm">
             <Zap className="w-5 h-5 text-text-accent" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] font-bold uppercase text-[#ffdca1] tracking-wider">
+              <span className="text-[10px] font-bold uppercase text-accent-soft tracking-wider">
                 SZYBKI TRENING PEWNIAKA
               </span>
-              <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 shrink-0">
+              <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-accent-soft border border-primary/20 shrink-0">
                 TAP-TO-MATCH ({pairs.length} PARY)
               </span>
             </div>
-            <h4 className="text-base sm:text-lg font-bold text-white flex items-center gap-2 break-words">
+            <h4 className="text-base sm:text-lg font-bold text-text-strong flex items-center gap-2 break-words">
               Maturalny Duet: Połącz w pary
             </h4>
           </div>
@@ -162,13 +162,13 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
               ZALICZONE
             </span>
           )}
-          <span className="text-xs font-mono font-bold text-text-secondary bg-surface-bg border border-[#141d2e] px-3 py-1 rounded-full">
-            Dopasowano: <strong className="text-[#ffdca1]">{matchedIds.length}</strong>/{pairs.length}
+          <span className="text-xs font-mono font-bold text-text-secondary bg-surface-bg border border-surface-line px-3 py-1 rounded-full">
+            Dopasowano: <strong className="text-accent-soft">{matchedIds.length}</strong>/{pairs.length}
           </span>
           {matchedIds.length > 0 && (
             <button
               onClick={handleReset}
-              className="p-1.5 rounded-lg bg-surface-bg hover:bg-[#141d2e] border border-[#141d2e] text-text-secondary hover:text-[#ffdca1] transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg bg-surface-bg hover:bg-surface-card-hover border border-surface-line text-text-secondary hover:text-accent-soft transition-colors cursor-pointer"
               title="Wymieszaj i zagraj ponownie"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -178,14 +178,14 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
       </div>
 
       <p className="text-xs sm:text-sm text-text-secondary leading-relaxed relative z-10 break-words">
-        Kliknij sygnał lub zwrot w <strong className="text-[#ffdca1]">Kolumnie A</strong>, a następnie dobierz do niego pasującą regułę lub zastosowanie w <strong className="text-[#ffdca1]">Kolumnie B</strong>.
+        Kliknij sygnał lub zwrot w <strong className="text-accent-soft">Kolumnie A</strong>, a następnie dobierz do niego pasującą regułę lub zastosowanie w <strong className="text-accent-soft">Kolumnie B</strong>.
       </p>
 
       {/* Plansza dwukolumnowa */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1 relative z-10 min-w-0">
         {/* Kolumna A: Sygnały */}
         <div className="space-y-2.5 min-w-0">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#ffdca1] block px-1 truncate">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-accent-soft block px-1 truncate">
             KOLUMNA A: SYGNAŁ / STRUKTURA
           </span>
           <div className="space-y-2 min-w-0">
@@ -206,8 +206,8 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
                       : isError
                       ? 'bg-rose-950/60 border border-rose-500 text-rose-200 ring-2 ring-rose-500/40 animate-pulse'
                       : isSelected
-                      ? 'bg-[#ffb800]/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
-                      : 'bg-surface-bg border border-[#141d2e] hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-[#dfe2f1]'
+                      ? 'bg-primary/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
+                      : 'bg-surface-bg border border-surface-line hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-text-soft'
                   }`}
                 >
                   <span className="leading-snug min-w-0 break-words flex-1">{item.text}</span>
@@ -220,7 +220,7 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
 
         {/* Kolumna B: Reguły */}
         <div className="space-y-2.5 min-w-0">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#ffdca1] block px-1 truncate">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-accent-soft block px-1 truncate">
             KOLUMNA B: REGUŁA / ZASTOSOWANIE
           </span>
           <div className="space-y-2 min-w-0">
@@ -241,8 +241,8 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
                       : isError
                       ? 'bg-rose-950/60 border border-rose-500 text-rose-200 ring-2 ring-rose-500/40 animate-pulse'
                       : isSelected
-                      ? 'bg-[#ffb800]/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
-                      : 'bg-surface-bg border border-[#141d2e] hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-[#dfe2f1]'
+                      ? 'bg-primary/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
+                      : 'bg-surface-bg border border-surface-line hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-text-soft'
                   }`}
                 >
                   <span className="leading-snug min-w-0 break-words flex-1">{item.text}</span>

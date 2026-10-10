@@ -61,12 +61,12 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
           className="relative w-full max-w-md bg-[#0A0E17] border-t sm:border border-primary/30 rounded-t-[32px] sm:rounded-[28px] p-5 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(255,184,0,0.12)] overflow-hidden z-10 max-h-[92vh] flex flex-col justify-between"
         >
           {/* Akcentowa linijka na górze */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-[#FFB800] to-[#F59E0B]" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-primary to-[#F59E0B]" />
 
           {/* Przycisk zamknięcia */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl hover:bg-white/5 transition-colors cursor-pointer z-20"
+            className="absolute top-4 right-4 text-slate-400 hover:text-text-strong p-2 rounded-xl hover:bg-veil transition-colors cursor-pointer z-20"
             aria-label="Zamknij okno"
           >
             <X size={18} />
@@ -75,7 +75,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
           <div>
             {/* Pigułka statusu + Zegar */}
             <div className="flex items-center justify-between gap-2 mb-3.5 pr-8">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFB800]/15 border border-primary/30 text-text-accent text-[10px] sm:text-[11px] font-black tracking-wider uppercase">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-jasne/15 border border-primary/30 text-text-accent text-[10px] sm:text-[11px] font-black tracking-wider uppercase">
                 <Crown size={12} className="text-text-accent" />
                 <span>VOUCHER POWITALNY</span>
               </span>
@@ -84,7 +84,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
 
             {/* Nagłówek i Obietnica */}
             <div className="text-left mb-3">
-              <h2 className="font-display font-black text-2xl sm:text-3xl text-white leading-tight">
+              <h2 className="font-display font-black text-2xl sm:text-3xl text-text-strong leading-tight">
                 Zdobądź <span className="text-text-accent underline decoration-[#FFB800]/50">-{promoConfig.discountPercent}%</span> na JASNE PRO
               </h2>
               <p className="text-xs text-slate-300 mt-1 leading-relaxed">
@@ -127,34 +127,34 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
             {/* 3 KOLOROWE KARTY KORZYŚCI */}
             <div className="space-y-2 mb-4 text-left">
               {/* KORZYŚĆ 1: Serca */}
-              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-rose-500/30 transition-colors">
+              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-hairline-soft hover:border-rose-500/30 transition-colors">
                 <div className="w-8 h-8 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center shrink-0 text-rose-400">
                   <Heart size={16} className="fill-rose-500/30" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-xs font-bold text-white leading-tight">Nielimitowane serca</div>
+                  <div className="text-xs font-bold text-text-strong leading-tight">Nielimitowane serca</div>
                   <div className="text-[11px] text-slate-400 leading-snug mt-0.5">Rozwiązuj zadania bez wymuszonych przerw i bez stresu</div>
                 </div>
               </div>
 
               {/* KORZYŚĆ 2: AI Tutor */}
-              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-purple-500/30 transition-colors">
+              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-hairline-soft hover:border-purple-500/30 transition-colors">
                 <div className="w-8 h-8 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center shrink-0 text-purple-400">
                   <Brain size={16} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-xs font-bold text-white leading-tight">Inteligentny AI Tutor CKE</div>
+                  <div className="text-xs font-bold text-text-strong leading-tight">Inteligentny AI Tutor CKE</div>
                   <div className="text-[11px] text-slate-400 leading-snug mt-0.5">Krok po kroku wyjaśnia błędy i ocenia dowody maturalne</div>
                 </div>
               </div>
 
               {/* KORZYŚĆ 3: Predyktor Matury */}
-              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-emerald-500/30 transition-colors">
+              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-hairline-soft hover:border-emerald-500/30 transition-colors">
                 <div className="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400">
                   <Target size={16} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-xs font-bold text-white leading-tight">Pełny Predyktor Wyniku CKE</div>
+                  <div className="text-xs font-bold text-text-strong leading-tight">Pełny Predyktor Wyniku CKE</div>
                   <div className="text-[11px] text-slate-400 leading-snug mt-0.5">Dokładna prognoza % i diagnoza brakujących punktów</div>
                 </div>
               </div>
@@ -162,11 +162,11 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
           </div>
 
           {/* PRZYCISKI AKCJI */}
-          <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
+          <div className="flex flex-col gap-2 pt-2 border-t border-hairline">
             <button
               type="button"
               onClick={handleClaim}
-              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-[#FFB800] via-[#FFA000] to-[#FF8C00] hover:brightness-105 text-[#070A0F] font-display font-black text-sm transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_0_#B37F00] active:translate-y-1 active:shadow-none min-h-[48px]"
+              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-primary via-[#FFA000] to-[#FF8C00] hover:brightness-105 text-[#070A0F] font-display font-black text-sm transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_0_#B37F00] active:translate-y-1 active:shadow-none min-h-[48px]"
             >
               <span>Zablokuj rabat -50% (14,50 zł/mc)</span>
               <ArrowRight size={16} strokeWidth={3} />
@@ -175,7 +175,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
             <button
               type="button"
               onClick={onClose}
-              className="w-full py-1.5 text-center text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
+              className="w-full py-1.5 text-center text-xs text-slate-400 hover:text-text-strong transition-colors cursor-pointer"
             >
               Zaloguj się, jeśli masz już konto
             </button>

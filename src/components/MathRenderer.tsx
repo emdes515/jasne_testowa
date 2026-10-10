@@ -295,7 +295,7 @@ function renderFormattedText(textChunk: string, keyPrefix: string): React.ReactN
             {parts.map((p, pIdx) => {
               if (p.startsWith('**') && p.endsWith('**') && p.length >= 4) {
                 return (
-                  <strong key={`${keyPrefix}-b-${pIdx}`} className="font-bold text-white">
+                  <strong key={`${keyPrefix}-b-${pIdx}`} className="font-bold text-text-strong">
                     {p.slice(2, -2)}
                   </strong>
                 );
@@ -907,7 +907,7 @@ const MathRendererComponent: React.FC<MathRendererProps> = ({
   if (isPureLatexBlock) {
     const cleanMath = cleanLatex(trimmedForBlockCheck);
     return (
-      <div className={`my-2 w-full max-w-full overflow-x-auto overflow-y-hidden py-1 px-2 text-center touch-pan-x text-white scrollbar-thin ${className}`}>
+      <div className={`my-2 w-full max-w-full overflow-x-auto overflow-y-hidden py-1 px-2 text-center touch-pan-x text-text-strong scrollbar-thin ${className}`}>
         <div className="inline-block min-w-full text-center">
           <BlockMath 
             math={cleanMath} 

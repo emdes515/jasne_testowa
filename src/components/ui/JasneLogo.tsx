@@ -83,7 +83,7 @@ export const JasneLogo: React.FC<JasneLogoProps> = ({
         {/* Tło świetlne (Ambient Amber Glow) */}
         {glow && (
           <div 
-            className={`absolute inset-0 bg-[#FFB800]/25 blur-md rounded-full -z-10 transition-opacity duration-300 pointer-events-none ${
+            className={`absolute inset-0 bg-jasne/25 blur-md rounded-full -z-10 transition-opacity duration-300 pointer-events-none ${
               isLoader ? 'animate-pulse' : ''
             }`}
           />
@@ -152,7 +152,7 @@ export const JasneLogo: React.FC<JasneLogoProps> = ({
       >
         {glow && (
           <div 
-            className="absolute left-0 top-0 w-10 h-10 bg-[#FFB800]/20 blur-md rounded-full -z-10 pointer-events-none"
+            className="absolute left-0 top-0 w-10 h-10 bg-jasne/20 blur-md rounded-full -z-10 pointer-events-none"
           />
         )}
 
@@ -204,7 +204,7 @@ export const JasneLogo: React.FC<JasneLogoProps> = ({
       >
         {glow && (
           <div 
-            className="absolute inset-0 bg-[#FFB800]/20 blur-lg rounded-full -z-10 pointer-events-none"
+            className="absolute inset-0 bg-jasne/20 blur-lg rounded-full -z-10 pointer-events-none"
           />
         )}
 

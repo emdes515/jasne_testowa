@@ -34,6 +34,17 @@
   --color-text-muted: var(--text-muted);
   --color-text-subtle: var(--text-subtle);
   --color-text-accent: var(--text-accent);
+  --color-text-strong: var(--text-strong);
+  --color-text-soft: var(--text-soft);
+  --color-accent-soft: var(--accent-soft);
+
+  /* Panele, linie i delikatne nakładki (odpowiedniki dawnych bg-[#0E1522], border-[#141D2E], white/5, white/10) */
+  --color-surface-panel: var(--surface-card);
+  --color-surface-line: var(--surface-line);
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-veil: var(--veil);
+  --color-veil-strong: var(--veil-strong);
 
   /* Gamification & Semantic Accents */
   --color-alert-crimson: var(--alert-crimson);
@@ -77,6 +88,14 @@
   --text-muted: #64748B;
   --text-subtle: #475569;
   --text-accent: #FFB800;
+  --text-strong: #FFFFFF;
+  --text-soft: #DFE2F1;
+  --accent-soft: #FFDCA1;
+  --surface-line: #141D2E;
+  --hairline: rgba(255, 255, 255, 0.10);
+  --hairline-soft: rgba(255, 255, 255, 0.05);
+  --veil: rgba(255, 255, 255, 0.05);
+  --veil-strong: rgba(255, 255, 255, 0.10);
 
   --alert-crimson: #F43F5E;
   --alert-crimson-bg: rgba(244, 63, 94, 0.12);
@@ -127,6 +146,14 @@ html.light {
   --text-muted: #64748B;
   --text-subtle: #94A3B8;
   --text-accent: #B45309; /* tekst akcentowy: ciemniejszy bursztyn (4.9:1 na bieli) niż primary #D97706 (3.2:1) */
+  --text-strong: #0F172A;
+  --text-soft: #1E293B;
+  --accent-soft: #92400E;
+  --surface-line: #E2E8F0;
+  --hairline: rgba(15, 23, 42, 0.12);
+  --hairline-soft: rgba(15, 23, 42, 0.07);
+  --veil: rgba(15, 23, 42, 0.04);
+  --veil-strong: rgba(15, 23, 42, 0.07);
 
   --alert-crimson: #E11D48;
   --alert-crimson-bg: rgba(225, 29, 72, 0.08);

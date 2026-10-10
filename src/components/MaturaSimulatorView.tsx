@@ -124,10 +124,10 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
     <div className="p-4 sm:p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
         <div className="flex items-center gap-2">
-          <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-text-secondary text-xs font-bold">
+          <span className="px-2.5 py-1 rounded-lg bg-veil border border-hairline text-text-secondary text-xs font-bold">
             Zadanie {(task as any).taskNumber || currentIndex + 1}
           </span>
-          <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-primary/20 text-text-accent text-xs font-bold">
+          <span className="px-2.5 py-1 rounded-lg bg-jasne/10 border border-primary/20 text-text-accent text-xs font-bold">
             {task.points} {task.points === 1 ? 'punkt' : 'punkty'}
           </span>
           {task.source && (
@@ -175,20 +175,20 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                   onClick={() => onSelectClosedAnswer(optLetter)}
                   className={`group p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex items-center justify-between gap-3.5 active:scale-[0.99] cursor-pointer ${
                     isSelected
-                      ? 'bg-[#FFB800]/10 border-primary ring-1 ring-primary/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
-                      : 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-white'
+                      ? 'bg-jasne/10 border-primary ring-1 ring-primary/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
+                      : 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-text-strong'
                   }`}
                 >
                   <div className="flex items-center gap-3.5 min-w-0 flex-1">
                     <span className={`w-8 h-8 rounded-xl font-display font-black text-xs flex items-center justify-center shrink-0 border transition-all ${
                       isSelected
-                        ? 'bg-[#FFB800] text-black border-primary shadow-sm'
-                        : 'bg-white/5 text-text-secondary border-white/10'
+                        ? 'bg-jasne text-black border-primary shadow-sm'
+                        : 'bg-veil text-text-secondary border-hairline'
                     }`}>
                       {optLetter}
                     </span>
                     <div className={`flex-1 overflow-x-auto text-sm leading-relaxed py-0.5 math-render ${
-                      isSelected ? 'text-white font-medium' : 'text-slate-200'
+                      isSelected ? 'text-text-strong font-medium' : 'text-slate-200'
                     }`}>
                       {typeof opt === 'object' && (opt as any)?.numberLine ? (
                         <NumberLineDiagram data={(opt as any).numberLine} />
@@ -204,7 +204,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
                     isSelected ? 'border-primary' : 'border-white/20'
                   }`}>
-                    {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />}
+                    {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-jasne" />}
                   </div>
                 </button>
               );
@@ -231,7 +231,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
           <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
             <div className="flex items-center gap-2">
               <GraduationCap size={16} className="text-text-accent" />
-              <span className="text-xs font-bold text-white">
+              <span className="text-xs font-bold text-text-strong">
                 Zadanie otwarte • AI oceni je po oddaniu arkusza
               </span>
             </div>
@@ -285,7 +285,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
           type="button"
           disabled={isFirstTask}
           onClick={onPrevTask}
-          className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer"
+          className="px-4 py-2 rounded-xl bg-veil hover:bg-veil-strong text-text-strong font-bold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer"
         >
           <ChevronLeft size={16} />
           <span>Poprzednie</span>
@@ -295,7 +295,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
           type="button"
           disabled={isLastTask}
           onClick={onNextTask}
-          className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer"
+          className="px-4 py-2 rounded-xl bg-veil hover:bg-veil-strong text-text-strong font-bold text-xs disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer"
         >
           <span>Następne</span>
           <ChevronRight size={16} />
@@ -1436,7 +1436,7 @@ export function MaturaSimulatorView({
                   setView('hub');
                 }
               }}
-              className="tap-44 self-start p-2.5 rounded-xl bg-surface-card border border-surface-border text-text-muted hover:text-white hover:bg-white/5 transition-all shrink-0 cursor-pointer active:scale-95"
+              className="tap-44 self-start p-2.5 rounded-xl bg-surface-card border border-surface-border text-text-muted hover:text-text-strong hover:bg-veil transition-all shrink-0 cursor-pointer active:scale-95"
               title="Wróć"
               aria-label="Wróć"
             >
@@ -1446,7 +1446,7 @@ export function MaturaSimulatorView({
 
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-              <h1 className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight truncate">
+              <h1 className="font-display text-lg sm:text-2xl font-bold text-text-strong tracking-tight truncate">
                 {examSubject === 'polski' ? (
                   'Symulator CKE • Język Polski'
                 ) : examSubject === 'angielski' ? (
@@ -1465,7 +1465,7 @@ export function MaturaSimulatorView({
                   </>
                 )}
               </h1>
-              <span className="shrink-0 px-2 py-0.5 rounded-full bg-[#FFB800]/10 border border-primary/30 text-text-accent text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
+              <span className="shrink-0 px-2 py-0.5 rounded-full bg-jasne/10 border border-primary/30 text-text-accent text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
                 Formuła 2023
               </span>
               {view === 'hub' && !isPolishFullExamActive && (
@@ -1479,7 +1479,7 @@ export function MaturaSimulatorView({
                     className={`relative flex-1 sm:flex-none justify-center px-2.5 min-h-[36px] sm:min-h-0 sm:py-0.5 rounded-full text-xs sm:text-[11px] font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'matematyka'
                         ? 'text-amber-300'
-                        : 'text-text-muted hover:text-white'
+                        : 'text-text-muted hover:text-text-strong'
                     }`}
                   >
                     {examSubject === 'matematyka' && (
@@ -1506,7 +1506,7 @@ export function MaturaSimulatorView({
                     className={`relative flex-1 sm:flex-none justify-center px-2.5 min-h-[36px] sm:min-h-0 sm:py-0.5 rounded-full text-xs sm:text-[11px] font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'polski'
                         ? 'text-amber-300'
-                        : 'text-text-muted hover:text-white'
+                        : 'text-text-muted hover:text-text-strong'
                     }`}
                   >
                     {examSubject === 'polski' && (
@@ -1535,7 +1535,7 @@ export function MaturaSimulatorView({
                     className={`relative flex-1 sm:flex-none justify-center px-2.5 min-h-[36px] sm:min-h-0 sm:py-0.5 rounded-full text-xs sm:text-[11px] font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'angielski'
                         ? 'text-amber-300'
-                        : 'text-text-muted hover:text-white'
+                        : 'text-text-muted hover:text-text-strong'
                     }`}
                   >
                     {examSubject === 'angielski' && (
@@ -1580,7 +1580,7 @@ export function MaturaSimulatorView({
           <div className="flex items-center gap-1.5 shrink-0">
             <button
               onClick={() => setIsFormulasOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-surface-card hover:bg-white/10 text-white border border-surface-border text-xs font-bold transition-all shadow-sm cursor-pointer active:scale-95"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-surface-card hover:bg-veil-strong text-text-strong border border-surface-border text-xs font-bold transition-all shadow-sm cursor-pointer active:scale-95"
               title="Karta wzorów CKE"
             >
               <BookOpen size={14} className="text-text-accent" />
@@ -1608,11 +1608,11 @@ export function MaturaSimulatorView({
           <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-3">
             <AlertTriangle className="text-amber-400" size={24} />
           </div>
-          <p className="text-white text-base font-bold mb-1">Baza CKE niedostępna</p>
+          <p className="text-text-strong text-base font-bold mb-1">Baza CKE niedostępna</p>
           <p className="text-text-muted text-xs max-w-sm leading-relaxed mb-5">{loadError}</p>
           <button
             onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-[#FFB800] text-black font-bold text-xs rounded-xl shadow-lg hover:bg-amber-400 transition-colors"
+            className="px-4 py-2 bg-jasne text-black font-bold text-xs rounded-xl shadow-lg hover:bg-amber-400 transition-colors"
           >
             Spróbuj ponownie
           </button>
@@ -1633,13 +1633,13 @@ export function MaturaSimulatorView({
             >
               {/* HERO CARD ZE STATYSTYKAMI POSTĘPU BAZY CKE */}
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-card via-surface-card to-[#0d131f] border border-surface-border p-4 sm:p-5 shadow-xl">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFB800]/5 rounded-full blur-[60px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-jasne/5 rounded-full blur-[60px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
 
                 <div className="relative z-10 flex flex-col gap-3.5">
                   {/* Górny wiersz: Badge i odznaki metryk bez łamania tekstu */}
                   <div className="flex items-center justify-between gap-2 flex-wrap">
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-text-accent bg-[#FFB800]/10 px-2.5 py-0.5 rounded-md border border-primary/25 flex items-center gap-1">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-text-accent bg-jasne/10 px-2.5 py-0.5 rounded-md border border-primary/25 flex items-center gap-1">
                         <Flame size={12} className="text-text-accent" />
                         Baza CKE
                       </span>
@@ -1647,13 +1647,13 @@ export function MaturaSimulatorView({
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-bg/80 border border-surface-border text-xs font-semibold text-white whitespace-nowrap">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-bg/80 border border-surface-border text-xs font-semibold text-text-strong whitespace-nowrap">
                         <Award size={13} className="text-emerald-400 shrink-0" />
                         <span className="text-text-muted text-[10px] hidden xs:inline">Predictor:</span>
                         <span className="text-emerald-400 font-bold">{maturaPrediction.predictedPercent}%</span>
                       </div>
 
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-bg/80 border border-surface-border text-xs font-semibold text-white whitespace-nowrap">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-bg/80 border border-surface-border text-xs font-semibold text-text-strong whitespace-nowrap">
                         <GraduationCap size={13} className="text-blue-400 shrink-0" />
                         <span className="text-text-muted text-[10px] hidden xs:inline">Arkusze:</span>
                         <span className="text-blue-400 font-bold">{userState?.maturaAttempts || 0}</span>
@@ -1665,13 +1665,13 @@ export function MaturaSimulatorView({
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-text-secondary text-[11px] font-medium">Ukończono w bazie pytań:</span>
-                      <span className="text-white font-bold text-xs">
+                      <span className="text-text-strong font-bold text-xs">
                         <span className="text-text-accent">{completedCkeCount}</span> / {effectiveTasks.length} ({completionPct}%)
                       </span>
                     </div>
                     <div className="w-full h-2 bg-surface-bg/90 rounded-full overflow-hidden p-0.5 border border-surface-border/80">
                       <div
-                        className="h-full bg-gradient-to-r from-amber-500 via-[#FFB800] to-yellow-300 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
+                        className="h-full bg-gradient-to-r from-amber-500 via-primary to-yellow-300 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
                         style={{ width: `${Math.max(completionPct, 1.5)}%` }}
                       />
                     </div>
@@ -1682,17 +1682,17 @@ export function MaturaSimulatorView({
               {/* FILAR 4: SZYBKI BANER 1 KLIKNIĘCIEM - "PO PROSTU RÓB ZADANIA" */}
               <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-surface-card to-surface-card border border-primary/40 shadow-[0_0_30px_rgba(255,184,0,0.1)] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-xl bg-[#FFB800]/20 border border-primary/40 flex items-center justify-center shrink-0 text-text-accent shadow-[0_0_15px_rgba(255,184,0,0.2)]">
+                  <div className="w-11 h-11 rounded-xl bg-jasne/20 border border-primary/40 flex items-center justify-center shrink-0 text-text-accent shadow-[0_0_15px_rgba(255,184,0,0.2)]">
                     <Shuffle size={22} />
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5 mb-1">
-                      <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/15 px-2 py-0.5 rounded border border-primary/30">
+                      <span className="text-[10px] font-black uppercase text-text-accent bg-jasne/15 px-2 py-0.5 rounded border border-primary/30">
                         Szybki start
                       </span>
                       <span className="text-[11px] text-text-muted truncate">1 kliknięcie do nauki</span>
                     </div>
-                    <h3 className="font-display font-black text-white text-base sm:text-lg truncate">
+                    <h3 className="font-display font-black text-text-strong text-base sm:text-lg truncate">
                       Losowy Trening CKE
                     </h3>
                   </div>
@@ -1706,8 +1706,8 @@ export function MaturaSimulatorView({
                       onClick={() => setRandomScope('unsolved')}
                       className={`flex-1 sm:flex-none min-w-0 px-2 sm:px-3 min-h-[40px] rounded-lg text-xs font-bold whitespace-nowrap transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                         randomScope === 'unsolved'
-                          ? 'bg-[#FFB800] text-black shadow-sm'
-                          : 'text-text-secondary hover:text-white hover:bg-white/5'
+                          ? 'bg-jasne text-black shadow-sm'
+                          : 'text-text-secondary hover:text-text-strong hover:bg-veil'
                       }`}
                     >
                       <Target size={13} className={randomScope === 'unsolved' ? 'text-black' : 'text-text-accent'} />
@@ -1718,8 +1718,8 @@ export function MaturaSimulatorView({
                       onClick={() => setRandomScope('all')}
                       className={`flex-1 sm:flex-none min-w-0 px-2 sm:px-3 min-h-[40px] rounded-lg text-xs font-bold whitespace-nowrap transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                         randomScope === 'all'
-                          ? 'bg-[#FFB800] text-black shadow-sm'
-                          : 'text-text-secondary hover:text-white hover:bg-white/5'
+                          ? 'bg-jasne text-black shadow-sm'
+                          : 'text-text-secondary hover:text-text-strong hover:bg-veil'
                       }`}
                     >
                       <Layers size={13} className={randomScope === 'all' ? 'text-black' : 'text-blue-400'} />
@@ -1730,8 +1730,8 @@ export function MaturaSimulatorView({
                       onClick={() => setRandomScope('weakest')}
                       className={`flex-1 sm:flex-none min-w-0 px-2 sm:px-3 min-h-[40px] rounded-lg text-xs font-bold whitespace-nowrap transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                         randomScope === 'weakest'
-                          ? 'bg-[#FFB800] text-black shadow-sm'
-                          : 'text-text-secondary hover:text-white hover:bg-white/5'
+                          ? 'bg-jasne text-black shadow-sm'
+                          : 'text-text-secondary hover:text-text-strong hover:bg-veil'
                       }`}
                     >
                       <Target size={13} className={randomScope === 'weakest' ? 'text-black' : 'text-rose-400'} />
@@ -1741,7 +1741,7 @@ export function MaturaSimulatorView({
 
                   <button
                     onClick={() => startRandomTraining(randomScope)}
-                    className="px-5 min-h-[48px] rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)] hover:shadow-[0_0_25px_rgba(255,184,0,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+                    className="px-5 min-h-[48px] rounded-xl bg-gradient-to-r from-amber-400 to-primary hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)] hover:shadow-[0_0_25px_rgba(255,184,0,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
                     <Zap size={15} fill="currentColor" />
                     <span>Rozpocznij</span>
@@ -1753,8 +1753,8 @@ export function MaturaSimulatorView({
               <div className="space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#FFB800] shrink-0" />
-                    <h2 className="text-xs sm:text-sm font-display font-black text-white uppercase tracking-wider">
+                    <span className="w-2 h-2 rounded-full bg-jasne shrink-0" />
+                    <h2 className="text-xs sm:text-sm font-display font-black text-text-strong uppercase tracking-wider">
                       Trzy Formaty Arkuszy CKE
                     </h2>
                   </div>
@@ -1776,7 +1776,7 @@ export function MaturaSimulatorView({
                           20 MIN • {examSubject === 'angielski' ? '15 ZADAŃ' : examSubject === 'polski' ? '10 ZADAŃ' : '12 ZADAŃ'}
                         </span>
                       </div>
-                      <h3 className="font-display font-black text-base sm:text-lg text-white group-hover:text-amber-300 transition-colors mb-1.5">
+                      <h3 className="font-display font-black text-base sm:text-lg text-text-strong group-hover:text-amber-300 transition-colors mb-1.5">
                         Matury Ekspresowe
                       </h3>
                       <p className="text-text-muted text-xs leading-relaxed mb-4">
@@ -1792,7 +1792,7 @@ export function MaturaSimulatorView({
                           else if (examSubject === 'polski') startPolishExam('express');
                           else startMiniExam('Wszystkie działy', 12);
                         }}
-                        className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                        className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-400 to-primary hover:from-amber-300 hover:to-amber-400 text-amber-950 font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
                       >
                         <Play size={13} fill="currentColor" />
                         <span>Napisz ekspres (20 min)</span>
@@ -1803,7 +1803,7 @@ export function MaturaSimulatorView({
                           setSetupLength(12);
                           setView('exam_setup');
                         }}
-                        className="w-full py-1.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-text-secondary hover:text-white font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                        className="w-full py-1.5 px-3 rounded-xl bg-veil hover:bg-veil-strong text-text-secondary hover:text-text-strong font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
                       >
                         <span>Wybierz konkretny dział</span>
                         <ChevronRight size={12} />
@@ -1823,7 +1823,7 @@ export function MaturaSimulatorView({
                           {examSubject === 'polski' ? '45 MIN • ZESZYT 1' : '35 MIN • 1/2 ARKUSZA'}
                         </span>
                       </div>
-                      <h3 className="font-display font-black text-base sm:text-lg text-white group-hover:text-purple-300 transition-colors mb-1.5">
+                      <h3 className="font-display font-black text-base sm:text-lg text-text-strong group-hover:text-purple-300 transition-colors mb-1.5">
                         Mini Matury CKE
                       </h3>
                       <p className="text-text-muted text-xs leading-relaxed mb-4">
@@ -1850,7 +1850,7 @@ export function MaturaSimulatorView({
                           setSetupLength(18);
                           setView('exam_setup');
                         }}
-                        className="w-full py-1.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-text-secondary hover:text-white font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                        className="w-full py-1.5 px-3 rounded-xl bg-veil hover:bg-veil-strong text-text-secondary hover:text-text-strong font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
                       >
                         <span>Wybierz konkretny dział</span>
                         <ChevronRight size={12} />
@@ -1870,7 +1870,7 @@ export function MaturaSimulatorView({
                           {examSubject === 'angielski' ? '120 MIN • 60 PKT' : examSubject === 'polski' ? '240 MIN • 60 PKT' : '180 MIN • 46–50 PKT'}
                         </span>
                       </div>
-                      <h3 className="font-display font-black text-base sm:text-lg text-white group-hover:text-emerald-300 transition-colors mb-1.5">
+                      <h3 className="font-display font-black text-base sm:text-lg text-text-strong group-hover:text-emerald-300 transition-colors mb-1.5">
                         Matury Pełne (Oficjalne CKE)
                       </h3>
                       <p className="text-text-muted text-xs leading-relaxed mb-4">
@@ -1909,7 +1909,7 @@ export function MaturaSimulatorView({
                             }
                           }
                         }}
-                        className="w-full py-1.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-text-secondary hover:text-white font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                        className="w-full py-1.5 px-3 rounded-xl bg-veil hover:bg-veil-strong text-text-secondary hover:text-text-strong font-bold text-[11px] transition-colors flex items-center justify-center gap-1 cursor-pointer"
                       >
                         <span>Szybki start: Maj 2024 (Sesja Główna)</span>
                         <ChevronRight size={12} />
@@ -1937,7 +1937,7 @@ export function MaturaSimulatorView({
                           {currentTopics.length} Działów CKE
                         </span>
                       </div>
-                      <h4 className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">
+                      <h4 className="font-bold text-sm text-text-strong group-hover:text-blue-400 transition-colors">
                         Bank Zadań Działami
                       </h4>
                       <p className="text-text-muted text-[11px]">
@@ -1971,7 +1971,7 @@ export function MaturaSimulatorView({
                           {mistakesBank.length} do powtórki
                         </span>
                       </div>
-                      <h4 className="font-bold text-sm text-white group-hover:text-rose-400 transition-colors">
+                      <h4 className="font-bold text-sm text-text-strong group-hover:text-rose-400 transition-colors">
                         Baza Twoich Błędów
                       </h4>
                       <p className="text-text-muted text-[11px]">
@@ -2003,7 +2003,7 @@ export function MaturaSimulatorView({
                   </span>
                   <span className="text-xs text-text-muted">• Formuła 2023 (Podstawa)</span>
                 </div>
-                <h2 className="text-xl font-bold text-white mb-1">
+                <h2 className="text-xl font-bold text-text-strong mb-1">
                   Wybierz pełny arkusz do rozwiązania
                 </h2>
                 <p className="text-text-secondary text-xs sm:text-sm mb-6">
@@ -2108,11 +2108,11 @@ export function MaturaSimulatorView({
                             <span className="text-[10px] font-black uppercase text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
                               {sheet.badge}
                             </span>
-                            <span className="text-xs font-bold text-white">
+                            <span className="text-xs font-bold text-text-strong">
                               {count > 0 ? `${count} zadań` : '35 zadań'} • {points > 0 ? `${points} pkt` : '46 pkt'}
                             </span>
                           </div>
-                          <h3 className="font-bold text-base text-white">{sheet.name}</h3>
+                          <h3 className="font-bold text-base text-text-strong">{sheet.name}</h3>
                           <p className="text-xs text-text-secondary mt-0.5">{sheet.desc}</p>
                         </div>
 
@@ -2120,7 +2120,7 @@ export function MaturaSimulatorView({
                           <button
                             type="button"
                             onClick={() => void handleStart(false)}
-                            className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs border border-white/10 transition-colors cursor-pointer"
+                            className="px-4 py-2.5 rounded-xl bg-veil hover:bg-veil-strong text-text-strong font-bold text-xs border border-hairline transition-colors cursor-pointer"
                           >
                             Tryb bezstresowy
                           </button>
@@ -2154,7 +2154,7 @@ export function MaturaSimulatorView({
               className="flex-1 flex flex-col gap-5"
             >
               <div className="p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl">
-                <h2 className="text-xl font-bold text-white mb-1">
+                <h2 className="text-xl font-bold text-text-strong mb-1">
                   Bank Zadań CKE według Działów
                 </h2>
                 <p className="text-text-secondary text-xs sm:text-sm mb-6">
@@ -2174,7 +2174,7 @@ export function MaturaSimulatorView({
                       >
                         <div>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 px-2 py-0.5 rounded border border-primary/20">
+                            <span className="text-[10px] font-black uppercase text-text-accent bg-jasne/10 px-2 py-0.5 rounded border border-primary/20">
                               Dział {idx + 1}
                             </span>
                             <span className="text-[10px] font-bold text-text-muted">
@@ -2182,14 +2182,14 @@ export function MaturaSimulatorView({
                             </span>
                           </div>
 
-                          <h3 className="font-bold text-sm text-white mb-3 group-hover:text-text-accent transition-colors line-clamp-1">
+                          <h3 className="font-bold text-sm text-text-strong mb-3 group-hover:text-text-accent transition-colors line-clamp-1">
                             {topic.replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '')}
                           </h3>
 
                           {/* Mini pasek postępu */}
-                          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden mb-4">
+                          <div className="w-full h-1.5 bg-veil rounded-full overflow-hidden mb-4">
                             <div
-                              className="h-full bg-[#FFB800] rounded-full transition-all duration-300"
+                              className="h-full bg-jasne rounded-full transition-all duration-300"
                               style={{ width: `${pct}%` }}
                             />
                           </div>
@@ -2201,14 +2201,14 @@ export function MaturaSimulatorView({
                               setSelectedTopicName(topic);
                               setView('topic_detail');
                             }}
-                            className="flex-1 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold text-text-secondary hover:text-white transition-colors text-center"
+                            className="flex-1 py-1.5 rounded-xl bg-veil hover:bg-veil-strong text-xs font-bold text-text-secondary hover:text-text-strong transition-colors text-center"
                           >
                             Zadania ({topicAll.length})
                           </button>
 
                           <button
                             onClick={() => startMaraton(topicAll, 0)}
-                            className="px-3 py-1.5 rounded-xl bg-[#FFB800] text-black font-black text-xs hover:brightness-105 transition-colors"
+                            className="px-3 py-1.5 rounded-xl bg-jasne text-black font-black text-xs hover:brightness-105 transition-colors"
                             title="Ćwicz ten dział ciągiem"
                           >
                             Ćwicz
@@ -2235,10 +2235,10 @@ export function MaturaSimulatorView({
             >
               <div className="p-5 rounded-[26px] bg-surface-card border border-surface-border shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 px-2 py-0.5 rounded border border-primary/20 mb-1 inline-block">
+                  <span className="text-[10px] font-black uppercase text-text-accent bg-jasne/10 px-2 py-0.5 rounded border border-primary/20 mb-1 inline-block">
                     Katalog Zadań CKE
                   </span>
-                  <h2 className="text-xl font-bold text-white">{selectedTopicName}</h2>
+                  <h2 className="text-xl font-bold text-text-strong">{selectedTopicName}</h2>
                   <p className="text-xs text-text-secondary">
                     {topicTasks.length} oficjalnych zadań CKE z tego działu.
                   </p>
@@ -2246,7 +2246,7 @@ export function MaturaSimulatorView({
 
                 <button
                   onClick={() => startMaraton(topicTasks, 0)}
-                  className="px-5 py-3 rounded-2xl bg-[#FFB800] text-black font-black text-xs sm:text-sm shadow-md hover:brightness-105 flex items-center justify-center gap-2 shrink-0"
+                  className="px-5 py-3 rounded-2xl bg-jasne text-black font-black text-xs sm:text-sm shadow-md hover:brightness-105 flex items-center justify-center gap-2 shrink-0"
                 >
                   <Play size={14} fill="black" />
                   <span>Rozpocznij drill z tego działu</span>
@@ -2267,7 +2267,7 @@ export function MaturaSimulatorView({
                     >
                       <div className="flex-1 overflow-hidden space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold text-text-accent bg-[#FFB800]/10 px-2 py-0.5 rounded">
+                          <span className="text-[10px] font-bold text-text-accent bg-jasne/10 px-2 py-0.5 rounded">
                             {t.source || 'CKE'}
                           </span>
                           <span className="text-[10px] text-text-muted">
@@ -2293,7 +2293,7 @@ export function MaturaSimulatorView({
                             <span>Do powtórki</span>
                           </span>
                         ) : (
-                          <span className="text-xs font-medium text-text-muted bg-white/5 px-2.5 py-1 rounded-lg">
+                          <span className="text-xs font-medium text-text-muted bg-veil px-2.5 py-1 rounded-lg">
                             Do zrobienia
                           </span>
                         )}
@@ -2318,7 +2318,7 @@ export function MaturaSimulatorView({
               className="flex-1 flex flex-col gap-6"
             >
               <div className="p-6 rounded-[28px] bg-surface-card border border-surface-border shadow-xl">
-                <h2 className="text-lg font-bold text-white mb-1">Skonfiguruj swój arkusz Mini Matury</h2>
+                <h2 className="text-lg font-bold text-text-strong mb-1">Skonfiguruj swój arkusz Mini Matury</h2>
                 <p className="text-text-secondary text-xs sm:text-sm mb-6">
                   Wybierz zakres tematyczny i długość sesji. Zadania zostaną dobrane z oficjalnej bazy CKE.
                 </p>
@@ -2331,7 +2331,7 @@ export function MaturaSimulatorView({
                     <select
                       value={setupSection}
                       onChange={e => setSetupSection(e.target.value)}
-                      className="w-full bg-surface-bg border border-surface-border rounded-xl px-4 py-3 text-white text-sm focus:border-primary outline-none"
+                      className="w-full bg-surface-bg border border-surface-border rounded-xl px-4 py-3 text-text-strong text-sm focus:border-primary outline-none"
                     >
                       <option value="Wszystkie działy">Wszystkie działy (Przekrój Maturalny)</option>
                       {currentTopics.map(s => (
@@ -2350,13 +2350,13 @@ export function MaturaSimulatorView({
                         onClick={() => setSetupLength(12)}
                         className={`p-4 rounded-2xl border text-left transition-all ${
                           setupLength === 12 || setupLength === 11 || setupLength === 7
-                            ? 'bg-[#FFB800]/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
-                            : 'bg-surface-bg border-surface-border text-text-muted hover:text-white'
+                            ? 'bg-jasne/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                            : 'bg-surface-bg border-surface-border text-text-muted hover:text-text-strong'
                         }`}
                       >
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
                           <span className="font-bold text-sm">Ekspresowy</span>
-                          <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 border border-primary/20 px-1.5 py-0.5 rounded w-fit">20 MIN</span>
+                          <span className="text-[10px] font-black uppercase text-text-accent bg-jasne/10 border border-primary/20 px-1.5 py-0.5 rounded w-fit">20 MIN</span>
                         </div>
                         <p className="text-xs text-text-secondary">12 zadań • 15 punktów • Próg zdawalności 30%</p>
                       </button>
@@ -2366,13 +2366,13 @@ export function MaturaSimulatorView({
                         onClick={() => setSetupLength(18)}
                         className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all ${
                           setupLength === 18 || setupLength === 17
-                            ? 'bg-[#FFB800]/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
-                            : 'bg-surface-bg border-surface-border text-text-muted hover:text-white'
+                            ? 'bg-jasne/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                            : 'bg-surface-bg border-surface-border text-text-muted hover:text-text-strong'
                         }`}
                       >
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
                           <span className="font-bold text-sm">Standardowy</span>
-                          <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 border border-primary/20 px-1.5 py-0.5 rounded w-fit">35 MIN</span>
+                          <span className="text-[10px] font-black uppercase text-text-accent bg-jasne/10 border border-primary/20 px-1.5 py-0.5 rounded w-fit">35 MIN</span>
                         </div>
                         <p className="text-xs text-text-secondary">18 zadań • 25 punktów • Dokładnie 1/2 arkusza</p>
                       </button>
@@ -2383,7 +2383,7 @@ export function MaturaSimulatorView({
                 <div className="mt-8 flex gap-3">
                   <button
                     onClick={() => startMiniExam(setupSection, setupLength)}
-                    className="flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 to-[#FFB800] text-black font-black text-sm tracking-wide shadow-lg hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                    className="flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 to-primary text-black font-black text-sm tracking-wide shadow-lg hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                   >
                     <Play size={16} fill="black" />
                     <span>Rozpocznij arkusz</span>
@@ -2413,7 +2413,7 @@ export function MaturaSimulatorView({
                         className={`p-2 rounded-xl border flex items-center gap-1.5 text-xs font-bold transition-all ${
                           isExamPaused
                             ? 'bg-amber-500/20 border-amber-500 text-amber-300'
-                            : 'bg-white/5 border-white/10 text-white hover:bg-white/10'
+                            : 'bg-veil border-hairline text-text-strong hover:bg-veil-strong'
                         }`}
                       >
                         {isExamPaused ? <Play size={14} fill="currentColor" /> : <Pause size={14} />}
@@ -2423,7 +2423,7 @@ export function MaturaSimulatorView({
                       <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border font-mono font-bold text-sm ${
                         examTimeLeft < 300
                           ? 'bg-rose-500/10 border-rose-500/30 text-rose-400 animate-pulse'
-                          : 'bg-surface-bg border-surface-border text-white'
+                          : 'bg-surface-bg border-surface-border text-text-strong'
                       }`}>
                         <Clock size={15} />
                         <span>{formatTimer(examTimeLeft)}</span>
@@ -2443,7 +2443,7 @@ export function MaturaSimulatorView({
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
                       flaggedTasks.has(examTasks[examCurrentIndex].id)
                         ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                        : 'bg-white/5 border-white/10 text-text-muted hover:text-white'
+                        : 'bg-veil border-hairline text-text-muted hover:text-text-strong'
                     }`}
                   >
                     <Flag size={14} fill={flaggedTasks.has(examTasks[examCurrentIndex].id) ? 'currentColor' : 'none'} />
@@ -2486,10 +2486,10 @@ export function MaturaSimulatorView({
                         onClick={() => setExamCurrentIndex(idx)}
                         className={`min-w-[40px] h-10 px-1 rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all relative cursor-pointer active:scale-95 ${
                           isCurrent
-                            ? 'bg-[#FFB800] text-black shadow-[0_0_12px_rgba(255,184,0,0.5)] font-black scale-105'
+                            ? 'bg-jasne text-black shadow-[0_0_12px_rgba(255,184,0,0.5)] font-black scale-105'
                             : isAnswered
                             ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300'
-                            : 'bg-surface-card border border-surface-border text-text-muted hover:text-white'
+                            : 'bg-surface-card border border-surface-border text-text-muted hover:text-text-strong'
                         }`}
                       >
                         {idx + 1}
@@ -2508,11 +2508,11 @@ export function MaturaSimulatorView({
                   <div className="w-16 h-16 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-4 text-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.15)]">
                     <Pause size={32} />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Arkusz zapauzowany</h3>
+                  <h3 className="text-xl font-bold text-text-strong mb-2">Arkusz zapauzowany</h3>
                   <button
                     type="button"
                     onClick={() => setIsExamPaused(false)}
-                    className="px-6 py-3 rounded-2xl bg-[#FFB800] text-black font-black text-sm shadow-lg hover:brightness-105 cursor-pointer active:scale-95 transition-all"
+                    className="px-6 py-3 rounded-2xl bg-jasne text-black font-black text-sm shadow-lg hover:brightness-105 cursor-pointer active:scale-95 transition-all"
                   >
                     Wznów arkusz
                   </button>
@@ -2588,8 +2588,8 @@ export function MaturaSimulatorView({
                     onClick={() => setMaratonClosedHintOpen(prev => !prev)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 border ${
                       maratonClosedHintOpen
-                        ? 'bg-[#FFB800]/20 border-primary text-text-accent shadow-[0_0_12px_rgba(255,184,0,0.2)]'
-                        : 'bg-white/5 border-white/10 text-text-secondary hover:text-white hover:bg-white/10'
+                        ? 'bg-jasne/20 border-primary text-text-accent shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                        : 'bg-veil border-hairline text-text-secondary hover:text-text-strong hover:bg-veil-strong'
                     }`}
                     title="Pokaż wskazówkę do zadania"
                   >
@@ -2608,7 +2608,7 @@ export function MaturaSimulatorView({
                       setMaratonSelfScore(null);
                       setMaratonClosedHintOpen(false);
                     }}
-                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-white disabled:opacity-30 cursor-pointer"
+                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-text-strong disabled:opacity-30 cursor-pointer"
                   >
                     <ChevronLeft size={16} />
                   </button>
@@ -2616,7 +2616,7 @@ export function MaturaSimulatorView({
                   <button
                     disabled={maratonIndex >= maratonList.length - 1}
                     onClick={handleNextMaratonTask}
-                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-white disabled:opacity-30 cursor-pointer"
+                    className="p-1.5 rounded-lg border border-surface-border text-text-muted hover:text-text-strong disabled:opacity-30 cursor-pointer"
                   >
                     <ChevronRight size={16} />
                   </button>
@@ -2654,10 +2654,10 @@ export function MaturaSimulatorView({
               }`}>
                 <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-primary/25 text-text-accent text-xs font-bold">
+                    <span className="px-2.5 py-1 rounded-lg bg-jasne/10 border border-primary/25 text-text-accent text-xs font-bold">
                       {currentMaratonTask.source || 'Oficjalne CKE'}
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold">
+                    <span className="px-2.5 py-1 rounded-lg bg-veil border border-hairline text-text-strong text-xs font-bold">
                       {currentMaratonTask.points} {currentMaratonTask.points === 1 ? 'punkt' : 'punkty'}
                     </span>
                   </div>
@@ -2688,7 +2688,7 @@ export function MaturaSimulatorView({
                       <button
                         disabled={!isStructuredAnswerComplete(currentMaratonTask, maratonDraftAnswer)}
                         onClick={() => maratonDraftAnswer && handleMaratonAnswer(maratonDraftAnswer)}
-                        className="w-full py-3.5 px-5 rounded-2xl bg-[#ffb800] text-black font-black text-sm flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
+                        className="w-full py-3.5 px-5 rounded-2xl bg-primary text-black font-black text-sm flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] transition-all cursor-pointer"
                       >
                         <span>Zatwierdź odpowiedź</span>
                         <ArrowRight size={18} />
@@ -2712,25 +2712,25 @@ export function MaturaSimulatorView({
                           : maratonDraftAnswer === optLetter;
 
                         const isCorrectOption = optLetter === currentMaratonTask.correctAnswer;
-                        let cardStyle = 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-white';
-                        let badgeStyle = 'bg-white/5 text-text-secondary border-white/10';
+                        let cardStyle = 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-text-strong';
+                        let badgeStyle = 'bg-veil text-text-secondary border-hairline';
                         let radioStyle = 'border-white/20';
 
                         if (maratonSubmitted) {
                           if (isCorrectOption) {
-                            cardStyle = 'bg-emerald-500/10 border-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.2)]';
+                            cardStyle = 'bg-emerald-500/10 border-emerald-500 text-text-strong shadow-[0_0_15px_rgba(16,185,129,0.2)]';
                             badgeStyle = 'bg-emerald-500 text-black border-emerald-500 font-black';
                             radioStyle = 'border-emerald-500 bg-emerald-500 text-black';
                           } else if (isSelected) {
-                            cardStyle = 'bg-rose-500/10 border-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.2)]';
+                            cardStyle = 'bg-rose-500/10 border-rose-500 text-text-strong shadow-[0_0_15px_rgba(244,63,94,0.2)]';
                             badgeStyle = 'bg-rose-500 text-white border-rose-500 font-black';
                             radioStyle = 'border-rose-500 bg-rose-500 text-white';
                           } else {
                             cardStyle = 'bg-surface-card/40 border-surface-border/40 text-text-muted opacity-50';
                           }
                         } else if (isSelected) {
-                          cardStyle = 'bg-[#FFB800]/10 border-primary ring-1 ring-primary/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white';
-                          badgeStyle = 'bg-[#FFB800] text-black border-primary shadow-sm';
+                          cardStyle = 'bg-jasne/10 border-primary ring-1 ring-primary/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white';
+                          badgeStyle = 'bg-jasne text-black border-primary shadow-sm';
                           radioStyle = 'border-primary';
                         }
 
@@ -2750,7 +2750,7 @@ export function MaturaSimulatorView({
                                 {optLetter}
                               </span>
                               <div className={`flex-1 overflow-x-auto text-sm leading-relaxed py-0.5 math-render ${
-                                isSelected ? 'text-white font-medium' : 'text-slate-200'
+                                isSelected ? 'text-text-strong font-medium' : 'text-slate-200'
                               }`}>
                                 {typeof opt === 'object' && (opt as any)?.numberLine ? (
                                   <NumberLineDiagram data={(opt as any).numberLine} />
@@ -2772,7 +2772,7 @@ export function MaturaSimulatorView({
                                   <X size={12} strokeWidth={3.5} />
                                 ) : null
                               ) : isSelected ? (
-                                <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-jasne" />
                               ) : null}
                             </div>
                           </button>
@@ -2789,7 +2789,7 @@ export function MaturaSimulatorView({
                       >
                         <button
                           onClick={() => handleMaratonAnswer(maratonDraftAnswer)}
-                          className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-[#FFB800] via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 active:scale-[0.98] transition-all cursor-pointer"
+                          className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-primary via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 active:scale-[0.98] transition-all cursor-pointer"
                         >
                           <span>Zatwierdź odpowiedź ({maratonDraftAnswer})</span>
                           <ArrowRight size={18} />
@@ -2830,10 +2830,10 @@ export function MaturaSimulatorView({
                         animate={{ opacity: 1, scale: 1 }}
                         className="p-5 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-primary/50 shadow-md flex flex-col items-center text-center my-3 relative overflow-hidden"
                       >
-                        <div className="relative w-12 h-12 rounded-2xl bg-[#FFB800]/20 border border-primary/60 flex items-center justify-center mb-3">
+                        <div className="relative w-12 h-12 rounded-2xl bg-jasne/20 border border-primary/60 flex items-center justify-center mb-3">
                           <Loader2 className="w-6 h-6 text-text-accent animate-spin shrink-0" />
                         </div>
-                        <h4 className="font-bold text-white text-sm sm:text-base mb-1">
+                        <h4 className="font-bold text-text-strong text-sm sm:text-base mb-1">
                           Egzaminator AI analizuje Twoje kroki obliczeniowe...
                         </h4>
                         <p className="text-xs text-amber-200/80 max-w-md">
@@ -2847,7 +2847,7 @@ export function MaturaSimulatorView({
                       <motion.div
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="p-4 rounded-2xl bg-[#FFB800]/10 border border-primary/30 space-y-2 relative"
+                        className="p-4 rounded-2xl bg-jasne/10 border border-primary/30 space-y-2 relative"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2 text-xs font-bold text-text-accent uppercase tracking-wider">
@@ -2857,7 +2857,7 @@ export function MaturaSimulatorView({
                           <button
                             type="button"
                             onClick={() => setMaratonHintText(null)}
-                            className="p-1 rounded-lg text-amber-300/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                            className="p-1 rounded-lg text-amber-300/60 hover:text-text-strong hover:bg-veil-strong transition-colors cursor-pointer"
                             title="Zamknij wskazówkę"
                           >
                             <X size={14} />
@@ -2895,7 +2895,7 @@ export function MaturaSimulatorView({
                   >
                     <div className="w-full max-w-4xl mx-auto flex flex-col p-4 sm:p-6 overflow-hidden">
                       {/* Nagłówek Drawera: Status wyniku + Przycisk Następne zadanie */}
-                      <div className="flex items-center justify-between gap-3 pb-3 border-b border-white/10 shrink-0">
+                      <div className="flex items-center justify-between gap-3 pb-3 border-b border-hairline shrink-0">
                         <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
                           {((maratonSelectedAnswer && currentMaratonTask.correctAnswer.trim().toUpperCase() === maratonSelectedAnswer.trim().toUpperCase()) ||
                            (maratonTutorEval && maratonTutorEval.score >= currentMaratonTask.points) ||
@@ -2947,7 +2947,7 @@ export function MaturaSimulatorView({
                                 setMaratonSelfScore(null);
                                 triggerHaptic('light');
                               }}
-                              className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                              className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-veil-strong hover:bg-white/15 text-text-strong font-bold text-xs sm:text-sm active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
                               title="Popraw swoje rozwiązanie i sprawdź ponownie"
                             >
                               <RotateCcw size={14} />
@@ -2957,7 +2957,7 @@ export function MaturaSimulatorView({
 
                           <button
                             onClick={handleNextMaratonTask}
-                            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0 whitespace-nowrap"
+                            className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 to-primary hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shrink-0 whitespace-nowrap"
                           >
                             <span className="inline sm:hidden">Dalej</span>
                             <span className="hidden sm:inline">Następne zadanie</span>
@@ -3004,7 +3004,7 @@ export function MaturaSimulatorView({
 
                         {/* Szczegółowa ocena Tutora AI w zadaniu otwartym */}
                         {!currentMaratonTask.isClosed && maratonTutorEval && (
-                          <div className="p-4 rounded-2xl bg-[#FFB800]/5 border border-primary/25 space-y-2.5">
+                          <div className="p-4 rounded-2xl bg-jasne/5 border border-primary/25 space-y-2.5">
                             <div className="flex items-center justify-between gap-2">
                               <div className="flex items-center gap-2 text-xs font-black text-text-accent uppercase tracking-wider">
                                 <GraduationCap size={14} />
@@ -3019,11 +3019,11 @@ export function MaturaSimulatorView({
 
                             {/* Odczytany zapis ucznia (transkrypcja KaTeX) */}
                             {maratonTutorEval.transcription && (
-                              <div className="p-3 rounded-xl bg-surface-bg/80 border border-white/10 space-y-1">
+                              <div className="p-3 rounded-xl bg-surface-bg/80 border border-hairline space-y-1">
                                 <div className="text-[10px] font-bold text-amber-300/80 uppercase tracking-wider">
                                   Odczytany zapis ucznia:
                                 </div>
-                                <div className="text-xs text-white font-mono math-render overflow-x-auto">
+                                <div className="text-xs text-text-strong font-mono math-render overflow-x-auto">
                                   <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
                                     {maratonTutorEval.transcription}
                                   </Markdown>
@@ -3081,7 +3081,7 @@ export function MaturaSimulatorView({
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-white">
+                <h3 className="text-lg font-bold text-text-strong">
                   {examConfirmModal === 'finish' ? 'Oddanie arkusza maturalnego' : 'Przerwanie arkusza'}
                 </h3>
                 <p className="text-xs text-text-secondary mt-1.5 leading-relaxed">
@@ -3097,7 +3097,7 @@ export function MaturaSimulatorView({
                 <button
                   type="button"
                   onClick={() => setExamConfirmModal(null)}
-                  className="flex-1 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs transition active:scale-[0.98] cursor-pointer"
+                  className="flex-1 py-3 rounded-xl bg-veil hover:bg-veil-strong text-text-strong font-bold text-xs transition active:scale-[0.98] cursor-pointer"
                 >
                   {examConfirmModal === 'finish' ? 'Wróć do arkusza' : 'Kontynuuj egzamin'}
                 </button>

@@ -56,7 +56,7 @@ describe('Session Recovery Component Integration', () => {
 
       // Verify that the whiteboard toggle is active
       const whiteboardToggle = document.getElementById('toggle-math-whiteboard-mode');
-      expect(whiteboardToggle?.className).toContain('bg-[#FFB800]');
+      expect(whiteboardToggle?.className).toContain('bg-jasne');
 
       // Verify whiteboard tools are present
       const clearBtn = screen.getByTitle('Wyczyść tablicę');
@@ -81,7 +81,7 @@ describe('Session Recovery Component Integration', () => {
 
       // Verify that keyboard toggle button has active styling
       const keyboardToggle = document.getElementById('toggle-math-keyboard-mode');
-      expect(keyboardToggle?.className).toContain('bg-[#FFB800]');
+      expect(keyboardToggle?.className).toContain('bg-jasne');
 
       // Verify user answer preview is displayed
       expect(screen.getByText('Twoja odpowiedź:')).toBeDefined();

@@ -241,9 +241,9 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
     return (
       <div 
         id="boss-exam-results-screen"
-        className="fixed inset-0 z-50 bg-surface-bg/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 text-white select-none overflow-y-auto"
+        className="fixed inset-0 z-50 bg-surface-bg/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 text-text-strong select-none overflow-y-auto"
       >
-        <div className="w-full max-w-xl bg-[#0B0F19] rounded-3xl border border-white/10 flex flex-col p-6 sm:p-8 text-white relative shadow-2xl my-auto">
+        <div className="w-full max-w-xl bg-[#0B0F19] rounded-3xl border border-hairline flex flex-col p-6 sm:p-8 text-white relative shadow-2xl my-auto">
           
           <div className="flex flex-col items-center text-center">
             {/* Crown / Trophy icon */}
@@ -272,7 +272,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
               {isPassed ? 'SPRAWDZIAN ZALICZONY' : 'SPRAWDZIAN NIEZALICZONY'}
             </span>
 
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-text-strong mb-2">
               {isPassed ? (examData.boss_name ? `${examData.boss_name} pokonany!` : 'Dział 1 Opanowany!') : 'Wymagana powtórka materiału'}
             </h1>
 
@@ -283,21 +283,21 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
             </p>
 
             {/* Score pill */}
-            <div className="w-full bg-[#101726] rounded-2xl border border-white/10 p-4 mb-6 flex items-center justify-around">
+            <div className="w-full bg-[#101726] rounded-2xl border border-hairline p-4 mb-6 flex items-center justify-around">
               <div className="text-center">
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Wynik</span>
-                <span className="text-2xl sm:text-3xl font-black text-white">
+                <span className="text-2xl sm:text-3xl font-black text-text-strong">
                   {resultScore} <span className="text-sm font-normal text-slate-400">/ {examData.totalQuestions} pkt</span>
                 </span>
               </div>
-              <div className="w-px h-10 bg-white/10" />
+              <div className="w-px h-10 bg-veil-strong" />
               <div className="text-center">
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Skuteczność</span>
                 <span className={`text-2xl sm:text-3xl font-black ${isPassed ? 'text-emerald-400' : 'text-rose-400'}`}>
                   {percent}%
                 </span>
               </div>
-              <div className="w-px h-10 bg-white/10" />
+              <div className="w-px h-10 bg-veil-strong" />
               <div className="text-center">
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Nagroda</span>
                 <span className="text-lg sm:text-xl font-black text-amber-400 flex items-center justify-center gap-1">
@@ -350,13 +350,13 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                           <XCircle size={16} className="text-rose-400 shrink-0" />
                         )}
                         <div className="truncate">
-                          <span className="font-bold text-white block truncate">
+                          <span className="font-bold text-text-strong block truncate">
                             Zadanie {idx + 1}: {t.topicLabel?.replace(/^undefined\s*•\s*/i, '') || t.lessonTitle || `Zadanie ${idx + 1}`}
                           </span>
                           {!isOk && t.correct_answer && (
                             <span className="text-[11px] text-rose-300 flex items-center gap-1">
                               <span>Prawidłowa odp:</span>
-                              <span className="font-bold text-white inline-flex items-center">
+                              <span className="font-bold text-text-strong inline-flex items-center">
                                 <MathRenderer content={formatMathAnswer(t.correct_answer)} />
                               </span>
                             </span>
@@ -380,7 +380,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                 <button
                   id="boss-exam-claim-success-button"
                   onClick={handleFinalClaim}
-                  className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-[#FFB800] hover:brightness-110 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 active:scale-98 transition-all cursor-pointer"
+                  className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-primary hover:brightness-110 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 active:scale-98 transition-all cursor-pointer"
                 >
                   <Award size={18} />
                   <span>ODBIERZ ZŁOTĄ ODZNAKĘ I ODBLOKUJ DZIAŁ 2</span>
@@ -390,7 +390,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                   <button
                     id="boss-exam-retry-button"
                     onClick={handleRestartExam}
-                    className="flex-1 py-3.5 px-4 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-98 cursor-pointer shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                    className="flex-1 py-3.5 px-4 rounded-xl bg-jasne hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition active:scale-98 cursor-pointer shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                   >
                     <RefreshCw size={15} />
                     <span>POWTÓRZ SPRAWDZIAN (NOWY ZESTAW)</span>
@@ -398,7 +398,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                   <button
                     id="boss-exam-exit-fail-button"
                     onClick={onCancel}
-                    className="py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition active:scale-98 cursor-pointer border border-white/10"
+                    className="py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition active:scale-98 cursor-pointer border border-hairline"
                   >
                     Wróć do powtórki lekcji
                   </button>
@@ -433,15 +433,15 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
   return (
     <div 
       id="boss-exam-screen"
-      className="fixed inset-0 z-50 bg-surface-bg flex flex-col text-white select-none overflow-hidden"
+      className="fixed inset-0 z-50 bg-surface-bg flex flex-col text-text-strong select-none overflow-hidden"
     >
       {/* Top Exam Header */}
-      <header className="w-full bg-[#0B0F19] border-b border-white/10 px-4 py-3 flex items-center justify-between shrink-0">
+      <header className="w-full bg-[#0B0F19] border-b border-hairline px-4 py-3 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <button
             id="boss-exam-exit-button"
             onClick={() => setShowExitConfirm(true)}
-            className="w-9 h-9 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition flex items-center justify-center cursor-pointer"
+            className="w-9 h-9 rounded-xl text-slate-400 hover:text-text-strong hover:bg-slate-800 transition flex items-center justify-center cursor-pointer"
             title="Przerwij sprawdzian"
           >
             <X size={20} />
@@ -465,7 +465,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
         <div className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border font-mono font-bold text-sm ${
           isTimeCritical 
             ? 'bg-rose-500/20 border-rose-500/50 text-rose-300 animate-pulse' 
-            : 'bg-slate-900 border-white/10 text-text-accent'
+            : 'bg-slate-900 border-hairline text-text-accent'
         }`}>
           <Clock size={16} className={isTimeCritical ? 'text-rose-400' : 'text-text-accent'} />
           <span>{formatTime(timeLeftSeconds)}</span>
@@ -473,7 +473,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
       </header>
 
       {/* Navigation segments 1 to 7 */}
-      <div className="w-full bg-[#090D14] px-4 py-2 border-b border-white/5 flex items-center justify-center gap-1.5 sm:gap-2">
+      <div className="w-full bg-[#090D14] px-4 py-2 border-b border-hairline-soft flex items-center justify-center gap-1.5 sm:gap-2">
         {examData.tasks.map((_, idx) => {
           const isAnswered = selectedAnswers[idx] !== undefined || (openAnswers[idx] || '').trim().length > 0;
           const isCurrent = currentIndex === idx;
@@ -484,10 +484,10 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
               onClick={() => setCurrentIndex(idx)}
               className={`h-7 px-2.5 sm:px-3 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
                 isCurrent 
-                  ? 'bg-[#FFB800] text-[#080B11] font-bold shadow-md shadow-[rgba(255,184,0,0.35)] scale-105' 
+                  ? 'bg-jasne text-[#080B11] font-bold shadow-md shadow-[rgba(255,184,0,0.35)] scale-105' 
                   : isAnswered 
                     ? 'bg-emerald-950/60 border border-emerald-500/40 text-emerald-300' 
-                    : 'bg-slate-900 border border-white/5 text-slate-400 hover:bg-slate-800'
+                    : 'bg-slate-900 border border-hairline-soft text-slate-400 hover:bg-slate-800'
               }`}
             >
               <span>{idx + 1}</span>
@@ -501,8 +501,8 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
       <main className="flex-1 overflow-y-auto px-4 sm:px-6 py-6 max-w-3xl w-full mx-auto flex flex-col justify-between">
         <div className="space-y-6">
           {/* Question banner */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-[#0F1622] border border-white/10 shadow-lg">
-            <div className="flex items-center justify-between text-xs text-slate-400 mb-3 border-b border-white/5 pb-2">
+          <div className="p-5 sm:p-6 rounded-2xl bg-[#0F1622] border border-hairline shadow-lg">
+            <div className="flex items-center justify-between text-xs text-slate-400 mb-3 border-b border-hairline-soft pb-2">
               {(() => {
                 const s = currentTask.source || 'Zadanie egzaminacyjne';
                 const isAutorskie = /autorsk/i.test(s);
@@ -523,7 +523,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
               <span className="font-bold text-amber-400">{currentTask.points} pkt</span>
             </div>
 
-            <div className="text-base sm:text-lg font-medium text-white leading-relaxed">
+            <div className="text-base sm:text-lg font-medium text-text-strong leading-relaxed">
               <MathRenderer content={currentTask.question} displayMode={true} />
             </div>
           </div>
@@ -531,9 +531,9 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
           {/* TWO_PART Input */}
           {isTwoPart && (
             <div className="space-y-4">
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-2 text-left">
+              <div className="p-4 rounded-xl bg-slate-900/80 border border-hairline space-y-2 text-left">
                 <div className="text-xs font-bold text-text-accent flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-text-accent text-xs flex items-center justify-center font-bold">1</span>
+                  <span className="w-5 h-5 rounded-full bg-jasne/20 text-text-accent text-xs flex items-center justify-center font-bold">1</span>
                   <span>{(currentTask as any).part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -552,12 +552,12 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                         }}
                         className={`p-3 rounded-lg border text-left flex items-center gap-2.5 transition text-xs cursor-pointer ${
                           isSel 
-                            ? 'bg-[#FFB800]/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.25)]' 
-                            : 'bg-slate-950/60 border-white/10 text-slate-300 hover:border-white/20'
+                            ? 'bg-jasne/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.25)]' 
+                            : 'bg-slate-950/60 border-hairline text-slate-300 hover:border-white/20'
                         }`}
                       >
                         <span className={`w-5 h-5 rounded font-bold text-xs flex items-center justify-center shrink-0 border ${
-                          isSel ? 'bg-[#FFB800] text-[#080B11] font-bold border-primary' : 'bg-slate-800 border-white/10 text-slate-400'
+                          isSel ? 'bg-jasne text-[#080B11] font-bold border-primary' : 'bg-slate-800 border-hairline text-slate-400'
                         }`}>{opt.id}</span>
                         <div className="flex-1">
                           <MathRenderer content={opt.text || opt.content_latex || ''} />
@@ -568,9 +568,9 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-2 text-left">
+              <div className="p-4 rounded-xl bg-slate-900/80 border border-hairline space-y-2 text-left">
                 <div className="text-xs font-bold text-text-accent flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-text-accent text-xs flex items-center justify-center font-bold">2</span>
+                  <span className="w-5 h-5 rounded-full bg-jasne/20 text-text-accent text-xs flex items-center justify-center font-bold">2</span>
                   <span>{(currentTask as any).part_2?.prompt || 'Wybierz uzasadnienie:'}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -589,12 +589,12 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                         }}
                         className={`p-3 rounded-lg border text-left flex items-center gap-2.5 transition text-xs cursor-pointer ${
                           isSel 
-                            ? 'bg-[#FFB800]/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.25)]' 
-                            : 'bg-slate-950/60 border-white/10 text-slate-300 hover:border-white/20'
+                            ? 'bg-jasne/15 border-primary text-white shadow-[0_0_12px_rgba(255,184,0,0.25)]' 
+                            : 'bg-slate-950/60 border-hairline text-slate-300 hover:border-white/20'
                         }`}
                       >
                         <span className={`w-5 h-5 rounded font-bold text-xs flex items-center justify-center shrink-0 border ${
-                          isSel ? 'bg-[#FFB800] text-[#080B11] font-bold border-primary' : 'bg-slate-800 border-white/10 text-slate-400'
+                          isSel ? 'bg-jasne text-[#080B11] font-bold border-primary' : 'bg-slate-800 border-hairline text-slate-400'
                         }`}>{opt.id}</span>
                         <div className="flex-1">
                           <MathRenderer content={opt.text || opt.content_latex || ''} />
@@ -617,7 +617,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                 {((currentTask as any).statements || []).map((stmt: any, idx: number) => {
                   const sel = tfAnswers[currentIndex]?.[stmt.id];
                   return (
-                    <div key={stmt.id || idx} className="p-3.5 rounded-xl bg-slate-900/80 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                    <div key={stmt.id || idx} className="p-3.5 rounded-xl bg-slate-900/80 border border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                       <div className="flex items-start gap-2.5 flex-1">
                         <span className="w-5 h-5 rounded bg-slate-800 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                           {idx + 1}
@@ -640,8 +640,8 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                             }}
                             className={`w-10 h-8 rounded-lg text-xs font-bold border transition cursor-pointer ${
                               sel === v 
-                                ? 'bg-[#FFB800] border-primary text-[#080B11] font-bold shadow-md shadow-[rgba(255,184,0,0.3)]' 
-                                : 'bg-slate-950 border-white/10 text-slate-400 hover:text-white'
+                                ? 'bg-jasne border-primary text-[#080B11] font-bold shadow-md shadow-[rgba(255,184,0,0.3)]' 
+                                : 'bg-slate-950 border-hairline text-slate-400 hover:text-text-strong'
                             }`}
                           >
                             {v}
@@ -682,7 +682,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                 onChange={(e) => handleOpenAnswerChange(e.target.value)}
                 placeholder="Zapisz przekształcenia (np. wyłączenie przed nawias, rozkład na czynniki) oraz uzasadnienie podzielności..."
                 rows={5}
-                className="w-full rounded-2xl bg-slate-900/80 border border-white/10 p-4 text-white placeholder-slate-500 focus:outline-none focus:border-primary transition text-sm leading-relaxed"
+                className="w-full rounded-2xl bg-slate-900/80 border border-hairline p-4 text-text-strong placeholder-slate-500 focus:outline-none focus:border-primary transition text-sm leading-relaxed"
               />
             </div>
           )}
@@ -699,14 +699,14 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
                     onClick={() => handleSelectOption(opt.id)}
                     className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-[#FFB800]/15 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.25)]'
-                        : 'bg-slate-900/60 border-white/10 hover:border-white/20 text-slate-300 hover:bg-slate-800/60'
+                        ? 'bg-jasne/15 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.25)]'
+                        : 'bg-slate-900/60 border-hairline hover:border-white/20 text-slate-300 hover:bg-slate-800/60'
                     }`}
                   >
                     <span className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
                       isSelected 
-                        ? 'bg-[#FFB800] text-[#080B11] border-primary font-extrabold' 
-                        : 'bg-slate-800 border-white/10 text-slate-400'
+                        ? 'bg-jasne text-[#080B11] border-primary font-extrabold' 
+                        : 'bg-slate-800 border-hairline text-slate-400'
                     }`}>
                       {opt.id}
                     </span>
@@ -721,14 +721,14 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
         </div>
 
         {/* Navigation bottom bar */}
-        <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between gap-3">
+        <div className="pt-6 mt-6 border-t border-hairline flex items-center justify-between gap-3">
           <button
             onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
             disabled={currentIndex === 0}
             className={`py-3 px-4 rounded-xl font-semibold text-xs flex items-center gap-1.5 transition ${
               currentIndex === 0 
                 ? 'opacity-40 cursor-not-allowed text-slate-600 bg-slate-900' 
-                : 'text-slate-300 bg-slate-900 hover:bg-slate-800 border border-white/10 cursor-pointer active:scale-95'
+                : 'text-slate-300 bg-slate-900 hover:bg-slate-800 border border-hairline cursor-pointer active:scale-95'
             }`}
           >
             <ChevronLeft size={16} />
@@ -738,7 +738,7 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
           {currentIndex < examData.totalQuestions - 1 ? (
             <button
               onClick={() => setCurrentIndex(prev => Math.min(examData.totalQuestions - 1, prev + 1))}
-              className="py-3 px-5 rounded-xl bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md shadow-[rgba(255,184,0,0.35)]"
+              className="py-3 px-5 rounded-xl bg-jasne hover:bg-[#FFC72C] text-[#080B11] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition active:scale-95 cursor-pointer shadow-md shadow-[rgba(255,184,0,0.35)]"
             >
               <span>Następne pytanie</span>
               <ChevronRight size={16} />
@@ -764,9 +764,9 @@ export const BossExamRunner: React.FC<BossExamRunnerProps> = ({
             if (e.target === e.currentTarget) setShowExitConfirm(false);
           }}
         >
-          <div className="bg-[#0B0F19] rounded-2xl border border-white/10 p-6 max-w-sm w-full text-center">
+          <div className="bg-[#0B0F19] rounded-2xl border border-hairline p-6 max-w-sm w-full text-center">
             <AlertTriangle size={36} className="text-amber-400 mx-auto mb-3" />
-            <h3 className="text-lg font-bold text-white mb-2">Przerwać sprawdzian?</h3>
+            <h3 className="text-lg font-bold text-text-strong mb-2">Przerwać sprawdzian?</h3>
             <p className="text-xs text-slate-300 mb-5 leading-relaxed">
               Sprawdzian jest w toku. Jeśli wyjdziesz teraz, Twoje dotychczasowe odpowiedzi nie zostaną zaliczone.
             </p>

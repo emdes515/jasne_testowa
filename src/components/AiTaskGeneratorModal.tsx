@@ -266,16 +266,16 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          className="relative w-full max-w-xl bg-[#0C101C] border border-white/10 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden max-h-[92vh]"
+          className="relative w-full max-w-xl bg-[#0C101C] border border-hairline rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden max-h-[92vh]"
         >
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
+          <div className="p-4 sm:p-5 border-b border-hairline flex items-center justify-between bg-white/[0.02]">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500/20 to-purple-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center">
                 <Cpu size={18} />
               </div>
               <div>
-                <h3 className="text-sm sm:text-base font-black text-white flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-black text-text-strong flex items-center gap-2">
                   <span className="whitespace-nowrap">Generator Zadań AI</span>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 whitespace-nowrap">
                     Beta
@@ -289,7 +289,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition border border-white/5 cursor-pointer"
+              className="w-8 h-8 rounded-xl bg-veil hover:bg-veil-strong text-slate-400 hover:text-text-strong flex items-center justify-center transition border border-hairline-soft cursor-pointer"
             >
               <X size={15} />
             </button>
@@ -308,10 +308,10 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                   <select
                     value={selectedTopic}
                     onChange={(e) => setSelectedTopic(e.target.value)}
-                    className="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-amber-400 cursor-pointer"
+                    className="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 text-text-strong text-xs sm:text-sm font-medium focus:outline-none focus:border-amber-400 cursor-pointer"
                   >
                     {defaultTopics.map((t, idx) => (
-                      <option key={idx} value={t} className="bg-slate-900 text-white">
+                      <option key={idx} value={t} className="bg-slate-900 text-text-strong">
                         {t}
                       </option>
                     ))}
@@ -327,7 +327,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                     <select
                       value={taskType}
                       onChange={(e) => setTaskType(e.target.value as any)}
-                      className="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-amber-400 cursor-pointer"
+                      className="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 text-text-strong text-xs sm:text-sm font-medium focus:outline-none focus:border-amber-400 cursor-pointer"
                     >
                       <option value="SINGLE_CHOICE">Zamknięte (A, B, C, D)</option>
                       <option value="NUMERIC_INPUT">Wynik liczbowy</option>
@@ -342,7 +342,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                     <select
                       value={difficulty}
                       onChange={(e) => setDifficulty(e.target.value as any)}
-                      className="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-amber-400 cursor-pointer"
+                      className="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 text-text-strong text-xs sm:text-sm font-medium focus:outline-none focus:border-amber-400 cursor-pointer"
                     >
                       <option value="podstawowy">Podstawowy (Baza)</option>
                       <option value="standard">Standardowy CKE</option>
@@ -351,7 +351,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 text-xs text-slate-400 flex items-start gap-2.5">
+                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-hairline-soft text-xs text-slate-400 flex items-start gap-2.5">
                   <Bot size={18} className="text-amber-400 shrink-0 mt-0.5" />
                   <span>
                     Model AI automatycznie ułoży zadanie, wygeneruje klucz punktowania (scoring key), wyjaśni pułapki CKE i przygotuje wskazówki sokratejskie.
@@ -383,7 +383,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
             {generatedTask && (
               <div className="space-y-4">
                 {/* Task prompt card */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2.5">
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-hairline space-y-2.5">
                   <div className="flex items-center justify-between gap-2 flex-wrap">
                     <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/20 text-amber-400">
                       {generatedTask.topic || selectedTopic}
@@ -393,7 +393,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                     </span>
                   </div>
 
-                  <div className="text-sm sm:text-base font-medium text-white leading-relaxed">
+                  <div className="text-sm sm:text-base font-medium text-text-strong leading-relaxed">
                     <MathRenderer content={generatedTask.question} />
                   </div>
 
@@ -441,7 +441,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                           <div className="flex items-center gap-3">
                             <span className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
                               isSelected && !isEvaluated
-                                ? 'bg-[#FFB800] text-amber-950 border-amber-400'
+                                ? 'bg-jasne text-amber-950 border-amber-400'
                                 : isEvaluated && isThisCorrect
                                 ? 'bg-emerald-500 text-emerald-950 border-emerald-400'
                                 : isEvaluated && isSelected && !isThisCorrect
@@ -477,7 +477,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                       value={numericValue}
                       onChange={(e) => setNumericValue(e.target.value)}
                       placeholder="Wpisz liczbę lub wyrażenie..."
-                      className="w-full p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm font-mono focus:outline-none focus:border-amber-400"
+                      className="w-full p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-text-strong text-sm font-mono focus:outline-none focus:border-amber-400"
                     />
                   </div>
                 )}
@@ -493,7 +493,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                       value={openAnswerText}
                       onChange={(e) => setOpenAnswerText(e.target.value)}
                       placeholder="Wypisz kolejne kroki dowodu, przekształcenia algebraiczne lub argumentację..."
-                      className="w-full p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm leading-relaxed focus:outline-none focus:border-amber-400 resize-none"
+                      className="w-full p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-text-strong text-xs sm:text-sm leading-relaxed focus:outline-none focus:border-amber-400 resize-none"
                     />
                   </div>
                 )}
@@ -534,21 +534,21 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 space-y-2.5 text-xs"
+                    className="p-4 rounded-2xl bg-slate-900/90 border border-hairline space-y-2.5 text-xs"
                   >
                     <div className="flex items-center gap-2">
                       <BookOpen size={16} className="text-amber-400" />
-                      <span className="font-bold text-white uppercase tracking-wider">
+                      <span className="font-bold text-text-strong uppercase tracking-wider">
                         Oficjalny klucz i schemat punktowania CKE:
                       </span>
                     </div>
 
-                    <div className="text-slate-300 leading-relaxed bg-black/40 p-3 rounded-xl border border-white/5">
+                    <div className="text-slate-300 leading-relaxed bg-black/40 p-3 rounded-xl border border-hairline-soft">
                       <MathRenderer content={generatedTask.explanation} />
                     </div>
 
                     {generatedTask.scoring_key && (
-                      <div className="text-slate-400 bg-white/[0.02] p-2.5 rounded-lg border border-white/5 space-y-1">
+                      <div className="text-slate-400 bg-white/[0.02] p-2.5 rounded-lg border border-hairline-soft space-y-1">
                         <span className="font-bold text-slate-300 block">Kryteria oceniania (scoring key):</span>
                         <div className="whitespace-pre-line text-slate-300">
                           {generatedTask.scoring_key}
@@ -587,7 +587,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                     <button
                       type="button"
                       onClick={() => setGeneratedTask(null)}
-                      className="flex-1 py-3.5 rounded-xl bg-[#FFB800] hover:bg-amber-400 text-amber-950 font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                      className="flex-1 py-3.5 rounded-xl bg-jasne hover:bg-amber-400 text-amber-950 font-black text-xs sm:text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Cpu size={16} />
                       <span>Wygeneruj kolejne zadanie</span>
@@ -597,7 +597,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                   <button
                     type="button"
                     onClick={onClose}
-                    className="py-3 px-5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-bold text-xs transition cursor-pointer"
+                    className="py-3 px-5 rounded-xl bg-veil hover:bg-veil-strong text-slate-300 font-bold text-xs transition cursor-pointer"
                   >
                     Zamknij
                   </button>
