@@ -439,7 +439,7 @@ export function DashboardView({
               <span 
                 className={`text-[10px] font-bold text-center leading-none truncate max-w-full ${
                   m.isCompleted 
-                    ? 'text-[#EA580C]' 
+                    ? 'text-streak-flame' 
                     : m.isTargetToday 
                     ? 'text-text-strong font-extrabold' 
                     : 'text-text-muted'

@@ -88,7 +88,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.94, y: 15 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-md bg-[#0B0F19] border border-hairline rounded-[32px] p-6 shadow-2xl flex flex-col overflow-hidden text-white"
+          className="relative w-full max-w-md bg-surface-bg border border-hairline rounded-[32px] p-6 shadow-2xl flex flex-col overflow-hidden text-white"
         >
           {/* Ambient Lighting */}
           <div className="absolute -top-20 -right-20 w-44 h-44 bg-amber-500/15 blur-3xl rounded-full pointer-events-none" />

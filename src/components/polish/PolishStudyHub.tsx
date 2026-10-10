@@ -761,7 +761,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             onClick={() => setHubMode('lessons')}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'lessons'
-                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                ? 'border-accent-soft text-accent-soft bg-primary/5'
                 : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
@@ -772,7 +772,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             onClick={() => setHubMode('task_browser')}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'task_browser'
-                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                ? 'border-accent-soft text-accent-soft bg-primary/5'
                 : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
@@ -850,7 +850,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   <div
                     key={section.id}
                     className={`bg-surface-panel border rounded-xl p-3.5 sm:p-5 shadow-sm flex flex-col justify-between transition-all duration-200 group/card min-w-0 overflow-hidden ${
-                      isExpanded ? 'border-primary/40' : 'border-surface-line hover:border-[#1e293b]'
+                      isExpanded ? 'border-primary/40' : 'border-surface-line hover:border-surface-raised'
                     }`}
                   >
                     <div className="min-w-0">
@@ -894,7 +894,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <div className="flex items-center gap-2">
                             <div className="w-16 h-1.5 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                               <div
-                                className="h-full bg-gradient-to-r from-[#ea580c] to-primary rounded-full"
+                                className="h-full bg-gradient-to-r from-streak-flame to-primary rounded-full"
                                 style={{ width: `${progressPct}%` }}
                               />
                             </div>
@@ -944,7 +944,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           </div>
                           <div className="w-full h-2 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                             <div
-                              className="h-full bg-gradient-to-r from-[#ea580c] to-primary transition-all duration-300 rounded-full"
+                              className="h-full bg-gradient-to-r from-streak-flame to-primary transition-all duration-300 rounded-full"
                               style={{ width: `${progressPct}%` }}
                             />
                           </div>
@@ -959,7 +959,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           setExpandedSectionId(section.id);
                           setSectionInnerTab('lessons');
                         }}
-                        className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
+                        className="w-full py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
                       >
                         <Play className="w-3.5 h-3.5 fill-[#070a0f] shrink-0" />
                         <span className="truncate">Otwórz dział i 5 lekcji</span>
@@ -1094,7 +1094,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         </div>
                         <div className="w-full h-2 rounded-full bg-surface-bg overflow-hidden border border-surface-line">
                           <div
-                            className="h-full bg-gradient-to-r from-[#ea580c] to-primary shadow-sm transition-all duration-500 rounded-full"
+                            className="h-full bg-gradient-to-r from-streak-flame to-primary shadow-sm transition-all duration-500 rounded-full"
                             style={{ width: `${progressPct}%` }}
                           />
                         </div>
@@ -1123,7 +1123,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                             isLessonCompleted
                               ? 'border-emerald-500/30 bg-emerald-950/10'
                               : isCurrentActiveLesson
-                                ? 'border-[#ffdca1] bg-surface-panel ring-1 ring-[#ffdca1]/30'
+                                ? 'border-accent-soft bg-surface-panel ring-1 ring-[#ffdca1]/30'
                                 : 'border-surface-line bg-surface-panel'
                           }`}
                         >
@@ -1135,7 +1135,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                 isLessonCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
                                   : isCurrentActiveLesson
-                                    ? 'bg-primary/15 border border-[#ffdca1] text-accent-soft'
+                                    ? 'bg-primary/15 border border-accent-soft text-accent-soft'
                                     : 'bg-surface-bg border-surface-line text-text-secondary'
                               }`}>
                                 {isLessonCompleted ? (
@@ -1189,7 +1189,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                 onClick={() => setExpandedLessonPillId(isPillOpen ? null : lesson.id)}
                                 className={`px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer min-w-0 flex-1 sm:flex-none text-center ${
                                   isPillOpen
-                                    ? 'bg-primary/15 border-[#ffdca1] text-accent-soft shadow-sm'
+                                    ? 'bg-primary/15 border-accent-soft text-accent-soft shadow-sm'
                                     : 'bg-surface-bg hover:bg-surface-card-hover border-surface-line text-text-soft hover:text-text-strong'
                                 }`}
                               >
@@ -1201,7 +1201,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               {isLessonCompleted ? (
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line hover:border-[#ffdca1]/40 text-text-soft hover:text-accent-soft font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
+                                  className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line hover:border-accent-soft/40 text-text-soft hover:text-accent-soft font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
                                 >
                                   <RotateCcw size={15} className="stroke-[2.5] text-accent-soft shrink-0" />
                                   <span>POWTÓRZ MISJĘ</span>
@@ -1209,7 +1209,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               ) : (
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] shadow-sm min-w-0 flex-1 sm:flex-none text-center"
+                                  className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary shadow-sm min-w-0 flex-1 sm:flex-none text-center"
                                 >
                                   <Play size={15} fill="#070a0f" strokeWidth={0} className="shrink-0" />
                                   <span>ROZPOCZNIJ LEKCJĘ</span>
@@ -1406,7 +1406,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                   </div>
                                   <button
                                     onClick={() => handleStartLessonDirect(lesson)}
-                                    className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
+                                    className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
                                   >
                                     <Play className="w-4 h-4 fill-[#070a0f] shrink-0" />
                                     <span className="whitespace-normal sm:whitespace-nowrap">ROZPOCZNIJ LEKCJĘ ({lesson.taskIds.length} ZADAŃ)</span>
@@ -1450,7 +1450,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           className={`p-4 sm:p-5 rounded-xl border bg-surface-panel space-y-3 transition-all ${
                             isTaskCompleted
                               ? 'border-emerald-500/40 bg-emerald-950/10'
-                              : 'border-surface-line hover:border-[#1e293b]'
+                              : 'border-surface-line hover:border-surface-raised'
                           }`}
                         >
                           <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
@@ -1541,7 +1541,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 'all'
                   ? 'bg-primary/15 border-primary/60 shadow-md text-white'
-                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
+                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-surface-raised'
               }`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary">
@@ -1561,7 +1561,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 1
                   ? 'bg-primary/15 border-primary/60 shadow-md text-white'
-                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
+                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-surface-raised'
               }`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-wider text-accent-soft">
@@ -1581,7 +1581,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 2
                   ? 'bg-primary/15 border-primary/60 shadow-md text-white'
-                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
+                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-surface-raised'
               }`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-wider text-accent-soft">
@@ -1601,7 +1601,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 3
                   ? 'bg-primary/15 border-primary/60 shadow-md text-white'
-                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
+                  : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft hover:border-surface-raised'
               }`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-wider text-accent-soft">
@@ -1654,7 +1654,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   placeholder="Szukaj po tytule, lekturze..."
                   value={taskSearchQuery}
                   onChange={(e) => setTaskSearchQuery(e.target.value)}
-                  className="w-full bg-surface-bg border border-surface-line rounded-xl pl-9 pr-3 py-2 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1]"
+                  className="w-full bg-surface-bg border border-surface-line rounded-xl pl-9 pr-3 py-2 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-accent-soft"
                 />
               </div>
 
@@ -1682,7 +1682,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                             ? 'border-primary/80 bg-primary/10 text-white shadow-sm'
                             : isDone
                             ? 'border-emerald-500/30 bg-emerald-950/20 text-text-soft hover:bg-emerald-950/30'
-                            : 'border-surface-line bg-surface-bg/60 text-text-soft hover:bg-surface-bg hover:border-[#1e293b]'
+                            : 'border-surface-line bg-surface-bg/60 text-text-soft hover:bg-surface-bg hover:border-surface-raised'
                         }`}
                       >
                         <div className="flex items-center justify-between gap-1">
@@ -1799,7 +1799,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           const isSelected = currentAnswerState.selectedOption === i;
                           const isCorrect = i === currentTask.correctOptionIndex;
                           let optionStyle =
-                            'border-surface-line bg-surface-bg text-text-soft hover:border-[#1e293b] hover:bg-surface-card-hover';
+                            'border-surface-line bg-surface-bg text-text-soft hover:border-surface-raised hover:bg-surface-card-hover';
 
                           if (currentAnswerState.isSubmitted) {
                             if (isCorrect) {
@@ -1840,7 +1840,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <button
                             onClick={handleSubmitSingleChoice}
                             disabled={currentAnswerState.selectedOption === null}
-                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
+                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
                           >
                             <Check className="w-4 h-4" />
                             <span>Zatwierdź odpowiedź</span>
@@ -1855,14 +1855,14 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <div className="flex items-center gap-2">
                             <button
                               onClick={handleRetryTask}
-                              className="px-3 py-1.5 rounded-lg bg-primary text-slate-950 font-bold text-xs flex items-center gap-1 hover:bg-[#ffc72c] cursor-pointer"
+                              className="px-3 py-1.5 rounded-lg bg-primary text-slate-950 font-bold text-xs flex items-center gap-1 hover:bg-primary-hover cursor-pointer"
                             >
                               <RefreshCw className="w-3.5 h-3.5" />
                               <span>Spróbuj ponownie (2. próba)</span>
                             </button>
                             <button
                               onClick={handleSurrenderKey}
-                              className="px-3 py-1.5 rounded-lg bg-surface-card-hover hover:bg-[#1e293b] text-text-secondary hover:text-white text-xs cursor-pointer"
+                              className="px-3 py-1.5 rounded-lg bg-surface-card-hover hover:bg-surface-raised text-text-secondary hover:text-white text-xs cursor-pointer"
                             >
                               Odsłoń klucz CKE (0 pkt)
                             </button>
@@ -1925,7 +1925,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                         className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                                           currentVal === true
                                             ? 'bg-primary text-slate-950 font-bold shadow-sm'
-                                            : 'bg-surface-bg border border-surface-line text-text-secondary hover:text-text-strong hover:border-[#1e293b]'
+                                            : 'bg-surface-bg border border-surface-line text-text-secondary hover:text-text-strong hover:border-surface-raised'
                                         }`}
                                       >
                                         P
@@ -1945,7 +1945,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                         className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                                           currentVal === false
                                             ? 'bg-primary text-slate-950 font-bold shadow-sm'
-                                            : 'bg-surface-bg border border-surface-line text-text-secondary hover:text-text-strong hover:border-[#1e293b]'
+                                            : 'bg-surface-bg border border-surface-line text-text-secondary hover:text-text-strong hover:border-surface-raised'
                                         }`}
                                       >
                                         F
@@ -1967,7 +1967,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               Object.keys(currentAnswerState.tfAnswers).length <
                               currentTask.trueFalseStatements.length
                             }
-                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
+                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
                           >
                             <Check className="w-4 h-4" />
                             <span>Zatwierdź tabelę P/F</span>
@@ -1981,14 +1981,14 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => updateCurrentAnswer({ feedback: null })}
-                              className="px-3 py-1.5 rounded-lg bg-primary text-slate-950 font-bold text-xs flex items-center gap-1 hover:bg-[#ffc72c] cursor-pointer"
+                              className="px-3 py-1.5 rounded-lg bg-primary text-slate-950 font-bold text-xs flex items-center gap-1 hover:bg-primary-hover cursor-pointer"
                             >
                               <RefreshCw className="w-3.5 h-3.5" />
                               <span>Popraw odpowiedzi (2. próba)</span>
                             </button>
                             <button
                               onClick={handleSurrenderKey}
-                              className="px-3 py-1.5 rounded-lg bg-surface-card-hover hover:bg-[#1e293b] text-text-secondary hover:text-white text-xs cursor-pointer"
+                              className="px-3 py-1.5 rounded-lg bg-surface-card-hover hover:bg-surface-raised text-text-secondary hover:text-white text-xs cursor-pointer"
                             >
                               Odsłoń klucz CKE (0 pkt)
                             </button>
@@ -2029,7 +2029,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         }
                         disabled={currentAnswerState.isSubmitted}
                         placeholder="Wpisz syntetyczne zestawienie obu tekstów (60–90 słów). Wskaż stanowisko autora 1, autora 2 oraz syntezę..."
-                        className="w-full bg-surface-bg border border-surface-line rounded-xl p-3.5 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] leading-relaxed font-sans"
+                        className="w-full bg-surface-bg border border-surface-line rounded-xl p-3.5 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-accent-soft leading-relaxed font-sans"
                       />
 
                       {!currentAnswerState.isSubmitted && (
@@ -2044,7 +2044,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <button
                             onClick={handleSubmitSynthesis}
                             disabled={synthesisWordCount < 20}
-                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-2 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
+                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-2 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
                           >
                             <Zap className="w-4 h-4" />
                             <span>Zatwierdź i oceń notatkę (matryca CKE)</span>
@@ -2127,7 +2127,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         }
                         disabled={currentAnswerState.isSubmitted}
                         placeholder="Sformułuj precyzyjną odpowiedź własnymi słowami..."
-                        className="w-full bg-surface-bg border border-surface-line rounded-xl p-3 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] leading-relaxed font-sans"
+                        className="w-full bg-surface-bg border border-surface-line rounded-xl p-3 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-accent-soft leading-relaxed font-sans"
                       />
 
                       {!currentAnswerState.isSubmitted && (
@@ -2135,7 +2135,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <button
                             onClick={handleSubmitOpenTask}
                             disabled={!currentAnswerState.openAnswer.trim()}
-                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
+                            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 disabled:opacity-40 transition-all cursor-pointer"
                           >
                             <Check className="w-4 h-4" />
                             <span>Zatwierdź odpowiedź (sprawdź z CKE)</span>

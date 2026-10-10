@@ -406,7 +406,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     triggerHaptic('medium');
                     onOpenProModal();
                   }}
-                  className="px-3.5 py-1.5 rounded-xl bg-primary hover:bg-primary/90 text-[#070A0F] font-black transition cursor-pointer flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-black transition cursor-pointer flex items-center gap-1.5"
                 >
                   <Lock size={12} />
                   <span>Aktywuj PRO</span>
@@ -552,7 +552,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   onClick={() => setActivePhraseCategory(cat.id)}
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition whitespace-nowrap cursor-pointer ${
                     activePhraseCategory === cat.id
-                      ? 'bg-primary text-[#070A0F]'
+                      ? 'bg-primary text-on-primary'
                       : 'bg-surface-elevated text-text-secondary hover:text-text-strong'
                   }`}
                 >
@@ -635,7 +635,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                 className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-xs sm:text-sm transition cursor-pointer shadow-xl active:scale-95 ${
                   isEvaluating || wordCount < 10
                     ? 'bg-surface-elevated text-text-muted cursor-not-allowed border border-surface-border'
-                    : 'bg-primary hover:bg-primary/90 text-[#070A0F] shadow-primary/20'
+                    : 'bg-primary hover:bg-primary/90 text-on-primary shadow-primary/20'
                 }`}
               >
                 {isEvaluating ? (
@@ -670,7 +670,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                     triggerHaptic('medium');
                     if (onOpenProModal) onOpenProModal();
                   }}
-                  className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-[#070A0F] font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-amber-500/20 active:scale-95"
+                  className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-on-primary font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-amber-500/20 active:scale-95"
                 >
                   <Lock size={15} />
                   <span>Odblokuj Audyt CKE (PRO)</span>

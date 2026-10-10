@@ -50,13 +50,13 @@ export function MathAnswerModule({
       {/* 1. ELEGANT FLOATING MODE SWITCHER (Segmented Control)         */}
       {/* ------------------------------------------------------------- */}
       <div className="flex items-center justify-between px-1">
-        <div className="flex items-center p-1 bg-[#0B0F17] border border-hairline rounded-full shadow-lg relative">
+        <div className="flex items-center p-1 bg-surface-bg border border-hairline rounded-full shadow-lg relative">
           {/* Keyboard Option */}
           <button
             type="button"
             onClick={() => handleModeChange('keyboard')}
             className={`relative z-10 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black transition-colors ${
-              activeMode === 'keyboard' ? 'text-[#080B11]' : 'text-[#8B8D98] hover:text-text-strong'
+              activeMode === 'keyboard' ? 'text-on-primary' : 'text-text-secondary hover:text-text-strong'
             }`}
           >
             <Keyboard size={14} />
@@ -75,7 +75,7 @@ export function MathAnswerModule({
             type="button"
             onClick={() => handleModeChange('handwriting')}
             className={`relative z-10 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black transition-colors ${
-              activeMode === 'handwriting' ? 'text-[#080B11]' : 'text-[#8B8D98] hover:text-text-strong'
+              activeMode === 'handwriting' ? 'text-on-primary' : 'text-text-secondary hover:text-text-strong'
             }`}
           >
             <PenTool size={14} />
@@ -99,7 +99,7 @@ export function MathAnswerModule({
                 triggerHaptic('light');
                 onAskAI();
               }}
-              className="flex items-center gap-1 text-[11px] font-bold text-[#8B8D98] hover:text-text-accent transition-colors py-1 px-2 rounded-lg hover:bg-veil"
+              className="flex items-center gap-1 text-[11px] font-bold text-text-secondary hover:text-text-accent transition-colors py-1 px-2 rounded-lg hover:bg-veil"
             >
               <Lightbulb size={12} className="text-text-accent" />
               <span>Wskazówka AI</span>
@@ -160,8 +160,8 @@ export function MathAnswerModule({
           }}
           className={`w-full py-3.5 px-6 rounded-2xl font-black text-base flex items-center justify-center gap-2 transition-all ${
             isReadyToSubmit && !isEvaluating
-              ? 'bg-jasne hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)] active:translate-y-1 active:border-b-0 cursor-pointer'
-              : 'bg-[#141C28] border border-hairline-soft text-[#8B8D98]/50 cursor-not-allowed'
+              ? 'bg-jasne hover:bg-primary-hover border-b-4 border-jasne-dark text-on-primary font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)] active:translate-y-1 active:border-b-0 cursor-pointer'
+              : 'bg-surface-card-hover border border-hairline-soft text-text-secondary/50 cursor-not-allowed'
           }`}
         >
           {isEvaluating ? (

@@ -164,7 +164,7 @@ export function MathTheoryModal({
                 className="space-y-4"
               >
                 {/* Karta Sedna Konceptu */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#141E30] to-[#0F1726] border border-hairline shadow-sm space-y-3">
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#141E30] to-surface-panel border border-hairline shadow-sm space-y-3">
                   <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-text-accent">
                     <Target size={14} />
                     <span>Sedno Konceptu (Core Concept)</span>
@@ -518,7 +518,7 @@ export function MathTheoryModal({
                   onClose();
                   onStartSession();
                 }}
-                className="py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-[0.98] transition cursor-pointer bg-jasne hover:bg-[#FFC72C] text-[#080B11] shadow-md shadow-amber-500/20"
+                className="py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-[0.98] transition cursor-pointer bg-jasne hover:bg-primary-hover text-on-primary shadow-md shadow-amber-500/20"
               >
                 <Play size={14} fill="#080B11" strokeWidth={0} />
                 <span>ROZPOCZNIJ ZADANIA Z TEJ LEKCJI</span>

@@ -115,7 +115,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                     onClose();
                     onNavigateToLessons();
                   }}
-                  className="mt-6 w-full py-3.5 px-6 rounded-2xl font-bold text-[#080B11] bg-jasne hover:bg-[#FFC72C] active:scale-[0.98] transition shadow-[0_0_20px_rgba(255,184,0,0.35)] flex items-center justify-center gap-2 text-sm cursor-pointer"
+                  className="mt-6 w-full py-3.5 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.98] transition shadow-[0_0_20px_rgba(255,184,0,0.35)] flex items-center justify-center gap-2 text-sm cursor-pointer"
                 >
                   <span>Przejdź do Mapy Lekcji</span>
                   <ArrowRight size={16} />

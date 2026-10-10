@@ -209,7 +209,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                     aria-label="Wynik liczbowy"
                     className={`w-full px-4 py-3 rounded-xl bg-surface-bg border text-base text-text-strong outline-none transition-all ${
                       isAnswerChecked
-                        ? (isCurrentAnswerCorrect() ? 'border-emerald-500' : 'border-[#f43f5e]')
+                        ? (isCurrentAnswerCorrect() ? 'border-emerald-500' : 'border-alert-crimson')
                         : 'border-white/15 focus:border-primary'
                     }`}
                   />

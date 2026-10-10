@@ -268,7 +268,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
         <div className="relative w-full my-3 px-2">
           <div className="w-full bg-surface-bg h-2 rounded-full overflow-hidden border border-surface-border">
             <div 
-              className="h-full bg-gradient-to-r from-[#D97706] via-primary to-amber-400 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
+              className="h-full bg-gradient-to-r from-jasne-dark via-primary to-amber-400 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,184,0,0.4)]"
               style={{ width: `${Math.min(100, Math.round((currentProgress / 5) * 100))}%` }}
             />
           </div>
@@ -328,7 +328,7 @@ export const GamificationSidebar: React.FC<GamificationSidebarProps> = ({
           ) : (
             <button
               onClick={() => onNavigate?.('nauka')}
-              className="px-3 py-1.5 rounded-xl bg-primary hover:bg-primary-hover text-[#070A0F] font-bold text-xs flex items-center gap-1 shadow-[0_0_12px_rgba(255,184,0,0.35)] active:scale-95 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-bold text-xs flex items-center gap-1 shadow-[0_0_12px_rgba(255,184,0,0.35)] active:scale-95 transition-all cursor-pointer"
             >
               <span>TRENUJ</span>
               <ArrowRight size={12} strokeWidth={3} />

@@ -159,7 +159,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
           </div>
 
           {/* Search bar & Category filters */}
-          <div className="p-4 bg-[#0B0F17] border-b border-hairline-soft flex flex-col gap-3 shrink-0">
+          <div className="p-4 bg-surface-bg border-b border-hairline-soft flex flex-col gap-3 shrink-0">
             {/* Search Input */}
             <div className="relative w-full">
               <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
@@ -211,7 +211,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                       onClick={() => setSelectedTopic(topic.id)}
                       className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
                         isSelected
-                          ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.4)]'
+                          ? 'bg-jasne text-on-primary font-bold shadow-[0_0_12px_rgba(255,184,0,0.4)]'
                           : 'bg-veil hover:bg-veil-strong text-slate-300 border border-hairline-soft'
                       }`}
                     >

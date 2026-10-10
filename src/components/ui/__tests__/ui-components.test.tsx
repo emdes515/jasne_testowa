@@ -44,7 +44,7 @@ describe('UI Base Components', () => {
 
       rerender(<Button variant="destructive">Usuń</Button>);
       btn = screen.getByRole('button');
-      expect(btn.className).toContain('bg-[#F43F5E]/15');
+      expect(btn.className).toContain('bg-alert-crimson/15');
     });
   });
 

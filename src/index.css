@@ -45,6 +45,8 @@
   --color-hairline-soft: var(--hairline-soft);
   --color-veil: var(--veil);
   --color-veil-strong: var(--veil-strong);
+  --color-surface-raised: var(--surface-raised);
+  --color-on-primary: #080B11; /* ciemny tekst na bursztynowych przyciskach – ten sam w obu motywach */
 
   /* Gamification & Semantic Accents */
   --color-alert-crimson: var(--alert-crimson);
@@ -96,6 +98,7 @@
   --hairline-soft: rgba(255, 255, 255, 0.05);
   --veil: rgba(255, 255, 255, 0.05);
   --veil-strong: rgba(255, 255, 255, 0.10);
+  --surface-raised: #1E293B;
 
   --alert-crimson: #F43F5E;
   --alert-crimson-bg: rgba(244, 63, 94, 0.12);
@@ -154,6 +157,7 @@ html.light {
   --hairline-soft: rgba(15, 23, 42, 0.07);
   --veil: rgba(15, 23, 42, 0.04);
   --veil-strong: rgba(15, 23, 42, 0.07);
+  --surface-raised: #E2E8F0;
 
   --alert-crimson: #E11D48;
   --alert-crimson-bg: rgba(225, 29, 72, 0.08);

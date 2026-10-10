@@ -84,7 +84,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
             }}
             exit={{ scale: 0.8, y: 20, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className={`w-full max-w-sm ${reward.levelUp ? 'bg-gradient-to-b from-blue-900/60 to-[#13141A]' : 'bg-[#141A23]'} border border-hairline rounded-[32px] p-7 flex flex-col items-center relative overflow-hidden shadow-2xl`}
+            className={`w-full max-w-sm ${reward.levelUp ? 'bg-gradient-to-b from-blue-900/60 to-[#13141A]' : 'bg-surface-card-hover'} border border-hairline rounded-[32px] p-7 flex flex-col items-center relative overflow-hidden shadow-2xl`}
           >
             {/* Background effects */}
             {reward.levelUp && (
@@ -159,7 +159,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
                 <h2 className="font-display text-xl font-bold text-text-strong mb-1.5">
                   {reward.title || 'Nagroda odebrana!'}
                 </h2>
-                <p className="text-[#8B8D98] text-xs max-w-[260px] mx-auto">
+                <p className="text-text-secondary text-xs max-w-[260px] mx-auto">
                   {reward.description || 'Dobra robota! Punkty i waluta zostały dopisane do Twojego konta.'}
                 </p>
                 {reward.bonusNote && (
@@ -180,7 +180,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
               >
                 <div className="flex items-center gap-1 mb-1">
                   <Star size={13} className="text-blue-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#8B8D98]">XP</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-text-secondary">XP</span>
                 </div>
                 <span className="font-display text-xl font-bold text-text-strong">+{reward.xp}</span>
               </motion.div>
@@ -193,7 +193,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
               >
                 <div className="flex items-center gap-1 mb-1">
                   <Coins size={13} className="text-amber-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#8B8D98]">Monety</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-text-secondary">Monety</span>
                 </div>
                 <span className="font-display text-xl font-bold text-text-strong">+{reward.coins}</span>
               </motion.div>
@@ -219,7 +219,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
               onClick={onClose}
-              className="mt-6 w-full py-3.5 bg-jasne hover:bg-[#FFC72C] text-[#080B11] font-bold rounded-2xl transition-colors text-sm shadow-lg active:scale-[0.97]"
+              className="mt-6 w-full py-3.5 bg-jasne hover:bg-primary-hover text-on-primary font-bold rounded-2xl transition-colors text-sm shadow-lg active:scale-[0.97]"
             >
               Świetnie!
             </motion.button>

@@ -380,7 +380,7 @@ export function Whiteboard({
       >
         {/* Top Floating Badge with Mode / Fullscreen Toggle */}
         <div className="absolute top-3 left-3 right-3 z-20 flex items-center justify-between pointer-events-none">
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B0F17]/80 backdrop-blur-md border border-hairline text-[11px] font-bold text-[#8B8D98] pointer-events-auto shadow-md">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-bg/80 backdrop-blur-md border border-hairline text-[11px] font-bold text-text-secondary pointer-events-auto shadow-md">
             <span className="w-2 h-2 rounded-full bg-jasne animate-pulse" />
             <span>Brudnopis</span>
           </div>
@@ -389,7 +389,7 @@ export function Whiteboard({
             <button
               type="button"
               onClick={toggleExpand}
-              className="p-2 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md hover:bg-[#161F2E] text-[#8B8D98] hover:text-white border border-hairline transition-colors shadow-md"
+              className="p-2 rounded-xl bg-surface-bg/80 backdrop-blur-md hover:bg-surface-card-hover text-text-secondary hover:text-white border border-hairline transition-colors shadow-md"
               title={isExpanded ? 'Zwiń tablicę' : 'Pełny ekran'}
             >
               {isExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
@@ -414,7 +414,7 @@ export function Whiteboard({
         {/* ------------------------------------------------------------- */}
         {/* FLOATING CANVAS TOOLBAR (Ergonomic Pill)                      */}
         {/* ------------------------------------------------------------- */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1.5 rounded-full bg-[#0B0F17]/90 backdrop-blur-md border border-hairline shadow-2xl">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1.5 rounded-full bg-surface-bg/90 backdrop-blur-md border border-hairline shadow-2xl">
           {/* Pen Tool */}
           <button
             type="button"
@@ -424,8 +424,8 @@ export function Whiteboard({
             }}
             className={`p-2.5 rounded-full transition-all flex items-center justify-center ${
               tool === 'pen'
-                ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_15px_rgba(255,184,0,0.4)]'
-                : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
+                ? 'bg-jasne text-on-primary font-bold shadow-[0_0_15px_rgba(255,184,0,0.4)]'
+                : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
             title="Długopis (3px)"
           >
@@ -458,7 +458,7 @@ export function Whiteboard({
             className={`p-2.5 rounded-full transition-all flex items-center justify-center ${
               tool === 'highlighter'
                 ? 'bg-amber-400 text-black font-black shadow-[0_0_15px_rgba(250,204,21,0.4)]'
-                : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
+                : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
             title="Zakreślacz neonowy"
           >
@@ -475,7 +475,7 @@ export function Whiteboard({
             className={`p-2.5 rounded-full transition-all flex items-center justify-center ${
               tool === 'eraser'
                 ? 'bg-rose-500 text-white font-black shadow-[0_0_15px_rgba(244,63,94,0.4)]'
-                : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
+                : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
             title="Gumka precyzyjna"
           >
@@ -490,7 +490,7 @@ export function Whiteboard({
             disabled={!canUndo}
             onClick={handleUndo}
             className={`p-2 rounded-full transition-colors ${
-              canUndo ? 'text-text-strong hover:bg-veil-strong active:scale-90' : 'text-[#8B8D98]/40 cursor-not-allowed'
+              canUndo ? 'text-text-strong hover:bg-veil-strong active:scale-90' : 'text-text-secondary/40 cursor-not-allowed'
             }`}
             title="Cofnij"
           >
@@ -503,7 +503,7 @@ export function Whiteboard({
             disabled={!canRedo}
             onClick={handleRedo}
             className={`p-2 rounded-full transition-colors ${
-              canRedo ? 'text-text-strong hover:bg-veil-strong active:scale-90' : 'text-[#8B8D98]/40 cursor-not-allowed'
+              canRedo ? 'text-text-strong hover:bg-veil-strong active:scale-90' : 'text-text-secondary/40 cursor-not-allowed'
             }`}
             title="Ponów"
           >
@@ -523,7 +523,7 @@ export function Whiteboard({
               <button
                 type="button"
                 onClick={() => setShowClearConfirm(false)}
-                className="px-2 py-1 bg-veil-strong text-[#8B8D98] hover:text-text-strong text-xs font-bold rounded-full"
+                className="px-2 py-1 bg-veil-strong text-text-secondary hover:text-text-strong text-xs font-bold rounded-full"
               >
                 ✕
               </button>
@@ -535,7 +535,7 @@ export function Whiteboard({
                 triggerHaptic('light');
                 setShowClearConfirm(true);
               }}
-              className="p-2 rounded-full text-[#8B8D98] hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+              className="p-2 rounded-full text-text-secondary hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
               title="Wyczyść całą tablicę"
             >
               <Trash2 size={16} />
@@ -547,7 +547,7 @@ export function Whiteboard({
       {/* ------------------------------------------------------------- */}
       {/* FINAL ANSWER INPUT UNDER CANVAS (Wprowadzanie wyniku z tablicy) */}
       {/* ------------------------------------------------------------- */}
-      <div className="mt-3 bg-[#0B0F17] border border-hairline rounded-[22px] p-3.5 sm:p-4 shadow-xl flex flex-col gap-2.5">
+      <div className="mt-3 bg-surface-bg border border-hairline rounded-[22px] p-3.5 sm:p-4 shadow-xl flex flex-col gap-2.5">
         <div className="flex items-center justify-between">
           <label className="text-xs font-black uppercase tracking-wider text-text-strong flex items-center gap-1.5">
             <Target size={14} className="text-text-accent" />
@@ -564,12 +564,12 @@ export function Whiteboard({
             className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full border transition-all ${
               solutionOnCanvas
                 ? 'bg-jasne/15 text-text-accent border-primary/40 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
-                : 'bg-veil text-[#8B8D98] border-hairline hover:border-white/20'
+                : 'bg-veil text-text-secondary border-hairline hover:border-white/20'
             }`}
           >
             <div
               className={`w-3.5 h-3.5 rounded flex items-center justify-center border transition-colors ${
-                solutionOnCanvas ? 'bg-jasne border-primary text-[#080B11]' : 'border-[#8B8D98]'
+                solutionOnCanvas ? 'bg-jasne border-primary text-on-primary' : 'border-[#8B8D98]'
               }`}
             >
               {solutionOnCanvas && <Check size={11} strokeWidth={3} />}
@@ -590,7 +590,7 @@ export function Whiteboard({
                 ? '✓ AI oceni pełny zapis graficzny z powyższej tablicy'
                 : 'Wpisz np. x = 5, a = 3/4, brak rozwiązań...'
             }
-            className={`w-full bg-[#161F2E] text-white px-3.5 py-2.5 rounded-xl border outline-none text-sm font-mono transition-colors ${
+            className={`w-full bg-surface-card-hover text-white px-3.5 py-2.5 rounded-xl border outline-none text-sm font-mono transition-colors ${
               solutionOnCanvas
                 ? 'opacity-60 border-transparent cursor-not-allowed italic text-emerald-400'
                 : 'border-hairline focus:border-primary/50'

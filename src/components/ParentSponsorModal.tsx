@@ -117,7 +117,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-          className="relative w-full max-w-lg bg-[#0B0F17] border border-hairline rounded-[28px] shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col my-auto"
+          className="relative w-full max-w-lg bg-surface-bg border border-hairline rounded-[28px] shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col my-auto"
         >
           {/* Ambient Glow */}
           <div className="absolute top-0 right-1/4 w-48 h-48 bg-jasne/15 blur-3xl rounded-full pointer-events-none -translate-y-1/2" />
@@ -127,7 +127,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
           <div className="p-5 sm:p-6 border-b border-hairline flex items-start justify-between bg-[#111724]/80 relative z-10 shrink-0">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 p-[1px] shadow-lg shadow-amber-500/20 shrink-0">
-                <div className="w-full h-full bg-[#0B0F17] rounded-2xl flex items-center justify-center">
+                <div className="w-full h-full bg-surface-bg rounded-2xl flex items-center justify-center">
                   <Heart className="w-6 h-6 text-rose-500 fill-rose-500 animate-pulse" />
                 </div>
               </div>
@@ -160,17 +160,17 @@ Dzięki wielkie za pomoc w zdaniu matury!
           <div className="p-5 sm:p-6 space-y-4 overflow-y-auto max-h-[72vh] custom-scrollbar relative z-10">
             {/* Value Proposition Pills */}
             <div className="grid grid-cols-3 gap-2 text-center">
-              <div className="bg-[#111726]/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
+              <div className="bg-surface-card-hover/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <Heart className="w-5 h-5 text-rose-400 fill-rose-400 mb-1" />
                 <span className="text-[11px] font-bold text-text-strong">Nielimitowane serca</span>
                 <span className="text-[10px] text-slate-400">Zero przerw w nauce</span>
               </div>
-              <div className="bg-[#111726]/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
+              <div className="bg-surface-card-hover/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <Brain className="w-5 h-5 text-text-accent mb-1" />
                 <span className="text-[11px] font-bold text-text-strong">AI Egzaminator CKE</span>
                 <span className="text-[10px] text-slate-400">Ocena tablicy i dowodów</span>
               </div>
-              <div className="bg-[#111726]/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
+              <div className="bg-surface-card-hover/90 border border-hairline-soft rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <ShieldCheck className="w-5 h-5 text-emerald-400 mb-1" />
                 <span className="text-[11px] font-bold text-text-strong">29 zł / mies.</span>
                 <span className="text-[10px] text-slate-400">Płatność BLIK</span>
@@ -178,7 +178,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
             </div>
 
             {/* Student Name Input */}
-            <div className="bg-[#111726]/60 border border-hairline-soft rounded-2xl p-3 sm:p-3.5 space-y-1.5">
+            <div className="bg-surface-card-hover/60 border border-hairline-soft rounded-2xl p-3 sm:p-3.5 space-y-1.5">
               <label className="text-xs font-semibold text-slate-300 block">
                 Twoje imię (do podpisu w wiadomości):
               </label>

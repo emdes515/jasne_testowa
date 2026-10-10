@@ -281,7 +281,7 @@ export function CkeScratchpad({
           <button
             type="button"
             onClick={handleClose}
-            className="bg-primary hover:bg-[#FFC72C] border border-primary-dark/40 text-[#070A0F] font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all shrink-0 cursor-pointer"
+            className="bg-primary hover:bg-primary-hover border border-primary-dark/40 text-on-primary font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,184,0,0.35)] active:scale-95 transition-all shrink-0 cursor-pointer"
           >
             <ArrowLeft size={17} className="stroke-[3]" />
             <span>← Wróć do zadania</span>
@@ -297,7 +297,7 @@ export function CkeScratchpad({
               }}
               className={`py-1.5 px-2.5 sm:px-3 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
                 tool === 'pen'
-                  ? 'bg-primary text-[#070A0F] font-bold shadow-sm'
+                  ? 'bg-primary text-on-primary font-bold shadow-sm'
                   : 'text-text-muted hover:text-text-primary'
               }`}
             >
@@ -359,7 +359,7 @@ export function CkeScratchpad({
             <button
               type="button"
               onClick={handleUndo}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#141C28] hover:bg-veil-strong text-white/90 hover:text-white border border-hairline transition-colors flex items-center gap-1 text-xs font-bold active:scale-95 cursor-pointer"
+              className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card-hover hover:bg-veil-strong text-white/90 hover:text-white border border-hairline transition-colors flex items-center gap-1 text-xs font-bold active:scale-95 cursor-pointer"
               title="Cofnij ostatnie pociągnięcie"
             >
               <Undo2 size={15} />

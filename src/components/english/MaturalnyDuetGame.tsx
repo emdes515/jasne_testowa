@@ -206,8 +206,8 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
                       : isError
                       ? 'bg-rose-950/60 border border-rose-500 text-rose-200 ring-2 ring-rose-500/40 animate-pulse'
                       : isSelected
-                      ? 'bg-primary/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
-                      : 'bg-surface-bg border border-surface-line hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-text-soft'
+                      ? 'bg-primary/15 border-2 border-accent-soft text-white ring-2 ring-primary/30 shadow-sm'
+                      : 'bg-surface-bg border border-surface-line hover:border-accent-soft/50 hover:bg-surface-card-hover text-text-soft'
                   }`}
                 >
                   <span className="leading-snug min-w-0 break-words flex-1">{item.text}</span>
@@ -241,8 +241,8 @@ export const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({
                       : isError
                       ? 'bg-rose-950/60 border border-rose-500 text-rose-200 ring-2 ring-rose-500/40 animate-pulse'
                       : isSelected
-                      ? 'bg-primary/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
-                      : 'bg-surface-bg border border-surface-line hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-text-soft'
+                      ? 'bg-primary/15 border-2 border-accent-soft text-white ring-2 ring-primary/30 shadow-sm'
+                      : 'bg-surface-bg border border-surface-line hover:border-accent-soft/50 hover:bg-surface-card-hover text-text-soft'
                   }`}
                 >
                   <span className="leading-snug min-w-0 break-words flex-1">{item.text}</span>

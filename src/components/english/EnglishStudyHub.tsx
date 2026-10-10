@@ -244,8 +244,8 @@ const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({ lessonId, topicId
                       : isError
                       ? 'bg-rose-950/60 border border-rose-500 text-rose-200 ring-2 ring-rose-500/40 animate-pulse'
                       : isSelected
-                      ? 'bg-primary/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
-                      : 'bg-surface-bg border border-surface-line hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-text-soft'
+                      ? 'bg-primary/15 border-2 border-accent-soft text-white ring-2 ring-primary/30 shadow-sm'
+                      : 'bg-surface-bg border border-surface-line hover:border-accent-soft/50 hover:bg-surface-card-hover text-text-soft'
                   }`}
                 >
                   <span className="leading-snug min-w-0 break-words flex-1">{item.text}</span>
@@ -289,8 +289,8 @@ const MaturalnyDuetGame: React.FC<MaturalnyDuetGameProps> = ({ lessonId, topicId
                       : isError
                       ? 'bg-rose-950/60 border border-rose-500 text-rose-200 ring-2 ring-rose-500/40 animate-pulse'
                       : isSelected
-                      ? 'bg-primary/15 border-2 border-[#ffdca1] text-white ring-2 ring-primary/30 shadow-sm'
-                      : 'bg-surface-bg border border-surface-line hover:border-[#ffdca1]/50 hover:bg-[#121b2b] text-text-soft'
+                      ? 'bg-primary/15 border-2 border-accent-soft text-white ring-2 ring-primary/30 shadow-sm'
+                      : 'bg-surface-bg border border-surface-line hover:border-accent-soft/50 hover:bg-surface-card-hover text-text-soft'
                   }`}
                 >
                   <span className="leading-snug min-w-0 break-words flex-1">{item.text}</span>
@@ -693,7 +693,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
             }}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               hubMode === 'lessons'
-                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                ? 'border-accent-soft text-accent-soft bg-primary/5'
                 : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
@@ -704,7 +704,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
             onClick={() => setHubMode('task_browser')}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               hubMode === 'task_browser'
-                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                ? 'border-accent-soft text-accent-soft bg-primary/5'
                 : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
@@ -767,7 +767,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                     setSelectedSectionFilter(e.target.value);
                     setTaskPage(1);
                   }}
-                  className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-[#ffdca1] transition-colors"
+                  className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-accent-soft transition-colors"
                 >
                   <option value="all">Wszystkie 15 Działów</option>
                   {ENGLISH_SECTIONS.map(sec => (
@@ -787,7 +787,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                     setSelectedPillarFilter(e.target.value);
                     setTaskPage(1);
                   }}
-                  className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-[#ffdca1] transition-colors"
+                  className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-accent-soft transition-colors"
                 >
                   <option value="all">Wszystkie 4 Filary</option>
                   <option value="pillar-use-of-english">I: Środki Językowe (375)</option>
@@ -806,7 +806,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                     setSelectedTypeFilter(e.target.value as any);
                     setTaskPage(1);
                   }}
-                  className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-[#ffdca1] transition-colors"
+                  className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-accent-soft transition-colors"
                 >
                   <option value="all">Wszystkie formaty</option>
                   <option value="closed">Zadania zamknięte (Wybór ABC, P/F)</option>
@@ -827,7 +827,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                       setSearchQuery(e.target.value);
                       setTaskPage(1);
                     }}
-                    className="w-full bg-surface-bg border border-surface-line rounded-xl pl-9 pr-3 py-2 text-sm text-text-soft placeholder-[#94a3b8]/60 focus:outline-none focus:border-[#ffdca1] transition-colors"
+                    className="w-full bg-surface-bg border border-surface-line rounded-xl pl-9 pr-3 py-2 text-sm text-text-soft placeholder-[#94a3b8]/60 focus:outline-none focus:border-accent-soft transition-colors"
                   />
                 </div>
               </div>
@@ -858,7 +858,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                       ? state.isCorrect
                         ? 'border-emerald-500/50 bg-emerald-950/20'
                         : 'border-rose-500/50 bg-rose-950/20'
-                      : 'border-surface-line hover:border-[#1e293b]'
+                      : 'border-surface-line hover:border-surface-raised'
                   }`}
                 >
                   {/* METADANE ZADANIA */}
@@ -956,17 +956,17 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                                 : showWrong
                                 ? 'bg-rose-950/40 border-2 border-rose-500 text-rose-200'
                                 : isSelected
-                                ? 'bg-primary/15 border-2 border-[#ffdca1] text-white shadow-sm'
-                                : 'bg-surface-bg border border-surface-line text-text-soft hover:border-[#1e293b] hover:bg-[#121b2b]'
+                                ? 'bg-primary/15 border-2 border-accent-soft text-white shadow-sm'
+                                : 'bg-surface-bg border border-surface-line text-text-soft hover:border-surface-raised hover:bg-surface-card-hover'
                             }`}
                           >
                             <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${
                               showCorrect
-                                ? 'bg-emerald-500 text-[#070a0f]'
+                                ? 'bg-emerald-500 text-on-primary'
                                 : showWrong
                                 ? 'bg-rose-500 text-white'
                                 : isSelected
-                                ? 'bg-primary text-[#070a0f]'
+                                ? 'bg-primary text-on-primary'
                                 : 'bg-surface-panel border border-surface-line text-text-secondary'
                             }`}>
                               {opt.id}
@@ -1011,7 +1011,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                               ? state.isCorrect
                                 ? 'border-emerald-500 bg-emerald-950/20 text-emerald-200'
                                 : 'border-rose-500 bg-rose-950/20 text-rose-200'
-                              : 'border-surface-line focus:border-[#ffdca1]'
+                              : 'border-surface-line focus:border-accent-soft'
                           }`}
                         />
                       </div>
@@ -1036,7 +1036,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                             ? !state?.selectedOptionId
                             : !state?.textAnswer?.trim()
                         }
-                        className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] font-bold text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-sm flex items-center gap-2 cursor-pointer"
+                        className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary font-bold text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-sm flex items-center gap-2 cursor-pointer"
                       >
                         <span>Zatwierdź odpowiedź</span>
                         <ArrowRight className="w-4 h-4 shrink-0" />
@@ -1186,7 +1186,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                 <div
                   key={section.id}
                   className={`bg-surface-panel border rounded-xl p-3.5 sm:p-5 shadow-sm flex flex-col justify-between transition-all duration-200 group/card min-w-0 overflow-hidden ${
-                    isExpanded ? 'border-primary/40' : 'border-surface-line hover:border-[#1e293b]'
+                    isExpanded ? 'border-primary/40' : 'border-surface-line hover:border-surface-raised'
                   }`}
                 >
                   <div className="min-w-0">
@@ -1230,7 +1230,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                         <div className="flex items-center gap-2">
                           <div className="w-16 h-1.5 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                             <div
-                              className="h-full bg-gradient-to-r from-[#ea580c] to-primary rounded-full"
+                              className="h-full bg-gradient-to-r from-streak-flame to-primary rounded-full"
                               style={{ width: `${progressPct}%` }}
                             />
                           </div>
@@ -1283,7 +1283,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                         </div>
                         <div className="w-full h-2 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                           <div
-                            className="h-full bg-gradient-to-r from-[#ea580c] to-primary transition-all duration-300 rounded-full"
+                            className="h-full bg-gradient-to-r from-streak-flame to-primary transition-all duration-300 rounded-full"
                             style={{ width: `${progressPct}%` }}
                           />
                         </div>
@@ -1298,7 +1298,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                         setExpandedSectionId(section.id);
                         setSectionInnerTab('lessons');
                       }}
-                      className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
+                      className="w-full py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
                     >
                       <Play className="w-3.5 h-3.5 fill-[#070a0f] shrink-0" />
                       <span className="truncate">Otwórz dział i 5 lekcji</span>
@@ -1438,7 +1438,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                       </div>
                       <div className="w-full h-2 rounded-full bg-surface-bg overflow-hidden border border-surface-line">
                         <div 
-                          className="h-full bg-gradient-to-r from-[#ea580c] to-primary shadow-sm transition-all duration-500 rounded-full"
+                          className="h-full bg-gradient-to-r from-streak-flame to-primary shadow-sm transition-all duration-500 rounded-full"
                           style={{ width: `${progressPct}%` }}
                         />
                       </div>
@@ -1477,7 +1477,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                           isLessonCompleted 
                             ? 'border-emerald-500/30 bg-emerald-950/10' 
                             : isCurrentActiveLesson
-                              ? 'border-[#ffdca1] bg-surface-panel ring-1 ring-[#ffdca1]/30'
+                              ? 'border-accent-soft bg-surface-panel ring-1 ring-[#ffdca1]/30'
                               : 'border-surface-line bg-surface-panel'
                         }`}
                       >
@@ -1489,7 +1489,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                               isLessonCompleted
                                 ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
                                 : isCurrentActiveLesson
-                                  ? 'bg-primary/15 border border-[#ffdca1] text-accent-soft'
+                                  ? 'bg-primary/15 border border-accent-soft text-accent-soft'
                                   : 'bg-surface-bg border-surface-line text-text-secondary'
                             }`}>
                               {isLessonCompleted ? (
@@ -1548,7 +1548,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                               onClick={() => setExpandedLessonPillId(isPillOpen ? null : lesson.id)}
                               className={`px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer min-w-0 flex-1 sm:flex-none text-center ${
                                 isPillOpen
-                                  ? 'bg-primary/15 border-[#ffdca1] text-accent-soft shadow-sm'
+                                  ? 'bg-primary/15 border-accent-soft text-accent-soft shadow-sm'
                                   : 'bg-surface-bg hover:bg-surface-card-hover border-surface-line text-text-soft hover:text-text-strong'
                               }`}
                             >
@@ -1560,7 +1560,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                             {isLessonCompleted ? (
                               <button
                                 onClick={() => handleStartLessonDirect(lesson)}
-                                className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line hover:border-[#ffdca1]/40 text-text-soft hover:text-accent-soft font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
+                                className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line hover:border-accent-soft/40 text-text-soft hover:text-accent-soft font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
                               >
                                 <RotateCcw size={15} className="stroke-[2.5] text-accent-soft shrink-0" />
                                 <span>POWTÓRZ MISJĘ</span>
@@ -1568,7 +1568,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                             ) : (
                               <button
                                 onClick={() => handleStartLessonDirect(lesson)}
-                                className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] shadow-sm min-w-0 flex-1 sm:flex-none text-center"
+                                className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary shadow-sm min-w-0 flex-1 sm:flex-none text-center"
                               >
                                 <Play size={15} fill="#070a0f" strokeWidth={0} className="shrink-0" />
                                 <span>ROZPOCZNIJ LEKCJĘ</span>
@@ -1805,7 +1805,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
                                 </div>
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
+                                  className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
                                 >
                                   <Play className="w-4 h-4 fill-[#070a0f] shrink-0" />
                                   <span className="whitespace-normal sm:whitespace-nowrap">ROZPOCZNIJ MISJĘ ({lesson.taskIds.length} ZADAŃ)</span>
@@ -1915,7 +1915,7 @@ export const EnglishStudyHub: React.FC<EnglishStudyHubProps> = ({
               <select
                 value={quickDuetTopicId}
                 onChange={(e) => setQuickDuetTopicId(e.target.value)}
-                className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-[#ffdca1]"
+                className="w-full bg-surface-bg border border-surface-line rounded-xl px-3 py-2 text-sm text-text-soft focus:outline-none focus:border-accent-soft"
               >
                 {ENGLISH_SECTIONS.map((sec) => (
                   <option key={sec.id} value={sec.id}>

@@ -238,7 +238,7 @@ export function OnboardingOverlay({
       {/* Pasek postępu na samej górze */}
       <div className="w-full bg-veil h-1.5 relative overflow-hidden shrink-0 z-30">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#D97706] via-primary to-[#FFC72C] shadow-[0_0_12px_rgba(255,184,0,0.8)]"
+          className="h-full bg-gradient-to-r from-jasne-dark via-primary to-[#FFC72C] shadow-[0_0_12px_rgba(255,184,0,0.8)]"
           initial={false}
           animate={{ width: `${(currentStep / 5) * 100}%` }}
           transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
@@ -246,7 +246,7 @@ export function OnboardingOverlay({
       </div>
 
       {/* Górny pasek nawigacyjny kroku */}
-      <div className="relative z-20 flex items-center justify-between px-4 sm:px-6 py-3 border-b border-hairline-soft bg-[#0B0F19]/90 backdrop-blur-md shrink-0">
+      <div className="relative z-20 flex items-center justify-between px-4 sm:px-6 py-3 border-b border-hairline-soft bg-surface-bg/90 backdrop-blur-md shrink-0">
         <div className="flex items-center gap-2">
           {currentStep > 1 ? (
             <button
@@ -362,7 +362,7 @@ export function OnboardingOverlay({
                       <div
                         className={`w-6 h-6 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
                           isSelected
-                            ? 'bg-jasne border-primary text-[#080B11]'
+                            ? 'bg-jasne border-primary text-on-primary'
                             : 'border-white/20 text-transparent'
                         }`}
                       >
@@ -378,7 +378,7 @@ export function OnboardingOverlay({
                 <button
                   id="onboarding-step1-continue"
                   onClick={() => setCurrentStep(2)}
-                  className="w-full py-3.5 px-6 rounded-2xl font-bold text-[#080B11] bg-jasne hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm sm:text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-3.5 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-sm sm:text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>DALEJ</span>
                   <ArrowRight size={17} />
@@ -681,7 +681,7 @@ export function OnboardingOverlay({
                     triggerHaptic('medium');
                     setCurrentStep(4);
                   }}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-jasne hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>ZOBACZ JAK WYGLĄDA KOKPIT</span>
                   <ArrowRight size={18} />
@@ -792,7 +792,7 @@ export function OnboardingOverlay({
                     triggerHaptic('medium');
                     setCurrentStep(5);
                   }}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-jasne hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <span>ODBIERZ SWÓJ PLAN NAUKI</span>
                   <ArrowRight size={18} />
@@ -894,7 +894,7 @@ export function OnboardingOverlay({
                 <button
                   id="onboarding-save-progress-button"
                   onClick={() => handleFinishOnboarding(true)}
-                  className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-jasne hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
+                  className="w-full py-4 px-6 rounded-2xl font-bold text-on-primary bg-jasne hover:bg-primary-hover active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <LogIn size={18} className="stroke-[2.5]" />
                   <span>ZAPISZ POSTĘPY</span>

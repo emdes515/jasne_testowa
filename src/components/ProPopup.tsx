@@ -136,7 +136,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                   </button>
                 ) : (
                   <div className="w-full">
-                    <label htmlFor="pro-activation-code" className="block text-left text-[11px] font-bold text-[#8B8D98] mb-1.5">
+                    <label htmlFor="pro-activation-code" className="block text-left text-[11px] font-bold text-text-secondary mb-1.5">
                       Wpisz kod aktywacyjny z potwierdzenia zakupu
                     </label>
                     <input
@@ -184,7 +184,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
 
                 <button 
                   onClick={onClose}
-                  className="mt-3 text-[#8B8D98] hover:text-text-strong text-[12px] font-medium transition-colors cursor-pointer"
+                  className="mt-3 text-text-secondary hover:text-text-strong text-[12px] font-medium transition-colors cursor-pointer"
                 >
                   Może później
                 </button>

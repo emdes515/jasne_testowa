@@ -286,7 +286,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
             onClick={() => setActiveTab('report')}
             className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer flex items-center gap-1.5 shrink-0 ${
               activeTab === 'report'
-                ? 'bg-primary text-[#070A0F] shadow-sm'
+                ? 'bg-primary text-on-primary shadow-sm'
                 : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
           >
@@ -299,7 +299,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
             onClick={() => setActiveTab('criteria')}
             className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer flex items-center gap-1.5 shrink-0 ${
               activeTab === 'criteria'
-                ? 'bg-primary text-[#070A0F] shadow-sm'
+                ? 'bg-primary text-on-primary shadow-sm'
                 : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
           >
@@ -312,7 +312,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
             onClick={() => setActiveTab('text')}
             className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer flex items-center gap-1.5 shrink-0 ${
               activeTab === 'text'
-                ? 'bg-primary text-[#070A0F] shadow-sm'
+                ? 'bg-primary text-on-primary shadow-sm'
                 : 'text-text-secondary hover:text-text-strong hover:bg-veil'
             }`}
           >
@@ -554,7 +554,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
               triggerHaptic('success');
               onContinue();
             }}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-[#070A0F] font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-primary/20 active:scale-95 ml-auto"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-black text-xs sm:text-sm transition cursor-pointer shadow-lg shadow-primary/20 active:scale-95 ml-auto"
           >
             Kontynuuj
             <ArrowRight size={16} />

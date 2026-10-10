@@ -602,7 +602,7 @@ export function Header({
           title="Twój profil i postęp XP"
         >
           {/* Avatar z subtelnym bursztynowym obwodem */}
-          <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-primary to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
+          <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-primary to-jasne-dark p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
             <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center">
               <User size={12} className="text-primary sm:w-[13px] sm:h-[13px]" />
             </div>
@@ -642,7 +642,7 @@ export function Header({
         title={`Postęp poziomu: ${currentXpInLevel}/1000 XP (${Math.round(xpPercent)}%)`}
       >
         <div 
-          className="h-full bg-gradient-to-r from-[#D97706] to-primary transition-all duration-700 shadow-[0_0_8px_rgba(255,184,0,0.7)]"
+          className="h-full bg-gradient-to-r from-jasne-dark to-primary transition-all duration-700 shadow-[0_0_8px_rgba(255,184,0,0.7)]"
           style={{ width: `${xpPercent}%` }}
         />
       </div>
@@ -679,7 +679,7 @@ export function Header({
               </div>
               <div className="w-full h-1.5 bg-surface-bg rounded-full overflow-hidden mb-2">
                 <div 
-                  className="h-full bg-gradient-to-r from-[#D97706] to-primary rounded-full shadow-[0_0_8px_#FFB800]" 
+                  className="h-full bg-gradient-to-r from-jasne-dark to-primary rounded-full shadow-[0_0_8px_#FFB800]" 
                   style={{ width: `${xpPercent}%` }}
                 />
               </div>

@@ -2828,7 +2828,7 @@ export function MaturaSimulatorView({
                       <motion.div
                         initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="p-5 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-primary/50 shadow-md flex flex-col items-center text-center my-3 relative overflow-hidden"
+                        className="p-5 rounded-2xl bg-gradient-to-br from-surface-card-hover via-surface-card-hover to-surface-panel border border-primary/50 shadow-md flex flex-col items-center text-center my-3 relative overflow-hidden"
                       >
                         <div className="relative w-12 h-12 rounded-2xl bg-jasne/20 border border-primary/60 flex items-center justify-center mb-3">
                           <Loader2 className="w-6 h-6 text-text-accent animate-spin shrink-0" />

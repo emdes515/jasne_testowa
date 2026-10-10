@@ -127,7 +127,7 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
               aria-label="Tryb fiszek"
               className={`px-3 min-h-[40px] rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border cursor-pointer ${
                 isFlashcardMode
-                  ? 'bg-primary text-slate-950 border-[#ffdca1] shadow-sm'
+                  ? 'bg-primary text-slate-950 border-accent-soft shadow-sm'
                   : 'bg-surface-panel border-surface-line text-text-secondary hover:text-text-soft'
               }`}
               title="Ukryj tłumaczenia, aby sprawdzić swoją pamięć"
@@ -156,7 +156,7 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Szukaj po angielsku lub polsku (np. reliable, zakwaterowanie, put off)..."
-              className="w-full bg-surface-panel border border-surface-line rounded-xl pl-10 pr-9 py-2 text-sm text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] shadow-inner"
+              className="w-full bg-surface-panel border border-surface-line rounded-xl pl-10 pr-9 py-2 text-sm text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-accent-soft shadow-inner"
             />
             {searchQuery && (
               <button
@@ -216,7 +216,7 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
                 return (
                   <div
                     key={item.id}
-                    className="p-4 rounded-xl bg-surface-panel border border-surface-line hover:border-[#1e293b] transition-all flex flex-col justify-between gap-3 shadow-xs"
+                    className="p-4 rounded-xl bg-surface-panel border border-surface-line hover:border-surface-raised transition-all flex flex-col justify-between gap-3 shadow-xs"
                   >
                     {/* Górny wiersz: Słowo, wymowa, przyciski akcji */}
                     <div>

@@ -1230,8 +1230,8 @@ export function OpenTaskWorkspace({
       {/* 1. ELEGANCKI PRZEŁĄCZNIK SEGMENTOWY (TOGGLE) ORAZ BELKA PEŁNEGO EKRANU */}
       {/* ------------------------------------------------------------------ */}
       {isFullscreen ? (
-        <div className="flex items-center justify-between gap-2 p-2 rounded-2xl bg-[#0B0F19]/95 border border-hairline shrink-0 mb-2 shadow-2xl">
-          <div className="flex items-center gap-1.5 bg-[#141C28] p-1 rounded-xl border border-hairline">
+        <div className="flex items-center justify-between gap-2 p-2 rounded-2xl bg-surface-bg/95 border border-hairline shrink-0 mb-2 shadow-2xl">
+          <div className="flex items-center gap-1.5 bg-surface-card-hover p-1 rounded-xl border border-hairline">
             <button
               type="button"
               onClick={() => {
@@ -1240,7 +1240,7 @@ export function OpenTaskWorkspace({
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                 activeTab === 'keyboard'
-                  ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
+                  ? 'bg-jasne text-on-primary font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
                   : 'text-slate-400 hover:text-text-strong'
               }`}
             >
@@ -1255,7 +1255,7 @@ export function OpenTaskWorkspace({
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                 activeTab === 'whiteboard'
-                  ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
+                  ? 'bg-jasne text-on-primary font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
                   : 'text-slate-400 hover:text-text-strong'
               }`}
             >
@@ -1302,7 +1302,7 @@ export function OpenTaskWorkspace({
           </div>
         </div>
       ) : !hideWhiteboard ? (
-        <div className="flex items-center justify-between bg-[#0B0F19] p-1 rounded-2xl border border-hairline w-full shrink-0 shadow-lg">
+        <div className="flex items-center justify-between bg-surface-bg p-1 rounded-2xl border border-hairline w-full shrink-0 shadow-lg">
           <div className="flex-1 flex items-center">
             <button
               type="button"
@@ -1313,7 +1313,7 @@ export function OpenTaskWorkspace({
               }}
               className={`flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
                 activeTab === 'keyboard'
-                  ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_16px_rgba(255,184,0,0.35)]'
+                  ? 'bg-jasne text-on-primary font-bold shadow-[0_0_16px_rgba(255,184,0,0.35)]'
                   : 'text-slate-400 hover:text-text-strong hover:bg-veil'
               }`}
             >
@@ -1330,7 +1330,7 @@ export function OpenTaskWorkspace({
               }}
               className={`flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
                 activeTab === 'whiteboard'
-                  ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_16px_rgba(255,184,0,0.35)]'
+                  ? 'bg-jasne text-on-primary font-bold shadow-[0_0_16px_rgba(255,184,0,0.35)]'
                   : 'text-slate-400 hover:text-text-strong hover:bg-veil'
               }`}
             >
@@ -1350,7 +1350,7 @@ export function OpenTaskWorkspace({
                 triggerHaptic('medium');
                 setIsFullscreen(true);
               }}
-              className="p-2 rounded-xl text-text-accent hover:text-white bg-[#141C28] hover:bg-jasne/20 border border-hairline transition-all cursor-pointer shrink-0 ml-1.5 shadow-sm flex items-center gap-1.5 text-xs font-bold"
+              className="p-2 rounded-xl text-text-accent hover:text-white bg-surface-card-hover hover:bg-jasne/20 border border-hairline transition-all cursor-pointer shrink-0 ml-1.5 shadow-sm flex items-center gap-1.5 text-xs font-bold"
               title="Rozwiń na pełny ekran"
             >
               <Maximize2 size={15} />
@@ -1427,7 +1427,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('x')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-amber-300 italic font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-amber-300 italic font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Zmienna x"
             >
               x
@@ -1435,7 +1435,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('POW2')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Potęga kwadratowa (x²)"
             >
               x²
@@ -1443,7 +1443,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('POW')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Potęga dowolna (xⁿ)"
             >
               xⁿ
@@ -1451,7 +1451,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('SQRT')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-text-accent font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Pierwiastek (√)"
             >
               √
@@ -1459,7 +1459,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('FRAC')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Ułamek zwykły"
             >
               <span className="flex flex-col items-center justify-center leading-none">
@@ -1471,7 +1471,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('(')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Nawias otwierający ("
             >
               (
@@ -1479,7 +1479,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick(')')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-white font-bold text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Nawias zamykający )"
             >
               )
@@ -1487,7 +1487,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('⟨')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przedział domknięty lewostronnie ⟨"
             >
               ⟨
@@ -1495,7 +1495,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('⟩')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-amber-300 font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przedział domknięty prawostronnie ⟩"
             >
               ⟩
@@ -1503,7 +1503,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('∞')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-hairline text-text-accent font-black text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Nieskończoność (∞)"
             >
               ∞
@@ -1515,28 +1515,28 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('7')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               7
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('8')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               8
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('9')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               9
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('÷')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-hairline text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak dzielenia (÷)"
             >
               ÷
@@ -1544,7 +1544,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('·')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-hairline text-text-accent font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak mnożenia (·)"
             >
               ·
@@ -1552,7 +1552,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('-')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-hairline text-text-accent font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak minus (-)"
             >
               −
@@ -1564,28 +1564,28 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('4')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               4
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('5')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               5
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('6')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               6
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('+')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-hairline text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak plus (+)"
             >
               +
@@ -1593,7 +1593,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick(',')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przecinek dziesiętny (,)"
             >
               ,
@@ -1601,7 +1601,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('=')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-hairline text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak równości (=)"
             >
               =
@@ -1613,35 +1613,35 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('1')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               1
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('2')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               2
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('3')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               3
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('0')}
-              className="h-9 sm:h-10 rounded-xl bg-[#141C28] hover:bg-[#1E293B] border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-card-hover hover:bg-surface-raised border border-hairline text-white font-bold text-base sm:text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               0
             </button>
             <button
               type="button"
               onClick={() => handleKeyClick('BACKSPACE')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-hairline text-slate-300 hover:text-white font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline text-slate-300 hover:text-white font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Klawisz kasowania (Backspace)"
             >
               <Delete size={17} />
@@ -1649,7 +1649,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('NEXT')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-hairline hover:border-primary/50 text-text-accent font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-surface-raised hover:bg-surface-raised border border-hairline hover:border-primary/50 text-text-accent font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przejdź dalej / Wyjdź z ułamka (→ / Spacja)"
             >
               <ArrowRight size={18} className="stroke-[2.5]" />
@@ -1666,7 +1666,7 @@ export function OpenTaskWorkspace({
           {/* PASEK NARZĘDZI NA GÓRZE TABLICY */}
           <div className="flex items-center justify-between gap-2 shrink-0 flex-wrap">
             {/* Narzędzia pisania: Pióro / Gumka */}
-            <div className="flex items-center gap-1.5 bg-[#141C28] p-1 rounded-xl border border-hairline">
+            <div className="flex items-center gap-1.5 bg-surface-card-hover p-1 rounded-xl border border-hairline">
               <button
                 type="button"
                 onClick={() => {
@@ -1675,7 +1675,7 @@ export function OpenTaskWorkspace({
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                   wbTool === 'pen'
-                    ? 'bg-jasne text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
+                    ? 'bg-jasne text-on-primary font-bold shadow-[0_0_12px_rgba(255,184,0,0.35)]'
                     : 'text-slate-400 hover:text-text-strong'
                 }`}
               >
@@ -1706,7 +1706,7 @@ export function OpenTaskWorkspace({
                 type="button"
                 disabled={!canUndo || isEvaluated}
                 onClick={handleUndo}
-                className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-slate-300 hover:text-white bg-[#141C28] hover:bg-[#1E293B] border border-hairline transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 text-xs font-semibold"
+                className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-slate-300 hover:text-white bg-surface-card-hover hover:bg-surface-raised border border-hairline transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 text-xs font-semibold"
                 title="Cofnij ostatnie pociągnięcie"
               >
                 <Undo2 size={15} />
@@ -1717,7 +1717,7 @@ export function OpenTaskWorkspace({
                 type="button"
                 disabled={!canRedo || isEvaluated}
                 onClick={handleRedo}
-                className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-slate-300 hover:text-white bg-[#141C28] hover:bg-[#1E293B] border border-hairline transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 text-xs font-semibold"
+                className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-slate-300 hover:text-white bg-surface-card-hover hover:bg-surface-raised border border-hairline transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 text-xs font-semibold"
                 title="Ponów cofnięte pociągnięcie"
               >
                 <Redo2 size={15} />
@@ -1737,7 +1737,7 @@ export function OpenTaskWorkspace({
 
               {/* Szybka nawigacja góra/dół przy długim arkuszu */}
               {canvasHeight > 440 && (
-                <div className="flex items-center gap-0.5 bg-[#141C28] p-0.5 rounded-xl border border-hairline">
+                <div className="flex items-center gap-0.5 bg-surface-card-hover p-0.5 rounded-xl border border-hairline">
                   <button
                     type="button"
                     onClick={handleScrollToTop}
@@ -1917,7 +1917,7 @@ export function OpenTaskWorkspace({
                 className={`flex-1 py-3 px-4 sm:px-6 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none shrink-0 ${
                   isNumeric
                     ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)]'
-                    : 'bg-gradient-to-r from-primary via-amber-500 to-amber-600 hover:from-[#FFC72C] hover:to-amber-400 text-[#080B11] shadow-[0_0_20px_rgba(255,184,0,0.3)]'
+                    : 'bg-gradient-to-r from-primary via-amber-500 to-amber-600 hover:from-[#FFC72C] hover:to-amber-400 text-on-primary shadow-[0_0_20px_rgba(255,184,0,0.3)]'
                 }`}
               >
                 {isAiLoading ? (

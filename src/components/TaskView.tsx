@@ -820,7 +820,7 @@ export function TaskView({
         <header className="shrink-0 px-4 pt-4 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-end z-20">
           <button 
             onClick={handleContinue}
-            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-[#9CA3AF] hover:text-text-strong transition-colors active:scale-95"
+            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-text-secondary hover:text-text-strong transition-colors active:scale-95"
             title="Zamknij"
           >
             <X size={16} />
@@ -871,7 +871,7 @@ export function TaskView({
             className="w-full grid grid-cols-3 gap-3 mb-5 max-w-sm sm:max-w-md"
           >
             {/* XP Card */}
-            <div className="bg-[#141C28] border border-primary/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+            <div className="bg-surface-card-hover border border-primary/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
               <div className="w-8 h-8 rounded-xl bg-jasne/15 border border-primary/30 flex items-center justify-center mb-1.5 text-text-accent">
                 <Zap size={16} className="fill-[#FFB800] text-text-accent" />
               </div>
@@ -882,7 +882,7 @@ export function TaskView({
             </div>
 
             {/* Coins Card */}
-            <div className="bg-[#141C28] border border-amber-400/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+            <div className="bg-surface-card-hover border border-amber-400/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
               <div className="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mb-1.5 text-amber-400">
                 <Coins size={16} className="text-amber-400" />
               </div>
@@ -893,7 +893,7 @@ export function TaskView({
             </div>
 
             {/* Streak Card */}
-            <div className="bg-[#141C28] border border-orange-500/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+            <div className="bg-surface-card-hover border border-orange-500/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
               <div className="w-8 h-8 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center mb-1.5 text-orange-400">
                 <Flame size={16} className="fill-orange-400 text-orange-400" />
               </div>
@@ -934,7 +934,7 @@ export function TaskView({
           <div className="flex flex-col items-center w-full">
             <button 
               onClick={handleContinue}
-              className="w-full h-[52px] bg-primary hover:bg-[#FFC72C] border border-primary-dark/40 text-[#070A0F] font-bold text-base px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+              className="w-full h-[52px] bg-primary hover:bg-primary-hover border border-primary-dark/40 text-on-primary font-bold text-base px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
             >
               <span>WRÓĆ DO MAPY NAUKI</span>
               <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
@@ -962,7 +962,7 @@ export function TaskView({
           </span>
           <button 
             onClick={onCancelTask}
-            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-[#9CA3AF] hover:text-text-strong transition-colors"
+            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-text-secondary hover:text-text-strong transition-colors"
           >
             <X size={16} />
           </button>
@@ -986,11 +986,11 @@ export function TaskView({
             Czas na szybką powtórkę!
           </h2>
 
-          <p className="text-[#9CA3AF] text-sm max-w-sm leading-relaxed mb-6">
+          <p className="text-text-secondary text-sm max-w-sm leading-relaxed mb-6">
             Popraw błędy, aby ukończyć lekcję i utrwalić wiedzę. Pętla poprawek to najskuteczniejszy sposób na 100% z matury.
           </p>
 
-          <div className="w-full bg-[#141C28] border border-hairline rounded-2xl p-4 text-left shadow-lg mb-4">
+          <div className="w-full bg-surface-card-hover border border-hairline rounded-2xl p-4 text-left shadow-lg mb-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-text-strong flex items-center gap-1.5">
                 <AlertTriangle size={14} className="text-amber-400" />
@@ -1000,7 +1000,7 @@ export function TaskView({
                 {mistakesBuffer.length} {mistakesBuffer.length === 1 ? 'zadanie' : 'zadania'}
               </span>
             </div>
-            <p className="text-xs text-[#9CA3AF] leading-relaxed">
+            <p className="text-xs text-text-secondary leading-relaxed">
               Za każdą udaną poprawkę otrzymujesz <span className="text-text-accent font-bold">+5 XP</span> oraz odblokowujesz oficjalny Ekran Sukcesu z gwiazdkami.
             </p>
           </div>
@@ -1009,7 +1009,7 @@ export function TaskView({
         <footer className="shrink-0 w-full p-4 bg-surface-elevated/95 backdrop-blur-md border-t border-surface-border" style={{ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' }}>
           <button 
             onClick={handleStartRetryPhase}
-            className="w-full bg-jasne hover:bg-[#FFC72C] border border-[#D97706]/40 text-[#080B11] font-bold text-base py-3.5 px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+            className="w-full bg-jasne hover:bg-primary-hover border border-jasne-dark/40 text-on-primary font-bold text-base py-3.5 px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>Popraw błędy</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -1035,7 +1035,7 @@ export function TaskView({
           <header className="shrink-0 px-4 pt-3.5 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-between z-20">
           <button 
             onClick={onCancelTask}
-            className="flex items-center gap-1.5 text-[#9CA3AF] hover:text-text-strong text-xs font-bold bg-veil hover:bg-veil-strong px-3 py-1.5 rounded-full transition-colors active:scale-95"
+            className="flex items-center gap-1.5 text-text-secondary hover:text-text-strong text-xs font-bold bg-veil hover:bg-veil-strong px-3 py-1.5 rounded-full transition-colors active:scale-95"
           >
             <X size={14} /> Zamknij
           </button>
@@ -1045,7 +1045,7 @@ export function TaskView({
               <BookOpen size={12} />
               <span>{theoryItem.topic || 'Pigułka wiedzy'}</span>
             </span>
-            <span className="text-xs font-bold text-[#8B8D98]">
+            <span className="text-xs font-bold text-text-secondary">
               {currentTheoryIndex + 1} / {cards.length}
             </span>
           </div>
@@ -1062,7 +1062,7 @@ export function TaskView({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.18 }}
-              className="bg-[#141C28] border border-white/[0.08] rounded-2xl p-4 sm:p-5 shadow-xl flex-1 min-h-0 flex flex-col justify-between relative overflow-y-auto custom-scrollbar"
+              className="bg-surface-card-hover border border-white/[0.08] rounded-2xl p-4 sm:p-5 shadow-xl flex-1 min-h-0 flex flex-col justify-between relative overflow-y-auto custom-scrollbar"
             >
               <div className="flex-1 flex flex-col justify-start">
                 <div className="flex items-center justify-between gap-2 mb-2 text-xs font-bold">
@@ -1107,7 +1107,7 @@ export function TaskView({
                 {currentCard.type === 'essence' ? (
                   <div className="flex flex-col gap-3.5 w-full my-auto">
                     {currentCard.concept_essence && (
-                      <div className="p-4 sm:p-5 rounded-2xl bg-[#0F1622] border border-hairline text-white/95 text-sm sm:text-base leading-relaxed break-words">
+                      <div className="p-4 sm:p-5 rounded-2xl bg-surface-panel border border-hairline text-white/95 text-sm sm:text-base leading-relaxed break-words">
                         <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1.5">
                           W pigułce:
                         </span>
@@ -1206,7 +1206,7 @@ export function TaskView({
                 ) : currentCard.type === 'example' && currentCard.worked_example ? (
                   /* Card Type: example (Worked example krok po kroku) */
                   <div className="flex flex-col gap-3 w-full my-auto text-left min-w-0 max-w-full overflow-hidden">
-                    <div className="p-3.5 sm:p-4 rounded-xl bg-[#0F1622] border border-hairline min-w-0 max-w-full overflow-hidden">
+                    <div className="p-3.5 sm:p-4 rounded-xl bg-surface-panel border border-hairline min-w-0 max-w-full overflow-hidden">
                       <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1">
                         Zadanie z arkusza:
                       </span>
@@ -1308,14 +1308,14 @@ export function TaskView({
                     )}
 
                     {(currentCard.trap_note && currentCard.trap_note !== currentCard.exam_trap) && (
-                      <div className="p-3 bg-[#0F1622] border border-hairline rounded-xl text-xs sm:text-sm text-[#9CA3AF] leading-relaxed break-words max-w-full">
+                      <div className="p-3 bg-surface-panel border border-hairline rounded-xl text-xs sm:text-sm text-text-secondary leading-relaxed break-words max-w-full">
                         <MathRenderer content={currentCard.trap_note} className="break-words" />
                       </div>
                     )}
                   </div>
                 ) : (
                   /* Card Type: takeaway or default */
-                  <div className="bg-[#0F1622] border border-hairline rounded-2xl p-4 sm:p-5 my-auto text-white/95 text-sm sm:text-base leading-relaxed break-words">
+                  <div className="bg-surface-panel border border-hairline rounded-2xl p-4 sm:p-5 my-auto text-white/95 text-sm sm:text-base leading-relaxed break-words">
                     <MathRenderer content={currentCard.content || ''} className="leading-relaxed" />
                   </div>
                 )}
@@ -1331,7 +1331,7 @@ export function TaskView({
                 setCurrentTheoryIndex(i => i - 1);
                 triggerHaptic('light');
               }}
-              className="bg-[#141C28] hover:bg-[#1A2434] text-white border border-hairline font-bold px-5 py-3.5 rounded-xl text-sm transition-all flex items-center justify-center active:scale-95"
+              className="bg-surface-card-hover hover:bg-[#1A2434] text-white border border-hairline font-bold px-5 py-3.5 rounded-xl text-sm transition-all flex items-center justify-center active:scale-95"
             >
               Wstecz
             </button>
@@ -1351,7 +1351,7 @@ export function TaskView({
                 }
               }
             }}
-            className="flex-1 bg-jasne hover:bg-[#FFC72C] border border-[#D97706]/40 text-[#080B11] font-bold py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:scale-[0.98] shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
+            className="flex-1 bg-jasne hover:bg-primary-hover border border-jasne-dark/40 text-on-primary font-bold py-3.5 px-6 rounded-xl text-sm transition-all flex items-center justify-center gap-2 group active:scale-[0.98] shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer"
           >
             <span>
               {!isLastCard 
@@ -1393,7 +1393,7 @@ export function TaskView({
           <button 
             type="button"
             onClick={onCancelTask}
-            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-[#9CA3AF] hover:text-text-strong transition-colors active:scale-95"
+            className="w-8 h-8 rounded-full bg-veil hover:bg-veil-strong flex items-center justify-center text-text-secondary hover:text-text-strong transition-colors active:scale-95"
             title="Zamknij zadanie"
           >
             <X size={16} />
@@ -1438,7 +1438,7 @@ export function TaskView({
                 Poprawka: {currentTaskIndex + 1}/{practiceQueue.length}
               </Badge>
             ) : (
-              <span className="text-xs font-bold text-[#8B8D98]">
+              <span className="text-xs font-bold text-text-secondary">
                 {currentTaskIndex + 1}/{practiceQueue.length}
               </span>
             )}
@@ -1465,9 +1465,9 @@ export function TaskView({
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {/* Task Question Card */}
-        <div className="bg-[#141C28] border border-hairline rounded-2xl p-4 shadow-lg flex flex-col gap-2.5 shrink-0">
+        <div className="bg-surface-card-hover border border-hairline rounded-2xl p-4 shadow-lg flex flex-col gap-2.5 shrink-0">
           {/* Authentic Source & Exam Metadata line above question */}
-          <div className="flex items-center gap-2 text-[11px] sm:text-xs text-[#8B8D98] flex-wrap pb-1 border-b border-hairline-soft">
+          <div className="flex items-center gap-2 text-[11px] sm:text-xs text-text-secondary flex-wrap pb-1 border-b border-hairline-soft">
             <span className="text-[#38BDF8] font-semibold tracking-wide">
               {activeTask.badge || activeTask.source_badge || activeTask.source || activeTask.cke_source || 'Trening JASNE • Baza CKE'}
             </span>
@@ -1478,7 +1478,7 @@ export function TaskView({
           </div>
 
           {instructionText && (
-            <div className="text-xs sm:text-sm text-[#8B8D98] font-medium leading-relaxed">
+            <div className="text-xs sm:text-sm text-text-secondary font-medium leading-relaxed">
               <MathRenderer content={instructionText} />
             </div>
           )}
@@ -1532,7 +1532,7 @@ export function TaskView({
             </div>
 
             {taskType === 'MULTI_CHOICE' && (
-              <span className="text-[11px] font-bold text-[#8B8D98] bg-veil px-2.5 py-1 rounded-lg border border-hairline-soft">
+              <span className="text-[11px] font-bold text-text-secondary bg-veil px-2.5 py-1 rounded-lg border border-hairline-soft">
                 Zaznaczono: <strong className="text-text-strong">{selectedOptions.length}</strong> / {requiredCount}
               </span>
             )}
@@ -1564,10 +1564,10 @@ export function TaskView({
               if (!isEvaluated) {
                 if (isSelected) {
                   cardClasses += "bg-jasne/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.2)] scale-[1.01]";
-                  badgeClasses += "bg-jasne text-[#080B11] font-bold border-primary";
+                  badgeClasses += "bg-jasne text-on-primary font-bold border-primary";
                 } else {
-                  cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-hairline-soft hover:border-white/15 text-white/90";
-                  badgeClasses += "bg-[#0F1622] text-[#8B8D98] border-hairline";
+                  cardClasses += "bg-surface-card-hover hover:bg-[#1A2434] border-hairline-soft hover:border-white/15 text-white/90";
+                  badgeClasses += "bg-surface-panel text-text-secondary border-hairline";
                 }
               } else {
                 if (isOptionCorrect) {
@@ -1577,8 +1577,8 @@ export function TaskView({
                   cardClasses += "bg-rose-500/15 border-rose-500 text-rose-100 shadow-[0_0_20px_rgba(244,63,94,0.3)]";
                   badgeClasses += "bg-rose-500 text-white border-rose-500";
                 } else {
-                  cardClasses += "bg-[#141C28] opacity-40 border-hairline-soft text-white/60";
-                  badgeClasses += "bg-[#0F1622] text-[#8B8D98] border-hairline-soft";
+                  cardClasses += "bg-surface-card-hover opacity-40 border-hairline-soft text-white/60";
+                  badgeClasses += "bg-surface-panel text-text-secondary border-hairline-soft";
                 }
               }
 
@@ -1603,7 +1603,7 @@ export function TaskView({
                     )}
                   </div>
                   {!isEvaluated && (
-                    <span className="hidden md:inline-flex items-center text-[10px] font-mono font-bold text-[#8B8D98] bg-[#0F1622] border border-hairline px-1.5 py-0.5 rounded mr-1">
+                    <span className="hidden md:inline-flex items-center text-[10px] font-mono font-bold text-text-secondary bg-surface-panel border border-hairline px-1.5 py-0.5 rounded mr-1">
                       {opt.id}
                     </span>
                   )}
@@ -1638,10 +1638,10 @@ export function TaskView({
               if (!isEvaluated) {
                 if (isSelected) {
                   cardClasses += "bg-jasne/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.2)]";
-                  checkboxClasses += "bg-jasne text-[#080B11] font-bold border-primary";
+                  checkboxClasses += "bg-jasne text-on-primary font-bold border-primary";
                 } else {
-                  cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-hairline-soft hover:border-white/15 text-white/90";
-                  checkboxClasses += "bg-[#0F1622] text-transparent border-white/15";
+                  cardClasses += "bg-surface-card-hover hover:bg-[#1A2434] border-hairline-soft hover:border-white/15 text-white/90";
+                  checkboxClasses += "bg-surface-panel text-transparent border-white/15";
                 }
               } else {
                 if (isOptionCorrect) {
@@ -1651,8 +1651,8 @@ export function TaskView({
                   cardClasses += "bg-rose-500/15 border-rose-500 text-rose-100 shadow-[0_0_20px_rgba(244,63,94,0.3)]";
                   checkboxClasses += "bg-rose-500 text-white border-rose-500";
                 } else {
-                  cardClasses += "bg-[#141C28] opacity-40 border-hairline-soft text-white/60";
-                  checkboxClasses += "bg-[#0F1622] text-transparent border-hairline-soft";
+                  cardClasses += "bg-surface-card-hover opacity-40 border-hairline-soft text-white/60";
+                  checkboxClasses += "bg-surface-panel text-transparent border-hairline-soft";
                 }
               }
 
@@ -1731,7 +1731,7 @@ export function TaskView({
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-primary text-[#080B11] font-bold border-primary' : 'bg-veil border-surface-border text-text-secondary'
+                        isSelected ? 'bg-primary text-on-primary font-bold border-primary' : 'bg-veil border-surface-border text-text-secondary'
                       }`}>
                         {opt.id}
                       </span>
@@ -1784,7 +1784,7 @@ export function TaskView({
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-jasne text-[#080B11] font-bold border-primary' : 'bg-veil border-hairline text-white/80'
+                        isSelected ? 'bg-jasne text-on-primary font-bold border-primary' : 'bg-veil border-hairline text-white/80'
                       }`}>
                         {opt.id}
                       </span>
@@ -1839,7 +1839,7 @@ export function TaskView({
                         let btnClass = 'w-11 h-10 rounded-xl text-xs font-black flex items-center justify-center transition-all cursor-pointer border select-none ';
                         if (!isEvaluated) {
                           btnClass += isOptSelected
-                            ? 'bg-primary border-primary text-[#080B11] font-bold shadow-[0_0_12px_rgba(255,184,0,0.3)]'
+                            ? 'bg-primary border-primary text-on-primary font-bold shadow-[0_0_12px_rgba(255,184,0,0.3)]'
                             : 'bg-surface-elevated border-surface-border text-text-secondary hover:text-text-primary hover:border-primary/40';
                         } else {
                           if (isThisTheCorrectAnswer) {
@@ -1915,8 +1915,8 @@ export function TaskView({
             onClick={handleVerifyAnswer}
             className={`w-full py-3.5 px-6 rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 select-none ${
               isReadyToVerify
-                ? 'bg-jasne hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer'
-                : 'bg-veil text-[#8B8D98] border border-hairline-soft cursor-not-allowed opacity-60'
+                ? 'bg-jasne hover:bg-primary-hover border-b-4 border-jasne-dark text-on-primary font-bold active:translate-y-1 active:border-b-0 shadow-[0_0_20px_rgba(255,184,0,0.35)] cursor-pointer'
+                : 'bg-veil text-text-secondary border border-hairline-soft cursor-not-allowed opacity-60'
             }`}
           >
             <span>SPRAWDŹ</span>
@@ -2061,7 +2061,7 @@ export function TaskView({
                       {solutionSteps.slice(1).map((step, idx) => (
                         <div
                           key={idx}
-                          className="bg-[#0F1622] border border-hairline rounded-xl p-3 flex flex-col gap-1.5 shadow-sm"
+                          className="bg-surface-panel border border-hairline rounded-xl p-3 flex flex-col gap-1.5 shadow-sm"
                         >
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="bg-jasne/15 text-text-accent font-black text-[10px] px-2 py-0.5 rounded-md border border-primary/30">
@@ -2089,7 +2089,7 @@ export function TaskView({
             onClick={handleNextQuestion}
             className={`w-full py-3.5 px-6 rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 group shrink-0 active:translate-y-1 active:border-b-0 cursor-pointer ${
               isCorrect
-                ? 'bg-jasne hover:bg-[#FFC72C] border-b-4 border-[#D97706] text-[#080B11] font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)]'
+                ? 'bg-jasne hover:bg-primary-hover border-b-4 border-jasne-dark text-on-primary font-bold shadow-[0_0_20px_rgba(255,184,0,0.35)]'
                 : 'bg-rose-500 hover:bg-rose-600 border-b-4 border-rose-700 text-white shadow-[0_0_20px_rgba(244,63,94,0.3)]'
             }`}
           >
@@ -2140,7 +2140,7 @@ export function TaskView({
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 26, stiffness: 300 }}
-              className="relative z-10 w-full max-w-xl mx-auto bg-[#141C28] border-t border-white/15 rounded-t-3xl p-5 shadow-2xl flex flex-col gap-4 pointer-events-auto"
+              className="relative z-10 w-full max-w-xl mx-auto bg-surface-card-hover border-t border-white/15 rounded-t-3xl p-5 shadow-2xl flex flex-col gap-4 pointer-events-auto"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -2210,7 +2210,7 @@ export function TaskView({
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 26, stiffness: 300 }}
-              className="relative z-10 w-full max-w-xl mx-auto max-h-[35vh] bg-[#141C28] border-t border-white/15 rounded-t-3xl p-4 sm:p-5 shadow-2xl flex flex-col gap-3 overflow-y-auto custom-scrollbar pointer-events-auto"
+              className="relative z-10 w-full max-w-xl mx-auto max-h-[35vh] bg-surface-card-hover border-t border-white/15 rounded-t-3xl p-4 sm:p-5 shadow-2xl flex flex-col gap-3 overflow-y-auto custom-scrollbar pointer-events-auto"
             >
               <div className="flex items-center justify-between border-b border-hairline pb-2">
                 <div className="flex items-center gap-2">

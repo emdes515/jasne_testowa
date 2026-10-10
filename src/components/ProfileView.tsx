@@ -165,7 +165,7 @@ export function ProfileView({
             }}
             className={`flex-1 min-h-[44px] px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'overview'
-                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                ? 'bg-primary text-on-primary shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
                 : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
@@ -180,7 +180,7 @@ export function ProfileView({
             }}
             className={`flex-1 min-h-[44px] px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 relative cursor-pointer ${
               activeTab === 'achievements'
-                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                ? 'bg-primary text-on-primary shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
                 : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >
@@ -188,7 +188,7 @@ export function ProfileView({
             <span>Odznaki</span>
             {claimableCount > 0 && (
               <span className={`w-4 h-4 text-[10px] font-black rounded-full flex items-center justify-center shadow-sm ${
-                activeTab === 'achievements' ? 'bg-[#080B11] text-primary' : 'bg-primary text-[#080B11]'
+                activeTab === 'achievements' ? 'bg-surface-bg text-primary' : 'bg-primary text-on-primary'
               }`}>
                 {claimableCount}
               </span>
@@ -202,7 +202,7 @@ export function ProfileView({
             }}
             className={`flex-1 min-h-[44px] px-3 rounded-xl font-bold text-xs transition-all duration-150 active:scale-[0.96] flex items-center justify-center gap-1.5 cursor-pointer ${
               activeTab === 'perks'
-                ? 'bg-primary text-[#080B11] shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
+                ? 'bg-primary text-on-primary shadow-[0_0_16px_rgba(255,184,0,0.25)] font-black'
                 : 'text-text-muted hover:text-text-primary hover:bg-surface-card-hover'
             }`}
           >

@@ -59,10 +59,10 @@ export function ExamHubModal({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.98 }}
           transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-          className="bg-[#0b0f19] border border-hairline rounded-t-3xl sm:rounded-3xl max-w-xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative"
+          className="bg-surface-bg border border-hairline rounded-t-3xl sm:rounded-3xl max-w-xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative"
         >
           {/* Header */}
-          <div className="p-4 sm:p-6 pb-3 sm:pb-4 border-b border-hairline-soft flex items-start justify-between gap-3 bg-gradient-to-b from-[#111726]/70 to-transparent shrink-0">
+          <div className="p-4 sm:p-6 pb-3 sm:pb-4 border-b border-hairline-soft flex items-start justify-between gap-3 bg-gradient-to-b from-surface-card-hover/70 to-transparent shrink-0">
             <div>
               <div className="flex items-center gap-2 flex-wrap mb-1.5">
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/30">

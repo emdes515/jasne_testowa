@@ -67,7 +67,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.92, y: 20 }}
           transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-          className="relative w-full max-w-sm bg-[#0B0F19] border border-hairline rounded-[32px] p-6 sm:p-7 shadow-[0_25px_70px_rgba(0,0,0,0.95)] flex flex-col items-center text-center overflow-hidden"
+          className="relative w-full max-w-sm bg-surface-bg border border-hairline rounded-[32px] p-6 sm:p-7 shadow-[0_25px_70px_rgba(0,0,0,0.95)] flex flex-col items-center text-center overflow-hidden"
         >
           {/* Ambient Lighting Background */}
           <div className="absolute -top-20 -right-20 w-44 h-44 bg-rose-500/15 blur-3xl rounded-full pointer-events-none" />

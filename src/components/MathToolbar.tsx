@@ -58,7 +58,7 @@ export function MathToolbar({ onInsertSymbol, onInsertTemplate }: MathToolbarPro
           <Calculator size={13} className="text-text-accent" />
           <span>Klawiatura Matematyczna</span>
         </span>
-        <span className="text-[10px] text-[#8B8D98]">Kliknij, aby wstawić symbol</span>
+        <span className="text-[10px] text-text-secondary">Kliknij, aby wstawić symbol</span>
       </div>
 
       {/* Symbol buttons grid */}
@@ -78,7 +78,7 @@ export function MathToolbar({ onInsertSymbol, onInsertTemplate }: MathToolbarPro
 
       {/* Quick Templates */}
       <div className="flex items-center gap-1.5 overflow-x-auto pt-1 pb-0.5 scrollbar-none">
-        <span className="text-[10px] text-[#8B8D98] uppercase font-bold shrink-0">Szablony:</span>
+        <span className="text-[10px] text-text-secondary uppercase font-bold shrink-0">Szablony:</span>
         {quickTemplates.map((tpl, idx) => (
           <button
             key={idx}

@@ -26,7 +26,7 @@ const base = 'rounded-xl border text-sm font-bold transition-all flex items-cent
 const idle = 'bg-surface-card-hover/80 border-hairline text-text-soft hover:border-white/25';
 const picked = 'bg-primary/15 border-primary text-accent-soft shadow-[0_0_14px_rgba(255,184,0,0.15)]';
 const good = 'bg-emerald-500/15 border-emerald-500 text-emerald-300';
-const bad = 'bg-[rgba(244,63,94,0.12)] border-[#f43f5e] text-[#f43f5e]';
+const bad = 'bg-[rgba(244,63,94,0.12)] border-alert-crimson text-alert-crimson';
 const faded = 'bg-surface-panel/60 border-hairline-soft text-slate-500';
 
 function choiceClass(isSelected: boolean, isCorrect: boolean, reveal: boolean): string {
@@ -55,7 +55,7 @@ export const StructuredAnswerInput: React.FC<StructuredAnswerInputProps> = ({ ta
             <div
               key={stmt.id || idx}
               className={`p-3.5 rounded-2xl border flex flex-col gap-3 ${
-                reveal ? (rowOk ? 'bg-emerald-950/20 border-emerald-500/40' : 'bg-rose-950/20 border-[#f43f5e]/40') : 'bg-surface-panel border-white/[0.08]'
+                reveal ? (rowOk ? 'bg-emerald-950/20 border-emerald-500/40' : 'bg-rose-950/20 border-alert-crimson/40') : 'bg-surface-panel border-white/[0.08]'
               }`}
             >
               <div className="flex gap-2.5 text-sm leading-relaxed text-text-soft">

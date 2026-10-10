@@ -73,13 +73,13 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                   />
                 )}
                 <div className={`relative z-10 transition-transform duration-200 ${isActive ? 'scale-105' : ''}`}>
-                  <Icon size={20} className={isActive ? 'text-[#080B11] stroke-[2.5]' : ''} />
+                  <Icon size={20} className={isActive ? 'text-on-primary stroke-[2.5]' : ''} />
                   {isArena && !isActive && (
                     <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10B981] animate-pulse" />
                   )}
                 </div>
                 {isActive && (
-                  <span className="relative z-10 text-[11px] font-black tracking-wide whitespace-nowrap text-[#080B11]">
+                  <span className="relative z-10 text-[11px] font-black tracking-wide whitespace-nowrap text-on-primary">
                     {item.label}
                   </span>
                 )}
@@ -129,7 +129,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
                     ? isArena
                       ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/40 shadow-[0_0_16px_rgba(16,185,129,0.2)]'
                       : 'bg-jasne/15 text-text-accent border border-primary/40 shadow-[0_0_16px_rgba(255,184,0,0.15)]'
-                    : 'text-[#8B8D98] hover:text-text-strong hover:bg-veil'
+                    : 'text-text-secondary hover:text-text-strong hover:bg-veil'
                 }`}
                 title={item.label}
               >
@@ -151,7 +151,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
         <motion.button
           whileTap={{ scale: 0.93 }}
           onClick={onProfileClick}
-          className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/30 to-[#D97706]/30 border border-primary/40 p-0.5 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+          className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/30 to-jasne-dark/30 border border-primary/40 p-0.5 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
           title="Twój profil"
         >
           <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center text-primary">
@@ -260,7 +260,7 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
           </div>
           <div className="w-full h-1.5 bg-surface-bg rounded-full overflow-hidden border border-surface-border">
             <div 
-              className="h-full bg-gradient-to-r from-[#D97706] to-primary rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-jasne-dark to-primary rounded-full transition-all duration-500"
               style={{ width: `${xpPct}%` }}
             />
           </div>

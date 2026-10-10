@@ -58,10 +58,10 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.96 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-md bg-[#0A0E17] border-t sm:border border-primary/30 rounded-t-[32px] sm:rounded-[28px] p-5 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(255,184,0,0.12)] overflow-hidden z-10 max-h-[92vh] flex flex-col justify-between"
+          className="relative w-full max-w-md bg-surface-bg border-t sm:border border-primary/30 rounded-t-[32px] sm:rounded-[28px] p-5 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(255,184,0,0.12)] overflow-hidden z-10 max-h-[92vh] flex flex-col justify-between"
         >
           {/* Akcentowa linijka na górze */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-primary to-[#F59E0B]" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-jasne-dark via-primary to-[#F59E0B]" />
 
           {/* Przycisk zamknięcia */}
           <button
@@ -93,7 +93,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
             </div>
 
             {/* CYBER VOUCHER TICKET (KARTA CENOWA) */}
-            <div className="my-3.5 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#121824] to-[#0A0E17] border border-primary/40 shadow-inner relative overflow-hidden">
+            <div className="my-3.5 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#121824] to-surface-bg border border-primary/40 shadow-inner relative overflow-hidden">
               {/* Ozdobny znak wodny kodu */}
               <div className="absolute -right-4 -bottom-4 text-white/[0.03] font-mono font-black text-6xl select-none pointer-events-none">
                 PRO
@@ -166,7 +166,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
             <button
               type="button"
               onClick={handleClaim}
-              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-primary via-[#FFA000] to-[#FF8C00] hover:brightness-105 text-[#070A0F] font-display font-black text-sm transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_0_#B37F00] active:translate-y-1 active:shadow-none min-h-[48px]"
+              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-primary via-[#FFA000] to-[#FF8C00] hover:brightness-105 text-on-primary font-display font-black text-sm transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_0_#B37F00] active:translate-y-1 active:shadow-none min-h-[48px]"
             >
               <span>Zablokuj rabat -50% (14,50 zł/mc)</span>
               <ArrowRight size={16} strokeWidth={3} />

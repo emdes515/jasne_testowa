@@ -519,7 +519,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
             onClick={() => setHubMode('lessons')}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'lessons'
-                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                ? 'border-accent-soft text-accent-soft bg-primary/5'
                 : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
@@ -530,7 +530,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
             onClick={() => setHubMode('task_browser')}
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'task_browser'
-                ? 'border-[#ffdca1] text-accent-soft bg-primary/5'
+                ? 'border-accent-soft text-accent-soft bg-primary/5'
                 : 'border-transparent text-text-secondary hover:text-text-soft'
             }`}
           >
@@ -609,7 +609,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                         selectedLessonSection === 'all'
                           ? 'bg-primary/15 border border-primary/40 text-accent-soft font-bold shadow-sm'
-                          : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
+                          : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft hover:border-surface-raised'
                       }`}
                     >
                       Wszystkie działy ({ALL_MATH_LESSONS.length})
@@ -623,7 +623,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                             selectedLessonSection === sec.id
                               ? 'bg-primary/15 border border-primary/40 text-accent-soft font-bold shadow-sm'
-                              : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft hover:border-[#1e293b]'
+                              : 'bg-surface-panel border border-surface-line text-text-secondary hover:text-text-soft hover:border-surface-raised'
                           }`}
                         >
                           {sec.numericId}. {sec.short_title} ({count})
@@ -639,7 +639,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                       placeholder="Szukaj lekcji, działu, pojęcia..."
                       value={lessonSearchQuery}
                       onChange={(e) => setLessonSearchQuery(e.target.value)}
-                      className="w-full bg-surface-bg border border-surface-line rounded-xl pl-9 pr-3 py-1.5 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] shadow-sm"
+                      className="w-full bg-surface-bg border border-surface-line rounded-xl pl-9 pr-3 py-1.5 text-xs text-text-soft placeholder-[#94a3b8] focus:outline-none focus:border-accent-soft shadow-sm"
                     />
                   </div>
                 </div>
@@ -656,7 +656,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                         className={`p-5 rounded-xl border transition-all flex flex-col justify-between gap-4 bg-surface-panel ${
                           isCompleted
                             ? 'border-emerald-500/40 ring-1 ring-emerald-500/20'
-                            : 'border-surface-line hover:border-[#1e293b] hover:bg-[#121b2b]'
+                            : 'border-surface-line hover:border-surface-raised hover:bg-surface-card-hover'
                         }`}
                       >
                         <div className="space-y-3">
@@ -735,7 +735,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               setActiveLessonId(lesson.id);
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
-                            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 transition-all cursor-pointer"
+                            className="px-4 py-2 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:from-[#f97316] hover:to-[#ffc72c] text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md shadow-[#ffb800]/10 transition-all cursor-pointer"
                           >
                             <span>Rozpocznij lekcję</span>
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -793,7 +793,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                     <div
                       key={sec.id}
                       className={`bg-surface-panel border rounded-xl p-3.5 sm:p-5 shadow-sm flex flex-col justify-between transition-all duration-200 group/card min-w-0 overflow-hidden ${
-                        isExpanded ? 'border-primary/40' : 'border-surface-line hover:border-[#1e293b]'
+                        isExpanded ? 'border-primary/40' : 'border-surface-line hover:border-surface-raised'
                       }`}
                     >
                       <div className="min-w-0">
@@ -837,7 +837,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             <div className="flex items-center gap-2">
                               <div className="w-16 h-1.5 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                                 <div
-                                  className="h-full bg-gradient-to-r from-[#ea580c] to-primary rounded-full"
+                                  className="h-full bg-gradient-to-r from-streak-flame to-primary rounded-full"
                                   style={{ width: `${progressPct}%` }}
                                 />
                               </div>
@@ -890,7 +890,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             </div>
                             <div className="w-full h-2 bg-surface-bg rounded-full overflow-hidden border border-surface-line">
                               <div
-                                className="h-full bg-gradient-to-r from-[#ea580c] to-primary transition-all duration-300 rounded-full"
+                                className="h-full bg-gradient-to-r from-streak-flame to-primary transition-all duration-300 rounded-full"
                                 style={{ width: `${progressPct}%` }}
                               />
                             </div>
@@ -905,7 +905,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             setExpandedSectionId(sec.id);
                             setSectionInnerTab('lessons');
                           }}
-                          className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
+                          className="w-full py-2.5 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer min-w-0"
                         >
                           <Play className="w-3.5 h-3.5 fill-[#070a0f] shrink-0" />
                           <span className="truncate">Otwórz dział i 5 lekcji</span>
@@ -1053,7 +1053,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                         </div>
                         <div className="w-full h-2 rounded-full bg-surface-bg overflow-hidden border border-surface-line">
                           <div
-                            className="h-full bg-gradient-to-r from-[#ea580c] to-primary shadow-sm transition-all duration-500 rounded-full"
+                            className="h-full bg-gradient-to-r from-streak-flame to-primary shadow-sm transition-all duration-500 rounded-full"
                             style={{ width: `${progressPct}%` }}
                           />
                         </div>
@@ -1092,7 +1092,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             isLessonCompleted
                               ? 'border-emerald-500/30 bg-emerald-950/10'
                               : isCurrentActiveLesson
-                                ? 'border-[#ffdca1] bg-surface-panel ring-1 ring-[#ffdca1]/30'
+                                ? 'border-accent-soft bg-surface-panel ring-1 ring-[#ffdca1]/30'
                                 : 'border-surface-line bg-surface-panel'
                           }`}
                         >
@@ -1104,7 +1104,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 isLessonCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
                                   : isCurrentActiveLesson
-                                    ? 'bg-primary/15 border border-[#ffdca1] text-accent-soft'
+                                    ? 'bg-primary/15 border border-accent-soft text-accent-soft'
                                     : 'bg-surface-bg border-surface-line text-text-secondary'
                               }`}>
                                 {isLessonCompleted ? (
@@ -1163,7 +1163,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                 onClick={() => setExpandedLessonPillId(isPillOpen ? null : lesson.id)}
                                 className={`px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer min-w-0 flex-1 sm:flex-none text-center ${
                                   isPillOpen
-                                    ? 'bg-primary/15 border-[#ffdca1] text-accent-soft shadow-sm'
+                                    ? 'bg-primary/15 border-accent-soft text-accent-soft shadow-sm'
                                     : 'bg-surface-bg hover:bg-surface-card-hover border-surface-line text-text-soft hover:text-text-strong'
                                 }`}
                               >
@@ -1175,7 +1175,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               {isLessonCompleted ? (
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line hover:border-[#ffdca1]/40 text-text-soft hover:text-accent-soft font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
+                                  className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-surface-card-hover border border-surface-line hover:border-accent-soft/40 text-text-soft hover:text-accent-soft font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
                                 >
                                   <RotateCcw size={15} className="stroke-[2.5] text-accent-soft shrink-0" />
                                   <span>POWTÓRZ MISJĘ</span>
@@ -1183,7 +1183,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               ) : (
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] shadow-sm min-w-0 flex-1 sm:flex-none text-center"
+                                  className="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary shadow-sm min-w-0 flex-1 sm:flex-none text-center"
                                 >
                                   <Play size={15} fill="#070a0f" strokeWidth={0} className="shrink-0" />
                                   <span>ROZPOCZNIJ LEKCJĘ</span>
@@ -1379,7 +1379,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                   </div>
                                   <button
                                     onClick={() => handleStartLessonDirect(lesson)}
-                                    className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary hover:brightness-110 text-[#070a0f] font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
+                                    className="w-full lg:w-auto py-3 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-streak-flame to-primary hover:brightness-110 text-on-primary font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-3 cursor-pointer shrink-0 text-center"
                                   >
                                     <Play className="w-4 h-4 fill-[#070a0f] shrink-0" />
                                     <span className="whitespace-normal sm:whitespace-nowrap">ROZPOCZNIJ MISJĘ</span>
@@ -1433,7 +1433,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           className={`p-4 sm:p-5 rounded-xl border bg-surface-panel space-y-4 transition-all ${
                             isCompleted
                               ? 'border-emerald-500/40 bg-emerald-950/10'
-                              : 'border-surface-line hover:border-[#1e293b]'
+                              : 'border-surface-line hover:border-surface-raised'
                           }`}
                         >
                           <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
@@ -1496,7 +1496,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                             ? 'bg-rose-950/40 border-rose-500/50 text-rose-200'
                                             : 'bg-surface-bg border-surface-line text-text-secondary'
                                         : isSelected
-                                          ? 'bg-primary/15 border-[#ffdca1] text-accent-soft'
+                                          ? 'bg-primary/15 border-accent-soft text-accent-soft'
                                           : 'bg-surface-bg hover:bg-surface-card-hover border-surface-line text-text-soft'
                                     }`}
                                   >
@@ -1516,7 +1516,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                               <button
                                 onClick={() => handleSubmitAnswer(task.id)}
                                 disabled={task.type === 'SINGLE_CHOICE' && !answerState.selectedOptionId}
-                                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-primary text-[#070a0f] text-xs font-bold disabled:opacity-40 transition-all cursor-pointer"
+                                className="px-4 py-2 rounded-xl bg-gradient-to-r from-streak-flame to-primary text-on-primary text-xs font-bold disabled:opacity-40 transition-all cursor-pointer"
                               >
                                 Sprawdź odpowiedź
                               </button>
@@ -1686,7 +1686,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                           ? 'border-emerald-500/40 shadow-sm shadow-emerald-500/10'
                           : state.isSubmitted && !state.isCorrect
                           ? 'border-rose-500/40 shadow-sm shadow-rose-500/10'
-                          : 'border-surface-line hover:border-[#1e293b]'
+                          : 'border-surface-line hover:border-surface-raised'
                       }`}
                     >
                       {/* Task Header */}
@@ -1784,7 +1784,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                             const isSelected = state.selectedOptionId === opt.id;
                             const isCorrectOpt = opt.id.toUpperCase() === (task.correct_answer || 'A').toUpperCase();
 
-                            let btnStyle = 'bg-surface-bg border-surface-line text-text-soft hover:border-primary/50 hover:bg-[#121b2b]';
+                            let btnStyle = 'bg-surface-bg border-surface-line text-text-soft hover:border-primary/50 hover:bg-surface-card-hover';
                             if (state.isSubmitted) {
                               if (isSelected) {
                                 btnStyle = state.isCorrect
