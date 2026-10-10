@@ -24,23 +24,29 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
       
       if (reward.levelUp || reward.title) {
         // Trigger confetti for level up or achievement
-        const duration = 2500;
+        // Krótka salwa w barwach marki; emisja co 6. klatkę, żeby nie zasłaniać treści i nie dławić telefonu
+        const duration = 1200;
+        let frameIndex = 0;
         const end = Date.now() + duration;
 
         const frame = () => {
+          if (frameIndex++ % 6 !== 0) {
+            if (Date.now() < end) requestAnimationFrame(frame);
+            return;
+          }
           confetti({
             particleCount: 4,
             angle: 60,
             spread: 55,
             origin: { x: 0 },
-            colors: ['#3b82f6', '#f59e0b', '#10b981']
+            colors: ['#FFB800', '#FFDCA1', '#10B981', '#FFFFFF']
           });
           confetti({
             particleCount: 4,
             angle: 120,
             spread: 55,
             origin: { x: 1 },
-            colors: ['#3b82f6', '#f59e0b', '#10b981']
+            colors: ['#FFB800', '#FFDCA1', '#10B981', '#FFFFFF']
           });
 
           if (Date.now() < end) {
@@ -213,7 +219,7 @@ export function RewardPopup({ reward, onClose }: RewardPopupProps) {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
               onClick={onClose}
-              className="mt-6 w-full py-3.5 bg-white hover:bg-gray-200 text-black font-bold rounded-[16px] transition-colors text-sm shadow-lg"
+              className="mt-6 w-full py-3.5 bg-[#FFB800] hover:bg-[#FFC72C] text-[#080B11] font-bold rounded-2xl transition-colors text-sm shadow-lg active:scale-[0.97]"
             >
               Świetnie!
             </motion.button>

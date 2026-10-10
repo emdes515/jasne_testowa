@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   X, Compass, Zap, Calculator, CheckCircle2, ShieldAlert, 
   ArrowRight, ArrowLeft, Play, Clock, Target, AlertTriangle, 
-  BookOpen, ChevronRight, HelpCircle
+  BookOpen, ChevronRight, HelpCircle,
+  Lightbulb
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MathRenderer } from '../MathRenderer';
@@ -304,7 +305,8 @@ export function MathTheoryModal({
                           </p>
                           {step.tip && (
                             <div className="pt-1 text-[11px] text-[#FFB800] font-medium flex items-center gap-1.5">
-                              <span>💡 Wskazówka:</span>
+                              <Lightbulb size={13} aria-hidden="true" />
+                              <span>Wskazówka:</span>
                               <MathRenderer content={step.tip} />
                             </div>
                           )}

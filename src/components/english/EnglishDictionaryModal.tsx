@@ -101,30 +101,31 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
       >
         {/* Nagłówek Modala */}
         <header className="p-4 sm:p-5 border-b border-[#141d2e] bg-[#0e1522]/90 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#ffb800]/15 border border-[#ffb800]/30 flex items-center justify-center text-[#ffdca1] shrink-0">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="hidden xs:flex w-10 h-10 rounded-xl bg-[#ffb800]/15 border border-[#ffb800]/30 items-center justify-center text-[#ffdca1] shrink-0">
               <BookOpen className="w-5 h-5 text-[#ffdca1]" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20">
+              <div className="flex flex-col-reverse items-start gap-1 sm:flex-row sm:items-center sm:gap-2">
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 whitespace-nowrap">
                   Formuła 2023 • CKE
                 </span>
                 <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
                   Oficjalny Słownik Maturalny
                 </h2>
               </div>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="hidden sm:block text-xs text-[#94a3b8] mt-0.5">
                 14 działów tematycznych CKE • Pewniaki Phrasal Verbs • Spójniki do e-maila i rozprawki
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             {/* Przełącznik Tryb Fiszki */}
             <button
               onClick={() => setIsFlashcardMode(!isFlashcardMode)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border cursor-pointer ${
+              aria-label="Tryb fiszek"
+              className={`px-3 min-h-[40px] rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border cursor-pointer ${
                 isFlashcardMode
                   ? 'bg-[#ffb800] text-slate-950 border-[#ffdca1] shadow-sm'
                   : 'bg-[#0e1522] border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'

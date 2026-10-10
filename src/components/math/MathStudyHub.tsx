@@ -29,7 +29,9 @@ import {
   Trophy,
   Lightbulb,
   LineChart,
-  PieChart
+  PieChart,
+  Heart,
+  Coins
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { MathRenderer } from '../MathRenderer';
@@ -498,10 +500,10 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
             {userState && (
               <div className="hidden sm:flex items-center gap-2 sm:gap-3 bg-[#0e1522] px-2.5 sm:px-3 py-1.5 rounded-lg border border-[#141d2e] text-[11px] sm:text-xs">
                 <span className="flex items-center gap-1 text-rose-400 font-semibold" title="Serca">
-                  ❤️ {userState.hearts ?? 5}
+                  <Heart size={12} className="fill-current" aria-hidden="true" /> {userState.hearts ?? 5}
                 </span>
                 <span className="flex items-center gap-1 text-[#ffdca1] font-semibold" title="Monety">
-                  🪙 {userState.coins ?? 0}
+                  <Coins size={12} aria-hidden="true" /> {userState.coins ?? 0}
                 </span>
                 <span className="flex items-center gap-1 text-orange-400 font-semibold" title="Dni streaku">
                   <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-orange-500" /> {userState.streakDays ?? 0}
@@ -1227,7 +1229,7 @@ export const MathStudyHub: React.FC<MathStudyHubProps> = ({
                                           PEWNIAKI MATURALNE
                                         </span>
                                         <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 tracking-wider shrink-0">
-                                          🔥 100% CKE STANDARD
+                                          100% CKE STANDARD
                                         </span>
                                       </div>
                                       <h4 className="text-base sm:text-lg font-bold text-white break-words">

@@ -87,15 +87,12 @@ export function getOrCreateGuestPromoStartTime(): number {
 }
 
 /**
- * Zwraca pozostałą liczbę sekund promocji powitalnej dla gościa (0 jeśli wygasła).
+ * Zniżka powitalna dla gościa NIE wygasa i nie ma odliczania: zegar „tylko teraz” przy stałej
+ * ofercie to fałszywa pilność (ryzyko z ustawy o nieuczciwych praktykach rynkowych / Omnibus).
+ * Funkcja zwraca stałą dodatnią wartość, bo reszta aplikacji traktuje „> 0” jako „oferta aktywna”.
  */
 export function getGuestPromoRemainingSeconds(durationMinutes: number = 30): number {
-  const startTime = getOrCreateGuestPromoStartTime();
-  const totalSeconds = durationMinutes * 60;
-  const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-  const remaining = totalSeconds - elapsedSeconds;
-
-  return Math.max(0, remaining);
+  return Math.max(1, durationMinutes * 60);
 }
 
 /**

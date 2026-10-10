@@ -32,7 +32,8 @@ import {
   Lock,
   RefreshCw,
   Target,
-  Trophy
+  Trophy,
+  Heart, Coins
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PolishTask, PolishEpoch, PolishPartNumber, PolishTaskType } from '../../types/maturaTypes';
@@ -626,8 +627,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
       feedback: {
         isCorrect: isFull,
         message: isFull
-          ? `✅ Znakomita analiza! Poprawnie dopasowano wszystkie pozycje i zneutralizowano dystraktor (+${earnedPoints} pkt).`
-          : `⚠️ Poprawne dopasowanie w procedurze 2. szansy (+${earnedPoints} pkt).`,
+          ? `Znakomita analiza! Poprawnie dopasowano wszystkie pozycje i zneutralizowano dystraktor (+${earnedPoints} pkt).`
+          : `Poprawne dopasowanie w procedurze 2. szansy (+${earnedPoints} pkt).`,
       },
     });
 
@@ -741,10 +742,10 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             {userState && (
               <div className="hidden sm:flex items-center gap-2 sm:gap-3 bg-[#0e1522] px-2.5 sm:px-3 py-1.5 rounded-lg border border-[#141d2e] text-[11px] sm:text-xs">
                 <span className="flex items-center gap-1 text-rose-400 font-semibold" title="Serca">
-                  ❤️ {userState.hearts ?? 5}
+                  <Heart size={12} className="fill-current" aria-hidden="true" /> {userState.hearts ?? 5}
                 </span>
                 <span className="flex items-center gap-1 text-[#ffdca1] font-semibold" title="Monety">
-                  🪙 {userState.coins ?? 0}
+                  <Coins size={12} aria-hidden="true" /> {userState.coins ?? 0}
                 </span>
                 <span className="flex items-center gap-1 text-orange-400 font-semibold" title="Dni streaku">
                   <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-orange-500" /> {userState.streakDays ?? 0}
@@ -928,7 +929,6 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                     {l.title.replace(/^Lekcja \d+:\s*/i, '')}
                                   </span>
                                 </div>
-                                <span className="text-[10px] text-[#94a3b8]/80 font-mono shrink-0">{l.durationMinutes || 45} min</span>
                               </div>
                             );
                           })}
@@ -1107,9 +1107,6 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                       <BookOpen className="w-4 h-4 text-[#ffb800]" />
                       <span>Program Mikrolekcji Core-4 (5 lekcji)</span>
                     </h3>
-                    <span className="text-xs text-[#94a3b8]">
-                      Czas przejścia: ok. 5–6 min / lekcja
-                    </span>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4">
@@ -1174,13 +1171,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                 </p>
 
                                 <div className="flex items-center gap-2.5 mt-2 text-xs text-[#94a3b8] flex-wrap min-w-0">
-                                  <span className="flex items-center gap-1 text-[#dfe2f1] font-medium">
-                                    <Clock className="w-3.5 h-3.5 text-[#ffb800] shrink-0" />
-                                    <span>~{lesson.durationMinutes || 45} min</span>
-                                  </span>
-                                  <span>•</span>
                                   <span className="text-white font-medium">
-                                    Wymóg: {lesson.taskIds.length} zadań maturalnych
+                                    Wymóg: {lesson.taskIds.length} {lesson.taskIds.length === 1 ? 'zadanie maturalne' : lesson.taskIds.length < 5 ? 'zadania maturalne' : 'zadań maturalnych'}
                                   </span>
                                   <span>•</span>
                                   <span className="text-[#ffdca1] font-medium flex items-center gap-1">
@@ -1263,7 +1255,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                           PEWNIAKI MATURALNE
                                         </span>
                                         <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 tracking-wider shrink-0">
-                                          🔥 100% CKE STANDARD
+                                          100% CKE STANDARD
                                         </span>
                                       </div>
                                       <h4 className="text-base sm:text-lg font-bold text-white break-words">

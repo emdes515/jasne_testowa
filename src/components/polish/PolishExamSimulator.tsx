@@ -330,7 +330,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 className={`w-full text-left p-3.5 rounded-xl border text-xs transition-all cursor-pointer ${
                   userSingleChoice[currentTask.id] === optIdx
                     ? 'border-amber-500 bg-amber-500/10 text-slate-900 dark:text-white font-medium ring-1 ring-amber-500/30'
-                    : 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850'
+                    : 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
                 {opt}
@@ -464,7 +464,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 pb-12">
+    <div className="w-full min-w-0 max-w-7xl mx-auto space-y-6 pb-12">
       {/* Pasek Górny Symulatora CKE */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-sm dark:shadow-xl">
         <div className="flex items-center gap-3">
@@ -484,7 +484,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           <div>
             <h1 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               Oficjalny Symulator Maturalny Formuła 2023
-              <span className="text-xs px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-300 font-normal border border-rose-500/20 dark:border-rose-500/30">
+              <span className="text-xs px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-300 font-normal border border-rose-500/20 dark:border-rose-500/30 whitespace-nowrap">
                 240 min • 60 pkt
               </span>
             </h1>
@@ -511,7 +511,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           {!isFinished && (
             <button
               onClick={handleFinishExam}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+              className="px-4 min-h-[40px] whitespace-nowrap rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
             >
               Zakończ arkusz
             </button>
@@ -526,7 +526,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           className={`p-4 rounded-xl border text-left transition-all flex items-center justify-between cursor-pointer ${
             activeBooklet === 1
               ? 'border-amber-500/80 bg-amber-500/10 text-slate-900 dark:text-white shadow-md'
-              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850'
+              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <div>
@@ -534,7 +534,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
             <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Test: Język w użyciu & Epoki</div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Zadania 1–{allExamTasks.length} • Pula: 25 punktów</div>
           </div>
-          <span className="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20">
+          <span className="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20 whitespace-nowrap shrink-0">
             25 pkt
           </span>
         </button>
@@ -544,7 +544,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
           className={`p-4 rounded-xl border text-left transition-all flex items-center justify-between cursor-pointer ${
             activeBooklet === 2
               ? 'border-rose-500/80 bg-rose-500/10 text-slate-900 dark:text-white shadow-md'
-              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-850'
+              : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <div>
@@ -552,7 +552,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
             <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Wypracowanie maturalne</div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Wybór tematu • Min. 300 słów lub konspekt</div>
           </div>
-          <span className="text-xs font-mono px-2.5 py-1 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold border border-rose-500/20">
+          <span className="text-xs font-mono px-2.5 py-1 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold border border-rose-500/20 whitespace-nowrap shrink-0">
             35 pkt
           </span>
         </button>
@@ -609,7 +609,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                 title="Otwórz pełną czytelnię tekstów źródłowych CKE"
               >
                 <BookOpen className="w-3.5 h-3.5" />
-                <span>📖 Teksty CKE</span>
+                <span>Teksty CKE</span>
               </button>
 
               {allExamTasks.map((t, i) => {
@@ -763,7 +763,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
               className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                 essayThemeChoice === 1
                   ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-white ring-1 ring-rose-500/40'
-                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
               <span className="text-xs font-bold text-rose-600 dark:text-rose-400">Temat 1 (CKE Maj 2024)</span>
@@ -777,7 +777,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
               className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                 essayThemeChoice === 2
                   ? 'border-rose-500 bg-rose-500/10 text-slate-900 dark:text-white ring-1 ring-rose-500/40'
-                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
               <span className="text-xs font-bold text-rose-600 dark:text-rose-400">Temat 2 (CKE Maj 2024)</span>
@@ -809,7 +809,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                       className={`w-full text-left p-3 rounded-lg border text-xs transition-all cursor-pointer ${
                         selectedThesisIndex === i
                           ? 'border-emerald-500 bg-emerald-500/15 text-emerald-950 dark:text-white font-medium'
-                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                     >
                       {th}
@@ -832,7 +832,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                         className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                           selectedStarBook === book
                             ? 'border-rose-500 bg-rose-500/15 text-rose-800 dark:text-rose-200'
-                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                         }`}
                       >
                         {book}
@@ -856,7 +856,7 @@ export const PolishExamSimulator: React.FC<PolishExamSimulatorProps> = ({
                       className={`p-2.5 rounded-lg border text-xs font-medium transition-all cursor-pointer ${
                         selectedContext === ctx
                           ? 'border-amber-500 bg-amber-500/15 text-amber-800 dark:text-amber-200'
-                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                     >
                       {ctx}

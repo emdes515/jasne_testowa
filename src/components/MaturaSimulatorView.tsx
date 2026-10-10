@@ -36,6 +36,7 @@ import {
   Languages
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { showToast } from '../lib/toast';
 import confetti from 'canvas-confetti';
 import Markdown from 'react-markdown';
 import remarkMath from 'remark-math';
@@ -58,7 +59,8 @@ import { MaturaExamReview, MaturaTaskReviewItem, MaturaAiEvaluation } from './Ma
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
 import { WritingWorkspace } from './writing/WritingWorkspace';
 import { PolishExamSimulator } from './polish/PolishExamSimulator';
-import { ALL_ENGLISH_TASKS } from '../data/english/allEnglishTasks';
+import type { EnglishTask } from '../types/englishTypes';
+import { loadEnglishCurriculum, getEnglishCurriculumIfLoaded } from '../data/englishDataLoader';
 import { ALL_POLISH_TASKS } from '../data/polish';
 import { MathDiagram } from './MathDiagram';
 import { NumberLineDiagram } from './NumberLineDiagram';
@@ -230,7 +232,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
             <div className="flex items-center gap-2">
               <GraduationCap size={16} className="text-[#FFB800]" />
               <span className="text-xs font-bold text-white">
-                Zadanie otwarte • Asynchroniczna ocena AI
+                Zadanie otwarte • AI oceni je po oddaniu arkusza
               </span>
             </div>
             {(openAnswer?.text?.trim() || (openAnswer?.canvasUrl && openAnswer.canvasUrl.length > 50)) ? (
@@ -538,10 +540,21 @@ export function MaturaSimulatorView({
     return CANONICAL_TOPICS;
   }, [examSubject, CANONICAL_TOPICS, ENGLISH_TOPICS, POLISH_TOPICS]);
 
+  // Baza angielskiego (2,9 MB) dociągana dopiero po wybraniu tego przedmiotu
+  const [englishTasks, setEnglishTasks] = useState<EnglishTask[]>(() => getEnglishCurriculumIfLoaded()?.ALL_ENGLISH_TASKS ?? []);
+  useEffect(() => {
+    if (examSubject !== 'angielski' || englishTasks.length > 0) return;
+    let cancelled = false;
+    loadEnglishCurriculum()
+      .then(mod => { if (!cancelled) setEnglishTasks(mod.ALL_ENGLISH_TASKS); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [examSubject, englishTasks.length]);
+
   // Zadania dla aktywnego przedmiotu w symulatorze
   const currentSubjectTasks = useMemo<MaturaTask[]>(() => {
     if (examSubject === 'angielski') {
-      return ALL_ENGLISH_TASKS.map(t => {
+      return englishTasks.map(t => {
         let optLetter = t.correctAnswer;
         if (t.options && t.options.length > 0) {
           const idx = t.options.findIndex(o => o === t.correctAnswer || (t.optionsDetailed && t.optionsDetailed.find(od => od.is_correct)?.text === o));
@@ -595,7 +608,7 @@ export function MaturaSimulatorView({
       });
     }
     return tasks;
-  }, [examSubject, tasks]);
+  }, [examSubject, tasks, englishTasks]);
 
   const effectiveTasks = currentSubjectTasks;
 
@@ -938,7 +951,7 @@ export function MaturaSimulatorView({
   // Uruchomienie Pełnego Arkusza CKE
   const startFullExam = (examName: string, sheetTasks: MaturaTask[], timed: boolean) => {
     if (sheetTasks.length === 0) {
-      alert('Brak zadań w wybranym arkuszu!');
+      showToast('Brak zadań w wybranym arkuszu.', 'warning');
       return;
     }
     const duration = 180 * 60; // 3 godziny
@@ -1115,7 +1128,7 @@ export function MaturaSimulatorView({
 
   const startMaraton = (taskList: MaturaTask[], startIndex: number = 0) => {
     if (taskList.length === 0) {
-      alert('Brak zadań w wybranej grupie!');
+      showToast('Brak zadań w wybranej grupie.', 'warning');
       return;
     }
     setMaratonList(taskList);
@@ -1145,7 +1158,7 @@ export function MaturaSimulatorView({
     }
 
     if (pool.length === 0) {
-      alert('Gratulacje! Wszystkie zadania zostały już zaliczone.');
+      showToast('Gratulacje! Wszystkie zadania zostały już zaliczone.', 'success');
       pool = tasks;
     }
 
@@ -1277,7 +1290,7 @@ export function MaturaSimulatorView({
       setMaratonOpenText(effectiveAnswer);
     }
     if (!effectiveAnswer.trim() && (!rawCanvasUrl || rawCanvasUrl.length < 50)) {
-      alert('Wpisz swoje rozwiązanie lub rozrysuj je w brudnopisie przed oddaniem do sprawdzenia.');
+      showToast('Wpisz rozwiązanie albo rozrysuj je w brudnopisie, zanim oddasz je do sprawdzenia.', 'warning');
       return;
     }
 
@@ -1380,7 +1393,7 @@ export function MaturaSimulatorView({
       setMaratonIsHintLoading(false);
       setMaratonClosedHintOpen(false);
     } else {
-      alert('Świetna robota! Ukończyłeś tę serię zadań.');
+      showToast('Świetna robota! Seria zadań ukończona.', 'success');
       setView('hub');
     }
   };
@@ -1409,7 +1422,7 @@ export function MaturaSimulatorView({
     <div className={`flex flex-col p-3.5 sm:p-6 pb-40 sm:pb-24 ${(examSubject === 'polski' || examSubject === 'angielski') ? 'max-w-7xl' : 'max-w-4xl'} mx-auto w-full relative`}>
       {/* GŁÓWNY PASEK NAWIGACJI */}
       <div className="flex items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-3">
-        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
           {(view !== 'hub' || examSubject === 'polski' || examSubject === 'angielski') && (
             <button
               onClick={() => {
@@ -1423,14 +1436,15 @@ export function MaturaSimulatorView({
                   setView('hub');
                 }
               }}
-              className="p-2 sm:p-2.5 rounded-xl bg-surface-card border border-surface-border text-text-muted hover:text-white hover:bg-white/5 transition-all shrink-0 cursor-pointer active:scale-95"
+              className="tap-44 self-start p-2.5 rounded-xl bg-surface-card border border-surface-border text-text-muted hover:text-white hover:bg-white/5 transition-all shrink-0 cursor-pointer active:scale-95"
               title="Wróć"
+              aria-label="Wróć"
             >
               <ArrowLeft size={16} />
             </button>
           )}
 
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
               <h1 className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight truncate">
                 {examSubject === 'polski' ? (
@@ -1454,15 +1468,15 @@ export function MaturaSimulatorView({
               <span className="shrink-0 px-2 py-0.5 rounded-full bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800] text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
                 Formuła 2023
               </span>
-              {view === 'hub' && (
-                <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5 relative">
+              {view === 'hub' && !isPolishFullExamActive && (
+                <div className="flex items-center bg-surface-card border border-surface-border rounded-full p-0.5 relative w-full sm:w-auto order-last sm:order-none">
                   <button
                     type="button"
                     onClick={() => {
                       setExamSubject('matematyka');
                       onSelectSubject?.('matematyka');
                     }}
-                    className={`relative px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1.5 ${
+                    className={`relative flex-1 sm:flex-none justify-center px-2.5 min-h-[36px] sm:min-h-0 sm:py-0.5 rounded-full text-xs sm:text-[11px] font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'matematyka'
                         ? 'text-amber-300'
                         : 'text-text-muted hover:text-white'
@@ -1481,7 +1495,7 @@ export function MaturaSimulatorView({
                         <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
                       </svg>
                     </span>
-                    <span className="relative z-10">Matematyka (180m)</span>
+                    <span className="relative z-10">Matematyka<span className="hidden sm:inline"> (180m)</span></span>
                   </button>
                   <button
                     type="button"
@@ -1489,7 +1503,7 @@ export function MaturaSimulatorView({
                       setExamSubject('polski');
                       onSelectSubject?.('polski');
                     }}
-                    className={`relative px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1.5 ${
+                    className={`relative flex-1 sm:flex-none justify-center px-2.5 min-h-[36px] sm:min-h-0 sm:py-0.5 rounded-full text-xs sm:text-[11px] font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'polski'
                         ? 'text-amber-300'
                         : 'text-text-muted hover:text-white'
@@ -1510,7 +1524,7 @@ export function MaturaSimulatorView({
                     >
                       P
                     </span>
-                    <span className="relative z-10">Polski (240m)</span>
+                    <span className="relative z-10">Polski<span className="hidden sm:inline"> (240m)</span></span>
                   </button>
                   <button
                     type="button"
@@ -1518,7 +1532,7 @@ export function MaturaSimulatorView({
                       setExamSubject('angielski');
                       onSelectSubject?.('angielski');
                     }}
-                    className={`relative px-2.5 py-0.5 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1.5 ${
+                    className={`relative flex-1 sm:flex-none justify-center px-2.5 min-h-[36px] sm:min-h-0 sm:py-0.5 rounded-full text-xs sm:text-[11px] font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
                       examSubject === 'angielski'
                         ? 'text-amber-300'
                         : 'text-text-muted hover:text-white'
@@ -1545,7 +1559,7 @@ export function MaturaSimulatorView({
                         <path d="M9 0V13M0 6.5H18" stroke="#FFB800" strokeWidth="1.8" />
                       </svg>
                     </span>
-                    <span className="relative z-10">Angielski (120m)</span>
+                    <span className="relative z-10">Angielski<span className="hidden sm:inline"> (120m)</span></span>
                   </button>
                 </div>
               )}
@@ -1612,7 +1626,7 @@ export function MaturaSimulatorView({
             <motion.div
               key={`hub-${examSubject}`}
               initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
               exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
               transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className="flex-1 flex flex-col gap-3.5 sm:gap-5"
@@ -1629,7 +1643,7 @@ export function MaturaSimulatorView({
                         <Flame size={12} className="text-[#FFB800]" />
                         Baza CKE
                       </span>
-                      <span className="text-text-muted text-[11px] font-medium">• 15 działów</span>
+                      <span className="text-text-muted text-[11px] font-medium">• {currentTopics.length} działów</span>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -1652,7 +1666,7 @@ export function MaturaSimulatorView({
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-text-secondary text-[11px] font-medium">Ukończono w bazie pytań:</span>
                       <span className="text-white font-bold text-xs">
-                        <span className="text-[#FFB800]">{completedCkeCount}</span> / {tasks.length} ({completionPct}%)
+                        <span className="text-[#FFB800]">{completedCkeCount}</span> / {effectiveTasks.length} ({completionPct}%)
                       </span>
                     </div>
                     <div className="w-full h-2 bg-surface-bg/90 rounded-full overflow-hidden p-0.5 border border-surface-border/80">
@@ -1690,7 +1704,7 @@ export function MaturaSimulatorView({
                     <button
                       type="button"
                       onClick={() => setRandomScope('unsolved')}
-                      className={`flex-1 sm:flex-none px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                      className={`flex-1 sm:flex-none min-w-0 px-2 sm:px-3 min-h-[40px] rounded-lg text-xs font-bold whitespace-nowrap transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                         randomScope === 'unsolved'
                           ? 'bg-[#FFB800] text-black shadow-sm'
                           : 'text-text-secondary hover:text-white hover:bg-white/5'
@@ -1702,32 +1716,32 @@ export function MaturaSimulatorView({
                     <button
                       type="button"
                       onClick={() => setRandomScope('all')}
-                      className={`flex-1 sm:flex-none px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                      className={`flex-1 sm:flex-none min-w-0 px-2 sm:px-3 min-h-[40px] rounded-lg text-xs font-bold whitespace-nowrap transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                         randomScope === 'all'
                           ? 'bg-[#FFB800] text-black shadow-sm'
                           : 'text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
                       <Layers size={13} className={randomScope === 'all' ? 'text-black' : 'text-blue-400'} />
-                      <span>Wszystkie ({tasks.length})</span>
+                      <span>Wszystkie<span className="hidden sm:inline"> ({effectiveTasks.length})</span></span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setRandomScope('weakest')}
-                      className={`flex-1 sm:flex-none px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                      className={`flex-1 sm:flex-none min-w-0 px-2 sm:px-3 min-h-[40px] rounded-lg text-xs font-bold whitespace-nowrap transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                         randomScope === 'weakest'
                           ? 'bg-[#FFB800] text-black shadow-sm'
                           : 'text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
                       <Target size={13} className={randomScope === 'weakest' ? 'text-black' : 'text-rose-400'} />
-                      <span>Najsłabszy dział</span>
+                      <span>Najsłabszy<span className="hidden sm:inline"> dział</span></span>
                     </button>
                   </div>
 
                   <button
                     onClick={() => startRandomTraining(randomScope)}
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)] hover:shadow-[0_0_25px_rgba(255,184,0,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+                    className="px-5 min-h-[48px] rounded-xl bg-gradient-to-r from-amber-400 to-[#FFB800] hover:from-amber-300 hover:to-amber-400 text-amber-950 font-display font-black text-xs sm:text-sm tracking-wide shadow-[0_0_20px_rgba(255,184,0,0.35)] hover:shadow-[0_0_25px_rgba(255,184,0,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                   >
                     <Zap size={15} fill="currentColor" />
                     <span>Rozpocznij</span>
@@ -1737,14 +1751,14 @@ export function MaturaSimulatorView({
 
               {/* TRZY GŁÓWNE FORMATY ARKUSZY CKE */}
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#FFB800] animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-[#FFB800] shrink-0" />
                     <h2 className="text-xs sm:text-sm font-display font-black text-white uppercase tracking-wider">
                       Trzy Formaty Arkuszy CKE
                     </h2>
                   </div>
-                  <span className="text-[10px] sm:text-[11px] text-text-muted font-medium">
+                  <span className="text-[11px] text-text-muted font-medium pl-4 sm:pl-0">
                     Oficjalne reżimy czasowe • Formuła 2023
                   </span>
                 </div>
@@ -1940,7 +1954,7 @@ export function MaturaSimulatorView({
                   onClick={() => {
                     const errorTasks = effectiveTasks.filter(t => mistakesBank.includes(t.id));
                     if (errorTasks.length === 0) {
-                      alert('Świetnie! Nie masz obecnie żadnych zadań w Bazie Błędów.');
+                      showToast('Świetnie! Twoja Baza Błędów jest pusta.', 'success');
                       return;
                     }
                     startMaraton(errorTasks, 0);
@@ -2448,7 +2462,7 @@ export function MaturaSimulatorView({
                       setUnansweredCount(unanswered);
                       setExamConfirmModal('finish');
                     }}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-emerald-950 font-black text-xs shadow-md active:scale-[0.98] transition-all cursor-pointer"
+                    className="px-4 min-h-[40px] whitespace-nowrap rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-emerald-950 font-black text-xs shadow-md active:scale-[0.98] transition-all cursor-pointer"
                   >
                     Oddaj arkusz
                   </button>

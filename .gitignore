@@ -90,3 +90,6 @@ strip_plots.py
 tmp_inject.py
 audit_screenshots/
 wypchnij_na_github.bat
+
+# Zrzuty i logi z testów w przeglądarce
+.playwright-mcp/

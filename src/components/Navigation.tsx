@@ -53,12 +53,14 @@ export function Navigation({ currentTab, setTab, userState, onProfileClick }: Na
               <motion.button 
                 key={item.id}
                 id={`mobile-nav-${item.id}`}
+                aria-label={item.label}
+                aria-current={isActive ? 'page' : undefined}
                 whileTap={{ scale: 0.93 }}
                 onClick={() => handleTabChange(item.id)}
                 className={`relative flex items-center justify-center gap-1.5 min-h-[48px] py-2.5 px-3 rounded-2xl transition-colors duration-200 select-none ${
                   isActive 
                     ? 'flex-1' 
-                    : 'text-text-muted hover:text-text-primary px-3'
+                    : 'text-text-secondary hover:text-text-primary min-w-[48px]'
                 }`}
               >
                 {isActive && (

@@ -543,6 +543,39 @@ export function normalizePolishTaskForRunner(task: any, lessonId: string, topicI
 }
 
 /**
+ * Zadania praktyczne dla lekcji polskiego w widoku PolishLessonView.
+ * Lekcje wskazują identyfikatory (np. „pol-task-1-1-a”), których nie ma w banku zadań,
+ * więc samo filtrowanie po taskIds dawało pusty etap „Praktyka”. Najpierw bierzemy zadania
+ * wskazane wprost, a brakujące dobieramy z puli działu (ta sama reguła co w dokumentach lekcji niżej);
+ * rotacja po numerze lekcji sprawia, że kolejne lekcje działu nie dostają tych samych zadań.
+ */
+export function getPolishTasksForLesson(lesson: { id: string; number?: number; taskIds?: string[] }): Array<typeof ALL_POLISH_TASKS[number]> {
+  const explicit = (lesson.taskIds || [])
+    .map(id => ALL_POLISH_TASKS.find(t => t.id === id))
+    .filter((t): t is typeof ALL_POLISH_TASKS[number] => Boolean(t));
+  const wanted = Math.max(2, lesson.taskIds?.length || 0);
+  if (explicit.length >= wanted) return explicit;
+
+  const bp = TOPIC_BLUEPRINTS.find(b =>
+    b.lessonIds.includes(lesson.id) ||
+    b.lessonIds.some(id => {
+      const num = parseInt(id.replace('lekcja-', ''), 10);
+      return !isNaN(num) && lesson.number === num;
+    })
+  );
+  let pool = ALL_POLISH_TASKS.filter(t => {
+    if (bp?.partFilter && t.part !== bp.partFilter) return false;
+    if (bp?.epochFilter && t.epoch !== bp.epochFilter) return false;
+    return true;
+  });
+  if (pool.length === 0) pool = ALL_POLISH_TASKS;
+
+  const start = (((lesson.number || 1) - 1) * wanted) % pool.length;
+  const rotated = [...pool.slice(start), ...pool.slice(0, start)];
+  return Array.from(new Set([...explicit, ...rotated])).slice(0, wanted);
+}
+
+/**
  * Cache pełnych dokumentów lekcji dla Języka Polskiego
  */
 export const POLISH_LESSON_DOCUMENTS: Map<string, LessonDocument> = new Map();

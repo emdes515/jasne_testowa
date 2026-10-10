@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, act, cleanup } from '@testing-library/react';
+import { render, screen, act, cleanup, waitFor } from '@testing-library/react';
 import { OpenTaskWorkspace } from '../OpenTaskWorkspace';
 import { SessionRunner } from '../SessionRunner';
 import App from '../../App';
@@ -126,7 +126,7 @@ describe('Session Recovery Component Integration', () => {
       );
 
       // Verify that SessionRunner renders Task 3, NOT Task 1!
-      expect(screen.getByText('Zadanie 3')).toBeDefined();
+      expect(screen.getAllByText('Zadanie 3').length).toBeGreaterThan(0);
 
       // Fast-forward debounce timer (300ms)
       await act(async () => {
@@ -322,7 +322,8 @@ describe('Session Recovery Component Integration', () => {
       // 1. Test 'learn' tab restoration
       localStorage.setItem('jasne_active_tab_v1', 'learn');
       const { unmount } = render(<App />);
-      expect(document.getElementById('learn-scroll-content')).not.toBeNull();
+      // Ekran Nauki jest ładowany leniwie (osobny plik), więc czekamy na jego pojawienie się
+      await waitFor(() => expect(document.getElementById('learn-scroll-content')).not.toBeNull(), { timeout: 10000 });
       unmount();
 
       // 2. Test 'arena' tab restoration
@@ -334,7 +335,7 @@ describe('Session Recovery Component Integration', () => {
       // 3. Test 'simulator' tab restoration
       localStorage.setItem('jasne_active_tab_v1', 'simulator');
       const { unmount: unmountSim } = render(<App />);
-      expect(screen.getAllByText(/Symulator/i).length).toBeGreaterThan(0);
+      await waitFor(() => expect(screen.getAllByText(/Symulator/i).length).toBeGreaterThan(0), { timeout: 10000 });
       unmountSim();
 
       // 4. Test fallback to 'dashboard' when no saved tab

@@ -379,7 +379,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
 
               {modelImprovement.explanation && (
                 <p className="text-xs text-text-secondary mt-2 bg-white/[0.02] p-2.5 rounded-lg border border-surface-border/50">
-                  💡 <strong>Dlaczego to działa lepiej:</strong> {modelImprovement.explanation}
+                  <strong>Dlaczego to działa lepiej:</strong> {modelImprovement.explanation}
                 </p>
               )}
             </div>

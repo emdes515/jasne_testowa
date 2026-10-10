@@ -288,7 +288,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Język w użyciu",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Fakty, opinie i manipulacja semantyczna w tekście nieliterackim",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -342,7 +342,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Język w użyciu",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Teza, hipoteza i hierarchia argumentacji w eseju",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -396,7 +396,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Język w użyciu",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Słowa-klucze i logiczna spójność akapitów (Kohezja)",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -450,7 +450,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Język w użyciu",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Tabela Prawda/Fałsz – Strategia eliminacji pułapek CKE",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -504,7 +504,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Język w użyciu",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 1: Język w użyciu. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Streszczenie logiczne i parafraza w zadaniach otwartych",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -558,7 +558,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Notatka syntetyzująca",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Kryteria oceny notatki syntetyzującej: Matryca CKE (4 pkt)",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -612,7 +612,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Notatka syntetyzująca",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Selekcja informacji i wspólny temat dwóch tekstów źródłowych",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -666,7 +666,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Notatka syntetyzująca",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Architektura jednoakapitowej notatki (Model 3 zdań)",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -720,7 +720,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Notatka syntetyzująca",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Zakaz własnej opinii i cytatów w notatce syntetyzującej",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -774,7 +774,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Notatka syntetyzująca",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 2: Notatka syntetyzująca. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Trening liczenia słów i żelazna autokorekta brudnopisu",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -828,7 +828,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Retoryka i Stylistyka",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Funkcje tekstu i wypowiedzi w arkuszu CKE",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -882,7 +882,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Retoryka i Stylistyka",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Środki stylistyczne i ich funkcje w tekście nieliterackim",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -936,7 +936,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Retoryka i Stylistyka",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Klasyczna retoryka: Etos, Logos i Pathos w argumentacji",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -990,7 +990,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Retoryka i Stylistyka",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Błędy logiczno-językowe i manipulacja w dyskursie",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1044,7 +1044,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Retoryka i Stylistyka",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 3: Retoryka i Stylistyka. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Styl naukowy, publicystyczny i potoczny – Rozpoznawanie rejestru",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1098,7 +1098,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Antyk i Biblia",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Biblia: Sens cierpienia w Księdze Hioba i motyw teodycei",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1152,7 +1152,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Antyk i Biblia",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Księga Koheleta i topos Vanitas (Marność nad marnościami)",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1206,7 +1206,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Antyk i Biblia",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Apokalipsa św. Jana: Język symboli, katastrofizm i Nowe Jeruzalem",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1260,7 +1260,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Antyk i Biblia",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Mitologia grecka: Archetypy, toposy i fatum w losach bohaterów",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1314,7 +1314,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Antyk i Biblia",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 4: Antyk i Biblia. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Tragedia grecka: Antygona Sofoklesa i konflikt tragiczny",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1368,7 +1368,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Średniowiecze",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Teocentryzm i hierarchizm w kulturze średniowiecza",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1422,7 +1422,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Średniowiecze",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Bogurodzica – Arcydzieło liryki religijnej i motyw Deesis",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1476,7 +1476,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Średniowiecze",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Lament świętokrzyski – Humanizacja cierpienia Maryi",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1530,7 +1530,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Średniowiecze",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Wzorce osobowe: Asceza w Legendzie o św. Aleksym i etos rycerski",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1584,7 +1584,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Średniowiecze",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 5: Średniowiecze. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Rozmowa Mistrza Polikarpa ze Śmiercią i Danse Macabre",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1638,7 +1638,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Renesans (Odrodzenie)",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Humanizm renesansowy: Antropocentryzm, harmonia i cnota (virtus)",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1692,7 +1692,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Renesans (Odrodzenie)",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Jan Kochanowski: Pieśni – Filozofia stoicko-epikurejska i patriotyzm",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1746,7 +1746,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Renesans (Odrodzenie)",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Jan Kochanowski: Treny – Kryzys światopoglądowy i odbudowa wiary",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1800,7 +1800,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Renesans (Odrodzenie)",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Odprawa posłów greckich – Pierwszy polski dramat humanistyczny",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1854,7 +1854,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Renesans (Odrodzenie)",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 6: Renesans (Odrodzenie). Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Fraszki Jana Kochanowskiego i topos Theatrum Mundi",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1908,7 +1908,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Barok",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Człowiek rozdarty między ziemią a niebem: Mikołaj Sęp-Szarzyński",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -1962,7 +1962,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Barok",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Daniel Naborowski: Czas, przemijanie i krótkość żywota",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2016,7 +2016,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Barok",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Jan Andrzej Morsztyn: Konceptyzm i poetycki kunszt dworski",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2070,7 +2070,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Barok",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Kultura sarmacka w Polsce: Mity narodowe, wady i zalety szlachty",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2124,7 +2124,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Barok",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 7: Barok. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Jan Chryzostom Pasek: Pamiętniki – Żywy portret szlachcica-żołnierza",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2178,7 +2178,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Oświecenie",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Wiek rozumu i filozofia oświecenia: Empiryzm, racjonalizm i deizm",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2232,7 +2232,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Oświecenie",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Ignacy Krasicki: Bajki – Uniwersalne prawdy o naturze ludzkiej i władzy",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2286,7 +2286,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Oświecenie",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Ignacy Krasicki: Satyry – Diagnoza wad społeczeństwa stanowego",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2340,7 +2340,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Oświecenie",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Hymn do miłości ojczyzny i motyw patriotyzmu oświeceniowego",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2394,7 +2394,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Oświecenie",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 8: Oświecenie. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Teatr stanisławowski i Powrót posła Juliana Ursyna Niemcewicza",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2448,7 +2448,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Ballady i Dziady cz. II/IV",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Przełom romantyczny: „Romantyczność” jako manifest światopoglądowy",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2502,7 +2502,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Ballady i Dziady cz. II/IV",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Ballady i romanse: Ludowość, fantastyka i żelazna moralność ludowa",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2556,7 +2556,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Ballady i Dziady cz. II/IV",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Dziady cz. II: Obrzęd wywoływania duchów i elementarne prawdy moralne",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2610,7 +2610,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Ballady i Dziady cz. II/IV",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Dziady cz. IV: Gustaw i anatomia nieszczęśliwej miłości romantycznej",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2664,7 +2664,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Ballady i Dziady cz. II/IV",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 9: Romantyzm: Ballady i Dziady cz. II/IV. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Konrad Wallenrod: Tragizm zdrady w imię ratowania ojczyzny",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2718,7 +2718,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Dziady cz. III: Przemiana Gustawa w Konrada i martyrologia młodzieży",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2772,7 +2772,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Wielka Improwizacja Konrada: Bunt prometejski przeciwko Bogu",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2826,7 +2826,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Widzenie księdza Piotra i mesjanizm narodowy (Polska Chrystusem narodów)",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2880,7 +2880,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Juliusz Słowacki: Kordian – Dojrzewanie bohatera i polemika z mesjanizmem",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2934,7 +2934,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 10: Romantyzm: Dziady cz. III, Kordian, Pan Tadeusz. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Adam Mickiewicz: Pan Tadeusz – Soplicowo jako arkadia i epopeja narodowa",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -2988,7 +2988,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Pozytywizm i Realizm",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Filozofia pozytywizmu: Scjentyzm, praca organiczna i praca u podstaw",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3042,7 +3042,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Pozytywizm i Realizm",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Bolesław Prus: Lalka – Stanisław Wokulski na granicy dwóch epok",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3096,7 +3096,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Pozytywizm i Realizm",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Bolesław Prus: Lalka – Obraz społeczeństwa Warszawy i Paryża",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3150,7 +3150,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Pozytywizm i Realizm",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Eliza Orzeszkowa: Gloria victis – Pamięć o powstaniu styczniowym",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3204,7 +3204,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Pozytywizm i Realizm",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 11: Pozytywizm i Realizm. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Fiodor Dostojewski: Zbrodnia i kara – Psychologia zbrodni i odkupienie",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3258,7 +3258,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Młoda Polska",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Modernistyczny bunt: Dekadentyzm, fin de siècle i poezja Tetmajera",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3312,7 +3312,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Młoda Polska",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Stanisław Wyspiański: Wesele – Autentyzm bronowickiej chaty i chłapomania",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3366,7 +3366,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Młoda Polska",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Stanisław Wyspiański: Wesele – Postacie dramatyczne i zjawy symboliczne",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3420,7 +3420,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Młoda Polska",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Wesele – Symbole narodowe: Złoty róg, czapka z pawich piór i Chocholi Taniec",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3474,7 +3474,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Młoda Polska",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 12: Młoda Polska. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Chłopi Władysława Reymonta – Mityzacja życia wsi i cykl natury",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3528,7 +3528,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Dwudziestolecie międzywojenne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Stefan Żeromski: Przedwiośnie – Rewolucja w Baku i mit szklanych domów",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3582,7 +3582,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Dwudziestolecie międzywojenne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Stefan Żeromski: Przedwiośnie – Trzy koncepcje odbudowy Rzeczypospolitej",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3636,7 +3636,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Dwudziestolecie międzywojenne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Witold Gombrowicz: Ferdydurke – Gęba, pupa i upupienie człowieka",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3690,7 +3690,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Dwudziestolecie międzywojenne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Bruno Schulz: Sklepy cynamonowe – Mityzacja dzieciństwa i oniryzm",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3744,7 +3744,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Dwudziestolecie międzywojenne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 13: Dwudziestolecie międzywojenne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Poezja dwudziestolecia: Skamander (wiosna i radość) oraz Awangarda Krakowska",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3798,7 +3798,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Literatura wojenna i okupacyjna",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Tadeusz Borowski: Opowiadania – Koncepcja człowieka zlagrowanego",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3852,7 +3852,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Literatura wojenna i okupacyjna",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Gustaw Herling-Grudziński: Inny świat – Gułag i granice człowieczeństwa",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3906,7 +3906,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Literatura wojenna i okupacyjna",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Hanna Krall: Zdążyć przed Panem Bogiem – Prawda o powstaniu w getcie",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -3960,7 +3960,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Literatura wojenna i okupacyjna",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Krzysztof Kamil Baczyński i pokolenie Kolumbów – Apokalipsa spełniona",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -4014,7 +4014,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Literatura wojenna i okupacyjna",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 14: Literatura wojenna i okupacyjna. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Tadeusz Różewicz: „Ocalony” – Kryzys poezji i etyki po Zagładzie",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -4068,7 +4068,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Wypracowanie maturalne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Struktura wypracowania w Formule 2023: Matryca oceniania CKE (35 pkt)",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -4122,7 +4122,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Wypracowanie maturalne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Formułowanie precyzyjnej tezy i konspekt argumentacyjny",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -4176,7 +4176,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Wypracowanie maturalne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Wybór lektury obowiązkowej i funkcjonalne omówienie problemu",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -4230,7 +4230,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Wypracowanie maturalne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Kontekst biograficzny, historyczny, filozoficzny i literacki",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",
@@ -4284,7 +4284,7 @@ export const POLISH_LESSONS: PolishLesson[] = [
     "epoch": "Wypracowanie maturalne",
     "durationMinutes": 45,
     "introduction": {
-      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept w 45 minut, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
+      "lead": "Kluczowa lekcja Działu 15: Wypracowanie maturalne. Opanuj ten koncept, aby zdobyć komplet punktów w arkuszu CKE Formuła 2023.",
       "objectives": [
         "Zrozumienie kluczowego zagadnienia: Błąd kardynalny a błąd rzeczowy – Żelazne procedury eliminacji",
         "Rozpoznawanie typowych pytań i schematów zadań CKE dla tego tematu",

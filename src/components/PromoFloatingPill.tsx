@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Flame, ArrowRight } from 'lucide-react';
-import { formatPromoSeconds } from '../services/promotionService';
 import { triggerHaptic } from '../utils';
 
 interface PromoFloatingPillProps {
@@ -19,7 +18,8 @@ export function PromoFloatingPill({
 }: PromoFloatingPillProps) {
   if (!isVisible || secondsLeft <= 0) return null;
 
-  const isUrgent = secondsLeft <= 300; // < 5 minut
+  // Oferta powitalna jest stała – bez odliczania i bez trybu „kończy się”
+  const isUrgent = false;
 
   const handleClick = () => {
     triggerHaptic(isUrgent ? 'heavy' : 'medium');
@@ -62,14 +62,12 @@ export function PromoFloatingPill({
 
       <div className="flex items-center gap-1 font-mono text-xs sm:text-sm font-black tracking-tight whitespace-nowrap tabular-nums">
         <span className={isUrgent ? 'text-rose-100 font-black uppercase text-[10px] sm:text-[11px] tracking-wider' : 'text-[#070A0F] font-black'}>
-          {isUrgent ? 'Kończy się!' : '-50% PRO:'}
-        </span>
-        <span className={isUrgent ? 'text-white font-black underline decoration-white/50' : 'text-[#070A0F] font-black'}>
-          {formatPromoSeconds(secondsLeft)}
+          -50% PRO
         </span>
       </div>
 
-      <div className={`flex items-center justify-center pl-1.5 border-l text-[10px] sm:text-[11px] font-black uppercase tracking-wider ${
+      {/* Na telefonie pigułka jest kompaktowa (ikona + rabat), żeby nie zasłaniać treści */}
+      <div className={`${variant === 'bottom-inline' ? 'flex' : 'hidden sm:flex'} items-center justify-center pl-1.5 border-l text-[10px] sm:text-[11px] font-black uppercase tracking-wider ${
         isUrgent 
           ? 'border-white/30 text-white' 
           : 'border-black/20 text-[#070A0F]'

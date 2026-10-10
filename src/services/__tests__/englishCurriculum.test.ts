@@ -1,5 +1,5 @@
 // @vitest-environment happy-dom
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, beforeAll } from 'vitest';
 
 const mocks = vi.hoisted(() => ({
   mockGetDoc: vi.fn((..._args: any[]): any => Promise.resolve({ exists: () => false, data: () => null })),
@@ -28,8 +28,15 @@ vi.mock('../../firebase', () => ({
 import { curriculumRepository, __clearCurriculumMemoryAndStorageForTests } from '../curriculumRepository';
 import { calculateMaturaPrediction } from '../../lib/maturaPredictor';
 import { ENGLISH_PILLARS } from '../../data/englishCurriculumData';
+import { loadEnglishCurriculum } from '../../data/englishDataLoader';
 
 describe('English Language Module (Język Angielski - CKE Formuła 2023)', () => {
+  // Baza angielskiego (2,9 MB) jest ładowana leniwie – rozgrzewamy ją raz, z zapasem czasu,
+  // żeby pierwszy test nie przekraczał domyślnego limitu 5 s przy równoległym uruchomieniu.
+  beforeAll(async () => {
+    await loadEnglishCurriculum();
+  }, 60_000);
+
   beforeEach(() => {
     vi.clearAllMocks();
     localStorage.clear();

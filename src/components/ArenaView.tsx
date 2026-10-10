@@ -503,13 +503,13 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 mt-1.5 text-[11px] text-emerald-200/80">
                     <span className="bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded">
-                      💰 +100 Żetonów w Skarbcu
+                      +100 Żetonów w Skarbcu
                     </span>
                     <span className="bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded">
-                      🛡️ +1 Tarcza ELO
+                      +1 Tarcza ELO
                     </span>
                     <span className="bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded">
-                      🎖️ Tytuł: Pionier Areny 2025
+                      Tytuł: Pionier Areny
                     </span>
                   </div>
                 </div>

@@ -65,8 +65,8 @@ import { NumberLineDiagram } from './NumberLineDiagram';
 import { OutOfHeartsModal } from './OutOfHeartsModal';
 import { ParentSponsorModal } from './ParentSponsorModal';
 import { ProPopup } from './ProPopup';
-import { PromoFloatingPill } from './PromoFloatingPill';
-import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro, activateProWithCode } from '../lib/heartsManager';
+import { getSyncedHearts, deductHeart, refillHeartsWithCoins, activatePro, activateProWithCode, isFirstLessonGrace } from '../lib/heartsManager';
+import { showToast } from '../lib/toast';
 import { recordAiTokenUsage } from '../services/aiUsageTracker';
 import { enrichTaskWithVisual, enrichTheoryPillWithVisual } from '../data/mathVisualRegistry';
 import { getCkeFormulas, getCkeFormulaTopics } from '../services/ckeCatalogRepository';
@@ -1222,14 +1222,15 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
   const isTheoryStep = currentStep === 0;
 
-  // Synchronizacja liczby serc z animacją – w trybie teorii nielimitowane (∞), zmiana dopiero w momencie uderzenia komety
+  // Synchronizacja liczby serc z animacją – zmiana dopiero w momencie uderzenia komety.
+  // Zawsze pokazujemy realny stan (∞ tylko w PRO), żeby licznik zgadzał się z nagłówkiem aplikacji.
   const displayedHeartsCount = useMemo(() => {
-    if (isTheoryStep || heartsData.isPro) return '∞';
+    if (heartsData.isPro) return '∞';
     if (heartFlyAnim?.active && !pillImpactDone) {
       return heartFlyAnim.currentHearts;
     }
     return heartsData.hearts;
-  }, [isTheoryStep, heartsData, heartFlyAnim, pillImpactDone]);
+  }, [heartsData, heartFlyAnim, pillImpactDone]);
 
   // Bieżąca wartość isEvaluated dostępna także dla handlerów z poprzedniego renderu (patrz handleNextStep)
   const isEvaluatedLiveRef = React.useRef(false);
@@ -2380,8 +2381,16 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   }, [lessonId]);
 
   // Obsługa utraty serc (Hearts Engine)
+  const firstLessonGraceNoticeShown = React.useRef(false);
   const handleMistakeDeduction = (count: number = 1) => {
     if (userState?.isPro) return;
+    if (isFirstLessonGrace(userState)) {
+      if (!firstLessonGraceNoticeShown.current) {
+        firstLessonGraceNoticeShown.current = true;
+        showToast('Pierwsza lekcja jest na próbę – błędy nie zabierają serc.', 'info');
+      }
+      return;
+    }
 
     // Obliczenie dokładnych współrzędnych docelowych wskaźnika serc w nagłówku
     let targetX = typeof window !== 'undefined' ? window.innerWidth - 65 : 140;
@@ -5724,7 +5733,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             <div className="pt-4 pb-2.5 flex items-center justify-between gap-2 shrink-0 flex-wrap">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-xs sm:text-sm font-bold text-slate-200">
-                  Zadanie {currentQueueIndex + 1} z {Math.max(taskQueue.length, currentQueueIndex + 1) || tasks?.length || targetCorrectAnswers || 5}
+                  Zadanie {currentQueueIndex + 1}
                 </span>
                 <span className="text-slate-600 hidden sm:inline">•</span>
                 <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg border font-semibold text-[11px] sm:text-xs shadow-sm ${taskSourceBadge.badgeClass}`}>
@@ -6682,16 +6691,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           </>
         )}
 
-        {/* Baner promocyjny -50% PRO w dolnej strefie sesji nauki (pod opcjami w przewijalnym kontenerze) */}
-        {guestPromoSecondsLeft && guestPromoSecondsLeft > 0 && onOpenGuestPromo && (
-          <div className="pt-6 pb-6 flex justify-center w-full">
-            <PromoFloatingPill
-              secondsLeft={guestPromoSecondsLeft}
-              onClick={onOpenGuestPromo}
-              variant="bottom-inline"
-            />
-          </div>
-        )}
+        {/* Sesja nauki jest strefą skupienia: żadnych banerów sprzedażowych obok zadania.
+            Oferta PRO pojawia się na Dashboardzie i raz po ukończonej sesji. */}
       </main>
 
       {/* ================= STICKY BOTTOM CTA FOR THEORY STEP ================= */}
@@ -6944,7 +6945,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <button
                       type="button"
                       onClick={() => setShowExplanation(prev => !prev)}
-                      className="mt-1 text-xs font-semibold text-[#FFB800] hover:text-[#FFC72C] flex items-center gap-1 cursor-pointer transition underline underline-offset-2 whitespace-nowrap"
+                      className="tap-44 mt-1.5 px-2.5 py-1 -ml-0.5 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/30 text-xs font-bold text-[#FFB800] hover:bg-[#FFB800]/20 flex items-center gap-1 cursor-pointer transition whitespace-nowrap w-fit"
                     >
                       <BookOpen size={13} />
                       <span>Zobacz wyjaśnienie {showExplanation ? '▴' : '▾'}</span>

@@ -93,7 +93,7 @@ export function OnboardingOverlay({
       exam: 'matura_2025',
       score: '70',
       title: '70%+ • Solidny wynik',
-      subtitle: 'Studia dzienne • Pewne schematy z 14 działów maturalnych',
+      subtitle: 'Studia dzienne • Pewne schematy z 15 działów maturalnych',
       icon: GraduationCap,
       badgeText: 'NAJPOPULARNIEJSZY',
       badgeVariant: 'jasne'
@@ -197,7 +197,7 @@ export function OnboardingOverlay({
       title: 'Nawigacja & Menu',
       badge: 'SZYBKI DOSTĘP',
       icon: Compass,
-      desc: 'Intuicyjny dock u dołu ekranu. Błyskawicznie przełączaj się między nauką, arkuszami CKE i pojedynkami 1v1.',
+      desc: 'Intuicyjny dock u dołu ekranu. Błyskawicznie przełączaj się między nauką, arkuszami CKE i swoim profilem.',
       color: '#FFB800'
     },
     {
@@ -211,7 +211,7 @@ export function OnboardingOverlay({
     {
       id: 'learn',
       title: 'Mapa Nauki & Bento',
-      badge: '14 DZIAŁÓW',
+      badge: '15 DZIAŁÓW',
       icon: BookOpen,
       desc: 'Drzewo powtórek podzielone na mikro-lekcje (4–6 min). Pigułka teorii, oficjalne wzory i zadania ze schematów CKE.',
       color: '#10B981'
@@ -354,7 +354,7 @@ export function OnboardingOverlay({
                             {opt.badgeText}
                           </Badge>
                         </div>
-                        <p className="text-xs text-slate-400 leading-tight truncate">
+                        <p className="text-xs text-slate-400 leading-snug line-clamp-2">
                           {opt.subtitle}
                         </p>
                       </div>
@@ -640,11 +640,11 @@ export function OnboardingOverlay({
                           Baza Wszystkich Zadań CKE
                         </h4>
                         <Badge variant="jasne">
-                          14 DZIAŁÓW CKE
+                          15 DZIAŁÓW CKE
                         </Badge>
                       </div>
                       <p className="text-xs text-slate-300 leading-relaxed">
-                        Przerobisz oficjalne zadania z arkuszy 2015–2025. Każde zadanie z pigułką Core-4, wzorami z tablic i ostrzeżeniem o pułapce.
+                        Przerobisz zadania z oficjalnych arkuszy CKE w Formule 2023. Każde zadanie z pigułką Core-4, wzorami z tablic i ostrzeżeniem o pułapce.
                       </p>
                     </div>
                   </div>
@@ -743,7 +743,7 @@ export function OnboardingOverlay({
                           <Icon size={16} />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <span className="text-xs font-bold block truncate leading-tight">
+                          <span className="text-xs font-bold block leading-tight line-clamp-2">
                             {hs.title}
                           </span>
                           <span className="text-[10px] opacity-70 block truncate">
@@ -897,7 +897,7 @@ export function OnboardingOverlay({
                   className="w-full py-4 px-6 rounded-2xl font-bold text-[#080B11] bg-[#FFB800] hover:bg-[#FFC72C] active:scale-[0.99] transition flex items-center justify-center gap-2 text-base shadow-[0_0_20px_rgba(255,184,0,0.35)]"
                 >
                   <LogIn size={18} className="stroke-[2.5]" />
-                  <span>ZAPISZ SWÓJ PROGRES (LOGOWANIE)</span>
+                  <span>ZAPISZ POSTĘPY</span>
                 </button>
 
                 <button

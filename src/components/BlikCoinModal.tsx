@@ -98,15 +98,15 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
           <button
             onClick={onClose}
             disabled={isProcessing}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer border border-white/5"
+            className="tap-44 absolute top-3 right-3 w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer border border-white/5"
             aria-label="Zamknij"
           >
             <X size={16} />
           </button>
 
           {/* Modal Header */}
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-11 h-11 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-inner">
+          <div className="flex items-center gap-3 mb-5 pr-10">
+            <div className="w-11 h-11 shrink-0 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-inner">
               <Coins size={22} />
             </div>
             <div>
@@ -147,7 +147,7 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
                       <div
                         key={pack.id}
                         onClick={() => handleSelectPack(pack)}
-                        className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between relative overflow-hidden ${
+                        className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 relative overflow-hidden ${
                           isSelected
                             ? 'bg-amber-500/15 border-amber-400/60 shadow-md shadow-amber-500/10'
                             : 'bg-white/[0.03] border-white/5 hover:border-white/15'
@@ -159,18 +159,18 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
                           </div>
                         )}
 
-                        <div className="flex items-center gap-3">
-                          <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm ${
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className={`w-9 h-9 shrink-0 rounded-xl flex items-center justify-center font-bold text-sm ${
                             isSelected ? 'bg-amber-400 text-slate-950' : 'bg-white/5 text-amber-400'
                           }`}>
                             <Coins size={18} />
                           </div>
-                          <div>
-                            <div className="flex items-center gap-2">
+                          <div className="min-w-0">
+                            <div className="flex items-baseline gap-x-2 flex-wrap">
                               <span className="font-display font-extrabold text-sm text-white">
                                 {pack.name}
                               </span>
-                              <span className="text-xs font-mono font-bold text-amber-300">
+                              <span className="text-xs font-mono font-bold text-amber-300 whitespace-nowrap">
                                 {pack.coins} monet
                               </span>
                             </div>
@@ -180,8 +180,8 @@ export const BlikCoinModal: React.FC<BlikCoinModalProps> = ({
                           </div>
                         </div>
 
-                        <div className="text-right">
-                          <span className="font-display font-black text-base text-white">
+                        <div className="text-right shrink-0">
+                          <span className="font-display font-black text-base text-white whitespace-nowrap tabular-nums">
                             {pack.pricePln} zł
                           </span>
                         </div>

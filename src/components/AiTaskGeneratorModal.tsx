@@ -276,9 +276,9 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
               </div>
               <div>
                 <h3 className="text-sm sm:text-base font-black text-white flex items-center gap-2">
-                  <span>Generator Zadań AI</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400">
-                    OpenRouter Free
+                  <span className="whitespace-nowrap">Generator Zadań AI</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 whitespace-nowrap">
+                    Beta
                   </span>
                 </h3>
                 <p className="text-[11px] text-slate-400">
@@ -367,7 +367,7 @@ export const AiTaskGeneratorModal: React.FC<AiTaskGeneratorModalProps> = ({
                   {isGenerating ? (
                     <>
                       <Loader2 size={16} className="animate-spin" />
-                      <span>Generuję zadanie przez OpenRouter...</span>
+                      <span>Układam zadanie z kluczem CKE...</span>
                     </>
                   ) : (
                     <>

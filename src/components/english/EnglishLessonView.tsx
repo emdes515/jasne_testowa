@@ -105,15 +105,16 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
   return (
     <div className="min-h-screen bg-[#070a0f] text-[#dfe2f1] font-sans pb-28">
       {/* Top Header */}
-      <header className="sticky top-0 z-30 bg-[#070a0f]/95 backdrop-blur-md border-b border-[#141d2e] px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-[#070a0f]/95 backdrop-blur-md border-b border-[#141d2e] px-4 py-3 flex items-center justify-between gap-3">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors cursor-pointer"
+          aria-label="Powrót do modułu"
+          className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors cursor-pointer shrink-0 min-h-[44px]"
         >
           <ArrowLeft size={16} />
-          <span>Powrót do modułu</span>
+          <span className="hidden sm:inline">Powrót do modułu</span>
         </button>
-        <div className="text-center max-w-sm truncate">
+        <div className="text-center max-w-sm truncate min-w-0 flex-1">
           <span className="text-[10px] font-bold text-[#FFB800] tracking-wider uppercase block">
             Język Angielski • Formuła 2023
           </span>
@@ -121,7 +122,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
             {lesson.title}
           </span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400">
+        <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 whitespace-nowrap shrink-0">
           <Clock size={14} className="text-amber-400" />
           <span>{lesson.estimatedMinutes || 6} min</span>
         </div>

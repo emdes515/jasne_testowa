@@ -581,7 +581,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
               })}
             </div>
             <p className="text-[11px] text-text-muted italic">
-              💡 Kliknij dowolny zwrot, aby wstawić go bezpośrednio do Twojego wypracowania.
+              Kliknij dowolny zwrot, aby wstawić go bezpośrednio do Twojego wypracowania.
             </p>
           </div>
         )}

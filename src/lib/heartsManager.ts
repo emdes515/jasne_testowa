@@ -353,3 +353,13 @@ export function recordAiVisionUse(userState: UserState): UserState {
     aiVisionDailyCount: currentDailyCount + 1
   };
 }
+
+/**
+ * Pierwsza lekcja nowego ucznia jest „na próbę”: dopóki nie ukończył żadnej lekcji,
+ * błędy nie zabierają serc. Chroni to pierwsze minuty w aplikacji (Time-to-Value)
+ * przed blokadą po 5 pomyłkach; stałe ekonomii serc pozostają bez zmian.
+ */
+export function isFirstLessonGrace(user?: Pick<UserState, 'completed_lessons' | 'completedLessonsPolish' | 'completedLessonsEnglish'> | null): boolean {
+  if (!user) return false;
+  return !(user.completed_lessons?.length || user.completedLessonsPolish?.length || user.completedLessonsEnglish?.length);
+}

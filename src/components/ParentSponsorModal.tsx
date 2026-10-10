@@ -47,10 +47,10 @@ export const ParentSponsorModal: React.FC<ParentSponsorModalProps> = ({
 
 Żebym mógł uczyć się bez limitów (nielimitowane serca, sprawdzanie zadań otwartych przez AI egzaminatora wg oficjalnego klucza CKE), potrzebuję pełnego konta PRO.
 
-Czy moglibyście mi kupić dostęp? To jednorazowy wydatek 39 zł przez bezpieczny i szybki BLIK:
-👉 ${sponsorUrl}
+Czy moglibyście mi opłacić dostęp? To 29 zł miesięcznie, płatne przez bezpieczny i szybki BLIK:
+${sponsorUrl}
 
-Dzięki wielkie za pomoc w zdaniu matury! ❤️
+Dzięki wielkie za pomoc w zdaniu matury!
 — ${displayName}`;
 
   const handleCopy = async () => {
@@ -136,12 +136,12 @@ Dzięki wielkie za pomoc w zdaniu matury! ❤️
                   <h3 className="text-lg sm:text-xl font-black text-white tracking-tight">
                     Poproś rodzica o PRO
                   </h3>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
+                  <span className="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 whitespace-nowrap">
                     Szybki BLIK
                   </span>
                 </div>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  94% rodziców z chęcią funduje przygotowanie do matury
+                  Wyślij rodzicom gotową wiadomość z linkiem do płatności BLIK
                 </p>
               </div>
             </div>
@@ -172,8 +172,8 @@ Dzięki wielkie za pomoc w zdaniu matury! ❤️
               </div>
               <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
                 <ShieldCheck className="w-5 h-5 text-emerald-400 mb-1" />
-                <span className="text-[11px] font-bold text-white">Tylko 39 zł BLIK</span>
-                <span className="text-[10px] text-slate-400">Bez abonamentu</span>
+                <span className="text-[11px] font-bold text-white">29 zł / mies.</span>
+                <span className="text-[10px] text-slate-400">Płatność BLIK</span>
               </div>
             </div>
 

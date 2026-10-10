@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { triggerHaptic } from '../utils';
 import { getSyncedHearts, refillHeartsWithCoins, HEARTS_REFILL_COIN_COST } from '../lib/heartsManager';
 import { formatPromoSeconds } from '../services/promotionService';
-import { useTheme } from '../services/themeManager';
+import { useTheme, LIGHT_THEME_READY } from '../services/themeManager';
 import { JasneLogo } from './ui/JasneLogo';
 
 export interface HeaderProps {
@@ -30,6 +30,12 @@ export interface HeaderProps {
   onOpenGuestPromo?: () => void;
   onOpenDevHub?: () => void;
   onOpenBlikModal?: () => void;
+}
+
+/** Skraca duże salda na wąskim nagłówku mobilnym: 12 500 → 12,5k */
+function formatCompactCoins(coins: number): string {
+  if (coins < 10000) return String(coins);
+  return `${(Math.floor(coins / 100) / 10).toLocaleString('pl-PL')}k`;
 }
 
 export function Header({ 
@@ -97,7 +103,7 @@ export function Header({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-surface-bg/90 backdrop-blur-2xl border-b border-surface-border px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between relative shadow-lg select-none">
+    <header className="sticky top-0 z-40 bg-surface-bg/90 backdrop-blur-2xl border-b border-surface-border px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-1.5 shadow-lg select-none">
       {/* LEWA STRONA: Klikalny Brand & Logo JASNE. (widoczny tylko na mobile/tablecie, na PC ukryty bo jest w stałym sidebarze) */}
       <button 
         id="header-brand-logo"
@@ -110,7 +116,7 @@ export function Header({
         aria-label="Pulpit główny JASNE."
       >
         <JasneLogo variant="icon" size={24} glow={true} className="group-hover:scale-105 transition-transform duration-200 shrink-0" />
-        <div className="flex flex-col text-left min-w-0">
+        <div className="hidden xs:flex flex-col text-left min-w-0">
           <span className="text-xs sm:text-base font-black tracking-wider text-text-primary group-hover:text-primary transition-colors leading-none">
             JASNE<span className="text-primary">.</span>
           </span>
@@ -123,14 +129,15 @@ export function Header({
       {/* CENTRUM: Selektor przedmiotu + Przycisk Lobby */}
       <div className="flex items-center gap-1 sm:gap-1.5 min-w-0 shrink">
         {/* MOBILNY KOMPAKTOWY PRZEŁĄCZNIK PRZEDMIOTU (< 640px) */}
-        <div className="sm:hidden relative shrink-0">
+        <div className="sm:hidden relative min-w-0">
           <button
             type="button"
             onClick={() => {
               triggerHaptic('light');
               setIsMobileSubjectSheetOpen(true);
             }}
-            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full bg-surface-card border border-primary/40 text-text-primary text-xs font-bold transition-all active:scale-95 shadow-xs shrink-0"
+            aria-label={`Przedmiot: ${activeSubjectInfo.label}. Zmień przedmiot`}
+            className="tap-44 flex items-center gap-1 px-2.5 h-9 max-w-full rounded-full bg-surface-card border border-primary/40 text-text-primary text-xs font-bold transition-all active:scale-95 shadow-xs min-w-0"
           >
             {isMathActive ? (
               <span className="w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
@@ -159,7 +166,11 @@ export function Header({
                 </svg>
               </span>
             )}
-            <span className="text-amber-200 font-extrabold text-[11px] truncate max-w-[70px] xs:max-w-[95px]">{activeSubjectInfo.shortLabel}</span>
+            {/* Pełna nazwa mieści się nawet na 360px; skrót tylko gdy miejsce zabiera przycisk DEV */}
+            <span className={`${onOpenDevHub ? 'hidden xs:inline' : ''} text-amber-200 font-extrabold text-xs truncate min-w-0`}>{activeSubjectInfo.shortLabel}</span>
+            {onOpenDevHub && (
+              <span className="xs:hidden text-amber-200 font-extrabold text-xs">{activeSubjectInfo.shortLabel.slice(0, 3)}</span>
+            )}
             <ChevronDown size={11} className="text-text-muted shrink-0" />
           </button>
         </div>
@@ -338,7 +349,7 @@ export function Header({
       {/* PRAWA STRONA: Skarbiec i Profil gracza */}
       <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
         {/* MOBILNA ZINTEGROWANA PIGUŁKA GAMIFIKACJI (< 640px) */}
-        <div className="sm:hidden flex items-center bg-surface-card border border-white/10 rounded-full px-1.5 py-0.5 shadow-sm text-xs font-mono font-bold shrink-0">
+        <div className="sm:hidden flex items-center h-9 bg-surface-card border border-surface-border rounded-full px-0.5 shadow-sm text-xs font-mono font-bold shrink-0">
           {/* Serca */}
           <button
             type="button"
@@ -346,14 +357,13 @@ export function Header({
               triggerHaptic('light');
               setShowHeartsPopup(prev => !prev);
             }}
-            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-rose-400 active:scale-95 transition"
+            className="tap-44 flex items-center gap-1 px-1.5 h-full rounded-full text-rose-400 active:scale-95 transition"
             title={`Serca: ${heartsData.hearts}/${heartsData.maxHearts}`}
+            aria-label={heartsData.isPro ? 'Serca: bez limitu' : `Serca: ${heartsData.hearts} z ${heartsData.maxHearts}`}
           >
-            <Heart size={12} className={heartsData.hearts > 0 ? "text-rose-500 fill-rose-500" : "text-rose-500"} />
-            <span className="text-[11px] leading-none font-black">{heartsData.isPro ? '∞' : heartsData.hearts}</span>
+            <Heart size={13} className={heartsData.hearts > 0 ? "text-rose-500 fill-rose-500" : "text-rose-500"} />
+            <span className="text-xs leading-none font-black tabular-nums">{heartsData.isPro ? '∞' : heartsData.hearts}</span>
           </button>
-
-          <span className="text-white/15 text-[10px] select-none">•</span>
 
           {/* Streak */}
           <button
@@ -362,14 +372,13 @@ export function Header({
               triggerHaptic('light');
               if (onProfileClick) onProfileClick();
             }}
-            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[#F97316] active:scale-95 transition"
+            className="tap-44 flex items-center gap-1 px-1.5 h-full rounded-full text-[#F97316] active:scale-95 transition"
             title={`Passa: ${state.streakDays || 0} dni`}
+            aria-label={`Passa: ${state.streakDays || 0} dni z rzędu`}
           >
-            <Flame size={12} className="text-[#F97316] fill-[#F97316]" />
-            <span className="text-[11px] leading-none font-black">{state.streakDays || 0}</span>
+            <Flame size={13} className="text-[#F97316] fill-[#F97316]" />
+            <span className="text-xs leading-none font-black tabular-nums">{state.streakDays || 0}</span>
           </button>
-
-          <span className="text-white/15 text-[10px] select-none">•</span>
 
           {/* Monety */}
           <button
@@ -380,16 +389,17 @@ export function Header({
                 onOpenBlikModal();
               }
             }}
-            className="flex items-center gap-1 px-1.5 py-0.5 rounded-full text-primary active:scale-95 transition"
+            className="tap-44 flex items-center gap-1 px-1.5 h-full rounded-full text-primary active:scale-95 transition"
             title={`Monety: ${state.coins}`}
+            aria-label={`Monety: ${state.coins}. Doładuj`}
           >
-            <Coins size={12} className="text-primary" />
-            <span className="text-[11px] leading-none font-black">{state.coins}</span>
+            <Coins size={13} className="text-primary" />
+            <span className="text-xs leading-none font-black tabular-nums">{formatCompactCoins(state.coins)}</span>
           </button>
         </div>
 
         {/* Wskaźnik Serc (Desktop >= 640px) */}
-        <div className="relative hidden sm:block">
+        <div className="sm:relative">
           <button 
             id="header-hearts-button"
             onClick={() => {
@@ -424,7 +434,7 @@ export function Header({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute top-full right-0 mt-2 z-50 w-72 bg-surface-elevated border border-surface-border rounded-2xl p-4 shadow-2xl text-left"
+                  className="absolute top-full right-3 sm:right-0 mt-2 z-50 w-72 max-w-[calc(100vw-1.5rem)] bg-surface-elevated border border-surface-border rounded-2xl p-4 shadow-2xl text-left"
                 >
                   <div className="flex items-center justify-between pb-3 border-b border-surface-border">
                     <div className="flex items-center gap-1.5">
@@ -558,7 +568,8 @@ export function Header({
         )}
 
         {/* Przełącznik Motywu (Szybki 1-tap na desktopie, na mobile w profilu) */}
-        <button 
+{LIGHT_THEME_READY && (
+                <button 
           id="header-theme-toggle"
           type="button"
           onClick={() => {
@@ -575,6 +586,7 @@ export function Header({
             <Moon size={15} className="text-amber-600 hover:-rotate-12 transition-transform duration-200" />
           )}
         </button>
+        )}
 
         {/* Wskaźnik 3: Profil & Poziom Gracza */}
         <button 
@@ -585,11 +597,12 @@ export function Header({
           }}
           onMouseEnter={() => setShowXpTooltip(true)}
           onMouseLeave={() => setShowXpTooltip(false)}
-          className="flex items-center gap-1.5 sm:gap-2 p-0.5 sm:p-1 sm:pl-1 sm:pr-2.5 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm shrink-0"
+          aria-label="Twój profil i postęp XP"
+          className="tap-44 flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1 sm:pl-1 sm:pr-2.5 rounded-full bg-surface-card hover:bg-surface-card-hover border border-surface-border hover:border-primary/40 transition-all duration-150 active:scale-95 cursor-pointer group shadow-sm shrink-0"
           title="Twój profil i postęp XP"
         >
           {/* Avatar z subtelnym bursztynowym obwodem */}
-          <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-[#FFB800] to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
+          <div className="relative w-7 h-7 rounded-full bg-gradient-to-br from-[#FFB800] to-[#D97706] p-[1.5px] shadow-[0_0_10px_rgba(255,184,0,0.35)] shrink-0">
             <div className="w-full h-full bg-surface-card rounded-full flex items-center justify-center">
               <User size={12} className="text-primary sm:w-[13px] sm:h-[13px]" />
             </div>
@@ -612,12 +625,12 @@ export function Header({
               triggerHaptic('medium');
               onOpenDevHub();
             }}
-            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 text-[10px] sm:text-xs font-black shadow-[0_0_12px_rgba(16,185,129,0.25)] transition-all cursor-pointer active:scale-95 shrink-0"
+            className="tap-44 flex items-center justify-center gap-1 sm:gap-1.5 w-8 h-8 sm:w-auto sm:h-auto sm:px-3 sm:py-1.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 text-[10px] sm:text-xs font-black shadow-[0_0_12px_rgba(16,185,129,0.25)] transition-all cursor-pointer active:scale-95 shrink-0"
             title="Panel Deweloperski (Pełny Dostęp do Wszystkich Zasobów)"
             aria-label="Panel Deweloperski"
           >
-            <Terminal size={11} className="text-emerald-400 animate-pulse sm:w-[13px] sm:h-[13px]" />
-            <span className="font-mono tracking-wider font-black">DEV</span>
+            <Terminal size={13} className="text-emerald-400" />
+            <span className="hidden sm:inline font-mono tracking-wider font-black">DEV</span>
           </button>
         )}
       </div>

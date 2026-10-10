@@ -89,7 +89,7 @@ export function ProPopup({ isOpen, onClose, onOpenParentSponsor, onActivatePro }
                     { title: 'Nielimitowane serca', desc: 'Ucz się bez przerw i bez kar za błędy', icon: Heart, color: 'text-rose-400' },
                     { title: 'AI Egzaminator Maturalny', desc: 'Nielimitowane sprawdzanie odręcznych dowodów CKE', icon: Brain, color: 'text-amber-400' },
                     { title: 'Wszystkie lekcje & arkusze', desc: 'Pełna baza zadań Nowej Formuły 2023/2025', icon: Check, color: 'text-emerald-400' },
-                    { title: 'Kod aktywacyjny PRO', desc: 'Płatność jednorazowa, aktywacja na Twoim koncie', icon: ShieldCheck, color: 'text-blue-400' }
+                    { title: 'Kod aktywacyjny PRO', desc: '29 zł miesięcznie, aktywacja kodem na Twoim koncie', icon: ShieldCheck, color: 'text-blue-400' }
                   ].map((feat, i) => {
                     const Icon = feat.icon;
                     return (

@@ -121,7 +121,7 @@ export function PerksVaultSection({
             <span className="text-2xl font-display font-black text-white leading-tight">
               {coins.toLocaleString('pl-PL')}
             </span>
-            <div className="flex items-center justify-between mt-1">
+            <div className="flex flex-col items-start gap-2 mt-1">
               <span className="text-[10px] text-[#8B8D98]">Z zadań i matury</span>
               {onOpenBlikModal && (
                 <button
@@ -130,9 +130,9 @@ export function PerksVaultSection({
                     triggerHaptic('light');
                     onOpenBlikModal();
                   }}
-                  className="text-[10px] font-black text-amber-400 hover:text-amber-300 flex items-center gap-1 cursor-pointer bg-amber-500/10 hover:bg-amber-500/20 px-2 py-0.5 rounded-md border border-amber-500/30 transition-all"
+                  className="tap-44 text-xs font-black text-amber-400 hover:text-amber-300 flex items-center gap-1.5 cursor-pointer bg-amber-500/10 hover:bg-amber-500/20 px-2.5 py-1.5 rounded-lg border border-amber-500/30 transition-all whitespace-nowrap"
                 >
-                  <Coins size={10} /> + Doładuj BLIK
+                  <Coins size={12} /> Doładuj BLIK
                 </button>
               )}
             </div>

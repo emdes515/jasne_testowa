@@ -8,7 +8,8 @@ import {
   ListOrdered, TriangleRight, CircleDot, Map as MapIcon, Box, PieChart, Clock, Trophy,
   GraduationCap, MessageSquare, Flame, Feather, ShieldAlert, Sun, Moon, Scale, Shield,
   Bookmark, Music, AlertTriangle, Eye, Compass, GitCommit, AlertOctagon,
-  Headphones, Link, Send, ListChecks
+  Headphones, Link, Send, ListChecks,
+  Coins
 } from 'lucide-react';
 import { triggerHaptic } from '../utils';
 import { motion, AnimatePresence } from 'motion/react';
@@ -21,7 +22,6 @@ import { SubjectKey } from '../types';
 import { normalizeSubjectFirestoreId } from '../services/ckeCatalogRepository';
 import { MATH_CURRICULUM_TOPICS } from '../data/mathCurriculumData';
 import { POLISH_CURRICULUM_TOPICS } from '../data/polishCurriculumData';
-import { ENGLISH_CURRICULUM_TOPICS } from '../data/englishCurriculumData';
 import { EnglishDictionaryModal } from './english/EnglishDictionaryModal';
 import { MaturalnyDuetGame } from './english/MaturalnyDuetGame';
 import { MathTheoryModal } from './math/MathTheoryModal';
@@ -415,7 +415,7 @@ export function LearnView({
   const [mathTopicsList, setMathTopicsList] = useState<any[]>(() => MATH_CURRICULUM_TOPICS);
   const [polishTopicsList, setPolishTopicsList] = useState<any[]>(() => POLISH_CURRICULUM_TOPICS);
   const [polishPillarsList, setPolishPillarsList] = useState<any[]>([]);
-  const [engTopicsList, setEngTopicsList] = useState<any[]>(() => ENGLISH_CURRICULUM_TOPICS);
+  const [engTopicsList, setEngTopicsList] = useState<any[]>([]);
   const [engPillarsList, setEngPillarsList] = useState<any[]>([]);
   const [mathRozTopicsList, setMathRozTopicsList] = useState<any[]>([]);
   const [engRozTopicsList, setEngRozTopicsList] = useState<any[]>([]);
@@ -883,7 +883,7 @@ export function LearnView({
             <motion.div 
               key={`topics-${selectedSubjectKey}-${selectedSubjectKey === 'pol' ? selectedPillarId : selectedEnglishPillarId}`}
               initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
               exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
               transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className="flex-1 flex flex-col w-full"
@@ -1979,7 +1979,8 @@ export function LearnView({
                                   <span>+200 XP</span>
                                 </span>
                                 <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-300 bg-amber-500/10 border border-amber-500/25 px-2 py-0.5 rounded-lg">
-                                  <span>🪙 +100 Monet</span>
+                                  <Coins size={12} aria-hidden="true" />
+                                  <span>+100 Monet</span>
                                 </span>
                                 <span className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-300 bg-purple-500/10 border border-purple-500/25 px-2 py-0.5 rounded-lg">
                                   <Award size={11} />
@@ -2110,7 +2111,7 @@ export function LearnView({
                           </span>
                         </div>
                         <p className="text-xs text-[#8B8D98] truncate">
-                          14 działów • 150+ lekcji
+                          15 działów • 75 lekcji • 1500 zadań
                         </p>
                         <div className="mt-2.5 flex items-center gap-2.5">
                           <div className="flex-1 h-1.5 bg-surface-elevated rounded-full overflow-hidden border border-surface-border">

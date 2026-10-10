@@ -1318,7 +1318,7 @@ export function OpenTaskWorkspace({
               }`}
             >
               <Keyboard size={16} />
-              <span>Klawiatura matematyczna</span>
+              <span>Klawiatura<span className="hidden sm:inline"> matematyczna</span></span>
             </button>
 
             <button
@@ -1765,7 +1765,7 @@ export function OpenTaskWorkspace({
                 title="Dodaj 350px miejsca na obliczenia w dół"
               >
                 <Plus size={14} />
-                <span className="hidden sm:inline">+350px</span>
+                <span className="hidden sm:inline">Więcej miejsca</span>
               </button>
 
               <button
@@ -1838,7 +1838,7 @@ export function OpenTaskWorkspace({
                   className="pointer-events-auto px-4 py-2 rounded-full bg-[#111827]/95 hover:bg-[#1F2937] border border-amber-500/40 hover:border-amber-400 text-amber-300 hover:text-amber-200 text-xs font-bold flex items-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.6)] backdrop-blur-md active:scale-95 transition-all cursor-pointer group"
                 >
                   <Plus size={14} className="text-amber-400 group-hover:rotate-90 transition-transform duration-200" />
-                  <span>Rozwiń arkusz w dół (+350px)</span>
+                  <span>Rozwiń arkusz w dół</span>
                   <ArrowDown size={13} className="text-amber-400 group-hover:translate-y-0.5 transition-transform" />
                 </button>
               </div>

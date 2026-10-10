@@ -443,7 +443,7 @@ export const TaskMatchingInteractive: React.FC<TaskMatchingInteractiveProps> = (
                         ? 'bg-amber-500/15 dark:bg-amber-950/40 border-amber-500 text-amber-900 dark:text-amber-200 shadow-xs'
                         : selectedLeft
                         ? 'bg-amber-50 dark:bg-slate-900 border-amber-500/70 hover:bg-amber-100/50 dark:hover:bg-amber-950/20 text-slate-900 dark:text-white shadow-xs ring-1 ring-amber-500/30 animate-pulse'
-                        : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-800 dark:text-slate-200 shadow-xs'
+                        : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 shadow-xs'
                     }`}
                   >
                     <GripVertical className="w-4 h-4 text-slate-400 dark:text-slate-500 shrink-0 mt-0.5" />

@@ -10,6 +10,9 @@ export default defineConfig(() => {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
+      // react-katex i rehype-katex mają własne, starsze kopie KaTeX (0.16). Wymuszamy jedną wersję
+      // z głównego node_modules, żeby HTML wzorów zgadzał się ze stylami katex.min.css z paczki.
+      dedupe: ['katex'],
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
