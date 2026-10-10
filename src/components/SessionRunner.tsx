@@ -53,6 +53,7 @@ import { Badge } from './Badge';
 import { UserState, LessonTheoryPill } from '../types';
 import { LessonFormulaSheet, drawSessionTasks, getLessonTheoryPill, getLessonTaskPool } from '../data/dzial1TaskPool';
 import { pickRetryTask, nextQueueIndex } from '../lib/sessionQueue';
+import { toFormulaBoxContent } from '../lib/formulaBox';
 import { curriculumRepository } from '../services/curriculumRepository';
 import { addMistakeToBank, removeMistakeFromBank } from '../utils/mistakesBank';
 import { OpenTaskWorkspace, convertDataUrlToAiOptimized } from './OpenTaskWorkspace';
@@ -5153,7 +5154,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                       style={{ WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)', maskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
                                     >
                                       <div className="inline-block w-fit min-w-full mx-auto text-center">
-                                        <MathRenderer content={item.latex} displayMode={true} />
+                                        <MathRenderer content={toFormulaBoxContent(item.latex, isPolishSession)} displayMode={true} />
                                       </div>
                                     </div>
                                   )}
@@ -7517,7 +7518,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                             style={{ WebkitMaskImage: 'linear-gradient(to right, black 88%, transparent 100%)', maskImage: 'linear-gradient(to right, black 88%, transparent 100%)' }}
                           >
                             <div className="inline-block w-fit min-w-full mx-auto text-center font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
-                              <MathRenderer content={f.latex} displayMode={!isPolishSession} />
+                              <MathRenderer content={toFormulaBoxContent(f.latex, isPolishSession)} displayMode={!isPolishSession} />
                             </div>
                           </div>
                         )}
@@ -7530,7 +7531,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   {sub.label}
                                 </span>
                                 <div className="text-amber-200 text-xs sm:text-sm font-mono overflow-x-auto custom-scrollbar">
-                                  <MathRenderer content={sub.formula} displayMode={!isPolishSession} />
+                                  <MathRenderer content={toFormulaBoxContent(sub.formula, isPolishSession)} displayMode={!isPolishSession} />
                                 </div>
                               </div>
                             ))}

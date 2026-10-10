@@ -11,6 +11,8 @@ import { render, cleanup } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import rawTasks from '../math/generated/all_1500_tasks.json';
 import { MATH_TOPIC_BLUEPRINTS } from '../mathCurriculumData';
+import { toFormulaBoxContent } from '../../lib/formulaBox';
+import { CKE_FORMULAS_DATA } from '../ckeFormulasData';
 import { AUTHENTIC_CKE_TASKS } from '../math/allMathTasks';
 import { MathRenderer } from '../../components/MathRenderer';
 import { MathDiagram } from '../../components/MathDiagram';
@@ -43,7 +45,8 @@ const SKIP = new Set([
  * nie zjadło pamięci) i zwraca listę problemów widocznych dla ucznia.
  */
 function renderProblems(text: string, formulaOnly = false): string[] {
-  const html = renderToStaticMarkup(<MathRenderer content={formulaOnly ? `$${text}$` : text} />);
+  // Wzory z pigułki renderujemy dokładnie tak, jak kaseton wzoru w SessionRunner (toFormulaBoxContent + displayMode).
+  const html = renderToStaticMarkup(formulaOnly ? <MathRenderer content={toFormulaBoxContent(text)} displayMode={true} /> : <MathRenderer content={text} />);
   const problems: string[] = [];
   if (html.includes('katex-error')) problems.push('błąd KaTeX');
   if (/\$[^$]+\$|\\[a-zA-Z]+/.test(text) && !html.includes('class="katex"')) problems.push('wzór nie został złożony');
@@ -87,6 +90,19 @@ describe('Renderowanie całej treści matematycznej (KaTeX + rysunki)', () => {
     expect(checkAll(texts)).toEqual([]);
     expect(checkAll(formulas, true)).toEqual([]);
   }, 300_000);
+
+  it('karta wzorów CKE (okno „Wzory” i szuflada w sesji) składa się bez błędów', () => {
+    const formulas: Entry[] = [];
+    const texts: Entry[] = [];
+    CKE_FORMULAS_DATA.forEach((item: any) => {
+      formulas.push({ where: `${item.id}.formula`, text: item.formula });
+      (item.subFormulas || []).forEach((sub: any, i: number) => formulas.push({ where: `${item.id}.subFormulas[${i}]`, text: sub.formula }));
+      collectStrings({ title: item.title, explanation: item.explanation, goldenRule: item.goldenRule, ckeTrap: item.ckeTrap, labels: (item.subFormulas || []).map((x: any) => x.label) }, String(item.id), texts, SKIP);
+    });
+    expect(formulas.length).toBeGreaterThan(26);
+    expect(checkAll(formulas, true)).toEqual([]);
+    expect(checkAll(texts)).toEqual([]);
+  }, 120_000);
 
   it('1500 zadań autorskich składa się bez błędów', () => {
     const texts: Entry[] = [];
