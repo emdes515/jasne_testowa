@@ -444,7 +444,7 @@ export const MATH_PP_NEW_DIAGRAMS: Record<string, MathDiagramData> = {
     ],
     labels: [
       { x: 262, y: 130, text: 'H', color: RED, fontSize: 15, anchor: 'start' },
-      { x: 212, y: 130, text: 'h_b', color: SKY, fontSize: 14, anchor: 'end' },
+      { x: 212, y: 130, text: 'h ściany', color: SKY, fontSize: 14, anchor: 'end' },
       { x: 236, y: 222, text: 'a/2', color: GREEN, fontSize: 13, anchor: 'middle' },
       { x: 150, y: 242, text: 'a', color: AMBER, fontSize: 15, anchor: 'middle' }
     ],
