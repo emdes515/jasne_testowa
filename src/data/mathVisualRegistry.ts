@@ -2581,14 +2581,54 @@ export function getCandidateLessonVisualIds(id: string): string[] {
 }
 
 /**
+ * Rysunek do pigułki wiedzy kursu matematyki PP (lekcja „dział-lekcja” -> klucz schematu w rejestrze).
+ * Dobór po temacie lekcji: ten sam schemat może ilustrować dwie lekcje (np. parabola z miejscami zerowymi).
+ */
+export const MATH_PP_LESSON_VISUALS: Record<string, { diagram: string; numberLine?: string }> = {
+  '1-4': { diagram: 'lesson-3-1' },
+  '3-1': { diagram: 'lesson-5-1', numberLine: 'lesson-5-1' },
+  '3-2': { diagram: 'lesson-8-1' },
+  '3-3': { diagram: 'lesson-8-2' },
+  '3-5': { diagram: 'lesson-7-2' },
+  '4-2': { diagram: 'lesson-9-1' },
+  '4-3': { diagram: 'lesson-9-3' },
+  '5-1': { diagram: 'lesson-10-4' },
+  '5-2': { diagram: 'lesson-10-2' },
+  '6-2': { diagram: 'legacy-parabola-vertex' },
+  '6-3': { diagram: 'lesson-8-1' },
+  '8-1': { diagram: 'geo-archetype-trigonometry' },
+
+  '9-1': { diagram: 'geo-archetype-pythagoras' },
+  '9-2': { diagram: 'lesson-9-6' },
+  '9-3': { diagram: 'lesson-9-13' },
+  '9-4': { diagram: 'geo-archetype-inscribed-angles' },
+  '9-5': { diagram: 'geo-archetype-equilateral' },
+  '10-1': { diagram: 'geo-archetype-distance' },
+  '10-2': { diagram: 'lesson-10-1' },
+  '10-3': { diagram: 'lesson-10-3' },
+  '10-4': { diagram: 'geo-archetype-circle' },
+  '11-4': { diagram: 'lesson-11-6' },
+  '15-1': { diagram: 'lesson-15-4' },
+  '15-3': { diagram: 'lesson-15-5' }
+};
+
+/**
  * Automatycznie uzupełnia pigułkę wiedzy o schemat wektorowy SVG i osie liczbowe,
  * jeśli pigułka z bazy lub cache przeglądarki go nie posiada.
  */
 export function enrichTheoryPillWithVisual(pill: any, lessonId: string): any {
   if (!pill) return pill;
-  // Pigułki z generatora scripts/math_pp są kompletne – nie doklejamy do nich rysunków
-  // z rejestru, który jest indeksowany starą numeracją lekcji (rysunek nie pasowałby do tematu).
-  if (pill.noAutoVisual === true) return pill;
+  // Pigułki z generatora scripts/math_pp mają nową numerację lekcji, a rejestr jest indeksowany starą.
+  // Rysunek dobieramy więc jawnie po temacie (MATH_PP_LESSON_VISUALS), a nie po numerze lekcji.
+  if (pill.noAutoVisual === true) {
+    const mapped = MATH_PP_LESSON_VISUALS[String(lessonId || '').toLowerCase().replace(/^math-lesson-/, '')];
+    if (!mapped) return pill;
+    return {
+      ...pill,
+      diagram: pill.diagram ?? THEORY_DIAGRAMS[mapped.diagram] ?? GEOMETRIC_ARCHETYPES[mapped.diagram] ?? null,
+      numberLine: pill.numberLine ?? (mapped.numberLine ? THEORY_NUMBER_LINES[mapped.numberLine] : null) ?? null
+    };
+  }
   const candidates = getCandidateLessonVisualIds(lessonId);
   
   let registeredDiagram = null;
