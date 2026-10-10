@@ -6,8 +6,7 @@ import { describe, it, expect } from 'vitest';
 import blueprints from '../math/generated/math_blueprints.json';
 import {
   MATH_PP_LESSON_VISUALS,
-  THEORY_DIAGRAMS,
-  GEOMETRIC_ARCHETYPES,
+  resolveLessonDiagram,
   THEORY_NUMBER_LINES,
   enrichTheoryPillWithVisual
 } from '../mathVisualRegistry';
@@ -18,7 +17,8 @@ describe('Rysunki w pigułkach matematyki PP', () => {
   it('każdy wpis mapy wskazuje istniejącą lekcję i istniejący schemat', () => {
     for (const [key, visual] of Object.entries(MATH_PP_LESSON_VISUALS)) {
       expect(lessons.some(l => l.id === `math-lesson-${key}`), `lekcja ${key}`).toBe(true);
-      expect(THEORY_DIAGRAMS[visual.diagram] || GEOMETRIC_ARCHETYPES[visual.diagram], `schemat ${visual.diagram}`).toBeTruthy();
+      expect(resolveLessonDiagram(visual.diagram), `schemat ${visual.diagram}`).toBeTruthy();
+      if (visual.trapDiagram) expect(resolveLessonDiagram(visual.trapDiagram), `schemat ${visual.trapDiagram}`).toBeTruthy();
       if (visual.numberLine) expect(THEORY_NUMBER_LINES[visual.numberLine], `oś ${visual.numberLine}`).toBeTruthy();
     }
   });
@@ -30,6 +30,6 @@ describe('Rysunki w pigułkach matematyki PP', () => {
       if (MATH_PP_LESSON_VISUALS[key]) expect(enriched.diagram, lesson.id).toBeTruthy();
       else expect(enriched.diagram ?? null, lesson.id).toBeNull();
     }
-    expect(Object.keys(MATH_PP_LESSON_VISUALS).length).toBeGreaterThanOrEqual(24);
+    expect(Object.keys(MATH_PP_LESSON_VISUALS).length).toBeGreaterThanOrEqual(40);
   });
 });
