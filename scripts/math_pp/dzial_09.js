@@ -1,5 +1,5 @@
 import { T, mc, num, pf, pill, fr, par, sq, m, need, gcd, isSquare, dec } from './lib.js';
-import { figRightTriangle, figIsosceles, figRect, figRhombus, figTrapezoid, figParallelogram, figInscribedCentral, figDiameterTriangle, figCenterTriangle, figTangent } from './figures.js';
+import { figRightTriangle, figIsosceles, figRect, figRhombus, figTrapezoid, figParallelogram, figInscribedCentral, figDiameterTriangle, figCenterTriangle, figTangent, figThales, figSector } from './figures.js';
 
 const TRIPLES = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [6, 8, 10], [9, 12, 15], [12, 16, 20], [10, 24, 26]];
 const deg = (x) => m(`${x}^\\circ`);
@@ -178,6 +178,7 @@ const thales = (r) => {
   need(Number.isInteger(ab) && Number.isInteger(bc) && ab !== bc);
   const askBC = r.bool();
   return mc({
+    diagram: askBC ? figThales({ ad, ab, de, bc: '?' }) : figThales({ ad, ab, bc, de: '?' }),
     title: 'Twierdzenie Talesa',
     q: askBC
       ? T`W trójkącie $ABC$ punkt $D$ leży na boku $AB$, a punkt $E$ na boku $AC$, przy czym odcinek $DE$ jest równoległy do boku $BC$. Wiadomo, że $|AD| = ${ad}$, $|AB| = ${ab}$ oraz $|DE| = ${de}$. Długość boku $BC$ jest równa`
@@ -435,6 +436,7 @@ const arcLength = (r) => {
   const askArea = r.bool();
   const [n, d] = askArea ? [a * rr * rr, 360] : [a * 2 * rr, 360];
   return mc({
+    diagram: figSector({ r: rr, angle: a }),
     title: askArea ? 'Pole wycinka koła' : 'Długość łuku okręgu',
     q: askArea ? T`Pole wycinka koła o promieniu $${rr}$ i kącie środkowym $${a}^\circ$ jest równe` : T`Długość łuku okręgu o promieniu $${rr}$, na którym oparty jest kąt środkowy o mierze $${a}^\circ$, jest równa`,
     ok: m(pi(n, d)),
@@ -518,6 +520,7 @@ const sectorPerimeter = (r) => {
   const arcN = a * 2 * rr;
   need(arcN % 360 === 0 || (arcN * 3) % 360 === 0 || (arcN * 2) % 360 === 0);
   return mc({
+    diagram: figSector({ r: rr, angle: a }),
     title: 'Obwód wycinka koła',
     q: T`Koło ma promień równy $${rr}$. Obwód wycinka tego koła o kącie środkowym $${a}^\circ$ jest równy`,
     ok: m(`${pi(arcN, 360)} + ${2 * rr}`),

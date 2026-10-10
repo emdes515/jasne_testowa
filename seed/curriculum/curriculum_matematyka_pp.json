@@ -38647,6 +38647,91 @@
        "hints": {
         "level_1": "Karta wzorów, str. 10: $\\sin\\alpha = \\frac{a}{c}$, $\\cos\\alpha = \\frac{b}{c}$, $\\operatorname{tg}\\alpha = \\frac{a}{b}$ ($a$ – przyprostokątna naprzeciw kąta, $b$ – przy kącie, $c$ – przeciwprostokątna).",
         "level_2": "Względem kąta $\\alpha$: przyprostokątna naprzeciw ma długość $72$, przyprostokątna przyległa $21$, przeciwprostokątna $75$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "21",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "72",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "75",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "α",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -38782,6 +38867,75 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie Pitagorasa $a^2 + b^2 = c^2$.",
         "level_2": "Przeciwprostokątna: $c = \\sqrt{40^2 + 42^2} = \\sqrt{3364} = 58$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "42",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "40",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         }
+        ]
        }
       },
       {
@@ -38872,6 +39026,91 @@
        "hints": {
         "level_1": "Karta wzorów, str. 10: $\\sin\\alpha = \\frac{a}{c}$, $\\cos\\alpha = \\frac{b}{c}$, $\\operatorname{tg}\\alpha = \\frac{a}{b}$ ($a$ – przyprostokątna naprzeciw kąta, $b$ – przy kącie, $c$ – przeciwprostokątna).",
         "level_2": "Względem kąta $\\alpha$: przyprostokątna naprzeciw ma długość $24$, przyprostokątna przyległa $10$, przeciwprostokątna $26$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "10",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "24",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "26",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "α",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -39007,6 +39246,75 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie Pitagorasa $a^2 + b^2 = c^2$.",
         "level_2": "Przeciwprostokątna: $c = \\sqrt{5^2 + 12^2} = \\sqrt{169} = 13$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "12",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "5",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         }
+        ]
        }
       },
       {
@@ -39097,6 +39405,91 @@
        "hints": {
         "level_1": "Karta wzorów, str. 10: $\\sin\\alpha = \\frac{a}{c}$, $\\cos\\alpha = \\frac{b}{c}$, $\\operatorname{tg}\\alpha = \\frac{a}{b}$ ($a$ – przyprostokątna naprzeciw kąta, $b$ – przy kącie, $c$ – przeciwprostokątna).",
         "level_2": "Względem kąta $\\alpha$: przyprostokątna naprzeciw ma długość $45$, przyprostokątna przyległa $24$, przeciwprostokątna $51$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "24",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "45",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "51",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "α",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -39232,6 +39625,75 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie Pitagorasa $a^2 + b^2 = c^2$.",
         "level_2": "Przeciwprostokątna: $c = \\sqrt{8^2 + 15^2} = \\sqrt{289} = 17$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "15",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "8",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         }
+        ]
        }
       },
       {
@@ -39322,6 +39784,91 @@
        "hints": {
         "level_1": "Karta wzorów, str. 10: $\\sin\\alpha = \\frac{a}{c}$, $\\cos\\alpha = \\frac{b}{c}$, $\\operatorname{tg}\\alpha = \\frac{a}{b}$ ($a$ – przyprostokątna naprzeciw kąta, $b$ – przy kącie, $c$ – przeciwprostokątna).",
         "level_2": "Względem kąta $\\alpha$: przyprostokątna naprzeciw ma długość $5$, przyprostokątna przyległa $12$, przeciwprostokątna $13$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "12",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "5",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "13",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "α",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -39457,6 +40004,75 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie Pitagorasa $a^2 + b^2 = c^2$.",
         "level_2": "Przeciwprostokątna: $c = \\sqrt{20^2 + 21^2} = \\sqrt{841} = 29$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "21",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "20",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         }
+        ]
        }
       },
       {
@@ -39502,6 +40118,91 @@
        "hints": {
         "level_1": "Karta wzorów, str. 10: $\\sin\\alpha = \\frac{a}{c}$, $\\cos\\alpha = \\frac{b}{c}$, $\\operatorname{tg}\\alpha = \\frac{a}{b}$ ($a$ – przyprostokątna naprzeciw kąta, $b$ – przy kącie, $c$ – przeciwprostokątna).",
         "level_2": "Względem kąta $\\alpha$: przyprostokątna naprzeciw ma długość $24$, przyprostokątna przyległa $7$, przeciwprostokątna $25$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "7",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 96,
+          "y": 120,
+          "text": "24",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "25",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "α",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       }
      ]
@@ -39705,6 +40406,83 @@
        "hints": {
         "level_1": "Trójkąt 30°–60°–90° ma boki w proporcji $a$, $a\\sqrt{3}$, $2a$ (naprzeciw kątów 30°, 60°, 90°).",
         "level_2": "$\\sin 60^\\circ = \\frac{x}{22}$, a $\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "?",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "22",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "30°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -39930,6 +40708,83 @@
        "hints": {
         "level_1": "Trójkąt 30°–60°–90° ma boki w proporcji $a$, $a\\sqrt{3}$, $2a$ (naprzeciw kątów 30°, 60°, 90°).",
         "level_2": "$\\sin 30^\\circ = \\frac{x}{10}$, a $\\sin 30^\\circ = \\frac{1}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 96,
+          "y": 120,
+          "text": "?",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "10",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "30°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -40290,6 +41145,83 @@
        "hints": {
         "level_1": "Trójkąt 30°–60°–90° ma boki w proporcji $a$, $a\\sqrt{3}$, $2a$ (naprzeciw kątów 30°, 60°, 90°).",
         "level_2": "$\\sin 30^\\circ = \\frac{x}{12}$, a $\\sin 30^\\circ = \\frac{1}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 96,
+          "y": 120,
+          "text": "?",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "12",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "30°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -40470,6 +41402,83 @@
        "hints": {
         "level_1": "Trójkąt 30°–60°–90° ma boki w proporcji $a$, $a\\sqrt{3}$, $2a$ (naprzeciw kątów 30°, 60°, 90°).",
         "level_2": "$\\sin 60^\\circ = \\frac{x}{24}$, a $\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            110,
+            180
+           ],
+           [
+            330,
+            180
+           ],
+           [
+            110,
+            50
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         },
+         {
+          "points": [
+           [
+            110,
+            166
+           ],
+           [
+            124,
+            166
+           ],
+           [
+            124,
+            180
+           ],
+           [
+            110,
+            180
+           ]
+          ],
+          "fill": "none",
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 204,
+          "text": "?",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 236,
+          "y": 104,
+          "text": "24",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 284,
+          "y": 174,
+          "text": "30°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -42641,6 +43650,60 @@
        "hints": {
         "level_1": "Karta wzorów, str. 15: $P = \\frac{1}{2} \\cdot a \\cdot b \\cdot \\sin\\gamma$ (kąt $\\gamma$ leży między bokami $a$ i $b$).",
         "level_2": "$P = \\frac{1}{2} \\cdot a \\cdot b \\cdot \\sin\\gamma$, a $\\sin 120^\\circ = \\frac{\\sqrt{3}}{2}$ (bo $\\sin 120^\\circ = \\sin 60^\\circ$)."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            170,
+            185
+           ],
+           [
+            350,
+            185
+           ],
+           [
+            90,
+            70
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 260,
+          "y": 208,
+          "text": "10",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 118,
+          "y": 127.5,
+          "text": "3",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 184,
+          "y": 175,
+          "text": "120°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -42821,6 +43884,68 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie cosinusów $c^2 = a^2 + b^2 - 2ab\\cos\\gamma$.",
         "level_2": "$c^2 = a^2 + b^2 - 2ab\\cos\\gamma$, a $\\cos 120^\\circ = -\\frac{1}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            170,
+            185
+           ],
+           [
+            350,
+            185
+           ],
+           [
+            90,
+            70
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 260,
+          "y": 208,
+          "text": "7",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 118,
+          "y": 127.5,
+          "text": "8",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 232,
+          "y": 121.5,
+          "text": "?",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 184,
+          "y": 175,
+          "text": "120°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -43046,6 +44171,68 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie cosinusów $c^2 = a^2 + b^2 - 2ab\\cos\\gamma$.",
         "level_2": "$c^2 = a^2 + b^2 - 2ab\\cos\\gamma$, a $\\cos 60^\\circ = \\frac{1}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            90,
+            185
+           ],
+           [
+            350,
+            185
+           ],
+           [
+            190,
+            60
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 208,
+          "text": "5",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 128,
+          "y": 122.5,
+          "text": "2",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 282,
+          "y": 116.5,
+          "text": "?",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 134,
+          "y": 175,
+          "text": "60°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -43271,6 +44458,68 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie cosinusów $c^2 = a^2 + b^2 - 2ab\\cos\\gamma$.",
         "level_2": "$c^2 = a^2 + b^2 - 2ab\\cos\\gamma$, a $\\cos 60^\\circ = \\frac{1}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            90,
+            185
+           ],
+           [
+            350,
+            185
+           ],
+           [
+            190,
+            60
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 208,
+          "text": "3",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 128,
+          "y": 122.5,
+          "text": "2",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 282,
+          "y": 116.5,
+          "text": "?",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 134,
+          "y": 175,
+          "text": "60°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -43361,6 +44610,60 @@
        "hints": {
         "level_1": "Karta wzorów, str. 15: $P = \\frac{1}{2} \\cdot a \\cdot b \\cdot \\sin\\gamma$ (kąt $\\gamma$ leży między bokami $a$ i $b$).",
         "level_2": "$P = \\frac{1}{2} \\cdot a \\cdot b \\cdot \\sin\\gamma$, a $\\sin 45^\\circ = \\frac{\\sqrt{2}}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            90,
+            185
+           ],
+           [
+            350,
+            185
+           ],
+           [
+            190,
+            60
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 220,
+          "y": 208,
+          "text": "10",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 128,
+          "y": 122.5,
+          "text": "7",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 134,
+          "y": 175,
+          "text": "45°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -43406,6 +44709,68 @@
        "hints": {
         "level_1": "Karta wzorów, str. 14: twierdzenie cosinusów $c^2 = a^2 + b^2 - 2ab\\cos\\gamma$.",
         "level_2": "$c^2 = a^2 + b^2 - 2ab\\cos\\gamma$, a $\\cos 120^\\circ = -\\frac{1}{2}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            170,
+            185
+           ],
+           [
+            350,
+            185
+           ],
+           [
+            90,
+            70
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "labels": [
+         {
+          "x": 260,
+          "y": 208,
+          "text": "6",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 118,
+          "y": 127.5,
+          "text": "10",
+          "anchor": "end",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 232,
+          "y": 121.5,
+          "text": "?",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 184,
+          "y": 175,
+          "text": "120°",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -46592,6 +47957,124 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: twierdzenie Talesa. Odcinek równoległy do boku trójkąta odcina trójkąt podobny do danego.",
         "level_2": "Trójkąty $ADE$ i $ABC$ są podobne (mają wspólny kąt przy $A$ i równoległe boki naprzeciw niego), więc $\\frac{|DE|}{|BC|} = \\frac{|AD|}{|AB|} = \\frac{4}{6}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            35
+           ],
+           [
+            80,
+            195
+           ],
+           [
+            340,
+            195
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "segments": [
+         {
+          "from": [
+           158,
+           99
+          ],
+          "to": [
+           262,
+           99
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 35,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "A",
+          "labelPosition": "top"
+         },
+         {
+          "x": 80,
+          "y": 195,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "B",
+          "labelPosition": "bottom-left"
+         },
+         {
+          "x": 340,
+          "y": 195,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "C",
+          "labelPosition": "bottom-right"
+         },
+         {
+          "x": 158,
+          "y": 99,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "D",
+          "labelPosition": "left"
+         },
+         {
+          "x": 262,
+          "y": 99,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "E",
+          "labelPosition": "right"
+         }
+        ],
+        "labels": [
+         {
+          "x": 12,
+          "y": 60,
+          "text": "|AD| = 4",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 12,
+          "y": 82,
+          "text": "|AB| = 6",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 210,
+          "y": 91,
+          "text": "?",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         },
+         {
+          "x": 210,
+          "y": 217,
+          "text": "9",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         }
+        ]
        }
       },
       {
@@ -46772,6 +48255,124 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: twierdzenie Talesa. Odcinek równoległy do boku trójkąta odcina trójkąt podobny do danego.",
         "level_2": "Trójkąty $ADE$ i $ABC$ są podobne (mają wspólny kąt przy $A$ i równoległe boki naprzeciw niego), więc $\\frac{|DE|}{|BC|} = \\frac{|AD|}{|AB|} = \\frac{2}{8}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            35
+           ],
+           [
+            80,
+            195
+           ],
+           [
+            340,
+            195
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "segments": [
+         {
+          "from": [
+           158,
+           99
+          ],
+          "to": [
+           262,
+           99
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 35,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "A",
+          "labelPosition": "top"
+         },
+         {
+          "x": 80,
+          "y": 195,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "B",
+          "labelPosition": "bottom-left"
+         },
+         {
+          "x": 340,
+          "y": 195,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "C",
+          "labelPosition": "bottom-right"
+         },
+         {
+          "x": 158,
+          "y": 99,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "D",
+          "labelPosition": "left"
+         },
+         {
+          "x": 262,
+          "y": 99,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "E",
+          "labelPosition": "right"
+         }
+        ],
+        "labels": [
+         {
+          "x": 12,
+          "y": 60,
+          "text": "|AD| = 2",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 12,
+          "y": 82,
+          "text": "|AB| = 8",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 210,
+          "y": 91,
+          "text": "5",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 210,
+          "y": 217,
+          "text": "?",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         }
+        ]
        }
       },
       {
@@ -46997,6 +48598,124 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: twierdzenie Talesa. Odcinek równoległy do boku trójkąta odcina trójkąt podobny do danego.",
         "level_2": "Trójkąty $ADE$ i $ABC$ są podobne (mają wspólny kąt przy $A$ i równoległe boki naprzeciw niego), więc $\\frac{|DE|}{|BC|} = \\frac{|AD|}{|AB|} = \\frac{2}{4}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            35
+           ],
+           [
+            80,
+            195
+           ],
+           [
+            340,
+            195
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.06)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "segments": [
+         {
+          "from": [
+           158,
+           99
+          ],
+          "to": [
+           262,
+           99
+          ],
+          "color": "#38BDF8",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 35,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "A",
+          "labelPosition": "top"
+         },
+         {
+          "x": 80,
+          "y": 195,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "B",
+          "labelPosition": "bottom-left"
+         },
+         {
+          "x": 340,
+          "y": 195,
+          "dot": "filled",
+          "color": "#FFB800",
+          "label": "C",
+          "labelPosition": "bottom-right"
+         },
+         {
+          "x": 158,
+          "y": 99,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "D",
+          "labelPosition": "left"
+         },
+         {
+          "x": 262,
+          "y": 99,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "E",
+          "labelPosition": "right"
+         }
+        ],
+        "labels": [
+         {
+          "x": 12,
+          "y": 60,
+          "text": "|AD| = 2",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 12,
+          "y": 82,
+          "text": "|AB| = 4",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#DFE2F1"
+         },
+         {
+          "x": 210,
+          "y": 91,
+          "text": "4",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 210,
+          "y": 217,
+          "text": "?",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#F43F5E"
+         }
+        ]
        }
       }
      ]
@@ -52217,6 +53936,261 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.",
         "level_2": "Wycinek to $\\frac{240}{360} = \\frac{2}{3}$ całego koła."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ],
+           [
+            245.9,
+            45
+           ],
+           [
+            239.1,
+            42.1
+           ],
+           [
+            232,
+            39.9
+           ],
+           [
+            224.8,
+            38.3
+           ],
+           [
+            217.4,
+            37.3
+           ],
+           [
+            210,
+            37
+           ],
+           [
+            202.6,
+            37.3
+           ],
+           [
+            195.2,
+            38.3
+           ],
+           [
+            188,
+            39.9
+           ],
+           [
+            180.9,
+            42.1
+           ],
+           [
+            174.1,
+            45
+           ],
+           [
+            167.5,
+            48.4
+           ],
+           [
+            161.2,
+            52.4
+           ],
+           [
+            155.4,
+            56.9
+           ],
+           [
+            149.9,
+            61.9
+           ],
+           [
+            144.9,
+            67.4
+           ],
+           [
+            140.4,
+            73.2
+           ],
+           [
+            136.4,
+            79.5
+           ],
+           [
+            133,
+            86.1
+           ],
+           [
+            130.1,
+            92.9
+           ],
+           [
+            127.9,
+            100
+           ],
+           [
+            126.3,
+            107.2
+           ],
+           [
+            125.3,
+            114.6
+           ],
+           [
+            125,
+            122
+           ],
+           [
+            125.3,
+            129.4
+           ],
+           [
+            126.3,
+            136.8
+           ],
+           [
+            127.9,
+            144
+           ],
+           [
+            130.1,
+            151.1
+           ],
+           [
+            133,
+            157.9
+           ],
+           [
+            136.4,
+            164.5
+           ],
+           [
+            140.4,
+            170.8
+           ],
+           [
+            144.9,
+            176.6
+           ],
+           [
+            149.9,
+            182.1
+           ],
+           [
+            155.4,
+            187.1
+           ],
+           [
+            161.2,
+            191.6
+           ],
+           [
+            167.5,
+            195.6
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "10",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 240°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -52397,6 +54371,165 @@
        "hints": {
         "level_1": "Wycinek koła ograniczają dwa promienie i łuk. Jego obwód to $l + 2r$.",
         "level_2": "Długość łuku: $\\frac{120}{360} \\cdot 2\\pi \\cdot 12 = 8\\pi$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ],
+           [
+            245.9,
+            45
+           ],
+           [
+            239.1,
+            42.1
+           ],
+           [
+            232,
+            39.9
+           ],
+           [
+            224.8,
+            38.3
+           ],
+           [
+            217.4,
+            37.3
+           ],
+           [
+            210,
+            37
+           ],
+           [
+            202.6,
+            37.3
+           ],
+           [
+            195.2,
+            38.3
+           ],
+           [
+            188,
+            39.9
+           ],
+           [
+            180.9,
+            42.1
+           ],
+           [
+            174.1,
+            45
+           ],
+           [
+            167.5,
+            48.4
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "12",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 120°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -52442,6 +54575,117 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.",
         "level_2": "Wycinek to $\\frac{60}{360} = \\frac{1}{6}$ całego koła."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "5",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 60°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -52622,6 +54866,141 @@
        "hints": {
         "level_1": "Wycinek koła ograniczają dwa promienie i łuk. Jego obwód to $l + 2r$.",
         "level_2": "Długość łuku: $\\frac{90}{360} \\cdot 2\\pi \\cdot 2 = \\pi$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ],
+           [
+            245.9,
+            45
+           ],
+           [
+            239.1,
+            42.1
+           ],
+           [
+            232,
+            39.9
+           ],
+           [
+            224.8,
+            38.3
+           ],
+           [
+            217.4,
+            37.3
+           ],
+           [
+            210,
+            37
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "2",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 90°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -52667,6 +55046,285 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.",
         "level_2": "Wycinek to $\\frac{270}{360} = \\frac{3}{4}$ całego koła."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ],
+           [
+            245.9,
+            45
+           ],
+           [
+            239.1,
+            42.1
+           ],
+           [
+            232,
+            39.9
+           ],
+           [
+            224.8,
+            38.3
+           ],
+           [
+            217.4,
+            37.3
+           ],
+           [
+            210,
+            37
+           ],
+           [
+            202.6,
+            37.3
+           ],
+           [
+            195.2,
+            38.3
+           ],
+           [
+            188,
+            39.9
+           ],
+           [
+            180.9,
+            42.1
+           ],
+           [
+            174.1,
+            45
+           ],
+           [
+            167.5,
+            48.4
+           ],
+           [
+            161.2,
+            52.4
+           ],
+           [
+            155.4,
+            56.9
+           ],
+           [
+            149.9,
+            61.9
+           ],
+           [
+            144.9,
+            67.4
+           ],
+           [
+            140.4,
+            73.2
+           ],
+           [
+            136.4,
+            79.5
+           ],
+           [
+            133,
+            86.1
+           ],
+           [
+            130.1,
+            92.9
+           ],
+           [
+            127.9,
+            100
+           ],
+           [
+            126.3,
+            107.2
+           ],
+           [
+            125.3,
+            114.6
+           ],
+           [
+            125,
+            122
+           ],
+           [
+            125.3,
+            129.4
+           ],
+           [
+            126.3,
+            136.8
+           ],
+           [
+            127.9,
+            144
+           ],
+           [
+            130.1,
+            151.1
+           ],
+           [
+            133,
+            157.9
+           ],
+           [
+            136.4,
+            164.5
+           ],
+           [
+            140.4,
+            170.8
+           ],
+           [
+            144.9,
+            176.6
+           ],
+           [
+            149.9,
+            182.1
+           ],
+           [
+            155.4,
+            187.1
+           ],
+           [
+            161.2,
+            191.6
+           ],
+           [
+            167.5,
+            195.6
+           ],
+           [
+            174.1,
+            199
+           ],
+           [
+            180.9,
+            201.9
+           ],
+           [
+            188,
+            204.1
+           ],
+           [
+            195.2,
+            205.7
+           ],
+           [
+            202.6,
+            206.7
+           ],
+           [
+            210,
+            207
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "10",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 270°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -52802,6 +55460,165 @@
        "hints": {
         "level_1": "Wycinek koła ograniczają dwa promienie i łuk. Jego obwód to $l + 2r$.",
         "level_2": "Długość łuku: $\\frac{120}{360} \\cdot 2\\pi \\cdot 4 = \\frac{8\\pi}{3}$."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ],
+           [
+            245.9,
+            45
+           ],
+           [
+            239.1,
+            42.1
+           ],
+           [
+            232,
+            39.9
+           ],
+           [
+            224.8,
+            38.3
+           ],
+           [
+            217.4,
+            37.3
+           ],
+           [
+            210,
+            37
+           ],
+           [
+            202.6,
+            37.3
+           ],
+           [
+            195.2,
+            38.3
+           ],
+           [
+            188,
+            39.9
+           ],
+           [
+            180.9,
+            42.1
+           ],
+           [
+            174.1,
+            45
+           ],
+           [
+            167.5,
+            48.4
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "4",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 120°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -52847,6 +55664,117 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.",
         "level_2": "Wycinek to $\\frac{60}{360} = \\frac{1}{6}$ całego koła."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "12",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 60°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -52982,6 +55910,177 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.",
         "level_2": "Wycinek to $\\frac{135}{360} = \\frac{3}{8}$ całego koła."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ],
+           [
+            245.9,
+            45
+           ],
+           [
+            239.1,
+            42.1
+           ],
+           [
+            232,
+            39.9
+           ],
+           [
+            224.8,
+            38.3
+           ],
+           [
+            217.4,
+            37.3
+           ],
+           [
+            210,
+            37
+           ],
+           [
+            202.6,
+            37.3
+           ],
+           [
+            195.2,
+            38.3
+           ],
+           [
+            188,
+            39.9
+           ],
+           [
+            180.9,
+            42.1
+           ],
+           [
+            174.1,
+            45
+           ],
+           [
+            167.5,
+            48.4
+           ],
+           [
+            161.2,
+            52.4
+           ],
+           [
+            155.4,
+            56.9
+           ],
+           [
+            149.9,
+            61.9
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "7",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 135°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       },
       {
@@ -53072,6 +56171,285 @@
        "hints": {
         "level_1": "Karta wzorów, str. 17: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.",
         "level_2": "Wycinek to $\\frac{270}{360} = \\frac{3}{4}$ całego koła."
+       },
+       "diagram": {
+        "type": "GEOMETRY_2D",
+        "title": "Rysunek pomocniczy",
+        "caption": "Rysunek poglądowy – nie zachowuje proporcji.",
+        "width": 420,
+        "height": 230,
+        "circles": [
+         {
+          "cx": 210,
+          "cy": 122,
+          "r": 85,
+          "stroke": "#94A3B8",
+          "strokeWidth": 1.5,
+          "fill": "none",
+          "dashed": true
+         }
+        ],
+        "polygons": [
+         {
+          "points": [
+           [
+            210,
+            122
+           ],
+           [
+            295,
+            122
+           ],
+           [
+            294.7,
+            114.6
+           ],
+           [
+            293.7,
+            107.2
+           ],
+           [
+            292.1,
+            100
+           ],
+           [
+            289.9,
+            92.9
+           ],
+           [
+            287,
+            86.1
+           ],
+           [
+            283.6,
+            79.5
+           ],
+           [
+            279.6,
+            73.2
+           ],
+           [
+            275.1,
+            67.4
+           ],
+           [
+            270.1,
+            61.9
+           ],
+           [
+            264.6,
+            56.9
+           ],
+           [
+            258.8,
+            52.4
+           ],
+           [
+            252.5,
+            48.4
+           ],
+           [
+            245.9,
+            45
+           ],
+           [
+            239.1,
+            42.1
+           ],
+           [
+            232,
+            39.9
+           ],
+           [
+            224.8,
+            38.3
+           ],
+           [
+            217.4,
+            37.3
+           ],
+           [
+            210,
+            37
+           ],
+           [
+            202.6,
+            37.3
+           ],
+           [
+            195.2,
+            38.3
+           ],
+           [
+            188,
+            39.9
+           ],
+           [
+            180.9,
+            42.1
+           ],
+           [
+            174.1,
+            45
+           ],
+           [
+            167.5,
+            48.4
+           ],
+           [
+            161.2,
+            52.4
+           ],
+           [
+            155.4,
+            56.9
+           ],
+           [
+            149.9,
+            61.9
+           ],
+           [
+            144.9,
+            67.4
+           ],
+           [
+            140.4,
+            73.2
+           ],
+           [
+            136.4,
+            79.5
+           ],
+           [
+            133,
+            86.1
+           ],
+           [
+            130.1,
+            92.9
+           ],
+           [
+            127.9,
+            100
+           ],
+           [
+            126.3,
+            107.2
+           ],
+           [
+            125.3,
+            114.6
+           ],
+           [
+            125,
+            122
+           ],
+           [
+            125.3,
+            129.4
+           ],
+           [
+            126.3,
+            136.8
+           ],
+           [
+            127.9,
+            144
+           ],
+           [
+            130.1,
+            151.1
+           ],
+           [
+            133,
+            157.9
+           ],
+           [
+            136.4,
+            164.5
+           ],
+           [
+            140.4,
+            170.8
+           ],
+           [
+            144.9,
+            176.6
+           ],
+           [
+            149.9,
+            182.1
+           ],
+           [
+            155.4,
+            187.1
+           ],
+           [
+            161.2,
+            191.6
+           ],
+           [
+            167.5,
+            195.6
+           ],
+           [
+            174.1,
+            199
+           ],
+           [
+            180.9,
+            201.9
+           ],
+           [
+            188,
+            204.1
+           ],
+           [
+            195.2,
+            205.7
+           ],
+           [
+            202.6,
+            206.7
+           ],
+           [
+            210,
+            207
+           ]
+          ],
+          "fill": "rgba(255, 184, 0, 0.14)",
+          "stroke": "#FFB800",
+          "strokeWidth": 2.5
+         }
+        ],
+        "points": [
+         {
+          "x": 210,
+          "y": 122,
+          "dot": "filled",
+          "color": "#38BDF8",
+          "label": "S",
+          "labelPosition": "bottom-left"
+         }
+        ],
+        "labels": [
+         {
+          "x": 256,
+          "y": 140,
+          "text": "4",
+          "anchor": "middle",
+          "fontSize": 15,
+          "color": "#38BDF8"
+         },
+         {
+          "x": 12,
+          "y": 24,
+          "text": "kąt środkowy: 270°",
+          "anchor": "start",
+          "fontSize": 15,
+          "color": "#10B981"
+         }
+        ]
        }
       }
      ]
@@ -53248,6 +56626,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Współrzędne środka to średnie arytmetyczne współrzędnych końców."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -1,
+          10
+         ],
+         "yRange": [
+          -9,
+          5
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            8,
+            4
+           ],
+           "to": [
+            9,
+            -8
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 8,
+           "y": 4,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          },
+          {
+           "x": 9,
+           "y": -8,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          }
+         ]
+        }
        }
       },
       {
@@ -53293,6 +56719,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Różnice współrzędnych: $x_B - x_A = -2$, $y_B - y_A = 2$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -2,
+          2
+         ],
+         "yRange": [
+          -3,
+          1
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            1,
+            -2
+           ],
+           "to": [
+            -1,
+            0
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 1,
+           "y": -2,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": -1,
+           "y": 0,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -53338,6 +56812,54 @@
        "hints": {
         "level_1": "Jeśli $S$ jest środkiem odcinka $AB$, to $B = (2x_S - x_A, \\ 2y_S - y_A)$.",
         "level_2": "Ze wzoru na środek: $\\frac{-6 + x_B}{2} = -5$, więc $x_B = 2 \\cdot (-5) - (-6) = -4$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -7,
+          1
+         ],
+         "yRange": [
+          -7,
+          1
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            -6,
+            -1
+           ],
+           "to": [
+            -5,
+            -6
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": -6,
+           "y": -1,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": -5,
+           "y": -6,
+           "label": "S",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          }
+         ]
+        }
        }
       },
       {
@@ -53383,6 +56905,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Początek układu to punkt $(0, 0)$, więc $|OP| = \\sqrt{(-5)^2 + 12^2}$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -6,
+          1
+         ],
+         "yRange": [
+          -1,
+          13
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            0,
+            0
+           ],
+           "to": [
+            -5,
+            12
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 0,
+           "y": 0,
+           "label": "O",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          },
+          {
+           "x": -5,
+           "y": 12,
+           "label": "P",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -53473,6 +57043,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Współrzędne środka to średnie arytmetyczne współrzędnych końców."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -10,
+          1
+         ],
+         "yRange": [
+          -8,
+          1
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            -3,
+            -3
+           ],
+           "to": [
+            -9,
+            -7
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": -3,
+           "y": -3,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": -9,
+           "y": -7,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          }
+         ]
+        }
        }
       },
       {
@@ -53518,6 +57136,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Różnice współrzędnych: $x_B - x_A = 8$, $y_B - y_A = 6$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -5,
+          5
+         ],
+         "yRange": [
+          -6,
+          2
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            -4,
+            -5
+           ],
+           "to": [
+            4,
+            1
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": -4,
+           "y": -5,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": 4,
+           "y": 1,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -53563,6 +57229,54 @@
        "hints": {
         "level_1": "Jeśli $S$ jest środkiem odcinka $AB$, to $B = (2x_S - x_A, \\ 2y_S - y_A)$.",
         "level_2": "Ze wzoru na środek: $\\frac{-4 + x_B}{2} = 4$, więc $x_B = 2 \\cdot 4 - (-4) = 12$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -5,
+          5
+         ],
+         "yRange": [
+          -7,
+          3
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            -4,
+            -6
+           ],
+           "to": [
+            4,
+            2
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": -4,
+           "y": -6,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": 4,
+           "y": 2,
+           "label": "S",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -53608,6 +57322,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Początek układu to punkt $(0, 0)$, więc $|OP| = \\sqrt{8^2 + 2^2}$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -1,
+          9
+         ],
+         "yRange": [
+          -1,
+          3
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            0,
+            0
+           ],
+           "to": [
+            8,
+            2
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 0,
+           "y": 0,
+           "label": "O",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          },
+          {
+           "x": 8,
+           "y": 2,
+           "label": "P",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -53698,6 +57460,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Współrzędne środka to średnie arytmetyczne współrzędnych końców."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -10,
+          3
+         ],
+         "yRange": [
+          -3,
+          1
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            2,
+            -2
+           ],
+           "to": [
+            -9,
+            0
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 2,
+           "y": -2,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": -9,
+           "y": 0,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -53743,6 +57553,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Różnice współrzędnych: $x_B - x_A = 6$, $y_B - y_A = -8$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 2.",
+        "plotData": {
+         "xRange": [
+          -2,
+          10
+         ],
+         "yRange": [
+          -16,
+          2
+         ],
+         "gridStep": 2,
+         "segments": [
+          {
+           "from": [
+            1,
+            -5
+           ],
+           "to": [
+            7,
+            -13
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 1,
+           "y": -5,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": 7,
+           "y": -13,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          }
+         ]
+        }
        }
       },
       {
@@ -53788,6 +57646,54 @@
        "hints": {
         "level_1": "Jeśli $S$ jest środkiem odcinka $AB$, to $B = (2x_S - x_A, \\ 2y_S - y_A)$.",
         "level_2": "Ze wzoru na środek: $\\frac{8 + x_B}{2} = -1$, więc $x_B = 2 \\cdot (-1) - 8 = -10$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -2,
+          9
+         ],
+         "yRange": [
+          -1,
+          6
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            8,
+            5
+           ],
+           "to": [
+            -1,
+            4
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 8,
+           "y": 5,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          },
+          {
+           "x": -1,
+           "y": 4,
+           "label": "S",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -53833,6 +57739,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Początek układu to punkt $(0, 0)$, więc $|OP| = \\sqrt{(-6)^2 + (-8)^2}$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -7,
+          1
+         ],
+         "yRange": [
+          -9,
+          1
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            0,
+            0
+           ],
+           "to": [
+            -6,
+            -8
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 0,
+           "y": 0,
+           "label": "O",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          },
+          {
+           "x": -6,
+           "y": -8,
+           "label": "P",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          }
+         ]
+        }
        }
       },
       {
@@ -53923,6 +57877,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Współrzędne środka to średnie arytmetyczne współrzędnych końców."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 2.",
+        "plotData": {
+         "xRange": [
+          -8,
+          10
+         ],
+         "yRange": [
+          -6,
+          2
+         ],
+         "gridStep": 2,
+         "segments": [
+          {
+           "from": [
+            -5,
+            -4
+           ],
+           "to": [
+            8,
+            -2
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": -5,
+           "y": -4,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": 8,
+           "y": -2,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          }
+         ]
+        }
        }
       },
       {
@@ -53968,6 +57970,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Różnice współrzędnych: $x_B - x_A = -4$, $y_B - y_A = 6$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -11,
+          1
+         ],
+         "yRange": [
+          -1,
+          11
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            -6,
+            4
+           ],
+           "to": [
+            -10,
+            10
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": -6,
+           "y": 4,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          },
+          {
+           "x": -10,
+           "y": 10,
+           "label": "B",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {
@@ -54013,6 +58063,54 @@
        "hints": {
         "level_1": "Jeśli $S$ jest środkiem odcinka $AB$, to $B = (2x_S - x_A, \\ 2y_S - y_A)$.",
         "level_2": "Ze wzoru na środek: $\\frac{-5 + x_B}{2} = -6$, więc $x_B = 2 \\cdot (-6) - (-5) = -7$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 1.",
+        "plotData": {
+         "xRange": [
+          -7,
+          1
+         ],
+         "yRange": [
+          -6,
+          1
+         ],
+         "gridStep": 1,
+         "segments": [
+          {
+           "from": [
+            -5,
+            -5
+           ],
+           "to": [
+            -6,
+            -2
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": -5,
+           "y": -5,
+           "label": "A",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          },
+          {
+           "x": -6,
+           "y": -2,
+           "label": "S",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "s"
+          }
+         ]
+        }
        }
       },
       {
@@ -54058,6 +58156,54 @@
        "hints": {
         "level_1": "Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.",
         "level_2": "Początek układu to punkt $(0, 0)$, więc $|OP| = \\sqrt{8^2 + 15^2}$."
+       },
+       "diagram": {
+        "type": "PLOT",
+        "title": "Rysunek pomocniczy",
+        "caption": "Każda kratka ma bok długości 2.",
+        "plotData": {
+         "xRange": [
+          -2,
+          10
+         ],
+         "yRange": [
+          -2,
+          18
+         ],
+         "gridStep": 2,
+         "segments": [
+          {
+           "from": [
+            0,
+            0
+           ],
+           "to": [
+            8,
+            15
+           ],
+           "color": "#38BDF8",
+           "strokeWidth": 2.5
+          }
+         ],
+         "points": [
+          {
+           "x": 0,
+           "y": 0,
+           "label": "O",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          },
+          {
+           "x": 8,
+           "y": 15,
+           "label": "P",
+           "dot": "filled",
+           "color": "#FFB800",
+           "attach": "n"
+          }
+         ]
+        }
        }
       },
       {

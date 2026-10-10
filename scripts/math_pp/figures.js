@@ -35,14 +35,14 @@ function fig(type, parts) {
 // ---------- Planimetria ----------
 
 /** Trójkąt prostokątny: przyprostokątne `leg1` (pozioma), `leg2` (pionowa), przeciwprostokątna `hyp`, opcjonalnie wysokość `alt`. */
-export function figRightTriangle({ leg1, leg2, hyp, alt }) {
+export function figRightTriangle({ leg1, leg2, hyp, alt, angleB }) {
   return fig('GEOMETRY_2D', {
     polygons: [
       { points: [[110, 180], [330, 180], [110, 50]], fill: FILL, stroke: AMBER, strokeWidth: 2.5 },
       { points: [[110, 166], [124, 166], [124, 180], [110, 180]], fill: 'none', stroke: SLATE, strokeWidth: 1.5 }
     ],
     segments: [has(alt) && dash([110, 180], [166.9, 83.6])],
-    labels: [has(leg1) && txt(220, 204, leg1), has(leg2) && txt(96, 120, leg2, 'end'), has(hyp) && txt(236, 104, hyp, 'start'), has(alt) && txt(150, 150, alt, 'start', String(alt).includes('?') ? RED : SKY)]
+    labels: [has(leg1) && txt(220, 204, leg1), has(leg2) && txt(96, 120, leg2, 'end'), has(hyp) && txt(236, 104, hyp, 'start'), has(alt) && txt(150, 150, alt, 'start', String(alt).includes('?') ? RED : SKY), has(angleB) && txt(284, 174, angleB, 'middle', GREEN)]
   });
 }
 
@@ -242,4 +242,65 @@ export function figSphere({ r }) {
     points: [dot(210, 115, 'O', 'left', GREEN)],
     labels: [has(r) && txt(254, 107, r, 'middle', GREEN)]
   });
+}
+
+/** Trójkąt o bokach `a`, `b` wychodzących z jednego wierzchołka i kącie `g` (w stopniach) między nimi; `c` – bok naprzeciw kąta. */
+export function figSas({ a, b, g, c }) {
+  const obtuse = Number(g) > 90;
+  const [A, B, C] = obtuse ? [[170, 185], [350, 185], [90, 70]] : [[90, 185], [350, 185], [190, 60]];
+  return fig('GEOMETRY_2D', {
+    polygons: [{ points: [A, B, C], fill: FILL, stroke: AMBER, strokeWidth: 2.5 }],
+    labels: [
+      has(a) && txt((A[0] + B[0]) / 2, 208, a),
+      has(b) && txt((A[0] + C[0]) / 2 - 12, (A[1] + C[1]) / 2, b, 'end'),
+      has(c) && txt((B[0] + C[0]) / 2 + 12, (B[1] + C[1]) / 2 - 6, c, 'start'),
+      has(g) && txt(obtuse ? A[0] + 14 : A[0] + 44, A[1] - 10, `${g}°`, 'middle', GREEN)
+    ]
+  });
+}
+
+/** Twierdzenie Talesa: trójkąt ABC, D na AB, E na AC, DE równoległy do BC. */
+export function figThales({ ad, ab, de, bc }) {
+  const [A, B, C, D, E] = [[210, 35], [80, 195], [340, 195], [158, 99], [262, 99]];
+  return fig('GEOMETRY_2D', {
+    polygons: [{ points: [A, B, C], fill: FILL, stroke: AMBER, strokeWidth: 2.5 }],
+    segments: [seg(D, E, SKY)],
+    points: [dot(...A, 'A', 'top'), dot(...B, 'B', 'bottom-left'), dot(...C, 'C', 'bottom-right'), dot(...D, 'D', 'left', SKY), dot(...E, 'E', 'right', SKY)],
+    labels: [has(ad) && txt(12, 60, `|AD| = ${ad}`, 'start'), has(ab) && txt(12, 82, `|AB| = ${ab}`, 'start'), has(de) && txt(210, 91, de, 'middle', String(de).includes('?') ? RED : SKY), has(bc) && txt(210, 217, bc)]
+  });
+}
+
+/** Wycinek koła o promieniu `r` i kącie środkowym `angle` (w stopniach) – narysowany w rzeczywistej mierze kąta. */
+export function figSector({ r, angle }) {
+  const [S, R] = [[210, 122], 85];
+  const arc = [];
+  for (let d = 0; d <= angle; d += 5) arc.push(onCircle(...S, R, d));
+  return fig('GEOMETRY_2D', {
+    circles: [{ cx: S[0], cy: S[1], r: R, stroke: SLATE, strokeWidth: 1.5, fill: 'none', dashed: true }],
+    polygons: [{ points: [S, ...arc], fill: 'rgba(255, 184, 0, 0.14)', stroke: AMBER, strokeWidth: 2.5 }],
+    points: [dot(...S, 'S', 'bottom-left', SKY)],
+    labels: [has(r) && txt(S[0] + 46, S[1] + 18, r, 'middle', SKY), txt(12, 24, `kąt środkowy: ${angle}°`, 'start', GREEN)]
+  });
+}
+
+/** Punkty w układzie współrzędnych; `join` – łączy odcinkiem dwa pierwsze punkty. */
+export function figPoints(points, { join = true } = {}) {
+  const xs = [...points.map((p) => p.x), 0];
+  const ys = [...points.map((p) => p.y), 0];
+  const span = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys));
+  const step = span > 24 ? 5 : span > 12 ? 2 : 1;
+  const lo = (v) => Math.floor((Math.min(...v) - step) / step) * step;
+  const hi = (v) => Math.ceil((Math.max(...v) + step) / step) * step;
+  return {
+    type: 'PLOT',
+    title: 'Rysunek pomocniczy',
+    caption: step === 1 ? 'Każda kratka ma bok długości 1.' : `Każda kratka ma bok długości ${step}.`,
+    plotData: {
+      xRange: [lo(xs), hi(xs)],
+      yRange: [lo(ys), hi(ys)],
+      gridStep: step,
+      segments: join && points.length >= 2 ? [{ from: [points[0].x, points[0].y], to: [points[1].x, points[1].y], color: SKY, strokeWidth: 2.5 }] : [],
+      points: points.map((p) => ({ x: p.x, y: p.y, label: p.label, dot: 'filled', color: p.color || AMBER, attach: p.y >= 0 ? 'n' : 's' }))
+    }
+  };
 }
