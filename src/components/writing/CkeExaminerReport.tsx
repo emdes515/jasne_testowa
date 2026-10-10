@@ -266,7 +266,7 @@ export const CkeExaminerReport: React.FC<CkeExaminerReportProps> = ({
           </div>
 
           {/* Główny widget punktacji */}
-          <div className="flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-[#070A0F]/80 border border-surface-border shrink-0 text-center min-w-[150px] shadow-inner">
+          <div className="flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-surface-bg/80 border border-surface-border shrink-0 text-center min-w-[150px] shadow-inner">
             <div className="text-3xl sm:text-4xl font-black font-display text-white tracking-tight flex items-baseline justify-center gap-1">
               <span className={scorePercent >= 80 ? 'text-emerald-400' : scorePercent >= 50 ? 'text-primary' : 'text-rose-400'}>
                 {score}

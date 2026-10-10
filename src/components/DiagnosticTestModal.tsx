@@ -337,7 +337,7 @@ export const DiagnosticTestModal: React.FC<DiagnosticTestModalProps> = ({
                             isDone
                               ? 'bg-emerald-500/20 border border-emerald-500/50 shadow-[0_0_8px_rgba(16,185,129,0.3)]'
                               : isActive
-                                ? 'bg-amber-500/20 border border-[#FFB800] shadow-[0_0_10px_rgba(255,184,0,0.5)] ring-1 ring-[#FFB800]/50'
+                                ? 'bg-amber-500/20 border border-primary shadow-[0_0_10px_rgba(255,184,0,0.5)] ring-1 ring-primary/50'
                                 : 'bg-slate-900/80 border border-white/10'
                           }`}
                         >

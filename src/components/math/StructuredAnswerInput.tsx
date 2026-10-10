@@ -24,7 +24,7 @@ export interface StructuredAnswerInputProps {
 
 const base = 'rounded-xl border text-sm font-bold transition-all flex items-center justify-center gap-1.5 select-none';
 const idle = 'bg-[#141d2e]/80 border-white/10 text-[#dfe2f1] hover:border-white/25';
-const picked = 'bg-[#ffb800]/15 border-[#ffb800] text-[#ffdca1] shadow-[0_0_14px_rgba(255,184,0,0.15)]';
+const picked = 'bg-[#ffb800]/15 border-primary text-[#ffdca1] shadow-[0_0_14px_rgba(255,184,0,0.15)]';
 const good = 'bg-emerald-500/15 border-emerald-500 text-emerald-300';
 const bad = 'bg-[rgba(244,63,94,0.12)] border-[#f43f5e] text-[#f43f5e]';
 const faded = 'bg-[#0e1522]/60 border-white/5 text-slate-500';

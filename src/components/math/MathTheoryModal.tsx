@@ -92,7 +92,7 @@ export function MathTheoryModal({
         <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 bg-[#121B2C]/90 flex items-center justify-between shrink-0">
           <div className="min-w-0 flex-1 pr-3">
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span className="px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-mono font-black uppercase tracking-wider bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30">
+              <span className="px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-mono font-black uppercase tracking-wider bg-[#FFB800]/15 text-text-accent border border-primary/30">
                 {lessonBadge}
               </span>
               {topicTitle && (
@@ -136,12 +136,12 @@ export function MathTheoryModal({
                 }}
                 className={`flex-1 min-w-[110px] sm:min-w-0 py-2 sm:py-2.5 px-2 rounded-xl flex flex-col items-center justify-center gap-0.5 text-xs font-bold transition-all cursor-pointer relative ${
                   isActive
-                    ? 'text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-sm'
+                    ? 'text-text-accent bg-[#FFB800]/10 border border-primary/30 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-1.5">
-                  <Icon size={14} className={isActive ? 'text-[#FFB800]' : 'text-slate-400'} />
+                  <Icon size={14} className={isActive ? 'text-text-accent' : 'text-slate-400'} />
                   <span className="truncate">{tab.title}</span>
                 </div>
                 <span className="text-[9px] font-normal text-slate-500">{tab.time}</span>
@@ -165,7 +165,7 @@ export function MathTheoryModal({
               >
                 {/* Karta Sedna Konceptu */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#141E30] to-[#0F1726] border border-white/10 shadow-sm space-y-3">
-                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#FFB800]">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-text-accent">
                     <Target size={14} />
                     <span>Sedno Konceptu (Core Concept)</span>
                   </div>
@@ -176,7 +176,7 @@ export function MathTheoryModal({
 
                 {/* Z polskiego na nasze */}
                 {theoryPill.plain_polish && (
-                  <div className="p-4 sm:p-5 rounded-2xl bg-[#1A1811] border border-[#FFB800]/25 shadow-sm space-y-2">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#1A1811] border border-primary/25 shadow-sm space-y-2">
                     <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-300">
                       <BookOpen size={14} />
                       <span>Z polskiego na nasze (Intuicja bez żargonu)</span>
@@ -226,7 +226,7 @@ export function MathTheoryModal({
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-black uppercase tracking-wider text-slate-300">
-                    <span className="flex items-center gap-1.5 text-[#FFB800]">
+                    <span className="flex items-center gap-1.5 text-text-accent">
                       <Calculator size={14} />
                       <span>Oficjalne wzory CKE i ich interpretacja</span>
                     </span>
@@ -248,7 +248,7 @@ export function MathTheoryModal({
                           </div>
                           {f.plainPolish && (
                             <p className="text-xs text-slate-300 leading-relaxed pt-1">
-                              <span className="text-[#FFB800] font-semibold">Tłumaczenie: </span>
+                              <span className="text-text-accent font-semibold">Tłumaczenie: </span>
                               {f.plainPolish}
                             </p>
                           )}
@@ -281,7 +281,7 @@ export function MathTheoryModal({
                 transition={{ duration: 0.16 }}
                 className="space-y-3"
               >
-                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#FFB800] mb-1">
+                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-text-accent mb-1">
                   <Zap size={14} />
                   <span>Algorytm postępowania CKE (Krok po kroku)</span>
                 </div>
@@ -293,7 +293,7 @@ export function MathTheoryModal({
                         key={idx}
                         className="p-4 rounded-2xl bg-[#121B2C] border border-white/10 flex items-start gap-3.5 shadow-sm"
                       >
-                        <div className="w-8 h-8 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] font-display font-black text-sm flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 rounded-xl bg-[#FFB800]/15 border border-primary/30 text-text-accent font-display font-black text-sm flex items-center justify-center shrink-0">
                           {step.stepNumber || idx + 1}
                         </div>
                         <div className="min-w-0 flex-1 space-y-1">
@@ -304,7 +304,7 @@ export function MathTheoryModal({
                             <MathRenderer content={step.description} />
                           </p>
                           {step.tip && (
-                            <div className="pt-1 text-[11px] text-[#FFB800] font-medium flex items-center gap-1.5">
+                            <div className="pt-1 text-[11px] text-text-accent font-medium flex items-center gap-1.5">
                               <Lightbulb size={13} aria-hidden="true" />
                               <span>Wskazówka:</span>
                               <MathRenderer content={step.tip} />
@@ -318,7 +318,7 @@ export function MathTheoryModal({
                   <div className="space-y-2.5">
                     {(theoryPill.key_points || []).map((pt, idx) => (
                       <div key={idx} className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3 text-xs text-slate-200">
-                        <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold flex items-center justify-center shrink-0 text-[10px]">
+                        <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-text-accent font-bold flex items-center justify-center shrink-0 text-[10px]">
                           {idx + 1}
                         </span>
                         <div className="flex-1">
@@ -341,7 +341,7 @@ export function MathTheoryModal({
                 transition={{ duration: 0.16 }}
                 className="space-y-4"
               >
-                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#FFB800]">
+                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-text-accent">
                   <CheckCircle2 size={14} />
                   <span>Wzorcowe rozwiązania maturalne</span>
                 </div>
@@ -383,10 +383,10 @@ export function MathTheoryModal({
 
                       {/* Kluczowa myśl */}
                       {ex.keyInsight && (
-                        <div className="p-2.5 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/25 text-xs text-amber-200 flex items-start gap-2">
-                          <Target size={14} className="text-[#FFB800] shrink-0 mt-0.5" />
+                        <div className="p-2.5 rounded-xl bg-[#FFB800]/10 border border-primary/25 text-xs text-amber-200 flex items-start gap-2">
+                          <Target size={14} className="text-text-accent shrink-0 mt-0.5" />
                           <div>
-                            <span className="font-bold text-[#FFB800]">Klucz myślenia: </span>
+                            <span className="font-bold text-text-accent">Klucz myślenia: </span>
                             <MathRenderer content={ex.keyInsight} />
                           </div>
                         </div>
@@ -450,9 +450,9 @@ export function MathTheoryModal({
                     {/* Wskazówka egzaminatora */}
                     {trapDetails.ckeTip && (
                       <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200 flex items-start gap-2.5">
-                        <AlertTriangle size={16} className="text-[#FFB800] shrink-0 mt-0.5" />
+                        <AlertTriangle size={16} className="text-text-accent shrink-0 mt-0.5" />
                         <div>
-                          <span className="font-bold text-[#FFB800]">Wskazówka Egzaminatora CKE: </span>
+                          <span className="font-bold text-text-accent">Wskazówka Egzaminatora CKE: </span>
                           <span>{trapDetails.ckeTip}</span>
                         </div>
                       </div>

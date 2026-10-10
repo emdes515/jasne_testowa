@@ -48,7 +48,7 @@ import { triggerHaptic } from '../../utils';
 
 export function ActiveBadge({ label = 'W TOKU' }: { label?: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-sm">
+    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-text-accent bg-[#FFB800]/10 border border-primary/30 shadow-sm">
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] bg-[#FFB800]" />
         <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFB800]" />
@@ -673,7 +673,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
     const currentLesson = POLISH_LESSONS.find((l) => l.id === activeLessonId);
     if (currentLesson) {
       return (
-        <div key={activeLessonId} className="fixed inset-0 z-50 bg-[#070a0f] overflow-y-auto w-full h-full animate-pageTransition">
+        <div key={activeLessonId} className="fixed inset-0 z-50 bg-surface-bg overflow-y-auto w-full h-full animate-pageTransition">
           <PolishLessonView
             lesson={currentLesson}
             userState={userState}
@@ -694,15 +694,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-[#070a0f] text-[#dfe2f1] font-sans pb-28 sm:pb-24">
+    <div className="min-h-screen bg-surface-bg text-[#dfe2f1] font-sans pb-28 sm:pb-24">
       {/* Top Bar / Hub Header */}
-      <header className="relative sm:sticky sm:top-0 z-30 bg-[#070a0f]/95 backdrop-blur-md border-b border-[#141d2e] px-3.5 py-2.5 sm:px-6 sm:py-3">
+      <header className="relative sm:sticky sm:top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-[#141d2e] px-3.5 py-2.5 sm:px-6 sm:py-3">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
           <div className="flex items-center gap-2.5 min-w-0">
             {onClose && (
               <button
                 onClick={onClose}
-                className="p-1.5 rounded-lg bg-[#0e1522] hover:bg-[#141d2e] text-[#94a3b8] hover:text-[#ffdca1] transition-colors shrink-0 cursor-pointer"
+                className="p-1.5 rounded-lg bg-[#0e1522] hover:bg-[#141d2e] text-text-secondary hover:text-[#ffdca1] transition-colors shrink-0 cursor-pointer"
                 title="Wróć"
               >
                 ←
@@ -710,7 +710,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             )}
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 shrink-0">
+                <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 shrink-0">
                   Formuła 2023
                 </span>
                 <h1 className="text-base sm:text-xl font-bold tracking-tight text-white flex items-center gap-1.5 truncate">
@@ -718,7 +718,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   <span>Język Polski CKE</span>
                 </h1>
               </div>
-              <p className="text-xs text-[#94a3b8] hidden sm:block mt-0.5">
+              <p className="text-xs text-text-secondary hidden sm:block mt-0.5">
                 15 modułów egzaminacyjnych • 75 autentycznych lekcji Core-4 • Baza zadań CKE
               </p>
             </div>
@@ -731,10 +731,10 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                 setSelectedLessonModule('Warsztat wypracowania');
                 setHubMode('lessons');
               }}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#0e1522] hover:bg-[#141d2e] border border-[#ffb800]/30 text-[#ffdca1] text-xs font-medium transition-all shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#0e1522] hover:bg-[#141d2e] border border-primary/30 text-[#ffdca1] text-xs font-medium transition-all shadow-sm cursor-pointer"
               title="Notatki i synteza CKE"
             >
-              <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ffb800]" />
+              <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-accent" />
               <span className="hidden sm:inline">Warsztat & Synteza</span>
               <span className="sm:hidden text-[11px]">Synteza</span>
             </button>
@@ -762,7 +762,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'lessons'
                 ? 'border-[#ffdca1] text-[#ffdca1] bg-[#ffb800]/5'
-                : 'border-transparent text-[#94a3b8] hover:text-[#dfe2f1]'
+                : 'border-transparent text-text-secondary hover:text-[#dfe2f1]'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -773,7 +773,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border-b-2 transition-colors shrink-0 whitespace-nowrap cursor-pointer ${
               hubMode === 'task_browser'
                 ? 'border-[#ffdca1] text-[#ffdca1] bg-[#ffb800]/5'
-                : 'border-transparent text-[#94a3b8] hover:text-[#dfe2f1]'
+                : 'border-transparent text-text-secondary hover:text-[#dfe2f1]'
             }`}
           >
             <Target className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -793,21 +793,21 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#0e1522] p-4 sm:p-5 rounded-xl border border-[#141d2e]">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="px-2.5 py-0.5 rounded-lg bg-[#ffb800]/10 border border-[#ffb800]/20 text-[#ffdca1] text-xs font-bold">
+                  <span className="px-2.5 py-0.5 rounded-lg bg-[#ffb800]/10 border border-primary/20 text-[#ffdca1] text-xs font-bold">
                     Kompletny Kurs Maturalny CKE
                   </span>
-                  <span className="text-xs text-[#94a3b8]">15 Działów • 75 Lekcji Core-4</span>
+                  <span className="text-xs text-text-secondary">15 Działów • 75 Lekcji Core-4</span>
                 </div>
                 <h2 className="text-base sm:text-lg font-bold text-white">
                   Wybierz dział egzaminacyjny i rozpocznij lekcję
                 </h2>
-                <p className="text-xs text-[#94a3b8] mt-1">
+                <p className="text-xs text-text-secondary mt-1">
                   Każdy dział zawiera dokładnie 5 dedykowanych mikrolekcji z Pigułką Bento, pułapkami CKE i zadaniami treningowymi.
                 </p>
               </div>
 
               <div className="text-left sm:text-right shrink-0">
-                <span className="text-xs text-[#94a3b8]">Ukończone lekcje w kursie:</span>
+                <span className="text-xs text-text-secondary">Ukończone lekcje w kursie:</span>
                 <div className="text-sm font-bold text-[#ffdca1]">
                   {isDev ? 75 : completedLessonIds.length} / 75 lekcji CKE
                 </div>
@@ -817,7 +817,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             {/* Siatka 15 Kart Działów (Akordeon na mobile) */}
             <div className="space-y-4">
               {/* Mobile accordion controls */}
-              <div className="sm:hidden flex items-center justify-between text-xs text-[#94a3b8] px-1">
+              <div className="sm:hidden flex items-center justify-between text-xs text-text-secondary px-1">
                 <span>Dotknij dział, aby rozwinąć lekcje:</span>
                 <button
                   type="button"
@@ -860,15 +860,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         className="flex items-center justify-between gap-2 min-w-0 cursor-pointer sm:cursor-default select-none pb-1"
                       >
                         <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/20 flex items-center justify-center text-[#ffdca1] shrink-0 group-hover/card:scale-105 transition-transform">
+                          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] shrink-0 group-hover/card:scale-105 transition-transform">
                             {getPolishSectionIcon(section.icon)}
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="text-[10px] font-bold uppercase text-[#ffdca1] bg-[#ffb800]/10 px-2 py-0.5 rounded-md border border-[#ffb800]/20 shrink-0">
+                              <span className="text-[10px] font-bold uppercase text-[#ffdca1] bg-[#ffb800]/10 px-2 py-0.5 rounded-md border border-primary/20 shrink-0">
                                 Dział {section.numericId}
                               </span>
-                              <span className="text-[10px] text-[#94a3b8] font-medium truncate max-w-[120px]">
+                              <span className="text-[10px] text-text-secondary font-medium truncate max-w-[120px]">
                                 {section.pillarName}
                               </span>
                             </div>
@@ -878,7 +878,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           </div>
                         </div>
                         <div className="flex items-center gap-1.5 shrink-0">
-                          <span className="text-[10px] sm:text-[11px] font-bold text-[#ffdca1] px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#ffb800]/10 border border-[#ffb800]/20 rounded-lg">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#ffdca1] px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#ffb800]/10 border border-primary/20 rounded-lg">
                             {section.points_range}
                           </span>
                           <span className={`sm:hidden p-1 rounded-md text-text-muted transition-transform duration-200 ${isExpanded ? 'rotate-180 text-primary' : ''}`}>
@@ -889,10 +889,10 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                       {/* Mini pasek postępu gdy zwinięte na mobile */}
                       {!isExpanded && (
-                        <div className="sm:hidden mt-2 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-[#94a3b8]">
+                        <div className="sm:hidden mt-2 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-text-secondary">
                           <span>Postęp: <strong className="text-[#ffdca1]">{completedLessonsCount}/{sectionLessons.length}</strong></span>
                           <div className="flex items-center gap-2">
-                            <div className="w-16 h-1.5 bg-[#070a0f] rounded-full overflow-hidden border border-[#141d2e]">
+                            <div className="w-16 h-1.5 bg-surface-bg rounded-full overflow-hidden border border-[#141d2e]">
                               <div
                                 className="h-full bg-gradient-to-r from-[#ea580c] to-[#ffb800] rounded-full"
                                 style={{ width: `${progressPct}%` }}
@@ -905,13 +905,13 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                       {/* Rozwijana zawartość na mobile (zawsze widoczna na desktopie >= 640px) */}
                       <div className={`${isExpanded ? 'block' : 'hidden sm:block'} pt-2`}>
-                        <p className="text-xs text-[#94a3b8] leading-relaxed mb-3 line-clamp-2 break-words">
+                        <p className="text-xs text-text-secondary leading-relaxed mb-3 line-clamp-2 break-words">
                           {section.description}
                         </p>
 
                         {/* ŚCIEŻKA LEKCJI (MINI ROADMAP) */}
-                        <div className="space-y-1.5 my-3 p-3 rounded-xl bg-[#070a0f] border border-[#141d2e] min-w-0">
-                          <div className="flex items-center justify-between text-[10px] font-bold text-[#94a3b8] uppercase tracking-wider mb-1 min-w-0">
+                        <div className="space-y-1.5 my-3 p-3 rounded-xl bg-surface-bg border border-[#141d2e] min-w-0">
+                          <div className="flex items-center justify-between text-[10px] font-bold text-text-secondary uppercase tracking-wider mb-1 min-w-0">
                             <span className="truncate">Ścieżka mikrolekcji Core-4:</span>
                             <span className="text-[#ffdca1] font-mono shrink-0 ml-1">{completedLessonsCount}/{sectionLessons.length}</span>
                           </div>
@@ -921,11 +921,11 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               <div key={l.id} className="flex items-center justify-between text-xs py-0.5 gap-2 min-w-0">
                                 <div className="flex items-center gap-2 min-w-0 flex-1">
                                   <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 ${
-                                    isLComp ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300' : 'bg-[#0e1522] text-[#94a3b8] border border-[#141d2e]'
+                                    isLComp ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300' : 'bg-[#0e1522] text-text-secondary border border-[#141d2e]'
                                   }`}>
                                     {isLComp ? '✓' : `${section.numericId}.${lIdx + 1}`}
                                   </span>
-                                  <span className={`truncate text-xs min-w-0 flex-1 ${isLComp ? 'text-[#94a3b8] line-through' : 'text-[#dfe2f1] font-medium'}`}>
+                                  <span className={`truncate text-xs min-w-0 flex-1 ${isLComp ? 'text-text-secondary line-through' : 'text-[#dfe2f1] font-medium'}`}>
                                     {l.title.replace(/^Lekcja \d+:\s*/i, '')}
                                   </span>
                                 </div>
@@ -937,12 +937,12 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         {/* PASEK POSTĘPU DZIAŁU */}
                         <div className="space-y-1.5 mb-4 min-w-0">
                           <div className="flex items-center justify-between text-xs min-w-0 gap-2">
-                            <span className="text-[#94a3b8] font-medium truncate">Postęp działu:</span>
+                            <span className="text-text-secondary font-medium truncate">Postęp działu:</span>
                             <span className="font-bold text-[#ffdca1] shrink-0">
                               {completedLessonsCount} / {sectionLessons.length} lekcji ({progressPct}%)
                             </span>
                           </div>
-                          <div className="w-full h-2 bg-[#070a0f] rounded-full overflow-hidden border border-[#141d2e]">
+                          <div className="w-full h-2 bg-surface-bg rounded-full overflow-hidden border border-[#141d2e]">
                             <div
                               className="h-full bg-gradient-to-r from-[#ea580c] to-[#ffb800] transition-all duration-300 rounded-full"
                               style={{ width: `${progressPct}%` }}
@@ -971,9 +971,9 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           setHubMode('task_browser');
                           setTaskPage(1);
                         }}
-                        className="w-full py-2 rounded-xl bg-[#070a0f] hover:bg-[#141d2e] border border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1] text-xs font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer min-w-0"
+                        className="w-full py-2 rounded-xl bg-surface-bg hover:bg-[#141d2e] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] text-xs font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer min-w-0"
                       >
-                        <Target className="w-3.5 h-3.5 text-[#ffb800] shrink-0" />
+                        <Target className="w-3.5 h-3.5 text-text-accent shrink-0" />
                         <span className="truncate">Przeglądaj wszystkie {sectionTasks.length} zadań CKE</span>
                       </button>
                     </div>
@@ -1006,7 +1006,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               <div className="flex items-center justify-between">
                 <button
                   onClick={() => setExpandedSectionId(null)}
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0e1522] border border-[#141d2e] text-xs font-semibold text-[#94a3b8] hover:text-[#dfe2f1] hover:bg-[#141d2e] transition-colors cursor-pointer"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0e1522] border border-[#141d2e] text-xs font-semibold text-text-secondary hover:text-[#dfe2f1] hover:bg-[#141d2e] transition-colors cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4 text-[#ffdca1]" />
                   Wróć do wszystkich 15 działów
@@ -1017,8 +1017,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                     onClick={() => setSectionInnerTab('lessons')}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
                       sectionInnerTab === 'lessons'
-                        ? 'bg-[#ffb800]/15 border border-[#ffb800]/40 text-[#ffdca1] shadow-sm'
-                        : 'bg-[#0e1522] border border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'
+                        ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] shadow-sm'
+                        : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
                     }`}
                   >
                     5 Lekcji Core-4
@@ -1027,8 +1027,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                     onClick={() => setSectionInnerTab('tasks')}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
                       sectionInnerTab === 'tasks'
-                        ? 'bg-[#ffb800]/15 border border-[#ffb800]/40 text-[#ffdca1] shadow-sm'
-                        : 'bg-[#0e1522] border border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'
+                        ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] shadow-sm'
+                        : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
                     }`}
                   >
                     Baza Zadań Działu ({sectionTasks.length})
@@ -1040,32 +1040,32 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               <div className="bg-[#0e1522] border border-[#141d2e] rounded-xl p-5 sm:p-6 shadow-sm">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/20 flex items-center justify-center text-[#ffdca1] shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] shrink-0">
                       {getPolishSectionIcon(currentSection.icon)}
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="px-2.5 py-0.5 rounded-md bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 text-xs font-bold">
+                        <span className="px-2.5 py-0.5 rounded-md bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 text-xs font-bold">
                           Dział {currentSection.numericId}
                         </span>
-                        <span className="text-xs font-semibold text-[#94a3b8]">
+                        <span className="text-xs font-semibold text-text-secondary">
                           {currentSection.pillarName}
                         </span>
                       </div>
                       <h2 className="text-lg sm:text-xl font-bold text-white">
                         {currentSection.title}
                       </h2>
-                      <p className="text-xs text-[#94a3b8] mt-1 max-w-2xl leading-relaxed">
+                      <p className="text-xs text-text-secondary mt-1 max-w-2xl leading-relaxed">
                         {currentSection.description}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-2">
-                    <span className="px-3 py-1.5 rounded-xl bg-[#070a0f] border border-[#141d2e] text-xs font-bold text-[#ffdca1]">
+                    <span className="px-3 py-1.5 rounded-xl bg-surface-bg border border-[#141d2e] text-xs font-bold text-[#ffdca1]">
                       Waga CKE: {currentSection.points_range}
                     </span>
-                    <span className="text-xs text-[#94a3b8] font-medium">
+                    <span className="text-xs text-text-secondary font-medium">
                       {sectionTasks.length} pytań w puli
                     </span>
                   </div>
@@ -1085,14 +1085,14 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                       <div className="bg-[#0e1522] border border-[#141d2e] rounded-xl p-4 sm:p-5 shadow-sm flex flex-col gap-2.5 mb-2">
                         <div className="flex items-center justify-between text-xs sm:text-sm">
                           <span className="text-[#dfe2f1] font-semibold flex items-center gap-2">
-                            <GraduationCap className="w-4 h-4 text-[#ffb800]" />
+                            <GraduationCap className="w-4 h-4 text-text-accent" />
                             <span>Postęp Działu {currentSection.numericId}:</span>
                           </span>
                           <span className="font-bold text-white">
                             <span className="text-[#ffdca1] font-extrabold">{completedLessonsCount}/{totalLessonsCount}</span> lekcji zaliczonych ({progressPct}%)
                           </span>
                         </div>
-                        <div className="w-full h-2 rounded-full bg-[#070a0f] overflow-hidden border border-[#141d2e]">
+                        <div className="w-full h-2 rounded-full bg-surface-bg overflow-hidden border border-[#141d2e]">
                           <div
                             className="h-full bg-gradient-to-r from-[#ea580c] to-[#ffb800] shadow-sm transition-all duration-500 rounded-full"
                             style={{ width: `${progressPct}%` }}
@@ -1104,7 +1104,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                   <div className="flex items-center justify-between px-1">
                     <h3 className="text-xs sm:text-sm font-bold text-[#dfe2f1] uppercase tracking-wider flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-[#ffb800]" />
+                      <BookOpen className="w-4 h-4 text-text-accent" />
                       <span>Program Mikrolekcji Core-4 (5 lekcji)</span>
                     </h3>
                   </div>
@@ -1136,7 +1136,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
                                   : isCurrentActiveLesson
                                     ? 'bg-[#ffb800]/15 border border-[#ffdca1] text-[#ffdca1]'
-                                    : 'bg-[#070a0f] border-[#141d2e] text-[#94a3b8]'
+                                    : 'bg-surface-bg border-[#141d2e] text-text-secondary'
                               }`}>
                                 {isLessonCompleted ? (
                                   <CheckCircle2 size={20} className="stroke-[2.5]" />
@@ -1150,7 +1150,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               {/* TYTUŁ I METADANE LEKCJI */}
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-2 mb-1 flex-wrap min-w-0">
-                                  <span className="text-[10px] font-bold uppercase text-[#94a3b8] tracking-wider bg-[#070a0f] px-2 py-0.5 rounded-full border border-[#141d2e] shrink-0">
+                                  <span className="text-[10px] font-bold uppercase text-text-secondary tracking-wider bg-surface-bg px-2 py-0.5 rounded-full border border-[#141d2e] shrink-0">
                                     LEKCJA {currentSection.numericId}.{idx + 1}
                                   </span>
                                   {isLessonCompleted && (
@@ -1166,17 +1166,17 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                 <h4 className="font-bold text-base sm:text-lg text-white leading-snug break-words">
                                   {lesson.title}
                                 </h4>
-                                <p className="text-xs text-[#94a3b8] mt-1 leading-relaxed break-words">
+                                <p className="text-xs text-text-secondary mt-1 leading-relaxed break-words">
                                   {lesson.subtitle}
                                 </p>
 
-                                <div className="flex items-center gap-2.5 mt-2 text-xs text-[#94a3b8] flex-wrap min-w-0">
+                                <div className="flex items-center gap-2.5 mt-2 text-xs text-text-secondary flex-wrap min-w-0">
                                   <span className="text-white font-medium">
                                     Wymóg: {lesson.taskIds.length} {lesson.taskIds.length === 1 ? 'zadanie maturalne' : lesson.taskIds.length < 5 ? 'zadania maturalne' : 'zadań maturalnych'}
                                   </span>
                                   <span>•</span>
                                   <span className="text-[#ffdca1] font-medium flex items-center gap-1">
-                                    <Star className="w-3 h-3 text-[#ffb800] shrink-0" />
+                                    <Star className="w-3 h-3 text-text-accent shrink-0" />
                                     Pewniaki CKE
                                   </span>
                                 </div>
@@ -1190,10 +1190,10 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                 className={`px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer min-w-0 flex-1 sm:flex-none text-center ${
                                   isPillOpen
                                     ? 'bg-[#ffb800]/15 border-[#ffdca1] text-[#ffdca1] shadow-sm'
-                                    : 'bg-[#070a0f] hover:bg-[#141d2e] border-[#141d2e] text-[#dfe2f1] hover:text-white'
+                                    : 'bg-surface-bg hover:bg-[#141d2e] border-[#141d2e] text-[#dfe2f1] hover:text-white'
                                 }`}
                               >
-                                <Lightbulb className="w-4 h-4 text-[#ffb800] shrink-0" />
+                                <Lightbulb className="w-4 h-4 text-text-accent shrink-0" />
                                 <span className="truncate">{isPillOpen ? 'Zwiń zasady' : 'Karty wiedzy & Strategia CKE'}</span>
                                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 shrink-0 ${isPillOpen ? 'rotate-180' : ''}`} />
                               </button>
@@ -1201,7 +1201,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               {isLessonCompleted ? (
                                 <button
                                   onClick={() => handleStartLessonDirect(lesson)}
-                                  className="px-5 py-2.5 rounded-xl bg-[#070a0f] hover:bg-[#141d2e] border border-[#141d2e] hover:border-[#ffdca1]/40 text-[#dfe2f1] hover:text-[#ffdca1] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
+                                  className="px-5 py-2.5 rounded-xl bg-surface-bg hover:bg-[#141d2e] border border-[#141d2e] hover:border-[#ffdca1]/40 text-[#dfe2f1] hover:text-[#ffdca1] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer min-w-0 flex-1 sm:flex-none text-center"
                                 >
                                   <RotateCcw size={15} className="stroke-[2.5] text-[#ffdca1] shrink-0" />
                                   <span>POWTÓRZ MISJĘ</span>
@@ -1223,9 +1223,9 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           {isPillOpen && (
                             <div className="mt-3 pt-5 border-t border-[#141d2e] space-y-6 animate-fadeIn min-w-0 overflow-hidden">
                               {/* NAGŁÓWEK BENTO HUD */}
-                              <div className="flex items-center justify-between p-4 rounded-xl bg-[#070a0f] border border-[#141d2e] shadow-sm min-w-0 gap-2">
+                              <div className="flex items-center justify-between p-4 rounded-xl bg-surface-bg border border-[#141d2e] shadow-sm min-w-0 gap-2">
                                 <div className="flex items-center gap-3 min-w-0">
-                                  <div className="w-9 h-9 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/20 flex items-center justify-center text-[#ffdca1] font-bold shrink-0">
+                                  <div className="w-9 h-9 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] font-bold shrink-0">
                                     <BookOpen className="w-5 h-5 text-[#ffdca1]" />
                                   </div>
                                   <div className="min-w-0">
@@ -1237,16 +1237,16 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                     </h3>
                                   </div>
                                 </div>
-                                <span className="text-xs font-mono font-bold text-[#ffdca1] bg-[#ffb800]/10 border border-[#ffb800]/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
+                                <span className="text-xs font-mono font-bold text-[#ffdca1] bg-[#ffb800]/10 border border-primary/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
                                   FORMUŁA 2023
                                 </span>
                               </div>
 
                               {/* SEKCJA 1: PEWNIAKI MATURALNE */}
-                              <div className="p-4 sm:p-5 md:p-6 rounded-xl bg-[#070a0f] border border-[#ffb800]/30 space-y-5 shadow-sm min-w-0 overflow-hidden">
+                              <div className="p-4 sm:p-5 md:p-6 rounded-xl bg-surface-bg border border-primary/30 space-y-5 shadow-sm min-w-0 overflow-hidden">
                                 <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#141d2e] min-w-0">
                                   <div className="flex items-center gap-3 min-w-0">
-                                    <div className="w-10 h-10 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/30 flex items-center justify-center text-[#ffdca1] shrink-0">
+                                    <div className="w-10 h-10 rounded-xl bg-[#ffb800]/10 border border-primary/30 flex items-center justify-center text-[#ffdca1] shrink-0">
                                       <Star className="w-5 h-5 text-[#ffdca1]" />
                                     </div>
                                     <div className="min-w-0">
@@ -1254,7 +1254,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                         <span className="text-[10px] font-bold uppercase text-[#ffdca1] tracking-wider">
                                           PEWNIAKI MATURALNE
                                         </span>
-                                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 tracking-wider shrink-0">
+                                        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 tracking-wider shrink-0">
                                           100% CKE STANDARD
                                         </span>
                                       </div>
@@ -1263,7 +1263,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                       </h4>
                                     </div>
                                   </div>
-                                  <span className="text-xs font-mono font-bold text-[#ffdca1] bg-[#ffb800]/10 border border-[#ffb800]/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
+                                  <span className="text-xs font-mono font-bold text-[#ffdca1] bg-[#ffb800]/10 border border-primary/20 px-3 py-1 rounded-full hidden sm:inline-block shrink-0">
                                     PUNKTOWANIE CKE
                                   </span>
                                 </div>
@@ -1278,7 +1278,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                     {lesson.introduction.theoryPoints.map((tp, tpIdx) => (
                                       <div key={tpIdx} className="p-3.5 rounded-xl bg-[#0e1522] border border-[#141d2e] space-y-1">
                                         <div className="text-xs font-bold text-[#ffdca1]">{tp.title}</div>
-                                        <p className="text-xs text-[#94a3b8] leading-relaxed">{tp.content}</p>
+                                        <p className="text-xs text-text-secondary leading-relaxed">{tp.content}</p>
                                       </div>
                                     ))}
                                   </div>
@@ -1288,13 +1288,13 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                 {lesson.introduction.ckeExaminerTips && lesson.introduction.ckeExaminerTips.length > 0 && (
                                   <div className="p-4 rounded-xl bg-[#0e1522] border border-[#141d2e] space-y-2">
                                     <div className="text-xs font-bold uppercase text-[#ffdca1] tracking-wider flex items-center gap-1.5">
-                                      <Lightbulb className="w-4 h-4 text-[#ffb800]" />
+                                      <Lightbulb className="w-4 h-4 text-text-accent" />
                                       <span>Patenty Egzaminatora CKE:</span>
                                     </div>
                                     <ul className="space-y-1.5 text-xs text-[#dfe2f1]">
                                       {lesson.introduction.ckeExaminerTips.map((tip, tipIdx) => (
                                         <li key={tipIdx} className="flex items-start gap-2">
-                                          <span className="text-[#ffb800] shrink-0 font-bold">•</span>
+                                          <span className="text-text-accent shrink-0 font-bold">•</span>
                                           <span>{tip}</span>
                                         </li>
                                       ))}
@@ -1323,7 +1323,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                     -1 PKT NA MATURZE
                                   </span>
                                 </div>
-                                <div className="text-sm sm:text-base text-rose-100 font-medium leading-relaxed bg-[#070a0f] p-4 rounded-xl border border-rose-500/20 break-words">
+                                <div className="text-sm sm:text-base text-rose-100 font-medium leading-relaxed bg-surface-bg p-4 rounded-xl border border-rose-500/20 break-words">
                                   {lesson.introduction.gatekeeper?.explanation || 'Zwracaj szczególną uwagę na kwantyfikatory skrajne i dosłowność tekstu. Nie dopowiadaj wiedzy pozatekstowej w Części 1 ani nie myl faktów fabularnych w lekturach z gwiazdką.'}
                                 </div>
                               </div>
@@ -1332,7 +1332,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               {lesson.introduction.gatekeeper && (
                                 <div className="space-y-4 min-w-0">
                                   <div className="flex items-center gap-3 px-1 min-w-0">
-                                    <div className="w-9 h-9 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/20 flex items-center justify-center text-[#ffdca1] shrink-0">
+                                    <div className="w-9 h-9 rounded-xl bg-[#ffb800]/10 border border-primary/20 flex items-center justify-center text-[#ffdca1] shrink-0">
                                       <Target className="w-5 h-5" />
                                     </div>
                                     <div className="min-w-0">
@@ -1345,7 +1345,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                     </div>
                                   </div>
 
-                                  <div className="p-4 sm:p-5 rounded-xl bg-[#070a0f] border border-[#141d2e] space-y-4 shadow-sm min-w-0 overflow-hidden">
+                                  <div className="p-4 sm:p-5 rounded-xl bg-surface-bg border border-[#141d2e] space-y-4 shadow-sm min-w-0 overflow-hidden">
                                     <div className="p-4 rounded-xl bg-[#0e1522] border border-[#141d2e] text-sm text-[#dfe2f1] font-medium leading-relaxed break-words">
                                       "{lesson.introduction.gatekeeper.question}"
                                     </div>
@@ -1359,13 +1359,13 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                             className={`p-3 rounded-xl border text-xs sm:text-sm font-medium flex items-center gap-2.5 ${
                                               isCorrect
                                                 ? 'bg-emerald-950/40 border-emerald-500/50 text-emerald-200'
-                                                : 'bg-[#0e1522] border-[#141d2e] text-[#94a3b8]'
+                                                : 'bg-[#0e1522] border-[#141d2e] text-text-secondary'
                                             }`}
                                           >
                                             <span className={`w-5 h-5 rounded-md border flex items-center justify-center text-xs font-bold shrink-0 ${
                                               isCorrect
                                                 ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
-                                                : 'bg-[#070a0f] border-[#141d2e] text-[#94a3b8]'
+                                                : 'bg-surface-bg border-[#141d2e] text-text-secondary'
                                             }`}>
                                               {String.fromCharCode(65 + oIdx)}
                                             </span>
@@ -1382,7 +1382,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                                     {lesson.introduction.gatekeeper.explanation && (
                                       <div className="p-3.5 rounded-xl bg-[#0e1522] border border-[#141d2e] text-[#ffdca1] text-xs sm:text-sm flex items-start gap-2.5 min-w-0">
-                                        <Lightbulb className="w-4 h-4 text-[#ffb800] shrink-0 mt-0.5" />
+                                        <Lightbulb className="w-4 h-4 text-text-accent shrink-0 mt-0.5" />
                                         <span className="leading-relaxed break-words flex-1">
                                           <strong>Wyjaśnienie odpowiedzi:</strong> {lesson.introduction.gatekeeper.explanation}
                                         </span>
@@ -1394,13 +1394,13 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                               {/* SEKCJA 4: DOLNY BANER CTA */}
                               <div className="pt-3 min-w-0">
-                                <div className="flex flex-col lg:flex-row items-center justify-between gap-4 p-4 sm:p-5 md:p-6 rounded-xl bg-gradient-to-r from-[#141d2e] to-[#0e1522] border border-[#ffb800]/30 min-w-0 overflow-hidden">
+                                <div className="flex flex-col lg:flex-row items-center justify-between gap-4 p-4 sm:p-5 md:p-6 rounded-xl bg-gradient-to-r from-[#141d2e] to-[#0e1522] border border-primary/30 min-w-0 overflow-hidden">
                                   <div className="space-y-1 text-center lg:text-left min-w-0 flex-1">
                                     <div className="text-sm sm:text-base font-bold text-white flex items-center justify-center lg:justify-start gap-2 flex-wrap">
-                                      <Trophy className="w-5 h-5 text-[#ffb800] shrink-0" />
+                                      <Trophy className="w-5 h-5 text-text-accent shrink-0" />
                                       <span className="break-words">Zasady opanowane? Ruszaj do walki o punkty!</span>
                                     </div>
-                                    <div className="text-xs sm:text-sm text-[#94a3b8] break-words">
+                                    <div className="text-xs sm:text-sm text-text-secondary break-words">
                                       Lekcja zawiera {lesson.taskIds.length} autentycznych zadań CKE. Zdobądź pełną pulę punktów i awansuj w rankingu!
                                     </div>
                                   </div>
@@ -1455,11 +1455,11 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         >
                           <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
                             <div className="flex items-center gap-2">
-                              <span className="px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] font-bold border border-[#ffb800]/20">
+                              <span className="px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] font-bold border border-primary/20">
                                 {task.partName}
                               </span>
                               {task.epoch && (
-                                <span className="text-[#94a3b8] font-medium">
+                                <span className="text-text-secondary font-medium">
                                   {task.epoch}
                                 </span>
                               )}
@@ -1472,12 +1472,12 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <h4 className="text-sm font-semibold text-white leading-snug">
                             {task.title}
                           </h4>
-                          <p className="text-xs text-[#94a3b8] leading-relaxed line-clamp-3">
+                          <p className="text-xs text-text-secondary leading-relaxed line-clamp-3">
                             {task.question}
                           </p>
 
                           <div className="flex items-center justify-between pt-2 border-t border-[#141d2e]">
-                            <span className="text-[11px] text-[#94a3b8]">
+                            <span className="text-[11px] text-text-secondary">
                               Typ: {task.taskType}
                             </span>
                             <button
@@ -1486,7 +1486,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                 const foundIdx = filteredTasks.findIndex(t => t.id === task.id);
                                 if (foundIdx !== -1) setActiveTaskIndex(foundIdx);
                               }}
-                              className="px-3 py-1.5 rounded-lg bg-[#070a0f] hover:bg-[#141d2e] border border-[#141d2e] text-xs text-[#ffdca1] font-medium flex items-center gap-1 transition-colors cursor-pointer"
+                              className="px-3 py-1.5 rounded-lg bg-surface-bg hover:bg-[#141d2e] border border-[#141d2e] text-xs text-[#ffdca1] font-medium flex items-center gap-1 transition-colors cursor-pointer"
                             >
                               Rozwiąż to zadanie →
                             </button>
@@ -1510,21 +1510,21 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#0e1522] p-4 sm:p-5 rounded-xl border border-[#141d2e]">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="px-2 py-0.5 rounded-lg bg-[#ffb800]/10 border border-[#ffb800]/20 text-[#ffdca1] text-xs font-bold">
+                <span className="px-2 py-0.5 rounded-lg bg-[#ffb800]/10 border border-primary/20 text-[#ffdca1] text-xs font-bold">
                   Baza Wszystkich Zadań CKE
                 </span>
-                <span className="text-xs text-[#94a3b8]">Swobodny Bank Pytań • 60 pkt</span>
+                <span className="text-xs text-text-secondary">Swobodny Bank Pytań • 60 pkt</span>
               </div>
               <h2 className="text-base sm:text-lg font-semibold text-white">
                 Oficjalne Zadania Egzaminacyjne Formuły 2023
               </h2>
-              <p className="text-xs text-[#94a3b8] mt-1">
+              <p className="text-xs text-text-secondary mt-1">
                 Zadania podzielone wg 3 części egzaminu z filtrowaniem po epoce, typie zadania i lekturze.
               </p>
             </div>
 
             <div className="text-right shrink-0">
-              <span className="text-xs text-[#94a3b8]">Dostępnych pytań:</span>
+              <span className="text-xs text-text-secondary">Dostępnych pytań:</span>
               <div className="text-sm font-bold text-[#ffdca1]">
                 {ALL_POLISH_TASKS.length} zadań CKE
               </div>
@@ -1540,15 +1540,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               }}
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 'all'
-                  ? 'bg-[#ffb800]/15 border-[#ffb800]/60 shadow-md text-white'
-                  : 'bg-[#0e1522] border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1] hover:border-[#1e293b]'
+                  ? 'bg-[#ffb800]/15 border-primary/60 shadow-md text-white'
+                  : 'bg-[#0e1522] border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] hover:border-[#1e293b]'
               }`}
             >
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-[#94a3b8]">
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary">
                 Pokaż wszystko
               </div>
               <div className="text-sm font-bold mt-0.5 text-white">Wszystkie Części CKE</div>
-              <div className="text-xs text-[#94a3b8] mt-1">
+              <div className="text-xs text-text-secondary mt-1">
                 Pełny bank {ALL_POLISH_TASKS.length} pytań
               </div>
             </button>
@@ -1560,15 +1560,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               }}
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 1
-                  ? 'bg-[#ffb800]/15 border-[#ffb800]/60 shadow-md text-white'
-                  : 'bg-[#0e1522] border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1] hover:border-[#1e293b]'
+                  ? 'bg-[#ffb800]/15 border-primary/60 shadow-md text-white'
+                  : 'bg-[#0e1522] border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] hover:border-[#1e293b]'
               }`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-wider text-[#ffdca1]">
                 Część 1 (10 pkt)
               </div>
               <div className="text-sm font-bold mt-0.5 text-white">Język w użyciu</div>
-              <div className="text-xs text-[#94a3b8] mt-1">
+              <div className="text-xs text-text-secondary mt-1">
                 Czytanie i notatka syntetyzująca
               </div>
             </button>
@@ -1580,15 +1580,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               }}
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 2
-                  ? 'bg-[#ffb800]/15 border-[#ffb800]/60 shadow-md text-white'
-                  : 'bg-[#0e1522] border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1] hover:border-[#1e293b]'
+                  ? 'bg-[#ffb800]/15 border-primary/60 shadow-md text-white'
+                  : 'bg-[#0e1522] border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] hover:border-[#1e293b]'
               }`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-wider text-[#ffdca1]">
                 Część 2 (15 pkt)
               </div>
               <div className="text-sm font-bold mt-0.5 text-white">Test historycznoliteracki</div>
-              <div className="text-xs text-[#94a3b8] mt-1">
+              <div className="text-xs text-text-secondary mt-1">
                 Epoki, toposy, lektury CKE
               </div>
             </button>
@@ -1600,15 +1600,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
               }}
               className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                 selectedPart === 3
-                  ? 'bg-[#ffb800]/15 border-[#ffb800]/60 shadow-md text-white'
-                  : 'bg-[#0e1522] border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1] hover:border-[#1e293b]'
+                  ? 'bg-[#ffb800]/15 border-primary/60 shadow-md text-white'
+                  : 'bg-[#0e1522] border-[#141d2e] text-text-secondary hover:text-[#dfe2f1] hover:border-[#1e293b]'
               }`}
             >
               <div className="text-[10px] font-semibold uppercase tracking-wider text-[#ffdca1]">
                 Część 3 (35 pkt)
               </div>
               <div className="text-sm font-bold mt-0.5 text-white">Warsztat wypracowania</div>
-              <div className="text-xs text-[#94a3b8] mt-1">
+              <div className="text-xs text-text-secondary mt-1">
                 Konspekty i eliminacja błędów
               </div>
             </button>
@@ -1621,8 +1621,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                 onClick={() => setSelectedEpoch('all')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                   selectedEpoch === 'all'
-                    ? 'bg-[#ffb800]/15 border border-[#ffb800]/40 text-[#ffdca1] font-bold shadow-sm'
-                    : 'bg-[#0e1522] border border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'
+                    ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] font-bold shadow-sm'
+                    : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
                 }`}
               >
                 Wszystkie epoki
@@ -1633,8 +1633,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   onClick={() => setSelectedEpoch(ep)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                     selectedEpoch === ep
-                      ? 'bg-[#ffb800]/15 border border-[#ffb800]/40 text-[#ffdca1] font-bold shadow-sm'
-                      : 'bg-[#0e1522] border border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'
+                      ? 'bg-[#ffb800]/15 border border-primary/40 text-[#ffdca1] font-bold shadow-sm'
+                      : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
                   }`}
                 >
                   {ep}
@@ -1648,24 +1648,24 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
             {/* Lewy Pasek: Indeks Zadań */}
             <div className="lg:col-span-4 bg-[#0e1522] border border-[#141d2e] rounded-xl p-4 flex flex-col max-h-[750px] overflow-hidden shadow-sm">
               <div className="relative mb-3">
-                <Search className="w-4 h-4 text-[#94a3b8] absolute left-3 top-2.5" />
+                <Search className="w-4 h-4 text-text-secondary absolute left-3 top-2.5" />
                 <input
                   type="text"
                   placeholder="Szukaj po tytule, lekturze..."
                   value={taskSearchQuery}
                   onChange={(e) => setTaskSearchQuery(e.target.value)}
-                  className="w-full bg-[#070a0f] border border-[#141d2e] rounded-xl pl-9 pr-3 py-2 text-xs text-[#dfe2f1] placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1]"
+                  className="w-full bg-surface-bg border border-[#141d2e] rounded-xl pl-9 pr-3 py-2 text-xs text-[#dfe2f1] placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1]"
                 />
               </div>
 
-              <div className="text-xs font-semibold text-[#94a3b8] px-1 mb-2 flex items-center justify-between">
+              <div className="text-xs font-semibold text-text-secondary px-1 mb-2 flex items-center justify-between">
                 <span>Zadania ({filteredTasks.length})</span>
                 {selectedPart !== 'all' && <span>Część {selectedPart}</span>}
               </div>
 
               <div className="overflow-y-auto space-y-2 pr-1 scrollbar-thin flex-1">
                 {filteredTasks.length === 0 ? (
-                  <div className="text-center py-8 text-xs text-[#94a3b8]">
+                  <div className="text-center py-8 text-xs text-text-secondary">
                     Brak zadań spełniających wybrane kryteria filtrów.
                   </div>
                 ) : (
@@ -1679,10 +1679,10 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         onClick={() => handleSelectTask(idx)}
                         className={`w-full text-left p-3 rounded-xl border transition-all text-xs flex flex-col gap-1 cursor-pointer ${
                           isCurrent
-                            ? 'border-[#ffb800]/80 bg-[#ffb800]/10 text-white shadow-sm'
+                            ? 'border-primary/80 bg-[#ffb800]/10 text-white shadow-sm'
                             : isDone
                             ? 'border-emerald-500/30 bg-emerald-950/20 text-[#dfe2f1] hover:bg-emerald-950/30'
-                            : 'border-[#141d2e] bg-[#070a0f]/60 text-[#dfe2f1] hover:bg-[#070a0f] hover:border-[#1e293b]'
+                            : 'border-[#141d2e] bg-surface-bg/60 text-[#dfe2f1] hover:bg-surface-bg hover:border-[#1e293b]'
                         }`}
                       >
                         <div className="flex items-center justify-between gap-1">
@@ -1693,12 +1693,12 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               {answerState.pointsAwarded}/{task.points} pkt
                             </span>
                           ) : (
-                            <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 shrink-0">
+                            <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 shrink-0">
                               {task.points} pkt
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-1.5 text-[11px] text-[#94a3b8]">
+                        <div className="flex items-center gap-1.5 text-[11px] text-text-secondary">
                           <span>{task.partName}</span>
                           {task.epoch && <span>• {task.epoch}</span>}
                         </div>
@@ -1723,16 +1723,16 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#141d2e] pb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20">
+                        <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20">
                           Część {currentTask.part}: {currentTask.partName}
                         </span>
                         {currentTask.epoch && (
-                          <span className="px-2 py-0.5 rounded text-[11px] bg-[#070a0f] text-[#94a3b8] border border-[#141d2e]">
+                          <span className="px-2 py-0.5 rounded text-[11px] bg-surface-bg text-text-secondary border border-[#141d2e]">
                             {currentTask.epoch}
                           </span>
                         )}
                         {currentTask.sourceYear && (
-                          <span className="text-[11px] text-[#94a3b8] font-mono">
+                          <span className="text-[11px] text-text-secondary font-mono">
                             {currentTask.sourceYear}
                           </span>
                         )}
@@ -1743,7 +1743,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/30 text-[#ffdca1] font-mono text-xs font-bold">
+                      <span className="px-3 py-1 rounded-xl bg-[#ffb800]/10 border border-primary/30 text-[#ffdca1] font-mono text-xs font-bold">
                         Waga: {currentTask.points} {currentTask.points === 1 ? 'punkt' : 'punkty'}
                       </span>
                     </div>
@@ -1751,8 +1751,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                   {/* Fragment Tekstu Źródłowego */}
                   {currentTask.passage && (
-                    <div className="p-4 rounded-xl bg-[#070a0f] border border-[#141d2e] space-y-2">
-                      <div className="flex items-center justify-between text-xs text-[#94a3b8]">
+                    <div className="p-4 rounded-xl bg-surface-bg border border-[#141d2e] space-y-2">
+                      <div className="flex items-center justify-between text-xs text-text-secondary">
                         <span className="font-semibold text-white">
                           {currentTask.passage.author || 'Tekst źródłowy'}
                         </span>
@@ -1760,7 +1760,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           <span className="italic">{currentTask.passage.sourceTitle}</span>
                         )}
                       </div>
-                      <p className="text-xs text-[#dfe2f1] italic leading-relaxed whitespace-pre-line border-l-2 border-[#ffb800]/60 pl-3">
+                      <p className="text-xs text-[#dfe2f1] italic leading-relaxed whitespace-pre-line border-l-2 border-primary/60 pl-3">
                         {currentTask.passage.text}
                       </p>
                     </div>
@@ -1768,8 +1768,8 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                   {/* Drugi Tekst Źródłowy */}
                   {currentTask.passage2 && (
-                    <div className="p-4 rounded-xl bg-[#070a0f] border border-[#141d2e] space-y-2">
-                      <div className="flex items-center justify-between text-xs text-[#94a3b8]">
+                    <div className="p-4 rounded-xl bg-surface-bg border border-[#141d2e] space-y-2">
+                      <div className="flex items-center justify-between text-xs text-text-secondary">
                         <span className="font-semibold text-white">
                           {currentTask.passage2.author || 'Drugi tekst źródłowy'}
                         </span>
@@ -1787,7 +1787,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   <TaskVisualAssetCard task={currentTask} />
 
                   {/* Treść Polecenia z ujednoliconym obramowaniem i stałą wysokością minimalną */}
-                  <div className="p-4 sm:p-5 rounded-xl bg-[#070a0f] border border-[#141d2e] text-sm sm:text-base font-medium text-white leading-relaxed min-h-[84px] sm:min-h-[96px] flex flex-col justify-center shadow-sm">
+                  <div className="p-4 sm:p-5 rounded-xl bg-surface-bg border border-[#141d2e] text-sm sm:text-base font-medium text-white leading-relaxed min-h-[84px] sm:min-h-[96px] flex flex-col justify-center shadow-sm">
                     <div>{currentTask.question}</div>
                   </div>
 
@@ -1799,7 +1799,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                           const isSelected = currentAnswerState.selectedOption === i;
                           const isCorrect = i === currentTask.correctOptionIndex;
                           let optionStyle =
-                            'border-[#141d2e] bg-[#070a0f] text-[#dfe2f1] hover:border-[#1e293b] hover:bg-[#141d2e]';
+                            'border-[#141d2e] bg-surface-bg text-[#dfe2f1] hover:border-[#1e293b] hover:bg-[#141d2e]';
 
                           if (currentAnswerState.isSubmitted) {
                             if (isCorrect) {
@@ -1808,7 +1808,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                               optionStyle = 'border-rose-500 bg-rose-950/40 text-rose-100 shadow-sm';
                             }
                           } else if (isSelected) {
-                            optionStyle = 'border-[#ffb800] bg-[#ffb800]/10 text-white font-medium ring-1 ring-[#ffb800]/30 shadow-sm';
+                            optionStyle = 'border-primary bg-[#ffb800]/10 text-white font-medium ring-1 ring-primary/30 shadow-sm';
                           }
 
                           return (
@@ -1850,7 +1850,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                       {/* Druga próba jeśli błąd w 1. podejściu */}
                       {!currentAnswerState.isSubmitted && currentAnswerState.attempts === 1 && currentAnswerState.feedback && (
-                        <div className="p-3.5 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/30 text-xs text-[#ffdca1] space-y-2 animate-fadeIn">
+                        <div className="p-3.5 rounded-xl bg-[#ffb800]/10 border border-primary/30 text-xs text-[#ffdca1] space-y-2 animate-fadeIn">
                           <div className="font-semibold">{currentAnswerState.feedback.message}</div>
                           <div className="flex items-center gap-2">
                             <button
@@ -1862,7 +1862,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                             </button>
                             <button
                               onClick={handleSurrenderKey}
-                              className="px-3 py-1.5 rounded-lg bg-[#141d2e] hover:bg-[#1e293b] text-[#94a3b8] hover:text-white text-xs cursor-pointer"
+                              className="px-3 py-1.5 rounded-lg bg-[#141d2e] hover:bg-[#1e293b] text-text-secondary hover:text-white text-xs cursor-pointer"
                             >
                               Odsłoń klucz CKE (0 pkt)
                             </button>
@@ -1875,9 +1875,9 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   {/* 2. Zadanie Prawda / Fałsz */}
                   {currentTask.taskType === 'true_false' && currentTask.trueFalseStatements && (
                     <div className="space-y-3">
-                      <div className="border border-[#141d2e] rounded-xl overflow-hidden bg-[#070a0f]">
+                      <div className="border border-[#141d2e] rounded-xl overflow-hidden bg-surface-bg">
                         <table className="w-full text-xs">
-                          <thead className="bg-[#070a0f] border-b border-[#141d2e] text-[#94a3b8]">
+                          <thead className="bg-surface-bg border-b border-[#141d2e] text-text-secondary">
                             <tr>
                               <th className="py-2.5 px-4 text-left font-semibold">Stwierdzenie</th>
                               <th className="py-2.5 px-3 text-center font-semibold w-28">Ocena CKE</th>
@@ -1903,7 +1903,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                   <td className="py-3 px-4 text-[#dfe2f1] leading-relaxed">
                                     {item.statement}
                                     {showExplanation && (
-                                      <div className="text-[11px] text-[#94a3b8] mt-1 italic">
+                                      <div className="text-[11px] text-text-secondary mt-1 italic">
                                         Prawidłowo: <strong className="text-white">{item.isTrue ? 'PRAWDA' : 'FAŁSZ'}</strong> – {item.explanation}
                                       </div>
                                     )}
@@ -1925,7 +1925,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                         className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                                           currentVal === true
                                             ? 'bg-[#ffb800] text-slate-950 font-bold shadow-sm'
-                                            : 'bg-[#070a0f] border border-[#141d2e] text-[#94a3b8] hover:text-white hover:border-[#1e293b]'
+                                            : 'bg-surface-bg border border-[#141d2e] text-text-secondary hover:text-white hover:border-[#1e293b]'
                                         }`}
                                       >
                                         P
@@ -1945,7 +1945,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                                         className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
                                           currentVal === false
                                             ? 'bg-[#ffb800] text-slate-950 font-bold shadow-sm'
-                                            : 'bg-[#070a0f] border border-[#141d2e] text-[#94a3b8] hover:text-white hover:border-[#1e293b]'
+                                            : 'bg-surface-bg border border-[#141d2e] text-text-secondary hover:text-white hover:border-[#1e293b]'
                                         }`}
                                       >
                                         F
@@ -1976,7 +1976,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                       )}
 
                       {!currentAnswerState.isSubmitted && currentAnswerState.attempts === 1 && currentAnswerState.feedback && (
-                        <div className="p-3.5 rounded-xl bg-[#ffb800]/10 border border-[#ffb800]/30 text-xs text-[#ffdca1] space-y-2 animate-fadeIn">
+                        <div className="p-3.5 rounded-xl bg-[#ffb800]/10 border border-primary/30 text-xs text-[#ffdca1] space-y-2 animate-fadeIn">
                           <div className="font-semibold">{currentAnswerState.feedback.message}</div>
                           <div className="flex items-center gap-2">
                             <button
@@ -1988,7 +1988,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                             </button>
                             <button
                               onClick={handleSurrenderKey}
-                              className="px-3 py-1.5 rounded-lg bg-[#141d2e] hover:bg-[#1e293b] text-[#94a3b8] hover:text-white text-xs cursor-pointer"
+                              className="px-3 py-1.5 rounded-lg bg-[#141d2e] hover:bg-[#1e293b] text-text-secondary hover:text-white text-xs cursor-pointer"
                             >
                               Odsłoń klucz CKE (0 pkt)
                             </button>
@@ -2002,18 +2002,18 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   {currentTask.taskType === 'synthesis_note' && (
                     <div className="space-y-4">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-[#94a3b8] font-medium">
+                        <span className="text-text-secondary font-medium">
                           Notatka syntetyzująca (oficjalne rygorystyczne kryteria CKE):
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[#94a3b8]">Wyrazy:</span>
+                          <span className="text-text-secondary">Wyrazy:</span>
                           <span
                             className={`font-mono px-2.5 py-0.5 rounded text-xs font-bold ${
                               synthesisWordCount >= 60 && synthesisWordCount <= 90
                                 ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-500/40'
                                 : synthesisWordCount > 90
                                 ? 'bg-rose-950/40 text-rose-400 border border-rose-500/40'
-                                : 'bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/30'
+                                : 'bg-[#ffb800]/10 text-[#ffdca1] border border-primary/30'
                             }`}
                           >
                             {synthesisWordCount} / 60–90 słów
@@ -2029,12 +2029,12 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         }
                         disabled={currentAnswerState.isSubmitted}
                         placeholder="Wpisz syntetyczne zestawienie obu tekstów (60–90 słów). Wskaż stanowisko autora 1, autora 2 oraz syntezę..."
-                        className="w-full bg-[#070a0f] border border-[#141d2e] rounded-xl p-3.5 text-xs text-[#dfe2f1] placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] leading-relaxed font-sans"
+                        className="w-full bg-surface-bg border border-[#141d2e] rounded-xl p-3.5 text-xs text-[#dfe2f1] placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] leading-relaxed font-sans"
                       />
 
                       {!currentAnswerState.isSubmitted && (
                         <div className="flex items-center justify-between pt-2">
-                          <div className="text-[11px] text-[#94a3b8]">
+                          <div className="text-[11px] text-text-secondary">
                             {synthesisWordCount < 60
                               ? `Brakuje jeszcze ${60 - synthesisWordCount} słów do dolnego progu CKE.`
                               : synthesisWordCount <= 90
@@ -2054,10 +2054,10 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                       {/* Szczegółowa matryca oceniania notatki syntetyzującej */}
                       {currentAnswerState.feedback?.partialScore && (
-                        <div className="p-4 rounded-xl bg-[#070a0f] border border-[#ffb800]/30 space-y-3 animate-fadeIn">
+                        <div className="p-4 rounded-xl bg-surface-bg border border-primary/30 space-y-3 animate-fadeIn">
                           <div className="flex items-center justify-between text-xs font-bold text-[#ffdca1] uppercase tracking-wider">
                             <span className="flex items-center gap-1.5">
-                              <Target className="w-4 h-4 text-[#ffb800]" />
+                              <Target className="w-4 h-4 text-text-accent" />
                               Oficjalna Matryca Oceny Notatki CKE
                             </span>
                             <span className="text-sm font-mono text-white">
@@ -2067,31 +2067,31 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
                             <div className="p-3 rounded-lg bg-[#0e1522] border border-[#141d2e]">
-                              <div className="text-[11px] text-[#94a3b8]">1. Treść i synteza:</div>
+                              <div className="text-[11px] text-text-secondary">1. Treść i synteza:</div>
                               <div className="text-sm font-bold text-white mt-0.5">
                                 {currentAnswerState.feedback.partialScore.content} / 2 pkt
                               </div>
-                              <div className="text-[10px] text-[#94a3b8] mt-1">
+                              <div className="text-[10px] text-text-secondary mt-1">
                                 Zestawienie obu autorów i uogólnienie
                               </div>
                             </div>
 
                             <div className="p-3 rounded-lg bg-[#0e1522] border border-[#141d2e]">
-                              <div className="text-[11px] text-[#94a3b8]">2. Kompozycja:</div>
+                              <div className="text-[11px] text-text-secondary">2. Kompozycja:</div>
                               <div className="text-sm font-bold text-white mt-0.5">
                                 {currentAnswerState.feedback.partialScore.composition} / 1 pkt
                               </div>
-                              <div className="text-[10px] text-[#94a3b8] mt-1">
+                              <div className="text-[10px] text-text-secondary mt-1">
                                 Przedział 60–90 słów & spójność
                               </div>
                             </div>
 
                             <div className="p-3 rounded-lg bg-[#0e1522] border border-[#141d2e]">
-                              <div className="text-[11px] text-[#94a3b8]">3. Język i styl:</div>
+                              <div className="text-[11px] text-text-secondary">3. Język i styl:</div>
                               <div className="text-sm font-bold text-white mt-0.5">
                                 {currentAnswerState.feedback.partialScore.language} / 1 pkt
                               </div>
-                              <div className="text-[10px] text-[#94a3b8] mt-1">
+                              <div className="text-[10px] text-text-secondary mt-1">
                                 Parafraza własnymi słowami
                               </div>
                             </div>
@@ -2118,7 +2118,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   {/* 4. Zadanie Otwarte Krótkiej Odpowiedzi */}
                   {currentTask.taskType === 'short_open' && (
                     <div className="space-y-3">
-                      <label className="text-xs text-[#94a3b8] font-medium">Twoja odpowiedź:</label>
+                      <label className="text-xs text-text-secondary font-medium">Twoja odpowiedź:</label>
                       <textarea
                         rows={3}
                         value={currentAnswerState.openAnswer}
@@ -2127,7 +2127,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         }
                         disabled={currentAnswerState.isSubmitted}
                         placeholder="Sformułuj precyzyjną odpowiedź własnymi słowami..."
-                        className="w-full bg-[#070a0f] border border-[#141d2e] rounded-xl p-3 text-xs text-[#dfe2f1] placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] leading-relaxed font-sans"
+                        className="w-full bg-surface-bg border border-[#141d2e] rounded-xl p-3 text-xs text-[#dfe2f1] placeholder-[#94a3b8] focus:outline-none focus:border-[#ffdca1] leading-relaxed font-sans"
                       />
 
                       {!currentAnswerState.isSubmitted && (
@@ -2147,7 +2147,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                   {/* 5. Warsztat Wypracowania – Interaktywny Konspekt */}
                   {currentTask.taskType === 'essay_blueprint' && currentTask.essayBlueprint && (
-                    <div className="p-4 rounded-xl bg-[#070a0f] border border-emerald-500/30 space-y-3">
+                    <div className="p-4 rounded-xl bg-surface-bg border border-emerald-500/30 space-y-3">
                       <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
                         <Award className="w-4 h-4 text-emerald-400" />
                         Modelowy konspekt maturalny CKE (35 pkt)
@@ -2227,7 +2227,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                     >
                       <div className="font-bold flex items-center justify-between">
                         <span>{currentAnswerState.feedback.message}</span>
-                        <span className="font-mono text-sm px-2 py-0.5 rounded bg-[#070a0f] border border-[#141d2e] text-[#ffdca1]">
+                        <span className="font-mono text-sm px-2 py-0.5 rounded bg-surface-bg border border-[#141d2e] text-[#ffdca1]">
                           Zdobyto: {currentAnswerState.pointsAwarded} / {currentTask.points} pkt
                         </span>
                       </div>
@@ -2249,15 +2249,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                           <button
                             onClick={() => setShowCkeKey(!showCkeKey)}
-                            className="px-4 py-2 rounded-xl bg-[#0e1522] hover:bg-[#141d2e] text-[#ffdca1] border border-[#ffb800]/30 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                            className="px-4 py-2 rounded-xl bg-[#0e1522] hover:bg-[#141d2e] text-[#ffdca1] border border-primary/30 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
                           >
-                            <FileText className="w-4 h-4 text-[#ffb800]" />
+                            <FileText className="w-4 h-4 text-text-accent" />
                             {showCkeKey ? 'Ukryj klucz CKE' : 'Klucz punktowania CKE'}
                           </button>
                         </>
                       ) : (
-                        <div className="flex items-center gap-1.5 text-xs text-[#94a3b8] bg-[#070a0f] px-3.5 py-2 rounded-xl border border-[#141d2e]">
-                          <Lock className="w-3.5 h-3.5 text-[#ffb800]" />
+                        <div className="flex items-center gap-1.5 text-xs text-text-secondary bg-surface-bg px-3.5 py-2 rounded-xl border border-[#141d2e]">
+                          <Lock className="w-3.5 h-3.5 text-text-accent" />
                           <span>Zatwierdź odpowiedź, aby odsłonić klucz CKE i wyjaśnienie</span>
                         </div>
                       )}
@@ -2276,7 +2276,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                         }
                         className="px-4 py-2 rounded-xl bg-[#0e1522] hover:bg-[#141d2e] border border-[#141d2e] text-[#dfe2f1] text-xs font-medium flex items-center gap-2 transition-all cursor-pointer"
                       >
-                        <Zap className="w-3.5 h-3.5 text-[#ffb800]" />
+                        <Zap className="w-3.5 h-3.5 text-text-accent" />
                         <span>Zapytaj AI Tutora o to zadanie</span>
                       </button>
                     )}
@@ -2284,15 +2284,15 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                   {/* Sekcja Klucza CKE i Modelowej Odpowiedzi */}
                   {showCkeKey && (
-                    <div className="p-4 rounded-xl bg-[#070a0f] border border-[#141d2e] space-y-3 animate-fadeIn">
+                    <div className="p-4 rounded-xl bg-surface-bg border border-[#141d2e] space-y-3 animate-fadeIn">
                       <div className="text-xs font-bold text-[#ffdca1] uppercase tracking-wider flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#ffb800]" />
+                        <CheckCircle2 className="w-4 h-4 text-text-accent" />
                         Oficjalny Schemat Oceniania CKE
                       </div>
 
                       {currentTask.correctAnswerText && (
                         <div>
-                          <div className="text-[11px] font-semibold text-[#94a3b8]">
+                          <div className="text-[11px] font-semibold text-text-secondary">
                             Wzorcowa odpowiedź:
                           </div>
                           <div className="text-xs text-[#dfe2f1] mt-0.5">
@@ -2303,7 +2303,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                       {currentTask.synthesisModelSummary && (
                         <div>
-                          <div className="text-[11px] font-semibold text-[#94a3b8]">
+                          <div className="text-[11px] font-semibold text-text-secondary">
                             Wzorcowa notatka syntetyzująca (CKE):
                           </div>
                           <div className="text-xs text-[#dfe2f1] mt-0.5 italic bg-[#0e1522] p-2.5 rounded-lg border border-[#141d2e]">
@@ -2314,7 +2314,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                       {currentTask.ckeKeyCriteria && (
                         <div>
-                          <div className="text-[11px] font-semibold text-[#94a3b8]">
+                          <div className="text-[11px] font-semibold text-text-secondary">
                             Kryteria przyznawania punktów:
                           </div>
                           <ul className="list-disc list-inside text-xs text-[#dfe2f1] mt-1 space-y-1">
@@ -2329,7 +2329,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
 
                   {/* Wyjaśnienie Merytoryczne */}
                   {showExplanation && (
-                    <div className="p-4 rounded-xl bg-[#070a0f] border border-[#141d2e] text-xs text-[#dfe2f1] space-y-1 animate-fadeIn">
+                    <div className="p-4 rounded-xl bg-surface-bg border border-[#141d2e] text-xs text-[#dfe2f1] space-y-1 animate-fadeIn">
                       <span className="font-semibold text-white">
                         Wyjaśnienie i kontekst merytoryczny:
                       </span>
@@ -2338,7 +2338,7 @@ export const PolishStudyHub: React.FC<PolishStudyHubProps> = ({
                   )}
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center flex-1 text-[#94a3b8]">
+                <div className="flex flex-col items-center justify-center flex-1 text-text-secondary">
                   Wybierz zadanie z listy po lewej stronie.
                 </div>
               )}

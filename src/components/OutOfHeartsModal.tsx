@@ -211,7 +211,7 @@ export const OutOfHeartsModal: React.FC<OutOfHeartsModalProps> = ({
                 triggerHaptic('light');
                 onOpenProPopup();
               }}
-              className="w-full py-2 text-xs text-[#FFB800] hover:text-amber-300 font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              className="w-full py-2 text-xs text-text-accent hover:text-amber-300 font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <Zap size={14} />
               <span>Odblokuj nielimitowane serca w PRO</span>

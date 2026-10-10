@@ -58,7 +58,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.96 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-md bg-[#0A0E17] border-t sm:border border-[#FFB800]/30 rounded-t-[32px] sm:rounded-[28px] p-5 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(255,184,0,0.12)] overflow-hidden z-10 max-h-[92vh] flex flex-col justify-between"
+          className="relative w-full max-w-md bg-[#0A0E17] border-t sm:border border-primary/30 rounded-t-[32px] sm:rounded-[28px] p-5 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(255,184,0,0.12)] overflow-hidden z-10 max-h-[92vh] flex flex-col justify-between"
         >
           {/* Akcentowa linijka na górze */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D97706] via-[#FFB800] to-[#F59E0B]" />
@@ -75,8 +75,8 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
           <div>
             {/* Pigułka statusu + Zegar */}
             <div className="flex items-center justify-between gap-2 mb-3.5 pr-8">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800] text-[10px] sm:text-[11px] font-black tracking-wider uppercase">
-                <Crown size={12} className="text-[#FFB800]" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFB800]/15 border border-primary/30 text-text-accent text-[10px] sm:text-[11px] font-black tracking-wider uppercase">
+                <Crown size={12} className="text-text-accent" />
                 <span>VOUCHER POWITALNY</span>
               </span>
 
@@ -85,7 +85,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
             {/* Nagłówek i Obietnica */}
             <div className="text-left mb-3">
               <h2 className="font-display font-black text-2xl sm:text-3xl text-white leading-tight">
-                Zdobądź <span className="text-[#FFB800] underline decoration-[#FFB800]/50">-{promoConfig.discountPercent}%</span> na JASNE PRO
+                Zdobądź <span className="text-text-accent underline decoration-[#FFB800]/50">-{promoConfig.discountPercent}%</span> na JASNE PRO
               </h2>
               <p className="text-xs text-slate-300 mt-1 leading-relaxed">
                 Zniżka powitalna dla nowych kont. Załóż darmowe konto, zapisz postępy i ucz się bez ograniczeń.
@@ -93,7 +93,7 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
             </div>
 
             {/* CYBER VOUCHER TICKET (KARTA CENOWA) */}
-            <div className="my-3.5 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#121824] to-[#0A0E17] border border-[#FFB800]/40 shadow-inner relative overflow-hidden">
+            <div className="my-3.5 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#121824] to-[#0A0E17] border border-primary/40 shadow-inner relative overflow-hidden">
               {/* Ozdobny znak wodny kodu */}
               <div className="absolute -right-4 -bottom-4 text-white/[0.03] font-mono font-black text-6xl select-none pointer-events-none">
                 PRO
@@ -101,12 +101,12 @@ export function GuestPromoModal({ isOpen, onClose, onClaimPromo, promoConfig }: 
 
               <div className="relative z-10">
                 <div className="flex flex-col text-left">
-                  <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#FFB800]">
+                  <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider text-text-accent">
                     <Tag size={11} />
                     <span>Cena gwarantowana do matury</span>
                   </div>
                   <div className="flex items-baseline flex-wrap gap-x-2 gap-y-1 mt-1">
-                    <span className="text-3xl font-display font-black text-[#FFB800] tracking-tight whitespace-nowrap tabular-nums">
+                    <span className="text-3xl font-display font-black text-text-accent tracking-tight whitespace-nowrap tabular-nums">
                       {promoConfig.discountedPriceMonthly.toFixed(2).replace('.', ',')} zł
                     </span>
                     <span className="text-xs font-semibold text-slate-400 whitespace-nowrap">/ miesiąc</span>

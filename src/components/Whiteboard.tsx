@@ -550,7 +550,7 @@ export function Whiteboard({
       <div className="mt-3 bg-[#0B0F17] border border-white/10 rounded-[22px] p-3.5 sm:p-4 shadow-xl flex flex-col gap-2.5">
         <div className="flex items-center justify-between">
           <label className="text-xs font-black uppercase tracking-wider text-white flex items-center gap-1.5">
-            <Target size={14} className="text-[#FFB800]" />
+            <Target size={14} className="text-text-accent" />
             <span>Twój wynik końcowy:</span>
           </label>
 
@@ -563,13 +563,13 @@ export function Whiteboard({
             }}
             className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full border transition-all ${
               solutionOnCanvas
-                ? 'bg-[#FFB800]/15 text-[#FFB800] border-[#FFB800]/40 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                ? 'bg-[#FFB800]/15 text-text-accent border-primary/40 shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                 : 'bg-white/5 text-[#8B8D98] border-white/10 hover:border-white/20'
             }`}
           >
             <div
               className={`w-3.5 h-3.5 rounded flex items-center justify-center border transition-colors ${
-                solutionOnCanvas ? 'bg-[#FFB800] border-[#FFB800] text-[#080B11]' : 'border-[#8B8D98]'
+                solutionOnCanvas ? 'bg-[#FFB800] border-primary text-[#080B11]' : 'border-[#8B8D98]'
               }`}
             >
               {solutionOnCanvas && <Check size={11} strokeWidth={3} />}
@@ -593,7 +593,7 @@ export function Whiteboard({
             className={`w-full bg-[#161F2E] text-white px-3.5 py-2.5 rounded-xl border outline-none text-sm font-mono transition-colors ${
               solutionOnCanvas
                 ? 'opacity-60 border-transparent cursor-not-allowed italic text-emerald-400'
-                : 'border-white/10 focus:border-[#FFB800]/50'
+                : 'border-white/10 focus:border-primary/50'
             }`}
           />
         </div>

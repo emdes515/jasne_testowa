@@ -105,7 +105,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
               className={`w-16 h-16 sm:w-18 sm:h-18 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl ${
                 isCompleted
                   ? 'bg-emerald-500/15 border border-emerald-400/50 text-emerald-400 shadow-emerald-500/20'
-                  : 'bg-[#FFB800]/15 border border-[#FFB800]/40 text-[#FFB800] shadow-[#FFB800]/20'
+                  : 'bg-[#FFB800]/15 border border-primary/40 text-text-accent shadow-[#FFB800]/20'
               }`}
             >
               {isCompleted ? (
@@ -123,7 +123,7 @@ export const AiTutorScanOverlay: React.FC<AiTutorScanOverlayProps> = ({
             className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 mt-2 mb-3 ${
               isCompleted
                 ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-300'
-                : 'bg-[#FFB800]/10 border border-[#FFB800]/25 text-[#FFB800]'
+                : 'bg-[#FFB800]/10 border border-primary/25 text-text-accent'
             }`}
           >
             <span

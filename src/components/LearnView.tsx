@@ -123,7 +123,7 @@ export function formatLessonsNoun(count: number): string {
  */
 export function ActiveBadge({ label = 'W TOKU' }: { label?: string; isRose?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/30 shadow-sm">
+    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full select-none text-text-accent bg-[#FFB800]/10 border border-primary/30 shadow-sm">
       <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 [animation-duration:2.5s] bg-[#FFB800]" />
         <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFB800]" />
@@ -195,7 +195,7 @@ const initialDataBySubject: Record<string, any> = {
     shortName: 'Angielski',
     level: 'Podstawa • B1/B2',
     icon: Globe,
-    color: 'text-[#FFB800]',
+    color: 'text-text-accent',
     accentColor: '#FFB800',
     topics: []
   },
@@ -923,10 +923,10 @@ export function LearnView({
                           triggerHaptic('light');
                           setShowEnglishDictionary(true);
                         }}
-                        className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card hover:bg-surface-card-hover border border-[#FFB800]/30 hover:border-[#FFB800]/60 text-[#FFDCA1] text-[11px] sm:text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+                        className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-surface-card hover:bg-surface-card-hover border border-primary/30 hover:border-primary/60 text-[#FFDCA1] text-[11px] sm:text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
                         title="Otwórz oficjalny Słownik Maturalny CKE"
                       >
-                        <BookOpen size={13} className="text-[#FFB800]" />
+                        <BookOpen size={13} className="text-text-accent" />
                         <span>Słownik CKE</span>
                       </button>
                     )}
@@ -1353,7 +1353,7 @@ export function LearnView({
                           isBeaconTopic
                             ? selectedSubjectKey === 'pol'
                               ? 'bg-gradient-to-r from-[#221018] to-[#140C12] border-[#F43F5E] ring-1 ring-[#F43F5E]/30 shadow-[0_4px_24px_rgba(244,63,94,0.18)]'
-                              : 'bg-gradient-to-r from-[#151D2C] to-[#0E1420] border-[#FFB800] ring-1 ring-[#FFB800]/30 shadow-[0_4px_24px_rgba(255,184,0,0.15)]'
+                              : 'bg-gradient-to-r from-[#151D2C] to-[#0E1420] border-primary ring-1 ring-primary/30 shadow-[0_4px_24px_rgba(255,184,0,0.15)]'
                             : isFullyCompleted
                               ? 'bg-[#0E1524] border-emerald-500/30 hover:border-emerald-500/50 shadow-sm'
                               : isLocked
@@ -1401,7 +1401,7 @@ export function LearnView({
                           <div className="flex items-center gap-3 min-w-0 flex-1">
                             <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
                               isBeaconTopic
-                                ? 'bg-[#FFB800]/15 border-[#FFB800]/40 text-[#FFB800]'
+                                ? 'bg-[#FFB800]/15 border-primary/40 text-text-accent'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400'
                                   : 'bg-white/5 border-white/10 text-slate-300 group-hover:text-white group-hover:border-white/20'
@@ -1412,7 +1412,7 @@ export function LearnView({
                               <h2 className={`font-display font-black text-base sm:text-lg leading-snug break-words transition-colors ${
                                 isLocked 
                                   ? 'text-slate-400' 
-                                  : 'text-white group-hover:text-[#FFB800]'
+                                  : 'text-white group-hover:text-text-accent'
                               }`}>
                                 <MathRenderer content={cleanName} />
                               </h2>
@@ -1431,7 +1431,7 @@ export function LearnView({
                           {!isLocked && (
                             <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
                               isBeaconTopic
-                                ? 'bg-[#FFB800]/15 text-[#FFB800] group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-sm'
+                                ? 'bg-[#FFB800]/15 text-text-accent group-hover:bg-[#FFB800] group-hover:text-[#080B11] shadow-sm'
                                 : isFullyCompleted
                                   ? 'bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-emerald-950'
                                   : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
@@ -1456,7 +1456,7 @@ export function LearnView({
                                 isFullyCompleted 
                                   ? "text-emerald-400 font-bold" 
                                   : isBeaconTopic 
-                                    ? "text-[#FFB800] font-bold" 
+                                    ? "text-text-accent font-bold" 
                                     : "text-slate-300 font-bold"
                               }>
                                 {progressPercent}%
@@ -1493,7 +1493,7 @@ export function LearnView({
                     className="pt-6 pb-2 flex flex-col items-center justify-center relative z-10 gap-2.5"
                   >
                     <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141A23]/90 border border-white/10 text-xs text-[#8B8D98] backdrop-blur-md shadow-lg">
-                      <Loader2 size={13} className="animate-spin text-[#FFB800]" />
+                      <Loader2 size={13} className="animate-spin text-text-accent" />
                       <span>Doczytywanie kolejnych działów ({visibleTopics.length} z {totalTopicsCount})...</span>
                     </div>
                     <button
@@ -1502,7 +1502,7 @@ export function LearnView({
                         triggerHaptic('light');
                         setVisibleTopicsCount(totalTopicsCount);
                       }}
-                      className="text-[11px] font-semibold text-[#FFB800] hover:text-[#FFC72C] underline underline-offset-2 cursor-pointer py-1 px-3 transition-colors active:scale-95"
+                      className="text-[11px] font-semibold text-text-accent hover:text-[#FFC72C] underline underline-offset-2 cursor-pointer py-1 px-3 transition-colors active:scale-95"
                     >
                       Pokaż wszystkie działy ({totalTopicsCount})
                     </button>
@@ -1576,10 +1576,10 @@ export function LearnView({
                             triggerHaptic('light');
                             setShowEnglishDictionary(true);
                           }}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-[#FFB800]/30 hover:border-[#FFB800]/60 text-[#FFDCA1] text-[11px] font-bold transition-all shadow-xs cursor-pointer active:scale-95"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-card hover:bg-surface-card-hover border border-primary/30 hover:border-primary/60 text-[#FFDCA1] text-[11px] font-bold transition-all shadow-xs cursor-pointer active:scale-95"
                           title="Otwórz oficjalny Słownik Maturalny CKE"
                         >
-                          <BookOpen size={12} className="text-[#FFB800]" />
+                          <BookOpen size={12} className="text-text-accent" />
                           <span>Słownik</span>
                         </button>
                       )}
@@ -1631,7 +1631,7 @@ export function LearnView({
                     <div className="bg-[#101724] border border-white/10 rounded-2xl p-4 shadow-sm flex flex-col gap-2.5 mb-1">
                       <div className="flex items-center justify-between text-xs sm:text-sm">
                         <span className="text-slate-300 font-semibold flex items-center gap-2">
-                          <GraduationCap className={`w-4 h-4 ${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-[#FFB800]'}`} />
+                          <GraduationCap className={`w-4 h-4 ${selectedSubjectKey === 'pol' ? 'text-rose-400' : 'text-text-accent'}`} />
                           <span>Postęp Działu {(selectedTopicIndex ?? 0) + 1}:</span>
                         </span>
                         <span className="font-bold text-white">
@@ -1665,10 +1665,10 @@ export function LearnView({
 
                 {lessonsForCurrentTopic.length === 0 ? (
                   <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 bg-[#141A23]/70 border border-white/10 rounded-3xl mt-4 sm:mt-6 max-w-md mx-auto shadow-xl">
-                    <div className="w-16 h-16 rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] mb-4 shadow-sm">
+                    <div className="w-16 h-16 rounded-2xl bg-[#FFB800]/15 border border-primary/30 flex items-center justify-center text-text-accent mb-4 shadow-sm">
                       <Clock size={28} />
                     </div>
-                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/25 px-3 py-1 rounded-full mb-3">
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-text-accent bg-[#FFB800]/10 border border-primary/25 px-3 py-1 rounded-full mb-3">
                       W opracowaniu • Dostępne wkrótce
                     </span>
                     <h3 className="text-lg sm:text-xl font-display font-black text-white mb-2">
@@ -1768,7 +1768,7 @@ export function LearnView({
                             isCompleted
                               ? 'border-emerald-500/30 bg-[#0E1524] shadow-[0_4px_20px_rgba(16,185,129,0.06)]'
                               : isCurrentActiveLesson
-                                ? 'border-2 border-[#FFB800] bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-sm ring-1 ring-[#FFB800]/40'
+                                ? 'border-2 border-primary bg-gradient-to-b from-[#151D2C] to-[#0E1420] shadow-sm ring-1 ring-primary/40'
                                 : !isUnlocked
                                   ? 'border-white/5 bg-[#0A0E17]/60 opacity-60'
                                   : 'border-white/10 bg-[#101726]'
@@ -1782,7 +1782,7 @@ export function LearnView({
                                 isCompleted
                                   ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-sm'
                                   : isCurrentActiveLesson
-                                    ? 'bg-[#FFB800]/20 border border-[#FFB800] text-[#FFB800] shadow-sm'
+                                    ? 'bg-[#FFB800]/20 border border-primary text-text-accent shadow-sm'
                                     : !isUnlocked
                                       ? 'bg-white/5 border-white/10 text-slate-500'
                                       : 'bg-white/5 border-white/10 text-slate-300'
@@ -1855,7 +1855,7 @@ export function LearnView({
                                     if (isCurrentActiveLesson) {
                                       return (
                                         <>
-                                          <span className="flex items-center gap-1 text-[#FFB800] font-medium">
+                                          <span className="flex items-center gap-1 text-text-accent font-medium">
                                             <Clock size={13} />
                                             <span>{formatLessonDuration(group)}</span>
                                           </span>
@@ -1906,9 +1906,9 @@ export function LearnView({
                                 <button
                                   type="button"
                                   onClick={() => handleOpenTheoryModal(group, nextLessonPayload)}
-                                  className="w-full sm:w-auto py-2.5 px-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#FFB800]/40 text-slate-200 hover:text-[#FFB800] font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-[0.98] cursor-pointer shrink-0"
+                                  className="w-full sm:w-auto py-2.5 px-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-primary/40 text-slate-200 hover:text-text-accent font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-[0.98] cursor-pointer shrink-0"
                                 >
-                                  <Compass size={14} className="text-[#FFB800]" />
+                                  <Compass size={14} className="text-text-accent" />
                                   <span>Pigułka (~3-4 min)</span>
                                 </button>
 
@@ -1943,20 +1943,20 @@ export function LearnView({
                     {currentTopic && (
                       <div 
                         id={`boss-fight-card-${currentTopic.id}`}
-                        className="rounded-2xl border-2 transition-all p-5 sm:p-6 flex flex-col gap-4 relative overflow-hidden mt-3 border-[#FFB800]/60 bg-gradient-to-b from-[#1C1811] via-[#14151C] to-[#0E121A] shadow-[0_8px_32px_rgba(255,184,0,0.12)]"
+                        className="rounded-2xl border-2 transition-all p-5 sm:p-6 flex flex-col gap-4 relative overflow-hidden mt-3 border-primary/60 bg-gradient-to-b from-[#1C1811] via-[#14151C] to-[#0E121A] shadow-[0_8px_32px_rgba(255,184,0,0.12)]"
                       >
                         {/* Ambient glow accent */}
                         <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none bg-[#FFB800]/10" />
 
                         <div className="flex items-start justify-between gap-3 relative z-10">
                           <div className="flex items-start gap-3.5 min-w-0 flex-1">
-                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border shadow-md bg-[#FFB800]/20 border-[#FFB800]/50 text-[#FFB800]">
+                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border shadow-md bg-[#FFB800]/20 border-primary/50 text-text-accent">
                               <Trophy size={26} className="animate-pulse" />
                             </div>
 
                             <div className="min-w-0 flex-1">
                               <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border shadow-sm text-[#FFB800] bg-[#FFB800]/20 border-[#FFB800]/40">
+                                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border shadow-sm text-text-accent bg-[#FFB800]/20 border-primary/40">
                                   WALKA Z BOSSEM DZIAŁU
                                 </span>
                                 <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
@@ -1974,7 +1974,7 @@ export function LearnView({
 
                               {/* Nagrody za pokonanie bossa */}
                               <div className="flex items-center gap-2 mt-3 flex-wrap">
-                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/25 px-2 py-0.5 rounded-lg">
+                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-text-accent bg-[#FFB800]/10 border border-primary/25 px-2 py-0.5 rounded-lg">
                                   <Zap size={11} className="fill-[#FFB800]" />
                                   <span>+200 XP</span>
                                 </span>
@@ -2092,7 +2092,7 @@ export function LearnView({
                     }}
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'math'
-                        ? 'border-[#FFB800] bg-gradient-to-br from-[#151D2C] via-[#111724] to-[#0E1420] ring-1 ring-[#FFB800]/40 shadow-sm'
+                        ? 'border-primary bg-gradient-to-br from-[#151D2C] via-[#111724] to-[#0E1420] ring-1 ring-primary/40 shadow-sm'
                         : 'border-white/10 bg-[#101726] hover:border-white/20 hover:bg-[#141C2C]'
                     }`}
                   >
@@ -2105,7 +2105,7 @@ export function LearnView({
                           <span className="font-display font-black text-white text-base">
                             Matematyka
                           </span>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-[#FFB800] border border-[#FFB800]/20">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-text-accent border border-primary/20">
                             <span className="w-1 h-1 rounded-full bg-[#FFB800]" />
                             Nowa Formuła 2023
                           </span>
@@ -2123,7 +2123,7 @@ export function LearnView({
                             />
                           </div>
                           <span className={`text-[11px] font-bold shrink-0 ${
-                            mathProgressPercent > 0 ? 'text-[#FFB800]' : 'text-slate-500'
+                            mathProgressPercent > 0 ? 'text-text-accent' : 'text-slate-500'
                           }`}>
                             {mathProgressPercent}%
                           </span>
@@ -2216,12 +2216,12 @@ export function LearnView({
                     }}
                     className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                       selectedSubjectKey === 'eng'
-                        ? 'border-[#FFB800] bg-gradient-to-br from-[#1C1811] to-[#0E1420] ring-1 ring-[#FFB800]/30 shadow-sm'
+                        ? 'border-primary bg-gradient-to-br from-[#1C1811] to-[#0E1420] ring-1 ring-primary/30 shadow-sm'
                         : 'border-white/10 bg-[#141A23] hover:border-white/20 hover:bg-[#18202C]'
                     }`}
                   >
                     <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                      <div className="w-12 h-12 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFDCA1] flex items-center justify-center shrink-0 shadow-sm">
+                      <div className="w-12 h-12 rounded-xl bg-[#FFB800]/15 border border-primary/30 text-[#FFDCA1] flex items-center justify-center shrink-0 shadow-sm">
                         <Globe size={24} />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -2229,7 +2229,7 @@ export function LearnView({
                           <span className="font-display font-black text-white text-base">
                             Język Angielski
                           </span>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-[#FFDCA1] border border-[#FFB800]/20">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#FFB800]/10 text-[#FFDCA1] border border-primary/20">
                             <span className="w-1 h-1 rounded-full bg-[#FFB800]" />
                             Podstawa • B1/B2
                           </span>
@@ -2247,7 +2247,7 @@ export function LearnView({
                             />
                           </div>
                           <span className={`text-[11px] font-bold shrink-0 ${
-                            engProgressPercent > 0 ? 'text-[#FFB800]' : 'text-slate-500'
+                            engProgressPercent > 0 ? 'text-text-accent' : 'text-slate-500'
                           }`}>
                             {engProgressPercent}%
                           </span>

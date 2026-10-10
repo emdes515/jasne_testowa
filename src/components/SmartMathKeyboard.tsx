@@ -59,7 +59,7 @@ export function SmartMathKeyboard({
           throwOnError: false,
         });
       } catch {
-        return '<span class="text-[#64748B]">Wpisz wynik...</span>';
+        return '<span class="text-text-muted">Wpisz wynik...</span>';
       }
     }
 

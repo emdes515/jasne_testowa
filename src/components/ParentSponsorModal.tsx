@@ -166,7 +166,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
                 <span className="text-[10px] text-slate-400">Zero przerw w nauce</span>
               </div>
               <div className="bg-[#111726]/90 border border-white/5 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center">
-                <Brain className="w-5 h-5 text-[#FFB800] mb-1" />
+                <Brain className="w-5 h-5 text-text-accent mb-1" />
                 <span className="text-[11px] font-bold text-white">AI Egzaminator CKE</span>
                 <span className="text-[10px] text-slate-400">Ocena tablicy i dowodów</span>
               </div>
@@ -187,7 +187,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
                 value={customName}
                 onChange={(e) => setCustomName(e.target.value)}
                 placeholder="np. Mateusz, Julia..."
-                className="w-full bg-[#080C14] border border-white/10 focus:border-[#FFB800]/60 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition"
+                className="w-full bg-[#080C14] border border-white/10 focus:border-primary/60 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition"
               />
             </div>
 
@@ -199,7 +199,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
                 </span>
                 <button
                   onClick={handleCopy}
-                  className="text-xs font-semibold text-[#FFB800] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-semibold text-text-accent hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   {copied ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
                   <span>{copied ? 'Skopiowano!' : 'Kopiuj treść'}</span>
@@ -267,7 +267,7 @@ Dzięki wielkie za pomoc w zdaniu matury!
                 autoCapitalize="characters"
                 spellCheck={false}
                 placeholder="JASNE-XXXX-XXXX"
-                className="flex-1 bg-[#080C14] border border-white/10 focus:border-[#FFB800]/60 rounded-xl px-3.5 py-2.5 text-center text-sm font-black tracking-[0.12em] text-white placeholder:text-slate-600 outline-none transition"
+                className="flex-1 bg-[#080C14] border border-white/10 focus:border-primary/60 rounded-xl px-3.5 py-2.5 text-center text-sm font-black tracking-[0.12em] text-white placeholder:text-slate-600 outline-none transition"
               />
               <button
                 id="activate-pro-with-code-button"

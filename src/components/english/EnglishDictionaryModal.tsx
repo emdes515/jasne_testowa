@@ -96,25 +96,25 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fadeIn">
       <div 
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#070a0f] border border-[#141d2e] rounded-2xl shadow-2xl flex flex-col overflow-hidden text-[#dfe2f1]"
+        className="relative w-full max-w-4xl max-h-[90vh] bg-surface-bg border border-[#141d2e] rounded-2xl shadow-2xl flex flex-col overflow-hidden text-[#dfe2f1]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Nagłówek Modala */}
         <header className="p-4 sm:p-5 border-b border-[#141d2e] bg-[#0e1522]/90 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="hidden xs:flex w-10 h-10 rounded-xl bg-[#ffb800]/15 border border-[#ffb800]/30 items-center justify-center text-[#ffdca1] shrink-0">
+            <div className="hidden xs:flex w-10 h-10 rounded-xl bg-[#ffb800]/15 border border-primary/30 items-center justify-center text-[#ffdca1] shrink-0">
               <BookOpen className="w-5 h-5 text-[#ffdca1]" />
             </div>
             <div>
               <div className="flex flex-col-reverse items-start gap-1 sm:flex-row sm:items-center sm:gap-2">
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-[#ffb800]/20 whitespace-nowrap">
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#ffb800]/10 text-[#ffdca1] border border-primary/20 whitespace-nowrap">
                   Formuła 2023 • CKE
                 </span>
                 <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
                   Oficjalny Słownik Maturalny
                 </h2>
               </div>
-              <p className="hidden sm:block text-xs text-[#94a3b8] mt-0.5">
+              <p className="hidden sm:block text-xs text-text-secondary mt-0.5">
                 14 działów tematycznych CKE • Pewniaki Phrasal Verbs • Spójniki do e-maila i rozprawki
               </p>
             </div>
@@ -128,7 +128,7 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
               className={`px-3 min-h-[40px] rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border cursor-pointer ${
                 isFlashcardMode
                   ? 'bg-[#ffb800] text-slate-950 border-[#ffdca1] shadow-sm'
-                  : 'bg-[#0e1522] border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'
+                  : 'bg-[#0e1522] border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
               }`}
               title="Ukryj tłumaczenia, aby sprawdzić swoją pamięć"
             >
@@ -139,7 +139,7 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
             {/* Przycisk Zamknięcia */}
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-[#0e1522] hover:bg-[#141d2e] border border-[#141d2e] text-[#94a3b8] hover:text-white transition-colors cursor-pointer"
+              className="p-2 rounded-xl bg-[#0e1522] hover:bg-[#141d2e] border border-[#141d2e] text-text-secondary hover:text-white transition-colors cursor-pointer"
               title="Zamknij słownik"
             >
               <X className="w-5 h-5" />
@@ -148,9 +148,9 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
         </header>
 
         {/* Pasek Wyszukiwania i Statystyk */}
-        <div className="p-4 border-b border-[#141d2e] bg-[#070a0f] space-y-3">
+        <div className="p-4 border-b border-[#141d2e] bg-surface-bg space-y-3">
           <div className="relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
             <input
               type="text"
               value={searchQuery}
@@ -161,7 +161,7 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94a3b8] hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -174,8 +174,8 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
               onClick={() => setSelectedCategory('all')}
               className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory === 'all'
-                  ? 'bg-[#ffb800]/20 border border-[#ffb800]/40 text-[#ffdca1]'
-                  : 'bg-[#0e1522] border border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'
+                  ? 'bg-[#ffb800]/20 border border-primary/40 text-[#ffdca1]'
+                  : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
               }`}
             >
               Wszystkie ({ENGLISH_DICTIONARY.length})
@@ -188,8 +188,8 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                     selectedCategory === cat.id
-                      ? 'bg-[#ffb800]/20 border border-[#ffb800]/40 text-[#ffdca1]'
-                      : 'bg-[#0e1522] border border-[#141d2e] text-[#94a3b8] hover:text-[#dfe2f1]'
+                      ? 'bg-[#ffb800]/20 border border-primary/40 text-[#ffdca1]'
+                      : 'bg-[#0e1522] border border-[#141d2e] text-text-secondary hover:text-[#dfe2f1]'
                   }`}
                 >
                   {cat.label} ({count})
@@ -202,8 +202,8 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
         {/* Lista Słówek (Scrollable Body) */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3">
           {filteredWords.length === 0 ? (
-            <div className="text-center py-12 text-[#94a3b8] space-y-2">
-              <Search className="w-8 h-8 mx-auto text-[#94a3b8]/50" />
+            <div className="text-center py-12 text-text-secondary space-y-2">
+              <Search className="w-8 h-8 mx-auto text-text-secondary/50" />
               <p className="text-sm font-semibold text-white">Nie znaleziono słówek pasujących do zapytania.</p>
               <p className="text-xs">Spróbuj zmienić kategorię lub wpisać prostsze hasło.</p>
             </div>
@@ -228,13 +228,13 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
                             </h3>
                             <button
                               onClick={() => handlePlayAudio(item.word)}
-                              className="p-1 rounded-md bg-[#070a0f] hover:bg-[#141d2e] text-[#ffdca1] border border-[#141d2e] transition-colors"
+                              className="p-1 rounded-md bg-surface-bg hover:bg-[#141d2e] text-[#ffdca1] border border-[#141d2e] transition-colors"
                               title="Odsłuchaj wymowę (native speaker)"
                             >
                               <Volume2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
-                          <div className="flex items-center gap-2 text-xs text-[#94a3b8] font-mono">
+                          <div className="flex items-center gap-2 text-xs text-text-secondary font-mono">
                             <span>{item.phonetic}</span>
                             <span>•</span>
                             <span className="italic text-[#dfe2f1] font-sans text-[11px]">{item.partOfSpeech}</span>
@@ -242,12 +242,12 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
                         </div>
 
                         <div className="flex items-center gap-1.5 shrink-0">
-                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#070a0f] border border-[#141d2e] text-[#ffb800]">
+                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-surface-bg border border-[#141d2e] text-text-accent">
                             {item.level}
                           </span>
                           <button
                             onClick={() => handleCopyWord(item)}
-                            className="p-1 rounded-md text-[#94a3b8] hover:text-white transition-colors"
+                            className="p-1 rounded-md text-text-secondary hover:text-white transition-colors"
                             title="Skopiuj słówko"
                           >
                             {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -260,9 +260,9 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
                         {isFlashcardMode && !isRevealed ? (
                           <button
                             onClick={() => toggleRevealFlashcard(item.id)}
-                            className="w-full py-1.5 px-3 rounded-lg bg-[#070a0f] hover:bg-[#141d2e] border border-dashed border-[#ffb800]/40 text-xs font-semibold text-[#ffdca1] flex items-center justify-center gap-1.5 transition-all"
+                            className="w-full py-1.5 px-3 rounded-lg bg-surface-bg hover:bg-[#141d2e] border border-dashed border-primary/40 text-xs font-semibold text-[#ffdca1] flex items-center justify-center gap-1.5 transition-all"
                           >
-                            <Eye className="w-3 h-3 text-[#ffb800]" />
+                            <Eye className="w-3 h-3 text-text-accent" />
                             <span>Kliknij, aby odkryć znaczenie</span>
                           </button>
                         ) : (
@@ -276,20 +276,20 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
                     {/* Przykład i Pułapka CKE */}
                     {isRevealed && (
                       <div className="space-y-2 pt-2 border-t border-[#141d2e] text-xs">
-                        <div className="bg-[#070a0f]/60 p-2.5 rounded-lg border border-[#141d2e] space-y-1">
+                        <div className="bg-surface-bg/60 p-2.5 rounded-lg border border-[#141d2e] space-y-1">
                           <p className="text-white italic leading-relaxed">
                             "{item.exampleEn}"
                           </p>
-                          <p className="text-[#94a3b8] text-[11px]">
+                          <p className="text-text-secondary text-[11px]">
                             {item.examplePl}
                           </p>
                         </div>
 
                         {item.collocations && item.collocations.length > 0 && (
                           <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-[10px] text-[#94a3b8] uppercase font-bold tracking-wider">Kolokacje:</span>
+                            <span className="text-[10px] text-text-secondary uppercase font-bold tracking-wider">Kolokacje:</span>
                             {item.collocations.map((c, i) => (
-                              <span key={i} className="text-[11px] px-2 py-0.5 rounded-md bg-[#070a0f] border border-[#141d2e] text-[#dfe2f1]">
+                              <span key={i} className="text-[11px] px-2 py-0.5 rounded-md bg-surface-bg border border-[#141d2e] text-[#dfe2f1]">
                                 {c}
                               </span>
                             ))}
@@ -312,7 +312,7 @@ export const EnglishDictionaryModal: React.FC<EnglishDictionaryModalProps> = ({
         </div>
 
         {/* Stopka Modala */}
-        <footer className="p-3 border-t border-[#141d2e] bg-[#0e1522] flex items-center justify-between text-xs text-[#94a3b8]">
+        <footer className="p-3 border-t border-[#141d2e] bg-[#0e1522] flex items-center justify-between text-xs text-text-secondary">
           <span className="flex items-center gap-1.5">
             <GraduationCap className="w-4 h-4 text-[#ffdca1]" />
             Wymagania leksykalne CKE Formuła 2023

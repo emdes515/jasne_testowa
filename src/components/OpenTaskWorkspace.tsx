@@ -1225,7 +1225,7 @@ export function OpenTaskWorkspace({
   }
 
   return (
-    <div className={isFullscreen ? "fixed inset-0 z-50 bg-[#070A0F] flex flex-col p-3 sm:p-5 text-white select-none overflow-hidden" : "w-full flex flex-col justify-end items-stretch gap-2.5"}>
+    <div className={isFullscreen ? "fixed inset-0 z-50 bg-surface-bg flex flex-col p-3 sm:p-5 text-white select-none overflow-hidden" : "w-full flex flex-col justify-end items-stretch gap-2.5"}>
       {/* ------------------------------------------------------------------ */}
       {/* 1. ELEGANCKI PRZEŁĄCZNIK SEGMENTOWY (TOGGLE) ORAZ BELKA PEŁNEGO EKRANU */}
       {/* ------------------------------------------------------------------ */}
@@ -1350,7 +1350,7 @@ export function OpenTaskWorkspace({
                 triggerHaptic('medium');
                 setIsFullscreen(true);
               }}
-              className="p-2 rounded-xl text-[#FFB800] hover:text-white bg-[#141C28] hover:bg-[#FFB800]/20 border border-white/10 transition-all cursor-pointer shrink-0 ml-1.5 shadow-sm flex items-center gap-1.5 text-xs font-bold"
+              className="p-2 rounded-xl text-text-accent hover:text-white bg-[#141C28] hover:bg-[#FFB800]/20 border border-white/10 transition-all cursor-pointer shrink-0 ml-1.5 shadow-sm flex items-center gap-1.5 text-xs font-bold"
               title="Rozwiń na pełny ekran"
             >
               <Maximize2 size={15} />
@@ -1365,7 +1365,7 @@ export function OpenTaskWorkspace({
       {/* ================================================================== */}
       <div className={`w-full flex flex-col gap-2 shrink-0 ${activeTab === 'keyboard' ? 'block' : 'hidden'}`}>
         {/* Pole odpowiedzi z podglądem matematycznym na żywo w notacji KaTeX */}
-        <div className="w-full bg-[#121824] border border-white/10 focus-within:border-[#FFB800]/80 focus-within:shadow-[0_0_20px_rgba(255,184,0,0.2)] rounded-2xl p-3 sm:p-4 shadow-md flex items-center justify-between gap-2.5 transition-all shrink-0">
+        <div className="w-full bg-[#121824] border border-white/10 focus-within:border-primary/80 focus-within:shadow-[0_0_20px_rgba(255,184,0,0.2)] rounded-2xl p-3 sm:p-4 shadow-md flex items-center justify-between gap-2.5 transition-all shrink-0">
           <div className="flex-1 min-w-0 flex flex-col justify-center text-left">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
               Twoja odpowiedź:
@@ -1435,7 +1435,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('POW2')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Potęga kwadratowa (x²)"
             >
               x²
@@ -1443,7 +1443,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('POW')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Potęga dowolna (xⁿ)"
             >
               xⁿ
@@ -1451,7 +1451,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('SQRT')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-text-accent font-black text-sm sm:text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Pierwiastek (√)"
             >
               √
@@ -1459,7 +1459,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('FRAC')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-text-accent font-black text-xs sm:text-sm flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Ułamek zwykły"
             >
               <span className="flex flex-col items-center justify-center leading-none">
@@ -1503,7 +1503,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('∞')}
-              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-[#FFB800] font-black text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 min-w-0 px-0.5 sm:px-1 rounded-xl bg-[#1A2332] hover:bg-[#223044] border border-white/10 text-text-accent font-black text-base flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Nieskończoność (∞)"
             >
               ∞
@@ -1536,7 +1536,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('÷')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak dzielenia (÷)"
             >
               ÷
@@ -1544,7 +1544,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('·')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-text-accent font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak mnożenia (·)"
             >
               ·
@@ -1552,7 +1552,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('-')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-text-accent font-black text-xl flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak minus (-)"
             >
               −
@@ -1585,7 +1585,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('+')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak plus (+)"
             >
               +
@@ -1601,7 +1601,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('=')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-[#FFB800] font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 text-text-accent font-black text-lg flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Znak równości (=)"
             >
               =
@@ -1649,7 +1649,7 @@ export function OpenTaskWorkspace({
             <button
               type="button"
               onClick={() => handleKeyClick('NEXT')}
-              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 hover:border-[#FFB800]/50 text-[#FFB800] font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
+              className="h-9 sm:h-10 rounded-xl bg-[#1E293B] hover:bg-[#27354D] border border-white/10 hover:border-primary/50 text-text-accent font-bold flex items-center justify-center active:scale-95 transition-all shadow-sm cursor-pointer"
               title="Przejdź dalej / Wyjdź z ułamka (→ / Spacja)"
             >
               <ArrowRight size={18} className="stroke-[2.5]" />
@@ -1761,7 +1761,7 @@ export function OpenTaskWorkspace({
               <button
                 type="button"
                 onClick={handleExpandCanvas}
-                className="px-2.5 py-1.5 rounded-xl text-[#FFB800] hover:text-amber-300 bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
+                className="px-2.5 py-1.5 rounded-xl text-text-accent hover:text-amber-300 bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-primary/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
                 title="Dodaj 350px miejsca na obliczenia w dół"
               >
                 <Plus size={14} />
@@ -1778,7 +1778,7 @@ export function OpenTaskWorkspace({
                     setIsFullscreen(prev => !prev);
                   }
                 }}
-                className="p-1.5 rounded-xl text-[#FFB800] hover:text-white bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/20 transition-colors cursor-pointer"
+                className="p-1.5 rounded-xl text-text-accent hover:text-white bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-primary/20 transition-colors cursor-pointer"
                 title={isFullscreen ? "Minimalizuj" : "Powiększ na pełny ekran"}
               >
                 {isFullscreen ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
@@ -1896,13 +1896,13 @@ export function OpenTaskWorkspace({
                   type="button"
                   disabled={isAiLoading}
                   onClick={handleUnifiedAskAiHint}
-                  className="px-3.5 sm:px-4 py-3 rounded-xl sm:rounded-2xl bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/30 hover:border-[#FFB800]/60 text-amber-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed shadow-sm active:scale-[0.98] shrink-0"
+                  className="px-3.5 sm:px-4 py-3 rounded-xl sm:rounded-2xl bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-primary/30 hover:border-primary/60 text-amber-300 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed shadow-sm active:scale-[0.98] shrink-0"
                   title="Poproś Tutora AI o sokratejską wskazówkę do zadania"
                 >
                   {isAiLoading ? (
                     <Loader2 size={16} className="animate-spin text-amber-400" />
                   ) : (
-                    <Lightbulb size={16} className="text-[#FFB800]" />
+                    <Lightbulb size={16} className="text-text-accent" />
                   )}
                   <span className="hidden sm:inline">Wskazówka Tutora AI</span>
                   <span className="inline sm:hidden">Wskazówka</span>

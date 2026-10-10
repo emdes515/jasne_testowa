@@ -600,7 +600,7 @@ export const WritingWorkspace: React.FC<WritingWorkspaceProps> = ({
                   ? "Wpisz swoje wypracowanie maturalne (min. 300 słów). Zadbaj o wstęp z tezą, akapity argumentacyjne z lekturą obowiązkową i kontekstem oraz syntezę na koniec."
                   : "Napisz zwięzłą notatkę syntetyzującą (60–90 słów) przedstawiającą wspólny problem i stanowiska obu autorów."
             }
-            className="w-full min-h-[260px] sm:min-h-[320px] p-4 sm:p-5 rounded-2xl bg-[#070A0F]/90 border border-surface-border focus:border-primary/60 focus:ring-2 focus:ring-primary/20 text-white placeholder-text-muted font-sans text-sm sm:text-base leading-relaxed resize-y transition shadow-inner outline-none select-text"
+            className="w-full min-h-[260px] sm:min-h-[320px] p-4 sm:p-5 rounded-2xl bg-surface-bg/90 border border-surface-border focus:border-primary/60 focus:ring-2 focus:ring-primary/20 text-white placeholder-text-muted font-sans text-sm sm:text-base leading-relaxed resize-y transition shadow-inner outline-none select-text"
           />
 
           {isSavedLocally && (

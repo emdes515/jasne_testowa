@@ -118,12 +118,12 @@ export function MaturaExamReview({
       className="flex flex-col gap-6"
     >
       {/* Top Banner Card - Nocturne Luminary */}
-      <div className="bg-surface-card border border-[#FFB800]/20 rounded-[28px] p-6 sm:p-8 text-center relative overflow-hidden shadow-xl">
+      <div className="bg-surface-card border border-primary/20 rounded-[28px] p-6 sm:p-8 text-center relative overflow-hidden shadow-xl">
         <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#FFB800]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="w-16 h-16 bg-gradient-to-tr from-[#FFB800]/20 to-amber-600/20 border border-[#FFB800]/40 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-          <Trophy className="text-[#FFB800]" size={32} />
+        <div className="w-16 h-16 bg-gradient-to-tr from-[#FFB800]/20 to-amber-600/20 border border-primary/40 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+          <Trophy className="text-text-accent" size={32} />
         </div>
 
         <span className={`inline-block text-xs font-black uppercase px-3.5 py-1 rounded-full mb-3 border tracking-wider ${
@@ -148,11 +148,11 @@ export function MaturaExamReview({
         </p>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-3 gap-2 bg-[#070A0F]/80 border border-surface-border rounded-2xl p-3 sm:p-4 mb-6 text-left">
+        <div className="grid grid-cols-3 gap-2 bg-surface-bg/80 border border-surface-border rounded-2xl p-3 sm:p-4 mb-6 text-left">
           <div>
             <span className="text-[11px] font-bold text-text-muted uppercase tracking-wider block">Czas arkusza</span>
             <div className="flex items-center gap-1.5 mt-0.5 text-white font-bold text-sm tabular-nums font-mono">
-              <Clock size={14} className="text-[#FFB800]" />
+              <Clock size={14} className="text-text-accent" />
               <span>{formatTime(timeSpentSeconds)}</span>
             </div>
           </div>
@@ -167,8 +167,8 @@ export function MaturaExamReview({
 
           <div>
             <span className="text-[11px] font-bold text-text-muted uppercase tracking-wider block">Zdobyte XP</span>
-            <div className="flex items-center gap-1 mt-0.5 text-[#FFB800] font-bold text-sm">
-              <Zap size={14} className="text-[#FFB800]" />
+            <div className="flex items-center gap-1 mt-0.5 text-text-accent font-bold text-sm">
+              <Zap size={14} className="text-text-accent" />
               <span>+{xpAwarded} XP</span>
             </div>
           </div>
@@ -200,7 +200,7 @@ export function MaturaExamReview({
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <BookOpen size={18} className="text-[#FFB800]" />
+            <BookOpen size={18} className="text-text-accent" />
             Szczegółowy przegląd zadań
           </h3>
 
@@ -299,7 +299,7 @@ export function MaturaExamReview({
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="px-4 pb-5 pt-3 border-t border-surface-border bg-[#070A0F]/60 space-y-4"
+                      className="px-4 pb-5 pt-3 border-t border-surface-border bg-surface-bg/60 space-y-4"
                     >
                       {/* Task Question Content */}
                       <div className="p-4 rounded-xl bg-surface-card border border-surface-border">
@@ -392,12 +392,12 @@ export function MaturaExamReview({
                           <div className="p-4 rounded-xl bg-surface-card border border-surface-border">
                             <div className="text-[11px] font-bold text-text-muted uppercase tracking-wider mb-1.5 flex items-center justify-between">
                               <span>Twoje zapisane rozwiązanie:</span>
-                              <span className="text-[#FFB800] text-xs font-bold">
+                              <span className="text-text-accent text-xs font-bold">
                                 {task.userPointsEarned} / {task.points} pkt CKE
                               </span>
                             </div>
                             {task.userAnswer ? (
-                              <div className="p-3 rounded-lg bg-[#070A0F] border border-white/5">
+                              <div className="p-3 rounded-lg bg-surface-bg border border-white/5">
                                 {renderMathContent(task.userAnswer)}
                               </div>
                             ) : (
@@ -409,8 +409,8 @@ export function MaturaExamReview({
 
                           {/* Karta Oceny Tutora AI */}
                           {task.aiEvaluation && (
-                            <div className="p-4 rounded-xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-3">
-                              <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
+                            <div className="p-4 rounded-xl bg-[#FFB800]/5 border border-primary/25 space-y-3">
+                              <div className="flex items-center gap-2 text-xs font-black text-text-accent uppercase tracking-wider">
                                 <GraduationCap size={14} />
                                 <span>Ocena Egzaminatora AI</span>
                               </div>
@@ -466,7 +466,7 @@ export function MaturaExamReview({
 
                       {/* Matura Explanation */}
                       <div className="bg-surface-card border border-surface-border rounded-xl p-4">
-                        <div className="flex items-center gap-2 text-xs font-bold text-[#FFB800] uppercase tracking-wider mb-2">
+                        <div className="flex items-center gap-2 text-xs font-bold text-text-accent uppercase tracking-wider mb-2">
                           <Award size={14} />
                           Oficjalny klucz i rozwiązanie CKE
                         </div>

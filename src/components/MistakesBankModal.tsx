@@ -102,7 +102,7 @@ export const MistakesBankModal: React.FC<MistakesBankModalProps> = ({
                   Nie masz żadnych zadań oczekujących na poprawę. Wszystkie Twoje dotychczasowe odpowiedzi w sesjach były bezbłędne.
                 </p>
                 <div className="mt-5 p-3.5 rounded-2xl bg-white/5 border border-white/10 text-left max-w-sm w-full">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#FFB800] mb-1">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-text-accent mb-1">
                     <Zap size={14} />
                     <span>Jak działa Bank Błędów?</span>
                   </div>

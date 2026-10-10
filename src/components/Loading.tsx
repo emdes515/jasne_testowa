@@ -203,7 +203,7 @@ export function AsyncContent({
               <motion.div 
                 animate={{ opacity: [0.4, 0.9, 0.4] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="mt-4 text-[#FFB800]/80 text-[11px] font-bold uppercase tracking-widest text-center px-4"
+                className="mt-4 text-text-accent/80 text-[11px] font-bold uppercase tracking-widest text-center px-4"
               >
                 {fallbackMessage}
               </motion.div>

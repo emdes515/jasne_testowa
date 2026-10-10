@@ -99,9 +99,9 @@ export function MathAnswerModule({
                 triggerHaptic('light');
                 onAskAI();
               }}
-              className="flex items-center gap-1 text-[11px] font-bold text-[#8B8D98] hover:text-[#FFB800] transition-colors py-1 px-2 rounded-lg hover:bg-white/5"
+              className="flex items-center gap-1 text-[11px] font-bold text-[#8B8D98] hover:text-text-accent transition-colors py-1 px-2 rounded-lg hover:bg-white/5"
             >
-              <Lightbulb size={12} className="text-[#FFB800]" />
+              <Lightbulb size={12} className="text-text-accent" />
               <span>Wskazówka AI</span>
             </button>
           )}

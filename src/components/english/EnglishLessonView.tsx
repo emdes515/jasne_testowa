@@ -103,9 +103,9 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#070a0f] text-[#dfe2f1] font-sans pb-28">
+    <div className="min-h-screen bg-surface-bg text-[#dfe2f1] font-sans pb-28">
       {/* Top Header */}
-      <header className="sticky top-0 z-30 bg-[#070a0f]/95 backdrop-blur-md border-b border-[#141d2e] px-4 py-3 flex items-center justify-between gap-3">
+      <header className="sticky top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-[#141d2e] px-4 py-3 flex items-center justify-between gap-3">
         <button
           onClick={onBack}
           aria-label="Powrót do modułu"
@@ -115,7 +115,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
           <span className="hidden sm:inline">Powrót do modułu</span>
         </button>
         <div className="text-center max-w-sm truncate min-w-0 flex-1">
-          <span className="text-[10px] font-bold text-[#FFB800] tracking-wider uppercase block">
+          <span className="text-[10px] font-bold text-text-accent tracking-wider uppercase block">
             Język Angielski • Formuła 2023
           </span>
           <span className="text-xs sm:text-sm font-black text-white truncate block">
@@ -136,7 +136,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
           <div className="space-y-6 animate-fadeIn">
             {/* Header / Subtitle */}
             <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-[#141d2e] shadow-xl">
-              <div className="flex items-center gap-2 text-[#FFB800] mb-2">
+              <div className="flex items-center gap-2 text-text-accent mb-2">
                 <BookOpen size={20} />
                 <span className="text-xs font-bold uppercase tracking-wider">Klucz do tematu</span>
               </div>
@@ -177,7 +177,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                         </div>
                       )}
                       {ex.result && (
-                        <div className="mt-2 text-xs font-bold text-[#FFB800] bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20">
+                        <div className="mt-2 text-xs font-bold text-text-accent bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20">
                           Wynik: {ex.result}
                         </div>
                       )}
@@ -236,10 +236,10 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
             {/* Pasek postępu */}
             <div className="flex items-center justify-between text-xs font-bold text-slate-400">
               <span className="flex items-center gap-2">
-                <Zap size={14} className="text-[#FFB800]" />
+                <Zap size={14} className="text-text-accent" />
                 Zadanie {currentTaskIndex + 1} z {tasks.length}
               </span>
-              <span className="text-[#FFB800] bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+              <span className="text-text-accent bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
                 {correctCount} poprawnych
               </span>
             </div>
@@ -247,7 +247,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
             {/* Karta Zadania */}
             <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-[#141d2e] space-y-4 shadow-xl">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-bold text-[#FFB800] uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-text-accent uppercase tracking-wider">
                   Zadanie maturalne • {currentTask.type || 'Praktyka'}
                 </span>
                 <span className="text-[10px] font-bold text-slate-400">
@@ -370,14 +370,14 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
         {/* ========================================================================= */}
         {currentStep === 'completed' && (
           <div className="text-center py-10 space-y-6 animate-scaleIn">
-            <div className="w-20 h-20 mx-auto rounded-3xl bg-amber-500/10 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] shadow-2xl">
+            <div className="w-20 h-20 mx-auto rounded-3xl bg-amber-500/10 border border-primary/30 flex items-center justify-center text-text-accent shadow-2xl">
               <Award size={40} />
             </div>
 
             <div className="space-y-2">
               <h2 className="text-2xl font-black text-white">Lekcja Ukończona!</h2>
               <p className="text-sm text-slate-400">
-                Opanowałeś koncept: <span className="text-[#FFB800] font-semibold">{lesson.title}</span>
+                Opanowałeś koncept: <span className="text-text-accent font-semibold">{lesson.title}</span>
               </p>
             </div>
 
@@ -387,7 +387,7 @@ export const EnglishLessonView: React.FC<EnglishLessonViewProps> = ({
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Poprawne zadania</span>
               </div>
               <div className="p-4 rounded-xl bg-[#0e1522] border border-[#141d2e]">
-                <span className="text-2xl font-black text-[#FFB800] block">+{(correctCount + 1) * 15}</span>
+                <span className="text-2xl font-black text-text-accent block">+{(correctCount + 1) * 15}</span>
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Zdobyte XP</span>
               </div>
             </div>

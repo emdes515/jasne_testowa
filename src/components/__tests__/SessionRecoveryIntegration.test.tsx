@@ -343,7 +343,7 @@ describe('Session Recovery Component Integration', () => {
       const { unmount: unmountDash } = render(<App />);
       expect(screen.getAllByText(/Główny panel|Dashboard/i).length).toBeGreaterThan(0);
       unmountDash();
-    });
+    }, 30_000); // widoki Nauka/Matura ładują się leniwie – przy równoległych testach potrzeba więcej niż domyślne 5 s
   });
 });
 

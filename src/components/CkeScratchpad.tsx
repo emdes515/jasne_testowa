@@ -348,7 +348,7 @@ export function CkeScratchpad({
             <button
               type="button"
               onClick={handleExpandCanvas}
-              className="px-2.5 py-1.5 rounded-xl text-[#FFB800] hover:text-amber-300 bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-[#FFB800]/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
+              className="px-2.5 py-1.5 rounded-xl text-text-accent hover:text-amber-300 bg-[#FFB800]/10 hover:bg-[#FFB800]/20 border border-primary/30 transition-all cursor-pointer flex items-center gap-1 text-xs font-bold"
               title="Dodaj 450px miejsca na obliczenia w dół"
             >
               <Plus size={14} />

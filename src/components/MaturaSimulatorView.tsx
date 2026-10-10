@@ -127,7 +127,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
           <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-text-secondary text-xs font-bold">
             Zadanie {(task as any).taskNumber || currentIndex + 1}
           </span>
-          <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/20 text-[#FFB800] text-xs font-bold">
+          <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-primary/20 text-text-accent text-xs font-bold">
             {task.points} {task.points === 1 ? 'punkt' : 'punkty'}
           </span>
           {task.source && (
@@ -175,14 +175,14 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                   onClick={() => onSelectClosedAnswer(optLetter)}
                   className={`group p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex items-center justify-between gap-3.5 active:scale-[0.99] cursor-pointer ${
                     isSelected
-                      ? 'bg-[#FFB800]/10 border-[#FFB800] ring-1 ring-[#FFB800]/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
+                      ? 'bg-[#FFB800]/10 border-primary ring-1 ring-primary/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white'
                       : 'bg-surface-card border-surface-border text-text-secondary hover:border-white/20 hover:text-white'
                   }`}
                 >
                   <div className="flex items-center gap-3.5 min-w-0 flex-1">
                     <span className={`w-8 h-8 rounded-xl font-display font-black text-xs flex items-center justify-center shrink-0 border transition-all ${
                       isSelected
-                        ? 'bg-[#FFB800] text-black border-[#FFB800] shadow-sm'
+                        ? 'bg-[#FFB800] text-black border-primary shadow-sm'
                         : 'bg-white/5 text-text-secondary border-white/10'
                     }`}>
                       {optLetter}
@@ -202,7 +202,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
                     </div>
                   </div>
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
-                    isSelected ? 'border-[#FFB800]' : 'border-white/20'
+                    isSelected ? 'border-primary' : 'border-white/20'
                   }`}>
                     {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#FFB800]" />}
                   </div>
@@ -230,7 +230,7 @@ const ExamTaskCard = React.memo<ExamTaskCardProps>(({
 
           <div className="flex items-center justify-between gap-2 p-3.5 rounded-2xl bg-surface-bg border border-surface-border">
             <div className="flex items-center gap-2">
-              <GraduationCap size={16} className="text-[#FFB800]" />
+              <GraduationCap size={16} className="text-text-accent" />
               <span className="text-xs font-bold text-white">
                 Zadanie otwarte • AI oceni je po oddaniu arkusza
               </span>
@@ -1465,7 +1465,7 @@ export function MaturaSimulatorView({
                   </>
                 )}
               </h1>
-              <span className="shrink-0 px-2 py-0.5 rounded-full bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800] text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
+              <span className="shrink-0 px-2 py-0.5 rounded-full bg-[#FFB800]/10 border border-primary/30 text-text-accent text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
                 Formuła 2023
               </span>
               {view === 'hub' && !isPolishFullExamActive && (
@@ -1489,8 +1489,8 @@ export function MaturaSimulatorView({
                         transition={{ type: 'spring', stiffness: 440, damping: 32 }}
                       />
                     )}
-                    <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
-                      <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary text-text-accent inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+                      <svg className="w-3.5 h-2.5 text-text-accent" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M2 11.5l3 4 4.5-12.5h12.5" />
                         <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
                       </svg>
@@ -1517,7 +1517,7 @@ export function MaturaSimulatorView({
                       />
                     )}
                     <span
-                      className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+                      className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-text-accent"
                       style={{
                         fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
                       }}
@@ -1545,7 +1545,7 @@ export function MaturaSimulatorView({
                         transition={{ type: 'spring', stiffness: 440, damping: 32 }}
                       />
                     )}
-                    <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+                    <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
                       <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
                         {/* Przekątne - podkład krzyża św. Andrzeja */}
                         <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
@@ -1583,7 +1583,7 @@ export function MaturaSimulatorView({
               className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-surface-card hover:bg-white/10 text-white border border-surface-border text-xs font-bold transition-all shadow-sm cursor-pointer active:scale-95"
               title="Karta wzorów CKE"
             >
-              <BookOpen size={14} className="text-[#FFB800]" />
+              <BookOpen size={14} className="text-text-accent" />
               <span className="hidden sm:inline">Wzory CKE</span>
             </button>
           </div>
@@ -1600,7 +1600,7 @@ export function MaturaSimulatorView({
         />
       ) : loading && examSubject === 'matematyka' && tasks.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center py-20">
-          <Loader2 className="w-10 h-10 text-[#FFB800] animate-spin mb-4" />
+          <Loader2 className="w-10 h-10 text-text-accent animate-spin mb-4" />
           <p className="text-text-secondary text-sm font-medium">Wczytywanie zadań z arkuszy CKE...</p>
         </div>
       ) : loadError ? (
@@ -1639,8 +1639,8 @@ export function MaturaSimulatorView({
                   {/* Górny wiersz: Badge i odznaki metryk bez łamania tekstu */}
                   <div className="flex items-center justify-between gap-2 flex-wrap">
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 px-2.5 py-0.5 rounded-md border border-[#FFB800]/25 flex items-center gap-1">
-                        <Flame size={12} className="text-[#FFB800]" />
+                      <span className="text-[10px] font-black uppercase tracking-wider text-text-accent bg-[#FFB800]/10 px-2.5 py-0.5 rounded-md border border-primary/25 flex items-center gap-1">
+                        <Flame size={12} className="text-text-accent" />
                         Baza CKE
                       </span>
                       <span className="text-text-muted text-[11px] font-medium">• {currentTopics.length} działów</span>
@@ -1666,7 +1666,7 @@ export function MaturaSimulatorView({
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-text-secondary text-[11px] font-medium">Ukończono w bazie pytań:</span>
                       <span className="text-white font-bold text-xs">
-                        <span className="text-[#FFB800]">{completedCkeCount}</span> / {effectiveTasks.length} ({completionPct}%)
+                        <span className="text-text-accent">{completedCkeCount}</span> / {effectiveTasks.length} ({completionPct}%)
                       </span>
                     </div>
                     <div className="w-full h-2 bg-surface-bg/90 rounded-full overflow-hidden p-0.5 border border-surface-border/80">
@@ -1680,14 +1680,14 @@ export function MaturaSimulatorView({
               </div>
 
               {/* FILAR 4: SZYBKI BANER 1 KLIKNIĘCIEM - "PO PROSTU RÓB ZADANIA" */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-surface-card to-surface-card border border-[#FFB800]/40 shadow-[0_0_30px_rgba(255,184,0,0.1)] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-surface-card to-surface-card border border-primary/40 shadow-[0_0_30px_rgba(255,184,0,0.1)] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-xl bg-[#FFB800]/20 border border-[#FFB800]/40 flex items-center justify-center shrink-0 text-[#FFB800] shadow-[0_0_15px_rgba(255,184,0,0.2)]">
+                  <div className="w-11 h-11 rounded-xl bg-[#FFB800]/20 border border-primary/40 flex items-center justify-center shrink-0 text-text-accent shadow-[0_0_15px_rgba(255,184,0,0.2)]">
                     <Shuffle size={22} />
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5 mb-1">
-                      <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/15 px-2 py-0.5 rounded border border-[#FFB800]/30">
+                      <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/15 px-2 py-0.5 rounded border border-primary/30">
                         Szybki start
                       </span>
                       <span className="text-[11px] text-text-muted truncate">1 kliknięcie do nauki</span>
@@ -1700,7 +1700,7 @@ export function MaturaSimulatorView({
 
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0">
                   {/* Segmented Radio Pills */}
-                  <div className="flex items-center bg-[#070A0F] border border-surface-border p-1 rounded-xl gap-1">
+                  <div className="flex items-center bg-surface-bg border border-surface-border p-1 rounded-xl gap-1">
                     <button
                       type="button"
                       onClick={() => setRandomScope('unsolved')}
@@ -1710,7 +1710,7 @@ export function MaturaSimulatorView({
                           : 'text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
-                      <Target size={13} className={randomScope === 'unsolved' ? 'text-black' : 'text-[#FFB800]'} />
+                      <Target size={13} className={randomScope === 'unsolved' ? 'text-black' : 'text-text-accent'} />
                       <span>Nierozwiązane</span>
                     </button>
                     <button
@@ -2170,11 +2170,11 @@ export function MaturaSimulatorView({
                     return (
                       <div
                         key={idx}
-                        className="p-4 rounded-2xl bg-surface-bg border border-surface-border hover:border-[#FFB800]/40 transition-all flex flex-col justify-between group shadow-sm"
+                        className="p-4 rounded-2xl bg-surface-bg border border-surface-border hover:border-primary/40 transition-all flex flex-col justify-between group shadow-sm"
                       >
                         <div>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded border border-[#FFB800]/20">
+                            <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 px-2 py-0.5 rounded border border-primary/20">
                               Dział {idx + 1}
                             </span>
                             <span className="text-[10px] font-bold text-text-muted">
@@ -2182,7 +2182,7 @@ export function MaturaSimulatorView({
                             </span>
                           </div>
 
-                          <h3 className="font-bold text-sm text-white mb-3 group-hover:text-[#FFB800] transition-colors line-clamp-1">
+                          <h3 className="font-bold text-sm text-white mb-3 group-hover:text-text-accent transition-colors line-clamp-1">
                             {topic.replace(/^Dział\s*[\d.]+\s*[:\-–]?\s*/i, '')}
                           </h3>
 
@@ -2235,7 +2235,7 @@ export function MaturaSimulatorView({
             >
               <div className="p-5 rounded-[26px] bg-surface-card border border-surface-border shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded border border-[#FFB800]/20 mb-1 inline-block">
+                  <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 px-2 py-0.5 rounded border border-primary/20 mb-1 inline-block">
                     Katalog Zadań CKE
                   </span>
                   <h2 className="text-xl font-bold text-white">{selectedTopicName}</h2>
@@ -2263,11 +2263,11 @@ export function MaturaSimulatorView({
                     <div
                       key={t.id}
                       onClick={() => startMaraton(topicTasks, idx)}
-                      className="p-4 rounded-2xl bg-surface-card border border-surface-border hover:border-[#FFB800]/40 transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md"
+                      className="p-4 rounded-2xl bg-surface-card border border-surface-border hover:border-primary/40 transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md"
                     >
                       <div className="flex-1 overflow-hidden space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold text-[#FFB800] bg-[#FFB800]/10 px-2 py-0.5 rounded">
+                          <span className="text-[10px] font-bold text-text-accent bg-[#FFB800]/10 px-2 py-0.5 rounded">
                             {t.source || 'CKE'}
                           </span>
                           <span className="text-[10px] text-text-muted">
@@ -2331,7 +2331,7 @@ export function MaturaSimulatorView({
                     <select
                       value={setupSection}
                       onChange={e => setSetupSection(e.target.value)}
-                      className="w-full bg-surface-bg border border-surface-border rounded-xl px-4 py-3 text-white text-sm focus:border-[#FFB800] outline-none"
+                      className="w-full bg-surface-bg border border-surface-border rounded-xl px-4 py-3 text-white text-sm focus:border-primary outline-none"
                     >
                       <option value="Wszystkie działy">Wszystkie działy (Przekrój Maturalny)</option>
                       {currentTopics.map(s => (
@@ -2350,13 +2350,13 @@ export function MaturaSimulatorView({
                         onClick={() => setSetupLength(12)}
                         className={`p-4 rounded-2xl border text-left transition-all ${
                           setupLength === 12 || setupLength === 11 || setupLength === 7
-                            ? 'bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                            ? 'bg-[#FFB800]/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
                             : 'bg-surface-bg border-surface-border text-text-muted hover:text-white'
                         }`}
                       >
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
                           <span className="font-bold text-sm">Ekspresowy</span>
-                          <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-1.5 py-0.5 rounded w-fit">20 MIN</span>
+                          <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 border border-primary/20 px-1.5 py-0.5 rounded w-fit">20 MIN</span>
                         </div>
                         <p className="text-xs text-text-secondary">12 zadań • 15 punktów • Próg zdawalności 30%</p>
                       </button>
@@ -2366,13 +2366,13 @@ export function MaturaSimulatorView({
                         onClick={() => setSetupLength(18)}
                         className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all ${
                           setupLength === 18 || setupLength === 17
-                            ? 'bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                            ? 'bg-[#FFB800]/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.15)]'
                             : 'bg-surface-bg border-surface-border text-text-muted hover:text-white'
                         }`}
                       >
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
                           <span className="font-bold text-sm">Standardowy</span>
-                          <span className="text-[10px] font-black uppercase text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-1.5 py-0.5 rounded w-fit">35 MIN</span>
+                          <span className="text-[10px] font-black uppercase text-text-accent bg-[#FFB800]/10 border border-primary/20 px-1.5 py-0.5 rounded w-fit">35 MIN</span>
                         </div>
                         <p className="text-xs text-text-secondary">18 zadań • 25 punktów • Dokładnie 1/2 arkusza</p>
                       </button>
@@ -2471,8 +2471,8 @@ export function MaturaSimulatorView({
 
               {/* Pasek numerów zadań z touch-target min. 40x40px oraz bocznymi wskaźnikami wygaszającymi scroll */}
               <div className="relative group">
-                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-[#070A0F] to-transparent pointer-events-none z-10 opacity-80" aria-hidden="true" />
-                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-[#070A0F] to-transparent pointer-events-none z-10 opacity-80" aria-hidden="true" />
+                <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-surface-bg to-transparent pointer-events-none z-10 opacity-80" aria-hidden="true" />
+                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-surface-bg to-transparent pointer-events-none z-10 opacity-80" aria-hidden="true" />
                 <div className="flex items-center gap-1.5 overflow-x-auto py-1.5 px-2 -mx-1 scrollbar-none">
                   {examTasks.map((t, idx) => {
                     const isCurrent = idx === examCurrentIndex;
@@ -2588,12 +2588,12 @@ export function MaturaSimulatorView({
                     onClick={() => setMaratonClosedHintOpen(prev => !prev)}
                     className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 border ${
                       maratonClosedHintOpen
-                        ? 'bg-[#FFB800]/20 border-[#FFB800] text-[#FFB800] shadow-[0_0_12px_rgba(255,184,0,0.2)]'
+                        ? 'bg-[#FFB800]/20 border-primary text-text-accent shadow-[0_0_12px_rgba(255,184,0,0.2)]'
                         : 'bg-white/5 border-white/10 text-text-secondary hover:text-white hover:bg-white/10'
                     }`}
                     title="Pokaż wskazówkę do zadania"
                   >
-                    <Lightbulb size={13} className={maratonClosedHintOpen ? 'text-[#FFB800] fill-[#FFB800]' : 'text-amber-400'} />
+                    <Lightbulb size={13} className={maratonClosedHintOpen ? 'text-text-accent fill-[#FFB800]' : 'text-amber-400'} />
                     <span>Podpowiedź</span>
                   </button>
                 </div>
@@ -2633,7 +2633,7 @@ export function MaturaSimulatorView({
                     className="overflow-hidden"
                   >
                     <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs sm:text-sm text-text-primary space-y-1.5 shadow-sm">
-                      <div className="flex items-center gap-2 text-xs font-bold text-[#FFB800] uppercase tracking-wider">
+                      <div className="flex items-center gap-2 text-xs font-bold text-text-accent uppercase tracking-wider">
                         <Lightbulb size={15} />
                         <span>Wskazówka do zadania</span>
                       </div>
@@ -2654,7 +2654,7 @@ export function MaturaSimulatorView({
               }`}>
                 <div className="flex items-center justify-between flex-wrap gap-2 border-b border-surface-border pb-4">
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/25 text-[#FFB800] text-xs font-bold">
+                    <span className="px-2.5 py-1 rounded-lg bg-[#FFB800]/10 border border-primary/25 text-text-accent text-xs font-bold">
                       {currentMaratonTask.source || 'Oficjalne CKE'}
                     </span>
                     <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold">
@@ -2729,9 +2729,9 @@ export function MaturaSimulatorView({
                             cardStyle = 'bg-surface-card/40 border-surface-border/40 text-text-muted opacity-50';
                           }
                         } else if (isSelected) {
-                          cardStyle = 'bg-[#FFB800]/10 border-[#FFB800] ring-1 ring-[#FFB800]/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white';
-                          badgeStyle = 'bg-[#FFB800] text-black border-[#FFB800] shadow-sm';
-                          radioStyle = 'border-[#FFB800]';
+                          cardStyle = 'bg-[#FFB800]/10 border-primary ring-1 ring-primary/50 shadow-[0_0_15px_rgba(255,184,0,0.15)] text-white';
+                          badgeStyle = 'bg-[#FFB800] text-black border-primary shadow-sm';
+                          radioStyle = 'border-primary';
                         }
 
                         return (
@@ -2828,10 +2828,10 @@ export function MaturaSimulatorView({
                       <motion.div
                         initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="p-5 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-[#FFB800]/50 shadow-md flex flex-col items-center text-center my-3 relative overflow-hidden"
+                        className="p-5 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-primary/50 shadow-md flex flex-col items-center text-center my-3 relative overflow-hidden"
                       >
-                        <div className="relative w-12 h-12 rounded-2xl bg-[#FFB800]/20 border border-[#FFB800]/60 flex items-center justify-center mb-3">
-                          <Loader2 className="w-6 h-6 text-[#FFB800] animate-spin shrink-0" />
+                        <div className="relative w-12 h-12 rounded-2xl bg-[#FFB800]/20 border border-primary/60 flex items-center justify-center mb-3">
+                          <Loader2 className="w-6 h-6 text-text-accent animate-spin shrink-0" />
                         </div>
                         <h4 className="font-bold text-white text-sm sm:text-base mb-1">
                           Egzaminator AI analizuje Twoje kroki obliczeniowe...
@@ -2847,10 +2847,10 @@ export function MaturaSimulatorView({
                       <motion.div
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="p-4 rounded-2xl bg-[#FFB800]/10 border border-[#FFB800]/30 space-y-2 relative"
+                        className="p-4 rounded-2xl bg-[#FFB800]/10 border border-primary/30 space-y-2 relative"
                       >
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 text-xs font-bold text-[#FFB800] uppercase tracking-wider">
+                          <div className="flex items-center gap-2 text-xs font-bold text-text-accent uppercase tracking-wider">
                             <Lightbulb size={16} />
                             <span>Wskazówka Egzaminatora AI</span>
                           </div>
@@ -3004,9 +3004,9 @@ export function MaturaSimulatorView({
 
                         {/* Szczegółowa ocena Tutora AI w zadaniu otwartym */}
                         {!currentMaratonTask.isClosed && maratonTutorEval && (
-                          <div className="p-4 rounded-2xl bg-[#FFB800]/5 border border-[#FFB800]/25 space-y-2.5">
+                          <div className="p-4 rounded-2xl bg-[#FFB800]/5 border border-primary/25 space-y-2.5">
                             <div className="flex items-center justify-between gap-2">
-                              <div className="flex items-center gap-2 text-xs font-black text-[#FFB800] uppercase tracking-wider">
+                              <div className="flex items-center gap-2 text-xs font-black text-text-accent uppercase tracking-wider">
                                 <GraduationCap size={14} />
                                 <span>Ocena Egzaminatora AI: {maratonTutorEval.score} / {currentMaratonTask.points} pkt</span>
                               </div>
@@ -3019,7 +3019,7 @@ export function MaturaSimulatorView({
 
                             {/* Odczytany zapis ucznia (transkrypcja KaTeX) */}
                             {maratonTutorEval.transcription && (
-                              <div className="p-3 rounded-xl bg-[#070A0F]/80 border border-white/10 space-y-1">
+                              <div className="p-3 rounded-xl bg-surface-bg/80 border border-white/10 space-y-1">
                                 <div className="text-[10px] font-bold text-amber-300/80 uppercase tracking-wider">
                                   Odczytany zapis ucznia:
                                 </div>

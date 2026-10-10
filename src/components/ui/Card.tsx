@@ -15,7 +15,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(({
 }, ref) => {
   const variantStyles: Record<CardVariant, string> = {
     default: 'bg-surface-card border border-surface-border shadow-sm',
-    interactive: 'bg-surface-card border border-surface-border transition-all duration-200 hover:bg-surface-card-hover hover:border-[#FFB800]/35 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.5),0_0_16px_-2px_rgba(255,184,0,0.12)] hover:-translate-y-0.5 cursor-pointer',
+    interactive: 'bg-surface-card border border-surface-border transition-all duration-200 hover:bg-surface-card-hover hover:border-primary/35 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.5),0_0_16px_-2px_rgba(255,184,0,0.12)] hover:-translate-y-0.5 cursor-pointer',
     elevated: 'bg-surface-elevated border border-white/[0.12] shadow-xl',
     glass: 'bg-surface-card/90 backdrop-blur-xl border border-surface-border'
   };

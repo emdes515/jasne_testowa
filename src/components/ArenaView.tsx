@@ -655,7 +655,7 @@ export function ArenaView({ userState, onUpdateUserState, saveUserData, onNaviga
                   }}
                   className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <GraduationCap size={15} className="text-[#FFB800]" />
+                  <GraduationCap size={15} className="text-text-accent" />
                   <span>Trenuj w Mapie Wiedzy</span>
                 </button>
 

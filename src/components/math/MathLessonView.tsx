@@ -96,9 +96,9 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#070a0f] text-[#dfe2f1] font-sans pb-24">
+    <div className="min-h-screen bg-surface-bg text-[#dfe2f1] font-sans pb-24">
       {/* Top Header */}
-      <header className="sticky top-0 z-30 bg-[#070a0f]/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-surface-bg/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
         <button
           onClick={onBack}
           className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors cursor-pointer"
@@ -107,7 +107,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
           <span>Powrót do kursu</span>
         </button>
         <div className="text-center">
-          <span className="text-[10px] font-bold text-[#FFB800] tracking-wider uppercase block">
+          <span className="text-[10px] font-bold text-text-accent tracking-wider uppercase block">
             {lesson.badge || 'Lekcja matematyki'}
           </span>
           <span className="text-xs sm:text-sm font-black text-white truncate max-w-xs block">
@@ -121,7 +121,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
         {currentStep === 'theory' && (
           <div className="space-y-6 animate-fadeIn">
             <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-white/10 space-y-4">
-              <div className="flex items-center gap-2 text-[#FFB800]">
+              <div className="flex items-center gap-2 text-text-accent">
                 <BookOpen size={20} />
                 <h2 className="text-base sm:text-lg font-black text-white">Istota pojęcia w pigułce</h2>
               </div>
@@ -168,11 +168,11 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
             {/* Progress Bar */}
             <div className="flex items-center justify-between text-xs font-bold text-slate-400">
               <span>Zadanie {currentTaskIndex + 1} z {tasks.length}</span>
-              <span className="text-[#FFB800]">{correctCount} poprawnych</span>
+              <span className="text-text-accent">{correctCount} poprawnych</span>
             </div>
 
             <div className="p-5 sm:p-6 rounded-2xl bg-[#0e1522] border border-white/10 space-y-4">
-              <span className="text-[10px] font-bold text-[#FFB800] uppercase tracking-wider block">
+              <span className="text-[10px] font-bold text-text-accent uppercase tracking-wider block">
                 Zadanie maturalne
               </span>
               <div className="text-sm sm:text-base text-white leading-relaxed">
@@ -207,10 +207,10 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                     onChange={(e) => setSelectedOption(e.target.value)}
                     placeholder="Wpisz wynik, np. 12 albo 3,5"
                     aria-label="Wynik liczbowy"
-                    className={`w-full px-4 py-3 rounded-xl bg-[#070a0f] border text-base text-white outline-none transition-all ${
+                    className={`w-full px-4 py-3 rounded-xl bg-surface-bg border text-base text-white outline-none transition-all ${
                       isAnswerChecked
                         ? (isCurrentAnswerCorrect() ? 'border-emerald-500' : 'border-[#f43f5e]')
-                        : 'border-white/15 focus:border-[#ffb800]'
+                        : 'border-white/15 focus:border-primary'
                     }`}
                   />
                   {isAnswerChecked && (
@@ -237,7 +237,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
                         btnStyle = 'border-rose-500 bg-rose-500/20 text-rose-300';
                       }
                     } else if (isSelected) {
-                      btnStyle = 'border-[#FFB800] bg-[#FFB800]/15 text-[#FFDCA1] font-bold';
+                      btnStyle = 'border-primary bg-[#FFB800]/15 text-[#FFDCA1] font-bold';
                     }
 
                     return (
@@ -267,7 +267,7 @@ export const MathLessonView: React.FC<MathLessonViewProps> = ({
 
               {isAnswerChecked && currentTask.explanation && (
                 <div className="p-4 rounded-xl bg-black/40 border border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed mt-4">
-                  <span className="font-bold text-[#FFB800] block mb-1">Wyjaśnienie:</span>
+                  <span className="font-bold text-text-accent block mb-1">Wyjaśnienie:</span>
                   <MathRenderer content={currentTask.explanation} />
                 </div>
               )}

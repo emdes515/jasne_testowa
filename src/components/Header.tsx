@@ -140,15 +140,15 @@ export function Header({
             className="tap-44 flex items-center gap-1 px-2.5 h-9 max-w-full rounded-full bg-surface-card border border-primary/40 text-text-primary text-xs font-bold transition-all active:scale-95 shadow-xs min-w-0"
           >
             {isMathActive ? (
-              <span className="w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
-                <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <span className="w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary text-text-accent inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+                <svg className="w-3.5 h-2.5 text-text-accent" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 11.5l3 4 4.5-12.5h12.5" />
                   <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
                 </svg>
               </span>
             ) : isPolActive ? (
               <span
-                className="w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+                className="w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-text-accent"
                 style={{
                   fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
                 }}
@@ -156,7 +156,7 @@ export function Header({
                 P
               </span>
             ) : (
-              <span className="w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+              <span className="w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
                 <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
                   <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
                   <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />
@@ -197,8 +197,8 @@ export function Header({
                 transition={{ type: 'spring', stiffness: 440, damping: 30 }}
               />
             )}
-            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs">
-              <svg className="w-3.5 h-2.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary text-text-accent inline-flex items-center justify-center shrink-0 select-none shadow-xs">
+              <svg className="w-3.5 h-2.5 text-text-accent" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 11.5l3 4 4.5-12.5h12.5" />
                 <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
               </svg>
@@ -228,7 +228,7 @@ export function Header({
               />
             )}
             <span
-              className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-[#FFB800]"
+              className="relative z-10 w-[18px] h-[13px] inline-flex items-center justify-center shrink-0 select-none text-[12px] font-bold leading-none italic text-text-accent"
               style={{
                 fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
               }}
@@ -259,7 +259,7 @@ export function Header({
                 transition={{ type: 'spring', stiffness: 440, damping: 30 }}
               />
             )}
-            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
+            <span className="relative z-10 w-[18px] h-[13px] rounded-[3px] bg-surface-bg border border-primary inline-flex items-center justify-center shrink-0 select-none shadow-xs overflow-hidden">
               <svg className="w-full h-full block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
                 {/* Przekątne - podkład krzyża św. Andrzeja */}
                 <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
@@ -742,8 +742,8 @@ export function Header({
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-xl bg-[#070A0F] border border-[#FFB800] text-[#FFB800] inline-flex items-center justify-center shrink-0 shadow-xs">
-                      <svg className="w-4 h-3.5 text-[#FFB800]" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <span className="w-8 h-8 rounded-xl bg-surface-bg border border-primary text-text-accent inline-flex items-center justify-center shrink-0 shadow-xs">
+                      <svg className="w-4 h-3.5 text-text-accent" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M2 11.5l3 4 4.5-12.5h12.5" />
                         <text x="14" y="14.5" fill="currentColor" stroke="none" fontSize="8.5" fontWeight="bold" fontFamily="serif" fontStyle="italic">x</text>
                       </svg>
@@ -775,7 +775,7 @@ export function Header({
                 >
                   <div className="flex items-center gap-3">
                     <span
-                      className="w-8 h-8 rounded-xl bg-[#070A0F] border border-rose-500 inline-flex items-center justify-center shrink-0 text-base font-bold italic text-rose-400 shadow-xs"
+                      className="w-8 h-8 rounded-xl bg-surface-bg border border-rose-500 inline-flex items-center justify-center shrink-0 text-base font-bold italic text-rose-400 shadow-xs"
                       style={{
                         fontFamily: "'Alex Brush', 'Playfair Display', 'Brush Script MT', 'Apple Chancery', 'Segoe Script', cursive, serif",
                       }}
@@ -808,7 +808,7 @@ export function Header({
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-xl bg-[#070A0F] border border-[#FFB800] inline-flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                    <span className="w-8 h-8 rounded-xl bg-surface-bg border border-primary inline-flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
                       <svg className="w-5 h-3.5 block" viewBox="0 0 18 13" fill="none" aria-hidden="true">
                         <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="3" strokeOpacity="0.4" />
                         <path d="M0 0L18 13M18 0L0 13" stroke="#FFB800" strokeWidth="1.2" />

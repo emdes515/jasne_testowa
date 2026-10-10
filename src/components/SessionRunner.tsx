@@ -568,14 +568,14 @@ function renderConceptEssenceCard(rawText: string | any, isPolishSession: boolea
       {supportingClauses.length > 0 && (
         <div className="space-y-2 pt-1">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-            <GraduationCap size={14} className="text-[#FFB800]" />
+            <GraduationCap size={14} className="text-text-accent" />
             <span>Kluczowe zasady i własności</span>
           </div>
           <div className={`grid gap-2.5 ${supportingClauses.length === 1 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'}`}>
             {supportingClauses.map((clause, idx) => {
               let label = `Zasada ${idx + 1}`;
               let dotColor = 'bg-[#FFB800]';
-              let textColor = 'text-[#FFB800]';
+              let textColor = 'text-text-accent';
 
               const isLogarithm = /logarytm|\\log|\blog\b/i.test(textToParse) || /logarytm|\\log|\blog\b/i.test(clause);
 
@@ -3483,7 +3483,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
     return (
       <div 
         id="session-celebration-screen"
-        className="fixed inset-0 z-50 bg-[#070A0F]/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 text-white select-none overflow-y-auto"
+        className="fixed inset-0 z-50 bg-surface-bg/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 text-white select-none overflow-y-auto"
       >
         <div className="w-full max-w-md mx-auto bg-[#0B0F19] rounded-3xl border border-white/10 flex flex-col items-center justify-center p-4 sm:p-6 text-white select-none relative shadow-2xl my-auto">
           <div className="w-full flex flex-col items-center justify-center text-center">
@@ -3535,8 +3535,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               className="w-full grid grid-cols-2 gap-3 sm:gap-4 mb-5"
             >
               <div className="bg-slate-900/80 border border-slate-800/90 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center min-h-[90px] shadow-sm">
-                <div className="w-7 h-7 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center mb-1 text-[#FFB800]">
-                  <Zap className="w-3.5 h-3.5 fill-[#FFB800] text-[#FFB800]" />
+                <div className="w-7 h-7 rounded-xl bg-[#FFB800]/15 border border-primary/30 flex items-center justify-center mb-1 text-text-accent">
+                  <Zap className="w-3.5 h-3.5 fill-[#FFB800] text-text-accent" />
                 </div>
                 <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">+{calculatedXp}</span>
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">XP</span>
@@ -3648,11 +3648,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
   return (
     <div 
       id="session-runner-modal"
-      className="fixed inset-0 z-50 bg-[#070A0F] flex flex-col w-full h-full overflow-hidden p-0 m-0 select-none"
+      className="fixed inset-0 z-50 bg-surface-bg flex flex-col w-full h-full overflow-hidden p-0 m-0 select-none"
     >
       <div 
         id="session-runner-container"
-        className="w-full h-full flex flex-col justify-between overflow-hidden relative text-white bg-[#070A0F] rounded-none border-0 shadow-none transition-all duration-200"
+        className="w-full h-full flex flex-col justify-between overflow-hidden relative text-white bg-surface-bg rounded-none border-0 shadow-none transition-all duration-200"
       >
       {/* ================= DEDICATED FOCUS SESSION BAR ================= */}
       <header 
@@ -3740,7 +3740,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           isDone
                             ? 'bg-emerald-950/60 border border-emerald-500/60 shadow-sm'
                             : isActive
-                              ? 'bg-amber-950/50 border border-[#FFB800] shadow-sm ring-1 ring-[#FFB800]/50'
+                              ? 'bg-amber-950/50 border border-primary shadow-sm ring-1 ring-primary/50'
                               : 'bg-slate-900/90 border border-white/10 shadow-inner'
                         }`}
                       >
@@ -3935,10 +3935,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       {!heartsData.isPro && heartsData.hearts < heartsData.maxHearts && (
                         <div className="flex items-center justify-between text-xs text-slate-400 mb-3 bg-slate-950/40 p-2.5 rounded-lg border border-white/5">
                           <div className="flex items-center gap-1.5">
-                            <Clock size={13} className="text-[#FFB800]" />
+                            <Clock size={13} className="text-text-accent" />
                             <span>Kolejne serce za:</span>
                           </div>
-                          <span className="font-mono font-bold text-[#FFB800]">{heartsData.formattedTime}</span>
+                          <span className="font-mono font-bold text-text-accent">{heartsData.formattedTime}</span>
                         </div>
                       )}
 
@@ -3993,7 +3993,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-800/60 border border-slate-700/80 text-[11px] sm:text-xs shrink-0 select-none shadow-sm">
                   <span className="text-slate-400 font-medium hidden sm:inline">Cel:</span>
-                  <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-[#FFB800] font-black") : "text-white font-bold"}>
+                  <span className={correctAnswersCount > 0 ? (isPolishSession ? "text-[#F43F5E] font-black" : "text-text-accent font-black") : "text-white font-bold"}>
                     {correctAnswersCount}
                   </span>
                   <span className="text-slate-600 font-normal">/</span>
@@ -4403,8 +4403,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {polishTheory?.theoryPoints && polishTheory.theoryPoints.length > 0 && (
                           <section className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-amber-500/20 flex flex-col gap-3.5">
                             <div className="flex items-center justify-between gap-2 flex-wrap">
-                              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
-                                <BookmarkCheck size={16} className="text-[#FFB800] shrink-0" />
+                              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
+                                <BookmarkCheck size={16} className="text-text-accent shrink-0" />
                                 <span>Główne filary wiedzy CKE</span>
                               </div>
                               <span className="text-[10px] font-medium text-amber-300/80 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
@@ -4573,8 +4573,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {/* 6. PATENTY I WSKAZÓWKI EGZAMINATORA CKE */}
                         {((polishTheory?.ckeExaminerTips && polishTheory.ckeExaminerTips.length > 0) || theoryPill?.matura_context) && (
                           <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)] flex flex-col gap-3">
-                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
-                              <GraduationCap size={16} className="text-[#FFB800] shrink-0" />
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
+                              <GraduationCap size={16} className="text-text-accent shrink-0" />
                               <span>Patenty i wskazówki egzaminatora CKE</span>
                             </div>
                             <div className="space-y-2">
@@ -4600,8 +4600,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {gatekeeper && (
                           <section className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.08)] flex flex-col gap-3.5">
                             <div className="flex items-center justify-between gap-2 flex-wrap">
-                              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
-                                <Target size={16} className="text-[#FFB800] shrink-0" />
+                              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
+                                <Target size={16} className="text-text-accent shrink-0" />
                                 <span>Sprawdź zrozumienie (Mini-wyzwanie bramkowe)</span>
                               </div>
                               <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
@@ -4746,9 +4746,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     return (
                       <div className="space-y-4">
                         {/* 1. HERO HEADER: Etykiety i tytuł */}
-                        <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#151D2C] via-[#0E1522] to-[#0A0F1A] border border-[#FFB800]/30 shadow-[0_4px_24px_rgba(255,184,0,0.08)] flex flex-col gap-3">
+                        <section className="rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#151D2C] via-[#0E1522] to-[#0A0F1A] border border-primary/30 shadow-[0_4px_24px_rgba(255,184,0,0.08)] flex flex-col gap-3">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/15 text-[#FFDCA1] border border-[#FFB800]/30 flex items-center gap-1.5 shadow-sm">
+                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FFB800]/15 text-[#FFDCA1] border border-primary/30 flex items-center gap-1.5 shadow-sm">
                               <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
                               Język angielski CKE
                             </span>
@@ -4826,8 +4826,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {/* 4. WSKAZÓWKA EGZAMINATORA */}
                         {Boolean(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway || '').trim()) && (
                           <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm border bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)]">
-                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
-                              <GraduationCap className="w-4 h-4 shrink-0 text-[#FFB800]" />
+                            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
+                              <GraduationCap className="w-4 h-4 shrink-0 text-text-accent" />
                               <span>Wskazówka egzaminatora</span>
                             </div>
                             <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
@@ -4847,7 +4847,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <>
                       <section className="flex flex-col gap-2.5">
                         <div className="flex flex-col items-start gap-1">
-                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
                             <span>ESENCJA POJĘCIA CKE</span>
                           </div>
@@ -4856,9 +4856,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       </section>
 
                       {theoryPill?.plain_polish && (
-                        <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-2 border bg-[#1A1811] border-[#FFB800]/25 shadow-sm">
+                        <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-2 border bg-[#1A1811] border-primary/25 shadow-sm">
                           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300">
-                            <BookOpen className="w-4 h-4 text-[#FFB800]" />
+                            <BookOpen className="w-4 h-4 text-text-accent" />
                             <span>Z polskiego na nasze (Intuicja bez żargonu)</span>
                           </div>
                           <div className="text-sm sm:text-base text-amber-100/90 leading-relaxed font-medium">
@@ -4869,14 +4869,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                       {theoryPill?.algorithm_steps && theoryPill.algorithm_steps.length > 0 && (
                         <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-3 border bg-[#121B2C] border-white/10 shadow-sm">
-                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
-                            <Zap className="w-4 h-4 text-[#FFB800]" />
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
+                            <Zap className="w-4 h-4 text-text-accent" />
                             <span>Algorytm postępowania CKE (Krok po kroku)</span>
                           </div>
                           <div className="space-y-2.5">
                             {theoryPill.algorithm_steps.map((st: any, sIdx: number) => (
                               <div key={sIdx} className="p-3.5 rounded-xl bg-[#090D15] border border-white/5 flex items-start gap-3">
-                                <span className="w-6 h-6 rounded-lg bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                                <span className="w-6 h-6 rounded-lg bg-[#FFB800]/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                                   {st.stepNumber || sIdx + 1}
                                 </span>
                                 <div className="min-w-0 flex-1 space-y-0.5">
@@ -4885,7 +4885,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                     <MathRenderer content={st.description} />
                                   </p>
                                   {st.tip && (
-                                    <div className="text-[11px] text-[#FFB800] font-medium pt-0.5">
+                                    <div className="text-[11px] text-text-accent font-medium pt-0.5">
                                       <span>💡 Wskazówka: </span>
                                       <MathRenderer content={st.tip} />
                                     </div>
@@ -4899,8 +4899,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                       {Boolean(sanitizeExaminerTip(theoryPill?.matura_context || theoryPill?.keyTakeaway || '').trim()) && (
                         <section className="rounded-2xl p-4 sm:p-5 flex flex-col gap-2.5 shadow-sm border bg-gradient-to-br from-[#1C170E]/80 via-slate-900/80 to-slate-900/90 border-amber-500/30 shadow-[0_4px_20px_rgba(255,184,0,0.06)]">
-                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFB800]">
-                            <GraduationCap className="w-4 h-4 shrink-0 text-[#FFB800]" />
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-text-accent">
+                            <GraduationCap className="w-4 h-4 shrink-0 text-text-accent" />
                             <span>Wskazówka egzaminatora</span>
                           </div>
                           <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
@@ -4938,7 +4938,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {/* Nagłówek sekcji leksykonu Bento */}
                         <div className="flex items-center justify-between px-1">
                           <div className="flex items-center gap-2 text-amber-300 text-xs font-semibold uppercase tracking-wider">
-                            <BookmarkCheck className="w-4 h-4 text-[#FFB800]" />
+                            <BookmarkCheck className="w-4 h-4 text-text-accent" />
                             <span>Kluczowe pojęcia maturalne (Bento CKE)</span>
                           </div>
                           <span className="text-[10px] font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1">
@@ -5093,7 +5093,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <section className="w-full flex flex-col gap-3.5">
                         <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
                           <div className="flex items-center gap-2.5">
-                            <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 bg-amber-500/15 text-[#FFB800] border-amber-500/30">
+                            <div className="w-7 h-7 rounded-lg flex items-center justify-center border shadow-sm shrink-0 bg-amber-500/15 text-text-accent border-amber-500/30">
                               <BookOpen className="w-4 h-4" />
                             </div>
                             <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
@@ -5122,13 +5122,13 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               return (
                                 <div
                                   key={fIdx}
-                                  className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-white/10 hover:border-[#FFB800]/30 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-3 group"
+                                  className="rounded-2xl p-4 sm:p-5 bg-[#0E1522] border border-white/10 hover:border-primary/30 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.35)] flex flex-col gap-3 group"
                                 >
                                   {/* Nagłówek: Numer, Tytuł i Karta wzorów */}
                                   {item.title && (
                                     <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5 flex-wrap">
                                       <div className="flex items-center gap-2">
-                                        <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
+                                        <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-primary/25 text-[10px] font-mono font-bold text-text-accent flex items-center justify-center shrink-0">
                                           {String(fIdx + 1).padStart(2, '0')}
                                         </span>
                                         <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
@@ -5192,7 +5192,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                       <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block">
                                         Przykład zastosowania:
                                       </span>
-                                      <div className="w-full py-2.5 px-3 bg-[#070A0F] border border-white/5 rounded-xl text-center overflow-x-auto max-w-full">
+                                      <div className="w-full py-2.5 px-3 bg-surface-bg border border-white/5 rounded-xl text-center overflow-x-auto max-w-full">
                                         <div className="inline-block min-w-full text-center">
                                           <MathRenderer content={item.example} />
                                         </div>
@@ -5283,7 +5283,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
                         {theoryPill?.formula_notes && (
                           <div className="mt-1 text-xs sm:text-sm text-slate-300 border-t border-slate-800/80 pt-3 leading-relaxed">
-                            <span className="text-[11px] font-semibold text-[#FFB800] block mb-1">
+                            <span className="text-[11px] font-semibold text-text-accent block mb-1">
                               Wskazówka
                             </span>
                             {renderMicroContent(theoryPill.formula_notes)}
@@ -5469,7 +5469,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                       ? 'bg-rose-500/15 text-rose-400 border-rose-500/30' 
                                       : isEnglishSession 
                                         ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' 
-                                        : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
+                                        : 'bg-amber-500/15 text-text-accent border-amber-500/30'
                                   }`}>
                                     <FileText className="w-4 h-4" />
                                   </div>
@@ -5494,11 +5494,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                   isPolishSession
                                     ? 'bg-amber-500/[0.04] border-amber-500/30'
                                     : isEnglishSession
-                                      ? 'bg-[#0E1522] border-[#FFB800]/25'
+                                      ? 'bg-[#0E1522] border-primary/25'
                                       : 'bg-[#0E1522] border-white/10'
                                 }`}>
                                   <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider block ${
-                                    isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-[#FFDCA1]' : 'text-[#FFB800]'
+                                    isPolishSession ? 'text-amber-300' : isEnglishSession ? 'text-[#FFDCA1]' : 'text-text-accent'
                                   }`}>
                                     {isPolishSession ? polishSectionLabel : 'Treść zadania'}
                                   </span>
@@ -5543,7 +5543,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                                                 ? 'bg-rose-500/15 text-rose-300 border-rose-500/30' 
                                                 : isEnglishSession 
                                                   ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' 
-                                                  : 'bg-amber-500/15 text-[#FFB800] border-amber-500/30'
+                                                  : 'bg-amber-500/15 text-text-accent border-amber-500/30'
                                             }`}>
                                               Krok {st.num}
                                             </span>
@@ -5920,11 +5920,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-[#FFB800]/50 shadow-md shadow-black/20 flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
+                className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#151D2C] via-[#101726] to-[#0E1420] border border-primary/50 shadow-md shadow-black/20 flex flex-col items-center text-center my-3 relative overflow-hidden animate-pulse"
               >
-                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB800]/30 to-amber-600/40 border border-[#FFB800]/60 flex items-center justify-center mb-3 shadow-sm">
-                  <Loader2 className="w-7 h-7 text-[#FFB800] animate-spin shrink-0" />
-                  <div className="absolute inset-0 rounded-2xl border border-[#FFB800]/40 animate-ping opacity-25" />
+                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB800]/30 to-amber-600/40 border border-primary/60 flex items-center justify-center mb-3 shadow-sm">
+                  <Loader2 className="w-7 h-7 text-text-accent animate-spin shrink-0" />
+                  <div className="absolute inset-0 rounded-2xl border border-primary/40 animate-ping opacity-25" />
                 </div>
                 <h4 className="font-bold text-white text-base sm:text-lg mb-1">
                   Egzaminator AI analizuje Twoje rozwiązanie...
@@ -5949,7 +5949,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {/* Header: Egzaminator CKE + Score Badge */}
                 <div className="flex items-center justify-between gap-3 flex-wrap pb-3 border-b border-white/5">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center text-[#FFB800] shadow-sm">
+                    <div className="w-10 h-10 rounded-2xl bg-[#FFB800]/15 border border-primary/30 flex items-center justify-center text-text-accent shadow-sm">
                       <GraduationCap size={20} />
                     </div>
                     <div>
@@ -6088,7 +6088,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                    !tutorEvaluation.mentorComment?.includes(tutorEvaluation.ckeFeedback) && (
                     <div className="pt-2.5 border-t border-white/5 space-y-1">
                       <div className="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
-                        <ShieldCheck size={13} className="text-[#FFB800]" />
+                        <ShieldCheck size={13} className="text-text-accent" />
                         <span>Kryteria punktacji CKE:</span>
                       </div>
                       <div className="text-xs text-slate-300 leading-relaxed">
@@ -6155,7 +6155,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     className="w-full p-3.5 flex items-center justify-between text-left text-xs sm:text-sm font-semibold text-slate-200 hover:bg-slate-800/60 transition-colors cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
-                      <BookOpen size={16} className="text-[#FFB800]" />
+                      <BookOpen size={16} className="text-text-accent" />
                       <span>Wzorcowe rozwiązanie (krok po kroku)</span>
                     </span>
                     <span className="text-xs text-slate-400 font-normal">
@@ -6168,7 +6168,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         <div className="space-y-2 pt-3">
                           {currentTask.modelSolutionSteps.map((step: any, sIdx: number) => (
                             <div key={sIdx} className="p-3 rounded-xl bg-slate-950/70 border border-white/5">
-                              <span className="text-xs font-bold text-[#FFB800] block mb-1">
+                              <span className="text-xs font-bold text-text-accent block mb-1">
                                 Krok {step.step_num}: {step.description}
                               </span>
                               {step.latex && <MathRenderer content={`$${step.latex}$`} />}
@@ -6272,7 +6272,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     let cardClass = 'group relative flex flex-col p-3.5 sm:p-4 rounded-2xl border transition-all duration-200 cursor-pointer text-left select-none min-h-[64px] sm:min-h-[72px] justify-center ';
                     if (!isEvaluated) {
                       if (isOptSelected) {
-                        cardClass += 'bg-[#FFB800]/10 border-[#FFB800] shadow-sm ring-2 ring-[#FFB800]/20';
+                        cardClass += 'bg-[#FFB800]/10 border-primary shadow-sm ring-2 ring-primary/20';
                       } else {
                         cardClass += 'bg-[#0E1522]/90 hover:bg-[#141D2E] border-white/[0.06] hover:border-white/[0.14] text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.25)]';
                       }
@@ -6377,7 +6377,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         } flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
                       >
                         <div className="flex items-start gap-2.5 flex-1 min-w-0">
-                          <span className="shrink-0 w-6 h-6 rounded-lg bg-[#141D2E] border border-white/[0.08] text-[#FFB800] font-bold text-xs flex items-center justify-center mt-0.5">
+                          <span className="shrink-0 w-6 h-6 rounded-lg bg-[#141D2E] border border-white/[0.08] text-text-accent font-bold text-xs flex items-center justify-center mt-0.5">
                             {idx + 1}
                           </span>
                           <div className="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed break-words flex-1">
@@ -6448,8 +6448,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
           >
             {/* Część 1 */}
             <div className="p-4 rounded-2xl bg-[#0E1522]/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
-              <div className="text-xs sm:text-sm font-semibold text-[#FFB800] flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">1</span>
+              <div className="text-xs sm:text-sm font-semibold text-text-accent flex items-center gap-1.5">
+                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-text-accent text-xs flex items-center justify-center font-bold">1</span>
                 <span>{currentTask?.part_1?.prompt || 'Wybierz pierwszą część zdania:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -6462,7 +6462,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm cursor-pointer ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/[0.08] border-[#FFB800] text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                      ? 'bg-[#FFB800]/[0.08] border-primary text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
                       : 'bg-[#141D2E]/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] text-slate-200';
                   } else {
                     if (isOptionCorrect) {
@@ -6510,8 +6510,8 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
 
             {/* Część 2 */}
             <div className="p-4 rounded-2xl bg-[#0E1522]/90 border border-white/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.25)] space-y-2.5">
-              <div className="text-xs sm:text-sm font-semibold text-[#FFB800] flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-[#FFB800] text-xs flex items-center justify-center font-bold">2</span>
+              <div className="text-xs sm:text-sm font-semibold text-text-accent flex items-center gap-1.5">
+                <span className="w-5 h-5 rounded-full bg-[#FFB800]/20 text-text-accent text-xs flex items-center justify-center font-bold">2</span>
                 <span>{currentTask?.part_2?.prompt || 'Wybierz drugą część zdania / uzasadnienie:'}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -6524,7 +6524,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                   let btnClass = 'p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all text-xs sm:text-sm cursor-pointer ';
                   if (!isEvaluated) {
                     btnClass += isSelected 
-                      ? 'bg-[#FFB800]/[0.08] border-[#FFB800] text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
+                      ? 'bg-[#FFB800]/[0.08] border-primary text-amber-100 shadow-[0_0_15px_rgba(255,184,0,0.15)]'
                       : 'bg-[#141D2E]/80 border-white/[0.06] hover:border-white/[0.14] hover:bg-[#141D2E] text-slate-200';
                   } else {
                     if (isOptionCorrect) {
@@ -6611,7 +6611,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 if (isSelected && !isEvaluated) {
                   cardStyle = isPolishSession
                     ? 'bg-[#F43F5E]/[0.08] border-[#F43F5E] shadow-[0_0_20px_rgba(244,63,94,0.18)] text-white'
-                    : 'bg-[#FFB800]/[0.08] border-[#FFB800] shadow-[0_0_20px_rgba(255,184,0,0.18)] text-white';
+                    : 'bg-[#FFB800]/[0.08] border-primary shadow-[0_0_20px_rgba(255,184,0,0.18)] text-white';
                 } else if (isEvaluated) {
                   if (isOptionCorrect) {
                     cardStyle = 'border-emerald-500 bg-emerald-950/40 text-emerald-100 shadow-[0_0_20px_rgba(16,185,129,0.2)]';
@@ -6699,10 +6699,10 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
       {isTheoryStep && (
         <footer 
           id="session-theory-sticky-cta"
-          className="w-full shrink-0 sticky bottom-0 z-30 bg-[#070A0F]/95 backdrop-blur-md border-t border-white/[0.06] px-4 py-3 relative"
+          className="w-full shrink-0 sticky bottom-0 z-30 bg-surface-bg/95 backdrop-blur-md border-t border-white/[0.06] px-4 py-3 relative"
         >
           {/* Subtelny gradient maskujący na krawędzi górnej paska CTA */}
-          <div className="absolute -top-6 left-0 right-0 h-6 pointer-events-none bg-gradient-to-t from-[#070A0F]/95 to-transparent" aria-hidden="true" />
+          <div className="absolute -top-6 left-0 right-0 h-6 pointer-events-none bg-gradient-to-t from-surface-bg/95 to-transparent" aria-hidden="true" />
           <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex items-center gap-2">
             {theorySubStep > 0 && (
               <button
@@ -6769,7 +6769,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
             /* Normal Action Bar */
             <div 
               id="session-check-bar"
-              className="w-full bg-[#070A0F]/95 backdrop-blur-md border-t border-white/[0.06] px-4 py-3 sm:py-4"
+              className="w-full bg-surface-bg/95 backdrop-blur-md border-t border-white/[0.06] px-4 py-3 sm:py-4"
             >
               <div className="w-full max-w-3xl lg:max-w-4xl mx-auto flex flex-col items-center gap-2">
                 <div className="flex items-center gap-3 w-full">
@@ -6945,7 +6945,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     <button
                       type="button"
                       onClick={() => setShowExplanation(prev => !prev)}
-                      className="tap-44 mt-1.5 px-2.5 py-1 -ml-0.5 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/30 text-xs font-bold text-[#FFB800] hover:bg-[#FFB800]/20 flex items-center gap-1 cursor-pointer transition whitespace-nowrap w-fit"
+                      className="tap-44 mt-1.5 px-2.5 py-1 -ml-0.5 rounded-lg bg-[#FFB800]/10 border border-primary/30 text-xs font-bold text-text-accent hover:bg-[#FFB800]/20 flex items-center gap-1 cursor-pointer transition whitespace-nowrap w-fit"
                     >
                       <BookOpen size={13} />
                       <span>Zobacz wyjaśnienie {showExplanation ? '▴' : '▾'}</span>
@@ -6997,9 +6997,9 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               <div className="w-10 h-1 rounded-full bg-white/20 mx-auto my-2 sm:hidden shrink-0" aria-hidden="true" />
 
               {/* Modal Header */}
-              <div className="p-4 sm:p-5 border-b border-white/[0.06] flex items-center justify-between bg-[#070A0F]/60 shrink-0">
+              <div className="p-4 sm:p-5 border-b border-white/[0.06] flex items-center justify-between bg-surface-bg/60 shrink-0">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-[#FFB800]">
+                  <div className="w-8 h-8 rounded-lg bg-[#FFB800]/10 border border-primary/20 flex items-center justify-center text-text-accent">
                     <BookOpen size={18} />
                   </div>
                   <div>
@@ -7037,7 +7037,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {(currentTask?.explanationPlot || currentTask?.explanationDiagram || currentTask?.explanationNumberLine) && (
                   <div className="p-3 sm:p-4 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2 flex flex-col items-center">
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider self-start flex items-center gap-1.5">
-                      <Target size={14} className="text-[#FFB800]" />
+                      <Target size={14} className="text-text-accent" />
                       <span>Wykres wyjaśniający (rozwiązanie CKE):</span>
                     </span>
                     <div className="w-full flex justify-center overflow-x-auto py-1">
@@ -7053,7 +7053,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 {/* Metodyczne wyjaśnienie zadania */}
                 {currentTask?.explanation && (
                   <div className="p-4 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-2">
-                    <span className="text-xs font-bold text-[#FFB800] uppercase tracking-wider block">
+                    <span className="text-xs font-bold text-text-accent uppercase tracking-wider block">
                       Krok po kroku:
                     </span>
                     <div className="text-xs sm:text-sm text-slate-200 leading-relaxed overflow-x-auto max-w-full">
@@ -7175,7 +7175,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                 <div className="flex items-center gap-2.5">
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${
                     isAiHintTask 
-                      ? 'bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800]' 
+                      ? 'bg-[#FFB800]/10 border border-primary/30 text-text-accent' 
                       : 'bg-amber-500/10 border border-amber-500/30 text-amber-400'
                   }`}>
                     <Lightbulb size={18} />
@@ -7203,14 +7203,14 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Sheet Content */}
               <div className="p-4 sm:p-5 overflow-y-auto space-y-4">
                 {isAiHintLoading ? (
-                  <div className="p-6 rounded-2xl bg-slate-900/80 border border-[#FFB800]/30 flex flex-col items-center justify-center gap-3 text-center">
-                    <Loader2 className="w-7 h-7 text-[#FFB800] animate-spin" />
+                  <div className="p-6 rounded-2xl bg-slate-900/80 border border-primary/30 flex flex-col items-center justify-center gap-3 text-center">
+                    <Loader2 className="w-7 h-7 text-text-accent animate-spin" />
                     <p className="text-sm text-amber-200/90 font-medium">AI Tutor analizuje Twój tok myślenia...</p>
                   </div>
                 ) : isAiHintTask ? (
-                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-amber-950/20 border border-[#FFB800]/30 shadow-lg space-y-3">
-                    <div className="flex items-center gap-2 text-[#FFB800] text-xs font-bold uppercase tracking-wider">
-                      <Lightbulb className="w-4 h-4 text-[#FFB800] shrink-0" />
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-950/30 via-slate-900/90 to-amber-950/20 border border-primary/30 shadow-lg space-y-3">
+                    <div className="flex items-center gap-2 text-text-accent text-xs font-bold uppercase tracking-wider">
+                      <Lightbulb className="w-4 h-4 text-text-accent shrink-0" />
                       <span>Tok myślenia & Wskazówka</span>
                     </div>
                     <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
@@ -7321,7 +7321,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
               {/* Drawer Header */}
               <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#111724]/90 shrink-0">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#FFB800]">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm bg-[#FFB800]/15 border border-primary/30 text-text-accent">
                     <BookOpen className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
@@ -7329,7 +7329,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                       <h3 className="font-bold text-white text-base sm:text-lg tracking-tight truncate">
                         {isPolishSession ? 'Leksykon Pojęć & Złote Zasady' : `Karta Wzorów • ${departmentNameOnly}`}
                       </h3>
-                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/25">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 bg-[#FFB800]/15 text-text-accent border border-primary/25">
                         Formuła 2023
                       </span>
                     </div>
@@ -7387,7 +7387,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                           ? `Szukaj we wzorach z: ${departmentNameOnly}...` 
                           : 'Szukaj we wszystkich wzorach CKE (np. delta, potęgi, sinus)...'
                       }
-                      className="w-full bg-[#111724] border border-white/10 focus:border-[#FFB800]/50 rounded-xl pl-8 pr-8 py-1.5 text-xs text-white placeholder-slate-500 outline-none transition"
+                      className="w-full bg-[#111724] border border-white/10 focus:border-primary/50 rounded-xl pl-8 pr-8 py-1.5 text-xs text-white placeholder-slate-500 outline-none transition"
                     />
                     {formulaSearchQuery && (
                       <button
@@ -7490,11 +7490,11 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                     {drawerFormulas.map((f, i) => (
                       <div 
                         key={f.id || i} 
-                        className="formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-[#FFB800]/30 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col gap-3 shadow-sm"
+                        className="formula-sheet-card bg-[#111726]/80 hover:bg-[#141C2E] border border-white/5 hover:border-primary/30 rounded-2xl p-4 sm:p-5 transition-all duration-200 flex flex-col gap-3 shadow-sm"
                       >
                         <div className="flex items-center justify-between gap-2 flex-wrap">
                           <div className="flex items-center gap-2">
-                            <span className="w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#FFB800]/10 border border-[#FFB800]/25 text-[#FFB800]">
+                            <span className="w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#FFB800]/10 border border-primary/25 text-text-accent">
                               {String(i + 1).padStart(2, '0')}
                             </span>
                             <span className="text-xs sm:text-sm font-bold text-slate-100 tracking-wide">
@@ -7507,7 +7507,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                               <span>Karta wzorów: {typeof f.cke_page === 'number' || !String(f.cke_page).startsWith('str') ? `str. ${f.cke_page}` : f.cke_page}</span>
                             </span>
                           ) : (
-                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 text-[#FFB800]/80 bg-[#FFB800]/10 border border-[#FFB800]/20">
+                            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 text-text-accent/80 bg-[#FFB800]/10 border border-primary/20">
                               {isPolishSession ? 'Leksykon' : 'Wzór maturalny'}
                             </span>
                           )}
@@ -7567,7 +7567,7 @@ export const SessionRunner: React.FC<SessionRunnerProps> = ({
                         {/* Szkic geometryczny (opcjonalny, bezpośrednie renderowanie CKE) */}
                         {f.diagram && (
                           <div className="pt-2">
-                            <div className="rounded-xl border border-white/10 bg-[#070A0F] p-2.5 sm:p-3 shadow-inner overflow-hidden">
+                            <div className="rounded-xl border border-white/10 bg-surface-bg p-2.5 sm:p-3 shadow-inner overflow-hidden">
                               {'intervals' in f.diagram ? (
                                 <NumberLineDiagram data={f.diagram as any} height={120} />
                               ) : (

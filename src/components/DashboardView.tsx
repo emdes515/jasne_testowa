@@ -825,7 +825,7 @@ export function DashboardView({
           >
             <div className="flex items-center justify-center mb-2.5 px-0.5">
               <div className="flex items-center gap-2">
-                <BarChart3 size={15} className="text-[#FFB800]" />
+                <BarChart3 size={15} className="text-text-accent" />
                 <h3 className="text-sm font-bold text-slate-200 text-center">
                   Twoje postępy
                 </h3>

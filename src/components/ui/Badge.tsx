@@ -34,9 +34,9 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const variantStyles: Record<BadgeVariant, string> = {
-    primary: 'bg-[#FFB800]/12 text-[#FFB800] border-[#FFB800]/30 shadow-[0_0_10px_rgba(255,184,0,0.12)]',
-    amber: 'bg-[#FFB800]/12 text-[#FFB800] border-[#FFB800]/30 shadow-[0_0_10px_rgba(255,184,0,0.12)]',
-    jasne: 'bg-[#FFB800]/12 text-[#FFB800] border-[#FFB800]/30 shadow-[0_0_10px_rgba(255,184,0,0.12)]',
+    primary: 'bg-[#FFB800]/12 text-text-accent border-primary/30 shadow-[0_0_10px_rgba(255,184,0,0.12)]',
+    amber: 'bg-[#FFB800]/12 text-text-accent border-primary/30 shadow-[0_0_10px_rgba(255,184,0,0.12)]',
+    jasne: 'bg-[#FFB800]/12 text-text-accent border-primary/30 shadow-[0_0_10px_rgba(255,184,0,0.12)]',
     secondary: 'bg-[#2563EB]/15 text-[#93C5FD] border-[#2563EB]/35',
     blue: 'bg-[#38BDF8]/12 text-[#38BDF8] border-[#38BDF8]/30',
     success: 'bg-[#10B981]/15 text-[#34D399] border-[#10B981]/30 shadow-[0_0_10px_rgba(16,185,129,0.12)]',

@@ -871,9 +871,9 @@ export function TaskView({
             className="w-full grid grid-cols-3 gap-3 mb-5 max-w-sm sm:max-w-md"
           >
             {/* XP Card */}
-            <div className="bg-[#141C28] border border-[#FFB800]/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
-              <div className="w-8 h-8 rounded-xl bg-[#FFB800]/15 border border-[#FFB800]/30 flex items-center justify-center mb-1.5 text-[#FFB800]">
-                <Zap size={16} className="fill-[#FFB800] text-[#FFB800]" />
+            <div className="bg-[#141C28] border border-primary/30 rounded-2xl p-3.5 flex flex-col items-center justify-center min-h-[96px] shadow-sm">
+              <div className="w-8 h-8 rounded-xl bg-[#FFB800]/15 border border-primary/30 flex items-center justify-center mb-1.5 text-text-accent">
+                <Zap size={16} className="fill-[#FFB800] text-text-accent" />
               </div>
               <span className="text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">+{totalEarnedXp}</span>
               <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider mt-0.5">
@@ -973,12 +973,12 @@ export function TaskView({
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="w-20 h-20 rounded-3xl bg-[#FFB800]/15 border-2 border-[#FFB800] text-[#FFB800] flex items-center justify-center shadow-[0_0_30px_rgba(255,184,0,0.25)] mb-5"
+            className="w-20 h-20 rounded-3xl bg-[#FFB800]/15 border-2 border-primary text-text-accent flex items-center justify-center shadow-[0_0_30px_rgba(255,184,0,0.25)] mb-5"
           >
             <RotateCcw size={40} className="animate-spin-slow" />
           </motion.div>
 
-          <span className="text-xs font-black uppercase text-[#FFB800] tracking-widest px-3 py-1 rounded-full bg-[#FFB800]/10 border border-[#FFB800]/20 mb-3">
+          <span className="text-xs font-black uppercase text-text-accent tracking-widest px-3 py-1 rounded-full bg-[#FFB800]/10 border border-primary/20 mb-3">
             Faza Poprawkowa
           </span>
 
@@ -1001,7 +1001,7 @@ export function TaskView({
               </span>
             </div>
             <p className="text-xs text-[#9CA3AF] leading-relaxed">
-              Za każdą udaną poprawkę otrzymujesz <span className="text-[#FFB800] font-bold">+5 XP</span> oraz odblokowujesz oficjalny Ekran Sukcesu z gwiazdkami.
+              Za każdą udaną poprawkę otrzymujesz <span className="text-text-accent font-bold">+5 XP</span> oraz odblokowujesz oficjalny Ekran Sukcesu z gwiazdkami.
             </p>
           </div>
         </div>
@@ -1030,7 +1030,7 @@ export function TaskView({
     const isLastCard = currentTheoryIndex === cards.length - 1;
 
     return (
-      <div className="fixed inset-0 z-50 bg-[#070A0F]/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
+      <div className="fixed inset-0 z-50 bg-surface-bg/90 backdrop-blur-xl flex items-center justify-center p-0 md:p-6 lg:p-8 overflow-hidden">
         <div className="w-full h-full h-[100dvh] md:h-[90vh] md:max-h-[850px] md:max-w-[760px] bg-surface-bg md:rounded-[32px] md:border md:border-surface-border md:shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(255,184,0,0.06)] flex flex-col justify-start items-stretch overflow-hidden relative">
           <header className="shrink-0 px-4 pt-3.5 pb-3 border-b border-surface-border bg-surface-elevated flex items-center justify-between z-20">
           <button 
@@ -1041,7 +1041,7 @@ export function TaskView({
           </button>
 
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-black uppercase tracking-wider text-[#FFB800] bg-[#FFB800]/10 border border-[#FFB800]/20 px-2.5 py-1 rounded-full flex items-center gap-1">
+            <span className="text-[10px] font-black uppercase tracking-wider text-text-accent bg-[#FFB800]/10 border border-primary/20 px-2.5 py-1 rounded-full flex items-center gap-1">
               <BookOpen size={12} />
               <span>{theoryItem.topic || 'Pigułka wiedzy'}</span>
             </span>
@@ -1074,8 +1074,8 @@ export function TaskView({
                       </>
                     ) : (
                       <>
-                        <Lightbulb size={14} className="text-[#FFB800]" />
-                        <span className="text-[#FFB800] font-black uppercase tracking-wider">{currentCard.badge || 'Kluczowa Reguła'}</span>
+                        <Lightbulb size={14} className="text-text-accent" />
+                        <span className="text-text-accent font-black uppercase tracking-wider">{currentCard.badge || 'Kluczowa Reguła'}</span>
                       </>
                     )}
                   </div>
@@ -1108,7 +1108,7 @@ export function TaskView({
                   <div className="flex flex-col gap-3.5 w-full my-auto">
                     {currentCard.concept_essence && (
                       <div className="p-4 sm:p-5 rounded-2xl bg-[#0F1622] border border-white/10 text-white/95 text-sm sm:text-base leading-relaxed break-words">
-                        <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1.5">
+                        <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1.5">
                           W pigułce:
                         </span>
                         <MathRenderer
@@ -1146,7 +1146,7 @@ export function TaskView({
                     )}
                     {currentCard.matura_context && (
                       <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-slate-300 text-xs sm:text-sm leading-relaxed break-words">
-                        <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1">
+                        <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1">
                           Wskazówka egzaminacyjna:
                         </span>
                         <MathRenderer content={currentCard.matura_context} className="leading-relaxed" />
@@ -1161,12 +1161,12 @@ export function TaskView({
                         {currentCard.structuredFormulas.map((item, idx) => (
                           <div
                             key={idx}
-                            className="w-full bg-[#0B101B] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-2 shadow-inner hover:border-[#FFB800]/30 transition-all"
+                            className="w-full bg-[#0B101B] border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col gap-2 shadow-inner hover:border-primary/30 transition-all"
                           >
                             {item.title && (
                               <div className="flex items-center justify-between border-b border-white/5 pb-2">
                                 <div className="flex items-center gap-2">
-                                  <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-[#FFB800]/25 text-[10px] font-mono font-bold text-[#FFB800] flex items-center justify-center shrink-0">
+                                  <span className="w-5 h-5 rounded-md bg-[#FFB800]/10 border border-primary/25 text-[10px] font-mono font-bold text-text-accent flex items-center justify-center shrink-0">
                                     {String(idx + 1).padStart(2, '0')}
                                   </span>
                                   <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
@@ -1180,7 +1180,7 @@ export function TaskView({
                             </div>
                             {item.description && (
                               <div className="mt-1 pt-2.5 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed text-left flex items-start gap-2.5 bg-white/[0.02] -mx-2 px-3 py-2 rounded-xl">
-                                <Info className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
+                                <Info className="w-4 h-4 text-text-accent shrink-0 mt-0.5" />
                                 <div className="w-full font-normal">
                                   <MathRenderer content={item.description} className="leading-relaxed" />
                                 </div>
@@ -1207,7 +1207,7 @@ export function TaskView({
                   /* Card Type: example (Worked example krok po kroku) */
                   <div className="flex flex-col gap-3 w-full my-auto text-left min-w-0 max-w-full overflow-hidden">
                     <div className="p-3.5 sm:p-4 rounded-xl bg-[#0F1622] border border-white/10 min-w-0 max-w-full overflow-hidden">
-                      <span className="text-[11px] font-bold text-[#FFB800] uppercase tracking-wider block mb-1">
+                      <span className="text-[11px] font-bold text-text-accent uppercase tracking-wider block mb-1">
                         Zadanie z arkusza:
                       </span>
                       <div className="text-xs sm:text-sm font-medium text-white leading-relaxed min-w-0 max-w-full break-words">
@@ -1218,7 +1218,7 @@ export function TaskView({
                     <div className="space-y-2">
                       {currentCard.worked_example.step1 && (
                         <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
-                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             1
                           </span>
                           <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
@@ -1229,7 +1229,7 @@ export function TaskView({
 
                       {currentCard.worked_example.step2 && (
                         <div className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
-                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                             2
                           </span>
                           <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
@@ -1243,11 +1243,11 @@ export function TaskView({
                         const stepContent = st?.explanation || st?.text || (typeof st === 'string' ? st : '');
                         return (
                           <div key={stepNum} className="p-3 rounded-xl bg-white/[0.02] border border-white/10 flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 min-w-0 max-w-full overflow-hidden">
-                            <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-[#FFB800] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            <span className="w-5 h-5 rounded-md bg-[#FFB800]/20 text-text-accent font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                               {stepNum}
                             </span>
                             <div className="flex-1 leading-relaxed min-w-0 max-w-full break-words">
-                              {st?.label && <span className="block text-[11px] font-bold text-[#FFB800] mb-0.5">{st.label}</span>}
+                              {st?.label && <span className="block text-[11px] font-bold text-text-accent mb-0.5">{st.label}</span>}
                               <MathRenderer content={stepContent} />
                             </div>
                           </div>
@@ -1507,7 +1507,7 @@ export function TaskView({
                   triggerHaptic('light');
                   setIsScratchpadOpen(true);
                 }}
-                className="flex items-center gap-1.5 text-xs font-bold text-[#FFB800] hover:text-[#FFC72C] bg-[#FFB800]/10 hover:bg-[#FFB800]/15 border border-[#FFB800]/25 px-2.5 py-1 rounded-xl transition-all active:scale-95 shadow-[0_0_12px_rgba(255,184,0,0.1)]"
+                className="flex items-center gap-1.5 text-xs font-bold text-text-accent hover:text-[#FFC72C] bg-[#FFB800]/10 hover:bg-[#FFB800]/15 border border-primary/25 px-2.5 py-1 rounded-xl transition-all active:scale-95 shadow-[0_0_12px_rgba(255,184,0,0.1)]"
               >
                 <PenTool size={12} />
                 <span>Brudnopis</span>
@@ -1563,8 +1563,8 @@ export function TaskView({
 
               if (!isEvaluated) {
                 if (isSelected) {
-                  cardClasses += "bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.2)] scale-[1.01]";
-                  badgeClasses += "bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]";
+                  cardClasses += "bg-[#FFB800]/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.2)] scale-[1.01]";
+                  badgeClasses += "bg-[#FFB800] text-[#080B11] font-bold border-primary";
                 } else {
                   cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-white/5 hover:border-white/15 text-white/90";
                   badgeClasses += "bg-[#0F1622] text-[#8B8D98] border-white/10";
@@ -1637,8 +1637,8 @@ export function TaskView({
 
               if (!isEvaluated) {
                 if (isSelected) {
-                  cardClasses += "bg-[#FFB800]/10 border-[#FFB800] text-white shadow-[0_0_15px_rgba(255,184,0,0.2)]";
-                  checkboxClasses += "bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]";
+                  cardClasses += "bg-[#FFB800]/10 border-primary text-white shadow-[0_0_15px_rgba(255,184,0,0.2)]";
+                  checkboxClasses += "bg-[#FFB800] text-[#080B11] font-bold border-primary";
                 } else {
                   cardClasses += "bg-[#141C28] hover:bg-[#1A2434] border-white/5 hover:border-white/15 text-white/90";
                   checkboxClasses += "bg-[#0F1622] text-transparent border-white/15";
@@ -1784,7 +1784,7 @@ export function TaskView({
                       className={btnClass}
                     >
                       <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 border ${
-                        isSelected ? 'bg-[#FFB800] text-[#080B11] font-bold border-[#FFB800]' : 'bg-white/5 border-white/10 text-white/80'
+                        isSelected ? 'bg-[#FFB800] text-[#080B11] font-bold border-primary' : 'bg-white/5 border-white/10 text-white/80'
                       }`}>
                         {opt.id}
                       </span>
@@ -1972,15 +1972,15 @@ export function TaskView({
           <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col gap-3 pr-1 pb-8">
             {/* Header for solution section */}
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-black uppercase tracking-wider text-[#FFB800] flex items-center gap-1.5">
-                <BookOpen size={13} className="text-[#FFB800]" />
+              <span className="text-[11px] font-black uppercase tracking-wider text-text-accent flex items-center gap-1.5">
+                <BookOpen size={13} className="text-text-accent" />
                 {isCorrect ? 'Oficjalne rozwiązanie maturalne:' : 'Wyjaśnienie i kroki rozwiązania:'}
               </span>
               {isCorrect && solutionSteps.length > 1 && (
                 <button
                   type="button"
                   onClick={() => setShowSolutionSteps(!showSolutionSteps)}
-                  className="text-[11px] font-bold text-[#FFB800] hover:underline flex items-center gap-1"
+                  className="text-[11px] font-bold text-text-accent hover:underline flex items-center gap-1"
                 >
                   <span>{showSolutionSteps ? 'Zwiń kroki' : `Wszystkie kroki (${solutionSteps.length})`}</span>
                   {showSolutionSteps ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
@@ -2000,7 +2000,7 @@ export function TaskView({
                     {Boolean(step.title || (step.label && !step.label.toLowerCase().includes('wyjaśnienie'))) && (
                       <div className="flex items-center gap-2 flex-wrap">
                         {step.label && !step.label.toLowerCase().includes('wyjaśnienie') && (
-                          <span className="bg-[#FFB800]/15 text-[#FFB800] font-black text-[11px] px-2.5 py-0.5 rounded-md border border-[#FFB800]/30 uppercase tracking-wide shrink-0">
+                          <span className="bg-[#FFB800]/15 text-text-accent font-black text-[11px] px-2.5 py-0.5 rounded-md border border-primary/30 uppercase tracking-wide shrink-0">
                             {step.label}
                           </span>
                         )}
@@ -2064,7 +2064,7 @@ export function TaskView({
                           className="bg-[#0F1622] border border-white/10 rounded-xl p-3 flex flex-col gap-1.5 shadow-sm"
                         >
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="bg-[#FFB800]/15 text-[#FFB800] font-black text-[10px] px-2 py-0.5 rounded-md border border-[#FFB800]/30">
+                            <span className="bg-[#FFB800]/15 text-text-accent font-black text-[10px] px-2 py-0.5 rounded-md border border-primary/30">
                               {step.label}
                             </span>
                             {step.title && (
@@ -2214,7 +2214,7 @@ export function TaskView({
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-2">
                 <div className="flex items-center gap-2">
-                  <Bot size={18} className="text-[#FFB800]" />
+                  <Bot size={18} className="text-text-accent" />
                   <span className="font-display font-bold text-white text-sm sm:text-base">
                     Wskazówka Tutora (Metoda sokratejska)
                   </span>
@@ -2230,7 +2230,7 @@ export function TaskView({
 
               <div className="text-xs sm:text-sm text-white/95 leading-relaxed py-1">
                 {isAiLoading ? (
-                  <div className="flex items-center gap-2 text-[#FFB800] py-3 font-bold">
+                  <div className="flex items-center gap-2 text-text-accent py-3 font-bold">
                     <Loader2 size={16} className="animate-spin" />
                     <span>Tutor analizuje zadanie i Twoje rozumowanie...</span>
                   </div>

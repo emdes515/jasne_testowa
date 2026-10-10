@@ -154,7 +154,7 @@ export const MathPlot: React.FC<MathPlotProps> = ({
     return (
       <div className={`w-full max-w-4xl mx-auto my-3 grid ${gridCols} gap-4 select-none ${className}`}>
         {plot.panels.map((panel, idx) => (
-          <div key={`panel-${idx}`} className="flex flex-col rounded-2xl bg-[#070A0F] border border-white/10 overflow-hidden shadow-2xl p-3">
+          <div key={`panel-${idx}`} className="flex flex-col rounded-2xl bg-surface-bg border border-white/10 overflow-hidden shadow-2xl p-3">
             {panel.title && (
               <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-white/10 mb-2">
                 <span className="text-xs font-bold text-amber-200">{panel.title}</span>
@@ -296,7 +296,7 @@ export const MathPlot: React.FC<MathPlotProps> = ({
   };
 
   return (
-    <div className={`MafsView MathPlotView w-full max-w-lg mx-auto my-3 rounded-2xl bg-[#070A0F] border border-white/10 shadow-2xl overflow-hidden flex flex-col items-center select-none relative ${className}`}>
+    <div className={`MafsView MathPlotView w-full max-w-lg mx-auto my-3 rounded-2xl bg-surface-bg border border-white/10 shadow-2xl overflow-hidden flex flex-col items-center select-none relative ${className}`}>
       {/* Sonda współrzędnych CKE */}
       {interactive && hoverCoord && (
         <div className="absolute top-2.5 right-3 z-10 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-amber-400/40 text-[11px] font-mono text-amber-300 shadow-lg">
