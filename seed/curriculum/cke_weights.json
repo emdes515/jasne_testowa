@@ -9,122 +9,122 @@
       "topics": {
         "dzial-1": {
           "topicId": "dzial-1",
-          "name": "Liczby Rzeczywiste",
-          "minPoints": 4,
-          "maxPoints": 6,
-          "averagePoints": 5,
+          "name": "Liczby rzeczywiste",
+          "minPoints": 3,
+          "maxPoints": 5,
+          "averagePoints": 4,
           "importance": "CRITICAL_PEWNIAK"
         },
         "dzial-2": {
           "topicId": "dzial-2",
-          "name": "Wyrażenia Algebraiczne",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
-          "importance": "HIGH"
-        },
-        "dzial-3": {
-          "topicId": "dzial-3",
-          "name": "Równania i Nierówności",
-          "minPoints": 5,
-          "maxPoints": 7,
-          "averagePoints": 6,
-          "importance": "CRITICAL_PEWNIAK"
-        },
-        "dzial-4": {
-          "topicId": "dzial-4",
-          "name": "Własności Funkcji",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
-          "importance": "HIGH"
-        },
-        "dzial-5": {
-          "topicId": "dzial-5",
-          "name": "Funkcja Liniowa",
-          "minPoints": 3,
+          "name": "Wyrażenia algebraiczne",
+          "minPoints": 2,
           "maxPoints": 4,
           "averagePoints": 3.5,
           "importance": "HIGH"
         },
-        "dzial-6": {
-          "topicId": "dzial-6",
-          "name": "Funkcja Kwadratowa",
+        "dzial-3": {
+          "topicId": "dzial-3",
+          "name": "Równania i nierówności",
           "minPoints": 4,
           "maxPoints": 6,
           "averagePoints": 5.5,
           "importance": "CRITICAL_PEWNIAK"
         },
+        "dzial-4": {
+          "topicId": "dzial-4",
+          "name": "Funkcje i ich własności",
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 3.5,
+          "importance": "HIGH"
+        },
+        "dzial-5": {
+          "topicId": "dzial-5",
+          "name": "Funkcja liniowa i układy równań",
+          "minPoints": 2,
+          "maxPoints": 5,
+          "averagePoints": 3.5,
+          "importance": "HIGH"
+        },
+        "dzial-6": {
+          "topicId": "dzial-6",
+          "name": "Funkcja kwadratowa",
+          "minPoints": 1,
+          "maxPoints": 4,
+          "averagePoints": 3,
+          "importance": "HIGH"
+        },
         "dzial-7": {
           "topicId": "dzial-7",
-          "name": "Ciągi Liczbowe",
-          "minPoints": 4,
-          "maxPoints": 6,
-          "averagePoints": 5,
+          "name": "Ciągi liczbowe",
+          "minPoints": 3,
+          "maxPoints": 4,
+          "averagePoints": 4,
           "importance": "CRITICAL_PEWNIAK"
         },
         "dzial-8": {
           "topicId": "dzial-8",
           "name": "Trygonometria",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
+          "minPoints": 1,
+          "maxPoints": 3,
+          "averagePoints": 2.5,
           "importance": "HIGH"
         },
         "dzial-9": {
           "topicId": "dzial-9",
           "name": "Planimetria",
-          "minPoints": 5,
-          "maxPoints": 7,
-          "averagePoints": 6,
+          "minPoints": 3,
+          "maxPoints": 6,
+          "averagePoints": 4.5,
           "importance": "CRITICAL_PEWNIAK"
         },
         "dzial-10": {
           "topicId": "dzial-10",
-          "name": "Geometria Analityczna",
-          "minPoints": 3,
-          "maxPoints": 5,
+          "name": "Geometria analityczna",
+          "minPoints": 2,
+          "maxPoints": 6,
           "averagePoints": 4,
-          "importance": "HIGH"
+          "importance": "CRITICAL_PEWNIAK"
         },
         "dzial-11": {
           "topicId": "dzial-11",
           "name": "Stereometria",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
-          "importance": "MEDIUM"
+          "minPoints": 2,
+          "maxPoints": 6,
+          "averagePoints": 3.5,
+          "importance": "HIGH"
         },
         "dzial-12": {
           "topicId": "dzial-12",
           "name": "Kombinatoryka",
-          "minPoints": 2,
-          "maxPoints": 3,
-          "averagePoints": 2,
+          "minPoints": 1,
+          "maxPoints": 1,
+          "averagePoints": 1,
           "importance": "MEDIUM"
         },
         "dzial-13": {
           "topicId": "dzial-13",
-          "name": "Prawdopodobieństwo",
-          "minPoints": 3,
-          "maxPoints": 5,
-          "averagePoints": 4,
+          "name": "Rachunek prawdopodobieństwa",
+          "minPoints": 2,
+          "maxPoints": 3,
+          "averagePoints": 2.5,
           "importance": "HIGH"
         },
         "dzial-14": {
           "topicId": "dzial-14",
           "name": "Statystyka",
-          "minPoints": 2,
-          "maxPoints": 3,
-          "averagePoints": 2,
+          "minPoints": 0,
+          "maxPoints": 2,
+          "averagePoints": 1.5,
           "importance": "MEDIUM"
         },
         "dzial-15": {
           "topicId": "dzial-15",
           "name": "Optymalizacja",
-          "minPoints": 4,
-          "maxPoints": 5,
-          "averagePoints": 4,
+          "minPoints": 2,
+          "maxPoints": 4,
+          "averagePoints": 3.5,
           "importance": "HIGH"
         }
       }

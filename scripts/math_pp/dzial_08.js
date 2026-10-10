@@ -1,7 +1,7 @@
 import { T, mc, num, pf, pill, fr, par, sq, m, need, gcd, isSquare } from './lib.js';
 
 const TIP_DEF = 'Karta wzorów, str. 10: $\\sin\\alpha = \\frac{a}{c}$, $\\cos\\alpha = \\frac{b}{c}$, $\\operatorname{tg}\\alpha = \\frac{a}{b}$ ($a$ – przyprostokątna naprzeciw kąta, $b$ – przy kącie, $c$ – przeciwprostokątna).';
-const TIP_ONE = 'Karta wzorów, str. 11: $\\sin^2\\alpha + \\cos^2\\alpha = 1$ oraz $\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}$.';
+const TIP_ONE = 'Karta wzorów, str. 12: $\\sin^2\\alpha + \\cos^2\\alpha = 1$ oraz $\\operatorname{tg}\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}$.';
 const TIP_TAB = 'Karta wzorów, str. 12: tabela wartości funkcji trygonometrycznych dla kątów $30^\\circ$, $45^\\circ$, $60^\\circ$.';
 const TRIPLES = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [20, 21, 29], [9, 40, 41]];
 const deg = (x) => `${x}^\\circ`;
@@ -526,7 +526,7 @@ export default {
   color: '#F472B6',
   matura_points_range: '3–5 pkt',
   importance: 'HIGH',
-  cke_formula_page: 'str. 10–14',
+  cke_formula_page: 'str. 10–15',
   lessons: [
     {
       title: 'Sinus, cosinus i tangens w trójkącie prostokątnym',
@@ -601,8 +601,8 @@ export default {
           ['Tangens to iloraz', T`$\operatorname{tg}\alpha = \frac{5}{13} : \frac{12}{13} = \frac{5}{12}$.`, 'Mianowniki się skracają.']
         ],
         formulas: [
-          ['Jedynka trygonometryczna', T`\sin^2\alpha + \cos^2\alpha = 1`, 11],
-          ['Tangens', T`\operatorname{tg}\alpha = \frac{\sin\alpha}{\cos\alpha}`, 11]
+          ['Jedynka trygonometryczna', T`\sin^2\alpha + \cos^2\alpha = 1`, 12],
+          ['Tangens', T`\operatorname{tg}\alpha = \frac{\sin\alpha}{\cos\alpha}`, 12]
         ],
         examples: [
           ['Z pierwiastkiem', '1 pkt', T`Kąt $\alpha$ jest ostry i $\cos\alpha = \frac{1}{3}$. Oblicz $\sin\alpha$.`, T`1. $\sin^2\alpha = 1 - \frac{1}{9} = \frac{8}{9}$.` + '\n' + T`2. $\sin\alpha = \frac{\sqrt{8}}{3} = \frac{2\sqrt{2}}{3}$.`, 'Wynik nie musi być „ładnym” ułamkiem.'],

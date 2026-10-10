@@ -11,7 +11,8 @@
 // UWAGA BEZPIECZEŃSTWO: nie wyłączamy weryfikacji certyfikatów TLS.
 // W środowiskach z własnym CA (proxy firmowe) użyj NODE_EXTRA_CA_CERTS=/ścieżka/ca.pem
 process.env.FIRESTORE_PREFER_REST = 'true';
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+// Wyłączenie weryfikacji TLS tylko na wyraźne żądanie (SEED_INSECURE_TLS=1) – domyślnie połączenie jest weryfikowane.
+if (process.env.SEED_INSECURE_TLS === '1') process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const fs = require('fs');
 const path = require('path');
 const { GoogleAuth } = require('google-auth-library');
@@ -20,12 +21,23 @@ try {
   require('dotenv').config();
 } catch (e) {}
 
-const MATH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka.json');
+// Aktualny kurs matematyki (15 działów, 75 lekcji, 1500 zadań) generuje scripts/math_pp/build.js.
+// Starszy plik curriculum_matematyka.json (21 działów) pozostaje wyłącznie danymi testowymi.
+const MATH_CURRICULUM_PP_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka_pp.json');
+const MATH_CURRICULUM_PATH = fs.existsSync(MATH_CURRICULUM_PP_PATH)
+  ? MATH_CURRICULUM_PP_PATH
+  : path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka.json');
 const POLISH_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_jezyk_polski.json');
 const ENG_BASIC_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_angielski_podstawa.json');
 const MATH_ROZ_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_matematyka_rozszerzona.json');
 const ENG_ROZ_CURRICULUM_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'curriculum_angielski_rozszerzony.json');
 const PROJECT_ID = process.env.VITE_FIREBASE_PROJECT_ID || 'jasne-7efe7';
+
+// --only=<subject_id> ogranicza czyszczenie i zasilanie do jednego przedmiotu, np.
+//   node scripts/seed_database.cjs --only=matematyka-podstawowa
+// (matematyka podstawowa obejmuje też katalogi CKE i arkusze w kolekcji exams). Bez flagi: wszystkie przedmioty.
+const ONLY_SUBJECT = (process.argv.find(a => a.startsWith('--only=')) || '').split('=')[1] || null;
+const wants = (subjectId) => !ONLY_SUBJECT || ONLY_SUBJECT === subjectId;
 
 async function main() {
   console.log('====================================================');
@@ -123,8 +135,8 @@ async function main() {
   // 1. Czyszczenie starych danych
   console.log('--- Rozpoczynam czyszczenie starych danych z Cloud Firestore ---');
   try {
-    // Root topics
-    const existingTopicsSnap = await db.collection('topics').get();
+    // Root topics (archiwalna kolekcja) – tylko przy pełnym zasilaniu
+    const existingTopicsSnap = ONLY_SUBJECT ? { docs: [] } : await db.collection('topics').get();
     for (const tDoc of existingTopicsSnap.docs) {
       const lessonsSnap = await tDoc.ref.collection('lessons').get();
       for (const lDoc of lessonsSnap.docs) {
@@ -143,7 +155,7 @@ async function main() {
       'jezyk-angielski',
       'matematyka-rozszerzona',
       'jezyk-angielski-rozszerzony'
-    ];
+    ].filter(wants);
 
     for (const subId of allSubjectIds) {
       const topicsSnap = await db.collection('subjects').doc(subId).collection('topics').get();
@@ -167,7 +179,7 @@ async function main() {
   }
 
   // 2. Wgrywanie MATEMATYKI
-  if (fs.existsSync(MATH_CURRICULUM_PATH)) {
+  if (wants('matematyka-podstawowa') && fs.existsSync(MATH_CURRICULUM_PATH)) {
     console.log('--- Wgrywanie przedmiotu: MATEMATYKA PODSTAWOWA ---');
     const mathRaw = fs.readFileSync(MATH_CURRICULUM_PATH, 'utf8');
     const mathCurriculum = JSON.parse(mathRaw);
@@ -287,7 +299,7 @@ async function main() {
   }
 
   // 3. Wgrywanie JĘZYKA POLSKIEGO
-  if (fs.existsSync(POLISH_CURRICULUM_PATH)) {
+  if (wants('jezyk-polski') && fs.existsSync(POLISH_CURRICULUM_PATH)) {
     console.log('\n--- Wgrywanie przedmiotu: JĘZYK POLSKI (3 FILARY) ---');
     const polRaw = fs.readFileSync(POLISH_CURRICULUM_PATH, 'utf8');
     const polCurriculum = JSON.parse(polRaw);
@@ -414,6 +426,7 @@ async function main() {
   }
 
   async function seedStandardSubject(subjectId, filePath, fallbackMeta) {
+    if (!wants(subjectId)) return;
     if (!fs.existsSync(filePath)) {
       console.warn(`[WARN] Brak pliku ${filePath} — pomijam przedmiot ${subjectId}.`);
       return;
@@ -570,7 +583,10 @@ async function main() {
   //    żadnych wzorów ani wag.
   const CKE_FORMULAS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_formulas.json');
   const CKE_WEIGHTS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'cke_weights.json');
-  if (fs.existsSync(CKE_FORMULAS_PATH)) {
+  const seedMathCatalogs = wants('matematyka-podstawowa');
+  if (!seedMathCatalogs) {
+    // katalogi CKE i arkusze należą do matematyki podstawowej
+  } else if (fs.existsSync(CKE_FORMULAS_PATH)) {
     const ckeFormulas = JSON.parse(fs.readFileSync(CKE_FORMULAS_PATH, 'utf8'));
     safeSet(db.collection('system').doc('ckeFormulas'), {
       id: 'ckeFormulas',
@@ -584,7 +600,8 @@ async function main() {
   } else {
     console.warn('[WARN] Brak seed/curriculum/cke_formulas.json — wzory CKE pominięte.');
   }
-  if (fs.existsSync(CKE_WEIGHTS_PATH)) {
+  if (!seedMathCatalogs) {
+  } else if (fs.existsSync(CKE_WEIGHTS_PATH)) {
     const ckeWeights = JSON.parse(fs.readFileSync(CKE_WEIGHTS_PATH, 'utf8'));
     safeSet(db.collection('system').doc('ckeSubjectWeights'), {
       id: 'ckeSubjectWeights',
@@ -601,7 +618,8 @@ async function main() {
   // 6. Egzaminy maturalne (arkusze CKE) -> exams/matura-podstawowa
   //    Jedyne źródło: seed/curriculum/zadania_matura.json oraz seed/curriculum/exams/
   const MATURA_TASKS_PATH = path.resolve(__dirname, '..', 'seed', 'curriculum', 'zadania_matura.json');
-  if (fs.existsSync(MATURA_TASKS_PATH)) {
+  if (!seedMathCatalogs) {
+  } else if (fs.existsSync(MATURA_TASKS_PATH)) {
     const maturaTasks = JSON.parse(fs.readFileSync(MATURA_TASKS_PATH, 'utf8'));
     const sections = Array.from(new Set(maturaTasks.map(t => t.section).filter(Boolean)));
     safeSet(db.collection('exams').doc('matura-podstawowa'), {
@@ -621,7 +639,7 @@ async function main() {
 
   // Seeding poszczególnych 6 oficjalnych arkuszy CKE: exams/{examId}
   const EXAMS_DIR = path.resolve(__dirname, '..', 'seed', 'curriculum', 'exams');
-  if (fs.existsSync(EXAMS_DIR)) {
+  if (seedMathCatalogs && fs.existsSync(EXAMS_DIR)) {
     const examFiles = fs.readdirSync(EXAMS_DIR).filter(f => f.endsWith('.json'));
     for (const file of examFiles) {
       const examId = path.basename(file, '.json');
@@ -647,8 +665,9 @@ async function main() {
   console.log('\n====================================================');
   console.log('       MIGRACJA WIELOPRZEDMIOTOWA ZAKOŃCZONA!       ');
   console.log('====================================================');
-  console.log(`- Matematyka Podstawowa: 15 działów, 225 lekcji, 1800 zadań`);
-  console.log(`- Język Polski: 20 działów (3 Filary), lektury i wypracowania`);
+  console.log(`- Matematyka Podstawowa: 15 działów, 75 lekcji, 1500 zadań + 6 arkuszy CKE (211 zadań)`);
+  if (ONLY_SUBJECT) console.log(`- Zakres ograniczony flagą --only=${ONLY_SUBJECT}`);
+  else console.log(`- Język Polski: 20 działów (3 Filary), lektury i wypracowania`);
   console.log(`- Łącznie zapisanych działów: ${totalTopicsWritten}`);
   console.log(`- Łącznie zapisanych lekcji: ${totalLessonsWritten}`);
   console.log(`- Zrealizowanych paczek (WriteBatch): ${totalBatchesCommitted}`);

@@ -294,7 +294,7 @@ const angleIdentify = (r) => {
     (w) => T`W ostrosłupie prawidłowym czworokątnym kąt nachylenia ${w} to kąt między`,
     (w) => T`Dany jest ostrosłup prawidłowy czworokątny. Kątem nachylenia ${w} jest kąt między`,
     (w) => T`W ostrosłupie prawidłowym czworokątnym $ABCDS$ o wierzchołku $S$ kąt nachylenia ${w} jest kątem między`,
-    (w) => T`Rozważamy ostrosłup prawidłowy czworokątny. Kąt nachylenia ${w} tworzą`.replace('tworzą', 'to kąt, którego ramionami są odcinki opisane jako kąt między'),
+    (w) => T`Rozważamy ostrosłup prawidłowy czworokątny. Kątem nachylenia ${w} jest kąt między`,
     (w) => T`Podstawą ostrosłupa prawidłowego jest kwadrat. Kąt nachylenia ${w} to kąt między`,
     (w) => T`W ostrosłupie prawidłowym o podstawie kwadratowej kątem nachylenia ${w} nazywamy kąt między`,
     (w) => T`Ostrosłup prawidłowy czworokątny ma wysokość $H$ i krawędź podstawy $a$. Kąt nachylenia ${w} to kąt między`,

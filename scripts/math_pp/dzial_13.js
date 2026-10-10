@@ -1,7 +1,7 @@
 import { T, mc, num, pf, pill, fr, m, need, gcd, dec } from './lib.js';
 
 const TIP_P = 'Karta wzorów, str. 27: prawdopodobieństwo klasyczne $P(A) = \\frac{|A|}{|\\Omega|}$ – liczba wyników sprzyjających przez liczbę wszystkich wyników.';
-const TIP_OPP = 'Karta wzorów, str. 28: $P(A\') = 1 - P(A)$, gdzie $A\'$ to zdarzenie przeciwne do $A$.';
+const TIP_OPP = 'Karta wzorów, str. 27: $P(A\') = 1 - P(A)$, gdzie $A\'$ to zdarzenie przeciwne do $A$.';
 /** Opcje-ułamki: poprawna + błędne (bez duplikatów wartości, tylko z przedziału (0, 1]). */
 const frOpts = (n, d, wrong) => wrong.filter(([a, b]) => b > 0 && a > 0 && a <= b && a * d !== b * n).map(([a, b]) => m(fr(a, b)));
 const isPrime = (x) => x > 1 && Array.from({ length: Math.floor(Math.sqrt(x)) - 1 }, (_, i) => i + 2).every((k) => x % k !== 0);
@@ -368,7 +368,7 @@ const oppProperties = (r) => {
     bad: possible.map((x) => m(x)),
     steps: [T`Prawdopodobieństwo każdego zdarzenia spełnia warunek $0 \le P(A) \le 1$.`, T`Liczba $${impossible}$ nie należy do przedziału $\langle 0, 1 \rangle$, więc nie może być prawdopodobieństwem.`],
     trap: T`Liczby $0$ i $1$ SĄ możliwe: $0$ to prawdopodobieństwo zdarzenia niemożliwego, a $1$ – zdarzenia pewnego.`,
-    tip: 'Karta wzorów, str. 28: $0 \\le P(A) \\le 1$, $P(\\emptyset) = 0$, $P(\\Omega) = 1$.'
+    tip: 'Karta wzorów, str. 27: $0 \\le P(A) \\le 1$, $P(\\emptyset) = 0$, $P(\\Omega) = 1$.'
   });
 };
 const oppNotDivisible = (r) => {
@@ -414,7 +414,7 @@ export default {
   color: '#FB7185',
   matura_points_range: '2–4 pkt',
   importance: 'CRITICAL_PEWNIAK',
-  cke_formula_page: 'str. 27–28',
+  cke_formula_page: 'str. 27',
   lessons: [
     {
       title: 'Klasyczna definicja prawdopodobieństwa',
@@ -430,7 +430,7 @@ export default {
         ],
         formulas: [
           ['Prawdopodobieństwo klasyczne', T`P(A) = \frac{|A|}{|\Omega|}`, 27],
-          ['Zakres wartości', T`0 \le P(A) \le 1`, 28]
+          ['Zakres wartości', T`0 \le P(A) \le 1`, 27]
         ],
         examples: [
           ['Losowanie liczby', '1 pkt', T`Ze zbioru $\{1, 2, \ldots, 20\}$ losujemy jedną liczbę. Oblicz prawdopodobieństwo wylosowania liczby pierwszej.`, T`1. $|\Omega| = 20$.` + '\n' + T`2. Liczby pierwsze: $2, 3, 5, 7, 11, 13, 17, 19$ – osiem.` + '\n' + T`3. $P = \frac{8}{20} = \frac{2}{5}$.`, 'Liczba 1 nie jest pierwsza.'],
@@ -548,9 +548,9 @@ export default {
           ['Odejmij od jedności', T`$1 - \frac{1}{8} = \frac{7}{8}$.`, 'Wynik musi być między 0 a 1.']
         ],
         formulas: [
-          ['Zdarzenie przeciwne', T`P(A') = 1 - P(A)`, 28],
-          ['Zakres wartości', T`0 \le P(A) \le 1`, 28],
-          ['Zdarzenie pewne i niemożliwe', T`P(\Omega) = 1, \quad P(\emptyset) = 0`, 28]
+          ['Zdarzenie przeciwne', T`P(A') = 1 - P(A)`, 27],
+          ['Zakres wartości', T`0 \le P(A) \le 1`, 27],
+          ['Zdarzenie pewne i niemożliwe', T`P(\Omega) = 1, \quad P(\emptyset) = 0`, 27]
         ],
         examples: [
           ['Dwa rzuty kostką', '2 pkt', T`Oblicz prawdopodobieństwo, że w dwóch rzutach kostką co najmniej raz wypadnie szóstka.`, T`1. Ani razu szóstka: $5 \cdot 5 = 25$ wyników z $36$.` + '\n' + T`2. $P = 1 - \frac{25}{36} = \frac{11}{36}$.`, 'Wprost trzeba by liczyć trzy przypadki.'],

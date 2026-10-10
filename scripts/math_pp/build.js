@@ -111,6 +111,10 @@ for (const t of topics) {
       lintText(task.id, task.explanation, 'wyjaśnienie');
       lintText(task.id, task.matura_tip || '', 'wskazówka');
       if (!task.matura_tip) fail(`${task.id}: brak wskazówki`);
+      if (task.type === 'TRUE_FALSE') {
+        if (task.statements?.length !== 2 || !/^[PF]{2}$/.test(task.correct_answer)) fail(`${task.id}: zadanie P/F wymaga 2 stwierdzeń i klucza typu PF`);
+        (task.statements || []).forEach((st) => lintText(task.id, st.text, 'stwierdzenie'));
+      }
       if (task.type === 'SINGLE_CHOICE') {
         task.options.forEach((o) => lintText(task.id, o, 'opcja'));
         if (new Set(task.options.map((o) => o.replace(/\s+/g, ''))).size !== 4) fail(`${task.id}: powtórzone opcje`);
@@ -141,6 +145,14 @@ for (const t of topics) {
           .filter(Boolean)
           .map((line, i) => ({ num: i + 1, text: line.replace(/^\d+[.)]\s*/, '') }))
     }));
+    // „Odpowiedź końcowa” przykładu: jawne pole `result`, żeby widok nie musiał wycinać wyniku z ostatniego kroku
+    // (psuło to ograniczniki $...$ i gubiło część odpowiedzi, np. jeden z dwóch pierwiastków równania).
+    // Ostatni krok rozwiązania w całości staje się odpowiedzią końcową.
+    pl.worked_examples = pl.worked_examples.map((ex) => {
+      if (ex.result || ex.steps.length < 2) return ex;
+      const last = ex.steps[ex.steps.length - 1];
+      return { ...ex, steps: ex.steps.slice(0, -1), result: String(last.text).replace(/^Krok \d+:\s*/, '') };
+    });
     for (const ex of pl.worked_examples) if (!ex.problem || !ex.steps.length) fail(`${lessonKey}: przykład bez treści lub kroków`);
     pl.worked_example = pl.worked_examples[0];
 
@@ -189,7 +201,7 @@ const contents = new Set();
 for (const task of allTasks) {
   if (ids.has(task.id)) fail(`duplikat id ${task.id}`);
   ids.add(task.id);
-  const ck = task.content + (task.diagram ? JSON.stringify(task.diagram) : '');
+  const ck = task.content + (task.statements ? JSON.stringify(task.statements.map((st) => st.text)) : '') + (task.diagram ? JSON.stringify(task.diagram) : '');
   if (contents.has(ck)) fail(`duplikat treści ${task.id}`);
   contents.add(ck);
 }
@@ -209,7 +221,81 @@ if (!only) {
     console.error('Niepełny kurs – nie zapisuję plików wynikowych.');
     process.exit(1);
   }
+  // Punktacja działów: rzeczywisty rozkład z 6 arkuszy CKE 2023–2024 (seed/curriculum/cke_weights.json –
+  // ta sama tabela zasila predyktor wyniku), a nie szacunek wpisany ręcznie w pliku działu.
+  const weightsPath = path.resolve(OUT_DIR, '..', '..', '..', '..', 'seed', 'curriculum', 'cke_weights.json');
+  const weights = JSON.parse(fs.readFileSync(weightsPath, 'utf8')).subjects['matematyka-podstawowa'].topics;
+  for (const bp of blueprints) {
+    const w = weights[bp.id];
+    if (!w) fail(`${bp.id}: brak wag CKE w cke_weights.json`);
+    else {
+      bp.matura_points_range = w.minPoints === w.maxPoints ? `${w.maxPoints} pkt` : `${w.minPoints}–${w.maxPoints} pkt`;
+      bp.importance = w.importance === 'CRITICAL_PEWNIAK' ? 'CRITICAL_PEWNIAK' : 'HIGH';
+    }
+  }
+  if (errors.length) {
+    console.error(errors.join('\n'));
+    process.exit(1);
+  }
+
   fs.writeFileSync(path.join(OUT_DIR, 'math_blueprints.json'), JSON.stringify(blueprints, null, 1), 'utf8');
+
+  // Ten sam kurs w schemacie zasilającym Firestore (scripts/seed_database.cjs):
+  // subjects/matematyka-podstawowa/topics/{dzial}/lessons/{lekcja} z pigułką i pełną pulą 20 zadań.
+  const seedTask = (t) => ({
+    id: t.id,
+    type: t.type,
+    points: t.points,
+    maxPoints: t.points,
+    title: t.title,
+    source: 'JASNE • zadanie autorskie w stylu CKE',
+    badge: `Lekcja ${t.lessonKey}`,
+    question: t.content,
+    content: t.content,
+    math_statement: t.content,
+    ...(t.options ? { options: t.options.map((text, i) => ({ id: 'ABCD'[i], text, content_latex: text, is_correct: 'ABCD'[i] === t.correct_answer })) } : {}),
+    ...(t.statements ? { statements: t.statements } : {}),
+    correct_answer: t.correct_answer,
+    ...(t.type === 'NUMERIC_INPUT' ? { numeric_correct_answer: t.correct_answer } : {}),
+    explanation: t.explanation,
+    matura_tip: t.matura_tip,
+    hints: { level_1: t.matura_tip, level_2: (t.explanation.match(/\*\*Krok 1:\*\*\s*([\s\S]*?)(?:\n\n|$)/) || [])[1] || '' },
+    ...(t.diagram ? { diagram: t.diagram } : {}),
+    ...(t.numberLine ? { numberLine: t.numberLine } : {})
+  });
+  const seedCurriculum = {
+    module_id: 'matematyka-podstawowa',
+    module_title: 'Matematyka – poziom podstawowy (wymagania CKE od 2025 r.)',
+    module_description: 'Kurs generowany przez scripts/math_pp/build.js – nie edytuj ręcznie.',
+    total_topics: blueprints.length,
+    total_lessons: blueprints.reduce((n, b) => n + b.lessons.length, 0),
+    total_tasks: allTasks.length,
+    topics: blueprints.map((bp) => ({
+      id: bp.id,
+      numericId: bp.numericId,
+      topic_number: bp.numericId,
+      order: bp.numericId,
+      title: bp.title,
+      short_title: bp.short_title,
+      description: bp.description,
+      icon: bp.icon,
+      color: bp.color,
+      importance: bp.importance,
+      matura_points_range: bp.matura_points_range,
+      cke_formula_page: bp.cke_formula_page,
+      lessons: bp.lessons.map((l) => ({
+        id: l.id,
+        topic_id: bp.id,
+        title: l.title,
+        estimated_time_minutes: Number(String(l.estimated_time_formatted).replace(/\D/g, '')) || 5,
+        estimated_time_formatted: l.estimated_time_formatted,
+        required_correct_tasks: 3,
+        theory_pill: l.theory_pill,
+        tasks: allTasks.filter((t) => t.lessonId === l.id).map(seedTask)
+      }))
+    }))
+  };
+  fs.writeFileSync(path.resolve(path.dirname(weightsPath), 'curriculum_matematyka_pp.json'), JSON.stringify(seedCurriculum, null, 1) + '\n', 'utf8');
   fs.writeFileSync(path.join(OUT_DIR, 'all_1500_tasks.json'), JSON.stringify(allTasks, null, 1), 'utf8');
-  console.log('Zapisano math_blueprints.json i all_1500_tasks.json');
+  console.log('Zapisano math_blueprints.json, all_1500_tasks.json i seed/curriculum/curriculum_matematyka_pp.json');
 }

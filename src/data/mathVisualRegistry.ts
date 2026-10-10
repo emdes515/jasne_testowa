@@ -1772,26 +1772,6 @@ export const TASK_VISUALS: Record<string, PlotData | MathDiagramData> = {
   },
 
   // Matura Maj 2023 • Zad. 14 (Parabola z osią symetrii p = 3)
-  'matura-maj-2023-zad-14': {
-    type: 'PARABOLA',
-    xRange: [-7, 13],
-    yRange: [-3, 6],
-    gridStep: 2,
-    parabola: {
-      a: -0.0625,
-      p: 3,
-      q: 4,
-      color: '#FFB800',
-      domain: [-6.5, 12.5]
-    },
-    axisOfSymmetry: 3,
-    points: [
-      { x: -5, y: 0, label: 'x₁ = -5', dot: 'filled', color: '#FFB800', attach: 'nw' },
-      { x: 3, y: 4, label: 'xw = p = 3', dot: 'filled', color: '#10B981', attach: 'n' },
-      { x: 11, y: 0, label: 'x₂ = 11', dot: 'filled', color: '#FFB800', attach: 'ne' }
-    ]
-  },
-
   // Matura Sierpień 2024 • Zad. 8 (Interpretacja układu równań)
   'matura-sierpien-2024-zad-8': {
     type: 'LINEAR',
@@ -2072,7 +2052,7 @@ export const GEOMETRIC_ARCHETYPES: Record<string, MathDiagramData> = {
     ],
     metrics: [
       { label: 'Długość odcinka', value: '$|AB| = \\sqrt{\\Delta x^2 + \\Delta y^2}$', color: '#38BDF8' },
-      { label: 'Karta CKE', value: 'str. 7 tablic', color: '#10B981' }
+      { label: 'Karta CKE', value: 'str. 21', color: '#10B981' }
     ]
   },
 
@@ -2606,6 +2586,9 @@ export function getCandidateLessonVisualIds(id: string): string[] {
  */
 export function enrichTheoryPillWithVisual(pill: any, lessonId: string): any {
   if (!pill) return pill;
+  // Pigułki z generatora scripts/math_pp są kompletne – nie doklejamy do nich rysunków
+  // z rejestru, który jest indeksowany starą numeracją lekcji (rysunek nie pasowałby do tematu).
+  if (pill.noAutoVisual === true) return pill;
   const candidates = getCandidateLessonVisualIds(lessonId);
   
   let registeredDiagram = null;

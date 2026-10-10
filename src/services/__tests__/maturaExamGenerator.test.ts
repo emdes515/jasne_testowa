@@ -15,13 +15,31 @@ describe('MaturaExamGenerator Service (CKE Formuła 2023)', () => {
     const closed = tasks.filter(t => t.isClosed);
     const open = tasks.filter(t => !t.isClosed);
 
-    expect(closed).toHaveLength(1446);
-    expect(open).toHaveLength(54); // ARCH-32 optimization tasks
+    // Zadania otwarte w puli to wyłącznie zadania z wpisywanym wynikiem liczbowym
+    expect(closed.length + open.length).toBe(1500);
+    expect(closed.length).toBeGreaterThanOrEqual(1400);
+    open.forEach(t => {
+      expect(t.type).toBe('NUMERIC_INPUT');
+      expect(String(t.correctAnswer)).toMatch(/^-?\d+(,\d+)?$/);
+    });
+
+    // Zadania generowane są autorskie – nie mogą udawać oficjalnych zadań CKE
+    tasks.forEach(t => {
+      expect(t.isCke).toBe(false);
+    });
 
     // Answer distribution across A, B, C, D is balanced (~25% each)
     const counts = { A: 0, B: 0, C: 0, D: 0 };
-    closed.forEach(t => {
+    const abcd = closed.filter(t => t.type === 'SINGLE_CHOICE');
+    const trueFalse = closed.filter(t => t.type === 'TRUE_FALSE');
+    expect(abcd.length + trueFalse.length).toBe(closed.length);
+    abcd.forEach(t => {
       counts[t.correctAnswer as 'A' | 'B' | 'C' | 'D']++;
+    });
+    // zadania prawda/fałsz: dwa stwierdzenia i klucz typu "PF" zamiast opcji A–D
+    trueFalse.forEach(t => {
+      expect((t as any).statements).toHaveLength(2);
+      expect(t.correctAnswer).toMatch(/^[PF]{2}$/);
     });
 
     expect(counts.A).toBeGreaterThanOrEqual(300);
@@ -30,7 +48,7 @@ describe('MaturaExamGenerator Service (CKE Formuła 2023)', () => {
     expect(counts.D).toBeGreaterThanOrEqual(300);
 
     // No duplicate options in any closed task
-    closed.forEach(t => {
+    abcd.forEach(t => {
       expect(t.options).toHaveLength(4);
       const unique = new Set(t.options);
       expect(unique.size).toBe(4);
@@ -65,6 +83,22 @@ describe('MaturaExamGenerator Service (CKE Formuła 2023)', () => {
     // Last task is optimization task (4 pkt)
     expect(exam.tasks[34].points).toBe(4);
     expect(exam.tasks[34].isClosed).toBe(false);
+    expect(exam.tasks[34].topicId).toBe('dzial-15');
+
+    // Zadania zamknięte mają 4 opcje i klucz A–D; otwarte nie mają opcji,
+    // a ich odpowiedzią jest treść wyniku (nie litera po usuniętych opcjach)
+    exam.tasks.forEach(t => {
+      if (t.isClosed && t.type === 'TRUE_FALSE') {
+        expect((t as any).statements).toHaveLength(2);
+      } else if (t.isClosed) {
+        expect(t.options).toHaveLength(4);
+        expect(['A', 'B', 'C', 'D']).toContain(t.correctAnswer);
+      } else {
+        expect(t.options).toHaveLength(0);
+        expect(['A', 'B', 'C', 'D']).not.toContain(t.correctAnswer);
+        expect(t.content).not.toMatch(/Wybierz właściwą odpowiedź/);
+      }
+    });
   });
 
   it('generates a Standard Mini Matura (35 min) with exactly 18 tasks and 25 points (50% CKE)', () => {

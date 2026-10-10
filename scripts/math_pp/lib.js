@@ -281,16 +281,14 @@ export function num(o) {
  */
 export function pf(o) {
   const code = (o.s1[1] ? 'P' : 'F') + (o.s2[1] ? 'P' : 'F');
-  const all = ['PP', 'PF', 'FP', 'FF'];
   return {
-    kind: 'mc',
-    fixedOrder: true,
+    kind: 'pf',
     title: o.title,
-    q: `${o.q ? o.q + '\n\n' : ''}Oceń prawdziwość poniższych stwierdzeń.\n\n**1.** ${o.s1[0]}\n\n**2.** ${o.s2[0]}`,
-    opts: [code, ...all.filter((x) => x !== code)].map(
-      (c) => `1. – ${c[0] === 'P' ? 'prawda' : 'fałsz'}, 2. – ${c[1] === 'P' ? 'prawda' : 'fałsz'}`
-    ),
-    order: all.map((c) => `1. – ${c[0] === 'P' ? 'prawda' : 'fałsz'}, 2. – ${c[1] === 'P' ? 'prawda' : 'fałsz'}`),
+    stem: o.q || '',
+    // `q` służy tylko do wykrywania powtórzeń treści w build.js
+    q: `${o.q ? o.q + '\n\n' : ''}**1.** ${o.s1[0]}\n\n**2.** ${o.s2[0]}`,
+    statements: [o.s1[0], o.s2[0]],
+    code,
     steps: [`Stwierdzenie 1: ${o.s1[2]}`, `Stwierdzenie 2: ${o.s2[2]}`],
     trap: o.trap,
     tip: o.tip,
@@ -323,8 +321,22 @@ export function finalize(raw, meta, r) {
       ...(raw.diagram ? { diagram: raw.diagram } : {})
     };
   }
+  if (raw.kind === 'pf') {
+    // Natywny format CKE: stwierdzenia oceniane osobno jako prawda (P) albo fałsz (F); klucz np. "PF"
+    const word = (c) => (c === 'P' ? 'prawda' : 'fałsz');
+    return {
+      ...base,
+      type: 'TRUE_FALSE',
+      content: `${raw.stem ? raw.stem + '\n\n' : ''}Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.`,
+      statements: raw.statements.map((text, i) => ({ id: String(i + 1), text, correct: raw.code[i] })),
+      correct_answer: raw.code,
+      explanation: explain(raw.steps, raw.trap, `Stwierdzenie 1 – **${word(raw.code[0])}**, stwierdzenie 2 – **${word(raw.code[1])}**.`),
+      matura_tip: raw.tip,
+      ...(raw.diagram ? { diagram: raw.diagram } : {})
+    };
+  }
   const correct = raw.opts[0];
-  const options = raw.fixedOrder ? raw.order : r.shuffle(raw.opts);
+  const options = r.shuffle(raw.opts);
   const letter = 'ABCD'[options.indexOf(correct)];
   return {
     ...base,

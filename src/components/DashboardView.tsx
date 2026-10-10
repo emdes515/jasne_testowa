@@ -690,7 +690,7 @@ export function DashboardView({
                   </span>
                 </div>
                 <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full tabular-nums">
-                  {selectedSubjectKey === 'pol' ? '1056 zadań z kluczem' : selectedSubjectKey === 'eng' ? '780 zadań z kluczem' : '1006 zadań z kluczem'}
+                  {selectedSubjectKey === 'pol' ? '1056 zadań z kluczem' : selectedSubjectKey === 'eng' ? '780 zadań z kluczem' : '211 zadań CKE z kluczem'}
                 </span>
               </div>
 

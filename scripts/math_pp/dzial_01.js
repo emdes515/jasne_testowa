@@ -574,15 +574,23 @@ const pctOriginal = (r) => {
     tip: 'Rachunek „wstecz”: cenę końcową dzielisz przez mnożnik zmiany.'
   });
 };
+// Procent w zapisie czytelnym dla ucznia: 62,5 albo – gdy rozwinięcie jest nieskończone – liczba mieszana (133 1/3)
+const pctStr = (v) => {
+  if (Number.isInteger(Math.round(v * 1000) / 1000 * 8)) return dec(Math.round(v * 1000) / 1000);
+  const thirds = Math.round(v * 3);
+  const whole = Math.floor(thirds / 3);
+  const rest = thirds - whole * 3;
+  return rest === 0 ? `${whole}` : `${whole}\\frac{${rest}}{3}`;
+};
 const pctOf = (r) => {
   const pr = r.pick([20, 25, 40, 50, 60, 75, 80, 125, 150, 160, 250]);
   const inv = 10000 / pr;
   return mc({
     title: 'Jakim procentem jednej liczby jest druga',
     q: T`Liczba dodatnia $a$ stanowi $${pr}\%$ liczby $b$. Wynika stąd, że liczba $b$ to`,
-    ok: `$${dec(inv)}\\%$ liczby $a$`,
-    bad: [`$${dec(Math.abs(100 - pr))}\\%$ liczby $a$`, `$${dec(pr)}\\%$ liczby $a$`, `$${dec(200 - pr > 0 ? 200 - pr : pr + 100)}\\%$ liczby $a$`, `$${dec(inv + 25)}\\%$ liczby $a$`, `$${dec(inv / 2)}\\%$ liczby $a$`],
-    steps: [T`Zapisujemy warunek: $a = ${dec(pr / 100)} \cdot b$.`, T`Wyznaczamy $b$: $b = \frac{a}{${dec(pr / 100)}} = ${dec(inv / 100)} \cdot a$, czyli $b$ to $${dec(inv)}\%$ liczby $a$.`],
+    ok: `$${pctStr(inv)}\\%$ liczby $a$`,
+    bad: [`$${dec(Math.abs(100 - pr))}\\%$ liczby $a$`, `$${dec(pr)}\\%$ liczby $a$`, `$${dec(200 - pr > 0 ? 200 - pr : pr + 100)}\\%$ liczby $a$`, `$${pctStr(inv + 25)}\\%$ liczby $a$`, `$${pctStr(inv / 2)}\\%$ liczby $a$`],
+    steps: [T`Zapisujemy warunek: $a = ${dec(pr / 100)} \cdot b$.`, T`Wyznaczamy $b$: $b = \frac{a}{${dec(pr / 100)}} = ${fr(100, pr)} \cdot a$, czyli $b$ to $${pctStr(inv)}\%$ liczby $a$.`],
     trap: T`Procenty „w drugą stronę” nie są dopełnieniem do $100\%$ ani tą samą liczbą – trzeba odwrócić mnożnik.`,
     tip: 'Zapisz zdanie jako równanie z mnożnikiem dziesiętnym i wyznacz z niego drugą liczbę.'
   });

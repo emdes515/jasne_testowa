@@ -424,7 +424,7 @@ const arcLength = (r) => {
     bad: [m(pi(askArea ? a * 2 * rr : a * rr * rr, 360)), m(pi(n, 180)), m(pi(n, 720)), m(pi(askArea ? rr * rr : 2 * rr, 1)), m(pi(n + d, d))],
     steps: [T`Wycinek to $\frac{${a}}{360} = ${fr(a, 360)}$ całego koła.`, askArea ? T`Pole koła: $\pi \cdot ${rr}^2 = ${rr * rr}\pi$. Pole wycinka: $${fr(a, 360)} \cdot ${rr * rr}\pi = ${pi(n, d)}$.` : T`Długość okręgu: $2\pi \cdot ${rr} = ${2 * rr}\pi$. Długość łuku: $${fr(a, 360)} \cdot ${2 * rr}\pi = ${pi(n, d)}$.`],
     trap: askArea ? T`Pole wycinka liczymy z pola koła ($\pi r^2$), a długość łuku z obwodu ($2\pi r$). Nie zamieniaj tych wzorów.` : T`Długość łuku liczymy z obwodu ($2\pi r$), a pole wycinka z pola koła ($\pi r^2$). Nie zamieniaj tych wzorów.`,
-    tip: 'Karta wzorów, str. 18: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.'
+    tip: 'Karta wzorów, str. 17: pole wycinka $P = \\pi r^2 \\cdot \\frac{\\alpha}{360^\\circ}$, długość łuku $l = 2\\pi r \\cdot \\frac{\\alpha}{360^\\circ}$.'
   });
 };
 const circleRightTriangle = (r) => {
@@ -439,7 +439,7 @@ const circleRightTriangle = (r) => {
     bad: circum ? [m(c), m(fr(a + b - c, 2)), m(fr(a + b, 2)), m(fr(c, 4))] : [m(fr(c, 2)), m(a + b - c), m(fr(a * b, a + b)), m(fr(a + b, 4))],
     steps: [T`Przeciwprostokątna: $c = \sqrt{${a}^2 + ${b}^2} = ${c}$.`, circum ? T`Środek okręgu opisanego na trójkącie prostokątnym to środek przeciwprostokątnej: $R = \frac{c}{2} = ${fr(c, 2)}$.` : T`$r = \frac{a + b - c}{2} = \frac{${a} + ${b} - ${c}}{2} = ${fr(a + b - c, 2)}$.`],
     trap: circum ? T`Promień to POŁOWA przeciwprostokątnej – cała przeciwprostokątna jest średnicą okręgu opisanego.` : T`Wzór $r = \frac{a + b - c}{2}$ działa tylko w trójkącie prostokątnym. W każdym trójkącie można też użyć $r = \frac{2P}{a + b + c}$.`,
-    tip: circum ? 'Przeciwprostokątna trójkąta prostokątnego jest średnicą okręgu na nim opisanego.' : 'Karta wzorów, str. 16: promień okręgu wpisanego w trójkąt $r = \\frac{2P}{a + b + c}$.'
+    tip: circum ? 'Przeciwprostokątna trójkąta prostokątnego jest średnicą okręgu na nim opisanego.' : 'Karta wzorów, str. 15: w trójkącie prostokątnym $r = \\frac{a + b - c}{2}$, a w każdym trójkącie $P = p \\cdot r$ ($p$ – połowa obwodu).'
   });
 };
 const circleEquilateral = (r) => {
@@ -655,8 +655,8 @@ export default {
           ['Weź odpowiednią część', T`Pole wycinka: $12\pi$. Długość łuku: $4\pi$.`, 'Obwód wycinka to łuk plus dwa promienie.']
         ],
         formulas: [
-          ['Pole wycinka', T`P = \pi r^2 \cdot \frac{\alpha}{360^\circ}`, 18],
-          ['Długość łuku', T`l = 2\pi r \cdot \frac{\alpha}{360^\circ}`, 18],
+          ['Pole wycinka', T`P = \pi r^2 \cdot \frac{\alpha}{360^\circ}`, 17],
+          ['Długość łuku', T`l = 2\pi r \cdot \frac{\alpha}{360^\circ}`, 17],
           ['Trójkąt prostokątny', T`R = \frac{c}{2}, \quad r = \frac{a + b - c}{2}`]
         ],
         examples: [
@@ -667,7 +667,7 @@ export default {
         fail: T`Długość łuku ($r = 6$, $\alpha = 60^\circ$): „$\frac{1}{6} \cdot 36\pi = 6\pi$”.`,
         win: T`$\frac{1}{6} \cdot 2\pi \cdot 6 = 2\pi$.`,
         why: 'Długość to wielkość „jednowymiarowa” (r w pierwszej potędze), pole – „dwuwymiarowa” (r do kwadratu).',
-        ckeTip: 'Wzory na pole wycinka i długość łuku są w karcie wzorów na str. 18.',
+        ckeTip: 'Wzory na pole wycinka i długość łuku są w karcie wzorów na str. 17.',
         points: [T`Wycinek to $\frac{\alpha}{360^\circ}$ koła.`, T`Okrąg opisany na trójkącie prostokątnym: $R = \frac{c}{2}$.`, T`Trójkąt równoboczny: $R = \frac{2}{3}h$, $r = \frac{1}{3}h$.`]
       }),
       gens: [arcLength, circleRightTriangle, circleEquilateral, circleSquare, sectorPerimeter]

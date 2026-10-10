@@ -345,8 +345,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'Trzy liczby dodatnie $(x, y, z)$ tworzą ciąg geometryczny, gdy $y^2 = x \\cdot z$.',
     ckeTrap: 'Wykładnik ilorazu to $(n - 1)$: $a_4 = a_1 \\cdot q^3$, a NIE $a_1 \\cdot q^4$!',
     keywords: ['ciąg geometryczny', 'iloraz ciągu', 'suma geometryczna'],
-    cke_page: 'str. 10',
-    pageNumber: 10
+    cke_page: 'str. 9',
+    pageNumber: 9
   },
 
   // 5. Trygonometria
@@ -540,8 +540,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'Pamiętaj: $R = 2r$ (promień koła opisanego jest dwukrotnie większy od promienia wpisanego).',
     ckeTrap: 'Nie myl wzoru na wysokość (dzielenie przez $2$) ze wzorem na pole (dzielenie przez $4$ i $a^2$)!',
     keywords: ['trójkąt równoboczny', 'wysokość', 'pole', 'koło opisane', 'koło wpisane'],
-    cke_page: 'str. 16',
-    pageNumber: 16,
+    cke_page: 'str. 15',
+    pageNumber: 15,
     diagram: {
       type: 'GEOMETRY_2D',
       title: 'Trójkąt równoboczny: Wysokość h, koło opisane R i wpisane r',
@@ -897,8 +897,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'W stożku tworząca $l$, promień podstawy $r$ i wysokość $H$ ZAWSZE tworzą trójkąt prostokątny: $r^2 + H^2 = l^2$.',
     ckeTrap: 'Średnica podstawy to $2r$! W zadaniach CKE często podają średnicę zamiast promienia.',
     keywords: ['stożek', 'walec', 'tworząca', 'przekrój osiowy', 'bryły obrotowe'],
-    cke_page: 'str. 26',
-    pageNumber: 26,
+    cke_page: 'str. 25–26',
+    pageNumber: 25,
     diagram: {
       type: 'STEREOMETRY_3D',
       title: 'Bryły obrotowe: Przekrój osiowy stożka i walca',
@@ -956,8 +956,8 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'Gdy treść mówi „co najmniej jeden raz”, ZAWSZE opłaca się policzyć zdarzenie przeciwne: $P(A) = 1 - P(A\').$',
     ckeTrap: 'Prawdopodobieństwo NIGDY nie może przekroczyć $1$ ani być mniejsze od $0$!',
     keywords: ['prawdopodobieństwo', 'omega', 'zdarzenie przeciwne', 'drzewo'],
-    cke_page: 'str. 28',
-    pageNumber: 28
+    cke_page: 'str. 27',
+    pageNumber: 27
   },
   {
     id: 'f-stat-srednia',
@@ -974,7 +974,7 @@ export const CKE_FORMULAS_DATA: CkeFormulaItem[] = [
     goldenRule: 'ZANIM wyznaczysz medianę, MUSISZ uporządkować liczby rosnąco!',
     ckeTrap: 'Wyznaczenie mediany z nieposortowanego zestawu liczb to najczęstszy błąd maturzystów.',
     keywords: ['średnia', 'mediana', 'statystyka', 'wartość środkowa'],
-    cke_page: 'str. 29',
+    cke_page: 'str. 29–30',
     pageNumber: 29
   }
 ];

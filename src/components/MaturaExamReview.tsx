@@ -19,6 +19,10 @@ import {
 import Markdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import { MathDiagram } from './MathDiagram';
+import { NumberLineDiagram } from './NumberLineDiagram';
+import { StructuredAnswerInput } from './math/StructuredAnswerInput';
+import { getStructuredKind } from '../lib/structuredAnswer';
 
 export interface MaturaAiEvaluation {
   score: number;
@@ -39,7 +43,8 @@ export interface MaturaTaskReviewItem {
   id: string;
   section: string;
   content: string;
-  options: string[];
+  /** Tekst odpowiedzi albo obiekt opcji (opcja może być rysunkiem lub osią liczbową – jak w arkuszu CKE). */
+  options?: Array<string | { id?: string; text?: string; content_latex?: string; diagram?: any; numberLine?: any }>;
   correctAnswer: string;
   points: number;
   isClosed: boolean;
@@ -48,6 +53,10 @@ export interface MaturaTaskReviewItem {
   userPointsEarned: number;
   isFlagged?: boolean;
   aiEvaluation?: MaturaAiEvaluation;
+  /** Zadanie źródłowe: rysunek do treści oraz formaty inne niż ABCD (P/F, A/B + uzasadnienie, „wybierz dwie”). */
+  sourceTask?: any;
+  /** Surowa odpowiedź ucznia w formacie klucza (np. "PF", "B2", "BF") – dla formatów strukturalnych. */
+  rawUserAnswer?: string;
 }
 
 interface MaturaExamReviewProps {
@@ -84,13 +93,23 @@ export function MaturaExamReview({
     return `${mins}m ${secs.toString().padStart(2, '0')}s`;
   };
 
-  const renderMathContent = (content: string) => (
+  const renderMathContent = (content: unknown) => (
     <div className="prose prose-invert max-w-none text-sm leading-relaxed overflow-x-auto py-1 -my-1 text-text-primary math-render">
       <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-        {content}
+        {typeof content === 'string' ? content : String(content ?? '')}
       </Markdown>
     </div>
   );
+
+  // Opcja odpowiedzi: tekst, rysunek albo oś liczbowa – tak samo jak w trakcie pisania arkusza
+  const renderOption = (opt: any) => {
+    if (opt && typeof opt === 'object') {
+      if (opt.numberLine) return <NumberLineDiagram data={opt.numberLine} />;
+      if (opt.diagram) return <MathDiagram diagram={opt.diagram} borderless />;
+      return renderMathContent(opt.text || opt.content_latex || '');
+    }
+    return renderMathContent(opt);
+  };
 
   return (
     <motion.div
@@ -244,7 +263,7 @@ export function MaturaExamReview({
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-white font-bold text-sm">
-                          Zadanie {originalIndex}
+                          Zadanie {task.sourceTask?.taskNumber || originalIndex}
                         </span>
                         <span className="text-[11px] text-text-muted bg-white/5 px-2 py-0.5 rounded-md border border-white/10">
                           {task.section}
@@ -288,15 +307,37 @@ export function MaturaExamReview({
                           Treść polecenia CKE:
                         </div>
                         {renderMathContent(task.content)}
+                        {task.sourceTask?.numberLine ? (
+                          <div className="mt-3 flex justify-center">
+                            <NumberLineDiagram data={task.sourceTask.numberLine} height={64} maxWidth="360px" />
+                          </div>
+                        ) : (task.sourceTask?.diagram || task.sourceTask?.plot) ? (
+                          <div className="mt-3 flex justify-center">
+                            <MathDiagram diagram={task.sourceTask.diagram || task.sourceTask.plot} />
+                          </div>
+                        ) : null}
                       </div>
 
+                      {/* Formaty CKE inne niż ABCD: stwierdzenia P/F, A/B + uzasadnienie, „wybierz dwie” – z zaznaczonym kluczem */}
+                      {task.isClosed && task.sourceTask && getStructuredKind(task.sourceTask) && (
+                        <div className="space-y-2">
+                          <div className="text-[11px] font-bold text-text-muted uppercase tracking-wider">
+                            Twoja odpowiedź i klucz CKE:
+                          </div>
+                          <StructuredAnswerInput task={task.sourceTask} value={task.rawUserAnswer || ''} onChange={() => {}} reveal />
+                          <div className="text-xs text-text-secondary">
+                            Poprawna odpowiedź: <span className="font-bold text-emerald-300">{task.correctAnswer}</span>
+                          </div>
+                        </div>
+                      )}
+
                       {/* Closed Questions Comparison */}
-                      {task.isClosed && (
+                      {task.isClosed && !(task.sourceTask && getStructuredKind(task.sourceTask)) && (
                         <div className="space-y-2">
                           <div className="text-[11px] font-bold text-text-muted uppercase tracking-wider">
                             Warianty odpowiedzi:
                           </div>
-                          {task.options.map((opt, optIdx) => {
+                          {(task.options || []).map((opt, optIdx) => {
                             const optLetter = String.fromCharCode(65 + optIdx);
                             const isUserPick = task.userAnswer === optLetter;
                             const isCorrectPick = task.correctAnswer.includes(optLetter);
@@ -323,7 +364,7 @@ export function MaturaExamReview({
                                   }`}>
                                     {optLetter}
                                   </span>
-                                  <div className="pt-0.5">{renderMathContent(opt)}</div>
+                                  <div className="pt-0.5 min-w-0 flex-1">{renderOption(opt)}</div>
                                 </div>
 
                                 <div className="flex items-center gap-1.5 shrink-0 ml-2">

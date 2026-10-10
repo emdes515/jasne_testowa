@@ -4,21 +4,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "1",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  2−1 \\cdot 32\n3\n5\njest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $2^{-1} \\cdot 32^{\\frac{3}{5}}$ jest równa",
     "options": [
-      "(−16)",
-      "(−4)",
-      "2",
-      "4"
+      "$(-16)$",
+      "$(-4)$",
+      "$2$",
+      "$4$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD \n \n \n \n \n \n \n \n \n \n \n \n \n \n                                                \n1 Rozporządzenie Ministra Edukacji i Nauki z dnia 10 czerwca 2022 r. w sprawie wymagań egzaminacyjnych dla \negzaminu maturalnego przeprowadzanego w roku szkolnym 2022/2023 i 2023/2024 (Dz.U. 2022, poz.1246).",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** $32 = 2^5$, więc $32^{\\frac{3}{5}} = \\left(2^5\\right)^{\\frac{3}{5}} = 2^{3} = 8$.\n\n**Krok 2:** $2^{-1} = \\frac{1}{2}$.\n\n**Krok 3:** $\\frac{1}{2} \\cdot 8 = 4$.\n\n**Pułapka CKE:** Wykładnik ujemny nie daje liczby ujemnej: $2^{-1} = \\frac{1}{2}$, a nie $-2$. Dlatego wynik nie może być ujemny.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Wykładnik ujemny nie daje liczby ujemnej: $2^{-1} = \\frac{1}{2}$, a nie $-2$. Dlatego wynik nie może być ujemny.",
     "source": "Matura Czerwiec 2024 • Zad. 1",
     "year": 2024,
     "session": "Czerwiec",
@@ -29,21 +29,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "2",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  log3 (3\n2) + log3 (2\n9)  jest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\log_{3}\\left(\\frac{3}{2}\\right) + \\log_{3}\\left(\\frac{2}{9}\\right)$ jest równa",
     "options": [
-      "log3\n31\n18",
-      "log3\n5\n11",
-      "(−1)",
-      "1\n3"
+      "$\\log_{3}\\frac{31}{18}$",
+      "$\\log_{3}\\frac{5}{11}$",
+      "$(-1)$",
+      "$\\frac{1}{3}$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Suma logarytmów o tej samej podstawie to logarytm iloczynu: $\\log_{3}\\left(\\frac{3}{2} \\cdot \\frac{2}{9}\\right)$.\n\n**Krok 2:** $\\frac{3}{2} \\cdot \\frac{2}{9} = \\frac{6}{18} = \\frac{1}{3}$.\n\n**Krok 3:** $\\log_{3}\\frac{1}{3} = -1$, bo $3^{-1} = \\frac{1}{3}$.\n\n**Pułapka CKE:** Przy dodawaniu logarytmów liczby logarytmowane się MNOŻY, a nie dodaje. Odpowiedź z ułamkiem $\\frac{31}{18}$ powstaje z dodania $\\frac{3}{2} + \\frac{2}{9}$.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Karta wzorów, str. 5: $\\log_a x + \\log_a y = \\log_a (x \\cdot y)$.",
     "source": "Matura Czerwiec 2024 • Zad. 2",
     "year": 2024,
     "session": "Czerwiec",
@@ -54,21 +54,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "3",
-    "section": "Dział 1: Liczby Rzeczywiste",
+    "section": "Dział 1: Liczby rzeczywiste",
     "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  (2\\sqrt10 + \\sqrt2)\n2\njest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $\\left(2\\sqrt{10} + \\sqrt{2}\\right)^2$ jest równa",
     "options": [
-      "22",
-      "42",
-      "42 + 4\\sqrt5",
-      "42 + 8\\sqrt5"
+      "$22$",
+      "$42$",
+      "$42 + 4\\sqrt{5}$",
+      "$42 + 8\\sqrt{5}$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nD",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Wzór $(a + b)^2 = a^2 + 2ab + b^2$ dla $a = 2\\sqrt{10}$, $b = \\sqrt{2}$.\n\n**Krok 2:** $a^2 = 4 \\cdot 10 = 40$, $b^2 = 2$, $2ab = 2 \\cdot 2\\sqrt{10} \\cdot \\sqrt{2} = 4\\sqrt{20} = 4 \\cdot 2\\sqrt{5} = 8\\sqrt{5}$.\n\n**Krok 3:** Razem: $40 + 8\\sqrt{5} + 2 = 42 + 8\\sqrt{5}$.\n\n**Pułapka CKE:** Kwadrat sumy to nie suma kwadratów – wynik $42$ pomija podwojony iloczyn $2ab$. Trzeba też uprościć $\\sqrt{20} = 2\\sqrt{5}$.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Kwadrat sumy to nie suma kwadratów – wynik $42$ pomija podwojony iloczyn $2ab$. Trzeba też uprościć $\\sqrt{20} = 2\\sqrt{5}$.",
     "source": "Matura Czerwiec 2024 • Zad. 3",
     "year": 2024,
     "session": "Czerwiec",
@@ -79,21 +79,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "4",
-    "section": "Dział 14: Statystyka",
-    "topicId": "dzial-14",
+    "section": "Dział 1: Liczby rzeczywiste",
+    "topicId": "dzial-1",
     "type": "SINGLE_CHOICE",
-    "content": "Klient wpłacił do banku na trzyletnią lokatę kwotę w wysokości  K0  zł. Po każdym rocznym\nokresie oszczędzania bank dolicza odsetki w wysokości  6%  od kwoty bieżącego kapitału\nznajdującego się na lokacie – zgodnie z procentem składanym.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nPo trzech latach oszczędzania w tym banku kwota na lokacie (bez uwzględniania podatków)\njest równa",
+    "content": "Klient wpłacił do banku na trzyletnią lokatę kwotę w wysokości $K_0$ zł. Po każdym rocznym okresie oszczędzania bank dolicza odsetki w wysokości $6\\%$ od kwoty bieżącego kapitału znajdującego się na lokacie – zgodnie z procentem składanym.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nPo trzech latach oszczędzania w tym banku kwota na lokacie (bez uwzględniania podatków) jest równa",
     "options": [
-      "K0 \\cdot (1,06)3",
-      "K0 \\cdot (1,02)3",
-      "K0 \\cdot (1,03)6",
-      "K0 \\cdot 1,18"
+      "$K_0 \\cdot (1{,}06)^3$",
+      "$K_0 \\cdot (1{,}02)^3$",
+      "$K_0 \\cdot (1{,}03)^6$",
+      "$K_0 \\cdot 1{,}18$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Po każdym roku kapitał rośnie o $6\\%$, czyli jest mnożony przez $1 + 0{,}06 = 1{,}06$.\n\n**Krok 2:** Po trzech latach mnożymy trzykrotnie: $K_0 \\cdot 1{,}06 \\cdot 1{,}06 \\cdot 1{,}06 = K_0 \\cdot (1{,}06)^3$.\n\n**Pułapka CKE:** $K_0 \\cdot 1{,}18$ to procent prosty ($3 \\cdot 6\\% = 18\\%$). W procencie składanym odsetki dopisuje się do kapitału i w kolejnym roku one też „pracują”.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Karta wzorów, str. 10: $K_n = K \\cdot \\left(1 + \\frac{p}{100}\\right)^n$.",
     "source": "Matura Czerwiec 2024 • Zad. 4",
     "year": 2024,
     "session": "Czerwiec",
@@ -104,16 +104,16 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "5",
-    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "section": "Dział 2: Wyrażenia algebraiczne",
     "topicId": "dzial-2",
     "type": "OPEN_PROOF",
-    "content": "Wykaż, że dla każdej liczby naturalnej  𝒏 \\ge 𝟏  liczba  𝟓𝒏𝟑 − 𝟓𝒏  jest podzielna przez  𝟑𝟎.",
+    "content": "Wykaż, że dla każdej liczby naturalnej $n \\ge 1$ liczba $5n^3 - 5n$ jest podzielna przez $30$.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$5n^3 - 5n = 5 \\cdot (n - 1) \\cdot n \\cdot (n + 1)$, a iloczyn trzech kolejnych liczb całkowitych jest podzielny przez $6$, więc cała liczba jest podzielna przez $5 \\cdot 6 = 30$.",
     "points": 2,
     "isClosed": false,
-    "explanation": "Przekształcamy wyrażenie  5n3 − 5n  do postaci iloczynu \n \n5n3 − 5n = 5n(n2 − 1) = 5n(n − 1)(n + 1)  \n \nJeden z czynników w rozkładzie jest równy  5, więc liczba  5n(n − 1)(n + 1)  jest podzielna \nprzez  5.  Wśród każdych trzech kolejnych liczb całkowitych  n − 1, n, n + 1  co najmniej \njedna jest podzielna przez  2  i dokładnie jedna jest podzielna przez  3.  \nZatem liczba  5n(n − 1)(n + 1)  dzieli się przez  5  oraz przez  2  oraz przez  3. \nPonadto liczby  2,  3,  5  są parami względnie pierwsze. \nZatem liczba  5n3 − 5n = 5n(n2 − 1) = 5n(n − 1)(n + 1)  jest podzielna przez  30. \nTo kończy dowód.",
-    "ckeTrap": "Jeżeli zdający sprawdza prawdziwość tezy tylko dla wybranych wartości  n, to otrzymuje  \n0 punktów za całe rozwiązanie.",
+    "explanation": "**Krok 1:** Rozkładamy na czynniki: $5n^3 - 5n = 5n(n^2 - 1) = 5(n - 1) \\cdot n \\cdot (n + 1)$.\n\n**Krok 2:** Liczby $n - 1$, $n$, $n + 1$ to trzy kolejne liczby całkowite. Wśród nich jest co najmniej jedna parzysta i dokładnie jedna podzielna przez $3$, więc ich iloczyn jest podzielny przez $6$.\n\n**Krok 3:** Zatem $(n - 1) \\cdot n \\cdot (n + 1) = 6k$ dla pewnej liczby całkowitej $k$ i $5n^3 - 5n = 5 \\cdot 6k = 30k$.\n\n**Pułapka CKE:** Samo wyłączenie piątki nie kończy dowodu. Trzeba uzasadnić podzielność iloczynu trzech kolejnych liczb przez $2$ ORAZ przez $3$.\n\n**Wniosek:** $5n^3 - 5n = 5 \\cdot (n - 1) \\cdot n \\cdot (n + 1)$, a iloczyn trzech kolejnych liczb całkowitych jest podzielny przez $6$, więc cała liczba jest podzielna przez $5 \\cdot 6 = 30$.",
+    "ckeTrap": "Samo wyłączenie piątki nie kończy dowodu. Trzeba uzasadnić podzielność iloczynu trzech kolejnych liczb przez $2$ ORAZ przez $3$.",
     "source": "Matura Czerwiec 2024 • Zad. 5",
     "year": 2024,
     "session": "Czerwiec",
@@ -124,21 +124,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "6",
-    "section": "Dział 12: Kombinatoryka",
-    "topicId": "dzial-12",
+    "section": "Dział 3: Równania i nierówności",
+    "topicId": "dzial-3",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich całkowitych dodatnich rozwiązań nierówności\n3x − 5\n12 < 1\n3\njest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba wszystkich całkowitych dodatnich rozwiązań nierówności\n$$\\frac{3x - 5}{12} < \\frac{1}{3}$$\njest równa",
     "options": [
-      "2",
-      "3",
-      "5",
-      "6"
+      "$2$",
+      "$3$",
+      "$5$",
+      "$6$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie  \nA",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Mnożymy obie strony przez $12$: $3x - 5 < 4$.\n\n**Krok 2:** $3x < 9$, czyli $x < 3$.\n\n**Krok 3:** Całkowite dodatnie liczby mniejsze od $3$ to $1$ i $2$ – są dwie.\n\n**Pułapka CKE:** Nierówność jest ostra, więc $x = 3$ nie jest rozwiązaniem. Zero nie jest liczbą dodatnią, więc też go nie liczymy.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Nierówność jest ostra, więc $x = 3$ nie jest rozwiązaniem. Zero nie jest liczbą dodatnią, więc też go nie liczymy.",
     "source": "Matura Czerwiec 2024 • Zad. 6",
     "year": 2024,
     "session": "Czerwiec",
@@ -149,10 +149,10 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "7",
-    "section": "Dział 5: Funkcja Liniowa i Układy Równań",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
     "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nUkład równań  { x − 2y = 3\n−4x + 8y = −12",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nUkład równań $\\begin{cases} x - 2y = 3 \\\\ -4x + 8y = -12 \\end{cases}$",
     "options": [
       "nie ma rozwiązań.",
       "ma dokładnie jedno rozwiązanie.",
@@ -162,8 +162,8 @@
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Mnożymy pierwsze równanie przez $-4$: $-4x + 8y = -12$.\n\n**Krok 2:** Otrzymaliśmy dokładnie drugie równanie. Oba równania opisują tę samą prostą.\n\n**Krok 3:** Układ jest nieoznaczony – ma nieskończenie wiele rozwiązań.\n\n**Pułapka CKE:** Gdyby po pomnożeniu zgadzała się tylko lewa strona, a prawa nie – układ byłby sprzeczny (brak rozwiązań). Tu zgadza się wszystko, łącznie z wyrazem wolnym.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Gdyby po pomnożeniu zgadzała się tylko lewa strona, a prawa nie – układ byłby sprzeczny (brak rozwiązań). Tu zgadza się wszystko, łącznie z wyrazem wolnym.",
     "source": "Matura Czerwiec 2024 • Zad. 7",
     "year": 2024,
     "session": "Czerwiec",
@@ -174,21 +174,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "8",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 2: Wyrażenia algebraiczne",
+    "topicId": "dzial-2",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nDla każdej liczby rzeczywistej  x  różnej od:  (−1),  0  i  1, wartość wyrażenia  2x2\nx2−1 \\cdot x+1\nx\njest równa wartości wyrażenia",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nDla każdej liczby rzeczywistej $x$ różnej od: $(-1)$, $0$ i $1$, wartość wyrażenia $\\frac{2x^2}{x^2 - 1} \\cdot \\frac{x + 1}{x}$ jest równa wartości wyrażenia",
     "options": [
-      "2x + 2",
-      "2x\nx−1",
-      "2x\nx2−1",
-      "2x3+1\nx3−1"
+      "$2x + 2$",
+      "$\\frac{2x}{x - 1}$",
+      "$\\frac{2x}{x^2 - 1}$",
+      "$\\frac{2x^3 + 1}{x^3 - 1}$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Rozkładamy mianownik: $x^2 - 1 = (x - 1)(x + 1)$.\n\n**Krok 2:** $\\frac{2x^2}{(x - 1)(x + 1)} \\cdot \\frac{x + 1}{x}$ – skracamy $(x + 1)$ oraz $x$.\n\n**Krok 3:** Zostaje $\\frac{2x}{x - 1}$.\n\n**Pułapka CKE:** Skracać wolno tylko CZYNNIKI. Najpierw rozłóż $x^2 - 1$ na iloczyn, dopiero potem skracaj.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Skracać wolno tylko CZYNNIKI. Najpierw rozłóż $x^2 - 1$ na iloczyn, dopiero potem skracaj.",
     "source": "Matura Czerwiec 2024 • Zad. 8",
     "year": 2024,
     "session": "Czerwiec",
@@ -199,16 +199,16 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "9",
-    "section": "Dział 2: Wyrażenia Algebraiczne i Wielomiany",
+    "section": "Dział 2: Wyrażenia algebraiczne",
     "topicId": "dzial-2",
     "type": "NUMERIC_INPUT",
-    "content": "Wielomian  W(x) = ax3 + bx2 + cx + d  jest iloczynem wielomianów  𝐹(x) = (2 − 3x)2\noraz  𝐺(x) = 3x − 2.\nUzupełnij poniższe zdanie. Wpisz odpowiednią liczbę w wykropkowanym miejscu tak,\naby zdanie było prawdziwe.\nSuma  a + b + c + d  współczynników wielomianu  W  jest równa  ……….  .",
+    "content": "Wielomian $W(x) = ax^3 + bx^2 + cx + d$ jest iloczynem wielomianów $F(x) = (2 - 3x)^2$ oraz $G(x) = 3x - 2$.\n\nUzupełnij zdanie. Wpisz odpowiednią liczbę tak, aby zdanie było prawdziwe.\n\nSuma $a + b + c + d$ współczynników wielomianu $W$ jest równa …",
     "options": [],
     "correctAnswer": "1",
     "points": 1,
     "isClosed": false,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n1",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Suma współczynników wielomianu to jego wartość dla $x = 1$: $W(1) = a + b + c + d$.\n\n**Krok 2:** $W(1) = F(1) \\cdot G(1) = (2 - 3)^2 \\cdot (3 - 2) = 1 \\cdot 1 = 1$.\n\n**Pułapka CKE:** Nie trzeba wymnażać nawiasów. Wystarczy podstawić $x = 1$ – i pamiętać, że $(-1)^2 = 1$.\n\nPrawidłowa odpowiedź: **1**.",
+    "ckeTrap": "Nie trzeba wymnażać nawiasów. Wystarczy podstawić $x = 1$ – i pamiętać, że $(-1)^2 = 1$.",
     "source": "Matura Czerwiec 2024 • Zad. 9",
     "year": 2024,
     "session": "Czerwiec",
@@ -219,16 +219,16 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "10",
-    "section": "Dział 3: Równania i Nierówności",
+    "section": "Dział 3: Równania i nierówności",
     "topicId": "dzial-3",
     "type": "OPEN_CALCULATION",
-    "content": "Rozwiąż równanie\n𝟒𝒙𝟑 − 𝟏𝟐𝒙𝟐 − 𝒙 + 𝟑 = 𝟎\nZapisz obliczenia.",
+    "content": "Rozwiąż równanie\n$$4x^3 - 12x^2 - x + 3 = 0$$\nZapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$x = 3$ lub $x = -\\frac{1}{2}$ lub $x = \\frac{1}{2}$.",
     "points": 3,
     "isClosed": false,
-    "explanation": "Sposób I \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów: \n \n4x3 − 12x2 − x + 3 = 0 \n \n4x2(x − 3) − (x − 3) = 0 \n \n(x − 3)(4x2 − 1) = 0 \n \n(x − 3)(2x − 1)(2x + 1) = 0 \n \nx − 3 = 0    lub    2x − 1 = 0    lub    2x + 1 = 0 \n \nx = 3    lub    x = 1\n2    lub    x = −1\n2 \n \nRozwiązaniami równania są liczby:  (−1\n2),  1\n2,  3. \n \nSposób II \nPrzekształcamy równanie równoważnie i stosujemy metodę grupowania wyrazów:",
-    "ckeTrap": "1. Jeżeli zdający zapisze tylko trzy poprawne rozwiązania równania, to otrzymuje 1 punkt za \ncałe rozwiązanie. \n2. Jeżeli zdający uzyska trzy poprawne pierwiastki wielomianu, lecz traktuje równanie jako \nnierówność (podaje zbiór rozwiązań w postaci przedziału / sumy przedziałów), to \notrzymuje 2 punkty za całe rozwiązanie. \n3. Jeżeli przy przekształcaniu lewej strony równania do postaci iloczynu zdający zapisuje \nczynnik  (x − 3)  z wykładnikiem  2, to może otrzymać co najwyżej 2 punkty za całe \nrozwiązanie (1 punkt za rozwiązanie równania  (x − 3)2 = 0  i 1 punkt za rozwiązanie \nrównania  4x2 − 1 = 0). \n4. Jeżeli zdający zamiast równania  (x − 3)(4x2 − 1) = 0  zapisze  (x − 3) ± (4x2 − 1) = 0, \nale z dalszego rozwiązania wynika, że traktuje lewą stronę równania jak iloczyn i rozwiąże \nzadanie do końca, to może otrzymać co najwyżej 2 punkty za całe rozwiązanie (1 punkt \nza rozwiązanie równania  x − 3 = 0  i 1 punkt za rozwiązanie równania  4x2 − 1 = 0). \n5. Jeżeli zdający przy przekształcaniu równania do postaci  (x − 3)(4x2 − 1) = 0  popełni \nbłąd i zapisze: \n4x2(x + 3) − (x − 3) = 0  \nlub \n4x2(x − 3) + (x − 3) = 0  \nlub \n4x2(x − 3) − (x + 3) = 0  \nlub \nx(4x2 + 1) − 3(4x2 − 1) = 0 \nlub \nx(4x2 − 1) + 3(4x2 − 1) = 0 \nlub \nx(4x2 − 1) − 3(4x2 + 1) = 0 \na następnie  \n5.1. zapisze równanie  (x − 3)(4x2 − 1) = 0  lub poprawną alternatywę  \n(x − 3 = 0  lub  4x2 − 1 = 0) i konsekwentnie rozwiąże zadanie do końca, to \notrzymuje co najwyżej 2 punkty za całe rozwiązanie (1 punkt za rozwiązanie \nrównania  x − 3 = 0  i 1 punkt za rozwiązanie równania  4x2 − 1 = 0). \n5.2. zapisze równanie  (x − 3)(4x2 + 1) = 0  lub błędną alternatywę  \n(x − 3 = 0  lub  4x2 + 1 = 0) i zapisze rozwiązanie  x = 3,  \nto otrzymuje 1 punkt za całe rozwiązanie. \n5.3. zapisze równanie  (x + 3)(4x2 − 1) = 0  lub błędną alternatywę  \n(x + 3 = 0  lub  4x2 − 1 = 0) i zapisze oba rozwiązania równania  4x2 − 1 = 0:  \nx = −1\n2  oraz  x = 1\n2  to otrzymuje 1 punkt za całe rozwiązanie. \n5.4. zapisze błędne równanie (w którym jedna ze stron jest równa  0, a druga jest \niloczynem wielomianów stopni dodatnich), inne niż w uwagach 5.2 oraz 5.3, np. \n(x − 3)(x + 3)(4x2 ± 1) = 0  lub błędną alternatywę inną niż w uwagach 5.2 \noraz 5.3, np. (x − 3 = 0  lub  x + 3 = 0  lub  4x2 ± 1 = 0), to otrzymuje \n0 punktów za całe rozwiązanie. \n6. Jeżeli zdający, przekształcając równanie  4x3 − 12x2 − x + 3 = 0, popełni jeden błąd \n(który nie jest błędem znaku) albo dwa błędy znaku i otrzyma równanie trzeciego stopnia, \nktóre ma trzy rozwiązania rzeczywiste, oraz konsekwentnie rozwiąże zadanie do końca, to \notrzymuje 1 punkt za całe rozwiązanie. \n7. Jeżeli zdający dzieli obustronnie równanie  4x2(x − 3) = x − 3  przez dwumian   \n(x − 3)  z podaniem odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = −1\n2  oraz  x = 1\n2, to otrzymuje 2 punkty za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 1 punkt za całe rozwiązanie. \n8. Jeżeli zdający dzieli obustronnie równanie  4x2(x − 3) = x − 3  przez dwumian   \n(x − 3)  bez podania odpowiedniego założenia i uzyska tylko dwa poprawne rozwiązania  \nx = −1\n2  oraz  x = 1\n2, to otrzymuje 1 punkt za całe rozwiązanie, a jeżeli uzyska tylko \njedno z tych rozwiązań, to otrzymuje 0 punktów za całe rozwiązanie.",
+    "explanation": "**Krok 1:** Grupujemy wyrazy: $4x^2(x - 3) - (x - 3) = 0$.\n\n**Krok 2:** $(x - 3)(4x^2 - 1) = 0$, a ze wzoru na różnicę kwadratów: $(x - 3)(2x - 1)(2x + 1) = 0$.\n\n**Krok 3:** $x = 3$ lub $x = \\frac{1}{2}$ lub $x = -\\frac{1}{2}$.\n\n**Pułapka CKE:** Przy grupowaniu $-x + 3 = -(x - 3)$. Zgubiony minus daje nawias $(x + 3)$ i grupowanie się nie udaje.\n\n**Odpowiedź:** $x = 3$ lub $x = -\\frac{1}{2}$ lub $x = \\frac{1}{2}$.",
+    "ckeTrap": "Przy grupowaniu $-x + 3 = -(x - 3)$. Zgubiony minus daje nawias $(x + 3)$ i grupowanie się nie udaje.",
     "source": "Matura Czerwiec 2024 • Zad. 10",
     "year": 2024,
     "session": "Czerwiec",
@@ -239,59 +239,248 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "11.1",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
-    "type": "NUMERIC_INPUT",
-    "content": "Uzupełnij poniższe zdanie. Wpisz odpowiedni przedział w wykropkowanym miejscu\ntak, aby zdanie było prawdziwe.\nZbiorem wszystkich rozwiązań nierówności  f(x) \\le 2  jest przedział  ………………………  .",
+    "section": "Dział 4: Funkcje i ich własności",
+    "topicId": "dzial-4",
+    "type": "OPEN_CALCULATION",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono wykres funkcji $f$ (rysunek 1.). Każdy z punktów przecięcia wykresu funkcji $f$ z prostą o równaniu $y = 2$ ma obie współrzędne całkowite.\n\nUzupełnij zdanie. Wpisz odpowiedni przedział tak, aby zdanie było prawdziwe.\n\nZbiorem wszystkich rozwiązań nierówności $f(x) \\le 2$ jest przedział …",
     "options": [],
-    "correctAnswer": "[0,4]",
+    "correctAnswer": "$\\langle 0, 4 \\rangle$",
     "points": 1,
     "isClosed": false,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n[0,4] \n \nKryteria uwzględniające specyficzne trudności w uczeniu się matematyki \n \nJeśli zdający pomyli porządek liczb na osi liczbowej, np. zapisze zbiór rozwiązań nierówności \nw postaci  [4,0], to otrzymuje 1 punkt.",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Rysujemy w myśli prostą $y = 2$. Wykres funkcji przecina ją w punktach $(0, 2)$ oraz $(4, 2)$.\n\n**Krok 2:** $f(x) \\le 2$ dla tych argumentów, dla których wykres leży na prostej $y = 2$ lub pod nią – czyli między $x = 0$ a $x = 4$.\n\n**Krok 3:** Nierówność jest nieostra, więc $x \\in \\langle 0, 4 \\rangle$.\n\n**Pułapka CKE:** Rozwiązaniem nierówności są ARGUMENTY (odczytujemy z osi $Ox$), a nie wartości. Przedział $\\langle 0, 2 \\rangle$ to zbiór wartości, a nie rozwiązanie.\n\n**Odpowiedź:** $\\langle 0, 4 \\rangle$",
+    "ckeTrap": "Rozwiązaniem nierówności są ARGUMENTY (odczytujemy z osi $Ox$), a nie wartości. Przedział $\\langle 0, 2 \\rangle$ to zbiór wartości, a nie rozwiązanie.",
     "source": "Matura Czerwiec 2024 • Zad. 11.1",
     "year": 2024,
     "session": "Czerwiec",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "xRange": [
+        -5,
+        7
+      ],
+      "yRange": [
+        -3,
+        6
+      ],
+      "gridStep": 1,
+      "type": "PIECEWISE_LINEAR",
+      "segments": [
+        {
+          "from": [
+            -1,
+            4
+          ],
+          "to": [
+            0,
+            2
+          ],
+          "startDot": "filled",
+          "endDot": "none"
+        },
+        {
+          "from": [
+            0,
+            2
+          ],
+          "to": [
+            1,
+            0
+          ],
+          "startDot": "none",
+          "endDot": "none"
+        },
+        {
+          "from": [
+            1,
+            0
+          ],
+          "to": [
+            7,
+            4
+          ],
+          "startDot": "none",
+          "endDot": "filled"
+        }
+      ]
+    }
   },
   {
     "id": "matura-czerwiec-2024-zad-11_2",
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "11.2",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
-    "type": "NUMERIC_INPUT",
-    "content": "Na rysunku 2., w kartezjańskim układzie współrzędnych  (x, y), przedstawiono wykres funkcji  g,\npowstałej w wyniku przesunięcia równoległego wykresu funkcji  f  wzdłuż osi  Ox\no  4  jednostki w lewo.\nRysunek 2.\nDokończ zdanie. Wybierz odpowiedź A, B albo C oraz odpowiedź 1. albo 2.\nFunkcje  f  i  g  są powiązane zależnością\nA. g(x) = f(x + 4)\noraz mają takie same\n1. dziedziny.\nB. g(x) = f(x − 4)\n2. zbiory wartości. C. g(x) = f(x) − 4",
+    "section": "Dział 4: Funkcje i ich własności",
+    "topicId": "dzial-4",
+    "type": "TWO_PART",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono wykres funkcji $f$ (rysunek 1.). Każdy z punktów przecięcia wykresu funkcji $f$ z prostą o równaniu $y = 2$ ma obie współrzędne całkowite. Na rysunku 2. przedstawiono wykres funkcji $g$, powstałej w wyniku przesunięcia równoległego wykresu funkcji $f$ wzdłuż osi $Ox$ o $4$ jednostki w lewo.\n\nDokończ zdanie. Wybierz właściwe zakończenie.\n\nFunkcje $f$ i $g$ są powiązane zależnością",
     "options": [],
+    "parts": [
+      {
+        "prompt": "",
+        "options": [
+          {
+            "id": "A",
+            "text": "$g(x) = f(x + 4)$"
+          },
+          {
+            "id": "B",
+            "text": "$g(x) = f(x - 4)$"
+          },
+          {
+            "id": "C",
+            "text": "$g(x) = f(x) - 4$"
+          }
+        ]
+      },
+      {
+        "prompt": "oraz mają takie same",
+        "options": [
+          {
+            "id": "1",
+            "text": "dziedziny"
+          },
+          {
+            "id": "2",
+            "text": "zbiory wartości"
+          }
+        ]
+      }
+    ],
     "correctAnswer": "A2",
     "points": 1,
-    "isClosed": false,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA2",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "isClosed": true,
+    "explanation": "**Krok 1:** Przesunięcie wykresu o $4$ jednostki w LEWO wzdłuż osi $Ox$ opisuje wzór $g(x) = f(x + 4)$.\n\n**Krok 2:** Przesunięcie poziome zmienia dziedzinę: $D_f = \\langle -1, 7 \\rangle$, a $D_g = \\langle -5, 3 \\rangle$.\n\n**Krok 3:** Zbiór wartości się nie zmienia: obie funkcje przyjmują wartości z przedziału $\\langle 0, 4 \\rangle$.\n\n**Pułapka CKE:** Znak we wzorze jest „odwrotny” do kierunku: przesunięcie w lewo to $f(x + 4)$, w prawo – $f(x - 4)$. Wzór $f(x) - 4$ przesuwa wykres w dół.\n\nPrawidłowa odpowiedź: **A2** ($g(x) = f(x + 4)$, oraz mają takie same zbiory wartości).",
+    "ckeTrap": "Znak we wzorze jest „odwrotny” do kierunku: przesunięcie w lewo to $f(x + 4)$, w prawo – $f(x - 4)$. Wzór $f(x) - 4$ przesuwa wykres w dół.",
     "source": "Matura Czerwiec 2024 • Zad. 11.2",
     "year": 2024,
     "session": "Czerwiec",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "panels": [
+        {
+          "title": "Rysunek 1. – wykres funkcji f",
+          "plot": {
+            "xRange": [
+              -5,
+              7
+            ],
+            "yRange": [
+              -3,
+              6
+            ],
+            "gridStep": 1,
+            "type": "PIECEWISE_LINEAR",
+            "segments": [
+              {
+                "from": [
+                  -1,
+                  4
+                ],
+                "to": [
+                  0,
+                  2
+                ],
+                "startDot": "filled",
+                "endDot": "none"
+              },
+              {
+                "from": [
+                  0,
+                  2
+                ],
+                "to": [
+                  1,
+                  0
+                ],
+                "startDot": "none",
+                "endDot": "none"
+              },
+              {
+                "from": [
+                  1,
+                  0
+                ],
+                "to": [
+                  7,
+                  4
+                ],
+                "startDot": "none",
+                "endDot": "filled"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Rysunek 2. – wykres funkcji g",
+          "plot": {
+            "xRange": [
+              -5,
+              7
+            ],
+            "yRange": [
+              -3,
+              6
+            ],
+            "gridStep": 1,
+            "type": "PIECEWISE_LINEAR",
+            "segments": [
+              {
+                "from": [
+                  -5,
+                  4
+                ],
+                "to": [
+                  -3,
+                  0
+                ],
+                "startDot": "filled",
+                "endDot": "none"
+              },
+              {
+                "from": [
+                  -3,
+                  0
+                ],
+                "to": [
+                  3,
+                  4
+                ],
+                "startDot": "none",
+                "endDot": "filled"
+              }
+            ]
+          }
+        }
+      ]
+    }
   },
   {
     "id": "matura-czerwiec-2024-zad-12",
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "12",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
+    "section": "Dział 4: Funkcje i ich własności",
+    "topicId": "dzial-4",
     "type": "TRUE_FALSE",
-    "content": "Funkcja  y = f(x)  jest określona za pomocą tabeli\n𝒙 −2 −1 0 1 2\n𝒚 −1 0 1 0 3\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nFunkcja  f  ma dokładnie jedno miejsce zerowe.  P F\nW kartezjańskim układzie współrzędnych  (x, y)  wykres funkcji  f  jest\nsymetryczny względem osi  Oy. P F",
-    "options": [
-      "PRAWDA",
-      "FAŁSZ"
+    "content": "Funkcja $y = f(x)$ jest określona za pomocą tabeli\n$$\\begin{array}{c|ccccc} x & -2 & -1 & 0 & 1 & 2 \\\\ \\hline y & -1 & 0 & 1 & 0 & 3 \\end{array}$$\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+    "options": [],
+    "statements": [
+      {
+        "id": "1",
+        "text": "Funkcja $f$ ma dokładnie jedno miejsce zerowe.",
+        "correct": "F"
+      },
+      {
+        "id": "2",
+        "text": "W kartezjańskim układzie współrzędnych $(x, y)$ wykres funkcji $f$ jest symetryczny względem osi $Oy$.",
+        "correct": "F"
+      }
     ],
     "correctAnswer": "FF",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nFF",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Miejsca zerowe to argumenty, dla których $y = 0$: z tabeli $x = -1$ oraz $x = 1$. Są dwa, więc stwierdzenie 1 jest fałszywe.\n\n**Krok 2:** Symetria względem osi $Oy$ wymagałaby $f(-x) = f(x)$ dla każdego argumentu. Tymczasem $f(-2) = -1$, a $f(2) = 3$ – stwierdzenie 2 jest fałszywe.\n\n**Pułapka CKE:** Miejsce zerowe to argument $x$, dla którego wartość jest równa $0$ – a nie argument $x = 0$. W tabeli dla $x = 0$ wartość to $1$.\n\nPrawidłowa odpowiedź: **1 – F**, **2 – F**.",
+    "ckeTrap": "Miejsce zerowe to argument $x$, dla którego wartość jest równa $0$ – a nie argument $x = 0$. W tabeli dla $x = 0$ wartość to $1$.",
     "source": "Matura Czerwiec 2024 • Zad. 12",
     "year": 2024,
     "session": "Czerwiec",
@@ -302,21 +491,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "13",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 5: Funkcja liniowa i układy równań",
+    "topicId": "dzial-5",
     "type": "SINGLE_CHOICE",
-    "content": "Liczba  2  jest miejscem zerowym funkcji liniowej  f(x) = (3 − m)x + 4.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  m  jest równa",
+    "content": "Liczba $2$ jest miejscem zerowym funkcji liniowej $f(x) = (3 - m)x + 4$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $m$ jest równa",
     "options": [
-      "0",
-      "3",
-      "4",
-      "5"
+      "$0$",
+      "$3$",
+      "$4$",
+      "$5$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Miejsce zerowe $2$ oznacza, że $f(2) = 0$: $(3 - m) \\cdot 2 + 4 = 0$.\n\n**Krok 2:** $6 - 2m + 4 = 0$, czyli $2m = 10$ i $m = 5$.\n\n**Pułapka CKE:** Dla $m = 3$ współczynnik przy $x$ jest równy zero i funkcja $f(x) = 4$ w ogóle nie ma miejsc zerowych.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Dla $m = 3$ współczynnik przy $x$ jest równy zero i funkcja $f(x) = 4$ w ogóle nie ma miejsc zerowych.",
     "source": "Matura Czerwiec 2024 • Zad. 13",
     "year": 2024,
     "session": "Czerwiec",
@@ -327,16 +516,16 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "14",
-    "section": "Dział 6: Funkcja Kwadratowa",
+    "section": "Dział 6: Funkcja kwadratowa",
     "topicId": "dzial-6",
     "type": "OPEN_CALCULATION",
-    "content": "Parabola, która jest wykresem funkcji kwadratowej  f, ma z osiami kartezjańskiego układu\nwspółrzędnych  (x, y)  dokładnie dwa punkty wspólne:  M = (0, 18)  oraz  𝑁 = (3, 0).\nWyznacz wzór funkcji kwadratowej  𝒇. Zapisz obliczenia.",
+    "content": "Parabola, która jest wykresem funkcji kwadratowej $f$, ma z osiami kartezjańskiego układu współrzędnych $(x, y)$ dokładnie dwa punkty wspólne: $M = (0, 18)$ oraz $N = (3, 0)$.\n\nWyznacz wzór funkcji kwadratowej $f$. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$f(x) = 2(x - 3)^2$, czyli $f(x) = 2x^2 - 12x + 18$.",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I  \nPonieważ punkt  𝑁 = (3,0)  jest jedynym punktem wspólnym wykresu funkcji  f  i osi  Ox, \nwięc jest to wierzchołek paraboli będącej wykresem funkcji  f.  \n \nZapisujemy wzór funkcji  f  w postaci kanonicznej: \n \nf(x) = a(x − 3)2,  gdzie  a \\ne 0 \n \nPunkt  M = (0,18)  leży na wykresie funkcji  f, zatem \n \nf(0) = 18 \n \na(0 − 3)2 = 18 \n \n9a = 18 \n \na = 2 \n \nZatem  f(x) = 2(x − 3)2 .",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Punkt $M$ leży na osi $Oy$, więc jedynym punktem wspólnym paraboli z osią $Ox$ jest $N = (3, 0)$. Parabola jest styczna do osi $Ox$ – punkt $N$ to jej wierzchołek.\n\n**Krok 2:** Postać kanoniczna: $f(x) = a(x - 3)^2$.\n\n**Krok 3:** Z punktu $M$: $f(0) = a \\cdot 9 = 18$, więc $a = 2$ i $f(x) = 2(x - 3)^2$.\n\n**Pułapka CKE:** „Dokładnie dwa punkty wspólne z osiami” – jeden z nich jest na osi $Oy$, więc na osi $Ox$ zostaje tylko JEDEN. To oznacza jedno miejsce zerowe, czyli wierzchołek na osi $Ox$.\n\n**Odpowiedź:** $f(x) = 2(x - 3)^2$, czyli $f(x) = 2x^2 - 12x + 18$.",
+    "ckeTrap": "„Dokładnie dwa punkty wspólne z osiami” – jeden z nich jest na osi $Oy$, więc na osi $Ox$ zostaje tylko JEDEN. To oznacza jedno miejsce zerowe, czyli wierzchołek na osi $Ox$.",
     "source": "Matura Czerwiec 2024 • Zad. 14",
     "year": 2024,
     "session": "Czerwiec",
@@ -347,60 +536,137 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "15.1",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
+    "section": "Dział 6: Funkcja kwadratowa",
+    "topicId": "dzial-6",
     "type": "SINGLE_CHOICE",
-    "content": "Na jednym z rysunków A–D przedstawiono, w kartezjańskim układzie współrzędnych  (x, y),\nfragment wykresu funkcji  y = f(x).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nFragment wykresu funkcji  y = f(x)  przedstawiono na rysunku",
+    "content": "Funkcja kwadratowa $f$ jest określona wzorem $f(x) = -(x + 1)^2 + 4$. Na jednym z rysunków A–D przedstawiono, w kartezjańskim układzie współrzędnych $(x, y)$, fragment wykresu funkcji $y = f(x)$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nFragment wykresu funkcji $y = f(x)$ przedstawiono na rysunku",
     "options": [
-      {
-        "id": "A",
-        "text": "Parabola o wierzchołku W = (1, 4) i ramionach skierowanych w dół",
-        "is_correct": false
-      },
-      {
-        "id": "B",
-        "text": "Parabola o wierzchołku W = (-1, 4) i ramionach skierowanych w dół, przechodząca przez (0, 3)",
-        "is_correct": true
-      },
-      {
-        "id": "C",
-        "text": "Parabola o wierzchołku W = (-1, -4) i ramionach skierowanych w górę",
-        "is_correct": false
-      },
-      {
-        "id": "D",
-        "text": "Parabola o wierzchołku W = (1, -4) i ramionach skierowanych w górę",
-        "is_correct": false
-      }
+      "A",
+      "B",
+      "C",
+      "D"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Wzór $f(x) = -(x + 1)^2 + 4$ jest w postaci kanonicznej $a(x - p)^2 + q$ z $a = -1$, $p = -1$, $q = 4$.\n\n**Krok 2:** $a < 0$, więc ramiona paraboli są skierowane w dół – odpadają rysunki A i C.\n\n**Krok 3:** Wierzchołek to $(-1, 4)$ – leży na lewo od osi $Oy$. Taki wykres jest na rysunku B.\n\n**Pułapka CKE:** Nawias $(x + 1)$ oznacza $p = -1$, czyli wierzchołek po LEWEJ stronie osi $Oy$. Rysunek D ma wierzchołek w $(1, 4)$.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Nawias $(x + 1)$ oznacza $p = -1$, czyli wierzchołek po LEWEJ stronie osi $Oy$. Rysunek D ma wierzchołek w $(1, 4)$.",
     "source": "Matura Czerwiec 2024 • Zad. 15.1",
     "year": 2024,
     "session": "Czerwiec",
-    "isCke": true
+    "isCke": true,
+    "plot": {
+      "panels": [
+        {
+          "title": "A",
+          "plot": {
+            "xRange": [
+              -5,
+              5
+            ],
+            "yRange": [
+              -5,
+              5
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": 1,
+              "p": 1,
+              "q": -4
+            }
+          }
+        },
+        {
+          "title": "B",
+          "plot": {
+            "xRange": [
+              -5,
+              5
+            ],
+            "yRange": [
+              -5,
+              5
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": -1,
+              "p": -1,
+              "q": 4
+            }
+          }
+        },
+        {
+          "title": "C",
+          "plot": {
+            "xRange": [
+              -5,
+              5
+            ],
+            "yRange": [
+              -5,
+              5
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": 1,
+              "p": -1,
+              "q": -4
+            }
+          }
+        },
+        {
+          "title": "D",
+          "plot": {
+            "xRange": [
+              -5,
+              5
+            ],
+            "yRange": [
+              -5,
+              5
+            ],
+            "gridStep": 1,
+            "type": "PARABOLA",
+            "parabola": {
+              "a": -1,
+              "p": 1,
+              "q": 4
+            }
+          }
+        }
+      ]
+    }
   },
   {
     "id": "matura-czerwiec-2024-zad-15_2",
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "15.2",
-    "section": "Dział 4: Własności Funkcji i Odczytywanie Wykresów",
-    "topicId": "dzial-4",
+    "section": "Dział 6: Funkcja kwadratowa",
+    "topicId": "dzial-6",
     "type": "TRUE_FALSE",
-    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nWykres funkcji  f  przecina oś  Oy  kartezjańskiego układu współrzędnych\n(x, y)  w punkcie o współrzędnych  (0, 4).  P F\nMiejsca zerowe funkcji  f  są równe:  (−3)  oraz  1. P F",
-    "options": [
-      "PRAWDA",
-      "FAŁSZ"
+    "content": "Funkcja kwadratowa $f$ jest określona wzorem $f(x) = -(x + 1)^2 + 4$.\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+    "options": [],
+    "statements": [
+      {
+        "id": "1",
+        "text": "Wykres funkcji $f$ przecina oś $Oy$ kartezjańskiego układu współrzędnych $(x, y)$ w punkcie o współrzędnych $(0, 4)$.",
+        "correct": "F"
+      },
+      {
+        "id": "2",
+        "text": "Miejsca zerowe funkcji $f$ są równe: $(-3)$ oraz $1$.",
+        "correct": "P"
+      }
     ],
     "correctAnswer": "FP",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nFP",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Punkt przecięcia z osią $Oy$: $f(0) = -(0 + 1)^2 + 4 = 3$, czyli $(0, 3)$ – stwierdzenie 1 jest fałszywe.\n\n**Krok 2:** Miejsca zerowe: $-(x + 1)^2 + 4 = 0$, czyli $(x + 1)^2 = 4$, stąd $x + 1 = 2$ lub $x + 1 = -2$, więc $x = 1$ lub $x = -3$ – stwierdzenie 2 jest prawdziwe.\n\n**Pułapka CKE:** Liczba $4$ we wzorze to druga współrzędna WIERZCHOŁKA, a nie punkt przecięcia z osią $Oy$. Ten zawsze liczymy jako $f(0)$.\n\nPrawidłowa odpowiedź: **1 – F**, **2 – P**.",
+    "ckeTrap": "Liczba $4$ we wzorze to druga współrzędna WIERZCHOŁKA, a nie punkt przecięcia z osią $Oy$. Ten zawsze liczymy jako $f(0)$.",
     "source": "Matura Czerwiec 2024 • Zad. 15.2",
     "year": 2024,
     "session": "Czerwiec",
@@ -411,21 +677,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "16.1",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nSuma dziesięciu początkowych kolejnych wyrazów tego ciągu jest równa",
+    "content": "Ciąg $(a_n)$ jest określony wzorem $a_n = 2 \\cdot (-1)^{n+1} + 5$ dla każdej liczby naturalnej $n \\ge 1$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nSuma dziesięciu początkowych kolejnych wyrazów tego ciągu jest równa",
     "options": [
-      "3",
-      "7",
-      "50",
-      "100"
+      "$3$",
+      "$7$",
+      "$50$",
+      "$100$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Dla $n$ nieparzystych $(-1)^{n+1} = 1$, więc $a_n = 2 + 5 = 7$. Dla $n$ parzystych $(-1)^{n+1} = -1$, więc $a_n = -2 + 5 = 3$.\n\n**Krok 2:** Wśród dziesięciu początkowych wyrazów jest pięć siódemek i pięć trójek.\n\n**Krok 3:** $S_{10} = 5 \\cdot 7 + 5 \\cdot 3 = 50$.\n\n**Pułapka CKE:** To nie jest ciąg arytmetyczny ani geometryczny – wzory na sumę z karty tu nie działają. Wystarczy wypisać wyrazy: $7, 3, 7, 3, \\ldots$\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "To nie jest ciąg arytmetyczny ani geometryczny – wzory na sumę z karty tu nie działają. Wystarczy wypisać wyrazy: $7, 3, 7, 3, \\ldots$",
     "source": "Matura Czerwiec 2024 • Zad. 16.1",
     "year": 2024,
     "session": "Czerwiec",
@@ -436,19 +702,28 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "16.2",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
     "type": "TRUE_FALSE",
-    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nCiąg  (an)  jest malejący. P F\nCiąg  (an)  jest geometryczny. P F",
-    "options": [
-      "PRAWDA",
-      "FAŁSZ"
+    "content": "Ciąg $(a_n)$ jest określony wzorem $a_n = 2 \\cdot (-1)^{n+1} + 5$ dla każdej liczby naturalnej $n \\ge 1$.\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+    "options": [],
+    "statements": [
+      {
+        "id": "1",
+        "text": "Ciąg $(a_n)$ jest malejący.",
+        "correct": "F"
+      },
+      {
+        "id": "2",
+        "text": "Ciąg $(a_n)$ jest geometryczny.",
+        "correct": "F"
+      }
     ],
     "correctAnswer": "FF",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nFF",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Kolejne wyrazy: $7, 3, 7, 3, \\ldots$ Ciąg raz maleje, raz rośnie ($a_3 > a_2$), więc nie jest malejący – stwierdzenie 1 jest fałszywe.\n\n**Krok 2:** W ciągu geometrycznym iloraz kolejnych wyrazów jest stały. Tu $\\frac{a_2}{a_1} = \\frac{3}{7}$, a $\\frac{a_3}{a_2} = \\frac{7}{3}$ – stwierdzenie 2 jest fałszywe.\n\n**Pułapka CKE:** Spadek z $a_1 = 7$ do $a_2 = 3$ nie wystarcza, by ciąg był malejący – KAŻDY następny wyraz musiałby być mniejszy od poprzedniego.\n\nPrawidłowa odpowiedź: **1 – F**, **2 – F**.",
+    "ckeTrap": "Spadek z $a_1 = 7$ do $a_2 = 3$ nie wystarcza, by ciąg był malejący – KAŻDY następny wyraz musiałby być mniejszy od poprzedniego.",
     "source": "Matura Czerwiec 2024 • Zad. 16.2",
     "year": 2024,
     "session": "Czerwiec",
@@ -459,21 +734,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "17",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
     "type": "SINGLE_CHOICE",
-    "content": "W ciągu arytmetycznym  (an), określonym dla każdej liczby naturalnej  n \\ge 1, dane są\nwyrazy:  a1 = 7  oraz  a2 = 13.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWyraz  a10  jest równy",
+    "content": "W ciągu arytmetycznym $(a_n)$, określonym dla każdej liczby naturalnej $n \\ge 1$, dane są wyrazy: $a_1 = 7$ oraz $a_2 = 13$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWyraz $a_{10}$ jest równy",
     "options": [
-      "(−47)",
-      "52",
-      "61",
-      "67"
+      "$(-47)$",
+      "$52$",
+      "$61$",
+      "$67$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Różnica ciągu: $r = a_2 - a_1 = 13 - 7 = 6$.\n\n**Krok 2:** $a_{10} = a_1 + 9r = 7 + 9 \\cdot 6 = 61$.\n\n**Pułapka CKE:** Do dziesiątego wyrazu dodajemy różnicę $9$ razy, nie $10$. Wynik $67$ to już $a_{11}$.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Karta wzorów, str. 9: $a_n = a_1 + (n - 1)r$.",
     "source": "Matura Czerwiec 2024 • Zad. 17",
     "year": 2024,
     "session": "Czerwiec",
@@ -484,21 +759,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "18",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 7: Ciągi liczbowe",
+    "topicId": "dzial-7",
     "type": "SINGLE_CHOICE",
-    "content": "Trzywyrazowy ciąg  (−1, 2, x)  jest arytmetyczny.\nTrzywyrazowy ciąg  (−1, 2, y)  jest geometryczny.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczby  x  oraz  y  spełniają warunki",
+    "content": "Trzywyrazowy ciąg $(-1, 2, x)$ jest arytmetyczny. Trzywyrazowy ciąg $(-1, 2, y)$ jest geometryczny.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczby $x$ oraz $y$ spełniają warunki",
     "options": [
-      "x > 0   i   y > 0",
-      "x > 0   i   y < 0",
-      "x < 0   i   y > 0",
-      "x < 0   i   y < 0"
+      "$x > 0$ i $y > 0$",
+      "$x > 0$ i $y < 0$",
+      "$x < 0$ i $y > 0$",
+      "$x < 0$ i $y < 0$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Ciąg arytmetyczny: $r = 2 - (-1) = 3$, więc $x = 2 + 3 = 5 > 0$.\n\n**Krok 2:** Ciąg geometryczny: $q = \\frac{2}{-1} = -2$, więc $y = 2 \\cdot (-2) = -4 < 0$.\n\n**Pułapka CKE:** Te same dwa początkowe wyrazy dają zupełnie inne trzecie wyrazy: w arytmetycznym DODAJEMY różnicę, w geometrycznym MNOŻYMY przez iloraz (tutaj ujemny).\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Te same dwa początkowe wyrazy dają zupełnie inne trzecie wyrazy: w arytmetycznym DODAJEMY różnicę, w geometrycznym MNOŻYMY przez iloraz (tutaj ujemny).",
     "source": "Matura Czerwiec 2024 • Zad. 18",
     "year": 2024,
     "session": "Czerwiec",
@@ -512,18 +787,18 @@
     "section": "Dział 8: Trygonometria",
     "topicId": "dzial-8",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba  1 + cos2 27°  jest równa",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba $1 + \\cos^2 27^\\circ$ jest równa",
     "options": [
-      "2 − sin2 27°",
-      "sin2 27°",
-      "2 + sin2 27°",
-      "2"
+      "$2 - \\sin^2 27^\\circ$",
+      "$\\sin^2 27^\\circ$",
+      "$2 + \\sin^2 27^\\circ$",
+      "$2$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Z jedynki trygonometrycznej: $\\cos^2 27^\\circ = 1 - \\sin^2 27^\\circ$.\n\n**Krok 2:** $1 + \\cos^2 27^\\circ = 1 + 1 - \\sin^2 27^\\circ = 2 - \\sin^2 27^\\circ$.\n\n**Pułapka CKE:** Jedynka trygonometryczna to $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$. Samo $1 + \\cos^2 \\alpha$ nie jest równe ani $2$, ani $\\sin^2 \\alpha$.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Karta wzorów, str. 12: $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$.",
     "source": "Matura Czerwiec 2024 • Zad. 19",
     "year": 2024,
     "session": "Czerwiec",
@@ -534,149 +809,140 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "20",
-    "section": "Dział 9: Planimetria",
-    "topicId": "dzial-9",
+    "section": "Dział 8: Trygonometria",
+    "topicId": "dzial-8",
     "type": "SINGLE_CHOICE",
-    "content": "Podstawy trapezu prostokątnego  ABCD  mają długości:  |AB| = 8  oraz  |CD| = 5.\nWysokość  AD  tego trapezu ma długość  \\sqrt3  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ABC  jest równa",
+    "content": "Podstawy trapezu prostokątnego $ABCD$ mają długości: $|AB| = 8$ oraz $|CD| = 5$. Wysokość $AD$ tego trapezu ma długość $\\sqrt{3}$ (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMiara kąta ostrego $ABC$ jest równa",
     "options": [
-      "15°",
-      "30°",
-      "45°",
-      "60°"
+      "$15^\\circ$",
+      "$30^\\circ$",
+      "$45^\\circ$",
+      "$60^\\circ$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Z wierzchołka $C$ opuszczamy wysokość na podstawę $AB$; jej spodek oznaczmy $E$. Wtedy $|CE| = \\sqrt{3}$ oraz $|EB| = 8 - 5 = 3$.\n\n**Krok 2:** W trójkącie prostokątnym $EBC$: $\\operatorname{tg} |\\sphericalangle ABC| = \\frac{|CE|}{|EB|} = \\frac{\\sqrt{3}}{3}$.\n\n**Krok 3:** $\\operatorname{tg} 30^\\circ = \\frac{\\sqrt{3}}{3}$, więc kąt $ABC$ ma miarę $30^\\circ$.\n\n**Pułapka CKE:** $\\frac{\\sqrt{3}}{3}$ to tangens $30^\\circ$, a $\\sqrt{3}$ – tangens $60^\\circ$. Pomylenie przyprostokątnych (stosunek $\\frac{3}{\\sqrt{3}}$) daje $60^\\circ$.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Karta wzorów, str. 12: tabela wartości funkcji trygonometrycznych dla $30^\\circ$, $45^\\circ$, $60^\\circ$.",
     "source": "Matura Czerwiec 2024 • Zad. 20",
     "year": 2024,
     "session": "Czerwiec",
     "isCke": true,
     "diagram": {
       "type": "GEOMETRY_2D",
-      "title": "Trapez prostokątny $ABCD$ o podstawach $|AB| = 8$, $|CD| = 5$ i wysokości $|AD|$",
-      "width": 440,
-      "height": 260,
-      "polygons": [
-        {
-          "points": [
-            [
-              70,
-              200
-            ],
-            [
-              350,
-              200
-            ],
-            [
-              245,
-              70
-            ],
-            [
-              70,
-              70
-            ]
-          ],
-          "fill": "rgba(255, 184, 0, 0.08)",
-          "stroke": "#FFB800",
-          "strokeWidth": 2
-        }
-      ],
-      "arcs": [
-        {
-          "cx": 70,
-          "cy": 200,
-          "r": 16,
-          "startAngleDeg": 270,
-          "endAngleDeg": 360,
-          "color": "#FFB800",
-          "showRightAngleDot": true
-        },
-        {
-          "cx": 70,
-          "cy": 70,
-          "r": 16,
-          "startAngleDeg": 0,
-          "endAngleDeg": 90,
-          "color": "#FFB800",
-          "showRightAngleDot": true
-        }
-      ],
+      "width": 400,
+      "height": 163,
       "segments": [
         {
           "from": [
-            245,
-            70
+            63,
+            112.6
           ],
           "to": [
-            245,
-            200
+            355.3,
+            112.6
           ],
-          "color": "#38BDF8",
-          "strokeWidth": 1.5,
-          "dashed": true,
-          "label": "h = 4"
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            355.3,
+            112.6
+          ],
+          "to": [
+            245.7,
+            49.3
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            245.7,
+            49.3
+          ],
+          "to": [
+            63,
+            49.3
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        },
+        {
+          "from": [
+            63,
+            49.3
+          ],
+          "to": [
+            63,
+            112.6
+          ],
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         }
       ],
       "points": [
         {
-          "x": 70,
-          "y": 200,
+          "x": 63,
+          "y": 112.6,
           "label": "A",
           "labelPosition": "bottom-left",
-          "dot": "filled"
+          "dot": "filled",
+          "noBox": true
         },
         {
-          "x": 350,
-          "y": 200,
+          "x": 355.3,
+          "y": 112.6,
           "label": "B",
           "labelPosition": "bottom-right",
-          "dot": "filled"
+          "dot": "filled",
+          "noBox": true
         },
         {
-          "x": 245,
-          "y": 70,
+          "x": 245.7,
+          "y": 49.3,
           "label": "C",
           "labelPosition": "top-right",
-          "dot": "filled"
+          "dot": "filled",
+          "noBox": true
         },
         {
-          "x": 70,
-          "y": 70,
+          "x": 63,
+          "y": 49.3,
           "label": "D",
           "labelPosition": "top-left",
-          "dot": "filled"
+          "dot": "filled",
+          "noBox": true
         }
       ],
       "labels": [
         {
-          "x": 210,
-          "y": 222,
-          "text": "|AB| = 8",
-          "color": "#FFB800",
-          "fontSize": 12
+          "x": 209.1,
+          "y": 129,
+          "text": "8",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
         },
         {
-          "x": 155,
-          "y": 56,
-          "text": "|CD| = 5",
-          "color": "#FFB800",
-          "fontSize": 12
+          "x": 154.3,
+          "y": 34,
+          "text": "5",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
         },
         {
-          "x": 42,
-          "y": 140,
-          "text": "AD",
-          "color": "#FFB800",
-          "fontSize": 12
-        },
-        {
-          "x": 310,
-          "y": 130,
-          "text": "BC",
-          "color": "#FFB800",
-          "fontSize": 12
+          "x": 44.7,
+          "y": 80.8,
+          "text": "√3",
+          "color": "#ffb800",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "anchor": "middle"
         }
       ]
     }
@@ -689,116 +955,94 @@
     "section": "Dział 9: Planimetria",
     "topicId": "dzial-9",
     "type": "SINGLE_CHOICE",
-    "content": "Punkty  A,  B  oraz  C  leżą na okręgu o środku w punkcie  S. Długość łuku  AB, na którym\njest oparty kąt wpisany  ACB, jest równa  1\n5  długości okręgu (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nMiara kąta ostrego  ACB  jest równa",
+    "content": "Punkty $A$, $B$ oraz $C$ leżą na okręgu o środku w punkcie $S$. Długość łuku $AB$, na którym jest oparty kąt wpisany $ACB$, jest równa $\\frac{1}{5}$ długości okręgu (zobacz rysunek).\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nMiara kąta ostrego $ACB$ jest równa",
     "options": [
-      "18°",
-      "30°",
-      "36°",
-      "72°"
+      "$18^\\circ$",
+      "$30^\\circ$",
+      "$36^\\circ$",
+      "$72^\\circ$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Łuk równy $\\frac{1}{5}$ okręgu odpowiada kątowi środkowemu $\\frac{1}{5} \\cdot 360^\\circ = 72^\\circ$.\n\n**Krok 2:** Kąt wpisany oparty na tym samym łuku jest dwa razy mniejszy: $\\frac{72^\\circ}{2} = 36^\\circ$.\n\n**Pułapka CKE:** $72^\\circ$ to miara kąta ŚRODKOWEGO. Kąt wpisany $ACB$ jest jego połową.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Karta wzorów, str. 18: kąt wpisany jest równy połowie kąta środkowego opartego na tym samym łuku.",
     "source": "Matura Czerwiec 2024 • Zad. 21",
     "year": 2024,
     "session": "Czerwiec",
     "isCke": true,
     "diagram": {
       "type": "GEOMETRY_2D",
-      "title": "Okrąg o środku w punkcie $S$ i kąty oparte na łuku $AB$",
-      "width": 440,
-      "height": 260,
-      "circles": [
-        {
-          "cx": 220,
-          "cy": 130,
-          "r": 90,
-          "stroke": "#38BDF8",
-          "strokeWidth": 2,
-          "fill": "rgba(56, 189, 248, 0.04)"
-        }
-      ],
+      "width": 400,
+      "height": 222,
       "segments": [
         {
           "from": [
-            220,
-            130
+            173.7,
+            38.6
           ],
           "to": [
-            140,
-            175
+            136.9,
+            155.2
           ],
-          "color": "#10B981",
-          "strokeWidth": 1.5
+          "color": "#dfe2f1",
+          "strokeWidth": 2
         },
         {
           "from": [
-            220,
-            130
+            173.7,
+            38.6
           ],
           "to": [
-            300,
-            175
+            222.5,
+            184.6
           ],
-          "color": "#10B981",
-          "strokeWidth": 1.5
-        },
+          "color": "#dfe2f1",
+          "strokeWidth": 2
+        }
+      ],
+      "circles": [
         {
-          "from": [
-            140,
-            175
-          ],
-          "to": [
-            210,
-            42
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 1.75
-        },
-        {
-          "from": [
-            300,
-            175
-          ],
-          "to": [
-            210,
-            42
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 1.75
+          "cx": 200,
+          "cy": 111,
+          "r": 77,
+          "fill": "none",
+          "stroke": "#dfe2f1",
+          "strokeWidth": 2
         }
       ],
       "points": [
         {
-          "x": 140,
-          "y": 175,
-          "label": "A",
-          "labelPosition": "bottom-left",
-          "dot": "filled"
-        },
-        {
-          "x": 300,
-          "y": 175,
-          "label": "B",
-          "labelPosition": "bottom-right",
-          "dot": "filled"
-        },
-        {
-          "x": 210,
-          "y": 42,
-          "label": "C",
-          "labelPosition": "top",
-          "dot": "filled"
-        },
-        {
-          "x": 220,
-          "y": 130,
+          "x": 200,
+          "y": 111,
           "label": "S",
+          "labelPosition": "top-right",
+          "dot": "filled",
+          "noBox": true
+        },
+        {
+          "x": 136.9,
+          "y": 155.2,
+          "label": "A",
+          "labelPosition": "left",
+          "dot": "filled",
+          "noBox": true
+        },
+        {
+          "x": 222.5,
+          "y": 184.6,
+          "label": "B",
           "labelPosition": "bottom",
           "dot": "filled",
-          "color": "#10B981"
+          "noBox": true
+        },
+        {
+          "x": 173.7,
+          "y": 38.6,
+          "label": "C",
+          "labelPosition": "top",
+          "dot": "filled",
+          "noBox": true
         }
       ]
     }
@@ -808,16 +1052,16 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "22",
-    "section": "Dział 10: Geometria Analityczna",
-    "topicId": "dzial-10",
+    "section": "Dział 9: Planimetria",
+    "topicId": "dzial-9",
     "type": "OPEN_CALCULATION",
-    "content": "Bok kwadratu  ABCD  ma długość równą  12. Punkt  S  jest środkiem boku  BC  tego\nkwadratu. Na odcinku  AS  leży punkt  P  taki, że odcinek  BP  jest prostopadły do odcinka  AS.\nOblicz długość odcinka  𝑩𝑷. Zapisz obliczenia.",
+    "content": "Bok kwadratu $ABCD$ ma długość równą $12$. Punkt $S$ jest środkiem boku $BC$ tego kwadratu. Na odcinku $AS$ leży punkt $P$ taki, że odcinek $BP$ jest prostopadły do odcinka $AS$.\n\nOblicz długość odcinka $BP$. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$|BP| = \\frac{12\\sqrt{5}}{5}$",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nPunkt  S  jest środkiem odcinka  BC, więc  |BS| = 6. \nTrójkąt  ABS  jest prostokątny. Odcinek  BP  jest wysokością trójkąta  ABS  poprowadzoną \nna przeciwprostokątną  AS  (jak na rysunku). \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n A \n B \nC \nD \nS \nP \n12 \n6 \nZ twierdzenia Pitagorasa obliczamy długość odcinka  AS \n \n|AS|2 = 122 + 62 \n \n|AS|2 = 180 \n \n|AS| = \\sqrt180 = 6\\sqrt5 \n \nPonieważ odcinek  BP  jest wysokością trójkąta prostokątnego poprowadzoną na \nprzeciwprostokątną, więc \n \n|BP| =\n|AB| \\cdot |BS|\n|AS| = 12 \\cdot 6\n6\\sqrt5\n= 12\n\\sqrt5\n= 12\\sqrt5\n5  \n  \n \nDługość odcinka  BP  jest równa  12\\sqrt5\n5\n . \n \n \nSposób II \nPunkt  S  jest środkiem odcinka  BC, więc  |BS| = 6. \nTrójkąt  ABS  jest prostokątny. Odcinek  BP  jest wysokością trójkąta  ABS  poprowadzoną \nna przeciwprostokątną  AS  (jak na rysunku). \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nZ twierdzenia Pitagorasa obliczamy długość odcinka  AS \n \n|AS|2 = 122 + 62 \n \n|AS|2 = 180 \n \n|AS| = \\sqrt180 = 6\\sqrt5 \n \nPole trójkąta  ABS  jest równe \nPABS = 1\n2 \\cdot 6\\sqrt5 \\cdot |BP| \n \nPonadto pole trójkąta  ABS  można obliczyć jako połowę iloczynu długości przyprostokątnych \n \nPABS = 1\n2 \\cdot 12 \\cdot 6 = 36 \n \nA \n B \nC \nD \nS \nP \n12 \n6",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Trójkąt $ABS$ jest prostokątny (kąt prosty przy $B$), $|AB| = 12$, $|BS| = 6$. Z twierdzenia Pitagorasa: $|AS| = \\sqrt{144 + 36} = \\sqrt{180} = 6\\sqrt{5}$.\n\n**Krok 2:** Odcinek $BP$ jest wysokością trójkąta $ABS$ opuszczoną na przeciwprostokątną $AS$. Pole trójkąta liczymy na dwa sposoby: $\\frac{1}{2} \\cdot 12 \\cdot 6 = \\frac{1}{2} \\cdot 6\\sqrt{5} \\cdot |BP|$.\n\n**Krok 3:** $|BP| = \\frac{72}{6\\sqrt{5}} = \\frac{12}{\\sqrt{5}} = \\frac{12\\sqrt{5}}{5}$.\n\n**Pułapka CKE:** $BP$ nie jest środkową ani połową przekątnej – to WYSOKOŚĆ trójkąta prostokątnego opuszczona na przeciwprostokątną. Najszybciej wyznacza się ją z pola.\n\n**Odpowiedź:** $|BP| = \\frac{12\\sqrt{5}}{5}$",
+    "ckeTrap": "$BP$ nie jest środkową ani połową przekątnej – to WYSOKOŚĆ trójkąta prostokątnego opuszczona na przeciwprostokątną. Najszybciej wyznacza się ją z pola.",
     "source": "Matura Czerwiec 2024 • Zad. 22",
     "year": 2024,
     "session": "Czerwiec",
@@ -828,19 +1072,28 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "23.1",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
+    "section": "Dział 10: Geometria analityczna",
+    "topicId": "dzial-10",
     "type": "TRUE_FALSE",
-    "content": "Oceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest\nprawdziwe, albo F – jeśli jest fałszywe.\nDo okręgu  𝒪  należy punkt o współrzędnych  (−1, −3). P F\nPromień okręgu  𝒪  jest równy  5. P F",
-    "options": [
-      "PRAWDA",
-      "FAŁSZ"
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dany jest okrąg $\\mathcal{O}$ o równaniu\n$$(x - 1)^2 + (y + 2)^2 = 5$$\n\nOceń prawdziwość poniższych stwierdzeń. Wybierz P, jeśli stwierdzenie jest prawdziwe, albo F – jeśli jest fałszywe.",
+    "options": [],
+    "statements": [
+      {
+        "id": "1",
+        "text": "Do okręgu $\\mathcal{O}$ należy punkt o współrzędnych $(-1, -3)$.",
+        "correct": "P"
+      },
+      {
+        "id": "2",
+        "text": "Promień okręgu $\\mathcal{O}$ jest równy $5$.",
+        "correct": "F"
+      }
     ],
     "correctAnswer": "PF",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepełna lub niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nPF",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Podstawiamy punkt do równania: $(-1 - 1)^2 + (-3 + 2)^2 = 4 + 1 = 5$ – równanie jest spełnione, stwierdzenie 1 jest prawdziwe.\n\n**Krok 2:** W równaniu $(x - a)^2 + (y - b)^2 = r^2$ po prawej stronie stoi KWADRAT promienia: $r^2 = 5$, więc $r = \\sqrt{5}$ – stwierdzenie 2 jest fałszywe.\n\n**Pułapka CKE:** Liczba po prawej stronie równania okręgu to $r^2$, a nie $r$.\n\nPrawidłowa odpowiedź: **1 – P**, **2 – F**.",
+    "ckeTrap": "Karta wzorów, str. 23: $(x - a)^2 + (y - b)^2 = r^2$ – okrąg o środku $(a, b)$ i promieniu $r$.",
     "source": "Matura Czerwiec 2024 • Zad. 23.1",
     "year": 2024,
     "session": "Czerwiec",
@@ -851,21 +1104,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "23.2",
-    "section": "Dział 9: Planimetria",
-    "topicId": "dzial-9",
+    "section": "Dział 10: Geometria analityczna",
+    "topicId": "dzial-10",
     "type": "SINGLE_CHOICE",
-    "content": "Okrąg  𝒦  jest obrazem okręgu  𝒪  w symetrii środkowej względem początku układu\nwspółrzędnych.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nOkrąg  𝒦  jest określony równaniem",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dany jest okrąg $\\mathcal{O}$ o równaniu\n$$(x - 1)^2 + (y + 2)^2 = 5$$\nOkrąg $\\mathcal{K}$ jest obrazem okręgu $\\mathcal{O}$ w symetrii środkowej względem początku układu współrzędnych.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nOkrąg $\\mathcal{K}$ jest określony równaniem",
     "options": [
-      "(x − 1)2 + (y + 2)2 = 5",
-      "(x + 1)2 + (y + 2)2 = 5",
-      "(x − 1)2 + (y − 2)2 = 5",
-      "(x + 1)2 + (y − 2)2 = 5"
+      "$(x - 1)^2 + (y + 2)^2 = 5$",
+      "$(x + 1)^2 + (y + 2)^2 = 5$",
+      "$(x - 1)^2 + (y - 2)^2 = 5$",
+      "$(x + 1)^2 + (y - 2)^2 = 5$"
     ],
     "correctAnswer": "D",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nD",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Środek okręgu $\\mathcal{O}$ to $S = (1, -2)$.\n\n**Krok 2:** Symetria środkowa względem punktu $(0, 0)$ zmienia znaki obu współrzędnych: $S' = (-1, 2)$. Promień się nie zmienia.\n\n**Krok 3:** Równanie okręgu $\\mathcal{K}$: $(x + 1)^2 + (y - 2)^2 = 5$.\n\n**Pułapka CKE:** Symetria względem początku układu zmienia znak OBU współrzędnych. Zmiana tylko jednej to symetria osiowa względem osi $Ox$ lub $Oy$.\n\nPrawidłowa odpowiedź: **D**.",
+    "ckeTrap": "Symetria względem początku układu zmienia znak OBU współrzędnych. Zmiana tylko jednej to symetria osiowa względem osi $Ox$ lub $Oy$.",
     "source": "Matura Czerwiec 2024 • Zad. 23.2",
     "year": 2024,
     "session": "Czerwiec",
@@ -876,16 +1129,16 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "24",
-    "section": "Dział 10: Geometria Analityczna",
+    "section": "Dział 10: Geometria analityczna",
     "topicId": "dzial-10",
     "type": "OPEN_CALCULATION",
-    "content": "W kartezjańskim układzie współrzędnych  (x, y)  dane są punkty  A = (2, 8)  oraz\nB = (10, 2). Symetralna odcinka  AB  przecina oś  Ox  układu współrzędnych w punkcie  P.\nOblicz współrzędne punktu  𝑷  oraz  długość odcinka  𝑨𝑷. Zapisz obliczenia.",
+    "content": "W kartezjańskim układzie współrzędnych $(x, y)$ dane są punkty $A = (2, 8)$ oraz $B = (10, 2)$. Symetralna odcinka $AB$ przecina oś $Ox$ układu współrzędnych w punkcie $P$.\n\nOblicz współrzędne punktu $P$ oraz długość odcinka $AP$. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$P = \\left(\\frac{9}{4}, 0\\right)$, $|AP| = \\frac{5\\sqrt{41}}{4}$",
     "points": 4,
     "isClosed": false,
-    "explanation": "Sposób I \nObliczamy współczynnik kierunkowy prostej  AB: \n \naAB = 2 − 8\n10 − 2 = −3\n4 \n \nZatem współczynnik kierunkowy symetralnej  k  odcinka  AB  jest równy \n \nak = 4\n3 \n \nSymetralna  k  przechodzi przez środek  M  odcinka  AB. Obliczamy współrzędne punktu  M: \n \nM = (2 + 10\n2 ,8 + 2\n2 ) = (6,5) \n \nZatem prosta  k  ma równanie postaci \n \ny = 4\n3(x − 6) + 5 \n \ny = 4\n3x − 3 \n \nPunkt  P  jest punktem przecięcia symetralnej  k  z osią  Ox, więc współrzędne  \npunktu  P = (xp,yp)  spełniają równania \n \nyp = 4\n3xp − 3     oraz     yp = 0 \n \nStąd otrzymujemy: \n \n0 = 4\n3xp − 3     oraz     yp = 0 \n \nxp = 9\n4     oraz     yp = 0 \n \nZatem  P = (9\n4,0) \n \nObliczamy długość odcinka  AP: \n \n|AP| = \\sqrt(9\n4 − 2)\n2\n+ (0 − 8)2 = \\sqrt(1\n4)\n2\n+ (−8)2 = \\sqrt 1\n16 + 64 = \\sqrt1025\n16 = 5\\sqrt41\n4  \n  \nSposób II \nPonieważ punkt  P  leży na osi  Ox, więc jego współrzędne są równe  P = (xp,0). \n \nPonieważ  punkt  P  leży na symetralnej odcinka  AB, więc  |AP| = |BP|. \nStąd i ze wzoru na odległość między dwoma punktami otrzymujemy równanie \n \n\\sqrt(xp − 2)\n2\n+ (0 − 8)2 = \\sqrt(xp − 10)\n2\n+ (0 − 2)2 \n \n(xp − 2)\n2\n+ (0 − 8)2 = (xp − 10)\n2\n+ (0 − 2)2 \n \nxp\n2 − 4xp + 4 + 64 = xp\n2 − 20xp + 100 + 4 \n \n16xp = 36 \n \nxp = 9\n4 \n \nZatem  P = (9\n4,0). \n \nObliczamy długość odcinka  AP: \n \n|AP| = \\sqrt(9\n4 − 2)\n2\n+ (0 − 8)2 = \\sqrt(1\n4)\n2\n+ (−8)2 = \\sqrt 1\n16 + 64 = \\sqrt1025\n16 = 5\\sqrt41\n4",
-    "ckeTrap": "1. Jeżeli zdający rozważa punkt  P  leżący na osi  Ox  i w rozwiązaniu popełnia tylko błędy \nrachunkowe, które nie przekreślają poprawności rozumowania, to za całe rozwiązanie \nmoże otrzymać co najwyżej 3 punkty. \n2. Jeżeli zdający rysuje w układzie współrzędnych symetralną odcinka  AB  i odczytuje \nwspółrzędne punktu  P  i zapisuje  P = (9\n4,0)  oraz sprawdzi rachunkowo, że   \n|AP| = |BP|, to za tę część rozwiązania otrzymuje 3 punkty (jeżeli tego sprawdzenia nie \nwykona, to otrzymuje za tę część rozwiązania 2 punkty, a gdy odczyta błędne \nwspółrzędne punktu  P, to otrzymuje 0 punktów). \n3. Jeżeli zdający nie sporządzi rysunku i zapisze tylko  P = (9\n4,0), to otrzymuje 0 punktów; \njeżeli zdający nie sporządzi rysunku, lecz zapisze  P = (9\n4,0)  i dalej kontynuuje \nrozwiązanie, to może otrzymać co najwyżej 1 punkt. \n4. Jeżeli jedynym błędem zdającego jest: \na) zastosowanie niepoprawnego wzoru na współczynnik kierunkowy prostej \nb) zastosowanie niepoprawnego związku między współczynnikami kierunkowymi \nprostych prostopadłych \nc) zastosowanie niepoprawnego wzoru na współrzędne środka odcinka \nd) zastosowanie niepoprawnego warunku prostopadłości wektorów \ne) zastosowanie niepoprawnego wzoru na odległość dwóch punktów \nw kartezjańskim układzie współrzędnych \nf) zastosowanie niepoprawnych własności symetralnej \ng) przyjęcie, że wierzchołek  P  leży poza osią  Ox, \ni rozwiązanie zostanie doprowadzone konsekwentnie do końca, to zdający może otrzymać \n2 punkty za całe rozwiązanie, o ile nie nabył prawa do innej liczby punktów. \nJeżeli zdający popełni więcej niż jeden z wymienionych błędów a)–g), to otrzymuje \n0 punktów za całe rozwiązanie, o ile nie nabył prawa do innej liczby punktów. \n5. Jeżeli zdający rozważa dwa różne położenia punktu  P  na osi  Ox  i nie odrzuca \nniewłaściwego rozwiązania, to otrzymuje co najwyżej 3 punkty.",
+    "explanation": "**Krok 1:** Środek odcinka $AB$: $M = \\left(\\frac{2 + 10}{2}, \\frac{8 + 2}{2}\\right) = (6, 5)$. Współczynnik kierunkowy prostej $AB$: $\\frac{2 - 8}{10 - 2} = -\\frac{3}{4}$.\n\n**Krok 2:** Symetralna jest prostopadła do $AB$ i przechodzi przez $M$: jej współczynnik kierunkowy to $\\frac{4}{3}$, a równanie: $y = \\frac{4}{3}(x - 6) + 5 = \\frac{4}{3}x - 3$.\n\n**Krok 3:** Punkt $P$ leży na osi $Ox$, więc $y = 0$: $\\frac{4}{3}x = 3$, $x = \\frac{9}{4}$. Zatem $P = \\left(\\frac{9}{4}, 0\\right)$.\n\n**Krok 4:** $|AP| = \\sqrt{\\left(2 - \\frac{9}{4}\\right)^2 + (8 - 0)^2} = \\sqrt{\\frac{1}{16} + 64} = \\sqrt{\\frac{1025}{16}} = \\frac{5\\sqrt{41}}{4}$.\n\n**Pułapka CKE:** Symetralna przechodzi przez ŚRODEK odcinka i jest do niego prostopadła – jej współczynnik kierunkowy to $\\frac{4}{3}$, a nie $-\\frac{3}{4}$ ani $\\frac{3}{4}$.\n\n**Odpowiedź:** $P = \\left(\\frac{9}{4}, 0\\right)$, $|AP| = \\frac{5\\sqrt{41}}{4}$",
+    "ckeTrap": "Sprawdzenie: punkt symetralnej jest równo odległy od końców odcinka, więc powinno być $|AP| = |BP|$. Rzeczywiście $|BP| = \\sqrt{\\left(\\frac{31}{4}\\right)^2 + 4} = \\frac{5\\sqrt{41}}{4}$.",
     "source": "Matura Czerwiec 2024 • Zad. 24",
     "year": 2024,
     "session": "Czerwiec",
@@ -896,21 +1149,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "25",
-    "section": "Dział 12: Kombinatoryka",
-    "topicId": "dzial-12",
+    "section": "Dział 11: Stereometria",
+    "topicId": "dzial-11",
     "type": "SINGLE_CHOICE",
-    "content": "Ostrosłup prawidłowy ma  2024  ściany boczne.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba wszystkich krawędzi tego ostrosłupa jest równa",
+    "content": "Ostrosłup prawidłowy ma $2024$ ściany boczne.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba wszystkich krawędzi tego ostrosłupa jest równa",
     "options": [
-      "2025",
-      "2026",
-      "4048",
-      "4052"
+      "$2025$",
+      "$2026$",
+      "$4048$",
+      "$4052$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Ostrosłup ma tyle ścian bocznych, ile boków ma jego podstawa – podstawą jest $2024$-kąt.\n\n**Krok 2:** Krawędzi podstawy jest $2024$ i krawędzi bocznych też $2024$ (po jednej z każdego wierzchołka podstawy).\n\n**Krok 3:** Razem: $2 \\cdot 2024 = 4048$.\n\n**Pułapka CKE:** $2025$ to liczba wszystkich ŚCIAN (boczne + podstawa) albo wierzchołków, a nie krawędzi.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "$2025$ to liczba wszystkich ŚCIAN (boczne + podstawa) albo wierzchołków, a nie krawędzi.",
     "source": "Matura Czerwiec 2024 • Zad. 25",
     "year": 2024,
     "session": "Czerwiec",
@@ -924,18 +1177,18 @@
     "section": "Dział 11: Stereometria",
     "topicId": "dzial-11",
     "type": "SINGLE_CHOICE",
-    "content": "Przekątna ściany sześcianu ma długość  2\\sqrt2.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nObjętość tego sześcianu jest równa",
+    "content": "Przekątna ściany sześcianu ma długość $2\\sqrt{2}$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nObjętość tego sześcianu jest równa",
     "options": [
-      "8",
-      "24",
-      "16\\sqrt6\n9",
-      "16\\sqrt2"
+      "$8$",
+      "$24$",
+      "$\\frac{16\\sqrt{6}}{9}$",
+      "$16\\sqrt{2}$"
     ],
     "correctAnswer": "A",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nA",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Ściana sześcianu jest kwadratem o boku $a$; jej przekątna ma długość $a\\sqrt{2}$.\n\n**Krok 2:** $a\\sqrt{2} = 2\\sqrt{2}$, więc $a = 2$.\n\n**Krok 3:** $V = a^3 = 8$.\n\n**Pułapka CKE:** Mowa o przekątnej ŚCIANY ($a\\sqrt{2}$), a nie o przekątnej sześcianu ($a\\sqrt{3}$). Pomylenie ich daje odpowiedź $\\frac{16\\sqrt{6}}{9}$.\n\nPrawidłowa odpowiedź: **A**.",
+    "ckeTrap": "Mowa o przekątnej ŚCIANY ($a\\sqrt{2}$), a nie o przekątnej sześcianu ($a\\sqrt{3}$). Pomylenie ich daje odpowiedź $\\frac{16\\sqrt{6}}{9}$.",
     "source": "Matura Czerwiec 2024 • Zad. 26",
     "year": 2024,
     "session": "Czerwiec",
@@ -949,358 +1202,345 @@
     "section": "Dział 11: Stereometria",
     "topicId": "dzial-11",
     "type": "SINGLE_CHOICE",
-    "content": "Podstawą graniastosłupa prawidłowego czworokątnego jest kwadrat o boku długości  4.\nPrzekątna tego graniastosłupa jest nachylona do płaszczyzny podstawy pod kątem  \\alpha  takim,\nże  tg \\alpha = 2  (zobacz rysunek).\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWysokość tego graniastosłupa jest równa",
+    "content": "Podstawą graniastosłupa prawidłowego czworokątnego jest kwadrat o boku długości $4$. Przekątna tego graniastosłupa jest nachylona do płaszczyzny podstawy pod kątem $\\alpha$ takim, że $\\operatorname{tg} \\alpha = 2$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWysokość tego graniastosłupa jest równa",
     "options": [
-      "2",
-      "8",
-      "8\\sqrt2",
-      "16\\sqrt2"
+      "$2$",
+      "$8$",
+      "$8\\sqrt{2}$",
+      "$16\\sqrt{2}$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Kąt nachylenia przekątnej graniastosłupa do podstawy to kąt między tą przekątną a przekątną podstawy.\n\n**Krok 2:** Przekątna podstawy (kwadratu o boku $4$): $d = 4\\sqrt{2}$.\n\n**Krok 3:** W trójkącie prostokątnym: $\\operatorname{tg} \\alpha = \\frac{H}{d}$, więc $H = 2 \\cdot 4\\sqrt{2} = 8\\sqrt{2}$.\n\n**Pułapka CKE:** Przyprostokątną przy kącie $\\alpha$ jest PRZEKĄTNA podstawy ($4\\sqrt{2}$), a nie krawędź podstawy ($4$). Z krawędzią wyszłoby błędne $H = 8$.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "Przyprostokątną przy kącie $\\alpha$ jest PRZEKĄTNA podstawy ($4\\sqrt{2}$), a nie krawędź podstawy ($4$). Z krawędzią wyszłoby błędne $H = 8$.",
     "source": "Matura Czerwiec 2024 • Zad. 27",
     "year": 2024,
     "session": "Czerwiec",
-    "isCke": true,
-    "diagram": {
-      "type": "STEREOMETRY_3D",
-      "title": "Graniastosłup prawidłowy czworokątny z przekątną bryły $AC'$ i przekątną podstawy $AC$",
-      "width": 440,
-      "height": 270,
-      "polygons": [
-        {
-          "points": [
-            [
-              160,
-              60
-            ],
-            [
-              280,
-              60
-            ],
-            [
-              330,
-              95
-            ],
-            [
-              210,
-              95
-            ]
-          ],
-          "stroke": "#38BDF8",
-          "strokeWidth": 2,
-          "fill": "rgba(56, 189, 248, 0.08)"
-        }
-      ],
-      "segments": [
-        {
-          "from": [
-            160,
-            60
-          ],
-          "to": [
-            160,
-            190
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            280,
-            60
-          ],
-          "to": [
-            280,
-            190
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 2
-        },
-        {
-          "from": [
-            330,
-            95
-          ],
-          "to": [
-            330,
-            225
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 2
-        },
-        {
-          "from": [
-            210,
-            95
-          ],
-          "to": [
-            210,
-            225
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 2
-        },
-        {
-          "from": [
-            210,
-            225
-          ],
-          "to": [
-            330,
-            225
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 2
-        },
-        {
-          "from": [
-            330,
-            225
-          ],
-          "to": [
-            280,
-            190
-          ],
-          "color": "#38BDF8",
-          "strokeWidth": 2
-        },
-        {
-          "from": [
-            280,
-            190
-          ],
-          "to": [
-            160,
-            190
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            160,
-            190
-          ],
-          "to": [
-            210,
-            225
-          ],
-          "color": "#64748B",
-          "strokeWidth": 1.25,
-          "dashed": true
-        },
-        {
-          "from": [
-            210,
-            225
-          ],
-          "to": [
-            280,
-            190
-          ],
-          "color": "#FFB800",
-          "strokeWidth": 1.5,
-          "dashed": true,
-          "label": "d = 4√2"
-        },
-        {
-          "from": [
-            210,
-            225
-          ],
-          "to": [
-            280,
-            60
-          ],
-          "color": "#10B981",
-          "strokeWidth": 2,
-          "label": "D"
-        }
-      ],
-      "points": [
-        {
-          "x": 210,
-          "y": 225,
-          "label": "A",
-          "labelPosition": "bottom-left",
-          "dot": "filled"
-        },
-        {
-          "x": 330,
-          "y": 225,
-          "label": "B",
-          "labelPosition": "bottom-right",
-          "dot": "filled"
-        },
-        {
-          "x": 280,
-          "y": 190,
-          "label": "C",
-          "labelPosition": "right",
-          "dot": "filled"
-        },
-        {
-          "x": 280,
-          "y": 60,
-          "label": "C'",
-          "labelPosition": "top-right",
-          "dot": "filled",
-          "color": "#10B981"
-        }
-      ]
-    }
+    "isCke": true
   },
   {
     "id": "matura-czerwiec-2024-zad-28",
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "28",
-    "section": "Dział 15: Zadania Optymalizacyjne",
-    "topicId": "dzial-15",
+    "section": "Dział 14: Statystyka",
+    "topicId": "dzial-14",
     "type": "SINGLE_CHOICE",
-    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej.\nNa osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano\nliczbę uczniów, którzy otrzymali daną ocenę.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nŚrednia arytmetyczna ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest\nrówna",
+    "content": "Na diagramie przedstawiono wyniki sprawdzianu z matematyki w pewnej klasie maturalnej. Na osi poziomej podano oceny, które uzyskali uczniowie tej klasy, a na osi pionowej podano liczbę uczniów, którzy otrzymali daną ocenę.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nŚrednia arytmetyczna ocen uzyskanych z tego sprawdzianu przez uczniów tej klasy jest równa",
     "options": [
-      "3",
-      "3,12",
-      "3,5",
-      "4,1(6)"
+      "$3$",
+      "$3{,}12$",
+      "$3{,}5$",
+      "$4{,}1(6)$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Liczba uczniów: $2 + 9 + 5 + 3 + 5 + 1 = 25$.\n\n**Krok 2:** Suma ocen: $1 \\cdot 2 + 2 \\cdot 9 + 3 \\cdot 5 + 4 \\cdot 3 + 5 \\cdot 5 + 6 \\cdot 1 = 2 + 18 + 15 + 12 + 25 + 6 = 78$.\n\n**Krok 3:** Średnia: $\\frac{78}{25} = 3{,}12$.\n\n**Pułapka CKE:** Średnia ocen to nie średnia liczb $1$–$6$ (czyli $3{,}5$) ani średnia wysokości słupków ($\\frac{25}{6} = 4{,}1(6)$). Każdą ocenę mnożymy przez liczbę uczniów.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "Średnia ocen to nie średnia liczb $1$–$6$ (czyli $3{,}5$) ani średnia wysokości słupków ($\\frac{25}{6} = 4{,}1(6)$). Każdą ocenę mnożymy przez liczbę uczniów.",
     "source": "Matura Czerwiec 2024 • Zad. 28",
     "year": 2024,
     "session": "Czerwiec",
     "isCke": true,
     "diagram": {
       "type": "STATISTICS",
-      "title": "Diagram wyników sprawdzianu z matematyki (częstość ocen)",
-      "width": 460,
+      "width": 400,
       "height": 260,
       "segments": [
         {
           "from": [
-            50,
-            210
+            40,
+            183.3
           ],
           "to": [
-            420,
-            210
+            388,
+            183.3
           ],
-          "color": "#94A3B8",
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            164.7
+          ],
+          "to": [
+            388,
+            164.7
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            146
+          ],
+          "to": [
+            388,
+            146
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            127.3
+          ],
+          "to": [
+            388,
+            127.3
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            108.7
+          ],
+          "to": [
+            388,
+            108.7
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            90
+          ],
+          "to": [
+            388,
+            90
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            71.3
+          ],
+          "to": [
+            388,
+            71.3
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            52.7
+          ],
+          "to": [
+            388,
+            52.7
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            34
+          ],
+          "to": [
+            388,
+            34
+          ],
+          "color": "rgba(148, 163, 184, 0.18)",
+          "strokeWidth": 1
+        },
+        {
+          "from": [
+            40,
+            202
+          ],
+          "to": [
+            388,
+            202
+          ],
+          "color": "#94a3b8",
           "strokeWidth": 1.5
         },
         {
           "from": [
-            50,
-            210
+            40,
+            28
           ],
           "to": [
-            50,
-            25
+            40,
+            202
           ],
-          "color": "#94A3B8",
+          "color": "#94a3b8",
           "strokeWidth": 1.5
-        }
-      ],
-      "ticks": [
-        {
-          "x": 50,
-          "y": 175,
-          "label": "2",
-          "axis": "y"
-        },
-        {
-          "x": 50,
-          "y": 140,
-          "label": "4",
-          "axis": "y"
-        },
-        {
-          "x": 50,
-          "y": 105,
-          "label": "6",
-          "axis": "y"
-        },
-        {
-          "x": 50,
-          "y": 70,
-          "label": "8",
-          "axis": "y"
         }
       ],
       "bars": [
         {
-          "x": 85,
-          "y": 175,
-          "width": 38,
-          "height": 35,
-          "label": "2",
-          "category": "1"
+          "x": 53.1,
+          "y": 164.7,
+          "width": 31.900000000000002,
+          "height": 37.3,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "2"
         },
         {
-          "x": 140,
-          "y": 140,
-          "width": 38,
-          "height": 70,
-          "label": "4",
-          "category": "2"
+          "x": 111.1,
+          "y": 34,
+          "width": 31.900000000000002,
+          "height": 168,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "9"
         },
         {
-          "x": 195,
-          "y": 70,
-          "width": 38,
-          "height": 140,
-          "label": "8",
-          "category": "3"
+          "x": 169.1,
+          "y": 108.7,
+          "width": 31.900000000000002,
+          "height": 93.3,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "5"
         },
         {
-          "x": 250,
-          "y": 88,
-          "width": 38,
-          "height": 122,
-          "label": "7",
-          "category": "4"
+          "x": 227.1,
+          "y": 146,
+          "width": 31.900000000000002,
+          "height": 56,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "3"
         },
         {
-          "x": 305,
-          "y": 140,
-          "width": 38,
-          "height": 70,
-          "label": "4",
-          "category": "5"
+          "x": 285.1,
+          "y": 108.7,
+          "width": 31.900000000000002,
+          "height": 93.3,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "5"
         },
         {
-          "x": 360,
-          "y": 192,
-          "width": 38,
-          "height": 18,
-          "label": "1",
-          "category": "6"
+          "x": 343.1,
+          "y": 183.3,
+          "width": 31.900000000000002,
+          "height": 18.7,
+          "fill": "rgba(255, 184, 0, 0.35)",
+          "stroke": "#ffb800",
+          "label": "1"
         }
       ],
       "labels": [
         {
-          "x": 425,
-          "y": 215,
-          "text": "ocena",
-          "color": "#94A3B8",
-          "fontSize": 11
+          "x": 69,
+          "y": 220,
+          "text": "1",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
         },
         {
-          "x": 50,
-          "y": 16,
+          "x": 127,
+          "y": 220,
+          "text": "2",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 185,
+          "y": 220,
+          "text": "3",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 243,
+          "y": 220,
+          "text": "4",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 301,
+          "y": 220,
+          "text": "5",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 359,
+          "y": 220,
+          "text": "6",
+          "color": "#dfe2f1",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 32,
+          "y": 206,
+          "text": "0",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 168.7,
+          "text": "2",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 131.3,
+          "text": "4",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 94,
+          "text": "6",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 32,
+          "y": 56.7,
+          "text": "8",
+          "color": "#94a3b8",
+          "fontSize": 11,
+          "anchor": "end"
+        },
+        {
+          "x": 214,
+          "y": 250,
+          "text": "ocena",
+          "color": "#94a3b8",
+          "fontSize": 12,
+          "anchor": "middle"
+        },
+        {
+          "x": 10,
+          "y": 14,
           "text": "liczba uczniów",
-          "color": "#94A3B8",
-          "fontSize": 11
+          "color": "#94a3b8",
+          "fontSize": 12,
+          "anchor": "start"
         }
       ]
     }
@@ -1313,18 +1553,18 @@
     "section": "Dział 12: Kombinatoryka",
     "topicId": "dzial-12",
     "type": "SINGLE_CHOICE",
-    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nWszystkich liczb naturalnych czterocyfrowych parzystych, w których zapisie dziesiętnym\nwystępują tylko cyfry  2,  4,  7  (np.:  7272,  2222,  7244), jest",
+    "content": "Dokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nWszystkich liczb naturalnych czterocyfrowych parzystych, w których zapisie dziesiętnym występują tylko cyfry $2$, $4$, $7$ (np.: $7272$, $2222$, $7244$), jest",
     "options": [
-      "16",
-      "27",
-      "54",
-      "81"
+      "$16$",
+      "$27$",
+      "$54$",
+      "$81$"
     ],
     "correctAnswer": "C",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nC",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Liczba jest parzysta, gdy jej ostatnia cyfra jest parzysta: na miejscu jedności może stać $2$ lub $4$ – dwie możliwości.\n\n**Krok 2:** Na każdym z trzech pozostałych miejsc może stać dowolna z trzech cyfr.\n\n**Krok 3:** Z reguły mnożenia: $3 \\cdot 3 \\cdot 3 \\cdot 2 = 54$.\n\n**Pułapka CKE:** $81 = 3^4$ to wszystkie liczby z tych cyfr, także nieparzyste. Warunek parzystości ogranicza tylko OSTATNIĄ cyfrę.\n\nPrawidłowa odpowiedź: **C**.",
+    "ckeTrap": "$81 = 3^4$ to wszystkie liczby z tych cyfr, także nieparzyste. Warunek parzystości ogranicza tylko OSTATNIĄ cyfrę.",
     "source": "Matura Czerwiec 2024 • Zad. 29",
     "year": 2024,
     "session": "Czerwiec",
@@ -1335,21 +1575,21 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "30",
-    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "section": "Dział 13: Rachunek prawdopodobieństwa",
     "topicId": "dzial-13",
     "type": "SINGLE_CHOICE",
-    "content": "W pudełku znajdują się wyłącznie kule białe i czarne. Kul czarnych jest  18.\nZ tego pudełka w sposób losowy wyciągamy jedną kulę.\nPrawdopodobieństwo zdarzenia polegającego na tym, że wyciągniemy kulę czarną,\njest równe  3\n5\n.\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\nLiczba kul białych w pudełku, przed wyciągnięciem jednej kuli, była równa",
+    "content": "W pudełku znajdują się wyłącznie kule białe i czarne. Kul czarnych jest $18$. Z tego pudełka w sposób losowy wyciągamy jedną kulę. Prawdopodobieństwo zdarzenia polegającego na tym, że wyciągniemy kulę czarną, jest równe $\\frac{3}{5}$.\n\nDokończ zdanie. Wybierz właściwą odpowiedź spośród podanych.\n\nLiczba kul białych w pudełku, przed wyciągnięciem jednej kuli, była równa",
     "options": [
-      "9",
-      "12",
-      "15",
-      "30"
+      "$9$",
+      "$12$",
+      "$15$",
+      "$30$"
     ],
     "correctAnswer": "B",
     "points": 1,
     "isClosed": true,
-    "explanation": "odpowiedź poprawna. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \nB",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Niech $n$ oznacza liczbę wszystkich kul. Wtedy $\\frac{18}{n} = \\frac{3}{5}$.\n\n**Krok 2:** $3n = 90$, więc $n = 30$.\n\n**Krok 3:** Kul białych jest $30 - 18 = 12$.\n\n**Pułapka CKE:** $30$ to liczba WSZYSTKICH kul. Pytają o kule białe – trzeba jeszcze odjąć $18$ czarnych.\n\nPrawidłowa odpowiedź: **B**.",
+    "ckeTrap": "$30$ to liczba WSZYSTKICH kul. Pytają o kule białe – trzeba jeszcze odjąć $18$ czarnych.",
     "source": "Matura Czerwiec 2024 • Zad. 30",
     "year": 2024,
     "session": "Czerwiec",
@@ -1360,16 +1600,16 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "31",
-    "section": "Dział 13: Rachunek Prawdopodobieństwa",
+    "section": "Dział 13: Rachunek prawdopodobieństwa",
     "topicId": "dzial-13",
     "type": "OPEN_CALCULATION",
-    "content": "Doświadczenie losowe polega na dwukrotnym rzucie symetryczną sześcienną kostką do gry,\nktóra na każdej ściance ma inną liczbę oczek – od jednego oczka do sześciu oczek.\nOblicz prawdopodobieństwo zdarzenia  𝑨  polegającego na tym, że w pierwszym\nrzucie wypadnie większa liczba oczek niż w drugim rzucie. Zapisz obliczenia.",
+    "content": "Doświadczenie losowe polega na dwukrotnym rzucie symetryczną sześcienną kostką do gry, która na każdej ściance ma inną liczbę oczek – od jednego oczka do sześciu oczek.\n\nOblicz prawdopodobieństwo zdarzenia $A$ polegającego na tym, że w pierwszym rzucie wypadnie większa liczba oczek niż w drugim rzucie. Zapisz obliczenia.",
     "options": [],
-    "correctAnswer": "A",
+    "correctAnswer": "$P(A) = \\frac{15}{36} = \\frac{5}{12}$",
     "points": 2,
     "isClosed": false,
-    "explanation": "Sposób I \nW tabeli literą  A  zaznaczamy zdarzenia elementarne sprzyjające zdarzeniu  A. \n \n 𝟏 𝟐 𝟑 𝟒 𝟓 𝟔 \n𝟏       \n𝟐 A      \n𝟑 A A     \n𝟒 A A A    \n𝟓 A A A A   \n𝟔 A A A A A  \n \nMoc zbioru  Ω  jest równa  36. \nZdarzeń sprzyjających zdarzeniu  A  jest  15. \nZatem prawdopodobieństwo zdarzenia  A  jest równe  15\n36 = 5\n12\n . \n \n \nSposób II (drzewo stochastyczne) \nRysujemy fragment drzewa stochastycznego rozważanego doświadczenia z uwzględnieniem \nwszystkich istotnych gałęzi. \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nPrawdopodobieństwo zdarzenia  A  jest równe \n \nP(A) = 1\n6 \\cdot 1\n6 + 1\n6 \\cdot 2\n6 + 1\n6 \\cdot 3\n6 + 1\n6 \\cdot 4\n6 + 1\n6 \\cdot 5\n6 = 15\n36 = 5\n12 \n  \n2 \n 3 \n 4 \n 5 \n 6 \n1 \n 1 \n2 \n1 \n2 \n3 \n1 \n2 \n3 \n4 \n1 \n2 \n3 \n4 \n5 \n1\n6 \n2\n6 \n3\n6 \n4\n6 \n5\n6 \n1\n6 \n1\n6 \n1\n6 \n1\n6 \n1\n6",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Wszystkich wyników dwukrotnego rzutu kostką jest $|\\Omega| = 6 \\cdot 6 = 36$.\n\n**Krok 2:** Zliczamy pary (pierwszy rzut, drugi rzut) z większą liczbą w pierwszym rzucie: dla $2$ jest $1$ para, dla $3$ – $2$, dla $4$ – $3$, dla $5$ – $4$, dla $6$ – $5$. Razem $|A| = 1 + 2 + 3 + 4 + 5 = 15$.\n\n**Krok 3:** $P(A) = \\frac{15}{36} = \\frac{5}{12}$.\n\n**Pułapka CKE:** To nie jest $\\frac{1}{2}$: z $36$ wyników $6$ to remisy (ta sama liczba oczek), a pozostałe $30$ dzieli się po równo – stąd $15$.\n\n**Odpowiedź:** $P(A) = \\frac{15}{36} = \\frac{5}{12}$",
+    "ckeTrap": "To nie jest $\\frac{1}{2}$: z $36$ wyników $6$ to remisy (ta sama liczba oczek), a pozostałe $30$ dzieli się po równo – stąd $15$.",
     "source": "Matura Czerwiec 2024 • Zad. 31",
     "year": 2024,
     "session": "Czerwiec",
@@ -1380,21 +1620,69 @@
     "examId": "matura-czerwiec-2024",
     "examName": "Matura Czerwiec 2024 (Formuła 2023)",
     "taskNumber": "32",
-    "section": "Dział 1: Liczby Rzeczywiste",
-    "topicId": "dzial-1",
-    "type": "SINGLE_CHOICE",
-    "content": "Właściciel sklepu z zabawkami przeprowadził lokalne badanie rynkowe dotyczące wpływu\nzmiany ceny zestawu klocków na liczbę kupujących ten produkt. Z badania wynika, że\ndzienny przychód  P  ze sprzedaży zestawów klocków, w zależności od kwoty obniżki ceny\nzestawu o  x  zł, wyraża się wzorem\nP(x) = (70 − x)(20 + x)\ngdzie  x  jest liczbą całkowitą spełniającą warunki  x \\ge 0  i  x \\le 60.\nUzupełnij tabelę. Wpisz w każdą pustą komórkę tabeli właściwą odpowiedź, wybraną\nspośród oznaczonych literami A–E.\n32.1.\nDzienny przychód ze sprzedaży zestawów klocków będzie największy,\ngdy liczba  x  jest równa\n32.2. Dzienny przychód ze sprzedaży zestawów klocków będzie równy  800  zł,\ngdy liczba  x  jest równa",
-    "options": [
-      "25",
-      "30",
-      "45",
-      "50 E.  60"
+    "section": "Dział 15: Optymalizacja",
+    "topicId": "dzial-15",
+    "type": "TWO_PART",
+    "content": "Właściciel sklepu z zabawkami przeprowadził lokalne badanie rynkowe dotyczące wpływu zmiany ceny zestawu klocków na liczbę kupujących ten produkt. Z badania wynika, że dzienny przychód $P$ ze sprzedaży zestawów klocków, w zależności od kwoty obniżki ceny zestawu o $x$ zł, wyraża się wzorem\n$$P(x) = (70 - x)(20 + x)$$\ngdzie $x$ jest liczbą całkowitą spełniającą warunki $x \\ge 0$ i $x \\le 60$.\n\nUzupełnij każde zdanie. Wybierz właściwą odpowiedź spośród oznaczonych literami A–E.",
+    "options": [],
+    "parts": [
+      {
+        "prompt": "Dzienny przychód ze sprzedaży zestawów klocków będzie największy, gdy liczba $x$ jest równa",
+        "options": [
+          {
+            "id": "A",
+            "text": "$25$"
+          },
+          {
+            "id": "B",
+            "text": "$30$"
+          },
+          {
+            "id": "C",
+            "text": "$45$"
+          },
+          {
+            "id": "D",
+            "text": "$50$"
+          },
+          {
+            "id": "E",
+            "text": "$60$"
+          }
+        ]
+      },
+      {
+        "prompt": "Dzienny przychód ze sprzedaży zestawów klocków będzie równy $800$ zł, gdy liczba $x$ jest równa",
+        "options": [
+          {
+            "id": "A",
+            "text": "$25$"
+          },
+          {
+            "id": "B",
+            "text": "$30$"
+          },
+          {
+            "id": "C",
+            "text": "$45$"
+          },
+          {
+            "id": "D",
+            "text": "$50$"
+          },
+          {
+            "id": "E",
+            "text": "$60$"
+          }
+        ]
+      }
     ],
-    "correctAnswer": "32.1. A",
+    "partScoring": "per_part",
+    "correctAnswer": "AE",
     "points": 2,
     "isClosed": true,
-    "explanation": "wybranie dwóch poprawnych odpowiedzi. \n1 pkt – wybranie jednej poprawnej odpowiedzi. \n0 pkt – odpowiedź niepoprawna albo brak odpowiedzi. \n \nRozwiązanie \n32.1. A \n32.2. E \n  \n \nObowiązują zasady oceniania stosowane przy sprawdzaniu prac zdających bez stwierdzonej \ndyskalkulii z dodatkowym uwzględnieniem: \nI. ogólnych zasad oceniania zadań otwartych w przypadku arkuszy osób ze \nstwierdzoną dyskalkulią (punkty 1.–12.); \nII. dodatkowych szczegółowych zasad oceniania zadań otwartych w przypadku arkuszy \nosób ze stwierdzoną dyskalkulią – egzamin maturalny z matematyki, poziom \npodstawowy, termin dodatkowy 2024. \n \n \nI. Ogólne zasady oceniania zadań otwartych w przypadku arkuszy osób ze stwierdzoną \ndyskalkulią \n \n1. Nie należy traktować jako błędy merytoryczne pomyłek, wynikających z: \n• błędnego przepisania \n• przestawienia cyfr \n• zapisania innej cyfry, ale o podobnym wyglądzie \n• przestawienia położenia przecinka \n• przestawienia położenia znaku liczby. \n2. W przypadku błędów, wynikających ze zmiany znaku liczby, należy w każdym zadaniu \noddzielnie przeanalizować, czy zdający opanował inne umiejętności, poza \numiejętnościami rachunkowymi, oceniane w zadaniu. W przypadku opanowania \nbadanych umiejętności zdający powinien otrzymać przynajmniej 1 punkt. \n3. We wszystkich zadaniach otwartych, w których wskazano poprawną metodę \nrozwiązania, części lub całości zadania, zdającemu należy przyznać przynajmniej \n1 punkt, zgodnie z kryteriami do poszczególnych zadań. \n4. Jeśli zdający przedstawia nieprecyzyjne zapisy, na przykład pomija nawiasy lub \nzapisuje nawiasy w niewłaściwych miejscach, ale przeprowadza poprawne \nrozumowanie lub stosuje właściwą strategię, to może otrzymać przynajmniej 1 punkt \nza rozwiązanie zadania. \n5. W przypadku zadania wymagającego wyznaczenia pierwiastków trójmianu \nkwadratowego zdający może otrzymać 1 punkt, jeżeli przedstawi poprawną metodę \nwyznaczania pierwiastków trójmianu kwadratowego, przy podanych w treści zadania \nwartościach liczbowych. \n6. W przypadku zadania wymagającego rozwiązania nierówności kwadratowej zdający \nmoże otrzymać 1 punkt, jeżeli stosuje poprawny algorytm rozwiązywania nierówności \nkwadratowej, przy podanych w treści zadania wartościach liczbowych. \n7. W przypadku zadania wymagającego stosowania własności funkcji kwadratowej \nzdający może otrzymać 1 punkt za wykorzystanie konkretnych własności funkcji \nkwadratowej, istotnych przy poszukiwaniu rozwiązania. \n8. W przypadku zadania wymagającego zastosowania własności ciągów arytmetycznych \nlub geometrycznych zdający może otrzymać 1 punkt, jeżeli przedstawi wykorzystanie \ntakiej własności ciągu, która umożliwia znalezienie rozwiązania zadania. \n9. W przypadku zadania wymagającego analizowania figur geometrycznych na \npłaszczyźnie kartezjańskiej zdający może otrzymać punkty, jeżeli przy poszukiwaniu \nrozwiązania przedstawi poprawne rozumowanie, wykorzystujące własności figur \ngeometrycznych lub zapisze zależności, pozwalające rozwiązać zadanie. \n10. W przypadku zadania z rachunku prawdopodobieństwa zdający może otrzymać \nprzynajmniej 1 punkt, jeśli przy wyznaczaniu liczby zdarzeń elementarnych \nsprzyjających rozważanemu zdarzeniu przyjmuje określoną regularność lub podaje \nprawidłową metodę wyznaczenia tej liczby zdarzeń elementarnych. \n11. W przypadku zadania z geometrii zdający może otrzymać przynajmniej 1 punkt, jeżeli \npodaje poprawną metodę wyznaczenia długości odcinka potrzebnej do znalezienia \nrozwiązania. \n12. W przypadku zadania wymagającego przeprowadzenia dowodu (z zakresu algebry lub \ngeometrii), jeśli w przedstawionym rozwiązaniu zdający powoła się na własność, która \nwyznacza istotny postęp, prowadzący do przeprowadzenia dowodu, to może otrzymać \n1 punkt. \n \n \nII. Dodatkowe szczegółowe zasady oceniania zadań otwartych w przypadku arkuszy osób \nze stwierdzoną dyskalkulią",
-    "ckeTrap": "Uważaj na typowe pułapki rachunkowe i dziedzinę wyrażenia.",
+    "explanation": "**Krok 1:** Miejsca zerowe funkcji $P$ to $x = 70$ oraz $x = -20$. Ramiona paraboli są skierowane w dół, więc wartość największa jest w wierzchołku: $x = \\frac{70 + (-20)}{2} = 25$ (liczba należy do dziedziny) – odpowiedź A.\n\n**Krok 2:** $P(x) = 800$: $(70 - x)(20 + x) = 800$, czyli $-x^2 + 50x + 1400 = 800$, stąd $x^2 - 50x - 600 = 0$.\n\n**Krok 3:** $\\Delta = 2500 + 2400 = 4900$, $\\sqrt{\\Delta} = 70$, więc $x = \\frac{50 + 70}{2} = 60$ lub $x = \\frac{50 - 70}{2} = -10$. Warunek $0 \\le x \\le 60$ spełnia tylko $x = 60$ – odpowiedź E.\n\n**Pułapka CKE:** Wierzchołek leży w połowie między miejscami zerowymi $70$ i $-20$, a nie między $0$ a $60$. W drugiej części ujemne rozwiązanie $x = -10$ trzeba odrzucić.\n\nPrawidłowa odpowiedź: **1 – A** ($25$), **2 – E** ($60$).",
+    "ckeTrap": "Miejsca zerowe leżą symetrycznie względem osi paraboli, więc pierwsza współrzędna wierzchołka to ich średnia: $p = \\frac{x_1 + x_2}{2}$.",
     "source": "Matura Czerwiec 2024 • Zad. 32",
     "year": 2024,
     "session": "Czerwiec",

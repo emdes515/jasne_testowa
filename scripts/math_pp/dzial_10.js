@@ -3,7 +3,8 @@ import { T, mc, num, pf, pill, fr, par, sq, lin, xm, m, need, gcd, isSquare } fr
 const P = (x, y) => m(`(${x}, ${y})`);
 const Pf = (xn, xd, yn, yd) => m(`\\left(${fr(xn, xd)}, ${fr(yn, yd)}\\right)`);
 const eqy = (a, b) => m(`y = ${lin(a, b)}`);
-const circ = (a, b, r2) => `(${xm(a)})^2 + (${xm(b, 'y')})^2 = ${r2}`;
+const sqTerm = (p, v) => (p === 0 ? `${v}^2` : `(${xm(p, v)})^2`);
+const circ = (a, b, r2) => `${sqTerm(a, 'x')} + ${sqTerm(b, 'y')} = ${r2}`;
 const TIP_DIST = 'Karta wzorów, str. 21: długość odcinka $|AB| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, środek $S = \\left(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2}\\right)$.';
 const TIP_LINE = 'Karta wzorów, str. 22: proste $y = a_1x + b_1$ i $y = a_2x + b_2$ są równoległe, gdy $a_1 = a_2$, a prostopadłe, gdy $a_1 \\cdot a_2 = -1$.';
 const TIP_CIRC = 'Karta wzorów, str. 23: równanie okręgu o środku $S = (a, b)$ i promieniu $r$: $(x - a)^2 + (y - b)^2 = r^2$.';
@@ -102,7 +103,7 @@ const lineTwoPoints = (r) => {
     bad: [eqy(-a, b), eqy(a, -b || 1), eqy(a, b + a), eqy(-a, -b || 2), eqy(b || 3, a)],
     steps: [T`$a = \frac{${a * x2 + b} - ${par(a * x1 + b)}}{${x2} - ${par(x1)}} = ${a}$.`, T`Podstawiamy punkt $A$: $${a * x1 + b} = ${a} \cdot ${par(x1)} + b$, więc $b = ${b}$.`, T`Równanie: $y = ${lin(a, b)}$.`],
     trap: T`Sprawdź równanie drugim punktem: po podstawieniu $x = ${x2}$ musi wyjść $y = ${a * x2 + b}$.`,
-    tip: 'Karta wzorów, str. 22: współczynnik kierunkowy $a = \\frac{y_2 - y_1}{x_2 - x_1}$.'
+    tip: 'Karta wzorów, str. 21: współczynnik kierunkowy $a = \\frac{y_2 - y_1}{x_2 - x_1}$.'
   });
 };
 const linePointParam = (r) => {
@@ -149,7 +150,7 @@ const lineGeneralForm = (r) => {
     bad: askB ? [m(fr(C, B)), m(fr(-C, A)), m(`${C}`), m(fr(-B, C))] : [m(fr(A, B)), m(fr(-B, A)), m(`${A}`), m(fr(B, A))],
     steps: [T`Wyznaczamy $y$: $${B === 1 ? '' : B === -1 ? '-' : B}y = ${lin(-A, -C)}$.`, T`$y = ${slope(-A, B)}x ${-C / B >= 0 ? '+' : '-'} ${fr(Math.abs(C), Math.abs(B))}$, więc ${askB ? T`$b = ${fr(-C, B)}$` : T`$a = ${fr(-A, B)}$`}.`],
     trap: T`Współczynnika kierunkowego nie odczytuje się wprost z postaci ogólnej. Najpierw trzeba wyznaczyć $y$ – wtedy $a = -\frac{A}{B}$.`,
-    tip: 'Karta wzorów, str. 21: równanie ogólne prostej $Ax + By + C = 0$; dla $B \\neq 0$ można je zapisać jako $y = ax + b$.'
+    tip: 'Karta wzorów, str. 22: równanie ogólne prostej $Ax + By + C = 0$; dla $B \\neq 0$ można je zapisać jako $y = ax + b$.'
   });
 };
 const lineAxisPoints = (r) => {
@@ -518,8 +519,8 @@ export default {
         ],
         formulas: [
           ['Postać kierunkowa', T`y = ax + b`, 21],
-          ['Współczynnik kierunkowy', T`a = \frac{y_2 - y_1}{x_2 - x_1}`, 22],
-          ['Postać ogólna', T`Ax + By + C = 0`, 21]
+          ['Współczynnik kierunkowy', T`a = \frac{y_2 - y_1}{x_2 - x_1}`, 21],
+          ['Postać ogólna', T`Ax + By + C = 0`, 22]
         ],
         examples: [
           ['Postać ogólna', '1 pkt', T`Wyznacz współczynnik kierunkowy prostej $3x - 2y + 4 = 0$.`, T`1. $-2y = -3x - 4$.` + '\n' + T`2. $y = \frac{3}{2}x + 2$.` + '\n' + T`3. $a = \frac{3}{2}$.`, 'Z postaci ogólnej trzeba wyznaczyć y.'],

@@ -820,8 +820,8 @@
         "iloraz ciągu",
         "suma geometryczna"
       ],
-      "cke_page": "str. 10",
-      "pageNumber": 10
+      "cke_page": "str. 9",
+      "pageNumber": 9
     },
     {
       "id": "f-trygo-definicje",
@@ -1531,8 +1531,8 @@
         "koło opisane",
         "koło wpisane"
       ],
-      "cke_page": "str. 16",
-      "pageNumber": 16,
+      "cke_page": "str. 15",
+      "pageNumber": 15,
       "diagram": {
         "type": "GEOMETRY_2D",
         "title": "Trójkąt równoboczny: Wysokość h, koło opisane R i wpisane r",
@@ -2887,8 +2887,8 @@
         "przekrój osiowy",
         "bryły obrotowe"
       ],
-      "cke_page": "str. 26",
-      "pageNumber": 26,
+      "cke_page": "str. 25–26",
+      "pageNumber": 25,
       "diagram": {
         "type": "STEREOMETRY_3D",
         "title": "Bryły obrotowe: Przekrój osiowy stożka i walca",
@@ -3061,8 +3061,8 @@
         "zdarzenie przeciwne",
         "drzewo"
       ],
-      "cke_page": "str. 28",
-      "pageNumber": 28
+      "cke_page": "str. 27",
+      "pageNumber": 27
     },
     {
       "id": "f-stat-srednia",
@@ -3093,7 +3093,7 @@
         "statystyka",
         "wartość środkowa"
       ],
-      "cke_page": "str. 29",
+      "cke_page": "str. 29–30",
       "pageNumber": 29
     }
   ]

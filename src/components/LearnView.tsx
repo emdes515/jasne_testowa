@@ -27,22 +27,23 @@ import { MaturalnyDuetGame } from './english/MaturalnyDuetGame';
 import { MathTheoryModal } from './math/MathTheoryModal';
 
 
+// Ikony zapasowe działów matematyki – w kolejności działów 1–15
 const mathIcons = [
-  Hash, 
-  Binary, 
-  EqualNot, 
-  Layers, 
-  TrendingUp, 
-  Activity, 
-  Target, 
-  ListOrdered, 
-  TriangleRight, 
-  CircleDot, 
-  MapIcon, 
-  Box, 
-  PieChart, 
-  Clock, 
-  Trophy
+  Hash,          // 1. Liczby rzeczywiste
+  Binary,        // 2. Wyrażenia algebraiczne
+  EqualNot,      // 3. Równania i nierówności
+  Layers,        // 4. Funkcje i ich własności
+  TrendingUp,    // 5. Funkcja liniowa i układy równań
+  Activity,      // 6. Funkcja kwadratowa
+  ListOrdered,   // 7. Ciągi liczbowe
+  TriangleRight, // 8. Trygonometria
+  CircleDot,     // 9. Planimetria
+  MapIcon,       // 10. Geometria analityczna
+  Box,           // 11. Stereometria
+  ListChecks,    // 12. Kombinatoryka
+  PieChart,      // 13. Rachunek prawdopodobieństwa
+  Clock,         // 14. Statystyka
+  Target         // 15. Optymalizacja
 ];
 
 const subjectIconMap: Record<string, any> = {

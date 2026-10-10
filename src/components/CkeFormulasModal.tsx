@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { getCkeFormulas, getCkeFormulaTopics, useCkeCatalogs, type CkeFormulaItem, type CkeFormulaSubItem } from '../services/ckeCatalogRepository';
 import { CKE_FORMULAS_DATA, CKE_FORMULA_TOPICS } from '../data/ckeFormulasData';
 import { MathRenderer } from './MathRenderer';
+import { toFormulaBoxContent } from '../lib/formulaBox';
 import { MathPlot } from './MathPlot';
 import { MathDiagram } from './MathDiagram';
 import { NumberLineDiagram } from './NumberLineDiagram';
@@ -283,7 +284,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                     {/* Główny Wzór KaTeX o wysokim kontraście */}
                     <div className="bg-[#070A11] border border-[#FFB800]/25 rounded-xl p-3 sm:p-4 text-center shadow-[inset_0_2px_12px_rgba(0,0,0,0.6)] overflow-x-auto">
                       <div className="font-mono text-amber-200 font-bold text-base sm:text-lg leading-relaxed tracking-wide">
-                        <MathRenderer content={mainFormula} displayMode />
+                        <MathRenderer content={toFormulaBoxContent(mainFormula)} displayMode />
                       </div>
                     </div>
 
@@ -299,7 +300,7 @@ export const CkeFormulasModal: React.FC<CkeFormulasModalProps> = ({
                               {sub.label}
                             </span>
                             <div className="text-white font-semibold text-xs sm:text-sm overflow-x-auto py-0.5">
-                              <MathRenderer content={sub.formula} />
+                              <MathRenderer content={toFormulaBoxContent(sub.formula)} />
                             </div>
                           </div>
                         ))}

@@ -67,21 +67,23 @@ export const DEFAULT_CKE_SUBJECTS_CONFIG: Record<string, SubjectCkeConfig> = {
     passingThresholdPoints: 15,
     passingThresholdPercent: 30,
     topics: {
-      'dzial-1': { topicId: 'dzial-1', name: 'Liczby Rzeczywiste', minPoints: 4, maxPoints: 8, averagePoints: 6, importance: 'CRITICAL_PEWNIAK' },
-      'dzial-2': { topicId: 'dzial-2', name: 'Wyrażenia Algebraiczne', minPoints: 2, maxPoints: 4, averagePoints: 3, importance: 'HIGH' },
-      'dzial-3': { topicId: 'dzial-3', name: 'Równania i Nierówności', minPoints: 4, maxPoints: 7, averagePoints: 5.5, importance: 'CRITICAL_PEWNIAK' },
-      'dzial-4': { topicId: 'dzial-4', name: 'Układy Równań', minPoints: 1, maxPoints: 3, averagePoints: 2, importance: 'MEDIUM' },
-      'dzial-5': { topicId: 'dzial-5', name: 'Funkcje i Wykresy', minPoints: 3, maxPoints: 4, averagePoints: 3.5, importance: 'HIGH' },
-      'dzial-6': { topicId: 'dzial-6', name: 'Funkcja Kwadratowa', minPoints: 4, maxPoints: 6, averagePoints: 5.5, importance: 'CRITICAL_PEWNIAK' },
-      'dzial-7': { topicId: 'dzial-7', name: 'Ciągi Liczbowe', minPoints: 4, maxPoints: 6, averagePoints: 5, importance: 'CRITICAL_PEWNIAK' },
-      'dzial-8': { topicId: 'dzial-8', name: 'Trygonometria', minPoints: 3, maxPoints: 5, averagePoints: 4, importance: 'HIGH' },
-      'dzial-9': { topicId: 'dzial-9', name: 'Planimetria', minPoints: 5, maxPoints: 7, averagePoints: 6, importance: 'CRITICAL_PEWNIAK' },
-      'dzial-10': { topicId: 'dzial-10', name: 'Geometria Analityczna', minPoints: 3, maxPoints: 5, averagePoints: 4, importance: 'HIGH' },
-      'dzial-11': { topicId: 'dzial-11', name: 'Ciągi liczbowe', minPoints: 4, maxPoints: 6, averagePoints: 5, importance: 'CRITICAL_PEWNIAK' },
-      'dzial-12': { topicId: 'dzial-12', name: 'Funkcja kwadratowa', minPoints: 4, maxPoints: 6, averagePoints: 5.5, importance: 'CRITICAL_PEWNIAK' },
-      'dzial-13': { topicId: 'dzial-13', name: 'Przekształcenia wykresów funkcji', minPoints: 2, maxPoints: 4, averagePoints: 3, importance: 'HIGH' },
-      'dzial-14': { topicId: 'dzial-14', name: 'Statystyka', minPoints: 2, maxPoints: 3, averagePoints: 2, importance: 'MEDIUM' },
-      'dzial-15': { topicId: 'dzial-15', name: 'Optymalizacja', minPoints: 4, maxPoints: 5, averagePoints: 4, importance: 'HIGH' }
+      // Numeracja zgodna z kursem (math_blueprints.json). Średnie punkty: rozkład z 6 arkuszy CKE 2023–2024
+      // przeskalowany do 50 pkt; min/max – rzeczywisty rozrzut w tych arkuszach.
+      'dzial-1': { topicId: 'dzial-1', name: 'Liczby rzeczywiste', minPoints: 3, maxPoints: 5, averagePoints: 4, importance: 'CRITICAL_PEWNIAK' },
+      'dzial-2': { topicId: 'dzial-2', name: 'Wyrażenia algebraiczne', minPoints: 2, maxPoints: 4, averagePoints: 3.5, importance: 'HIGH' },
+      'dzial-3': { topicId: 'dzial-3', name: 'Równania i nierówności', minPoints: 4, maxPoints: 6, averagePoints: 5.5, importance: 'CRITICAL_PEWNIAK' },
+      'dzial-4': { topicId: 'dzial-4', name: 'Funkcje i ich własności', minPoints: 2, maxPoints: 4, averagePoints: 3.5, importance: 'HIGH' },
+      'dzial-5': { topicId: 'dzial-5', name: 'Funkcja liniowa i układy równań', minPoints: 2, maxPoints: 5, averagePoints: 3.5, importance: 'HIGH' },
+      'dzial-6': { topicId: 'dzial-6', name: 'Funkcja kwadratowa', minPoints: 1, maxPoints: 4, averagePoints: 3, importance: 'HIGH' },
+      'dzial-7': { topicId: 'dzial-7', name: 'Ciągi liczbowe', minPoints: 3, maxPoints: 4, averagePoints: 4, importance: 'CRITICAL_PEWNIAK' },
+      'dzial-8': { topicId: 'dzial-8', name: 'Trygonometria', minPoints: 1, maxPoints: 3, averagePoints: 2.5, importance: 'HIGH' },
+      'dzial-9': { topicId: 'dzial-9', name: 'Planimetria', minPoints: 3, maxPoints: 6, averagePoints: 4.5, importance: 'CRITICAL_PEWNIAK' },
+      'dzial-10': { topicId: 'dzial-10', name: 'Geometria analityczna', minPoints: 2, maxPoints: 6, averagePoints: 4, importance: 'CRITICAL_PEWNIAK' },
+      'dzial-11': { topicId: 'dzial-11', name: 'Stereometria', minPoints: 2, maxPoints: 6, averagePoints: 3.5, importance: 'HIGH' },
+      'dzial-12': { topicId: 'dzial-12', name: 'Kombinatoryka', minPoints: 1, maxPoints: 1, averagePoints: 1, importance: 'MEDIUM' },
+      'dzial-13': { topicId: 'dzial-13', name: 'Rachunek prawdopodobieństwa', minPoints: 2, maxPoints: 3, averagePoints: 2.5, importance: 'HIGH' },
+      'dzial-14': { topicId: 'dzial-14', name: 'Statystyka', minPoints: 0, maxPoints: 2, averagePoints: 1.5, importance: 'MEDIUM' },
+      'dzial-15': { topicId: 'dzial-15', name: 'Optymalizacja', minPoints: 2, maxPoints: 4, averagePoints: 3.5, importance: 'HIGH' }
     }
   },
   'jezyk-polski': {
