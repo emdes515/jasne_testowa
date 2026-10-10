@@ -1,4 +1,5 @@
 import { T, mc, num, pf, pill, fr, par, sq, m, need, gcd, isSquare, dec } from './lib.js';
+import { figRightTriangle, figIsosceles, figRect, figRhombus, figTrapezoid, figParallelogram, figInscribedCentral, figDiameterTriangle, figCenterTriangle, figTangent } from './figures.js';
 
 const TRIPLES = [[3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [6, 8, 10], [9, 12, 15], [12, 16, 20], [10, 24, 26]];
 const deg = (x) => m(`${x}^\\circ`);
@@ -22,6 +23,7 @@ const pitHypotenuse = (r) => {
   }
   const c2 = a * a + b * b;
   return mc({
+    diagram: figRightTriangle({ leg1: b, leg2: a, hyp: '?' }),
     title: 'Przeciwprostokątna z twierdzenia Pitagorasa',
     q: T`Przyprostokątne trójkąta prostokątnego mają długości $${a}$ i $${b}$. Przeciwprostokątna tego trójkąta ma długość`,
     ok: m(sq(c2)),
@@ -46,6 +48,7 @@ const pitLeg = (r) => {
   }
   const b2 = c * c - a * a;
   return mc({
+    diagram: figRightTriangle({ leg1: '?', leg2: a, hyp: c }),
     title: 'Przyprostokątna z twierdzenia Pitagorasa',
     q: T`W trójkącie prostokątnym przeciwprostokątna ma długość $${c}$, a jedna z przyprostokątnych ma długość $${a}$. Druga przyprostokątna ma długość`,
     ok: m(sq(b2)),
@@ -60,6 +63,7 @@ const triRightAreaHeight = (r) => {
   const [a, b, c] = r.pick(TRIPLES);
   const askH = r.bool();
   return mc({
+    diagram: askH ? figRightTriangle({ leg1: b, leg2: a, hyp: c, alt: 'h = ?' }) : figRightTriangle({ leg2: a, hyp: c }),
     title: askH ? 'Wysokość opuszczona na przeciwprostokątną' : 'Pole trójkąta prostokątnego',
     q: askH ? T`Boki trójkąta prostokątnego mają długości $${a}$, $${b}$ i $${c}$. Wysokość opuszczona na przeciwprostokątną ma długość` : T`Przeciwprostokątna trójkąta prostokątnego ma długość $${c}$, a jedna z przyprostokątnych $${a}$. Pole tego trójkąta jest równe`,
     ok: m(askH ? fr(a * b, c) : fr(a * b, 2)),
@@ -77,6 +81,7 @@ const triIsosceles = (r) => {
   const base = 2 * half;
   const askH = r.bool();
   return mc({
+    diagram: figIsosceles({ base, arm, h: askH ? 'h = ?' : undefined }),
     title: askH ? 'Wysokość trójkąta równoramiennego' : 'Pole trójkąta równoramiennego',
     q: T`W trójkącie równoramiennym podstawa ma długość $${base}$, a ramię ma długość $${arm}$. ${askH ? 'Wysokość opuszczona na podstawę ma długość' : 'Pole tego trójkąta jest równe'}`,
     ok: m(askH ? h0 : half * h0),
@@ -92,6 +97,7 @@ const rectDiagonal = (r) => {
   const kind = r.int(0, 2);
   if (kind === 0)
     return mc({
+      diagram: figRect({ s1: b, s2: a, d: '?' }),
       title: 'Przekątna prostokąta',
       q: T`Boki prostokąta mają długości $${a}$ i $${b}$. Przekątna tego prostokąta ma długość`,
       ok: m(c),
@@ -103,6 +109,7 @@ const rectDiagonal = (r) => {
     });
   if (kind === 1)
     return mc({
+      diagram: figRect({ s2: a, d: c }),
       title: 'Pole prostokąta z przekątnej',
       q: T`Przekątna prostokąta ma długość $${c}$, a jeden z jego boków ma długość $${a}$. Pole tego prostokąta jest równe`,
       ok: m(a * b),
@@ -113,6 +120,7 @@ const rectDiagonal = (r) => {
       tip: TIP_PIT
     });
   return mc({
+    diagram: figRect({ s2: a, d: c }),
     title: 'Obwód prostokąta z przekątnej',
     q: T`Przekątna prostokąta ma długość $${c}$, a jeden z jego boków ma długość $${a}$. Obwód tego prostokąta jest równy`,
     ok: m(2 * (a + b)),
@@ -220,6 +228,7 @@ const quadRhombus = (r) => {
   const kind = r.int(0, 2);
   if (kind === 0)
     return mc({
+      diagram: figRhombus({ ac: q, bd: p }),
       title: 'Pole rombu z przekątnych',
       q: T`Przekątne rombu mają długości $${p}$ i $${q}$. Pole tego rombu jest równe`,
       ok: m((p * q) / 2),
@@ -231,6 +240,7 @@ const quadRhombus = (r) => {
     });
   if (kind === 1)
     return mc({
+      diagram: figRhombus({ ac: q, bd: p, side: '?' }),
       title: 'Bok rombu z przekątnych',
       q: T`Przekątne rombu mają długości $${p}$ i $${q}$. Bok tego rombu ma długość`,
       ok: m(a),
@@ -241,6 +251,7 @@ const quadRhombus = (r) => {
       tip: 'Przekątne rombu są prostopadłe i dzielą się na połowy – tworzą cztery jednakowe trójkąty prostokątne.'
     });
   return mc({
+    diagram: figRhombus({ ac: q, bd: p }),
     title: 'Obwód rombu z przekątnych',
     q: T`Przekątne rombu mają długości $${p}$ i $${q}$. Obwód tego rombu jest równy`,
     ok: m(4 * a),
@@ -259,6 +270,7 @@ const quadTrapezoid = (r) => {
   const P = ((a + b) * h) / 2;
   const askH = r.bool();
   return mc({
+    diagram: figTrapezoid({ a, b, h: askH ? 'h = ?' : h }),
     title: askH ? 'Wysokość trapezu z pola' : 'Pole trapezu',
     q: askH ? T`Podstawy trapezu mają długości $${a}$ i $${b}$, a jego pole jest równe $${P}$. Wysokość tego trapezu jest równa` : T`Podstawy trapezu mają długości $${a}$ i $${b}$, a jego wysokość jest równa $${h}$. Pole tego trapezu jest równe`,
     ok: m(askH ? h : P),
@@ -313,6 +325,7 @@ const quadParallelogramArea = (r) => {
   need((a * h) % b === 0 && (a * h) / b < a);
   const h2 = (a * h) / b;
   return mc({
+    diagram: figParallelogram({ a, b, ha: h }),
     title: 'Dwie wysokości równoległoboku',
     q: T`Boki równoległoboku mają długości $${a}$ i $${b}$. Wysokość opuszczona na bok o długości $${a}$ jest równa $${h}$. Wysokość opuszczona na bok o długości $${b}$ jest równa`,
     ok: m(h2),
@@ -329,6 +342,7 @@ const quadIsoscelesTrapezoid = (r) => {
   const a = b + 2 * x;
   const askArea = r.bool();
   return mc({
+    diagram: figTrapezoid({ a, b, arm, isosceles: true, h: askArea ? undefined : 'h = ?' }),
     title: askArea ? 'Pole trapezu równoramiennego' : 'Wysokość trapezu równoramiennego',
     q: T`W trapezie równoramiennym podstawy mają długości $${a}$ i $${b}$, a ramię ma długość $${arm}$. ${askArea ? 'Pole tego trapezu jest równe' : 'Wysokość tego trapezu jest równa'}`,
     ok: m(askArea ? ((a + b) * h) / 2 : h),
@@ -345,6 +359,7 @@ const circInscribed = (r) => {
   const ins = r.int(15, 85);
   const fromIns = r.bool();
   return mc({
+    diagram: fromIns ? figInscribedCentral({ inscribed: `${ins}°`, central: '?' }) : figInscribedCentral({ central: `${2 * ins}°`, inscribed: '?' }),
     title: 'Kąt wpisany i środkowy',
     q: fromIns ? T`Kąt wpisany oparty na pewnym łuku okręgu ma miarę $${ins}^\circ$. Kąt środkowy oparty na tym samym łuku ma miarę` : T`Kąt środkowy oparty na pewnym łuku okręgu ma miarę $${2 * ins}^\circ$. Kąt wpisany oparty na tym samym łuku ma miarę`,
     ok: deg(fromIns ? 2 * ins : ins),
@@ -358,6 +373,7 @@ const circDiameter = (r) => {
   const a = r.int(15, 75);
   need(a !== 45);
   return mc({
+    diagram: figDiameterTriangle({ atA: `${a}°`, atB: '?' }),
     title: 'Kąt wpisany oparty na średnicy',
     q: T`Odcinek $AB$ jest średnicą okręgu, a punkt $C$ leży na tym okręgu (różny od $A$ i $B$). Kąt $BAC$ ma miarę $${a}^\circ$. Kąt $ABC$ ma miarę`,
     ok: deg(90 - a),
@@ -373,6 +389,7 @@ const circIsoscelesCenter = (r) => {
   const fromCentral = r.bool();
   const base = (180 - c) / 2;
   return mc({
+    diagram: fromCentral ? figCenterTriangle({ central: `${c}°`, atA: '?' }) : figCenterTriangle({ central: '?', atA: `${base}°` }),
     title: 'Trójkąt o wierzchołku w środku okręgu',
     q: fromCentral ? T`Punkty $A$ i $B$ leżą na okręgu o środku $S$. Kąt środkowy $ASB$ ma miarę $${c}^\circ$. Kąt $SAB$ ma miarę` : T`Punkty $A$ i $B$ leżą na okręgu o środku $S$. Kąt $SAB$ ma miarę $${base}^\circ$. Kąt środkowy $ASB$ ma miarę`,
     ok: deg(fromCentral ? base : c),
@@ -386,6 +403,7 @@ const circTangentLength = (r) => {
   const [rr, t, d] = r.pick([[3, 4, 5], [4, 3, 5], [5, 12, 13], [12, 5, 13], [6, 8, 10], [8, 6, 10], [8, 15, 17], [7, 24, 25]]);
   const kind = r.int(0, 1);
   return mc({
+    diagram: kind === 0 ? figTangent({ r: rr, ps: d, pa: '?' }) : figTangent({ pa: t, ps: d, r: '?' }),
     title: 'Odcinek stycznej do okręgu',
     q: kind === 0 ? T`Punkt $P$ leży w odległości $${d}$ od środka $S$ okręgu o promieniu $${rr}$. Przez punkt $P$ poprowadzono styczną do okręgu w punkcie $A$. Długość odcinka $PA$ jest równa` : T`Z punktu $P$ poprowadzono styczną do okręgu o środku $S$ w punkcie $A$. Wiadomo, że $|PA| = ${t}$ oraz $|PS| = ${d}$. Promień tego okręgu jest równy`,
     ok: m(kind === 0 ? t : rr),
